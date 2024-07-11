@@ -4,7 +4,6 @@ import contracts
 import methodinfo
 
 import godotcore/commandindex
-import godotcore/eventindex
 import godotcore/GodotClassMeta
 
 proc sync_procDef*(procdef: NimNode): NimNode =

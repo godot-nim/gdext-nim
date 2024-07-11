@@ -8,10 +8,9 @@ import godotcore/dirty/gdextension_interface
 import godotcore/commandindex
 import godotcore/builtinindex
 import godotcore/extracommands
-import godotcore/eventindex
 import godotcore/GodotClass
 import godotcore/GodotClassMeta
-import godotcore/classtraits
+import godot/classtraits
 
 proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
   let class = instantiate_internal T

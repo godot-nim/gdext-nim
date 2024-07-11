@@ -1,6 +1,5 @@
 import godotcore/dirty/gdextension_interface
 import godotcore/builtinindex
-import godotcore/eventindex
 import godotcore/GodotClassMeta
 
 import contracts

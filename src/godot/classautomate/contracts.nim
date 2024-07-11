@@ -1,5 +1,5 @@
 import godotcore/events
-import godotcore/classtraits
+import godot/classtraits
 
 type Contract = ref object
   virtual*: Event
