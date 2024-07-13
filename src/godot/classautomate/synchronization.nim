@@ -3,6 +3,7 @@ import std/macros
 import contracts
 import virtuals
 import procs
+import properties
 
 import godotcore/dirty/gdextension_interface
 import godotcore/commandindex
@@ -58,4 +59,5 @@ macro gdsync*(body): untyped =
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
   interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
+  sync_property(T)
   invoke contract(T)
