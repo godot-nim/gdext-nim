@@ -15,3 +15,30 @@ func hasNoReturn*(node: NimNode): bool =
 
 proc hasReturn*(node: NimNode): bool =
   not node.hasNoReturn
+
+proc typeDef*(typ: NimNode): NimNode =
+  case typ.typeKind
+  of ntyTypeDesc:
+    let typ = typ.getTypeInst[1]
+    case typ.kind
+    of nnkBracketExpr:
+      typ[0].getImpl
+    else:
+      typ.getImpl
+  of ntyGenericInst:
+    typ[0].getImpl
+  else:
+    nil
+
+
+proc recList*(typedef: NimNode): NimNode =
+  let predicate = typedef[2]
+  case predicate.kind
+  of nnkRefTy:
+    predicate[0][2]
+  of nnkObjectTy:
+    predicate[2]
+  of nnkBracketExpr:
+    predicate.typeDef.recList
+  else:
+    nil
