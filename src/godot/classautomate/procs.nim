@@ -25,6 +25,6 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   quote do:
     `procdef`
-    process(contract(`arg0T`).procedure, `namelit`):
+    process(contract(`arg0T`).procedure, `gdname`):
       let glue = `methodinfoDef`
       interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr glue.info)
