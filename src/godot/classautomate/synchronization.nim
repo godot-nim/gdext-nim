@@ -3,6 +3,7 @@ import std/macros
 import contracts
 import virtuals
 import procs
+import signals
 import properties
 
 import godotcore/dirty/gdextension_interface
@@ -44,13 +45,17 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
 template name*(newname: string) {.pragma.}
 template getter*(newname: string) {.pragma.}
 template setter*(newname: string) {.pragma.}
+export signals.signal
 
 macro gdsync*(body): untyped =
   case body.kind
   of nnkMethodDef:
     sync_methodDef(body)
-  of nnkProcDef:
-    sync_procDef(body)
+  of nnkProcDef, nnkConverterDef, nnkFuncDef:
+    if body.isSignal:
+      sync_signal(body)
+    else:
+      sync_procDef(body)
   else:
     hint $body.kind
     body
