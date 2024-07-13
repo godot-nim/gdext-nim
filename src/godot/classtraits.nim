@@ -4,7 +4,6 @@ import godotcore/dirty/gdextension_interface
 import godotcore/commandindex
 import godotcore/extracommands
 import godotcore/GodotClass
-import godotcore/GodotClassMeta
 
 proc instantiate_internal*[T: SomeClass](_: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname T.EngineClass)

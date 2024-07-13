@@ -4,7 +4,7 @@ import contracts
 import methodinfo
 
 import godotcore/commandindex
-import godotcore/GodotClassMeta
+import godotcore/GodotClass
 
 proc sync_procDef*(procdef: NimNode): NimNode =
   let name = procdef.name

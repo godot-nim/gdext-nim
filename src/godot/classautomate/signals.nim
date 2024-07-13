@@ -4,7 +4,7 @@ import stdwrap/macros
 import contracts
 
 import godotcore/dirty/gdextension_interface
-import godotcore/GodotClassMeta
+import godotcore/GodotClass
 import godotcore/Variant
 import godotcore/builtinindex
 import godotcore/commandindex

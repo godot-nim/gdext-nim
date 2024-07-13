@@ -4,7 +4,7 @@ import contracts
 import propertyinfo
 
 import godotcore/commandindex
-import godotcore/GodotClassMeta
+import godotcore/GodotClass
 
 macro sync_property*(T: typedesc): untyped =
   result = newStmtList()
