@@ -178,7 +178,7 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
         method_flags: cast[uint32](`method_flags`),
 
         has_return_value: `has_return_value`,
-        return_value_info: `return_value_info`,
+        return_value_info: native `return_value_info`,
         return_value_metadata: `return_value_metadata`,
 
         argument_count: `argument_count`,

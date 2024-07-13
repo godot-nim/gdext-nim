@@ -66,11 +66,11 @@ type
     hint_string*: ref String
     usage*: set[PropertyUsageFlags]
 
-converter native*(p: ref PropertyInfoGlue): ptr PropertyInfo =
+proc native*(p: ref PropertyInfoGlue): ptr PropertyInfo =
   cast[ptr PropertyInfo](p)
-converter native*(p: PropertyInfoGlue): PropertyInfo =
+proc native*(p: PropertyInfoGlue): PropertyInfo =
   cast[PropertyInfo](p)
-converter native*(a: openArray[PropertyInfoGlue]): ptr PropertyInfo =
+proc native*(a: openArray[PropertyInfoGlue]): ptr PropertyInfo =
   cast[ptr PropertyInfo](addr a[0])
 
 template uniqueUsage*(T: typedesc): set[PropertyUsageFlags] = {}
