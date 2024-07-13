@@ -1,10 +1,10 @@
 import std/macros
 
-import contracts
-import virtuals
-import procs
-import signals
-import properties
+import classautomate/contracts
+import classautomate/virtuals
+import classautomate/procs
+import classautomate/signals
+import classautomate/properties
 
 import godotcore/dirty/gdextension_interface
 import godotcore/commandindex
