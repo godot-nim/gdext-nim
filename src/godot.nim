@@ -1,7 +1,5 @@
-import ./godot/init; export init
-import ./godot/classautomate/synchronization; export synchronization
-import ./godot/classtraits; export classtraits
-import ./godot/varianttraits; export varianttraits
+import ./godot/[ init, classautomate/synchronization, classtraits, varianttraits]
+export init, synchronization, classtraits, varianttraits
 
-import godotgen; export godotgen
-import godotcore; export godotcore
+import godotcore, godotgen
+export godotcore, godotgen
