@@ -4,6 +4,7 @@ import godotcore/events
 import godotcore/eventindex
 import godotcore/commandindex
 import godotcore/extracommands
+import godotcore/typeshift
 
 export events.process
 var initialize_module = event("initialize_module")
@@ -21,6 +22,7 @@ process initialize_module:
   commandindex.load() # call `getProcAddr` for each interface methods
   builtinindex.load() # load builtin-classes constructor/destructor for ORC hooks
   extracommands.load() # load other usual functions to define core library
+  typeshift.load()
 
   invoke eventindex.init_engine.on_load_builtinclassConstructor # expects to register by generateds.
   invoke eventindex.init_engine.on_load_builtinclassOperator
