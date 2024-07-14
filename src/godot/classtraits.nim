@@ -22,20 +22,22 @@ proc instanceID*(self: GodotClass): GDObjectInstanceID =
   interface_Object_getInstanceId CLASS_getObjectPtr self
 
 proc castTo*[T: GodotClass](self: GodotClass; _: typedesc[T]): T =
+  let castpro = commandindex.interfaceObjectCastTo
   if self.isNil: return
   result = CLASS_getObjectPtr(self)
-    .interface_Object_castTo(interface_ClassDB_getClassTag(addr className T))
+    .castpro(interface_ClassDB_getClassTag(addr className T))
     .getInstance(T)
 
 {.push, inline.}
 
-proc `as`*[T: GodotClass](self: GodotClass; _: typedesc[T]): T = castTo(self, T)
+template `as`*[T: GodotClass](self: GodotClass; _: typedesc[T]): T = castTo(self, typedesc[T])
 
 {.pop.}
 
 proc singleton*[T: GodotClass](_: typedesc[T]): T =
+  let getsingleton = interfaceGlobalGetSingleton
   (addr className T)
-    .interface_Global_getSingleton()
+    .getsingleton()
     .getInstance(T)
 
 template `/`*[T: GodotClass](_: typedesc[T]): T = T.singleton
