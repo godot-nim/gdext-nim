@@ -9,7 +9,7 @@ import godotcore/Variant
 import godotcore/builtinindex
 import godotcore/commandindex
 
-import godotgen/classes/Object
+import godotgen/classes/gdObject
 
 import godot/varianttraits
 
