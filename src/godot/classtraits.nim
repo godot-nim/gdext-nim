@@ -5,9 +5,9 @@ import godotcore/commandindex
 import godotcore/extracommands
 import godotcore/GodotClass
 
-proc instantiate_internal*[T: SomeClass](_: typedesc[T]): T =
-  let objectPtr = interface_classdb_construct_object(addr classname T.EngineClass)
-  result = CLASS_create[T](objectPtr)
+proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
+  let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
+  result = CLASS_create(Type, objectPtr)
   when T is SomeUserClass:
     interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
