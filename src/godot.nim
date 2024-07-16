@@ -7,5 +7,5 @@ export             events, builtinindex, geometrics, Variant
 import godotgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs
 
-import godot/[ init, classautomate, classtraits, varianttraits, nodetraits ]
-export         init, classautomate, classtraits, varianttraits, nodetraits
+import godot/[ init, classautomate, classtraits, varianttraits, nodetraits, gdrefs ]
+export         init, classautomate, classtraits, varianttraits, nodetraits, gdrefs
