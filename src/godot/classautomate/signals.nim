@@ -1,5 +1,5 @@
 import std/tables
-import stdwrap/macros
+import godotcore/utils/macros
 
 import contracts
 

@@ -1,4 +1,4 @@
-import stdwrap/macros
+import godotcore/utils/macros
 
 import contracts
 import propertyinfo

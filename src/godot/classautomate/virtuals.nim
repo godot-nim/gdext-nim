@@ -6,7 +6,7 @@ import godotcore/GodotClass
 import contracts
 
 import std/tables
-import stdwrap/macros
+import godotcore/utils/macros
 
 proc get_virtual_bind*(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)

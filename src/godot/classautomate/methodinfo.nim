@@ -1,6 +1,6 @@
 import std/sequtils
 import std/tables
-import stdwrap/macros
+import godotcore/utils/macros
 
 import godotcore/dirty/gdextension_interface
 import godotcore/commandindex
