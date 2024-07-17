@@ -28,7 +28,7 @@ proc `=dup`*[T: SomeRefCounted](src: GdRef[T]): GdRef[T] =
 
 template variantType*(Type: typedesc[GdRef]): Variant_Type = VariantType_Object
 
-proc unwrap*[T: SomeRefCounted](self: GdRef[T]): T = self.handle
+proc unwrapped*[T: SomeRefCounted](self: GdRef[T]): T = self.handle
 
 template gdref*[T: SomeRefCounted](Type: typedesc[T]): typedesc = GdRef[Type]
 proc referenced*[T: SomeRefCounted](self: T): GdRef[T] =
@@ -39,11 +39,11 @@ proc asGdRef*[T: SomeRefCounted](self: T): GdRef[T] =
 
 template encoded*[T: SomeRefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
 template encode*[T: SomeRefCounted](v: GdRef[T]; p: pointer) =
-  v.unwrap.encode(p)
+  v.unwrapped.encode(p)
 proc decode*[T: SomeRefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced
 proc variant*[T: SomeRefCounted](v: GdRef[T]): Variant =
-  v.unwrap.variant
+  v.unwrapped.variant
 proc get*[T: SomeRefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
   v.get(T).referenced
 
