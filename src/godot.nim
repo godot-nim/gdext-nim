@@ -9,3 +9,7 @@ export            utilityfuncs, builtinclasses, classindex, globalenums, localen
 
 import godot/[ init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions ]
 export         init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions
+
+proc echo*(args: varargs[Variant, variant]) =
+  if unlikely(args.len == 0): return
+  print(args[0], args[1..^1])
