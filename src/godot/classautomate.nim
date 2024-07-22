@@ -21,8 +21,13 @@ proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
 proc free_bind[T: SomeUserClass](class: T) =
   CLASS_sync_free_bind class
 
-proc notification_bind(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
-  cast[GodotClass](p_instance).notification(p_what)
+when TargetVersion == (4, 1):
+  proc notification_bind(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
+    cast[GodotClass](p_instance).notification(p_what)
+else:
+  proc notification_bind(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
+    cast[GodotClass](p_instance).notification(p_what)
+
 proc set_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).set(p_name, p_value)
 proc get_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
@@ -38,25 +43,52 @@ proc get_propertyList_bind(p_instance: ClassInstancePtr; r_count: ptr uint32): p
 proc free_propertyList_bind(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
   cast[GodotClass](p_instance).free_propertyList(p_list)
 
-proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo =
-  ClassCreationInfo(
-    is_virtual: is_virtual,
-    is_abstract: is_abstract,
-    set_func: set_bind,
-    get_func: get_bind,
-    get_property_list_func: get_property_list_bind,
-    free_property_list_func: free_property_list_bind,
-    property_can_revert_func: property_can_revert_bind,
-    property_get_revert_func: property_get_revert_bind,
-    notification_func: notification_bind,
-    to_string_func: to_string_bind,
-    create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
-    free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
-    reference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.REFERENCE_BIND, $typeof T),
-    unreference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.UNREFERENCE_BIND, $typeof T),
-    get_virtual_func: get_virtual_bind,
-    class_userdata: cast[pointer](Meta(T)),
-  )
+when TargetVersion == (4, 1):
+  proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo =
+    ClassCreationInfo(
+      is_virtual: is_virtual,
+      is_abstract: is_abstract,
+      set_func: set_bind,
+      get_func: get_bind,
+      get_property_list_func: get_property_list_bind,
+      free_property_list_func: free_property_list_bind,
+      property_can_revert_func: property_can_revert_bind,
+      property_get_revert_func: property_get_revert_bind,
+      notification_func: notification_bind,
+      to_string_func: to_string_bind,
+      create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
+      free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
+      reference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.REFERENCE_BIND, $typeof T),
+      unreference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.UNREFERENCE_BIND, $typeof T),
+      get_virtual_func: get_virtual_bind,
+      class_userdata: cast[pointer](Meta(T)),
+    )
+else:
+  proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo2 =
+    ClassCreationInfo2(
+      is_virtual: is_virtual,
+      is_abstract: is_abstract,
+      is_exposed: true,
+      set_func: set_bind,
+      get_func: get_bind,
+      get_property_list_func: get_property_list_bind,
+      free_property_list_func: free_property_list_bind,
+      property_can_revert_func: property_can_revert_bind,
+      property_get_revert_func: property_get_revert_bind,
+      validate_property_func: nil,
+      notification_func: notification_bind,
+      to_string_func: to_string_bind,
+      reference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.REFERENCE_BIND, $typeof T),
+      unreference_func: (proc(p_instance: pointer) {.gdcall.} = echo SYNC.UNREFERENCE_BIND, $typeof T),
+      create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
+      free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
+      recreate_instance_func: nil,
+      get_virtual_func: get_virtual_bind,
+      get_virtual_call_data_func: nil,
+      call_virtual_with_data_func: nil,
+      get_rid_func: nil,
+      class_userdata: cast[pointer](Meta(T)),
+    )
 
 template name*(newname: string) {.pragma.}
 template getter*(newname: string) {.pragma.}
@@ -79,6 +111,9 @@ macro gdsync*(body): untyped =
 
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
-  interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
+  when TargetVersion == (4, 1):
+    interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
+  else:
+    interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
   sync_property(T)
   invoke contract(T)
