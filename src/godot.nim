@@ -1,5 +1,7 @@
 {.warning[UnusedImport]:off.}
 
+include "godot/checkenv"
+
 import godotcore/dirty/gdextension_interface
 export InitializationLevel, gdcall
 
