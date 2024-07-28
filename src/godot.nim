@@ -1,3 +1,5 @@
+{.warning[UnusedImport]:off.}
+
 import godotcore/dirty/gdextension_interface
 export InitializationLevel, gdcall
 
@@ -9,6 +11,8 @@ export            builtinclasses, classindex, globalenums, localenums, structs
 
 import godot/[ init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions ]
 export         init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions
+
+import godot/extensionmanager
 
 import godotgen/utilityFuncs
 export utilityFuncs except print
