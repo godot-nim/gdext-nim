@@ -2,11 +2,13 @@ import std/macros
 
 import contracts
 import methodinfo
+import checkform
 
 import godotcore/commandindex
 import godotcore/GodotClass
 
 proc sync_procDef*(procdef: NimNode): NimNode =
+  precheckIsCorrectClassMethod: procdef
   let name = procdef.name
   let arg0_T = procdef.params[1][1]
 
@@ -22,8 +24,7 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
-
-  quote do:
+  procdef.withCorrectClassMethodForm quote do:
     `procdef`
     process(contract(`arg0T`).procedure, `gdname`):
       let glue = `methodinfoDef`
