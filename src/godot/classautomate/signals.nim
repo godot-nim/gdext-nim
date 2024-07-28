@@ -2,6 +2,7 @@ import std/tables
 import godotcore/utils/macros
 
 import contracts
+import checkform
 
 import godotcore/dirty/gdextension_interface
 import godotcore/GodotClass
@@ -36,6 +37,7 @@ template argumentSize(info: ClassSignalInfo): Int =
   info.arguments.len
 
 proc sync_signal*(procDef: NimNode): NimNode =
+  precheckIsCorrectClassMethod: procdef
   let arg0 = procDef.params[1][0]
   let arg0_T = procDef.params[1][1]
   var gdname = procDef.name.toStrLit
@@ -68,7 +70,7 @@ proc sync_signal*(procDef: NimNode): NimNode =
     let variantArr = `variantArrDef`
     `arg0`.emitSignal(signalName, variantArr)
 
-  quote do:
+  procdef.withCorrectClassMethodForm quote do:
     `procdef`
     process(`arg0_T`.contract.signal, `gdname`):
       let info = ClassSignalInfo(
