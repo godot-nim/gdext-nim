@@ -1,4 +1,4 @@
-import godotcore/GodotClass
+import godotcore/gdclass
 import godotcore/gdrefs
 
 export GdRef, gdref

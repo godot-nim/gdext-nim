@@ -1,10 +1,10 @@
 include "godot/checkenv"
 
-import godotcore/dirty/gdextension_interface
+import godotcore/dirty/gdextensioninterface
 export InitializationLevel, gdcall
 
-import godotcore/[ events, builtinindex, geometrics, Variant ]
-export             events, builtinindex, geometrics, Variant
+import godotcore/[ events, builtinindex, geometrics, gdvariant ]
+export             events, builtinindex, geometrics, gdvariant
 
 import godotgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs

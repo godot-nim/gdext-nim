@@ -1,4 +1,4 @@
-import godotcore/dirty/gdextension_interface
+import godotcore/dirty/gdextensioninterface
 import godotcore/builtinindex
 import godotcore/events
 import godotcore/staticevents

@@ -6,11 +6,11 @@ import classautomate/procs
 import classautomate/signals
 import classautomate/properties
 
-import godotcore/dirty/gdextension_interface
+import godotcore/dirty/gdextensioninterface
 import godotcore/commandindex
 import godotcore/builtinindex
 import godotcore/extracommands
-import godotcore/GodotClass
+import godotcore/gdclass
 import godot/classtraits
 
 proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =

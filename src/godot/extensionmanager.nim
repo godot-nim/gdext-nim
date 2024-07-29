@@ -1,6 +1,6 @@
-import godotcore/dirty/gdextension_interface
+import godotcore/dirty/gdextensioninterface
 import godotcore/[typeshift]
-import godotgen/[classindex, builtinclasses, utilityFuncs]
+import godotgen/[classindex, builtinclasses, utilityfuncs]
 import godot/[init, classautomate]
 import godot/classautomate/contracts
 export InitializationLevel, gdcall

@@ -5,7 +5,7 @@ import methodinfo
 import checkform
 
 import godotcore/commandindex
-import godotcore/GodotClass
+import godotcore/gdclass
 
 proc sync_procDef*(procdef: NimNode): NimNode =
   precheckIsCorrectClassMethod: procdef

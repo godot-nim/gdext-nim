@@ -1,7 +1,7 @@
-import godotcore/dirty/gdextension_interface
+import godotcore/dirty/gdextensioninterface
 import godotcore/builtinindex
 import godotcore/events
-import godotcore/GodotClass
+import godotcore/gdclass
 
 import contracts
 import checkform

@@ -1,4 +1,4 @@
-import godotcore/GodotClass
+import godotcore/gdclass
 
 import std/macros
 

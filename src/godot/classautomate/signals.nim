@@ -4,13 +4,13 @@ import godotcore/utils/macros
 import contracts
 import checkform
 
-import godotcore/dirty/gdextension_interface
-import godotcore/GodotClass
-import godotcore/Variant
+import godotcore/dirty/gdextensioninterface
+import godotcore/gdclass
+import godotcore/gdvariant
 import godotcore/builtinindex
 import godotcore/commandindex
 
-import godotgen/classes/gdObject
+import godotgen/classes/gdobject
 
 import godot/varianttraits
 
