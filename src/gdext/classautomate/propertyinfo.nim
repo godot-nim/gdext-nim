@@ -1,11 +1,11 @@
 import std/macros
 
-import godotcore/dirty/gdextension_interface
-import godotcore/builtinindex
-import godotcore/extracommands
-import godotcore/Variant
-import godotcore/typeshift
-import godotgen/globalenums except VariantType
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/builtinindex
+import gdextcore/extracommands
+import gdextcore/gdvariant
+import gdextcore/typeshift
+import gdextgen/globalenums except VariantType
 
 # Metadata
 # ========

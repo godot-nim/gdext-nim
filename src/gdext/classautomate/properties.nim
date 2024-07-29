@@ -1,10 +1,10 @@
-import godotcore/utils/macros
+import gdextcore/utils/macros
 
 import contracts
 import propertyinfo
 
-import godotcore/commandindex
-import godotcore/GodotClass
+import gdextcore/commandindex
+import gdextcore/gdclass
 
 macro sync_property*(T: typedesc): untyped =
   result = newStmtList()

@@ -1,11 +1,11 @@
-import godotcore/dirty/gdextension_interface
-import godotcore/builtinindex
-import godotcore/events
-import godotcore/staticevents
-import godotcore/commandindex
-import godotcore/extracommands
-import godotcore/typeshift
-import godotgen/utilityfuncs
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/builtinindex
+import gdextcore/events
+import gdextcore/staticevents
+import gdextcore/commandindex
+import gdextcore/extracommands
+import gdextcore/typeshift
+import gdextgen/utilityfuncs
 
 export events.process
 

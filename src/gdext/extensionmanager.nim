@@ -1,8 +1,8 @@
-import godotcore/dirty/gdextension_interface
-import godotcore/[typeshift]
-import godotgen/[classindex, builtinclasses, utilityFuncs]
-import godot/[init, classautomate]
-import godot/classautomate/contracts
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/[typeshift]
+import gdextgen/[classindex, builtinclasses, utilityfuncs]
+import gdext/[init, classautomate]
+import gdext/classautomate/contracts
 export InitializationLevel, gdcall
 
 import std/strformat

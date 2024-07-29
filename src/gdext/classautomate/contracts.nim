@@ -1,5 +1,5 @@
-import godotcore/events
-import godot/classtraits
+import gdextcore/events
+import gdext/classtraits
 
 type Contract = ref object
   name*: string

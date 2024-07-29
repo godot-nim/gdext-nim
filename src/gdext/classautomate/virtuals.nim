@@ -1,13 +1,13 @@
-import godotcore/dirty/gdextension_interface
-import godotcore/builtinindex
-import godotcore/events
-import godotcore/GodotClass
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/builtinindex
+import gdextcore/events
+import gdextcore/gdclass
 
 import contracts
 import checkform
 
 import std/tables
-import godotcore/utils/macros
+import gdextcore/utils/macros
 
 proc get_virtual_bind*(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)

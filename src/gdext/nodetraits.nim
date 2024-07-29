@@ -1,9 +1,9 @@
 import std/macros
 
-import godotcore/builtinindex
-import godotgen/builtinclasses/constructors
-import godotgen/classindex
-import godotgen/classes/gdNode
+import gdextcore/builtinindex
+import gdextgen/builtinclasses/constructors
+import gdextgen/classindex
+import gdextgen/classes/gdNode
 
 import classtraits
 
