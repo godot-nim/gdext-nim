@@ -1,6 +1,6 @@
-import godotcore/builtinindex
-import godotgen/builtinclasses/constructors
-import godotcore/gdrefs
+import gdextcore/builtinindex
+import gdextgen/builtinclasses/constructors
+import gdextcore/gdrefs
 
 
 converter convertToString*(str: string): String = gdstring str

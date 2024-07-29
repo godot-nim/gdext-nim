@@ -1,18 +1,18 @@
 import std/tables
-import godotcore/utils/macros
+import gdextcore/utils/macros
 
 import contracts
 import checkform
 
-import godotcore/dirty/gdextensioninterface
-import godotcore/gdclass
-import godotcore/gdvariant
-import godotcore/builtinindex
-import godotcore/commandindex
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/gdclass
+import gdextcore/gdvariant
+import gdextcore/builtinindex
+import gdextcore/commandindex
 
-import godotgen/classes/gdobject
+import gdextgen/classes/gdobject
 
-import godot/varianttraits
+import gdext/varianttraits
 
 
 template signal* {.pragma.}

@@ -1,9 +1,9 @@
 import std/strutils
 
-import godotcore/dirty/gdextensioninterface
-import godotcore/commandindex
-import godotcore/extracommands
-import godotcore/gdclass
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/commandindex
+import gdextcore/extracommands
+import gdextcore/gdclass
 
 proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)

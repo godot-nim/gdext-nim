@@ -1,4 +1,4 @@
-# godot-nim/godot
+# godot-nim/gdext
 
 Front-end library of godot-nim
 
@@ -27,11 +27,11 @@ This is actually what minister install does internally.
 ```bash
 nimble install https://github.com/godot-nim/coronation
 godot --dump-extension-api
-coronation --apisource:extension_api.json --outdir:. --package:godotgen
+coronation --apisource:extension_api.json --outdir:. --package:gdextgen
 
 nimble install https://github.com/godot-nim/godotcore
-nimble install file://$PWD/godotgen
+nimble install file://$PWD/gdextgen
 nimble install https://github.com/godot-nim/godot
 
-rm -rf godotgen extension_api.json
+rm -rf gdextgen extension_api.json
 ```

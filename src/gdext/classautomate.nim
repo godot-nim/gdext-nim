@@ -6,12 +6,12 @@ import classautomate/procs
 import classautomate/signals
 import classautomate/properties
 
-import godotcore/dirty/gdextensioninterface
-import godotcore/commandindex
-import godotcore/builtinindex
-import godotcore/extracommands
-import godotcore/gdclass
-import godot/classtraits
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/commandindex
+import gdextcore/builtinindex
+import gdextcore/extracommands
+import gdextcore/gdclass
+import gdext/classtraits
 
 proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
   let class = instantiate_internal T

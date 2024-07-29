@@ -1,8 +1,8 @@
-import godotcore/dirty/gdextensioninterface
-import godotcore/commandindex
-import godotcore/builtinindex
-import godotcore/typeshift
-import godotcore/gdvariant
+import gdextcore/dirty/gdextensioninterface
+import gdextcore/commandindex
+import gdextcore/builtinindex
+import gdextcore/typeshift
+import gdextcore/gdvariant
 
 import std/hashes
 

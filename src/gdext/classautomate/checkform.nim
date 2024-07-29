@@ -1,10 +1,10 @@
-import godotcore/gdclass
+import gdextcore/gdclass
 
 import std/macros
 
 import propertyinfo
 
-const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by godot."
+const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by gdext."
 const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
 
 macro lineerror(msg: static string; expr) =

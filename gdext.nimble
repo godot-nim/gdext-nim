@@ -11,5 +11,5 @@ srcDir        = "src"
 
 requires "nim >= 2.0.0"
 
-requires "godotgen"
-requires "godotcore"
+requires "gdextgen"
+requires "gdextcore"
