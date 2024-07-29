@@ -1,5 +1,3 @@
-{.warning[UnusedImport]:off.}
-
 include "godot/checkenv"
 
 import godotcore/dirty/gdextension_interface
@@ -15,6 +13,7 @@ import godot/[ init, classautomate, classtraits, varianttraits, nodetraits, gdre
 export         init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions
 
 import godot/extensionmanager
+export extensionmanager.isRunningInEditor
 
 import godotgen/utilityFuncs
 export utilityFuncs except print
