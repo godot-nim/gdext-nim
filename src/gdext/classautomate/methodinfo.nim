@@ -7,6 +7,7 @@ import gdextcore/commandindex
 import gdextcore/builtinindex
 import gdextcore/typeshift
 import gdextcore/gdvariant
+import gdextcore/exceptions
 
 import propertyinfo
 
@@ -102,12 +103,14 @@ proc callFunc(middle: MiddleExp): NimNode =
   let body =
     if middle.hasResult:
       quote do:
-        let result = variant `call`
-        interface_Variant_newCopy(`r_return`, addr result)
+        errproof:
+          let result = variant `call`
+          interface_Variant_newCopy(`r_return`, addr result)
     else:
       quote do:
-        let result = variant(); `call`
-        interface_Variant_newCopy(`r_return`, addr result)
+        errproof:
+          let result = variant(); `call`
+          interface_Variant_newCopy(`r_return`, addr result)
 
   quote do:
     proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int; `r_return`: VariantPtr; r_error: ptr CallError) {.gdcall.} =
@@ -132,9 +135,13 @@ proc ptrCallFunc(middle: MiddleExp): NimNode =
 
   let body =
     if middle.hasResult:
-      quote do: `call`.encode(`r_ret`)
+      quote do:
+        errproof:
+          `call`.encode(`r_ret`)
     else:
-      call
+      quote do:
+        errproof:
+          `call`
 
   quote do:
     proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstTypePtr]; `r_ret`: TypePtr) {.gdcall.} = `body`
