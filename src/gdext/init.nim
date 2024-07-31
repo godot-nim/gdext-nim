@@ -11,6 +11,7 @@ export events.process
 
 var initialize_core* = events.event("initialize_core")
 var initialize_servers* = events.event("initialize_servers")
+var initialize_before_scene* = events.event("initialize_before_scene")
 var initialize_scene* = events.event("initialize_scene")
 var initialize_editor* = events.event("initialize_editor")
 var eliminate_core* = events.event("eliminate_core")
@@ -21,18 +22,27 @@ var eliminate_editor* = events.event("eliminate_editor")
 proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
   case p_level
   # almost all uses is to register user-defined classes
-  of Initialization_Core:    invoke initialize_core
-  of Initialization_Servers: invoke initialize_servers
-  of Initialization_Scene:   invoke initialize_scene
-  of Initialization_Editor:  invoke initialize_editor
+  of Initialization_Core:
+    invoke initialize_core
+  of Initialization_Servers:
+    invoke initialize_servers
+  of Initialization_Scene:
+    invoke initialize_before_scene
+    invoke initialize_scene
+  of Initialization_Editor:
+    invoke initialize_editor
 
 proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
   case p_level
   # almost all uses is to register user-defined classes
-  of Initialization_Core:    invoke eliminate_core
-  of Initialization_Servers: invoke eliminate_servers
-  of Initialization_Scene:   invoke eliminate_scene
-  of Initialization_Editor:  invoke eliminate_editor
+  of Initialization_Core:
+    invoke eliminate_core
+  of Initialization_Servers:
+    invoke eliminate_servers
+  of Initialization_Scene:
+    invoke eliminate_scene
+  of Initialization_Editor:
+    invoke eliminate_editor
 
 template GDExtension_EntryPoint*(name): untyped =
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}

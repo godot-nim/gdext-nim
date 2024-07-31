@@ -13,7 +13,6 @@ proc get_virtual_bind*(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCa
   cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
 
 proc sync_methodDef*(body: Nimnode): NimNode =
-  precheckIsCorrectClassMethod: body
   let methoddef = body
   # for sym in bindsym(methoddef[0], brForceOpen):
   #   hint repr sym.getImpl, body
