@@ -32,6 +32,9 @@ proc castTo*[T: GodotClass](self: GodotClass; _: typedesc[T]): T =
 
 template `as`*[T: GodotClass](self: GodotClass; _: typedesc[T]): T = castTo(self, typedesc[T])
 
+proc passOwnershipToEngine*(self: GodotClass) =
+  CLASS_passOwnerShipToGodot(self)
+
 {.pop.}
 
 proc singleton*[T: GodotClass](_: typedesc[T]): T =
