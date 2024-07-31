@@ -13,6 +13,9 @@ export         env, init, classautomate, classtraits, varianttraits, nodetraits,
 import gdext/extensionmanager
 export extensionmanager.isRunningInEditor
 
+import gdext/gdextensionmain
+export gdextensionmain.ExtensionMain, gdextensionmain.extmain
+
 import gdextgen/utilityfuncs
 export utilityfuncs except print
 
