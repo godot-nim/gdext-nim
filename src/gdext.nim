@@ -1,5 +1,3 @@
-include "gdext/checkenv"
-
 import gdextcore/dirty/gdextensioninterface
 export InitializationLevel, gdcall
 
@@ -9,8 +7,8 @@ export             events, builtinindex, geometrics, gdvariant
 import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs
 
-import gdext/[ init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions ]
-export         init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions
+import gdext/[ env, init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions ]
+export         env, init, classautomate, classtraits, varianttraits, nodetraits, gdrefs, conversions
 
 import gdext/extensionmanager
 export extensionmanager.isRunningInEditor
