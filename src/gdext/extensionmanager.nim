@@ -1,13 +1,22 @@
 import gdextcore/dirty/gdextensioninterface
 import gdextcore/[typeshift]
 import gdextgen/[classindex, builtinclasses, utilityfuncs]
-import gdext/[init, classautomate]
+import gdext/[env, init, classautomate]
 import gdext/classautomate/contracts
-export InitializationLevel, gdcall
 
 import std/strformat
+import std/macros
 
-type ExtensionManager = ref object of Node
+const ExtensionManagerName = ExtensionMainName & "InternalManager"
+
+macro ExtensionManager*: untyped = ident ExtensionManagerName
+
+macro defExtensionManager: untyped =
+  let typ = ident ExtensionManagerName
+  quote do:
+    type `typ`* = ref object of Node
+
+defExtensionManager
 
 var gIsRunningInEditor: bool
 proc getIsRunningInEditor*: bool {.inline.} = gIsRunningInEditor
