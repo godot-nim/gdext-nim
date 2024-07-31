@@ -2,36 +2,4 @@
 
 Front-end library of godot-nim
 
-## Demo
-
-See [godot-nim/demo](https://github.com/godot-nim/demo).
-
-## Install
-
-### Recommended
-
-```bash
-nimble install https://github.com/godot-nim/minister
-minister install
-```
-
-[minister](https://github.com/godot-nim/minister) is an assistant to develop Godot&Nim game.
-
-(Currently that have few functionalities; do not necessarily required.)
-
-
-### Alternative
-
-This is actually what minister install does internally.
-
-```bash
-nimble install https://github.com/godot-nim/coronation
-godot --dump-extension-api
-coronation --apisource:extension_api.json --outdir:. --package:gdextgen
-
-nimble install https://github.com/godot-nim/godotcore
-nimble install file://$PWD/gdextgen
-nimble install https://github.com/godot-nim/godot
-
-rm -rf gdextgen extension_api.json
-```
+For more detail, see [wiki](https://github.com/godot-nim/docs/wiki).
