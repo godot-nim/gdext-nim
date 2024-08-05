@@ -1,2 +1,3 @@
 --path: "."
 --app: lib
+--define: ExtensionMain:Gdext
