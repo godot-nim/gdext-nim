@@ -11,5 +11,11 @@ srcDir        = "src"
 
 requires "nim >= 2.0.0"
 
-requires "gdextgen"
-requires "gdextcore"
+# Core layer of gdext that interfaces with the engine.
+requires "https://github.com/godot-nim/gdextcore#head"
+
+# Generated layer of gdext that defines the behavior of a class or structure.
+requires "https://github.com/godot-nim/gdextgen#head"
+
+# CLI tool with a set of commands to successfully handle gdext
+requires "https://github.com/godot-nim/gdextwiz#head"
