@@ -8,9 +8,10 @@ For more detail, see [wiki](https://github.com/godot-nim/docs/wiki).
 ## Install / Uninstall
 
 ```
-nimble install https://github.com/godot-nim/gdext
+nimble install https://github.com/godot-nim/gdext-nim
 
 nimble uninstall -i gdext
+gdextwiz uninstall
 ```
 
 ## Dependencies
