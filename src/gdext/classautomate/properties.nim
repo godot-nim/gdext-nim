@@ -1,10 +1,10 @@
 import gdextcore/utils/macros
+import gdextcore/commandindex
+import gdextcore/gdclass
+import gdextcore/staticevents
 
 import contracts
 import propertyinfo
-
-import gdextcore/commandindex
-import gdextcore/gdclass
 
 macro sync_property*(T: typedesc): untyped =
   result = newStmtList()

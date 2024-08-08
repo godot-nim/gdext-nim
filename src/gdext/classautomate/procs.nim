@@ -1,13 +1,14 @@
 import std/macros
 import std/sequtils
 
+import gdextcore/commandindex
+import gdextcore/gdclass
+import gdextcore/staticevents
+
 import contracts
 import methodinfo
 import propertyinfo
 import checkform
-
-import gdextcore/commandindex
-import gdextcore/gdclass
 
 macro registerProc(procdef): untyped =
   let name = procdef.name
@@ -44,6 +45,9 @@ proc makeNimMainProc(procdef: NimNode): NimNode =
 
 proc sync_procDef*(procdef: NimNode): NimNode =
   let arg0T = procdef.params[1][1]
+
+  if $arg0_T in invoked:
+    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
 
   result = newNimNode nnkWhenStmt
 

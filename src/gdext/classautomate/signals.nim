@@ -1,19 +1,20 @@
 import std/tables
+
 import gdextcore/utils/macros
-
-import contracts
-import propertyinfo
-import checkform
-
 import gdextcore/dirty/gdextensioninterface
 import gdextcore/gdclass
 import gdextcore/gdvariant
 import gdextcore/builtinindex
 import gdextcore/commandindex
+import gdextcore/staticevents
 
 import gdextgen/classes/gdobject
 
 import gdext/varianttraits
+
+import contracts
+import propertyinfo
+import checkform
 
 template signal* {.pragma.}
 
@@ -80,6 +81,12 @@ proc sync_signal*(procDef: NimNode): NimNode =
   if procdef.hasNoReturn:
     error errmsgSignalResultTypeMismatch, procdef
 
+  let params = procdef.params
+  let arg0T = params[1][1]
+
+  if $arg0_T in invoked:
+    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
+
   let procdef_global = copy procdef
 
   var gdname = procDef.name.toStrLit
@@ -107,9 +114,7 @@ proc sync_signal*(procDef: NimNode): NimNode =
         bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", arg)
       )
 
-  let params = procdef.params
   procdef.body = params.makebody(gdname, procdef.params[1][0])
-  let arg0T = params[1][1]
   result.add nnkElifBranch.newTree(
     quote do:
       `arg0T` is GodotClass,
