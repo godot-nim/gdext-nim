@@ -1,5 +1,5 @@
 import gdextcore/dirty/gdextensioninterface
-import gdextcore/[typeshift]
+import gdextcore/[typeshift, staticevents]
 import gdextgen/[classindex, builtinclasses, utilityfuncs]
 import gdext/[env, init, classautomate]
 import gdext/classautomate/contracts

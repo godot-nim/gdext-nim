@@ -1,5 +1,5 @@
 import gdextcore/dirty/gdextensioninterface
-import gdextcore/[gdclass]
+import gdextcore/[gdclass, staticevents]
 import gdextgen/[classindex, builtinclasses]
 import gdextgen/classes/[gdengine]
 import gdext/[env, init, classautomate, classtraits]
@@ -21,7 +21,7 @@ var extmain*: ExtensionMain
 method init(self: ExtensionMain) =
   discard
 
-proc setupExtensionMain =
+proc setupExtensionMain* =
   extmain = instantiate ExtensionMain
   Engine.singleton.registerSingleton(className ExtensionMain, extmain)
 

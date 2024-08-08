@@ -1,31 +1,32 @@
-import gdextcore/events
+import std/sets
+export sets.contains, sets.len
+
+import gdextcore/staticevents
 import gdext/classtraits
 
-type Contract = ref object
-  name*: string
+type Contract = object
+  typ*: string
   virtual*: Event
   procedure*: Event
   property*: Event
   signal*: Event
 
-var invoked*: seq[Contract]
+var invoked* {.compileTime.} : HashSet[string]
 
-proc contract*(T: typedesc): Contract =
-  var presult {.global.} : pointer
-  if unlikely(presult.isNil):
-    new result
-    result.name = $T
-    result.virtual = event($T & "::contract::virtual")
-    result.procedure = event($T & "::contract::procedure")
-    result.property = event($T & "::contract::property")
-    result.signal = event($T & "::contract::signal")
-    presult = cast[pointer](result)
-  cast[Contract](presult)
+proc contract*(T: typedesc): static Contract {.compiletime.} =
+  const obj = Contract(
+    typ: $T,
+    virtual: event($T & "::contract::virtual"),
+    procedure: event($T & "::contract::procedure"),
+    property: event($T & "::contract::property"),
+    signal: event($T & "::contract::signal"),
+  )
+  obj
 
 
-proc invoke*(contract: Contract) =
+template invoke*(contract: static Contract) =
   invoke contract.virtual
   invoke contract.procedure
   invoke contract.property
   invoke contract.signal
-  invoked.add contract
+  static: invoked.incl contract.typ
