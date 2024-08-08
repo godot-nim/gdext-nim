@@ -5,6 +5,7 @@ import gdextcore/commandindex
 import gdextcore/extracommands
 import gdextcore/typeshift
 import gdextgen/utilityfuncs
+import gdext/classautomate/contracts
 
 export staticevents.process
 
@@ -17,6 +18,10 @@ const eliminate_core* = event("eliminate_core")
 const eliminate_servers* = event("eliminate_servers")
 const eliminate_scene* = event("eliminate_scene")
 const eliminate_editor* = event("eliminate_editor")
+
+var gLoaded: int
+proc getLoaded*: int {.inline.} = gLoaded
+template loaded*: int = getLoaded()
 
 template GDExtension_EntryPoint*(name): untyped =
   proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
@@ -31,6 +36,8 @@ template GDExtension_EntryPoint*(name): untyped =
       invoke initialize_scene
     of Initialization_Editor:
       invoke initialize_editor
+    const loadedClasses = contracts.invoked.len
+    gLoaded = loadedClasses
 
   proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
     case p_level
