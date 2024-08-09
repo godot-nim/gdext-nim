@@ -5,13 +5,17 @@ import gdextcore/commandindex
 import gdextcore/extracommands
 import gdextcore/gdclass
 
+type SomeNotRefCounted = concept type t
+  t is GodotClass
+  t.isRefCounted == false
+
 proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
   result = CLASS_create(Type, objectPtr)
   when T is SomeUserClass:
     interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
-proc instantiate*[T: SomeClass](_: typedesc[T]): T =
+proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   result = instantiate_internal T
   CLASS_sync_instantiate result
 

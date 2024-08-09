@@ -46,8 +46,12 @@ proc makeNimMainProc(procdef: NimNode): NimNode =
 proc sync_procDef*(procdef: NimNode): NimNode =
   let arg0T = procdef.params[1][1]
 
-  if $arg0_T in invoked:
-    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
+  let arg0Tsym =
+    if arg0T.kind == nnkBracketExpr: arg0T[1]
+    else: arg0T
+
+  if arg0Tsym.repr in invoked:
+    error "Registration is not reflected. Define it before calling proc register " & arg0Tsym.repr & ".", procdef
 
   result = newNimNode nnkWhenStmt
 

@@ -1,0 +1,9 @@
+[configuration]
+
+entry_symbol = "init_library"
+compatibility_minimum = 4.1
+
+[libraries]
+
+linux = "res://tests/lib/libtests.so"
+windows = "res://tests/lib/libtests.dll"
