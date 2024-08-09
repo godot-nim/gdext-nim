@@ -1,5 +1,5 @@
 import std/unittest
-import godot
+import gdext
 
 suite "Geometrics":
   let v012 = [0f, 1, 2]

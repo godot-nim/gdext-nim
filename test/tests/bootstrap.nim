@@ -5,6 +5,9 @@ import gdext
 import godotSideTester
 import nimSideTester
 
+{.warning[UnusedImport]:off.}
+import geometrics
+
 # ==================================
 
 process initialize_scene:

@@ -5,7 +5,7 @@ export GdRef, gdref, unwrapped
 
 import gdext/classtraits
 
-template castTo*[T: SomeRefCounted](self: GodotClass; Result: typedesc[GdRef[T]]): Result = self.castTo(T).asGdRef
+template castTo*[T: SomeRefCounted](self: GodotClass; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
 template castTo*[T: SomeRefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(Result)
 
 template `as`*[T: SomeRefCounted](self: GodotClass; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)

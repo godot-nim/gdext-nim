@@ -13,7 +13,7 @@ type Contract = object
 
 var invoked* {.compileTime.} : HashSet[string]
 
-proc contract*(T: typedesc): static Contract {.compiletime.} =
+template contract*(T: typedesc): static Contract =
   const obj = Contract(
     typ: $T,
     virtual: event($T & "::contract::virtual"),
