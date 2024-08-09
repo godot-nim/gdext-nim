@@ -267,3 +267,6 @@ method input(self: NimSideTester; event: gdref InputEvent) {.gdsync.} =
   # Or, `let evkey = event.castTo InputEventKey`
   if evkey[].isNil: return
   print evkey[], ": ", evkey[].keyLabel
+
+  if event[].isActionPressed "ui_cancel":
+    self.getTree.quit()
