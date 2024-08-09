@@ -152,7 +152,7 @@ proc has_key*(self: Variant; key: Variant; r_valid: ptr bool = nil): bool =
 #   return PtrToArg<bool>::convert(&has);
 # }
 
-proc hash*(self: Variant): Hash = interface_Variant_hash(addr self)
+proc hash*(self: Variant): Hash = hash interface_Variant_hash(addr self)
 
 # uint32_t Variant::recursive_hash(int recursion_count) const {
 #   GDExtensionInt hash = internal::gdextension_interface_variant_recursive_hash(_native_ptr(), recursion_count);
