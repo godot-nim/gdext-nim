@@ -1,13 +1,9 @@
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/[gdclass, staticevents]
-import gdextgen/[classindex, builtinclasses]
+import gdextcore/[gdclass]
+import gdextgen/[classindex]
 import gdextgen/classes/[gdengine]
-import gdext/[env, init, classautomate, classtraits]
-import gdext/classautomate/contracts
+import gdext/[env, classautomate, classtraits]
 
 import std/macros
-
-macro ExtensionMain*: untyped = ident ExtensionMainName
 
 macro defExtensionMain: untyped =
   let typ = ident ExtensionMainName
@@ -16,18 +12,20 @@ macro defExtensionMain: untyped =
 
 defExtensionMain
 
+macro ExtensionMain*: untyped = bindSym ExtensionMainName
+
 var extmain*: ExtensionMain
 
 method init(self: ExtensionMain) =
   discard
 
-proc setupExtensionMain* =
+template initializeExtensionMain* =
+  register ExtensionMain
   extmain = instantiate ExtensionMain
   Engine.singleton.registerSingleton(className ExtensionMain, extmain)
-
-process initialize_before_scene, "extmain":
-  register ExtensionMain
-  setupExtensionMain()
-
-process eliminate_scene, "extmain":
+proc eliminateExtensionMain* =
   extmain = nil
+
+when isMainModule:
+  import gdextcore/dirty/gdextensioninterface
+  initializeExtensionMain()

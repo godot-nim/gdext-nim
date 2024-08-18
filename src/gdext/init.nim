@@ -6,6 +6,7 @@ import gdextcore/extracommands
 import gdextcore/typeshift
 import gdextgen/utilityfuncs
 import gdext/classautomate/contracts
+import gdext/gdextensionmain
 
 
 const initialize_core* = event("initialize_core")
@@ -31,12 +32,12 @@ template GDExtension_EntryPoint*(name): untyped =
     of Initialization_Servers:
       invoke initialize_servers
     of Initialization_Scene:
-      invoke initialize_before_scene
+      initializeExtensionMain()
       invoke initialize_scene
     of Initialization_Editor:
       invoke initialize_editor
-    const loadedClasses = contracts.invoked.len
-    gLoaded = loadedClasses
+      const loadedClasses = contracts.invoked.len
+      gLoaded = loadedClasses
       {.emit: "NimMain();".}
 
   proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
@@ -48,6 +49,7 @@ template GDExtension_EntryPoint*(name): untyped =
       invoke eliminate_servers
     of Initialization_Scene:
       invoke eliminate_scene
+      eliminateExtensionMain()
     of Initialization_Editor:
       invoke eliminate_editor
 
@@ -76,4 +78,5 @@ template GDExtension_EntryPoint*(name): untyped =
       return false
 
 when isMainModule:
+  import gdextgen/classindex
   GDExtension_EntryPoint(init_library)
