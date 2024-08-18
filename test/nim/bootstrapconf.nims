@@ -34,3 +34,6 @@ let workspaceName = projectDir().splitFile.name
 switch("define", "ExtensionMain:" & workspaceName)
 
 switch("out", "$projectdir/lib"/workspaceName.toDll)
+
+--define: "debug.event:on"
+--define: "debug.object:on"

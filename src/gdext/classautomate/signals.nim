@@ -82,11 +82,6 @@ proc sync_signal*(procDef: NimNode): NimNode =
     error errmsgSignalResultTypeMismatch, procdef
 
   let params = procdef.params
-  let arg0T = params[1][1]
-
-  if $arg0_T in invoked:
-    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
-
   let procdef_global = copy procdef
 
   var gdname = procDef.name.toStrLit
@@ -98,6 +93,26 @@ proc sync_signal*(procDef: NimNode): NimNode =
         gdname = expr[1]
     else:
       discard
+
+  let params_global = nnkFormalParams.newTree(
+    params[0],
+    newIdentDefs(ident"_", bindsym"typeof".newcall(ident"extmain")))
+  if params.len > 1:
+    params_global.add(params[1..^1])
+  procdef_global.body = params_global.makebody(gdname, ident"extmain")
+
+  if params.len <= 1:
+    return quote do:
+      `procdef_global`
+      registerSignal(`params_global`, `gdname`)
+
+
+  let arg0T = params[1][1]
+
+  if $arg0_T in invoked:
+    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
+
+
 
   result = newNimNode nnkWhenStmt
 
@@ -123,11 +138,6 @@ proc sync_signal*(procDef: NimNode): NimNode =
       registerSignal(`params`, `gdname`)
   )
 
-  let params_global = nnkFormalParams.newTree(
-    params[0],
-    newIdentDefs(ident"_", bindsym"typeof".newcall(ident"extmain")),
-  ).add(params[1..^1])
-  procdef_global.body = params_global.makebody(gdname, ident"extmain")
 
   result.add nnkElse.newTree(
     quote do:

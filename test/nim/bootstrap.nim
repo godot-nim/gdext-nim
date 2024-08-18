@@ -7,6 +7,7 @@ import nimSideTester
 
 {.warning[UnusedImport]:off.}
 import geometrics
+import cases/use_api_from_toplevel
 
 # ==================================
 

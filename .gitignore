@@ -1,3 +1,4 @@
 
 nimble.develop
 nimble.paths
+*.log
