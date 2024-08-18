@@ -7,7 +7,6 @@ import gdextcore/typeshift
 import gdextgen/utilityfuncs
 import gdext/classautomate/contracts
 
-export staticevents.process
 
 const initialize_core* = event("initialize_core")
 const initialize_servers* = event("initialize_servers")
