@@ -5,5 +5,5 @@ compatibility_minimum = 4.1
 
 [libraries]
 
-linux = "res://tests/lib/libtests.so"
-windows = "res://tests/lib/libtests.dll"
+linux = "res://nim/lib/libnim.so"
+windows = "res://nim/lib/libnim.dll"
