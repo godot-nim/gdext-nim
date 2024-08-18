@@ -11,7 +11,6 @@ export staticevents.process
 
 const initialize_core* = event("initialize_core")
 const initialize_servers* = event("initialize_servers")
-const initialize_before_scene* = event("initialize_before_scene")
 const initialize_scene* = event("initialize_scene")
 const initialize_editor* = event("initialize_editor")
 const eliminate_core* = event("eliminate_core")
@@ -24,6 +23,7 @@ proc getLoaded*: int {.inline.} = gLoaded
 template loaded*: int = getLoaded()
 
 template GDExtension_EntryPoint*(name): untyped =
+  {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
     case p_level
     # almost all uses is to register user-defined classes
@@ -38,6 +38,7 @@ template GDExtension_EntryPoint*(name): untyped =
       invoke initialize_editor
     const loadedClasses = contracts.invoked.len
     gLoaded = loadedClasses
+      {.emit: "NimMain();".}
 
   proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
     case p_level
@@ -51,7 +52,6 @@ template GDExtension_EntryPoint*(name): untyped =
     of Initialization_Editor:
       invoke eliminate_editor
 
-  {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc name*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc, dynlib.} = once:
     try:
       commandindex.init(
@@ -70,7 +70,6 @@ template GDExtension_EntryPoint*(name): untyped =
       invoke staticevents.init_engine.on_load_builtinclassConstructor # expects to register by generateds.
       invoke staticevents.init_engine.on_load_builtinclassOperator
       invoke staticevents.init_engine.on_load_builtinclassMethod
-      {.emit: "NimMain();".}
 
       return true
 
