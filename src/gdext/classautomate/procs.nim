@@ -44,6 +44,13 @@ proc makeNimMainProc(procdef: NimNode): NimNode =
   )
 
 proc sync_procDef*(procdef: NimNode): NimNode =
+  let procNimMain = makeNimMainProc procdef
+  if procdef.params.len <= 1:
+    return quote do:
+      `procdef`
+      `procNimMain`
+      registerProc `procNimMain`
+
   let arg0T = procdef.params[1][1]
 
   let arg0Tsym =
@@ -71,7 +78,6 @@ proc sync_procDef*(procdef: NimNode): NimNode =
       registerProc `procdef`
   )
 
-  let procNimMain = makeNimMainProc procdef
 
   result.add nnkElse.newTree(
     quote do:
