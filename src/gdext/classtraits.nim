@@ -42,10 +42,15 @@ proc passOwnershipToEngine*(self: GodotClass) =
 {.pop.}
 
 proc singleton*[T: GodotClass](_: typedesc[T]): T =
-  let getsingleton = interfaceGlobalGetSingleton
-  (addr className T)
-    .getsingleton()
-    .getInstance(T)
+  var cache {.global.} : pointer
+  if cache.isNil:
+    let getsingleton = interfaceGlobalGetSingleton
+    result = (addr className T)
+      .getsingleton()
+      .getInstance(T)
+    cache = cast[pointer](result)
+  else:
+    result = cast[T](cache)
 
 template `/`*[T: GodotClass](_: typedesc[T]): T = T.singleton
 
