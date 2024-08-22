@@ -65,6 +65,15 @@ template `@export`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname)
 
+template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S)): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    usage= {propertyUsageStorage})
+
 template `@export_category`*(name: StringName): untyped =
   process(PropTestNode.contract.property, "category " & $name):
     let

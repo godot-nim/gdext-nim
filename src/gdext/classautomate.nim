@@ -99,6 +99,7 @@ export properties.register_property
 export properties.`@export`
 export properties.`@export_category`
 export properties.`@export_custom`
+export properties.`@export_storage`
 
 macro gdsync*(body): untyped =
   case body.kind
