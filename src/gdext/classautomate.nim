@@ -11,7 +11,10 @@ import gdextcore/commandindex
 import gdextcore/builtinindex
 import gdextcore/extracommands
 import gdextcore/gdclass
+import gdextgen/globalenums
 import gdext/classtraits
+
+export globalenums.PropertyUsageFlags
 
 proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
   let class = instantiate_internal T
@@ -91,9 +94,10 @@ else:
     )
 
 template name*(newname: string) {.pragma.}
-template getter*(newname: string) {.pragma.}
-template setter*(newname: string) {.pragma.}
 export signals.signal
+export properties.register_property
+export properties.`@export`
+export properties.`@export_custom`
 
 macro gdsync*(body): untyped =
   case body.kind
@@ -115,5 +119,4 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
-  sync_property(T)
   invoke contract(T)
