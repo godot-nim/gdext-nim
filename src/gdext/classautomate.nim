@@ -97,6 +97,7 @@ template name*(newname: string) {.pragma.}
 export signals.signal
 export properties.register_property
 export properties.`@export`
+export properties.`@export_category`
 export properties.`@export_custom`
 
 macro gdsync*(body): untyped =
