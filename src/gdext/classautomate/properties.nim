@@ -45,18 +45,6 @@ macro gdname*(P: proc): string =
 
   return newLit $P
 
-template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): untyped =
-
-  register_property(typedesc T, name, typedesc S,
-    getter.gdname, setter.gdname, hint, hintstring, usage)
-
 template `@export`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;
@@ -64,15 +52,6 @@ template `@export`*[T: SomeUserClass; S: SomeProperty](
 
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname)
-
-template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S)): untyped =
-
-  register_property(typedesc T, name, typedesc S,
-    getter.gdname, setter.gdname,
-    usage= {propertyUsageStorage})
 
 template `@export_category`*(name: StringName): untyped =
   process(PropTestNode.contract.property, "category " & $name):
@@ -89,3 +68,24 @@ template `@export_category`*(name: StringName): untyped =
     interface_ClassDB_registerExtensionClassProperty( environment.library,
       addr className(PropTestNode), native info,
       addr setter, addr getter)
+
+template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+      hint: PropertyHint = propertyHintNone;
+      hintstring: String = gdstring"";
+      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+    ): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname, hint, hintstring, usage)
+
+template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S)): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    usage= {propertyUsageStorage})
