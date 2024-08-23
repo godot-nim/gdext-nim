@@ -12,8 +12,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   string_with_export_storage*: string = "with export_storage"
 
 method init(self: PropTestNode) =
-  self.StringArray_with_export_multiline = TypedArray[String] gdarray()
-  echo self.StringArray_with_export_multiline.Array.resize(1)
+  self.StringArray_with_export_multiline = typedArray[String](1)
   self.PackedStringArray_with_export_multiline = packedStringArray()
   echo self.PackedStringArray_with_export_multiline.resize(1)
 
