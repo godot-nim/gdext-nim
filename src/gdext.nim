@@ -1,8 +1,8 @@
 import gdextcore/dirty/gdextensioninterface
 export InitializationLevel, gdcall
 
-import gdextcore/[ staticevents, builtinindex, geometrics, gdvariant ]
-export             staticevents, builtinindex, geometrics, gdvariant
+import gdextcore/[ staticevents, builtinindex, geometrics, gdvariant, gdtypedarray ]
+export             staticevents, builtinindex, geometrics, gdvariant, gdtypedarray
 
 import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs
