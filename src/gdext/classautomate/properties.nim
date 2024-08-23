@@ -1,3 +1,6 @@
+from std/strutils import join
+from std/sequtils import concat, mapIt
+
 import gdextcore/dirty/gdextensioninterface
 import gdextcore/utils/macros
 import gdextcore/commandindex
@@ -89,6 +92,27 @@ template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname,
     hint= propertyHintMultilineText)
+
+type RangeArgument* {.pure.} = enum
+  or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
+template `@export_range`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S);
+    min, max: S; extra: varargs[RangeArgument]): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintRange,
+    hint_string= @[$min, $max].concat(@extra.mapit($it)).join(","))
+template `@export_range`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S);
+    min, max, step: S; extra: varargs[RangeArgument]): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintRange,
+    hint_string= @[$min, $max, $step].concat(@extra.mapIt($it)).join(","))
 
 template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
