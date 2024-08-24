@@ -78,8 +78,8 @@ template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; pref
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
       addr className(typ), addr n, addr p)
-template `@export_sub_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
-  process(typ.contract.property, "sub group " & $name):
+template `@export_subgroup`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
+  process(typ.contract.property, "subgroup " & $name):
     let n = name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,

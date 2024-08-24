@@ -86,11 +86,11 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 
 `@export_group` PropTestNode, "filesystem"
 
-`@export_sub_group` ProptestNode, "local"
+`@export_subgroup` ProptestNode, "local"
 `@export_dir` "string_with_export_dir", string_with_export_dir, `string_with_export_dir=`
 `@export_file` "string_with_export_file", string_with_export_file, `string_with_export_file=`
 
-`@export_sub_group` ProptestNode, "global"
+`@export_subgroup` ProptestNode, "global"
 `@export_global_dir` "string_with_export_global_dir", string_with_export_global_dir, `string_with_export_global_dir=`
 `@export_global_file` "string_with_export_global_file", string_with_export_global_file, `string_with_export_global_file=`
 
