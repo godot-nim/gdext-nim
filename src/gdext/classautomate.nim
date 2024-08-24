@@ -99,6 +99,8 @@ export properties.register_property
 export properties.RangeArgument
 export properties.`@export`
 export properties.`@export_category`
+export properties.`@export_group`
+export properties.`@export_sub_group`
 export properties.`@export_custom`
 export properties.`@export_dir`
 export properties.`@export_global_dir`

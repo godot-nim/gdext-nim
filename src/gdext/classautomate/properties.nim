@@ -72,6 +72,19 @@ template `@export_category`*(name: StringName): untyped =
       addr className(PropTestNode), native info,
       addr setter, addr getter)
 
+template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
+  process(typ.contract.property, "group " & $name):
+    let n = name
+    let p = prefix
+    interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
+      addr className(typ), addr n, addr p)
+template `@export_sub_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
+  process(typ.contract.property, "sub group " & $name):
+    let n = name
+    let p = prefix
+    interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,
+      addr className(typ), addr n, addr p)
+
 template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
       name: StringName;
       getter: proc(self: T): S;
