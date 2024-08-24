@@ -6,6 +6,8 @@ type PropTestNode* = ref object of Node
   string_with_export_global_dir*: string = "/dev"
   string_with_export_file*: string = "res://nim/bootstrap.nim"
   string_with_export_global_file*: string = "/dev/null"
+  int_with_export_enum*: int
+  string_with_export_enum*: string = "Alpha"
   string_with_export_multiline*: string = """
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
@@ -55,6 +57,15 @@ proc color_with_export_no_alpha(self: PropTestNode): Color {.gdsync, name: "get_
   self.color_with_export_no_alpha
 proc `color_with_export_no_alpha=`(self: PropTestNode; value: Color) {.gdsync, name: "set_color_with_export_no_alpha".} =
   self.color_with_export_no_alpha= value
+
+proc int_with_export_enum(self: PropTestNode): int {.gdsync, name: "get_int_with_export_enum".} =
+  self.int_with_export_enum
+proc `int_with_export_enum=`(self: PropTestNode; value: int) {.gdsync, name: "set_int_with_export_enum".} =
+  self.int_with_export_enum = value
+proc string_with_export_enum(self: PropTestNode): string {.gdsync, name: "get_string_with_export_enum".} =
+  self.string_with_export_enum
+proc `string_with_export_enum=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_enum".} =
+  self.string_with_export_enum = value
 
 proc string_with_export_multiline(self: PropTestNode): string {.gdsync, name: "get_string_with_export_multiline".} =
   self.string_with_export_multiline
@@ -109,6 +120,11 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 
 `@export` "color_with_export", color_with_export, `color_with_export=`
 `@export_color_no_alpha` "color_with_export_no_alpha", color_with_export_no_alpha, `color_with_export_no_alpha=`
+
+`@export_enum` "int_with_export_enum", int_with_export_enum, `int_with_export_enum=`,
+  "Alpha", "Beta:10", "Gamma"
+`@export_enum` "string_with_export_enum", string_with_export_enum, `string_with_export_enum=`,
+  "Alpha", "Beta", "Gamma"
 
 `@export_multiline` "string_with_export_multiline", string_with_export_multiline, `string_with_export_multiline=`
 # Currently not works,

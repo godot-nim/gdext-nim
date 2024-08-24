@@ -139,6 +139,18 @@ template `@export_global_file`*[T: SomeUserClass; S: SomeProperty](
     getter.gdname, setter.gdname,
     hint= propertyHintGlobalFile)
 
+template `@export_enum`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+      enums: varargs[string];
+    ): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintEnum,
+    hint_string= @enums.join(","))
+
 template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;
