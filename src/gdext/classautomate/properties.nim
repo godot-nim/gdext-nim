@@ -195,6 +195,17 @@ macro `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
   for valid in validTypes:
     result.add bindSym"$".newCall bindSym"className".newCall valid
 
+template `@export_placeholder`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S);
+    placeholder: String): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintPlaceholderText,
+    hint_string= placeholder)
+
 type RangeArgument* {.pure.} = enum
   or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
 template `@export_range`*[T: SomeUserClass; S: SomeProperty](

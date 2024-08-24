@@ -2,6 +2,7 @@ import gdext
 
 type PropTestNode* = ref object of Node
   string_with_export*: string = "with export"
+  string_with_export_placeholder*: string
   string_with_export_dir*: string = "res://nim"
   string_with_export_global_dir*: string = "/dev"
   string_with_export_file*: string = "res://nim/bootstrap.nim"
@@ -33,6 +34,11 @@ proc string_with_export(self: PropTestNode): string {.gdsync, name: "get_string_
   self.string_with_export
 proc `string_with_export=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export".} =
   self.string_with_export = value
+
+proc string_with_export_placeholder(self: PropTestNode): string {.gdsync, name: "get_string_with_export_placeholder".} =
+  self.string_with_export_placeholder
+proc `string_with_export_placeholder=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_placeholder".} =
+  self.string_with_export_placeholder = value
 
 proc string_with_export_dir(self: PropTestNode): string {.gdsync, name: "get_string_with_export_dir".} =
   self.string_with_export_dir
@@ -117,6 +123,8 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 `@export_category` PropTestNode, "Export Test"
 
 `@export` "string_with_export", string_with_export, `string_with_export=`
+`@export_placeholder` "string_with_export_placeholder", string_with_export_placeholder, `string_with_export_placeholder=`,
+  "placeholder here..."
 
 `@export_group` PropTestNode, "filesystem"
 
