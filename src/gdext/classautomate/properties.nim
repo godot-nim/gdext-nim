@@ -84,6 +84,39 @@ template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname, hint, hintstring, usage)
 
+template `@export_dir`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+    ): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintDir)
+template `@export_global_dir`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+    ): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintGlobalDir)
+template `@export_file`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+    ): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintFile)
+template `@export_global_file`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+    ): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintGlobalFile)
+
 template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;

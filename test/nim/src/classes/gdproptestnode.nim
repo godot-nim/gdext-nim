@@ -2,6 +2,10 @@ import gdext
 
 type PropTestNode* = ref object of Node
   string_with_export*: string = "with export"
+  string_with_export_dir*: string = "res://nim"
+  string_with_export_global_dir*: string = "/dev"
+  string_with_export_file*: string = "res://nim/bootstrap.nim"
+  string_with_export_global_file*: string = "/dev/null"
   string_with_export_multiline*: string = """
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
@@ -23,6 +27,23 @@ proc string_with_export(self: PropTestNode): string {.gdsync, name: "get_string_
   self.string_with_export
 proc `string_with_export=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export".} =
   self.string_with_export = value
+
+proc string_with_export_dir(self: PropTestNode): string {.gdsync, name: "get_string_with_export_dir".} =
+  self.string_with_export_dir
+proc `string_with_export_dir=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_dir".} =
+  self.string_with_export_dir = value
+proc string_with_export_global_dir(self: PropTestNode): string {.gdsync, name: "get_string_with_export_global_dir".} =
+  self.string_with_export_global_dir
+proc `string_with_export_global_dir=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_global_dir".} =
+  self.string_with_export_global_dir = value
+proc string_with_export_file(self: PropTestNode): string {.gdsync, name: "get_string_with_export_file".} =
+  self.string_with_export_file
+proc `string_with_export_file=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_file".} =
+  self.string_with_export_file = value
+proc string_with_export_global_file(self: PropTestNode): string {.gdsync, name: "get_string_with_export_global_file".} =
+  self.string_with_export_global_file
+proc `string_with_export_global_file=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_global_file".} =
+  self.string_with_export_global_file = value
 
 proc string_with_export_multiline(self: PropTestNode): string {.gdsync, name: "get_string_with_export_multiline".} =
   self.string_with_export_multiline
@@ -62,6 +83,11 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 `@export_category` "Export Test"
 
 `@export` "string_with_export", string_with_export, `string_with_export=`
+
+`@export_dir` "string_with_export_dir", string_with_export_dir, `string_with_export_dir=`
+`@export_global_dir` "string_with_export_global_dir", string_with_export_global_dir, `string_with_export_global_dir=`
+`@export_file` "string_with_export_file", string_with_export_file, `string_with_export_file=`
+`@export_global_file` "string_with_export_global_file", string_with_export_global_file, `string_with_export_global_file=`
 
 `@export_multiline` "string_with_export_multiline", string_with_export_multiline, `string_with_export_multiline=`
 # Currently not works,

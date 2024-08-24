@@ -100,6 +100,10 @@ export properties.RangeArgument
 export properties.`@export`
 export properties.`@export_category`
 export properties.`@export_custom`
+export properties.`@export_dir`
+export properties.`@export_global_dir`
+export properties.`@export_file`
+export properties.`@export_global_file`
 export properties.`@export_multiline`
 export properties.`@export_range`
 export properties.`@export_storage`
