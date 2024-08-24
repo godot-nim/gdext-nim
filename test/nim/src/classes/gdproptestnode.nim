@@ -16,6 +16,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   StringArray_with_export_multiline*: TypedArray[String]
   PackedStringArray_with_export_multiline*: PackedStringArray
+  NodePath_with_export_node_path*: NodePath
   string_with_export_storage*: string = "with export_storage"
   int_with_export_strict_range*: int = 20
   int_with_export_range*: int = 20
@@ -88,6 +89,11 @@ proc PackedStringArray_with_export_multiline(self: PropTestNode): PackedStringAr
 proc `PackedStringArray_with_export_multiline=`(self: PropTestNode; value: PackedStringArray) {.gdsync, name: "set_PackedStringArray_with_export_multiline".} =
   self.PackedStringArray_with_export_multiline = value
 
+proc NodePath_with_export_node_path(self: PropTestNode): NodePath {.gdsync, name: "get_NodePath_with_export_node_path".} =
+  self.NodePath_with_export_node_path
+proc `NodePath_with_export_node_path=`(self: PropTestNode; value: NodePath) {.gdsync, name: "set_NodePath_with_export_node_path".} =
+  self.NodePath_with_export_node_path = value
+
 proc int_with_export_strict_range(self: PropTestNode): int {.gdsync, name: "get_int_with_export_strict_range".} =
   self.int_with_export_strict_range
 proc `int_with_export_strict_range=`(self: PropTestNode; value: int) {.gdsync, name: "set_int_with_export_strict_range".} =
@@ -142,6 +148,11 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 # Currently not works,
 `@export_multiline` "StringArray_with_export_multiline", StringArray_with_export_multiline, `StringArray_with_export_multiline=`
 `@export_multiline` "PackedStringArray_with_export_multiline", PackedStringArray_with_export_multiline, `PackedStringArray_with_export_multiline=`
+
+`@export_node_path` "NodePath_with_export_node_path", NodePath_with_export_node_path, `NodePath_with_export_node_path=`,
+  "Sprite2D"
+`@export_node_path` "NodePath_with_export_node_path_typedesc", NodePath_with_export_node_path, `NodePath_with_export_node_path=`,
+  Sprite2D
 
 `@export_range` "int_with_export_strict_range", int_with_export_strict_range, `int_with_export_strict_range=`,
   10, 100

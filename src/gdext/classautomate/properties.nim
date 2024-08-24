@@ -9,6 +9,7 @@ import gdextcore/staticevents
 import gdextcore/builtinindex
 import gdextgen/builtinclasses
 import gdextgen/globalenums
+import gdextgen/classindex
 
 import contracts
 import propertyinfo
@@ -173,6 +174,26 @@ template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname,
     hint= propertyHintMultilineText)
+
+template `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S);
+    validTypes: varargs[string]): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintNodePathValidTypes,
+    hint_string= @validTypes.join(","))
+
+macro `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
+    name: StringName;
+    getter: proc(self: T): S;
+    setter: proc(self: T; value: S);
+    validTypes: varargs[typedesc[Node]]): untyped =
+  result = bindSym"@export_node_path".newCall(name, getter, setter)
+  for valid in validTypes:
+    result.add bindSym"$".newCall bindSym"className".newCall valid
 
 type RangeArgument* {.pure.} = enum
   or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
