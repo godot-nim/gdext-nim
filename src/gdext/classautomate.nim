@@ -101,6 +101,7 @@ export properties.`@export`
 export properties.`@export_category`
 export properties.`@export_group`
 export properties.`@export_subgroup`
+export properties.`@export_color_no_alpha`
 export properties.`@export_custom`
 export properties.`@export_dir`
 export properties.`@export_global_dir`

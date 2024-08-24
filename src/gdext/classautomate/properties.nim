@@ -97,6 +97,15 @@ template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname, hint, hintstring, usage)
 
+template `@export_color_no_alpha`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+    ): untyped =
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintColorNoAlpha)
+
 template `@export_dir`*[T: SomeUserClass; S: SomeProperty](
       name: StringName;
       getter: proc(self: T): S;

@@ -17,6 +17,8 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   int_with_export_strict_range*: int = 20
   int_with_export_range*: int = 20
   radians_with_export_range_as_degrees*: float = PI/4
+  color_with_export*: Color = color(1, 1, 1, 0.5)
+  color_with_export_no_alpha*: Color = color(1, 1, 1)
 
 method init(self: PropTestNode) =
   self.StringArray_with_export_multiline = typedArray[String](1)
@@ -44,6 +46,15 @@ proc string_with_export_global_file(self: PropTestNode): string {.gdsync, name: 
   self.string_with_export_global_file
 proc `string_with_export_global_file=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_global_file".} =
   self.string_with_export_global_file = value
+
+proc color_with_export(self: PropTestNode): Color {.gdsync, name: "get_color_with_export".} =
+  self.color_with_export
+proc `color_with_export=`(self: PropTestNode; value: Color) {.gdsync, name: "set_color_with_export".} =
+  self.color_with_export= value
+proc color_with_export_no_alpha(self: PropTestNode): Color {.gdsync, name: "get_color_with_export_no_alpha".} =
+  self.color_with_export_no_alpha
+proc `color_with_export_no_alpha=`(self: PropTestNode; value: Color) {.gdsync, name: "set_color_with_export_no_alpha".} =
+  self.color_with_export_no_alpha= value
 
 proc string_with_export_multiline(self: PropTestNode): string {.gdsync, name: "get_string_with_export_multiline".} =
   self.string_with_export_multiline
@@ -95,6 +106,9 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 `@export_global_file` "string_with_export_global_file", string_with_export_global_file, `string_with_export_global_file=`
 
 `@export_group` PropTestNode, ""
+
+`@export` "color_with_export", color_with_export, `color_with_export=`
+`@export_color_no_alpha` "color_with_export_no_alpha", color_with_export_no_alpha, `color_with_export_no_alpha=`
 
 `@export_multiline` "string_with_export_multiline", string_with_export_multiline, `string_with_export_multiline=`
 # Currently not works,
