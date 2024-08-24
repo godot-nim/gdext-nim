@@ -8,6 +8,7 @@ type PropTestNode* = ref object of Node
   string_with_export_global_file*: string = "/dev/null"
   int_with_export_enum*: int
   string_with_export_enum*: string = "Alpha"
+  float_with_export_exp_easing*: float = 2
   string_with_export_multiline*: string = """
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
@@ -67,6 +68,11 @@ proc string_with_export_enum(self: PropTestNode): string {.gdsync, name: "get_st
 proc `string_with_export_enum=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_enum".} =
   self.string_with_export_enum = value
 
+proc float_with_export_exp_easing(self: PropTestNode): float {.gdsync, name: "get_float_with_export_exp_easing".} =
+  self.float_with_export_exp_easing
+proc `float_with_export_exp_easing=`(self: PropTestNode; value: float) {.gdsync, name: "set_float_with_export_exp_easing".} =
+  self.float_with_export_exp_easing = value
+
 proc string_with_export_multiline(self: PropTestNode): string {.gdsync, name: "get_string_with_export_multiline".} =
   self.string_with_export_multiline
 proc `string_with_export_multiline=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_multiline".} =
@@ -125,6 +131,12 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
   "Alpha", "Beta:10", "Gamma"
 `@export_enum` "string_with_export_enum", string_with_export_enum, `string_with_export_enum=`,
   "Alpha", "Beta", "Gamma"
+
+`@export_exp_easing` "float_with_export_exp_easing", float_with_export_exp_easing, `float_with_export_exp_easing=`
+`@export_exp_easing` "float_with_export_exp_easing_attenuation", float_with_export_exp_easing, `float_with_export_exp_easing=`,
+  attenuation
+`@export_exp_easing` "float_with_export_exp_easing_positive_only", float_with_export_exp_easing, `float_with_export_exp_easing=`,
+  positive_only
 
 `@export_multiline` "string_with_export_multiline", string_with_export_multiline, `string_with_export_multiline=`
 # Currently not works,

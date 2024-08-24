@@ -96,6 +96,7 @@ else:
 template name*(newname: string) {.pragma.}
 export signals.signal
 export properties.register_property
+export properties.ExpEasingArgument
 export properties.RangeArgument
 export properties.`@export`
 export properties.`@export_category`
@@ -108,6 +109,7 @@ export properties.`@export_global_dir`
 export properties.`@export_file`
 export properties.`@export_global_file`
 export properties.`@export_enum`
+export properties.`@export_exp_easing`
 export properties.`@export_multiline`
 export properties.`@export_range`
 export properties.`@export_storage`

@@ -151,6 +151,20 @@ template `@export_enum`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintEnum,
     hint_string= @enums.join(","))
 
+type ExpEasingArgument* = enum
+  attenuation, positive_only
+template `@export_exp_easing`*[T: SomeUserClass; S: SomeProperty](
+      name: StringName;
+      getter: proc(self: T): S;
+      setter: proc(self: T; value: S);
+      extra: varargs[ExpEasingArgument];
+    ): untyped =
+
+  register_property(typedesc T, name, typedesc S,
+    getter.gdname, setter.gdname,
+    hint= propertyHintExpEasing,
+    hint_string= @extra.mapIt($it).join(","))
+
 template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;
