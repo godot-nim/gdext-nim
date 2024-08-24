@@ -56,8 +56,8 @@ template `@export`*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S,
     getter.gdname, setter.gdname)
 
-template `@export_category`*(name: StringName): untyped =
-  process(PropTestNode.contract.property, "category " & $name):
+template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name: StringName): untyped =
+  process(typ.contract.property, "category " & $name):
     let
       info: ref PropertyInfoGlue = propertyInfo(
         VariantType_Nil,
@@ -69,7 +69,7 @@ template `@export_category`*(name: StringName): untyped =
     let getter = stringName""
     let setter = stringName""
     interface_ClassDB_registerExtensionClassProperty( environment.library,
-      addr className(PropTestNode), native info,
+      addr className(typ), native info,
       addr setter, addr getter)
 
 template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =

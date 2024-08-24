@@ -80,7 +80,7 @@ proc string_with_export_storage(self: PropTestNode): string {.gdsync, name: "get
 proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_storage".} =
   self.string_with_export_storage = value
 
-`@export_category` "Export Test"
+`@export_category` PropTestNode, "Export Test"
 
 `@export` "string_with_export", string_with_export, `string_with_export=`
 
