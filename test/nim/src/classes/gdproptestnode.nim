@@ -10,6 +10,7 @@ type PropTestNode* = ref object of Node
   int_with_export_enum*: int
   string_with_export_enum*: string = "Alpha"
   int_with_export_flags*: int
+  int_with_export_flags_some_layers*: int
   float_with_export_exp_easing*: float = 2
   string_with_export_multiline*: string = """
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
@@ -80,6 +81,11 @@ proc int_with_export_flags(self: PropTestNode): int {.gdsync, name: "get_int_wit
   self.int_with_export_flags
 proc `int_with_export_flags=`(self: PropTestNode; value: int) {.gdsync, name: "set_int_with_export_flags".} =
   self.int_with_export_flags = value
+
+proc int_with_export_flags_some_layers(self: PropTestNode): int {.gdsync, name: "get_int_with_export_flags_some_layers".} =
+  self.int_with_export_flags_some_layers
+proc `int_with_export_flags_some_layers=`(self: PropTestNode; value: int) {.gdsync, name: "set_int_with_export_flags_some_layers".} =
+  self.int_with_export_flags_some_layers = value
 
 proc float_with_export_exp_easing(self: PropTestNode): float {.gdsync, name: "get_float_with_export_exp_easing".} =
   self.float_with_export_exp_easing
@@ -154,6 +160,14 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 
 `@export_flags` "int_with_export_flags", int_with_export_flags, `int_with_export_flags=`,
   "Alpha", "Beta", "Gamma"
+
+`@export_flags_2d_navigation` "int_with_export_flags_2d_navigation", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_2d_physics` "int_with_export_flags_2d_physics", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_2d_render` "int_with_export_flags_2d_render", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_3d_navigation` "int_with_export_flags_3d_navigation", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_3d_physics` "int_with_export_flags_3d_physics", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_3d_render` "int_with_export_flags_3d_render", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
+`@export_flags_avoidance` "int_with_export_flags_avoidance", int_with_export_flags_some_layers, `int_with_export_flags_some_layers=`
 
 `@export_exp_easing` "float_with_export_exp_easing", float_with_export_exp_easing, `float_with_export_exp_easing=`
 `@export_exp_easing` "float_with_export_exp_easing_attenuation", float_with_export_exp_easing, `float_with_export_exp_easing=`,

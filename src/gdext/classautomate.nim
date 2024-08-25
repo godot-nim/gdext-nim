@@ -110,6 +110,13 @@ export properties.`@export_file`
 export properties.`@export_global_file`
 export properties.`@export_enum`
 export properties.`@export_flags`
+export properties.`@export_flags_2d_navigation`
+export properties.`@export_flags_2d_physics`
+export properties.`@export_flags_2d_render`
+export properties.`@export_flags_3d_navigation`
+export properties.`@export_flags_3d_physics`
+export properties.`@export_flags_3d_render`
+export properties.`@export_flags_avoidance`
 export properties.`@export_exp_easing`
 export properties.`@export_multiline`
 export properties.`@export_node_path`
