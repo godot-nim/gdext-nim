@@ -9,6 +9,7 @@ type PropTestNode* = ref object of Node
   string_with_export_global_file*: string = "/dev/null"
   int_with_export_enum*: int
   string_with_export_enum*: string = "Alpha"
+  int_with_export_flags*: int
   float_with_export_exp_easing*: float = 2
   string_with_export_multiline*: string = """
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
@@ -74,6 +75,11 @@ proc string_with_export_enum(self: PropTestNode): string {.gdsync, name: "get_st
   self.string_with_export_enum
 proc `string_with_export_enum=`(self: PropTestNode; value: string) {.gdsync, name: "set_string_with_export_enum".} =
   self.string_with_export_enum = value
+
+proc int_with_export_flags(self: PropTestNode): int {.gdsync, name: "get_int_with_export_flags".} =
+  self.int_with_export_flags
+proc `int_with_export_flags=`(self: PropTestNode; value: int) {.gdsync, name: "set_int_with_export_flags".} =
+  self.int_with_export_flags = value
 
 proc float_with_export_exp_easing(self: PropTestNode): float {.gdsync, name: "get_float_with_export_exp_easing".} =
   self.float_with_export_exp_easing
@@ -144,6 +150,9 @@ proc `string_with_export_storage=`(self: PropTestNode; value: string) {.gdsync, 
 `@export_enum` "int_with_export_enum", int_with_export_enum, `int_with_export_enum=`,
   "Alpha", "Beta:10", "Gamma"
 `@export_enum` "string_with_export_enum", string_with_export_enum, `string_with_export_enum=`,
+  "Alpha", "Beta", "Gamma"
+
+`@export_flags` "int_with_export_flags", int_with_export_flags, `int_with_export_flags=`,
   "Alpha", "Beta", "Gamma"
 
 `@export_exp_easing` "float_with_export_exp_easing", float_with_export_exp_easing, `float_with_export_exp_easing=`

@@ -109,6 +109,7 @@ export properties.`@export_global_dir`
 export properties.`@export_file`
 export properties.`@export_global_file`
 export properties.`@export_enum`
+export properties.`@export_flags`
 export properties.`@export_exp_easing`
 export properties.`@export_multiline`
 export properties.`@export_node_path`
