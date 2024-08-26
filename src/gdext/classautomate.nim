@@ -11,7 +11,10 @@ import gdextcore/commandindex
 import gdextcore/builtinindex
 import gdextcore/extracommands
 import gdextcore/gdclass
+import gdextgen/globalenums
 import gdext/classtraits
+
+export globalenums.PropertyUsageFlags
 
 proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
   let class = instantiate_internal T
@@ -91,9 +94,35 @@ else:
     )
 
 template name*(newname: string) {.pragma.}
-template getter*(newname: string) {.pragma.}
-template setter*(newname: string) {.pragma.}
 export signals.signal
+export properties.register_property
+export properties.ExpEasingArgument
+export properties.RangeArgument
+export properties.`@export`
+export properties.`@export_category`
+export properties.`@export_group`
+export properties.`@export_subgroup`
+export properties.`@export_color_no_alpha`
+export properties.`@export_custom`
+export properties.`@export_dir`
+export properties.`@export_global_dir`
+export properties.`@export_file`
+export properties.`@export_global_file`
+export properties.`@export_enum`
+export properties.`@export_flags`
+export properties.`@export_flags_2d_navigation`
+export properties.`@export_flags_2d_physics`
+export properties.`@export_flags_2d_render`
+export properties.`@export_flags_3d_navigation`
+export properties.`@export_flags_3d_physics`
+export properties.`@export_flags_3d_render`
+export properties.`@export_flags_avoidance`
+export properties.`@export_exp_easing`
+export properties.`@export_multiline`
+export properties.`@export_node_path`
+export properties.`@export_placeholder`
+export properties.`@export_range`
+export properties.`@export_storage`
 
 macro gdsync*(body): untyped =
   case body.kind
@@ -115,5 +144,4 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
-  sync_property(T)
   invoke contract(T)

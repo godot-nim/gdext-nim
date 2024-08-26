@@ -80,7 +80,7 @@ type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
 
-proc propertyInfo*[T: SomeProperty](_: typedesc[T];
+proc propertyInfo*(typ: VariantType;
       name: StringName = stringname"";
       class_name: StringName = stringname"";
       hint: PropertyHint = propertyHint_None;
@@ -88,10 +88,25 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault
     ): ref PropertyInfoGlue =
   (ref PropertyInfoGlue)(
-    type: T.variantType,
+    type: typ,
     name: new name,
     class_name: new class_name,
     hint: hint,
     hint_string: new hint_string,
-    usage: usage + T.uniqueUsage,
+    usage: usage,
+  )
+proc propertyInfo*[T: SomeProperty](_: typedesc[T];
+      name: StringName = stringname"";
+      class_name: StringName = stringname"";
+      hint: PropertyHint = propertyHint_None;
+      hint_string: String = gdstring"";
+      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault
+    ): ref PropertyInfoGlue =
+  propertyInfo(
+    T.variantType,
+    name,
+    class_name,
+    hint,
+    hint_string,
+    usage + T.uniqueUsage,
   )

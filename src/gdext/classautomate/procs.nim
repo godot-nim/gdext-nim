@@ -10,7 +10,10 @@ import methodinfo
 import propertyinfo
 import checkform
 
-macro registerProc(procdef): untyped =
+macro registerProc*(procdef): untyped =
+  let procdef =
+    if procdef.kind == nnkProcDef: procdef
+    else: procdef.getImpl
   let name = procdef.name
   let arg0_T = procdef.params[1][1]
 
@@ -27,7 +30,7 @@ macro registerProc(procdef): untyped =
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
   quote do:
-    process(contract(`arg0T`).procedure, `gdname`):
+    process(contract(typedesc `arg0T`).procedure, `gdname`):
       let glue = `methodinfoDef`
       interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr glue.info)
 

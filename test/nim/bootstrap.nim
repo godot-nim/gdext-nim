@@ -9,6 +9,8 @@ import nimSideTester
 import geometrics
 import cases/use_api_from_toplevel
 import cases/array
+import classes/gdproptestnode
+import classes/gdtestobject
 
 # ==================================
 
@@ -17,6 +19,8 @@ process initialize_scene:
   # register MyClass
   register GodotSideTester
   register NimSideTester
+  # register TestObject
+  register PropTestNode
 
   # ====================================
   discard

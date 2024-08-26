@@ -1,12 +1,9 @@
 import gdext
 
 type GodotSideTester* = ref object of Node
-  int_value {.getter: "get_int_value", setter: "set_int_value".} : int
-  # Optional:
-  # hint: propertyHintNone
-  # usage: {propertyUsageStorage, propertyUsageEditor}
-  float_value {.getter: "get_float_value", setter: "set_float_value".} : float
-  icon {.getter: "get_icon", setter: "set_icon".} : gdref Texture2D
+  int_value: int
+  float_value: float
+  icon: gdref Texture2D
 
 # To register as static method, you must place typedesc[UserClass] at first argument
 # and put `{.gdsync.}`.
@@ -35,4 +32,6 @@ proc `icon=`*(self: GodotSideTester; value: gdref Texture2D) {.gdsync, name: "se
 proc icon*(self: GodotSideTester): gdref Texture2D {.gdsync, name: "get_icon".} =
   self.icon
 
-
+`@export` "int_value", int_value, `int_value=`
+`@export` "float_value", get_float_value, set_float_value
+`@export` "icon", icon, `icon=`
