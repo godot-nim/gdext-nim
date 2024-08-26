@@ -129,7 +129,6 @@ template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint, hintstring, usage)
 
@@ -182,7 +181,6 @@ template `@export_enum`*[T: SomeUserClass; S: SomeProperty](
       setter: proc(self: T; value: S);
       enums: varargs[string];
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintEnum,
     hint_string= @enums.join(","))
@@ -193,7 +191,6 @@ template `@export_flags`*[T: SomeUserClass; S: SomeProperty](
       setter: proc(self: T; value: S);
       flags: varargs[string];
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintFlags,
     hint_string= @flags.join(","))
@@ -203,7 +200,6 @@ template `@export_flags_2d_navigation`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dNavigation)
 
@@ -212,7 +208,6 @@ template `@export_flags_2d_physics`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dPhysics)
 
@@ -221,7 +216,6 @@ template `@export_flags_2d_render`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dRender)
 
@@ -239,7 +233,6 @@ template `@export_flags_3d_physics`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dPhysics)
 
@@ -248,7 +241,6 @@ template `@export_flags_3d_render`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dRender)
 
@@ -257,7 +249,6 @@ template `@export_flags_avoidance`*[T: SomeUserClass; S: SomeProperty](
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayersAvoidance)
 
@@ -269,7 +260,6 @@ template `@export_exp_easing`*[T: SomeUserClass; S: SomeProperty](
       setter: proc(self: T; value: S);
       extra: varargs[ExpEasingArgument];
     ): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintExpEasing,
     hint_string= @extra.mapIt($it).join(","))
@@ -278,7 +268,6 @@ template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintMultilineText)
 
@@ -287,7 +276,6 @@ template `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     validTypes: varargs[string]): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintNodePathValidTypes,
     hint_string= @validTypes.join(","))
@@ -306,7 +294,6 @@ template `@export_placeholder`*[T: SomeUserClass; S: SomeProperty](
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     placeholder: String): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintPlaceholderText,
     hint_string= placeholder)
@@ -334,6 +321,5 @@ template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
     name: StringName;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
-
   register_property(typedesc T, name, typedesc S, getter, setter,
     usage= {propertyUsageStorage})
