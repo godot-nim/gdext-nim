@@ -19,7 +19,7 @@ process initialize_scene:
   # register MyClass
   register GodotSideTester
   register NimSideTester
-  # register TestObject
+  register TestObject
   register PropTestNode
 
   # ====================================
