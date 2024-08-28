@@ -1,6 +1,8 @@
 import std/unittest
 import gdext
 
+unittest.disableParamFiltering()
+
 suite "Geometrics":
   let v012 = [0f, 1, 2]
   let v345 = [3f, 4, 5]
