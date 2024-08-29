@@ -35,5 +35,5 @@ switch("define", "ExtensionMain:" & workspaceName)
 
 switch("out", "$projectdir/lib"/workspaceName.toDll)
 
---define: "debug.event:on"
---define: "debug.object:on"
+# --define: "debug.event:on"
+# --define: "debug.object:on"
