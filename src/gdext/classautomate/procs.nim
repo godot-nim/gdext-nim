@@ -1,4 +1,4 @@
-import std/macros
+import gdextcore/utils/macros
 import std/sequtils
 
 import gdextcore/commandindex
@@ -65,12 +65,13 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   result = newNimNode nnkWhenStmt
 
-  for i, arg in procdef.params:
-    if i == 0: continue
-    let argT = arg[1]
+  for i, (name, typ, default) in procdef.params.breakArgs:
+    let argT =
+      if typ.kind == nnkEmpty: ident"typeof".newCall(default)
+      else: typ
     result.add nnkElifBranch.newTree(
       (quote do: `argT` isnot SomeProperty),
-      bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", arg)
+      bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", name)
     )
 
   result.add nnkElifBranch.newTree(

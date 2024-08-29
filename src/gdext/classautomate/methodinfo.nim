@@ -8,6 +8,7 @@ import gdextcore/builtinindex
 import gdextcore/typeshift
 import gdextcore/gdvariant
 import gdextcore/exceptions
+import gdextcore/methodtools
 
 import propertyinfo
 
@@ -32,7 +33,10 @@ proc parseMiddle(procdef: NimNode): MiddleExp =
 
   result.args = procdef.params.breakArgs.toSeq
     .filterIt(it.index != 0)
-    .mapIt((it.def.name, it.def.Type, it.def.default))
+    .mapIt((
+      it.def.name,
+      (if it.def.Type.kind == nnkEmpty: ident"typeof".newCall(it.def.default) else: it.def.Type),
+      it.def.default))
 
   result.is_static = `and`(
     result.self_T.kind == nnkBracketExpr,
@@ -59,7 +63,7 @@ proc argumentsInfo(middle: MiddleExp): NimNode =
 
   var info = newNimNode nnkBracket
 
-  for (name, Type, _) in middle.args:
+  for (name, Type, default) in middle.args:
     let name = toStrLit name
     info.add quote do:
       propertyInfo(typedesc `Type`, stringName `name`)[]
@@ -73,7 +77,7 @@ proc argumentsMeta(middle: MiddleExp): NimNode =
 
   var meta = newNimNode nnkBracket
 
-  for (_, Type, _) in middle.args:
+  for (_, Type, default) in middle.args:
     meta.add quote do:
       metadata(typedesc `Type`)
 
@@ -81,15 +85,42 @@ proc argumentsMeta(middle: MiddleExp): NimNode =
     let meta = `meta`
     addr meta[0]
 
+proc defaultArgumentCount(middle: MiddleExp): int =
+  middle.args.filterIt(it.default.kind != nnkEmpty).len
+
+proc declareDefaultArgumentsArray(middle: MiddleExp; default_arguments: NimNode): NimNode =
+  let defaultArgumentsSym = genSym(nskLet, "defaultArguments")
+  let defaultArgumentsArray = newNimNode nnkBracket
+  let defaultArgumentsAddrArray = newNimNode nnkBracket
+  for arg in middle.args:
+    if arg.default.kind == nnkEmpty: continue
+    defaultArgumentsArray.add ident"variant".newCall arg.default
+    defaultArgumentsAddrArray.add bindSym"getPtr".newCall(
+      nnkBracketExpr.newTree(defaultArgumentsSym, newLit defaultArgumentsArray.len.pred)
+    )
+  case defaultArgumentsArray.len
+  of 0:
+    discard
+    quote do:
+      let
+        `default_arguments`: ClassMethodInfo.default_arguments = nil
+  else:
+    quote do:
+      let
+        `defaultArgumentsSym` = `defaultArgumentsArray`
+        defaultArgumentsAddr = `defaultArgumentsAddrArray`
+        `default_arguments`: ClassMethodInfo.default_arguments = addr defaultArgumentsAddr[0]
 
 proc callFunc(middle: MiddleExp): NimNode =
   let p_instance = ident"p_instance"
   let p_args = ident"p_args"
+  let p_argument_count = ident"p_argument_count"
   let r_return = ident"r_return"
 
   let self_T = middle.self_T
 
   let call = middle.name.newCall()
+  let options = newStmtList()
 
   if middle.is_static:
     call.add middle.self_T
@@ -98,22 +129,34 @@ proc callFunc(middle: MiddleExp): NimNode =
 
   for i, (name, Type, default) in middle.args:
     let i_lit = newlit i
-    call.add quote do: cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+
+    if default.kind == nnkEmpty:
+      call.add quote do: cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+    else:
+      let n = gensym(nskLet, $name)
+      options.add quote do:
+        let `n` =
+          if `p_argument_count` > `i_lit`:
+            cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+          else: `default`
+      call.add n
 
   let body =
     if middle.hasResult:
       quote do:
         errproof:
+          `options`
           let result = variant `call`
           interface_Variant_newCopy(`r_return`, addr result)
     else:
       quote do:
         errproof:
+          `options`
           let result = variant(); `call`
           interface_Variant_newCopy(`r_return`, addr result)
 
-  quote do:
-    proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int; `r_return`: VariantPtr; r_error: ptr CallError) {.gdcall.} =
+  result = quote do:
+    proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstVariantPtr]; `p_argument_count`: Int; `r_return`: VariantPtr; r_error: ptr CallError) {.gdcall.} =
       `body`
 
 proc ptrCallFunc(middle: MiddleExp): NimNode =
@@ -168,15 +211,13 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
   let arguments_info = middle.argumentsInfo
   let arguments_metadata = middle.argumentsMeta
 
+  let default_argument_count = middle.defaultArgumentCount
+  let default_arguments = genSym(nskLet, "default_arguments")
+  let defaultArgumentsArray = middle.declareDefaultArgumentsArray(default_arguments)
+
   result = quote do:
     let proc_name: StringName = stringName `gdname`
-    # const default_argument_count: uint32 = 1
-    # let default_arguments: array[default_argument_count, Variant] = [
-    #   variant(10)
-    # ]
-    # let p_default_arguments: array[default_argument_count, ptr Variant] = [
-    #   addr default_arguments[0]
-    # ]
+    `defaultArgumentsArray`
     ClassMethodInfoGlue(
       info: ClassMethodInfo(
         name: addr proc_name,
@@ -192,8 +233,8 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
         arguments_info: `arguments_info`,
         arguments_metadata: `arguments_metadata`,
 
-        # default_argument_count: default_argument_count,
-        # default_arguments: addr p_default_arguments[0],
+        default_argument_count: uint32 `default_argument_count`,
+        default_arguments: `defaultarguments`,
       ),
     )
 
