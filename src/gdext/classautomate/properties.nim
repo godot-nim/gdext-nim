@@ -90,7 +90,8 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
 
   result.add quote do:
     register_property(`typ`, `name`, `proptyp`,
-      `gettersym`.gdname, `settersym`.gdname)
+      `gettersym`.gdname, `settersym`.gdname,
+      `hint`, `hint_string`, `usage`)
 
 template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name: StringName): untyped =
   process(typ.contract.property, "category " & $name):

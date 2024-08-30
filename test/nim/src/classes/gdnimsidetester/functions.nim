@@ -17,13 +17,15 @@ proc arg1_noret(self: NimSideTester; str: string) {.gdsync.} =
 proc arg1_ret(self: NimSideTester; str: string): string {.gdsync.} =
   "arg1_ret(" & str & ")"
 
-`@export_storage`"arg0_noret_result",
+`@export_custom`"arg0_noret_result",
   proc (self: NimSideTester): string = arg0_noret_result,
-  proc (self: NimSideTester; value: string) = discard
+  proc (self: NimSideTester; value: string) = discard,
+  usage = {propertyUsageInternal}
 
-`@export_storage`"arg1_noret_result",
+`@export_custom`"arg1_noret_result",
   proc (self: NimSideTester): string = arg1_noret_result,
-  proc (self: NimSideTester; value: string) = discard
+  proc (self: NimSideTester; value: string) = discard,
+  usage = {propertyUsageInternal}
 
 proc default_value_simple(self: NimSideTester; str: string = "default"): string {.gdsync.} =
   "default_value_simple(" & str & ")"
