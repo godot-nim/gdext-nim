@@ -23,7 +23,8 @@ template initializeExtensionMain* =
   register ExtensionMain
   extmain = instantiate ExtensionMain
   Engine.singleton.registerSingleton(className ExtensionMain, extmain)
-proc eliminateExtensionMain* =
+template eliminateExtensionMain* =
+  Engine.singleton.unregisterSingleton(className ExtensionMain)
   extmain = nil
 
 when isMainModule:
