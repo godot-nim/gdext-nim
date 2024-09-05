@@ -12,4 +12,4 @@ config_version=5
 
 config/name="godot-nim/test"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.3")
