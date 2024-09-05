@@ -4,14 +4,34 @@ Godot GDExtension binding for Nim-lang.
 
 For more detail, see [wiki](https://github.com/godot-nim/docs/wiki).
 
+## Features
+
+- [x] Godot 4.3 full api
+- [x] Hot reloading
+- [x] Available to define&export your Class/Function/Signal/Property
+- [x] Available to call engine functionalities from Nim
+- [x] GLSlang-like swizzle operator (e.g. vector3.xxxyyyzzz)
+
+### In preparation
+
+- [ ] Export enums
+- [ ] Assist to generate a .gdextension file
+- [ ] Export descriptions
+- [ ] Define/Export virtual methods
+- [ ] Develop engine plugins
 
 ## Install / Uninstall
 
 ```
+# install
 nimble install https://github.com/godot-nim/gdext-nim
 
+# uninstall
 nimble uninstall -i gdext
 gdextwiz uninstall
+
+# upgrade
+gdextwiz upgrade
 ```
 
 ## Dependencies
@@ -23,4 +43,3 @@ gdextwiz uninstall
 * [godot-nim/gdextcore](https://github.com/godot-nim/gdextcore) latest
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 * [godot-nim/gdextwiz](https://github.com/godot-nim/gdextwiz) latest
-* [c-blake/cligen](https://github.com/c-blake/cligen)
