@@ -6,6 +6,7 @@ import gdextcore/extracommands
 import gdextcore/typeshift
 import gdextgen/utilityfuncs
 import gdext/classautomate/contracts
+import gdext/classautomate
 import gdext/gdextensionmain
 
 
@@ -52,6 +53,7 @@ template GDExtension_EntryPoint*(name): untyped =
       eliminateExtensionMain()
     of Initialization_Editor:
       invoke eliminate_editor
+      classautomate.unregisterAll()
 
   proc name*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc, dynlib.} = once:
     try:

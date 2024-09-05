@@ -1,4 +1,5 @@
 import std/macros
+import std/sets
 
 import classautomate/contracts
 import classautomate/virtuals
@@ -137,7 +138,7 @@ macro gdsync*(body): untyped =
     hint $body.kind
     body
 
-
+var registered: HashSet[StringName]
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
   when TargetVersion == (4, 1):
@@ -145,3 +146,8 @@ proc register*(T: typedesc) =
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
   invoke contract(T)
+  registered.incl className(T)
+
+proc unregisterAll* =
+  for name in registered:
+    interface_ClassDB_unregister_extension_class(environment.library, addr name)
