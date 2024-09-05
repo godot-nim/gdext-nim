@@ -32,6 +32,11 @@ else:
   proc notification_bind(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
     cast[GodotClass](p_instance).notification(p_what)
 
+  proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
+    let class = CLASS_create(T, p_object)
+    CLASS_sync_create_bind class
+    cast[pointer](class)
+
 proc set_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).set(p_name, p_value)
 proc get_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
@@ -86,7 +91,7 @@ else:
       unreference_func: (proc(p_instance: pointer) {.gdcall.} = CLASS_sync_unreference_bind(cast[T](p_instance))),
       create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
       free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
-      recreate_instance_func: nil,
+      recreate_instance_func: recreate_instance_func[T],
       get_virtual_func: get_virtual_bind,
       get_virtual_call_data_func: nil,
       call_virtual_with_data_func: nil,
