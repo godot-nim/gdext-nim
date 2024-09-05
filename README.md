@@ -10,7 +10,7 @@ For more detail, see [wiki](https://github.com/godot-nim/docs/wiki).
 - [x] Hot reloading
 - [x] Available to define&export your Class/Function/Signal/Property
 - [x] Available to call engine functionalities from Nim
-- [x] GLSlang-like swizzle operator (e.g. vector3.xxxyyyzzz)
+- [x] GLSLang-like swizzle operator (e.g. vector3.xxxyyyzzz)
 
 ### In preparation
 
