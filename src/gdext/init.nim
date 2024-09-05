@@ -63,6 +63,7 @@ template GDExtension_EntryPoint*(name): untyped =
 
       r_initialization.initialize = initialize
       r_initialization.deinitialize = deinitialize
+      r_initialization.minimum_initialization_level = Initialization_Scene
 
       commandindex.load() # call `getProcAddr` for each interface methods
       builtinindex.load() # load builtin-classes constructor/destructor for ORC hooks
