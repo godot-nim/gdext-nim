@@ -1,5 +1,6 @@
 import std/macros
 import std/sets
+import std/tables
 
 import classautomate/contracts
 import classautomate/virtuals
@@ -12,64 +13,77 @@ import gdextcore/commandindex
 import gdextcore/builtinindex
 import gdextcore/extracommands
 import gdextcore/gdclass
-import gdextgen/globalenums
 import gdext/classtraits
 
-export globalenums.PropertyUsageFlags
+proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
+  cast[GodotClass](p_instance).set(p_name, p_value)
 
-proc create_bind(T: typedesc[SomeUserClass]): ObjectPtr =
+proc get_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
+  cast[GodotClass](p_instance).get(p_name, r_ret)
+
+proc get_property_list_func(p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
+  cast[GodotClass](p_instance).get_propertyList(r_count)
+
+proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
+  cast[GodotClass](p_instance).free_propertyList(p_list)
+
+proc property_can_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
+  cast[GodotClass](p_instance).property_canRevert(p_name)
+
+proc property_get_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
+  cast[GodotClass](p_instance).property_getRevert(p_name, r_ret)
+
+when TargetVersion == (4, 1):
+  proc notification_func(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
+    cast[GodotClass](p_instance).notification(p_what)
+else:
+  proc notification_func(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
+    cast[GodotClass](p_instance).notification(p_what)
+
+proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
+  cast[GodotClass](p_instance).toString(r_is_valid, p_out)
+
+proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
   CLASS_sync_create_bind class
   return CLASS_getObjectPtr class
 
-proc free_bind[T: SomeUserClass](class: T) =
-  CLASS_sync_free_bind class
+proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
+  CLASS_sync_free_bind cast[T](p_instance)
 
-when TargetVersion == (4, 1):
-  proc notification_bind(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
-    cast[GodotClass](p_instance).notification(p_what)
-else:
-  proc notification_bind(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-    cast[GodotClass](p_instance).notification(p_what)
-
+when TargetVersion >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
     let class = CLASS_create(T, p_object)
     CLASS_sync_create_bind class
     cast[pointer](class)
 
-proc set_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).set(p_name, p_value)
-proc get_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).get(p_name, r_ret)
-proc property_canRevert_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).property_canRevert(p_name)
-proc property_getRevert_bind(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).property_getRevert(p_name, r_ret)
-proc toString_bind(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  cast[GodotClass](p_instance).toString(r_is_valid, p_out)
-proc get_propertyList_bind(p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  cast[GodotClass](p_instance).get_propertyList(r_count)
-proc free_propertyList_bind(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
-  cast[GodotClass](p_instance).free_propertyList(p_list)
+proc reference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
+  CLASS_sync_reference_bind(cast[T](p_instance))
+
+proc unreference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
+  CLASS_sync_unreference_bind(cast[T](p_instance))
+
+proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
+  cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
 
 when TargetVersion == (4, 1):
   proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo =
     ClassCreationInfo(
       is_virtual: is_virtual,
       is_abstract: is_abstract,
-      set_func: set_bind,
-      get_func: get_bind,
-      get_property_list_func: get_property_list_bind,
-      free_property_list_func: free_property_list_bind,
-      property_can_revert_func: property_can_revert_bind,
-      property_get_revert_func: property_get_revert_bind,
-      notification_func: notification_bind,
-      to_string_func: to_string_bind,
-      create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
-      free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
-      reference_func: (proc(p_instance: pointer) {.gdcall.} = CLASS_sync_reference_bind(cast[T](p_instance))),
-      unreference_func: (proc(p_instance: pointer) {.gdcall.} = CLASS_sync_unreference_bind(cast[T](p_instance))),
-      get_virtual_func: get_virtual_bind,
+      set_func: set_func,
+      get_func: get_func,
+      get_property_list_func: get_property_list_func,
+      free_property_list_func: free_property_list_func,
+      property_can_revert_func: property_can_revert_func,
+      property_get_revert_func: property_get_revert_func,
+      notification_func: notification_func,
+      to_string_func: to_string_func,
+      create_instance_func: create_instance_func[T],
+      free_instance_func: free_instance_func[T],
+      reference_func: reference_func[T],
+      unreference_func: unreference_func[T],
+      get_virtual_func: get_virtual_func,
       class_userdata: cast[pointer](Meta(T)),
     )
 else:
@@ -78,21 +92,21 @@ else:
       is_virtual: is_virtual,
       is_abstract: is_abstract,
       is_exposed: true,
-      set_func: set_bind,
-      get_func: get_bind,
-      get_property_list_func: get_property_list_bind,
-      free_property_list_func: free_property_list_bind,
-      property_can_revert_func: property_can_revert_bind,
-      property_get_revert_func: property_get_revert_bind,
+      set_func: set_func,
+      get_func: get_func,
+      get_property_list_func: get_property_list_func,
+      free_property_list_func: free_property_list_func,
+      property_can_revert_func: property_can_revert_func,
+      property_get_revert_func: property_get_revert_func,
       validate_property_func: nil,
-      notification_func: notification_bind,
-      to_string_func: to_string_bind,
-      reference_func: (proc(p_instance: pointer) {.gdcall.} = CLASS_sync_reference_bind(cast[T](p_instance))),
-      unreference_func: (proc(p_instance: pointer) {.gdcall.} = CLASS_sync_unreference_bind(cast[T](p_instance))),
-      create_instance_func: proc(p_userdata: pointer): ObjectPtr {.gdcall.} = T.create_bind(),
-      free_instance_func: proc(p_userdata: pointer; p_instance: pointer) {.gdcall.} = cast[T](p_instance).free_bind(),
+      notification_func: notification_func,
+      to_string_func: to_string_func,
+      reference_func: reference_func[T],
+      unreference_func: unreference_func[T],
+      create_instance_func: create_instance_func[T],
+      free_instance_func: free_instance_func[T],
       recreate_instance_func: recreate_instance_func[T],
-      get_virtual_func: get_virtual_bind,
+      get_virtual_func: get_virtual_func,
       get_virtual_call_data_func: nil,
       call_virtual_with_data_func: nil,
       get_rid_func: nil,

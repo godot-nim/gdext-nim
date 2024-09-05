@@ -1,16 +1,11 @@
 import std/tables
 
 import gdextcore/utils/macros
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/builtinindex
 import gdextcore/gdclass
 import gdextcore/staticevents
 
 import contracts
 import checkform
-
-proc get_virtual_bind*(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
-  cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
 
 proc sync_methodDef*(body: Nimnode): NimNode =
   let methoddef = body
