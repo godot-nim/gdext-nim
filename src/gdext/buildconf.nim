@@ -34,6 +34,23 @@ when not declared(switch):
 when nimvm:
   type Extension* = object
 
+  const RunningSystem* = case hostOS
+  of "windows":
+    "windows"
+  of "linux":
+    "linux"
+  of "macosx":
+    "macos"
+  of "netbsd", "freebsd", "openbsd":
+    "bsd"
+  else: ""
+
+  const Build* =
+    when defined(release):
+      "release"
+    else:
+      "debug"
+
   proc `version=`*(_: typedesc[Extension]; version: tuple[major, minor: int]) =
     switch("define", "TargetVersionMajor:" & $version.major)
     switch("define", "TargetVersionMinor:" & $version.minor)
@@ -51,7 +68,7 @@ when nimvm:
     # multiple extensions across the board, each time an extension is built,
     # the cache is overwritten and the cc is performed from scratch,
     # resulting in slower build speeds.
-    switch("nimcache", "$nimcache/" & name)
+    switch("nimcache", "$nimcache"/RunningSystem/Build/name)
 
   # GDExtension is loaded into the engine as a DLL.
   --app: lib
@@ -68,4 +85,4 @@ when nimvm:
   --define: nimPreviewDotLikeOps
 
   Extension.version = (4, 3)
-  Extension.libdir = "$projectdir/lib"
+  Extension.libdir = "$projectdir/lib"/RunningSystem/Build
