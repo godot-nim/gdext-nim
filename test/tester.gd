@@ -46,14 +46,14 @@ func test_func():
 	assert(tester.default_value_complex("a", "b", "c", "d") == "default_value_complex(a b c d)")
 
 func test_grobal_func():
-	nim.signal_arg0.connect(_on_nim_signal_arg0)
-	nim.signal_arg1.connect(_on_nim_signal_arg1)
-	nim.arg0_noret()
-	nim.arg1_noret(nim.arg1_ret(nim.arg0_ret()))
-	nim.signal_arg0.emit()
-	nim.signal_arg1.emit("signal")
+	GdextTester.signal_arg0.connect(_on_nim_signal_arg0)
+	GdextTester.signal_arg1.connect(_on_nim_signal_arg1)
+	GdextTester.arg0_noret()
+	GdextTester.arg1_noret(GdextTester.arg1_ret(GdextTester.arg0_ret()))
+	GdextTester.signal_arg0.emit()
+	GdextTester.signal_arg1.emit("signal")
 
-	nim.exec_checks_use_api_from_toplevel()
+	GdextTester.exec_checks_use_api_from_toplevel()
 	assert(signal_arg0_executed and signal_arg1_executed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
