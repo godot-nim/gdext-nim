@@ -1,4 +1,6 @@
-
 nimble.develop
 nimble.paths
 *.log
+.godot/
+bin/
+lib/
