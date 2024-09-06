@@ -15,6 +15,7 @@ when not declared(switch):
     echo "outDir:", outDir
 
   const ExtensionMainName* {.strdefine: "Extension.name".} = projectName
+  const EntrySymbolName* {.strdefine: Extension.entrySymbol.} = "init_library"
   const CheckEnv* {.strdefine: "Extension.checkenv".} = on
 
   when CheckEnv:
@@ -39,6 +40,9 @@ when nimvm:
 
   proc `libdir=`*(_: typedesc[Extension]; path: string) =
     switch("outdir", path)
+
+  proc `entry_symbol=`*(_: typedesc[Extension]; name: string) =
+    switch("define", "Extension.entrySymbol:" & name)
 
   proc `name=`*(_: typedesc[Extension]; name: string) =
     switch("define", "Extension.name:" & name)

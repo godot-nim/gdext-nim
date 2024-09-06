@@ -26,4 +26,4 @@ process initialize_scene:
   discard
 
 
-GDExtensionEntryPoint name=init_library
+GDExtensionEntryPoint
