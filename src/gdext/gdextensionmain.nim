@@ -1,7 +1,7 @@
 import gdextcore/[gdclass]
 import gdextgen/[classindex]
 import gdextgen/classes/[gdengine]
-import gdext/[env, classautomate, classtraits]
+import gdext/[buildconf, classautomate, classtraits]
 
 import std/macros
 

@@ -6,5 +6,5 @@ reloadable = true
 
 [libraries]
 
-linux = "res://nim/lib/libnim.so"
-windows = "res://nim/lib/libnim.dll"
+linux = "res://nim/lib/libbootstrap.so"
+windows = "res://nim/lib/libbootstrap.dll"
