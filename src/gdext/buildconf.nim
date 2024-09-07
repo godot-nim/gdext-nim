@@ -1,37 +1,45 @@
-import std/os
-
 when not declared(switch):
-  import std/compilesettings
-  const projectName = querySetting(projectName)
-  const projectPath = querySetting(projectPath)
-  const projectFull = querySetting(projectFull)
-  const outFile = querySetting(outFile)
-  const outDir = querySetting(outDir)
-  static:
-    echo "projectName:", projectName
-    echo "projectPath:", projectPath
-    echo "projectFull:", projectFull
-    echo "outFile:", outFile
-    echo "outDir:", outDir
+  import gdextcore/dirty/gdextensioninterface
 
-  const ExtensionMainName* {.strdefine: "Extension.name".} = projectName
-  const EntrySymbolName* {.strdefine: Extension.entrySymbol.} = "init_library"
-  const CheckEnv* {.strdefine: "Extension.checkenv".} = on
+  const
+    Extension_name {.strdefine: "Extension.name".} = ""
+    Extension_entrySymbol {.strdefine: "Extension.entrySymbol".} = "init_library"
+    Extension_versionMajor {.intdefine: "Extension.versionMajor".} = TargetVersion[0]
+    Extension_versionMinor {.intdefine: "Extension.versionMinor".} = TargetVersion[1]
 
-  when CheckEnv:
+    Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
+
+  type ExtensionObj* = object
+    name*: string
+    entrySymbol*: string
+    version*: tuple[major, minor: int]
+  type AssistanceObj* = object
+    checkEnv*: bool
+
+  const
+    Extension* = ExtensionObj(
+      name: Extension_name,
+      entrySymbol: Extension_entrySymbol,
+      version: (Extension_versionMajor, Extension_versionMinor),
+    )
+    Assistance* = AssistanceObj(
+      checkEnv: Assistance_checkEnv,
+    )
+
+  when Assistance.checkEnv:
     when appType != "lib": {.error: """
 This project must be compiled as a dynamic library.
 Instead, run `nimble build --app:lib` or append `--app: lib` to the config.nims file.""".}
-    when ExtensionMainName == "": {.error: """
-try to describe in config.nims:
+    when Extension.name == "": {.error: """
+name of the extension is not declared; try to describe in config.nims:
   import gdext/buildconf
   Extension.name = "MyExtensionName"
 """.}
 
-when not declared(switch):
-  import system/nimscript
+else:
+  from std/os import `/`, splitFile
 
-when nimvm:
+  type Godot* = object
   type Extension* = object
 
   const RunningSystem* = case hostOS
@@ -58,7 +66,7 @@ when nimvm:
   proc `libdir=`*(_: typedesc[Extension]; path: string) =
     switch("outdir", path)
 
-  proc `entry_symbol=`*(_: typedesc[Extension]; name: string) =
+  proc `entrySymbol=`*(_: typedesc[Extension]; name: string) =
     switch("define", "Extension.entrySymbol:" & name)
 
   proc `name=`*(_: typedesc[Extension]; name: string) =

@@ -56,7 +56,7 @@ template GDExtension_EntryPoint*: untyped =
       invoke eliminate_editor
       classautomate.unregisterAll()
 
-  proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: EntrySymbolName, dynlib.} = once:
+  proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
     try:
       commandindex.init(
         p_getProcAddress,
