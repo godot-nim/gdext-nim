@@ -8,6 +8,7 @@ import gdextgen/utilityfuncs
 import gdext/classautomate/contracts
 import gdext/classautomate
 import gdext/gdextensionmain
+import gdext/buildconf
 
 
 const initialize_core* = event("initialize_core")
@@ -23,7 +24,7 @@ var gLoaded: int
 proc getLoaded*: int {.inline.} = gLoaded
 template loaded*: int = getLoaded()
 
-template GDExtension_EntryPoint*(name): untyped =
+template GDExtension_EntryPoint*: untyped =
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
     case p_level
@@ -55,7 +56,7 @@ template GDExtension_EntryPoint*(name): untyped =
       invoke eliminate_editor
       classautomate.unregisterAll()
 
-  proc name*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc, dynlib.} = once:
+  proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
     try:
       commandindex.init(
         p_getProcAddress,
@@ -82,4 +83,4 @@ template GDExtension_EntryPoint*(name): untyped =
 
 when isMainModule:
   import gdextgen/classindex
-  GDExtension_EntryPoint(init_library)
+  GDExtension_EntryPoint

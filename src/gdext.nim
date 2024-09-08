@@ -1,3 +1,4 @@
+{.warning[UnusedImport]: off.}
 import gdextcore/dirty/gdextensioninterface
 export InitializationLevel, VariantType, gdcall
 
@@ -10,8 +11,10 @@ export typeshift.get
 import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs
 
-import gdext/[ env, init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions ]
-export         env, init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions
+import gdext/[ init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions ]
+export         init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions
+
+import gdext/buildconf
 
 import gdext/gdextensionmain
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain

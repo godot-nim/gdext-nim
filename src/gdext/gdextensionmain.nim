@@ -1,18 +1,18 @@
 import gdextcore/[gdclass]
 import gdextgen/[classindex]
 import gdextgen/classes/[gdengine]
-import gdext/[env, classautomate, classtraits]
+import gdext/[buildconf, classautomate, classtraits]
 
 import std/macros
 
 macro defExtensionMain: untyped =
-  let typ = ident ExtensionMainName
+  let typ = ident Extension.name
   quote do:
     type `typ`* = ref object of Object
 
 defExtensionMain
 
-macro ExtensionMain*: untyped = bindSym ExtensionMainName
+macro ExtensionMain*: untyped = bindSym Extension.name
 
 var extmain*: ExtensionMain
 
