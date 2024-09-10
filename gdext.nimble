@@ -5,6 +5,9 @@ author        = "godot-nim, la.panon."
 description   = "Front-end library of godot-nim"
 license       = "MIT"
 srcDir        = "src"
+installExt   = @["nim"]
+namedBin      = toTable {"gdext/gdextwiz": "gdextwiz"}
+binDir        = "bin"
 
 
 # Dependencies
@@ -16,6 +19,3 @@ requires "https://github.com/godot-nim/gdextcore#head"
 
 # Generated layer of gdext that defines the behavior of classes and structures.
 requires "https://github.com/godot-nim/gdextgen#head"
-
-# CLI tool with a set of commands to successfully handle gdext
-requires "https://github.com/godot-nim/gdextwiz#head"

@@ -3,7 +3,7 @@
 Godot GDExtension binding for Nim-lang.
 
 For instance to use, see [demo][1].
-See [wiki](https://github.com/godot-nim/docs/wiki) to get more detail.
+See [wiki][2] to get more detail.
 
 ## Features
 
@@ -12,6 +12,7 @@ See [wiki](https://github.com/godot-nim/docs/wiki) to get more detail.
 - [x] Available to define&export your Class/Function/Signal/Property
 - [x] Available to call engine functionalities from Nim
 - [x] GLSLang-like swizzle operator (e.g. vector3.xxxyyyzzz)
+- [x] Commandline-helper (see [wiki - gdextwiz][3])
 
 ### In preparation
 
@@ -38,11 +39,12 @@ gdextwiz upgrade
 ## Dependencies
 
 * [nim-lang/nim](https://github.com/nim-lang/nim) 2.0.0 or higher
-* [godotengine/godot](https://github.com/godotengine/godot) 4.2
+* [godotengine/godot](https://github.com/godotengine/godot) 4.3
  
-  It is possible to support 4.1..4.3 by manual installation (by changing gdextgen to the corresponding version content).
+  It is possible to support lower strictly by manual installation (by changing gdextgen to the corresponding version content).
 * [godot-nim/gdextcore](https://github.com/godot-nim/gdextcore) latest
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
-* [godot-nim/gdextwiz](https://github.com/godot-nim/gdextwiz) latest
 
 [1]: https://github.com/godot-nim/demo
+[2]: https://github.com/godot-nim/gdext-nim/wiki
+[3]: https://github.com/godot-nim/gdext-nim/wiki/gdextwiz
