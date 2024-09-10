@@ -1,9 +1,10 @@
-import gdextcore/utils/macros
+import gdext/utils/macros
 import std/[sequtils, sets]
 
-import gdextcore/commandindex
-import gdextcore/gdclass
-import gdextcore/staticevents
+import gdext/utils/staticevents
+
+import gdext/core/commandindex
+import gdext/core/gdclass
 
 import contracts
 import methodinfo

@@ -1,6 +1,6 @@
 import std/sets
 
-import gdextcore/staticevents
+import gdext/utils/staticevents
 
 type Contract = object
   typ*: string

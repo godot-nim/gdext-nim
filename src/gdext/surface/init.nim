@@ -1,11 +1,11 @@
 import std/[sets]
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/builtinindex
-import gdextcore/staticevents
-import gdextcore/commandindex
-import gdextcore/extracommands
-import gdextcore/typeshift
+import gdext/dirty/gdextensioninterface
+import gdext/utils/staticevents
+import gdext/core/builtinindex
+import gdext/core/commandindex
+import gdext/core/extracommands
+import gdext/core/typeshift
 import gdextgen/utilityfuncs
 import gdext/core/userclass/contracts
 import gdext/surface/userclass

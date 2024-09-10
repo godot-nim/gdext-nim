@@ -2,11 +2,13 @@ import std/macros
 import std/sets
 import std/tables
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/commandindex
-import gdextcore/builtinindex
-import gdextcore/extracommands
-import gdextcore/gdclass
+import gdext/buildconf
+
+import gdext/dirty/gdextensioninterface
+import gdext/core/commandindex
+import gdext/core/builtinindex
+import gdext/core/extracommands
+import gdext/core/gdclass
 
 import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
@@ -43,26 +45,39 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
-  CLASS_sync_create_bind class
-  return CLASS_getObjectPtr class
+  CLASS_passOwnershipToGodot class
+  result =  CLASS_getObjectPtr class
+  when Dev.debugCallbacks:
+    decho SYNC.CREATE_BIND, $typeof T
 
 proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
-  CLASS_sync_free_bind cast[T](p_instance)
+  let class = cast[T](p_instance)
+  CLASS_unlockDestroy class
+  when Dev.debugCallbacks:
+    decho SYNC.FREE_BIND, $typeof T
 
 when TargetVersion >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
-    let class = CLASS_create(T, p_object)
-    CLASS_sync_create_bind class
-    cast[pointer](class)
+    let class = createClass(T, p_object)
+    CLASS_passOwnershipToGodot class
+    result = cast[pointer](class)
+    when Dev.debugCallbacks:
+      decho SYNC.RECREATE_BIND, $typeof T
 
 proc reference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
-  CLASS_sync_reference_bind(cast[T](p_instance))
+  when Dev.debugCallbacks:
+    let class = cast[T](p_instance)
+    let count = hook_getReferenceCount CLASS_getObjectPtr class
+    decho SYNC.REFERENCE_BIND, $typeof T, "(", $count.pred & " +1)"
 
 proc unreference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
-  CLASS_sync_unreference_bind(cast[T](p_instance))
+  when Dev.debugCallbacks:
+    let class = cast[T](p_instance)
+    let count = hook_getReferenceCount CLASS_getObjectPtr class
+    decho SYNC.UNREFERENCE_BIND, $typeof T, "(", $count.succ & " -1)"
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
-  cast[GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
+  cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
 
 when TargetVersion == (4, 1):
   proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo =
@@ -82,7 +97,7 @@ when TargetVersion == (4, 1):
       reference_func: reference_func[T],
       unreference_func: unreference_func[T],
       get_virtual_func: get_virtual_func,
-      class_userdata: cast[pointer](Meta(T)),
+      class_userdata: addr Meta(T),
     )
 else:
   proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo2 =
@@ -108,7 +123,7 @@ else:
       get_virtual_call_data_func: nil,
       call_virtual_with_data_func: nil,
       get_rid_func: nil,
-      class_userdata: cast[pointer](Meta(T)),
+      class_userdata: addr Meta(T),
     )
 
 template name*(newname: string) {.pragma.}

@@ -1,4 +1,4 @@
-import gdextcore/gdclass
+import gdext/core/gdclass
 
 import std/macros
 

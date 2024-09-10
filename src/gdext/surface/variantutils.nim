@@ -1,8 +1,7 @@
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/commandindex
-import gdextcore/builtinindex
-import gdextcore/typeshift
-import gdextcore/gdvariant
+import gdext/dirty/gdextensioninterface
+import gdext/core/commandindex
+import gdext/core/builtinindex
+import gdext/core/typeshift
 
 import std/hashes
 

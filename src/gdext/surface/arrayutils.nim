@@ -1,9 +1,8 @@
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/gdtypedarray
-import gdextcore/builtinindex
-import gdextcore/gdclass
-import gdextcore/gdvariant
-import gdextcore/typeshift
+import gdext/dirty/gdextensioninterface
+import gdext/core/gdtypedarray
+import gdext/core/builtinindex
+import gdext/core/gdclass
+import gdext/core/typeshift
 import gdextgen/builtinclasses
 
 {.push, inline.}

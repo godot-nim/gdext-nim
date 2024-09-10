@@ -1,5 +1,5 @@
 when not declared(switch):
-  import gdextcore/dirty/gdextensioninterface
+  import gdext/dirty/gdextensioninterface
 
   const
     Extension_name {.strdefine: "Extension.name".} = ""
@@ -9,12 +9,16 @@ when not declared(switch):
 
     Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
 
+    Dev_debugCallbacks {.booldefine: "Dev.debugCallbacks".} = off
+
   type ExtensionObj* = object
     name*: string
     entrySymbol*: string
     version*: tuple[major, minor: int]
   type AssistanceObj* = object
     checkEnv*: bool
+  type DevObj* = object
+    debugCallbacks*: bool
 
   const
     Extension* = ExtensionObj(
@@ -24,6 +28,9 @@ when not declared(switch):
     )
     Assistance* = AssistanceObj(
       checkEnv: Assistance_checkEnv,
+    )
+    Dev* = DevObj(
+      debugCallbacks: Dev_debugCallbacks,
     )
 
   when Assistance.checkEnv:

@@ -1,4 +1,4 @@
-import gdextcore/[gdclass]
+import gdext/core/[gdclass]
 import gdextgen/[classindex]
 import gdextgen/classes/[gdengine]
 import gdext/surface/[userclass, classutils]
@@ -29,5 +29,5 @@ template eliminateExtensionMain* =
   extmain = nil
 
 when isMainModule:
-  import gdextcore/dirty/gdextensioninterface
+  import gdext/dirty/gdextensioninterface
   initializeExtensionMain()

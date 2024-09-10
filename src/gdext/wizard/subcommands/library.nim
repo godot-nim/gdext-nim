@@ -15,7 +15,7 @@ proc uninstall*(): 0..1 =
   let pkglist = @[
     "gdext",
     "gdextgen",
-    "gdextcore",
+    "gdext/core",
     "gdextwiz",
     ]
   let pkg = pkglist.join(" ")

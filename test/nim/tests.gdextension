@@ -6,5 +6,8 @@ reloadable = true
 
 [libraries]
 
-linux = "res://nim/lib/libbootstrap.so"
-windows = "res://nim/lib/libbootstrap.dll"
+linux.debug = "res://nim/lib/linux/debug/libbootstrap.so"
+windows.debug = "res://nim/lib/windows/debug/libbootstrap.dll"
+
+linux.release = "res://nim/lib/linux/release/libbootstrap.so"
+windows.release = "res://nim/lib/windows/release/libbootstrap.dll"

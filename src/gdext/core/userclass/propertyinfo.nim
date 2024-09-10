@@ -1,10 +1,9 @@
 import std/macros
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/builtinindex
-import gdextcore/extracommands
-import gdextcore/gdvariant
-import gdextcore/typeshift
+import gdext/dirty/gdextensioninterface
+import gdext/core/builtinindex
+import gdext/core/extracommands
+import gdext/core/typeshift
 import gdextgen/globalenums except VariantType
 
 # Metadata

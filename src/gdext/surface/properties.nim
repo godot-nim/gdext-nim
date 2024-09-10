@@ -1,12 +1,11 @@
 from std/strutils import join
 from std/sequtils import concat, mapIt
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/utils/macros
-import gdextcore/commandindex
-import gdextcore/gdclass
-import gdextcore/staticevents
-import gdextcore/builtinindex
+import gdext/dirty/gdextensioninterface
+import gdext/utils/[macros, staticevents]
+import gdext/core/commandindex
+import gdext/core/gdclass
+import gdext/core/builtinindex
 import gdextgen/builtinclasses
 import gdextgen/globalenums
 import gdextgen/classindex

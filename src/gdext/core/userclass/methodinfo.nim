@@ -1,14 +1,13 @@
 import std/sequtils
 import std/tables
-import gdextcore/utils/macros
+import gdext/utils/macros
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/commandindex
-import gdextcore/builtinindex
-import gdextcore/typeshift
-import gdextcore/gdvariant
-import gdextcore/exceptions
-import gdextcore/methodtools
+import gdext/dirty/gdextensioninterface
+import gdext/core/commandindex
+import gdext/core/builtinindex
+import gdext/core/typeshift
+import gdext/core/exceptions
+import gdext/core/methodtools
 
 import propertyinfo
 

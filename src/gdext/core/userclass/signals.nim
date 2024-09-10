@@ -1,13 +1,11 @@
 import std/[tables, sets]
 
-import gdextcore/utils/macros
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/gdclass
-import gdextcore/gdvariant
-import gdextcore/builtinindex
-import gdextcore/commandindex
-import gdextcore/staticevents
-import gdextcore/typeshift
+import gdext/utils/[macros, staticevents]
+import gdext/dirty/gdextensioninterface
+import gdext/core/gdclass
+import gdext/core/builtinindex
+import gdext/core/commandindex
+import gdext/core/typeshift
 
 import gdextgen/classes/gdobject
 

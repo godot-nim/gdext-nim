@@ -1,9 +1,11 @@
 import std/strutils
 
-import gdextcore/dirty/gdextensioninterface
-import gdextcore/commandindex
-import gdextcore/extracommands
-import gdextcore/gdclass
+import gdext/buildconf
+
+import gdext/dirty/gdextensioninterface
+import gdext/core/commandindex
+import gdext/core/extracommands
+import gdext/core/gdclass
 
 type SomeNotRefCounted = concept type t
   t is GodotClass
@@ -11,13 +13,14 @@ type SomeNotRefCounted = concept type t
 
 proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
-  result = CLASS_create(Type, objectPtr)
+  result = createClass(Type, objectPtr)
   when T is SomeUserClass:
     interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
 proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   result = instantiate_internal T
-  CLASS_sync_instantiate result
+  when Dev.debugCallbacks:
+    decho SYNC.INSTANTIATE, $typeof T
 
 
 proc instanceID*(self: GodotClass): GDObjectInstanceID =
@@ -57,4 +60,14 @@ proc `$`*[T: GodotClass](self: T): string =
   result = $T & "(ID: 0x" & self.instanceID.toHex & ")"
   when compiles self.name():
     return $self.name() & " [" & result & "]"
+
+export init
+method notification*(self: GodotClass; p_what: int32) {.base.} = discard
+method set*(self: GodotClass; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.base.} = discard
+method get*(self: GodotClass; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.base.} = discard
+method property_canRevert*(self: GodotClass; p_name: ConstStringNamePtr): Bool {.base.} = discard
+method property_getRevert*(self: GodotClass; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.base.} = discard
+method toString*(self: GodotClass; r_is_valid: ptr Bool; p_out: StringPtr) {.base.} = discard
+method get_propertyList*(self: GodotClass; r_count: ptr uint32): ptr PropertyInfo {.base.} = r_count[] = 0
+method free_propertyList*(self: GodotClass; p_list: ptr PropertyInfo) {.base.} = discard
 

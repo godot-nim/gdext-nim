@@ -1,5 +1,6 @@
-import gdextcore/gdclass
-import gdextcore/gdrefs
+import gdext/buildconf
+import gdext/core/gdclass
+import gdext/core/gdrefs
 
 import gdext/surface/classutils
 
@@ -10,8 +11,8 @@ template `as`*[T: SomeRefCounted](self: GodotClass; Result: typedesc[GdRef[T]]):
 template `as`*[T: SomeRefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)
 
 proc instantiate*[T: SomeRefCounted](Type: typedesc[T]): GdRef[T] =
-  var res = instantiate_internal Type
-  CLASS_sync_instantiate res
-  res.asGdRef
+  result = instantiate_internal(Type).asGdRef
+  when Dev.debugCallbacks:
+    decho SYNC.INSTANTIATE, $typeof T
 
 template `[]`*[T: SomeRefCounted](x: GdRef[T]): T = x.unwrapped
