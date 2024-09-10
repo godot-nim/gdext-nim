@@ -1,9 +1,7 @@
 import gdextcore/gdclass
 import gdextcore/gdrefs
 
-export GdRef, gdref, unwrapped
-
-import gdext/classtraits
+import gdext/surface/classutils
 
 template castTo*[T: SomeRefCounted](self: GodotClass; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
 template castTo*[T: SomeRefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(Result)

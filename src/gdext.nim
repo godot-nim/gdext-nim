@@ -2,17 +2,17 @@
 import gdextcore/dirty/gdextensioninterface
 export InitializationLevel, VariantType, gdcall
 
-import gdextcore/[ staticevents, builtinindex, geometrics, gdvariant ]
-export             staticevents, builtinindex, geometrics, gdvariant
+import gdextcore/[ staticevents, builtinindex, geometrics, gdvariant, gdrefs, gdtypedarray ]
+export             staticevents, builtinindex, geometrics, gdvariant, gdrefs, gdtypedarray
 
 import gdextcore/typeshift
-export typeshift.get
+export typeshift.get, typeshift.variant
 
 import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export            builtinclasses, classindex, globalenums, localenums, structs
 
-import gdext/[ init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions ]
-export         init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions
+import gdext/surface/[ init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
+export                 init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
 
 import gdext/buildconf
 

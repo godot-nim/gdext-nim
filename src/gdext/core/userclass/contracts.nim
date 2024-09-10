@@ -1,8 +1,6 @@
 import std/sets
-export sets.contains, sets.len
 
 import gdextcore/staticevents
-import gdext/classtraits
 
 type Contract = object
   typ*: string

@@ -20,8 +20,6 @@ proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   CLASS_sync_instantiate result
 
 
-export getInstance
-
 proc instanceID*(self: GodotClass): GDObjectInstanceID =
   interface_Object_getInstanceId CLASS_getObjectPtr self
 

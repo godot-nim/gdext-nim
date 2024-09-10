@@ -2,18 +2,16 @@ import std/macros
 import std/sets
 import std/tables
 
-import classautomate/contracts
-import classautomate/virtuals
-import classautomate/procs
-import classautomate/signals
-import classautomate/properties
-
 import gdextcore/dirty/gdextensioninterface
 import gdextcore/commandindex
 import gdextcore/builtinindex
 import gdextcore/extracommands
 import gdextcore/gdclass
-import gdext/classtraits
+
+import gdext/core/userclass/contracts
+import gdext/core/userclass/procs
+import gdext/core/userclass/signals
+import gdext/surface/classutils
 
 proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).set(p_name, p_value)
@@ -114,35 +112,7 @@ else:
     )
 
 template name*(newname: string) {.pragma.}
-export signals.signal
-export properties.register_property
-export properties.ExpEasingArgument
-export properties.RangeArgument
-export properties.`@export`
-export properties.`@export_category`
-export properties.`@export_group`
-export properties.`@export_subgroup`
-export properties.`@export_color_no_alpha`
-export properties.`@export_custom`
-export properties.`@export_dir`
-export properties.`@export_global_dir`
-export properties.`@export_file`
-export properties.`@export_global_file`
-export properties.`@export_enum`
-export properties.`@export_flags`
-export properties.`@export_flags_2d_navigation`
-export properties.`@export_flags_2d_physics`
-export properties.`@export_flags_2d_render`
-export properties.`@export_flags_3d_navigation`
-export properties.`@export_flags_3d_physics`
-export properties.`@export_flags_3d_render`
-export properties.`@export_flags_avoidance`
-export properties.`@export_exp_easing`
-export properties.`@export_multiline`
-export properties.`@export_node_path`
-export properties.`@export_placeholder`
-export properties.`@export_range`
-export properties.`@export_storage`
+template signal* {.pragma.}
 
 macro gdsync*(body): untyped =
   case body.kind

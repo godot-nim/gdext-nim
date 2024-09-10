@@ -6,8 +6,6 @@ import gdextcore/gdvariant
 import gdextcore/typeshift
 import gdextgen/builtinclasses
 
-export gdtypedarray
-
 {.push, inline.}
 proc setLen*(arr: var Array; newlen: Natural) =
   discard arr.resize(newlen)

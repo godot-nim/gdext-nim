@@ -1,8 +1,8 @@
 import gdextcore/builtinindex
 import gdextcore/gdclass
+import gdextcore/gdtypedarray
 import gdextgen/builtinclasses/constructors
-import gdext/classtraits
-import gdext/arrayutils
+import gdext/surface/classutils
 
 {.push, inline.}
 

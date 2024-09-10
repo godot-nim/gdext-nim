@@ -11,9 +11,9 @@ import gdextgen/builtinclasses
 import gdextgen/globalenums
 import gdextgen/classindex
 
-import contracts
-import propertyinfo
-import procs
+import gdext/core/userclass/contracts
+import gdext/core/userclass/propertyinfo
+import gdext/core/userclass/procs
 
 template register_property*(
       typ: typedesc[SomeUserClass];

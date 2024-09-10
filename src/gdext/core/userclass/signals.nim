@@ -1,4 +1,4 @@
-import std/tables
+import std/[tables, sets]
 
 import gdextcore/utils/macros
 import gdextcore/dirty/gdextensioninterface
@@ -7,16 +7,13 @@ import gdextcore/gdvariant
 import gdextcore/builtinindex
 import gdextcore/commandindex
 import gdextcore/staticevents
+import gdextcore/typeshift
 
 import gdextgen/classes/gdobject
-
-import gdext/varianttraits
 
 import contracts
 import propertyinfo
 import checkform
-
-template signal* {.pragma.}
 
 proc isSignal*(procdef: NimNode): bool =
   for expr in procdef.pragma:

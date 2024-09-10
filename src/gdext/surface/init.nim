@@ -1,3 +1,5 @@
+import std/[sets]
+
 import gdextcore/dirty/gdextensioninterface
 import gdextcore/builtinindex
 import gdextcore/staticevents
@@ -5,8 +7,8 @@ import gdextcore/commandindex
 import gdextcore/extracommands
 import gdextcore/typeshift
 import gdextgen/utilityfuncs
-import gdext/classautomate/contracts
-import gdext/classautomate
+import gdext/core/userclass/contracts
+import gdext/surface/userclass
 import gdext/gdextensionmain
 import gdext/buildconf
 
@@ -54,7 +56,7 @@ template GDExtension_EntryPoint*: untyped =
       eliminateExtensionMain()
     of Initialization_Editor:
       invoke eliminate_editor
-      classautomate.unregisterAll()
+      userclass.unregisterAll()
 
   proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
     try:

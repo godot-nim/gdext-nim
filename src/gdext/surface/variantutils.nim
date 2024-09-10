@@ -6,8 +6,6 @@ import gdextcore/gdvariant
 
 import std/hashes
 
-export typeshift.variant
-
 proc stringify*(v: Variant): String =
   interface_Variant_stringify(addr v, addr result)
 proc `$`*(v: Variant): string = $v.stringify
