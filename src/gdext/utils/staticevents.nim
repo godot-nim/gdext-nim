@@ -1,8 +1,5 @@
-import std/macros
-import std/tables
-import std/hashes
-
-const EnableDebugEvent {.booldefine: "debug.event".} = false
+import std/[macros, tables, hashes]
+import gdext/buildconf
 
 type Event* = distinct string
 proc event*(name: string): Event = Event name
@@ -35,7 +32,7 @@ macro invoke*(event: static Event): untyped =
     `eventproc`
     `eventhandler`()
 
-when EnableDebugEvent:
+when Dev.debugEvents:
   from strutils import join
 
   proc decho(args: varargs[string, `$`]) =
@@ -45,7 +42,7 @@ when EnableDebugEvent:
 
 macro process*(event: static Event; body) =
   let name = gensym(nskProc)
-  when EnableDebugEvent:
+  when Dev.debugEvents:
     result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> #", `processCounter`).add body[0..^1])
     inc processCounter
   else:
@@ -61,7 +58,7 @@ macro process*(event: static Event; body) =
 macro process*(event: static Event; processname: string; body) =
   let name = gensym(nskProc)
   result = newProc(name, body= body)
-  when EnableDebugEvent:
+  when Dev.debugEvents:
     result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> ", `processname`).add body[0..^1])
   else:
     result = newProc(name, body= body)

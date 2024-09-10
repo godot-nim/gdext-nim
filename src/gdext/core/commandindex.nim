@@ -1,4 +1,5 @@
 {.warning[Deprecated]:off.}
+import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 
 type Environment* = ref object
@@ -151,7 +152,7 @@ var
   interfaceEditorAddPlugin*: InterfaceEditorAddPlugin
   interfaceEditorRemovePlugin*: InterfaceEditorRemovePlugin
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   var
     interfaceStringResize*: InterfaceStringResize
     interfaceStringNameNewWithLatin1Chars*: InterfaceStringNameNewWithLatin1Chars
@@ -167,7 +168,7 @@ when TargetVersion >= (4, 2):
     interfaceClassdbRegisterExtensionClass2*: InterfaceClassdbRegisterExtensionClass2
     interfaceClassdbRegisterExtensionClassPropertyIndexed*: InterfaceClassdbRegisterExtensionClassPropertyIndexed
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   var
     interfaceStringNewWithUtf8CharsAndLen2*: InterfaceStringNewWithUtf8CharsAndLen2
     interfaceStringNewWithUtf16CharsAndLen2*: InterfaceStringNewWithUtf16CharsAndLen2
@@ -323,7 +324,7 @@ proc load* =
   interfaceEditorAddPlugin = cast[InterfaceEditorAddPlugin](getProcAddress(cstring "editor_add_plugin"))
   interfaceEditorRemovePlugin = cast[InterfaceEditorRemovePlugin](getProcAddress(cstring "editor_remove_plugin"))
 
-  when TargetVersion >= (4, 2):
+  when Extension.version >= (4, 2):
     interfaceStringResize = cast[InterfaceStringResize](getProcAddress(cstring "string_resize"))
     interfaceStringNameNewWithLatin1Chars = cast[InterfaceStringNameNewWithLatin1Chars](getProcAddress(cstring "string_name_new_with_latin1_chars"))
     interfaceStringNameNewWithUtf8Chars = cast[InterfaceStringNameNewWithUtf8Chars](getProcAddress(cstring "string_name_new_with_utf8_chars"))
@@ -338,7 +339,7 @@ proc load* =
     interfaceClassdbRegisterExtensionClass2 = cast[InterfaceClassdbRegisterExtensionClass2](getProcAddress(cstring "classdb_register_extension_class2"))
     interfaceClassdbRegisterExtensionClassPropertyIndexed = cast[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddress(cstring "classdb_register_extension_class_property_indexed"))
 
-  when TargetVersion >= (4, 3):
+  when Extension.version >= (4, 3):
     interfaceStringNewWithUtf8CharsAndLen2 = cast[InterfaceStringNewWithUtf8CharsAndLen2](getProcAddress(cstring "string_new_with_utf8_chars_and_len2"))
     interfaceStringNewWithUtf16CharsAndLen2 = cast[InterfaceStringNewWithUtf16CharsAndLen2](getProcAddress(cstring "string_new_with_utf16_chars_and_len2"))
     interfaceImagePtrw = cast[InterfaceImagePtrw](getProcAddress(cstring "image_ptrw"))

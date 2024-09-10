@@ -1,3 +1,4 @@
+import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/builtinindex
 import gdext/core/commandindex
@@ -58,7 +59,7 @@ template variantType*(_: typedesc[PackedVector2Array]): VariantType = VariantTyp
 template variantType*(_: typedesc[PackedVector3Array]): VariantType = VariantType_PackedVector3Array
 template variantType*(_: typedesc[PackedColorArray]): VariantType = VariantType_PackedColorArray
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   template variantType*(_: typedesc[PackedVector4Array]): VariantType = VariantType_PackedVector4Array
 
 template variantType*(_: typedesc[TypedArray]): VariantType = VariantType_Array

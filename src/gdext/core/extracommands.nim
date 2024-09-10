@@ -1,3 +1,4 @@
+import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/builtinindex
 import gdext/core/commandindex
@@ -20,7 +21,7 @@ proc `$`*(s: String): string =
   discard interfaceStringToLatin1Chars(addr s, cstring result, length)
 proc `$`*(s: StringName): string = $gdstring s
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   proc stringName*(str: string): StringName =
     interfaceStringNameNewWithLatin1Chars(addr result, cstring str, false)
 else:

@@ -1,15 +1,14 @@
 import std/[tables]
 
+import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/geometrics
 import gdext/core/commandindex
 import gdext/core/objectcontrol
 
-const DecimalPrecision* {.strdefine.} = "float" # ("double"|"float")
-
-when DecimalPrecision == "double":
+when Extension.decimalPrecision == "double":
   type real_elem* = float64
-elif DecimalPrecision == "float" or true:
+elif Extension.decimalPrecision == "float" or true:
   type real_elem* = float32
 
 type int_elem* = int32
@@ -106,7 +105,7 @@ type
   PackedVector3Array* = PackedArray[Vector3]
   PackedColorArray* = PackedArray[Color]
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   type
     PackedVector4Array* = PackedArray[Vector4]
 
@@ -125,7 +124,7 @@ type `SomePackedArray < 4.3` =
   PackedVector3Array |
   PackedColorArray
 
-when TargetVersion < (4, 3):
+when Extension.version < (4, 3):
   type SomePackedArray* = `SomePackedArray < 4.3`
 else:
   type SomePackedArray* = `SomePackedArray < 4.3` | PackedVector4Array
@@ -219,7 +218,7 @@ proc `=destroy`*(val: PackedVector3Array) =
 proc `=destroy`*(val: PackedColorArray) =
   try: hook_destroy[VariantTypePackedColorArray](addr val)
   except: discard
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   proc `=destroy`*(val: PackedVector4Array) =
     try: hook_destroy[VariantTypePackedVector4Array](addr val)
     except: discard
@@ -275,7 +274,7 @@ proc `=dup`*(src: PackedVector3Array): PackedVector3Array =
 proc `=dup`*(src: PackedColorArray): PackedColorArray =
   let argPtr = cast[pointer](addr src)
   hook_copy[VariantTypePackedColorArray](addr result, addr argPtr)
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   proc `=dup`*(src: PackedVector4Array): PackedVector4Array =
     let argPtr = cast[pointer](addr src)
     hook_copy[VariantTypePackedVector4Array](addr result, addr argPtr)
@@ -358,7 +357,7 @@ proc load* =
       VariantTypePackedVector2Array,
       VariantTypePackedVector3Array,
       VariantTypePackedColorArray,
-      when TargetVersion >= (4, 3):
+      when Extension.version >= (4, 3):
         VariantTypePackedVector4Array,
     ]
     destrs = [
@@ -378,7 +377,7 @@ proc load* =
       VariantTypePackedVector2Array,
       VariantTypePackedVector3Array,
       VariantTypePackedColorArray,
-      when TargetVersion >= (4, 3):
+      when Extension.version >= (4, 3):
         VariantTypePackedVector4Array,
     ]
 

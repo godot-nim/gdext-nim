@@ -33,7 +33,7 @@ proc property_can_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringN
 proc property_get_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).property_getRevert(p_name, r_ret)
 
-when TargetVersion == (4, 1):
+when Extension.version == (4, 1):
   proc notification_func(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
     cast[GodotClass](p_instance).notification(p_what)
 else:
@@ -56,7 +56,7 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
   when Dev.debugCallbacks:
     decho SYNC.FREE_BIND, $typeof T
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
     let class = createClass(T, p_object)
     CLASS_passOwnershipToGodot class
@@ -79,7 +79,7 @@ proc unreference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
 
-when TargetVersion == (4, 1):
+when Extension.version == (4, 1):
   proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo =
     ClassCreationInfo(
       is_virtual: is_virtual,
@@ -145,7 +145,7 @@ macro gdsync*(body): untyped =
 var registered: HashSet[StringName]
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
-  when TargetVersion == (4, 1):
+  when Extension.version == (4, 1):
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)

@@ -1,10 +1,7 @@
 {.warning[Deprecated]:off.}
 import std/macros
 
-const
-  TargetVersionMajor {.intdefine.} = 4
-  TargetVersionMinor {.intdefine.} = 3
-  TargetVersion* = (TargetVersionMajor, TargetVersionMinor)
+import gdext/buildconf
 
 macro gdcall*(someProc: untyped): untyped =
   someProc.addPragma ident do:
@@ -14,7 +11,7 @@ macro gdcall*(someProc: untyped): untyped =
 
 macro deprecated_atLeast(version: static[(int, int)]; body): untyped =
   result = body
-  if TargetVersion >= version:
+  if Extension.version >= version:
     case body.kind
     of nnkTypeDef:
       result[0][1].add ident"deprecated"
@@ -35,7 +32,7 @@ type
   char32_t* = uint32_t
   char16_t* = uint16_t
 
-when TargetVersion in (4, 1)..(4, 2):
+when Extension.version in (4, 1)..(4, 2):
   type
     VariantType* {.size: sizeof(cuint).} = enum
       VariantType_Nil,
@@ -61,7 +58,7 @@ when TargetVersion in (4, 1)..(4, 2):
       VariantType_PackedVector2Array,
       VariantType_PackedVector3Array,
       VariantType_PackedColorArray,
-elif TargetVersion >= (4, 3):
+elif Extension.version >= (4, 3):
   type
     VariantType* {.size: sizeof(cuint).} = enum
       VariantType_Nil,
@@ -89,7 +86,7 @@ elif TargetVersion >= (4, 3):
       VariantType_PackedColorArray,
       VariantType_PackedVector4Array,
 
-when TargetVersion >= (4, 1):
+when Extension.version >= (4, 1):
   type
     VariantOperator* {.size: sizeof(cuint).} = enum
       VariantOP_Equal, VariantOP_NotEqual,
@@ -214,7 +211,7 @@ when TargetVersion >= (4, 1):
       get_rid_func*: ClassGetRID
       class_userdata*: pointer
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   type
     ClassValidateProperty* = proc (p_instance: ClassInstancePtr; p_property: ptr PropertyInfo): Bool {.gdcall.}
     ClassNotification2* = proc (p_instance: ClassInstancePtr; p_what: int32_t; p_reversed: Bool) {.gdcall.}
@@ -246,7 +243,7 @@ when TargetVersion >= (4, 2):
       call_virtual_with_data_func*: ClassCallVirtualWithData
       get_rid_func*: ClassGetRID
       class_userdata*: pointer
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   type
     ClassFreePropertyList2* = proc(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t)
     ClassCreationInfo3* {.bycopy.} = object
@@ -274,7 +271,7 @@ when TargetVersion >= (4, 3):
       get_rid_func*: ClassGetRID
       class_userdata*: pointer
 
-when TargetVersion >= (4, 1):
+when Extension.version >= (4, 1):
   type
     ClassLibraryPtr* = pointer
     ClassMethodFlags* {.size: sizeof(cuint).} = enum
@@ -315,7 +312,7 @@ when TargetVersion >= (4, 1):
       default_argument_count*: uint32_t
       default_arguments*: ptr VariantPtr
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   type
     CallableCustomCall* = proc (callable_userdata: pointer; p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int; r_return: VariantPtr; r_error: ptr CallError) {.gdcall.}
     CallableCustomIsValid* = proc (callable_userdata: pointer): Bool {.gdcall.}
@@ -337,7 +334,7 @@ when TargetVersion >= (4, 2):
       less_than_func*: CallableCustomLessThan
       to_string_func*: CallableCustomToString
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   type
     ClassVirtualMethodInfo* {.bycopy.} = object
       name*: StringNamePtr
@@ -362,7 +359,7 @@ when TargetVersion >= (4, 3):
       to_string_func*: CallableCustomToString
       get_argument_count_func*: CallableCustomGetArgumentCount
 
-when TargetVersion >= (4, 1):
+when Extension.version >= (4, 1):
   type
     ScriptInstanceDataPtr* = pointer
     ScriptInstanceSet* = proc (p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.}
@@ -415,7 +412,7 @@ when TargetVersion >= (4, 1):
       get_language_func*: ScriptInstanceGetLanguage
       free_func*: ScriptInstanceFree
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   type
     ScriptInstanceGetClassCategory* = proc (p_instance: ScriptInstanceDataPtr; p_class_category: ptr PropertyInfo): Bool {.gdcall.}
     ScriptInstanceValidateProperty* = proc (p_instance: ScriptInstanceDataPtr; p_property: ptr PropertyInfo): Bool {.gdcall.}
@@ -448,7 +445,7 @@ when TargetVersion >= (4, 2):
       get_language_func*: ScriptInstanceGetLanguage
       free_func*: ScriptInstanceFree
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   type
     ScriptInstanceFreePropertyList2* = proc (p_instance: ScriptInstanceDataPtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t)
     ScriptInstanceFreeMethodList2* = proc (p_instance: ScriptInstanceDataPtr; p_list: ptr UncheckedArray[MethodInfo]; p_count: uint32_t)
@@ -482,7 +479,7 @@ when TargetVersion >= (4, 3):
       get_language_func*: ScriptInstanceGetLanguage
       free_func*: ScriptInstanceFree
 
-when TargetVersion >= (4, 1):
+when Extension.version >= (4, 1):
   type
     InitializationLevel* {.size: sizeof(cuint).} = enum
       Initialization_Core
@@ -505,7 +502,7 @@ when TargetVersion >= (4, 1):
       string*: cstring
 
 
-when TargetVersion >= (4, 1):
+when Extension.version >= (4, 1):
   type
     InterfaceGetGodotVersion* = proc (r_godot_version: ptr GodotVersion) {.gdcall, raises: [].}
     InterfaceMemAlloc* = proc (p_bytes: csize_t): pointer {.gdcall, raises: [].}
@@ -644,7 +641,7 @@ when TargetVersion >= (4, 1):
     InterfaceEditorAddPlugin* = proc (p_class_name: ConstStringNamePtr) {.gdcall, raises: [].}
     InterfaceEditorRemovePlugin* = proc (p_class_name: ConstStringNamePtr) {.gdcall, raises: [].}
 
-when TargetVersion >= (4, 2):
+when Extension.version >= (4, 2):
   type
     InterfaceStringResize* = proc (p_self: StringPtr; p_resize: Int): Int {.gdcall, raises: [].}
     InterfaceStringNameNewWithLatin1Chars* = proc (r_dest: UninitializedStringNamePtr; p_contents: cstring; p_is_static: Bool) {.gdcall, raises: [].}
@@ -660,7 +657,7 @@ when TargetVersion >= (4, 2):
     InterfaceClassdbRegisterExtensionClass2* {.deprecated_atLeast: (4, 3).} = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_parent_class_name: ConstStringNamePtr; p_extension_funcs: ptr ClassCreationInfo2) {.gdcall, raises: [].}
     InterfaceClassdbRegisterExtensionClassPropertyIndexed* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_info: ptr PropertyInfo; p_setter: ConstStringNamePtr; p_getter: ConstStringNamePtr; p_index: Int) {.gdcall, raises: [].}
 
-when TargetVersion >= (4, 3):
+when Extension.version >= (4, 3):
   type
     InterfaceStringNewWithUtf8CharsAndLen2* = proc (r_dest: UninitializedStringPtr; p_contents: cstring; p_size: Int): Int {.gdcall, raises: [].}
     InterfaceStringNewWithUtf16CharsAndLen2* = proc (r_dest: UninitializedStringPtr; p_contents: ptr char16_t; p_char_count: Int; p_default_little_endian: Bool): Int {.gdcall, raises: [].}

@@ -1,36 +1,40 @@
 when not declared(switch):
-  import gdext/dirty/gdextensioninterface
-
   const
     Extension_name {.strdefine: "Extension.name".} = ""
     Extension_entrySymbol {.strdefine: "Extension.entrySymbol".} = "init_library"
-    Extension_versionMajor {.intdefine: "Extension.versionMajor".} = TargetVersion[0]
-    Extension_versionMinor {.intdefine: "Extension.versionMinor".} = TargetVersion[1]
+    Extension_versionMajor {.intdefine: "Extension.versionMajor".} = 4
+    Extension_versionMinor {.intdefine: "Extension.versionMinor".} = 3
+    Extension_decimalPrecision {.strdefine: "Extension.decimalPrecision".} = "float"
 
     Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
 
     Dev_debugCallbacks {.booldefine: "Dev.debugCallbacks".} = off
+    Dev_debugEvents {.booldefine: "Dev.debugEvents".} = off
 
   type ExtensionObj* = object
     name*: string
     entrySymbol*: string
     version*: tuple[major, minor: int]
+    decimalPrecision*: string
   type AssistanceObj* = object
     checkEnv*: bool
   type DevObj* = object
     debugCallbacks*: bool
+    debugEvents*: bool
 
   const
     Extension* = ExtensionObj(
       name: Extension_name,
       entrySymbol: Extension_entrySymbol,
       version: (Extension_versionMajor, Extension_versionMinor),
+      decimalPrecision: Extension_decimalPrecision,
     )
     Assistance* = AssistanceObj(
       checkEnv: Assistance_checkEnv,
     )
     Dev* = DevObj(
       debugCallbacks: Dev_debugCallbacks,
+      debugEvents: Dev_debugEvents,
     )
 
   when Assistance.checkEnv:
@@ -67,8 +71,8 @@ else:
       "debug"
 
   proc `version=`*(_: typedesc[Extension]; version: tuple[major, minor: int]) =
-    switch("define", "TargetVersionMajor:" & $version.major)
-    switch("define", "TargetVersionMinor:" & $version.minor)
+    switch("define", "Extension.versionMajor:" & $version.major)
+    switch("define", "Extension.versionMinor:" & $version.minor)
 
   proc `libdir=`*(_: typedesc[Extension]; path: string) =
     switch("outdir", path)
