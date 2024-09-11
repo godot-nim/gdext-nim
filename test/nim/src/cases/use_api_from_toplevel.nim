@@ -1,7 +1,7 @@
 import std/unittest
 
 import gdext
-import gdextcore/gdclass
+import gdext/core/gdclass
 import classes/gdtestobject
 
 type Test = enum

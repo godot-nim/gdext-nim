@@ -3,7 +3,6 @@ import std/strutils
 import std/strformat
 import std/terminal
 import std/options
-export option, some, none
 
 type
   Notifier = enum

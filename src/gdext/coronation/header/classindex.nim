@@ -1,0 +1,1 @@
+import gdext/core/gdclass; export gdclass

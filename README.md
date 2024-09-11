@@ -42,7 +42,6 @@ gdextwiz upgrade
 * [godotengine/godot](https://github.com/godotengine/godot) 4.3
  
   It is possible to support lower strictly by manual installation (by changing gdextgen to the corresponding version content).
-* [godot-nim/gdextcore](https://github.com/godot-nim/gdextcore) latest
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 
 [1]: https://github.com/godot-nim/demo

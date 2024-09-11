@@ -1,29 +1,33 @@
 {.warning[UnusedImport]: off.}
-import gdextcore/dirty/gdextensioninterface
-export InitializationLevel, VariantType, gdcall
-
-import gdextcore/[ staticevents, builtinindex, geometrics, gdvariant ]
-export             staticevents, builtinindex, geometrics, gdvariant
-
-import gdextcore/typeshift
-export typeshift.get
-
-import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
-export            builtinclasses, classindex, globalenums, localenums, structs
-
-import gdext/[ init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions ]
-export         init, classautomate, classtraits, varianttraits, nodetraits, arrayutils, gdrefs, conversions
 
 import gdext/buildconf
 
-import gdext/gdextensionmain
-export gdextensionmain.ExtensionMain, gdextensionmain.extmain
+import gdext/utils/staticevents
+export staticevents.process
+
+import gdext/dirty/gdextensioninterface
+export InitializationLevel, VariantType, gdcall
+
+import gdext/core/[ builtinindex, geometrics, gdrefs, gdtypedarray ]
+export              builtinindex, geometrics, gdrefs, gdtypedarray
+
+import gdext/core/typeshift
+export typeshift.get, typeshift.variant
+
+import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
+export            builtinclasses, classindex, globalenums, localenums, structs
 
 import gdextgen/utilityfuncs
 export utilityfuncs except print
 
 import gdextgen/classes/gdengine
 export gdengine.isEditorHint
+
+import gdext/surface/[ init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
+export                 init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
+
+import gdext/gdextensionmain
+export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
 proc print*(args: varargs[Variant, variant]) =
   if unlikely(args.len == 0): return

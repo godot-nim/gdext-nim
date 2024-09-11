@@ -1,6 +1,6 @@
 import gdext/wizard/sdk/cli
 
-import std/[os, strutils, strformat]
+import std/[os, strutils, strformat, options]
 
 type Directory* = distinct string
 
