@@ -191,37 +191,29 @@ proc `=destroy`*(val: Array) =
 proc `=destroy`*(val: Dictionary) =
   try: hook_destroy[VariantTypeDictionary](addr val)
   except: discard
-proc `=destroy`*(val: PackedByteArray) =
-  try: hook_destroy[VariantTypePackedByteArray](addr val)
+proc `=destroy`*[T](val: PackedArray[T]) =
+  try:
+    when T is byte:
+      hook_destroy[VariantTypePackedByteArray](addr val)
+    elif T is int32:
+      hook_destroy[VariantTypePackedInt32Array](addr val)
+    elif T is int64:
+      hook_destroy[VariantTypePackedInt64Array](addr val)
+    elif T is float32:
+      hook_destroy[VariantTypePackedFloat32Array](addr val)
+    elif T is float64:
+      hook_destroy[VariantTypePackedFloat64Array](addr val)
+    elif T is String:
+      hook_destroy[VariantTypePackedStringArray](addr val)
+    elif T is Vector2:
+      hook_destroy[VariantTypePackedVector2Array](addr val)
+    elif T is Vector3:
+      hook_destroy[VariantTypePackedVector3Array](addr val)
+    elif T is Color:
+      hook_destroy[VariantTypePackedColorArray](addr val)
+    elif Extension.version >= (4, 3) and T is Vector4:
+      hook_destroy[VariantTypePackedVector4Array](addr val)
   except: discard
-proc `=destroy`*(val: PackedInt32Array) =
-  try: hook_destroy[VariantTypePackedInt32Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedInt64Array) =
-  try: hook_destroy[VariantTypePackedInt64Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedFloat32Array) =
-  try: hook_destroy[VariantTypePackedFloat32Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedFloat64Array) =
-  try: hook_destroy[VariantTypePackedFloat64Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedStringArray) =
-  try: hook_destroy[VariantTypePackedStringArray](addr val)
-  except: discard
-proc `=destroy`*(val: PackedVector2Array) =
-  try: hook_destroy[VariantTypePackedVector2Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedVector3Array) =
-  try: hook_destroy[VariantTypePackedVector3Array](addr val)
-  except: discard
-proc `=destroy`*(val: PackedColorArray) =
-  try: hook_destroy[VariantTypePackedColorArray](addr val)
-  except: discard
-when Extension.version >= (4, 3):
-  proc `=destroy`*(val: PackedVector4Array) =
-    try: hook_destroy[VariantTypePackedVector4Array](addr val)
-    except: discard
 
 proc `=dup`*(src: String): String =
   let argPtr = cast[pointer](addr src)
@@ -247,36 +239,28 @@ proc `=dup`*(src: Dictionary): Dictionary =
 proc `=dup`*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
   hook_copy[VariantTypeArray](addr result, addr argPtr)
-proc `=dup`*(src: PackedByteArray): PackedByteArray =
+
+proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedByteArray](addr result, addr argPtr)
-proc `=dup`*(src: PackedInt32Array): PackedInt32Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedInt32Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedInt64Array): PackedInt64Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedInt64Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedFloat32Array): PackedFloat32Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedFloat32Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedFloat64Array): PackedFloat64Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedFloat64Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedStringArray): PackedStringArray =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedStringArray](addr result, addr argPtr)
-proc `=dup`*(src: PackedVector2Array): PackedVector2Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedVector2Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedVector3Array): PackedVector3Array =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedVector3Array](addr result, addr argPtr)
-proc `=dup`*(src: PackedColorArray): PackedColorArray =
-  let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypePackedColorArray](addr result, addr argPtr)
-when Extension.version >= (4, 3):
-  proc `=dup`*(src: PackedVector4Array): PackedVector4Array =
-    let argPtr = cast[pointer](addr src)
+  when T is byte:
+    hook_copy[VariantTypePackedByteArray](addr result, addr argPtr)
+  elif T is int32:
+    hook_copy[VariantTypePackedInt32Array](addr result, addr argPtr)
+  elif T is int64:
+    hook_copy[VariantTypePackedInt64Array](addr result, addr argPtr)
+  elif T is float32:
+    hook_copy[VariantTypePackedFloat32Array](addr result, addr argPtr)
+  elif T is float64:
+    hook_copy[VariantTypePackedFloat64Array](addr result, addr argPtr)
+  elif T is String:
+    hook_copy[VariantTypePackedStringArray](addr result, addr argPtr)
+  elif T is Vector2:
+    hook_copy[VariantTypePackedVector2Array](addr result, addr argPtr)
+  elif T is Vector3:
+    hook_copy[VariantTypePackedVector3Array](addr result, addr argPtr)
+  elif T is Color:
+    hook_copy[VariantTypePackedColorArray](addr result, addr argPtr)
+  elif Extension.version >= (4, 3) and T is Vector4:
     hook_copy[VariantTypePackedVector4Array](addr result, addr argPtr)
 
 
