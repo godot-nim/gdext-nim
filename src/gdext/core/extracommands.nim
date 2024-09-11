@@ -36,6 +36,15 @@ proc className*(o: ObjectPtr): string =
   discard interfaceObjectGetClassName(o, environment.library, addr sn)
   $sn
 
+proc empty*(_: typedesc[String]): var String =
+  var instance {.global.}: String
+  once: instance = gdstring""
+  instance
+proc empty*(_: typedesc[StringName]): var StringName =
+  var instance {.global.}: StringName
+  once: instance = stringName""
+  instance
+
 var RefCounted_reference: MethodBindPtr
 var RefCounted_unreference: MethodBindPtr
 var RefCounted_get_reference_count: MethodBindPtr

@@ -11,10 +11,6 @@ import gdext/core/methodtools
 
 import propertyinfo
 
-type ClassMethodInfoGlue = ref object
-  info*: ClassMethodInfo
-
-
 type MiddleExp = object
   name: NimNode
   isStatic: bool
@@ -48,7 +44,8 @@ proc returnValueInfo(middle: MiddleExp): NimNode =
   let retT = middle.result_T
   if middle.hasResult:
     quote do:
-      propertyInfo(typedesc `retT`)
+      let info = propertyInfo(typedesc `retT`)
+      addr info
   else: newNilLit()
 proc returnValueMeta(middle: MiddleExp): NimNode =
   let retT = middle.result_T
@@ -65,11 +62,12 @@ proc argumentsInfo(middle: MiddleExp): NimNode =
   for (name, Type, default) in middle.args:
     let name = toStrLit name
     info.add quote do:
-      propertyInfo(typedesc `Type`, stringName `name`)[]
+      let p_name = stringName `name`
+      propertyInfo(typedesc `Type`, addr p_name)
 
   quote do:
     let info = `info`
-    native info
+    addr info[0]
 
 proc argumentsMeta(middle: MiddleExp): NimNode =
   if middle.args.len == 0: return newNilLit()
@@ -217,24 +215,22 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
   result = quote do:
     let proc_name: StringName = stringName `gdname`
     `defaultArgumentsArray`
-    ClassMethodInfoGlue(
-      info: ClassMethodInfo(
-        name: addr proc_name,
-        call_func: `call_func`,
-        ptrcall_func: `ptrcall_func`,
-        method_flags: cast[uint32](`method_flags`),
+    ClassMethodInfo(
+      name: addr proc_name,
+      call_func: `call_func`,
+      ptrcall_func: `ptrcall_func`,
+      method_flags: cast[uint32](`method_flags`),
 
-        has_return_value: `has_return_value`,
-        return_value_info: native `return_value_info`,
-        return_value_metadata: `return_value_metadata`,
+      has_return_value: `has_return_value`,
+      return_value_info: `return_value_info`,
+      return_value_metadata: `return_value_metadata`,
 
-        argument_count: `argument_count`,
-        arguments_info: `arguments_info`,
-        arguments_metadata: `arguments_metadata`,
+      argument_count: `argument_count`,
+      arguments_info: `arguments_info`,
+      arguments_metadata: `arguments_metadata`,
 
-        default_argument_count: uint32 `default_argument_count`,
-        default_arguments: `defaultarguments`,
-      ),
+      default_argument_count: uint32 `default_argument_count`,
+      default_arguments: `defaultarguments`,
     )
 
 proc classMethodInfo*(procdef: NimNode; gdname: NimNode): NimNode =
