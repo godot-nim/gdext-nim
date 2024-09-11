@@ -22,16 +22,6 @@ proc isSignal*(procdef: NimNode): bool =
     else:
       discard
 
-type ClassSignalInfo = ref object
-  name*: StringName
-  arguments*: seq[PropertyInfo]
-
-template argumentHead(info: ClassSignalInfo): ptr PropertyInfo =
-  if info.arguments.len == 0: nil
-  else: addr info.arguments[0]
-template argumentSize(info: ClassSignalInfo): Int =
-  info.arguments.len
-
 proc makebody (params, gdname, self: NimNode): NimNode =
   let variantArrDef = newNimNode nnkBracket
 
@@ -49,27 +39,31 @@ proc makebody (params, gdname, self: NimNode): NimNode =
     let variantArr = `variantArrDef`
     `self`.emitSignal(signalName, variantArr)
 
-macro makeinfo (params; gdname): untyped =
+macro parseParams (params): untyped =
   var arguments = newNimNode nnkBracket
 
   for i, (name, typ, _) in params.breakArgs:
     if i == 0: continue
     let namelit = name.toStrLit
     arguments.add quote do:
-      native propertyInfo(typedesc `typ`, `namelit`)[]
+      let p_name = stringName `namelit`
+      propertyInfo(typedesc `typ`, addr p_name)
 
-  quote do:
-    ClassSignalInfo(
-      name: stringname `gdname`,
-      arguments: @`arguments`,)
+  quote do: @`arguments`
 
-macro registerSignal (params, gdname): untyped =
+macro registerSignal (params; gdname: string): untyped =
   let arg0_T = params[1][1]
 
   quote do:
     process(`arg0_T`.contract.signal, `gdname`):
-      let info = makeinfo(`params`, `gdname`)
-      interface_ClassDB_registerExtensionClassSignal(environment.library, addr className(`arg0_T`), addr info.name, info.argumentHead, info.argumentSize)
+      let
+        name = stringName `gdname`
+        params: seq[PropertyInfo] = parseParams(`params`)
+        size = params.len
+        head = (if size == 0: nil else: addr params[0])
+
+      interface_ClassDB_registerExtensionClassSignal(
+        environment.library, addr className(`arg0_T`), addr name, head, size)
 
 proc sync_signal*(procDef: NimNode): NimNode =
   const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."

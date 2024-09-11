@@ -4,8 +4,10 @@ from std/sequtils import concat, mapIt
 import gdext/dirty/gdextensioninterface
 import gdext/utils/[macros, staticevents]
 import gdext/core/commandindex
+import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/builtinindex
+import gdext/core/typeshift
 import gdextgen/builtinclasses
 import gdextgen/globalenums
 import gdextgen/classindex
@@ -13,6 +15,20 @@ import gdextgen/classindex
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
+
+proc register_property_internal*(
+      typ: ptr StringName;
+      name: ptr StringName;
+      proptyp: VariantType;
+      getter, setter: ptr StringName;
+      hint: PropertyHint;
+      hintstring: ptr String;
+      usage: set[PropertyUsageFlags];
+    ) =
+  let info = propertyInfo(proptyp, name, typ, hint, hintstring, usage)
+  interface_ClassDB_registerExtensionClassProperty( environment.library,
+    typ, addr info,
+    setter, getter)
 
 template register_property*(
       typ: typedesc[SomeUserClass];
@@ -24,18 +40,11 @@ template register_property*(
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
   process(typ.contract.property, $name):
-    let
-      info: ref PropertyInfoGlue = proptyp.propertyInfo(
-        name,
-        className typ,
-        hint,
-        hintstring,
-        usage)
-      setterName = setter
-      getterName = getter
-    interface_ClassDB_registerExtensionClassProperty( environment.library,
-      addr className(typ), native info,
-      addr setterName, addr getterName)
+    let p_name = name
+    let p_getter = getter
+    let p_setter = setter
+    let p_hintstring = hintstring
+    register_property_internal(addr className typ, addr p_name, variantType proptyp, addr p_getter, addr p_setter, hint, addr p_hintstring, usage)
 
 macro gdname*(P: proc): string =
   for pragma in P.getImpl.pragma:
@@ -94,19 +103,8 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
 
 template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name: StringName): untyped =
   process(typ.contract.property, "category " & $name):
-    let
-      info: ref PropertyInfoGlue = propertyInfo(
-        VariantType_Nil,
-        name,
-        stringName"",
-        propertyHintNone,
-        gdstring"",
-        {propertyUsageCategory})
-    let getter = stringName""
-    let setter = stringName""
-    interface_ClassDB_registerExtensionClassProperty( environment.library,
-      addr className(typ), native info,
-      addr setter, addr getter)
+    let p_name = name
+    register_property_internal(addr className typ, addr p_name, VariantTypeNil, addr StringName.empty, addr StringName.empty, propertyHintNone, addr String.empty, {propertyUsageCategory})
 
 template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
   process(typ.contract.property, "group " & $name):

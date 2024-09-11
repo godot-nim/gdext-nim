@@ -51,27 +51,6 @@ template metadata*(T: typedesc[float32]): ClassMethodArgumentMetadata = MethodAr
 # Property Info
 # =============
 
-proc new[T: String|StringName](s: T): ref T =
-  new result
-  result[] = s
-
-
-type
-  PropertyInfoGlue* = object
-    `type`*: Variant_Type
-    name*: ref StringName
-    class_name*: ref StringName
-    hint*: PropertyHint
-    hint_string*: ref String
-    usage*: set[PropertyUsageFlags]
-
-proc native*(p: ref PropertyInfoGlue): ptr PropertyInfo =
-  cast[ptr PropertyInfo](p)
-proc native*(p: PropertyInfoGlue): PropertyInfo =
-  cast[PropertyInfo](p)
-proc native*(a: openArray[PropertyInfoGlue]): ptr PropertyInfo =
-  cast[ptr PropertyInfo](addr a[0])
-
 template uniqueUsage*(T: typedesc): set[PropertyUsageFlags] = {}
 template uniqueUsage*(T: typedesc[Variant]): set[PropertyUsageFlags] = {propertyUsageNilIsVariant}
 
@@ -80,27 +59,27 @@ type SomeProperty* = concept type t
   t.uniqueUsage is set[PropertyUsageFlags]
 
 proc propertyInfo*(typ: VariantType;
-      name: StringName = stringname"";
-      class_name: StringName = stringname"";
+      name: ptr StringName = addr StringName.empty;
+      class_name: ptr StringName = addr StringName.empty;
       hint: PropertyHint = propertyHint_None;
-      hint_string: String = gdstring"";
-      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault
-    ): ref PropertyInfoGlue =
-  (ref PropertyInfoGlue)(
+      hint_string: ptr String = addr String.empty;
+      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+    ): PropertyInfo =
+  PropertyInfo(
     type: typ,
-    name: new name,
-    class_name: new class_name,
-    hint: hint,
-    hint_string: new hint_string,
-    usage: usage,
+    name: name,
+    class_name: class_name,
+    hint: uint32 hint,
+    hint_string: hint_string,
+    usage: cast[uint32](usage),
   )
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
-      name: StringName = stringname"";
-      class_name: StringName = stringname"";
+      name: ptr StringName = addr StringName.empty;
+      class_name: ptr StringName = addr StringName.empty;
       hint: PropertyHint = propertyHint_None;
-      hint_string: String = gdstring"";
-      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault
-    ): ref PropertyInfoGlue =
+      hint_string: ptr String = addr String.empty;
+      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+    ): PropertyInfo =
   propertyInfo(
     T.variantType,
     name,

@@ -32,8 +32,8 @@ macro registerProc*(procdef): untyped =
 
   quote do:
     process(contract(typedesc `arg0T`).procedure, `gdname`):
-      let glue = `methodinfoDef`
-      interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr glue.info)
+      let info = `methodinfoDef`
+      interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr info)
 
 proc makeNimMainProc(procdef: NimNode): NimNode =
   newProc(
