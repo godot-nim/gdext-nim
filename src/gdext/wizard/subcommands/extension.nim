@@ -1,5 +1,5 @@
-import gdext/wizard/sdk/cli
-import gdext/wizard/sdk/clitools/filesystem
+import ../sdk/cli
+import ../sdk/clitools/filesystem
 
 import std/[os, parseopt, strutils]
 

@@ -1,4 +1,4 @@
-import gdext/wizard/sdk/cli
+import ../cli
 
 import std/[os, strutils, strformat, options]
 

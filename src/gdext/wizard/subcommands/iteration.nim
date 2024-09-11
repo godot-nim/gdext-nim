@@ -1,7 +1,7 @@
 import std/[os, parseopt, strutils]
 
-import gdext/wizard/sdk/cli
-import gdext/wizard/sdk/opttools
+import ../sdk/cli
+import ../sdk/opttools
 
 proc nim_c(args: seq[string]; path: string): 0..1 =
   execShellCmd("nim c " & args.join(" ") & " " & path)

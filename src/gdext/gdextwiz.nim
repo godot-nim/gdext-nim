@@ -2,11 +2,11 @@ import std/os
 import std/strutils
 import std/parseopt
 
-import gdext/wizard/sdk/opttools
+import ./wizard/sdk/opttools
 
-import gdext/wizard/subcommands/library
-import gdext/wizard/subcommands/extension
-import gdext/wizard/subcommands/iteration
+import ./wizard/subcommands/library
+import ./wizard/subcommands/extension
+import ./wizard/subcommands/iteration
 
 
 let help = """
