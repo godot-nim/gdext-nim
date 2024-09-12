@@ -15,5 +15,3 @@ script = ExtResource("1_x2b6x")
 texture = ExtResource("2_p8ptw")
 
 [node name="PropTestNode" type="PropTestNode" parent="."]
-
-[connection signal="custom_signal" from="TesterNIM" to="TesterGD" method="_on_tester_nim_custom_signal"]

@@ -8,6 +8,7 @@ import godotSideTester
 import geometrics
 import cases/use_api_from_toplevel
 import cases/array
+import cases/variant
 import classes/gdNimSideTester
 import classes/gdproptestnode
 import classes/gdtestobject

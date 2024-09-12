@@ -6,7 +6,7 @@ import gdext/utils/staticevents
 export staticevents.process
 
 import gdext/dirty/gdextensioninterface
-export InitializationLevel, VariantType, gdcall
+export InitializationLevel, VariantType, gdcall, CallError, CallErrorType
 
 import gdext/core/[ builtinindex, geometrics, gdrefs, gdtypedarray ]
 export              builtinindex, geometrics, gdrefs, gdtypedarray

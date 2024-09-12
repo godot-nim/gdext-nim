@@ -60,9 +60,6 @@ func test_grobal_func():
 func _process(delta):
 	pass
 
-func _on_tester_nim_custom_signal(value):
-	assert(value == 10)
-
 func _on_nim_signal_arg0():
 	signal_arg0_executed = true
 func _on_nim_signal_arg1(what):
