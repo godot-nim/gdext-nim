@@ -30,7 +30,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 method init(self: PropTestNode) =
   self.StringArray_with_export_multiline = typedArray[String](1)
   self.PackedStringArray_with_export_multiline = packedStringArray()
-  echo self.PackedStringArray_with_export_multiline.resize(1)
+  assert self.PackedStringArray_with_export_multiline.resize(1) == 0
 
 `@export_category`PropTestNode, "Export Test"
 

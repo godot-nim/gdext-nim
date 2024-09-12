@@ -1,4 +1,5 @@
 import std/unittest
+unittest.disableParamFiltering()
 
 import gdext
 import gdext/core/gdclass
