@@ -3,7 +3,7 @@
 import gdext/buildconf
 
 import gdext/utils/staticevents
-export staticevents.process
+export staticevents.process, staticevents.expandEvent
 
 import gdext/dirty/gdextensioninterface
 export InitializationLevel, VariantType, gdcall, CallError, CallErrorType

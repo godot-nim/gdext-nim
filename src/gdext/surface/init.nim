@@ -27,19 +27,31 @@ proc getLoaded*: int {.inline.} = gLoaded
 template loaded*: int = getLoaded()
 
 template GDExtension_EntryPoint*: untyped =
+  proc load_builtinclassConstructor {.expandEvent: staticevents.init_engine.on_load_builtinclassConstructor.}
+  proc load_builtinclassOperator {.expandEvent: staticevents.init_engine.on_load_builtinclassOperator.}
+  proc load_builtinclassMethod {.expandEvent: staticevents.init_engine.on_load_builtinclassMethod.}
+  proc exec_initialize_core {.expandEvent: initialize_core.}
+  proc exec_initialize_servers {.expandEvent: initialize_servers.}
+  proc exec_initialize_scene {.expandEvent: initialize_scene.}
+  proc exec_initialize_editor {.expandEvent: initialize_editor.}
+  proc exec_eliminate_core {.expandEvent: eliminate_core.}
+  proc exec_eliminate_servers {.expandEvent: eliminate_servers.}
+  proc exec_eliminate_scene {.expandEvent: eliminate_scene.}
+  proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
+
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
-      invoke initialize_core
+      exec_initialize_core()
     of Initialization_Servers:
-      invoke initialize_servers
+      exec_initialize_servers()
     of Initialization_Scene:
       initializeExtensionMain()
-      invoke initialize_scene
+      exec_initialize_scene()
     of Initialization_Editor:
-      invoke initialize_editor
+      exec_initialize_editor()
       const loadedClasses = contracts.invoked.len
       gLoaded = loadedClasses
       {.emit: "NimMain();".}
@@ -48,14 +60,14 @@ template GDExtension_EntryPoint*: untyped =
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
-      invoke eliminate_core
+      exec_eliminate_core()
     of Initialization_Servers:
-      invoke eliminate_servers
+      exec_eliminate_servers()
     of Initialization_Scene:
-      invoke eliminate_scene
+      exec_eliminate_scene()
       eliminateExtensionMain()
     of Initialization_Editor:
-      invoke eliminate_editor
+      exec_eliminate_editor()
       userclass.unregisterAll()
 
   proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
@@ -74,9 +86,9 @@ template GDExtension_EntryPoint*: untyped =
       typeshift.load()
       utilityfuncs.load()
 
-      invoke staticevents.init_engine.on_load_builtinclassConstructor # expects to register by generateds.
-      invoke staticevents.init_engine.on_load_builtinclassOperator
-      invoke staticevents.init_engine.on_load_builtinclassMethod
+      load_builtinclassConstructor()
+      load_builtinclassOperator()
+      load_builtinclassMethod()
 
       return true
 

@@ -23,8 +23,13 @@ template contract*(T: typedesc): static Contract =
 
 
 template invoke*(contract: static Contract) =
-  invoke contract.virtual
-  invoke contract.procedure
-  invoke contract.property
-  invoke contract.signal
+  proc register_virtual {.expandEvent: contract.virtual.}
+  proc register_procedure {.expandEvent: contract.procedure.}
+  proc register_property {.expandEvent: contract.property.}
+  proc register_signal {.expandEvent: contract.signal.}
+  register_virtual()
+  register_procedure()
+  register_property()
+  register_signal()
+
   static: invoked.incl contract.typ

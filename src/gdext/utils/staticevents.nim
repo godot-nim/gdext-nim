@@ -1,4 +1,4 @@
-import std/[macros, tables, hashes]
+import std/[macros, tables, sets, hashes, sequtils]
 import gdext/buildconf
 
 type Event* = distinct string
@@ -8,29 +8,17 @@ proc `==`*(a, b: Event): bool {.borrow.}
 proc `$`*(event: Event): string = string event
 
 type ProcessBody = NimNode
-var eventtable {.compileTime.} : Table[Event, tuple[consumed: bool, list: seq[ProcessBody]]]
+var eventtable {.compileTime.} : Table[Event, seq[ProcessBody]]
+var alreadyExpanded {.compileTime.} : HashSet[Event]
 
-macro invoke*(event: static Event): untyped =
-  if eventtable.hasKey(event):
-    eventtable[event].consumed = true
-  else:
-    eventtable[event] = (true, @[])
-    return
+macro expandEvent*(event: static Event; def: untyped): untyped =
+  if event in alreadyExpanded:
+    error "failed to expand; " & $event & " is already expanded.", def
+  alreadyExpanded.incl event
 
-  let eventhandler = ident (string event) & "_handle"
+  result = copy def
+  result.body = newStmtList eventtable.mgetOrPut(event, @[]).mapIt(newCall it)
 
-  let eventproc = newProc(name = eventhandler,  body = newStmtList())
-
-  for process in eventtable[event].list:
-    case process.kind
-    of nnkStmtList:
-      eventproc.body.add newCall(process)
-    else:
-      eventproc.body.add newCall(process)
-
-  result = quote do:
-    `eventproc`
-    `eventhandler`()
 
 when Dev.debugEvents:
   from strutils import join
@@ -48,12 +36,9 @@ macro process*(event: static Event; body) =
   else:
     result = newProc(name, body= body)
 
-  if eventtable.hasKey(event):
-    if eventtable[event].consumed:
-      error "the event " & event.string & " is already consumed", body
-    eventtable[event].list.add name
-  else:
-    eventtable[event] = (false, @[name])
+  if event in alreadyExpanded:
+    error "the event " & event.string & " is already consumed", body
+  eventtable.mgetOrPut(event, @[]).add name
 
 macro process*(event: static Event; processname: string; body) =
   let name = gensym(nskProc)
@@ -63,12 +48,9 @@ macro process*(event: static Event; processname: string; body) =
   else:
     result = newProc(name, body= body)
 
-  if eventtable.hasKey(event):
-    if eventtable[event].consumed:
-      error "the event " & event.string & " is already consumed", body
-    eventtable[event].list.add name
-  else:
-    eventtable[event] = (false, @[name])
+  if event in alreadyExpanded:
+    error "the event " & event.string & " is already consumed", body
+  eventtable.mgetOrPut(event, @[]).add name
 
 const init_engine* = (
     on_load_builtinclassConstructor: event("load_builtinclassConstructor"),
