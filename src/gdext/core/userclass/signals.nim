@@ -55,7 +55,7 @@ macro registerSignal (params; gdname: string): untyped =
   let arg0_T = params[1][1]
 
   quote do:
-    process(`arg0_T`.contract.signal, `gdname`):
+    process(Contract[`arg0_T`].signal, `gdname`):
       let
         name = stringName `gdname`
         params: seq[PropertyInfo] = parseParams(`params`)

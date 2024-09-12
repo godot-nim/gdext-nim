@@ -39,7 +39,7 @@ template register_property*(
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
-  process(typ.contract.property, $name):
+  process(Contract[typ].property, $name):
     let p_name = name
     let p_getter = getter
     let p_setter = setter
@@ -102,18 +102,18 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
       `hint`, `hint_string`, `usage`)
 
 template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name: StringName): untyped =
-  process(typ.contract.property, "category " & $name):
+  process(Contract[typ].property, "category " & $name):
     let p_name = name
     register_property_internal(addr className typ, addr p_name, VariantTypeNil, addr StringName.empty, addr StringName.empty, propertyHintNone, addr String.empty, {propertyUsageCategory})
 
 template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
-  process(typ.contract.property, "group " & $name):
+  process(Contract[typ].property, "group " & $name):
     let n = name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
       addr className(typ), addr n, addr p)
 template `@export_subgroup`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
-  process(typ.contract.property, "subgroup " & $name):
+  process(Contract[typ].property, "subgroup " & $name):
     let n = name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,

@@ -31,7 +31,7 @@ macro registerProc*(procdef): untyped =
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
   quote do:
-    process(contract(typedesc `arg0T`).procedure, `gdname`):
+    process(Contract[`arg0T`].procedure, `gdname`):
       let info = `methodinfoDef`
       interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr info)
 
@@ -105,5 +105,5 @@ proc sync_methodDef*(body: Nimnode): NimNode =
 
   methoddef.withCorrectClassMethodForm quote do:
     `methoddef`
-    process(contract(`selfT`).virtual, `methodstrlit`):
+    process(Contract[`selfT`].virtual, `methodstrlit`):
       vmethods(`selfT`)[stringName `selfT`.EngineClass.vmap[`methodstrlit`]] = `selfT`.`methodname`

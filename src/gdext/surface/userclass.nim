@@ -149,7 +149,7 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
-  invoke contract(T)
+  invoke Contract[T]
   registered.incl className(T)
 
 proc unregisterAll* =
