@@ -1,5 +1,5 @@
 import gdext/utils/macros
-import std/[sequtils, sets]
+import std/[sequtils, sets, tables]
 
 import gdext/utils/staticevents
 
