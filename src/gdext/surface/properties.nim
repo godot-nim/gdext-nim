@@ -30,19 +30,21 @@ proc register_property_internal*(
     typ, addr info,
     setter, getter)
 
+macro strlit(x): string = newlit $x
+
 template register_property*(
       typ: typedesc[SomeUserClass];
-      name: StringName;
+      name;
       proptyp: typedesc[SomeProperty];
       getter, setter: StringName;
       hint: PropertyHint = propertyHintNone;
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
-  process(Contract[typ].property, $name):
-    let p_name = name
-    let p_getter = getter
-    let p_setter = setter
+  process(Contract[typ].property, strlit name):
+    let p_name = stringName strlit name
+    let p_getter: StringName = getter
+    let p_setter: StringName = setter
     let p_hintstring = hintstring
     register_property_internal(addr className typ, addr p_name, variantType proptyp, addr p_getter, addr p_setter, hint, addr p_hintstring, usage)
 
@@ -57,16 +59,9 @@ macro gdname*(P: proc): string =
 
   return newLit $P
 
-proc revertConv(x: NimNode): NimNode =
-  result = case x.kind
-  of nnkHiddenCallConv:
-    x[1]
-  else:
-    x
-
 macro register_property*[T: SomeUserClass; P: SomeProperty](
       typ: typedesc[T];
-      name: StringName;
+      name;
       proptyp: typedesc[P];
       getter: proc(self: T): P;
       setter: proc(self: T; value: P);
@@ -78,10 +73,10 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
 
   let
     gettersym =
-      if getter.kind == nnkLambda: genSym(nskProc, "get_" & name.revertConv.strVal)
+      if getter.kind == nnkLambda: genSym(nskProc, "get_" & $name)
       else: getter
     settersym =
-      if setter.kind == nnkLambda: genSym(nskProc, "set_" & name.revertConv.strVal)
+      if setter.kind == nnkLambda: genSym(nskProc, "set_" & $name)
       else: setter
 
   if getter.kind == nnkLambda:
@@ -101,26 +96,26 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
       `gettersym`.gdname, `settersym`.gdname,
       `hint`, `hint_string`, `usage`)
 
-template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name: StringName): untyped =
-  process(Contract[typ].property, "category " & $name):
-    let p_name = name
+template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
+  process(Contract[typ].property, "category " & strlit name):
+    let p_name = stringName strlit name
     register_property_internal(addr className typ, addr p_name, VariantTypeNil, addr StringName.empty, addr StringName.empty, propertyHintNone, addr String.empty, {propertyUsageCategory})
 
-template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
-  process(Contract[typ].property, "group " & $name):
-    let n = name
+template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
+  process(Contract[typ].property, "group " & strlit name):
+    let n = gdstring strlit name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
       addr className(typ), addr n, addr p)
-template `@export_subgroup`*[T: SomeUserClass](typ: typedesc[T]; name: String; prefix: String = gdstring""): untyped =
-  process(Contract[typ].property, "subgroup " & $name):
-    let n = name
+template `@export_subgroup`*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
+  process(Contract[typ].property, "subgroup " & strlit name):
+    let n = gdstring strlit name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,
       addr className(typ), addr n, addr p)
 
 template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
       hint: PropertyHint = propertyHintNone;
@@ -131,13 +126,13 @@ template `@export_custom`*[T: SomeUserClass; S: SomeProperty](
     hint, hintstring, usage)
 
 template `@export`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter)
 
 template `@export_color_no_alpha`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -145,28 +140,28 @@ template `@export_color_no_alpha`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintColorNoAlpha)
 
 template `@export_dir`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintDir)
 template `@export_global_dir`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintGlobalDir)
 template `@export_file`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintFile)
 template `@export_global_file`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -174,7 +169,7 @@ template `@export_global_file`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintGlobalFile)
 
 template `@export_enum`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
       enums: varargs[string];
@@ -184,7 +179,7 @@ template `@export_enum`*[T: SomeUserClass; S: SomeProperty](
     hint_string= @enums.join(","))
 
 template `@export_flags`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
       flags: varargs[string];
@@ -194,7 +189,7 @@ template `@export_flags`*[T: SomeUserClass; S: SomeProperty](
     hint_string= @flags.join(","))
 
 template `@export_flags_2d_navigation`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -202,7 +197,7 @@ template `@export_flags_2d_navigation`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers2dNavigation)
 
 template `@export_flags_2d_physics`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -210,7 +205,7 @@ template `@export_flags_2d_physics`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers2dPhysics)
 
 template `@export_flags_2d_render`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -218,7 +213,7 @@ template `@export_flags_2d_render`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers2dRender)
 
 template `@export_flags_3d_navigation`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -227,7 +222,7 @@ template `@export_flags_3d_navigation`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers3dNavigation)
 
 template `@export_flags_3d_physics`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -235,7 +230,7 @@ template `@export_flags_3d_physics`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers3dPhysics)
 
 template `@export_flags_3d_render`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -243,7 +238,7 @@ template `@export_flags_3d_render`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintLayers3dRender)
 
 template `@export_flags_avoidance`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
     ): untyped =
@@ -253,7 +248,7 @@ template `@export_flags_avoidance`*[T: SomeUserClass; S: SomeProperty](
 type ExpEasingArgument* = enum
   attenuation, positive_only
 template `@export_exp_easing`*[T: SomeUserClass; S: SomeProperty](
-      name: StringName;
+      name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
       extra: varargs[ExpEasingArgument];
@@ -263,14 +258,14 @@ template `@export_exp_easing`*[T: SomeUserClass; S: SomeProperty](
     hint_string= @extra.mapIt($it).join(","))
 
 template `@export_multiline`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintMultilineText)
 
 template `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     validTypes: varargs[string]): untyped =
@@ -279,7 +274,7 @@ template `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
     hint_string= @validTypes.join(","))
 
 macro `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     validTypes: varargs[typedesc[Node]]): untyped =
@@ -288,7 +283,7 @@ macro `@export_node_path`*[T: SomeUserClass; S: SomeProperty](
     result.add bindSym"$".newCall bindSym"className".newCall valid
 
 template `@export_placeholder`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     placeholder: String): untyped =
@@ -299,7 +294,7 @@ template `@export_placeholder`*[T: SomeUserClass; S: SomeProperty](
 type RangeArgument* {.pure.} = enum
   or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
 template `@export_range`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     min, max: S; extra: varargs[RangeArgument]): untyped =
@@ -307,7 +302,7 @@ template `@export_range`*[T: SomeUserClass; S: SomeProperty](
     hint= propertyHintRange,
     hint_string= @[$min, $max].concat(@extra.mapit($it)).join(","))
 template `@export_range`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
     min, max, step: S; extra: varargs[RangeArgument]): untyped =
@@ -316,7 +311,7 @@ template `@export_range`*[T: SomeUserClass; S: SomeProperty](
     hint_string= @[$min, $max, $step].concat(@extra.mapIt($it)).join(","))
 
 template `@export_storage`*[T: SomeUserClass; S: SomeProperty](
-    name: StringName;
+    name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
