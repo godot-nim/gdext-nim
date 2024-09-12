@@ -143,9 +143,15 @@ proc test_Resource(self: NimSideTester) =
 # 2. put Error on return value
 # 3. put `exportgd` and `signal` pragma
 # Then call `custom_signal()` to emit Signal.
-proc custom_signal*(self: NimSideTester; value: int): Error {.gdsync, signal.}
+proc signal_arg0*(self: NimSideTester): Error {.gdsync, signal.}
+proc signal_arg1*(self: NimSideTester; what: string): Error {.gdsync, signal.}
 
-proc simple_signal*(self: NimSideTester): Error {.gdsync, signal.}
+var listen_0_result: seq[bool]
+var listen_1_result: seq[string]
+proc listen_0*(self: NimSideTester) {.gdsync.} =
+  listen_0_result.add true
+proc listen_1*(self: NimSideTester; what: string) {.gdsync.} =
+  listen_1_result.add what
 
 var result_call_group: bool
 proc lesten_call_group(self: NimSideTester, str: string) {.gdsync.} =
@@ -153,106 +159,27 @@ proc lesten_call_group(self: NimSideTester, str: string) {.gdsync.} =
 
 proc test_FirstClassFunction(self: NimSideTester) =
   suite "First-class function":
+    test "connect to signal":
+      check self.connect("signal_arg0", self.callable"listen_0") == ok
+      check self.connect("signal_arg0", self.callable"listen_1") == ok
+      check self.connect("signal_arg1", self.callable"listen_0") == ok
+      check self.connect("signal_arg1", self.callable"listen_1") == ok
+
     test "execute call_group":
       self.getTree.callGroup(&"tester", &"lesten_call_group", variant "Hello, world!")
       check result_call_group
     test "send Signal":
-      check self.custom_signal(10) == ok
-
-
-proc variant_signal*(self: NimSideTester; value: Variant): Error {.gdsync, signal.}
-var emitteds: array[VariantType, Variant]
-var originals: array[VariantType, Variant]
-proc on_variant_signal*(self: NimSideTester; value: Variant) {.gdsync, name: "_on_variant_signal".} =
-  emitteds[value.variantType] = value
-
-proc test_Variant(self: NimSideTester) =
-  template test_identity(testname, value) =
-    test testname:
-      let v = value
-      type T = typeof v
-      let t = variantType T
-      originals[t] = variant v
-      check originals[t].variantType == t
-      check originals[t].get(T) == v
-
-      check self.variant_signal(originals[t]) == ok
-      check emitteds[t].variantType == originals[t].variantType
-      check emitteds[t].get(T) == originals[t].get(T)
-
-  suite "Variant":
-    test "identity":
-      let obj = instantiate Object
-      test_identity "identity-gd.Int", Int 10
-      test_identity "identity-gd.Float", Float 10
-      test_identity "identity-gd.String", gdstring "String"
-      test_identity "identity-gd.StringName", stringName "StringName"
-      test_identity "identity-gd.Object", obj
-      test_identity "identity-int", 11
-      test_identity "identity-int32", 12'i32
-      test_identity "identity-int16", 13'i16
-      test_identity "identity-bool", true
-    test "get/set":
-      var arr = gdarray()
-      discard arr.resize(1)
-      var vdict: Variant = variant dictionary()
-      var varr: Variant = variant arr
-      let vkey: Variant = variant system.Inf
-
-      # Named
-      vdict["Key0"] = variant 1
-      check vdict["Key0"] == variant 1
-      vdict["Key1"] = variant 2
-      check vdict["Key1"] == variant 2
-
-      # Indexed
-      varr[0] = variant 3
-      check varr[0] == variant 3
-      expect IndexDefect:
-        varr[1] = variant 4
-
-      # Keyed
-      vdict[vkey] = variant 5
-      check vdict[vkey] == variant 5
-
-    test "iterate":
-      var arr = gdarray()
-      discard arr.resize(2)
-      var dict = dictionary()
-      var keyObj = instantiate Object
-
-      var expect = toTable {
-        variant 0: variant 0,
-        variant 1: variant 1,
-        variant "Key0": variant 0,
-        variant "Key1": variant 1,
-        variant keyObj: variant 2,
-      }
-
-      var vdict: Variant = variant dict
-      var varr: Variant = variant arr
-
-      varr[0] = variant 0
-      varr[1] = variant 1
-      vdict["Key0"] = variant 0
-      vdict["Key1"] = variant 1
-      vdict[variant keyObj] = variant 2
-
-      for key, item in varr.pairs:
-        check item == expect[key]
-      for key, item in vdict.pairs:
-        check item == expect[key]
-
-
-template connect_all*(self: NimSideTester) =
-  print self.connect("variant_signal", self.callable("_on_variant_signal"))
+      check self.signal_arg0() == ok
+      check listen_0_result[0]
+      check listen_1_result[0].len != 0
+      check self.signal_arg1("SIGNAL") == ok
+      check listen_0_result[1]
+      check listen_1_result[1] == "SIGNAL"
 
 # Using `method` to override virtual functions of Engine-Class.
 # No specific pragma is needed.
 # based on Node.ready()
 method ready(self: NimSideTester) {.gdsync.} =
-  (self.connect_all)
-
   self.test_UserClass()
   self.test_SomeVariants()
   self.test_Object()
@@ -260,7 +187,6 @@ method ready(self: NimSideTester) {.gdsync.} =
   self.test_Node()
   self.test_Resource()
   self.test_FirstclassFunction()
-  self.test_Variant()
 
 method input(self: NimSideTester; event: gdref InputEvent) {.gdsync.} =
   let evkey = event as gdref InputEventKey

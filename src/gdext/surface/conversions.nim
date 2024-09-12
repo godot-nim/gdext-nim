@@ -3,6 +3,7 @@ import gdext/core/gdclass
 import gdext/core/gdtypedarray
 import gdextgen/builtinclasses/constructors
 import gdext/surface/classutils
+import gdext/surface/variantutils
 
 {.push, inline.}
 
@@ -12,6 +13,8 @@ converter convertToNodePath*(str: string): NodePath = nodePath gdstring str
 
 converter convertToArray*(arr: TypedArray): Array = Array arr
 
-converter toSingleton*[T: GodotClass](_: typedesc[T]): T = singleton(T)
+converter convertToSingleton*[T: GodotClass](_: typedesc[T]): T = singleton(T)
+
+converter convertToBool*(variant: Variant): bool = variant.booleanize
 
 {.pop.}

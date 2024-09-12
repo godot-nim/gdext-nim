@@ -1,5 +1,6 @@
 import gdext
 import std/unittest
+unittest.disableParamFiltering()
 
 suite "TypedArray":
   test "construct":
