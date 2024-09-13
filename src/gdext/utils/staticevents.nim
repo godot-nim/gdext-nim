@@ -7,8 +7,8 @@ proc hash*(event: Event): Hash {.borrow.}
 proc `==`*(a, b: Event): bool {.borrow.}
 proc `$`*(event: Event): string = string event
 
-type ProcessBody = NimNode
-var eventtable {.compileTime.} : Table[Event, seq[ProcessBody]]
+type Action = NimNode
+var eventtable {.compileTime.} : Table[Event, seq[Action]]
 var alreadyExpanded {.compileTime.} : HashSet[Event]
 
 macro expandEvent*(event: static Event; def: untyped): untyped =
@@ -26,31 +26,35 @@ when Dev.debugEvents:
   proc decho(args: varargs[string, `$`]) =
     stderr.writeLine args.join("")
 
-  var processCounter {.compileTime.} : int
+proc processName(node: NimNode): string =
+  case node.kind
+  of nnkPostfix:
+    if node[0].eqIdent "*":
+      processName node[1]
+    else:
+      repr node
+  of nnkAccQuoted:
+    var res: string
+    for sub in node:
+      res.add processName sub
+    res
+  of nnkStrLit:
+    $node
+  else:
+    repr node
 
-macro process*(event: static Event; body) =
+macro execon*(event: static Event; def): untyped =
   let name = gensym(nskProc)
   when Dev.debugEvents:
-    result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> #", `processCounter`).add body[0..^1])
-    inc processCounter
-  else:
-    result = newProc(name, body= body)
+    let processname = def[0].processName
+    let eventstr = $event & "::process >> " & processname
+    def.body.insert(0, quote do: decho `eventstr`)
+  def.name = name
 
   if event in alreadyExpanded:
-    error "the event " & event.string & " is already consumed", body
+    error "the event " & event.string & " is already consumed", def
   eventtable.mgetOrPut(event, @[]).add name
-
-macro process*(event: static Event; processname: string; body) =
-  let name = gensym(nskProc)
-  result = newProc(name, body= body)
-  when Dev.debugEvents:
-    result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> ", `processname`).add body[0..^1])
-  else:
-    result = newProc(name, body= body)
-
-  if event in alreadyExpanded:
-    error "the event " & event.string & " is already consumed", body
-  eventtable.mgetOrPut(event, @[]).add name
+  def
 
 const init_engine* = (
     on_load_builtinclassConstructor: event("load_builtinclassConstructor"),
