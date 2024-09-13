@@ -42,18 +42,18 @@ proc get_string_with_export_through_proc(self: PropTestNode): string {.gdsync.} 
   self.string_with_export
 proc set_string_with_export_through_proc(self: PropTestNode; value: string) {.gdsync.} =
   self.string_with_export = value
-`@export`"string_with_export_through_proc",
+`@export`string_with_export_through_proc,
     get_string_with_export_through_proc,
     set_string_with_export_through_proc
 
-`@export_placeholder`"string_with_export_placeholder",
+`@export_placeholder`string_with_export_placeholder,
     proc (self: PropTestNode): string = self.string_with_export_placeholder,
     proc (self: PropTestNode; value: string) = self.string_with_export_placeholder = value,
     "placeholder here..."
 
-`@export_group`PropTestNode, "filesystem"
+`@export_group`PropTestNode, filesystem
 
-`@export_subgroup`ProptestNode, "local"
+`@export_subgroup`ProptestNode, local
 `@export_dir`"string_with_export_dir",
     proc (self: PropTestNode): string = self.string_with_export_dir,
     proc (self: PropTestNode; value: string) = self.string_with_export_dir = value

@@ -1,8 +1,6 @@
 import gdext/utils/macros
 import std/[sequtils, sets, tables]
 
-import gdext/utils/staticevents
-
 import gdext/core/commandindex
 import gdext/core/gdclass
 
@@ -30,8 +28,10 @@ macro registerProc*(procdef): untyped =
 
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
+  let procsym = ident $gdname
+
   quote do:
-    process(contract(typedesc `arg0T`).procedure, `gdname`):
+    proc `procsym` {.execon: Contract[`arg0T`].procedure.} =
       let info = `methodinfoDef`
       interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr info)
 
@@ -102,8 +102,9 @@ proc sync_methodDef*(body: Nimnode): NimNode =
   let methodstr = $methoddef[0].basename
   let methodstrlit = newlit methodstr
   let methodname = ident methodstr & "_bind"
+  let procsym = ident methodstr
 
   methoddef.withCorrectClassMethodForm quote do:
     `methoddef`
-    process(contract(`selfT`).virtual, `methodstrlit`):
+    proc `procsym` {.execon: Contract[`selfT`].virtual.} =
       vmethods(`selfT`)[stringName `selfT`.EngineClass.vmap[`methodstrlit`]] = `selfT`.`methodname`

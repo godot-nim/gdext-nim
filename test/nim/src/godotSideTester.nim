@@ -32,6 +32,6 @@ proc `icon=`*(self: GodotSideTester; value: gdref Texture2D) {.gdsync, name: "se
 proc icon*(self: GodotSideTester): gdref Texture2D {.gdsync, name: "get_icon".} =
   self.icon
 
-`@export` "int_value", int_value, `int_value=`
-`@export` "float_value", get_float_value, set_float_value
-`@export` "icon", icon, `icon=`
+`@export` int_value, int_value, `int_value=`
+`@export` float_value, get_float_value, set_float_value
+`@export` icon, icon, `icon=`

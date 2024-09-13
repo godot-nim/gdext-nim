@@ -1,4 +1,4 @@
-import std/[macros, tables, hashes]
+import std/[macros, tables, sets, hashes, sequtils]
 import gdext/buildconf
 
 type Event* = distinct string
@@ -7,30 +7,18 @@ proc hash*(event: Event): Hash {.borrow.}
 proc `==`*(a, b: Event): bool {.borrow.}
 proc `$`*(event: Event): string = string event
 
-type ProcessBody = NimNode
-var eventtable {.compileTime.} : Table[Event, tuple[consumed: bool, list: seq[ProcessBody]]]
+type Action = NimNode
+var eventtable {.compileTime.} : Table[Event, seq[Action]]
+var alreadyExpanded {.compileTime.} : HashSet[Event]
 
-macro invoke*(event: static Event): untyped =
-  if eventtable.hasKey(event):
-    eventtable[event].consumed = true
-  else:
-    eventtable[event] = (true, @[])
-    return
+macro expandEvent*(event: static Event; def: untyped): untyped =
+  if event in alreadyExpanded:
+    error "failed to expand; " & $event & " is already expanded.", def
+  alreadyExpanded.incl event
 
-  let eventhandler = ident (string event) & "_handle"
+  result = copy def
+  result.body = newStmtList eventtable.mgetOrPut(event, @[]).mapIt(newCall it)
 
-  let eventproc = newProc(name = eventhandler,  body = newStmtList())
-
-  for process in eventtable[event].list:
-    case process.kind
-    of nnkStmtList:
-      eventproc.body.add newCall(process)
-    else:
-      eventproc.body.add newCall(process)
-
-  result = quote do:
-    `eventproc`
-    `eventhandler`()
 
 when Dev.debugEvents:
   from strutils import join
@@ -38,37 +26,35 @@ when Dev.debugEvents:
   proc decho(args: varargs[string, `$`]) =
     stderr.writeLine args.join("")
 
-  var processCounter {.compileTime.} : int
+proc processName(node: NimNode): string =
+  case node.kind
+  of nnkPostfix:
+    if node[0].eqIdent "*":
+      processName node[1]
+    else:
+      repr node
+  of nnkAccQuoted:
+    var res: string
+    for sub in node:
+      res.add processName sub
+    res
+  of nnkStrLit:
+    $node
+  else:
+    repr node
 
-macro process*(event: static Event; body) =
+macro execon*(event: static Event; def): untyped =
   let name = gensym(nskProc)
   when Dev.debugEvents:
-    result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> #", `processCounter`).add body[0..^1])
-    inc processCounter
-  else:
-    result = newProc(name, body= body)
+    let processname = def[0].processName
+    let eventstr = $event & "::process >> " & processname
+    def.body.insert(0, quote do: decho `eventstr`)
+  def.name = name
 
-  if eventtable.hasKey(event):
-    if eventtable[event].consumed:
-      error "the event " & event.string & " is already consumed", body
-    eventtable[event].list.add name
-  else:
-    eventtable[event] = (false, @[name])
-
-macro process*(event: static Event; processname: string; body) =
-  let name = gensym(nskProc)
-  result = newProc(name, body= body)
-  when Dev.debugEvents:
-    result = newProc(name, body= newStmtList(quote do: decho `event`, "::process >> ", `processname`).add body[0..^1])
-  else:
-    result = newProc(name, body= body)
-
-  if eventtable.hasKey(event):
-    if eventtable[event].consumed:
-      error "the event " & event.string & " is already consumed", body
-    eventtable[event].list.add name
-  else:
-    eventtable[event] = (false, @[name])
+  if event in alreadyExpanded:
+    error "the event " & event.string & " is already consumed", def
+  eventtable.mgetOrPut(event, @[]).add name
+  def
 
 const init_engine* = (
     on_load_builtinclassConstructor: event("load_builtinclassConstructor"),

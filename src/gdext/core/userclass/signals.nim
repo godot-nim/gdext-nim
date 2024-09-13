@@ -53,9 +53,10 @@ macro parseParams (params): untyped =
 
 macro registerSignal (params; gdname: string): untyped =
   let arg0_T = params[1][1]
+  let procsym = ident $gdname
 
   quote do:
-    process(`arg0_T`.contract.signal, `gdname`):
+    proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
       let
         name = stringName `gdname`
         params: seq[PropertyInfo] = parseParams(`params`)
