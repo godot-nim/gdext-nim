@@ -88,7 +88,7 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   CLASS_passOwnershipToGodot class
   result = cast[pointer](class)
   when Dev.debugCallbacks:
-    echo SYNC.CREATE_CALL, $typeof T
+    echo SYNC.CREATE_CALL, class.control.name
 
 proc free_callback(p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
   let class = cast[GodotClass](p_binding)

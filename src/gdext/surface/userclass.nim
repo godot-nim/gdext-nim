@@ -15,6 +15,10 @@ import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/surface/classutils
 
+when Dev.debugCallbacks:
+  import std/importutils
+  privateAccess GodotClass
+
 proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).set(p_name, p_value)
 
@@ -48,13 +52,14 @@ proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gd
   CLASS_passOwnershipToGodot class
   result =  CLASS_getObjectPtr class
   when Dev.debugCallbacks:
-    echo SYNC.CREATE_BIND, $typeof T
+    privateAccess GodotClass
+    echo SYNC.CREATE_BIND, class.control.name
 
-proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
-  let class = cast[T](p_instance)
+proc free_instance_func(p_userdata: pointer; p_instance: pointer) {.gdcall.} =
+  let class = cast[GodotClass](p_instance)
   CLASS_unlockDestroy class
   when Dev.debugCallbacks:
-    echo SYNC.FREE_BIND, $typeof T
+    echo SYNC.FREE_BIND, class.control.name
 
 when Extension.version >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
@@ -62,19 +67,20 @@ when Extension.version >= (4, 2):
     CLASS_passOwnershipToGodot class
     result = cast[pointer](class)
     when Dev.debugCallbacks:
-      echo SYNC.RECREATE_BIND, $typeof T
+      privateAccess GodotClass
+      echo SYNC.RECREATE_BIND, class.control.name
 
-proc reference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
+proc reference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
-    let class = cast[T](p_instance)
+    let class = cast[GodotClass](p_instance)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.REFERENCE_BIND, $typeof T, "(", $count.pred & " +1)"
+    echo SYNC.REFERENCE_BIND, class.control.name, "(", $count.pred & " +1)"
 
-proc unreference_func[T: SomeUserClass](p_instance: pointer) {.gdcall.} =
+proc unreference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
-    let class = cast[T](p_instance)
+    let class = cast[GodotClass](p_instance)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.UNREFERENCE_BIND, $typeof T, "(", $count.succ & " -1)"
+    echo SYNC.UNREFERENCE_BIND, class.control.name, "(", $count.succ & " -1)"
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
@@ -93,9 +99,9 @@ when Extension.version == (4, 1):
       notification_func: notification_func,
       to_string_func: to_string_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func[T],
-      reference_func: reference_func[T],
-      unreference_func: unreference_func[T],
+      free_instance_func: free_instance_func,
+      reference_func: reference_func,
+      unreference_func: unreference_func,
       get_virtual_func: get_virtual_func,
       class_userdata: addr Meta(T),
     )
@@ -114,10 +120,10 @@ else:
       validate_property_func: nil,
       notification_func: notification_func,
       to_string_func: to_string_func,
-      reference_func: reference_func[T],
-      unreference_func: unreference_func[T],
+      reference_func: reference_func,
+      unreference_func: unreference_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func[T],
+      free_instance_func: free_instance_func,
       recreate_instance_func: recreate_instance_func[T],
       get_virtual_func: get_virtual_func,
       get_virtual_call_data_func: nil,
