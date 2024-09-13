@@ -8,13 +8,9 @@ import gdext/utils/macros
 import gdext/core/commandindex
 import gdext/core/builtinindex
 import gdext/core/extracommands
-import gdext/core/objectcontrol
 
 when Dev.debugCallbacks:
   from strutils import join
-
-  proc decho(args: varargs[string, `$`]) =
-    stderr.writeLine args.join("")
 
   type SYNC* = enum
     INSTANTIATE      = "SYNC--------INSTANTIATE: "
@@ -27,6 +23,22 @@ when Dev.debugCallbacks:
     REFERENCE_BIND   = "SYNC----------REFERENCE: "
     UNREFERENCE_BIND = "SYNC----------REFERENCE: "
     DESTROY          = "SYNC------------DESTROY: "
+
+type
+  ObjectControlFlag* = enum
+    OC_godotManaged
+
+  ObjectControl* = object
+    owner*: ObjectPtr
+    flags*: set[ObjectControlFlag]
+    when Dev.debugCallbacks:
+      name*: string
+
+proc `=destroy`*(x: ObjectControl) =
+  when Dev.debugCallbacks:
+    echo SYNC.DESTROY, x.name
+  if OC_godotManaged notin x.flags:
+    interfaceObjectDestroy(x.owner)
 
 type
   GodotClass* = ref object of RootObj
@@ -67,7 +79,7 @@ proc createClass*[T: SomeClass](Type: typedesc[T]; o: ObjectPtr): Type =
     control: ObjectControl(
       owner: o, ))
   when Dev.debugCallbacks:
-    result.name = $Type
+    result.control.name = $Type
   init result
 
 
@@ -76,20 +88,20 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   CLASS_passOwnershipToGodot class
   result = cast[pointer](class)
   when Dev.debugCallbacks:
-    decho SYNC.CREATE_CALL, $typeof T
+    echo SYNC.CREATE_CALL, $typeof T
 
 proc free_callback(p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
   let class = cast[GodotClass](p_binding)
   CLASS_unlockDestroy class
   when Dev.debugCallbacks:
-    decho SYNC.FREE_CALL, class.control.name
+    echo SYNC.FREE_CALL, class.control.name
 
 proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
   result = true
   when Dev.debugCallbacks:
     let class = cast[GodotClass](p_binding)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    decho SYNC.REFERENCE, class.controlname, "(", (if reference: $count.pred & " +1" else: $count.succ & " -1"), ")"
+    echo SYNC.REFERENCE, class.control.name, "(", (if p_reference: $count.pred & " +1" else: $count.succ & " -1"), ")"
 
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   # The global specification to reference seems to be invalid and behaves the same

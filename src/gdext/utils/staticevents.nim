@@ -23,9 +23,6 @@ macro expandEvent*(event: static Event; def: untyped): untyped =
 when Dev.debugEvents:
   from strutils import join
 
-  proc decho(args: varargs[string, `$`]) =
-    stderr.writeLine args.join("")
-
 proc processName(node: NimNode): string =
   case node.kind
   of nnkPostfix:
@@ -48,7 +45,7 @@ macro execon*(event: static Event; def): untyped =
   when Dev.debugEvents:
     let processname = def[0].processName
     let eventstr = $event & "::process >> " & processname
-    def.body.insert(0, quote do: decho `eventstr`)
+    def.body.insert(0, quote do: echo `eventstr`)
   def.name = name
 
   if event in alreadyExpanded:

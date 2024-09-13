@@ -4,7 +4,6 @@ import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/geometrics
 import gdext/core/commandindex
-import gdext/core/objectcontrol
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64

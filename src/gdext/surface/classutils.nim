@@ -20,7 +20,7 @@ proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
 proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   result = instantiate_internal T
   when Dev.debugCallbacks:
-    decho SYNC.INSTANTIATE, $typeof T
+    echo SYNC.INSTANTIATE, $typeof T
 
 
 proc instanceID*(self: GodotClass): GDObjectInstanceID =
