@@ -1,15 +1,13 @@
 import gdext
 
+{.warning[UnusedImport]:off.}
 # import your extension classes here
 # import myclass
-import godotSideTester
-
-{.warning[UnusedImport]:off.}
-import geometrics
+import cases/geometrics
 import cases/use_api_from_toplevel
 import cases/array
 import cases/variant
-import classes/gdNimSideTester
+import classes/gdextnode
 import classes/gdproptestnode
 import classes/gdtestobject
 
@@ -18,8 +16,7 @@ import classes/gdtestobject
 proc register_classes {.execon: initialize_scene.} =
   # register your extension classes here
   # register MyClass
-  register GodotSideTester
-  register NimSideTester
+  register GDExtNode
   register TestObject
   register PropTestNode
 

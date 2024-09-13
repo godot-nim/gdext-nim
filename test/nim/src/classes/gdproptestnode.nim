@@ -1,6 +1,8 @@
 import gdext
+import gdextgen/classes/gdResourceLoader
 
 type PropTestNode* = ref object of Node
+  icon*: gdref Texture2D
   string_with_export*: string = "with export"
   string_with_export_placeholder*: string
   string_with_export_dir*: string = "res://nim"
@@ -28,11 +30,17 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export_no_alpha*: Color = color(1, 1, 1)
 
 method init(self: PropTestNode) =
+  self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
   self.StringArray_with_export_multiline = typedArray[String](1)
   self.PackedStringArray_with_export_multiline = packedStringArray()
   assert self.PackedStringArray_with_export_multiline.resize(1) == 0
 
 `@export_category`PropTestNode, "Export Test"
+
+`@export` icon,
+    proc (self: PropTestNode): gdref Texture2D = self.icon,
+    proc (self: PropTestNode; value: gdref Texture2D) = self.icon = value
+
 
 `@export`"string_with_export",
     proc (self: PropTestNode): string = self.string_with_export,
