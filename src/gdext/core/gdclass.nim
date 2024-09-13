@@ -70,28 +70,26 @@ proc createClass*[T: SomeClass](Type: typedesc[T]; o: ObjectPtr): Type =
     result.name = $Type
   init result
 
-proc reference_callback[T](p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
-  result = true
-  when Dev.debugCallbacks:
-    let class = cast[T](p_binding)
-    let count = hook_getReferenceCount CLASS_getObjectPtr class
-    decho SYNC.REFERENCE, $typeof T, "(", (if reference: $count.pred & " +1" else: $count.succ & " -1"), ")"
 
 proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
-  when T is SomeEngineClass:
-    let class = createClass(T, cast[ObjectPtr](p_instance))
-    CLASS_passOwnershipToGodot class
-    result = cast[pointer](class)
+  let class = createClass(T, cast[ObjectPtr](p_instance))
+  CLASS_passOwnershipToGodot class
+  result = cast[pointer](class)
   when Dev.debugCallbacks:
     decho SYNC.CREATE_CALL, $typeof T
 
-proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
-  when T is SomeEngineClass:
-    let class = cast[T](p_binding)
-    CLASS_unlockDestroy class
+proc free_callback(p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
+  let class = cast[GodotClass](p_binding)
+  CLASS_unlockDestroy class
   when Dev.debugCallbacks:
-    decho SYNC.FREE_CALL, $typeof T
+    decho SYNC.FREE_CALL, class.control.name
 
+proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
+  result = true
+  when Dev.debugCallbacks:
+    let class = cast[GodotClass](p_binding)
+    let count = hook_getReferenceCount CLASS_getObjectPtr class
+    decho SYNC.REFERENCE, class.controlname, "(", (if reference: $count.pred & " +1" else: $count.succ & " -1"), ")"
 
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   # The global specification to reference seems to be invalid and behaves the same
@@ -100,12 +98,13 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   once:
     instance = GodotClassMeta(
       className: stringName $T,
-      callbacks: InstanceBindingCallbacks(
-        reference_callback: reference_callback[T],
-        create_callback: create_callback[T],
-        free_callback: free_callback[T],
-      ),
     )
+    when T is SomeEngineClass:
+      instance.callbacks = InstanceBindingCallbacks(
+        create_callback: create_callback[T],
+        free_callback: free_callback,
+        reference_callback: reference_callback,
+      )
   instance
 
 template className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
