@@ -6,3 +6,7 @@ export             builtinindex, commandindex, extracommands, methodtools
 
 import gdext/core/[ gdclass ]
 export              gdclass
+
+proc load*(proc_name: string; hash: int): PtrUtilityFunction =
+  let name = stringName proc_name
+  interface_Variant_getPtrUtilityFunction(addr name, hash)
