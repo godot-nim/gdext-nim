@@ -7,8 +7,6 @@ import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/gdtypedarray
 
-import std/macros
-
 var
   variantFromType: array[Variant_Type, VariantFromTypeConstructorFunc]
   typeFromVariant: array[Variant_Type, TypeFromVariantConstructorFunc]

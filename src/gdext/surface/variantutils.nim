@@ -52,7 +52,7 @@ const ErrorName: array[CallErrorType, string] = [
   "method not const",
 ]
 
-template newVariantTypeDefect(op: VariantOperator; a, b: ptr Variant): ref VariantTypeDefect =
+proc newVariantTypeDefect(op: VariantOperator; a, b: ptr Variant): ref VariantTypeDefect =
   newException(VariantTypeDefect,
     if b.isNil:
       &"{OpName[op]} {variantType a[]} is invalid operation; type mismatch"

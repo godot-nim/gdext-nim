@@ -103,7 +103,8 @@ macro fmap*[N: static int; T,S,R](vs: (array[N,T], array[N,S], array[N,R]); pred
 
 
 
-template all*[N: static int; T](s: array[N, T]; pred): bool =
+template all*[N: static int; T](v: array[N, T]; pred): bool =
+  let s = v
   var result = true
   for i {.inject.} in 0..<N:
     let
@@ -112,7 +113,8 @@ template all*[N: static int; T](s: array[N, T]; pred): bool =
       result = false
       break
   result
-template all*[N: static int; T,S](s: (array[N,T], array[N,S]); pred): bool =
+template all*[N: static int; T,S](v: (array[N,T], array[N,S]); pred): bool =
+  let s = v
   var result = true
   for i {.inject.} in 0..<N:
     let
@@ -123,7 +125,8 @@ template all*[N: static int; T,S](s: (array[N,T], array[N,S]); pred): bool =
       break
   result
 
-template any*[N: static int; T](s: array[N, T]; pred): bool =
+template any*[N: static int; T](v: array[N, T]; pred): bool =
+  let s = v
   var result = false
   for i {.inject.} in 0..<N:
     let
@@ -132,7 +135,8 @@ template any*[N: static int; T](s: array[N, T]; pred): bool =
       result = true
       break
   result
-template any*[N: static int; T,S](s: (array[N,T], array[N,S]); pred): bool =
+template any*[N: static int; T,S](v: (array[N,T], array[N,S]); pred): bool =
+  let s = v
   var result = false
   for i {.inject.} in 0..<N:
     let

@@ -58,17 +58,17 @@ type
 
 template isRefCounted*(_: typedesc[GodotClass]): static bool = false
 
-template CLASS_getObjectPtr*(class: GodotClass): ObjectPtr =
-  if class.isNil: nil
+proc CLASS_getObjectPtr*(class: GodotClass): ObjectPtr =
+  if unlikely(class.isNil): nil
   else: class.control.owner
-template CLASS_getObjectPtrPtr*(class: GodotClass): ptr ObjectPtr =
-  if class.isNil or class.control.owner.isNil: nil
+proc CLASS_getObjectPtrPtr*(class: GodotClass): ptr ObjectPtr =
+  if unlikely(class.isNil or class.control.owner.isNil): nil
   else: addr class.control.owner
 
-template CLASS_passOwnershipToGodot*(class: GodotClass) =
+proc CLASS_passOwnershipToGodot*(class: GodotClass) =
   class.control.flags.incl OC_godotManaged
   GC_ref class
-template CLASS_unlockDestroy*(class: GodotClass) =
+proc CLASS_unlockDestroy*(class: GodotClass) =
   if OC_godotManaged in class.control.flags:
     GC_unref class
 
