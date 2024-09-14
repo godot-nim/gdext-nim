@@ -11,12 +11,17 @@ type SomeNotRefCounted = concept type t
   t is GodotClass
   t.isRefCounted == false
 
-proc instantiate_internal*[T: SomeClass](Type: typedesc[T]): T =
+proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
+  let objectPtr = interface_classdb_construct_object(addr classname Type)
+  result = createClass(Type, objectPtr)
+  interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
+
+proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
   result = createClass(Type, objectPtr)
-  when T is SomeUserClass:
-    interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
+  interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
+
 proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   result = instantiate_internal T
   when Dev.debugCallbacks:

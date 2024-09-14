@@ -123,8 +123,11 @@ template className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
 template callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
 template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
 
-proc getInstance*[T: GodotClass](p_engine_object: ObjectPtr; _: typedesc[T]): T =
+proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): GodotClass =
   if p_engine_object.isNil: return
-  result = cast[T](interface_objectGetInstanceBinding(p_engine_object, environment.library, addr T.callbacks))
+  cast[GodotClass](interface_objectGetInstanceBinding(p_engine_object, environment.library, addr callbacks))
+
+proc getInstance*[T: GodotClass](p_engine_object: ObjectPtr; _: typedesc[T]): T =
+  cast[T](p_engine_object.getInstance(T.callbacks))
 
 macro Super*(Type: typedesc): typedesc = Type.super

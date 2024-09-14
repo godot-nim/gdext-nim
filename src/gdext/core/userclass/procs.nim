@@ -107,4 +107,4 @@ proc sync_methodDef*(body: Nimnode): NimNode =
   methoddef.withCorrectClassMethodForm quote do:
     `methoddef`
     proc `procsym` {.execon: Contract[`selfT`].virtual.} =
-      vmethods(`selfT`)[stringName `selfT`.EngineClass.vmap[`methodstrlit`]] = `selfT`.`methodname`
+      vmethods(`selfT`)[stringName `selfT`.vmap[`methodstrlit`]] = `selfT`.`methodname`
