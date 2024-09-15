@@ -23,8 +23,8 @@ export utilityfuncs except print
 import gdextgen/classes/gdengine
 export gdengine.isEditorHint
 
-import gdext/surface/[ init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
-export                 init, userclass, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
+import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
+export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
 
 import gdext/gdextensionmain
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
