@@ -19,10 +19,6 @@ macro expandEvent*(event: static Event; def: untyped): untyped =
   result = copy def
   result.body = newStmtList eventtable.mgetOrPut(event, @[]).mapIt(newCall it)
 
-
-when Dev.debugEvents:
-  from strutils import join
-
 proc processName(node: NimNode): string =
   case node.kind
   of nnkPostfix:

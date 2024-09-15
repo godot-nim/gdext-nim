@@ -56,7 +56,7 @@ macro registerSignal (params; gdname: string): untyped =
   let procsym = ident $gdname
 
   quote do:
-    proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
+    proc `procsym` {.execon: contract(`arg0_T`).} =
       let
         name = stringName `gdname`
         params: seq[PropertyInfo] = parseParams(`params`)

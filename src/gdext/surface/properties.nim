@@ -41,7 +41,7 @@ template register_property*(
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
-  proc name {.execon: Contract[typ].property.} =
+  proc name {.execon: contract(typ).} =
     let p_name = stringName strlit name
     let p_getter: StringName = getter
     let p_setter: StringName = setter
@@ -97,18 +97,18 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
       `hint`, `hint_string`, `usage`)
 
 template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
-  proc name {.execon: Contract[typ].property.} =
+  proc name {.execon: contract(typ).} =
     let p_name = stringName strlit name
     register_property_internal(addr className typ, addr p_name, VariantTypeNil, addr StringName.empty, addr StringName.empty, propertyHintNone, addr String.empty, {propertyUsageCategory})
 
 template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
-  proc name {.execon: Contract[typ].property.} =
+  proc name {.execon: contract(typ).} =
     let n = gdstring strlit name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
       addr className(typ), addr n, addr p)
 template `@export_subgroup`*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
-  proc name {.execon: Contract[typ].property.} =
+  proc name {.execon: contract(typ).} =
     let n = gdstring strlit name
     let p = prefix
     interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,
