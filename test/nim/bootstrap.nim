@@ -7,6 +7,7 @@ import cases/geometrics
 import cases/use_api_from_toplevel
 import cases/array
 import cases/variant
+import cases/enums
 import classes/gdextnode
 import classes/gdproptestnode
 import classes/gdtestobject
