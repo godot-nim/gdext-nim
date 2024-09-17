@@ -6,6 +6,7 @@ import gdext/core/builtinindex
 import gdext/core/commandindex
 import gdext/core/extracommands
 import gdext/core/typeshift
+import gdext/core/exceptions
 import gdextgen/utilityfuncs
 import gdext/core/userclass/contracts
 import gdext/surface/userclass
@@ -93,6 +94,7 @@ template GDExtension_EntryPoint*: untyped =
       return true
 
     except:
+      echo $getCurrentException()
       return false
 
 when isMainModule:

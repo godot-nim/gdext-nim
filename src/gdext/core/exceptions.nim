@@ -1,20 +1,22 @@
 import commandindex
 
-proc reporterr(exception: ref Exception; trace: StackTraceEntry) =
+proc `$`*(exception: ref Exception): string =
   const stacktracePrefix = "stacktrace:\n"
-  var msg = newStringOfCap(
+  result = newStringOfCap(
     exception.name.len + exception.msg.len +
     stacktracePrefix.len + 4)
 
-  msg.add exception.msg
-  msg.add " ["
-  msg.add exception.name
-  msg.add "]\n"
-  msg.add stacktracePrefix
-  msg.add exception.getStackTrace()
+  result.add exception.msg
+  result.add " ["
+  result.add exception.name
+  result.add "]\n"
+  result.add stacktracePrefix
+  result.add exception.getStackTrace()
+
+proc reporterr(exception: ref Exception; trace: StackTraceEntry) =
   interfacePrintErrorWithMessage(
     p_description = exception.name,
-    p_message = cstring msg,
+    p_message = cstring $exception,
     p_function = trace.procname,
     p_file = trace.filename,
     p_line = int32 trace.line,
