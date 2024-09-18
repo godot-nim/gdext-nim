@@ -42,7 +42,16 @@ gdextwiz uninstall
 # upgrade
 gdextwiz upgrade
 ```
+## OS supported
 
+* Linux
+* Macos
+
+### In preparation
+
+* Windows
+
+  See godot-nim/gdext-nim#45.
 
 ## Dependencies
 
