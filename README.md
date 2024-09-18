@@ -17,7 +17,7 @@ See [wiki][2] to get more detail.
 
 - [x] Hot reloading
 
-  Does not work on macos. Otherwise, the editor terminates abnormally at a medium frequency.
+  It works, but sometimes the editor crashes.
 
 ### In preparation
 
