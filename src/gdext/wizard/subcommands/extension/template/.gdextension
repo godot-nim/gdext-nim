@@ -8,8 +8,8 @@ reloadable = true
 
 linux.debug = "res://nim/$name/lib/linux/debug/libbootstrap.so"
 windows.debug = "res://nim/$name/lib/windows/debug/libbootstrap.dll"
-macos.debug = "res://nim/$name/lib/macos/debug/libbootstrap.dynlib"
+macos.debug = "res://./nim/$name/lib/macos/debug/libbootstrap.dylib"
 
 linux.release = "res://nim/$name/lib/linux/release/libbootstrap.so"
 windows.release = "res://nim/$name/lib/windows/release/libbootstrap.dll"
-macos.release = "res://nim/$name/lib/macos/release/libbootstrap.dynlib"
+macos.release = "res://./nim/$name/lib/macos/release/libbootstrap.dylib"
