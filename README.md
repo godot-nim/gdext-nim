@@ -8,11 +8,16 @@ See [wiki][2] to get more detail.
 ## Features
 
 - [x] Godot 4.3 full api
-- [x] Hot reloading
 - [x] Available to define&export your Class/Function/Signal/Property
 - [x] Available to call engine functionalities from Nim
 - [x] GLSLang-like swizzle operator (e.g. vector3.xxxyyyzzz)
 - [x] Commandline-helper (see [wiki - gdextwiz][3])
+
+### Partially working
+
+- [x] Hot reloading
+
+  Does not work on macos. Otherwise, the editor terminates abnormally at a medium frequency.
 
 ### In preparation
 
