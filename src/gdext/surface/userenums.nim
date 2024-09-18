@@ -1,6 +1,6 @@
 import std/macros
 import gdext/core/[builtinindex, commandindex, extracommands, gdclass]
-import gdext/core/userclass/[contracts]
+import gdext/core/userclass/[contracts, propertyinfo]
 
 proc registerEnumField*(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
   interfaceClassdbRegisterExtensionClassIntegerConstant(
@@ -34,7 +34,9 @@ proc registerEnumInternal(Class, Enum: NimNode; isBitField: bool): NimNode {.com
 
   call.add newlit isBitField
   result = quote do:
-    proc `Enum` {.execon: contract(`Class`).} = `call`
+    proc `Enum` {.execon: contract(`Class`).} =
+      Meta(`Enum`).className = stringname $className(`Class`) & "." & $`Enum`
+      `call`
 
 macro registerEnum*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
   registerEnumInternal(Class, Enum, false)

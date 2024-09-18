@@ -1,8 +1,12 @@
 import gdext
 import gdextgen/classes/gdResourceLoader
 
+type PropTestEnum* = enum
+  PropTestEnum1, PropTestEnum2, PropTestEnum3
+
 type PropTestNode* = ref object of Node
   icon*: gdref Texture2D
+  PropTestEnum_with_export*: PropTestEnum
   string_with_export*: string = "with export"
   string_with_export_placeholder*: string
   string_with_export_dir*: string = "res://nim"
@@ -41,6 +45,10 @@ method init(self: PropTestNode) =
     proc (self: PropTestNode): gdref Texture2D = self.icon,
     proc (self: PropTestNode; value: gdref Texture2D) = self.icon = value
 
+PropTestNode.registerEnum PropTestEnum
+`@export`"PropTestEnum_with_export",
+    proc (self: PropTestNode): PropTestEnum = self.PropTestEnum_with_export,
+    proc (self: PropTestNode; value: PropTestEnum) = self.PropTestEnum_with_export = value
 
 `@export`"string_with_export",
     proc (self: PropTestNode): string = self.string_with_export,

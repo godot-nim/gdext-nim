@@ -7,7 +7,6 @@ import gdext/core/commandindex
 import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/builtinindex
-import gdext/core/typeshift
 import gdextgen/builtinclasses
 import gdextgen/globalenums
 import gdextgen/classindex
@@ -17,18 +16,13 @@ import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
 
 proc register_property_internal*(
+      info: PropertyInfo;
       typ: ptr StringName;
-      name: ptr StringName;
-      proptyp: VariantType;
-      getter, setter: ptr StringName;
-      hint: PropertyHint;
-      hintstring: ptr String;
-      usage: set[PropertyUsageFlags];
+      getter: ptr StringName = addr StringName.empty;
+      setter: ptr StringName = addr StringName.empty;
     ) =
-  let info = propertyInfo(proptyp, name, typ, hint, hintstring, usage)
-  interface_ClassDB_registerExtensionClassProperty( environment.library,
-    typ, addr info,
-    setter, getter)
+  interface_ClassDB_registerExtensionClassProperty(
+    environment.library, typ, addr info, setter, getter)
 
 macro strlit(x): string = newlit $x
 
@@ -46,7 +40,9 @@ template register_property*(
     let p_getter: StringName = getter
     let p_setter: StringName = setter
     let p_hintstring = hintstring
-    register_property_internal(addr className typ, addr p_name, variantType proptyp, addr p_getter, addr p_setter, hint, addr p_hintstring, usage)
+    register_property_internal(
+      propertyInfo(proptyp, addr p_name, hint, addr p_hintstring, usage),
+      addr className typ, addr p_getter, addr p_setter)
 
 macro gdname*(P: proc): string =
   for pragma in P.getImpl.pragma:
@@ -99,7 +95,8 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
 template `@export_category`*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
   proc name {.execon: contract(typ).} =
     let p_name = stringName strlit name
-    register_property_internal(addr className typ, addr p_name, VariantTypeNil, addr StringName.empty, addr StringName.empty, propertyHintNone, addr String.empty, {propertyUsageCategory})
+    register_property_internal(
+      propertyInfo(VariantTypeNil, addr p_name, usage = {propertyUsageCategory}), addr className typ)
 
 template `@export_group`*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
   proc name {.execon: contract(typ).} =

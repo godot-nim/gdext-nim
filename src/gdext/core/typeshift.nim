@@ -16,7 +16,7 @@ proc load* =
     variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
     typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
 
-type AltInt* = int32|int16|int8|uint64|uint32|uint16|uint8|byte
+type AltInt* = int32|int16|int8|uint64|uint32|uint16|uint8|byte|enum
 type AltFloat* = float32
 type AltString* = string
 

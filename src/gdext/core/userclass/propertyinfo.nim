@@ -3,8 +3,18 @@ import std/macros
 import gdext/dirty/gdextensioninterface
 import gdext/core/builtinindex
 import gdext/core/extracommands
+import gdext/core/gdclass
+import gdext/core/gdrefs
 import gdext/core/typeshift
 import gdextgen/globalenums except VariantType
+
+type
+  GodotUnboundSymbolDefect* = object of Defect
+  GodotEnumMeta* = object
+    className*: StringName
+proc Meta*[T: enum](_: typedesc[T]): var GodotEnumMeta =
+  var instance {.global.} : GodotEnumMeta
+  instance
 
 # Metadata
 # ========
@@ -53,6 +63,7 @@ template metadata*(T: typedesc[float32]): ClassMethodArgumentMetadata = MethodAr
 
 template uniqueUsage*(T: typedesc): set[PropertyUsageFlags] = {}
 template uniqueUsage*(T: typedesc[Variant]): set[PropertyUsageFlags] = {propertyUsageNilIsVariant}
+template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsageClassIsEnum}
 
 type SomeProperty* = concept type t
   t.variantType is VariantType
@@ -75,7 +86,6 @@ proc propertyInfo*(typ: VariantType;
   )
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
       name: ptr StringName = addr StringName.empty;
-      class_name: ptr StringName = addr StringName.empty;
       hint: PropertyHint = propertyHint_None;
       hint_string: ptr String = addr String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
@@ -83,7 +93,17 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
   propertyInfo(
     T.variantType,
     name,
-    class_name,
+    (when T is GodotClass:
+      addr className T
+    elif T is GdRef:
+      addr className T.RefCounted
+    elif T is enum:
+      if Meta(T).className == default(StringName):
+        raise newException(GodotUnboundSymbolDefect,
+          "cannot make propertyInfo of " & $T & "; call (registerEnum/registerBitField)(YourClass, YourEnum) to bind the enum to the class.")
+      addr Meta(T).className
+    else:
+      addr StringName.empty),
     hint,
     hint_string,
     usage + T.uniqueUsage,
