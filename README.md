@@ -24,24 +24,32 @@ See [wiki][2] to get more detail.
 
 ## Install / Uninstall
 
+### Command line
+
 ```
 # install
 nimble install https://github.com/godot-nim/gdext-nim
 
 # uninstall
-nimble uninstall -i gdext
+nimble uninstall gdext
 gdextwiz uninstall
 
 # upgrade
 gdextwiz upgrade
 ```
 
+
 ## Dependencies
 
 * [nim-lang/nim](https://github.com/nim-lang/nim) 2.0.0 or higher
+  #### Macos
+  Use Nim installed via Homebrew, not choosenim.
+  Due to the execution environment of Godot itself, a native AArch64/ARM64 build of Nim is required, and that choosenim installs a x86_64 build emulated via Rosetta.
+
 * [godotengine/godot](https://github.com/godotengine/godot) 4.3
  
   It is possible to support lower strictly by manual installation (by changing gdextgen to the corresponding version content).
+  
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 
 [1]: https://github.com/godot-nim/demo
