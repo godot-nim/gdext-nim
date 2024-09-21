@@ -4,7 +4,7 @@ import gdextgen/classes/gdResourceLoader
 type PropTestEnum* = enum
   PropTestEnum1, PropTestEnum2, PropTestEnum3
 
-type PropTestNode* = ref object of Node
+type PropTestNode* = ptr object of Node
   icon*: gdref Texture2D
   PropTestEnum_with_export*: PropTestEnum
   string_with_export*: string = "with export"
@@ -33,7 +33,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export*: Color = color(1, 1, 1, 0.5)
   color_with_export_no_alpha*: Color = color(1, 1, 1)
 
-method init(self: PropTestNode) =
+method onInit(self: PropTestNode) =
   self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
   self.StringArray_with_export_multiline = typedArray[String](1)
   self.PackedStringArray_with_export_multiline = packedStringArray()

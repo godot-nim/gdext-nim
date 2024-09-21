@@ -49,7 +49,6 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
-  CLASS_passOwnershipToGodot class
   result =  CLASS_getObjectPtr class
   when Dev.debugCallbacks:
     privateAccess GodotClass
@@ -57,14 +56,13 @@ proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gd
 
 proc free_instance_func(p_userdata: pointer; p_instance: pointer) {.gdcall.} =
   let class = cast[GodotClass](p_instance)
-  CLASS_unlockDestroy class
+  onDestroy class
   when Dev.debugCallbacks:
     echo SYNC.FREE_BIND, class.control.name
 
 when Extension.version >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
-    let class = createClass(T, p_object)
-    CLASS_passOwnershipToGodot class
+    let class = createClass[T](p_object)
     result = cast[pointer](class)
     when Dev.debugCallbacks:
       privateAccess GodotClass

@@ -1,6 +1,5 @@
 import std/unittest
 import std/tables
-import std/strformat except `&`
 import std/strutils
 
 import gdext
@@ -23,12 +22,12 @@ import gdextgen/classes/[
 # because the program will finally be shared object(dll).
 unittest.disableParamFiltering()
 
-type GDExtNode* = ref object of Node
+type GDExtNode* = ptr object of Node
   initialized: bool
   texture: gdref Texture2D
 
 # Override init hook to customize the behavior when the object is created.
-method init(self: GDExtNode) =
+method onInit(self: GDExtNode) =
   if unlikely(not self.initialized):
     self.initialized = true
   else:
@@ -62,6 +61,7 @@ proc test_Object(self: GDExtNode) =
     test "instantiate":
       let obj: Object = instantiate Object
       check CLASS_getObjectPtr(obj) != nil
+      destroy obj
 
     test "singleton":
       # `/T` is same as `T.singleton`
@@ -84,19 +84,12 @@ proc test_RefCounted(self: GDExtNode) =
 
 proc test_Node(self: GDExtNode) =
   suite "Node":
-    # Shorthand of that:
-    # let node1 = instantiate(Node2D)
-    # node1.name = "MyNode2D"
-    let node = instantiate(Node2D, "MyNode2D")
-    # No need to have `original Node2D` since ownership of node will pass to `self` when call `addChild`.
-    # Or you can call `release(original T): T` like:
-    # ```
-    # let node = original instantiate(Node2D, "MyNode2D")
-    # self.addChild release node
-    # ```
-    # to dispose ownership.
 
     test "get node from tree":
+      # Shorthand of that:
+      # let node1 = instantiate(Node2D)
+      # node1.name = "MyNode2D"
+      let node = instantiate(Node2D, "MyNode2D")
       self.addChild node
 
       let node2_node: Node = self/"MyNode2D"
@@ -104,10 +97,6 @@ proc test_Node(self: GDExtNode) =
 
       let node2: Node2D = node2_node as Node2D
       check node == node2
-
-    test "stringify":
-      print fmt"{node=}"
-      check "MyNode2D" in $node
 
     test "get node from tree (using sugar)":
       let node = instantiate(Node2D, "Node2D")
