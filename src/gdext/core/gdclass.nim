@@ -75,9 +75,11 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   when Dev.debugCallbacks:
     echo SYNC.CREATE_CALL, class.control.name
 
-proc free_callback(p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
-  let class = cast[GodotClass](p_binding)
+proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
+  let class = cast[T](p_binding)
   onDestroy class
+  `=destroy` class[]
+  dealloc class
   when Dev.debugCallbacks:
     echo SYNC.FREE_CALL, class.control.name
 
@@ -99,7 +101,7 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
     when T is SomeEngineClass:
       instance.callbacks = InstanceBindingCallbacks(
         create_callback: create_callback[T],
-        free_callback: free_callback,
+        free_callback: free_callback[T],
         reference_callback: reference_callback,
       )
   instance

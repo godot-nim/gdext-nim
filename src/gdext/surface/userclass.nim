@@ -54,10 +54,13 @@ proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gd
     privateAccess GodotClass
     echo SYNC.CREATE_BIND, class.control.name
 
-proc free_instance_func(p_userdata: pointer; p_instance: pointer) {.gdcall.} =
-  let class = cast[GodotClass](p_instance)
+proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
+  let class = cast[T](p_instance)
   onDestroy class
+  `=destroy` class[]
+  dealloc class
   when Dev.debugCallbacks:
+    privateAccess GodotClass
     echo SYNC.FREE_BIND, class.control.name
 
 when Extension.version >= (4, 2):
@@ -97,7 +100,7 @@ when Extension.version == (4, 1):
       notification_func: notification_func,
       to_string_func: to_string_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func,
+      free_instance_func: free_instance_func[T],
       reference_func: reference_func,
       unreference_func: unreference_func,
       get_virtual_func: get_virtual_func,
@@ -121,7 +124,7 @@ else:
       reference_func: reference_func,
       unreference_func: unreference_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func,
+      free_instance_func: free_instance_func[T],
       recreate_instance_func: recreate_instance_func[T],
       get_virtual_func: get_virtual_func,
       get_virtual_call_data_func: nil,
