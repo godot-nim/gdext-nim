@@ -103,5 +103,6 @@ else:
   # is required to activate this `. *` operator.
   --define: nimPreviewDotLikeOps
 
-  Extension.version = (4, 3)
   Extension.libdir = "$projectdir/lib"/RunningSystem/Build
+
+  include gdext/core/versiondata

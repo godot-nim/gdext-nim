@@ -1,9 +1,8 @@
 import std/macros
 
 import gdext/core/builtinindex
-import gdextgen/builtinclasses/constructors
-import gdextgen/classindex
-import gdextgen/classes/gdNode
+import gdext/surface/[builtinclasses, classindex]
+import gdext/classes/gdNode
 
 import classutils
 

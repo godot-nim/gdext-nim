@@ -7,13 +7,12 @@ import gdext/core/commandindex
 import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/builtinindex
-import gdextgen/builtinclasses
-import gdextgen/globalenums
-import gdextgen/classindex
 
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
+
+import gdext/surface/[globalenums, builtinclasses, classindex]
 
 proc register_property_internal*(
       info: PropertyInfo;

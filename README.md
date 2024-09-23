@@ -33,10 +33,9 @@ See [wiki][2] to get more detail.
 
 ```
 # install
-nimble install https://github.com/godot-nim/gdext-nim
+nimble install https://github.com/godot-nim/gdextgen
 
 # uninstall
-nimble uninstall gdext
 gdextwiz uninstall
 
 # upgrade

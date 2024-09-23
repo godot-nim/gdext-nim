@@ -3,7 +3,7 @@ import gdext/core/gdtypedarray
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/typeshift
-import gdextgen/builtinclasses
+import gdext/surface/[builtinclasses]
 
 {.push, inline.}
 proc setLen*(arr: var Array; newlen: Natural) =
