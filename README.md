@@ -45,12 +45,7 @@ gdextwiz upgrade
 
 * Linux
 * Macos
-
-### In preparation
-
 * Windows
-
-  See godot-nim/gdext-nim#45.
 
 ## Dependencies
 
@@ -65,6 +60,19 @@ gdextwiz upgrade
   
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 
+#### Windows
+
+* [Build Tools for Visual Studio 2022][4]
+
+  It must be compiled using MSVC in order to be loaded as a dll in Godot.
+
+  Please install Build Tools for Visual Studio 2022 from here: https://aka.ms/vs/17/release/vs_BuildTools.exe.
+  Be sure that [Desktop development with C++] is checked.
+
+  Then next, add the path to cl to the PATH variable.
+  The path will be probably that: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64`
+
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
 [3]: https://github.com/godot-nim/gdext-nim/wiki/gdextwiz
+[4]: https://visualstudio.microsoft.com/downloads/
