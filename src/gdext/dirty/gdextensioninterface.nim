@@ -245,7 +245,7 @@ when Extension.version >= (4, 2):
       class_userdata*: pointer
 when Extension.version >= (4, 3):
   type
-    ClassFreePropertyList2* = proc(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t)
+    ClassFreePropertyList2* = proc(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.}
     ClassCreationInfo3* {.bycopy.} = object
       is_virtual*: Bool
       is_abstract*: Bool
