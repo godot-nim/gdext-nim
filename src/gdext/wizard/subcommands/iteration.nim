@@ -18,7 +18,7 @@ proc build_recursive(cli: var CliContext; nimargs: seq[string], current: string;
     of pcDir, pcLinkToDir:
       cli.build_recursive(nimargs, path, limit.pred)
 
-proc build_all*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
+proc build_all*(nimargs: seq[string]; search_path: string; depth: int; run: bool = false): 0..1 =
   var cli = CliContext(wizard: "wizard build-all*")
   var current = expandFilename search_path
   while not fileExists(current/"project.godot"):
@@ -29,6 +29,14 @@ proc build_all*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
 
   cli.info "using " & current/"project.godot"
   cli.build_recursive(nimargs, current, depth)
+
+  if run:
+    let exe = findExe("godot")
+    if exe.len == 0:
+      cli.failure "failed to run. godot executable not found."
+      quit 1
+    cli.info "godot executable found. launching..."
+    discard execShellCmd(exe & " --path " & current)
 
 proc build*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
   var cli = CliContext(wizard: "wizard build*")
@@ -62,7 +70,7 @@ proc dispatch_build*(opt: var OptParser) =
       quit build(nimargs, search_path, depth)
     next opt
 
-proc dispatch_build_all*(opt: var OptParser) =
+proc dispatch_build_all*(opt: var OptParser; run = false) =
   next opt
   var nimargs: seq[string]
   var search_path = "."
@@ -74,7 +82,10 @@ proc dispatch_build_all*(opt: var OptParser) =
       nimargs.add opt.reverseOpt
     of cmdArgument:
       search_path = opt.key
-      quit build_all(nimargs, search_path, depth)
+      quit build_all(nimargs, search_path, depth, run)
     of cmdEnd:
-      quit build_all(nimargs, search_path, depth)
+      quit build_all(nimargs, search_path, depth, run)
     next opt
+
+proc dispatch_run*(opt: var OptParser) =
+  dispatch_build_all(opt, true)
