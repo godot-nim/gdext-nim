@@ -1,5 +1,5 @@
 import gdext/utils/macros
-import std/[sequtils, sets, tables]
+import std/[sequtils, strutils, sets, tables]
 
 import gdext/core/commandindex
 import gdext/core/gdclass
@@ -100,7 +100,7 @@ proc sync_methodDef*(body: Nimnode): NimNode =
     error "Registration is not reflected. Define it before calling proc register " & $selfT & ".", methoddef
 
   let methodstr = $methoddef[0].basename
-  let methodstrlit = newlit methodstr
+  let methodstrlit = newlit methodstr.nimIdentNormalize.replace("`", "")
   let methodname = ident methodstr & "_bind"
   let procsym = ident methodstr
 

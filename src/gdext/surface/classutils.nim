@@ -1,4 +1,4 @@
-import std/strutils
+import std/[strutils, importutils]
 
 import gdext/buildconf
 
@@ -13,12 +13,12 @@ type SomeNotRefCounted = concept type t
 
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type)
-  result = createClass(Type, objectPtr)
+  result = createClass[T](objectPtr)
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
 
 proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
-  result = createClass(Type, objectPtr)
+  result = createClass[T](objectPtr)
   interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
 
@@ -27,6 +27,9 @@ proc instantiate*[T: SomeNotRefCounted](_: typedesc[T]): T =
   when Dev.debugCallbacks:
     echo SYNC.INSTANTIATE, $typeof T
 
+proc destroy*(x: GodotClass) =
+  privateAccess GodotClass
+  interfaceObjectDestroy(x.control.owner)
 
 proc instanceID*(self: GodotClass): GDObjectInstanceID =
   interface_Object_getInstanceId CLASS_getObjectPtr self
@@ -41,9 +44,6 @@ proc castTo*[T: GodotClass](self: GodotClass; _: typedesc[T]): T =
 {.push, inline.}
 
 template `as`*[T: GodotClass](self: GodotClass; _: typedesc[T]): T = castTo(self, typedesc[T])
-
-proc passOwnershipToEngine*(self: GodotClass) =
-  CLASS_passOwnerShipToGodot(self)
 
 {.pop.}
 
@@ -74,5 +74,9 @@ method property_canRevert*(self: GodotClass; p_name: ConstStringNamePtr): Bool {
 method property_getRevert*(self: GodotClass; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.base.} = discard
 method toString*(self: GodotClass; r_is_valid: ptr Bool; p_out: StringPtr) {.base.} = discard
 method get_propertyList*(self: GodotClass; r_count: ptr uint32): ptr PropertyInfo {.base.} = r_count[] = 0
-method free_propertyList*(self: GodotClass; p_list: ptr PropertyInfo) {.base.} = discard
+
+when Extension.version < (4, 3):
+  method free_propertyList*(self: GodotClass; p_list: ptr PropertyInfo) {.base.} = discard
+else:
+  method free_propertyList*(self: GodotClass; p_list: openArray[PropertyInfo]) {.base.} = discard
 

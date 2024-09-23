@@ -7,7 +7,7 @@ import gdext/core/builtinindex
 import gdext/core/commandindex
 import gdext/core/typeshift
 
-import gdextgen/classes/gdobject
+import gdext/classes/gdobject
 
 import contracts
 import propertyinfo

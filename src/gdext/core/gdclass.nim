@@ -1,4 +1,4 @@
-import std/[tables]
+import std/[tables, typetraits]
 
 import gdext/buildconf
 
@@ -25,23 +25,13 @@ when Dev.debugCallbacks:
     DESTROY          = "SYNC------------DESTROY: "
 
 type
-  ObjectControlFlag* = enum
-    OC_godotManaged
-
   ObjectControl* = object
     owner*: ObjectPtr
-    flags*: set[ObjectControlFlag]
     when Dev.debugCallbacks:
       name*: string
 
-proc `=destroy`*(x: ObjectControl) =
-  when Dev.debugCallbacks:
-    echo SYNC.DESTROY, x.name
-  if OC_godotManaged notin x.flags:
-    interfaceObjectDestroy(x.owner)
-
 type
-  GodotClass* = ref object of RootObj
+  GodotClass* = ptr object of RootObj
     control: ObjectControl
   GodotClassMeta* = object
     virtualMethods*: Table[StringName, ClassCallVirtual]
@@ -65,34 +55,31 @@ proc CLASS_getObjectPtrPtr*(class: GodotClass): ptr ObjectPtr =
   if unlikely(class.isNil or class.control.owner.isNil): nil
   else: addr class.control.owner
 
-proc CLASS_passOwnershipToGodot*(class: GodotClass) =
-  class.control.flags.incl OC_godotManaged
-  GC_ref class
-proc CLASS_unlockDestroy*(class: GodotClass) =
-  if OC_godotManaged in class.control.flags:
-    GC_unref class
+method onInit*(self: GodotClass) {.base.} = discard
+method onDestroy*(self: GodotClass) {.base.} = discard
 
-method init*(self: GodotClass) {.base.} = discard
-
-proc createClass*[T: SomeClass](Type: typedesc[T]; o: ObjectPtr): Type =
-  result = Type(
+proc createClass*[T: SomeClass](o: ObjectPtr): T =
+  result = cast[T](alloc sizeof pointerBase T)
+  zeroMem result, sizeof pointerBase T
+  result[] = (pointerBase T)(
     control: ObjectControl(
       owner: o, ))
   when Dev.debugCallbacks:
-    result.control.name = $Type
-  init result
+    result.control.name = $T
+  onInit result
 
 
 proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
-  let class = createClass(T, cast[ObjectPtr](p_instance))
-  CLASS_passOwnershipToGodot class
+  let class = createClass[T](cast[ObjectPtr](p_instance))
   result = cast[pointer](class)
   when Dev.debugCallbacks:
     echo SYNC.CREATE_CALL, class.control.name
 
-proc free_callback(p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
-  let class = cast[GodotClass](p_binding)
-  CLASS_unlockDestroy class
+proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
+  let class = cast[T](p_binding)
+  onDestroy class
+  `=destroy` class[]
+  dealloc class
   when Dev.debugCallbacks:
     echo SYNC.FREE_CALL, class.control.name
 
@@ -114,7 +101,7 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
     when T is SomeEngineClass:
       instance.callbacks = InstanceBindingCallbacks(
         create_callback: create_callback[T],
-        free_callback: free_callback,
+        free_callback: free_callback[T],
         reference_callback: reference_callback,
       )
   instance

@@ -43,6 +43,9 @@ test "instantiate at global":
   check CLASS_getObjectPtr(engineclass) != nil
   check CLASS_getObjectPtr(extentclass) != nil
 
+  destroy engineclass
+  destroy extentclass
+
 test "connect to global signal":
   var signal_arg0_obj = extmain.signal"signal_arg0"
   var signal_arg1_obj = extmain.signal"signal_arg1"

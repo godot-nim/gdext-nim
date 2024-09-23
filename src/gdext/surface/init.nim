@@ -7,10 +7,10 @@ import gdext/core/commandindex
 import gdext/core/extracommands
 import gdext/core/typeshift
 import gdext/core/exceptions
-import gdextgen/utilityfuncs
 import gdext/core/userclass/contracts
+import gdext/surface/utilityfuncs
 import gdext/surface/userclass
-import gdext/gdextensionmain
+import gdext/classes/gdextensionmain
 import gdext/buildconf
 
 

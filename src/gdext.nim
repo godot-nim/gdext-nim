@@ -14,19 +14,17 @@ export              builtinindex, geometrics, gdrefs, gdtypedarray
 import gdext/core/typeshift
 export typeshift.get, typeshift.variant
 
-import gdextgen/[ builtinclasses, classindex, globalenums, localenums, structs ]
-export            builtinclasses, classindex, globalenums, localenums, structs
+import gdext/surface/[ builtinclasses, classindex, globalenums, localenums, structs ]
+export                 builtinclasses, classindex, globalenums, localenums, structs
 
-import gdextgen/utilityfuncs
+import gdext/surface/utilityfuncs
 export utilityfuncs except print
-
-import gdextgen/classes/gdengine
-export gdengine.isEditorHint
 
 import gdext/surface/[ init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
 export                 init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
 
-import gdext/gdextensionmain
+import gdext/classes/[gdengine, gdextensionmain]
+export gdengine.isEditorHint
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
 proc print*(args: varargs[Variant, variant]) =

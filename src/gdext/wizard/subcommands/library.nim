@@ -4,7 +4,7 @@ import std/strutils
 import std/parseopt
 
 const path = (
-  gdext: "https://github.com/godot-nim/gdext-nim",
+  gdext: "https://github.com/godot-nim/gdextgen",
 )
 
 proc install*(): 0..1 =
@@ -13,10 +13,8 @@ proc install*(): 0..1 =
 proc uninstall*(): 0..1 =
 
   let pkglist = @[
-    "gdext",
     "gdextgen",
-    "gdext/core",
-    "gdextwiz",
+    "gdext",
     ]
   let pkg = pkglist.join(" ")
 

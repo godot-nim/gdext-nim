@@ -29,8 +29,12 @@ proc get_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: V
 proc get_property_list_func(p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
   cast[GodotClass](p_instance).get_propertyList(r_count)
 
-proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
-  cast[GodotClass](p_instance).free_propertyList(p_list)
+when Extension.version < (4, 3):
+  proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
+    cast[GodotClass](p_instance).free_propertyList(p_list)
+else:
+  proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
+    cast[GodotClass](p_instance).free_propertyList(p_list.toOpenArray(0, int p_count))
 
 proc property_can_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
   cast[GodotClass](p_instance).property_canRevert(p_name)
@@ -50,22 +54,23 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
-  CLASS_passOwnershipToGodot class
   result =  CLASS_getObjectPtr class
   when Dev.debugCallbacks:
     privateAccess GodotClass
     echo SYNC.CREATE_BIND, class.control.name
 
-proc free_instance_func(p_userdata: pointer; p_instance: pointer) {.gdcall.} =
-  let class = cast[GodotClass](p_instance)
-  CLASS_unlockDestroy class
+proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
+  let class = cast[T](p_instance)
+  onDestroy class
+  `=destroy` class[]
+  dealloc class
   when Dev.debugCallbacks:
+    privateAccess GodotClass
     echo SYNC.FREE_BIND, class.control.name
 
 when Extension.version >= (4, 2):
   proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
-    let class = createClass(T, p_object)
-    CLASS_passOwnershipToGodot class
+    let class = createClass[T](p_object)
     result = cast[pointer](class)
     when Dev.debugCallbacks:
       privateAccess GodotClass
@@ -100,13 +105,13 @@ when Extension.version == (4, 1):
       notification_func: notification_func,
       to_string_func: to_string_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func,
+      free_instance_func: free_instance_func[T],
       reference_func: reference_func,
       unreference_func: unreference_func,
       get_virtual_func: get_virtual_func,
       class_userdata: addr Meta(T),
     )
-else:
+elif Extension.version == (4, 2):
   proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo2 =
     ClassCreationInfo2(
       is_virtual: is_virtual,
@@ -124,7 +129,34 @@ else:
       reference_func: reference_func,
       unreference_func: unreference_func,
       create_instance_func: create_instance_func[T],
-      free_instance_func: free_instance_func,
+      free_instance_func: free_instance_func[T],
+      recreate_instance_func: recreate_instance_func[T],
+      get_virtual_func: get_virtual_func,
+      get_virtual_call_data_func: nil,
+      call_virtual_with_data_func: nil,
+      get_rid_func: nil,
+      class_userdata: addr Meta(T),
+    )
+else:
+  proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo3 =
+    ClassCreationInfo3(
+      is_virtual: is_virtual,
+      is_abstract: is_abstract,
+      is_exposed: true,
+      is_runtime: false,
+      set_func: set_func,
+      get_func: get_func,
+      get_property_list_func: get_property_list_func,
+      free_property_list_func: free_property_list_func,
+      property_can_revert_func: property_can_revert_func,
+      property_get_revert_func: property_get_revert_func,
+      validate_property_func: nil,
+      notification_func: notification_func,
+      to_string_func: to_string_func,
+      reference_func: reference_func,
+      unreference_func: unreference_func,
+      create_instance_func: create_instance_func[T],
+      free_instance_func: free_instance_func[T],
       recreate_instance_func: recreate_instance_func[T],
       get_virtual_func: get_virtual_func,
       get_virtual_call_data_func: nil,
@@ -154,8 +186,10 @@ proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
   when Extension.version == (4, 1):
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
-  else:
+  elif Extension.version == (4, 2):
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
+  else:
+    interface_ClassDB_registerExtensionClass3(environment.library, addr className(T), addr className(T.Super), addr info)
   processExports T
   invokeContract T
   registered.incl className(T)

@@ -1,7 +1,6 @@
 import gdext/core/[gdclass]
-import gdextgen/[classindex]
-import gdextgen/classes/[gdengine]
-import gdext/surface/[userclass, classutils]
+import gdext/classes/[gdengine]
+import gdext/surface/[classindex, userclass, classutils]
 import gdext/buildconf
 
 import std/macros
@@ -9,7 +8,7 @@ import std/macros
 macro defExtensionMain: untyped =
   let typ = ident Extension.name
   quote do:
-    type `typ`* = ref object of Object
+    type `typ`* = ptr object of Object
 
 defExtensionMain
 
@@ -17,7 +16,7 @@ macro ExtensionMain*: untyped = bindSym Extension.name
 
 var extmain*: ExtensionMain
 
-method init(self: ExtensionMain) =
+method onInit(self: ExtensionMain) =
   discard
 
 template initializeExtensionMain* =
@@ -26,7 +25,7 @@ template initializeExtensionMain* =
   Engine.singleton.registerSingleton(className ExtensionMain, extmain)
 template eliminateExtensionMain* =
   Engine.singleton.unregisterSingleton(className ExtensionMain)
-  extmain = nil
+  destroy extmain
 
 when isMainModule:
   import gdext/dirty/gdextensioninterface

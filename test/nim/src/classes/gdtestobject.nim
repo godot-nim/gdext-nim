@@ -1,4 +1,4 @@
 import gdext
 
-type TestObject* = ref object of Object
+type TestObject* = ptr object of Object
 
