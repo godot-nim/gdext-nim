@@ -6,6 +6,7 @@ import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/typeshift
+import gdext/core/gdtypedarray
 import gdextgen/globalenums except VariantType
 
 type
@@ -68,6 +69,23 @@ template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsa
 type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
+
+type SomeObject* = concept type t
+  t is SomeProperty
+  t isnot GdRef
+  t.variantType == VariantType_Object
+
+type SomeInt* = concept type t
+  t is int|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
+
+type SomeFloat* = concept type t
+  t is float|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+
+type SomeString* = concept type t
+  t is string|String|PackedStringArray|TypedArray[String]
+
+type SomeColor* = concept type t
+  t is Color|PackedColorArray|TypedArray[Color]
 
 proc propertyInfo*(typ: VariantType;
       name: ptr StringName = addr StringName.empty;

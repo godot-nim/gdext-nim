@@ -14,6 +14,7 @@ import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/surface/classutils
+import gdext/surface/properties
 
 when Dev.debugCallbacks:
   import std/importutils
@@ -155,9 +156,14 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
+  processExports T
   invokeContract T
   registered.incl className(T)
+  
 
 proc unregisterAll* =
   for name in registered:
     interface_ClassDB_unregister_extension_class(environment.library, addr name)
+
+
+  
