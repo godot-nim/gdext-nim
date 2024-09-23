@@ -8,7 +8,7 @@ import gdext/core/[gdclass, typeshift]
 
 # sugar of `import godot/classDetail/classDetail_native_T`
 # Since this library is still early stage, we recommend to use this sugar for portability
-import gdextgen/classes/[
+import gdext/classes/[
   gdSceneTree,
   gdNode,
   gdRefCounted,

@@ -1,5 +1,5 @@
 import gdext
-import gdextgen/classes/gdResourceLoader
+import gdext/classes/gdResourceLoader
 
 type PropTestEnum* = enum
   PropTestEnum1, PropTestEnum2, PropTestEnum3

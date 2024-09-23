@@ -6,7 +6,7 @@ import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/typeshift
-import gdextgen/globalenums except VariantType
+import gdext/surface/globalenums except VariantType
 
 type
   GodotUnboundSymbolDefect* = object of Defect

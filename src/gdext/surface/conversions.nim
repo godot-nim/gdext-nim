@@ -1,7 +1,7 @@
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdtypedarray
-import gdextgen/builtinclasses/constructors
+import gdext/surface/builtinclasses
 import gdext/surface/classutils
 import gdext/surface/variantutils
 
