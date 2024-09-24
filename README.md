@@ -60,11 +60,17 @@ gdextwiz upgrade
   
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 
-#### Windows
+#### Windows (Optional)
 
-* [Build Tools for Visual Studio 2022][4]
+The mingw gcc bundled with Nim is not compatible with the godot engine. If it does not work, try one of the options.
 
-  It must be compiled using MSVC in order to be loaded as a dll in Godot.
+* [LLVM-MinGW][4]
+
+  Unzip llvm-mingw-YYYYMMDD-ucrt-x86_64.zip from [releases][5] and add bin to PATH.
+
+  And then, add `--cc: clang` to your `config.nims`.
+
+* [Build Tools for Visual Studio 2022][6]
 
   Please install Build Tools for Visual Studio 2022 from here: https://aka.ms/vs/17/release/vs_BuildTools.exe.
   Be sure that [Desktop development with C++] is checked.
@@ -72,7 +78,11 @@ gdextwiz upgrade
   Then next, add the path to cl to the PATH variable.
   The path will be probably that: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64`
 
+  Finally, add `--cc: vcc` to your `config.nims`.
+
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
 [3]: https://github.com/godot-nim/gdext-nim/wiki/gdextwiz
-[4]: https://visualstudio.microsoft.com/downloads/
+[4]: https://www.mingw-w64.org/downloads/#llvm-mingw
+[5]: https://github.com/mstorsjo/llvm-mingw/releases
+[6]: https://visualstudio.microsoft.com/downloads/
