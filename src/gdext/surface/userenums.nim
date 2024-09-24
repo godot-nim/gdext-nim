@@ -41,7 +41,7 @@ proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.co
 
   call.add newlit isBitField
   result = quote do:
-    proc `enumType` {.execon: contract(`Class`).} =
+    proc `enumType` {.execon: Contract[`Class`].enums.} =
       Meta(typedesc `enumType`).className = stringname $className(`Class`) & "." & $`enumTypeStr`
       `call`
   registeredEnums.incl enumTypeStr

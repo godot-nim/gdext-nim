@@ -103,20 +103,6 @@ else:
   # is required to activate this `. *` operator.
   --define: nimPreviewDotLikeOps
 
-#   when hostOS == "windows":
-#     if findExe("cl").len == 0:
-#       {.error: """
-# cl executable not found.
-
-# Please install Build Tools for Visual Studio 2022 from here: https://aka.ms/vs/17/release/vs_BuildTools.exe
-# (download page: https://visualstudio.microsoft.com/downloads/)
-# Be sure that [Desktop development with C++] is checked.
-
-# Then next, add the path to cl to the PATH variable.
-# The path will be probably that: C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64
-# """.}
-#     --cc: vcc
-
   Extension.libdir = "$projectdir/lib"/RunningSystem/Build
 
   include gdext/core/versiondata
