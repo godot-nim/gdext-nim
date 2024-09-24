@@ -62,7 +62,9 @@ gdextwiz upgrade
 
 * [godotengine/godot](https://github.com/godotengine/godot) 4.1.0 or higher
   
-* [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
+* [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen)
+
+  Choose a branch that has same name of your godot version.
 
 #### Windows (Optional)
 
