@@ -1,7 +1,7 @@
 {.experimental: "dynamicBindSym".}
 
 from std/strutils import join, strip, find, removeSuffix
-from std/sequtils import concat, mapIt
+from std/sequtils import concat, mapIt, toSeq
 
 
 import gdext/dirty/gdextensioninterface
@@ -18,8 +18,13 @@ import gdext/surface/pragmas
 import gdext/surface/userenums
 
 template joinArg(s: varargs[string]): string = s.join(",")
-template rangeHintString(min, max: SomeNumeric, extra: openarray[RangeArgument]): string =
-  @[$min, $max].concat(@extra.mapit($it)).join(",")
+
+proc rangeHintString(min, max, step: SomeNumeric, extra: varargs[RangeArgument]): string =
+  var res = @[$min, $max, $step]
+  if extra.len > 0:
+    res = res.concat(@extra.mapit($it))
+  res.join(",")  
+    
 template className(iden: SomeClass): string = $iden.className
 
 type alias* = distinct string
@@ -383,21 +388,18 @@ template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
-    min, max: S; extra: openarray[RangeArgument]= []): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintRange,
-    hint_string= rangeHintString(min, max, extra))
-macro gdexport_range*(
-  iden: SomeInt,
-  min, max: typed,
-  extra: openarray[RangeArgument]= [], 
+    min, max: S; 
+    extra: varargs[RangeArgument]): untyped =
+  
+    register_property(typedesc T, name, typedesc S, getter, setter,
+        hint= propertyHintRange,
+        hint_string= rangeHintString(min, max, step= defaultUnit[S](), extra))
+template gdexport_range*[S: SomeNumeric](
+  iden: typedesc[S],
+  min, max: S,
+  extra: varargs[RangeArgument], 
   alias: static[alias] = noAlias) = 
-    quote do:
-      # Unfortunately, we have to perform typechecking here because of a compiler bug/quirk
-      static: 
-        if `min` isnot typeof(`iden`): #`idenType`:
-          error("Arguments must be of the same type as the field")
-      register_property_iden(`iden`, `alias`, hint= propertyHintRange, hint_string= rangeHintString(`min`, `max`, `extra`))
+    gdexport_range(iden, min, max, step= defaultUnit[S](), extra, alias)
 
 template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     name;
@@ -406,7 +408,20 @@ template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     min, max, step: S; extra: varargs[RangeArgument]): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintRange,
-    hint_string= @[$min, $max, $step].concat(@extra.mapIt($it)).join(","))
+    hint_string= rangeHintString(min, max, step, extra))
+macro gdexport_range*[S: SomeNumeric](
+  iden: typedesc[S],
+  min, max, step: S,
+  extra: varargs[RangeArgument], 
+  alias: static[alias] = noAlias) = 
+    quote do:
+      # compiler bug mitigation https://github.com/nim-lang/Nim/issues/11769
+      const hintString = when `extra`.len > 0: 
+        rangeHintString(`min`, `max`, `step`, `extra`)
+      else:
+        rangeHintString(`min`, `max`, `step`)
+
+      register_property_iden(`iden`, `alias`, hint= propertyHintRange, hint_string= hintString)
 
 template gdexport_storage*[T: SomeUserClass; S: SomeProperty](
     name;
@@ -414,7 +429,7 @@ template gdexport_storage*[T: SomeUserClass; S: SomeProperty](
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     usage= {propertyUsageStorage})
-macro gdexport_storage*(iden: SomeProperty, alias: static[alias] = noAlias)  =
+macro gdexport_storage*(iden: SomeProperty, alias: static[alias] = noAlias) =
   quote do:
     register_property_iden(`iden`, `alias`, usage= {propertyUsageStorage})
 
@@ -455,11 +470,22 @@ macro processExports*(T: typed): untyped =
         error("Unexpected pragma configuration")
     
     let pragmaParams = pragma[0]
-    let args = if pragmaParams.len > 0:
-      @[dotExpr] & pragmaParams[1..^1]
+ 
+    var args = if pragmaParams.len > 0:
+      var sq = @[dotExpr] 
+      for param in pragmaParams[1..^1]: 
+        # Ignore the case where compiler inserts concept type as a call param 
+        if param.kind == nnkSym: 
+          let impl = bindSym($param).getImpl
+          if impl.kind == nnkTypeDef:
+            continue
+        
+        sq.add param
+      sq
     else:
       @[dotExpr]
 
+    # echo args.repr
     stmts.add bindSym(pragmaIdent).newCall args
       
   result = stmts

@@ -76,24 +76,23 @@ type SomeObject* = concept type t
   t.variantType == VariantType_Object
 
 type SomeInt* = concept type t
-  t is int|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
+  t is SomeInteger|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
 
 type SomeFloat* = concept type t
-  t is float|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+  t is system.SomeFloat|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
 
 type SomeNumeric* = concept type t
   t is SomeInt|SomeFloat
-
-type SomeNumericLiteral* = concept type t
-  t isnot typedesc[SomeInt]
-  t is SomeInt|SomeFloat 
-  
 
 type SomeString* = concept type t
   t is string|String|PackedStringArray|TypedArray[String]
 
 type SomeColor* = concept type t
   t is Color|PackedColorArray|TypedArray[Color]
+
+proc defaultUnit*[S: SomeNumeric]: S = 
+  when S is propertyinfo.SomeFloat: 1.0
+  else: 1
 
 proc propertyInfo*(typ: VariantType;
       name: ptr StringName = addr StringName.empty;

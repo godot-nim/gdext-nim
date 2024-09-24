@@ -192,6 +192,7 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass3(environment.library, addr className(T), addr className(T.Super), addr info)
+  processExports T
   invoke Contract[T]
   when T is EditorPlugin:
     interface_Editor_addPlugin addr className(T)

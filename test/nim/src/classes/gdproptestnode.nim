@@ -180,12 +180,12 @@ gdexport_range "int_with_export_strict_range",
 gdexport_range "int_with_export_range",
     proc (self: PropTestNode): int = self.int_with_export_range,
     proc (self: PropTestNode; value: int) = self.int_with_export_range = value,
-    10, 100, 5, [or_less, or_greater]
+    10, 100, 5, or_less, or_greater
 
 gdexport_range "radians_with_export_range_as_degrees",
     proc (self: PropTestNode): float = self.radians_with_export_range_as_degrees,
     proc (self: PropTestNode; value: float) = self.radians_with_export_range_as_degrees = value,
-    0, 360, [radians_as_degrees]
+    0.0, 360.0, radians_as_degrees
 
 gdexport_storage "string_with_export_storage",
     proc (self: PropTestNode): string = self.string_with_export_storage,

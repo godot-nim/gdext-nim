@@ -2,7 +2,7 @@ import gdext/core/userclass/propertyinfo
 
 type ExpEasingArgument* = enum
   attenuation, positive_only
-type RangeArgument* {.pure.} = enum
+type RangeArgument*  = enum
   or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
 
 template gdexport*() {.pragma.}
@@ -25,5 +25,9 @@ template gdexport_exp_easing*() {.pragma.}
 template gdexport_enum*(cases: varargs[string]) {.pragma.}
 template gdexport_flags*(flags: varargs[string]) {.pragma.}
 template gdexport_exp_easing*(extra: ExpEasingArgument) {.pragma.}
-# template gdexport_range*(min, max: SomeNumeric, extra: openarray[RangeArgument] = []) {.pragma.}
+
+template gdexport_range*(min, max: SomeNumeric, extra: varargs[RangeArgument]) {.pragma.}
+template gdexport_range*(min, max, step: SomeNumeric, extra: varargs[RangeArgument]) {.pragma.}
+
+# template gdexport_range*(min, max SomeNumeric, extra: varargs[RangeArgument]) {.pragma.}
 
