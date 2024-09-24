@@ -1,52 +1,29 @@
-import std/macros
+import gdext/core/userclass/propertyinfo
 
-const pragmasNoArgsIdentifier = "pragmasNoArgs"
-const pragmasVarArgsIdentifier = "pragmasVarArgs"
+type ExpEasingArgument* = enum
+  attenuation, positive_only
+type RangeArgument* {.pure.} = enum
+  or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
 
-macro definePragmasNoParams(e: typed): untyped =
-    var bracketNode = newNimNode(nnkBracket)
-    for temp in e:
-        let name = temp.findChild(it.kind == nnkSym).toStrLit
-        bracketNode.add(name)
+template gdexport*() {.pragma.}
+template gdexport_multiline*() {.pragma.}
+template gdexport_color_no_alpha*() {.pragma.}
+template gdexport_dir*() {.pragma.}
+template gdexport_global_dir*() {.pragma.}
+template gdexport_file*() {.pragma.}
+template gdexport_global_file*() {.pragma.}
+template gdexport_flags_2d_navigation*() {.pragma.}
+template gdexport_flags_2d_physics*() {.pragma.}
+template gdexport_flags_2d_render*() {.pragma.}
+template gdexport_flags_3d_navigation*() {.pragma.}
+template gdexport_flags_3d_physics*() {.pragma.}
+template gdexport_flags_3d_render*() {.pragma.}
+template gdexport_flags_avoidance*() {.pragma.}
+template gdexport_storage*() {.pragma.}
+template gdexport_exp_easing*() {.pragma.}
 
-    let identifier = ident(pragmasNoArgsIdentifier)
-    quote do:
-        const `identifier` = @`bracketNode`
-        `e`
+template gdexport_enum*(cases: varargs[string]) {.pragma.}
+template gdexport_flags*(flags: varargs[string]) {.pragma.}
+template gdexport_exp_easing*(extra: ExpEasingArgument) {.pragma.}
+# template gdexport_range*(min, max: SomeNumeric, extra: openarray[RangeArgument] = []) {.pragma.}
 
-macro definePragmasVarArgs(e: typed): untyped =
-    var bracketNode = newNimNode(nnkBracket)
-    for temp in e:
-        let name = temp.findChild(it.kind == nnkSym).toStrLit
-        bracketNode.add(name)
-
-    let identifier = ident(pragmasVarArgsIdentifier)
-    quote do:
-        const `identifier` = @`bracketNode`
-        `e`
-
-definePragmasNoParams:
-    template gdexport*() {.pragma.}
-    template gdexport_multiline*() {.pragma.}
-    template gdexport_color_no_alpha*() {.pragma.}
-    template gdexport_dir*() {.pragma.}
-    template gdexport_global_dir*() {.pragma.}
-    template gdexport_file*() {.pragma.}
-    template gdexport_global_file*() {.pragma.}
-    template gdexport_flags_2d_navigation*() {.pragma.}
-    template gdexport_flags_2d_physics*() {.pragma.}
-    template gdexport_flags_2d_render*() {.pragma.}
-    template gdexport_flags_3d_navigation*() {.pragma.}
-    template gdexport_flags_3d_physics*() {.pragma.}
-    template gdexport_flags_3d_render*() {.pragma.}
-    template gdexport_flags_avoidance*() {.pragma.}
-
-definePragmasVarArgs:
-    template gdexport_enum*(cases: varargs[string]) {.pragma.}
-    template gdexport_flags*(flags: varargs[string]) {.pragma.}
-
-proc isPragmaNoArgs*(p: string): bool {.compileTime.} =
-    pragmasNoArgs.contains(p)
-
-proc isPragmaVarArgs*(p: string): bool {.compileTime.} =
-    pragmasVarArgs.contains(p)

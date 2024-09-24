@@ -72,7 +72,7 @@ type SomeProperty* = concept type t
 
 type SomeObject* = concept type t
   t is SomeProperty
-  t isnot GdRef
+  t isnot GdRef|Array|TypedArray
   t.variantType == VariantType_Object
 
 type SomeInt* = concept type t
@@ -80,6 +80,14 @@ type SomeInt* = concept type t
 
 type SomeFloat* = concept type t
   t is float|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+
+type SomeNumeric* = concept type t
+  t is SomeInt|SomeFloat
+
+type SomeNumericLiteral* = concept type t
+  t isnot typedesc[SomeInt]
+  t is SomeInt|SomeFloat 
+  
 
 type SomeString* = concept type t
   t is string|String|PackedStringArray|TypedArray[String]

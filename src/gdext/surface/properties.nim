@@ -3,6 +3,7 @@
 from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt
 
+
 import gdext/dirty/gdextensioninterface
 import gdext/utils/[macros, staticevents]
 import gdext/core/commandindex
@@ -14,9 +15,16 @@ import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
 import gdext/surface/pragmas
+import gdext/surface/userenums
 
 template joinArg(s: varargs[string]): string = s.join(",")
+template rangeHintString(min, max: SomeNumeric, extra: openarray[RangeArgument]): string =
+  @[$min, $max].concat(@extra.mapit($it)).join(",")
 template className(iden: SomeClass): string = $iden.className
+
+type alias* = distinct string
+proc `==`*(x: alias, y: alias): bool = x.string == y.string
+const noAlias = alias ""
 
 import gdext/surface/[globalenums, builtinclasses, classindex]
 
@@ -79,6 +87,7 @@ macro register_property*[T: SomeClass; P: SomeProperty](
     settersym =
       if setter.kind == nnkLambda: genSym(nskProc, "set_" & typname & "_" & $name)
       else: setter
+
   if getter.kind == nnkLambda:
     let getterdef = nnkProcDef.newTree(gettersym).add(getter[1..^1])
     result.add getterdef
@@ -98,6 +107,7 @@ macro register_property*[T: SomeClass; P: SomeProperty](
 
 macro register_property_iden*(
     iden: typed;
+    alias: static[alias];
     hint: PropertyHint = propertyHintNone;
     hintstring: String = gdstring"";
     usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
@@ -105,12 +115,13 @@ macro register_property_iden*(
   let classType = iden[0]
   let varType = iden.getTypeInst[1]
   let variable = iden[1]
+  let name = if alias == noAlias: $variable else: alias.string
   let getter = quote do:
     proc(self: `classType`): `varType` = self.`variable` 
   let setter = quote do:
     proc(self: `classType`, value: `varType`) = self.`variable` = value
   quote do:
-    register_property(typedesc `classType`, `variable`, typedesc `varType`, `getter`, `setter`, `hint`, `hintstring`, `usage`)
+    register_property(typedesc `classType`, `name`, typedesc `varType`, `getter`, `setter`, `hint`, `hintstring`, `usage`)
 
 template gdexport_category*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
   proc name {.execon: contract(typ).} =
@@ -144,25 +155,34 @@ template gdexport_custom*[T: SomeUserClass; S: SomeProperty](
 
 macro gdexport_custom*(
       iden: typed;
+      alias: static[alias] = noAlias;
       hint: PropertyHint = propertyHintNone;
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
     quote do:
-      register_property_iden(`iden`, `hint`, `hintstring`, `usage`) 
+      register_property_iden(`iden`, `alias`, `hint`, `hintstring`, `usage`) 
 
 template gdexport*[T: SomeUserClass; S: SomeProperty](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter)
-macro gdexport*(iden: SomeProperty) = 
-  let className = $iden.getTypeInst[1].toStrLit
-  quote do: 
+macro gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  = 
+  let class = iden[0]
+  let propClass = iden.getTypeInst[1]
+  let propClassName = $propClass.toStrLit
+  let isEnum = propClass.getType.kind == nnkEnumTy
+
+  result = newStmtList()
+  if isEnum:
+    result.add registerEnumInternal(class, propClass, false)
+
+  result.add quote do: 
     when `iden` is SomeObject:
-      register_property_iden(`iden`, hint= propertyHintNodeType, hint_string= `className`)
-    else:
-      register_property_iden(`iden`)
+      register_property_iden(`iden`, `alias`, hint= propertyHintNodeType, hint_string= `propClassName`)
+    else:   
+      register_property_iden(`iden`, `alias`)
     
 template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColor](
       name;
@@ -171,8 +191,8 @@ template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColor](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintColorNoAlpha)
-macro gdexport_color_no_alpha*(iden: SomeColor) = quote do: 
-  register_property_iden(`iden`, hint= propertyHintColorNoAlpha)
+macro gdexport_color_no_alpha*(iden: SomeColor, alias: static[alias] = noAlias)  = quote do: 
+  register_property_iden(`iden`, `alias`, hint= propertyHintColorNoAlpha)
 
 template gdexport_dir*[T: SomeUserClass; S: SomeString](
       name;
@@ -181,8 +201,8 @@ template gdexport_dir*[T: SomeUserClass; S: SomeString](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintDir)
-macro gdexport_dir*(iden: SomeString) = quote do:
-  register_property_iden(`iden`, hint= propertyHintDir)
+macro gdexport_dir*(iden: SomeString, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintDir)
 
 template gdexport_global_dir*[T: SomeUserClass; S: SomeString](
       name;
@@ -191,8 +211,8 @@ template gdexport_global_dir*[T: SomeUserClass; S: SomeString](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintGlobalDir)
-macro gdexport_global_dir*(iden: SomeString) = quote do:
-  register_property_iden(`iden`, hint= propertyHintGlobalDir)
+macro gdexport_global_dir*(iden: SomeString, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintGlobalDir)
 
 template gdexport_file*[T: SomeUserClass; S: SomeString](
       name;
@@ -201,8 +221,8 @@ template gdexport_file*[T: SomeUserClass; S: SomeString](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintFile)
-macro gdexport_file*(iden: SomeString) = quote do:
-  register_property_iden(`iden`, hint= propertyHintFile)
+macro gdexport_file*(iden: SomeString, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintFile)
 
 template gdexport_global_file*[T: SomeUserClass; S: SomeString](
       name;
@@ -211,8 +231,8 @@ template gdexport_global_file*[T: SomeUserClass; S: SomeString](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintGlobalFile)
-macro gdexport_global_file*(iden: SomeString) = quote do:
-  register_property_iden(`iden`, hint= propertyHintGlobalFile)
+macro gdexport_global_file*(iden: SomeString, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintGlobalFile)
 
 template gdexport_enum*[T: SomeUserClass; S: SomeInt|SomeString](
       name;
@@ -223,9 +243,8 @@ template gdexport_enum*[T: SomeUserClass; S: SomeInt|SomeString](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintEnum,
     hint_string= enums.joinArg)
-
-macro gdexport_enum*(iden: SomeInt|SomeString, enums: varargs[string]) = quote do:
-    register_property_iden(`iden`, hint= propertyHintEnum, hint_string= `enums`.joinArg)
+macro gdexport_enum*(iden: SomeInt|SomeString, enums: varargs[string], alias: static[alias] = noAlias)  = quote do:
+    register_property_iden(`iden`, `alias`, hint= propertyHintEnum, hint_string= `enums`.joinArg)
 
 template gdexport_flags*[T: SomeUserClass; S: SomeInt](
       name;
@@ -236,8 +255,8 @@ template gdexport_flags*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintFlags,
     hint_string= flags.joinArg)
-macro gdexport_flags*(iden: SomeInt, flags: varargs[string]) = quote do:
-  register_property_iden(`iden`, hint= propertyHintFlags, hint_string= `flags`.joinArg)
+macro gdexport_flags*(iden: SomeInt, flags: varargs[string], alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintFlags, hint_string= `flags`.joinArg)
 
 template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeInt](
       name;
@@ -246,8 +265,8 @@ template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dNavigation)
-macro gdexport_flags_2d_navigation*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers2dNavigation)
+macro gdexport_flags_2d_navigation*(iden: SomeInt; alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dNavigation)
 
 template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeInt](
       name;
@@ -256,8 +275,8 @@ template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dPhysics)
-macro gdexport_flags_2d_physics*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers2dPhysics)
+macro gdexport_flags_2d_physics*(iden: SomeInt, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dPhysics)
 
 template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeInt](
       name;
@@ -266,8 +285,8 @@ template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dRender)
-macro gdexport_flags_2d_render*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers2dRender)
+macro gdexport_flags_2d_render*(iden: SomeInt, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dRender)
 
 template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeInt](
       name;
@@ -276,8 +295,8 @@ template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dNavigation)
-macro gdexport_flags_3d_navigation*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers3dNavigation)
+macro gdexport_flags_3d_navigation*(iden: SomeInt, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dNavigation)
 
 template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeInt](
       name;
@@ -286,8 +305,8 @@ template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dPhysics)
-macro gdexport_flags_3d_physics*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers3dPhysics)
+macro gdexport_flags_3d_physics*(iden: SomeInt, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dPhysics)
 
 template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeInt](
       name;
@@ -296,8 +315,8 @@ template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dRender)
-macro gdexport_flags_3d_render*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayers3dRender)
+macro gdexport_flags_3d_render*(iden: SomeInt, alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dRender)
 
 template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeInt](
       name;
@@ -306,11 +325,9 @@ template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeInt](
     ): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayersAvoidance)
-macro gdexport_flags_avoidance*(iden: SomeInt) = quote do:
-  register_property_iden(`iden`, hint= propertyHintLayersAvoidance)
+macro gdexport_flags_avoidance*(iden: SomeInt, alias: static[alias] = noAlias) = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintLayersAvoidance)
 
-type ExpEasingArgument* = enum
-  attenuation, positive_only
 template gdexport_exp_easing*[T: SomeUserClass; S: propertyinfo.SomeFloat](
       name;
       getter: proc(self: T): S;
@@ -320,8 +337,8 @@ template gdexport_exp_easing*[T: SomeUserClass; S: propertyinfo.SomeFloat](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintExpEasing,
     hint_string= @extra.mapIt($it).join(","))
-macro gdexport_exp_easing*(iden: propertyinfo.SomeFloat, extra: varargs[ExpEasingArgument]) = quote do:
-  register_property_iden(`iden`, hint= propertyHintExpEasing, hint_string= "attenuation")
+macro gdexport_exp_easing*(iden: propertyinfo.SomeFloat, extra: varargs[ExpEasingArgument], alias: static[alias] = noAlias)  = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintExpEasing, hint_string= "attenuation")
 
 template gdexport_multiline*[T: SomeUserClass; S: SomeString](
     name;
@@ -329,8 +346,8 @@ template gdexport_multiline*[T: SomeUserClass; S: SomeString](
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintMultilineText)
-macro gdexport_multiline*(iden: SomeString) = quote do:
-  register_property_iden(`iden`, hint= propertyHintMultilineText)
+macro gdexport_multiline*(iden: SomeString, alias: static[alias] = noAlias) = quote do:
+  register_property_iden(`iden`, `alias`, hint= propertyHintMultilineText)
 
 template gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
     name;
@@ -348,9 +365,8 @@ macro gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
   result = bindSym"gdexport_node_path".newCall(name, getter, setter)
   for valid in validTypes:
     result.add bindSym"$".newCall bindSym"className".newCall valid
-macro gdexport_node_path*(iden: SomeUserClass) =
-  quote do:
-    gdexport(`iden`)
+macro gdexport_node_path*(iden: SomeUserClass, alias: static[alias] = noAlias) = quote do:
+    gdexport(`iden`, `alias`)
 
 template gdexport_placeholder*[T: SomeUserClass; S: SomeProperty](
     name;
@@ -360,18 +376,30 @@ template gdexport_placeholder*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintPlaceholderText,
     hint_string= placeholder)
+macro gdexport_placeholder*(iden: SomeProperty, placeholder: String) = quote do:
+  register_property_iden(`iden`, hint= propertyHintPlaceholderText, hint_string= `placeholder`)
 
-type RangeArgument* {.pure.} = enum
-  or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
-template gdexport_range*[T: SomeUserClass; S: SomeProperty](
+template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
-    min, max: S; extra: varargs[RangeArgument]): untyped =
+    min, max: S; extra: openarray[RangeArgument]= []): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintRange,
-    hint_string= @[$min, $max].concat(@extra.mapit($it)).join(","))
-template gdexport_range*[T: SomeUserClass; S: SomeProperty](
+    hint_string= rangeHintString(min, max, extra))
+macro gdexport_range*(
+  iden: SomeInt,
+  min, max: typed,
+  extra: openarray[RangeArgument]= [], 
+  alias: static[alias] = noAlias) = 
+    quote do:
+      # Unfortunately, we have to perform typechecking here because of a compiler bug/quirk
+      static: 
+        if `min` isnot typeof(`iden`): #`idenType`:
+          error("Arguments must be of the same type as the field")
+      register_property_iden(`iden`, `alias`, hint= propertyHintRange, hint_string= rangeHintString(`min`, `max`, `extra`))
+
+template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
@@ -386,6 +414,11 @@ template gdexport_storage*[T: SomeUserClass; S: SomeProperty](
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     usage= {propertyUsageStorage})
+macro gdexport_storage*(iden: SomeProperty, alias: static[alias] = noAlias)  =
+  quote do:
+    register_property_iden(`iden`, `alias`, usage= {propertyUsageStorage})
+
+
 
 macro processExports*(T: typed): untyped =
   let innerType = T.getType[1][1]
@@ -412,18 +445,21 @@ macro processExports*(T: typed): untyped =
     let dotExpr = newDotExpr(newDotExpr(module, classIdent), fieldIdent)
     
     let pragma = field[0][1]
-    let pragmaIdent = 
-      if pragma[0].kind == nnkSym:
+    let pragmaKind = pragma[0].kind
+    let pragmaIdent = case pragmaKind:
+      of nnkSym:
         $pragma[0]
-      elif pragma[0].kind == nnkCall:
+      of nnkExprColonExpr, nnkCall:
         $pragma[0][0]
       else:
-        error("Unimplemented pragma configuration")
+        error("Unexpected pragma configuration")
+    
+    let pragmaParams = pragma[0]
+    let args = if pragmaParams.len > 0:
+      @[dotExpr] & pragmaParams[1..^1]
+    else:
+      @[dotExpr]
 
-    if isPragmaNoArgs(pragmaIdent):
-      stmts.add bindSym(pragmaIdent).newCall dotExpr
-    if isPragmaVarArgs(pragmaIdent):
-      let args = pragma[0][1]
-      stmts.add bindSym(pragmaIdent).newCall(dotExpr, args)
+    stmts.add bindSym(pragmaIdent).newCall args
       
   result = stmts

@@ -34,7 +34,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export_no_alpha*: Color = color(1, 1, 1)
 
 method onInit(self: PropTestNode) =
-  self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
+#   self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
   self.StringArray_with_export_multiline = typedArray[String](1)
   self.PackedStringArray_with_export_multiline = packedStringArray()
   assert self.PackedStringArray_with_export_multiline.resize(1) == 0
@@ -46,6 +46,7 @@ gdexport "icon",
     proc (self: PropTestNode; value: gdref Texture2D) = self.icon = value
 
 PropTestNode.registerEnum PropTestEnum
+
 gdexport "PropTestEnum_with_export",
     proc (self: PropTestNode): PropTestEnum = self.PropTestEnum_with_export,
     proc (self: PropTestNode; value: PropTestEnum) = self.PropTestEnum_with_export = value
@@ -179,12 +180,12 @@ gdexport_range "int_with_export_strict_range",
 gdexport_range "int_with_export_range",
     proc (self: PropTestNode): int = self.int_with_export_range,
     proc (self: PropTestNode; value: int) = self.int_with_export_range = value,
-    10, 100, 5, or_less, or_greater
+    10, 100, 5, [or_less, or_greater]
 
 gdexport_range "radians_with_export_range_as_degrees",
     proc (self: PropTestNode): float = self.radians_with_export_range_as_degrees,
     proc (self: PropTestNode; value: float) = self.radians_with_export_range_as_degrees = value,
-    0, 360, radians_as_degrees
+    0, 360, [radians_as_degrees]
 
 gdexport_storage "string_with_export_storage",
     proc (self: PropTestNode): string = self.string_with_export_storage,
