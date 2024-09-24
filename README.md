@@ -49,9 +49,9 @@ gdextwiz upgrade
 
 ## OS supported
 
-* Linux
-* Macos
-* Windows
+- [x] Linux
+- [x] Macos
+- [x] Windows
 
 ## Dependencies
 
@@ -60,9 +60,7 @@ gdextwiz upgrade
   Use Nim installed via Homebrew, not choosenim.
   Due to the execution environment of Godot itself, a native AArch64/ARM64 build of Nim is required, and that choosenim installs a x86_64 build emulated via Rosetta.
 
-* [godotengine/godot](https://github.com/godotengine/godot) 4.3
- 
-  It is possible to support lower strictly by manual installation (by changing gdextgen to the corresponding version content).
+* [godotengine/godot](https://github.com/godotengine/godot) 4.1.0 or higher
   
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen) latest
 
