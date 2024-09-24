@@ -29,18 +29,24 @@ See [wiki][2] to get more detail.
 
 ## Install / Uninstall
 
-### Command line
+### install
 
 ```
-# install
-nimble install https://github.com/godot-nim/gdextgen
+nimble install https://github.com/godot-nim/gdextgen@#4.3
+```
 
-# uninstall
+### uninstall
+
+```
 gdextwiz uninstall
+```
 
-# upgrade
+### upgrade
+
+```
 gdextwiz upgrade
 ```
+
 ## OS supported
 
 * Linux
