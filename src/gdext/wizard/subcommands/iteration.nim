@@ -6,17 +6,21 @@ import gdext/wizard/sdk/opttools
 proc nim_c(args: seq[string]; path: string): 0..1 =
   execShellCmd("nim c " & args.join(" ") & " " & path)
 
-proc build_recursive(cli: var CliContext; nimargs: seq[string], current: string; limit: int) =
+template interrupt(code: 0..1) =
+  if code == QuitFailure:
+    return QuitFailure
+
+proc build_recursive(cli: var CliContext; nimargs: seq[string], current: string; limit: int): 0..1 =
   if limit < 0: return
   for kind, path in current.walkDir:
     case kind
     of pcFile, pcLinkToFile:
       if path.extractFileName == "bootstrap.nim":
         cli.info "build " & path
-        discard nim_c(nimargs, path)
+        interrupt nim_c(nimargs, path)
 
     of pcDir, pcLinkToDir:
-      cli.build_recursive(nimargs, path, limit.pred)
+      interrupt cli.build_recursive(nimargs, path, limit.pred)
 
 proc build_all*(nimargs: seq[string]; search_path: string; depth: int; run: bool = false): 0..1 =
   var cli = CliContext(wizard: "wizard build-all*")
@@ -28,7 +32,7 @@ proc build_all*(nimargs: seq[string]; search_path: string; depth: int; run: bool
     current = expandFilename current/".."
 
   cli.info "using " & current/"project.godot"
-  cli.build_recursive(nimargs, current, depth)
+  interrupt cli.build_recursive(nimargs, current, depth)
 
   if run:
     let exe = findExe("godot")
@@ -36,7 +40,7 @@ proc build_all*(nimargs: seq[string]; search_path: string; depth: int; run: bool
       cli.failure "failed to run. godot executable not found."
       quit 1
     cli.info "godot executable found. launching..."
-    discard execShellCmd(exe & " --path " & current)
+    interrupt execShellCmd(exe & " --path " & current)
 
 proc build*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
   var cli = CliContext(wizard: "wizard build*")
