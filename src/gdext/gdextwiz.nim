@@ -38,8 +38,12 @@ Usage:
     build (nim-option...) (<at=$PWD>)
       : Search bootstrap.nim from <at> to '/' and compile it.
       : If project.godot is found instead of bootstrap.nim, build-all is called.
+    editor (<at=$PWD>)
+      : Search project.godot from <at> to '/' and launch editor
     run (nim-option...) (<at=$PWD>)
-      : After build-all, exec godot.
+      : After build, exec godot.
+    run-editor (nim-option...) (<at=$PWD>)
+      : After build, launch editor.
 
 Extending gdextwiz:
 
@@ -88,8 +92,12 @@ proc dispatch_subcmd(opt: var OptParser) =
         dispatch_build(opt)
       of "buildall":
         dispatch_build_all(opt)
+      of "editor":
+        dispatch_editor(opt)
       of "run":
         dispatch_run(opt)
+      of "runeditor":
+        dispatch_run_editor(opt)
       of "newextension":
         dispatch_new_extension(opt)
       else:
