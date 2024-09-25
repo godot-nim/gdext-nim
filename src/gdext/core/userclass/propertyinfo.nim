@@ -93,7 +93,7 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
   propertyInfo(
     T.variantType,
     name,
-    (when T is GodotClass:
+    (when T is SomeClass:
       addr className T
     elif T is GdRef:
       addr className T.RefCounted

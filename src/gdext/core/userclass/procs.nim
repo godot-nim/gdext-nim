@@ -77,7 +77,7 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   result.add nnkElifBranch.newTree(
     quote do:
-      `arg0T` is GodotClass,
+      `arg0T` is SomeClass,
     quote do:
       `procdef`
       registerProc `procdef`
