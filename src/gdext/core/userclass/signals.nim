@@ -122,7 +122,7 @@ proc sync_signal*(procDef: NimNode): NimNode =
   procdef.body = params.makebody(gdname, procdef.params[1][0])
   result.add nnkElifBranch.newTree(
     quote do:
-      `arg0T` is GodotClass,
+      `arg0T` is SomeClass,
     quote do:
       `procdef`
       registerSignal(`params`, `gdname`)

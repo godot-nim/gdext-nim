@@ -25,13 +25,13 @@ template expandMethodBind*(className: var StringName; methodName: string; hash: 
   if unlikely(methodbind.isNil):
     methodbind = getMethodBind(className, methodName, hash)
 
-proc ptrcall*(methodbind: MethodBindPtr; self: GodotClass; args: ptr ConstTypePtr; result: TypePtr = nil) =
+proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: ptr ConstTypePtr; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, args, result)
 proc ptrcall*(methodbind: MethodBindPtr; args: ptr ConstTypePtr; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, nil, args, result)
 
 
-proc call*(methodbind: MethodBindPtr; self: GodotClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
+proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
   var error {.global.} : CallError
   for vararg in vararg: args.add addr vararg
   interface_Object_methodBindCall(methodbind, CLASS_getOwner self,
