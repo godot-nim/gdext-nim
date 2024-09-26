@@ -39,7 +39,7 @@ method onInit(self: PropTestNode) =
   self.PackedStringArray_with_export_multiline = packedStringArray()
   assert self.PackedStringArray_with_export_multiline.resize(1) == 0
 
-gdexport_category PropTestNode, "Export Test"
+gdexport_category PropTestNode, "Export Test 1"
 
 gdexport "icon",
     proc (self: PropTestNode): gdref Texture2D = self.icon,
@@ -94,6 +94,8 @@ gdexport "color_with_export",
 gdexport_color_no_alpha "color_with_export_no_alpha",
     proc (self: PropTestNode): Color = self.color_with_export_no_alpha,
     proc (self: PropTestNode; value: Color) = self.color_with_export_no_alpha = value
+
+gdexport_category PropTestNode, "Export Test 2"
 
 gdexport_enum "int_with_export_enum",
     proc (self: PropTestNode): int = self.int_with_export_enum,

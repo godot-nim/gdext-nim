@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyswbjsdvglbr"]
 
 [ext_resource type="Script" path="res://tester.gd" id="1_x2b6x"]
-[ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_h0j7a"]
+[ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_x3ep8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x2b6x")
@@ -9,30 +9,8 @@ script = ExtResource("1_x2b6x")
 [node name="GDExtNode" type="GDExtNode" parent="." groups=["tester"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="GDExtNode"]
-texture = ExtResource("2_h0j7a")
+texture = ExtResource("2_x3ep8")
 
 [node name="PropTestNode" type="PropTestNode" parent="."]
-icon = ExtResource("2_h0j7a")
-int_with_export_flags_2d_navigation = 1024
-int_with_export_flags_2d_physics = 1024
-int_with_export_flags_2d_render = 1024
-int_with_export_flags_3d_navigation = 1024
-int_with_export_flags_3d_physics = 1024
-int_with_export_flags_3d_render = 1024
-int_with_export_flags_avoidance = 1024
-StringArray_with_export_multiline = Array[String](["asd", "asd"])
-int_with_export_strict_range = 100
-int_with_export_range = 30
-radians_with_export_range_as_degrees = 0.55203
 
 [node name="PropTestNodePragmas" type="PropTestNodePragmas" parent="."]
-int_with_export_flags_2d_navigation = 2363392
-int_with_export_flags_2d_physics = 2363392
-int_with_export_flags_2d_render = 2363392
-int_with_export_flags_3d_navigation = 2363392
-int_with_export_flags_3d_physics = 2363392
-int_with_export_flags_3d_render = 2363392
-int_with_export_flags_avoidance = 2363392
-int_with_export_strict_range = 15
-int_with_export_range = 40
-radians_with_export_range_as_degrees = 4.11898

@@ -20,8 +20,8 @@ export                 builtinclasses, classindex, globalenums, localenums, stru
 import gdext/surface/utilityfuncs
 export utilityfuncs except print
 
-import gdext/surface/[ init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
-export                 init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
+import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
+export                 common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
 
 import gdext/classes/[gdengine, gdextensionmain]
 export gdengine.isEditorHint

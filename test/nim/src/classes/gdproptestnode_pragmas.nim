@@ -1,22 +1,20 @@
 import gdext
 import gdext/classes/gdResourceLoader
 
-
-
 type PropTestPragmasEnum* = enum
   PropTestPragmasEnum1, PropTestPragmasEnum2, PropTestPragmasEnum3
 
-type PropTestNodePragmas* = ptr object of Node
-  icon* {.gdexport.}: gdref Texture2D
+type PropTestNodePragmas* = ptr object of Node 
+  icon* {.gdexport_category: "Export test 1", gdexport.}: gdref Texture2D
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
-  string_with_export_placeholder* {.gdexport.}: string
-  string_with_export_dir* {.gdexport_dir.}: string = "res://nim"
-  string_with_export_global_dir* {.gdexport_global_dir.}: string = "/dev"
+  string_with_export_placeholder* {.gdexport_placeholder:"placeholder here...".}: string
+  string_with_export_dir* {.gdexport_group:"filesystem", gdexport_subgroup:"local", gdexport_dir.}: string = "res://nim"
   string_with_export_file* {.gdexport_file.}: string = "res://nim/bootstrap.nim"
+  string_with_export_global_dir* {.gdexport_subgroup:"global", gdexport_global_dir.}: string = "/dev"
   string_with_export_global_file* {.gdexport_global_file.}: string = "/dev/null"
   int_with_export_enum* 
-    {.gdexport_enum(cases = "Alpha", "Beta:10", "Gamma").}
+    {.gdexport_group:"", gdexport_category: "Export test 2", gdexport_enum(cases = "Alpha", "Beta:10", "Gamma").}
     : int
   string_with_export_enum* 
     {.gdexport_enum(cases = "Alpha", "Beta", "Gamma").}
@@ -39,7 +37,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   string_with_export_storage* {.gdexport_storage.}: string = "with export_storage"
 
   int_with_export_strict_range* 
-    {.gdexport_range(min = 10, max = 20).}
+    {.gdexport_range(min = 5, max = 20).}
     : int = 20
   int_with_export_range* 
     {.gdexport_range(min = 10, max = 100, step = 5, extra = [or_less, or_greater]).}
@@ -49,6 +47,8 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   : float = PI/4
   color_with_export* {.gdexport.}: Color = color(1, 1, 1, 0.5)
   color_with_export_no_alpha* {.gdexport_color_no_alpha.}: Color = color(1, 1, 1)
+
+  node_ref* {.gdexport.}: Node
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline_wtf = typedArray[String](1)
