@@ -43,7 +43,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
     {.gdexport_range(min = 10, max = 100, step = 5, extra = [or_less, or_greater]).}
     : int = 20
   radians_with_export_range_as_degrees*
-    {.gdexport_range(min = 0.0, max = 360.0, extra = radians_as_degrees).}
+    {.gdexport_range(min = 0.0, max = 360.0, step = 0.01, extra = radians_as_degrees).}
   : float = PI/4
   color_with_export* {.gdexport.}: Color = color(1, 1, 1, 0.5)
   color_with_export_no_alpha* {.gdexport_color_no_alpha.}: Color = color(1, 1, 1)
