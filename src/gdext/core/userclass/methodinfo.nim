@@ -111,6 +111,8 @@ proc declareDefaultArgumentsArray(middle: MiddleExp; default_arguments: NimNode)
         defaultArgumentsAddr = `defaultArgumentsAddrArray`
         `default_arguments`: ClassMethodInfo.default_arguments = addr defaultArgumentsAddr[0]
 
+proc retrieve[T](x: ConstVariantPtr): T = cast[ptr Variant](x)[].get(T)
+
 proc callFunc(middle: MiddleExp): NimNode =
   let p_instance = ident"p_instance"
   let p_args = ident"p_args"
@@ -130,15 +132,21 @@ proc callFunc(middle: MiddleExp): NimNode =
     let i_lit = newlit i
 
     if Type.isVarargs:
-      call.add quote do:
-        cast[ptr UncheckedArray[ptr Variant]](`p_args`).toOpenArray(`i_lit`, `p_argument_count`.pred)
+      let Type = Type[1]
+      call.add if Type.repr == "ptr Variant":
+        quote do: cast[ptr UncheckedArray[ptr Variant]](`p_args`)
+          .toOpenArray(`i_lit`, `p_argument_count`.pred)
+      else:
+        quote do: `p_args`
+          .toOpenArray(`i_lit`, `p_argument_count`.pred)
+          .map(retrieve[typedesc `Type`])
 
     elif default.kind == nnkEmpty:
-      call.add quote do: cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+      call.add quote do: retrieve[`Type`](`p_args`[`i_lit`])
     else:
       call.add quote do:
         if `p_argument_count` > `i_lit`:
-          cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+          retrieve[`Type`](`p_args`[`i_lit`])
         else: `default`
 
   let body =

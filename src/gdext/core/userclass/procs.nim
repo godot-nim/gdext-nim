@@ -74,9 +74,6 @@ proc sync_procDef*(procdef: NimNode): NimNode =
       if typ.kind == nnkEmpty: ident"typeof".newCall(default)
       else: typ
     if argT.isVarargs:
-      # TODO: remove this limitation.
-      if argT[1].repr != "ptr Variant":
-        error "invalid form; currently, varargs must be `ptr Variant`.", argT[1]
       varargsFound = true
       argT = argT[1]
     result.add nnkElifBranch.newTree(
