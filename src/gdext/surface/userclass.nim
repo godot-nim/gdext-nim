@@ -19,45 +19,45 @@ import gdext/surface/properties
 
 when Dev.debugCallbacks:
   import std/importutils
-  privateAccess GodotClass
+  privateAccess Object
 
 proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).set(p_name, p_value)
+  cast[Object](p_instance).set(p_name, p_value)
 
 proc get_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).get(p_name, r_ret)
+  cast[Object](p_instance).get(p_name, r_ret)
 
 proc get_property_list_func(p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  cast[GodotClass](p_instance).get_propertyList(r_count)
+  cast[Object](p_instance).get_propertyList(r_count)
 
 when Extension.version < (4, 3):
   proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr PropertyInfo) {.gdcall.} =
-    cast[GodotClass](p_instance).free_propertyList(p_list)
+    cast[Object](p_instance).free_propertyList(p_list)
 else:
   proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
-    cast[GodotClass](p_instance).free_propertyList(p_list.toOpenArray(0, int p_count))
+    cast[Object](p_instance).free_propertyList(p_list.toOpenArray(0, int p_count))
 
 proc property_can_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).property_canRevert(p_name)
+  cast[Object](p_instance).property_canRevert(p_name)
 
 proc property_get_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[GodotClass](p_instance).property_getRevert(p_name, r_ret)
+  cast[Object](p_instance).property_getRevert(p_name, r_ret)
 
 when Extension.version == (4, 1):
   proc notification_func(p_instance: ClassInstancePtr; p_what: int32) {.gdcall.} =
-    cast[GodotClass](p_instance).notification(p_what)
+    cast[Object](p_instance).notification(p_what)
 else:
   proc notification_func(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-    cast[GodotClass](p_instance).notification(p_what)
+    cast[Object](p_instance).notification(p_what)
 
 proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  cast[GodotClass](p_instance).toString(r_is_valid, p_out)
+  cast[Object](p_instance).toString(r_is_valid, p_out)
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
   result =  CLASS_getObjectPtr class
   when Dev.debugCallbacks:
-    privateAccess GodotClass
+    privateAccess Object
     echo SYNC.CREATE_BIND, class.control.name
 
 proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
@@ -66,7 +66,7 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
   `=destroy` class[]
   dealloc class
   when Dev.debugCallbacks:
-    privateAccess GodotClass
+    privateAccess Object
     echo SYNC.FREE_BIND, class.control.name
 
 when Extension.version >= (4, 2):
@@ -74,20 +74,20 @@ when Extension.version >= (4, 2):
     let class = createClass[T](p_object)
     result = cast[pointer](class)
     when Dev.debugCallbacks:
-      privateAccess GodotClass
+      privateAccess Object
       echo SYNC.RECREATE_BIND, class.control.name
 
 proc reference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
-    let class = cast[GodotClass](p_instance)
+    let class = cast[RefCounted](p_instance)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.REFERENCE_BIND, class.control.name, "(", $count.pred & " +1)"
+    echo SYNC.REFERENCE_BIND, class.control.name, "(", $count & " UP)"
 
 proc unreference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
-    let class = cast[GodotClass](p_instance)
+    let class = cast[RefCounted](p_instance)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.UNREFERENCE_BIND, class.control.name, "(", $count.succ & " -1)"
+    echo SYNC.UNREFERENCE_BIND, class.control.name, "(", $count & " DOWN)"
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)

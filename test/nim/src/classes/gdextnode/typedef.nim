@@ -64,11 +64,10 @@ proc test_Object(self: GDExtNode) =
       destroy obj
 
     test "singleton":
-      # `/T` is same as `T.singleton`
-      (/Engine).registerSingleton(classname GDExtNode, self)
-      check self == GDExtNode (/Engine).getSingleton(classname GDExtNode)
-      check self == (/Engine).getSingleton(classname GDExtNode).as GDExtNode
-      check self == (/GDExtNode)
+      Engine.registerSingleton(classname GDExtNode, self)
+      check self == GDExtNode Engine.getSingleton(classname GDExtNode)
+      check self == Engine.getSingleton(classname GDExtNode).as GDExtNode
+      check self == GDExtNode
 
 proc test_RefCounted(self: GDExtNode) =
   suite "RefCounted":

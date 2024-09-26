@@ -128,6 +128,13 @@ proc args*(node: NimNode): seq[NimNode] =
     @[]
 
 
+func isVarargs*(node: NimNode): bool =
+  case node.kind
+  of nnkBracketExpr:
+    node[0].eqIdent "varargs"
+  else:
+    false
+
 proc super*(typedes: NimNode): NimNode =
   var
     cache {.global.}: Table[NimNode, NimNode]

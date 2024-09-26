@@ -13,7 +13,7 @@ converter convertToNodePath*(str: string): NodePath = nodePath gdstring str
 
 converter convertToArray*(arr: TypedArray): Array = Array arr
 
-converter convertToSingleton*[T: GodotClass](_: typedesc[T]): T = singleton(T)
+converter convertToSingleton*[T: SomeClass](_: typedesc[T]): T = singleton(T)
 
 converter convertToBool*(variant: Variant): bool = variant.booleanize
 

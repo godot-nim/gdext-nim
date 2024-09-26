@@ -3,11 +3,7 @@ import gdext/core/extracommands
 import gdext/core/gdclass
 
 type
-  SomeRefCounted* = concept type t
-    t is GodotClass
-    t.isRefCounted == true
-
-  GdRef*[RefCounted: SomeRefCounted] = object
+  GdRef*[RefCounted] = object
     handle*: RefCounted
 
 proc `=destroy`*[T](self: GdRef[T]) =

@@ -11,8 +11,9 @@ export InitializationLevel, VariantType, gdcall, CallError, CallErrorType
 import gdext/core/[ builtinindex, geometrics, gdrefs, gdtypedarray ]
 export              builtinindex, geometrics, gdrefs, gdtypedarray
 
-import gdext/core/typeshift
+import gdext/core/[typeshift, gdclass]
 export typeshift.get, typeshift.variant
+export gdclass.Object, gdclass.RefCounted
 
 import gdext/surface/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export                 builtinclasses, classindex, globalenums, localenums, structs
@@ -20,8 +21,8 @@ export                 builtinclasses, classindex, globalenums, localenums, stru
 import gdext/surface/utilityfuncs
 export utilityfuncs except print
 
-import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions ]
-export                 common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, refutils, conversions
+import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions ]
+export                 common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions
 
 import gdext/classes/[gdengine, gdextensionmain]
 export gdengine.isEditorHint

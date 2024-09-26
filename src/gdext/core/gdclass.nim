@@ -10,8 +10,6 @@ import gdext/core/builtinindex
 import gdext/core/extracommands
 
 when Dev.debugCallbacks:
-  from strutils import join
-
   type SYNC* = enum
     INSTANTIATE      = "SYNC--------INSTANTIATE: "
     CREATE_BIND      = "SYNC----CREATE(LIBRARY): "
@@ -31,34 +29,35 @@ type
       name*: string
 
 type
-  GodotClass* = ptr object of RootObj
+  Object* = ptr object of RootObj
     control: ObjectControl
+  RefCounted* = ptr object of Object
+
   GodotClassMeta* = object
     virtualMethods*: Table[StringName, ClassCallVirtual]
     className*: StringName
     callbacks*: InstanceBindingCallbacks
 
-  SomeClass* = GodotClass
+  SomeClass* = Object
   SomeEngineClass* = concept type t
-    t is GodotClass
+    t is SomeClass
     t.EngineClass is t
   SomeUserClass* = concept type t
-    t is GodotClass
+    t is SomeClass
     t.EngineClass isnot t
 
-template isRefCounted*(_: typedesc[GodotClass]): static bool = false
+proc CLASS_getObjectPtr*(obj: Object): ObjectPtr =
+  if unlikely(obj.isNil): nil
+  else: obj.control.owner
 
-proc CLASS_getObjectPtr*(class: GodotClass): ObjectPtr =
-  if unlikely(class.isNil): nil
-  else: class.control.owner
-proc CLASS_getObjectPtrPtr*(class: GodotClass): ptr ObjectPtr =
-  if unlikely(class.isNil or class.control.owner.isNil): nil
-  else: addr class.control.owner
+proc CLASS_getObjectPtrPtr*(obj: Object): ptr ObjectPtr =
+  if unlikely(obj.isNil or obj.control.owner.isNil): nil
+  else: addr obj.control.owner
 
-method onInit*(self: GodotClass) {.base.} = discard
-method onDestroy*(self: GodotClass) {.base.} = discard
+method onInit*(self: Object) {.base.} = discard
+method onDestroy*(self: Object) {.base.} = discard
 
-proc createClass*[T: SomeClass](o: ObjectPtr): T =
+proc createClass*[T: Object](o: ObjectPtr): T =
   result = cast[T](alloc sizeof pointerBase T)
   zeroMem result, sizeof pointerBase T
   result[] = (pointerBase T)(
@@ -73,7 +72,7 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   let class = createClass[T](cast[ObjectPtr](p_instance))
   result = cast[pointer](class)
   when Dev.debugCallbacks:
-    echo SYNC.CREATE_CALL, class.control.name
+    echo SYNC.CREATE_CALL, class.control.name, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
   let class = cast[T](p_binding)
@@ -81,18 +80,17 @@ proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer)
   `=destroy` class[]
   dealloc class
   when Dev.debugCallbacks:
-    echo SYNC.FREE_CALL, class.control.name
+    echo SYNC.FREE_CALL, class.control.name, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
   result = true
   when Dev.debugCallbacks:
-    let class = cast[GodotClass](p_binding)
+    let class = cast[RefCounted](p_binding)
     let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.REFERENCE, class.control.name, "(", (if p_reference: $count.pred & " +1" else: $count.succ & " -1"), ")"
+    let status = if p_reference: "UP" else: "DOWN"
+    echo SYNC.REFERENCE, class.control.name, "(", $count, " ", status, ")"
 
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
-  # The global specification to reference seems to be invalid and behaves the same
-  # as a normal local variable. (It is immediately freed.)
   var instance {.global.} : GodotClassMeta
   once:
     instance = GodotClassMeta(
@@ -102,7 +100,9 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
       instance.callbacks = InstanceBindingCallbacks(
         create_callback: create_callback[T],
         free_callback: free_callback[T],
-        reference_callback: reference_callback,
+        reference_callback:
+          when T is RefCounted: reference_callback
+          else: nil
       )
   instance
 
@@ -110,11 +110,11 @@ template className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
 template callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
 template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
 
-proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): GodotClass =
+proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
   if p_engine_object.isNil: return
-  cast[GodotClass](interface_objectGetInstanceBinding(p_engine_object, environment.library, addr callbacks))
+  interface_objectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
 
-proc getInstance*[T: GodotClass](p_engine_object: ObjectPtr; _: typedesc[T]): T =
+proc getInstance*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
   cast[T](p_engine_object.getInstance(T.callbacks))
 
 macro Super*(Type: typedesc): typedesc = Type.super

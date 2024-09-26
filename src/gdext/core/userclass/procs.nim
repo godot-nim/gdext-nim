@@ -66,10 +66,16 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   result = newNimNode nnkWhenStmt
 
+  var varargsFound: bool
   for i, (name, typ, default) in procdef.params.breakArgs:
-    let argT =
+    if varargsFound:
+      error "invalid form; varargs must be placed at last.", typ
+    var argT =
       if typ.kind == nnkEmpty: ident"typeof".newCall(default)
       else: typ
+    if argT.isVarargs:
+      varargsFound = true
+      argT = argT[1]
     result.add nnkElifBranch.newTree(
       (quote do: `argT` isnot SomeProperty),
       bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", name)
@@ -77,7 +83,7 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   result.add nnkElifBranch.newTree(
     quote do:
-      `arg0T` is GodotClass,
+      `arg0T` is SomeClass,
     quote do:
       `procdef`
       registerProc `procdef`

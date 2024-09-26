@@ -1,3 +1,4 @@
+import std/[sequtils, strutils]
 import gdext
 import typedef
 
@@ -35,3 +36,19 @@ proc default_value_complex(self: GDExtNode;
       str4 = "value";
     ): string {.gdsync.} =
   "default_value_complex(" & str1 & " " & str2 & " " & str3 & " " & str4 & ")"
+
+proc varargs_simple(self: GDExtNode; args: varargs[ptr Variant]): string {.gdsync.} =
+  args.mapIt(it[].get int).join(", ")
+proc varargs_static(self: typedesc[GDExtNode]; args: varargs[ptr Variant]): string {.gdsync.} =
+  args.mapIt(it[].get int).join(", ")
+
+proc varargs_concrete(self: GDExtNode; args: varargs[int]): string {.gdsync.} =
+  args.join(", ")
+
+proc most_complex(self: GDExtNode;
+      str1, str2: string;
+      str3: string = "default";
+      str4 = "value";
+      args: varargs[string]
+    ): string {.gdsync.} =
+  @[str1, str2, str3, str4].concat(@args).join(" ")

@@ -65,7 +65,7 @@ template variantType*(_: typedesc[TypedArray]): VariantType = VariantType_Array
 # Object
 
 template variantType*(Type: typedesc[ObjectPtr]): Variant_Type = VariantType_Object
-template variantType*(Type: typedesc[GodotClass]): Variant_Type = VariantType_Object
+template variantType*(Type: typedesc[Object]): Variant_Type = VariantType_Object
 
 template variantType*(Type: typedesc[GdRef]): Variant_Type = VariantType_Object
 
@@ -78,6 +78,8 @@ template variantType*(Type: typedesc[Variant]): Variant_Type = VariantType_Nil
 template variantType*(Type: typedesc[AltInt]): Variant_Type = VariantType_Int
 template variantType*(Type: typedesc[AltFloat]): Variant_Type = VariantType_Float
 template variantType*(Type: typedesc[AltString]): Variant_Type = VariantType_String
+
+template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 
 # General
 # =======
@@ -155,6 +157,16 @@ convert_generics_forcecast enum, Int
 convert_generic_params_forcecast set, Int
 convert_generic_params_forcecast TypedArray, Array
 
+# Variant
+# =======
+template encoded*(T: typedesc[Variant]): typedesc[Variant] = Variant
+template encode*(v: Variant; p: pointer) =
+  cast[ptr Variant](p)[] = v
+template decode*(p: pointer; T: typedesc[Variant]): T =
+  cast[ptr Variant](p)[]
+template variant*(v: Variant): Variant = v
+template get*(v: Variant; T: typedesc[Variant]): T = v
+
 
 # pointer
 # =======
@@ -169,16 +181,6 @@ template encode*[T](v: ptr T; p: pointer) =
   cast[ptr ptr T](p)[] = v
 proc decode*[T](p: pointer; _: typedesc[ptr T]): ptr T =
   cast[ptr T](p)
-
-# Variant
-# =======
-template encoded*(T: typedesc[Variant]): typedesc[Variant] = Variant
-template encode*(v: Variant; p: pointer) =
-  cast[ptr Variant](p)[] = v
-template decode*(p: pointer; T: typedesc[Variant]): T =
-  cast[ptr Variant](p)[]
-template variant*(v: Variant): Variant = v
-template get*(v: Variant; T: typedesc[Variant]): T = v
 
 # ObjectPtr
 # =========
@@ -197,31 +199,31 @@ proc get*(v: Variant; T: typedesc[ObjectPtr]): T =
 # Godot Object
 # ============
 
-template encoded*[T: SomeClass](_: typedesc[T]): typedesc[ObjectPtr] = ObjectPtr
-template encode*[T: SomeClass](v: T; p: pointer) =
+template encoded*[T: Object](_: typedesc[T]): typedesc[ObjectPtr] = ObjectPtr
+template encode*[T: Object](v: T; p: pointer) =
   encode(CLASS_getObjectPtr v, p)
-proc decode*[T: SomeClass](p: pointer; _: typedesc[T]): T =
+proc decode*[T: Object](p: pointer; _: typedesc[T]): T =
   result = p.decode(ObjectPtr).getInstance(T)
-proc variant*[T: SomeClass](v: T): Variant =
+proc variant*[T: Object](v: T): Variant =
   variant CLASS_getObjectPtr v
-proc get*[T: SomeClass](v: Variant; _: typedesc[T]): T =
+proc get*[T: Object](v: Variant; _: typedesc[T]): T =
   result = v.get(ObjectPtr).getInstance(T)
 
 
-proc decode_result*[T](p: pointer; _: typedesc[T]): T =
-  p.decode(T)
+proc decode_result*(p: pointer; Type: typedesc): Type =
+  p.decode(Type)
 
-template encoded*[T: SomeRefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
-template encode*[T: SomeRefCounted](v: GdRef[T]; p: pointer) =
+template encoded*[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
+template encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
   v.unwrapped.encode(p)
-proc decode*[T: SomeRefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
+proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced
-proc variant*[T: SomeRefCounted](v: GdRef[T]): Variant =
+proc variant*[T: RefCounted](v: GdRef[T]): Variant =
   v.unwrapped.variant
-proc get*[T: SomeRefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
+proc get*[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
   v.get(T).referenced
 
-proc decode_result*[T: SomeRefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
+proc decode_result*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode_result(T).asGdRef
 
 {.pop.}

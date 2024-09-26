@@ -15,7 +15,7 @@ proc withCorrectClassMethodForm*(node, stmt: NimNode): NimNode =
 
   if node.kind == nnkMethodDef:
     result.add nnkElifBranch.newTree(
-      (quote do: `arg0T` isnot GodotClass),
+      (quote do: `arg0T` isnot SomeClass),
       bindsym"lineerror".newcall(newlit errmsgSelfTypeMismatch, node.params[1])
     )
 
