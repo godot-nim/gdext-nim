@@ -66,10 +66,19 @@ proc sync_procDef*(procdef: NimNode): NimNode =
 
   result = newNimNode nnkWhenStmt
 
+  var varargsFound: bool
   for i, (name, typ, default) in procdef.params.breakArgs:
-    let argT =
+    if varargsFound:
+      error "invalid form; varargs must be placed at last.", typ
+    var argT =
       if typ.kind == nnkEmpty: ident"typeof".newCall(default)
       else: typ
+    if argT.isVarargs:
+      # TODO: remove this limitation.
+      if argT[1].repr != "ptr Variant":
+        error "invalid form; currently, varargs must be `ptr Variant`.", argT[1]
+      varargsFound = true
+      argT = argT[1]
     result.add nnkElifBranch.newTree(
       (quote do: `argT` isnot SomeProperty),
       bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", name)

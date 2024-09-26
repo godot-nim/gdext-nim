@@ -108,3 +108,11 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
     hint_string,
     usage + T.uniqueUsage,
   )
+
+proc propertyInfo*[T: SomeProperty](_: typedesc[varargs[T]];
+      name: ptr StringName = addr StringName.empty;
+      hint: PropertyHint = propertyHint_None;
+      hint_string: ptr String = addr String.empty;
+      usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+    ): PropertyInfo =
+  propertyInfo(typedesc T, name, hint, hint_string, usage)

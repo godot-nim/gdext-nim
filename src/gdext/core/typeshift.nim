@@ -79,6 +79,8 @@ template variantType*(Type: typedesc[AltInt]): Variant_Type = VariantType_Int
 template variantType*(Type: typedesc[AltFloat]): Variant_Type = VariantType_Float
 template variantType*(Type: typedesc[AltString]): Variant_Type = VariantType_String
 
+template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
+
 # General
 # =======
 
@@ -155,6 +157,16 @@ convert_generics_forcecast enum, Int
 convert_generic_params_forcecast set, Int
 convert_generic_params_forcecast TypedArray, Array
 
+# Variant
+# =======
+template encoded*(T: typedesc[Variant]): typedesc[Variant] = Variant
+template encode*(v: Variant; p: pointer) =
+  cast[ptr Variant](p)[] = v
+template decode*(p: pointer; T: typedesc[Variant]): T =
+  cast[ptr Variant](p)[]
+template variant*(v: Variant): Variant = v
+template get*(v: Variant; T: typedesc[Variant]): T = v
+
 
 # pointer
 # =======
@@ -169,16 +181,6 @@ template encode*[T](v: ptr T; p: pointer) =
   cast[ptr ptr T](p)[] = v
 proc decode*[T](p: pointer; _: typedesc[ptr T]): ptr T =
   cast[ptr T](p)
-
-# Variant
-# =======
-template encoded*(T: typedesc[Variant]): typedesc[Variant] = Variant
-template encode*(v: Variant; p: pointer) =
-  cast[ptr Variant](p)[] = v
-template decode*(p: pointer; T: typedesc[Variant]): T =
-  cast[ptr Variant](p)[]
-template variant*(v: Variant): Variant = v
-template get*(v: Variant; T: typedesc[Variant]): T = v
 
 # ObjectPtr
 # =========

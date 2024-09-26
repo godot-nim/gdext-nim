@@ -14,6 +14,7 @@ import propertyinfo
 type MiddleExp = object
   name: NimNode
   isStatic: bool
+  isVarargs: bool
   self_T: NimNode
   result_T: NimNode
   args: seq[tuple[namesym, typesym, default: NimNode]]
@@ -26,12 +27,14 @@ proc parseMiddle(procdef: NimNode): MiddleExp =
   if procdef.hasReturn:
     result.result_T = procdef.params[0]
 
-  result.args = procdef.params.breakArgs.toSeq
-    .filterIt(it.index != 0)
-    .mapIt((
-      it.def.name,
-      (if it.def.Type.kind == nnkEmpty: ident"typeof".newCall(it.def.default) else: it.def.Type),
-      it.def.default))
+  for i, (sym, typ, default) in procdef.params.breakArgs:
+    if i == 0: continue
+    if typ.isVarargs:
+      result.isVarargs = true
+    result.args.add (
+      sym,
+      (if typ.kind == nnkEmpty: ident"typeof".newCall(default) else: typ),
+      default)
 
   result.is_static = `and`(
     result.self_T.kind == nnkBracketExpr,
@@ -117,7 +120,6 @@ proc callFunc(middle: MiddleExp): NimNode =
   let self_T = middle.self_T
 
   let call = middle.name.newCall()
-  let options = newStmtList()
 
   if middle.is_static:
     call.add middle.self_T
@@ -127,28 +129,27 @@ proc callFunc(middle: MiddleExp): NimNode =
   for i, (name, Type, default) in middle.args:
     let i_lit = newlit i
 
-    if default.kind == nnkEmpty:
+    if Type.isVarargs:
+      call.add quote do:
+        cast[ptr UncheckedArray[ptr Variant]](`p_args`).toOpenArray(`i_lit`, `p_argument_count`.pred)
+
+    elif default.kind == nnkEmpty:
       call.add quote do: cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
     else:
-      let n = gensym(nskLet, $name)
-      options.add quote do:
-        let `n` =
-          if `p_argument_count` > `i_lit`:
-            cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
-          else: `default`
-      call.add n
+      call.add quote do:
+        if `p_argument_count` > `i_lit`:
+          cast[ptr Variant](`p_args`[`i_lit`])[].get(typedesc `Type`)
+        else: `default`
 
   let body =
     if middle.hasResult:
       quote do:
         errproof:
-          `options`
           let result = variant `call`
           interface_Variant_newCopy(`r_return`, addr result)
     else:
       quote do:
         errproof:
-          `options`
           let result = variant(); `call`
           interface_Variant_newCopy(`r_return`, addr result)
 
@@ -157,6 +158,8 @@ proc callFunc(middle: MiddleExp): NimNode =
       `body`
 
 proc ptrCallFunc(middle: MiddleExp): NimNode =
+  if middle.isVarargs: return newNilLit()
+
   let p_instance = ident"p_instance"
   let p_args = ident"p_args"
   let r_ret = ident"r_ret"
