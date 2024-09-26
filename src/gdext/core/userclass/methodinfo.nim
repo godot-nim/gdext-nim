@@ -193,7 +193,10 @@ proc flags(middle: MiddleExp): NimNode =
   result = newNimNode nnkCurly
   if middle.is_static:
     result.add bindSym"MethodFlag_Static"
-  else:
+  if middle.is_varargs:
+    result.add bindSym"MethodFlag_Vararg"
+
+  if result.len == 0:
     result.add bindSym"MethodFlag_Normal"
 
 

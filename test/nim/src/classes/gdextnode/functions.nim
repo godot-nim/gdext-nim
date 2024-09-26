@@ -39,3 +39,5 @@ proc default_value_complex(self: GDExtNode;
 
 proc varargs_simple(self: GDExtNode; args: varargs[ptr Variant]): string {.gdsync.} =
   args.mapIt(it[].get int).join(", ")
+proc varargs_static(self: typedesc[GDExtNode]; args: varargs[ptr Variant]): string {.gdsync.} =
+  args.mapIt(it[].get int).join(", ")

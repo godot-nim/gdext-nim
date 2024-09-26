@@ -26,6 +26,7 @@ func test_func():
 	assert(node.default_value_complex("a", "b", "c", "d") == "default_value_complex(a b c d)")
 
 	assert(node.varargs_simple(1, 2, 3, 4, 5) == "1, 2, 3, 4, 5")
+	assert(GDExtNode.varargs_static(1, 2, 3, 4, 5) == "1, 2, 3, 4, 5")
 
 func test_grobal_func():
 	GdextTester.signal_arg0.connect(_on_nim_signal_arg0)
