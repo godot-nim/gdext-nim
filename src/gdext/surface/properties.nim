@@ -1,5 +1,3 @@
-{.experimental: "dynamicBindSym".}
-
 from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
@@ -452,10 +450,8 @@ macro processExports*(T: typed): untyped =
       let pragmaIdent = pragma.identifier
       if pragmaIdent in exportPragmasClass:
         let args = @[classIdent].concat(pragma.args)
-        result.add bindSym(pragmaIdent).newCall args
+        result.add pragmaIdent.newCall args
       elif pragmaIdent in exportPragmasField:
         let args = @[dotExpr].concat(pragma.args)
-        result.add bindSym(pragmaIdent).newCall args   
- 
-      
+        result.add pragmaIdent.newCall args
 
