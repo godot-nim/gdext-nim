@@ -9,7 +9,7 @@ type PropTestNodePragmas* = ptr object of Node
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport_placeholder:"placeholder here...".}: string
-  string_with_export_dir* {.gdexport_group:"filesystem", gdexport_subgroup:"local", gdexport_dir.}: string = "res://nim"
+  string_with_export_dir* {.gdexport_dir, gdexport_group:"filesystem", gdexport_subgroup:"local".}: string = "res://nim"
   string_with_export_file* {.gdexport_file.}: string = "res://nim/bootstrap.nim"
   string_with_export_global_dir* {.gdexport_subgroup:"global", gdexport_global_dir.}: string = "/dev"
   string_with_export_global_file* {.gdexport_global_file.}: string = "/dev/null"
@@ -31,7 +31,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 
-  StringArray_with_export_multiline_wtf* {.gdexport_multiline.}: TypedArray[String] 
+  StringArray_with_export_multiline* {.gdexport_multiline.}: TypedArray[String] 
   PackedStringArray_with_export_multiline* {.gdexport_multiline.}: PackedStringArray
   NodePath_with_export_node_path* {.gdexport.}: NodePath
   string_with_export_storage* {.gdexport_storage.}: string = "with export_storage"

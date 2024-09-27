@@ -467,14 +467,17 @@ macro processExports*(T: typed): untyped =
     let fieldIdent = field.identifier
     let dotExpr = newDotExpr(classIdent, fieldIdent)
 
+    let classStmts = newStmtList()
+    let fieldStmts = newStmtList()
     let pragmas = field.pragmas
     for pragma in pragmas:
       let pragmaIdent = pragma.identifier
       if pragmaIdent in exportPragmasClass:
         let args = @[classIdent].concat(pragma.args)
-        result.add pragmaIdent.newCall args
+        classStmts.add pragmaIdent.newCall args
       elif pragmaIdent in exportPragmasField:
         let args = @[dotExpr].concat(pragma.args)
-        if $fieldIdent == "node_path":
-          echo args.len
-        result.add pragmaIdent.newCall args
+        fieldStmts.add pragmaIdent.newCall args
+    # Always class-level pragmas first so that groups/subgroups/categories work correctly regardless
+    # of the order of pragmas applied to the field
+    result.add classStmts.add(fieldStmts) 
