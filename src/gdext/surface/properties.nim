@@ -134,15 +134,14 @@ macro register_property_iden*(
     usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
   ): untyped =
   let classType = iden[0]
-  let varType = iden.getTypeInst[1]
   let variable = iden[1]
   let name = if alias == noAlias: $variable else: alias.string
   let getter = quote do:
-    proc(self: `classType`): `varType` = self.`variable` 
+    proc(self: `classType`): `iden` = self.`variable` 
   let setter = quote do:
-    proc(self: `classType`, value: `varType`) = self.`variable` = value
+    proc(self: `classType`, value: `iden`) = self.`variable` = value
   quote do:
-    register_property(typedesc `classType`, `name`, typedesc `varType`, `getter`, `setter`, `hint`, `hintstring`, `usage`)
+    register_property(typedesc `classType`, `name`, typedesc `iden`, `getter`, `setter`, `hint`, `hintstring`, `usage`)
 
 template gdexport_category*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
   execOnDef(name, typ):
