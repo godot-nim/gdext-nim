@@ -52,7 +52,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   node_path* {.gdexport_node_path(validTypes = "Node2D", "Node3D").}: NodePath
 
 method onInit(self: PropTestNodePragmas) =
-  self.StringArray_with_export_multiline_wtf = typedArray[String](1)
+  self.StringArray_with_export_multiline = typedArray[String](1)
 
 proc get_string_with_export_through_proc(self: PropTestNodePragmas): string {.gdsync.} =
   self.string_with_export
