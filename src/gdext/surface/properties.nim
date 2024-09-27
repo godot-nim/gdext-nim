@@ -66,6 +66,8 @@ template register_property*(
       hintstring: String = gdstring"";
       usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): untyped =
+    when proptyp is enum:
+      registerEnum(typ, proptyp)
     execOnDef(name, typ):
       let p_name = stringName strlit name
       let p_getter: StringName = getter
@@ -186,22 +188,13 @@ template gdexport*[T: SomeUserClass; S: SomeProperty](
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter)
-macro gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  = 
-  let class = iden[0]
-  let propClass = iden.getTypeInst[1]
-  let propClassName = $propClass.toStrLit
-  let isEnum = propClass.getType.kind == nnkEnumTy
 
-  result = newStmtList()
-  if isEnum:
-    result.add registerEnumInternal(class, propClass, false)
+template gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  =
+  when iden is SomeObject:
+    register_property_iden(iden, alias, hint= propertyHintNodeType, hint_string= gdstring className `iden`)
+  else:
+    register_property_iden(iden, alias)
 
-  result.add quote do: 
-    when `iden` is SomeObject:
-      register_property_iden(`iden`, `alias`, hint= propertyHintNodeType, hint_string= `propClassName`)
-    else:   
-      register_property_iden(`iden`, `alias`)
-    
 template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColor](
       name;
       getter: proc(self: T): S;

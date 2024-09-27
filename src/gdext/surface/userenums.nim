@@ -16,6 +16,7 @@ template registerEnumFields*[T: SomeUserClass](Class: typedesc[T]; enumName: Str
 var registeredEnums {.compileTime.}: HashSet[string]
 
 proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.compileTime.} =
+  let Enum = Enum.getTypeInst[1]
   let def = Enum.getImpl
   let enumType = Enum.getTypeInst
   let enumTypeStr = $enumType.toStrLit
