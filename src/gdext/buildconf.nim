@@ -103,6 +103,16 @@ else:
   # is required to activate this `. *` operator.
   --define: nimPreviewDotLikeOps
 
+  when hostOS == "windows":
+    # When using mingw32-gcc bundled with choosenim, it fails to load the linked
+    # dependent dynamic libraries. The solution is to link the libraries statically.
+
+    # TODO: This block is irrelevant depending on vcc and the gcc used, and requires
+    #       a mechanism to be able to disable it.
+
+    # --passL: "-static"
+    --passL: "-static-libgcc"
+
   Extension.libdir = "$projectdir/lib"/RunningSystem/Build
 
   include gdext/core/versiondata
