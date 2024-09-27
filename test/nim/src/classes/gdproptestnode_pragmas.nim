@@ -49,6 +49,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export_no_alpha* {.gdexport_color_no_alpha.}: Color = color(1, 1, 1)
 
   node_ref* {.gdexport.}: Node
+  node_path* {.gdexport_node_path(validTypes = "Node2D", "Node3D").}: NodePath
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline_wtf = typedArray[String](1)

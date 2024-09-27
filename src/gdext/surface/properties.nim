@@ -380,7 +380,7 @@ template gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
     setter: proc(self: T; value: S);
     validTypes: varargs[string]): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintNodeType,
+    hint= propertyHintNodePathValidTypes,
     hint_string= @validTypes.join(","))
 
 macro gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
@@ -392,8 +392,8 @@ macro gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
   for valid in validTypes:
     result.add bindSym"$".newCall bindSym"className".newCall valid
 
-template gdexport_node_path*(iden: SomeUserClass, alias: static[alias] = noAlias) =
-  gdexport(`iden`, `alias`)
+template gdexport_node_path*(iden: typedesc[NodePath], validTypes: varargs[string], alias: static[alias] = noAlias) =
+  register_property_iden(`iden`, `alias`, hint= propertyHintNodePathValidTypes, hint_string= validTypes.joinArg)
 
 template gdexport_placeholder*[T: SomeUserClass; S: SomeProperty](
     name;
@@ -475,4 +475,6 @@ macro processExports*(T: typed): untyped =
         result.add pragmaIdent.newCall args
       elif pragmaIdent in exportPragmasField:
         let args = @[dotExpr].concat(pragma.args)
+        if $fieldIdent == "node_path":
+          echo args.len
         result.add pragmaIdent.newCall args

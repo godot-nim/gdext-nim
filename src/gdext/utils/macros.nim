@@ -115,7 +115,7 @@ proc args*(node: NimNode): seq[NimNode] =
     var sq: seq[NimNode] = @[]
     for arg in node:
       case arg.kind:
-      of nnkLiterals, nnkBracketExpr:
+      of nnkLiterals, nnkBracket:
         sq.add arg
       else:
         discard
