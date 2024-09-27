@@ -90,9 +90,11 @@ type SomeString* = concept type t
 type SomeColor* = concept type t
   t is Color|PackedColorArray|TypedArray[Color]
 
-proc defaultUnit*[S: SomeNumeric]: S = 
-  when S is propertyinfo.SomeFloat: 1.0
-  else: 1
+proc defaultUnit*[S: SomeFloat](_: typedesc[S]): float =
+  # TODO: This value should be read at runtime, not hard-coded.
+  # EditorSettings.getSetting("interface/inspector/default_float_step")
+  0.001
+proc defaultUnit*[S: SomeInt](_: typedesc[S]): int = 1
 
 proc propertyInfo*(typ: VariantType;
       name: ptr StringName = addr StringName.empty;
