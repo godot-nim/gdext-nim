@@ -106,7 +106,6 @@ func pragmas*(node: NimNode): seq[NimNode] =
     sq
   else:
     error lisprepr node, node
-    @[]
 
 proc args*(node: NimNode): seq[NimNode] =
   case node.kind
@@ -118,15 +117,13 @@ proc args*(node: NimNode): seq[NimNode] =
       case arg.kind:
       of nnkLiterals, nnkBracketExpr:
         sq.add arg
-      else: 
+      else:
         discard
     sq
   of nnkPragma:
     node[0].args
   else:
     error lisprepr node, node
-    @[]
-
 
 func isVarargs*(node: NimNode): bool =
   case node.kind
