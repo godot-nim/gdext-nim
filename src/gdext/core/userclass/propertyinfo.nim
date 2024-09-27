@@ -70,31 +70,31 @@ type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
 
-type SomeObject* = concept type t
+type SomeObjectProperty* = concept type t
   t is SomeProperty
   t isnot GdRef|Array|TypedArray
   t.variantType == VariantType_Object
 
-type SomeInt* = concept type t
+type SomeIntProperty* = concept type t
   t is SomeInteger|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
 
-type SomeFloat* = concept type t
-  t is system.SomeFloat|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+type SomeFloatProperty* = concept type t
+  t is SomeFloat|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
 
-type SomeNumeric* = concept type t
-  t is SomeInt|SomeFloat
+type SomeNumericProperty* = concept type t
+  t is SomeIntProperty|SomeFloatProperty
 
-type SomeString* = concept type t
+type SomeStringProperty* = concept type t
   t is string|String|PackedStringArray|TypedArray[String]
 
-type SomeColor* = concept type t
+type SomeColorProperty* = concept type t
   t is Color|PackedColorArray|TypedArray[Color]
 
-proc defaultUnit*[S: SomeFloat](_: typedesc[S]): float =
+proc defaultUnit*[S: SomeFloatProperty](_: typedesc[S]): float =
   # TODO: This value should be read at runtime, not hard-coded.
   # EditorSettings.getSetting("interface/inspector/default_float_step")
   0.001
-proc defaultUnit*[S: SomeInt](_: typedesc[S]): int = 1
+proc defaultUnit*[S: SomeIntProperty](_: typedesc[S]): int = 1
 
 proc propertyInfo*(typ: VariantType;
       name: ptr StringName = addr StringName.empty;

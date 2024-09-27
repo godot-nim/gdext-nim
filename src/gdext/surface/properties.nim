@@ -17,7 +17,7 @@ import gdext/surface/common
 
 template joinArg(s: varargs[string]): string = s.join(",")
 
-proc rangeHintString(min, max, step: SomeNumeric, extra: varargs[RangeArgument]): string =
+proc rangeHintString(min, max, step: SomeNumericProperty, extra: varargs[RangeArgument]): string =
   var res = @[$min, $max, $step]
   if extra.len > 0:
     res = res.concat(@extra.mapit($it))
@@ -188,12 +188,12 @@ template gdexport*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S, getter, setter)
 
 template gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  =
-  when iden is SomeObject:
+  when iden is SomeObjectProperty:
     register_property_iden(iden, alias, hint= propertyHintNodeType, hint_string= gdstring className `iden`)
   else:
     register_property_iden(iden, alias)
 
-template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColor](
+template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColorProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -201,10 +201,10 @@ template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColor](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintColorNoAlpha)
 
-template gdexport_color_no_alpha*(iden: SomeColor, alias: static[alias] = noAlias) =
+template gdexport_color_no_alpha*(iden: SomeColorProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintColorNoAlpha)
 
-template gdexport_dir*[T: SomeUserClass; S: SomeString](
+template gdexport_dir*[T: SomeUserClass; S: SomeStringProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -212,10 +212,10 @@ template gdexport_dir*[T: SomeUserClass; S: SomeString](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintDir)
 
-template gdexport_dir*(iden: SomeString, alias: static[alias] = noAlias) =
+template gdexport_dir*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintDir)
 
-template gdexport_global_dir*[T: SomeUserClass; S: SomeString](
+template gdexport_global_dir*[T: SomeUserClass; S: SomeStringProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -223,10 +223,10 @@ template gdexport_global_dir*[T: SomeUserClass; S: SomeString](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintGlobalDir)
 
-template gdexport_global_dir*(iden: SomeString, alias: static[alias] = noAlias) =
+template gdexport_global_dir*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintGlobalDir)
 
-template gdexport_file*[T: SomeUserClass; S: SomeString](
+template gdexport_file*[T: SomeUserClass; S: SomeStringProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -234,10 +234,10 @@ template gdexport_file*[T: SomeUserClass; S: SomeString](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintFile)
 
-template gdexport_file*(iden: SomeString, alias: static[alias] = noAlias) =
+template gdexport_file*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintFile)
 
-template gdexport_global_file*[T: SomeUserClass; S: SomeString](
+template gdexport_global_file*[T: SomeUserClass; S: SomeStringProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -245,10 +245,10 @@ template gdexport_global_file*[T: SomeUserClass; S: SomeString](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintGlobalFile)
 
-template gdexport_global_file*(iden: SomeString, alias: static[alias] = noAlias) =
+template gdexport_global_file*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintGlobalFile)
 
-template gdexport_enum*[T: SomeUserClass; S: SomeInt|SomeString](
+template gdexport_enum*[T: SomeUserClass; S: SomeIntProperty|SomeStringProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -258,10 +258,10 @@ template gdexport_enum*[T: SomeUserClass; S: SomeInt|SomeString](
     hint= propertyHintEnum,
     hint_string= enums.joinArg)
 
-template gdexport_enum*(iden: SomeInt|SomeString, enums: varargs[string], alias: static[alias] = noAlias) =
+template gdexport_enum*(iden: SomeIntProperty|SomeStringProperty, enums: varargs[string], alias: static[alias] = noAlias) =
     register_property_iden(`iden`, `alias`, hint= propertyHintEnum, hint_string= `enums`.joinArg)
 
-template gdexport_flags*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -271,10 +271,10 @@ template gdexport_flags*[T: SomeUserClass; S: SomeInt](
     hint= propertyHintFlags,
     hint_string= flags.joinArg)
 
-template gdexport_flags*(iden: SomeInt, flags: varargs[string], alias: static[alias] = noAlias) =
+template gdexport_flags*(iden: SomeIntProperty, flags: varargs[string], alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintFlags, hint_string= `flags`.joinArg)
 
-template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -282,10 +282,10 @@ template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dNavigation)
 
-template gdexport_flags_2d_navigation*(iden: SomeInt; alias: static[alias] = noAlias) =
+template gdexport_flags_2d_navigation*(iden: SomeIntProperty; alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dNavigation)
 
-template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -293,10 +293,10 @@ template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dPhysics)
 
-template gdexport_flags_2d_physics*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_2d_physics*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dPhysics)
 
-template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -304,10 +304,10 @@ template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers2dRender)
 
-template gdexport_flags_2d_render*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_2d_render*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dRender)
 
-template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -315,10 +315,10 @@ template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dNavigation)
 
-template gdexport_flags_3d_navigation*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_3d_navigation*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dNavigation)
 
-template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -326,10 +326,10 @@ template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dPhysics)
 
-template gdexport_flags_3d_physics*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_3d_physics*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dPhysics)
 
-template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -337,10 +337,10 @@ template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayers3dRender)
 
-template gdexport_flags_3d_render*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_3d_render*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dRender)
 
-template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeInt](
+template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeIntProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -348,10 +348,10 @@ template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeInt](
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintLayersAvoidance)
 
-template gdexport_flags_avoidance*(iden: SomeInt, alias: static[alias] = noAlias) =
+template gdexport_flags_avoidance*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintLayersAvoidance)
 
-template gdexport_exp_easing*[T: SomeUserClass; S: propertyinfo.SomeFloat](
+template gdexport_exp_easing*[T: SomeUserClass; S: SomeFloatProperty](
       name;
       getter: proc(self: T): S;
       setter: proc(self: T; value: S);
@@ -361,17 +361,17 @@ template gdexport_exp_easing*[T: SomeUserClass; S: propertyinfo.SomeFloat](
     hint= propertyHintExpEasing,
     hint_string= @extra.mapIt($it).join(","))
 
-template gdexport_exp_easing*(iden: propertyinfo.SomeFloat, extra: varargs[ExpEasingArgument], alias: static[alias] = noAlias) =
+template gdexport_exp_easing*(iden: SomeFloatProperty, extra: varargs[ExpEasingArgument], alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintExpEasing, hint_string= "attenuation")
 
-template gdexport_multiline*[T: SomeUserClass; S: SomeString](
+template gdexport_multiline*[T: SomeUserClass; S: SomeStringProperty](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S)): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
     hint= propertyHintMultilineText)
 
-template gdexport_multiline*(iden: SomeString, alias: static[alias] = noAlias) =
+template gdexport_multiline*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintMultilineText)
 
 template gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
@@ -407,7 +407,7 @@ template gdexport_placeholder*[T: SomeUserClass; S: SomeProperty](
 template gdexport_placeholder*(iden: SomeProperty, placeholder: String, alias: static[alias] = noAlias) =
   register_property_iden(`iden`, `alias`, hint= propertyHintPlaceholderText, hint_string= `placeholder`)
 
-template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
+template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
@@ -417,14 +417,14 @@ template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
       hint= propertyHintRange,
       hint_string= rangeHintString(min, max, step= defaultUnit(S), extra))
 
-template gdexport_range*[S: SomeNumeric](
+template gdexport_range*[S: SomeNumericProperty](
     iden: typedesc[S],
     min, max: S,
     extra: varargs[RangeArgument],
     alias: static[alias] = noAlias) =
   gdexport_range(iden, min, max, step= defaultUnit(S), extra, alias)
 
-template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
+template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
     name;
     getter: proc(self: T): S;
     setter: proc(self: T; value: S);
@@ -433,7 +433,7 @@ template gdexport_range*[T: SomeUserClass; S: SomeNumeric](
     hint= propertyHintRange,
     hint_string= rangeHintString(min, max, step, extra))
 
-template gdexport_range*[S: SomeNumeric](
+template gdexport_range*[S: SomeNumericProperty](
     iden: typedesc[S],
     min, max, step: S,
     extra: varargs[RangeArgument],

@@ -45,6 +45,6 @@ defineExportPragmasField:
   template gdexport_exp_easing*(extra: ExpEasingArgument) {.pragma.}
   template gdexport_node_path*(validTypes: varargs[string]) {.pragma.}
 
-  template gdexport_range*(min, max: SomeNumeric, extra: varargs[RangeArgument]) {.pragma.}
-  template gdexport_range*(min, max, step: SomeNumeric, extra: varargs[RangeArgument]) {.pragma.}
+  template gdexport_range*(min, max: SomeNumericProperty, extra: varargs[RangeArgument]) {.pragma.}
+  template gdexport_range*(min, max, step: SomeNumericProperty, extra: varargs[RangeArgument]) {.pragma.}
 
