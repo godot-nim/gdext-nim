@@ -70,11 +70,6 @@ type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
 
-type SomeObjectProperty* = concept type t
-  t is SomeProperty
-  t isnot GdRef|Array|TypedArray
-  t.variantType == VariantType_Object
-
 type SomeIntProperty* = concept type t
   t is SomeInteger|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
 
