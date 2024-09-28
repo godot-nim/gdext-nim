@@ -188,7 +188,7 @@ template gdexport*[T: SomeUserClass; S: SomeProperty](
   register_property(typedesc T, name, typedesc S, getter, setter)
 
 template gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  =
-  when iden is SomeObjectProperty:
+  when iden is Node:
     register_property_iden(iden, alias, hint= propertyHintNodeType, hint_string= gdstring className `iden`)
   else:
     register_property_iden(iden, alias)
