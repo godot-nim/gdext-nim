@@ -5,6 +5,7 @@ import gdext/core/builtinindex
 import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/gdrefs
+import gdext/core/gdtypedarray
 import gdext/core/typeshift
 import gdext/surface/globalenums except VariantType
 
@@ -68,6 +69,27 @@ template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsa
 type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
+
+type SomeIntProperty* = concept type t
+  t is SomeInteger|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
+
+type SomeFloatProperty* = concept type t
+  t is SomeFloat|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+
+type SomeNumericProperty* = concept type t
+  t is SomeIntProperty|SomeFloatProperty
+
+type SomeStringProperty* = concept type t
+  t is string|String|PackedStringArray|TypedArray[String]
+
+type SomeColorProperty* = concept type t
+  t is Color|PackedColorArray|TypedArray[Color]
+
+proc defaultUnit*[S: SomeFloatProperty](_: typedesc[S]): float =
+  # TODO: This value should be read at runtime, not hard-coded.
+  # EditorSettings.getSetting("interface/inspector/default_float_step")
+  0.001
+proc defaultUnit*[S: SomeIntProperty](_: typedesc[S]): int = 1
 
 proc propertyInfo*(typ: VariantType;
       name: ptr StringName = addr StringName.empty;

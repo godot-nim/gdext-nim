@@ -15,6 +15,7 @@ import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/surface/classindex
 import gdext/surface/classutils
+import gdext/surface/properties
 
 when Dev.debugCallbacks:
   import std/importutils
@@ -191,14 +192,19 @@ proc register*(T: typedesc) =
     interface_ClassDB_registerExtensionClass2(environment.library, addr className(T), addr className(T.Super), addr info)
   else:
     interface_ClassDB_registerExtensionClass3(environment.library, addr className(T), addr className(T.Super), addr info)
+  processExports T
   invoke Contract[T]
   when T is EditorPlugin:
     interface_Editor_addPlugin addr className(T)
     plugins.incl className(T)
   registered.incl className(T)
+  
 
 proc unregisterAll* =
   for name in plugins:
     interface_Editor_removePlugin addr name
   for name in registered:
     interface_ClassDB_unregister_extension_class(environment.library, addr name)
+
+
+  

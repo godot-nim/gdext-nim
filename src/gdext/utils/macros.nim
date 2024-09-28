@@ -75,10 +75,55 @@ func recList*(node: NimNode): NimNode =
   case node.kind
   of nnkObjectTy:
     node[2]
-  of nnkBracketExpr:
+  of nnkBracketExpr, nnkSym:
     node.typeDef.recList
   else:
     node.objectTy.recList
+
+func identifier*(node: NimNode): NimNode =
+  case node.kind
+  of nnkIdent:
+    node
+  of nnkSym:
+    newIdentNode($node)
+  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr, nnkTemplateDef:
+    node[0].identifier
+  of nnkPostfix:
+    node[1].identifier
+  else:
+    error lisprepr node, node
+    nil
+
+func pragmas*(node: NimNode): seq[NimNode] =
+  case node.kind
+  of nnkIdentDefs:
+    var sq: seq[NimNode] = @[]
+    for field in node:
+      if field.kind != nnkPragmaExpr:
+        continue
+      for pragma in field[1]:
+        sq.add pragma
+    sq
+  else:
+    error lisprepr node, node
+
+proc args*(node: NimNode): seq[NimNode] =
+  case node.kind
+  of nnkSym, nnkIdent:
+    @[]
+  of nnkCall, nnkExprColonExpr:
+    var sq: seq[NimNode] = @[]
+    for arg in node:
+      case arg.kind:
+      of nnkLiterals, nnkBracket:
+        sq.add arg
+      else:
+        discard
+    sq
+  of nnkPragma:
+    node[0].args
+  else:
+    error lisprepr node, node
 
 func isVarargs*(node: NimNode): bool =
   case node.kind

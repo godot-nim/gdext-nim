@@ -1,4 +1,4 @@
-import std/macros
+import std/macros, std/sets
 import gdext/core/[builtinindex, commandindex, extracommands, gdclass]
 import gdext/core/userclass/[contracts, propertyinfo]
 
@@ -13,9 +13,17 @@ proc registerEnumFields*(className, enumName: StringName; fields: varargs[tuple[
 template registerEnumFields*[T: SomeUserClass](Class: typedesc[T]; enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
   registerEnumFields(className Class, enumName, fields, isBitField)
 
-proc registerEnumInternal(Class, Enum: NimNode; isBitField: bool): NimNode {.compileTime.} =
+var registeredEnums {.compileTime.}: HashSet[string]
+
+proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.compileTime.} =
+  let Enum = Enum.getTypeInst[1]
   let def = Enum.getImpl
-  let enumName = newlit $Enum
+  let enumType = Enum.getTypeInst
+  let enumTypeStr = $enumType.toStrLit
+  let enumName = newLit $Enum
+
+  if registeredEnums.contains enumTypeStr: return newStmtList()
+
   let call = bindSym"registerEnumFields".newCall(
     Class,
     bindSym"stringName".newCall enumName,
@@ -34,9 +42,10 @@ proc registerEnumInternal(Class, Enum: NimNode; isBitField: bool): NimNode {.com
 
   call.add newlit isBitField
   result = quote do:
-    proc `Enum` {.execon: Contract[`Class`].enums.} =
-      Meta(`Enum`).className = stringname $className(`Class`) & "." & $`Enum`
+    proc `enumType` {.execon: Contract[`Class`].enums.} =
+      Meta(typedesc `enumType`).className = stringname $className(`Class`) & "." & $`enumTypeStr`
       `call`
+  registeredEnums.incl enumTypeStr
 
 macro registerEnum*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
   registerEnumInternal(Class, Enum, false)
