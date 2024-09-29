@@ -36,14 +36,15 @@ proc instanceID*(self: SomeClass): GDObjectInstanceID =
   interface_Object_getInstanceId CLASS_getObjectPtr self
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
-  let castpro = commandindex.interfaceObjectCastTo
   if self.isNil: return
+  if self of T: return T self
+  let castpro = commandindex.interfaceObjectCastTo
   result = CLASS_getObjectPtr(self)
     .castpro(interface_ClassDB_getClassTag(addr className T))
     .getInstance(T)
 
 template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(T).asGdRef
-template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(Result)
+template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(T).referenced
 
 {.push, inline.}
 

@@ -12,5 +12,7 @@ script = ExtResource("1_x2b6x")
 texture = ExtResource("2_x3ep8")
 
 [node name="PropTestNode" type="PropTestNode" parent="."]
+icon = ExtResource("2_x3ep8")
 
 [node name="PropTestNodePragmas" type="PropTestNodePragmas" parent="."]
+icon = ExtResource("2_x3ep8")
