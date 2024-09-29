@@ -7,7 +7,7 @@ import gdext/classes/[
 type PropTestPragmasEnum* = enum
   PropTestPragmasEnum1, PropTestPragmasEnum2, PropTestPragmasEnum3
 
-type PropTestNodePragmas* = ptr object of Node 
+type PropTestNodePragmas* = ptr object of Node
   icon* {.gdexport_category: "Export test 1", gdexport.}: gdref Texture2D
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
@@ -16,16 +16,16 @@ type PropTestNodePragmas* = ptr object of Node
   string_with_export_file* {.gdexport_file.}: string = "res://nim/bootstrap.nim"
   string_with_export_global_dir* {.gdexport_subgroup:"global", gdexport_global_dir.}: string = "/dev"
   string_with_export_global_file* {.gdexport_global_file.}: string = "/dev/null"
-  int_with_export_enum* 
+  int_with_export_enum*
     {.gdexport_group:"", gdexport_category: "Export test 2", gdexport_enum(cases = "Alpha", "Beta:10", "Gamma").}
     : int
-  string_with_export_enum* 
+  string_with_export_enum*
     {.gdexport_enum(cases = "Alpha", "Beta", "Gamma").}
     : string = "Alpha"
-  int_with_export_flags* 
+  int_with_export_flags*
     {.gdexport_flags(flags = "Alpha", "Beta", "Gamma").}
     : int
-  int_with_export_flags_some_layers*: int # multiple exports below 
+  int_with_export_flags_some_layers*: int # multiple exports below
   float_with_export_exp_easing* {.gdexport_exp_easing: positive_only.}: float = 2
 
   string_with_export_multiline* {.gdexport_multiline.} : string = """
@@ -34,15 +34,15 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 
-  StringArray_with_export_multiline* {.gdexport_multiline.}: TypedArray[String] 
+  StringArray_with_export_multiline* {.gdexport_multiline.}: TypedArray[String]
   PackedStringArray_with_export_multiline* {.gdexport_multiline.}: PackedStringArray
   NodePath_with_export_node_path* {.gdexport.}: NodePath
   string_with_export_storage* {.gdexport_storage.}: string = "with export_storage"
 
-  int_with_export_strict_range* 
+  int_with_export_strict_range*
     {.gdexport_range(min = 5, max = 20).}
     : int = 20
-  int_with_export_range* 
+  int_with_export_range*
     {.gdexport_range(min = 10, max = 100, step = 5, extra = [or_less, or_greater]).}
     : int = 20
   radians_with_export_range_as_degrees*
