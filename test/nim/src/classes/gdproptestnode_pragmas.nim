@@ -1,5 +1,8 @@
 import gdext
-import gdext/classes/gdResourceLoader
+import gdext/classes/[
+  gdNode,
+  gdResourceLoader,
+]
 
 type PropTestPragmasEnum* = enum
   PropTestPragmasEnum1, PropTestPragmasEnum2, PropTestPragmasEnum3
@@ -53,6 +56,9 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline = typedArray[String](1)
+
+method enterTree(self: PropTestNodePragmas) {.gdsync.} =
+  self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
 
 proc get_string_with_export_through_proc(self: PropTestNodePragmas): string {.gdsync.} =
   self.string_with_export
