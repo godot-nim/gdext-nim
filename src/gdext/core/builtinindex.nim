@@ -170,27 +170,35 @@ var hook_copy: array[VariantType, PtrConstructor]
 var hook_destroy: array[VariantType, PtrDestructor]
 
 proc `=destroy`*(val: String) =
+  if val.opaque == String.opaque.default: return
   try: hook_destroy[VariantTypeString](addr val)
   except: discard
 proc `=destroy`*(val: StringName) =
+  if val.opaque == StringName.opaque.default: return
   try: hook_destroy[VariantTypeStringName](addr val)
   except: discard
 proc `=destroy`*(val: NodePath) =
+  if val.opaque == NodePath.opaque.default: return
   try: hook_destroy[VariantTypeNodePath](addr val)
   except: discard
 proc `=destroy`*(val: Callable) =
+  if val.opaque == Callable.opaque.default: return
   try: hook_destroy[VariantTypeCallable](addr val)
   except: discard
 proc `=destroy`*(val: Signal) =
+  if val.opaque == Signal.opaque.default: return
   try: hook_destroy[VariantTypeSignal](addr val)
   except: discard
 proc `=destroy`*(val: Array) =
+  if val.opaque == Array.opaque.default: return
   try: hook_destroy[VariantTypeArray](addr val)
   except: discard
 proc `=destroy`*(val: Dictionary) =
+  if val.opaque == Dictionary.opaque.default: return
   try: hook_destroy[VariantTypeDictionary](addr val)
   except: discard
 proc `=destroy`*[T](val: PackedArray[T]) =
+  if val.opaque == PackedArray.opaque.default: return
   try:
     when T is byte:
       hook_destroy[VariantTypePackedByteArray](addr val)
@@ -317,7 +325,6 @@ proc `=dup`*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
 proc `=copy`*(dest: var Variant; source: Variant) =
   `=destroy` dest
-  wasMoved(dest)
   interface_variantNewCopy(addr dest, addr source)
 
 proc load* =
