@@ -53,6 +53,11 @@ gdextwiz upgrade
 - [x] Macos
 - [x] Windows
 
+## Engine supported
+
+- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.1.0 or higher
+- [x] [Redot-Engine/redot-engine](https://github.com/Redot-Engine/redot-engine) master
+  
 ## Dependencies
 
 * [nim-lang/nim](https://github.com/nim-lang/nim) 2.0.0 or higher
@@ -60,8 +65,6 @@ gdextwiz upgrade
   Use Nim installed via Homebrew, not choosenim.
   Due to the execution environment of Godot itself, a native AArch64/ARM64 build of Nim is required, and that choosenim installs a x86_64 build emulated via Rosetta.
 
-* [godotengine/godot](https://github.com/godotengine/godot) 4.1.0 or higher
-  
 * [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen)
 
   Choose a branch that has same name of your godot version.
