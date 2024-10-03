@@ -41,10 +41,22 @@ nimble install https://github.com/godot-nim/gdextgen@#4.3
 gdextwiz uninstall
 ```
 
+#### script (for windows)
+
+```
+nimble uninstall gdext gdextgen
+```
+
 ### upgrade
 
 ```
 gdextwiz upgrade
+```
+
+#### script (for windows)
+
+```
+nimble uninstall gdext gdextgen && nimble install https://github.com/godot-nim/gdextgen
 ```
 
 ## OS supported
