@@ -13,7 +13,7 @@ import gdext/core/gdclass
 import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
-import gdext/surface/classindex
+import gdext/gen/classindex
 import gdext/surface/classutils
 import gdext/surface/properties
 

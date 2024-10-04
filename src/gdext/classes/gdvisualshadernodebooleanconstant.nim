@@ -1,0 +1,27 @@
+{.warning[UnusedImport]:off.}
+
+import ./../gen/builtinclasses/constructors
+import ./../gen/classindex
+import ./../gen/globalenums
+import ./../gen/localenums
+import gdext/coronation/header/classes
+
+import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
+
+proc setConstant*(self: VisualShaderNodeBooleanConstant; constant: bool): void =
+  expandMethodBind(className VisualShaderNodeBooleanConstant, "set_constant", 2586408642)
+  var `?param` = [getPtr constant]
+  methodbind.ptrcall(self, addr `?param`[0])
+
+proc getConstant*(self: VisualShaderNodeBooleanConstant): bool =
+  expandMethodBind(className VisualShaderNodeBooleanConstant, "get_constant", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, nil, addr ret)
+  (addr ret).decode_result(bool)
+
+template constant*(self: VisualShaderNodeBooleanConstant): untyped = self.getConstant()
+template `constant=`*(self: VisualShaderNodeBooleanConstant; value) = self.setConstant(value)
+
+const VisualShaderNodeBooleanConstant_vmap =
+  VisualShaderNodeConstant.vmap.concat initTable[string, string]()
+template vmap*(_: typedesc[VisualShaderNodeBooleanConstant]): Table[string, string] = VisualShaderNodeBooleanConstant_vmap

@@ -106,5 +106,3 @@ else:
     --passL: "-static-libgcc"
 
   Extension.libdir = "$projectdir/lib"/RunningSystem/Build
-
-  include gdext/core/versiondata

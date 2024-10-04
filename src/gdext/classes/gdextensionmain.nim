@@ -1,6 +1,7 @@
 import gdext/core/[gdclass]
 import gdext/classes/[gdengine]
-import gdext/surface/[classindex, userclass, classutils]
+import gdext/gen/[classindex]
+import gdext/surface/[userclass, classutils]
 import gdext/buildconf
 
 import std/macros

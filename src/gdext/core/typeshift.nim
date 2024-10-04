@@ -15,8 +15,8 @@ proc load* =
     variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
     typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
 
-type AltInt* = int32|int16|int8|uint64|uint32|uint16|uint8|byte|enum
-type AltFloat* = float32
+type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8|byte
+type AltFloat* = float|float32
 type AltString* = string
 
 template variantType*(_: typedesc[Bool]): VariantType = VariantType_Bool
@@ -75,6 +75,7 @@ template variantType*(Type: typedesc[Variant]): Variant_Type = VariantType_Nil
 template variantType*(Type: typedesc[AltInt]): Variant_Type = VariantType_Int
 template variantType*(Type: typedesc[AltFloat]): Variant_Type = VariantType_Float
 template variantType*(Type: typedesc[AltString]): Variant_Type = VariantType_String
+template variantType*(Type: typedesc[enum]): Variant_Type = VariantType_Int
 
 template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 

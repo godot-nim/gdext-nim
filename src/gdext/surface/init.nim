@@ -8,7 +8,7 @@ import gdext/core/extracommands
 import gdext/core/typeshift
 import gdext/core/exceptions
 import gdext/core/userclass/contracts
-import gdext/surface/utilityfuncs
+import gdext/gen/utilityfuncs
 import gdext/surface/userclass
 import gdext/classes/gdextensionmain
 import gdext/buildconf
@@ -98,5 +98,5 @@ template GDExtension_EntryPoint*: untyped =
       return false
 
 when isMainModule:
-  import gdextgen/classindex
+  import gdext/gen/classindex
   GDExtension_EntryPoint

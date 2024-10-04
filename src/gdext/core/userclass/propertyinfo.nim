@@ -7,7 +7,7 @@ import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/gdtypedarray
 import gdext/core/typeshift
-import gdext/surface/globalenums except VariantType
+import gdext/gen/globalenums except VariantType
 
 type
   GodotUnboundSymbolDefect* = object of Defect
@@ -71,10 +71,10 @@ type SomeProperty* = concept type t
   t.uniqueUsage is set[PropertyUsageFlags]
 
 type SomeIntProperty* = concept type t
-  t is SomeInteger|Int|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
+  t is SomeInteger|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
 
 type SomeFloatProperty* = concept type t
-  t is SomeFloat|Float|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+  t is SomeFloat|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
 
 type SomeNumericProperty* = concept type t
   t is SomeIntProperty|SomeFloatProperty

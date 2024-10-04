@@ -15,10 +15,10 @@ import gdext/core/[typeshift, gdclass]
 export typeshift.get, typeshift.variant
 export gdclass.Object, gdclass.RefCounted
 
-import gdext/surface/[ builtinclasses, classindex, globalenums, localenums, structs ]
-export                 builtinclasses, classindex, globalenums, localenums, structs
+import gdext/gen/[ builtinclasses, classindex, globalenums, localenums, structs ]
+export             builtinclasses, classindex, globalenums, localenums, structs
 
-import gdext/surface/utilityfuncs
+import gdext/gen/utilityfuncs
 export utilityfuncs except print
 
 import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions ]
