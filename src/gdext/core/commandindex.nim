@@ -1,5 +1,4 @@
 {.warning[Deprecated]:off.}
-import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 
 type Environment* = ref object
@@ -78,8 +77,6 @@ var
   interfaceStringNewWithUtf32Chars*: InterfaceStringNewWithUtf32Chars
   interfaceStringNewWithWideChars*: InterfaceStringNewWithWideChars
   interfaceStringNewWithLatin1CharsAndLen*: InterfaceStringNewWithLatin1CharsAndLen
-  interfaceStringNewWithUtf8CharsAndLen*: InterfaceStringNewWithUtf8CharsAndLen
-  interfaceStringNewWithUtf16CharsAndLen*: InterfaceStringNewWithUtf16CharsAndLen
   interfaceStringNewWithUtf32CharsAndLen*: InterfaceStringNewWithUtf32CharsAndLen
   interfaceStringNewWithWideCharsAndLen*: InterfaceStringNewWithWideCharsAndLen
   interfaceStringToLatin1Chars*: InterfaceStringToLatin1Chars
@@ -136,11 +133,9 @@ var
   interfaceObjectGetInstanceId*: InterfaceObjectGetInstanceId
   interfaceRefGetObject*: InterfaceRefGetObject
   interfaceRefSetObject*: InterfaceRefSetObject
-  interfaceScriptInstanceCreate*: InterfaceScriptInstanceCreate
   interfaceClassdbConstructObject*: InterfaceClassdbConstructObject
   interfaceClassdbGetMethodBind*: InterfaceClassdbGetMethodBind
   interfaceClassdbGetClassTag*: InterfaceClassdbGetClassTag
-  interfaceClassdbRegisterExtensionClass*: InterfaceClassdbRegisterExtensionClass
   interfaceClassdbRegisterExtensionClassMethod*: InterfaceClassdbRegisterExtensionClassMethod
   interfaceClassdbRegisterExtensionClassIntegerConstant*: InterfaceClassdbRegisterExtensionClassIntegerConstant
   interfaceClassdbRegisterExtensionClassProperty*: InterfaceClassdbRegisterExtensionClassProperty
@@ -151,39 +146,30 @@ var
   interfaceGetLibraryPath*: InterfaceGetLibraryPath
   interfaceEditorAddPlugin*: InterfaceEditorAddPlugin
   interfaceEditorRemovePlugin*: InterfaceEditorRemovePlugin
-
-when Extension.version >= (4, 2):
-  var
-    interfaceStringResize*: InterfaceStringResize
-    interfaceStringNameNewWithLatin1Chars*: InterfaceStringNameNewWithLatin1Chars
-    interfaceStringNameNewWithUtf8Chars*: InterfaceStringNameNewWithUtf8Chars
-    interfaceStringNameNewWithUtf8CharsAndLen*: InterfaceStringNameNewWithUtf8CharsAndLen
-    interfaceObjectFreeInstanceBinding*: InterfaceObjectFreeInstanceBinding
-    interfaceScriptInstanceCreate2*: InterfaceScriptInstanceCreate2
-    interfacePlaceHolderScriptInstanceCreate*: InterfacePlaceHolderScriptInstanceCreate
-    interfacePlaceHolderScriptInstanceUpdate*: InterfacePlaceHolderScriptInstanceUpdate
-    interfaceObjectGetScriptInstance*: InterfaceObjectGetScriptInstance
-    interfaceCallableCustomCreate*: InterfaceCallableCustomCreate
-    interfaceCallableCustomGetUserData*: InterfaceCallableCustomGetUserData
-    interfaceClassdbRegisterExtensionClass2*: InterfaceClassdbRegisterExtensionClass2
-    interfaceClassdbRegisterExtensionClassPropertyIndexed*: InterfaceClassdbRegisterExtensionClassPropertyIndexed
-
-when Extension.version >= (4, 3):
-  var
-    interfaceStringNewWithUtf8CharsAndLen2*: InterfaceStringNewWithUtf8CharsAndLen2
-    interfaceStringNewWithUtf16CharsAndLen2*: InterfaceStringNewWithUtf16CharsAndLen2
-    interfaceImagePtrw*: InterfaceImagePtrw
-    interfaceImagePtr*: InterfaceImagePtr
-    interfacePackedVector4ArrayOperatorIndex*: InterfacePackedVector4ArrayOperatorIndex
-    interfacePackedVector4ArrayOperatorIndexConst*: InterfacePackedVector4ArrayOperatorIndexConst
-    interfaceObjectHasScriptMethod*: InterfaceObjectHasScriptMethod
-    interfaceObjectCallScriptMethod*: InterfaceObjectCallScriptMethod
-    interfaceScriptInstanceCreate3*: InterfaceScriptInstanceCreate3
-    interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
-    interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
-    interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
-    interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
-    interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
+  interfaceStringResize*: InterfaceStringResize
+  interfaceStringNameNewWithLatin1Chars*: InterfaceStringNameNewWithLatin1Chars
+  interfaceStringNameNewWithUtf8Chars*: InterfaceStringNameNewWithUtf8Chars
+  interfaceStringNameNewWithUtf8CharsAndLen*: InterfaceStringNameNewWithUtf8CharsAndLen
+  interfaceObjectFreeInstanceBinding*: InterfaceObjectFreeInstanceBinding
+  interfacePlaceHolderScriptInstanceCreate*: InterfacePlaceHolderScriptInstanceCreate
+  interfacePlaceHolderScriptInstanceUpdate*: InterfacePlaceHolderScriptInstanceUpdate
+  interfaceObjectGetScriptInstance*: InterfaceObjectGetScriptInstance
+  interfaceCallableCustomGetUserData*: InterfaceCallableCustomGetUserData
+  interfaceClassdbRegisterExtensionClassPropertyIndexed*: InterfaceClassdbRegisterExtensionClassPropertyIndexed
+  interfaceStringNewWithUtf8CharsAndLen2*: InterfaceStringNewWithUtf8CharsAndLen2
+  interfaceStringNewWithUtf16CharsAndLen2*: InterfaceStringNewWithUtf16CharsAndLen2
+  interfaceImagePtrw*: InterfaceImagePtrw
+  interfaceImagePtr*: InterfaceImagePtr
+  interfacePackedVector4ArrayOperatorIndex*: InterfacePackedVector4ArrayOperatorIndex
+  interfacePackedVector4ArrayOperatorIndexConst*: InterfacePackedVector4ArrayOperatorIndexConst
+  interfaceObjectHasScriptMethod*: InterfaceObjectHasScriptMethod
+  interfaceObjectCallScriptMethod*: InterfaceObjectCallScriptMethod
+  interfaceScriptInstanceCreate3*: InterfaceScriptInstanceCreate3
+  interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
+  interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
+  interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
+  interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
+  interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
 
 proc load* =
   let getProcAddress = environment.getProcAddress
@@ -250,8 +236,6 @@ proc load* =
   interfaceStringNewWithUtf32Chars = cast[InterfaceStringNewWithUtf32Chars](getProcAddress(cstring "string_new_with_utf32_chars"))
   interfaceStringNewWithWideChars = cast[InterfaceStringNewWithWideChars](getProcAddress(cstring "string_new_with_wide_chars"))
   interfaceStringNewWithLatin1CharsAndLen = cast[InterfaceStringNewWithLatin1CharsAndLen](getProcAddress(cstring "string_new_with_latin1_chars_and_len"))
-  interfaceStringNewWithUtf8CharsAndLen = cast[InterfaceStringNewWithUtf8CharsAndLen](getProcAddress(cstring "string_new_with_utf8_chars_and_len"))
-  interfaceStringNewWithUtf16CharsAndLen = cast[InterfaceStringNewWithUtf16CharsAndLen](getProcAddress(cstring "string_new_with_utf16_chars_and_len"))
   interfaceStringNewWithUtf32CharsAndLen = cast[InterfaceStringNewWithUtf32CharsAndLen](getProcAddress(cstring "string_new_with_utf32_chars_and_len"))
   interfaceStringNewWithWideCharsAndLen = cast[InterfaceStringNewWithWideCharsAndLen](getProcAddress(cstring "string_new_with_wide_chars_and_len"))
   interfaceStringToLatin1Chars = cast[InterfaceStringToLatin1Chars](getProcAddress(cstring "string_to_latin1_chars"))
@@ -308,11 +292,9 @@ proc load* =
   interfaceObjectGetInstanceId = cast[InterfaceObjectGetInstanceId](getProcAddress(cstring "object_get_instance_id"))
   interfaceRefGetObject = cast[InterfaceRefGetObject](getProcAddress(cstring "ref_get_object"))
   interfaceRefSetObject = cast[InterfaceRefSetObject](getProcAddress(cstring "ref_set_object"))
-  interfaceScriptInstanceCreate = cast[InterfaceScriptInstanceCreate](getProcAddress(cstring "script_instance_create"))
   interfaceClassdbConstructObject = cast[InterfaceClassdbConstructObject](getProcAddress(cstring "classdb_construct_object"))
   interfaceClassdbGetMethodBind = cast[InterfaceClassdbGetMethodBind](getProcAddress(cstring "classdb_get_method_bind"))
   interfaceClassdbGetClassTag = cast[InterfaceClassdbGetClassTag](getProcAddress(cstring "classdb_get_class_tag"))
-  interfaceClassdbRegisterExtensionClass = cast[InterfaceClassdbRegisterExtensionClass](getProcAddress(cstring "classdb_register_extension_class"))
   interfaceClassdbRegisterExtensionClassMethod = cast[InterfaceClassdbRegisterExtensionClassMethod](getProcAddress(cstring "classdb_register_extension_class_method"))
   interfaceClassdbRegisterExtensionClassIntegerConstant = cast[InterfaceClassdbRegisterExtensionClassIntegerConstant](getProcAddress(cstring "classdb_register_extension_class_integer_constant"))
   interfaceClassdbRegisterExtensionClassProperty = cast[InterfaceClassdbRegisterExtensionClassProperty](getProcAddress(cstring "classdb_register_extension_class_property"))
@@ -323,36 +305,29 @@ proc load* =
   interfaceGetLibraryPath = cast[InterfaceGetLibraryPath](getProcAddress(cstring "get_library_path"))
   interfaceEditorAddPlugin = cast[InterfaceEditorAddPlugin](getProcAddress(cstring "editor_add_plugin"))
   interfaceEditorRemovePlugin = cast[InterfaceEditorRemovePlugin](getProcAddress(cstring "editor_remove_plugin"))
-
-  when Extension.version >= (4, 2):
-    interfaceStringResize = cast[InterfaceStringResize](getProcAddress(cstring "string_resize"))
-    interfaceStringNameNewWithLatin1Chars = cast[InterfaceStringNameNewWithLatin1Chars](getProcAddress(cstring "string_name_new_with_latin1_chars"))
-    interfaceStringNameNewWithUtf8Chars = cast[InterfaceStringNameNewWithUtf8Chars](getProcAddress(cstring "string_name_new_with_utf8_chars"))
-    interfaceStringNameNewWithUtf8CharsAndLen = cast[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddress(cstring "string_name_new_with_utf8_chars_and_len"))
-    interfaceObjectFreeInstanceBinding = cast[InterfaceObjectFreeInstanceBinding](getProcAddress(cstring "object_free_instance_binding"))
-    interfaceScriptInstanceCreate2 = cast[InterfaceScriptInstanceCreate2](getProcAddress(cstring "script_instance_create2"))
-    interfacePlaceHolderScriptInstanceCreate = cast[InterfacePlaceHolderScriptInstanceCreate](getProcAddress(cstring "placeholder_script_instance_create"))
-    interfacePlaceHolderScriptInstanceUpdate = cast[InterfacePlaceHolderScriptInstanceUpdate](getProcAddress(cstring "placeholder_script_instance_update"))
-    interfaceObjectGetScriptInstance = cast[InterfaceObjectGetScriptInstance](getProcAddress(cstring "object_get_script_instance"))
-    interfaceCallableCustomCreate = cast[InterfaceCallableCustomCreate](getProcAddress(cstring "callable_custom_create"))
-    interfaceCallableCustomGetUserData = cast[InterfaceCallableCustomGetUserData](getProcAddress(cstring "callable_custom_get_userdata"))
-    interfaceClassdbRegisterExtensionClass2 = cast[InterfaceClassdbRegisterExtensionClass2](getProcAddress(cstring "classdb_register_extension_class2"))
-    interfaceClassdbRegisterExtensionClassPropertyIndexed = cast[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddress(cstring "classdb_register_extension_class_property_indexed"))
-
-  when Extension.version >= (4, 3):
-    interfaceStringNewWithUtf8CharsAndLen2 = cast[InterfaceStringNewWithUtf8CharsAndLen2](getProcAddress(cstring "string_new_with_utf8_chars_and_len2"))
-    interfaceStringNewWithUtf16CharsAndLen2 = cast[InterfaceStringNewWithUtf16CharsAndLen2](getProcAddress(cstring "string_new_with_utf16_chars_and_len2"))
-    interfaceImagePtrw = cast[InterfaceImagePtrw](getProcAddress(cstring "image_ptrw"))
-    interfaceImagePtr = cast[InterfaceImagePtr](getProcAddress(cstring "image_ptr"))
-    interfacePackedVector4ArrayOperatorIndex = cast[InterfacePackedVector4ArrayOperatorIndex](getProcAddress(cstring "packed_vector4_array_operator_index"))
-    interfacePackedVector4ArrayOperatorIndexConst = cast[InterfacePackedVector4ArrayOperatorIndexConst](getProcAddress(cstring "packed_vector4_array_operator_index_const"))
-    interfaceObjectHasScriptMethod = cast[InterfaceObjectHasScriptMethod](getProcAddress(cstring "object_has_script_method"))
-    interfaceObjectCallScriptMethod = cast[InterfaceObjectCallScriptMethod](getProcAddress(cstring "object_call_script_method"))
-    interfaceScriptInstanceCreate3 = cast[InterfaceScriptInstanceCreate3](getProcAddress(cstring "script_instance_create3"))
-    interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(cstring "callable_custom_create2"))
-    interfaceClassdbRegisterExtensionClass3 = cast[InterfaceClassdbRegisterExtensionClass3](getProcAddress(cstring "classdb_register_extension_class3"))
-    interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(cstring "classdb_register_extension_class_virtual_method"))
-    interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars"))
-    interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars_and_len"))
+  interfaceStringResize = cast[InterfaceStringResize](getProcAddress(cstring "string_resize"))
+  interfaceStringNameNewWithLatin1Chars = cast[InterfaceStringNameNewWithLatin1Chars](getProcAddress(cstring "string_name_new_with_latin1_chars"))
+  interfaceStringNameNewWithUtf8Chars = cast[InterfaceStringNameNewWithUtf8Chars](getProcAddress(cstring "string_name_new_with_utf8_chars"))
+  interfaceStringNameNewWithUtf8CharsAndLen = cast[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddress(cstring "string_name_new_with_utf8_chars_and_len"))
+  interfaceObjectFreeInstanceBinding = cast[InterfaceObjectFreeInstanceBinding](getProcAddress(cstring "object_free_instance_binding"))
+  interfacePlaceHolderScriptInstanceCreate = cast[InterfacePlaceHolderScriptInstanceCreate](getProcAddress(cstring "placeholder_script_instance_create"))
+  interfacePlaceHolderScriptInstanceUpdate = cast[InterfacePlaceHolderScriptInstanceUpdate](getProcAddress(cstring "placeholder_script_instance_update"))
+  interfaceObjectGetScriptInstance = cast[InterfaceObjectGetScriptInstance](getProcAddress(cstring "object_get_script_instance"))
+  interfaceCallableCustomGetUserData = cast[InterfaceCallableCustomGetUserData](getProcAddress(cstring "callable_custom_get_userdata"))
+  interfaceClassdbRegisterExtensionClassPropertyIndexed = cast[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddress(cstring "classdb_register_extension_class_property_indexed"))
+  interfaceStringNewWithUtf8CharsAndLen2 = cast[InterfaceStringNewWithUtf8CharsAndLen2](getProcAddress(cstring "string_new_with_utf8_chars_and_len2"))
+  interfaceStringNewWithUtf16CharsAndLen2 = cast[InterfaceStringNewWithUtf16CharsAndLen2](getProcAddress(cstring "string_new_with_utf16_chars_and_len2"))
+  interfaceImagePtrw = cast[InterfaceImagePtrw](getProcAddress(cstring "image_ptrw"))
+  interfaceImagePtr = cast[InterfaceImagePtr](getProcAddress(cstring "image_ptr"))
+  interfacePackedVector4ArrayOperatorIndex = cast[InterfacePackedVector4ArrayOperatorIndex](getProcAddress(cstring "packed_vector4_array_operator_index"))
+  interfacePackedVector4ArrayOperatorIndexConst = cast[InterfacePackedVector4ArrayOperatorIndexConst](getProcAddress(cstring "packed_vector4_array_operator_index_const"))
+  interfaceObjectHasScriptMethod = cast[InterfaceObjectHasScriptMethod](getProcAddress(cstring "object_has_script_method"))
+  interfaceObjectCallScriptMethod = cast[InterfaceObjectCallScriptMethod](getProcAddress(cstring "object_call_script_method"))
+  interfaceScriptInstanceCreate3 = cast[InterfaceScriptInstanceCreate3](getProcAddress(cstring "script_instance_create3"))
+  interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(cstring "callable_custom_create2"))
+  interfaceClassdbRegisterExtensionClass3 = cast[InterfaceClassdbRegisterExtensionClass3](getProcAddress(cstring "classdb_register_extension_class3"))
+  interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(cstring "classdb_register_extension_class_virtual_method"))
+  interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars"))
+  interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars_and_len"))
 
   interfaceGetGodotVersion(addr environment.version)

@@ -82,9 +82,5 @@ method property_canRevert*(self: Object; p_name: ConstStringNamePtr): Bool {.bas
 method property_getRevert*(self: Object; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.base.} = discard
 method toString*(self: Object; r_is_valid: ptr Bool; p_out: StringPtr) {.base.} = discard
 method get_propertyList*(self: Object; r_count: ptr uint32): ptr PropertyInfo {.base.} = r_count[] = 0
-
-when Extension.version < (4, 3):
-  method free_propertyList*(self: Object; p_list: ptr PropertyInfo) {.base.} = discard
-else:
-  method free_propertyList*(self: Object; p_list: openArray[PropertyInfo]) {.base.} = discard
+method free_propertyList*(self: Object; p_list: openArray[PropertyInfo]) {.base.} = discard
 

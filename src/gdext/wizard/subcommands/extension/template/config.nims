@@ -6,7 +6,6 @@ import gdext/buildconf
 import std/strutils
 
 Extension.name = capitalizeAscii "$name"
-# Extension.version = (4, 3)
 # Extension.libdir = "$projectdir/lib"
 
 --path: src

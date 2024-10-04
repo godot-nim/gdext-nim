@@ -1,4 +1,3 @@
-import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/commandindex
 import gdext/core/builtinindex
@@ -232,8 +231,7 @@ proc clear*(self: Variant) =
     true, # PACKED_VECTOR2_ARRAY,
     true, # PACKED_VECTOR3_ARRAY,
     true, # PACKED_COLOR_ARRAY,
-    when Extension.version >= (4, 3):
-      true, # PACKED_VECTOR4_ARRAY,
+    true, # PACKED_VECTOR4_ARRAY,
   ]
 
   if unlikely(needs_deinit[self.variantType]):

@@ -1,4 +1,3 @@
-import gdext/buildconf
 import gdext/dirty/gdextensioninterface
 import gdext/core/builtinindex
 import gdext/core/commandindex
@@ -21,15 +20,8 @@ proc `$`*(s: String): string =
   discard interfaceStringToLatin1Chars(addr s, cstring result, length)
 proc `$`*(s: StringName): string = $gdstring s
 
-when Extension.version >= (4, 2):
-  proc stringName*(str: string): StringName =
-    interfaceStringNameNewWithLatin1Chars(addr result, cstring str, false)
-else:
-  proc stringName(s: String): StringName =
-    let args = [cast[pointer](addr s)]
-    newStringNameFromString(addr result, addr args[0])
-  proc stringName*(str: string): StringName =
-    stringName gdstring str
+proc stringName*(str: string): StringName =
+  interfaceStringNameNewWithLatin1Chars(addr result, cstring str, false)
 
 proc className*(o: ObjectPtr): string =
   var sn: StringName
