@@ -9,6 +9,7 @@ import submodules/filesystem/[
   ProjectRoot,
   Directory,
   NimSource,
+  Textfile,
 ]
 import submodules/wordropes
 import submodules/semanticstrings
@@ -64,6 +65,13 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
   # Apply above definitions physical with `generate`.
   layout (config.outdir/config.package).root:
     layout "gen".dir:
+      weave textfile "README.md":
+        weave margin:
+          "# gdext/gen"
+          "This directory will contain automatically generated files that do not need to be imported manually by the user."
+          "Newly created/modified files in this directory are cleared each time `nimble generate` is run."
+          "Manual editing of this directory is therefore not recommended."
+
       # [Global Enums]
       let globalenums = weave "globalenums".nim:
         weave margin:
@@ -155,6 +163,13 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
 
     # layout "classes".nim:
     layout "classes".dir:
+      weave textfile "README.md":
+        weave margin:
+          "# gdext/classes"
+          "This directory will contain automatically generated files that define individual class API."
+          "Newly created/modified files in this directory are cleared each time `nimble generate` is run."
+          "Manual editing of this directory is therefore not recommended."
+
       for base, sym in inheritanceDB.hierarchical:
         let class = classDB[sym]
         weave ($sym.convert(ModuleSym)).nim
