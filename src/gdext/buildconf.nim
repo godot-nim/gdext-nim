@@ -2,8 +2,6 @@ when not declared(switch):
   const
     Extension_name {.strdefine: "Extension.name".} = ""
     Extension_entrySymbol {.strdefine: "Extension.entrySymbol".} = "init_library"
-    Extension_versionMajor {.intdefine: "Extension.versionMajor".} = 4
-    Extension_versionMinor {.intdefine: "Extension.versionMinor".} = 3
     Extension_decimalPrecision {.strdefine: "Extension.decimalPrecision".} = "float"
 
     Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
@@ -14,7 +12,6 @@ when not declared(switch):
   type ExtensionObj* = object
     name*: string
     entrySymbol*: string
-    version*: tuple[major, minor: int]
     decimalPrecision*: string
   type AssistanceObj* = object
     checkEnv*: bool
@@ -26,7 +23,6 @@ when not declared(switch):
     Extension* = ExtensionObj(
       name: Extension_name,
       entrySymbol: Extension_entrySymbol,
-      version: (Extension_versionMajor, Extension_versionMinor),
       decimalPrecision: Extension_decimalPrecision,
     )
     Assistance* = AssistanceObj(
@@ -70,10 +66,6 @@ else:
     else:
       "debug"
 
-  proc `version=`*(_: typedesc[Extension]; version: tuple[major, minor: int]) =
-    switch("define", "Extension.versionMajor:" & $version.major)
-    switch("define", "Extension.versionMinor:" & $version.minor)
-
   proc `libdir=`*(_: typedesc[Extension]; path: string) =
     switch("outdir", path)
 
@@ -114,5 +106,3 @@ else:
     --passL: "-static-libgcc"
 
   Extension.libdir = "$projectdir/lib"/RunningSystem/Build
-
-  include gdext/core/versiondata

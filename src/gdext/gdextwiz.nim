@@ -4,7 +4,6 @@ import std/parseopt
 
 import gdext/wizard/sdk/opttools
 
-import gdext/wizard/subcommands/library
 import gdext/wizard/subcommands/extension
 import gdext/wizard/subcommands/iteration
 
@@ -17,14 +16,6 @@ Usage:
   gdextwiz [subcmd]
 
   subcmd:
-
-    # library
-    install
-      : Install all dependencies to develop Godot GDExtension.
-    uninstall
-      : Uninstall all dependencies that installed through gdextwiz.
-    upgrade
-      : Uninstall current implementation and re-install latest.
 
     # extension
     new-extension (<name>)
@@ -82,12 +73,6 @@ proc dispatch_subcmd(opt: var OptParser) =
       err_invalidOpt opt
     of cmdArgument:
       case opt.key.optnormalize
-      of "install":
-        dispatch_install(opt)
-      of "uninstall":
-        dispatch_uninstall(opt)
-      of "upgrade":
-        dispatch_upgrade(opt)
       of "build":
         dispatch_build(opt)
       of "buildall":

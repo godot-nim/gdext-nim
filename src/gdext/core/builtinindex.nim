@@ -102,69 +102,62 @@ type
   PackedStringArray* = PackedArray[String]
   PackedVector2Array* = PackedArray[Vector2]
   PackedVector3Array* = PackedArray[Vector3]
+  PackedVector4Array* = PackedArray[Vector4]
   PackedColorArray* = PackedArray[Color]
-
-when Extension.version >= (4, 3):
-  type
-    PackedVector4Array* = PackedArray[Vector4]
 
 template Item*(typ: typedesc[String]): typedesc = Rune
 template Item*(typ: typedesc[Array]): typedesc = Variant
 template Item*(typ: typedesc[Dictionary]): typedesc = Variant
 
-type `SomePackedArray < 4.3` =
-  PackedByteArray    |
-  PackedInt32Array   |
-  PackedInt64Array   |
-  PackedFloat32Array |
-  PackedFloat64Array |
-  PackedStringArray  |
-  PackedVector2Array |
-  PackedVector3Array |
-  PackedColorArray
-
-when Extension.version < (4, 3):
-  type SomePackedArray* = `SomePackedArray < 4.3`
-else:
-  type SomePackedArray* = `SomePackedArray < 4.3` | PackedVector4Array
-
-type SomeFloatVector* =
-  Vector2 |
-  Vector3 |
-  Vector4
-type SomeIntVector* =
-  Vector2i |
-  Vector3i |
-  Vector4i
-type SomeVector* =
-  SomeFloatVector |
-  SomeIntVector
-type SomePrimitives* =
-  Bool         |
-  Int          |
-  Float        |
-  SomeVector   |
-  Rect2        |
-  Rect2i       |
-  Transform2D  |
-  Plane        |
-  Quaternion   |
-  AABB         |
-  Basis        |
-  Transform3D  |
-  Projection   |
-  Color
-type SomeGodotUniques* =
-  String          |
-  StringName      |
-  NodePath        |
-  RID             |
-  Callable        |
-  Signal          |
-  Dictionary      |
-  Array           |
-  SomePackedArray
-type SomeBuiltins* = SomePrimitives|SomeGodotUniques
+type
+  SomePackedArray* =
+    PackedByteArray    |
+    PackedInt32Array   |
+    PackedInt64Array   |
+    PackedFloat32Array |
+    PackedFloat64Array |
+    PackedStringArray  |
+    PackedVector2Array |
+    PackedVector3Array |
+    PackedVector4Array |
+    PackedColorArray
+  SomeFloatVector* =
+    Vector2 |
+    Vector3 |
+    Vector4
+  SomeIntVector* =
+    Vector2i |
+    Vector3i |
+    Vector4i
+  SomeVector* =
+    SomeFloatVector |
+    SomeIntVector
+  SomePrimitives* =
+    Bool         |
+    Int          |
+    Float        |
+    SomeVector   |
+    Rect2        |
+    Rect2i       |
+    Transform2D  |
+    Plane        |
+    Quaternion   |
+    AABB         |
+    Basis        |
+    Transform3D  |
+    Projection   |
+    Color
+  SomeGodotUniques* =
+    String          |
+    StringName      |
+    NodePath        |
+    RID             |
+    Callable        |
+    Signal          |
+    Dictionary      |
+    Array           |
+    SomePackedArray
+  SomeBuiltins* = SomePrimitives|SomeGodotUniques
 
 var hook_copy: array[VariantType, PtrConstructor]
 var hook_destroy: array[VariantType, PtrDestructor]
@@ -216,10 +209,10 @@ proc `=destroy`*[T](val: PackedArray[T]) =
       hook_destroy[VariantTypePackedVector2Array](addr val)
     elif T is Vector3:
       hook_destroy[VariantTypePackedVector3Array](addr val)
+    elif T is Vector4:
+      hook_destroy[VariantTypePackedVector4Array](addr val)
     elif T is Color:
       hook_destroy[VariantTypePackedColorArray](addr val)
-    elif Extension.version >= (4, 3) and T is Vector4:
-      hook_destroy[VariantTypePackedVector4Array](addr val)
   except: discard
 
 proc `=dup`*(src: String): String =
@@ -265,10 +258,10 @@ proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
     hook_copy[VariantTypePackedVector2Array](addr result, addr argPtr)
   elif T is Vector3:
     hook_copy[VariantTypePackedVector3Array](addr result, addr argPtr)
+  elif T is Vector4:
+    hook_copy[VariantTypePackedVector4Array](addr result, addr argPtr)
   elif T is Color:
     hook_copy[VariantTypePackedColorArray](addr result, addr argPtr)
-  elif Extension.version >= (4, 3) and T is Vector4:
-    hook_copy[VariantTypePackedVector4Array](addr result, addr argPtr)
 
 
 proc `=copy`*(dst: var String; src: String) =
@@ -346,9 +339,8 @@ proc load* =
       VariantTypePackedStringArray,
       VariantTypePackedVector2Array,
       VariantTypePackedVector3Array,
+      VariantTypePackedVector4Array,
       VariantTypePackedColorArray,
-      when Extension.version >= (4, 3):
-        VariantTypePackedVector4Array,
     ]
     destrs = [
       VariantTypeString,
@@ -366,9 +358,8 @@ proc load* =
       VariantTypePackedStringArray,
       VariantTypePackedVector2Array,
       VariantTypePackedVector3Array,
+      VariantTypePackedVector4Array,
       VariantTypePackedColorArray,
-      when Extension.version >= (4, 3):
-        VariantTypePackedVector4Array,
     ]
 
   for variantType in constrs:

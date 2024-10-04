@@ -34,7 +34,7 @@ type PropertyStage = enum
 
 var propertyStage {.compileTime.}: PropertyStage = PropertyStage.property
 
-import gdext/surface/[globalenums, builtinclasses, classindex]
+import gdext/gen/[globalenums, builtinclasses, classindex]
 
 proc register_property_internal*(
       info: PropertyInfo;

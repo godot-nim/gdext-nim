@@ -32,31 +32,19 @@ See [wiki][2] to get more detail.
 ### install
 
 ```
-nimble install https://github.com/godot-nim/gdextgen@#4.3
+nimble install https://github.com/godot-nim/gdext-nim
 ```
 
 ### uninstall
 
 ```
-gdextwiz uninstall
-```
-
-#### script (for windows)
-
-```
-nimble uninstall gdext gdextgen
+nimble uninstall gdext
 ```
 
 ### upgrade
 
 ```
-gdextwiz upgrade
-```
-
-#### script (for windows)
-
-```
-nimble uninstall gdext gdextgen && nimble install https://github.com/godot-nim/gdextgen
+nimble uninstall gdext && nimble install https://github.com/godot-nim/gdext-nim
 ```
 
 ## OS supported
@@ -67,19 +55,15 @@ nimble uninstall gdext gdextgen && nimble install https://github.com/godot-nim/g
 
 ## Engine supported
 
-- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.1.0 or higher
+- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.3.0
 - [x] [Redot-Engine/redot-engine](https://github.com/Redot-Engine/redot-engine) master
-  
+
 ## Dependencies
 
 * [nim-lang/nim](https://github.com/nim-lang/nim) 2.0.0 or higher
   #### Macos
   Use Nim installed via Homebrew, not choosenim.
   Due to the execution environment of Godot itself, a native AArch64/ARM64 build of Nim is required, and that choosenim installs a x86_64 build emulated via Rosetta.
-
-* [godot-nim/gdextgen](https://github.com/godot-nim/gdextgen)
-
-  Choose a branch that has same name of your godot version.
 
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
