@@ -10,7 +10,7 @@ import gdext/core/exceptions
 import gdext/core/userclass/contracts
 import gdext/gen/utilityfuncs
 import gdext/surface/userclass
-import gdext/classes/gdextensionmain
+import gdext/extclasses/gdextensionmain
 import gdext/buildconf
 
 

@@ -24,8 +24,9 @@ export utilityfuncs except print
 import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions ]
 export                 common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions
 
-import gdext/classes/[gdengine, gdextensionmain]
+import gdext/classes/[gdengine]
 export gdengine.isEditorHint
+import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
 proc print*(args: varargs[Variant, variant]) =
