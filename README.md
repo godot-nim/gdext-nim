@@ -56,7 +56,6 @@ nimble uninstall gdext && nimble install https://github.com/godot-nim/gdext-nim
 ## Engine supported
 
 - [x] [godotengine/godot](https://github.com/godotengine/godot) 4.3.0
-- [x] [Redot-Engine/redot-engine](https://github.com/Redot-Engine/redot-engine) master
 
 ## Dependencies
 
