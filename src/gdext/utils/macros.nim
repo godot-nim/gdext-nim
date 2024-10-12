@@ -60,13 +60,18 @@ func ofInherit*(node: NimNode): NimNode =
 func typeSym*(node: NimNode): NimNode =
   case node.kind
   of nnkTypeDef:
-    node[0]
+    node[0].typeSym
   of nnkPragmaExpr:
     node[0].typeSym
   of nnkOfInherit:
     node[0]
   of nnkSym:
     node
+  of nnkPostfix:
+    if node[0].eqIdent "*":
+      node[1]
+    else:
+      error lisprepr node, node
   else:
     error lisprepr node, node
     nil
