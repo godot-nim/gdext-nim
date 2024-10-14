@@ -2,7 +2,7 @@
 
 version       = "0.2.1"
 author        = "godot-nim, la.panon."
-description   = "core library of nim for gdextension. Do not stands alone."
+description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
 srcDir        = "src"
 installExt   = @["nim"]
