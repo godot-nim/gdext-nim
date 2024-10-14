@@ -1,5 +1,3 @@
-import std/[ hashes, tables ]
-
 import std/[ macros ]
 export       macros
 
@@ -17,8 +15,6 @@ func hasNoReturn*(node: NimNode): bool =
 
 func hasReturn*(node: NimNode): bool =
   not node.hasNoReturn
-
-func hash*(node: NimNode): Hash = hash node.signatureHash
 
 func typeDef*(typ: NimNode): NimNode =
   case typ.typeKind
@@ -60,13 +56,18 @@ func ofInherit*(node: NimNode): NimNode =
 func typeSym*(node: NimNode): NimNode =
   case node.kind
   of nnkTypeDef:
-    node[0]
+    node[0].typeSym
   of nnkPragmaExpr:
     node[0].typeSym
   of nnkOfInherit:
     node[0]
   of nnkSym:
     node
+  of nnkPostfix:
+    if node[0].eqIdent "*":
+      node[1]
+    else:
+      error lisprepr node, node
   else:
     error lisprepr node, node
     nil
@@ -132,15 +133,4 @@ func isVarargs*(node: NimNode): bool =
   else:
     false
 
-proc super*(typedes: NimNode): NimNode =
-  var
-    cache {.global.}: Table[NimNode, NimNode]
-  let
-    typedef = typedes.typeDef
-    typesym = typedef.typeSym
-
-  if typesym in cache:
-    return cache[typesym]
-
-  result = typedef.objectTy.ofInherit.typeSym
-  cache[typesym] = result
+proc super*(typedes: NimNode): NimNode = typedes.typeDef.objectTy.ofInherit.typeSym

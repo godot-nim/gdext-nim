@@ -79,7 +79,7 @@ else:
     # multiple extensions across the board, each time an extension is built,
     # the cache is overwritten and the cc is performed from scratch,
     # resulting in slower build speeds.
-    switch("nimcache", "$nimcache"/RunningSystem/Build/name)
+    switch("nimcache", nimCacheDir()/RunningSystem/Build/name)
 
   # GDExtension is loaded into the engine as a DLL.
   --app: lib

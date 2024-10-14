@@ -81,7 +81,7 @@ proc unreference_func(p_instance: pointer) {.gdcall.} =
     echo SYNC.UNREFERENCE_BIND, class.control.name, "(", $count & " DOWN)"
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
-  cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
+  cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
 
 proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo3 =
   ClassCreationInfo3(
