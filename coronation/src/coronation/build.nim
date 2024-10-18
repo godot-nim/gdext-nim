@@ -162,7 +162,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               &"template EngineClass*(_: typedesc[{sym}]): typedesc = {sym}"
 
     # layout "classes".nim:
-    layout "classes".dir:
+    let classes = layout "classes".dir:
       weave textfile "README.md":
         weave margin:
           "# gdext/classes"
@@ -185,6 +185,10 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
             weave_properties class
             weave_vmap(class)
             weave_signals(class)
+    let trueClasses = classes.subitems.values.toSeq.filterIt(it of NimSource.NimSource).mapIt(NimSource it)
+    "classes".nim
+        .import(trueClasses)
+        .export(trueClasses)
 
 proc run*(api: JsonAPI; config: BuildConfig) =
 
