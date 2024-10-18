@@ -107,11 +107,11 @@ proc createTween*(self: SceneTree): gdref Tween =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref Tween)
 
-proc getProcessedTweens*(self: SceneTree): TypedArray[gdref Tween] =
+proc getProcessedTweens*(self: SceneTree): TypedArray[Tween] =
   expandMethodBind(className SceneTree, "get_processed_tweens", 2915620761)
-  var ret: encoded TypedArray[gdref Tween]
+  var ret: encoded TypedArray[Tween]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(TypedArray[gdref Tween])
+  (addr ret).decode_result(TypedArray[Tween])
 
 proc getNodeCount*(self: SceneTree): int32 =
   expandMethodBind(className SceneTree, "get_node_count", 3905245786)

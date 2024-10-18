@@ -4,16 +4,16 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setFallbacks*(self: Font; fallbacks: TypedArray[gdref Font]): void =
+proc setFallbacks*(self: Font; fallbacks: TypedArray[Font]): void =
   expandMethodBind(className Font, "set_fallbacks", 381264803)
   var `?param` = [getPtr fallbacks]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFallbacks*(self: Font): TypedArray[gdref Font] =
+proc getFallbacks*(self: Font): TypedArray[Font] =
   expandMethodBind(className Font, "get_fallbacks", 3995934104)
-  var ret: encoded TypedArray[gdref Font]
+  var ret: encoded TypedArray[Font]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(TypedArray[gdref Font])
+  (addr ret).decode_result(TypedArray[Font])
 
 proc findVariation*(self: Font; variationCoordinates: Dictionary; faceIndex: int32 = 0; strength: Float = 0.0; transform: Transform2D = transform2D(); spacingTop: int32 = 0; spacingBottom: int32 = 0; spacingSpace: int32 = 0; spacingGlyph: int32 = 0; baselineOffset: Float = 0.0): Rid =
   expandMethodBind(className Font, "find_variation", 2553855095)

@@ -61,12 +61,12 @@ proc actionEraseEvents*(self: InputMap; action: StringName): void =
   var `?param` = [getPtr action]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc actionGetEvents*(self: InputMap; action: StringName): TypedArray[gdref InputEvent] =
+proc actionGetEvents*(self: InputMap; action: StringName): TypedArray[InputEvent] =
   expandMethodBind(className InputMap, "action_get_events", 689397652)
   var `?param` = [getPtr action]
-  var ret: encoded TypedArray[gdref InputEvent]
+  var ret: encoded TypedArray[InputEvent]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(TypedArray[gdref InputEvent])
+  (addr ret).decode_result(TypedArray[InputEvent])
 
 proc eventIsAction*(self: InputMap; event: gdref InputEvent; action: StringName; exactMatch: bool = false): bool =
   expandMethodBind(className InputMap, "event_is_action", 3193353650)

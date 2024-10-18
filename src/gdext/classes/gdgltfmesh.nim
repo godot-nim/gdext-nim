@@ -37,13 +37,13 @@ proc setBlendWeights*(self: GltfMesh; blendWeights: PackedFloat32Array): void =
   var `?param` = [getPtr blendWeights]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getInstanceMaterials*(self: GltfMesh): TypedArray[gdref Material] =
+proc getInstanceMaterials*(self: GltfMesh): TypedArray[Material] =
   expandMethodBind(className GltfMesh, "get_instance_materials", 2915620761)
-  var ret: encoded TypedArray[gdref Material]
+  var ret: encoded TypedArray[Material]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(TypedArray[gdref Material])
+  (addr ret).decode_result(TypedArray[Material])
 
-proc setInstanceMaterials*(self: GltfMesh; instanceMaterials: TypedArray[gdref Material]): void =
+proc setInstanceMaterials*(self: GltfMesh; instanceMaterials: TypedArray[Material]): void =
   expandMethodBind(className GltfMesh, "set_instance_materials", 381264803)
   var `?param` = [getPtr instanceMaterials]
   methodbind.ptrcall(self, addr `?param`[0])

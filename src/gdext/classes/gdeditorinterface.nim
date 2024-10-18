@@ -45,12 +45,12 @@ proc getEditorSettings*(self: EditorInterface): gdref EditorSettings =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref EditorSettings)
 
-proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[gdref Mesh]; previewSize: int32): TypedArray[gdref Texture2D] =
+proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[Mesh]; previewSize: int32): TypedArray[Texture2D] =
   expandMethodBind(className EditorInterface, "make_mesh_previews", 878078554)
   var `?param` = [getPtr meshes, getPtr previewSize]
-  var ret: encoded TypedArray[gdref Texture2D]
+  var ret: encoded TypedArray[Texture2D]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Texture2D])
+  (addr ret).decode_result(TypedArray[Texture2D])
 
 proc setPluginEnabled*(self: EditorInterface; plugin: String; enabled: bool): void =
   expandMethodBind(className EditorInterface, "set_plugin_enabled", 2678287736)
