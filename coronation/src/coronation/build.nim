@@ -173,8 +173,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
       for base, sym in inheritanceDB.hierarchical:
         let class = classDB[sym]
         weave ($sym.convert(ModuleSym)).nim
-            .import(corona_classes)
-            .import(globalenums, localenums, bc_constructors, classindex):
+            .import(corona_classes):
           weave margin:
             if sym != TypeSym.Object:
               let mdlbase = base.convert(ModuleSym)
