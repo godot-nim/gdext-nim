@@ -156,10 +156,13 @@ proc weave(entry: ClassMethodVarargsTypedEntry): Cloth =
   let
     vararg = entry.args[^1]
     fixed_args = entry.args[0..^2].mapIt("variant " & $it.name).join(", ")
+    args =
+      if fixed_args.len == 0: $vararg.name
+      else: fixed_args & ", " & $vararg.name
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
-      &"{entry.name}({entry.self.name}, {fixed_args}, {vararg.name})"
+      &"{entry.name}({entry.self.name}, {args})"
 
 proc weave(entry: ClassMethodVirtualEntry): Cloth =
   weave text:

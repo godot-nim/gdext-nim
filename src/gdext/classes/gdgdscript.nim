@@ -10,7 +10,7 @@ proc new*(self: GdScript; args: varargs[Variant]): Variant =
   `?param`.add []
   methodbind.call(self, `?param`, args).get(Variant)
 template new*(self: GdScript; args: varargs[Variant]): Variant =
-  new(self, , args)
+  new(self, args)
 
 const GdScript_vmap =
   Script.vmap.concat initTable[string, string]()
