@@ -1,12 +1,12 @@
 {.warning[Deprecated]:off.}
 import gdext/dirty/gdextensioninterface
 
-type Environment* = ref object
+type ExtentEnvironment* = ref object
   getProcAddress*: InterfaceGetProcAddress
   library*: ClassLibraryPtr
   version*: GodotVersion
 
-var environment*: Environment
+var environment*: ExtentEnvironment
 
 proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
   new environment
