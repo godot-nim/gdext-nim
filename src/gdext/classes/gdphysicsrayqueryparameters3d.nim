@@ -1,14 +1,10 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc create*(_: PhysicsRayQueryParameters3D; `from`: Vector3; to: Vector3; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[Rid] = typedArray[Array[RID]([])]()): gdref PhysicsRayQueryParameters3D =
+proc create*(_: PhysicsRayQueryParameters3D; `from`: Vector3; to: Vector3; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[Rid] = TypedArray[Rid](gdarray())): gdref PhysicsRayQueryParameters3D =
   expandMethodBind(className PhysicsRayQueryParameters3D, "create", 3110599579)
   var `?param` = [getPtr `from`, getPtr to, getPtr collisionMask, getPtr exclude]
   var ret: encoded gdref PhysicsRayQueryParameters3D
@@ -104,7 +100,7 @@ proc isHitBackFacesEnabled*(self: PhysicsRayQueryParameters3D): bool =
   (addr ret).decode_result(bool)
 
 template `from`*(self: PhysicsRayQueryParameters3D): untyped = self.getFrom()
-template ``from`=`*(self: PhysicsRayQueryParameters3D; value) = self.setFrom(value)
+template `from=`*(self: PhysicsRayQueryParameters3D; value) = self.setFrom(value)
 
 template to*(self: PhysicsRayQueryParameters3D): untyped = self.getTo()
 template `to=`*(self: PhysicsRayQueryParameters3D; value) = self.setTo(value)

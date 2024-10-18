@@ -17,11 +17,11 @@ type
   ParamTypeAttr* = enum
     ptaNake
     ptaSet
-    ptaTypedArray
   ParamInfo* = object
     isMutable*: bool
     isVarargs*: bool
     attribute*: ParamTypeAttr
+    metaType*: TypeSym
     ptrdepth*: Natural
 
 type
@@ -51,21 +51,28 @@ method name*(param: RenderableSelfArgument): VariableSym =
 # Default-Value Calculation #
 # ===========================
 
-proc `type`*(param: RenderableParamBase): string =
-  let name = "ptr ".repeat(param.info.ptrdepth) & $param.typeSym
+proc dbModify*(typeSym: TypeSym): string =
   try:
-    let class = classDB[param.typeSym]
+    let class = classDB[typeSym]
     if class.json.isRefCounted:
-      return "gdref " & name
+      "gdref " & $typeSym
+    else: $typeSym
+  except:
+    $typeSym
 
-  except: discard
+proc `type`*(param: RenderableParamBase): string =
+  var name = "ptr ".repeat(param.info.ptrdepth)
+  name.add dbModify param.typeSym
+  if param.typeSym == TypeSym"TypedArray":
+    name.add "["
+    name.add $param.info.metaType
+    name.add "]"
+
   result = case param.info.attribute
   of ptaNake:
     name
   of ptaSet:
     &"set[{name}]"
-  of ptaTypedArray:
-    &"TypedArray[{name}]"
 
   if param.info.ismutable:
     return "var " & result
@@ -163,6 +170,15 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
       else:
         value
 
+    of TypeSym"TypedArray":
+      case value
+      of "[]":
+        &"TypedArray[{arg.info.metaType}](gdarray())"
+      elif value.startsWith "Array":
+        "TypedArray[" & $value.split({'[', ']'})[1].scan.convert(TypeSym) & "](gdarray())"
+      else:
+        value
+
     of TypeSym"Dictionary":
       case value
       of "{}":
@@ -204,8 +220,6 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
   default = case arg.info.attribute
   of ptaNake:
     default
-  of ptaTypedArray:
-    "typedArray[" & default & "]()"
   else:
     default
 
@@ -223,11 +237,15 @@ proc preconvert*(param: RenderableParamBase; basetype: Option[string]) =
     .multireplace(("const ", ""), ("*", ""))
   while basetype[^1] == ' ': basetype = basetype[0..^2]
 
-  for (key, attr) in {"enum::": ptaNake, "typedarray::": ptaTypedArray, "bitfield::":ptaSet}:
+  for (key, attr) in {"enum::": ptaNake, "bitfield::":ptaSet}:
     if basetype.startsWith key:
       param.info.attribute = attr
       basetype = basetype[key.len..^1]
       break
+  if basetype.startsWith "typedarray::":
+    param.info.metaType = basetype["typedarray::".len..^1].scan.convert(TypeSym)
+    basetype = "TypedArray"
+
   if basetype.find("void") != -1:
     basetype = "pointer"
     dec param.info.ptrdepth

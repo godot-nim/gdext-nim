@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
@@ -35,12 +31,12 @@ proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = typedArray[[]]()): void =
+proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
   var `?param` = [getPtr bones]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = typedArray[[]]()): void =
+proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
   var `?param` = [getPtr bones]
   methodbind.ptrcall(self, addr `?param`[0])

@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
@@ -225,11 +221,11 @@ proc addGizmo*(self: Node3D; gizmo: gdref Node3DGizmo): void =
   var `?param` = [getPtr gizmo]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getGizmos*(self: Node3D): gdref Node3DGizmo =
+proc getGizmos*(self: Node3D): TypedArray[Node3DGizmo] =
   expandMethodBind(className Node3D, "get_gizmos", 3995934104)
-  var ret: encoded gdref Node3DGizmo
+  var ret: encoded TypedArray[Node3DGizmo]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref Node3DGizmo)
+  (addr ret).decode_result(TypedArray[Node3DGizmo])
 
 proc clearGizmos*(self: Node3D): void =
   expandMethodBind(className Node3D, "clear_gizmos", 3218959716)

@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdscript; export gdscript
@@ -14,7 +10,7 @@ proc new*(self: GdScript; args: varargs[Variant]): Variant =
   `?param`.add []
   methodbind.call(self, `?param`, args).get(Variant)
 template new*(self: GdScript; args: varargs[Variant]): Variant =
-  new(self, , args)
+  new(self, args)
 
 const GdScript_vmap =
   Script.vmap.concat initTable[string, string]()

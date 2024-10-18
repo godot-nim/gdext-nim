@@ -162,7 +162,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               &"template EngineClass*(_: typedesc[{sym}]): typedesc = {sym}"
 
     # layout "classes".nim:
-    layout "classes".dir:
+    let classes = layout "classes".dir:
       weave textfile "README.md":
         weave margin:
           "# gdext/classes"
@@ -173,8 +173,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
       for base, sym in inheritanceDB.hierarchical:
         let class = classDB[sym]
         weave ($sym.convert(ModuleSym)).nim
-            .import(corona_classes)
-            .import(globalenums, localenums, bc_constructors, classindex):
+            .import(corona_classes):
           weave margin:
             if sym != TypeSym.Object:
               let mdlbase = base.convert(ModuleSym)
@@ -185,6 +184,10 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
             weave_properties class
             weave_vmap(class)
             weave_signals(class)
+    let trueClasses = classes.subitems.values.toSeq.filterIt(it of NimSource.NimSource).mapIt(NimSource it)
+    "classes".nim
+        .import(trueClasses)
+        .export(trueClasses)
 
 proc run*(api: JsonAPI; config: BuildConfig) =
 
@@ -193,7 +196,7 @@ proc run*(api: JsonAPI; config: BuildConfig) =
 
   let project = project(config, api)
 
-  echo:
-    weave Prefix(prefix: "Dump: "):
-      dumptree project
+  # echo:
+  #   weave Prefix(prefix: "Dump: "):
+  #     dumptree project
   generate project

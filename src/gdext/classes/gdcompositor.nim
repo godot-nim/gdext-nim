@@ -1,23 +1,19 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setCompositorEffects*(self: Compositor; compositorEffects: gdref CompositorEffect): void =
+proc setCompositorEffects*(self: Compositor; compositorEffects: TypedArray[CompositorEffect]): void =
   expandMethodBind(className Compositor, "set_compositor_effects", 381264803)
   var `?param` = [getPtr compositorEffects]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCompositorEffects*(self: Compositor): gdref CompositorEffect =
+proc getCompositorEffects*(self: Compositor): TypedArray[CompositorEffect] =
   expandMethodBind(className Compositor, "get_compositor_effects", 3995934104)
-  var ret: encoded gdref CompositorEffect
+  var ret: encoded TypedArray[CompositorEffect]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref CompositorEffect)
+  (addr ret).decode_result(TypedArray[CompositorEffect])
 
 template compositorEffects*(self: Compositor): untyped = self.getCompositorEffects()
 template `compositorEffects=`*(self: Compositor; value) = self.setCompositorEffects(value)

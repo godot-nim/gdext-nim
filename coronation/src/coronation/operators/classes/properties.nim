@@ -16,4 +16,4 @@ proc weave_properties*(class: Class): Cloth =
         let name = prop.name.scan.convert(ProcSym)
         &"template {name}*(self: {class.typesym}): untyped = self.{prop.getter.scan.convert(ProcSym)}({index_get})"
         if prop.setter.isSome:
-          &"template `{name}=`*(self: {class.typesym}; value) = self.{prop.setter.get.scan.convert(ProcSym)}({index_set}value)"
+          &"template `{name.dropQuote}=`*(self: {class.typesym}; value) = self.{prop.setter.get.scan.convert(ProcSym)}({index_set}value)"

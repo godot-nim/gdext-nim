@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdpanelcontainer; export gdpanelcontainer
@@ -41,11 +37,11 @@ proc getCurrentScript*(self: ScriptEditor): gdref Script =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref Script)
 
-proc getOpenScripts*(self: ScriptEditor): gdref Script =
+proc getOpenScripts*(self: ScriptEditor): TypedArray[Script] =
   expandMethodBind(className ScriptEditor, "get_open_scripts", 3995934104)
-  var ret: encoded gdref Script
+  var ret: encoded TypedArray[Script]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref Script)
+  (addr ret).decode_result(TypedArray[Script])
 
 proc openScriptCreateDialog*(self: ScriptEditor; baseName: String; basePath: String): void =
   expandMethodBind(className ScriptEditor, "open_script_create_dialog", 3186203200)

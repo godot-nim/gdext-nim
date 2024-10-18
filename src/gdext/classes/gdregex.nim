@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
@@ -33,12 +29,12 @@ proc search*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1)
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref RegExMatch)
 
-proc searchAll*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1): gdref RegExMatch =
+proc searchAll*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1): TypedArray[RegExMatch] =
   expandMethodBind(className RegEx, "search_all", 849021363)
   var `?param` = [getPtr subject, getPtr offset, getPtr `end`]
-  var ret: encoded gdref RegExMatch
+  var ret: encoded TypedArray[RegExMatch]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref RegExMatch)
+  (addr ret).decode_result(TypedArray[RegExMatch])
 
 proc sub*(self: RegEx; subject: String; replacement: String; all: bool = false; offset: int32 = 0; `end`: int32 = -1): String =
   expandMethodBind(className RegEx, "sub", 54019702)

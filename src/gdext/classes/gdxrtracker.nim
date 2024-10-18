@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
@@ -42,7 +38,7 @@ proc setTrackerDesc*(self: XrTracker; description: String): void =
   methodbind.ptrcall(self, addr `?param`[0])
 
 template `type`*(self: XrTracker): untyped = self.getTrackerType()
-template ``type`=`*(self: XrTracker; value) = self.setTrackerType(value)
+template `type=`*(self: XrTracker; value) = self.setTrackerType(value)
 
 template name*(self: XrTracker): untyped = self.getTrackerName()
 template `name=`*(self: XrTracker; value) = self.setTrackerName(value)

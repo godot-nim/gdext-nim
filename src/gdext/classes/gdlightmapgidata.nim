@@ -1,23 +1,19 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setLightmapTextures*(self: LightmapGiData; lightTextures: gdref TextureLayered): void =
+proc setLightmapTextures*(self: LightmapGiData; lightTextures: TypedArray[TextureLayered]): void =
   expandMethodBind(className LightmapGiData, "set_lightmap_textures", 381264803)
   var `?param` = [getPtr lightTextures]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getLightmapTextures*(self: LightmapGiData): gdref TextureLayered =
+proc getLightmapTextures*(self: LightmapGiData): TypedArray[TextureLayered] =
   expandMethodBind(className LightmapGiData, "get_lightmap_textures", 3995934104)
-  var ret: encoded gdref TextureLayered
+  var ret: encoded TypedArray[TextureLayered]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref TextureLayered)
+  (addr ret).decode_result(TypedArray[TextureLayered])
 
 proc setUsesSphericalHarmonics*(self: LightmapGiData; usesSphericalHarmonics: bool): void =
   expandMethodBind(className LightmapGiData, "set_uses_spherical_harmonics", 2586408642)

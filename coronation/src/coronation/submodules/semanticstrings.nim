@@ -2,6 +2,7 @@ import submodules/wordropes
 
 import std/hashes
 import std/strutils
+import std/sequtils
 
 template gensem(name): untyped =
   type name* = distinct string
@@ -16,6 +17,8 @@ gensem NormalizedProcSym
 gensem VariantType
 gensem ContainerKey
 gensem ModuleSym
+
+proc dropQuote*(sym: ProcSym): string = ($sym).replace("`", "")
 
 proc typefy*(sym: VariableSym): TypeSym =
   TypeSym capitalizeAscii string sym
@@ -60,15 +63,8 @@ proc escapeVariable*(w: string): string =
         result = quoted w
         break
 
-proc convert*(ss: WordRope; _: typedesc[TypeSym]): TypeSym =
-  var str = newStringOfCap(ss.total)
-  for i, w in ss.words:
-    case string(w)
-    of "t": discard
-    of ".": str.add "_"
-    of "double": str.add "float64"
-    else: str.add w.pascal
-  str = case str
+proc typeConv(str: string): string =
+  case str
   of "Bool": "bool"
   of "Void": "void"
   of "Pointer": "pointer"
@@ -77,7 +73,15 @@ proc convert*(ss: WordRope; _: typedesc[TypeSym]): TypeSym =
   of "Float32", "Float64": str.replace("Float", "float")
   of "Thread": "GodotThread" # will conflicts to system.Thread
   else: str
-  TypeSym str
+proc convert*(ss: WordRope; _: typedesc[TypeSym]): TypeSym =
+  var newwords: seq[string] = newSeq[string](1)
+  for i, w in ss.words:
+    case string(w)
+    of "t": discard
+    of ".": newwords.add ""
+    of "double": newwords[^1].add "float64"
+    else: newwords[^1].add w.pascal
+  TypeSym newWords.mapIt(it.typeConv).join("_")
 
 proc convert*(ss: WordRope; _: typedesc[VariableSym]): VariableSym =
   var str = newStringOfCap(ss.total)

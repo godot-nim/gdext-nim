@@ -1,9 +1,5 @@
 {.warning[UnusedImport]:off.}
 
-import ./../gen/builtinclasses/constructors
-import ./../gen/classindex
-import ./../gen/globalenums
-import ./../gen/localenums
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
@@ -102,11 +98,11 @@ proc getLocalPort*(self: ENetConnection): int32 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc getPeers*(self: ENetConnection): gdref ENetPacketPeer =
+proc getPeers*(self: ENetConnection): TypedArray[ENetPacketPeer] =
   expandMethodBind(className ENetConnection, "get_peers", 2915620761)
-  var ret: encoded gdref ENetPacketPeer
+  var ret: encoded TypedArray[ENetPacketPeer]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref ENetPacketPeer)
+  (addr ret).decode_result(TypedArray[ENetPacketPeer])
 
 proc socketSend*(self: ENetConnection; destinationAddress: String; destinationPort: int32; packet: PackedByteArray): void =
   expandMethodBind(className ENetConnection, "socket_send", 1100646812)
