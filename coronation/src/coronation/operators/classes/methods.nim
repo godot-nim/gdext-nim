@@ -178,7 +178,7 @@ proc weave_native(entry: ClassMethodVirtualEntry): Cloth =
         ")"
       else:
         ").encode(r_ret)"
-    &"template {entry.name}_bind*(_: typedesc[{entry.self.typesym}]): ClassCallVirtual = {entry.name}"
+    &"template {entry.name.dropQuote}_bind*(_: typedesc[{entry.self.typesym}]): ClassCallVirtual = {entry.name}"
 
 proc convert*(json: JsonClassMethod; caller: TypeSym): RenderableClassMethod =
   let self_type = RenderableSelfArgument(

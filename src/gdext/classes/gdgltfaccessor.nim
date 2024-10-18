@@ -188,7 +188,7 @@ template accessorType*(self: GltfAccessor): untyped = self.getAccessorType()
 template `accessorType=`*(self: GltfAccessor; value) = self.setAccessorType(value)
 
 template `type`*(self: GltfAccessor): untyped = self.getType()
-template ``type`=`*(self: GltfAccessor; value) = self.setType(value)
+template `type=`*(self: GltfAccessor; value) = self.setType(value)
 
 template min*(self: GltfAccessor): untyped = self.getMin()
 template `min=`*(self: GltfAccessor; value) = self.setMin(value)

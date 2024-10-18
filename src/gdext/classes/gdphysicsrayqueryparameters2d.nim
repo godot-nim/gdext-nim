@@ -89,7 +89,7 @@ proc isHitFromInsideEnabled*(self: PhysicsRayQueryParameters2D): bool =
   (addr ret).decode_result(bool)
 
 template `from`*(self: PhysicsRayQueryParameters2D): untyped = self.getFrom()
-template ``from`=`*(self: PhysicsRayQueryParameters2D; value) = self.setFrom(value)
+template `from=`*(self: PhysicsRayQueryParameters2D; value) = self.setFrom(value)
 
 template to*(self: PhysicsRayQueryParameters2D): untyped = self.getTo()
 template `to=`*(self: PhysicsRayQueryParameters2D; value) = self.setTo(value)

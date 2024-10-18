@@ -17,6 +17,8 @@ gensem VariantType
 gensem ContainerKey
 gensem ModuleSym
 
+proc dropQuote*(sym: ProcSym): string = ($sym).replace("`", "")
+
 proc typefy*(sym: VariableSym): TypeSym =
   TypeSym capitalizeAscii string sym
 

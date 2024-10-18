@@ -105,8 +105,8 @@ proc sync_methodDef*(body: Nimnode): NimNode =
   if $selfT in invoked:
     error "Registration is not reflected. Define it before calling proc register " & $selfT & ".", methoddef
 
-  let methodstr = $methoddef[0].basename
-  let methodstrlit = newlit methodstr.nimIdentNormalize.replace("`", "")
+  let methodstr = methoddef[0].basename.repr.replace("`", "")
+  let methodstrlit = newlit methodstr.nimIdentNormalize
   let methodname = ident methodstr & "_bind"
   let procsym = ident methodstr
 

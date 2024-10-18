@@ -62,7 +62,7 @@ template getOptionVisibility_bind*(_: typedesc[EditorImportPlugin]): ClassCallVi
 method `import`*(self: EditorImportPlugin; sourceFile: String; savePath: String; options: Dictionary; platformVariants: TypedArray[String]; genFiles: TypedArray[String]): Error {.base.} = (discard)
 proc `import`(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[EditorImportPlugin](p_instance).`import`(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(Dictionary), p_args[3].decode(TypedArray[String]), p_args[4].decode(TypedArray[String])).encode(r_ret)
-template `import`_bind*(_: typedesc[EditorImportPlugin]): ClassCallVirtual = `import`
+template import_bind*(_: typedesc[EditorImportPlugin]): ClassCallVirtual = `import`
 
 method canImportThreaded*(self: EditorImportPlugin): bool {.base.} = (discard)
 proc canImportThreaded(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

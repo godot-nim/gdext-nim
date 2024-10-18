@@ -38,7 +38,7 @@ proc getCondition*(self: VisualShaderNodeCompare): VisualShaderNodeCompare_Condi
   (addr ret).decode_result(VisualShaderNodeCompare_Condition)
 
 template `type`*(self: VisualShaderNodeCompare): untyped = self.getComparisonType()
-template ``type`=`*(self: VisualShaderNodeCompare; value) = self.setComparisonType(value)
+template `type=`*(self: VisualShaderNodeCompare; value) = self.setComparisonType(value)
 
 template function*(self: VisualShaderNodeCompare): untyped = self.getFunction()
 template `function=`*(self: VisualShaderNodeCompare; value) = self.setFunction(value)

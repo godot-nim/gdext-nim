@@ -82,7 +82,7 @@ proc setRecoveryAsCollisionEnabled*(self: PhysicsTestMotionParameters2D; enabled
   methodbind.ptrcall(self, addr `?param`[0])
 
 template `from`*(self: PhysicsTestMotionParameters2D): untyped = self.getFrom()
-template ``from`=`*(self: PhysicsTestMotionParameters2D; value) = self.setFrom(value)
+template `from=`*(self: PhysicsTestMotionParameters2D; value) = self.setFrom(value)
 
 template motion*(self: PhysicsTestMotionParameters2D): untyped = self.getMotion()
 template `motion=`*(self: PhysicsTestMotionParameters2D; value) = self.setMotion(value)
