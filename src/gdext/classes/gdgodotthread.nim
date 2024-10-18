@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc start*(self: GodotThread; callable: Callable; priority: Thread_Priority = 1): Error =
+proc start*(self: GodotThread; callable: Callable; priority: GodotThread_Priority = priorityNormal): Error =
   expandMethodBind(className GodotThread, "start", 1327203254)
   var `?param` = [getPtr callable, getPtr priority]
   var ret: encoded Error
