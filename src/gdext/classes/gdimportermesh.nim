@@ -37,7 +37,7 @@ proc getBlendShapeMode*(self: ImporterMesh): Mesh_BlendShapeMode =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Mesh_BlendShapeMode)
 
-proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = typedArray[Array[Array]([])](); lods: Dictionary = dictionary(); material: gdref Material = default gdref Material; name: String = gdstring""; flags: uint64 = 0): void =
+proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = TypedArray[Array](gdarray()); lods: Dictionary = dictionary(); material: gdref Material = default gdref Material; name: String = gdstring""; flags: uint64 = 0): void =
   expandMethodBind(className ImporterMesh, "add_surface", 1740448849)
   var `?param` = [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr material, getPtr name, getPtr flags]
   methodbind.ptrcall(self, addr `?param`[0])

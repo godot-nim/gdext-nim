@@ -15,14 +15,14 @@ proc texture2DCreate*(self: RenderingServer; image: gdref Image): Rid =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Rid)
 
-proc texture2DLayeredCreate*(self: RenderingServer; layers: gdref Image; layeredType: RenderingServer_TextureLayeredType): Rid =
+proc texture2DLayeredCreate*(self: RenderingServer; layers: TypedArray[gdref Image]; layeredType: RenderingServer_TextureLayeredType): Rid =
   expandMethodBind(className RenderingServer, "texture_2d_layered_create", 913689023)
   var `?param` = [getPtr layers, getPtr layeredType]
   var ret: encoded Rid
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Rid)
 
-proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: gdref Image): Rid =
+proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: TypedArray[gdref Image]): Rid =
   expandMethodBind(className RenderingServer, "texture_3d_create", 4036838706)
   var `?param` = [getPtr format, getPtr width, getPtr height, getPtr depth, getPtr mipmaps, getPtr data]
   var ret: encoded Rid
@@ -41,7 +41,7 @@ proc texture2DUpdate*(self: RenderingServer; texture: Rid; image: gdref Image; l
   var `?param` = [getPtr texture, getPtr image, getPtr layer]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc texture3DUpdate*(self: RenderingServer; texture: Rid; data: gdref Image): void =
+proc texture3DUpdate*(self: RenderingServer; texture: Rid; data: TypedArray[gdref Image]): void =
   expandMethodBind(className RenderingServer, "texture_3d_update", 684822712)
   var `?param` = [getPtr texture, getPtr data]
   methodbind.ptrcall(self, addr `?param`[0])
@@ -84,12 +84,12 @@ proc texture2DLayerGet*(self: RenderingServer; texture: Rid; layer: int32): gdre
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc texture3DGet*(self: RenderingServer; texture: Rid): gdref Image =
+proc texture3DGet*(self: RenderingServer; texture: Rid): TypedArray[gdref Image] =
   expandMethodBind(className RenderingServer, "texture_3d_get", 2684255073)
   var `?param` = [getPtr texture]
-  var ret: encoded gdref Image
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref Image)
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 proc textureReplace*(self: RenderingServer; texture: Rid; byTexture: Rid): void =
   expandMethodBind(className RenderingServer, "texture_replace", 395945892)
@@ -2007,12 +2007,12 @@ proc instancesCullConvex*(self: RenderingServer; convex: TypedArray[Plane]; scen
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
-proc bakeRenderUv2*(self: RenderingServer; base: Rid; materialOverrides: TypedArray[Rid]; imageSize: Vector2i): gdref Image =
+proc bakeRenderUv2*(self: RenderingServer; base: Rid; materialOverrides: TypedArray[Rid]; imageSize: Vector2i): TypedArray[gdref Image] =
   expandMethodBind(className RenderingServer, "bake_render_uv2", 1904608558)
   var `?param` = [getPtr base, getPtr materialOverrides, getPtr imageSize]
-  var ret: encoded gdref Image
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref Image)
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 proc canvasCreate*(self: RenderingServer): Rid =
   expandMethodBind(className RenderingServer, "canvas_create", 529393457)

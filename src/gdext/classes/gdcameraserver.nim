@@ -21,11 +21,11 @@ proc getFeedCount*(self: CameraServer): int32 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc feeds*(self: CameraServer): gdref CameraFeed =
+proc feeds*(self: CameraServer): TypedArray[gdref CameraFeed] =
   expandMethodBind(className CameraServer, "feeds", 2915620761)
-  var ret: encoded gdref CameraFeed
+  var ret: encoded TypedArray[gdref CameraFeed]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref CameraFeed)
+  (addr ret).decode_result(TypedArray[gdref CameraFeed])
 
 proc addFeed*(self: CameraServer; feed: gdref CameraFeed): void =
   expandMethodBind(className CameraServer, "add_feed", 3204782488)

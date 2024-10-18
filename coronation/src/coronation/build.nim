@@ -197,7 +197,7 @@ proc run*(api: JsonAPI; config: BuildConfig) =
 
   let project = project(config, api)
 
-  echo:
-    weave Prefix(prefix: "Dump: "):
-      dumptree project
+  # echo:
+  #   weave Prefix(prefix: "Dump: "):
+  #     dumptree project
   generate project

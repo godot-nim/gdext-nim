@@ -8,7 +8,7 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc getCache*(_: UniformSetCacheRd; shader: Rid; set: uint32; uniforms: gdref RdUniform): Rid =
+proc getCache*(_: UniformSetCacheRd; shader: Rid; set: uint32; uniforms: TypedArray[gdref RdUniform]): Rid =
   expandMethodBind(className UniformSetCacheRd, "get_cache", 658571723)
   var `?param` = [getPtr shader, getPtr set, getPtr uniforms]
   var ret: encoded Rid

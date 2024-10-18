@@ -57,19 +57,19 @@ proc getSeamlessImage*(self: Noise; width: int32; height: int32; invert: bool = 
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc getImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; normalize: bool = true): gdref Image =
+proc getImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; normalize: bool = true): TypedArray[gdref Image] =
   expandMethodBind(className Noise, "get_image_3d", 3977814329)
   var `?param` = [getPtr width, getPtr height, getPtr depth, getPtr invert, getPtr normalize]
-  var ret: encoded gdref Image
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref Image)
+  (addr ret).decode_result(TypedArray[gdref Image])
 
-proc getSeamlessImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; skirt: Float = 0.1; normalize: bool = true): gdref Image =
+proc getSeamlessImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; skirt: Float = 0.1; normalize: bool = true): TypedArray[gdref Image] =
   expandMethodBind(className Noise, "get_seamless_image_3d", 451006340)
   var `?param` = [getPtr width, getPtr height, getPtr depth, getPtr invert, getPtr skirt, getPtr normalize]
-  var ret: encoded gdref Image
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref Image)
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 const Noise_vmap =
   Resource.vmap.concat initTable[string, string]()

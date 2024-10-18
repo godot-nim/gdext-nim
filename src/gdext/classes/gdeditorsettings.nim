@@ -76,7 +76,7 @@ proc getRecentDirs*(self: EditorSettings): PackedStringArray =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: gdref InputEvent): void =
+proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: TypedArray[gdref InputEvent]): void =
   expandMethodBind(className EditorSettings, "set_builtin_action_override", 1209351045)
   var `?param` = [getPtr name, getPtr actionsList]
   methodbind.ptrcall(self, addr `?param`[0])

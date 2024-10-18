@@ -8,7 +8,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc create*(_: PhysicsRayQueryParameters3D; `from`: Vector3; to: Vector3; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[Rid] = typedArray[Array[RID]([])]()): gdref PhysicsRayQueryParameters3D =
+proc create*(_: PhysicsRayQueryParameters3D; `from`: Vector3; to: Vector3; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[Rid] = TypedArray[Rid](gdarray())): gdref PhysicsRayQueryParameters3D =
   expandMethodBind(className PhysicsRayQueryParameters3D, "create", 3110599579)
   var `?param` = [getPtr `from`, getPtr to, getPtr collisionMask, getPtr exclude]
   var ret: encoded gdref PhysicsRayQueryParameters3D

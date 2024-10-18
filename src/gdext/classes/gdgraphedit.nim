@@ -553,7 +553,7 @@ proc duplicateNodesRequest*(self: GraphEdit): Error =
     signalname = variant stringname("duplicate_nodes_request")
   self.emitSignal(signalname)
 
-proc deleteNodesRequest*(self: GraphEdit; nodes: TypedArray[Variant]): Error =
+proc deleteNodesRequest*(self: GraphEdit; nodes: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("delete_nodes_request")

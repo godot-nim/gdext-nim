@@ -41,16 +41,16 @@ proc getBlendConstant*(self: RdPipelineColorBlendState): Color =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Color)
 
-proc setAttachments*(self: RdPipelineColorBlendState; attachments: gdref RdPipelineColorBlendStateAttachment): void =
+proc setAttachments*(self: RdPipelineColorBlendState; attachments: TypedArray[gdref RdPipelineColorBlendStateAttachment]): void =
   expandMethodBind(className RdPipelineColorBlendState, "set_attachments", 381264803)
   var `?param` = [getPtr attachments]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getAttachments*(self: RdPipelineColorBlendState): gdref RdPipelineColorBlendStateAttachment =
+proc getAttachments*(self: RdPipelineColorBlendState): TypedArray[gdref RdPipelineColorBlendStateAttachment] =
   expandMethodBind(className RdPipelineColorBlendState, "get_attachments", 3995934104)
-  var ret: encoded gdref RdPipelineColorBlendStateAttachment
+  var ret: encoded TypedArray[gdref RdPipelineColorBlendStateAttachment]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref RdPipelineColorBlendStateAttachment)
+  (addr ret).decode_result(TypedArray[gdref RdPipelineColorBlendStateAttachment])
 
 template enableLogicOp*(self: RdPipelineColorBlendState): untyped = self.getEnableLogicOp()
 template `enableLogicOp=`*(self: RdPipelineColorBlendState; value) = self.setEnableLogicOp(value)

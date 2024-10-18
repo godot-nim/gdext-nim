@@ -33,7 +33,7 @@ proc hasMipmaps(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTy
   errproof: cast[Texture3D](p_instance).hasMipmaps().encode(r_ret)
 template hasMipmaps_bind*(_: typedesc[Texture3D]): ClassCallVirtual = hasMipmaps
 
-method getData*(self: Texture3D): gdref Image {.base.} = (discard)
+method getData*(self: Texture3D): TypedArray[gdref Image] {.base.} = (discard)
 proc getData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[Texture3D](p_instance).getData().encode(r_ret)
 template getData_bind*(_: typedesc[Texture3D]): ClassCallVirtual = getData
@@ -68,11 +68,11 @@ proc hasMipmaps*(self: Texture3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getData*(self: Texture3D): gdref Image =
+proc getData*(self: Texture3D): TypedArray[gdref Image] =
   expandMethodBind(className Texture3D, "get_data", 3995934104)
-  var ret: encoded gdref Image
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref Image)
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 proc createPlaceholder*(self: Texture3D): gdref Resource =
   expandMethodBind(className Texture3D, "create_placeholder", 121922552)

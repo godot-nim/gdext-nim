@@ -86,7 +86,7 @@ proc setSmoothGroup*(self: SurfaceTool; index: uint32): void =
   var `?param` = [getPtr index]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc addTriangleFan*(self: SurfaceTool; vertices: PackedVector3Array; uvs: PackedVector2Array = PackedVector2Array(); colors: PackedColorArray = PackedColorArray(); uv2s: PackedVector2Array = PackedVector2Array(); normals: PackedVector3Array = PackedVector3Array(); tangents: TypedArray[Plane] = typedArray[Array[Plane]([])]()): void =
+proc addTriangleFan*(self: SurfaceTool; vertices: PackedVector3Array; uvs: PackedVector2Array = PackedVector2Array(); colors: PackedColorArray = PackedColorArray(); uv2s: PackedVector2Array = PackedVector2Array(); normals: PackedVector3Array = PackedVector3Array(); tangents: TypedArray[Plane] = TypedArray[Plane](gdarray())): void =
   expandMethodBind(className SurfaceTool, "add_triangle_fan", 2235017613)
   var `?param` = [getPtr vertices, getPtr uvs, getPtr colors, getPtr uv2s, getPtr normals, getPtr tangents]
   methodbind.ptrcall(self, addr `?param`[0])
