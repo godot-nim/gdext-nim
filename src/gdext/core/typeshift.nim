@@ -16,7 +16,7 @@ proc load* =
     typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
 
 type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8|byte
-type AltFloat* = float|float32
+type AltFloat* = float32
 type AltString* = string
 
 template variantType*(_: typedesc[Bool]): VariantType = VariantType_Bool
