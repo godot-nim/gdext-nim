@@ -35,6 +35,12 @@ See [wiki][2] to get more detail.
 nimble install https://github.com/godot-nim/gdext-nim
 ```
 
+#### latest (devel)
+
+```
+nimble install https://github.com/godot-nim/gdext-nim@#head
+```
+
 ### uninstall
 
 ```
