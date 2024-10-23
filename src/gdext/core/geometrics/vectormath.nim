@@ -1,3 +1,4 @@
+import gdext/core/builtinindex
 import ./typedef
 import ./fmaps
 import ./math
@@ -63,6 +64,17 @@ func sign*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,int] = fma
 template `+`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = left
 func `-`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = <$>left: -a
 
+when real_elem is float32:
+  func `+`(left: real_elem; right: float64): real_elem = real_elem left + right
+  func `-`(left: real_elem; right: float64): real_elem = real_elem left - right
+  func `*`(left: real_elem; right: float64): real_elem = real_elem left * right
+  func `/`(left: real_elem; right: float64): real_elem = real_elem left / right
+
+  func `+`(left: float64; right: real_elem): real_elem = real_elem left + right
+  func `-`(left: float64; right: real_elem): real_elem = real_elem left - right
+  func `*`(left: float64; right: real_elem): real_elem = real_elem left * right
+  func `/`(left: float64; right: real_elem): real_elem = real_elem left / right
+
 # basic
 func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a + b
 func `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a - b
@@ -73,17 +85,17 @@ func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,
 func `mod`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a mod b
 
 # with other norms
-proc `+`*[N: static int; T,S: SomeNumber](left:Vector[N,T]; right: S): auto = <$>left: a + right
-proc `+`*[N: static int; T,S: SomeNumber](left: T; right:Vector[N,S]): auto = <$>right: left + a
+proc `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a + right
+proc `+`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left + a
 
-proc `-`*[N: static int; T,S: SomeNumber](left:Vector[N,T]; right: S): auto = <$>left: a - right
-proc `-`*[N: static int; T,S: SomeNumber](left: T; right:Vector[N,S]): auto = <$>right: left - a
+proc `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a - right
+proc `-`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left - a
 
-proc `*`*[N: static int; T,S: SomeNumber](left:Vector[N,T]; right: S): auto = <$>left: a * right
-proc `*`*[N: static int; T,S: SomeNumber](left: T; right:Vector[N,S]): auto = <$>right: left * a
+proc `*`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a * right
+proc `*`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left * a
 
-proc `/`*[N: static int; T,S: SomeNumber](left:Vector[N,T]; right: S): auto = <$>left: a / right
-proc `/`*[N: static int; T,S: SomeNumber](left: T; right:Vector[N,S]): auto = <$>right: left / a
+proc `/`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a / right
+proc `/`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left / a
 
 func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: S): auto = <$>left: a div right
 func `div`*[N: static int; T,S: SomeInteger](left: T; right: Vector[N,S]): auto = <$>right: left div a
