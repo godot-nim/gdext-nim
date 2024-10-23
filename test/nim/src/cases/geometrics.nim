@@ -6,6 +6,10 @@ unittest.disableParamFiltering()
 suite "Geometrics":
   let v012 = [0f, 1, 2]
   let v345 = [3f, 4, 5]
+  test "type":
+    check ([0f32, 1, 2] * [3f64, 4, 5]) is Vector3
+    check ([0f32, 1, 2] * 3f64) is Vector3
+
   test "fmaps":
     check ((v012, v345).fmap(a + b)) == [3f, 5, 7]
 
