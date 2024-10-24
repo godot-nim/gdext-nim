@@ -1,4 +1,4 @@
-import gdext/core/builtinindex
+import gdext/buildconf
 import ./typedef
 import ./fmaps
 import ./math
@@ -64,16 +64,16 @@ func sign*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,int] = fma
 template `+`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = left
 func `-`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = <$>left: -a
 
-when real_elem is float32:
-  func `+`(left: real_elem; right: float64): real_elem = real_elem left + right
-  func `-`(left: real_elem; right: float64): real_elem = real_elem left - right
-  func `*`(left: real_elem; right: float64): real_elem = real_elem left * right
-  func `/`(left: real_elem; right: float64): real_elem = real_elem left / right
+when Extension.decimalPrecision == "float":
+  func `+`(left: float32; right: float64): float32 = float32 left + right
+  func `-`(left: float32; right: float64): float32 = float32 left - right
+  func `*`(left: float32; right: float64): float32 = float32 left * right
+  func `/`(left: float32; right: float64): float32 = float32 left / right
 
-  func `+`(left: float64; right: real_elem): real_elem = real_elem left + right
-  func `-`(left: float64; right: real_elem): real_elem = real_elem left - right
-  func `*`(left: float64; right: real_elem): real_elem = real_elem left * right
-  func `/`(left: float64; right: real_elem): real_elem = real_elem left / right
+  func `+`(left: float64; right: float32): float32 = float32 left + right
+  func `-`(left: float64; right: float32): float32 = float32 left - right
+  func `*`(left: float64; right: float32): float32 = float32 left * right
+  func `/`(left: float64; right: float32): float32 = float32 left / right
 
 # basic
 func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a + b
