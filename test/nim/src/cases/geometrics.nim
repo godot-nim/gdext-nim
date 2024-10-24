@@ -9,6 +9,7 @@ suite "Geometrics":
   test "type":
     check ([0f32, 1, 2] * [3f64, 4, 5]) is Vector3
     check ([0f32, 1, 2] * 3f64) is Vector3
+    check ([0f32, 1, 2] * 3f64) == [0f32, 3, 6]
 
   test "fmaps":
     check ((v012, v345).fmap(a + b)) == [3f, 5, 7]

@@ -65,15 +65,15 @@ template `+`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = le
 func `-`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = <$>left: -a
 
 when Extension.decimalPrecision == "float":
-  func `+`(left: float32; right: float64): float32 = float32 left + right
-  func `-`(left: float32; right: float64): float32 = float32 left - right
-  func `*`(left: float32; right: float64): float32 = float32 left * right
-  func `/`(left: float32; right: float64): float32 = float32 left / right
+  func `+`(left: float32; right: float64): float32 = float32 system.`+`(left,right)
+  func `-`(left: float32; right: float64): float32 = float32 system.`-`(left,right)
+  func `*`(left: float32; right: float64): float32 = float32 system.`*`(left,right)
+  func `/`(left: float32; right: float64): float32 = float32 system.`/`(left,right)
 
-  func `+`(left: float64; right: float32): float32 = float32 left + right
-  func `-`(left: float64; right: float32): float32 = float32 left - right
-  func `*`(left: float64; right: float32): float32 = float32 left * right
-  func `/`(left: float64; right: float32): float32 = float32 left / right
+  func `+`(left: float64; right: float32): float32 = float32 system.`+`(left,right)
+  func `-`(left: float64; right: float32): float32 = float32 system.`-`(left,right)
+  func `*`(left: float64; right: float32): float32 = float32 system.`*`(left,right)
+  func `/`(left: float64; right: float32): float32 = float32 system.`/`(left,right)
 
 # basic
 func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a + b
