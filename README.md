@@ -27,7 +27,7 @@ See [wiki][2] to get more detail.
 - [ ] Define/Export virtual methods
 - [ ] Develop engine plugins
 
-## Install / Uninstall
+## Commands
 
 ### install
 
@@ -52,6 +52,19 @@ nimble uninstall gdext
 ```
 nimble uninstall gdext && nimble install https://github.com/godot-nim/gdext-nim
 ```
+
+### run test project
+
+```
+gdextwiz run testproject
+```
+
+### run all tests
+
+```
+nimble test
+```
+
 
 ## Supported environments
 
