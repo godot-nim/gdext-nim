@@ -23,3 +23,9 @@ task generate, "Generate extension API from the specified source. Remember all m
 
   withDir "coronation":
     exec &"nimble run -- --apisource:{upstream} --outdir:../src"
+
+task compatibilityTest, "Compile with a supported range of Nims and check for compatibility.":
+  const versions = ["2.0.0", "2.0.10", "2.2.0"]
+  for version in versions: exec &"""
+  choosenim {version}
+  nim r tests/testproject"""
