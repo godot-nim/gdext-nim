@@ -23,11 +23,3 @@ task generate, "Generate extension API from the specified source. Remember all m
 
   withDir "coronation":
     exec &"nimble run -- --apisource:{upstream} --outdir:../src"
-
-task test, "run test project (choosenim required)":
-  const versions = ["2.0.0", "2.0.8", "2.2.0"]
-  withDir("test"):
-    for version in versions: exec &"""
-choosenim {version}
-gdextwiz build 2> /dev/null
-godot"""
