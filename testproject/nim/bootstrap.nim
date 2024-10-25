@@ -4,7 +4,6 @@ import gdext/classes
 {.warning[UnusedImport]:off.}
 # import your extension classes here
 # import myclass
-import cases/geometrics
 import cases/use_api_from_toplevel
 import cases/array
 import cases/variant
