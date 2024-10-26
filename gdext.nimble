@@ -36,6 +36,6 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, &"choosenim {version}"
     report version, "nim c tests/importall"
     report version, "rm tests/importall"
-    report version, "nim r tests/testproject"
+    report version, "nimble test"
     report version, "gdextwiz run-editor testproject/editor"
   echo "All tests passed!"
