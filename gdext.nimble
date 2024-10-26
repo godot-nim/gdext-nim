@@ -24,10 +24,18 @@ task generate, "Generate extension API from the specified source. Remember all m
   withDir "coronation":
     exec &"nimble run -- --apisource:{upstream} --outdir:../src"
 
-task test, "run test project (choosenim required)":
-  const versions = ["2.0.0", "2.0.8", "2.2.0"]
-  withDir("test"):
-    for version in versions: exec &"""
-choosenim {version}
-gdextwiz build 2> /dev/null
-godot"""
+proc report(version, script: string) =
+  try:
+    exec script
+  except:
+    quit &"[Nim {version}] \"{script}\" failed."
+
+task compatibilityTest, "Compile with a supported range of Nims and check for compatibility.":
+  const versions = ["2.0.0", "2.0.10", "2.2.0"]
+  for version in versions:
+    report version, &"choosenim {version}"
+    report version, "nim c tests/importall"
+    report version, "rm tests/importall"
+    report version, "nimble test"
+    report version, "gdextwiz run-editor testproject/editor"
+  echo "All tests passed!"

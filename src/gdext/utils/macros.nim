@@ -68,6 +68,7 @@ func typeSym*(node: NimNode): NimNode =
       node[1]
     else:
       error lisprepr node, node
+      nil
   else:
     error lisprepr node, node
     nil
@@ -106,12 +107,12 @@ func pragmas*(node: NimNode): seq[NimNode] =
         sq.add pragma
     sq
   else:
-    error lisprepr node, node
+    result
 
 proc args*(node: NimNode): seq[NimNode] =
   case node.kind
   of nnkSym, nnkIdent:
-    @[]
+    result
   of nnkCall, nnkExprColonExpr:
     var sq: seq[NimNode] = @[]
     for arg in node:
@@ -124,7 +125,7 @@ proc args*(node: NimNode): seq[NimNode] =
   of nnkPragma:
     node[0].args
   else:
-    error lisprepr node, node
+    result
 
 func isVarargs*(node: NimNode): bool =
   case node.kind

@@ -43,8 +43,8 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
     .castpro(interface_ClassDB_getClassTag(addr className T))
     .getInstance(T)
 
-template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(T).asGdRef
-template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(T).referenced
+template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
+template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(typeof T).referenced
 
 {.push, inline.}
 

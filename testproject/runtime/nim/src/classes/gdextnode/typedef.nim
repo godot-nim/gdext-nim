@@ -174,12 +174,4 @@ method ready(self: GDExtNode) {.gdsync.} =
   self.test_Node()
   self.test_Resource()
   self.test_FirstclassFunction()
-
-method input(self: GDExtNode; event: gdref InputEvent) {.gdsync.} =
-  let evkey = event as gdref InputEventKey
-  # Or, `let evkey = event.castTo InputEventKey`
-  if evkey[].isNil: return
-  print evkey[], ": ", evkey[].keyLabel
-
-  if event[].isActionPressed "ui_cancel":
-    self.getTree.quit()
+  self.getTree.quit()

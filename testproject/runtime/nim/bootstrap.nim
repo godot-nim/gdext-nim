@@ -1,17 +1,13 @@
 import gdext
-import gdext/classes
 
 {.warning[UnusedImport]:off.}
 # import your extension classes here
 # import myclass
-import cases/geometrics
 import cases/use_api_from_toplevel
 import cases/array
 import cases/variant
 import cases/enums
 import classes/gdextnode
-import classes/gdproptestnode
-import classes/gdproptestnode_pragmas
 import classes/gdtestobject
 
 # ==================================
@@ -21,8 +17,6 @@ proc register_classes {.execon: initialize_scene.} =
   # register MyClass
   register GDExtNode
   register TestObject
-  register PropTestNode
-  register PropTestNodePragmas
 
   # ====================================
   discard

@@ -415,14 +415,14 @@ template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
     extra: varargs[RangeArgument]): untyped =
   register_property(typedesc T, name, typedesc S, getter, setter,
       hint= propertyHintRange,
-      hint_string= rangeHintString(min, max, step= defaultUnit(S), extra))
+      hint_string= rangeHintString(min, max, step= defaultUnit(typeof S), extra))
 
 template gdexport_range*[S: SomeNumericProperty](
     iden: typedesc[S],
     min, max: S,
     extra: varargs[RangeArgument],
     alias: static[alias] = noAlias) =
-  gdexport_range(iden, min, max, step= defaultUnit(S), extra, alias)
+  gdexport_range(iden, min, max, step= defaultUnit(typeof S), extra, alias)
 
 template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
     name;

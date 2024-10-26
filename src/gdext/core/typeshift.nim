@@ -15,7 +15,7 @@ proc load* =
     variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
     typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
 
-type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8|byte
+type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
 type AltFloat* = float32
 type AltString* = string
 
@@ -146,9 +146,16 @@ template convert_generic_params_forcecast(Decoded, Encoded): untyped =
 
 convert_alternative string, String, gdstring, `$`
 
-convert_alternative_autocast AltInt, Int
+convert_alternative_autocast int, Int
+convert_alternative_autocast int32, Int
+convert_alternative_autocast int16, Int
+convert_alternative_autocast int8, Int
+convert_alternative_autocast uint64, Int
+convert_alternative_autocast uint32, Int
+convert_alternative_autocast uint16, Int
+convert_alternative_autocast uint8, Int
 
-convert_alternative_autocast AltFloat, Float
+convert_alternative_autocast float32, Float
 
 convert_generics_forcecast enum, Int
 
