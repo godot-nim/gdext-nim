@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyswbjsdvglbr"]
+
+[ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_x3ep8"]
+
+[node name="Main" type="Node"]
+
+[node name="PropTestNode" type="PropTestNode" parent="."]
+icon = ExtResource("2_x3ep8")
+
+[node name="PropTestNodePragmas" type="PropTestNodePragmas" parent="."]
+icon = ExtResource("2_x3ep8")

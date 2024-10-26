@@ -8,8 +8,6 @@ import cases/array
 import cases/variant
 import cases/enums
 import classes/gdextnode
-import classes/gdproptestnode
-import classes/gdproptestnode_pragmas
 import classes/gdtestobject
 
 # ==================================
@@ -19,8 +17,6 @@ proc register_classes {.execon: initialize_scene.} =
   # register MyClass
   register GDExtNode
   register TestObject
-  register PropTestNode
-  register PropTestNodePragmas
 
   # ====================================
   discard
