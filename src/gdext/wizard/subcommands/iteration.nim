@@ -66,7 +66,10 @@ proc run*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
   var cli = CliContext(wizard: "wizard run*")
   let projectRoot = cli.getProjectRoot(search_path)
   interrupt build(nimargs, search_path, depth)
-  cli.launchEditor(projectRoot)
+  if dirExists(projectRoot/".godot"):
+    cli.launchEditor(projectRoot)
+  else:
+    cli.launchEditor(projectRoot, "--editor")
 
 proc editor*(search_path: string): 0..1 =
   var cli = CliContext(wizard: "wizard editor*")
