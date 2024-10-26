@@ -1,4 +1,4 @@
-import std/unittest
+import std/unittest, std/math
 import gdext
 
 suite "Geometrics":
@@ -39,6 +39,46 @@ suite "Geometrics":
     check v345 - 10f == [-7f, -6, -5]
     check v345 * 10f == [30f, 40, 50]
     check v345 / 10f == [3/10f, 4/10f, 5/10f]
+
+  test "Vector field access":
+    var v2 = [1f, 2]
+    check compiles v2.x += 10
+    check compiles v2.y += 10
+    check not compiles v2.z += 10
+    check not compiles v2.w += 10
+
+    var v3 = [3, 4, 5] # int
+    check compiles v3.x += 10
+    check compiles v3.y -= 10
+    check compiles v3.z *= 10
+    check not compiles v3.w += 10
+    
+    var v4 = [6f, 7, 8, 9]
+    check compiles v4.x += 10
+    check compiles v4.y -= 10
+    check compiles v4.z *= 10
+    check compiles v4.w /= 10
+    
+    v2.x += 10
+    v2.y *= 10
+    check v2.x == 11
+    check v2.y == 20
+    
+    v3.x += 10
+    v3.y -= 10
+    v3.z *= 10
+    check v3.x == 13
+    check v3.y == -6
+    check v3.z == 50
+    
+    v4.x += 10
+    v4.y -= 10
+    v4.z *= 10
+    v4.w /= 10
+    check v4.x == 16
+    check v4.y == -3
+    check v4.z == 80
+    check v4.w.almostEqual 0.9
 
   test "normalize":
     check v012.dot(v345) == 14

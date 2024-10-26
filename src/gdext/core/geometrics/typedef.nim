@@ -1,4 +1,4 @@
-import std/macros
+import std/macros, std/genasts
 
 type
   Vector*[N: static int; T] = array[N, T]
@@ -8,6 +8,21 @@ type
 type
   Radian32* = Radian[float32]
   Radian64* = Radian[float64]
+
+macro genVecFieldAccess(): untyped =
+  const fields = ["x", "y", "z", "w"]
+  result = newStmtList()
+  let # this makes the generated code look nicer
+    vector = ident("vector")
+    value = ident("value")
+  for size in 2..4:
+    for fidx, fkey in fields.pairs:
+      if fidx >= size: break
+      let field = ident(fkey)
+      result.add genAst(size, fidx, field, vector, value) do:
+        template `field`*[T](vector: array[size, T]): T = vector[fidx]
+        template `field=`*[T](vector: var array[size, T], value: T) = vector[fidx] = value
+genVecFieldAccess()
 
 proc asNormalized*[N: static int; T: SomeFloat](vec: Vector[N,T]): NVector[N,T] {.inline.} = NVector[N,T](vec)
 
