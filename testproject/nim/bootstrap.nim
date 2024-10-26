@@ -1,5 +1,4 @@
 import gdext
-import gdext/classes
 
 {.warning[UnusedImport]:off.}
 # import your extension classes here

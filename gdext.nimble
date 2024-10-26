@@ -28,4 +28,6 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
   const versions = ["2.0.0", "2.0.10", "2.2.0"]
   for version in versions: exec &"""
   choosenim {version}
+  nim c tests/importall
+  rm tests/importall
   nim r tests/testproject"""
