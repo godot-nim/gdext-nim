@@ -5,66 +5,92 @@ import gdext/coronation/header/classes
 import gdtexture2d; export gdtexture2d
 
 proc setFrames*(self: AnimatedTexture; frames: int32): void =
+  ##Number of frames to use in the animation. While you can create the frames independently with
+  ##set_frame_texture, you need to set this value for the animation to take new frames into account. The
+  ##maximum number of frames is MAX_FRAMES.
   expandMethodBind(className AnimatedTexture, "set_frames", 1286410249)
   var `?param` = [getPtr frames]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getFrames*(self: AnimatedTexture): int32 =
+  ##Number of frames to use in the animation. While you can create the frames independently with
+  ##set_frame_texture, you need to set this value for the animation to take new frames into account. The
+  ##maximum number of frames is MAX_FRAMES.
   expandMethodBind(className AnimatedTexture, "get_frames", 3905245786)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
 proc setCurrentFrame*(self: AnimatedTexture; frame: int32): void =
+  ##Sets the currently visible frame of the texture. Setting this frame while playing resets the current frame time,
+  ##so the newly selected frame plays for its whole configured frame duration.
   expandMethodBind(className AnimatedTexture, "set_current_frame", 1286410249)
   var `?param` = [getPtr frame]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getCurrentFrame*(self: AnimatedTexture): int32 =
+  ##Sets the currently visible frame of the texture. Setting this frame while playing resets the current frame time,
+  ##so the newly selected frame plays for its whole configured frame duration.
   expandMethodBind(className AnimatedTexture, "get_current_frame", 3905245786)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
 proc setPause*(self: AnimatedTexture; pause: bool): void =
+  ##If true, the animation will pause where it currently is (i.e. at current_frame). The animation will continue
+  ##from where it was paused when changing this property to false.
   expandMethodBind(className AnimatedTexture, "set_pause", 2586408642)
   var `?param` = [getPtr pause]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getPause*(self: AnimatedTexture): bool =
+  ##If true, the animation will pause where it currently is (i.e. at current_frame). The animation will continue
+  ##from where it was paused when changing this property to false.
   expandMethodBind(className AnimatedTexture, "get_pause", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
 proc setOneShot*(self: AnimatedTexture; oneShot: bool): void =
+  ##If true, the animation will only play once and will not loop back to the first frame after reaching the end.
+  ##Note that reaching the end will not set pause to true.
   expandMethodBind(className AnimatedTexture, "set_one_shot", 2586408642)
   var `?param` = [getPtr oneShot]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getOneShot*(self: AnimatedTexture): bool =
+  ##If true, the animation will only play once and will not loop back to the first frame after reaching the end.
+  ##Note that reaching the end will not set pause to true.
   expandMethodBind(className AnimatedTexture, "get_one_shot", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
 proc setSpeedScale*(self: AnimatedTexture; scale: Float): void =
+  ##The animation speed is multiplied by this value. If set to a negative value, the animation is played in reverse.
   expandMethodBind(className AnimatedTexture, "set_speed_scale", 373806689)
   var `?param` = [getPtr scale]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getSpeedScale*(self: AnimatedTexture): Float =
+  ##The animation speed is multiplied by this value. If set to a negative value, the animation is played in reverse.
   expandMethodBind(className AnimatedTexture, "get_speed_scale", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
 proc setFrameTexture*(self: AnimatedTexture; frame: int32; texture: gdref Texture2D): void =
+  ##Assigns a Texture2D to the given frame. Frame IDs start at 0, so the first frame has ID 0, and the last frame of
+  ##the animation has ID frames - 1.
+  ##
+  ##You can define any number of textures up to MAX_FRAMES, but keep in mind that only frames from 0 to
+  ##frames - 1 will be part of the animation.
   expandMethodBind(className AnimatedTexture, "set_frame_texture", 666127730)
   var `?param` = [getPtr frame, getPtr texture]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getFrameTexture*(self: AnimatedTexture; frame: int32): gdref Texture2D =
+  ##Returns the given frame's Texture2D.
   expandMethodBind(className AnimatedTexture, "get_frame_texture", 3536238170)
   var `?param` = [getPtr frame]
   var ret: encoded gdref Texture2D
@@ -72,11 +98,14 @@ proc getFrameTexture*(self: AnimatedTexture; frame: int32): gdref Texture2D =
   (addr ret).decode_result(gdref Texture2D)
 
 proc setFrameDuration*(self: AnimatedTexture; frame: int32; duration: Float): void =
+  ##Sets the duration of any given frame. The final duration is affected by the speed_scale. If set to 0, the
+  ##frame is skipped during playback.
   expandMethodBind(className AnimatedTexture, "set_frame_duration", 1602489585)
   var `?param` = [getPtr frame, getPtr duration]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc getFrameDuration*(self: AnimatedTexture; frame: int32): Float =
+  ##Returns the given frame's duration, in seconds.
   expandMethodBind(className AnimatedTexture, "get_frame_duration", 2339986948)
   var `?param` = [getPtr frame]
   var ret: encoded Float
