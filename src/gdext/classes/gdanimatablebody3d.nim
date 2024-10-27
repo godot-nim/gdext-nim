@@ -5,11 +5,17 @@ import gdext/coronation/header/classes
 import gdstaticbody3d; export gdstaticbody3d
 
 proc setSyncToPhysics*(self: AnimatableBody3D; enable: bool): void =
+  ##If true, the body's movement will be synchronized to the physics frame. This is useful when animating
+  ##movement via AnimationPlayer, for example on moving platforms. Do not use together with
+  ##PhysicsBody3D.move_and_collide.
   expandMethodBind(className AnimatableBody3D, "set_sync_to_physics", 2586408642)
   var `?param` = [getPtr enable]
   methodbind.ptrcall(self, addr `?param`[0])
 
 proc isSyncToPhysicsEnabled*(self: AnimatableBody3D): bool =
+  ####If true, the body's movement will be synchronized to the physics frame. This is useful when animating
+  ##movement via AnimationPlayer, for example on moving platforms. Do not use together with
+  ##PhysicsBody3D.move_and_collide.
   expandMethodBind(className AnimatableBody3D, "is_sync_to_physics_enabled", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
