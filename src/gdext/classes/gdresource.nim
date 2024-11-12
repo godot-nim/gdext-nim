@@ -63,7 +63,7 @@ proc setupLocalToScene*(self: Resource): void =
   expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc generateSceneUniqueId*(_: Resource): String =
+proc generateSceneUniqueId*(_: typedesc[Resource]): String =
   expandMethodBind(className Resource, "generate_scene_unique_id", 2841200299)
   var ret: encoded String
   methodbind.ptrcall(nil, addr ret)

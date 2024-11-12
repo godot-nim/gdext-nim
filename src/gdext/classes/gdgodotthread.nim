@@ -35,7 +35,7 @@ proc waitToFinish*(self: GodotThread): Variant =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Variant)
 
-proc setThreadSafetyChecksEnabled*(_: GodotThread; enabled: bool): void =
+proc setThreadSafetyChecksEnabled*(_: typedesc[GodotThread]; enabled: bool): void =
   expandMethodBind(className GodotThread, "set_thread_safety_checks_enabled", 2586408642)
   var `?param` = [getPtr enabled]
   methodbind.ptrcall(addr `?param`[0])

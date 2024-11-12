@@ -79,12 +79,12 @@ proc writeToFilesystem*(self: GltfDocument; state: gdref GltfState; path: String
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc registerGltfDocumentExtension*(_: GltfDocument; extension: gdref GltfDocumentExtension; firstPriority: bool = false): void =
+proc registerGltfDocumentExtension*(_: typedesc[GltfDocument]; extension: gdref GltfDocumentExtension; firstPriority: bool = false): void =
   expandMethodBind(className GltfDocument, "register_gltf_document_extension", 3752678331)
   var `?param` = [getPtr extension, getPtr firstPriority]
   methodbind.ptrcall(addr `?param`[0])
 
-proc unregisterGltfDocumentExtension*(_: GltfDocument; extension: gdref GltfDocumentExtension): void =
+proc unregisterGltfDocumentExtension*(_: typedesc[GltfDocument]; extension: gdref GltfDocumentExtension): void =
   expandMethodBind(className GltfDocument, "unregister_gltf_document_extension", 2684415758)
   var `?param` = [getPtr extension]
   methodbind.ptrcall(addr `?param`[0])

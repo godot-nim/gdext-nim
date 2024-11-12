@@ -4,21 +4,21 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc client*(_: TlsOptions; trustedChain: gdref X509Certificate = default gdref X509Certificate; commonNameOverride: String = gdstring""): gdref TlsOptions =
+proc client*(_: typedesc[TlsOptions]; trustedChain: gdref X509Certificate = default gdref X509Certificate; commonNameOverride: String = gdstring""): gdref TlsOptions =
   expandMethodBind(className TlsOptions, "client", 3565000357)
   var `?param` = [getPtr trustedChain, getPtr commonNameOverride]
   var ret: encoded gdref TlsOptions
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref TlsOptions)
 
-proc clientUnsafe*(_: TlsOptions; trustedChain: gdref X509Certificate = default gdref X509Certificate): gdref TlsOptions =
+proc clientUnsafe*(_: typedesc[TlsOptions]; trustedChain: gdref X509Certificate = default gdref X509Certificate): gdref TlsOptions =
   expandMethodBind(className TlsOptions, "client_unsafe", 2090251749)
   var `?param` = [getPtr trustedChain]
   var ret: encoded gdref TlsOptions
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref TlsOptions)
 
-proc server*(_: TlsOptions; key: gdref CryptoKey; certificate: gdref X509Certificate): gdref TlsOptions =
+proc server*(_: typedesc[TlsOptions]; key: gdref CryptoKey; certificate: gdref X509Certificate): gdref TlsOptions =
   expandMethodBind(className TlsOptions, "server", 36969539)
   var `?param` = [getPtr key, getPtr certificate]
   var ret: encoded gdref TlsOptions

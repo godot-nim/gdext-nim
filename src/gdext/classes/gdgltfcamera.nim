@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc fromNode*(_: GltfCamera; cameraNode: Camera3D): gdref GltfCamera =
+proc fromNode*(_: typedesc[GltfCamera]; cameraNode: Camera3D): gdref GltfCamera =
   expandMethodBind(className GltfCamera, "from_node", 237784)
   var `?param` = [getPtr cameraNode]
   var ret: encoded gdref GltfCamera
@@ -17,7 +17,7 @@ proc toNode*(self: GltfCamera): Camera3D =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Camera3D)
 
-proc fromDictionary*(_: GltfCamera; dictionary: Dictionary): gdref GltfCamera =
+proc fromDictionary*(_: typedesc[GltfCamera]; dictionary: Dictionary): gdref GltfCamera =
   expandMethodBind(className GltfCamera, "from_dictionary", 2495512509)
   var `?param` = [getPtr dictionary]
   var ret: encoded gdref GltfCamera

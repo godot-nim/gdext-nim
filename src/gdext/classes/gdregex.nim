@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc createFromString*(_: RegEx; pattern: String): gdref RegEx =
+proc createFromString*(_: typedesc[RegEx]; pattern: String): gdref RegEx =
   expandMethodBind(className RegEx, "create_from_string", 2150300909)
   var `?param` = [getPtr pattern]
   var ret: encoded gdref RegEx

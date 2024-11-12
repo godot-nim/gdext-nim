@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc fromNode*(_: GltfPhysicsShape; shapeNode: CollisionShape3D): gdref GltfPhysicsShape =
+proc fromNode*(_: typedesc[GltfPhysicsShape]; shapeNode: CollisionShape3D): gdref GltfPhysicsShape =
   expandMethodBind(className GltfPhysicsShape, "from_node", 3613751275)
   var `?param` = [getPtr shapeNode]
   var ret: encoded gdref GltfPhysicsShape
@@ -18,7 +18,7 @@ proc toNode*(self: GltfPhysicsShape; cacheShapes: bool = false): CollisionShape3
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(CollisionShape3D)
 
-proc fromResource*(_: GltfPhysicsShape; shapeResource: gdref Shape3D): gdref GltfPhysicsShape =
+proc fromResource*(_: typedesc[GltfPhysicsShape]; shapeResource: gdref Shape3D): gdref GltfPhysicsShape =
   expandMethodBind(className GltfPhysicsShape, "from_resource", 3845569786)
   var `?param` = [getPtr shapeResource]
   var ret: encoded gdref GltfPhysicsShape
@@ -32,7 +32,7 @@ proc toResource*(self: GltfPhysicsShape; cacheShapes: bool = false): gdref Shape
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Shape3D)
 
-proc fromDictionary*(_: GltfPhysicsShape; dictionary: Dictionary): gdref GltfPhysicsShape =
+proc fromDictionary*(_: typedesc[GltfPhysicsShape]; dictionary: Dictionary): gdref GltfPhysicsShape =
   expandMethodBind(className GltfPhysicsShape, "from_dictionary", 2390691823)
   var `?param` = [getPtr dictionary]
   var ret: encoded gdref GltfPhysicsShape
