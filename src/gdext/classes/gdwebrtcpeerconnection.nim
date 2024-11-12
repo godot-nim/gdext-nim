@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc setDefaultExtension*(_: WebRtcPeerConnection; extensionClass: StringName): void =
+proc setDefaultExtension*(_: typedesc[WebRtcPeerConnection]; extensionClass: StringName): void =
   expandMethodBind(className WebRtcPeerConnection, "set_default_extension", 3304788590)
   var `?param` = [getPtr extensionClass]
   methodbind.ptrcall(addr `?param`[0])

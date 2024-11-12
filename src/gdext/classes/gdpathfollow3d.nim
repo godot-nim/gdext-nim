@@ -103,7 +103,7 @@ proc isTiltEnabled*(self: PathFollow3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc correctPosture*(_: PathFollow3D; transform: Transform3D; rotationMode: PathFollow3D_RotationMode): Transform3D =
+proc correctPosture*(_: typedesc[PathFollow3D]; transform: Transform3D; rotationMode: PathFollow3D_RotationMode): Transform3D =
   expandMethodBind(className PathFollow3D, "correct_posture", 2686588690)
   var `?param` = [getPtr transform, getPtr rotationMode]
   var ret: encoded Transform3D

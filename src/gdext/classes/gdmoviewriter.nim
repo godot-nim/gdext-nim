@@ -34,7 +34,7 @@ proc writeEnd(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstType
   errproof: cast[MovieWriter](p_instance).writeEnd()
 template writeEnd_bind*(_: typedesc[MovieWriter]): ClassCallVirtual = writeEnd
 
-proc addWriter*(_: MovieWriter; writer: MovieWriter): void =
+proc addWriter*(_: typedesc[MovieWriter]; writer: MovieWriter): void =
   expandMethodBind(className MovieWriter, "add_writer", 4023702871)
   var `?param` = [getPtr writer]
   methodbind.ptrcall(addr `?param`[0])

@@ -4,14 +4,14 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc stringify*(_: Json; data: Variant; indent: String = gdstring""; sortKeys: bool = true; fullPrecision: bool = false): String =
+proc stringify*(_: typedesc[Json]; data: Variant; indent: String = gdstring""; sortKeys: bool = true; fullPrecision: bool = false): String =
   expandMethodBind(className Json, "stringify", 462733549)
   var `?param` = [getPtr data, getPtr indent, getPtr sortKeys, getPtr fullPrecision]
   var ret: encoded String
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(String)
 
-proc parseString*(_: Json; jsonString: String): Variant =
+proc parseString*(_: typedesc[Json]; jsonString: String): Variant =
   expandMethodBind(className Json, "parse_string", 309047738)
   var `?param` = [getPtr jsonString]
   var ret: encoded Variant

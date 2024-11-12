@@ -72,18 +72,18 @@ proc getPeers*(self: MultiplayerApi): PackedInt32Array =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
-proc setDefaultInterface*(_: MultiplayerApi; interfaceName: StringName): void =
+proc setDefaultInterface*(_: typedesc[MultiplayerApi]; interfaceName: StringName): void =
   expandMethodBind(className MultiplayerApi, "set_default_interface", 3304788590)
   var `?param` = [getPtr interfaceName]
   methodbind.ptrcall(addr `?param`[0])
 
-proc getDefaultInterface*(_: MultiplayerApi): StringName =
+proc getDefaultInterface*(_: typedesc[MultiplayerApi]): StringName =
   expandMethodBind(className MultiplayerApi, "get_default_interface", 2737447660)
   var ret: encoded StringName
   methodbind.ptrcall(nil, addr ret)
   (addr ret).decode_result(StringName)
 
-proc createDefaultInterface*(_: MultiplayerApi): gdref MultiplayerApi =
+proc createDefaultInterface*(_: typedesc[MultiplayerApi]): gdref MultiplayerApi =
   expandMethodBind(className MultiplayerApi, "create_default_interface", 3294156723)
   var ret: encoded gdref MultiplayerApi
   methodbind.ptrcall(nil, addr ret)

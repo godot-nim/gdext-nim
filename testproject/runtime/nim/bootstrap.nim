@@ -7,6 +7,7 @@ import cases/use_api_from_toplevel
 import cases/array
 import cases/variant
 import cases/enums
+import cases/image
 import classes/gdextnode
 import classes/gdtestobject
 

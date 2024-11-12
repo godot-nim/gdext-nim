@@ -215,7 +215,7 @@ proc max*(self: Vector3; with: Vector3): Vector3 =
 proc maxf*(self: Vector3; with: Float): Vector3 =
   let argArr = [getPtr with]
   `maxf(Vector3 Float)`(addr self, addr argArr[0], addr result, 1)
-proc octahedronDecode*(_: var Vector3; uv: Vector2): Vector3 =
+proc octahedronDecode*(_: typedesc[Vector3]; uv: Vector2): Vector3 =
   let argArr = [getPtr uv]
   `octahedronDecode(Vector3 Vector2)`(nil, addr argArr[0], addr result, 1)
 

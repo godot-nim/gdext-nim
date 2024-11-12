@@ -36,7 +36,7 @@ proc xrResult*(self: OpenXrapiExtension; retval: uint64; format: String; args: A
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc openxrIsEnabled*(_: OpenXrapiExtension; checkRunInEditor: bool): bool =
+proc openxrIsEnabled*(_: typedesc[OpenXrapiExtension]; checkRunInEditor: bool): bool =
   expandMethodBind(className OpenXrapiExtension, "openxr_is_enabled", 2703660260)
   var `?param` = [getPtr checkRunInEditor]
   var ret: encoded bool

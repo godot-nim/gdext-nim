@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc fromNode*(_: GltfLight; lightNode: Light3D): gdref GltfLight =
+proc fromNode*(_: typedesc[GltfLight]; lightNode: Light3D): gdref GltfLight =
   expandMethodBind(className GltfLight, "from_node", 3907677874)
   var `?param` = [getPtr lightNode]
   var ret: encoded gdref GltfLight
@@ -17,7 +17,7 @@ proc toNode*(self: GltfLight): Light3D =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Light3D)
 
-proc fromDictionary*(_: GltfLight; dictionary: Dictionary): gdref GltfLight =
+proc fromDictionary*(_: typedesc[GltfLight]; dictionary: Dictionary): gdref GltfLight =
   expandMethodBind(className GltfLight, "from_dictionary", 4057087208)
   var `?param` = [getPtr dictionary]
   var ret: encoded gdref GltfLight

@@ -47,7 +47,7 @@ var `rpc(Callable Variant)`: PtrBuiltinMethod
 var `rpcId(Callable Int Variant)`: PtrBuiltinMethod
 var `bind(Callable Variant)`: PtrBuiltinMethod
 
-proc create*(_: var Callable; variant: Variant; `method`: StringName): Callable =
+proc create*(_: typedesc[Callable]; variant: Variant; `method`: StringName): Callable =
   let argArr = [getPtr variant, getPtr `method`]
   `create(Callable Variant StringName)`(nil, addr argArr[0], addr result, 2)
 proc callv*(self: Callable; arguments: Array): Variant =

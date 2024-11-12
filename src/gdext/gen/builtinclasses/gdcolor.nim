@@ -566,28 +566,28 @@ proc linearToSrgb*(self: Color): Color =
 proc isEqualApprox*(self: Color; to: Color): bool =
   let argArr = [getPtr to]
   `isEqualApprox(Color Color)`(addr self, addr argArr[0], addr result, 1)
-proc hex*(_: var Color; hex: Int): Color =
+proc hex*(_: typedesc[Color]; hex: Int): Color =
   let argArr = [getPtr hex]
   `hex(Color Int)`(nil, addr argArr[0], addr result, 1)
-proc hex64*(_: var Color; hex: Int): Color =
+proc hex64*(_: typedesc[Color]; hex: Int): Color =
   let argArr = [getPtr hex]
   `hex64(Color Int)`(nil, addr argArr[0], addr result, 1)
-proc html*(_: var Color; rgba: String): Color =
+proc html*(_: typedesc[Color]; rgba: String): Color =
   let argArr = [getPtr rgba]
   `html(Color String)`(nil, addr argArr[0], addr result, 1)
-proc htmlIsValid*(_: var Color; color: String): bool =
+proc htmlIsValid*(_: typedesc[Color]; color: String): bool =
   let argArr = [getPtr color]
   `htmlIsValid(Color String)`(nil, addr argArr[0], addr result, 1)
-proc fromString*(_: var Color; str: String; default: Color): Color =
+proc fromString*(_: typedesc[Color]; str: String; default: Color): Color =
   let argArr = [getPtr str, getPtr default]
   `fromString(Color String Color)`(nil, addr argArr[0], addr result, 2)
-proc fromHsv*(_: var Color; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color =
+proc fromHsv*(_: typedesc[Color]; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color =
   let argArr = [getPtr h, getPtr s, getPtr v, getPtr alpha]
   `fromHsv(Color Float Float Float Float)`(nil, addr argArr[0], addr result, 4)
-proc fromOkHsl*(_: var Color; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color =
+proc fromOkHsl*(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color =
   let argArr = [getPtr h, getPtr s, getPtr l, getPtr alpha]
   `fromOkHsl(Color Float Float Float Float)`(nil, addr argArr[0], addr result, 4)
-proc fromRgbe9995*(_: var Color; rgbe: Int): Color =
+proc fromRgbe9995*(_: typedesc[Color]; rgbe: Int): Color =
   let argArr = [getPtr rgbe]
   `fromRgbe9995(Color Int)`(nil, addr argArr[0], addr result, 1)
 

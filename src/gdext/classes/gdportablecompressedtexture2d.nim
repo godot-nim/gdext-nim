@@ -43,12 +43,12 @@ proc isKeepingCompressedBuffer*(self: PortableCompressedTexture2D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setKeepAllCompressedBuffers*(_: PortableCompressedTexture2D; keep: bool): void =
+proc setKeepAllCompressedBuffers*(_: typedesc[PortableCompressedTexture2D]; keep: bool): void =
   expandMethodBind(className PortableCompressedTexture2D, "set_keep_all_compressed_buffers", 2586408642)
   var `?param` = [getPtr keep]
   methodbind.ptrcall(addr `?param`[0])
 
-proc isKeepingAllCompressedBuffers*(_: PortableCompressedTexture2D): bool =
+proc isKeepingAllCompressedBuffers*(_: typedesc[PortableCompressedTexture2D]): bool =
   expandMethodBind(className PortableCompressedTexture2D, "is_keeping_all_compressed_buffers", 2240911060)
   var ret: encoded bool
   methodbind.ptrcall(nil, addr ret)

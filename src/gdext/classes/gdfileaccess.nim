@@ -4,48 +4,48 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc open*(_: FileAccess; path: String; flags: FileAccess_ModeFlags): gdref FileAccess =
+proc open*(_: typedesc[FileAccess]; path: String; flags: FileAccess_ModeFlags): gdref FileAccess =
   expandMethodBind(className FileAccess, "open", 1247358404)
   var `?param` = [getPtr path, getPtr flags]
   var ret: encoded gdref FileAccess
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
-proc openEncrypted*(_: FileAccess; path: String; modeFlags: FileAccess_ModeFlags; key: PackedByteArray): gdref FileAccess =
+proc openEncrypted*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; key: PackedByteArray): gdref FileAccess =
   expandMethodBind(className FileAccess, "open_encrypted", 1482131466)
   var `?param` = [getPtr path, getPtr modeFlags, getPtr key]
   var ret: encoded gdref FileAccess
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
-proc openEncryptedWithPass*(_: FileAccess; path: String; modeFlags: FileAccess_ModeFlags; pass: String): gdref FileAccess =
+proc openEncryptedWithPass*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; pass: String): gdref FileAccess =
   expandMethodBind(className FileAccess, "open_encrypted_with_pass", 790283377)
   var `?param` = [getPtr path, getPtr modeFlags, getPtr pass]
   var ret: encoded gdref FileAccess
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
-proc openCompressed*(_: FileAccess; path: String; modeFlags: FileAccess_ModeFlags; compressionMode: FileAccess_CompressionMode = compressionFastlz): gdref FileAccess =
+proc openCompressed*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; compressionMode: FileAccess_CompressionMode = compressionFastlz): gdref FileAccess =
   expandMethodBind(className FileAccess, "open_compressed", 3686439335)
   var `?param` = [getPtr path, getPtr modeFlags, getPtr compressionMode]
   var ret: encoded gdref FileAccess
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
-proc getOpenError*(_: FileAccess): Error =
+proc getOpenError*(_: typedesc[FileAccess]): Error =
   expandMethodBind(className FileAccess, "get_open_error", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(nil, addr ret)
   (addr ret).decode_result(Error)
 
-proc getFileAsBytes*(_: FileAccess; path: String): PackedByteArray =
+proc getFileAsBytes*(_: typedesc[FileAccess]; path: String): PackedByteArray =
   expandMethodBind(className FileAccess, "get_file_as_bytes", 659035735)
   var `?param` = [getPtr path]
   var ret: encoded PackedByteArray
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
-proc getFileAsString*(_: FileAccess; path: String): String =
+proc getFileAsString*(_: typedesc[FileAccess]; path: String): String =
   expandMethodBind(className FileAccess, "get_file_as_string", 1703090593)
   var `?param` = [getPtr path]
   var ret: encoded String
@@ -178,14 +178,14 @@ proc getAsText*(self: FileAccess; skipCr: bool = false): String =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(String)
 
-proc getMd5*(_: FileAccess; path: String): String =
+proc getMd5*(_: typedesc[FileAccess]; path: String): String =
   expandMethodBind(className FileAccess, "get_md5", 1703090593)
   var `?param` = [getPtr path]
   var ret: encoded String
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(String)
 
-proc getSha256*(_: FileAccess; path: String): String =
+proc getSha256*(_: typedesc[FileAccess]; path: String): String =
   expandMethodBind(className FileAccess, "get_sha256", 1703090593)
   var `?param` = [getPtr path]
   var ret: encoded String
@@ -291,56 +291,56 @@ proc close*(self: FileAccess): void =
   expandMethodBind(className FileAccess, "close", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc fileExists*(_: FileAccess; path: String): bool =
+proc fileExists*(_: typedesc[FileAccess]; path: String): bool =
   expandMethodBind(className FileAccess, "file_exists", 2323990056)
   var `?param` = [getPtr path]
   var ret: encoded bool
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc getModifiedTime*(_: FileAccess; file: String): uint64 =
+proc getModifiedTime*(_: typedesc[FileAccess]; file: String): uint64 =
   expandMethodBind(className FileAccess, "get_modified_time", 1597066294)
   var `?param` = [getPtr file]
   var ret: encoded uint64
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(uint64)
 
-proc getUnixPermissions*(_: FileAccess; file: String): set[FileAccess_UnixPermissionFlags] =
+proc getUnixPermissions*(_: typedesc[FileAccess]; file: String): set[FileAccess_UnixPermissionFlags] =
   expandMethodBind(className FileAccess, "get_unix_permissions", 524341837)
   var `?param` = [getPtr file]
   var ret: encoded set[FileAccess_UnixPermissionFlags]
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(set[FileAccess_UnixPermissionFlags])
 
-proc setUnixPermissions*(_: FileAccess; file: String; permissions: set[FileAccess_UnixPermissionFlags]): Error =
+proc setUnixPermissions*(_: typedesc[FileAccess]; file: String; permissions: set[FileAccess_UnixPermissionFlags]): Error =
   expandMethodBind(className FileAccess, "set_unix_permissions", 846038644)
   var `?param` = [getPtr file, getPtr permissions]
   var ret: encoded Error
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc getHiddenAttribute*(_: FileAccess; file: String): bool =
+proc getHiddenAttribute*(_: typedesc[FileAccess]; file: String): bool =
   expandMethodBind(className FileAccess, "get_hidden_attribute", 2323990056)
   var `?param` = [getPtr file]
   var ret: encoded bool
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc setHiddenAttribute*(_: FileAccess; file: String; hidden: bool): Error =
+proc setHiddenAttribute*(_: typedesc[FileAccess]; file: String; hidden: bool): Error =
   expandMethodBind(className FileAccess, "set_hidden_attribute", 2892558115)
   var `?param` = [getPtr file, getPtr hidden]
   var ret: encoded Error
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc setReadOnlyAttribute*(_: FileAccess; file: String; ro: bool): Error =
+proc setReadOnlyAttribute*(_: typedesc[FileAccess]; file: String; ro: bool): Error =
   expandMethodBind(className FileAccess, "set_read_only_attribute", 2892558115)
   var `?param` = [getPtr file, getPtr ro]
   var ret: encoded Error
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc getReadOnlyAttribute*(_: FileAccess; file: String): bool =
+proc getReadOnlyAttribute*(_: typedesc[FileAccess]; file: String): bool =
   expandMethodBind(className FileAccess, "get_read_only_attribute", 2323990056)
   var `?param` = [getPtr file]
   var ret: encoded bool

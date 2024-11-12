@@ -147,7 +147,7 @@ proc chain*(self: Tween): gdref Tween =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref Tween)
 
-proc interpolateValue*(_: Tween; initialValue: Variant; deltaValue: Variant; elapsedTime: float64; duration: float64; transType: Tween_TransitionType; easeType: Tween_EaseType): Variant =
+proc interpolateValue*(_: typedesc[Tween]; initialValue: Variant; deltaValue: Variant; elapsedTime: float64; duration: float64; transType: Tween_TransitionType; easeType: Tween_EaseType): Variant =
   expandMethodBind(className Tween, "interpolate_value", 3452526450)
   var `?param` = [getPtr initialValue, getPtr deltaValue, getPtr elapsedTime, getPtr duration, getPtr transType, getPtr easeType]
   var ret: encoded Variant

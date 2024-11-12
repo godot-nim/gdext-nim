@@ -83,9 +83,14 @@ proc `type`*(param: RenderableArgument): string =
   param.RenderableParamBase.type
 
 proc `type`*(param: RenderableSelfArgument): string =
-  result = $param.typeSym
-  if param.info.ismutable:
-    return "var " & result
+  if param.isStatic:
+    result.add "typedesc["
+  elif param.info.ismutable:
+    result.add "var "
+  result.add $param.typeSym
+
+  if param.isStatic:
+    result.add "]"
 
 proc `type`*(param: RenderableResult): string =
   param.RenderableParamBase.type

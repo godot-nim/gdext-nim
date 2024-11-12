@@ -118,13 +118,13 @@ proc isFinite*(self: Basis): bool =
   `isFinite(Basis)`(addr self, nil, addr result, 0)
 proc getRotationQuaternion*(self: Basis): Quaternion =
   `getRotationQuaternion(Basis)`(addr self, nil, addr result, 0)
-proc lookingAt*(_: var Basis; target: Vector3; up: Vector3 = vector3(0, 1, 0); useModelFront: bool = false): Basis =
+proc lookingAt*(_: typedesc[Basis]; target: Vector3; up: Vector3 = vector3(0, 1, 0); useModelFront: bool = false): Basis =
   let argArr = [getPtr target, getPtr up, getPtr useModelFront]
   `lookingAt(Basis Vector3 Vector3 bool)`(nil, addr argArr[0], addr result, 3)
-proc fromScale*(_: var Basis; scale: Vector3): Basis =
+proc fromScale*(_: typedesc[Basis]; scale: Vector3): Basis =
   let argArr = [getPtr scale]
   `fromScale(Basis Vector3)`(nil, addr argArr[0], addr result, 1)
-proc fromEuler*(_: var Basis; euler: Vector3; order: Int = 2): Basis =
+proc fromEuler*(_: typedesc[Basis]; euler: Vector3; order: Int = 2): Basis =
   let argArr = [getPtr euler, getPtr order]
   `fromEuler(Basis Vector3 Int)`(nil, addr argArr[0], addr result, 2)
 

@@ -85,34 +85,34 @@ var `inverse(Projection)`: PtrBuiltinMethod
 var `getPixelsPerMeter(Projection Int)`: PtrBuiltinMethod
 var `getLodMultiplier(Projection)`: PtrBuiltinMethod
 
-proc createDepthCorrection*(_: var Projection; flipY: bool): Projection =
+proc createDepthCorrection*(_: typedesc[Projection]; flipY: bool): Projection =
   let argArr = [getPtr flipY]
   `createDepthCorrection(Projection bool)`(nil, addr argArr[0], addr result, 1)
-proc createLightAtlasRect*(_: var Projection; rect: Rect2): Projection =
+proc createLightAtlasRect*(_: typedesc[Projection]; rect: Rect2): Projection =
   let argArr = [getPtr rect]
   `createLightAtlasRect(Projection Rect2)`(nil, addr argArr[0], addr result, 1)
-proc createPerspective*(_: var Projection; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
+proc createPerspective*(_: typedesc[Projection]; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
   let argArr = [getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov]
   `createPerspective(Projection Float Float Float Float bool)`(nil, addr argArr[0], addr result, 5)
-proc createPerspectiveHmd*(_: var Projection; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool; eye: Int; intraocularDist: Float; convergenceDist: Float): Projection =
+proc createPerspectiveHmd*(_: typedesc[Projection]; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool; eye: Int; intraocularDist: Float; convergenceDist: Float): Projection =
   let argArr = [getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov, getPtr eye, getPtr intraocularDist, getPtr convergenceDist]
   `createPerspectiveHmd(Projection Float Float Float Float bool Int Float Float)`(nil, addr argArr[0], addr result, 8)
-proc createForHmd*(_: var Projection; eye: Int; aspect: Float; intraocularDist: Float; displayWidth: Float; displayToLens: Float; oversample: Float; zNear: Float; zFar: Float): Projection =
+proc createForHmd*(_: typedesc[Projection]; eye: Int; aspect: Float; intraocularDist: Float; displayWidth: Float; displayToLens: Float; oversample: Float; zNear: Float; zFar: Float): Projection =
   let argArr = [getPtr eye, getPtr aspect, getPtr intraocularDist, getPtr displayWidth, getPtr displayToLens, getPtr oversample, getPtr zNear, getPtr zFar]
   `createForHmd(Projection Int Float Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 8)
-proc createOrthogonal*(_: var Projection; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
+proc createOrthogonal*(_: typedesc[Projection]; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
   let argArr = [getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar]
   `createOrthogonal(Projection Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 6)
-proc createOrthogonalAspect*(_: var Projection; size: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
+proc createOrthogonalAspect*(_: typedesc[Projection]; size: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
   let argArr = [getPtr size, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov]
   `createOrthogonalAspect(Projection Float Float Float Float bool)`(nil, addr argArr[0], addr result, 5)
-proc createFrustum*(_: var Projection; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
+proc createFrustum*(_: typedesc[Projection]; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
   let argArr = [getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar]
   `createFrustum(Projection Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 6)
-proc createFrustumAspect*(_: var Projection; size: Float; aspect: Float; offset: Vector2; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
+proc createFrustumAspect*(_: typedesc[Projection]; size: Float; aspect: Float; offset: Vector2; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
   let argArr = [getPtr size, getPtr aspect, getPtr offset, getPtr zNear, getPtr zFar, getPtr flipFov]
   `createFrustumAspect(Projection Float Float Vector2 Float Float bool)`(nil, addr argArr[0], addr result, 6)
-proc createFitAabb*(_: var Projection; aabb: Aabb): Projection =
+proc createFitAabb*(_: typedesc[Projection]; aabb: Aabb): Projection =
   let argArr = [getPtr aabb]
   `createFitAabb(Projection Aabb)`(nil, addr argArr[0], addr result, 1)
 proc determinant*(self: Projection): Float =
@@ -128,7 +128,7 @@ proc flippedY*(self: Projection): Projection =
 proc jitterOffseted*(self: Projection; offset: Vector2): Projection =
   let argArr = [getPtr offset]
   `jitterOffseted(Projection Vector2)`(addr self, addr argArr[0], addr result, 1)
-proc getFovy*(_: var Projection; fovx: Float; aspect: Float): Float =
+proc getFovy*(_: typedesc[Projection]; fovx: Float; aspect: Float): Float =
   let argArr = [getPtr fovx, getPtr aspect]
   `getFovy(Projection Float Float)`(nil, addr argArr[0], addr result, 2)
 proc getZFar*(self: Projection): Float =

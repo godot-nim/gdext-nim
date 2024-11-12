@@ -28,7 +28,7 @@ proc getMethodBind*(className: var StringName; methodName: string; hash: int): M
   let name = stringName methodName
   interface_ClassDB_getMethodBind(addr className, addr name, hash)
 
-template expandMethodBind*(className: var StringName; methodName: string; hash: int): untyped =
+template expandMethodBind*(className; methodName; hash) =
   var methodbind {.global, inject.}: MethodBindPtr
   if unlikely(methodbind.isNil):
     methodbind = getMethodBind(className, methodName, hash)

@@ -4,14 +4,14 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc open*(_: DirAccess; path: String): gdref DirAccess =
+proc open*(_: typedesc[DirAccess]; path: String): gdref DirAccess =
   expandMethodBind(className DirAccess, "open", 1923528528)
   var `?param` = [getPtr path]
   var ret: encoded gdref DirAccess
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref DirAccess)
 
-proc getOpenError*(_: DirAccess): Error =
+proc getOpenError*(_: typedesc[DirAccess]): Error =
   expandMethodBind(className DirAccess, "get_open_error", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(nil, addr ret)
@@ -45,7 +45,7 @@ proc getFiles*(self: DirAccess): PackedStringArray =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getFilesAt*(_: DirAccess; path: String): PackedStringArray =
+proc getFilesAt*(_: typedesc[DirAccess]; path: String): PackedStringArray =
   expandMethodBind(className DirAccess, "get_files_at", 3538744774)
   var `?param` = [getPtr path]
   var ret: encoded PackedStringArray
@@ -58,20 +58,20 @@ proc getDirectories*(self: DirAccess): PackedStringArray =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getDirectoriesAt*(_: DirAccess; path: String): PackedStringArray =
+proc getDirectoriesAt*(_: typedesc[DirAccess]; path: String): PackedStringArray =
   expandMethodBind(className DirAccess, "get_directories_at", 3538744774)
   var `?param` = [getPtr path]
   var ret: encoded PackedStringArray
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getDriveCount*(_: DirAccess): int32 =
+proc getDriveCount*(_: typedesc[DirAccess]): int32 =
   expandMethodBind(className DirAccess, "get_drive_count", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc getDriveName*(_: DirAccess; idx: int32): String =
+proc getDriveName*(_: typedesc[DirAccess]; idx: int32): String =
   expandMethodBind(className DirAccess, "get_drive_name", 990163283)
   var `?param` = [getPtr idx]
   var ret: encoded String
@@ -105,7 +105,7 @@ proc makeDir*(self: DirAccess; path: String): Error =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc makeDirAbsolute*(_: DirAccess; path: String): Error =
+proc makeDirAbsolute*(_: typedesc[DirAccess]; path: String): Error =
   expandMethodBind(className DirAccess, "make_dir_absolute", 166001499)
   var `?param` = [getPtr path]
   var ret: encoded Error
@@ -119,7 +119,7 @@ proc makeDirRecursive*(self: DirAccess; path: String): Error =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc makeDirRecursiveAbsolute*(_: DirAccess; path: String): Error =
+proc makeDirRecursiveAbsolute*(_: typedesc[DirAccess]; path: String): Error =
   expandMethodBind(className DirAccess, "make_dir_recursive_absolute", 166001499)
   var `?param` = [getPtr path]
   var ret: encoded Error
@@ -140,7 +140,7 @@ proc dirExists*(self: DirAccess; path: String): bool =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc dirExistsAbsolute*(_: DirAccess; path: String): bool =
+proc dirExistsAbsolute*(_: typedesc[DirAccess]; path: String): bool =
   expandMethodBind(className DirAccess, "dir_exists_absolute", 2323990056)
   var `?param` = [getPtr path]
   var ret: encoded bool
@@ -160,7 +160,7 @@ proc copy*(self: DirAccess; `from`: String; to: String; chmodFlags: int32 = -1):
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc copyAbsolute*(_: DirAccess; `from`: String; to: String; chmodFlags: int32 = -1): Error =
+proc copyAbsolute*(_: typedesc[DirAccess]; `from`: String; to: String; chmodFlags: int32 = -1): Error =
   expandMethodBind(className DirAccess, "copy_absolute", 1063198817)
   var `?param` = [getPtr `from`, getPtr to, getPtr chmodFlags]
   var ret: encoded Error
@@ -174,7 +174,7 @@ proc rename*(self: DirAccess; `from`: String; to: String): Error =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc renameAbsolute*(_: DirAccess; `from`: String; to: String): Error =
+proc renameAbsolute*(_: typedesc[DirAccess]; `from`: String; to: String): Error =
   expandMethodBind(className DirAccess, "rename_absolute", 852856452)
   var `?param` = [getPtr `from`, getPtr to]
   var ret: encoded Error
@@ -188,7 +188,7 @@ proc remove*(self: DirAccess; path: String): Error =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc removeAbsolute*(_: DirAccess; path: String): Error =
+proc removeAbsolute*(_: typedesc[DirAccess]; path: String): Error =
   expandMethodBind(className DirAccess, "remove_absolute", 166001499)
   var `?param` = [getPtr path]
   var ret: encoded Error

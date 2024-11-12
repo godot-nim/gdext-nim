@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc fromNode*(_: GltfPhysicsBody; bodyNode: CollisionObject3D): gdref GltfPhysicsBody =
+proc fromNode*(_: typedesc[GltfPhysicsBody]; bodyNode: CollisionObject3D): gdref GltfPhysicsBody =
   expandMethodBind(className GltfPhysicsBody, "from_node", 420544174)
   var `?param` = [getPtr bodyNode]
   var ret: encoded gdref GltfPhysicsBody
@@ -17,7 +17,7 @@ proc toNode*(self: GltfPhysicsBody): CollisionObject3D =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(CollisionObject3D)
 
-proc fromDictionary*(_: GltfPhysicsBody; dictionary: Dictionary): gdref GltfPhysicsBody =
+proc fromDictionary*(_: typedesc[GltfPhysicsBody]; dictionary: Dictionary): gdref GltfPhysicsBody =
   expandMethodBind(className GltfPhysicsBody, "from_dictionary", 1177544336)
   var `?param` = [getPtr dictionary]
   var ret: encoded gdref GltfPhysicsBody

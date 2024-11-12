@@ -536,22 +536,22 @@ proc hexDecode*(self: String): PackedByteArray =
   `hexDecode(String)`(addr self, nil, addr result, 0)
 proc toWcharBuffer*(self: String): PackedByteArray =
   `toWcharBuffer(String)`(addr self, nil, addr result, 0)
-proc numScientific*(_: var String; number: Float): String =
+proc numScientific*(_: typedesc[String]; number: Float): String =
   let argArr = [getPtr number]
   `numScientific(String Float)`(nil, addr argArr[0], addr result, 1)
-proc num*(_: var String; number: Float; decimals: Int = -1): String =
+proc num*(_: typedesc[String]; number: Float; decimals: Int = -1): String =
   let argArr = [getPtr number, getPtr decimals]
   `num(String Float Int)`(nil, addr argArr[0], addr result, 2)
-proc numInt64*(_: var String; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
+proc numInt64*(_: typedesc[String]; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
   let argArr = [getPtr number, getPtr base, getPtr capitalizeHex]
   `numInt64(String Int Int bool)`(nil, addr argArr[0], addr result, 3)
-proc numUint64*(_: var String; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
+proc numUint64*(_: typedesc[String]; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
   let argArr = [getPtr number, getPtr base, getPtr capitalizeHex]
   `numUint64(String Int Int bool)`(nil, addr argArr[0], addr result, 3)
-proc chr*(_: var String; char: Int): String =
+proc chr*(_: typedesc[String]; char: Int): String =
   let argArr = [getPtr char]
   `chr(String Int)`(nil, addr argArr[0], addr result, 1)
-proc humanizeSize*(_: var String; size: Int): String =
+proc humanizeSize*(_: typedesc[String]; size: Int): String =
   let argArr = [getPtr size]
   `humanizeSize(String Int)`(nil, addr argArr[0], addr result, 1)
 

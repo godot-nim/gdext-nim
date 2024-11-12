@@ -121,7 +121,7 @@ proc sphericalCubicInterpolateInTime*(self: Quaternion; b: Quaternion; preA: Qua
 proc getEuler*(self: Quaternion; order: Int = 2): Vector3 =
   let argArr = [getPtr order]
   `getEuler(Quaternion Int)`(addr self, addr argArr[0], addr result, 1)
-proc fromEuler*(_: var Quaternion; euler: Vector3): Quaternion =
+proc fromEuler*(_: typedesc[Quaternion]; euler: Vector3): Quaternion =
   let argArr = [getPtr euler]
   `fromEuler(Quaternion Vector3)`(nil, addr argArr[0], addr result, 1)
 proc getAxis*(self: Quaternion): Vector3 =

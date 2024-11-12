@@ -102,21 +102,21 @@ proc clearMipmaps*(self: Image): void =
   expandMethodBind(className Image, "clear_mipmaps", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc create*(_: Image; width: int32; height: int32; useMipmaps: bool; format: Image_Format): gdref Image =
+proc create*(_: typedesc[Image]; width: int32; height: int32; useMipmaps: bool; format: Image_Format): gdref Image =
   expandMethodBind(className Image, "create", 986942177)
   var `?param` = [getPtr width, getPtr height, getPtr useMipmaps, getPtr format]
   var ret: encoded gdref Image
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc createEmpty*(_: Image; width: int32; height: int32; useMipmaps: bool; format: Image_Format): gdref Image =
-  expandMethodBind(className Image, "create_empty", 986942177)
+proc createEmpty*(_: typedesc[Image]; width: int32; height: int32; useMipmaps: bool; format: Image_Format): gdref Image =
+  expandMethodBind(className classindex.Image, "create_empty", 986942177)
   var `?param` = [getPtr width, getPtr height, getPtr useMipmaps, getPtr format]
   var ret: encoded gdref Image
   methodbind.ptrcall(addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc createFromData*(_: Image; width: int32; height: int32; useMipmaps: bool; format: Image_Format; data: PackedByteArray): gdref Image =
+proc createFromData*(_: typedesc[Image]; width: int32; height: int32; useMipmaps: bool; format: Image_Format; data: PackedByteArray): gdref Image =
   expandMethodBind(className Image, "create_from_data", 299398494)
   var `?param` = [getPtr width, getPtr height, getPtr useMipmaps, getPtr format, getPtr data]
   var ret: encoded gdref Image
@@ -141,7 +141,7 @@ proc load*(self: Image; path: String): Error =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc loadFromFile*(_: Image; path: String): gdref Image =
+proc loadFromFile*(_: typedesc[Image]; path: String): gdref Image =
   expandMethodBind(className Image, "load_from_file", 736337515)
   var `?param` = [getPtr path]
   var ret: encoded gdref Image
