@@ -63,6 +63,8 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
 
 proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
   let class = createClass[T](p_object)
+  interfaceObjectSetInstance(p_object, addr classname T, cast[pointer](class))
+  interfaceObjectSetInstanceBinding(p_object, environment.library, cast[pointer](class), addr T.callbacks)
   result = cast[pointer](class)
   when Dev.debugCallbacks:
     privateAccess Object

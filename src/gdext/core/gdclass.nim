@@ -112,7 +112,10 @@ template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtu
 
 proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
   if p_engine_object.isNil: return
-  interface_objectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
+  let getInstanceBinding = interface_objectGetInstanceBinding
+  result = p_engine_object.getInstanceBinding(environment.library, nil)
+  if result.isNil:
+    result = p_engine_object.getInstanceBinding(environment.library, addr callbacks)
 
 proc getInstance*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
   cast[T](p_engine_object.getInstance(T.callbacks))
