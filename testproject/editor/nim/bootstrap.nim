@@ -5,6 +5,8 @@ import gdext
 # import myclass
 import classes/gdproptestnode
 import classes/gdproptestnode_pragmas
+import classes/gdsignalpublisher
+import classes/gdsignalsubscriber
 
 # ==================================
 
@@ -13,6 +15,8 @@ proc register_classes {.execon: initialize_scene.} =
   # register MyClass
   register PropTestNode
   register PropTestNodePragmas
+  register SignalPublisher
+  register SignalSubscriber
 
   # ====================================
   discard
