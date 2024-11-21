@@ -191,17 +191,17 @@ template `drawCenter=`*(self: StyleBoxFlat; value) = self.setDrawCenter(value)
 template skew*(self: StyleBoxFlat): untyped = self.getSkew()
 template `skew=`*(self: StyleBoxFlat; value) = self.setSkew(value)
 
-template borderWidthLeft*(self: StyleBoxFlat): untyped = self.getBorderWidth(0)
-template `borderWidthLeft=`*(self: StyleBoxFlat; value) = self.setBorderWidth(0, value)
+template borderWidthLeft*(self: StyleBoxFlat): untyped = self.getBorderWidth(Side(0))
+template `borderWidthLeft=`*(self: StyleBoxFlat; value) = self.setBorderWidth(Side(0), value)
 
-template borderWidthTop*(self: StyleBoxFlat): untyped = self.getBorderWidth(1)
-template `borderWidthTop=`*(self: StyleBoxFlat; value) = self.setBorderWidth(1, value)
+template borderWidthTop*(self: StyleBoxFlat): untyped = self.getBorderWidth(Side(1))
+template `borderWidthTop=`*(self: StyleBoxFlat; value) = self.setBorderWidth(Side(1), value)
 
-template borderWidthRight*(self: StyleBoxFlat): untyped = self.getBorderWidth(2)
-template `borderWidthRight=`*(self: StyleBoxFlat; value) = self.setBorderWidth(2, value)
+template borderWidthRight*(self: StyleBoxFlat): untyped = self.getBorderWidth(Side(2))
+template `borderWidthRight=`*(self: StyleBoxFlat; value) = self.setBorderWidth(Side(2), value)
 
-template borderWidthBottom*(self: StyleBoxFlat): untyped = self.getBorderWidth(3)
-template `borderWidthBottom=`*(self: StyleBoxFlat; value) = self.setBorderWidth(3, value)
+template borderWidthBottom*(self: StyleBoxFlat): untyped = self.getBorderWidth(Side(3))
+template `borderWidthBottom=`*(self: StyleBoxFlat; value) = self.setBorderWidth(Side(3), value)
 
 template borderColor*(self: StyleBoxFlat): untyped = self.getBorderColor()
 template `borderColor=`*(self: StyleBoxFlat; value) = self.setBorderColor(value)
@@ -209,32 +209,32 @@ template `borderColor=`*(self: StyleBoxFlat; value) = self.setBorderColor(value)
 template borderBlend*(self: StyleBoxFlat): untyped = self.getBorderBlend()
 template `borderBlend=`*(self: StyleBoxFlat; value) = self.setBorderBlend(value)
 
-template cornerRadiusTopLeft*(self: StyleBoxFlat): untyped = self.getCornerRadius(0)
-template `cornerRadiusTopLeft=`*(self: StyleBoxFlat; value) = self.setCornerRadius(0, value)
+template cornerRadiusTopLeft*(self: StyleBoxFlat): untyped = self.getCornerRadius(Corner(0))
+template `cornerRadiusTopLeft=`*(self: StyleBoxFlat; value) = self.setCornerRadius(Corner(0), value)
 
-template cornerRadiusTopRight*(self: StyleBoxFlat): untyped = self.getCornerRadius(1)
-template `cornerRadiusTopRight=`*(self: StyleBoxFlat; value) = self.setCornerRadius(1, value)
+template cornerRadiusTopRight*(self: StyleBoxFlat): untyped = self.getCornerRadius(Corner(1))
+template `cornerRadiusTopRight=`*(self: StyleBoxFlat; value) = self.setCornerRadius(Corner(1), value)
 
-template cornerRadiusBottomRight*(self: StyleBoxFlat): untyped = self.getCornerRadius(2)
-template `cornerRadiusBottomRight=`*(self: StyleBoxFlat; value) = self.setCornerRadius(2, value)
+template cornerRadiusBottomRight*(self: StyleBoxFlat): untyped = self.getCornerRadius(Corner(2))
+template `cornerRadiusBottomRight=`*(self: StyleBoxFlat; value) = self.setCornerRadius(Corner(2), value)
 
-template cornerRadiusBottomLeft*(self: StyleBoxFlat): untyped = self.getCornerRadius(3)
-template `cornerRadiusBottomLeft=`*(self: StyleBoxFlat; value) = self.setCornerRadius(3, value)
+template cornerRadiusBottomLeft*(self: StyleBoxFlat): untyped = self.getCornerRadius(Corner(3))
+template `cornerRadiusBottomLeft=`*(self: StyleBoxFlat; value) = self.setCornerRadius(Corner(3), value)
 
 template cornerDetail*(self: StyleBoxFlat): untyped = self.getCornerDetail()
 template `cornerDetail=`*(self: StyleBoxFlat; value) = self.setCornerDetail(value)
 
-template expandMarginLeft*(self: StyleBoxFlat): untyped = self.getExpandMargin(0)
-template `expandMarginLeft=`*(self: StyleBoxFlat; value) = self.setExpandMargin(0, value)
+template expandMarginLeft*(self: StyleBoxFlat): untyped = self.getExpandMargin(Side(0))
+template `expandMarginLeft=`*(self: StyleBoxFlat; value) = self.setExpandMargin(Side(0), value)
 
-template expandMarginTop*(self: StyleBoxFlat): untyped = self.getExpandMargin(1)
-template `expandMarginTop=`*(self: StyleBoxFlat; value) = self.setExpandMargin(1, value)
+template expandMarginTop*(self: StyleBoxFlat): untyped = self.getExpandMargin(Side(1))
+template `expandMarginTop=`*(self: StyleBoxFlat; value) = self.setExpandMargin(Side(1), value)
 
-template expandMarginRight*(self: StyleBoxFlat): untyped = self.getExpandMargin(2)
-template `expandMarginRight=`*(self: StyleBoxFlat; value) = self.setExpandMargin(2, value)
+template expandMarginRight*(self: StyleBoxFlat): untyped = self.getExpandMargin(Side(2))
+template `expandMarginRight=`*(self: StyleBoxFlat; value) = self.setExpandMargin(Side(2), value)
 
-template expandMarginBottom*(self: StyleBoxFlat): untyped = self.getExpandMargin(3)
-template `expandMarginBottom=`*(self: StyleBoxFlat; value) = self.setExpandMargin(3, value)
+template expandMarginBottom*(self: StyleBoxFlat): untyped = self.getExpandMargin(Side(3))
+template `expandMarginBottom=`*(self: StyleBoxFlat; value) = self.setExpandMargin(Side(3), value)
 
 template shadowColor*(self: StyleBoxFlat): untyped = self.getShadowColor()
 template `shadowColor=`*(self: StyleBoxFlat; value) = self.setShadowColor(value)

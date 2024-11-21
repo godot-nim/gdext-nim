@@ -16,20 +16,20 @@ proc getParam*(self: ConeTwistJoint3D; param: ConeTwistJoint3D_Param): Float =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Float)
 
-template swingSpan*(self: ConeTwistJoint3D): untyped = self.getParam(0)
-template `swingSpan=`*(self: ConeTwistJoint3D; value) = self.setParam(0, value)
+template swingSpan*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(0))
+template `swingSpan=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(0), value)
 
-template twistSpan*(self: ConeTwistJoint3D): untyped = self.getParam(1)
-template `twistSpan=`*(self: ConeTwistJoint3D; value) = self.setParam(1, value)
+template twistSpan*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(1))
+template `twistSpan=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(1), value)
 
-template bias*(self: ConeTwistJoint3D): untyped = self.getParam(2)
-template `bias=`*(self: ConeTwistJoint3D; value) = self.setParam(2, value)
+template bias*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(2))
+template `bias=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(2), value)
 
-template softness*(self: ConeTwistJoint3D): untyped = self.getParam(3)
-template `softness=`*(self: ConeTwistJoint3D; value) = self.setParam(3, value)
+template softness*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(3))
+template `softness=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(3), value)
 
-template relaxation*(self: ConeTwistJoint3D): untyped = self.getParam(4)
-template `relaxation=`*(self: ConeTwistJoint3D; value) = self.setParam(4, value)
+template relaxation*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(4))
+template `relaxation=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(4), value)
 
 const ConeTwistJoint3D_vmap =
   Joint3D.vmap.concat initTable[string, string]()

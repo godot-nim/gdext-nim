@@ -140,17 +140,17 @@ proc getCullMask*(self: Decal): uint32 =
 template size*(self: Decal): untyped = self.getSize()
 template `size=`*(self: Decal; value) = self.setSize(value)
 
-template textureAlbedo*(self: Decal): untyped = self.getTexture(0)
-template `textureAlbedo=`*(self: Decal; value) = self.setTexture(0, value)
+template textureAlbedo*(self: Decal): untyped = self.getTexture(Decal_DecalTexture(0))
+template `textureAlbedo=`*(self: Decal; value) = self.setTexture(Decal_DecalTexture(0), value)
 
-template textureNormal*(self: Decal): untyped = self.getTexture(1)
-template `textureNormal=`*(self: Decal; value) = self.setTexture(1, value)
+template textureNormal*(self: Decal): untyped = self.getTexture(Decal_DecalTexture(1))
+template `textureNormal=`*(self: Decal; value) = self.setTexture(Decal_DecalTexture(1), value)
 
-template textureOrm*(self: Decal): untyped = self.getTexture(2)
-template `textureOrm=`*(self: Decal; value) = self.setTexture(2, value)
+template textureOrm*(self: Decal): untyped = self.getTexture(Decal_DecalTexture(2))
+template `textureOrm=`*(self: Decal; value) = self.setTexture(Decal_DecalTexture(2), value)
 
-template textureEmission*(self: Decal): untyped = self.getTexture(3)
-template `textureEmission=`*(self: Decal; value) = self.setTexture(3, value)
+template textureEmission*(self: Decal): untyped = self.getTexture(Decal_DecalTexture(3))
+template `textureEmission=`*(self: Decal; value) = self.setTexture(Decal_DecalTexture(3), value)
 
 template emissionEnergy*(self: Decal): untyped = self.getEmissionEnergy()
 template `emissionEnergy=`*(self: Decal; value) = self.setEmissionEnergy(value)

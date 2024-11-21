@@ -107,29 +107,29 @@ proc getVAxisStretchMode*(self: StyleBoxTexture): StyleBoxTexture_AxisStretchMod
 template texture*(self: StyleBoxTexture): untyped = self.getTexture()
 template `texture=`*(self: StyleBoxTexture; value) = self.setTexture(value)
 
-template textureMarginLeft*(self: StyleBoxTexture): untyped = self.getTextureMargin(0)
-template `textureMarginLeft=`*(self: StyleBoxTexture; value) = self.setTextureMargin(0, value)
+template textureMarginLeft*(self: StyleBoxTexture): untyped = self.getTextureMargin(Side(0))
+template `textureMarginLeft=`*(self: StyleBoxTexture; value) = self.setTextureMargin(Side(0), value)
 
-template textureMarginTop*(self: StyleBoxTexture): untyped = self.getTextureMargin(1)
-template `textureMarginTop=`*(self: StyleBoxTexture; value) = self.setTextureMargin(1, value)
+template textureMarginTop*(self: StyleBoxTexture): untyped = self.getTextureMargin(Side(1))
+template `textureMarginTop=`*(self: StyleBoxTexture; value) = self.setTextureMargin(Side(1), value)
 
-template textureMarginRight*(self: StyleBoxTexture): untyped = self.getTextureMargin(2)
-template `textureMarginRight=`*(self: StyleBoxTexture; value) = self.setTextureMargin(2, value)
+template textureMarginRight*(self: StyleBoxTexture): untyped = self.getTextureMargin(Side(2))
+template `textureMarginRight=`*(self: StyleBoxTexture; value) = self.setTextureMargin(Side(2), value)
 
-template textureMarginBottom*(self: StyleBoxTexture): untyped = self.getTextureMargin(3)
-template `textureMarginBottom=`*(self: StyleBoxTexture; value) = self.setTextureMargin(3, value)
+template textureMarginBottom*(self: StyleBoxTexture): untyped = self.getTextureMargin(Side(3))
+template `textureMarginBottom=`*(self: StyleBoxTexture; value) = self.setTextureMargin(Side(3), value)
 
-template expandMarginLeft*(self: StyleBoxTexture): untyped = self.getExpandMargin(0)
-template `expandMarginLeft=`*(self: StyleBoxTexture; value) = self.setExpandMargin(0, value)
+template expandMarginLeft*(self: StyleBoxTexture): untyped = self.getExpandMargin(Side(0))
+template `expandMarginLeft=`*(self: StyleBoxTexture; value) = self.setExpandMargin(Side(0), value)
 
-template expandMarginTop*(self: StyleBoxTexture): untyped = self.getExpandMargin(1)
-template `expandMarginTop=`*(self: StyleBoxTexture; value) = self.setExpandMargin(1, value)
+template expandMarginTop*(self: StyleBoxTexture): untyped = self.getExpandMargin(Side(1))
+template `expandMarginTop=`*(self: StyleBoxTexture; value) = self.setExpandMargin(Side(1), value)
 
-template expandMarginRight*(self: StyleBoxTexture): untyped = self.getExpandMargin(2)
-template `expandMarginRight=`*(self: StyleBoxTexture; value) = self.setExpandMargin(2, value)
+template expandMarginRight*(self: StyleBoxTexture): untyped = self.getExpandMargin(Side(2))
+template `expandMarginRight=`*(self: StyleBoxTexture; value) = self.setExpandMargin(Side(2), value)
 
-template expandMarginBottom*(self: StyleBoxTexture): untyped = self.getExpandMargin(3)
-template `expandMarginBottom=`*(self: StyleBoxTexture; value) = self.setExpandMargin(3, value)
+template expandMarginBottom*(self: StyleBoxTexture): untyped = self.getExpandMargin(Side(3))
+template `expandMarginBottom=`*(self: StyleBoxTexture; value) = self.setExpandMargin(Side(3), value)
 
 template axisStretchHorizontal*(self: StyleBoxTexture): untyped = self.getHAxisStretchMode()
 template `axisStretchHorizontal=`*(self: StyleBoxTexture; value) = self.setHAxisStretchMode(value)

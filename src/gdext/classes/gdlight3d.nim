@@ -165,11 +165,11 @@ proc getCorrelatedColor*(self: Light3D): Color =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Color)
 
-template lightIntensityLumens*(self: Light3D): untyped = self.getParam(20)
-template `lightIntensityLumens=`*(self: Light3D; value) = self.setParam(20, value)
+template lightIntensityLumens*(self: Light3D): untyped = self.getParam(Light3D_Param(20))
+template `lightIntensityLumens=`*(self: Light3D; value) = self.setParam(Light3D_Param(20), value)
 
-template lightIntensityLux*(self: Light3D): untyped = self.getParam(20)
-template `lightIntensityLux=`*(self: Light3D; value) = self.setParam(20, value)
+template lightIntensityLux*(self: Light3D): untyped = self.getParam(Light3D_Param(20))
+template `lightIntensityLux=`*(self: Light3D; value) = self.setParam(Light3D_Param(20), value)
 
 template lightTemperature*(self: Light3D): untyped = self.getTemperature()
 template `lightTemperature=`*(self: Light3D; value) = self.setTemperature(value)
@@ -177,29 +177,29 @@ template `lightTemperature=`*(self: Light3D; value) = self.setTemperature(value)
 template lightColor*(self: Light3D): untyped = self.getColor()
 template `lightColor=`*(self: Light3D; value) = self.setColor(value)
 
-template lightEnergy*(self: Light3D): untyped = self.getParam(0)
-template `lightEnergy=`*(self: Light3D; value) = self.setParam(0, value)
+template lightEnergy*(self: Light3D): untyped = self.getParam(Light3D_Param(0))
+template `lightEnergy=`*(self: Light3D; value) = self.setParam(Light3D_Param(0), value)
 
-template lightIndirectEnergy*(self: Light3D): untyped = self.getParam(1)
-template `lightIndirectEnergy=`*(self: Light3D; value) = self.setParam(1, value)
+template lightIndirectEnergy*(self: Light3D): untyped = self.getParam(Light3D_Param(1))
+template `lightIndirectEnergy=`*(self: Light3D; value) = self.setParam(Light3D_Param(1), value)
 
-template lightVolumetricFogEnergy*(self: Light3D): untyped = self.getParam(2)
-template `lightVolumetricFogEnergy=`*(self: Light3D; value) = self.setParam(2, value)
+template lightVolumetricFogEnergy*(self: Light3D): untyped = self.getParam(Light3D_Param(2))
+template `lightVolumetricFogEnergy=`*(self: Light3D; value) = self.setParam(Light3D_Param(2), value)
 
 template lightProjector*(self: Light3D): untyped = self.getProjector()
 template `lightProjector=`*(self: Light3D; value) = self.setProjector(value)
 
-template lightSize*(self: Light3D): untyped = self.getParam(5)
-template `lightSize=`*(self: Light3D; value) = self.setParam(5, value)
+template lightSize*(self: Light3D): untyped = self.getParam(Light3D_Param(5))
+template `lightSize=`*(self: Light3D; value) = self.setParam(Light3D_Param(5), value)
 
-template lightAngularDistance*(self: Light3D): untyped = self.getParam(5)
-template `lightAngularDistance=`*(self: Light3D; value) = self.setParam(5, value)
+template lightAngularDistance*(self: Light3D): untyped = self.getParam(Light3D_Param(5))
+template `lightAngularDistance=`*(self: Light3D; value) = self.setParam(Light3D_Param(5), value)
 
 template lightNegative*(self: Light3D): untyped = self.isNegative()
 template `lightNegative=`*(self: Light3D; value) = self.setNegative(value)
 
-template lightSpecular*(self: Light3D): untyped = self.getParam(3)
-template `lightSpecular=`*(self: Light3D; value) = self.setParam(3, value)
+template lightSpecular*(self: Light3D): untyped = self.getParam(Light3D_Param(3))
+template `lightSpecular=`*(self: Light3D; value) = self.setParam(Light3D_Param(3), value)
 
 template lightBakeMode*(self: Light3D): untyped = self.getBakeMode()
 template `lightBakeMode=`*(self: Light3D; value) = self.setBakeMode(value)
@@ -210,23 +210,23 @@ template `lightCullMask=`*(self: Light3D; value) = self.setCullMask(value)
 template shadowEnabled*(self: Light3D): untyped = self.hasShadow()
 template `shadowEnabled=`*(self: Light3D; value) = self.setShadow(value)
 
-template shadowBias*(self: Light3D): untyped = self.getParam(15)
-template `shadowBias=`*(self: Light3D; value) = self.setParam(15, value)
+template shadowBias*(self: Light3D): untyped = self.getParam(Light3D_Param(15))
+template `shadowBias=`*(self: Light3D; value) = self.setParam(Light3D_Param(15), value)
 
-template shadowNormalBias*(self: Light3D): untyped = self.getParam(14)
-template `shadowNormalBias=`*(self: Light3D; value) = self.setParam(14, value)
+template shadowNormalBias*(self: Light3D): untyped = self.getParam(Light3D_Param(14))
+template `shadowNormalBias=`*(self: Light3D; value) = self.setParam(Light3D_Param(14), value)
 
 template shadowReverseCullFace*(self: Light3D): untyped = self.getShadowReverseCullFace()
 template `shadowReverseCullFace=`*(self: Light3D; value) = self.setShadowReverseCullFace(value)
 
-template shadowTransmittanceBias*(self: Light3D): untyped = self.getParam(19)
-template `shadowTransmittanceBias=`*(self: Light3D; value) = self.setParam(19, value)
+template shadowTransmittanceBias*(self: Light3D): untyped = self.getParam(Light3D_Param(19))
+template `shadowTransmittanceBias=`*(self: Light3D; value) = self.setParam(Light3D_Param(19), value)
 
-template shadowOpacity*(self: Light3D): untyped = self.getParam(17)
-template `shadowOpacity=`*(self: Light3D; value) = self.setParam(17, value)
+template shadowOpacity*(self: Light3D): untyped = self.getParam(Light3D_Param(17))
+template `shadowOpacity=`*(self: Light3D; value) = self.setParam(Light3D_Param(17), value)
 
-template shadowBlur*(self: Light3D): untyped = self.getParam(18)
-template `shadowBlur=`*(self: Light3D; value) = self.setParam(18, value)
+template shadowBlur*(self: Light3D): untyped = self.getParam(Light3D_Param(18))
+template `shadowBlur=`*(self: Light3D; value) = self.setParam(Light3D_Param(18), value)
 
 template distanceFadeEnabled*(self: Light3D): untyped = self.isDistanceFadeEnabled()
 template `distanceFadeEnabled=`*(self: Light3D; value) = self.setEnableDistanceFade(value)

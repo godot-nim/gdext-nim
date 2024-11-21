@@ -55,7 +55,7 @@ proc unhandledKeyInput(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[
 template unhandledKeyInput_bind*(_: typedesc[Node]): ClassCallVirtual = unhandledKeyInput
 
 proc printOrphanNodes*(_: typedesc[Node]): void =
-  expandMethodBind(className(Node), "print_orphan_nodes", 3218959716)
+  expandMethodBind(className Node, "print_orphan_nodes", 3218959716)
   methodbind.ptrcall(nil)
 
 proc addSibling*(self: Node; sibling: Node; forceReadableName: bool = false): void =

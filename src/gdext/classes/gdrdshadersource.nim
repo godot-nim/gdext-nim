@@ -27,20 +27,20 @@ proc getLanguage*(self: RdShaderSource): RenderingDevice_ShaderLanguage =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(RenderingDevice_ShaderLanguage)
 
-template sourceVertex*(self: RdShaderSource): untyped = self.getStageSource(0)
-template `sourceVertex=`*(self: RdShaderSource; value) = self.setStageSource(0, value)
+template sourceVertex*(self: RdShaderSource): untyped = self.getStageSource(RenderingDevice_ShaderStage(0))
+template `sourceVertex=`*(self: RdShaderSource; value) = self.setStageSource(RenderingDevice_ShaderStage(0), value)
 
-template sourceFragment*(self: RdShaderSource): untyped = self.getStageSource(1)
-template `sourceFragment=`*(self: RdShaderSource; value) = self.setStageSource(1, value)
+template sourceFragment*(self: RdShaderSource): untyped = self.getStageSource(RenderingDevice_ShaderStage(1))
+template `sourceFragment=`*(self: RdShaderSource; value) = self.setStageSource(RenderingDevice_ShaderStage(1), value)
 
-template sourceTesselationControl*(self: RdShaderSource): untyped = self.getStageSource(2)
-template `sourceTesselationControl=`*(self: RdShaderSource; value) = self.setStageSource(2, value)
+template sourceTesselationControl*(self: RdShaderSource): untyped = self.getStageSource(RenderingDevice_ShaderStage(2))
+template `sourceTesselationControl=`*(self: RdShaderSource; value) = self.setStageSource(RenderingDevice_ShaderStage(2), value)
 
-template sourceTesselationEvaluation*(self: RdShaderSource): untyped = self.getStageSource(3)
-template `sourceTesselationEvaluation=`*(self: RdShaderSource; value) = self.setStageSource(3, value)
+template sourceTesselationEvaluation*(self: RdShaderSource): untyped = self.getStageSource(RenderingDevice_ShaderStage(3))
+template `sourceTesselationEvaluation=`*(self: RdShaderSource; value) = self.setStageSource(RenderingDevice_ShaderStage(3), value)
 
-template sourceCompute*(self: RdShaderSource): untyped = self.getStageSource(4)
-template `sourceCompute=`*(self: RdShaderSource; value) = self.setStageSource(4, value)
+template sourceCompute*(self: RdShaderSource): untyped = self.getStageSource(RenderingDevice_ShaderStage(4))
+template `sourceCompute=`*(self: RdShaderSource; value) = self.setStageSource(RenderingDevice_ShaderStage(4), value)
 
 template language*(self: RdShaderSource): untyped = self.getLanguage()
 template `language=`*(self: RdShaderSource; value) = self.setLanguage(value)

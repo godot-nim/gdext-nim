@@ -292,17 +292,17 @@ template `customViewport=`*(self: Camera2D; value) = self.setCustomViewport(valu
 template processCallback*(self: Camera2D): untyped = self.getProcessCallback()
 template `processCallback=`*(self: Camera2D; value) = self.setProcessCallback(value)
 
-template limitLeft*(self: Camera2D): untyped = self.getLimit(0)
-template `limitLeft=`*(self: Camera2D; value) = self.setLimit(0, value)
+template limitLeft*(self: Camera2D): untyped = self.getLimit(Side(0))
+template `limitLeft=`*(self: Camera2D; value) = self.setLimit(Side(0), value)
 
-template limitTop*(self: Camera2D): untyped = self.getLimit(1)
-template `limitTop=`*(self: Camera2D; value) = self.setLimit(1, value)
+template limitTop*(self: Camera2D): untyped = self.getLimit(Side(1))
+template `limitTop=`*(self: Camera2D; value) = self.setLimit(Side(1), value)
 
-template limitRight*(self: Camera2D): untyped = self.getLimit(2)
-template `limitRight=`*(self: Camera2D; value) = self.setLimit(2, value)
+template limitRight*(self: Camera2D): untyped = self.getLimit(Side(2))
+template `limitRight=`*(self: Camera2D; value) = self.setLimit(Side(2), value)
 
-template limitBottom*(self: Camera2D): untyped = self.getLimit(3)
-template `limitBottom=`*(self: Camera2D; value) = self.setLimit(3, value)
+template limitBottom*(self: Camera2D): untyped = self.getLimit(Side(3))
+template `limitBottom=`*(self: Camera2D; value) = self.setLimit(Side(3), value)
 
 template limitSmoothed*(self: Camera2D): untyped = self.isLimitSmoothingEnabled()
 template `limitSmoothed=`*(self: Camera2D; value) = self.setLimitSmoothingEnabled(value)
@@ -331,17 +331,17 @@ template `dragHorizontalOffset=`*(self: Camera2D; value) = self.setDragHorizonta
 template dragVerticalOffset*(self: Camera2D): untyped = self.getDragVerticalOffset()
 template `dragVerticalOffset=`*(self: Camera2D; value) = self.setDragVerticalOffset(value)
 
-template dragLeftMargin*(self: Camera2D): untyped = self.getDragMargin(0)
-template `dragLeftMargin=`*(self: Camera2D; value) = self.setDragMargin(0, value)
+template dragLeftMargin*(self: Camera2D): untyped = self.getDragMargin(Side(0))
+template `dragLeftMargin=`*(self: Camera2D; value) = self.setDragMargin(Side(0), value)
 
-template dragTopMargin*(self: Camera2D): untyped = self.getDragMargin(1)
-template `dragTopMargin=`*(self: Camera2D; value) = self.setDragMargin(1, value)
+template dragTopMargin*(self: Camera2D): untyped = self.getDragMargin(Side(1))
+template `dragTopMargin=`*(self: Camera2D; value) = self.setDragMargin(Side(1), value)
 
-template dragRightMargin*(self: Camera2D): untyped = self.getDragMargin(2)
-template `dragRightMargin=`*(self: Camera2D; value) = self.setDragMargin(2, value)
+template dragRightMargin*(self: Camera2D): untyped = self.getDragMargin(Side(2))
+template `dragRightMargin=`*(self: Camera2D; value) = self.setDragMargin(Side(2), value)
 
-template dragBottomMargin*(self: Camera2D): untyped = self.getDragMargin(3)
-template `dragBottomMargin=`*(self: Camera2D; value) = self.setDragMargin(3, value)
+template dragBottomMargin*(self: Camera2D): untyped = self.getDragMargin(Side(3))
+template `dragBottomMargin=`*(self: Camera2D; value) = self.setDragMargin(Side(3), value)
 
 template editorDrawScreen*(self: Camera2D): untyped = self.isScreenDrawingEnabled()
 template `editorDrawScreen=`*(self: Camera2D; value) = self.setScreenDrawingEnabled(value)

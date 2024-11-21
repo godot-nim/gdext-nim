@@ -52,23 +52,23 @@ proc removeCollisionExceptionWith*(self: PhysicsBody3D; body: Node): void =
   var `?param` = [getPtr body]
   methodbind.ptrcall(self, addr `?param`[0])
 
-template axisLockLinearX*(self: PhysicsBody3D): untyped = self.getAxisLock(1)
-template `axisLockLinearX=`*(self: PhysicsBody3D; value) = self.setAxisLock(1, value)
+template axisLockLinearX*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(1))
+template `axisLockLinearX=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(1), value)
 
-template axisLockLinearY*(self: PhysicsBody3D): untyped = self.getAxisLock(2)
-template `axisLockLinearY=`*(self: PhysicsBody3D; value) = self.setAxisLock(2, value)
+template axisLockLinearY*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(2))
+template `axisLockLinearY=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(2), value)
 
-template axisLockLinearZ*(self: PhysicsBody3D): untyped = self.getAxisLock(4)
-template `axisLockLinearZ=`*(self: PhysicsBody3D; value) = self.setAxisLock(4, value)
+template axisLockLinearZ*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(4))
+template `axisLockLinearZ=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(4), value)
 
-template axisLockAngularX*(self: PhysicsBody3D): untyped = self.getAxisLock(8)
-template `axisLockAngularX=`*(self: PhysicsBody3D; value) = self.setAxisLock(8, value)
+template axisLockAngularX*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(8))
+template `axisLockAngularX=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(8), value)
 
-template axisLockAngularY*(self: PhysicsBody3D): untyped = self.getAxisLock(16)
-template `axisLockAngularY=`*(self: PhysicsBody3D; value) = self.setAxisLock(16, value)
+template axisLockAngularY*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(16))
+template `axisLockAngularY=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(16), value)
 
-template axisLockAngularZ*(self: PhysicsBody3D): untyped = self.getAxisLock(32)
-template `axisLockAngularZ=`*(self: PhysicsBody3D; value) = self.setAxisLock(32, value)
+template axisLockAngularZ*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(32))
+template `axisLockAngularZ=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(32), value)
 
 const PhysicsBody3D_vmap =
   CollisionObject3D.vmap.concat initTable[string, string]()

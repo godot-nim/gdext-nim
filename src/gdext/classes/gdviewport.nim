@@ -748,17 +748,17 @@ template `positionalShadowAtlasSize=`*(self: Viewport; value) = self.setPosition
 template positionalShadowAtlas16Bits*(self: Viewport): untyped = self.getPositionalShadowAtlas16Bits()
 template `positionalShadowAtlas16Bits=`*(self: Viewport; value) = self.setPositionalShadowAtlas16Bits(value)
 
-template positionalShadowAtlasQuad0*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(0)
-template `positionalShadowAtlasQuad0=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(0, value)
+template positionalShadowAtlasQuad0*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(int32(0))
+template `positionalShadowAtlasQuad0=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(int32(0), value)
 
-template positionalShadowAtlasQuad1*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(1)
-template `positionalShadowAtlasQuad1=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(1, value)
+template positionalShadowAtlasQuad1*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(int32(1))
+template `positionalShadowAtlasQuad1=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(int32(1), value)
 
-template positionalShadowAtlasQuad2*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(2)
-template `positionalShadowAtlasQuad2=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(2, value)
+template positionalShadowAtlasQuad2*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(int32(2))
+template `positionalShadowAtlasQuad2=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(int32(2), value)
 
-template positionalShadowAtlasQuad3*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(3)
-template `positionalShadowAtlasQuad3=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(3, value)
+template positionalShadowAtlasQuad3*(self: Viewport): untyped = self.getPositionalShadowAtlasQuadrantSubdiv(int32(3))
+template `positionalShadowAtlasQuad3=`*(self: Viewport; value) = self.setPositionalShadowAtlasQuadrantSubdiv(int32(3), value)
 
 template canvasTransform*(self: Viewport): untyped = self.getCanvasTransform()
 template `canvasTransform=`*(self: Viewport; value) = self.setCanvasTransform(value)

@@ -518,17 +518,17 @@ proc getCollisionBounce*(self: ParticleProcessMaterial): Float =
 template lifetimeRandomness*(self: ParticleProcessMaterial): untyped = self.getLifetimeRandomness()
 template `lifetimeRandomness=`*(self: ParticleProcessMaterial; value) = self.setLifetimeRandomness(value)
 
-template particleFlagAlignY*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(0)
-template `particleFlagAlignY=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(0, value)
+template particleFlagAlignY*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(ParticleProcessMaterial_ParticleFlags(0))
+template `particleFlagAlignY=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(ParticleProcessMaterial_ParticleFlags(0), value)
 
-template particleFlagRotateY*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(1)
-template `particleFlagRotateY=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(1, value)
+template particleFlagRotateY*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(ParticleProcessMaterial_ParticleFlags(1))
+template `particleFlagRotateY=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(ParticleProcessMaterial_ParticleFlags(1), value)
 
-template particleFlagDisableZ*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(2)
-template `particleFlagDisableZ=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(2, value)
+template particleFlagDisableZ*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(ParticleProcessMaterial_ParticleFlags(2))
+template `particleFlagDisableZ=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(ParticleProcessMaterial_ParticleFlags(2), value)
 
-template particleFlagDampingAsFriction*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(3)
-template `particleFlagDampingAsFriction=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(3, value)
+template particleFlagDampingAsFriction*(self: ParticleProcessMaterial): untyped = self.getParticleFlag(ParticleProcessMaterial_ParticleFlags(3))
+template `particleFlagDampingAsFriction=`*(self: ParticleProcessMaterial; value) = self.setParticleFlag(ParticleProcessMaterial_ParticleFlags(3), value)
 
 template emissionShapeOffset*(self: ParticleProcessMaterial): untyped = self.getEmissionShapeOffset()
 template `emissionShapeOffset=`*(self: ParticleProcessMaterial; value) = self.setEmissionShapeOffset(value)
@@ -569,17 +569,17 @@ template `emissionRingRadius=`*(self: ParticleProcessMaterial; value) = self.set
 template emissionRingInnerRadius*(self: ParticleProcessMaterial): untyped = self.getEmissionRingInnerRadius()
 template `emissionRingInnerRadius=`*(self: ParticleProcessMaterial; value) = self.setEmissionRingInnerRadius(value)
 
-template angle*(self: ParticleProcessMaterial): untyped = self.getParam(7)
-template `angle=`*(self: ParticleProcessMaterial; value) = self.setParam(7, value)
+template angle*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(7))
+template `angle=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(7), value)
 
-template angleMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(7)
-template `angleMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(7, value)
+template angleMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(7))
+template `angleMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(7), value)
 
-template angleMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(7)
-template `angleMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(7, value)
+template angleMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(7))
+template `angleMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(7), value)
 
-template angleCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(7)
-template `angleCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(7, value)
+template angleCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(7))
+template `angleCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(7), value)
 
 template inheritVelocityRatio*(self: ParticleProcessMaterial): untyped = self.getInheritVelocityRatio()
 template `inheritVelocityRatio=`*(self: ParticleProcessMaterial; value) = self.setInheritVelocityRatio(value)
@@ -596,62 +596,62 @@ template `spread=`*(self: ParticleProcessMaterial; value) = self.setSpread(value
 template flatness*(self: ParticleProcessMaterial): untyped = self.getFlatness()
 template `flatness=`*(self: ParticleProcessMaterial; value) = self.setFlatness(value)
 
-template initialVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(0)
-template `initialVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(0, value)
+template initialVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(0))
+template `initialVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(0), value)
 
-template initialVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(0)
-template `initialVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(0, value)
+template initialVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(0))
+template `initialVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(0), value)
 
-template initialVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(0)
-template `initialVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(0, value)
+template initialVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(0))
+template `initialVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(0), value)
 
-template angularVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(1)
-template `angularVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(1, value)
+template angularVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(1))
+template `angularVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(1), value)
 
-template angularVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(1)
-template `angularVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(1, value)
+template angularVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(1))
+template `angularVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(1), value)
 
-template angularVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(1)
-template `angularVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(1, value)
+template angularVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(1))
+template `angularVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(1), value)
 
-template angularVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(1)
-template `angularVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(1, value)
+template angularVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(1))
+template `angularVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(1), value)
 
-template directionalVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(16)
-template `directionalVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(16, value)
+template directionalVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(16))
+template `directionalVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(16), value)
 
-template directionalVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(16)
-template `directionalVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(16, value)
+template directionalVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(16))
+template `directionalVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(16), value)
 
-template directionalVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(16)
-template `directionalVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(16, value)
+template directionalVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(16))
+template `directionalVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(16), value)
 
-template directionalVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(16)
-template `directionalVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(16, value)
+template directionalVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(16))
+template `directionalVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(16), value)
 
-template orbitVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(2)
-template `orbitVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(2, value)
+template orbitVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(2))
+template `orbitVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(2), value)
 
-template orbitVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(2)
-template `orbitVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(2, value)
+template orbitVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(2))
+template `orbitVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(2), value)
 
-template orbitVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(2)
-template `orbitVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(2, value)
+template orbitVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(2))
+template `orbitVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(2), value)
 
-template orbitVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(2)
-template `orbitVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(2, value)
+template orbitVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(2))
+template `orbitVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(2), value)
 
-template radialVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(15)
-template `radialVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(15, value)
+template radialVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(15))
+template `radialVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(15), value)
 
-template radialVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(15)
-template `radialVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(15, value)
+template radialVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(15))
+template `radialVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(15), value)
 
-template radialVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(15)
-template `radialVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(15, value)
+template radialVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(15))
+template `radialVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(15), value)
 
-template radialVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(15)
-template `radialVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(15, value)
+template radialVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(15))
+template `radialVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(15), value)
 
 template velocityLimitCurve*(self: ParticleProcessMaterial): untyped = self.getVelocityLimitCurve()
 template `velocityLimitCurve=`*(self: ParticleProcessMaterial; value) = self.setVelocityLimitCurve(value)
@@ -659,80 +659,80 @@ template `velocityLimitCurve=`*(self: ParticleProcessMaterial; value) = self.set
 template gravity*(self: ParticleProcessMaterial): untyped = self.getGravity()
 template `gravity=`*(self: ParticleProcessMaterial; value) = self.setGravity(value)
 
-template linearAccel*(self: ParticleProcessMaterial): untyped = self.getParam(3)
-template `linearAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(3, value)
+template linearAccel*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(3))
+template `linearAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(3), value)
 
-template linearAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(3)
-template `linearAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(3, value)
+template linearAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(3))
+template `linearAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(3), value)
 
-template linearAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(3)
-template `linearAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(3, value)
+template linearAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(3))
+template `linearAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(3), value)
 
-template linearAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(3)
-template `linearAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(3, value)
+template linearAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(3))
+template `linearAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(3), value)
 
-template radialAccel*(self: ParticleProcessMaterial): untyped = self.getParam(4)
-template `radialAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(4, value)
+template radialAccel*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(4))
+template `radialAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(4), value)
 
-template radialAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(4)
-template `radialAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(4, value)
+template radialAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(4))
+template `radialAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(4), value)
 
-template radialAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(4)
-template `radialAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(4, value)
+template radialAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(4))
+template `radialAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(4), value)
 
-template radialAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(4)
-template `radialAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(4, value)
+template radialAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(4))
+template `radialAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(4), value)
 
-template tangentialAccel*(self: ParticleProcessMaterial): untyped = self.getParam(5)
-template `tangentialAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(5, value)
+template tangentialAccel*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(5))
+template `tangentialAccel=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(5), value)
 
-template tangentialAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(5)
-template `tangentialAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(5, value)
+template tangentialAccelMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(5))
+template `tangentialAccelMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(5), value)
 
-template tangentialAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(5)
-template `tangentialAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(5, value)
+template tangentialAccelMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(5))
+template `tangentialAccelMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(5), value)
 
-template tangentialAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(5)
-template `tangentialAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(5, value)
+template tangentialAccelCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(5))
+template `tangentialAccelCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(5), value)
 
-template damping*(self: ParticleProcessMaterial): untyped = self.getParam(6)
-template `damping=`*(self: ParticleProcessMaterial; value) = self.setParam(6, value)
+template damping*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(6))
+template `damping=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(6), value)
 
-template dampingMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(6)
-template `dampingMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(6, value)
+template dampingMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(6))
+template `dampingMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(6), value)
 
-template dampingMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(6)
-template `dampingMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(6, value)
+template dampingMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(6))
+template `dampingMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(6), value)
 
-template dampingCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(6)
-template `dampingCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(6, value)
+template dampingCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(6))
+template `dampingCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(6), value)
 
 template attractorInteractionEnabled*(self: ParticleProcessMaterial): untyped = self.isAttractorInteractionEnabled()
 template `attractorInteractionEnabled=`*(self: ParticleProcessMaterial; value) = self.setAttractorInteractionEnabled(value)
 
-template scale*(self: ParticleProcessMaterial): untyped = self.getParam(8)
-template `scale=`*(self: ParticleProcessMaterial; value) = self.setParam(8, value)
+template scale*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(8))
+template `scale=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(8), value)
 
-template scaleMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(8)
-template `scaleMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(8, value)
+template scaleMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(8))
+template `scaleMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(8), value)
 
-template scaleMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(8)
-template `scaleMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(8, value)
+template scaleMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(8))
+template `scaleMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(8), value)
 
-template scaleCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(8)
-template `scaleCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(8, value)
+template scaleCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(8))
+template `scaleCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(8), value)
 
-template scaleOverVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(17)
-template `scaleOverVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(17, value)
+template scaleOverVelocity*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(17))
+template `scaleOverVelocity=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(17), value)
 
-template scaleOverVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(17)
-template `scaleOverVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(17, value)
+template scaleOverVelocityMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(17))
+template `scaleOverVelocityMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(17), value)
 
-template scaleOverVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(17)
-template `scaleOverVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(17, value)
+template scaleOverVelocityMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(17))
+template `scaleOverVelocityMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(17), value)
 
-template scaleOverVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(17)
-template `scaleOverVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(17, value)
+template scaleOverVelocityCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(17))
+template `scaleOverVelocityCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(17), value)
 
 template color*(self: ParticleProcessMaterial): untyped = self.getColor()
 template `color=`*(self: ParticleProcessMaterial; value) = self.setColor(value)
@@ -749,41 +749,41 @@ template `alphaCurve=`*(self: ParticleProcessMaterial; value) = self.setAlphaCur
 template emissionCurve*(self: ParticleProcessMaterial): untyped = self.getEmissionCurve()
 template `emissionCurve=`*(self: ParticleProcessMaterial; value) = self.setEmissionCurve(value)
 
-template hueVariation*(self: ParticleProcessMaterial): untyped = self.getParam(9)
-template `hueVariation=`*(self: ParticleProcessMaterial; value) = self.setParam(9, value)
+template hueVariation*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(9))
+template `hueVariation=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(9), value)
 
-template hueVariationMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(9)
-template `hueVariationMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(9, value)
+template hueVariationMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(9))
+template `hueVariationMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(9), value)
 
-template hueVariationMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(9)
-template `hueVariationMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(9, value)
+template hueVariationMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(9))
+template `hueVariationMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(9), value)
 
-template hueVariationCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(9)
-template `hueVariationCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(9, value)
+template hueVariationCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(9))
+template `hueVariationCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(9), value)
 
-template animSpeed*(self: ParticleProcessMaterial): untyped = self.getParam(10)
-template `animSpeed=`*(self: ParticleProcessMaterial; value) = self.setParam(10, value)
+template animSpeed*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(10))
+template `animSpeed=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(10), value)
 
-template animSpeedMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(10)
-template `animSpeedMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(10, value)
+template animSpeedMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(10))
+template `animSpeedMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(10), value)
 
-template animSpeedMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(10)
-template `animSpeedMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(10, value)
+template animSpeedMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(10))
+template `animSpeedMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(10), value)
 
-template animSpeedCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(10)
-template `animSpeedCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(10, value)
+template animSpeedCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(10))
+template `animSpeedCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(10), value)
 
-template animOffset*(self: ParticleProcessMaterial): untyped = self.getParam(11)
-template `animOffset=`*(self: ParticleProcessMaterial; value) = self.setParam(11, value)
+template animOffset*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(11))
+template `animOffset=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(11), value)
 
-template animOffsetMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(11)
-template `animOffsetMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(11, value)
+template animOffsetMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(11))
+template `animOffsetMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(11), value)
 
-template animOffsetMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(11)
-template `animOffsetMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(11, value)
+template animOffsetMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(11))
+template `animOffsetMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(11), value)
 
-template animOffsetCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(11)
-template `animOffsetCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(11, value)
+template animOffsetCurve*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(11))
+template `animOffsetCurve=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(11), value)
 
 template turbulenceEnabled*(self: ParticleProcessMaterial): untyped = self.getTurbulenceEnabled()
 template `turbulenceEnabled=`*(self: ParticleProcessMaterial; value) = self.setTurbulenceEnabled(value)
@@ -800,26 +800,26 @@ template `turbulenceNoiseSpeed=`*(self: ParticleProcessMaterial; value) = self.s
 template turbulenceNoiseSpeedRandom*(self: ParticleProcessMaterial): untyped = self.getTurbulenceNoiseSpeedRandom()
 template `turbulenceNoiseSpeedRandom=`*(self: ParticleProcessMaterial; value) = self.setTurbulenceNoiseSpeedRandom(value)
 
-template turbulenceInfluence*(self: ParticleProcessMaterial): untyped = self.getParam(13)
-template `turbulenceInfluence=`*(self: ParticleProcessMaterial; value) = self.setParam(13, value)
+template turbulenceInfluence*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(13))
+template `turbulenceInfluence=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(13), value)
 
-template turbulenceInfluenceMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(13)
-template `turbulenceInfluenceMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(13, value)
+template turbulenceInfluenceMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(13))
+template `turbulenceInfluenceMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(13), value)
 
-template turbulenceInfluenceMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(13)
-template `turbulenceInfluenceMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(13, value)
+template turbulenceInfluenceMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(13))
+template `turbulenceInfluenceMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(13), value)
 
-template turbulenceInitialDisplacement*(self: ParticleProcessMaterial): untyped = self.getParam(14)
-template `turbulenceInitialDisplacement=`*(self: ParticleProcessMaterial; value) = self.setParam(14, value)
+template turbulenceInitialDisplacement*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(14))
+template `turbulenceInitialDisplacement=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(14), value)
 
-template turbulenceInitialDisplacementMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(14)
-template `turbulenceInitialDisplacementMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(14, value)
+template turbulenceInitialDisplacementMin*(self: ParticleProcessMaterial): untyped = self.getParamMin(ParticleProcessMaterial_Parameter(14))
+template `turbulenceInitialDisplacementMin=`*(self: ParticleProcessMaterial; value) = self.setParamMin(ParticleProcessMaterial_Parameter(14), value)
 
-template turbulenceInitialDisplacementMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(14)
-template `turbulenceInitialDisplacementMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(14, value)
+template turbulenceInitialDisplacementMax*(self: ParticleProcessMaterial): untyped = self.getParamMax(ParticleProcessMaterial_Parameter(14))
+template `turbulenceInitialDisplacementMax=`*(self: ParticleProcessMaterial; value) = self.setParamMax(ParticleProcessMaterial_Parameter(14), value)
 
-template turbulenceInfluenceOverLife*(self: ParticleProcessMaterial): untyped = self.getParamTexture(12)
-template `turbulenceInfluenceOverLife=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(12, value)
+template turbulenceInfluenceOverLife*(self: ParticleProcessMaterial): untyped = self.getParamTexture(ParticleProcessMaterial_Parameter(12))
+template `turbulenceInfluenceOverLife=`*(self: ParticleProcessMaterial; value) = self.setParamTexture(ParticleProcessMaterial_Parameter(12), value)
 
 template collisionMode*(self: ParticleProcessMaterial): untyped = self.getCollisionMode()
 template `collisionMode=`*(self: ParticleProcessMaterial; value) = self.setCollisionMode(value)
