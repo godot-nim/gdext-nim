@@ -19,7 +19,7 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
   interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
 
-proc instantiate*[T: Object](_: typedesc[T]): T =
+proc instantiate*[T: Object and not RefCounted](_: typedesc[T]): T =
   when Dev.debugCallbacks:
     echo SYNC.INSTANTIATE, $T
   result = instantiate_internal T
