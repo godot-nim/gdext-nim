@@ -192,7 +192,6 @@ import ./classes/gddampedspringjoint2d; export gddampedspringjoint2d
 import ./classes/gddecal; export gddecal
 import ./classes/gddiraccess; export gddiraccess
 import ./classes/gddirectionallight2d; export gddirectionallight2d
-import ./classes/gddirectionallight3d; export gddirectionallight3d
 import ./classes/gddisplayserver; export gddisplayserver
 import ./classes/gddtlsserver; export gddtlsserver
 import ./classes/gdeditorcommandpalette; export gdeditorcommandpalette
@@ -262,7 +261,6 @@ import ./classes/gdfogmaterial; export gdfogmaterial
 import ./classes/gdfogvolume; export gdfogvolume
 import ./classes/gdfont; export gdfont
 import ./classes/gdfontfile; export gdfontfile
-import ./classes/gdfontvariation; export gdfontvariation
 import ./classes/gdframebuffercacherd; export gdframebuffercacherd
 import ./classes/gdgdextension; export gdgdextension
 import ./classes/gdgdextensionmanager; export gdgdextensionmanager
@@ -445,7 +443,6 @@ import ./classes/gdoccluderpolygon2d; export gdoccluderpolygon2d
 import ./classes/gdofflinemultiplayerpeer; export gdofflinemultiplayerpeer
 import ./classes/gdoggpacketsequence; export gdoggpacketsequence
 import ./classes/gdoggpacketsequenceplayback; export gdoggpacketsequenceplayback
-import ./classes/gdomnilight3d; export gdomnilight3d
 import ./classes/gdopenxraction; export gdopenxraction
 import ./classes/gdopenxractionmap; export gdopenxractionmap
 import ./classes/gdopenxractionset; export gdopenxractionset
@@ -668,7 +665,6 @@ import ./classes/gdsphereoccluder3d; export gdsphereoccluder3d
 import ./classes/gdsphereshape3d; export gdsphereshape3d
 import ./classes/gdspinbox; export gdspinbox
 import ./classes/gdsplitcontainer; export gdsplitcontainer
-import ./classes/gdspotlight3d; export gdspotlight3d
 import ./classes/gdspringarm3d; export gdspringarm3d
 import ./classes/gdsprite2d; export gdsprite2d
 import ./classes/gdsprite3d; export gdsprite3d
@@ -693,7 +689,6 @@ import ./classes/gdsubviewport; export gdsubviewport
 import ./classes/gdsubviewportcontainer; export gdsubviewportcontainer
 import ./classes/gdsurfacetool; export gdsurfacetool
 import ./classes/gdsyntaxhighlighter; export gdsyntaxhighlighter
-import ./classes/gdsystemfont; export gdsystemfont
 import ./classes/gdtabbar; export gdtabbar
 import ./classes/gdtabcontainer; export gdtabcontainer
 import ./classes/gdtcpserver; export gdtcpserver

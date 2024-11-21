@@ -779,8 +779,8 @@ template `cullMode=`*(self: BaseMaterial3D; value) = self.setCullMode(value)
 template depthDrawMode*(self: BaseMaterial3D): untyped = self.getDepthDrawMode()
 template `depthDrawMode=`*(self: BaseMaterial3D; value) = self.setDepthDrawMode(value)
 
-template noDepthTest*(self: BaseMaterial3D): untyped = self.getFlag(0)
-template `noDepthTest=`*(self: BaseMaterial3D; value) = self.setFlag(0, value)
+template noDepthTest*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(0))
+template `noDepthTest=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(0), value)
 
 template shadingMode*(self: BaseMaterial3D): untyped = self.getShadingMode()
 template `shadingMode=`*(self: BaseMaterial3D; value) = self.setShadingMode(value)
@@ -791,32 +791,32 @@ template `diffuseMode=`*(self: BaseMaterial3D; value) = self.setDiffuseMode(valu
 template specularMode*(self: BaseMaterial3D): untyped = self.getSpecularMode()
 template `specularMode=`*(self: BaseMaterial3D; value) = self.setSpecularMode(value)
 
-template disableAmbientLight*(self: BaseMaterial3D): untyped = self.getFlag(14)
-template `disableAmbientLight=`*(self: BaseMaterial3D; value) = self.setFlag(14, value)
+template disableAmbientLight*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(14))
+template `disableAmbientLight=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(14), value)
 
-template disableFog*(self: BaseMaterial3D): untyped = self.getFlag(21)
-template `disableFog=`*(self: BaseMaterial3D; value) = self.setFlag(21, value)
+template disableFog*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(21))
+template `disableFog=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(21), value)
 
-template vertexColorUseAsAlbedo*(self: BaseMaterial3D): untyped = self.getFlag(1)
-template `vertexColorUseAsAlbedo=`*(self: BaseMaterial3D; value) = self.setFlag(1, value)
+template vertexColorUseAsAlbedo*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(1))
+template `vertexColorUseAsAlbedo=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(1), value)
 
-template vertexColorIsSrgb*(self: BaseMaterial3D): untyped = self.getFlag(2)
-template `vertexColorIsSrgb=`*(self: BaseMaterial3D; value) = self.setFlag(2, value)
+template vertexColorIsSrgb*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(2))
+template `vertexColorIsSrgb=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(2), value)
 
 template albedoColor*(self: BaseMaterial3D): untyped = self.getAlbedo()
 template `albedoColor=`*(self: BaseMaterial3D; value) = self.setAlbedo(value)
 
-template albedoTexture*(self: BaseMaterial3D): untyped = self.getTexture(0)
-template `albedoTexture=`*(self: BaseMaterial3D; value) = self.setTexture(0, value)
+template albedoTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(0))
+template `albedoTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(0), value)
 
-template albedoTextureForceSrgb*(self: BaseMaterial3D): untyped = self.getFlag(12)
-template `albedoTextureForceSrgb=`*(self: BaseMaterial3D; value) = self.setFlag(12, value)
+template albedoTextureForceSrgb*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(12))
+template `albedoTextureForceSrgb=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(12), value)
 
-template albedoTextureMsdf*(self: BaseMaterial3D): untyped = self.getFlag(20)
-template `albedoTextureMsdf=`*(self: BaseMaterial3D; value) = self.setFlag(20, value)
+template albedoTextureMsdf*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(20))
+template `albedoTextureMsdf=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(20), value)
 
-template ormTexture*(self: BaseMaterial3D): untyped = self.getTexture(17)
-template `ormTexture=`*(self: BaseMaterial3D; value) = self.setTexture(17, value)
+template ormTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(17))
+template `ormTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(17), value)
 
 template metallic*(self: BaseMaterial3D): untyped = self.getMetallic()
 template `metallic=`*(self: BaseMaterial3D; value) = self.setMetallic(value)
@@ -824,8 +824,8 @@ template `metallic=`*(self: BaseMaterial3D; value) = self.setMetallic(value)
 template metallicSpecular*(self: BaseMaterial3D): untyped = self.getSpecular()
 template `metallicSpecular=`*(self: BaseMaterial3D; value) = self.setSpecular(value)
 
-template metallicTexture*(self: BaseMaterial3D): untyped = self.getTexture(1)
-template `metallicTexture=`*(self: BaseMaterial3D; value) = self.setTexture(1, value)
+template metallicTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(1))
+template `metallicTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(1), value)
 
 template metallicTextureChannel*(self: BaseMaterial3D): untyped = self.getMetallicTextureChannel()
 template `metallicTextureChannel=`*(self: BaseMaterial3D; value) = self.setMetallicTextureChannel(value)
@@ -833,14 +833,14 @@ template `metallicTextureChannel=`*(self: BaseMaterial3D; value) = self.setMetal
 template roughness*(self: BaseMaterial3D): untyped = self.getRoughness()
 template `roughness=`*(self: BaseMaterial3D; value) = self.setRoughness(value)
 
-template roughnessTexture*(self: BaseMaterial3D): untyped = self.getTexture(2)
-template `roughnessTexture=`*(self: BaseMaterial3D; value) = self.setTexture(2, value)
+template roughnessTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(2))
+template `roughnessTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(2), value)
 
 template roughnessTextureChannel*(self: BaseMaterial3D): untyped = self.getRoughnessTextureChannel()
 template `roughnessTextureChannel=`*(self: BaseMaterial3D; value) = self.setRoughnessTextureChannel(value)
 
-template emissionEnabled*(self: BaseMaterial3D): untyped = self.getFeature(0)
-template `emissionEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(0, value)
+template emissionEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(0))
+template `emissionEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(0), value)
 
 template emission*(self: BaseMaterial3D): untyped = self.getEmission()
 template `emission=`*(self: BaseMaterial3D; value) = self.setEmission(value)
@@ -854,23 +854,23 @@ template `emissionIntensity=`*(self: BaseMaterial3D; value) = self.setEmissionIn
 template emissionOperator*(self: BaseMaterial3D): untyped = self.getEmissionOperator()
 template `emissionOperator=`*(self: BaseMaterial3D; value) = self.setEmissionOperator(value)
 
-template emissionOnUv2*(self: BaseMaterial3D): untyped = self.getFlag(11)
-template `emissionOnUv2=`*(self: BaseMaterial3D; value) = self.setFlag(11, value)
+template emissionOnUv2*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(11))
+template `emissionOnUv2=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(11), value)
 
-template emissionTexture*(self: BaseMaterial3D): untyped = self.getTexture(3)
-template `emissionTexture=`*(self: BaseMaterial3D; value) = self.setTexture(3, value)
+template emissionTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(3))
+template `emissionTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(3), value)
 
-template normalEnabled*(self: BaseMaterial3D): untyped = self.getFeature(1)
-template `normalEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(1, value)
+template normalEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(1))
+template `normalEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(1), value)
 
 template normalScale*(self: BaseMaterial3D): untyped = self.getNormalScale()
 template `normalScale=`*(self: BaseMaterial3D; value) = self.setNormalScale(value)
 
-template normalTexture*(self: BaseMaterial3D): untyped = self.getTexture(4)
-template `normalTexture=`*(self: BaseMaterial3D; value) = self.setTexture(4, value)
+template normalTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(4))
+template `normalTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(4), value)
 
-template rimEnabled*(self: BaseMaterial3D): untyped = self.getFeature(2)
-template `rimEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(2, value)
+template rimEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(2))
+template `rimEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(2), value)
 
 template rim*(self: BaseMaterial3D): untyped = self.getRim()
 template `rim=`*(self: BaseMaterial3D; value) = self.setRim(value)
@@ -878,11 +878,11 @@ template `rim=`*(self: BaseMaterial3D; value) = self.setRim(value)
 template rimTint*(self: BaseMaterial3D): untyped = self.getRimTint()
 template `rimTint=`*(self: BaseMaterial3D; value) = self.setRimTint(value)
 
-template rimTexture*(self: BaseMaterial3D): untyped = self.getTexture(5)
-template `rimTexture=`*(self: BaseMaterial3D; value) = self.setTexture(5, value)
+template rimTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(5))
+template `rimTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(5), value)
 
-template clearcoatEnabled*(self: BaseMaterial3D): untyped = self.getFeature(3)
-template `clearcoatEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(3, value)
+template clearcoatEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(3))
+template `clearcoatEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(3), value)
 
 template clearcoat*(self: BaseMaterial3D): untyped = self.getClearcoat()
 template `clearcoat=`*(self: BaseMaterial3D; value) = self.setClearcoat(value)
@@ -890,35 +890,35 @@ template `clearcoat=`*(self: BaseMaterial3D; value) = self.setClearcoat(value)
 template clearcoatRoughness*(self: BaseMaterial3D): untyped = self.getClearcoatRoughness()
 template `clearcoatRoughness=`*(self: BaseMaterial3D; value) = self.setClearcoatRoughness(value)
 
-template clearcoatTexture*(self: BaseMaterial3D): untyped = self.getTexture(6)
-template `clearcoatTexture=`*(self: BaseMaterial3D; value) = self.setTexture(6, value)
+template clearcoatTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(6))
+template `clearcoatTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(6), value)
 
-template anisotropyEnabled*(self: BaseMaterial3D): untyped = self.getFeature(4)
-template `anisotropyEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(4, value)
+template anisotropyEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(4))
+template `anisotropyEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(4), value)
 
 template anisotropy*(self: BaseMaterial3D): untyped = self.getAnisotropy()
 template `anisotropy=`*(self: BaseMaterial3D; value) = self.setAnisotropy(value)
 
-template anisotropyFlowmap*(self: BaseMaterial3D): untyped = self.getTexture(7)
-template `anisotropyFlowmap=`*(self: BaseMaterial3D; value) = self.setTexture(7, value)
+template anisotropyFlowmap*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(7))
+template `anisotropyFlowmap=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(7), value)
 
-template aoEnabled*(self: BaseMaterial3D): untyped = self.getFeature(5)
-template `aoEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(5, value)
+template aoEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(5))
+template `aoEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(5), value)
 
 template aoLightAffect*(self: BaseMaterial3D): untyped = self.getAoLightAffect()
 template `aoLightAffect=`*(self: BaseMaterial3D; value) = self.setAoLightAffect(value)
 
-template aoTexture*(self: BaseMaterial3D): untyped = self.getTexture(8)
-template `aoTexture=`*(self: BaseMaterial3D; value) = self.setTexture(8, value)
+template aoTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(8))
+template `aoTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(8), value)
 
-template aoOnUv2*(self: BaseMaterial3D): untyped = self.getFlag(10)
-template `aoOnUv2=`*(self: BaseMaterial3D; value) = self.setFlag(10, value)
+template aoOnUv2*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(10))
+template `aoOnUv2=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(10), value)
 
 template aoTextureChannel*(self: BaseMaterial3D): untyped = self.getAoTextureChannel()
 template `aoTextureChannel=`*(self: BaseMaterial3D; value) = self.setAoTextureChannel(value)
 
-template heightmapEnabled*(self: BaseMaterial3D): untyped = self.getFeature(6)
-template `heightmapEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(6, value)
+template heightmapEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(6))
+template `heightmapEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(6), value)
 
 template heightmapScale*(self: BaseMaterial3D): untyped = self.getHeightmapScale()
 template `heightmapScale=`*(self: BaseMaterial3D; value) = self.setHeightmapScale(value)
@@ -938,32 +938,32 @@ template `heightmapFlipTangent=`*(self: BaseMaterial3D; value) = self.setHeightm
 template heightmapFlipBinormal*(self: BaseMaterial3D): untyped = self.getHeightmapDeepParallaxFlipBinormal()
 template `heightmapFlipBinormal=`*(self: BaseMaterial3D; value) = self.setHeightmapDeepParallaxFlipBinormal(value)
 
-template heightmapTexture*(self: BaseMaterial3D): untyped = self.getTexture(9)
-template `heightmapTexture=`*(self: BaseMaterial3D; value) = self.setTexture(9, value)
+template heightmapTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(9))
+template `heightmapTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(9), value)
 
-template heightmapFlipTexture*(self: BaseMaterial3D): untyped = self.getFlag(17)
-template `heightmapFlipTexture=`*(self: BaseMaterial3D; value) = self.setFlag(17, value)
+template heightmapFlipTexture*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(17))
+template `heightmapFlipTexture=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(17), value)
 
-template subsurfScatterEnabled*(self: BaseMaterial3D): untyped = self.getFeature(7)
-template `subsurfScatterEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(7, value)
+template subsurfScatterEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(7))
+template `subsurfScatterEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(7), value)
 
 template subsurfScatterStrength*(self: BaseMaterial3D): untyped = self.getSubsurfaceScatteringStrength()
 template `subsurfScatterStrength=`*(self: BaseMaterial3D; value) = self.setSubsurfaceScatteringStrength(value)
 
-template subsurfScatterSkinMode*(self: BaseMaterial3D): untyped = self.getFlag(18)
-template `subsurfScatterSkinMode=`*(self: BaseMaterial3D; value) = self.setFlag(18, value)
+template subsurfScatterSkinMode*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(18))
+template `subsurfScatterSkinMode=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(18), value)
 
-template subsurfScatterTexture*(self: BaseMaterial3D): untyped = self.getTexture(10)
-template `subsurfScatterTexture=`*(self: BaseMaterial3D; value) = self.setTexture(10, value)
+template subsurfScatterTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(10))
+template `subsurfScatterTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(10), value)
 
-template subsurfScatterTransmittanceEnabled*(self: BaseMaterial3D): untyped = self.getFeature(8)
-template `subsurfScatterTransmittanceEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(8, value)
+template subsurfScatterTransmittanceEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(8))
+template `subsurfScatterTransmittanceEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(8), value)
 
 template subsurfScatterTransmittanceColor*(self: BaseMaterial3D): untyped = self.getTransmittanceColor()
 template `subsurfScatterTransmittanceColor=`*(self: BaseMaterial3D; value) = self.setTransmittanceColor(value)
 
-template subsurfScatterTransmittanceTexture*(self: BaseMaterial3D): untyped = self.getTexture(11)
-template `subsurfScatterTransmittanceTexture=`*(self: BaseMaterial3D; value) = self.setTexture(11, value)
+template subsurfScatterTransmittanceTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(11))
+template `subsurfScatterTransmittanceTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(11), value)
 
 template subsurfScatterTransmittanceDepth*(self: BaseMaterial3D): untyped = self.getTransmittanceDepth()
 template `subsurfScatterTransmittanceDepth=`*(self: BaseMaterial3D; value) = self.setTransmittanceDepth(value)
@@ -971,32 +971,32 @@ template `subsurfScatterTransmittanceDepth=`*(self: BaseMaterial3D; value) = sel
 template subsurfScatterTransmittanceBoost*(self: BaseMaterial3D): untyped = self.getTransmittanceBoost()
 template `subsurfScatterTransmittanceBoost=`*(self: BaseMaterial3D; value) = self.setTransmittanceBoost(value)
 
-template backlightEnabled*(self: BaseMaterial3D): untyped = self.getFeature(9)
-template `backlightEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(9, value)
+template backlightEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(9))
+template `backlightEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(9), value)
 
 template backlight*(self: BaseMaterial3D): untyped = self.getBacklight()
 template `backlight=`*(self: BaseMaterial3D; value) = self.setBacklight(value)
 
-template backlightTexture*(self: BaseMaterial3D): untyped = self.getTexture(12)
-template `backlightTexture=`*(self: BaseMaterial3D; value) = self.setTexture(12, value)
+template backlightTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(12))
+template `backlightTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(12), value)
 
-template refractionEnabled*(self: BaseMaterial3D): untyped = self.getFeature(10)
-template `refractionEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(10, value)
+template refractionEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(10))
+template `refractionEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(10), value)
 
 template refractionScale*(self: BaseMaterial3D): untyped = self.getRefraction()
 template `refractionScale=`*(self: BaseMaterial3D; value) = self.setRefraction(value)
 
-template refractionTexture*(self: BaseMaterial3D): untyped = self.getTexture(13)
-template `refractionTexture=`*(self: BaseMaterial3D; value) = self.setTexture(13, value)
+template refractionTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(13))
+template `refractionTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(13), value)
 
 template refractionTextureChannel*(self: BaseMaterial3D): untyped = self.getRefractionTextureChannel()
 template `refractionTextureChannel=`*(self: BaseMaterial3D; value) = self.setRefractionTextureChannel(value)
 
-template detailEnabled*(self: BaseMaterial3D): untyped = self.getFeature(11)
-template `detailEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(11, value)
+template detailEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(11))
+template `detailEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(11), value)
 
-template detailMask*(self: BaseMaterial3D): untyped = self.getTexture(14)
-template `detailMask=`*(self: BaseMaterial3D; value) = self.setTexture(14, value)
+template detailMask*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(14))
+template `detailMask=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(14), value)
 
 template detailBlendMode*(self: BaseMaterial3D): untyped = self.getDetailBlendMode()
 template `detailBlendMode=`*(self: BaseMaterial3D; value) = self.setDetailBlendMode(value)
@@ -1004,11 +1004,11 @@ template `detailBlendMode=`*(self: BaseMaterial3D; value) = self.setDetailBlendM
 template detailUvLayer*(self: BaseMaterial3D): untyped = self.getDetailUv()
 template `detailUvLayer=`*(self: BaseMaterial3D; value) = self.setDetailUv(value)
 
-template detailAlbedo*(self: BaseMaterial3D): untyped = self.getTexture(15)
-template `detailAlbedo=`*(self: BaseMaterial3D; value) = self.setTexture(15, value)
+template detailAlbedo*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(15))
+template `detailAlbedo=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(15), value)
 
-template detailNormal*(self: BaseMaterial3D): untyped = self.getTexture(16)
-template `detailNormal=`*(self: BaseMaterial3D; value) = self.setTexture(16, value)
+template detailNormal*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(16))
+template `detailNormal=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(16), value)
 
 template uv1Scale*(self: BaseMaterial3D): untyped = self.getUv1Scale()
 template `uv1Scale=`*(self: BaseMaterial3D; value) = self.setUv1Scale(value)
@@ -1016,14 +1016,14 @@ template `uv1Scale=`*(self: BaseMaterial3D; value) = self.setUv1Scale(value)
 template uv1Offset*(self: BaseMaterial3D): untyped = self.getUv1Offset()
 template `uv1Offset=`*(self: BaseMaterial3D; value) = self.setUv1Offset(value)
 
-template uv1Triplanar*(self: BaseMaterial3D): untyped = self.getFlag(6)
-template `uv1Triplanar=`*(self: BaseMaterial3D; value) = self.setFlag(6, value)
+template uv1Triplanar*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(6))
+template `uv1Triplanar=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(6), value)
 
 template uv1TriplanarSharpness*(self: BaseMaterial3D): untyped = self.getUv1TriplanarBlendSharpness()
 template `uv1TriplanarSharpness=`*(self: BaseMaterial3D; value) = self.setUv1TriplanarBlendSharpness(value)
 
-template uv1WorldTriplanar*(self: BaseMaterial3D): untyped = self.getFlag(8)
-template `uv1WorldTriplanar=`*(self: BaseMaterial3D; value) = self.setFlag(8, value)
+template uv1WorldTriplanar*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(8))
+template `uv1WorldTriplanar=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(8), value)
 
 template uv2Scale*(self: BaseMaterial3D): untyped = self.getUv2Scale()
 template `uv2Scale=`*(self: BaseMaterial3D; value) = self.setUv2Scale(value)
@@ -1031,32 +1031,32 @@ template `uv2Scale=`*(self: BaseMaterial3D; value) = self.setUv2Scale(value)
 template uv2Offset*(self: BaseMaterial3D): untyped = self.getUv2Offset()
 template `uv2Offset=`*(self: BaseMaterial3D; value) = self.setUv2Offset(value)
 
-template uv2Triplanar*(self: BaseMaterial3D): untyped = self.getFlag(7)
-template `uv2Triplanar=`*(self: BaseMaterial3D; value) = self.setFlag(7, value)
+template uv2Triplanar*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(7))
+template `uv2Triplanar=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(7), value)
 
 template uv2TriplanarSharpness*(self: BaseMaterial3D): untyped = self.getUv2TriplanarBlendSharpness()
 template `uv2TriplanarSharpness=`*(self: BaseMaterial3D; value) = self.setUv2TriplanarBlendSharpness(value)
 
-template uv2WorldTriplanar*(self: BaseMaterial3D): untyped = self.getFlag(9)
-template `uv2WorldTriplanar=`*(self: BaseMaterial3D; value) = self.setFlag(9, value)
+template uv2WorldTriplanar*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(9))
+template `uv2WorldTriplanar=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(9), value)
 
 template textureFilter*(self: BaseMaterial3D): untyped = self.getTextureFilter()
 template `textureFilter=`*(self: BaseMaterial3D; value) = self.setTextureFilter(value)
 
-template textureRepeat*(self: BaseMaterial3D): untyped = self.getFlag(16)
-template `textureRepeat=`*(self: BaseMaterial3D; value) = self.setFlag(16, value)
+template textureRepeat*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(16))
+template `textureRepeat=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(16), value)
 
-template disableReceiveShadows*(self: BaseMaterial3D): untyped = self.getFlag(13)
-template `disableReceiveShadows=`*(self: BaseMaterial3D; value) = self.setFlag(13, value)
+template disableReceiveShadows*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(13))
+template `disableReceiveShadows=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(13), value)
 
-template shadowToOpacity*(self: BaseMaterial3D): untyped = self.getFlag(15)
-template `shadowToOpacity=`*(self: BaseMaterial3D; value) = self.setFlag(15, value)
+template shadowToOpacity*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(15))
+template `shadowToOpacity=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(15), value)
 
 template billboardMode*(self: BaseMaterial3D): untyped = self.getBillboardMode()
 template `billboardMode=`*(self: BaseMaterial3D; value) = self.setBillboardMode(value)
 
-template billboardKeepScale*(self: BaseMaterial3D): untyped = self.getFlag(5)
-template `billboardKeepScale=`*(self: BaseMaterial3D; value) = self.setFlag(5, value)
+template billboardKeepScale*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(5))
+template `billboardKeepScale=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(5), value)
 
 template particlesAnimHFrames*(self: BaseMaterial3D): untyped = self.getParticlesAnimHFrames()
 template `particlesAnimHFrames=`*(self: BaseMaterial3D; value) = self.setParticlesAnimHFrames(value)
@@ -1073,17 +1073,17 @@ template `grow=`*(self: BaseMaterial3D; value) = self.setGrowEnabled(value)
 template growAmount*(self: BaseMaterial3D): untyped = self.getGrow()
 template `growAmount=`*(self: BaseMaterial3D; value) = self.setGrow(value)
 
-template fixedSize*(self: BaseMaterial3D): untyped = self.getFlag(4)
-template `fixedSize=`*(self: BaseMaterial3D; value) = self.setFlag(4, value)
+template fixedSize*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(4))
+template `fixedSize=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(4), value)
 
-template usePointSize*(self: BaseMaterial3D): untyped = self.getFlag(3)
-template `usePointSize=`*(self: BaseMaterial3D; value) = self.setFlag(3, value)
+template usePointSize*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(3))
+template `usePointSize=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(3), value)
 
 template pointSize*(self: BaseMaterial3D): untyped = self.getPointSize()
 template `pointSize=`*(self: BaseMaterial3D; value) = self.setPointSize(value)
 
-template useParticleTrails*(self: BaseMaterial3D): untyped = self.getFlag(19)
-template `useParticleTrails=`*(self: BaseMaterial3D; value) = self.setFlag(19, value)
+template useParticleTrails*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(19))
+template `useParticleTrails=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(19), value)
 
 template proximityFadeEnabled*(self: BaseMaterial3D): untyped = self.isProximityFadeEnabled()
 template `proximityFadeEnabled=`*(self: BaseMaterial3D; value) = self.setProximityFadeEnabled(value)

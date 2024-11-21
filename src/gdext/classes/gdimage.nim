@@ -110,7 +110,7 @@ proc create*(_: typedesc[Image]; width: int32; height: int32; useMipmaps: bool; 
   (addr ret).decode_result(gdref Image)
 
 proc createEmpty*(_: typedesc[Image]; width: int32; height: int32; useMipmaps: bool; format: Image_Format): gdref Image =
-  expandMethodBind(className classindex.Image, "create_empty", 986942177)
+  expandMethodBind(className Image, "create_empty", 986942177)
   var `?param` = [getPtr width, getPtr height, getPtr useMipmaps, getPtr format]
   var ret: encoded gdref Image
   methodbind.ptrcall(addr `?param`[0], addr ret)

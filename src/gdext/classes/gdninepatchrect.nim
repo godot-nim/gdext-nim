@@ -80,17 +80,17 @@ template `drawCenter=`*(self: NinePatchRect; value) = self.setDrawCenter(value)
 template regionRect*(self: NinePatchRect): untyped = self.getRegionRect()
 template `regionRect=`*(self: NinePatchRect; value) = self.setRegionRect(value)
 
-template patchMarginLeft*(self: NinePatchRect): untyped = self.getPatchMargin(0)
-template `patchMarginLeft=`*(self: NinePatchRect; value) = self.setPatchMargin(0, value)
+template patchMarginLeft*(self: NinePatchRect): untyped = self.getPatchMargin(Side(0))
+template `patchMarginLeft=`*(self: NinePatchRect; value) = self.setPatchMargin(Side(0), value)
 
-template patchMarginTop*(self: NinePatchRect): untyped = self.getPatchMargin(1)
-template `patchMarginTop=`*(self: NinePatchRect; value) = self.setPatchMargin(1, value)
+template patchMarginTop*(self: NinePatchRect): untyped = self.getPatchMargin(Side(1))
+template `patchMarginTop=`*(self: NinePatchRect; value) = self.setPatchMargin(Side(1), value)
 
-template patchMarginRight*(self: NinePatchRect): untyped = self.getPatchMargin(2)
-template `patchMarginRight=`*(self: NinePatchRect; value) = self.setPatchMargin(2, value)
+template patchMarginRight*(self: NinePatchRect): untyped = self.getPatchMargin(Side(2))
+template `patchMarginRight=`*(self: NinePatchRect; value) = self.setPatchMargin(Side(2), value)
 
-template patchMarginBottom*(self: NinePatchRect): untyped = self.getPatchMargin(3)
-template `patchMarginBottom=`*(self: NinePatchRect; value) = self.setPatchMargin(3, value)
+template patchMarginBottom*(self: NinePatchRect): untyped = self.getPatchMargin(Side(3))
+template `patchMarginBottom=`*(self: NinePatchRect; value) = self.setPatchMargin(Side(3), value)
 
 template axisStretchHorizontal*(self: NinePatchRect): untyped = self.getHAxisStretchMode()
 template `axisStretchHorizontal=`*(self: NinePatchRect; value) = self.setHAxisStretchMode(value)

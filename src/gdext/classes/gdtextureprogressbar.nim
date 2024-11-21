@@ -163,17 +163,17 @@ template `radialCenterOffset=`*(self: TextureProgressBar; value) = self.setRadia
 template ninePatchStretch*(self: TextureProgressBar): untyped = self.getNinePatchStretch()
 template `ninePatchStretch=`*(self: TextureProgressBar; value) = self.setNinePatchStretch(value)
 
-template stretchMarginLeft*(self: TextureProgressBar): untyped = self.getStretchMargin(0)
-template `stretchMarginLeft=`*(self: TextureProgressBar; value) = self.setStretchMargin(0, value)
+template stretchMarginLeft*(self: TextureProgressBar): untyped = self.getStretchMargin(Side(0))
+template `stretchMarginLeft=`*(self: TextureProgressBar; value) = self.setStretchMargin(Side(0), value)
 
-template stretchMarginTop*(self: TextureProgressBar): untyped = self.getStretchMargin(1)
-template `stretchMarginTop=`*(self: TextureProgressBar; value) = self.setStretchMargin(1, value)
+template stretchMarginTop*(self: TextureProgressBar): untyped = self.getStretchMargin(Side(1))
+template `stretchMarginTop=`*(self: TextureProgressBar; value) = self.setStretchMargin(Side(1), value)
 
-template stretchMarginRight*(self: TextureProgressBar): untyped = self.getStretchMargin(2)
-template `stretchMarginRight=`*(self: TextureProgressBar; value) = self.setStretchMargin(2, value)
+template stretchMarginRight*(self: TextureProgressBar): untyped = self.getStretchMargin(Side(2))
+template `stretchMarginRight=`*(self: TextureProgressBar; value) = self.setStretchMargin(Side(2), value)
 
-template stretchMarginBottom*(self: TextureProgressBar): untyped = self.getStretchMargin(3)
-template `stretchMarginBottom=`*(self: TextureProgressBar; value) = self.setStretchMargin(3, value)
+template stretchMarginBottom*(self: TextureProgressBar): untyped = self.getStretchMargin(Side(3))
+template `stretchMarginBottom=`*(self: TextureProgressBar; value) = self.setStretchMargin(Side(3), value)
 
 template textureUnder*(self: TextureProgressBar): untyped = self.getUnderTexture()
 template `textureUnder=`*(self: TextureProgressBar; value) = self.setUnderTexture(value)

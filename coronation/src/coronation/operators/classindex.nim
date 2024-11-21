@@ -8,9 +8,12 @@ import std/sets
 import std/tables
 import std/deques
 
+export tables
+
 type Class* = ref object
   typesym*, inherits*: TypeSym
   json*: JsonClass
+  methods*: Table[string, JsonClassMethod]
 type InheritanceDB = TableRef[TypeSym, HashSet[TypeSym]]
 
 let classDB* = new TableRef[TypeSym, Class]
@@ -23,6 +26,8 @@ proc convert*(json: JsonClass): Class =
     if json.inherits.isSome: json.inherits.get.scan.convert(TypeSym)
     else: TypeSym.RootObj
   result.json = json
+  for metho in json.methods.get(@[]):
+    result.methods[metho.name] = metho
 
 proc registerDB*(class: Class) =
   classDB[class.typesym] = class

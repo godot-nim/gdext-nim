@@ -706,29 +706,29 @@ template `transientToFocused=`*(self: Window; value) = self.setTransientToFocuse
 template exclusive*(self: Window): untyped = self.isExclusive()
 template `exclusive=`*(self: Window; value) = self.setExclusive(value)
 
-template unresizable*(self: Window): untyped = self.getFlag(0)
-template `unresizable=`*(self: Window; value) = self.setFlag(0, value)
+template unresizable*(self: Window): untyped = self.getFlag(Window_Flags(0))
+template `unresizable=`*(self: Window; value) = self.setFlag(Window_Flags(0), value)
 
-template borderless*(self: Window): untyped = self.getFlag(1)
-template `borderless=`*(self: Window; value) = self.setFlag(1, value)
+template borderless*(self: Window): untyped = self.getFlag(Window_Flags(1))
+template `borderless=`*(self: Window; value) = self.setFlag(Window_Flags(1), value)
 
-template alwaysOnTop*(self: Window): untyped = self.getFlag(2)
-template `alwaysOnTop=`*(self: Window; value) = self.setFlag(2, value)
+template alwaysOnTop*(self: Window): untyped = self.getFlag(Window_Flags(2))
+template `alwaysOnTop=`*(self: Window; value) = self.setFlag(Window_Flags(2), value)
 
-template transparent*(self: Window): untyped = self.getFlag(3)
-template `transparent=`*(self: Window; value) = self.setFlag(3, value)
+template transparent*(self: Window): untyped = self.getFlag(Window_Flags(3))
+template `transparent=`*(self: Window; value) = self.setFlag(Window_Flags(3), value)
 
-template unfocusable*(self: Window): untyped = self.getFlag(4)
-template `unfocusable=`*(self: Window; value) = self.setFlag(4, value)
+template unfocusable*(self: Window): untyped = self.getFlag(Window_Flags(4))
+template `unfocusable=`*(self: Window; value) = self.setFlag(Window_Flags(4), value)
 
-template popupWindow*(self: Window): untyped = self.getFlag(5)
-template `popupWindow=`*(self: Window; value) = self.setFlag(5, value)
+template popupWindow*(self: Window): untyped = self.getFlag(Window_Flags(5))
+template `popupWindow=`*(self: Window; value) = self.setFlag(Window_Flags(5), value)
 
-template extendToTitle*(self: Window): untyped = self.getFlag(6)
-template `extendToTitle=`*(self: Window; value) = self.setFlag(6, value)
+template extendToTitle*(self: Window): untyped = self.getFlag(Window_Flags(6))
+template `extendToTitle=`*(self: Window; value) = self.setFlag(Window_Flags(6), value)
 
-template mousePassthrough*(self: Window): untyped = self.getFlag(7)
-template `mousePassthrough=`*(self: Window; value) = self.setFlag(7, value)
+template mousePassthrough*(self: Window): untyped = self.getFlag(Window_Flags(7))
+template `mousePassthrough=`*(self: Window; value) = self.setFlag(Window_Flags(7), value)
 
 template forceNative*(self: Window): untyped = self.getForceNative()
 template `forceNative=`*(self: Window; value) = self.setForceNative(value)

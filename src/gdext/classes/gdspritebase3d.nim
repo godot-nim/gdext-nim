@@ -217,20 +217,20 @@ template `axis=`*(self: SpriteBase3D; value) = self.setAxis(value)
 template billboard*(self: SpriteBase3D): untyped = self.getBillboardMode()
 template `billboard=`*(self: SpriteBase3D; value) = self.setBillboardMode(value)
 
-template transparent*(self: SpriteBase3D): untyped = self.getDrawFlag(0)
-template `transparent=`*(self: SpriteBase3D; value) = self.setDrawFlag(0, value)
+template transparent*(self: SpriteBase3D): untyped = self.getDrawFlag(SpriteBase3D_DrawFlags(0))
+template `transparent=`*(self: SpriteBase3D; value) = self.setDrawFlag(SpriteBase3D_DrawFlags(0), value)
 
-template shaded*(self: SpriteBase3D): untyped = self.getDrawFlag(1)
-template `shaded=`*(self: SpriteBase3D; value) = self.setDrawFlag(1, value)
+template shaded*(self: SpriteBase3D): untyped = self.getDrawFlag(SpriteBase3D_DrawFlags(1))
+template `shaded=`*(self: SpriteBase3D; value) = self.setDrawFlag(SpriteBase3D_DrawFlags(1), value)
 
-template doubleSided*(self: SpriteBase3D): untyped = self.getDrawFlag(2)
-template `doubleSided=`*(self: SpriteBase3D; value) = self.setDrawFlag(2, value)
+template doubleSided*(self: SpriteBase3D): untyped = self.getDrawFlag(SpriteBase3D_DrawFlags(2))
+template `doubleSided=`*(self: SpriteBase3D; value) = self.setDrawFlag(SpriteBase3D_DrawFlags(2), value)
 
-template noDepthTest*(self: SpriteBase3D): untyped = self.getDrawFlag(3)
-template `noDepthTest=`*(self: SpriteBase3D; value) = self.setDrawFlag(3, value)
+template noDepthTest*(self: SpriteBase3D): untyped = self.getDrawFlag(SpriteBase3D_DrawFlags(3))
+template `noDepthTest=`*(self: SpriteBase3D; value) = self.setDrawFlag(SpriteBase3D_DrawFlags(3), value)
 
-template fixedSize*(self: SpriteBase3D): untyped = self.getDrawFlag(4)
-template `fixedSize=`*(self: SpriteBase3D; value) = self.setDrawFlag(4, value)
+template fixedSize*(self: SpriteBase3D): untyped = self.getDrawFlag(SpriteBase3D_DrawFlags(4))
+template `fixedSize=`*(self: SpriteBase3D; value) = self.setDrawFlag(SpriteBase3D_DrawFlags(4), value)
 
 template alphaCut*(self: SpriteBase3D): untyped = self.getAlphaCutMode()
 template `alphaCut=`*(self: SpriteBase3D; value) = self.setAlphaCutMode(value)

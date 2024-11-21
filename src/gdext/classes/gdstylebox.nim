@@ -78,17 +78,17 @@ proc testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-template contentMarginLeft*(self: StyleBox): untyped = self.getContentMargin(0)
-template `contentMarginLeft=`*(self: StyleBox; value) = self.setContentMargin(0, value)
+template contentMarginLeft*(self: StyleBox): untyped = self.getContentMargin(Side(0))
+template `contentMarginLeft=`*(self: StyleBox; value) = self.setContentMargin(Side(0), value)
 
-template contentMarginTop*(self: StyleBox): untyped = self.getContentMargin(1)
-template `contentMarginTop=`*(self: StyleBox; value) = self.setContentMargin(1, value)
+template contentMarginTop*(self: StyleBox): untyped = self.getContentMargin(Side(1))
+template `contentMarginTop=`*(self: StyleBox; value) = self.setContentMargin(Side(1), value)
 
-template contentMarginRight*(self: StyleBox): untyped = self.getContentMargin(2)
-template `contentMarginRight=`*(self: StyleBox; value) = self.setContentMargin(2, value)
+template contentMarginRight*(self: StyleBox): untyped = self.getContentMargin(Side(2))
+template `contentMarginRight=`*(self: StyleBox; value) = self.setContentMargin(Side(2), value)
 
-template contentMarginBottom*(self: StyleBox): untyped = self.getContentMargin(3)
-template `contentMarginBottom=`*(self: StyleBox; value) = self.setContentMargin(3, value)
+template contentMarginBottom*(self: StyleBox): untyped = self.getContentMargin(Side(3))
+template `contentMarginBottom=`*(self: StyleBox; value) = self.setContentMargin(Side(3), value)
 
 const StyleBox_vmap =
   Resource.vmap.concat toTable {

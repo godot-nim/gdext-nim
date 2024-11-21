@@ -788,29 +788,29 @@ template `layoutMode=`*(self: Control; value) = self.setLayoutMode(value)
 template anchorsPreset*(self: Control): untyped = self.getAnchorsLayoutPreset()
 template `anchorsPreset=`*(self: Control; value) = self.setAnchorsLayoutPreset(value)
 
-template anchorLeft*(self: Control): untyped = self.getAnchor(0)
-template `anchorLeft=`*(self: Control; value) = self.setAnchor(0, value)
+template anchorLeft*(self: Control): untyped = self.getAnchor(Side(0))
+template `anchorLeft=`*(self: Control; value) = self.setAnchor(Side(0), value)
 
-template anchorTop*(self: Control): untyped = self.getAnchor(1)
-template `anchorTop=`*(self: Control; value) = self.setAnchor(1, value)
+template anchorTop*(self: Control): untyped = self.getAnchor(Side(1))
+template `anchorTop=`*(self: Control; value) = self.setAnchor(Side(1), value)
 
-template anchorRight*(self: Control): untyped = self.getAnchor(2)
-template `anchorRight=`*(self: Control; value) = self.setAnchor(2, value)
+template anchorRight*(self: Control): untyped = self.getAnchor(Side(2))
+template `anchorRight=`*(self: Control; value) = self.setAnchor(Side(2), value)
 
-template anchorBottom*(self: Control): untyped = self.getAnchor(3)
-template `anchorBottom=`*(self: Control; value) = self.setAnchor(3, value)
+template anchorBottom*(self: Control): untyped = self.getAnchor(Side(3))
+template `anchorBottom=`*(self: Control; value) = self.setAnchor(Side(3), value)
 
-template offsetLeft*(self: Control): untyped = self.getOffset(0)
-template `offsetLeft=`*(self: Control; value) = self.setOffset(0, value)
+template offsetLeft*(self: Control): untyped = self.getOffset(Side(0))
+template `offsetLeft=`*(self: Control; value) = self.setOffset(Side(0), value)
 
-template offsetTop*(self: Control): untyped = self.getOffset(1)
-template `offsetTop=`*(self: Control; value) = self.setOffset(1, value)
+template offsetTop*(self: Control): untyped = self.getOffset(Side(1))
+template `offsetTop=`*(self: Control; value) = self.setOffset(Side(1), value)
 
-template offsetRight*(self: Control): untyped = self.getOffset(2)
-template `offsetRight=`*(self: Control; value) = self.setOffset(2, value)
+template offsetRight*(self: Control): untyped = self.getOffset(Side(2))
+template `offsetRight=`*(self: Control; value) = self.setOffset(Side(2), value)
 
-template offsetBottom*(self: Control): untyped = self.getOffset(3)
-template `offsetBottom=`*(self: Control; value) = self.setOffset(3, value)
+template offsetBottom*(self: Control): untyped = self.getOffset(Side(3))
+template `offsetBottom=`*(self: Control; value) = self.setOffset(Side(3), value)
 
 template growHorizontal*(self: Control): untyped = self.getHGrowDirection()
 template `growHorizontal=`*(self: Control; value) = self.setHGrowDirection(value)
@@ -857,17 +857,17 @@ template `autoTranslate=`*(self: Control; value) = self.setAutoTranslate(value)
 template tooltipText*(self: Control): untyped = self.getTooltipText()
 template `tooltipText=`*(self: Control; value) = self.setTooltipText(value)
 
-template focusNeighborLeft*(self: Control): untyped = self.getFocusNeighbor(0)
-template `focusNeighborLeft=`*(self: Control; value) = self.setFocusNeighbor(0, value)
+template focusNeighborLeft*(self: Control): untyped = self.getFocusNeighbor(Side(0))
+template `focusNeighborLeft=`*(self: Control; value) = self.setFocusNeighbor(Side(0), value)
 
-template focusNeighborTop*(self: Control): untyped = self.getFocusNeighbor(1)
-template `focusNeighborTop=`*(self: Control; value) = self.setFocusNeighbor(1, value)
+template focusNeighborTop*(self: Control): untyped = self.getFocusNeighbor(Side(1))
+template `focusNeighborTop=`*(self: Control; value) = self.setFocusNeighbor(Side(1), value)
 
-template focusNeighborRight*(self: Control): untyped = self.getFocusNeighbor(2)
-template `focusNeighborRight=`*(self: Control; value) = self.setFocusNeighbor(2, value)
+template focusNeighborRight*(self: Control): untyped = self.getFocusNeighbor(Side(2))
+template `focusNeighborRight=`*(self: Control; value) = self.setFocusNeighbor(Side(2), value)
 
-template focusNeighborBottom*(self: Control): untyped = self.getFocusNeighbor(3)
-template `focusNeighborBottom=`*(self: Control; value) = self.setFocusNeighbor(3, value)
+template focusNeighborBottom*(self: Control): untyped = self.getFocusNeighbor(Side(3))
+template `focusNeighborBottom=`*(self: Control; value) = self.setFocusNeighbor(Side(3), value)
 
 template focusNext*(self: Control): untyped = self.getFocusNext()
 template `focusNext=`*(self: Control; value) = self.setFocusNext(value)

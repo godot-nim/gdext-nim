@@ -339,17 +339,17 @@ template `offset=`*(self: Label3D; value) = self.setOffset(value)
 template billboard*(self: Label3D): untyped = self.getBillboardMode()
 template `billboard=`*(self: Label3D; value) = self.setBillboardMode(value)
 
-template shaded*(self: Label3D): untyped = self.getDrawFlag(0)
-template `shaded=`*(self: Label3D; value) = self.setDrawFlag(0, value)
+template shaded*(self: Label3D): untyped = self.getDrawFlag(Label3D_DrawFlags(0))
+template `shaded=`*(self: Label3D; value) = self.setDrawFlag(Label3D_DrawFlags(0), value)
 
-template doubleSided*(self: Label3D): untyped = self.getDrawFlag(1)
-template `doubleSided=`*(self: Label3D; value) = self.setDrawFlag(1, value)
+template doubleSided*(self: Label3D): untyped = self.getDrawFlag(Label3D_DrawFlags(1))
+template `doubleSided=`*(self: Label3D; value) = self.setDrawFlag(Label3D_DrawFlags(1), value)
 
-template noDepthTest*(self: Label3D): untyped = self.getDrawFlag(2)
-template `noDepthTest=`*(self: Label3D; value) = self.setDrawFlag(2, value)
+template noDepthTest*(self: Label3D): untyped = self.getDrawFlag(Label3D_DrawFlags(2))
+template `noDepthTest=`*(self: Label3D; value) = self.setDrawFlag(Label3D_DrawFlags(2), value)
 
-template fixedSize*(self: Label3D): untyped = self.getDrawFlag(3)
-template `fixedSize=`*(self: Label3D; value) = self.setDrawFlag(3, value)
+template fixedSize*(self: Label3D): untyped = self.getDrawFlag(Label3D_DrawFlags(3))
+template `fixedSize=`*(self: Label3D; value) = self.setDrawFlag(Label3D_DrawFlags(3), value)
 
 template alphaCut*(self: Label3D): untyped = self.getAlphaCutMode()
 template `alphaCut=`*(self: Label3D; value) = self.setAlphaCutMode(value)

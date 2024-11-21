@@ -369,17 +369,17 @@ template `processMaterial=`*(self: GpuParticles3D; value) = self.setProcessMater
 template drawPasses*(self: GpuParticles3D): untyped = self.getDrawPasses()
 template `drawPasses=`*(self: GpuParticles3D; value) = self.setDrawPasses(value)
 
-template drawPass1*(self: GpuParticles3D): untyped = self.getDrawPassMesh(0)
-template `drawPass1=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(0, value)
+template drawPass1*(self: GpuParticles3D): untyped = self.getDrawPassMesh(int32(0))
+template `drawPass1=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(int32(0), value)
 
-template drawPass2*(self: GpuParticles3D): untyped = self.getDrawPassMesh(1)
-template `drawPass2=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(1, value)
+template drawPass2*(self: GpuParticles3D): untyped = self.getDrawPassMesh(int32(1))
+template `drawPass2=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(int32(1), value)
 
-template drawPass3*(self: GpuParticles3D): untyped = self.getDrawPassMesh(2)
-template `drawPass3=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(2, value)
+template drawPass3*(self: GpuParticles3D): untyped = self.getDrawPassMesh(int32(2))
+template `drawPass3=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(int32(2), value)
 
-template drawPass4*(self: GpuParticles3D): untyped = self.getDrawPassMesh(3)
-template `drawPass4=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(3, value)
+template drawPass4*(self: GpuParticles3D): untyped = self.getDrawPassMesh(int32(3))
+template `drawPass4=`*(self: GpuParticles3D; value) = self.setDrawPassMesh(int32(3), value)
 
 template drawSkin*(self: GpuParticles3D): untyped = self.getSkin()
 template `drawSkin=`*(self: GpuParticles3D; value) = self.setSkin(value)

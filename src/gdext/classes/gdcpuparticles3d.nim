@@ -532,14 +532,14 @@ template `emissionRingRadius=`*(self: CpuParticles3D; value) = self.setEmissionR
 template emissionRingInnerRadius*(self: CpuParticles3D): untyped = self.getEmissionRingInnerRadius()
 template `emissionRingInnerRadius=`*(self: CpuParticles3D; value) = self.setEmissionRingInnerRadius(value)
 
-template particleFlagAlignY*(self: CpuParticles3D): untyped = self.getParticleFlag(0)
-template `particleFlagAlignY=`*(self: CpuParticles3D; value) = self.setParticleFlag(0, value)
+template particleFlagAlignY*(self: CpuParticles3D): untyped = self.getParticleFlag(CpuParticles3D_ParticleFlags(0))
+template `particleFlagAlignY=`*(self: CpuParticles3D; value) = self.setParticleFlag(CpuParticles3D_ParticleFlags(0), value)
 
-template particleFlagRotateY*(self: CpuParticles3D): untyped = self.getParticleFlag(1)
-template `particleFlagRotateY=`*(self: CpuParticles3D; value) = self.setParticleFlag(1, value)
+template particleFlagRotateY*(self: CpuParticles3D): untyped = self.getParticleFlag(CpuParticles3D_ParticleFlags(1))
+template `particleFlagRotateY=`*(self: CpuParticles3D; value) = self.setParticleFlag(CpuParticles3D_ParticleFlags(1), value)
 
-template particleFlagDisableZ*(self: CpuParticles3D): untyped = self.getParticleFlag(2)
-template `particleFlagDisableZ=`*(self: CpuParticles3D; value) = self.setParticleFlag(2, value)
+template particleFlagDisableZ*(self: CpuParticles3D): untyped = self.getParticleFlag(CpuParticles3D_ParticleFlags(2))
+template `particleFlagDisableZ=`*(self: CpuParticles3D; value) = self.setParticleFlag(CpuParticles3D_ParticleFlags(2), value)
 
 template direction*(self: CpuParticles3D): untyped = self.getDirection()
 template `direction=`*(self: CpuParticles3D; value) = self.setDirection(value)
@@ -553,83 +553,83 @@ template `flatness=`*(self: CpuParticles3D; value) = self.setFlatness(value)
 template gravity*(self: CpuParticles3D): untyped = self.getGravity()
 template `gravity=`*(self: CpuParticles3D; value) = self.setGravity(value)
 
-template initialVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(0)
-template `initialVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(0, value)
+template initialVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(0))
+template `initialVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(0), value)
 
-template initialVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(0)
-template `initialVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(0, value)
+template initialVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(0))
+template `initialVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(0), value)
 
-template angularVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(1)
-template `angularVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(1, value)
+template angularVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(1))
+template `angularVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(1), value)
 
-template angularVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(1)
-template `angularVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(1, value)
+template angularVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(1))
+template `angularVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(1), value)
 
-template angularVelocityCurve*(self: CpuParticles3D): untyped = self.getParamCurve(1)
-template `angularVelocityCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(1, value)
+template angularVelocityCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(1))
+template `angularVelocityCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(1), value)
 
-template orbitVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(2)
-template `orbitVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(2, value)
+template orbitVelocityMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(2))
+template `orbitVelocityMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(2), value)
 
-template orbitVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(2)
-template `orbitVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(2, value)
+template orbitVelocityMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(2))
+template `orbitVelocityMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(2), value)
 
-template orbitVelocityCurve*(self: CpuParticles3D): untyped = self.getParamCurve(2)
-template `orbitVelocityCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(2, value)
+template orbitVelocityCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(2))
+template `orbitVelocityCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(2), value)
 
-template linearAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(3)
-template `linearAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(3, value)
+template linearAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(3))
+template `linearAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(3), value)
 
-template linearAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(3)
-template `linearAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(3, value)
+template linearAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(3))
+template `linearAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(3), value)
 
-template linearAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(3)
-template `linearAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(3, value)
+template linearAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(3))
+template `linearAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(3), value)
 
-template radialAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(4)
-template `radialAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(4, value)
+template radialAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(4))
+template `radialAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(4), value)
 
-template radialAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(4)
-template `radialAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(4, value)
+template radialAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(4))
+template `radialAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(4), value)
 
-template radialAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(4)
-template `radialAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(4, value)
+template radialAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(4))
+template `radialAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(4), value)
 
-template tangentialAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(5)
-template `tangentialAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(5, value)
+template tangentialAccelMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(5))
+template `tangentialAccelMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(5), value)
 
-template tangentialAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(5)
-template `tangentialAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(5, value)
+template tangentialAccelMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(5))
+template `tangentialAccelMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(5), value)
 
-template tangentialAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(5)
-template `tangentialAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(5, value)
+template tangentialAccelCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(5))
+template `tangentialAccelCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(5), value)
 
-template dampingMin*(self: CpuParticles3D): untyped = self.getParamMin(6)
-template `dampingMin=`*(self: CpuParticles3D; value) = self.setParamMin(6, value)
+template dampingMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(6))
+template `dampingMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(6), value)
 
-template dampingMax*(self: CpuParticles3D): untyped = self.getParamMax(6)
-template `dampingMax=`*(self: CpuParticles3D; value) = self.setParamMax(6, value)
+template dampingMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(6))
+template `dampingMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(6), value)
 
-template dampingCurve*(self: CpuParticles3D): untyped = self.getParamCurve(6)
-template `dampingCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(6, value)
+template dampingCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(6))
+template `dampingCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(6), value)
 
-template angleMin*(self: CpuParticles3D): untyped = self.getParamMin(7)
-template `angleMin=`*(self: CpuParticles3D; value) = self.setParamMin(7, value)
+template angleMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(7))
+template `angleMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(7), value)
 
-template angleMax*(self: CpuParticles3D): untyped = self.getParamMax(7)
-template `angleMax=`*(self: CpuParticles3D; value) = self.setParamMax(7, value)
+template angleMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(7))
+template `angleMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(7), value)
 
-template angleCurve*(self: CpuParticles3D): untyped = self.getParamCurve(7)
-template `angleCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(7, value)
+template angleCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(7))
+template `angleCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(7), value)
 
-template scaleAmountMin*(self: CpuParticles3D): untyped = self.getParamMin(8)
-template `scaleAmountMin=`*(self: CpuParticles3D; value) = self.setParamMin(8, value)
+template scaleAmountMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(8))
+template `scaleAmountMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(8), value)
 
-template scaleAmountMax*(self: CpuParticles3D): untyped = self.getParamMax(8)
-template `scaleAmountMax=`*(self: CpuParticles3D; value) = self.setParamMax(8, value)
+template scaleAmountMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(8))
+template `scaleAmountMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(8), value)
 
-template scaleAmountCurve*(self: CpuParticles3D): untyped = self.getParamCurve(8)
-template `scaleAmountCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(8, value)
+template scaleAmountCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(8))
+template `scaleAmountCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(8), value)
 
 template splitScale*(self: CpuParticles3D): untyped = self.getSplitScale()
 template `splitScale=`*(self: CpuParticles3D; value) = self.setSplitScale(value)
@@ -652,32 +652,32 @@ template `colorRamp=`*(self: CpuParticles3D; value) = self.setColorRamp(value)
 template colorInitialRamp*(self: CpuParticles3D): untyped = self.getColorInitialRamp()
 template `colorInitialRamp=`*(self: CpuParticles3D; value) = self.setColorInitialRamp(value)
 
-template hueVariationMin*(self: CpuParticles3D): untyped = self.getParamMin(9)
-template `hueVariationMin=`*(self: CpuParticles3D; value) = self.setParamMin(9, value)
+template hueVariationMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(9))
+template `hueVariationMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(9), value)
 
-template hueVariationMax*(self: CpuParticles3D): untyped = self.getParamMax(9)
-template `hueVariationMax=`*(self: CpuParticles3D; value) = self.setParamMax(9, value)
+template hueVariationMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(9))
+template `hueVariationMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(9), value)
 
-template hueVariationCurve*(self: CpuParticles3D): untyped = self.getParamCurve(9)
-template `hueVariationCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(9, value)
+template hueVariationCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(9))
+template `hueVariationCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(9), value)
 
-template animSpeedMin*(self: CpuParticles3D): untyped = self.getParamMin(10)
-template `animSpeedMin=`*(self: CpuParticles3D; value) = self.setParamMin(10, value)
+template animSpeedMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(10))
+template `animSpeedMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(10), value)
 
-template animSpeedMax*(self: CpuParticles3D): untyped = self.getParamMax(10)
-template `animSpeedMax=`*(self: CpuParticles3D; value) = self.setParamMax(10, value)
+template animSpeedMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(10))
+template `animSpeedMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(10), value)
 
-template animSpeedCurve*(self: CpuParticles3D): untyped = self.getParamCurve(10)
-template `animSpeedCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(10, value)
+template animSpeedCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(10))
+template `animSpeedCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(10), value)
 
-template animOffsetMin*(self: CpuParticles3D): untyped = self.getParamMin(11)
-template `animOffsetMin=`*(self: CpuParticles3D; value) = self.setParamMin(11, value)
+template animOffsetMin*(self: CpuParticles3D): untyped = self.getParamMin(CpuParticles3D_Parameter(11))
+template `animOffsetMin=`*(self: CpuParticles3D; value) = self.setParamMin(CpuParticles3D_Parameter(11), value)
 
-template animOffsetMax*(self: CpuParticles3D): untyped = self.getParamMax(11)
-template `animOffsetMax=`*(self: CpuParticles3D; value) = self.setParamMax(11, value)
+template animOffsetMax*(self: CpuParticles3D): untyped = self.getParamMax(CpuParticles3D_Parameter(11))
+template `animOffsetMax=`*(self: CpuParticles3D; value) = self.setParamMax(CpuParticles3D_Parameter(11), value)
 
-template animOffsetCurve*(self: CpuParticles3D): untyped = self.getParamCurve(11)
-template `animOffsetCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(11, value)
+template animOffsetCurve*(self: CpuParticles3D): untyped = self.getParamCurve(CpuParticles3D_Parameter(11))
+template `animOffsetCurve=`*(self: CpuParticles3D; value) = self.setParamCurve(CpuParticles3D_Parameter(11), value)
 
 const CpuParticles3D_vmap =
   GeometryInstance3D.vmap.concat initTable[string, string]()
