@@ -6,7 +6,7 @@ For instance to use, see [demo][1].
 See [wiki][2] to get more detail.
 
 > [!NOTE]
-> This library is not yet stable. If you encounter any problems in practical use, we encourage you to consider to create an Issue, as it is most likely on the library side. If even not, we welcomes it and will suggest specific fixes.
+> This library is not yet stable. If you encounter any problems in practical use, we encourage you to consider to create an Issue, as it is most likely on the library side. Either way, we will try to help.
 
 ## Features
 
