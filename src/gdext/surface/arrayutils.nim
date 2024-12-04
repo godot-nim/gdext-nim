@@ -5,6 +5,8 @@ import gdext/core/gdclass
 import gdext/core/typeshift
 import gdext/gen/[builtinclasses]
 
+import std/sequtils
+
 {.push, inline.}
 proc setLen*(arr: var Array; newlen: Natural) =
   discard arr.resize(newlen)
@@ -34,3 +36,6 @@ proc typedArray*[T: SomeVariant](len: Natural = 0): TypedArray[T] =
     result = TypedArray[T] gdarray(gdarray(), Int VariantTypeObject, className T, variant())
 
   result.setLen len
+
+proc toSeq*[T](arr: PackedArray[T]): seq[T] =
+  arr.dataUnsafe.toOpenArray(0, arr.size-1).toSeq
