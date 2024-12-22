@@ -4,96 +4,96 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc setHasTrackingData*(self: XrPose; hasTrackingData: bool): void =
-  expandMethodBind(className XrPose, "set_has_tracking_data", 2586408642)
+proc setHasTrackingData*(self: XRPose; hasTrackingData: bool): void =
+  expandMethodBind(className XRPose, "set_has_tracking_data", 2586408642)
   var `?param` = [getPtr hasTrackingData]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getHasTrackingData*(self: XrPose): bool =
-  expandMethodBind(className XrPose, "get_has_tracking_data", 36873697)
+proc getHasTrackingData*(self: XRPose): bool =
+  expandMethodBind(className XRPose, "get_has_tracking_data", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setName*(self: XrPose; name: StringName): void =
-  expandMethodBind(className XrPose, "set_name", 3304788590)
+proc setName*(self: XRPose; name: StringName): void =
+  expandMethodBind(className XRPose, "set_name", 3304788590)
   var `?param` = [getPtr name]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getName*(self: XrPose): StringName =
-  expandMethodBind(className XrPose, "get_name", 2002593661)
+proc getName*(self: XRPose): StringName =
+  expandMethodBind(className XRPose, "get_name", 2002593661)
   var ret: encoded StringName
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(StringName)
 
-proc setTransform*(self: XrPose; transform: Transform3D): void =
-  expandMethodBind(className XrPose, "set_transform", 2952846383)
+proc setTransform*(self: XRPose; transform: Transform3D): void =
+  expandMethodBind(className XRPose, "set_transform", 2952846383)
   var `?param` = [getPtr transform]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getTransform*(self: XrPose): Transform3D =
-  expandMethodBind(className XrPose, "get_transform", 3229777777)
+proc getTransform*(self: XRPose): Transform3D =
+  expandMethodBind(className XRPose, "get_transform", 3229777777)
   var ret: encoded Transform3D
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Transform3D)
 
-proc getAdjustedTransform*(self: XrPose): Transform3D =
-  expandMethodBind(className XrPose, "get_adjusted_transform", 3229777777)
+proc getAdjustedTransform*(self: XRPose): Transform3D =
+  expandMethodBind(className XRPose, "get_adjusted_transform", 3229777777)
   var ret: encoded Transform3D
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Transform3D)
 
-proc setLinearVelocity*(self: XrPose; velocity: Vector3): void =
-  expandMethodBind(className XrPose, "set_linear_velocity", 3460891852)
+proc setLinearVelocity*(self: XRPose; velocity: Vector3): void =
+  expandMethodBind(className XRPose, "set_linear_velocity", 3460891852)
   var `?param` = [getPtr velocity]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getLinearVelocity*(self: XrPose): Vector3 =
-  expandMethodBind(className XrPose, "get_linear_velocity", 3360562783)
+proc getLinearVelocity*(self: XRPose): Vector3 =
+  expandMethodBind(className XRPose, "get_linear_velocity", 3360562783)
   var ret: encoded Vector3
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector3)
 
-proc setAngularVelocity*(self: XrPose; velocity: Vector3): void =
-  expandMethodBind(className XrPose, "set_angular_velocity", 3460891852)
+proc setAngularVelocity*(self: XRPose; velocity: Vector3): void =
+  expandMethodBind(className XRPose, "set_angular_velocity", 3460891852)
   var `?param` = [getPtr velocity]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getAngularVelocity*(self: XrPose): Vector3 =
-  expandMethodBind(className XrPose, "get_angular_velocity", 3360562783)
+proc getAngularVelocity*(self: XRPose): Vector3 =
+  expandMethodBind(className XRPose, "get_angular_velocity", 3360562783)
   var ret: encoded Vector3
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector3)
 
-proc setTrackingConfidence*(self: XrPose; trackingConfidence: XrPose_TrackingConfidence): void =
-  expandMethodBind(className XrPose, "set_tracking_confidence", 4171656666)
+proc setTrackingConfidence*(self: XRPose; trackingConfidence: XRPose_TrackingConfidence): void =
+  expandMethodBind(className XRPose, "set_tracking_confidence", 4171656666)
   var `?param` = [getPtr trackingConfidence]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getTrackingConfidence*(self: XrPose): XrPose_TrackingConfidence =
-  expandMethodBind(className XrPose, "get_tracking_confidence", 2064923680)
-  var ret: encoded XrPose_TrackingConfidence
+proc getTrackingConfidence*(self: XRPose): XRPose_TrackingConfidence =
+  expandMethodBind(className XRPose, "get_tracking_confidence", 2064923680)
+  var ret: encoded XRPose_TrackingConfidence
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(XrPose_TrackingConfidence)
+  (addr ret).decode_result(XRPose_TrackingConfidence)
 
-template hasTrackingData*(self: XrPose): untyped = self.getHasTrackingData()
-template `hasTrackingData=`*(self: XrPose; value) = self.setHasTrackingData(value)
+template hasTrackingData*(self: XRPose): untyped = self.getHasTrackingData()
+template `hasTrackingData=`*(self: XRPose; value) = self.setHasTrackingData(value)
 
-template name*(self: XrPose): untyped = self.getName()
-template `name=`*(self: XrPose; value) = self.setName(value)
+template name*(self: XRPose): untyped = self.getName()
+template `name=`*(self: XRPose; value) = self.setName(value)
 
-template transform*(self: XrPose): untyped = self.getTransform()
-template `transform=`*(self: XrPose; value) = self.setTransform(value)
+template transform*(self: XRPose): untyped = self.getTransform()
+template `transform=`*(self: XRPose; value) = self.setTransform(value)
 
-template linearVelocity*(self: XrPose): untyped = self.getLinearVelocity()
-template `linearVelocity=`*(self: XrPose; value) = self.setLinearVelocity(value)
+template linearVelocity*(self: XRPose): untyped = self.getLinearVelocity()
+template `linearVelocity=`*(self: XRPose; value) = self.setLinearVelocity(value)
 
-template angularVelocity*(self: XrPose): untyped = self.getAngularVelocity()
-template `angularVelocity=`*(self: XrPose; value) = self.setAngularVelocity(value)
+template angularVelocity*(self: XRPose): untyped = self.getAngularVelocity()
+template `angularVelocity=`*(self: XRPose; value) = self.setAngularVelocity(value)
 
-template trackingConfidence*(self: XrPose): untyped = self.getTrackingConfidence()
-template `trackingConfidence=`*(self: XrPose; value) = self.setTrackingConfidence(value)
+template trackingConfidence*(self: XRPose): untyped = self.getTrackingConfidence()
+template `trackingConfidence=`*(self: XRPose; value) = self.setTrackingConfidence(value)
 
-const XrPose_vmap =
+const XRPose_vmap =
   RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XrPose]): Table[string, string] = XrPose_vmap
+template vmap*(_: typedesc[XRPose]): Table[string, string] = XRPose_vmap

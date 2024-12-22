@@ -4,99 +4,99 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc setDefaultExtension*(_: typedesc[WebRtcPeerConnection]; extensionClass: StringName): void =
-  expandMethodBind(className WebRtcPeerConnection, "set_default_extension", 3304788590)
+proc setDefaultExtension*(_: typedesc[WebRTCPeerConnection]; extensionClass: StringName): void =
+  expandMethodBind(className WebRTCPeerConnection, "set_default_extension", 3304788590)
   var `?param` = [getPtr extensionClass]
   methodbind.ptrcall(addr `?param`[0])
 
-proc initialize*(self: WebRtcPeerConnection; configuration: Dictionary = dictionary()): Error =
-  expandMethodBind(className WebRtcPeerConnection, "initialize", 2625064318)
+proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary = dictionary()): Error =
+  expandMethodBind(className WebRTCPeerConnection, "initialize", 2625064318)
   var `?param` = [getPtr configuration]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc createDataChannel*(self: WebRtcPeerConnection; label: String; options: Dictionary = dictionary()): gdref WebRtcDataChannel =
-  expandMethodBind(className WebRtcPeerConnection, "create_data_channel", 1288557393)
+proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary = dictionary()): gdref WebRTCDataChannel =
+  expandMethodBind(className WebRTCPeerConnection, "create_data_channel", 1288557393)
   var `?param` = [getPtr label, getPtr options]
-  var ret: encoded gdref WebRtcDataChannel
+  var ret: encoded gdref WebRTCDataChannel
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref WebRtcDataChannel)
+  (addr ret).decode_result(gdref WebRTCDataChannel)
 
-proc createOffer*(self: WebRtcPeerConnection): Error =
-  expandMethodBind(className WebRtcPeerConnection, "create_offer", 166280745)
+proc createOffer*(self: WebRTCPeerConnection): Error =
+  expandMethodBind(className WebRTCPeerConnection, "create_offer", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Error)
 
-proc setLocalDescription*(self: WebRtcPeerConnection; `type`: String; sdp: String): Error =
-  expandMethodBind(className WebRtcPeerConnection, "set_local_description", 852856452)
+proc setLocalDescription*(self: WebRTCPeerConnection; `type`: String; sdp: String): Error =
+  expandMethodBind(className WebRTCPeerConnection, "set_local_description", 852856452)
   var `?param` = [getPtr `type`, getPtr sdp]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc setRemoteDescription*(self: WebRtcPeerConnection; `type`: String; sdp: String): Error =
-  expandMethodBind(className WebRtcPeerConnection, "set_remote_description", 852856452)
+proc setRemoteDescription*(self: WebRTCPeerConnection; `type`: String; sdp: String): Error =
+  expandMethodBind(className WebRTCPeerConnection, "set_remote_description", 852856452)
   var `?param` = [getPtr `type`, getPtr sdp]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc addIceCandidate*(self: WebRtcPeerConnection; media: String; index: int32; name: String): Error =
-  expandMethodBind(className WebRtcPeerConnection, "add_ice_candidate", 3958950400)
+proc addIceCandidate*(self: WebRTCPeerConnection; media: String; index: int32; name: String): Error =
+  expandMethodBind(className WebRTCPeerConnection, "add_ice_candidate", 3958950400)
   var `?param` = [getPtr media, getPtr index, getPtr name]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc poll*(self: WebRtcPeerConnection): Error =
-  expandMethodBind(className WebRtcPeerConnection, "poll", 166280745)
+proc poll*(self: WebRTCPeerConnection): Error =
+  expandMethodBind(className WebRTCPeerConnection, "poll", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Error)
 
-proc close*(self: WebRtcPeerConnection): void =
-  expandMethodBind(className WebRtcPeerConnection, "close", 3218959716)
+proc close*(self: WebRTCPeerConnection): void =
+  expandMethodBind(className WebRTCPeerConnection, "close", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc getConnectionState*(self: WebRtcPeerConnection): WebRtcPeerConnection_ConnectionState =
-  expandMethodBind(className WebRtcPeerConnection, "get_connection_state", 2275710506)
-  var ret: encoded WebRtcPeerConnection_ConnectionState
+proc getConnectionState*(self: WebRTCPeerConnection): WebRTCPeerConnection_ConnectionState =
+  expandMethodBind(className WebRTCPeerConnection, "get_connection_state", 2275710506)
+  var ret: encoded WebRTCPeerConnection_ConnectionState
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(WebRtcPeerConnection_ConnectionState)
+  (addr ret).decode_result(WebRTCPeerConnection_ConnectionState)
 
-proc getGatheringState*(self: WebRtcPeerConnection): WebRtcPeerConnection_GatheringState =
-  expandMethodBind(className WebRtcPeerConnection, "get_gathering_state", 4262591401)
-  var ret: encoded WebRtcPeerConnection_GatheringState
+proc getGatheringState*(self: WebRTCPeerConnection): WebRTCPeerConnection_GatheringState =
+  expandMethodBind(className WebRTCPeerConnection, "get_gathering_state", 4262591401)
+  var ret: encoded WebRTCPeerConnection_GatheringState
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(WebRtcPeerConnection_GatheringState)
+  (addr ret).decode_result(WebRTCPeerConnection_GatheringState)
 
-proc getSignalingState*(self: WebRtcPeerConnection): WebRtcPeerConnection_SignalingState =
-  expandMethodBind(className WebRtcPeerConnection, "get_signaling_state", 3342956226)
-  var ret: encoded WebRtcPeerConnection_SignalingState
+proc getSignalingState*(self: WebRTCPeerConnection): WebRTCPeerConnection_SignalingState =
+  expandMethodBind(className WebRTCPeerConnection, "get_signaling_state", 3342956226)
+  var ret: encoded WebRTCPeerConnection_SignalingState
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(WebRtcPeerConnection_SignalingState)
+  (addr ret).decode_result(WebRTCPeerConnection_SignalingState)
 
-const WebRtcPeerConnection_vmap =
+const WebRTCPeerConnection_vmap =
   RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebRtcPeerConnection]): Table[string, string] = WebRtcPeerConnection_vmap
+template vmap*(_: typedesc[WebRTCPeerConnection]): Table[string, string] = WebRTCPeerConnection_vmap
 
-proc sessionDescriptionCreated*(self: WebRtcPeerConnection; `type`: Variant; sdp: Variant): Error =
+proc sessionDescriptionCreated*(self: WebRTCPeerConnection; `type`: Variant; sdp: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_description_created")
   let args = [`type`, sdp]
   self.emitSignal(signalname, args)
 
-proc iceCandidateCreated*(self: WebRtcPeerConnection; media: Variant; index: Variant; name: Variant): Error =
+proc iceCandidateCreated*(self: WebRTCPeerConnection; media: Variant; index: Variant; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("ice_candidate_created")
   let args = [media, index, name]
   self.emitSignal(signalname, args)
 
-proc dataChannelReceived*(self: WebRtcPeerConnection; channel: Variant): Error =
+proc dataChannelReceived*(self: WebRTCPeerConnection; channel: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("data_channel_received")

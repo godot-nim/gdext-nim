@@ -5,14 +5,14 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Plane_PlaneYz*: Plane = plane(1, 0, 0, 0)
-template PlaneYz*(_: typedesc[Plane]): Plane = Plane_PlaneYz
+const Plane_PLANE_YZ*: Plane = plane(1, 0, 0, 0)
+template PLANE_YZ*(_: typedesc[Plane]): Plane = Plane_PLANE_YZ
 
-const Plane_PlaneXz*: Plane = plane(0, 1, 0, 0)
-template PlaneXz*(_: typedesc[Plane]): Plane = Plane_PlaneXz
+const Plane_PLANE_XZ*: Plane = plane(0, 1, 0, 0)
+template PLANE_XZ*(_: typedesc[Plane]): Plane = Plane_PLANE_XZ
 
-const Plane_PlaneXy*: Plane = plane(0, 0, 1, 0)
-template PlaneXy*(_: typedesc[Plane]): Plane = Plane_PlaneXy
+const Plane_PLANE_XY*: Plane = plane(0, 0, 1, 0)
+template PLANE_XY*(_: typedesc[Plane]): Plane = Plane_PLANE_XY
 
 var `==(Plane Variant)`: PtrOperatorEvaluator
 var `!=(Plane Variant)`: PtrOperatorEvaluator

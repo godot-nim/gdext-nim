@@ -83,38 +83,38 @@ proc isUsingHdr2D*(self: Viewport): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setMsaa2D*(self: Viewport; msaa: Viewport_Msaa): void =
+proc setMsaa2D*(self: Viewport; msaa: Viewport_MSAA): void =
   expandMethodBind(className Viewport, "set_msaa_2d", 3330258708)
   var `?param` = [getPtr msaa]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMsaa2D*(self: Viewport): Viewport_Msaa =
+proc getMsaa2D*(self: Viewport): Viewport_MSAA =
   expandMethodBind(className Viewport, "get_msaa_2d", 2542055527)
-  var ret: encoded Viewport_Msaa
+  var ret: encoded Viewport_MSAA
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_Msaa)
+  (addr ret).decode_result(Viewport_MSAA)
 
-proc setMsaa3D*(self: Viewport; msaa: Viewport_Msaa): void =
+proc setMsaa3D*(self: Viewport; msaa: Viewport_MSAA): void =
   expandMethodBind(className Viewport, "set_msaa_3d", 3330258708)
   var `?param` = [getPtr msaa]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMsaa3D*(self: Viewport): Viewport_Msaa =
+proc getMsaa3D*(self: Viewport): Viewport_MSAA =
   expandMethodBind(className Viewport, "get_msaa_3d", 2542055527)
-  var ret: encoded Viewport_Msaa
+  var ret: encoded Viewport_MSAA
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_Msaa)
+  (addr ret).decode_result(Viewport_MSAA)
 
-proc setScreenSpaceAa*(self: Viewport; screenSpaceAa: Viewport_ScreenSpaceAa): void =
+proc setScreenSpaceAa*(self: Viewport; screenSpaceAa: Viewport_ScreenSpaceAA): void =
   expandMethodBind(className Viewport, "set_screen_space_aa", 3544169389)
   var `?param` = [getPtr screenSpaceAa]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getScreenSpaceAa*(self: Viewport): Viewport_ScreenSpaceAa =
+proc getScreenSpaceAa*(self: Viewport): Viewport_ScreenSpaceAA =
   expandMethodBind(className Viewport, "get_screen_space_aa", 1390814124)
-  var ret: encoded Viewport_ScreenSpaceAa
+  var ret: encoded Viewport_ScreenSpaceAA
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_ScreenSpaceAa)
+  (addr ret).decode_result(Viewport_ScreenSpaceAA)
 
 proc setUseTaa*(self: Viewport; enable: bool): void =
   expandMethodBind(className Viewport, "set_use_taa", 2586408642)
@@ -206,11 +206,11 @@ proc getPhysicsObjectPickingFirstOnly*(self: Viewport): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getViewportRid*(self: Viewport): Rid =
+proc getViewportRid*(self: Viewport): RID =
   expandMethodBind(className Viewport, "get_viewport_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc pushTextInput*(self: Viewport; text: String): void =
   expandMethodBind(className Viewport, "push_text_input", 83702148)
@@ -437,27 +437,27 @@ proc getDefaultCanvasItemTextureRepeat*(self: Viewport): Viewport_DefaultCanvasI
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Viewport_DefaultCanvasItemTextureRepeat)
 
-proc setSdfOversize*(self: Viewport; oversize: Viewport_SdfOversize): void =
+proc setSdfOversize*(self: Viewport; oversize: Viewport_SDFOversize): void =
   expandMethodBind(className Viewport, "set_sdf_oversize", 2574159017)
   var `?param` = [getPtr oversize]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSdfOversize*(self: Viewport): Viewport_SdfOversize =
+proc getSdfOversize*(self: Viewport): Viewport_SDFOversize =
   expandMethodBind(className Viewport, "get_sdf_oversize", 2631427510)
-  var ret: encoded Viewport_SdfOversize
+  var ret: encoded Viewport_SDFOversize
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_SdfOversize)
+  (addr ret).decode_result(Viewport_SDFOversize)
 
-proc setSdfScale*(self: Viewport; scale: Viewport_SdfScale): void =
+proc setSdfScale*(self: Viewport; scale: Viewport_SDFScale): void =
   expandMethodBind(className Viewport, "set_sdf_scale", 1402773951)
   var `?param` = [getPtr scale]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSdfScale*(self: Viewport): Viewport_SdfScale =
+proc getSdfScale*(self: Viewport): Viewport_SDFScale =
   expandMethodBind(className Viewport, "get_sdf_scale", 3162688184)
-  var ret: encoded Viewport_SdfScale
+  var ret: encoded Viewport_SDFScale
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_SdfScale)
+  (addr ret).decode_result(Viewport_SDFScale)
 
 proc setMeshLodThreshold*(self: Viewport; pixels: Float): void =
   expandMethodBind(className Viewport, "set_mesh_lod_threshold", 373806689)
@@ -598,27 +598,27 @@ proc getTextureMipmapBias*(self: Viewport): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setVrsMode*(self: Viewport; mode: Viewport_VrsMode): void =
+proc setVrsMode*(self: Viewport; mode: Viewport_VRSMode): void =
   expandMethodBind(className Viewport, "set_vrs_mode", 2749867817)
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getVrsMode*(self: Viewport): Viewport_VrsMode =
+proc getVrsMode*(self: Viewport): Viewport_VRSMode =
   expandMethodBind(className Viewport, "get_vrs_mode", 349660525)
-  var ret: encoded Viewport_VrsMode
+  var ret: encoded Viewport_VRSMode
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_VrsMode)
+  (addr ret).decode_result(Viewport_VRSMode)
 
-proc setVrsUpdateMode*(self: Viewport; mode: Viewport_VrsUpdateMode): void =
+proc setVrsUpdateMode*(self: Viewport; mode: Viewport_VRSUpdateMode): void =
   expandMethodBind(className Viewport, "set_vrs_update_mode", 3182412319)
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getVrsUpdateMode*(self: Viewport): Viewport_VrsUpdateMode =
+proc getVrsUpdateMode*(self: Viewport): Viewport_VRSUpdateMode =
   expandMethodBind(className Viewport, "get_vrs_update_mode", 2255951583)
-  var ret: encoded Viewport_VrsUpdateMode
+  var ret: encoded Viewport_VRSUpdateMode
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Viewport_VrsUpdateMode)
+  (addr ret).decode_result(Viewport_VRSUpdateMode)
 
 proc setVrsTexture*(self: Viewport; texture: gdref Texture2D): void =
   expandMethodBind(className Viewport, "set_vrs_texture", 4051416890)

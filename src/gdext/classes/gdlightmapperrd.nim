@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdlightmapper; export gdlightmapper
 
-const LightmapperRd_vmap =
+const LightmapperRD_vmap =
   Lightmapper.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LightmapperRd]): Table[string, string] = LightmapperRd_vmap
+template vmap*(_: typedesc[LightmapperRD]): Table[string, string] = LightmapperRD_vmap

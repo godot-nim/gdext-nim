@@ -48,11 +48,11 @@ proc getExcludeNodesFromCollision*(self: Joint3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getRid*(self: Joint3D): Rid =
+proc getRid*(self: Joint3D): RID =
   expandMethodBind(className Joint3D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 template nodeA*(self: Joint3D): untyped = self.getNodeA()
 template `nodeA=`*(self: Joint3D; value) = self.setNodeA(value)

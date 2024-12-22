@@ -26,16 +26,16 @@ proc getPathPostprocessing*(self: NavigationPathQueryParameters2D): NavigationPa
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(NavigationPathQueryParameters2D_PathPostProcessing)
 
-proc setMap*(self: NavigationPathQueryParameters2D; map: Rid): void =
+proc setMap*(self: NavigationPathQueryParameters2D; map: RID): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_map", 2722037293)
   var `?param` = [getPtr map]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMap*(self: NavigationPathQueryParameters2D): Rid =
+proc getMap*(self: NavigationPathQueryParameters2D): RID =
   expandMethodBind(className NavigationPathQueryParameters2D, "get_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setStartPosition*(self: NavigationPathQueryParameters2D; startPosition: Vector2): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_start_position", 743155724)

@@ -36,11 +36,11 @@ proc getViewProjection*(self: RenderSceneData; view: uint32): Projection =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Projection)
 
-proc getUniformBuffer*(self: RenderSceneData): Rid =
+proc getUniformBuffer*(self: RenderSceneData): RID =
   expandMethodBind(className RenderSceneData, "get_uniform_buffer", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 const RenderSceneData_vmap =
   Object.vmap.concat initTable[string, string]()

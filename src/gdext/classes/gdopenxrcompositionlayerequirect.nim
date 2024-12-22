@@ -4,76 +4,76 @@ import gdext/coronation/header/classes
 
 import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 
-proc setRadius*(self: OpenXrCompositionLayerEquirect; radius: Float): void =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "set_radius", 373806689)
+proc setRadius*(self: OpenXRCompositionLayerEquirect; radius: Float): void =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_radius", 373806689)
   var `?param` = [getPtr radius]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getRadius*(self: OpenXrCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "get_radius", 1740695150)
+proc getRadius*(self: OpenXRCompositionLayerEquirect): Float =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_radius", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setCentralHorizontalAngle*(self: OpenXrCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "set_central_horizontal_angle", 373806689)
+proc setCentralHorizontalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_central_horizontal_angle", 373806689)
   var `?param` = [getPtr angle]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCentralHorizontalAngle*(self: OpenXrCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "get_central_horizontal_angle", 1740695150)
+proc getCentralHorizontalAngle*(self: OpenXRCompositionLayerEquirect): Float =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_central_horizontal_angle", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setUpperVerticalAngle*(self: OpenXrCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "set_upper_vertical_angle", 373806689)
+proc setUpperVerticalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_upper_vertical_angle", 373806689)
   var `?param` = [getPtr angle]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getUpperVerticalAngle*(self: OpenXrCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "get_upper_vertical_angle", 1740695150)
+proc getUpperVerticalAngle*(self: OpenXRCompositionLayerEquirect): Float =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_upper_vertical_angle", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setLowerVerticalAngle*(self: OpenXrCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "set_lower_vertical_angle", 373806689)
+proc setLowerVerticalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_lower_vertical_angle", 373806689)
   var `?param` = [getPtr angle]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getLowerVerticalAngle*(self: OpenXrCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "get_lower_vertical_angle", 1740695150)
+proc getLowerVerticalAngle*(self: OpenXRCompositionLayerEquirect): Float =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_lower_vertical_angle", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setFallbackSegments*(self: OpenXrCompositionLayerEquirect; segments: uint32): void =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "set_fallback_segments", 1286410249)
+proc setFallbackSegments*(self: OpenXRCompositionLayerEquirect; segments: uint32): void =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_fallback_segments", 1286410249)
   var `?param` = [getPtr segments]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFallbackSegments*(self: OpenXrCompositionLayerEquirect): uint32 =
-  expandMethodBind(className OpenXrCompositionLayerEquirect, "get_fallback_segments", 3905245786)
+proc getFallbackSegments*(self: OpenXRCompositionLayerEquirect): uint32 =
+  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_fallback_segments", 3905245786)
   var ret: encoded uint32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(uint32)
 
-template radius*(self: OpenXrCompositionLayerEquirect): untyped = self.getRadius()
-template `radius=`*(self: OpenXrCompositionLayerEquirect; value) = self.setRadius(value)
+template radius*(self: OpenXRCompositionLayerEquirect): untyped = self.getRadius()
+template `radius=`*(self: OpenXRCompositionLayerEquirect; value) = self.setRadius(value)
 
-template centralHorizontalAngle*(self: OpenXrCompositionLayerEquirect): untyped = self.getCentralHorizontalAngle()
-template `centralHorizontalAngle=`*(self: OpenXrCompositionLayerEquirect; value) = self.setCentralHorizontalAngle(value)
+template centralHorizontalAngle*(self: OpenXRCompositionLayerEquirect): untyped = self.getCentralHorizontalAngle()
+template `centralHorizontalAngle=`*(self: OpenXRCompositionLayerEquirect; value) = self.setCentralHorizontalAngle(value)
 
-template upperVerticalAngle*(self: OpenXrCompositionLayerEquirect): untyped = self.getUpperVerticalAngle()
-template `upperVerticalAngle=`*(self: OpenXrCompositionLayerEquirect; value) = self.setUpperVerticalAngle(value)
+template upperVerticalAngle*(self: OpenXRCompositionLayerEquirect): untyped = self.getUpperVerticalAngle()
+template `upperVerticalAngle=`*(self: OpenXRCompositionLayerEquirect; value) = self.setUpperVerticalAngle(value)
 
-template lowerVerticalAngle*(self: OpenXrCompositionLayerEquirect): untyped = self.getLowerVerticalAngle()
-template `lowerVerticalAngle=`*(self: OpenXrCompositionLayerEquirect; value) = self.setLowerVerticalAngle(value)
+template lowerVerticalAngle*(self: OpenXRCompositionLayerEquirect): untyped = self.getLowerVerticalAngle()
+template `lowerVerticalAngle=`*(self: OpenXRCompositionLayerEquirect; value) = self.setLowerVerticalAngle(value)
 
-template fallbackSegments*(self: OpenXrCompositionLayerEquirect): untyped = self.getFallbackSegments()
-template `fallbackSegments=`*(self: OpenXrCompositionLayerEquirect; value) = self.setFallbackSegments(value)
+template fallbackSegments*(self: OpenXRCompositionLayerEquirect): untyped = self.getFallbackSegments()
+template `fallbackSegments=`*(self: OpenXRCompositionLayerEquirect; value) = self.setFallbackSegments(value)
 
-const OpenXrCompositionLayerEquirect_vmap =
-  OpenXrCompositionLayer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXrCompositionLayerEquirect]): Table[string, string] = OpenXrCompositionLayerEquirect_vmap
+const OpenXRCompositionLayerEquirect_vmap =
+  OpenXRCompositionLayer.vmap.concat initTable[string, string]()
+template vmap*(_: typedesc[OpenXRCompositionLayerEquirect]): Table[string, string] = OpenXRCompositionLayerEquirect_vmap

@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
 
-const ResourceImporterWav_vmap =
+const ResourceImporterWAV_vmap =
   ResourceImporter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceImporterWav]): Table[string, string] = ResourceImporterWav_vmap
+template vmap*(_: typedesc[ResourceImporterWAV]): Table[string, string] = ResourceImporterWAV_vmap

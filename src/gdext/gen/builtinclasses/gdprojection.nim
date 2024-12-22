@@ -5,29 +5,29 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Projection_PlaneNear*: int = 0
-template PlaneNear*(_: typedesc[Projection]): int = Projection_PlaneNear
+const Projection_PLANE_NEAR*: int = 0
+template PLANE_NEAR*(_: typedesc[Projection]): int = Projection_PLANE_NEAR
 
-const Projection_PlaneFar*: int = 1
-template PlaneFar*(_: typedesc[Projection]): int = Projection_PlaneFar
+const Projection_PLANE_FAR*: int = 1
+template PLANE_FAR*(_: typedesc[Projection]): int = Projection_PLANE_FAR
 
-const Projection_PlaneLeft*: int = 2
-template PlaneLeft*(_: typedesc[Projection]): int = Projection_PlaneLeft
+const Projection_PLANE_LEFT*: int = 2
+template PLANE_LEFT*(_: typedesc[Projection]): int = Projection_PLANE_LEFT
 
-const Projection_PlaneTop*: int = 3
-template PlaneTop*(_: typedesc[Projection]): int = Projection_PlaneTop
+const Projection_PLANE_TOP*: int = 3
+template PLANE_TOP*(_: typedesc[Projection]): int = Projection_PLANE_TOP
 
-const Projection_PlaneRight*: int = 4
-template PlaneRight*(_: typedesc[Projection]): int = Projection_PlaneRight
+const Projection_PLANE_RIGHT*: int = 4
+template PLANE_RIGHT*(_: typedesc[Projection]): int = Projection_PLANE_RIGHT
 
-const Projection_PlaneBottom*: int = 5
-template PlaneBottom*(_: typedesc[Projection]): int = Projection_PlaneBottom
+const Projection_PLANE_BOTTOM*: int = 5
+template PLANE_BOTTOM*(_: typedesc[Projection]): int = Projection_PLANE_BOTTOM
 
-const Projection_Identity*: Projection = projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-template Identity*(_: typedesc[Projection]): Projection = Projection_Identity
+const Projection_IDENTITY*: Projection = projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+template IDENTITY*(_: typedesc[Projection]): Projection = Projection_IDENTITY
 
-const Projection_Zero*: Projection = projection(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-template Zero*(_: typedesc[Projection]): Projection = Projection_Zero
+const Projection_ZERO*: Projection = projection(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+template ZERO*(_: typedesc[Projection]): Projection = Projection_ZERO
 
 var `==(Projection Variant)`: PtrOperatorEvaluator
 var `!=(Projection Variant)`: PtrOperatorEvaluator
@@ -67,7 +67,7 @@ var `createOrthogonal(Projection Float Float Float Float Float Float)`: PtrBuilt
 var `createOrthogonalAspect(Projection Float Float Float Float bool)`: PtrBuiltinMethod
 var `createFrustum(Projection Float Float Float Float Float Float)`: PtrBuiltinMethod
 var `createFrustumAspect(Projection Float Float Vector2 Float Float bool)`: PtrBuiltinMethod
-var `createFitAabb(Projection Aabb)`: PtrBuiltinMethod
+var `createFitAabb(Projection AABB)`: PtrBuiltinMethod
 var `determinant(Projection)`: PtrBuiltinMethod
 var `perspectiveZnearAdjusted(Projection Float)`: PtrBuiltinMethod
 var `getProjectionPlane(Projection Int)`: PtrBuiltinMethod
@@ -112,9 +112,9 @@ proc createFrustum*(_: typedesc[Projection]; left: Float; right: Float; bottom: 
 proc createFrustumAspect*(_: typedesc[Projection]; size: Float; aspect: Float; offset: Vector2; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
   let argArr = [getPtr size, getPtr aspect, getPtr offset, getPtr zNear, getPtr zFar, getPtr flipFov]
   `createFrustumAspect(Projection Float Float Vector2 Float Float bool)`(nil, addr argArr[0], addr result, 6)
-proc createFitAabb*(_: typedesc[Projection]; aabb: Aabb): Projection =
+proc createFitAabb*(_: typedesc[Projection]; aabb: AABB): Projection =
   let argArr = [getPtr aabb]
-  `createFitAabb(Projection Aabb)`(nil, addr argArr[0], addr result, 1)
+  `createFitAabb(Projection AABB)`(nil, addr argArr[0], addr result, 1)
 proc determinant*(self: Projection): Float =
   `determinant(Projection)`(addr self, nil, addr result, 0)
 proc perspectiveZnearAdjusted*(self: Projection; newZnear: Float): Projection =
@@ -163,7 +163,7 @@ proc load_Projection_methods {.execon: staticevents.init_engine.on_load_builtinc
   `createOrthogonalAspect(Projection Float Float Float Float bool)` = load(VariantType_Projection, "create_orthogonal_aspect", 390915442)
   `createFrustum(Projection Float Float Float Float Float Float)` = load(VariantType_Projection, "create_frustum", 3707929169)
   `createFrustumAspect(Projection Float Float Vector2 Float Float bool)` = load(VariantType_Projection, "create_frustum_aspect", 1535076251)
-  `createFitAabb(Projection Aabb)` = load(VariantType_Projection, "create_fit_aabb", 2264694907)
+  `createFitAabb(Projection AABB)` = load(VariantType_Projection, "create_fit_aabb", 2264694907)
   `determinant(Projection)` = load(VariantType_Projection, "determinant", 466405837)
   `perspectiveZnearAdjusted(Projection Float)` = load(VariantType_Projection, "perspective_znear_adjusted", 3584785443)
   `getProjectionPlane(Projection Int)` = load(VariantType_Projection, "get_projection_plane", 1551184160)

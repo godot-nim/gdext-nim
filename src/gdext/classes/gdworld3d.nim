@@ -4,23 +4,23 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc getSpace*(self: World3D): Rid =
+proc getSpace*(self: World3D): RID =
   expandMethodBind(className World3D, "get_space", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getNavigationMap*(self: World3D): Rid =
+proc getNavigationMap*(self: World3D): RID =
   expandMethodBind(className World3D, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getScenario*(self: World3D): Rid =
+proc getScenario*(self: World3D): RID =
   expandMethodBind(className World3D, "get_scenario", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setEnvironment*(self: World3D; env: gdref Environment): void =
   expandMethodBind(className World3D, "set_environment", 4143518816)

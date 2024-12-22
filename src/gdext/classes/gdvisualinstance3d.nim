@@ -4,27 +4,27 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
-method getAabb*(self: VisualInstance3D): Aabb {.base.} = (discard)
+method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
 proc getAabb(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[VisualInstance3D](p_instance).getAabb().encode(r_ret)
 template getAabb_bind*(_: typedesc[VisualInstance3D]): ClassCallVirtual = getAabb
 
-proc setBase*(self: VisualInstance3D; base: Rid): void =
+proc setBase*(self: VisualInstance3D; base: RID): void =
   expandMethodBind(className VisualInstance3D, "set_base", 2722037293)
   var `?param` = [getPtr base]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getBase*(self: VisualInstance3D): Rid =
+proc getBase*(self: VisualInstance3D): RID =
   expandMethodBind(className VisualInstance3D, "get_base", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getInstance*(self: VisualInstance3D): Rid =
+proc getInstance*(self: VisualInstance3D): RID =
   expandMethodBind(className VisualInstance3D, "get_instance", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setLayerMask*(self: VisualInstance3D; mask: uint32): void =
   expandMethodBind(className VisualInstance3D, "set_layer_mask", 1286410249)
@@ -71,11 +71,11 @@ proc isSortingUseAabbCenter*(self: VisualInstance3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getAabb*(self: VisualInstance3D): Aabb =
+proc getAabb*(self: VisualInstance3D): AABB =
   expandMethodBind(className VisualInstance3D, "get_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 template layers*(self: VisualInstance3D): untyped = self.getLayerMask()
 template `layers=`*(self: VisualInstance3D; value) = self.setLayerMask(value)

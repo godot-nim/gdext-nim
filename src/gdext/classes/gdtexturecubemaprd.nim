@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdtexturelayeredrd; export gdtexturelayeredrd
 
-const TextureCubemapRd_vmap =
-  TextureLayeredRd.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureCubemapRd]): Table[string, string] = TextureCubemapRd_vmap
+const TextureCubemapRD_vmap =
+  TextureLayeredRD.vmap.concat initTable[string, string]()
+template vmap*(_: typedesc[TextureCubemapRD]): Table[string, string] = TextureCubemapRD_vmap

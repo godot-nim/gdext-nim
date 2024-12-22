@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
-proc getRid*(self: NavigationRegion2D): Rid =
+proc getRid*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setNavigationPolygon*(self: NavigationRegion2D; navigationPolygon: gdref NavigationPolygon): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_polygon", 1515040758)
@@ -32,16 +32,16 @@ proc isEnabled*(self: NavigationRegion2D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setNavigationMap*(self: NavigationRegion2D; navigationMap: Rid): void =
+proc setNavigationMap*(self: NavigationRegion2D; navigationMap: RID): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_map", 2722037293)
   var `?param` = [getPtr navigationMap]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: NavigationRegion2D): Rid =
+proc getNavigationMap*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setUseEdgeConnections*(self: NavigationRegion2D; enabled: bool): void =
   expandMethodBind(className NavigationRegion2D, "set_use_edge_connections", 2586408642)
@@ -77,11 +77,11 @@ proc getNavigationLayerValue*(self: NavigationRegion2D; layerNumber: int32): boo
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc getRegionRid*(self: NavigationRegion2D): Rid =
+proc getRegionRid*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_region_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setEnterCost*(self: NavigationRegion2D; enterCost: Float): void =
   expandMethodBind(className NavigationRegion2D, "set_enter_cost", 373806689)

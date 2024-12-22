@@ -366,7 +366,7 @@ proc ttsStop*(self: DisplayServer): void =
   expandMethodBind(className DisplayServer, "tts_stop", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc ttsSetUtteranceCallback*(self: DisplayServer; event: DisplayServer_TtsUtteranceEvent; callable: Callable): void =
+proc ttsSetUtteranceCallback*(self: DisplayServer; event: DisplayServer_TTSUtteranceEvent; callable: Callable): void =
   expandMethodBind(className DisplayServer, "tts_set_utterance_callback", 109679083)
   var `?param` = [getPtr event, getPtr callable]
   methodbind.ptrcall(self, addr `?param`[0])
@@ -1030,7 +1030,7 @@ proc statusIndicatorSetTooltip*(self: DisplayServer; id: int32; tooltip: String)
   var `?param` = [getPtr id, getPtr tooltip]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc statusIndicatorSetMenu*(self: DisplayServer; id: int32; menuRid: Rid): void =
+proc statusIndicatorSetMenu*(self: DisplayServer; id: int32; menuRid: RID): void =
   expandMethodBind(className DisplayServer, "status_indicator_set_menu", 4040184819)
   var `?param` = [getPtr id, getPtr menuRid]
   methodbind.ptrcall(self, addr `?param`[0])

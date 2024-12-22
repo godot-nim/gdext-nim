@@ -4,9 +4,9 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-method draw*(self: StyleBox; toCanvasItem: Rid; rect: Rect2): void {.base.} = (discard)
+method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
 proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(Rid), p_args[1].decode(Rect2))
+  errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Rect2))
 template draw_bind*(_: typedesc[StyleBox]): ClassCallVirtual = draw
 
 method getDrawRect*(self: StyleBox; rect: Rect2): Rect2 {.base.} = (discard)
@@ -60,7 +60,7 @@ proc getOffset*(self: StyleBox): Vector2 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2)
 
-proc draw*(self: StyleBox; canvasItem: Rid; rect: Rect2): void =
+proc draw*(self: StyleBox; canvasItem: RID; rect: Rect2): void =
   expandMethodBind(className StyleBox, "draw", 2275962004)
   var `?param` = [getPtr canvasItem, getPtr rect]
   methodbind.ptrcall(self, addr `?param`[0])

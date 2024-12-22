@@ -59,11 +59,11 @@ proc getColliderId*(self: KinematicCollision2D): uint64 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(uint64)
 
-proc getColliderRid*(self: KinematicCollision2D): Rid =
+proc getColliderRid*(self: KinematicCollision2D): RID =
   expandMethodBind(className KinematicCollision2D, "get_collider_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getColliderShape*(self: KinematicCollision2D): Object =
   expandMethodBind(className KinematicCollision2D, "get_collider_shape", 1981248198)

@@ -4,145 +4,145 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc fromNode*(_: typedesc[GltfPhysicsShape]; shapeNode: CollisionShape3D): gdref GltfPhysicsShape =
-  expandMethodBind(className GltfPhysicsShape, "from_node", 3613751275)
+proc fromNode*(_: typedesc[GLTFPhysicsShape]; shapeNode: CollisionShape3D): gdref GLTFPhysicsShape =
+  expandMethodBind(className GLTFPhysicsShape, "from_node", 3613751275)
   var `?param` = [getPtr shapeNode]
-  var ret: encoded gdref GltfPhysicsShape
+  var ret: encoded gdref GLTFPhysicsShape
   methodbind.ptrcall(addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref GltfPhysicsShape)
+  (addr ret).decode_result(gdref GLTFPhysicsShape)
 
-proc toNode*(self: GltfPhysicsShape; cacheShapes: bool = false): CollisionShape3D =
-  expandMethodBind(className GltfPhysicsShape, "to_node", 563689933)
+proc toNode*(self: GLTFPhysicsShape; cacheShapes: bool = false): CollisionShape3D =
+  expandMethodBind(className GLTFPhysicsShape, "to_node", 563689933)
   var `?param` = [getPtr cacheShapes]
   var ret: encoded CollisionShape3D
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(CollisionShape3D)
 
-proc fromResource*(_: typedesc[GltfPhysicsShape]; shapeResource: gdref Shape3D): gdref GltfPhysicsShape =
-  expandMethodBind(className GltfPhysicsShape, "from_resource", 3845569786)
+proc fromResource*(_: typedesc[GLTFPhysicsShape]; shapeResource: gdref Shape3D): gdref GLTFPhysicsShape =
+  expandMethodBind(className GLTFPhysicsShape, "from_resource", 3845569786)
   var `?param` = [getPtr shapeResource]
-  var ret: encoded gdref GltfPhysicsShape
+  var ret: encoded gdref GLTFPhysicsShape
   methodbind.ptrcall(addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref GltfPhysicsShape)
+  (addr ret).decode_result(gdref GLTFPhysicsShape)
 
-proc toResource*(self: GltfPhysicsShape; cacheShapes: bool = false): gdref Shape3D =
-  expandMethodBind(className GltfPhysicsShape, "to_resource", 1913542110)
+proc toResource*(self: GLTFPhysicsShape; cacheShapes: bool = false): gdref Shape3D =
+  expandMethodBind(className GLTFPhysicsShape, "to_resource", 1913542110)
   var `?param` = [getPtr cacheShapes]
   var ret: encoded gdref Shape3D
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(gdref Shape3D)
 
-proc fromDictionary*(_: typedesc[GltfPhysicsShape]; dictionary: Dictionary): gdref GltfPhysicsShape =
-  expandMethodBind(className GltfPhysicsShape, "from_dictionary", 2390691823)
+proc fromDictionary*(_: typedesc[GLTFPhysicsShape]; dictionary: Dictionary): gdref GLTFPhysicsShape =
+  expandMethodBind(className GLTFPhysicsShape, "from_dictionary", 2390691823)
   var `?param` = [getPtr dictionary]
-  var ret: encoded gdref GltfPhysicsShape
+  var ret: encoded gdref GLTFPhysicsShape
   methodbind.ptrcall(addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref GltfPhysicsShape)
+  (addr ret).decode_result(gdref GLTFPhysicsShape)
 
-proc toDictionary*(self: GltfPhysicsShape): Dictionary =
-  expandMethodBind(className GltfPhysicsShape, "to_dictionary", 3102165223)
+proc toDictionary*(self: GLTFPhysicsShape): Dictionary =
+  expandMethodBind(className GLTFPhysicsShape, "to_dictionary", 3102165223)
   var ret: encoded Dictionary
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getShapeType*(self: GltfPhysicsShape): String =
-  expandMethodBind(className GltfPhysicsShape, "get_shape_type", 201670096)
+proc getShapeType*(self: GLTFPhysicsShape): String =
+  expandMethodBind(className GLTFPhysicsShape, "get_shape_type", 201670096)
   var ret: encoded String
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(String)
 
-proc setShapeType*(self: GltfPhysicsShape; shapeType: String): void =
-  expandMethodBind(className GltfPhysicsShape, "set_shape_type", 83702148)
+proc setShapeType*(self: GLTFPhysicsShape; shapeType: String): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_shape_type", 83702148)
   var `?param` = [getPtr shapeType]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSize*(self: GltfPhysicsShape): Vector3 =
-  expandMethodBind(className GltfPhysicsShape, "get_size", 3360562783)
+proc getSize*(self: GLTFPhysicsShape): Vector3 =
+  expandMethodBind(className GLTFPhysicsShape, "get_size", 3360562783)
   var ret: encoded Vector3
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector3)
 
-proc setSize*(self: GltfPhysicsShape; size: Vector3): void =
-  expandMethodBind(className GltfPhysicsShape, "set_size", 3460891852)
+proc setSize*(self: GLTFPhysicsShape; size: Vector3): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_size", 3460891852)
   var `?param` = [getPtr size]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getRadius*(self: GltfPhysicsShape): Float =
-  expandMethodBind(className GltfPhysicsShape, "get_radius", 1740695150)
+proc getRadius*(self: GLTFPhysicsShape): Float =
+  expandMethodBind(className GLTFPhysicsShape, "get_radius", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setRadius*(self: GltfPhysicsShape; radius: Float): void =
-  expandMethodBind(className GltfPhysicsShape, "set_radius", 373806689)
+proc setRadius*(self: GLTFPhysicsShape; radius: Float): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_radius", 373806689)
   var `?param` = [getPtr radius]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getHeight*(self: GltfPhysicsShape): Float =
-  expandMethodBind(className GltfPhysicsShape, "get_height", 1740695150)
+proc getHeight*(self: GLTFPhysicsShape): Float =
+  expandMethodBind(className GLTFPhysicsShape, "get_height", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setHeight*(self: GltfPhysicsShape; height: Float): void =
-  expandMethodBind(className GltfPhysicsShape, "set_height", 373806689)
+proc setHeight*(self: GLTFPhysicsShape; height: Float): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_height", 373806689)
   var `?param` = [getPtr height]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getIsTrigger*(self: GltfPhysicsShape): bool =
-  expandMethodBind(className GltfPhysicsShape, "get_is_trigger", 36873697)
+proc getIsTrigger*(self: GLTFPhysicsShape): bool =
+  expandMethodBind(className GLTFPhysicsShape, "get_is_trigger", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setIsTrigger*(self: GltfPhysicsShape; isTrigger: bool): void =
-  expandMethodBind(className GltfPhysicsShape, "set_is_trigger", 2586408642)
+proc setIsTrigger*(self: GLTFPhysicsShape; isTrigger: bool): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_is_trigger", 2586408642)
   var `?param` = [getPtr isTrigger]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMeshIndex*(self: GltfPhysicsShape): int32 =
-  expandMethodBind(className GltfPhysicsShape, "get_mesh_index", 3905245786)
+proc getMeshIndex*(self: GLTFPhysicsShape): int32 =
+  expandMethodBind(className GLTFPhysicsShape, "get_mesh_index", 3905245786)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setMeshIndex*(self: GltfPhysicsShape; meshIndex: int32): void =
-  expandMethodBind(className GltfPhysicsShape, "set_mesh_index", 1286410249)
+proc setMeshIndex*(self: GLTFPhysicsShape; meshIndex: int32): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_mesh_index", 1286410249)
   var `?param` = [getPtr meshIndex]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getImporterMesh*(self: GltfPhysicsShape): gdref ImporterMesh =
-  expandMethodBind(className GltfPhysicsShape, "get_importer_mesh", 3161779525)
+proc getImporterMesh*(self: GLTFPhysicsShape): gdref ImporterMesh =
+  expandMethodBind(className GLTFPhysicsShape, "get_importer_mesh", 3161779525)
   var ret: encoded gdref ImporterMesh
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref ImporterMesh)
 
-proc setImporterMesh*(self: GltfPhysicsShape; importerMesh: gdref ImporterMesh): void =
-  expandMethodBind(className GltfPhysicsShape, "set_importer_mesh", 2255166972)
+proc setImporterMesh*(self: GLTFPhysicsShape; importerMesh: gdref ImporterMesh): void =
+  expandMethodBind(className GLTFPhysicsShape, "set_importer_mesh", 2255166972)
   var `?param` = [getPtr importerMesh]
   methodbind.ptrcall(self, addr `?param`[0])
 
-template shapeType*(self: GltfPhysicsShape): untyped = self.getShapeType()
-template `shapeType=`*(self: GltfPhysicsShape; value) = self.setShapeType(value)
+template shapeType*(self: GLTFPhysicsShape): untyped = self.getShapeType()
+template `shapeType=`*(self: GLTFPhysicsShape; value) = self.setShapeType(value)
 
-template size*(self: GltfPhysicsShape): untyped = self.getSize()
-template `size=`*(self: GltfPhysicsShape; value) = self.setSize(value)
+template size*(self: GLTFPhysicsShape): untyped = self.getSize()
+template `size=`*(self: GLTFPhysicsShape; value) = self.setSize(value)
 
-template radius*(self: GltfPhysicsShape): untyped = self.getRadius()
-template `radius=`*(self: GltfPhysicsShape; value) = self.setRadius(value)
+template radius*(self: GLTFPhysicsShape): untyped = self.getRadius()
+template `radius=`*(self: GLTFPhysicsShape; value) = self.setRadius(value)
 
-template height*(self: GltfPhysicsShape): untyped = self.getHeight()
-template `height=`*(self: GltfPhysicsShape; value) = self.setHeight(value)
+template height*(self: GLTFPhysicsShape): untyped = self.getHeight()
+template `height=`*(self: GLTFPhysicsShape; value) = self.setHeight(value)
 
-template isTrigger*(self: GltfPhysicsShape): untyped = self.getIsTrigger()
-template `isTrigger=`*(self: GltfPhysicsShape; value) = self.setIsTrigger(value)
+template isTrigger*(self: GLTFPhysicsShape): untyped = self.getIsTrigger()
+template `isTrigger=`*(self: GLTFPhysicsShape; value) = self.setIsTrigger(value)
 
-template meshIndex*(self: GltfPhysicsShape): untyped = self.getMeshIndex()
-template `meshIndex=`*(self: GltfPhysicsShape; value) = self.setMeshIndex(value)
+template meshIndex*(self: GLTFPhysicsShape): untyped = self.getMeshIndex()
+template `meshIndex=`*(self: GLTFPhysicsShape; value) = self.setMeshIndex(value)
 
-template importerMesh*(self: GltfPhysicsShape): untyped = self.getImporterMesh()
-template `importerMesh=`*(self: GltfPhysicsShape; value) = self.setImporterMesh(value)
+template importerMesh*(self: GLTFPhysicsShape): untyped = self.getImporterMesh()
+template `importerMesh=`*(self: GLTFPhysicsShape; value) = self.setImporterMesh(value)
 
-const GltfPhysicsShape_vmap =
+const GLTFPhysicsShape_vmap =
   Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GltfPhysicsShape]): Table[string, string] = GltfPhysicsShape_vmap
+template vmap*(_: typedesc[GLTFPhysicsShape]): Table[string, string] = GLTFPhysicsShape_vmap

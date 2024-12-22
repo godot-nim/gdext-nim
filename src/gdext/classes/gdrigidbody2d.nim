@@ -180,16 +180,16 @@ proc isContactMonitorEnabled*(self: RigidBody2D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setContinuousCollisionDetectionMode*(self: RigidBody2D; mode: RigidBody2D_CcdMode): void =
+proc setContinuousCollisionDetectionMode*(self: RigidBody2D; mode: RigidBody2D_CCDMode): void =
   expandMethodBind(className RigidBody2D, "set_continuous_collision_detection_mode", 1000241384)
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getContinuousCollisionDetectionMode*(self: RigidBody2D): RigidBody2D_CcdMode =
+proc getContinuousCollisionDetectionMode*(self: RigidBody2D): RigidBody2D_CCDMode =
   expandMethodBind(className RigidBody2D, "get_continuous_collision_detection_mode", 815214376)
-  var ret: encoded RigidBody2D_CcdMode
+  var ret: encoded RigidBody2D_CCDMode
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(RigidBody2D_CcdMode)
+  (addr ret).decode_result(RigidBody2D_CCDMode)
 
 proc setAxisVelocity*(self: RigidBody2D; axisVelocity: Vector2): void =
   expandMethodBind(className RigidBody2D, "set_axis_velocity", 743155724)

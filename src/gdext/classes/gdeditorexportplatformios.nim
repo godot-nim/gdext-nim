@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdeditorexportplatform; export gdeditorexportplatform
 
-const EditorExportPlatformIos_vmap =
+const EditorExportPlatformIOS_vmap =
   EditorExportPlatform.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorExportPlatformIos]): Table[string, string] = EditorExportPlatformIos_vmap
+template vmap*(_: typedesc[EditorExportPlatformIOS]): Table[string, string] = EditorExportPlatformIOS_vmap

@@ -26,16 +26,16 @@ proc getPathPostprocessing*(self: NavigationPathQueryParameters3D): NavigationPa
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(NavigationPathQueryParameters3D_PathPostProcessing)
 
-proc setMap*(self: NavigationPathQueryParameters3D; map: Rid): void =
+proc setMap*(self: NavigationPathQueryParameters3D; map: RID): void =
   expandMethodBind(className NavigationPathQueryParameters3D, "set_map", 2722037293)
   var `?param` = [getPtr map]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMap*(self: NavigationPathQueryParameters3D): Rid =
+proc getMap*(self: NavigationPathQueryParameters3D): RID =
   expandMethodBind(className NavigationPathQueryParameters3D, "get_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setStartPosition*(self: NavigationPathQueryParameters3D; startPosition: Vector3): void =
   expandMethodBind(className NavigationPathQueryParameters3D, "set_start_position", 3460891852)

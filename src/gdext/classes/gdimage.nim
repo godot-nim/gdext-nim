@@ -222,14 +222,14 @@ proc detectUsedChannels*(self: Image; source: Image_CompressSource = compressSou
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Image_UsedChannels)
 
-proc compress*(self: Image; mode: Image_CompressMode; source: Image_CompressSource = compressSourceGeneric; astcFormat: Image_AstcFormat = astcFormat4X4): Error =
+proc compress*(self: Image; mode: Image_CompressMode; source: Image_CompressSource = compressSourceGeneric; astcFormat: Image_ASTCFormat = astcFormat4X4): Error =
   expandMethodBind(className Image, "compress", 2975424957)
   var `?param` = [getPtr mode, getPtr source, getPtr astcFormat]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc compressFromChannels*(self: Image; mode: Image_CompressMode; channels: Image_UsedChannels; astcFormat: Image_AstcFormat = astcFormat4X4): Error =
+proc compressFromChannels*(self: Image; mode: Image_CompressMode; channels: Image_UsedChannels; astcFormat: Image_ASTCFormat = astcFormat4X4): Error =
   expandMethodBind(className Image, "compress_from_channels", 4212890953)
   var `?param` = [getPtr mode, getPtr channels, getPtr astcFormat]
   var ret: encoded Error

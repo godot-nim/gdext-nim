@@ -5,17 +5,17 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Transform3D_Identity*: Transform3D = transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-template Identity*(_: typedesc[Transform3D]): Transform3D = Transform3D_Identity
+const Transform3D_IDENTITY*: Transform3D = transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+template IDENTITY*(_: typedesc[Transform3D]): Transform3D = Transform3D_IDENTITY
 
-const Transform3D_FlipX*: Transform3D = transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-template FlipX*(_: typedesc[Transform3D]): Transform3D = Transform3D_FlipX
+const Transform3D_FLIP_X*: Transform3D = transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+template FLIP_X*(_: typedesc[Transform3D]): Transform3D = Transform3D_FLIP_X
 
-const Transform3D_FlipY*: Transform3D = transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)
-template FlipY*(_: typedesc[Transform3D]): Transform3D = Transform3D_FlipY
+const Transform3D_FLIP_Y*: Transform3D = transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)
+template FLIP_Y*(_: typedesc[Transform3D]): Transform3D = Transform3D_FLIP_Y
 
-const Transform3D_FlipZ*: Transform3D = transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-template FlipZ*(_: typedesc[Transform3D]): Transform3D = Transform3D_FlipZ
+const Transform3D_FLIP_Z*: Transform3D = transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+template FLIP_Z*(_: typedesc[Transform3D]): Transform3D = Transform3D_FLIP_Z
 
 var `==(Transform3D Variant)`: PtrOperatorEvaluator
 var `!=(Transform3D Variant)`: PtrOperatorEvaluator
@@ -26,7 +26,7 @@ var `*(Transform3D Float)`: PtrOperatorEvaluator
 var `/(Transform3D Float)`: PtrOperatorEvaluator
 var `*(Transform3D Vector3)`: PtrOperatorEvaluator
 var `*(Transform3D Plane)`: PtrOperatorEvaluator
-var `*(Transform3D Aabb)`: PtrOperatorEvaluator
+var `*(Transform3D AABB)`: PtrOperatorEvaluator
 var `==(Transform3D Transform3D)`: PtrOperatorEvaluator
 var `!=(Transform3D Transform3D)`: PtrOperatorEvaluator
 var `*(Transform3D Transform3D)`: PtrOperatorEvaluator
@@ -42,7 +42,7 @@ proc `*`*(left: Transform3D; right: Float): Transform3D = `*(Transform3D Float)`
 proc `/`*(left: Transform3D; right: Float): Transform3D = `/(Transform3D Float)`(getPtr left, getPtr right, addr result)
 proc `*`*(left: Transform3D; right: Vector3): Vector3 = `*(Transform3D Vector3)`(getPtr left, getPtr right, addr result)
 proc `*`*(left: Transform3D; right: Plane): Plane = `*(Transform3D Plane)`(getPtr left, getPtr right, addr result)
-proc `*`*(left: Transform3D; right: Aabb): Aabb = `*(Transform3D Aabb)`(getPtr left, getPtr right, addr result)
+proc `*`*(left: Transform3D; right: AABB): AABB = `*(Transform3D AABB)`(getPtr left, getPtr right, addr result)
 proc `==`*(left: Transform3D; right: Transform3D): bool = `==(Transform3D Transform3D)`(getPtr left, getPtr right, addr result)
 proc `!=`*(left: Transform3D; right: Transform3D): bool = `!=(Transform3D Transform3D)`(getPtr left, getPtr right, addr result)
 proc `*`*(left: Transform3D; right: Transform3D): Transform3D = `*(Transform3D Transform3D)`(getPtr left, getPtr right, addr result)
@@ -59,7 +59,7 @@ proc load_Transform3D_operators {.execon: staticevents.init_engine.on_load_built
   `/(Transform3D Float)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Divide, VariantType_Transform3D, VariantType_Float)
   `*(Transform3D Vector3)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Multiply, VariantType_Transform3D, VariantType_Vector3)
   `*(Transform3D Plane)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Multiply, VariantType_Transform3D, VariantType_Plane)
-  `*(Transform3D Aabb)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Multiply, VariantType_Transform3D, VariantType_Aabb)
+  `*(Transform3D AABB)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Multiply, VariantType_Transform3D, VariantType_AABB)
   `==(Transform3D Transform3D)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Equal, VariantType_Transform3D, VariantType_Transform3D)
   `!=(Transform3D Transform3D)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_Transform3D, VariantType_Transform3D)
   `*(Transform3D Transform3D)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Multiply, VariantType_Transform3D, VariantType_Transform3D)

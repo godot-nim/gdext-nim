@@ -60,14 +60,14 @@ proc compress*(self: ENetConnection; mode: ENetConnection_CompressionMode): void
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc dtlsServerSetup*(self: ENetConnection; serverOptions: gdref TlsOptions): Error =
+proc dtlsServerSetup*(self: ENetConnection; serverOptions: gdref TLSOptions): Error =
   expandMethodBind(className ENetConnection, "dtls_server_setup", 1262296096)
   var `?param` = [getPtr serverOptions]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc dtlsClientSetup*(self: ENetConnection; hostname: String; clientOptions: gdref TlsOptions = default gdref TlsOptions): Error =
+proc dtlsClientSetup*(self: ENetConnection; hostname: String; clientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className ENetConnection, "dtls_client_setup", 1966198364)
   var `?param` = [getPtr hostname, getPtr clientOptions]
   var ret: encoded Error

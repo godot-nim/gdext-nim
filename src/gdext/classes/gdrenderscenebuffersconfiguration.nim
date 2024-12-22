@@ -4,13 +4,13 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc getRenderTarget*(self: RenderSceneBuffersConfiguration): Rid =
+proc getRenderTarget*(self: RenderSceneBuffersConfiguration): RID =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc setRenderTarget*(self: RenderSceneBuffersConfiguration; renderTarget: Rid): void =
+proc setRenderTarget*(self: RenderSceneBuffersConfiguration; renderTarget: RID): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_render_target", 2722037293)
   var `?param` = [getPtr renderTarget]
   methodbind.ptrcall(self, addr `?param`[0])
@@ -59,24 +59,24 @@ proc setScaling3DMode*(self: RenderSceneBuffersConfiguration; scaling3DMode: Ren
   var `?param` = [getPtr scaling3DMode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMsaa3D*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportMsaa =
+proc getMsaa3D*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportMSAA =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_msaa_3d", 3109158617)
-  var ret: encoded RenderingServer_ViewportMsaa
+  var ret: encoded RenderingServer_ViewportMSAA
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportMsaa)
+  (addr ret).decode_result(RenderingServer_ViewportMSAA)
 
-proc setMsaa3D*(self: RenderSceneBuffersConfiguration; msaa3D: RenderingServer_ViewportMsaa): void =
+proc setMsaa3D*(self: RenderSceneBuffersConfiguration; msaa3D: RenderingServer_ViewportMSAA): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_msaa_3d", 3952630748)
   var `?param` = [getPtr msaa3D]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getScreenSpaceAa*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScreenSpaceAa =
+proc getScreenSpaceAa*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScreenSpaceAA =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_screen_space_aa", 641513172)
-  var ret: encoded RenderingServer_ViewportScreenSpaceAa
+  var ret: encoded RenderingServer_ViewportScreenSpaceAA
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportScreenSpaceAa)
+  (addr ret).decode_result(RenderingServer_ViewportScreenSpaceAA)
 
-proc setScreenSpaceAa*(self: RenderSceneBuffersConfiguration; screenSpaceAa: RenderingServer_ViewportScreenSpaceAa): void =
+proc setScreenSpaceAa*(self: RenderSceneBuffersConfiguration; screenSpaceAa: RenderingServer_ViewportScreenSpaceAA): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_screen_space_aa", 139543108)
   var `?param` = [getPtr screenSpaceAa]
   methodbind.ptrcall(self, addr `?param`[0])

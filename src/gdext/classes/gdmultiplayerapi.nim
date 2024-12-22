@@ -4,125 +4,125 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc hasMultiplayerPeer*(self: MultiplayerApi): bool =
-  expandMethodBind(className MultiplayerApi, "has_multiplayer_peer", 2240911060)
+proc hasMultiplayerPeer*(self: MultiplayerAPI): bool =
+  expandMethodBind(className MultiplayerAPI, "has_multiplayer_peer", 2240911060)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getMultiplayerPeer*(self: MultiplayerApi): gdref MultiplayerPeer =
-  expandMethodBind(className MultiplayerApi, "get_multiplayer_peer", 3223692825)
+proc getMultiplayerPeer*(self: MultiplayerAPI): gdref MultiplayerPeer =
+  expandMethodBind(className MultiplayerAPI, "get_multiplayer_peer", 3223692825)
   var ret: encoded gdref MultiplayerPeer
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref MultiplayerPeer)
 
-proc setMultiplayerPeer*(self: MultiplayerApi; peer: gdref MultiplayerPeer): void =
-  expandMethodBind(className MultiplayerApi, "set_multiplayer_peer", 3694835298)
+proc setMultiplayerPeer*(self: MultiplayerAPI; peer: gdref MultiplayerPeer): void =
+  expandMethodBind(className MultiplayerAPI, "set_multiplayer_peer", 3694835298)
   var `?param` = [getPtr peer]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getUniqueId*(self: MultiplayerApi): int32 =
-  expandMethodBind(className MultiplayerApi, "get_unique_id", 2455072627)
+proc getUniqueId*(self: MultiplayerAPI): int32 =
+  expandMethodBind(className MultiplayerAPI, "get_unique_id", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc isServer*(self: MultiplayerApi): bool =
-  expandMethodBind(className MultiplayerApi, "is_server", 2240911060)
+proc isServer*(self: MultiplayerAPI): bool =
+  expandMethodBind(className MultiplayerAPI, "is_server", 2240911060)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getRemoteSenderId*(self: MultiplayerApi): int32 =
-  expandMethodBind(className MultiplayerApi, "get_remote_sender_id", 2455072627)
+proc getRemoteSenderId*(self: MultiplayerAPI): int32 =
+  expandMethodBind(className MultiplayerAPI, "get_remote_sender_id", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc poll*(self: MultiplayerApi): Error =
-  expandMethodBind(className MultiplayerApi, "poll", 166280745)
+proc poll*(self: MultiplayerAPI): Error =
+  expandMethodBind(className MultiplayerAPI, "poll", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Error)
 
-proc rpc*(self: MultiplayerApi; peer: int32; `object`: Object; `method`: StringName; arguments: Array = gdarray()): Error =
-  expandMethodBind(className MultiplayerApi, "rpc", 2077486355)
+proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array = gdarray()): Error =
+  expandMethodBind(className MultiplayerAPI, "rpc", 2077486355)
   var `?param` = [getPtr peer, getPtr `object`, getPtr `method`, getPtr arguments]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc objectConfigurationAdd*(self: MultiplayerApi; `object`: Object; configuration: Variant): Error =
-  expandMethodBind(className MultiplayerApi, "object_configuration_add", 1171879464)
+proc objectConfigurationAdd*(self: MultiplayerAPI; `object`: Object; configuration: Variant): Error =
+  expandMethodBind(className MultiplayerAPI, "object_configuration_add", 1171879464)
   var `?param` = [getPtr `object`, getPtr configuration]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc objectConfigurationRemove*(self: MultiplayerApi; `object`: Object; configuration: Variant): Error =
-  expandMethodBind(className MultiplayerApi, "object_configuration_remove", 1171879464)
+proc objectConfigurationRemove*(self: MultiplayerAPI; `object`: Object; configuration: Variant): Error =
+  expandMethodBind(className MultiplayerAPI, "object_configuration_remove", 1171879464)
   var `?param` = [getPtr `object`, getPtr configuration]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc getPeers*(self: MultiplayerApi): PackedInt32Array =
-  expandMethodBind(className MultiplayerApi, "get_peers", 969006518)
+proc getPeers*(self: MultiplayerAPI): PackedInt32Array =
+  expandMethodBind(className MultiplayerAPI, "get_peers", 969006518)
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
-proc setDefaultInterface*(_: typedesc[MultiplayerApi]; interfaceName: StringName): void =
-  expandMethodBind(className MultiplayerApi, "set_default_interface", 3304788590)
+proc setDefaultInterface*(_: typedesc[MultiplayerAPI]; interfaceName: StringName): void =
+  expandMethodBind(className MultiplayerAPI, "set_default_interface", 3304788590)
   var `?param` = [getPtr interfaceName]
   methodbind.ptrcall(addr `?param`[0])
 
-proc getDefaultInterface*(_: typedesc[MultiplayerApi]): StringName =
-  expandMethodBind(className MultiplayerApi, "get_default_interface", 2737447660)
+proc getDefaultInterface*(_: typedesc[MultiplayerAPI]): StringName =
+  expandMethodBind(className MultiplayerAPI, "get_default_interface", 2737447660)
   var ret: encoded StringName
   methodbind.ptrcall(nil, addr ret)
   (addr ret).decode_result(StringName)
 
-proc createDefaultInterface*(_: typedesc[MultiplayerApi]): gdref MultiplayerApi =
-  expandMethodBind(className MultiplayerApi, "create_default_interface", 3294156723)
-  var ret: encoded gdref MultiplayerApi
+proc createDefaultInterface*(_: typedesc[MultiplayerAPI]): gdref MultiplayerAPI =
+  expandMethodBind(className MultiplayerAPI, "create_default_interface", 3294156723)
+  var ret: encoded gdref MultiplayerAPI
   methodbind.ptrcall(nil, addr ret)
-  (addr ret).decode_result(gdref MultiplayerApi)
+  (addr ret).decode_result(gdref MultiplayerAPI)
 
-template multiplayerPeer*(self: MultiplayerApi): untyped = self.getMultiplayerPeer()
-template `multiplayerPeer=`*(self: MultiplayerApi; value) = self.setMultiplayerPeer(value)
+template multiplayerPeer*(self: MultiplayerAPI): untyped = self.getMultiplayerPeer()
+template `multiplayerPeer=`*(self: MultiplayerAPI; value) = self.setMultiplayerPeer(value)
 
-const MultiplayerApi_vmap =
+const MultiplayerAPI_vmap =
   RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiplayerApi]): Table[string, string] = MultiplayerApi_vmap
+template vmap*(_: typedesc[MultiplayerAPI]): Table[string, string] = MultiplayerAPI_vmap
 
-proc peerConnected*(self: MultiplayerApi; id: Variant): Error =
+proc peerConnected*(self: MultiplayerAPI; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_connected")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc peerDisconnected*(self: MultiplayerApi; id: Variant): Error =
+proc peerDisconnected*(self: MultiplayerAPI; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_disconnected")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc connectedToServer*(self: MultiplayerApi): Error =
+proc connectedToServer*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("connected_to_server")
   self.emitSignal(signalname)
 
-proc connectionFailed*(self: MultiplayerApi): Error =
+proc connectionFailed*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("connection_failed")
   self.emitSignal(signalname)
 
-proc serverDisconnected*(self: MultiplayerApi): Error =
+proc serverDisconnected*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("server_disconnected")

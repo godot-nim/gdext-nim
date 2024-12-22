@@ -4,176 +4,176 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-method initialize*(self: EditorVcsInterface; projectPath: String): bool {.base.} = (discard)
+method initialize*(self: EditorVCSInterface; projectPath: String): bool {.base.} = (discard)
 proc initialize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).initialize(p_args[0].decode(String)).encode(r_ret)
-template initialize_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = initialize
+  errproof: cast[EditorVCSInterface](p_instance).initialize(p_args[0].decode(String)).encode(r_ret)
+template initialize_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = initialize
 
-method setCredentials*(self: EditorVcsInterface; username: String; password: String; sshPublicKeyPath: String; sshPrivateKeyPath: String; sshPassphrase: String): void {.base.} = (discard)
+method setCredentials*(self: EditorVCSInterface; username: String; password: String; sshPublicKeyPath: String; sshPrivateKeyPath: String; sshPassphrase: String): void {.base.} = (discard)
 proc setCredentials(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).setCredentials(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(String), p_args[3].decode(String), p_args[4].decode(String))
-template setCredentials_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = setCredentials
+  errproof: cast[EditorVCSInterface](p_instance).setCredentials(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(String), p_args[3].decode(String), p_args[4].decode(String))
+template setCredentials_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = setCredentials
 
-method getModifiedFilesData*(self: EditorVcsInterface): TypedArray[Dictionary] {.base.} = (discard)
+method getModifiedFilesData*(self: EditorVCSInterface): TypedArray[Dictionary] {.base.} = (discard)
 proc getModifiedFilesData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getModifiedFilesData().encode(r_ret)
-template getModifiedFilesData_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getModifiedFilesData
+  errproof: cast[EditorVCSInterface](p_instance).getModifiedFilesData().encode(r_ret)
+template getModifiedFilesData_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getModifiedFilesData
 
-method stageFile*(self: EditorVcsInterface; filePath: String): void {.base.} = (discard)
+method stageFile*(self: EditorVCSInterface; filePath: String): void {.base.} = (discard)
 proc stageFile(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).stageFile(p_args[0].decode(String))
-template stageFile_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = stageFile
+  errproof: cast[EditorVCSInterface](p_instance).stageFile(p_args[0].decode(String))
+template stageFile_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = stageFile
 
-method unstageFile*(self: EditorVcsInterface; filePath: String): void {.base.} = (discard)
+method unstageFile*(self: EditorVCSInterface; filePath: String): void {.base.} = (discard)
 proc unstageFile(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).unstageFile(p_args[0].decode(String))
-template unstageFile_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = unstageFile
+  errproof: cast[EditorVCSInterface](p_instance).unstageFile(p_args[0].decode(String))
+template unstageFile_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = unstageFile
 
-method discardFile*(self: EditorVcsInterface; filePath: String): void {.base.} = (discard)
+method discardFile*(self: EditorVCSInterface; filePath: String): void {.base.} = (discard)
 proc discardFile(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).discardFile(p_args[0].decode(String))
-template discardFile_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = discardFile
+  errproof: cast[EditorVCSInterface](p_instance).discardFile(p_args[0].decode(String))
+template discardFile_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = discardFile
 
-method commit*(self: EditorVcsInterface; msg: String): void {.base.} = (discard)
+method commit*(self: EditorVCSInterface; msg: String): void {.base.} = (discard)
 proc commit(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).commit(p_args[0].decode(String))
-template commit_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = commit
+  errproof: cast[EditorVCSInterface](p_instance).commit(p_args[0].decode(String))
+template commit_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = commit
 
-method getDiff*(self: EditorVcsInterface; identifier: String; area: int32): TypedArray[Dictionary] {.base.} = (discard)
+method getDiff*(self: EditorVCSInterface; identifier: String; area: int32): TypedArray[Dictionary] {.base.} = (discard)
 proc getDiff(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getDiff(p_args[0].decode(String), p_args[1].decode(int32)).encode(r_ret)
-template getDiff_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getDiff
+  errproof: cast[EditorVCSInterface](p_instance).getDiff(p_args[0].decode(String), p_args[1].decode(int32)).encode(r_ret)
+template getDiff_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getDiff
 
-method shutDown*(self: EditorVcsInterface): bool {.base.} = (discard)
+method shutDown*(self: EditorVCSInterface): bool {.base.} = (discard)
 proc shutDown(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).shutDown().encode(r_ret)
-template shutDown_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = shutDown
+  errproof: cast[EditorVCSInterface](p_instance).shutDown().encode(r_ret)
+template shutDown_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = shutDown
 
-method getVcsName*(self: EditorVcsInterface): String {.base.} = (discard)
+method getVcsName*(self: EditorVCSInterface): String {.base.} = (discard)
 proc getVcsName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getVcsName().encode(r_ret)
-template getVcsName_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getVcsName
+  errproof: cast[EditorVCSInterface](p_instance).getVcsName().encode(r_ret)
+template getVcsName_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getVcsName
 
-method getPreviousCommits*(self: EditorVcsInterface; maxCommits: int32): TypedArray[Dictionary] {.base.} = (discard)
+method getPreviousCommits*(self: EditorVCSInterface; maxCommits: int32): TypedArray[Dictionary] {.base.} = (discard)
 proc getPreviousCommits(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getPreviousCommits(p_args[0].decode(int32)).encode(r_ret)
-template getPreviousCommits_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getPreviousCommits
+  errproof: cast[EditorVCSInterface](p_instance).getPreviousCommits(p_args[0].decode(int32)).encode(r_ret)
+template getPreviousCommits_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getPreviousCommits
 
-method getBranchList*(self: EditorVcsInterface): TypedArray[String] {.base.} = (discard)
+method getBranchList*(self: EditorVCSInterface): TypedArray[String] {.base.} = (discard)
 proc getBranchList(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getBranchList().encode(r_ret)
-template getBranchList_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getBranchList
+  errproof: cast[EditorVCSInterface](p_instance).getBranchList().encode(r_ret)
+template getBranchList_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getBranchList
 
-method getRemotes*(self: EditorVcsInterface): TypedArray[String] {.base.} = (discard)
+method getRemotes*(self: EditorVCSInterface): TypedArray[String] {.base.} = (discard)
 proc getRemotes(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getRemotes().encode(r_ret)
-template getRemotes_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getRemotes
+  errproof: cast[EditorVCSInterface](p_instance).getRemotes().encode(r_ret)
+template getRemotes_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getRemotes
 
-method createBranch*(self: EditorVcsInterface; branchName: String): void {.base.} = (discard)
+method createBranch*(self: EditorVCSInterface; branchName: String): void {.base.} = (discard)
 proc createBranch(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).createBranch(p_args[0].decode(String))
-template createBranch_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = createBranch
+  errproof: cast[EditorVCSInterface](p_instance).createBranch(p_args[0].decode(String))
+template createBranch_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = createBranch
 
-method removeBranch*(self: EditorVcsInterface; branchName: String): void {.base.} = (discard)
+method removeBranch*(self: EditorVCSInterface; branchName: String): void {.base.} = (discard)
 proc removeBranch(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).removeBranch(p_args[0].decode(String))
-template removeBranch_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = removeBranch
+  errproof: cast[EditorVCSInterface](p_instance).removeBranch(p_args[0].decode(String))
+template removeBranch_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = removeBranch
 
-method createRemote*(self: EditorVcsInterface; remoteName: String; remoteUrl: String): void {.base.} = (discard)
+method createRemote*(self: EditorVCSInterface; remoteName: String; remoteUrl: String): void {.base.} = (discard)
 proc createRemote(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).createRemote(p_args[0].decode(String), p_args[1].decode(String))
-template createRemote_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = createRemote
+  errproof: cast[EditorVCSInterface](p_instance).createRemote(p_args[0].decode(String), p_args[1].decode(String))
+template createRemote_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = createRemote
 
-method removeRemote*(self: EditorVcsInterface; remoteName: String): void {.base.} = (discard)
+method removeRemote*(self: EditorVCSInterface; remoteName: String): void {.base.} = (discard)
 proc removeRemote(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).removeRemote(p_args[0].decode(String))
-template removeRemote_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = removeRemote
+  errproof: cast[EditorVCSInterface](p_instance).removeRemote(p_args[0].decode(String))
+template removeRemote_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = removeRemote
 
-method getCurrentBranchName*(self: EditorVcsInterface): String {.base.} = (discard)
+method getCurrentBranchName*(self: EditorVCSInterface): String {.base.} = (discard)
 proc getCurrentBranchName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getCurrentBranchName().encode(r_ret)
-template getCurrentBranchName_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getCurrentBranchName
+  errproof: cast[EditorVCSInterface](p_instance).getCurrentBranchName().encode(r_ret)
+template getCurrentBranchName_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getCurrentBranchName
 
-method checkoutBranch*(self: EditorVcsInterface; branchName: String): bool {.base.} = (discard)
+method checkoutBranch*(self: EditorVCSInterface; branchName: String): bool {.base.} = (discard)
 proc checkoutBranch(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).checkoutBranch(p_args[0].decode(String)).encode(r_ret)
-template checkoutBranch_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = checkoutBranch
+  errproof: cast[EditorVCSInterface](p_instance).checkoutBranch(p_args[0].decode(String)).encode(r_ret)
+template checkoutBranch_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = checkoutBranch
 
-method pull*(self: EditorVcsInterface; remote: String): void {.base.} = (discard)
+method pull*(self: EditorVCSInterface; remote: String): void {.base.} = (discard)
 proc pull(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).pull(p_args[0].decode(String))
-template pull_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = pull
+  errproof: cast[EditorVCSInterface](p_instance).pull(p_args[0].decode(String))
+template pull_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = pull
 
-method push*(self: EditorVcsInterface; remote: String; force: bool): void {.base.} = (discard)
+method push*(self: EditorVCSInterface; remote: String; force: bool): void {.base.} = (discard)
 proc push(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).push(p_args[0].decode(String), p_args[1].decode(bool))
-template push_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = push
+  errproof: cast[EditorVCSInterface](p_instance).push(p_args[0].decode(String), p_args[1].decode(bool))
+template push_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = push
 
-method fetch*(self: EditorVcsInterface; remote: String): void {.base.} = (discard)
+method fetch*(self: EditorVCSInterface; remote: String): void {.base.} = (discard)
 proc fetch(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).fetch(p_args[0].decode(String))
-template fetch_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = fetch
+  errproof: cast[EditorVCSInterface](p_instance).fetch(p_args[0].decode(String))
+template fetch_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = fetch
 
-method getLineDiff*(self: EditorVcsInterface; filePath: String; text: String): TypedArray[Dictionary] {.base.} = (discard)
+method getLineDiff*(self: EditorVCSInterface; filePath: String; text: String): TypedArray[Dictionary] {.base.} = (discard)
 proc getLineDiff(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorVcsInterface](p_instance).getLineDiff(p_args[0].decode(String), p_args[1].decode(String)).encode(r_ret)
-template getLineDiff_bind*(_: typedesc[EditorVcsInterface]): ClassCallVirtual = getLineDiff
+  errproof: cast[EditorVCSInterface](p_instance).getLineDiff(p_args[0].decode(String), p_args[1].decode(String)).encode(r_ret)
+template getLineDiff_bind*(_: typedesc[EditorVCSInterface]): ClassCallVirtual = getLineDiff
 
-proc createDiffLine*(self: EditorVcsInterface; newLineNo: int32; oldLineNo: int32; content: String; status: String): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "create_diff_line", 2901184053)
+proc createDiffLine*(self: EditorVCSInterface; newLineNo: int32; oldLineNo: int32; content: String; status: String): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "create_diff_line", 2901184053)
   var `?param` = [getPtr newLineNo, getPtr oldLineNo, getPtr content, getPtr status]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc createDiffHunk*(self: EditorVcsInterface; oldStart: int32; newStart: int32; oldLines: int32; newLines: int32): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "create_diff_hunk", 3784842090)
+proc createDiffHunk*(self: EditorVCSInterface; oldStart: int32; newStart: int32; oldLines: int32; newLines: int32): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "create_diff_hunk", 3784842090)
   var `?param` = [getPtr oldStart, getPtr newStart, getPtr oldLines, getPtr newLines]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc createDiffFile*(self: EditorVcsInterface; newFile: String; oldFile: String): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "create_diff_file", 2723227684)
+proc createDiffFile*(self: EditorVCSInterface; newFile: String; oldFile: String): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "create_diff_file", 2723227684)
   var `?param` = [getPtr newFile, getPtr oldFile]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc createCommit*(self: EditorVcsInterface; msg: String; author: String; id: String; unixTimestamp: int64; offsetMinutes: int64): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "create_commit", 1075983584)
+proc createCommit*(self: EditorVCSInterface; msg: String; author: String; id: String; unixTimestamp: int64; offsetMinutes: int64): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "create_commit", 1075983584)
   var `?param` = [getPtr msg, getPtr author, getPtr id, getPtr unixTimestamp, getPtr offsetMinutes]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc createStatusFile*(self: EditorVcsInterface; filePath: String; changeType: EditorVcsInterface_ChangeType; area: EditorVcsInterface_TreeArea): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "create_status_file", 1083471673)
+proc createStatusFile*(self: EditorVCSInterface; filePath: String; changeType: EditorVCSInterface_ChangeType; area: EditorVCSInterface_TreeArea): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "create_status_file", 1083471673)
   var `?param` = [getPtr filePath, getPtr changeType, getPtr area]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc addDiffHunksIntoDiffFile*(self: EditorVcsInterface; diffFile: Dictionary; diffHunks: TypedArray[Dictionary]): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "add_diff_hunks_into_diff_file", 4015243225)
+proc addDiffHunksIntoDiffFile*(self: EditorVCSInterface; diffFile: Dictionary; diffHunks: TypedArray[Dictionary]): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "add_diff_hunks_into_diff_file", 4015243225)
   var `?param` = [getPtr diffFile, getPtr diffHunks]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc addLineDiffsIntoDiffHunk*(self: EditorVcsInterface; diffHunk: Dictionary; lineDiffs: TypedArray[Dictionary]): Dictionary =
-  expandMethodBind(className EditorVcsInterface, "add_line_diffs_into_diff_hunk", 4015243225)
+proc addLineDiffsIntoDiffHunk*(self: EditorVCSInterface; diffHunk: Dictionary; lineDiffs: TypedArray[Dictionary]): Dictionary =
+  expandMethodBind(className EditorVCSInterface, "add_line_diffs_into_diff_hunk", 4015243225)
   var `?param` = [getPtr diffHunk, getPtr lineDiffs]
   var ret: encoded Dictionary
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc popupError*(self: EditorVcsInterface; msg: String): void =
-  expandMethodBind(className EditorVcsInterface, "popup_error", 83702148)
+proc popupError*(self: EditorVCSInterface; msg: String): void =
+  expandMethodBind(className EditorVCSInterface, "popup_error", 83702148)
   var `?param` = [getPtr msg]
   methodbind.ptrcall(self, addr `?param`[0])
 
-const EditorVcsInterface_vmap =
+const EditorVCSInterface_vmap =
   Object.vmap.concat toTable {
     "initialize" : "_initialize",
     "setcredentials" : "_set_credentials",
@@ -199,4 +199,4 @@ const EditorVcsInterface_vmap =
     "fetch" : "_fetch",
     "getlinediff" : "_get_line_diff",
     }
-template vmap*(_: typedesc[EditorVcsInterface]): Table[string, string] = EditorVcsInterface_vmap
+template vmap*(_: typedesc[EditorVCSInterface]): Table[string, string] = EditorVCSInterface_vmap

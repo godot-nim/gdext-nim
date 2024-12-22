@@ -82,12 +82,12 @@ proc getCollider*(self: ShapeCast2D; index: int32): Object =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Object)
 
-proc getColliderRid*(self: ShapeCast2D; index: int32): Rid =
+proc getColliderRid*(self: ShapeCast2D; index: int32): RID =
   expandMethodBind(className ShapeCast2D, "get_collider_rid", 495598643)
   var `?param` = [getPtr index]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getColliderShape*(self: ShapeCast2D; index: int32): int32 =
   expandMethodBind(className ShapeCast2D, "get_collider_shape", 923996154)
@@ -122,7 +122,7 @@ proc getClosestCollisionUnsafeFraction*(self: ShapeCast2D): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc addExceptionRid*(self: ShapeCast2D; rid: Rid): void =
+proc addExceptionRid*(self: ShapeCast2D; rid: RID): void =
   expandMethodBind(className ShapeCast2D, "add_exception_rid", 2722037293)
   var `?param` = [getPtr rid]
   methodbind.ptrcall(self, addr `?param`[0])
@@ -132,7 +132,7 @@ proc addException*(self: ShapeCast2D; node: CollisionObject2D): void =
   var `?param` = [getPtr node]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc removeExceptionRid*(self: ShapeCast2D; rid: Rid): void =
+proc removeExceptionRid*(self: ShapeCast2D; rid: RID): void =
   expandMethodBind(className ShapeCast2D, "remove_exception_rid", 2722037293)
   var `?param` = [getPtr rid]
   methodbind.ptrcall(self, addr `?param`[0])

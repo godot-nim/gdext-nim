@@ -17,11 +17,11 @@ proc getBone*(self: Skeleton2D; idx: int32): Bone2D =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Bone2D)
 
-proc getSkeleton*(self: Skeleton2D): Rid =
+proc getSkeleton*(self: Skeleton2D): RID =
   expandMethodBind(className Skeleton2D, "get_skeleton", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setModificationStack*(self: Skeleton2D; modificationStack: gdref SkeletonModificationStack2D): void =
   expandMethodBind(className Skeleton2D, "set_modification_stack", 3907307132)

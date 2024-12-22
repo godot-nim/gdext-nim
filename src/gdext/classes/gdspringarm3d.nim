@@ -32,12 +32,12 @@ proc getShape*(self: SpringArm3D): gdref Shape3D =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref Shape3D)
 
-proc addExcludedObject*(self: SpringArm3D; rid: Rid): void =
+proc addExcludedObject*(self: SpringArm3D; rid: RID): void =
   expandMethodBind(className SpringArm3D, "add_excluded_object", 2722037293)
   var `?param` = [getPtr rid]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc removeExcludedObject*(self: SpringArm3D; rid: Rid): bool =
+proc removeExcludedObject*(self: SpringArm3D; rid: RID): bool =
   expandMethodBind(className SpringArm3D, "remove_excluded_object", 3521089500)
   var `?param` = [getPtr rid]
   var ret: encoded bool

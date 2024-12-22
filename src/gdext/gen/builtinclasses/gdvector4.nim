@@ -5,26 +5,26 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector4_AxisX*: int = 0
-template AxisX*(_: typedesc[Vector4]): int = Vector4_AxisX
+const Vector4_AXIS_X*: int = 0
+template AXIS_X*(_: typedesc[Vector4]): int = Vector4_AXIS_X
 
-const Vector4_AxisY*: int = 1
-template AxisY*(_: typedesc[Vector4]): int = Vector4_AxisY
+const Vector4_AXIS_Y*: int = 1
+template AXIS_Y*(_: typedesc[Vector4]): int = Vector4_AXIS_Y
 
-const Vector4_AxisZ*: int = 2
-template AxisZ*(_: typedesc[Vector4]): int = Vector4_AxisZ
+const Vector4_AXIS_Z*: int = 2
+template AXIS_Z*(_: typedesc[Vector4]): int = Vector4_AXIS_Z
 
-const Vector4_AxisW*: int = 3
-template AxisW*(_: typedesc[Vector4]): int = Vector4_AxisW
+const Vector4_AXIS_W*: int = 3
+template AXIS_W*(_: typedesc[Vector4]): int = Vector4_AXIS_W
 
-const Vector4_Zero*: Vector4 = vector(0, 0, 0, 0)
-template Zero*(_: typedesc[Vector4]): Vector4 = Vector4_Zero
+const Vector4_ZERO*: Vector4 = vector(0, 0, 0, 0)
+template ZERO*(_: typedesc[Vector4]): Vector4 = Vector4_ZERO
 
-const Vector4_One*: Vector4 = vector(1, 1, 1, 1)
-template One*(_: typedesc[Vector4]): Vector4 = Vector4_One
+const Vector4_ONE*: Vector4 = vector(1, 1, 1, 1)
+template ONE*(_: typedesc[Vector4]): Vector4 = Vector4_ONE
 
-const Vector4_Inf*: Vector4 = vector(Inf, Inf, Inf, Inf)
-template Inf*(_: typedesc[Vector4]): Vector4 = Vector4_Inf
+const Vector4_INF*: Vector4 = vector(Inf, Inf, Inf, Inf)
+template INF*(_: typedesc[Vector4]): Vector4 = Vector4_INF
 
 var `==(Vector4 Variant)`: PtrOperatorEvaluator
 var `!=(Vector4 Variant)`: PtrOperatorEvaluator

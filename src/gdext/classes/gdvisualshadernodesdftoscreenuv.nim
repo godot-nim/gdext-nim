@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
-const VisualShaderNodeSdfToScreenUv_vmap =
+const VisualShaderNodeSDFToScreenUV_vmap =
   VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeSdfToScreenUv]): Table[string, string] = VisualShaderNodeSdfToScreenUv_vmap
+template vmap*(_: typedesc[VisualShaderNodeSDFToScreenUV]): Table[string, string] = VisualShaderNodeSDFToScreenUV_vmap

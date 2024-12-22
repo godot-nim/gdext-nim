@@ -119,19 +119,19 @@ proc quaternion*(arcFrom: Vector3; arcTo: Vector3): Quaternion =
   let argArr = [getPtr arcFrom, getPtr arcTo]
   Quaternion_constr[4](addr result, addr argArr[0])
 
-var Aabb_constr: array[3, PtrConstructor]
-proc load_Aabb_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
+var AABB_constr: array[3, PtrConstructor]
+proc load_AABB_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
   for i in [0, 1, 2]:
-    Aabb_constr[i] = interface_Variant_getPtrConstructor(VariantType_Aabb, int32 i)
+    AABB_constr[i] = interface_Variant_getPtrConstructor(VariantType_AABB, int32 i)
 
-proc aabb*(): Aabb =
-  Aabb_constr[0](addr result, nil)
-proc aabb*(`from`: Aabb): Aabb =
+proc aABB*(): AABB =
+  AABB_constr[0](addr result, nil)
+proc aABB*(`from`: AABB): AABB =
   let argArr = [getPtr `from`]
-  Aabb_constr[1](addr result, addr argArr[0])
-proc aabb*(position: Vector3; size: Vector3): Aabb =
+  AABB_constr[1](addr result, addr argArr[0])
+proc aABB*(position: Vector3; size: Vector3): AABB =
   let argArr = [getPtr position, getPtr size]
-  Aabb_constr[2](addr result, addr argArr[0])
+  AABB_constr[2](addr result, addr argArr[0])
 
 var Basis_constr: array[5, PtrConstructor]
 proc load_Basis_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
@@ -230,16 +230,16 @@ proc nodePath*(`from`: String): NodePath =
   let argArr = [getPtr `from`]
   NodePath_constr[2](addr result, addr argArr[0])
 
-var Rid_constr: array[2, PtrConstructor]
-proc load_Rid_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
+var RID_constr: array[2, PtrConstructor]
+proc load_RID_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
   for i in [0, 1]:
-    Rid_constr[i] = interface_Variant_getPtrConstructor(VariantType_Rid, int32 i)
+    RID_constr[i] = interface_Variant_getPtrConstructor(VariantType_RID, int32 i)
 
-proc rid*(): Rid =
-  Rid_constr[0](addr result, nil)
-proc rid*(`from`: Rid): Rid =
+proc rID*(): RID =
+  RID_constr[0](addr result, nil)
+proc rID*(`from`: RID): RID =
   let argArr = [getPtr `from`]
-  Rid_constr[1](addr result, addr argArr[0])
+  RID_constr[1](addr result, addr argArr[0])
 
 var Callable_constr: array[3, PtrConstructor]
 proc load_Callable_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =

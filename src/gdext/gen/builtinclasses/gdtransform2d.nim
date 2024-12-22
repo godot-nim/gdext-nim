@@ -5,14 +5,14 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Transform2D_Identity*: Transform2D = transform2D(1, 0, 0, 1, 0, 0)
-template Identity*(_: typedesc[Transform2D]): Transform2D = Transform2D_Identity
+const Transform2D_IDENTITY*: Transform2D = transform2D(1, 0, 0, 1, 0, 0)
+template IDENTITY*(_: typedesc[Transform2D]): Transform2D = Transform2D_IDENTITY
 
-const Transform2D_FlipX*: Transform2D = transform2D(-1, 0, 0, 1, 0, 0)
-template FlipX*(_: typedesc[Transform2D]): Transform2D = Transform2D_FlipX
+const Transform2D_FLIP_X*: Transform2D = transform2D(-1, 0, 0, 1, 0, 0)
+template FLIP_X*(_: typedesc[Transform2D]): Transform2D = Transform2D_FLIP_X
 
-const Transform2D_FlipY*: Transform2D = transform2D(1, 0, 0, -1, 0, 0)
-template FlipY*(_: typedesc[Transform2D]): Transform2D = Transform2D_FlipY
+const Transform2D_FLIP_Y*: Transform2D = transform2D(1, 0, 0, -1, 0, 0)
+template FLIP_Y*(_: typedesc[Transform2D]): Transform2D = Transform2D_FLIP_Y
 
 var `==(Transform2D Variant)`: PtrOperatorEvaluator
 var `!=(Transform2D Variant)`: PtrOperatorEvaluator

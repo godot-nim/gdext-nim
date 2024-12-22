@@ -148,16 +148,16 @@ proc getLightmapScale*(self: GeometryInstance3D): GeometryInstance3D_LightmapSca
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(GeometryInstance3D_LightmapScale)
 
-proc setGiMode*(self: GeometryInstance3D; mode: GeometryInstance3D_GiMode): void =
+proc setGiMode*(self: GeometryInstance3D; mode: GeometryInstance3D_GIMode): void =
   expandMethodBind(className GeometryInstance3D, "set_gi_mode", 2548557163)
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getGiMode*(self: GeometryInstance3D): GeometryInstance3D_GiMode =
+proc getGiMode*(self: GeometryInstance3D): GeometryInstance3D_GIMode =
   expandMethodBind(className GeometryInstance3D, "get_gi_mode", 2188566509)
-  var ret: encoded GeometryInstance3D_GiMode
+  var ret: encoded GeometryInstance3D_GIMode
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(GeometryInstance3D_GiMode)
+  (addr ret).decode_result(GeometryInstance3D_GIMode)
 
 proc setIgnoreOcclusionCulling*(self: GeometryInstance3D; ignoreCulling: bool): void =
   expandMethodBind(className GeometryInstance3D, "set_ignore_occlusion_culling", 2586408642)
@@ -170,16 +170,16 @@ proc isIgnoringOcclusionCulling*(self: GeometryInstance3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setCustomAabb*(self: GeometryInstance3D; aabb: Aabb): void =
+proc setCustomAabb*(self: GeometryInstance3D; aabb: AABB): void =
   expandMethodBind(className GeometryInstance3D, "set_custom_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCustomAabb*(self: GeometryInstance3D): Aabb =
+proc getCustomAabb*(self: GeometryInstance3D): AABB =
   expandMethodBind(className GeometryInstance3D, "get_custom_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 template materialOverride*(self: GeometryInstance3D): untyped = self.getMaterialOverride()
 template `materialOverride=`*(self: GeometryInstance3D; value) = self.setMaterialOverride(value)

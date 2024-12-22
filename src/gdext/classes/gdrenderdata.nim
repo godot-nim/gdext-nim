@@ -16,17 +16,17 @@ proc getRenderSceneData*(self: RenderData): RenderSceneData =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(RenderSceneData)
 
-proc getEnvironment*(self: RenderData): Rid =
+proc getEnvironment*(self: RenderData): RID =
   expandMethodBind(className RenderData, "get_environment", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getCameraAttributes*(self: RenderData): Rid =
+proc getCameraAttributes*(self: RenderData): RID =
   expandMethodBind(className RenderData, "get_camera_attributes", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 const RenderData_vmap =
   Object.vmap.concat initTable[string, string]()

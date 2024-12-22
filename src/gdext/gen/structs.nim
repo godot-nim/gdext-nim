@@ -26,7 +26,7 @@ type Glyph* = object
   fontSize*: cint = 0
   index*: int32 = 0
 
-type ObjectId* = object
+type ObjectID* = object
   id*: uint64 = 0
 
 type PhysicsServer2DExtensionMotionResult* = object

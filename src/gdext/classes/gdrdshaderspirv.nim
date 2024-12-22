@@ -4,60 +4,60 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setStageBytecode*(self: RdShaderSpirv; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
-  expandMethodBind(className RdShaderSpirv, "set_stage_bytecode", 3514097977)
+proc setStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
+  expandMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)
   var `?param` = [getPtr stage, getPtr bytecode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getStageBytecode*(self: RdShaderSpirv; stage: RenderingDevice_ShaderStage): PackedByteArray =
-  expandMethodBind(className RdShaderSpirv, "get_stage_bytecode", 3816765404)
+proc getStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): PackedByteArray =
+  expandMethodBind(className RDShaderSPIRV, "get_stage_bytecode", 3816765404)
   var `?param` = [getPtr stage]
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
-proc setStageCompileError*(self: RdShaderSpirv; stage: RenderingDevice_ShaderStage; compileError: String): void =
-  expandMethodBind(className RdShaderSpirv, "set_stage_compile_error", 620821314)
+proc setStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; compileError: String): void =
+  expandMethodBind(className RDShaderSPIRV, "set_stage_compile_error", 620821314)
   var `?param` = [getPtr stage, getPtr compileError]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getStageCompileError*(self: RdShaderSpirv; stage: RenderingDevice_ShaderStage): String =
-  expandMethodBind(className RdShaderSpirv, "get_stage_compile_error", 3354920045)
+proc getStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): String =
+  expandMethodBind(className RDShaderSPIRV, "get_stage_compile_error", 3354920045)
   var `?param` = [getPtr stage]
   var ret: encoded String
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(String)
 
-template bytecodeVertex*(self: RdShaderSpirv): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(0))
-template `bytecodeVertex=`*(self: RdShaderSpirv; value) = self.setStageBytecode(RenderingDevice_ShaderStage(0), value)
+template bytecodeVertex*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(0))
+template `bytecodeVertex=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(0), value)
 
-template bytecodeFragment*(self: RdShaderSpirv): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(1))
-template `bytecodeFragment=`*(self: RdShaderSpirv; value) = self.setStageBytecode(RenderingDevice_ShaderStage(1), value)
+template bytecodeFragment*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(1))
+template `bytecodeFragment=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(1), value)
 
-template bytecodeTesselationControl*(self: RdShaderSpirv): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(2))
-template `bytecodeTesselationControl=`*(self: RdShaderSpirv; value) = self.setStageBytecode(RenderingDevice_ShaderStage(2), value)
+template bytecodeTesselationControl*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(2))
+template `bytecodeTesselationControl=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(2), value)
 
-template bytecodeTesselationEvaluation*(self: RdShaderSpirv): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(3))
-template `bytecodeTesselationEvaluation=`*(self: RdShaderSpirv; value) = self.setStageBytecode(RenderingDevice_ShaderStage(3), value)
+template bytecodeTesselationEvaluation*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(3))
+template `bytecodeTesselationEvaluation=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(3), value)
 
-template bytecodeCompute*(self: RdShaderSpirv): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(4))
-template `bytecodeCompute=`*(self: RdShaderSpirv; value) = self.setStageBytecode(RenderingDevice_ShaderStage(4), value)
+template bytecodeCompute*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(4))
+template `bytecodeCompute=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(4), value)
 
-template compileErrorVertex*(self: RdShaderSpirv): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(0))
-template `compileErrorVertex=`*(self: RdShaderSpirv; value) = self.setStageCompileError(RenderingDevice_ShaderStage(0), value)
+template compileErrorVertex*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(0))
+template `compileErrorVertex=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(0), value)
 
-template compileErrorFragment*(self: RdShaderSpirv): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(1))
-template `compileErrorFragment=`*(self: RdShaderSpirv; value) = self.setStageCompileError(RenderingDevice_ShaderStage(1), value)
+template compileErrorFragment*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(1))
+template `compileErrorFragment=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(1), value)
 
-template compileErrorTesselationControl*(self: RdShaderSpirv): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(2))
-template `compileErrorTesselationControl=`*(self: RdShaderSpirv; value) = self.setStageCompileError(RenderingDevice_ShaderStage(2), value)
+template compileErrorTesselationControl*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(2))
+template `compileErrorTesselationControl=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(2), value)
 
-template compileErrorTesselationEvaluation*(self: RdShaderSpirv): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(3))
-template `compileErrorTesselationEvaluation=`*(self: RdShaderSpirv; value) = self.setStageCompileError(RenderingDevice_ShaderStage(3), value)
+template compileErrorTesselationEvaluation*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(3))
+template `compileErrorTesselationEvaluation=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(3), value)
 
-template compileErrorCompute*(self: RdShaderSpirv): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(4))
-template `compileErrorCompute=`*(self: RdShaderSpirv; value) = self.setStageCompileError(RenderingDevice_ShaderStage(4), value)
+template compileErrorCompute*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(4))
+template `compileErrorCompute=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(4), value)
 
-const RdShaderSpirv_vmap =
+const RDShaderSPIRV_vmap =
   Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RdShaderSpirv]): Table[string, string] = RdShaderSpirv_vmap
+template vmap*(_: typedesc[RDShaderSPIRV]): Table[string, string] = RDShaderSPIRV_vmap

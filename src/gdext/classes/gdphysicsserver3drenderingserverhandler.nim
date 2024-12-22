@@ -14,9 +14,9 @@ proc setNormal(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTyp
   errproof: cast[PhysicsServer3DRenderingServerHandler](p_instance).setNormal(p_args[0].decode(int32), p_args[1].decode(Vector3))
 template setNormal_bind*(_: typedesc[PhysicsServer3DRenderingServerHandler]): ClassCallVirtual = setNormal
 
-method setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: Aabb): void {.base.} = (discard)
+method setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: AABB): void {.base.} = (discard)
 proc setAabb(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsServer3DRenderingServerHandler](p_instance).setAabb(p_args[0].decode(Aabb))
+  errproof: cast[PhysicsServer3DRenderingServerHandler](p_instance).setAabb(p_args[0].decode(AABB))
 template setAabb_bind*(_: typedesc[PhysicsServer3DRenderingServerHandler]): ClassCallVirtual = setAabb
 
 proc setVertex*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; vertex: Vector3): void =
@@ -29,7 +29,7 @@ proc setNormal*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; no
   var `?param` = [getPtr vertexId, getPtr normal]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: Aabb): void =
+proc setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: AABB): void =
   expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])

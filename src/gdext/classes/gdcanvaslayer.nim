@@ -117,11 +117,11 @@ proc getCustomViewport*(self: CanvasLayer): Node =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Node)
 
-proc getCanvas*(self: CanvasLayer): Rid =
+proc getCanvas*(self: CanvasLayer): RID =
   expandMethodBind(className CanvasLayer, "get_canvas", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 template layer*(self: CanvasLayer): untyped = self.getLayer()
 template `layer=`*(self: CanvasLayer; value) = self.setLayer(value)

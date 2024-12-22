@@ -5,17 +5,17 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Basis_Identity*: Basis = basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
-template Identity*(_: typedesc[Basis]): Basis = Basis_Identity
+const Basis_IDENTITY*: Basis = basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
+template IDENTITY*(_: typedesc[Basis]): Basis = Basis_IDENTITY
 
-const Basis_FlipX*: Basis = basis(-1, 0, 0, 0, 1, 0, 0, 0, 1)
-template FlipX*(_: typedesc[Basis]): Basis = Basis_FlipX
+const Basis_FLIP_X*: Basis = basis(-1, 0, 0, 0, 1, 0, 0, 0, 1)
+template FLIP_X*(_: typedesc[Basis]): Basis = Basis_FLIP_X
 
-const Basis_FlipY*: Basis = basis(1, 0, 0, 0, -1, 0, 0, 0, 1)
-template FlipY*(_: typedesc[Basis]): Basis = Basis_FlipY
+const Basis_FLIP_Y*: Basis = basis(1, 0, 0, 0, -1, 0, 0, 0, 1)
+template FLIP_Y*(_: typedesc[Basis]): Basis = Basis_FLIP_Y
 
-const Basis_FlipZ*: Basis = basis(1, 0, 0, 0, 1, 0, 0, 0, -1)
-template FlipZ*(_: typedesc[Basis]): Basis = Basis_FlipZ
+const Basis_FLIP_Z*: Basis = basis(1, 0, 0, 0, 1, 0, 0, 0, -1)
+template FLIP_Z*(_: typedesc[Basis]): Basis = Basis_FLIP_Z
 
 var `==(Basis Variant)`: PtrOperatorEvaluator
 var `!=(Basis Variant)`: PtrOperatorEvaluator

@@ -19,12 +19,12 @@ proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedAr
   var `?param` = [getPtr bones]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc physicalBonesAddCollisionException*(self: PhysicalBoneSimulator3D; exception: Rid): void =
+proc physicalBonesAddCollisionException*(self: PhysicalBoneSimulator3D; exception: RID): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_add_collision_exception", 2722037293)
   var `?param` = [getPtr exception]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc physicalBonesRemoveCollisionException*(self: PhysicalBoneSimulator3D; exception: Rid): void =
+proc physicalBonesRemoveCollisionException*(self: PhysicalBoneSimulator3D; exception: RID): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_remove_collision_exception", 2722037293)
   var `?param` = [getPtr exception]
   methodbind.ptrcall(self, addr `?param`[0])

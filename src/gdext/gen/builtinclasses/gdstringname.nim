@@ -26,7 +26,7 @@ var `mod(StringName Vector4)`: PtrOperatorEvaluator
 var `mod(StringName Vector4i)`: PtrOperatorEvaluator
 var `mod(StringName Plane)`: PtrOperatorEvaluator
 var `mod(StringName Quaternion)`: PtrOperatorEvaluator
-var `mod(StringName Aabb)`: PtrOperatorEvaluator
+var `mod(StringName AABB)`: PtrOperatorEvaluator
 var `mod(StringName Basis)`: PtrOperatorEvaluator
 var `mod(StringName Transform3D)`: PtrOperatorEvaluator
 var `mod(StringName Projection)`: PtrOperatorEvaluator
@@ -82,7 +82,7 @@ proc `mod`*(left: StringName; right: Vector4): String = `mod(StringName Vector4)
 proc `mod`*(left: StringName; right: Vector4i): String = `mod(StringName Vector4i)`(getPtr left, getPtr right, addr result)
 proc `mod`*(left: StringName; right: Plane): String = `mod(StringName Plane)`(getPtr left, getPtr right, addr result)
 proc `mod`*(left: StringName; right: Quaternion): String = `mod(StringName Quaternion)`(getPtr left, getPtr right, addr result)
-proc `mod`*(left: StringName; right: Aabb): String = `mod(StringName Aabb)`(getPtr left, getPtr right, addr result)
+proc `mod`*(left: StringName; right: AABB): String = `mod(StringName AABB)`(getPtr left, getPtr right, addr result)
 proc `mod`*(left: StringName; right: Basis): String = `mod(StringName Basis)`(getPtr left, getPtr right, addr result)
 proc `mod`*(left: StringName; right: Transform3D): String = `mod(StringName Transform3D)`(getPtr left, getPtr right, addr result)
 proc `mod`*(left: StringName; right: Projection): String = `mod(StringName Projection)`(getPtr left, getPtr right, addr result)
@@ -139,7 +139,7 @@ proc load_StringName_operators {.execon: staticevents.init_engine.on_load_builti
   `mod(StringName Vector4i)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Vector4i)
   `mod(StringName Plane)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Plane)
   `mod(StringName Quaternion)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Quaternion)
-  `mod(StringName Aabb)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Aabb)
+  `mod(StringName AABB)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_AABB)
   `mod(StringName Basis)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Basis)
   `mod(StringName Transform3D)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Transform3D)
   `mod(StringName Projection)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Module, VariantType_StringName, VariantType_Projection)

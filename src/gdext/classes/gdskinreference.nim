@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc getSkeleton*(self: SkinReference): Rid =
+proc getSkeleton*(self: SkinReference): RID =
   expandMethodBind(className SkinReference, "get_skeleton", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getSkin*(self: SkinReference): gdref Skin =
   expandMethodBind(className SkinReference, "get_skin", 2074563878)

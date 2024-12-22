@@ -109,11 +109,11 @@ proc getCaptureInputOnDrag*(self: CollisionObject3D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getRid*(self: CollisionObject3D): Rid =
+proc getRid*(self: CollisionObject3D): RID =
   expandMethodBind(className CollisionObject3D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc createShapeOwner*(self: CollisionObject3D; owner: Object): uint32 =
   expandMethodBind(className CollisionObject3D, "create_shape_owner", 3429307534)

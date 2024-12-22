@@ -14,17 +14,17 @@ proc tileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedAr
   errproof: cast[TileMap](p_instance).tileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(TileData))
 template tileDataRuntimeUpdate_bind*(_: typedesc[TileMap]): ClassCallVirtual = tileDataRuntimeUpdate
 
-proc setNavigationMap*(self: TileMap; layer: int32; map: Rid): void =
+proc setNavigationMap*(self: TileMap; layer: int32; map: RID): void =
   expandMethodBind(className TileMap, "set_navigation_map", 4040184819)
   var `?param` = [getPtr layer, getPtr map]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: TileMap; layer: int32): Rid =
+proc getNavigationMap*(self: TileMap; layer: int32): RID =
   expandMethodBind(className TileMap, "get_navigation_map", 495598643)
   var `?param` = [getPtr layer]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc forceUpdate*(self: TileMap; layer: int32 = -1): void =
   expandMethodBind(className TileMap, "force_update", 1025054187)
@@ -158,17 +158,17 @@ proc isLayerNavigationEnabled*(self: TileMap; layer: int32): bool =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc setLayerNavigationMap*(self: TileMap; layer: int32; map: Rid): void =
+proc setLayerNavigationMap*(self: TileMap; layer: int32; map: RID): void =
   expandMethodBind(className TileMap, "set_layer_navigation_map", 4040184819)
   var `?param` = [getPtr layer, getPtr map]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getLayerNavigationMap*(self: TileMap; layer: int32): Rid =
+proc getLayerNavigationMap*(self: TileMap; layer: int32): RID =
   expandMethodBind(className TileMap, "get_layer_navigation_map", 495598643)
   var `?param` = [getPtr layer]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setCollisionAnimatable*(self: TileMap; enabled: bool): void =
   expandMethodBind(className TileMap, "set_collision_animatable", 2586408642)
@@ -241,14 +241,14 @@ proc getCellTileData*(self: TileMap; layer: int32; coords: Vector2i; useProxies:
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(TileData)
 
-proc getCoordsForBodyRid*(self: TileMap; body: Rid): Vector2i =
+proc getCoordsForBodyRid*(self: TileMap; body: RID): Vector2i =
   expandMethodBind(className TileMap, "get_coords_for_body_rid", 291584212)
   var `?param` = [getPtr body]
   var ret: encoded Vector2i
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Vector2i)
 
-proc getLayerForBodyRid*(self: TileMap; body: Rid): int32 =
+proc getLayerForBodyRid*(self: TileMap; body: RID): int32 =
   expandMethodBind(className TileMap, "get_layer_for_body_rid", 3917799429)
   var `?param` = [getPtr body]
   var ret: encoded int32

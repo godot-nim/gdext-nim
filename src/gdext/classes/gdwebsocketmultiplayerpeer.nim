@@ -4,14 +4,14 @@ import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
 
-proc createClient*(self: WebSocketMultiplayerPeer; url: String; tlsClientOptions: gdref TlsOptions = default gdref TlsOptions): Error =
+proc createClient*(self: WebSocketMultiplayerPeer; url: String; tlsClientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketMultiplayerPeer, "create_client", 1966198364)
   var `?param` = [getPtr url, getPtr tlsClientOptions]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc createServer*(self: WebSocketMultiplayerPeer; port: int32; bindAddress: String = gdstring"*"; tlsServerOptions: gdref TlsOptions = default gdref TlsOptions): Error =
+proc createServer*(self: WebSocketMultiplayerPeer; port: int32; bindAddress: String = gdstring"*"; tlsServerOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketMultiplayerPeer, "create_server", 2400822951)
   var `?param` = [getPtr port, getPtr bindAddress, getPtr tlsServerOptions]
   var ret: encoded Error

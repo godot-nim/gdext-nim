@@ -15,22 +15,22 @@ proc isRecordingActive*(self: AudioEffectRecord): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setFormat*(self: AudioEffectRecord; format: AudioStreamWav_Format): void =
+proc setFormat*(self: AudioEffectRecord; format: AudioStreamWAV_Format): void =
   expandMethodBind(className AudioEffectRecord, "set_format", 60648488)
   var `?param` = [getPtr format]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFormat*(self: AudioEffectRecord): AudioStreamWav_Format =
+proc getFormat*(self: AudioEffectRecord): AudioStreamWAV_Format =
   expandMethodBind(className AudioEffectRecord, "get_format", 3151724922)
-  var ret: encoded AudioStreamWav_Format
+  var ret: encoded AudioStreamWAV_Format
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(AudioStreamWav_Format)
+  (addr ret).decode_result(AudioStreamWAV_Format)
 
-proc getRecording*(self: AudioEffectRecord): gdref AudioStreamWav =
+proc getRecording*(self: AudioEffectRecord): gdref AudioStreamWAV =
   expandMethodBind(className AudioEffectRecord, "get_recording", 2964110865)
-  var ret: encoded gdref AudioStreamWav
+  var ret: encoded gdref AudioStreamWAV
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref AudioStreamWav)
+  (addr ret).decode_result(gdref AudioStreamWAV)
 
 template format*(self: AudioEffectRecord): untyped = self.getFormat()
 template `format=`*(self: AudioEffectRecord; value) = self.setFormat(value)

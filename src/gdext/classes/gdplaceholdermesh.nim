@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
 
-proc setAabb*(self: PlaceholderMesh; aabb: Aabb): void =
+proc setAabb*(self: PlaceholderMesh; aabb: AABB): void =
   expandMethodBind(className PlaceholderMesh, "set_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])

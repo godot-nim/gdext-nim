@@ -183,24 +183,24 @@ proc getSize*(self: TextParagraph): Vector2 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getRid*(self: TextParagraph): Rid =
+proc getRid*(self: TextParagraph): RID =
   expandMethodBind(className TextParagraph, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getLineRid*(self: TextParagraph; line: int32): Rid =
+proc getLineRid*(self: TextParagraph; line: int32): RID =
   expandMethodBind(className TextParagraph, "get_line_rid", 495598643)
   var `?param` = [getPtr line]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getDropcapRid*(self: TextParagraph): Rid =
+proc getDropcapRid*(self: TextParagraph): RID =
   expandMethodBind(className TextParagraph, "get_dropcap_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getLineCount*(self: TextParagraph): int32 =
   expandMethodBind(className TextParagraph, "get_line_count", 3905245786)
@@ -294,32 +294,32 @@ proc getDropcapLines*(self: TextParagraph): int32 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc draw*(self: TextParagraph; canvas: Rid; pos: Vector2; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
+proc draw*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw", 1567802413)
   var `?param` = [getPtr canvas, getPtr pos, getPtr color, getPtr dcColor]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawOutline*(self: TextParagraph; canvas: Rid; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
+proc drawOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw_outline", 1893131224)
   var `?param` = [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color, getPtr dcColor]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawLine*(self: TextParagraph; canvas: Rid; pos: Vector2; line: int32; color: Color = color(1, 1, 1, 1)): void =
+proc drawLine*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw_line", 1242169894)
   var `?param` = [getPtr canvas, getPtr pos, getPtr line, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawLineOutline*(self: TextParagraph; canvas: Rid; pos: Vector2; line: int32; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
+proc drawLineOutline*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw_line_outline", 2664926980)
   var `?param` = [getPtr canvas, getPtr pos, getPtr line, getPtr outlineSize, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawDropcap*(self: TextParagraph; canvas: Rid; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
+proc drawDropcap*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw_dropcap", 856975658)
   var `?param` = [getPtr canvas, getPtr pos, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawDropcapOutline*(self: TextParagraph; canvas: Rid; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
+proc drawDropcapOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextParagraph, "draw_dropcap_outline", 1343401456)
   var `?param` = [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])

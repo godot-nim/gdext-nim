@@ -83,16 +83,16 @@ proc isBakingNavigation*(self: GridMap): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setNavigationMap*(self: GridMap; navigationMap: Rid): void =
+proc setNavigationMap*(self: GridMap; navigationMap: RID): void =
   expandMethodBind(className GridMap, "set_navigation_map", 2722037293)
   var `?param` = [getPtr navigationMap]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: GridMap): Rid =
+proc getNavigationMap*(self: GridMap): RID =
   expandMethodBind(className GridMap, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setMeshLibrary*(self: GridMap; meshLibrary: gdref MeshLibrary): void =
   expandMethodBind(className GridMap, "set_mesh_library", 1488083439)
@@ -259,12 +259,12 @@ proc getBakeMeshes*(self: GridMap): Array =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Array)
 
-proc getBakeMeshInstance*(self: GridMap; idx: int32): Rid =
+proc getBakeMeshInstance*(self: GridMap; idx: int32): RID =
   expandMethodBind(className GridMap, "get_bake_mesh_instance", 937000113)
   var `?param` = [getPtr idx]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc clearBakedMeshes*(self: GridMap): void =
   expandMethodBind(className GridMap, "clear_baked_meshes", 3218959716)

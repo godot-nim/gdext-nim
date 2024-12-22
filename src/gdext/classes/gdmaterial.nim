@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-method getShaderRid*(self: Material): Rid {.base.} = (discard)
+method getShaderRid*(self: Material): RID {.base.} = (discard)
 proc getShaderRid(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[Material](p_instance).getShaderRid().encode(r_ret)
 template getShaderRid_bind*(_: typedesc[Material]): ClassCallVirtual = getShaderRid

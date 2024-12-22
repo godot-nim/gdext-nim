@@ -15,16 +15,16 @@ proc getShape*(self: PhysicsShapeQueryParameters2D): gdref Resource =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(gdref Resource)
 
-proc setShapeRid*(self: PhysicsShapeQueryParameters2D; shape: Rid): void =
+proc setShapeRid*(self: PhysicsShapeQueryParameters2D; shape: RID): void =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "set_shape_rid", 2722037293)
   var `?param` = [getPtr shape]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getShapeRid*(self: PhysicsShapeQueryParameters2D): Rid =
+proc getShapeRid*(self: PhysicsShapeQueryParameters2D): RID =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "get_shape_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setTransform*(self: PhysicsShapeQueryParameters2D; transform: Transform2D): void =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "set_transform", 2761652528)
@@ -70,16 +70,16 @@ proc getCollisionMask*(self: PhysicsShapeQueryParameters2D): uint32 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(uint32)
 
-proc setExclude*(self: PhysicsShapeQueryParameters2D; exclude: TypedArray[Rid]): void =
+proc setExclude*(self: PhysicsShapeQueryParameters2D; exclude: TypedArray[RID]): void =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "set_exclude", 381264803)
   var `?param` = [getPtr exclude]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getExclude*(self: PhysicsShapeQueryParameters2D): TypedArray[Rid] =
+proc getExclude*(self: PhysicsShapeQueryParameters2D): TypedArray[RID] =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "get_exclude", 3995934104)
-  var ret: encoded TypedArray[Rid]
+  var ret: encoded TypedArray[RID]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(TypedArray[Rid])
+  (addr ret).decode_result(TypedArray[RID])
 
 proc setCollideWithBodies*(self: PhysicsShapeQueryParameters2D; enable: bool): void =
   expandMethodBind(className PhysicsShapeQueryParameters2D, "set_collide_with_bodies", 2586408642)

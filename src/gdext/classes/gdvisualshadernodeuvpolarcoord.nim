@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
-const VisualShaderNodeUvPolarCoord_vmap =
+const VisualShaderNodeUVPolarCoord_vmap =
   VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeUvPolarCoord]): Table[string, string] = VisualShaderNodeUvPolarCoord_vmap
+template vmap*(_: typedesc[VisualShaderNodeUVPolarCoord]): Table[string, string] = VisualShaderNodeUVPolarCoord_vmap

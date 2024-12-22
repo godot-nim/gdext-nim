@@ -5,29 +5,29 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector4i_AxisX*: int = 0
-template AxisX*(_: typedesc[Vector4i]): int = Vector4i_AxisX
+const Vector4i_AXIS_X*: int = 0
+template AXIS_X*(_: typedesc[Vector4i]): int = Vector4i_AXIS_X
 
-const Vector4i_AxisY*: int = 1
-template AxisY*(_: typedesc[Vector4i]): int = Vector4i_AxisY
+const Vector4i_AXIS_Y*: int = 1
+template AXIS_Y*(_: typedesc[Vector4i]): int = Vector4i_AXIS_Y
 
-const Vector4i_AxisZ*: int = 2
-template AxisZ*(_: typedesc[Vector4i]): int = Vector4i_AxisZ
+const Vector4i_AXIS_Z*: int = 2
+template AXIS_Z*(_: typedesc[Vector4i]): int = Vector4i_AXIS_Z
 
-const Vector4i_AxisW*: int = 3
-template AxisW*(_: typedesc[Vector4i]): int = Vector4i_AxisW
+const Vector4i_AXIS_W*: int = 3
+template AXIS_W*(_: typedesc[Vector4i]): int = Vector4i_AXIS_W
 
-const Vector4i_Zero*: Vector4i = vectori(0, 0, 0, 0)
-template Zero*(_: typedesc[Vector4i]): Vector4i = Vector4i_Zero
+const Vector4i_ZERO*: Vector4i = vectori(0, 0, 0, 0)
+template ZERO*(_: typedesc[Vector4i]): Vector4i = Vector4i_ZERO
 
-const Vector4i_One*: Vector4i = vectori(1, 1, 1, 1)
-template One*(_: typedesc[Vector4i]): Vector4i = Vector4i_One
+const Vector4i_ONE*: Vector4i = vectori(1, 1, 1, 1)
+template ONE*(_: typedesc[Vector4i]): Vector4i = Vector4i_ONE
 
-const Vector4i_Min*: Vector4i = vectori(-2147483648, -2147483648, -2147483648, -2147483648)
-template Min*(_: typedesc[Vector4i]): Vector4i = Vector4i_Min
+const Vector4i_MIN*: Vector4i = vectori(-2147483648, -2147483648, -2147483648, -2147483648)
+template MIN*(_: typedesc[Vector4i]): Vector4i = Vector4i_MIN
 
-const Vector4i_Max*: Vector4i = vectori(2147483647, 2147483647, 2147483647, 2147483647)
-template Max*(_: typedesc[Vector4i]): Vector4i = Vector4i_Max
+const Vector4i_MAX*: Vector4i = vectori(2147483647, 2147483647, 2147483647, 2147483647)
+template MAX*(_: typedesc[Vector4i]): Vector4i = Vector4i_MAX
 
 var `==(Vector4i Variant)`: PtrOperatorEvaluator
 var `!=(Vector4i Variant)`: PtrOperatorEvaluator

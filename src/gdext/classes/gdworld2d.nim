@@ -4,23 +4,23 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc getCanvas*(self: World2D): Rid =
+proc getCanvas*(self: World2D): RID =
   expandMethodBind(className World2D, "get_canvas", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getSpace*(self: World2D): Rid =
+proc getSpace*(self: World2D): RID =
   expandMethodBind(className World2D, "get_space", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getNavigationMap*(self: World2D): Rid =
+proc getNavigationMap*(self: World2D): RID =
   expandMethodBind(className World2D, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getDirectSpaceState*(self: World2D): PhysicsDirectSpaceState2D =
   expandMethodBind(className World2D, "get_direct_space_state", 2506717822)

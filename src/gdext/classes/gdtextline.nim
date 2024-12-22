@@ -157,11 +157,11 @@ proc getSize*(self: TextLine): Vector2 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getRid*(self: TextLine): Rid =
+proc getRid*(self: TextLine): RID =
   expandMethodBind(className TextLine, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getLineAscent*(self: TextLine): Float =
   expandMethodBind(className TextLine, "get_line_ascent", 1740695150)
@@ -193,12 +193,12 @@ proc getLineUnderlineThickness*(self: TextLine): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc draw*(self: TextLine; canvas: Rid; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
+proc draw*(self: TextLine; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextLine, "draw", 856975658)
   var `?param` = [getPtr canvas, getPtr pos, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawOutline*(self: TextLine; canvas: Rid; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
+proc drawOutline*(self: TextLine; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className TextLine, "draw_outline", 1343401456)
   var `?param` = [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])

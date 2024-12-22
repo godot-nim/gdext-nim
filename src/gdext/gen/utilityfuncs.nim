@@ -494,7 +494,7 @@ proc ridAllocateId*(): Int =
   const argslen = cint 0
   `ridAllocateId()`(getPtr result, nil, argslen)
 
-proc ridFromInt64*(base: Int): Rid =
+proc ridFromInt64*(base: Int): RID =
   const argslen = cint 1
   let ptrargs = [getPtr base]
   `ridFromInt64(Int)`(getPtr result, addr ptrargs[0], argslen)

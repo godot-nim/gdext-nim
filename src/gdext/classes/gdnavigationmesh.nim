@@ -258,16 +258,16 @@ proc getFilterWalkableLowHeightSpans*(self: NavigationMesh): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setFilterBakingAabb*(self: NavigationMesh; bakingAabb: Aabb): void =
+proc setFilterBakingAabb*(self: NavigationMesh; bakingAabb: AABB): void =
   expandMethodBind(className NavigationMesh, "set_filter_baking_aabb", 259215842)
   var `?param` = [getPtr bakingAabb]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFilterBakingAabb*(self: NavigationMesh): Aabb =
+proc getFilterBakingAabb*(self: NavigationMesh): AABB =
   expandMethodBind(className NavigationMesh, "get_filter_baking_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc setFilterBakingAabbOffset*(self: NavigationMesh; bakingAabbOffset: Vector3): void =
   expandMethodBind(className NavigationMesh, "set_filter_baking_aabb_offset", 3460891852)
