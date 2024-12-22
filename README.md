@@ -95,7 +95,7 @@ nimble test
 
 * OS: Linux (Arch)
 * Engine: Godot 4.3.stable.arch_linux
-* Nim: 2.0.0, 2.0.8, 2.2.0
+* Nim: 2.0.0, 2.0.12, 2.2.0
 * CC: gcc version 14.2.1 20240910 (GCC)
 
 [1]: https://github.com/godot-nim/demo
