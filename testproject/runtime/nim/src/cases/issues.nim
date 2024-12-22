@@ -1,9 +1,16 @@
 import gdext
+import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D]
 import std/unittest
 unittest.disableParamFiltering()
 
 suite "Community Reported":
-  test "instantiate CSGSphere3D or CSGBox3D -> crash #132":
-    let m : CSGSphere3D = instantiate CSGSphere3D
-    check m != nil
-    destroy m
+
+  test "set a StandardMaterial3D crash? #134":
+    let s : CSGSphere3D = instantiate CSGSphere3D
+    check s != nil
+
+    let mat: GdRef[StandardMaterial3D] = instantiate StandardMaterial3D
+    mat[].albedoColor = color(0, 0, 1)
+    s.material = mat as GdRef[Material]
+
+    destroy s
