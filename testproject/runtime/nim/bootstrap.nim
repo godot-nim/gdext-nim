@@ -8,6 +8,7 @@ import cases/array
 import cases/variant
 import cases/enums
 import cases/image
+import cases/issues
 import classes/gdextnode
 import classes/gdtestobject
 
