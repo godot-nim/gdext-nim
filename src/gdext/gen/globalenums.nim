@@ -325,7 +325,7 @@ type JoyAxis* {.size: sizeof(clong).} = enum
   joyAxisSdlMax = 6
   joyAxisMax = 10
 
-type MidiMessage* {.size: sizeof(clong).} = enum
+type MIDIMessage* {.size: sizeof(clong).} = enum
   midiMessageNone = 0
   midiMessageNoteOff = 8
   midiMessageNoteOn = 9

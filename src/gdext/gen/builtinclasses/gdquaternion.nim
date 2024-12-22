@@ -5,8 +5,8 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Quaternion_Identity*: Quaternion = quaternion(0, 0, 0, 1)
-template Identity*(_: typedesc[Quaternion]): Quaternion = Quaternion_Identity
+const Quaternion_IDENTITY*: Quaternion = quaternion(0, 0, 0, 1)
+template IDENTITY*(_: typedesc[Quaternion]): Quaternion = Quaternion_IDENTITY
 
 var `==(Quaternion Variant)`: PtrOperatorEvaluator
 var `!=(Quaternion Variant)`: PtrOperatorEvaluator

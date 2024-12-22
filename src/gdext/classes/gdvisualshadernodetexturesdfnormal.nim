@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
-const VisualShaderNodeTextureSdfNormal_vmap =
+const VisualShaderNodeTextureSDFNormal_vmap =
   VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTextureSdfNormal]): Table[string, string] = VisualShaderNodeTextureSdfNormal_vmap
+template vmap*(_: typedesc[VisualShaderNodeTextureSDFNormal]): Table[string, string] = VisualShaderNodeTextureSDFNormal_vmap

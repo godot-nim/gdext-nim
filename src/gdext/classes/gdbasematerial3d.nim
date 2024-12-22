@@ -279,16 +279,16 @@ proc getPointSize*(self: BaseMaterial3D): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setDetailUv*(self: BaseMaterial3D; detailUv: BaseMaterial3D_DetailUv): void =
+proc setDetailUv*(self: BaseMaterial3D; detailUv: BaseMaterial3D_DetailUV): void =
   expandMethodBind(className BaseMaterial3D, "set_detail_uv", 456801921)
   var `?param` = [getPtr detailUv]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getDetailUv*(self: BaseMaterial3D): BaseMaterial3D_DetailUv =
+proc getDetailUv*(self: BaseMaterial3D): BaseMaterial3D_DetailUV =
   expandMethodBind(className BaseMaterial3D, "get_detail_uv", 2306920512)
-  var ret: encoded BaseMaterial3D_DetailUv
+  var ret: encoded BaseMaterial3D_DetailUV
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(BaseMaterial3D_DetailUv)
+  (addr ret).decode_result(BaseMaterial3D_DetailUV)
 
 proc setBlendMode*(self: BaseMaterial3D; blendMode: BaseMaterial3D_BlendMode): void =
   expandMethodBind(className BaseMaterial3D, "set_blend_mode", 2830186259)

@@ -40,11 +40,11 @@ proc getColliderId*(self: PhysicsTestMotionResult2D): uint64 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(uint64)
 
-proc getColliderRid*(self: PhysicsTestMotionResult2D): Rid =
+proc getColliderRid*(self: PhysicsTestMotionResult2D): RID =
   expandMethodBind(className PhysicsTestMotionResult2D, "get_collider_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getCollider*(self: PhysicsTestMotionResult2D): Object =
   expandMethodBind(className PhysicsTestMotionResult2D, "get_collider", 1981248198)

@@ -1,4 +1,3 @@
-import submodules/wordropes
 import submodules/semanticstrings
 
 import types/json
@@ -21,9 +20,9 @@ let inheritanceDB* = new InheritanceDB
 
 proc convert*(json: JsonClass): Class =
   new result
-  result.typesym = json.name.scan.convert(TypeSym)
+  result.typesym = json.name.convert(TypeSym)
   result.inherits =
-    if json.inherits.isSome: json.inherits.get.scan.convert(TypeSym)
+    if json.inherits.isSome: json.inherits.get.convert(TypeSym)
     else: TypeSym.RootObj
   result.json = json
   for metho in json.methods.get(@[]):

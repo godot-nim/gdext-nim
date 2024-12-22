@@ -4,102 +4,102 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-method importPreflight*(self: GltfDocumentExtension; state: gdref GltfState; extensions: PackedStringArray): Error {.base.} = (discard)
+method importPreflight*(self: GLTFDocumentExtension; state: gdref GLTFState; extensions: PackedStringArray): Error {.base.} = (discard)
 proc importPreflight(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).importPreflight(p_args[0].decode(gdref GltfState), p_args[1].decode(PackedStringArray)).encode(r_ret)
-template importPreflight_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = importPreflight
+  errproof: cast[GLTFDocumentExtension](p_instance).importPreflight(p_args[0].decode(gdref GLTFState), p_args[1].decode(PackedStringArray)).encode(r_ret)
+template importPreflight_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importPreflight
 
-method getSupportedExtensions*(self: GltfDocumentExtension): PackedStringArray {.base.} = (discard)
+method getSupportedExtensions*(self: GLTFDocumentExtension): PackedStringArray {.base.} = (discard)
 proc getSupportedExtensions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).getSupportedExtensions().encode(r_ret)
-template getSupportedExtensions_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = getSupportedExtensions
+  errproof: cast[GLTFDocumentExtension](p_instance).getSupportedExtensions().encode(r_ret)
+template getSupportedExtensions_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = getSupportedExtensions
 
-method parseNodeExtensions*(self: GltfDocumentExtension; state: gdref GltfState; gltfNode: gdref GltfNode; extensions: Dictionary): Error {.base.} = (discard)
+method parseNodeExtensions*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; extensions: Dictionary): Error {.base.} = (discard)
 proc parseNodeExtensions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).parseNodeExtensions(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref GltfNode), p_args[2].decode(Dictionary)).encode(r_ret)
-template parseNodeExtensions_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = parseNodeExtensions
+  errproof: cast[GLTFDocumentExtension](p_instance).parseNodeExtensions(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Dictionary)).encode(r_ret)
+template parseNodeExtensions_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = parseNodeExtensions
 
-method parseImageData*(self: GltfDocumentExtension; state: gdref GltfState; imageData: PackedByteArray; mimeType: String; retImage: gdref Image): Error {.base.} = (discard)
+method parseImageData*(self: GLTFDocumentExtension; state: gdref GLTFState; imageData: PackedByteArray; mimeType: String; retImage: gdref Image): Error {.base.} = (discard)
 proc parseImageData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).parseImageData(p_args[0].decode(gdref GltfState), p_args[1].decode(PackedByteArray), p_args[2].decode(String), p_args[3].decode(gdref Image)).encode(r_ret)
-template parseImageData_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = parseImageData
+  errproof: cast[GLTFDocumentExtension](p_instance).parseImageData(p_args[0].decode(gdref GLTFState), p_args[1].decode(PackedByteArray), p_args[2].decode(String), p_args[3].decode(gdref Image)).encode(r_ret)
+template parseImageData_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = parseImageData
 
-method getImageFileExtension*(self: GltfDocumentExtension): String {.base.} = (discard)
+method getImageFileExtension*(self: GLTFDocumentExtension): String {.base.} = (discard)
 proc getImageFileExtension(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).getImageFileExtension().encode(r_ret)
-template getImageFileExtension_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = getImageFileExtension
+  errproof: cast[GLTFDocumentExtension](p_instance).getImageFileExtension().encode(r_ret)
+template getImageFileExtension_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = getImageFileExtension
 
-method parseTextureJson*(self: GltfDocumentExtension; state: gdref GltfState; textureJson: Dictionary; retGltfTexture: gdref GltfTexture): Error {.base.} = (discard)
+method parseTextureJson*(self: GLTFDocumentExtension; state: gdref GLTFState; textureJson: Dictionary; retGltfTexture: gdref GLTFTexture): Error {.base.} = (discard)
 proc parseTextureJson(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).parseTextureJson(p_args[0].decode(gdref GltfState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GltfTexture)).encode(r_ret)
-template parseTextureJson_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = parseTextureJson
+  errproof: cast[GLTFDocumentExtension](p_instance).parseTextureJson(p_args[0].decode(gdref GLTFState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GLTFTexture)).encode(r_ret)
+template parseTextureJson_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = parseTextureJson
 
-method generateSceneNode*(self: GltfDocumentExtension; state: gdref GltfState; gltfNode: gdref GltfNode; sceneParent: Node): Node3D {.base.} = (discard)
+method generateSceneNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; sceneParent: Node): Node3D {.base.} = (discard)
 proc generateSceneNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).generateSceneNode(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref GltfNode), p_args[2].decode(Node)).encode(r_ret)
-template generateSceneNode_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = generateSceneNode
+  errproof: cast[GLTFDocumentExtension](p_instance).generateSceneNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Node)).encode(r_ret)
+template generateSceneNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = generateSceneNode
 
-method importPostParse*(self: GltfDocumentExtension; state: gdref GltfState): Error {.base.} = (discard)
+method importPostParse*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc importPostParse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).importPostParse(p_args[0].decode(gdref GltfState)).encode(r_ret)
-template importPostParse_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = importPostParse
+  errproof: cast[GLTFDocumentExtension](p_instance).importPostParse(p_args[0].decode(gdref GLTFState)).encode(r_ret)
+template importPostParse_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importPostParse
 
-method importNode*(self: GltfDocumentExtension; state: gdref GltfState; gltfNode: gdref GltfNode; json: Dictionary; node: Node): Error {.base.} = (discard)
+method importNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; json: Dictionary; node: Node): Error {.base.} = (discard)
 proc importNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).importNode(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref GltfNode), p_args[2].decode(Dictionary), p_args[3].decode(Node)).encode(r_ret)
-template importNode_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = importNode
+  errproof: cast[GLTFDocumentExtension](p_instance).importNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Dictionary), p_args[3].decode(Node)).encode(r_ret)
+template importNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importNode
 
-method importPost*(self: GltfDocumentExtension; state: gdref GltfState; root: Node): Error {.base.} = (discard)
+method importPost*(self: GLTFDocumentExtension; state: gdref GLTFState; root: Node): Error {.base.} = (discard)
 proc importPost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).importPost(p_args[0].decode(gdref GltfState), p_args[1].decode(Node)).encode(r_ret)
-template importPost_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = importPost
+  errproof: cast[GLTFDocumentExtension](p_instance).importPost(p_args[0].decode(gdref GLTFState), p_args[1].decode(Node)).encode(r_ret)
+template importPost_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importPost
 
-method exportPreflight*(self: GltfDocumentExtension; state: gdref GltfState; root: Node): Error {.base.} = (discard)
+method exportPreflight*(self: GLTFDocumentExtension; state: gdref GLTFState; root: Node): Error {.base.} = (discard)
 proc exportPreflight(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).exportPreflight(p_args[0].decode(gdref GltfState), p_args[1].decode(Node)).encode(r_ret)
-template exportPreflight_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = exportPreflight
+  errproof: cast[GLTFDocumentExtension](p_instance).exportPreflight(p_args[0].decode(gdref GLTFState), p_args[1].decode(Node)).encode(r_ret)
+template exportPreflight_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportPreflight
 
-method convertSceneNode*(self: GltfDocumentExtension; state: gdref GltfState; gltfNode: gdref GltfNode; sceneNode: Node): void {.base.} = (discard)
+method convertSceneNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; sceneNode: Node): void {.base.} = (discard)
 proc convertSceneNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).convertSceneNode(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref GltfNode), p_args[2].decode(Node))
-template convertSceneNode_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = convertSceneNode
+  errproof: cast[GLTFDocumentExtension](p_instance).convertSceneNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Node))
+template convertSceneNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = convertSceneNode
 
-method exportPreserialize*(self: GltfDocumentExtension; state: gdref GltfState): Error {.base.} = (discard)
+method exportPreserialize*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc exportPreserialize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).exportPreserialize(p_args[0].decode(gdref GltfState)).encode(r_ret)
-template exportPreserialize_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = exportPreserialize
+  errproof: cast[GLTFDocumentExtension](p_instance).exportPreserialize(p_args[0].decode(gdref GLTFState)).encode(r_ret)
+template exportPreserialize_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportPreserialize
 
-method getSaveableImageFormats*(self: GltfDocumentExtension): PackedStringArray {.base.} = (discard)
+method getSaveableImageFormats*(self: GLTFDocumentExtension): PackedStringArray {.base.} = (discard)
 proc getSaveableImageFormats(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).getSaveableImageFormats().encode(r_ret)
-template getSaveableImageFormats_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = getSaveableImageFormats
+  errproof: cast[GLTFDocumentExtension](p_instance).getSaveableImageFormats().encode(r_ret)
+template getSaveableImageFormats_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = getSaveableImageFormats
 
-method serializeImageToBytes*(self: GltfDocumentExtension; state: gdref GltfState; image: gdref Image; imageDict: Dictionary; imageFormat: String; lossyQuality: Float): PackedByteArray {.base.} = (discard)
+method serializeImageToBytes*(self: GLTFDocumentExtension; state: gdref GLTFState; image: gdref Image; imageDict: Dictionary; imageFormat: String; lossyQuality: Float): PackedByteArray {.base.} = (discard)
 proc serializeImageToBytes(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).serializeImageToBytes(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref Image), p_args[2].decode(Dictionary), p_args[3].decode(String), p_args[4].decode(Float)).encode(r_ret)
-template serializeImageToBytes_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = serializeImageToBytes
+  errproof: cast[GLTFDocumentExtension](p_instance).serializeImageToBytes(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref Image), p_args[2].decode(Dictionary), p_args[3].decode(String), p_args[4].decode(Float)).encode(r_ret)
+template serializeImageToBytes_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = serializeImageToBytes
 
-method saveImageAtPath*(self: GltfDocumentExtension; state: gdref GltfState; image: gdref Image; filePath: String; imageFormat: String; lossyQuality: Float): Error {.base.} = (discard)
+method saveImageAtPath*(self: GLTFDocumentExtension; state: gdref GLTFState; image: gdref Image; filePath: String; imageFormat: String; lossyQuality: Float): Error {.base.} = (discard)
 proc saveImageAtPath(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).saveImageAtPath(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref Image), p_args[2].decode(String), p_args[3].decode(String), p_args[4].decode(Float)).encode(r_ret)
-template saveImageAtPath_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = saveImageAtPath
+  errproof: cast[GLTFDocumentExtension](p_instance).saveImageAtPath(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref Image), p_args[2].decode(String), p_args[3].decode(String), p_args[4].decode(Float)).encode(r_ret)
+template saveImageAtPath_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = saveImageAtPath
 
-method serializeTextureJson*(self: GltfDocumentExtension; state: gdref GltfState; textureJson: Dictionary; gltfTexture: gdref GltfTexture; imageFormat: String): Error {.base.} = (discard)
+method serializeTextureJson*(self: GLTFDocumentExtension; state: gdref GLTFState; textureJson: Dictionary; gltfTexture: gdref GLTFTexture; imageFormat: String): Error {.base.} = (discard)
 proc serializeTextureJson(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).serializeTextureJson(p_args[0].decode(gdref GltfState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GltfTexture), p_args[3].decode(String)).encode(r_ret)
-template serializeTextureJson_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = serializeTextureJson
+  errproof: cast[GLTFDocumentExtension](p_instance).serializeTextureJson(p_args[0].decode(gdref GLTFState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GLTFTexture), p_args[3].decode(String)).encode(r_ret)
+template serializeTextureJson_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = serializeTextureJson
 
-method exportNode*(self: GltfDocumentExtension; state: gdref GltfState; gltfNode: gdref GltfNode; json: Dictionary; node: Node): Error {.base.} = (discard)
+method exportNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; json: Dictionary; node: Node): Error {.base.} = (discard)
 proc exportNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).exportNode(p_args[0].decode(gdref GltfState), p_args[1].decode(gdref GltfNode), p_args[2].decode(Dictionary), p_args[3].decode(Node)).encode(r_ret)
-template exportNode_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = exportNode
+  errproof: cast[GLTFDocumentExtension](p_instance).exportNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Dictionary), p_args[3].decode(Node)).encode(r_ret)
+template exportNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportNode
 
-method exportPost*(self: GltfDocumentExtension; state: gdref GltfState): Error {.base.} = (discard)
+method exportPost*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc exportPost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GltfDocumentExtension](p_instance).exportPost(p_args[0].decode(gdref GltfState)).encode(r_ret)
-template exportPost_bind*(_: typedesc[GltfDocumentExtension]): ClassCallVirtual = exportPost
+  errproof: cast[GLTFDocumentExtension](p_instance).exportPost(p_args[0].decode(gdref GLTFState)).encode(r_ret)
+template exportPost_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportPost
 
-const GltfDocumentExtension_vmap =
+const GLTFDocumentExtension_vmap =
   Resource.vmap.concat toTable {
     "importpreflight" : "_import_preflight",
     "getsupportedextensions" : "_get_supported_extensions",
@@ -121,4 +121,4 @@ const GltfDocumentExtension_vmap =
     "exportnode" : "_export_node",
     "exportpost" : "_export_post",
     }
-template vmap*(_: typedesc[GltfDocumentExtension]): Table[string, string] = GltfDocumentExtension_vmap
+template vmap*(_: typedesc[GLTFDocumentExtension]): Table[string, string] = GLTFDocumentExtension_vmap

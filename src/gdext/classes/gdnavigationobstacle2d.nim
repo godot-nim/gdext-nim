@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
-proc getRid*(self: NavigationObstacle2D): Rid =
+proc getRid*(self: NavigationObstacle2D): RID =
   expandMethodBind(className NavigationObstacle2D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setAvoidanceEnabled*(self: NavigationObstacle2D; enabled: bool): void =
   expandMethodBind(className NavigationObstacle2D, "set_avoidance_enabled", 2586408642)
@@ -21,16 +21,16 @@ proc getAvoidanceEnabled*(self: NavigationObstacle2D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setNavigationMap*(self: NavigationObstacle2D; navigationMap: Rid): void =
+proc setNavigationMap*(self: NavigationObstacle2D; navigationMap: RID): void =
   expandMethodBind(className NavigationObstacle2D, "set_navigation_map", 2722037293)
   var `?param` = [getPtr navigationMap]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: NavigationObstacle2D): Rid =
+proc getNavigationMap*(self: NavigationObstacle2D): RID =
   expandMethodBind(className NavigationObstacle2D, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setRadius*(self: NavigationObstacle2D; radius: Float): void =
   expandMethodBind(className NavigationObstacle2D, "set_radius", 373806689)

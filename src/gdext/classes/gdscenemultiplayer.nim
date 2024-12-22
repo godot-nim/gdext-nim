@@ -153,7 +153,7 @@ template maxDeltaPacketSize*(self: SceneMultiplayer): untyped = self.getMaxDelta
 template `maxDeltaPacketSize=`*(self: SceneMultiplayer; value) = self.setMaxDeltaPacketSize(value)
 
 const SceneMultiplayer_vmap =
-  MultiplayerApi.vmap.concat initTable[string, string]()
+  MultiplayerAPI.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[SceneMultiplayer]): Table[string, string] = SceneMultiplayer_vmap
 
 proc peerAuthenticating*(self: SceneMultiplayer; id: Variant): Error =

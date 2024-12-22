@@ -4,27 +4,27 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
-proc poll*(self: PacketPeerDtls): void =
-  expandMethodBind(className PacketPeerDtls, "poll", 3218959716)
+proc poll*(self: PacketPeerDTLS): void =
+  expandMethodBind(className PacketPeerDTLS, "poll", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc connectToPeer*(self: PacketPeerDtls; packetPeer: gdref PacketPeerUdp; hostname: String; clientOptions: gdref TlsOptions = default gdref TlsOptions): Error =
-  expandMethodBind(className PacketPeerDtls, "connect_to_peer", 2880188099)
+proc connectToPeer*(self: PacketPeerDTLS; packetPeer: gdref PacketPeerUDP; hostname: String; clientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
+  expandMethodBind(className PacketPeerDTLS, "connect_to_peer", 2880188099)
   var `?param` = [getPtr packetPeer, getPtr hostname, getPtr clientOptions]
   var ret: encoded Error
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc getStatus*(self: PacketPeerDtls): PacketPeerDtls_Status =
-  expandMethodBind(className PacketPeerDtls, "get_status", 3248654679)
-  var ret: encoded PacketPeerDtls_Status
+proc getStatus*(self: PacketPeerDTLS): PacketPeerDTLS_Status =
+  expandMethodBind(className PacketPeerDTLS, "get_status", 3248654679)
+  var ret: encoded PacketPeerDTLS_Status
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(PacketPeerDtls_Status)
+  (addr ret).decode_result(PacketPeerDTLS_Status)
 
-proc disconnectFromPeer*(self: PacketPeerDtls): void =
-  expandMethodBind(className PacketPeerDtls, "disconnect_from_peer", 3218959716)
+proc disconnectFromPeer*(self: PacketPeerDTLS): void =
+  expandMethodBind(className PacketPeerDTLS, "disconnect_from_peer", 3218959716)
   methodbind.ptrcall(self, nil)
 
-const PacketPeerDtls_vmap =
+const PacketPeerDTLS_vmap =
   PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PacketPeerDtls]): Table[string, string] = PacketPeerDtls_vmap
+template vmap*(_: typedesc[PacketPeerDTLS]): Table[string, string] = PacketPeerDTLS_vmap

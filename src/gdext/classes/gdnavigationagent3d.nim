@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
-proc getRid*(self: NavigationAgent3D): Rid =
+proc getRid*(self: NavigationAgent3D): RID =
   expandMethodBind(className NavigationAgent3D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setAvoidanceEnabled*(self: NavigationAgent3D; enabled: bool): void =
   expandMethodBind(className NavigationAgent3D, "set_avoidance_enabled", 2586408642)
@@ -220,16 +220,16 @@ proc getPathMetadataFlags*(self: NavigationAgent3D): set[NavigationPathQueryPara
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(set[NavigationPathQueryParameters3D_PathMetadataFlags])
 
-proc setNavigationMap*(self: NavigationAgent3D; navigationMap: Rid): void =
+proc setNavigationMap*(self: NavigationAgent3D; navigationMap: RID): void =
   expandMethodBind(className NavigationAgent3D, "set_navigation_map", 2722037293)
   var `?param` = [getPtr navigationMap]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: NavigationAgent3D): Rid =
+proc getNavigationMap*(self: NavigationAgent3D): RID =
   expandMethodBind(className NavigationAgent3D, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setTargetPosition*(self: NavigationAgent3D; position: Vector3): void =
   expandMethodBind(className NavigationAgent3D, "set_target_position", 3460891852)

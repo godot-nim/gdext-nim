@@ -66,6 +66,8 @@ proc escapeVariable*(w: string): string =
 proc typeConv(str: string): string =
   case str
   of "Bool": "bool"
+  of "int": "Int"
+  of "float": "Float"
   of "Void": "void"
   of "Pointer": "pointer"
   of "Int8", "Int16", "Int32", "Int64": str.replace("Int", "int")
@@ -73,15 +75,12 @@ proc typeConv(str: string): string =
   of "Float32", "Float64": str.replace("Float", "float")
   of "Thread": "GodotThread" # will conflicts to system.Thread
   else: str
-proc convert*(ss: WordRope; _: typedesc[TypeSym]): TypeSym =
-  var newwords: seq[string] = newSeq[string](1)
-  for i, w in ss.words:
-    case string(w)
-    of "t": discard
-    of ".": newwords.add ""
-    of "double": newwords[^1].add "float64"
-    else: newwords[^1].add w.pascal
-  TypeSym newWords.mapIt(it.typeConv).join("_")
+proc convert*(s: string; _: typedesc[TypeSym]): TypeSym =
+  TypeSym s
+    .multiReplace(("_t", ""), ("double", "float64"))
+    .split(".")
+    .mapIt(it.typeConv)
+    .join("_")
 
 proc convert*(ss: WordRope; _: typedesc[VariableSym]): VariableSym =
   var str = newStringOfCap(ss.total)
@@ -112,4 +111,4 @@ proc convert*(typesym: TypeSym; _: typedesc[ModuleSym]): ModuleSym =
 when isMainModule:
   echo scan("set_getter").convert(ProcSym)
   echo repr scan("Object.int64_t")
-  echo scan("Object.int64_t").convert(TypeSym)
+  echo "Object.int64_t".convert(TypeSym)

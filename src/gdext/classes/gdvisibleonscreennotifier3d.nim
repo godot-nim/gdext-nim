@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
-proc setAabb*(self: VisibleOnScreenNotifier3D; rect: Aabb): void =
+proc setAabb*(self: VisibleOnScreenNotifier3D; rect: AABB): void =
   expandMethodBind(className VisibleOnScreenNotifier3D, "set_aabb", 259215842)
   var `?param` = [getPtr rect]
   methodbind.ptrcall(self, addr `?param`[0])

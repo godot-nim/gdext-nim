@@ -615,11 +615,11 @@ proc isMultiplayerAuthority*(self: Node): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc getMultiplayer*(self: Node): gdref MultiplayerApi =
+proc getMultiplayer*(self: Node): gdref MultiplayerAPI =
   expandMethodBind(className Node, "get_multiplayer", 406750475)
-  var ret: encoded gdref MultiplayerApi
+  var ret: encoded gdref MultiplayerAPI
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref MultiplayerApi)
+  (addr ret).decode_result(gdref MultiplayerAPI)
 
 proc rpcConfig*(self: Node; `method`: StringName; config: Variant): void =
   expandMethodBind(className Node, "rpc_config", 3776071444)

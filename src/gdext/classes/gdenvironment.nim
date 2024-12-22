@@ -4,16 +4,16 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setBackground*(self: Environment; mode: Environment_BgMode): void =
+proc setBackground*(self: Environment; mode: Environment_BGMode): void =
   expandMethodBind(className Environment, "set_background", 4071623990)
   var `?param` = [getPtr mode]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getBackground*(self: Environment): Environment_BgMode =
+proc getBackground*(self: Environment): Environment_BGMode =
   expandMethodBind(className Environment, "get_background", 1843210413)
-  var ret: encoded Environment_BgMode
+  var ret: encoded Environment_BGMode
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Environment_BgMode)
+  (addr ret).decode_result(Environment_BGMode)
 
 proc setSky*(self: Environment; sky: gdref Sky): void =
   expandMethodBind(className Environment, "set_sky", 3336722921)
@@ -455,16 +455,16 @@ proc getSdfgiCascade0Distance*(self: Environment): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setSdfgiYScale*(self: Environment; scale: Environment_SdfgiyScale): void =
+proc setSdfgiYScale*(self: Environment; scale: Environment_SDFGIYScale): void =
   expandMethodBind(className Environment, "set_sdfgi_y_scale", 3608608372)
   var `?param` = [getPtr scale]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSdfgiYScale*(self: Environment): Environment_SdfgiyScale =
+proc getSdfgiYScale*(self: Environment): Environment_SDFGIYScale =
   expandMethodBind(className Environment, "get_sdfgi_y_scale", 2568002245)
-  var ret: encoded Environment_SdfgiyScale
+  var ret: encoded Environment_SDFGIYScale
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Environment_SdfgiyScale)
+  (addr ret).decode_result(Environment_SDFGIYScale)
 
 proc setSdfgiUseOcclusion*(self: Environment; enable: bool): void =
   expandMethodBind(className Environment, "set_sdfgi_use_occlusion", 2586408642)

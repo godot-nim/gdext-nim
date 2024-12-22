@@ -5,59 +5,59 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector3_AxisX*: int = 0
-template AxisX*(_: typedesc[Vector3]): int = Vector3_AxisX
+const Vector3_AXIS_X*: int = 0
+template AXIS_X*(_: typedesc[Vector3]): int = Vector3_AXIS_X
 
-const Vector3_AxisY*: int = 1
-template AxisY*(_: typedesc[Vector3]): int = Vector3_AxisY
+const Vector3_AXIS_Y*: int = 1
+template AXIS_Y*(_: typedesc[Vector3]): int = Vector3_AXIS_Y
 
-const Vector3_AxisZ*: int = 2
-template AxisZ*(_: typedesc[Vector3]): int = Vector3_AxisZ
+const Vector3_AXIS_Z*: int = 2
+template AXIS_Z*(_: typedesc[Vector3]): int = Vector3_AXIS_Z
 
-const Vector3_Zero*: Vector3 = vector(0, 0, 0)
-template Zero*(_: typedesc[Vector3]): Vector3 = Vector3_Zero
+const Vector3_ZERO*: Vector3 = vector(0, 0, 0)
+template ZERO*(_: typedesc[Vector3]): Vector3 = Vector3_ZERO
 
-const Vector3_One*: Vector3 = vector(1, 1, 1)
-template One*(_: typedesc[Vector3]): Vector3 = Vector3_One
+const Vector3_ONE*: Vector3 = vector(1, 1, 1)
+template ONE*(_: typedesc[Vector3]): Vector3 = Vector3_ONE
 
-const Vector3_Inf*: Vector3 = vector(Inf, Inf, Inf)
-template Inf*(_: typedesc[Vector3]): Vector3 = Vector3_Inf
+const Vector3_INF*: Vector3 = vector(Inf, Inf, Inf)
+template INF*(_: typedesc[Vector3]): Vector3 = Vector3_INF
 
-const Vector3_Left*: Vector3 = vector(-1, 0, 0)
-template Left*(_: typedesc[Vector3]): Vector3 = Vector3_Left
+const Vector3_LEFT*: Vector3 = vector(-1, 0, 0)
+template LEFT*(_: typedesc[Vector3]): Vector3 = Vector3_LEFT
 
-const Vector3_Right*: Vector3 = vector(1, 0, 0)
-template Right*(_: typedesc[Vector3]): Vector3 = Vector3_Right
+const Vector3_RIGHT*: Vector3 = vector(1, 0, 0)
+template RIGHT*(_: typedesc[Vector3]): Vector3 = Vector3_RIGHT
 
-const Vector3_Up*: Vector3 = vector(0, 1, 0)
-template Up*(_: typedesc[Vector3]): Vector3 = Vector3_Up
+const Vector3_UP*: Vector3 = vector(0, 1, 0)
+template UP*(_: typedesc[Vector3]): Vector3 = Vector3_UP
 
-const Vector3_Down*: Vector3 = vector(0, -1, 0)
-template Down*(_: typedesc[Vector3]): Vector3 = Vector3_Down
+const Vector3_DOWN*: Vector3 = vector(0, -1, 0)
+template DOWN*(_: typedesc[Vector3]): Vector3 = Vector3_DOWN
 
-const Vector3_Forward*: Vector3 = vector(0, 0, -1)
-template Forward*(_: typedesc[Vector3]): Vector3 = Vector3_Forward
+const Vector3_FORWARD*: Vector3 = vector(0, 0, -1)
+template FORWARD*(_: typedesc[Vector3]): Vector3 = Vector3_FORWARD
 
-const Vector3_Back*: Vector3 = vector(0, 0, 1)
-template Back*(_: typedesc[Vector3]): Vector3 = Vector3_Back
+const Vector3_BACK*: Vector3 = vector(0, 0, 1)
+template BACK*(_: typedesc[Vector3]): Vector3 = Vector3_BACK
 
-const Vector3_ModelLeft*: Vector3 = vector(1, 0, 0)
-template ModelLeft*(_: typedesc[Vector3]): Vector3 = Vector3_ModelLeft
+const Vector3_MODEL_LEFT*: Vector3 = vector(1, 0, 0)
+template MODEL_LEFT*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_LEFT
 
-const Vector3_ModelRight*: Vector3 = vector(-1, 0, 0)
-template ModelRight*(_: typedesc[Vector3]): Vector3 = Vector3_ModelRight
+const Vector3_MODEL_RIGHT*: Vector3 = vector(-1, 0, 0)
+template MODEL_RIGHT*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_RIGHT
 
-const Vector3_ModelTop*: Vector3 = vector(0, 1, 0)
-template ModelTop*(_: typedesc[Vector3]): Vector3 = Vector3_ModelTop
+const Vector3_MODEL_TOP*: Vector3 = vector(0, 1, 0)
+template MODEL_TOP*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_TOP
 
-const Vector3_ModelBottom*: Vector3 = vector(0, -1, 0)
-template ModelBottom*(_: typedesc[Vector3]): Vector3 = Vector3_ModelBottom
+const Vector3_MODEL_BOTTOM*: Vector3 = vector(0, -1, 0)
+template MODEL_BOTTOM*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_BOTTOM
 
-const Vector3_ModelFront*: Vector3 = vector(0, 0, 1)
-template ModelFront*(_: typedesc[Vector3]): Vector3 = Vector3_ModelFront
+const Vector3_MODEL_FRONT*: Vector3 = vector(0, 0, 1)
+template MODEL_FRONT*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_FRONT
 
-const Vector3_ModelRear*: Vector3 = vector(0, 0, -1)
-template ModelRear*(_: typedesc[Vector3]): Vector3 = Vector3_ModelRear
+const Vector3_MODEL_REAR*: Vector3 = vector(0, 0, -1)
+template MODEL_REAR*(_: typedesc[Vector3]): Vector3 = Vector3_MODEL_REAR
 
 var `==(Vector3 Variant)`: PtrOperatorEvaluator
 var `!=(Vector3 Variant)`: PtrOperatorEvaluator

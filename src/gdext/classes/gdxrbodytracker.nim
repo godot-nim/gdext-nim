@@ -4,58 +4,58 @@ import gdext/coronation/header/classes
 
 import gdxrpositionaltracker; export gdxrpositionaltracker
 
-proc setHasTrackingData*(self: XrBodyTracker; hasData: bool): void =
-  expandMethodBind(className XrBodyTracker, "set_has_tracking_data", 2586408642)
+proc setHasTrackingData*(self: XRBodyTracker; hasData: bool): void =
+  expandMethodBind(className XRBodyTracker, "set_has_tracking_data", 2586408642)
   var `?param` = [getPtr hasData]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getHasTrackingData*(self: XrBodyTracker): bool =
-  expandMethodBind(className XrBodyTracker, "get_has_tracking_data", 36873697)
+proc getHasTrackingData*(self: XRBodyTracker): bool =
+  expandMethodBind(className XRBodyTracker, "get_has_tracking_data", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setBodyFlags*(self: XrBodyTracker; flags: set[XrBodyTracker_BodyFlags]): void =
-  expandMethodBind(className XrBodyTracker, "set_body_flags", 2103235750)
+proc setBodyFlags*(self: XRBodyTracker; flags: set[XRBodyTracker_BodyFlags]): void =
+  expandMethodBind(className XRBodyTracker, "set_body_flags", 2103235750)
   var `?param` = [getPtr flags]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getBodyFlags*(self: XrBodyTracker): set[XrBodyTracker_BodyFlags] =
-  expandMethodBind(className XrBodyTracker, "get_body_flags", 3543166366)
-  var ret: encoded set[XrBodyTracker_BodyFlags]
+proc getBodyFlags*(self: XRBodyTracker): set[XRBodyTracker_BodyFlags] =
+  expandMethodBind(className XRBodyTracker, "get_body_flags", 3543166366)
+  var ret: encoded set[XRBodyTracker_BodyFlags]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(set[XrBodyTracker_BodyFlags])
+  (addr ret).decode_result(set[XRBodyTracker_BodyFlags])
 
-proc setJointFlags*(self: XrBodyTracker; joint: XrBodyTracker_Joint; flags: set[XrBodyTracker_JointFlags]): void =
-  expandMethodBind(className XrBodyTracker, "set_joint_flags", 592144999)
+proc setJointFlags*(self: XRBodyTracker; joint: XRBodyTracker_Joint; flags: set[XRBodyTracker_JointFlags]): void =
+  expandMethodBind(className XRBodyTracker, "set_joint_flags", 592144999)
   var `?param` = [getPtr joint, getPtr flags]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getJointFlags*(self: XrBodyTracker; joint: XrBodyTracker_Joint): set[XrBodyTracker_JointFlags] =
-  expandMethodBind(className XrBodyTracker, "get_joint_flags", 1030162609)
+proc getJointFlags*(self: XRBodyTracker; joint: XRBodyTracker_Joint): set[XRBodyTracker_JointFlags] =
+  expandMethodBind(className XRBodyTracker, "get_joint_flags", 1030162609)
   var `?param` = [getPtr joint]
-  var ret: encoded set[XrBodyTracker_JointFlags]
+  var ret: encoded set[XRBodyTracker_JointFlags]
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(set[XrBodyTracker_JointFlags])
+  (addr ret).decode_result(set[XRBodyTracker_JointFlags])
 
-proc setJointTransform*(self: XrBodyTracker; joint: XrBodyTracker_Joint; transform: Transform3D): void =
-  expandMethodBind(className XrBodyTracker, "set_joint_transform", 2635424328)
+proc setJointTransform*(self: XRBodyTracker; joint: XRBodyTracker_Joint; transform: Transform3D): void =
+  expandMethodBind(className XRBodyTracker, "set_joint_transform", 2635424328)
   var `?param` = [getPtr joint, getPtr transform]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getJointTransform*(self: XrBodyTracker; joint: XrBodyTracker_Joint): Transform3D =
-  expandMethodBind(className XrBodyTracker, "get_joint_transform", 3474811534)
+proc getJointTransform*(self: XRBodyTracker; joint: XRBodyTracker_Joint): Transform3D =
+  expandMethodBind(className XRBodyTracker, "get_joint_transform", 3474811534)
   var `?param` = [getPtr joint]
   var ret: encoded Transform3D
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Transform3D)
 
-template hasTrackingData*(self: XrBodyTracker): untyped = self.getHasTrackingData()
-template `hasTrackingData=`*(self: XrBodyTracker; value) = self.setHasTrackingData(value)
+template hasTrackingData*(self: XRBodyTracker): untyped = self.getHasTrackingData()
+template `hasTrackingData=`*(self: XRBodyTracker; value) = self.setHasTrackingData(value)
 
-template bodyFlags*(self: XrBodyTracker): untyped = self.getBodyFlags()
-template `bodyFlags=`*(self: XrBodyTracker; value) = self.setBodyFlags(value)
+template bodyFlags*(self: XRBodyTracker): untyped = self.getBodyFlags()
+template `bodyFlags=`*(self: XRBodyTracker; value) = self.setBodyFlags(value)
 
-const XrBodyTracker_vmap =
-  XrPositionalTracker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XrBodyTracker]): Table[string, string] = XrBodyTracker_vmap
+const XRBodyTracker_vmap =
+  XRPositionalTracker.vmap.concat initTable[string, string]()
+template vmap*(_: typedesc[XRBodyTracker]): Table[string, string] = XRBodyTracker_vmap

@@ -36,11 +36,11 @@ proc getName*(self: Resource): String =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(String)
 
-proc getRid*(self: Resource): Rid =
+proc getRid*(self: Resource): RID =
   expandMethodBind(className Resource, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setLocalToScene*(self: Resource; enable: bool): void =
   expandMethodBind(className Resource, "set_local_to_scene", 2586408642)

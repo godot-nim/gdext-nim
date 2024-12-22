@@ -29,11 +29,11 @@ proc mouseShapeExit(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[Con
   errproof: cast[CollisionObject2D](p_instance).mouseShapeExit(p_args[0].decode(int32))
 template mouseShapeExit_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = mouseShapeExit
 
-proc getRid*(self: CollisionObject2D): Rid =
+proc getRid*(self: CollisionObject2D): RID =
   expandMethodBind(className CollisionObject2D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setCollisionLayer*(self: CollisionObject2D; layer: uint32): void =
   expandMethodBind(className CollisionObject2D, "set_collision_layer", 1286410249)

@@ -24,19 +24,19 @@ proc hasAlpha(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstType
   errproof: cast[Texture2D](p_instance).hasAlpha().encode(r_ret)
 template hasAlpha_bind*(_: typedesc[Texture2D]): ClassCallVirtual = hasAlpha
 
-method draw*(self: Texture2D; toCanvasItem: Rid; pos: Vector2; modulate: Color; transpose: bool): void {.base.} = (discard)
+method draw*(self: Texture2D; toCanvasItem: RID; pos: Vector2; modulate: Color; transpose: bool): void {.base.} = (discard)
 proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).draw(p_args[0].decode(Rid), p_args[1].decode(Vector2), p_args[2].decode(Color), p_args[3].decode(bool))
+  errproof: cast[Texture2D](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Vector2), p_args[2].decode(Color), p_args[3].decode(bool))
 template draw_bind*(_: typedesc[Texture2D]): ClassCallVirtual = draw
 
-method drawRect*(self: Texture2D; toCanvasItem: Rid; rect: Rect2; tile: bool; modulate: Color; transpose: bool): void {.base.} = (discard)
+method drawRect*(self: Texture2D; toCanvasItem: RID; rect: Rect2; tile: bool; modulate: Color; transpose: bool): void {.base.} = (discard)
 proc drawRect(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).drawRect(p_args[0].decode(Rid), p_args[1].decode(Rect2), p_args[2].decode(bool), p_args[3].decode(Color), p_args[4].decode(bool))
+  errproof: cast[Texture2D](p_instance).drawRect(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(bool), p_args[3].decode(Color), p_args[4].decode(bool))
 template drawRect_bind*(_: typedesc[Texture2D]): ClassCallVirtual = drawRect
 
-method drawRectRegion*(self: Texture2D; toCanvasItem: Rid; rect: Rect2; srcRect: Rect2; modulate: Color; transpose: bool; clipUv: bool): void {.base.} = (discard)
+method drawRectRegion*(self: Texture2D; toCanvasItem: RID; rect: Rect2; srcRect: Rect2; modulate: Color; transpose: bool; clipUv: bool): void {.base.} = (discard)
 proc drawRectRegion(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).drawRectRegion(p_args[0].decode(Rid), p_args[1].decode(Rect2), p_args[2].decode(Rect2), p_args[3].decode(Color), p_args[4].decode(bool), p_args[5].decode(bool))
+  errproof: cast[Texture2D](p_instance).drawRectRegion(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(Rect2), p_args[3].decode(Color), p_args[4].decode(bool), p_args[5].decode(bool))
 template drawRectRegion_bind*(_: typedesc[Texture2D]): ClassCallVirtual = drawRectRegion
 
 proc getWidth*(self: Texture2D): int32 =
@@ -63,17 +63,17 @@ proc hasAlpha*(self: Texture2D): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc draw*(self: Texture2D; canvasItem: Rid; position: Vector2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
+proc draw*(self: Texture2D; canvasItem: RID; position: Vector2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
   expandMethodBind(className Texture2D, "draw", 2729649137)
   var `?param` = [getPtr canvasItem, getPtr position, getPtr modulate, getPtr transpose]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawRect*(self: Texture2D; canvasItem: Rid; rect: Rect2; tile: bool; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
+proc drawRect*(self: Texture2D; canvasItem: RID; rect: Rect2; tile: bool; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
   expandMethodBind(className Texture2D, "draw_rect", 3499451691)
   var `?param` = [getPtr canvasItem, getPtr rect, getPtr tile, getPtr modulate, getPtr transpose]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc drawRectRegion*(self: Texture2D; canvasItem: Rid; rect: Rect2; srcRect: Rect2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false; clipUv: bool = true): void =
+proc drawRectRegion*(self: Texture2D; canvasItem: RID; rect: Rect2; srcRect: Rect2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false; clipUv: bool = true): void =
   expandMethodBind(className Texture2D, "draw_rect_region", 2963678660)
   var `?param` = [getPtr canvasItem, getPtr rect, getPtr srcRect, getPtr modulate, getPtr transpose, getPtr clipUv]
   methodbind.ptrcall(self, addr `?param`[0])

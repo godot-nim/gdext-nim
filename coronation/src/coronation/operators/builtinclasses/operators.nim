@@ -1,7 +1,6 @@
 import cloths
 import cloths/styles/exception
 
-import submodules/wordropes
 import submodules/semanticstrings
 
 import types/json
@@ -82,7 +81,7 @@ proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
   if operator.right_type.isSome:
     result.key.args.add RenderableArgument(
       variableSym: VariableSym"right",
-      typeSym: operator.right_type.get.scan.convert(TypeSym))
+      typeSym: operator.right_type.get.convert(TypeSym))
   result.key.result = convertToResult some operator.return_type
 
   result.opkey = variantOpKey operator.name
@@ -120,7 +119,7 @@ proc weave_loadstmt(operator: BuiltinClassOperator): Cloth =
   &"{operator.containerkey} = interface_variantGetPtrOperatorEvaluator({operator.opkey}, {operator.vt_first}, {operator.vt_second})"
 
 proc weave_operators*(json: JsonBuiltinClass): Cloth =
-  let typesym = json.name.scan.convert(TypeSym)
+  let typesym = json.name.convert(TypeSym)
 
   let operators = json.operators.get(@[])
     .mapIt(it.convert(typesym))

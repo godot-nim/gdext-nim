@@ -5,35 +5,35 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector2i_AxisX*: int = 0
-template AxisX*(_: typedesc[Vector2i]): int = Vector2i_AxisX
+const Vector2i_AXIS_X*: int = 0
+template AXIS_X*(_: typedesc[Vector2i]): int = Vector2i_AXIS_X
 
-const Vector2i_AxisY*: int = 1
-template AxisY*(_: typedesc[Vector2i]): int = Vector2i_AxisY
+const Vector2i_AXIS_Y*: int = 1
+template AXIS_Y*(_: typedesc[Vector2i]): int = Vector2i_AXIS_Y
 
-const Vector2i_Zero*: Vector2i = vectori(0, 0)
-template Zero*(_: typedesc[Vector2i]): Vector2i = Vector2i_Zero
+const Vector2i_ZERO*: Vector2i = vectori(0, 0)
+template ZERO*(_: typedesc[Vector2i]): Vector2i = Vector2i_ZERO
 
-const Vector2i_One*: Vector2i = vectori(1, 1)
-template One*(_: typedesc[Vector2i]): Vector2i = Vector2i_One
+const Vector2i_ONE*: Vector2i = vectori(1, 1)
+template ONE*(_: typedesc[Vector2i]): Vector2i = Vector2i_ONE
 
-const Vector2i_Min*: Vector2i = vectori(-2147483648, -2147483648)
-template Min*(_: typedesc[Vector2i]): Vector2i = Vector2i_Min
+const Vector2i_MIN*: Vector2i = vectori(-2147483648, -2147483648)
+template MIN*(_: typedesc[Vector2i]): Vector2i = Vector2i_MIN
 
-const Vector2i_Max*: Vector2i = vectori(2147483647, 2147483647)
-template Max*(_: typedesc[Vector2i]): Vector2i = Vector2i_Max
+const Vector2i_MAX*: Vector2i = vectori(2147483647, 2147483647)
+template MAX*(_: typedesc[Vector2i]): Vector2i = Vector2i_MAX
 
-const Vector2i_Left*: Vector2i = vectori(-1, 0)
-template Left*(_: typedesc[Vector2i]): Vector2i = Vector2i_Left
+const Vector2i_LEFT*: Vector2i = vectori(-1, 0)
+template LEFT*(_: typedesc[Vector2i]): Vector2i = Vector2i_LEFT
 
-const Vector2i_Right*: Vector2i = vectori(1, 0)
-template Right*(_: typedesc[Vector2i]): Vector2i = Vector2i_Right
+const Vector2i_RIGHT*: Vector2i = vectori(1, 0)
+template RIGHT*(_: typedesc[Vector2i]): Vector2i = Vector2i_RIGHT
 
-const Vector2i_Up*: Vector2i = vectori(0, -1)
-template Up*(_: typedesc[Vector2i]): Vector2i = Vector2i_Up
+const Vector2i_UP*: Vector2i = vectori(0, -1)
+template UP*(_: typedesc[Vector2i]): Vector2i = Vector2i_UP
 
-const Vector2i_Down*: Vector2i = vectori(0, 1)
-template Down*(_: typedesc[Vector2i]): Vector2i = Vector2i_Down
+const Vector2i_DOWN*: Vector2i = vectori(0, 1)
+template DOWN*(_: typedesc[Vector2i]): Vector2i = Vector2i_DOWN
 
 var `==(Vector2i Variant)`: PtrOperatorEvaluator
 var `!=(Vector2i Variant)`: PtrOperatorEvaluator

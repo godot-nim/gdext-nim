@@ -26,16 +26,16 @@ proc getOversampling*(self: AudioEffectPitchShift): int32 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setFftSize*(self: AudioEffectPitchShift; size: AudioEffectPitchShift_FftSize): void =
+proc setFftSize*(self: AudioEffectPitchShift; size: AudioEffectPitchShift_FFTSize): void =
   expandMethodBind(className AudioEffectPitchShift, "set_fft_size", 2323518741)
   var `?param` = [getPtr size]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFftSize*(self: AudioEffectPitchShift): AudioEffectPitchShift_FftSize =
+proc getFftSize*(self: AudioEffectPitchShift): AudioEffectPitchShift_FFTSize =
   expandMethodBind(className AudioEffectPitchShift, "get_fft_size", 2361246789)
-  var ret: encoded AudioEffectPitchShift_FftSize
+  var ret: encoded AudioEffectPitchShift_FFTSize
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(AudioEffectPitchShift_FftSize)
+  (addr ret).decode_result(AudioEffectPitchShift_FFTSize)
 
 template pitchScale*(self: AudioEffectPitchShift): untyped = self.getPitchScale()
 template `pitchScale=`*(self: AudioEffectPitchShift; value) = self.setPitchScale(value)

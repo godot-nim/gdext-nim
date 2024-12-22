@@ -37,16 +37,16 @@ proc getGain*(self: AudioEffectFilter): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setDb*(self: AudioEffectFilter; amount: AudioEffectFilter_FilterDb): void =
+proc setDb*(self: AudioEffectFilter; amount: AudioEffectFilter_FilterDB): void =
   expandMethodBind(className AudioEffectFilter, "set_db", 771740901)
   var `?param` = [getPtr amount]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getDb*(self: AudioEffectFilter): AudioEffectFilter_FilterDb =
+proc getDb*(self: AudioEffectFilter): AudioEffectFilter_FilterDB =
   expandMethodBind(className AudioEffectFilter, "get_db", 3981721890)
-  var ret: encoded AudioEffectFilter_FilterDb
+  var ret: encoded AudioEffectFilter_FilterDB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(AudioEffectFilter_FilterDb)
+  (addr ret).decode_result(AudioEffectFilter_FilterDB)
 
 template cutoffHz*(self: AudioEffectFilter): untyped = self.getCutoff()
 template `cutoffHz=`*(self: AudioEffectFilter; value) = self.setCutoff(value)

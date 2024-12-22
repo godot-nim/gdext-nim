@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdrenderscenedata; export gdrenderscenedata
 
-const RenderSceneDataRd_vmap =
+const RenderSceneDataRD_vmap =
   RenderSceneData.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderSceneDataRd]): Table[string, string] = RenderSceneDataRd_vmap
+template vmap*(_: typedesc[RenderSceneDataRD]): Table[string, string] = RenderSceneDataRD_vmap

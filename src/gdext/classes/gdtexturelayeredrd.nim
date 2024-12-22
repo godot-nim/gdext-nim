@@ -4,20 +4,20 @@ import gdext/coronation/header/classes
 
 import gdtexturelayered; export gdtexturelayered
 
-proc setTextureRdRid*(self: TextureLayeredRd; textureRdRid: Rid): void =
-  expandMethodBind(className TextureLayeredRd, "set_texture_rd_rid", 2722037293)
+proc setTextureRdRid*(self: TextureLayeredRD; textureRdRid: RID): void =
+  expandMethodBind(className TextureLayeredRD, "set_texture_rd_rid", 2722037293)
   var `?param` = [getPtr textureRdRid]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getTextureRdRid*(self: TextureLayeredRd): Rid =
-  expandMethodBind(className TextureLayeredRd, "get_texture_rd_rid", 2944877500)
-  var ret: encoded Rid
+proc getTextureRdRid*(self: TextureLayeredRD): RID =
+  expandMethodBind(className TextureLayeredRD, "get_texture_rd_rid", 2944877500)
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-template textureRdRid*(self: TextureLayeredRd): untyped = self.getTextureRdRid()
-template `textureRdRid=`*(self: TextureLayeredRd; value) = self.setTextureRdRid(value)
+template textureRdRid*(self: TextureLayeredRD): untyped = self.getTextureRdRid()
+template `textureRdRid=`*(self: TextureLayeredRD; value) = self.setTextureRdRid(value)
 
-const TextureLayeredRd_vmap =
+const TextureLayeredRD_vmap =
   TextureLayered.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureLayeredRd]): Table[string, string] = TextureLayeredRd_vmap
+template vmap*(_: typedesc[TextureLayeredRD]): Table[string, string] = TextureLayeredRD_vmap

@@ -118,22 +118,22 @@ proc getInstanceCustomData*(self: MultiMesh; instance: int32): Color =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Color)
 
-proc setCustomAabb*(self: MultiMesh; aabb: Aabb): void =
+proc setCustomAabb*(self: MultiMesh; aabb: AABB): void =
   expandMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCustomAabb*(self: MultiMesh): Aabb =
+proc getCustomAabb*(self: MultiMesh): AABB =
   expandMethodBind(className MultiMesh, "get_custom_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
-proc getAabb*(self: MultiMesh): Aabb =
+proc getAabb*(self: MultiMesh): AABB =
   expandMethodBind(className MultiMesh, "get_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc getBuffer*(self: MultiMesh): PackedFloat32Array =
   expandMethodBind(className MultiMesh, "get_buffer", 675695659)

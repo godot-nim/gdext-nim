@@ -9,11 +9,11 @@ proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]
   errproof: cast[CanvasItem](p_instance).draw()
 template draw_bind*(_: typedesc[CanvasItem]): ClassCallVirtual = draw
 
-proc getCanvasItem*(self: CanvasItem): Rid =
+proc getCanvasItem*(self: CanvasItem): RID =
   expandMethodBind(className CanvasItem, "get_canvas_item", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setVisible*(self: CanvasItem; visible: bool): void =
   expandMethodBind(className CanvasItem, "set_visible", 2586408642)
@@ -339,11 +339,11 @@ proc getGlobalMousePosition*(self: CanvasItem): Vector2 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getCanvas*(self: CanvasItem): Rid =
+proc getCanvas*(self: CanvasItem): RID =
   expandMethodBind(className CanvasItem, "get_canvas", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getCanvasLayerNode*(self: CanvasItem): CanvasLayer =
   expandMethodBind(className CanvasItem, "get_canvas_layer_node", 2602762519)

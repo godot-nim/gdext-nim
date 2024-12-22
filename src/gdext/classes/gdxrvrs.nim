@@ -4,41 +4,41 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc getVrsMinRadius*(self: Xrvrs): Float =
-  expandMethodBind(className Xrvrs, "get_vrs_min_radius", 1740695150)
+proc getVrsMinRadius*(self: XRVRS): Float =
+  expandMethodBind(className XRVRS, "get_vrs_min_radius", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setVrsMinRadius*(self: Xrvrs; radius: Float): void =
-  expandMethodBind(className Xrvrs, "set_vrs_min_radius", 373806689)
+proc setVrsMinRadius*(self: XRVRS; radius: Float): void =
+  expandMethodBind(className XRVRS, "set_vrs_min_radius", 373806689)
   var `?param` = [getPtr radius]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getVrsStrength*(self: Xrvrs): Float =
-  expandMethodBind(className Xrvrs, "get_vrs_strength", 1740695150)
+proc getVrsStrength*(self: XRVRS): Float =
+  expandMethodBind(className XRVRS, "get_vrs_strength", 1740695150)
   var ret: encoded Float
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setVrsStrength*(self: Xrvrs; strength: Float): void =
-  expandMethodBind(className Xrvrs, "set_vrs_strength", 373806689)
+proc setVrsStrength*(self: XRVRS; strength: Float): void =
+  expandMethodBind(className XRVRS, "set_vrs_strength", 373806689)
   var `?param` = [getPtr strength]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc makeVrsTexture*(self: Xrvrs; targetSize: Vector2; eyeFoci: PackedVector2Array): Rid =
-  expandMethodBind(className Xrvrs, "make_vrs_texture", 3647044786)
+proc makeVrsTexture*(self: XRVRS; targetSize: Vector2; eyeFoci: PackedVector2Array): RID =
+  expandMethodBind(className XRVRS, "make_vrs_texture", 3647044786)
   var `?param` = [getPtr targetSize, getPtr eyeFoci]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-template vrsMinRadius*(self: Xrvrs): untyped = self.getVrsMinRadius()
-template `vrsMinRadius=`*(self: Xrvrs; value) = self.setVrsMinRadius(value)
+template vrsMinRadius*(self: XRVRS): untyped = self.getVrsMinRadius()
+template `vrsMinRadius=`*(self: XRVRS; value) = self.setVrsMinRadius(value)
 
-template vrsStrength*(self: Xrvrs): untyped = self.getVrsStrength()
-template `vrsStrength=`*(self: Xrvrs; value) = self.setVrsStrength(value)
+template vrsStrength*(self: XRVRS): untyped = self.getVrsStrength()
+template `vrsStrength=`*(self: XRVRS; value) = self.setVrsStrength(value)
 
-const Xrvrs_vmap =
+const XRVRS_vmap =
   Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Xrvrs]): Table[string, string] = Xrvrs_vmap
+template vmap*(_: typedesc[XRVRS]): Table[string, string] = XRVRS_vmap

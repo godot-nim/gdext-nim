@@ -43,7 +43,7 @@ proc collideWithMotionAndGetContacts*(self: Shape2D; localXform: Transform2D; lo
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
-proc draw*(self: Shape2D; canvasItem: Rid; color: Color): void =
+proc draw*(self: Shape2D; canvasItem: RID; color: Color): void =
   expandMethodBind(className Shape2D, "draw", 2948539648)
   var `?param` = [getPtr canvasItem, getPtr color]
   methodbind.ptrcall(self, addr `?param`[0])

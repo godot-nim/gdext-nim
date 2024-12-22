@@ -87,7 +87,7 @@ proc padding_bitfield(renderable: Enum) =
 
 proc convert*(raw: JsonGlobalEnum): Enum =
   new result
-  result.typename = raw.name.scan.convert(TypeSym)
+  result.typename = raw.name.convert(TypeSym)
   let is_bitfield = raw.is_bitfield.get(false)
 
   fullfill_fields(result, raw.values, is_bitfield)
@@ -98,7 +98,7 @@ proc convert*(raw: JsonGlobalEnum): Enum =
 
 proc convert*(raw: JsonClassEnum; caller: TypeSym): Enum =
   new result
-  result.typename = fmt("{caller}.{raw.name}").scan.convert(TypeSym)
+  result.typename = fmt("{caller}.{raw.name}").convert(TypeSym)
   let is_bitfield = raw.is_bitfield.get(false)
 
   fullfill_fields(result, raw.values, is_bitfield)
@@ -109,7 +109,7 @@ proc convert*(raw: JsonClassEnum; caller: TypeSym): Enum =
 
 proc convert*(raw: JsonBuiltinClassEnum; caller: TypeSym): Enum =
   new result
-  result.typename = fmt("{caller}.{raw.name}").scan.convert(TypeSym)
+  result.typename = fmt("{caller}.{raw.name}").convert(TypeSym)
   let is_bitfield = raw.is_bitfield.get(false)
 
   fullfill_fields(result, raw.values, is_bitfield)

@@ -217,12 +217,12 @@ proc getContactLocalVelocityAtPosition*(self: PhysicsDirectBodyState3D; contactI
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Vector3)
 
-proc getContactCollider*(self: PhysicsDirectBodyState3D; contactIdx: int32): Rid =
+proc getContactCollider*(self: PhysicsDirectBodyState3D; contactIdx: int32): RID =
   expandMethodBind(className PhysicsDirectBodyState3D, "get_contact_collider", 495598643)
   var `?param` = [getPtr contactIdx]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getContactColliderPosition*(self: PhysicsDirectBodyState3D; contactIdx: int32): Vector3 =
   expandMethodBind(className PhysicsDirectBodyState3D, "get_contact_collider_position", 711720468)

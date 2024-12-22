@@ -14,12 +14,12 @@ proc getRenderSceneData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray
   errproof: cast[RenderDataExtension](p_instance).getRenderSceneData().encode(r_ret)
 template getRenderSceneData_bind*(_: typedesc[RenderDataExtension]): ClassCallVirtual = getRenderSceneData
 
-method getEnvironment*(self: RenderDataExtension): Rid {.base.} = (discard)
+method getEnvironment*(self: RenderDataExtension): RID {.base.} = (discard)
 proc getEnvironment(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[RenderDataExtension](p_instance).getEnvironment().encode(r_ret)
 template getEnvironment_bind*(_: typedesc[RenderDataExtension]): ClassCallVirtual = getEnvironment
 
-method getCameraAttributes*(self: RenderDataExtension): Rid {.base.} = (discard)
+method getCameraAttributes*(self: RenderDataExtension): RID {.base.} = (discard)
 proc getCameraAttributes(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[RenderDataExtension](p_instance).getCameraAttributes().encode(r_ret)
 template getCameraAttributes_bind*(_: typedesc[RenderDataExtension]): ClassCallVirtual = getCameraAttributes

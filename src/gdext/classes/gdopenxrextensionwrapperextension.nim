@@ -4,177 +4,177 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-method getRequestedExtensions*(self: OpenXrExtensionWrapperExtension): Dictionary {.base.} = (discard)
+method getRequestedExtensions*(self: OpenXRExtensionWrapperExtension): Dictionary {.base.} = (discard)
 proc getRequestedExtensions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getRequestedExtensions().encode(r_ret)
-template getRequestedExtensions_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getRequestedExtensions
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getRequestedExtensions().encode(r_ret)
+template getRequestedExtensions_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getRequestedExtensions
 
-method setSystemPropertiesAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
+method setSystemPropertiesAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setSystemPropertiesAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setSystemPropertiesAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
-template setSystemPropertiesAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setSystemPropertiesAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setSystemPropertiesAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
+template setSystemPropertiesAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setSystemPropertiesAndGetNextPointer
 
-method setInstanceCreateInfoAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
+method setInstanceCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setInstanceCreateInfoAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setInstanceCreateInfoAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
-template setInstanceCreateInfoAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setInstanceCreateInfoAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setInstanceCreateInfoAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
+template setInstanceCreateInfoAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setInstanceCreateInfoAndGetNextPointer
 
-method setSessionCreateAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
+method setSessionCreateAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setSessionCreateAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setSessionCreateAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
-template setSessionCreateAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setSessionCreateAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setSessionCreateAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
+template setSessionCreateAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setSessionCreateAndGetNextPointer
 
-method setSwapchainCreateInfoAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
+method setSwapchainCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setSwapchainCreateInfoAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
-template setSwapchainCreateInfoAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setSwapchainCreateInfoAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
+template setSwapchainCreateInfoAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setSwapchainCreateInfoAndGetNextPointer
 
-method setHandJointLocationsAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; handIndex: int32; nextPointer: pointer): uint64 {.base.} = (discard)
+method setHandJointLocationsAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; handIndex: int32; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setHandJointLocationsAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setHandJointLocationsAndGetNextPointer(p_args[0].decode(int32), p_args[1].decode(pointer)).encode(r_ret)
-template setHandJointLocationsAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setHandJointLocationsAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setHandJointLocationsAndGetNextPointer(p_args[0].decode(int32), p_args[1].decode(pointer)).encode(r_ret)
+template setHandJointLocationsAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setHandJointLocationsAndGetNextPointer
 
-method getCompositionLayerCount*(self: OpenXrExtensionWrapperExtension): int32 {.base.} = (discard)
+method getCompositionLayerCount*(self: OpenXRExtensionWrapperExtension): int32 {.base.} = (discard)
 proc getCompositionLayerCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getCompositionLayerCount().encode(r_ret)
-template getCompositionLayerCount_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayerCount
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getCompositionLayerCount().encode(r_ret)
+template getCompositionLayerCount_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayerCount
 
-method getCompositionLayer*(self: OpenXrExtensionWrapperExtension; index: int32): uint64 {.base.} = (discard)
+method getCompositionLayer*(self: OpenXRExtensionWrapperExtension; index: int32): uint64 {.base.} = (discard)
 proc getCompositionLayer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getCompositionLayer(p_args[0].decode(int32)).encode(r_ret)
-template getCompositionLayer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getCompositionLayer(p_args[0].decode(int32)).encode(r_ret)
+template getCompositionLayer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayer
 
-method getCompositionLayerOrder*(self: OpenXrExtensionWrapperExtension; index: int32): int32 {.base.} = (discard)
+method getCompositionLayerOrder*(self: OpenXRExtensionWrapperExtension; index: int32): int32 {.base.} = (discard)
 proc getCompositionLayerOrder(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getCompositionLayerOrder(p_args[0].decode(int32)).encode(r_ret)
-template getCompositionLayerOrder_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayerOrder
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getCompositionLayerOrder(p_args[0].decode(int32)).encode(r_ret)
+template getCompositionLayerOrder_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getCompositionLayerOrder
 
-method getSuggestedTrackerNames*(self: OpenXrExtensionWrapperExtension): PackedStringArray {.base.} = (discard)
+method getSuggestedTrackerNames*(self: OpenXRExtensionWrapperExtension): PackedStringArray {.base.} = (discard)
 proc getSuggestedTrackerNames(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getSuggestedTrackerNames().encode(r_ret)
-template getSuggestedTrackerNames_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getSuggestedTrackerNames
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getSuggestedTrackerNames().encode(r_ret)
+template getSuggestedTrackerNames_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getSuggestedTrackerNames
 
-method onRegisterMetadata*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onRegisterMetadata*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onRegisterMetadata(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onRegisterMetadata()
-template onRegisterMetadata_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onRegisterMetadata
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onRegisterMetadata()
+template onRegisterMetadata_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onRegisterMetadata
 
-method onBeforeInstanceCreated*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onBeforeInstanceCreated*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onBeforeInstanceCreated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onBeforeInstanceCreated()
-template onBeforeInstanceCreated_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onBeforeInstanceCreated
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onBeforeInstanceCreated()
+template onBeforeInstanceCreated_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onBeforeInstanceCreated
 
-method onInstanceCreated*(self: OpenXrExtensionWrapperExtension; instance: uint64): void {.base.} = (discard)
+method onInstanceCreated*(self: OpenXRExtensionWrapperExtension; instance: uint64): void {.base.} = (discard)
 proc onInstanceCreated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onInstanceCreated(p_args[0].decode(uint64))
-template onInstanceCreated_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onInstanceCreated
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onInstanceCreated(p_args[0].decode(uint64))
+template onInstanceCreated_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onInstanceCreated
 
-method onInstanceDestroyed*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onInstanceDestroyed*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onInstanceDestroyed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onInstanceDestroyed()
-template onInstanceDestroyed_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onInstanceDestroyed
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onInstanceDestroyed()
+template onInstanceDestroyed_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onInstanceDestroyed
 
-method onSessionCreated*(self: OpenXrExtensionWrapperExtension; session: uint64): void {.base.} = (discard)
+method onSessionCreated*(self: OpenXRExtensionWrapperExtension; session: uint64): void {.base.} = (discard)
 proc onSessionCreated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onSessionCreated(p_args[0].decode(uint64))
-template onSessionCreated_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onSessionCreated
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onSessionCreated(p_args[0].decode(uint64))
+template onSessionCreated_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onSessionCreated
 
-method onProcess*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onProcess*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onProcess(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onProcess()
-template onProcess_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onProcess
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onProcess()
+template onProcess_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onProcess
 
-method onPreRender*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onPreRender*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onPreRender(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onPreRender()
-template onPreRender_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onPreRender
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onPreRender()
+template onPreRender_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onPreRender
 
-method onMainSwapchainsCreated*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onMainSwapchainsCreated*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onMainSwapchainsCreated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onMainSwapchainsCreated()
-template onMainSwapchainsCreated_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onMainSwapchainsCreated
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onMainSwapchainsCreated()
+template onMainSwapchainsCreated_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onMainSwapchainsCreated
 
-method onSessionDestroyed*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onSessionDestroyed*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onSessionDestroyed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onSessionDestroyed()
-template onSessionDestroyed_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onSessionDestroyed
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onSessionDestroyed()
+template onSessionDestroyed_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onSessionDestroyed
 
-method onStateIdle*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateIdle*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateIdle(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateIdle()
-template onStateIdle_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateIdle
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateIdle()
+template onStateIdle_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateIdle
 
-method onStateReady*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateReady*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateReady(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateReady()
-template onStateReady_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateReady
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateReady()
+template onStateReady_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateReady
 
-method onStateSynchronized*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateSynchronized*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateSynchronized(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateSynchronized()
-template onStateSynchronized_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateSynchronized
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateSynchronized()
+template onStateSynchronized_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateSynchronized
 
-method onStateVisible*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateVisible*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateVisible(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateVisible()
-template onStateVisible_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateVisible
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateVisible()
+template onStateVisible_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateVisible
 
-method onStateFocused*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateFocused*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateFocused(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateFocused()
-template onStateFocused_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateFocused
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateFocused()
+template onStateFocused_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateFocused
 
-method onStateStopping*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateStopping*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateStopping(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateStopping()
-template onStateStopping_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateStopping
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateStopping()
+template onStateStopping_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateStopping
 
-method onStateLossPending*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateLossPending*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateLossPending(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateLossPending()
-template onStateLossPending_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateLossPending
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateLossPending()
+template onStateLossPending_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateLossPending
 
-method onStateExiting*(self: OpenXrExtensionWrapperExtension): void {.base.} = (discard)
+method onStateExiting*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onStateExiting(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onStateExiting()
-template onStateExiting_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onStateExiting
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onStateExiting()
+template onStateExiting_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onStateExiting
 
-method onEventPolled*(self: OpenXrExtensionWrapperExtension; event: pointer): bool {.base.} = (discard)
+method onEventPolled*(self: OpenXRExtensionWrapperExtension; event: pointer): bool {.base.} = (discard)
 proc onEventPolled(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onEventPolled(p_args[0].decode(pointer)).encode(r_ret)
-template onEventPolled_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onEventPolled
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onEventPolled(p_args[0].decode(pointer)).encode(r_ret)
+template onEventPolled_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onEventPolled
 
-method setViewportCompositionLayerAndGetNextPointer*(self: OpenXrExtensionWrapperExtension; layer: pointer; propertyValues: Dictionary; nextPointer: pointer): uint64 {.base.} = (discard)
+method setViewportCompositionLayerAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; layer: pointer; propertyValues: Dictionary; nextPointer: pointer): uint64 {.base.} = (discard)
 proc setViewportCompositionLayerAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).setViewportCompositionLayerAndGetNextPointer(p_args[0].decode(pointer), p_args[1].decode(Dictionary), p_args[2].decode(pointer)).encode(r_ret)
-template setViewportCompositionLayerAndGetNextPointer_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = setViewportCompositionLayerAndGetNextPointer
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setViewportCompositionLayerAndGetNextPointer(p_args[0].decode(pointer), p_args[1].decode(Dictionary), p_args[2].decode(pointer)).encode(r_ret)
+template setViewportCompositionLayerAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setViewportCompositionLayerAndGetNextPointer
 
-method getViewportCompositionLayerExtensionProperties*(self: OpenXrExtensionWrapperExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getViewportCompositionLayerExtensionProperties*(self: OpenXRExtensionWrapperExtension): TypedArray[Dictionary] {.base.} = (discard)
 proc getViewportCompositionLayerExtensionProperties(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getViewportCompositionLayerExtensionProperties().encode(r_ret)
-template getViewportCompositionLayerExtensionProperties_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getViewportCompositionLayerExtensionProperties
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getViewportCompositionLayerExtensionProperties().encode(r_ret)
+template getViewportCompositionLayerExtensionProperties_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getViewportCompositionLayerExtensionProperties
 
-method getViewportCompositionLayerExtensionPropertyDefaults*(self: OpenXrExtensionWrapperExtension): Dictionary {.base.} = (discard)
+method getViewportCompositionLayerExtensionPropertyDefaults*(self: OpenXRExtensionWrapperExtension): Dictionary {.base.} = (discard)
 proc getViewportCompositionLayerExtensionPropertyDefaults(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).getViewportCompositionLayerExtensionPropertyDefaults().encode(r_ret)
-template getViewportCompositionLayerExtensionPropertyDefaults_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = getViewportCompositionLayerExtensionPropertyDefaults
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getViewportCompositionLayerExtensionPropertyDefaults().encode(r_ret)
+template getViewportCompositionLayerExtensionPropertyDefaults_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = getViewportCompositionLayerExtensionPropertyDefaults
 
-method onViewportCompositionLayerDestroyed*(self: OpenXrExtensionWrapperExtension; layer: pointer): void {.base.} = (discard)
+method onViewportCompositionLayerDestroyed*(self: OpenXRExtensionWrapperExtension; layer: pointer): void {.base.} = (discard)
 proc onViewportCompositionLayerDestroyed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[OpenXrExtensionWrapperExtension](p_instance).onViewportCompositionLayerDestroyed(p_args[0].decode(pointer))
-template onViewportCompositionLayerDestroyed_bind*(_: typedesc[OpenXrExtensionWrapperExtension]): ClassCallVirtual = onViewportCompositionLayerDestroyed
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onViewportCompositionLayerDestroyed(p_args[0].decode(pointer))
+template onViewportCompositionLayerDestroyed_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onViewportCompositionLayerDestroyed
 
-proc getOpenxrApi*(self: OpenXrExtensionWrapperExtension): gdref OpenXrapiExtension =
-  expandMethodBind(className OpenXrExtensionWrapperExtension, "get_openxr_api", 1637791613)
-  var ret: encoded gdref OpenXrapiExtension
+proc getOpenxrApi*(self: OpenXRExtensionWrapperExtension): gdref OpenXRAPIExtension =
+  expandMethodBind(className OpenXRExtensionWrapperExtension, "get_openxr_api", 1637791613)
+  var ret: encoded gdref OpenXRAPIExtension
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(gdref OpenXrapiExtension)
+  (addr ret).decode_result(gdref OpenXRAPIExtension)
 
-proc registerExtensionWrapper*(self: OpenXrExtensionWrapperExtension): void =
-  expandMethodBind(className OpenXrExtensionWrapperExtension, "register_extension_wrapper", 3218959716)
+proc registerExtensionWrapper*(self: OpenXRExtensionWrapperExtension): void =
+  expandMethodBind(className OpenXRExtensionWrapperExtension, "register_extension_wrapper", 3218959716)
   methodbind.ptrcall(self, nil)
 
-const OpenXrExtensionWrapperExtension_vmap =
+const OpenXRExtensionWrapperExtension_vmap =
   Object.vmap.concat toTable {
     "getrequestedextensions" : "_get_requested_extensions",
     "setsystempropertiesandgetnextpointer" : "_set_system_properties_and_get_next_pointer",
@@ -209,4 +209,4 @@ const OpenXrExtensionWrapperExtension_vmap =
     "getviewportcompositionlayerextensionpropertydefaults" : "_get_viewport_composition_layer_extension_property_defaults",
     "onviewportcompositionlayerdestroyed" : "_on_viewport_composition_layer_destroyed",
     }
-template vmap*(_: typedesc[OpenXrExtensionWrapperExtension]): Table[string, string] = OpenXrExtensionWrapperExtension_vmap
+template vmap*(_: typedesc[OpenXRExtensionWrapperExtension]): Table[string, string] = OpenXRExtensionWrapperExtension_vmap

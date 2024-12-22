@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
-proc connectToUrl*(self: WebSocketPeer; url: String; tlsClientOptions: gdref TlsOptions = default gdref TlsOptions): Error =
+proc connectToUrl*(self: WebSocketPeer; url: String; tlsClientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketPeer, "connect_to_url", 1966198364)
   var `?param` = [getPtr url, getPtr tlsClientOptions]
   var ret: encoded Error

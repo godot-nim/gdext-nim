@@ -113,11 +113,11 @@ proc optimizeIndicesForCache*(self: SurfaceTool): void =
   expandMethodBind(className SurfaceTool, "optimize_indices_for_cache", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc getAabb*(self: SurfaceTool): Aabb =
+proc getAabb*(self: SurfaceTool): AABB =
   expandMethodBind(className SurfaceTool, "get_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc generateLod*(self: SurfaceTool; ndThreshold: Float; targetIndexCount: int32 = 3): PackedInt32Array =
   expandMethodBind(className SurfaceTool, "generate_lod", 1938056459)

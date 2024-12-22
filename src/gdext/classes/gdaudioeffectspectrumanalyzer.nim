@@ -26,16 +26,16 @@ proc getTapBackPos*(self: AudioEffectSpectrumAnalyzer): Float =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Float)
 
-proc setFftSize*(self: AudioEffectSpectrumAnalyzer; size: AudioEffectSpectrumAnalyzer_FftSize): void =
+proc setFftSize*(self: AudioEffectSpectrumAnalyzer; size: AudioEffectSpectrumAnalyzer_FFTSize): void =
   expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_fft_size", 1202879215)
   var `?param` = [getPtr size]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getFftSize*(self: AudioEffectSpectrumAnalyzer): AudioEffectSpectrumAnalyzer_FftSize =
+proc getFftSize*(self: AudioEffectSpectrumAnalyzer): AudioEffectSpectrumAnalyzer_FFTSize =
   expandMethodBind(className AudioEffectSpectrumAnalyzer, "get_fft_size", 3925405343)
-  var ret: encoded AudioEffectSpectrumAnalyzer_FftSize
+  var ret: encoded AudioEffectSpectrumAnalyzer_FFTSize
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(AudioEffectSpectrumAnalyzer_FftSize)
+  (addr ret).decode_result(AudioEffectSpectrumAnalyzer_FFTSize)
 
 template bufferLength*(self: AudioEffectSpectrumAnalyzer): untyped = self.getBufferLength()
 template `bufferLength=`*(self: AudioEffectSpectrumAnalyzer; value) = self.setBufferLength(value)

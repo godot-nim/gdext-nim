@@ -5,32 +5,32 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector2_AxisX*: int = 0
-template AxisX*(_: typedesc[Vector2]): int = Vector2_AxisX
+const Vector2_AXIS_X*: int = 0
+template AXIS_X*(_: typedesc[Vector2]): int = Vector2_AXIS_X
 
-const Vector2_AxisY*: int = 1
-template AxisY*(_: typedesc[Vector2]): int = Vector2_AxisY
+const Vector2_AXIS_Y*: int = 1
+template AXIS_Y*(_: typedesc[Vector2]): int = Vector2_AXIS_Y
 
-const Vector2_Zero*: Vector2 = vector(0, 0)
-template Zero*(_: typedesc[Vector2]): Vector2 = Vector2_Zero
+const Vector2_ZERO*: Vector2 = vector(0, 0)
+template ZERO*(_: typedesc[Vector2]): Vector2 = Vector2_ZERO
 
-const Vector2_One*: Vector2 = vector(1, 1)
-template One*(_: typedesc[Vector2]): Vector2 = Vector2_One
+const Vector2_ONE*: Vector2 = vector(1, 1)
+template ONE*(_: typedesc[Vector2]): Vector2 = Vector2_ONE
 
-const Vector2_Inf*: Vector2 = vector(Inf, Inf)
-template Inf*(_: typedesc[Vector2]): Vector2 = Vector2_Inf
+const Vector2_INF*: Vector2 = vector(Inf, Inf)
+template INF*(_: typedesc[Vector2]): Vector2 = Vector2_INF
 
-const Vector2_Left*: Vector2 = vector(-1, 0)
-template Left*(_: typedesc[Vector2]): Vector2 = Vector2_Left
+const Vector2_LEFT*: Vector2 = vector(-1, 0)
+template LEFT*(_: typedesc[Vector2]): Vector2 = Vector2_LEFT
 
-const Vector2_Right*: Vector2 = vector(1, 0)
-template Right*(_: typedesc[Vector2]): Vector2 = Vector2_Right
+const Vector2_RIGHT*: Vector2 = vector(1, 0)
+template RIGHT*(_: typedesc[Vector2]): Vector2 = Vector2_RIGHT
 
-const Vector2_Up*: Vector2 = vector(0, -1)
-template Up*(_: typedesc[Vector2]): Vector2 = Vector2_Up
+const Vector2_UP*: Vector2 = vector(0, -1)
+template UP*(_: typedesc[Vector2]): Vector2 = Vector2_UP
 
-const Vector2_Down*: Vector2 = vector(0, 1)
-template Down*(_: typedesc[Vector2]): Vector2 = Vector2_Down
+const Vector2_DOWN*: Vector2 = vector(0, 1)
+template DOWN*(_: typedesc[Vector2]): Vector2 = Vector2_DOWN
 
 var `==(Vector2 Variant)`: PtrOperatorEvaluator
 var `!=(Vector2 Variant)`: PtrOperatorEvaluator

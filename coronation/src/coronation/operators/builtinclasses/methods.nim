@@ -76,7 +76,7 @@ proc weave_procdef*(entry: BuiltinClassMethodEntry): Cloth =
       &"{entry.containerKey}({p_self}, {p_args}, {p_result}, {entry.args.len})"
 
 proc weave_methods*(json: JsonBuiltinClass): Cloth =
-  let typesym = json.name.scan.convert(TypeSym)
+  let typesym = json.name.convert(TypeSym)
 
   proc extract_self(it: JsonBuiltinClassMethod): RenderableSelfArgument =
     RenderableSelfArgument(

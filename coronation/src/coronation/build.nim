@@ -11,7 +11,6 @@ import submodules/filesystem/[
   NimSource,
   Textfile,
 ]
-import submodules/wordropes
 import submodules/semanticstrings
 
 import operators/enums
@@ -83,11 +82,11 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
       let localenums = weave "localenums".nim:
         weave margin:
           for builtin in api.builtin_classes:
-            let sym = builtin.name.scan.convert(TypeSym)
+            let sym = builtin.name.convert(TypeSym)
             for localenum in builtin.enums.get(@[]):
               weave with_registerDB localenum.convert(sym)
           for class in api.classes:
-            let sym = class.name.scan.convert(TypeSym)
+            let sym = class.name.convert(TypeSym)
             for localenum in class.enums.get(@[]):
               weave with_registerDB localenum.convert(sym)
 
@@ -125,7 +124,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               weave_constructor builtin
 
         for builtin in api.builtin_classes:
-          let sym = builtin.name.scan.convert(TypeSym)
+          let sym = builtin.name.convert(TypeSym)
           if not getignore(sym).module:
             weave ($sym.convert(ModuleSym)).nim
                 .import(corona_builtinclasses)
@@ -156,10 +155,13 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               # if classDB[sym].json.is_refcounted:
               #   &"  {sym}* = ref object of {base}"
               # else:
-              &"  {sym}* = ptr object of {base}"
+              &"  {classDB[sym].json.name}* = ptr object of {classDB[base].json.name}"
           weave multiline:
             for base, sym in inheritanceDB.hierarchical:
-              &"template EngineClass*(_: typedesc[{sym}]): typedesc = {sym}"
+              let name = classDB[sym].json.name
+              &"template EngineClass*(_: typedesc[{name}]): typedesc = {name}"
+          weave multiline:
+            "type GodotThread* = Thread"
 
     # layout "classes".nim:
     let classes = layout "classes".dir:

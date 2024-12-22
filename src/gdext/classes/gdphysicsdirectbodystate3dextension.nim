@@ -189,7 +189,7 @@ proc getContactLocalVelocityAtPosition(p_instance: ClassInstancePtr; p_args: ptr
   errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalVelocityAtPosition(p_args[0].decode(int32)).encode(r_ret)
 template getContactLocalVelocityAtPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactLocalVelocityAtPosition
 
-method getContactCollider*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Rid {.base.} = (discard)
+method getContactCollider*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): RID {.base.} = (discard)
 proc getContactCollider(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactCollider(p_args[0].decode(int32)).encode(r_ret)
 template getContactCollider_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactCollider

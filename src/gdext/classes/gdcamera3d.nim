@@ -260,17 +260,17 @@ proc isPositionInFrustum*(self: Camera3D; worldPoint: Vector3): bool =
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc getCameraRid*(self: Camera3D): Rid =
+proc getCameraRid*(self: Camera3D): RID =
   expandMethodBind(className Camera3D, "get_camera_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
-proc getPyramidShapeRid*(self: Camera3D): Rid =
+proc getPyramidShapeRid*(self: Camera3D): RID =
   expandMethodBind(className Camera3D, "get_pyramid_shape_rid", 529393457)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setCullMaskValue*(self: Camera3D; layerNumber: int32; value: bool): void =
   expandMethodBind(className Camera3D, "set_cull_mask_value", 300928843)

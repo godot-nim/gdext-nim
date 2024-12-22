@@ -42,11 +42,11 @@ proc getCollider*(self: RayCast2D): Object =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Object)
 
-proc getColliderRid*(self: RayCast2D): Rid =
+proc getColliderRid*(self: RayCast2D): RID =
   expandMethodBind(className RayCast2D, "get_collider_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getColliderShape*(self: RayCast2D): int32 =
   expandMethodBind(className RayCast2D, "get_collider_shape", 3905245786)
@@ -66,7 +66,7 @@ proc getCollisionNormal*(self: RayCast2D): Vector2 =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2)
 
-proc addExceptionRid*(self: RayCast2D; rid: Rid): void =
+proc addExceptionRid*(self: RayCast2D; rid: RID): void =
   expandMethodBind(className RayCast2D, "add_exception_rid", 2722037293)
   var `?param` = [getPtr rid]
   methodbind.ptrcall(self, addr `?param`[0])
@@ -76,7 +76,7 @@ proc addException*(self: RayCast2D; node: CollisionObject2D): void =
   var `?param` = [getPtr node]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc removeExceptionRid*(self: RayCast2D; rid: Rid): void =
+proc removeExceptionRid*(self: RayCast2D; rid: RID): void =
   expandMethodBind(className RayCast2D, "remove_exception_rid", 2722037293)
   var `?param` = [getPtr rid]
   methodbind.ptrcall(self, addr `?param`[0])

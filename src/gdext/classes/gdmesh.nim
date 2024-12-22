@@ -69,7 +69,7 @@ proc setBlendShapeName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[
   errproof: cast[Mesh](p_instance).setBlendShapeName(p_args[0].decode(int32), p_args[1].decode(StringName))
 template setBlendShapeName_bind*(_: typedesc[Mesh]): ClassCallVirtual = setBlendShapeName
 
-method getAabb*(self: Mesh): Aabb {.base.} = (discard)
+method getAabb*(self: Mesh): AABB {.base.} = (discard)
 proc getAabb(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[Mesh](p_instance).getAabb().encode(r_ret)
 template getAabb_bind*(_: typedesc[Mesh]): ClassCallVirtual = getAabb
@@ -85,11 +85,11 @@ proc getLightmapSizeHint*(self: Mesh): Vector2i =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Vector2i)
 
-proc getAabb*(self: Mesh): Aabb =
+proc getAabb*(self: Mesh): AABB =
   expandMethodBind(className Mesh, "get_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc getFaces*(self: Mesh): PackedVector3Array =
   expandMethodBind(className Mesh, "get_faces", 497664490)

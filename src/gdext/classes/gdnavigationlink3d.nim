@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
-proc getRid*(self: NavigationLink3D): Rid =
+proc getRid*(self: NavigationLink3D): RID =
   expandMethodBind(className NavigationLink3D, "get_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setEnabled*(self: NavigationLink3D; enabled: bool): void =
   expandMethodBind(className NavigationLink3D, "set_enabled", 2586408642)

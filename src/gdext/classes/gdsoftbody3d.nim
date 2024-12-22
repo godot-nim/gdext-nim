@@ -4,11 +4,11 @@ import gdext/coronation/header/classes
 
 import gdmeshinstance3d; export gdmeshinstance3d
 
-proc getPhysicsRid*(self: SoftBody3D): Rid =
+proc getPhysicsRid*(self: SoftBody3D): RID =
   expandMethodBind(className SoftBody3D, "get_physics_rid", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setCollisionMask*(self: SoftBody3D; collisionMask: uint32): void =
   expandMethodBind(className SoftBody3D, "set_collision_mask", 1286410249)

@@ -29,7 +29,7 @@ proc getViewProjection(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[
   errproof: cast[RenderSceneDataExtension](p_instance).getViewProjection(p_args[0].decode(uint32)).encode(r_ret)
 template getViewProjection_bind*(_: typedesc[RenderSceneDataExtension]): ClassCallVirtual = getViewProjection
 
-method getUniformBuffer*(self: RenderSceneDataExtension): Rid {.base.} = (discard)
+method getUniformBuffer*(self: RenderSceneDataExtension): RID {.base.} = (discard)
 proc getUniformBuffer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[RenderSceneDataExtension](p_instance).getUniformBuffer().encode(r_ret)
 template getUniformBuffer_bind*(_: typedesc[RenderSceneDataExtension]): ClassCallVirtual = getUniformBuffer

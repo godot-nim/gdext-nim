@@ -124,16 +124,16 @@ proc lightmapUnwrap*(self: ArrayMesh; transform: Transform3D; texelSize: Float):
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(Error)
 
-proc setCustomAabb*(self: ArrayMesh; aabb: Aabb): void =
+proc setCustomAabb*(self: ArrayMesh; aabb: AABB): void =
   expandMethodBind(className ArrayMesh, "set_custom_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCustomAabb*(self: ArrayMesh): Aabb =
+proc getCustomAabb*(self: ArrayMesh): AABB =
   expandMethodBind(className ArrayMesh, "get_custom_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc setShadowMesh*(self: ArrayMesh; mesh: gdref ArrayMesh): void =
   expandMethodBind(className ArrayMesh, "set_shadow_mesh", 3377897901)

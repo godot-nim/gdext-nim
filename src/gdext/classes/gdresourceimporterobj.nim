@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
 
-const ResourceImporterObj_vmap =
+const ResourceImporterOBJ_vmap =
   ResourceImporter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceImporterObj]): Table[string, string] = ResourceImporterObj_vmap
+template vmap*(_: typedesc[ResourceImporterOBJ]): Table[string, string] = ResourceImporterOBJ_vmap

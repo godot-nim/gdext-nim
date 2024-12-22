@@ -26,16 +26,16 @@ proc getMeshArrays*(self: PrimitiveMesh): Array =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(Array)
 
-proc setCustomAabb*(self: PrimitiveMesh; aabb: Aabb): void =
+proc setCustomAabb*(self: PrimitiveMesh; aabb: AABB): void =
   expandMethodBind(className PrimitiveMesh, "set_custom_aabb", 259215842)
   var `?param` = [getPtr aabb]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCustomAabb*(self: PrimitiveMesh): Aabb =
+proc getCustomAabb*(self: PrimitiveMesh): AABB =
   expandMethodBind(className PrimitiveMesh, "get_custom_aabb", 1068685055)
-  var ret: encoded Aabb
+  var ret: encoded AABB
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Aabb)
+  (addr ret).decode_result(AABB)
 
 proc setFlipFaces*(self: PrimitiveMesh; flipFaces: bool): void =
   expandMethodBind(className PrimitiveMesh, "set_flip_faces", 2586408642)

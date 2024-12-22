@@ -101,14 +101,14 @@ proc setCellsTerrainPath*(self: TileMapLayer; path: TypedArray[Vector2i]; terrai
   var `?param` = [getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc hasBodyRid*(self: TileMapLayer; body: Rid): bool =
+proc hasBodyRid*(self: TileMapLayer; body: RID): bool =
   expandMethodBind(className TileMapLayer, "has_body_rid", 4155700596)
   var `?param` = [getPtr body]
   var ret: encoded bool
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(bool)
 
-proc getCoordsForBodyRid*(self: TileMapLayer; body: Rid): Vector2i =
+proc getCoordsForBodyRid*(self: TileMapLayer; body: RID): Vector2i =
   expandMethodBind(className TileMapLayer, "get_coords_for_body_rid", 733700038)
   var `?param` = [getPtr body]
   var ret: encoded Vector2i
@@ -268,16 +268,16 @@ proc isNavigationEnabled*(self: TileMapLayer): bool =
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setNavigationMap*(self: TileMapLayer; map: Rid): void =
+proc setNavigationMap*(self: TileMapLayer; map: RID): void =
   expandMethodBind(className TileMapLayer, "set_navigation_map", 2722037293)
   var `?param` = [getPtr map]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNavigationMap*(self: TileMapLayer): Rid =
+proc getNavigationMap*(self: TileMapLayer): RID =
   expandMethodBind(className TileMapLayer, "get_navigation_map", 2944877500)
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc setNavigationVisibilityMode*(self: TileMapLayer; showNavigation: TileMapLayer_DebugVisibilityMode): void =
   expandMethodBind(className TileMapLayer, "set_navigation_visibility_mode", 3508099847)

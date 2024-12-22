@@ -70,12 +70,12 @@ proc getColliderId*(self: KinematicCollision3D; collisionIndex: int32 = 0): uint
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
   (addr ret).decode_result(uint64)
 
-proc getColliderRid*(self: KinematicCollision3D; collisionIndex: int32 = 0): Rid =
+proc getColliderRid*(self: KinematicCollision3D; collisionIndex: int32 = 0): RID =
   expandMethodBind(className KinematicCollision3D, "get_collider_rid", 1231817359)
   var `?param` = [getPtr collisionIndex]
-  var ret: encoded Rid
+  var ret: encoded RID
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(Rid)
+  (addr ret).decode_result(RID)
 
 proc getColliderShape*(self: KinematicCollision3D; collisionIndex: int32 = 0): Object =
   expandMethodBind(className KinematicCollision3D, "get_collider_shape", 2639523548)

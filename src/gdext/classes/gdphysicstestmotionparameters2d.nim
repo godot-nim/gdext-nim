@@ -48,13 +48,13 @@ proc setCollideSeparationRayEnabled*(self: PhysicsTestMotionParameters2D; enable
   var `?param` = [getPtr enabled]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getExcludeBodies*(self: PhysicsTestMotionParameters2D): TypedArray[Rid] =
+proc getExcludeBodies*(self: PhysicsTestMotionParameters2D): TypedArray[RID] =
   expandMethodBind(className PhysicsTestMotionParameters2D, "get_exclude_bodies", 3995934104)
-  var ret: encoded TypedArray[Rid]
+  var ret: encoded TypedArray[RID]
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(TypedArray[Rid])
+  (addr ret).decode_result(TypedArray[RID])
 
-proc setExcludeBodies*(self: PhysicsTestMotionParameters2D; excludeList: TypedArray[Rid]): void =
+proc setExcludeBodies*(self: PhysicsTestMotionParameters2D; excludeList: TypedArray[RID]): void =
   expandMethodBind(className PhysicsTestMotionParameters2D, "set_exclude_bodies", 381264803)
   var `?param` = [getPtr excludeList]
   methodbind.ptrcall(self, addr `?param`[0])

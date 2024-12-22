@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdaudioeffecteq; export gdaudioeffecteq
 
-const AudioEffectEq6_vmap =
-  AudioEffectEq.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectEq6]): Table[string, string] = AudioEffectEq6_vmap
+const AudioEffectEQ6_vmap =
+  AudioEffectEQ.vmap.concat initTable[string, string]()
+template vmap*(_: typedesc[AudioEffectEQ6]): Table[string, string] = AudioEffectEQ6_vmap

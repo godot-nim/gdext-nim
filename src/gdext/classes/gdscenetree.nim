@@ -238,17 +238,17 @@ proc unloadCurrentScene*(self: SceneTree): void =
   expandMethodBind(className SceneTree, "unload_current_scene", 3218959716)
   methodbind.ptrcall(self, nil)
 
-proc setMultiplayer*(self: SceneTree; multiplayer: gdref MultiplayerApi; rootPath: NodePath = nodePath()): void =
+proc setMultiplayer*(self: SceneTree; multiplayer: gdref MultiplayerAPI; rootPath: NodePath = nodePath()): void =
   expandMethodBind(className SceneTree, "set_multiplayer", 2385607013)
   var `?param` = [getPtr multiplayer, getPtr rootPath]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMultiplayer*(self: SceneTree; forPath: NodePath = nodePath()): gdref MultiplayerApi =
+proc getMultiplayer*(self: SceneTree; forPath: NodePath = nodePath()): gdref MultiplayerAPI =
   expandMethodBind(className SceneTree, "get_multiplayer", 3453401404)
   var `?param` = [getPtr forPath]
-  var ret: encoded gdref MultiplayerApi
+  var ret: encoded gdref MultiplayerAPI
   methodbind.ptrcall(self, addr `?param`[0], addr ret)
-  (addr ret).decode_result(gdref MultiplayerApi)
+  (addr ret).decode_result(gdref MultiplayerAPI)
 
 proc setMultiplayerPollEnabled*(self: SceneTree; enabled: bool): void =
   expandMethodBind(className SceneTree, "set_multiplayer_poll_enabled", 2586408642)

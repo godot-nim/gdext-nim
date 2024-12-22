@@ -4,216 +4,216 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc getBufferView*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_buffer_view", 2455072627)
+proc getBufferView*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_buffer_view", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setBufferView*(self: GltfAccessor; bufferView: int32): void =
-  expandMethodBind(className GltfAccessor, "set_buffer_view", 1286410249)
+proc setBufferView*(self: GLTFAccessor; bufferView: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_buffer_view", 1286410249)
   var `?param` = [getPtr bufferView]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getByteOffset*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_byte_offset", 2455072627)
+proc getByteOffset*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_byte_offset", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setByteOffset*(self: GltfAccessor; byteOffset: int32): void =
-  expandMethodBind(className GltfAccessor, "set_byte_offset", 1286410249)
+proc setByteOffset*(self: GLTFAccessor; byteOffset: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_byte_offset", 1286410249)
   var `?param` = [getPtr byteOffset]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getComponentType*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_component_type", 2455072627)
+proc getComponentType*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_component_type", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setComponentType*(self: GltfAccessor; componentType: int32): void =
-  expandMethodBind(className GltfAccessor, "set_component_type", 1286410249)
+proc setComponentType*(self: GLTFAccessor; componentType: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_component_type", 1286410249)
   var `?param` = [getPtr componentType]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getNormalized*(self: GltfAccessor): bool =
-  expandMethodBind(className GltfAccessor, "get_normalized", 2240911060)
+proc getNormalized*(self: GLTFAccessor): bool =
+  expandMethodBind(className GLTFAccessor, "get_normalized", 2240911060)
   var ret: encoded bool
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(bool)
 
-proc setNormalized*(self: GltfAccessor; normalized: bool): void =
-  expandMethodBind(className GltfAccessor, "set_normalized", 2586408642)
+proc setNormalized*(self: GLTFAccessor; normalized: bool): void =
+  expandMethodBind(className GLTFAccessor, "set_normalized", 2586408642)
   var `?param` = [getPtr normalized]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getCount*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_count", 2455072627)
+proc getCount*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_count", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setCount*(self: GltfAccessor; count: int32): void =
-  expandMethodBind(className GltfAccessor, "set_count", 1286410249)
+proc setCount*(self: GLTFAccessor; count: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_count", 1286410249)
   var `?param` = [getPtr count]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getAccessorType*(self: GltfAccessor): GltfAccessor_GltfAccessorType =
-  expandMethodBind(className GltfAccessor, "get_accessor_type", 679305214)
-  var ret: encoded GltfAccessor_GltfAccessorType
+proc getAccessorType*(self: GLTFAccessor): GLTFAccessor_GLTFAccessorType =
+  expandMethodBind(className GLTFAccessor, "get_accessor_type", 679305214)
+  var ret: encoded GLTFAccessor_GLTFAccessorType
   methodbind.ptrcall(self, nil, addr ret)
-  (addr ret).decode_result(GltfAccessor_GltfAccessorType)
+  (addr ret).decode_result(GLTFAccessor_GLTFAccessorType)
 
-proc setAccessorType*(self: GltfAccessor; accessorType: GltfAccessor_GltfAccessorType): void =
-  expandMethodBind(className GltfAccessor, "set_accessor_type", 2347728198)
+proc setAccessorType*(self: GLTFAccessor; accessorType: GLTFAccessor_GLTFAccessorType): void =
+  expandMethodBind(className GLTFAccessor, "set_accessor_type", 2347728198)
   var `?param` = [getPtr accessorType]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getType*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_type", 2455072627)
+proc getType*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_type", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setType*(self: GltfAccessor; `type`: int32): void =
-  expandMethodBind(className GltfAccessor, "set_type", 1286410249)
+proc setType*(self: GLTFAccessor; `type`: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_type", 1286410249)
   var `?param` = [getPtr `type`]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMin*(self: GltfAccessor): PackedFloat64Array =
-  expandMethodBind(className GltfAccessor, "get_min", 148677866)
+proc getMin*(self: GLTFAccessor): PackedFloat64Array =
+  expandMethodBind(className GLTFAccessor, "get_min", 148677866)
   var ret: encoded PackedFloat64Array
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedFloat64Array)
 
-proc setMin*(self: GltfAccessor; min: PackedFloat64Array): void =
-  expandMethodBind(className GltfAccessor, "set_min", 2576592201)
+proc setMin*(self: GLTFAccessor; min: PackedFloat64Array): void =
+  expandMethodBind(className GLTFAccessor, "set_min", 2576592201)
   var `?param` = [getPtr min]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getMax*(self: GltfAccessor): PackedFloat64Array =
-  expandMethodBind(className GltfAccessor, "get_max", 148677866)
+proc getMax*(self: GLTFAccessor): PackedFloat64Array =
+  expandMethodBind(className GLTFAccessor, "get_max", 148677866)
   var ret: encoded PackedFloat64Array
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(PackedFloat64Array)
 
-proc setMax*(self: GltfAccessor; max: PackedFloat64Array): void =
-  expandMethodBind(className GltfAccessor, "set_max", 2576592201)
+proc setMax*(self: GLTFAccessor; max: PackedFloat64Array): void =
+  expandMethodBind(className GLTFAccessor, "set_max", 2576592201)
   var `?param` = [getPtr max]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseCount*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_count", 2455072627)
+proc getSparseCount*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_count", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseCount*(self: GltfAccessor; sparseCount: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_count", 1286410249)
+proc setSparseCount*(self: GLTFAccessor; sparseCount: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_count", 1286410249)
   var `?param` = [getPtr sparseCount]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseIndicesBufferView*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_indices_buffer_view", 2455072627)
+proc getSparseIndicesBufferView*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_indices_buffer_view", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseIndicesBufferView*(self: GltfAccessor; sparseIndicesBufferView: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_indices_buffer_view", 1286410249)
+proc setSparseIndicesBufferView*(self: GLTFAccessor; sparseIndicesBufferView: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_indices_buffer_view", 1286410249)
   var `?param` = [getPtr sparseIndicesBufferView]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseIndicesByteOffset*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_indices_byte_offset", 2455072627)
+proc getSparseIndicesByteOffset*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_indices_byte_offset", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseIndicesByteOffset*(self: GltfAccessor; sparseIndicesByteOffset: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_indices_byte_offset", 1286410249)
+proc setSparseIndicesByteOffset*(self: GLTFAccessor; sparseIndicesByteOffset: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_indices_byte_offset", 1286410249)
   var `?param` = [getPtr sparseIndicesByteOffset]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseIndicesComponentType*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_indices_component_type", 2455072627)
+proc getSparseIndicesComponentType*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_indices_component_type", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseIndicesComponentType*(self: GltfAccessor; sparseIndicesComponentType: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_indices_component_type", 1286410249)
+proc setSparseIndicesComponentType*(self: GLTFAccessor; sparseIndicesComponentType: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_indices_component_type", 1286410249)
   var `?param` = [getPtr sparseIndicesComponentType]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseValuesBufferView*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_values_buffer_view", 2455072627)
+proc getSparseValuesBufferView*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_values_buffer_view", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseValuesBufferView*(self: GltfAccessor; sparseValuesBufferView: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_values_buffer_view", 1286410249)
+proc setSparseValuesBufferView*(self: GLTFAccessor; sparseValuesBufferView: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_values_buffer_view", 1286410249)
   var `?param` = [getPtr sparseValuesBufferView]
   methodbind.ptrcall(self, addr `?param`[0])
 
-proc getSparseValuesByteOffset*(self: GltfAccessor): int32 =
-  expandMethodBind(className GltfAccessor, "get_sparse_values_byte_offset", 2455072627)
+proc getSparseValuesByteOffset*(self: GLTFAccessor): int32 =
+  expandMethodBind(className GLTFAccessor, "get_sparse_values_byte_offset", 2455072627)
   var ret: encoded int32
   methodbind.ptrcall(self, nil, addr ret)
   (addr ret).decode_result(int32)
 
-proc setSparseValuesByteOffset*(self: GltfAccessor; sparseValuesByteOffset: int32): void =
-  expandMethodBind(className GltfAccessor, "set_sparse_values_byte_offset", 1286410249)
+proc setSparseValuesByteOffset*(self: GLTFAccessor; sparseValuesByteOffset: int32): void =
+  expandMethodBind(className GLTFAccessor, "set_sparse_values_byte_offset", 1286410249)
   var `?param` = [getPtr sparseValuesByteOffset]
   methodbind.ptrcall(self, addr `?param`[0])
 
-template bufferView*(self: GltfAccessor): untyped = self.getBufferView()
-template `bufferView=`*(self: GltfAccessor; value) = self.setBufferView(value)
+template bufferView*(self: GLTFAccessor): untyped = self.getBufferView()
+template `bufferView=`*(self: GLTFAccessor; value) = self.setBufferView(value)
 
-template byteOffset*(self: GltfAccessor): untyped = self.getByteOffset()
-template `byteOffset=`*(self: GltfAccessor; value) = self.setByteOffset(value)
+template byteOffset*(self: GLTFAccessor): untyped = self.getByteOffset()
+template `byteOffset=`*(self: GLTFAccessor; value) = self.setByteOffset(value)
 
-template componentType*(self: GltfAccessor): untyped = self.getComponentType()
-template `componentType=`*(self: GltfAccessor; value) = self.setComponentType(value)
+template componentType*(self: GLTFAccessor): untyped = self.getComponentType()
+template `componentType=`*(self: GLTFAccessor; value) = self.setComponentType(value)
 
-template normalized*(self: GltfAccessor): untyped = self.getNormalized()
-template `normalized=`*(self: GltfAccessor; value) = self.setNormalized(value)
+template normalized*(self: GLTFAccessor): untyped = self.getNormalized()
+template `normalized=`*(self: GLTFAccessor; value) = self.setNormalized(value)
 
-template count*(self: GltfAccessor): untyped = self.getCount()
-template `count=`*(self: GltfAccessor; value) = self.setCount(value)
+template count*(self: GLTFAccessor): untyped = self.getCount()
+template `count=`*(self: GLTFAccessor; value) = self.setCount(value)
 
-template accessorType*(self: GltfAccessor): untyped = self.getAccessorType()
-template `accessorType=`*(self: GltfAccessor; value) = self.setAccessorType(value)
+template accessorType*(self: GLTFAccessor): untyped = self.getAccessorType()
+template `accessorType=`*(self: GLTFAccessor; value) = self.setAccessorType(value)
 
-template `type`*(self: GltfAccessor): untyped = self.getType()
-template `type=`*(self: GltfAccessor; value) = self.setType(value)
+template `type`*(self: GLTFAccessor): untyped = self.getType()
+template `type=`*(self: GLTFAccessor; value) = self.setType(value)
 
-template min*(self: GltfAccessor): untyped = self.getMin()
-template `min=`*(self: GltfAccessor; value) = self.setMin(value)
+template min*(self: GLTFAccessor): untyped = self.getMin()
+template `min=`*(self: GLTFAccessor; value) = self.setMin(value)
 
-template max*(self: GltfAccessor): untyped = self.getMax()
-template `max=`*(self: GltfAccessor; value) = self.setMax(value)
+template max*(self: GLTFAccessor): untyped = self.getMax()
+template `max=`*(self: GLTFAccessor; value) = self.setMax(value)
 
-template sparseCount*(self: GltfAccessor): untyped = self.getSparseCount()
-template `sparseCount=`*(self: GltfAccessor; value) = self.setSparseCount(value)
+template sparseCount*(self: GLTFAccessor): untyped = self.getSparseCount()
+template `sparseCount=`*(self: GLTFAccessor; value) = self.setSparseCount(value)
 
-template sparseIndicesBufferView*(self: GltfAccessor): untyped = self.getSparseIndicesBufferView()
-template `sparseIndicesBufferView=`*(self: GltfAccessor; value) = self.setSparseIndicesBufferView(value)
+template sparseIndicesBufferView*(self: GLTFAccessor): untyped = self.getSparseIndicesBufferView()
+template `sparseIndicesBufferView=`*(self: GLTFAccessor; value) = self.setSparseIndicesBufferView(value)
 
-template sparseIndicesByteOffset*(self: GltfAccessor): untyped = self.getSparseIndicesByteOffset()
-template `sparseIndicesByteOffset=`*(self: GltfAccessor; value) = self.setSparseIndicesByteOffset(value)
+template sparseIndicesByteOffset*(self: GLTFAccessor): untyped = self.getSparseIndicesByteOffset()
+template `sparseIndicesByteOffset=`*(self: GLTFAccessor; value) = self.setSparseIndicesByteOffset(value)
 
-template sparseIndicesComponentType*(self: GltfAccessor): untyped = self.getSparseIndicesComponentType()
-template `sparseIndicesComponentType=`*(self: GltfAccessor; value) = self.setSparseIndicesComponentType(value)
+template sparseIndicesComponentType*(self: GLTFAccessor): untyped = self.getSparseIndicesComponentType()
+template `sparseIndicesComponentType=`*(self: GLTFAccessor; value) = self.setSparseIndicesComponentType(value)
 
-template sparseValuesBufferView*(self: GltfAccessor): untyped = self.getSparseValuesBufferView()
-template `sparseValuesBufferView=`*(self: GltfAccessor; value) = self.setSparseValuesBufferView(value)
+template sparseValuesBufferView*(self: GLTFAccessor): untyped = self.getSparseValuesBufferView()
+template `sparseValuesBufferView=`*(self: GLTFAccessor; value) = self.setSparseValuesBufferView(value)
 
-template sparseValuesByteOffset*(self: GltfAccessor): untyped = self.getSparseValuesByteOffset()
-template `sparseValuesByteOffset=`*(self: GltfAccessor; value) = self.setSparseValuesByteOffset(value)
+template sparseValuesByteOffset*(self: GLTFAccessor): untyped = self.getSparseValuesByteOffset()
+template `sparseValuesByteOffset=`*(self: GLTFAccessor; value) = self.setSparseValuesByteOffset(value)
 
-const GltfAccessor_vmap =
+const GLTFAccessor_vmap =
   Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GltfAccessor]): Table[string, string] = GltfAccessor_vmap
+template vmap*(_: typedesc[GLTFAccessor]): Table[string, string] = GLTFAccessor_vmap
