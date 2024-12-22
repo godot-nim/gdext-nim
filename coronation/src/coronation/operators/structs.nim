@@ -53,7 +53,7 @@ proc parseFormat(self: JsonStructure): seq[Property] =
 
 proc convert*(json: JsonStructure): RenderableStructure =
   RenderableStructure(
-    typename: json.name.scan.convert(TypeSym),
+    typename: json.name.convert(TypeSym),
     props: json.parseFormat,
   )
 

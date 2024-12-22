@@ -3,7 +3,6 @@ import std/strformat
 import std/options
 
 import cloths
-import submodules/wordropes
 import submodules/semanticstrings
 
 import types/json
@@ -24,7 +23,7 @@ proc subscription(json: JsonBuiltinClass; typename: TypeSym): Subscription =
   else: Indexing
 
 proc weave_subscript*(json: JsonBuiltinClass): Cloth =
-  let typename = json.name.scan.convert(TypeSym)
+  let typename = json.name.convert(TypeSym)
   weave multiline:
     case json.subscription(typename)
     of Never: discard

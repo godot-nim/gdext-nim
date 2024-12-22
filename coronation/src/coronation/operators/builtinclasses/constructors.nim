@@ -3,7 +3,6 @@ import cloths
 import ../arguments
 import ../functions
 
-import submodules/wordropes
 import submodules/semanticstrings
 import types/json
 import config
@@ -33,7 +32,7 @@ proc weave*(json: JsonConstructor; typesym: TypeSym): Cloth =
 proc weave_constructor*(self: JsonBuiltinClass): Cloth =
   if self.constructors.len == 0: result
   else:
-    let typesym = self.name.scan.convert(TypeSym)
+    let typesym = self.name.convert(TypeSym)
     let ignore = getignore(typesym)
 
     let idxrange =

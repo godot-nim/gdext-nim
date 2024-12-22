@@ -180,7 +180,7 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
       of "[]":
         &"TypedArray[{arg.info.metaType}](gdarray())"
       elif value.startsWith "Array":
-        "TypedArray[" & $value.split({'[', ']'})[1].scan.convert(TypeSym) & "](gdarray())"
+        "TypedArray[" & $value.split({'[', ']'})[1].convert(TypeSym) & "](gdarray())"
       else:
         value
 
@@ -248,13 +248,13 @@ proc preconvert*(param: RenderableParamBase; basetype: Option[string]) =
       basetype = basetype[key.len..^1]
       break
   if basetype.startsWith "typedarray::":
-    param.info.metaType = basetype["typedarray::".len..^1].scan.convert(TypeSym)
+    param.info.metaType = basetype["typedarray::".len..^1].convert(TypeSym)
     basetype = "TypedArray"
 
   if basetype.find("void") != -1:
     basetype = "pointer"
     dec param.info.ptrdepth
-  param.typeSym = basetype.scan.convert(TypeSym)
+  param.typeSym = basetype.convert(TypeSym)
 
 proc convertToResult*(baseType: Option[string]): RenderableResult =
   new result

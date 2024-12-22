@@ -1,6 +1,5 @@
 import cloths
 
-import submodules/wordropes
 import submodules/semanticstrings
 import types/json
 import utils
@@ -18,7 +17,7 @@ proc constValue*(t: string; value: string): string =
     value.replace(t, $constructorName TypeSym t)
 
 proc weave*(constant: JsonConstant; caller: TypeSym): Cloth =
-  let pred = constant.name.scan.convert(TypeSym)
+  let pred = constant.name.convert(TypeSym)
   let value = constValue(constant.`type`, constant.value)
   weave multiline:
     &"const {caller}_{pred}*: {constant.`type`} = {value}"
