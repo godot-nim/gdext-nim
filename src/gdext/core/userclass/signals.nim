@@ -1,26 +1,17 @@
 import std/[tables, sets]
 
-import gdext/utils/[macros, staticevents]
-import gdext/dirty/gdextensioninterface
+import gdext/utils/[macros]
+import gdext/gdinterface/classDB
 import gdext/core/gdclass
 import gdext/core/builtinindex
-import gdext/core/commandindex
 import gdext/core/typeshift
 
 import gdext/classes/gdobject
 
 import contracts
 import propertyinfo
-import checkform
 
-proc isSignal*(procdef: NimNode): bool =
-  for expr in procdef.pragma:
-    case expr.kind
-    of nnkIdent:
-      if expr.eqIdent "signal":
-        return true
-    else:
-      discard
+proc isSignal*(procdef: NimNode): bool = procdef.hasPragma("signal")
 
 proc makebody (params, gdname, self: NimNode): NimNode =
   let variantArrDef = newNimNode nnkBracket
@@ -30,7 +21,7 @@ proc makebody (params, gdname, self: NimNode): NimNode =
     variantArrDef.add bindSym"variant".newCall(name)
 
   if variantArrDef.len == 0:
-    variantArrDef.add nnkObjConstr.newTree(bindSym"Variant")
+    variantArrDef.add newObjConstr(bindSym"Variant")
 
   quote do:
     var signalName {.global.}: Variant
@@ -46,25 +37,17 @@ macro parseParams (params): untyped =
     if i == 0: continue
     let namelit = name.toStrLit
     arguments.add quote do:
-      let p_name = stringName `namelit`
-      propertyInfo(typedesc `typ`, addr p_name)
+      propertyInfo(typedesc `typ`, stringName `namelit`)
 
   quote do: @`arguments`
 
-macro registerSignal (params; gdname: string): untyped =
+macro contractSignal (params; gdname: string): untyped =
   let arg0_T = params[1][1]
   let procsym = ident $gdname
 
   quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
-      let
-        name = stringName `gdname`
-        params: seq[PropertyInfo] = parseParams(`params`)
-        size = params.len
-        head = (if size == 0: nil else: addr params[0])
-
-      interface_ClassDB_registerExtensionClassSignal(
-        environment.library, addr className(`arg0_T`), addr name, head, size)
+      classDB.registerSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
 
 proc sync_signal*(procDef: NimNode): NimNode =
   const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
@@ -74,17 +57,9 @@ proc sync_signal*(procDef: NimNode): NimNode =
   let params = procdef.params
   let procdef_global = copy procdef
 
-  var gdname = procDef.name.toStrLit
-  for expr in procDef.pragma:
-    case expr.kind
-    of nnkCall, nnkExprColonExpr:
-      case $expr[0]
-      of "name":
-        gdname = expr[1]
-    else:
-      discard
+  let gdname = procDef.getPragmaVal("name") or procDef.name.toStrLit
 
-  let params_global = nnkFormalParams.newTree(
+  let params_global = newFormalParams(
     params[0],
     newIdentDefs(ident"_", bindsym"typeof".newcall(ident"extmain")))
   if params.len > 1:
@@ -94,7 +69,7 @@ proc sync_signal*(procDef: NimNode): NimNode =
   if params.len <= 1:
     return quote do:
       `procdef_global`
-      registerSignal(`params_global`, `gdname`)
+      contractSignal(`params_global`, `gdname`)
 
 
   let arg0T = params[1][1]
@@ -108,29 +83,29 @@ proc sync_signal*(procDef: NimNode): NimNode =
 
   for i, arg in procdef.params:
     if i == 0:
-      result.add nnkElifBranch.newTree(
+      result.add newElifBranch(
         (quote do: `arg` isnot Error),
         bindsym"lineerror".newcall(newlit errmsgSignalResultTypeMismatch, procdef.name)
       )
     else:
       let argT = arg[1]
-      result.add nnkElifBranch.newTree(
+      result.add newElifBranch(
         (quote do: `argT` isnot SomeProperty),
         bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", arg)
       )
 
   procdef.body = params.makebody(gdname, procdef.params[1][0])
-  result.add nnkElifBranch.newTree(
+  result.add newElifBranch(
     quote do:
       `arg0T` is SomeClass,
     quote do:
       `procdef`
-      registerSignal(`params`, `gdname`)
+      contractSignal(`params`, `gdname`)
   )
 
 
-  result.add nnkElse.newTree(
+  result.add newElse(
     quote do:
       `procdef_global`
-      registerSignal(`params_global`, `gdname`)
+      contractSignal(`params_global`, `gdname`)
   )

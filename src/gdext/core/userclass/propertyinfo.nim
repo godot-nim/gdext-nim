@@ -1,8 +1,7 @@
 import std/macros
 
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/[ native, extracommands ]
 import gdext/core/builtinindex
-import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/gdtypedarray
@@ -92,49 +91,49 @@ proc defaultUnit*[S: SomeFloatProperty](_: typedesc[S]): float =
 proc defaultUnit*[S: SomeIntProperty](_: typedesc[S]): int = 1
 
 proc propertyInfo*(typ: VariantType;
-      name: ptr StringName = addr StringName.empty;
-      class_name: ptr StringName = addr StringName.empty;
+      name: StringName = StringName.empty;
+      class_name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
-      hint_string: ptr String = addr String.empty;
+      hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): PropertyInfo =
   PropertyInfo(
     type: typ,
-    name: name,
-    class_name: class_name,
+    name: addr name,
+    class_name: addr class_name,
     hint: uint32 hint,
-    hint_string: hint_string,
+    hint_string: addr hint_string,
     usage: cast[uint32](usage),
   )
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
-      name: ptr StringName = addr StringName.empty;
+      name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
-      hint_string: ptr String = addr String.empty;
+      hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): PropertyInfo =
   propertyInfo(
     T.variantType,
     name,
     (when T is SomeClass:
-      addr className T
+      className T
     elif T is GdRef:
-      addr className T.RefCounted
+      className T.RefCounted
     elif T is enum:
       if Meta(T).className == default(StringName):
         raise newException(GodotUnboundSymbolDefect,
           "cannot make propertyInfo of " & $T & "; call (registerEnum/registerBitField)(YourClass, YourEnum) to bind the enum to the class.")
-      addr Meta(T).className
+      Meta(T).className
     else:
-      addr StringName.empty),
+      StringName.empty),
     hint,
     hint_string,
     usage + T.uniqueUsage,
   )
 
 proc propertyInfo*[T: SomeProperty](_: typedesc[varargs[T]];
-      name: ptr StringName = addr StringName.empty;
+      name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
-      hint_string: ptr String = addr String.empty;
+      hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): PropertyInfo =
   propertyInfo(typedesc T, name, hint, hint_string, usage)

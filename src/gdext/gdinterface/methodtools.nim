@@ -1,8 +1,8 @@
-import gdext/dirty/gdextensioninterface
+import native
 import extracommands
-import builtinindex
-import gdclass
-import gdrefs
+import gdext/core/builtinindex
+import gdext/core/gdclass
+import gdext/core/gdrefs
 
 export gdcall
 
@@ -18,4 +18,13 @@ template getPtr*(v: GdRef): pointer =
     discard hook_reference CLASS_getObjectPtr v.handle
   getPtr v.handle
 
+proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
+  for i in 0..<arr.len:
+    result[i] = getPtr arr[i]
+proc getPtr*(arr: array[0, Variant]): array[0, pointer] = discard
+
 template getTypedPtr*(v: Variant): VariantPtr = addr v
+
+proc head*[T](a: openArray[T]): ptr T =
+  if a.len == 0: nil
+  else: addr a[0]

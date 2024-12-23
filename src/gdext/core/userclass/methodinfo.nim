@@ -2,22 +2,23 @@ import std/sequtils
 import std/tables
 import gdext/utils/macros
 
-import gdext/dirty/gdextensioninterface
-import gdext/core/commandindex
+import gdext/gdinterface/[ native, methodtools, exceptions ]
 import gdext/core/builtinindex
 import gdext/core/typeshift
-import gdext/core/exceptions
-import gdext/core/methodtools
 
 import propertyinfo
 
-type MiddleExp = object
-  name: NimNode
-  isStatic: bool
-  isVarargs: bool
-  self_T: NimNode
-  result_T: NimNode
-  args: seq[tuple[namesym, typesym, default: NimNode]]
+type
+  Arg = tuple
+    namesym, typesym, default: NimNode
+  MiddleExp = object
+    name: NimNode
+    isStatic: bool
+    isVarargs: bool
+    self_T: NimNode
+    result_T: NimNode
+    args: seq[Arg]
+    defaults: seq[Arg]
 
 proc parseMiddle(procdef: NimNode): MiddleExp =
   result.name = procdef[0]
@@ -33,8 +34,11 @@ proc parseMiddle(procdef: NimNode): MiddleExp =
       result.isVarargs = true
     result.args.add (
       sym,
-      (if typ.kind == nnkEmpty: ident"typeof".newCall(default) else: typ),
+      (if typ.kind == nnkEmpty: bindsym"typeof".newCall(default) else: typ),
       default)
+
+  result.defaults = result.args
+    .filterIt(it.default.kind != nnkEmpty)
 
   result.is_static = `and`(
     result.self_T.kind == nnkBracketExpr,
@@ -44,160 +48,105 @@ proc parseMiddle(procdef: NimNode): MiddleExp =
 template hasResult(middle: MiddleExp): bool = middle.result_T != nil
 
 proc returnValueInfo(middle: MiddleExp): NimNode =
-  let retT = middle.result_T
-  if middle.hasResult:
-    quote do:
-      let info = propertyInfo(typedesc `retT`)
-      addr info
-  else: newNilLit()
+  quote("@") do:
+    propertyInfo(typedesc @(middle.result_T))
 proc returnValueMeta(middle: MiddleExp): NimNode =
-  let retT = middle.result_T
-  if middle.hasResult:
-    quote do:
-      metadata(typedesc `retT`)
-  else: bindSym "MethodArgumentMetadata_None"
+  quote("@") do:
+    metadata(typedesc @(middle.result_T))
 
 proc argumentsInfo(middle: MiddleExp): NimNode =
-  if middle.args.len == 0: return newNilLit()
-
-  var info = newNimNode nnkBracket
-
+  result = newNimNode nnkBracket
   for (name, Type, default) in middle.args:
-    let name = toStrLit name
-    info.add quote do:
-      let p_name = stringName `name`
-      propertyInfo(typedesc `Type`, addr p_name)
-
-  quote do:
-    let info = `info`
-    addr info[0]
+    result.add quote("@") do:
+      propertyInfo(typedesc @Type, stringName @(name.toStrLit))
 
 proc argumentsMeta(middle: MiddleExp): NimNode =
-  if middle.args.len == 0: return newNilLit()
-
-  var meta = newNimNode nnkBracket
-
+  result = newNimNode nnkBracket
   for (_, Type, default) in middle.args:
-    meta.add quote do:
+    result.add quote do:
       metadata(typedesc `Type`)
 
-  quote do:
-    let meta = `meta`
-    addr meta[0]
-
-proc defaultArgumentCount(middle: MiddleExp): int =
-  middle.args.filterIt(it.default.kind != nnkEmpty).len
-
-proc declareDefaultArgumentsArray(middle: MiddleExp; default_arguments: NimNode): NimNode =
-  let defaultArgumentsSym = genSym(nskLet, "defaultArguments")
-  let defaultArgumentsArray = newNimNode nnkBracket
-  let defaultArgumentsAddrArray = newNimNode nnkBracket
-  for arg in middle.args:
-    if arg.default.kind == nnkEmpty: continue
-    defaultArgumentsArray.add ident"variant".newCall arg.default
-    defaultArgumentsAddrArray.add bindSym"getPtr".newCall(
-      nnkBracketExpr.newTree(defaultArgumentsSym, newLit defaultArgumentsArray.len.pred)
-    )
-  case defaultArgumentsArray.len
-  of 0:
-    discard
-    quote do:
-      let
-        `default_arguments`: ClassMethodInfo.default_arguments = nil
-  else:
-    quote do:
-      let
-        `defaultArgumentsSym` = `defaultArgumentsArray`
-        defaultArgumentsAddr = `defaultArgumentsAddrArray`
-        `default_arguments`: ClassMethodInfo.default_arguments = addr defaultArgumentsAddr[0]
+proc defaultArguments(middle: MiddleExp): NimNode =
+  let defaults = newBracket middle.defaults
+    .mapIt(quote("@") do: variant @(it.default))
+  quote do: getPtr `defaults`
 
 proc retrieve[T](x: ConstVariantPtr): T = cast[ptr Variant](x)[].get(T)
+proc retrieve[T](args: ptr UncheckedArray[ConstTypePtr]; range: HSlice[int, int]): seq[T] =
+  args.toOpenArray(range.a, range.b).map(retrieve[typedesc T])
+proc retrieve[T](x: ptr UncheckedArray[ConstVariantPtr]; len: int; at: int; default: T): T =
+  if len > at: retrieve[T](x[at])
+  else:        default
+
+template encode[T: void](_: T; p: TypePtr) = (discard)
+
+let
+  callFunc_template {.compileTime.} = quote do:
+    proc( method_userdata {.inject.}: pointer;
+          p_instance {.inject.}: ClassInstancePtr;
+          p_args {.inject.}: ptr UncheckedArray[ConstVariantPtr];
+          p_argument_count {.inject.}: Int;
+          r_return {.inject.}: VariantPtr;
+          r_error {.inject.}: ptr CallError) {.gdcall.} = (discard)
+  ptrCallFunc_template {.compileTime.} = quote do:
+    proc( method_userdata {.inject.}: pointer;
+          p_instance {.inject.}: ClassInstancePtr;
+          p_args {.inject.}: ptr UncheckedArray[ConstTypePtr];
+          r_ret {.inject.}: TypePtr) {.gdcall.} = (discard)
 
 proc callFunc(middle: MiddleExp): NimNode =
-  let p_instance = ident"p_instance"
-  let p_args = ident"p_args"
-  let p_argument_count = ident"p_argument_count"
-  let r_return = ident"r_return"
-
-  let self_T = middle.self_T
-
   let call = middle.name.newCall()
 
   if middle.is_static:
     call.add middle.self_T
   else:
-    call.add quote do: cast[`self_T`](`p_instance`)
+    call.add quote("@") do: cast[@(middle.self_T)](p_instance)
 
-  for i, (name, Type, default) in middle.args:
-    let i_lit = newlit i
-
+  for i, (name, Type, default) in middle.args: call.add do:
     if Type.isVarargs:
       let Type = Type[1]
-      call.add if Type.repr == "ptr Variant":
-        quote do: cast[ptr UncheckedArray[ptr Variant]](`p_args`)
-          .toOpenArray(`i_lit`, `p_argument_count`.pred)
+      if Type.repr == "ptr Variant":
+        quote do: cast[ptr UncheckedArray[ptr Variant]](p_args)
+          .toOpenArray(`i`, p_argument_count.pred)
       else:
-        quote do: `p_args`
-          .toOpenArray(`i_lit`, `p_argument_count`.pred)
-          .map(retrieve[typedesc `Type`])
+        quote do: retrieve[`Type`](p_args, `i`..<p_argument_count.int)
 
     elif default.kind == nnkEmpty:
-      call.add quote do: retrieve[`Type`](`p_args`[`i_lit`])
+      quote do: retrieve[`Type`](p_args[`i`])
     else:
-      call.add quote do:
-        if `p_argument_count` > `i_lit`:
-          retrieve[`Type`](`p_args`[`i_lit`])
-        else: `default`
+      quote do: retrieve[`Type`](p_args, p_argument_count, `i`, `default`)
 
-  let body =
+  result = callFunc_template
+  result.body =
     if middle.hasResult:
       quote do:
         errproof:
           let result = variant `call`
-          interface_Variant_newCopy(`r_return`, addr result)
+          interface_Variant_newCopy(r_return, addr result)
     else:
       quote do:
         errproof:
           let result = variant(); `call`
-          interface_Variant_newCopy(`r_return`, addr result)
-
-  result = quote do:
-    proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstVariantPtr]; `p_argument_count`: Int; `r_return`: VariantPtr; r_error: ptr CallError) {.gdcall.} =
-      `body`
+          interface_Variant_newCopy(r_return, addr result)
 
 proc ptrCallFunc(middle: MiddleExp): NimNode =
   if middle.isVarargs: return newNilLit()
 
-  let p_instance = ident"p_instance"
-  let p_args = ident"p_args"
-  let r_ret = ident"r_ret"
-
-  let self_T = middle.self_T
-
   var call = middle.name.newCall()
   if middle.is_static:
-    call.add self_T
+    call.add middle.self_T
   else:
-    call.add quote do: cast[`self_T`](`p_instance`)
+    call.add quote("@") do: cast[@(middle.self_T)](p_instance)
 
   for i, (name, Type, default) in middle.args:
-    let i_lit = newlit i
-    call.add quote do: `p_args`[`i_lit`].decode(typedesc `Type`)
+    call.add quote do: p_args[`i`].decode(typedesc `Type`)
 
-  let body =
-    if middle.hasResult:
-      quote do:
-        errproof:
-          `call`.encode(`r_ret`)
-    else:
-      quote do:
-        errproof:
-          `call`
+  result = ptrCallFunc_template
+  result.body = quote do:
+    errproof:
+      encode(`call`, r_ret)
 
-  quote do:
-    proc(method_userdata: pointer; `p_instance`: ClassInstancePtr; `p_args`: ptr UncheckedArray[ConstTypePtr]; `r_ret`: TypePtr) {.gdcall.} = `body`
-
-proc flags(middle: MiddleExp): NimNode =
+proc method_flags(middle: MiddleExp): NimNode =
   result = newNimNode nnkCurly
   if middle.is_static:
     result.add bindSym"MethodFlag_Static"
@@ -207,45 +156,69 @@ proc flags(middle: MiddleExp): NimNode =
   if result.len == 0:
     result.add bindSym"MethodFlag_Normal"
 
+proc classMethodInfo(
+      name: StringName;
+      # method_userdata: pointer;
+      call_func: ClassMethodCall;
+      ptrcall_func: ClassMethodPtrCall;
+      method_flags: set[ClassMethodFlags];
+      arguments_info: openArray[PropertyInfo];
+      arguments_metadata: openArray[ClassMethodArgumentMetadata];
+      default_arguments: openArray[VariantPtr];
+    ): ClassMethodInfo =
+  ClassMethodInfo(
+    name: addr name,
+    call_func: call_func,
+    ptrcall_func: ptrcall_func,
+    method_flags: cast[uint32](method_flags),
+    argument_count: uint32 arguments_info.len,
+    arguments_info: arguments_info.head,
+    arguments_metadata: arguments_metadata.head,
+    default_argument_count: uint32 default_arguments.len,
+    default_arguments: default_arguments.head,
+  )
+proc classMethodInfo(
+      name: StringName;
+      # method_userdata: pointer;
+      call_func: ClassMethodCall;
+      ptrcall_func: ClassMethodPtrCall;
+      method_flags: set[ClassMethodFlags];
+      arguments_info: openArray[PropertyInfo];
+      arguments_metadata: openArray[ClassMethodArgumentMetadata];
+      default_arguments: openArray[VariantPtr];
+      return_value_info: PropertyInfo;
+      return_value_metadata: ClassMethodArgumentMetadata;
+    ): ClassMethodInfo =
+  ClassMethodInfo(
+    name: addr name,
+    call_func: call_func,
+    ptrcall_func: ptrcall_func,
+    method_flags: cast[uint32](method_flags),
+    has_return_value: true,
+    return_value_info: addr return_value_info,
+    return_value_metadata: return_value_metadata,
+    argument_count: uint32 arguments_info.len,
+    arguments_info: arguments_info.head,
+    arguments_metadata: arguments_metadata.head,
+    default_argument_count: uint32 default_arguments.len,
+    default_arguments: default_arguments.head,
+  )
 
 proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
-
-  let call_func = middle.callFunc
-  let ptrcall_func = middle.ptrCallFunc
-  let method_flags = middle.flags
-
-  let has_return_value = newlit middle.hasResult
-  let return_value_info = middle.returnValueInfo
-  let return_value_metadata = middle.returnValueMeta
-
-  let argument_count = newlit middle.args.len
-  let arguments_info = middle.argumentsInfo
-  let arguments_metadata = middle.argumentsMeta
-
-  let default_argument_count = middle.defaultArgumentCount
-  let default_arguments = genSym(nskLet, "default_arguments")
-  let defaultArgumentsArray = middle.declareDefaultArgumentsArray(default_arguments)
-
-  result = quote do:
-    let proc_name: StringName = stringName `gdname`
-    `defaultArgumentsArray`
-    ClassMethodInfo(
-      name: addr proc_name,
-      call_func: `call_func`,
-      ptrcall_func: `ptrcall_func`,
-      method_flags: cast[uint32](`method_flags`),
-
-      has_return_value: `has_return_value`,
-      return_value_info: `return_value_info`,
-      return_value_metadata: `return_value_metadata`,
-
-      argument_count: `argument_count`,
-      arguments_info: `arguments_info`,
-      arguments_metadata: `arguments_metadata`,
-
-      default_argument_count: uint32 `default_argument_count`,
-      default_arguments: `defaultarguments`,
+  result = quote("@") do:
+    classMethodInfo(
+      stringName @gdname,
+      @(middle.callFunc),
+      @(middle.ptrCallFunc),
+      @(middle.method_flags),
+      @(middle.argumentsInfo),
+      @(middle.argumentsMeta),
+      @(middle.defaultArguments),
     )
+  if middle.hasResult:
+    result.add(
+      middle.returnValueInfo,
+      middle.returnValueMeta,)
 
 proc classMethodInfo*(procdef: NimNode; gdname: NimNode): NimNode =
   parseMiddle(procdef).classMethodInfo(gdname)

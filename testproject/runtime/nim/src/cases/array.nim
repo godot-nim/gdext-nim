@@ -9,7 +9,7 @@ suite "TypedArray":
     check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
     check arr.len == 10
     for i, val in arr:
-      check val.variantType == VariantTypeString
+      check val.getType == VariantTypeString
       check ($val.get String).len == 0
 
 suite "PackedArray":

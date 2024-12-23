@@ -1,4 +1,4 @@
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/native
 import gdext/core/gdtypedarray
 import gdext/core/builtinindex
 import gdext/core/gdclass

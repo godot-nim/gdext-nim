@@ -1,6 +1,9 @@
 import std/[ macros ]
 export       macros
 
+macro lineerror* (msg: static string; expr) =
+  error msg, expr
+
 iterator breakArgs*(node: NimNode): tuple[index: int; def: tuple[name, Type, default: NimNode]] =
   node.expectKind nnkFormalParams
   var index: int
@@ -135,3 +138,58 @@ func isVarargs*(node: NimNode): bool =
     false
 
 proc super*(typedes: NimNode): NimNode = typedes.typeDef.objectTy.ofInherit.typeSym
+
+proc getPragmaVal*(node: NimNode; key: string): NimNode =
+  case node.kind
+  of RoutineNodes, nnkProcTy:
+    for expr in node.pragma:
+      case expr.kind
+      of nnkExprColonExpr, nnkCall, nnkCallStrLit:
+        if expr[0].eqIdent key:
+          return expr[1]
+      else: discard
+  of nnkSym:
+    return node.getImpl.getPragmaVal(key)
+  else:
+    error "not implimented yet for NimNodeKind:" & $node.kind, node
+
+proc hasPragma*(node: NimNode; key: string): bool =
+  case node.kind
+  of RoutineNodes, nnkProcTy:
+    for expr in node.pragma:
+      case expr.kind
+      of nnkIdent, nnkSym:
+        if expr.eqIdent key:
+          return true
+      of nnkExprColonExpr, nnkCall, nnkCallStrLit:
+        if expr[0].eqIdent key:
+          return true
+      else: discard
+  of nnkSym:
+    return node.getImpl.hasPragma(key)
+  else:
+    error "not implimented yet for NimNodeKind:" & $node.kind, node
+
+proc newBracket*(elems: varargs[NimNode]): NimNode =
+  nnkBracket.newTree elems
+
+proc newBracketExpr*(elems: varargs[NimNode]): NimNode =
+  nnkBracketExpr.newTree elems
+
+proc newLetSection*(elems: varargs[NimNode]): NimNode =
+  nnkLetSection.newTree elems
+
+proc newElifBranch*(predicate, body: NimNode): NimNode =
+  nnkElifBranch.newTree(predicate, body)
+
+proc newElse*(body: NimNode): NimNode =
+  nnkElse.newTree(body)
+
+proc newObjConstr*(obj: NimNode; members: varargs[NimNode]): NimNode =
+  nnkObjConstr.newTree(obj).add(members)
+
+proc newFormalParams*(ret: NimNode = newEmptyNode(); args: varargs[NimNode]): NimNode =
+  nnkFormalParams.newTree(ret).add(args)
+
+proc newDiscardStmt*(sentence: NimNode = newEmptyNode()): NimNode =
+  nnkDiscardStmt.newTree sentence

@@ -1,12 +1,9 @@
 import std/[sets]
 
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/[native, extracommands, exceptions]
 import gdext/utils/staticevents
 import gdext/core/builtinindex
-import gdext/core/commandindex
-import gdext/core/extracommands
 import gdext/core/typeshift
-import gdext/core/exceptions
 import gdext/core/userclass/contracts
 import gdext/gen/utilityfuncs
 import gdext/surface/userclass
@@ -73,7 +70,7 @@ template GDExtension_EntryPoint*: untyped =
 
   proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
     try:
-      commandindex.init(
+      native.init(
         p_getProcAddress,
         p_library)
 
@@ -81,7 +78,7 @@ template GDExtension_EntryPoint*: untyped =
       r_initialization.deinitialize = deinitialize
       r_initialization.minimum_initialization_level = Initialization_Scene
 
-      commandindex.load() # call `getProcAddr` for each interface methods
+      native.load() # call `getProcAddr` for each interface methods
       builtinindex.load() # load builtin-classes constructor/destructor for ORC hooks
       extracommands.load() # load other usual functions to define core library
       typeshift.load()

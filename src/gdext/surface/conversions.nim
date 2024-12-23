@@ -1,6 +1,7 @@
+import gdext/gdinterface/variants
 import gdext/core/[builtinindex, gdclass, gdtypedarray]
 import gdext/gen/[builtinclasses]
-import gdext/surface/[classutils, variantutils]
+import gdext/surface/[classutils]
 
 {.push, inline.}
 

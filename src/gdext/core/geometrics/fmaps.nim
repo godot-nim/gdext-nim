@@ -1,13 +1,14 @@
 import std/sequtils
 import std/options
-import std/macros
+
+import gdext/utils/macros
 
 func makeKey(v: NimNode; length: int; name: string): tuple[def: Option[NimNode]; key: seq[NimNode]] =
   result.key = newSeq[NimNode](length)
   case v.kind
   of {nnkSym, nnkIdent}:
     for i, arg in result.key.mpairs:
-      arg = nnkBracketExpr.newTree(v, newLit i)
+      arg = newBracketExpr(v, newLit i)
   of nnkBracket:
     for i, arg in result.key.mpairs:
       arg = v[i]
@@ -15,7 +16,7 @@ func makeKey(v: NimNode; length: int; name: string): tuple[def: Option[NimNode];
     let arg0 = genSym(nskLet, name)
     result.def = some newIdentDefs(arg0, newEmptyNode(), v)
     for i, arg in result.key.mpairs:
-      arg = nnkBracketExpr.newTree(arg0, newLit i)
+      arg = newBracketExpr(arg0, newLit i)
 
 
 template `<$>`*(container, pred): untyped =
@@ -39,7 +40,7 @@ func replaceIdents(node: NimNode; idents: varargs[tuple[key: string; value: NimN
 macro fmap*[N: static int; T](Type: typedesc[array[N,T]]; pred): untyped =
   let typeofT = Type.getType[1][2]
   let elem = genSym(nskLet, "elem")
-  let vec = nnkBracket.newTree elem.repeat(N)
+  let vec = newBracket elem.repeat(N)
 
   result = newStmtList(
     newLetStmt(elem, typeofT.newCall(pred)),

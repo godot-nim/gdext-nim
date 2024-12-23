@@ -1,9 +1,9 @@
 import std/[tables]
 
+import gdext/gdinterface/native
+
 import gdext/buildconf
-import gdext/dirty/gdextensioninterface
 import gdext/core/geometrics
-import gdext/core/commandindex
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64
@@ -19,7 +19,7 @@ type
   VectorR*[N: static int] = Vector[N, real_elem]
   VectorI*[N: static int] = Vector[N, int_elem]
 
-  PackedArray*[Item] {.bycopy.} = object
+  PackedArray*[Item] {.byref.} = object
     proxy: pointer
     data_unsafe*: ptr UncheckedArray[Item]
 
@@ -77,21 +77,21 @@ type
     g*: float_elem
     b*: float_elem
     a*: float_elem
-  RID* {.bycopy.} = object
+  RID* {.byref.} = object
     opaque: Opaque[2]
-  String* {.bycopy.} = object
+  String* {.byref.} = object
     opaque: Opaque[1]
-  StringName* {.bycopy.} = object
+  StringName* {.byref.} = object
     opaque: Opaque[1]
-  NodePath* {.bycopy.} = object
+  NodePath* {.byref.} = object
     opaque: Opaque[1]
-  Callable* {.bycopy.} = object
+  Callable* {.byref.} = object
     opaque: Opaque[4]
-  Signal* {.bycopy.} = object
+  Signal* {.byref.} = object
     opaque: Opaque[4]
-  Dictionary* {.bycopy.} = object
+  Dictionary* {.byref.} = object
     opaque: Opaque[1]
-  Array* {.bycopy.} = object
+  Array* {.byref.} = object
     opaque: Opaque[1]
 
   PackedByteArray* = PackedArray[byte]
@@ -162,35 +162,35 @@ type
 var hook_copy: array[VariantType, PtrConstructor]
 var hook_destroy: array[VariantType, PtrDestructor]
 
-proc `=destroy`*(val: String) =
+proc `=destroy`*(val {.bycopy.}: String) =
   if val.opaque == String.opaque.default: return
   try: hook_destroy[VariantTypeString](addr val)
   except: discard
-proc `=destroy`*(val: StringName) =
+proc `=destroy`*(val {.bycopy.}: StringName) =
   if val.opaque == StringName.opaque.default: return
   try: hook_destroy[VariantTypeStringName](addr val)
   except: discard
-proc `=destroy`*(val: NodePath) =
+proc `=destroy`*(val {.bycopy.}: NodePath) =
   if val.opaque == NodePath.opaque.default: return
   try: hook_destroy[VariantTypeNodePath](addr val)
   except: discard
-proc `=destroy`*(val: Callable) =
+proc `=destroy`*(val {.bycopy.}: Callable) =
   if val.opaque == Callable.opaque.default: return
   try: hook_destroy[VariantTypeCallable](addr val)
   except: discard
-proc `=destroy`*(val: Signal) =
+proc `=destroy`*(val {.bycopy.}: Signal) =
   if val.opaque == Signal.opaque.default: return
   try: hook_destroy[VariantTypeSignal](addr val)
   except: discard
-proc `=destroy`*(val: Array) =
+proc `=destroy`*(val {.bycopy.}: Array) =
   if val.opaque == Array.opaque.default: return
   try: hook_destroy[VariantTypeArray](addr val)
   except: discard
-proc `=destroy`*(val: Dictionary) =
+proc `=destroy`*(val {.bycopy.}: Dictionary) =
   if val.opaque == Dictionary.opaque.default: return
   try: hook_destroy[VariantTypeDictionary](addr val)
   except: discard
-proc `=destroy`*[T](val: PackedArray[T]) =
+proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
   if val.opaque == PackedArray.opaque.default: return
   try:
     when T is byte:

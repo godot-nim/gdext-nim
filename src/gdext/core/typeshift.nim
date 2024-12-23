@@ -1,7 +1,5 @@
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/[native, extracommands]
 import gdext/core/builtinindex
-import gdext/core/commandindex
-import gdext/core/extracommands
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/gdtypedarray

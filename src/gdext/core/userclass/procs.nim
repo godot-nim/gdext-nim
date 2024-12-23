@@ -1,39 +1,49 @@
 import gdext/utils/macros
 import std/[sequtils, strutils, sets, tables]
 
-import gdext/core/commandindex
+import gdext/gdinterface/classDB
 import gdext/core/gdclass
 
 import contracts
 import methodinfo
 import propertyinfo
-import checkform
+
+const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by gdext."
+
+proc withCorrectClassMethodForm(node, stmt: NimNode): NimNode =
+  let arg0T = node.params[1][1]
+  result = newNimNode nnkWhenStmt
+
+  if node.kind == nnkMethodDef:
+    result.add newElifBranch(
+      (quote do: `arg0T` isnot SomeClass),
+      bindsym"lineerror".newcall(newlit errmsgSelfTypeMismatch, node.params[1])
+    )
+
+  for i, arg in node.params:
+    if i == 0: continue
+    let argT = arg[1]
+    result.add newElifBranch(
+      (quote do: `argT` isnot SomeProperty),
+      bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", arg)
+    )
+
+  result.add newElse(stmt)
 
 macro registerProc*(procdef): untyped =
   let procdef =
     if procdef.kind == nnkProcDef: procdef
     else: procdef.getImpl
-  let name = procdef.name
   let arg0_T = procdef.params[1][1]
 
-  let namelit = newLit $name
-  var gdname = nameLit
-
-  for pragma in procdef.pragma:
-    case pragma.kind
-    of nnkExprColonExpr, nnkCall:
-      if pragma[0].eqIdent"name":
-        gdname = pragma[1]
-    else: discard
+  let gdname = procdef.getPragmaVal("name") or newLit $procdef.name
 
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
-  let procsym = ident $gdname
-
   quote do:
-    proc `procsym` {.execon: Contract[typedesc[`arg0T`]].procedure.} =
+    proc `gdname` {.execon: Contract[typedesc[`arg0T`]].procedure.} =
       let info = `methodinfoDef`
-      interface_ClassDB_registerExtensionClassMethod(environment.library, addr className(typedesc `arg0_T`), addr info)
+      classDB.registerMethod(className(typedesc `arg0_T`), addr info)
 
 proc makeNimMainProc(procdef: NimNode): NimNode =
   newProc(
@@ -76,12 +86,12 @@ proc sync_procDef*(procdef: NimNode): NimNode =
     if argT.isVarargs:
       varargsFound = true
       argT = argT[1]
-    result.add nnkElifBranch.newTree(
+    result.add newElifBranch(
       (quote do: `argT` isnot SomeProperty),
       bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", name)
     )
 
-  result.add nnkElifBranch.newTree(
+  result.add newElifBranch(
     quote do:
       `arg0T` is SomeClass,
     quote do:
@@ -90,7 +100,7 @@ proc sync_procDef*(procdef: NimNode): NimNode =
   )
 
 
-  result.add nnkElse.newTree(
+  result.add newElse(
     quote do:
       `procdef`
       `procNimMain`

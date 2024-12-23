@@ -1,9 +1,8 @@
 import std/unittest
 import std/tables
-import std/strutils
 
 import gdext
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/native
 import gdext/core/[gdclass, typeshift]
 
 # sugar of `import godot/classDetail/classDetail_native_T`

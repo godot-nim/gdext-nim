@@ -5,8 +5,11 @@ import gdext/buildconf
 import gdext/utils/staticevents
 export staticevents.execon, staticevents.expandEvent
 
-import gdext/dirty/gdextensioninterface
-export InitializationLevel, VariantType, gdcall, CallError, CallErrorType
+import gdext/gdinterface/native
+export InitializationLevel, VariantType, gdcall
+
+import gdext/gdinterface/exceptions
+export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 
 import gdext/core/[ builtinindex, geometrics, gdrefs, gdtypedarray ]
 export              builtinindex, geometrics, gdrefs, gdtypedarray

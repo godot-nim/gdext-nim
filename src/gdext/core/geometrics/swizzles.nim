@@ -1,5 +1,6 @@
-import std/macros
 import std/sequtils
+
+import gdext/utils/macros
 
 proc subVec[N; T](v: var array[N,T]; offset, length: static[int]): var array[length,T] =
   cast[ptr array[length, T]](addr v[offset])[]
@@ -28,15 +29,15 @@ macro swizzle*[I: static int; T](v: array[I, T]; key: untyped): untyped =
   case indices.len
   of 0: discard
   of 1:
-    return nnkBracketExpr.newTree(v, newlit indices[0])
+    return newBracketExpr(v, newlit indices[0])
   else:
     if indices.isContinuous:
       return bindSym"subVec".newCall(v, newlit indices[0], newlit indices.len)
     else:
       let nv = genSym(nskLet, "nv")
       return newStmtList(
-        nnkLetSection.newTree(nnkIdentDefs.newTree(nv, newEmptyNode(), v)),
-        nnkBracket.newTree indices.mapIt(nnkBracketExpr.newTree(nv, newlit it)),
+        newLetSection(newIdentDefs(nv, newEmptyNode(), v)),
+        newBracket indices.mapIt(newBracketExpr(nv, newlit it)),
       )
 template `.*`*[I: static int; T](v: array[I, T]; key): untyped =
   v.swizzle(key)

@@ -1,10 +1,10 @@
 import std/macros, std/sets
-import gdext/core/[builtinindex, commandindex, extracommands, gdclass]
+import gdext/gdinterface/[extracommands, classDB]
+import gdext/core/[gdclass]
 import gdext/core/userclass/[contracts, propertyinfo]
 
 proc registerEnumField*(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
-  interfaceClassdbRegisterExtensionClassIntegerConstant(
-    environment.library, addr className, addr enumName, addr fieldName, value, isBitField)
+  classDB.registerIntegerConstant(className, enumName, fieldName, value, isBitField)
 
 proc registerEnumFields*(className, enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
   for name, value in fields.items:

@@ -1,4 +1,28 @@
-import commandindex
+import native
+
+type GodotDefect* = object of CatchableError
+type GodotCallDefect* = object of GodotDefect
+type GodotVariantTypeDefect* = object of GodotDefect
+
+const ErrorName: array[CallErrorType, string] = [
+  "ok",
+  "invalid method",
+  "invalid argument",
+  "too many argument",
+  "too few argument",
+  "instance is nil",
+  "method not const",
+]
+
+proc newException*(ce: CallError): ref GodotCallDefect =
+  newException( GodotCallDefect,
+    "CallError; " & ErrorName[ce.error] & " at " & $ce.argument & ", expected " & $ce.expected
+  )
+
+template check*(ce: CallError): untyped =
+  if ce.error != Call_OK:
+    raise newException(ce)
+
 
 proc `$`*(exception: ref Exception): string =
   const stacktracePrefix = "stacktrace:\n"

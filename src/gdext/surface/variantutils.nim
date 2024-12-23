@@ -1,18 +1,26 @@
-import gdext/dirty/gdextensioninterface
-import gdext/core/commandindex
-import gdext/core/builtinindex
-import gdext/core/typeshift
-import gdext/core/varianttools
+import gdext/gdinterface/[variants, exceptions]
 
-import std/[hashes, strformat, sequtils]
+import gdext/core/[typeshift, builtinindex]
+import std/[strformat]
 
-type VariantTypeDefect* = object of CatchableError
-type VariantCallError* = object of CatchableError
+export variants.evaluate
+export variants.call
+export variants.callStatic
+export variants.hasMethod
+export variants.hasMember
+export variants.hash
+export variants.recursiveHash
+export variants.hashCompare
+export variants.booleanize
+export variants.duplicate
+export variants.canConvert
+export variants.canConvertStrict
+export variants.getType
+export variants.variant
+export variants.copy
+export variants.clear
 
 proc `$`*(v: Variant): string = $v.stringify
-
-proc variantType*(v: Variant): VariantType =
-  interfaceVariantGetType(addr v)
 
 const OpName: array[VariantOperator, string] = [
   "==",
@@ -41,24 +49,14 @@ const OpName: array[VariantOperator, string] = [
   "not",
   "contains",
 ]
-const ErrorName: array[CallErrorType, string] = [
-  "ok",
-  "invalid method",
-  "invalid argument",
-  "too many argument",
-  "too few argument",
-  "instance is nil",
-  "method not const",
-]
 
-proc newVariantTypeDefect(op: VariantOperator; a, b: ptr Variant): ref VariantTypeDefect =
-  newException(VariantTypeDefect,
+proc newVariantTypeDefect(op: VariantOperator; a, b: ptr Variant): ref GodotVariantTypeDefect =
+  newException(GodotVariantTypeDefect,
     if b.isNil:
-      &"{OpName[op]} {variantType a[]} is invalid operation; type mismatch"
+      &"{OpName[op]} {a[].getType} is invalid operation; type mismatch"
     else:
-      &"{variantType a[]} {OpName[op]} {variantType b[]} is invalid operation; type mismatch")
-proc evaluate*(op: VariantOperator; a, b: ptr Variant; valid: var bool): Variant =
-  interface_Variant_evaluate(op, cast[VariantPtr](a), cast[VariantPtr](b), addr result, addr valid)
+      &"{a[].getType} {OpName[op]} {b[].getType} is invalid operation; type mismatch")
+
 proc evaluate*(op: VariantOperator; a, b: ptr Variant): Variant =
   var valid: bool
   result = evaluate(op, a, b, valid)
@@ -68,12 +66,12 @@ proc evaluate*(op: VariantOperator; a, b: ptr Variant): Variant =
 proc `==`*(self, other: Variant): bool =
   var valid: bool
   let res = evaluate(VariantOP_Equal, addr self, addr other, valid)
-  if not valid: self.variantType == other.variantType
+  if not valid: self.getType == other.getType
   else: res.get bool
 proc `!=`*(self, other: Variant): bool =
   var valid: bool
   let res = evaluate(VariantOP_NotEqual, addr self, addr other, valid)
-  if not valid: self.variantType != other.variantType
+  if not valid: self.getType != other.getType
   else: res.get bool
 
 proc `<`*(self, other: Variant): bool =
@@ -88,34 +86,18 @@ proc `>=`*(self, other: Variant): bool =
 proc contains*(self: Variant; index: Variant): bool =
   evaluate(VariantOpIn, addr index, addr self).get bool
 
-proc call*(self: Variant; `method`: StringName; err: var CallError; args: varargs[Variant, variant]): Variant {.discardable.} =
-  if args.len == 0:
-    interface_Variant_call(addr self, addr `method`, nil, 0, addr result, addr err)
-  else:
-    let args = args.mapIt(cast[pointer](addr it))
-    interface_Variant_call(addr self, addr `method`, addr args[0], args.len, addr result, addr err)
-
-proc callStatic*(T: VariantType; `method`: StringName; err: var CallError; args: varargs[Variant, variant]): Variant {.discardable.} =
-  if args.len == 0:
-    interface_Variant_callStatic(T, addr `method`, nil, 0, addr result, addr err)
-  else:
-    let args = args.mapIt(cast[pointer](addr it))
-    interface_Variant_callStatic(T, addr `method`, addr args[0], args.len, addr result, addr err)
-
 proc call*(self: Variant; `method`: StringName; args: varargs[Variant, variant]): Variant {.discardable.} =
   var err: CallError
   result = self.call(`method`, err, args)
-  if err.error != CallOk:
-    raise newException(VariantCallError, ErrorName[err.error])
+  check err
 
 proc callStatic*(T: VariantType; `method`: StringName; args: varargs[Variant, variant]): Variant {.discardable.} =
   var err: CallError
   result = callStatic(T, `method`, err, args)
-  if err.error != CallOk:
-    raise newException(VariantCallError, ErrorName[err.error])
+  check err
 
 template check_type(defect; mhd: string; v): untyped =
-  if not isValid: raise newException(defect, mhd & " is invalid. Variant(" & $self.variantType & ") cannot contain Variant(" & $v.variantType & ").")
+  if not isValid: raise newException(defect, mhd & " is invalid. Variant(" & $self.getType & ") cannot contain Variant(" & $v.getType & ").")
 template check_bound(defect): untyped =
   if outOfBound: raise newException(defect, "Out of bound. Got index " & $index & ".")
 
@@ -160,80 +142,3 @@ iterator items*(self: Variant): Variant =
   for key in self.keys: yield self[key]
 iterator pairs*(self: Variant): tuple[key, item: Variant] =
   for key in self.keys: yield (key, self[key])
-
-proc hasMethod*(self: Variant; metho: StringName): bool =
-  interfaceVariantHasMethod(addr self, addr metho)
-
-proc hasMember*(typ: VariantType; member: StringName): bool =
-  interfaceVariantHasMember(typ, addr member)
-
-proc hash*(self: Variant): Hash = hash interface_Variant_hash(addr self)
-
-proc recursiveHash*(self: Variant; recursion_count: int): Hash =
-  hash interfaceVariantRecursiveHash(addr self, recursion_count)
-
-proc hashCompare*(self, other: Variant): bool =
-  interfaceVariantHashCompare(addr self, addr other)
-
-proc booleanize*(self: Variant): bool =
-  interfaceVariantBooleanize(addr self)
-
-proc duplicate*(self: Variant): Variant =
-  interfaceVariantDuplicate(addr self, addr result, true)
-
-proc canConvert*(src, dst: VariantType): bool =
-  interfaceVariantCanConvert(src, dst)
-
-proc canConvertStrict*(src, dst: VariantType): bool =
-  interfaceVariantCanConvertStrict(src, dst)
-
-proc clear*(self: Variant) =
-  const needs_deinit: array[VariantType, bool] = [
-    false, # NIL,
-    false, # BOOL,
-    false, # INT,
-    false, # FLOAT,
-    true, # STRING,
-    false, # VECTOR2,
-    false, # VECTOR2I,
-    false, # RECT2,
-    false, # RECT2I,
-    false, # VECTOR3,
-    false, # VECTOR3I,
-    true, # TRANSFORM2D,
-    false, # VECTOR4,
-    false, # VECTOR4I,
-    false, # PLANE,
-    false, # QUATERNION,
-    true, # AABB,
-    true, # BASIS,
-    true, # TRANSFORM3D,
-    true, # PROJECTION,
-
-    # misc types
-    false, # COLOR,
-    true, # STRING_NAME,
-    true, # NODE_PATH,
-    false, # RID,
-    true, # OBJECT,
-    true, # CALLABLE,
-    true, # SIGNAL,
-    true, # DICTIONARY,
-    true, # ARRAY,
-
-    # typed arrays
-    true, # PACKED_BYTE_ARRAY,
-    true, # PACKED_INT32_ARRAY,
-    true, # PACKED_INT64_ARRAY,
-    true, # PACKED_FLOAT32_ARRAY,
-    true, # PACKED_FLOAT64_ARRAY,
-    true, # PACKED_STRING_ARRAY,
-    true, # PACKED_VECTOR2_ARRAY,
-    true, # PACKED_VECTOR3_ARRAY,
-    true, # PACKED_COLOR_ARRAY,
-    true, # PACKED_VECTOR4_ARRAY,
-  ]
-
-  if unlikely(needs_deinit[self.variantType]):
-    interfaceVariantDestroy(addr self)
-  interfaceVariantNewNil(addr self)
