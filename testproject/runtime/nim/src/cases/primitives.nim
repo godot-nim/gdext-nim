@@ -34,6 +34,24 @@ runtime: suite "PackedArray":
     let s: seq[byte] = bytes.toSeq
     check s == @[byte 0, 1, 2, 3, 4, 5, 6, 7]
 
+  test "mutable iteration":
+    for b in bytes.mitems:
+      b = 255
+      check b == 255
+
+    for i, b in bytes.mpairs:
+      b = byte i
+      check b == byte i
+
+  test "immutable iteration":
+    for i, b in bytes:
+      check b == byte i
+
+    var i: int
+    for b in bytes:
+      check b == byte i
+      inc i
+
 runtime: suite "String":
   test "to nim-string":
     let gdstr: String = "String"
