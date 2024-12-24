@@ -1,15 +1,16 @@
-import std/macros
 import std/sets
 import std/tables
 
 import gdext/buildconf
-import gdext/gdinterface/[extracommands, objects, classDB]
+import gdext/gdinterface/[native, extracommands, objects, classDB]
 
+import gdext/utils/macros
+import gdext/core/builtinindex
 import gdext/core/gdclass
-
 import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
+import gdext/core/userclass/virtuals
 import gdext/gen/classindex
 import gdext/surface/classutils
 import gdext/surface/properties
@@ -115,7 +116,10 @@ template signal* {.pragma.}
 macro gdsync*(body): untyped =
   case body.kind
   of nnkMethodDef:
-    sync_methodDef(body)
+    if body.hasPragma("base"):
+      sync_virtualDef(body)
+    else:
+      sync_methodDef(body)
   of nnkProcDef, nnkConverterDef, nnkFuncDef:
     if body.isSignal:
       sync_signal(body)

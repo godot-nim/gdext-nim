@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyswbjsdvglbr"]
+[gd_scene load_steps=5 format=3 uid="uid://dyswbjsdvglbr"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_x2b6x"]
 [ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_x3ep8"]
+[ext_resource type="Script" path="res://inherited_node01.gd" id="3_6ul88"]
+[ext_resource type="Script" path="res://inherited_node02.gd" id="4_lmn8h"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x2b6x")
@@ -10,3 +12,13 @@ script = ExtResource("1_x2b6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="GDExtNode"]
 texture = ExtResource("2_x3ep8")
+
+[node name="VirtualNode01" type="VirtualNode01" parent="."]
+
+[node name="InheritedNode01" type="VirtualNode01" parent="."]
+script = ExtResource("3_6ul88")
+
+[node name="VirtualNode02" type="VirtualNode02" parent="."]
+
+[node name="InheritedNode02" type="VirtualNode02" parent="."]
+script = ExtResource("4_lmn8h")
