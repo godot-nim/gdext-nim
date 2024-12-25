@@ -1,4 +1,4 @@
-import std/unittest
+import testutils
 import std/tables
 
 import gdext
@@ -17,10 +17,6 @@ import gdext/classes/[
   gdResourceLoader,
 ]
 
-# paramFiltering tryes to access to `paramCount` and it cause `OSError`
-# because the program will finally be shared object(dll).
-unittest.disableParamFiltering()
-
 type GDExtNode* = ptr object of Node
   initialized: bool
   texture: gdref Texture2D
@@ -36,24 +32,6 @@ proc test_UserClass(self: GDExtNode) =
   suite "UserClass":
     test "initialize":
       check self.initialized
-
-proc test_SomeVariants(self: GDExtNode) =
-  suite "Some Variants":
-    test "String conversion":
-      let gdstr: String = "String"
-      check $gdstr == "String"
-    test "indexing":
-      var arr: PackedByteArray
-      check arr.size == 0
-      check arr.resize(3) == 0
-      check arr.size == 3
-      for i in 0..<3:
-        check arr[i] == 0
-      for i in 0..<3:
-        arr[i] = byte i
-      for i in 0..<3:
-        check arr[i] == byte i
-      check @(arr.data_unsafe.toOpenArray(0, 2)) == [0.byte, 1, 2]
 
 proc test_Object(self: GDExtNode) =
   suite "Object":
@@ -166,11 +144,10 @@ proc test_FirstClassFunction(self: GDExtNode) =
 # No specific pragma is needed.
 # based on Node.ready()
 method ready(self: GDExtNode) {.gdsync.} =
-  self.test_UserClass()
-  self.test_SomeVariants()
-  self.test_Object()
-  self.test_RefCounted()
-  self.test_Node()
-  self.test_Resource()
-  self.test_FirstclassFunction()
-  self.getTree.quit()
+  if not Engine.isEditorHint:
+    self.test_UserClass()
+    self.test_Object()
+    self.test_RefCounted()
+    self.test_Node()
+    self.test_Resource()
+    self.test_FirstclassFunction()

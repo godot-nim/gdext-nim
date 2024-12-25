@@ -1,6 +1,6 @@
 import gdext/buildconf
 
-Extension.name = "GdextTester"
+Extension.name = "NimMain"
 
 --path: "src"
 --path: "../../../src"

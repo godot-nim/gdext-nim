@@ -1,9 +1,8 @@
 import gdext
 import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D]
-import std/unittest
-unittest.disableParamFiltering()
+import testutils
 
-suite "Community Reported":
+runtime: suite "Community Reported":
 
   test "set a StandardMaterial3D crash? #134":
     let s : CSGSphere3D = instantiate CSGSphere3D

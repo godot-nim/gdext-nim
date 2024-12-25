@@ -1,8 +1,7 @@
 import gdext
-import std/unittest
-unittest.disableParamFiltering()
+import testutils
 
-suite "Variant":
+runtime: suite "Variant":
   test "has.*":
     var vresource = variant instantiate Resource
     var vstring = variant "hello, variant!"
