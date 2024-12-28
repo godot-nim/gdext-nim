@@ -6,76 +6,69 @@ import gdresource; export gdresource
 
 proc loadBufferViewData*(self: GLTFBufferView; state: gdref GLTFState): PackedByteArray =
   expandMethodBind(className GLTFBufferView, "load_buffer_view_data", 3945446907)
-  var `?param` = [getPtr state]
   var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr state], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
 proc getBuffer*(self: GLTFBufferView): int32 =
   expandMethodBind(className GLTFBufferView, "get_buffer", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setBuffer*(self: GLTFBufferView; buffer: int32): void =
   expandMethodBind(className GLTFBufferView, "set_buffer", 1286410249)
-  var `?param` = [getPtr buffer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr buffer])
 
 proc getByteOffset*(self: GLTFBufferView): int32 =
   expandMethodBind(className GLTFBufferView, "get_byte_offset", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setByteOffset*(self: GLTFBufferView; byteOffset: int32): void =
   expandMethodBind(className GLTFBufferView, "set_byte_offset", 1286410249)
-  var `?param` = [getPtr byteOffset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr byteOffset])
 
 proc getByteLength*(self: GLTFBufferView): int32 =
   expandMethodBind(className GLTFBufferView, "get_byte_length", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setByteLength*(self: GLTFBufferView; byteLength: int32): void =
   expandMethodBind(className GLTFBufferView, "set_byte_length", 1286410249)
-  var `?param` = [getPtr byteLength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr byteLength])
 
 proc getByteStride*(self: GLTFBufferView): int32 =
   expandMethodBind(className GLTFBufferView, "get_byte_stride", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setByteStride*(self: GLTFBufferView; byteStride: int32): void =
   expandMethodBind(className GLTFBufferView, "set_byte_stride", 1286410249)
-  var `?param` = [getPtr byteStride]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr byteStride])
 
 proc getIndices*(self: GLTFBufferView): bool =
   expandMethodBind(className GLTFBufferView, "get_indices", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setIndices*(self: GLTFBufferView; indices: bool): void =
   expandMethodBind(className GLTFBufferView, "set_indices", 2586408642)
-  var `?param` = [getPtr indices]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr indices])
 
 proc getVertexAttributes*(self: GLTFBufferView): bool =
   expandMethodBind(className GLTFBufferView, "get_vertex_attributes", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setVertexAttributes*(self: GLTFBufferView; isAttributes: bool): void =
   expandMethodBind(className GLTFBufferView, "set_vertex_attributes", 2586408642)
-  var `?param` = [getPtr isAttributes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr isAttributes])
 
 template buffer*(self: GLTFBufferView): untyped = self.getBuffer()
 template `buffer=`*(self: GLTFBufferView; value) = self.setBuffer(value)

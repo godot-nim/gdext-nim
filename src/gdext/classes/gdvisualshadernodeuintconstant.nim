@@ -6,13 +6,12 @@ import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
 
 proc setConstant*(self: VisualShaderNodeUIntConstant; constant: int32): void =
   expandMethodBind(className VisualShaderNodeUIntConstant, "set_constant", 1286410249)
-  var `?param` = [getPtr constant]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr constant])
 
 proc getConstant*(self: VisualShaderNodeUIntConstant): int32 =
   expandMethodBind(className VisualShaderNodeUIntConstant, "get_constant", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template constant*(self: VisualShaderNodeUIntConstant): untyped = self.getConstant()

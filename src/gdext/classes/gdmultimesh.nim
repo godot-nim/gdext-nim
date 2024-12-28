@@ -6,145 +6,129 @@ import gdresource; export gdresource
 
 proc setMesh*(self: MultiMesh; mesh: gdref Mesh): void =
   expandMethodBind(className MultiMesh, "set_mesh", 194775623)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getMesh*(self: MultiMesh): gdref Mesh =
   expandMethodBind(className MultiMesh, "get_mesh", 1808005922)
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc setUseColors*(self: MultiMesh; enable: bool): void =
   expandMethodBind(className MultiMesh, "set_use_colors", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isUsingColors*(self: MultiMesh): bool =
   expandMethodBind(className MultiMesh, "is_using_colors", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setUseCustomData*(self: MultiMesh; enable: bool): void =
   expandMethodBind(className MultiMesh, "set_use_custom_data", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isUsingCustomData*(self: MultiMesh): bool =
   expandMethodBind(className MultiMesh, "is_using_custom_data", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTransformFormat*(self: MultiMesh; format: MultiMesh_TransformFormat): void =
   expandMethodBind(className MultiMesh, "set_transform_format", 2404750322)
-  var `?param` = [getPtr format]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr format])
 
 proc getTransformFormat*(self: MultiMesh): MultiMesh_TransformFormat =
   expandMethodBind(className MultiMesh, "get_transform_format", 2444156481)
   var ret: encoded MultiMesh_TransformFormat
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(MultiMesh_TransformFormat)
 
 proc setInstanceCount*(self: MultiMesh; count: int32): void =
   expandMethodBind(className MultiMesh, "set_instance_count", 1286410249)
-  var `?param` = [getPtr count]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr count])
 
 proc getInstanceCount*(self: MultiMesh): int32 =
   expandMethodBind(className MultiMesh, "get_instance_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setVisibleInstanceCount*(self: MultiMesh; count: int32): void =
   expandMethodBind(className MultiMesh, "set_visible_instance_count", 1286410249)
-  var `?param` = [getPtr count]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr count])
 
 proc getVisibleInstanceCount*(self: MultiMesh): int32 =
   expandMethodBind(className MultiMesh, "get_visible_instance_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setInstanceTransform*(self: MultiMesh; instance: int32; transform: Transform3D): void =
   expandMethodBind(className MultiMesh, "set_instance_transform", 3616898986)
-  var `?param` = [getPtr instance, getPtr transform]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr instance, getPtr transform])
 
 proc setInstanceTransform2D*(self: MultiMesh; instance: int32; transform: Transform2D): void =
   expandMethodBind(className MultiMesh, "set_instance_transform_2d", 30160968)
-  var `?param` = [getPtr instance, getPtr transform]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr instance, getPtr transform])
 
 proc getInstanceTransform*(self: MultiMesh; instance: int32): Transform3D =
   expandMethodBind(className MultiMesh, "get_instance_transform", 1965739696)
-  var `?param` = [getPtr instance]
   var ret: encoded Transform3D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr instance], addr ret)
   (addr ret).decode_result(Transform3D)
 
 proc getInstanceTransform2D*(self: MultiMesh; instance: int32): Transform2D =
   expandMethodBind(className MultiMesh, "get_instance_transform_2d", 3836996910)
-  var `?param` = [getPtr instance]
   var ret: encoded Transform2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr instance], addr ret)
   (addr ret).decode_result(Transform2D)
 
 proc setInstanceColor*(self: MultiMesh; instance: int32; color: Color): void =
   expandMethodBind(className MultiMesh, "set_instance_color", 2878471219)
-  var `?param` = [getPtr instance, getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr instance, getPtr color])
 
 proc getInstanceColor*(self: MultiMesh; instance: int32): Color =
   expandMethodBind(className MultiMesh, "get_instance_color", 3457211756)
-  var `?param` = [getPtr instance]
   var ret: encoded Color
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr instance], addr ret)
   (addr ret).decode_result(Color)
 
 proc setInstanceCustomData*(self: MultiMesh; instance: int32; customData: Color): void =
   expandMethodBind(className MultiMesh, "set_instance_custom_data", 2878471219)
-  var `?param` = [getPtr instance, getPtr customData]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr instance, getPtr customData])
 
 proc getInstanceCustomData*(self: MultiMesh; instance: int32): Color =
   expandMethodBind(className MultiMesh, "get_instance_custom_data", 3457211756)
-  var `?param` = [getPtr instance]
   var ret: encoded Color
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr instance], addr ret)
   (addr ret).decode_result(Color)
 
 proc setCustomAabb*(self: MultiMesh; aabb: AABB): void =
   expandMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
-  var `?param` = [getPtr aabb]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr aabb])
 
 proc getCustomAabb*(self: MultiMesh): AABB =
   expandMethodBind(className MultiMesh, "get_custom_aabb", 1068685055)
   var ret: encoded AABB
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AABB)
 
 proc getAabb*(self: MultiMesh): AABB =
   expandMethodBind(className MultiMesh, "get_aabb", 1068685055)
   var ret: encoded AABB
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AABB)
 
 proc getBuffer*(self: MultiMesh): PackedFloat32Array =
   expandMethodBind(className MultiMesh, "get_buffer", 675695659)
   var ret: encoded PackedFloat32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedFloat32Array)
 
 proc setBuffer*(self: MultiMesh; buffer: PackedFloat32Array): void =
   expandMethodBind(className MultiMesh, "set_buffer", 2899603908)
-  var `?param` = [getPtr buffer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr buffer])
 
 template transformFormat*(self: MultiMesh): untyped = self.getTransformFormat()
 template `transformFormat=`*(self: MultiMesh; value) = self.setTransformFormat(value)

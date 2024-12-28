@@ -162,31 +162,29 @@ template getVelocityTexture_bind*(_: typedesc[XRInterfaceExtension]): ClassCallV
 proc getColorTexture*(self: XRInterfaceExtension): RID =
   expandMethodBind(className XRInterfaceExtension, "get_color_texture", 529393457)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc getDepthTexture*(self: XRInterfaceExtension): RID =
   expandMethodBind(className XRInterfaceExtension, "get_depth_texture", 529393457)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc getVelocityTexture*(self: XRInterfaceExtension): RID =
   expandMethodBind(className XRInterfaceExtension, "get_velocity_texture", 529393457)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc addBlit*(self: XRInterfaceExtension; renderTarget: RID; srcRect: Rect2; dstRect: Rect2i; useLayer: bool; layer: uint32; applyLensDistortion: bool; eyeCenter: Vector2; k1: float64; k2: float64; upscale: float64; aspectRatio: float64): void =
   expandMethodBind(className XRInterfaceExtension, "add_blit", 258596971)
-  var `?param` = [getPtr renderTarget, getPtr srcRect, getPtr dstRect, getPtr useLayer, getPtr layer, getPtr applyLensDistortion, getPtr eyeCenter, getPtr k1, getPtr k2, getPtr upscale, getPtr aspectRatio]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr renderTarget, getPtr srcRect, getPtr dstRect, getPtr useLayer, getPtr layer, getPtr applyLensDistortion, getPtr eyeCenter, getPtr k1, getPtr k2, getPtr upscale, getPtr aspectRatio])
 
 proc getRenderTargetTexture*(self: XRInterfaceExtension; renderTarget: RID): RID =
   expandMethodBind(className XRInterfaceExtension, "get_render_target_texture", 41030802)
-  var `?param` = [getPtr renderTarget]
   var ret: encoded RID
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr renderTarget], addr ret)
   (addr ret).decode_result(RID)
 
 const XRInterfaceExtension_vmap =

@@ -46,20 +46,17 @@ template postProcess_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallV
 
 proc getOptionValue*(self: EditorScenePostImportPlugin; name: StringName): Variant =
   expandMethodBind(className EditorScenePostImportPlugin, "get_option_value", 2760726917)
-  var `?param` = [getPtr name]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
 proc addImportOption*(self: EditorScenePostImportPlugin; name: String; value: Variant): void =
   expandMethodBind(className EditorScenePostImportPlugin, "add_import_option", 402577236)
-  var `?param` = [getPtr name, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr value])
 
 proc addImportOptionAdvanced*(self: EditorScenePostImportPlugin; `type`: Variant_Type; name: String; defaultValue: Variant; hint: PropertyHint = propertyHintNone; hintString: String = gdstring""; usageFlags: int32 = 6): void =
   expandMethodBind(className EditorScenePostImportPlugin, "add_import_option_advanced", 3674075649)
-  var `?param` = [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags])
 
 const EditorScenePostImportPlugin_vmap =
   RefCounted.vmap.concat toTable {

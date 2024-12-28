@@ -6,13 +6,12 @@ import gdinputeventgesture; export gdinputeventgesture
 
 proc setFactor*(self: InputEventMagnifyGesture; factor: Float): void =
   expandMethodBind(className InputEventMagnifyGesture, "set_factor", 373806689)
-  var `?param` = [getPtr factor]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr factor])
 
 proc getFactor*(self: InputEventMagnifyGesture): Float =
   expandMethodBind(className InputEventMagnifyGesture, "get_factor", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template factor*(self: InputEventMagnifyGesture): untyped = self.getFactor()

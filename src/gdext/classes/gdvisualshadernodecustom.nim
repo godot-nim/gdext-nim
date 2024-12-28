@@ -111,9 +111,8 @@ template isAvailable_bind*(_: typedesc[VisualShaderNodeCustom]): ClassCallVirtua
 
 proc getOptionIndex*(self: VisualShaderNodeCustom; option: int32): int32 =
   expandMethodBind(className VisualShaderNodeCustom, "get_option_index", 923996154)
-  var `?param` = [getPtr option]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr option], addr ret)
   (addr ret).decode_result(int32)
 
 template initialized*(self: VisualShaderNodeCustom): untyped = self.isInitialized()

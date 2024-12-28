@@ -6,35 +6,32 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setSize*(self: FogVolume; size: Vector3): void =
   expandMethodBind(className FogVolume, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: FogVolume): Vector3 =
   expandMethodBind(className FogVolume, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setShape*(self: FogVolume; shape: RenderingServer_FogVolumeShape): void =
   expandMethodBind(className FogVolume, "set_shape", 1416323362)
-  var `?param` = [getPtr shape]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shape])
 
 proc getShape*(self: FogVolume): RenderingServer_FogVolumeShape =
   expandMethodBind(className FogVolume, "get_shape", 3920334604)
   var ret: encoded RenderingServer_FogVolumeShape
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingServer_FogVolumeShape)
 
 proc setMaterial*(self: FogVolume; material: gdref Material): void =
   expandMethodBind(className FogVolume, "set_material", 2757459619)
-  var `?param` = [getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr material])
 
 proc getMaterial*(self: FogVolume): gdref Material =
   expandMethodBind(className FogVolume, "get_material", 5934680)
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
 template size*(self: FogVolume): untyped = self.getSize()

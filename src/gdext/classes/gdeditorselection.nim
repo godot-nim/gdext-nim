@@ -6,28 +6,26 @@ import gdobject; export gdobject
 
 proc clear*(self: EditorSelection): void =
   expandMethodBind(className EditorSelection, "clear", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc addNode*(self: EditorSelection; node: Node): void =
   expandMethodBind(className EditorSelection, "add_node", 1078189570)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc removeNode*(self: EditorSelection; node: Node): void =
   expandMethodBind(className EditorSelection, "remove_node", 1078189570)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc getSelectedNodes*(self: EditorSelection): TypedArray[Node] =
   expandMethodBind(className EditorSelection, "get_selected_nodes", 2915620761)
   var ret: encoded TypedArray[Node]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Node])
 
 proc getTransformableSelectedNodes*(self: EditorSelection): TypedArray[Node] =
   expandMethodBind(className EditorSelection, "get_transformable_selected_nodes", 2915620761)
   var ret: encoded TypedArray[Node]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Node])
 
 const EditorSelection_vmap =

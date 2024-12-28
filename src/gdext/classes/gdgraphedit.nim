@@ -26,391 +26,349 @@ template isNodeHoverValid_bind*(_: typedesc[GraphEdit]): ClassCallVirtual = isNo
 
 proc connectNode*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): Error =
   expandMethodBind(className GraphEdit, "connect_node", 195065850)
-  var `?param` = [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort]
   var ret: encoded Error
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort], addr ret)
   (addr ret).decode_result(Error)
 
 proc isNodeConnected*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): bool =
   expandMethodBind(className GraphEdit, "is_node_connected", 4216241294)
-  var `?param` = [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort], addr ret)
   (addr ret).decode_result(bool)
 
 proc disconnectNode*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): void =
   expandMethodBind(className GraphEdit, "disconnect_node", 1933654315)
-  var `?param` = [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort])
 
 proc setConnectionActivity*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32; amount: Float): void =
   expandMethodBind(className GraphEdit, "set_connection_activity", 1141899943)
-  var `?param` = [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr amount])
 
 proc getConnectionList*(self: GraphEdit): TypedArray[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connection_list", 3995934104)
   var ret: encoded TypedArray[Dictionary]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
 proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: Float = 4.0): Dictionary =
   expandMethodBind(className GraphEdit, "get_closest_connection_at_point", 453879819)
-  var `?param` = [getPtr point, getPtr maxDistance]
   var ret: encoded Dictionary
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr point, getPtr maxDistance], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): TypedArray[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connections_intersecting_with_rect", 2709748719)
-  var `?param` = [getPtr rect]
   var ret: encoded TypedArray[Dictionary]
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr rect], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
 proc clearConnections*(self: GraphEdit): void =
   expandMethodBind(className GraphEdit, "clear_connections", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc forceConnectionDragEnd*(self: GraphEdit): void =
   expandMethodBind(className GraphEdit, "force_connection_drag_end", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc getScrollOffset*(self: GraphEdit): Vector2 =
   expandMethodBind(className GraphEdit, "get_scroll_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setScrollOffset*(self: GraphEdit; offset: Vector2): void =
   expandMethodBind(className GraphEdit, "set_scroll_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc addValidRightDisconnectType*(self: GraphEdit; `type`: int32): void =
   expandMethodBind(className GraphEdit, "add_valid_right_disconnect_type", 1286410249)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc removeValidRightDisconnectType*(self: GraphEdit; `type`: int32): void =
   expandMethodBind(className GraphEdit, "remove_valid_right_disconnect_type", 1286410249)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc addValidLeftDisconnectType*(self: GraphEdit; `type`: int32): void =
   expandMethodBind(className GraphEdit, "add_valid_left_disconnect_type", 1286410249)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc removeValidLeftDisconnectType*(self: GraphEdit; `type`: int32): void =
   expandMethodBind(className GraphEdit, "remove_valid_left_disconnect_type", 1286410249)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc addValidConnectionType*(self: GraphEdit; fromType: int32; toType: int32): void =
   expandMethodBind(className GraphEdit, "add_valid_connection_type", 3937882851)
-  var `?param` = [getPtr fromType, getPtr toType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fromType, getPtr toType])
 
 proc removeValidConnectionType*(self: GraphEdit; fromType: int32; toType: int32): void =
   expandMethodBind(className GraphEdit, "remove_valid_connection_type", 3937882851)
-  var `?param` = [getPtr fromType, getPtr toType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fromType, getPtr toType])
 
 proc isValidConnectionType*(self: GraphEdit; fromType: int32; toType: int32): bool =
   expandMethodBind(className GraphEdit, "is_valid_connection_type", 2522259332)
-  var `?param` = [getPtr fromType, getPtr toType]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr fromType, getPtr toType], addr ret)
   (addr ret).decode_result(bool)
 
 proc getConnectionLine*(self: GraphEdit; fromNode: Vector2; toNode: Vector2): PackedVector2Array =
   expandMethodBind(className GraphEdit, "get_connection_line", 3932192302)
-  var `?param` = [getPtr fromNode, getPtr toNode]
   var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr toNode], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
 proc attachGraphElementToFrame*(self: GraphEdit; element: StringName; frame: StringName): void =
   expandMethodBind(className GraphEdit, "attach_graph_element_to_frame", 3740211285)
-  var `?param` = [getPtr element, getPtr frame]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr element, getPtr frame])
 
 proc detachGraphElementFromFrame*(self: GraphEdit; element: StringName): void =
   expandMethodBind(className GraphEdit, "detach_graph_element_from_frame", 3304788590)
-  var `?param` = [getPtr element]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr element])
 
 proc getElementFrame*(self: GraphEdit; element: StringName): GraphFrame =
   expandMethodBind(className GraphEdit, "get_element_frame", 988084372)
-  var `?param` = [getPtr element]
   var ret: encoded GraphFrame
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr element], addr ret)
   (addr ret).decode_result(GraphFrame)
 
 proc getAttachedNodesOfFrame*(self: GraphEdit; frame: StringName): TypedArray[StringName] =
   expandMethodBind(className GraphEdit, "get_attached_nodes_of_frame", 689397652)
-  var `?param` = [getPtr frame]
   var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr frame], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
 
 proc setPanningScheme*(self: GraphEdit; scheme: GraphEdit_PanningScheme): void =
   expandMethodBind(className GraphEdit, "set_panning_scheme", 18893313)
-  var `?param` = [getPtr scheme]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scheme])
 
 proc getPanningScheme*(self: GraphEdit): GraphEdit_PanningScheme =
   expandMethodBind(className GraphEdit, "get_panning_scheme", 549924446)
   var ret: encoded GraphEdit_PanningScheme
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GraphEdit_PanningScheme)
 
 proc setZoom*(self: GraphEdit; zoom: Float): void =
   expandMethodBind(className GraphEdit, "set_zoom", 373806689)
-  var `?param` = [getPtr zoom]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr zoom])
 
 proc getZoom*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_zoom", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setZoomMin*(self: GraphEdit; zoomMin: Float): void =
   expandMethodBind(className GraphEdit, "set_zoom_min", 373806689)
-  var `?param` = [getPtr zoomMin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr zoomMin])
 
 proc getZoomMin*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_zoom_min", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setZoomMax*(self: GraphEdit; zoomMax: Float): void =
   expandMethodBind(className GraphEdit, "set_zoom_max", 373806689)
-  var `?param` = [getPtr zoomMax]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr zoomMax])
 
 proc getZoomMax*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_zoom_max", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setZoomStep*(self: GraphEdit; zoomStep: Float): void =
   expandMethodBind(className GraphEdit, "set_zoom_step", 373806689)
-  var `?param` = [getPtr zoomStep]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr zoomStep])
 
 proc getZoomStep*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_zoom_step", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setShowGrid*(self: GraphEdit; enable: bool): void =
   expandMethodBind(className GraphEdit, "set_show_grid", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isShowingGrid*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_grid", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setGridPattern*(self: GraphEdit; pattern: GraphEdit_GridPattern): void =
   expandMethodBind(className GraphEdit, "set_grid_pattern", 1074098205)
-  var `?param` = [getPtr pattern]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pattern])
 
 proc getGridPattern*(self: GraphEdit): GraphEdit_GridPattern =
   expandMethodBind(className GraphEdit, "get_grid_pattern", 1286127528)
   var ret: encoded GraphEdit_GridPattern
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GraphEdit_GridPattern)
 
 proc setSnappingEnabled*(self: GraphEdit; enable: bool): void =
   expandMethodBind(className GraphEdit, "set_snapping_enabled", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isSnappingEnabled*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_snapping_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSnappingDistance*(self: GraphEdit; pixels: int32): void =
   expandMethodBind(className GraphEdit, "set_snapping_distance", 1286410249)
-  var `?param` = [getPtr pixels]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pixels])
 
 proc getSnappingDistance*(self: GraphEdit): int32 =
   expandMethodBind(className GraphEdit, "get_snapping_distance", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setConnectionLinesCurvature*(self: GraphEdit; curvature: Float): void =
   expandMethodBind(className GraphEdit, "set_connection_lines_curvature", 373806689)
-  var `?param` = [getPtr curvature]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curvature])
 
 proc getConnectionLinesCurvature*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_connection_lines_curvature", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setConnectionLinesThickness*(self: GraphEdit; pixels: Float): void =
   expandMethodBind(className GraphEdit, "set_connection_lines_thickness", 373806689)
-  var `?param` = [getPtr pixels]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pixels])
 
 proc getConnectionLinesThickness*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_connection_lines_thickness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setConnectionLinesAntialiased*(self: GraphEdit; pixels: bool): void =
   expandMethodBind(className GraphEdit, "set_connection_lines_antialiased", 2586408642)
-  var `?param` = [getPtr pixels]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pixels])
 
 proc isConnectionLinesAntialiased*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_connection_lines_antialiased", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMinimapSize*(self: GraphEdit; size: Vector2): void =
   expandMethodBind(className GraphEdit, "set_minimap_size", 743155724)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getMinimapSize*(self: GraphEdit): Vector2 =
   expandMethodBind(className GraphEdit, "get_minimap_size", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setMinimapOpacity*(self: GraphEdit; opacity: Float): void =
   expandMethodBind(className GraphEdit, "set_minimap_opacity", 373806689)
-  var `?param` = [getPtr opacity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr opacity])
 
 proc getMinimapOpacity*(self: GraphEdit): Float =
   expandMethodBind(className GraphEdit, "get_minimap_opacity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMinimapEnabled*(self: GraphEdit; enable: bool): void =
   expandMethodBind(className GraphEdit, "set_minimap_enabled", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isMinimapEnabled*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_minimap_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowMenu*(self: GraphEdit; hidden: bool): void =
   expandMethodBind(className GraphEdit, "set_show_menu", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isShowingMenu*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_menu", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowZoomLabel*(self: GraphEdit; enable: bool): void =
   expandMethodBind(className GraphEdit, "set_show_zoom_label", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isShowingZoomLabel*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_zoom_label", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowGridButtons*(self: GraphEdit; hidden: bool): void =
   expandMethodBind(className GraphEdit, "set_show_grid_buttons", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isShowingGridButtons*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_grid_buttons", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowZoomButtons*(self: GraphEdit; hidden: bool): void =
   expandMethodBind(className GraphEdit, "set_show_zoom_buttons", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isShowingZoomButtons*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_zoom_buttons", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowMinimapButton*(self: GraphEdit; hidden: bool): void =
   expandMethodBind(className GraphEdit, "set_show_minimap_button", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isShowingMinimapButton*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_minimap_button", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShowArrangeButton*(self: GraphEdit; hidden: bool): void =
   expandMethodBind(className GraphEdit, "set_show_arrange_button", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isShowingArrangeButton*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_showing_arrange_button", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRightDisconnects*(self: GraphEdit; enable: bool): void =
   expandMethodBind(className GraphEdit, "set_right_disconnects", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isRightDisconnectsEnabled*(self: GraphEdit): bool =
   expandMethodBind(className GraphEdit, "is_right_disconnects_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getMenuHbox*(self: GraphEdit): HBoxContainer =
   expandMethodBind(className GraphEdit, "get_menu_hbox", 3590609951)
   var ret: encoded HBoxContainer
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(HBoxContainer)
 
 proc arrangeNodes*(self: GraphEdit): void =
   expandMethodBind(className GraphEdit, "arrange_nodes", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setSelected*(self: GraphEdit; node: Node): void =
   expandMethodBind(className GraphEdit, "set_selected", 1078189570)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 template scrollOffset*(self: GraphEdit): untyped = self.getScrollOffset()
 template `scrollOffset=`*(self: GraphEdit; value) = self.setScrollOffset(value)

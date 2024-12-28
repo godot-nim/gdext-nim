@@ -7,13 +7,12 @@ import gdvboxcontainer; export gdvboxcontainer
 proc getBaseEditor*(self: ScriptEditorBase): Control =
   expandMethodBind(className ScriptEditorBase, "get_base_editor", 2783021301)
   var ret: encoded Control
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control)
 
 proc addSyntaxHighlighter*(self: ScriptEditorBase; highlighter: gdref EditorSyntaxHighlighter): void =
   expandMethodBind(className ScriptEditorBase, "add_syntax_highlighter", 1092774468)
-  var `?param` = [getPtr highlighter]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr highlighter])
 
 const ScriptEditorBase_vmap =
   VBoxContainer.vmap.concat initTable[string, string]()

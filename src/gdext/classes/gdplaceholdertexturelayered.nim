@@ -6,19 +6,17 @@ import gdtexturelayered; export gdtexturelayered
 
 proc setSize*(self: PlaceholderTextureLayered; size: Vector2i): void =
   expandMethodBind(className PlaceholderTextureLayered, "set_size", 1130785943)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: PlaceholderTextureLayered): Vector2i =
   expandMethodBind(className PlaceholderTextureLayered, "get_size", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc setLayers*(self: PlaceholderTextureLayered; layers: int32): void =
   expandMethodBind(className PlaceholderTextureLayered, "set_layers", 1286410249)
-  var `?param` = [getPtr layers]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layers])
 
 template size*(self: PlaceholderTextureLayered): untyped = self.getSize()
 template `size=`*(self: PlaceholderTextureLayered; value) = self.setSize(value)

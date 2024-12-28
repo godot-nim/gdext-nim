@@ -71,9 +71,8 @@ template canImportThreaded_bind*(_: typedesc[EditorImportPlugin]): ClassCallVirt
 
 proc appendImportExternalResource*(self: EditorImportPlugin; path: String; customOptions: Dictionary = dictionary(); customImporter: String = gdstring""; generatorParameters: Variant = default(Variant)): Error =
   expandMethodBind(className EditorImportPlugin, "append_import_external_resource", 320493106)
-  var `?param` = [getPtr path, getPtr customOptions, getPtr customImporter, getPtr generatorParameters]
   var ret: encoded Error
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr path, getPtr customOptions, getPtr customImporter, getPtr generatorParameters], addr ret)
   (addr ret).decode_result(Error)
 
 const EditorImportPlugin_vmap =

@@ -6,46 +6,42 @@ import gdjoint2d; export gdjoint2d
 
 proc setLength*(self: DampedSpringJoint2D; length: Float): void =
   expandMethodBind(className DampedSpringJoint2D, "set_length", 373806689)
-  var `?param` = [getPtr length]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr length])
 
 proc getLength*(self: DampedSpringJoint2D): Float =
   expandMethodBind(className DampedSpringJoint2D, "get_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRestLength*(self: DampedSpringJoint2D; restLength: Float): void =
   expandMethodBind(className DampedSpringJoint2D, "set_rest_length", 373806689)
-  var `?param` = [getPtr restLength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr restLength])
 
 proc getRestLength*(self: DampedSpringJoint2D): Float =
   expandMethodBind(className DampedSpringJoint2D, "get_rest_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setStiffness*(self: DampedSpringJoint2D; stiffness: Float): void =
   expandMethodBind(className DampedSpringJoint2D, "set_stiffness", 373806689)
-  var `?param` = [getPtr stiffness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr stiffness])
 
 proc getStiffness*(self: DampedSpringJoint2D): Float =
   expandMethodBind(className DampedSpringJoint2D, "get_stiffness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDamping*(self: DampedSpringJoint2D; damping: Float): void =
   expandMethodBind(className DampedSpringJoint2D, "set_damping", 373806689)
-  var `?param` = [getPtr damping]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr damping])
 
 proc getDamping*(self: DampedSpringJoint2D): Float =
   expandMethodBind(className DampedSpringJoint2D, "get_damping", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template length*(self: DampedSpringJoint2D): untyped = self.getLength()

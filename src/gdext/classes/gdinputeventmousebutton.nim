@@ -6,45 +6,40 @@ import gdinputeventmouse; export gdinputeventmouse
 
 proc setFactor*(self: InputEventMouseButton; factor: Float): void =
   expandMethodBind(className InputEventMouseButton, "set_factor", 373806689)
-  var `?param` = [getPtr factor]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr factor])
 
 proc getFactor*(self: InputEventMouseButton): Float =
   expandMethodBind(className InputEventMouseButton, "get_factor", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setButtonIndex*(self: InputEventMouseButton; buttonIndex: MouseButton): void =
   expandMethodBind(className InputEventMouseButton, "set_button_index", 3624991109)
-  var `?param` = [getPtr buttonIndex]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr buttonIndex])
 
 proc getButtonIndex*(self: InputEventMouseButton): MouseButton =
   expandMethodBind(className InputEventMouseButton, "get_button_index", 1132662608)
   var ret: encoded MouseButton
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(MouseButton)
 
 proc setPressed*(self: InputEventMouseButton; pressed: bool): void =
   expandMethodBind(className InputEventMouseButton, "set_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc setCanceled*(self: InputEventMouseButton; canceled: bool): void =
   expandMethodBind(className InputEventMouseButton, "set_canceled", 2586408642)
-  var `?param` = [getPtr canceled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr canceled])
 
 proc setDoubleClick*(self: InputEventMouseButton; doubleClick: bool): void =
   expandMethodBind(className InputEventMouseButton, "set_double_click", 2586408642)
-  var `?param` = [getPtr doubleClick]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr doubleClick])
 
 proc isDoubleClick*(self: InputEventMouseButton): bool =
   expandMethodBind(className InputEventMouseButton, "is_double_click", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template factor*(self: InputEventMouseButton): untyped = self.getFactor()

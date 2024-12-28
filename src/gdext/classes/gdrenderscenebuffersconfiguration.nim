@@ -7,101 +7,92 @@ import gdrefcounted; export gdrefcounted
 proc getRenderTarget*(self: RenderSceneBuffersConfiguration): RID =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc setRenderTarget*(self: RenderSceneBuffersConfiguration; renderTarget: RID): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_render_target", 2722037293)
-  var `?param` = [getPtr renderTarget]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr renderTarget])
 
 proc getInternalSize*(self: RenderSceneBuffersConfiguration): Vector2i =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_internal_size", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc setInternalSize*(self: RenderSceneBuffersConfiguration; internalSize: Vector2i): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_internal_size", 1130785943)
-  var `?param` = [getPtr internalSize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr internalSize])
 
 proc getTargetSize*(self: RenderSceneBuffersConfiguration): Vector2i =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_target_size", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc setTargetSize*(self: RenderSceneBuffersConfiguration; targetSize: Vector2i): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_target_size", 1130785943)
-  var `?param` = [getPtr targetSize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr targetSize])
 
 proc getViewCount*(self: RenderSceneBuffersConfiguration): uint32 =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_view_count", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setViewCount*(self: RenderSceneBuffersConfiguration; viewCount: uint32): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_view_count", 1286410249)
-  var `?param` = [getPtr viewCount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr viewCount])
 
 proc getScaling3DMode*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScaling3DMode =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_scaling_3d_mode", 976778074)
   var ret: encoded RenderingServer_ViewportScaling3DMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingServer_ViewportScaling3DMode)
 
 proc setScaling3DMode*(self: RenderSceneBuffersConfiguration; scaling3DMode: RenderingServer_ViewportScaling3DMode): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_scaling_3d_mode", 447477857)
-  var `?param` = [getPtr scaling3DMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scaling3DMode])
 
 proc getMsaa3D*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportMSAA =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_msaa_3d", 3109158617)
   var ret: encoded RenderingServer_ViewportMSAA
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingServer_ViewportMSAA)
 
 proc setMsaa3D*(self: RenderSceneBuffersConfiguration; msaa3D: RenderingServer_ViewportMSAA): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_msaa_3d", 3952630748)
-  var `?param` = [getPtr msaa3D]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr msaa3D])
 
 proc getScreenSpaceAa*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScreenSpaceAA =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_screen_space_aa", 641513172)
   var ret: encoded RenderingServer_ViewportScreenSpaceAA
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingServer_ViewportScreenSpaceAA)
 
 proc setScreenSpaceAa*(self: RenderSceneBuffersConfiguration; screenSpaceAa: RenderingServer_ViewportScreenSpaceAA): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_screen_space_aa", 139543108)
-  var `?param` = [getPtr screenSpaceAa]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr screenSpaceAa])
 
 proc getFsrSharpness*(self: RenderSceneBuffersConfiguration): Float =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_fsr_sharpness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFsrSharpness*(self: RenderSceneBuffersConfiguration; fsrSharpness: Float): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_fsr_sharpness", 373806689)
-  var `?param` = [getPtr fsrSharpness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fsrSharpness])
 
 proc getTextureMipmapBias*(self: RenderSceneBuffersConfiguration): Float =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_texture_mipmap_bias", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTextureMipmapBias*(self: RenderSceneBuffersConfiguration; textureMipmapBias: Float): void =
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_texture_mipmap_bias", 373806689)
-  var `?param` = [getPtr textureMipmapBias]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr textureMipmapBias])
 
 template renderTarget*(self: RenderSceneBuffersConfiguration): untyped = self.getRenderTarget()
 template `renderTarget=`*(self: RenderSceneBuffersConfiguration; value) = self.setRenderTarget(value)

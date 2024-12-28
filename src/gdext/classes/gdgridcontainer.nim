@@ -6,13 +6,12 @@ import gdcontainer; export gdcontainer
 
 proc setColumns*(self: GridContainer; columns: int32): void =
   expandMethodBind(className GridContainer, "set_columns", 1286410249)
-  var `?param` = [getPtr columns]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr columns])
 
 proc getColumns*(self: GridContainer): int32 =
   expandMethodBind(className GridContainer, "get_columns", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template columns*(self: GridContainer): untyped = self.getColumns()

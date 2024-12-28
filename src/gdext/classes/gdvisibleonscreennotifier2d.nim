@@ -6,19 +6,18 @@ import gdnode2d; export gdnode2d
 
 proc setRect*(self: VisibleOnScreenNotifier2D; rect: Rect2): void =
   expandMethodBind(className VisibleOnScreenNotifier2D, "set_rect", 2046264180)
-  var `?param` = [getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rect])
 
 proc getRect*(self: VisibleOnScreenNotifier2D): Rect2 =
   expandMethodBind(className VisibleOnScreenNotifier2D, "get_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc isOnScreen*(self: VisibleOnScreenNotifier2D): bool =
   expandMethodBind(className VisibleOnScreenNotifier2D, "is_on_screen", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template rect*(self: VisibleOnScreenNotifier2D): untyped = self.getRect()

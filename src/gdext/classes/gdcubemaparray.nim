@@ -7,7 +7,7 @@ import gdimagetexturelayered; export gdimagetexturelayered
 proc createPlaceholder*(self: CubemapArray): gdref Resource =
   expandMethodBind(className CubemapArray, "create_placeholder", 121922552)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 const CubemapArray_vmap =

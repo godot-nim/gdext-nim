@@ -6,13 +6,12 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setOpType*(self: VisualShaderNodeParticleRandomness; `type`: VisualShaderNodeParticleRandomness_OpType): void =
   expandMethodBind(className VisualShaderNodeParticleRandomness, "set_op_type", 2060089061)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc getOpType*(self: VisualShaderNodeParticleRandomness): VisualShaderNodeParticleRandomness_OpType =
   expandMethodBind(className VisualShaderNodeParticleRandomness, "get_op_type", 3597061078)
   var ret: encoded VisualShaderNodeParticleRandomness_OpType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeParticleRandomness_OpType)
 
 template opType*(self: VisualShaderNodeParticleRandomness): untyped = self.getOpType()

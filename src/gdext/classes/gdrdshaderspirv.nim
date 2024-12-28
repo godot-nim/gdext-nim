@@ -6,26 +6,22 @@ import gdresource; export gdresource
 
 proc setStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
   expandMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)
-  var `?param` = [getPtr stage, getPtr bytecode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr stage, getPtr bytecode])
 
 proc getStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): PackedByteArray =
   expandMethodBind(className RDShaderSPIRV, "get_stage_bytecode", 3816765404)
-  var `?param` = [getPtr stage]
   var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr stage], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
 proc setStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; compileError: String): void =
   expandMethodBind(className RDShaderSPIRV, "set_stage_compile_error", 620821314)
-  var `?param` = [getPtr stage, getPtr compileError]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr stage, getPtr compileError])
 
 proc getStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): String =
   expandMethodBind(className RDShaderSPIRV, "get_stage_compile_error", 3354920045)
-  var `?param` = [getPtr stage]
   var ret: encoded String
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr stage], addr ret)
   (addr ret).decode_result(String)
 
 template bytecodeVertex*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(0))

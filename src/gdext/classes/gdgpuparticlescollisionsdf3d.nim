@@ -6,69 +6,62 @@ import gdgpuparticlescollision3d; export gdgpuparticlescollision3d
 
 proc setSize*(self: GPUParticlesCollisionSDF3D; size: Vector3): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: GPUParticlesCollisionSDF3D): Vector3 =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setResolution*(self: GPUParticlesCollisionSDF3D; resolution: GPUParticlesCollisionSDF3D_Resolution): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_resolution", 1155629297)
-  var `?param` = [getPtr resolution]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr resolution])
 
 proc getResolution*(self: GPUParticlesCollisionSDF3D): GPUParticlesCollisionSDF3D_Resolution =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_resolution", 2919555867)
   var ret: encoded GPUParticlesCollisionSDF3D_Resolution
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GPUParticlesCollisionSDF3D_Resolution)
 
 proc setTexture*(self: GPUParticlesCollisionSDF3D; texture: gdref Texture3D): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_texture", 1188404210)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: GPUParticlesCollisionSDF3D): gdref Texture3D =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_texture", 373985333)
   var ret: encoded gdref Texture3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture3D)
 
 proc setThickness*(self: GPUParticlesCollisionSDF3D; thickness: Float): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_thickness", 373806689)
-  var `?param` = [getPtr thickness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr thickness])
 
 proc getThickness*(self: GPUParticlesCollisionSDF3D): Float =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_thickness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBakeMask*(self: GPUParticlesCollisionSDF3D; mask: uint32): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_bake_mask", 1286410249)
-  var `?param` = [getPtr mask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mask])
 
 proc getBakeMask*(self: GPUParticlesCollisionSDF3D): uint32 =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_bake_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setBakeMaskValue*(self: GPUParticlesCollisionSDF3D; layerNumber: int32; value: bool): void =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "set_bake_mask_value", 300928843)
-  var `?param` = [getPtr layerNumber, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
 
 proc getBakeMaskValue*(self: GPUParticlesCollisionSDF3D; layerNumber: int32): bool =
   expandMethodBind(className GPUParticlesCollisionSDF3D, "get_bake_mask_value", 1116898809)
-  var `?param` = [getPtr layerNumber]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
   (addr ret).decode_result(bool)
 
 template size*(self: GPUParticlesCollisionSDF3D): untyped = self.getSize()

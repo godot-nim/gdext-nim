@@ -6,13 +6,12 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setAabb*(self: VisibleOnScreenNotifier3D; rect: AABB): void =
   expandMethodBind(className VisibleOnScreenNotifier3D, "set_aabb", 259215842)
-  var `?param` = [getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rect])
 
 proc isOnScreen*(self: VisibleOnScreenNotifier3D): bool =
   expandMethodBind(className VisibleOnScreenNotifier3D, "is_on_screen", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template aabb*(self: VisibleOnScreenNotifier3D): untyped = self.getAabb()

@@ -16,129 +16,118 @@ template toggled_bind*(_: typedesc[BaseButton]): ClassCallVirtual = toggled
 
 proc setPressed*(self: BaseButton; pressed: bool): void =
   expandMethodBind(className BaseButton, "set_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isPressed*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setPressedNoSignal*(self: BaseButton; pressed: bool): void =
   expandMethodBind(className BaseButton, "set_pressed_no_signal", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isHovered*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_hovered", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setToggleMode*(self: BaseButton; enabled: bool): void =
   expandMethodBind(className BaseButton, "set_toggle_mode", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isToggleMode*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_toggle_mode", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShortcutInTooltip*(self: BaseButton; enabled: bool): void =
   expandMethodBind(className BaseButton, "set_shortcut_in_tooltip", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isShortcutInTooltipEnabled*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_shortcut_in_tooltip_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDisabled*(self: BaseButton; disabled: bool): void =
   expandMethodBind(className BaseButton, "set_disabled", 2586408642)
-  var `?param` = [getPtr disabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr disabled])
 
 proc isDisabled*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_disabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setActionMode*(self: BaseButton; mode: BaseButton_ActionMode): void =
   expandMethodBind(className BaseButton, "set_action_mode", 1985162088)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getActionMode*(self: BaseButton): BaseButton_ActionMode =
   expandMethodBind(className BaseButton, "get_action_mode", 2589712189)
   var ret: encoded BaseButton_ActionMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseButton_ActionMode)
 
 proc setButtonMask*(self: BaseButton; mask: set[MouseButtonMask]): void =
   expandMethodBind(className BaseButton, "set_button_mask", 3950145251)
-  var `?param` = [getPtr mask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mask])
 
 proc getButtonMask*(self: BaseButton): set[MouseButtonMask] =
   expandMethodBind(className BaseButton, "get_button_mask", 2512161324)
   var ret: encoded set[MouseButtonMask]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(set[MouseButtonMask])
 
 proc getDrawMode*(self: BaseButton): BaseButton_DrawMode =
   expandMethodBind(className BaseButton, "get_draw_mode", 2492721305)
   var ret: encoded BaseButton_DrawMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseButton_DrawMode)
 
 proc setKeepPressedOutside*(self: BaseButton; enabled: bool): void =
   expandMethodBind(className BaseButton, "set_keep_pressed_outside", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isKeepPressedOutside*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_keep_pressed_outside", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShortcutFeedback*(self: BaseButton; enabled: bool): void =
   expandMethodBind(className BaseButton, "set_shortcut_feedback", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isShortcutFeedback*(self: BaseButton): bool =
   expandMethodBind(className BaseButton, "is_shortcut_feedback", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShortcut*(self: BaseButton; shortcut: gdref Shortcut): void =
   expandMethodBind(className BaseButton, "set_shortcut", 857163497)
-  var `?param` = [getPtr shortcut]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shortcut])
 
 proc getShortcut*(self: BaseButton): gdref Shortcut =
   expandMethodBind(className BaseButton, "get_shortcut", 3415666916)
   var ret: encoded gdref Shortcut
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Shortcut)
 
 proc setButtonGroup*(self: BaseButton; buttonGroup: gdref ButtonGroup): void =
   expandMethodBind(className BaseButton, "set_button_group", 1794463739)
-  var `?param` = [getPtr buttonGroup]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr buttonGroup])
 
 proc getButtonGroup*(self: BaseButton): gdref ButtonGroup =
   expandMethodBind(className BaseButton, "get_button_group", 281644053)
   var ret: encoded gdref ButtonGroup
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref ButtonGroup)
 
 template disabled*(self: BaseButton): untyped = self.isDisabled()

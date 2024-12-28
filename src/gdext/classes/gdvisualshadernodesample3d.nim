@@ -6,13 +6,12 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setSource*(self: VisualShaderNodeSample3D; value: VisualShaderNodeSample3D_Source): void =
   expandMethodBind(className VisualShaderNodeSample3D, "set_source", 3315130991)
-  var `?param` = [getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr value])
 
 proc getSource*(self: VisualShaderNodeSample3D): VisualShaderNodeSample3D_Source =
   expandMethodBind(className VisualShaderNodeSample3D, "get_source", 1079494121)
   var ret: encoded VisualShaderNodeSample3D_Source
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeSample3D_Source)
 
 template source*(self: VisualShaderNodeSample3D): untyped = self.getSource()

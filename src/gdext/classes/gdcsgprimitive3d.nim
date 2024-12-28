@@ -6,13 +6,12 @@ import gdcsgshape3d; export gdcsgshape3d
 
 proc setFlipFaces*(self: CSGPrimitive3D; flipFaces: bool): void =
   expandMethodBind(className CSGPrimitive3D, "set_flip_faces", 2586408642)
-  var `?param` = [getPtr flipFaces]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flipFaces])
 
 proc getFlipFaces*(self: CSGPrimitive3D): bool =
   expandMethodBind(className CSGPrimitive3D, "get_flip_faces", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template flipFaces*(self: CSGPrimitive3D): untyped = self.getFlipFaces()

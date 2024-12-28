@@ -6,46 +6,42 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setCeilingDb*(self: AudioEffectLimiter; ceiling: Float): void =
   expandMethodBind(className AudioEffectLimiter, "set_ceiling_db", 373806689)
-  var `?param` = [getPtr ceiling]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ceiling])
 
 proc getCeilingDb*(self: AudioEffectLimiter): Float =
   expandMethodBind(className AudioEffectLimiter, "get_ceiling_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setThresholdDb*(self: AudioEffectLimiter; threshold: Float): void =
   expandMethodBind(className AudioEffectLimiter, "set_threshold_db", 373806689)
-  var `?param` = [getPtr threshold]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr threshold])
 
 proc getThresholdDb*(self: AudioEffectLimiter): Float =
   expandMethodBind(className AudioEffectLimiter, "get_threshold_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSoftClipDb*(self: AudioEffectLimiter; softClip: Float): void =
   expandMethodBind(className AudioEffectLimiter, "set_soft_clip_db", 373806689)
-  var `?param` = [getPtr softClip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr softClip])
 
 proc getSoftClipDb*(self: AudioEffectLimiter): Float =
   expandMethodBind(className AudioEffectLimiter, "get_soft_clip_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSoftClipRatio*(self: AudioEffectLimiter; softClip: Float): void =
   expandMethodBind(className AudioEffectLimiter, "set_soft_clip_ratio", 373806689)
-  var `?param` = [getPtr softClip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr softClip])
 
 proc getSoftClipRatio*(self: AudioEffectLimiter): Float =
   expandMethodBind(className AudioEffectLimiter, "get_soft_clip_ratio", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template ceilingDb*(self: AudioEffectLimiter): untyped = self.getCeilingDb()

@@ -6,78 +6,70 @@ import gdtexture2d; export gdtexture2d
 
 proc setGradient*(self: GradientTexture2D; gradient: gdref Gradient): void =
   expandMethodBind(className GradientTexture2D, "set_gradient", 2756054477)
-  var `?param` = [getPtr gradient]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr gradient])
 
 proc getGradient*(self: GradientTexture2D): gdref Gradient =
   expandMethodBind(className GradientTexture2D, "get_gradient", 132272999)
   var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Gradient)
 
 proc setWidth*(self: GradientTexture2D; width: int32): void =
   expandMethodBind(className GradientTexture2D, "set_width", 1286410249)
-  var `?param` = [getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr width])
 
 proc setHeight*(self: GradientTexture2D; height: int32): void =
   expandMethodBind(className GradientTexture2D, "set_height", 1286410249)
-  var `?param` = [getPtr height]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr height])
 
 proc setUseHdr*(self: GradientTexture2D; enabled: bool): void =
   expandMethodBind(className GradientTexture2D, "set_use_hdr", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isUsingHdr*(self: GradientTexture2D): bool =
   expandMethodBind(className GradientTexture2D, "is_using_hdr", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFill*(self: GradientTexture2D; fill: GradientTexture2D_Fill): void =
   expandMethodBind(className GradientTexture2D, "set_fill", 3623927636)
-  var `?param` = [getPtr fill]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fill])
 
 proc getFill*(self: GradientTexture2D): GradientTexture2D_Fill =
   expandMethodBind(className GradientTexture2D, "get_fill", 1876227217)
   var ret: encoded GradientTexture2D_Fill
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GradientTexture2D_Fill)
 
 proc setFillFrom*(self: GradientTexture2D; fillFrom: Vector2): void =
   expandMethodBind(className GradientTexture2D, "set_fill_from", 743155724)
-  var `?param` = [getPtr fillFrom]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fillFrom])
 
 proc getFillFrom*(self: GradientTexture2D): Vector2 =
   expandMethodBind(className GradientTexture2D, "get_fill_from", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setFillTo*(self: GradientTexture2D; fillTo: Vector2): void =
   expandMethodBind(className GradientTexture2D, "set_fill_to", 743155724)
-  var `?param` = [getPtr fillTo]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fillTo])
 
 proc getFillTo*(self: GradientTexture2D): Vector2 =
   expandMethodBind(className GradientTexture2D, "get_fill_to", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setRepeat*(self: GradientTexture2D; repeat: GradientTexture2D_Repeat): void =
   expandMethodBind(className GradientTexture2D, "set_repeat", 1357597002)
-  var `?param` = [getPtr repeat]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr repeat])
 
 proc getRepeat*(self: GradientTexture2D): GradientTexture2D_Repeat =
   expandMethodBind(className GradientTexture2D, "get_repeat", 3351758665)
   var ret: encoded GradientTexture2D_Repeat
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GradientTexture2D_Repeat)
 
 template gradient*(self: GradientTexture2D): untyped = self.getGradient()

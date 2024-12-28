@@ -6,64 +6,58 @@ import gdaudiostream; export gdaudiostream
 
 proc setStreamCount*(self: AudioStreamPlaylist; streamCount: int32): void =
   expandMethodBind(className AudioStreamPlaylist, "set_stream_count", 1286410249)
-  var `?param` = [getPtr streamCount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr streamCount])
 
 proc getStreamCount*(self: AudioStreamPlaylist): int32 =
   expandMethodBind(className AudioStreamPlaylist, "get_stream_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getBpm*(self: AudioStreamPlaylist): float64 =
   expandMethodBind(className AudioStreamPlaylist, "get_bpm", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setListStream*(self: AudioStreamPlaylist; streamIndex: int32; audioStream: gdref AudioStream): void =
   expandMethodBind(className AudioStreamPlaylist, "set_list_stream", 111075094)
-  var `?param` = [getPtr streamIndex, getPtr audioStream]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr streamIndex, getPtr audioStream])
 
 proc getListStream*(self: AudioStreamPlaylist; streamIndex: int32): gdref AudioStream =
   expandMethodBind(className AudioStreamPlaylist, "get_list_stream", 2739380747)
-  var `?param` = [getPtr streamIndex]
   var ret: encoded gdref AudioStream
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr streamIndex], addr ret)
   (addr ret).decode_result(gdref AudioStream)
 
 proc setShuffle*(self: AudioStreamPlaylist; shuffle: bool): void =
   expandMethodBind(className AudioStreamPlaylist, "set_shuffle", 2586408642)
-  var `?param` = [getPtr shuffle]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shuffle])
 
 proc getShuffle*(self: AudioStreamPlaylist): bool =
   expandMethodBind(className AudioStreamPlaylist, "get_shuffle", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFadeTime*(self: AudioStreamPlaylist; dec: Float): void =
   expandMethodBind(className AudioStreamPlaylist, "set_fade_time", 373806689)
-  var `?param` = [getPtr dec]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr dec])
 
 proc getFadeTime*(self: AudioStreamPlaylist): Float =
   expandMethodBind(className AudioStreamPlaylist, "get_fade_time", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setLoop*(self: AudioStreamPlaylist; loop: bool): void =
   expandMethodBind(className AudioStreamPlaylist, "set_loop", 2586408642)
-  var `?param` = [getPtr loop]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr loop])
 
 proc hasLoop*(self: AudioStreamPlaylist): bool =
   expandMethodBind(className AudioStreamPlaylist, "has_loop", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template shuffle*(self: AudioStreamPlaylist): untyped = self.getShuffle()

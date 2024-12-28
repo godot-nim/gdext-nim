@@ -6,24 +6,22 @@ import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
 
 proc setDefaultValueEnabled*(self: VisualShaderNodeTransformParameter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeTransformParameter, "set_default_value_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDefaultValueEnabled*(self: VisualShaderNodeTransformParameter): bool =
   expandMethodBind(className VisualShaderNodeTransformParameter, "is_default_value_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDefaultValue*(self: VisualShaderNodeTransformParameter; value: Transform3D): void =
   expandMethodBind(className VisualShaderNodeTransformParameter, "set_default_value", 2952846383)
-  var `?param` = [getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr value])
 
 proc getDefaultValue*(self: VisualShaderNodeTransformParameter): Transform3D =
   expandMethodBind(className VisualShaderNodeTransformParameter, "get_default_value", 3229777777)
   var ret: encoded Transform3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
 
 template defaultValueEnabled*(self: VisualShaderNodeTransformParameter): untyped = self.isDefaultValueEnabled()

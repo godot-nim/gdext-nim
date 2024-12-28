@@ -66,71 +66,62 @@ template commitSubgizmos_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual
 
 proc addLines*(self: EditorNode3DGizmo; lines: PackedVector3Array; material: gdref Material; billboard: bool = false; modulate: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className EditorNode3DGizmo, "add_lines", 2910971437)
-  var `?param` = [getPtr lines, getPtr material, getPtr billboard, getPtr modulate]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr lines, getPtr material, getPtr billboard, getPtr modulate])
 
 proc addMesh*(self: EditorNode3DGizmo; mesh: gdref Mesh; material: gdref Material = default gdref Material; transform: Transform3D = transform3D(); skeleton: gdref SkinReference = default gdref SkinReference): void =
   expandMethodBind(className EditorNode3DGizmo, "add_mesh", 1579955111)
-  var `?param` = [getPtr mesh, getPtr material, getPtr transform, getPtr skeleton]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh, getPtr material, getPtr transform, getPtr skeleton])
 
 proc addCollisionSegments*(self: EditorNode3DGizmo; segments: PackedVector3Array): void =
   expandMethodBind(className EditorNode3DGizmo, "add_collision_segments", 334873810)
-  var `?param` = [getPtr segments]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr segments])
 
 proc addCollisionTriangles*(self: EditorNode3DGizmo; triangles: gdref TriangleMesh): void =
   expandMethodBind(className EditorNode3DGizmo, "add_collision_triangles", 54901064)
-  var `?param` = [getPtr triangles]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr triangles])
 
 proc addUnscaledBillboard*(self: EditorNode3DGizmo; material: gdref Material; defaultScale: Float = 1; modulate: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className EditorNode3DGizmo, "add_unscaled_billboard", 520007164)
-  var `?param` = [getPtr material, getPtr defaultScale, getPtr modulate]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr material, getPtr defaultScale, getPtr modulate])
 
 proc addHandles*(self: EditorNode3DGizmo; handles: PackedVector3Array; material: gdref Material; ids: PackedInt32Array; billboard: bool = false; secondary: bool = false): void =
   expandMethodBind(className EditorNode3DGizmo, "add_handles", 2254560097)
-  var `?param` = [getPtr handles, getPtr material, getPtr ids, getPtr billboard, getPtr secondary]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr handles, getPtr material, getPtr ids, getPtr billboard, getPtr secondary])
 
 proc setNode3D*(self: EditorNode3DGizmo; node: Node): void =
   expandMethodBind(className EditorNode3DGizmo, "set_node_3d", 1078189570)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc getNode3D*(self: EditorNode3DGizmo): Node3D =
   expandMethodBind(className EditorNode3DGizmo, "get_node_3d", 151077316)
   var ret: encoded Node3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node3D)
 
 proc getPlugin*(self: EditorNode3DGizmo): gdref EditorNode3DGizmoPlugin =
   expandMethodBind(className EditorNode3DGizmo, "get_plugin", 4250544552)
   var ret: encoded gdref EditorNode3DGizmoPlugin
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref EditorNode3DGizmoPlugin)
 
 proc clear*(self: EditorNode3DGizmo): void =
   expandMethodBind(className EditorNode3DGizmo, "clear", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setHidden*(self: EditorNode3DGizmo; hidden: bool): void =
   expandMethodBind(className EditorNode3DGizmo, "set_hidden", 2586408642)
-  var `?param` = [getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hidden])
 
 proc isSubgizmoSelected*(self: EditorNode3DGizmo; id: int32): bool =
   expandMethodBind(className EditorNode3DGizmo, "is_subgizmo_selected", 1116898809)
-  var `?param` = [getPtr id]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(bool)
 
 proc getSubgizmoSelection*(self: EditorNode3DGizmo): PackedInt32Array =
   expandMethodBind(className EditorNode3DGizmo, "get_subgizmo_selection", 1930428628)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 const EditorNode3DGizmo_vmap =

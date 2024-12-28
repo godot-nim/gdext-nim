@@ -42,52 +42,49 @@ template drawRectRegion_bind*(_: typedesc[Texture2D]): ClassCallVirtual = drawRe
 proc getWidth*(self: Texture2D): int32 =
   expandMethodBind(className Texture2D, "get_width", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getHeight*(self: Texture2D): int32 =
   expandMethodBind(className Texture2D, "get_height", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getSize*(self: Texture2D): Vector2 =
   expandMethodBind(className Texture2D, "get_size", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc hasAlpha*(self: Texture2D): bool =
   expandMethodBind(className Texture2D, "has_alpha", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc draw*(self: Texture2D; canvasItem: RID; position: Vector2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
   expandMethodBind(className Texture2D, "draw", 2729649137)
-  var `?param` = [getPtr canvasItem, getPtr position, getPtr modulate, getPtr transpose]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr position, getPtr modulate, getPtr transpose])
 
 proc drawRect*(self: Texture2D; canvasItem: RID; rect: Rect2; tile: bool; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
   expandMethodBind(className Texture2D, "draw_rect", 3499451691)
-  var `?param` = [getPtr canvasItem, getPtr rect, getPtr tile, getPtr modulate, getPtr transpose]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr tile, getPtr modulate, getPtr transpose])
 
 proc drawRectRegion*(self: Texture2D; canvasItem: RID; rect: Rect2; srcRect: Rect2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false; clipUv: bool = true): void =
   expandMethodBind(className Texture2D, "draw_rect_region", 2963678660)
-  var `?param` = [getPtr canvasItem, getPtr rect, getPtr srcRect, getPtr modulate, getPtr transpose, getPtr clipUv]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr srcRect, getPtr modulate, getPtr transpose, getPtr clipUv])
 
 proc getImage*(self: Texture2D): gdref Image =
   expandMethodBind(className Texture2D, "get_image", 4190603485)
   var ret: encoded gdref Image
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Image)
 
 proc createPlaceholder*(self: Texture2D): gdref Resource =
   expandMethodBind(className Texture2D, "create_placeholder", 121922552)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 const Texture2D_vmap =

@@ -6,13 +6,12 @@ import gdtexture3d; export gdtexture3d
 
 proc setSize*(self: PlaceholderTexture3D; size: Vector3i): void =
   expandMethodBind(className PlaceholderTexture3D, "set_size", 560364750)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: PlaceholderTexture3D): Vector3i =
   expandMethodBind(className PlaceholderTexture3D, "get_size", 2785653706)
   var ret: encoded Vector3i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3i)
 
 template size*(self: PlaceholderTexture3D): untyped = self.getSize()

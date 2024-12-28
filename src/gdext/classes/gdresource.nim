@@ -11,84 +11,78 @@ template setupLocalToScene_bind*(_: typedesc[Resource]): ClassCallVirtual = setu
 
 proc setPath*(self: Resource; path: String): void =
   expandMethodBind(className Resource, "set_path", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc takeOverPath*(self: Resource; path: String): void =
   expandMethodBind(className Resource, "take_over_path", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getPath*(self: Resource): String =
   expandMethodBind(className Resource, "get_path", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setName*(self: Resource; name: String): void =
   expandMethodBind(className Resource, "set_name", 83702148)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getName*(self: Resource): String =
   expandMethodBind(className Resource, "get_name", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc getRid*(self: Resource): RID =
   expandMethodBind(className Resource, "get_rid", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc setLocalToScene*(self: Resource; enable: bool): void =
   expandMethodBind(className Resource, "set_local_to_scene", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isLocalToScene*(self: Resource): bool =
   expandMethodBind(className Resource, "is_local_to_scene", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getLocalScene*(self: Resource): Node =
   expandMethodBind(className Resource, "get_local_scene", 3160264692)
   var ret: encoded Node
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
 
 proc setupLocalToScene*(self: Resource): void =
   expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc generateSceneUniqueId*(_: typedesc[Resource]): String =
   expandMethodBind(className Resource, "generate_scene_unique_id", 2841200299)
   var ret: encoded String
-  methodbind.ptrcall(nil, addr ret)
+  methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(String)
 
 proc setSceneUniqueId*(self: Resource; id: String): void =
   expandMethodBind(className Resource, "set_scene_unique_id", 83702148)
-  var `?param` = [getPtr id]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr id])
 
 proc getSceneUniqueId*(self: Resource): String =
   expandMethodBind(className Resource, "get_scene_unique_id", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc emitChanged*(self: Resource): void =
   expandMethodBind(className Resource, "emit_changed", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc duplicate*(self: Resource; subresources: bool = false): gdref Resource =
   expandMethodBind(className Resource, "duplicate", 482882304)
-  var `?param` = [getPtr subresources]
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr subresources], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 template resourceLocalToScene*(self: Resource): untyped = self.isLocalToScene()

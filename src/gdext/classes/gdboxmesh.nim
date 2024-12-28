@@ -6,46 +6,42 @@ import gdprimitivemesh; export gdprimitivemesh
 
 proc setSize*(self: BoxMesh; size: Vector3): void =
   expandMethodBind(className BoxMesh, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: BoxMesh): Vector3 =
   expandMethodBind(className BoxMesh, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setSubdivideWidth*(self: BoxMesh; subdivide: int32): void =
   expandMethodBind(className BoxMesh, "set_subdivide_width", 1286410249)
-  var `?param` = [getPtr subdivide]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr subdivide])
 
 proc getSubdivideWidth*(self: BoxMesh): int32 =
   expandMethodBind(className BoxMesh, "get_subdivide_width", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSubdivideHeight*(self: BoxMesh; divisions: int32): void =
   expandMethodBind(className BoxMesh, "set_subdivide_height", 1286410249)
-  var `?param` = [getPtr divisions]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr divisions])
 
 proc getSubdivideHeight*(self: BoxMesh): int32 =
   expandMethodBind(className BoxMesh, "get_subdivide_height", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSubdivideDepth*(self: BoxMesh; divisions: int32): void =
   expandMethodBind(className BoxMesh, "set_subdivide_depth", 1286410249)
-  var `?param` = [getPtr divisions]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr divisions])
 
 proc getSubdivideDepth*(self: BoxMesh): int32 =
   expandMethodBind(className BoxMesh, "get_subdivide_depth", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template size*(self: BoxMesh): untyped = self.getSize()

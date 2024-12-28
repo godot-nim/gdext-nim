@@ -6,323 +6,285 @@ import gdcontrol; export gdcontrol
 
 proc setTabCount*(self: TabBar; count: int32): void =
   expandMethodBind(className TabBar, "set_tab_count", 1286410249)
-  var `?param` = [getPtr count]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr count])
 
 proc getTabCount*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_tab_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setCurrentTab*(self: TabBar; tabIdx: int32): void =
   expandMethodBind(className TabBar, "set_current_tab", 1286410249)
-  var `?param` = [getPtr tabIdx]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx])
 
 proc getCurrentTab*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_current_tab", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getPreviousTab*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_previous_tab", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc selectPreviousAvailable*(self: TabBar): bool =
   expandMethodBind(className TabBar, "select_previous_available", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc selectNextAvailable*(self: TabBar): bool =
   expandMethodBind(className TabBar, "select_next_available", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTabTitle*(self: TabBar; tabIdx: int32; title: String): void =
   expandMethodBind(className TabBar, "set_tab_title", 501894301)
-  var `?param` = [getPtr tabIdx, getPtr title]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr title])
 
 proc getTabTitle*(self: TabBar; tabIdx: int32): String =
   expandMethodBind(className TabBar, "get_tab_title", 844755477)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded String
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(String)
 
 proc setTabTooltip*(self: TabBar; tabIdx: int32; tooltip: String): void =
   expandMethodBind(className TabBar, "set_tab_tooltip", 501894301)
-  var `?param` = [getPtr tabIdx, getPtr tooltip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr tooltip])
 
 proc getTabTooltip*(self: TabBar; tabIdx: int32): String =
   expandMethodBind(className TabBar, "get_tab_tooltip", 844755477)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded String
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(String)
 
 proc setTabTextDirection*(self: TabBar; tabIdx: int32; direction: Control_TextDirection): void =
   expandMethodBind(className TabBar, "set_tab_text_direction", 1707680378)
-  var `?param` = [getPtr tabIdx, getPtr direction]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr direction])
 
 proc getTabTextDirection*(self: TabBar; tabIdx: int32): Control_TextDirection =
   expandMethodBind(className TabBar, "get_tab_text_direction", 4235602388)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(Control_TextDirection)
 
 proc setTabLanguage*(self: TabBar; tabIdx: int32; language: String): void =
   expandMethodBind(className TabBar, "set_tab_language", 501894301)
-  var `?param` = [getPtr tabIdx, getPtr language]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr language])
 
 proc getTabLanguage*(self: TabBar; tabIdx: int32): String =
   expandMethodBind(className TabBar, "get_tab_language", 844755477)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded String
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(String)
 
 proc setTabIcon*(self: TabBar; tabIdx: int32; icon: gdref Texture2D): void =
   expandMethodBind(className TabBar, "set_tab_icon", 666127730)
-  var `?param` = [getPtr tabIdx, getPtr icon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr icon])
 
 proc getTabIcon*(self: TabBar; tabIdx: int32): gdref Texture2D =
   expandMethodBind(className TabBar, "get_tab_icon", 3536238170)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setTabIconMaxWidth*(self: TabBar; tabIdx: int32; width: int32): void =
   expandMethodBind(className TabBar, "set_tab_icon_max_width", 3937882851)
-  var `?param` = [getPtr tabIdx, getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr width])
 
 proc getTabIconMaxWidth*(self: TabBar; tabIdx: int32): int32 =
   expandMethodBind(className TabBar, "get_tab_icon_max_width", 923996154)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(int32)
 
 proc setTabButtonIcon*(self: TabBar; tabIdx: int32; icon: gdref Texture2D): void =
   expandMethodBind(className TabBar, "set_tab_button_icon", 666127730)
-  var `?param` = [getPtr tabIdx, getPtr icon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr icon])
 
 proc getTabButtonIcon*(self: TabBar; tabIdx: int32): gdref Texture2D =
   expandMethodBind(className TabBar, "get_tab_button_icon", 3536238170)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setTabDisabled*(self: TabBar; tabIdx: int32; disabled: bool): void =
   expandMethodBind(className TabBar, "set_tab_disabled", 300928843)
-  var `?param` = [getPtr tabIdx, getPtr disabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr disabled])
 
 proc isTabDisabled*(self: TabBar; tabIdx: int32): bool =
   expandMethodBind(className TabBar, "is_tab_disabled", 1116898809)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTabHidden*(self: TabBar; tabIdx: int32; hidden: bool): void =
   expandMethodBind(className TabBar, "set_tab_hidden", 300928843)
-  var `?param` = [getPtr tabIdx, getPtr hidden]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr hidden])
 
 proc isTabHidden*(self: TabBar; tabIdx: int32): bool =
   expandMethodBind(className TabBar, "is_tab_hidden", 1116898809)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTabMetadata*(self: TabBar; tabIdx: int32; metadata: Variant): void =
   expandMethodBind(className TabBar, "set_tab_metadata", 2152698145)
-  var `?param` = [getPtr tabIdx, getPtr metadata]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx, getPtr metadata])
 
 proc getTabMetadata*(self: TabBar; tabIdx: int32): Variant =
   expandMethodBind(className TabBar, "get_tab_metadata", 4227898402)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(Variant)
 
 proc removeTab*(self: TabBar; tabIdx: int32): void =
   expandMethodBind(className TabBar, "remove_tab", 1286410249)
-  var `?param` = [getPtr tabIdx]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tabIdx])
 
 proc addTab*(self: TabBar; title: String = gdstring""; icon: gdref Texture2D = default gdref Texture2D): void =
   expandMethodBind(className TabBar, "add_tab", 1465444425)
-  var `?param` = [getPtr title, getPtr icon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr title, getPtr icon])
 
 proc getTabIdxAtPoint*(self: TabBar; point: Vector2): int32 =
   expandMethodBind(className TabBar, "get_tab_idx_at_point", 3820158470)
-  var `?param` = [getPtr point]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr point], addr ret)
   (addr ret).decode_result(int32)
 
 proc setTabAlignment*(self: TabBar; alignment: TabBar_AlignmentMode): void =
   expandMethodBind(className TabBar, "set_tab_alignment", 2413632353)
-  var `?param` = [getPtr alignment]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr alignment])
 
 proc getTabAlignment*(self: TabBar): TabBar_AlignmentMode =
   expandMethodBind(className TabBar, "get_tab_alignment", 2178122193)
   var ret: encoded TabBar_AlignmentMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TabBar_AlignmentMode)
 
 proc setClipTabs*(self: TabBar; clipTabs: bool): void =
   expandMethodBind(className TabBar, "set_clip_tabs", 2586408642)
-  var `?param` = [getPtr clipTabs]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clipTabs])
 
 proc getClipTabs*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_clip_tabs", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getTabOffset*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_tab_offset", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getOffsetButtonsVisible*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_offset_buttons_visible", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc ensureTabVisible*(self: TabBar; idx: int32): void =
   expandMethodBind(className TabBar, "ensure_tab_visible", 1286410249)
-  var `?param` = [getPtr idx]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr idx])
 
 proc getTabRect*(self: TabBar; tabIdx: int32): Rect2 =
   expandMethodBind(className TabBar, "get_tab_rect", 3327874267)
-  var `?param` = [getPtr tabIdx]
   var ret: encoded Rect2
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr tabIdx], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc moveTab*(self: TabBar; `from`: int32; to: int32): void =
   expandMethodBind(className TabBar, "move_tab", 3937882851)
-  var `?param` = [getPtr `from`, getPtr to]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `from`, getPtr to])
 
 proc setTabCloseDisplayPolicy*(self: TabBar; policy: TabBar_CloseButtonDisplayPolicy): void =
   expandMethodBind(className TabBar, "set_tab_close_display_policy", 2212906737)
-  var `?param` = [getPtr policy]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr policy])
 
 proc getTabCloseDisplayPolicy*(self: TabBar): TabBar_CloseButtonDisplayPolicy =
   expandMethodBind(className TabBar, "get_tab_close_display_policy", 2956568028)
   var ret: encoded TabBar_CloseButtonDisplayPolicy
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TabBar_CloseButtonDisplayPolicy)
 
 proc setMaxTabWidth*(self: TabBar; width: int32): void =
   expandMethodBind(className TabBar, "set_max_tab_width", 1286410249)
-  var `?param` = [getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr width])
 
 proc getMaxTabWidth*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_max_tab_width", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setScrollingEnabled*(self: TabBar; enabled: bool): void =
   expandMethodBind(className TabBar, "set_scrolling_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getScrollingEnabled*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_scrolling_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDragToRearrangeEnabled*(self: TabBar; enabled: bool): void =
   expandMethodBind(className TabBar, "set_drag_to_rearrange_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getDragToRearrangeEnabled*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_drag_to_rearrange_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTabsRearrangeGroup*(self: TabBar; groupId: int32): void =
   expandMethodBind(className TabBar, "set_tabs_rearrange_group", 1286410249)
-  var `?param` = [getPtr groupId]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr groupId])
 
 proc getTabsRearrangeGroup*(self: TabBar): int32 =
   expandMethodBind(className TabBar, "get_tabs_rearrange_group", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setScrollToSelected*(self: TabBar; enabled: bool): void =
   expandMethodBind(className TabBar, "set_scroll_to_selected", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getScrollToSelected*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_scroll_to_selected", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSelectWithRmb*(self: TabBar; enabled: bool): void =
   expandMethodBind(className TabBar, "set_select_with_rmb", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getSelectWithRmb*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_select_with_rmb", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDeselectEnabled*(self: TabBar; enabled: bool): void =
   expandMethodBind(className TabBar, "set_deselect_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getDeselectEnabled*(self: TabBar): bool =
   expandMethodBind(className TabBar, "get_deselect_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc clearTabs*(self: TabBar): void =
   expandMethodBind(className TabBar, "clear_tabs", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 template currentTab*(self: TabBar): untyped = self.getCurrentTab()
 template `currentTab=`*(self: TabBar; value) = self.setCurrentTab(value)

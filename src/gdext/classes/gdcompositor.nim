@@ -6,13 +6,12 @@ import gdresource; export gdresource
 
 proc setCompositorEffects*(self: Compositor; compositorEffects: TypedArray[CompositorEffect]): void =
   expandMethodBind(className Compositor, "set_compositor_effects", 381264803)
-  var `?param` = [getPtr compositorEffects]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr compositorEffects])
 
 proc getCompositorEffects*(self: Compositor): TypedArray[CompositorEffect] =
   expandMethodBind(className Compositor, "get_compositor_effects", 3995934104)
   var ret: encoded TypedArray[CompositorEffect]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[CompositorEffect])
 
 template compositorEffects*(self: Compositor): untyped = self.getCompositorEffects()

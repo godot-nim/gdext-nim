@@ -6,13 +6,12 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setVolumeDb*(self: AudioEffectAmplify; volume: Float): void =
   expandMethodBind(className AudioEffectAmplify, "set_volume_db", 373806689)
-  var `?param` = [getPtr volume]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr volume])
 
 proc getVolumeDb*(self: AudioEffectAmplify): Float =
   expandMethodBind(className AudioEffectAmplify, "get_volume_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template volumeDb*(self: AudioEffectAmplify): untyped = self.getVolumeDb()

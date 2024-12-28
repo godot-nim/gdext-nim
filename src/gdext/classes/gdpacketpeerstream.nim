@@ -6,35 +6,32 @@ import gdpacketpeer; export gdpacketpeer
 
 proc setStreamPeer*(self: PacketPeerStream; peer: gdref StreamPeer): void =
   expandMethodBind(className PacketPeerStream, "set_stream_peer", 3281897016)
-  var `?param` = [getPtr peer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr peer])
 
 proc getStreamPeer*(self: PacketPeerStream): gdref StreamPeer =
   expandMethodBind(className PacketPeerStream, "get_stream_peer", 2741655269)
   var ret: encoded gdref StreamPeer
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref StreamPeer)
 
 proc setInputBufferMaxSize*(self: PacketPeerStream; maxSizeBytes: int32): void =
   expandMethodBind(className PacketPeerStream, "set_input_buffer_max_size", 1286410249)
-  var `?param` = [getPtr maxSizeBytes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr maxSizeBytes])
 
 proc setOutputBufferMaxSize*(self: PacketPeerStream; maxSizeBytes: int32): void =
   expandMethodBind(className PacketPeerStream, "set_output_buffer_max_size", 1286410249)
-  var `?param` = [getPtr maxSizeBytes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr maxSizeBytes])
 
 proc getInputBufferMaxSize*(self: PacketPeerStream): int32 =
   expandMethodBind(className PacketPeerStream, "get_input_buffer_max_size", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getOutputBufferMaxSize*(self: PacketPeerStream): int32 =
   expandMethodBind(className PacketPeerStream, "get_output_buffer_max_size", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template inputBufferMaxSize*(self: PacketPeerStream): untyped = self.getInputBufferMaxSize()

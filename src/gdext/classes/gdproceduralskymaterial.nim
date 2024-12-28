@@ -6,156 +6,142 @@ import gdmaterial; export gdmaterial
 
 proc setSkyTopColor*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_top_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getSkyTopColor*(self: ProceduralSkyMaterial): Color =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_top_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setSkyHorizonColor*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_horizon_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getSkyHorizonColor*(self: ProceduralSkyMaterial): Color =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_horizon_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setSkyCurve*(self: ProceduralSkyMaterial; curve: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_curve", 373806689)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getSkyCurve*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_curve", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSkyEnergyMultiplier*(self: ProceduralSkyMaterial; multiplier: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_energy_multiplier", 373806689)
-  var `?param` = [getPtr multiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr multiplier])
 
 proc getSkyEnergyMultiplier*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSkyCover*(self: ProceduralSkyMaterial; skyCover: gdref Texture2D): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_cover", 4051416890)
-  var `?param` = [getPtr skyCover]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr skyCover])
 
 proc getSkyCover*(self: ProceduralSkyMaterial): gdref Texture2D =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_cover", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setSkyCoverModulate*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_cover_modulate", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getSkyCoverModulate*(self: ProceduralSkyMaterial): Color =
   expandMethodBind(className ProceduralSkyMaterial, "get_sky_cover_modulate", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setGroundBottomColor*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_ground_bottom_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getGroundBottomColor*(self: ProceduralSkyMaterial): Color =
   expandMethodBind(className ProceduralSkyMaterial, "get_ground_bottom_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setGroundHorizonColor*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_ground_horizon_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getGroundHorizonColor*(self: ProceduralSkyMaterial): Color =
   expandMethodBind(className ProceduralSkyMaterial, "get_ground_horizon_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setGroundCurve*(self: ProceduralSkyMaterial; curve: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_ground_curve", 373806689)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getGroundCurve*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_ground_curve", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setGroundEnergyMultiplier*(self: ProceduralSkyMaterial; energy: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_ground_energy_multiplier", 373806689)
-  var `?param` = [getPtr energy]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr energy])
 
 proc getGroundEnergyMultiplier*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_ground_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSunAngleMax*(self: ProceduralSkyMaterial; degrees: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sun_angle_max", 373806689)
-  var `?param` = [getPtr degrees]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr degrees])
 
 proc getSunAngleMax*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_sun_angle_max", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSunCurve*(self: ProceduralSkyMaterial; curve: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sun_curve", 373806689)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getSunCurve*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_sun_curve", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setUseDebanding*(self: ProceduralSkyMaterial; useDebanding: bool): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_use_debanding", 2586408642)
-  var `?param` = [getPtr useDebanding]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr useDebanding])
 
 proc getUseDebanding*(self: ProceduralSkyMaterial): bool =
   expandMethodBind(className ProceduralSkyMaterial, "get_use_debanding", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setEnergyMultiplier*(self: ProceduralSkyMaterial; multiplier: Float): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_energy_multiplier", 373806689)
-  var `?param` = [getPtr multiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr multiplier])
 
 proc getEnergyMultiplier*(self: ProceduralSkyMaterial): Float =
   expandMethodBind(className ProceduralSkyMaterial, "get_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template skyTopColor*(self: ProceduralSkyMaterial): untyped = self.getSkyTopColor()

@@ -6,51 +6,45 @@ import gdcollisionobject3d; export gdcollisionobject3d
 
 proc moveAndCollide*(self: PhysicsBody3D; motion: Vector3; testOnly: bool = false; safeMargin: Float = 0.001; recoveryAsCollision: bool = false; maxCollisions: int32 = 1): gdref KinematicCollision3D =
   expandMethodBind(className PhysicsBody3D, "move_and_collide", 3208792678)
-  var `?param` = [getPtr motion, getPtr testOnly, getPtr safeMargin, getPtr recoveryAsCollision, getPtr maxCollisions]
   var ret: encoded gdref KinematicCollision3D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr motion, getPtr testOnly, getPtr safeMargin, getPtr recoveryAsCollision, getPtr maxCollisions], addr ret)
   (addr ret).decode_result(gdref KinematicCollision3D)
 
 proc testMove*(self: PhysicsBody3D; `from`: Transform3D; motion: Vector3; collision: gdref KinematicCollision3D = default gdref KinematicCollision3D; safeMargin: Float = 0.001; recoveryAsCollision: bool = false; maxCollisions: int32 = 1): bool =
   expandMethodBind(className PhysicsBody3D, "test_move", 2481691619)
-  var `?param` = [getPtr `from`, getPtr motion, getPtr collision, getPtr safeMargin, getPtr recoveryAsCollision, getPtr maxCollisions]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr `from`, getPtr motion, getPtr collision, getPtr safeMargin, getPtr recoveryAsCollision, getPtr maxCollisions], addr ret)
   (addr ret).decode_result(bool)
 
 proc getGravity*(self: PhysicsBody3D): Vector3 =
   expandMethodBind(className PhysicsBody3D, "get_gravity", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setAxisLock*(self: PhysicsBody3D; axis: PhysicsServer3D_BodyAxis; lock: bool): void =
   expandMethodBind(className PhysicsBody3D, "set_axis_lock", 1787895195)
-  var `?param` = [getPtr axis, getPtr lock]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr axis, getPtr lock])
 
 proc getAxisLock*(self: PhysicsBody3D; axis: PhysicsServer3D_BodyAxis): bool =
   expandMethodBind(className PhysicsBody3D, "get_axis_lock", 2264617709)
-  var `?param` = [getPtr axis]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr axis], addr ret)
   (addr ret).decode_result(bool)
 
 proc getCollisionExceptions*(self: PhysicsBody3D): TypedArray[PhysicsBody3D] =
   expandMethodBind(className PhysicsBody3D, "get_collision_exceptions", 2915620761)
   var ret: encoded TypedArray[PhysicsBody3D]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[PhysicsBody3D])
 
 proc addCollisionExceptionWith*(self: PhysicsBody3D; body: Node): void =
   expandMethodBind(className PhysicsBody3D, "add_collision_exception_with", 1078189570)
-  var `?param` = [getPtr body]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr body])
 
 proc removeCollisionExceptionWith*(self: PhysicsBody3D; body: Node): void =
   expandMethodBind(className PhysicsBody3D, "remove_collision_exception_with", 1078189570)
-  var `?param` = [getPtr body]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr body])
 
 template axisLockLinearX*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(1))
 template `axisLockLinearX=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(1), value)

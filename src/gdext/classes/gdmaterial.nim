@@ -26,34 +26,32 @@ template canUseRenderPriority_bind*(_: typedesc[Material]): ClassCallVirtual = c
 
 proc setNextPass*(self: Material; nextPass: gdref Material): void =
   expandMethodBind(className Material, "set_next_pass", 2757459619)
-  var `?param` = [getPtr nextPass]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr nextPass])
 
 proc getNextPass*(self: Material): gdref Material =
   expandMethodBind(className Material, "get_next_pass", 5934680)
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
 proc setRenderPriority*(self: Material; priority: int32): void =
   expandMethodBind(className Material, "set_render_priority", 1286410249)
-  var `?param` = [getPtr priority]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr priority])
 
 proc getRenderPriority*(self: Material): int32 =
   expandMethodBind(className Material, "get_render_priority", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc inspectNativeShaderCode*(self: Material): void =
   expandMethodBind(className Material, "inspect_native_shader_code", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc createPlaceholder*(self: Material): gdref Resource =
   expandMethodBind(className Material, "create_placeholder", 121922552)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 template renderPriority*(self: Material): untyped = self.getRenderPriority()

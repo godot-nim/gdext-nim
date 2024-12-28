@@ -167,12 +167,12 @@ template onViewportCompositionLayerDestroyed_bind*(_: typedesc[OpenXRExtensionWr
 proc getOpenxrApi*(self: OpenXRExtensionWrapperExtension): gdref OpenXRAPIExtension =
   expandMethodBind(className OpenXRExtensionWrapperExtension, "get_openxr_api", 1637791613)
   var ret: encoded gdref OpenXRAPIExtension
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref OpenXRAPIExtension)
 
 proc registerExtensionWrapper*(self: OpenXRExtensionWrapperExtension): void =
   expandMethodBind(className OpenXRExtensionWrapperExtension, "register_extension_wrapper", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 const OpenXRExtensionWrapperExtension_vmap =
   Object.vmap.concat toTable {

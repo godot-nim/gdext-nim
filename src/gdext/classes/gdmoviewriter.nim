@@ -36,8 +36,7 @@ template writeEnd_bind*(_: typedesc[MovieWriter]): ClassCallVirtual = writeEnd
 
 proc addWriter*(_: typedesc[MovieWriter]; writer: MovieWriter): void =
   expandMethodBind(className MovieWriter, "add_writer", 4023702871)
-  var `?param` = [getPtr writer]
-  methodbind.ptrcall(addr `?param`[0])
+  methodbind.ptrcall([getPtr writer])
 
 const MovieWriter_vmap =
   Object.vmap.concat toTable {

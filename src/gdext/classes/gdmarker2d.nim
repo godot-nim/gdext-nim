@@ -6,13 +6,12 @@ import gdnode2d; export gdnode2d
 
 proc setGizmoExtents*(self: Marker2D; extents: Float): void =
   expandMethodBind(className Marker2D, "set_gizmo_extents", 373806689)
-  var `?param` = [getPtr extents]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr extents])
 
 proc getGizmoExtents*(self: Marker2D): Float =
   expandMethodBind(className Marker2D, "get_gizmo_extents", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template gizmoExtents*(self: Marker2D): untyped = self.getGizmoExtents()

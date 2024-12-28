@@ -6,83 +6,74 @@ import gdtexture3d; export gdtexture3d
 
 proc setWidth*(self: NoiseTexture3D; width: int32): void =
   expandMethodBind(className NoiseTexture3D, "set_width", 1286410249)
-  var `?param` = [getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr width])
 
 proc setHeight*(self: NoiseTexture3D; height: int32): void =
   expandMethodBind(className NoiseTexture3D, "set_height", 1286410249)
-  var `?param` = [getPtr height]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr height])
 
 proc setDepth*(self: NoiseTexture3D; depth: int32): void =
   expandMethodBind(className NoiseTexture3D, "set_depth", 1286410249)
-  var `?param` = [getPtr depth]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr depth])
 
 proc setInvert*(self: NoiseTexture3D; invert: bool): void =
   expandMethodBind(className NoiseTexture3D, "set_invert", 2586408642)
-  var `?param` = [getPtr invert]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr invert])
 
 proc getInvert*(self: NoiseTexture3D): bool =
   expandMethodBind(className NoiseTexture3D, "get_invert", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSeamless*(self: NoiseTexture3D; seamless: bool): void =
   expandMethodBind(className NoiseTexture3D, "set_seamless", 2586408642)
-  var `?param` = [getPtr seamless]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr seamless])
 
 proc getSeamless*(self: NoiseTexture3D): bool =
   expandMethodBind(className NoiseTexture3D, "get_seamless", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSeamlessBlendSkirt*(self: NoiseTexture3D; seamlessBlendSkirt: Float): void =
   expandMethodBind(className NoiseTexture3D, "set_seamless_blend_skirt", 373806689)
-  var `?param` = [getPtr seamlessBlendSkirt]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr seamlessBlendSkirt])
 
 proc getSeamlessBlendSkirt*(self: NoiseTexture3D): Float =
   expandMethodBind(className NoiseTexture3D, "get_seamless_blend_skirt", 191475506)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setNormalize*(self: NoiseTexture3D; normalize: bool): void =
   expandMethodBind(className NoiseTexture3D, "set_normalize", 2586408642)
-  var `?param` = [getPtr normalize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr normalize])
 
 proc isNormalized*(self: NoiseTexture3D): bool =
   expandMethodBind(className NoiseTexture3D, "is_normalized", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setColorRamp*(self: NoiseTexture3D; gradient: gdref Gradient): void =
   expandMethodBind(className NoiseTexture3D, "set_color_ramp", 2756054477)
-  var `?param` = [getPtr gradient]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr gradient])
 
 proc getColorRamp*(self: NoiseTexture3D): gdref Gradient =
   expandMethodBind(className NoiseTexture3D, "get_color_ramp", 132272999)
   var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Gradient)
 
 proc setNoise*(self: NoiseTexture3D; noise: gdref Noise): void =
   expandMethodBind(className NoiseTexture3D, "set_noise", 4135492439)
-  var `?param` = [getPtr noise]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr noise])
 
 proc getNoise*(self: NoiseTexture3D): gdref Noise =
   expandMethodBind(className NoiseTexture3D, "get_noise", 185851837)
   var ret: encoded gdref Noise
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Noise)
 
 template width*(self: NoiseTexture3D): untyped = self.getWidth()

@@ -16,8 +16,7 @@ template makeTooltipForPath_bind*(_: typedesc[EditorResourceTooltipPlugin]): Cla
 
 proc requestThumbnail*(self: EditorResourceTooltipPlugin; path: String; control: TextureRect): void =
   expandMethodBind(className EditorResourceTooltipPlugin, "request_thumbnail", 3245519720)
-  var `?param` = [getPtr path, getPtr control]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path, getPtr control])
 
 const EditorResourceTooltipPlugin_vmap =
   RefCounted.vmap.concat toTable {

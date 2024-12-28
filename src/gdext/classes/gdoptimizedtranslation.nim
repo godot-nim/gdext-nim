@@ -6,8 +6,7 @@ import gdtranslation; export gdtranslation
 
 proc generate*(self: OptimizedTranslation; `from`: gdref Translation): void =
   expandMethodBind(className OptimizedTranslation, "generate", 1466479800)
-  var `?param` = [getPtr `from`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `from`])
 
 const OptimizedTranslation_vmap =
   Translation.vmap.concat initTable[string, string]()

@@ -6,135 +6,122 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setSize*(self: Decal; size: Vector3): void =
   expandMethodBind(className Decal, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: Decal): Vector3 =
   expandMethodBind(className Decal, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setTexture*(self: Decal; `type`: Decal_DecalTexture; texture: gdref Texture2D): void =
   expandMethodBind(className Decal, "set_texture", 2086764391)
-  var `?param` = [getPtr `type`, getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`, getPtr texture])
 
 proc getTexture*(self: Decal; `type`: Decal_DecalTexture): gdref Texture2D =
   expandMethodBind(className Decal, "get_texture", 3244119503)
-  var `?param` = [getPtr `type`]
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr `type`], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setEmissionEnergy*(self: Decal; energy: Float): void =
   expandMethodBind(className Decal, "set_emission_energy", 373806689)
-  var `?param` = [getPtr energy]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr energy])
 
 proc getEmissionEnergy*(self: Decal): Float =
   expandMethodBind(className Decal, "get_emission_energy", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAlbedoMix*(self: Decal; energy: Float): void =
   expandMethodBind(className Decal, "set_albedo_mix", 373806689)
-  var `?param` = [getPtr energy]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr energy])
 
 proc getAlbedoMix*(self: Decal): Float =
   expandMethodBind(className Decal, "get_albedo_mix", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setModulate*(self: Decal; color: Color): void =
   expandMethodBind(className Decal, "set_modulate", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getModulate*(self: Decal): Color =
   expandMethodBind(className Decal, "get_modulate", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setUpperFade*(self: Decal; fade: Float): void =
   expandMethodBind(className Decal, "set_upper_fade", 373806689)
-  var `?param` = [getPtr fade]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fade])
 
 proc getUpperFade*(self: Decal): Float =
   expandMethodBind(className Decal, "get_upper_fade", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setLowerFade*(self: Decal; fade: Float): void =
   expandMethodBind(className Decal, "set_lower_fade", 373806689)
-  var `?param` = [getPtr fade]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fade])
 
 proc getLowerFade*(self: Decal): Float =
   expandMethodBind(className Decal, "get_lower_fade", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setNormalFade*(self: Decal; fade: Float): void =
   expandMethodBind(className Decal, "set_normal_fade", 373806689)
-  var `?param` = [getPtr fade]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fade])
 
 proc getNormalFade*(self: Decal): Float =
   expandMethodBind(className Decal, "get_normal_fade", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEnableDistanceFade*(self: Decal; enable: bool): void =
   expandMethodBind(className Decal, "set_enable_distance_fade", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isDistanceFadeEnabled*(self: Decal): bool =
   expandMethodBind(className Decal, "is_distance_fade_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDistanceFadeBegin*(self: Decal; distance: Float): void =
   expandMethodBind(className Decal, "set_distance_fade_begin", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeBegin*(self: Decal): Float =
   expandMethodBind(className Decal, "get_distance_fade_begin", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDistanceFadeLength*(self: Decal; distance: Float): void =
   expandMethodBind(className Decal, "set_distance_fade_length", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeLength*(self: Decal): Float =
   expandMethodBind(className Decal, "get_distance_fade_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setCullMask*(self: Decal; mask: uint32): void =
   expandMethodBind(className Decal, "set_cull_mask", 1286410249)
-  var `?param` = [getPtr mask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mask])
 
 proc getCullMask*(self: Decal): uint32 =
   expandMethodBind(className Decal, "get_cull_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 template size*(self: Decal): untyped = self.getSize()

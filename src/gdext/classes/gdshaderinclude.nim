@@ -6,13 +6,12 @@ import gdresource; export gdresource
 
 proc setCode*(self: ShaderInclude; code: String): void =
   expandMethodBind(className ShaderInclude, "set_code", 83702148)
-  var `?param` = [getPtr code]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr code])
 
 proc getCode*(self: ShaderInclude): String =
   expandMethodBind(className ShaderInclude, "get_code", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 template code*(self: ShaderInclude): untyped = self.getCode()

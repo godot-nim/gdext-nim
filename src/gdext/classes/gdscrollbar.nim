@@ -6,13 +6,12 @@ import gdrange; export gdrange
 
 proc setCustomStep*(self: ScrollBar; step: Float): void =
   expandMethodBind(className ScrollBar, "set_custom_step", 373806689)
-  var `?param` = [getPtr step]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr step])
 
 proc getCustomStep*(self: ScrollBar): Float =
   expandMethodBind(className ScrollBar, "get_custom_step", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template customStep*(self: ScrollBar): untyped = self.getCustomStep()

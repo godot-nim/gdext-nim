@@ -6,121 +6,112 @@ import gdnode; export gdnode
 
 proc setLayer*(self: CanvasLayer; layer: int32): void =
   expandMethodBind(className CanvasLayer, "set_layer", 1286410249)
-  var `?param` = [getPtr layer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layer])
 
 proc getLayer*(self: CanvasLayer): int32 =
   expandMethodBind(className CanvasLayer, "get_layer", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setVisible*(self: CanvasLayer; visible: bool): void =
   expandMethodBind(className CanvasLayer, "set_visible", 2586408642)
-  var `?param` = [getPtr visible]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr visible])
 
 proc isVisible*(self: CanvasLayer): bool =
   expandMethodBind(className CanvasLayer, "is_visible", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc show*(self: CanvasLayer): void =
   expandMethodBind(className CanvasLayer, "show", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc hide*(self: CanvasLayer): void =
   expandMethodBind(className CanvasLayer, "hide", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setTransform*(self: CanvasLayer; transform: Transform2D): void =
   expandMethodBind(className CanvasLayer, "set_transform", 2761652528)
-  var `?param` = [getPtr transform]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr transform])
 
 proc getTransform*(self: CanvasLayer): Transform2D =
   expandMethodBind(className CanvasLayer, "get_transform", 3814499831)
   var ret: encoded Transform2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform2D)
 
 proc getFinalTransform*(self: CanvasLayer): Transform2D =
   expandMethodBind(className CanvasLayer, "get_final_transform", 3814499831)
   var ret: encoded Transform2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform2D)
 
 proc setOffset*(self: CanvasLayer; offset: Vector2): void =
   expandMethodBind(className CanvasLayer, "set_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getOffset*(self: CanvasLayer): Vector2 =
   expandMethodBind(className CanvasLayer, "get_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setRotation*(self: CanvasLayer; radians: Float): void =
   expandMethodBind(className CanvasLayer, "set_rotation", 373806689)
-  var `?param` = [getPtr radians]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radians])
 
 proc getRotation*(self: CanvasLayer): Float =
   expandMethodBind(className CanvasLayer, "get_rotation", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setScale*(self: CanvasLayer; scale: Vector2): void =
   expandMethodBind(className CanvasLayer, "set_scale", 743155724)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getScale*(self: CanvasLayer): Vector2 =
   expandMethodBind(className CanvasLayer, "get_scale", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setFollowViewport*(self: CanvasLayer; enable: bool): void =
   expandMethodBind(className CanvasLayer, "set_follow_viewport", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isFollowingViewport*(self: CanvasLayer): bool =
   expandMethodBind(className CanvasLayer, "is_following_viewport", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFollowViewportScale*(self: CanvasLayer; scale: Float): void =
   expandMethodBind(className CanvasLayer, "set_follow_viewport_scale", 373806689)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getFollowViewportScale*(self: CanvasLayer): Float =
   expandMethodBind(className CanvasLayer, "get_follow_viewport_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setCustomViewport*(self: CanvasLayer; viewport: Node): void =
   expandMethodBind(className CanvasLayer, "set_custom_viewport", 1078189570)
-  var `?param` = [getPtr viewport]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr viewport])
 
 proc getCustomViewport*(self: CanvasLayer): Node =
   expandMethodBind(className CanvasLayer, "get_custom_viewport", 3160264692)
   var ret: encoded Node
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
 
 proc getCanvas*(self: CanvasLayer): RID =
   expandMethodBind(className CanvasLayer, "get_canvas", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 template layer*(self: CanvasLayer): untyped = self.getLayer()

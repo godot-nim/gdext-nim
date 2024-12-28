@@ -37,43 +37,43 @@ template getData_bind*(_: typedesc[Texture3D]): ClassCallVirtual = getData
 proc getFormat*(self: Texture3D): Image_Format =
   expandMethodBind(className Texture3D, "get_format", 3847873762)
   var ret: encoded Image_Format
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Image_Format)
 
 proc getWidth*(self: Texture3D): int32 =
   expandMethodBind(className Texture3D, "get_width", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getHeight*(self: Texture3D): int32 =
   expandMethodBind(className Texture3D, "get_height", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getDepth*(self: Texture3D): int32 =
   expandMethodBind(className Texture3D, "get_depth", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc hasMipmaps*(self: Texture3D): bool =
   expandMethodBind(className Texture3D, "has_mipmaps", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getData*(self: Texture3D): TypedArray[Image] =
   expandMethodBind(className Texture3D, "get_data", 3995934104)
   var ret: encoded TypedArray[Image]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Image])
 
 proc createPlaceholder*(self: Texture3D): gdref Resource =
   expandMethodBind(className Texture3D, "create_placeholder", 121922552)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 const Texture3D_vmap =

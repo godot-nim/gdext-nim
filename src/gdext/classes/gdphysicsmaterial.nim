@@ -6,46 +6,42 @@ import gdresource; export gdresource
 
 proc setFriction*(self: PhysicsMaterial; friction: Float): void =
   expandMethodBind(className PhysicsMaterial, "set_friction", 373806689)
-  var `?param` = [getPtr friction]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr friction])
 
 proc getFriction*(self: PhysicsMaterial): Float =
   expandMethodBind(className PhysicsMaterial, "get_friction", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRough*(self: PhysicsMaterial; rough: bool): void =
   expandMethodBind(className PhysicsMaterial, "set_rough", 2586408642)
-  var `?param` = [getPtr rough]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rough])
 
 proc isRough*(self: PhysicsMaterial): bool =
   expandMethodBind(className PhysicsMaterial, "is_rough", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setBounce*(self: PhysicsMaterial; bounce: Float): void =
   expandMethodBind(className PhysicsMaterial, "set_bounce", 373806689)
-  var `?param` = [getPtr bounce]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr bounce])
 
 proc getBounce*(self: PhysicsMaterial): Float =
   expandMethodBind(className PhysicsMaterial, "get_bounce", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAbsorbent*(self: PhysicsMaterial; absorbent: bool): void =
   expandMethodBind(className PhysicsMaterial, "set_absorbent", 2586408642)
-  var `?param` = [getPtr absorbent]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr absorbent])
 
 proc isAbsorbent*(self: PhysicsMaterial): bool =
   expandMethodBind(className PhysicsMaterial, "is_absorbent", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template friction*(self: PhysicsMaterial): untyped = self.getFriction()

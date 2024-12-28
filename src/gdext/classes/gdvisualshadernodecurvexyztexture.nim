@@ -6,13 +6,12 @@ import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
 
 proc setTexture*(self: VisualShaderNodeCurveXYZTexture; texture: gdref CurveXYZTexture): void =
   expandMethodBind(className VisualShaderNodeCurveXYZTexture, "set_texture", 8031783)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: VisualShaderNodeCurveXYZTexture): gdref CurveXYZTexture =
   expandMethodBind(className VisualShaderNodeCurveXYZTexture, "get_texture", 1950275015)
   var ret: encoded gdref CurveXYZTexture
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref CurveXYZTexture)
 
 template texture*(self: VisualShaderNodeCurveXYZTexture): untyped = self.getTexture()

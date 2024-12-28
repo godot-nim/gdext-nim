@@ -6,17 +6,17 @@ import gdrefcounted; export gdrefcounted
 
 proc lock*(self: Mutex): void =
   expandMethodBind(className Mutex, "lock", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc tryLock*(self: Mutex): bool =
   expandMethodBind(className Mutex, "try_lock", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc unlock*(self: Mutex): void =
   expandMethodBind(className Mutex, "unlock", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 const Mutex_vmap =
   RefCounted.vmap.concat initTable[string, string]()

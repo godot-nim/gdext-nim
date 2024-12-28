@@ -7,157 +7,142 @@ import gdresource; export gdresource
 proc getOriginalName*(self: GLTFNode): String =
   expandMethodBind(className GLTFNode, "get_original_name", 2841200299)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setOriginalName*(self: GLTFNode; originalName: String): void =
   expandMethodBind(className GLTFNode, "set_original_name", 83702148)
-  var `?param` = [getPtr originalName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr originalName])
 
 proc getParent*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_parent", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setParent*(self: GLTFNode; parent: int32): void =
   expandMethodBind(className GLTFNode, "set_parent", 1286410249)
-  var `?param` = [getPtr parent]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr parent])
 
 proc getHeight*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_height", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setHeight*(self: GLTFNode; height: int32): void =
   expandMethodBind(className GLTFNode, "set_height", 1286410249)
-  var `?param` = [getPtr height]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr height])
 
 proc getXform*(self: GLTFNode): Transform3D =
   expandMethodBind(className GLTFNode, "get_xform", 4183770049)
   var ret: encoded Transform3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
 
 proc setXform*(self: GLTFNode; xform: Transform3D): void =
   expandMethodBind(className GLTFNode, "set_xform", 2952846383)
-  var `?param` = [getPtr xform]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr xform])
 
 proc getMesh*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_mesh", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setMesh*(self: GLTFNode; mesh: int32): void =
   expandMethodBind(className GLTFNode, "set_mesh", 1286410249)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getCamera*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_camera", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setCamera*(self: GLTFNode; camera: int32): void =
   expandMethodBind(className GLTFNode, "set_camera", 1286410249)
-  var `?param` = [getPtr camera]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr camera])
 
 proc getSkin*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_skin", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSkin*(self: GLTFNode; skin: int32): void =
   expandMethodBind(className GLTFNode, "set_skin", 1286410249)
-  var `?param` = [getPtr skin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr skin])
 
 proc getSkeleton*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_skeleton", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSkeleton*(self: GLTFNode; skeleton: int32): void =
   expandMethodBind(className GLTFNode, "set_skeleton", 1286410249)
-  var `?param` = [getPtr skeleton]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr skeleton])
 
 proc getPosition*(self: GLTFNode): Vector3 =
   expandMethodBind(className GLTFNode, "get_position", 3783033775)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setPosition*(self: GLTFNode; position: Vector3): void =
   expandMethodBind(className GLTFNode, "set_position", 3460891852)
-  var `?param` = [getPtr position]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr position])
 
 proc getRotation*(self: GLTFNode): Quaternion =
   expandMethodBind(className GLTFNode, "get_rotation", 2916281908)
   var ret: encoded Quaternion
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Quaternion)
 
 proc setRotation*(self: GLTFNode; rotation: Quaternion): void =
   expandMethodBind(className GLTFNode, "set_rotation", 1727505552)
-  var `?param` = [getPtr rotation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rotation])
 
 proc getScale*(self: GLTFNode): Vector3 =
   expandMethodBind(className GLTFNode, "get_scale", 3783033775)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setScale*(self: GLTFNode; scale: Vector3): void =
   expandMethodBind(className GLTFNode, "set_scale", 3460891852)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getChildren*(self: GLTFNode): PackedInt32Array =
   expandMethodBind(className GLTFNode, "get_children", 969006518)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setChildren*(self: GLTFNode; children: PackedInt32Array): void =
   expandMethodBind(className GLTFNode, "set_children", 3614634198)
-  var `?param` = [getPtr children]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr children])
 
 proc getLight*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_light", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setLight*(self: GLTFNode; light: int32): void =
   expandMethodBind(className GLTFNode, "set_light", 1286410249)
-  var `?param` = [getPtr light]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr light])
 
 proc getAdditionalData*(self: GLTFNode; extensionName: StringName): Variant =
   expandMethodBind(className GLTFNode, "get_additional_data", 2138907829)
-  var `?param` = [getPtr extensionName]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr extensionName], addr ret)
   (addr ret).decode_result(Variant)
 
 proc setAdditionalData*(self: GLTFNode; extensionName: StringName; additionalData: Variant): void =
   expandMethodBind(className GLTFNode, "set_additional_data", 3776071444)
-  var `?param` = [getPtr extensionName, getPtr additionalData]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData])
 
 template originalName*(self: GLTFNode): untyped = self.getOriginalName()
 template `originalName=`*(self: GLTFNode; value) = self.setOriginalName(value)

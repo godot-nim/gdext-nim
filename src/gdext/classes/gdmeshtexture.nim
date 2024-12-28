@@ -6,35 +6,32 @@ import gdtexture2d; export gdtexture2d
 
 proc setMesh*(self: MeshTexture; mesh: gdref Mesh): void =
   expandMethodBind(className MeshTexture, "set_mesh", 194775623)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getMesh*(self: MeshTexture): gdref Mesh =
   expandMethodBind(className MeshTexture, "get_mesh", 1808005922)
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc setImageSize*(self: MeshTexture; size: Vector2): void =
   expandMethodBind(className MeshTexture, "set_image_size", 743155724)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getImageSize*(self: MeshTexture): Vector2 =
   expandMethodBind(className MeshTexture, "get_image_size", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setBaseTexture*(self: MeshTexture; texture: gdref Texture2D): void =
   expandMethodBind(className MeshTexture, "set_base_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getBaseTexture*(self: MeshTexture): gdref Texture2D =
   expandMethodBind(className MeshTexture, "get_base_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 template mesh*(self: MeshTexture): untyped = self.getMesh()

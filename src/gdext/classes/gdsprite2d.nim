@@ -6,147 +6,134 @@ import gdnode2d; export gdnode2d
 
 proc setTexture*(self: Sprite2D; texture: gdref Texture2D): void =
   expandMethodBind(className Sprite2D, "set_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: Sprite2D): gdref Texture2D =
   expandMethodBind(className Sprite2D, "get_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setCentered*(self: Sprite2D; centered: bool): void =
   expandMethodBind(className Sprite2D, "set_centered", 2586408642)
-  var `?param` = [getPtr centered]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr centered])
 
 proc isCentered*(self: Sprite2D): bool =
   expandMethodBind(className Sprite2D, "is_centered", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setOffset*(self: Sprite2D; offset: Vector2): void =
   expandMethodBind(className Sprite2D, "set_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getOffset*(self: Sprite2D): Vector2 =
   expandMethodBind(className Sprite2D, "get_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setFlipH*(self: Sprite2D; flipH: bool): void =
   expandMethodBind(className Sprite2D, "set_flip_h", 2586408642)
-  var `?param` = [getPtr flipH]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flipH])
 
 proc isFlippedH*(self: Sprite2D): bool =
   expandMethodBind(className Sprite2D, "is_flipped_h", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFlipV*(self: Sprite2D; flipV: bool): void =
   expandMethodBind(className Sprite2D, "set_flip_v", 2586408642)
-  var `?param` = [getPtr flipV]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flipV])
 
 proc isFlippedV*(self: Sprite2D): bool =
   expandMethodBind(className Sprite2D, "is_flipped_v", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRegionEnabled*(self: Sprite2D; enabled: bool): void =
   expandMethodBind(className Sprite2D, "set_region_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isRegionEnabled*(self: Sprite2D): bool =
   expandMethodBind(className Sprite2D, "is_region_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc isPixelOpaque*(self: Sprite2D; pos: Vector2): bool =
   expandMethodBind(className Sprite2D, "is_pixel_opaque", 556197845)
-  var `?param` = [getPtr pos]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr pos], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRegionRect*(self: Sprite2D; rect: Rect2): void =
   expandMethodBind(className Sprite2D, "set_region_rect", 2046264180)
-  var `?param` = [getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rect])
 
 proc getRegionRect*(self: Sprite2D): Rect2 =
   expandMethodBind(className Sprite2D, "get_region_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc setRegionFilterClipEnabled*(self: Sprite2D; enabled: bool): void =
   expandMethodBind(className Sprite2D, "set_region_filter_clip_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isRegionFilterClipEnabled*(self: Sprite2D): bool =
   expandMethodBind(className Sprite2D, "is_region_filter_clip_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFrame*(self: Sprite2D; frame: int32): void =
   expandMethodBind(className Sprite2D, "set_frame", 1286410249)
-  var `?param` = [getPtr frame]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr frame])
 
 proc getFrame*(self: Sprite2D): int32 =
   expandMethodBind(className Sprite2D, "get_frame", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFrameCoords*(self: Sprite2D; coords: Vector2i): void =
   expandMethodBind(className Sprite2D, "set_frame_coords", 1130785943)
-  var `?param` = [getPtr coords]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr coords])
 
 proc getFrameCoords*(self: Sprite2D): Vector2i =
   expandMethodBind(className Sprite2D, "get_frame_coords", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc setVframes*(self: Sprite2D; vframes: int32): void =
   expandMethodBind(className Sprite2D, "set_vframes", 1286410249)
-  var `?param` = [getPtr vframes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vframes])
 
 proc getVframes*(self: Sprite2D): int32 =
   expandMethodBind(className Sprite2D, "get_vframes", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setHframes*(self: Sprite2D; hframes: int32): void =
   expandMethodBind(className Sprite2D, "set_hframes", 1286410249)
-  var `?param` = [getPtr hframes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hframes])
 
 proc getHframes*(self: Sprite2D): int32 =
   expandMethodBind(className Sprite2D, "get_hframes", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getRect*(self: Sprite2D): Rect2 =
   expandMethodBind(className Sprite2D, "get_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 template texture*(self: Sprite2D): untyped = self.getTexture()

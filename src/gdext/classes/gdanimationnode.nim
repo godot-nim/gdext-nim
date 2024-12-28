@@ -46,95 +46,82 @@ template hasFilter_bind*(_: typedesc[AnimationNode]): ClassCallVirtual = hasFilt
 
 proc addInput*(self: AnimationNode; name: String): bool =
   expandMethodBind(className AnimationNode, "add_input", 2323990056)
-  var `?param` = [getPtr name]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
 proc removeInput*(self: AnimationNode; index: int32): void =
   expandMethodBind(className AnimationNode, "remove_input", 1286410249)
-  var `?param` = [getPtr index]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr index])
 
 proc setInputName*(self: AnimationNode; input: int32; name: String): bool =
   expandMethodBind(className AnimationNode, "set_input_name", 215573526)
-  var `?param` = [getPtr input, getPtr name]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr input, getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
 proc getInputName*(self: AnimationNode; input: int32): String =
   expandMethodBind(className AnimationNode, "get_input_name", 844755477)
-  var `?param` = [getPtr input]
   var ret: encoded String
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr input], addr ret)
   (addr ret).decode_result(String)
 
 proc getInputCount*(self: AnimationNode): int32 =
   expandMethodBind(className AnimationNode, "get_input_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc findInput*(self: AnimationNode; name: String): int32 =
   expandMethodBind(className AnimationNode, "find_input", 1321353865)
-  var `?param` = [getPtr name]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFilterPath*(self: AnimationNode; path: NodePath; enable: bool): void =
   expandMethodBind(className AnimationNode, "set_filter_path", 3868023870)
-  var `?param` = [getPtr path, getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path, getPtr enable])
 
 proc isPathFiltered*(self: AnimationNode; path: NodePath): bool =
   expandMethodBind(className AnimationNode, "is_path_filtered", 861721659)
-  var `?param` = [getPtr path]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFilterEnabled*(self: AnimationNode; enable: bool): void =
   expandMethodBind(className AnimationNode, "set_filter_enabled", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isFilterEnabled*(self: AnimationNode): bool =
   expandMethodBind(className AnimationNode, "is_filter_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc blendAnimation*(self: AnimationNode; animation: StringName; time: float64; delta: float64; seeked: bool; isExternalSeeking: bool; blend: Float; loopedFlag: Animation_LoopedFlag = loopedFlagNone): void =
   expandMethodBind(className AnimationNode, "blend_animation", 1630801826)
-  var `?param` = [getPtr animation, getPtr time, getPtr delta, getPtr seeked, getPtr isExternalSeeking, getPtr blend, getPtr loopedFlag]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr animation, getPtr time, getPtr delta, getPtr seeked, getPtr isExternalSeeking, getPtr blend, getPtr loopedFlag])
 
 proc blendNode*(self: AnimationNode; name: StringName; node: gdref AnimationNode; time: float64; seek: bool; isExternalSeeking: bool; blend: Float; filter: AnimationNode_FilterAction = filterIgnore; sync: bool = true; testOnly: bool = false): float64 =
   expandMethodBind(className AnimationNode, "blend_node", 1746075988)
-  var `?param` = [getPtr name, getPtr node, getPtr time, getPtr seek, getPtr isExternalSeeking, getPtr blend, getPtr filter, getPtr sync, getPtr testOnly]
   var ret: encoded float64
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name, getPtr node, getPtr time, getPtr seek, getPtr isExternalSeeking, getPtr blend, getPtr filter, getPtr sync, getPtr testOnly], addr ret)
   (addr ret).decode_result(float64)
 
 proc blendInput*(self: AnimationNode; inputIndex: int32; time: float64; seek: bool; isExternalSeeking: bool; blend: Float; filter: AnimationNode_FilterAction = filterIgnore; sync: bool = true; testOnly: bool = false): float64 =
   expandMethodBind(className AnimationNode, "blend_input", 1361527350)
-  var `?param` = [getPtr inputIndex, getPtr time, getPtr seek, getPtr isExternalSeeking, getPtr blend, getPtr filter, getPtr sync, getPtr testOnly]
   var ret: encoded float64
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr inputIndex, getPtr time, getPtr seek, getPtr isExternalSeeking, getPtr blend, getPtr filter, getPtr sync, getPtr testOnly], addr ret)
   (addr ret).decode_result(float64)
 
 proc setParameter*(self: AnimationNode; name: StringName; value: Variant): void =
   expandMethodBind(className AnimationNode, "set_parameter", 3776071444)
-  var `?param` = [getPtr name, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr value])
 
 proc getParameter*(self: AnimationNode; name: StringName): Variant =
   expandMethodBind(className AnimationNode, "get_parameter", 2760726917)
-  var `?param` = [getPtr name]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
 template filterEnabled*(self: AnimationNode): untyped = self.isFilterEnabled()

@@ -12,7 +12,7 @@ template postImport_bind*(_: typedesc[EditorScenePostImport]): ClassCallVirtual 
 proc getSourceFile*(self: EditorScenePostImport): String =
   expandMethodBind(className EditorScenePostImport, "get_source_file", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 const EditorScenePostImport_vmap =

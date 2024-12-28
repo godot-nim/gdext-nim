@@ -6,13 +6,12 @@ import gdtexture2d; export gdtexture2d
 
 proc setViewportPathInScene*(self: ViewportTexture; path: NodePath): void =
   expandMethodBind(className ViewportTexture, "set_viewport_path_in_scene", 1348162250)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getViewportPathInScene*(self: ViewportTexture): NodePath =
   expandMethodBind(className ViewportTexture, "get_viewport_path_in_scene", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 template viewportPath*(self: ViewportTexture): untyped = self.getViewportPathInScene()

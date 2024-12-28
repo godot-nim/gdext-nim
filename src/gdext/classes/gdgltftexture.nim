@@ -7,24 +7,22 @@ import gdresource; export gdresource
 proc getSrcImage*(self: GLTFTexture): int32 =
   expandMethodBind(className GLTFTexture, "get_src_image", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSrcImage*(self: GLTFTexture; srcImage: int32): void =
   expandMethodBind(className GLTFTexture, "set_src_image", 1286410249)
-  var `?param` = [getPtr srcImage]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr srcImage])
 
 proc getSampler*(self: GLTFTexture): int32 =
   expandMethodBind(className GLTFTexture, "get_sampler", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSampler*(self: GLTFTexture; sampler: int32): void =
   expandMethodBind(className GLTFTexture, "set_sampler", 1286410249)
-  var `?param` = [getPtr sampler]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sampler])
 
 template srcImage*(self: GLTFTexture): untyped = self.getSrcImage()
 template `srcImage=`*(self: GLTFTexture; value) = self.setSrcImage(value)

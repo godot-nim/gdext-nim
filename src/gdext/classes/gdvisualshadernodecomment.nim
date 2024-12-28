@@ -6,13 +6,12 @@ import gdvisualshadernodeframe; export gdvisualshadernodeframe
 
 proc setDescription*(self: VisualShaderNodeComment; description: String): void =
   expandMethodBind(className VisualShaderNodeComment, "set_description", 83702148)
-  var `?param` = [getPtr description]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr description])
 
 proc getDescription*(self: VisualShaderNodeComment): String =
   expandMethodBind(className VisualShaderNodeComment, "get_description", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 template description*(self: VisualShaderNodeComment): untyped = self.getDescription()

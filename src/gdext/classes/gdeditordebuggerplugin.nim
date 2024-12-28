@@ -36,15 +36,14 @@ template breakpointSetInTree_bind*(_: typedesc[EditorDebuggerPlugin]): ClassCall
 
 proc getSession*(self: EditorDebuggerPlugin; id: int32): gdref EditorDebuggerSession =
   expandMethodBind(className EditorDebuggerPlugin, "get_session", 3061968499)
-  var `?param` = [getPtr id]
   var ret: encoded gdref EditorDebuggerSession
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(gdref EditorDebuggerSession)
 
 proc getSessions*(self: EditorDebuggerPlugin): Array =
   expandMethodBind(className EditorDebuggerPlugin, "get_sessions", 2915620761)
   var ret: encoded Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array)
 
 const EditorDebuggerPlugin_vmap =

@@ -6,101 +6,92 @@ import gdcameraattributes; export gdcameraattributes
 
 proc setDofBlurFarEnabled*(self: CameraAttributesPractical; enabled: bool): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_far_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDofBlurFarEnabled*(self: CameraAttributesPractical): bool =
   expandMethodBind(className CameraAttributesPractical, "is_dof_blur_far_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDofBlurFarDistance*(self: CameraAttributesPractical; distance: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_far_distance", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDofBlurFarDistance*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_dof_blur_far_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDofBlurFarTransition*(self: CameraAttributesPractical; distance: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_far_transition", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDofBlurFarTransition*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_dof_blur_far_transition", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDofBlurNearEnabled*(self: CameraAttributesPractical; enabled: bool): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_near_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDofBlurNearEnabled*(self: CameraAttributesPractical): bool =
   expandMethodBind(className CameraAttributesPractical, "is_dof_blur_near_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDofBlurNearDistance*(self: CameraAttributesPractical; distance: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_near_distance", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDofBlurNearDistance*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_dof_blur_near_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDofBlurNearTransition*(self: CameraAttributesPractical; distance: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_near_transition", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDofBlurNearTransition*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_dof_blur_near_transition", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDofBlurAmount*(self: CameraAttributesPractical; amount: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_amount", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getDofBlurAmount*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_dof_blur_amount", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAutoExposureMaxSensitivity*(self: CameraAttributesPractical; maxSensitivity: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_auto_exposure_max_sensitivity", 373806689)
-  var `?param` = [getPtr maxSensitivity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr maxSensitivity])
 
 proc getAutoExposureMaxSensitivity*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_auto_exposure_max_sensitivity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAutoExposureMinSensitivity*(self: CameraAttributesPractical; minSensitivity: Float): void =
   expandMethodBind(className CameraAttributesPractical, "set_auto_exposure_min_sensitivity", 373806689)
-  var `?param` = [getPtr minSensitivity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr minSensitivity])
 
 proc getAutoExposureMinSensitivity*(self: CameraAttributesPractical): Float =
   expandMethodBind(className CameraAttributesPractical, "get_auto_exposure_min_sensitivity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template dofBlurFarEnabled*(self: CameraAttributesPractical): untyped = self.isDofBlurFarEnabled()

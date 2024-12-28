@@ -6,13 +6,12 @@ import gdcontrol; export gdcontrol
 
 proc setColor*(self: ColorRect; color: Color): void =
   expandMethodBind(className ColorRect, "set_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getColor*(self: ColorRect): Color =
   expandMethodBind(className ColorRect, "get_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 template color*(self: ColorRect): untyped = self.getColor()

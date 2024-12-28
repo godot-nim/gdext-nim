@@ -6,24 +6,22 @@ import gdaudiostream; export gdaudiostream
 
 proc setMixRate*(self: AudioStreamGenerator; hz: Float): void =
   expandMethodBind(className AudioStreamGenerator, "set_mix_rate", 373806689)
-  var `?param` = [getPtr hz]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hz])
 
 proc getMixRate*(self: AudioStreamGenerator): Float =
   expandMethodBind(className AudioStreamGenerator, "get_mix_rate", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBufferLength*(self: AudioStreamGenerator; seconds: Float): void =
   expandMethodBind(className AudioStreamGenerator, "set_buffer_length", 373806689)
-  var `?param` = [getPtr seconds]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr seconds])
 
 proc getBufferLength*(self: AudioStreamGenerator): Float =
   expandMethodBind(className AudioStreamGenerator, "get_buffer_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template mixRate*(self: AudioStreamGenerator): untyped = self.getMixRate()

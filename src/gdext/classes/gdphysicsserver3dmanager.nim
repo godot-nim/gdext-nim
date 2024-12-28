@@ -6,13 +6,11 @@ import gdobject; export gdobject
 
 proc registerServer*(self: PhysicsServer3DManager; name: String; createCallback: Callable): void =
   expandMethodBind(className PhysicsServer3DManager, "register_server", 2137474292)
-  var `?param` = [getPtr name, getPtr createCallback]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr createCallback])
 
 proc setDefaultServer*(self: PhysicsServer3DManager; name: String; priority: int32): void =
   expandMethodBind(className PhysicsServer3DManager, "set_default_server", 2956805083)
-  var `?param` = [getPtr name, getPtr priority]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr priority])
 
 const PhysicsServer3DManager_vmap =
   Object.vmap.concat initTable[string, string]()

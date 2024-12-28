@@ -6,13 +6,12 @@ import gdshape3d; export gdshape3d
 
 proc setPoints*(self: ConvexPolygonShape3D; points: PackedVector3Array): void =
   expandMethodBind(className ConvexPolygonShape3D, "set_points", 334873810)
-  var `?param` = [getPtr points]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr points])
 
 proc getPoints*(self: ConvexPolygonShape3D): PackedVector3Array =
   expandMethodBind(className ConvexPolygonShape3D, "get_points", 497664490)
   var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector3Array)
 
 template points*(self: ConvexPolygonShape3D): untyped = self.getPoints()

@@ -16,57 +16,52 @@ template handleMenuSelected_bind*(_: typedesc[EditorResourcePicker]): ClassCallV
 
 proc setBaseType*(self: EditorResourcePicker; baseType: String): void =
   expandMethodBind(className EditorResourcePicker, "set_base_type", 83702148)
-  var `?param` = [getPtr baseType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr baseType])
 
 proc getBaseType*(self: EditorResourcePicker): String =
   expandMethodBind(className EditorResourcePicker, "get_base_type", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc getAllowedTypes*(self: EditorResourcePicker): PackedStringArray =
   expandMethodBind(className EditorResourcePicker, "get_allowed_types", 1139954409)
   var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
 proc setEditedResource*(self: EditorResourcePicker; resource: gdref Resource): void =
   expandMethodBind(className EditorResourcePicker, "set_edited_resource", 968641751)
-  var `?param` = [getPtr resource]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr resource])
 
 proc getEditedResource*(self: EditorResourcePicker): gdref Resource =
   expandMethodBind(className EditorResourcePicker, "get_edited_resource", 2674603643)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 proc setToggleMode*(self: EditorResourcePicker; enable: bool): void =
   expandMethodBind(className EditorResourcePicker, "set_toggle_mode", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isToggleMode*(self: EditorResourcePicker): bool =
   expandMethodBind(className EditorResourcePicker, "is_toggle_mode", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTogglePressed*(self: EditorResourcePicker; pressed: bool): void =
   expandMethodBind(className EditorResourcePicker, "set_toggle_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc setEditable*(self: EditorResourcePicker; enable: bool): void =
   expandMethodBind(className EditorResourcePicker, "set_editable", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isEditable*(self: EditorResourcePicker): bool =
   expandMethodBind(className EditorResourcePicker, "is_editable", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template baseType*(self: EditorResourcePicker): untyped = self.getBaseType()

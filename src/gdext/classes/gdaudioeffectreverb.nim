@@ -6,90 +6,82 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setPredelayMsec*(self: AudioEffectReverb; msec: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_predelay_msec", 373806689)
-  var `?param` = [getPtr msec]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr msec])
 
 proc getPredelayMsec*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_predelay_msec", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPredelayFeedback*(self: AudioEffectReverb; feedback: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_predelay_feedback", 373806689)
-  var `?param` = [getPtr feedback]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr feedback])
 
 proc getPredelayFeedback*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_predelay_feedback", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRoomSize*(self: AudioEffectReverb; size: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_room_size", 373806689)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getRoomSize*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_room_size", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDamping*(self: AudioEffectReverb; amount: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_damping", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getDamping*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_damping", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSpread*(self: AudioEffectReverb; amount: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_spread", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getSpread*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_spread", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDry*(self: AudioEffectReverb; amount: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_dry", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getDry*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_dry", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setWet*(self: AudioEffectReverb; amount: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_wet", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getWet*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_wet", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setHpf*(self: AudioEffectReverb; amount: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_hpf", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getHpf*(self: AudioEffectReverb): Float =
   expandMethodBind(className AudioEffectReverb, "get_hpf", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template predelayMsec*(self: AudioEffectReverb): untyped = self.getPredelayMsec()

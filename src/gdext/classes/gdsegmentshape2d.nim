@@ -6,24 +6,22 @@ import gdshape2d; export gdshape2d
 
 proc setA*(self: SegmentShape2D; a: Vector2): void =
   expandMethodBind(className SegmentShape2D, "set_a", 743155724)
-  var `?param` = [getPtr a]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr a])
 
 proc getA*(self: SegmentShape2D): Vector2 =
   expandMethodBind(className SegmentShape2D, "get_a", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setB*(self: SegmentShape2D; b: Vector2): void =
   expandMethodBind(className SegmentShape2D, "set_b", 743155724)
-  var `?param` = [getPtr b]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr b])
 
 proc getB*(self: SegmentShape2D): Vector2 =
   expandMethodBind(className SegmentShape2D, "get_b", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 template a*(self: SegmentShape2D): untyped = self.getA()

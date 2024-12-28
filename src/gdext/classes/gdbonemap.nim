@@ -7,31 +7,27 @@ import gdresource; export gdresource
 proc getProfile*(self: BoneMap): gdref SkeletonProfile =
   expandMethodBind(className BoneMap, "get_profile", 4291782652)
   var ret: encoded gdref SkeletonProfile
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref SkeletonProfile)
 
 proc setProfile*(self: BoneMap; profile: gdref SkeletonProfile): void =
   expandMethodBind(className BoneMap, "set_profile", 3870374136)
-  var `?param` = [getPtr profile]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr profile])
 
 proc getSkeletonBoneName*(self: BoneMap; profileBoneName: StringName): StringName =
   expandMethodBind(className BoneMap, "get_skeleton_bone_name", 1965194235)
-  var `?param` = [getPtr profileBoneName]
   var ret: encoded StringName
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr profileBoneName], addr ret)
   (addr ret).decode_result(StringName)
 
 proc setSkeletonBoneName*(self: BoneMap; profileBoneName: StringName; skeletonBoneName: StringName): void =
   expandMethodBind(className BoneMap, "set_skeleton_bone_name", 3740211285)
-  var `?param` = [getPtr profileBoneName, getPtr skeletonBoneName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr profileBoneName, getPtr skeletonBoneName])
 
 proc findProfileBoneName*(self: BoneMap; skeletonBoneName: StringName): StringName =
   expandMethodBind(className BoneMap, "find_profile_bone_name", 1965194235)
-  var `?param` = [getPtr skeletonBoneName]
   var ret: encoded StringName
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr skeletonBoneName], addr ret)
   (addr ret).decode_result(StringName)
 
 template profile*(self: BoneMap): untyped = self.getProfile()

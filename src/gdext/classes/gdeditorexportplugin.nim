@@ -121,63 +121,52 @@ template getAndroidManifestElementContents_bind*(_: typedesc[EditorExportPlugin]
 
 proc addSharedObject*(self: EditorExportPlugin; path: String; tags: PackedStringArray; target: String): void =
   expandMethodBind(className EditorExportPlugin, "add_shared_object", 3098291045)
-  var `?param` = [getPtr path, getPtr tags, getPtr target]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path, getPtr tags, getPtr target])
 
 proc addIosProjectStaticLib*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_project_static_lib", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addFile*(self: EditorExportPlugin; path: String; file: PackedByteArray; remap: bool): void =
   expandMethodBind(className EditorExportPlugin, "add_file", 527928637)
-  var `?param` = [getPtr path, getPtr file, getPtr remap]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path, getPtr file, getPtr remap])
 
 proc addIosFramework*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_framework", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addIosEmbeddedFramework*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_embedded_framework", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addIosPlistContent*(self: EditorExportPlugin; plistContent: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_plist_content", 83702148)
-  var `?param` = [getPtr plistContent]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr plistContent])
 
 proc addIosLinkerFlags*(self: EditorExportPlugin; flags: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_linker_flags", 83702148)
-  var `?param` = [getPtr flags]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flags])
 
 proc addIosBundleFile*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_bundle_file", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addIosCppCode*(self: EditorExportPlugin; code: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_cpp_code", 83702148)
-  var `?param` = [getPtr code]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr code])
 
 proc addMacosPluginFile*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_macos_plugin_file", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc skip*(self: EditorExportPlugin): void =
   expandMethodBind(className EditorExportPlugin, "skip", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc getOption*(self: EditorExportPlugin; name: StringName): Variant =
   expandMethodBind(className EditorExportPlugin, "get_option", 2760726917)
-  var `?param` = [getPtr name]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
 const EditorExportPlugin_vmap =

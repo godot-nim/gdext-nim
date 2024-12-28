@@ -6,40 +6,36 @@ import gdinputevent; export gdinputevent
 
 proc setAction*(self: InputEventAction; action: StringName): void =
   expandMethodBind(className InputEventAction, "set_action", 3304788590)
-  var `?param` = [getPtr action]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr action])
 
 proc getAction*(self: InputEventAction): StringName =
   expandMethodBind(className InputEventAction, "get_action", 2002593661)
   var ret: encoded StringName
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
 proc setPressed*(self: InputEventAction; pressed: bool): void =
   expandMethodBind(className InputEventAction, "set_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc setStrength*(self: InputEventAction; strength: Float): void =
   expandMethodBind(className InputEventAction, "set_strength", 373806689)
-  var `?param` = [getPtr strength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr strength])
 
 proc getStrength*(self: InputEventAction): Float =
   expandMethodBind(className InputEventAction, "get_strength", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEventIndex*(self: InputEventAction; index: int32): void =
   expandMethodBind(className InputEventAction, "set_event_index", 1286410249)
-  var `?param` = [getPtr index]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr index])
 
 proc getEventIndex*(self: InputEventAction): int32 =
   expandMethodBind(className InputEventAction, "get_event_index", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template action*(self: InputEventAction): untyped = self.getAction()

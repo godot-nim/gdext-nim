@@ -6,31 +6,28 @@ import gdcontainer; export gdcontainer
 
 proc addSpacer*(self: BoxContainer; begin: bool): Control =
   expandMethodBind(className BoxContainer, "add_spacer", 1326660695)
-  var `?param` = [getPtr begin]
   var ret: encoded Control
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr begin], addr ret)
   (addr ret).decode_result(Control)
 
 proc setAlignment*(self: BoxContainer; alignment: BoxContainer_AlignmentMode): void =
   expandMethodBind(className BoxContainer, "set_alignment", 2456745134)
-  var `?param` = [getPtr alignment]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr alignment])
 
 proc getAlignment*(self: BoxContainer): BoxContainer_AlignmentMode =
   expandMethodBind(className BoxContainer, "get_alignment", 1915476527)
   var ret: encoded BoxContainer_AlignmentMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BoxContainer_AlignmentMode)
 
 proc setVertical*(self: BoxContainer; vertical: bool): void =
   expandMethodBind(className BoxContainer, "set_vertical", 2586408642)
-  var `?param` = [getPtr vertical]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertical])
 
 proc isVertical*(self: BoxContainer): bool =
   expandMethodBind(className BoxContainer, "is_vertical", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template alignment*(self: BoxContainer): untyped = self.getAlignment()

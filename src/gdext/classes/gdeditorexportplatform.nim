@@ -7,7 +7,7 @@ import gdrefcounted; export gdrefcounted
 proc getOsName*(self: EditorExportPlatform): String =
   expandMethodBind(className EditorExportPlatform, "get_os_name", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 const EditorExportPlatform_vmap =

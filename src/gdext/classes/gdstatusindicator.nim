@@ -6,52 +6,48 @@ import gdnode; export gdnode
 
 proc setTooltip*(self: StatusIndicator; tooltip: String): void =
   expandMethodBind(className StatusIndicator, "set_tooltip", 83702148)
-  var `?param` = [getPtr tooltip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr tooltip])
 
 proc getTooltip*(self: StatusIndicator): String =
   expandMethodBind(className StatusIndicator, "get_tooltip", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setIcon*(self: StatusIndicator; texture: gdref Texture2D): void =
   expandMethodBind(className StatusIndicator, "set_icon", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getIcon*(self: StatusIndicator): gdref Texture2D =
   expandMethodBind(className StatusIndicator, "get_icon", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setVisible*(self: StatusIndicator; visible: bool): void =
   expandMethodBind(className StatusIndicator, "set_visible", 2586408642)
-  var `?param` = [getPtr visible]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr visible])
 
 proc isVisible*(self: StatusIndicator): bool =
   expandMethodBind(className StatusIndicator, "is_visible", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMenu*(self: StatusIndicator; menu: NodePath): void =
   expandMethodBind(className StatusIndicator, "set_menu", 1348162250)
-  var `?param` = [getPtr menu]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr menu])
 
 proc getMenu*(self: StatusIndicator): NodePath =
   expandMethodBind(className StatusIndicator, "get_menu", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc getRect*(self: StatusIndicator): Rect2 =
   expandMethodBind(className StatusIndicator, "get_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 template tooltip*(self: StatusIndicator): untyped = self.getTooltip()

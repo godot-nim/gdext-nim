@@ -6,61 +6,56 @@ import gdnode2d; export gdnode2d
 
 proc setRemoteNode*(self: RemoteTransform2D; path: NodePath): void =
   expandMethodBind(className RemoteTransform2D, "set_remote_node", 1348162250)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getRemoteNode*(self: RemoteTransform2D): NodePath =
   expandMethodBind(className RemoteTransform2D, "get_remote_node", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc forceUpdateCache*(self: RemoteTransform2D): void =
   expandMethodBind(className RemoteTransform2D, "force_update_cache", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setUseGlobalCoordinates*(self: RemoteTransform2D; useGlobalCoordinates: bool): void =
   expandMethodBind(className RemoteTransform2D, "set_use_global_coordinates", 2586408642)
-  var `?param` = [getPtr useGlobalCoordinates]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr useGlobalCoordinates])
 
 proc getUseGlobalCoordinates*(self: RemoteTransform2D): bool =
   expandMethodBind(className RemoteTransform2D, "get_use_global_coordinates", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setUpdatePosition*(self: RemoteTransform2D; updateRemotePosition: bool): void =
   expandMethodBind(className RemoteTransform2D, "set_update_position", 2586408642)
-  var `?param` = [getPtr updateRemotePosition]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr updateRemotePosition])
 
 proc getUpdatePosition*(self: RemoteTransform2D): bool =
   expandMethodBind(className RemoteTransform2D, "get_update_position", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setUpdateRotation*(self: RemoteTransform2D; updateRemoteRotation: bool): void =
   expandMethodBind(className RemoteTransform2D, "set_update_rotation", 2586408642)
-  var `?param` = [getPtr updateRemoteRotation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr updateRemoteRotation])
 
 proc getUpdateRotation*(self: RemoteTransform2D): bool =
   expandMethodBind(className RemoteTransform2D, "get_update_rotation", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setUpdateScale*(self: RemoteTransform2D; updateRemoteScale: bool): void =
   expandMethodBind(className RemoteTransform2D, "set_update_scale", 2586408642)
-  var `?param` = [getPtr updateRemoteScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr updateRemoteScale])
 
 proc getUpdateScale*(self: RemoteTransform2D): bool =
   expandMethodBind(className RemoteTransform2D, "get_update_scale", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template remotePath*(self: RemoteTransform2D): untyped = self.getRemoteNode()

@@ -6,13 +6,12 @@ import gdeditorresourcepicker; export gdeditorresourcepicker
 
 proc setScriptOwner*(self: EditorScriptPicker; ownerNode: Node): void =
   expandMethodBind(className EditorScriptPicker, "set_script_owner", 1078189570)
-  var `?param` = [getPtr ownerNode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ownerNode])
 
 proc getScriptOwner*(self: EditorScriptPicker): Node =
   expandMethodBind(className EditorScriptPicker, "get_script_owner", 3160264692)
   var ret: encoded Node
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
 
 template scriptOwner*(self: EditorScriptPicker): untyped = self.getScriptOwner()

@@ -6,13 +6,12 @@ import gdinputevent; export gdinputevent
 
 proc setWindowId*(self: InputEventFromWindow; id: int64): void =
   expandMethodBind(className InputEventFromWindow, "set_window_id", 1286410249)
-  var `?param` = [getPtr id]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr id])
 
 proc getWindowId*(self: InputEventFromWindow): int64 =
   expandMethodBind(className InputEventFromWindow, "get_window_id", 3905245786)
   var ret: encoded int64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int64)
 
 template windowId*(self: InputEventFromWindow): untyped = self.getWindowId()

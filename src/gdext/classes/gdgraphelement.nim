@@ -6,57 +6,52 @@ import gdcontainer; export gdcontainer
 
 proc setResizable*(self: GraphElement; resizable: bool): void =
   expandMethodBind(className GraphElement, "set_resizable", 2586408642)
-  var `?param` = [getPtr resizable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr resizable])
 
 proc isResizable*(self: GraphElement): bool =
   expandMethodBind(className GraphElement, "is_resizable", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDraggable*(self: GraphElement; draggable: bool): void =
   expandMethodBind(className GraphElement, "set_draggable", 2586408642)
-  var `?param` = [getPtr draggable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr draggable])
 
 proc isDraggable*(self: GraphElement): bool =
   expandMethodBind(className GraphElement, "is_draggable", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSelectable*(self: GraphElement; selectable: bool): void =
   expandMethodBind(className GraphElement, "set_selectable", 2586408642)
-  var `?param` = [getPtr selectable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr selectable])
 
 proc isSelectable*(self: GraphElement): bool =
   expandMethodBind(className GraphElement, "is_selectable", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSelected*(self: GraphElement; selected: bool): void =
   expandMethodBind(className GraphElement, "set_selected", 2586408642)
-  var `?param` = [getPtr selected]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr selected])
 
 proc isSelected*(self: GraphElement): bool =
   expandMethodBind(className GraphElement, "is_selected", 2240911060)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setPositionOffset*(self: GraphElement; offset: Vector2): void =
   expandMethodBind(className GraphElement, "set_position_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getPositionOffset*(self: GraphElement): Vector2 =
   expandMethodBind(className GraphElement, "get_position_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 template positionOffset*(self: GraphElement): untyped = self.getPositionOffset()

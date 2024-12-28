@@ -6,35 +6,32 @@ import gdresource; export gdresource
 
 proc setLocalizedName*(self: OpenXRAction; localizedName: String): void =
   expandMethodBind(className OpenXRAction, "set_localized_name", 83702148)
-  var `?param` = [getPtr localizedName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr localizedName])
 
 proc getLocalizedName*(self: OpenXRAction): String =
   expandMethodBind(className OpenXRAction, "get_localized_name", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setActionType*(self: OpenXRAction; actionType: OpenXRAction_ActionType): void =
   expandMethodBind(className OpenXRAction, "set_action_type", 1675238366)
-  var `?param` = [getPtr actionType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr actionType])
 
 proc getActionType*(self: OpenXRAction): OpenXRAction_ActionType =
   expandMethodBind(className OpenXRAction, "get_action_type", 3536542431)
   var ret: encoded OpenXRAction_ActionType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OpenXRAction_ActionType)
 
 proc setToplevelPaths*(self: OpenXRAction; toplevelPaths: PackedStringArray): void =
   expandMethodBind(className OpenXRAction, "set_toplevel_paths", 4015028928)
-  var `?param` = [getPtr toplevelPaths]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr toplevelPaths])
 
 proc getToplevelPaths*(self: OpenXRAction): PackedStringArray =
   expandMethodBind(className OpenXRAction, "get_toplevel_paths", 1139954409)
   var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
 template localizedName*(self: OpenXRAction): untyped = self.getLocalizedName()

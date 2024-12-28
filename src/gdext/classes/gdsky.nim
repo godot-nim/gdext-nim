@@ -6,35 +6,32 @@ import gdresource; export gdresource
 
 proc setRadianceSize*(self: Sky; size: Sky_RadianceSize): void =
   expandMethodBind(className Sky, "set_radiance_size", 1512957179)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getRadianceSize*(self: Sky): Sky_RadianceSize =
   expandMethodBind(className Sky, "get_radiance_size", 2708733976)
   var ret: encoded Sky_RadianceSize
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Sky_RadianceSize)
 
 proc setProcessMode*(self: Sky; mode: Sky_ProcessMode): void =
   expandMethodBind(className Sky, "set_process_mode", 875986769)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getProcessMode*(self: Sky): Sky_ProcessMode =
   expandMethodBind(className Sky, "get_process_mode", 731245043)
   var ret: encoded Sky_ProcessMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Sky_ProcessMode)
 
 proc setMaterial*(self: Sky; material: gdref Material): void =
   expandMethodBind(className Sky, "set_material", 2757459619)
-  var `?param` = [getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr material])
 
 proc getMaterial*(self: Sky): gdref Material =
   expandMethodBind(className Sky, "get_material", 5934680)
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
 template skyMaterial*(self: Sky): untyped = self.getMaterial()

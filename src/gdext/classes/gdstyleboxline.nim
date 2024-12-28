@@ -6,57 +6,52 @@ import gdstylebox; export gdstylebox
 
 proc setColor*(self: StyleBoxLine; color: Color): void =
   expandMethodBind(className StyleBoxLine, "set_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getColor*(self: StyleBoxLine): Color =
   expandMethodBind(className StyleBoxLine, "get_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setThickness*(self: StyleBoxLine; thickness: int32): void =
   expandMethodBind(className StyleBoxLine, "set_thickness", 1286410249)
-  var `?param` = [getPtr thickness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr thickness])
 
 proc getThickness*(self: StyleBoxLine): int32 =
   expandMethodBind(className StyleBoxLine, "get_thickness", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setGrowBegin*(self: StyleBoxLine; offset: Float): void =
   expandMethodBind(className StyleBoxLine, "set_grow_begin", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getGrowBegin*(self: StyleBoxLine): Float =
   expandMethodBind(className StyleBoxLine, "get_grow_begin", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setGrowEnd*(self: StyleBoxLine; offset: Float): void =
   expandMethodBind(className StyleBoxLine, "set_grow_end", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getGrowEnd*(self: StyleBoxLine): Float =
   expandMethodBind(className StyleBoxLine, "get_grow_end", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setVertical*(self: StyleBoxLine; vertical: bool): void =
   expandMethodBind(className StyleBoxLine, "set_vertical", 2586408642)
-  var `?param` = [getPtr vertical]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertical])
 
 proc isVertical*(self: StyleBoxLine): bool =
   expandMethodBind(className StyleBoxLine, "is_vertical", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template color*(self: StyleBoxLine): untyped = self.getColor()

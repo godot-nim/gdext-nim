@@ -6,35 +6,32 @@ import gdnode; export gdnode
 
 proc setOriginalClass*(self: MissingNode; name: String): void =
   expandMethodBind(className MissingNode, "set_original_class", 83702148)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getOriginalClass*(self: MissingNode): String =
   expandMethodBind(className MissingNode, "get_original_class", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setOriginalScene*(self: MissingNode; name: String): void =
   expandMethodBind(className MissingNode, "set_original_scene", 83702148)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getOriginalScene*(self: MissingNode): String =
   expandMethodBind(className MissingNode, "get_original_scene", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setRecordingProperties*(self: MissingNode; enable: bool): void =
   expandMethodBind(className MissingNode, "set_recording_properties", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isRecordingProperties*(self: MissingNode): bool =
   expandMethodBind(className MissingNode, "is_recording_properties", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template originalClass*(self: MissingNode): untyped = self.getOriginalClass()

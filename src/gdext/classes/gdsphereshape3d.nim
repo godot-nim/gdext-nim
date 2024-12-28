@@ -6,13 +6,12 @@ import gdshape3d; export gdshape3d
 
 proc setRadius*(self: SphereShape3D; radius: Float): void =
   expandMethodBind(className SphereShape3D, "set_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getRadius*(self: SphereShape3D): Float =
   expandMethodBind(className SphereShape3D, "get_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template radius*(self: SphereShape3D): untyped = self.getRadius()

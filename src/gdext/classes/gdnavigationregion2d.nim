@@ -7,113 +7,103 @@ import gdnode2d; export gdnode2d
 proc getRid*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_rid", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc setNavigationPolygon*(self: NavigationRegion2D; navigationPolygon: gdref NavigationPolygon): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_polygon", 1515040758)
-  var `?param` = [getPtr navigationPolygon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr navigationPolygon])
 
 proc getNavigationPolygon*(self: NavigationRegion2D): gdref NavigationPolygon =
   expandMethodBind(className NavigationRegion2D, "get_navigation_polygon", 1046532237)
   var ret: encoded gdref NavigationPolygon
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref NavigationPolygon)
 
 proc setEnabled*(self: NavigationRegion2D; enabled: bool): void =
   expandMethodBind(className NavigationRegion2D, "set_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isEnabled*(self: NavigationRegion2D): bool =
   expandMethodBind(className NavigationRegion2D, "is_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNavigationMap*(self: NavigationRegion2D; navigationMap: RID): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_map", 2722037293)
-  var `?param` = [getPtr navigationMap]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr navigationMap])
 
 proc getNavigationMap*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_navigation_map", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc setUseEdgeConnections*(self: NavigationRegion2D; enabled: bool): void =
   expandMethodBind(className NavigationRegion2D, "set_use_edge_connections", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getUseEdgeConnections*(self: NavigationRegion2D): bool =
   expandMethodBind(className NavigationRegion2D, "get_use_edge_connections", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNavigationLayers*(self: NavigationRegion2D; navigationLayers: uint32): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_layers", 1286410249)
-  var `?param` = [getPtr navigationLayers]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr navigationLayers])
 
 proc getNavigationLayers*(self: NavigationRegion2D): uint32 =
   expandMethodBind(className NavigationRegion2D, "get_navigation_layers", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setNavigationLayerValue*(self: NavigationRegion2D; layerNumber: int32; value: bool): void =
   expandMethodBind(className NavigationRegion2D, "set_navigation_layer_value", 300928843)
-  var `?param` = [getPtr layerNumber, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
 
 proc getNavigationLayerValue*(self: NavigationRegion2D; layerNumber: int32): bool =
   expandMethodBind(className NavigationRegion2D, "get_navigation_layer_value", 1116898809)
-  var `?param` = [getPtr layerNumber]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
   (addr ret).decode_result(bool)
 
 proc getRegionRid*(self: NavigationRegion2D): RID =
   expandMethodBind(className NavigationRegion2D, "get_region_rid", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 proc setEnterCost*(self: NavigationRegion2D; enterCost: Float): void =
   expandMethodBind(className NavigationRegion2D, "set_enter_cost", 373806689)
-  var `?param` = [getPtr enterCost]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enterCost])
 
 proc getEnterCost*(self: NavigationRegion2D): Float =
   expandMethodBind(className NavigationRegion2D, "get_enter_cost", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTravelCost*(self: NavigationRegion2D; travelCost: Float): void =
   expandMethodBind(className NavigationRegion2D, "set_travel_cost", 373806689)
-  var `?param` = [getPtr travelCost]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr travelCost])
 
 proc getTravelCost*(self: NavigationRegion2D): Float =
   expandMethodBind(className NavigationRegion2D, "get_travel_cost", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc bakeNavigationPolygon*(self: NavigationRegion2D; onThread: bool = true): void =
   expandMethodBind(className NavigationRegion2D, "bake_navigation_polygon", 3216645846)
-  var `?param` = [getPtr onThread]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr onThread])
 
 proc isBaking*(self: NavigationRegion2D): bool =
   expandMethodBind(className NavigationRegion2D, "is_baking", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template navigationPolygon*(self: NavigationRegion2D): untyped = self.getNavigationPolygon()

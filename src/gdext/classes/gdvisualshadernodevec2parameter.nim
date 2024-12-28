@@ -6,24 +6,22 @@ import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
 
 proc setDefaultValueEnabled*(self: VisualShaderNodeVec2Parameter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeVec2Parameter, "set_default_value_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDefaultValueEnabled*(self: VisualShaderNodeVec2Parameter): bool =
   expandMethodBind(className VisualShaderNodeVec2Parameter, "is_default_value_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDefaultValue*(self: VisualShaderNodeVec2Parameter; value: Vector2): void =
   expandMethodBind(className VisualShaderNodeVec2Parameter, "set_default_value", 743155724)
-  var `?param` = [getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr value])
 
 proc getDefaultValue*(self: VisualShaderNodeVec2Parameter): Vector2 =
   expandMethodBind(className VisualShaderNodeVec2Parameter, "get_default_value", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 template defaultValueEnabled*(self: VisualShaderNodeVec2Parameter): untyped = self.isDefaultValueEnabled()

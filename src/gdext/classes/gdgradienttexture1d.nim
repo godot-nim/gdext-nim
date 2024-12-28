@@ -6,29 +6,26 @@ import gdtexture2d; export gdtexture2d
 
 proc setGradient*(self: GradientTexture1D; gradient: gdref Gradient): void =
   expandMethodBind(className GradientTexture1D, "set_gradient", 2756054477)
-  var `?param` = [getPtr gradient]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr gradient])
 
 proc getGradient*(self: GradientTexture1D): gdref Gradient =
   expandMethodBind(className GradientTexture1D, "get_gradient", 132272999)
   var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Gradient)
 
 proc setWidth*(self: GradientTexture1D; width: int32): void =
   expandMethodBind(className GradientTexture1D, "set_width", 1286410249)
-  var `?param` = [getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr width])
 
 proc setUseHdr*(self: GradientTexture1D; enabled: bool): void =
   expandMethodBind(className GradientTexture1D, "set_use_hdr", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isUsingHdr*(self: GradientTexture1D): bool =
   expandMethodBind(className GradientTexture1D, "is_using_hdr", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template gradient*(self: GradientTexture1D): untyped = self.getGradient()

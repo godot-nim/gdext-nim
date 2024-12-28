@@ -16,11 +16,11 @@ template loadImage_bind*(_: typedesc[ImageFormatLoaderExtension]): ClassCallVirt
 
 proc addFormatLoader*(self: ImageFormatLoaderExtension): void =
   expandMethodBind(className ImageFormatLoaderExtension, "add_format_loader", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc removeFormatLoader*(self: ImageFormatLoaderExtension): void =
   expandMethodBind(className ImageFormatLoaderExtension, "remove_format_loader", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 const ImageFormatLoaderExtension_vmap =
   ImageFormatLoader.vmap.concat toTable {

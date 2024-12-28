@@ -6,68 +6,62 @@ import gdrefcounted; export gdrefcounted
 
 proc setSampleCount*(self: RDPipelineMultisampleState; pMember: RenderingDevice_TextureSamples): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_sample_count", 3774171498)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getSampleCount*(self: RDPipelineMultisampleState): RenderingDevice_TextureSamples =
   expandMethodBind(className RDPipelineMultisampleState, "get_sample_count", 407791724)
   var ret: encoded RenderingDevice_TextureSamples
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_TextureSamples)
 
 proc setEnableSampleShading*(self: RDPipelineMultisampleState; pMember: bool): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_enable_sample_shading", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableSampleShading*(self: RDPipelineMultisampleState): bool =
   expandMethodBind(className RDPipelineMultisampleState, "get_enable_sample_shading", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMinSampleShading*(self: RDPipelineMultisampleState; pMember: Float): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_min_sample_shading", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getMinSampleShading*(self: RDPipelineMultisampleState): Float =
   expandMethodBind(className RDPipelineMultisampleState, "get_min_sample_shading", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEnableAlphaToCoverage*(self: RDPipelineMultisampleState; pMember: bool): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_coverage", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableAlphaToCoverage*(self: RDPipelineMultisampleState): bool =
   expandMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_coverage", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setEnableAlphaToOne*(self: RDPipelineMultisampleState; pMember: bool): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_one", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableAlphaToOne*(self: RDPipelineMultisampleState): bool =
   expandMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_one", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSampleMasks*(self: RDPipelineMultisampleState; masks: TypedArray[Int]): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_sample_masks", 381264803)
-  var `?param` = [getPtr masks]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr masks])
 
 proc getSampleMasks*(self: RDPipelineMultisampleState): TypedArray[Int] =
   expandMethodBind(className RDPipelineMultisampleState, "get_sample_masks", 3995934104)
   var ret: encoded TypedArray[Int]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Int])
 
 template sampleCount*(self: RDPipelineMultisampleState): untyped = self.getSampleCount()

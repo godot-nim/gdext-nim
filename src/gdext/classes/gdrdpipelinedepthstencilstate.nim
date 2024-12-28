@@ -6,233 +6,212 @@ import gdrefcounted; export gdrefcounted
 
 proc setEnableDepthTest*(self: RDPipelineDepthStencilState; pMember: bool): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_enable_depth_test", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableDepthTest*(self: RDPipelineDepthStencilState): bool =
   expandMethodBind(className RDPipelineDepthStencilState, "get_enable_depth_test", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setEnableDepthWrite*(self: RDPipelineDepthStencilState; pMember: bool): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_enable_depth_write", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableDepthWrite*(self: RDPipelineDepthStencilState): bool =
   expandMethodBind(className RDPipelineDepthStencilState, "get_enable_depth_write", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDepthCompareOperator*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_CompareOperator): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_depth_compare_operator", 2573711505)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthCompareOperator*(self: RDPipelineDepthStencilState): RenderingDevice_CompareOperator =
   expandMethodBind(className RDPipelineDepthStencilState, "get_depth_compare_operator", 269730778)
   var ret: encoded RenderingDevice_CompareOperator
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_CompareOperator)
 
 proc setEnableDepthRange*(self: RDPipelineDepthStencilState; pMember: bool): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_enable_depth_range", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableDepthRange*(self: RDPipelineDepthStencilState): bool =
   expandMethodBind(className RDPipelineDepthStencilState, "get_enable_depth_range", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDepthRangeMin*(self: RDPipelineDepthStencilState; pMember: Float): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_depth_range_min", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthRangeMin*(self: RDPipelineDepthStencilState): Float =
   expandMethodBind(className RDPipelineDepthStencilState, "get_depth_range_min", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDepthRangeMax*(self: RDPipelineDepthStencilState; pMember: Float): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_depth_range_max", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthRangeMax*(self: RDPipelineDepthStencilState): Float =
   expandMethodBind(className RDPipelineDepthStencilState, "get_depth_range_max", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEnableStencil*(self: RDPipelineDepthStencilState; pMember: bool): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_enable_stencil", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableStencil*(self: RDPipelineDepthStencilState): bool =
   expandMethodBind(className RDPipelineDepthStencilState, "get_enable_stencil", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFrontOpFail*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_fail", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpFail*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_fail", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setFrontOpPass*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_pass", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpPass*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_pass", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setFrontOpDepthFail*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_depth_fail", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpDepthFail*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_depth_fail", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setFrontOpCompare*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_CompareOperator): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_compare", 2573711505)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpCompare*(self: RDPipelineDepthStencilState): RenderingDevice_CompareOperator =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_compare", 269730778)
   var ret: encoded RenderingDevice_CompareOperator
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_CompareOperator)
 
 proc setFrontOpCompareMask*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_compare_mask", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpCompareMask*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_compare_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setFrontOpWriteMask*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_write_mask", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpWriteMask*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_write_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setFrontOpReference*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_front_op_reference", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontOpReference*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_front_op_reference", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setBackOpFail*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_fail", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpFail*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_fail", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setBackOpPass*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_pass", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpPass*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_pass", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setBackOpDepthFail*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_StencilOperation): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_depth_fail", 2092799566)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpDepthFail*(self: RDPipelineDepthStencilState): RenderingDevice_StencilOperation =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_depth_fail", 1714732389)
   var ret: encoded RenderingDevice_StencilOperation
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_StencilOperation)
 
 proc setBackOpCompare*(self: RDPipelineDepthStencilState; pMember: RenderingDevice_CompareOperator): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_compare", 2573711505)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpCompare*(self: RDPipelineDepthStencilState): RenderingDevice_CompareOperator =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_compare", 269730778)
   var ret: encoded RenderingDevice_CompareOperator
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_CompareOperator)
 
 proc setBackOpCompareMask*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_compare_mask", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpCompareMask*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_compare_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setBackOpWriteMask*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_write_mask", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpWriteMask*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_write_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setBackOpReference*(self: RDPipelineDepthStencilState; pMember: uint32): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_back_op_reference", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getBackOpReference*(self: RDPipelineDepthStencilState): uint32 =
   expandMethodBind(className RDPipelineDepthStencilState, "get_back_op_reference", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 template enableDepthTest*(self: RDPipelineDepthStencilState): untyped = self.getEnableDepthTest()
