@@ -9,18 +9,18 @@ import gdext/core/typeshift
 import propertyinfo
 
 type
-  Arg = tuple
+  Arg* = tuple
     namesym, typesym, default: NimNode
-  MiddleExp = object
-    name: NimNode
-    isStatic: bool
-    isVarargs: bool
-    self_T: NimNode
-    result_T: NimNode
-    args: seq[Arg]
-    defaults: seq[Arg]
+  MiddleExp* = object
+    name*: NimNode
+    isStatic*: bool
+    isVarargs*: bool
+    self_T*: NimNode
+    result_T*: NimNode
+    args*: seq[Arg]
+    defaults*: seq[Arg]
 
-proc parseMiddle(procdef: NimNode): MiddleExp =
+proc parseMiddle*(procdef: NimNode): MiddleExp =
   result.name = procdef[0]
   if result.name.kind == nnkPostfix: result.name = result.name[1]
 
@@ -45,8 +45,15 @@ proc parseMiddle(procdef: NimNode): MiddleExp =
     result.self_T[0].eqIdent "typedesc",
   )
 
-template hasResult(middle: MiddleExp): bool = middle.result_T != nil
+template hasResult*(middle: MiddleExp): bool = middle.result_T != nil
 
+proc returnValue(middle: MiddleExp): NimNode =
+  if middle.hasResult:
+    quote("@") do:
+      propertyInfo(typedesc @(middle.result_T))
+  else:
+    quote("@") do:
+      propertyInfo(VariantType_Nil)
 proc returnValueInfo(middle: MiddleExp): NimNode =
   quote("@") do:
     propertyInfo(typedesc @(middle.result_T))
@@ -222,3 +229,45 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
 
 proc classMethodInfo*(procdef: NimNode; gdname: NimNode): NimNode =
   parseMiddle(procdef).classMethodInfo(gdname)
+
+proc classVirtualMethodInfo(
+      name: Stringname;
+      # method_flags: set[ClassMethodFlags];
+      return_value: PropertyInfo;
+      return_value_metadata: ClassMethodArgumentMetadata;
+      arguments: array[0, PropertyInfo];
+      arguments_metadata: array[0, ClassMethodArgumentMetadata],
+    ): ClassVirtualMethodInfo =
+  ClassVirtualMethodInfo(
+      name: addr name,
+      method_flags: cast[uint32]({MethodFlag_Virtual}),
+      return_value: return_value,
+      return_value_metadata: return_value_metadata,
+    )
+proc classVirtualMethodInfo(
+      name: Stringname;
+      # method_flags: set[ClassMethodFlags];
+      return_value: PropertyInfo;
+      return_value_metadata: ClassMethodArgumentMetadata;
+      arguments: openArray[PropertyInfo];
+      arguments_metadata: openArray[ClassMethodArgumentMetadata],
+    ): ClassVirtualMethodInfo =
+  ClassVirtualMethodInfo(
+      name: addr name,
+      method_flags: cast[uint32]({MethodFlag_Virtual}),
+      return_value: return_value,
+      return_value_metadata: return_value_metadata,
+      argument_count: uint32 arguments.len,
+      arguments: addr arguments[0],
+      arguments_metadata: addr arguments_metadata[0],
+    )
+
+proc virtualMethodInfo*(middle: MiddleExp): NimNode =
+  quote"@" do:
+    classVirtualMethodInfo(
+      stringName @(middle.name.toStrLit),
+      @(middle.returnValue),
+      @(middle.returnValueMeta),
+      @(middle.argumentsInfo),
+      @(middle.argumentsMeta),
+    )

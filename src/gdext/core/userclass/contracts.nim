@@ -7,6 +7,7 @@ type Contract*[T] = object
 var invoked* {.compileTime.} : HashSet[string]
 
 template enums*(c: typedesc[Contract]): static Event = event $c.T & "::contract::enums"
+template virtual_base*(c: typedesc[Contract]): static Event = event $c.T & "::contract::virtual-base"
 template virtual*(c: typedesc[Contract]): static Event = event $c.T & "::contract::virtual"
 template procedure*(c: typedesc[Contract]): static Event = event $c.T & "::contract::procedure"
 template pre_property*(c: typedesc[Contract]): static Event = event $c.T & "::contract::pre-property"
@@ -16,12 +17,14 @@ template signal*(c: typedesc[Contract]): static Event = event $c.T & "::contract
 
 template invoke*(contract: typedesc[Contract]) =
   proc register_enums {.expandEvent: contract.enums.}
+  proc register_virtual_base {.expandEvent: contract.virtual_base.}
   proc register_virtual {.expandEvent: contract.virtual.}
   proc register_procedure {.expandEvent: contract.procedure.}
   proc register_pre_property {.expandEvent: contract.pre_property.}
   proc register_property {.expandEvent: contract.property.}
   proc register_signal {.expandEvent: contract.signal.}
   register_enums()
+  register_virtual_base()
   register_virtual()
   register_procedure()
   register_pre_property()

@@ -5,6 +5,8 @@ import gdext
 import gdext/gdinterface/native
 import gdext/core/[gdclass, typeshift]
 
+import classes/gdvirtualnode01
+
 # sugar of `import godot/classDetail/classDetail_native_T`
 # Since this library is still early stage, we recommend to use this sugar for portability
 import gdext/classes/[
@@ -140,6 +142,18 @@ proc test_FirstClassFunction(self: GDExtNode) =
       check listen_0_result[1]
       check listen_1_result[1] == "SIGNAL"
 
+proc test_VirtualMethod(self: GDExtNode) =
+  suite "virtuals":
+    test "call virtual method from nim source":
+      check (self/"../VirtualNode01" as VirtualNode01).virtualMethod("from Nim Source") ==
+        "virtualMethod of VirtualNode01 is called from Nim Source"
+      check (self/"../InheritedNode01" as VirtualNode01).virtualMethod("from Nim Source") ==
+        "virtualMethod of InheritedNode01 is called from Nim Source"
+      check (self/"../VirtualNode02" as VirtualNode01).virtualMethod("from Nim Source") ==
+        "virtualMethod of VirtualNode02 is called from Nim Source"
+      check (self/"../InheritedNode02" as VirtualNode01).virtualMethod("from Nim Source") ==
+        "virtualMethod of InheritedNode02 is called from Nim Source"
+
 # Using `method` to override virtual functions of Engine-Class.
 # No specific pragma is needed.
 # based on Node.ready()
@@ -151,3 +165,4 @@ method ready(self: GDExtNode) {.gdsync.} =
     self.test_Node()
     self.test_Resource()
     self.test_FirstclassFunction()
+    self.test_VirtualMethod()

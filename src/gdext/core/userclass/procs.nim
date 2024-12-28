@@ -7,6 +7,7 @@ import gdext/core/gdclass
 import contracts
 import methodinfo
 import propertyinfo
+import virtuals
 
 const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by gdext."
 
@@ -120,7 +121,13 @@ proc sync_methodDef*(body: Nimnode): NimNode =
   let methodname = ident methodstr & "_bind"
   let procsym = ident methodstr
 
-  methoddef.withCorrectClassMethodForm quote do:
-    `methoddef`
-    proc `procsym` {.execon: Contract[`selfT`].virtual.} =
-      vmethods(`selfT`)[stringName `selfT`.vmap[`methodstrlit`]] = `selfT`.`methodname`
+  let methoddefWithEmit = methoddef.copy
+  methoddefWithEmit.body = methoddef.callWithEmitter
+
+  result = methoddef.withCorrectClassMethodForm quote do:
+    when `selfT`.vmap.hasKey(`methodStrlit`):
+      `methoddef`
+      proc `procsym` {.execon: Contract[`selfT`].virtual.} =
+        vmethods(`selfT`)[stringName `selfT`.vmap[`methodstrlit`]] = `selfT`.`methodname`
+    else:
+      `methoddefWithEmit`

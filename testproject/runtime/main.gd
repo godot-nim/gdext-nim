@@ -9,6 +9,7 @@ var signal_arg1_executed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	test_func()
+	test_virtual_func()
 	test_grobal_func()
 	exit_with_status()
 
@@ -31,6 +32,14 @@ func test_func():
 	assert_equal(node.varargs_concrete(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
 
 	assert_equal(node.most_complex("a", "b", "c", "d", "e", "f", "g"), "a b c d e f g")
+
+func test_virtual_func():
+	# $VirtualNode01.virtualMethod()
+	assert_equal($InheritedNode01.virtualMethod("from GDScript"),
+    "virtualMethod of InheritedNode01 is called from GDScript")
+	# $VirtualNode02.virtualMethod()
+	assert_equal($InheritedNode02.virtualMethod("from GDScript"),
+    "virtualMethod of InheritedNode02 is called from GDScript")
 
 func test_grobal_func():
 	NimMain.signal_arg0.connect(_on_nim_signal_arg0)
