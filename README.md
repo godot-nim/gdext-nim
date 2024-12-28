@@ -15,6 +15,7 @@ See [wiki][2] to get more detail.
 - [x] Available to call engine functionalities from Nim
 - [x] GLSLang-like swizzle operator (e.g. vector3.xxxyyyzzz)
 - [x] Commandline-helper (see [wiki - gdextwiz][3])
+- [x] Define/Call virtual methods
 
 ### Partially working
 
@@ -24,10 +25,8 @@ See [wiki][2] to get more detail.
 
 ### In preparation
 
-- [ ] Export enums
 - [ ] Assist to generate a .gdextension file
 - [ ] Export descriptions
-- [ ] Define/Export virtual methods
 - [ ] Develop engine plugins
 
 ## Commands
