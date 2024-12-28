@@ -8,20 +8,37 @@ import gdext/gen/[builtinclasses]
 import std/sequtils
 
 {.push, inline.}
-proc setLen*(arr: var Array; newlen: Natural) =
+proc setLen*(arr: var Array; newlen: int) =
   discard arr.resize(newlen)
-proc setLen*(arr: var TypedArray; newlen: Natural) =
+proc setLen*(arr: var TypedArray; newlen: int) =
   arr.Array.setlen(newlen)
-proc len*(arr: Array): Natural = arr.size
-proc len*(arr: TypedArray): Natural = arr.Array.len
+proc len*(arr: Array): int = arr.size
+proc len*(arr: TypedArray): int = arr.Array.len
+
+proc setLen*(arr: var PackedArray; newlen: int) =
+  discard arr.resize(newlen)
+proc len*(arr: PackedArray): int = arr.size
 {.pop.}
 
 iterator items*(arr: Array): Variant =
   for i in 0..<arr.len: yield arr[i]
+iterator pairs*(arr: Array): (int, Variant) =
+  for i in 0..<arr.len: yield (int i, arr[i])
 
-iterator pairs*(arr: Array): (Natural, Variant) =
-  for i in 0..<arr.len: yield (Natural i, arr[i])
+iterator items*[T](arr: PackedArray[T]): T =
+  for i in 0..<arr.len: yield arr[i]
+iterator pairs*[T](arr: PackedArray[T]): (int, T) =
+  for i in 0..<arr.len: yield (int i, arr[i])
 
+iterator mitems*(arr: var Array): var Variant =
+  for i in 0..<arr.len: yield arr[i]
+iterator mpairs*(arr: var Array): (int, var Variant) =
+  for i in 0..<arr.len: yield (int i, arr[i])
+
+iterator mitems*[T](arr: var PackedArray[T]): var T =
+  for i in 0..<arr.len: yield arr[i]
+iterator mpairs*[T](arr: var PackedArray[T]): (int, var T) =
+  for i in 0..<arr.len: yield (int i, arr[i])
 
 proc typedArray*[T: SomeVariant](arr: Array): TypedArray[T] =
   when T is SomeBuiltins:
