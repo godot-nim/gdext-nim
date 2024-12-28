@@ -1,4 +1,3 @@
-import std/sets
 import std/tables
 
 import gdext/buildconf
@@ -129,8 +128,8 @@ macro gdsync*(body): untyped =
     hint $body.kind
     body
 
-var registered: HashSet[StringName]
-var plugins: HashSet[StringName]
+var registered: seq[StringName]
+var plugins: seq[StringName]
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
   classDB.register(className(T), className(T.Super), addr info)
@@ -138,11 +137,11 @@ proc register*(T: typedesc) =
   invoke Contract[T]
   when T is EditorPlugin:
     interface_Editor_addPlugin addr className(T)
-    plugins.incl className(T)
-  registered.incl className(T)
+    plugins.add className(T)
+  registered.add className(T)
 
 proc unregisterAll* =
-  for name in plugins:
-    interface_Editor_removePlugin addr name
-  for name in registered:
-    classDB.unregister(name)
+  for i in countdown(plugins.high, 0):
+    interface_Editor_removePlugin addr plugins[i]
+  for i in countdown(registered.high, 0):
+    classDB.unregister registered[i]
