@@ -6,46 +6,42 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setCullMask*(self: GPUParticlesAttractor3D; mask: uint32): void =
   expandMethodBind(className GPUParticlesAttractor3D, "set_cull_mask", 1286410249)
-  var `?param` = [getPtr mask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mask])
 
 proc getCullMask*(self: GPUParticlesAttractor3D): uint32 =
   expandMethodBind(className GPUParticlesAttractor3D, "get_cull_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setStrength*(self: GPUParticlesAttractor3D; strength: Float): void =
   expandMethodBind(className GPUParticlesAttractor3D, "set_strength", 373806689)
-  var `?param` = [getPtr strength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr strength])
 
 proc getStrength*(self: GPUParticlesAttractor3D): Float =
   expandMethodBind(className GPUParticlesAttractor3D, "get_strength", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAttenuation*(self: GPUParticlesAttractor3D; attenuation: Float): void =
   expandMethodBind(className GPUParticlesAttractor3D, "set_attenuation", 373806689)
-  var `?param` = [getPtr attenuation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr attenuation])
 
 proc getAttenuation*(self: GPUParticlesAttractor3D): Float =
   expandMethodBind(className GPUParticlesAttractor3D, "get_attenuation", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDirectionality*(self: GPUParticlesAttractor3D; amount: Float): void =
   expandMethodBind(className GPUParticlesAttractor3D, "set_directionality", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getDirectionality*(self: GPUParticlesAttractor3D): Float =
   expandMethodBind(className GPUParticlesAttractor3D, "get_directionality", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template strength*(self: GPUParticlesAttractor3D): untyped = self.getStrength()

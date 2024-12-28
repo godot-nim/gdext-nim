@@ -6,13 +6,12 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setPan*(self: AudioEffectPanner; cpanume: Float): void =
   expandMethodBind(className AudioEffectPanner, "set_pan", 373806689)
-  var `?param` = [getPtr cpanume]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr cpanume])
 
 proc getPan*(self: AudioEffectPanner): Float =
   expandMethodBind(className AudioEffectPanner, "get_pan", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template pan*(self: AudioEffectPanner): untyped = self.getPan()

@@ -6,13 +6,12 @@ import gdvisualshadernodegroupbase; export gdvisualshadernodegroupbase
 
 proc setExpression*(self: VisualShaderNodeExpression; expression: String): void =
   expandMethodBind(className VisualShaderNodeExpression, "set_expression", 83702148)
-  var `?param` = [getPtr expression]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr expression])
 
 proc getExpression*(self: VisualShaderNodeExpression): String =
   expandMethodBind(className VisualShaderNodeExpression, "get_expression", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 template expression*(self: VisualShaderNodeExpression): untyped = self.getExpression()

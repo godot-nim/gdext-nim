@@ -6,30 +6,27 @@ import gdinputevent; export gdinputevent
 
 proc setButtonIndex*(self: InputEventJoypadButton; buttonIndex: JoyButton): void =
   expandMethodBind(className InputEventJoypadButton, "set_button_index", 1466368136)
-  var `?param` = [getPtr buttonIndex]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr buttonIndex])
 
 proc getButtonIndex*(self: InputEventJoypadButton): JoyButton =
   expandMethodBind(className InputEventJoypadButton, "get_button_index", 595588182)
   var ret: encoded JoyButton
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(JoyButton)
 
 proc setPressure*(self: InputEventJoypadButton; pressure: Float): void =
   expandMethodBind(className InputEventJoypadButton, "set_pressure", 373806689)
-  var `?param` = [getPtr pressure]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressure])
 
 proc getPressure*(self: InputEventJoypadButton): Float =
   expandMethodBind(className InputEventJoypadButton, "get_pressure", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPressed*(self: InputEventJoypadButton; pressed: bool): void =
   expandMethodBind(className InputEventJoypadButton, "set_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 template buttonIndex*(self: InputEventJoypadButton): untyped = self.getButtonIndex()
 template `buttonIndex=`*(self: InputEventJoypadButton; value) = self.setButtonIndex(value)

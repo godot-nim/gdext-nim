@@ -6,13 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 proc setTimeLeft*(self: SceneTreeTimer; time: float64): void =
   expandMethodBind(className SceneTreeTimer, "set_time_left", 373806689)
-  var `?param` = [getPtr time]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr time])
 
 proc getTimeLeft*(self: SceneTreeTimer): float64 =
   expandMethodBind(className SceneTreeTimer, "get_time_left", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 template timeLeft*(self: SceneTreeTimer): untyped = self.getTimeLeft()

@@ -16,12 +16,11 @@ template getAllowedSizeFlagsVertical_bind*(_: typedesc[Container]): ClassCallVir
 
 proc queueSort*(self: Container): void =
   expandMethodBind(className Container, "queue_sort", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc fitChildInRect*(self: Container; child: Control; rect: Rect2): void =
   expandMethodBind(className Container, "fit_child_in_rect", 1993438598)
-  var `?param` = [getPtr child, getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr child, getPtr rect])
 
 const Container_vmap =
   Control.vmap.concat toTable {

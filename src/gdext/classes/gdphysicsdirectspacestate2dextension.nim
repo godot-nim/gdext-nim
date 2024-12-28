@@ -36,9 +36,8 @@ template restInfo_bind*(_: typedesc[PhysicsDirectSpaceState2DExtension]): ClassC
 
 proc isBodyExcludedFromQuery*(self: PhysicsDirectSpaceState2DExtension; body: RID): bool =
   expandMethodBind(className PhysicsDirectSpaceState2DExtension, "is_body_excluded_from_query", 4155700596)
-  var `?param` = [getPtr body]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr body], addr ret)
   (addr ret).decode_result(bool)
 
 const PhysicsDirectSpaceState2DExtension_vmap =

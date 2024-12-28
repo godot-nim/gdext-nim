@@ -11,19 +11,18 @@ template run_bind*(_: typedesc[EditorScript]): ClassCallVirtual = run
 
 proc addRootNode*(self: EditorScript; node: Node): void =
   expandMethodBind(className EditorScript, "add_root_node", 1078189570)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc getScene*(self: EditorScript): Node =
   expandMethodBind(className EditorScript, "get_scene", 3160264692)
   var ret: encoded Node
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
 
 proc getEditorInterface*(self: EditorScript): EditorInterface =
   expandMethodBind(className EditorScript, "get_editor_interface", 1976662476)
   var ret: encoded EditorInterface
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorInterface)
 
 const EditorScript_vmap =

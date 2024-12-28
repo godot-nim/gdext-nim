@@ -6,35 +6,32 @@ import gdnode2d; export gdnode2d
 
 proc setFitMargin*(self: CanvasGroup; fitMargin: Float): void =
   expandMethodBind(className CanvasGroup, "set_fit_margin", 373806689)
-  var `?param` = [getPtr fitMargin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fitMargin])
 
 proc getFitMargin*(self: CanvasGroup): Float =
   expandMethodBind(className CanvasGroup, "get_fit_margin", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setClearMargin*(self: CanvasGroup; clearMargin: Float): void =
   expandMethodBind(className CanvasGroup, "set_clear_margin", 373806689)
-  var `?param` = [getPtr clearMargin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clearMargin])
 
 proc getClearMargin*(self: CanvasGroup): Float =
   expandMethodBind(className CanvasGroup, "get_clear_margin", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setUseMipmaps*(self: CanvasGroup; useMipmaps: bool): void =
   expandMethodBind(className CanvasGroup, "set_use_mipmaps", 2586408642)
-  var `?param` = [getPtr useMipmaps]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr useMipmaps])
 
 proc isUsingMipmaps*(self: CanvasGroup): bool =
   expandMethodBind(className CanvasGroup, "is_using_mipmaps", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template fitMargin*(self: CanvasGroup): untyped = self.getFitMargin()

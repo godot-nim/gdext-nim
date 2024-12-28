@@ -6,24 +6,22 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setBillboardType*(self: VisualShaderNodeBillboard; billboardType: VisualShaderNodeBillboard_BillboardType): void =
   expandMethodBind(className VisualShaderNodeBillboard, "set_billboard_type", 1227463289)
-  var `?param` = [getPtr billboardType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr billboardType])
 
 proc getBillboardType*(self: VisualShaderNodeBillboard): VisualShaderNodeBillboard_BillboardType =
   expandMethodBind(className VisualShaderNodeBillboard, "get_billboard_type", 3724188517)
   var ret: encoded VisualShaderNodeBillboard_BillboardType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeBillboard_BillboardType)
 
 proc setKeepScaleEnabled*(self: VisualShaderNodeBillboard; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeBillboard, "set_keep_scale_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isKeepScaleEnabled*(self: VisualShaderNodeBillboard): bool =
   expandMethodBind(className VisualShaderNodeBillboard, "is_keep_scale_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template billboardType*(self: VisualShaderNodeBillboard): untyped = self.getBillboardType()

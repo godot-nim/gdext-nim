@@ -6,24 +6,22 @@ import gdnode2d; export gdnode2d
 
 proc setMesh*(self: MeshInstance2D; mesh: gdref Mesh): void =
   expandMethodBind(className MeshInstance2D, "set_mesh", 194775623)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getMesh*(self: MeshInstance2D): gdref Mesh =
   expandMethodBind(className MeshInstance2D, "get_mesh", 1808005922)
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc setTexture*(self: MeshInstance2D; texture: gdref Texture2D): void =
   expandMethodBind(className MeshInstance2D, "set_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: MeshInstance2D): gdref Texture2D =
   expandMethodBind(className MeshInstance2D, "get_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 template mesh*(self: MeshInstance2D): untyped = self.getMesh()

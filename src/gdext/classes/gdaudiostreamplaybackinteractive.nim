@@ -6,13 +6,11 @@ import gdaudiostreamplayback; export gdaudiostreamplayback
 
 proc switchToClipByName*(self: AudioStreamPlaybackInteractive; clipName: StringName): void =
   expandMethodBind(className AudioStreamPlaybackInteractive, "switch_to_clip_by_name", 3304788590)
-  var `?param` = [getPtr clipName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clipName])
 
 proc switchToClip*(self: AudioStreamPlaybackInteractive; clipIndex: int32): void =
   expandMethodBind(className AudioStreamPlaybackInteractive, "switch_to_clip", 1286410249)
-  var `?param` = [getPtr clipIndex]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clipIndex])
 
 const AudioStreamPlaybackInteractive_vmap =
   AudioStreamPlayback.vmap.concat initTable[string, string]()

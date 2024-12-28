@@ -6,6 +6,8 @@ import std/options
 import std/sets
 import std/tables
 import std/deques
+import std/sequtils
+import std/algorithm
 
 export tables
 
@@ -35,13 +37,14 @@ proc registerDB*(class: Class) =
   except:
     inheritanceDB[class.inherits] = [class.typesym].toHashSet
 
+proc cmp(a, b: TypeSym): int = cmp a.string, b.string
 
 iterator hierarchical*(db: InheritanceDB): tuple[parent, child: TypeSym] =
   var queue: Deque[TypeSym]
   var parent: TypeSym = TypeSym.RootObj
   while true:
     try:
-      for child in db[parent]:
+      for child in db[parent].toSeq.sorted(cmp):
         yield (parent, child)
         queue.addLast child
     except: discard

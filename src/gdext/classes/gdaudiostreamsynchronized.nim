@@ -6,37 +6,32 @@ import gdaudiostream; export gdaudiostream
 
 proc setStreamCount*(self: AudioStreamSynchronized; streamCount: int32): void =
   expandMethodBind(className AudioStreamSynchronized, "set_stream_count", 1286410249)
-  var `?param` = [getPtr streamCount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr streamCount])
 
 proc getStreamCount*(self: AudioStreamSynchronized): int32 =
   expandMethodBind(className AudioStreamSynchronized, "get_stream_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSyncStream*(self: AudioStreamSynchronized; streamIndex: int32; audioStream: gdref AudioStream): void =
   expandMethodBind(className AudioStreamSynchronized, "set_sync_stream", 111075094)
-  var `?param` = [getPtr streamIndex, getPtr audioStream]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr streamIndex, getPtr audioStream])
 
 proc getSyncStream*(self: AudioStreamSynchronized; streamIndex: int32): gdref AudioStream =
   expandMethodBind(className AudioStreamSynchronized, "get_sync_stream", 2739380747)
-  var `?param` = [getPtr streamIndex]
   var ret: encoded gdref AudioStream
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr streamIndex], addr ret)
   (addr ret).decode_result(gdref AudioStream)
 
 proc setSyncStreamVolume*(self: AudioStreamSynchronized; streamIndex: int32; volumeDb: Float): void =
   expandMethodBind(className AudioStreamSynchronized, "set_sync_stream_volume", 1602489585)
-  var `?param` = [getPtr streamIndex, getPtr volumeDb]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr streamIndex, getPtr volumeDb])
 
 proc getSyncStreamVolume*(self: AudioStreamSynchronized; streamIndex: int32): Float =
   expandMethodBind(className AudioStreamSynchronized, "get_sync_stream_volume", 2339986948)
-  var `?param` = [getPtr streamIndex]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr streamIndex], addr ret)
   (addr ret).decode_result(Float)
 
 template streamCount*(self: AudioStreamSynchronized): untyped = self.getStreamCount()

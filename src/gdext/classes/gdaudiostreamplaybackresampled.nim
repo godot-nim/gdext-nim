@@ -16,7 +16,7 @@ template getStreamSamplingRate_bind*(_: typedesc[AudioStreamPlaybackResampled]):
 
 proc beginResample*(self: AudioStreamPlaybackResampled): void =
   expandMethodBind(className AudioStreamPlaybackResampled, "begin_resample", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 const AudioStreamPlaybackResampled_vmap =
   AudioStreamPlayback.vmap.concat toTable {

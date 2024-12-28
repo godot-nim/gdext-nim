@@ -27,55 +27,49 @@ template testMask_bind*(_: typedesc[StyleBox]): ClassCallVirtual = testMask
 proc getMinimumSize*(self: StyleBox): Vector2 =
   expandMethodBind(className StyleBox, "get_minimum_size", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setContentMargin*(self: StyleBox; margin: Side; offset: Float): void =
   expandMethodBind(className StyleBox, "set_content_margin", 4290182280)
-  var `?param` = [getPtr margin, getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr margin, getPtr offset])
 
 proc setContentMarginAll*(self: StyleBox; offset: Float): void =
   expandMethodBind(className StyleBox, "set_content_margin_all", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getContentMargin*(self: StyleBox; margin: Side): Float =
   expandMethodBind(className StyleBox, "get_content_margin", 2869120046)
-  var `?param` = [getPtr margin]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(Float)
 
 proc getMargin*(self: StyleBox; margin: Side): Float =
   expandMethodBind(className StyleBox, "get_margin", 2869120046)
-  var `?param` = [getPtr margin]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(Float)
 
 proc getOffset*(self: StyleBox): Vector2 =
   expandMethodBind(className StyleBox, "get_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc draw*(self: StyleBox; canvasItem: RID; rect: Rect2): void =
   expandMethodBind(className StyleBox, "draw", 2275962004)
-  var `?param` = [getPtr canvasItem, getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect])
 
 proc getCurrentItemDrawn*(self: StyleBox): CanvasItem =
   expandMethodBind(className StyleBox, "get_current_item_drawn", 3213695180)
   var ret: encoded CanvasItem
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CanvasItem)
 
 proc testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool =
   expandMethodBind(className StyleBox, "test_mask", 3735564539)
-  var `?param` = [getPtr point, getPtr rect]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr point, getPtr rect], addr ret)
   (addr ret).decode_result(bool)
 
 template contentMarginLeft*(self: StyleBox): untyped = self.getContentMargin(Side(0))

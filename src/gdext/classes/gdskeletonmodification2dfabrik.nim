@@ -6,72 +6,62 @@ import gdskeletonmodification2d; export gdskeletonmodification2d
 
 proc setTargetNode*(self: SkeletonModification2DFABRIK; targetNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_target_node", 1348162250)
-  var `?param` = [getPtr targetNodepath]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr targetNodepath])
 
 proc getTargetNode*(self: SkeletonModification2DFABRIK): NodePath =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_target_node", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc setFabrikDataChainLength*(self: SkeletonModification2DFABRIK; length: int32): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_fabrik_data_chain_length", 1286410249)
-  var `?param` = [getPtr length]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr length])
 
 proc getFabrikDataChainLength*(self: SkeletonModification2DFABRIK): int32 =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_fabrik_data_chain_length", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFabrikJointBone2dNode*(self: SkeletonModification2DFABRIK; jointIdx: int32; bone2dNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_fabrik_joint_bone2d_node", 2761262315)
-  var `?param` = [getPtr jointIdx, getPtr bone2dNodepath]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr bone2dNodepath])
 
 proc getFabrikJointBone2dNode*(self: SkeletonModification2DFABRIK; jointIdx: int32): NodePath =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_fabrik_joint_bone2d_node", 408788394)
-  var `?param` = [getPtr jointIdx]
   var ret: encoded NodePath
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc setFabrikJointBoneIndex*(self: SkeletonModification2DFABRIK; jointIdx: int32; boneIdx: int32): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_fabrik_joint_bone_index", 3937882851)
-  var `?param` = [getPtr jointIdx, getPtr boneIdx]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr boneIdx])
 
 proc getFabrikJointBoneIndex*(self: SkeletonModification2DFABRIK; jointIdx: int32): int32 =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_fabrik_joint_bone_index", 923996154)
-  var `?param` = [getPtr jointIdx]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFabrikJointMagnetPosition*(self: SkeletonModification2DFABRIK; jointIdx: int32; magnetPosition: Vector2): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_fabrik_joint_magnet_position", 163021252)
-  var `?param` = [getPtr jointIdx, getPtr magnetPosition]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr magnetPosition])
 
 proc getFabrikJointMagnetPosition*(self: SkeletonModification2DFABRIK; jointIdx: int32): Vector2 =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_fabrik_joint_magnet_position", 2299179447)
-  var `?param` = [getPtr jointIdx]
   var ret: encoded Vector2
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setFabrikJointUseTargetRotation*(self: SkeletonModification2DFABRIK; jointIdx: int32; useTargetRotation: bool): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_fabrik_joint_use_target_rotation", 300928843)
-  var `?param` = [getPtr jointIdx, getPtr useTargetRotation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr useTargetRotation])
 
 proc getFabrikJointUseTargetRotation*(self: SkeletonModification2DFABRIK; jointIdx: int32): bool =
   expandMethodBind(className SkeletonModification2DFABRIK, "get_fabrik_joint_use_target_rotation", 1116898809)
-  var `?param` = [getPtr jointIdx]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
   (addr ret).decode_result(bool)
 
 template targetNodepath*(self: SkeletonModification2DFABRIK): untyped = self.getTargetNode()

@@ -4,7 +4,7 @@ import gdext
 # import your extension classes here
 # import myclass
 import cases/use_api_from_toplevel
-import cases/array
+import cases/primitives
 import cases/variant
 import cases/enums
 import cases/image

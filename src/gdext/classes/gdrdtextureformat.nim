@@ -6,112 +6,101 @@ import gdrefcounted; export gdrefcounted
 
 proc setFormat*(self: RDTextureFormat; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureFormat, "set_format", 565531219)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFormat*(self: RDTextureFormat): RenderingDevice_DataFormat =
   expandMethodBind(className RDTextureFormat, "get_format", 2235804183)
   var ret: encoded RenderingDevice_DataFormat
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_DataFormat)
 
 proc setWidth*(self: RDTextureFormat; pMember: uint32): void =
   expandMethodBind(className RDTextureFormat, "set_width", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getWidth*(self: RDTextureFormat): uint32 =
   expandMethodBind(className RDTextureFormat, "get_width", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setHeight*(self: RDTextureFormat; pMember: uint32): void =
   expandMethodBind(className RDTextureFormat, "set_height", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getHeight*(self: RDTextureFormat): uint32 =
   expandMethodBind(className RDTextureFormat, "get_height", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setDepth*(self: RDTextureFormat; pMember: uint32): void =
   expandMethodBind(className RDTextureFormat, "set_depth", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepth*(self: RDTextureFormat): uint32 =
   expandMethodBind(className RDTextureFormat, "get_depth", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setArrayLayers*(self: RDTextureFormat; pMember: uint32): void =
   expandMethodBind(className RDTextureFormat, "set_array_layers", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getArrayLayers*(self: RDTextureFormat): uint32 =
   expandMethodBind(className RDTextureFormat, "get_array_layers", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setMipmaps*(self: RDTextureFormat; pMember: uint32): void =
   expandMethodBind(className RDTextureFormat, "set_mipmaps", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getMipmaps*(self: RDTextureFormat): uint32 =
   expandMethodBind(className RDTextureFormat, "get_mipmaps", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setTextureType*(self: RDTextureFormat; pMember: RenderingDevice_TextureType): void =
   expandMethodBind(className RDTextureFormat, "set_texture_type", 652343381)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getTextureType*(self: RDTextureFormat): RenderingDevice_TextureType =
   expandMethodBind(className RDTextureFormat, "get_texture_type", 4036357416)
   var ret: encoded RenderingDevice_TextureType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_TextureType)
 
 proc setSamples*(self: RDTextureFormat; pMember: RenderingDevice_TextureSamples): void =
   expandMethodBind(className RDTextureFormat, "set_samples", 3774171498)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getSamples*(self: RDTextureFormat): RenderingDevice_TextureSamples =
   expandMethodBind(className RDTextureFormat, "get_samples", 407791724)
   var ret: encoded RenderingDevice_TextureSamples
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_TextureSamples)
 
 proc setUsageBits*(self: RDTextureFormat; pMember: set[RenderingDevice_TextureUsageBits]): void =
   expandMethodBind(className RDTextureFormat, "set_usage_bits", 245642367)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getUsageBits*(self: RDTextureFormat): set[RenderingDevice_TextureUsageBits] =
   expandMethodBind(className RDTextureFormat, "get_usage_bits", 1313398998)
   var ret: encoded set[RenderingDevice_TextureUsageBits]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(set[RenderingDevice_TextureUsageBits])
 
 proc addShareableFormat*(self: RDTextureFormat; format: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureFormat, "add_shareable_format", 565531219)
-  var `?param` = [getPtr format]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr format])
 
 proc removeShareableFormat*(self: RDTextureFormat; format: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureFormat, "remove_shareable_format", 565531219)
-  var `?param` = [getPtr format]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr format])
 
 template format*(self: RDTextureFormat): untyped = self.getFormat()
 template `format=`*(self: RDTextureFormat; value) = self.setFormat(value)

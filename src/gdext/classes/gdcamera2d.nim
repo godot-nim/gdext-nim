@@ -6,269 +6,246 @@ import gdnode2d; export gdnode2d
 
 proc setOffset*(self: Camera2D; offset: Vector2): void =
   expandMethodBind(className Camera2D, "set_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getOffset*(self: Camera2D): Vector2 =
   expandMethodBind(className Camera2D, "get_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setAnchorMode*(self: Camera2D; anchorMode: Camera2D_AnchorMode): void =
   expandMethodBind(className Camera2D, "set_anchor_mode", 2050398218)
-  var `?param` = [getPtr anchorMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr anchorMode])
 
 proc getAnchorMode*(self: Camera2D): Camera2D_AnchorMode =
   expandMethodBind(className Camera2D, "get_anchor_mode", 155978067)
   var ret: encoded Camera2D_AnchorMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Camera2D_AnchorMode)
 
 proc setIgnoreRotation*(self: Camera2D; ignore: bool): void =
   expandMethodBind(className Camera2D, "set_ignore_rotation", 2586408642)
-  var `?param` = [getPtr ignore]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ignore])
 
 proc isIgnoringRotation*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_ignoring_rotation", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setProcessCallback*(self: Camera2D; mode: Camera2D_Camera2DProcessCallback): void =
   expandMethodBind(className Camera2D, "set_process_callback", 4201947462)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getProcessCallback*(self: Camera2D): Camera2D_Camera2DProcessCallback =
   expandMethodBind(className Camera2D, "get_process_callback", 2325344499)
   var ret: encoded Camera2D_Camera2DProcessCallback
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Camera2D_Camera2DProcessCallback)
 
 proc setEnabled*(self: Camera2D; enabled: bool): void =
   expandMethodBind(className Camera2D, "set_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc makeCurrent*(self: Camera2D): void =
   expandMethodBind(className Camera2D, "make_current", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc isCurrent*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_current", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setLimit*(self: Camera2D; margin: Side; limit: int32): void =
   expandMethodBind(className Camera2D, "set_limit", 437707142)
-  var `?param` = [getPtr margin, getPtr limit]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr margin, getPtr limit])
 
 proc getLimit*(self: Camera2D; margin: Side): int32 =
   expandMethodBind(className Camera2D, "get_limit", 1983885014)
-  var `?param` = [getPtr margin]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(int32)
 
 proc setLimitSmoothingEnabled*(self: Camera2D; limitSmoothingEnabled: bool): void =
   expandMethodBind(className Camera2D, "set_limit_smoothing_enabled", 2586408642)
-  var `?param` = [getPtr limitSmoothingEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr limitSmoothingEnabled])
 
 proc isLimitSmoothingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_limit_smoothing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDragVerticalEnabled*(self: Camera2D; enabled: bool): void =
   expandMethodBind(className Camera2D, "set_drag_vertical_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDragVerticalEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_drag_vertical_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDragHorizontalEnabled*(self: Camera2D; enabled: bool): void =
   expandMethodBind(className Camera2D, "set_drag_horizontal_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isDragHorizontalEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_drag_horizontal_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDragVerticalOffset*(self: Camera2D; offset: Float): void =
   expandMethodBind(className Camera2D, "set_drag_vertical_offset", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getDragVerticalOffset*(self: Camera2D): Float =
   expandMethodBind(className Camera2D, "get_drag_vertical_offset", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDragHorizontalOffset*(self: Camera2D; offset: Float): void =
   expandMethodBind(className Camera2D, "set_drag_horizontal_offset", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getDragHorizontalOffset*(self: Camera2D): Float =
   expandMethodBind(className Camera2D, "get_drag_horizontal_offset", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDragMargin*(self: Camera2D; margin: Side; dragMargin: Float): void =
   expandMethodBind(className Camera2D, "set_drag_margin", 4290182280)
-  var `?param` = [getPtr margin, getPtr dragMargin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr margin, getPtr dragMargin])
 
 proc getDragMargin*(self: Camera2D; margin: Side): Float =
   expandMethodBind(className Camera2D, "get_drag_margin", 2869120046)
-  var `?param` = [getPtr margin]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(Float)
 
 proc getTargetPosition*(self: Camera2D): Vector2 =
   expandMethodBind(className Camera2D, "get_target_position", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc getScreenCenterPosition*(self: Camera2D): Vector2 =
   expandMethodBind(className Camera2D, "get_screen_center_position", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setZoom*(self: Camera2D; zoom: Vector2): void =
   expandMethodBind(className Camera2D, "set_zoom", 743155724)
-  var `?param` = [getPtr zoom]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr zoom])
 
 proc getZoom*(self: Camera2D): Vector2 =
   expandMethodBind(className Camera2D, "get_zoom", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setCustomViewport*(self: Camera2D; viewport: Node): void =
   expandMethodBind(className Camera2D, "set_custom_viewport", 1078189570)
-  var `?param` = [getPtr viewport]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr viewport])
 
 proc getCustomViewport*(self: Camera2D): Node =
   expandMethodBind(className Camera2D, "get_custom_viewport", 3160264692)
   var ret: encoded Node
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
 
 proc setPositionSmoothingSpeed*(self: Camera2D; positionSmoothingSpeed: Float): void =
   expandMethodBind(className Camera2D, "set_position_smoothing_speed", 373806689)
-  var `?param` = [getPtr positionSmoothingSpeed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr positionSmoothingSpeed])
 
 proc getPositionSmoothingSpeed*(self: Camera2D): Float =
   expandMethodBind(className Camera2D, "get_position_smoothing_speed", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPositionSmoothingEnabled*(self: Camera2D; positionSmoothingSpeed: bool): void =
   expandMethodBind(className Camera2D, "set_position_smoothing_enabled", 2586408642)
-  var `?param` = [getPtr positionSmoothingSpeed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr positionSmoothingSpeed])
 
 proc isPositionSmoothingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_position_smoothing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRotationSmoothingEnabled*(self: Camera2D; enabled: bool): void =
   expandMethodBind(className Camera2D, "set_rotation_smoothing_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isRotationSmoothingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_rotation_smoothing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRotationSmoothingSpeed*(self: Camera2D; speed: Float): void =
   expandMethodBind(className Camera2D, "set_rotation_smoothing_speed", 373806689)
-  var `?param` = [getPtr speed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr speed])
 
 proc getRotationSmoothingSpeed*(self: Camera2D): Float =
   expandMethodBind(className Camera2D, "get_rotation_smoothing_speed", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc forceUpdateScroll*(self: Camera2D): void =
   expandMethodBind(className Camera2D, "force_update_scroll", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc resetSmoothing*(self: Camera2D): void =
   expandMethodBind(className Camera2D, "reset_smoothing", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc align*(self: Camera2D): void =
   expandMethodBind(className Camera2D, "align", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setScreenDrawingEnabled*(self: Camera2D; screenDrawingEnabled: bool): void =
   expandMethodBind(className Camera2D, "set_screen_drawing_enabled", 2586408642)
-  var `?param` = [getPtr screenDrawingEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr screenDrawingEnabled])
 
 proc isScreenDrawingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_screen_drawing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setLimitDrawingEnabled*(self: Camera2D; limitDrawingEnabled: bool): void =
   expandMethodBind(className Camera2D, "set_limit_drawing_enabled", 2586408642)
-  var `?param` = [getPtr limitDrawingEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr limitDrawingEnabled])
 
 proc isLimitDrawingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_limit_drawing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMarginDrawingEnabled*(self: Camera2D; marginDrawingEnabled: bool): void =
   expandMethodBind(className Camera2D, "set_margin_drawing_enabled", 2586408642)
-  var `?param` = [getPtr marginDrawingEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr marginDrawingEnabled])
 
 proc isMarginDrawingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_margin_drawing_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template offset*(self: Camera2D): untyped = self.getOffset()

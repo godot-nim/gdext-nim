@@ -6,191 +6,174 @@ import gdgeometryinstance3d; export gdgeometryinstance3d
 
 proc setCentered*(self: SpriteBase3D; centered: bool): void =
   expandMethodBind(className SpriteBase3D, "set_centered", 2586408642)
-  var `?param` = [getPtr centered]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr centered])
 
 proc isCentered*(self: SpriteBase3D): bool =
   expandMethodBind(className SpriteBase3D, "is_centered", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setOffset*(self: SpriteBase3D; offset: Vector2): void =
   expandMethodBind(className SpriteBase3D, "set_offset", 743155724)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getOffset*(self: SpriteBase3D): Vector2 =
   expandMethodBind(className SpriteBase3D, "get_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setFlipH*(self: SpriteBase3D; flipH: bool): void =
   expandMethodBind(className SpriteBase3D, "set_flip_h", 2586408642)
-  var `?param` = [getPtr flipH]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flipH])
 
 proc isFlippedH*(self: SpriteBase3D): bool =
   expandMethodBind(className SpriteBase3D, "is_flipped_h", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFlipV*(self: SpriteBase3D; flipV: bool): void =
   expandMethodBind(className SpriteBase3D, "set_flip_v", 2586408642)
-  var `?param` = [getPtr flipV]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flipV])
 
 proc isFlippedV*(self: SpriteBase3D): bool =
   expandMethodBind(className SpriteBase3D, "is_flipped_v", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setModulate*(self: SpriteBase3D; modulate: Color): void =
   expandMethodBind(className SpriteBase3D, "set_modulate", 2920490490)
-  var `?param` = [getPtr modulate]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr modulate])
 
 proc getModulate*(self: SpriteBase3D): Color =
   expandMethodBind(className SpriteBase3D, "get_modulate", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setRenderPriority*(self: SpriteBase3D; priority: int32): void =
   expandMethodBind(className SpriteBase3D, "set_render_priority", 1286410249)
-  var `?param` = [getPtr priority]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr priority])
 
 proc getRenderPriority*(self: SpriteBase3D): int32 =
   expandMethodBind(className SpriteBase3D, "get_render_priority", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setPixelSize*(self: SpriteBase3D; pixelSize: Float): void =
   expandMethodBind(className SpriteBase3D, "set_pixel_size", 373806689)
-  var `?param` = [getPtr pixelSize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pixelSize])
 
 proc getPixelSize*(self: SpriteBase3D): Float =
   expandMethodBind(className SpriteBase3D, "get_pixel_size", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAxis*(self: SpriteBase3D; axis: Vector3_Axis): void =
   expandMethodBind(className SpriteBase3D, "set_axis", 1144690656)
-  var `?param` = [getPtr axis]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr axis])
 
 proc getAxis*(self: SpriteBase3D): Vector3_Axis =
   expandMethodBind(className SpriteBase3D, "get_axis", 3050976882)
   var ret: encoded Vector3_Axis
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3_Axis)
 
 proc setDrawFlag*(self: SpriteBase3D; flag: SpriteBase3D_DrawFlags; enabled: bool): void =
   expandMethodBind(className SpriteBase3D, "set_draw_flag", 1135633219)
-  var `?param` = [getPtr flag, getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flag, getPtr enabled])
 
 proc getDrawFlag*(self: SpriteBase3D; flag: SpriteBase3D_DrawFlags): bool =
   expandMethodBind(className SpriteBase3D, "get_draw_flag", 1733036628)
-  var `?param` = [getPtr flag]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr flag], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAlphaCutMode*(self: SpriteBase3D; mode: SpriteBase3D_AlphaCutMode): void =
   expandMethodBind(className SpriteBase3D, "set_alpha_cut_mode", 227561226)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getAlphaCutMode*(self: SpriteBase3D): SpriteBase3D_AlphaCutMode =
   expandMethodBind(className SpriteBase3D, "get_alpha_cut_mode", 336003791)
   var ret: encoded SpriteBase3D_AlphaCutMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(SpriteBase3D_AlphaCutMode)
 
 proc setAlphaScissorThreshold*(self: SpriteBase3D; threshold: Float): void =
   expandMethodBind(className SpriteBase3D, "set_alpha_scissor_threshold", 373806689)
-  var `?param` = [getPtr threshold]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr threshold])
 
 proc getAlphaScissorThreshold*(self: SpriteBase3D): Float =
   expandMethodBind(className SpriteBase3D, "get_alpha_scissor_threshold", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAlphaHashScale*(self: SpriteBase3D; threshold: Float): void =
   expandMethodBind(className SpriteBase3D, "set_alpha_hash_scale", 373806689)
-  var `?param` = [getPtr threshold]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr threshold])
 
 proc getAlphaHashScale*(self: SpriteBase3D): Float =
   expandMethodBind(className SpriteBase3D, "get_alpha_hash_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAlphaAntialiasing*(self: SpriteBase3D; alphaAa: BaseMaterial3D_AlphaAntiAliasing): void =
   expandMethodBind(className SpriteBase3D, "set_alpha_antialiasing", 3212649852)
-  var `?param` = [getPtr alphaAa]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr alphaAa])
 
 proc getAlphaAntialiasing*(self: SpriteBase3D): BaseMaterial3D_AlphaAntiAliasing =
   expandMethodBind(className SpriteBase3D, "get_alpha_antialiasing", 2889939400)
   var ret: encoded BaseMaterial3D_AlphaAntiAliasing
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_AlphaAntiAliasing)
 
 proc setAlphaAntialiasingEdge*(self: SpriteBase3D; edge: Float): void =
   expandMethodBind(className SpriteBase3D, "set_alpha_antialiasing_edge", 373806689)
-  var `?param` = [getPtr edge]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr edge])
 
 proc getAlphaAntialiasingEdge*(self: SpriteBase3D): Float =
   expandMethodBind(className SpriteBase3D, "get_alpha_antialiasing_edge", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBillboardMode*(self: SpriteBase3D; mode: BaseMaterial3D_BillboardMode): void =
   expandMethodBind(className SpriteBase3D, "set_billboard_mode", 4202036497)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getBillboardMode*(self: SpriteBase3D): BaseMaterial3D_BillboardMode =
   expandMethodBind(className SpriteBase3D, "get_billboard_mode", 1283840139)
   var ret: encoded BaseMaterial3D_BillboardMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_BillboardMode)
 
 proc setTextureFilter*(self: SpriteBase3D; mode: BaseMaterial3D_TextureFilter): void =
   expandMethodBind(className SpriteBase3D, "set_texture_filter", 22904437)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getTextureFilter*(self: SpriteBase3D): BaseMaterial3D_TextureFilter =
   expandMethodBind(className SpriteBase3D, "get_texture_filter", 3289213076)
   var ret: encoded BaseMaterial3D_TextureFilter
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureFilter)
 
 proc getItemRect*(self: SpriteBase3D): Rect2 =
   expandMethodBind(className SpriteBase3D, "get_item_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc generateTriangleMesh*(self: SpriteBase3D): gdref TriangleMesh =
   expandMethodBind(className SpriteBase3D, "generate_triangle_mesh", 3476533166)
   var ret: encoded gdref TriangleMesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref TriangleMesh)
 
 template centered*(self: SpriteBase3D): untyped = self.isCentered()

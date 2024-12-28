@@ -6,13 +6,12 @@ import gdshape2d; export gdshape2d
 
 proc setRadius*(self: CircleShape2D; radius: Float): void =
   expandMethodBind(className CircleShape2D, "set_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getRadius*(self: CircleShape2D): Float =
   expandMethodBind(className CircleShape2D, "get_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template radius*(self: CircleShape2D): untyped = self.getRadius()

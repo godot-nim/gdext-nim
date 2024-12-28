@@ -6,513 +6,462 @@ import gdmaterial; export gdmaterial
 
 proc setDirection*(self: ParticleProcessMaterial; degrees: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_direction", 3460891852)
-  var `?param` = [getPtr degrees]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr degrees])
 
 proc getDirection*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_direction", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setInheritVelocityRatio*(self: ParticleProcessMaterial; ratio: float64): void =
   expandMethodBind(className ParticleProcessMaterial, "set_inherit_velocity_ratio", 373806689)
-  var `?param` = [getPtr ratio]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ratio])
 
 proc getInheritVelocityRatio*(self: ParticleProcessMaterial): float64 =
   expandMethodBind(className ParticleProcessMaterial, "get_inherit_velocity_ratio", 191475506)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setSpread*(self: ParticleProcessMaterial; degrees: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_spread", 373806689)
-  var `?param` = [getPtr degrees]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr degrees])
 
 proc getSpread*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_spread", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFlatness*(self: ParticleProcessMaterial; amount: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_flatness", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getFlatness*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_flatness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setParam*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Vector2): void =
   expandMethodBind(className ParticleProcessMaterial, "set_param", 676779352)
-  var `?param` = [getPtr param, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr value])
 
 proc getParam*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Vector2 =
   expandMethodBind(className ParticleProcessMaterial, "get_param", 2623708480)
-  var `?param` = [getPtr param]
   var ret: encoded Vector2
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setParamMin*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_param_min", 2295964248)
-  var `?param` = [getPtr param, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr value])
 
 proc getParamMin*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_param_min", 3903786503)
-  var `?param` = [getPtr param]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Float)
 
 proc setParamMax*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_param_max", 2295964248)
-  var `?param` = [getPtr param, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr value])
 
 proc getParamMax*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_param_max", 3903786503)
-  var `?param` = [getPtr param]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Float)
 
 proc setParamTexture*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; texture: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_param_texture", 526976089)
-  var `?param` = [getPtr param, getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr texture])
 
 proc getParamTexture*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_param_texture", 3489372978)
-  var `?param` = [getPtr param]
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setColor*(self: ParticleProcessMaterial; color: Color): void =
   expandMethodBind(className ParticleProcessMaterial, "set_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getColor*(self: ParticleProcessMaterial): Color =
   expandMethodBind(className ParticleProcessMaterial, "get_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setColorRamp*(self: ParticleProcessMaterial; ramp: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_color_ramp", 4051416890)
-  var `?param` = [getPtr ramp]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ramp])
 
 proc getColorRamp*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_color_ramp", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setAlphaCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_alpha_curve", 4051416890)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getAlphaCurve*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_alpha_curve", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setEmissionCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_curve", 4051416890)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getEmissionCurve*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_curve", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setColorInitialRamp*(self: ParticleProcessMaterial; ramp: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_color_initial_ramp", 4051416890)
-  var `?param` = [getPtr ramp]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr ramp])
 
 proc getColorInitialRamp*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_color_initial_ramp", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setVelocityLimitCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_velocity_limit_curve", 4051416890)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getVelocityLimitCurve*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_velocity_limit_curve", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setParticleFlag*(self: ParticleProcessMaterial; particleFlag: ParticleProcessMaterial_ParticleFlags; enable: bool): void =
   expandMethodBind(className ParticleProcessMaterial, "set_particle_flag", 1711815571)
-  var `?param` = [getPtr particleFlag, getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr particleFlag, getPtr enable])
 
 proc getParticleFlag*(self: ParticleProcessMaterial; particleFlag: ParticleProcessMaterial_ParticleFlags): bool =
   expandMethodBind(className ParticleProcessMaterial, "get_particle_flag", 3895316907)
-  var `?param` = [getPtr particleFlag]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr particleFlag], addr ret)
   (addr ret).decode_result(bool)
 
 proc setVelocityPivot*(self: ParticleProcessMaterial; pivot: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_velocity_pivot", 3460891852)
-  var `?param` = [getPtr pivot]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pivot])
 
 proc getVelocityPivot*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_velocity_pivot", 3783033775)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setEmissionShape*(self: ParticleProcessMaterial; shape: ParticleProcessMaterial_EmissionShape): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_shape", 461501442)
-  var `?param` = [getPtr shape]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shape])
 
 proc getEmissionShape*(self: ParticleProcessMaterial): ParticleProcessMaterial_EmissionShape =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_shape", 3719733018)
   var ret: encoded ParticleProcessMaterial_EmissionShape
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(ParticleProcessMaterial_EmissionShape)
 
 proc setEmissionSphereRadius*(self: ParticleProcessMaterial; radius: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_sphere_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getEmissionSphereRadius*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_sphere_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionBoxExtents*(self: ParticleProcessMaterial; extents: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_box_extents", 3460891852)
-  var `?param` = [getPtr extents]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr extents])
 
 proc getEmissionBoxExtents*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_box_extents", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setEmissionPointTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_point_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getEmissionPointTexture*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_point_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setEmissionNormalTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_normal_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getEmissionNormalTexture*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_normal_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setEmissionColorTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_color_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getEmissionColorTexture*(self: ParticleProcessMaterial): gdref Texture2D =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_color_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setEmissionPointCount*(self: ParticleProcessMaterial; pointCount: int32): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_point_count", 1286410249)
-  var `?param` = [getPtr pointCount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pointCount])
 
 proc getEmissionPointCount*(self: ParticleProcessMaterial): int32 =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_point_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setEmissionRingAxis*(self: ParticleProcessMaterial; axis: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_axis", 3460891852)
-  var `?param` = [getPtr axis]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr axis])
 
 proc getEmissionRingAxis*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_axis", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setEmissionRingHeight*(self: ParticleProcessMaterial; height: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_height", 373806689)
-  var `?param` = [getPtr height]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr height])
 
 proc getEmissionRingHeight*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_height", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionRingRadius*(self: ParticleProcessMaterial; radius: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getEmissionRingRadius*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionRingInnerRadius*(self: ParticleProcessMaterial; innerRadius: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_inner_radius", 373806689)
-  var `?param` = [getPtr innerRadius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr innerRadius])
 
 proc getEmissionRingInnerRadius*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_inner_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionShapeOffset*(self: ParticleProcessMaterial; emissionShapeOffset: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_shape_offset", 3460891852)
-  var `?param` = [getPtr emissionShapeOffset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr emissionShapeOffset])
 
 proc getEmissionShapeOffset*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_shape_offset", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setEmissionShapeScale*(self: ParticleProcessMaterial; emissionShapeScale: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_shape_scale", 3460891852)
-  var `?param` = [getPtr emissionShapeScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr emissionShapeScale])
 
 proc getEmissionShapeScale*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_emission_shape_scale", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc getTurbulenceEnabled*(self: ParticleProcessMaterial): bool =
   expandMethodBind(className ParticleProcessMaterial, "get_turbulence_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTurbulenceEnabled*(self: ParticleProcessMaterial; turbulenceEnabled: bool): void =
   expandMethodBind(className ParticleProcessMaterial, "set_turbulence_enabled", 2586408642)
-  var `?param` = [getPtr turbulenceEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbulenceEnabled])
 
 proc getTurbulenceNoiseStrength*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_strength", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTurbulenceNoiseStrength*(self: ParticleProcessMaterial; turbulenceNoiseStrength: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_strength", 373806689)
-  var `?param` = [getPtr turbulenceNoiseStrength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseStrength])
 
 proc getTurbulenceNoiseScale*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTurbulenceNoiseScale*(self: ParticleProcessMaterial; turbulenceNoiseScale: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_scale", 373806689)
-  var `?param` = [getPtr turbulenceNoiseScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseScale])
 
 proc getTurbulenceNoiseSpeedRandom*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed_random", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTurbulenceNoiseSpeedRandom*(self: ParticleProcessMaterial; turbulenceNoiseSpeedRandom: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed_random", 373806689)
-  var `?param` = [getPtr turbulenceNoiseSpeedRandom]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeedRandom])
 
 proc getTurbulenceNoiseSpeed*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setTurbulenceNoiseSpeed*(self: ParticleProcessMaterial; turbulenceNoiseSpeed: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed", 3460891852)
-  var `?param` = [getPtr turbulenceNoiseSpeed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeed])
 
 proc getGravity*(self: ParticleProcessMaterial): Vector3 =
   expandMethodBind(className ParticleProcessMaterial, "get_gravity", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setGravity*(self: ParticleProcessMaterial; accelVec: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_gravity", 3460891852)
-  var `?param` = [getPtr accelVec]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr accelVec])
 
 proc setLifetimeRandomness*(self: ParticleProcessMaterial; randomness: float64): void =
   expandMethodBind(className ParticleProcessMaterial, "set_lifetime_randomness", 373806689)
-  var `?param` = [getPtr randomness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr randomness])
 
 proc getLifetimeRandomness*(self: ParticleProcessMaterial): float64 =
   expandMethodBind(className ParticleProcessMaterial, "get_lifetime_randomness", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc getSubEmitterMode*(self: ParticleProcessMaterial): ParticleProcessMaterial_SubEmitterMode =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_mode", 2399052877)
   var ret: encoded ParticleProcessMaterial_SubEmitterMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(ParticleProcessMaterial_SubEmitterMode)
 
 proc setSubEmitterMode*(self: ParticleProcessMaterial; mode: ParticleProcessMaterial_SubEmitterMode): void =
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_mode", 2161806672)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getSubEmitterFrequency*(self: ParticleProcessMaterial): float64 =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_frequency", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setSubEmitterFrequency*(self: ParticleProcessMaterial; hz: float64): void =
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_frequency", 373806689)
-  var `?param` = [getPtr hz]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hz])
 
 proc getSubEmitterAmountAtEnd*(self: ParticleProcessMaterial): int32 =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_end", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSubEmitterAmountAtEnd*(self: ParticleProcessMaterial; amount: int32): void =
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_end", 1286410249)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getSubEmitterAmountAtCollision*(self: ParticleProcessMaterial): int32 =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_collision", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSubEmitterAmountAtCollision*(self: ParticleProcessMaterial; amount: int32): void =
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_collision", 1286410249)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getSubEmitterKeepVelocity*(self: ParticleProcessMaterial): bool =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_keep_velocity", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSubEmitterKeepVelocity*(self: ParticleProcessMaterial; enable: bool): void =
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_keep_velocity", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc setAttractorInteractionEnabled*(self: ParticleProcessMaterial; enabled: bool): void =
   expandMethodBind(className ParticleProcessMaterial, "set_attractor_interaction_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isAttractorInteractionEnabled*(self: ParticleProcessMaterial): bool =
   expandMethodBind(className ParticleProcessMaterial, "is_attractor_interaction_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCollisionMode*(self: ParticleProcessMaterial; mode: ParticleProcessMaterial_CollisionMode): void =
   expandMethodBind(className ParticleProcessMaterial, "set_collision_mode", 653804659)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getCollisionMode*(self: ParticleProcessMaterial): ParticleProcessMaterial_CollisionMode =
   expandMethodBind(className ParticleProcessMaterial, "get_collision_mode", 139371864)
   var ret: encoded ParticleProcessMaterial_CollisionMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(ParticleProcessMaterial_CollisionMode)
 
 proc setCollisionUseScale*(self: ParticleProcessMaterial; radius: bool): void =
   expandMethodBind(className ParticleProcessMaterial, "set_collision_use_scale", 2586408642)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc isCollisionUsingScale*(self: ParticleProcessMaterial): bool =
   expandMethodBind(className ParticleProcessMaterial, "is_collision_using_scale", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCollisionFriction*(self: ParticleProcessMaterial; friction: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_collision_friction", 373806689)
-  var `?param` = [getPtr friction]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr friction])
 
 proc getCollisionFriction*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_collision_friction", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setCollisionBounce*(self: ParticleProcessMaterial; bounce: Float): void =
   expandMethodBind(className ParticleProcessMaterial, "set_collision_bounce", 373806689)
-  var `?param` = [getPtr bounce]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr bounce])
 
 proc getCollisionBounce*(self: ParticleProcessMaterial): Float =
   expandMethodBind(className ParticleProcessMaterial, "get_collision_bounce", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template lifetimeRandomness*(self: ParticleProcessMaterial): untyped = self.getLifetimeRandomness()

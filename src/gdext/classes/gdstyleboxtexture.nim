@@ -6,102 +6,90 @@ import gdstylebox; export gdstylebox
 
 proc setTexture*(self: StyleBoxTexture; texture: gdref Texture2D): void =
   expandMethodBind(className StyleBoxTexture, "set_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: StyleBoxTexture): gdref Texture2D =
   expandMethodBind(className StyleBoxTexture, "get_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setTextureMargin*(self: StyleBoxTexture; margin: Side; size: Float): void =
   expandMethodBind(className StyleBoxTexture, "set_texture_margin", 4290182280)
-  var `?param` = [getPtr margin, getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr margin, getPtr size])
 
 proc setTextureMarginAll*(self: StyleBoxTexture; size: Float): void =
   expandMethodBind(className StyleBoxTexture, "set_texture_margin_all", 373806689)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getTextureMargin*(self: StyleBoxTexture; margin: Side): Float =
   expandMethodBind(className StyleBoxTexture, "get_texture_margin", 2869120046)
-  var `?param` = [getPtr margin]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(Float)
 
 proc setExpandMargin*(self: StyleBoxTexture; margin: Side; size: Float): void =
   expandMethodBind(className StyleBoxTexture, "set_expand_margin", 4290182280)
-  var `?param` = [getPtr margin, getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr margin, getPtr size])
 
 proc setExpandMarginAll*(self: StyleBoxTexture; size: Float): void =
   expandMethodBind(className StyleBoxTexture, "set_expand_margin_all", 373806689)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getExpandMargin*(self: StyleBoxTexture; margin: Side): Float =
   expandMethodBind(className StyleBoxTexture, "get_expand_margin", 2869120046)
-  var `?param` = [getPtr margin]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRegionRect*(self: StyleBoxTexture; region: Rect2): void =
   expandMethodBind(className StyleBoxTexture, "set_region_rect", 2046264180)
-  var `?param` = [getPtr region]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr region])
 
 proc getRegionRect*(self: StyleBoxTexture): Rect2 =
   expandMethodBind(className StyleBoxTexture, "get_region_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc setDrawCenter*(self: StyleBoxTexture; enable: bool): void =
   expandMethodBind(className StyleBoxTexture, "set_draw_center", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isDrawCenterEnabled*(self: StyleBoxTexture): bool =
   expandMethodBind(className StyleBoxTexture, "is_draw_center_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setModulate*(self: StyleBoxTexture; color: Color): void =
   expandMethodBind(className StyleBoxTexture, "set_modulate", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getModulate*(self: StyleBoxTexture): Color =
   expandMethodBind(className StyleBoxTexture, "get_modulate", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setHAxisStretchMode*(self: StyleBoxTexture; mode: StyleBoxTexture_AxisStretchMode): void =
   expandMethodBind(className StyleBoxTexture, "set_h_axis_stretch_mode", 2965538783)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getHAxisStretchMode*(self: StyleBoxTexture): StyleBoxTexture_AxisStretchMode =
   expandMethodBind(className StyleBoxTexture, "get_h_axis_stretch_mode", 3807744063)
   var ret: encoded StyleBoxTexture_AxisStretchMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StyleBoxTexture_AxisStretchMode)
 
 proc setVAxisStretchMode*(self: StyleBoxTexture; mode: StyleBoxTexture_AxisStretchMode): void =
   expandMethodBind(className StyleBoxTexture, "set_v_axis_stretch_mode", 2965538783)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getVAxisStretchMode*(self: StyleBoxTexture): StyleBoxTexture_AxisStretchMode =
   expandMethodBind(className StyleBoxTexture, "get_v_axis_stretch_mode", 3807744063)
   var ret: encoded StyleBoxTexture_AxisStretchMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StyleBoxTexture_AxisStretchMode)
 
 template texture*(self: StyleBoxTexture): untyped = self.getTexture()

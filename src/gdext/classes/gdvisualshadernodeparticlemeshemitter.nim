@@ -6,35 +6,32 @@ import gdvisualshadernodeparticleemitter; export gdvisualshadernodeparticleemitt
 
 proc setMesh*(self: VisualShaderNodeParticleMeshEmitter; mesh: gdref Mesh): void =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_mesh", 194775623)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getMesh*(self: VisualShaderNodeParticleMeshEmitter): gdref Mesh =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_mesh", 1808005922)
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc setUseAllSurfaces*(self: VisualShaderNodeParticleMeshEmitter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_use_all_surfaces", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isUseAllSurfaces*(self: VisualShaderNodeParticleMeshEmitter): bool =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "is_use_all_surfaces", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setSurfaceIndex*(self: VisualShaderNodeParticleMeshEmitter; surfaceIndex: int32): void =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_surface_index", 1286410249)
-  var `?param` = [getPtr surfaceIndex]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr surfaceIndex])
 
 proc getSurfaceIndex*(self: VisualShaderNodeParticleMeshEmitter): int32 =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_surface_index", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template mesh*(self: VisualShaderNodeParticleMeshEmitter): untyped = self.getMesh()

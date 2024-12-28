@@ -6,90 +6,82 @@ import gdinputevent; export gdinputevent
 
 proc setChannel*(self: InputEventMIDI; channel: int32): void =
   expandMethodBind(className InputEventMIDI, "set_channel", 1286410249)
-  var `?param` = [getPtr channel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr channel])
 
 proc getChannel*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_channel", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setMessage*(self: InputEventMIDI; message: MIDIMessage): void =
   expandMethodBind(className InputEventMIDI, "set_message", 1064271510)
-  var `?param` = [getPtr message]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr message])
 
 proc getMessage*(self: InputEventMIDI): MIDIMessage =
   expandMethodBind(className InputEventMIDI, "get_message", 1936512097)
   var ret: encoded MIDIMessage
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(MIDIMessage)
 
 proc setPitch*(self: InputEventMIDI; pitch: int32): void =
   expandMethodBind(className InputEventMIDI, "set_pitch", 1286410249)
-  var `?param` = [getPtr pitch]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pitch])
 
 proc getPitch*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_pitch", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setVelocity*(self: InputEventMIDI; velocity: int32): void =
   expandMethodBind(className InputEventMIDI, "set_velocity", 1286410249)
-  var `?param` = [getPtr velocity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr velocity])
 
 proc getVelocity*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_velocity", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setInstrument*(self: InputEventMIDI; instrument: int32): void =
   expandMethodBind(className InputEventMIDI, "set_instrument", 1286410249)
-  var `?param` = [getPtr instrument]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr instrument])
 
 proc getInstrument*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_instrument", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setPressure*(self: InputEventMIDI; pressure: int32): void =
   expandMethodBind(className InputEventMIDI, "set_pressure", 1286410249)
-  var `?param` = [getPtr pressure]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressure])
 
 proc getPressure*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_pressure", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setControllerNumber*(self: InputEventMIDI; controllerNumber: int32): void =
   expandMethodBind(className InputEventMIDI, "set_controller_number", 1286410249)
-  var `?param` = [getPtr controllerNumber]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr controllerNumber])
 
 proc getControllerNumber*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_controller_number", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setControllerValue*(self: InputEventMIDI; controllerValue: int32): void =
   expandMethodBind(className InputEventMIDI, "set_controller_value", 1286410249)
-  var `?param` = [getPtr controllerValue]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr controllerValue])
 
 proc getControllerValue*(self: InputEventMIDI): int32 =
   expandMethodBind(className InputEventMIDI, "get_controller_value", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template channel*(self: InputEventMIDI): untyped = self.getChannel()

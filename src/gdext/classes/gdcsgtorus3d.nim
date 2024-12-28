@@ -6,68 +6,62 @@ import gdcsgprimitive3d; export gdcsgprimitive3d
 
 proc setInnerRadius*(self: CSGTorus3D; radius: Float): void =
   expandMethodBind(className CSGTorus3D, "set_inner_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getInnerRadius*(self: CSGTorus3D): Float =
   expandMethodBind(className CSGTorus3D, "get_inner_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setOuterRadius*(self: CSGTorus3D; radius: Float): void =
   expandMethodBind(className CSGTorus3D, "set_outer_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getOuterRadius*(self: CSGTorus3D): Float =
   expandMethodBind(className CSGTorus3D, "get_outer_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSides*(self: CSGTorus3D; sides: int32): void =
   expandMethodBind(className CSGTorus3D, "set_sides", 1286410249)
-  var `?param` = [getPtr sides]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sides])
 
 proc getSides*(self: CSGTorus3D): int32 =
   expandMethodBind(className CSGTorus3D, "get_sides", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setRingSides*(self: CSGTorus3D; sides: int32): void =
   expandMethodBind(className CSGTorus3D, "set_ring_sides", 1286410249)
-  var `?param` = [getPtr sides]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sides])
 
 proc getRingSides*(self: CSGTorus3D): int32 =
   expandMethodBind(className CSGTorus3D, "get_ring_sides", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setMaterial*(self: CSGTorus3D; material: gdref Material): void =
   expandMethodBind(className CSGTorus3D, "set_material", 2757459619)
-  var `?param` = [getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr material])
 
 proc getMaterial*(self: CSGTorus3D): gdref Material =
   expandMethodBind(className CSGTorus3D, "get_material", 5934680)
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
 proc setSmoothFaces*(self: CSGTorus3D; smoothFaces: bool): void =
   expandMethodBind(className CSGTorus3D, "set_smooth_faces", 2586408642)
-  var `?param` = [getPtr smoothFaces]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr smoothFaces])
 
 proc getSmoothFaces*(self: CSGTorus3D): bool =
   expandMethodBind(className CSGTorus3D, "get_smooth_faces", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template innerRadius*(self: CSGTorus3D): untyped = self.getInnerRadius()

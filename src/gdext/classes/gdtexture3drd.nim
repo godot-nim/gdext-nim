@@ -6,13 +6,12 @@ import gdtexture3d; export gdtexture3d
 
 proc setTextureRdRid*(self: Texture3DRD; textureRdRid: RID): void =
   expandMethodBind(className Texture3DRD, "set_texture_rd_rid", 2722037293)
-  var `?param` = [getPtr textureRdRid]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr textureRdRid])
 
 proc getTextureRdRid*(self: Texture3DRD): RID =
   expandMethodBind(className Texture3DRD, "get_texture_rd_rid", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 template textureRdRid*(self: Texture3DRD): untyped = self.getTextureRdRid()

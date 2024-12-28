@@ -6,205 +6,188 @@ import gdcollisionobject2d; export gdcollisionobject2d
 
 proc setGravitySpaceOverrideMode*(self: Area2D; spaceOverrideMode: Area2D_SpaceOverride): void =
   expandMethodBind(className Area2D, "set_gravity_space_override_mode", 2879900038)
-  var `?param` = [getPtr spaceOverrideMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr spaceOverrideMode])
 
 proc getGravitySpaceOverrideMode*(self: Area2D): Area2D_SpaceOverride =
   expandMethodBind(className Area2D, "get_gravity_space_override_mode", 3990256304)
   var ret: encoded Area2D_SpaceOverride
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Area2D_SpaceOverride)
 
 proc setGravityIsPoint*(self: Area2D; enable: bool): void =
   expandMethodBind(className Area2D, "set_gravity_is_point", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isGravityAPoint*(self: Area2D): bool =
   expandMethodBind(className Area2D, "is_gravity_a_point", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setGravityPointUnitDistance*(self: Area2D; distanceScale: Float): void =
   expandMethodBind(className Area2D, "set_gravity_point_unit_distance", 373806689)
-  var `?param` = [getPtr distanceScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distanceScale])
 
 proc getGravityPointUnitDistance*(self: Area2D): Float =
   expandMethodBind(className Area2D, "get_gravity_point_unit_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setGravityPointCenter*(self: Area2D; center: Vector2): void =
   expandMethodBind(className Area2D, "set_gravity_point_center", 743155724)
-  var `?param` = [getPtr center]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr center])
 
 proc getGravityPointCenter*(self: Area2D): Vector2 =
   expandMethodBind(className Area2D, "get_gravity_point_center", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setGravityDirection*(self: Area2D; direction: Vector2): void =
   expandMethodBind(className Area2D, "set_gravity_direction", 743155724)
-  var `?param` = [getPtr direction]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr direction])
 
 proc getGravityDirection*(self: Area2D): Vector2 =
   expandMethodBind(className Area2D, "get_gravity_direction", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setGravity*(self: Area2D; gravity: Float): void =
   expandMethodBind(className Area2D, "set_gravity", 373806689)
-  var `?param` = [getPtr gravity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr gravity])
 
 proc getGravity*(self: Area2D): Float =
   expandMethodBind(className Area2D, "get_gravity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setLinearDampSpaceOverrideMode*(self: Area2D; spaceOverrideMode: Area2D_SpaceOverride): void =
   expandMethodBind(className Area2D, "set_linear_damp_space_override_mode", 2879900038)
-  var `?param` = [getPtr spaceOverrideMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr spaceOverrideMode])
 
 proc getLinearDampSpaceOverrideMode*(self: Area2D): Area2D_SpaceOverride =
   expandMethodBind(className Area2D, "get_linear_damp_space_override_mode", 3990256304)
   var ret: encoded Area2D_SpaceOverride
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Area2D_SpaceOverride)
 
 proc setAngularDampSpaceOverrideMode*(self: Area2D; spaceOverrideMode: Area2D_SpaceOverride): void =
   expandMethodBind(className Area2D, "set_angular_damp_space_override_mode", 2879900038)
-  var `?param` = [getPtr spaceOverrideMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr spaceOverrideMode])
 
 proc getAngularDampSpaceOverrideMode*(self: Area2D): Area2D_SpaceOverride =
   expandMethodBind(className Area2D, "get_angular_damp_space_override_mode", 3990256304)
   var ret: encoded Area2D_SpaceOverride
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Area2D_SpaceOverride)
 
 proc setLinearDamp*(self: Area2D; linearDamp: Float): void =
   expandMethodBind(className Area2D, "set_linear_damp", 373806689)
-  var `?param` = [getPtr linearDamp]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr linearDamp])
 
 proc getLinearDamp*(self: Area2D): Float =
   expandMethodBind(className Area2D, "get_linear_damp", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAngularDamp*(self: Area2D; angularDamp: Float): void =
   expandMethodBind(className Area2D, "set_angular_damp", 373806689)
-  var `?param` = [getPtr angularDamp]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr angularDamp])
 
 proc getAngularDamp*(self: Area2D): Float =
   expandMethodBind(className Area2D, "get_angular_damp", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPriority*(self: Area2D; priority: int32): void =
   expandMethodBind(className Area2D, "set_priority", 1286410249)
-  var `?param` = [getPtr priority]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr priority])
 
 proc getPriority*(self: Area2D): int32 =
   expandMethodBind(className Area2D, "get_priority", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setMonitoring*(self: Area2D; enable: bool): void =
   expandMethodBind(className Area2D, "set_monitoring", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isMonitoring*(self: Area2D): bool =
   expandMethodBind(className Area2D, "is_monitoring", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMonitorable*(self: Area2D; enable: bool): void =
   expandMethodBind(className Area2D, "set_monitorable", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isMonitorable*(self: Area2D): bool =
   expandMethodBind(className Area2D, "is_monitorable", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getOverlappingBodies*(self: Area2D): TypedArray[Node2D] =
   expandMethodBind(className Area2D, "get_overlapping_bodies", 3995934104)
   var ret: encoded TypedArray[Node2D]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Node2D])
 
 proc getOverlappingAreas*(self: Area2D): TypedArray[Area2D] =
   expandMethodBind(className Area2D, "get_overlapping_areas", 3995934104)
   var ret: encoded TypedArray[Area2D]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Area2D])
 
 proc hasOverlappingBodies*(self: Area2D): bool =
   expandMethodBind(className Area2D, "has_overlapping_bodies", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasOverlappingAreas*(self: Area2D): bool =
   expandMethodBind(className Area2D, "has_overlapping_areas", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc overlapsBody*(self: Area2D; body: Node): bool =
   expandMethodBind(className Area2D, "overlaps_body", 3093956946)
-  var `?param` = [getPtr body]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr body], addr ret)
   (addr ret).decode_result(bool)
 
 proc overlapsArea*(self: Area2D; area: Node): bool =
   expandMethodBind(className Area2D, "overlaps_area", 3093956946)
-  var `?param` = [getPtr area]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr area], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAudioBusName*(self: Area2D; name: StringName): void =
   expandMethodBind(className Area2D, "set_audio_bus_name", 3304788590)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getAudioBusName*(self: Area2D): StringName =
   expandMethodBind(className Area2D, "get_audio_bus_name", 2002593661)
   var ret: encoded StringName
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
 proc setAudioBusOverride*(self: Area2D; enable: bool): void =
   expandMethodBind(className Area2D, "set_audio_bus_override", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isOverridingAudioBus*(self: Area2D): bool =
   expandMethodBind(className Area2D, "is_overriding_audio_bus", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template monitoring*(self: Area2D): untyped = self.isMonitoring()

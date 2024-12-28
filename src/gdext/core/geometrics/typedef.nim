@@ -1,4 +1,6 @@
-import std/macros, std/genasts
+import std/genasts
+
+import gdext/utils/macros
 
 type
   Vector*[N: static int; T] = array[N, T]
@@ -63,4 +65,4 @@ macro vec*(exp: varargs[typed]): untyped =
   let res = makeVec(exp[0..^1])
   result = newStmtList()
   result.add res.lets
-  result.add nnkBracket.newTree res.brackets
+  result.add newBracket res.brackets

@@ -6,13 +6,12 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setOpType*(self: VisualShaderNodeSmoothStep; opType: VisualShaderNodeSmoothStep_OpType): void =
   expandMethodBind(className VisualShaderNodeSmoothStep, "set_op_type", 2427426148)
-  var `?param` = [getPtr opType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr opType])
 
 proc getOpType*(self: VisualShaderNodeSmoothStep): VisualShaderNodeSmoothStep_OpType =
   expandMethodBind(className VisualShaderNodeSmoothStep, "get_op_type", 359640855)
   var ret: encoded VisualShaderNodeSmoothStep_OpType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeSmoothStep_OpType)
 
 template opType*(self: VisualShaderNodeSmoothStep): untyped = self.getOpType()

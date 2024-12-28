@@ -56,13 +56,12 @@ template getParameter_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual 
 
 proc setSamplePlayback*(self: AudioStreamPlayback; playbackSample: gdref AudioSamplePlayback): void =
   expandMethodBind(className AudioStreamPlayback, "set_sample_playback", 3195455091)
-  var `?param` = [getPtr playbackSample]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr playbackSample])
 
 proc getSamplePlayback*(self: AudioStreamPlayback): gdref AudioSamplePlayback =
   expandMethodBind(className AudioStreamPlayback, "get_sample_playback", 3482738536)
   var ret: encoded gdref AudioSamplePlayback
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref AudioSamplePlayback)
 
 const AudioStreamPlayback_vmap =

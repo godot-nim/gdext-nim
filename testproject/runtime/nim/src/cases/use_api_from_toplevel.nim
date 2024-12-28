@@ -1,5 +1,4 @@
-import std/unittest
-unittest.disableParamFiltering()
+import testutils
 
 import gdext
 import gdext/core/gdclass
@@ -36,7 +35,7 @@ proc listen_0* {.gdsync.} = discard
 proc listen_1*(what: string) {.gdsync.} = discard
 
 
-test "instantiate at global":
+runtime: test "instantiate at global":
   let engineclass = instantiate Object
   let extentclass = instantiate TestObject
 
@@ -46,7 +45,7 @@ test "instantiate at global":
   destroy engineclass
   destroy extentclass
 
-test "connect to global signal":
+runtime: test "connect to global signal":
   var signal_arg0_obj = extmain.signal"signal_arg0"
   var signal_arg1_obj = extmain.signal"signal_arg1"
 

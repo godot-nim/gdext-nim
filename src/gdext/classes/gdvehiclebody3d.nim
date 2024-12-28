@@ -6,35 +6,32 @@ import gdrigidbody3d; export gdrigidbody3d
 
 proc setEngineForce*(self: VehicleBody3D; engineForce: Float): void =
   expandMethodBind(className VehicleBody3D, "set_engine_force", 373806689)
-  var `?param` = [getPtr engineForce]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr engineForce])
 
 proc getEngineForce*(self: VehicleBody3D): Float =
   expandMethodBind(className VehicleBody3D, "get_engine_force", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBrake*(self: VehicleBody3D; brake: Float): void =
   expandMethodBind(className VehicleBody3D, "set_brake", 373806689)
-  var `?param` = [getPtr brake]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr brake])
 
 proc getBrake*(self: VehicleBody3D): Float =
   expandMethodBind(className VehicleBody3D, "get_brake", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSteering*(self: VehicleBody3D; steering: Float): void =
   expandMethodBind(className VehicleBody3D, "set_steering", 373806689)
-  var `?param` = [getPtr steering]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr steering])
 
 proc getSteering*(self: VehicleBody3D): Float =
   expandMethodBind(className VehicleBody3D, "get_steering", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template engineForce*(self: VehicleBody3D): untyped = self.getEngineForce()

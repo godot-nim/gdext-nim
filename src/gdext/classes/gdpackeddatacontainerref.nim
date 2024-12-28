@@ -7,7 +7,7 @@ import gdrefcounted; export gdrefcounted
 proc size*(self: PackedDataContainerRef): int32 =
   expandMethodBind(className PackedDataContainerRef, "size", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 const PackedDataContainerRef_vmap =

@@ -6,13 +6,12 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setCullMask*(self: GPUParticlesCollision3D; mask: uint32): void =
   expandMethodBind(className GPUParticlesCollision3D, "set_cull_mask", 1286410249)
-  var `?param` = [getPtr mask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mask])
 
 proc getCullMask*(self: GPUParticlesCollision3D): uint32 =
   expandMethodBind(className GPUParticlesCollision3D, "get_cull_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 template cullMask*(self: GPUParticlesCollision3D): untyped = self.getCullMask()

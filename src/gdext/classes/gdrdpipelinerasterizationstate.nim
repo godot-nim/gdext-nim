@@ -6,123 +6,112 @@ import gdrefcounted; export gdrefcounted
 
 proc setEnableDepthClamp*(self: RDPipelineRasterizationState; pMember: bool): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_enable_depth_clamp", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getEnableDepthClamp*(self: RDPipelineRasterizationState): bool =
   expandMethodBind(className RDPipelineRasterizationState, "get_enable_depth_clamp", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDiscardPrimitives*(self: RDPipelineRasterizationState; pMember: bool): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_discard_primitives", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDiscardPrimitives*(self: RDPipelineRasterizationState): bool =
   expandMethodBind(className RDPipelineRasterizationState, "get_discard_primitives", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setWireframe*(self: RDPipelineRasterizationState; pMember: bool): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_wireframe", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getWireframe*(self: RDPipelineRasterizationState): bool =
   expandMethodBind(className RDPipelineRasterizationState, "get_wireframe", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCullMode*(self: RDPipelineRasterizationState; pMember: RenderingDevice_PolygonCullMode): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_cull_mode", 2662586502)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getCullMode*(self: RDPipelineRasterizationState): RenderingDevice_PolygonCullMode =
   expandMethodBind(className RDPipelineRasterizationState, "get_cull_mode", 2192484313)
   var ret: encoded RenderingDevice_PolygonCullMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_PolygonCullMode)
 
 proc setFrontFace*(self: RDPipelineRasterizationState; pMember: RenderingDevice_PolygonFrontFace): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_front_face", 2637251213)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFrontFace*(self: RDPipelineRasterizationState): RenderingDevice_PolygonFrontFace =
   expandMethodBind(className RDPipelineRasterizationState, "get_front_face", 708793786)
   var ret: encoded RenderingDevice_PolygonFrontFace
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_PolygonFrontFace)
 
 proc setDepthBiasEnabled*(self: RDPipelineRasterizationState; pMember: bool): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_depth_bias_enabled", 2586408642)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthBiasEnabled*(self: RDPipelineRasterizationState): bool =
   expandMethodBind(className RDPipelineRasterizationState, "get_depth_bias_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDepthBiasConstantFactor*(self: RDPipelineRasterizationState; pMember: Float): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_depth_bias_constant_factor", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthBiasConstantFactor*(self: RDPipelineRasterizationState): Float =
   expandMethodBind(className RDPipelineRasterizationState, "get_depth_bias_constant_factor", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDepthBiasClamp*(self: RDPipelineRasterizationState; pMember: Float): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_depth_bias_clamp", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthBiasClamp*(self: RDPipelineRasterizationState): Float =
   expandMethodBind(className RDPipelineRasterizationState, "get_depth_bias_clamp", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDepthBiasSlopeFactor*(self: RDPipelineRasterizationState; pMember: Float): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_depth_bias_slope_factor", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getDepthBiasSlopeFactor*(self: RDPipelineRasterizationState): Float =
   expandMethodBind(className RDPipelineRasterizationState, "get_depth_bias_slope_factor", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setLineWidth*(self: RDPipelineRasterizationState; pMember: Float): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_line_width", 373806689)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getLineWidth*(self: RDPipelineRasterizationState): Float =
   expandMethodBind(className RDPipelineRasterizationState, "get_line_width", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPatchControlPoints*(self: RDPipelineRasterizationState; pMember: uint32): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_patch_control_points", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getPatchControlPoints*(self: RDPipelineRasterizationState): uint32 =
   expandMethodBind(className RDPipelineRasterizationState, "get_patch_control_points", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 template enableDepthClamp*(self: RDPipelineRasterizationState): untyped = self.getEnableDepthClamp()

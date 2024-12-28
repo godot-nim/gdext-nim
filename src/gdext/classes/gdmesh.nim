@@ -76,89 +76,82 @@ template getAabb_bind*(_: typedesc[Mesh]): ClassCallVirtual = getAabb
 
 proc setLightmapSizeHint*(self: Mesh; size: Vector2i): void =
   expandMethodBind(className Mesh, "set_lightmap_size_hint", 1130785943)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getLightmapSizeHint*(self: Mesh): Vector2i =
   expandMethodBind(className Mesh, "get_lightmap_size_hint", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc getAabb*(self: Mesh): AABB =
   expandMethodBind(className Mesh, "get_aabb", 1068685055)
   var ret: encoded AABB
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AABB)
 
 proc getFaces*(self: Mesh): PackedVector3Array =
   expandMethodBind(className Mesh, "get_faces", 497664490)
   var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector3Array)
 
 proc getSurfaceCount*(self: Mesh): int32 =
   expandMethodBind(className Mesh, "get_surface_count", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc surfaceGetArrays*(self: Mesh; surfIdx: int32): Array =
   expandMethodBind(className Mesh, "surface_get_arrays", 663333327)
-  var `?param` = [getPtr surfIdx]
   var ret: encoded Array
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
   (addr ret).decode_result(Array)
 
 proc surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): TypedArray[Array] =
   expandMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
-  var `?param` = [getPtr surfIdx]
   var ret: encoded TypedArray[Array]
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
   (addr ret).decode_result(TypedArray[Array])
 
 proc surfaceSetMaterial*(self: Mesh; surfIdx: int32; material: gdref Material): void =
   expandMethodBind(className Mesh, "surface_set_material", 3671737478)
-  var `?param` = [getPtr surfIdx, getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr surfIdx, getPtr material])
 
 proc surfaceGetMaterial*(self: Mesh; surfIdx: int32): gdref Material =
   expandMethodBind(className Mesh, "surface_get_material", 2897466400)
-  var `?param` = [getPtr surfIdx]
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
   (addr ret).decode_result(gdref Material)
 
 proc createPlaceholder*(self: Mesh): gdref Resource =
   expandMethodBind(className Mesh, "create_placeholder", 121922552)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 proc createTrimeshShape*(self: Mesh): gdref ConcavePolygonShape3D =
   expandMethodBind(className Mesh, "create_trimesh_shape", 4160111210)
   var ret: encoded gdref ConcavePolygonShape3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref ConcavePolygonShape3D)
 
 proc createConvexShape*(self: Mesh; clean: bool = true; simplify: bool = false): gdref ConvexPolygonShape3D =
   expandMethodBind(className Mesh, "create_convex_shape", 2529984628)
-  var `?param` = [getPtr clean, getPtr simplify]
   var ret: encoded gdref ConvexPolygonShape3D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr clean, getPtr simplify], addr ret)
   (addr ret).decode_result(gdref ConvexPolygonShape3D)
 
 proc createOutline*(self: Mesh; margin: Float): gdref Mesh =
   expandMethodBind(className Mesh, "create_outline", 1208642001)
-  var `?param` = [getPtr margin]
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr margin], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc generateTriangleMesh*(self: Mesh): gdref TriangleMesh =
   expandMethodBind(className Mesh, "generate_triangle_mesh", 3476533166)
   var ret: encoded gdref TriangleMesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref TriangleMesh)
 
 template lightmapSizeHint*(self: Mesh): untyped = self.getLightmapSizeHint()

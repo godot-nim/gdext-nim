@@ -6,13 +6,12 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setMode2D*(self: VisualShaderNodeParticleEmitter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeParticleEmitter, "set_mode_2d", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isMode2D*(self: VisualShaderNodeParticleEmitter): bool =
   expandMethodBind(className VisualShaderNodeParticleEmitter, "is_mode_2d", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template mode2D*(self: VisualShaderNodeParticleEmitter): untyped = self.isMode2D()

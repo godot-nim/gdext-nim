@@ -11,79 +11,72 @@ template renderCallback_bind*(_: typedesc[CompositorEffect]): ClassCallVirtual =
 
 proc setEnabled*(self: CompositorEffect; enabled: bool): void =
   expandMethodBind(className CompositorEffect, "set_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc getEnabled*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setEffectCallbackType*(self: CompositorEffect; effectCallbackType: CompositorEffect_EffectCallbackType): void =
   expandMethodBind(className CompositorEffect, "set_effect_callback_type", 1390728419)
-  var `?param` = [getPtr effectCallbackType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr effectCallbackType])
 
 proc getEffectCallbackType*(self: CompositorEffect): CompositorEffect_EffectCallbackType =
   expandMethodBind(className CompositorEffect, "get_effect_callback_type", 1221912590)
   var ret: encoded CompositorEffect_EffectCallbackType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CompositorEffect_EffectCallbackType)
 
 proc setAccessResolvedColor*(self: CompositorEffect; enable: bool): void =
   expandMethodBind(className CompositorEffect, "set_access_resolved_color", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getAccessResolvedColor*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_access_resolved_color", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAccessResolvedDepth*(self: CompositorEffect; enable: bool): void =
   expandMethodBind(className CompositorEffect, "set_access_resolved_depth", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getAccessResolvedDepth*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_access_resolved_depth", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNeedsMotionVectors*(self: CompositorEffect; enable: bool): void =
   expandMethodBind(className CompositorEffect, "set_needs_motion_vectors", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getNeedsMotionVectors*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_needs_motion_vectors", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNeedsNormalRoughness*(self: CompositorEffect; enable: bool): void =
   expandMethodBind(className CompositorEffect, "set_needs_normal_roughness", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getNeedsNormalRoughness*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_needs_normal_roughness", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNeedsSeparateSpecular*(self: CompositorEffect; enable: bool): void =
   expandMethodBind(className CompositorEffect, "set_needs_separate_specular", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getNeedsSeparateSpecular*(self: CompositorEffect): bool =
   expandMethodBind(className CompositorEffect, "get_needs_separate_specular", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template enabled*(self: CompositorEffect): untyped = self.getEnabled()

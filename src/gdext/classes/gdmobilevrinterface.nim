@@ -6,113 +6,103 @@ import gdxrinterface; export gdxrinterface
 
 proc setEyeHeight*(self: MobileVRInterface; eyeHeight: float64): void =
   expandMethodBind(className MobileVRInterface, "set_eye_height", 373806689)
-  var `?param` = [getPtr eyeHeight]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr eyeHeight])
 
 proc getEyeHeight*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_eye_height", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setIod*(self: MobileVRInterface; iod: float64): void =
   expandMethodBind(className MobileVRInterface, "set_iod", 373806689)
-  var `?param` = [getPtr iod]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr iod])
 
 proc getIod*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_iod", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setDisplayWidth*(self: MobileVRInterface; displayWidth: float64): void =
   expandMethodBind(className MobileVRInterface, "set_display_width", 373806689)
-  var `?param` = [getPtr displayWidth]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr displayWidth])
 
 proc getDisplayWidth*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_display_width", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setDisplayToLens*(self: MobileVRInterface; displayToLens: float64): void =
   expandMethodBind(className MobileVRInterface, "set_display_to_lens", 373806689)
-  var `?param` = [getPtr displayToLens]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr displayToLens])
 
 proc getDisplayToLens*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_display_to_lens", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setOffsetRect*(self: MobileVRInterface; offsetRect: Rect2): void =
   expandMethodBind(className MobileVRInterface, "set_offset_rect", 2046264180)
-  var `?param` = [getPtr offsetRect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offsetRect])
 
 proc getOffsetRect*(self: MobileVRInterface): Rect2 =
   expandMethodBind(className MobileVRInterface, "get_offset_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc setOversample*(self: MobileVRInterface; oversample: float64): void =
   expandMethodBind(className MobileVRInterface, "set_oversample", 373806689)
-  var `?param` = [getPtr oversample]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr oversample])
 
 proc getOversample*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_oversample", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setK1*(self: MobileVRInterface; k: float64): void =
   expandMethodBind(className MobileVRInterface, "set_k1", 373806689)
-  var `?param` = [getPtr k]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr k])
 
 proc getK1*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_k1", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setK2*(self: MobileVRInterface; k: float64): void =
   expandMethodBind(className MobileVRInterface, "set_k2", 373806689)
-  var `?param` = [getPtr k]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr k])
 
 proc getK2*(self: MobileVRInterface): float64 =
   expandMethodBind(className MobileVRInterface, "get_k2", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc getVrsMinRadius*(self: MobileVRInterface): Float =
   expandMethodBind(className MobileVRInterface, "get_vrs_min_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setVrsMinRadius*(self: MobileVRInterface; radius: Float): void =
   expandMethodBind(className MobileVRInterface, "set_vrs_min_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getVrsStrength*(self: MobileVRInterface): Float =
   expandMethodBind(className MobileVRInterface, "get_vrs_strength", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setVrsStrength*(self: MobileVRInterface; strength: Float): void =
   expandMethodBind(className MobileVRInterface, "set_vrs_strength", 373806689)
-  var `?param` = [getPtr strength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr strength])
 
 template eyeHeight*(self: MobileVRInterface): untyped = self.getEyeHeight()
 template `eyeHeight=`*(self: MobileVRInterface; value) = self.setEyeHeight(value)

@@ -16,111 +16,101 @@ template setReadOnly_bind*(_: typedesc[EditorProperty]): ClassCallVirtual = setR
 
 proc setLabel*(self: EditorProperty; text: String): void =
   expandMethodBind(className EditorProperty, "set_label", 83702148)
-  var `?param` = [getPtr text]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr text])
 
 proc getLabel*(self: EditorProperty): String =
   expandMethodBind(className EditorProperty, "get_label", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setReadOnly*(self: EditorProperty; readOnly: bool): void =
   expandMethodBind(className EditorProperty, "set_read_only", 2586408642)
-  var `?param` = [getPtr readOnly]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr readOnly])
 
 proc isReadOnly*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_read_only", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCheckable*(self: EditorProperty; checkable: bool): void =
   expandMethodBind(className EditorProperty, "set_checkable", 2586408642)
-  var `?param` = [getPtr checkable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr checkable])
 
 proc isCheckable*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_checkable", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setChecked*(self: EditorProperty; checked: bool): void =
   expandMethodBind(className EditorProperty, "set_checked", 2586408642)
-  var `?param` = [getPtr checked]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr checked])
 
 proc isChecked*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_checked", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDrawWarning*(self: EditorProperty; drawWarning: bool): void =
   expandMethodBind(className EditorProperty, "set_draw_warning", 2586408642)
-  var `?param` = [getPtr drawWarning]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr drawWarning])
 
 proc isDrawWarning*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_draw_warning", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setKeying*(self: EditorProperty; keying: bool): void =
   expandMethodBind(className EditorProperty, "set_keying", 2586408642)
-  var `?param` = [getPtr keying]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr keying])
 
 proc isKeying*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_keying", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDeletable*(self: EditorProperty; deletable: bool): void =
   expandMethodBind(className EditorProperty, "set_deletable", 2586408642)
-  var `?param` = [getPtr deletable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr deletable])
 
 proc isDeletable*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_deletable", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getEditedProperty*(self: EditorProperty): StringName =
   expandMethodBind(className EditorProperty, "get_edited_property", 2002593661)
   var ret: encoded StringName
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
 proc getEditedObject*(self: EditorProperty): Object =
   expandMethodBind(className EditorProperty, "get_edited_object", 2050059866)
   var ret: encoded Object
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Object)
 
 proc updateProperty*(self: EditorProperty): void =
   expandMethodBind(className EditorProperty, "update_property", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc addFocusable*(self: EditorProperty; control: Control): void =
   expandMethodBind(className EditorProperty, "add_focusable", 1496901182)
-  var `?param` = [getPtr control]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr control])
 
 proc setBottomEditor*(self: EditorProperty; editor: Control): void =
   expandMethodBind(className EditorProperty, "set_bottom_editor", 1496901182)
-  var `?param` = [getPtr editor]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr editor])
 
 proc emitChanged*(self: EditorProperty; property: StringName; value: Variant; field: StringName = stringName ""; changing: bool = false): void =
   expandMethodBind(className EditorProperty, "emit_changed", 3069422438)
-  var `?param` = [getPtr property, getPtr value, getPtr field, getPtr changing]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr property, getPtr value, getPtr field, getPtr changing])
 
 template label*(self: EditorProperty): untyped = self.getLabel()
 template `label=`*(self: EditorProperty; value) = self.setLabel(value)

@@ -6,36 +6,32 @@ import gdxrnode3d; export gdxrnode3d
 
 proc isButtonPressed*(self: XRController3D; name: StringName): bool =
   expandMethodBind(className XRController3D, "is_button_pressed", 2619796661)
-  var `?param` = [getPtr name]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
 proc getInput*(self: XRController3D; name: StringName): Variant =
   expandMethodBind(className XRController3D, "get_input", 2760726917)
-  var `?param` = [getPtr name]
   var ret: encoded Variant
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
 proc getFloat*(self: XRController3D; name: StringName): Float =
   expandMethodBind(className XRController3D, "get_float", 2349060816)
-  var `?param` = [getPtr name]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Float)
 
 proc getVector2*(self: XRController3D; name: StringName): Vector2 =
   expandMethodBind(className XRController3D, "get_vector2", 3100822709)
-  var `?param` = [getPtr name]
   var ret: encoded Vector2
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc getTrackerHand*(self: XRController3D): XRPositionalTracker_TrackerHand =
   expandMethodBind(className XRController3D, "get_tracker_hand", 4181770860)
   var ret: encoded XRPositionalTracker_TrackerHand
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(XRPositionalTracker_TrackerHand)
 
 const XRController3D_vmap =

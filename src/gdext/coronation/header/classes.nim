@@ -1,15 +1,11 @@
-import gdext/dirty/gdextensioninterface; export gdextensioninterface
+import gdext/gdinterface/[classDB, methodtools, exceptions]
+export                    classDB, methodtools, exceptions
 
-import gdext/core/[
-  builtinindex, commandindex, methodtools, typeshift, gdclass, gdtypedarray,
-  gdrefs, exceptions
-]
-export
-  builtinindex, commandindex, methodtools, typeshift, gdclass, gdtypedarray,
-  gdrefs, exceptions
-
-from gdext/core/extracommands import gdstring, stringname, classname
+from gdext/gdinterface/extracommands import gdstring, stringname, classname
 export extracommands.gdstring, extracommands.stringname, extracommands.classname
+
+import gdext/core/[builtinindex, typeshift, gdclass, gdtypedarray, gdrefs ]
+export             builtinindex, typeshift, gdclass, gdtypedarray, gdrefs
 
 import gdext/gen/[
   builtinclasses, classindex, globalenums, localenums, structs
@@ -24,19 +20,19 @@ proc concat*[T,S](a, b: Table[T,S]): Table[T,S] =
   for key, value in b.pairs:
     result[key] = value
 
-proc getMethodBind*(className: var StringName; methodName: string; hash: int): MethodBindPtr =
-  let name = stringName methodName
-  interface_ClassDB_getMethodBind(addr className, addr name, hash)
-
 template expandMethodBind*(className; methodName; hash) =
   var methodbind {.global, inject.}: MethodBindPtr
   if unlikely(methodbind.isNil):
-    methodbind = getMethodBind(className, methodName, hash)
+    methodbind = classDB.getMethodBind(className, methodName, hash)
 
-proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: ptr ConstTypePtr; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, args, result)
-proc ptrcall*(methodbind: MethodBindPtr; args: ptr ConstTypePtr; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, nil, args, result)
+proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, addr args[0], result)
+proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, nil, addr args[0], result)
+proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, nil, result)
+proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, nil, nil, result)
 
 
 proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =

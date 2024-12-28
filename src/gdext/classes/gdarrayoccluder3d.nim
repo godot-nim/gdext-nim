@@ -6,18 +6,15 @@ import gdoccluder3d; export gdoccluder3d
 
 proc setArrays*(self: ArrayOccluder3D; vertices: PackedVector3Array; indices: PackedInt32Array): void =
   expandMethodBind(className ArrayOccluder3D, "set_arrays", 3233972621)
-  var `?param` = [getPtr vertices, getPtr indices]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertices, getPtr indices])
 
 proc setVertices*(self: ArrayOccluder3D; vertices: PackedVector3Array): void =
   expandMethodBind(className ArrayOccluder3D, "set_vertices", 334873810)
-  var `?param` = [getPtr vertices]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertices])
 
 proc setIndices*(self: ArrayOccluder3D; indices: PackedInt32Array): void =
   expandMethodBind(className ArrayOccluder3D, "set_indices", 3614634198)
-  var `?param` = [getPtr indices]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr indices])
 
 template vertices*(self: ArrayOccluder3D): untyped = self.getVertices()
 template `vertices=`*(self: ArrayOccluder3D; value) = self.setVertices(value)

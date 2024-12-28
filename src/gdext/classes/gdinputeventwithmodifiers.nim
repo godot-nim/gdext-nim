@@ -6,69 +6,64 @@ import gdinputeventfromwindow; export gdinputeventfromwindow
 
 proc setCommandOrControlAutoremap*(self: InputEventWithModifiers; enable: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_command_or_control_autoremap", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isCommandOrControlAutoremap*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_command_or_control_autoremap", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc isCommandOrControlPressed*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_command_or_control_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAltPressed*(self: InputEventWithModifiers; pressed: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_alt_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isAltPressed*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_alt_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setShiftPressed*(self: InputEventWithModifiers; pressed: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_shift_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isShiftPressed*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_shift_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCtrlPressed*(self: InputEventWithModifiers; pressed: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_ctrl_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isCtrlPressed*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_ctrl_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMetaPressed*(self: InputEventWithModifiers; pressed: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_meta_pressed", 2586408642)
-  var `?param` = [getPtr pressed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pressed])
 
 proc isMetaPressed*(self: InputEventWithModifiers): bool =
   expandMethodBind(className InputEventWithModifiers, "is_meta_pressed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getModifiersMask*(self: InputEventWithModifiers): set[KeyModifierMask] =
   expandMethodBind(className InputEventWithModifiers, "get_modifiers_mask", 1258259499)
   var ret: encoded set[KeyModifierMask]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(set[KeyModifierMask])
 
 template commandOrControlAutoremap*(self: InputEventWithModifiers): untyped = self.isCommandOrControlAutoremap()

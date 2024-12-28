@@ -41,9 +41,8 @@ template getClosestPointToObjectVolume_bind*(_: typedesc[PhysicsDirectSpaceState
 
 proc isBodyExcludedFromQuery*(self: PhysicsDirectSpaceState3DExtension; body: RID): bool =
   expandMethodBind(className PhysicsDirectSpaceState3DExtension, "is_body_excluded_from_query", 4155700596)
-  var `?param` = [getPtr body]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr body], addr ret)
   (addr ret).decode_result(bool)
 
 const PhysicsDirectSpaceState3DExtension_vmap =

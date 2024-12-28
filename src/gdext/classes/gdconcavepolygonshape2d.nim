@@ -6,13 +6,12 @@ import gdshape2d; export gdshape2d
 
 proc setSegments*(self: ConcavePolygonShape2D; segments: PackedVector2Array): void =
   expandMethodBind(className ConcavePolygonShape2D, "set_segments", 1509147220)
-  var `?param` = [getPtr segments]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr segments])
 
 proc getSegments*(self: ConcavePolygonShape2D): PackedVector2Array =
   expandMethodBind(className ConcavePolygonShape2D, "get_segments", 2961356807)
   var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
 template segments*(self: ConcavePolygonShape2D): untyped = self.getSegments()

@@ -5,7 +5,7 @@ export stdmath except
   arcsin, arccos, arctan, arctan2
 export builtin_bswap16, builtin_bswap32, builtin_bswap64
 
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/native
 import ./typedef
 
 const SQRT12* = 0.7071067811865475244008443621048490

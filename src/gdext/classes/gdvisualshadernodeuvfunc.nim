@@ -6,13 +6,12 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setFunction*(self: VisualShaderNodeUVFunc; `func`: VisualShaderNodeUVFunc_Function): void =
   expandMethodBind(className VisualShaderNodeUVFunc, "set_function", 765791915)
-  var `?param` = [getPtr `func`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `func`])
 
 proc getFunction*(self: VisualShaderNodeUVFunc): VisualShaderNodeUVFunc_Function =
   expandMethodBind(className VisualShaderNodeUVFunc, "get_function", 3772902164)
   var ret: encoded VisualShaderNodeUVFunc_Function
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeUVFunc_Function)
 
 template function*(self: VisualShaderNodeUVFunc): untyped = self.getFunction()

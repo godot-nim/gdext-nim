@@ -6,35 +6,32 @@ import gdrefcounted; export gdrefcounted
 
 proc setFormat*(self: RDAttachmentFormat; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDAttachmentFormat, "set_format", 565531219)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getFormat*(self: RDAttachmentFormat): RenderingDevice_DataFormat =
   expandMethodBind(className RDAttachmentFormat, "get_format", 2235804183)
   var ret: encoded RenderingDevice_DataFormat
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_DataFormat)
 
 proc setSamples*(self: RDAttachmentFormat; pMember: RenderingDevice_TextureSamples): void =
   expandMethodBind(className RDAttachmentFormat, "set_samples", 3774171498)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getSamples*(self: RDAttachmentFormat): RenderingDevice_TextureSamples =
   expandMethodBind(className RDAttachmentFormat, "get_samples", 407791724)
   var ret: encoded RenderingDevice_TextureSamples
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_TextureSamples)
 
 proc setUsageFlags*(self: RDAttachmentFormat; pMember: uint32): void =
   expandMethodBind(className RDAttachmentFormat, "set_usage_flags", 1286410249)
-  var `?param` = [getPtr pMember]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pMember])
 
 proc getUsageFlags*(self: RDAttachmentFormat): uint32 =
   expandMethodBind(className RDAttachmentFormat, "get_usage_flags", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 template format*(self: RDAttachmentFormat): untyped = self.getFormat()

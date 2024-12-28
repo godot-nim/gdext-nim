@@ -6,35 +6,32 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setPanPullout*(self: AudioEffectStereoEnhance; amount: Float): void =
   expandMethodBind(className AudioEffectStereoEnhance, "set_pan_pullout", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getPanPullout*(self: AudioEffectStereoEnhance): Float =
   expandMethodBind(className AudioEffectStereoEnhance, "get_pan_pullout", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTimePullout*(self: AudioEffectStereoEnhance; amount: Float): void =
   expandMethodBind(className AudioEffectStereoEnhance, "set_time_pullout", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTimePullout*(self: AudioEffectStereoEnhance): Float =
   expandMethodBind(className AudioEffectStereoEnhance, "get_time_pullout", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSurround*(self: AudioEffectStereoEnhance; amount: Float): void =
   expandMethodBind(className AudioEffectStereoEnhance, "set_surround", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getSurround*(self: AudioEffectStereoEnhance): Float =
   expandMethodBind(className AudioEffectStereoEnhance, "get_surround", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template panPullout*(self: AudioEffectStereoEnhance): untyped = self.getPanPullout()

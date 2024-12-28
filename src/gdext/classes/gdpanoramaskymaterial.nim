@@ -6,35 +6,32 @@ import gdmaterial; export gdmaterial
 
 proc setPanorama*(self: PanoramaSkyMaterial; texture: gdref Texture2D): void =
   expandMethodBind(className PanoramaSkyMaterial, "set_panorama", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getPanorama*(self: PanoramaSkyMaterial): gdref Texture2D =
   expandMethodBind(className PanoramaSkyMaterial, "get_panorama", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setFilteringEnabled*(self: PanoramaSkyMaterial; enabled: bool): void =
   expandMethodBind(className PanoramaSkyMaterial, "set_filtering_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isFilteringEnabled*(self: PanoramaSkyMaterial): bool =
   expandMethodBind(className PanoramaSkyMaterial, "is_filtering_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setEnergyMultiplier*(self: PanoramaSkyMaterial; multiplier: Float): void =
   expandMethodBind(className PanoramaSkyMaterial, "set_energy_multiplier", 373806689)
-  var `?param` = [getPtr multiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr multiplier])
 
 proc getEnergyMultiplier*(self: PanoramaSkyMaterial): Float =
   expandMethodBind(className PanoramaSkyMaterial, "get_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template panorama*(self: PanoramaSkyMaterial): untyped = self.getPanorama()

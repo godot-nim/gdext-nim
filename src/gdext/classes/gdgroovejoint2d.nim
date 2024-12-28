@@ -6,24 +6,22 @@ import gdjoint2d; export gdjoint2d
 
 proc setLength*(self: GrooveJoint2D; length: Float): void =
   expandMethodBind(className GrooveJoint2D, "set_length", 373806689)
-  var `?param` = [getPtr length]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr length])
 
 proc getLength*(self: GrooveJoint2D): Float =
   expandMethodBind(className GrooveJoint2D, "get_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setInitialOffset*(self: GrooveJoint2D; offset: Float): void =
   expandMethodBind(className GrooveJoint2D, "set_initial_offset", 373806689)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getInitialOffset*(self: GrooveJoint2D): Float =
   expandMethodBind(className GrooveJoint2D, "get_initial_offset", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template length*(self: GrooveJoint2D): untyped = self.getLength()

@@ -6,13 +6,12 @@ import gdgpuparticlescollision3d; export gdgpuparticlescollision3d
 
 proc setSize*(self: GPUParticlesCollisionBox3D; size: Vector3): void =
   expandMethodBind(className GPUParticlesCollisionBox3D, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: GPUParticlesCollisionBox3D): Vector3 =
   expandMethodBind(className GPUParticlesCollisionBox3D, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 template size*(self: GPUParticlesCollisionBox3D): untyped = self.getSize()

@@ -42,37 +42,37 @@ template getParameterList_bind*(_: typedesc[AudioStream]): ClassCallVirtual = ge
 proc getLength*(self: AudioStream): float64 =
   expandMethodBind(className AudioStream, "get_length", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc isMonophonic*(self: AudioStream): bool =
   expandMethodBind(className AudioStream, "is_monophonic", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback =
   expandMethodBind(className AudioStream, "instantiate_playback", 210135309)
   var ret: encoded gdref AudioStreamPlayback
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref AudioStreamPlayback)
 
 proc canBeSampled*(self: AudioStream): bool =
   expandMethodBind(className AudioStream, "can_be_sampled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc generateSample*(self: AudioStream): gdref AudioSample =
   expandMethodBind(className AudioStream, "generate_sample", 2646048999)
   var ret: encoded gdref AudioSample
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref AudioSample)
 
 proc isMetaStream*(self: AudioStream): bool =
   expandMethodBind(className AudioStream, "is_meta_stream", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 const AudioStream_vmap =

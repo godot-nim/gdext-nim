@@ -1,8 +1,7 @@
 import gdext
-import std/unittest
-unittest.disableParamFiltering()
+import testutils
 
-suite "Variant":
+runtime: suite "Variant":
   test "has.*":
     var vresource = variant instantiate Resource
     var vstring = variant "hello, variant!"
@@ -11,15 +10,10 @@ suite "Variant":
     check hasMember(VariantTypeColor, "r")
 
   test "call error":
-    var err: CallError
     var vdict = variant dictionary()
     check vdict.call("size").get(int) == 0
-    expect VariantCallError: discard vdict.call("nonexistence")
-    expect VariantCallError: discard vdict.call("size", "Extra Argument")
-    discard vdict.call("nonexistence", err)
-    check err.error == CallError_InvalidMethod
-    discard vdict.call("size", err, "Extra Argument")
-    check err.error == CallError_TooManyArguments
+    expect GodotCallDefect: discard vdict.call("nonexistence")
+    expect GodotCallDefect: discard vdict.call("size", "Extra Argument")
 
   test "equalability":
     var v1i = variant 1
@@ -57,7 +51,7 @@ suite "Variant":
     check variant"Key2" in vdict
 
     for key, val in vdict.pairs:
-      case key.variantType
+      case key.getType
       of VariantTypeString:
         case key.get(string)
         of "Key1":

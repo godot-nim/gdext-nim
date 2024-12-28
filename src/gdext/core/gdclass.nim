@@ -2,12 +2,10 @@ import std/[tables, typetraits]
 
 import gdext/buildconf
 
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/[native, extracommands]
 import gdext/utils/macros
 
-import gdext/core/commandindex
 import gdext/core/builtinindex
-import gdext/core/extracommands
 
 when Dev.debugCallbacks:
   type SYNC* = enum

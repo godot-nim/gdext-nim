@@ -36,18 +36,15 @@ template parseEnd_bind*(_: typedesc[EditorInspectorPlugin]): ClassCallVirtual = 
 
 proc addCustomControl*(self: EditorInspectorPlugin; control: Control): void =
   expandMethodBind(className EditorInspectorPlugin, "add_custom_control", 1496901182)
-  var `?param` = [getPtr control]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr control])
 
 proc addPropertyEditor*(self: EditorInspectorPlugin; property: String; editor: Control; addToEnd: bool = false; label: String = gdstring""): void =
   expandMethodBind(className EditorInspectorPlugin, "add_property_editor", 2042698479)
-  var `?param` = [getPtr property, getPtr editor, getPtr addToEnd, getPtr label]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr property, getPtr editor, getPtr addToEnd, getPtr label])
 
 proc addPropertyEditorForMultipleProperties*(self: EditorInspectorPlugin; label: String; properties: PackedStringArray; editor: Control): void =
   expandMethodBind(className EditorInspectorPlugin, "add_property_editor_for_multiple_properties", 788598683)
-  var `?param` = [getPtr label, getPtr properties, getPtr editor]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr label, getPtr properties, getPtr editor])
 
 const EditorInspectorPlugin_vmap =
   RefCounted.vmap.concat toTable {

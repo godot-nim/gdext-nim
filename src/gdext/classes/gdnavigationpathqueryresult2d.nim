@@ -6,51 +6,47 @@ import gdrefcounted; export gdrefcounted
 
 proc setPath*(self: NavigationPathQueryResult2D; path: PackedVector2Array): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path", 1509147220)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getPath*(self: NavigationPathQueryResult2D): PackedVector2Array =
   expandMethodBind(className NavigationPathQueryResult2D, "get_path", 2961356807)
   var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
 proc setPathTypes*(self: NavigationPathQueryResult2D; pathTypes: PackedInt32Array): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_types", 3614634198)
-  var `?param` = [getPtr pathTypes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pathTypes])
 
 proc getPathTypes*(self: NavigationPathQueryResult2D): PackedInt32Array =
   expandMethodBind(className NavigationPathQueryResult2D, "get_path_types", 1930428628)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setPathRids*(self: NavigationPathQueryResult2D; pathRids: TypedArray[RID]): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_rids", 381264803)
-  var `?param` = [getPtr pathRids]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pathRids])
 
 proc getPathRids*(self: NavigationPathQueryResult2D): TypedArray[RID] =
   expandMethodBind(className NavigationPathQueryResult2D, "get_path_rids", 3995934104)
   var ret: encoded TypedArray[RID]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[RID])
 
 proc setPathOwnerIds*(self: NavigationPathQueryResult2D; pathOwnerIds: PackedInt64Array): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_owner_ids", 3709968205)
-  var `?param` = [getPtr pathOwnerIds]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pathOwnerIds])
 
 proc getPathOwnerIds*(self: NavigationPathQueryResult2D): PackedInt64Array =
   expandMethodBind(className NavigationPathQueryResult2D, "get_path_owner_ids", 235988956)
   var ret: encoded PackedInt64Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
 proc reset*(self: NavigationPathQueryResult2D): void =
   expandMethodBind(className NavigationPathQueryResult2D, "reset", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 template path*(self: NavigationPathQueryResult2D): untyped = self.getPath()
 template `path=`*(self: NavigationPathQueryResult2D; value) = self.setPath(value)

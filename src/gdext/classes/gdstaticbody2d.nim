@@ -6,35 +6,32 @@ import gdphysicsbody2d; export gdphysicsbody2d
 
 proc setConstantLinearVelocity*(self: StaticBody2D; vel: Vector2): void =
   expandMethodBind(className StaticBody2D, "set_constant_linear_velocity", 743155724)
-  var `?param` = [getPtr vel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vel])
 
 proc setConstantAngularVelocity*(self: StaticBody2D; vel: Float): void =
   expandMethodBind(className StaticBody2D, "set_constant_angular_velocity", 373806689)
-  var `?param` = [getPtr vel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vel])
 
 proc getConstantLinearVelocity*(self: StaticBody2D): Vector2 =
   expandMethodBind(className StaticBody2D, "get_constant_linear_velocity", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc getConstantAngularVelocity*(self: StaticBody2D): Float =
   expandMethodBind(className StaticBody2D, "get_constant_angular_velocity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPhysicsMaterialOverride*(self: StaticBody2D; physicsMaterialOverride: gdref PhysicsMaterial): void =
   expandMethodBind(className StaticBody2D, "set_physics_material_override", 1784508650)
-  var `?param` = [getPtr physicsMaterialOverride]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr physicsMaterialOverride])
 
 proc getPhysicsMaterialOverride*(self: StaticBody2D): gdref PhysicsMaterial =
   expandMethodBind(className StaticBody2D, "get_physics_material_override", 2521850424)
   var ret: encoded gdref PhysicsMaterial
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref PhysicsMaterial)
 
 template physicsMaterialOverride*(self: StaticBody2D): untyped = self.getPhysicsMaterialOverride()

@@ -6,24 +6,22 @@ import gdnode3d; export gdnode3d
 
 proc setFaceTracker*(self: XRFaceModifier3D; trackerName: StringName): void =
   expandMethodBind(className XRFaceModifier3D, "set_face_tracker", 3304788590)
-  var `?param` = [getPtr trackerName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr trackerName])
 
 proc getFaceTracker*(self: XRFaceModifier3D): StringName =
   expandMethodBind(className XRFaceModifier3D, "get_face_tracker", 2002593661)
   var ret: encoded StringName
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
 proc setTarget*(self: XRFaceModifier3D; target: NodePath): void =
   expandMethodBind(className XRFaceModifier3D, "set_target", 1348162250)
-  var `?param` = [getPtr target]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr target])
 
 proc getTarget*(self: XRFaceModifier3D): NodePath =
   expandMethodBind(className XRFaceModifier3D, "get_target", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 template faceTracker*(self: XRFaceModifier3D): untyped = self.getFaceTracker()

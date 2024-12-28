@@ -6,13 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 proc setObjectId*(self: EncodedObjectAsID; id: uint64): void =
   expandMethodBind(className EncodedObjectAsID, "set_object_id", 1286410249)
-  var `?param` = [getPtr id]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr id])
 
 proc getObjectId*(self: EncodedObjectAsID): uint64 =
   expandMethodBind(className EncodedObjectAsID, "get_object_id", 3905245786)
   var ret: encoded uint64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
 
 template objectId*(self: EncodedObjectAsID): untyped = self.getObjectId()

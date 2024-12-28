@@ -6,13 +6,12 @@ import gdshape3d; export gdshape3d
 
 proc setSize*(self: BoxShape3D; size: Vector3): void =
   expandMethodBind(className BoxShape3D, "set_size", 3460891852)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getSize*(self: BoxShape3D): Vector3 =
   expandMethodBind(className BoxShape3D, "get_size", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 template size*(self: BoxShape3D): untyped = self.getSize()

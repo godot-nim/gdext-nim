@@ -7,13 +7,13 @@ import gdscrollcontainer; export gdscrollcontainer
 proc getSelectedPath*(self: EditorInspector): String =
   expandMethodBind(className EditorInspector, "get_selected_path", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc getEditedObject*(self: EditorInspector): Object =
   expandMethodBind(className EditorInspector, "get_edited_object", 2050059866)
   var ret: encoded Object
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Object)
 
 const EditorInspector_vmap =

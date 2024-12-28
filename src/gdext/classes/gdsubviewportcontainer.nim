@@ -11,24 +11,22 @@ template propagateInputEvent_bind*(_: typedesc[SubViewportContainer]): ClassCall
 
 proc setStretch*(self: SubViewportContainer; enable: bool): void =
   expandMethodBind(className SubViewportContainer, "set_stretch", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isStretchEnabled*(self: SubViewportContainer): bool =
   expandMethodBind(className SubViewportContainer, "is_stretch_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setStretchShrink*(self: SubViewportContainer; amount: int32): void =
   expandMethodBind(className SubViewportContainer, "set_stretch_shrink", 1286410249)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getStretchShrink*(self: SubViewportContainer): int32 =
   expandMethodBind(className SubViewportContainer, "get_stretch_shrink", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template stretch*(self: SubViewportContainer): untyped = self.isStretchEnabled()

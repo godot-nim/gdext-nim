@@ -6,13 +6,12 @@ import gdstaticbody2d; export gdstaticbody2d
 
 proc setSyncToPhysics*(self: AnimatableBody2D; enable: bool): void =
   expandMethodBind(className AnimatableBody2D, "set_sync_to_physics", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isSyncToPhysicsEnabled*(self: AnimatableBody2D): bool =
   expandMethodBind(className AnimatableBody2D, "is_sync_to_physics_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template syncToPhysics*(self: AnimatableBody2D): untyped = self.isSyncToPhysicsEnabled()

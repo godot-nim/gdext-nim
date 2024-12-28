@@ -1,6 +1,5 @@
-import gdext/dirty/gdextensioninterface
+import native
 import gdext/core/builtinindex
-import gdext/core/commandindex
 
 var newStringNameFromString: PtrConstructor
 var newStringFromStringName: PtrConstructor

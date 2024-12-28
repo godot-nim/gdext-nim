@@ -6,40 +6,35 @@ import gdskeletonmodification2d; export gdskeletonmodification2d
 
 proc setPhysicalBoneChainLength*(self: SkeletonModification2DPhysicalBones; length: int32): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_chain_length", 1286410249)
-  var `?param` = [getPtr length]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr length])
 
 proc getPhysicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): int32 =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_chain_length", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setPhysicalBoneNode*(self: SkeletonModification2DPhysicalBones; jointIdx: int32; physicalbone2dNode: NodePath): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_node", 2761262315)
-  var `?param` = [getPtr jointIdx, getPtr physicalbone2dNode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr physicalbone2dNode])
 
 proc getPhysicalBoneNode*(self: SkeletonModification2DPhysicalBones; jointIdx: int32): NodePath =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_node", 408788394)
-  var `?param` = [getPtr jointIdx]
   var ret: encoded NodePath
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
-  var `?param` = [getPtr bones]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr bones])
 
 proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
-  var `?param` = [getPtr bones]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr bones])
 
 template physicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): untyped = self.getPhysicalBoneChainLength()
 template `physicalBoneChainLength=`*(self: SkeletonModification2DPhysicalBones; value) = self.setPhysicalBoneChainLength(value)

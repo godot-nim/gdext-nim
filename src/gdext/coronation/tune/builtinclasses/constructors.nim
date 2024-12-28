@@ -1,9 +1,8 @@
 import std/sequtils
-import std/macros
 
-import gdext/core/commandindex
+import gdext/gdinterface/extracommands
+import gdext/utils/macros
 import gdext/core/builtinindex
-import gdext/core/extracommands
 
 from gdext/core/geometrics/typedef {.all.} import makevec
 
@@ -12,12 +11,12 @@ macro vector*(exp: varargs[typed]): untyped =
   let res = makeVec(exp[0..^1])
   result = newStmtList()
   result.add res.lets
-  result.add nnkBracket.newTree res.brackets.mapIt quote do: real_elem(`it`)
+  result.add newBracket res.brackets.mapIt quote do: real_elem(`it`)
 macro vectori*(exp: varargs[typed]): untyped =
   let res = makeVec(exp[0..^1])
   result = newStmtList()
   result.add res.lets
-  result.add nnkBracket.newTree res.brackets.mapIt quote do: int_elem(`it`)
+  result.add newBracket res.brackets.mapIt quote do: int_elem(`it`)
 
 {.push, inline.}
 proc vector2*(x, y: real_elem): Vector2 = [x, y]
@@ -74,5 +73,3 @@ proc transform3D*(xx, xy, xz, yx, yy, yz, zx, zy, zz, ox, oy, oz: real_elem): Tr
       z: [zx, zy, zz]),
     origin: [ox, oy, oz]
   )
-
-proc variant*: Variant = interface_variantNewNil(addr result)

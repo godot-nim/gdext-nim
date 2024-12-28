@@ -6,237 +6,214 @@ import gdanimationmixer; export gdanimationmixer
 
 proc animationSetNext*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): void =
   expandMethodBind(className AnimationPlayer, "animation_set_next", 3740211285)
-  var `?param` = [getPtr animationFrom, getPtr animationTo]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo])
 
 proc animationGetNext*(self: AnimationPlayer; animationFrom: StringName): StringName =
   expandMethodBind(className AnimationPlayer, "animation_get_next", 1965194235)
-  var `?param` = [getPtr animationFrom]
   var ret: encoded StringName
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr animationFrom], addr ret)
   (addr ret).decode_result(StringName)
 
 proc setBlendTime*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName; sec: float64): void =
   expandMethodBind(className AnimationPlayer, "set_blend_time", 3231131886)
-  var `?param` = [getPtr animationFrom, getPtr animationTo, getPtr sec]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo, getPtr sec])
 
 proc getBlendTime*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): float64 =
   expandMethodBind(className AnimationPlayer, "get_blend_time", 1958752504)
-  var `?param` = [getPtr animationFrom, getPtr animationTo]
   var ret: encoded float64
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo], addr ret)
   (addr ret).decode_result(float64)
 
 proc setDefaultBlendTime*(self: AnimationPlayer; sec: float64): void =
   expandMethodBind(className AnimationPlayer, "set_default_blend_time", 373806689)
-  var `?param` = [getPtr sec]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sec])
 
 proc getDefaultBlendTime*(self: AnimationPlayer): float64 =
   expandMethodBind(className AnimationPlayer, "get_default_blend_time", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setAutoCapture*(self: AnimationPlayer; autoCapture: bool): void =
   expandMethodBind(className AnimationPlayer, "set_auto_capture", 2586408642)
-  var `?param` = [getPtr autoCapture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr autoCapture])
 
 proc isAutoCapture*(self: AnimationPlayer): bool =
   expandMethodBind(className AnimationPlayer, "is_auto_capture", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAutoCaptureDuration*(self: AnimationPlayer; autoCaptureDuration: float64): void =
   expandMethodBind(className AnimationPlayer, "set_auto_capture_duration", 373806689)
-  var `?param` = [getPtr autoCaptureDuration]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr autoCaptureDuration])
 
 proc getAutoCaptureDuration*(self: AnimationPlayer): float64 =
   expandMethodBind(className AnimationPlayer, "get_auto_capture_duration", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc setAutoCaptureTransitionType*(self: AnimationPlayer; autoCaptureTransitionType: Tween_TransitionType): void =
   expandMethodBind(className AnimationPlayer, "set_auto_capture_transition_type", 1058637742)
-  var `?param` = [getPtr autoCaptureTransitionType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr autoCaptureTransitionType])
 
 proc getAutoCaptureTransitionType*(self: AnimationPlayer): Tween_TransitionType =
   expandMethodBind(className AnimationPlayer, "get_auto_capture_transition_type", 3842314528)
   var ret: encoded Tween_TransitionType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Tween_TransitionType)
 
 proc setAutoCaptureEaseType*(self: AnimationPlayer; autoCaptureEaseType: Tween_EaseType): void =
   expandMethodBind(className AnimationPlayer, "set_auto_capture_ease_type", 1208105857)
-  var `?param` = [getPtr autoCaptureEaseType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr autoCaptureEaseType])
 
 proc getAutoCaptureEaseType*(self: AnimationPlayer): Tween_EaseType =
   expandMethodBind(className AnimationPlayer, "get_auto_capture_ease_type", 631880200)
   var ret: encoded Tween_EaseType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Tween_EaseType)
 
 proc play*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
   expandMethodBind(className AnimationPlayer, "play", 3697947785)
-  var `?param` = [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
 
 proc playBackwards*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1): void =
   expandMethodBind(className AnimationPlayer, "play_backwards", 3890664824)
-  var `?param` = [getPtr name, getPtr customBlend]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr customBlend])
 
 proc playWithCapture*(self: AnimationPlayer; name: StringName = stringName ""; duration: float64 = -1.0; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false; transType: Tween_TransitionType = transLinear; easeType: Tween_EaseType = easeIn): void =
   expandMethodBind(className AnimationPlayer, "play_with_capture", 3180464118)
-  var `?param` = [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType])
 
 proc pause*(self: AnimationPlayer): void =
   expandMethodBind(className AnimationPlayer, "pause", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc stop*(self: AnimationPlayer; keepState: bool = false): void =
   expandMethodBind(className AnimationPlayer, "stop", 107499316)
-  var `?param` = [getPtr keepState]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr keepState])
 
 proc isPlaying*(self: AnimationPlayer): bool =
   expandMethodBind(className AnimationPlayer, "is_playing", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCurrentAnimation*(self: AnimationPlayer; animation: String): void =
   expandMethodBind(className AnimationPlayer, "set_current_animation", 83702148)
-  var `?param` = [getPtr animation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr animation])
 
 proc getCurrentAnimation*(self: AnimationPlayer): String =
   expandMethodBind(className AnimationPlayer, "get_current_animation", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setAssignedAnimation*(self: AnimationPlayer; animation: String): void =
   expandMethodBind(className AnimationPlayer, "set_assigned_animation", 83702148)
-  var `?param` = [getPtr animation]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr animation])
 
 proc getAssignedAnimation*(self: AnimationPlayer): String =
   expandMethodBind(className AnimationPlayer, "get_assigned_animation", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc queue*(self: AnimationPlayer; name: StringName): void =
   expandMethodBind(className AnimationPlayer, "queue", 3304788590)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getQueue*(self: AnimationPlayer): PackedStringArray =
   expandMethodBind(className AnimationPlayer, "get_queue", 2981934095)
   var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
 proc clearQueue*(self: AnimationPlayer): void =
   expandMethodBind(className AnimationPlayer, "clear_queue", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setSpeedScale*(self: AnimationPlayer; speed: Float): void =
   expandMethodBind(className AnimationPlayer, "set_speed_scale", 373806689)
-  var `?param` = [getPtr speed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr speed])
 
 proc getSpeedScale*(self: AnimationPlayer): Float =
   expandMethodBind(className AnimationPlayer, "get_speed_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc getPlayingSpeed*(self: AnimationPlayer): Float =
   expandMethodBind(className AnimationPlayer, "get_playing_speed", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAutoplay*(self: AnimationPlayer; name: String): void =
   expandMethodBind(className AnimationPlayer, "set_autoplay", 83702148)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getAutoplay*(self: AnimationPlayer): String =
   expandMethodBind(className AnimationPlayer, "get_autoplay", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setMovieQuitOnFinishEnabled*(self: AnimationPlayer; enabled: bool): void =
   expandMethodBind(className AnimationPlayer, "set_movie_quit_on_finish_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isMovieQuitOnFinishEnabled*(self: AnimationPlayer): bool =
   expandMethodBind(className AnimationPlayer, "is_movie_quit_on_finish_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getCurrentAnimationPosition*(self: AnimationPlayer): float64 =
   expandMethodBind(className AnimationPlayer, "get_current_animation_position", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc getCurrentAnimationLength*(self: AnimationPlayer): float64 =
   expandMethodBind(className AnimationPlayer, "get_current_animation_length", 1740695150)
   var ret: encoded float64
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
 proc seek*(self: AnimationPlayer; seconds: float64; update: bool = false; updateOnly: bool = false): void =
   expandMethodBind(className AnimationPlayer, "seek", 1807872683)
-  var `?param` = [getPtr seconds, getPtr update, getPtr updateOnly]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr seconds, getPtr update, getPtr updateOnly])
 
 proc setProcessCallback*(self: AnimationPlayer; mode: AnimationPlayer_AnimationProcessCallback): void =
   expandMethodBind(className AnimationPlayer, "set_process_callback", 1663839457)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getProcessCallback*(self: AnimationPlayer): AnimationPlayer_AnimationProcessCallback =
   expandMethodBind(className AnimationPlayer, "get_process_callback", 4207496604)
   var ret: encoded AnimationPlayer_AnimationProcessCallback
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AnimationPlayer_AnimationProcessCallback)
 
 proc setMethodCallMode*(self: AnimationPlayer; mode: AnimationPlayer_AnimationMethodCallMode): void =
   expandMethodBind(className AnimationPlayer, "set_method_call_mode", 3413514846)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getMethodCallMode*(self: AnimationPlayer): AnimationPlayer_AnimationMethodCallMode =
   expandMethodBind(className AnimationPlayer, "get_method_call_mode", 3583380054)
   var ret: encoded AnimationPlayer_AnimationMethodCallMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AnimationPlayer_AnimationMethodCallMode)
 
 proc setRoot*(self: AnimationPlayer; path: NodePath): void =
   expandMethodBind(className AnimationPlayer, "set_root", 1348162250)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getRoot*(self: AnimationPlayer): NodePath =
   expandMethodBind(className AnimationPlayer, "get_root", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 template currentAnimation*(self: AnimationPlayer): untyped = self.getCurrentAnimation()

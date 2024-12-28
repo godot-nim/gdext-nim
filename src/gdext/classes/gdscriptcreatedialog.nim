@@ -6,8 +6,7 @@ import gdconfirmationdialog; export gdconfirmationdialog
 
 proc config*(self: ScriptCreateDialog; inherits: String; path: String; builtInEnabled: bool = true; loadEnabled: bool = true): void =
   expandMethodBind(className ScriptCreateDialog, "config", 869314288)
-  var `?param` = [getPtr inherits, getPtr path, getPtr builtInEnabled, getPtr loadEnabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr inherits, getPtr path, getPtr builtInEnabled, getPtr loadEnabled])
 
 const ScriptCreateDialog_vmap =
   ConfirmationDialog.vmap.concat initTable[string, string]()

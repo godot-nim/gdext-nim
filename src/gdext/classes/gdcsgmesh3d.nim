@@ -6,24 +6,22 @@ import gdcsgprimitive3d; export gdcsgprimitive3d
 
 proc setMesh*(self: CSGMesh3D; mesh: gdref Mesh): void =
   expandMethodBind(className CSGMesh3D, "set_mesh", 194775623)
-  var `?param` = [getPtr mesh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mesh])
 
 proc getMesh*(self: CSGMesh3D): gdref Mesh =
   expandMethodBind(className CSGMesh3D, "get_mesh", 4081188045)
   var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
 proc setMaterial*(self: CSGMesh3D; material: gdref Material): void =
   expandMethodBind(className CSGMesh3D, "set_material", 2757459619)
-  var `?param` = [getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr material])
 
 proc getMaterial*(self: CSGMesh3D): gdref Material =
   expandMethodBind(className CSGMesh3D, "get_material", 5934680)
   var ret: encoded gdref Material
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
 template mesh*(self: CSGMesh3D): untyped = self.getMesh()

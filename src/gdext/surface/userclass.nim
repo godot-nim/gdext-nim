@@ -3,11 +3,8 @@ import std/sets
 import std/tables
 
 import gdext/buildconf
+import gdext/gdinterface/[extracommands, objects, classDB]
 
-import gdext/dirty/gdextensioninterface
-import gdext/core/commandindex
-import gdext/core/builtinindex
-import gdext/core/extracommands
 import gdext/core/gdclass
 
 import gdext/core/userclass/contracts
@@ -63,8 +60,8 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
 
 proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
   let class = createClass[T](p_object)
-  interfaceObjectSetInstance(p_object, addr classname T, cast[pointer](class))
-  interfaceObjectSetInstanceBinding(p_object, environment.library, cast[pointer](class), addr T.callbacks)
+  p_object.setInstance(classname T, class)
+  p_object.setInstanceBinding(class, addr T.callbacks)
   result = cast[pointer](class)
   when Dev.debugCallbacks:
     privateAccess Object
@@ -132,7 +129,7 @@ var registered: HashSet[StringName]
 var plugins: HashSet[StringName]
 proc register*(T: typedesc) =
   let info = T.creationInfo(false, false)
-  interface_ClassDB_registerExtensionClass3(environment.library, addr className(T), addr className(T.Super), addr info)
+  classDB.register(className(T), className(T.Super), addr info)
   processExports T
   invoke Contract[T]
   when T is EditorPlugin:
@@ -144,4 +141,4 @@ proc unregisterAll* =
   for name in plugins:
     interface_Editor_removePlugin addr name
   for name in registered:
-    interface_ClassDB_unregister_extension_class(environment.library, addr name)
+    classDB.unregister(name)

@@ -6,123 +6,112 @@ import gdmaterial; export gdmaterial
 
 proc setRayleighCoefficient*(self: PhysicalSkyMaterial; rayleigh: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_rayleigh_coefficient", 373806689)
-  var `?param` = [getPtr rayleigh]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rayleigh])
 
 proc getRayleighCoefficient*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_rayleigh_coefficient", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRayleighColor*(self: PhysicalSkyMaterial; color: Color): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_rayleigh_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getRayleighColor*(self: PhysicalSkyMaterial): Color =
   expandMethodBind(className PhysicalSkyMaterial, "get_rayleigh_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setMieCoefficient*(self: PhysicalSkyMaterial; mie: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_mie_coefficient", 373806689)
-  var `?param` = [getPtr mie]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mie])
 
 proc getMieCoefficient*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_mie_coefficient", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMieEccentricity*(self: PhysicalSkyMaterial; eccentricity: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_mie_eccentricity", 373806689)
-  var `?param` = [getPtr eccentricity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr eccentricity])
 
 proc getMieEccentricity*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_mie_eccentricity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMieColor*(self: PhysicalSkyMaterial; color: Color): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_mie_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getMieColor*(self: PhysicalSkyMaterial): Color =
   expandMethodBind(className PhysicalSkyMaterial, "get_mie_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setTurbidity*(self: PhysicalSkyMaterial; turbidity: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_turbidity", 373806689)
-  var `?param` = [getPtr turbidity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr turbidity])
 
 proc getTurbidity*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_turbidity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSunDiskScale*(self: PhysicalSkyMaterial; scale: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_sun_disk_scale", 373806689)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getSunDiskScale*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_sun_disk_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setGroundColor*(self: PhysicalSkyMaterial; color: Color): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_ground_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getGroundColor*(self: PhysicalSkyMaterial): Color =
   expandMethodBind(className PhysicalSkyMaterial, "get_ground_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setEnergyMultiplier*(self: PhysicalSkyMaterial; multiplier: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_energy_multiplier", 373806689)
-  var `?param` = [getPtr multiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr multiplier])
 
 proc getEnergyMultiplier*(self: PhysicalSkyMaterial): Float =
   expandMethodBind(className PhysicalSkyMaterial, "get_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setUseDebanding*(self: PhysicalSkyMaterial; useDebanding: bool): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_use_debanding", 2586408642)
-  var `?param` = [getPtr useDebanding]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr useDebanding])
 
 proc getUseDebanding*(self: PhysicalSkyMaterial): bool =
   expandMethodBind(className PhysicalSkyMaterial, "get_use_debanding", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNightSky*(self: PhysicalSkyMaterial; nightSky: gdref Texture2D): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_night_sky", 4051416890)
-  var `?param` = [getPtr nightSky]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr nightSky])
 
 proc getNightSky*(self: PhysicalSkyMaterial): gdref Texture2D =
   expandMethodBind(className PhysicalSkyMaterial, "get_night_sky", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 template rayleighCoefficient*(self: PhysicalSkyMaterial): untyped = self.getRayleighCoefficient()

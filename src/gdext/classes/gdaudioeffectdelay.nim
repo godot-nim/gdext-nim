@@ -6,145 +6,132 @@ import gdaudioeffect; export gdaudioeffect
 
 proc setDry*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_dry", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getDry*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_dry", 191475506)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap1Active*(self: AudioEffectDelay; amount: bool): void =
   expandMethodBind(className AudioEffectDelay, "set_tap1_active", 2586408642)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc isTap1Active*(self: AudioEffectDelay): bool =
   expandMethodBind(className AudioEffectDelay, "is_tap1_active", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTap1DelayMs*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap1_delay_ms", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap1DelayMs*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap1_delay_ms", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap1LevelDb*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap1_level_db", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap1LevelDb*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap1_level_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap1Pan*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap1_pan", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap1Pan*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap1_pan", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap2Active*(self: AudioEffectDelay; amount: bool): void =
   expandMethodBind(className AudioEffectDelay, "set_tap2_active", 2586408642)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc isTap2Active*(self: AudioEffectDelay): bool =
   expandMethodBind(className AudioEffectDelay, "is_tap2_active", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTap2DelayMs*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap2_delay_ms", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap2DelayMs*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap2_delay_ms", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap2LevelDb*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap2_level_db", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap2LevelDb*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap2_level_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTap2Pan*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_tap2_pan", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getTap2Pan*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_tap2_pan", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFeedbackActive*(self: AudioEffectDelay; amount: bool): void =
   expandMethodBind(className AudioEffectDelay, "set_feedback_active", 2586408642)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc isFeedbackActive*(self: AudioEffectDelay): bool =
   expandMethodBind(className AudioEffectDelay, "is_feedback_active", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setFeedbackDelayMs*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_feedback_delay_ms", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getFeedbackDelayMs*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_feedback_delay_ms", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFeedbackLevelDb*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_feedback_level_db", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getFeedbackLevelDb*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_feedback_level_db", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFeedbackLowpass*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_feedback_lowpass", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getFeedbackLowpass*(self: AudioEffectDelay): Float =
   expandMethodBind(className AudioEffectDelay, "get_feedback_lowpass", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template dry*(self: AudioEffectDelay): untyped = self.getDry()

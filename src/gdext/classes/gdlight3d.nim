@@ -6,163 +6,148 @@ import gdvisualinstance3d; export gdvisualinstance3d
 
 proc setEditorOnly*(self: Light3D; editorOnly: bool): void =
   expandMethodBind(className Light3D, "set_editor_only", 2586408642)
-  var `?param` = [getPtr editorOnly]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr editorOnly])
 
 proc isEditorOnly*(self: Light3D): bool =
   expandMethodBind(className Light3D, "is_editor_only", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setParam*(self: Light3D; param: Light3D_Param; value: Float): void =
   expandMethodBind(className Light3D, "set_param", 1722734213)
-  var `?param` = [getPtr param, getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr value])
 
 proc getParam*(self: Light3D; param: Light3D_Param): Float =
   expandMethodBind(className Light3D, "get_param", 1844084987)
-  var `?param` = [getPtr param]
   var ret: encoded Float
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Float)
 
 proc setShadow*(self: Light3D; enabled: bool): void =
   expandMethodBind(className Light3D, "set_shadow", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc hasShadow*(self: Light3D): bool =
   expandMethodBind(className Light3D, "has_shadow", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setNegative*(self: Light3D; enabled: bool): void =
   expandMethodBind(className Light3D, "set_negative", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isNegative*(self: Light3D): bool =
   expandMethodBind(className Light3D, "is_negative", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCullMask*(self: Light3D; cullMask: uint32): void =
   expandMethodBind(className Light3D, "set_cull_mask", 1286410249)
-  var `?param` = [getPtr cullMask]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr cullMask])
 
 proc getCullMask*(self: Light3D): uint32 =
   expandMethodBind(className Light3D, "get_cull_mask", 3905245786)
   var ret: encoded uint32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
 proc setEnableDistanceFade*(self: Light3D; enable: bool): void =
   expandMethodBind(className Light3D, "set_enable_distance_fade", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isDistanceFadeEnabled*(self: Light3D): bool =
   expandMethodBind(className Light3D, "is_distance_fade_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDistanceFadeBegin*(self: Light3D; distance: Float): void =
   expandMethodBind(className Light3D, "set_distance_fade_begin", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeBegin*(self: Light3D): Float =
   expandMethodBind(className Light3D, "get_distance_fade_begin", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDistanceFadeShadow*(self: Light3D; distance: Float): void =
   expandMethodBind(className Light3D, "set_distance_fade_shadow", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeShadow*(self: Light3D): Float =
   expandMethodBind(className Light3D, "get_distance_fade_shadow", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDistanceFadeLength*(self: Light3D; distance: Float): void =
   expandMethodBind(className Light3D, "set_distance_fade_length", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeLength*(self: Light3D): Float =
   expandMethodBind(className Light3D, "get_distance_fade_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setColor*(self: Light3D; color: Color): void =
   expandMethodBind(className Light3D, "set_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getColor*(self: Light3D): Color =
   expandMethodBind(className Light3D, "get_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setShadowReverseCullFace*(self: Light3D; enable: bool): void =
   expandMethodBind(className Light3D, "set_shadow_reverse_cull_face", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getShadowReverseCullFace*(self: Light3D): bool =
   expandMethodBind(className Light3D, "get_shadow_reverse_cull_face", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setBakeMode*(self: Light3D; bakeMode: Light3D_BakeMode): void =
   expandMethodBind(className Light3D, "set_bake_mode", 37739303)
-  var `?param` = [getPtr bakeMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr bakeMode])
 
 proc getBakeMode*(self: Light3D): Light3D_BakeMode =
   expandMethodBind(className Light3D, "get_bake_mode", 371737608)
   var ret: encoded Light3D_BakeMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Light3D_BakeMode)
 
 proc setProjector*(self: Light3D; projector: gdref Texture2D): void =
   expandMethodBind(className Light3D, "set_projector", 4051416890)
-  var `?param` = [getPtr projector]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr projector])
 
 proc getProjector*(self: Light3D): gdref Texture2D =
   expandMethodBind(className Light3D, "get_projector", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setTemperature*(self: Light3D; temperature: Float): void =
   expandMethodBind(className Light3D, "set_temperature", 373806689)
-  var `?param` = [getPtr temperature]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr temperature])
 
 proc getTemperature*(self: Light3D): Float =
   expandMethodBind(className Light3D, "get_temperature", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc getCorrelatedColor*(self: Light3D): Color =
   expandMethodBind(className Light3D, "get_correlated_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 template lightIntensityLumens*(self: Light3D): untyped = self.getParam(Light3D_Param(20))

@@ -6,35 +6,32 @@ import gdresource; export gdresource
 
 proc setClosed*(self: OccluderPolygon2D; closed: bool): void =
   expandMethodBind(className OccluderPolygon2D, "set_closed", 2586408642)
-  var `?param` = [getPtr closed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr closed])
 
 proc isClosed*(self: OccluderPolygon2D): bool =
   expandMethodBind(className OccluderPolygon2D, "is_closed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setCullMode*(self: OccluderPolygon2D; cullMode: OccluderPolygon2D_CullMode): void =
   expandMethodBind(className OccluderPolygon2D, "set_cull_mode", 3500863002)
-  var `?param` = [getPtr cullMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr cullMode])
 
 proc getCullMode*(self: OccluderPolygon2D): OccluderPolygon2D_CullMode =
   expandMethodBind(className OccluderPolygon2D, "get_cull_mode", 33931036)
   var ret: encoded OccluderPolygon2D_CullMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OccluderPolygon2D_CullMode)
 
 proc setPolygon*(self: OccluderPolygon2D; polygon: PackedVector2Array): void =
   expandMethodBind(className OccluderPolygon2D, "set_polygon", 1509147220)
-  var `?param` = [getPtr polygon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr polygon])
 
 proc getPolygon*(self: OccluderPolygon2D): PackedVector2Array =
   expandMethodBind(className OccluderPolygon2D, "get_polygon", 2961356807)
   var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
 template closed*(self: OccluderPolygon2D): untyped = self.isClosed()

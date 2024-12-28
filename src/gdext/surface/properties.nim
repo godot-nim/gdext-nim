@@ -1,12 +1,9 @@
 from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
-import gdext/dirty/gdextensioninterface
+import gdext/gdinterface/[classDB, extracommands]
 import gdext/utils/[macros, staticevents]
-import gdext/core/commandindex
-import gdext/core/extracommands
 import gdext/core/gdclass
-import gdext/core/builtinindex
 
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
@@ -38,12 +35,11 @@ import gdext/gen/[globalenums, builtinclasses, classindex]
 
 proc register_property_internal*(
       info: PropertyInfo;
-      typ: ptr StringName;
-      getter: ptr StringName = addr StringName.empty;
-      setter: ptr StringName = addr StringName.empty;
+      typ: StringName;
+      getter: StringName = StringName.empty;
+      setter: StringName = StringName.empty;
     ) =
-  interface_ClassDB_registerExtensionClassProperty(
-    environment.library, typ, addr info, setter, getter)
+  classDB.registerProperty(typ, addr info, setter, getter)
 
 macro strlit(x): string = newlit $x
 
@@ -67,25 +63,12 @@ template register_property*(
   when proptyp is enum:
     registerEnum(typ, proptyp)
   execOnDef(name, typ):
-    let p_name = stringName strlit name
-    let p_getter: StringName = getter
-    let p_setter: StringName = setter
-    let p_hintstring = hintstring
     register_property_internal(
-      propertyInfo(proptyp, addr p_name, hint, addr p_hintstring, usage),
-      addr className typ, addr p_getter, addr p_setter)
+      propertyInfo(proptyp, stringName strlit name, hint, hintstring, usage),
+      className typ, getter, setter)
 
 
-macro gdname*(P: proc): string =
-  for pragma in P.getImpl.pragma:
-    case pragma.kind
-    of nnkExprColonExpr, nnkCall:
-      if pragma[0].eqIdent "name":
-        return pragma[1]
-    else:
-      discard
-
-  return newLit $P
+macro gdname*(P: proc): string = P.getPragmaVal("name") or newLit $P
 
 macro register_property*[T: SomeUserClass; P: SomeProperty](
       typ: typedesc[T];
@@ -143,23 +126,16 @@ macro register_property_iden*(
 
 template gdexport_category*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
   execOnDef(name, typ):
-    let p_name = stringName strlit name
     register_property_internal(
-      propertyInfo(VariantTypeNil, addr p_name, usage = {propertyUsageCategory}), addr className typ)
+      propertyInfo(VariantTypeNil, stringName strlit name, usage = {propertyUsageCategory}), className typ)
 
 template gdexport_group*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
   execOnDef(name, typ):
-    let n = gdstring strlit name
-    let p = prefix
-    interface_ClassDB_registerExtensionClassPropertyGroup(environment.library,
-      addr className(typ), addr n, addr p)
+    classDB.registerPropertyGroup(className(typ), gdstring strlit name, prefix)
 
 template gdexport_subgroup*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
   execOnDef(name, typ):
-    let n = gdstring strlit name
-    let p = prefix
-    interface_ClassDB_registerExtensionClassPropertySubGroup(environment.library,
-      addr className(typ), addr n, addr p)
+    classDB.registerPropertySubGroup(className(typ), gdstring strlit name, prefix)
 
 template gdexport_custom*[T: SomeUserClass; S: SomeProperty](
       name;

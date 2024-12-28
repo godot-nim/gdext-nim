@@ -6,753 +6,682 @@ import gdmaterial; export gdmaterial
 
 proc setAlbedo*(self: BaseMaterial3D; albedo: Color): void =
   expandMethodBind(className BaseMaterial3D, "set_albedo", 2920490490)
-  var `?param` = [getPtr albedo]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr albedo])
 
 proc getAlbedo*(self: BaseMaterial3D): Color =
   expandMethodBind(className BaseMaterial3D, "get_albedo", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setTransparency*(self: BaseMaterial3D; transparency: BaseMaterial3D_Transparency): void =
   expandMethodBind(className BaseMaterial3D, "set_transparency", 3435651667)
-  var `?param` = [getPtr transparency]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr transparency])
 
 proc getTransparency*(self: BaseMaterial3D): BaseMaterial3D_Transparency =
   expandMethodBind(className BaseMaterial3D, "get_transparency", 990903061)
   var ret: encoded BaseMaterial3D_Transparency
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_Transparency)
 
 proc setAlphaAntialiasing*(self: BaseMaterial3D; alphaAa: BaseMaterial3D_AlphaAntiAliasing): void =
   expandMethodBind(className BaseMaterial3D, "set_alpha_antialiasing", 3212649852)
-  var `?param` = [getPtr alphaAa]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr alphaAa])
 
 proc getAlphaAntialiasing*(self: BaseMaterial3D): BaseMaterial3D_AlphaAntiAliasing =
   expandMethodBind(className BaseMaterial3D, "get_alpha_antialiasing", 2889939400)
   var ret: encoded BaseMaterial3D_AlphaAntiAliasing
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_AlphaAntiAliasing)
 
 proc setAlphaAntialiasingEdge*(self: BaseMaterial3D; edge: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_alpha_antialiasing_edge", 373806689)
-  var `?param` = [getPtr edge]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr edge])
 
 proc getAlphaAntialiasingEdge*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_alpha_antialiasing_edge", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setShadingMode*(self: BaseMaterial3D; shadingMode: BaseMaterial3D_ShadingMode): void =
   expandMethodBind(className BaseMaterial3D, "set_shading_mode", 3368750322)
-  var `?param` = [getPtr shadingMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shadingMode])
 
 proc getShadingMode*(self: BaseMaterial3D): BaseMaterial3D_ShadingMode =
   expandMethodBind(className BaseMaterial3D, "get_shading_mode", 2132070559)
   var ret: encoded BaseMaterial3D_ShadingMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_ShadingMode)
 
 proc setSpecular*(self: BaseMaterial3D; specular: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_specular", 373806689)
-  var `?param` = [getPtr specular]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr specular])
 
 proc getSpecular*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_specular", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMetallic*(self: BaseMaterial3D; metallic: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_metallic", 373806689)
-  var `?param` = [getPtr metallic]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr metallic])
 
 proc getMetallic*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_metallic", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRoughness*(self: BaseMaterial3D; roughness: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_roughness", 373806689)
-  var `?param` = [getPtr roughness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr roughness])
 
 proc getRoughness*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_roughness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmission*(self: BaseMaterial3D; emission: Color): void =
   expandMethodBind(className BaseMaterial3D, "set_emission", 2920490490)
-  var `?param` = [getPtr emission]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr emission])
 
 proc getEmission*(self: BaseMaterial3D): Color =
   expandMethodBind(className BaseMaterial3D, "get_emission", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setEmissionEnergyMultiplier*(self: BaseMaterial3D; emissionEnergyMultiplier: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_emission_energy_multiplier", 373806689)
-  var `?param` = [getPtr emissionEnergyMultiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr emissionEnergyMultiplier])
 
 proc getEmissionEnergyMultiplier*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_emission_energy_multiplier", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionIntensity*(self: BaseMaterial3D; emissionEnergyMultiplier: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_emission_intensity", 373806689)
-  var `?param` = [getPtr emissionEnergyMultiplier]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr emissionEnergyMultiplier])
 
 proc getEmissionIntensity*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_emission_intensity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setNormalScale*(self: BaseMaterial3D; normalScale: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_normal_scale", 373806689)
-  var `?param` = [getPtr normalScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr normalScale])
 
 proc getNormalScale*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_normal_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRim*(self: BaseMaterial3D; rim: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_rim", 373806689)
-  var `?param` = [getPtr rim]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rim])
 
 proc getRim*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_rim", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRimTint*(self: BaseMaterial3D; rimTint: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_rim_tint", 373806689)
-  var `?param` = [getPtr rimTint]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rimTint])
 
 proc getRimTint*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_rim_tint", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setClearcoat*(self: BaseMaterial3D; clearcoat: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_clearcoat", 373806689)
-  var `?param` = [getPtr clearcoat]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clearcoat])
 
 proc getClearcoat*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_clearcoat", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setClearcoatRoughness*(self: BaseMaterial3D; clearcoatRoughness: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_clearcoat_roughness", 373806689)
-  var `?param` = [getPtr clearcoatRoughness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr clearcoatRoughness])
 
 proc getClearcoatRoughness*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_clearcoat_roughness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAnisotropy*(self: BaseMaterial3D; anisotropy: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_anisotropy", 373806689)
-  var `?param` = [getPtr anisotropy]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr anisotropy])
 
 proc getAnisotropy*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_anisotropy", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setHeightmapScale*(self: BaseMaterial3D; heightmapScale: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_scale", 373806689)
-  var `?param` = [getPtr heightmapScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr heightmapScale])
 
 proc getHeightmapScale*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_heightmap_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setSubsurfaceScatteringStrength*(self: BaseMaterial3D; strength: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_subsurface_scattering_strength", 373806689)
-  var `?param` = [getPtr strength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr strength])
 
 proc getSubsurfaceScatteringStrength*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_subsurface_scattering_strength", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTransmittanceColor*(self: BaseMaterial3D; color: Color): void =
   expandMethodBind(className BaseMaterial3D, "set_transmittance_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getTransmittanceColor*(self: BaseMaterial3D): Color =
   expandMethodBind(className BaseMaterial3D, "get_transmittance_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setTransmittanceDepth*(self: BaseMaterial3D; depth: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_transmittance_depth", 373806689)
-  var `?param` = [getPtr depth]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr depth])
 
 proc getTransmittanceDepth*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_transmittance_depth", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setTransmittanceBoost*(self: BaseMaterial3D; boost: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_transmittance_boost", 373806689)
-  var `?param` = [getPtr boost]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr boost])
 
 proc getTransmittanceBoost*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_transmittance_boost", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBacklight*(self: BaseMaterial3D; backlight: Color): void =
   expandMethodBind(className BaseMaterial3D, "set_backlight", 2920490490)
-  var `?param` = [getPtr backlight]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr backlight])
 
 proc getBacklight*(self: BaseMaterial3D): Color =
   expandMethodBind(className BaseMaterial3D, "get_backlight", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 proc setRefraction*(self: BaseMaterial3D; refraction: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_refraction", 373806689)
-  var `?param` = [getPtr refraction]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr refraction])
 
 proc getRefraction*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_refraction", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setPointSize*(self: BaseMaterial3D; pointSize: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_point_size", 373806689)
-  var `?param` = [getPtr pointSize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr pointSize])
 
 proc getPointSize*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_point_size", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDetailUv*(self: BaseMaterial3D; detailUv: BaseMaterial3D_DetailUV): void =
   expandMethodBind(className BaseMaterial3D, "set_detail_uv", 456801921)
-  var `?param` = [getPtr detailUv]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr detailUv])
 
 proc getDetailUv*(self: BaseMaterial3D): BaseMaterial3D_DetailUV =
   expandMethodBind(className BaseMaterial3D, "get_detail_uv", 2306920512)
   var ret: encoded BaseMaterial3D_DetailUV
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_DetailUV)
 
 proc setBlendMode*(self: BaseMaterial3D; blendMode: BaseMaterial3D_BlendMode): void =
   expandMethodBind(className BaseMaterial3D, "set_blend_mode", 2830186259)
-  var `?param` = [getPtr blendMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr blendMode])
 
 proc getBlendMode*(self: BaseMaterial3D): BaseMaterial3D_BlendMode =
   expandMethodBind(className BaseMaterial3D, "get_blend_mode", 4022690962)
   var ret: encoded BaseMaterial3D_BlendMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_BlendMode)
 
 proc setDepthDrawMode*(self: BaseMaterial3D; depthDrawMode: BaseMaterial3D_DepthDrawMode): void =
   expandMethodBind(className BaseMaterial3D, "set_depth_draw_mode", 1456584748)
-  var `?param` = [getPtr depthDrawMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr depthDrawMode])
 
 proc getDepthDrawMode*(self: BaseMaterial3D): BaseMaterial3D_DepthDrawMode =
   expandMethodBind(className BaseMaterial3D, "get_depth_draw_mode", 2578197639)
   var ret: encoded BaseMaterial3D_DepthDrawMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_DepthDrawMode)
 
 proc setCullMode*(self: BaseMaterial3D; cullMode: BaseMaterial3D_CullMode): void =
   expandMethodBind(className BaseMaterial3D, "set_cull_mode", 2338909218)
-  var `?param` = [getPtr cullMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr cullMode])
 
 proc getCullMode*(self: BaseMaterial3D): BaseMaterial3D_CullMode =
   expandMethodBind(className BaseMaterial3D, "get_cull_mode", 1941499586)
   var ret: encoded BaseMaterial3D_CullMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_CullMode)
 
 proc setDiffuseMode*(self: BaseMaterial3D; diffuseMode: BaseMaterial3D_DiffuseMode): void =
   expandMethodBind(className BaseMaterial3D, "set_diffuse_mode", 1045299638)
-  var `?param` = [getPtr diffuseMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr diffuseMode])
 
 proc getDiffuseMode*(self: BaseMaterial3D): BaseMaterial3D_DiffuseMode =
   expandMethodBind(className BaseMaterial3D, "get_diffuse_mode", 3973617136)
   var ret: encoded BaseMaterial3D_DiffuseMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_DiffuseMode)
 
 proc setSpecularMode*(self: BaseMaterial3D; specularMode: BaseMaterial3D_SpecularMode): void =
   expandMethodBind(className BaseMaterial3D, "set_specular_mode", 584737147)
-  var `?param` = [getPtr specularMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr specularMode])
 
 proc getSpecularMode*(self: BaseMaterial3D): BaseMaterial3D_SpecularMode =
   expandMethodBind(className BaseMaterial3D, "get_specular_mode", 2569953298)
   var ret: encoded BaseMaterial3D_SpecularMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_SpecularMode)
 
 proc setFlag*(self: BaseMaterial3D; flag: BaseMaterial3D_Flags; enable: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_flag", 3070159527)
-  var `?param` = [getPtr flag, getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flag, getPtr enable])
 
 proc getFlag*(self: BaseMaterial3D; flag: BaseMaterial3D_Flags): bool =
   expandMethodBind(className BaseMaterial3D, "get_flag", 1286410065)
-  var `?param` = [getPtr flag]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr flag], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTextureFilter*(self: BaseMaterial3D; mode: BaseMaterial3D_TextureFilter): void =
   expandMethodBind(className BaseMaterial3D, "set_texture_filter", 22904437)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getTextureFilter*(self: BaseMaterial3D): BaseMaterial3D_TextureFilter =
   expandMethodBind(className BaseMaterial3D, "get_texture_filter", 3289213076)
   var ret: encoded BaseMaterial3D_TextureFilter
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureFilter)
 
 proc setFeature*(self: BaseMaterial3D; feature: BaseMaterial3D_Feature; enable: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_feature", 2819288693)
-  var `?param` = [getPtr feature, getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr feature, getPtr enable])
 
 proc getFeature*(self: BaseMaterial3D; feature: BaseMaterial3D_Feature): bool =
   expandMethodBind(className BaseMaterial3D, "get_feature", 1965241794)
-  var `?param` = [getPtr feature]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr feature], addr ret)
   (addr ret).decode_result(bool)
 
 proc setTexture*(self: BaseMaterial3D; param: BaseMaterial3D_TextureParam; texture: gdref Texture2D): void =
   expandMethodBind(className BaseMaterial3D, "set_texture", 464208135)
-  var `?param` = [getPtr param, getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr param, getPtr texture])
 
 proc getTexture*(self: BaseMaterial3D; param: BaseMaterial3D_TextureParam): gdref Texture2D =
   expandMethodBind(className BaseMaterial3D, "get_texture", 329605813)
-  var `?param` = [getPtr param]
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setDetailBlendMode*(self: BaseMaterial3D; detailBlendMode: BaseMaterial3D_BlendMode): void =
   expandMethodBind(className BaseMaterial3D, "set_detail_blend_mode", 2830186259)
-  var `?param` = [getPtr detailBlendMode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr detailBlendMode])
 
 proc getDetailBlendMode*(self: BaseMaterial3D): BaseMaterial3D_BlendMode =
   expandMethodBind(className BaseMaterial3D, "get_detail_blend_mode", 4022690962)
   var ret: encoded BaseMaterial3D_BlendMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_BlendMode)
 
 proc setUv1Scale*(self: BaseMaterial3D; scale: Vector3): void =
   expandMethodBind(className BaseMaterial3D, "set_uv1_scale", 3460891852)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getUv1Scale*(self: BaseMaterial3D): Vector3 =
   expandMethodBind(className BaseMaterial3D, "get_uv1_scale", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setUv1Offset*(self: BaseMaterial3D; offset: Vector3): void =
   expandMethodBind(className BaseMaterial3D, "set_uv1_offset", 3460891852)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getUv1Offset*(self: BaseMaterial3D): Vector3 =
   expandMethodBind(className BaseMaterial3D, "get_uv1_offset", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setUv1TriplanarBlendSharpness*(self: BaseMaterial3D; sharpness: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_uv1_triplanar_blend_sharpness", 373806689)
-  var `?param` = [getPtr sharpness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sharpness])
 
 proc getUv1TriplanarBlendSharpness*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_uv1_triplanar_blend_sharpness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setUv2Scale*(self: BaseMaterial3D; scale: Vector3): void =
   expandMethodBind(className BaseMaterial3D, "set_uv2_scale", 3460891852)
-  var `?param` = [getPtr scale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr scale])
 
 proc getUv2Scale*(self: BaseMaterial3D): Vector3 =
   expandMethodBind(className BaseMaterial3D, "get_uv2_scale", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setUv2Offset*(self: BaseMaterial3D; offset: Vector3): void =
   expandMethodBind(className BaseMaterial3D, "set_uv2_offset", 3460891852)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getUv2Offset*(self: BaseMaterial3D): Vector3 =
   expandMethodBind(className BaseMaterial3D, "get_uv2_offset", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setUv2TriplanarBlendSharpness*(self: BaseMaterial3D; sharpness: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_uv2_triplanar_blend_sharpness", 373806689)
-  var `?param` = [getPtr sharpness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr sharpness])
 
 proc getUv2TriplanarBlendSharpness*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_uv2_triplanar_blend_sharpness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setBillboardMode*(self: BaseMaterial3D; mode: BaseMaterial3D_BillboardMode): void =
   expandMethodBind(className BaseMaterial3D, "set_billboard_mode", 4202036497)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getBillboardMode*(self: BaseMaterial3D): BaseMaterial3D_BillboardMode =
   expandMethodBind(className BaseMaterial3D, "get_billboard_mode", 1283840139)
   var ret: encoded BaseMaterial3D_BillboardMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_BillboardMode)
 
 proc setParticlesAnimHFrames*(self: BaseMaterial3D; frames: int32): void =
   expandMethodBind(className BaseMaterial3D, "set_particles_anim_h_frames", 1286410249)
-  var `?param` = [getPtr frames]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr frames])
 
 proc getParticlesAnimHFrames*(self: BaseMaterial3D): int32 =
   expandMethodBind(className BaseMaterial3D, "get_particles_anim_h_frames", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setParticlesAnimVFrames*(self: BaseMaterial3D; frames: int32): void =
   expandMethodBind(className BaseMaterial3D, "set_particles_anim_v_frames", 1286410249)
-  var `?param` = [getPtr frames]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr frames])
 
 proc getParticlesAnimVFrames*(self: BaseMaterial3D): int32 =
   expandMethodBind(className BaseMaterial3D, "get_particles_anim_v_frames", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setParticlesAnimLoop*(self: BaseMaterial3D; loop: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_particles_anim_loop", 2586408642)
-  var `?param` = [getPtr loop]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr loop])
 
 proc getParticlesAnimLoop*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "get_particles_anim_loop", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setHeightmapDeepParallax*(self: BaseMaterial3D; enable: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_deep_parallax", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isHeightmapDeepParallaxEnabled*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "is_heightmap_deep_parallax_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setHeightmapDeepParallaxMinLayers*(self: BaseMaterial3D; layer: int32): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_deep_parallax_min_layers", 1286410249)
-  var `?param` = [getPtr layer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layer])
 
 proc getHeightmapDeepParallaxMinLayers*(self: BaseMaterial3D): int32 =
   expandMethodBind(className BaseMaterial3D, "get_heightmap_deep_parallax_min_layers", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setHeightmapDeepParallaxMaxLayers*(self: BaseMaterial3D; layer: int32): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_deep_parallax_max_layers", 1286410249)
-  var `?param` = [getPtr layer]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr layer])
 
 proc getHeightmapDeepParallaxMaxLayers*(self: BaseMaterial3D): int32 =
   expandMethodBind(className BaseMaterial3D, "get_heightmap_deep_parallax_max_layers", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setHeightmapDeepParallaxFlipTangent*(self: BaseMaterial3D; flip: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_deep_parallax_flip_tangent", 2586408642)
-  var `?param` = [getPtr flip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flip])
 
 proc getHeightmapDeepParallaxFlipTangent*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "get_heightmap_deep_parallax_flip_tangent", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setHeightmapDeepParallaxFlipBinormal*(self: BaseMaterial3D; flip: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_heightmap_deep_parallax_flip_binormal", 2586408642)
-  var `?param` = [getPtr flip]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr flip])
 
 proc getHeightmapDeepParallaxFlipBinormal*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "get_heightmap_deep_parallax_flip_binormal", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setGrow*(self: BaseMaterial3D; amount: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_grow", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getGrow*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_grow", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setEmissionOperator*(self: BaseMaterial3D; operator: BaseMaterial3D_EmissionOperator): void =
   expandMethodBind(className BaseMaterial3D, "set_emission_operator", 3825128922)
-  var `?param` = [getPtr operator]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr operator])
 
 proc getEmissionOperator*(self: BaseMaterial3D): BaseMaterial3D_EmissionOperator =
   expandMethodBind(className BaseMaterial3D, "get_emission_operator", 974205018)
   var ret: encoded BaseMaterial3D_EmissionOperator
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_EmissionOperator)
 
 proc setAoLightAffect*(self: BaseMaterial3D; amount: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_ao_light_affect", 373806689)
-  var `?param` = [getPtr amount]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr amount])
 
 proc getAoLightAffect*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_ao_light_affect", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAlphaScissorThreshold*(self: BaseMaterial3D; threshold: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_alpha_scissor_threshold", 373806689)
-  var `?param` = [getPtr threshold]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr threshold])
 
 proc getAlphaScissorThreshold*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_alpha_scissor_threshold", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAlphaHashScale*(self: BaseMaterial3D; threshold: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_alpha_hash_scale", 373806689)
-  var `?param` = [getPtr threshold]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr threshold])
 
 proc getAlphaHashScale*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_alpha_hash_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setGrowEnabled*(self: BaseMaterial3D; enable: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_grow_enabled", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isGrowEnabled*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "is_grow_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setMetallicTextureChannel*(self: BaseMaterial3D; channel: BaseMaterial3D_TextureChannel): void =
   expandMethodBind(className BaseMaterial3D, "set_metallic_texture_channel", 744167988)
-  var `?param` = [getPtr channel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr channel])
 
 proc getMetallicTextureChannel*(self: BaseMaterial3D): BaseMaterial3D_TextureChannel =
   expandMethodBind(className BaseMaterial3D, "get_metallic_texture_channel", 568133867)
   var ret: encoded BaseMaterial3D_TextureChannel
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureChannel)
 
 proc setRoughnessTextureChannel*(self: BaseMaterial3D; channel: BaseMaterial3D_TextureChannel): void =
   expandMethodBind(className BaseMaterial3D, "set_roughness_texture_channel", 744167988)
-  var `?param` = [getPtr channel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr channel])
 
 proc getRoughnessTextureChannel*(self: BaseMaterial3D): BaseMaterial3D_TextureChannel =
   expandMethodBind(className BaseMaterial3D, "get_roughness_texture_channel", 568133867)
   var ret: encoded BaseMaterial3D_TextureChannel
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureChannel)
 
 proc setAoTextureChannel*(self: BaseMaterial3D; channel: BaseMaterial3D_TextureChannel): void =
   expandMethodBind(className BaseMaterial3D, "set_ao_texture_channel", 744167988)
-  var `?param` = [getPtr channel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr channel])
 
 proc getAoTextureChannel*(self: BaseMaterial3D): BaseMaterial3D_TextureChannel =
   expandMethodBind(className BaseMaterial3D, "get_ao_texture_channel", 568133867)
   var ret: encoded BaseMaterial3D_TextureChannel
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureChannel)
 
 proc setRefractionTextureChannel*(self: BaseMaterial3D; channel: BaseMaterial3D_TextureChannel): void =
   expandMethodBind(className BaseMaterial3D, "set_refraction_texture_channel", 744167988)
-  var `?param` = [getPtr channel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr channel])
 
 proc getRefractionTextureChannel*(self: BaseMaterial3D): BaseMaterial3D_TextureChannel =
   expandMethodBind(className BaseMaterial3D, "get_refraction_texture_channel", 568133867)
   var ret: encoded BaseMaterial3D_TextureChannel
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_TextureChannel)
 
 proc setProximityFadeEnabled*(self: BaseMaterial3D; enabled: bool): void =
   expandMethodBind(className BaseMaterial3D, "set_proximity_fade_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isProximityFadeEnabled*(self: BaseMaterial3D): bool =
   expandMethodBind(className BaseMaterial3D, "is_proximity_fade_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setProximityFadeDistance*(self: BaseMaterial3D; distance: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_proximity_fade_distance", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getProximityFadeDistance*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_proximity_fade_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMsdfPixelRange*(self: BaseMaterial3D; range: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_msdf_pixel_range", 373806689)
-  var `?param` = [getPtr range]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr range])
 
 proc getMsdfPixelRange*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_msdf_pixel_range", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMsdfOutlineSize*(self: BaseMaterial3D; size: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_msdf_outline_size", 373806689)
-  var `?param` = [getPtr size]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr size])
 
 proc getMsdfOutlineSize*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_msdf_outline_size", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDistanceFade*(self: BaseMaterial3D; mode: BaseMaterial3D_DistanceFadeMode): void =
   expandMethodBind(className BaseMaterial3D, "set_distance_fade", 1379478617)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getDistanceFade*(self: BaseMaterial3D): BaseMaterial3D_DistanceFadeMode =
   expandMethodBind(className BaseMaterial3D, "get_distance_fade", 2694575734)
   var ret: encoded BaseMaterial3D_DistanceFadeMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_DistanceFadeMode)
 
 proc setDistanceFadeMaxDistance*(self: BaseMaterial3D; distance: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_distance_fade_max_distance", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeMaxDistance*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_distance_fade_max_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setDistanceFadeMinDistance*(self: BaseMaterial3D; distance: Float): void =
   expandMethodBind(className BaseMaterial3D, "set_distance_fade_min_distance", 373806689)
-  var `?param` = [getPtr distance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr distance])
 
 proc getDistanceFadeMinDistance*(self: BaseMaterial3D): Float =
   expandMethodBind(className BaseMaterial3D, "get_distance_fade_min_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template transparency*(self: BaseMaterial3D): untyped = self.getTransparency()

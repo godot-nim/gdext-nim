@@ -6,35 +6,32 @@ import gdlight2d; export gdlight2d
 
 proc setTexture*(self: PointLight2D; texture: gdref Texture2D): void =
   expandMethodBind(className PointLight2D, "set_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: PointLight2D): gdref Texture2D =
   expandMethodBind(className PointLight2D, "get_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setTextureOffset*(self: PointLight2D; textureOffset: Vector2): void =
   expandMethodBind(className PointLight2D, "set_texture_offset", 743155724)
-  var `?param` = [getPtr textureOffset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr textureOffset])
 
 proc getTextureOffset*(self: PointLight2D): Vector2 =
   expandMethodBind(className PointLight2D, "get_texture_offset", 3341600327)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc setTextureScale*(self: PointLight2D; textureScale: Float): void =
   expandMethodBind(className PointLight2D, "set_texture_scale", 373806689)
-  var `?param` = [getPtr textureScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr textureScale])
 
 proc getTextureScale*(self: PointLight2D): Float =
   expandMethodBind(className PointLight2D, "get_texture_scale", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template texture*(self: PointLight2D): untyped = self.getTexture()

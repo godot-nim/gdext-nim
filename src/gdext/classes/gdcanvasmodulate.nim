@@ -6,13 +6,12 @@ import gdnode2d; export gdnode2d
 
 proc setColor*(self: CanvasModulate; color: Color): void =
   expandMethodBind(className CanvasModulate, "set_color", 2920490490)
-  var `?param` = [getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr color])
 
 proc getColor*(self: CanvasModulate): Color =
   expandMethodBind(className CanvasModulate, "get_color", 3444240500)
   var ret: encoded Color
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
 template color*(self: CanvasModulate): untyped = self.getColor()

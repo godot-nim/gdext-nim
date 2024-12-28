@@ -11,13 +11,12 @@ template instantiatePlayback_bind*(_: typedesc[VideoStream]): ClassCallVirtual =
 
 proc setFile*(self: VideoStream; file: String): void =
   expandMethodBind(className VideoStream, "set_file", 83702148)
-  var `?param` = [getPtr file]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr file])
 
 proc getFile*(self: VideoStream): String =
   expandMethodBind(className VideoStream, "get_file", 2841200299)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 template file*(self: VideoStream): untyped = self.getFile()

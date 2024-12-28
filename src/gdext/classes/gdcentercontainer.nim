@@ -6,13 +6,12 @@ import gdcontainer; export gdcontainer
 
 proc setUseTopLeft*(self: CenterContainer; enable: bool): void =
   expandMethodBind(className CenterContainer, "set_use_top_left", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc isUsingTopLeft*(self: CenterContainer): bool =
   expandMethodBind(className CenterContainer, "is_using_top_left", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template useTopLeft*(self: CenterContainer): untyped = self.isUsingTopLeft()

@@ -6,24 +6,22 @@ import gdvisibleonscreennotifier3d; export gdvisibleonscreennotifier3d
 
 proc setEnableMode*(self: VisibleOnScreenEnabler3D; mode: VisibleOnScreenEnabler3D_EnableMode): void =
   expandMethodBind(className VisibleOnScreenEnabler3D, "set_enable_mode", 320303646)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getEnableMode*(self: VisibleOnScreenEnabler3D): VisibleOnScreenEnabler3D_EnableMode =
   expandMethodBind(className VisibleOnScreenEnabler3D, "get_enable_mode", 3352990031)
   var ret: encoded VisibleOnScreenEnabler3D_EnableMode
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisibleOnScreenEnabler3D_EnableMode)
 
 proc setEnableNodePath*(self: VisibleOnScreenEnabler3D; path: NodePath): void =
   expandMethodBind(className VisibleOnScreenEnabler3D, "set_enable_node_path", 1348162250)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc getEnableNodePath*(self: VisibleOnScreenEnabler3D): NodePath =
   expandMethodBind(className VisibleOnScreenEnabler3D, "get_enable_node_path", 277076166)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 template enableMode*(self: VisibleOnScreenEnabler3D): untyped = self.getEnableMode()

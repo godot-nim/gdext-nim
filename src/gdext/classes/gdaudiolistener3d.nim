@@ -6,22 +6,22 @@ import gdnode3d; export gdnode3d
 
 proc makeCurrent*(self: AudioListener3D): void =
   expandMethodBind(className AudioListener3D, "make_current", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc clearCurrent*(self: AudioListener3D): void =
   expandMethodBind(className AudioListener3D, "clear_current", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc isCurrent*(self: AudioListener3D): bool =
   expandMethodBind(className AudioListener3D, "is_current", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getListenerTransform*(self: AudioListener3D): Transform3D =
   expandMethodBind(className AudioListener3D, "get_listener_transform", 3229777777)
   var ret: encoded Transform3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
 
 const AudioListener3D_vmap =

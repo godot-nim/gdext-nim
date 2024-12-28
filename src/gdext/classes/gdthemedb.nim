@@ -7,68 +7,63 @@ import gdobject; export gdobject
 proc getDefaultTheme*(self: ThemeDB): gdref Theme =
   expandMethodBind(className ThemeDB, "get_default_theme", 754276358)
   var ret: encoded gdref Theme
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Theme)
 
 proc getProjectTheme*(self: ThemeDB): gdref Theme =
   expandMethodBind(className ThemeDB, "get_project_theme", 754276358)
   var ret: encoded gdref Theme
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Theme)
 
 proc setFallbackBaseScale*(self: ThemeDB; baseScale: Float): void =
   expandMethodBind(className ThemeDB, "set_fallback_base_scale", 373806689)
-  var `?param` = [getPtr baseScale]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr baseScale])
 
 proc getFallbackBaseScale*(self: ThemeDB): Float =
   expandMethodBind(className ThemeDB, "get_fallback_base_scale", 191475506)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFallbackFont*(self: ThemeDB; font: gdref Font): void =
   expandMethodBind(className ThemeDB, "set_fallback_font", 1262170328)
-  var `?param` = [getPtr font]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr font])
 
 proc getFallbackFont*(self: ThemeDB): gdref Font =
   expandMethodBind(className ThemeDB, "get_fallback_font", 3656929885)
   var ret: encoded gdref Font
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Font)
 
 proc setFallbackFontSize*(self: ThemeDB; fontSize: int32): void =
   expandMethodBind(className ThemeDB, "set_fallback_font_size", 1286410249)
-  var `?param` = [getPtr fontSize]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr fontSize])
 
 proc getFallbackFontSize*(self: ThemeDB): int32 =
   expandMethodBind(className ThemeDB, "get_fallback_font_size", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFallbackIcon*(self: ThemeDB; icon: gdref Texture2D): void =
   expandMethodBind(className ThemeDB, "set_fallback_icon", 4051416890)
-  var `?param` = [getPtr icon]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr icon])
 
 proc getFallbackIcon*(self: ThemeDB): gdref Texture2D =
   expandMethodBind(className ThemeDB, "get_fallback_icon", 255860311)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setFallbackStylebox*(self: ThemeDB; stylebox: gdref StyleBox): void =
   expandMethodBind(className ThemeDB, "set_fallback_stylebox", 2797200388)
-  var `?param` = [getPtr stylebox]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr stylebox])
 
 proc getFallbackStylebox*(self: ThemeDB): gdref StyleBox =
   expandMethodBind(className ThemeDB, "get_fallback_stylebox", 496040854)
   var ret: encoded gdref StyleBox
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref StyleBox)
 
 template fallbackBaseScale*(self: ThemeDB): untyped = self.getFallbackBaseScale()

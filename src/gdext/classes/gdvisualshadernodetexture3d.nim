@@ -6,13 +6,12 @@ import gdvisualshadernodesample3d; export gdvisualshadernodesample3d
 
 proc setTexture*(self: VisualShaderNodeTexture3D; value: gdref Texture3D): void =
   expandMethodBind(className VisualShaderNodeTexture3D, "set_texture", 1188404210)
-  var `?param` = [getPtr value]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr value])
 
 proc getTexture*(self: VisualShaderNodeTexture3D): gdref Texture3D =
   expandMethodBind(className VisualShaderNodeTexture3D, "get_texture", 373985333)
   var ret: encoded gdref Texture3D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture3D)
 
 template texture*(self: VisualShaderNodeTexture3D): untyped = self.getTexture()

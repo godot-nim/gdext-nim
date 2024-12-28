@@ -6,40 +6,36 @@ import gdtexture2d; export gdtexture2d
 
 proc setWidth*(self: CurveXYZTexture; width: int32): void =
   expandMethodBind(className CurveXYZTexture, "set_width", 1286410249)
-  var `?param` = [getPtr width]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr width])
 
 proc setCurveX*(self: CurveXYZTexture; curve: gdref Curve): void =
   expandMethodBind(className CurveXYZTexture, "set_curve_x", 270443179)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getCurveX*(self: CurveXYZTexture): gdref Curve =
   expandMethodBind(className CurveXYZTexture, "get_curve_x", 2460114913)
   var ret: encoded gdref Curve
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Curve)
 
 proc setCurveY*(self: CurveXYZTexture; curve: gdref Curve): void =
   expandMethodBind(className CurveXYZTexture, "set_curve_y", 270443179)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getCurveY*(self: CurveXYZTexture): gdref Curve =
   expandMethodBind(className CurveXYZTexture, "get_curve_y", 2460114913)
   var ret: encoded gdref Curve
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Curve)
 
 proc setCurveZ*(self: CurveXYZTexture; curve: gdref Curve): void =
   expandMethodBind(className CurveXYZTexture, "set_curve_z", 270443179)
-  var `?param` = [getPtr curve]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr curve])
 
 proc getCurveZ*(self: CurveXYZTexture): gdref Curve =
   expandMethodBind(className CurveXYZTexture, "get_curve_z", 2460114913)
   var ret: encoded gdref Curve
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Curve)
 
 template width*(self: CurveXYZTexture): untyped = self.getWidth()

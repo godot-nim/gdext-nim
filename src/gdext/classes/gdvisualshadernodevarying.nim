@@ -6,24 +6,22 @@ import gdvisualshadernode; export gdvisualshadernode
 
 proc setVaryingName*(self: VisualShaderNodeVarying; name: String): void =
   expandMethodBind(className VisualShaderNodeVarying, "set_varying_name", 83702148)
-  var `?param` = [getPtr name]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name])
 
 proc getVaryingName*(self: VisualShaderNodeVarying): String =
   expandMethodBind(className VisualShaderNodeVarying, "get_varying_name", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc setVaryingType*(self: VisualShaderNodeVarying; `type`: VisualShader_VaryingType): void =
   expandMethodBind(className VisualShaderNodeVarying, "set_varying_type", 3565867981)
-  var `?param` = [getPtr `type`]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr `type`])
 
 proc getVaryingType*(self: VisualShaderNodeVarying): VisualShader_VaryingType =
   expandMethodBind(className VisualShaderNodeVarying, "get_varying_type", 523183580)
   var ret: encoded VisualShader_VaryingType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShader_VaryingType)
 
 template varyingName*(self: VisualShaderNodeVarying): untyped = self.getVaryingName()

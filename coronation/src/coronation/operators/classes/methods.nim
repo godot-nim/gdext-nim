@@ -109,22 +109,15 @@ proc methodbind(gdproc: GodotProc): Cloth = weave multiline:
   &"expandMethodBind(className {gdproc.self.typesym}, \"{gdproc.native_name}\", {get gdproc.hash})"
 
 proc weave(entry: ClassMethodPtrCallEntry): Cloth =
-  let
-    paramarray = "[" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
-    paramptr =
-      if entry.args.len == 0: "nil"
-      else: "addr `?param`[0]"
   var args: seq[string]
   if not entry.self.isStatic: args.add $entry.self.name
-  args.add paramptr
+  args.add "[" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
   if entry.result.typesym != TypeSym.Void: args.add "addr ret"
 
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
       entry.methodbind
-      if entry.args.len != 0:
-        &"var `?param` = {paramarray}"
       if entry.result.typesym != TypeSym.Void:
         &"var ret: encoded {weave entry.result}"
       &"methodbind.ptrcall({args.joinArg})"

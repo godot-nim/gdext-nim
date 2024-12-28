@@ -7,112 +7,102 @@ import gdresource; export gdresource
 proc getSkinRoot*(self: GLTFSkin): int32 =
   expandMethodBind(className GLTFSkin, "get_skin_root", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSkinRoot*(self: GLTFSkin; skinRoot: int32): void =
   expandMethodBind(className GLTFSkin, "set_skin_root", 1286410249)
-  var `?param` = [getPtr skinRoot]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr skinRoot])
 
 proc getJointsOriginal*(self: GLTFSkin): PackedInt32Array =
   expandMethodBind(className GLTFSkin, "get_joints_original", 969006518)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setJointsOriginal*(self: GLTFSkin; jointsOriginal: PackedInt32Array): void =
   expandMethodBind(className GLTFSkin, "set_joints_original", 3614634198)
-  var `?param` = [getPtr jointsOriginal]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointsOriginal])
 
 proc getInverseBinds*(self: GLTFSkin): TypedArray[Transform3D] =
   expandMethodBind(className GLTFSkin, "get_inverse_binds", 2915620761)
   var ret: encoded TypedArray[Transform3D]
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Transform3D])
 
 proc setInverseBinds*(self: GLTFSkin; inverseBinds: TypedArray[Transform3D]): void =
   expandMethodBind(className GLTFSkin, "set_inverse_binds", 381264803)
-  var `?param` = [getPtr inverseBinds]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr inverseBinds])
 
 proc getJoints*(self: GLTFSkin): PackedInt32Array =
   expandMethodBind(className GLTFSkin, "get_joints", 969006518)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setJoints*(self: GLTFSkin; joints: PackedInt32Array): void =
   expandMethodBind(className GLTFSkin, "set_joints", 3614634198)
-  var `?param` = [getPtr joints]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr joints])
 
 proc getNonJoints*(self: GLTFSkin): PackedInt32Array =
   expandMethodBind(className GLTFSkin, "get_non_joints", 969006518)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setNonJoints*(self: GLTFSkin; nonJoints: PackedInt32Array): void =
   expandMethodBind(className GLTFSkin, "set_non_joints", 3614634198)
-  var `?param` = [getPtr nonJoints]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr nonJoints])
 
 proc getRoots*(self: GLTFSkin): PackedInt32Array =
   expandMethodBind(className GLTFSkin, "get_roots", 969006518)
   var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
 proc setRoots*(self: GLTFSkin; roots: PackedInt32Array): void =
   expandMethodBind(className GLTFSkin, "set_roots", 3614634198)
-  var `?param` = [getPtr roots]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr roots])
 
 proc getSkeleton*(self: GLTFSkin): int32 =
   expandMethodBind(className GLTFSkin, "get_skeleton", 2455072627)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setSkeleton*(self: GLTFSkin; skeleton: int32): void =
   expandMethodBind(className GLTFSkin, "set_skeleton", 1286410249)
-  var `?param` = [getPtr skeleton]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr skeleton])
 
 proc getJointIToBoneI*(self: GLTFSkin): Dictionary =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_bone_i", 2382534195)
   var ret: encoded Dictionary
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_bone_i", 4155329257)
-  var `?param` = [getPtr jointIToBoneI]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIToBoneI])
 
 proc getJointIToName*(self: GLTFSkin): Dictionary =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_name", 2382534195)
   var ret: encoded Dictionary
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_name", 4155329257)
-  var `?param` = [getPtr jointIToName]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr jointIToName])
 
 proc getGodotSkin*(self: GLTFSkin): gdref Skin =
   expandMethodBind(className GLTFSkin, "get_godot_skin", 1032037385)
   var ret: encoded gdref Skin
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Skin)
 
 proc setGodotSkin*(self: GLTFSkin; godotSkin: gdref Skin): void =
   expandMethodBind(className GLTFSkin, "set_godot_skin", 3971435618)
-  var `?param` = [getPtr godotSkin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr godotSkin])
 
 template skinRoot*(self: GLTFSkin): untyped = self.getSkinRoot()
 template `skinRoot=`*(self: GLTFSkin; value) = self.setSkinRoot(value)

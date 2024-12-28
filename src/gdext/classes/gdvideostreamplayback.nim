@@ -71,9 +71,8 @@ template getMixRate_bind*(_: typedesc[VideoStreamPlayback]): ClassCallVirtual = 
 
 proc mixAudio*(self: VideoStreamPlayback; numFrames: int32; buffer: PackedFloat32Array = PackedFloat32Array(); offset: int32 = 0): int32 =
   expandMethodBind(className VideoStreamPlayback, "mix_audio", 93876830)
-  var `?param` = [getPtr numFrames, getPtr buffer, getPtr offset]
   var ret: encoded int32
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr numFrames, getPtr buffer, getPtr offset], addr ret)
   (addr ret).decode_result(int32)
 
 const VideoStreamPlayback_vmap =

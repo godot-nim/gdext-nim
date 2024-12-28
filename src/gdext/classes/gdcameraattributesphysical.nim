@@ -6,96 +6,88 @@ import gdcameraattributes; export gdcameraattributes
 
 proc setAperture*(self: CameraAttributesPhysical; aperture: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_aperture", 373806689)
-  var `?param` = [getPtr aperture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr aperture])
 
 proc getAperture*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_aperture", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setShutterSpeed*(self: CameraAttributesPhysical; shutterSpeed: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_shutter_speed", 373806689)
-  var `?param` = [getPtr shutterSpeed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr shutterSpeed])
 
 proc getShutterSpeed*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_shutter_speed", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFocalLength*(self: CameraAttributesPhysical; focalLength: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_focal_length", 373806689)
-  var `?param` = [getPtr focalLength]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr focalLength])
 
 proc getFocalLength*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_focal_length", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFocusDistance*(self: CameraAttributesPhysical; focusDistance: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_focus_distance", 373806689)
-  var `?param` = [getPtr focusDistance]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr focusDistance])
 
 proc getFocusDistance*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_focus_distance", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setNear*(self: CameraAttributesPhysical; near: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_near", 373806689)
-  var `?param` = [getPtr near]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr near])
 
 proc getNear*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_near", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setFar*(self: CameraAttributesPhysical; far: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_far", 373806689)
-  var `?param` = [getPtr far]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr far])
 
 proc getFar*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_far", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc getFov*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_fov", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAutoExposureMaxExposureValue*(self: CameraAttributesPhysical; exposureValueMax: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_auto_exposure_max_exposure_value", 373806689)
-  var `?param` = [getPtr exposureValueMax]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr exposureValueMax])
 
 proc getAutoExposureMaxExposureValue*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_auto_exposure_max_exposure_value", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAutoExposureMinExposureValue*(self: CameraAttributesPhysical; exposureValueMin: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_auto_exposure_min_exposure_value", 373806689)
-  var `?param` = [getPtr exposureValueMin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr exposureValueMin])
 
 proc getAutoExposureMinExposureValue*(self: CameraAttributesPhysical): Float =
   expandMethodBind(className CameraAttributesPhysical, "get_auto_exposure_min_exposure_value", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template frustumFocusDistance*(self: CameraAttributesPhysical): untyped = self.getFocusDistance()

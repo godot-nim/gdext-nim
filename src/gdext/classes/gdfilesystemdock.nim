@@ -6,18 +6,15 @@ import gdvboxcontainer; export gdvboxcontainer
 
 proc navigateToPath*(self: FileSystemDock; path: String): void =
   expandMethodBind(className FileSystemDock, "navigate_to_path", 83702148)
-  var `?param` = [getPtr path]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addResourceTooltipPlugin*(self: FileSystemDock; plugin: gdref EditorResourceTooltipPlugin): void =
   expandMethodBind(className FileSystemDock, "add_resource_tooltip_plugin", 2258356838)
-  var `?param` = [getPtr plugin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr plugin])
 
 proc removeResourceTooltipPlugin*(self: FileSystemDock; plugin: gdref EditorResourceTooltipPlugin): void =
   expandMethodBind(className FileSystemDock, "remove_resource_tooltip_plugin", 2258356838)
-  var `?param` = [getPtr plugin]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr plugin])
 
 const FileSystemDock_vmap =
   VBoxContainer.vmap.concat initTable[string, string]()

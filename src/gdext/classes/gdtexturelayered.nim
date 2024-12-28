@@ -42,44 +42,43 @@ template getLayerData_bind*(_: typedesc[TextureLayered]): ClassCallVirtual = get
 proc getFormat*(self: TextureLayered): Image_Format =
   expandMethodBind(className TextureLayered, "get_format", 3847873762)
   var ret: encoded Image_Format
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Image_Format)
 
 proc getLayeredType*(self: TextureLayered): TextureLayered_LayeredType =
   expandMethodBind(className TextureLayered, "get_layered_type", 518123893)
   var ret: encoded TextureLayered_LayeredType
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextureLayered_LayeredType)
 
 proc getWidth*(self: TextureLayered): int32 =
   expandMethodBind(className TextureLayered, "get_width", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getHeight*(self: TextureLayered): int32 =
   expandMethodBind(className TextureLayered, "get_height", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc getLayers*(self: TextureLayered): int32 =
   expandMethodBind(className TextureLayered, "get_layers", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc hasMipmaps*(self: TextureLayered): bool =
   expandMethodBind(className TextureLayered, "has_mipmaps", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getLayerData*(self: TextureLayered; layer: int32): gdref Image =
   expandMethodBind(className TextureLayered, "get_layer_data", 3655284255)
-  var `?param` = [getPtr layer]
   var ret: encoded gdref Image
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr layer], addr ret)
   (addr ret).decode_result(gdref Image)
 
 const TextureLayered_vmap =

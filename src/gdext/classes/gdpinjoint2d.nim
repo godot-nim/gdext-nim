@@ -6,68 +6,62 @@ import gdjoint2d; export gdjoint2d
 
 proc setSoftness*(self: PinJoint2D; softness: Float): void =
   expandMethodBind(className PinJoint2D, "set_softness", 373806689)
-  var `?param` = [getPtr softness]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr softness])
 
 proc getSoftness*(self: PinJoint2D): Float =
   expandMethodBind(className PinJoint2D, "get_softness", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAngularLimitLower*(self: PinJoint2D; angularLimitLower: Float): void =
   expandMethodBind(className PinJoint2D, "set_angular_limit_lower", 373806689)
-  var `?param` = [getPtr angularLimitLower]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr angularLimitLower])
 
 proc getAngularLimitLower*(self: PinJoint2D): Float =
   expandMethodBind(className PinJoint2D, "get_angular_limit_lower", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setAngularLimitUpper*(self: PinJoint2D; angularLimitUpper: Float): void =
   expandMethodBind(className PinJoint2D, "set_angular_limit_upper", 373806689)
-  var `?param` = [getPtr angularLimitUpper]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr angularLimitUpper])
 
 proc getAngularLimitUpper*(self: PinJoint2D): Float =
   expandMethodBind(className PinJoint2D, "get_angular_limit_upper", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMotorTargetVelocity*(self: PinJoint2D; motorTargetVelocity: Float): void =
   expandMethodBind(className PinJoint2D, "set_motor_target_velocity", 373806689)
-  var `?param` = [getPtr motorTargetVelocity]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr motorTargetVelocity])
 
 proc getMotorTargetVelocity*(self: PinJoint2D): Float =
   expandMethodBind(className PinJoint2D, "get_motor_target_velocity", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setMotorEnabled*(self: PinJoint2D; enabled: bool): void =
   expandMethodBind(className PinJoint2D, "set_motor_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isMotorEnabled*(self: PinJoint2D): bool =
   expandMethodBind(className PinJoint2D, "is_motor_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAngularLimitEnabled*(self: PinJoint2D; enabled: bool): void =
   expandMethodBind(className PinJoint2D, "set_angular_limit_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isAngularLimitEnabled*(self: PinJoint2D): bool =
   expandMethodBind(className PinJoint2D, "is_angular_limit_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template softness*(self: PinJoint2D): untyped = self.getSoftness()

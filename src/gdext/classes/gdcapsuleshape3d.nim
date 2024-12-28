@@ -6,24 +6,22 @@ import gdshape3d; export gdshape3d
 
 proc setRadius*(self: CapsuleShape3D; radius: Float): void =
   expandMethodBind(className CapsuleShape3D, "set_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getRadius*(self: CapsuleShape3D): Float =
   expandMethodBind(className CapsuleShape3D, "get_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setHeight*(self: CapsuleShape3D; height: Float): void =
   expandMethodBind(className CapsuleShape3D, "set_height", 373806689)
-  var `?param` = [getPtr height]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr height])
 
 proc getHeight*(self: CapsuleShape3D): Float =
   expandMethodBind(className CapsuleShape3D, "get_height", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 template radius*(self: CapsuleShape3D): untyped = self.getRadius()

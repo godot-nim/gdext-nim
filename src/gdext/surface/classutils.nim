@@ -1,23 +1,24 @@
-import std/[strutils, importutils]
+import std/[strutils]
 
 import gdext/buildconf
+import gdext/gdinterface/objects
+import gdext/gdinterface/classDB
 
-import gdext/dirty/gdextensioninterface
-import gdext/core/commandindex
-import gdext/core/extracommands
-import gdext/core/gdclass
 import gdext/core/gdrefs
 
+export objects.destroy
+export objects.getInstanceID
+
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
-  let objectPtr = interface_classdb_construct_object(addr classname Type)
+  let objectPtr = classDB.constructObject(classname Type)
   result = createClass[T](objectPtr)
-  interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
+  objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
-  let objectPtr = interface_classdb_construct_object(addr classname Type.EngineClass)
+  let objectPtr = classDB.constructObject(classname Type.EngineClass)
   result = createClass[T](objectPtr)
-  interfaceObjectSetInstance(objectPtr, addr classname T, cast[pointer](result))
-  interfaceObjectSetInstanceBinding(objectPtr, environment.library, cast[pointer](result), addr T.callbacks)
+  objectPtr.setInstance(classname T, result)
+  objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc instantiate*[T: Object and not RefCounted](_: typedesc[T]): T =
   when Dev.debugCallbacks:
@@ -28,19 +29,11 @@ proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
     echo SYNC.INSTANTIATE, $T
   result = instantiate_internal(T).asGdRef
 
-proc destroy*(x: SomeClass) =
-  privateAccess Object
-  interfaceObjectDestroy(x.control.owner)
-
-proc instanceID*(self: SomeClass): GDObjectInstanceID =
-  interface_Object_getInstanceId CLASS_getObjectPtr self
-
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
   if self of T: return T self
-  let castpro = commandindex.interfaceObjectCastTo
-  result = CLASS_getObjectPtr(self)
-    .castpro(interface_ClassDB_getClassTag(addr className T))
+  result = self
+    .castTo(classDB.getClassTag(className T))
     .getInstance(T)
 
 template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef

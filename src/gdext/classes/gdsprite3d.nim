@@ -6,79 +6,72 @@ import gdspritebase3d; export gdspritebase3d
 
 proc setTexture*(self: Sprite3D; texture: gdref Texture2D): void =
   expandMethodBind(className Sprite3D, "set_texture", 4051416890)
-  var `?param` = [getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr texture])
 
 proc getTexture*(self: Sprite3D): gdref Texture2D =
   expandMethodBind(className Sprite3D, "get_texture", 3635182373)
   var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc setRegionEnabled*(self: Sprite3D; enabled: bool): void =
   expandMethodBind(className Sprite3D, "set_region_enabled", 2586408642)
-  var `?param` = [getPtr enabled]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isRegionEnabled*(self: Sprite3D): bool =
   expandMethodBind(className Sprite3D, "is_region_enabled", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setRegionRect*(self: Sprite3D; rect: Rect2): void =
   expandMethodBind(className Sprite3D, "set_region_rect", 2046264180)
-  var `?param` = [getPtr rect]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rect])
 
 proc getRegionRect*(self: Sprite3D): Rect2 =
   expandMethodBind(className Sprite3D, "get_region_rect", 1639390495)
   var ret: encoded Rect2
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
 proc setFrame*(self: Sprite3D; frame: int32): void =
   expandMethodBind(className Sprite3D, "set_frame", 1286410249)
-  var `?param` = [getPtr frame]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr frame])
 
 proc getFrame*(self: Sprite3D): int32 =
   expandMethodBind(className Sprite3D, "get_frame", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setFrameCoords*(self: Sprite3D; coords: Vector2i): void =
   expandMethodBind(className Sprite3D, "set_frame_coords", 1130785943)
-  var `?param` = [getPtr coords]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr coords])
 
 proc getFrameCoords*(self: Sprite3D): Vector2i =
   expandMethodBind(className Sprite3D, "get_frame_coords", 3690982128)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc setVframes*(self: Sprite3D; vframes: int32): void =
   expandMethodBind(className Sprite3D, "set_vframes", 1286410249)
-  var `?param` = [getPtr vframes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vframes])
 
 proc getVframes*(self: Sprite3D): int32 =
   expandMethodBind(className Sprite3D, "get_vframes", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setHframes*(self: Sprite3D; hframes: int32): void =
   expandMethodBind(className Sprite3D, "set_hframes", 1286410249)
-  var `?param` = [getPtr hframes]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr hframes])
 
 proc getHframes*(self: Sprite3D): int32 =
   expandMethodBind(className Sprite3D, "get_hframes", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template texture*(self: Sprite3D): untyped = self.getTexture()

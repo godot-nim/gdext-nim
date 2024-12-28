@@ -6,8 +6,7 @@ import gdrefcounted; export gdrefcounted
 
 proc configure*(self: RenderSceneBuffers; config: gdref RenderSceneBuffersConfiguration): void =
   expandMethodBind(className RenderSceneBuffers, "configure", 3072623270)
-  var `?param` = [getPtr config]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr config])
 
 const RenderSceneBuffers_vmap =
   RefCounted.vmap.concat initTable[string, string]()

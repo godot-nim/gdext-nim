@@ -1,5 +1,5 @@
-import gdext/core/commandindex
-import gdext/core/extracommands
+import gdext/gdinterface/native
+import gdext/gdinterface/extracommands
 import gdext/core/gdclass
 
 type

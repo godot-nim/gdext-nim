@@ -6,35 +6,32 @@ import gdphysicsbody3d; export gdphysicsbody3d
 
 proc setConstantLinearVelocity*(self: StaticBody3D; vel: Vector3): void =
   expandMethodBind(className StaticBody3D, "set_constant_linear_velocity", 3460891852)
-  var `?param` = [getPtr vel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vel])
 
 proc setConstantAngularVelocity*(self: StaticBody3D; vel: Vector3): void =
   expandMethodBind(className StaticBody3D, "set_constant_angular_velocity", 3460891852)
-  var `?param` = [getPtr vel]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vel])
 
 proc getConstantLinearVelocity*(self: StaticBody3D): Vector3 =
   expandMethodBind(className StaticBody3D, "get_constant_linear_velocity", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc getConstantAngularVelocity*(self: StaticBody3D): Vector3 =
   expandMethodBind(className StaticBody3D, "get_constant_angular_velocity", 3360562783)
   var ret: encoded Vector3
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
 proc setPhysicsMaterialOverride*(self: StaticBody3D; physicsMaterialOverride: gdref PhysicsMaterial): void =
   expandMethodBind(className StaticBody3D, "set_physics_material_override", 1784508650)
-  var `?param` = [getPtr physicsMaterialOverride]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr physicsMaterialOverride])
 
 proc getPhysicsMaterialOverride*(self: StaticBody3D): gdref PhysicsMaterial =
   expandMethodBind(className StaticBody3D, "get_physics_material_override", 2521850424)
   var ret: encoded gdref PhysicsMaterial
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref PhysicsMaterial)
 
 template physicsMaterialOverride*(self: StaticBody3D): untyped = self.getPhysicsMaterialOverride()

@@ -96,29 +96,24 @@ template commitSubgizmos_bind*(_: typedesc[EditorNode3DGizmoPlugin]): ClassCallV
 
 proc createMaterial*(self: EditorNode3DGizmoPlugin; name: String; color: Color; billboard: bool = false; onTop: bool = false; useVertexColor: bool = false): void =
   expandMethodBind(className EditorNode3DGizmoPlugin, "create_material", 3486012546)
-  var `?param` = [getPtr name, getPtr color, getPtr billboard, getPtr onTop, getPtr useVertexColor]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr color, getPtr billboard, getPtr onTop, getPtr useVertexColor])
 
 proc createIconMaterial*(self: EditorNode3DGizmoPlugin; name: String; texture: gdref Texture2D; onTop: bool = false; color: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className EditorNode3DGizmoPlugin, "create_icon_material", 3804976916)
-  var `?param` = [getPtr name, getPtr texture, getPtr onTop, getPtr color]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr texture, getPtr onTop, getPtr color])
 
 proc createHandleMaterial*(self: EditorNode3DGizmoPlugin; name: String; billboard: bool = false; texture: gdref Texture2D = default gdref Texture2D): void =
   expandMethodBind(className EditorNode3DGizmoPlugin, "create_handle_material", 2486475223)
-  var `?param` = [getPtr name, getPtr billboard, getPtr texture]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr billboard, getPtr texture])
 
 proc addMaterial*(self: EditorNode3DGizmoPlugin; name: String; material: gdref StandardMaterial3D): void =
   expandMethodBind(className EditorNode3DGizmoPlugin, "add_material", 1374068695)
-  var `?param` = [getPtr name, getPtr material]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr name, getPtr material])
 
 proc getMaterial*(self: EditorNode3DGizmoPlugin; name: String; gizmo: gdref EditorNode3DGizmo = default gdref EditorNode3DGizmo): gdref StandardMaterial3D =
   expandMethodBind(className EditorNode3DGizmoPlugin, "get_material", 974464017)
-  var `?param` = [getPtr name, getPtr gizmo]
   var ret: encoded gdref StandardMaterial3D
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr name, getPtr gizmo], addr ret)
   (addr ret).decode_result(gdref StandardMaterial3D)
 
 const EditorNode3DGizmoPlugin_vmap =

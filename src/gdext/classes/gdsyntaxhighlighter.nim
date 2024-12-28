@@ -21,23 +21,22 @@ template updateCache_bind*(_: typedesc[SyntaxHighlighter]): ClassCallVirtual = u
 
 proc getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary =
   expandMethodBind(className SyntaxHighlighter, "get_line_syntax_highlighting", 3554694381)
-  var `?param` = [getPtr line]
   var ret: encoded Dictionary
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr line], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc updateCache*(self: SyntaxHighlighter): void =
   expandMethodBind(className SyntaxHighlighter, "update_cache", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc clearHighlightingCache*(self: SyntaxHighlighter): void =
   expandMethodBind(className SyntaxHighlighter, "clear_highlighting_cache", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc getTextEdit*(self: SyntaxHighlighter): TextEdit =
   expandMethodBind(className SyntaxHighlighter, "get_text_edit", 1893027089)
   var ret: encoded TextEdit
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextEdit)
 
 const SyntaxHighlighter_vmap =

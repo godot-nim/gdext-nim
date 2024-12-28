@@ -946,16 +946,14 @@ template getProcessInfo_bind*(_: typedesc[PhysicsServer3DExtension]): ClassCallV
 
 proc bodyTestMotionIsExcludingBody*(self: PhysicsServer3DExtension; body: RID): bool =
   expandMethodBind(className PhysicsServer3DExtension, "body_test_motion_is_excluding_body", 4155700596)
-  var `?param` = [getPtr body]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr body], addr ret)
   (addr ret).decode_result(bool)
 
 proc bodyTestMotionIsExcludingObject*(self: PhysicsServer3DExtension; `object`: uint64): bool =
   expandMethodBind(className PhysicsServer3DExtension, "body_test_motion_is_excluding_object", 1116898809)
-  var `?param` = [getPtr `object`]
   var ret: encoded bool
-  methodbind.ptrcall(self, addr `?param`[0], addr ret)
+  methodbind.ptrcall(self, [getPtr `object`], addr ret)
   (addr ret).decode_result(bool)
 
 const PhysicsServer3DExtension_vmap =

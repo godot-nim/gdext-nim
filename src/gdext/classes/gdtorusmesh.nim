@@ -6,46 +6,42 @@ import gdprimitivemesh; export gdprimitivemesh
 
 proc setInnerRadius*(self: TorusMesh; radius: Float): void =
   expandMethodBind(className TorusMesh, "set_inner_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getInnerRadius*(self: TorusMesh): Float =
   expandMethodBind(className TorusMesh, "get_inner_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setOuterRadius*(self: TorusMesh; radius: Float): void =
   expandMethodBind(className TorusMesh, "set_outer_radius", 373806689)
-  var `?param` = [getPtr radius]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr radius])
 
 proc getOuterRadius*(self: TorusMesh): Float =
   expandMethodBind(className TorusMesh, "get_outer_radius", 1740695150)
   var ret: encoded Float
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
 proc setRings*(self: TorusMesh; rings: int32): void =
   expandMethodBind(className TorusMesh, "set_rings", 1286410249)
-  var `?param` = [getPtr rings]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rings])
 
 proc getRings*(self: TorusMesh): int32 =
   expandMethodBind(className TorusMesh, "get_rings", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setRingSegments*(self: TorusMesh; rings: int32): void =
   expandMethodBind(className TorusMesh, "set_ring_segments", 1286410249)
-  var `?param` = [getPtr rings]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr rings])
 
 proc getRingSegments*(self: TorusMesh): int32 =
   expandMethodBind(className TorusMesh, "get_ring_segments", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 template innerRadius*(self: TorusMesh): untyped = self.getInnerRadius()

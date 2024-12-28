@@ -6,50 +6,46 @@ import gdcontainer; export gdcontainer
 
 proc setSplitOffset*(self: SplitContainer; offset: int32): void =
   expandMethodBind(className SplitContainer, "set_split_offset", 1286410249)
-  var `?param` = [getPtr offset]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr offset])
 
 proc getSplitOffset*(self: SplitContainer): int32 =
   expandMethodBind(className SplitContainer, "get_split_offset", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc clampSplitOffset*(self: SplitContainer): void =
   expandMethodBind(className SplitContainer, "clamp_split_offset", 3218959716)
-  methodbind.ptrcall(self, nil)
+  methodbind.ptrcall(self, [])
 
 proc setCollapsed*(self: SplitContainer; collapsed: bool): void =
   expandMethodBind(className SplitContainer, "set_collapsed", 2586408642)
-  var `?param` = [getPtr collapsed]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr collapsed])
 
 proc isCollapsed*(self: SplitContainer): bool =
   expandMethodBind(className SplitContainer, "is_collapsed", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc setDraggerVisibility*(self: SplitContainer; mode: SplitContainer_DraggerVisibility): void =
   expandMethodBind(className SplitContainer, "set_dragger_visibility", 1168273952)
-  var `?param` = [getPtr mode]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr mode])
 
 proc getDraggerVisibility*(self: SplitContainer): SplitContainer_DraggerVisibility =
   expandMethodBind(className SplitContainer, "get_dragger_visibility", 967297479)
   var ret: encoded SplitContainer_DraggerVisibility
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(SplitContainer_DraggerVisibility)
 
 proc setVertical*(self: SplitContainer; vertical: bool): void =
   expandMethodBind(className SplitContainer, "set_vertical", 2586408642)
-  var `?param` = [getPtr vertical]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertical])
 
 proc isVertical*(self: SplitContainer): bool =
   expandMethodBind(className SplitContainer, "is_vertical", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 template splitOffset*(self: SplitContainer): untyped = self.getSplitOffset()

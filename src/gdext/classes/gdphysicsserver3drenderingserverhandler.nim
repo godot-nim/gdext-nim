@@ -21,18 +21,15 @@ template setAabb_bind*(_: typedesc[PhysicsServer3DRenderingServerHandler]): Clas
 
 proc setVertex*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; vertex: Vector3): void =
   expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_vertex", 1530502735)
-  var `?param` = [getPtr vertexId, getPtr vertex]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertexId, getPtr vertex])
 
 proc setNormal*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; normal: Vector3): void =
   expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_normal", 1530502735)
-  var `?param` = [getPtr vertexId, getPtr normal]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr vertexId, getPtr normal])
 
 proc setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: AABB): void =
   expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_aabb", 259215842)
-  var `?param` = [getPtr aabb]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr aabb])
 
 const PhysicsServer3DRenderingServerHandler_vmap =
   Object.vmap.concat toTable {

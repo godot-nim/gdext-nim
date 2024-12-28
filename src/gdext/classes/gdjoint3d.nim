@@ -6,52 +6,48 @@ import gdnode3d; export gdnode3d
 
 proc setNodeA*(self: Joint3D; node: NodePath): void =
   expandMethodBind(className Joint3D, "set_node_a", 1348162250)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc getNodeA*(self: Joint3D): NodePath =
   expandMethodBind(className Joint3D, "get_node_a", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc setNodeB*(self: Joint3D; node: NodePath): void =
   expandMethodBind(className Joint3D, "set_node_b", 1348162250)
-  var `?param` = [getPtr node]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr node])
 
 proc getNodeB*(self: Joint3D): NodePath =
   expandMethodBind(className Joint3D, "get_node_b", 4075236667)
   var ret: encoded NodePath
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
 proc setSolverPriority*(self: Joint3D; priority: int32): void =
   expandMethodBind(className Joint3D, "set_solver_priority", 1286410249)
-  var `?param` = [getPtr priority]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr priority])
 
 proc getSolverPriority*(self: Joint3D): int32 =
   expandMethodBind(className Joint3D, "get_solver_priority", 3905245786)
   var ret: encoded int32
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
 proc setExcludeNodesFromCollision*(self: Joint3D; enable: bool): void =
   expandMethodBind(className Joint3D, "set_exclude_nodes_from_collision", 2586408642)
-  var `?param` = [getPtr enable]
-  methodbind.ptrcall(self, addr `?param`[0])
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc getExcludeNodesFromCollision*(self: Joint3D): bool =
   expandMethodBind(className Joint3D, "get_exclude_nodes_from_collision", 36873697)
   var ret: encoded bool
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
 proc getRid*(self: Joint3D): RID =
   expandMethodBind(className Joint3D, "get_rid", 2944877500)
   var ret: encoded RID
-  methodbind.ptrcall(self, nil, addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
 template nodeA*(self: Joint3D): untyped = self.getNodeA()
