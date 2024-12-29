@@ -43,13 +43,7 @@ See [wiki][2] to get more detail.
 ### install
 
 ```
-nimble install https://github.com/godot-nim/gdext-nim
-```
-
-#### latest (devel)
-
-```
-nimble install https://github.com/godot-nim/gdext-nim@#head
+nimble install gdext
 ```
 
 ### uninstall
@@ -61,21 +55,8 @@ nimble uninstall gdext
 ### upgrade
 
 ```
-nimble uninstall gdext && nimble install https://github.com/godot-nim/gdext-nim
+nimble uninstall gdext && nimble install gdext
 ```
-
-### run test project
-
-```
-gdextwiz run testproject
-```
-
-### run all tests
-
-```
-nimble test
-```
-
 
 ## Supported environments
 
