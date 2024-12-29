@@ -1,6 +1,20 @@
-# godot-nim/gdext
+<div align="center">
 
-Godot GDExtension binding for Nim-lang.
+  # godot-nim/gdext
+
+  Nim for GDExtension. A pure library and a CLI tool.
+
+  <a href="https://github.com/nim-lang/nim">
+    <img src="https://github.com/Ethosa/open-source-badges/blob/master/badges/Languages/Nim/Nim-lang.svg" height="24">
+  </a>
+
+  <a href="https://github.com/godot-nim/gdext-nim">
+    <img src="nimble.svg" height="24">
+  </a>
+
+</div>
+
+---
 
 For instance to use, see [demo][1].
 See [wiki][2] to get more detail.
