@@ -7,7 +7,7 @@
   <a href="https://github.com/nim-lang/nim">
     <img src="https://github.com/Ethosa/open-source-badges/blob/master/badges/Languages/Nim/Nim-lang.svg" height="24">
   </a>
-
+  </br>
   <a href="https://github.com/godot-nim/gdext-nim">
     <img src="nimble.svg" height="24">
   </a>
