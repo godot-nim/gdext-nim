@@ -10,24 +10,19 @@ See [wiki][2] to get more detail.
 
 ## Features
 
-- [x] Godot 4.3 full api
-- [x] Available to define&export your Class/Function/Signal/Property
-- [x] Available to call engine functionalities from Nim
-- [x] GLSLang-like swizzle operator (e.g. vector3.xxxyyyzzz)
-- [x] Commandline-helper (see [wiki - gdextwiz][3])
-- [x] Define/Call virtual methods
+- [x] All classes and methods provided by the engine are available from Nim.
+- [x] New extension classes can be defined that inherit from the engine class and exposed to editors and GDScript.
+- [x] New methods, signals, properties, and enums can be defined in your extension classes and exposed.
+- [x] New virtual functions can be defined and exposed, and overridden from both Nim and GDScript.
+- [x] Recompiled GDExtension can be loaded without restarting the editor. (Hot Reloading)
+- [x] Arithmetic operations such as Vector are more expressive than those in Godot, for example, GLSLang's swizzle operation is also available.
+- [x] It has a CLI tool that allows you to create new extensions, compile, run projects, and so on from a unified interface. (see [wiki - gdextwiz][3])
 
-### Partially working
+## Limitation
 
-- [x] Hot reloading
-
-  It works, but sometimes the editor crashes.
-
-### In preparation
-
-- [ ] Assist to generate a .gdextension file
-- [ ] Export descriptions
-- [ ] Develop engine plugins
+- [ ] Document comments left in Nim source are not reflected in the editor.
+- [ ] Editor plug-ins cannot be created using only pure Nim code.
+- [ ] Due to engine specifications, Nim code works in the form of calls from the engine; it is not possible to run Nim stand-alone.
 
 ## Commands
 
