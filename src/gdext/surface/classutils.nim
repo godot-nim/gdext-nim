@@ -8,6 +8,7 @@ import gdext/core/gdrefs
 
 export objects.destroy
 export objects.getInstanceID
+export objects.getClassName
 
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
   let objectPtr = classDB.constructObject(classname Type)
@@ -61,11 +62,9 @@ proc singleton*[T: SomeClass](_: typedesc[T]): T =
   else:
     result = cast[T](cache)
 
-proc `$`*[T: SomeClass](self: T): string =
-  if self.isNil: return $T & "(nil)"
-  result = $T & "(ID: 0x" & self.instanceID.toHex & ")"
-  when compiles self.name():
-    return $self.name() & " [" & result & "]"
+proc `$`*[T: Object](self: T): string =
+  if self.isNil: return $self.getClassName & "(nil)"
+  $self.getClassName & "(ID: 0x" & self.getInstanceID.toHex & ")"
 
 export onInit, onDestroy
 method notification*(self: Object; p_what: int32) {.base.} = discard

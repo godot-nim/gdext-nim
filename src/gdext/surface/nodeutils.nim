@@ -1,5 +1,6 @@
 import std/macros
 
+import gdext/core/gdclass
 import gdext/core/builtinindex
 import gdext/gen/[builtinclasses, classindex]
 import gdext/classes/gdNode
@@ -14,3 +15,6 @@ template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub
 proc instantiate*[T_Node: Node](T: typedesc[T_Node]; name: string): T =
   result = classutils.instantiate(T)
   result.name = gdstring name
+
+proc `$`*(self: Node): string =
+  $self.name() & " [" & $Object(self) & "]"

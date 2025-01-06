@@ -40,3 +40,5 @@ proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
 proc getInstanceID*(self: Object): GDObjectInstanceID =
   interfaceObjectGetInstanceId CLASS_getObjectPtr self
 
+proc getClassName*(self: Object): StringName =
+  discard interfaceObjectGetClassName(CLASS_getObjectPtr self, environment.library, addr result)
