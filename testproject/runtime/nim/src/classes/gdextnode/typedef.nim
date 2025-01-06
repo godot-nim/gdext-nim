@@ -1,5 +1,5 @@
 import testutils
-import std/tables
+import std/[tables, strutils]
 
 import gdext
 import gdext/gdinterface/native
@@ -48,6 +48,14 @@ proc test_Object(self: GDExtNode) =
       check self == Engine.getSingleton(classname GDExtNode).as GDExtNode
       check self == GDExtNode
 
+    test "stringify":
+      let obj1: Object = instantiate Object
+      let obj2: Object = Input.singleton
+      check ($obj1).startsWith "Object"
+      check ($obj2).startsWith "Input"
+
+      destroy obj1
+
 proc test_RefCounted(self: GDExtNode) =
   suite "RefCounted":
     test "reference counting":
@@ -84,6 +92,9 @@ proc test_Node(self: GDExtNode) =
       let node2: Node2D = self/Node2D
 
       check node == node2
+
+    test "stringify":
+      check ($self).startsWith "GDExtNode"
 
 proc test_Resource(self: GDExtNode) =
   suite "Resource":

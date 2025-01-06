@@ -1,4 +1,4 @@
-import gdext/gdinterface/[variants, exceptions]
+import gdext/gdinterface/[variants, exceptions, extracommands]
 
 import gdext/core/[typeshift, builtinindex]
 import std/[strformat]
