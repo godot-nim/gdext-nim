@@ -1,13 +1,8 @@
 <div align="center">
 
-  # godot-nim/gdext
+  # <img src="https://raw.githubusercontent.com/nim-lang/assets/master/Art/logo-crown.png" height="28px"/> godot-nim/gdext
 
-  Nim for GDExtension. A pure library and a CLI tool.
-
-  <a href="https://github.com/nim-lang/nim">
-    <img src="https://github.com/Ethosa/open-source-badges/blob/master/badges/Languages/Nim/Nim-lang.svg" height="24">
-  </a>
-  </br>
+  Nim for GDExtension. A pure library and a CLI tool.  
   <a href="https://github.com/godot-nim/gdext-nim">
     <img src="nimble.svg" height="24">
   </a>
@@ -15,12 +10,6 @@
 </div>
 
 ---
-
-For instance to use, see [demo][1].
-See [wiki][2] to get more detail.
-
-> [!NOTE]
-> This library is not yet stable. If you encounter any problems in practical use, we encourage you to consider to create an Issue, as it is most likely on the library side. Either way, we will try to help.
 
 ## Features
 
@@ -52,12 +41,6 @@ nimble install gdext
 nimble uninstall gdext
 ```
 
-### upgrade
-
-```
-nimble uninstall gdext && nimble install gdext
-```
-
 ## Supported environments
 
 ### OS
@@ -87,6 +70,26 @@ nimble uninstall gdext && nimble install gdext
 * Nim: 2.0.0, 2.0.12, 2.2.0
 * CC: gcc version 14.2.1 20240910 (GCC)
 
+---
+
+<div align="center">
+
+## Project guides
+
+| | |
+|-|-|
+| Q. How does this library work for instance? | See [demo][1] repository. Several runnable examples are available. |
+| Q. What does this syntax mean? How can I do it? | Refer our [Wiki][2], especially [Coding Quick Guide][4]. |
+| Q. Where can I ask my questions?<br> Q. Where can I share my work or get feedbacks? | Welcome to our [Discussions][5]. Any github user can participate.<br> Let's start with [New discussion]. |
+| Q. I have a feature request! | Please tell us in [Discussions/Ideas][6]. |
+| Q. I'd like to join the dev-team! | Let us know in [Discussions][5] or [Invitation Request][7].<br> We will send you an email invitation. |
+
+</div>
+
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
 [3]: https://github.com/godot-nim/gdext-nim/wiki/gdextwiz
+[4]: https://github.com/godot-nim/gdext-nim/wiki/Coding-Quick-Guide
+[5]: https://github.com/godot-nim/gdext-nim/discussions
+[6]: https://github.com/godot-nim/gdext-nim/discussions/categories/ideas
+[7]: https://github.com/godot-nim/.github/issues/5
