@@ -13,6 +13,9 @@ import tools
 import contracts
 import propertyinfo
 
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
 proc isSignal*(procdef: NimNode): bool = procdef.hasPragma("signal")
 
 proc makebody (params, gdname, self: NimNode): NimNode =
@@ -43,13 +46,18 @@ macro parseParams (params): seq[PropertyInfo] =
 
   quote do: @`arguments`
 
-macro contractSignal (params; gdname: string): untyped =
+macro contractSignal (params, procdef; gdname: string): untyped =
   let arg0_T = params[1][1]
   let procsym = ident $gdname
 
-  quote do:
+  result = quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
       classDB.registerSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
+
+  when Assistance.genEditorHelp:
+    let desc = procdef.getEditorHelp
+    result.body.add quote do:
+      docClassDB[`arg0_T`].signals.add DocSignal(name: `gdname`, description: `desc`)
 
 const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
 
@@ -73,7 +81,7 @@ macro syncSignalGlobal(procdef): untyped =
 
   result = quote do:
     `procdef`
-    contractSignal(`params`, `gdname`)
+    contractSignal(`params`, `procdef`, `gdname`)
 
 macro syncSignalLocal(procdef): untyped =
   const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
@@ -92,7 +100,7 @@ macro syncSignalLocal(procdef): untyped =
   procdef.body = params.makebody(gdname, procdef.params[1][0])
   quote do:
     `procdef`
-    contractSignal(`params`, `gdname`)
+    contractSignal(`params`, `procdef`, `gdname`)
 
 proc syncSignal*(procdef: NimNode): Nimnode =
   if procdef.hasNoReturn:
