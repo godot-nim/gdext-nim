@@ -111,6 +111,25 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
 
 template name*(newname: string) {.pragma.}
 template signal* {.pragma.}
+template initLevel*(level: InitializationLevel) {.pragma.}
+
+var implicitRegistrations {.compileTime.}: array[InitializationLevel, seq[NimNode]]
+
+var Initialization_Default* {.compileTime.} = Initialization_Scene
+
+proc toLevel(node: NimNode): InitializationLevel =
+  if node.isNil:
+    Initialization_Default
+  elif node.eqIdent "Initialization_Core":
+    Initialization_Core
+  elif node.eqIdent "Initialization_Servers":
+    Initialization_Servers
+  elif node.eqIdent "Initialization_Scene":
+    Initialization_Scene
+  elif node.eqIdent "Initialization_Editor":
+    Initialization_Editor
+  else:
+    Initialization_Default
 
 macro gdsync*(body): untyped =
   case body.kind
@@ -124,24 +143,37 @@ macro gdsync*(body): untyped =
       sync_signal(body)
     else:
       sync_procDef(body)
+  of nnkTypeDef:
+    let level = body.getPragmaVal("initLevel").toLevel
+    implicitRegistrations[level].add body.typesym
+    body
   else:
-    hint $body.kind
+    hint "gdsync for " & ($body.kind)[3..^1] & " is not defined; gdsync will do nothing."
     body
 
 var registered: seq[StringName]
 var plugins: seq[StringName]
 proc register*(T: typedesc) =
+  let cn = className(T)
+  if cn in registered: return
+
   let info = T.creationInfo(false, false)
-  classDB.register(className(T), className(T.Super), addr info)
+  classDB.register(cn, className(T.Super), addr info)
   processExports T
   invoke Contract[T]
   when T is EditorPlugin:
-    interface_Editor_addPlugin addr className(T)
-    plugins.add className(T)
-  registered.add className(T)
+    interface_Editor_addPlugin addr cn
+    plugins.add cn
+  registered.add cn
 
 proc unregisterAll* =
   for i in countdown(plugins.high, 0):
     interface_Editor_removePlugin addr plugins[i]
   for i in countdown(registered.high, 0):
     classDB.unregister registered[i]
+
+macro register_implicitly*(level: static InitializationLevel) =
+  let register = bindSym "register"
+  result = newStmtList()
+  for registration in implicitRegistrations[level]:
+    result.add register.newCall registration
