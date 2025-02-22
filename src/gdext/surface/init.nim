@@ -38,7 +38,7 @@ template GDExtension_EntryPoint*: untyped =
   proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
 
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
-  proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
+  proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
@@ -58,7 +58,7 @@ template GDExtension_EntryPoint*: untyped =
       gLoaded = loadedClasses
       {.emit: "NimMain();".}
 
-  proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
+  proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
@@ -95,6 +95,7 @@ template GDExtension_EntryPoint*: untyped =
       return true
 
     except:
+      echo "FATAL ERROR: failed to initialize library."
       echo $getCurrentException()
       return false
 
