@@ -20,8 +20,6 @@ proc register_classes {.execon: initialize_scene.} =
   # register your extension classes here
   # register MyClass
   register GDExtNode
-  register VirtualNode01
-  register VirtualNode02
   register TestObject
 
   # ====================================

@@ -7,7 +7,7 @@ import gdext/classes/[
 type PropTestEnum* = enum
   PropTestEnum1, PropTestEnum2, PropTestEnum3
 
-type PropTestNode* = ptr object of Node
+type PropTestNode* {.gdsync, initlevel: Initialization_Scene.} = ptr object of Node
   icon*: gdref Texture2D
   PropTestEnum_with_export*: PropTestEnum
   string_with_export*: string = "with export"
