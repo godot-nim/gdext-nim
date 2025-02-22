@@ -14,3 +14,5 @@ icon = ExtResource("2_x3ep8")
 
 [node name="SignalSubscriber" type="SignalSubscriber" parent="." node_paths=PackedStringArray("publisher")]
 publisher = NodePath("../SignalPublisher")
+
+[node name="DocTestNode" type="DocTestNode" parent="."]

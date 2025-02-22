@@ -18,6 +18,9 @@ when Dev.debugCallbacks:
   import std/importutils
   privateAccess Object
 
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
 proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[Object](p_instance).set(p_name, p_value)
 
@@ -112,6 +115,7 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
 template name*(newname: static string) {.pragma.}
 template signal* {.pragma.}
 template initLevel*(level: InitializationLevel) {.pragma.}
+template description*(desc: string) {.pragma.}
 
 var implicitRegistrations {.compileTime.}: array[InitializationLevel, seq[NimNode]]
 
@@ -174,6 +178,9 @@ proc register*(T: typedesc) =
     interface_Editor_addPlugin addr cn
     plugins.add cn
   registered.add cn
+
+  when Assistance.genEditorHelp and T.hasCustomPragma(description):
+    docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
 proc unregisterAll* =
   for i in countdown(plugins.high, 0):

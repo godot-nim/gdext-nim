@@ -4,6 +4,7 @@ import gdext
 # import myclass
 import classes/gdproptestnode
 import classes/gdproptestnode_pragmas
+import classes/gddoctestnode
 import classes/gdsignalpublisher
 import classes/gdsignalsubscriber
 

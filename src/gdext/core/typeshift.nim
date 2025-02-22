@@ -231,3 +231,6 @@ proc decode_result*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Resu
   p.decode_result(T).asGdRef
 
 {.pop.}
+
+template APIType*(T: typedesc[Object]): typedesc = T
+template APIType*(T: typedesc[not Object]): typedesc = encoded T

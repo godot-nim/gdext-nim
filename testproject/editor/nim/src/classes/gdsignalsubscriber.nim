@@ -17,6 +17,7 @@ gdexport "publisher",
   hint_string = gdstring className Node)
 
 proc recv*(self: SignalSubscriber; key: int) {.gdsync.} =
+  ## Take a argument and echo it.
   echo "receive: ", key
 
 method ready(self: SignalSubscriber) {.gdsync.} =

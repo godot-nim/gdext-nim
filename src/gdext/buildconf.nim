@@ -5,30 +5,21 @@ when not declared(switch):
     Extension_decimalPrecision {.strdefine: "Extension.decimalPrecision".} = "float"
 
     Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
+    Assistance_genEditorHelp {.booldefine: "Assistance.genEditorHelp".} = on
 
     Dev_debugCallbacks {.booldefine: "Dev.debugCallbacks".} = off
     Dev_debugEvents {.booldefine: "Dev.debugEvents".} = off
 
-  type ExtensionObj* = object
-    name*: string
-    entrySymbol*: string
-    decimalPrecision*: string
-  type AssistanceObj* = object
-    checkEnv*: bool
-  type DevObj* = object
-    debugCallbacks*: bool
-    debugEvents*: bool
-
-  const
-    Extension* = ExtensionObj(
+    Extension* = (
       name: Extension_name,
       entrySymbol: Extension_entrySymbol,
       decimalPrecision: Extension_decimalPrecision,
     )
-    Assistance* = AssistanceObj(
+    Assistance* = (
       checkEnv: Assistance_checkEnv,
+      genEditorHelp: Assistance_genEditorHelp,
     )
-    Dev* = DevObj(
+    Dev* = (
       debugCallbacks: Dev_debugCallbacks,
       debugEvents: Dev_debugEvents,
     )
@@ -48,6 +39,7 @@ else:
 
   type Godot* = object
   type Extension* = object
+  type Assistance* = object
 
   const RunningSystem* = case hostOS
   of "windows":
@@ -80,6 +72,9 @@ else:
     # the cache is overwritten and the cc is performed from scratch,
     # resulting in slower build speeds.
     switch("nimcache", nimCacheDir()/RunningSystem/Build/name)
+
+  proc `genEditorHelp=`*(_: typedesc[Assistance]; b: bool) =
+    switch("define", "Assistance.genEditorHelp:" & $b)
 
   # GDExtension is loaded into the engine as a DLL.
   --app: lib
