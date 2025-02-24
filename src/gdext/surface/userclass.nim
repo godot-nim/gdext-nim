@@ -109,7 +109,7 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
     class_userdata: addr Meta(T),
   )
 
-template name*(newname: string) {.pragma.}
+template name*(newname: static string) {.pragma.}
 template signal* {.pragma.}
 template initLevel*(level: InitializationLevel) {.pragma.}
 

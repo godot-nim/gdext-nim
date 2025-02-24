@@ -8,17 +8,8 @@ import gdext/core/gdclass
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
-import gdext/surface/pragmas
-import gdext/surface/userenums
-import gdext/surface/common
 
 template joinArg(s: varargs[string]): string = s.join(",")
-
-proc rangeHintString(min, max, step: SomeNumericProperty, extra: varargs[RangeArgument]): string =
-  var res = @[$min, $max, $step]
-  if extra.len > 0:
-    res = res.concat(@extra.mapit($it))
-  res.join(",")
 
 template className(iden: SomeClass): string = $iden.className
 
@@ -26,61 +17,96 @@ type alias* = distinct string
 proc `==`*(x: alias, y: alias): bool = x.string == y.string
 const noAlias = alias ""
 
-type PropertyStage = enum
-  pre_property, property
-
-var propertyStage {.compileTime.}: PropertyStage = PropertyStage.property
-
 import gdext/gen/[globalenums, builtinclasses, classindex]
 
-proc register_property_internal*(
-      info: HeapPropertyInfo;
-      typ: StringName;
-      getter: StringName = StringName.empty;
-      setter: StringName = StringName.empty;
-    ) =
+type
+  Appearance* = object
+    hint: PropertyHint
+    hintstring: String
+    usage: set[PropertyUsageFlags]
+
+  ExpEasingArgument* = enum
+    attenuation, positive_only
+  RangeArgument*  = enum
+    or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
+
+proc appearance(
+      hint: PropertyHint = propertyHintNone;
+      hintstring: String = String.empty;
+      usage: set[PropertyUsageFlags] = {propertyUsageEditor, propertyUsageStorage};
+    ): Appearance =
+  Appearance(hint: hint, hintstring: hintstring, usage: usage)
+
+macro gdname(P: proc): string = P.getPragmaVal("name") or newLit $P
+
+proc propertyinfo(
+      name: StringName;
+      proptyp: typedesc[SomeProperty];
+      appearance: Appearance;
+    ): HeapPropertyInfo =
+  var ap = appearance
+
+  if ap.hint == propertyHintNone:
+    when proptyp is Node:
+      ap.hint = propertyHintNodeType
+      ap.hint_string = gdstring className proptyp
+
+  propertyInfo(proptyp, name,
+    ap.hint, ap.hintstring, ap.usage)
+
+proc propertyinfo(
+      name: StringName;
+      appearance: Appearance;
+    ): HeapPropertyInfo =
+  propertyInfo(VariantType_Nil, name, StringName.empty,
+    appearance.hint, appearance.hintstring, appearance.usage)
+
+proc gdexport_internal*(
+    info: HeapPropertyInfo;
+    typ: StringName;
+    getter: StringName = StringName.empty;
+    setter: StringName = StringName.empty) =
   classDB.registerProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
 
-macro strlit(x): string = newlit $x
-
-template execOnDef(name: untyped, typ: typed, blk: untyped): untyped =
-  when propertyStage == pre_property:
-    proc `name` {.execon: Contract[`typ`].pre_property.} =
-      `blk`
-  else:
-    proc `name` {.execon: Contract[`typ`].property.} =
-      `blk`
-
-template register_property*(
+proc gdexport_internal*(
+      name: string;
       typ: typedesc[SomeUserClass];
-      name;
       proptyp: typedesc[SomeProperty];
       getter, setter: StringName;
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+      appearance: Appearance) =
+  gdexport_internal(
+    propertyInfo(stringName name, proptyp, appearance),
+    className typ, getter, setter)
+
+template gdexport*() {.pragma.}
+template gdexport*(appearance: Appearance) {.pragma.}
+
+template gdexport*[T: SomeUserClass](
+      name: string;
+      appearance: Appearance = appearance();
     ): untyped =
-  when proptyp is enum:
-    registerEnum(typ, proptyp)
-  execOnDef(name, typ):
-    register_property_internal(
-      propertyInfo(proptyp, stringName strlit name, hint, hintstring, usage),
-      className typ, getter, setter)
+  proc `name` {.execon: Contract[T].property.} =
+    gdexport_internal(propertyInfo(stringName name, appearance), className T)
+
+template gdexport*(
+      name: string;
+      typ: typedesc[SomeUserClass];
+      proptyp: typedesc[SomeProperty];
+      getter, setter: StringName;
+      appearance: Appearance = appearance();
+    ): untyped =
+  proc `name` {.execon: Contract[`typ`].property.} =
+    gdexport_internal(name, typ, proptyp, getter, setter, appearance)
 
 
-macro gdname*(P: proc): string = P.getPragmaVal("name") or newLit $P
-
-macro register_property*[T: SomeUserClass; P: SomeProperty](
+macro gdexport*[T: SomeUserClass; P: SomeProperty](
+      name: string;
       typ: typedesc[T];
-      name;
       proptyp: typedesc[P];
       getter: proc(self: T): P;
       setter: proc(self: T; value: P);
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+      appearance: Appearance;
     ): untyped =
-
   result = newStmtList()
   let
     gettersym =
@@ -103,16 +129,23 @@ macro register_property*[T: SomeUserClass; P: SomeProperty](
       registerProc(`settersym`)
 
   result.add quote do:
-    register_property(`typ`, `name`, `proptyp`,
-      `gettersym`.gdname, `settersym`.gdname,
-      `hint`, `hint_string`, `usage`)
+    proc `name` {.execon: Contract[`typ`].property.} =
+      gdexport_internal(`name`, typedesc `typ`, typedesc `proptyp`,
+        `gettersym`.gdname, `settersym`.gdname, `appearance`)
 
-macro register_property_iden*(
+template gdexport*[T: SomeUserClass; P: SomeProperty](
+      name: string;
+      getter: proc(self: T): P;
+      setter: proc(self: T; value: P);
+      appearance: Appearance = appearance();
+    ): untyped =
+  gdexport(name, typedesc T, typedesc P, getter, setter, appearance)
+
+
+macro gdexport*(
       iden: typed;
       alias: static[alias];
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
+      appearance: Appearance;
     ): untyped =
   let classType = iden[0]
   let variable = iden[1]
@@ -122,338 +155,152 @@ macro register_property_iden*(
   let setter = quote do:
     proc(self: `classType`, value: `iden`) = self.`variable` = value
   quote do:
-    register_property(typedesc `classType`, `name`, typedesc `iden`, `getter`, `setter`, `hint`, `hintstring`, `usage`)
+    gdexport(`name`, typedesc `classType`, typedesc `iden`, `getter`, `setter`, `appearance`)
 
-template gdexport_category*[T: SomeUserClass](typ: typedesc[T]; name): untyped =
-  execOnDef(name, typ):
-    register_property_internal(
-      propertyInfo(VariantTypeNil, stringName strlit name, usage = {propertyUsageCategory}), className typ)
-
-template gdexport_group*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
-  execOnDef(name, typ):
-    classDB.registerPropertyGroup(className(typ), gdstring strlit name, prefix)
-
-template gdexport_subgroup*[T: SomeUserClass](typ: typedesc[T]; name; prefix: String = gdstring""): untyped =
-  execOnDef(name, typ):
-    classDB.registerPropertySubGroup(className(typ), gdstring strlit name, prefix)
-
-template gdexport_custom*[T: SomeUserClass; S: SomeProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint, hintstring, usage)
-
-template gdexport_custom*(
+template gdexport*(
       iden: typed;
-      alias: static[alias] = noAlias;
+      appearance: Appearance = appearance();
+    ): untyped =
+  gdexport(iden, noAlias, appearance)
+
+macro gdexport_preproperty[T: SomeUserClass](
+      name: string;
+      typ: typedesc[T];
+      prop;
+      appearance: Appearance = appearance();
+    ): untyped =
+  let
+    gettersym = genSym(nskProc, "get_" & $name)
+    settersym = genSym(nskProc, "set_" & $name)
+  let
+    getterdef = quote do:
+      proc `gettersym`(self: `typ`): `typ`.`prop` = self.`prop`
+    setterdef = quote do:
+      proc `settersym`(self: `typ`; value: `typ`.`prop`) = self.`prop` = value
+  let
+    gettername  = newlit "get_" & $name
+    settername  = newlit "set_" & $name
+
+  quote do:
+    proc `name` {.execon: Contract[`typ`].pre_property.} =
+      `getterdef`
+      `setterdef`
+      registerProc `getterdef`
+      registerProc `setterdef`
+      gdexport_internal(`name`, `typ`, `typ`.`prop`,
+        `gettername`, `settername`, `appearance`)
+
+# Hints
+
+proc storage*(T: typedesc[Appearance]): T = appearance(usage= {propertyUsageStorage})
+proc category*(T: typedesc[Appearance]): T = appearance(usage= {propertyUsageCategory})
+
+proc group*(T: typedesc[Appearance];
+    prefix= String.empty): T =
+  appearance(
+    hintString= prefix,
+    usage= {propertyUsageGroup})
+proc subgroup*(T: typedesc[Appearance];
+    prefix= String.empty): T =
+  appearance(
+    hintString= prefix,
+    usage= {propertyUsageSubgroup})
+
+proc colorNoAlpha*(T: typedesc[Appearance]): T = appearance(propertyHintColorNoAlpha)
+proc dir*(T: typedesc[Appearance]): T = appearance(propertyHintDir)
+proc globalDir*(T: typedesc[Appearance]): T = appearance(propertyHintGlobalDir)
+proc file*(T: typedesc[Appearance]): T = appearance(propertyHintfile)
+proc globalFile*(T: typedesc[Appearance]): T = appearance(propertyHintGlobalFile)
+proc flags2dNavigation*(T: typedesc[Appearance]): T = appearance(propertyHintLayers2DNavigation)
+proc flags2dPhysics*(T: typedesc[Appearance]): T = appearance(propertyHintLayers2DPhysics)
+proc flags2dRender*(T: typedesc[Appearance]): T = appearance(propertyHintLayers2DRender)
+proc flags3dNavigation*(T: typedesc[Appearance]): T = appearance(propertyHintLayers3DNavigation)
+proc flags3dPhysics*(T: typedesc[Appearance]): T = appearance(propertyHintLayers3DPhysics)
+proc flags3dRender*(T: typedesc[Appearance]): T = appearance(propertyHintLayers3DRender)
+proc flagsAvoidance*(T: typedesc[Appearance]): T = appearance(propertyHintLayersAvoidance)
+proc multiline*(T: typedesc[Appearance]): T = appearance(propertyHintMultilineText)
+
+proc custom*(T: typedesc[Appearance];
       hint: PropertyHint = propertyHintNone;
-      hintstring: String = gdstring"";
-      usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): untyped =
-  register_property_iden(`iden`, `alias`, `hint`, `hintstring`, `usage`)
+      hintstring: String = String.empty;
+      usage: set[PropertyUsageFlags] = {propertyUsageEditor, propertyUsageStorage};
+    ): T =
+  appearance(hint= hint, hintstring= hintstring, usage= usage)
 
-template gdexport*[T: SomeUserClass; S: SomeProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S)): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter)
-
-template gdexport*(iden: SomeProperty, alias: static[alias] = noAlias)  =
-  when iden is Node:
-    register_property_iden(iden, alias, hint= propertyHintNodeType, hint_string= gdstring className `iden`)
-  else:
-    register_property_iden(iden, alias)
-
-template gdexport_color_no_alpha*[T: SomeUserClass, S: SomeColorProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintColorNoAlpha)
-
-template gdexport_color_no_alpha*(iden: SomeColorProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintColorNoAlpha)
-
-template gdexport_dir*[T: SomeUserClass; S: SomeStringProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintDir)
-
-template gdexport_dir*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintDir)
-
-template gdexport_global_dir*[T: SomeUserClass; S: SomeStringProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintGlobalDir)
-
-template gdexport_global_dir*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintGlobalDir)
-
-template gdexport_file*[T: SomeUserClass; S: SomeStringProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintFile)
-
-template gdexport_file*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintFile)
-
-template gdexport_global_file*[T: SomeUserClass; S: SomeStringProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintGlobalFile)
-
-template gdexport_global_file*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintGlobalFile)
-
-template gdexport_enum*[T: SomeUserClass; S: SomeIntProperty|SomeStringProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-      enums: varargs[string];
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+proc `enum`*(T: typedesc[Appearance];
+    enums: varargs[string]): T =
+  appearance(
     hint= propertyHintEnum,
-    hint_string= enums.joinArg)
+    hint_string= gdstring enums.joinArg)
 
-template gdexport_enum*(iden: SomeIntProperty|SomeStringProperty, enums: varargs[string], alias: static[alias] = noAlias) =
-    register_property_iden(`iden`, `alias`, hint= propertyHintEnum, hint_string= `enums`.joinArg)
-
-template gdexport_flags*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-      flags: varargs[string];
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+proc `flags`*(T: typedesc[Appearance];
+    flags: varargs[string]): T =
+  appearance(
     hint= propertyHintFlags,
-    hint_string= flags.joinArg)
+    hint_string= gdstring flags.joinArg)
 
-template gdexport_flags*(iden: SomeIntProperty, flags: varargs[string], alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintFlags, hint_string= `flags`.joinArg)
-
-template gdexport_flags_2d_navigation*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers2dNavigation)
-
-template gdexport_flags_2d_navigation*(iden: SomeIntProperty; alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dNavigation)
-
-template gdexport_flags_2d_physics*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers2dPhysics)
-
-template gdexport_flags_2d_physics*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dPhysics)
-
-template gdexport_flags_2d_render*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers2dRender)
-
-template gdexport_flags_2d_render*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers2dRender)
-
-template gdexport_flags_3d_navigation*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers3dNavigation)
-
-template gdexport_flags_3d_navigation*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dNavigation)
-
-template gdexport_flags_3d_physics*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers3dPhysics)
-
-template gdexport_flags_3d_physics*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dPhysics)
-
-template gdexport_flags_3d_render*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayers3dRender)
-
-template gdexport_flags_3d_render*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayers3dRender)
-
-template gdexport_flags_avoidance*[T: SomeUserClass; S: SomeIntProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintLayersAvoidance)
-
-template gdexport_flags_avoidance*(iden: SomeIntProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintLayersAvoidance)
-
-template gdexport_exp_easing*[T: SomeUserClass; S: SomeFloatProperty](
-      name;
-      getter: proc(self: T): S;
-      setter: proc(self: T; value: S);
-      extra: varargs[ExpEasingArgument];
-    ): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+proc expEasing*(T: typedesc[Appearance];
+    extra: varargs[ExpEasingArgument]): T =
+  appearance(
     hint= propertyHintExpEasing,
-    hint_string= @extra.mapIt($it).join(","))
+    hint_string= gdstring @extra.mapIt($it).joinArg)
 
-template gdexport_exp_easing*(iden: SomeFloatProperty, extra: varargs[ExpEasingArgument], alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintExpEasing, hint_string= "attenuation")
-
-template gdexport_multiline*[T: SomeUserClass; S: SomeStringProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S)): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    hint= propertyHintMultilineText)
-
-template gdexport_multiline*(iden: SomeStringProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintMultilineText)
-
-template gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S);
-    validTypes: varargs[string]): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+proc nodePath*(T: typedesc[Appearance];
+    validTypes: varargs[string]): T =
+  appearance(
     hint= propertyHintNodePathValidTypes,
-    hint_string= @validTypes.join(","))
+    hint_string= gdstring @validTypes.joinArg)
 
-macro gdexport_node_path*[T: SomeUserClass; S: SomeProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S);
-    validTypes: varargs[typedesc[Node]]): untyped =
-  result = bindSym"gdexport_node_path".newCall(name, getter, setter)
+macro nodePath*(T: typedesc[Appearance];
+    validTypes: varargs[typedesc[Node]]): Appearance =
+  result = bindSym"nodePath".newCall(T)
   for valid in validTypes:
     result.add bindSym"$".newCall bindSym"className".newCall valid
 
-template gdexport_node_path*(iden: typedesc[NodePath], validTypes: varargs[string], alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintNodePathValidTypes, hint_string= validTypes.joinArg)
 
-template gdexport_placeholder*[T: SomeUserClass; S: SomeProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S);
-    placeholder: String): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+proc placeholder*(T: typedesc[Appearance];
+    placeholder: String): T =
+  appearance(
     hint= propertyHintPlaceholderText,
     hint_string= placeholder)
 
-template gdexport_placeholder*(iden: SomeProperty, placeholder: String, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, hint= propertyHintPlaceholderText, hint_string= `placeholder`)
-
-template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S);
+proc range*[S: SomeNumber](T: typedesc[Appearance];
     min, max: S;
-    extra: varargs[RangeArgument]): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-      hint= propertyHintRange,
-      hint_string= rangeHintString(min, max, step= defaultUnit(typeof S), extra))
-
-template gdexport_range*[S: SomeNumericProperty](
-    iden: typedesc[S],
-    min, max: S,
-    extra: varargs[RangeArgument],
-    alias: static[alias] = noAlias) =
-  gdexport_range(iden, min, max, step= defaultUnit(typeof S), extra, alias)
-
-template gdexport_range*[T: SomeUserClass; S: SomeNumericProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S);
-    min, max, step: S; extra: varargs[RangeArgument]): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
+    step: S;
+    extra: varargs[RangeArgument]): T =
+  var hint_string = @[$min, $max, $step]
+  if extra.len > 0:
+    hint_string = hint_string.concat(@extra.mapit($it))
+  appearance(
     hint= propertyHintRange,
-    hint_string= rangeHintString(min, max, step, extra))
+    hint_string= hint_string.join(","))
 
-template gdexport_range*[S: SomeNumericProperty](
-    iden: typedesc[S],
-    min, max, step: S,
-    extra: varargs[RangeArgument],
-    alias: static[alias] = noAlias) =
-  # compiler bug mitigation https://github.com/nim-lang/Nim/issues/11769
-  const hintString = when `extra`.len > 0:
-    rangeHintString(`min`, `max`, `step`, `extra`)
-  else:
-    rangeHintString(`min`, `max`, `step`)
+proc range*[S: SomeNumber](T: typedesc[Appearance];
+    min, max: S;
+    extra: varargs[RangeArgument]): T =
+  var hint_string = @[$min, $max]
+  if extra.len > 0:
+    hint_string = hint_string.concat(@extra.mapit($it))
+  appearance(
+    hint= propertyHintRange,
+    hint_string= hint_string.join(","))
 
-  register_property_iden(`iden`, `alias`, hint= propertyHintRange, hint_string= hintString)
-
-template gdexport_storage*[T: SomeUserClass; S: SomeProperty](
-    name;
-    getter: proc(self: T): S;
-    setter: proc(self: T; value: S)): untyped =
-  register_property(typedesc T, name, typedesc S, getter, setter,
-    usage= {propertyUsageStorage})
-
-template gdexport_storage*(iden: SomeProperty, alias: static[alias] = noAlias) =
-  register_property_iden(`iden`, `alias`, usage= {propertyUsageStorage})
 
 macro processExports*(T: typed): untyped =
-  propertyStage = pre_property
 
   let classIdent = T.getTypeInst[1].identifier
   let fields = T.recList
 
   result = newStmtList()
   for field in fields:
-    let fieldIdent = field.identifier
-    let dotExpr = newDotExpr(classIdent, fieldIdent)
+    if field.hasPragma("gdexport"):
+      let fieldIdent = field.identifier
+      let propName = fieldIdent.toStrLit
 
-    let classStmts = newStmtList()
-    let fieldStmts = newStmtList()
-    let pragmas = field.pragmas
-    for pragma in pragmas:
-      let pragmaIdent = pragma.identifier
-      if pragmaIdent in exportPragmasClass:
-        let args = @[classIdent].concat(pragma.args)
-        classStmts.add pragmaIdent.newCall args
-      elif pragmaIdent in exportPragmasField:
-        let args = @[dotExpr].concat(pragma.args)
-        fieldStmts.add pragmaIdent.newCall args
+      let editorhint = field.getPragmaVal("gdexport")
+      if editorhint == nil:
+        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent)
+      else:
+        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent, editorhint)
     # Always class-level pragmas first so that groups/subgroups/categories work correctly regardless
     # of the order of pragmas applied to the field
-    result.add classStmts.add(fieldStmts) 
