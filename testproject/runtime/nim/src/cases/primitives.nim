@@ -1,7 +1,6 @@
 import gdext
 import testutils
-import std/unittest
-unittest.disableParamFiltering()
+import std/unicode
 
 runtime: suite "TypedArray":
   test "construct":
@@ -56,3 +55,13 @@ runtime: suite "String":
   test "to nim-string":
     let gdstr: String = "String"
     check $gdstr == "String"
+
+  test "Variable-width encoding":
+    let ja_raw: string = "これは日本語です。"
+    let en_raw: string = "This is English."
+    let ja: String = ja_raw
+    let en: String = en_raw
+    for (str, Str) in [(ja_raw, ja), (en_raw, en)]:
+      check str == $Str
+      for i, rune in str.toRunes:
+        check rune == Str[i]
