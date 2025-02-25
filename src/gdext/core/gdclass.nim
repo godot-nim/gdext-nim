@@ -3,6 +3,7 @@ import std/[tables, typetraits]
 import gdext/buildconf
 
 import gdext/gdinterface/[native, extracommands]
+import gdext/gen/globalenums
 import gdext/utils/macros
 
 import gdext/core/builtinindex
@@ -26,7 +27,14 @@ type
     when Dev.debugCallbacks:
       name*: string
 
-type
+  HeapPropertyInfo* = object
+    `type`*: VariantType
+    name*: ref StringName
+    className*: ref Stringname
+    hint*: PropertyHint
+    hintString*: ref String
+    usage*: set[PropertyUsageFlags]
+
   Object* = ptr object of RootObj
     control: ObjectControl
   RefCounted* = ptr object of Object

@@ -37,7 +37,7 @@ macro parseParams (params): untyped =
     if i == 0: continue
     let namelit = name.toStrLit
     arguments.add quote do:
-      propertyInfo(typedesc `typ`, stringName `namelit`)
+      propertyInfo(typedesc `typ`, stringName `namelit`).unheap
 
   quote do: @`arguments`
 
