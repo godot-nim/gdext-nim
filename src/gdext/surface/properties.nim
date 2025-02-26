@@ -30,6 +30,55 @@ type
   RangeArgument*  = enum
     or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
 
+macro makeDefaultHintStringEnum(Enum): string  =
+  var str: string
+  var i: int
+  for elem in Enum.enumTy[1..^1]:
+    if str != "": str.add ","
+    case elem.kind
+    of nnkEnumFieldDef:
+      case elem[1].kind
+      of nnkIntLit:
+        i = elem[1].intVal
+      of nnkTupleConstr:
+        i = elem[1][0].intVal
+      else: discard
+      str.add elem[0].strVal & ":" & $i
+    else:
+      str.add elem.strVal & ":" & $i
+    inc i
+  newlit str
+
+macro makeDefaultHintStringBitField(Enum): string  =
+  var str: string
+  var i: int
+  for elem in Enum.enumTy[1..^1]:
+    if str != "": str.add ","
+    case elem.kind
+    of nnkEnumFieldDef:
+      case elem[1].kind
+      of nnkIntLit:
+        i = elem[1].intVal
+      of nnkTupleConstr:
+        i = elem[1][0].intVal
+      else: discard
+      str.add elem[0].strVal & ":" & $(1 shl i)
+    else:
+      str.add elem.strVal & ":" & $(1 shl i)
+    inc i
+  newlit str
+
+template makeDefaultHintString(E: typedesc[enum]): string =
+  makeDefaultHintStringEnum(E)
+template makeDefaultHintString[E: enum](T: typedesc[set[E]]): string =
+  makeDefaultHintStringBitField(E)
+
+
+proc defaultHintString[E: enum](T: typedesc[E|set[E]]): String =
+  once:
+    Meta(T).hintString = gdstring makeDefaultHintString(T)
+  Meta(T).hintString
+
 proc appearance(
       hint: PropertyHint = propertyHintNone;
       hintstring: String = String.empty;
@@ -50,6 +99,12 @@ proc propertyinfo(
     when proptyp is Node:
       ap.hint = propertyHintNodeType
       ap.hint_string = gdstring className proptyp
+    elif proptyp is enum:
+      ap.hint = propertyHintEnum
+      ap.hint_string = proptyp.defaultHintString
+    elif proptyp is system.set:
+      ap.hint = propertyHintFlags
+      ap.hint_string = proptyp.defaultHintString
 
   propertyInfo(proptyp, name,
     ap.hint, ap.hintstring, ap.usage)
@@ -69,7 +124,7 @@ proc gdexport_internal*(
   classDB.registerProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
 
 proc gdexport_internal*(
-      name: string;
+    name: string;
       typ: typedesc[SomeUserClass];
       proptyp: typedesc[SomeProperty];
       getter, setter: StringName;

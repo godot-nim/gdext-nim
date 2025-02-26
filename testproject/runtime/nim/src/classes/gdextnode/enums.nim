@@ -16,7 +16,7 @@ type TestEnumB = enum
 
 type TestFlags = enum
   Flag1
-  Flag2
+  Flag2 = 3
   Flag3
   Flag4
   Flag5
