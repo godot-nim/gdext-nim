@@ -19,20 +19,24 @@ func hasNoReturn*(node: NimNode): bool =
 func hasReturn*(node: NimNode): bool =
   not node.hasNoReturn
 
-func typeDef*(typ: NimNode): NimNode =
-  case typ.typeKind
-  of ntyTypeDesc:
-    let typ = typ.getTypeInst[1]
-    case typ.kind
-    of nnkBracketExpr:
-      typ[0].getImpl
+func typeDef*(node: NimNode): NimNode =
+  case node.kind
+  of nnkTypeDef:
+    node
+  of nnkBracketExpr:
+    if node[0].eqIdent "typeDesc":
+      node[1].typeDef
     else:
-      typ.getImpl
-  of ntyGenericInst:
-    typ[0].getImpl
+      error lisprepr node
+      nil
+  of nnkSym:
+    let impl = node.getImpl
+    if impl == nil:
+      node.getTypeInst.typeDef
+    else:
+      impl.typeDef
   else:
-    error lisprepr typ, typ
-    nil
+    node.getTypeInst.typeDef
 
 func objectTy*(node: NimNode): NimNode =
   case node.kind
@@ -55,6 +59,20 @@ func ofInherit*(node: NimNode): NimNode =
   else:
     error lisprepr node, node
     nil
+
+func enumTy*(node: NimNode): NimNode =
+  case node.kind
+  of nnkEnumTy:
+    node
+  of nnkTypeDef:
+    if node[2].kind == nnkEnumTy:
+      node[2]
+    else:
+      error lisprepr node
+      nil
+  else:
+    node.typeDef.enumTy
+
 
 func typeSym*(node: NimNode): NimNode =
   case node.kind

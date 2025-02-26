@@ -10,7 +10,9 @@ import gdext/gen/globalenums except VariantType
 type
   GodotEnumMeta* = object
     className*: StringName
-proc Meta*[T: enum](_: typedesc[T]): var GodotEnumMeta =
+    hintString*: String
+
+proc Meta*[T: enum](_: typedesc[T|set[T]]): var GodotEnumMeta =
   var instance {.global.} : GodotEnumMeta
   instance
 
