@@ -1,2 +1,2 @@
-import gdextnode/[typedef, functions]
-export            typedef, functions
+import gdextnode/[typedef, functions, enums]
+export            typedef, functions, enums

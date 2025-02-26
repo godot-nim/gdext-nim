@@ -1,7 +1,7 @@
 import std/macros, std/sets
 import gdext/gdinterface/[extracommands, classDB]
 import gdext/core/[gdclass]
-import gdext/core/userclass/[contracts, propertyinfo]
+import gdext/core/userclass/[contracts]
 
 proc registerEnumField*(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
   classDB.registerIntegerConstant(className, enumName, fieldName, value, isBitField)
@@ -42,8 +42,8 @@ proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.co
 
   call.add newlit isBitField
   result = quote do:
+    template EnumOwner*(_: typedesc[`enumType`]): typedesc = `Class`
     proc `enumType` {.execon: Contract[`Class`].enums.} =
-      Meta(typedesc `enumType`).className = stringname $className(`Class`) & "." & $`enumTypeStr`
       `call`
   registeredEnums.incl enumTypeStr
 
