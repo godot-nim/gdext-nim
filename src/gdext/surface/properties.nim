@@ -73,6 +73,34 @@ template makeDefaultHintString(E: typedesc[enum]): string =
 template makeDefaultHintString[E: enum](T: typedesc[set[E]]): string =
   makeDefaultHintStringBitField(E)
 
+proc rangeDef(node: NimNode): NimNode =
+  case node.kind
+  of nnkSym:
+    let impl = node.getImpl
+    if impl == nil:
+      node.getTypeInst.rangeDef
+    else:
+      impl.rangeDef
+  of nnkBracketExpr:
+    if node[0].eqIdent"typeDesc":
+      node[1].rangeDef
+    elif node[0].eqIdent"range":
+      node
+    else:
+      nil
+  of nnkTypeDef:
+    node[2].rangeDef
+  else:
+    nil
+
+macro makeDefaultHintStringRange(Range): string  =
+  let def = Range.rangeDef
+  if def == nil: return newlit ""
+  let a = def[1][1]
+  let b = def[1][2]
+  quote do:
+    $`a` & "," & $`b`
+
 
 proc defaultHintString[E: enum](T: typedesc[E|set[E]]): String =
   once:
@@ -105,6 +133,9 @@ proc propertyinfo(
     elif proptyp is system.set:
       ap.hint = propertyHintFlags
       ap.hint_string = proptyp.defaultHintString
+    elif proptyp is range:
+      ap.hint = propertyHintRange
+      ap.hint_string = proptyp.makeDefaultHintStringRange
 
   propertyInfo(proptyp, name,
     ap.hint, ap.hintstring, ap.usage)
