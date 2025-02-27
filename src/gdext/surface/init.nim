@@ -43,13 +43,17 @@ template GDExtension_EntryPoint*: untyped =
     # almost all uses is to register user-defined classes
     of Initialization_Core:
       exec_initialize_core()
+      registerImplicitly(Initialization_Core)
     of Initialization_Servers:
       exec_initialize_servers()
+      registerImplicitly(Initialization_Servers)
     of Initialization_Scene:
       initializeExtensionMain()
       exec_initialize_scene()
+      registerImplicitly(Initialization_Scene)
     of Initialization_Editor:
       exec_initialize_editor()
+      registerImplicitly(Initialization_Editor)
       const loadedClasses = contracts.invoked.len
       gLoaded = loadedClasses
       {.emit: "NimMain();".}
