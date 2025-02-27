@@ -137,6 +137,9 @@ macro gdsync*(body): untyped =
     if body.body.kind == nnkEmpty: # forward declaration
       hint "{.gdsync.} is not required for forward declarations.", body
       body
+    elif body.name.eqIdent "onInit": # forward declaration
+      hint "{.gdsync.} is not required for onInit.", body
+      body
     elif body.hasPragma("base"):
       sync_virtualDef(body)
     else:
