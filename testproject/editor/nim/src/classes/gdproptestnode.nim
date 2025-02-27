@@ -5,11 +5,14 @@ import gdext/classes/[
 ]
 
 type PropTestEnum* = enum
-  PropTestEnum1, PropTestEnum2, PropTestEnum3
+  PropTestEnum1, PropTestEnum2 = 10, PropTestEnum3
+type PropTestFlags* = enum
+  PropTestFlag1, PropTestFlag2 = 10, PropTestFlag3
 
 type PropTestNode* {.gdsync, initlevel: Initialization_Scene.} = ptr object of Node
   icon*: gdref Texture2D
   PropTestEnum_with_export*: PropTestEnum
+  PropTestFlags_with_export*: set[PropTestFlags]
   string_with_export*: string = "with export"
   string_with_export_placeholder*: string
   string_with_export_dir*: string = "res://nim"
@@ -52,10 +55,15 @@ gdexport "icon",
   proc (self: PropTestNode; value: gdref Texture2D) = self.icon = value
 
 PropTestNode.bind PropTestEnum
+PropTestNode.bind set[PropTestFlags]
 
 gdexport "PropTestEnum_with_export",
   proc (self: PropTestNode): PropTestEnum = self.PropTestEnum_with_export,
   proc (self: PropTestNode; value: PropTestEnum) = self.PropTestEnum_with_export = value
+
+gdexport "PropTestFlags_with_export",
+  proc (self: PropTestNode): set[PropTestFlags] = self.PropTestFlags_with_export,
+  proc (self: PropTestNode; value: set[PropTestFlags]) = self.PropTestFlags_with_export = value
 
 gdexport "string_with_export",
   proc (self: PropTestNode): string = self.string_with_export,
