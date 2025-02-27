@@ -11,7 +11,11 @@ import contracts
 import methodinfo
 import virtuals
 
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
 const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by gdext."
+
 
 macro registerProc*(procdef): untyped =
   let procdef =
@@ -23,10 +27,15 @@ macro registerProc*(procdef): untyped =
 
   let methodinfoDef = procdef.classMethodInfo(gdname)
 
-  quote do:
+  result = quote do:
     proc `gdname` {.execon: Contract[typedesc[`Self`]].procedure.} =
       let info = `methodinfoDef`
       classDB.registerMethod(className(typedesc `Self`), addr info)
+
+  when Assistance.genEditorHelp:
+    let desc = procdef.getEditorHelp
+    result.body.add quote do:
+      docClassDB[typedesc `Self`].methods.add DocMethod(name: `gdname`, description: `desc`)
 
 proc makeNimMainProc(procdef: NimNode): NimNode =
   newProc(

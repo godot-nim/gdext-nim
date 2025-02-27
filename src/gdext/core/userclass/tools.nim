@@ -1,8 +1,25 @@
 import std/[sequtils]
 
+import gdext/buildconf
 import gdext/utils/macros
 import gdext/core/gdclass
 import propertyinfo
+
+proc docComment*(def: NimNode): NimNode =
+  if def.kind notin RoutineNodes: return
+  if def.body.len == 0: return
+  if def.body[0].kind != nnkCommentStmt: return
+  def.body[0]
+
+proc getDescription*(def: NimNode): string =
+  let desc = def.getPragmaVal("description") or def.docComment
+  if desc != nil: desc.strval
+  else: ""
+
+when Assistance.genEditorHelp:
+  import gdext/doctools
+  proc getEditorHelp*(def: NimNode): string =
+    def.getDescription.descToEditorHelp
 
 proc withCheckTypes*(node, onSelfTypeFailed, onDefault: NimNode): NimNode =
   let lineerror = bindSym "lineerror"

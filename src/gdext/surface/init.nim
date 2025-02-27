@@ -10,6 +10,9 @@ import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
 import gdext/buildconf
 
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
 
 const initialize_core* = event("initialize_core")
 const initialize_servers* = event("initialize_servers")
@@ -57,6 +60,8 @@ template GDExtension_EntryPoint*: untyped =
       const loadedClasses = contracts.invoked.len
       gLoaded = loadedClasses
       {.emit: "NimMain();".}
+      when Assistance.genEditorHelp:
+        doctools.generateEditorHelp()
 
   proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level

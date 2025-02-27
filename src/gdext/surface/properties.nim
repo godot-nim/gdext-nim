@@ -1,13 +1,18 @@
 from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
+import gdext/buildconf
 import gdext/gdinterface/[classDB, extracommands]
 import gdext/utils/[macros, staticevents]
 import gdext/core/gdclass
+import gdext/core/typeshift
 
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
+
+when Assistance.genEditorHelp:
+  import gdext/doctools
 
 template joinArg(s: varargs[string]): string = s.join(",")
 
@@ -159,10 +164,17 @@ proc gdexport_internal*(
       typ: typedesc[SomeUserClass];
       proptyp: typedesc[SomeProperty];
       getter, setter: StringName;
-      appearance: Appearance) =
+      appearance: Appearance;
+      description: string) =
   gdexport_internal(
     propertyInfo(stringName name, proptyp, appearance),
     className typ, getter, setter)
+  when Assistance.genEditorHelp:
+    docClassDB[typ].members.add DocMember(
+      name: name,
+      description: description,
+      typ: $APIType proptyp
+      )
 
 template gdexport*() {.pragma.}
 template gdexport*(appearance: Appearance) {.pragma.}
@@ -180,9 +192,10 @@ template gdexport*(
       proptyp: typedesc[SomeProperty];
       getter, setter: StringName;
       appearance: Appearance = appearance();
+      description = "";
     ): untyped =
   proc `name` {.execon: Contract[`typ`].property.} =
-    gdexport_internal(name, typ, proptyp, getter, setter, appearance)
+    gdexport_internal(name, typ, proptyp, getter, setter, appearance, description)
 
 
 macro gdexport*[T: SomeUserClass; P: SomeProperty](
@@ -191,7 +204,8 @@ macro gdexport*[T: SomeUserClass; P: SomeProperty](
       proptyp: typedesc[P];
       getter: proc(self: T): P;
       setter: proc(self: T; value: P);
-      appearance: Appearance;
+      appearance: Appearance = appearance();
+      description: string = "";
     ): untyped =
   result = newStmtList()
   let
@@ -217,21 +231,23 @@ macro gdexport*[T: SomeUserClass; P: SomeProperty](
   result.add quote do:
     proc `name` {.execon: Contract[`typ`].property.} =
       gdexport_internal(`name`, typedesc `typ`, typedesc `proptyp`,
-        `gettersym`.gdname, `settersym`.gdname, `appearance`)
+        `gettersym`.gdname, `settersym`.gdname, `appearance`, `description`)
 
 template gdexport*[T: SomeUserClass; P: SomeProperty](
       name: string;
       getter: proc(self: T): P;
       setter: proc(self: T; value: P);
       appearance: Appearance = appearance();
+      description = "";
     ): untyped =
-  gdexport(name, typedesc T, typedesc P, getter, setter, appearance)
+  gdexport(name, typedesc T, typedesc P, getter, setter, appearance, description)
 
 
 macro gdexport*(
       iden: typed;
       alias: static[alias];
       appearance: Appearance;
+      description = "";
     ): untyped =
   let classType = iden[0]
   let variable = iden[1]
@@ -241,19 +257,21 @@ macro gdexport*(
   let setter = quote do:
     proc(self: `classType`, value: `iden`) = self.`variable` = value
   quote do:
-    gdexport(`name`, typedesc `classType`, typedesc `iden`, `getter`, `setter`, `appearance`)
+    gdexport(`name`, typedesc `classType`, typedesc `iden`, `getter`, `setter`, `appearance`, `description`)
 
 template gdexport*(
       iden: typed;
       appearance: Appearance = appearance();
+      description = "";
     ): untyped =
-  gdexport(iden, noAlias, appearance)
+  gdexport(iden, noAlias, appearance, description)
 
 macro gdexport_preproperty[T: SomeUserClass](
       name: string;
       typ: typedesc[T];
       prop;
       appearance: Appearance = appearance();
+      description: string = "";
     ): untyped =
   let
     gettersym = genSym(nskProc, "get_" & $name)
@@ -274,7 +292,7 @@ macro gdexport_preproperty[T: SomeUserClass](
       registerProc `getterdef`
       registerProc `setterdef`
       gdexport_internal(`name`, `typ`, `typ`.`prop`,
-        `gettername`, `settername`, `appearance`)
+        `gettername`, `settername`, `appearance`, `description`)
 
 # Hints
 
@@ -383,10 +401,12 @@ macro processExports*(T: typed): untyped =
       let fieldIdent = field.identifier
       let propName = fieldIdent.toStrLit
 
+      let desc = field.getPragmaVal("description") or newLit ""
+
       let editorhint = field.getPragmaVal("gdexport")
       if editorhint == nil:
-        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent)
+        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent, bindSym"appearance".newCall(), desc)
       else:
-        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent, editorhint)
+        result.add bindSym"gdexport_preproperty".newCall(propName, classIdent, fieldIdent, editorhint, desc)
     # Always class-level pragmas first so that groups/subgroups/categories work correctly regardless
     # of the order of pragmas applied to the field
