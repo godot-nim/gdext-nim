@@ -34,12 +34,12 @@ var propertyStage {.compileTime.}: PropertyStage = PropertyStage.property
 import gdext/gen/[globalenums, builtinclasses, classindex]
 
 proc register_property_internal*(
-      info: PropertyInfo;
+      info: HeapPropertyInfo;
       typ: StringName;
       getter: StringName = StringName.empty;
       setter: StringName = StringName.empty;
     ) =
-  classDB.registerProperty(typ, addr info, setter, getter)
+  classDB.registerProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
 
 macro strlit(x): string = newlit $x
 

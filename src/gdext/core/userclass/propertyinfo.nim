@@ -90,27 +90,39 @@ proc defaultUnit*[S: SomeFloatProperty](_: typedesc[S]): float =
   0.001
 proc defaultUnit*[S: SomeIntProperty](_: typedesc[S]): int = 1
 
+proc unheap*(info: HeapPropertyInfo): PropertyInfo =
+  cast[ptr PropertyInfo](addr info)[]
+
+proc new(x: String): ref String =
+  new result
+  result[] = x
+proc new(x: StringName): ref StringName =
+  new result
+  result[] = x
+
+
 proc propertyInfo*(typ: VariantType;
       name: StringName = StringName.empty;
       class_name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
-  PropertyInfo(
+    ): HeapPropertyInfo =
+  HeapPropertyInfo(
     type: typ,
-    name: addr name,
-    class_name: addr class_name,
-    hint: uint32 hint,
-    hint_string: addr hint_string,
-    usage: cast[uint32](usage),
+    name: new name,
+    class_name: new class_name,
+    hint: hint,
+    hint_string: new hint_string,
+    usage: usage,
   )
+
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
       name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
+    ): HeapPropertyInfo =
   propertyInfo(
     T.variantType,
     name,
@@ -135,5 +147,5 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[varargs[T]];
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
+    ): HeapPropertyInfo =
   propertyInfo(typedesc T, name, hint, hint_string, usage)
