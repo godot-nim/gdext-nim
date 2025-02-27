@@ -91,11 +91,17 @@ proc sync_methodDef*(body: Nimnode): NimNode =
   let methoddefWithEmit = methoddef.copy
   methoddefWithEmit.body = methoddef.callWithEmitter
 
+  let err = block:
+    let msg = quote do:
+      "Failed to override " & `methodstrlit` & ". Maybe gdext/classes/gd" & $`selfT`.EngineClass & " is not imported."
+    lineerror.newCall(msg, body)
+
   result = methoddef.withCheckTypes(
     onSelfTypeFailed =
       lineerror.newcall(newlit errmsgSelfTypeMismatch, body),
     onDefault = (quote do:
-      when `selfT`.vmap.hasKey(`methodStrlit`): # overriding built-in method
+      when not compiles(`selfT`.vmap): `err`
+      elif `selfT`.vmap.hasKey(`methodStrlit`): # overriding built-in method
         `methoddef`
         proc `procsym` {.execon: Contract[`selfT`].virtual.} =
           vmethods(`selfT`)[stringName `selfT`.vmap[`methodstrlit`]] = `selfT`.`methodname`
