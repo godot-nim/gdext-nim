@@ -6,6 +6,9 @@ var
   arg0_noret_result: string
   arg1_noret_result: string
 
+# {.gdsync.} for forward declaration should be ignored.
+proc arg0_noret(self: GDExtNode) {.gdsync.}
+
 proc arg0_noret(self: GDExtNode) {.gdsync.} =
   arg0_noret_result = "arg0_noret()"
 
