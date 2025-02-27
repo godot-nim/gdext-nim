@@ -54,7 +54,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   node_ref* {.gdexport.}: Node
   node_path* {.gdexport(Appearance.nodePath("Node2D", "Node3D")).}: NodePath
 
-PropTestNodePragmas.registerEnum PropTestPragmasEnum
+PropTestNodePragmas.bind PropTestPragmasEnum
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline = typedArray[String](1)

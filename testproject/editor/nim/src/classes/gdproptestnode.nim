@@ -51,7 +51,7 @@ gdexport "icon",
   proc (self: PropTestNode): gdref Texture2D = self.icon,
   proc (self: PropTestNode; value: gdref Texture2D) = self.icon = value
 
-PropTestNode.registerEnum PropTestEnum
+PropTestNode.bind PropTestEnum
 
 gdexport "PropTestEnum_with_export",
   proc (self: PropTestNode): PropTestEnum = self.PropTestEnum_with_export,
