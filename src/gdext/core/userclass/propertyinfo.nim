@@ -46,6 +46,16 @@ template metadata*(T: typedesc[enum]): ClassMethodArgumentMetadata =
   else:
     MethodArgumentMetadata_Int_is_Uint64
 
+template metadata*[E: enum](T: typedesc[set[E]]): ClassMethodArgumentMetadata =
+  when sizeof(T) <= 1:
+    MethodArgumentMetadata_Int_is_Uint8
+  elif sizeof(T) <= 2:
+    MethodArgumentMetadata_Int_is_Uint16
+  elif sizeof(T) <= 4:
+    MethodArgumentMetadata_Int_is_Uint32
+  else:
+    MethodArgumentMetadata_Int_is_Uint64
+
 # Int
 # ---
 template metadata*(T: typedesc[int]): ClassMethodArgumentMetadata =
@@ -76,6 +86,7 @@ template metadata*(T: typedesc[float32]): ClassMethodArgumentMetadata = MethodAr
 template uniqueUsage*(T: typedesc): set[PropertyUsageFlags] = {}
 template uniqueUsage*(T: typedesc[Variant]): set[PropertyUsageFlags] = {propertyUsageNilIsVariant}
 template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsageClassIsEnum}
+template uniqueUsage*[E: enum](T: typedesc[set[E]]): set[PropertyUsageFlags] = {propertyUsageClassIsBitfield}
 
 type SomeProperty* = concept type t
   t.variantType is VariantType

@@ -64,6 +64,14 @@ func test_enum():
 	assert_equal(node.test_enum_b, GDExtNode.EnumB3)
 	assert_equal(node.echoVector2Axis(Vector2.AXIS_X), Vector2.AXIS_X)
 
+	assert_equal(node.echoTestFlags(GDExtNode.Flag1), GDExtNode.Flag1)
+	assert_equal(node.echoTestFlags(GDExtNode.Flag2 | GDExtNode.Flag4), GDExtNode.Flag2 | GDExtNode.Flag4)
+	assert_equal(node.test_flags, GDExtNode.Flag2)
+	node.test_flags = GDExtNode.Flag3
+	assert_equal(node.test_flags, GDExtNode.Flag3)
+	node.test_flags = GDExtNode.Flag1 | GDExtNode.Flag4
+	assert_equal(node.test_flags, GDExtNode.Flag1 | GDExtNode.Flag4)
+
 func _on_nim_signal_arg0():
 	signal_arg0_executed = true
 func _on_nim_signal_arg1(what):
