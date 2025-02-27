@@ -134,13 +134,19 @@ proc toLevel(node: NimNode): InitializationLevel =
 macro gdsync*(body): untyped =
   case body.kind
   of nnkMethodDef:
-    if body.hasPragma("base"):
+    if body.body.kind == nnkEmpty: # forward declaration
+      hint "{.gdsync.} is not required for forward declarations.", body
+      body
+    elif body.hasPragma("base"):
       sync_virtualDef(body)
     else:
       sync_methodDef(body)
   of nnkProcDef, nnkConverterDef, nnkFuncDef:
     if body.isSignal:
       sync_signal(body)
+    elif body.body.kind == nnkEmpty: # forward declaration
+      hint "{.gdsync.} is not required for forward declarations.", body
+      body
     else:
       sync_procDef(body)
   of nnkTypeDef:
