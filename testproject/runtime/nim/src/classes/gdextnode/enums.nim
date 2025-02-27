@@ -22,9 +22,9 @@ type TestFlags = enum
   Flag5
 
 
-GDExtNode.registerEnum TestEnumA
-GDExtNode.registerEnum TestEnumB
-GDExtNode.registerBitField TestFlags
+GDExtNode.bind TestEnumA
+GDExtNode.bind TestEnumB
+GDExtNode.bind set[TestFlags]
 
 var testEnumA: TestEnumA = EnumA2
 var testEnumB: TestEnumB = EnumB2

@@ -3,20 +3,20 @@ import gdext/gdinterface/[extracommands, classDB]
 import gdext/core/[gdclass]
 import gdext/core/userclass/[contracts]
 
-proc registerEnumField*(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
+proc registerEnumField(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
   classDB.registerIntegerConstant(className, enumName, fieldName, value, isBitField)
 
-proc registerEnumFields*(className, enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
+proc registerEnumFields(className, enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
   for name, value in fields.items:
     registerEnumField(className, enumName, name, value, isBitField)
 
-template registerEnumFields*[T: SomeUserClass](Class: typedesc[T]; enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
+template registerEnumFields[T: SomeUserClass](Class: typedesc[T]; enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
   registerEnumFields(className Class, enumName, fields, isBitField)
 
 var registeredEnums {.compileTime.}: HashSet[string]
 
-proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.compileTime.} =
-  let Enum = Enum.getTypeInst[1]
+macro registerEnumInternal(Class, Enum; isBitField: static bool) =
+  let Enum = Enum.getTypeInst
   let def = Enum.getImpl
   let enumType = Enum.getTypeInst
   let enumTypeStr = $enumType.toStrLit
@@ -47,14 +47,14 @@ proc registerEnumInternal*(Class, Enum: NimNode; isBitField: bool): NimNode {.co
       `call`
   registeredEnums.incl enumTypeStr
 
-macro registerEnum*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
-  registerEnumInternal(Class, Enum, false)
+template `bind`*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
+  registerEnumInternal(Class, E, false)
 
-macro registerBitField*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
-  registerEnumInternal(Class, Enum, true)
+template `bind`*[T: SomeUserClass; E: enum](Class: typedesc[T]; Flags: typedesc[set[E]]) =
+  registerEnumInternal(Class, E, true)
 
-macro registerEnum*[E: enum](Enum: typedesc[E]) =
-  registerEnumInternal(ident"ExtensionMain", Enum, false)
+template `bind`*[E: enum](Enum: typedesc[E]) =
+  registerEnumInternal(ExtensionMain, E, false)
 
-macro registerBitField*[E: enum](Enum: typedesc[E]) =
-  registerEnumInternal(ident"Extensionmain", Enum, true)
+template `bind`*[E: enum](Flags: typedesc[set[E]]) =
+  registerEnumInternal(Extensionmain, E, true)
