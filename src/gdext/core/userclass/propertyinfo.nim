@@ -1,4 +1,4 @@
-import std/macros
+import std/[macros, strutils]
 
 import gdext/gdinterface/[ native, extracommands ]
 import gdext/core/builtinindex
@@ -8,12 +8,25 @@ import gdext/core/typeshift
 import gdext/gen/globalenums except VariantType
 
 type
-  GodotUnboundSymbolDefect* = object of Defect
   GodotEnumMeta* = object
     className*: StringName
 proc Meta*[T: enum](_: typedesc[T]): var GodotEnumMeta =
   var instance {.global.} : GodotEnumMeta
   instance
+
+proc className*(E: typedesc[enum]): StringName =
+  mixin EnumOwner
+  once:
+    Meta(E).className =
+      when compiles(E.EnumOwner):
+        stringName $className(E.EnumOwner) & "." & $E
+      else:
+        let s = ($E).split("_")
+        if s.len == 2 and s[0][0].isUpperAscii and s[1][0].isUpperAscii:
+          stringName s.join(".")
+        else:
+          stringName $E
+  Meta(E).className
 
 # Metadata
 # ========
@@ -109,10 +122,7 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
     elif T is GdRef:
       className T.RefCounted
     elif T is enum:
-      if Meta(T).className == default(StringName):
-        raise newException(GodotUnboundSymbolDefect,
-          "cannot make propertyInfo of " & $T & "; call (registerEnum/registerBitField)(YourClass, YourEnum) to bind the enum to the class.")
-      Meta(T).className
+      className T
     else:
       StringName.empty),
     hint,

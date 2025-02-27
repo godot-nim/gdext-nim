@@ -11,6 +11,7 @@ func _ready():
 	test_func()
 	test_virtual_func()
 	test_grobal_func()
+	test_enum()
 	exit_with_status()
 
 func test_func():
@@ -36,10 +37,10 @@ func test_func():
 func test_virtual_func():
 	# $VirtualNode01.virtualMethod()
 	assert_equal($InheritedNode01.virtualMethod("from GDScript"),
-    "virtualMethod of InheritedNode01 is called from GDScript")
+	"virtualMethod of InheritedNode01 is called from GDScript")
 	# $VirtualNode02.virtualMethod()
 	assert_equal($InheritedNode02.virtualMethod("from GDScript"),
-    "virtualMethod of InheritedNode02 is called from GDScript")
+	"virtualMethod of InheritedNode02 is called from GDScript")
 
 func test_grobal_func():
 	NimMain.signal_arg0.connect(_on_nim_signal_arg0)
@@ -51,6 +52,17 @@ func test_grobal_func():
 
 	NimMain.exec_checks_use_api_from_toplevel()
 	assert_true(signal_arg0_executed and signal_arg1_executed)
+
+func test_enum():
+	assert_equal(node.echoTestEnumA(GDExtNode.EnumA1), GDExtNode.EnumA1)
+	assert_equal(node.echoTestEnumB(GDExtNode.EnumB1), GDExtNode.EnumB1)
+	assert_equal(node.test_enum_a, GDExtNode.EnumA2)
+	assert_equal(node.test_enum_b, GDExtNode.EnumB2)
+	node.test_enum_a = GDExtNode.EnumA3
+	node.test_enum_b = GDExtNode.EnumB3
+	assert_equal(node.test_enum_a, GDExtNode.EnumA3)
+	assert_equal(node.test_enum_b, GDExtNode.EnumB3)
+	assert_equal(node.echoVector2Axis(Vector2.AXIS_X), Vector2.AXIS_X)
 
 func _on_nim_signal_arg0():
 	signal_arg0_executed = true

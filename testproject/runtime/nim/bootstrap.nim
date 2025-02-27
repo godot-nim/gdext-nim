@@ -6,7 +6,6 @@ import gdext
 import cases/use_api_from_toplevel
 import cases/primitives
 import cases/variant
-import cases/enums
 import cases/image
 import cases/issues
 import classes/gdextnode
