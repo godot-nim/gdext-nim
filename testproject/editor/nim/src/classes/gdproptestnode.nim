@@ -13,6 +13,7 @@ type PropTestNode* {.gdsync, initlevel: Initialization_Scene.} = ptr object of N
   icon*: gdref Texture2D
   PropTestEnum_with_export*: PropTestEnum
   PropTestFlags_with_export*: set[PropTestFlags]
+  range_with_export*: range[1..5] = 1
   string_with_export*: string = "with export"
   string_with_export_placeholder*: string
   string_with_export_dir*: string = "res://nim"
@@ -64,6 +65,10 @@ gdexport "PropTestEnum_with_export",
 gdexport "PropTestFlags_with_export",
   proc (self: PropTestNode): set[PropTestFlags] = self.PropTestFlags_with_export,
   proc (self: PropTestNode; value: set[PropTestFlags]) = self.PropTestFlags_with_export = value
+
+gdexport "range_with_export",
+  proc (self: PropTestNode): range[1..5] = self.range_with_export,
+  proc (self: PropTestNode; value: range[1..5]) = self.range_with_export = value
 
 gdexport "string_with_export",
   proc (self: PropTestNode): string = self.string_with_export,
