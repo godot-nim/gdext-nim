@@ -67,7 +67,7 @@ nimble uninstall gdext
 
 * OS: Linux (Arch)
 * Engine: Godot 4.3.stable.arch_linux
-* Nim: 2.0.0, 2.0.12, 2.2.0
+* Nim: 2.0.0, 2.0.14, 2.2.0, 2.2.2
 * CC: gcc version 14.2.1 20240910 (GCC)
 
 ---

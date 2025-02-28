@@ -1,5 +1,6 @@
 import std/[tables, sets]
 
+import gdext/buildconf
 import gdext/utils/[macros]
 import gdext/gdinterface/classDB
 import gdext/core/gdclass
@@ -8,8 +9,12 @@ import gdext/core/typeshift
 
 import gdext/classes/gdobject
 
+import tools
 import contracts
 import propertyinfo
+
+when Assistance.genEditorHelp:
+  import gdext/doctools
 
 proc isSignal*(procdef: NimNode): bool = procdef.hasPragma("signal")
 
@@ -30,82 +35,80 @@ proc makebody (params, gdname, self: NimNode): NimNode =
     let variantArr = `variantArrDef`
     `self`.emitSignal(signalName, variantArr)
 
-macro parseParams (params): untyped =
+macro parseParams (params): seq[PropertyInfo] =
   var arguments = newNimNode nnkBracket
 
   for i, (name, typ, _) in params.breakArgs:
     if i == 0: continue
     let namelit = name.toStrLit
     arguments.add quote do:
-      propertyInfo(typedesc `typ`, stringName `namelit`)
+      propertyInfo(typedesc `typ`, stringName `namelit`).unheap
 
   quote do: @`arguments`
 
-macro contractSignal (params; gdname: string): untyped =
+macro contractSignal (params, procdef; gdname: string): untyped =
   let arg0_T = params[1][1]
   let procsym = ident $gdname
 
-  quote do:
+  result = quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
       classDB.registerSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
 
-proc sync_signal*(procDef: NimNode): NimNode =
+  when Assistance.genEditorHelp:
+    let desc = procdef.getEditorHelp
+    result.body.add quote do:
+      docClassDB[`arg0_T`].signals.add DocSignal(name: `gdname`, description: `desc`)
+
+const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
+
+macro syncSignalGlobal(procdef): untyped =
+  let extmain = ident "extmain"
+
+  if procdef.hasNoReturn:
+    error errmsgSignalResultTypeMismatch, procdef
+
+  let gdname = procdef.getPragmaVal("name") or procdef.name.toStrLit
+
+  let params = newFormalParams(
+      procdef.params[0],
+      newIdentDefs(ident"_", bindsym"typeof".newcall(extmain)))
+    .add(procdef.params[1..^1])
+
+  procdef.body = params.makebody(gdname, extmain)
+
+  if Extension.name in invoked:
+    error "Registration is already finished. Define it before `GDExtensionEntryPoint` appears.", procdef
+
+  result = quote do:
+    `procdef`
+    contractSignal(`params`, `procdef`, `gdname`)
+
+macro syncSignalLocal(procdef): untyped =
   const errmsgSignalResultTypeMismatch = "invalid form; to define signal, result must be type Error."
   if procdef.hasNoReturn:
     error errmsgSignalResultTypeMismatch, procdef
 
   let params = procdef.params
-  let procdef_global = copy procdef
 
-  let gdname = procDef.getPragmaVal("name") or procDef.name.toStrLit
-
-  let params_global = newFormalParams(
-    params[0],
-    newIdentDefs(ident"_", bindsym"typeof".newcall(ident"extmain")))
-  if params.len > 1:
-    params_global.add(params[1..^1])
-  procdef_global.body = params_global.makebody(gdname, ident"extmain")
-
-  if params.len <= 1:
-    return quote do:
-      `procdef_global`
-      contractSignal(`params_global`, `gdname`)
-
+  let gdname = procdef.getPragmaVal("name") or procdef.name.toStrLit
 
   let arg0T = params[1][1]
 
   if $arg0_T in invoked:
-    error "Registration is not reflected. Define it before calling proc register " & $arg0T & ".", procdef
-
-
-
-  result = newNimNode nnkWhenStmt
-
-  for i, arg in procdef.params:
-    if i == 0:
-      result.add newElifBranch(
-        (quote do: `arg` isnot Error),
-        bindsym"lineerror".newcall(newlit errmsgSignalResultTypeMismatch, procdef.name)
-      )
-    else:
-      let argT = arg[1]
-      result.add newElifBranch(
-        (quote do: `argT` isnot SomeProperty),
-        bindsym"lineerror".newcall(newlit "invalid form; the type `" & argT.repr & "` is not supported for argument.", arg)
-      )
+    error "Registration is already finished. Define it before `register " & $arg0T & "` appears.", procdef
 
   procdef.body = params.makebody(gdname, procdef.params[1][0])
-  result.add newElifBranch(
-    quote do:
-      `arg0T` is SomeClass,
-    quote do:
-      `procdef`
-      contractSignal(`params`, `gdname`)
-  )
+  quote do:
+    `procdef`
+    contractSignal(`params`, `procdef`, `gdname`)
 
+proc syncSignal*(procdef: NimNode): Nimnode =
+  if procdef.hasNoReturn:
+    error errmsgSignalResultTypeMismatch, procdef
 
-  result.add newElse(
-    quote do:
-      `procdef_global`
-      contractSignal(`params_global`, `gdname`)
-  )
+  if procdef.params.len == 1:
+    return bindSym"syncSignalGlobal".newCall(procdef)
+
+  procdef.withCheckTypes(
+    onSelfTypeFailed = bindSym"syncSignalGlobal".newCall(procdef),
+    onDefault = bindSym"syncSignalLocal".newCall(procdef))

@@ -7,20 +7,22 @@ var newStringFromStringName: PtrConstructor
 var String_length: PtrBuiltinMethod
 
 proc gdstring*(str: string): String =
-  interfaceStringNewWithLatin1Chars(addr result, cstring str)
+  interfaceStringNewWithUtf8Chars(addr result, cstring str)
 proc gdstring(sn: StringName): String =
   let args = [cast[pointer](addr sn)]
   newStringFromStringName(addr result, addr args[0])
 proc length(s: String): Int =
   String_length(addr s, nil, addr result, 0)
 proc `$`*(s: String): string =
+  var buffer {.global.}: string
   let length = s.length
-  result = newString(length)
-  discard interfaceStringToLatin1Chars(addr s, cstring result, length)
+  if buffer.len < length * 6: buffer.setlen(length*6)
+  let actualSize = interfaceStringToUtf8Chars(addr s, cstring buffer, buffer.len)
+  buffer[0..<actualSize]
 proc `$`*(s: StringName): string = $gdstring s
 
 proc stringName*(str: string): StringName =
-  interfaceStringNameNewWithLatin1Chars(addr result, cstring str, false)
+  interfaceStringNameNewWithUtf8Chars(addr result, cstring str)
 
 proc className*(o: ObjectPtr): string =
   var sn: StringName

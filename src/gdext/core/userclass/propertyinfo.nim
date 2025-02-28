@@ -1,20 +1,34 @@
-import std/macros
+import std/[macros, strutils]
 
 import gdext/gdinterface/[ native, extracommands ]
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
-import gdext/core/gdtypedarray
 import gdext/core/typeshift
 import gdext/gen/globalenums except VariantType
 
 type
-  GodotUnboundSymbolDefect* = object of Defect
   GodotEnumMeta* = object
     className*: StringName
-proc Meta*[T: enum](_: typedesc[T]): var GodotEnumMeta =
+    hintString*: String
+
+proc Meta*[T: enum](_: typedesc[T|set[T]]): var GodotEnumMeta =
   var instance {.global.} : GodotEnumMeta
   instance
+
+proc className*(E: typedesc[enum]): StringName =
+  mixin EnumOwner
+  once:
+    Meta(E).className =
+      when compiles(E.EnumOwner):
+        stringName $className(E.EnumOwner) & "." & $E
+      else:
+        let s = ($E).split("_")
+        if s.len == 2 and s[0][0].isUpperAscii and s[1][0].isUpperAscii:
+          stringName s.join(".")
+        else:
+          stringName $E
+  Meta(E).className
 
 # Metadata
 # ========
@@ -25,6 +39,16 @@ template metadata*(T: typedesc): ClassMethodArgumentMetadata = MethodArgumentMet
 # ----
 
 template metadata*(T: typedesc[enum]): ClassMethodArgumentMetadata =
+  when sizeof(T) <= 1:
+    MethodArgumentMetadata_Int_is_Uint8
+  elif sizeof(T) <= 2:
+    MethodArgumentMetadata_Int_is_Uint16
+  elif sizeof(T) <= 4:
+    MethodArgumentMetadata_Int_is_Uint32
+  else:
+    MethodArgumentMetadata_Int_is_Uint64
+
+template metadata*[E: enum](T: typedesc[set[E]]): ClassMethodArgumentMetadata =
   when sizeof(T) <= 1:
     MethodArgumentMetadata_Int_is_Uint8
   elif sizeof(T) <= 2:
@@ -64,31 +88,22 @@ template metadata*(T: typedesc[float32]): ClassMethodArgumentMetadata = MethodAr
 template uniqueUsage*(T: typedesc): set[PropertyUsageFlags] = {}
 template uniqueUsage*(T: typedesc[Variant]): set[PropertyUsageFlags] = {propertyUsageNilIsVariant}
 template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsageClassIsEnum}
+template uniqueUsage*[E: enum](T: typedesc[set[E]]): set[PropertyUsageFlags] = {propertyUsageClassIsBitfield}
 
 type SomeProperty* = concept type t
   t.variantType is VariantType
   t.uniqueUsage is set[PropertyUsageFlags]
 
-type SomeIntProperty* = concept type t
-  t is SomeInteger|PackedByteArray|PackedInt32Array|PackedInt64Array|TypedArray[Int]
+proc unheap*(info: HeapPropertyInfo): PropertyInfo =
+  cast[ptr PropertyInfo](addr info)[]
 
-type SomeFloatProperty* = concept type t
-  t is SomeFloat|PackedFloat32Array|PackedFloat64Array|TypedArray[Float]
+proc new(x: String): ref String =
+  new result
+  result[] = x
+proc new(x: StringName): ref StringName =
+  new result
+  result[] = x
 
-type SomeNumericProperty* = concept type t
-  t is SomeIntProperty|SomeFloatProperty
-
-type SomeStringProperty* = concept type t
-  t is string|String|PackedStringArray|TypedArray[String]
-
-type SomeColorProperty* = concept type t
-  t is Color|PackedColorArray|TypedArray[Color]
-
-proc defaultUnit*[S: SomeFloatProperty](_: typedesc[S]): float =
-  # TODO: This value should be read at runtime, not hard-coded.
-  # EditorSettings.getSetting("interface/inspector/default_float_step")
-  0.001
-proc defaultUnit*[S: SomeIntProperty](_: typedesc[S]): int = 1
 
 proc propertyInfo*(typ: VariantType;
       name: StringName = StringName.empty;
@@ -96,21 +111,22 @@ proc propertyInfo*(typ: VariantType;
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
-  PropertyInfo(
+    ): HeapPropertyInfo =
+  HeapPropertyInfo(
     type: typ,
-    name: addr name,
-    class_name: addr class_name,
-    hint: uint32 hint,
-    hint_string: addr hint_string,
-    usage: cast[uint32](usage),
+    name: new name,
+    class_name: new class_name,
+    hint: hint,
+    hint_string: new hint_string,
+    usage: usage,
   )
+
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
       name: StringName = StringName.empty;
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
+    ): HeapPropertyInfo =
   propertyInfo(
     T.variantType,
     name,
@@ -119,10 +135,7 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
     elif T is GdRef:
       className T.RefCounted
     elif T is enum:
-      if Meta(T).className == default(StringName):
-        raise newException(GodotUnboundSymbolDefect,
-          "cannot make propertyInfo of " & $T & "; call (registerEnum/registerBitField)(YourClass, YourEnum) to bind the enum to the class.")
-      Meta(T).className
+      className T
     else:
       StringName.empty),
     hint,
@@ -135,5 +148,5 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[varargs[T]];
       hint: PropertyHint = propertyHint_None;
       hint_string: String = String.empty;
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
-    ): PropertyInfo =
+    ): HeapPropertyInfo =
   propertyInfo(typedesc T, name, hint, hint_string, usage)

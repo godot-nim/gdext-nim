@@ -10,6 +10,9 @@ import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
 import gdext/buildconf
 
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
 
 const initialize_core* = event("initialize_core")
 const initialize_servers* = event("initialize_servers")
@@ -38,23 +41,29 @@ template GDExtension_EntryPoint*: untyped =
   proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
 
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
-  proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
+  proc initialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
       exec_initialize_core()
+      registerImplicitly(Initialization_Core)
     of Initialization_Servers:
       exec_initialize_servers()
+      registerImplicitly(Initialization_Servers)
     of Initialization_Scene:
       initializeExtensionMain()
       exec_initialize_scene()
+      registerImplicitly(Initialization_Scene)
     of Initialization_Editor:
       exec_initialize_editor()
+      registerImplicitly(Initialization_Editor)
       const loadedClasses = contracts.invoked.len
       gLoaded = loadedClasses
       {.emit: "NimMain();".}
+      when Assistance.genEditorHelp:
+        doctools.generateEditorHelp()
 
-  proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} =
+  proc deinitialize(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level
     # almost all uses is to register user-defined classes
     of Initialization_Core:
@@ -91,6 +100,7 @@ template GDExtension_EntryPoint*: untyped =
       return true
 
     except:
+      echo "FATAL ERROR: failed to initialize library."
       echo $getCurrentException()
       return false
 

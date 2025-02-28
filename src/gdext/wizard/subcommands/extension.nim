@@ -9,6 +9,7 @@ const
   `.gitignore` = staticRead templateroot/".gitignore"
   `bootstrap.nim` = staticRead templateroot/"bootstrap.nim"
   `config.nims` = staticRead templateroot/"config.nims"
+  `gdmyclass.nim` = staticRead templateroot/"src/classes/gdmyclass.nim"
 
 proc new_extension*(name = default Directory): 0..1 =
   var cli = CliContext(wizard: "wizard new-extension*")
@@ -30,13 +31,14 @@ proc new_extension*(name = default Directory): 0..1 =
   let symbols = @[
     ("$name", extension)
   ]
+  createDir extensionPath/"src/classes"
 
   writeFileWithDialog(extensionPath/extension & ".gdextension", `.gdextension`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/".gitignore", `.gitignore`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/"config.nims", `config.nims`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/"bootstrap.nim", `bootstrap.nim`.multiReplace(symbols))
+  writeFileWithDialog(extensionPath/"src/classes/gdmyclass.nim", `gdmyclass.nim`.multiReplace(symbols))
 
-  createDir extensionPath/"src"
 
 proc dispatch_new_extension*(opt: var OptParser) =
   next opt

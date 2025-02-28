@@ -24,8 +24,8 @@ export             builtinclasses, classindex, globalenums, localenums, structs
 import gdext/gen/utilityfuncs
 export utilityfuncs except print
 
-import gdext/surface/[ common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions ]
-export                 common, init, userclass, userenums, properties, pragmas, classutils, variantutils, nodeutils, arrayutils, conversions
+import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions ]
+export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
@@ -35,3 +35,11 @@ export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 proc print*(args: varargs[Variant, variant]) =
   if unlikely(args.len == 0): return
   utilityfuncs.print(args[0], args[1..^1])
+
+proc printRich*(args: varargs[Variant, variant]) =
+  if unlikely(args.len == 0): return
+  utilityfuncs.printRich(args[0], args[1..^1])
+
+proc printerr*(args: varargs[Variant, variant]) =
+  if unlikely(args.len == 0): return
+  utilityfuncs.printerr(args[0], args[1..^1])

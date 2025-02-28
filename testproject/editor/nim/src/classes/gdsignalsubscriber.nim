@@ -7,15 +7,17 @@ import ./gdsignalpublisher
 type SignalSubscriber* = ptr object of Node
   publisher*: SignalPublisher
 
-gdexport_custom "publisher",
+gdexport "publisher",
   getter = proc(self: SignalSubscriber): SignalPublisher =
     self.publisher,
   setter = proc(self: SignalSubscriber; value: SignalPublisher) =
     self.publisher = value,
+  Appearance.custom(
   hint = propertyHintNodeType,
-  hint_string = gdstring className Node
+  hint_string = gdstring className Node)
 
 proc recv*(self: SignalSubscriber; key: int) {.gdsync.} =
+  ## Take a argument and echo it.
   echo "receive: ", key
 
 method ready(self: SignalSubscriber) {.gdsync.} =

@@ -45,7 +45,16 @@ proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
       return
 
 proc callwithEmitter*(procdef: NimNode): NimNode =
-  ident($procdef.name & "_emit").newCall(procdef.params[1..^1].mapIt(it[0])).add(procdef.body)
+
+  let emitter = ident($procdef.name & "_emit")
+  let call = emitter.newCall(procdef.params[1..^1].mapIt(it[0])).add(procdef.body)
+  let errormsg = newlit "The " & $procdef.name & " method of the parent class cannot be called. Verify that the method exists, that the name is correct, and that the class module declaring the method is imported."
+  let error = bindSym"lineerror".newCall(errormsg, procdef.name)
+  quote do:
+    when compiles(`call`):
+      `call`
+    else:
+      `error`
 
 proc sync_virtualDef*(procdef: NimNode): NimNode =
   var middle = parseMiddle procdef

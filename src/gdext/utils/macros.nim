@@ -1,5 +1,5 @@
-import std/[ macros ]
-export       macros
+import std/macros
+export macros
 
 macro lineerror* (msg: static string; expr) =
   error msg, expr
@@ -19,20 +19,24 @@ func hasNoReturn*(node: NimNode): bool =
 func hasReturn*(node: NimNode): bool =
   not node.hasNoReturn
 
-func typeDef*(typ: NimNode): NimNode =
-  case typ.typeKind
-  of ntyTypeDesc:
-    let typ = typ.getTypeInst[1]
-    case typ.kind
-    of nnkBracketExpr:
-      typ[0].getImpl
+func typeDef*(node: NimNode): NimNode =
+  case node.kind
+  of nnkTypeDef:
+    node
+  of nnkBracketExpr:
+    if node[0].eqIdent "typeDesc":
+      node[1].typeDef
     else:
-      typ.getImpl
-  of ntyGenericInst:
-    typ[0].getImpl
+      error lisprepr node
+      nil
+  of nnkSym:
+    let impl = node.getImpl
+    if impl == nil:
+      node.getTypeInst.typeDef
+    else:
+      impl.typeDef
   else:
-    error lisprepr typ, typ
-    nil
+    node.getTypeInst.typeDef
 
 func objectTy*(node: NimNode): NimNode =
   case node.kind
@@ -55,6 +59,20 @@ func ofInherit*(node: NimNode): NimNode =
   else:
     error lisprepr node, node
     nil
+
+func enumTy*(node: NimNode): NimNode =
+  case node.kind
+  of nnkEnumTy:
+    node
+  of nnkTypeDef:
+    if node[2].kind == nnkEnumTy:
+      node[2]
+    else:
+      error lisprepr node
+      nil
+  else:
+    node.typeDef.enumTy
+
 
 func typeSym*(node: NimNode): NimNode =
   case node.kind
@@ -100,17 +118,25 @@ func identifier*(node: NimNode): NimNode =
     nil
 
 func pragmas*(node: NimNode): seq[NimNode] =
+  if node.isNil: return
   case node.kind
-  of nnkIdentDefs:
-    var sq: seq[NimNode] = @[]
-    for field in node:
-      if field.kind != nnkPragmaExpr:
-        continue
-      for pragma in field[1]:
-        sq.add pragma
-    sq
+  of nnkPragma:
+    node[0..^1]
+  of nnkEmpty:
+    @[]
+  of nnkProcTy, nnkIteratorTy, RoutineNodes:
+    node.pragma.pragmas
+  of nnkPragmaExpr:
+    node[1].pragmas
+  of nnkIdentDefs, nnkTypeDef:
+    if node[0].kind == nnkPragmaExpr:
+      node[0].pragmas
+    else: @[]
+  of nnkSym:
+    node.getImpl.pragmas
   else:
-    result
+    hint lisprepr node
+    @[]
 
 proc args*(node: NimNode): seq[NimNode] =
   case node.kind
@@ -140,35 +166,23 @@ func isVarargs*(node: NimNode): bool =
 proc super*(typedes: NimNode): NimNode = typedes.typeDef.objectTy.ofInherit.typeSym
 
 proc getPragmaVal*(node: NimNode; key: string): NimNode =
-  case node.kind
-  of RoutineNodes, nnkProcTy:
-    for expr in node.pragma:
-      case expr.kind
-      of nnkExprColonExpr, nnkCall, nnkCallStrLit:
-        if expr[0].eqIdent key:
-          return expr[1]
-      else: discard
-  of nnkSym:
-    return node.getImpl.getPragmaVal(key)
-  else:
-    error "not implimented yet for NimNodeKind:" & $node.kind, node
+  for expr in node.pragmas:
+    case expr.kind
+    of nnkExprColonExpr, nnkCall, nnkCallStrLit:
+      if expr[0].eqIdent key:
+        return expr[1]
+    else: discard
 
 proc hasPragma*(node: NimNode; key: string): bool =
-  case node.kind
-  of RoutineNodes, nnkProcTy:
-    for expr in node.pragma:
-      case expr.kind
-      of nnkIdent, nnkSym:
-        if expr.eqIdent key:
-          return true
-      of nnkExprColonExpr, nnkCall, nnkCallStrLit:
-        if expr[0].eqIdent key:
-          return true
-      else: discard
-  of nnkSym:
-    return node.getImpl.hasPragma(key)
-  else:
-    error "not implimented yet for NimNodeKind:" & $node.kind, node
+  for expr in node.pragmas:
+    case expr.kind
+    of nnkIdent, nnkSym:
+      if expr.eqIdent key:
+        return true
+    of nnkExprColonExpr, nnkCall, nnkCallStrLit:
+      if expr[0].eqIdent key:
+        return true
+    else: discard
 
 proc newBracket*(elems: varargs[NimNode]): NimNode =
   nnkBracket.newTree elems

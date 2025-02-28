@@ -1,6 +1,6 @@
 import gdext
 
-type VirtualNode01* = ptr object of Node
+type VirtualNode01* {.gdsync.} = ptr object of Node
 
 
 method virtualMethod*(self: VirtualNode01; str: string): string {.gdsync, base.} =

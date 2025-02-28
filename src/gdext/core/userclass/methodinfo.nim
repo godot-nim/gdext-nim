@@ -50,13 +50,13 @@ template hasResult*(middle: MiddleExp): bool = middle.result_T != nil
 proc returnValue(middle: MiddleExp): NimNode =
   if middle.hasResult:
     quote("@") do:
-      propertyInfo(typedesc @(middle.result_T))
+      propertyInfo(typedesc @(middle.result_T)).unheap
   else:
     quote("@") do:
-      propertyInfo(VariantType_Nil)
+      propertyInfo(VariantType_Nil).unheap
 proc returnValueInfo(middle: MiddleExp): NimNode =
   quote("@") do:
-    propertyInfo(typedesc @(middle.result_T))
+    propertyInfo(typedesc @(middle.result_T)).unheap
 proc returnValueMeta(middle: MiddleExp): NimNode =
   quote("@") do:
     metadata(typedesc @(middle.result_T))
@@ -65,7 +65,7 @@ proc argumentsInfo(middle: MiddleExp): NimNode =
   result = newNimNode nnkBracket
   for (name, Type, default) in middle.args:
     result.add quote("@") do:
-      propertyInfo(typedesc @Type, stringName @(name.toStrLit))
+      propertyInfo(typedesc @Type, stringName @(name.toStrLit)).unheap
 
 proc argumentsMeta(middle: MiddleExp): NimNode =
   result = newNimNode nnkBracket

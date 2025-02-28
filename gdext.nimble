@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.4.1"
+version       = "0.5.0"
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
@@ -31,7 +31,7 @@ proc report(version, script: string) =
     quit &"[Nim {version}] \"{script}\" failed."
 
 task compatibilityTest, "Compile with a supported range of Nims and check for compatibility.":
-  const versions = ["2.0.0", "2.0.12", "2.2.0"]
+  const versions = ["2.0.0", "2.0.14", "2.2.0", "2.2.2"]
   for version in versions:
     report version, &"choosenim {version}"
     report version, "nim c tests/importall"

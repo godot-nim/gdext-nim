@@ -6,8 +6,8 @@ import gdext
 import cases/use_api_from_toplevel
 import cases/primitives
 import cases/variant
-import cases/enums
 import cases/image
+import cases/prints
 import cases/issues
 import classes/gdextnode
 import classes/gdvirtualnode01
@@ -20,8 +20,6 @@ proc register_classes {.execon: initialize_scene.} =
   # register your extension classes here
   # register MyClass
   register GDExtNode
-  register VirtualNode01
-  register VirtualNode02
   register TestObject
 
   # ====================================

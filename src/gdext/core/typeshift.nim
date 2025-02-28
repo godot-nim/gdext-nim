@@ -74,6 +74,7 @@ template variantType*(Type: typedesc[AltInt]): Variant_Type = VariantType_Int
 template variantType*(Type: typedesc[AltFloat]): Variant_Type = VariantType_Float
 template variantType*(Type: typedesc[AltString]): Variant_Type = VariantType_String
 template variantType*(Type: typedesc[enum]): Variant_Type = VariantType_Int
+template variantType*[E: enum](Type: typedesc[set[E]]): Variant_Type = VariantType_Int
 
 template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 
@@ -230,3 +231,6 @@ proc decode_result*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Resu
   p.decode_result(T).asGdRef
 
 {.pop.}
+
+template APIType*(T: typedesc[Object]): typedesc = T
+template APIType*(T: typedesc[not Object]): typedesc = encoded T
