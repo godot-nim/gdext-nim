@@ -7,6 +7,7 @@ import cases/use_api_from_toplevel
 import cases/primitives
 import cases/variant
 import cases/image
+import cases/prints
 import cases/issues
 import classes/gdextnode
 import classes/gdvirtualnode01
