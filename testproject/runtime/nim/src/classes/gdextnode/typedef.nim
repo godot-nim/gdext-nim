@@ -3,7 +3,7 @@ import std/[tables, strutils]
 
 import gdext
 import gdext/gdinterface/native
-import gdext/core/[gdclass, typeshift]
+import gdext/core/[gdclass {.all.}, typeshift]
 
 import classes/gdvirtualnode01
 
@@ -39,7 +39,7 @@ proc test_Object(self: GDExtNode) =
   suite "Object":
     test "instantiate":
       let obj: Object = instantiate Object
-      check CLASS_getObjectPtr(obj) != nil
+      check obj.owner != nil
       destroy obj
 
     test "singleton":

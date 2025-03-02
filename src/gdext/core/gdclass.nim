@@ -7,9 +7,6 @@ import gdext/utils/macros
 import gdext/core/builtinindex
 
 type
-  ObjectControl* = object
-    owner*: ObjectPtr
-
   HeapPropertyInfo* = object
     `type`*: VariantType
     name*: ref StringName
@@ -19,7 +16,7 @@ type
     usage*: set[PropertyUsageFlags]
 
   Object* = ptr object of RootObj
-    control: ObjectControl
+    pOwner: ObjectPtr
   RefCounted* = ptr object of Object
 
   GodotClassMeta* = object
@@ -35,14 +32,6 @@ type
     t is SomeClass
     t.EngineClass isnot t
 
-proc CLASS_getObjectPtr*(obj: Object): ObjectPtr =
-  if unlikely(obj.isNil): nil
-  else: obj.control.owner
-
-proc CLASS_getObjectPtrPtr*(obj: Object): ptr ObjectPtr =
-  if unlikely(obj.isNil or obj.control.owner.isNil): nil
-  else: addr obj.control.owner
-
 method onInit*(self: Object) {.base.} = discard
 method onDestroy*(self: Object) {.base.} = discard
 
@@ -50,10 +39,8 @@ proc createClass*[T: Object](o: ObjectPtr): T =
   result = cast[T](alloc sizeof pointerBase T)
   zeroMem result, sizeof pointerBase T
   result[] = (pointerBase T)(
-    control: ObjectControl(
-      owner: o, ))
+    pOwner: o)
   onInit result
-
 
 proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
   let class = createClass[T](cast[ObjectPtr](p_instance))
@@ -84,9 +71,11 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
       )
   instance
 
-template className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
-template callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
-template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
+{.push, inline.}
+proc className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
+proc callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
+proc vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
+{.pop.}
 
 proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
   if p_engine_object.isNil: return
@@ -99,3 +88,12 @@ proc getInstance*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
   cast[T](p_engine_object.getInstance(T.callbacks))
 
 macro Super*(Type: typedesc): typedesc = Type.super
+
+
+proc owner*(obj: Object): ObjectPtr =
+  if unlikely(obj.isNil): nil
+  else: obj.pOwner
+
+proc ownerPtr*(obj: Object): ptr ObjectPtr =
+  if unlikely(obj.isNil or obj.owner.isNil): nil
+  else: addr obj.pOwner

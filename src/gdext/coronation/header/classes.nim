@@ -4,7 +4,7 @@ export                    classDB, methodtools, exceptions
 from gdext/gdinterface/extracommands import gdstring, stringname, classname
 export extracommands.gdstring, extracommands.stringname, extracommands.classname
 
-import gdext/core/[builtinindex, typeshift, gdclass, gdtypedarray, gdrefs ]
+import gdext/core/[builtinindex, typeshift, gdclass {.all.}, gdtypedarray, gdrefs ]
 export             builtinindex, typeshift, gdclass, gdtypedarray, gdrefs
 
 import gdext/gen/[
@@ -26,11 +26,11 @@ template expandMethodBind*(className; methodName; hash) =
     methodbind = classDB.getMethodBind(className, methodName, hash)
 
 proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, addr args[0], result)
+  interface_Object_methodBindPtrCall(methodbind, self.owner, addr args[0], result)
 proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, nil, addr args[0], result)
 proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, CLASS_getOwner self, nil, result)
+  interface_Object_methodBindPtrCall(methodbind, self.owner, nil, result)
 proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, nil, nil, result)
 
@@ -38,7 +38,7 @@ proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; result: T
 proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
   var error {.global.} : CallError
   for vararg in vararg: args.add addr vararg
-  interface_Object_methodBindCall(methodbind, CLASS_getOwner self,
+  interface_Object_methodBindCall(methodbind, self.owner,
       (if args.len == 0: nil else: addr args[0]), args.len, addr result, addr error)
 proc call*(methodbind: MethodBindPtr; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
   var error {.global.} : CallError

@@ -16,29 +16,29 @@ proc setInstance*(p_o: ObjectPtr; p_classname: StringName; p_instance: Object) =
 
 proc callScriptMethod*(obj: Object; p_method: StringName): Variant =
   var ce: CallError
-  interfaceObjectCallScriptMethod(CLASS_getObjectPtr obj, addr p_method, nil, 0, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.owner, addr p_method, nil, 0, addr result, addr ce)
   check ce
 proc callScriptMethod*(obj: Object; p_method: StringName; args: array[0, Variant]): Variant =
   var ce: CallError
-  interfaceObjectCallScriptMethod(CLASS_getObjectPtr obj, addr p_method, nil, 0, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.owner, addr p_method, nil, 0, addr result, addr ce)
   check ce
 proc callScriptMethod*[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant =
   var ce: CallError
   let args = getPtr args
-  interfaceObjectCallScriptMethod(CLASS_getObjectPtr obj, addr p_method, addr args[0], args.len, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.owner, addr p_method, addr args[0], args.len, addr result, addr ce)
   check ce
 
 proc hasScriptMethod*(obj: Object; p_method: StringName): bool =
-  interfaceObjectHasScriptMethod(CLASS_getObjectPtr obj, addr p_method)
+  interfaceObjectHasScriptMethod(obj.owner, addr p_method)
 
 proc destroy*(obj: Object) =
-  interfaceObjectDestroy(CLASS_getObjectPtr obj)
+  interfaceObjectDestroy(obj.owner)
 
 proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
-  interfaceObjectCastTo(CLASS_getObjectPtr obj, p_class_tag)
+  interfaceObjectCastTo(obj.owner, p_class_tag)
 
 proc getInstanceID*(self: Object): GDObjectInstanceID =
-  interfaceObjectGetInstanceId CLASS_getObjectPtr self
+  interfaceObjectGetInstanceId self.owner
 
 proc getClassName*(self: Object): StringName =
-  discard interfaceObjectGetClassName(CLASS_getObjectPtr self, environment.library, addr result)
+  discard interfaceObjectGetClassName(self.owner, environment.library, addr result)

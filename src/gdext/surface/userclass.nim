@@ -43,7 +43,7 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
-  result =  CLASS_getObjectPtr class
+  result =  class.owner
 
 proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
   let class = cast[T](p_instance)
