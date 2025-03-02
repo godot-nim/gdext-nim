@@ -1,6 +1,5 @@
 import std/[strutils]
 
-import gdext/buildconf
 import gdext/gdinterface/objects
 import gdext/gdinterface/classDB
 
@@ -22,12 +21,8 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc instantiate*[T: Object and not RefCounted](_: typedesc[T]): T =
-  when Dev.debugCallbacks:
-    echo SYNC.INSTANTIATE, $T
   result = instantiate_internal T
 proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
-  when Dev.debugCallbacks:
-    echo SYNC.INSTANTIATE, $T
   result = instantiate_internal(T).asGdRef
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =

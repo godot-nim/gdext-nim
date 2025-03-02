@@ -7,7 +7,6 @@ when not declared(switch):
     Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
     Assistance_genEditorHelp {.booldefine: "Assistance.genEditorHelp".} = on
 
-    Dev_debugCallbacks {.booldefine: "Dev.debugCallbacks".} = off
     Dev_debugEvents {.booldefine: "Dev.debugEvents".} = off
 
     Extension* = (
@@ -20,7 +19,6 @@ when not declared(switch):
       genEditorHelp: Assistance_genEditorHelp,
     )
     Dev* = (
-      debugCallbacks: Dev_debugCallbacks,
       debugEvents: Dev_debugEvents,
     )
 
