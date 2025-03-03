@@ -218,10 +218,14 @@ proc decode_result*(p: pointer; Type: typedesc): Type =
   p.decode(Type)
 
 template encoded*[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
-template encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
-  v.unwrapped.encode(p)
+proc encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
+  if v.handle == nil: return
+  let owner = v.handle.owner
+  if owner == nil: return
+  interfaceRefSetObject(p, owner)
+
 proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
-  p.decode(T).referenced
+  interfaceRefGetObject(p).getInstance(T).referenced
 proc variant*[T: RefCounted](v: GdRef[T]): Variant =
   v.unwrapped.variant
 proc get*[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
