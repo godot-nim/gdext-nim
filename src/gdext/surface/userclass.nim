@@ -47,10 +47,10 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
-  result =  CLASS_getObjectPtr class
+  result =  class.owner
   when Dev.debugCallbacks:
     privateAccess Object
-    echo SYNC.CREATE_BIND, class.control.name
+    echo SYNC.CREATE_BIND, class.debugName
 
 proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
   let class = cast[T](p_instance)
@@ -59,7 +59,7 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
   dealloc class
   when Dev.debugCallbacks:
     privateAccess Object
-    echo SYNC.FREE_BIND, class.control.name
+    echo SYNC.FREE_BIND, class.debugName
 
 proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
   let class = createClass[T](p_object)
@@ -68,19 +68,19 @@ proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_objec
   result = cast[pointer](class)
   when Dev.debugCallbacks:
     privateAccess Object
-    echo SYNC.RECREATE_BIND, class.control.name
+    echo SYNC.RECREATE_BIND, class.debugName
 
 proc reference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
     let class = cast[RefCounted](p_instance)
-    let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.REFERENCE_BIND, class.control.name, "(", $count & " UP)"
+    let count = hook_getReferenceCount class.owner
+    echo SYNC.REFERENCE_BIND, class.debugName, "(", $count & " UP)"
 
 proc unreference_func(p_instance: pointer) {.gdcall.} =
   when Dev.debugCallbacks:
     let class = cast[RefCounted](p_instance)
-    let count = hook_getReferenceCount CLASS_getObjectPtr class
-    echo SYNC.UNREFERENCE_BIND, class.control.name, "(", $count & " DOWN)"
+    let count = hook_getReferenceCount class.owner
+    echo SYNC.UNREFERENCE_BIND, class.debugName, "(", $count & " DOWN)"
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])

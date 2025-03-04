@@ -22,11 +22,6 @@ when Dev.debugCallbacks:
     DESTROY          = "SYNC------------DESTROY: "
 
 type
-  ObjectControl* = object
-    owner*: ObjectPtr
-    when Dev.debugCallbacks:
-      name*: string
-
   HeapPropertyInfo* = object
     `type`*: VariantType
     name*: ref StringName
@@ -36,7 +31,10 @@ type
     usage*: set[PropertyUsageFlags]
 
   Object* = ptr object of RootObj
-    control: ObjectControl
+    owner: ObjectPtr
+    when Dev.debugCallbacks:
+      debugName: string
+
   RefCounted* = ptr object of Object
 
   GodotClassMeta* = object
@@ -52,13 +50,12 @@ type
     t is SomeClass
     t.EngineClass isnot t
 
-proc CLASS_getObjectPtr*(obj: Object): ObjectPtr =
+proc ownerPtr*(obj: Object): ptr ObjectPtr =
+  if unlikely(obj.isNil or obj.owner.isNil): nil
+  else: addr obj.owner
+proc owner*(obj: Object): ObjectPtr =
   if unlikely(obj.isNil): nil
-  else: obj.control.owner
-
-proc CLASS_getObjectPtrPtr*(obj: Object): ptr ObjectPtr =
-  if unlikely(obj.isNil or obj.control.owner.isNil): nil
-  else: addr obj.control.owner
+  else: obj.owner
 
 method onInit*(self: Object) {.base.} = discard
 method onDestroy*(self: Object) {.base.} = discard
@@ -66,11 +63,9 @@ method onDestroy*(self: Object) {.base.} = discard
 proc createClass*[T: Object](o: ObjectPtr): T =
   result = cast[T](alloc sizeof pointerBase T)
   zeroMem result, sizeof pointerBase T
-  result[] = (pointerBase T)(
-    control: ObjectControl(
-      owner: o, ))
+  result[] = (pointerBase T)(owner: o)
   when Dev.debugCallbacks:
-    result.control.name = $T
+    result.debugName = $T
   onInit result
 
 
@@ -78,7 +73,7 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   let class = createClass[T](cast[ObjectPtr](p_instance))
   result = cast[pointer](class)
   when Dev.debugCallbacks:
-    echo SYNC.CREATE_CALL, class.control.name, "(", className cast[ObjectPtr](p_instance), ")"
+    echo SYNC.CREATE_CALL, class.debugName, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
   let class = cast[T](p_binding)
@@ -86,15 +81,15 @@ proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer)
   `=destroy` class[]
   dealloc class
   when Dev.debugCallbacks:
-    echo SYNC.FREE_CALL, class.control.name, "(", className cast[ObjectPtr](p_instance), ")"
+    echo SYNC.FREE_CALL, class.debugName, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
   result = true
   when Dev.debugCallbacks:
     let class = cast[RefCounted](p_binding)
-    let count = hook_getReferenceCount CLASS_getObjectPtr class
+    let count = hook_getReferenceCount class.owner
     let status = if p_reference: "UP" else: "DOWN"
-    echo SYNC.REFERENCE, class.control.name, "(", $count, " ", status, ")"
+    echo SYNC.REFERENCE, class.debugName, "(", $count, " ", status, ")"
 
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   var instance {.global.} : GodotClassMeta
