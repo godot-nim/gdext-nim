@@ -1,4 +1,4 @@
-import std/[tables, typetraits]
+import std/[tables, typetraits, importutils]
 
 import gdext/buildconf
 
@@ -30,30 +30,17 @@ type
     hintString*: ref String
     usage*: set[PropertyUsageFlags]
 
-  Object* = ptr object of RootObj
-    owner: ObjectPtr
-    when Dev.debugCallbacks:
-      debugName: string
-
-  RefCounted* = ptr object of Object
-
   GodotClassMeta* = object
     virtualMethods*: Table[StringName, ClassCallVirtual]
     className*: StringName
     callbacks*: InstanceBindingCallbacks
 
-  SomeClass* = Object
-  SomeEngineClass* = concept type t
-    t is SomeClass
-    t.EngineClass is t
-  SomeUserClass* = concept type t
-    t is SomeClass
-    t.EngineClass isnot t
-
 proc ownerPtr*(obj: Object): ptr ObjectPtr =
+  privateAccess Object
   if unlikely(obj.isNil or obj.owner.isNil): nil
   else: addr obj.owner
 proc owner*(obj: Object): ObjectPtr =
+  privateAccess Object
   if unlikely(obj.isNil): nil
   else: obj.owner
 
@@ -61,6 +48,7 @@ method onInit*(self: Object) {.base.} = discard
 method onDestroy*(self: Object) {.base.} = discard
 
 proc createClass*[T: Object](o: ObjectPtr): T =
+  privateAccess Object
   result = cast[T](alloc sizeof pointerBase T)
   zeroMem result, sizeof pointerBase T
   result[] = (pointerBase T)(owner: o)
@@ -73,6 +61,7 @@ proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall
   let class = createClass[T](cast[ObjectPtr](p_instance))
   result = cast[pointer](class)
   when Dev.debugCallbacks:
+    privateAccess Object
     echo SYNC.CREATE_CALL, class.debugName, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
@@ -81,11 +70,13 @@ proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer)
   `=destroy` class[]
   dealloc class
   when Dev.debugCallbacks:
+    privateAccess Object
     echo SYNC.FREE_CALL, class.debugName, "(", className cast[ObjectPtr](p_instance), ")"
 
 proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
   result = true
   when Dev.debugCallbacks:
+    privateAccess Object
     let class = cast[RefCounted](p_binding)
     let count = hook_getReferenceCount class.owner
     let status = if p_reference: "UP" else: "DOWN"
