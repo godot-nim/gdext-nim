@@ -4,7 +4,7 @@ from std/sequtils import concat, mapIt, toSeq
 import gdext/buildconf
 import gdext/gdinterface/[classDB, extracommands]
 import gdext/utils/[macros, staticevents]
-import gdext/core/gdclass
+import gdext/core/[gdclass, gdrefs]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts
@@ -132,6 +132,10 @@ proc propertyinfo(
     when proptyp is Node:
       ap.hint = propertyHintNodeType
       ap.hint_string = gdstring className proptyp
+    elif proptyp is GdRef:
+      when proptyp.RefCounted is Resource:
+        ap.hint = propertyHintResourceType
+        ap.hint_string = gdstring className proptyp.RefCounted
     elif proptyp is enum:
       ap.hint = propertyHintEnum
       ap.hint_string = proptyp.defaultHintString
