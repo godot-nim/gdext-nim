@@ -3,7 +3,7 @@ import std/tables
 import gdext/buildconf
 import gdext/gdinterface/[native, extracommands, objects, classDB]
 
-import gdext/utils/macros
+import gdext/utils/[macros, debugging]
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/userclass/contracts
@@ -13,10 +13,6 @@ import gdext/core/userclass/virtuals
 import gdext/gen/classindex
 import gdext/surface/classutils
 import gdext/surface/properties
-
-when Dev.debugCallbacks:
-  import std/importutils
-  privateAccess Object
 
 when Assistance.genEditorHelp:
   import gdext/doctools
@@ -48,39 +44,27 @@ proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: S
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
   result =  class.owner
-  when Dev.debugCallbacks:
-    privateAccess Object
-    echo SYNC.CREATE_BIND, class.debugName
+  debugCreate(class)
 
 proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
   let class = cast[T](p_instance)
+  debugFree(class)
   onDestroy class
   `=destroy` class[]
   dealloc class
-  when Dev.debugCallbacks:
-    privateAccess Object
-    echo SYNC.FREE_BIND, class.debugName
 
 proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
   let class = createClass[T](p_object)
   p_object.setInstance(classname T, class)
   p_object.setInstanceBinding(class, addr T.callbacks)
   result = cast[pointer](class)
-  when Dev.debugCallbacks:
-    privateAccess Object
-    echo SYNC.RECREATE_BIND, class.debugName
+  debugRecreate(class)
 
 proc reference_func(p_instance: pointer) {.gdcall.} =
-  when Dev.debugCallbacks:
-    let class = cast[RefCounted](p_instance)
-    let count = hook_getReferenceCount class.owner
-    echo SYNC.REFERENCE_BIND, class.debugName, "(", $count & " UP)"
+  debugReference(cast[Object](p_instance), true)
 
 proc unreference_func(p_instance: pointer) {.gdcall.} =
-  when Dev.debugCallbacks:
-    let class = cast[RefCounted](p_instance)
-    let count = hook_getReferenceCount class.owner
-    echo SYNC.UNREFERENCE_BIND, class.debugName, "(", $count & " DOWN)"
+  debugReference(cast[Object](p_instance), false)
 
 proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
   cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
