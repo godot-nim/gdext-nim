@@ -39,7 +39,7 @@ proc test_Object(self: GDExtNode) =
   suite "Object":
     test "instantiate":
       let obj: Object = instantiate Object
-      check CLASS_getObjectPtr(obj) != nil
+      check obj.owner != nil
       destroy obj
 
     test "singleton":
