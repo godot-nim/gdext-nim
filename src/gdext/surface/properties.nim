@@ -1,10 +1,11 @@
+from std/strformat import fmt
 from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
 import gdext/gdinterface/[classDB, extracommands]
 import gdext/utils/[macros, staticevents]
-import gdext/core/[gdclass, gdrefs]
+import gdext/core/[gdclass, gdrefs, gdtypedarray]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts
@@ -34,6 +35,13 @@ type
     attenuation, positive_only
   RangeArgument*  = enum
     or_less, or_greater, exp, radians_as_degrees, degrees, hide_slider
+
+proc appearance(
+      hint: PropertyHint = propertyHintNone;
+      hintstring: String = String.empty;
+      usage: set[PropertyUsageFlags] = {propertyUsageEditor, propertyUsageStorage};
+    ): Appearance =
+  Appearance(hint: hint, hintstring: hintstring, usage: usage)
 
 macro makeDefaultHintStringEnum(Enum): string  =
   var str: string
@@ -112,22 +120,19 @@ proc defaultHintString[E: enum](T: typedesc[E|set[E]]): String =
     Meta(T).hintString = gdstring makeDefaultHintString(T)
   Meta(T).hintString
 
-proc appearance(
-      hint: PropertyHint = propertyHintNone;
-      hintstring: String = String.empty;
-      usage: set[PropertyUsageFlags] = {propertyUsageEditor, propertyUsageStorage};
-    ): Appearance =
-  Appearance(hint: hint, hintstring: hintstring, usage: usage)
+proc modify[T]( proptyp: typedesc[T]; ap: var Appearance)
+proc defaultHintString[T](arr: typedesc[TypedArray[T]]): String =
+  var elementApp = appearance()
+  modify(T, elementApp)
+  let typ = T.variantType.ord
+  let hint = (if elementApp.hint == propertyHintNone: "" else: "/" & $elementApp.hint.ord)
+  let str = fmt"{typ}{hint}:{elementApp.hint_string}"
+  gdstring str
+
 
 macro gdname(P: proc): string = P.getPragmaVal("name") or newLit $P
 
-proc propertyinfo(
-      name: StringName;
-      proptyp: typedesc[SomeProperty];
-      appearance: Appearance;
-    ): HeapPropertyInfo =
-  var ap = appearance
-
+proc modify[T](proptyp: typedesc[T]; ap: var Appearance;) =
   if ap.hint == propertyHintNone:
     when proptyp is Node:
       ap.hint = propertyHintNodeType
@@ -136,6 +141,12 @@ proc propertyinfo(
       when proptyp.RefCounted is Resource:
         ap.hint = propertyHintResourceType
         ap.hint_string = gdstring className proptyp.RefCounted
+    elif proptyp is Resource:
+      ap.hint = propertyHintResourceType
+      ap.hint_string = gdstring className proptyp
+    elif proptyp is TypedArray:
+      ap.hint = propertyHintArrayType
+      ap.hint_string = proptyp.defaultHintString
     elif proptyp is enum:
       ap.hint = propertyHintEnum
       ap.hint_string = proptyp.defaultHintString
@@ -146,6 +157,13 @@ proc propertyinfo(
       ap.hint = propertyHintRange
       ap.hint_string = proptyp.makeDefaultHintStringRange
 
+proc propertyinfo(
+      name: StringName;
+      proptyp: typedesc[SomeProperty];
+      appearance: Appearance;
+    ): HeapPropertyInfo =
+  var ap = appearance
+  modify(proptyp, ap)
   propertyInfo(proptyp, name,
     ap.hint, ap.hintstring, ap.usage)
 
