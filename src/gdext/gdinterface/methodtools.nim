@@ -14,7 +14,7 @@ template getPtr*[T: Object](v: T): pointer =
   cast[pointer](v.ownerPtr)
 template getPtr*(v: GdRef): pointer =
   if v.handle != nil:
-    discard hook_reference v.handle.owner
+    discard hook_reference v.handle
   getPtr v.handle
 
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
