@@ -66,7 +66,6 @@ proc `$`*[T: Object](self: T): string =
   if self.isNil: return $self.getClassName & "(nil)"
   $self.getClassName & "(ID: 0x" & self.getInstanceID.toHex & ")"
 
-export onInit, onDestroy
 method notification*(self: Object; p_what: int32) {.base.} = discard
 method set*(self: Object; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.base.} = discard
 method get*(self: Object; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.base.} = discard

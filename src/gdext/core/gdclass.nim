@@ -35,9 +35,6 @@ proc owner*(obj: Object): ObjectPtr =
   if unlikely(obj.isNil): nil
   else: obj.owner
 
-method onInit*(self: Object) {.base.} = discard
-method onDestroy*(self: Object) {.base.} = discard
-
 proc createClass*[T: Object](o: ObjectPtr): T =
   privateAccess Object
   result = cast[T](alloc sizeof pointerBase T)
@@ -46,7 +43,6 @@ proc createClass*[T: Object](o: ObjectPtr): T =
   when Dev.debugCallbacks:
     result.debugName = $T
   onInit result
-
 
 proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
   let class = createClass[T](cast[ObjectPtr](p_instance))
