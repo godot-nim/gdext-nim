@@ -2,7 +2,7 @@ import testutils
 import std/[tables, strutils]
 
 import gdext
-import gdext/gdinterface/native
+import gdext/gdinterface/[native, extracommands]
 import gdext/core/[gdclass, typeshift]
 
 import classes/gdvirtualnode01
