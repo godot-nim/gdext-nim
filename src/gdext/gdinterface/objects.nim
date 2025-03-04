@@ -1,4 +1,4 @@
-import gdext/gdinterface/[native, methodtools, exceptions]
+import gdext/gdinterface/[native, extracommands, methodtools, exceptions]
 import gdext/core/gdclass
 import gdext/core/builtinindex
 

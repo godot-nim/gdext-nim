@@ -26,15 +26,6 @@ type
     className*: StringName
     callbacks*: InstanceBindingCallbacks
 
-proc ownerPtr*(obj: Object): ptr ObjectPtr =
-  privateAccess Object
-  if unlikely(obj.isNil or obj.owner.isNil): nil
-  else: addr obj.owner
-proc owner*(obj: Object): ObjectPtr =
-  privateAccess Object
-  if unlikely(obj.isNil): nil
-  else: obj.owner
-
 proc createClass*[T: Object](o: ObjectPtr): T =
   privateAccess Object
   result = cast[T](alloc sizeof pointerBase T)

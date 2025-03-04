@@ -1,3 +1,4 @@
+import std/[importutils]
 import native
 import gdext/core/builtinindex
 
@@ -5,6 +6,15 @@ var newStringNameFromString: PtrConstructor
 var newStringFromStringName: PtrConstructor
 
 var String_length: PtrBuiltinMethod
+
+proc ownerPtr*(obj: Object): ptr ObjectPtr =
+  privateAccess Object
+  if unlikely(obj.isNil or obj.owner.isNil): nil
+  else: addr obj.owner
+proc owner*(obj: Object): ObjectPtr =
+  privateAccess Object
+  if unlikely(obj.isNil): nil
+  else: obj.owner
 
 proc gdstring*(str: string): String =
   interfaceStringNewWithUtf8Chars(addr result, cstring str)
