@@ -9,6 +9,8 @@ type PropTestPragmasEnum* = enum
 
 type PropTestNodePragmas* {.gdsync.} = ptr object of Node
   icon* {.gdexport.}: gdref Texture2D
+  string_array* {.gdexport.}: TypedArray[String]
+  texture2D_array* {.gdexport.}: TypedArray[Texture2D]
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport: Appearance.placeholder("placeholder here...").}: string
@@ -58,6 +60,8 @@ PropTestNodePragmas.bind PropTestPragmasEnum
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline = typedArray[String](1)
+  self.string_array = typedArray[String]()
+  self.texture2D_array = typedArray[Texture2D]()
 
 method enterTree(self: PropTestNodePragmas) {.gdsync.} =
   self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D
