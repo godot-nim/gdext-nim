@@ -69,6 +69,16 @@ proc hook_getReferenceCount*(o: ObjectPtr): int32 {.raises: [].} =
     return int32 ret
   except: discard
 
+proc hook_reference*(o: RefCounted): Bool {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_reference o.owner
+proc hook_unreference*(o: RefCounted): Bool {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_unreference o.owner
+proc hook_getReferenceCount*(o: RefCounted): int32 {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_getReferenceCount o.owner
+
 proc load* =
   newStringNameFromString = interfaceVariantGetPtrConstructor(VariantType_StringName, 2)
   newStringFromStringName = interfaceVariantGetPtrConstructor(VariantType_String, 2)
