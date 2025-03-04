@@ -3,7 +3,6 @@ import std/[tables, typetraits, importutils]
 import gdext/buildconf
 
 import gdext/gdinterface/[native, extracommands]
-import gdext/gen/globalenums
 import gdext/utils/macros
 
 import gdext/core/builtinindex
@@ -22,14 +21,6 @@ when Dev.debugCallbacks:
     DESTROY          = "SYNC------------DESTROY: "
 
 type
-  HeapPropertyInfo* = object
-    `type`*: VariantType
-    name*: ref StringName
-    className*: ref Stringname
-    hint*: PropertyHint
-    hintString*: ref String
-    usage*: set[PropertyUsageFlags]
-
   GodotClassMeta* = object
     virtualMethods*: Table[StringName, ClassCallVirtual]
     className*: StringName
