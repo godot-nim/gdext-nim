@@ -1,6 +1,5 @@
 import std/macros
 
-import gdext/core/gdclass
 import gdext/core/builtinindex
 import gdext/gen/[builtinclasses, classindex]
 import gdext/classes/gdNode

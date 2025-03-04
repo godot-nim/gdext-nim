@@ -94,6 +94,8 @@ type
   Array* {.byref.} = object
     opaque: Opaque[1]
 
+  TypedArray*[T: SomeVariant] = distinct Array
+
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
   PackedInt64Array* = PackedArray[int64]
@@ -105,11 +107,12 @@ type
   PackedVector4Array* = PackedArray[Vector4]
   PackedColorArray* = PackedArray[Color]
 
-template Item*(typ: typedesc[String]): typedesc = Rune
-template Item*(typ: typedesc[Array]): typedesc = Variant
-template Item*(typ: typedesc[Dictionary]): typedesc = Variant
+  Object* = ptr object of RootObj
+    owner: ObjectPtr
+    when Dev.debugCallbacks:
+      debugName: string
+  RefCounted* = ptr object of Object
 
-type
   SomePackedArray* =
     PackedByteArray    |
     PackedInt32Array   |
@@ -158,6 +161,22 @@ type
     Array           |
     SomePackedArray
   SomeBuiltins* = SomePrimitives|SomeGodotUniques
+
+  SomeClass* = Object
+  SomeEngineClass* = concept type t
+    t is SomeClass
+    t.EngineClass is t
+  SomeUserClass* = concept type t
+    t is SomeClass
+    t.EngineClass isnot t
+
+  SomeVariant* = concept type t
+    t is SomeBuiltins | Object
+
+template Item*(typ: typedesc[String]): typedesc = Rune
+template Item*(typ: typedesc[Array]): typedesc = Variant
+template Item*(typ: typedesc[Dictionary]): typedesc = Variant
+
 
 var hook_copy: array[VariantType, PtrConstructor]
 var hook_destroy: array[VariantType, PtrDestructor]

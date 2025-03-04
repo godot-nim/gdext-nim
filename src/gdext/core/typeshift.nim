@@ -2,7 +2,6 @@ import gdext/gdinterface/[native, extracommands]
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
-import gdext/core/gdtypedarray
 
 var
   variantFromType: array[Variant_Type, VariantFromTypeConstructorFunc]
