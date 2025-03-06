@@ -12,6 +12,8 @@ elif Extension.decimalPrecision == "float" or true:
 
 type int_elem* = int32
 type float_elem* = float32
+type char16* = char16_t
+type char32* = char32_t
 
 type Opaque[I: static int] = array[I, pointer]
 
