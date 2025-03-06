@@ -49,6 +49,11 @@ proc saveSupportData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[Co
   errproof: cast[TextServerExtension](p_instance).saveSupportData(p_args[0].decode(String)).encode(r_ret)
 template saveSupportData_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = saveSupportData
 
+method getSupportData*(self: TextServerExtension): PackedByteArray {.base.} = (discard)
+proc getSupportData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TextServerExtension](p_instance).getSupportData().encode(r_ret)
+template getSupportData_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = getSupportData
+
 method isLocaleRightToLeft*(self: TextServerExtension; locale: String): bool {.base.} = (discard)
 proc isLocaleRightToLeft(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[TextServerExtension](p_instance).isLocaleRightToLeft(p_args[0].decode(String)).encode(r_ret)
@@ -273,6 +278,16 @@ method fontGetSubpixelPositioning*(self: TextServerExtension; fontRid: RID): Tex
 proc fontGetSubpixelPositioning(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[TextServerExtension](p_instance).fontGetSubpixelPositioning(p_args[0].decode(RID)).encode(r_ret)
 template fontGetSubpixelPositioning_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = fontGetSubpixelPositioning
+
+method fontSetKeepRoundingRemainders*(self: TextServerExtension; fontRid: RID; keepRoundingRemainders: bool): void {.base.} = (discard)
+proc fontSetKeepRoundingRemainders(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TextServerExtension](p_instance).fontSetKeepRoundingRemainders(p_args[0].decode(RID), p_args[1].decode(bool))
+template fontSetKeepRoundingRemainders_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = fontSetKeepRoundingRemainders
+
+method fontGetKeepRoundingRemainders*(self: TextServerExtension; fontRid: RID): bool {.base.} = (discard)
+proc fontGetKeepRoundingRemainders(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TextServerExtension](p_instance).fontGetKeepRoundingRemainders(p_args[0].decode(RID)).encode(r_ret)
+template fontGetKeepRoundingRemainders_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = fontGetKeepRoundingRemainders
 
 method fontSetEmbolden*(self: TextServerExtension; fontRid: RID; strength: float64): void {.base.} = (discard)
 proc fontSetEmbolden(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -559,6 +574,11 @@ proc fontGetSupportedChars(p_instance: ClassInstancePtr; p_args: ptr UncheckedAr
   errproof: cast[TextServerExtension](p_instance).fontGetSupportedChars(p_args[0].decode(RID)).encode(r_ret)
 template fontGetSupportedChars_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = fontGetSupportedChars
 
+method fontGetSupportedGlyphs*(self: TextServerExtension; fontRid: RID): PackedInt32Array {.base.} = (discard)
+proc fontGetSupportedGlyphs(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TextServerExtension](p_instance).fontGetSupportedGlyphs(p_args[0].decode(RID)).encode(r_ret)
+template fontGetSupportedGlyphs_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = fontGetSupportedGlyphs
+
 method fontRenderRange*(self: TextServerExtension; fontRid: RID; size: Vector2i; start: int64; `end`: int64): void {.base.} = (discard)
 proc fontRenderRange(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[TextServerExtension](p_instance).fontRenderRange(p_args[0].decode(RID), p_args[1].decode(Vector2i), p_args[2].decode(int64), p_args[3].decode(int64))
@@ -783,6 +803,11 @@ method shapedGetSpanMeta*(self: TextServerExtension; shaped: RID; index: int64):
 proc shapedGetSpanMeta(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[TextServerExtension](p_instance).shapedGetSpanMeta(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
 template shapedGetSpanMeta_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = shapedGetSpanMeta
+
+method shapedGetSpanEmbeddedObject*(self: TextServerExtension; shaped: RID; index: int64): Variant {.base.} = (discard)
+proc shapedGetSpanEmbeddedObject(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TextServerExtension](p_instance).shapedGetSpanEmbeddedObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+template shapedGetSpanEmbeddedObject_bind*(_: typedesc[TextServerExtension]): ClassCallVirtual = shapedGetSpanEmbeddedObject
 
 method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary): void {.base.} = (discard)
 proc shapedSetSpanUpdateFont(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -1095,6 +1120,7 @@ const TextServerExtension_vmap =
     "getsupportdatafilename" : "_get_support_data_filename",
     "getsupportdatainfo" : "_get_support_data_info",
     "savesupportdata" : "_save_support_data",
+    "getsupportdata" : "_get_support_data",
     "islocalerighttoleft" : "_is_locale_right_to_left",
     "nametotag" : "_name_to_tag",
     "tagtoname" : "_tag_to_name",
@@ -1140,6 +1166,8 @@ const TextServerExtension_vmap =
     "fontgethinting" : "_font_get_hinting",
     "fontsetsubpixelpositioning" : "_font_set_subpixel_positioning",
     "fontgetsubpixelpositioning" : "_font_get_subpixel_positioning",
+    "fontsetkeeproundingremainders" : "_font_set_keep_rounding_remainders",
+    "fontgetkeeproundingremainders" : "_font_get_keep_rounding_remainders",
     "fontsetembolden" : "_font_set_embolden",
     "fontgetembolden" : "_font_get_embolden",
     "fontsetspacing" : "_font_set_spacing",
@@ -1197,6 +1225,7 @@ const TextServerExtension_vmap =
     "fontgetcharfromglyphindex" : "_font_get_char_from_glyph_index",
     "fonthaschar" : "_font_has_char",
     "fontgetsupportedchars" : "_font_get_supported_chars",
+    "fontgetsupportedglyphs" : "_font_get_supported_glyphs",
     "fontrenderrange" : "_font_render_range",
     "fontrenderglyph" : "_font_render_glyph",
     "fontdrawglyph" : "_font_draw_glyph",
@@ -1242,6 +1271,7 @@ const TextServerExtension_vmap =
     "shapedtextresizeobject" : "_shaped_text_resize_object",
     "shapedgetspancount" : "_shaped_get_span_count",
     "shapedgetspanmeta" : "_shaped_get_span_meta",
+    "shapedgetspanembeddedobject" : "_shaped_get_span_embedded_object",
     "shapedsetspanupdatefont" : "_shaped_set_span_update_font",
     "shapedtextsubstr" : "_shaped_text_substr",
     "shapedtextgetparent" : "_shaped_text_get_parent",

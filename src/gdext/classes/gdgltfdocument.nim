@@ -70,6 +70,18 @@ proc writeToFilesystem*(self: GLTFDocument; state: gdref GLTFState; path: String
   methodbind.ptrcall(self, [getPtr state, getPtr path], addr ret)
   (addr ret).decode_result(Error)
 
+proc importObjectModelProperty*(_: typedesc[GLTFDocument]; state: gdref GLTFState; jsonPointer: String): gdref GLTFObjectModelProperty =
+  expandMethodBind(className GLTFDocument, "import_object_model_property", 1206708632)
+  var ret: encoded gdref GLTFObjectModelProperty
+  methodbind.ptrcall([getPtr state, getPtr jsonPointer], addr ret)
+  (addr ret).decode_result(gdref GLTFObjectModelProperty)
+
+proc exportObjectModelProperty*(_: typedesc[GLTFDocument]; state: gdref GLTFState; nodePath: NodePath; godotNode: Node; gltfNodeIndex: int32): gdref GLTFObjectModelProperty =
+  expandMethodBind(className GLTFDocument, "export_object_model_property", 314209806)
+  var ret: encoded gdref GLTFObjectModelProperty
+  methodbind.ptrcall([getPtr state, getPtr nodePath, getPtr godotNode, getPtr gltfNodeIndex], addr ret)
+  (addr ret).decode_result(gdref GLTFObjectModelProperty)
+
 proc registerGltfDocumentExtension*(_: typedesc[GLTFDocument]; extension: gdref GLTFDocumentExtension; firstPriority: bool = false): void =
   expandMethodBind(className GLTFDocument, "register_gltf_document_extension", 3752678331)
   methodbind.ptrcall([getPtr extension, getPtr firstPriority])
@@ -77,6 +89,12 @@ proc registerGltfDocumentExtension*(_: typedesc[GLTFDocument]; extension: gdref 
 proc unregisterGltfDocumentExtension*(_: typedesc[GLTFDocument]; extension: gdref GLTFDocumentExtension): void =
   expandMethodBind(className GLTFDocument, "unregister_gltf_document_extension", 2684415758)
   methodbind.ptrcall([getPtr extension])
+
+proc getSupportedGltfExtensions*(_: typedesc[GLTFDocument]): PackedStringArray =
+  expandMethodBind(className GLTFDocument, "get_supported_gltf_extensions", 2981934095)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(PackedStringArray)
 
 template imageFormat*(self: GLTFDocument): untyped = self.getImageFormat()
 template `imageFormat=`*(self: GLTFDocument; value) = self.setImageFormat(value)

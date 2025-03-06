@@ -19,6 +19,7 @@ import ./classes/gdanimationnodeblend3; export gdanimationnodeblend3
 import ./classes/gdanimationnodeblendspace1d; export gdanimationnodeblendspace1d
 import ./classes/gdanimationnodeblendspace2d; export gdanimationnodeblendspace2d
 import ./classes/gdanimationnodeblendtree; export gdanimationnodeblendtree
+import ./classes/gdanimationnodeextension; export gdanimationnodeextension
 import ./classes/gdanimationnodeoneshot; export gdanimationnodeoneshot
 import ./classes/gdanimationnodeoutput; export gdanimationnodeoutput
 import ./classes/gdanimationnodestatemachine; export gdanimationnodestatemachine
@@ -146,6 +147,7 @@ import ./classes/gdcollisionpolygon2d; export gdcollisionpolygon2d
 import ./classes/gdcollisionpolygon3d; export gdcollisionpolygon3d
 import ./classes/gdcollisionshape2d; export gdcollisionshape2d
 import ./classes/gdcollisionshape3d; export gdcollisionshape3d
+import ./classes/gdcolorpalette; export gdcolorpalette
 import ./classes/gdcolorpicker; export gdcolorpicker
 import ./classes/gdcolorpickerbutton; export gdcolorpickerbutton
 import ./classes/gdcolorrect; export gdcolorrect
@@ -195,10 +197,12 @@ import ./classes/gddirectionallight2d; export gddirectionallight2d
 import ./classes/gddisplayserver; export gddisplayserver
 import ./classes/gddtlsserver; export gddtlsserver
 import ./classes/gdeditorcommandpalette; export gdeditorcommandpalette
+import ./classes/gdeditorcontextmenuplugin; export gdeditorcontextmenuplugin
 import ./classes/gdeditordebuggerplugin; export gdeditordebuggerplugin
 import ./classes/gdeditordebuggersession; export gdeditordebuggersession
 import ./classes/gdeditorexportplatform; export gdeditorexportplatform
 import ./classes/gdeditorexportplatformandroid; export gdeditorexportplatformandroid
+import ./classes/gdeditorexportplatformextension; export gdeditorexportplatformextension
 import ./classes/gdeditorexportplatformios; export gdeditorexportplatformios
 import ./classes/gdeditorexportplatformlinuxbsd; export gdeditorexportplatformlinuxbsd
 import ./classes/gdeditorexportplatformmacos; export gdeditorexportplatformmacos
@@ -206,6 +210,7 @@ import ./classes/gdeditorexportplatformpc; export gdeditorexportplatformpc
 import ./classes/gdeditorexportplatformweb; export gdeditorexportplatformweb
 import ./classes/gdeditorexportplatformwindows; export gdeditorexportplatformwindows
 import ./classes/gdeditorexportplugin; export gdeditorexportplugin
+import ./classes/gdeditorexportpreset; export gdeditorexportpreset
 import ./classes/gdeditorfeatureprofile; export gdeditorfeatureprofile
 import ./classes/gdeditorfiledialog; export gdeditorfiledialog
 import ./classes/gdeditorfilesystem; export gdeditorfilesystem
@@ -238,6 +243,7 @@ import ./classes/gdeditorselection; export gdeditorselection
 import ./classes/gdeditorsettings; export gdeditorsettings
 import ./classes/gdeditorspinslider; export gdeditorspinslider
 import ./classes/gdeditorsyntaxhighlighter; export gdeditorsyntaxhighlighter
+import ./classes/gdeditortoaster; export gdeditortoaster
 import ./classes/gdeditortranslationparserplugin; export gdeditortranslationparserplugin
 import ./classes/gdeditorundoredomanager; export gdeditorundoredomanager
 import ./classes/gdeditorvcsinterface; export gdeditorvcsinterface
@@ -250,6 +256,7 @@ import ./classes/gdenginedebugger; export gdenginedebugger
 import ./classes/gdengineprofiler; export gdengineprofiler
 import ./classes/gdenvironment; export gdenvironment
 import ./classes/gdexpression; export gdexpression
+import ./classes/gdexternaltexture; export gdexternaltexture
 import ./classes/gdfastnoiselite; export gdfastnoiselite
 import ./classes/gdfbxdocument; export gdfbxdocument
 import ./classes/gdfbxstate; export gdfbxstate
@@ -265,6 +272,7 @@ import ./classes/gdframebuffercacherd; export gdframebuffercacherd
 import ./classes/gdgdextension; export gdgdextension
 import ./classes/gdgdextensionmanager; export gdgdextensionmanager
 import ./classes/gdgdscript; export gdgdscript
+import ./classes/gdgdscriptsyntaxhighlighter; export gdgdscriptsyntaxhighlighter
 import ./classes/gdgeneric6dofjoint3d; export gdgeneric6dofjoint3d
 import ./classes/gdgeometry2d; export gdgeometry2d
 import ./classes/gdgeometry3d; export gdgeometry3d
@@ -279,6 +287,7 @@ import ./classes/gdgltfdocumentextensionconvertimportermesh; export gdgltfdocume
 import ./classes/gdgltflight; export gdgltflight
 import ./classes/gdgltfmesh; export gdgltfmesh
 import ./classes/gdgltfnode; export gdgltfnode
+import ./classes/gdgltfobjectmodelproperty; export gdgltfobjectmodelproperty
 import ./classes/gdgltfphysicsbody; export gdgltfphysicsbody
 import ./classes/gdgltfphysicsshape; export gdgltfphysicsshape
 import ./classes/gdgltfskeleton; export gdgltfskeleton
@@ -308,6 +317,7 @@ import ./classes/gdgraphframe; export gdgraphframe
 import ./classes/gdgraphnode; export gdgraphnode
 import ./classes/gdgridcontainer; export gdgridcontainer
 import ./classes/gdgridmap; export gdgridmap
+import ./classes/gdgridmapeditorplugin; export gdgridmapeditorplugin
 import ./classes/gdgroovejoint2d; export gdgroovejoint2d
 import ./classes/gdhashingcontext; export gdhashingcontext
 import ./classes/gdhboxcontainer; export gdhboxcontainer
@@ -355,6 +365,7 @@ import ./classes/gdip; export gdip
 import ./classes/gditemlist; export gditemlist
 import ./classes/gdjavaclass; export gdjavaclass
 import ./classes/gdjavaclasswrapper; export gdjavaclasswrapper
+import ./classes/gdjavaobject; export gdjavaobject
 import ./classes/gdjavascriptbridge; export gdjavascriptbridge
 import ./classes/gdjavascriptobject; export gdjavascriptobject
 import ./classes/gdjnisingleton; export gdjnisingleton
@@ -378,6 +389,7 @@ import ./classes/gdlightoccluder2d; export gdlightoccluder2d
 import ./classes/gdline2d; export gdline2d
 import ./classes/gdlineedit; export gdlineedit
 import ./classes/gdlinkbutton; export gdlinkbutton
+import ./classes/gdlookatmodifier3d; export gdlookatmodifier3d
 import ./classes/gdmainloop; export gdmainloop
 import ./classes/gdmargincontainer; export gdmargincontainer
 import ./classes/gdmarker2d; export gdmarker2d
@@ -444,19 +456,30 @@ import ./classes/gdofflinemultiplayerpeer; export gdofflinemultiplayerpeer
 import ./classes/gdoggpacketsequence; export gdoggpacketsequence
 import ./classes/gdoggpacketsequenceplayback; export gdoggpacketsequenceplayback
 import ./classes/gdopenxraction; export gdopenxraction
+import ./classes/gdopenxractionbindingmodifier; export gdopenxractionbindingmodifier
 import ./classes/gdopenxractionmap; export gdopenxractionmap
 import ./classes/gdopenxractionset; export gdopenxractionset
+import ./classes/gdopenxranalogthresholdmodifier; export gdopenxranalogthresholdmodifier
 import ./classes/gdopenxrapiextension; export gdopenxrapiextension
+import ./classes/gdopenxrbindingmodifier; export gdopenxrbindingmodifier
+import ./classes/gdopenxrbindingmodifiereditor; export gdopenxrbindingmodifiereditor
 import ./classes/gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 import ./classes/gdopenxrcompositionlayercylinder; export gdopenxrcompositionlayercylinder
 import ./classes/gdopenxrcompositionlayerequirect; export gdopenxrcompositionlayerequirect
 import ./classes/gdopenxrcompositionlayerquad; export gdopenxrcompositionlayerquad
+import ./classes/gdopenxrdpadbindingmodifier; export gdopenxrdpadbindingmodifier
 import ./classes/gdopenxrextensionwrapperextension; export gdopenxrextensionwrapperextension
 import ./classes/gdopenxrhand; export gdopenxrhand
+import ./classes/gdopenxrhapticbase; export gdopenxrhapticbase
+import ./classes/gdopenxrhapticvibration; export gdopenxrhapticvibration
 import ./classes/gdopenxrinteractionprofile; export gdopenxrinteractionprofile
+import ./classes/gdopenxrinteractionprofileeditor; export gdopenxrinteractionprofileeditor
+import ./classes/gdopenxrinteractionprofileeditorbase; export gdopenxrinteractionprofileeditorbase
 import ./classes/gdopenxrinteractionprofilemetadata; export gdopenxrinteractionprofilemetadata
 import ./classes/gdopenxrinterface; export gdopenxrinterface
 import ./classes/gdopenxripbinding; export gdopenxripbinding
+import ./classes/gdopenxripbindingmodifier; export gdopenxripbindingmodifier
+import ./classes/gdopenxrvisibilitymask; export gdopenxrvisibilitymask
 import ./classes/gdoptimizedtranslation; export gdoptimizedtranslation
 import ./classes/gdoptionbutton; export gdoptionbutton
 import ./classes/gdormmaterial3d; export gdormmaterial3d
@@ -605,6 +628,7 @@ import ./classes/gdresourceloader; export gdresourceloader
 import ./classes/gdresourcepreloader; export gdresourcepreloader
 import ./classes/gdresourcesaver; export gdresourcesaver
 import ./classes/gdresourceuid; export gdresourceuid
+import ./classes/gdretargetmodifier3d; export gdretargetmodifier3d
 import ./classes/gdribbontrailmesh; export gdribbontrailmesh
 import ./classes/gdrichtexteffect; export gdrichtexteffect
 import ./classes/gdrichtextlabel; export gdrichtextlabel
@@ -633,6 +657,7 @@ import ./classes/gdseparator; export gdseparator
 import ./classes/gdshader; export gdshader
 import ./classes/gdshaderglobalsoverride; export gdshaderglobalsoverride
 import ./classes/gdshaderinclude; export gdshaderinclude
+import ./classes/gdshaderincludedb; export gdshaderincludedb
 import ./classes/gdshadermaterial; export gdshadermaterial
 import ./classes/gdshape2d; export gdshape2d
 import ./classes/gdshape3d; export gdshape3d
@@ -666,6 +691,11 @@ import ./classes/gdsphereshape3d; export gdsphereshape3d
 import ./classes/gdspinbox; export gdspinbox
 import ./classes/gdsplitcontainer; export gdsplitcontainer
 import ./classes/gdspringarm3d; export gdspringarm3d
+import ./classes/gdspringbonecollision3d; export gdspringbonecollision3d
+import ./classes/gdspringbonecollisioncapsule3d; export gdspringbonecollisioncapsule3d
+import ./classes/gdspringbonecollisionplane3d; export gdspringbonecollisionplane3d
+import ./classes/gdspringbonecollisionsphere3d; export gdspringbonecollisionsphere3d
+import ./classes/gdspringbonesimulator3d; export gdspringbonesimulator3d
 import ./classes/gdsprite2d; export gdsprite2d
 import ./classes/gdsprite3d; export gdsprite3d
 import ./classes/gdspritebase3d; export gdspritebase3d
@@ -685,6 +715,7 @@ import ./classes/gdstyleboxempty; export gdstyleboxempty
 import ./classes/gdstyleboxflat; export gdstyleboxflat
 import ./classes/gdstyleboxline; export gdstyleboxline
 import ./classes/gdstyleboxtexture; export gdstyleboxtexture
+import ./classes/gdsubtweentweener; export gdsubtweentweener
 import ./classes/gdsubviewport; export gdsubviewport
 import ./classes/gdsubviewportcontainer; export gdsubviewportcontainer
 import ./classes/gdsurfacetool; export gdsurfacetool
@@ -731,6 +762,7 @@ import ./classes/gdtlsoptions; export gdtlsoptions
 import ./classes/gdtorusmesh; export gdtorusmesh
 import ./classes/gdtouchscreenbutton; export gdtouchscreenbutton
 import ./classes/gdtranslation; export gdtranslation
+import ./classes/gdtranslationdomain; export gdtranslationdomain
 import ./classes/gdtranslationserver; export gdtranslationserver
 import ./classes/gdtree; export gdtree
 import ./classes/gdtreeitem; export gdtreeitem

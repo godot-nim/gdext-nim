@@ -36,11 +36,36 @@ proc getBindings*(self: OpenXRInteractionProfile): Array =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array)
 
+proc getBindingModifierCount*(self: OpenXRInteractionProfile): int32 =
+  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifier_count", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getBindingModifier*(self: OpenXRInteractionProfile; index: int32): gdref OpenXRIPBindingModifier =
+  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifier", 2419896583)
+  var ret: encoded gdref OpenXRIPBindingModifier
+  methodbind.ptrcall(self, [getPtr index], addr ret)
+  (addr ret).decode_result(gdref OpenXRIPBindingModifier)
+
+proc setBindingModifiers*(self: OpenXRInteractionProfile; bindingModifiers: Array): void =
+  expandMethodBind(className OpenXRInteractionProfile, "set_binding_modifiers", 381264803)
+  methodbind.ptrcall(self, [getPtr bindingModifiers])
+
+proc getBindingModifiers*(self: OpenXRInteractionProfile): Array =
+  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifiers", 3995934104)
+  var ret: encoded Array
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Array)
+
 template interactionProfilePath*(self: OpenXRInteractionProfile): untyped = self.getInteractionProfilePath()
 template `interactionProfilePath=`*(self: OpenXRInteractionProfile; value) = self.setInteractionProfilePath(value)
 
 template bindings*(self: OpenXRInteractionProfile): untyped = self.getBindings()
 template `bindings=`*(self: OpenXRInteractionProfile; value) = self.setBindings(value)
+
+template bindingModifiers*(self: OpenXRInteractionProfile): untyped = self.getBindingModifiers()
+template `bindingModifiers=`*(self: OpenXRInteractionProfile; value) = self.setBindingModifiers(value)
 
 const OpenXRInteractionProfile_vmap =
   Resource.vmap.concat initTable[string, string]()

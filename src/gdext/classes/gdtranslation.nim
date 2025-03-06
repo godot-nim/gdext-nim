@@ -25,27 +25,27 @@ proc getLocale*(self: Translation): String =
   (addr ret).decode_result(String)
 
 proc addMessage*(self: Translation; srcMessage: StringName; xlatedMessage: StringName; context: StringName = stringName ""): void =
-  expandMethodBind(className Translation, "add_message", 971803314)
+  expandMethodBind(className Translation, "add_message", 3898530326)
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr xlatedMessage, getPtr context])
 
 proc addPluralMessage*(self: Translation; srcMessage: StringName; xlatedMessages: PackedStringArray; context: StringName = stringName ""): void =
-  expandMethodBind(className Translation, "add_plural_message", 360316719)
+  expandMethodBind(className Translation, "add_plural_message", 2356982266)
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr xlatedMessages, getPtr context])
 
 proc getMessage*(self: Translation; srcMessage: StringName; context: StringName = stringName ""): StringName =
-  expandMethodBind(className Translation, "get_message", 58037827)
+  expandMethodBind(className Translation, "get_message", 1829228469)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
 proc getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName = stringName ""): StringName =
-  expandMethodBind(className Translation, "get_plural_message", 1333931916)
+  expandMethodBind(className Translation, "get_plural_message", 229954002)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr srcPluralMessage, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
 proc eraseMessage*(self: Translation; srcMessage: StringName; context: StringName = stringName ""): void =
-  expandMethodBind(className Translation, "erase_message", 3919944288)
+  expandMethodBind(className Translation, "erase_message", 3959009644)
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr context])
 
 proc getMessageList*(self: Translation): PackedStringArray =

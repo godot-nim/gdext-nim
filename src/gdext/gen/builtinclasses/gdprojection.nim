@@ -5,24 +5,6 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Projection_PLANE_NEAR*: int = 0
-template PLANE_NEAR*(_: typedesc[Projection]): int = Projection_PLANE_NEAR
-
-const Projection_PLANE_FAR*: int = 1
-template PLANE_FAR*(_: typedesc[Projection]): int = Projection_PLANE_FAR
-
-const Projection_PLANE_LEFT*: int = 2
-template PLANE_LEFT*(_: typedesc[Projection]): int = Projection_PLANE_LEFT
-
-const Projection_PLANE_TOP*: int = 3
-template PLANE_TOP*(_: typedesc[Projection]): int = Projection_PLANE_TOP
-
-const Projection_PLANE_RIGHT*: int = 4
-template PLANE_RIGHT*(_: typedesc[Projection]): int = Projection_PLANE_RIGHT
-
-const Projection_PLANE_BOTTOM*: int = 5
-template PLANE_BOTTOM*(_: typedesc[Projection]): int = Projection_PLANE_BOTTOM
-
 const Projection_IDENTITY*: Projection = projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 template IDENTITY*(_: typedesc[Projection]): Projection = Projection_IDENTITY
 

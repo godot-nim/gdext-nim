@@ -34,6 +34,7 @@ var `connect(Signal Callable Int)`: PtrBuiltinMethod
 var `disconnect(Signal Callable)`: PtrBuiltinMethod
 var `isConnected(Signal Callable)`: PtrBuiltinMethod
 var `getConnections(Signal)`: PtrBuiltinMethod
+var `hasConnections(Signal)`: PtrBuiltinMethod
 var `emit(Signal Variant)`: PtrBuiltinMethod
 
 proc isNull*(self: Signal): bool =
@@ -55,6 +56,8 @@ proc isConnected*(self: Signal; callable: Callable): bool =
   `isConnected(Signal Callable)`(addr self, addr argArr[0], addr result, 1)
 proc getConnections*(self: Signal): Array =
   `getConnections(Signal)`(addr self, nil, addr result, 0)
+proc hasConnections*(self: Signal): bool =
+  `hasConnections(Signal)`(addr self, nil, addr result, 0)
 
 proc load_Signal_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `isNull(Signal)` = load(VariantType_Signal, "is_null", 3918633141)
@@ -65,4 +68,5 @@ proc load_Signal_methods {.execon: staticevents.init_engine.on_load_builtinclass
   `disconnect(Signal Callable)` = load(VariantType_Signal, "disconnect", 3470848906)
   `isConnected(Signal Callable)` = load(VariantType_Signal, "is_connected", 4129521963)
   `getConnections(Signal)` = load(VariantType_Signal, "get_connections", 4144163970)
+  `hasConnections(Signal)` = load(VariantType_Signal, "has_connections", 3918633141)
   `emit(Signal Variant)` = load(VariantType_Signal, "emit", 3286317445)

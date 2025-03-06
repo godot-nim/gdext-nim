@@ -14,6 +14,12 @@ proc appendDataToBuffers*(self: GLTFState; data: PackedByteArray; deduplication:
   methodbind.ptrcall(self, [getPtr data, getPtr deduplication], addr ret)
   (addr ret).decode_result(int32)
 
+proc appendGltfNode*(self: GLTFState; gltfNode: gdref GLTFNode; godotSceneNode: Node; parentNodeIndex: int32): int32 =
+  expandMethodBind(className GLTFState, "append_gltf_node", 3562288551)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr gltfNode, getPtr godotSceneNode, getPtr parentNodeIndex], addr ret)
+  (addr ret).decode_result(int32)
+
 proc getJson*(self: GLTFState): Dictionary =
   expandMethodBind(className GLTFState, "get_json", 2382534195)
   var ret: encoded Dictionary

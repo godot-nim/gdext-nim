@@ -24,6 +24,16 @@ proc setVrsStrength*(self: XRVRS; strength: Float): void =
   expandMethodBind(className XRVRS, "set_vrs_strength", 373806689)
   methodbind.ptrcall(self, [getPtr strength])
 
+proc getVrsRenderRegion*(self: XRVRS): Rect2i =
+  expandMethodBind(className XRVRS, "get_vrs_render_region", 410525958)
+  var ret: encoded Rect2i
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Rect2i)
+
+proc setVrsRenderRegion*(self: XRVRS; renderRegion: Rect2i): void =
+  expandMethodBind(className XRVRS, "set_vrs_render_region", 1763793166)
+  methodbind.ptrcall(self, [getPtr renderRegion])
+
 proc makeVrsTexture*(self: XRVRS; targetSize: Vector2; eyeFoci: PackedVector2Array): RID =
   expandMethodBind(className XRVRS, "make_vrs_texture", 3647044786)
   var ret: encoded RID
@@ -35,6 +45,9 @@ template `vrsMinRadius=`*(self: XRVRS; value) = self.setVrsMinRadius(value)
 
 template vrsStrength*(self: XRVRS): untyped = self.getVrsStrength()
 template `vrsStrength=`*(self: XRVRS; value) = self.setVrsStrength(value)
+
+template vrsRenderRegion*(self: XRVRS): untyped = self.getVrsRenderRegion()
+template `vrsRenderRegion=`*(self: XRVRS; value) = self.setVrsRenderRegion(value)
 
 const XRVRS_vmap =
   Object.vmap.concat initTable[string, string]()

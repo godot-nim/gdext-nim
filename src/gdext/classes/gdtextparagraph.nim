@@ -200,6 +200,16 @@ proc getMaxLinesVisible*(self: TextParagraph): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setLineSpacing*(self: TextParagraph; lineSpacing: Float): void =
+  expandMethodBind(className TextParagraph, "set_line_spacing", 373806689)
+  methodbind.ptrcall(self, [getPtr lineSpacing])
+
+proc getLineSpacing*(self: TextParagraph): Float =
+  expandMethodBind(className TextParagraph, "get_line_spacing", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getLineObjects*(self: TextParagraph; line: int32): Array =
   expandMethodBind(className TextParagraph, "get_line_objects", 663333327)
   var ret: encoded Array
@@ -331,6 +341,9 @@ template `width=`*(self: TextParagraph; value) = self.setWidth(value)
 
 template maxLinesVisible*(self: TextParagraph): untyped = self.getMaxLinesVisible()
 template `maxLinesVisible=`*(self: TextParagraph; value) = self.setMaxLinesVisible(value)
+
+template lineSpacing*(self: TextParagraph): untyped = self.getLineSpacing()
+template `lineSpacing=`*(self: TextParagraph; value) = self.setLineSpacing(value)
 
 const TextParagraph_vmap =
   RefCounted.vmap.concat initTable[string, string]()

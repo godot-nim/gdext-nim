@@ -260,6 +260,14 @@ proc removeExportPlugin*(self: EditorPlugin; plugin: gdref EditorExportPlugin): 
   expandMethodBind(className EditorPlugin, "remove_export_plugin", 4095952207)
   methodbind.ptrcall(self, [getPtr plugin])
 
+proc addExportPlatform*(self: EditorPlugin; platform: gdref EditorExportPlatform): void =
+  expandMethodBind(className EditorPlugin, "add_export_platform", 3431312373)
+  methodbind.ptrcall(self, [getPtr platform])
+
+proc removeExportPlatform*(self: EditorPlugin; platform: gdref EditorExportPlatform): void =
+  expandMethodBind(className EditorPlugin, "remove_export_platform", 3431312373)
+  methodbind.ptrcall(self, [getPtr platform])
+
 proc addNode3DGizmoPlugin*(self: EditorPlugin; plugin: gdref EditorNode3DGizmoPlugin): void =
   expandMethodBind(className EditorPlugin, "add_node_3d_gizmo_plugin", 1541015022)
   methodbind.ptrcall(self, [getPtr plugin])
@@ -291,6 +299,14 @@ proc setInputEventForwardingAlwaysEnabled*(self: EditorPlugin): void =
 proc setForceDrawOverForwardingEnabled*(self: EditorPlugin): void =
   expandMethodBind(className EditorPlugin, "set_force_draw_over_forwarding_enabled", 3218959716)
   methodbind.ptrcall(self, [])
+
+proc addContextMenuPlugin*(self: EditorPlugin; slot: EditorContextMenuPlugin_ContextMenuSlot; plugin: gdref EditorContextMenuPlugin): void =
+  expandMethodBind(className EditorPlugin, "add_context_menu_plugin", 1904221872)
+  methodbind.ptrcall(self, [getPtr slot, getPtr plugin])
+
+proc removeContextMenuPlugin*(self: EditorPlugin; plugin: gdref EditorContextMenuPlugin): void =
+  expandMethodBind(className EditorPlugin, "remove_context_menu_plugin", 2281511854)
+  methodbind.ptrcall(self, [getPtr plugin])
 
 proc getEditorInterface*(self: EditorPlugin): EditorInterface =
   expandMethodBind(className EditorPlugin, "get_editor_interface", 4223731786)

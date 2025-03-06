@@ -24,6 +24,16 @@ proc getPlayMode*(self: AnimationNodeAnimation): AnimationNodeAnimation_PlayMode
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AnimationNodeAnimation_PlayMode)
 
+proc setAdvanceOnStart*(self: AnimationNodeAnimation; advanceOnStart: bool): void =
+  expandMethodBind(className AnimationNodeAnimation, "set_advance_on_start", 2586408642)
+  methodbind.ptrcall(self, [getPtr advanceOnStart])
+
+proc isAdvanceOnStart*(self: AnimationNodeAnimation): bool =
+  expandMethodBind(className AnimationNodeAnimation, "is_advance_on_start", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setUseCustomTimeline*(self: AnimationNodeAnimation; useCustomTimeline: bool): void =
   expandMethodBind(className AnimationNodeAnimation, "set_use_custom_timeline", 2586408642)
   methodbind.ptrcall(self, [getPtr useCustomTimeline])
@@ -79,6 +89,9 @@ template `animation=`*(self: AnimationNodeAnimation; value) = self.setAnimation(
 
 template playMode*(self: AnimationNodeAnimation): untyped = self.getPlayMode()
 template `playMode=`*(self: AnimationNodeAnimation; value) = self.setPlayMode(value)
+
+template advanceOnStart*(self: AnimationNodeAnimation): untyped = self.isAdvanceOnStart()
+template `advanceOnStart=`*(self: AnimationNodeAnimation; value) = self.setAdvanceOnStart(value)
 
 template useCustomTimeline*(self: AnimationNodeAnimation): untyped = self.isUsingCustomTimeline()
 template `useCustomTimeline=`*(self: AnimationNodeAnimation; value) = self.setUseCustomTimeline(value)

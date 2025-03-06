@@ -49,3 +49,17 @@ proc extensionsReloaded*(self: GDExtensionManager): Error =
   once:
     signalname = variant stringname("extensions_reloaded")
   self.emitSignal(signalname)
+
+proc extensionLoaded*(self: GDExtensionManager; extension: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("extension_loaded")
+  let args = [extension]
+  self.emitSignal(signalname, args)
+
+proc extensionUnloading*(self: GDExtensionManager; extension: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("extension_unloading")
+  let args = [extension]
+  self.emitSignal(signalname, args)

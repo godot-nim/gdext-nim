@@ -16,8 +16,8 @@ proc getActions*(self: InputMap): TypedArray[StringName] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
 
-proc addAction*(self: InputMap; action: StringName; deadzone: Float = 0.5): void =
-  expandMethodBind(className InputMap, "add_action", 4100757082)
+proc addAction*(self: InputMap; action: StringName; deadzone: Float = 0.2): void =
+  expandMethodBind(className InputMap, "add_action", 1195233573)
   methodbind.ptrcall(self, [getPtr action, getPtr deadzone])
 
 proc eraseAction*(self: InputMap; action: StringName): void =

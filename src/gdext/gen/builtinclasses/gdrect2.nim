@@ -40,6 +40,7 @@ var `encloses(Rect2 Rect2)`: PtrBuiltinMethod
 var `intersection(Rect2 Rect2)`: PtrBuiltinMethod
 var `merge(Rect2 Rect2)`: PtrBuiltinMethod
 var `expand(Rect2 Vector2)`: PtrBuiltinMethod
+var `getSupport(Rect2 Vector2)`: PtrBuiltinMethod
 var `grow(Rect2 Float)`: PtrBuiltinMethod
 var `growSide(Rect2 Int Float)`: PtrBuiltinMethod
 var `growIndividual(Rect2 Float Float Float Float)`: PtrBuiltinMethod
@@ -74,6 +75,9 @@ proc merge*(self: Rect2; b: Rect2): Rect2 =
 proc expand*(self: Rect2; to: Vector2): Rect2 =
   let argArr = [getPtr to]
   `expand(Rect2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+proc getSupport*(self: Rect2; direction: Vector2): Vector2 =
+  let argArr = [getPtr direction]
+  `getSupport(Rect2 Vector2)`(addr self, addr argArr[0], addr result, 1)
 proc grow*(self: Rect2; amount: Float): Rect2 =
   let argArr = [getPtr amount]
   `grow(Rect2 Float)`(addr self, addr argArr[0], addr result, 1)
@@ -98,6 +102,7 @@ proc load_Rect2_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `intersection(Rect2 Rect2)` = load(VariantType_Rect2, "intersection", 2282977743)
   `merge(Rect2 Rect2)` = load(VariantType_Rect2, "merge", 2282977743)
   `expand(Rect2 Vector2)` = load(VariantType_Rect2, "expand", 293272265)
+  `getSupport(Rect2 Vector2)` = load(VariantType_Rect2, "get_support", 2026743667)
   `grow(Rect2 Float)` = load(VariantType_Rect2, "grow", 39664498)
   `growSide(Rect2 Int Float)` = load(VariantType_Rect2, "grow_side", 4177736158)
   `growIndividual(Rect2 Float Float Float Float)` = load(VariantType_Rect2, "grow_individual", 3203390369)

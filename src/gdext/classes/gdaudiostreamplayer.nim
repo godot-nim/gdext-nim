@@ -24,6 +24,16 @@ proc getVolumeDb*(self: AudioStreamPlayer): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setVolumeLinear*(self: AudioStreamPlayer; volumeLinear: Float): void =
+  expandMethodBind(className AudioStreamPlayer, "set_volume_linear", 373806689)
+  methodbind.ptrcall(self, [getPtr volumeLinear])
+
+proc getVolumeLinear*(self: AudioStreamPlayer): Float =
+  expandMethodBind(className AudioStreamPlayer, "get_volume_linear", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setPitchScale*(self: AudioStreamPlayer; pitchScale: Float): void =
   expandMethodBind(className AudioStreamPlayer, "set_pitch_scale", 373806689)
   methodbind.ptrcall(self, [getPtr pitchScale])
@@ -88,6 +98,10 @@ proc getMixTarget*(self: AudioStreamPlayer): AudioStreamPlayer_MixTarget =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(AudioStreamPlayer_MixTarget)
 
+proc setPlaying*(self: AudioStreamPlayer; enable: bool): void =
+  expandMethodBind(className AudioStreamPlayer, "set_playing", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
 proc setStreamPaused*(self: AudioStreamPlayer; pause: bool): void =
   expandMethodBind(className AudioStreamPlayer, "set_stream_paused", 2586408642)
   methodbind.ptrcall(self, [getPtr pause])
@@ -135,6 +149,9 @@ template `stream=`*(self: AudioStreamPlayer; value) = self.setStream(value)
 
 template volumeDb*(self: AudioStreamPlayer): untyped = self.getVolumeDb()
 template `volumeDb=`*(self: AudioStreamPlayer; value) = self.setVolumeDb(value)
+
+template volumeLinear*(self: AudioStreamPlayer): untyped = self.getVolumeLinear()
+template `volumeLinear=`*(self: AudioStreamPlayer; value) = self.setVolumeLinear(value)
 
 template pitchScale*(self: AudioStreamPlayer): untyped = self.getPitchScale()
 template `pitchScale=`*(self: AudioStreamPlayer; value) = self.setPitchScale(value)

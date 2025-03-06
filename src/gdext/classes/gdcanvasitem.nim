@@ -329,6 +329,16 @@ proc getMaterial*(self: CanvasItem): gdref Material =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
+proc setInstanceShaderParameter*(self: CanvasItem; name: StringName; value: Variant): void =
+  expandMethodBind(className CanvasItem, "set_instance_shader_parameter", 3776071444)
+  methodbind.ptrcall(self, [getPtr name, getPtr value])
+
+proc getInstanceShaderParameter*(self: CanvasItem; name: StringName): Variant =
+  expandMethodBind(className CanvasItem, "get_instance_shader_parameter", 2760726917)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr name], addr ret)
+  (addr ret).decode_result(Variant)
+
 proc setUseParentMaterial*(self: CanvasItem; enable: bool): void =
   expandMethodBind(className CanvasItem, "set_use_parent_material", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -363,10 +373,10 @@ proc forceUpdateTransform*(self: CanvasItem): void =
   expandMethodBind(className CanvasItem, "force_update_transform", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc makeCanvasPositionLocal*(self: CanvasItem; screenPoint: Vector2): Vector2 =
+proc makeCanvasPositionLocal*(self: CanvasItem; viewportPoint: Vector2): Vector2 =
   expandMethodBind(className CanvasItem, "make_canvas_position_local", 2656412154)
   var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr screenPoint], addr ret)
+  methodbind.ptrcall(self, [getPtr viewportPoint], addr ret)
   (addr ret).decode_result(Vector2)
 
 proc makeInputLocal*(self: CanvasItem; event: gdref InputEvent): gdref InputEvent =

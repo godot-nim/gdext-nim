@@ -46,6 +46,12 @@ proc instantiate*(self: ClassDB; class: StringName): Variant =
   methodbind.ptrcall(self, [getPtr class], addr ret)
   (addr ret).decode_result(Variant)
 
+proc classGetApiType*(self: ClassDB; class: StringName): ClassDB_APIType =
+  expandMethodBind(className ClassDB, "class_get_api_type", 2475317043)
+  var ret: encoded ClassDB_APIType
+  methodbind.ptrcall(self, [getPtr class], addr ret)
+  (addr ret).decode_result(ClassDB_APIType)
+
 proc classHasSignal*(self: ClassDB; class: StringName; signal: StringName): bool =
   expandMethodBind(className ClassDB, "class_has_signal", 471820014)
   var ret: encoded bool
@@ -69,6 +75,18 @@ proc classGetPropertyList*(self: ClassDB; class: StringName; noInheritance: bool
   var ret: encoded TypedArray[Dictionary]
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
+
+proc classGetPropertyGetter*(self: ClassDB; class: StringName; property: StringName): StringName =
+  expandMethodBind(className ClassDB, "class_get_property_getter", 3770832642)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr class, getPtr property], addr ret)
+  (addr ret).decode_result(StringName)
+
+proc classGetPropertySetter*(self: ClassDB; class: StringName; property: StringName): StringName =
+  expandMethodBind(className ClassDB, "class_get_property_setter", 3770832642)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr class, getPtr property], addr ret)
+  (addr ret).decode_result(StringName)
 
 proc classGetProperty*(self: ClassDB; `object`: Object; property: StringName): Variant =
   expandMethodBind(className ClassDB, "class_get_property", 2498641674)
@@ -105,6 +123,14 @@ proc classGetMethodList*(self: ClassDB; class: StringName; noInheritance: bool =
   var ret: encoded TypedArray[Dictionary]
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
+
+proc classCallStatic*(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant]): Variant =
+  expandMethodBind(className ClassDB, "class_call_static", 3344196419)
+  var `?param` = newSeqOfCap[VariantPtr](2+args.len)
+  `?param`.add [getTypedPtr class, getTypedPtr `method`]
+  methodbind.call(self, `?param`, args).get(Variant)
+template classCallStatic*(self: ClassDB; class: StringName; `method`: StringName; args: varargs[Variant]): Variant =
+  classCallStatic(self, variant class, variant `method`, args)
 
 proc classGetIntegerConstantList*(self: ClassDB; class: StringName; noInheritance: bool = false): PackedStringArray =
   expandMethodBind(className ClassDB, "class_get_integer_constant_list", 3031669221)

@@ -124,6 +124,26 @@ proc getMaxTextureSize*(self: LightmapGI): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setSupersamplingEnabled*(self: LightmapGI; enable: bool): void =
+  expandMethodBind(className LightmapGI, "set_supersampling_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isSupersamplingEnabled*(self: LightmapGI): bool =
+  expandMethodBind(className LightmapGI, "is_supersampling_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setSupersamplingFactor*(self: LightmapGI; factor: Float): void =
+  expandMethodBind(className LightmapGI, "set_supersampling_factor", 373806689)
+  methodbind.ptrcall(self, [getPtr factor])
+
+proc getSupersamplingFactor*(self: LightmapGI): Float =
+  expandMethodBind(className LightmapGI, "get_supersampling_factor", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setUseDenoiser*(self: LightmapGI; useDenoiser: bool): void =
   expandMethodBind(className LightmapGI, "set_use_denoiser", 2586408642)
   methodbind.ptrcall(self, [getPtr useDenoiser])
@@ -174,6 +194,16 @@ proc isDirectional*(self: LightmapGI): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setShadowmaskMode*(self: LightmapGI; mode: LightmapGIData_ShadowmaskMode): void =
+  expandMethodBind(className LightmapGI, "set_shadowmask_mode", 3451066572)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getShadowmaskMode*(self: LightmapGI): LightmapGIData_ShadowmaskMode =
+  expandMethodBind(className LightmapGI, "get_shadowmask_mode", 785478560)
+  var ret: encoded LightmapGIData_ShadowmaskMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(LightmapGIData_ShadowmaskMode)
+
 proc setUseTextureForBounces*(self: LightmapGI; useTextureForBounces: bool): void =
   expandMethodBind(className LightmapGI, "set_use_texture_for_bounces", 2586408642)
   methodbind.ptrcall(self, [getPtr useTextureForBounces])
@@ -197,6 +227,12 @@ proc getCameraAttributes*(self: LightmapGI): gdref CameraAttributes =
 template quality*(self: LightmapGI): untyped = self.getBakeQuality()
 template `quality=`*(self: LightmapGI; value) = self.setBakeQuality(value)
 
+template supersampling*(self: LightmapGI): untyped = self.isSupersamplingEnabled()
+template `supersampling=`*(self: LightmapGI; value) = self.setSupersamplingEnabled(value)
+
+template supersamplingFactor*(self: LightmapGI): untyped = self.getSupersamplingFactor()
+template `supersamplingFactor=`*(self: LightmapGI; value) = self.setSupersamplingFactor(value)
+
 template bounces*(self: LightmapGI): untyped = self.getBounces()
 template `bounces=`*(self: LightmapGI; value) = self.setBounces(value)
 
@@ -205,6 +241,9 @@ template `bounceIndirectEnergy=`*(self: LightmapGI; value) = self.setBounceIndir
 
 template directional*(self: LightmapGI): untyped = self.isDirectional()
 template `directional=`*(self: LightmapGI; value) = self.setDirectional(value)
+
+template shadowmaskMode*(self: LightmapGI): untyped = self.getShadowmaskMode()
+template `shadowmaskMode=`*(self: LightmapGI; value) = self.setShadowmaskMode(value)
 
 template useTextureForBounces*(self: LightmapGI): untyped = self.isUsingTextureForBounces()
 template `useTextureForBounces=`*(self: LightmapGI; value) = self.setUseTextureForBounces(value)

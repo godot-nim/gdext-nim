@@ -24,6 +24,16 @@ proc getVolumeDb*(self: AudioStreamPlayer3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setVolumeLinear*(self: AudioStreamPlayer3D; volumeLinear: Float): void =
+  expandMethodBind(className AudioStreamPlayer3D, "set_volume_linear", 373806689)
+  methodbind.ptrcall(self, [getPtr volumeLinear])
+
+proc getVolumeLinear*(self: AudioStreamPlayer3D): Float =
+  expandMethodBind(className AudioStreamPlayer3D, "get_volume_linear", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setUnitSize*(self: AudioStreamPlayer3D; unitSize: Float): void =
   expandMethodBind(className AudioStreamPlayer3D, "set_unit_size", 373806689)
   methodbind.ptrcall(self, [getPtr unitSize])
@@ -97,6 +107,10 @@ proc isAutoplayEnabled*(self: AudioStreamPlayer3D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
+
+proc setPlaying*(self: AudioStreamPlayer3D; enable: bool): void =
+  expandMethodBind(className AudioStreamPlayer3D, "set_playing", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc setMaxDistance*(self: AudioStreamPlayer3D; meters: Float): void =
   expandMethodBind(className AudioStreamPlayer3D, "set_max_distance", 373806689)
@@ -248,6 +262,9 @@ template `attenuationModel=`*(self: AudioStreamPlayer3D; value) = self.setAttenu
 
 template volumeDb*(self: AudioStreamPlayer3D): untyped = self.getVolumeDb()
 template `volumeDb=`*(self: AudioStreamPlayer3D; value) = self.setVolumeDb(value)
+
+template volumeLinear*(self: AudioStreamPlayer3D): untyped = self.getVolumeLinear()
+template `volumeLinear=`*(self: AudioStreamPlayer3D; value) = self.setVolumeLinear(value)
 
 template unitSize*(self: AudioStreamPlayer3D): untyped = self.getUnitSize()
 template `unitSize=`*(self: AudioStreamPlayer3D; value) = self.setUnitSize(value)

@@ -64,6 +64,16 @@ proc getVisibleInstanceCount*(self: MultiMesh): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setPhysicsInterpolationQuality*(self: MultiMesh; quality: MultiMesh_PhysicsInterpolationQuality): void =
+  expandMethodBind(className MultiMesh, "set_physics_interpolation_quality", 1819488408)
+  methodbind.ptrcall(self, [getPtr quality])
+
+proc getPhysicsInterpolationQuality*(self: MultiMesh): MultiMesh_PhysicsInterpolationQuality =
+  expandMethodBind(className MultiMesh, "get_physics_interpolation_quality", 1465701882)
+  var ret: encoded MultiMesh_PhysicsInterpolationQuality
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(MultiMesh_PhysicsInterpolationQuality)
+
 proc setInstanceTransform*(self: MultiMesh; instance: int32; transform: Transform3D): void =
   expandMethodBind(className MultiMesh, "set_instance_transform", 3616898986)
   methodbind.ptrcall(self, [getPtr instance, getPtr transform])
@@ -104,6 +114,10 @@ proc getInstanceCustomData*(self: MultiMesh; instance: int32): Color =
   methodbind.ptrcall(self, [getPtr instance], addr ret)
   (addr ret).decode_result(Color)
 
+proc resetInstancePhysicsInterpolation*(self: MultiMesh; instance: int32): void =
+  expandMethodBind(className MultiMesh, "reset_instance_physics_interpolation", 1286410249)
+  methodbind.ptrcall(self, [getPtr instance])
+
 proc setCustomAabb*(self: MultiMesh; aabb: AABB): void =
   expandMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
   methodbind.ptrcall(self, [getPtr aabb])
@@ -129,6 +143,10 @@ proc getBuffer*(self: MultiMesh): PackedFloat32Array =
 proc setBuffer*(self: MultiMesh; buffer: PackedFloat32Array): void =
   expandMethodBind(className MultiMesh, "set_buffer", 2899603908)
   methodbind.ptrcall(self, [getPtr buffer])
+
+proc setBufferInterpolated*(self: MultiMesh; bufferCurr: PackedFloat32Array; bufferPrev: PackedFloat32Array): void =
+  expandMethodBind(className MultiMesh, "set_buffer_interpolated", 3514430332)
+  methodbind.ptrcall(self, [getPtr bufferCurr, getPtr bufferPrev])
 
 template transformFormat*(self: MultiMesh): untyped = self.getTransformFormat()
 template `transformFormat=`*(self: MultiMesh; value) = self.setTransformFormat(value)
@@ -165,6 +183,9 @@ template `colorArray=`*(self: MultiMesh; value) = self.setColorArray(value)
 
 template customDataArray*(self: MultiMesh): untyped = self.getCustomDataArray()
 template `customDataArray=`*(self: MultiMesh; value) = self.setCustomDataArray(value)
+
+template physicsInterpolationQuality*(self: MultiMesh): untyped = self.getPhysicsInterpolationQuality()
+template `physicsInterpolationQuality=`*(self: MultiMesh; value) = self.setPhysicsInterpolationQuality(value)
 
 const MultiMesh_vmap =
   Resource.vmap.concat initTable[string, string]()

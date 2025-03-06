@@ -23,7 +23,7 @@ proc getSession*(self: OpenXRAPIExtension): uint64 =
   (addr ret).decode_result(uint64)
 
 proc transformFromPose*(self: OpenXRAPIExtension; pose: pointer): Transform3D =
-  expandMethodBind(className OpenXRAPIExtension, "transform_from_pose", 3255299855)
+  expandMethodBind(className OpenXRAPIExtension, "transform_from_pose", 2963875352)
   var ret: encoded Transform3D
   methodbind.ptrcall(self, [getPtr pose], addr ret)
   (addr ret).decode_result(Transform3D)
@@ -57,6 +57,22 @@ proc getSwapchainFormatName*(self: OpenXRAPIExtension; swapchainFormat: int64): 
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr swapchainFormat], addr ret)
   (addr ret).decode_result(String)
+
+proc setObjectName*(self: OpenXRAPIExtension; objectType: int64; objectHandle: uint64; objectName: String): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_object_name", 2285447957)
+  methodbind.ptrcall(self, [getPtr objectType, getPtr objectHandle, getPtr objectName])
+
+proc beginDebugLabelRegion*(self: OpenXRAPIExtension; labelName: String): void =
+  expandMethodBind(className OpenXRAPIExtension, "begin_debug_label_region", 83702148)
+  methodbind.ptrcall(self, [getPtr labelName])
+
+proc endDebugLabelRegion*(self: OpenXRAPIExtension): void =
+  expandMethodBind(className OpenXRAPIExtension, "end_debug_label_region", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc insertDebugLabel*(self: OpenXRAPIExtension; labelName: String): void =
+  expandMethodBind(className OpenXRAPIExtension, "insert_debug_label", 83702148)
+  methodbind.ptrcall(self, [getPtr labelName])
 
 proc isInitialized*(self: OpenXRAPIExtension): bool =
   expandMethodBind(className OpenXRAPIExtension, "is_initialized", 2240911060)
@@ -94,6 +110,18 @@ proc canRender*(self: OpenXRAPIExtension): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc findAction*(self: OpenXRAPIExtension; name: String; actionSet: RID): RID =
+  expandMethodBind(className OpenXRAPIExtension, "find_action", 4106179378)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr name, getPtr actionSet], addr ret)
+  (addr ret).decode_result(RID)
+
+proc actionGetHandle*(self: OpenXRAPIExtension; action: RID): uint64 =
+  expandMethodBind(className OpenXRAPIExtension, "action_get_handle", 3917799429)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr action], addr ret)
+  (addr ret).decode_result(uint64)
+
 proc getHandTracker*(self: OpenXRAPIExtension; handIndex: int32): uint64 =
   expandMethodBind(className OpenXRAPIExtension, "get_hand_tracker", 3744713108)
   var ret: encoded uint64
@@ -107,6 +135,84 @@ proc registerCompositionLayerProvider*(self: OpenXRAPIExtension; extension: Open
 proc unregisterCompositionLayerProvider*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
   expandMethodBind(className OpenXRAPIExtension, "unregister_composition_layer_provider", 1997997368)
   methodbind.ptrcall(self, [getPtr extension])
+
+proc registerProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
+  expandMethodBind(className OpenXRAPIExtension, "register_projection_views_extension", 1997997368)
+  methodbind.ptrcall(self, [getPtr extension])
+
+proc unregisterProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
+  expandMethodBind(className OpenXRAPIExtension, "unregister_projection_views_extension", 1997997368)
+  methodbind.ptrcall(self, [getPtr extension])
+
+proc getRenderStateZNear*(self: OpenXRAPIExtension): float64 =
+  expandMethodBind(className OpenXRAPIExtension, "get_render_state_z_near", 191475506)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
+
+proc getRenderStateZFar*(self: OpenXRAPIExtension): float64 =
+  expandMethodBind(className OpenXRAPIExtension, "get_render_state_z_far", 191475506)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
+
+proc setVelocityTexture*(self: OpenXRAPIExtension; renderTarget: RID): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_velocity_texture", 2722037293)
+  methodbind.ptrcall(self, [getPtr renderTarget])
+
+proc setVelocityDepthTexture*(self: OpenXRAPIExtension; renderTarget: RID): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_velocity_depth_texture", 2722037293)
+  methodbind.ptrcall(self, [getPtr renderTarget])
+
+proc setVelocityTargetSize*(self: OpenXRAPIExtension; targetSize: Vector2i): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_velocity_target_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr targetSize])
+
+proc getSupportedSwapchainFormats*(self: OpenXRAPIExtension): PackedInt64Array =
+  expandMethodBind(className OpenXRAPIExtension, "get_supported_swapchain_formats", 3851388692)
+  var ret: encoded PackedInt64Array
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedInt64Array)
+
+proc openxrSwapchainCreate*(self: OpenXRAPIExtension; createFlags: uint64; usageFlags: uint64; swapchainFormat: int64; width: uint32; height: uint32; sampleCount: uint32; arraySize: uint32): uint64 =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_create", 2162228999)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr createFlags, getPtr usageFlags, getPtr swapchainFormat, getPtr width, getPtr height, getPtr sampleCount, getPtr arraySize], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc openxrSwapchainFree*(self: OpenXRAPIExtension; swapchain: uint64): void =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_free", 1286410249)
+  methodbind.ptrcall(self, [getPtr swapchain])
+
+proc openxrSwapchainGetSwapchain*(self: OpenXRAPIExtension; swapchain: uint64): uint64 =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_get_swapchain", 3744713108)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr swapchain], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc openxrSwapchainAcquire*(self: OpenXRAPIExtension; swapchain: uint64): void =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_acquire", 1286410249)
+  methodbind.ptrcall(self, [getPtr swapchain])
+
+proc openxrSwapchainGetImage*(self: OpenXRAPIExtension; swapchain: uint64): RID =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_get_image", 937000113)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr swapchain], addr ret)
+  (addr ret).decode_result(RID)
+
+proc openxrSwapchainRelease*(self: OpenXRAPIExtension; swapchain: uint64): void =
+  expandMethodBind(className OpenXRAPIExtension, "openxr_swapchain_release", 1286410249)
+  methodbind.ptrcall(self, [getPtr swapchain])
+
+proc getProjectionLayer*(self: OpenXRAPIExtension): uint64 =
+  expandMethodBind(className OpenXRAPIExtension, "get_projection_layer", 2455072627)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc setRenderRegion*(self: OpenXRAPIExtension; renderRegion: Rect2i): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_render_region", 1763793166)
+  methodbind.ptrcall(self, [getPtr renderRegion])
 
 proc setEmulateEnvironmentBlendModeAlphaBlend*(self: OpenXRAPIExtension; enabled: bool): void =
   expandMethodBind(className OpenXRAPIExtension, "set_emulate_environment_blend_mode_alpha_blend", 2586408642)

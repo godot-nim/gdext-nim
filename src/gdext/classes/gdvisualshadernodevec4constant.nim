@@ -17,6 +17,9 @@ proc getConstant*(self: VisualShaderNodeVec4Constant): Quaternion =
 template constant*(self: VisualShaderNodeVec4Constant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeVec4Constant; value) = self.setConstant(value)
 
+template constantV4*(self: VisualShaderNodeVec4Constant): untyped = self.getConstantV4()
+template `constantV4=`*(self: VisualShaderNodeVec4Constant; value) = self.setConstantV4(value)
+
 const VisualShaderNodeVec4Constant_vmap =
   VisualShaderNodeConstant.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[VisualShaderNodeVec4Constant]): Table[string, string] = VisualShaderNodeVec4Constant_vmap

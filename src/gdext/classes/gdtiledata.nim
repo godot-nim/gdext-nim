@@ -84,6 +84,34 @@ proc getYSortOrigin*(self: TileData): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setOccluderPolygonsCount*(self: TileData; layerId: int32; polygonsCount: int32): void =
+  expandMethodBind(className TileData, "set_occluder_polygons_count", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonsCount])
+
+proc getOccluderPolygonsCount*(self: TileData; layerId: int32): int32 =
+  expandMethodBind(className TileData, "get_occluder_polygons_count", 923996154)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr layerId], addr ret)
+  (addr ret).decode_result(int32)
+
+proc addOccluderPolygon*(self: TileData; layerId: int32): void =
+  expandMethodBind(className TileData, "add_occluder_polygon", 1286410249)
+  methodbind.ptrcall(self, [getPtr layerId])
+
+proc removeOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32): void =
+  expandMethodBind(className TileData, "remove_occluder_polygon", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex])
+
+proc setOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32; polygon: gdref OccluderPolygon2D): void =
+  expandMethodBind(className TileData, "set_occluder_polygon", 164249167)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr polygon])
+
+proc getOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32; flipH: bool = false; flipV: bool = false; transpose: bool = false): gdref OccluderPolygon2D =
+  expandMethodBind(className TileData, "get_occluder_polygon", 971166743)
+  var ret: encoded gdref OccluderPolygon2D
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr flipH, getPtr flipV, getPtr transpose], addr ret)
+  (addr ret).decode_result(gdref OccluderPolygon2D)
+
 proc setOccluder*(self: TileData; layerId: int32; occluderPolygon: gdref OccluderPolygon2D): void =
   expandMethodBind(className TileData, "set_occluder", 914399637)
   methodbind.ptrcall(self, [getPtr layerId, getPtr occluderPolygon])
@@ -227,6 +255,12 @@ proc getCustomData*(self: TileData; layerName: String): Variant =
   var ret: encoded Variant
   methodbind.ptrcall(self, [getPtr layerName], addr ret)
   (addr ret).decode_result(Variant)
+
+proc hasCustomData*(self: TileData; layerName: String): bool =
+  expandMethodBind(className TileData, "has_custom_data", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layerName], addr ret)
+  (addr ret).decode_result(bool)
 
 proc setCustomDataByLayerId*(self: TileData; layerId: int32; value: Variant): void =
   expandMethodBind(className TileData, "set_custom_data_by_layer_id", 2152698145)

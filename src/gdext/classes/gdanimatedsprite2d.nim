@@ -41,11 +41,11 @@ proc isPlaying*(self: AnimatedSprite2D): bool =
   (addr ret).decode_result(bool)
 
 proc play*(self: AnimatedSprite2D; name: StringName = stringName ""; customSpeed: Float = 1.0; fromEnd: bool = false): void =
-  expandMethodBind(className AnimatedSprite2D, "play", 2372066587)
+  expandMethodBind(className AnimatedSprite2D, "play", 3269405555)
   methodbind.ptrcall(self, [getPtr name, getPtr customSpeed, getPtr fromEnd])
 
 proc playBackwards*(self: AnimatedSprite2D; name: StringName = stringName ""): void =
-  expandMethodBind(className AnimatedSprite2D, "play_backwards", 1421762485)
+  expandMethodBind(className AnimatedSprite2D, "play_backwards", 3323268493)
   methodbind.ptrcall(self, [getPtr name])
 
 proc pause*(self: AnimatedSprite2D): void =

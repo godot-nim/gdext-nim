@@ -20,6 +20,10 @@ proc setItemMeshTransform*(self: MeshLibrary; id: int32; meshTransform: Transfor
   expandMethodBind(className MeshLibrary, "set_item_mesh_transform", 3616898986)
   methodbind.ptrcall(self, [getPtr id, getPtr meshTransform])
 
+proc setItemMeshCastShadow*(self: MeshLibrary; id: int32; shadowCastingSetting: RenderingServer_ShadowCastingSetting): void =
+  expandMethodBind(className MeshLibrary, "set_item_mesh_cast_shadow", 3923400443)
+  methodbind.ptrcall(self, [getPtr id, getPtr shadowCastingSetting])
+
 proc setItemNavigationMesh*(self: MeshLibrary; id: int32; navigationMesh: gdref NavigationMesh): void =
   expandMethodBind(className MeshLibrary, "set_item_navigation_mesh", 3483353960)
   methodbind.ptrcall(self, [getPtr id, getPtr navigationMesh])
@@ -57,6 +61,12 @@ proc getItemMeshTransform*(self: MeshLibrary; id: int32): Transform3D =
   var ret: encoded Transform3D
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(Transform3D)
+
+proc getItemMeshCastShadow*(self: MeshLibrary; id: int32): RenderingServer_ShadowCastingSetting =
+  expandMethodBind(className MeshLibrary, "get_item_mesh_cast_shadow", 1841766007)
+  var ret: encoded RenderingServer_ShadowCastingSetting
+  methodbind.ptrcall(self, [getPtr id], addr ret)
+  (addr ret).decode_result(RenderingServer_ShadowCastingSetting)
 
 proc getItemNavigationMesh*(self: MeshLibrary; id: int32): gdref NavigationMesh =
   expandMethodBind(className MeshLibrary, "get_item_navigation_mesh", 2729647406)

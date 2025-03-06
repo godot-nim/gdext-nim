@@ -136,25 +136,25 @@ proc drawMultilineStringOutline*(self: Font; canvasItem: RID; pos: Vector2; text
   expandMethodBind(className Font, "draw_multiline_string_outline", 3206388178)
   methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr size, getPtr modulate, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation])
 
-proc getCharSize*(self: Font; char: Int; fontSize: int32): Vector2 =
+proc getCharSize*(self: Font; char: char32; fontSize: int32): Vector2 =
   expandMethodBind(className Font, "get_char_size", 3016396712)
   var ret: encoded Vector2
   methodbind.ptrcall(self, [getPtr char, getPtr fontSize], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc drawChar*(self: Font; canvasItem: RID; pos: Vector2; char: Int; fontSize: int32; modulate: Color = color(1, 1, 1, 1)): Float =
+proc drawChar*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; modulate: Color = color(1, 1, 1, 1)): Float =
   expandMethodBind(className Font, "draw_char", 3815617597)
   var ret: encoded Float
   methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr modulate], addr ret)
   (addr ret).decode_result(Float)
 
-proc drawCharOutline*(self: Font; canvasItem: RID; pos: Vector2; char: Int; fontSize: int32; size: int32 = -1; modulate: Color = color(1, 1, 1, 1)): Float =
+proc drawCharOutline*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; size: int32 = -1; modulate: Color = color(1, 1, 1, 1)): Float =
   expandMethodBind(className Font, "draw_char_outline", 209525354)
   var ret: encoded Float
   methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr size, getPtr modulate], addr ret)
   (addr ret).decode_result(Float)
 
-proc hasChar*(self: Font; char: Int): bool =
+proc hasChar*(self: Font; char: char32): bool =
   expandMethodBind(className Font, "has_char", 1116898809)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr char], addr ret)

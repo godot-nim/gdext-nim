@@ -32,9 +32,10 @@ proc load_PackedStringArray_operators {.execon: staticevents.init_engine.on_load
   `!=(PackedStringArray PackedStringArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedStringArray, VariantType_PackedStringArray)
   `+(PackedStringArray PackedStringArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedStringArray, VariantType_PackedStringArray)
 
+var `get(PackedStringArray Int)`: PtrBuiltinMethod
+var `set(PackedStringArray Int String)`: PtrBuiltinMethod
 var `size(PackedStringArray)`: PtrBuiltinMethod
 var `isEmpty(PackedStringArray)`: PtrBuiltinMethod
-var `set(PackedStringArray Int String)`: PtrBuiltinMethod
 var `pushBack(PackedStringArray String)`: PtrBuiltinMethod
 var `append(PackedStringArray String)`: PtrBuiltinMethod
 var `appendArray(PackedStringArray PackedStringArray)`: PtrBuiltinMethod
@@ -54,13 +55,16 @@ var `find(PackedStringArray String Int)`: PtrBuiltinMethod
 var `rfind(PackedStringArray String Int)`: PtrBuiltinMethod
 var `count(PackedStringArray String)`: PtrBuiltinMethod
 
+proc get*(self: PackedStringArray; index: Int): String =
+  let argArr = [getPtr index]
+  `get(PackedStringArray Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedStringArray; index: Int; value: String): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedStringArray Int String)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedStringArray): Int =
   `size(PackedStringArray)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedStringArray): bool =
   `isEmpty(PackedStringArray)`(addr self, nil, addr result, 0)
-proc set*(self: PackedStringArray; index: Int; value: String): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedStringArray Int String)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedStringArray; value: String): bool =
   let argArr = [getPtr value]
   `pushBack(PackedStringArray String)`(addr self, addr argArr[0], addr result, 1)
@@ -112,9 +116,10 @@ proc count*(self: PackedStringArray; value: String): Int =
   `count(PackedStringArray String)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedStringArray_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedStringArray Int)` = load(VariantType_PackedStringArray, "get", 2162347432)
+  `set(PackedStringArray Int String)` = load(VariantType_PackedStringArray, "set", 725585539)
   `size(PackedStringArray)` = load(VariantType_PackedStringArray, "size", 3173160232)
   `isEmpty(PackedStringArray)` = load(VariantType_PackedStringArray, "is_empty", 3918633141)
-  `set(PackedStringArray Int String)` = load(VariantType_PackedStringArray, "set", 725585539)
   `pushBack(PackedStringArray String)` = load(VariantType_PackedStringArray, "push_back", 816187996)
   `append(PackedStringArray String)` = load(VariantType_PackedStringArray, "append", 816187996)
   `appendArray(PackedStringArray PackedStringArray)` = load(VariantType_PackedStringArray, "append_array", 1120103966)

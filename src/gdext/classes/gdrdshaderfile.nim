@@ -5,11 +5,11 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 proc setBytecode*(self: RDShaderFile; bytecode: gdref RDShaderSPIRV; version: StringName = stringName ""): void =
-  expandMethodBind(className RDShaderFile, "set_bytecode", 1558064255)
+  expandMethodBind(className RDShaderFile, "set_bytecode", 1526857008)
   methodbind.ptrcall(self, [getPtr bytecode, getPtr version])
 
 proc getSpirv*(self: RDShaderFile; version: StringName = stringName ""): gdref RDShaderSPIRV =
-  expandMethodBind(className RDShaderFile, "get_spirv", 3340165340)
+  expandMethodBind(className RDShaderFile, "get_spirv", 2689310080)
   var ret: encoded gdref RDShaderSPIRV
   methodbind.ptrcall(self, [getPtr version], addr ret)
   (addr ret).decode_result(gdref RDShaderSPIRV)

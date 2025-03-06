@@ -124,6 +124,10 @@ proc setChildren*(self: GLTFNode; children: PackedInt32Array): void =
   expandMethodBind(className GLTFNode, "set_children", 3614634198)
   methodbind.ptrcall(self, [getPtr children])
 
+proc appendChildIndex*(self: GLTFNode; childIndex: int32): void =
+  expandMethodBind(className GLTFNode, "append_child_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr childIndex])
+
 proc getLight*(self: GLTFNode): int32 =
   expandMethodBind(className GLTFNode, "get_light", 2455072627)
   var ret: encoded int32
@@ -143,6 +147,12 @@ proc getAdditionalData*(self: GLTFNode; extensionName: StringName): Variant =
 proc setAdditionalData*(self: GLTFNode; extensionName: StringName; additionalData: Variant): void =
   expandMethodBind(className GLTFNode, "set_additional_data", 3776071444)
   methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData])
+
+proc getSceneNodePath*(self: GLTFNode; gltfState: gdref GLTFState; handleSkeletons: bool = true): NodePath =
+  expandMethodBind(className GLTFNode, "get_scene_node_path", 573359477)
+  var ret: encoded NodePath
+  methodbind.ptrcall(self, [getPtr gltfState, getPtr handleSkeletons], addr ret)
+  (addr ret).decode_result(NodePath)
 
 template originalName*(self: GLTFNode): untyped = self.getOriginalName()
 template `originalName=`*(self: GLTFNode; value) = self.setOriginalName(value)

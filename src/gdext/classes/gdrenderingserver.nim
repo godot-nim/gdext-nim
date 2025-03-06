@@ -28,6 +28,12 @@ proc textureProxyCreate*(self: RenderingServer; base: RID): RID =
   methodbind.ptrcall(self, [getPtr base], addr ret)
   (addr ret).decode_result(RID)
 
+proc textureCreateFromNativeHandle*(self: RenderingServer; `type`: RenderingServer_TextureType; format: Image_Format; nativeHandle: uint64; width: int32; height: int32; depth: int32; layers: int32 = 1; layeredType: RenderingServer_TextureLayeredType = textureLayered2DArray): RID =
+  expandMethodBind(className RenderingServer, "texture_create_from_native_handle", 1682977582)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr `type`, getPtr format, getPtr nativeHandle, getPtr width, getPtr height, getPtr depth, getPtr layers, getPtr layeredType], addr ret)
+  (addr ret).decode_result(RID)
+
 proc texture2DUpdate*(self: RenderingServer; texture: RID; image: gdref Image; layer: int32): void =
   expandMethodBind(className RenderingServer, "texture_2d_update", 999539803)
   methodbind.ptrcall(self, [getPtr texture, getPtr image, getPtr layer])
@@ -302,6 +308,10 @@ proc meshGetCustomAabb*(self: RenderingServer; mesh: RID): AABB =
   methodbind.ptrcall(self, [getPtr mesh], addr ret)
   (addr ret).decode_result(AABB)
 
+proc meshSurfaceRemove*(self: RenderingServer; mesh: RID; surface: int32): void =
+  expandMethodBind(className RenderingServer, "mesh_surface_remove", 3411492887)
+  methodbind.ptrcall(self, [getPtr mesh, getPtr surface])
+
 proc meshClear*(self: RenderingServer; mesh: RID): void =
   expandMethodBind(className RenderingServer, "mesh_clear", 2722037293)
   methodbind.ptrcall(self, [getPtr mesh])
@@ -328,9 +338,9 @@ proc multimeshCreate*(self: RenderingServer): RID =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
-proc multimeshAllocateData*(self: RenderingServer; multimesh: RID; instances: int32; transformFormat: RenderingServer_MultimeshTransformFormat; colorFormat: bool = false; customDataFormat: bool = false): void =
-  expandMethodBind(className RenderingServer, "multimesh_allocate_data", 283685892)
-  methodbind.ptrcall(self, [getPtr multimesh, getPtr instances, getPtr transformFormat, getPtr colorFormat, getPtr customDataFormat])
+proc multimeshAllocateData*(self: RenderingServer; multimesh: RID; instances: int32; transformFormat: RenderingServer_MultimeshTransformFormat; colorFormat: bool = false; customDataFormat: bool = false; useIndirect: bool = false): void =
+  expandMethodBind(className RenderingServer, "multimesh_allocate_data", 557240154)
+  methodbind.ptrcall(self, [getPtr multimesh, getPtr instances, getPtr transformFormat, getPtr colorFormat, getPtr customDataFormat, getPtr useIndirect])
 
 proc multimeshGetInstanceCount*(self: RenderingServer; multimesh: RID): int32 =
   expandMethodBind(className RenderingServer, "multimesh_get_instance_count", 2198884583)
@@ -418,11 +428,39 @@ proc multimeshSetBuffer*(self: RenderingServer; multimesh: RID; buffer: PackedFl
   expandMethodBind(className RenderingServer, "multimesh_set_buffer", 2960552364)
   methodbind.ptrcall(self, [getPtr multimesh, getPtr buffer])
 
+proc multimeshGetCommandBufferRdRid*(self: RenderingServer; multimesh: RID): RID =
+  expandMethodBind(className RenderingServer, "multimesh_get_command_buffer_rd_rid", 3814569979)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr multimesh], addr ret)
+  (addr ret).decode_result(RID)
+
+proc multimeshGetBufferRdRid*(self: RenderingServer; multimesh: RID): RID =
+  expandMethodBind(className RenderingServer, "multimesh_get_buffer_rd_rid", 3814569979)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr multimesh], addr ret)
+  (addr ret).decode_result(RID)
+
 proc multimeshGetBuffer*(self: RenderingServer; multimesh: RID): PackedFloat32Array =
   expandMethodBind(className RenderingServer, "multimesh_get_buffer", 3964669176)
   var ret: encoded PackedFloat32Array
   methodbind.ptrcall(self, [getPtr multimesh], addr ret)
   (addr ret).decode_result(PackedFloat32Array)
+
+proc multimeshSetBufferInterpolated*(self: RenderingServer; multimesh: RID; buffer: PackedFloat32Array; bufferPrevious: PackedFloat32Array): void =
+  expandMethodBind(className RenderingServer, "multimesh_set_buffer_interpolated", 659844711)
+  methodbind.ptrcall(self, [getPtr multimesh, getPtr buffer, getPtr bufferPrevious])
+
+proc multimeshSetPhysicsInterpolated*(self: RenderingServer; multimesh: RID; interpolated: bool): void =
+  expandMethodBind(className RenderingServer, "multimesh_set_physics_interpolated", 1265174801)
+  methodbind.ptrcall(self, [getPtr multimesh, getPtr interpolated])
+
+proc multimeshSetPhysicsInterpolationQuality*(self: RenderingServer; multimesh: RID; quality: RenderingServer_MultimeshPhysicsInterpolationQuality): void =
+  expandMethodBind(className RenderingServer, "multimesh_set_physics_interpolation_quality", 3934808223)
+  methodbind.ptrcall(self, [getPtr multimesh, getPtr quality])
+
+proc multimeshInstanceResetPhysicsInterpolation*(self: RenderingServer; multimesh: RID; index: int32): void =
+  expandMethodBind(className RenderingServer, "multimesh_instance_reset_physics_interpolation", 3411492887)
+  methodbind.ptrcall(self, [getPtr multimesh, getPtr index])
 
 proc skeletonCreate*(self: RenderingServer): RID =
   expandMethodBind(className RenderingServer, "skeleton_create", 529393457)
@@ -514,6 +552,10 @@ proc lightSetReverseCullFaceMode*(self: RenderingServer; light: RID; enabled: bo
   expandMethodBind(className RenderingServer, "light_set_reverse_cull_face_mode", 1265174801)
   methodbind.ptrcall(self, [getPtr light, getPtr enabled])
 
+proc lightSetShadowCasterMask*(self: RenderingServer; light: RID; mask: uint32): void =
+  expandMethodBind(className RenderingServer, "light_set_shadow_caster_mask", 3411492887)
+  methodbind.ptrcall(self, [getPtr light, getPtr mask])
+
 proc lightSetBakeMode*(self: RenderingServer; light: RID; bakeMode: RenderingServer_LightBakeMode): void =
   expandMethodBind(className RenderingServer, "light_set_bake_mode", 1048525260)
   methodbind.ptrcall(self, [getPtr light, getPtr bakeMode])
@@ -542,6 +584,10 @@ proc lightProjectorsSetFilter*(self: RenderingServer; filter: RenderingServer_Li
   expandMethodBind(className RenderingServer, "light_projectors_set_filter", 43944325)
   methodbind.ptrcall(self, [getPtr filter])
 
+proc lightmapsSetBicubicFilter*(self: RenderingServer; enable: bool): void =
+  expandMethodBind(className RenderingServer, "lightmaps_set_bicubic_filter", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
 proc positionalSoftShadowFilterSetQuality*(self: RenderingServer; quality: RenderingServer_ShadowQuality): void =
   expandMethodBind(className RenderingServer, "positional_soft_shadow_filter_set_quality", 3613045266)
   methodbind.ptrcall(self, [getPtr quality])
@@ -567,6 +613,10 @@ proc reflectionProbeSetUpdateMode*(self: RenderingServer; probe: RID; mode: Rend
 proc reflectionProbeSetIntensity*(self: RenderingServer; probe: RID; intensity: Float): void =
   expandMethodBind(className RenderingServer, "reflection_probe_set_intensity", 1794382983)
   methodbind.ptrcall(self, [getPtr probe, getPtr intensity])
+
+proc reflectionProbeSetBlendDistance*(self: RenderingServer; probe: RID; blendDistance: Float): void =
+  expandMethodBind(className RenderingServer, "reflection_probe_set_blend_distance", 1794382983)
+  methodbind.ptrcall(self, [getPtr probe, getPtr blendDistance])
 
 proc reflectionProbeSetAmbientMode*(self: RenderingServer; probe: RID; mode: RenderingServer_ReflectionProbeAmbientMode): void =
   expandMethodBind(className RenderingServer, "reflection_probe_set_ambient_mode", 184163074)
@@ -846,6 +896,10 @@ proc particlesSetPreProcessTime*(self: RenderingServer; particles: RID; time: fl
   expandMethodBind(className RenderingServer, "particles_set_pre_process_time", 1794382983)
   methodbind.ptrcall(self, [getPtr particles, getPtr time])
 
+proc particlesRequestProcessTime*(self: RenderingServer; particles: RID; time: Float): void =
+  expandMethodBind(className RenderingServer, "particles_request_process_time", 1794382983)
+  methodbind.ptrcall(self, [getPtr particles, getPtr time])
+
 proc particlesSetExplosivenessRatio*(self: RenderingServer; particles: RID; ratio: Float): void =
   expandMethodBind(className RenderingServer, "particles_set_explosiveness_ratio", 1794382983)
   methodbind.ptrcall(self, [getPtr particles, getPtr ratio])
@@ -996,6 +1050,10 @@ proc particlesCollisionSetHeightFieldResolution*(self: RenderingServer; particle
   expandMethodBind(className RenderingServer, "particles_collision_set_height_field_resolution", 962977297)
   methodbind.ptrcall(self, [getPtr particlesCollision, getPtr resolution])
 
+proc particlesCollisionSetHeightFieldMask*(self: RenderingServer; particlesCollision: RID; mask: uint32): void =
+  expandMethodBind(className RenderingServer, "particles_collision_set_height_field_mask", 3411492887)
+  methodbind.ptrcall(self, [getPtr particlesCollision, getPtr mask])
+
 proc fogVolumeCreate*(self: RenderingServer): RID =
   expandMethodBind(className RenderingServer, "fog_volume_create", 529393457)
   var ret: encoded RID
@@ -1129,6 +1187,10 @@ proc viewportSetFsrSharpness*(self: RenderingServer; viewport: RID; sharpness: F
 proc viewportSetTextureMipmapBias*(self: RenderingServer; viewport: RID; mipmapBias: Float): void =
   expandMethodBind(className RenderingServer, "viewport_set_texture_mipmap_bias", 1794382983)
   methodbind.ptrcall(self, [getPtr viewport, getPtr mipmapBias])
+
+proc viewportSetAnisotropicFilteringLevel*(self: RenderingServer; viewport: RID; anisotropicFilteringLevel: RenderingServer_ViewportAnisotropicFiltering): void =
+  expandMethodBind(className RenderingServer, "viewport_set_anisotropic_filtering_level", 3953214029)
+  methodbind.ptrcall(self, [getPtr viewport, getPtr anisotropicFilteringLevel])
 
 proc viewportSetUpdateMode*(self: RenderingServer; viewport: RID; updateMode: RenderingServer_ViewportUpdateMode): void =
   expandMethodBind(className RenderingServer, "viewport_set_update_mode", 3161116010)
@@ -1364,6 +1426,10 @@ proc environmentSetBackground*(self: RenderingServer; env: RID; bg: RenderingSer
   expandMethodBind(className RenderingServer, "environment_set_background", 3937328877)
   methodbind.ptrcall(self, [getPtr env, getPtr bg])
 
+proc environmentSetCameraId*(self: RenderingServer; env: RID; id: int32): void =
+  expandMethodBind(className RenderingServer, "environment_set_camera_id", 3411492887)
+  methodbind.ptrcall(self, [getPtr env, getPtr id])
+
 proc environmentSetSky*(self: RenderingServer; env: RID; sky: RID): void =
   expandMethodBind(className RenderingServer, "environment_set_sky", 395945892)
   methodbind.ptrcall(self, [getPtr env, getPtr sky])
@@ -1388,9 +1454,9 @@ proc environmentSetCanvasMaxLayer*(self: RenderingServer; env: RID; maxLayer: in
   expandMethodBind(className RenderingServer, "environment_set_canvas_max_layer", 3411492887)
   methodbind.ptrcall(self, [getPtr env, getPtr maxLayer])
 
-proc environmentSetAmbientLight*(self: RenderingServer; env: RID; color: Color; ambient: RenderingServer_EnvironmentAmbientSource = envAmbientSourceBg; energy: Float = 1.0; skyContibution: Float = 0.0; reflectionSource: RenderingServer_EnvironmentReflectionSource = envReflectionSourceBg): void =
+proc environmentSetAmbientLight*(self: RenderingServer; env: RID; color: Color; ambient: RenderingServer_EnvironmentAmbientSource = envAmbientSourceBg; energy: Float = 1.0; skyContribution: Float = 0.0; reflectionSource: RenderingServer_EnvironmentReflectionSource = envReflectionSourceBg): void =
   expandMethodBind(className RenderingServer, "environment_set_ambient_light", 1214961493)
-  methodbind.ptrcall(self, [getPtr env, getPtr color, getPtr ambient, getPtr energy, getPtr skyContibution, getPtr reflectionSource])
+  methodbind.ptrcall(self, [getPtr env, getPtr color, getPtr ambient, getPtr energy, getPtr skyContribution, getPtr reflectionSource])
 
 proc environmentSetGlow*(self: RenderingServer; env: RID; enable: bool; levels: PackedFloat32Array; intensity: Float; strength: Float; mix: Float; bloomThreshold: Float; blendMode: RenderingServer_EnvironmentGlowBlendMode; hdrBleedThreshold: Float; hdrBleedScale: Float; hdrLuminanceCap: Float; glowMapStrength: Float; glowMap: RID): void =
   expandMethodBind(className RenderingServer, "environment_set_glow", 2421724940)
@@ -1557,6 +1623,14 @@ proc instanceSetPivotData*(self: RenderingServer; instance: RID; sortingOffset: 
 proc instanceSetTransform*(self: RenderingServer; instance: RID; transform: Transform3D): void =
   expandMethodBind(className RenderingServer, "instance_set_transform", 3935195649)
   methodbind.ptrcall(self, [getPtr instance, getPtr transform])
+
+proc instanceSetInterpolated*(self: RenderingServer; instance: RID; interpolated: bool): void =
+  expandMethodBind(className RenderingServer, "instance_set_interpolated", 1265174801)
+  methodbind.ptrcall(self, [getPtr instance, getPtr interpolated])
+
+proc instanceResetPhysicsInterpolation*(self: RenderingServer; instance: RID): void =
+  expandMethodBind(className RenderingServer, "instance_reset_physics_interpolation", 2722037293)
+  methodbind.ptrcall(self, [getPtr instance])
 
 proc instanceAttachObjectInstanceId*(self: RenderingServer; instance: RID; id: uint64): void =
   expandMethodBind(className RenderingServer, "instance_attach_object_instance_id", 3411492887)
@@ -1878,6 +1952,10 @@ proc canvasItemSetCopyToBackbuffer*(self: RenderingServer; item: RID; enabled: b
   expandMethodBind(className RenderingServer, "canvas_item_set_copy_to_backbuffer", 2429202503)
   methodbind.ptrcall(self, [getPtr item, getPtr enabled, getPtr rect])
 
+proc canvasItemAttachSkeleton*(self: RenderingServer; item: RID; skeleton: RID): void =
+  expandMethodBind(className RenderingServer, "canvas_item_attach_skeleton", 395945892)
+  methodbind.ptrcall(self, [getPtr item, getPtr skeleton])
+
 proc canvasItemClear*(self: RenderingServer; item: RID): void =
   expandMethodBind(className RenderingServer, "canvas_item_clear", 2722037293)
   methodbind.ptrcall(self, [getPtr item])
@@ -1893,6 +1971,28 @@ proc canvasItemSetMaterial*(self: RenderingServer; item: RID; material: RID): vo
 proc canvasItemSetUseParentMaterial*(self: RenderingServer; item: RID; enabled: bool): void =
   expandMethodBind(className RenderingServer, "canvas_item_set_use_parent_material", 1265174801)
   methodbind.ptrcall(self, [getPtr item, getPtr enabled])
+
+proc canvasItemSetInstanceShaderParameter*(self: RenderingServer; instance: RID; parameter: StringName; value: Variant): void =
+  expandMethodBind(className RenderingServer, "canvas_item_set_instance_shader_parameter", 3477296213)
+  methodbind.ptrcall(self, [getPtr instance, getPtr parameter, getPtr value])
+
+proc canvasItemGetInstanceShaderParameter*(self: RenderingServer; instance: RID; parameter: StringName): Variant =
+  expandMethodBind(className RenderingServer, "canvas_item_get_instance_shader_parameter", 2621281810)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr instance, getPtr parameter], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc canvasItemGetInstanceShaderParameterDefaultValue*(self: RenderingServer; instance: RID; parameter: StringName): Variant =
+  expandMethodBind(className RenderingServer, "canvas_item_get_instance_shader_parameter_default_value", 2621281810)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr instance, getPtr parameter], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc canvasItemGetInstanceShaderParameterList*(self: RenderingServer; instance: RID): TypedArray[Dictionary] =
+  expandMethodBind(className RenderingServer, "canvas_item_get_instance_shader_parameter_list", 2684255073)
+  var ret: encoded TypedArray[Dictionary]
+  methodbind.ptrcall(self, [getPtr instance], addr ret)
+  (addr ret).decode_result(TypedArray[Dictionary])
 
 proc canvasItemSetVisibilityNotifier*(self: RenderingServer; item: RID; enable: bool; area: Rect2; enterCallable: Callable; exitCallable: Callable): void =
   expandMethodBind(className RenderingServer, "canvas_item_set_visibility_notifier", 3568945579)
@@ -2136,6 +2236,18 @@ proc getVideoAdapterType*(self: RenderingServer): RenderingDevice_DeviceType =
 
 proc getVideoAdapterApiVersion*(self: RenderingServer): String =
   expandMethodBind(className RenderingServer, "get_video_adapter_api_version", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getCurrentRenderingDriverName*(self: RenderingServer): String =
+  expandMethodBind(className RenderingServer, "get_current_rendering_driver_name", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getCurrentRenderingMethod*(self: RenderingServer): String =
+  expandMethodBind(className RenderingServer, "get_current_rendering_method", 201670096)
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)

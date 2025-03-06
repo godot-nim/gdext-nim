@@ -16,8 +16,14 @@ proc getOpenError*(_: typedesc[DirAccess]): Error =
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(Error)
 
+proc createTemp*(_: typedesc[DirAccess]; prefix: String = gdstring""; keep: bool = false): gdref DirAccess =
+  expandMethodBind(className DirAccess, "create_temp", 812913566)
+  var ret: encoded gdref DirAccess
+  methodbind.ptrcall([getPtr prefix, getPtr keep], addr ret)
+  (addr ret).decode_result(gdref DirAccess)
+
 proc listDirBegin*(self: DirAccess): Error =
-  expandMethodBind(className DirAccess, "list_dir_begin", 2610976713)
+  expandMethodBind(className DirAccess, "list_dir_begin", 166280745)
   var ret: encoded Error
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Error)
@@ -193,6 +199,12 @@ proc createLink*(self: DirAccess; source: String; target: String): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr source, getPtr target], addr ret)
   (addr ret).decode_result(Error)
+
+proc isBundle*(self: DirAccess; path: String): bool =
+  expandMethodBind(className DirAccess, "is_bundle", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(bool)
 
 proc setIncludeNavigational*(self: DirAccess; enable: bool): void =
   expandMethodBind(className DirAccess, "set_include_navigational", 2586408642)

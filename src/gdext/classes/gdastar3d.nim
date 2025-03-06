@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-method estimateCost*(self: AStar3D; fromId: int64; toId: int64): Float {.base.} = (discard)
+method estimateCost*(self: AStar3D; fromId: int64; endId: int64): Float {.base.} = (discard)
 proc estimateCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[AStar3D](p_instance).estimateCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
 template estimateCost_bind*(_: typedesc[AStar3D]): ClassCallVirtual = estimateCost

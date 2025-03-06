@@ -10,10 +10,10 @@ proc hasTexture*(self: RenderSceneBuffersRD; context: StringName; name: StringNa
   methodbind.ptrcall(self, [getPtr context, getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
-proc createTexture*(self: RenderSceneBuffersRD; context: StringName; name: StringName; dataFormat: RenderingDevice_DataFormat; usageBits: uint32; textureSamples: RenderingDevice_TextureSamples; size: Vector2i; layers: uint32; mipmaps: uint32; unique: bool): RID =
-  expandMethodBind(className RenderSceneBuffersRD, "create_texture", 3559915770)
+proc createTexture*(self: RenderSceneBuffersRD; context: StringName; name: StringName; dataFormat: RenderingDevice_DataFormat; usageBits: uint32; textureSamples: RenderingDevice_TextureSamples; size: Vector2i; layers: uint32; mipmaps: uint32; unique: bool; discardable: bool): RID =
+  expandMethodBind(className RenderSceneBuffersRD, "create_texture", 2950875024)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr context, getPtr name, getPtr dataFormat, getPtr usageBits, getPtr textureSamples, getPtr size, getPtr layers, getPtr mipmaps, getPtr unique], addr ret)
+  methodbind.ptrcall(self, [getPtr context, getPtr name, getPtr dataFormat, getPtr usageBits, getPtr textureSamples, getPtr size, getPtr layers, getPtr mipmaps, getPtr unique, getPtr discardable], addr ret)
   (addr ret).decode_result(RID)
 
 proc createTextureFromFormat*(self: RenderSceneBuffersRD; context: StringName; name: StringName; format: gdref RDTextureFormat; view: gdref RDTextureView; unique: bool): RID =

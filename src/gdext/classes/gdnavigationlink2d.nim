@@ -20,6 +20,16 @@ proc isEnabled*(self: NavigationLink2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setNavigationMap*(self: NavigationLink2D; navigationMap: RID): void =
+  expandMethodBind(className NavigationLink2D, "set_navigation_map", 2722037293)
+  methodbind.ptrcall(self, [getPtr navigationMap])
+
+proc getNavigationMap*(self: NavigationLink2D): RID =
+  expandMethodBind(className NavigationLink2D, "get_navigation_map", 2944877500)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(RID)
+
 proc setBidirectional*(self: NavigationLink2D; bidirectional: bool): void =
   expandMethodBind(className NavigationLink2D, "set_bidirectional", 2586408642)
   methodbind.ptrcall(self, [getPtr bidirectional])

@@ -126,11 +126,11 @@ proc isTransitionHoldingPrevious*(self: AudioStreamInteractive; fromClip: int32;
   methodbind.ptrcall(self, [getPtr fromClip, getPtr toClip], addr ret)
   (addr ret).decode_result(bool)
 
-template initialClip*(self: AudioStreamInteractive): untyped = self.getInitialClip()
-template `initialClip=`*(self: AudioStreamInteractive; value) = self.setInitialClip(value)
-
 template clipCount*(self: AudioStreamInteractive): untyped = self.getClipCount()
 template `clipCount=`*(self: AudioStreamInteractive; value) = self.setClipCount(value)
+
+template initialClip*(self: AudioStreamInteractive): untyped = self.getInitialClip()
+template `initialClip=`*(self: AudioStreamInteractive; value) = self.setInitialClip(value)
 
 const AudioStreamInteractive_vmap =
   AudioStream.vmap.concat initTable[string, string]()

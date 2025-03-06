@@ -166,6 +166,16 @@ proc getSubpixelPositioning*(self: FontFile): TextServer_SubpixelPositioning =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_SubpixelPositioning)
 
+proc setKeepRoundingRemainders*(self: FontFile; keepRoundingRemainders: bool): void =
+  expandMethodBind(className FontFile, "set_keep_rounding_remainders", 2586408642)
+  methodbind.ptrcall(self, [getPtr keepRoundingRemainders])
+
+proc getKeepRoundingRemainders*(self: FontFile): bool =
+  expandMethodBind(className FontFile, "get_keep_rounding_remainders", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setOversampling*(self: FontFile; oversampling: Float): void =
   expandMethodBind(className FontFile, "set_oversampling", 373806689)
   methodbind.ptrcall(self, [getPtr oversampling])
@@ -436,7 +446,7 @@ proc getKerning*(self: FontFile; cacheIndex: int32; size: int32; glyphPair: Vect
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size, getPtr glyphPair], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc renderRange*(self: FontFile; cacheIndex: int32; size: Vector2i; start: Int; `end`: Int): void =
+proc renderRange*(self: FontFile; cacheIndex: int32; size: Vector2i; start: char32; `end`: char32): void =
   expandMethodBind(className FontFile, "render_range", 355564111)
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size, getPtr start, getPtr `end`])
 
@@ -494,17 +504,17 @@ proc getOpentypeFeatureOverrides*(self: FontFile): Dictionary =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getGlyphIndex*(self: FontFile; size: int32; char: Int; variationSelector: Int): int32 =
+proc getGlyphIndex*(self: FontFile; size: int32; char: char32; variationSelector: char32): int32 =
   expandMethodBind(className FontFile, "get_glyph_index", 864943070)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr size, getPtr char, getPtr variationSelector], addr ret)
   (addr ret).decode_result(int32)
 
-proc getCharFromGlyphIndex*(self: FontFile; size: int32; glyphIndex: int32): Int =
+proc getCharFromGlyphIndex*(self: FontFile; size: int32; glyphIndex: int32): char32 =
   expandMethodBind(className FontFile, "get_char_from_glyph_index", 3175239445)
-  var ret: encoded Int
+  var ret: encoded char32
   methodbind.ptrcall(self, [getPtr size, getPtr glyphIndex], addr ret)
-  (addr ret).decode_result(Int)
+  (addr ret).decode_result(char32)
 
 template data*(self: FontFile): untyped = self.getData()
 template `data=`*(self: FontFile; value) = self.setData(value)
@@ -535,6 +545,9 @@ template `fontStretch=`*(self: FontFile; value) = self.setFontStretch(value)
 
 template subpixelPositioning*(self: FontFile): untyped = self.getSubpixelPositioning()
 template `subpixelPositioning=`*(self: FontFile; value) = self.setSubpixelPositioning(value)
+
+template keepRoundingRemainders*(self: FontFile): untyped = self.getKeepRoundingRemainders()
+template `keepRoundingRemainders=`*(self: FontFile; value) = self.setKeepRoundingRemainders(value)
 
 template multichannelSignedDistanceField*(self: FontFile): untyped = self.isMultichannelSignedDistanceField()
 template `multichannelSignedDistanceField=`*(self: FontFile; value) = self.setMultichannelSignedDistanceField(value)

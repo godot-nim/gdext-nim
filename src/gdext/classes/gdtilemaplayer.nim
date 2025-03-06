@@ -14,6 +14,11 @@ proc tileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedAr
   errproof: cast[TileMapLayer](p_instance).tileDataRuntimeUpdate(p_args[0].decode(Vector2i), p_args[1].decode(TileData))
 template tileDataRuntimeUpdate_bind*(_: typedesc[TileMapLayer]): ClassCallVirtual = tileDataRuntimeUpdate
 
+method updateCells*(self: TileMapLayer; coords: TypedArray[Vector2i]; forcedCleanup: bool): void {.base.} = (discard)
+proc updateCells(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(TypedArray[Vector2i]), p_args[1].decode(bool))
+template updateCells_bind*(_: typedesc[TileMapLayer]): ClassCallVirtual = updateCells
+
 proc setCell*(self: TileMapLayer; coords: Vector2i; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = 0): void =
   expandMethodBind(className TileMapLayer, "set_cell", 2428518503)
   methodbind.ptrcall(self, [getPtr coords, getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile])
@@ -53,6 +58,24 @@ proc getCellTileData*(self: TileMapLayer; coords: Vector2i): TileData =
   var ret: encoded TileData
   methodbind.ptrcall(self, [getPtr coords], addr ret)
   (addr ret).decode_result(TileData)
+
+proc isCellFlippedH*(self: TileMapLayer; coords: Vector2i): bool =
+  expandMethodBind(className TileMapLayer, "is_cell_flipped_h", 3900751641)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr coords], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isCellFlippedV*(self: TileMapLayer; coords: Vector2i): bool =
+  expandMethodBind(className TileMapLayer, "is_cell_flipped_v", 3900751641)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr coords], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isCellTransposed*(self: TileMapLayer; coords: Vector2i): bool =
+  expandMethodBind(className TileMapLayer, "is_cell_transposed", 3900751641)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr coords], addr ret)
+  (addr ret).decode_result(bool)
 
 proc getUsedCells*(self: TileMapLayer): TypedArray[Vector2i] =
   expandMethodBind(className TileMapLayer, "get_used_cells", 3995934104)
@@ -107,7 +130,7 @@ proc updateInternals*(self: TileMapLayer): void =
   methodbind.ptrcall(self, [])
 
 proc notifyRuntimeTileDataUpdate*(self: TileMapLayer): void =
-  expandMethodBind(className TileMapLayer, "notify_runtime_tile_data_update", 2275361663)
+  expandMethodBind(className TileMapLayer, "notify_runtime_tile_data_update", 3218959716)
   methodbind.ptrcall(self, [])
 
 proc mapPattern*(self: TileMapLayer; positionInTilemap: Vector2i; coordsInPattern: Vector2i; pattern: gdref TileMapPattern): Vector2i =
@@ -230,6 +253,16 @@ proc getCollisionVisibilityMode*(self: TileMapLayer): TileMapLayer_DebugVisibili
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TileMapLayer_DebugVisibilityMode)
 
+proc setOcclusionEnabled*(self: TileMapLayer; enabled: bool): void =
+  expandMethodBind(className TileMapLayer, "set_occlusion_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isOcclusionEnabled*(self: TileMapLayer): bool =
+  expandMethodBind(className TileMapLayer, "is_occlusion_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setNavigationEnabled*(self: TileMapLayer; enabled: bool): void =
   expandMethodBind(className TileMapLayer, "set_navigation_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -269,6 +302,9 @@ template `enabled=`*(self: TileMapLayer; value) = self.setEnabled(value)
 template tileSet*(self: TileMapLayer): untyped = self.getTileSet()
 template `tileSet=`*(self: TileMapLayer; value) = self.setTileSet(value)
 
+template occlusionEnabled*(self: TileMapLayer): untyped = self.isOcclusionEnabled()
+template `occlusionEnabled=`*(self: TileMapLayer; value) = self.setOcclusionEnabled(value)
+
 template ySortOrigin*(self: TileMapLayer): untyped = self.getYSortOrigin()
 template `ySortOrigin=`*(self: TileMapLayer; value) = self.setYSortOrigin(value)
 
@@ -297,6 +333,7 @@ const TileMapLayer_vmap =
   Node2D.vmap.concat toTable {
     "usetiledataruntimeupdate" : "_use_tile_data_runtime_update",
     "tiledataruntimeupdate" : "_tile_data_runtime_update",
+    "updatecells" : "_update_cells",
     }
 template vmap*(_: typedesc[TileMapLayer]): Table[string, string] = TileMapLayer_vmap
 

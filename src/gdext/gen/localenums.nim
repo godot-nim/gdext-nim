@@ -246,6 +246,12 @@ type AudioServer_PlaybackType* {.size: sizeof(clong).} = enum
   playbackTypeSample = 2
   playbackTypeMax = 3
 
+type AudioStreamGenerator_AudioStreamGeneratorMixRate* {.size: sizeof(clong).} = enum
+  mixRateOutput = 0
+  mixRateInput = 1
+  mixRateCustom = 2
+  mixRateMax = 3
+
 type AudioStreamInteractive_TransitionFromTime* {.size: sizeof(clong).} = enum
   transitionFromTimeImmediate = 0
   transitionFromTimeNextBeat = 1
@@ -582,6 +588,7 @@ type CameraFeed_FeedDataType* {.size: sizeof(clong).} = enum
   feedRgb = 1
   feedYcbcr = 2
   feedYcbcrSep = 3
+  feedExternal = 4
 
 type CameraFeed_FeedPosition* {.size: sizeof(clong).} = enum
   feedUnspecified = 0
@@ -646,6 +653,13 @@ type CharacterBody3D_PlatformOnLeave* {.size: sizeof(clong).} = enum
   platformOnLeaveAddVelocity = 0
   platformOnLeaveAddUpwardVelocity = 1
   platformOnLeaveDoNothing = 2
+
+type ClassDB_APIType* {.size: sizeof(clong).} = enum
+  apiCore = 0
+  apiEditor = 1
+  apiExtension = 2
+  apiEditorExtension = 3
+  apiNone = 4
 
 type CodeEdit_CodeCompletionKind* {.size: sizeof(clong).} = enum
   kindClass = 0
@@ -781,9 +795,12 @@ type Control_Anchor* {.size: sizeof(clong).} = enum
 
 type Control_LayoutDirection* {.size: sizeof(clong).} = enum
   layoutDirectionInherited = 0
-  layoutDirectionLocale = 1
+  layoutDirectionApplicationLocale = 1
   layoutDirectionLtr = 2
   layoutDirectionRtl = 3
+  layoutDirectionSystemLocale = 4
+  layoutDirectionMax = 5
+template layoutDirectionLocale*[T: Control_LayoutDirection](_: typedesc[T]): T = T(1)
 
 type Control_TextDirection* {.size: sizeof(clong).} = enum
   textDirectionAuto = 0
@@ -843,6 +860,12 @@ type DisplayServer_Feature* {.size: sizeof(clong).} = enum
   featureNativeHelp = 23
   featureNativeDialogInput = 24
   featureNativeDialogFile = 25
+  featureNativeDialogFileExtra = 26
+  featureWindowDrag = 27
+  featureScreenExcludeFromCapture = 28
+  featureWindowEmbedding = 29
+  featureNativeDialogFileMime = 30
+  featureEmojiAndSymbolPicker = 31
 
 type DisplayServer_MouseMode* {.size: sizeof(clong).} = enum
   mouseModeVisible = 0
@@ -850,6 +873,7 @@ type DisplayServer_MouseMode* {.size: sizeof(clong).} = enum
   mouseModeCaptured = 2
   mouseModeConfined = 3
   mouseModeConfinedHidden = 4
+  mouseModeMax = 5
 
 type DisplayServer_ScreenOrientation* {.size: sizeof(clong).} = enum
   screenLandscape = 0
@@ -913,7 +937,9 @@ type DisplayServer_WindowFlags* {.size: sizeof(clong).} = enum
   windowFlagPopup = 5
   windowFlagExtendToTitle = 6
   windowFlagMousePassthrough = 7
-  windowFlagMax = 8
+  windowFlagSharpCorners = 8
+  windowFlagExcludeFromCapture = 9
+  windowFlagMax = 10
 
 type DisplayServer_WindowEvent* {.size: sizeof(clong).} = enum
   windowEventMouseEnter = 0
@@ -924,6 +950,17 @@ type DisplayServer_WindowEvent* {.size: sizeof(clong).} = enum
   windowEventGoBackRequest = 5
   windowEventDpiChange = 6
   windowEventTitlebarChange = 7
+
+type DisplayServer_WindowResizeEdge* {.size: sizeof(clong).} = enum
+  windowEdgeTopLeft = 0
+  windowEdgeTop = 1
+  windowEdgeTopRight = 2
+  windowEdgeLeft = 3
+  windowEdgeRight = 4
+  windowEdgeBottomLeft = 5
+  windowEdgeBottom = 6
+  windowEdgeBottomRight = 7
+  windowEdgeMax = 8
 
 type DisplayServer_VSyncMode* {.size: sizeof(clong).} = enum
   vsyncDisabled = 0
@@ -936,6 +973,8 @@ type DisplayServer_HandleType* {.size: sizeof(clong).} = enum
   windowHandle = 1
   windowView = 2
   openglContext = 3
+  eglDisplay = 4
+  eglConfig = 5
 
 type DisplayServer_TTSUtteranceEvent* {.size: sizeof(clong).} = enum
   ttsUtteranceStarted = 0
@@ -991,6 +1030,47 @@ type ENetPacketPeer_PeerStatistic* {.size: sizeof(clong).} = enum
   peerPacketThrottleDeceleration = 12
   peerPacketThrottleInterval = 13
 
+type EditorContextMenuPlugin_ContextMenuSlot* {.size: sizeof(clong).} = enum
+  contextSlotSceneTree = 0
+  contextSlotFilesystem = 1
+  contextSlotScriptEditor = 2
+  contextSlotFilesystemCreate = 3
+  contextSlotScriptEditorCode = 4
+  contextSlotSceneTabs = 5
+  contextSlot2DEditor = 6
+
+type EditorExportPlatform_ExportMessageType* {.size: sizeof(clong).} = enum
+  exportMessageNone = 0
+  exportMessageInfo = 1
+  exportMessageWarning = 2
+  exportMessageError = 3
+
+type EditorExportPlatform_DebugFlags* = enum
+  debugFlagDumbClient = 0
+  debugFlagRemoteDebug = 1
+  debugFlagRemoteDebugLocalhost = 2
+  debugFlagViewCollisions = 3
+  debugFlagViewNavigation = 4
+  `--Padding-Max--` = 63 # To align size-of set[EditorExportPlatform_DebugFlags] to size-of Int.
+
+type EditorExportPreset_ExportFilter* {.size: sizeof(clong).} = enum
+  exportAllResources = 0
+  exportSelectedScenes = 1
+  exportSelectedResources = 2
+  excludeSelectedResources = 3
+  exportCustomized = 4
+
+type EditorExportPreset_FileExportMode* {.size: sizeof(clong).} = enum
+  modeFileNotCustomized = 0
+  modeFileStrip = 1
+  modeFileKeep = 2
+  modeFileRemove = 3
+
+type EditorExportPreset_ScriptExportMode* {.size: sizeof(clong).} = enum
+  modeScriptText = 0
+  modeScriptBinaryTokens = 1
+  modeScriptBinaryTokensCompressed = 2
+
 type EditorFeatureProfile_Feature* {.size: sizeof(clong).} = enum
   feature3D = 0
   featureScript = 1
@@ -1000,7 +1080,8 @@ type EditorFeatureProfile_Feature* {.size: sizeof(clong).} = enum
   featureFilesystemDock = 5
   featureImportDock = 6
   featureHistoryDock = 7
-  featureMax = 8
+  featureGame = 8
+  featureMax = 9
 
 type EditorFileDialog_FileMode* {.size: sizeof(clong).} = enum
   fileModeOpenFile = 0
@@ -1058,6 +1139,11 @@ type EditorScenePostImportPlugin_InternalImportCategory* {.size: sizeof(clong).}
   internalImportCategorySkeleton3DNode = 6
   internalImportCategoryMax = 7
 
+type EditorToaster_Severity* {.size: sizeof(clong).} = enum
+  severityInfo = 0
+  severityWarning = 1
+  severityError = 2
+
 type EditorUndoRedoManager_SpecialHistory* {.size: sizeof(clong).} = enum
   invalidHistory = -99
   remoteHistory = -9
@@ -1101,6 +1187,7 @@ type Environment_ToneMapper* {.size: sizeof(clong).} = enum
   toneMapperReinhardt = 1
   toneMapperFilmic = 2
   toneMapperAces = 3
+  toneMapperAgx = 4
 
 type Environment_GlowBlendMode* {.size: sizeof(clong).} = enum
   glowBlendModeAdditive = 0
@@ -1230,10 +1317,37 @@ type GLTFAccessor_GLTFAccessorType* {.size: sizeof(clong).} = enum
   typeMat3 = 5
   typeMat4 = 6
 
+type GLTFAccessor_GLTFComponentType* {.size: sizeof(clong).} = enum
+  componentTypeNone = 0
+  componentTypeSignedByte = 5120
+  componentTypeUnsignedByte = 5121
+  componentTypeSignedShort = 5122
+  componentTypeUnsignedShort = 5123
+  componentTypeSignedInt = 5124
+  componentTypeUnsignedInt = 5125
+  componentTypeSingleFloat = 5126
+  componentTypeDoubleFloat = 5130
+  componentTypeHalfFloat = 5131
+  componentTypeSignedLong = 5134
+  componentTypeUnsignedLong = 5135
+
 type GLTFDocument_RootNodeMode* {.size: sizeof(clong).} = enum
   rootNodeModeSingleRoot = 0
   rootNodeModeKeepRoot = 1
   rootNodeModeMultiRoot = 2
+
+type GLTFObjectModelProperty_GLTFObjectModelType* {.size: sizeof(clong).} = enum
+  gltfObjectModelTypeUnknown = 0
+  gltfObjectModelTypeBool = 1
+  gltfObjectModelTypeFloat = 2
+  gltfObjectModelTypeFloatArray = 3
+  gltfObjectModelTypeFloat2 = 4
+  gltfObjectModelTypeFloat3 = 5
+  gltfObjectModelTypeFloat4 = 6
+  gltfObjectModelTypeFloat2X2 = 7
+  gltfObjectModelTypeFloat3X3 = 8
+  gltfObjectModelTypeFloat4X4 = 9
+  gltfObjectModelTypeInt = 10
 
 type GPUParticles2D_DrawOrder* {.size: sizeof(clong).} = enum
   drawOrderIndex = 0
@@ -1618,6 +1732,7 @@ type Input_MouseMode* {.size: sizeof(clong).} = enum
   mouseModeCaptured = 2
   mouseModeConfined = 3
   mouseModeConfinedHidden = 4
+  mouseModeMax = 5
 
 type Input_CursorShape* {.size: sizeof(clong).} = enum
   cursorArrow = 0
@@ -1645,6 +1760,7 @@ type ItemList_IconMode* {.size: sizeof(clong).} = enum
 type ItemList_SelectMode* {.size: sizeof(clong).} = enum
   selectSingle = 0
   selectMulti = 1
+  selectToggle = 2
 
 type JSONRPC_ErrorCode* {.size: sizeof(clong).} = enum
   parseError = -32700
@@ -1738,6 +1854,11 @@ type LightmapGI_EnvironmentMode* {.size: sizeof(clong).} = enum
   environmentModeCustomSky = 2
   environmentModeCustomColor = 3
 
+type LightmapGIData_ShadowmaskMode* {.size: sizeof(clong).} = enum
+  shadowmaskModeNone = 0
+  shadowmaskModeReplace = 1
+  shadowmaskModeOverlay = 2
+
 type Line2D_LineJointMode* {.size: sizeof(clong).} = enum
   lineJointSharp = 0
   lineJointBevel = 1
@@ -1784,7 +1905,8 @@ type LineEdit_MenuItems* {.size: sizeof(clong).} = enum
   menuInsertZwnj = 27
   menuInsertWj = 28
   menuInsertShy = 29
-  menuMax = 30
+  menuEmojiAndSymbol = 30
+  menuMax = 31
 
 type LineEdit_VirtualKeyboardType* {.size: sizeof(clong).} = enum
   keyboardTypeDefault = 0
@@ -1800,6 +1922,11 @@ type LinkButton_UnderlineMode* {.size: sizeof(clong).} = enum
   underlineModeAlways = 0
   underlineModeOnHover = 1
   underlineModeNever = 2
+
+type LookAtModifier3D_OriginFrom* {.size: sizeof(clong).} = enum
+  originFromSelf = 0
+  originFromSpecificBone = 1
+  originFromExternalNode = 2
 
 type Mesh_PrimitiveType* {.size: sizeof(clong).} = enum
   primitivePoints = 0
@@ -1877,6 +2004,10 @@ type MultiMesh_TransformFormat* {.size: sizeof(clong).} = enum
   transform2D = 0
   transform3D = 1
 
+type MultiMesh_PhysicsInterpolationQuality* {.size: sizeof(clong).} = enum
+  interpQualityFast = 0
+  interpQualityHigh = 1
+
 type MultiplayerAPI_RPCMode* {.size: sizeof(clong).} = enum
   rpcModeDisabled = 0
   rpcModeAnyPeer = 1
@@ -1936,6 +2067,7 @@ type NavigationPathQueryParameters2D_PathfindingAlgorithm* {.size: sizeof(clong)
 type NavigationPathQueryParameters2D_PathPostProcessing* {.size: sizeof(clong).} = enum
   pathPostprocessingCorridorfunnel = 0
   pathPostprocessingEdgecentered = 1
+  pathPostprocessingNone = 2
 
 type NavigationPathQueryParameters2D_PathMetadataFlags* = enum
   # pathMetadataIncludeNone = 0
@@ -1951,6 +2083,7 @@ type NavigationPathQueryParameters3D_PathfindingAlgorithm* {.size: sizeof(clong)
 type NavigationPathQueryParameters3D_PathPostProcessing* {.size: sizeof(clong).} = enum
   pathPostprocessingCorridorfunnel = 0
   pathPostprocessingEdgecentered = 1
+  pathPostprocessingNone = 2
 
 type NavigationPathQueryParameters3D_PathMetadataFlags* = enum
   # pathMetadataIncludeNone = 0
@@ -1967,6 +2100,11 @@ type NavigationPathQueryResult2D_PathSegmentType* {.size: sizeof(clong).} = enum
 type NavigationPathQueryResult3D_PathSegmentType* {.size: sizeof(clong).} = enum
   pathSegmentTypeRegion = 0
   pathSegmentTypeLink = 1
+
+type NavigationPolygon_SamplePartitionType* {.size: sizeof(clong).} = enum
+  samplePartitionConvexPartition = 0
+  samplePartitionTriangulate = 1
+  samplePartitionMax = 2
 
 type NavigationPolygon_ParsedGeometryType* {.size: sizeof(clong).} = enum
   parsedGeometryMeshInstances = 0
@@ -1990,6 +2128,7 @@ type NavigationServer3D_ProcessInfo* {.size: sizeof(clong).} = enum
   infoEdgeMergeCount = 6
   infoEdgeConnectionCount = 7
   infoEdgeFreeCount = 8
+  infoObstacleCount = 9
 
 type NinePatchRect_AxisStretchMode* {.size: sizeof(clong).} = enum
   axisStretchModeStretch = 0
@@ -2044,6 +2183,7 @@ type OS_RenderingDriver* {.size: sizeof(clong).} = enum
   renderingDriverVulkan = 0
   renderingDriverOpengl3 = 1
   renderingDriverD3D12 = 2
+  renderingDriverMetal = 3
 
 type OS_SystemDir* {.size: sizeof(clong).} = enum
   systemDirDesktop = 0
@@ -2054,6 +2194,13 @@ type OS_SystemDir* {.size: sizeof(clong).} = enum
   systemDirMusic = 5
   systemDirPictures = 6
   systemDirRingtones = 7
+
+type OS_StdHandleType* {.size: sizeof(clong).} = enum
+  stdHandleInvalid = 0
+  stdHandleConsole = 1
+  stdHandleFile = 2
+  stdHandlePipe = 3
+  stdHandleUnknown = 4
 
 type Object_ConnectFlags* {.size: sizeof(clong).} = enum
   connectDeferred = 1
@@ -2212,7 +2359,8 @@ type ParticleProcessMaterial_SubEmitterMode* {.size: sizeof(clong).} = enum
   subEmitterConstant = 1
   subEmitterAtEnd = 2
   subEmitterAtCollision = 3
-  subEmitterMax = 4
+  subEmitterAtStart = 4
+  subEmitterMax = 5
 
 type ParticleProcessMaterial_CollisionMode* {.size: sizeof(clong).} = enum
   collisionDisabled = 0
@@ -2261,7 +2409,13 @@ type Performance_Monitor* {.size: sizeof(clong).} = enum
   navigationEdgeMergeCount = 30
   navigationEdgeConnectionCount = 31
   navigationEdgeFreeCount = 32
-  monitorMax = 33
+  navigationObstacleCount = 33
+  pipelineCompilationsCanvas = 34
+  pipelineCompilationsMesh = 35
+  pipelineCompilationsSurface = 36
+  pipelineCompilationsDraw = 37
+  pipelineCompilationsSpecialization = 38
+  monitorMax = 39
 
 type PhysicalBone3D_DampMode* {.size: sizeof(clong).} = enum
   dampModeCombine = 0
@@ -2953,6 +3107,11 @@ type RenderingDevice_StorageBufferUsage* = enum
   storageBufferUsageDispatchIndirect = 0
   `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_StorageBufferUsage] to size-of Int.
 
+type RenderingDevice_BufferCreationBits* = enum
+  bufferCreationDeviceAddressBit = 0
+  bufferCreationAsStorageBit = 1
+  `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_BufferCreationBits] to size-of Int.
+
 type RenderingDevice_UniformType* {.size: sizeof(clong).} = enum
   uniformTypeSampler = 0
   uniformTypeSamplerWithTexture = 1
@@ -3110,6 +3269,9 @@ type RenderingDevice_PipelineSpecializationConstantType* {.size: sizeof(clong).}
   pipelineSpecializationConstantTypeInt = 1
   pipelineSpecializationConstantTypeFloat = 2
 
+type RenderingDevice_Features* {.size: sizeof(clong).} = enum
+  supportsBufferDeviceAddress = 6
+
 type RenderingDevice_Limit* {.size: sizeof(clong).} = enum
   limitMaxBoundUniformSets = 0
   limitMaxFramebufferColorAttachments = 1
@@ -3148,11 +3310,63 @@ type RenderingDevice_Limit* {.size: sizeof(clong).} = enum
   limitMaxComputeWorkgroupSizeZ = 34
   limitMaxViewportDimensionsX = 35
   limitMaxViewportDimensionsY = 36
+  limitMetalfxTemporalScalerMinScale = 46
+  limitMetalfxTemporalScalerMaxScale = 47
 
 type RenderingDevice_MemoryType* {.size: sizeof(clong).} = enum
   memoryTextures = 0
   memoryBuffers = 1
   memoryTotal = 2
+
+type RenderingDevice_BreadcrumbMarker* {.size: sizeof(clong).} = enum
+  none = 0
+  reflectionProbes = 65536
+  skyPass = 131072
+  lightmapperPass = 196608
+  shadowPassDirectional = 262144
+  shadowPassCube = 327680
+  opaquePass = 393216
+  alphaPass = 458752
+  transparentPass = 524288
+  postProcessingPass = 589824
+  blitPass = 655360
+  uiPass = 720896
+  debugPass = 786432
+
+type RenderingDevice_DrawFlags* = enum
+  # drawDefaultAll = 0
+  drawClearColor0 = 0
+  drawClearColor1 = 1
+  drawClearColor2 = 2
+  drawClearColor3 = 3
+  drawClearColor4 = 4
+  drawClearColor5 = 5
+  drawClearColor6 = 6
+  drawClearColor7 = 7
+  drawIgnoreColor0 = 8
+  drawIgnoreColor1 = 9
+  drawIgnoreColor2 = 10
+  drawIgnoreColor3 = 11
+  drawIgnoreColor4 = 12
+  drawIgnoreColor5 = 13
+  drawIgnoreColor6 = 14
+  drawIgnoreColor7 = 15
+  drawClearDepth = 16
+  drawIgnoreDepth = 17
+  drawClearStencil = 18
+  drawIgnoreStencil = 19
+  `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_DrawFlags] to size-of Int.
+template drawClearColorMask*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](255)
+template drawClearColorAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](255)
+template drawIgnoreColorMask*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](65280)
+template drawIgnoreColorAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](65280)
+template drawClearAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](327935)
+template drawIgnoreAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](720640)
+
+type RenderingServer_TextureType* {.size: sizeof(clong).} = enum
+  textureType2D = 0
+  textureTypeLayered = 1
+  textureType3D = 2
 
 type RenderingServer_TextureLayeredType* {.size: sizeof(clong).} = enum
   textureLayered2DArray = 0
@@ -3253,6 +3467,10 @@ type RenderingServer_BlendShapeMode* {.size: sizeof(clong).} = enum
 type RenderingServer_MultimeshTransformFormat* {.size: sizeof(clong).} = enum
   multimeshTransform2D = 0
   multimeshTransform3D = 1
+
+type RenderingServer_MultimeshPhysicsInterpolationQuality* {.size: sizeof(clong).} = enum
+  multimeshInterpQualityFast = 0
+  multimeshInterpQualityHigh = 1
 
 type RenderingServer_LightProjectorFilter* {.size: sizeof(clong).} = enum
   lightProjectorFilterNearest = 0
@@ -3393,7 +3611,9 @@ type RenderingServer_ViewportScaling3DMode* {.size: sizeof(clong).} = enum
   viewportScaling3DModeBilinear = 0
   viewportScaling3DModeFsr = 1
   viewportScaling3DModeFsr2 = 2
-  viewportScaling3DModeMax = 3
+  viewportScaling3DModeMetalfxSpatial = 3
+  viewportScaling3DModeMetalfxTemporal = 4
+  viewportScaling3DModeMax = 5
 
 type RenderingServer_ViewportUpdateMode* {.size: sizeof(clong).} = enum
   viewportUpdateDisabled = 0
@@ -3432,6 +3652,14 @@ type RenderingServer_ViewportMSAA* {.size: sizeof(clong).} = enum
   viewportMsaa4X = 2
   viewportMsaa8X = 3
   viewportMsaaMax = 4
+
+type RenderingServer_ViewportAnisotropicFiltering* {.size: sizeof(clong).} = enum
+  viewportAnisotropyDisabled = 0
+  viewportAnisotropy2X = 1
+  viewportAnisotropy4X = 2
+  viewportAnisotropy8X = 3
+  viewportAnisotropy16X = 4
+  viewportAnisotropyMax = 5
 
 type RenderingServer_ViewportScreenSpaceAA* {.size: sizeof(clong).} = enum
   viewportScreenSpaceAaDisabled = 0
@@ -3553,6 +3781,7 @@ type RenderingServer_EnvironmentToneMapper* {.size: sizeof(clong).} = enum
   envToneMapperReinhard = 1
   envToneMapperFilmic = 2
   envToneMapperAces = 3
+  envToneMapperAgx = 4
 
 type RenderingServer_EnvironmentSSRRoughnessQuality* {.size: sizeof(clong).} = enum
   envSsrRoughnessQualityDisabled = 0
@@ -3746,7 +3975,8 @@ type RenderingServer_GlobalShaderParameterType* {.size: sizeof(clong).} = enum
   globalVarTypeSampler2Darray = 25
   globalVarTypeSampler3D = 26
   globalVarTypeSamplercube = 27
-  globalVarTypeMax = 28
+  globalVarTypeSamplerext = 28
+  globalVarTypeMax = 29
 
 type RenderingServer_RenderingInfo* {.size: sizeof(clong).} = enum
   renderingInfoTotalObjectsInFrame = 0
@@ -3755,6 +3985,19 @@ type RenderingServer_RenderingInfo* {.size: sizeof(clong).} = enum
   renderingInfoTextureMemUsed = 3
   renderingInfoBufferMemUsed = 4
   renderingInfoVideoMemUsed = 5
+  renderingInfoPipelineCompilationsCanvas = 6
+  renderingInfoPipelineCompilationsMesh = 7
+  renderingInfoPipelineCompilationsSurface = 8
+  renderingInfoPipelineCompilationsDraw = 9
+  renderingInfoPipelineCompilationsSpecialization = 10
+
+type RenderingServer_PipelineSource* {.size: sizeof(clong).} = enum
+  pipelineSourceCanvas = 0
+  pipelineSourceMesh = 1
+  pipelineSourceSurface = 2
+  pipelineSourceDraw = 3
+  pipelineSourceSpecialization = 4
+  pipelineSourceMax = 5
 
 type RenderingServer_Features* {.size: sizeof(clong).} = enum
   featureShaders = 0
@@ -3794,6 +4037,13 @@ type ResourceSaver_SaverFlags* = enum
   flagCompress = 5
   flagReplaceSubresourcePaths = 6
   `--Padding-Max--` = 63 # To align size-of set[ResourceSaver_SaverFlags] to size-of Int.
+
+type RetargetModifier3D_TransformFlag* = enum
+  transformFlagPosition = 0
+  transformFlagRotation = 1
+  transformFlagScale = 2
+  `--Padding-Max--` = 63 # To align size-of set[RetargetModifier3D_TransformFlag] to size-of Int.
+template transformFlagAll*[T: RetargetModifier3D_TransformFlag](_: typedesc[T]): set[T] = cast[set[T]](7)
 
 type RibbonTrailMesh_Shape* {.size: sizeof(clong).} = enum
   shapeFlat = 0
@@ -3888,7 +4138,9 @@ type ScriptLanguageExtension_LookupResultType* {.size: sizeof(clong).} = enum
   lookupResultClassEnum = 6
   lookupResultClassTbdGlobalscope = 7
   lookupResultClassAnnotation = 8
-  lookupResultMax = 9
+  lookupResultLocalConstant = 9
+  lookupResultLocalVariable = 10
+  lookupResultMax = 11
 
 type ScriptLanguageExtension_CodeCompletionLocation* {.size: sizeof(clong).} = enum
   locationLocal = 0
@@ -3914,6 +4166,7 @@ type ScrollContainer_ScrollMode* {.size: sizeof(clong).} = enum
   scrollModeAuto = 1
   scrollModeShowAlways = 2
   scrollModeShowNever = 3
+  scrollModeReserve = 4
 
 type Shader_Mode* {.size: sizeof(clong).} = enum
   modeSpatial = 0
@@ -3925,6 +4178,14 @@ type Shader_Mode* {.size: sizeof(clong).} = enum
 type Skeleton3D_ModifierCallbackModeProcess* {.size: sizeof(clong).} = enum
   modifierCallbackModeProcessPhysics = 0
   modifierCallbackModeProcessIdle = 1
+
+type SkeletonModifier3D_BoneAxis* {.size: sizeof(clong).} = enum
+  boneAxisPlusX = 0
+  boneAxisMinusX = 1
+  boneAxisPlusY = 2
+  boneAxisMinusY = 3
+  boneAxisPlusZ = 4
+  boneAxisMinusZ = 5
 
 type SkeletonProfile_TailDirection* {.size: sizeof(clong).} = enum
   tailDirectionAverageChildren = 0
@@ -3980,6 +4241,26 @@ type SplitContainer_DraggerVisibility* {.size: sizeof(clong).} = enum
   draggerVisible = 0
   draggerHidden = 1
   draggerHiddenCollapsed = 2
+
+type SpringBoneSimulator3D_BoneDirection* {.size: sizeof(clong).} = enum
+  boneDirectionPlusX = 0
+  boneDirectionMinusX = 1
+  boneDirectionPlusY = 2
+  boneDirectionMinusY = 3
+  boneDirectionPlusZ = 4
+  boneDirectionMinusZ = 5
+  boneDirectionFromParent = 6
+
+type SpringBoneSimulator3D_CenterFrom* {.size: sizeof(clong).} = enum
+  centerFromWorldOrigin = 0
+  centerFromNode = 1
+  centerFromBone = 2
+
+type SpringBoneSimulator3D_RotationAxis* {.size: sizeof(clong).} = enum
+  rotationAxisX = 0
+  rotationAxisY = 1
+  rotationAxisZ = 2
+  rotationAxisAll = 3
 
 type SpriteBase3D_DrawFlags* {.size: sizeof(clong).} = enum
   flagTransparent = 0
@@ -4088,7 +4369,8 @@ type TextEdit_MenuItems* {.size: sizeof(clong).} = enum
   menuInsertZwnj = 27
   menuInsertWj = 28
   menuInsertShy = 29
-  menuMax = 30
+  menuEmojiAndSymbol = 30
+  menuMax = 31
 
 type TextEdit_EditAction* {.size: sizeof(clong).} = enum
   actionNone = 0
@@ -4525,7 +4807,9 @@ type Viewport_Scaling3DMode* {.size: sizeof(clong).} = enum
   scaling3DModeBilinear = 0
   scaling3DModeFsr = 1
   scaling3DModeFsr2 = 2
-  scaling3DModeMax = 3
+  scaling3DModeMetalfxSpatial = 3
+  scaling3DModeMetalfxTemporal = 4
+  scaling3DModeMax = 5
 
 type Viewport_MSAA* {.size: sizeof(clong).} = enum
   msaaDisabled = 0
@@ -4533,6 +4817,14 @@ type Viewport_MSAA* {.size: sizeof(clong).} = enum
   msaa4X = 2
   msaa8X = 3
   msaaMax = 4
+
+type Viewport_AnisotropicFiltering* {.size: sizeof(clong).} = enum
+  anisotropyDisabled = 0
+  anisotropy2X = 1
+  anisotropy4X = 2
+  anisotropy8X = 3
+  anisotropy16X = 4
+  anisotropyMax = 5
 
 type Viewport_ScreenSpaceAA* {.size: sizeof(clong).} = enum
   screenSpaceAaDisabled = 0
@@ -4690,7 +4982,9 @@ type VisualShaderNodeColorFunc_Function* {.size: sizeof(clong).} = enum
   funcHsv2Rgb = 1
   funcRgb2Hsv = 2
   funcSepia = 3
-  funcMax = 4
+  funcLinearToSrgb = 4
+  funcSrgbToLinear = 5
+  funcMax = 6
 
 type VisualShaderNodeColorOp_Operator* {.size: sizeof(clong).} = enum
   opScreen = 0
@@ -4839,7 +5133,8 @@ type VisualShaderNodeIntParameter_Hint* {.size: sizeof(clong).} = enum
   hintNone = 0
   hintRange = 1
   hintRangeStep = 2
-  hintMax = 3
+  hintEnum = 3
+  hintMax = 4
 
 type VisualShaderNodeIs_Function* {.size: sizeof(clong).} = enum
   funcIsInf = 0
@@ -4888,6 +5183,16 @@ type VisualShaderNodeParticleRandomness_OpType* {.size: sizeof(clong).} = enum
   opTypeVector3D = 2
   opTypeVector4D = 3
   opTypeMax = 4
+
+type VisualShaderNodeRemap_OpType* {.size: sizeof(clong).} = enum
+  opTypeScalar = 0
+  opTypeVector2D = 1
+  opTypeVector2DScalar = 2
+  opTypeVector3D = 3
+  opTypeVector3DScalar = 4
+  opTypeVector4D = 5
+  opTypeVector4DScalar = 6
+  opTypeMax = 7
 
 type VisualShaderNodeSample3D_Source* {.size: sizeof(clong).} = enum
   sourceTexture = 0
@@ -5154,7 +5459,9 @@ type Window_Flags* {.size: sizeof(clong).} = enum
   flagPopup = 5
   flagExtendToTitle = 6
   flagMousePassthrough = 7
-  flagMax = 8
+  flagSharpCorners = 8
+  flagExcludeFromCapture = 9
+  flagMax = 10
 
 type Window_ContentScaleMode* {.size: sizeof(clong).} = enum
   contentScaleModeDisabled = 0
@@ -5174,9 +5481,12 @@ type Window_ContentScaleStretch* {.size: sizeof(clong).} = enum
 
 type Window_LayoutDirection* {.size: sizeof(clong).} = enum
   layoutDirectionInherited = 0
-  layoutDirectionLocale = 1
+  layoutDirectionApplicationLocale = 1
   layoutDirectionLtr = 2
   layoutDirectionRtl = 3
+  layoutDirectionSystemLocale = 4
+  layoutDirectionMax = 5
+template layoutDirectionLocale*[T: Window_LayoutDirection](_: typedesc[T]): T = T(1)
 
 type Window_WindowInitialPosition* {.size: sizeof(clong).} = enum
   windowInitialPositionAbsolute = 0
@@ -5453,7 +5763,8 @@ type XRHandTracker_HandTrackingSource* {.size: sizeof(clong).} = enum
   handTrackingSourceUnknown = 0
   handTrackingSourceUnobstructed = 1
   handTrackingSourceController = 2
-  handTrackingSourceMax = 3
+  handTrackingSourceNotTracked = 3
+  handTrackingSourceMax = 4
 
 type XRHandTracker_HandJoint* {.size: sizeof(clong).} = enum
   handJointPalm = 0

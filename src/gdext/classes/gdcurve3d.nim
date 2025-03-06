@@ -78,6 +78,16 @@ proc samplef*(self: Curve3D; fofs: Float): Vector3 =
   methodbind.ptrcall(self, [getPtr fofs], addr ret)
   (addr ret).decode_result(Vector3)
 
+proc setClosed*(self: Curve3D; closed: bool): void =
+  expandMethodBind(className Curve3D, "set_closed", 2586408642)
+  methodbind.ptrcall(self, [getPtr closed])
+
+proc isClosed*(self: Curve3D): bool =
+  expandMethodBind(className Curve3D, "is_closed", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setBakeInterval*(self: Curve3D; distance: Float): void =
   expandMethodBind(className Curve3D, "set_bake_interval", 373806689)
   methodbind.ptrcall(self, [getPtr distance])
@@ -163,6 +173,9 @@ proc tessellateEvenLength*(self: Curve3D; maxStages: int32 = 5; toleranceLength:
   var ret: encoded PackedVector3Array
   methodbind.ptrcall(self, [getPtr maxStages, getPtr toleranceLength], addr ret)
   (addr ret).decode_result(PackedVector3Array)
+
+template closed*(self: Curve3D): untyped = self.isClosed()
+template `closed=`*(self: Curve3D; value) = self.setClosed(value)
 
 template bakeInterval*(self: Curve3D): untyped = self.getBakeInterval()
 template `bakeInterval=`*(self: Curve3D; value) = self.setBakeInterval(value)

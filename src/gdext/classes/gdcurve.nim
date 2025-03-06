@@ -116,6 +116,38 @@ proc setMaxValue*(self: Curve; max: Float): void =
   expandMethodBind(className Curve, "set_max_value", 373806689)
   methodbind.ptrcall(self, [getPtr max])
 
+proc getValueRange*(self: Curve): Float =
+  expandMethodBind(className Curve, "get_value_range", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getMinDomain*(self: Curve): Float =
+  expandMethodBind(className Curve, "get_min_domain", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setMinDomain*(self: Curve; min: Float): void =
+  expandMethodBind(className Curve, "set_min_domain", 373806689)
+  methodbind.ptrcall(self, [getPtr min])
+
+proc getMaxDomain*(self: Curve): Float =
+  expandMethodBind(className Curve, "get_max_domain", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setMaxDomain*(self: Curve; max: Float): void =
+  expandMethodBind(className Curve, "set_max_domain", 373806689)
+  methodbind.ptrcall(self, [getPtr max])
+
+proc getDomainRange*(self: Curve): Float =
+  expandMethodBind(className Curve, "get_domain_range", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc cleanDupes*(self: Curve): void =
   expandMethodBind(className Curve, "clean_dupes", 3218959716)
   methodbind.ptrcall(self, [])
@@ -133,6 +165,12 @@ proc getBakeResolution*(self: Curve): int32 =
 proc setBakeResolution*(self: Curve; resolution: int32): void =
   expandMethodBind(className Curve, "set_bake_resolution", 1286410249)
   methodbind.ptrcall(self, [getPtr resolution])
+
+template minDomain*(self: Curve): untyped = self.getMinDomain()
+template `minDomain=`*(self: Curve; value) = self.setMinDomain(value)
+
+template maxDomain*(self: Curve): untyped = self.getMaxDomain()
+template `maxDomain=`*(self: Curve; value) = self.setMaxDomain(value)
 
 template minValue*(self: Curve): untyped = self.getMinValue()
 template `minValue=`*(self: Curve; value) = self.setMinValue(value)
@@ -154,4 +192,10 @@ proc rangeChanged*(self: Curve): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("range_changed")
+  self.emitSignal(signalname)
+
+proc domainChanged*(self: Curve): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("domain_changed")
   self.emitSignal(signalname)

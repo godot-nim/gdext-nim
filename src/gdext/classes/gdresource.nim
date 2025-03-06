@@ -9,6 +9,21 @@ proc setupLocalToScene(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[
   errproof: cast[Resource](p_instance).setupLocalToScene()
 template setupLocalToScene_bind*(_: typedesc[Resource]): ClassCallVirtual = setupLocalToScene
 
+method getRid*(self: Resource): RID {.base.} = (discard)
+proc getRid(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[Resource](p_instance).getRid().encode(r_ret)
+template getRid_bind*(_: typedesc[Resource]): ClassCallVirtual = getRid
+
+method resetState*(self: Resource): void {.base.} = (discard)
+proc resetState(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[Resource](p_instance).resetState()
+template resetState_bind*(_: typedesc[Resource]): ClassCallVirtual = resetState
+
+method setPathCache*(self: Resource; path: String): void {.base.} = (discard)
+proc setPathCache(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
+template setPathCache_bind*(_: typedesc[Resource]): ClassCallVirtual = setPathCache
+
 proc setPath*(self: Resource; path: String): void =
   expandMethodBind(className Resource, "set_path", 83702148)
   methodbind.ptrcall(self, [getPtr path])
@@ -22,6 +37,10 @@ proc getPath*(self: Resource): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
+
+proc setPathCache*(self: Resource; path: String): void =
+  expandMethodBind(className Resource, "set_path_cache", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
 
 proc setName*(self: Resource; name: String): void =
   expandMethodBind(className Resource, "set_name", 83702148)
@@ -58,6 +77,26 @@ proc getLocalScene*(self: Resource): Node =
 proc setupLocalToScene*(self: Resource): void =
   expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
   methodbind.ptrcall(self, [])
+
+proc resetState*(self: Resource): void =
+  expandMethodBind(className Resource, "reset_state", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc setIdForPath*(self: Resource; path: String; id: String): void =
+  expandMethodBind(className Resource, "set_id_for_path", 3186203200)
+  methodbind.ptrcall(self, [getPtr path, getPtr id])
+
+proc getIdForPath*(self: Resource; path: String): String =
+  expandMethodBind(className Resource, "get_id_for_path", 3135753539)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(String)
+
+proc isBuiltIn*(self: Resource): bool =
+  expandMethodBind(className Resource, "is_built_in", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc generateSceneUniqueId*(_: typedesc[Resource]): String =
   expandMethodBind(className Resource, "generate_scene_unique_id", 2841200299)
@@ -100,6 +139,9 @@ template `resourceSceneUniqueId=`*(self: Resource; value) = self.setSceneUniqueI
 const Resource_vmap =
   RefCounted.vmap.concat toTable {
     "setuplocaltoscene" : "_setup_local_to_scene",
+    "getrid" : "_get_rid",
+    "resetstate" : "_reset_state",
+    "setpathcache" : "_set_path_cache",
     }
 template vmap*(_: typedesc[Resource]): Table[string, string] = Resource_vmap
 

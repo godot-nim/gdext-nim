@@ -10,6 +10,12 @@ proc wrap*(self: JavaClassWrapper; name: String): gdref JavaClass =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(gdref JavaClass)
 
+proc getException*(self: JavaClassWrapper): gdref JavaObject =
+  expandMethodBind(className JavaClassWrapper, "get_exception", 3277089691)
+  var ret: encoded gdref JavaObject
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref JavaObject)
+
 const JavaClassWrapper_vmap =
   Object.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[JavaClassWrapper]): Table[string, string] = JavaClassWrapper_vmap

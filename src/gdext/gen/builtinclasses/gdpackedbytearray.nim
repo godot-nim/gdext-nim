@@ -32,9 +32,10 @@ proc load_PackedByteArray_operators {.execon: staticevents.init_engine.on_load_b
   `!=(PackedByteArray PackedByteArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedByteArray, VariantType_PackedByteArray)
   `+(PackedByteArray PackedByteArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedByteArray, VariantType_PackedByteArray)
 
+var `get(PackedByteArray Int)`: PtrBuiltinMethod
+var `set(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `size(PackedByteArray)`: PtrBuiltinMethod
 var `isEmpty(PackedByteArray)`: PtrBuiltinMethod
-var `set(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `pushBack(PackedByteArray Int)`: PtrBuiltinMethod
 var `append(PackedByteArray Int)`: PtrBuiltinMethod
 var `appendArray(PackedByteArray PackedByteArray)`: PtrBuiltinMethod
@@ -92,13 +93,16 @@ var `encodeFloat(PackedByteArray Int Float)`: PtrBuiltinMethod
 var `encodeDouble(PackedByteArray Int Float)`: PtrBuiltinMethod
 var `encodeVar(PackedByteArray Int Variant bool)`: PtrBuiltinMethod
 
+proc get*(self: PackedByteArray; index: Int): Int =
+  let argArr = [getPtr index]
+  `get(PackedByteArray Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedByteArray; index: Int; value: Int): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedByteArray): Int =
   `size(PackedByteArray)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedByteArray): bool =
   `isEmpty(PackedByteArray)`(addr self, nil, addr result, 0)
-proc set*(self: PackedByteArray; index: Int; value: Int): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedByteArray; value: Int): bool =
   let argArr = [getPtr value]
   `pushBack(PackedByteArray Int)`(addr self, addr argArr[0], addr result, 1)
@@ -255,9 +259,10 @@ proc encodeVar*(self: PackedByteArray; byteOffset: Int; value: Variant; allowObj
   `encodeVar(PackedByteArray Int Variant bool)`(addr self, addr argArr[0], addr result, 3)
 
 proc load_PackedByteArray_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedByteArray Int)` = load(VariantType_PackedByteArray, "get", 4103005248)
+  `set(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "set", 3638975848)
   `size(PackedByteArray)` = load(VariantType_PackedByteArray, "size", 3173160232)
   `isEmpty(PackedByteArray)` = load(VariantType_PackedByteArray, "is_empty", 3918633141)
-  `set(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "set", 3638975848)
   `pushBack(PackedByteArray Int)` = load(VariantType_PackedByteArray, "push_back", 694024632)
   `append(PackedByteArray Int)` = load(VariantType_PackedByteArray, "append", 694024632)
   `appendArray(PackedByteArray PackedByteArray)` = load(VariantType_PackedByteArray, "append_array", 791097111)

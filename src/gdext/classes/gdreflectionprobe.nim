@@ -14,6 +14,16 @@ proc getIntensity*(self: ReflectionProbe): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setBlendDistance*(self: ReflectionProbe; blendDistance: Float): void =
+  expandMethodBind(className ReflectionProbe, "set_blend_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr blendDistance])
+
+proc getBlendDistance*(self: ReflectionProbe): Float =
+  expandMethodBind(className ReflectionProbe, "get_blend_distance", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setAmbientMode*(self: ReflectionProbe; ambient: ReflectionProbe_AmbientMode): void =
   expandMethodBind(className ReflectionProbe, "set_ambient_mode", 1748981278)
   methodbind.ptrcall(self, [getPtr ambient])
@@ -149,6 +159,9 @@ template `updateMode=`*(self: ReflectionProbe; value) = self.setUpdateMode(value
 
 template intensity*(self: ReflectionProbe): untyped = self.getIntensity()
 template `intensity=`*(self: ReflectionProbe; value) = self.setIntensity(value)
+
+template blendDistance*(self: ReflectionProbe): untyped = self.getBlendDistance()
+template `blendDistance=`*(self: ReflectionProbe; value) = self.setBlendDistance(value)
 
 template maxDistance*(self: ReflectionProbe): untyped = self.getMaxDistance()
 template `maxDistance=`*(self: ReflectionProbe; value) = self.setMaxDistance(value)

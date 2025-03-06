@@ -14,6 +14,16 @@ proc getCellMode*(self: TreeItem; column: int32): TreeItem_TreeCellMode =
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(TreeItem_TreeCellMode)
 
+proc setAutoTranslateMode*(self: TreeItem; column: int32; mode: Node_AutoTranslateMode): void =
+  expandMethodBind(className TreeItem, "set_auto_translate_mode", 287402019)
+  methodbind.ptrcall(self, [getPtr column, getPtr mode])
+
+proc getAutoTranslateMode*(self: TreeItem; column: int32): Node_AutoTranslateMode =
+  expandMethodBind(className TreeItem, "get_auto_translate_mode", 906302372)
+  var ret: encoded Node_AutoTranslateMode
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(Node_AutoTranslateMode)
+
 proc setEditMultiline*(self: TreeItem; column: int32; multiline: bool): void =
   expandMethodBind(className TreeItem, "set_edit_multiline", 300928843)
   methodbind.ptrcall(self, [getPtr column, getPtr multiline])
@@ -134,6 +144,16 @@ proc setIcon*(self: TreeItem; column: int32; texture: gdref Texture2D): void =
 
 proc getIcon*(self: TreeItem; column: int32): gdref Texture2D =
   expandMethodBind(className TreeItem, "get_icon", 3536238170)
+  var ret: encoded gdref Texture2D
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(gdref Texture2D)
+
+proc setIconOverlay*(self: TreeItem; column: int32; texture: gdref Texture2D): void =
+  expandMethodBind(className TreeItem, "set_icon_overlay", 666127730)
+  methodbind.ptrcall(self, [getPtr column, getPtr texture])
+
+proc getIconOverlay*(self: TreeItem; column: int32): gdref Texture2D =
+  expandMethodBind(className TreeItem, "get_icon_overlay", 3536238170)
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(gdref Texture2D)
@@ -353,6 +373,10 @@ proc isCustomSetAsButton*(self: TreeItem; column: int32): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(bool)
+
+proc clearButtons*(self: TreeItem): void =
+  expandMethodBind(className TreeItem, "clear_buttons", 3218959716)
+  methodbind.ptrcall(self, [])
 
 proc addButton*(self: TreeItem; column: int32; button: gdref Texture2D; id: int32 = -1; disabled: bool = false; tooltipText: String = gdstring""): void =
   expandMethodBind(className TreeItem, "add_button", 1688223362)

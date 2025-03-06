@@ -246,6 +246,10 @@ proc srgbToLinear*(self: Image): void =
   expandMethodBind(className Image, "srgb_to_linear", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc linearToSrgb*(self: Image): void =
+  expandMethodBind(className Image, "linear_to_srgb", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc normalMapToXy*(self: Image): void =
   expandMethodBind(className Image, "normal_map_to_xy", 3218959716)
   methodbind.ptrcall(self, [])

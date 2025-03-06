@@ -100,8 +100,21 @@ proc ensureControlVisible*(self: ScrollContainer; control: Control): void =
   expandMethodBind(className ScrollContainer, "ensure_control_visible", 1496901182)
   methodbind.ptrcall(self, [getPtr control])
 
+proc setDrawFocusBorder*(self: ScrollContainer; draw: bool): void =
+  expandMethodBind(className ScrollContainer, "set_draw_focus_border", 2586408642)
+  methodbind.ptrcall(self, [getPtr draw])
+
+proc getDrawFocusBorder*(self: ScrollContainer): bool =
+  expandMethodBind(className ScrollContainer, "get_draw_focus_border", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template followFocus*(self: ScrollContainer): untyped = self.isFollowingFocus()
 template `followFocus=`*(self: ScrollContainer; value) = self.setFollowFocus(value)
+
+template drawFocusBorder*(self: ScrollContainer): untyped = self.getDrawFocusBorder()
+template `drawFocusBorder=`*(self: ScrollContainer; value) = self.setDrawFocusBorder(value)
 
 template scrollHorizontal*(self: ScrollContainer): untyped = self.getHScroll()
 template `scrollHorizontal=`*(self: ScrollContainer; value) = self.setHScroll(value)
