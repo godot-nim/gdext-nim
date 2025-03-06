@@ -2,6 +2,28 @@ import gdext
 import testutils
 import std/unicode
 
+runtime: suite "Array":
+  test "construct":
+    var arr = gdarray(10)
+    check not arr.isTyped
+    check arr.len == 10
+    for i, val in arr:
+      check val == variant()
+  test "mutable iter":
+    var arr = gdarray(10)
+    for i, val in arr.mpairs:
+      val = variant(i)
+    for i, val in arr:
+      check val.get(int) == i
+  test "subscript":
+    var arr = gdarray(10)
+    for i in 0..<arr.len:
+      check arr[i] == variant()
+    for i in 0..<arr.len:
+      arr[i] = variant i
+    for i in 0..<arr.len:
+      check arr[i].get(int) == i
+
 runtime: suite "TypedArray":
   test "construct":
     var arr = typedArray[String](10)
@@ -9,8 +31,21 @@ runtime: suite "TypedArray":
     check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
     check arr.len == 10
     for i, val in arr:
-      check val.getType == VariantTypeString
-      check ($val.get String).len == 0
+      check val.length == 0
+  test "mutable iter":
+    var arr = typedArray[String](10)
+    for i, val in arr.mpairs:
+      val = variant($i)
+    for i, val in arr:
+      check $val == $i
+  test "subscript":
+    var arr = typedArray[String](10)
+    for i in 0..<arr.len:
+      check arr[i] == gdstring""
+    for i in 0..<arr.len:
+      arr[i] = gdstring $i
+    for i in 0..<arr.len:
+      check arr[i] == gdstring $i
 
 runtime: suite "PackedArray":
   var bytes: PackedByteArray = packedByteArray()
