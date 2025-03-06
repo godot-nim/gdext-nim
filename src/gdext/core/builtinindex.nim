@@ -337,6 +337,7 @@ proc `=dup`*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
 proc `=copy`*(dest: var Variant; source: Variant) =
   `=destroy` dest
+  wasMoved dest
   interface_variantNewCopy(addr dest, addr source)
 
 method onInit*(self: Object) {.base.} = discard
