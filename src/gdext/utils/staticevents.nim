@@ -1,23 +1,22 @@
-import std/[macros, tables, sets, hashes, sequtils]
+import std/[macros, macrocache, sets, hashes]
 import gdext/buildconf
 
-type Event* = distinct string
+type Event* = CacheSeq
 proc event*(name: string): Event = Event name
 proc hash*(event: Event): Hash {.borrow.}
 proc `==`*(a, b: Event): bool {.borrow.}
-proc `$`*(event: Event): string = string event
 
-type Action = NimNode
-var eventtable {.compileTime.} : Table[Event, seq[Action]]
 var alreadyExpanded {.compileTime.} : HashSet[Event]
 
 macro expandEvent*(event: static Event; def: untyped): untyped =
   if event in alreadyExpanded:
-    error "failed to expand; " & $event & " is already expanded.", def
+    error "failed to expand; " & event.string & " is already expanded.", def
   alreadyExpanded.incl event
 
   result = copy def
-  result.body = newStmtList eventtable.mgetOrPut(event, @[]).mapIt(newCall it)
+  result.body = newStmtList()
+  for action in event:
+    result.body.add newCall action
 
 proc processName(node: NimNode): string =
   case node.kind
@@ -40,13 +39,13 @@ macro execon*(event: static Event; def): untyped =
   let name = gensym(nskProc)
   when Dev.debugEvents:
     let processname = def[0].processName
-    let eventstr = $event & "::process >> " & processname
+    let eventstr = event.string & "::process >> " & processname
     def.body.insert(0, quote do: echo `eventstr`)
   def.name = name
 
   if event in alreadyExpanded:
     error "the event " & event.string & " is already consumed", def
-  eventtable.mgetOrPut(event, @[]).add name
+  event.add name
   def
 
 const init_engine* = (

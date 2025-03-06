@@ -1,7 +1,7 @@
 import testutils
 
 import gdext
-import gdext/core/gdclass
+import gdext/gdinterface/extracommands
 import classes/gdtestobject
 
 type Test = enum
@@ -39,8 +39,8 @@ runtime: test "instantiate at global":
   let engineclass = instantiate Object
   let extentclass = instantiate TestObject
 
-  check CLASS_getObjectPtr(engineclass) != nil
-  check CLASS_getObjectPtr(extentclass) != nil
+  check engineclass.owner != nil
+  check extentclass.owner != nil
 
   destroy engineclass
   destroy extentclass

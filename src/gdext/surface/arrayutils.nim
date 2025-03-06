@@ -1,5 +1,4 @@
 import gdext/gdinterface/native
-import gdext/core/gdtypedarray
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/typeshift

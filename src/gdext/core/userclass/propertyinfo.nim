@@ -5,9 +5,17 @@ import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/typeshift
-import gdext/gen/globalenums except VariantType
+import gdext/gen/globalenums
 
 type
+  HeapPropertyInfo* = object
+    `type`*: VariantType
+    name*: ref StringName
+    className*: ref Stringname
+    hint*: PropertyHint
+    hintString*: ref String
+    usage*: set[PropertyUsageFlags]
+
   GodotEnumMeta* = object
     className*: StringName
     hintString*: String

@@ -4,8 +4,8 @@ export                    classDB, methodtools, exceptions
 from gdext/gdinterface/extracommands import gdstring, stringname, classname
 export extracommands.gdstring, extracommands.stringname, extracommands.classname
 
-import gdext/core/[builtinindex, typeshift, gdclass, gdtypedarray, gdrefs ]
-export             builtinindex, typeshift, gdclass, gdtypedarray, gdrefs
+import gdext/core/[builtinindex, typeshift, gdclass, gdrefs ]
+export             builtinindex, typeshift, gdclass, gdrefs
 
 import gdext/gen/[
   builtinclasses, classindex, globalenums, localenums, structs

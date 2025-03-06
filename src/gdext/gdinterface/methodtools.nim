@@ -1,21 +1,20 @@
 import native
 import extracommands
 import gdext/core/builtinindex
-import gdext/core/gdclass
 import gdext/core/gdrefs
 
 export gdcall
 
 template CLASS_getOwner*(v: Object): ObjectPtr =
-  CLASS_getObjectPtr v
+  owner v
 
 template getPtr*[T](v: T): pointer = cast[pointer](addr v)
 template getPtr*(v: Variant): pointer = cast[pointer](addr v.data)
 template getPtr*[T: Object](v: T): pointer =
-  cast[pointer](CLASS_getObjectPtrPtr v)
+  cast[pointer](v.ownerPtr)
 template getPtr*(v: GdRef): pointer =
   if v.handle != nil:
-    discard hook_reference CLASS_getObjectPtr v.handle
+    discard hook_reference v.handle
   getPtr v.handle
 
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
