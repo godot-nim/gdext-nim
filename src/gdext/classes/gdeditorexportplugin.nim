@@ -69,6 +69,11 @@ proc shouldUpdateExportOptions(p_instance: ClassInstancePtr; p_args: ptr Uncheck
   errproof: cast[EditorExportPlugin](p_instance).shouldUpdateExportOptions(p_args[0].decode(gdref EditorExportPlatform)).encode(r_ret)
 template shouldUpdateExportOptions_bind*(_: typedesc[EditorExportPlugin]): ClassCallVirtual = shouldUpdateExportOptions
 
+method getExportOptionVisibility*(self: EditorExportPlugin; platform: gdref EditorExportPlatform; option: String): bool {.base.} = (discard)
+proc getExportOptionVisibility(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[EditorExportPlugin](p_instance).getExportOptionVisibility(p_args[0].decode(gdref EditorExportPlatform), p_args[1].decode(String)).encode(r_ret)
+template getExportOptionVisibility_bind*(_: typedesc[EditorExportPlugin]): ClassCallVirtual = getExportOptionVisibility
+
 method getExportOptionWarning*(self: EditorExportPlugin; platform: gdref EditorExportPlatform; option: String): String {.base.} = (discard)
 proc getExportOptionWarning(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[EditorExportPlugin](p_instance).getExportOptionWarning(p_args[0].decode(gdref EditorExportPlatform), p_args[1].decode(String)).encode(r_ret)
@@ -169,6 +174,18 @@ proc getOption*(self: EditorExportPlugin; name: StringName): Variant =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
+proc getExportPreset*(self: EditorExportPlugin): gdref EditorExportPreset =
+  expandMethodBind(className EditorExportPlugin, "get_export_preset", 1610607222)
+  var ret: encoded gdref EditorExportPreset
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref EditorExportPreset)
+
+proc getExportPlatform*(self: EditorExportPlugin): gdref EditorExportPlatform =
+  expandMethodBind(className EditorExportPlugin, "get_export_platform", 282254641)
+  var ret: encoded gdref EditorExportPlatform
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref EditorExportPlatform)
+
 const EditorExportPlugin_vmap =
   RefCounted.vmap.concat toTable {
     "exportfile" : "_export_file",
@@ -184,6 +201,7 @@ const EditorExportPlugin_vmap =
     "getexportoptions" : "_get_export_options",
     "getexportoptionsoverrides" : "_get_export_options_overrides",
     "shouldupdateexportoptions" : "_should_update_export_options",
+    "getexportoptionvisibility" : "_get_export_option_visibility",
     "getexportoptionwarning" : "_get_export_option_warning",
     "getexportfeatures" : "_get_export_features",
     "getname" : "_get_name",

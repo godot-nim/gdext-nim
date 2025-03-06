@@ -535,6 +535,16 @@ proc setSymbolLookupWordAsValid*(self: CodeEdit; valid: bool): void =
   expandMethodBind(className CodeEdit, "set_symbol_lookup_word_as_valid", 2586408642)
   methodbind.ptrcall(self, [getPtr valid])
 
+proc setSymbolTooltipOnHoverEnabled*(self: CodeEdit; enable: bool): void =
+  expandMethodBind(className CodeEdit, "set_symbol_tooltip_on_hover_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isSymbolTooltipOnHoverEnabled*(self: CodeEdit): bool =
+  expandMethodBind(className CodeEdit, "is_symbol_tooltip_on_hover_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc moveLinesUp*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "move_lines_up", 3218959716)
   methodbind.ptrcall(self, [])
@@ -557,6 +567,9 @@ proc duplicateLines*(self: CodeEdit): void =
 
 template symbolLookupOnClick*(self: CodeEdit): untyped = self.isSymbolLookupOnClickEnabled()
 template `symbolLookupOnClick=`*(self: CodeEdit; value) = self.setSymbolLookupOnClickEnabled(value)
+
+template symbolTooltipOnHover*(self: CodeEdit): untyped = self.isSymbolTooltipOnHoverEnabled()
+template `symbolTooltipOnHover=`*(self: CodeEdit; value) = self.setSymbolTooltipOnHoverEnabled(value)
 
 template lineFolding*(self: CodeEdit): untyped = self.isLineFoldingEnabled()
 template `lineFolding=`*(self: CodeEdit; value) = self.setLineFoldingEnabled(value)
@@ -648,4 +661,11 @@ proc symbolValidate*(self: CodeEdit; symbol: Variant): Error =
   once:
     signalname = variant stringname("symbol_validate")
   let args = [symbol]
+  self.emitSignal(signalname, args)
+
+proc symbolHovered*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("symbol_hovered")
+  let args = [symbol, line, column]
   self.emitSignal(signalname, args)

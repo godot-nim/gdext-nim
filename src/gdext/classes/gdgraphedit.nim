@@ -24,10 +24,10 @@ proc isNodeHoverValid(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[C
   errproof: cast[GraphEdit](p_instance).isNodeHoverValid(p_args[0].decode(StringName), p_args[1].decode(int32), p_args[2].decode(StringName), p_args[3].decode(int32)).encode(r_ret)
 template isNodeHoverValid_bind*(_: typedesc[GraphEdit]): ClassCallVirtual = isNodeHoverValid
 
-proc connectNode*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): Error =
-  expandMethodBind(className GraphEdit, "connect_node", 195065850)
+proc connectNode*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32; keepAlive: bool = false): Error =
+  expandMethodBind(className GraphEdit, "connect_node", 1376144231)
   var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort], addr ret)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr keepAlive], addr ret)
   (addr ret).decode_result(Error)
 
 proc isNodeConnected*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): bool =
@@ -44,11 +44,21 @@ proc setConnectionActivity*(self: GraphEdit; fromNode: StringName; fromPort: int
   expandMethodBind(className GraphEdit, "set_connection_activity", 1141899943)
   methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr amount])
 
+proc setConnections*(self: GraphEdit; connections: TypedArray[Dictionary]): void =
+  expandMethodBind(className GraphEdit, "set_connections", 381264803)
+  methodbind.ptrcall(self, [getPtr connections])
+
 proc getConnectionList*(self: GraphEdit): TypedArray[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connection_list", 3995934104)
   var ret: encoded TypedArray[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
+
+proc getConnectionCount*(self: GraphEdit; fromNode: StringName; fromPort: int32): int32 =
+  expandMethodBind(className GraphEdit, "get_connection_count", 861718734)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort], addr ret)
+  (addr ret).decode_result(int32)
 
 proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: Float = 4.0): Dictionary =
   expandMethodBind(className GraphEdit, "get_closest_connection_at_point", 453879819)
@@ -400,6 +410,9 @@ template `connectionLinesThickness=`*(self: GraphEdit; value) = self.setConnecti
 template connectionLinesAntialiased*(self: GraphEdit): untyped = self.isConnectionLinesAntialiased()
 template `connectionLinesAntialiased=`*(self: GraphEdit; value) = self.setConnectionLinesAntialiased(value)
 
+template connections*(self: GraphEdit): untyped = self.getConnectionList()
+template `connections=`*(self: GraphEdit; value) = self.setConnections(value)
+
 template zoom*(self: GraphEdit): untyped = self.getZoom()
 template `zoom=`*(self: GraphEdit; value) = self.setZoom(value)
 
@@ -493,6 +506,12 @@ proc copyNodesRequest*(self: GraphEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("copy_nodes_request")
+  self.emitSignal(signalname)
+
+proc cutNodesRequest*(self: GraphEdit): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("cut_nodes_request")
   self.emitSignal(signalname)
 
 proc pasteNodesRequest*(self: GraphEdit): Error =

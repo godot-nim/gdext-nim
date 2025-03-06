@@ -72,6 +72,12 @@ proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): Array 
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array)
 
+proc getBounds*(self: NavigationMeshSourceGeometryData2D): Rect2 =
+  expandMethodBind(className NavigationMeshSourceGeometryData2D, "get_bounds", 3248174)
+  var ret: encoded Rect2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Rect2)
+
 template traversableOutlines*(self: NavigationMeshSourceGeometryData2D): untyped = self.getTraversableOutlines()
 template `traversableOutlines=`*(self: NavigationMeshSourceGeometryData2D; value) = self.setTraversableOutlines(value)
 

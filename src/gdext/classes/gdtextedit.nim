@@ -138,6 +138,16 @@ proc isContextMenuEnabled*(self: TextEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setEmojiMenuEnabled*(self: TextEdit; enable: bool): void =
+  expandMethodBind(className TextEdit, "set_emoji_menu_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isEmojiMenuEnabled*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "is_emoji_menu_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setShortcutKeysEnabled*(self: TextEdit; enabled: bool): void =
   expandMethodBind(className TextEdit, "set_shortcut_keys_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -164,6 +174,16 @@ proc setMiddleMousePasteEnabled*(self: TextEdit; enabled: bool): void =
 
 proc isMiddleMousePasteEnabled*(self: TextEdit): bool =
   expandMethodBind(className TextEdit, "is_middle_mouse_paste_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setEmptySelectionClipboardEnabled*(self: TextEdit; enabled: bool): void =
+  expandMethodBind(className TextEdit, "set_empty_selection_clipboard_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isEmptySelectionClipboardEnabled*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "is_empty_selection_clipboard_enabled", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -204,6 +224,12 @@ proc setLine*(self: TextEdit; line: int32; newText: String): void =
 
 proc getLine*(self: TextEdit; line: int32): String =
   expandMethodBind(className TextEdit, "get_line", 844755477)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr line], addr ret)
+  (addr ret).decode_result(String)
+
+proc getLineWithIme*(self: TextEdit; line: int32): String =
+  expandMethodBind(className TextEdit, "get_line_with_ime", 844755477)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr line], addr ret)
   (addr ret).decode_result(String)
@@ -380,10 +406,10 @@ proc getWordAtPos*(self: TextEdit; position: Vector2): String =
   methodbind.ptrcall(self, [getPtr position], addr ret)
   (addr ret).decode_result(String)
 
-proc getLineColumnAtPos*(self: TextEdit; position: Vector2i; allowOutOfBounds: bool = true): Vector2i =
-  expandMethodBind(className TextEdit, "get_line_column_at_pos", 239517838)
+proc getLineColumnAtPos*(self: TextEdit; position: Vector2i; clampLine: bool = true; clampColumn: bool = true): Vector2i =
+  expandMethodBind(className TextEdit, "get_line_column_at_pos", 3472935744)
   var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr position, getPtr allowOutOfBounds], addr ret)
+  methodbind.ptrcall(self, [getPtr position, getPtr clampLine, getPtr clampColumn], addr ret)
   (addr ret).decode_result(Vector2i)
 
 proc getPosAtLineColumn*(self: TextEdit; line: int32; column: int32): Vector2i =
@@ -876,6 +902,16 @@ proc isFitContentHeightEnabled*(self: TextEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setFitContentWidthEnabled*(self: TextEdit; enabled: bool): void =
+  expandMethodBind(className TextEdit, "set_fit_content_width_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isFitContentWidthEnabled*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "is_fit_content_width_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getScrollPosForLine*(self: TextEdit; line: int32; wrapIndex: int32 = 0): float64 =
   expandMethodBind(className TextEdit, "get_scroll_pos_for_line", 3929084198)
   var ret: encoded float64
@@ -1222,6 +1258,9 @@ template `editable=`*(self: TextEdit; value) = self.setEditable(value)
 template contextMenuEnabled*(self: TextEdit): untyped = self.isContextMenuEnabled()
 template `contextMenuEnabled=`*(self: TextEdit; value) = self.setContextMenuEnabled(value)
 
+template emojiMenuEnabled*(self: TextEdit): untyped = self.isEmojiMenuEnabled()
+template `emojiMenuEnabled=`*(self: TextEdit; value) = self.setEmojiMenuEnabled(value)
+
 template shortcutKeysEnabled*(self: TextEdit): untyped = self.isShortcutKeysEnabled()
 template `shortcutKeysEnabled=`*(self: TextEdit; value) = self.setShortcutKeysEnabled(value)
 
@@ -1239,6 +1278,9 @@ template `virtualKeyboardEnabled=`*(self: TextEdit; value) = self.setVirtualKeyb
 
 template middleMousePasteEnabled*(self: TextEdit): untyped = self.isMiddleMousePasteEnabled()
 template `middleMousePasteEnabled=`*(self: TextEdit; value) = self.setMiddleMousePasteEnabled(value)
+
+template emptySelectionClipboardEnabled*(self: TextEdit): untyped = self.isEmptySelectionClipboardEnabled()
+template `emptySelectionClipboardEnabled=`*(self: TextEdit; value) = self.setEmptySelectionClipboardEnabled(value)
 
 template wrapMode*(self: TextEdit): untyped = self.getLineWrappingMode()
 template `wrapMode=`*(self: TextEdit; value) = self.setLineWrappingMode(value)
@@ -1266,6 +1308,9 @@ template `scrollHorizontal=`*(self: TextEdit; value) = self.setHScroll(value)
 
 template scrollFitContentHeight*(self: TextEdit): untyped = self.isFitContentHeightEnabled()
 template `scrollFitContentHeight=`*(self: TextEdit; value) = self.setFitContentHeightEnabled(value)
+
+template scrollFitContentWidth*(self: TextEdit): untyped = self.isFitContentWidthEnabled()
+template `scrollFitContentWidth=`*(self: TextEdit; value) = self.setFitContentWidthEnabled(value)
 
 template minimapDraw*(self: TextEdit): untyped = self.isDrawingMinimap()
 template `minimapDraw=`*(self: TextEdit; value) = self.setDrawMinimap(value)

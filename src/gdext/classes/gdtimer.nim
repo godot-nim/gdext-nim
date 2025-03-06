@@ -52,6 +52,16 @@ proc isPaused*(self: Timer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setIgnoreTimeScale*(self: Timer; ignore: bool): void =
+  expandMethodBind(className Timer, "set_ignore_time_scale", 2586408642)
+  methodbind.ptrcall(self, [getPtr ignore])
+
+proc isIgnoringTimeScale*(self: Timer): bool =
+  expandMethodBind(className Timer, "is_ignoring_time_scale", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc isStopped*(self: Timer): bool =
   expandMethodBind(className Timer, "is_stopped", 36873697)
   var ret: encoded bool
@@ -88,6 +98,9 @@ template `autostart=`*(self: Timer; value) = self.setAutostart(value)
 
 template paused*(self: Timer): untyped = self.isPaused()
 template `paused=`*(self: Timer; value) = self.setPaused(value)
+
+template ignoreTimeScale*(self: Timer): untyped = self.isIgnoringTimeScale()
+template `ignoreTimeScale=`*(self: Timer; value) = self.setIgnoreTimeScale(value)
 
 template timeLeft*(self: Timer): untyped = self.getTimeLeft()
 

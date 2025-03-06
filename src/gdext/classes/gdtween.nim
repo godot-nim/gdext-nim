@@ -28,6 +28,12 @@ proc tweenMethod*(self: Tween; `method`: Callable; `from`: Variant; to: Variant;
   methodbind.ptrcall(self, [getPtr `method`, getPtr `from`, getPtr to, getPtr duration], addr ret)
   (addr ret).decode_result(gdref MethodTweener)
 
+proc tweenSubtween*(self: Tween; subtween: gdref Tween): gdref SubtweenTweener =
+  expandMethodBind(className Tween, "tween_subtween", 1567358477)
+  var ret: encoded gdref SubtweenTweener
+  methodbind.ptrcall(self, [getPtr subtween], addr ret)
+  (addr ret).decode_result(gdref SubtweenTweener)
+
 proc customStep*(self: Tween; delta: float64): bool =
   expandMethodBind(className Tween, "custom_step", 330693286)
   var ret: encoded bool
@@ -84,6 +90,12 @@ proc setPauseMode*(self: Tween; mode: Tween_TweenPauseMode): gdref Tween =
   expandMethodBind(className Tween, "set_pause_mode", 3363368837)
   var ret: encoded gdref Tween
   methodbind.ptrcall(self, [getPtr mode], addr ret)
+  (addr ret).decode_result(gdref Tween)
+
+proc setIgnoreTimeScale*(self: Tween; ignore: bool = true): gdref Tween =
+  expandMethodBind(className Tween, "set_ignore_time_scale", 1942052223)
+  var ret: encoded gdref Tween
+  methodbind.ptrcall(self, [getPtr ignore], addr ret)
   (addr ret).decode_result(gdref Tween)
 
 proc setParallel*(self: Tween; parallel: bool = true): gdref Tween =

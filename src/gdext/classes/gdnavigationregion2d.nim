@@ -106,6 +106,12 @@ proc isBaking*(self: NavigationRegion2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getBounds*(self: NavigationRegion2D): Rect2 =
+  expandMethodBind(className NavigationRegion2D, "get_bounds", 1639390495)
+  var ret: encoded Rect2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Rect2)
+
 template navigationPolygon*(self: NavigationRegion2D): untyped = self.getNavigationPolygon()
 template `navigationPolygon=`*(self: NavigationRegion2D; value) = self.setNavigationPolygon(value)
 

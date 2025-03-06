@@ -14,6 +14,16 @@ proc getLineSpacing*(self: LabelSettings): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setParagraphSpacing*(self: LabelSettings; spacing: Float): void =
+  expandMethodBind(className LabelSettings, "set_paragraph_spacing", 373806689)
+  methodbind.ptrcall(self, [getPtr spacing])
+
+proc getParagraphSpacing*(self: LabelSettings): Float =
+  expandMethodBind(className LabelSettings, "get_paragraph_spacing", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setFont*(self: LabelSettings; font: gdref Font): void =
   expandMethodBind(className LabelSettings, "set_font", 1262170328)
   methodbind.ptrcall(self, [getPtr font])
@@ -96,6 +106,9 @@ proc getShadowOffset*(self: LabelSettings): Vector2 =
 
 template lineSpacing*(self: LabelSettings): untyped = self.getLineSpacing()
 template `lineSpacing=`*(self: LabelSettings; value) = self.setLineSpacing(value)
+
+template paragraphSpacing*(self: LabelSettings): untyped = self.getParagraphSpacing()
+template `paragraphSpacing=`*(self: LabelSettings; value) = self.setParagraphSpacing(value)
 
 template font*(self: LabelSettings): untyped = self.getFont()
 template `font=`*(self: LabelSettings; value) = self.setFont(value)

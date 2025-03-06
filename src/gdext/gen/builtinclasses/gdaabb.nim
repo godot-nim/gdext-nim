@@ -94,8 +94,8 @@ proc expand*(self: AABB; toPoint: Vector3): AABB =
 proc grow*(self: AABB; by: Float): AABB =
   let argArr = [getPtr by]
   `grow(AABB Float)`(addr self, addr argArr[0], addr result, 1)
-proc getSupport*(self: AABB; dir: Vector3): Vector3 =
-  let argArr = [getPtr dir]
+proc getSupport*(self: AABB; direction: Vector3): Vector3 =
+  let argArr = [getPtr direction]
   `getSupport(AABB Vector3)`(addr self, addr argArr[0], addr result, 1)
 proc getLongestAxis*(self: AABB): Vector3 =
   `getLongestAxis(AABB)`(addr self, nil, addr result, 0)

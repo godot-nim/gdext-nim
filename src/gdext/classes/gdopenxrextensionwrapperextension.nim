@@ -34,6 +34,11 @@ proc setHandJointLocationsAndGetNextPointer(p_instance: ClassInstancePtr; p_args
   errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setHandJointLocationsAndGetNextPointer(p_args[0].decode(int32), p_args[1].decode(pointer)).encode(r_ret)
 template setHandJointLocationsAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setHandJointLocationsAndGetNextPointer
 
+method setProjectionViewsAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; viewIndex: int32; nextPointer: pointer): uint64 {.base.} = (discard)
+proc setProjectionViewsAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setProjectionViewsAndGetNextPointer(p_args[0].decode(int32), p_args[1].decode(pointer)).encode(r_ret)
+template setProjectionViewsAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setProjectionViewsAndGetNextPointer
+
 method getCompositionLayerCount*(self: OpenXRExtensionWrapperExtension): int32 {.base.} = (discard)
 proc getCompositionLayerCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[OpenXRExtensionWrapperExtension](p_instance).getCompositionLayerCount().encode(r_ret)
@@ -93,6 +98,16 @@ method onMainSwapchainsCreated*(self: OpenXRExtensionWrapperExtension): void {.b
 proc onMainSwapchainsCreated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onMainSwapchainsCreated()
 template onMainSwapchainsCreated_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onMainSwapchainsCreated
+
+method onPreDrawViewport*(self: OpenXRExtensionWrapperExtension; viewport: RID): void {.base.} = (discard)
+proc onPreDrawViewport(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onPreDrawViewport(p_args[0].decode(RID))
+template onPreDrawViewport_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onPreDrawViewport
+
+method onPostDrawViewport*(self: OpenXRExtensionWrapperExtension; viewport: RID): void {.base.} = (discard)
+proc onPostDrawViewport(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onPostDrawViewport(p_args[0].decode(RID))
+template onPostDrawViewport_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onPostDrawViewport
 
 method onSessionDestroyed*(self: OpenXRExtensionWrapperExtension): void {.base.} = (discard)
 proc onSessionDestroyed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -164,6 +179,11 @@ proc onViewportCompositionLayerDestroyed(p_instance: ClassInstancePtr; p_args: p
   errproof: cast[OpenXRExtensionWrapperExtension](p_instance).onViewportCompositionLayerDestroyed(p_args[0].decode(pointer))
 template onViewportCompositionLayerDestroyed_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = onViewportCompositionLayerDestroyed
 
+method setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapperExtension; propertyValues: Dictionary; nextPointer: pointer): uint64 {.base.} = (discard)
+proc setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[OpenXRExtensionWrapperExtension](p_instance).setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(Dictionary), p_args[1].decode(pointer)).encode(r_ret)
+template setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer_bind*(_: typedesc[OpenXRExtensionWrapperExtension]): ClassCallVirtual = setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer
+
 proc getOpenxrApi*(self: OpenXRExtensionWrapperExtension): gdref OpenXRAPIExtension =
   expandMethodBind(className OpenXRExtensionWrapperExtension, "get_openxr_api", 1637791613)
   var ret: encoded gdref OpenXRAPIExtension
@@ -182,6 +202,7 @@ const OpenXRExtensionWrapperExtension_vmap =
     "setsessioncreateandgetnextpointer" : "_set_session_create_and_get_next_pointer",
     "setswapchaincreateinfoandgetnextpointer" : "_set_swapchain_create_info_and_get_next_pointer",
     "sethandjointlocationsandgetnextpointer" : "_set_hand_joint_locations_and_get_next_pointer",
+    "setprojectionviewsandgetnextpointer" : "_set_projection_views_and_get_next_pointer",
     "getcompositionlayercount" : "_get_composition_layer_count",
     "getcompositionlayer" : "_get_composition_layer",
     "getcompositionlayerorder" : "_get_composition_layer_order",
@@ -194,6 +215,8 @@ const OpenXRExtensionWrapperExtension_vmap =
     "onprocess" : "_on_process",
     "onprerender" : "_on_pre_render",
     "onmainswapchainscreated" : "_on_main_swapchains_created",
+    "onpredrawviewport" : "_on_pre_draw_viewport",
+    "onpostdrawviewport" : "_on_post_draw_viewport",
     "onsessiondestroyed" : "_on_session_destroyed",
     "onstateidle" : "_on_state_idle",
     "onstateready" : "_on_state_ready",
@@ -208,5 +231,6 @@ const OpenXRExtensionWrapperExtension_vmap =
     "getviewportcompositionlayerextensionproperties" : "_get_viewport_composition_layer_extension_properties",
     "getviewportcompositionlayerextensionpropertydefaults" : "_get_viewport_composition_layer_extension_property_defaults",
     "onviewportcompositionlayerdestroyed" : "_on_viewport_composition_layer_destroyed",
+    "setandroidsurfaceswapchaincreateinfoandgetnextpointer" : "_set_android_surface_swapchain_create_info_and_get_next_pointer",
     }
 template vmap*(_: typedesc[OpenXRExtensionWrapperExtension]): Table[string, string] = OpenXRExtensionWrapperExtension_vmap

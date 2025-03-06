@@ -106,6 +106,18 @@ proc getMeshes*(self: CSGShape3D): Array =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array)
 
+proc bakeStaticMesh*(self: CSGShape3D): gdref ArrayMesh =
+  expandMethodBind(className CSGShape3D, "bake_static_mesh", 1605880883)
+  var ret: encoded gdref ArrayMesh
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref ArrayMesh)
+
+proc bakeCollisionShape*(self: CSGShape3D): gdref ConcavePolygonShape3D =
+  expandMethodBind(className CSGShape3D, "bake_collision_shape", 36102322)
+  var ret: encoded gdref ConcavePolygonShape3D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref ConcavePolygonShape3D)
+
 template operation*(self: CSGShape3D): untyped = self.getOperation()
 template `operation=`*(self: CSGShape3D; value) = self.setOperation(value)
 

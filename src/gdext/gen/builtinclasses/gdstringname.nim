@@ -251,6 +251,8 @@ var `cUnescape(StringName)`: PtrBuiltinMethod
 var `jsonEscape(StringName)`: PtrBuiltinMethod
 var `validateNodeName(StringName)`: PtrBuiltinMethod
 var `validateFilename(StringName)`: PtrBuiltinMethod
+var `isValidAsciiIdentifier(StringName)`: PtrBuiltinMethod
+var `isValidUnicodeIdentifier(StringName)`: PtrBuiltinMethod
 var `isValidIdentifier(StringName)`: PtrBuiltinMethod
 var `isValidInt(StringName)`: PtrBuiltinMethod
 var `isValidFloat(StringName)`: PtrBuiltinMethod
@@ -471,6 +473,10 @@ proc validateNodeName*(self: StringName): String =
   `validateNodeName(StringName)`(addr self, nil, addr result, 0)
 proc validateFilename*(self: StringName): String =
   `validateFilename(StringName)`(addr self, nil, addr result, 0)
+proc isValidAsciiIdentifier*(self: StringName): bool =
+  `isValidAsciiIdentifier(StringName)`(addr self, nil, addr result, 0)
+proc isValidUnicodeIdentifier*(self: StringName): bool =
+  `isValidUnicodeIdentifier(StringName)`(addr self, nil, addr result, 0)
 proc isValidIdentifier*(self: StringName): bool =
   `isValidIdentifier(StringName)`(addr self, nil, addr result, 0)
 proc isValidInt*(self: StringName): bool =
@@ -604,6 +610,8 @@ proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinc
   `jsonEscape(StringName)` = load(VariantType_StringName, "json_escape", 3942272618)
   `validateNodeName(StringName)` = load(VariantType_StringName, "validate_node_name", 3942272618)
   `validateFilename(StringName)` = load(VariantType_StringName, "validate_filename", 3942272618)
+  `isValidAsciiIdentifier(StringName)` = load(VariantType_StringName, "is_valid_ascii_identifier", 3918633141)
+  `isValidUnicodeIdentifier(StringName)` = load(VariantType_StringName, "is_valid_unicode_identifier", 3918633141)
   `isValidIdentifier(StringName)` = load(VariantType_StringName, "is_valid_identifier", 3918633141)
   `isValidInt(StringName)` = load(VariantType_StringName, "is_valid_int", 3918633141)
   `isValidFloat(StringName)` = load(VariantType_StringName, "is_valid_float", 3918633141)

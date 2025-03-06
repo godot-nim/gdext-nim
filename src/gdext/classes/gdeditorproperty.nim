@@ -34,6 +34,26 @@ proc isReadOnly*(self: EditorProperty): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setDrawLabel*(self: EditorProperty; drawLabel: bool): void =
+  expandMethodBind(className EditorProperty, "set_draw_label", 2586408642)
+  methodbind.ptrcall(self, [getPtr drawLabel])
+
+proc isDrawLabel*(self: EditorProperty): bool =
+  expandMethodBind(className EditorProperty, "is_draw_label", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setDrawBackground*(self: EditorProperty; drawBackground: bool): void =
+  expandMethodBind(className EditorProperty, "set_draw_background", 2586408642)
+  methodbind.ptrcall(self, [getPtr drawBackground])
+
+proc isDrawBackground*(self: EditorProperty): bool =
+  expandMethodBind(className EditorProperty, "is_draw_background", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setCheckable*(self: EditorProperty; checkable: bool): void =
   expandMethodBind(className EditorProperty, "set_checkable", 2586408642)
   methodbind.ptrcall(self, [getPtr checkable])
@@ -108,8 +128,60 @@ proc setBottomEditor*(self: EditorProperty; editor: Control): void =
   expandMethodBind(className EditorProperty, "set_bottom_editor", 1496901182)
   methodbind.ptrcall(self, [getPtr editor])
 
+proc setSelectable*(self: EditorProperty; selectable: bool): void =
+  expandMethodBind(className EditorProperty, "set_selectable", 2586408642)
+  methodbind.ptrcall(self, [getPtr selectable])
+
+proc isSelectable*(self: EditorProperty): bool =
+  expandMethodBind(className EditorProperty, "is_selectable", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setUseFolding*(self: EditorProperty; useFolding: bool): void =
+  expandMethodBind(className EditorProperty, "set_use_folding", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFolding])
+
+proc isUsingFolding*(self: EditorProperty): bool =
+  expandMethodBind(className EditorProperty, "is_using_folding", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setNameSplitRatio*(self: EditorProperty; ratio: Float): void =
+  expandMethodBind(className EditorProperty, "set_name_split_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio])
+
+proc getNameSplitRatio*(self: EditorProperty): Float =
+  expandMethodBind(className EditorProperty, "get_name_split_ratio", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc deselect*(self: EditorProperty): void =
+  expandMethodBind(className EditorProperty, "deselect", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc isSelected*(self: EditorProperty): bool =
+  expandMethodBind(className EditorProperty, "is_selected", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc select*(self: EditorProperty; focusable: int32 = -1): void =
+  expandMethodBind(className EditorProperty, "select", 1025054187)
+  methodbind.ptrcall(self, [getPtr focusable])
+
+proc setObjectAndProperty*(self: EditorProperty; `object`: Object; property: StringName): void =
+  expandMethodBind(className EditorProperty, "set_object_and_property", 4157606280)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr property])
+
+proc setLabelReference*(self: EditorProperty; control: Control): void =
+  expandMethodBind(className EditorProperty, "set_label_reference", 1496901182)
+  methodbind.ptrcall(self, [getPtr control])
+
 proc emitChanged*(self: EditorProperty; property: StringName; value: Variant; field: StringName = stringName ""; changing: bool = false): void =
-  expandMethodBind(className EditorProperty, "emit_changed", 3069422438)
+  expandMethodBind(className EditorProperty, "emit_changed", 1822500399)
   methodbind.ptrcall(self, [getPtr property, getPtr value, getPtr field, getPtr changing])
 
 template label*(self: EditorProperty): untyped = self.getLabel()
@@ -117,6 +189,12 @@ template `label=`*(self: EditorProperty; value) = self.setLabel(value)
 
 template readOnly*(self: EditorProperty): untyped = self.isReadOnly()
 template `readOnly=`*(self: EditorProperty; value) = self.setReadOnly(value)
+
+template drawLabel*(self: EditorProperty): untyped = self.isDrawLabel()
+template `drawLabel=`*(self: EditorProperty; value) = self.setDrawLabel(value)
+
+template drawBackground*(self: EditorProperty): untyped = self.isDrawBackground()
+template `drawBackground=`*(self: EditorProperty; value) = self.setDrawBackground(value)
 
 template checkable*(self: EditorProperty): untyped = self.isCheckable()
 template `checkable=`*(self: EditorProperty; value) = self.setCheckable(value)
@@ -132,6 +210,15 @@ template `keying=`*(self: EditorProperty; value) = self.setKeying(value)
 
 template deletable*(self: EditorProperty): untyped = self.isDeletable()
 template `deletable=`*(self: EditorProperty; value) = self.setDeletable(value)
+
+template selectable*(self: EditorProperty): untyped = self.isSelectable()
+template `selectable=`*(self: EditorProperty; value) = self.setSelectable(value)
+
+template useFolding*(self: EditorProperty): untyped = self.isUsingFolding()
+template `useFolding=`*(self: EditorProperty; value) = self.setUseFolding(value)
+
+template nameSplitRatio*(self: EditorProperty): untyped = self.getNameSplitRatio()
+template `nameSplitRatio=`*(self: EditorProperty; value) = self.setNameSplitRatio(value)
 
 const EditorProperty_vmap =
   Container.vmap.concat toTable {
@@ -180,6 +267,13 @@ proc propertyChecked*(self: EditorProperty; property: Variant; checked: Variant)
   once:
     signalname = variant stringname("property_checked")
   let args = [property, checked]
+  self.emitSignal(signalname, args)
+
+proc propertyFavorited*(self: EditorProperty; property: Variant; favorited: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("property_favorited")
+  let args = [property, favorited]
   self.emitSignal(signalname, args)
 
 proc propertyPinned*(self: EditorProperty; property: Variant; pinned: Variant): Error =

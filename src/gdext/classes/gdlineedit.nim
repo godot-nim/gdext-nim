@@ -4,6 +4,20 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+proc hasImeText*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "has_ime_text", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc cancelIme*(self: LineEdit): void =
+  expandMethodBind(className LineEdit, "cancel_ime", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc applyIme*(self: LineEdit): void =
+  expandMethodBind(className LineEdit, "apply_ime", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc setHorizontalAlignment*(self: LineEdit; alignment: HorizontalAlignment): void =
   expandMethodBind(className LineEdit, "set_horizontal_alignment", 2312603777)
   methodbind.ptrcall(self, [getPtr alignment])
@@ -13,6 +27,30 @@ proc getHorizontalAlignment*(self: LineEdit): HorizontalAlignment =
   var ret: encoded HorizontalAlignment
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(HorizontalAlignment)
+
+proc edit*(self: LineEdit): void =
+  expandMethodBind(className LineEdit, "edit", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc unedit*(self: LineEdit): void =
+  expandMethodBind(className LineEdit, "unedit", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc isEditing*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "is_editing", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setKeepEditingOnTextSubmit*(self: LineEdit; enable: bool): void =
+  expandMethodBind(className LineEdit, "set_keep_editing_on_text_submit", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isEditingKeptOnTextSubmit*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "is_editing_kept_on_text_submit", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc clear*(self: LineEdit): void =
   expandMethodBind(className LineEdit, "clear", 3218959716)
@@ -29,6 +67,18 @@ proc selectAll*(self: LineEdit): void =
 proc deselect*(self: LineEdit): void =
   expandMethodBind(className LineEdit, "deselect", 3218959716)
   methodbind.ptrcall(self, [])
+
+proc hasUndo*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "has_undo", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasRedo*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "has_redo", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc hasSelection*(self: LineEdit): bool =
   expandMethodBind(className LineEdit, "has_selection", 36873697)
@@ -268,6 +318,16 @@ proc isContextMenuEnabled*(self: LineEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setEmojiMenuEnabled*(self: LineEdit; enable: bool): void =
+  expandMethodBind(className LineEdit, "set_emoji_menu_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isEmojiMenuEnabled*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "is_emoji_menu_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setVirtualKeyboardEnabled*(self: LineEdit; enable: bool): void =
   expandMethodBind(className LineEdit, "set_virtual_keyboard_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -393,11 +453,17 @@ template `maxLength=`*(self: LineEdit; value) = self.setMaxLength(value)
 template editable*(self: LineEdit): untyped = self.isEditable()
 template `editable=`*(self: LineEdit; value) = self.setEditable(value)
 
+template keepEditingOnTextSubmit*(self: LineEdit): untyped = self.isEditingKeptOnTextSubmit()
+template `keepEditingOnTextSubmit=`*(self: LineEdit; value) = self.setKeepEditingOnTextSubmit(value)
+
 template expandToTextLength*(self: LineEdit): untyped = self.isExpandToTextLengthEnabled()
 template `expandToTextLength=`*(self: LineEdit; value) = self.setExpandToTextLengthEnabled(value)
 
 template contextMenuEnabled*(self: LineEdit): untyped = self.isContextMenuEnabled()
 template `contextMenuEnabled=`*(self: LineEdit; value) = self.setContextMenuEnabled(value)
+
+template emojiMenuEnabled*(self: LineEdit): untyped = self.isEmojiMenuEnabled()
+template `emojiMenuEnabled=`*(self: LineEdit; value) = self.setEmojiMenuEnabled(value)
 
 template virtualKeyboardEnabled*(self: LineEdit): untyped = self.isVirtualKeyboardEnabled()
 template `virtualKeyboardEnabled=`*(self: LineEdit; value) = self.setVirtualKeyboardEnabled(value)
@@ -491,4 +557,11 @@ proc textSubmitted*(self: LineEdit; newText: Variant): Error =
   once:
     signalname = variant stringname("text_submitted")
   let args = [newText]
+  self.emitSignal(signalname, args)
+
+proc editingToggled*(self: LineEdit; toggledOn: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("editing_toggled")
+  let args = [toggledOn]
   self.emitSignal(signalname, args)

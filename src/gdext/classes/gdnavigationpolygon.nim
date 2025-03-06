@@ -96,6 +96,16 @@ proc getBorderSize*(self: NavigationPolygon): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setSamplePartitionType*(self: NavigationPolygon; samplePartitionType: NavigationPolygon_SamplePartitionType): void =
+  expandMethodBind(className NavigationPolygon, "set_sample_partition_type", 2441478482)
+  methodbind.ptrcall(self, [getPtr samplePartitionType])
+
+proc getSamplePartitionType*(self: NavigationPolygon): NavigationPolygon_SamplePartitionType =
+  expandMethodBind(className NavigationPolygon, "get_sample_partition_type", 3887422851)
+  var ret: encoded NavigationPolygon_SamplePartitionType
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(NavigationPolygon_SamplePartitionType)
+
 proc setParsedGeometryType*(self: NavigationPolygon; geometryType: NavigationPolygon_ParsedGeometryType): void =
   expandMethodBind(className NavigationPolygon, "set_parsed_geometry_type", 2507971764)
   methodbind.ptrcall(self, [getPtr geometryType])
@@ -188,6 +198,9 @@ template `polygons=`*(self: NavigationPolygon; value) = self.setPolygons(value)
 
 template outlines*(self: NavigationPolygon): untyped = self.getOutlines()
 template `outlines=`*(self: NavigationPolygon; value) = self.setOutlines(value)
+
+template samplePartitionType*(self: NavigationPolygon): untyped = self.getSamplePartitionType()
+template `samplePartitionType=`*(self: NavigationPolygon; value) = self.setSamplePartitionType(value)
 
 template parsedGeometryType*(self: NavigationPolygon): untyped = self.getParsedGeometryType()
 template `parsedGeometryType=`*(self: NavigationPolygon; value) = self.setParsedGeometryType(value)

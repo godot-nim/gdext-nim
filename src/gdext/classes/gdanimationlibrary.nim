@@ -36,6 +36,12 @@ proc getAnimationList*(self: AnimationLibrary): TypedArray[StringName] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
 
+proc getAnimationListSize*(self: AnimationLibrary): int32 =
+  expandMethodBind(className AnimationLibrary, "get_animation_list_size", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 const AnimationLibrary_vmap =
   Resource.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[AnimationLibrary]): Table[string, string] = AnimationLibrary_vmap

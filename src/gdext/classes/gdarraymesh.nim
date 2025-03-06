@@ -46,6 +46,10 @@ proc clearSurfaces*(self: ArrayMesh): void =
   expandMethodBind(className ArrayMesh, "clear_surfaces", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc surfaceRemove*(self: ArrayMesh; surfIdx: int32): void =
+  expandMethodBind(className ArrayMesh, "surface_remove", 1286410249)
+  methodbind.ptrcall(self, [getPtr surfIdx])
+
 proc surfaceUpdateVertexRegion*(self: ArrayMesh; surfIdx: int32; offset: int32; data: PackedByteArray): void =
   expandMethodBind(className ArrayMesh, "surface_update_vertex_region", 3837166854)
   methodbind.ptrcall(self, [getPtr surfIdx, getPtr offset, getPtr data])

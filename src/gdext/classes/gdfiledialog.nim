@@ -22,6 +22,20 @@ proc getFilters*(self: FileDialog): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
+proc clearFilenameFilter*(self: FileDialog): void =
+  expandMethodBind(className FileDialog, "clear_filename_filter", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc setFilenameFilter*(self: FileDialog; filter: String): void =
+  expandMethodBind(className FileDialog, "set_filename_filter", 83702148)
+  methodbind.ptrcall(self, [getPtr filter])
+
+proc getFilenameFilter*(self: FileDialog): String =
+  expandMethodBind(className FileDialog, "get_filename_filter", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc getOptionName*(self: FileDialog; option: int32): String =
   expandMethodBind(className FileDialog, "get_option_name", 844755477)
   var ret: encoded String
@@ -197,6 +211,9 @@ template `rootSubfolder=`*(self: FileDialog; value) = self.setRootSubfolder(valu
 template filters*(self: FileDialog): untyped = self.getFilters()
 template `filters=`*(self: FileDialog; value) = self.setFilters(value)
 
+template filenameFilter*(self: FileDialog): untyped = self.getFilenameFilter()
+template `filenameFilter=`*(self: FileDialog; value) = self.setFilenameFilter(value)
+
 template optionCount*(self: FileDialog): untyped = self.getOptionCount()
 template `optionCount=`*(self: FileDialog; value) = self.setOptionCount(value)
 
@@ -238,4 +255,11 @@ proc dirSelected*(self: FileDialog; dir: Variant): Error =
   once:
     signalname = variant stringname("dir_selected")
   let args = [dir]
+  self.emitSignal(signalname, args)
+
+proc filenameFilterChanged*(self: FileDialog; filter: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("filename_filter_changed")
+  let args = [filter]
   self.emitSignal(signalname, args)

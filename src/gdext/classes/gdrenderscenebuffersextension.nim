@@ -19,6 +19,11 @@ proc setTextureMipmapBias(p_instance: ClassInstancePtr; p_args: ptr UncheckedArr
   errproof: cast[RenderSceneBuffersExtension](p_instance).setTextureMipmapBias(p_args[0].decode(Float))
 template setTextureMipmapBias_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setTextureMipmapBias
 
+method setAnisotropicFilteringLevel*(self: RenderSceneBuffersExtension; anisotropicFilteringLevel: int32): void {.base.} = (discard)
+proc setAnisotropicFilteringLevel(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[RenderSceneBuffersExtension](p_instance).setAnisotropicFilteringLevel(p_args[0].decode(int32))
+template setAnisotropicFilteringLevel_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setAnisotropicFilteringLevel
+
 method setUseDebanding*(self: RenderSceneBuffersExtension; useDebanding: bool): void {.base.} = (discard)
 proc setUseDebanding(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[RenderSceneBuffersExtension](p_instance).setUseDebanding(p_args[0].decode(bool))
@@ -29,6 +34,7 @@ const RenderSceneBuffersExtension_vmap =
     "configure" : "_configure",
     "setfsrsharpness" : "_set_fsr_sharpness",
     "settexturemipmapbias" : "_set_texture_mipmap_bias",
+    "setanisotropicfilteringlevel" : "_set_anisotropic_filtering_level",
     "setusedebanding" : "_set_use_debanding",
     }
 template vmap*(_: typedesc[RenderSceneBuffersExtension]): Table[string, string] = RenderSceneBuffersExtension_vmap

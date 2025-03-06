@@ -164,6 +164,26 @@ proc getInterpToEnd*(self: GPUParticles3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setUseFixedSeed*(self: GPUParticles3D; useFixedSeed: bool): void =
+  expandMethodBind(className GPUParticles3D, "set_use_fixed_seed", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFixedSeed])
+
+proc getUseFixedSeed*(self: GPUParticles3D): bool =
+  expandMethodBind(className GPUParticles3D, "get_use_fixed_seed", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setSeed*(self: GPUParticles3D; seed: uint32): void =
+  expandMethodBind(className GPUParticles3D, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed])
+
+proc getSeed*(self: GPUParticles3D): uint32 =
+  expandMethodBind(className GPUParticles3D, "get_seed", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc setDrawOrder*(self: GPUParticles3D; order: GPUParticles3D_DrawOrder): void =
   expandMethodBind(className GPUParticles3D, "set_draw_order", 1208074815)
   methodbind.ptrcall(self, [getPtr order])
@@ -204,9 +224,9 @@ proc getSkin*(self: GPUParticles3D): gdref Skin =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Skin)
 
-proc restart*(self: GPUParticles3D): void =
-  expandMethodBind(className GPUParticles3D, "restart", 3218959716)
-  methodbind.ptrcall(self, [])
+proc restart*(self: GPUParticles3D; keepSeed: bool = false): void =
+  expandMethodBind(className GPUParticles3D, "restart", 107499316)
+  methodbind.ptrcall(self, [getPtr keepSeed])
 
 proc captureAabb*(self: GPUParticles3D): AABB =
   expandMethodBind(className GPUParticles3D, "capture_aabb", 1068685055)
@@ -272,6 +292,10 @@ proc getAmountRatio*(self: GPUParticles3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc requestParticlesProcess*(self: GPUParticles3D; processTime: Float): void =
+  expandMethodBind(className GPUParticles3D, "request_particles_process", 373806689)
+  methodbind.ptrcall(self, [getPtr processTime])
+
 template emitting*(self: GPUParticles3D): untyped = self.isEmitting()
 template `emitting=`*(self: GPUParticles3D; value) = self.setEmitting(value)
 
@@ -304,6 +328,12 @@ template `explosiveness=`*(self: GPUParticles3D; value) = self.setExplosivenessR
 
 template randomness*(self: GPUParticles3D): untyped = self.getRandomnessRatio()
 template `randomness=`*(self: GPUParticles3D; value) = self.setRandomnessRatio(value)
+
+template useFixedSeed*(self: GPUParticles3D): untyped = self.getUseFixedSeed()
+template `useFixedSeed=`*(self: GPUParticles3D; value) = self.setUseFixedSeed(value)
+
+template seed*(self: GPUParticles3D): untyped = self.getSeed()
+template `seed=`*(self: GPUParticles3D; value) = self.setSeed(value)
 
 template fixedFps*(self: GPUParticles3D): untyped = self.getFixedFps()
 template `fixedFps=`*(self: GPUParticles3D; value) = self.setFixedFps(value)

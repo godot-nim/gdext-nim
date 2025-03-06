@@ -22,6 +22,18 @@ proc createCallback*(self: JavaScriptBridge; callable: Callable): gdref JavaScri
   methodbind.ptrcall(self, [getPtr callable], addr ret)
   (addr ret).decode_result(gdref JavaScriptObject)
 
+proc isJsBuffer*(self: JavaScriptBridge; javascriptObject: gdref JavaScriptObject): bool =
+  expandMethodBind(className JavaScriptBridge, "is_js_buffer", 821968997)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr javascriptObject], addr ret)
+  (addr ret).decode_result(bool)
+
+proc jsBufferToPackedByteArray*(self: JavaScriptBridge; javascriptBuffer: gdref JavaScriptObject): PackedByteArray =
+  expandMethodBind(className JavaScriptBridge, "js_buffer_to_packed_byte_array", 64409880)
+  var ret: encoded PackedByteArray
+  methodbind.ptrcall(self, [getPtr javascriptBuffer], addr ret)
+  (addr ret).decode_result(PackedByteArray)
+
 proc createObject*(self: JavaScriptBridge; `object`: Variant; args: varargs[Variant]): Variant =
   expandMethodBind(className JavaScriptBridge, "create_object", 3093893586)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)

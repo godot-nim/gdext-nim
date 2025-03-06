@@ -10,10 +10,10 @@ proc open*(_: typedesc[FileAccess]; path: String; flags: FileAccess_ModeFlags): 
   methodbind.ptrcall([getPtr path, getPtr flags], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
-proc openEncrypted*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; key: PackedByteArray): gdref FileAccess =
-  expandMethodBind(className FileAccess, "open_encrypted", 1482131466)
+proc openEncrypted*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; key: PackedByteArray; iv: PackedByteArray = PackedByteArray()): gdref FileAccess =
+  expandMethodBind(className FileAccess, "open_encrypted", 788003459)
   var ret: encoded gdref FileAccess
-  methodbind.ptrcall([getPtr path, getPtr modeFlags, getPtr key], addr ret)
+  methodbind.ptrcall([getPtr path, getPtr modeFlags, getPtr key, getPtr iv], addr ret)
   (addr ret).decode_result(gdref FileAccess)
 
 proc openEncryptedWithPass*(_: typedesc[FileAccess]; path: String; modeFlags: FileAccess_ModeFlags; pass: String): gdref FileAccess =
@@ -33,6 +33,12 @@ proc getOpenError*(_: typedesc[FileAccess]): Error =
   var ret: encoded Error
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(Error)
+
+proc createTemp*(_: typedesc[FileAccess]; modeFlags: int32; prefix: String = gdstring""; extension: String = gdstring""; keep: bool = false): gdref FileAccess =
+  expandMethodBind(className FileAccess, "create_temp", 3075606245)
+  var ret: encoded gdref FileAccess
+  methodbind.ptrcall([getPtr modeFlags, getPtr prefix, getPtr extension, getPtr keep], addr ret)
+  (addr ret).decode_result(gdref FileAccess)
 
 proc getFileAsBytes*(_: typedesc[FileAccess]; path: String): PackedByteArray =
   expandMethodBind(className FileAccess, "get_file_as_bytes", 659035735)
@@ -124,6 +130,12 @@ proc get64*(self: FileAccess): uint64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
 
+proc getHalf*(self: FileAccess): Float =
+  expandMethodBind(className FileAccess, "get_half", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getFloat*(self: FileAccess): Float =
   expandMethodBind(className FileAccess, "get_float", 1740695150)
   var ret: encoded Float
@@ -200,57 +212,89 @@ proc getVar*(self: FileAccess; allowObjects: bool = false): Variant =
   methodbind.ptrcall(self, [getPtr allowObjects], addr ret)
   (addr ret).decode_result(Variant)
 
-proc store8*(self: FileAccess; value: uint8): void =
-  expandMethodBind(className FileAccess, "store_8", 1286410249)
-  methodbind.ptrcall(self, [getPtr value])
+proc store8*(self: FileAccess; value: uint8): bool =
+  expandMethodBind(className FileAccess, "store_8", 3067735520)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc store16*(self: FileAccess; value: uint16): void =
-  expandMethodBind(className FileAccess, "store_16", 1286410249)
-  methodbind.ptrcall(self, [getPtr value])
+proc store16*(self: FileAccess; value: uint16): bool =
+  expandMethodBind(className FileAccess, "store_16", 3067735520)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc store32*(self: FileAccess; value: uint32): void =
-  expandMethodBind(className FileAccess, "store_32", 1286410249)
-  methodbind.ptrcall(self, [getPtr value])
+proc store32*(self: FileAccess; value: uint32): bool =
+  expandMethodBind(className FileAccess, "store_32", 3067735520)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc store64*(self: FileAccess; value: uint64): void =
-  expandMethodBind(className FileAccess, "store_64", 1286410249)
-  methodbind.ptrcall(self, [getPtr value])
+proc store64*(self: FileAccess; value: uint64): bool =
+  expandMethodBind(className FileAccess, "store_64", 3067735520)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeFloat*(self: FileAccess; value: Float): void =
-  expandMethodBind(className FileAccess, "store_float", 373806689)
-  methodbind.ptrcall(self, [getPtr value])
+proc storeHalf*(self: FileAccess; value: Float): bool =
+  expandMethodBind(className FileAccess, "store_half", 330693286)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeDouble*(self: FileAccess; value: float64): void =
-  expandMethodBind(className FileAccess, "store_double", 373806689)
-  methodbind.ptrcall(self, [getPtr value])
+proc storeFloat*(self: FileAccess; value: Float): bool =
+  expandMethodBind(className FileAccess, "store_float", 330693286)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeReal*(self: FileAccess; value: Float): void =
-  expandMethodBind(className FileAccess, "store_real", 373806689)
-  methodbind.ptrcall(self, [getPtr value])
+proc storeDouble*(self: FileAccess; value: float64): bool =
+  expandMethodBind(className FileAccess, "store_double", 330693286)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeBuffer*(self: FileAccess; buffer: PackedByteArray): void =
-  expandMethodBind(className FileAccess, "store_buffer", 2971499966)
-  methodbind.ptrcall(self, [getPtr buffer])
+proc storeReal*(self: FileAccess; value: Float): bool =
+  expandMethodBind(className FileAccess, "store_real", 330693286)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeLine*(self: FileAccess; line: String): void =
-  expandMethodBind(className FileAccess, "store_line", 83702148)
-  methodbind.ptrcall(self, [getPtr line])
+proc storeBuffer*(self: FileAccess; buffer: PackedByteArray): bool =
+  expandMethodBind(className FileAccess, "store_buffer", 114037665)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr buffer], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeCsvLine*(self: FileAccess; values: PackedStringArray; delim: String = gdstring","): void =
-  expandMethodBind(className FileAccess, "store_csv_line", 2173791505)
-  methodbind.ptrcall(self, [getPtr values, getPtr delim])
+proc storeLine*(self: FileAccess; line: String): bool =
+  expandMethodBind(className FileAccess, "store_line", 2323990056)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr line], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeString*(self: FileAccess; string: String): void =
-  expandMethodBind(className FileAccess, "store_string", 83702148)
-  methodbind.ptrcall(self, [getPtr string])
+proc storeCsvLine*(self: FileAccess; values: PackedStringArray; delim: String = gdstring","): bool =
+  expandMethodBind(className FileAccess, "store_csv_line", 1611473434)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr values, getPtr delim], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storeVar*(self: FileAccess; value: Variant; fullObjects: bool = false): void =
-  expandMethodBind(className FileAccess, "store_var", 738511890)
-  methodbind.ptrcall(self, [getPtr value, getPtr fullObjects])
+proc storeString*(self: FileAccess; string: String): bool =
+  expandMethodBind(className FileAccess, "store_string", 2323990056)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr string], addr ret)
+  (addr ret).decode_result(bool)
 
-proc storePascalString*(self: FileAccess; string: String): void =
-  expandMethodBind(className FileAccess, "store_pascal_string", 83702148)
-  methodbind.ptrcall(self, [getPtr string])
+proc storeVar*(self: FileAccess; value: Variant; fullObjects: bool = false): bool =
+  expandMethodBind(className FileAccess, "store_var", 117357437)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr value, getPtr fullObjects], addr ret)
+  (addr ret).decode_result(bool)
+
+proc storePascalString*(self: FileAccess; string: String): bool =
+  expandMethodBind(className FileAccess, "store_pascal_string", 2323990056)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr string], addr ret)
+  (addr ret).decode_result(bool)
 
 proc getPascalString*(self: FileAccess): String =
   expandMethodBind(className FileAccess, "get_pascal_string", 2841200299)

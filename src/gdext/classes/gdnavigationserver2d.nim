@@ -67,7 +67,7 @@ proc mapGetLinkConnectionRadius*(self: NavigationServer2D; map: RID): Float =
   (addr ret).decode_result(Float)
 
 proc mapGetPath*(self: NavigationServer2D; map: RID; origin: Vector2; destination: Vector2; optimize: bool; navigationLayers: uint32 = 1'u32): PackedVector2Array =
-  expandMethodBind(className NavigationServer2D, "map_get_path", 3146466012)
+  expandMethodBind(className NavigationServer2D, "map_get_path", 1279824844)
   var ret: encoded PackedVector2Array
   methodbind.ptrcall(self, [getPtr map, getPtr origin, getPtr destination, getPtr optimize, getPtr navigationLayers], addr ret)
   (addr ret).decode_result(PackedVector2Array)
@@ -118,15 +118,25 @@ proc mapGetIterationId*(self: NavigationServer2D; map: RID): uint32 =
   methodbind.ptrcall(self, [getPtr map], addr ret)
   (addr ret).decode_result(uint32)
 
+proc mapSetUseAsyncIterations*(self: NavigationServer2D; map: RID; enabled: bool): void =
+  expandMethodBind(className NavigationServer2D, "map_set_use_async_iterations", 1265174801)
+  methodbind.ptrcall(self, [getPtr map, getPtr enabled])
+
+proc mapGetUseAsyncIterations*(self: NavigationServer2D; map: RID): bool =
+  expandMethodBind(className NavigationServer2D, "map_get_use_async_iterations", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr map], addr ret)
+  (addr ret).decode_result(bool)
+
 proc mapGetRandomPoint*(self: NavigationServer2D; map: RID; navigationLayers: uint32; uniformly: bool): Vector2 =
   expandMethodBind(className NavigationServer2D, "map_get_random_point", 3271000763)
   var ret: encoded Vector2
   methodbind.ptrcall(self, [getPtr map, getPtr navigationLayers, getPtr uniformly], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc queryPath*(self: NavigationServer2D; parameters: gdref NavigationPathQueryParameters2D; retval: gdref NavigationPathQueryResult2D): void =
-  expandMethodBind(className NavigationServer2D, "query_path", 3394638789)
-  methodbind.ptrcall(self, [getPtr parameters, getPtr retval])
+proc queryPath*(self: NavigationServer2D; parameters: gdref NavigationPathQueryParameters2D; retval: gdref NavigationPathQueryResult2D; callback: Callable = callable()): void =
+  expandMethodBind(className NavigationServer2D, "query_path", 1254915886)
+  methodbind.ptrcall(self, [getPtr parameters, getPtr retval, getPtr callback])
 
 proc regionCreate*(self: NavigationServer2D): RID =
   expandMethodBind(className NavigationServer2D, "region_create", 529393457)
@@ -242,11 +252,23 @@ proc regionGetConnectionPathwayEnd*(self: NavigationServer2D; region: RID; conne
   methodbind.ptrcall(self, [getPtr region, getPtr connection], addr ret)
   (addr ret).decode_result(Vector2)
 
+proc regionGetClosestPoint*(self: NavigationServer2D; region: RID; toPoint: Vector2): Vector2 =
+  expandMethodBind(className NavigationServer2D, "region_get_closest_point", 1358334418)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [getPtr region, getPtr toPoint], addr ret)
+  (addr ret).decode_result(Vector2)
+
 proc regionGetRandomPoint*(self: NavigationServer2D; region: RID; navigationLayers: uint32; uniformly: bool): Vector2 =
   expandMethodBind(className NavigationServer2D, "region_get_random_point", 3271000763)
   var ret: encoded Vector2
   methodbind.ptrcall(self, [getPtr region, getPtr navigationLayers, getPtr uniformly], addr ret)
   (addr ret).decode_result(Vector2)
+
+proc regionGetBounds*(self: NavigationServer2D; region: RID): Rect2 =
+  expandMethodBind(className NavigationServer2D, "region_get_bounds", 1097232729)
+  var ret: encoded Rect2
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(Rect2)
 
 proc linkCreate*(self: NavigationServer2D): RID =
   expandMethodBind(className NavigationServer2D, "link_create", 529393457)
@@ -597,15 +619,15 @@ proc obstacleGetAvoidanceLayers*(self: NavigationServer2D; obstacle: RID): uint3
   (addr ret).decode_result(uint32)
 
 proc parseSourceGeometryData*(self: NavigationServer2D; navigationPolygon: gdref NavigationPolygon; sourceGeometryData: gdref NavigationMeshSourceGeometryData2D; rootNode: Node; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer2D, "parse_source_geometry_data", 1176164995)
+  expandMethodBind(className NavigationServer2D, "parse_source_geometry_data", 1766905497)
   methodbind.ptrcall(self, [getPtr navigationPolygon, getPtr sourceGeometryData, getPtr rootNode, getPtr callback])
 
 proc bakeFromSourceGeometryData*(self: NavigationServer2D; navigationPolygon: gdref NavigationPolygon; sourceGeometryData: gdref NavigationMeshSourceGeometryData2D; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer2D, "bake_from_source_geometry_data", 2909414286)
+  expandMethodBind(className NavigationServer2D, "bake_from_source_geometry_data", 2179660022)
   methodbind.ptrcall(self, [getPtr navigationPolygon, getPtr sourceGeometryData, getPtr callback])
 
 proc bakeFromSourceGeometryDataAsync*(self: NavigationServer2D; navigationPolygon: gdref NavigationPolygon; sourceGeometryData: gdref NavigationMeshSourceGeometryData2D; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer2D, "bake_from_source_geometry_data_async", 2909414286)
+  expandMethodBind(className NavigationServer2D, "bake_from_source_geometry_data_async", 2179660022)
   methodbind.ptrcall(self, [getPtr navigationPolygon, getPtr sourceGeometryData, getPtr callback])
 
 proc isBakingNavigationPolygon*(self: NavigationServer2D; navigationPolygon: gdref NavigationPolygon): bool =

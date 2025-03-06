@@ -12,6 +12,12 @@ proc switchToClip*(self: AudioStreamPlaybackInteractive; clipIndex: int32): void
   expandMethodBind(className AudioStreamPlaybackInteractive, "switch_to_clip", 1286410249)
   methodbind.ptrcall(self, [getPtr clipIndex])
 
+proc getCurrentClipIndex*(self: AudioStreamPlaybackInteractive): int32 =
+  expandMethodBind(className AudioStreamPlaybackInteractive, "get_current_clip_index", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 const AudioStreamPlaybackInteractive_vmap =
   AudioStreamPlayback.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[AudioStreamPlaybackInteractive]): Table[string, string] = AudioStreamPlaybackInteractive_vmap

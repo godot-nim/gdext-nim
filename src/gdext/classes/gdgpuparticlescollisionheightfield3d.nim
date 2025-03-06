@@ -34,6 +34,26 @@ proc getUpdateMode*(self: GPUParticlesCollisionHeightField3D): GPUParticlesColli
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GPUParticlesCollisionHeightField3D_UpdateMode)
 
+proc setHeightfieldMask*(self: GPUParticlesCollisionHeightField3D; heightfieldMask: uint32): void =
+  expandMethodBind(className GPUParticlesCollisionHeightField3D, "set_heightfield_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr heightfieldMask])
+
+proc getHeightfieldMask*(self: GPUParticlesCollisionHeightField3D): uint32 =
+  expandMethodBind(className GPUParticlesCollisionHeightField3D, "get_heightfield_mask", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
+proc setHeightfieldMaskValue*(self: GPUParticlesCollisionHeightField3D; layerNumber: int32; value: bool): void =
+  expandMethodBind(className GPUParticlesCollisionHeightField3D, "set_heightfield_mask_value", 300928843)
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
+
+proc getHeightfieldMaskValue*(self: GPUParticlesCollisionHeightField3D; layerNumber: int32): bool =
+  expandMethodBind(className GPUParticlesCollisionHeightField3D, "get_heightfield_mask_value", 1116898809)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setFollowCameraEnabled*(self: GPUParticlesCollisionHeightField3D; enabled: bool): void =
   expandMethodBind(className GPUParticlesCollisionHeightField3D, "set_follow_camera_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -55,6 +75,9 @@ template `updateMode=`*(self: GPUParticlesCollisionHeightField3D; value) = self.
 
 template followCameraEnabled*(self: GPUParticlesCollisionHeightField3D): untyped = self.isFollowCameraEnabled()
 template `followCameraEnabled=`*(self: GPUParticlesCollisionHeightField3D; value) = self.setFollowCameraEnabled(value)
+
+template heightfieldMask*(self: GPUParticlesCollisionHeightField3D): untyped = self.getHeightfieldMask()
+template `heightfieldMask=`*(self: GPUParticlesCollisionHeightField3D; value) = self.setHeightfieldMask(value)
 
 const GPUParticlesCollisionHeightField3D_vmap =
   GPUParticlesCollision3D.vmap.concat initTable[string, string]()

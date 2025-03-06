@@ -40,6 +40,12 @@ proc getGlobalCanvasTransform*(self: Viewport): Transform2D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform2D)
 
+proc getStretchTransform*(self: Viewport): Transform2D =
+  expandMethodBind(className Viewport, "get_stretch_transform", 3814499831)
+  var ret: encoded Transform2D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Transform2D)
+
 proc getFinalTransform*(self: Viewport): Transform2D =
   expandMethodBind(className Viewport, "get_final_transform", 3814499831)
   var ret: encoded Transform2D
@@ -208,6 +214,14 @@ proc pushUnhandledInput*(self: Viewport; event: gdref InputEvent; inLocalCoords:
   expandMethodBind(className Viewport, "push_unhandled_input", 3644664830)
   methodbind.ptrcall(self, [getPtr event, getPtr inLocalCoords])
 
+proc notifyMouseEntered*(self: Viewport): void =
+  expandMethodBind(className Viewport, "notify_mouse_entered", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc notifyMouseExited*(self: Viewport): void =
+  expandMethodBind(className Viewport, "notify_mouse_exited", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc getMousePosition*(self: Viewport): Vector2 =
   expandMethodBind(className Viewport, "get_mouse_position", 3341600327)
   var ret: encoded Vector2
@@ -220,6 +234,10 @@ proc warpMouse*(self: Viewport; position: Vector2): void =
 
 proc updateMouseCursorState*(self: Viewport): void =
   expandMethodBind(className Viewport, "update_mouse_cursor_state", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc guiCancelDrag*(self: Viewport): void =
+  expandMethodBind(className Viewport, "gui_cancel_drag", 3218959716)
   methodbind.ptrcall(self, [])
 
 proc guiGetDragData*(self: Viewport): Variant =
@@ -442,6 +460,12 @@ proc isAudioListener2D*(self: Viewport): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getAudioListener2D*(self: Viewport): AudioListener2D =
+  expandMethodBind(className Viewport, "get_audio_listener_2d", 1840977180)
+  var ret: encoded AudioListener2D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AudioListener2D)
+
 proc getCamera2D*(self: Viewport): Camera2D =
   expandMethodBind(className Viewport, "get_camera_2d", 3551466917)
   var ret: encoded Camera2D
@@ -473,6 +497,12 @@ proc isUsingOwnWorld3D*(self: Viewport): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
+
+proc getAudioListener3D*(self: Viewport): AudioListener3D =
+  expandMethodBind(className Viewport, "get_audio_listener_3d", 3472246991)
+  var ret: encoded AudioListener3D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AudioListener3D)
 
 proc getCamera3D*(self: Viewport): Camera3D =
   expandMethodBind(className Viewport, "get_camera_3d", 2285090890)
@@ -549,6 +579,16 @@ proc getTextureMipmapBias*(self: Viewport): Float =
   var ret: encoded Float
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
+
+proc setAnisotropicFilteringLevel*(self: Viewport; anisotropicFilteringLevel: Viewport_AnisotropicFiltering): void =
+  expandMethodBind(className Viewport, "set_anisotropic_filtering_level", 3445583046)
+  methodbind.ptrcall(self, [getPtr anisotropicFilteringLevel])
+
+proc getAnisotropicFilteringLevel*(self: Viewport): Viewport_AnisotropicFiltering =
+  expandMethodBind(className Viewport, "get_anisotropic_filtering_level", 3991528932)
+  var ret: encoded Viewport_AnisotropicFiltering
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Viewport_AnisotropicFiltering)
 
 proc setVrsMode*(self: Viewport; mode: Viewport_VRSMode): void =
   expandMethodBind(className Viewport, "set_vrs_mode", 2749867817)
@@ -642,6 +682,9 @@ template `scaling3DScale=`*(self: Viewport; value) = self.setScaling3DScale(valu
 
 template textureMipmapBias*(self: Viewport): untyped = self.getTextureMipmapBias()
 template `textureMipmapBias=`*(self: Viewport; value) = self.setTextureMipmapBias(value)
+
+template anisotropicFilteringLevel*(self: Viewport): untyped = self.getAnisotropicFilteringLevel()
+template `anisotropicFilteringLevel=`*(self: Viewport; value) = self.setAnisotropicFilteringLevel(value)
 
 template fsrSharpness*(self: Viewport): untyped = self.getFsrSharpness()
 template `fsrSharpness=`*(self: Viewport; value) = self.setFsrSharpness(value)

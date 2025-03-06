@@ -255,6 +255,8 @@ var `cUnescape(String)`: PtrBuiltinMethod
 var `jsonEscape(String)`: PtrBuiltinMethod
 var `validateNodeName(String)`: PtrBuiltinMethod
 var `validateFilename(String)`: PtrBuiltinMethod
+var `isValidAsciiIdentifier(String)`: PtrBuiltinMethod
+var `isValidUnicodeIdentifier(String)`: PtrBuiltinMethod
 var `isValidIdentifier(String)`: PtrBuiltinMethod
 var `isValidInt(String)`: PtrBuiltinMethod
 var `isValidFloat(String)`: PtrBuiltinMethod
@@ -482,6 +484,10 @@ proc validateNodeName*(self: String): String =
   `validateNodeName(String)`(addr self, nil, addr result, 0)
 proc validateFilename*(self: String): String =
   `validateFilename(String)`(addr self, nil, addr result, 0)
+proc isValidAsciiIdentifier*(self: String): bool =
+  `isValidAsciiIdentifier(String)`(addr self, nil, addr result, 0)
+proc isValidUnicodeIdentifier*(self: String): bool =
+  `isValidUnicodeIdentifier(String)`(addr self, nil, addr result, 0)
 proc isValidIdentifier*(self: String): bool =
   `isValidIdentifier(String)`(addr self, nil, addr result, 0)
 proc isValidInt*(self: String): bool =
@@ -632,6 +638,8 @@ proc load_String_methods {.execon: staticevents.init_engine.on_load_builtinclass
   `jsonEscape(String)` = load(VariantType_String, "json_escape", 3942272618)
   `validateNodeName(String)` = load(VariantType_String, "validate_node_name", 3942272618)
   `validateFilename(String)` = load(VariantType_String, "validate_filename", 3942272618)
+  `isValidAsciiIdentifier(String)` = load(VariantType_String, "is_valid_ascii_identifier", 3918633141)
+  `isValidUnicodeIdentifier(String)` = load(VariantType_String, "is_valid_unicode_identifier", 3918633141)
   `isValidIdentifier(String)` = load(VariantType_String, "is_valid_identifier", 3918633141)
   `isValidInt(String)` = load(VariantType_String, "is_valid_int", 3918633141)
   `isValidFloat(String)` = load(VariantType_String, "is_valid_float", 3918633141)

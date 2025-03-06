@@ -4,20 +4,20 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc createFromString*(_: typedesc[RegEx]; pattern: String): gdref RegEx =
-  expandMethodBind(className RegEx, "create_from_string", 2150300909)
+proc createFromString*(_: typedesc[RegEx]; pattern: String; showError: bool = true): gdref RegEx =
+  expandMethodBind(className RegEx, "create_from_string", 4249111514)
   var ret: encoded gdref RegEx
-  methodbind.ptrcall([getPtr pattern], addr ret)
+  methodbind.ptrcall([getPtr pattern, getPtr showError], addr ret)
   (addr ret).decode_result(gdref RegEx)
 
 proc clear*(self: RegEx): void =
   expandMethodBind(className RegEx, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc compile*(self: RegEx; pattern: String): Error =
-  expandMethodBind(className RegEx, "compile", 166001499)
+proc compile*(self: RegEx; pattern: String; showError: bool = true): Error =
+  expandMethodBind(className RegEx, "compile", 3565188097)
   var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr pattern], addr ret)
+  methodbind.ptrcall(self, [getPtr pattern, getPtr showError], addr ret)
   (addr ret).decode_result(Error)
 
 proc search*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1): gdref RegExMatch =

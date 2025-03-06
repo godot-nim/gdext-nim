@@ -4,6 +4,18 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+proc loadFromBuffer*(_: typedesc[AudioStreamMP3]; streamData: PackedByteArray): gdref AudioStreamMP3 =
+  expandMethodBind(className AudioStreamMP3, "load_from_buffer", 1674970313)
+  var ret: encoded gdref AudioStreamMP3
+  methodbind.ptrcall([getPtr streamData], addr ret)
+  (addr ret).decode_result(gdref AudioStreamMP3)
+
+proc loadFromFile*(_: typedesc[AudioStreamMP3]; path: String): gdref AudioStreamMP3 =
+  expandMethodBind(className AudioStreamMP3, "load_from_file", 4238362998)
+  var ret: encoded gdref AudioStreamMP3
+  methodbind.ptrcall([getPtr path], addr ret)
+  (addr ret).decode_result(gdref AudioStreamMP3)
+
 proc setData*(self: AudioStreamMP3; data: PackedByteArray): void =
   expandMethodBind(className AudioStreamMP3, "set_data", 2971499966)
   methodbind.ptrcall(self, [getPtr data])

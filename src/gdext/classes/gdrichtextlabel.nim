@@ -94,9 +94,9 @@ proc pushList*(self: RichTextLabel; level: int32; `type`: RichTextLabel_ListType
   expandMethodBind(className RichTextLabel, "push_list", 3017143144)
   methodbind.ptrcall(self, [getPtr level, getPtr `type`, getPtr capitalize, getPtr bullet])
 
-proc pushMeta*(self: RichTextLabel; data: Variant; underlineMode: RichTextLabel_MetaUnderline = metaUnderlineAlways): void =
-  expandMethodBind(className RichTextLabel, "push_meta", 2206155733)
-  methodbind.ptrcall(self, [getPtr data, getPtr underlineMode])
+proc pushMeta*(self: RichTextLabel; data: Variant; underlineMode: RichTextLabel_MetaUnderline = metaUnderlineAlways; tooltip: String = gdstring""): void =
+  expandMethodBind(className RichTextLabel, "push_meta", 3765356747)
+  methodbind.ptrcall(self, [getPtr data, getPtr underlineMode, getPtr tooltip])
 
 proc pushHint*(self: RichTextLabel; description: String): void =
   expandMethodBind(className RichTextLabel, "push_hint", 83702148)
@@ -122,9 +122,9 @@ proc pushDropcap*(self: RichTextLabel; string: String; font: gdref Font; size: i
   expandMethodBind(className RichTextLabel, "push_dropcap", 4061635501)
   methodbind.ptrcall(self, [getPtr string, getPtr font, getPtr size, getPtr dropcapMargins, getPtr color, getPtr outlineSize, getPtr outlineColor])
 
-proc setTableColumnExpand*(self: RichTextLabel; column: int32; expand: bool; ratio: int32 = 1): void =
-  expandMethodBind(className RichTextLabel, "set_table_column_expand", 2185176273)
-  methodbind.ptrcall(self, [getPtr column, getPtr expand, getPtr ratio])
+proc setTableColumnExpand*(self: RichTextLabel; column: int32; expand: bool; ratio: int32 = 1; shrink: bool = true): void =
+  expandMethodBind(className RichTextLabel, "set_table_column_expand", 117236061)
+  methodbind.ptrcall(self, [getPtr column, getPtr expand, getPtr ratio, getPtr shrink])
 
 proc setCellRowBackgroundColor*(self: RichTextLabel; oddRowBg: Color; evenRowBg: Color): void =
   expandMethodBind(className RichTextLabel, "set_cell_row_background_color", 3465483165)
@@ -217,6 +217,46 @@ proc getLanguage*(self: RichTextLabel): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
+
+proc setHorizontalAlignment*(self: RichTextLabel; alignment: HorizontalAlignment): void =
+  expandMethodBind(className RichTextLabel, "set_horizontal_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr alignment])
+
+proc getHorizontalAlignment*(self: RichTextLabel): HorizontalAlignment =
+  expandMethodBind(className RichTextLabel, "get_horizontal_alignment", 341400642)
+  var ret: encoded HorizontalAlignment
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(HorizontalAlignment)
+
+proc setVerticalAlignment*(self: RichTextLabel; alignment: VerticalAlignment): void =
+  expandMethodBind(className RichTextLabel, "set_vertical_alignment", 1796458609)
+  methodbind.ptrcall(self, [getPtr alignment])
+
+proc getVerticalAlignment*(self: RichTextLabel): VerticalAlignment =
+  expandMethodBind(className RichTextLabel, "get_vertical_alignment", 3274884059)
+  var ret: encoded VerticalAlignment
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(VerticalAlignment)
+
+proc setJustificationFlags*(self: RichTextLabel; justificationFlags: set[TextServer_JustificationFlag]): void =
+  expandMethodBind(className RichTextLabel, "set_justification_flags", 2877345813)
+  methodbind.ptrcall(self, [getPtr justificationFlags])
+
+proc getJustificationFlags*(self: RichTextLabel): set[TextServer_JustificationFlag] =
+  expandMethodBind(className RichTextLabel, "get_justification_flags", 1583363614)
+  var ret: encoded set[TextServer_JustificationFlag]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(set[TextServer_JustificationFlag])
+
+proc setTabStops*(self: RichTextLabel; tabStops: PackedFloat32Array): void =
+  expandMethodBind(className RichTextLabel, "set_tab_stops", 2899603908)
+  methodbind.ptrcall(self, [getPtr tabStops])
+
+proc getTabStops*(self: RichTextLabel): PackedFloat32Array =
+  expandMethodBind(className RichTextLabel, "get_tab_stops", 675695659)
+  var ret: encoded PackedFloat32Array
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedFloat32Array)
 
 proc setAutowrapMode*(self: RichTextLabel; autowrapMode: TextServer_AutowrapMode): void =
   expandMethodBind(className RichTextLabel, "set_autowrap_mode", 3289138044)
@@ -368,6 +408,12 @@ proc getSelectionTo*(self: RichTextLabel): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc getSelectionLineOffset*(self: RichTextLabel): Float =
+  expandMethodBind(className RichTextLabel, "get_selection_line_offset", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc selectAll*(self: RichTextLabel): void =
   expandMethodBind(className RichTextLabel, "select_all", 3218959716)
   methodbind.ptrcall(self, [])
@@ -398,6 +444,12 @@ proc getText*(self: RichTextLabel): String =
 
 proc isReady*(self: RichTextLabel): bool =
   expandMethodBind(className RichTextLabel, "is_ready", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isFinished*(self: RichTextLabel): bool =
+  expandMethodBind(className RichTextLabel, "is_finished", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -485,6 +537,12 @@ proc getLineCount*(self: RichTextLabel): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
+
+proc getLineRange*(self: RichTextLabel; line: int32): Vector2i =
+  expandMethodBind(className RichTextLabel, "get_line_range", 3665014314)
+  var ret: encoded Vector2i
+  methodbind.ptrcall(self, [getPtr line], addr ret)
+  (addr ret).decode_result(Vector2i)
 
 proc getVisibleLineCount*(self: RichTextLabel): int32 =
   expandMethodBind(className RichTextLabel, "get_visible_line_count", 3905245786)
@@ -590,6 +648,18 @@ template `contextMenuEnabled=`*(self: RichTextLabel; value) = self.setContextMen
 
 template shortcutKeysEnabled*(self: RichTextLabel): untyped = self.isShortcutKeysEnabled()
 template `shortcutKeysEnabled=`*(self: RichTextLabel; value) = self.setShortcutKeysEnabled(value)
+
+template horizontalAlignment*(self: RichTextLabel): untyped = self.getHorizontalAlignment()
+template `horizontalAlignment=`*(self: RichTextLabel; value) = self.setHorizontalAlignment(value)
+
+template verticalAlignment*(self: RichTextLabel): untyped = self.getVerticalAlignment()
+template `verticalAlignment=`*(self: RichTextLabel; value) = self.setVerticalAlignment(value)
+
+template justificationFlags*(self: RichTextLabel): untyped = self.getJustificationFlags()
+template `justificationFlags=`*(self: RichTextLabel; value) = self.setJustificationFlags(value)
+
+template tabStops*(self: RichTextLabel): untyped = self.getTabStops()
+template `tabStops=`*(self: RichTextLabel; value) = self.setTabStops(value)
 
 template customEffects*(self: RichTextLabel): untyped = self.getEffects()
 template `customEffects=`*(self: RichTextLabel; value) = self.setEffects(value)

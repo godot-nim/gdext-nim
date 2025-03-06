@@ -101,43 +101,43 @@ proc addSubmenuItem*(self: NativeMenu; rid: RID; label: String; submenuRid: RID;
   (addr ret).decode_result(int32)
 
 proc addItem*(self: NativeMenu; rid: RID; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_item", 2553375659)
+  expandMethodBind(className NativeMenu, "add_item", 980552939)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addCheckItem*(self: NativeMenu; rid: RID; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_check_item", 2553375659)
+  expandMethodBind(className NativeMenu, "add_check_item", 980552939)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addIconItem*(self: NativeMenu; rid: RID; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_icon_item", 2987595282)
+  expandMethodBind(className NativeMenu, "add_icon_item", 1372188274)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addIconCheckItem*(self: NativeMenu; rid: RID; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_icon_check_item", 2987595282)
+  expandMethodBind(className NativeMenu, "add_icon_check_item", 1372188274)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addRadioCheckItem*(self: NativeMenu; rid: RID; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_radio_check_item", 2553375659)
+  expandMethodBind(className NativeMenu, "add_radio_check_item", 980552939)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addIconRadioCheckItem*(self: NativeMenu; rid: RID; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_icon_radio_check_item", 2987595282)
+  expandMethodBind(className NativeMenu, "add_icon_radio_check_item", 1372188274)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc addMultistateItem*(self: NativeMenu; rid: RID; label: String; maxStates: int32; defaultState: int32; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className NativeMenu, "add_multistate_item", 1558592568)
+  expandMethodBind(className NativeMenu, "add_multistate_item", 2674635658)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr rid, getPtr label, getPtr maxStates, getPtr defaultState, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)

@@ -14,8 +14,21 @@ proc getVolumeDb*(self: AudioEffectAmplify): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setVolumeLinear*(self: AudioEffectAmplify; volume: Float): void =
+  expandMethodBind(className AudioEffectAmplify, "set_volume_linear", 373806689)
+  methodbind.ptrcall(self, [getPtr volume])
+
+proc getVolumeLinear*(self: AudioEffectAmplify): Float =
+  expandMethodBind(className AudioEffectAmplify, "get_volume_linear", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 template volumeDb*(self: AudioEffectAmplify): untyped = self.getVolumeDb()
 template `volumeDb=`*(self: AudioEffectAmplify; value) = self.setVolumeDb(value)
+
+template volumeLinear*(self: AudioEffectAmplify): untyped = self.getVolumeLinear()
+template `volumeLinear=`*(self: AudioEffectAmplify; value) = self.setVolumeLinear(value)
 
 const AudioEffectAmplify_vmap =
   AudioEffect.vmap.concat initTable[string, string]()

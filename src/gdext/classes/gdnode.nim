@@ -474,6 +474,10 @@ proc getAutoTranslateMode*(self: Node): Node_AutoTranslateMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node_AutoTranslateMode)
 
+proc setTranslationDomainInherited*(self: Node): void =
+  expandMethodBind(className Node, "set_translation_domain_inherited", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc getWindow*(self: Node): Window =
   expandMethodBind(className Node, "get_window", 1757182445)
   var ret: encoded Window
@@ -573,6 +577,12 @@ proc getMultiplayer*(self: Node): gdref MultiplayerAPI =
 proc rpcConfig*(self: Node; `method`: StringName; config: Variant): void =
   expandMethodBind(className Node, "rpc_config", 3776071444)
   methodbind.ptrcall(self, [getPtr `method`, getPtr config])
+
+proc getRpcConfig*(self: Node): Variant =
+  expandMethodBind(className Node, "get_rpc_config", 1214101251)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Variant)
 
 proc setEditorDescription*(self: Node; editorDescription: String): void =
   expandMethodBind(className Node, "set_editor_description", 83702148)
@@ -777,3 +787,9 @@ proc editorDescriptionChanged*(self: Node; node: Variant): Error =
     signalname = variant stringname("editor_description_changed")
   let args = [node]
   self.emitSignal(signalname, args)
+
+proc editorStateChanged*(self: Node): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("editor_state_changed")
+  self.emitSignal(signalname)

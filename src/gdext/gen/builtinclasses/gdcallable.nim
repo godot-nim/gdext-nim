@@ -38,6 +38,7 @@ var `getMethod(Callable)`: PtrBuiltinMethod
 var `getArgumentCount(Callable)`: PtrBuiltinMethod
 var `getBoundArgumentsCount(Callable)`: PtrBuiltinMethod
 var `getBoundArguments(Callable)`: PtrBuiltinMethod
+var `getUnboundArgumentsCount(Callable)`: PtrBuiltinMethod
 var `hash(Callable)`: PtrBuiltinMethod
 var `bindv(Callable Array)`: PtrBuiltinMethod
 var `unbind(Callable Int)`: PtrBuiltinMethod
@@ -73,6 +74,8 @@ proc getBoundArgumentsCount*(self: Callable): Int =
   `getBoundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
 proc getBoundArguments*(self: Callable): Array =
   `getBoundArguments(Callable)`(addr self, nil, addr result, 0)
+proc getUnboundArgumentsCount*(self: Callable): Int =
+  `getUnboundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
 proc hash*(self: Callable): Int =
   `hash(Callable)`(addr self, nil, addr result, 0)
 proc bindv*(self: Callable; arguments: Array): Callable =
@@ -95,6 +98,7 @@ proc load_Callable_methods {.execon: staticevents.init_engine.on_load_builtincla
   `getArgumentCount(Callable)` = load(VariantType_Callable, "get_argument_count", 3173160232)
   `getBoundArgumentsCount(Callable)` = load(VariantType_Callable, "get_bound_arguments_count", 3173160232)
   `getBoundArguments(Callable)` = load(VariantType_Callable, "get_bound_arguments", 4144163970)
+  `getUnboundArgumentsCount(Callable)` = load(VariantType_Callable, "get_unbound_arguments_count", 3173160232)
   `hash(Callable)` = load(VariantType_Callable, "hash", 3173160232)
   `bindv(Callable Array)` = load(VariantType_Callable, "bindv", 3564560322)
   `unbind(Callable Int)` = load(VariantType_Callable, "unbind", 755001590)

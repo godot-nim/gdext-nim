@@ -58,6 +58,12 @@ proc hasCached*(self: ResourceLoader; path: String): bool =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(bool)
 
+proc getCachedRef*(self: ResourceLoader; path: String): gdref Resource =
+  expandMethodBind(className ResourceLoader, "get_cached_ref", 1748875256)
+  var ret: encoded gdref Resource
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(gdref Resource)
+
 proc exists*(self: ResourceLoader; path: String; typeHint: String = gdstring""): bool =
   expandMethodBind(className ResourceLoader, "exists", 4185558881)
   var ret: encoded bool
@@ -69,6 +75,12 @@ proc getResourceUid*(self: ResourceLoader; path: String): int64 =
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(int64)
+
+proc listDirectory*(self: ResourceLoader; directoryPath: String): PackedStringArray =
+  expandMethodBind(className ResourceLoader, "list_directory", 3538744774)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [getPtr directoryPath], addr ret)
+  (addr ret).decode_result(PackedStringArray)
 
 const ResourceLoader_vmap =
   Object.vmap.concat initTable[string, string]()

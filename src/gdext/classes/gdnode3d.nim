@@ -104,6 +104,12 @@ proc getGlobalTransform*(self: Node3D): Transform3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
 
+proc getGlobalTransformInterpolated*(self: Node3D): Transform3D =
+  expandMethodBind(className Node3D, "get_global_transform_interpolated", 4183770049)
+  var ret: encoded Transform3D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Transform3D)
+
 proc setGlobalPosition*(self: Node3D; position: Vector3): void =
   expandMethodBind(className Node3D, "set_global_position", 3460891852)
   methodbind.ptrcall(self, [getPtr position])

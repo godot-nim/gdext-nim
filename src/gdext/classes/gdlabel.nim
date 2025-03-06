@@ -64,6 +64,16 @@ proc getLanguage*(self: Label): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
+proc setParagraphSeparator*(self: Label; paragraphSeparator: String): void =
+  expandMethodBind(className Label, "set_paragraph_separator", 83702148)
+  methodbind.ptrcall(self, [getPtr paragraphSeparator])
+
+proc getParagraphSeparator*(self: Label): String =
+  expandMethodBind(className Label, "get_paragraph_separator", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc setAutowrapMode*(self: Label; autowrapMode: TextServer_AutowrapMode): void =
   expandMethodBind(className Label, "set_autowrap_mode", 3289138044)
   methodbind.ptrcall(self, [getPtr autowrapMode])
@@ -251,6 +261,9 @@ template `autowrapMode=`*(self: Label; value) = self.setAutowrapMode(value)
 
 template justificationFlags*(self: Label): untyped = self.getJustificationFlags()
 template `justificationFlags=`*(self: Label; value) = self.setJustificationFlags(value)
+
+template paragraphSeparator*(self: Label): untyped = self.getParagraphSeparator()
+template `paragraphSeparator=`*(self: Label; value) = self.setParagraphSeparator(value)
 
 template clipText*(self: Label): untyped = self.isClippingText()
 template `clipText=`*(self: Label; value) = self.setClipText(value)

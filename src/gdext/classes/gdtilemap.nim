@@ -208,6 +208,24 @@ proc getCellTileData*(self: TileMap; layer: int32; coords: Vector2i; useProxies:
   methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
   (addr ret).decode_result(TileData)
 
+proc isCellFlippedH*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
+  expandMethodBind(className TileMap, "is_cell_flipped_h", 2908343862)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isCellFlippedV*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
+  expandMethodBind(className TileMap, "is_cell_flipped_v", 2908343862)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isCellTransposed*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
+  expandMethodBind(className TileMap, "is_cell_transposed", 2908343862)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getCoordsForBodyRid*(self: TileMap; body: RID): Vector2i =
   expandMethodBind(className TileMap, "get_coords_for_body_rid", 291584212)
   var ret: encoded Vector2i

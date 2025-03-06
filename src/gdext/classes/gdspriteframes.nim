@@ -14,6 +14,10 @@ proc hasAnimation*(self: SpriteFrames; anim: StringName): bool =
   methodbind.ptrcall(self, [getPtr anim], addr ret)
   (addr ret).decode_result(bool)
 
+proc duplicateAnimation*(self: SpriteFrames; animFrom: StringName; animTo: StringName): void =
+  expandMethodBind(className SpriteFrames, "duplicate_animation", 3740211285)
+  methodbind.ptrcall(self, [getPtr animFrom, getPtr animTo])
+
 proc removeAnimation*(self: SpriteFrames; anim: StringName): void =
   expandMethodBind(className SpriteFrames, "remove_animation", 3304788590)
   methodbind.ptrcall(self, [getPtr anim])

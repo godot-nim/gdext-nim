@@ -104,6 +104,16 @@ proc getPathRotation*(self: CSGPolygon3D): CSGPolygon3D_PathRotation =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CSGPolygon3D_PathRotation)
 
+proc setPathRotationAccurate*(self: CSGPolygon3D; enable: bool): void =
+  expandMethodBind(className CSGPolygon3D, "set_path_rotation_accurate", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc getPathRotationAccurate*(self: CSGPolygon3D): bool =
+  expandMethodBind(className CSGPolygon3D, "get_path_rotation_accurate", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setPathLocal*(self: CSGPolygon3D; enable: bool): void =
   expandMethodBind(className CSGPolygon3D, "set_path_local", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -193,6 +203,9 @@ template `pathSimplifyAngle=`*(self: CSGPolygon3D; value) = self.setPathSimplify
 
 template pathRotation*(self: CSGPolygon3D): untyped = self.getPathRotation()
 template `pathRotation=`*(self: CSGPolygon3D; value) = self.setPathRotation(value)
+
+template pathRotationAccurate*(self: CSGPolygon3D): untyped = self.getPathRotationAccurate()
+template `pathRotationAccurate=`*(self: CSGPolygon3D; value) = self.setPathRotationAccurate(value)
 
 template pathLocal*(self: CSGPolygon3D): untyped = self.isPathLocal()
 template `pathLocal=`*(self: CSGPolygon3D; value) = self.setPathLocal(value)

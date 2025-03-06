@@ -12,6 +12,8 @@ var `<(RID RID)`: PtrOperatorEvaluator
 var `<=(RID RID)`: PtrOperatorEvaluator
 var `>(RID RID)`: PtrOperatorEvaluator
 var `>=(RID RID)`: PtrOperatorEvaluator
+var `contains(RID Dictionary)`: PtrOperatorEvaluator
+var `contains(RID Array)`: PtrOperatorEvaluator
 proc `==`*(left: RID; right: Variant): bool = `==(RID Variant)`(getPtr left, getPtr right, addr result)
 proc `!=`*(left: RID; right: Variant): bool = `!=(RID Variant)`(getPtr left, getPtr right, addr result)
 proc `not`*(left: RID): bool = `not(RID)`(getPtr left, nil, addr result)
@@ -21,6 +23,8 @@ proc `<`*(left: RID; right: RID): bool = `<(RID RID)`(getPtr left, getPtr right,
 proc `<=`*(left: RID; right: RID): bool = `<=(RID RID)`(getPtr left, getPtr right, addr result)
 proc `>`*(left: RID; right: RID): bool = `>(RID RID)`(getPtr left, getPtr right, addr result)
 proc `>=`*(left: RID; right: RID): bool = `>=(RID RID)`(getPtr left, getPtr right, addr result)
+proc contains*(left: Dictionary; right: RID): bool = `contains(RID Dictionary)`(getPtr right, getPtr left, addr result)
+proc contains*(left: Array; right: RID): bool = `contains(RID Array)`(getPtr right, getPtr left, addr result)
 proc load_RID_operators {.execon: staticevents.init_engine.on_load_builtinclassOperator.} =
   `==(RID Variant)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Equal, VariantType_RID, VariantType_Nil)
   `!=(RID Variant)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_RID, VariantType_Nil)
@@ -31,6 +35,8 @@ proc load_RID_operators {.execon: staticevents.init_engine.on_load_builtinclassO
   `<=(RID RID)` = interface_variantGetPtrOperatorEvaluator(VariantOP_LessEqual, VariantType_RID, VariantType_RID)
   `>(RID RID)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Greater, VariantType_RID, VariantType_RID)
   `>=(RID RID)` = interface_variantGetPtrOperatorEvaluator(VariantOP_GreaterEqual, VariantType_RID, VariantType_RID)
+  `contains(RID Dictionary)` = interface_variantGetPtrOperatorEvaluator(VariantOP_In, VariantType_RID, VariantType_Dictionary)
+  `contains(RID Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_In, VariantType_RID, VariantType_Array)
 
 var `isValid(RID)`: PtrBuiltinMethod
 var `getId(RID)`: PtrBuiltinMethod

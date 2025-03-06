@@ -524,6 +524,7 @@ var `fromString(Color String Color)`: PtrBuiltinMethod
 var `fromHsv(Color Float Float Float Float)`: PtrBuiltinMethod
 var `fromOkHsl(Color Float Float Float Float)`: PtrBuiltinMethod
 var `fromRgbe9995(Color Int)`: PtrBuiltinMethod
+var `fromRgba8(Color Int Int Int Int)`: PtrBuiltinMethod
 
 proc toArgb32*(self: Color): Int =
   `toArgb32(Color)`(addr self, nil, addr result, 0)
@@ -590,6 +591,9 @@ proc fromOkHsl*(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float =
 proc fromRgbe9995*(_: typedesc[Color]; rgbe: Int): Color =
   let argArr = [getPtr rgbe]
   `fromRgbe9995(Color Int)`(nil, addr argArr[0], addr result, 1)
+proc fromRgba8*(_: typedesc[Color]; r8: Int; g8: Int; b8: Int; a8: Int = 255): Color =
+  let argArr = [getPtr r8, getPtr g8, getPtr b8, getPtr a8]
+  `fromRgba8(Color Int Int Int Int)`(nil, addr argArr[0], addr result, 4)
 
 proc load_Color_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `toArgb32(Color)` = load(VariantType_Color, "to_argb32", 3173160232)
@@ -617,3 +621,4 @@ proc load_Color_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `fromHsv(Color Float Float Float Float)` = load(VariantType_Color, "from_hsv", 1573799446)
   `fromOkHsl(Color Float Float Float Float)` = load(VariantType_Color, "from_ok_hsl", 1573799446)
   `fromRgbe9995(Color Int)` = load(VariantType_Color, "from_rgbe9995", 351421375)
+  `fromRgba8(Color Int Int Int Int)` = load(VariantType_Color, "from_rgba8", 3072934735)

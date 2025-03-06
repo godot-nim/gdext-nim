@@ -54,6 +54,16 @@ proc isHidingSlider*(self: EditorSpinSlider): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setEditingInteger*(self: EditorSpinSlider; editingInteger: bool): void =
+  expandMethodBind(className EditorSpinSlider, "set_editing_integer", 2586408642)
+  methodbind.ptrcall(self, [getPtr editingInteger])
+
+proc isEditingInteger*(self: EditorSpinSlider): bool =
+  expandMethodBind(className EditorSpinSlider, "is_editing_integer", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template label*(self: EditorSpinSlider): untyped = self.getLabel()
 template `label=`*(self: EditorSpinSlider; value) = self.setLabel(value)
 
@@ -69,6 +79,9 @@ template `flat=`*(self: EditorSpinSlider; value) = self.setFlat(value)
 template hideSlider*(self: EditorSpinSlider): untyped = self.isHidingSlider()
 template `hideSlider=`*(self: EditorSpinSlider; value) = self.setHideSlider(value)
 
+template editingInteger*(self: EditorSpinSlider): untyped = self.isEditingInteger()
+template `editingInteger=`*(self: EditorSpinSlider; value) = self.setEditingInteger(value)
+
 const EditorSpinSlider_vmap =
   Range.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[EditorSpinSlider]): Table[string, string] = EditorSpinSlider_vmap
@@ -83,6 +96,12 @@ proc ungrabbed*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("ungrabbed")
+  self.emitSignal(signalname)
+
+proc updownPressed*(self: EditorSpinSlider): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("updown_pressed")
   self.emitSignal(signalname)
 
 proc valueFocusEntered*(self: EditorSpinSlider): Error =

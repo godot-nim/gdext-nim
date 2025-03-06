@@ -34,15 +34,25 @@ proc parseTextureJson(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[C
   errproof: cast[GLTFDocumentExtension](p_instance).parseTextureJson(p_args[0].decode(gdref GLTFState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GLTFTexture)).encode(r_ret)
 template parseTextureJson_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = parseTextureJson
 
-method generateSceneNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; sceneParent: Node): Node3D {.base.} = (discard)
-proc generateSceneNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GLTFDocumentExtension](p_instance).generateSceneNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Node)).encode(r_ret)
-template generateSceneNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = generateSceneNode
+method importObjectModelProperty*(self: GLTFDocumentExtension; state: gdref GLTFState; splitJsonPointer: PackedStringArray; partialPaths: TypedArray[NodePath]): gdref GLTFObjectModelProperty {.base.} = (discard)
+proc importObjectModelProperty(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[GLTFDocumentExtension](p_instance).importObjectModelProperty(p_args[0].decode(gdref GLTFState), p_args[1].decode(PackedStringArray), p_args[2].decode(TypedArray[NodePath])).encode(r_ret)
+template importObjectModelProperty_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importObjectModelProperty
 
 method importPostParse*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc importPostParse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[GLTFDocumentExtension](p_instance).importPostParse(p_args[0].decode(gdref GLTFState)).encode(r_ret)
 template importPostParse_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importPostParse
+
+method importPreGenerate*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
+proc importPreGenerate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[GLTFDocumentExtension](p_instance).importPreGenerate(p_args[0].decode(gdref GLTFState)).encode(r_ret)
+template importPreGenerate_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = importPreGenerate
+
+method generateSceneNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; sceneParent: Node): Node3D {.base.} = (discard)
+proc generateSceneNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[GLTFDocumentExtension](p_instance).generateSceneNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Node)).encode(r_ret)
+template generateSceneNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = generateSceneNode
 
 method importNode*(self: GLTFDocumentExtension; state: gdref GLTFState; gltfNode: gdref GLTFNode; json: Dictionary; node: Node): Error {.base.} = (discard)
 proc importNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -64,10 +74,20 @@ proc convertSceneNode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[C
   errproof: cast[GLTFDocumentExtension](p_instance).convertSceneNode(p_args[0].decode(gdref GLTFState), p_args[1].decode(gdref GLTFNode), p_args[2].decode(Node))
 template convertSceneNode_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = convertSceneNode
 
+method exportPostConvert*(self: GLTFDocumentExtension; state: gdref GLTFState; root: Node): Error {.base.} = (discard)
+proc exportPostConvert(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[GLTFDocumentExtension](p_instance).exportPostConvert(p_args[0].decode(gdref GLTFState), p_args[1].decode(Node)).encode(r_ret)
+template exportPostConvert_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportPostConvert
+
 method exportPreserialize*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc exportPreserialize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[GLTFDocumentExtension](p_instance).exportPreserialize(p_args[0].decode(gdref GLTFState)).encode(r_ret)
 template exportPreserialize_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportPreserialize
+
+method exportObjectModelProperty*(self: GLTFDocumentExtension; state: gdref GLTFState; nodePath: NodePath; godotNode: Node; gltfNodeIndex: int32; targetObject: Object; targetDepth: int32): gdref GLTFObjectModelProperty {.base.} = (discard)
+proc exportObjectModelProperty(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[GLTFDocumentExtension](p_instance).exportObjectModelProperty(p_args[0].decode(gdref GLTFState), p_args[1].decode(NodePath), p_args[2].decode(Node), p_args[3].decode(int32), p_args[4].decode(Object), p_args[5].decode(int32)).encode(r_ret)
+template exportObjectModelProperty_bind*(_: typedesc[GLTFDocumentExtension]): ClassCallVirtual = exportObjectModelProperty
 
 method getSaveableImageFormats*(self: GLTFDocumentExtension): PackedStringArray {.base.} = (discard)
 proc getSaveableImageFormats(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -107,13 +127,17 @@ const GLTFDocumentExtension_vmap =
     "parseimagedata" : "_parse_image_data",
     "getimagefileextension" : "_get_image_file_extension",
     "parsetexturejson" : "_parse_texture_json",
-    "generatescenenode" : "_generate_scene_node",
+    "importobjectmodelproperty" : "_import_object_model_property",
     "importpostparse" : "_import_post_parse",
+    "importpregenerate" : "_import_pre_generate",
+    "generatescenenode" : "_generate_scene_node",
     "importnode" : "_import_node",
     "importpost" : "_import_post",
     "exportpreflight" : "_export_preflight",
     "convertscenenode" : "_convert_scene_node",
+    "exportpostconvert" : "_export_post_convert",
     "exportpreserialize" : "_export_preserialize",
+    "exportobjectmodelproperty" : "_export_object_model_property",
     "getsaveableimageformats" : "_get_saveable_image_formats",
     "serializeimagetobytes" : "_serialize_image_to_bytes",
     "saveimageatpath" : "_save_image_at_path",

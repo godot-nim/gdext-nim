@@ -52,6 +52,10 @@ proc setSpeedScale*(self: CPUParticles2D; scale: float64): void =
   expandMethodBind(className CPUParticles2D, "set_speed_scale", 373806689)
   methodbind.ptrcall(self, [getPtr scale])
 
+proc requestParticlesProcess*(self: CPUParticles2D; processTime: Float): void =
+  expandMethodBind(className CPUParticles2D, "request_particles_process", 373806689)
+  methodbind.ptrcall(self, [getPtr processTime])
+
 proc isEmitting*(self: CPUParticles2D): bool =
   expandMethodBind(className CPUParticles2D, "is_emitting", 36873697)
   var ret: encoded bool
@@ -124,6 +128,26 @@ proc getSpeedScale*(self: CPUParticles2D): float64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
+proc setUseFixedSeed*(self: CPUParticles2D; useFixedSeed: bool): void =
+  expandMethodBind(className CPUParticles2D, "set_use_fixed_seed", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFixedSeed])
+
+proc getUseFixedSeed*(self: CPUParticles2D): bool =
+  expandMethodBind(className CPUParticles2D, "get_use_fixed_seed", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setSeed*(self: CPUParticles2D; seed: uint32): void =
+  expandMethodBind(className CPUParticles2D, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed])
+
+proc getSeed*(self: CPUParticles2D): uint32 =
+  expandMethodBind(className CPUParticles2D, "get_seed", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc setDrawOrder*(self: CPUParticles2D; order: CPUParticles2D_DrawOrder): void =
   expandMethodBind(className CPUParticles2D, "set_draw_order", 4183193490)
   methodbind.ptrcall(self, [getPtr order])
@@ -144,9 +168,9 @@ proc getTexture*(self: CPUParticles2D): gdref Texture2D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
-proc restart*(self: CPUParticles2D): void =
-  expandMethodBind(className CPUParticles2D, "restart", 3218959716)
-  methodbind.ptrcall(self, [])
+proc restart*(self: CPUParticles2D; keepSeed: bool = false): void =
+  expandMethodBind(className CPUParticles2D, "restart", 107499316)
+  methodbind.ptrcall(self, [getPtr keepSeed])
 
 proc setDirection*(self: CPUParticles2D; direction: Vector2): void =
   expandMethodBind(className CPUParticles2D, "set_direction", 743155724)
@@ -348,6 +372,9 @@ template `emitting=`*(self: CPUParticles2D; value) = self.setEmitting(value)
 template amount*(self: CPUParticles2D): untyped = self.getAmount()
 template `amount=`*(self: CPUParticles2D; value) = self.setAmount(value)
 
+template texture*(self: CPUParticles2D): untyped = self.getTexture()
+template `texture=`*(self: CPUParticles2D; value) = self.setTexture(value)
+
 template lifetime*(self: CPUParticles2D): untyped = self.getLifetime()
 template `lifetime=`*(self: CPUParticles2D; value) = self.setLifetime(value)
 
@@ -366,6 +393,12 @@ template `explosiveness=`*(self: CPUParticles2D; value) = self.setExplosivenessR
 template randomness*(self: CPUParticles2D): untyped = self.getRandomnessRatio()
 template `randomness=`*(self: CPUParticles2D; value) = self.setRandomnessRatio(value)
 
+template useFixedSeed*(self: CPUParticles2D): untyped = self.getUseFixedSeed()
+template `useFixedSeed=`*(self: CPUParticles2D; value) = self.setUseFixedSeed(value)
+
+template seed*(self: CPUParticles2D): untyped = self.getSeed()
+template `seed=`*(self: CPUParticles2D; value) = self.setSeed(value)
+
 template lifetimeRandomness*(self: CPUParticles2D): untyped = self.getLifetimeRandomness()
 template `lifetimeRandomness=`*(self: CPUParticles2D; value) = self.setLifetimeRandomness(value)
 
@@ -380,9 +413,6 @@ template `localCoords=`*(self: CPUParticles2D; value) = self.setUseLocalCoordina
 
 template drawOrder*(self: CPUParticles2D): untyped = self.getDrawOrder()
 template `drawOrder=`*(self: CPUParticles2D; value) = self.setDrawOrder(value)
-
-template texture*(self: CPUParticles2D): untyped = self.getTexture()
-template `texture=`*(self: CPUParticles2D; value) = self.setTexture(value)
 
 template emissionShape*(self: CPUParticles2D): untyped = self.getEmissionShape()
 template `emissionShape=`*(self: CPUParticles2D; value) = self.setEmissionShape(value)

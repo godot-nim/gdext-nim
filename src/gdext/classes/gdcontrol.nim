@@ -378,37 +378,37 @@ proc removeThemeConstantOverride*(self: Control; name: StringName): void =
   methodbind.ptrcall(self, [getPtr name])
 
 proc getThemeIcon*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref Texture2D =
-  expandMethodBind(className Control, "get_theme_icon", 2336455395)
+  expandMethodBind(className Control, "get_theme_icon", 3163973443)
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc getThemeStylebox*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref StyleBox =
-  expandMethodBind(className Control, "get_theme_stylebox", 2759935355)
+  expandMethodBind(className Control, "get_theme_stylebox", 604739069)
   var ret: encoded gdref StyleBox
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref StyleBox)
 
 proc getThemeFont*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref Font =
-  expandMethodBind(className Control, "get_theme_font", 387378635)
+  expandMethodBind(className Control, "get_theme_font", 2826986490)
   var ret: encoded gdref Font
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Font)
 
 proc getThemeFontSize*(self: Control; name: StringName; themeType: StringName = stringName ""): int32 =
-  expandMethodBind(className Control, "get_theme_font_size", 229578101)
+  expandMethodBind(className Control, "get_theme_font_size", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
 
 proc getThemeColor*(self: Control; name: StringName; themeType: StringName = stringName ""): Color =
-  expandMethodBind(className Control, "get_theme_color", 2377051548)
+  expandMethodBind(className Control, "get_theme_color", 2798751242)
   var ret: encoded Color
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(Color)
 
 proc getThemeConstant*(self: Control; name: StringName; themeType: StringName = stringName ""): int32 =
-  expandMethodBind(className Control, "get_theme_constant", 229578101)
+  expandMethodBind(className Control, "get_theme_constant", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
@@ -450,37 +450,37 @@ proc hasThemeConstantOverride*(self: Control; name: StringName): bool =
   (addr ret).decode_result(bool)
 
 proc hasThemeIcon*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_icon", 1187511791)
+  expandMethodBind(className Control, "has_theme_icon", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeStylebox*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_stylebox", 1187511791)
+  expandMethodBind(className Control, "has_theme_stylebox", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeFont*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_font", 1187511791)
+  expandMethodBind(className Control, "has_theme_font", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeFontSize*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_font_size", 1187511791)
+  expandMethodBind(className Control, "has_theme_font_size", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeColor*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_color", 1187511791)
+  expandMethodBind(className Control, "has_theme_color", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeConstant*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Control, "has_theme_constant", 1187511791)
+  expandMethodBind(className Control, "has_theme_constant", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
@@ -528,6 +528,16 @@ proc getVGrowDirection*(self: Control): Control_GrowDirection =
   var ret: encoded Control_GrowDirection
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control_GrowDirection)
+
+proc setTooltipAutoTranslateMode*(self: Control; mode: Node_AutoTranslateMode): void =
+  expandMethodBind(className Control, "set_tooltip_auto_translate_mode", 776149714)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getTooltipAutoTranslateMode*(self: Control): Node_AutoTranslateMode =
+  expandMethodBind(className Control, "get_tooltip_auto_translate_mode", 2498906432)
+  var ret: encoded Node_AutoTranslateMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Node_AutoTranslateMode)
 
 proc setTooltipText*(self: Control; hint: String): void =
   expandMethodBind(className Control, "set_tooltip_text", 83702148)
@@ -780,6 +790,9 @@ template `autoTranslate=`*(self: Control; value) = self.setAutoTranslate(value)
 
 template tooltipText*(self: Control): untyped = self.getTooltipText()
 template `tooltipText=`*(self: Control; value) = self.setTooltipText(value)
+
+template tooltipAutoTranslateMode*(self: Control): untyped = self.getTooltipAutoTranslateMode()
+template `tooltipAutoTranslateMode=`*(self: Control; value) = self.setTooltipAutoTranslateMode(value)
 
 template focusNeighborLeft*(self: Control): untyped = self.getFocusNeighbor(Side(0))
 template `focusNeighborLeft=`*(self: Control; value) = self.setFocusNeighbor(Side(0), value)

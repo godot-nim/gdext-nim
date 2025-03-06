@@ -4,10 +4,10 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
-proc loadFromBuffer*(_: typedesc[AudioStreamOggVorbis]; buffer: PackedByteArray): gdref AudioStreamOggVorbis =
+proc loadFromBuffer*(_: typedesc[AudioStreamOggVorbis]; streamData: PackedByteArray): gdref AudioStreamOggVorbis =
   expandMethodBind(className AudioStreamOggVorbis, "load_from_buffer", 354904730)
   var ret: encoded gdref AudioStreamOggVorbis
-  methodbind.ptrcall([getPtr buffer], addr ret)
+  methodbind.ptrcall([getPtr streamData], addr ret)
   (addr ret).decode_result(gdref AudioStreamOggVorbis)
 
 proc loadFromFile*(_: typedesc[AudioStreamOggVorbis]; path: String): gdref AudioStreamOggVorbis =

@@ -74,6 +74,11 @@ proc reload(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePt
   errproof: cast[ScriptExtension](p_instance).reload(p_args[0].decode(bool)).encode(r_ret)
 template reload_bind*(_: typedesc[ScriptExtension]): ClassCallVirtual = reload
 
+method getDocClassName*(self: ScriptExtension): StringName {.base.} = (discard)
+proc getDocClassName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[ScriptExtension](p_instance).getDocClassName().encode(r_ret)
+template getDocClassName_bind*(_: typedesc[ScriptExtension]): ClassCallVirtual = getDocClassName
+
 method getDocumentation*(self: ScriptExtension): TypedArray[Dictionary] {.base.} = (discard)
 proc getDocumentation(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[ScriptExtension](p_instance).getDocumentation().encode(r_ret)
@@ -200,6 +205,7 @@ const ScriptExtension_vmap =
     "getsourcecode" : "_get_source_code",
     "setsourcecode" : "_set_source_code",
     "reload" : "_reload",
+    "getdocclassname" : "_get_doc_class_name",
     "getdocumentation" : "_get_documentation",
     "getclassiconpath" : "_get_class_icon_path",
     "hasmethod" : "_has_method",

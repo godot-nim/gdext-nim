@@ -26,10 +26,10 @@ proc compareLocales*(self: TranslationServer; localeA: String; localeB: String):
   methodbind.ptrcall(self, [getPtr localeA, getPtr localeB], addr ret)
   (addr ret).decode_result(int32)
 
-proc standardizeLocale*(self: TranslationServer; locale: String): String =
-  expandMethodBind(className TranslationServer, "standardize_locale", 3135753539)
+proc standardizeLocale*(self: TranslationServer; locale: String; addDefaults: bool = false): String =
+  expandMethodBind(className TranslationServer, "standardize_locale", 4216441673)
   var ret: encoded String
-  methodbind.ptrcall(self, [getPtr locale], addr ret)
+  methodbind.ptrcall(self, [getPtr locale, getPtr addDefaults], addr ret)
   (addr ret).decode_result(String)
 
 proc getAllLanguages*(self: TranslationServer): PackedStringArray =
@@ -75,13 +75,13 @@ proc getLocaleName*(self: TranslationServer; locale: String): String =
   (addr ret).decode_result(String)
 
 proc translate*(self: TranslationServer; message: StringName; context: StringName = stringName ""): StringName =
-  expandMethodBind(className TranslationServer, "translate", 58037827)
+  expandMethodBind(className TranslationServer, "translate", 1829228469)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
 proc translatePlural*(self: TranslationServer; message: StringName; pluralMessage: StringName; n: int32; context: StringName = stringName ""): StringName =
-  expandMethodBind(className TranslationServer, "translate_plural", 1333931916)
+  expandMethodBind(className TranslationServer, "translate_plural", 229954002)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
@@ -99,6 +99,22 @@ proc getTranslationObject*(self: TranslationServer; locale: String): gdref Trans
   var ret: encoded gdref Translation
   methodbind.ptrcall(self, [getPtr locale], addr ret)
   (addr ret).decode_result(gdref Translation)
+
+proc hasDomain*(self: TranslationServer; domain: StringName): bool =
+  expandMethodBind(className TranslationServer, "has_domain", 2619796661)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr domain], addr ret)
+  (addr ret).decode_result(bool)
+
+proc getOrAddDomain*(self: TranslationServer; domain: StringName): gdref TranslationDomain =
+  expandMethodBind(className TranslationServer, "get_or_add_domain", 397200075)
+  var ret: encoded gdref TranslationDomain
+  methodbind.ptrcall(self, [getPtr domain], addr ret)
+  (addr ret).decode_result(gdref TranslationDomain)
+
+proc removeDomain*(self: TranslationServer; domain: StringName): void =
+  expandMethodBind(className TranslationServer, "remove_domain", 3304788590)
+  methodbind.ptrcall(self, [getPtr domain])
 
 proc clear*(self: TranslationServer): void =
   expandMethodBind(className TranslationServer, "clear", 3218959716)

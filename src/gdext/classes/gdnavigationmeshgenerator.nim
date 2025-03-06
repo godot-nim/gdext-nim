@@ -13,11 +13,11 @@ proc clear*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh)
   methodbind.ptrcall(self, [getPtr navigationMesh])
 
 proc parseSourceGeometryData*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; rootNode: Node; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationMeshGenerator, "parse_source_geometry_data", 685862123)
+  expandMethodBind(className NavigationMeshGenerator, "parse_source_geometry_data", 3172802542)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr rootNode, getPtr callback])
 
 proc bakeFromSourceGeometryData*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationMeshGenerator, "bake_from_source_geometry_data", 2469318639)
+  expandMethodBind(className NavigationMeshGenerator, "bake_from_source_geometry_data", 1286748856)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr callback])
 
 const NavigationMeshGenerator_vmap =

@@ -34,6 +34,26 @@ proc isDisabled*(self: CollisionPolygon3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setDebugColor*(self: CollisionPolygon3D; color: Color): void =
+  expandMethodBind(className CollisionPolygon3D, "set_debug_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color])
+
+proc getDebugColor*(self: CollisionPolygon3D): Color =
+  expandMethodBind(className CollisionPolygon3D, "get_debug_color", 3444240500)
+  var ret: encoded Color
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Color)
+
+proc setEnableDebugFill*(self: CollisionPolygon3D; enable: bool): void =
+  expandMethodBind(className CollisionPolygon3D, "set_enable_debug_fill", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc getEnableDebugFill*(self: CollisionPolygon3D): bool =
+  expandMethodBind(className CollisionPolygon3D, "get_enable_debug_fill", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setMargin*(self: CollisionPolygon3D; margin: Float): void =
   expandMethodBind(className CollisionPolygon3D, "set_margin", 373806689)
   methodbind.ptrcall(self, [getPtr margin])
@@ -55,6 +75,12 @@ template `polygon=`*(self: CollisionPolygon3D; value) = self.setPolygon(value)
 
 template margin*(self: CollisionPolygon3D): untyped = self.getMargin()
 template `margin=`*(self: CollisionPolygon3D; value) = self.setMargin(value)
+
+template debugColor*(self: CollisionPolygon3D): untyped = self.getDebugColor()
+template `debugColor=`*(self: CollisionPolygon3D; value) = self.setDebugColor(value)
+
+template debugFill*(self: CollisionPolygon3D): untyped = self.getEnableDebugFill()
+template `debugFill=`*(self: CollisionPolygon3D; value) = self.setEnableDebugFill(value)
 
 const CollisionPolygon3D_vmap =
   Node3D.vmap.concat initTable[string, string]()

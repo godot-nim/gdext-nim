@@ -142,6 +142,12 @@ proc makeAtlas*(self: Geometry2D; sizes: PackedVector2Array): Dictionary =
   methodbind.ptrcall(self, [getPtr sizes], addr ret)
   (addr ret).decode_result(Dictionary)
 
+proc bresenhamLine*(self: Geometry2D; `from`: Vector2i; to: Vector2i): TypedArray[Vector2i] =
+  expandMethodBind(className Geometry2D, "bresenham_line", 1989391000)
+  var ret: encoded TypedArray[Vector2i]
+  methodbind.ptrcall(self, [getPtr `from`, getPtr to], addr ret)
+  (addr ret).decode_result(TypedArray[Vector2i])
+
 const Geometry2D_vmap =
   Object.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[Geometry2D]): Table[string, string] = Geometry2D_vmap

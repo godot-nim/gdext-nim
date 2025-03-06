@@ -44,6 +44,16 @@ proc getStep*(self: VisualShaderNodeIntParameter): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setEnumNames*(self: VisualShaderNodeIntParameter; names: PackedStringArray): void =
+  expandMethodBind(className VisualShaderNodeIntParameter, "set_enum_names", 4015028928)
+  methodbind.ptrcall(self, [getPtr names])
+
+proc getEnumNames*(self: VisualShaderNodeIntParameter): PackedStringArray =
+  expandMethodBind(className VisualShaderNodeIntParameter, "get_enum_names", 1139954409)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
 proc setDefaultValueEnabled*(self: VisualShaderNodeIntParameter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeIntParameter, "set_default_value_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -75,6 +85,9 @@ template `max=`*(self: VisualShaderNodeIntParameter; value) = self.setMax(value)
 
 template step*(self: VisualShaderNodeIntParameter): untyped = self.getStep()
 template `step=`*(self: VisualShaderNodeIntParameter; value) = self.setStep(value)
+
+template enumNames*(self: VisualShaderNodeIntParameter): untyped = self.getEnumNames()
+template `enumNames=`*(self: VisualShaderNodeIntParameter; value) = self.setEnumNames(value)
 
 template defaultValueEnabled*(self: VisualShaderNodeIntParameter): untyped = self.isDefaultValueEnabled()
 template `defaultValueEnabled=`*(self: VisualShaderNodeIntParameter; value) = self.setDefaultValueEnabled(value)

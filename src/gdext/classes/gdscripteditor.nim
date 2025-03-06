@@ -16,6 +16,12 @@ proc getOpenScriptEditors*(self: ScriptEditor): TypedArray[ScriptEditorBase] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[ScriptEditorBase])
 
+proc getBreakpoints*(self: ScriptEditor): PackedStringArray =
+  expandMethodBind(className ScriptEditor, "get_breakpoints", 2981934095)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
 proc registerSyntaxHighlighter*(self: ScriptEditor; syntaxHighlighter: gdref EditorSyntaxHighlighter): void =
   expandMethodBind(className ScriptEditor, "register_syntax_highlighter", 1092774468)
   methodbind.ptrcall(self, [getPtr syntaxHighlighter])
@@ -47,6 +53,10 @@ proc openScriptCreateDialog*(self: ScriptEditor; baseName: String; basePath: Str
 proc gotoHelp*(self: ScriptEditor; topic: String): void =
   expandMethodBind(className ScriptEditor, "goto_help", 83702148)
   methodbind.ptrcall(self, [getPtr topic])
+
+proc updateDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
+  expandMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
+  methodbind.ptrcall(self, [getPtr script])
 
 const ScriptEditor_vmap =
   PanelContainer.vmap.concat initTable[string, string]()

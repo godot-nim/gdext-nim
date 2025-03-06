@@ -50,6 +50,18 @@ proc getErrorMessage*(self: JSON): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
+proc fromNative*(_: typedesc[JSON]; variant: Variant; fullObjects: bool = false): Variant =
+  expandMethodBind(className JSON, "from_native", 2963479484)
+  var ret: encoded Variant
+  methodbind.ptrcall([getPtr variant, getPtr fullObjects], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc toNative*(_: typedesc[JSON]; json: Variant; allowObjects: bool = false): Variant =
+  expandMethodBind(className JSON, "to_native", 2963479484)
+  var ret: encoded Variant
+  methodbind.ptrcall([getPtr json, getPtr allowObjects], addr ret)
+  (addr ret).decode_result(Variant)
+
 template data*(self: JSON): untyped = self.getData()
 template `data=`*(self: JSON; value) = self.setData(value)
 

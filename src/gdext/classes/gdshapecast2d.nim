@@ -182,6 +182,12 @@ proc isCollideWithBodiesEnabled*(self: ShapeCast2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getCollisionResult*(self: ShapeCast2D): Array =
+  expandMethodBind(className ShapeCast2D, "get_collision_result", 3995934104)
+  var ret: encoded Array
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Array)
+
 template enabled*(self: ShapeCast2D): untyped = self.isEnabled()
 template `enabled=`*(self: ShapeCast2D; value) = self.setEnabled(value)
 

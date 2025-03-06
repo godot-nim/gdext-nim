@@ -66,6 +66,10 @@ proc getHistoryUndoRedo*(self: EditorUndoRedoManager; id: int32): UndoRedo =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(UndoRedo)
 
+proc clearHistory*(self: EditorUndoRedoManager; id: int32 = -99; increaseVersion: bool = true): void =
+  expandMethodBind(className EditorUndoRedoManager, "clear_history", 2020603371)
+  methodbind.ptrcall(self, [getPtr id, getPtr increaseVersion])
+
 const EditorUndoRedoManager_vmap =
   Object.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[EditorUndoRedoManager]): Table[string, string] = EditorUndoRedoManager_vmap

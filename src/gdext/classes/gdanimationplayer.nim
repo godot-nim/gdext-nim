@@ -75,15 +75,31 @@ proc getAutoCaptureEaseType*(self: AnimationPlayer): Tween_EaseType =
   (addr ret).decode_result(Tween_EaseType)
 
 proc play*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "play", 3697947785)
+  expandMethodBind(className AnimationPlayer, "play", 3118260607)
   methodbind.ptrcall(self, [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
 
+proc playSectionWithMarkers*(self: AnimationPlayer; name: StringName = stringName ""; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+  expandMethodBind(className AnimationPlayer, "play_section_with_markers", 1421431412)
+  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
+
+proc playSection*(self: AnimationPlayer; name: StringName = stringName ""; startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+  expandMethodBind(className AnimationPlayer, "play_section", 284774635)
+  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
+
 proc playBackwards*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1): void =
-  expandMethodBind(className AnimationPlayer, "play_backwards", 3890664824)
+  expandMethodBind(className AnimationPlayer, "play_backwards", 2787282401)
   methodbind.ptrcall(self, [getPtr name, getPtr customBlend])
 
+proc playSectionWithMarkersBackwards*(self: AnimationPlayer; name: StringName = stringName ""; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""; customBlend: float64 = -1): void =
+  expandMethodBind(className AnimationPlayer, "play_section_with_markers_backwards", 910195100)
+  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend])
+
+proc playSectionBackwards*(self: AnimationPlayer; name: StringName = stringName ""; startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1): void =
+  expandMethodBind(className AnimationPlayer, "play_section_backwards", 831955981)
+  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend])
+
 proc playWithCapture*(self: AnimationPlayer; name: StringName = stringName ""; duration: float64 = -1.0; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false; transType: Tween_TransitionType = transLinear; easeType: Tween_EaseType = easeIn): void =
-  expandMethodBind(className AnimationPlayer, "play_with_capture", 3180464118)
+  expandMethodBind(className AnimationPlayer, "play_with_capture", 1572969103)
   methodbind.ptrcall(self, [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType])
 
 proc pause*(self: AnimationPlayer): void =
@@ -181,6 +197,36 @@ proc getCurrentAnimationLength*(self: AnimationPlayer): float64 =
   var ret: encoded float64
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
+
+proc setSectionWithMarkers*(self: AnimationPlayer; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""): void =
+  expandMethodBind(className AnimationPlayer, "set_section_with_markers", 794792241)
+  methodbind.ptrcall(self, [getPtr startMarker, getPtr endMarker])
+
+proc setSection*(self: AnimationPlayer; startTime: float64 = -1; endTime: float64 = -1): void =
+  expandMethodBind(className AnimationPlayer, "set_section", 3749779719)
+  methodbind.ptrcall(self, [getPtr startTime, getPtr endTime])
+
+proc resetSection*(self: AnimationPlayer): void =
+  expandMethodBind(className AnimationPlayer, "reset_section", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc getSectionStartTime*(self: AnimationPlayer): float64 =
+  expandMethodBind(className AnimationPlayer, "get_section_start_time", 1740695150)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
+
+proc getSectionEndTime*(self: AnimationPlayer): float64 =
+  expandMethodBind(className AnimationPlayer, "get_section_end_time", 1740695150)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
+
+proc hasSection*(self: AnimationPlayer): bool =
+  expandMethodBind(className AnimationPlayer, "has_section", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc seek*(self: AnimationPlayer; seconds: float64; update: bool = false; updateOnly: bool = false): void =
   expandMethodBind(className AnimationPlayer, "seek", 1807872683)
