@@ -114,6 +114,16 @@ proc getShadowReverseCullFace*(self: Light3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setShadowCasterMask*(self: Light3D; casterMask: uint32): void =
+  expandMethodBind(className Light3D, "set_shadow_caster_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr casterMask])
+
+proc getShadowCasterMask*(self: Light3D): uint32 =
+  expandMethodBind(className Light3D, "get_shadow_caster_mask", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc setBakeMode*(self: Light3D; bakeMode: Light3D_BakeMode): void =
   expandMethodBind(className Light3D, "set_bake_mode", 37739303)
   methodbind.ptrcall(self, [getPtr bakeMode])
@@ -212,6 +222,9 @@ template `shadowOpacity=`*(self: Light3D; value) = self.setParam(Light3D_Param(1
 
 template shadowBlur*(self: Light3D): untyped = self.getParam(Light3D_Param(18))
 template `shadowBlur=`*(self: Light3D; value) = self.setParam(Light3D_Param(18), value)
+
+template shadowCasterMask*(self: Light3D): untyped = self.getShadowCasterMask()
+template `shadowCasterMask=`*(self: Light3D; value) = self.setShadowCasterMask(value)
 
 template distanceFadeEnabled*(self: Light3D): untyped = self.isDistanceFadeEnabled()
 template `distanceFadeEnabled=`*(self: Light3D; value) = self.setEnableDistanceFade(value)

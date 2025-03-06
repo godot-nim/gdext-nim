@@ -39,6 +39,16 @@ proc getParameterList(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[C
   errproof: cast[AudioStream](p_instance).getParameterList().encode(r_ret)
 template getParameterList_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getParameterList
 
+method hasLoop*(self: AudioStream): bool {.base.} = (discard)
+proc hasLoop(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[AudioStream](p_instance).hasLoop().encode(r_ret)
+template hasLoop_bind*(_: typedesc[AudioStream]): ClassCallVirtual = hasLoop
+
+method getBarBeats*(self: AudioStream): int32 {.base.} = (discard)
+proc getBarBeats(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[AudioStream](p_instance).getBarBeats().encode(r_ret)
+template getBarBeats_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getBarBeats
+
 proc getLength*(self: AudioStream): float64 =
   expandMethodBind(className AudioStream, "get_length", 1740695150)
   var ret: encoded float64
@@ -84,6 +94,8 @@ const AudioStream_vmap =
     "getbpm" : "_get_bpm",
     "getbeatcount" : "_get_beat_count",
     "getparameterlist" : "_get_parameter_list",
+    "hasloop" : "_has_loop",
+    "getbarbeats" : "_get_bar_beats",
     }
 template vmap*(_: typedesc[AudioStream]): Table[string, string] = AudioStream_vmap
 

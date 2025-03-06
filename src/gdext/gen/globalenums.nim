@@ -261,7 +261,7 @@ type KeyModifierMask* = enum
   keyMaskKpad = 29
   keyMaskGroupSwitch = 30
   `--Padding-Max--` = 63 # To align size-of set[KeyModifierMask] to size-of Int.
-template keyModifierMask*[T: KeyModifierMask](_: typedesc[T]): set[T] = cast[set[T]](532676608)
+template keyModifierMask*[T: KeyModifierMask](_: typedesc[T]): set[T] = cast[set[T]](2130706432)
 
 type KeyLocation* {.size: sizeof(clong).} = enum
   keyLocationUnspecified = 0
@@ -436,7 +436,10 @@ type PropertyHint* {.size: sizeof(clong).} = enum
   propertyHintHideQuaternionEdit = 35
   propertyHintPassword = 36
   propertyHintLayersAvoidance = 37
-  propertyHintMax = 38
+  propertyHintDictionaryType = 38
+  propertyHintToolButton = 39
+  propertyHintOneshot = 40
+  propertyHintMax = 42
 
 type PropertyUsageFlags* = enum
   # propertyUsageNone = 0
@@ -482,6 +485,7 @@ type MethodFlags* = enum
   methodFlagVararg = 4
   methodFlagStatic = 5
   methodFlagObjectCore = 6
+  methodFlagVirtualRequired = 7
   `--Padding-Max--` = 63 # To align size-of set[MethodFlags] to size-of Int.
 template methodFlagsDefault*[T: MethodFlags](_: typedesc[T]): T = T(0)
 

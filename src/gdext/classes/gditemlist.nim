@@ -56,6 +56,16 @@ proc getItemLanguage*(self: ItemList; idx: int32): String =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(String)
 
+proc setItemAutoTranslateMode*(self: ItemList; idx: int32; mode: Node_AutoTranslateMode): void =
+  expandMethodBind(className ItemList, "set_item_auto_translate_mode", 287402019)
+  methodbind.ptrcall(self, [getPtr idx, getPtr mode])
+
+proc getItemAutoTranslateMode*(self: ItemList; idx: int32): Node_AutoTranslateMode =
+  expandMethodBind(className ItemList, "get_item_auto_translate_mode", 906302372)
+  var ret: encoded Node_AutoTranslateMode
+  methodbind.ptrcall(self, [getPtr idx], addr ret)
+  (addr ret).decode_result(Node_AutoTranslateMode)
+
 proc setItemIconTransposed*(self: ItemList; idx: int32; transposed: bool): void =
   expandMethodBind(className ItemList, "set_item_icon_transposed", 300928843)
   methodbind.ptrcall(self, [getPtr idx, getPtr transposed])
@@ -322,6 +332,16 @@ proc getAllowSearch*(self: ItemList): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setAutoWidth*(self: ItemList; enable: bool): void =
+  expandMethodBind(className ItemList, "set_auto_width", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc hasAutoWidth*(self: ItemList): bool =
+  expandMethodBind(className ItemList, "has_auto_width", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setAutoHeight*(self: ItemList; enable: bool): void =
   expandMethodBind(className ItemList, "set_auto_height", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -354,6 +374,12 @@ proc getVScrollBar*(self: ItemList): VScrollBar =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VScrollBar)
 
+proc getHScrollBar*(self: ItemList): HScrollBar =
+  expandMethodBind(className ItemList, "get_h_scroll_bar", 4004517983)
+  var ret: encoded HScrollBar
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(HScrollBar)
+
 proc setTextOverrunBehavior*(self: ItemList; overrunBehavior: TextServer_OverrunBehavior): void =
   expandMethodBind(className ItemList, "set_text_overrun_behavior", 1008890932)
   methodbind.ptrcall(self, [getPtr overrunBehavior])
@@ -363,6 +389,16 @@ proc getTextOverrunBehavior*(self: ItemList): TextServer_OverrunBehavior =
   var ret: encoded TextServer_OverrunBehavior
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_OverrunBehavior)
+
+proc setWraparoundItems*(self: ItemList; enable: bool): void =
+  expandMethodBind(className ItemList, "set_wraparound_items", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc hasWraparoundItems*(self: ItemList): bool =
+  expandMethodBind(className ItemList, "has_wraparound_items", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc forceUpdateListSize*(self: ItemList): void =
   expandMethodBind(className ItemList, "force_update_list_size", 3218959716)
@@ -383,11 +419,17 @@ template `allowSearch=`*(self: ItemList; value) = self.setAllowSearch(value)
 template maxTextLines*(self: ItemList): untyped = self.getMaxTextLines()
 template `maxTextLines=`*(self: ItemList; value) = self.setMaxTextLines(value)
 
+template autoWidth*(self: ItemList): untyped = self.hasAutoWidth()
+template `autoWidth=`*(self: ItemList; value) = self.setAutoWidth(value)
+
 template autoHeight*(self: ItemList): untyped = self.hasAutoHeight()
 template `autoHeight=`*(self: ItemList; value) = self.setAutoHeight(value)
 
 template textOverrunBehavior*(self: ItemList): untyped = self.getTextOverrunBehavior()
 template `textOverrunBehavior=`*(self: ItemList; value) = self.setTextOverrunBehavior(value)
+
+template wraparoundItems*(self: ItemList): untyped = self.hasWraparoundItems()
+template `wraparoundItems=`*(self: ItemList; value) = self.setWraparoundItems(value)
 
 template itemCount*(self: ItemList): untyped = self.getItemCount()
 template `itemCount=`*(self: ItemList; value) = self.setItemCount(value)

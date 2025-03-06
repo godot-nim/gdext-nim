@@ -42,6 +42,12 @@ proc setTimeout*(self: ENetPacketPeer; timeout: int32; timeoutMin: int32; timeou
   expandMethodBind(className ENetPacketPeer, "set_timeout", 1649997291)
   methodbind.ptrcall(self, [getPtr timeout, getPtr timeoutMin, getPtr timeoutMax])
 
+proc getPacketFlags*(self: ENetPacketPeer): int32 =
+  expandMethodBind(className ENetPacketPeer, "get_packet_flags", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 proc getRemoteAddress*(self: ENetPacketPeer): String =
   expandMethodBind(className ENetPacketPeer, "get_remote_address", 201670096)
   var ret: encoded String

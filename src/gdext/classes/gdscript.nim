@@ -104,6 +104,12 @@ proc isAbstract*(self: Script): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getRpcConfig*(self: Script): Variant =
+  expandMethodBind(className Script, "get_rpc_config", 1214101251)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Variant)
+
 template sourceCode*(self: Script): untyped = self.getSourceCode()
 template `sourceCode=`*(self: Script; value) = self.setSourceCode(value)
 

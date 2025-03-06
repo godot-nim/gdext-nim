@@ -26,6 +26,28 @@ proc setBoneName*(self: Skeleton3D; boneIdx: int32; name: String): void =
   expandMethodBind(className Skeleton3D, "set_bone_name", 501894301)
   methodbind.ptrcall(self, [getPtr boneIdx, getPtr name])
 
+proc getBoneMeta*(self: Skeleton3D; boneIdx: int32; key: StringName): Variant =
+  expandMethodBind(className Skeleton3D, "get_bone_meta", 203112058)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr boneIdx, getPtr key], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc getBoneMetaList*(self: Skeleton3D; boneIdx: int32): TypedArray[StringName] =
+  expandMethodBind(className Skeleton3D, "get_bone_meta_list", 663333327)
+  var ret: encoded TypedArray[StringName]
+  methodbind.ptrcall(self, [getPtr boneIdx], addr ret)
+  (addr ret).decode_result(TypedArray[StringName])
+
+proc hasBoneMeta*(self: Skeleton3D; boneIdx: int32; key: StringName): bool =
+  expandMethodBind(className Skeleton3D, "has_bone_meta", 921227809)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr boneIdx, getPtr key], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setBoneMeta*(self: Skeleton3D; boneIdx: int32; key: StringName; value: Variant): void =
+  expandMethodBind(className Skeleton3D, "set_bone_meta", 702482756)
+  methodbind.ptrcall(self, [getPtr boneIdx, getPtr key, getPtr value])
+
 proc getConcatenatedBoneNames*(self: Skeleton3D): StringName =
   expandMethodBind(className Skeleton3D, "get_concatenated_bone_names", 2002593661)
   var ret: encoded StringName
@@ -273,6 +295,12 @@ template `animatePhysicalBones=`*(self: Skeleton3D; value) = self.setAnimatePhys
 const Skeleton3D_vmap =
   Node3D.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[Skeleton3D]): Table[string, string] = Skeleton3D_vmap
+
+proc restUpdated*(self: Skeleton3D): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("rest_updated")
+  self.emitSignal(signalname)
 
 proc poseUpdated*(self: Skeleton3D): Error =
   var signalname {.global.} : Variant

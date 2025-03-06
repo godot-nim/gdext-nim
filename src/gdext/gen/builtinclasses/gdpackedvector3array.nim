@@ -35,9 +35,10 @@ proc load_PackedVector3Array_operators {.execon: staticevents.init_engine.on_loa
   `!=(PackedVector3Array PackedVector3Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedVector3Array, VariantType_PackedVector3Array)
   `+(PackedVector3Array PackedVector3Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedVector3Array, VariantType_PackedVector3Array)
 
+var `get(PackedVector3Array Int)`: PtrBuiltinMethod
+var `set(PackedVector3Array Int Vector3)`: PtrBuiltinMethod
 var `size(PackedVector3Array)`: PtrBuiltinMethod
 var `isEmpty(PackedVector3Array)`: PtrBuiltinMethod
-var `set(PackedVector3Array Int Vector3)`: PtrBuiltinMethod
 var `pushBack(PackedVector3Array Vector3)`: PtrBuiltinMethod
 var `append(PackedVector3Array Vector3)`: PtrBuiltinMethod
 var `appendArray(PackedVector3Array PackedVector3Array)`: PtrBuiltinMethod
@@ -57,13 +58,16 @@ var `find(PackedVector3Array Vector3 Int)`: PtrBuiltinMethod
 var `rfind(PackedVector3Array Vector3 Int)`: PtrBuiltinMethod
 var `count(PackedVector3Array Vector3)`: PtrBuiltinMethod
 
+proc get*(self: PackedVector3Array; index: Int): Vector3 =
+  let argArr = [getPtr index]
+  `get(PackedVector3Array Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedVector3Array; index: Int; value: Vector3): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedVector3Array Int Vector3)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedVector3Array): Int =
   `size(PackedVector3Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedVector3Array): bool =
   `isEmpty(PackedVector3Array)`(addr self, nil, addr result, 0)
-proc set*(self: PackedVector3Array; index: Int; value: Vector3): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedVector3Array Int Vector3)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedVector3Array; value: Vector3): bool =
   let argArr = [getPtr value]
   `pushBack(PackedVector3Array Vector3)`(addr self, addr argArr[0], addr result, 1)
@@ -115,9 +119,10 @@ proc count*(self: PackedVector3Array; value: Vector3): Int =
   `count(PackedVector3Array Vector3)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedVector3Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedVector3Array Int)` = load(VariantType_PackedVector3Array, "get", 1394941017)
+  `set(PackedVector3Array Int Vector3)` = load(VariantType_PackedVector3Array, "set", 3975343409)
   `size(PackedVector3Array)` = load(VariantType_PackedVector3Array, "size", 3173160232)
   `isEmpty(PackedVector3Array)` = load(VariantType_PackedVector3Array, "is_empty", 3918633141)
-  `set(PackedVector3Array Int Vector3)` = load(VariantType_PackedVector3Array, "set", 3975343409)
   `pushBack(PackedVector3Array Vector3)` = load(VariantType_PackedVector3Array, "push_back", 3295363524)
   `append(PackedVector3Array Vector3)` = load(VariantType_PackedVector3Array, "append", 3295363524)
   `appendArray(PackedVector3Array PackedVector3Array)` = load(VariantType_PackedVector3Array, "append_array", 203538016)

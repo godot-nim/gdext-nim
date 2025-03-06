@@ -14,6 +14,16 @@ proc getLightmapTextures*(self: LightmapGIData): TypedArray[TextureLayered] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[TextureLayered])
 
+proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: TypedArray[TextureLayered]): void =
+  expandMethodBind(className LightmapGIData, "set_shadowmask_textures", 381264803)
+  methodbind.ptrcall(self, [getPtr shadowmaskTextures])
+
+proc getShadowmaskTextures*(self: LightmapGIData): TypedArray[TextureLayered] =
+  expandMethodBind(className LightmapGIData, "get_shadowmask_textures", 3995934104)
+  var ret: encoded TypedArray[TextureLayered]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[TextureLayered])
+
 proc setUsesSphericalHarmonics*(self: LightmapGIData; usesSphericalHarmonics: bool): void =
   expandMethodBind(className LightmapGIData, "set_uses_spherical_harmonics", 2586408642)
   methodbind.ptrcall(self, [getPtr usesSphericalHarmonics])
@@ -56,6 +66,9 @@ proc getLightTexture*(self: LightmapGIData): gdref TextureLayered =
 
 template lightmapTextures*(self: LightmapGIData): untyped = self.getLightmapTextures()
 template `lightmapTextures=`*(self: LightmapGIData; value) = self.setLightmapTextures(value)
+
+template shadowmaskTextures*(self: LightmapGIData): untyped = self.getShadowmaskTextures()
+template `shadowmaskTextures=`*(self: LightmapGIData; value) = self.setShadowmaskTextures(value)
 
 template usesSphericalHarmonics*(self: LightmapGIData): untyped = self.isUsingSphericalHarmonics()
 template `usesSphericalHarmonics=`*(self: LightmapGIData; value) = self.setUsesSphericalHarmonics(value)

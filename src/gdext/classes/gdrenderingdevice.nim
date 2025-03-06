@@ -40,6 +40,12 @@ proc textureGetData*(self: RenderingDevice; texture: RID; layer: uint32): Packed
   methodbind.ptrcall(self, [getPtr texture, getPtr layer], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
+proc textureGetDataAsync*(self: RenderingDevice; texture: RID; layer: uint32; callback: Callable): Error =
+  expandMethodBind(className RenderingDevice, "texture_get_data_async", 498832090)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr texture, getPtr layer, getPtr callback], addr ret)
+  (addr ret).decode_result(Error)
+
 proc textureIsFormatSupportedForUsage*(self: RenderingDevice; format: RenderingDevice_DataFormat; usageFlags: set[RenderingDevice_TextureUsageBits]): bool =
   expandMethodBind(className RenderingDevice, "texture_is_format_supported_for_usage", 2592520478)
   var ret: encoded bool
@@ -54,6 +60,16 @@ proc textureIsShared*(self: RenderingDevice; texture: RID): bool =
 
 proc textureIsValid*(self: RenderingDevice; texture: RID): bool =
   expandMethodBind(className RenderingDevice, "texture_is_valid", 3521089500)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr texture], addr ret)
+  (addr ret).decode_result(bool)
+
+proc textureSetDiscardable*(self: RenderingDevice; texture: RID; discardable: bool): void =
+  expandMethodBind(className RenderingDevice, "texture_set_discardable", 1265174801)
+  methodbind.ptrcall(self, [getPtr texture, getPtr discardable])
+
+proc textureIsDiscardable*(self: RenderingDevice; texture: RID): bool =
+  expandMethodBind(className RenderingDevice, "texture_is_discardable", 3521089500)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr texture], addr ret)
   (addr ret).decode_result(bool)
@@ -154,10 +170,10 @@ proc samplerIsFormatSupportedForFilter*(self: RenderingDevice; format: Rendering
   methodbind.ptrcall(self, [getPtr format, getPtr samplerFilter], addr ret)
   (addr ret).decode_result(bool)
 
-proc vertexBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray(); useAsStorage: bool = false): RID =
-  expandMethodBind(className RenderingDevice, "vertex_buffer_create", 3410049843)
+proc vertexBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray(); creationBits: set[RenderingDevice_BufferCreationBits] = {}): RID =
+  expandMethodBind(className RenderingDevice, "vertex_buffer_create", 2089548973)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data, getPtr useAsStorage], addr ret)
+  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data, getPtr creationBits], addr ret)
   (addr ret).decode_result(RID)
 
 proc vertexFormatCreate*(self: RenderingDevice; vertexDescriptions: TypedArray[RDVertexAttribute]): int64 =
@@ -172,10 +188,10 @@ proc vertexArrayCreate*(self: RenderingDevice; vertexCount: uint32; vertexFormat
   methodbind.ptrcall(self, [getPtr vertexCount, getPtr vertexFormat, getPtr srcBuffers, getPtr offsets], addr ret)
   (addr ret).decode_result(RID)
 
-proc indexBufferCreate*(self: RenderingDevice; sizeIndices: uint32; format: RenderingDevice_IndexBufferFormat; data: PackedByteArray = PackedByteArray(); useRestartIndices: bool = false): RID =
-  expandMethodBind(className RenderingDevice, "index_buffer_create", 3935920523)
+proc indexBufferCreate*(self: RenderingDevice; sizeIndices: uint32; format: RenderingDevice_IndexBufferFormat; data: PackedByteArray = PackedByteArray(); useRestartIndices: bool = false; creationBits: set[RenderingDevice_BufferCreationBits] = {}): RID =
+  expandMethodBind(className RenderingDevice, "index_buffer_create", 2368684885)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr sizeIndices, getPtr format, getPtr data, getPtr useRestartIndices], addr ret)
+  methodbind.ptrcall(self, [getPtr sizeIndices, getPtr format, getPtr data, getPtr useRestartIndices, getPtr creationBits], addr ret)
   (addr ret).decode_result(RID)
 
 proc indexArrayCreate*(self: RenderingDevice; indexBuffer: RID; indexOffset: uint32; indexCount: uint32): RID =
@@ -220,16 +236,16 @@ proc shaderGetVertexInputAttributeMask*(self: RenderingDevice; shader: RID): uin
   methodbind.ptrcall(self, [getPtr shader], addr ret)
   (addr ret).decode_result(uint64)
 
-proc uniformBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray()): RID =
-  expandMethodBind(className RenderingDevice, "uniform_buffer_create", 34556762)
+proc uniformBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray(); creationBits: set[RenderingDevice_BufferCreationBits] = {}): RID =
+  expandMethodBind(className RenderingDevice, "uniform_buffer_create", 2089548973)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data], addr ret)
+  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data, getPtr creationBits], addr ret)
   (addr ret).decode_result(RID)
 
-proc storageBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray(); usage: set[RenderingDevice_StorageBufferUsage] = {}): RID =
-  expandMethodBind(className RenderingDevice, "storage_buffer_create", 2316365934)
+proc storageBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedByteArray = PackedByteArray(); usage: set[RenderingDevice_StorageBufferUsage] = {}; creationBits: set[RenderingDevice_BufferCreationBits] = {}): RID =
+  expandMethodBind(className RenderingDevice, "storage_buffer_create", 1609052553)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data, getPtr usage], addr ret)
+  methodbind.ptrcall(self, [getPtr sizeBytes, getPtr data, getPtr usage, getPtr creationBits], addr ret)
   (addr ret).decode_result(RID)
 
 proc textureBufferCreate*(self: RenderingDevice; sizeBytes: uint32; format: RenderingDevice_DataFormat; data: PackedByteArray = PackedByteArray()): RID =
@@ -273,6 +289,18 @@ proc bufferGetData*(self: RenderingDevice; buffer: RID; offsetBytes: uint32 = 0'
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, [getPtr buffer, getPtr offsetBytes, getPtr sizeBytes], addr ret)
   (addr ret).decode_result(PackedByteArray)
+
+proc bufferGetDataAsync*(self: RenderingDevice; buffer: RID; callback: Callable; offsetBytes: uint32 = 0'u32; sizeBytes: uint32 = 0'u32): Error =
+  expandMethodBind(className RenderingDevice, "buffer_get_data_async", 2370287848)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr buffer, getPtr callback, getPtr offsetBytes, getPtr sizeBytes], addr ret)
+  (addr ret).decode_result(Error)
+
+proc bufferGetDeviceAddress*(self: RenderingDevice; buffer: RID): uint64 =
+  expandMethodBind(className RenderingDevice, "buffer_get_device_address", 3917799429)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr buffer], addr ret)
+  (addr ret).decode_result(uint64)
 
 proc renderPipelineCreate*(self: RenderingDevice; shader: RID; framebufferFormat: int64; vertexFormat: int64; primitive: RenderingDevice_RenderPrimitive; rasterizationState: gdref RDPipelineRasterizationState; multisampleState: gdref RDPipelineMultisampleState; stencilState: gdref RDPipelineDepthStencilState; colorBlendState: gdref RDPipelineColorBlendState; dynamicStateFlags: set[RenderingDevice_PipelineDynamicStateFlags] = {}; forRenderPass: uint32 = 0'u32; specializationConstants: TypedArray[RDPipelineSpecializationConstant] = TypedArray[RDPipelineSpecializationConstant](gdarray())): RID =
   expandMethodBind(className RenderingDevice, "render_pipeline_create", 2385451958)
@@ -322,10 +350,10 @@ proc drawListBeginForScreen*(self: RenderingDevice; screen: int32 = 0; clearColo
   methodbind.ptrcall(self, [getPtr screen, getPtr clearColor], addr ret)
   (addr ret).decode_result(int64)
 
-proc drawListBegin*(self: RenderingDevice; framebuffer: RID; initialColorAction: RenderingDevice_InitialAction; finalColorAction: RenderingDevice_FinalAction; initialDepthAction: RenderingDevice_InitialAction; finalDepthAction: RenderingDevice_FinalAction; clearColorValues: PackedColorArray = PackedColorArray(); clearDepth: Float = 1.0; clearStencil: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0)): int64 =
-  expandMethodBind(className RenderingDevice, "draw_list_begin", 2686605154)
+proc drawListBegin*(self: RenderingDevice; framebuffer: RID; drawFlags: set[RenderingDevice_DrawFlags] = {}; clearColorValues: PackedColorArray = PackedColorArray(); clearDepthValue: Float = 1.0; clearStencilValue: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0); breadcrumb: uint32 = 0'u32): int64 =
+  expandMethodBind(className RenderingDevice, "draw_list_begin", 1317926357)
   var ret: encoded int64
-  methodbind.ptrcall(self, [getPtr framebuffer, getPtr initialColorAction, getPtr finalColorAction, getPtr initialDepthAction, getPtr finalDepthAction, getPtr clearColorValues, getPtr clearDepth, getPtr clearStencil, getPtr region], addr ret)
+  methodbind.ptrcall(self, [getPtr framebuffer, getPtr drawFlags, getPtr clearColorValues, getPtr clearDepthValue, getPtr clearStencilValue, getPtr region, getPtr breadcrumb], addr ret)
   (addr ret).decode_result(int64)
 
 proc drawListBeginSplit*(self: RenderingDevice; framebuffer: RID; splits: uint32; initialColorAction: RenderingDevice_InitialAction; finalColorAction: RenderingDevice_FinalAction; initialDepthAction: RenderingDevice_InitialAction; finalDepthAction: RenderingDevice_FinalAction; clearColorValues: PackedColorArray = PackedColorArray(); clearDepth: Float = 1.0; clearStencil: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0); storageTextures: TypedArray[RID] = TypedArray[RID](gdarray())): PackedInt64Array =
@@ -361,6 +389,10 @@ proc drawListSetPushConstant*(self: RenderingDevice; drawList: int64; buffer: Pa
 proc drawListDraw*(self: RenderingDevice; drawList: int64; useIndices: bool; instances: uint32; proceduralVertexCount: uint32 = 0'u32): void =
   expandMethodBind(className RenderingDevice, "draw_list_draw", 4230067973)
   methodbind.ptrcall(self, [getPtr drawList, getPtr useIndices, getPtr instances, getPtr proceduralVertexCount])
+
+proc drawListDrawIndirect*(self: RenderingDevice; drawList: int64; useIndices: bool; buffer: RID; offset: uint32 = 0'u32; drawCount: uint32 = 1'u32; stride: uint32 = 0'u32): void =
+  expandMethodBind(className RenderingDevice, "draw_list_draw_indirect", 1092133571)
+  methodbind.ptrcall(self, [getPtr drawList, getPtr useIndices, getPtr buffer, getPtr offset, getPtr drawCount, getPtr stride])
 
 proc drawListEnableScissor*(self: RenderingDevice; drawList: int64; rect: Rect2 = rect2(0, 0, 0, 0)): void =
   expandMethodBind(className RenderingDevice, "draw_list_enable_scissor", 244650101)
@@ -458,6 +490,12 @@ proc getCapturedTimestampName*(self: RenderingDevice; index: uint32): String =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(String)
 
+proc hasFeature*(self: RenderingDevice; feature: RenderingDevice_Features): bool =
+  expandMethodBind(className RenderingDevice, "has_feature", 1772728326)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr feature], addr ret)
+  (addr ret).decode_result(bool)
+
 proc limitGet*(self: RenderingDevice; limit: RenderingDevice_Limit): uint64 =
   expandMethodBind(className RenderingDevice, "limit_get", 1559202131)
   var ret: encoded uint64
@@ -536,6 +574,78 @@ proc getDriverResource*(self: RenderingDevice; resource: RenderingDevice_DriverR
   expandMethodBind(className RenderingDevice, "get_driver_resource", 501815484)
   var ret: encoded uint64
   methodbind.ptrcall(self, [getPtr resource, getPtr rid, getPtr index], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getPerfReport*(self: RenderingDevice): String =
+  expandMethodBind(className RenderingDevice, "get_perf_report", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getDriverAndDeviceMemoryReport*(self: RenderingDevice): String =
+  expandMethodBind(className RenderingDevice, "get_driver_and_device_memory_report", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getTrackedObjectName*(self: RenderingDevice; typeIndex: uint32): String =
+  expandMethodBind(className RenderingDevice, "get_tracked_object_name", 844755477)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr typeIndex], addr ret)
+  (addr ret).decode_result(String)
+
+proc getTrackedObjectTypeCount*(self: RenderingDevice): uint64 =
+  expandMethodBind(className RenderingDevice, "get_tracked_object_type_count", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDriverTotalMemory*(self: RenderingDevice): uint64 =
+  expandMethodBind(className RenderingDevice, "get_driver_total_memory", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDriverAllocationCount*(self: RenderingDevice): uint64 =
+  expandMethodBind(className RenderingDevice, "get_driver_allocation_count", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDriverMemoryByObjectType*(self: RenderingDevice; `type`: uint32): uint64 =
+  expandMethodBind(className RenderingDevice, "get_driver_memory_by_object_type", 923996154)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr `type`], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDriverAllocsByObjectType*(self: RenderingDevice; `type`: uint32): uint64 =
+  expandMethodBind(className RenderingDevice, "get_driver_allocs_by_object_type", 923996154)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr `type`], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDeviceTotalMemory*(self: RenderingDevice): uint64 =
+  expandMethodBind(className RenderingDevice, "get_device_total_memory", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDeviceAllocationCount*(self: RenderingDevice): uint64 =
+  expandMethodBind(className RenderingDevice, "get_device_allocation_count", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDeviceMemoryByObjectType*(self: RenderingDevice; `type`: uint32): uint64 =
+  expandMethodBind(className RenderingDevice, "get_device_memory_by_object_type", 923996154)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr `type`], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getDeviceAllocsByObjectType*(self: RenderingDevice; `type`: uint32): uint64 =
+  expandMethodBind(className RenderingDevice, "get_device_allocs_by_object_type", 923996154)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [getPtr `type`], addr ret)
   (addr ret).decode_result(uint64)
 
 const RenderingDevice_vmap =

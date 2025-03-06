@@ -31,43 +31,43 @@ proc globalMenuAddSubmenuItem*(self: DisplayServer; menuRoot: String; label: Str
   (addr ret).decode_result(int32)
 
 proc globalMenuAddItem*(self: DisplayServer; menuRoot: String; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_item", 3401266716)
+  expandMethodBind(className DisplayServer, "global_menu_add_item", 3616842746)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddCheckItem*(self: DisplayServer; menuRoot: String; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_check_item", 3401266716)
+  expandMethodBind(className DisplayServer, "global_menu_add_check_item", 3616842746)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddIconItem*(self: DisplayServer; menuRoot: String; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_icon_item", 4245856523)
+  expandMethodBind(className DisplayServer, "global_menu_add_icon_item", 3867083847)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddIconCheckItem*(self: DisplayServer; menuRoot: String; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_icon_check_item", 4245856523)
+  expandMethodBind(className DisplayServer, "global_menu_add_icon_check_item", 3867083847)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddRadioCheckItem*(self: DisplayServer; menuRoot: String; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_radio_check_item", 3401266716)
+  expandMethodBind(className DisplayServer, "global_menu_add_radio_check_item", 3616842746)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddIconRadioCheckItem*(self: DisplayServer; menuRoot: String; icon: gdref Texture2D; label: String; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_icon_radio_check_item", 4245856523)
+  expandMethodBind(className DisplayServer, "global_menu_add_icon_radio_check_item", 3867083847)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr icon, getPtr label, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
 
 proc globalMenuAddMultistateItem*(self: DisplayServer; menuRoot: String; label: String; maxStates: int32; defaultState: int32; callback: Callable = callable(); keyCallback: Callable = callable(); tag: Variant = default(Variant); accelerator: Key = keyNone; index: int32 = -1): int32 =
-  expandMethodBind(className DisplayServer, "global_menu_add_multistate_item", 3431222859)
+  expandMethodBind(className DisplayServer, "global_menu_add_multistate_item", 3297554655)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr menuRoot, getPtr label, getPtr maxStates, getPtr defaultState, getPtr callback, getPtr keyCallback, getPtr tag, getPtr accelerator, getPtr index], addr ret)
   (addr ret).decode_result(int32)
@@ -477,7 +477,7 @@ proc screenGetScale*(self: DisplayServer; screen: int32 = -1): Float =
   (addr ret).decode_result(Float)
 
 proc isTouchscreenAvailable*(self: DisplayServer): bool =
-  expandMethodBind(className DisplayServer, "is_touchscreen_available", 3323674545)
+  expandMethodBind(className DisplayServer, "is_touchscreen_available", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -504,6 +504,12 @@ proc screenGetImage*(self: DisplayServer; screen: int32 = -1): gdref Image =
   expandMethodBind(className DisplayServer, "screen_get_image", 3813388802)
   var ret: encoded gdref Image
   methodbind.ptrcall(self, [getPtr screen], addr ret)
+  (addr ret).decode_result(gdref Image)
+
+proc screenGetImageRect*(self: DisplayServer; rect: Rect2i): gdref Image =
+  expandMethodBind(className DisplayServer, "screen_get_image_rect", 2601441065)
+  var ret: encoded gdref Image
+  methodbind.ptrcall(self, [getPtr rect], addr ret)
   (addr ret).decode_result(gdref Image)
 
 proc screenSetOrientation*(self: DisplayServer; orientation: DisplayServer_ScreenOrientation; screen: int32 = -1): void =
@@ -756,6 +762,14 @@ proc windowMinimizeOnTitleDblClick*(self: DisplayServer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc windowStartDrag*(self: DisplayServer; windowId: int32 = 0): void =
+  expandMethodBind(className DisplayServer, "window_start_drag", 1995695955)
+  methodbind.ptrcall(self, [getPtr windowId])
+
+proc windowStartResize*(self: DisplayServer; edge: DisplayServer_WindowResizeEdge; windowId: int32 = 0): void =
+  expandMethodBind(className DisplayServer, "window_start_resize", 4009722312)
+  methodbind.ptrcall(self, [getPtr edge, getPtr windowId])
+
 proc imeGetSelection*(self: DisplayServer): Vector2i =
   expandMethodBind(className DisplayServer, "ime_get_selection", 3690982128)
   var ret: encoded Vector2i
@@ -781,6 +795,12 @@ proc virtualKeyboardGetHeight*(self: DisplayServer): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
+
+proc hasHardwareKeyboard*(self: DisplayServer): bool =
+  expandMethodBind(className DisplayServer, "has_hardware_keyboard", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc cursorSetShape*(self: DisplayServer; shape: DisplayServer_CursorShape): void =
   expandMethodBind(className DisplayServer, "cursor_set_shape", 2026291549)
@@ -830,6 +850,10 @@ proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirec
   methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr root, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr options, getPtr callback], addr ret)
   (addr ret).decode_result(Error)
 
+proc beep*(self: DisplayServer): void =
+  expandMethodBind(className DisplayServer, "beep", 4051624405)
+  methodbind.ptrcall(self, [])
+
 proc keyboardGetLayoutCount*(self: DisplayServer): int32 =
   expandMethodBind(className DisplayServer, "keyboard_get_layout_count", 3905245786)
   var ret: encoded int32
@@ -869,6 +893,10 @@ proc keyboardGetLabelFromPhysical*(self: DisplayServer; keycode: Key): Key =
   var ret: encoded Key
   methodbind.ptrcall(self, [getPtr keycode], addr ret)
   (addr ret).decode_result(Key)
+
+proc showEmojiAndSymbolPicker*(self: DisplayServer): void =
+  expandMethodBind(className DisplayServer, "show_emoji_and_symbol_picker", 4051624405)
+  methodbind.ptrcall(self, [])
 
 proc processEvents*(self: DisplayServer): void =
   expandMethodBind(className DisplayServer, "process_events", 3218959716)

@@ -72,6 +72,20 @@ proc getSelectedOptions*(self: EditorFileDialog): Dictionary =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
 
+proc clearFilenameFilter*(self: EditorFileDialog): void =
+  expandMethodBind(className EditorFileDialog, "clear_filename_filter", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc setFilenameFilter*(self: EditorFileDialog; filter: String): void =
+  expandMethodBind(className EditorFileDialog, "set_filename_filter", 83702148)
+  methodbind.ptrcall(self, [getPtr filter])
+
+proc getFilenameFilter*(self: EditorFileDialog): String =
+  expandMethodBind(className EditorFileDialog, "get_filename_filter", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc getCurrentDir*(self: EditorFileDialog): String =
   expandMethodBind(className EditorFileDialog, "get_current_dir", 201670096)
   var ret: encoded String
@@ -229,4 +243,11 @@ proc dirSelected*(self: EditorFileDialog; dir: Variant): Error =
   once:
     signalname = variant stringname("dir_selected")
   let args = [dir]
+  self.emitSignal(signalname, args)
+
+proc filenameFilterChanged*(self: EditorFileDialog; filter: Variant): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("filename_filter_changed")
+  let args = [filter]
   self.emitSignal(signalname, args)

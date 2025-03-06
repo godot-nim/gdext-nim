@@ -20,21 +20,25 @@ proc getCode*(self: Shader): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc setDefaultTextureParameter*(self: Shader; name: StringName; texture: gdref Texture2D; index: int32 = 0): void =
-  expandMethodBind(className Shader, "set_default_texture_parameter", 2750740428)
+proc setDefaultTextureParameter*(self: Shader; name: StringName; texture: gdref Texture; index: int32 = 0): void =
+  expandMethodBind(className Shader, "set_default_texture_parameter", 3850209648)
   methodbind.ptrcall(self, [getPtr name, getPtr texture, getPtr index])
 
-proc getDefaultTextureParameter*(self: Shader; name: StringName; index: int32 = 0): gdref Texture2D =
-  expandMethodBind(className Shader, "get_default_texture_parameter", 3090538643)
-  var ret: encoded gdref Texture2D
+proc getDefaultTextureParameter*(self: Shader; name: StringName; index: int32 = 0): gdref Texture =
+  expandMethodBind(className Shader, "get_default_texture_parameter", 4213877425)
+  var ret: encoded gdref Texture
   methodbind.ptrcall(self, [getPtr name, getPtr index], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  (addr ret).decode_result(gdref Texture)
 
 proc getShaderUniformList*(self: Shader; getGroups: bool = false): Array =
   expandMethodBind(className Shader, "get_shader_uniform_list", 1230511656)
   var ret: encoded Array
   methodbind.ptrcall(self, [getPtr getGroups], addr ret)
   (addr ret).decode_result(Array)
+
+proc inspectNativeShaderCode*(self: Shader): void =
+  expandMethodBind(className Shader, "inspect_native_shader_code", 3218959716)
+  methodbind.ptrcall(self, [])
 
 template code*(self: Shader): untyped = self.getCode()
 template `code=`*(self: Shader; value) = self.setCode(value)

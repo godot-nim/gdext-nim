@@ -49,6 +49,8 @@ var `isEmpty(Array)`: PtrBuiltinMethod
 var `clear(Array)`: PtrBuiltinMethod
 var `hash(Array)`: PtrBuiltinMethod
 var `assign(Array Array)`: PtrBuiltinMethod
+var `get(Array Int)`: PtrBuiltinMethod
+var `set(Array Int Variant)`: PtrBuiltinMethod
 var `pushBack(Array Variant)`: PtrBuiltinMethod
 var `pushFront(Array Variant)`: PtrBuiltinMethod
 var `append(Array Variant)`: PtrBuiltinMethod
@@ -62,7 +64,9 @@ var `front(Array)`: PtrBuiltinMethod
 var `back(Array)`: PtrBuiltinMethod
 var `pickRandom(Array)`: PtrBuiltinMethod
 var `find(Array Variant Int)`: PtrBuiltinMethod
+var `findCustom(Array Callable Int)`: PtrBuiltinMethod
 var `rfind(Array Variant Int)`: PtrBuiltinMethod
+var `rfindCustom(Array Callable Int)`: PtrBuiltinMethod
 var `count(Array Variant)`: PtrBuiltinMethod
 var `has(Array Variant)`: PtrBuiltinMethod
 var `popBack(Array)`: PtrBuiltinMethod
@@ -102,6 +106,12 @@ proc hash*(self: Array): Int =
 proc assign*(self: Array; array: Array): void =
   let argArr = [getPtr array]
   `assign(Array Array)`(addr self, addr argArr[0], nil, 1)
+proc get*(self: Array; index: Int): Variant =
+  let argArr = [getPtr index]
+  `get(Array Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: Array; index: Int; value: Variant): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(Array Int Variant)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: Array; value: Variant): void =
   let argArr = [getPtr value]
   `pushBack(Array Variant)`(addr self, addr argArr[0], nil, 1)
@@ -138,9 +148,15 @@ proc pickRandom*(self: Array): Variant =
 proc find*(self: Array; what: Variant; `from`: Int = 0): Int =
   let argArr = [getPtr what, getPtr `from`]
   `find(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
+proc findCustom*(self: Array; `method`: Callable; `from`: Int = 0): Int =
+  let argArr = [getPtr `method`, getPtr `from`]
+  `findCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
 proc rfind*(self: Array; what: Variant; `from`: Int = -1): Int =
   let argArr = [getPtr what, getPtr `from`]
   `rfind(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
+proc rfindCustom*(self: Array; `method`: Callable; `from`: Int = -1): Int =
+  let argArr = [getPtr `method`, getPtr `from`]
+  `rfindCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
 proc count*(self: Array; value: Variant): Int =
   let argArr = [getPtr value]
   `count(Array Variant)`(addr self, addr argArr[0], addr result, 1)
@@ -216,6 +232,8 @@ proc load_Array_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `clear(Array)` = load(VariantType_Array, "clear", 3218959716)
   `hash(Array)` = load(VariantType_Array, "hash", 3173160232)
   `assign(Array Array)` = load(VariantType_Array, "assign", 2307260970)
+  `get(Array Int)` = load(VariantType_Array, "get", 708700221)
+  `set(Array Int Variant)` = load(VariantType_Array, "set", 3798478031)
   `pushBack(Array Variant)` = load(VariantType_Array, "push_back", 3316032543)
   `pushFront(Array Variant)` = load(VariantType_Array, "push_front", 3316032543)
   `append(Array Variant)` = load(VariantType_Array, "append", 3316032543)
@@ -229,7 +247,9 @@ proc load_Array_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `back(Array)` = load(VariantType_Array, "back", 1460142086)
   `pickRandom(Array)` = load(VariantType_Array, "pick_random", 1460142086)
   `find(Array Variant Int)` = load(VariantType_Array, "find", 2336346817)
+  `findCustom(Array Callable Int)` = load(VariantType_Array, "find_custom", 2145562546)
   `rfind(Array Variant Int)` = load(VariantType_Array, "rfind", 2336346817)
+  `rfindCustom(Array Callable Int)` = load(VariantType_Array, "rfind_custom", 2145562546)
   `count(Array Variant)` = load(VariantType_Array, "count", 1481661226)
   `has(Array Variant)` = load(VariantType_Array, "has", 3680194679)
   `popBack(Array)` = load(VariantType_Array, "pop_back", 1321915136)

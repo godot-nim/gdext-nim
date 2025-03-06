@@ -139,6 +139,16 @@ proc getRootMotionTrack*(self: AnimationMixer): NodePath =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NodePath)
 
+proc setRootMotionLocal*(self: AnimationMixer; enabled: bool): void =
+  expandMethodBind(className AnimationMixer, "set_root_motion_local", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isRootMotionLocal*(self: AnimationMixer): bool =
+  expandMethodBind(className AnimationMixer, "is_root_motion_local", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getRootMotionPosition*(self: AnimationMixer): Vector3 =
   expandMethodBind(className AnimationMixer, "get_root_motion_position", 3360562783)
   var ret: encoded Vector3
@@ -223,6 +233,9 @@ template `rootNode=`*(self: AnimationMixer; value) = self.setRootNode(value)
 
 template rootMotionTrack*(self: AnimationMixer): untyped = self.getRootMotionTrack()
 template `rootMotionTrack=`*(self: AnimationMixer; value) = self.setRootMotionTrack(value)
+
+template rootMotionLocal*(self: AnimationMixer): untyped = self.isRootMotionLocal()
+template `rootMotionLocal=`*(self: AnimationMixer; value) = self.setRootMotionLocal(value)
 
 template audioMaxPolyphony*(self: AnimationMixer): untyped = self.getAudioMaxPolyphony()
 template `audioMaxPolyphony=`*(self: AnimationMixer; value) = self.setAudioMaxPolyphony(value)

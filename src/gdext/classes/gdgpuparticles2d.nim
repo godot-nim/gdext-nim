@@ -68,6 +68,10 @@ proc setInterpToEnd*(self: GPUParticles2D; interp: Float): void =
   expandMethodBind(className GPUParticles2D, "set_interp_to_end", 373806689)
   methodbind.ptrcall(self, [getPtr interp])
 
+proc requestParticlesProcess*(self: GPUParticles2D; processTime: Float): void =
+  expandMethodBind(className GPUParticles2D, "request_particles_process", 373806689)
+  methodbind.ptrcall(self, [getPtr processTime])
+
 proc isEmitting*(self: GPUParticles2D): bool =
   expandMethodBind(className GPUParticles2D, "is_emitting", 36873697)
   var ret: encoded bool
@@ -190,9 +194,9 @@ proc captureRect*(self: GPUParticles2D): Rect2 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
-proc restart*(self: GPUParticles2D): void =
-  expandMethodBind(className GPUParticles2D, "restart", 3218959716)
-  methodbind.ptrcall(self, [])
+proc restart*(self: GPUParticles2D; keepSeed: bool = false): void =
+  expandMethodBind(className GPUParticles2D, "restart", 107499316)
+  methodbind.ptrcall(self, [getPtr keepSeed])
 
 proc setSubEmitter*(self: GPUParticles2D; path: NodePath): void =
   expandMethodBind(className GPUParticles2D, "set_sub_emitter", 1348162250)
@@ -262,6 +266,26 @@ proc getAmountRatio*(self: GPUParticles2D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setUseFixedSeed*(self: GPUParticles2D; useFixedSeed: bool): void =
+  expandMethodBind(className GPUParticles2D, "set_use_fixed_seed", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFixedSeed])
+
+proc getUseFixedSeed*(self: GPUParticles2D): bool =
+  expandMethodBind(className GPUParticles2D, "get_use_fixed_seed", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setSeed*(self: GPUParticles2D; seed: uint32): void =
+  expandMethodBind(className GPUParticles2D, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed])
+
+proc getSeed*(self: GPUParticles2D): uint32 =
+  expandMethodBind(className GPUParticles2D, "get_seed", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 template emitting*(self: GPUParticles2D): untyped = self.isEmitting()
 template `emitting=`*(self: GPUParticles2D; value) = self.setEmitting(value)
 
@@ -274,14 +298,14 @@ template `amountRatio=`*(self: GPUParticles2D; value) = self.setAmountRatio(valu
 template subEmitter*(self: GPUParticles2D): untyped = self.getSubEmitter()
 template `subEmitter=`*(self: GPUParticles2D; value) = self.setSubEmitter(value)
 
-template processMaterial*(self: GPUParticles2D): untyped = self.getProcessMaterial()
-template `processMaterial=`*(self: GPUParticles2D; value) = self.setProcessMaterial(value)
-
 template texture*(self: GPUParticles2D): untyped = self.getTexture()
 template `texture=`*(self: GPUParticles2D; value) = self.setTexture(value)
 
 template lifetime*(self: GPUParticles2D): untyped = self.getLifetime()
 template `lifetime=`*(self: GPUParticles2D; value) = self.setLifetime(value)
+
+template interpToEnd*(self: GPUParticles2D): untyped = self.getInterpToEnd()
+template `interpToEnd=`*(self: GPUParticles2D; value) = self.setInterpToEnd(value)
 
 template oneShot*(self: GPUParticles2D): untyped = self.getOneShot()
 template `oneShot=`*(self: GPUParticles2D; value) = self.setOneShot(value)
@@ -298,6 +322,12 @@ template `explosiveness=`*(self: GPUParticles2D; value) = self.setExplosivenessR
 template randomness*(self: GPUParticles2D): untyped = self.getRandomnessRatio()
 template `randomness=`*(self: GPUParticles2D; value) = self.setRandomnessRatio(value)
 
+template useFixedSeed*(self: GPUParticles2D): untyped = self.getUseFixedSeed()
+template `useFixedSeed=`*(self: GPUParticles2D; value) = self.setUseFixedSeed(value)
+
+template seed*(self: GPUParticles2D): untyped = self.getSeed()
+template `seed=`*(self: GPUParticles2D; value) = self.setSeed(value)
+
 template fixedFps*(self: GPUParticles2D): untyped = self.getFixedFps()
 template `fixedFps=`*(self: GPUParticles2D; value) = self.setFixedFps(value)
 
@@ -306,9 +336,6 @@ template `interpolate=`*(self: GPUParticles2D; value) = self.setInterpolate(valu
 
 template fractDelta*(self: GPUParticles2D): untyped = self.getFractionalDelta()
 template `fractDelta=`*(self: GPUParticles2D; value) = self.setFractionalDelta(value)
-
-template interpToEnd*(self: GPUParticles2D): untyped = self.getInterpToEnd()
-template `interpToEnd=`*(self: GPUParticles2D; value) = self.setInterpToEnd(value)
 
 template collisionBaseSize*(self: GPUParticles2D): untyped = self.getCollisionBaseSize()
 template `collisionBaseSize=`*(self: GPUParticles2D; value) = self.setCollisionBaseSize(value)
@@ -333,6 +360,9 @@ template `trailSections=`*(self: GPUParticles2D; value) = self.setTrailSections(
 
 template trailSectionSubdivisions*(self: GPUParticles2D): untyped = self.getTrailSectionSubdivisions()
 template `trailSectionSubdivisions=`*(self: GPUParticles2D; value) = self.setTrailSectionSubdivisions(value)
+
+template processMaterial*(self: GPUParticles2D): untyped = self.getProcessMaterial()
+template `processMaterial=`*(self: GPUParticles2D; value) = self.setProcessMaterial(value)
 
 const GPUParticles2D_vmap =
   Node2D.vmap.concat initTable[string, string]()

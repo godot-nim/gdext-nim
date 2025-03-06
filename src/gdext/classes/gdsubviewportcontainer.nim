@@ -29,11 +29,24 @@ proc getStretchShrink*(self: SubViewportContainer): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setMouseTarget*(self: SubViewportContainer; amount: bool): void =
+  expandMethodBind(className SubViewportContainer, "set_mouse_target", 2586408642)
+  methodbind.ptrcall(self, [getPtr amount])
+
+proc isMouseTargetEnabled*(self: SubViewportContainer): bool =
+  expandMethodBind(className SubViewportContainer, "is_mouse_target_enabled", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template stretch*(self: SubViewportContainer): untyped = self.isStretchEnabled()
 template `stretch=`*(self: SubViewportContainer; value) = self.setStretch(value)
 
 template stretchShrink*(self: SubViewportContainer): untyped = self.getStretchShrink()
 template `stretchShrink=`*(self: SubViewportContainer; value) = self.setStretchShrink(value)
+
+template mouseTarget*(self: SubViewportContainer): untyped = self.isMouseTargetEnabled()
+template `mouseTarget=`*(self: SubViewportContainer; value) = self.setMouseTarget(value)
 
 const SubViewportContainer_vmap =
   Container.vmap.concat toTable {

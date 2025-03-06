@@ -106,6 +106,12 @@ proc bakeMeshFromCurrentBlendShapeMix*(self: MeshInstance3D; existing: gdref Arr
   methodbind.ptrcall(self, [getPtr existing], addr ret)
   (addr ret).decode_result(gdref ArrayMesh)
 
+proc bakeMeshFromCurrentSkeletonPose*(self: MeshInstance3D; existing: gdref ArrayMesh = default gdref ArrayMesh): gdref ArrayMesh =
+  expandMethodBind(className MeshInstance3D, "bake_mesh_from_current_skeleton_pose", 1457573577)
+  var ret: encoded gdref ArrayMesh
+  methodbind.ptrcall(self, [getPtr existing], addr ret)
+  (addr ret).decode_result(gdref ArrayMesh)
+
 template mesh*(self: MeshInstance3D): untyped = self.getMesh()
 template `mesh=`*(self: MeshInstance3D; value) = self.setMesh(value)
 

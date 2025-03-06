@@ -72,6 +72,12 @@ proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): Array 
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array)
 
+proc getBounds*(self: NavigationMeshSourceGeometryData3D): AABB =
+  expandMethodBind(className NavigationMeshSourceGeometryData3D, "get_bounds", 1021181044)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AABB)
+
 template vertices*(self: NavigationMeshSourceGeometryData3D): untyped = self.getVertices()
 template `vertices=`*(self: NavigationMeshSourceGeometryData3D; value) = self.setVertices(value)
 

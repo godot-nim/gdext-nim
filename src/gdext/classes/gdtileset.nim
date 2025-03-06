@@ -174,6 +174,16 @@ proc getPhysicsLayerCollisionMask*(self: TileSet; layerIndex: int32): uint32 =
   methodbind.ptrcall(self, [getPtr layerIndex], addr ret)
   (addr ret).decode_result(uint32)
 
+proc setPhysicsLayerCollisionPriority*(self: TileSet; layerIndex: int32; priority: Float): void =
+  expandMethodBind(className TileSet, "set_physics_layer_collision_priority", 1602489585)
+  methodbind.ptrcall(self, [getPtr layerIndex, getPtr priority])
+
+proc getPhysicsLayerCollisionPriority*(self: TileSet; layerIndex: int32): Float =
+  expandMethodBind(className TileSet, "get_physics_layer_collision_priority", 2339986948)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [getPtr layerIndex], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setPhysicsLayerPhysicsMaterial*(self: TileSet; layerIndex: int32; physicsMaterial: gdref PhysicsMaterial): void =
   expandMethodBind(className TileSet, "set_physics_layer_physics_material", 1018687357)
   methodbind.ptrcall(self, [getPtr layerIndex, getPtr physicsMaterial])
@@ -315,6 +325,12 @@ proc getCustomDataLayerByName*(self: TileSet; layerName: String): int32 =
 proc setCustomDataLayerName*(self: TileSet; layerIndex: int32; layerName: String): void =
   expandMethodBind(className TileSet, "set_custom_data_layer_name", 501894301)
   methodbind.ptrcall(self, [getPtr layerIndex, getPtr layerName])
+
+proc hasCustomDataLayerByName*(self: TileSet; layerName: String): bool =
+  expandMethodBind(className TileSet, "has_custom_data_layer_by_name", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr layerName], addr ret)
+  (addr ret).decode_result(bool)
 
 proc getCustomDataLayerName*(self: TileSet; layerIndex: int32): String =
   expandMethodBind(className TileSet, "get_custom_data_layer_name", 844755477)

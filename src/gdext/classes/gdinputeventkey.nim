@@ -38,15 +38,15 @@ proc getKeyLabel*(self: InputEventKey): Key =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Key)
 
-proc setUnicode*(self: InputEventKey; unicode: Int): void =
+proc setUnicode*(self: InputEventKey; unicode: char32): void =
   expandMethodBind(className InputEventKey, "set_unicode", 1286410249)
   methodbind.ptrcall(self, [getPtr unicode])
 
-proc getUnicode*(self: InputEventKey): Int =
+proc getUnicode*(self: InputEventKey): char32 =
   expandMethodBind(className InputEventKey, "get_unicode", 3905245786)
-  var ret: encoded Int
+  var ret: encoded char32
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Int)
+  (addr ret).decode_result(char32)
 
 proc setLocation*(self: InputEventKey; location: KeyLocation): void =
   expandMethodBind(className InputEventKey, "set_location", 634453155)

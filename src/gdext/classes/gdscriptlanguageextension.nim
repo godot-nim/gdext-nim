@@ -234,6 +234,11 @@ proc reloadAllScripts(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[C
   errproof: cast[ScriptLanguageExtension](p_instance).reloadAllScripts()
 template reloadAllScripts_bind*(_: typedesc[ScriptLanguageExtension]): ClassCallVirtual = reloadAllScripts
 
+method reloadScripts*(self: ScriptLanguageExtension; scripts: Array; softReload: bool): void {.base.} = (discard)
+proc reloadScripts(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[ScriptLanguageExtension](p_instance).reloadScripts(p_args[0].decode(Array), p_args[1].decode(bool))
+template reloadScripts_bind*(_: typedesc[ScriptLanguageExtension]): ClassCallVirtual = reloadScripts
+
 method reloadToolScript*(self: ScriptLanguageExtension; script: gdref Script; softReload: bool): void {.base.} = (discard)
 proc reloadToolScript(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[ScriptLanguageExtension](p_instance).reloadToolScript(p_args[0].decode(gdref Script), p_args[1].decode(bool))
@@ -347,6 +352,7 @@ const ScriptLanguageExtension_vmap =
     "debugparsestacklevelexpression" : "_debug_parse_stack_level_expression",
     "debuggetcurrentstackinfo" : "_debug_get_current_stack_info",
     "reloadallscripts" : "_reload_all_scripts",
+    "reloadscripts" : "_reload_scripts",
     "reloadtoolscript" : "_reload_tool_script",
     "getrecognizedextensions" : "_get_recognized_extensions",
     "getpublicfunctions" : "_get_public_functions",

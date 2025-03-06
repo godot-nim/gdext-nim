@@ -4,6 +4,12 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+proc getSkeleton*(self: BoneAttachment3D): Skeleton3D =
+  expandMethodBind(className BoneAttachment3D, "get_skeleton", 1814733083)
+  var ret: encoded Skeleton3D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Skeleton3D)
+
 proc setBoneName*(self: BoneAttachment3D; boneName: String): void =
   expandMethodBind(className BoneAttachment3D, "set_bone_name", 83702148)
   methodbind.ptrcall(self, [getPtr boneName])

@@ -32,9 +32,10 @@ proc load_PackedInt32Array_operators {.execon: staticevents.init_engine.on_load_
   `!=(PackedInt32Array PackedInt32Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedInt32Array, VariantType_PackedInt32Array)
   `+(PackedInt32Array PackedInt32Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedInt32Array, VariantType_PackedInt32Array)
 
+var `get(PackedInt32Array Int)`: PtrBuiltinMethod
+var `set(PackedInt32Array Int Int)`: PtrBuiltinMethod
 var `size(PackedInt32Array)`: PtrBuiltinMethod
 var `isEmpty(PackedInt32Array)`: PtrBuiltinMethod
-var `set(PackedInt32Array Int Int)`: PtrBuiltinMethod
 var `pushBack(PackedInt32Array Int)`: PtrBuiltinMethod
 var `append(PackedInt32Array Int)`: PtrBuiltinMethod
 var `appendArray(PackedInt32Array PackedInt32Array)`: PtrBuiltinMethod
@@ -54,13 +55,16 @@ var `find(PackedInt32Array Int Int)`: PtrBuiltinMethod
 var `rfind(PackedInt32Array Int Int)`: PtrBuiltinMethod
 var `count(PackedInt32Array Int)`: PtrBuiltinMethod
 
+proc get*(self: PackedInt32Array; index: Int): Int =
+  let argArr = [getPtr index]
+  `get(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedInt32Array; index: Int; value: Int): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedInt32Array Int Int)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedInt32Array): Int =
   `size(PackedInt32Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedInt32Array): bool =
   `isEmpty(PackedInt32Array)`(addr self, nil, addr result, 0)
-proc set*(self: PackedInt32Array; index: Int; value: Int): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedInt32Array Int Int)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedInt32Array; value: Int): bool =
   let argArr = [getPtr value]
   `pushBack(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
@@ -112,9 +116,10 @@ proc count*(self: PackedInt32Array; value: Int): Int =
   `count(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedInt32Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedInt32Array Int)` = load(VariantType_PackedInt32Array, "get", 4103005248)
+  `set(PackedInt32Array Int Int)` = load(VariantType_PackedInt32Array, "set", 3638975848)
   `size(PackedInt32Array)` = load(VariantType_PackedInt32Array, "size", 3173160232)
   `isEmpty(PackedInt32Array)` = load(VariantType_PackedInt32Array, "is_empty", 3918633141)
-  `set(PackedInt32Array Int Int)` = load(VariantType_PackedInt32Array, "set", 3638975848)
   `pushBack(PackedInt32Array Int)` = load(VariantType_PackedInt32Array, "push_back", 694024632)
   `append(PackedInt32Array Int)` = load(VariantType_PackedInt32Array, "append", 694024632)
   `appendArray(PackedInt32Array PackedInt32Array)` = load(VariantType_PackedInt32Array, "append_array", 1087733270)

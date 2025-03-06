@@ -46,6 +46,12 @@ proc saveSupportData*(self: TextServer; filename: String): bool =
   methodbind.ptrcall(self, [getPtr filename], addr ret)
   (addr ret).decode_result(bool)
 
+proc getSupportData*(self: TextServer): PackedByteArray =
+  expandMethodBind(className TextServer, "get_support_data", 2362200018)
+  var ret: encoded PackedByteArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedByteArray)
+
 proc isLocaleRightToLeft*(self: TextServer; locale: String): bool =
   expandMethodBind(className TextServer, "is_locale_right_to_left", 3927539163)
   var ret: encoded bool
@@ -281,6 +287,16 @@ proc fontGetSubpixelPositioning*(self: TextServer; fontRid: RID): TextServer_Sub
   var ret: encoded TextServer_SubpixelPositioning
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
   (addr ret).decode_result(TextServer_SubpixelPositioning)
+
+proc fontSetKeepRoundingRemainders*(self: TextServer; fontRid: RID; keepRoundingRemainders: bool): void =
+  expandMethodBind(className TextServer, "font_set_keep_rounding_remainders", 1265174801)
+  methodbind.ptrcall(self, [getPtr fontRid, getPtr keepRoundingRemainders])
+
+proc fontGetKeepRoundingRemainders*(self: TextServer; fontRid: RID): bool =
+  expandMethodBind(className TextServer, "font_get_keep_rounding_remainders", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr fontRid], addr ret)
+  (addr ret).decode_result(bool)
 
 proc fontSetEmbolden*(self: TextServer; fontRid: RID; strength: float64): void =
   expandMethodBind(className TextServer, "font_set_embolden", 1794382983)
@@ -570,6 +586,12 @@ proc fontGetSupportedChars*(self: TextServer; fontRid: RID): String =
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
   (addr ret).decode_result(String)
 
+proc fontGetSupportedGlyphs*(self: TextServer; fontRid: RID): PackedInt32Array =
+  expandMethodBind(className TextServer, "font_get_supported_glyphs", 788230395)
+  var ret: encoded PackedInt32Array
+  methodbind.ptrcall(self, [getPtr fontRid], addr ret)
+  (addr ret).decode_result(PackedInt32Array)
+
 proc fontRenderRange*(self: TextServer; fontRid: RID; size: Vector2i; start: int64; `end`: int64): void =
   expandMethodBind(className TextServer, "font_render_range", 4254580980)
   methodbind.ptrcall(self, [getPtr fontRid, getPtr size, getPtr start, getPtr `end`])
@@ -796,6 +818,12 @@ proc shapedGetSpanCount*(self: TextServer; shaped: RID): int64 =
 
 proc shapedGetSpanMeta*(self: TextServer; shaped: RID; index: int64): Variant =
   expandMethodBind(className TextServer, "shaped_get_span_meta", 4069510997)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc shapedGetSpanEmbeddedObject*(self: TextServer; shaped: RID; index: int64): Variant =
+  expandMethodBind(className TextServer, "shaped_get_span_embedded_object", 4069510997)
   var ret: encoded Variant
   methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
   (addr ret).decode_result(Variant)

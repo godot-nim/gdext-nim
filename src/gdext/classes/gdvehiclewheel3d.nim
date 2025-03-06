@@ -116,6 +116,18 @@ proc getContactBody*(self: VehicleWheel3D): Node3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node3D)
 
+proc getContactPoint*(self: VehicleWheel3D): Vector3 =
+  expandMethodBind(className VehicleWheel3D, "get_contact_point", 3360562783)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector3)
+
+proc getContactNormal*(self: VehicleWheel3D): Vector3 =
+  expandMethodBind(className VehicleWheel3D, "get_contact_normal", 3360562783)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector3)
+
 proc setRollInfluence*(self: VehicleWheel3D; rollInfluence: Float): void =
   expandMethodBind(className VehicleWheel3D, "set_roll_influence", 373806689)
   methodbind.ptrcall(self, [getPtr rollInfluence])

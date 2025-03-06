@@ -32,9 +32,10 @@ proc load_PackedFloat32Array_operators {.execon: staticevents.init_engine.on_loa
   `!=(PackedFloat32Array PackedFloat32Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedFloat32Array, VariantType_PackedFloat32Array)
   `+(PackedFloat32Array PackedFloat32Array)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedFloat32Array, VariantType_PackedFloat32Array)
 
+var `get(PackedFloat32Array Int)`: PtrBuiltinMethod
+var `set(PackedFloat32Array Int Float)`: PtrBuiltinMethod
 var `size(PackedFloat32Array)`: PtrBuiltinMethod
 var `isEmpty(PackedFloat32Array)`: PtrBuiltinMethod
-var `set(PackedFloat32Array Int Float)`: PtrBuiltinMethod
 var `pushBack(PackedFloat32Array Float)`: PtrBuiltinMethod
 var `append(PackedFloat32Array Float)`: PtrBuiltinMethod
 var `appendArray(PackedFloat32Array PackedFloat32Array)`: PtrBuiltinMethod
@@ -54,13 +55,16 @@ var `find(PackedFloat32Array Float Int)`: PtrBuiltinMethod
 var `rfind(PackedFloat32Array Float Int)`: PtrBuiltinMethod
 var `count(PackedFloat32Array Float)`: PtrBuiltinMethod
 
+proc get*(self: PackedFloat32Array; index: Int): Float =
+  let argArr = [getPtr index]
+  `get(PackedFloat32Array Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedFloat32Array; index: Int; value: Float): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedFloat32Array Int Float)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedFloat32Array): Int =
   `size(PackedFloat32Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedFloat32Array): bool =
   `isEmpty(PackedFloat32Array)`(addr self, nil, addr result, 0)
-proc set*(self: PackedFloat32Array; index: Int; value: Float): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedFloat32Array Int Float)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedFloat32Array; value: Float): bool =
   let argArr = [getPtr value]
   `pushBack(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
@@ -112,9 +116,10 @@ proc count*(self: PackedFloat32Array; value: Float): Int =
   `count(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedFloat32Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedFloat32Array Int)` = load(VariantType_PackedFloat32Array, "get", 1401583798)
+  `set(PackedFloat32Array Int Float)` = load(VariantType_PackedFloat32Array, "set", 1113000516)
   `size(PackedFloat32Array)` = load(VariantType_PackedFloat32Array, "size", 3173160232)
   `isEmpty(PackedFloat32Array)` = load(VariantType_PackedFloat32Array, "is_empty", 3918633141)
-  `set(PackedFloat32Array Int Float)` = load(VariantType_PackedFloat32Array, "set", 1113000516)
   `pushBack(PackedFloat32Array Float)` = load(VariantType_PackedFloat32Array, "push_back", 4094791666)
   `append(PackedFloat32Array Float)` = load(VariantType_PackedFloat32Array, "append", 4094791666)
   `appendArray(PackedFloat32Array PackedFloat32Array)` = load(VariantType_PackedFloat32Array, "append_array", 2981316639)

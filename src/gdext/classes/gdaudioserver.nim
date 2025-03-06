@@ -58,6 +58,16 @@ proc getBusVolumeDb*(self: AudioServer; busIdx: int32): Float =
   methodbind.ptrcall(self, [getPtr busIdx], addr ret)
   (addr ret).decode_result(Float)
 
+proc setBusVolumeLinear*(self: AudioServer; busIdx: int32; volumeLinear: Float): void =
+  expandMethodBind(className AudioServer, "set_bus_volume_linear", 1602489585)
+  methodbind.ptrcall(self, [getPtr busIdx, getPtr volumeLinear])
+
+proc getBusVolumeLinear*(self: AudioServer; busIdx: int32): Float =
+  expandMethodBind(className AudioServer, "get_bus_volume_linear", 2339986948)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [getPtr busIdx], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setBusSend*(self: AudioServer; busIdx: int32; send: StringName): void =
   expandMethodBind(className AudioServer, "set_bus_send", 3780747571)
   methodbind.ptrcall(self, [getPtr busIdx, getPtr send])
@@ -179,6 +189,18 @@ proc getMixRate*(self: AudioServer): Float =
   var ret: encoded Float
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
+
+proc getInputMixRate*(self: AudioServer): Float =
+  expandMethodBind(className AudioServer, "get_input_mix_rate", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getDriverName*(self: AudioServer): String =
+  expandMethodBind(className AudioServer, "get_driver_name", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
 
 proc getOutputDeviceList*(self: AudioServer): PackedStringArray =
   expandMethodBind(className AudioServer, "get_output_device_list", 2981934095)

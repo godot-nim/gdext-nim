@@ -274,6 +274,16 @@ proc getEmissionRingInnerRadius*(self: ParticleProcessMaterial): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setEmissionRingConeAngle*(self: ParticleProcessMaterial; coneAngle: Float): void =
+  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_cone_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr coneAngle])
+
+proc getEmissionRingConeAngle*(self: ParticleProcessMaterial): Float =
+  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_cone_angle", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setEmissionShapeOffset*(self: ParticleProcessMaterial; emissionShapeOffset: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_emission_shape_offset", 3460891852)
   methodbind.ptrcall(self, [getPtr emissionShapeOffset])
@@ -404,6 +414,16 @@ proc setSubEmitterAmountAtCollision*(self: ParticleProcessMaterial; amount: int3
   expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_collision", 1286410249)
   methodbind.ptrcall(self, [getPtr amount])
 
+proc getSubEmitterAmountAtStart*(self: ParticleProcessMaterial): int32 =
+  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_start", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc setSubEmitterAmountAtStart*(self: ParticleProcessMaterial; amount: int32): void =
+  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_start", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount])
+
 proc getSubEmitterKeepVelocity*(self: ParticleProcessMaterial): bool =
   expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_keep_velocity", 36873697)
   var ret: encoded bool
@@ -517,6 +537,9 @@ template `emissionRingRadius=`*(self: ParticleProcessMaterial; value) = self.set
 
 template emissionRingInnerRadius*(self: ParticleProcessMaterial): untyped = self.getEmissionRingInnerRadius()
 template `emissionRingInnerRadius=`*(self: ParticleProcessMaterial; value) = self.setEmissionRingInnerRadius(value)
+
+template emissionRingConeAngle*(self: ParticleProcessMaterial): untyped = self.getEmissionRingConeAngle()
+template `emissionRingConeAngle=`*(self: ParticleProcessMaterial; value) = self.setEmissionRingConeAngle(value)
 
 template angle*(self: ParticleProcessMaterial): untyped = self.getParam(ParticleProcessMaterial_Parameter(7))
 template `angle=`*(self: ParticleProcessMaterial; value) = self.setParam(ParticleProcessMaterial_Parameter(7), value)
@@ -794,9 +817,18 @@ template `subEmitterAmountAtEnd=`*(self: ParticleProcessMaterial; value) = self.
 template subEmitterAmountAtCollision*(self: ParticleProcessMaterial): untyped = self.getSubEmitterAmountAtCollision()
 template `subEmitterAmountAtCollision=`*(self: ParticleProcessMaterial; value) = self.setSubEmitterAmountAtCollision(value)
 
+template subEmitterAmountAtStart*(self: ParticleProcessMaterial): untyped = self.getSubEmitterAmountAtStart()
+template `subEmitterAmountAtStart=`*(self: ParticleProcessMaterial; value) = self.setSubEmitterAmountAtStart(value)
+
 template subEmitterKeepVelocity*(self: ParticleProcessMaterial): untyped = self.getSubEmitterKeepVelocity()
 template `subEmitterKeepVelocity=`*(self: ParticleProcessMaterial; value) = self.setSubEmitterKeepVelocity(value)
 
 const ParticleProcessMaterial_vmap =
   Material.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[ParticleProcessMaterial]): Table[string, string] = ParticleProcessMaterial_vmap
+
+proc emissionShapeChanged*(self: ParticleProcessMaterial): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("emission_shape_changed")
+  self.emitSignal(signalname)

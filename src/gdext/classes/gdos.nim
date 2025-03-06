@@ -104,11 +104,35 @@ proc getExecutablePath*(self: OS): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc readStringFromStdin*(self: OS): String =
-  expandMethodBind(className OS, "read_string_from_stdin", 2841200299)
+proc readStringFromStdin*(self: OS; bufferSize: int64): String =
+  expandMethodBind(className OS, "read_string_from_stdin", 990163283)
   var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
+  methodbind.ptrcall(self, [getPtr bufferSize], addr ret)
   (addr ret).decode_result(String)
+
+proc readBufferFromStdin*(self: OS; bufferSize: int64): PackedByteArray =
+  expandMethodBind(className OS, "read_buffer_from_stdin", 47165747)
+  var ret: encoded PackedByteArray
+  methodbind.ptrcall(self, [getPtr bufferSize], addr ret)
+  (addr ret).decode_result(PackedByteArray)
+
+proc getStdinType*(self: OS): OS_StdHandleType =
+  expandMethodBind(className OS, "get_stdin_type", 1704816237)
+  var ret: encoded OS_StdHandleType
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OS_StdHandleType)
+
+proc getStdoutType*(self: OS): OS_StdHandleType =
+  expandMethodBind(className OS, "get_stdout_type", 1704816237)
+  var ret: encoded OS_StdHandleType
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OS_StdHandleType)
+
+proc getStderrType*(self: OS): OS_StdHandleType =
+  expandMethodBind(className OS, "get_stderr_type", 1704816237)
+  var ret: encoded OS_StdHandleType
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OS_StdHandleType)
 
 proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Array = gdarray(); readStderr: bool = false; openConsole: bool = false): int32 =
   expandMethodBind(className OS, "execute", 1488299882)
@@ -116,10 +140,10 @@ proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Arra
   methodbind.ptrcall(self, [getPtr path, getPtr arguments, getPtr output, getPtr readStderr, getPtr openConsole], addr ret)
   (addr ret).decode_result(int32)
 
-proc executeWithPipe*(self: OS; path: String; arguments: PackedStringArray): Dictionary =
-  expandMethodBind(className OS, "execute_with_pipe", 3845631403)
+proc executeWithPipe*(self: OS; path: String; arguments: PackedStringArray; blocking: bool = true): Dictionary =
+  expandMethodBind(className OS, "execute_with_pipe", 2851312030)
   var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr path, getPtr arguments], addr ret)
+  methodbind.ptrcall(self, [getPtr path, getPtr arguments, getPtr blocking], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc createProcess*(self: OS; path: String; arguments: PackedStringArray; openConsole: bool = false): int32 =
@@ -204,6 +228,12 @@ proc getDistributionName*(self: OS): String =
 
 proc getVersion*(self: OS): String =
   expandMethodBind(className OS, "get_version", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getVersionAlias*(self: OS): String =
+  expandMethodBind(className OS, "get_version_alias", 201670096)
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
@@ -340,6 +370,12 @@ proc getCacheDir*(self: OS): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
+proc getTempDir*(self: OS): String =
+  expandMethodBind(className OS, "get_temp_dir", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc getUniqueId*(self: OS): String =
   expandMethodBind(className OS, "get_unique_id", 201670096)
   var ret: encoded String
@@ -352,7 +388,7 @@ proc getKeycodeString*(self: OS; code: Key): String =
   methodbind.ptrcall(self, [getPtr code], addr ret)
   (addr ret).decode_result(String)
 
-proc isKeycodeUnicode*(self: OS; code: Int): bool =
+proc isKeycodeUnicode*(self: OS; code: char32): bool =
   expandMethodBind(className OS, "is_keycode_unicode", 1116898809)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr code], addr ret)

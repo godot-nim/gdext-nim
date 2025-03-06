@@ -5,12 +5,6 @@ import gdext/coronation/header/builtinclasses
 
 # constant values
 
-const Vector2i_AXIS_X*: int = 0
-template AXIS_X*(_: typedesc[Vector2i]): int = Vector2i_AXIS_X
-
-const Vector2i_AXIS_Y*: int = 1
-template AXIS_Y*(_: typedesc[Vector2i]): int = Vector2i_AXIS_Y
-
 const Vector2i_ZERO*: Vector2i = vectori(0, 0)
 template ZERO*(_: typedesc[Vector2i]): Vector2i = Vector2i_ZERO
 

@@ -144,6 +144,16 @@ proc getMaxQueuedPackets*(self: WebSocketPeer): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setHeartbeatInterval*(self: WebSocketPeer; interval: float64): void =
+  expandMethodBind(className WebSocketPeer, "set_heartbeat_interval", 373806689)
+  methodbind.ptrcall(self, [getPtr interval])
+
+proc getHeartbeatInterval*(self: WebSocketPeer): float64 =
+  expandMethodBind(className WebSocketPeer, "get_heartbeat_interval", 1740695150)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
+
 template supportedProtocols*(self: WebSocketPeer): untyped = self.getSupportedProtocols()
 template `supportedProtocols=`*(self: WebSocketPeer; value) = self.setSupportedProtocols(value)
 
@@ -158,6 +168,9 @@ template `outboundBufferSize=`*(self: WebSocketPeer; value) = self.setOutboundBu
 
 template maxQueuedPackets*(self: WebSocketPeer): untyped = self.getMaxQueuedPackets()
 template `maxQueuedPackets=`*(self: WebSocketPeer; value) = self.setMaxQueuedPackets(value)
+
+template heartbeatInterval*(self: WebSocketPeer): untyped = self.getHeartbeatInterval()
+template `heartbeatInterval=`*(self: WebSocketPeer; value) = self.setHeartbeatInterval(value)
 
 const WebSocketPeer_vmap =
   PacketPeer.vmap.concat initTable[string, string]()

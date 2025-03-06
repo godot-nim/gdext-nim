@@ -94,6 +94,26 @@ proc getUsageBits*(self: RDTextureFormat): set[RenderingDevice_TextureUsageBits]
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(set[RenderingDevice_TextureUsageBits])
 
+proc setIsResolveBuffer*(self: RDTextureFormat; pMember: bool): void =
+  expandMethodBind(className RDTextureFormat, "set_is_resolve_buffer", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember])
+
+proc getIsResolveBuffer*(self: RDTextureFormat): bool =
+  expandMethodBind(className RDTextureFormat, "get_is_resolve_buffer", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setIsDiscardable*(self: RDTextureFormat; pMember: bool): void =
+  expandMethodBind(className RDTextureFormat, "set_is_discardable", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember])
+
+proc getIsDiscardable*(self: RDTextureFormat): bool =
+  expandMethodBind(className RDTextureFormat, "get_is_discardable", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc addShareableFormat*(self: RDTextureFormat; format: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureFormat, "add_shareable_format", 565531219)
   methodbind.ptrcall(self, [getPtr format])
@@ -128,6 +148,12 @@ template `samples=`*(self: RDTextureFormat; value) = self.setSamples(value)
 
 template usageBits*(self: RDTextureFormat): untyped = self.getUsageBits()
 template `usageBits=`*(self: RDTextureFormat; value) = self.setUsageBits(value)
+
+template isResolveBuffer*(self: RDTextureFormat): untyped = self.getIsResolveBuffer()
+template `isResolveBuffer=`*(self: RDTextureFormat; value) = self.setIsResolveBuffer(value)
+
+template isDiscardable*(self: RDTextureFormat): untyped = self.getIsDiscardable()
+template `isDiscardable=`*(self: RDTextureFormat; value) = self.setIsDiscardable(value)
 
 const RDTextureFormat_vmap =
   RefCounted.vmap.concat initTable[string, string]()

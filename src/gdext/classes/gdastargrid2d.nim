@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-method estimateCost*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i): Float {.base.} = (discard)
+method estimateCost*(self: AStarGrid2D; fromId: Vector2i; endId: Vector2i): Float {.base.} = (discard)
 proc estimateCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[AStarGrid2D](p_instance).estimateCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
 template estimateCost_bind*(_: typedesc[AStarGrid2D]): ClassCallVirtual = estimateCost
@@ -163,6 +163,12 @@ proc getPointPosition*(self: AStarGrid2D; id: Vector2i): Vector2 =
   var ret: encoded Vector2
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(Vector2)
+
+proc getPointDataInRegion*(self: AStarGrid2D; region: Rect2i): TypedArray[Dictionary] =
+  expandMethodBind(className AStarGrid2D, "get_point_data_in_region", 3893818462)
+  var ret: encoded TypedArray[Dictionary]
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(TypedArray[Dictionary])
 
 proc getPointPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPartialPath: bool = false): PackedVector2Array =
   expandMethodBind(className AStarGrid2D, "get_point_path", 1641925693)

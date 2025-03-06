@@ -24,6 +24,16 @@ proc getVolumeDb*(self: AudioStreamPlayer2D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setVolumeLinear*(self: AudioStreamPlayer2D; volumeLinear: Float): void =
+  expandMethodBind(className AudioStreamPlayer2D, "set_volume_linear", 373806689)
+  methodbind.ptrcall(self, [getPtr volumeLinear])
+
+proc getVolumeLinear*(self: AudioStreamPlayer2D): Float =
+  expandMethodBind(className AudioStreamPlayer2D, "get_volume_linear", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setPitchScale*(self: AudioStreamPlayer2D; pitchScale: Float): void =
   expandMethodBind(className AudioStreamPlayer2D, "set_pitch_scale", 373806689)
   methodbind.ptrcall(self, [getPtr pitchScale])
@@ -77,6 +87,10 @@ proc isAutoplayEnabled*(self: AudioStreamPlayer2D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
+
+proc setPlaying*(self: AudioStreamPlayer2D; enable: bool): void =
+  expandMethodBind(className AudioStreamPlayer2D, "set_playing", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
 
 proc setMaxDistance*(self: AudioStreamPlayer2D; pixels: Float): void =
   expandMethodBind(className AudioStreamPlayer2D, "set_max_distance", 373806689)
@@ -165,6 +179,9 @@ template `stream=`*(self: AudioStreamPlayer2D; value) = self.setStream(value)
 
 template volumeDb*(self: AudioStreamPlayer2D): untyped = self.getVolumeDb()
 template `volumeDb=`*(self: AudioStreamPlayer2D; value) = self.setVolumeDb(value)
+
+template volumeLinear*(self: AudioStreamPlayer2D): untyped = self.getVolumeLinear()
+template `volumeLinear=`*(self: AudioStreamPlayer2D; value) = self.setVolumeLinear(value)
 
 template pitchScale*(self: AudioStreamPlayer2D): untyped = self.getPitchScale()
 template `pitchScale=`*(self: AudioStreamPlayer2D; value) = self.setPitchScale(value)

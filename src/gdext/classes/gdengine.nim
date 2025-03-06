@@ -194,11 +194,27 @@ proc isEditorHint*(self: Engine): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc isEmbeddedInEditor*(self: Engine): bool =
+  expandMethodBind(className Engine, "is_embedded_in_editor", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getWriteMoviePath*(self: Engine): String =
   expandMethodBind(className Engine, "get_write_movie_path", 201670096)
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
+
+proc setPrintToStdout*(self: Engine; enabled: bool): void =
+  expandMethodBind(className Engine, "set_print_to_stdout", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isPrintingToStdout*(self: Engine): bool =
+  expandMethodBind(className Engine, "is_printing_to_stdout", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc setPrintErrorMessages*(self: Engine; enabled: bool): void =
   expandMethodBind(className Engine, "set_print_error_messages", 2586408642)
@@ -212,6 +228,9 @@ proc isPrintingErrorMessages*(self: Engine): bool =
 
 template printErrorMessages*(self: Engine): untyped = self.isPrintingErrorMessages()
 template `printErrorMessages=`*(self: Engine; value) = self.setPrintErrorMessages(value)
+
+template printToStdout*(self: Engine): untyped = self.isPrintingToStdout()
+template `printToStdout=`*(self: Engine; value) = self.setPrintToStdout(value)
 
 template physicsTicksPerSecond*(self: Engine): untyped = self.getPhysicsTicksPerSecond()
 template `physicsTicksPerSecond=`*(self: Engine; value) = self.setPhysicsTicksPerSecond(value)

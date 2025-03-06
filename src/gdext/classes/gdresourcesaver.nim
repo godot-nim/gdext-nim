@@ -24,6 +24,12 @@ proc removeResourceFormatSaver*(self: ResourceSaver; formatSaver: gdref Resource
   expandMethodBind(className ResourceSaver, "remove_resource_format_saver", 3373026878)
   methodbind.ptrcall(self, [getPtr formatSaver])
 
+proc getResourceIdForPath*(self: ResourceSaver; path: String; generate: bool = false): int64 =
+  expandMethodBind(className ResourceSaver, "get_resource_id_for_path", 150756522)
+  var ret: encoded int64
+  methodbind.ptrcall(self, [getPtr path, getPtr generate], addr ret)
+  (addr ret).decode_result(int64)
+
 const ResourceSaver_vmap =
   Object.vmap.concat initTable[string, string]()
 template vmap*(_: typedesc[ResourceSaver]): Table[string, string] = ResourceSaver_vmap

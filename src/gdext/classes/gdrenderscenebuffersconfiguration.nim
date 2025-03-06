@@ -94,6 +94,16 @@ proc setTextureMipmapBias*(self: RenderSceneBuffersConfiguration; textureMipmapB
   expandMethodBind(className RenderSceneBuffersConfiguration, "set_texture_mipmap_bias", 373806689)
   methodbind.ptrcall(self, [getPtr textureMipmapBias])
 
+proc getAnisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportAnisotropicFiltering =
+  expandMethodBind(className RenderSceneBuffersConfiguration, "get_anisotropic_filtering_level", 1617414954)
+  var ret: encoded RenderingServer_ViewportAnisotropicFiltering
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(RenderingServer_ViewportAnisotropicFiltering)
+
+proc setAnisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration; anisotropicFilteringLevel: RenderingServer_ViewportAnisotropicFiltering): void =
+  expandMethodBind(className RenderSceneBuffersConfiguration, "set_anisotropic_filtering_level", 2559658741)
+  methodbind.ptrcall(self, [getPtr anisotropicFilteringLevel])
+
 template renderTarget*(self: RenderSceneBuffersConfiguration): untyped = self.getRenderTarget()
 template `renderTarget=`*(self: RenderSceneBuffersConfiguration; value) = self.setRenderTarget(value)
 
@@ -120,6 +130,9 @@ template `fsrSharpness=`*(self: RenderSceneBuffersConfiguration; value) = self.s
 
 template textureMipmapBias*(self: RenderSceneBuffersConfiguration): untyped = self.getTextureMipmapBias()
 template `textureMipmapBias=`*(self: RenderSceneBuffersConfiguration; value) = self.setTextureMipmapBias(value)
+
+template anisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration): untyped = self.getAnisotropicFilteringLevel()
+template `anisotropicFilteringLevel=`*(self: RenderSceneBuffersConfiguration; value) = self.setAnisotropicFilteringLevel(value)
 
 const RenderSceneBuffersConfiguration_vmap =
   RefCounted.vmap.concat initTable[string, string]()

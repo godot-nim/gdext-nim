@@ -32,9 +32,10 @@ proc load_PackedColorArray_operators {.execon: staticevents.init_engine.on_load_
   `!=(PackedColorArray PackedColorArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_NotEqual, VariantType_PackedColorArray, VariantType_PackedColorArray)
   `+(PackedColorArray PackedColorArray)` = interface_variantGetPtrOperatorEvaluator(VariantOP_Add, VariantType_PackedColorArray, VariantType_PackedColorArray)
 
+var `get(PackedColorArray Int)`: PtrBuiltinMethod
+var `set(PackedColorArray Int Color)`: PtrBuiltinMethod
 var `size(PackedColorArray)`: PtrBuiltinMethod
 var `isEmpty(PackedColorArray)`: PtrBuiltinMethod
-var `set(PackedColorArray Int Color)`: PtrBuiltinMethod
 var `pushBack(PackedColorArray Color)`: PtrBuiltinMethod
 var `append(PackedColorArray Color)`: PtrBuiltinMethod
 var `appendArray(PackedColorArray PackedColorArray)`: PtrBuiltinMethod
@@ -54,13 +55,16 @@ var `find(PackedColorArray Color Int)`: PtrBuiltinMethod
 var `rfind(PackedColorArray Color Int)`: PtrBuiltinMethod
 var `count(PackedColorArray Color)`: PtrBuiltinMethod
 
+proc get*(self: PackedColorArray; index: Int): Color =
+  let argArr = [getPtr index]
+  `get(PackedColorArray Int)`(addr self, addr argArr[0], addr result, 1)
+proc set*(self: PackedColorArray; index: Int; value: Color): void =
+  let argArr = [getPtr index, getPtr value]
+  `set(PackedColorArray Int Color)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedColorArray): Int =
   `size(PackedColorArray)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedColorArray): bool =
   `isEmpty(PackedColorArray)`(addr self, nil, addr result, 0)
-proc set*(self: PackedColorArray; index: Int; value: Color): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedColorArray Int Color)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: PackedColorArray; value: Color): bool =
   let argArr = [getPtr value]
   `pushBack(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
@@ -112,9 +116,10 @@ proc count*(self: PackedColorArray; value: Color): Int =
   `count(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedColorArray_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
+  `get(PackedColorArray Int)` = load(VariantType_PackedColorArray, "get", 2972831132)
+  `set(PackedColorArray Int Color)` = load(VariantType_PackedColorArray, "set", 1444096570)
   `size(PackedColorArray)` = load(VariantType_PackedColorArray, "size", 3173160232)
   `isEmpty(PackedColorArray)` = load(VariantType_PackedColorArray, "is_empty", 3918633141)
-  `set(PackedColorArray Int Color)` = load(VariantType_PackedColorArray, "set", 1444096570)
   `pushBack(PackedColorArray Color)` = load(VariantType_PackedColorArray, "push_back", 1007858200)
   `append(PackedColorArray Color)` = load(VariantType_PackedColorArray, "append", 1007858200)
   `appendArray(PackedColorArray PackedColorArray)` = load(VariantType_PackedColorArray, "append_array", 798822497)

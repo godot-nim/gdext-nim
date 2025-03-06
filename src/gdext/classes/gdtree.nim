@@ -320,6 +320,16 @@ proc getAllowSearch*(self: Tree): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setAutoTooltip*(self: Tree; enable: bool): void =
+  expandMethodBind(className Tree, "set_auto_tooltip", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isAutoTooltipEnabled*(self: Tree): bool =
+  expandMethodBind(className Tree, "is_auto_tooltip_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template columns*(self: Tree): untyped = self.getColumns()
 template `columns=`*(self: Tree; value) = self.setColumns(value)
 
@@ -355,6 +365,9 @@ template `scrollHorizontalEnabled=`*(self: Tree; value) = self.setHScrollEnabled
 
 template scrollVerticalEnabled*(self: Tree): untyped = self.isVScrollEnabled()
 template `scrollVerticalEnabled=`*(self: Tree; value) = self.setVScrollEnabled(value)
+
+template autoTooltip*(self: Tree): untyped = self.isAutoTooltipEnabled()
+template `autoTooltip=`*(self: Tree; value) = self.setAutoTooltip(value)
 
 const Tree_vmap =
   Control.vmap.concat initTable[string, string]()

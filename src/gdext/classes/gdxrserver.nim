@@ -44,6 +44,16 @@ proc getHmdTransform*(self: XRServer): Transform3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
 
+proc setCameraLockedToOrigin*(self: XRServer; enabled: bool): void =
+  expandMethodBind(className XRServer, "set_camera_locked_to_origin", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isCameraLockedToOrigin*(self: XRServer): bool =
+  expandMethodBind(className XRServer, "is_camera_locked_to_origin", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc addInterface*(self: XRServer; `interface`: gdref XRInterface): void =
   expandMethodBind(className XRServer, "add_interface", 1898711491)
   methodbind.ptrcall(self, [getPtr `interface`])
@@ -111,6 +121,9 @@ template `worldScale=`*(self: XRServer; value) = self.setWorldScale(value)
 
 template worldOrigin*(self: XRServer): untyped = self.getWorldOrigin()
 template `worldOrigin=`*(self: XRServer; value) = self.setWorldOrigin(value)
+
+template cameraLockedToOrigin*(self: XRServer): untyped = self.isCameraLockedToOrigin()
+template `cameraLockedToOrigin=`*(self: XRServer; value) = self.setCameraLockedToOrigin(value)
 
 template primaryInterface*(self: XRServer): untyped = self.getPrimaryInterface()
 template `primaryInterface=`*(self: XRServer; value) = self.setPrimaryInterface(value)

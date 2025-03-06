@@ -14,15 +14,15 @@ proc getSource*(self: VisualShaderNodeCubemap): VisualShaderNodeCubemap_Source =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeCubemap_Source)
 
-proc setCubeMap*(self: VisualShaderNodeCubemap; value: gdref Cubemap): void =
-  expandMethodBind(className VisualShaderNodeCubemap, "set_cube_map", 2219800736)
+proc setCubeMap*(self: VisualShaderNodeCubemap; value: gdref TextureLayered): void =
+  expandMethodBind(className VisualShaderNodeCubemap, "set_cube_map", 1278366092)
   methodbind.ptrcall(self, [getPtr value])
 
-proc getCubeMap*(self: VisualShaderNodeCubemap): gdref Cubemap =
-  expandMethodBind(className VisualShaderNodeCubemap, "get_cube_map", 1772111058)
-  var ret: encoded gdref Cubemap
+proc getCubeMap*(self: VisualShaderNodeCubemap): gdref TextureLayered =
+  expandMethodBind(className VisualShaderNodeCubemap, "get_cube_map", 3984243839)
+  var ret: encoded gdref TextureLayered
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Cubemap)
+  (addr ret).decode_result(gdref TextureLayered)
 
 proc setTextureType*(self: VisualShaderNodeCubemap; value: VisualShaderNodeCubemap_TextureType): void =
   expandMethodBind(className VisualShaderNodeCubemap, "set_texture_type", 1899718876)

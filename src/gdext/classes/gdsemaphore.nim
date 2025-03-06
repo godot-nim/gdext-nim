@@ -14,9 +14,9 @@ proc tryWait*(self: Semaphore): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc post*(self: Semaphore): void =
-  expandMethodBind(className Semaphore, "post", 3218959716)
-  methodbind.ptrcall(self, [])
+proc post*(self: Semaphore; count: int32 = 1): void =
+  expandMethodBind(className Semaphore, "post", 1667783136)
+  methodbind.ptrcall(self, [getPtr count])
 
 const Semaphore_vmap =
   RefCounted.vmap.concat initTable[string, string]()

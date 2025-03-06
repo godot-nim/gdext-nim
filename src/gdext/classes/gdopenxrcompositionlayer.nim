@@ -14,6 +14,26 @@ proc getLayerViewport*(self: OpenXRCompositionLayer): SubViewport =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(SubViewport)
 
+proc setUseAndroidSurface*(self: OpenXRCompositionLayer; enable: bool): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_use_android_surface", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc getUseAndroidSurface*(self: OpenXRCompositionLayer): bool =
+  expandMethodBind(className OpenXRCompositionLayer, "get_use_android_surface", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setAndroidSurfaceSize*(self: OpenXRCompositionLayer; size: Vector2i): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_android_surface_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr size])
+
+proc getAndroidSurfaceSize*(self: OpenXRCompositionLayer): Vector2i =
+  expandMethodBind(className OpenXRCompositionLayer, "get_android_surface_size", 3690982128)
+  var ret: encoded Vector2i
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2i)
+
 proc setEnableHolePunch*(self: OpenXRCompositionLayer; enable: bool): void =
   expandMethodBind(className OpenXRCompositionLayer, "set_enable_hole_punch", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -44,6 +64,12 @@ proc getAlphaBlend*(self: OpenXRCompositionLayer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getAndroidSurface*(self: OpenXRCompositionLayer): gdref JavaObject =
+  expandMethodBind(className OpenXRCompositionLayer, "get_android_surface", 3277089691)
+  var ret: encoded gdref JavaObject
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref JavaObject)
+
 proc isNativelySupported*(self: OpenXRCompositionLayer): bool =
   expandMethodBind(className OpenXRCompositionLayer, "is_natively_supported", 36873697)
   var ret: encoded bool
@@ -58,6 +84,12 @@ proc intersectsRay*(self: OpenXRCompositionLayer; origin: Vector3; direction: Ve
 
 template layerViewport*(self: OpenXRCompositionLayer): untyped = self.getLayerViewport()
 template `layerViewport=`*(self: OpenXRCompositionLayer; value) = self.setLayerViewport(value)
+
+template useAndroidSurface*(self: OpenXRCompositionLayer): untyped = self.getUseAndroidSurface()
+template `useAndroidSurface=`*(self: OpenXRCompositionLayer; value) = self.setUseAndroidSurface(value)
+
+template androidSurfaceSize*(self: OpenXRCompositionLayer): untyped = self.getAndroidSurfaceSize()
+template `androidSurfaceSize=`*(self: OpenXRCompositionLayer; value) = self.setAndroidSurfaceSize(value)
 
 template sortOrder*(self: OpenXRCompositionLayer): untyped = self.getSortOrder()
 template `sortOrder=`*(self: OpenXRCompositionLayer; value) = self.setSortOrder(value)

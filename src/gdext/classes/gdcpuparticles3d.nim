@@ -154,9 +154,39 @@ proc getMesh*(self: CPUParticles3D): gdref Mesh =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Mesh)
 
-proc restart*(self: CPUParticles3D): void =
-  expandMethodBind(className CPUParticles3D, "restart", 3218959716)
-  methodbind.ptrcall(self, [])
+proc setUseFixedSeed*(self: CPUParticles3D; useFixedSeed: bool): void =
+  expandMethodBind(className CPUParticles3D, "set_use_fixed_seed", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFixedSeed])
+
+proc getUseFixedSeed*(self: CPUParticles3D): bool =
+  expandMethodBind(className CPUParticles3D, "get_use_fixed_seed", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setSeed*(self: CPUParticles3D; seed: uint32): void =
+  expandMethodBind(className CPUParticles3D, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed])
+
+proc getSeed*(self: CPUParticles3D): uint32 =
+  expandMethodBind(className CPUParticles3D, "get_seed", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
+proc restart*(self: CPUParticles3D; keepSeed: bool = false): void =
+  expandMethodBind(className CPUParticles3D, "restart", 107499316)
+  methodbind.ptrcall(self, [getPtr keepSeed])
+
+proc requestParticlesProcess*(self: CPUParticles3D; processTime: Float): void =
+  expandMethodBind(className CPUParticles3D, "request_particles_process", 373806689)
+  methodbind.ptrcall(self, [getPtr processTime])
+
+proc captureAabb*(self: CPUParticles3D): AABB =
+  expandMethodBind(className CPUParticles3D, "capture_aabb", 1068685055)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AABB)
 
 proc setDirection*(self: CPUParticles3D; direction: Vector3): void =
   expandMethodBind(className CPUParticles3D, "set_direction", 3460891852)
@@ -358,6 +388,16 @@ proc getEmissionRingInnerRadius*(self: CPUParticles3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setEmissionRingConeAngle*(self: CPUParticles3D; coneAngle: Float): void =
+  expandMethodBind(className CPUParticles3D, "set_emission_ring_cone_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr coneAngle])
+
+proc getEmissionRingConeAngle*(self: CPUParticles3D): Float =
+  expandMethodBind(className CPUParticles3D, "get_emission_ring_cone_angle", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getGravity*(self: CPUParticles3D): Vector3 =
   expandMethodBind(className CPUParticles3D, "get_gravity", 3360562783)
   var ret: encoded Vector3
@@ -436,6 +476,12 @@ template `explosiveness=`*(self: CPUParticles3D; value) = self.setExplosivenessR
 template randomness*(self: CPUParticles3D): untyped = self.getRandomnessRatio()
 template `randomness=`*(self: CPUParticles3D; value) = self.setRandomnessRatio(value)
 
+template useFixedSeed*(self: CPUParticles3D): untyped = self.getUseFixedSeed()
+template `useFixedSeed=`*(self: CPUParticles3D; value) = self.setUseFixedSeed(value)
+
+template seed*(self: CPUParticles3D): untyped = self.getSeed()
+template `seed=`*(self: CPUParticles3D; value) = self.setSeed(value)
+
 template lifetimeRandomness*(self: CPUParticles3D): untyped = self.getLifetimeRandomness()
 template `lifetimeRandomness=`*(self: CPUParticles3D; value) = self.setLifetimeRandomness(value)
 
@@ -486,6 +532,9 @@ template `emissionRingRadius=`*(self: CPUParticles3D; value) = self.setEmissionR
 
 template emissionRingInnerRadius*(self: CPUParticles3D): untyped = self.getEmissionRingInnerRadius()
 template `emissionRingInnerRadius=`*(self: CPUParticles3D; value) = self.setEmissionRingInnerRadius(value)
+
+template emissionRingConeAngle*(self: CPUParticles3D): untyped = self.getEmissionRingConeAngle()
+template `emissionRingConeAngle=`*(self: CPUParticles3D; value) = self.setEmissionRingConeAngle(value)
 
 template particleFlagAlignY*(self: CPUParticles3D): untyped = self.getParticleFlag(CPUParticles3D_ParticleFlags(0))
 template `particleFlagAlignY=`*(self: CPUParticles3D; value) = self.setParticleFlag(CPUParticles3D_ParticleFlags(0), value)

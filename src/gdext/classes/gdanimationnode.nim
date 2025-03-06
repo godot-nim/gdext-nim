@@ -98,6 +98,18 @@ proc isFilterEnabled*(self: AnimationNode): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getProcessingAnimationTreeInstanceId*(self: AnimationNode): uint64 =
+  expandMethodBind(className AnimationNode, "get_processing_animation_tree_instance_id", 3905245786)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc isProcessTesting*(self: AnimationNode): bool =
+  expandMethodBind(className AnimationNode, "is_process_testing", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc blendAnimation*(self: AnimationNode; animation: StringName; time: float64; delta: float64; seeked: bool; isExternalSeeking: bool; blend: Float; loopedFlag: Animation_LoopedFlag = loopedFlagNone): void =
   expandMethodBind(className AnimationNode, "blend_animation", 1630801826)
   methodbind.ptrcall(self, [getPtr animation, getPtr time, getPtr delta, getPtr seeked, getPtr isExternalSeeking, getPtr blend, getPtr loopedFlag])

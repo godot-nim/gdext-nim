@@ -54,6 +54,11 @@ proc getImportOrder(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[Con
   errproof: cast[EditorImportPlugin](p_instance).getImportOrder().encode(r_ret)
 template getImportOrder_bind*(_: typedesc[EditorImportPlugin]): ClassCallVirtual = getImportOrder
 
+method getFormatVersion*(self: EditorImportPlugin): int32 {.base.} = (discard)
+proc getFormatVersion(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  errproof: cast[EditorImportPlugin](p_instance).getFormatVersion().encode(r_ret)
+template getFormatVersion_bind*(_: typedesc[EditorImportPlugin]): ClassCallVirtual = getFormatVersion
+
 method getOptionVisibility*(self: EditorImportPlugin; path: String; optionName: StringName; options: Dictionary): bool {.base.} = (discard)
 proc getOptionVisibility(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
   errproof: cast[EditorImportPlugin](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(StringName), p_args[2].decode(Dictionary)).encode(r_ret)
@@ -87,6 +92,7 @@ const EditorImportPlugin_vmap =
     "getresourcetype" : "_get_resource_type",
     "getpriority" : "_get_priority",
     "getimportorder" : "_get_import_order",
+    "getformatversion" : "_get_format_version",
     "getoptionvisibility" : "_get_option_visibility",
     "`import`" : "_import",
     "canimportthreaded" : "_can_import_threaded",

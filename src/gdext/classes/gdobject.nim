@@ -210,6 +210,12 @@ proc isConnected*(self: Object; signal: StringName; callable: Callable): bool =
   methodbind.ptrcall(self, [getPtr signal, getPtr callable], addr ret)
   (addr ret).decode_result(bool)
 
+proc hasConnections*(self: Object; signal: StringName): bool =
+  expandMethodBind(className Object, "has_connections", 2619796661)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr signal], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setBlockSignals*(self: Object; enable: bool): void =
   expandMethodBind(className Object, "set_block_signals", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -235,16 +241,26 @@ proc canTranslateMessages*(self: Object): bool =
   (addr ret).decode_result(bool)
 
 proc tr*(self: Object; message: StringName; context: StringName = stringName ""): String =
-  expandMethodBind(className Object, "tr", 2475554935)
+  expandMethodBind(className Object, "tr", 1195764410)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
   (addr ret).decode_result(String)
 
 proc trN*(self: Object; message: StringName; pluralMessage: StringName; n: int32; context: StringName = stringName ""): String =
-  expandMethodBind(className Object, "tr_n", 4021311862)
+  expandMethodBind(className Object, "tr_n", 162698058)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(String)
+
+proc getTranslationDomain*(self: Object): StringName =
+  expandMethodBind(className Object, "get_translation_domain", 2002593661)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(StringName)
+
+proc setTranslationDomain*(self: Object; domain: StringName): void =
+  expandMethodBind(className Object, "set_translation_domain", 3304788590)
+  methodbind.ptrcall(self, [getPtr domain])
 
 proc isQueuedForDeletion*(self: Object): bool =
   expandMethodBind(className Object, "is_queued_for_deletion", 36873697)

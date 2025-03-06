@@ -207,6 +207,14 @@ proc grabFocus*(self: Window): void =
   expandMethodBind(className Window, "grab_focus", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc startDrag*(self: Window): void =
+  expandMethodBind(className Window, "start_drag", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc startResize*(self: Window; edge: DisplayServer_WindowResizeEdge): void =
+  expandMethodBind(className Window, "start_resize", 122288853)
+  methodbind.ptrcall(self, [getPtr edge])
+
 proc setImeActive*(self: Window; active: bool): void =
   expandMethodBind(className Window, "set_ime_active", 2586408642)
   methodbind.ptrcall(self, [getPtr active])
@@ -408,37 +416,37 @@ proc removeThemeConstantOverride*(self: Window; name: StringName): void =
   methodbind.ptrcall(self, [getPtr name])
 
 proc getThemeIcon*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref Texture2D =
-  expandMethodBind(className Window, "get_theme_icon", 2336455395)
+  expandMethodBind(className Window, "get_theme_icon", 3163973443)
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
 proc getThemeStylebox*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref StyleBox =
-  expandMethodBind(className Window, "get_theme_stylebox", 2759935355)
+  expandMethodBind(className Window, "get_theme_stylebox", 604739069)
   var ret: encoded gdref StyleBox
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref StyleBox)
 
 proc getThemeFont*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref Font =
-  expandMethodBind(className Window, "get_theme_font", 387378635)
+  expandMethodBind(className Window, "get_theme_font", 2826986490)
   var ret: encoded gdref Font
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Font)
 
 proc getThemeFontSize*(self: Window; name: StringName; themeType: StringName = stringName ""): int32 =
-  expandMethodBind(className Window, "get_theme_font_size", 229578101)
+  expandMethodBind(className Window, "get_theme_font_size", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
 
 proc getThemeColor*(self: Window; name: StringName; themeType: StringName = stringName ""): Color =
-  expandMethodBind(className Window, "get_theme_color", 2377051548)
+  expandMethodBind(className Window, "get_theme_color", 2798751242)
   var ret: encoded Color
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(Color)
 
 proc getThemeConstant*(self: Window; name: StringName; themeType: StringName = stringName ""): int32 =
-  expandMethodBind(className Window, "get_theme_constant", 229578101)
+  expandMethodBind(className Window, "get_theme_constant", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
@@ -480,37 +488,37 @@ proc hasThemeConstantOverride*(self: Window; name: StringName): bool =
   (addr ret).decode_result(bool)
 
 proc hasThemeIcon*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_icon", 1187511791)
+  expandMethodBind(className Window, "has_theme_icon", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeStylebox*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_stylebox", 1187511791)
+  expandMethodBind(className Window, "has_theme_stylebox", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeFont*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_font", 1187511791)
+  expandMethodBind(className Window, "has_theme_font", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeFontSize*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_font_size", 1187511791)
+  expandMethodBind(className Window, "has_theme_font_size", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeColor*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_color", 1187511791)
+  expandMethodBind(className Window, "has_theme_color", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
 proc hasThemeConstant*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
-  expandMethodBind(className Window, "has_theme_constant", 1187511791)
+  expandMethodBind(className Window, "has_theme_constant", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
@@ -659,6 +667,12 @@ template `extendToTitle=`*(self: Window; value) = self.setFlag(Window_Flags(6), 
 template mousePassthrough*(self: Window): untyped = self.getFlag(Window_Flags(7))
 template `mousePassthrough=`*(self: Window; value) = self.setFlag(Window_Flags(7), value)
 
+template sharpCorners*(self: Window): untyped = self.getFlag(Window_Flags(8))
+template `sharpCorners=`*(self: Window; value) = self.setFlag(Window_Flags(8), value)
+
+template excludeFromCapture*(self: Window): untyped = self.getFlag(Window_Flags(9))
+template `excludeFromCapture=`*(self: Window; value) = self.setFlag(Window_Flags(9), value)
+
 template forceNative*(self: Window): untyped = self.getForceNative()
 template `forceNative=`*(self: Window; value) = self.setForceNative(value)
 
@@ -779,4 +793,10 @@ proc titlebarChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("titlebar_changed")
+  self.emitSignal(signalname)
+
+proc titleChanged*(self: Window): Error =
+  var signalname {.global.} : Variant
+  once:
+    signalname = variant stringname("title_changed")
   self.emitSignal(signalname)

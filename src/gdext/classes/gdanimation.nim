@@ -340,6 +340,60 @@ proc animationTrackGetKeyAnimation*(self: Animation; trackIdx: int32; keyIdx: in
   methodbind.ptrcall(self, [getPtr trackIdx, getPtr keyIdx], addr ret)
   (addr ret).decode_result(StringName)
 
+proc addMarker*(self: Animation; name: StringName; time: float64): void =
+  expandMethodBind(className Animation, "add_marker", 4135858297)
+  methodbind.ptrcall(self, [getPtr name, getPtr time])
+
+proc removeMarker*(self: Animation; name: StringName): void =
+  expandMethodBind(className Animation, "remove_marker", 3304788590)
+  methodbind.ptrcall(self, [getPtr name])
+
+proc hasMarker*(self: Animation; name: StringName): bool =
+  expandMethodBind(className Animation, "has_marker", 2619796661)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr name], addr ret)
+  (addr ret).decode_result(bool)
+
+proc getMarkerAtTime*(self: Animation; time: float64): StringName =
+  expandMethodBind(className Animation, "get_marker_at_time", 4079494655)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr time], addr ret)
+  (addr ret).decode_result(StringName)
+
+proc getNextMarker*(self: Animation; time: float64): StringName =
+  expandMethodBind(className Animation, "get_next_marker", 4079494655)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr time], addr ret)
+  (addr ret).decode_result(StringName)
+
+proc getPrevMarker*(self: Animation; time: float64): StringName =
+  expandMethodBind(className Animation, "get_prev_marker", 4079494655)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr time], addr ret)
+  (addr ret).decode_result(StringName)
+
+proc getMarkerTime*(self: Animation; name: StringName): float64 =
+  expandMethodBind(className Animation, "get_marker_time", 2349060816)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [getPtr name], addr ret)
+  (addr ret).decode_result(float64)
+
+proc getMarkerNames*(self: Animation): PackedStringArray =
+  expandMethodBind(className Animation, "get_marker_names", 1139954409)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
+proc getMarkerColor*(self: Animation; name: StringName): Color =
+  expandMethodBind(className Animation, "get_marker_color", 3742943038)
+  var ret: encoded Color
+  methodbind.ptrcall(self, [getPtr name], addr ret)
+  (addr ret).decode_result(Color)
+
+proc setMarkerColor*(self: Animation; name: StringName; color: Color): void =
+  expandMethodBind(className Animation, "set_marker_color", 4260178595)
+  methodbind.ptrcall(self, [getPtr name, getPtr color])
+
 proc setLength*(self: Animation; timeSec: Float): void =
   expandMethodBind(className Animation, "set_length", 373806689)
   methodbind.ptrcall(self, [getPtr timeSec])
@@ -377,6 +431,10 @@ proc clear*(self: Animation): void =
 proc copyTrack*(self: Animation; trackIdx: int32; toAnimation: gdref Animation): void =
   expandMethodBind(className Animation, "copy_track", 148001024)
   methodbind.ptrcall(self, [getPtr trackIdx, getPtr toAnimation])
+
+proc optimize*(self: Animation; allowedVelocityErr: Float = 0.01; allowedAngularErr: Float = 0.01; precision: int32 = 3): void =
+  expandMethodBind(className Animation, "optimize", 3303583852)
+  methodbind.ptrcall(self, [getPtr allowedVelocityErr, getPtr allowedAngularErr, getPtr precision])
 
 proc compress*(self: Animation; pageSize: uint32 = 8192'u32; fps: uint32 = 120'u32; splitTolerance: Float = 4.0): void =
   expandMethodBind(className Animation, "compress", 3608408117)

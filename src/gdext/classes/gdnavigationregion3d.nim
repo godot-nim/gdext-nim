@@ -106,6 +106,12 @@ proc isBaking*(self: NavigationRegion3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getBounds*(self: NavigationRegion3D): AABB =
+  expandMethodBind(className NavigationRegion3D, "get_bounds", 1068685055)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AABB)
+
 template navigationMesh*(self: NavigationRegion3D): untyped = self.getNavigationMesh()
 template `navigationMesh=`*(self: NavigationRegion3D; value) = self.setNavigationMesh(value)
 

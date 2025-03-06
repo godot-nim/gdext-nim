@@ -97,7 +97,7 @@ proc mapGetLinkConnectionRadius*(self: NavigationServer3D; map: RID): Float =
   (addr ret).decode_result(Float)
 
 proc mapGetPath*(self: NavigationServer3D; map: RID; origin: Vector3; destination: Vector3; optimize: bool; navigationLayers: uint32 = 1'u32): PackedVector3Array =
-  expandMethodBind(className NavigationServer3D, "map_get_path", 1187418690)
+  expandMethodBind(className NavigationServer3D, "map_get_path", 276783190)
   var ret: encoded PackedVector3Array
   methodbind.ptrcall(self, [getPtr map, getPtr origin, getPtr destination, getPtr optimize, getPtr navigationLayers], addr ret)
   (addr ret).decode_result(PackedVector3Array)
@@ -160,15 +160,25 @@ proc mapGetIterationId*(self: NavigationServer3D; map: RID): uint32 =
   methodbind.ptrcall(self, [getPtr map], addr ret)
   (addr ret).decode_result(uint32)
 
+proc mapSetUseAsyncIterations*(self: NavigationServer3D; map: RID; enabled: bool): void =
+  expandMethodBind(className NavigationServer3D, "map_set_use_async_iterations", 1265174801)
+  methodbind.ptrcall(self, [getPtr map, getPtr enabled])
+
+proc mapGetUseAsyncIterations*(self: NavigationServer3D; map: RID): bool =
+  expandMethodBind(className NavigationServer3D, "map_get_use_async_iterations", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr map], addr ret)
+  (addr ret).decode_result(bool)
+
 proc mapGetRandomPoint*(self: NavigationServer3D; map: RID; navigationLayers: uint32; uniformly: bool): Vector3 =
   expandMethodBind(className NavigationServer3D, "map_get_random_point", 722801526)
   var ret: encoded Vector3
   methodbind.ptrcall(self, [getPtr map, getPtr navigationLayers, getPtr uniformly], addr ret)
   (addr ret).decode_result(Vector3)
 
-proc queryPath*(self: NavigationServer3D; parameters: gdref NavigationPathQueryParameters3D; retval: gdref NavigationPathQueryResult3D): void =
-  expandMethodBind(className NavigationServer3D, "query_path", 3415008901)
-  methodbind.ptrcall(self, [getPtr parameters, getPtr retval])
+proc queryPath*(self: NavigationServer3D; parameters: gdref NavigationPathQueryParameters3D; retval: gdref NavigationPathQueryResult3D; callback: Callable = callable()): void =
+  expandMethodBind(className NavigationServer3D, "query_path", 2146930868)
+  methodbind.ptrcall(self, [getPtr parameters, getPtr retval, getPtr callback])
 
 proc regionCreate*(self: NavigationServer3D): RID =
   expandMethodBind(className NavigationServer3D, "region_create", 529393457)
@@ -288,11 +298,35 @@ proc regionGetConnectionPathwayEnd*(self: NavigationServer3D; region: RID; conne
   methodbind.ptrcall(self, [getPtr region, getPtr connection], addr ret)
   (addr ret).decode_result(Vector3)
 
+proc regionGetClosestPointToSegment*(self: NavigationServer3D; region: RID; start: Vector3; `end`: Vector3; useCollision: bool = false): Vector3 =
+  expandMethodBind(className NavigationServer3D, "region_get_closest_point_to_segment", 3830095642)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [getPtr region, getPtr start, getPtr `end`, getPtr useCollision], addr ret)
+  (addr ret).decode_result(Vector3)
+
+proc regionGetClosestPoint*(self: NavigationServer3D; region: RID; toPoint: Vector3): Vector3 =
+  expandMethodBind(className NavigationServer3D, "region_get_closest_point", 2056183332)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [getPtr region, getPtr toPoint], addr ret)
+  (addr ret).decode_result(Vector3)
+
+proc regionGetClosestPointNormal*(self: NavigationServer3D; region: RID; toPoint: Vector3): Vector3 =
+  expandMethodBind(className NavigationServer3D, "region_get_closest_point_normal", 2056183332)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [getPtr region, getPtr toPoint], addr ret)
+  (addr ret).decode_result(Vector3)
+
 proc regionGetRandomPoint*(self: NavigationServer3D; region: RID; navigationLayers: uint32; uniformly: bool): Vector3 =
   expandMethodBind(className NavigationServer3D, "region_get_random_point", 722801526)
   var ret: encoded Vector3
   methodbind.ptrcall(self, [getPtr region, getPtr navigationLayers, getPtr uniformly], addr ret)
   (addr ret).decode_result(Vector3)
+
+proc regionGetBounds*(self: NavigationServer3D; region: RID): AABB =
+  expandMethodBind(className NavigationServer3D, "region_get_bounds", 974181306)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(AABB)
 
 proc linkCreate*(self: NavigationServer3D): RID =
   expandMethodBind(className NavigationServer3D, "link_create", 529393457)
@@ -683,15 +717,15 @@ proc obstacleGetAvoidanceLayers*(self: NavigationServer3D; obstacle: RID): uint3
   (addr ret).decode_result(uint32)
 
 proc parseSourceGeometryData*(self: NavigationServer3D; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; rootNode: Node; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer3D, "parse_source_geometry_data", 685862123)
+  expandMethodBind(className NavigationServer3D, "parse_source_geometry_data", 3172802542)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr rootNode, getPtr callback])
 
 proc bakeFromSourceGeometryData*(self: NavigationServer3D; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer3D, "bake_from_source_geometry_data", 2469318639)
+  expandMethodBind(className NavigationServer3D, "bake_from_source_geometry_data", 1286748856)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr callback])
 
 proc bakeFromSourceGeometryDataAsync*(self: NavigationServer3D; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; callback: Callable = callable()): void =
-  expandMethodBind(className NavigationServer3D, "bake_from_source_geometry_data_async", 2469318639)
+  expandMethodBind(className NavigationServer3D, "bake_from_source_geometry_data_async", 1286748856)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr callback])
 
 proc isBakingNavigationMesh*(self: NavigationServer3D; navigationMesh: gdref NavigationMesh): bool =

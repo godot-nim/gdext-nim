@@ -44,6 +44,18 @@ proc getEditorSettings*(self: EditorInterface): gdref EditorSettings =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref EditorSettings)
 
+proc getEditorToaster*(self: EditorInterface): EditorToaster =
+  expandMethodBind(className EditorInterface, "get_editor_toaster", 3612675797)
+  var ret: encoded EditorToaster
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(EditorToaster)
+
+proc getEditorUndoRedo*(self: EditorInterface): EditorUndoRedoManager =
+  expandMethodBind(className EditorInterface, "get_editor_undo_redo", 3819628421)
+  var ret: encoded EditorUndoRedoManager
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(EditorUndoRedoManager)
+
 proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[Mesh]; previewSize: int32): TypedArray[Texture2D] =
   expandMethodBind(className EditorInterface, "make_mesh_previews", 878078554)
   var ret: encoded TypedArray[Texture2D]
@@ -148,13 +160,25 @@ proc setCurrentFeatureProfile*(self: EditorInterface; profileName: String): void
   expandMethodBind(className EditorInterface, "set_current_feature_profile", 83702148)
   methodbind.ptrcall(self, [getPtr profileName])
 
-proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
-  expandMethodBind(className EditorInterface, "popup_node_selector", 2271411043)
-  methodbind.ptrcall(self, [getPtr callback, getPtr validTypes])
+proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = TypedArray[StringName](gdarray()); currentValue: Node = default Node): void =
+  expandMethodBind(className EditorInterface, "popup_node_selector", 2444591477)
+  methodbind.ptrcall(self, [getPtr callback, getPtr validTypes, getPtr currentValue])
 
-proc popupPropertySelector*(self: EditorInterface; `object`: Object; callback: Callable; typeFilter: PackedInt32Array = PackedInt32Array()): void =
-  expandMethodBind(className EditorInterface, "popup_property_selector", 261221679)
-  methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr typeFilter])
+proc popupPropertySelector*(self: EditorInterface; `object`: Object; callback: Callable; typeFilter: PackedInt32Array = PackedInt32Array(); currentValue: String = gdstring""): void =
+  expandMethodBind(className EditorInterface, "popup_property_selector", 2955609011)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr typeFilter, getPtr currentValue])
+
+proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Callable; currentValue: String = gdstring""): void =
+  expandMethodBind(className EditorInterface, "popup_method_selector", 3585505226)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr currentValue])
+
+proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+  expandMethodBind(className EditorInterface, "popup_quick_open", 2271411043)
+  methodbind.ptrcall(self, [getPtr callback, getPtr baseTypes])
+
+proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = stringName ""; currentType: String = gdstring""; dialogTitle: String = gdstring""; typeBlocklist: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+  expandMethodBind(className EditorInterface, "popup_create_dialog", 495277124)
+  methodbind.ptrcall(self, [getPtr callback, getPtr baseType, getPtr currentType, getPtr dialogTitle, getPtr typeBlocklist])
 
 proc getFileSystemDock*(self: EditorInterface): FileSystemDock =
   expandMethodBind(className EditorInterface, "get_file_system_dock", 3751012327)
@@ -206,9 +230,9 @@ proc editScript*(self: EditorInterface; script: gdref Script; line: int32 = -1; 
   expandMethodBind(className EditorInterface, "edit_script", 219829402)
   methodbind.ptrcall(self, [getPtr script, getPtr line, getPtr column, getPtr grabFocus])
 
-proc openSceneFromPath*(self: EditorInterface; sceneFilepath: String): void =
-  expandMethodBind(className EditorInterface, "open_scene_from_path", 83702148)
-  methodbind.ptrcall(self, [getPtr sceneFilepath])
+proc openSceneFromPath*(self: EditorInterface; sceneFilepath: String; setInherited: bool = false): void =
+  expandMethodBind(className EditorInterface, "open_scene_from_path", 1168363258)
+  methodbind.ptrcall(self, [getPtr sceneFilepath, getPtr setInherited])
 
 proc reloadSceneFromPath*(self: EditorInterface; sceneFilepath: String): void =
   expandMethodBind(className EditorInterface, "reload_scene_from_path", 83702148)

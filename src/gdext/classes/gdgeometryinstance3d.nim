@@ -124,6 +124,16 @@ proc getExtraCullMargin*(self: GeometryInstance3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setLightmapTexelScale*(self: GeometryInstance3D; scale: Float): void =
+  expandMethodBind(className GeometryInstance3D, "set_lightmap_texel_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale])
+
+proc getLightmapTexelScale*(self: GeometryInstance3D): Float =
+  expandMethodBind(className GeometryInstance3D, "get_lightmap_texel_scale", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setLightmapScale*(self: GeometryInstance3D; scale: GeometryInstance3D_LightmapScale): void =
   expandMethodBind(className GeometryInstance3D, "set_lightmap_scale", 2462696582)
   methodbind.ptrcall(self, [getPtr scale])
@@ -190,6 +200,9 @@ template `ignoreOcclusionCulling=`*(self: GeometryInstance3D; value) = self.setI
 
 template giMode*(self: GeometryInstance3D): untyped = self.getGiMode()
 template `giMode=`*(self: GeometryInstance3D; value) = self.setGiMode(value)
+
+template giLightmapTexelScale*(self: GeometryInstance3D): untyped = self.getLightmapTexelScale()
+template `giLightmapTexelScale=`*(self: GeometryInstance3D; value) = self.setLightmapTexelScale(value)
 
 template giLightmapScale*(self: GeometryInstance3D): untyped = self.getLightmapScale()
 template `giLightmapScale=`*(self: GeometryInstance3D; value) = self.setLightmapScale(value)

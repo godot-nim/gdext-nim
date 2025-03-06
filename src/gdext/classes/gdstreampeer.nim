@@ -76,6 +76,10 @@ proc putU64*(self: StreamPeer; value: uint64): void =
   expandMethodBind(className StreamPeer, "put_u64", 1286410249)
   methodbind.ptrcall(self, [getPtr value])
 
+proc putHalf*(self: StreamPeer; value: Float): void =
+  expandMethodBind(className StreamPeer, "put_half", 373806689)
+  methodbind.ptrcall(self, [getPtr value])
+
 proc putFloat*(self: StreamPeer; value: Float): void =
   expandMethodBind(className StreamPeer, "put_float", 373806689)
   methodbind.ptrcall(self, [getPtr value])
@@ -143,6 +147,12 @@ proc getU64*(self: StreamPeer): uint64 =
   var ret: encoded uint64
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
+
+proc getHalf*(self: StreamPeer): Float =
+  expandMethodBind(className StreamPeer, "get_half", 191475506)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
 
 proc getFloat*(self: StreamPeer): Float =
   expandMethodBind(className StreamPeer, "get_float", 191475506)
