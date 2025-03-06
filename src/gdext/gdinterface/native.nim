@@ -93,6 +93,7 @@ type
     expected*: int32_t
   VariantFromTypeConstructorFunc* = proc (a1: UninitializedVariantPtr; a2: TypePtr) {.gdcall.}
   TypeFromVariantConstructorFunc* = proc (a1: UninitializedTypePtr; a2: VariantPtr) {.gdcall.}
+  VariantGetInternalPtrFunc* = proc (a1: VariantPtr): pointer {.gdcall.}
   PtrOperatorEvaluator* = proc (p_left: ConstTypePtr; p_right: ConstTypePtr; r_result: TypePtr) {.gdcall.}
   PtrBuiltInMethod* = proc (p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr; p_argument_count: cint) {.gdcall.}
   PtrConstructor* = proc (p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall.}
@@ -143,11 +144,14 @@ type
   ClassUnreference* = proc (p_instance: ClassInstancePtr) {.gdcall.}
   ClassCallVirtual* = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
   ClassCreateInstance* = proc (p_class_userdata: pointer): ObjectPtr {.gdcall.}
+  ClassCreateInstance2* = proc (p_class_userdata: pointer; p_notify_postinitialize: Bool): ObjectPtr {.gdcall.}
   ClassFreeInstance* = proc (p_class_userdata: pointer; p_instance: ClassInstancePtr) {.gdcall.}
   ClassGetVirtual* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.}
+  ClassGetVirtual2* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): ClassCallVirtual {.gdcall.}
   ClassValidateProperty* = proc (p_instance: ClassInstancePtr; p_property: ptr PropertyInfo): Bool {.gdcall.}
   ClassRecreateInstance* = proc (p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.}
   ClassGetVirtualCallData* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr): pointer {.gdcall.}
+  ClassGetVirtualCallData2* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): pointer {.gdcall.}
   ClassCallVirtualWithData* = proc (p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_virtual_call_userdata: pointer; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
   ClassCreationInfo3* {.bycopy.} = object
     is_virtual*: Bool
@@ -173,6 +177,33 @@ type
     call_virtual_with_data_func*: ClassCallVirtualWithData
     get_rid_func*: ClassGetRID
     class_userdata*: pointer
+
+  ClassCreationInfo4* {.bycopy.} = object
+    is_virtual*: Bool
+    is_abstract*: Bool
+    is_exposed*: Bool
+    is_runtime*: Bool
+    icon_path*: ConstStringPtr
+    set_func*: ClassSet
+    get_func*: ClassGet
+    get_property_list_func*: ClassGetPropertyList
+    free_property_list_func*: ClassFreePropertyList2
+    property_can_revert_func*: ClassPropertyCanRevert
+    property_get_revert_func*: ClassPropertyGetRevert
+    validate_property_func*: ClassValidateProperty
+    notification_func*: ClassNotification2
+    to_string_func*: ClassToString
+    reference_func*: ClassReference
+    unreference_func*: ClassUnreference
+    create_instance_func*: ClassCreateInstance2
+    free_instance_func*: ClassFreeInstance
+    recreate_instance_func*: ClassRecreateInstance
+    get_virtual_func*: ClassGetVirtual2
+    get_virtual_call_data_func*: ClassGetVirtualCallData2
+    call_virtual_with_data_func*: ClassCallVirtualWithData
+    get_rid_func*: ClassGetRID
+    class_userdata*: pointer
+
   ClassLibraryPtr* = pointer
   ClassMethodFlags* {.size: sizeof(cuint).} = enum
     MethodFlag_Normal = 0
@@ -194,6 +225,8 @@ type
     MethodArgumentMetadata_Int_is_Uint64
     MethodArgumentMetadata_Real_is_Float
     MethodArgumentMetadata_Real_is_Double
+    MethodArgumentMetadata_Int_is_Char16
+    MethodArgumentMetadata_Int_is_Char32
   ClassMethodCall* = proc (method_userdata: pointer; p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int; r_return: VariantPtr; r_error: ptr CallError) {.gdcall.}
   ClassMethodValidatedCall* = proc (method_userdata: pointer; p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstVariantPtr]; r_return: VariantPtr) {.gdcall.}
   ClassMethodPtrCall* = proc (method_userdata: pointer; p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
@@ -351,11 +384,13 @@ type
   InterfaceVariantHasMethod* = proc (p_self: ConstVariantPtr; p_method: ConstStringNamePtr): Bool {.gdcall, raises: [].}
   InterfaceVariantHasMember* = proc (p_type: VariantType; p_member: ConstStringNamePtr): Bool {.gdcall, raises: [].}
   InterfaceVariantHasKey* = proc (p_self: ConstVariantPtr; p_key: ConstVariantPtr; r_valid: ptr Bool): Bool {.gdcall, raises: [].}
+  InterfaceVariantGetObjectInstanceID* = proc (p_self: ConstVariantPtr): GDObjectInstanceID {.gdcall, raises: [].}
   InterfaceVariantGetTypeName* = proc (p_type: VariantType; r_name: UninitializedStringPtr) {.gdcall, raises: [].}
   InterfaceVariantCanConvert* = proc (p_from: VariantType; p_to: VariantType): Bool {.gdcall, raises: [].}
   InterfaceVariantCanConvertStrict* = proc (p_from: VariantType; p_to: VariantType): Bool {.gdcall, raises: [].}
   InterfaceGetVariantFromTypeConstructor* = proc (p_type: VariantType): VariantFromTypeConstructorFunc {.gdcall, raises: [].}
   InterfaceGetVariantToTypeConstructor* = proc (p_type: VariantType): TypeFromVariantConstructorFunc {.gdcall, raises: [].}
+  InterfaceGetVariantGetInternalPtrFunc* = proc (p_type: VariantType): VariantGetInternalPtrFunc {.gdcall, raises: [].}
   InterfaceVariantGetPtrOperatorEvaluator* = proc (p_operator: VariantOperator; p_type_a: VariantType; p_type_b: VariantType): PtrOperatorEvaluator {.gdcall, raises: [].}
   InterfaceVariantGetPtrBuiltinMethod* = proc (p_type: VariantType; p_method: ConstStringNamePtr; p_hash: Int): PtrBuiltInMethod {.gdcall, raises: [].}
   InterfaceVariantGetPtrConstructor* = proc (p_type: VariantType; p_constructor: int32_t): PtrConstructor {.gdcall, raises: [].}
@@ -421,6 +456,7 @@ type
   InterfaceArraySetTyped* = proc (p_self: TypePtr; p_type: VariantType; p_class_name: ConstStringNamePtr; p_script: ConstVariantPtr) {.gdcall, raises: [].}
   InterfaceDictionaryOperatorIndex* = proc (p_self: TypePtr; p_key: ConstVariantPtr): VariantPtr {.gdcall, raises: [].}
   InterfaceDictionaryOperatorIndexConst* = proc (p_self: ConstTypePtr; p_key: ConstVariantPtr): VariantPtr {.gdcall, raises: [].}
+  InterfaceDictionarySetTyped* = proc(p_self: TypePtr;  p_key_type: VariantType; p_key_class_name: ConstStringNamePtr; p_key_script: ConstVariantPtr; p_value_type: VariantType; p_value_class_name: ConstStringNamePtr; p_value_script: ConstVariantPtr) {.gdcall, raises: [].}
   InterfaceObjectMethodBindCall* = proc (p_method_bind: MethodBindPtr; p_instance: ObjectPtr; p_args: ptr ConstVariantPtr; p_arg_count: Int; r_ret: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall, raises: [].}
   InterfaceObjectMethodBindPtrcall* = proc (p_method_bind: MethodBindPtr; p_instance: ObjectPtr; p_args: ptr ConstTypePtr; r_ret: TypePtr) {.gdcall, raises: [].}
   InterfaceObjectDestroy* = proc (p_o: ObjectPtr) {.gdcall, raises: [].}
@@ -436,9 +472,11 @@ type
   InterfaceRefSetObject* = proc (p_ref: RefPtr; p_object: ObjectPtr) {.gdcall, raises: [].}
   InterfaceScriptInstanceCreate3* = proc (p_info: ptr ScriptInstanceInfo3; p_instance_data: ScriptInstanceDataPtr): ScriptInstancePtr {.gdcall, raises: [].}
   InterfaceClassdbConstructObject* = proc (p_classname: ConstStringNamePtr): ObjectPtr {.gdcall, raises: [].}
+  InterfaceClassdbConstructObject2* = proc (p_classname: ConstStringNamePtr): ObjectPtr {.gdcall, raises: [].}
   InterfaceClassdbGetMethodBind* = proc (p_classname: ConstStringNamePtr; p_methodname: ConstStringNamePtr; p_hash: Int): MethodBindPtr {.gdcall, raises: [].}
   InterfaceClassdbGetClassTag* = proc (p_classname: ConstStringNamePtr): pointer {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClass3* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_parent_class_name: ConstStringNamePtr; p_extension_funcs: ptr ClassCreationInfo3) {.gdcall, raises: [].}
+  InterfaceClassdbRegisterExtensionClass4* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_parent_class_name: ConstStringNamePtr; p_extension_funcs: ptr ClassCreationInfo4) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClassMethod* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_method_info: ptr ClassMethodInfo) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClassIntegerConstant* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_enum_name: ConstStringNamePtr; p_constant_name: ConstStringNamePtr; p_constant_value: Int; p_is_bitfield: Bool) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClassProperty* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_info: ptr PropertyInfo; p_setter: ConstStringNamePtr; p_getter: ConstStringNamePtr) {.gdcall, raises: [].}
@@ -522,11 +560,13 @@ var
   interfaceVariantHasMethod*: InterfaceVariantHasMethod
   interfaceVariantHasMember*: InterfaceVariantHasMember
   interfaceVariantHasKey*: InterfaceVariantHasKey
+  interfaceVariantGetObjectInstanceID*: InterfaceVariantGetObjectInstanceID
   interfaceVariantGetTypeName*: InterfaceVariantGetTypeName
   interfaceVariantCanConvert*: InterfaceVariantCanConvert
   interfaceVariantCanConvertStrict*: InterfaceVariantCanConvertStrict
   interfaceGetVariantFromTypeConstructor*: InterfaceGetVariantFromTypeConstructor
   interfaceGetVariantToTypeConstructor*: InterfaceGetVariantToTypeConstructor
+  interfaceGetVariantGetInternalPtrFunc*: InterfaceGetVariantGetInternalPtrFunc
   interfaceVariantGetPtrOperatorEvaluator*: InterfaceVariantGetPtrOperatorEvaluator
   interfaceVariantGetPtrBuiltinMethod*: InterfaceVariantGetPtrBuiltinMethod
   interfaceVariantGetPtrConstructor*: InterfaceVariantGetPtrConstructor
@@ -590,6 +630,7 @@ var
   interfaceArraySetTyped*: InterfaceArraySetTyped
   interfaceDictionaryOperatorIndex*: InterfaceDictionaryOperatorIndex
   interfaceDictionaryOperatorIndexConst*: InterfaceDictionaryOperatorIndexConst
+  interfaceDictionarySetTyped*: InterfaceDictionarySetTyped
   interfaceObjectMethodBindCall*: InterfaceObjectMethodBindCall
   interfaceObjectMethodBindPtrcall*: InterfaceObjectMethodBindPtrcall
   interfaceObjectDestroy*: InterfaceObjectDestroy
@@ -604,6 +645,7 @@ var
   interfaceRefGetObject*: InterfaceRefGetObject
   interfaceRefSetObject*: InterfaceRefSetObject
   interfaceClassdbConstructObject*: InterfaceClassdbConstructObject
+  interfaceClassdbConstructObject2*: InterfaceClassdbConstructObject2
   interfaceClassdbGetMethodBind*: InterfaceClassdbGetMethodBind
   interfaceClassdbGetClassTag*: InterfaceClassdbGetClassTag
   interfaceClassdbRegisterExtensionClassMethod*: InterfaceClassdbRegisterExtensionClassMethod
@@ -637,6 +679,7 @@ var
   interfaceScriptInstanceCreate3*: InterfaceScriptInstanceCreate3
   interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
   interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
+  interfaceClassdbRegisterExtensionClass4*: InterfaceClassdbRegisterExtensionClass4
   interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
   interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
@@ -681,11 +724,13 @@ proc load* =
   interfaceVariantHasMethod = cast[InterfaceVariantHasMethod](getProcAddress(cstring "variant_has_method"))
   interfaceVariantHasMember = cast[InterfaceVariantHasMember](getProcAddress(cstring "variant_has_member"))
   interfaceVariantHasKey = cast[InterfaceVariantHasKey](getProcAddress(cstring "variant_has_key"))
+  interfaceVariantGetObjectInstanceID = cast[InterfaceVariantGetObjectInstanceID](getProcAddress(cstring "variant_get_object_instance_id"))
   interfaceVariantGetTypeName = cast[InterfaceVariantGetTypeName](getProcAddress(cstring "variant_get_type_name"))
   interfaceVariantCanConvert = cast[InterfaceVariantCanConvert](getProcAddress(cstring "variant_can_convert"))
   interfaceVariantCanConvertStrict = cast[InterfaceVariantCanConvertStrict](getProcAddress(cstring "variant_can_convert_strict"))
   interfaceGetVariantFromTypeConstructor = cast[InterfaceGetVariantFromTypeConstructor](getProcAddress(cstring "get_variant_from_type_constructor"))
   interfaceGetVariantToTypeConstructor = cast[InterfaceGetVariantToTypeConstructor](getProcAddress(cstring "get_variant_to_type_constructor"))
+  interfaceGetVariantGetInternalPtrFunc = cast[InterfaceGetVariantGetInternalPtrFunc](getProcAddress(cstring "variant_get_ptr_internal_getter"))
   interfaceVariantGetPtrOperatorEvaluator = cast[InterfaceVariantGetPtrOperatorEvaluator](getProcAddress(cstring "variant_get_ptr_operator_evaluator"))
   interfaceVariantGetPtrBuiltinMethod = cast[InterfaceVariantGetPtrBuiltinMethod](getProcAddress(cstring "variant_get_ptr_builtin_method"))
   interfaceVariantGetPtrConstructor = cast[InterfaceVariantGetPtrConstructor](getProcAddress(cstring "variant_get_ptr_constructor"))
@@ -749,6 +794,7 @@ proc load* =
   interfaceArraySetTyped = cast[InterfaceArraySetTyped](getProcAddress(cstring "array_set_typed"))
   interfaceDictionaryOperatorIndex = cast[InterfaceDictionaryOperatorIndex](getProcAddress(cstring "dictionary_operator_index"))
   interfaceDictionaryOperatorIndexConst = cast[InterfaceDictionaryOperatorIndexConst](getProcAddress(cstring "dictionary_operator_index_const"))
+  interfaceDictionarySetTyped = cast[InterfaceDictionarySetTyped](getProcAddress(cstring "dictionary_set_typed"))
   interfaceObjectMethodBindCall = cast[InterfaceObjectMethodBindCall](getProcAddress(cstring "object_method_bind_call"))
   interfaceObjectMethodBindPtrcall = cast[InterfaceObjectMethodBindPtrcall](getProcAddress(cstring "object_method_bind_ptrcall"))
   interfaceObjectDestroy = cast[InterfaceObjectDestroy](getProcAddress(cstring "object_destroy"))
@@ -763,6 +809,7 @@ proc load* =
   interfaceRefGetObject = cast[InterfaceRefGetObject](getProcAddress(cstring "ref_get_object"))
   interfaceRefSetObject = cast[InterfaceRefSetObject](getProcAddress(cstring "ref_set_object"))
   interfaceClassdbConstructObject = cast[InterfaceClassdbConstructObject](getProcAddress(cstring "classdb_construct_object"))
+  interfaceClassdbConstructObject2 = cast[InterfaceClassdbConstructObject2](getProcAddress(cstring "classdb_construct_object2"))
   interfaceClassdbGetMethodBind = cast[InterfaceClassdbGetMethodBind](getProcAddress(cstring "classdb_get_method_bind"))
   interfaceClassdbGetClassTag = cast[InterfaceClassdbGetClassTag](getProcAddress(cstring "classdb_get_class_tag"))
   interfaceClassdbRegisterExtensionClassMethod = cast[InterfaceClassdbRegisterExtensionClassMethod](getProcAddress(cstring "classdb_register_extension_class_method"))
@@ -796,6 +843,7 @@ proc load* =
   interfaceScriptInstanceCreate3 = cast[InterfaceScriptInstanceCreate3](getProcAddress(cstring "script_instance_create3"))
   interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(cstring "callable_custom_create2"))
   interfaceClassdbRegisterExtensionClass3 = cast[InterfaceClassdbRegisterExtensionClass3](getProcAddress(cstring "classdb_register_extension_class3"))
+  interfaceClassdbRegisterExtensionClass4 = cast[InterfaceClassdbRegisterExtensionClass4](getProcAddress(cstring "classdb_register_extension_class4"))
   interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(cstring "classdb_register_extension_class_virtual_method"))
   interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars"))
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars_and_len"))
