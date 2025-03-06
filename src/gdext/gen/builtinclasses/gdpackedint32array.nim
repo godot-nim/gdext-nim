@@ -3,9 +3,8 @@
 import ./constructors
 import gdext/coronation/header/builtinclasses
 
-proc `[]`*(self: PackedInt32Array; index: int): PackedInt32Array.Item = self.data_unsafe[index]
-proc `[]`*(self: var PackedInt32Array; index: int): var PackedInt32Array.Item = self.data_unsafe[index]
-proc `[]=`*(self: var PackedInt32Array; index: int; value: PackedInt32Array.Item) = self.data_unsafe[index] = value
+proc `[]`*(self: PackedInt32Array; index: int): var PackedInt32Array.Item = self.data_unsafe[index]
+proc `[]=`*(self: PackedInt32Array; index: int; value: PackedInt32Array.Item) = self.data_unsafe[index] = value
 
 var `==(PackedInt32Array Variant)`: PtrOperatorEvaluator
 var `!=(PackedInt32Array Variant)`: PtrOperatorEvaluator
@@ -59,48 +58,48 @@ proc size*(self: PackedInt32Array): Int =
   `size(PackedInt32Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedInt32Array): bool =
   `isEmpty(PackedInt32Array)`(addr self, nil, addr result, 0)
-proc set*(self: var PackedInt32Array; index: Int; value: Int): void =
+proc set*(self: PackedInt32Array; index: Int; value: Int): void =
   let argArr = [getPtr index, getPtr value]
   `set(PackedInt32Array Int Int)`(addr self, addr argArr[0], nil, 2)
-proc pushBack*(self: var PackedInt32Array; value: Int): bool =
+proc pushBack*(self: PackedInt32Array; value: Int): bool =
   let argArr = [getPtr value]
   `pushBack(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc append*(self: var PackedInt32Array; value: Int): bool =
+proc append*(self: PackedInt32Array; value: Int): bool =
   let argArr = [getPtr value]
   `append(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc appendArray*(self: var PackedInt32Array; array: PackedInt32Array): void =
+proc appendArray*(self: PackedInt32Array; array: PackedInt32Array): void =
   let argArr = [getPtr array]
   `appendArray(PackedInt32Array PackedInt32Array)`(addr self, addr argArr[0], nil, 1)
-proc removeAt*(self: var PackedInt32Array; index: Int): void =
+proc removeAt*(self: PackedInt32Array; index: Int): void =
   let argArr = [getPtr index]
   `removeAt(PackedInt32Array Int)`(addr self, addr argArr[0], nil, 1)
-proc insert*(self: var PackedInt32Array; atIndex: Int; value: Int): Int =
+proc insert*(self: PackedInt32Array; atIndex: Int; value: Int): Int =
   let argArr = [getPtr atIndex, getPtr value]
   `insert(PackedInt32Array Int Int)`(addr self, addr argArr[0], addr result, 2)
-proc fill*(self: var PackedInt32Array; value: Int): void =
+proc fill*(self: PackedInt32Array; value: Int): void =
   let argArr = [getPtr value]
   `fill(PackedInt32Array Int)`(addr self, addr argArr[0], nil, 1)
-proc resize*(self: var PackedInt32Array; newSize: Int): Int =
+proc resize*(self: PackedInt32Array; newSize: Int): Int =
   let argArr = [getPtr newSize]
   `resize(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc clear*(self: var PackedInt32Array): void =
+proc clear*(self: PackedInt32Array): void =
   `clear(PackedInt32Array)`(addr self, nil, nil, 0)
 proc has*(self: PackedInt32Array; value: Int): bool =
   let argArr = [getPtr value]
   `has(PackedInt32Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc reverse*(self: var PackedInt32Array): void =
+proc reverse*(self: PackedInt32Array): void =
   `reverse(PackedInt32Array)`(addr self, nil, nil, 0)
 proc slice*(self: PackedInt32Array; begin: Int; `end`: Int = 2147483647): PackedInt32Array =
   let argArr = [getPtr begin, getPtr `end`]
   `slice(PackedInt32Array Int Int)`(addr self, addr argArr[0], addr result, 2)
 proc toByteArray*(self: PackedInt32Array): PackedByteArray =
   `toByteArray(PackedInt32Array)`(addr self, nil, addr result, 0)
-proc sort*(self: var PackedInt32Array): void =
+proc sort*(self: PackedInt32Array): void =
   `sort(PackedInt32Array)`(addr self, nil, nil, 0)
-proc bsearch*(self: var PackedInt32Array; value: Int; before: bool = true): Int =
+proc bsearch*(self: PackedInt32Array; value: Int; before: bool = true): Int =
   let argArr = [getPtr value, getPtr before]
   `bsearch(PackedInt32Array Int bool)`(addr self, addr argArr[0], addr result, 2)
-proc duplicate*(self: var PackedInt32Array): PackedInt32Array =
+proc duplicate*(self: PackedInt32Array): PackedInt32Array =
   `duplicate(PackedInt32Array)`(addr self, nil, addr result, 0)
 proc find*(self: PackedInt32Array; value: Int; `from`: Int = 0): Int =
   let argArr = [getPtr value, getPtr `from`]

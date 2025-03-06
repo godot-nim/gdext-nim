@@ -1,3 +1,4 @@
+import std/[importutils]
 import native
 import gdext/core/builtinindex
 
@@ -5,6 +6,15 @@ var newStringNameFromString: PtrConstructor
 var newStringFromStringName: PtrConstructor
 
 var String_length: PtrBuiltinMethod
+
+proc ownerPtr*(obj: Object): ptr ObjectPtr =
+  privateAccess Object
+  if unlikely(obj.isNil or obj.owner.isNil): nil
+  else: addr obj.owner
+proc owner*(obj: Object): ObjectPtr =
+  privateAccess Object
+  if unlikely(obj.isNil): nil
+  else: obj.owner
 
 proc gdstring*(str: string): String =
   interfaceStringNewWithUtf8Chars(addr result, cstring str)
@@ -58,6 +68,16 @@ proc hook_getReferenceCount*(o: ObjectPtr): int32 {.raises: [].} =
     interface_Object_methodBindPtrCall(RefCounted_get_reference_count, o, nil, addr ret)
     return int32 ret
   except: discard
+
+proc hook_reference*(o: RefCounted): Bool {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_reference o.owner
+proc hook_unreference*(o: RefCounted): Bool {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_unreference o.owner
+proc hook_getReferenceCount*(o: RefCounted): int32 {.raises: [].} =
+  if unlikely(o.owner.isNil): return
+  hook_getReferenceCount o.owner
 
 proc load* =
   newStringNameFromString = interfaceVariantGetPtrConstructor(VariantType_StringName, 2)

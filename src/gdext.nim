@@ -11,12 +11,11 @@ export InitializationLevel, VariantType, gdcall
 import gdext/gdinterface/exceptions
 export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 
-import gdext/core/[ builtinindex, geometrics, gdrefs, gdtypedarray ]
-export              builtinindex, geometrics, gdrefs, gdtypedarray
+import gdext/core/[ builtinindex, geometrics, gdrefs ]
+export              builtinindex, geometrics, gdrefs
 
-import gdext/core/[typeshift, gdclass]
+import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
-export gdclass.Object, gdclass.RefCounted
 
 import gdext/gen/[ builtinclasses, classindex, globalenums, localenums, structs ]
 export             builtinclasses, classindex, globalenums, localenums, structs
