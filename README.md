@@ -20,10 +20,10 @@
 - [x] Recompiled GDExtension can be loaded without restarting the editor. (Hot Reloading)
 - [x] Arithmetic operations such as Vector are more expressive than those in Godot, for example, GLSLang's swizzle operation is also available.
 - [x] It has a CLI tool that allows you to create new extensions, compile, run projects, and so on from a unified interface. (see [wiki - gdextwiz][3])
+- [x] Generate class references from comments and annotations left in the code.
 
 ## Limitation
 
-- [ ] Document comments left in Nim source are not reflected in the editor.
 - [ ] Editor plug-ins cannot be created using only pure Nim code.
 - [ ] Due to engine specifications, Nim code works in the form of calls from the engine; it is not possible to run Nim stand-alone.
 
@@ -51,7 +51,7 @@ nimble uninstall gdext
 
 ### Engine
 
-- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.3.0
+- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.4.0
 
 ### Nim compiler
 
