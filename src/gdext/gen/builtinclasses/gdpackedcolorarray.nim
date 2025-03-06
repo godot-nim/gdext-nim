@@ -3,9 +3,8 @@
 import ./constructors
 import gdext/coronation/header/builtinclasses
 
-proc `[]`*(self: PackedColorArray; index: int): PackedColorArray.Item = self.data_unsafe[index]
-proc `[]`*(self: var PackedColorArray; index: int): var PackedColorArray.Item = self.data_unsafe[index]
-proc `[]=`*(self: var PackedColorArray; index: int; value: PackedColorArray.Item) = self.data_unsafe[index] = value
+proc `[]`*(self: PackedColorArray; index: int): var PackedColorArray.Item = self.data_unsafe[index]
+proc `[]=`*(self: PackedColorArray; index: int; value: PackedColorArray.Item) = self.data_unsafe[index] = value
 
 var `==(PackedColorArray Variant)`: PtrOperatorEvaluator
 var `!=(PackedColorArray Variant)`: PtrOperatorEvaluator
@@ -59,48 +58,48 @@ proc size*(self: PackedColorArray): Int =
   `size(PackedColorArray)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedColorArray): bool =
   `isEmpty(PackedColorArray)`(addr self, nil, addr result, 0)
-proc set*(self: var PackedColorArray; index: Int; value: Color): void =
+proc set*(self: PackedColorArray; index: Int; value: Color): void =
   let argArr = [getPtr index, getPtr value]
   `set(PackedColorArray Int Color)`(addr self, addr argArr[0], nil, 2)
-proc pushBack*(self: var PackedColorArray; value: Color): bool =
+proc pushBack*(self: PackedColorArray; value: Color): bool =
   let argArr = [getPtr value]
   `pushBack(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
-proc append*(self: var PackedColorArray; value: Color): bool =
+proc append*(self: PackedColorArray; value: Color): bool =
   let argArr = [getPtr value]
   `append(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
-proc appendArray*(self: var PackedColorArray; array: PackedColorArray): void =
+proc appendArray*(self: PackedColorArray; array: PackedColorArray): void =
   let argArr = [getPtr array]
   `appendArray(PackedColorArray PackedColorArray)`(addr self, addr argArr[0], nil, 1)
-proc removeAt*(self: var PackedColorArray; index: Int): void =
+proc removeAt*(self: PackedColorArray; index: Int): void =
   let argArr = [getPtr index]
   `removeAt(PackedColorArray Int)`(addr self, addr argArr[0], nil, 1)
-proc insert*(self: var PackedColorArray; atIndex: Int; value: Color): Int =
+proc insert*(self: PackedColorArray; atIndex: Int; value: Color): Int =
   let argArr = [getPtr atIndex, getPtr value]
   `insert(PackedColorArray Int Color)`(addr self, addr argArr[0], addr result, 2)
-proc fill*(self: var PackedColorArray; value: Color): void =
+proc fill*(self: PackedColorArray; value: Color): void =
   let argArr = [getPtr value]
   `fill(PackedColorArray Color)`(addr self, addr argArr[0], nil, 1)
-proc resize*(self: var PackedColorArray; newSize: Int): Int =
+proc resize*(self: PackedColorArray; newSize: Int): Int =
   let argArr = [getPtr newSize]
   `resize(PackedColorArray Int)`(addr self, addr argArr[0], addr result, 1)
-proc clear*(self: var PackedColorArray): void =
+proc clear*(self: PackedColorArray): void =
   `clear(PackedColorArray)`(addr self, nil, nil, 0)
 proc has*(self: PackedColorArray; value: Color): bool =
   let argArr = [getPtr value]
   `has(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
-proc reverse*(self: var PackedColorArray): void =
+proc reverse*(self: PackedColorArray): void =
   `reverse(PackedColorArray)`(addr self, nil, nil, 0)
 proc slice*(self: PackedColorArray; begin: Int; `end`: Int = 2147483647): PackedColorArray =
   let argArr = [getPtr begin, getPtr `end`]
   `slice(PackedColorArray Int Int)`(addr self, addr argArr[0], addr result, 2)
 proc toByteArray*(self: PackedColorArray): PackedByteArray =
   `toByteArray(PackedColorArray)`(addr self, nil, addr result, 0)
-proc sort*(self: var PackedColorArray): void =
+proc sort*(self: PackedColorArray): void =
   `sort(PackedColorArray)`(addr self, nil, nil, 0)
-proc bsearch*(self: var PackedColorArray; value: Color; before: bool = true): Int =
+proc bsearch*(self: PackedColorArray; value: Color; before: bool = true): Int =
   let argArr = [getPtr value, getPtr before]
   `bsearch(PackedColorArray Color bool)`(addr self, addr argArr[0], addr result, 2)
-proc duplicate*(self: var PackedColorArray): PackedColorArray =
+proc duplicate*(self: PackedColorArray): PackedColorArray =
   `duplicate(PackedColorArray)`(addr self, nil, addr result, 0)
 proc find*(self: PackedColorArray; value: Color; `from`: Int = 0): Int =
   let argArr = [getPtr value, getPtr `from`]

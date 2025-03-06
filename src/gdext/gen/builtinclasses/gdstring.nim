@@ -3,9 +3,8 @@
 import ./constructors
 import gdext/coronation/header/builtinclasses
 
-proc `[]`*(self: String; index: int): String.Item = cast[ptr String.Item](interface_String_operatorIndexConst(addr self, index))[]
-proc `[]`*(self: var String; index: int): var String.Item = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[]
-proc `[]=`*(self: var String; index: int; value: String.Item) = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[] = value
+proc `[]`*(self: String; index: int): var String.Item = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[]
+proc `[]=`*(self: String; index: int; value: String.Item) = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[] = value
 
 var `==(String Variant)`: PtrOperatorEvaluator
 var `!=(String Variant)`: PtrOperatorEvaluator

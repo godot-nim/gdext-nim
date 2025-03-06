@@ -3,9 +3,8 @@
 import ./constructors
 import gdext/coronation/header/builtinclasses
 
-proc `[]`*(self: Dictionary; key: Variant): Dictionary.Item = cast[ptr Dictionary.Item](interface_Dictionary_operatorIndexConst(addr self, addr key))[]
-proc `[]`*(self: var Dictionary; key: Variant): var Dictionary.Item = cast[ptr Dictionary.Item](interface_Dictionary_operatorIndex(addr self, addr key))[]
-proc `[]=`*(self: var Dictionary; key: Variant; value: Dictionary.Item) = cast[ptr Dictionary.Item](interface_Dictionary_operatorIndex(addr self, addr key))[] = value
+proc `[]`*(self: Dictionary; key: Variant): var Dictionary.Item = cast[ptr Dictionary.Item](interface_Dictionary_operatorIndex(addr self, addr key))[]
+proc `[]=`*(self: Dictionary; key: Variant; value: Dictionary.Item) = cast[ptr Dictionary.Item](interface_Dictionary_operatorIndex(addr self, addr key))[] = value
 
 var `==(Dictionary Variant)`: PtrOperatorEvaluator
 var `!=(Dictionary Variant)`: PtrOperatorEvaluator
@@ -53,9 +52,9 @@ proc size*(self: Dictionary): Int =
   `size(Dictionary)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: Dictionary): bool =
   `isEmpty(Dictionary)`(addr self, nil, addr result, 0)
-proc clear*(self: var Dictionary): void =
+proc clear*(self: Dictionary): void =
   `clear(Dictionary)`(addr self, nil, nil, 0)
-proc merge*(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): void =
+proc merge*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): void =
   let argArr = [getPtr dictionary, getPtr overwrite]
   `merge(Dictionary Dictionary bool)`(addr self, addr argArr[0], nil, 2)
 proc merged*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary =
@@ -70,7 +69,7 @@ proc hasAll*(self: Dictionary; keys: Array): bool =
 proc findKey*(self: Dictionary; value: Variant): Variant =
   let argArr = [getPtr value]
   `findKey(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
-proc erase*(self: var Dictionary; key: Variant): bool =
+proc erase*(self: Dictionary; key: Variant): bool =
   let argArr = [getPtr key]
   `erase(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
 proc hash*(self: Dictionary): Int =
@@ -85,10 +84,10 @@ proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =
 proc get*(self: Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
   let argArr = [getPtr key, getPtr default]
   `get(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
-proc getOrAdd*(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+proc getOrAdd*(self: Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
   let argArr = [getPtr key, getPtr default]
   `getOrAdd(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
-proc makeReadOnly*(self: var Dictionary): void =
+proc makeReadOnly*(self: Dictionary): void =
   `makeReadOnly(Dictionary)`(addr self, nil, nil, 0)
 proc isReadOnly*(self: Dictionary): bool =
   `isReadOnly(Dictionary)`(addr self, nil, addr result, 0)

@@ -28,14 +28,11 @@ proc weave_subscript*(json: JsonBuiltinClass): Cloth =
     case json.subscription(typename)
     of Never: discard
     of Optimize:
-      &"proc `[]`*(self: {typename}; index: int): {typename}.Item = self.data_unsafe[index]"
-      &"proc `[]`*(self: var {typename}; index: int): var {typename}.Item = self.data_unsafe[index]"
-      &"proc `[]=`*(self: var {typename}; index: int; value: {typename}.Item) = self.data_unsafe[index] = value"
+      &"proc `[]`*(self: {typename}; index: int): var {typename}.Item = self.data_unsafe[index]"
+      &"proc `[]=`*(self: {typename}; index: int; value: {typename}.Item) = self.data_unsafe[index] = value"
     of Indexing:
-      &"proc `[]`*(self: {typename}; index: int): {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndexConst(addr self, index))[]"
-      &"proc `[]`*(self: var {typename}; index: int): var {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, index))[]"
-      &"proc `[]=`*(self: var {typename}; index: int; value: {typename}.Item) = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, index))[] = value"
+      &"proc `[]`*(self: {typename}; index: int): var {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, index))[]"
+      &"proc `[]=`*(self: {typename}; index: int; value: {typename}.Item) = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, index))[] = value"
     of Keying:
-      &"proc `[]`*(self: {typename}; key: Variant): {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndexConst(addr self, addr key))[]"
-      &"proc `[]`*(self: var {typename}; key: Variant): var {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, addr key))[]"
-      &"proc `[]=`*(self: var {typename}; key: Variant; value: {typename}.Item) = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, addr key))[] = value"
+      &"proc `[]`*(self: {typename}; key: Variant): var {typename}.Item = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, addr key))[]"
+      &"proc `[]=`*(self: {typename}; key: Variant; value: {typename}.Item) = cast[ptr {typename}.Item](interface_{typename}_operatorIndex(addr self, addr key))[] = value"

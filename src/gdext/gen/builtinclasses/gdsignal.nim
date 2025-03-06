@@ -44,10 +44,10 @@ proc getObjectId*(self: Signal): Int =
   `getObjectId(Signal)`(addr self, nil, addr result, 0)
 proc getName*(self: Signal): StringName =
   `getName(Signal)`(addr self, nil, addr result, 0)
-proc connect*(self: var Signal; callable: Callable; flags: Int = 0): Int =
+proc connect*(self: Signal; callable: Callable; flags: Int = 0): Int =
   let argArr = [getPtr callable, getPtr flags]
   `connect(Signal Callable Int)`(addr self, addr argArr[0], addr result, 2)
-proc disconnect*(self: var Signal; callable: Callable): void =
+proc disconnect*(self: Signal; callable: Callable): void =
   let argArr = [getPtr callable]
   `disconnect(Signal Callable)`(addr self, addr argArr[0], nil, 1)
 proc isConnected*(self: Signal; callable: Callable): bool =
