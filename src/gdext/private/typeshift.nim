@@ -18,6 +18,8 @@ proc variant*[T: SomeBuiltins](v: T): Variant =
   variantFromType[variantType T](addr result, addr v)
 proc get*[T: SomeBuiltins](v: Variant; _: typedesc[T]): T =
   typeFromVariant[variantType T](addr result, addr v)
+proc getAddr*[T: SomeBuiltins](v: Variant; _: typedesc[T]): ptr T =
+  cast[ptr T](pointerFromVariant[variantType T](addr v))
 
 # Specific
 # ========
@@ -116,6 +118,8 @@ proc variant*(v: ObjectPtr): Variant =
   variantFromType[VariantType_Object](addr result, addr v)
 proc get*(v: Variant; T: typedesc[ObjectPtr]): T =
   typeFromVariant[VariantType_Object](addr result, addr v)
+proc getAddr*(v: Variant; T: typedesc[ObjectPtr]): ptr T =
+  cast[ptr T](pointerFromVariant[VariantType_Object](addr v))
 
 # Godot Object
 # ============
