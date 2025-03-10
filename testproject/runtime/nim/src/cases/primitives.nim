@@ -35,9 +35,15 @@ runtime: suite "TypedArray":
   test "mutable iter":
     var arr = typedArray[String](10)
     for i, val in arr.mpairs:
-      val = variant($i)
+      val = $i
     for i, val in arr:
       check $val == $i
+
+    var arr2 = typedArray[Object](10)
+    check not compiles(
+      for i, val in arr2.mpairs: discard
+    )
+
   test "subscript":
     var arr = typedArray[String](10)
     for i in 0..<arr.len:
@@ -46,6 +52,14 @@ runtime: suite "TypedArray":
       arr[i] = gdstring $i
     for i in 0..<arr.len:
       check arr[i] == gdstring $i
+  test "typed functions":
+    var arr = typedArray[String](2)
+    arr.fill "Hello, "
+    arr.pushBack "world!"
+    check $arr.popFront == "Hello, "
+    check $arr[0] == "Hello, "
+    check $arr[1] == "world!"
+
 
 runtime: suite "PackedArray":
   var strs: PackedStringArray = packedStringArray()
