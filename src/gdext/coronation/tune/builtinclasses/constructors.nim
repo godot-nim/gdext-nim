@@ -1,5 +1,3 @@
-import std/sequtils
-
 import gdext/gdinterface/extracommands
 import gdext/private/macros
 import gdext/builtinindex
@@ -8,15 +6,15 @@ from gdext/core/geometrics/typedef {.all.} import makevec
 
 
 macro vector*(exp: varargs[typed]): untyped =
-  let res = makeVec(exp[0..^1])
-  result = newStmtList()
-  result.add res.lets
-  result.add newBracket res.brackets.mapIt quote do: real_elem(`it`)
+  let letstmt = newLetSection()
+  result = newStmtList(
+    letstmt,
+    letstmt.makeVec(real_elem, exp[0..^1]))
 macro vectori*(exp: varargs[typed]): untyped =
-  let res = makeVec(exp[0..^1])
-  result = newStmtList()
-  result.add res.lets
-  result.add newBracket res.brackets.mapIt quote do: int_elem(`it`)
+  let letstmt = newLetSection()
+  result = newStmtList(
+    letstmt,
+    letstmt.makeVec(int_elem, exp[0..^1]))
 
 {.push, inline.}
 proc vector2*(x, y: real_elem): Vector2 = [x, y]

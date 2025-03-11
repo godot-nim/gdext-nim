@@ -28,32 +28,28 @@ genVecFieldAccess()
 
 proc asNormalized*[N: static int; T: SomeFloat](vec: Vector[N,T]): NVector[N,T] {.inline.} = NVector[N,T](vec)
 
-func makeVec(components: seq[NimNode]): tuple[lets: seq[NimNode]; brackets: seq[NimNode]] =
+func makeVec(letSection: NimNode; components: seq[NimNode]): NimNode =
+  result = newBracket()
   for i, e in components:
     case e.typeKind
     of ntyArray:
-      let high = e.getTypeImpl[1][2].intVal
       case e.kind
-      of nnkCallKinds:
-        let alias = ident("arg" & $i)
-        result.lets.add quote do:
-          let `alias` {.genSym.} = `e`
-        for i in 0..high:
-          let inode = newLit i
-          result.brackets.add quote do:
-            `alias`[`inode`]
       of nnkBracket:
-        for i in 0..high:
-          result.brackets.add e[i]
+        result.add e[0..^1]
       else:
+        let alias = letSection.assigned e
+        let high = e.getTypeImpl[1][2].intVal
         for i in 0..high:
-          let inode = newLit i
-          result.brackets.add quote do:
-            `e`[`inode`]
+          result.add nnkBracketExpr.newTree(alias, newlit i)
     else:
-      result.brackets.add e
+      result.add e
+func makeVec(letSection: NimNode; typecast: typedesc; components: seq[NimNode]): NimNode =
+  result = letSection.makeVec(components)
+  let typ = typecast.getType
+  for i in 0..<result.len:
+    result[i] = typ.newcall result[i]
 
-macro vec*(exp: varargs[typed]): untyped =
+macro vec*(exp: varargs[typed]): Vector =
   ## proc gen: auto = vec(1, 2)
   ## ==========================
   ## vec(1, 2, 3) -> [1, 2, 3]
@@ -62,7 +58,7 @@ macro vec*(exp: varargs[typed]): untyped =
   ## (let x = [1, 2]; vec(x, 3)) -> [x[0], x[1], 3]
   ## vec(vec(1, 2), 3) -> [1, 2, 3]
   ## vec(gen(), 3) -> (let arg0 = gen(); [arg0[0], arg0[1], 3])
-  let res = makeVec(exp[0..^1])
-  result = newStmtList()
-  result.add res.lets
-  result.add newBracket res.brackets
+  let letSection = newLetSection()
+  result = newStmtList(
+    letSection,
+    letSection.makeVec(exp[0..^1]))
