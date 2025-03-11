@@ -12,9 +12,9 @@ import ./interpolations
 # Constants
 # ---------
 
-template Zero*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = <$>Vector[N,T]: 0
-template One*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = <$>Vector[N,T]: 1
-template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = <$>Vector[N,T]: Inf
+template Zero*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(0).extend N
+template One*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(1).extend N
+template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = T(inf).extend N
 
 template Left *[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T(-1),  0]
 template Right*[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T( 1),  0]
@@ -32,11 +32,11 @@ template Back   *[T: SomeNumber](_:typedesc[NVector[3,T]]): NVector[3,T] = NVect
 # ---------
 
 # comp
-func `<` *[N: static int; T: SomeNumber](left,right: Vector[N,T]): bool = all (left, right): a <  b
-func `<=`*[N: static int; T: SomeNumber](left,right: Vector[N,T]): bool = all (left, right): a <= b
+func `<` *[N: static int; T: SomeNumber](left,right: Vector[N,T]): bool = `<`.all(left, right)
+func `<=`*[N: static int; T: SomeNumber](left,right: Vector[N,T]): bool = `<=`.all(left, right)
 
-proc isEqualApprox*[N: static int; T: SomeFloat](left,right: Vector[N,T]): bool = all (left, right): isEqualApprox(a,b)
-proc isZeroApprox*[N: static int; T: SomeFloat](self: Vector[N,T]): bool = all self: isZeroApprox(a)
+proc isEqualApprox*[N: static int; T: SomeFloat](left,right: Vector[N,T]): bool = isEqualApprox.all(left, right)
+proc isZeroApprox*[N: static int; T: SomeFloat](self: Vector[N,T]): bool = isZeroApprox.all(self)
 
 func min*[N: static int; T: SomeNumber](self: Vector[N,T]): T =
   result = self[0]
@@ -54,15 +54,15 @@ proc maxidx*[N: static int; T: SomeNumber](self:Vector[N,T]): int =
   for i, x in self:
     if self[result] < x: result = i
 
-func isFinite*[N: static int; T: SomeFloat](self: Vector[N,T]): bool = all self: a.isFinite
-func clamp*[N: static int; T: SomeNumber](self, min, max: Vector[N,T]): Vector[N,T] = <$>(self, min, max): a.clamp(b, c)
-func clamp*[N: static int; T: SomeNumber](self: Vector[N,T]; min, max: T): Vector[N,T] = <$>self: a.clamp(min, max)
-func clamp01*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,T] = <$>self: clamp01 a
-func sign*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,int] = fmap(self): sign a
+func isFinite*[N: static int; T: SomeFloat](self: Vector[N,T]): bool = isFinite.all(self)
+func clamp*[N: static int; T: SomeNumber](self, min, max: Vector[N,T]): Vector[N,T] = system.clamp.fmap(self, min, max)
+func clamp*[N: static int; T: SomeNumber](self: Vector[N,T]; min, max: T): Vector[N,T] = system.clamp.fmap(self, min, max)
+func clamp01*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,T] = clamp01.fmap(self)
+func sign*[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,int] = sign.fmap(self)
 
 # unary
 template `+`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = left
-func `-`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = <$>left: -a
+func `-`*[N: static int; T: SomeNumber](left: Vector[N,T]): Vector[N,T] = `-`.fmap(left)
 
 when Extension.decimalPrecision == "float":
   func `+`(left: float32; right: float64): float32 = float32 system.`+`(left,right)
@@ -76,32 +76,32 @@ when Extension.decimalPrecision == "float":
   func `/`(left: float64; right: float32): float32 = float32 system.`/`(left,right)
 
 # basic
-func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a + b
-func `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a - b
-func `*`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a * b
-func `/`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a / b
+func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `+`.fmap(left, right)
+func `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `-`.fmap(left, right)
+func `*`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `*`.fmap(left, right)
+func `/`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `/`.fmap(left, right)
 
-func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a div b
-func `mod`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,S]): auto = <$>(left, right): a mod b
+func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,S]): auto = `div`.fmap(left, right)
+func `mod`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: Vector[N,S]): auto = `mod`.fmap(left, right)
 
 # with other norms
-proc `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a + right
-proc `+`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left + a
+proc `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = `+`.fmap(left, right)
+proc `+`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = `+`.fmap(left, right)
 
-proc `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a - right
-proc `-`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left - a
+proc `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = `-`.fmap(left, right)
+proc `-`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = `-`.fmap(left, right)
 
-proc `*`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a * right
-proc `*`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left * a
+proc `*`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = `*`.fmap(left, right)
+proc `*`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = `*`.fmap(left, right)
 
-proc `/`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = <$>left: a / right
-proc `/`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = <$>right: left / a
+proc `/`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: S): auto = `/`.fmap(left, right)
+proc `/`*[N: static int; T,S: SomeNumber](left: T; right: Vector[N,S]): auto = `/`.fmap(left, right)
 
-func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: S): auto = <$>left: a div right
-func `div`*[N: static int; T,S: SomeInteger](left: T; right: Vector[N,S]): auto = <$>right: left div a
+func `div`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: S): auto = `div`.fmap(left, right)
+func `div`*[N: static int; T,S: SomeInteger](left: T; right: Vector[N,S]): auto = `div`.fmap(left, right)
 
-func `mod`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: S): auto = <$>left: a mod right
-func `mod`*[N: static int; T,S: SomeInteger](left: T; right: Vector[N,S]): auto = <$>right: left mod b
+func `mod`*[N: static int; T,S: SomeInteger](left: Vector[N,T]; right: S): auto = `mod`.fmap(left, right)
+func `mod`*[N: static int; T,S: SomeInteger](left: T; right: Vector[N,S]): auto = `mod`.fmap(left, right)
 
 # Functions
 # ---------
@@ -122,13 +122,13 @@ func normalized*[N: static int; T: SomeFloat](self: Vector[N,T]): NVector[N,T] =
   asNormalized(self / sqrt length2)
 
 # math
-func abs  *[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,T] = <$>self: abs a
-func ceil *[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = <$>self: ceil a
-func floor*[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = <$>self: floor a
-func round*[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = <$>self: round a
+func abs  *[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,T] = abs.fmap(self)
+func ceil *[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = ceil.fmap(self)
+func floor*[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = floor.fmap(self)
+func round*[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = round.fmap(self)
 
-func posmod*[N: static int; T: SomeFloat](x,y: Vector[N,T]): Vector[N,T] = <$>(x,y): posmod(a,b)
-func posmod*[N: static int; T: SomeFloat](x: Vector[N,T]; y: T): Vector[N,T] = <$>(x): posmod(a,y)
+func posmod*[N: static int; T: SomeFloat](x,y: Vector[N,T]): Vector[N,T] = posmod.fmap(x, y)
+func posmod*[N: static int; T: SomeFloat](x: Vector[N,T]; y: T): Vector[N,T] = posmod.fmap(x, y)
 
 # geometorics
 func distanceTo *[N: static int; T: SomeFloat](self, to: Vector[N,T]): T = (to - self).length
@@ -138,11 +138,11 @@ func directionTo*[N: static int; T: SomeFloat](self, to: Vector[N,T]): Vector[N,
 func slide*[N: static int; T: SomeFloat](self: Vector[N,T]; normal: NVector[N,T]): Vector[N,T] =
   self - normal * dot(self, normal)
 
-func snapped*[N: static int; T: SomeNumber](self, step: Vector[N,T]): Vector[N,T] = <$>(self,step): a.snapped(b)
-func snapped*[N: static int; T: SomeNumber](self: Vector[N,T]; step: T): Vector[N,T] = <$>self: a.snapped(step)
+func snapped*[N: static int; T: SomeNumber](self, step: Vector[N,T]): Vector[N,T] = snapped.fmap(self, step)
+func snapped*[N: static int; T: SomeNumber](self: Vector[N,T]; step: T): Vector[N,T] = snapped.fmap(self, step)
 
 # interpolations
-proc lerp*[N: static int; T: SomeFloat](x,y: Vector[N,T]; ratio: T): Vector[N,T] = <$>(x,y): lerp(a,b, ratio)
+proc lerp*[N: static int; T: SomeFloat](x,y: Vector[N,T]; ratio: T): Vector[N,T] = lerp.fmap(x, y, ratio)
 proc moveToward*[N: static int; T: SomeFloat](`from`,to: Vector[N,T]; delta: T): Vector[N,T] =
   let dist = to - `from`
   let len = dist.length
@@ -152,3 +152,11 @@ proc moveToward*[N: static int; T: SomeFloat](`from`,to: Vector[N,T]; delta: T):
 when isMainModule:
   let a = [1f, 0]
   echo a * a
+
+  echo [0, 10, 20].clamp(5, 15)
+  echo [0, 10, 20].clamp([5, 5, 5], [15, 15, 15])
+
+  echo [0f, 0, 0].isFinite
+
+  proc tmp(): auto = echo "SideEffect!"; [0f, 1, 2]
+  echo isFinite.all tmp()

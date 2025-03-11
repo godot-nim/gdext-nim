@@ -1,149 +1,114 @@
-import std/sequtils
-import std/options
-
 import gdext/private/macros
 
-func makeKey(v: NimNode; length: int; name: string): tuple[def: Option[NimNode]; key: seq[NimNode]] =
-  result.key = newSeq[NimNode](length)
-  case v.kind
-  of {nnkSym, nnkIdent}:
-    for i, arg in result.key.mpairs:
-      arg = newBracketExpr(v, newLit i)
-  of nnkBracket:
-    for i, arg in result.key.mpairs:
-      arg = v[i]
+func makeKey(section: NimNode; component: Nimnode; N: int): NimNode =
+  result = newBracket()
+  case component.typeKind
+  of ntyArray, ntyGenericInst:
+    case component.kind
+    of nnkBracket:
+      result.add component[0..^1]
+    of nnkSym:
+      for i in 0..<N:
+        result.add newBracketExpr(component, newlit i)
+    else:
+      let alias = section.assigned component
+      for i in 0..<N:
+        result.add newBracketExpr(alias, newlit i)
   else:
-    let arg0 = genSym(nskLet, name)
-    result.def = some newIdentDefs(arg0, newEmptyNode(), v)
-    for i, arg in result.key.mpairs:
-      arg = newBracketExpr(arg0, newLit i)
+    for i in 0..<N:
+      result.add component
+
+macro extend_internal[T](value: T; N: static int): auto =
+  result = newBracket()
+  for i in 0..<N:
+    result.add value
+
+proc extend*[T](value: T; N: static int): array[N,T] =
+  extend_internal(value, length)
+
+macro fmap*[N: static int; T]( pred;
+      v1: array[N,T];
+    ): auto =
+  let section = newLetSection()
+  let a1 = section.makekey(v1, N)
+  result = newBracket()
+  for i in 0..<N:
+    result.add pred.newcall(a1[i])
+  result = newStmtList(section, result)
+
+macro fmap*[N: static int; T1, T2]( pred;
+      v1: array[N,T1] | T1;
+      v2: array[N,T2] | T2;
+    ): auto =
+  let section = newLetSection()
+  let a1 = section.makekey(v1, N)
+  let a2 = section.makekey(v2, N)
+  result = newBracket()
+  for i in 0..<N:
+    result.add pred.newcall(a1[i], a2[i])
+  result = newStmtList(section, result)
+
+macro fmap*[N: static int; T1, T2, T3]( pred;
+      v1: array[N,T1] | T1;
+      v2: array[N,T2] | T2;
+      v3: array[N,T3] | T3;
+    ): auto =
+  let section = newLetSection()
+  let a1 = section.makekey(v1, N)
+  let a2 = section.makekey(v2, N)
+  let a3 = section.makekey(v3, N)
+  result = newBracket()
+  for i in 0..<N:
+    result.add pred.newcall(a1[i], a2[i], a3[i])
+  result = newStmtList(section, result)
 
 
-template `<$>`*(container, pred): untyped =
-  ## (<$>[1, 2, 3]: a * 2) == [2, 4, 6]
-  container.fmap(pred)
+iterator couple[N: static int; T1, T2](v1: array[N, T1]; v2: array[N, T2]): (T1, T2) =
+  for i in 0..<N:
+    yield (v1[i], v2[i])
+iterator couple[N: static int; T1, T2](v1: array[N, T1]; x2: T2): (T1, T2) =
+  for i in 0..<N:
+    yield (v1[i], x2)
+iterator couple[N: static int; T1, T2](x1: T1; v2: array[N, T2]): (T1, T2) =
+  for i in 0..<N:
+    yield (x1, v2[i])
 
-proc add(a: NimNode; b: varargs[Option[NimNode]]) =
-  for c in b:
-    if c.isSome:
-      a.add c.get
-
-func replaceIdents(node: NimNode; idents: varargs[tuple[key: string; value: NimNode]]): NimNode =
-  if node.len == 0:
-    for ident in idents:
-      if node.eqIdent ident.key: return ident.value
-  else:
-    for i in 0..<node.len:
-      node[i] = node[i].replaceIdents(idents)
-  return node
-
-macro fmap*[N: static int; T](Type: typedesc[array[N,T]]; pred): untyped =
-  let typeofT = Type.getType[1][2]
-  let elem = genSym(nskLet, "elem")
-  let vec = newBracket elem.repeat(N)
-
-  result = newStmtList(
-    newLetStmt(elem, typeofT.newCall(pred)),
-    vec)
-
-macro fmap*[N: static int; T](v: array[N,T]; pred): untyped =
-  var letsec = newNimNode nnkLetSection
-  let
-    (def0, key0) = makeKey(v, N, "arg0")
-
-  letsec.add def0
-  var bracket = newNimNode(nnkBracket)
-  for i in 0..<N: bracket.add pred.copy.replaceIdents(
-    ("a", key0[i]),
-    ("i", newLit i))
-
-  result = newStmtList()
-  if letsec.len != 0:
-    result.add letsec
-  result.add bracket
-
-macro fmap*[N: static int; T,S](vs: (array[N,T], array[N,S]); pred): untyped =
-  var letsec = newNimNode nnkLetSection
-  let
-    (def0, key0) = makeKey(vs[0], N, "arg0")
-    (def1, key1) = makeKey(vs[1], N, "arg1")
-
-  letsec.add def0, def1
-
-  var bracket = newNimNode(nnkBracket)
-  for i in 0..<N: bracket.add pred.copy.replaceIdents(
-      ("a", key0[i]),
-      ("b", key1[i]),
-      ("i", newLit i))
-
-  result = newStmtList()
-  if letsec.len != 0:
-    result.add letsec
-  result.add bracket
-
-macro fmap*[N: static int; T,S,R](vs: (array[N,T], array[N,S], array[N,R]); pred): untyped =
-  var letsec = newNimNode nnkLetSection
-  let
-    (def0, key0) = makeKey(vs[0], N, "arg0")
-    (def1, key1) = makeKey(vs[1], N, "arg1")
-    (def2, key2) = makeKey(vs[2], N, "arg2")
-
-  letsec.add def0, def1, def2
-
-  var bracket = newNimNode(nnkBracket)
-  for i in 0..<N: bracket.add pred.copy.replaceIdents(
-      ("a", key0[i]),
-      ("b", key1[i]),
-      ("c", key2[i]),
-      ("i", newLit i))
-
-  result = newStmtList()
-  if letsec.len != 0:
-    result.add letsec
-  result.add bracket
-
-
-
-template all*[N: static int; T](v: array[N, T]; pred): bool =
-  let s = v
+template all*[N: static int; T]( pred;
+      v: array[N, T];
+    ): bool =
   var result = true
-  for i {.inject.} in 0..<N:
-    let
-      a {.inject, used.} : T = s[i]
-    if not pred:
+  for x in v:
+    if not pred(x):
       result = false
       break
   result
-template all*[N: static int; T,S](v: (array[N,T], array[N,S]); pred): bool =
-  let s = v
+template all*[N: static int; T1, T2]( pred;
+      v1: array[N, T1] | T1;
+      v2: array[N, T2] | T2;
+    ): bool =
   var result = true
-  for i {.inject.} in 0..<N:
-    let
-      a {.inject, used.} : T = s[0][i]
-      b {.inject, used.} : S = s[1][i]
-    if not pred:
+  for x1, x2 in couple(v1, v2):
+    if not pred(x1, x2):
       result = false
       break
   result
 
-template any*[N: static int; T](v: array[N, T]; pred): bool =
-  let s = v
+template any*[N: static int; T]( pred;
+      v: array[N, T];
+    ): bool =
   var result = false
-  for i {.inject.} in 0..<N:
-    let
-      a {.inject, used.} : T = s[i]
-    if pred:
+  for x in v:
+    if pred(x):
       result = true
       break
   result
-template any*[N: static int; T,S](v: (array[N,T], array[N,S]); pred): bool =
-  let s = v
+template any*[N: static int; T1, T2]( pred;
+      v1: array[N, T1] | T1;
+      v2: array[N, T2] | T2;
+    ): bool =
   var result = false
-  for i {.inject.} in 0..<N:
-    let
-      a {.inject, used.} : T = s[0][i]
-      b {.inject, used.} : S = s[1][i]
-    if pred:
+  for x1, x2 in couple(v1, v2):
+    if pred(x1, x2):
       result = true
       break
   result
