@@ -87,37 +87,33 @@ proc createDefaultInterface*(_: typedesc[MultiplayerAPI]): gdref MultiplayerAPI 
 template multiplayerPeer*(self: MultiplayerAPI): untyped = self.getMultiplayerPeer()
 template `multiplayerPeer=`*(self: MultiplayerAPI; value) = self.setMultiplayerPeer(value)
 
-const MultiplayerAPI_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiplayerAPI]): Table[string, string] = MultiplayerAPI_vmap
-
-proc peerConnected*(self: MultiplayerAPI; id: Variant): Error =
+proc call_peerConnected*(self: MultiplayerAPI; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_connected")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc peerDisconnected*(self: MultiplayerAPI; id: Variant): Error =
+proc call_peerDisconnected*(self: MultiplayerAPI; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_disconnected")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc connectedToServer*(self: MultiplayerAPI): Error =
+proc call_connectedToServer*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("connected_to_server")
   self.emitSignal(signalname)
 
-proc connectionFailed*(self: MultiplayerAPI): Error =
+proc call_connectionFailed*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("connection_failed")
   self.emitSignal(signalname)
 
-proc serverDisconnected*(self: MultiplayerAPI): Error =
+proc call_serverDisconnected*(self: MultiplayerAPI): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("server_disconnected")

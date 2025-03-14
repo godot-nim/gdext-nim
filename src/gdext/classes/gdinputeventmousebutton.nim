@@ -56,7 +56,3 @@ template `pressed=`*(self: InputEventMouseButton; value) = self.setPressed(value
 
 template doubleClick*(self: InputEventMouseButton): untyped = self.isDoubleClick()
 template `doubleClick=`*(self: InputEventMouseButton; value) = self.setDoubleClick(value)
-
-const InputEventMouseButton_vmap =
-  InputEventMouse.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventMouseButton]): Table[string, string] = InputEventMouseButton_vmap

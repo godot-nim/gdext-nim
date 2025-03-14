@@ -16,7 +16,3 @@ proc getOperator*(self: VisualShaderNodeColorOp): VisualShaderNodeColorOp_Operat
 
 template operator*(self: VisualShaderNodeColorOp): untyped = self.getOperator()
 template `operator=`*(self: VisualShaderNodeColorOp; value) = self.setOperator(value)
-
-const VisualShaderNodeColorOp_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeColorOp]): Table[string, string] = VisualShaderNodeColorOp_vmap

@@ -120,7 +120,3 @@ template `velocity=`*(self: NavigationObstacle2D; value) = self.setVelocity(valu
 
 template avoidanceLayers*(self: NavigationObstacle2D): untyped = self.getAvoidanceLayers()
 template `avoidanceLayers=`*(self: NavigationObstacle2D; value) = self.setAvoidanceLayers(value)
-
-const NavigationObstacle2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationObstacle2D]): Table[string, string] = NavigationObstacle2D_vmap

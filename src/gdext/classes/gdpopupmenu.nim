@@ -446,32 +446,28 @@ template `preferNativeMenu=`*(self: PopupMenu; value) = self.setPreferNativeMenu
 template itemCount*(self: PopupMenu): untyped = self.getItemCount()
 template `itemCount=`*(self: PopupMenu; value) = self.setItemCount(value)
 
-const PopupMenu_vmap =
-  Popup.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PopupMenu]): Table[string, string] = PopupMenu_vmap
-
-proc idPressed*(self: PopupMenu; id: Variant): Error =
+proc call_idPressed*(self: PopupMenu; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("id_pressed")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc idFocused*(self: PopupMenu; id: Variant): Error =
+proc call_idFocused*(self: PopupMenu; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("id_focused")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc indexPressed*(self: PopupMenu; index: Variant): Error =
+proc call_indexPressed*(self: PopupMenu; index: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("index_pressed")
   let args = [index]
   self.emitSignal(signalname, args)
 
-proc menuChanged*(self: PopupMenu): Error =
+proc call_menuChanged*(self: PopupMenu): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("menu_changed")

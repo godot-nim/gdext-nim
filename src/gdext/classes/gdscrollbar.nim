@@ -17,11 +17,7 @@ proc getCustomStep*(self: ScrollBar): Float =
 template customStep*(self: ScrollBar): untyped = self.getCustomStep()
 template `customStep=`*(self: ScrollBar; value) = self.setCustomStep(value)
 
-const ScrollBar_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ScrollBar]): Table[string, string] = ScrollBar_vmap
-
-proc scrolling*(self: ScrollBar): Error =
+proc call_scrolling*(self: ScrollBar): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("scrolling")

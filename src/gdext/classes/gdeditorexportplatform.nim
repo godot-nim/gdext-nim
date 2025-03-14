@@ -161,7 +161,3 @@ proc getForcedExportFiles*(_: typedesc[EditorExportPlatform]): PackedStringArray
   var ret: encoded PackedStringArray
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(PackedStringArray)
-
-const EditorExportPlatform_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorExportPlatform]): Table[string, string] = EditorExportPlatform_vmap

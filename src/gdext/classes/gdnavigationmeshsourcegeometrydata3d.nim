@@ -86,7 +86,3 @@ template `indices=`*(self: NavigationMeshSourceGeometryData3D; value) = self.set
 
 template projectedObstructions*(self: NavigationMeshSourceGeometryData3D): untyped = self.getProjectedObstructions()
 template `projectedObstructions=`*(self: NavigationMeshSourceGeometryData3D; value) = self.setProjectedObstructions(value)
-
-const NavigationMeshSourceGeometryData3D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationMeshSourceGeometryData3D]): Table[string, string] = NavigationMeshSourceGeometryData3D_vmap

@@ -42,7 +42,3 @@ template `mixRate=`*(self: AudioStreamGenerator; value) = self.setMixRate(value)
 
 template bufferLength*(self: AudioStreamGenerator): untyped = self.getBufferLength()
 template `bufferLength=`*(self: AudioStreamGenerator; value) = self.setBufferLength(value)
-
-const AudioStreamGenerator_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamGenerator]): Table[string, string] = AudioStreamGenerator_vmap

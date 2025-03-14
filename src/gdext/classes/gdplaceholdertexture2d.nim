@@ -10,7 +10,3 @@ proc setSize*(self: PlaceholderTexture2D; size: Vector2): void =
 
 template size*(self: PlaceholderTexture2D): untyped = self.getSize()
 template `size=`*(self: PlaceholderTexture2D; value) = self.setSize(value)
-
-const PlaceholderTexture2D_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PlaceholderTexture2D]): Table[string, string] = PlaceholderTexture2D_vmap

@@ -34,13 +34,13 @@ proc setBlendWeights*(self: GLTFMesh; blendWeights: PackedFloat32Array): void =
   expandMethodBind(className GLTFMesh, "set_blend_weights", 2899603908)
   methodbind.ptrcall(self, [getPtr blendWeights])
 
-proc getInstanceMaterials*(self: GLTFMesh): TypedArray[Material] =
+proc getInstanceMaterials*(self: GLTFMesh): TypedArray[gdref Material] =
   expandMethodBind(className GLTFMesh, "get_instance_materials", 2915620761)
-  var ret: encoded TypedArray[Material]
+  var ret: encoded TypedArray[gdref Material]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Material])
+  (addr ret).decode_result(TypedArray[gdref Material])
 
-proc setInstanceMaterials*(self: GLTFMesh; instanceMaterials: TypedArray[Material]): void =
+proc setInstanceMaterials*(self: GLTFMesh; instanceMaterials: TypedArray[gdref Material]): void =
   expandMethodBind(className GLTFMesh, "set_instance_materials", 381264803)
   methodbind.ptrcall(self, [getPtr instanceMaterials])
 
@@ -65,7 +65,3 @@ template `blendWeights=`*(self: GLTFMesh; value) = self.setBlendWeights(value)
 
 template instanceMaterials*(self: GLTFMesh): untyped = self.getInstanceMaterials()
 template `instanceMaterials=`*(self: GLTFMesh; value) = self.setInstanceMaterials(value)
-
-const GLTFMesh_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFMesh]): Table[string, string] = GLTFMesh_vmap

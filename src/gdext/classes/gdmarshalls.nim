@@ -39,7 +39,3 @@ proc base64ToUtf8*(self: Marshalls; base64Str: String): String =
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr base64Str], addr ret)
   (addr ret).decode_result(String)
-
-const Marshalls_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Marshalls]): Table[string, string] = Marshalls_vmap

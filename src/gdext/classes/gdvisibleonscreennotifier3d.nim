@@ -17,17 +17,13 @@ proc isOnScreen*(self: VisibleOnScreenNotifier3D): bool =
 template aabb*(self: VisibleOnScreenNotifier3D): untyped = self.getAabb()
 template `aabb=`*(self: VisibleOnScreenNotifier3D; value) = self.setAabb(value)
 
-const VisibleOnScreenNotifier3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisibleOnScreenNotifier3D]): Table[string, string] = VisibleOnScreenNotifier3D_vmap
-
-proc screenEntered*(self: VisibleOnScreenNotifier3D): Error =
+proc call_screenEntered*(self: VisibleOnScreenNotifier3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("screen_entered")
   self.emitSignal(signalname)
 
-proc screenExited*(self: VisibleOnScreenNotifier3D): Error =
+proc call_screenExited*(self: VisibleOnScreenNotifier3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("screen_exited")

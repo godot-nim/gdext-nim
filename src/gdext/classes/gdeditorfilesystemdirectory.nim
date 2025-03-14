@@ -87,7 +87,3 @@ proc findDirIndex*(self: EditorFileSystemDirectory; name: String): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(int32)
-
-const EditorFileSystemDirectory_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorFileSystemDirectory]): Table[string, string] = EditorFileSystemDirectory_vmap

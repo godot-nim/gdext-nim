@@ -3,7 +3,3 @@
 import gdext/coronation/header/classes
 
 import gdeditorsceneformatimporter; export gdeditorsceneformatimporter
-
-const EditorSceneFormatImporterUFBX_vmap =
-  EditorSceneFormatImporter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorSceneFormatImporterUFBX]): Table[string, string] = EditorSceneFormatImporterUFBX_vmap

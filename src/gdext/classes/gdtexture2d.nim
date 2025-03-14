@@ -5,39 +5,39 @@ import gdext/coronation/header/classes
 import gdtexture; export gdtexture
 
 method getWidth*(self: Texture2D): int32 {.base.} = (discard)
-proc getWidth(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).getWidth().encode(r_ret)
-template getWidth_bind*(_: typedesc[Texture2D]): ClassCallVirtual = getWidth
+proc registerVirtual_getWidth*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_width"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).getWidth().encode(r_ret)
 
 method getHeight*(self: Texture2D): int32 {.base.} = (discard)
-proc getHeight(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).getHeight().encode(r_ret)
-template getHeight_bind*(_: typedesc[Texture2D]): ClassCallVirtual = getHeight
+proc registerVirtual_getHeight*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_height"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).getHeight().encode(r_ret)
 
 method isPixelOpaque*(self: Texture2D; x: int32; y: int32): bool {.base.} = (discard)
-proc isPixelOpaque(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).isPixelOpaque(p_args[0].decode(int32), p_args[1].decode(int32)).encode(r_ret)
-template isPixelOpaque_bind*(_: typedesc[Texture2D]): ClassCallVirtual = isPixelOpaque
+proc registerVirtual_isPixelOpaque*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_pixel_opaque"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).isPixelOpaque(p_args[0].decode(int32), p_args[1].decode(int32)).encode(r_ret)
 
 method hasAlpha*(self: Texture2D): bool {.base.} = (discard)
-proc hasAlpha(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).hasAlpha().encode(r_ret)
-template hasAlpha_bind*(_: typedesc[Texture2D]): ClassCallVirtual = hasAlpha
+proc registerVirtual_hasAlpha*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_has_alpha"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).hasAlpha().encode(r_ret)
 
 method draw*(self: Texture2D; toCanvasItem: RID; pos: Vector2; modulate: Color; transpose: bool): void {.base.} = (discard)
-proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Vector2), p_args[2].decode(Color), p_args[3].decode(bool))
-template draw_bind*(_: typedesc[Texture2D]): ClassCallVirtual = draw
+proc registerVirtual_draw*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Vector2), p_args[2].decode(Color), p_args[3].decode(bool))
 
 method drawRect*(self: Texture2D; toCanvasItem: RID; rect: Rect2; tile: bool; modulate: Color; transpose: bool): void {.base.} = (discard)
-proc drawRect(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).drawRect(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(bool), p_args[3].decode(Color), p_args[4].decode(bool))
-template drawRect_bind*(_: typedesc[Texture2D]): ClassCallVirtual = drawRect
+proc registerVirtual_drawRect*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw_rect"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).drawRect(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(bool), p_args[3].decode(Color), p_args[4].decode(bool))
 
 method drawRectRegion*(self: Texture2D; toCanvasItem: RID; rect: Rect2; srcRect: Rect2; modulate: Color; transpose: bool; clipUv: bool): void {.base.} = (discard)
-proc drawRectRegion(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Texture2D](p_instance).drawRectRegion(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(Rect2), p_args[3].decode(Color), p_args[4].decode(bool), p_args[5].decode(bool))
-template drawRectRegion_bind*(_: typedesc[Texture2D]): ClassCallVirtual = drawRectRegion
+proc registerVirtual_drawRectRegion*[T: Texture2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw_rect_region"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Texture2D](p_instance).drawRectRegion(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(Rect2), p_args[3].decode(Color), p_args[4].decode(bool), p_args[5].decode(bool))
 
 proc getWidth*(self: Texture2D): int32 =
   expandMethodBind(className Texture2D, "get_width", 3905245786)
@@ -86,15 +86,3 @@ proc createPlaceholder*(self: Texture2D): gdref Resource =
   var ret: encoded gdref Resource
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
-
-const Texture2D_vmap =
-  Texture.vmap.concat toTable {
-    "getwidth" : "_get_width",
-    "getheight" : "_get_height",
-    "ispixelopaque" : "_is_pixel_opaque",
-    "hasalpha" : "_has_alpha",
-    "draw" : "_draw",
-    "drawrect" : "_draw_rect",
-    "drawrectregion" : "_draw_rect_region",
-    }
-template vmap*(_: typedesc[Texture2D]): Table[string, string] = Texture2D_vmap

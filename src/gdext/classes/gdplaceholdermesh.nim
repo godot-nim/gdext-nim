@@ -10,7 +10,3 @@ proc setAabb*(self: PlaceholderMesh; aabb: AABB): void =
 
 template aabb*(self: PlaceholderMesh): untyped = self.getAabb()
 template `aabb=`*(self: PlaceholderMesh; value) = self.setAabb(value)
-
-const PlaceholderMesh_vmap =
-  Mesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PlaceholderMesh]): Table[string, string] = PlaceholderMesh_vmap

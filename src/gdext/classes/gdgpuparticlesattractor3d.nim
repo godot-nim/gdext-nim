@@ -55,7 +55,3 @@ template `directionality=`*(self: GPUParticlesAttractor3D; value) = self.setDire
 
 template cullMask*(self: GPUParticlesAttractor3D): untyped = self.getCullMask()
 template `cullMask=`*(self: GPUParticlesAttractor3D; value) = self.setCullMask(value)
-
-const GPUParticlesAttractor3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesAttractor3D]): Table[string, string] = GPUParticlesAttractor3D_vmap

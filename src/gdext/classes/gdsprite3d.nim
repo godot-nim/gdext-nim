@@ -95,17 +95,13 @@ template `regionEnabled=`*(self: Sprite3D; value) = self.setRegionEnabled(value)
 template regionRect*(self: Sprite3D): untyped = self.getRegionRect()
 template `regionRect=`*(self: Sprite3D; value) = self.setRegionRect(value)
 
-const Sprite3D_vmap =
-  SpriteBase3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Sprite3D]): Table[string, string] = Sprite3D_vmap
-
-proc frameChanged*(self: Sprite3D): Error =
+proc call_frameChanged*(self: Sprite3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_changed")
   self.emitSignal(signalname)
 
-proc textureChanged*(self: Sprite3D): Error =
+proc call_textureChanged*(self: Sprite3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("texture_changed")

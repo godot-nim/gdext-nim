@@ -87,7 +87,3 @@ proc getCollisionDepth*(self: PhysicsTestMotionResult3D; collisionIndex: int32 =
   var ret: encoded Float
   methodbind.ptrcall(self, [getPtr collisionIndex], addr ret)
   (addr ret).decode_result(Float)
-
-const PhysicsTestMotionResult3D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsTestMotionResult3D]): Table[string, string] = PhysicsTestMotionResult3D_vmap

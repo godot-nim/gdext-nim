@@ -42,7 +42,3 @@ proc inspectNativeShaderCode*(self: Shader): void =
 
 template code*(self: Shader): untyped = self.getCode()
 template `code=`*(self: Shader; value) = self.setCode(value)
-
-const Shader_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Shader]): Table[string, string] = Shader_vmap

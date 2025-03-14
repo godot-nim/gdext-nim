@@ -1167,7 +1167,3 @@ proc parseStructuredText*(self: TextServer; parserType: TextServer_StructuredTex
   var ret: encoded TypedArray[Vector3i]
   methodbind.ptrcall(self, [getPtr parserType, getPtr args, getPtr text], addr ret)
   (addr ret).decode_result(TypedArray[Vector3i])
-
-const TextServer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextServer]): Table[string, string] = TextServer_vmap

@@ -39,7 +39,3 @@ proc getProjectSettingsDir*(self: EditorPaths): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-const EditorPaths_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorPaths]): Table[string, string] = EditorPaths_vmap

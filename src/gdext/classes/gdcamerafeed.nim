@@ -5,14 +5,14 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method activateFeed*(self: CameraFeed): bool {.base.} = (discard)
-proc activateFeed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CameraFeed](p_instance).activateFeed().encode(r_ret)
-template activateFeed_bind*(_: typedesc[CameraFeed]): ClassCallVirtual = activateFeed
+proc registerVirtual_activateFeed*[T: CameraFeed](Self: typedesc[T]) =
+  Self.vmethods[stringName"_activate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CameraFeed](p_instance).activateFeed().encode(r_ret)
 
 method deactivateFeed*(self: CameraFeed): void {.base.} = (discard)
-proc deactivateFeed(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CameraFeed](p_instance).deactivateFeed()
-template deactivateFeed_bind*(_: typedesc[CameraFeed]): ClassCallVirtual = deactivateFeed
+proc registerVirtual_deactivateFeed*[T: CameraFeed](Self: typedesc[T]) =
+  Self.vmethods[stringName"_deactivate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CameraFeed](p_instance).deactivateFeed()
 
 proc getId*(self: CameraFeed): int32 =
   expandMethodBind(className CameraFeed, "get_id", 3905245786)
@@ -104,20 +104,13 @@ template `feedTransform=`*(self: CameraFeed; value) = self.setTransform(value)
 
 template formats*(self: CameraFeed): untyped = self.getFormats()
 
-const CameraFeed_vmap =
-  RefCounted.vmap.concat toTable {
-    "activatefeed" : "_activate_feed",
-    "deactivatefeed" : "_deactivate_feed",
-    }
-template vmap*(_: typedesc[CameraFeed]): Table[string, string] = CameraFeed_vmap
-
-proc frameChanged*(self: CameraFeed): Error =
+proc call_frameChanged*(self: CameraFeed): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_changed")
   self.emitSignal(signalname)
 
-proc formatChanged*(self: CameraFeed): Error =
+proc call_formatChanged*(self: CameraFeed): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("format_changed")

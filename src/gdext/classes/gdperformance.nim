@@ -41,7 +41,3 @@ proc getCustomMonitorNames*(self: Performance): TypedArray[StringName] =
   var ret: encoded TypedArray[StringName]
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
-
-const Performance_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Performance]): Table[string, string] = Performance_vmap

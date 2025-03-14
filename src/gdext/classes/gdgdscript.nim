@@ -11,7 +11,3 @@ proc new*(self: GDScript; args: varargs[Variant]): Variant =
   methodbind.call(self, `?param`, args).get(Variant)
 template new*(self: GDScript; args: varargs[Variant]): Variant =
   new(self, args)
-
-const GDScript_vmap =
-  Script.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GDScript]): Table[string, string] = GDScript_vmap

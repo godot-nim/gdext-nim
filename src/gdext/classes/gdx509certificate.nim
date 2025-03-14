@@ -27,7 +27,3 @@ proc loadFromString*(self: X509Certificate; string: String): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr string], addr ret)
   (addr ret).decode_result(Error)
-
-const X509Certificate_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[X509Certificate]): Table[string, string] = X509Certificate_vmap

@@ -131,7 +131,3 @@ template `bakeInterval=`*(self: Curve2D; value) = self.setBakeInterval(value)
 
 template pointCount*(self: Curve2D): untyped = self.getPointCount()
 template `pointCount=`*(self: Curve2D; value) = self.setPointCount(value)
-
-const Curve2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Curve2D]): Table[string, string] = Curve2D_vmap

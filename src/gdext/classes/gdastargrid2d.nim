@@ -5,14 +5,14 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method estimateCost*(self: AStarGrid2D; fromId: Vector2i; endId: Vector2i): Float {.base.} = (discard)
-proc estimateCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AStarGrid2D](p_instance).estimateCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
-template estimateCost_bind*(_: typedesc[AStarGrid2D]): ClassCallVirtual = estimateCost
+proc registerVirtual_estimateCost*[T: AStarGrid2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStarGrid2D](p_instance).estimateCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
 
 method computeCost*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i): Float {.base.} = (discard)
-proc computeCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AStarGrid2D](p_instance).computeCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
-template computeCost_bind*(_: typedesc[AStarGrid2D]): ClassCallVirtual = computeCost
+proc registerVirtual_computeCost*[T: AStarGrid2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStarGrid2D](p_instance).computeCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
 
 proc setRegion*(self: AStarGrid2D; region: Rect2i): void =
   expandMethodBind(className AStarGrid2D, "set_region", 1763793166)
@@ -208,10 +208,3 @@ template `defaultEstimateHeuristic=`*(self: AStarGrid2D; value) = self.setDefaul
 
 template diagonalMode*(self: AStarGrid2D): untyped = self.getDiagonalMode()
 template `diagonalMode=`*(self: AStarGrid2D; value) = self.setDiagonalMode(value)
-
-const AStarGrid2D_vmap =
-  RefCounted.vmap.concat toTable {
-    "estimatecost" : "_estimate_cost",
-    "computecost" : "_compute_cost",
-    }
-template vmap*(_: typedesc[AStarGrid2D]): Table[string, string] = AStarGrid2D_vmap

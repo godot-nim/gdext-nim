@@ -85,7 +85,3 @@ template `actionSets=`*(self: OpenXRActionMap; value) = self.setActionSets(value
 
 template interactionProfiles*(self: OpenXRActionMap): untyped = self.getInteractionProfiles()
 template `interactionProfiles=`*(self: OpenXRActionMap; value) = self.setInteractionProfiles(value)
-
-const OpenXRActionMap_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRActionMap]): Table[string, string] = OpenXRActionMap_vmap

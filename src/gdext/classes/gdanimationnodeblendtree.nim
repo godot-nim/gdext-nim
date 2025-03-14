@@ -59,11 +59,7 @@ proc getGraphOffset*(self: AnimationNodeBlendTree): Vector2 =
 template graphOffset*(self: AnimationNodeBlendTree): untyped = self.getGraphOffset()
 template `graphOffset=`*(self: AnimationNodeBlendTree; value) = self.setGraphOffset(value)
 
-const AnimationNodeBlendTree_vmap =
-  AnimationRootNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeBlendTree]): Table[string, string] = AnimationNodeBlendTree_vmap
-
-proc nodeChanged*(self: AnimationNodeBlendTree; nodeName: Variant): Error =
+proc call_nodeChanged*(self: AnimationNodeBlendTree; nodeName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("node_changed")

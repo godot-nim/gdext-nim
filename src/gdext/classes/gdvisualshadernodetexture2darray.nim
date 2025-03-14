@@ -16,7 +16,3 @@ proc getTextureArray*(self: VisualShaderNodeTexture2DArray): gdref TextureLayere
 
 template textureArray*(self: VisualShaderNodeTexture2DArray): untyped = self.getTextureArray()
 template `textureArray=`*(self: VisualShaderNodeTexture2DArray; value) = self.setTextureArray(value)
-
-const VisualShaderNodeTexture2DArray_vmap =
-  VisualShaderNodeSample3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTexture2DArray]): Table[string, string] = VisualShaderNodeTexture2DArray_vmap

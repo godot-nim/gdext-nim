@@ -78,7 +78,3 @@ template `bakeMask=`*(self: GPUParticlesCollisionSDF3D; value) = self.setBakeMas
 
 template texture*(self: GPUParticlesCollisionSDF3D): untyped = self.getTexture()
 template `texture=`*(self: GPUParticlesCollisionSDF3D; value) = self.setTexture(value)
-
-const GPUParticlesCollisionSDF3D_vmap =
-  GPUParticlesCollision3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesCollisionSDF3D]): Table[string, string] = GPUParticlesCollisionSDF3D_vmap

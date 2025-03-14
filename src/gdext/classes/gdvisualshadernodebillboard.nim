@@ -29,7 +29,3 @@ template `billboardType=`*(self: VisualShaderNodeBillboard; value) = self.setBil
 
 template keepScale*(self: VisualShaderNodeBillboard): untyped = self.isKeepScaleEnabled()
 template `keepScale=`*(self: VisualShaderNodeBillboard; value) = self.setKeepScaleEnabled(value)
-
-const VisualShaderNodeBillboard_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeBillboard]): Table[string, string] = VisualShaderNodeBillboard_vmap

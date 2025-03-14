@@ -386,11 +386,7 @@ template `drawPass4=`*(self: GPUParticles3D; value) = self.setDrawPassMesh(int32
 template drawSkin*(self: GPUParticles3D): untyped = self.getSkin()
 template `drawSkin=`*(self: GPUParticles3D; value) = self.setSkin(value)
 
-const GPUParticles3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticles3D]): Table[string, string] = GPUParticles3D_vmap
-
-proc finished*(self: GPUParticles3D): Error =
+proc call_finished*(self: GPUParticles3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

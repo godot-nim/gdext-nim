@@ -5,14 +5,14 @@ import gdext/coronation/header/classes
 import gdnode2d; export gdnode2d
 
 method useTileDataRuntimeUpdate*(self: TileMap; layer: int32; coords: Vector2i): bool {.base.} = (discard)
-proc useTileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TileMap](p_instance).useTileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i)).encode(r_ret)
-template useTileDataRuntimeUpdate_bind*(_: typedesc[TileMap]): ClassCallVirtual = useTileDataRuntimeUpdate
+proc registerVirtual_useTileDataRuntimeUpdate*[T: TileMap](Self: typedesc[T]) =
+  Self.vmethods[stringName"_use_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TileMap](p_instance).useTileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i)).encode(r_ret)
 
 method tileDataRuntimeUpdate*(self: TileMap; layer: int32; coords: Vector2i; tileData: TileData): void {.base.} = (discard)
-proc tileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TileMap](p_instance).tileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(TileData))
-template tileDataRuntimeUpdate_bind*(_: typedesc[TileMap]): ClassCallVirtual = tileDataRuntimeUpdate
+proc registerVirtual_tileDataRuntimeUpdate*[T: TileMap](Self: typedesc[T]) =
+  Self.vmethods[stringName"_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TileMap](p_instance).tileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(TileData))
 
 proc setNavigationMap*(self: TileMap; layer: int32; map: RID): void =
   expandMethodBind(className TileMap, "set_navigation_map", 4040184819)
@@ -339,14 +339,7 @@ template `collisionVisibilityMode=`*(self: TileMap; value) = self.setCollisionVi
 template navigationVisibilityMode*(self: TileMap): untyped = self.getNavigationVisibilityMode()
 template `navigationVisibilityMode=`*(self: TileMap; value) = self.setNavigationVisibilityMode(value)
 
-const TileMap_vmap =
-  Node2D.vmap.concat toTable {
-    "usetiledataruntimeupdate" : "_use_tile_data_runtime_update",
-    "tiledataruntimeupdate" : "_tile_data_runtime_update",
-    }
-template vmap*(_: typedesc[TileMap]): Table[string, string] = TileMap_vmap
-
-proc changed*(self: TileMap): Error =
+proc call_changed*(self: TileMap): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("changed")

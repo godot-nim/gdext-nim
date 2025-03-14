@@ -17,7 +17,3 @@ proc isCurrent*(self: AudioListener2D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const AudioListener2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioListener2D]): Table[string, string] = AudioListener2D_vmap

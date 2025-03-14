@@ -76,7 +76,3 @@ template `autoshrink=`*(self: VisualShaderNodeFrame; value) = self.setAutoshrink
 
 template attachedNodes*(self: VisualShaderNodeFrame): untyped = self.getAttachedNodes()
 template `attachedNodes=`*(self: VisualShaderNodeFrame; value) = self.setAttachedNodes(value)
-
-const VisualShaderNodeFrame_vmap =
-  VisualShaderNodeResizableBase.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeFrame]): Table[string, string] = VisualShaderNodeFrame_vmap

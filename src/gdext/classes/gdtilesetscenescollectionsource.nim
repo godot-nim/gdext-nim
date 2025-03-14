@@ -61,7 +61,3 @@ proc getNextSceneTileId*(self: TileSetScenesCollectionSource): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const TileSetScenesCollectionSource_vmap =
-  TileSetSource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileSetScenesCollectionSource]): Table[string, string] = TileSetScenesCollectionSource_vmap

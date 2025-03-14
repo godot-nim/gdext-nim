@@ -237,7 +237,3 @@ template `structuredTextBidiOverride=`*(self: TextMesh; value) = self.setStructu
 
 template structuredTextBidiOverrideOptions*(self: TextMesh): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: TextMesh; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-const TextMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextMesh]): Table[string, string] = TextMesh_vmap

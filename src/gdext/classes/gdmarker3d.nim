@@ -16,7 +16,3 @@ proc getGizmoExtents*(self: Marker3D): Float =
 
 template gizmoExtents*(self: Marker3D): untyped = self.getGizmoExtents()
 template `gizmoExtents=`*(self: Marker3D; value) = self.setGizmoExtents(value)
-
-const Marker3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Marker3D]): Table[string, string] = Marker3D_vmap

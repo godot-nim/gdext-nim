@@ -235,7 +235,3 @@ template `textureFilter=`*(self: SpriteBase3D; value) = self.setTextureFilter(va
 
 template renderPriority*(self: SpriteBase3D): untyped = self.getRenderPriority()
 template `renderPriority=`*(self: SpriteBase3D; value) = self.setRenderPriority(value)
-
-const SpriteBase3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpriteBase3D]): Table[string, string] = SpriteBase3D_vmap

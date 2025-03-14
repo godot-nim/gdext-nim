@@ -5,35 +5,26 @@ import gdext/coronation/header/classes
 import gdobject; export gdobject
 
 method initialize*(self: MainLoop): void {.base.} = (discard)
-proc initialize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[MainLoop](p_instance).initialize()
-template initialize_bind*(_: typedesc[MainLoop]): ClassCallVirtual = initialize
+proc registerVirtual_initialize*[T: MainLoop](Self: typedesc[T]) =
+  Self.vmethods[stringName"_initialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[MainLoop](p_instance).initialize()
 
 method physicsProcess*(self: MainLoop; delta: float64): bool {.base.} = (discard)
-proc physicsProcess(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[MainLoop](p_instance).physicsProcess(p_args[0].decode(float64)).encode(r_ret)
-template physicsProcess_bind*(_: typedesc[MainLoop]): ClassCallVirtual = physicsProcess
+proc registerVirtual_physicsProcess*[T: MainLoop](Self: typedesc[T]) =
+  Self.vmethods[stringName"_physics_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[MainLoop](p_instance).physicsProcess(p_args[0].decode(float64)).encode(r_ret)
 
 method process*(self: MainLoop; delta: float64): bool {.base.} = (discard)
-proc process(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[MainLoop](p_instance).process(p_args[0].decode(float64)).encode(r_ret)
-template process_bind*(_: typedesc[MainLoop]): ClassCallVirtual = process
+proc registerVirtual_process*[T: MainLoop](Self: typedesc[T]) =
+  Self.vmethods[stringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[MainLoop](p_instance).process(p_args[0].decode(float64)).encode(r_ret)
 
 method finalize*(self: MainLoop): void {.base.} = (discard)
-proc finalize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[MainLoop](p_instance).finalize()
-template finalize_bind*(_: typedesc[MainLoop]): ClassCallVirtual = finalize
+proc registerVirtual_finalize*[T: MainLoop](Self: typedesc[T]) =
+  Self.vmethods[stringName"_finalize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[MainLoop](p_instance).finalize()
 
-const MainLoop_vmap =
-  Object.vmap.concat toTable {
-    "initialize" : "_initialize",
-    "physicsprocess" : "_physics_process",
-    "process" : "_process",
-    "finalize" : "_finalize",
-    }
-template vmap*(_: typedesc[MainLoop]): Table[string, string] = MainLoop_vmap
-
-proc onRequestPermissionsResult*(self: MainLoop; permission: Variant; granted: Variant): Error =
+proc call_onRequestPermissionsResult*(self: MainLoop; permission: Variant; granted: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("on_request_permissions_result")

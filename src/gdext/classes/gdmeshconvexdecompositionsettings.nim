@@ -172,7 +172,3 @@ template `maxConvexHulls=`*(self: MeshConvexDecompositionSettings; value) = self
 
 template projectHullVertices*(self: MeshConvexDecompositionSettings): untyped = self.getProjectHullVertices()
 template `projectHullVertices=`*(self: MeshConvexDecompositionSettings; value) = self.setProjectHullVertices(value)
-
-const MeshConvexDecompositionSettings_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MeshConvexDecompositionSettings]): Table[string, string] = MeshConvexDecompositionSettings_vmap

@@ -16,7 +16,3 @@ proc getWindowId*(self: InputEventFromWindow): int64 =
 
 template windowId*(self: InputEventFromWindow): untyped = self.getWindowId()
 template `windowId=`*(self: InputEventFromWindow; value) = self.setWindowId(value)
-
-const InputEventFromWindow_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventFromWindow]): Table[string, string] = InputEventFromWindow_vmap

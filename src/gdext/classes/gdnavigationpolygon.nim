@@ -228,7 +228,3 @@ template `bakingRect=`*(self: NavigationPolygon; value) = self.setBakingRect(val
 
 template bakingRectOffset*(self: NavigationPolygon): untyped = self.getBakingRectOffset()
 template `bakingRectOffset=`*(self: NavigationPolygon; value) = self.setBakingRectOffset(value)
-
-const NavigationPolygon_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationPolygon]): Table[string, string] = NavigationPolygon_vmap

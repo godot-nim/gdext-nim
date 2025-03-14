@@ -86,16 +86,12 @@ proc getLocalPort*(self: ENetConnection): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc getPeers*(self: ENetConnection): TypedArray[ENetPacketPeer] =
+proc getPeers*(self: ENetConnection): TypedArray[gdref ENetPacketPeer] =
   expandMethodBind(className ENetConnection, "get_peers", 2915620761)
-  var ret: encoded TypedArray[ENetPacketPeer]
+  var ret: encoded TypedArray[gdref ENetPacketPeer]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[ENetPacketPeer])
+  (addr ret).decode_result(TypedArray[gdref ENetPacketPeer])
 
 proc socketSend*(self: ENetConnection; destinationAddress: String; destinationPort: int32; packet: PackedByteArray): void =
   expandMethodBind(className ENetConnection, "socket_send", 1100646812)
   methodbind.ptrcall(self, [getPtr destinationAddress, getPtr destinationPort, getPtr packet])
-
-const ENetConnection_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ENetConnection]): Table[string, string] = ENetConnection_vmap

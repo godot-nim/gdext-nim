@@ -198,7 +198,3 @@ template `sparseValuesBufferView=`*(self: GLTFAccessor; value) = self.setSparseV
 
 template sparseValuesByteOffset*(self: GLTFAccessor): untyped = self.getSparseValuesByteOffset()
 template `sparseValuesByteOffset=`*(self: GLTFAccessor; value) = self.setSparseValuesByteOffset(value)
-
-const GLTFAccessor_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFAccessor]): Table[string, string] = GLTFAccessor_vmap

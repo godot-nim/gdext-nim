@@ -1,5 +1,3 @@
-{.warning[UnusedImport]:off.}
-
 type Vector2_Axis* {.size: sizeof(clong).} = enum
   axisX = 0
   axisY = 1

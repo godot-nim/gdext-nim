@@ -53,7 +53,3 @@ proc disconnectFromHost*(self: StreamPeerTCP): void =
 proc setNoDelay*(self: StreamPeerTCP; enabled: bool): void =
   expandMethodBind(className StreamPeerTCP, "set_no_delay", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
-
-const StreamPeerTCP_vmap =
-  StreamPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StreamPeerTCP]): Table[string, string] = StreamPeerTCP_vmap

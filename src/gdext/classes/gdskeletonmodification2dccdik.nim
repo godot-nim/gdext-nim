@@ -112,7 +112,3 @@ template `tipNodepath=`*(self: SkeletonModification2DCCDIK; value) = self.setTip
 
 template ccdikDataChainLength*(self: SkeletonModification2DCCDIK): untyped = self.getCcdikDataChainLength()
 template `ccdikDataChainLength=`*(self: SkeletonModification2DCCDIK; value) = self.setCcdikDataChainLength(value)
-
-const SkeletonModification2DCCDIK_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DCCDIK]): Table[string, string] = SkeletonModification2DCCDIK_vmap

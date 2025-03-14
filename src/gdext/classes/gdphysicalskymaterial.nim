@@ -146,7 +146,3 @@ template `useDebanding=`*(self: PhysicalSkyMaterial; value) = self.setUseDebandi
 
 template nightSky*(self: PhysicalSkyMaterial): untyped = self.getNightSky()
 template `nightSky=`*(self: PhysicalSkyMaterial; value) = self.setNightSky(value)
-
-const PhysicalSkyMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicalSkyMaterial]): Table[string, string] = PhysicalSkyMaterial_vmap

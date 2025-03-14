@@ -16,7 +16,3 @@ proc getViewportPathInScene*(self: ViewportTexture): NodePath =
 
 template viewportPath*(self: ViewportTexture): untyped = self.getViewportPathInScene()
 template `viewportPath=`*(self: ViewportTexture; value) = self.setViewportPathInScene(value)
-
-const ViewportTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ViewportTexture]): Table[string, string] = ViewportTexture_vmap

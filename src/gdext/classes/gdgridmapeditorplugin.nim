@@ -45,7 +45,3 @@ proc getSelectedPaletteItem*(self: GridMapEditorPlugin): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const GridMapEditorPlugin_vmap =
-  EditorPlugin.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GridMapEditorPlugin]): Table[string, string] = GridMapEditorPlugin_vmap

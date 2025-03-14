@@ -147,7 +147,3 @@ template `colorRamp=`*(self: NoiseTexture2D; value) = self.setColorRamp(value)
 
 template noise*(self: NoiseTexture2D): untyped = self.getNoise()
 template `noise=`*(self: NoiseTexture2D; value) = self.setNoise(value)
-
-const NoiseTexture2D_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NoiseTexture2D]): Table[string, string] = NoiseTexture2D_vmap

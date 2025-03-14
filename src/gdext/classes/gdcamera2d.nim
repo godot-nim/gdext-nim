@@ -328,7 +328,3 @@ template `editorDrawLimits=`*(self: Camera2D; value) = self.setLimitDrawingEnabl
 
 template editorDrawDragMargin*(self: Camera2D): untyped = self.isMarginDrawingEnabled()
 template `editorDrawDragMargin=`*(self: Camera2D; value) = self.setMarginDrawingEnabled(value)
-
-const Camera2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Camera2D]): Table[string, string] = Camera2D_vmap

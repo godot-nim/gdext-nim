@@ -16,7 +16,3 @@ proc getPolyphony*(self: AudioStreamPolyphonic): int32 =
 
 template polyphony*(self: AudioStreamPolyphonic): untyped = self.getPolyphony()
 template `polyphony=`*(self: AudioStreamPolyphonic; value) = self.setPolyphony(value)
-
-const AudioStreamPolyphonic_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPolyphonic]): Table[string, string] = AudioStreamPolyphonic_vmap

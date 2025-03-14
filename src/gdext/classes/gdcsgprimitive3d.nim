@@ -16,7 +16,3 @@ proc getFlipFaces*(self: CSGPrimitive3D): bool =
 
 template flipFaces*(self: CSGPrimitive3D): untyped = self.getFlipFaces()
 template `flipFaces=`*(self: CSGPrimitive3D; value) = self.setFlipFaces(value)
-
-const CSGPrimitive3D_vmap =
-  CSGShape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGPrimitive3D]): Table[string, string] = CSGPrimitive3D_vmap

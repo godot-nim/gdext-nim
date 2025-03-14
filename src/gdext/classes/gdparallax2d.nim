@@ -133,7 +133,3 @@ template `ignoreCameraScroll=`*(self: Parallax2D; value) = self.setIgnoreCameraS
 
 template screenOffset*(self: Parallax2D): untyped = self.getScreenOffset()
 template `screenOffset=`*(self: Parallax2D; value) = self.setScreenOffset(value)
-
-const Parallax2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Parallax2D]): Table[string, string] = Parallax2D_vmap

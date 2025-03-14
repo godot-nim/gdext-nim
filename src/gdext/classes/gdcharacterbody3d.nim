@@ -310,7 +310,3 @@ template `platformWallLayers=`*(self: CharacterBody3D; value) = self.setPlatform
 
 template safeMargin*(self: CharacterBody3D): untyped = self.getSafeMargin()
 template `safeMargin=`*(self: CharacterBody3D; value) = self.setSafeMargin(value)
-
-const CharacterBody3D_vmap =
-  PhysicsBody3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CharacterBody3D]): Table[string, string] = CharacterBody3D_vmap

@@ -16,7 +16,3 @@ proc getRadius*(self: CircleShape2D): Float =
 
 template radius*(self: CircleShape2D): untyped = self.getRadius()
 template `radius=`*(self: CircleShape2D; value) = self.setRadius(value)
-
-const CircleShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CircleShape2D]): Table[string, string] = CircleShape2D_vmap

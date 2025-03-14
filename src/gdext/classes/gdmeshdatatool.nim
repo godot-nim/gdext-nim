@@ -205,7 +205,3 @@ proc getMaterial*(self: MeshDataTool): gdref Material =
   var ret: encoded gdref Material
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
-
-const MeshDataTool_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MeshDataTool]): Table[string, string] = MeshDataTool_vmap

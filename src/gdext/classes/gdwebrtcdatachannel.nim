@@ -86,7 +86,3 @@ proc getBufferedAmount*(self: WebRTCDataChannel): int32 =
 
 template writeMode*(self: WebRTCDataChannel): untyped = self.getWriteMode()
 template `writeMode=`*(self: WebRTCDataChannel; value) = self.setWriteMode(value)
-
-const WebRTCDataChannel_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebRTCDataChannel]): Table[string, string] = WebRTCDataChannel_vmap

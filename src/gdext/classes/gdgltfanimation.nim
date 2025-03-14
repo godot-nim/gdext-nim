@@ -39,7 +39,3 @@ template `originalName=`*(self: GLTFAnimation; value) = self.setOriginalName(val
 
 template loop*(self: GLTFAnimation): untyped = self.getLoop()
 template `loop=`*(self: GLTFAnimation; value) = self.setLoop(value)
-
-const GLTFAnimation_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFAnimation]): Table[string, string] = GLTFAnimation_vmap

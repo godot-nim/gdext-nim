@@ -774,24 +774,20 @@ proc getProcessInfo*(self: NavigationServer3D; processInfo: NavigationServer3D_P
   methodbind.ptrcall(self, [getPtr processInfo], addr ret)
   (addr ret).decode_result(int32)
 
-const NavigationServer3D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationServer3D]): Table[string, string] = NavigationServer3D_vmap
-
-proc mapChanged*(self: NavigationServer3D; map: Variant): Error =
+proc call_mapChanged*(self: NavigationServer3D; map: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("map_changed")
   let args = [map]
   self.emitSignal(signalname, args)
 
-proc navigationDebugChanged*(self: NavigationServer3D): Error =
+proc call_navigationDebugChanged*(self: NavigationServer3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("navigation_debug_changed")
   self.emitSignal(signalname)
 
-proc avoidanceDebugChanged*(self: NavigationServer3D): Error =
+proc call_avoidanceDebugChanged*(self: NavigationServer3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("avoidance_debug_changed")

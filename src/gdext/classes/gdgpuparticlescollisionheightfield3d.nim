@@ -78,7 +78,3 @@ template `followCameraEnabled=`*(self: GPUParticlesCollisionHeightField3D; value
 
 template heightfieldMask*(self: GPUParticlesCollisionHeightField3D): untyped = self.getHeightfieldMask()
 template `heightfieldMask=`*(self: GPUParticlesCollisionHeightField3D; value) = self.setHeightfieldMask(value)
-
-const GPUParticlesCollisionHeightField3D_vmap =
-  GPUParticlesCollision3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesCollisionHeightField3D]): Table[string, string] = GPUParticlesCollisionHeightField3D_vmap

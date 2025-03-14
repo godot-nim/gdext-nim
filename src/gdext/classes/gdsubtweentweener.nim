@@ -9,7 +9,3 @@ proc setDelay*(self: SubtweenTweener; delay: float64): gdref SubtweenTweener =
   var ret: encoded gdref SubtweenTweener
   methodbind.ptrcall(self, [getPtr delay], addr ret)
   (addr ret).decode_result(gdref SubtweenTweener)
-
-const SubtweenTweener_vmap =
-  Tweener.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SubtweenTweener]): Table[string, string] = SubtweenTweener_vmap

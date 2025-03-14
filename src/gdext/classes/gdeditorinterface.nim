@@ -56,11 +56,11 @@ proc getEditorUndoRedo*(self: EditorInterface): EditorUndoRedoManager =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorUndoRedoManager)
 
-proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[Mesh]; previewSize: int32): TypedArray[Texture2D] =
+proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[gdref Mesh]; previewSize: int32): TypedArray[gdref Texture2D] =
   expandMethodBind(className EditorInterface, "make_mesh_previews", 878078554)
-  var ret: encoded TypedArray[Texture2D]
+  var ret: encoded TypedArray[gdref Texture2D]
   methodbind.ptrcall(self, [getPtr meshes, getPtr previewSize], addr ret)
-  (addr ret).decode_result(TypedArray[Texture2D])
+  (addr ret).decode_result(TypedArray[gdref Texture2D])
 
 proc setPluginEnabled*(self: EditorInterface; plugin: String; enabled: bool): void =
   expandMethodBind(className EditorInterface, "set_plugin_enabled", 2678287736)
@@ -160,7 +160,7 @@ proc setCurrentFeatureProfile*(self: EditorInterface; profileName: String): void
   expandMethodBind(className EditorInterface, "set_current_feature_profile", 83702148)
   methodbind.ptrcall(self, [getPtr profileName])
 
-proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = TypedArray[StringName](gdarray()); currentValue: Node = default Node): void =
+proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = typedArray[StringName](); currentValue: Node = default Node): void =
   expandMethodBind(className EditorInterface, "popup_node_selector", 2444591477)
   methodbind.ptrcall(self, [getPtr callback, getPtr validTypes, getPtr currentValue])
 
@@ -172,11 +172,11 @@ proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Cal
   expandMethodBind(className EditorInterface, "popup_method_selector", 3585505226)
   methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr currentValue])
 
-proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = typedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_quick_open", 2271411043)
   methodbind.ptrcall(self, [getPtr callback, getPtr baseTypes])
 
-proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = stringName ""; currentType: String = gdstring""; dialogTitle: String = gdstring""; typeBlocklist: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = gdstring""; dialogTitle: String = gdstring""; typeBlocklist: TypedArray[StringName] = typedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_create_dialog", 495277124)
   methodbind.ptrcall(self, [getPtr callback, getPtr baseType, getPtr currentType, getPtr dialogTitle, getPtr typeBlocklist])
 
@@ -311,7 +311,3 @@ template `distractionFreeMode=`*(self: EditorInterface; value) = self.setDistrac
 
 template movieMakerEnabled*(self: EditorInterface): untyped = self.isMovieMakerEnabled()
 template `movieMakerEnabled=`*(self: EditorInterface; value) = self.setMovieMakerEnabled(value)
-
-const EditorInterface_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorInterface]): Table[string, string] = EditorInterface_vmap

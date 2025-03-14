@@ -74,7 +74,3 @@ template navigationMap*(self: World3D): untyped = self.getNavigationMap()
 template scenario*(self: World3D): untyped = self.getScenario()
 
 template directSpaceState*(self: World3D): untyped = self.getDirectSpaceState()
-
-const World3D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[World3D]): Table[string, string] = World3D_vmap

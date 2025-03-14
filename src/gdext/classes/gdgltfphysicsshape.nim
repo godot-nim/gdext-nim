@@ -130,7 +130,3 @@ template `meshIndex=`*(self: GLTFPhysicsShape; value) = self.setMeshIndex(value)
 
 template importerMesh*(self: GLTFPhysicsShape): untyped = self.getImporterMesh()
 template `importerMesh=`*(self: GLTFPhysicsShape; value) = self.setImporterMesh(value)
-
-const GLTFPhysicsShape_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFPhysicsShape]): Table[string, string] = GLTFPhysicsShape_vmap

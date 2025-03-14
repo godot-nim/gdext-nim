@@ -5,24 +5,24 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method getShaderRid*(self: Material): RID {.base.} = (discard)
-proc getShaderRid(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Material](p_instance).getShaderRid().encode(r_ret)
-template getShaderRid_bind*(_: typedesc[Material]): ClassCallVirtual = getShaderRid
+proc registerVirtual_getShaderRid*[T: Material](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_shader_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Material](p_instance).getShaderRid().encode(r_ret)
 
 method getShaderMode*(self: Material): Shader_Mode {.base.} = (discard)
-proc getShaderMode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Material](p_instance).getShaderMode().encode(r_ret)
-template getShaderMode_bind*(_: typedesc[Material]): ClassCallVirtual = getShaderMode
+proc registerVirtual_getShaderMode*[T: Material](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_shader_mode"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Material](p_instance).getShaderMode().encode(r_ret)
 
 method canDoNextPass*(self: Material): bool {.base.} = (discard)
-proc canDoNextPass(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Material](p_instance).canDoNextPass().encode(r_ret)
-template canDoNextPass_bind*(_: typedesc[Material]): ClassCallVirtual = canDoNextPass
+proc registerVirtual_canDoNextPass*[T: Material](Self: typedesc[T]) =
+  Self.vmethods[stringName"_can_do_next_pass"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Material](p_instance).canDoNextPass().encode(r_ret)
 
 method canUseRenderPriority*(self: Material): bool {.base.} = (discard)
-proc canUseRenderPriority(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Material](p_instance).canUseRenderPriority().encode(r_ret)
-template canUseRenderPriority_bind*(_: typedesc[Material]): ClassCallVirtual = canUseRenderPriority
+proc registerVirtual_canUseRenderPriority*[T: Material](Self: typedesc[T]) =
+  Self.vmethods[stringName"_can_use_render_priority"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Material](p_instance).canUseRenderPriority().encode(r_ret)
 
 proc setNextPass*(self: Material; nextPass: gdref Material): void =
   expandMethodBind(className Material, "set_next_pass", 2757459619)
@@ -59,12 +59,3 @@ template `renderPriority=`*(self: Material; value) = self.setRenderPriority(valu
 
 template nextPass*(self: Material): untyped = self.getNextPass()
 template `nextPass=`*(self: Material; value) = self.setNextPass(value)
-
-const Material_vmap =
-  Resource.vmap.concat toTable {
-    "getshaderrid" : "_get_shader_rid",
-    "getshadermode" : "_get_shader_mode",
-    "candonextpass" : "_can_do_next_pass",
-    "canuserenderpriority" : "_can_use_render_priority",
-    }
-template vmap*(_: typedesc[Material]): Table[string, string] = Material_vmap

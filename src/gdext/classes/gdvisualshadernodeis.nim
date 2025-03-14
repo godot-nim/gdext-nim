@@ -16,7 +16,3 @@ proc getFunction*(self: VisualShaderNodeIs): VisualShaderNodeIs_Function =
 
 template function*(self: VisualShaderNodeIs): untyped = self.getFunction()
 template `function=`*(self: VisualShaderNodeIs; value) = self.setFunction(value)
-
-const VisualShaderNodeIs_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeIs]): Table[string, string] = VisualShaderNodeIs_vmap

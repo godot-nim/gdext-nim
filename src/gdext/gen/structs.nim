@@ -1,8 +1,3 @@
-{.warning[UnusedImport]:off.}
-
-import ./localenums
-import gdext/coronation/header/structs
-
 type AudioFrame* = object
   left*: cfloat
   right*: cfloat

@@ -1196,7 +1196,3 @@ template `adjustmentSaturation=`*(self: Environment; value) = self.setAdjustment
 
 template adjustmentColorCorrection*(self: Environment): untyped = self.getAdjustmentColorCorrection()
 template `adjustmentColorCorrection=`*(self: Environment; value) = self.setAdjustmentColorCorrection(value)
-
-const Environment_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Environment]): Table[string, string] = Environment_vmap

@@ -29,7 +29,3 @@ template `radius=`*(self: CapsuleShape2D; value) = self.setRadius(value)
 
 template height*(self: CapsuleShape2D): untyped = self.getHeight()
 template `height=`*(self: CapsuleShape2D; value) = self.setHeight(value)
-
-const CapsuleShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CapsuleShape2D]): Table[string, string] = CapsuleShape2D_vmap

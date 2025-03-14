@@ -29,7 +29,3 @@ template `srcImage=`*(self: GLTFTexture; value) = self.setSrcImage(value)
 
 template sampler*(self: GLTFTexture): untyped = self.getSampler()
 template `sampler=`*(self: GLTFTexture; value) = self.setSampler(value)
-
-const GLTFTexture_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFTexture]): Table[string, string] = GLTFTexture_vmap

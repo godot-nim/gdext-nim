@@ -68,7 +68,3 @@ template `oneWayCollisionMargin=`*(self: CollisionShape2D; value) = self.setOneW
 
 template debugColor*(self: CollisionShape2D): untyped = self.getDebugColor()
 template `debugColor=`*(self: CollisionShape2D; value) = self.setDebugColor(value)
-
-const CollisionShape2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CollisionShape2D]): Table[string, string] = CollisionShape2D_vmap

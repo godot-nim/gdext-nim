@@ -69,7 +69,3 @@ template `expandedOutputPorts=`*(self: VisualShaderNode; value) = self.setOutput
 
 template linkedParentGraphFrame*(self: VisualShaderNode): untyped = self.getFrame()
 template `linkedParentGraphFrame=`*(self: VisualShaderNode; value) = self.setFrame(value)
-
-const VisualShaderNode_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNode]): Table[string, string] = VisualShaderNode_vmap

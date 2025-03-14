@@ -97,7 +97,3 @@ proc saveEncryptedPass*(self: ConfigFile; path: String; password: String): Error
 proc clear*(self: ConfigFile): void =
   expandMethodBind(className ConfigFile, "clear", 3218959716)
   methodbind.ptrcall(self, [])
-
-const ConfigFile_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConfigFile]): Table[string, string] = ConfigFile_vmap

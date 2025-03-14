@@ -29,7 +29,3 @@ template `worldScale=`*(self: XROrigin3D; value) = self.setWorldScale(value)
 
 template current*(self: XROrigin3D): untyped = self.isCurrent()
 template `current=`*(self: XROrigin3D; value) = self.setCurrent(value)
-
-const XROrigin3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XROrigin3D]): Table[string, string] = XROrigin3D_vmap

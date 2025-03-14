@@ -120,7 +120,3 @@ template `onHaptic=`*(self: OpenXRDpadBindingModifier; value) = self.setOnHaptic
 
 template offHaptic*(self: OpenXRDpadBindingModifier): untyped = self.getOffHaptic()
 template `offHaptic=`*(self: OpenXRDpadBindingModifier; value) = self.setOffHaptic(value)
-
-const OpenXRDpadBindingModifier_vmap =
-  OpenXRIPBindingModifier.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRDpadBindingModifier]): Table[string, string] = OpenXRDpadBindingModifier_vmap

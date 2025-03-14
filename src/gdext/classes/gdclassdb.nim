@@ -185,7 +185,3 @@ proc isClassEnabled*(self: ClassDB; class: StringName): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr class], addr ret)
   (addr ret).decode_result(bool)
-
-const ClassDB_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ClassDB]): Table[string, string] = ClassDB_vmap

@@ -42,7 +42,3 @@ template `name=`*(self: XRTracker; value) = self.setTrackerName(value)
 
 template description*(self: XRTracker): untyped = self.getTrackerDesc()
 template `description=`*(self: XRTracker; value) = self.setTrackerDesc(value)
-
-const XRTracker_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRTracker]): Table[string, string] = XRTracker_vmap

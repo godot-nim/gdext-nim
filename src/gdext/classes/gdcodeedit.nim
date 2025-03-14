@@ -5,19 +5,19 @@ import gdext/coronation/header/classes
 import gdtextedit; export gdtextedit
 
 method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
-proc confirmCodeCompletion(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CodeEdit](p_instance).confirmCodeCompletion(p_args[0].decode(bool))
-template confirmCodeCompletion_bind*(_: typedesc[CodeEdit]): ClassCallVirtual = confirmCodeCompletion
+proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CodeEdit](p_instance).confirmCodeCompletion(p_args[0].decode(bool))
 
 method requestCodeCompletion*(self: CodeEdit; force: bool): void {.base.} = (discard)
-proc requestCodeCompletion(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
-template requestCodeCompletion_bind*(_: typedesc[CodeEdit]): ClassCallVirtual = requestCodeCompletion
+proc registerVirtual_requestCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
 
 method filterCodeCompletionCandidates*(self: CodeEdit; candidates: TypedArray[Dictionary]): TypedArray[Dictionary] {.base.} = (discard)
-proc filterCodeCompletionCandidates(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(TypedArray[Dictionary])).encode(r_ret)
-template filterCodeCompletionCandidates_bind*(_: typedesc[CodeEdit]): ClassCallVirtual = filterCodeCompletionCandidates
+proc registerVirtual_filterCodeCompletionCandidates*[T: CodeEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_filter_code_completion_candidates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(TypedArray[Dictionary])).encode(r_ret)
 
 proc setIndentSize*(self: CodeEdit; size: int32): void =
   expandMethodBind(className CodeEdit, "set_indent_size", 1286410249)
@@ -628,42 +628,34 @@ template `autoBraceCompletionHighlightMatching=`*(self: CodeEdit; value) = self.
 template autoBraceCompletionPairs*(self: CodeEdit): untyped = self.getAutoBraceCompletionPairs()
 template `autoBraceCompletionPairs=`*(self: CodeEdit; value) = self.setAutoBraceCompletionPairs(value)
 
-const CodeEdit_vmap =
-  TextEdit.vmap.concat toTable {
-    "confirmcodecompletion" : "_confirm_code_completion",
-    "requestcodecompletion" : "_request_code_completion",
-    "filtercodecompletioncandidates" : "_filter_code_completion_candidates",
-    }
-template vmap*(_: typedesc[CodeEdit]): Table[string, string] = CodeEdit_vmap
-
-proc breakpointToggled*(self: CodeEdit; line: Variant): Error =
+proc call_breakpointToggled*(self: CodeEdit; line: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("breakpoint_toggled")
   let args = [line]
   self.emitSignal(signalname, args)
 
-proc codeCompletionRequested*(self: CodeEdit): Error =
+proc call_codeCompletionRequested*(self: CodeEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("code_completion_requested")
   self.emitSignal(signalname)
 
-proc symbolLookup*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
+proc call_symbolLookup*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("symbol_lookup")
   let args = [symbol, line, column]
   self.emitSignal(signalname, args)
 
-proc symbolValidate*(self: CodeEdit; symbol: Variant): Error =
+proc call_symbolValidate*(self: CodeEdit; symbol: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("symbol_validate")
   let args = [symbol]
   self.emitSignal(signalname, args)
 
-proc symbolHovered*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
+proc call_symbolHovered*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("symbol_hovered")

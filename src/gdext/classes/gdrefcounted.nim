@@ -27,7 +27,3 @@ proc getReferenceCount*(self: RefCounted): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const RefCounted_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RefCounted]): Table[string, string] = RefCounted_vmap

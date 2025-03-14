@@ -16,7 +16,3 @@ proc getOpType*(self: VisualShaderNodeParticleRandomness): VisualShaderNodeParti
 
 template opType*(self: VisualShaderNodeParticleRandomness): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeParticleRandomness; value) = self.setOpType(value)
-
-const VisualShaderNodeParticleRandomness_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleRandomness]): Table[string, string] = VisualShaderNodeParticleRandomness_vmap

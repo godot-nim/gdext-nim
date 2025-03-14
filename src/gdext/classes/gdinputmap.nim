@@ -52,11 +52,11 @@ proc actionEraseEvents*(self: InputMap; action: StringName): void =
   expandMethodBind(className InputMap, "action_erase_events", 3304788590)
   methodbind.ptrcall(self, [getPtr action])
 
-proc actionGetEvents*(self: InputMap; action: StringName): TypedArray[InputEvent] =
+proc actionGetEvents*(self: InputMap; action: StringName): TypedArray[gdref InputEvent] =
   expandMethodBind(className InputMap, "action_get_events", 689397652)
-  var ret: encoded TypedArray[InputEvent]
+  var ret: encoded TypedArray[gdref InputEvent]
   methodbind.ptrcall(self, [getPtr action], addr ret)
-  (addr ret).decode_result(TypedArray[InputEvent])
+  (addr ret).decode_result(TypedArray[gdref InputEvent])
 
 proc eventIsAction*(self: InputMap; event: gdref InputEvent; action: StringName; exactMatch: bool = false): bool =
   expandMethodBind(className InputMap, "event_is_action", 3193353650)
@@ -67,7 +67,3 @@ proc eventIsAction*(self: InputMap; event: gdref InputEvent; action: StringName;
 proc loadFromProjectSettings*(self: InputMap): void =
   expandMethodBind(className InputMap, "load_from_project_settings", 3218959716)
   methodbind.ptrcall(self, [])
-
-const InputMap_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputMap]): Table[string, string] = InputMap_vmap

@@ -43,7 +43,3 @@ proc getGroupProcessedElementCount*(self: WorkerThreadPool; groupId: int64): uin
 proc waitForGroupTaskCompletion*(self: WorkerThreadPool; groupId: int64): void =
   expandMethodBind(className WorkerThreadPool, "wait_for_group_task_completion", 1286410249)
   methodbind.ptrcall(self, [getPtr groupId])
-
-const WorkerThreadPool_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WorkerThreadPool]): Table[string, string] = WorkerThreadPool_vmap

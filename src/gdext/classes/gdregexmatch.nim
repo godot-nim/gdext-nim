@@ -51,7 +51,3 @@ template subject*(self: RegExMatch): untyped = self.getSubject()
 template names*(self: RegExMatch): untyped = self.getNames()
 
 template strings*(self: RegExMatch): untyped = self.getStrings()
-
-const RegExMatch_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RegExMatch]): Table[string, string] = RegExMatch_vmap

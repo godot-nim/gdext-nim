@@ -230,7 +230,3 @@ template `antiAliasing=`*(self: StyleBoxFlat; value) = self.setAntiAliased(value
 
 template antiAliasingSize*(self: StyleBoxFlat): untyped = self.getAaSize()
 template `antiAliasingSize=`*(self: StyleBoxFlat; value) = self.setAaSize(value)
-
-const StyleBoxFlat_vmap =
-  StyleBox.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StyleBoxFlat]): Table[string, string] = StyleBoxFlat_vmap

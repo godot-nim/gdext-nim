@@ -36,7 +36,3 @@ template `width=`*(self: GradientTexture1D; value) = self.setWidth(value)
 
 template useHdr*(self: GradientTexture1D): untyped = self.isUsingHdr()
 template `useHdr=`*(self: GradientTexture1D; value) = self.setUseHdr(value)
-
-const GradientTexture1D_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GradientTexture1D]): Table[string, string] = GradientTexture1D_vmap

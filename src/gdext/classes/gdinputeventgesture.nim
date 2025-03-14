@@ -16,7 +16,3 @@ proc getPosition*(self: InputEventGesture): Vector2 =
 
 template position*(self: InputEventGesture): untyped = self.getPosition()
 template `position=`*(self: InputEventGesture; value) = self.setPosition(value)
-
-const InputEventGesture_vmap =
-  InputEventWithModifiers.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventGesture]): Table[string, string] = InputEventGesture_vmap

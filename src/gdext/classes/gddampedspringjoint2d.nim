@@ -55,7 +55,3 @@ template `stiffness=`*(self: DampedSpringJoint2D; value) = self.setStiffness(val
 
 template damping*(self: DampedSpringJoint2D): untyped = self.getDamping()
 template `damping=`*(self: DampedSpringJoint2D; value) = self.setDamping(value)
-
-const DampedSpringJoint2D_vmap =
-  Joint2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[DampedSpringJoint2D]): Table[string, string] = DampedSpringJoint2D_vmap

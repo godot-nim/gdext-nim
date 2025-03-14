@@ -42,7 +42,3 @@ template `samples=`*(self: RDAttachmentFormat; value) = self.setSamples(value)
 
 template usageFlags*(self: RDAttachmentFormat): untyped = self.getUsageFlags()
 template `usageFlags=`*(self: RDAttachmentFormat; value) = self.setUsageFlags(value)
-
-const RDAttachmentFormat_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDAttachmentFormat]): Table[string, string] = RDAttachmentFormat_vmap

@@ -42,7 +42,3 @@ template `motionOffset=`*(self: ParallaxLayer; value) = self.setMotionOffset(val
 
 template motionMirroring*(self: ParallaxLayer): untyped = self.getMirroring()
 template `motionMirroring=`*(self: ParallaxLayer; value) = self.setMirroring(value)
-
-const ParallaxLayer_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ParallaxLayer]): Table[string, string] = ParallaxLayer_vmap

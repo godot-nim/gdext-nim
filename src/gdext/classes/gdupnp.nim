@@ -100,7 +100,3 @@ template `discoverLocalPort=`*(self: UPNP; value) = self.setDiscoverLocalPort(va
 
 template discoverIpv6*(self: UPNP): untyped = self.isDiscoverIpv6()
 template `discoverIpv6=`*(self: UPNP; value) = self.setDiscoverIpv6(value)
-
-const UPNP_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[UPNP]): Table[string, string] = UPNP_vmap

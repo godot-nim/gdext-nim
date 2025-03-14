@@ -276,7 +276,3 @@ template `domainWarpFractalLacunarity=`*(self: FastNoiseLite; value) = self.setD
 
 template domainWarpFractalGain*(self: FastNoiseLite): untyped = self.getDomainWarpFractalGain()
 template `domainWarpFractalGain=`*(self: FastNoiseLite; value) = self.setDomainWarpFractalGain(value)
-
-const FastNoiseLite_vmap =
-  Noise.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FastNoiseLite]): Table[string, string] = FastNoiseLite_vmap

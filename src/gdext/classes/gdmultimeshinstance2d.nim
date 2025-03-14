@@ -30,11 +30,7 @@ template `multimesh=`*(self: MultiMeshInstance2D; value) = self.setMultimesh(val
 template texture*(self: MultiMeshInstance2D): untyped = self.getTexture()
 template `texture=`*(self: MultiMeshInstance2D; value) = self.setTexture(value)
 
-const MultiMeshInstance2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiMeshInstance2D]): Table[string, string] = MultiMeshInstance2D_vmap
-
-proc textureChanged*(self: MultiMeshInstance2D): Error =
+proc call_textureChanged*(self: MultiMeshInstance2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("texture_changed")

@@ -240,13 +240,13 @@ proc canTranslateMessages*(self: Object): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc tr*(self: Object; message: StringName; context: StringName = stringName ""): String =
+proc tr*(self: Object; message: StringName; context: StringName = default(StringName)): String =
   expandMethodBind(className Object, "tr", 1195764410)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
   (addr ret).decode_result(String)
 
-proc trN*(self: Object; message: StringName; pluralMessage: StringName; n: int32; context: StringName = stringName ""): String =
+proc trN*(self: Object; message: StringName; pluralMessage: StringName; n: int32; context: StringName = default(StringName)): String =
   expandMethodBind(className Object, "tr_n", 162698058)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
@@ -272,17 +272,13 @@ proc cancelFree*(self: Object): void =
   expandMethodBind(className Object, "cancel_free", 3218959716)
   methodbind.ptrcall(self, [])
 
-const Object_vmap =
-  initTable[string, string]()
-template vmap*(_: typedesc[Object]): Table[string, string] = Object_vmap
-
-proc scriptChanged*(self: Object): Error =
+proc call_scriptChanged*(self: Object): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("script_changed")
   self.emitSignal(signalname)
 
-proc propertyListChanged*(self: Object): Error =
+proc call_propertyListChanged*(self: Object): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("property_list_changed")

@@ -15,7 +15,3 @@ proc loadFromFile*(_: typedesc[ResourceImporterOggVorbis]; path: String): gdref 
   var ret: encoded gdref AudioStreamOggVorbis
   methodbind.ptrcall([getPtr path], addr ret)
   (addr ret).decode_result(gdref AudioStreamOggVorbis)
-
-const ResourceImporterOggVorbis_vmap =
-  ResourceImporter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceImporterOggVorbis]): Table[string, string] = ResourceImporterOggVorbis_vmap

@@ -320,11 +320,7 @@ template `attenuationFilterDb=`*(self: AudioStreamPlayer3D; value) = self.setAtt
 template dopplerTracking*(self: AudioStreamPlayer3D): untyped = self.getDopplerTracking()
 template `dopplerTracking=`*(self: AudioStreamPlayer3D; value) = self.setDopplerTracking(value)
 
-const AudioStreamPlayer3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlayer3D]): Table[string, string] = AudioStreamPlayer3D_vmap
-
-proc finished*(self: AudioStreamPlayer3D): Error =
+proc call_finished*(self: AudioStreamPlayer3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

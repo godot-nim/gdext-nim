@@ -233,7 +233,3 @@ template `collideWithBodies=`*(self: ShapeCast3D; value) = self.setCollideWithBo
 
 template debugShapeCustomColor*(self: ShapeCast3D): untyped = self.getDebugShapeCustomColor()
 template `debugShapeCustomColor=`*(self: ShapeCast3D; value) = self.setDebugShapeCustomColor(value)
-
-const ShapeCast3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ShapeCast3D]): Table[string, string] = ShapeCast3D_vmap

@@ -291,53 +291,49 @@ template `tabFocusMode=`*(self: TabContainer; value) = self.setTabFocusMode(valu
 template deselectEnabled*(self: TabContainer): untyped = self.getDeselectEnabled()
 template `deselectEnabled=`*(self: TabContainer; value) = self.setDeselectEnabled(value)
 
-const TabContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TabContainer]): Table[string, string] = TabContainer_vmap
-
-proc activeTabRearranged*(self: TabContainer; idxTo: Variant): Error =
+proc call_activeTabRearranged*(self: TabContainer; idxTo: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("active_tab_rearranged")
   let args = [idxTo]
   self.emitSignal(signalname, args)
 
-proc tabChanged*(self: TabContainer; tab: Variant): Error =
+proc call_tabChanged*(self: TabContainer; tab: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tab_changed")
   let args = [tab]
   self.emitSignal(signalname, args)
 
-proc tabClicked*(self: TabContainer; tab: Variant): Error =
+proc call_tabClicked*(self: TabContainer; tab: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tab_clicked")
   let args = [tab]
   self.emitSignal(signalname, args)
 
-proc tabHovered*(self: TabContainer; tab: Variant): Error =
+proc call_tabHovered*(self: TabContainer; tab: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tab_hovered")
   let args = [tab]
   self.emitSignal(signalname, args)
 
-proc tabSelected*(self: TabContainer; tab: Variant): Error =
+proc call_tabSelected*(self: TabContainer; tab: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tab_selected")
   let args = [tab]
   self.emitSignal(signalname, args)
 
-proc tabButtonPressed*(self: TabContainer; tab: Variant): Error =
+proc call_tabButtonPressed*(self: TabContainer; tab: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tab_button_pressed")
   let args = [tab]
   self.emitSignal(signalname, args)
 
-proc prePopupPressed*(self: TabContainer): Error =
+proc call_prePopupPressed*(self: TabContainer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pre_popup_pressed")

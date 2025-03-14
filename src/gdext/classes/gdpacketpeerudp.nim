@@ -77,7 +77,3 @@ proc leaveMulticastGroup*(self: PacketPeerUDP; multicastAddress: String; interfa
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr multicastAddress, getPtr interfaceName], addr ret)
   (addr ret).decode_result(Error)
-
-const PacketPeerUDP_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PacketPeerUDP]): Table[string, string] = PacketPeerUDP_vmap

@@ -133,7 +133,3 @@ template `shadowColor=`*(self: LabelSettings; value) = self.setShadowColor(value
 
 template shadowOffset*(self: LabelSettings): untyped = self.getShadowOffset()
 template `shadowOffset=`*(self: LabelSettings; value) = self.setShadowOffset(value)
-
-const LabelSettings_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LabelSettings]): Table[string, string] = LabelSettings_vmap

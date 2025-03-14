@@ -36,7 +36,3 @@ proc getSyncStreamVolume*(self: AudioStreamSynchronized; streamIndex: int32): Fl
 
 template streamCount*(self: AudioStreamSynchronized): untyped = self.getStreamCount()
 template `streamCount=`*(self: AudioStreamSynchronized; value) = self.setStreamCount(value)
-
-const AudioStreamSynchronized_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamSynchronized]): Table[string, string] = AudioStreamSynchronized_vmap

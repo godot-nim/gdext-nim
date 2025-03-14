@@ -81,7 +81,3 @@ template `particlesAnimVFrames=`*(self: CanvasItemMaterial; value) = self.setPar
 
 template particlesAnimLoop*(self: CanvasItemMaterial): untyped = self.getParticlesAnimLoop()
 template `particlesAnimLoop=`*(self: CanvasItemMaterial; value) = self.setParticlesAnimLoop(value)
-
-const CanvasItemMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CanvasItemMaterial]): Table[string, string] = CanvasItemMaterial_vmap

@@ -141,11 +141,7 @@ template `maxRedirects=`*(self: HTTPRequest; value) = self.setMaxRedirects(value
 template timeout*(self: HTTPRequest): untyped = self.getTimeout()
 template `timeout=`*(self: HTTPRequest; value) = self.setTimeout(value)
 
-const HTTPRequest_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HTTPRequest]): Table[string, string] = HTTPRequest_vmap
-
-proc requestCompleted*(self: HTTPRequest; retval: Variant; responseCode: Variant; headers: Variant; body: Variant): Error =
+proc call_requestCompleted*(self: HTTPRequest; retval: Variant; responseCode: Variant; headers: Variant; body: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("request_completed")

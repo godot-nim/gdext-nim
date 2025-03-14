@@ -29,7 +29,3 @@ template `volumeDb=`*(self: AudioEffectAmplify; value) = self.setVolumeDb(value)
 
 template volumeLinear*(self: AudioEffectAmplify): untyped = self.getVolumeLinear()
 template `volumeLinear=`*(self: AudioEffectAmplify; value) = self.setVolumeLinear(value)
-
-const AudioEffectAmplify_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectAmplify]): Table[string, string] = AudioEffectAmplify_vmap

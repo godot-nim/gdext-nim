@@ -216,7 +216,3 @@ template `collideWithAreas=`*(self: ShapeCast2D; value) = self.setCollideWithAre
 
 template collideWithBodies*(self: ShapeCast2D): untyped = self.isCollideWithBodiesEnabled()
 template `collideWithBodies=`*(self: ShapeCast2D; value) = self.setCollideWithBodies(value)
-
-const ShapeCast2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ShapeCast2D]): Table[string, string] = ShapeCast2D_vmap

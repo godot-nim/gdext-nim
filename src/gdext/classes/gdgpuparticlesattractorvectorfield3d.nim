@@ -29,7 +29,3 @@ template `size=`*(self: GPUParticlesAttractorVectorField3D; value) = self.setSiz
 
 template texture*(self: GPUParticlesAttractorVectorField3D): untyped = self.getTexture()
 template `texture=`*(self: GPUParticlesAttractorVectorField3D; value) = self.setTexture(value)
-
-const GPUParticlesAttractorVectorField3D_vmap =
-  GPUParticlesAttractor3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesAttractorVectorField3D]): Table[string, string] = GPUParticlesAttractorVectorField3D_vmap

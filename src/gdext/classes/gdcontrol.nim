@@ -5,49 +5,49 @@ import gdext/coronation/header/classes
 import gdcanvasitem; export gdcanvasitem
 
 method hasPoint*(self: Control; point: Vector2): bool {.base.} = (discard)
-proc hasPoint(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).hasPoint(p_args[0].decode(Vector2)).encode(r_ret)
-template hasPoint_bind*(_: typedesc[Control]): ClassCallVirtual = hasPoint
+proc registerVirtual_hasPoint*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_has_point"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).hasPoint(p_args[0].decode(Vector2)).encode(r_ret)
 
 method structuredTextParser*(self: Control; args: Array; text: String): TypedArray[Vector3i] {.base.} = (discard)
-proc structuredTextParser(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array), p_args[1].decode(String)).encode(r_ret)
-template structuredTextParser_bind*(_: typedesc[Control]): ClassCallVirtual = structuredTextParser
+proc registerVirtual_structuredTextParser*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_structured_text_parser"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array), p_args[1].decode(String)).encode(r_ret)
 
 method getMinimumSize*(self: Control): Vector2 {.base.} = (discard)
-proc getMinimumSize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).getMinimumSize().encode(r_ret)
-template getMinimumSize_bind*(_: typedesc[Control]): ClassCallVirtual = getMinimumSize
+proc registerVirtual_getMinimumSize*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).getMinimumSize().encode(r_ret)
 
 method getTooltip*(self: Control; atPosition: Vector2): String {.base.} = (discard)
-proc getTooltip(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).getTooltip(p_args[0].decode(Vector2)).encode(r_ret)
-template getTooltip_bind*(_: typedesc[Control]): ClassCallVirtual = getTooltip
+proc registerVirtual_getTooltip*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).getTooltip(p_args[0].decode(Vector2)).encode(r_ret)
 
 method getDragData*(self: Control; atPosition: Vector2): Variant {.base.} = (discard)
-proc getDragData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).getDragData(p_args[0].decode(Vector2)).encode(r_ret)
-template getDragData_bind*(_: typedesc[Control]): ClassCallVirtual = getDragData
+proc registerVirtual_getDragData*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_drag_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).getDragData(p_args[0].decode(Vector2)).encode(r_ret)
 
 method canDropData*(self: Control; atPosition: Vector2; data: Variant): bool {.base.} = (discard)
-proc canDropData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).canDropData(p_args[0].decode(Vector2), p_args[1].decode(Variant)).encode(r_ret)
-template canDropData_bind*(_: typedesc[Control]): ClassCallVirtual = canDropData
+proc registerVirtual_canDropData*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_can_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).canDropData(p_args[0].decode(Vector2), p_args[1].decode(Variant)).encode(r_ret)
 
 method dropData*(self: Control; atPosition: Vector2; data: Variant): void {.base.} = (discard)
-proc dropData(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).dropData(p_args[0].decode(Vector2), p_args[1].decode(Variant))
-template dropData_bind*(_: typedesc[Control]): ClassCallVirtual = dropData
+proc registerVirtual_dropData*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).dropData(p_args[0].decode(Vector2), p_args[1].decode(Variant))
 
 method makeCustomTooltip*(self: Control; forText: String): Object {.base.} = (discard)
-proc makeCustomTooltip(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).makeCustomTooltip(p_args[0].decode(String)).encode(r_ret)
-template makeCustomTooltip_bind*(_: typedesc[Control]): ClassCallVirtual = makeCustomTooltip
+proc registerVirtual_makeCustomTooltip*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_make_custom_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).makeCustomTooltip(p_args[0].decode(String)).encode(r_ret)
 
 method guiInput*(self: Control; event: gdref InputEvent): void {.base.} = (discard)
-proc guiInput(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Control](p_instance).guiInput(p_args[0].decode(gdref InputEvent))
-template guiInput_bind*(_: typedesc[Control]): ClassCallVirtual = guiInput
+proc registerVirtual_guiInput*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[stringName"_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).guiInput(p_args[0].decode(gdref InputEvent))
 
 proc acceptEvent*(self: Control): void =
   expandMethodBind(className Control, "accept_event", 3218959716)
@@ -377,37 +377,37 @@ proc removeThemeConstantOverride*(self: Control; name: StringName): void =
   expandMethodBind(className Control, "remove_theme_constant_override", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
-proc getThemeIcon*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref Texture2D =
+proc getThemeIcon*(self: Control; name: StringName; themeType: StringName = default(StringName)): gdref Texture2D =
   expandMethodBind(className Control, "get_theme_icon", 3163973443)
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
-proc getThemeStylebox*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref StyleBox =
+proc getThemeStylebox*(self: Control; name: StringName; themeType: StringName = default(StringName)): gdref StyleBox =
   expandMethodBind(className Control, "get_theme_stylebox", 604739069)
   var ret: encoded gdref StyleBox
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref StyleBox)
 
-proc getThemeFont*(self: Control; name: StringName; themeType: StringName = stringName ""): gdref Font =
+proc getThemeFont*(self: Control; name: StringName; themeType: StringName = default(StringName)): gdref Font =
   expandMethodBind(className Control, "get_theme_font", 2826986490)
   var ret: encoded gdref Font
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Font)
 
-proc getThemeFontSize*(self: Control; name: StringName; themeType: StringName = stringName ""): int32 =
+proc getThemeFontSize*(self: Control; name: StringName; themeType: StringName = default(StringName)): int32 =
   expandMethodBind(className Control, "get_theme_font_size", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
 
-proc getThemeColor*(self: Control; name: StringName; themeType: StringName = stringName ""): Color =
+proc getThemeColor*(self: Control; name: StringName; themeType: StringName = default(StringName)): Color =
   expandMethodBind(className Control, "get_theme_color", 2798751242)
   var ret: encoded Color
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(Color)
 
-proc getThemeConstant*(self: Control; name: StringName; themeType: StringName = stringName ""): int32 =
+proc getThemeConstant*(self: Control; name: StringName; themeType: StringName = default(StringName)): int32 =
   expandMethodBind(className Control, "get_theme_constant", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
@@ -449,37 +449,37 @@ proc hasThemeConstantOverride*(self: Control; name: StringName): bool =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeIcon*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeIcon*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_icon", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeStylebox*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeStylebox*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_stylebox", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeFont*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeFont*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_font", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeFontSize*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeFontSize*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_font_size", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeColor*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeColor*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_color", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeConstant*(self: Control; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeConstant*(self: Control; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Control, "has_theme_constant", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
@@ -833,70 +833,56 @@ template `theme=`*(self: Control; value) = self.setTheme(value)
 template themeTypeVariation*(self: Control): untyped = self.getThemeTypeVariation()
 template `themeTypeVariation=`*(self: Control; value) = self.setThemeTypeVariation(value)
 
-const Control_vmap =
-  CanvasItem.vmap.concat toTable {
-    "haspoint" : "_has_point",
-    "structuredtextparser" : "_structured_text_parser",
-    "getminimumsize" : "_get_minimum_size",
-    "gettooltip" : "_get_tooltip",
-    "getdragdata" : "_get_drag_data",
-    "candropdata" : "_can_drop_data",
-    "dropdata" : "_drop_data",
-    "makecustomtooltip" : "_make_custom_tooltip",
-    "guiinput" : "_gui_input",
-    }
-template vmap*(_: typedesc[Control]): Table[string, string] = Control_vmap
-
-proc resized*(self: Control): Error =
+proc call_resized*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resized")
   self.emitSignal(signalname)
 
-proc guiInput*(self: Control; event: Variant): Error =
+proc call_guiInput*(self: Control; event: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("gui_input")
   let args = [event]
   self.emitSignal(signalname, args)
 
-proc mouseEntered*(self: Control): Error =
+proc call_mouseEntered*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_entered")
   self.emitSignal(signalname)
 
-proc mouseExited*(self: Control): Error =
+proc call_mouseExited*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_exited")
   self.emitSignal(signalname)
 
-proc focusEntered*(self: Control): Error =
+proc call_focusEntered*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("focus_entered")
   self.emitSignal(signalname)
 
-proc focusExited*(self: Control): Error =
+proc call_focusExited*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("focus_exited")
   self.emitSignal(signalname)
 
-proc sizeFlagsChanged*(self: Control): Error =
+proc call_sizeFlagsChanged*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("size_flags_changed")
   self.emitSignal(signalname)
 
-proc minimumSizeChanged*(self: Control): Error =
+proc call_minimumSizeChanged*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("minimum_size_changed")
   self.emitSignal(signalname)
 
-proc themeChanged*(self: Control): Error =
+proc call_themeChanged*(self: Control): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("theme_changed")

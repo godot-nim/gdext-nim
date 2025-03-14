@@ -349,7 +349,3 @@ proc removeItem*(self: NativeMenu; rid: RID; idx: int32): void =
 proc clear*(self: NativeMenu; rid: RID): void =
   expandMethodBind(className NativeMenu, "clear", 2722037293)
   methodbind.ptrcall(self, [getPtr rid])
-
-const NativeMenu_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NativeMenu]): Table[string, string] = NativeMenu_vmap

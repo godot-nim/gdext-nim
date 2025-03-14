@@ -25,7 +25,3 @@ proc finish*(self: StreamPeerGZIP): Error =
 proc clear*(self: StreamPeerGZIP): void =
   expandMethodBind(className StreamPeerGZIP, "clear", 3218959716)
   methodbind.ptrcall(self, [])
-
-const StreamPeerGZIP_vmap =
-  StreamPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StreamPeerGZIP]): Table[string, string] = StreamPeerGZIP_vmap

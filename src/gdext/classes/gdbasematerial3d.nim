@@ -1034,7 +1034,3 @@ template `distanceFadeMinDistance=`*(self: BaseMaterial3D; value) = self.setDist
 
 template distanceFadeMaxDistance*(self: BaseMaterial3D): untyped = self.getDistanceFadeMaxDistance()
 template `distanceFadeMaxDistance=`*(self: BaseMaterial3D; value) = self.setDistanceFadeMaxDistance(value)
-
-const BaseMaterial3D_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BaseMaterial3D]): Table[string, string] = BaseMaterial3D_vmap

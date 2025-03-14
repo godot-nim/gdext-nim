@@ -395,7 +395,3 @@ template `structuredTextBidiOverride=`*(self: Label3D; value) = self.setStructur
 
 template structuredTextBidiOverrideOptions*(self: Label3D): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: Label3D; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-const Label3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Label3D]): Table[string, string] = Label3D_vmap

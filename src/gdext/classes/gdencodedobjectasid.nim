@@ -16,7 +16,3 @@ proc getObjectId*(self: EncodedObjectAsID): uint64 =
 
 template objectId*(self: EncodedObjectAsID): untyped = self.getObjectId()
 template `objectId=`*(self: EncodedObjectAsID; value) = self.setObjectId(value)
-
-const EncodedObjectAsID_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EncodedObjectAsID]): Table[string, string] = EncodedObjectAsID_vmap

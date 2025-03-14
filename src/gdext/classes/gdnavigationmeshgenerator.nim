@@ -19,7 +19,3 @@ proc parseSourceGeometryData*(self: NavigationMeshGenerator; navigationMesh: gdr
 proc bakeFromSourceGeometryData*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh; sourceGeometryData: gdref NavigationMeshSourceGeometryData3D; callback: Callable = callable()): void =
   expandMethodBind(className NavigationMeshGenerator, "bake_from_source_geometry_data", 1286748856)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr sourceGeometryData, getPtr callback])
-
-const NavigationMeshGenerator_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationMeshGenerator]): Table[string, string] = NavigationMeshGenerator_vmap

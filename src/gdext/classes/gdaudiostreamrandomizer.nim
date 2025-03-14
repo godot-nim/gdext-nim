@@ -87,7 +87,3 @@ template `randomVolumeOffsetDb=`*(self: AudioStreamRandomizer; value) = self.set
 
 template streamsCount*(self: AudioStreamRandomizer): untyped = self.getStreamsCount()
 template `streamsCount=`*(self: AudioStreamRandomizer; value) = self.setStreamsCount(value)
-
-const AudioStreamRandomizer_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamRandomizer]): Table[string, string] = AudioStreamRandomizer_vmap

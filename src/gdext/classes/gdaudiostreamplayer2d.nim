@@ -216,11 +216,7 @@ template `areaMask=`*(self: AudioStreamPlayer2D; value) = self.setAreaMask(value
 template playbackType*(self: AudioStreamPlayer2D): untyped = self.getPlaybackType()
 template `playbackType=`*(self: AudioStreamPlayer2D; value) = self.setPlaybackType(value)
 
-const AudioStreamPlayer2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlayer2D]): Table[string, string] = AudioStreamPlayer2D_vmap
-
-proc finished*(self: AudioStreamPlayer2D): Error =
+proc call_finished*(self: AudioStreamPlayer2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

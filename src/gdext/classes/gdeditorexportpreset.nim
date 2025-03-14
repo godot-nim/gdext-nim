@@ -147,7 +147,3 @@ proc getVersion*(self: EditorExportPreset; name: StringName; windowsVersion: boo
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr name, getPtr windowsVersion], addr ret)
   (addr ret).decode_result(String)
-
-const EditorExportPreset_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorExportPreset]): Table[string, string] = EditorExportPreset_vmap

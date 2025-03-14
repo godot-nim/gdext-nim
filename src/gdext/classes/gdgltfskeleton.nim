@@ -73,7 +73,3 @@ template `uniqueNames=`*(self: GLTFSkeleton; value) = self.setUniqueNames(value)
 
 template godotBoneNode*(self: GLTFSkeleton): untyped = self.getGodotBoneNode()
 template `godotBoneNode=`*(self: GLTFSkeleton; value) = self.setGodotBoneNode(value)
-
-const GLTFSkeleton_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFSkeleton]): Table[string, string] = GLTFSkeleton_vmap

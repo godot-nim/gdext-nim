@@ -37,7 +37,3 @@ proc getSkips*(self: AudioStreamGeneratorPlayback): int32 =
 proc clearBuffer*(self: AudioStreamGeneratorPlayback): void =
   expandMethodBind(className AudioStreamGeneratorPlayback, "clear_buffer", 3218959716)
   methodbind.ptrcall(self, [])
-
-const AudioStreamGeneratorPlayback_vmap =
-  AudioStreamPlaybackResampled.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamGeneratorPlayback]): Table[string, string] = AudioStreamGeneratorPlayback_vmap

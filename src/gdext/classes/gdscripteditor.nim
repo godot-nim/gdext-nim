@@ -40,11 +40,11 @@ proc getCurrentScript*(self: ScriptEditor): gdref Script =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Script)
 
-proc getOpenScripts*(self: ScriptEditor): TypedArray[Script] =
+proc getOpenScripts*(self: ScriptEditor): TypedArray[gdref Script] =
   expandMethodBind(className ScriptEditor, "get_open_scripts", 3995934104)
-  var ret: encoded TypedArray[Script]
+  var ret: encoded TypedArray[gdref Script]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Script])
+  (addr ret).decode_result(TypedArray[gdref Script])
 
 proc openScriptCreateDialog*(self: ScriptEditor; baseName: String; basePath: String): void =
   expandMethodBind(className ScriptEditor, "open_script_create_dialog", 3186203200)
@@ -58,18 +58,14 @@ proc updateDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
   expandMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
   methodbind.ptrcall(self, [getPtr script])
 
-const ScriptEditor_vmap =
-  PanelContainer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ScriptEditor]): Table[string, string] = ScriptEditor_vmap
-
-proc editorScriptChanged*(self: ScriptEditor; script: Variant): Error =
+proc call_editorScriptChanged*(self: ScriptEditor; script: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("editor_script_changed")
   let args = [script]
   self.emitSignal(signalname, args)
 
-proc scriptClose*(self: ScriptEditor; script: Variant): Error =
+proc call_scriptClose*(self: ScriptEditor; script: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("script_close")

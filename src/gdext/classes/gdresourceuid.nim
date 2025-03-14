@@ -45,7 +45,3 @@ proc getIdPath*(self: ResourceUID; id: int64): String =
 proc removeId*(self: ResourceUID; id: int64): void =
   expandMethodBind(className ResourceUID, "remove_id", 1286410249)
   methodbind.ptrcall(self, [getPtr id])
-
-const ResourceUID_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceUID]): Table[string, string] = ResourceUID_vmap

@@ -68,7 +68,3 @@ template `preserveAttachments=`*(self: RDFramebufferPass; value) = self.setPrese
 
 template depthAttachment*(self: RDFramebufferPass): untyped = self.getDepthAttachment()
 template `depthAttachment=`*(self: RDFramebufferPass; value) = self.setDepthAttachment(value)
-
-const RDFramebufferPass_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDFramebufferPass]): Table[string, string] = RDFramebufferPass_vmap

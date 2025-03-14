@@ -23,17 +23,13 @@ proc isOnScreen*(self: VisibleOnScreenNotifier2D): bool =
 template rect*(self: VisibleOnScreenNotifier2D): untyped = self.getRect()
 template `rect=`*(self: VisibleOnScreenNotifier2D; value) = self.setRect(value)
 
-const VisibleOnScreenNotifier2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisibleOnScreenNotifier2D]): Table[string, string] = VisibleOnScreenNotifier2D_vmap
-
-proc screenEntered*(self: VisibleOnScreenNotifier2D): Error =
+proc call_screenEntered*(self: VisibleOnScreenNotifier2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("screen_entered")
   self.emitSignal(signalname)
 
-proc screenExited*(self: VisibleOnScreenNotifier2D): Error =
+proc call_screenExited*(self: VisibleOnScreenNotifier2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("screen_exited")

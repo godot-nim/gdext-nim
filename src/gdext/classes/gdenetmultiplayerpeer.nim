@@ -45,7 +45,3 @@ proc getPeer*(self: ENetMultiplayerPeer; id: int32): gdref ENetPacketPeer =
   (addr ret).decode_result(gdref ENetPacketPeer)
 
 template host*(self: ENetMultiplayerPeer): untyped = self.getHost()
-
-const ENetMultiplayerPeer_vmap =
-  MultiplayerPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ENetMultiplayerPeer]): Table[string, string] = ENetMultiplayerPeer_vmap

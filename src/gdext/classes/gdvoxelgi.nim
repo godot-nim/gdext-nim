@@ -63,7 +63,3 @@ template `cameraAttributes=`*(self: VoxelGI; value) = self.setCameraAttributes(v
 
 template data*(self: VoxelGI): untyped = self.getProbeData()
 template `data=`*(self: VoxelGI; value) = self.setProbeData(value)
-
-const VoxelGI_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VoxelGI]): Table[string, string] = VoxelGI_vmap

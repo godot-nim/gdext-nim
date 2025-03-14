@@ -72,7 +72,3 @@ template `boneIdx=`*(self: BoneAttachment3D; value) = self.setBoneIdx(value)
 
 template overridePose*(self: BoneAttachment3D): untyped = self.getOverridePose()
 template `overridePose=`*(self: BoneAttachment3D; value) = self.setOverridePose(value)
-
-const BoneAttachment3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BoneAttachment3D]): Table[string, string] = BoneAttachment3D_vmap

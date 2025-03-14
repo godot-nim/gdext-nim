@@ -45,7 +45,3 @@ proc setDelay*(self: PropertyTweener; delay: float64): gdref PropertyTweener =
   var ret: encoded gdref PropertyTweener
   methodbind.ptrcall(self, [getPtr delay], addr ret)
   (addr ret).decode_result(gdref PropertyTweener)
-
-const PropertyTweener_vmap =
-  Tweener.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PropertyTweener]): Table[string, string] = PropertyTweener_vmap

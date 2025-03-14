@@ -164,7 +164,3 @@ template `collideWithAreas=`*(self: RayCast2D; value) = self.setCollideWithAreas
 
 template collideWithBodies*(self: RayCast2D): untyped = self.isCollideWithBodiesEnabled()
 template `collideWithBodies=`*(self: RayCast2D; value) = self.setCollideWithBodies(value)
-
-const RayCast2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RayCast2D]): Table[string, string] = RayCast2D_vmap

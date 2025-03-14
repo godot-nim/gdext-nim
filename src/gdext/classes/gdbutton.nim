@@ -159,7 +159,3 @@ template `textDirection=`*(self: Button; value) = self.setTextDirection(value)
 
 template language*(self: Button): untyped = self.getLanguage()
 template `language=`*(self: Button; value) = self.setLanguage(value)
-
-const Button_vmap =
-  BaseButton.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Button]): Table[string, string] = Button_vmap

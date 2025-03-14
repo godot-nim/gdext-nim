@@ -42,7 +42,3 @@ template `oversampling=`*(self: AudioEffectPitchShift; value) = self.setOversamp
 
 template fftSize*(self: AudioEffectPitchShift): untyped = self.getFftSize()
 template `fftSize=`*(self: AudioEffectPitchShift; value) = self.setFftSize(value)
-
-const AudioEffectPitchShift_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectPitchShift]): Table[string, string] = AudioEffectPitchShift_vmap

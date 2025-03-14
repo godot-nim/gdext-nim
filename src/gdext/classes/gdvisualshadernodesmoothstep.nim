@@ -16,7 +16,3 @@ proc getOpType*(self: VisualShaderNodeSmoothStep): VisualShaderNodeSmoothStep_Op
 
 template opType*(self: VisualShaderNodeSmoothStep): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeSmoothStep; value) = self.setOpType(value)
-
-const VisualShaderNodeSmoothStep_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeSmoothStep]): Table[string, string] = VisualShaderNodeSmoothStep_vmap

@@ -15,7 +15,3 @@ proc getException*(self: JavaClassWrapper): gdref JavaObject =
   var ret: encoded gdref JavaObject
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref JavaObject)
-
-const JavaClassWrapper_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JavaClassWrapper]): Table[string, string] = JavaClassWrapper_vmap

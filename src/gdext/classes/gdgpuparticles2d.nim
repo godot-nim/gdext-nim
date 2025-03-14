@@ -364,11 +364,7 @@ template `trailSectionSubdivisions=`*(self: GPUParticles2D; value) = self.setTra
 template processMaterial*(self: GPUParticles2D): untyped = self.getProcessMaterial()
 template `processMaterial=`*(self: GPUParticles2D; value) = self.setProcessMaterial(value)
 
-const GPUParticles2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticles2D]): Table[string, string] = GPUParticles2D_vmap
-
-proc finished*(self: GPUParticles2D): Error =
+proc call_finished*(self: GPUParticles2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

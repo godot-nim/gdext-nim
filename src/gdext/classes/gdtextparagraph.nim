@@ -344,7 +344,3 @@ template `maxLinesVisible=`*(self: TextParagraph; value) = self.setMaxLinesVisib
 
 template lineSpacing*(self: TextParagraph): untyped = self.getLineSpacing()
 template `lineSpacing=`*(self: TextParagraph; value) = self.setLineSpacing(value)
-
-const TextParagraph_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextParagraph]): Table[string, string] = TextParagraph_vmap

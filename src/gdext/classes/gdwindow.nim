@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdviewport; export gdviewport
 
 method getContentsMinimumSize*(self: Window): Vector2 {.base.} = (discard)
-proc getContentsMinimumSize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Window](p_instance).getContentsMinimumSize().encode(r_ret)
-template getContentsMinimumSize_bind*(_: typedesc[Window]): ClassCallVirtual = getContentsMinimumSize
+proc registerVirtual_getContentsMinimumSize*[T: Window](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contents_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Window](p_instance).getContentsMinimumSize().encode(r_ret)
 
 proc setTitle*(self: Window; title: String): void =
   expandMethodBind(className Window, "set_title", 83702148)
@@ -415,37 +415,37 @@ proc removeThemeConstantOverride*(self: Window; name: StringName): void =
   expandMethodBind(className Window, "remove_theme_constant_override", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
-proc getThemeIcon*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref Texture2D =
+proc getThemeIcon*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref Texture2D =
   expandMethodBind(className Window, "get_theme_icon", 3163973443)
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
-proc getThemeStylebox*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref StyleBox =
+proc getThemeStylebox*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref StyleBox =
   expandMethodBind(className Window, "get_theme_stylebox", 604739069)
   var ret: encoded gdref StyleBox
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref StyleBox)
 
-proc getThemeFont*(self: Window; name: StringName; themeType: StringName = stringName ""): gdref Font =
+proc getThemeFont*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref Font =
   expandMethodBind(className Window, "get_theme_font", 2826986490)
   var ret: encoded gdref Font
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(gdref Font)
 
-proc getThemeFontSize*(self: Window; name: StringName; themeType: StringName = stringName ""): int32 =
+proc getThemeFontSize*(self: Window; name: StringName; themeType: StringName = default(StringName)): int32 =
   expandMethodBind(className Window, "get_theme_font_size", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(int32)
 
-proc getThemeColor*(self: Window; name: StringName; themeType: StringName = stringName ""): Color =
+proc getThemeColor*(self: Window; name: StringName; themeType: StringName = default(StringName)): Color =
   expandMethodBind(className Window, "get_theme_color", 2798751242)
   var ret: encoded Color
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(Color)
 
-proc getThemeConstant*(self: Window; name: StringName; themeType: StringName = stringName ""): int32 =
+proc getThemeConstant*(self: Window; name: StringName; themeType: StringName = default(StringName)): int32 =
   expandMethodBind(className Window, "get_theme_constant", 1327056374)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
@@ -487,37 +487,37 @@ proc hasThemeConstantOverride*(self: Window; name: StringName): bool =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeIcon*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeIcon*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_icon", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeStylebox*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeStylebox*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_stylebox", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeFont*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeFont*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_font", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeFontSize*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeFontSize*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_font_size", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeColor*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeColor*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_color", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
   (addr ret).decode_result(bool)
 
-proc hasThemeConstant*(self: Window; name: StringName; themeType: StringName = stringName ""): bool =
+proc hasThemeConstant*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
   expandMethodBind(className Window, "has_theme_constant", 866386512)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
@@ -709,93 +709,87 @@ template `theme=`*(self: Window; value) = self.setTheme(value)
 template themeTypeVariation*(self: Window): untyped = self.getThemeTypeVariation()
 template `themeTypeVariation=`*(self: Window; value) = self.setThemeTypeVariation(value)
 
-const Window_vmap =
-  Viewport.vmap.concat toTable {
-    "getcontentsminimumsize" : "_get_contents_minimum_size",
-    }
-template vmap*(_: typedesc[Window]): Table[string, string] = Window_vmap
-
-proc windowInput*(self: Window; event: Variant): Error =
+proc call_windowInput*(self: Window; event: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("window_input")
   let args = [event]
   self.emitSignal(signalname, args)
 
-proc filesDropped*(self: Window; files: Variant): Error =
+proc call_filesDropped*(self: Window; files: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("files_dropped")
   let args = [files]
   self.emitSignal(signalname, args)
 
-proc mouseEntered*(self: Window): Error =
+proc call_mouseEntered*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_entered")
   self.emitSignal(signalname)
 
-proc mouseExited*(self: Window): Error =
+proc call_mouseExited*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_exited")
   self.emitSignal(signalname)
 
-proc focusEntered*(self: Window): Error =
+proc call_focusEntered*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("focus_entered")
   self.emitSignal(signalname)
 
-proc focusExited*(self: Window): Error =
+proc call_focusExited*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("focus_exited")
   self.emitSignal(signalname)
 
-proc closeRequested*(self: Window): Error =
+proc call_closeRequested*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("close_requested")
   self.emitSignal(signalname)
 
-proc goBackRequested*(self: Window): Error =
+proc call_goBackRequested*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("go_back_requested")
   self.emitSignal(signalname)
 
-proc visibilityChanged*(self: Window): Error =
+proc call_visibilityChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_changed")
   self.emitSignal(signalname)
 
-proc aboutToPopup*(self: Window): Error =
+proc call_aboutToPopup*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("about_to_popup")
   self.emitSignal(signalname)
 
-proc themeChanged*(self: Window): Error =
+proc call_themeChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("theme_changed")
   self.emitSignal(signalname)
 
-proc dpiChanged*(self: Window): Error =
+proc call_dpiChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("dpi_changed")
   self.emitSignal(signalname)
 
-proc titlebarChanged*(self: Window): Error =
+proc call_titlebarChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("titlebar_changed")
   self.emitSignal(signalname)
 
-proc titleChanged*(self: Window): Error =
+proc call_titleChanged*(self: Window): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("title_changed")

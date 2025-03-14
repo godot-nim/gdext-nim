@@ -17,7 +17,3 @@ proc getCurrentClipIndex*(self: AudioStreamPlaybackInteractive): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const AudioStreamPlaybackInteractive_vmap =
-  AudioStreamPlayback.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlaybackInteractive]): Table[string, string] = AudioStreamPlaybackInteractive_vmap

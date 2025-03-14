@@ -62,11 +62,7 @@ proc forceFsSync*(self: JavaScriptBridge): void =
   expandMethodBind(className JavaScriptBridge, "force_fs_sync", 3218959716)
   methodbind.ptrcall(self, [])
 
-const JavaScriptBridge_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JavaScriptBridge]): Table[string, string] = JavaScriptBridge_vmap
-
-proc pwaUpdateAvailable*(self: JavaScriptBridge): Error =
+proc call_pwaUpdateAvailable*(self: JavaScriptBridge): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pwa_update_available")

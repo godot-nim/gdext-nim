@@ -42,7 +42,3 @@ template `shape=`*(self: FogVolume; value) = self.setShape(value)
 
 template material*(self: FogVolume): untyped = self.getMaterial()
 template `material=`*(self: FogVolume; value) = self.setMaterial(value)
-
-const FogVolume_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FogVolume]): Table[string, string] = FogVolume_vmap

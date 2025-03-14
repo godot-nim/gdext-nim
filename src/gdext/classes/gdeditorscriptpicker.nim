@@ -16,7 +16,3 @@ proc getScriptOwner*(self: EditorScriptPicker): Node =
 
 template scriptOwner*(self: EditorScriptPicker): untyped = self.getScriptOwner()
 template `scriptOwner=`*(self: EditorScriptPicker; value) = self.setScriptOwner(value)
-
-const EditorScriptPicker_vmap =
-  EditorResourcePicker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorScriptPicker]): Table[string, string] = EditorScriptPicker_vmap

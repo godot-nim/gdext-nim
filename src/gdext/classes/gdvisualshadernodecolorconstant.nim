@@ -16,7 +16,3 @@ proc getConstant*(self: VisualShaderNodeColorConstant): Color =
 
 template constant*(self: VisualShaderNodeColorConstant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeColorConstant; value) = self.setConstant(value)
-
-const VisualShaderNodeColorConstant_vmap =
-  VisualShaderNodeConstant.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeColorConstant]): Table[string, string] = VisualShaderNodeColorConstant_vmap

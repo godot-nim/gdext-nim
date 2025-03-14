@@ -63,7 +63,3 @@ proc getFlagZ*(self: Generic6DOFJoint3D; flag: Generic6DOFJoint3D_Flag): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr flag], addr ret)
   (addr ret).decode_result(bool)
-
-const Generic6DOFJoint3D_vmap =
-  Joint3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Generic6DOFJoint3D]): Table[string, string] = Generic6DOFJoint3D_vmap

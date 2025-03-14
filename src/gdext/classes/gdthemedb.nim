@@ -81,11 +81,7 @@ template `fallbackIcon=`*(self: ThemeDB; value) = self.setFallbackIcon(value)
 template fallbackStylebox*(self: ThemeDB): untyped = self.getFallbackStylebox()
 template `fallbackStylebox=`*(self: ThemeDB; value) = self.setFallbackStylebox(value)
 
-const ThemeDB_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ThemeDB]): Table[string, string] = ThemeDB_vmap
-
-proc fallbackChanged*(self: ThemeDB): Error =
+proc call_fallbackChanged*(self: ThemeDB): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("fallback_changed")

@@ -55,7 +55,3 @@ template `softClipDb=`*(self: AudioEffectLimiter; value) = self.setSoftClipDb(va
 
 template softClipRatio*(self: AudioEffectLimiter): untyped = self.getSoftClipRatio()
 template `softClipRatio=`*(self: AudioEffectLimiter; value) = self.setSoftClipRatio(value)
-
-const AudioEffectLimiter_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectLimiter]): Table[string, string] = AudioEffectLimiter_vmap

@@ -87,7 +87,3 @@ template `angularVelocity=`*(self: XRPose; value) = self.setAngularVelocity(valu
 
 template trackingConfidence*(self: XRPose): untyped = self.getTrackingConfidence()
 template `trackingConfidence=`*(self: XRPose; value) = self.setTrackingConfidence(value)
-
-const XRPose_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRPose]): Table[string, string] = XRPose_vmap

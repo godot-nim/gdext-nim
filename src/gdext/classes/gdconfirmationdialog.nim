@@ -22,7 +22,3 @@ proc getCancelButtonText*(self: ConfirmationDialog): String =
 
 template cancelButtonText*(self: ConfirmationDialog): untyped = self.getCancelButtonText()
 template `cancelButtonText=`*(self: ConfirmationDialog; value) = self.setCancelButtonText(value)
-
-const ConfirmationDialog_vmap =
-  AcceptDialog.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConfirmationDialog]): Table[string, string] = ConfirmationDialog_vmap

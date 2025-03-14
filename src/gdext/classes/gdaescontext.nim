@@ -25,7 +25,3 @@ proc getIvState*(self: AESContext): PackedByteArray =
 proc finish*(self: AESContext): void =
   expandMethodBind(className AESContext, "finish", 3218959716)
   methodbind.ptrcall(self, [])
-
-const AESContext_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AESContext]): Table[string, string] = AESContext_vmap

@@ -81,7 +81,3 @@ template `sectionSegments=`*(self: RibbonTrailMesh; value) = self.setSectionSegm
 
 template curve*(self: RibbonTrailMesh): untyped = self.getCurve()
 template `curve=`*(self: RibbonTrailMesh; value) = self.setCurve(value)
-
-const RibbonTrailMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RibbonTrailMesh]): Table[string, string] = RibbonTrailMesh_vmap

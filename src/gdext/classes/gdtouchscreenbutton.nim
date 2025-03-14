@@ -127,17 +127,13 @@ template `action=`*(self: TouchScreenButton; value) = self.setAction(value)
 template visibilityMode*(self: TouchScreenButton): untyped = self.getVisibilityMode()
 template `visibilityMode=`*(self: TouchScreenButton; value) = self.setVisibilityMode(value)
 
-const TouchScreenButton_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TouchScreenButton]): Table[string, string] = TouchScreenButton_vmap
-
-proc pressed*(self: TouchScreenButton): Error =
+proc call_pressed*(self: TouchScreenButton): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pressed")
   self.emitSignal(signalname)
 
-proc released*(self: TouchScreenButton): Error =
+proc call_released*(self: TouchScreenButton): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("released")

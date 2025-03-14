@@ -220,32 +220,28 @@ template `showHiddenFiles=`*(self: EditorFileDialog; value) = self.setShowHidden
 template disableOverwriteWarning*(self: EditorFileDialog): untyped = self.isOverwriteWarningDisabled()
 template `disableOverwriteWarning=`*(self: EditorFileDialog; value) = self.setDisableOverwriteWarning(value)
 
-const EditorFileDialog_vmap =
-  ConfirmationDialog.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorFileDialog]): Table[string, string] = EditorFileDialog_vmap
-
-proc fileSelected*(self: EditorFileDialog; path: Variant): Error =
+proc call_fileSelected*(self: EditorFileDialog; path: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("file_selected")
   let args = [path]
   self.emitSignal(signalname, args)
 
-proc filesSelected*(self: EditorFileDialog; paths: Variant): Error =
+proc call_filesSelected*(self: EditorFileDialog; paths: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("files_selected")
   let args = [paths]
   self.emitSignal(signalname, args)
 
-proc dirSelected*(self: EditorFileDialog; dir: Variant): Error =
+proc call_dirSelected*(self: EditorFileDialog; dir: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("dir_selected")
   let args = [dir]
   self.emitSignal(signalname, args)
 
-proc filenameFilterChanged*(self: EditorFileDialog; filter: Variant): Error =
+proc call_filenameFilterChanged*(self: EditorFileDialog; filter: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("filename_filter_changed")

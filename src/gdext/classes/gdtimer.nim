@@ -104,11 +104,7 @@ template `ignoreTimeScale=`*(self: Timer; value) = self.setIgnoreTimeScale(value
 
 template timeLeft*(self: Timer): untyped = self.getTimeLeft()
 
-const Timer_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Timer]): Table[string, string] = Timer_vmap
-
-proc timeout*(self: Timer): Error =
+proc call_timeout*(self: Timer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("timeout")

@@ -29,7 +29,3 @@ template `originalClass=`*(self: MissingResource; value) = self.setOriginalClass
 
 template recordingProperties*(self: MissingResource): untyped = self.isRecordingProperties()
 template `recordingProperties=`*(self: MissingResource; value) = self.setRecordingProperties(value)
-
-const MissingResource_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MissingResource]): Table[string, string] = MissingResource_vmap

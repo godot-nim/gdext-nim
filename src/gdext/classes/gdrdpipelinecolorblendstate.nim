@@ -34,15 +34,15 @@ proc getBlendConstant*(self: RDPipelineColorBlendState): Color =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
-proc setAttachments*(self: RDPipelineColorBlendState; attachments: TypedArray[RDPipelineColorBlendStateAttachment]): void =
+proc setAttachments*(self: RDPipelineColorBlendState; attachments: TypedArray[gdref RDPipelineColorBlendStateAttachment]): void =
   expandMethodBind(className RDPipelineColorBlendState, "set_attachments", 381264803)
   methodbind.ptrcall(self, [getPtr attachments])
 
-proc getAttachments*(self: RDPipelineColorBlendState): TypedArray[RDPipelineColorBlendStateAttachment] =
+proc getAttachments*(self: RDPipelineColorBlendState): TypedArray[gdref RDPipelineColorBlendStateAttachment] =
   expandMethodBind(className RDPipelineColorBlendState, "get_attachments", 3995934104)
-  var ret: encoded TypedArray[RDPipelineColorBlendStateAttachment]
+  var ret: encoded TypedArray[gdref RDPipelineColorBlendStateAttachment]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RDPipelineColorBlendStateAttachment])
+  (addr ret).decode_result(TypedArray[gdref RDPipelineColorBlendStateAttachment])
 
 template enableLogicOp*(self: RDPipelineColorBlendState): untyped = self.getEnableLogicOp()
 template `enableLogicOp=`*(self: RDPipelineColorBlendState; value) = self.setEnableLogicOp(value)
@@ -55,7 +55,3 @@ template `blendConstant=`*(self: RDPipelineColorBlendState; value) = self.setBle
 
 template attachments*(self: RDPipelineColorBlendState): untyped = self.getAttachments()
 template `attachments=`*(self: RDPipelineColorBlendState; value) = self.setAttachments(value)
-
-const RDPipelineColorBlendState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineColorBlendState]): Table[string, string] = RDPipelineColorBlendState_vmap

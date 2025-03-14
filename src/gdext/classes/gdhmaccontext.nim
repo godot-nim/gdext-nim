@@ -21,7 +21,3 @@ proc finish*(self: HMACContext): PackedByteArray =
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedByteArray)
-
-const HMACContext_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HMACContext]): Table[string, string] = HMACContext_vmap

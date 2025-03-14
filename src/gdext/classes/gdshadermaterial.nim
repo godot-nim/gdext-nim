@@ -26,7 +26,3 @@ proc getShaderParameter*(self: ShaderMaterial; param: StringName): Variant =
 
 template shader*(self: ShaderMaterial): untyped = self.getShader()
 template `shader=`*(self: ShaderMaterial; value) = self.setShader(value)
-
-const ShaderMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ShaderMaterial]): Table[string, string] = ShaderMaterial_vmap

@@ -305,11 +305,7 @@ template `terrain=`*(self: TileData; value) = self.setTerrain(value)
 template probability*(self: TileData): untyped = self.getProbability()
 template `probability=`*(self: TileData; value) = self.setProbability(value)
 
-const TileData_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileData]): Table[string, string] = TileData_vmap
-
-proc changed*(self: TileData): Error =
+proc call_changed*(self: TileData): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("changed")

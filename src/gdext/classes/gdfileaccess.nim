@@ -356,7 +356,3 @@ proc getReadOnlyAttribute*(_: typedesc[FileAccess]; file: String): bool =
 
 template bigEndian*(self: FileAccess): untyped = self.isBigEndian()
 template `bigEndian=`*(self: FileAccess; value) = self.setBigEndian(value)
-
-const FileAccess_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FileAccess]): Table[string, string] = FileAccess_vmap

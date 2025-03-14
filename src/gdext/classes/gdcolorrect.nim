@@ -16,7 +16,3 @@ proc getColor*(self: ColorRect): Color =
 
 template color*(self: ColorRect): untyped = self.getColor()
 template `color=`*(self: ColorRect; value) = self.setColor(value)
-
-const ColorRect_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ColorRect]): Table[string, string] = ColorRect_vmap

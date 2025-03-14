@@ -603,7 +603,3 @@ template `disableFolding=`*(self: TreeItem; value) = self.setDisableFolding(valu
 
 template customMinimumHeight*(self: TreeItem): untyped = self.getCustomMinimumHeight()
 template `customMinimumHeight=`*(self: TreeItem; value) = self.setCustomMinimumHeight(value)
-
-const TreeItem_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TreeItem]): Table[string, string] = TreeItem_vmap

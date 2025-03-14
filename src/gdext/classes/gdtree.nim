@@ -369,104 +369,100 @@ template `scrollVerticalEnabled=`*(self: Tree; value) = self.setVScrollEnabled(v
 template autoTooltip*(self: Tree): untyped = self.isAutoTooltipEnabled()
 template `autoTooltip=`*(self: Tree; value) = self.setAutoTooltip(value)
 
-const Tree_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Tree]): Table[string, string] = Tree_vmap
-
-proc itemSelected*(self: Tree): Error =
+proc call_itemSelected*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_selected")
   self.emitSignal(signalname)
 
-proc cellSelected*(self: Tree): Error =
+proc call_cellSelected*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("cell_selected")
   self.emitSignal(signalname)
 
-proc multiSelected*(self: Tree; item: Variant; column: Variant; selected: Variant): Error =
+proc call_multiSelected*(self: Tree; item: Variant; column: Variant; selected: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("multi_selected")
   let args = [item, column, selected]
   self.emitSignal(signalname, args)
 
-proc itemMouseSelected*(self: Tree; mousePosition: Variant; mouseButtonIndex: Variant): Error =
+proc call_itemMouseSelected*(self: Tree; mousePosition: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_mouse_selected")
   let args = [mousePosition, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc emptyClicked*(self: Tree; clickPosition: Variant; mouseButtonIndex: Variant): Error =
+proc call_emptyClicked*(self: Tree; clickPosition: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("empty_clicked")
   let args = [clickPosition, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc itemEdited*(self: Tree): Error =
+proc call_itemEdited*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_edited")
   self.emitSignal(signalname)
 
-proc customItemClicked*(self: Tree; mouseButtonIndex: Variant): Error =
+proc call_customItemClicked*(self: Tree; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("custom_item_clicked")
   let args = [mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc itemIconDoubleClicked*(self: Tree): Error =
+proc call_itemIconDoubleClicked*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_icon_double_clicked")
   self.emitSignal(signalname)
 
-proc itemCollapsed*(self: Tree; item: Variant): Error =
+proc call_itemCollapsed*(self: Tree; item: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_collapsed")
   let args = [item]
   self.emitSignal(signalname, args)
 
-proc checkPropagatedToItem*(self: Tree; item: Variant; column: Variant): Error =
+proc call_checkPropagatedToItem*(self: Tree; item: Variant; column: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("check_propagated_to_item")
   let args = [item, column]
   self.emitSignal(signalname, args)
 
-proc buttonClicked*(self: Tree; item: Variant; column: Variant; id: Variant; mouseButtonIndex: Variant): Error =
+proc call_buttonClicked*(self: Tree; item: Variant; column: Variant; id: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("button_clicked")
   let args = [item, column, id, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc customPopupEdited*(self: Tree; arrowClicked: Variant): Error =
+proc call_customPopupEdited*(self: Tree; arrowClicked: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("custom_popup_edited")
   let args = [arrowClicked]
   self.emitSignal(signalname, args)
 
-proc itemActivated*(self: Tree): Error =
+proc call_itemActivated*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_activated")
   self.emitSignal(signalname)
 
-proc columnTitleClicked*(self: Tree; column: Variant; mouseButtonIndex: Variant): Error =
+proc call_columnTitleClicked*(self: Tree; column: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("column_title_clicked")
   let args = [column, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc nothingSelected*(self: Tree): Error =
+proc call_nothingSelected*(self: Tree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("nothing_selected")

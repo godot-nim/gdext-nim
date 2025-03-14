@@ -35,7 +35,3 @@ proc getStream*(self: StreamPeerTLS): gdref StreamPeer =
 proc disconnectFromStream*(self: StreamPeerTLS): void =
   expandMethodBind(className StreamPeerTLS, "disconnect_from_stream", 3218959716)
   methodbind.ptrcall(self, [])
-
-const StreamPeerTLS_vmap =
-  StreamPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StreamPeerTLS]): Table[string, string] = StreamPeerTLS_vmap

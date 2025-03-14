@@ -1,7 +1,3 @@
-{.warning[UnusedImport]:off.}
-
-import gdext/coronation/header/utilityfuncs
-
 # `sin(Float)`
 # `cos(Float)`
 # `tan(Float)`

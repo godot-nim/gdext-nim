@@ -39,7 +39,3 @@ proc hasAlternativeTile*(self: TileSetSource; atlasCoords: Vector2i; alternative
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr atlasCoords, getPtr alternativeTile], addr ret)
   (addr ret).decode_result(bool)
-
-const TileSetSource_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileSetSource]): Table[string, string] = TileSetSource_vmap

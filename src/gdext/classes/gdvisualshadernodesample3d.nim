@@ -16,7 +16,3 @@ proc getSource*(self: VisualShaderNodeSample3D): VisualShaderNodeSample3D_Source
 
 template source*(self: VisualShaderNodeSample3D): untyped = self.getSource()
 template `source=`*(self: VisualShaderNodeSample3D; value) = self.setSource(value)
-
-const VisualShaderNodeSample3D_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeSample3D]): Table[string, string] = VisualShaderNodeSample3D_vmap

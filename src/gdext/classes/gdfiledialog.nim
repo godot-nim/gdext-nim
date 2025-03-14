@@ -232,32 +232,28 @@ template `currentFile=`*(self: FileDialog; value) = self.setCurrentFile(value)
 template currentPath*(self: FileDialog): untyped = self.getCurrentPath()
 template `currentPath=`*(self: FileDialog; value) = self.setCurrentPath(value)
 
-const FileDialog_vmap =
-  ConfirmationDialog.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FileDialog]): Table[string, string] = FileDialog_vmap
-
-proc fileSelected*(self: FileDialog; path: Variant): Error =
+proc call_fileSelected*(self: FileDialog; path: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("file_selected")
   let args = [path]
   self.emitSignal(signalname, args)
 
-proc filesSelected*(self: FileDialog; paths: Variant): Error =
+proc call_filesSelected*(self: FileDialog; paths: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("files_selected")
   let args = [paths]
   self.emitSignal(signalname, args)
 
-proc dirSelected*(self: FileDialog; dir: Variant): Error =
+proc call_dirSelected*(self: FileDialog; dir: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("dir_selected")
   let args = [dir]
   self.emitSignal(signalname, args)
 
-proc filenameFilterChanged*(self: FileDialog; filter: Variant): Error =
+proc call_filenameFilterChanged*(self: FileDialog; filter: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("filename_filter_changed")

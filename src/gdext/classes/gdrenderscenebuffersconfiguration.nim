@@ -133,7 +133,3 @@ template `textureMipmapBias=`*(self: RenderSceneBuffersConfiguration; value) = s
 
 template anisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration): untyped = self.getAnisotropicFilteringLevel()
 template `anisotropicFilteringLevel=`*(self: RenderSceneBuffersConfiguration; value) = self.setAnisotropicFilteringLevel(value)
-
-const RenderSceneBuffersConfiguration_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderSceneBuffersConfiguration]): Table[string, string] = RenderSceneBuffersConfiguration_vmap

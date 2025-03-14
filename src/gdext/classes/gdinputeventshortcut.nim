@@ -16,7 +16,3 @@ proc getShortcut*(self: InputEventShortcut): gdref Shortcut =
 
 template shortcut*(self: InputEventShortcut): untyped = self.getShortcut()
 template `shortcut=`*(self: InputEventShortcut; value) = self.setShortcut(value)
-
-const InputEventShortcut_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventShortcut]): Table[string, string] = InputEventShortcut_vmap

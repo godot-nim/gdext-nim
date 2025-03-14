@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method instantiatePlayback*(self: VideoStream): gdref VideoStreamPlayback {.base.} = (discard)
-proc instantiatePlayback(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[VideoStream](p_instance).instantiatePlayback().encode(r_ret)
-template instantiatePlayback_bind*(_: typedesc[VideoStream]): ClassCallVirtual = instantiatePlayback
+proc registerVirtual_instantiatePlayback*[T: VideoStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[VideoStream](p_instance).instantiatePlayback().encode(r_ret)
 
 proc setFile*(self: VideoStream; file: String): void =
   expandMethodBind(className VideoStream, "set_file", 83702148)
@@ -21,9 +21,3 @@ proc getFile*(self: VideoStream): String =
 
 template file*(self: VideoStream): untyped = self.getFile()
 template `file=`*(self: VideoStream; value) = self.setFile(value)
-
-const VideoStream_vmap =
-  Resource.vmap.concat toTable {
-    "instantiateplayback" : "_instantiate_playback",
-    }
-template vmap*(_: typedesc[VideoStream]): Table[string, string] = VideoStream_vmap

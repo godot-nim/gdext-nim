@@ -56,7 +56,3 @@ template `priority=`*(self: OpenXRActionSet; value) = self.setPriority(value)
 
 template actions*(self: OpenXRActionSet): untyped = self.getActions()
 template `actions=`*(self: OpenXRActionSet; value) = self.setActions(value)
-
-const OpenXRActionSet_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRActionSet]): Table[string, string] = OpenXRActionSet_vmap

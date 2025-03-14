@@ -28,11 +28,7 @@ proc getTransformableSelectedNodes*(self: EditorSelection): TypedArray[Node] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Node])
 
-const EditorSelection_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorSelection]): Table[string, string] = EditorSelection_vmap
-
-proc selectionChanged*(self: EditorSelection): Error =
+proc call_selectionChanged*(self: EditorSelection): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("selection_changed")

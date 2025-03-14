@@ -26,7 +26,3 @@ proc setBlendShapes*(self: XRFaceTracker; weights: PackedFloat32Array): void =
 
 template blendShapes*(self: XRFaceTracker): untyped = self.getBlendShapes()
 template `blendShapes=`*(self: XRFaceTracker; value) = self.setBlendShapes(value)
-
-const XRFaceTracker_vmap =
-  XRTracker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRFaceTracker]): Table[string, string] = XRFaceTracker_vmap

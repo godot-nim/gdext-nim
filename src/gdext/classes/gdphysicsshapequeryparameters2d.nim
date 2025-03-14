@@ -120,7 +120,3 @@ template `collideWithBodies=`*(self: PhysicsShapeQueryParameters2D; value) = sel
 
 template collideWithAreas*(self: PhysicsShapeQueryParameters2D): untyped = self.isCollideWithAreasEnabled()
 template `collideWithAreas=`*(self: PhysicsShapeQueryParameters2D; value) = self.setCollideWithAreas(value)
-
-const PhysicsShapeQueryParameters2D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsShapeQueryParameters2D]): Table[string, string] = PhysicsShapeQueryParameters2D_vmap

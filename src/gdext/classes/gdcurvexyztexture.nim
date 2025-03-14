@@ -49,7 +49,3 @@ template `curveY=`*(self: CurveXYZTexture; value) = self.setCurveY(value)
 
 template curveZ*(self: CurveXYZTexture): untyped = self.getCurveZ()
 template `curveZ=`*(self: CurveXYZTexture; value) = self.setCurveZ(value)
-
-const CurveXYZTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CurveXYZTexture]): Table[string, string] = CurveXYZTexture_vmap

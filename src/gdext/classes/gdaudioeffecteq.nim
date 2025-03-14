@@ -19,7 +19,3 @@ proc getBandCount*(self: AudioEffectEQ): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const AudioEffectEQ_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectEQ]): Table[string, string] = AudioEffectEQ_vmap

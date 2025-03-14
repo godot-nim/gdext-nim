@@ -68,7 +68,3 @@ template `textureRepeat=`*(self: VisualShaderNodeTextureParameter; value) = self
 
 template textureSource*(self: VisualShaderNodeTextureParameter): untyped = self.getTextureSource()
 template `textureSource=`*(self: VisualShaderNodeTextureParameter; value) = self.setTextureSource(value)
-
-const VisualShaderNodeTextureParameter_vmap =
-  VisualShaderNodeParameter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTextureParameter]): Table[string, string] = VisualShaderNodeTextureParameter_vmap

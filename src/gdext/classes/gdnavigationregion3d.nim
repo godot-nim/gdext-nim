@@ -130,17 +130,13 @@ template `enterCost=`*(self: NavigationRegion3D; value) = self.setEnterCost(valu
 template travelCost*(self: NavigationRegion3D): untyped = self.getTravelCost()
 template `travelCost=`*(self: NavigationRegion3D; value) = self.setTravelCost(value)
 
-const NavigationRegion3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationRegion3D]): Table[string, string] = NavigationRegion3D_vmap
-
-proc navigationMeshChanged*(self: NavigationRegion3D): Error =
+proc call_navigationMeshChanged*(self: NavigationRegion3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("navigation_mesh_changed")
   self.emitSignal(signalname)
 
-proc bakeFinished*(self: NavigationRegion3D): Error =
+proc call_bakeFinished*(self: NavigationRegion3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("bake_finished")

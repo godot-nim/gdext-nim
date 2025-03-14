@@ -21,7 +21,3 @@ proc setEase*(self: MethodTweener; ease: Tween_EaseType): gdref MethodTweener =
   var ret: encoded gdref MethodTweener
   methodbind.ptrcall(self, [getPtr ease], addr ret)
   (addr ret).decode_result(gdref MethodTweener)
-
-const MethodTweener_vmap =
-  Tweener.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MethodTweener]): Table[string, string] = MethodTweener_vmap

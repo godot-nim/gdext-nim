@@ -213,7 +213,3 @@ template `roundPrecision=`*(self: Line2D; value) = self.setRoundPrecision(value)
 
 template antialiased*(self: Line2D): untyped = self.getAntialiased()
 template `antialiased=`*(self: Line2D; value) = self.setAntialiased(value)
-
-const Line2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Line2D]): Table[string, string] = Line2D_vmap

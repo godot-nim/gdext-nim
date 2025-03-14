@@ -42,7 +42,3 @@ template `filter=`*(self: PanoramaSkyMaterial; value) = self.setFilteringEnabled
 
 template energyMultiplier*(self: PanoramaSkyMaterial): untyped = self.getEnergyMultiplier()
 template `energyMultiplier=`*(self: PanoramaSkyMaterial; value) = self.setEnergyMultiplier(value)
-
-const PanoramaSkyMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PanoramaSkyMaterial]): Table[string, string] = PanoramaSkyMaterial_vmap

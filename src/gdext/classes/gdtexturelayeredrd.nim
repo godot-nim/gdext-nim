@@ -16,7 +16,3 @@ proc getTextureRdRid*(self: TextureLayeredRD): RID =
 
 template textureRdRid*(self: TextureLayeredRD): untyped = self.getTextureRdRid()
 template `textureRdRid=`*(self: TextureLayeredRD; value) = self.setTextureRdRid(value)
-
-const TextureLayeredRD_vmap =
-  TextureLayered.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureLayeredRD]): Table[string, string] = TextureLayeredRD_vmap

@@ -5,44 +5,44 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method getInternalImportOptions*(self: EditorScenePostImportPlugin; category: int32): void {.base.} = (discard)
-proc getInternalImportOptions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalImportOptions(p_args[0].decode(int32))
-template getInternalImportOptions_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = getInternalImportOptions
+proc registerVirtual_getInternalImportOptions*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_internal_import_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalImportOptions(p_args[0].decode(int32))
 
 method getInternalOptionVisibility*(self: EditorScenePostImportPlugin; category: int32; forAnimation: bool; option: String): Variant {.base.} = (discard)
-proc getInternalOptionVisibility(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalOptionVisibility(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(String)).encode(r_ret)
-template getInternalOptionVisibility_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = getInternalOptionVisibility
+proc registerVirtual_getInternalOptionVisibility*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_internal_option_visibility"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalOptionVisibility(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(String)).encode(r_ret)
 
 method getInternalOptionUpdateViewRequired*(self: EditorScenePostImportPlugin; category: int32; option: String): Variant {.base.} = (discard)
-proc getInternalOptionUpdateViewRequired(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalOptionUpdateViewRequired(p_args[0].decode(int32), p_args[1].decode(String)).encode(r_ret)
-template getInternalOptionUpdateViewRequired_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = getInternalOptionUpdateViewRequired
+proc registerVirtual_getInternalOptionUpdateViewRequired*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_internal_option_update_view_required"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).getInternalOptionUpdateViewRequired(p_args[0].decode(int32), p_args[1].decode(String)).encode(r_ret)
 
 method internalProcess*(self: EditorScenePostImportPlugin; category: int32; baseNode: Node; node: Node; resource: gdref Resource): void {.base.} = (discard)
-proc internalProcess(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).internalProcess(p_args[0].decode(int32), p_args[1].decode(Node), p_args[2].decode(Node), p_args[3].decode(gdref Resource))
-template internalProcess_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = internalProcess
+proc registerVirtual_internalProcess*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_internal_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).internalProcess(p_args[0].decode(int32), p_args[1].decode(Node), p_args[2].decode(Node), p_args[3].decode(gdref Resource))
 
 method getImportOptions*(self: EditorScenePostImportPlugin; path: String): void {.base.} = (discard)
-proc getImportOptions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).getImportOptions(p_args[0].decode(String))
-template getImportOptions_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = getImportOptions
+proc registerVirtual_getImportOptions*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_import_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).getImportOptions(p_args[0].decode(String))
 
 method getOptionVisibility*(self: EditorScenePostImportPlugin; path: String; forAnimation: bool; option: String): Variant {.base.} = (discard)
-proc getOptionVisibility(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(bool), p_args[2].decode(String)).encode(r_ret)
-template getOptionVisibility_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = getOptionVisibility
+proc registerVirtual_getOptionVisibility*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_option_visibility"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(bool), p_args[2].decode(String)).encode(r_ret)
 
 method preProcess*(self: EditorScenePostImportPlugin; scene: Node): void {.base.} = (discard)
-proc preProcess(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).preProcess(p_args[0].decode(Node))
-template preProcess_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = preProcess
+proc registerVirtual_preProcess*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_pre_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).preProcess(p_args[0].decode(Node))
 
 method postProcess*(self: EditorScenePostImportPlugin; scene: Node): void {.base.} = (discard)
-proc postProcess(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorScenePostImportPlugin](p_instance).postProcess(p_args[0].decode(Node))
-template postProcess_bind*(_: typedesc[EditorScenePostImportPlugin]): ClassCallVirtual = postProcess
+proc registerVirtual_postProcess*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_post_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorScenePostImportPlugin](p_instance).postProcess(p_args[0].decode(Node))
 
 proc getOptionValue*(self: EditorScenePostImportPlugin; name: StringName): Variant =
   expandMethodBind(className EditorScenePostImportPlugin, "get_option_value", 2760726917)
@@ -57,16 +57,3 @@ proc addImportOption*(self: EditorScenePostImportPlugin; name: String; value: Va
 proc addImportOptionAdvanced*(self: EditorScenePostImportPlugin; `type`: Variant_Type; name: String; defaultValue: Variant; hint: PropertyHint = propertyHintNone; hintString: String = gdstring""; usageFlags: int32 = 6): void =
   expandMethodBind(className EditorScenePostImportPlugin, "add_import_option_advanced", 3674075649)
   methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags])
-
-const EditorScenePostImportPlugin_vmap =
-  RefCounted.vmap.concat toTable {
-    "getinternalimportoptions" : "_get_internal_import_options",
-    "getinternaloptionvisibility" : "_get_internal_option_visibility",
-    "getinternaloptionupdateviewrequired" : "_get_internal_option_update_view_required",
-    "internalprocess" : "_internal_process",
-    "getimportoptions" : "_get_import_options",
-    "getoptionvisibility" : "_get_option_visibility",
-    "preprocess" : "_pre_process",
-    "postprocess" : "_post_process",
-    }
-template vmap*(_: typedesc[EditorScenePostImportPlugin]): Table[string, string] = EditorScenePostImportPlugin_vmap

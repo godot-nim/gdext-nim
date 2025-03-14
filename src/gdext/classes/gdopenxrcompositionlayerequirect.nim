@@ -68,7 +68,3 @@ template `lowerVerticalAngle=`*(self: OpenXRCompositionLayerEquirect; value) = s
 
 template fallbackSegments*(self: OpenXRCompositionLayerEquirect): untyped = self.getFallbackSegments()
 template `fallbackSegments=`*(self: OpenXRCompositionLayerEquirect; value) = self.setFallbackSegments(value)
-
-const OpenXRCompositionLayerEquirect_vmap =
-  OpenXRCompositionLayer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRCompositionLayerEquirect]): Table[string, string] = OpenXRCompositionLayerEquirect_vmap

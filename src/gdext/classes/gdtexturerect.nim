@@ -68,7 +68,3 @@ template `flipH=`*(self: TextureRect; value) = self.setFlipH(value)
 
 template flipV*(self: TextureRect): untyped = self.isFlippedV()
 template `flipV=`*(self: TextureRect; value) = self.setFlipV(value)
-
-const TextureRect_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureRect]): Table[string, string] = TextureRect_vmap

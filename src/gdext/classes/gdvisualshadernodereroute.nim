@@ -12,7 +12,3 @@ proc getPortType*(self: VisualShaderNodeReroute): VisualShaderNode_PortType =
 
 template portType*(self: VisualShaderNodeReroute): untyped = self.getPortType()
 template `portType=`*(self: VisualShaderNodeReroute; value) = self.setPortType(value)
-
-const VisualShaderNodeReroute_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeReroute]): Table[string, string] = VisualShaderNodeReroute_vmap

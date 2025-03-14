@@ -16,7 +16,3 @@ proc getPolygon*(self: PolygonOccluder3D): PackedVector2Array =
 
 template polygon*(self: PolygonOccluder3D): untyped = self.getPolygon()
 template `polygon=`*(self: PolygonOccluder3D; value) = self.setPolygon(value)
-
-const PolygonOccluder3D_vmap =
-  Occluder3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PolygonOccluder3D]): Table[string, string] = PolygonOccluder3D_vmap

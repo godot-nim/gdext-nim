@@ -95,7 +95,3 @@ template `targetMaximumDistance=`*(self: SkeletonModification2DTwoBoneIK; value)
 
 template flipBendDirection*(self: SkeletonModification2DTwoBoneIK): untyped = self.getFlipBendDirection()
 template `flipBendDirection=`*(self: SkeletonModification2DTwoBoneIK; value) = self.setFlipBendDirection(value)
-
-const SkeletonModification2DTwoBoneIK_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DTwoBoneIK]): Table[string, string] = SkeletonModification2DTwoBoneIK_vmap

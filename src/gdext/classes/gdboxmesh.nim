@@ -55,7 +55,3 @@ template `subdivideHeight=`*(self: BoxMesh; value) = self.setSubdivideHeight(val
 
 template subdivideDepth*(self: BoxMesh): untyped = self.getSubdivideDepth()
 template `subdivideDepth=`*(self: BoxMesh; value) = self.setSubdivideDepth(value)
-
-const BoxMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BoxMesh]): Table[string, string] = BoxMesh_vmap

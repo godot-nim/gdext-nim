@@ -126,7 +126,3 @@ template `loop=`*(self: PathFollow3D; value) = self.setLoop(value)
 
 template tiltEnabled*(self: PathFollow3D): untyped = self.isTiltEnabled()
 template `tiltEnabled=`*(self: PathFollow3D; value) = self.setTiltEnabled(value)
-
-const PathFollow3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PathFollow3D]): Table[string, string] = PathFollow3D_vmap

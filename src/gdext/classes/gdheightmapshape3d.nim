@@ -58,7 +58,3 @@ template `mapDepth=`*(self: HeightMapShape3D; value) = self.setMapDepth(value)
 
 template mapData*(self: HeightMapShape3D): untyped = self.getMapData()
 template `mapData=`*(self: HeightMapShape3D; value) = self.setMapData(value)
-
-const HeightMapShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HeightMapShape3D]): Table[string, string] = HeightMapShape3D_vmap

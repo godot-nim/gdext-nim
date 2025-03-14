@@ -150,7 +150,3 @@ template `writeB=`*(self: RDPipelineColorBlendStateAttachment; value) = self.set
 
 template writeA*(self: RDPipelineColorBlendStateAttachment): untyped = self.getWriteA()
 template `writeA=`*(self: RDPipelineColorBlendStateAttachment; value) = self.setWriteA(value)
-
-const RDPipelineColorBlendStateAttachment_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineColorBlendStateAttachment]): Table[string, string] = RDPipelineColorBlendStateAttachment_vmap

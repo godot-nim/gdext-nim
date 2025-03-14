@@ -16,7 +16,3 @@ proc getFlags*(self: VisualShaderNodeParticleEmit): VisualShaderNodeParticleEmit
 
 template flags*(self: VisualShaderNodeParticleEmit): untyped = self.getFlags()
 template `flags=`*(self: VisualShaderNodeParticleEmit; value) = self.setFlags(value)
-
-const VisualShaderNodeParticleEmit_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleEmit]): Table[string, string] = VisualShaderNodeParticleEmit_vmap

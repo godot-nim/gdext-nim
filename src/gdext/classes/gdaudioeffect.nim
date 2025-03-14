@@ -5,12 +5,6 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method instantiate*(self: AudioEffect): gdref AudioEffectInstance {.base.} = (discard)
-proc instantiate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioEffect](p_instance).instantiate().encode(r_ret)
-template instantiate_bind*(_: typedesc[AudioEffect]): ClassCallVirtual = instantiate
-
-const AudioEffect_vmap =
-  Resource.vmap.concat toTable {
-    "instantiate" : "_instantiate",
-    }
-template vmap*(_: typedesc[AudioEffect]): Table[string, string] = AudioEffect_vmap
+proc registerVirtual_instantiate*[T: AudioEffect](Self: typedesc[T]) =
+  Self.vmethods[stringName"_instantiate"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioEffect](p_instance).instantiate().encode(r_ret)

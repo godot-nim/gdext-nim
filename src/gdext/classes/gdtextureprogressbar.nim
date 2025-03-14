@@ -181,7 +181,3 @@ template `tintOver=`*(self: TextureProgressBar; value) = self.setTintOver(value)
 
 template tintProgress*(self: TextureProgressBar): untyped = self.getTintProgress()
 template `tintProgress=`*(self: TextureProgressBar; value) = self.setTintProgress(value)
-
-const TextureProgressBar_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureProgressBar]): Table[string, string] = TextureProgressBar_vmap

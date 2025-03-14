@@ -50,7 +50,3 @@ proc getRect*(self: Shape2D): Rect2 =
 
 template customSolverBias*(self: Shape2D): untyped = self.getCustomSolverBias()
 template `customSolverBias=`*(self: Shape2D; value) = self.setCustomSolverBias(value)
-
-const Shape2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Shape2D]): Table[string, string] = Shape2D_vmap

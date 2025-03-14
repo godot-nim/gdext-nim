@@ -93,7 +93,3 @@ template `loop=`*(self: AudioStreamMP3; value) = self.setLoop(value)
 
 template loopOffset*(self: AudioStreamMP3): untyped = self.getLoopOffset()
 template `loopOffset=`*(self: AudioStreamMP3; value) = self.setLoopOffset(value)
-
-const AudioStreamMP3_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamMP3]): Table[string, string] = AudioStreamMP3_vmap

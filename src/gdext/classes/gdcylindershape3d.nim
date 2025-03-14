@@ -29,7 +29,3 @@ template `height=`*(self: CylinderShape3D; value) = self.setHeight(value)
 
 template radius*(self: CylinderShape3D): untyped = self.getRadius()
 template `radius=`*(self: CylinderShape3D; value) = self.setRadius(value)
-
-const CylinderShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CylinderShape3D]): Table[string, string] = CylinderShape3D_vmap

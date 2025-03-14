@@ -56,7 +56,3 @@ template `pressed=`*(self: InputEventScreenTouch; value) = self.setPressed(value
 
 template doubleTap*(self: InputEventScreenTouch): untyped = self.isDoubleTap()
 template `doubleTap=`*(self: InputEventScreenTouch; value) = self.setDoubleTap(value)
-
-const InputEventScreenTouch_vmap =
-  InputEventFromWindow.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventScreenTouch]): Table[string, string] = InputEventScreenTouch_vmap

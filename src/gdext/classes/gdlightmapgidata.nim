@@ -4,25 +4,25 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setLightmapTextures*(self: LightmapGIData; lightTextures: TypedArray[TextureLayered]): void =
+proc setLightmapTextures*(self: LightmapGIData; lightTextures: TypedArray[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_lightmap_textures", 381264803)
   methodbind.ptrcall(self, [getPtr lightTextures])
 
-proc getLightmapTextures*(self: LightmapGIData): TypedArray[TextureLayered] =
+proc getLightmapTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =
   expandMethodBind(className LightmapGIData, "get_lightmap_textures", 3995934104)
-  var ret: encoded TypedArray[TextureLayered]
+  var ret: encoded TypedArray[gdref TextureLayered]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[TextureLayered])
+  (addr ret).decode_result(TypedArray[gdref TextureLayered])
 
-proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: TypedArray[TextureLayered]): void =
+proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: TypedArray[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_shadowmask_textures", 381264803)
   methodbind.ptrcall(self, [getPtr shadowmaskTextures])
 
-proc getShadowmaskTextures*(self: LightmapGIData): TypedArray[TextureLayered] =
+proc getShadowmaskTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =
   expandMethodBind(className LightmapGIData, "get_shadowmask_textures", 3995934104)
-  var ret: encoded TypedArray[TextureLayered]
+  var ret: encoded TypedArray[gdref TextureLayered]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[TextureLayered])
+  (addr ret).decode_result(TypedArray[gdref TextureLayered])
 
 proc setUsesSphericalHarmonics*(self: LightmapGIData; usesSphericalHarmonics: bool): void =
   expandMethodBind(className LightmapGIData, "set_uses_spherical_harmonics", 2586408642)
@@ -84,7 +84,3 @@ template `lightTexture=`*(self: LightmapGIData; value) = self.setLightTexture(va
 
 template lightTextures*(self: LightmapGIData): untyped = self.getLightTexturesData()
 template `lightTextures=`*(self: LightmapGIData; value) = self.setLightTexturesData(value)
-
-const LightmapGIData_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LightmapGIData]): Table[string, string] = LightmapGIData_vmap

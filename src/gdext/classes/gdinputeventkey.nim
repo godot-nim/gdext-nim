@@ -124,7 +124,3 @@ template `location=`*(self: InputEventKey; value) = self.setLocation(value)
 
 template echo*(self: InputEventKey): untyped = self.isEcho()
 template `echo=`*(self: InputEventKey; value) = self.setEcho(value)
-
-const InputEventKey_vmap =
-  InputEventWithModifiers.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventKey]): Table[string, string] = InputEventKey_vmap

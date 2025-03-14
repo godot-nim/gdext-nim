@@ -208,11 +208,11 @@ proc addGizmo*(self: Node3D; gizmo: gdref Node3DGizmo): void =
   expandMethodBind(className Node3D, "add_gizmo", 1544533845)
   methodbind.ptrcall(self, [getPtr gizmo])
 
-proc getGizmos*(self: Node3D): TypedArray[Node3DGizmo] =
+proc getGizmos*(self: Node3D): TypedArray[gdref Node3DGizmo] =
   expandMethodBind(className Node3D, "get_gizmos", 3995934104)
-  var ret: encoded TypedArray[Node3DGizmo]
+  var ret: encoded TypedArray[gdref Node3DGizmo]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node3DGizmo])
+  (addr ret).decode_result(TypedArray[gdref Node3DGizmo])
 
 proc clearGizmos*(self: Node3D): void =
   expandMethodBind(className Node3D, "clear_gizmos", 3218959716)
@@ -393,11 +393,7 @@ template `visible=`*(self: Node3D; value) = self.setVisible(value)
 template visibilityParent*(self: Node3D): untyped = self.getVisibilityParent()
 template `visibilityParent=`*(self: Node3D; value) = self.setVisibilityParent(value)
 
-const Node3D_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Node3D]): Table[string, string] = Node3D_vmap
-
-proc visibilityChanged*(self: Node3D): Error =
+proc call_visibilityChanged*(self: Node3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_changed")

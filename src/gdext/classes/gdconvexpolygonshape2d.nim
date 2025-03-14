@@ -20,7 +20,3 @@ proc getPoints*(self: ConvexPolygonShape2D): PackedVector2Array =
 
 template points*(self: ConvexPolygonShape2D): untyped = self.getPoints()
 template `points=`*(self: ConvexPolygonShape2D; value) = self.setPoints(value)
-
-const ConvexPolygonShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConvexPolygonShape2D]): Table[string, string] = ConvexPolygonShape2D_vmap

@@ -19,7 +19,3 @@ template `height=`*(self: DirectionalLight2D; value) = self.setHeight(value)
 
 template maxDistance*(self: DirectionalLight2D): untyped = self.getMaxDistance()
 template `maxDistance=`*(self: DirectionalLight2D; value) = self.setMaxDistance(value)
-
-const DirectionalLight2D_vmap =
-  Light2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[DirectionalLight2D]): Table[string, string] = DirectionalLight2D_vmap

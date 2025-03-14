@@ -46,11 +46,7 @@ proc getBoneLocalPoseOverride*(self: Skeleton2D; boneIdx: int32): Transform2D =
   methodbind.ptrcall(self, [getPtr boneIdx], addr ret)
   (addr ret).decode_result(Transform2D)
 
-const Skeleton2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Skeleton2D]): Table[string, string] = Skeleton2D_vmap
-
-proc boneSetupChanged*(self: Skeleton2D): Error =
+proc call_boneSetupChanged*(self: Skeleton2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("bone_setup_changed")

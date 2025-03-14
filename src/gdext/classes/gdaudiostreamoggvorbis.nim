@@ -93,7 +93,3 @@ template `loop=`*(self: AudioStreamOggVorbis; value) = self.setLoop(value)
 
 template loopOffset*(self: AudioStreamOggVorbis): untyped = self.getLoopOffset()
 template `loopOffset=`*(self: AudioStreamOggVorbis; value) = self.setLoopOffset(value)
-
-const AudioStreamOggVorbis_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamOggVorbis]): Table[string, string] = AudioStreamOggVorbis_vmap

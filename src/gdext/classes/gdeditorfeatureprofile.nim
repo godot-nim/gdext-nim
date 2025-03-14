@@ -61,7 +61,3 @@ proc loadFromFile*(self: EditorFeatureProfile; path: String): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(Error)
-
-const EditorFeatureProfile_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorFeatureProfile]): Table[string, string] = EditorFeatureProfile_vmap

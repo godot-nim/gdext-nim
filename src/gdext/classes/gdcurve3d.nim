@@ -185,7 +185,3 @@ template `pointCount=`*(self: Curve3D; value) = self.setPointCount(value)
 
 template upVectorEnabled*(self: Curve3D): untyped = self.isUpVectorEnabled()
 template `upVectorEnabled=`*(self: Curve3D; value) = self.setUpVectorEnabled(value)
-
-const Curve3D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Curve3D]): Table[string, string] = Curve3D_vmap

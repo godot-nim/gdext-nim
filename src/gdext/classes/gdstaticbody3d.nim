@@ -42,7 +42,3 @@ template `constantLinearVelocity=`*(self: StaticBody3D; value) = self.setConstan
 
 template constantAngularVelocity*(self: StaticBody3D): untyped = self.getConstantAngularVelocity()
 template `constantAngularVelocity=`*(self: StaticBody3D; value) = self.setConstantAngularVelocity(value)
-
-const StaticBody3D_vmap =
-  PhysicsBody3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StaticBody3D]): Table[string, string] = StaticBody3D_vmap

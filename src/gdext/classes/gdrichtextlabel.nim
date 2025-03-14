@@ -706,38 +706,34 @@ template `structuredTextBidiOverride=`*(self: RichTextLabel; value) = self.setSt
 template structuredTextBidiOverrideOptions*(self: RichTextLabel): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: RichTextLabel; value) = self.setStructuredTextBidiOverrideOptions(value)
 
-const RichTextLabel_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RichTextLabel]): Table[string, string] = RichTextLabel_vmap
-
-proc metaClicked*(self: RichTextLabel; meta: Variant): Error =
+proc call_metaClicked*(self: RichTextLabel; meta: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("meta_clicked")
   let args = [meta]
   self.emitSignal(signalname, args)
-template metaClicked*(self: RichTextLabel; meta: Variant): Error =
-  self.metaClicked(variant meta)
+template call_metaClicked*(self: RichTextLabel; meta: Variant): Error =
+  self.call_metaClicked(variant meta)
 
-proc metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
+proc call_metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("meta_hover_started")
   let args = [meta]
   self.emitSignal(signalname, args)
-template metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
-  self.metaHoverStarted(variant meta)
+template call_metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
+  self.call_metaHoverStarted(variant meta)
 
-proc metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
+proc call_metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("meta_hover_ended")
   let args = [meta]
   self.emitSignal(signalname, args)
-template metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
-  self.metaHoverEnded(variant meta)
+template call_metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
+  self.call_metaHoverEnded(variant meta)
 
-proc finished*(self: RichTextLabel): Error =
+proc call_finished*(self: RichTextLabel): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

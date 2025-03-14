@@ -300,7 +300,3 @@ template `near=`*(self: Camera3D; value) = self.setNear(value)
 
 template far*(self: Camera3D): untyped = self.getFar()
 template `far=`*(self: Camera3D; value) = self.setFar(value)
-
-const Camera3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Camera3D]): Table[string, string] = Camera3D_vmap

@@ -239,7 +239,3 @@ template `bones=`*(self: Polygon2D; value) = self.setBones(value)
 
 template internalVertexCount*(self: Polygon2D): untyped = self.getInternalVertexCount()
 template `internalVertexCount=`*(self: Polygon2D; value) = self.setInternalVertexCount(value)
-
-const Polygon2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Polygon2D]): Table[string, string] = Polygon2D_vmap

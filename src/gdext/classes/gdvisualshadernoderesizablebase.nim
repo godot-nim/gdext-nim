@@ -16,7 +16,3 @@ proc getSize*(self: VisualShaderNodeResizableBase): Vector2 =
 
 template size*(self: VisualShaderNodeResizableBase): untyped = self.getSize()
 template `size=`*(self: VisualShaderNodeResizableBase; value) = self.setSize(value)
-
-const VisualShaderNodeResizableBase_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeResizableBase]): Table[string, string] = VisualShaderNodeResizableBase_vmap

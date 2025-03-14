@@ -75,7 +75,3 @@ template `springLength=`*(self: SpringArm3D; value) = self.setLength(value)
 
 template margin*(self: SpringArm3D): untyped = self.getMargin()
 template `margin=`*(self: SpringArm3D; value) = self.setMargin(value)
-
-const SpringArm3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpringArm3D]): Table[string, string] = SpringArm3D_vmap

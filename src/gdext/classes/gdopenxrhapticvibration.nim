@@ -42,7 +42,3 @@ template `frequency=`*(self: OpenXRHapticVibration; value) = self.setFrequency(v
 
 template amplitude*(self: OpenXRHapticVibration): untyped = self.getAmplitude()
 template `amplitude=`*(self: OpenXRHapticVibration; value) = self.setAmplitude(value)
-
-const OpenXRHapticVibration_vmap =
-  OpenXRHapticBase.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRHapticVibration]): Table[string, string] = OpenXRHapticVibration_vmap

@@ -107,7 +107,3 @@ template `dry=`*(self: AudioEffectReverb; value) = self.setDry(value)
 
 template wet*(self: AudioEffectReverb): untyped = self.getWet()
 template `wet=`*(self: AudioEffectReverb; value) = self.setWet(value)
-
-const AudioEffectReverb_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectReverb]): Table[string, string] = AudioEffectReverb_vmap

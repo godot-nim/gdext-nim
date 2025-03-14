@@ -683,11 +683,7 @@ template `animOffsetMax=`*(self: CPUParticles3D; value) = self.setParamMax(CPUPa
 template animOffsetCurve*(self: CPUParticles3D): untyped = self.getParamCurve(CPUParticles3D_Parameter(11))
 template `animOffsetCurve=`*(self: CPUParticles3D; value) = self.setParamCurve(CPUParticles3D_Parameter(11), value)
 
-const CPUParticles3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CPUParticles3D]): Table[string, string] = CPUParticles3D_vmap
-
-proc finished*(self: CPUParticles3D): Error =
+proc call_finished*(self: CPUParticles3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

@@ -29,7 +29,3 @@ template `data=`*(self: ConcavePolygonShape3D; value) = self.setFaces(value)
 
 template backfaceCollision*(self: ConcavePolygonShape3D): untyped = self.isBackfaceCollisionEnabled()
 template `backfaceCollision=`*(self: ConcavePolygonShape3D; value) = self.setBackfaceCollisionEnabled(value)
-
-const ConcavePolygonShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConcavePolygonShape3D]): Table[string, string] = ConcavePolygonShape3D_vmap

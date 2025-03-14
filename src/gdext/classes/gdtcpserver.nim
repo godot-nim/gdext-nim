@@ -37,7 +37,3 @@ proc takeConnection*(self: TCPServer): gdref StreamPeerTCP =
 proc stop*(self: TCPServer): void =
   expandMethodBind(className TCPServer, "stop", 3218959716)
   methodbind.ptrcall(self, [])
-
-const TCPServer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TCPServer]): Table[string, string] = TCPServer_vmap

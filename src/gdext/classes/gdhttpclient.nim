@@ -132,7 +132,3 @@ template `connection=`*(self: HTTPClient; value) = self.setConnection(value)
 
 template readChunkSize*(self: HTTPClient): untyped = self.getReadChunkSize()
 template `readChunkSize=`*(self: HTTPClient; value) = self.setReadChunkSize(value)
-
-const HTTPClient_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HTTPClient]): Table[string, string] = HTTPClient_vmap
