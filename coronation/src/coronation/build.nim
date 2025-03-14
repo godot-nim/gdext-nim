@@ -24,7 +24,6 @@ import operators/builtinclasses/methods
 import operators/classindex
 import operators/classes/methods
 import operators/classes/properties
-import operators/classes/vmap
 import operators/classes/signals
 
 import std/sequtils
@@ -165,7 +164,6 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               for entry in class.json.methods.get(@[]):
                 weave entry.convert(sym)
             weave_properties class
-            weave_vmap(class)
             weave_signals(class)
 
     layout gen:

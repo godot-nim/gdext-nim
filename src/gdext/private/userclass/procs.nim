@@ -91,27 +91,20 @@ proc sync_methodDef*(body: Nimnode): NimNode =
     error "Registration is not reflected. Define it before calling proc register " & $selfT & ".", methoddef
 
   let methodstr = methoddef[0].basename.repr.replace("`", "")
-  let methodstrlit = newlit methodstr.nimIdentNormalize
-  let methodname = ident methodstr & "_bind"
+  let registerMethod = ident "registerVirtual_" & methodstr
   let procsym = ident methodstr
 
   let methoddefWithEmit = methoddef.copy
   methoddefWithEmit.body = methoddef.callWithEmitter
 
-  let err = block:
-    let msg = quote do:
-      "Failed to override " & `methodstrlit` & ". Maybe gdext/classes/gd" & $`selfT`.EngineClass & " is not imported."
-    lineerror.newCall(msg, body)
-
   result = methoddef.withCheckTypes(
     onSelfTypeFailed =
       lineerror.newcall(newlit errmsgSelfTypeMismatch, body),
     onDefault = (quote do:
-      when not compiles(`selfT`.vmap): `err`
-      elif `selfT`.vmap.hasKey(`methodStrlit`): # overriding built-in method
+      when declared(`registerMethod`):
         `methoddef`
         proc `procsym` {.execon: Contract[`selfT`].virtual.} =
-          vmethods(`selfT`)[stringName `selfT`.vmap[`methodstrlit`]] = `selfT`.`methodname`
+          `selfT`.`registerMethod`()
       else: # overriding user-defined method
         `methoddefWithEmit`
     ))

@@ -1,5 +1,4 @@
 import gdext
-import gdext/classes/gdNode
 
 import classes/gdvirtualnode01
 

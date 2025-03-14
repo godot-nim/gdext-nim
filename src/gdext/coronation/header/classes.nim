@@ -8,7 +8,7 @@ import gdext/colortools; export colortools
 import gdext/othertools; export othertools
 import gdext/math; export math
 
-import std/tables; export Table, toTable, initTable
+import std/tables; export `[]=`
 
 proc concat*[T,S](a, b: Table[T,S]): Table[T,S] =
   result = a

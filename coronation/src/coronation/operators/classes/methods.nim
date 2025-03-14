@@ -164,17 +164,18 @@ proc weave(entry: ClassMethodVirtualEntry): Cloth =
 
 proc weave_native(entry: ClassMethodVirtualEntry): Cloth =
   weave multiline:
-    &"proc {entry.name}(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
-    weave cloths.indent >> Join(delim: ""):
-      &"errproof: cast[{entry.self.typesym}](p_instance).{entry.name}("
-      weave Join(delim: ", "):
-        for i, arg in entry.args:
-          &"p_args[{i}].decode({arg.type})"
-      if entry.result.typesym == TypeSym"void":
-        ")"
-      else:
-        ").encode(r_ret)"
-    &"template {entry.name.dropQuote}_bind*(_: typedesc[{entry.self.typesym}]): ClassCallVirtual = {entry.name}"
+    &"proc registerVirtual_{entry.name.dropQuote}*[T: {entry.self.typeSym}](Self: typedesc[T]) ="
+    weave cloths.indent:
+      &"Self.vmethods[stringName\"{entry.native_name}\"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
+      weave cloths.indent >> Join(delim: ""):
+        &"errproof: cast[{entry.self.typesym}](p_instance).{entry.name}("
+        weave Join(delim: ", "):
+          for i, arg in entry.args:
+            &"p_args[{i}].decode({arg.type})"
+        if entry.result.typesym == TypeSym"void":
+          ")"
+        else:
+          ").encode(r_ret)"
 
 proc convert*(json: JsonClassMethod; caller: TypeSym): RenderableClassMethod =
   let self_type = RenderableSelfArgument(
