@@ -2,6 +2,12 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 
+proc callable*(): Callable = discard
+proc signal*(): Signal = discard
+
+proc rid*(): RID = discard
+proc rid*(`from`: RID): RID = `from`
+
 include gdext/gen/gdcallableconstr
 include gdext/gen/gdsignalconstr
 include gdext/gen/gdridconstr

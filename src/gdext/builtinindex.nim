@@ -60,8 +60,8 @@ type
     position*: Vector2i
     size*: Vector2i
   Transform2D* {.byref.} = object
-    x*: Vector2
-    y*: Vector2
+    x*: Vector2 = [1, 0]
+    y*: Vector2 = [0, 1]
     origin*: Vector2
   Plane* {.byref.} = object
     normal*: Vector3
@@ -70,27 +70,27 @@ type
     x*: real_elem
     y*: real_elem
     z*: real_elem
-    w*: real_elem
+    w*: real_elem = 1
   AABB* {.byref.} = object
     position*: Vector3
     size*: Vector3
   Basis* {.byref.} = object
-    x*: Vector3
-    y*: Vector3
-    z*: Vector3
+    x*: Vector3 = [1, 0, 0]
+    y*: Vector3 = [0, 1, 0]
+    z*: Vector3 = [0, 0, 1]
   Transform3D* {.byref.} = object
     basis*: Basis
     origin*: Vector3
   Projection* {.byref.} = object
-    x*: Vector4
-    y*: Vector4
-    z*: Vector4
-    w*: Vector4
+    x*: Vector4 = [1, 0, 0, 0]
+    y*: Vector4 = [0, 1, 0, 0]
+    z*: Vector4 = [0, 0, 1, 0]
+    w*: Vector4 = [0, 0, 0, 1]
   Color* {.byref.} = object
     r*: float_elem
     g*: float_elem
     b*: float_elem
-    a*: float_elem
+    a*: float_elem = 1
   RID* {.byref.} = object
     opaque: Opaque[2]
   String* {.byref.} = object

@@ -86,6 +86,25 @@ runtime: suite "PackedArray":
       check b == byte i
       inc i
 
+  test "contains(PackedInt32Array)":
+    var arr = packedInt32Array()
+    discard arr.resize(10)
+    for i, v in arr.mpairs:
+      v = int32 i
+    check arr.contains 9
+    check 1 in arr
+    check 11 notin arr
+
+  test "contains(PackedStringArray)":
+    var arr = packedStringArray()
+    discard arr.resize(10)
+    for i, v in arr.mpairs:
+      v = gdstring $i
+    check arr.contains "9"
+    check "1" in arr
+    check "hello" notin arr
+
+
 runtime: suite "String":
   test "to nim-string":
     let gdstr: String = "String"

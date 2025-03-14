@@ -26,6 +26,17 @@ import gdext/varianttools
 
 import std/sequtils
 
+proc packedByteArray*(): PackedByteArray = (discard)
+proc packedColorArray*(): PackedColorArray = (discard)
+proc packedStringArray*(): PackedStringArray = (discard)
+proc packedInt32Array*(): PackedInt32Array = (discard)
+proc packedInt64Array*(): PackedInt64Array = (discard)
+proc packedFloat32Array*(): PackedFloat32Array = (discard)
+proc packedFloat64Array*(): PackedFloat64Array = (discard)
+proc packedVector2Array*(): PackedVector2Array = (discard)
+proc packedVector3Array*(): PackedVector3Array = (discard)
+proc packedVector4Array*(): PackedVector4Array = (discard)
+
 include gdext/gen/gdarrayconstr
 include gdext/gen/gdpackedbytearrayconstr
 include gdext/gen/gdpackedcolorarrayconstr
@@ -121,3 +132,6 @@ proc `[]=`*[T](self: PackedArray[T]; index: int; value: T) = self.data_unsafe[in
 
 proc toSeq*[T](arr: PackedArray[T]): seq[T] =
   arr.dataUnsafe.toOpenArray(0, arr.size-1).toSeq
+
+proc contains*[T](arr: PackedArray[T]; item: T): bool =
+  arr.toOpenArray.contains item

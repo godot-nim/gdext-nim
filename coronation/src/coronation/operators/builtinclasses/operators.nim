@@ -28,7 +28,6 @@ type
 func operator(basename: string): ProcSym =
   ProcSym:
     case basename
-    of "in": "contains"
     of "unary+": "`+`"
     of "unary-": "`-`"
     of "//": "`div`"
@@ -93,21 +92,10 @@ proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
 
   result.containerKey = gen_containerKey result.key
 
-  if result.key.name == operator"in":
-    swap(result.key.args[0].typeSym, result.key.args[1].typeSym)
-
   result.addr_first = &"getPtr {result.key.args[0].name}"
   result.addr_second =
     if result.key.args.len == 1: "nil"
     else: &"getPtr {result.key.args[1].name}"
-
-  if result.key.name == operator"in":
-    # bool in(Left left, Right right) {Godot::in(&left, &right)}
-    # <->
-    # proc contains(left: Right; right: Left): bool = Godot::in(addr right, addr left)
-    # and then, call it using template: `Left in Right`
-    swap(result.addr_first, result.addr_second)
-
 
 proc weave_container(operator: BuiltinClassOperator): Cloth =
   &"var {operator.containerkey}: PtrOperatorEvaluator"
@@ -118,23 +106,27 @@ proc weave_procdef(operator: BuiltinClassOperator): Cloth =
 proc weave_loadstmt(operator: BuiltinClassOperator): Cloth =
   &"{operator.containerkey} = load({operator.opkey}, {operator.vt_first}, {operator.vt_second})"
 
+proc shouldGenerate(operator: BuiltinClassOperator): bool =
+  `and`(
+    operator.key.name notin manualImplemented.functionNames,
+    operator.containerkey notin manualImplemented.functions)
+
 proc weave_operators*(json: JsonBuiltinClass): Cloth =
   let typesym = json.name.convert(TypeSym)
 
   let operators = json.operators.get(@[])
     .mapIt(it.convert(typesym))
-  let requires = operators
-    .filterIt(it.containerkey notin manualImplemented.functions)
+  let requires = operators.filter(shouldGenerate)
 
   if operators.len == 0: return
 
   weave multiline:
     weave multiline:
       for op in operators:
-        if op.containerkey in manualImplemented.functions:
-          "# " & $op.containerkey
-        else:
+        if op.shouldGenerate:
           weave_container op
+        else:
+          "# " & $op.containerkey
     weave multiline:
       for op in requires:
         weave_procdef op

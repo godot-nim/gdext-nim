@@ -3,9 +3,10 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 
-proc color*(): Color = Color(r: 0, g: 0, b: 0, a: 1)
-proc color*(src: Color): Color = src
-proc color*(src: Color; alpha: float32): Color = Color(r: src.r, g: src.g, b: src.b, a: alpha)
+proc color*(): Color = discard
+proc color*(`from`: Color): Color = `from`
+proc color*(`from`: Color; alpha: float32): Color =
+  Color(r: `from`.r, g: `from`.g, b: `from`.b, a: alpha)
 proc color*(r,g,b: float32): Color = Color(r: r, g: g, b: b, a: 1)
 proc color*(r,g,b,a: float32): Color = Color(r: r, g: g, b: b, a: a)
 

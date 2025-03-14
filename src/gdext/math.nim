@@ -99,27 +99,65 @@ macro vectori*(exp: varargs[typed]): VectorI =
     letstmt.makeVec(int_elem, exp[0..^1]))
 
 {.push, inline.}
+proc vector2*(): Vector2 = [0, 0]
+proc vector2*(`from`: Vector2): Vector2 = `from`
+proc vector2*(`from`: Vector2i): Vector2 = [real_elem `from`[0], real_elem `from`[1]]
 proc vector2*(x, y: real_elem): Vector2 = [x, y]
+
+proc vector3*(): Vector3 = [0, 0, 0]
+proc vector3*(`from`: Vector3): Vector3 = `from`
+proc vector3*(`from`: Vector3i): Vector3 = [real_elem `from`[0], real_elem `from`[1], real_elem `from`[2]]
 proc vector3*(x, y, z: real_elem): Vector3 = [x, y, z]
+
+proc vector4*(): Vector4 = [0, 0, 0, 0]
+proc vector4*(`from`: Vector4): Vector4 = `from`
+proc vector4*(`from`: Vector4i): Vector4 = [real_elem `from`[0], real_elem `from`[1], real_elem `from`[2], real_elem `from`[3]]
 proc vector4*(x, y, z, w: real_elem): Vector4 = [x, y, z, w]
 
+proc vector2i*(): Vector2i = [0, 0]
+proc vector2i*(`from`: Vector2i): Vector2i = `from`
+proc vector2i*(`from`: Vector2): Vector2i = [int_elem `from`[0], int_elem `from`[1]]
 proc vector2i*(x, y: int_elem): Vector2i = [x, y]
+
+proc vector3i*(): Vector3i = [0, 0, 0]
+proc vector3i*(`from`: Vector3i): Vector3i = `from`
+proc vector3i*(`from`: Vector3): Vector3i = [int_elem `from`[0], int_elem `from`[1], int_elem `from`[2]]
 proc vector3i*(x, y, z: int_elem): Vector3i = [x, y, z]
+
+proc vector4i*(): Vector4i = [0, 0, 0, 0]
+proc vector4i*(`from`: Vector4i): Vector4i = `from`
+proc vector4i*(`from`: Vector4): Vector4i = [int_elem `from`[0], int_elem `from`[1], int_elem `from`[2], int_elem `from`[3]]
 proc vector4i*(x, y, z, w: int_elem): Vector4i = [x, y, z, w]
 {.pop.}
 
+proc quaternion*(): Quaternion = Quaternion()
+proc quaternion*(`from`: Quaternion): Quaternion = `from`
 proc quaternion*(x, y, z, w: real_elem): Quaternion =
   Quaternion(x: x, y: y, z: z, w: w)
 
+proc aabb*(): AABB = AABB()
+proc aabb*(`from`: AABB): AABB = `from`
+
+proc basis*(): Basis = Basis()
+proc basis*(`from`: Basis): Basis = `from`
+proc basis*(xAxis, yAxis, zAxis: Vector3): Basis = Basis(x: xAxis, y: yAxis, z: zAxis)
 proc basis*(xx, xy, xz, yx, yy, yz, zx, zy, zz: real_elem): Basis =
   Basis(
     x: [xx, xy, xz],
     y: [yx, yy, yz],
     z: [zx, zy, zz])
 
-proc plane*(nx, ny, nz, d: real_elem): Plane =
-  Plane(normal: [nx, ny, nz], d: d)
+proc plane*(): Plane = Plane()
+proc plane*(`from`: Plane): Plane = `from`
+proc plane*(normal: Vector3; d: real_elem): Plane =
+  Plane(normal: normal, d: d)
+proc plane*(a, b, c, d: real_elem): Plane =
+  Plane(normal: [a, b, c], d: d)
 
+proc projection*(): Projection = Projection()
+proc projection*(`from`: Projection): Projection = `from`
+proc projection*(xAxis, yAxis, zAxis, wAxis: Vector4): Projection =
+  Projection(x: xAxis, y: yAxis, z: zAxis, w: wAxis)
 proc projection*(xx,xy,xz,xw, yx,yy,yz,yw, zx,zy,zz,zw, wx,wy,wz,ww: real_elem): Projection =
   Projection(
     x: [xx, xy, xz, xw],
@@ -128,12 +166,22 @@ proc projection*(xx,xy,xz,xw, yx,yy,yz,yw, zx,zy,zz,zw, wx,wy,wz,ww: real_elem):
     w: [wx, wy, wz, ww],
   )
 
+proc transform2D*(): Transform2D = Transform2D()
+proc transform2D*(`from`: Transform2D): Transform2D = `from`
+proc transform2D*(xAxis, yAxis, origin: Vector2): Transform2D =
+  Transform2D(x: xAxis, y: yAxis, origin: origin)
 proc transform2D*(xx, xy, yx, yy, ox, oy: real_elem): Transform2D =
   Transform2D(
     x: [xx, xy],
     y: [yx, yy],
     origin: [ox, oy])
 
+proc transform3D*(): Transform3D = Transform3D()
+proc transform3D*(`from`: Transform3D): Transform3D = `from`
+proc transform3D*(basis: Basis; origin: Vector3): Transform3D =
+  Transform3D(basis: basis, origin: origin)
+proc transform3D*(xAxis, yAxis, zAxis, origin: Vector3): Transform3D =
+  Transform3D(basis: Basis(x: xAxis, y: yAxis, z: zAxis), origin: origin)
 proc transform3D*(xx, xy, xz, yx, yy, yz, zx, zy, zz, ox, oy, oz: real_elem): Transform3D =
   Transform3D(
     basis: Basis(
@@ -142,6 +190,24 @@ proc transform3D*(xx, xy, xz, yx, yy, yz, zx, zy, zz, ox, oy, oz: real_elem): Tr
       z: [zx, zy, zz]),
     origin: [ox, oy, oz]
   )
+
+proc rect2*(): Rect2 = discard
+proc rect2*(`from`: Rect2): Rect2 = `from`
+proc rect2*(`from`: Rect2i): Rect2 =
+  Rect2(position: vector2 `from`.position, size: vector2 `from`.size)
+proc rect2*(position, size: Vector2): Rect2 =
+  Rect2(position: position, size: size)
+proc rect2*(x, y, width, height: real_elem): Rect2 =
+  Rect2(position: [x, y], size: [width, height])
+
+proc rect2i*(): Rect2i = discard
+proc rect2i*(a: Rect2i): Rect2i = a
+proc rect2i*(`from`: Rect2): Rect2i =
+  Rect2i(position: vector2i `from`.position, size: vector2i `from`.size)
+proc rect2i*(position, size: Vector2i): Rect2i =
+  Rect2i(position: position, size: size)
+proc rect2i*(x, y, width, height: int_elem): Rect2i =
+  Rect2i(position: [x, y], size: [width, height])
 
 include gdext/gen/gdaabbconstr
 include gdext/gen/gdbasisconstr

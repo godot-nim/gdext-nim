@@ -2,10 +2,15 @@ import std/[unicode, importutils]
 import gdext/builtinindex
 import gdext/private/[native, staticevents]
 
+proc gdstring*(): String = discard
 proc gdstring*(str: string): String =
   interfaceStringNewWithUtf8Chars(addr result, cstring str)
+
+proc stringName*(): StringName = discard
 proc stringName*(str: string): StringName =
   interfaceStringNameNewWithUtf8Chars(addr result, cstring str)
+
+proc nodePath*(): NodePath = discard
 
 include gdext/private/includes/stringtoolsbase
 
