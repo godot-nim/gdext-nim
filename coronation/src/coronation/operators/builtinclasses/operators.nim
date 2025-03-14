@@ -32,7 +32,6 @@ func operator(basename: string): ProcSym =
     of "unary+": "`+`"
     of "unary-": "`-`"
     of "//": "`div`"
-    of "%": "`mod`"
     of "<<": "`shl`"
     of ">>": "`shr`"
     of "&": "`and`"
