@@ -7,8 +7,6 @@ proc gdstring*(str: string): String =
 proc stringName*(str: string): StringName =
   interfaceStringNameNewWithUtf8Chars(addr result, cstring str)
 
-proc `&`*(str: string): StringName {.inline.} = stringName str
-
 include gdext/private/includes/stringtoolsbase
 
 include gdext/gen/gdstringconstr

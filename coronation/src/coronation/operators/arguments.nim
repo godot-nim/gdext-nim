@@ -135,7 +135,9 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
     of TypeSym"StringName":
       case value
       of "&\"\"", "\"\"":
-        "stringName \"\""
+        "default(StringName)"
+      elif value.startsWith"&":
+        "stringName" & value[1..^1]
       else:
         value
 
