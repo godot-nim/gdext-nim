@@ -93,14 +93,17 @@ else:
     cast[ClassCallVirtual](p_virtual_call_userdata)(p_instance, p_args, r_ret)
   const get_virtual_func = nil
 
+proc icon_path[T](_: typedesc[T]): String =
+  when T.hasCustomPragma(icon):
+    gdstring T.getCustomPragmaVal(icon)
 
-proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool): ClassCreationInfo4 =
+proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool; icon_path: String): ClassCreationInfo4 =
   ClassCreationInfo4(
     is_virtual: is_virtual,
     is_abstract: is_abstract,
     is_exposed: is_exposed,
     is_runtime: not T.hasCustomPragma(tool),
-    icon_path: nil,
+    icon_path: addr icon_path,
     set_func: set_func,
     get_func: get_func,
     get_property_list_func: get_property_list_func,
@@ -214,7 +217,7 @@ proc register*(T: typedesc) =
     once:
       register T.Super
       let cn = className(T)
-      let info = T.creationInfo(false, false, true)
+      let info = T.creationInfo(false, false, true, T.icon_path)
       ClassDB.registerExtensionClass(cn, className(T.Super), addr info)
       processExports T
       invoke Contract[T]
