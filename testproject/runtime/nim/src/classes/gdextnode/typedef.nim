@@ -170,11 +170,10 @@ proc test_VirtualMethod(self: GDExtNode) =
 # No specific pragma is needed.
 # based on Node.ready()
 method ready(self: GDExtNode) {.gdsync.} =
-  if not Engine.isEditorHint:
-    self.test_UserClass()
-    self.test_Object()
-    self.test_RefCounted()
-    self.test_Node()
-    self.test_Resource()
-    self.test_FirstclassFunction()
-    self.test_VirtualMethod()
+  self.test_UserClass()
+  self.test_Object()
+  self.test_RefCounted()
+  self.test_Node()
+  self.test_Resource()
+  self.test_FirstclassFunction()
+  self.test_VirtualMethod()

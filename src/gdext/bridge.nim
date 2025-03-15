@@ -43,6 +43,16 @@ template description*(desc: string) {.pragma.} ## By attaching it to a class, pr
 ##   "hello, world!"
 ## ```
 
+template tool* {.pragma.} ## Register the class as a tool class so that processing will be executed even while the editor is running.
+## ```nim
+## type MyTool {.gdsync, tool.} = ptr object of Node
+## method ready(self: MyTool) {.gdsync.} =
+##   if Engine.isEditorHint:
+##     print "You are in the editor."
+##   else:
+##     print "You are executing the app."
+## ```
+
 var Initialization_Default* {.compileTime.} = Initialization_Scene
 
 proc toLevel(node: NimNode): InitializationLevel =
