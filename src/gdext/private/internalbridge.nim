@@ -99,7 +99,7 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_expose
     is_virtual: is_virtual,
     is_abstract: is_abstract,
     is_exposed: is_exposed,
-    is_runtime: false,
+    is_runtime: not T.hasCustomPragma(tool),
     icon_path: nil,
     set_func: set_func,
     get_func: get_func,
