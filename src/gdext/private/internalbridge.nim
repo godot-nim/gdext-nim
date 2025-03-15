@@ -51,7 +51,7 @@ proc notification_func(p_instance: ClassInstancePtr; p_what: int32, p_reversed: 
 proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
   cast[Object](p_instance).toString(r_is_valid, p_out)
 
-proc create_instance_func[T: SomeUserClass](p_userdata: pointer): ObjectPtr {.gdcall.} =
+proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
   result =  class.engineInstance
   debugCreate(class)
@@ -76,15 +76,31 @@ proc reference_func(p_instance: pointer) {.gdcall.} =
 proc unreference_func(p_instance: pointer) {.gdcall.} =
   debugReference(cast[Object](p_instance), false)
 
-proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.} =
-  cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
+when true:
+  proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32): ClassCallVirtual {.gdcall.} =
+    # echo cast[ptr GodotClassMeta](p_userdata)[].className, ".", cast[ptr StringName](p_name)[], ".hash = ", p_hash
+    cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
 
-proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): ClassCreationInfo3 =
-  ClassCreationInfo3(
+  const get_virtual_call_data_func = nil
+  const call_virtual_with_data_func = nil
+
+else:
+  proc get_virtual_call_data_func(p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): pointer {.gdcall.} =
+    # echo cast[ptr GodotClassMeta](p_class_userdata)[].className, ".", cast[ptr StringName](p_name)[], ".hash = ", p_hash
+    cast[ptr GodotClassMeta](p_class_userdata)[].virtualMethods.getOrDefault(cast[ptr StringName](p_name)[], nil)
+
+  proc call_virtual_with_data_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_virtual_call_userdata: pointer; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    cast[ClassCallVirtual](p_virtual_call_userdata)(p_instance, p_args, r_ret)
+  const get_virtual_func = nil
+
+
+proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool): ClassCreationInfo4 =
+  ClassCreationInfo4(
     is_virtual: is_virtual,
     is_abstract: is_abstract,
-    is_exposed: true,
+    is_exposed: is_exposed,
     is_runtime: false,
+    icon_path: nil,
     set_func: set_func,
     get_func: get_func,
     get_property_list_func: get_property_list_func,
@@ -100,9 +116,8 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
     free_instance_func: free_instance_func[T],
     recreate_instance_func: recreate_instance_func[T],
     get_virtual_func: get_virtual_func,
-    get_virtual_call_data_func: nil,
-    call_virtual_with_data_func: nil,
-    get_rid_func: nil,
+    get_virtual_call_data_func: get_virtual_call_data_func,
+    call_virtual_with_data_func: call_virtual_with_data_func,
     class_userdata: addr Meta(T),
   )
 
@@ -196,7 +211,7 @@ proc register*(T: typedesc) =
   let cn = className(T)
   if cn in registered: return
 
-  let info = T.creationInfo(false, false)
+  let info = T.creationInfo(false, false, true)
   ClassDB.registerExtensionClass(cn, className(T.Super), addr info)
   processExports T
   invoke Contract[T]

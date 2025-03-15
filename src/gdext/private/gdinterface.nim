@@ -191,8 +191,8 @@ proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname:
 proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
   interfaceClassdbGetClassTag(addr p_classname)
 
-proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo3) =
-  interfaceClassdbRegisterExtensionClass3(
+proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo4) =
+  interfaceClassdbRegisterExtensionClass4(
     environment.library, addr p_class_name, addr p_parent_class_name, p_extension_funcs)
 
 proc registerExtensionClassMethod*(_: typedesc[ClassDB]; p_class_name: StringName; p_method_info: ptr ClassMethodInfo) =

@@ -107,7 +107,6 @@ type
   ClassInstancePtr* = pointer
   ClassSet* = proc (p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.}
   ClassGet* = proc (p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.}
-  ClassGetRID* = proc (p_instance: ClassInstancePtr): uint64_t {.gdcall.}
   PropertyInfo* {.byref.} = object
     `type`*: VariantType
     name*: StringNamePtr
@@ -133,41 +132,13 @@ type
   ClassReference* = proc (p_instance: ClassInstancePtr) {.gdcall.}
   ClassUnreference* = proc (p_instance: ClassInstancePtr) {.gdcall.}
   ClassCallVirtual* = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
-  ClassCreateInstance* = proc (p_class_userdata: pointer): ObjectPtr {.gdcall.}
   ClassCreateInstance2* = proc (p_class_userdata: pointer; p_notify_postinitialize: Bool): ObjectPtr {.gdcall.}
   ClassFreeInstance* = proc (p_class_userdata: pointer; p_instance: ClassInstancePtr) {.gdcall.}
-  ClassGetVirtual* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.gdcall.}
   ClassGetVirtual2* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): ClassCallVirtual {.gdcall.}
   ClassValidateProperty* = proc (p_instance: ClassInstancePtr; p_property: ptr PropertyInfo): Bool {.gdcall.}
   ClassRecreateInstance* = proc (p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.}
-  ClassGetVirtualCallData* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr): pointer {.gdcall.}
   ClassGetVirtualCallData2* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): pointer {.gdcall.}
   ClassCallVirtualWithData* = proc (p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_virtual_call_userdata: pointer; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
-
-  ClassCreationInfo3* {.bycopy.} = object
-    is_virtual*: Bool
-    is_abstract*: Bool
-    is_exposed*: Bool
-    is_runtime*: Bool
-    set_func*: ClassSet
-    get_func*: ClassGet
-    get_property_list_func*: ClassGetPropertyList
-    free_property_list_func*: ClassFreePropertyList2
-    property_can_revert_func*: ClassPropertyCanRevert
-    property_get_revert_func*: ClassPropertyGetRevert
-    validate_property_func*: ClassValidateProperty
-    notification_func*: ClassNotification2
-    to_string_func*: ClassToString
-    reference_func*: ClassReference
-    unreference_func*: ClassUnreference
-    create_instance_func*: ClassCreateInstance
-    free_instance_func*: ClassFreeInstance
-    recreate_instance_func*: ClassRecreateInstance
-    get_virtual_func*: ClassGetVirtual
-    get_virtual_call_data_func*: ClassGetVirtualCallData
-    call_virtual_with_data_func*: ClassCallVirtualWithData
-    get_rid_func*: ClassGetRID
-    class_userdata*: pointer
 
   ClassCreationInfo4* {.bycopy.} = object
     is_virtual*: Bool
@@ -465,7 +436,6 @@ type
   InterfaceClassdbConstructObject2* = proc (p_classname: ConstStringNamePtr): ObjectPtr {.gdcall, raises: [].}
   InterfaceClassdbGetMethodBind* = proc (p_classname: ConstStringNamePtr; p_methodname: ConstStringNamePtr; p_hash: Int): MethodBindPtr {.gdcall, raises: [].}
   InterfaceClassdbGetClassTag* = proc (p_classname: ConstStringNamePtr): pointer {.gdcall, raises: [].}
-  InterfaceClassdbRegisterExtensionClass3* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_parent_class_name: ConstStringNamePtr; p_extension_funcs: ptr ClassCreationInfo3) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClass4* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_parent_class_name: ConstStringNamePtr; p_extension_funcs: ptr ClassCreationInfo4) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClassMethod* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_method_info: ptr ClassMethodInfo) {.gdcall, raises: [].}
   InterfaceClassdbRegisterExtensionClassIntegerConstant* = proc (p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr; p_enum_name: ConstStringNamePtr; p_constant_name: ConstStringNamePtr; p_constant_value: Int; p_is_bitfield: Bool) {.gdcall, raises: [].}
@@ -659,7 +629,6 @@ var
   interfaceObjectCallScriptMethod*: InterfaceObjectCallScriptMethod
   interfaceScriptInstanceCreate3*: InterfaceScriptInstanceCreate3
   interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
-  interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
   interfaceClassdbRegisterExtensionClass4*: InterfaceClassdbRegisterExtensionClass4
   interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
   interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
@@ -838,7 +807,6 @@ proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
   interfaceObjectCallScriptMethod = cast[InterfaceObjectCallScriptMethod](getProcAddress(cstring "object_call_script_method"))
   interfaceScriptInstanceCreate3 = cast[InterfaceScriptInstanceCreate3](getProcAddress(cstring "script_instance_create3"))
   interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(cstring "callable_custom_create2"))
-  interfaceClassdbRegisterExtensionClass3 = cast[InterfaceClassdbRegisterExtensionClass3](getProcAddress(cstring "classdb_register_extension_class3"))
   interfaceClassdbRegisterExtensionClass4 = cast[InterfaceClassdbRegisterExtensionClass4](getProcAddress(cstring "classdb_register_extension_class4"))
   interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(cstring "classdb_register_extension_class_virtual_method"))
   interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars"))
