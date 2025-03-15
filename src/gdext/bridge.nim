@@ -53,6 +53,11 @@ template tool* {.pragma.} ## Register the class as a tool class so that processi
 ##     print "You are executing the app."
 ## ```
 
+template icon*(icon_path: string) {.pragma.} ## Specify the class icon on the editor by path.
+## ```nim
+## type MyIconClass {.gdsync, icon: "res://icon.png".} = ptr object of Node
+## ```
+
 var Initialization_Default* {.compileTime.} = Initialization_Scene
 
 proc toLevel(node: NimNode): InitializationLevel =

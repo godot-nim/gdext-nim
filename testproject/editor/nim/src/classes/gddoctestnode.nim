@@ -1,6 +1,6 @@
 import gdext
 
-type DocTestNode* {.gdsync, description: """
+type DocTestNode* {.gdsync, icon: "res://icon.png", description: """
 A node defined for documentation testing.
 "## comments" are ignored because there is no way to retrieve them.""".} = ptr object of Node
   pragma_param* {.gdexport, description: "This is a description for {.gdexport.}'ed params".}: string = "pragma-param"
