@@ -10,9 +10,9 @@ import std/strutils
 proc constValue*(t: string; value: string): string =
   case t
   of "Vector2", "Vector3", "Vector4":
-    value.multireplace((t, "vector"), ("inf", "system.Inf"))
+    value.multireplace(("Vector", "vector"), ("inf", "real_elem system.Inf"))
   of "Vector2i", "Vector3i", "Vector4i":
-    value.replace(t, "vectori")
+    value.replace("Vector", "vector")
   else:
     value.replace(t, $constructorName TypeSym t)
 
