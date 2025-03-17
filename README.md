@@ -11,6 +11,16 @@
 
 ---
 
+## Quick start
+
+```shell
+nimble install gdext
+mkdir testproject && cd $_
+touch project.godot
+gdextwiz new-extension MyExtension
+gdextwiz run
+```
+
 ## Features
 
 - [x] All classes and methods provided by the engine are available from Nim.
