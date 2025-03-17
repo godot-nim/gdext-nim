@@ -1,3 +1,28 @@
+## Nim for GDExtension. A pure library and a CLI tool.
+##
+## With this library, all the features of the Godot engine can be used from Nim.
+
+## Modules
+## =======
+## The following modules are automatically imported by gdext. There is no need to import them explicitly.
+## 
+## * `bridge <gdext/bridge.html>`_: Core functionalities of gdext
+## * `appearances <gdext/appearances.html>`_: Appearance of properties on the editor inspector
+## * `objectcallbacks <gdext/objectcallbacks.html>`_: Object callbacks called by the engine
+## * `builtinindex <gdext/builtinindex.html>`_: All type-defs provided by the engine
+## * `objecttools <gdext/objecttools.html>`_: Handling Object, RefCounted and Node
+## * `varianttools <gdext/varianttools.html>`_: Handling Variant
+## * `stringtools <gdext/stringtools.html>`_: Handling String, StringName and NodePath
+## * `arraytools <gdext/arraytools.html>`_: Handling Array, TypedArray and PackedArray
+## * `dicttools <gdext/dicttools.html>`_: Handling Dictionary
+## * `othertools <gdext/othertools.html>`_: Handling other engine-builtins (RID, Callable and Signal)
+## * `colortools <gdext/colortools.html>`_: Handling Color + color pallet
+## * `math <gdext/math.html>`_: Mathematical (geometrical) functions
+## * `swizzles <gdext/swizzles.html>`_: GLSLang-like swizzling operator
+## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
+## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
+
+
 {.warning[UnusedImport]: off.}
 
 import gdext/buildconf
