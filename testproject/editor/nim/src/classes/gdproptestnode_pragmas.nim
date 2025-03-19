@@ -15,7 +15,7 @@ type PropTestNodePragmas* {.gdsync.} = ptr object of Node
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport: Appearance.placeholder("placeholder here...").}: string
   string_with_export_dir* {.gdexport: Appearance.dir.}: string = "res://nim"
-  string_with_export_file* {.gdexport: Appearance.file.}: string = "res://nim/bootstrap.nim"
+  string_with_export_file* {.gdexport: Appearance.file("*.nim", "*.nims").}: string = "res://nim/bootstrap.nim"
   string_with_export_global_dir* {.gdexport: Appearance.globalDir.}: string = "/dev"
   string_with_export_global_file* {.gdexport: Appearance.globalFile.}: string = "/dev/null"
   int_with_export_enum*
