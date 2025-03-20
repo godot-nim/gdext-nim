@@ -51,12 +51,11 @@ method name*(param: RenderableSelfArgument): VariableSym =
 # ===========================
 
 proc dbModify*(typeSym: TypeSym): string =
-  try:
-    let class = classDB[typeSym]
-    if class.json.isRefCounted:
-      "gdref " & $typeSym
-    else: $typeSym
-  except:
+  let class = classDB.getOrDefault(typeSym, nil)
+  if class == nil: return $typesym
+  if class.json.isRefCounted:
+    "gdref " & $typeSym
+  else:
     $typeSym
 
 proc `type`*(param: RenderableParamBase): string =

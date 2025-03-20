@@ -32,22 +32,16 @@ proc convert*(json: JsonClass): Class =
 
 proc registerDB*(class: Class) =
   classDB[class.typesym] = class
-  try:
-    inheritanceDB[class.inherits].incl class.typesym
-  except:
-    inheritanceDB[class.inherits] = [class.typesym].toHashSet
+  inheritanceDB.mgetOrPut(class.inherits, default(HashSet[TypeSym]))
+    .incl class.typesym
 
 proc cmp(a, b: TypeSym): int = cmp a.string, b.string
 
 iterator hierarchical*(db: InheritanceDB): tuple[parent, child: TypeSym] =
-  var queue: Deque[TypeSym]
-  var parent: TypeSym = TypeSym.RootObj
-  while true:
-    try:
-      for child in db[parent].toSeq.sorted(cmp):
-        yield (parent, child)
-        queue.addLast child
-    except: discard
-    try:
-      parent = queue.popFirst()
-    except: break
+  var queue: Deque[TypeSym] = [TypeSym.RootObj].toDeque
+  var parent: TypeSym
+  while queue.len != 0:
+    parent = queue.popFirst()
+    for child in db.getOrDefault(parent).toSeq.sorted(cmp):
+      yield (parent, child)
+      queue.addLast child
