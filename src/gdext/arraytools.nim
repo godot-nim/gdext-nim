@@ -116,5 +116,8 @@ iterator mitems*[T](arr: PackedArray[T]): var T =
 iterator mpairs*[T](arr: PackedArray[T]): (int, var T) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
+proc `[]`*[T](self: PackedArray[T]; index: int): var T = self.data_unsafe[index]
+proc `[]=`*[T](self: PackedArray[T]; index: int; value: T) = self.data_unsafe[index] = value
+
 proc toSeq*[T](arr: PackedArray[T]): seq[T] =
   arr.dataUnsafe.toOpenArray(0, arr.size-1).toSeq

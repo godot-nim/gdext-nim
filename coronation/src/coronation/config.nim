@@ -429,6 +429,36 @@ const ignoreConf: Table[TypeSym, IgnoreConf] = toTable {
     module: true,
     constructor: true,
   ),
+  ts"PackedByteArray": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedColorArray": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedFloat32Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedFloat64Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedInt32Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedInt64Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedStringArray": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedVector2Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedVector3Array": IgnoreConf(
+    subscript: true,
+  ),
+  ts"PackedVector4Array": IgnoreConf(
+    subscript: true,
+  ),
 }
 
 proc getignore*(ts: TypeSym): IgnoreConf = ignoreConf.getOrDefault(ts)
