@@ -1,7 +1,6 @@
 import std/[tables, sets]
 
 import gdext/buildconf
-import gdext/utils/[macros]
 import gdext/gdinterface/classDB
 import gdext/core/gdclass
 import gdext/core/builtinindex
@@ -12,6 +11,8 @@ import gdext/classes/gdobject
 import tools
 import contracts
 import propertyinfo
+
+import gdext/private/macros
 
 when Assistance.genEditorHelp:
   import gdext/doctools

@@ -1,7 +1,7 @@
 import std/[sequtils]
 
 import gdext/buildconf
-import gdext/utils/macros
+import gdext/private/macros
 import propertyinfo
 
 proc docComment*(def: NimNode): NimNode =

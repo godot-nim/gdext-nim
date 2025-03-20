@@ -1,6 +1,6 @@
 import std/sequtils
 
-import gdext/utils/macros
+import gdext/private/macros
 
 proc subVec[N; T](v: var array[N,T]; offset, length: static[int]): var array[length,T] =
   cast[ptr array[length, T]](addr v[offset])[]

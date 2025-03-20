@@ -1,7 +1,7 @@
 import std/sequtils
 import std/options
 
-import gdext/utils/macros
+import gdext/private/macros
 
 func makeKey(v: NimNode; length: int; name: string): tuple[def: Option[NimNode]; key: seq[NimNode]] =
   result.key = newSeq[NimNode](length)

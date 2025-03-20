@@ -3,9 +3,11 @@ import std/[tables, typetraits, importutils]
 import gdext/buildconf
 
 import gdext/gdinterface/[native, extracommands]
-import gdext/utils/[macros, debugging]
+import gdext/utils/[debugging]
 
 import gdext/core/builtinindex
+
+import gdext/private/macros
 
 type
   GodotClassMeta* = object

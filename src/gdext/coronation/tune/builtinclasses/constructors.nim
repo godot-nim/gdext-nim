@@ -1,7 +1,7 @@
 import std/sequtils
 
 import gdext/gdinterface/extracommands
-import gdext/utils/macros
+import gdext/private/macros
 import gdext/core/builtinindex
 
 from gdext/core/geometrics/typedef {.all.} import makevec

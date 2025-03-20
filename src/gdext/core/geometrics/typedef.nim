@@ -1,6 +1,6 @@
 import std/genasts
 
-import gdext/utils/macros
+import gdext/private/macros
 
 type
   Vector*[N: static int; T] = array[N, T]

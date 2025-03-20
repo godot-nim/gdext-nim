@@ -1,7 +1,7 @@
 import std/[sequtils, strutils, sets, tables]
 
 import gdext/buildconf
-import gdext/utils/macros
+import gdext/private/macros
 
 import gdext/gdinterface/classDB
 import gdext/core/gdclass

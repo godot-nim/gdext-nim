@@ -1,6 +1,6 @@
 import std/sequtils
 import std/tables
-import gdext/utils/macros
+import gdext/private/macros
 
 import gdext/gdinterface/[ native, methodtools, exceptions ]
 import gdext/core/builtinindex

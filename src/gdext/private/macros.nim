@@ -207,3 +207,13 @@ proc newFormalParams*(ret: NimNode = newEmptyNode(); args: varargs[NimNode]): Ni
 
 proc newDiscardStmt*(sentence: NimNode = newEmptyNode()): NimNode =
   nnkDiscardStmt.newTree sentence
+
+proc assigned*(section, value: NimNode): NimNode =
+  section.expectKind {nnkLetSection, nnkVarSection}
+  result = genSym(nskLet)
+  section.add newIdentDefs(result, newEmptyNode(), value)
+
+proc assigned*(section: NimNode; values: seq[NimNode]): seq[NimNode] =
+  result = newSeqOfCap[NimNode](values.len)
+  for value in values:
+    result.add section.assigned value

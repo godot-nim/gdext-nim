@@ -2,7 +2,7 @@ import std/[sequtils, sets, tables, genasts]
 
 import gdext/gdinterface/[objects, extracommands, exceptions]
 
-import gdext/utils/macros
+import gdext/private/macros
 import gdext/core/gdclass
 import gdext/core/typeshift
 

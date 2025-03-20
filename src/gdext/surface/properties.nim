@@ -4,13 +4,15 @@ from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
 import gdext/gdinterface/[classDB, extracommands]
-import gdext/utils/[macros, staticevents]
+import gdext/utils/[staticevents]
 import gdext/core/[gdclass, gdrefs]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
+
+import gdext/private/macros
 
 when Assistance.genEditorHelp:
   import gdext/doctools
