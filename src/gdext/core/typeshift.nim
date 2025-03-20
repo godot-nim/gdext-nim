@@ -1,16 +1,8 @@
-import gdext/gdinterface/[native, extracommands]
+import gdext/gdinterface/[extracommands]
 import gdext/core/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
-
-var
-  variantFromType: array[Variant_Type, VariantFromTypeConstructorFunc]
-  typeFromVariant: array[Variant_Type, TypeFromVariantConstructorFunc]
-
-proc load* =
-  for i in (VariantType_Nil.succ)..<Variant_Type.high:
-    variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
-    typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
+import gdext/private/native
 
 type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
 type AltFloat* = float32

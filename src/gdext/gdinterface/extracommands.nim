@@ -1,6 +1,6 @@
 import std/[importutils]
-import native
 import gdext/core/builtinindex
+import gdext/private/native
 
 var newStringNameFromString: PtrConstructor
 var newStringFromStringName: PtrConstructor
@@ -48,9 +48,6 @@ proc empty*(_: typedesc[StringName]): var StringName =
   once: instance = stringName""
   instance
 
-var RefCounted_reference: MethodBindPtr
-var RefCounted_unreference: MethodBindPtr
-var RefCounted_get_reference_count: MethodBindPtr
 proc hook_reference*(o: ObjectPtr): Bool {.raises: [].} =
   if unlikely(o.isNil): return
   try:
@@ -82,15 +79,6 @@ proc hook_getReferenceCount*(o: RefCounted): int32 {.raises: [].} =
 proc load* =
   newStringNameFromString = interfaceVariantGetPtrConstructor(VariantType_StringName, 2)
   newStringFromStringName = interfaceVariantGetPtrConstructor(VariantType_String, 2)
-
-  let RefCounted_name = stringName"RefCounted"
-  let RefCounted_reference_name = stringName"reference"
-  let RefCounted_unreference_name = stringName"unreference"
-  let RefCounted_get_reference_count_name = stringName"get_reference_count"
-
-  RefCounted_reference = interface_ClassDB_getMethodBind(addr RefCounted_name, addr RefCounted_reference_name, 2240911060)
-  RefCounted_unreference = interface_ClassDB_getMethodBind(addr RefCounted_name, addr RefCounted_unreference_name, 2240911060)
-  RefCounted_get_reference_count = interface_ClassDB_getMethodBind(addr RefCounted_name, addr RefCounted_get_reference_count_name, 3905245786)
 
   let String_length_name = stringName"length"
   String_length = interface_Variant_getPtrBuiltinMethod(VariantType_String, addr String_length_name, 3173160232)

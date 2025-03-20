@@ -5,7 +5,8 @@ const DebugEnabled = Dev.debugCallbacks
 
 when DebugEnabled or isMainModule:
   import std/[importutils, logging, compilesettings, os]
-  import gdext/gdinterface/[native, extracommands]
+  import gdext/gdinterface/[extracommands]
+  import gdext/private/native
 
   type GroupLogger = ref object of Logger
     handlers: seq[Logger]

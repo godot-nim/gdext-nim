@@ -1,7 +1,7 @@
 import std/tables
 
 import gdext/buildconf
-import gdext/gdinterface/[native, extracommands, objects, classDB]
+import gdext/gdinterface/[extracommands, objects, classDB]
 
 import gdext/utils/[debugging]
 import gdext/core/builtinindex
@@ -15,6 +15,7 @@ import gdext/surface/classutils
 import gdext/surface/properties
 
 import gdext/private/macros
+import gdext/private/native
 
 when Assistance.genEditorHelp:
   import gdext/doctools

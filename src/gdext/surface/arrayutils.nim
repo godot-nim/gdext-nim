@@ -1,4 +1,4 @@
-import gdext/gdinterface/native
+import gdext/private/native
 import gdext/core/builtinindex
 import gdext/core/typeshift
 import gdext/gen/[builtinclasses]

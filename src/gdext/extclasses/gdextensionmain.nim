@@ -29,5 +29,5 @@ template eliminateExtensionMain* =
   destroy extmain
 
 when isMainModule:
-  import gdext/gdinterface/native
+  import gdext/private/native
   initializeExtensionMain()

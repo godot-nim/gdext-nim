@@ -1,4 +1,4 @@
-import gdext/gdinterface/native
+import gdext/private/native
 import gdext/gdinterface/extracommands
 
 type

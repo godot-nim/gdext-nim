@@ -2,9 +2,10 @@ import std/sequtils
 import std/tables
 import gdext/private/macros
 
-import gdext/gdinterface/[ native, methodtools, exceptions ]
+import gdext/gdinterface/[methodtools, exceptions ]
 import gdext/core/builtinindex
 import gdext/core/typeshift
+import gdext/private/native
 
 import propertyinfo
 

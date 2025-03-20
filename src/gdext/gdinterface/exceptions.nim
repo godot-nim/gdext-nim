@@ -1,4 +1,4 @@
-import native
+import gdext/private/native
 
 type GodotDefect* = object of CatchableError
 type GodotCallDefect* = object of GodotDefect

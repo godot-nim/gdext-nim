@@ -5,7 +5,7 @@ import gdext/buildconf
 import gdext/utils/staticevents
 export staticevents.execon, staticevents.expandEvent
 
-import gdext/gdinterface/native
+import gdext/private/native
 export InitializationLevel, VariantType, gdcall
 
 import gdext/gdinterface/exceptions

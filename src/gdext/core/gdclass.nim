@@ -2,12 +2,13 @@ import std/[tables, typetraits, importutils]
 
 import gdext/buildconf
 
-import gdext/gdinterface/[native, extracommands]
+import gdext/gdinterface/[extracommands]
 import gdext/utils/[debugging]
 
 import gdext/core/builtinindex
 
 import gdext/private/macros
+import gdext/private/native
 
 type
   GodotClassMeta* = object

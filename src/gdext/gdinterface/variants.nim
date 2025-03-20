@@ -1,7 +1,7 @@
 import std/[hashes, sequtils]
 
-import gdext/gdinterface/[native]
 import gdext/core/builtinindex
+import gdext/private/native
 
 export native
 

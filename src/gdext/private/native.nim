@@ -7,7 +7,13 @@ macro gdcall*(someProc: untyped): untyped =
     elif true or (defined linux) or (defined macosx): "cdecl"
   return someProc
 
+
 type
+  ExtentEnvironment* = ref object
+    getProcAddress*: InterfaceGetProcAddress
+    library*: ClassLibraryPtr
+    version*: GodotVersion
+
   uint64_t* = uint64
   uint32_t* = uint32
   uint16_t* = uint16
@@ -17,11 +23,9 @@ type
   wchar_t* = Utf16Char
   GodotInternalObject* = object
 
-type
   char32_t* = uint32_t
   char16_t* = uint16_t
 
-type
   VariantType* {.size: sizeof(cuint).} = enum
     VariantType_Nil,
     VariantType_Bool, VariantType_Int,
@@ -91,21 +95,21 @@ type
     error*: CallErrorType
     argument*: int32_t
     expected*: int32_t
-  VariantFromTypeConstructorFunc* = proc (a1: UninitializedVariantPtr; a2: TypePtr) {.gdcall.}
-  TypeFromVariantConstructorFunc* = proc (a1: UninitializedTypePtr; a2: VariantPtr) {.gdcall.}
-  VariantGetInternalPtrFunc* = proc (a1: VariantPtr): pointer {.gdcall.}
-  PtrOperatorEvaluator* = proc (p_left: ConstTypePtr; p_right: ConstTypePtr; r_result: TypePtr) {.gdcall.}
-  PtrBuiltInMethod* = proc (p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr; p_argument_count: cint) {.gdcall.}
-  PtrConstructor* = proc (p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall.}
-  PtrDestructor* = proc (p_base: TypePtr) {.gdcall.}
-  PtrSetter* = proc (p_base: TypePtr; p_value: ConstTypePtr) {.gdcall.}
-  PtrGetter* = proc (p_base: ConstTypePtr; r_value: TypePtr) {.gdcall.}
-  PtrIndexedSetter* = proc (p_base: TypePtr; p_index: Int; p_value: ConstTypePtr) {.gdcall.}
-  PtrIndexedGetter* = proc (p_base: ConstTypePtr; p_index: Int; r_value: TypePtr) {.gdcall.}
-  PtrKeyedSetter* = proc (p_base: TypePtr; p_key: ConstTypePtr; p_value: ConstTypePtr) {.gdcall.}
-  PtrKeyedGetter* = proc (p_base: ConstTypePtr; p_key: ConstTypePtr; r_value: TypePtr) {.gdcall.}
-  PtrKeyedChecker* = proc (p_base: ConstVariantPtr; p_key: ConstVariantPtr): uint32_t {.gdcall.}
-  PtrUtilityFunction* = proc (r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: cint) {.gdcall.}
+  VariantFromTypeConstructorFunc* = proc (a1: UninitializedVariantPtr; a2: TypePtr) {.gdcall, raises: [].}
+  TypeFromVariantConstructorFunc* = proc (a1: UninitializedTypePtr; a2: VariantPtr) {.gdcall, raises: [].}
+  VariantGetInternalPtrFunc* = proc (a1: VariantPtr): pointer {.gdcall, raises: [].}
+  PtrOperatorEvaluator* = proc (p_left: ConstTypePtr; p_right: ConstTypePtr; r_result: TypePtr) {.gdcall, raises: [].}
+  PtrBuiltInMethod* = proc (p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr; p_argument_count: cint) {.gdcall, raises: [].}
+  PtrConstructor* = proc (p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall, raises: [].}
+  PtrDestructor* = proc (p_base: TypePtr) {.gdcall, raises: [].}
+  PtrSetter* = proc (p_base: TypePtr; p_value: ConstTypePtr) {.gdcall, raises: [].}
+  PtrGetter* = proc (p_base: ConstTypePtr; r_value: TypePtr) {.gdcall, raises: [].}
+  PtrIndexedSetter* = proc (p_base: TypePtr; p_index: Int; p_value: ConstTypePtr) {.gdcall, raises: [].}
+  PtrIndexedGetter* = proc (p_base: ConstTypePtr; p_index: Int; r_value: TypePtr) {.gdcall, raises: [].}
+  PtrKeyedSetter* = proc (p_base: TypePtr; p_key: ConstTypePtr; p_value: ConstTypePtr) {.gdcall, raises: [].}
+  PtrKeyedGetter* = proc (p_base: ConstTypePtr; p_key: ConstTypePtr; r_value: TypePtr) {.gdcall, raises: [].}
+  PtrKeyedChecker* = proc (p_base: ConstVariantPtr; p_key: ConstVariantPtr): uint32_t {.gdcall, raises: [].}
+  PtrUtilityFunction* = proc (r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: cint) {.gdcall, raises: [].}
   ClassConstructor* = proc (): ObjectPtr {.gdcall.}
   InstanceBindingCreateCallback* = proc (p_token: pointer; p_instance: pointer): pointer {.gdcall.}
   InstanceBindingFreeCallback* = proc (p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.}
@@ -153,6 +157,7 @@ type
   ClassGetVirtualCallData* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr): pointer {.gdcall.}
   ClassGetVirtualCallData2* = proc (p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): pointer {.gdcall.}
   ClassCallVirtualWithData* = proc (p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_virtual_call_userdata: pointer; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
+
   ClassCreationInfo3* {.bycopy.} = object
     is_virtual*: Bool
     is_abstract*: Bool
@@ -201,7 +206,6 @@ type
     get_virtual_func*: ClassGetVirtual2
     get_virtual_call_data_func*: ClassGetVirtualCallData2
     call_virtual_with_data_func*: ClassCallVirtualWithData
-    get_rid_func*: ClassGetRID
     class_userdata*: pointer
 
   ClassLibraryPtr* = pointer
@@ -509,19 +513,10 @@ type
   InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen* = proc (p_data: cstring; p_size: Int) {.gdcall, raises: [].}
 
 
-type ExtentEnvironment* = ref object
-  getProcAddress*: InterfaceGetProcAddress
-  library*: ClassLibraryPtr
-  version*: GodotVersion
 
-var environment*: ExtentEnvironment
-
-proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
-  new environment
-  environment.getProcAddress = getProcAddress
-  environment.library = library
 
 var
+  environment*: ExtentEnvironment
   interfaceGetGodotVersion*: InterfaceGetGodotVersion
   interfaceMemAlloc*: InterfaceMemAlloc
   interfaceMemRealloc*: InterfaceMemRealloc
@@ -684,7 +679,22 @@ var
   interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
 
-proc load* =
+var
+  RefCounted_reference*: MethodBindPtr
+  RefCounted_unreference*: MethodBindPtr
+  RefCounted_get_reference_count*: MethodBindPtr
+  variantFromType*: array[Variant_Type, VariantFromTypeConstructorFunc]
+  typeFromVariant*: array[Variant_Type, TypeFromVariantConstructorFunc]
+  pointerFromVariant*: array[Variant_Type, VariantGetInternalPtrFunc]
+  typeConstructor*: array[Variant_Type, PtrConstructor]
+  typeDestructor*: array[Variant_Type, PtrDestructor]
+
+proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
+  new environment
+  environment.getProcAddress = getProcAddress
+  environment.library = library
+
+  # basic APIs
   let getProcAddress = environment.getProcAddress
   interfaceGetGodotVersion = cast[InterfaceGetGodotVersion](getProcAddress(cstring "get_godot_version"))
   interfaceMemAlloc = cast[InterfaceMemAlloc](getProcAddress(cstring "mem_alloc"))
@@ -848,4 +858,75 @@ proc load* =
   interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars"))
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(cstring "editor_help_load_xml_from_utf8_chars_and_len"))
 
+  # extra utilities
   interfaceGetGodotVersion(addr environment.version)
+
+  for i in (VariantType_Nil.succ)..Variant_Type.high:
+    variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
+    typeFromVariant[i] = interface_getVariantToTypeConstructor(Variant_Type i)
+    pointerFromVariant[i] = interface_getVariantGetInternalPtrFunc(Variant_Type i)
+
+  const
+    constrs = [
+      VariantTypeString,
+      VariantTypeStringName,
+      VariantTypeNodePath,
+      VariantTypeRID,
+      VariantTypeCallable,
+      VariantTypeSignal,
+      VariantTypeDictionary,
+      VariantTypeArray,
+      VariantTypePackedByteArray,
+      VariantTypePackedInt32Array,
+      VariantTypePackedInt64Array,
+      VariantTypePackedFloat32Array,
+      VariantTypePackedFloat64Array,
+      VariantTypePackedStringArray,
+      VariantTypePackedVector2Array,
+      VariantTypePackedVector3Array,
+      VariantTypePackedVector4Array,
+      VariantTypePackedColorArray,
+    ]
+    destrs = [
+      VariantTypeString,
+      VariantTypeStringName,
+      VariantTypeNodePath,
+      VariantTypeCallable,
+      VariantTypeSignal,
+      VariantTypeDictionary,
+      VariantTypeArray,
+      VariantTypePackedByteArray,
+      VariantTypePackedInt32Array,
+      VariantTypePackedInt64Array,
+      VariantTypePackedFloat32Array,
+      VariantTypePackedFloat64Array,
+      VariantTypePackedStringArray,
+      VariantTypePackedVector2Array,
+      VariantTypePackedVector3Array,
+      VariantTypePackedVector4Array,
+      VariantTypePackedColorArray,
+    ]
+
+  for variantType in constrs:
+    typeConstructor[variantType] = interface_Variant_getPtrConstructor(variantType, 1)
+  for variantType in destrs:
+    typeDestructor[variantType] = interface_Variant_getPtrDestructor(variantType)
+
+  var ClassName, MethodName: pointer
+
+  # RefCounted
+  interfaceStringNameNewWithLatin1Chars(addr ClassName, "RefCounted", false)
+
+  interfaceStringNameNewWithLatin1Chars(addr MethodName, "reference", false)
+  RefCounted_reference = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 2240911060)
+  typeDestructor[VariantType_String](addr MethodName)
+
+  interfaceStringNameNewWithLatin1Chars(addr MethodName, "unreference", false)
+  RefCounted_unreference = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 2240911060)
+  typeDestructor[VariantType_String](addr MethodName)
+
+  interfaceStringNameNewWithLatin1Chars(addr MethodName, "get_reference_count", false)
+  RefCounted_get_reference_count = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 3905245786)
+  typeDestructor[VariantType_String](addr MethodName)
+
+  typeDestructor[VariantType_String](addr ClassName)

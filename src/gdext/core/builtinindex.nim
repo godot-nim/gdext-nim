@@ -1,6 +1,6 @@
 import std/[tables]
 
-import gdext/gdinterface/native
+import gdext/private/native
 
 import gdext/buildconf
 import gdext/core/geometrics
@@ -179,110 +179,97 @@ template Item*(typ: typedesc[String]): typedesc = Rune
 template Item*(typ: typedesc[Array]): typedesc = Variant
 template Item*(typ: typedesc[Dictionary]): typedesc = Variant
 
-
-var hook_copy: array[VariantType, PtrConstructor]
-var hook_destroy: array[VariantType, PtrDestructor]
-
 proc `=destroy`*(val {.bycopy.}: String) =
   if val.opaque == String.opaque.default: return
-  try: hook_destroy[VariantTypeString](addr val)
-  except: discard
+  typeDestructor[VariantTypeString](addr val)
 proc `=destroy`*(val {.bycopy.}: StringName) =
   if val.opaque == StringName.opaque.default: return
-  try: hook_destroy[VariantTypeStringName](addr val)
-  except: discard
+  typeDestructor[VariantTypeStringName](addr val)
 proc `=destroy`*(val {.bycopy.}: NodePath) =
   if val.opaque == NodePath.opaque.default: return
-  try: hook_destroy[VariantTypeNodePath](addr val)
-  except: discard
+  typeDestructor[VariantTypeNodePath](addr val)
 proc `=destroy`*(val {.bycopy.}: Callable) =
   if val.opaque == Callable.opaque.default: return
-  try: hook_destroy[VariantTypeCallable](addr val)
-  except: discard
+  typeDestructor[VariantTypeCallable](addr val)
 proc `=destroy`*(val {.bycopy.}: Signal) =
   if val.opaque == Signal.opaque.default: return
-  try: hook_destroy[VariantTypeSignal](addr val)
-  except: discard
+  typeDestructor[VariantTypeSignal](addr val)
 proc `=destroy`*(val {.bycopy.}: Array) =
   if val.opaque == Array.opaque.default: return
-  try: hook_destroy[VariantTypeArray](addr val)
-  except: discard
+  typeDestructor[VariantTypeArray](addr val)
 proc `=destroy`*(val {.bycopy.}: Dictionary) =
   if val.opaque == Dictionary.opaque.default: return
-  try: hook_destroy[VariantTypeDictionary](addr val)
-  except: discard
+  typeDestructor[VariantTypeDictionary](addr val)
 proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
   if val.opaque == PackedArray.opaque.default: return
-  try:
-    when T is byte:
-      hook_destroy[VariantTypePackedByteArray](addr val)
-    elif T is int32:
-      hook_destroy[VariantTypePackedInt32Array](addr val)
-    elif T is int64:
-      hook_destroy[VariantTypePackedInt64Array](addr val)
-    elif T is float32:
-      hook_destroy[VariantTypePackedFloat32Array](addr val)
-    elif T is float64:
-      hook_destroy[VariantTypePackedFloat64Array](addr val)
-    elif T is String:
-      hook_destroy[VariantTypePackedStringArray](addr val)
-    elif T is Vector2:
-      hook_destroy[VariantTypePackedVector2Array](addr val)
-    elif T is Vector3:
-      hook_destroy[VariantTypePackedVector3Array](addr val)
-    elif T is Vector4:
-      hook_destroy[VariantTypePackedVector4Array](addr val)
-    elif T is Color:
-      hook_destroy[VariantTypePackedColorArray](addr val)
-  except: discard
+  when T is byte:
+    typeDestructor[VariantTypePackedByteArray](addr val)
+  elif T is int32:
+    typeDestructor[VariantTypePackedInt32Array](addr val)
+  elif T is int64:
+    typeDestructor[VariantTypePackedInt64Array](addr val)
+  elif T is float32:
+    typeDestructor[VariantTypePackedFloat32Array](addr val)
+  elif T is float64:
+    typeDestructor[VariantTypePackedFloat64Array](addr val)
+  elif T is String:
+    typeDestructor[VariantTypePackedStringArray](addr val)
+  elif T is Vector2:
+    typeDestructor[VariantTypePackedVector2Array](addr val)
+  elif T is Vector3:
+    typeDestructor[VariantTypePackedVector3Array](addr val)
+  elif T is Vector4:
+    typeDestructor[VariantTypePackedVector4Array](addr val)
+  elif T is Color:
+    typeDestructor[VariantTypePackedColorArray](addr val)
 
 proc `=dup`*(src: String): String =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeString](addr result, addr argPtr)
+  typeConstructor[VariantTypeString](addr result, addr argPtr)
 proc `=dup`*(src: StringName): StringName =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeStringName](addr result, addr argPtr)
+  typeConstructor[VariantTypeStringName](addr result, addr argPtr)
 proc `=dup`*(src: NodePath): NodePath =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeNodePath](addr result, addr argPtr)
+  typeConstructor[VariantTypeNodePath](addr result, addr argPtr)
 proc `=dup`*(src: RID): RID =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeRID](addr result, addr argPtr)
+  typeConstructor[VariantTypeRID](addr result, addr argPtr)
 proc `=dup`*(src: Callable): Callable =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeCallable](addr result, addr argPtr)
+  typeConstructor[VariantTypeCallable](addr result, addr argPtr)
 proc `=dup`*(src: Signal): Signal =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeSignal](addr result, addr argPtr)
+  typeConstructor[VariantTypeSignal](addr result, addr argPtr)
 proc `=dup`*(src: Dictionary): Dictionary =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeDictionary](addr result, addr argPtr)
+  typeConstructor[VariantTypeDictionary](addr result, addr argPtr)
 proc `=dup`*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
-  hook_copy[VariantTypeArray](addr result, addr argPtr)
+  typeConstructor[VariantTypeArray](addr result, addr argPtr)
 
 proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
   let argPtr = cast[pointer](addr src)
   when T is byte:
-    hook_copy[VariantTypePackedByteArray](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedByteArray](addr result, addr argPtr)
   elif T is int32:
-    hook_copy[VariantTypePackedInt32Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedInt32Array](addr result, addr argPtr)
   elif T is int64:
-    hook_copy[VariantTypePackedInt64Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedInt64Array](addr result, addr argPtr)
   elif T is float32:
-    hook_copy[VariantTypePackedFloat32Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedFloat32Array](addr result, addr argPtr)
   elif T is float64:
-    hook_copy[VariantTypePackedFloat64Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedFloat64Array](addr result, addr argPtr)
   elif T is String:
-    hook_copy[VariantTypePackedStringArray](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedStringArray](addr result, addr argPtr)
   elif T is Vector2:
-    hook_copy[VariantTypePackedVector2Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedVector2Array](addr result, addr argPtr)
   elif T is Vector3:
-    hook_copy[VariantTypePackedVector3Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedVector3Array](addr result, addr argPtr)
   elif T is Vector4:
-    hook_copy[VariantTypePackedVector4Array](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedVector4Array](addr result, addr argPtr)
   elif T is Color:
-    hook_copy[VariantTypePackedColorArray](addr result, addr argPtr)
+    typeConstructor[VariantTypePackedColorArray](addr result, addr argPtr)
 
 
 proc `=copy`*(dst: var String; src: String) =
@@ -332,9 +319,7 @@ proc `=copy`*[T](dst: var PackedArray[T]; src: PackedArray[T]) =
   dst = `=dup` src
 
 proc `=destroy`*(x: Variant) =
-  try:
-    interface_variantDestroy(addr x)
-  except: discard
+  interface_variantDestroy(addr x)
 proc `=dup`*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
 proc `=copy`*(dest: var Variant; source: Variant) =
@@ -344,50 +329,3 @@ proc `=copy`*(dest: var Variant; source: Variant) =
 
 method onInit*(self: Object) {.base.} = discard
 method onDestroy*(self: Object) {.base.} = discard
-
-proc load* =
-  const
-    constrs = [
-      VariantTypeString,
-      VariantTypeStringName,
-      VariantTypeNodePath,
-      VariantTypeRID,
-      VariantTypeCallable,
-      VariantTypeSignal,
-      VariantTypeDictionary,
-      VariantTypeArray,
-      VariantTypePackedByteArray,
-      VariantTypePackedInt32Array,
-      VariantTypePackedInt64Array,
-      VariantTypePackedFloat32Array,
-      VariantTypePackedFloat64Array,
-      VariantTypePackedStringArray,
-      VariantTypePackedVector2Array,
-      VariantTypePackedVector3Array,
-      VariantTypePackedVector4Array,
-      VariantTypePackedColorArray,
-    ]
-    destrs = [
-      VariantTypeString,
-      VariantTypeStringName,
-      VariantTypeNodePath,
-      VariantTypeCallable,
-      VariantTypeSignal,
-      VariantTypeDictionary,
-      VariantTypeArray,
-      VariantTypePackedByteArray,
-      VariantTypePackedInt32Array,
-      VariantTypePackedInt64Array,
-      VariantTypePackedFloat32Array,
-      VariantTypePackedFloat64Array,
-      VariantTypePackedStringArray,
-      VariantTypePackedVector2Array,
-      VariantTypePackedVector3Array,
-      VariantTypePackedVector4Array,
-      VariantTypePackedColorArray,
-    ]
-
-  for variantType in constrs:
-    hook_copy[variantType] = interface_Variant_getPtrConstructor(variantType, 1)
-  for variantType in destrs:
-    hook_destroy[variantType] = interface_Variant_getPtrDestructor(variantType)

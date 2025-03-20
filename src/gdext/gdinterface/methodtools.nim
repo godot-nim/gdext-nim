@@ -1,7 +1,7 @@
-import native
 import extracommands
 import gdext/core/builtinindex
 import gdext/core/gdrefs
+import gdext/private/native
 
 export gdcall
 
