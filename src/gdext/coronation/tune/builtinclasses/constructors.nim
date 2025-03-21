@@ -2,7 +2,7 @@ import gdext/gdinterface/extracommands
 import gdext/private/macros
 import gdext/builtinindex
 
-from gdext/core/geometrics/typedef {.all.} import makevec
+from gdext/math {.all.} import makevec
 
 
 macro vector*(exp: varargs[typed]): untyped =

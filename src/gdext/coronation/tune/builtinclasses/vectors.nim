@@ -1,8 +1,7 @@
-import gdext/core/geometrics
+import gdext/builtinindex
+import gdext/math
 
 {.push, inline.}
-
-export vectormath
 
 # Functions
 # ---------

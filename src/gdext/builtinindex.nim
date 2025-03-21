@@ -3,7 +3,6 @@ import std/tables
 import gdext/private/native
 
 import gdext/buildconf
-import gdext/core/geometrics
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64
@@ -16,6 +15,15 @@ type char16* = char16_t
 type char32* = char32_t
 
 type Opaque[I: static int] = array[I, pointer]
+
+type
+  Vector*[N: static int; T] = array[N, T]
+  NVector*[N: static int; T: SomeFloat] = distinct Vector[N, T]
+  Radian*[T: SomeFloat] = distinct T
+
+type
+  Radian32* = Radian[float32]
+  Radian64* = Radian[float64]
 
 type
   VectorR*[N: static int] = Vector[N, real_elem]

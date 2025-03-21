@@ -11,8 +11,8 @@ export InitializationLevel, VariantType, gdcall
 import gdext/gdinterface/exceptions
 export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 
-import gdext/core/[ geometrics, gdrefs ]
-export              geometrics, gdrefs
+import gdext/core/[ gdrefs ]
+export              gdrefs
 
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
@@ -27,6 +27,7 @@ import gdext/surface/[ init, userclass, userenums, properties, classutils, varia
 export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions
 
 import gdext/builtinindex; export builtinindex
+import gdext/math; export math
 import gdext/swizzles; export swizzles
 
 import gdext/classes/[gdengine]
