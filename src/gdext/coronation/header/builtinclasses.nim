@@ -1,4 +1,5 @@
 import gdext/private/native; export native
+import gdext/gen/globalenums; export globalenums
 import gdext/gdinterface/methodtools; export methodtools
 import gdext/gdinterface/extracommands
 import gdext/utils/staticevents; export staticevents
@@ -9,3 +10,6 @@ from std/unicode import Rune; export Rune
 proc load*(typ: VariantType; proc_name: string; hash: int): PtrBuiltinMethod =
   let name = stringName proc_name
   interface_Variant_getPtrBuiltinMethod(typ, addr name, hash)
+
+proc load*(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator =
+  interface_variantGetPtrOperatorEvaluator(cuint op.ord, left, right)

@@ -68,7 +68,7 @@ const EscapeSign = toTable {
   "in": "In" }
 
 func variantOPKey(sign: string): string =
-  "VariantOP_" & EscapeSign[sign]
+  "op" & EscapeSign[sign]
 
 proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
   new result
@@ -116,7 +116,7 @@ proc weave_procdef(operator: BuiltinClassOperator): Cloth =
   &"{weave operator.key} {operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
 
 proc weave_loadstmt(operator: BuiltinClassOperator): Cloth =
-  &"{operator.containerkey} = interface_variantGetPtrOperatorEvaluator({operator.opkey}, {operator.vt_first}, {operator.vt_second})"
+  &"{operator.containerkey} = load({operator.opkey}, {operator.vt_first}, {operator.vt_second})"
 
 proc weave_operators*(json: JsonBuiltinClass): Cloth =
   let typesym = json.name.convert(TypeSym)

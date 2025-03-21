@@ -51,20 +51,6 @@ type
     VariantType_PackedVector3Array,
     VariantType_PackedColorArray,
     VariantType_PackedVector4Array,
-  VariantOperator* {.size: sizeof(cuint).} = enum
-    VariantOP_Equal, VariantOP_NotEqual,
-    VariantOP_Less, VariantOP_LessEqual,
-    VariantOP_Greater, VariantOP_GreaterEqual,
-    VariantOP_Add, VariantOP_Subtract,
-    VariantOP_Multiply, VariantOP_Divide,
-    VariantOP_Negate, VariantOP_Positive,
-    VariantOP_Module, VariantOP_Power,
-    VariantOP_ShiftLeft, VariantOP_ShiftRight,
-    VariantOP_BitAnd, VariantOP_BitOr,
-    VariantOP_BitXor, VariantOP_BitNegate,
-    VariantOP_And, VariantOP_Or,
-    VariantOP_Xor, VariantOP_Not,
-    VariantOP_In
   VariantPtr* = pointer
   ConstVariantPtr* = pointer
   UninitializedVariantPtr* = pointer
@@ -366,7 +352,7 @@ type
   InterfaceVariantDestroy* = proc (p_self: VariantPtr) {.gdcall, raises: [].}
   InterfaceVariantCall* = proc (p_self: VariantPtr; p_method: ConstStringNamePtr; p_args: ptr ConstVariantPtr; p_argument_count: Int; r_return: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall, raises: [].}
   InterfaceVariantCallStatic* = proc (p_type: VariantType; p_method: ConstStringNamePtr; p_args: ptr ConstVariantPtr; p_argument_count: Int; r_return: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall, raises: [].}
-  InterfaceVariantEvaluate* = proc (p_op: VariantOperator; p_a: ConstVariantPtr; p_b: ConstVariantPtr; r_return: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall, raises: [].}
+  InterfaceVariantEvaluate* = proc (p_op: cuint; p_a: ConstVariantPtr; p_b: ConstVariantPtr; r_return: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall, raises: [].}
   InterfaceVariantSet* = proc (p_self: VariantPtr; p_key: ConstVariantPtr; p_value: ConstVariantPtr; r_valid: ptr Bool) {.gdcall, raises: [].}
   InterfaceVariantSetNamed* = proc (p_self: VariantPtr; p_key: ConstStringNamePtr; p_value: ConstVariantPtr; r_valid: ptr Bool) {.gdcall, raises: [].}
   InterfaceVariantSetKeyed* = proc (p_self: VariantPtr; p_key: ConstVariantPtr; p_value: ConstVariantPtr; r_valid: ptr Bool) {.gdcall, raises: [].}
@@ -395,7 +381,7 @@ type
   InterfaceGetVariantFromTypeConstructor* = proc (p_type: VariantType): VariantFromTypeConstructorFunc {.gdcall, raises: [].}
   InterfaceGetVariantToTypeConstructor* = proc (p_type: VariantType): TypeFromVariantConstructorFunc {.gdcall, raises: [].}
   InterfaceGetVariantGetInternalPtrFunc* = proc (p_type: VariantType): VariantGetInternalPtrFunc {.gdcall, raises: [].}
-  InterfaceVariantGetPtrOperatorEvaluator* = proc (p_operator: VariantOperator; p_type_a: VariantType; p_type_b: VariantType): PtrOperatorEvaluator {.gdcall, raises: [].}
+  InterfaceVariantGetPtrOperatorEvaluator* = proc (p_operator: cuint; p_type_a: VariantType; p_type_b: VariantType): PtrOperatorEvaluator {.gdcall, raises: [].}
   InterfaceVariantGetPtrBuiltinMethod* = proc (p_type: VariantType; p_method: ConstStringNamePtr; p_hash: Int): PtrBuiltInMethod {.gdcall, raises: [].}
   InterfaceVariantGetPtrConstructor* = proc (p_type: VariantType; p_constructor: int32_t): PtrConstructor {.gdcall, raises: [].}
   InterfaceVariantGetPtrDestructor* = proc (p_type: VariantType): PtrDestructor {.gdcall, raises: [].}

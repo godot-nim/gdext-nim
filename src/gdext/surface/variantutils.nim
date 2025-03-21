@@ -1,6 +1,7 @@
 import gdext/gdinterface/[variants, exceptions, extracommands]
 
 import gdext/core/[typeshift, builtinindex]
+import gdext/gen/globalenums
 import std/[strformat]
 
 export variants.evaluate
@@ -48,6 +49,7 @@ const OpName: array[VariantOperator, string] = [
   "xor",
   "not",
   "contains",
+  "max",
 ]
 
 proc newVariantTypeDefect(op: VariantOperator; a, b: ptr Variant): ref GodotVariantTypeDefect =
@@ -65,26 +67,26 @@ proc evaluate*(op: VariantOperator; a, b: ptr Variant): Variant =
 
 proc `==`*(self, other: Variant): bool =
   var valid: bool
-  let res = evaluate(VariantOP_Equal, addr self, addr other, valid)
+  let res = evaluate(opEqual, addr self, addr other, valid)
   if not valid: self.getType == other.getType
   else: res.get bool
 proc `!=`*(self, other: Variant): bool =
   var valid: bool
-  let res = evaluate(VariantOP_NotEqual, addr self, addr other, valid)
+  let res = evaluate(opNotEqual, addr self, addr other, valid)
   if not valid: self.getType != other.getType
   else: res.get bool
 
 proc `<`*(self, other: Variant): bool =
-  evaluate(VariantOP_Less, addr self, addr other).get bool
+  evaluate(opLess, addr self, addr other).get bool
 proc `<=`*(self, other: Variant): bool =
-  evaluate(VariantOP_LessEqual, addr self, addr other).get bool
+  evaluate(opLessEqual, addr self, addr other).get bool
 proc `>`*(self, other: Variant): bool =
-  evaluate(VariantOP_Greater, addr self, addr other).get bool
+  evaluate(opGreater, addr self, addr other).get bool
 proc `>=`*(self, other: Variant): bool =
-  evaluate(VariantOP_GreaterEqual, addr self, addr other).get bool
+  evaluate(opGreaterEqual, addr self, addr other).get bool
 
 proc contains*(self: Variant; index: Variant): bool =
-  evaluate(VariantOpIn, addr index, addr self).get bool
+  evaluate(opIn, addr index, addr self).get bool
 
 proc call*(self: Variant; `method`: StringName; args: varargs[Variant, variant]): Variant {.discardable.} =
   var err: CallError

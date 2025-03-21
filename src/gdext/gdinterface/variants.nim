@@ -2,6 +2,7 @@ import std/[hashes, sequtils]
 
 import gdext/core/builtinindex
 import gdext/private/native
+import gdext/gen/globalenums
 
 export native
 
@@ -38,7 +39,7 @@ proc set*(self: Variant; key: Variant; value: Variant; r_isValid: var bool) =
   interfaceVariantSet(addr self, addr key, addr value, addr r_isValid)
 
 proc evaluate*(op: VariantOperator; a, b: ptr Variant; valid: var bool): Variant =
-  interfaceVariantEvaluate(op, cast[VariantPtr](a), cast[VariantPtr](b), addr result, addr valid)
+  interfaceVariantEvaluate(op.ord.cuint, cast[VariantPtr](a), cast[VariantPtr](b), addr result, addr valid)
 
 proc call*(self: Variant; `method`: StringName; err: var CallError; args: varargs[Variant, variant]): Variant {.discardable.} =
   if args.len == 0:
