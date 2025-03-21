@@ -123,6 +123,9 @@ type
       debugName: string
   RefCounted* = ptr object of Object
 
+  GdRef*[RefCounted] = object
+    handle*: RefCounted
+
   SomePackedArray* =
     PackedByteArray    |
     PackedInt32Array   |
@@ -336,3 +339,31 @@ proc `=copy`*(dest: var Variant; source: Variant) =
   `=destroy` dest
   wasMoved dest
   interface_variantNewCopy(addr dest, addr source)
+
+proc hook_reference(o: ObjectPtr): Bool {.raises: [].}
+proc hook_unreference(o: ObjectPtr): Bool {.raises: [].}
+
+proc `=destroy`*[T](self: GdRef[T]) =
+  if self.handle.isNil: return
+  let objectptr = self.handle.owner
+  if objectptr.isNil: return
+  if hook_unreference(objectptr):
+    interfaceObjectDestroy objectPtr
+proc `=dup`*[T](src: GdRef[T]): GdRef[T] =
+  if src.handle.isNil: return
+  result.handle = src.handle
+  let objectptr = src.handle.owner
+  discard hook_reference(objectptr)
+proc `=copy`*[T](dst: var GdRef[T]; src: GdRef[T]) =
+  `=destroy`dst
+  `=wasMoved`dst
+  dst = `=dup`src
+
+proc hook_reference(o: ObjectPtr): Bool {.raises: [].} =
+  if unlikely(o.isNil): return
+  interface_Object_methodBindPtrCall(RefCounted_reference, o, nil, addr result)
+proc hook_unreference(o: ObjectPtr): Bool {.raises: [].} =
+  if unlikely(o.isNil): return
+  interface_Object_methodBindPtrCall(RefCounted_unreference, o, nil, addr result)
+
+template gdref*[T](Type: typedesc[T]): typedesc = GdRef[Type]

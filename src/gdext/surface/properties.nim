@@ -4,7 +4,7 @@ from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
 import gdext/gdinterface/[classDB]
-import gdext/core/[gdclass, gdrefs]
+import gdext/core/[gdclass]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts

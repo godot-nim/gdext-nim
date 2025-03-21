@@ -126,6 +126,12 @@ when Dev.debugCallbacks or isMainModule:
       callbacks.notice SYNC.FREE, o.instanceInfo
     except: discard
 
+  proc hook_getReferenceCount(o: ObjectPtr): int32 {.raises: [].} =
+    if unlikely(o.isNil): return
+    var ret: Int
+    interface_Object_methodBindPtrCall(RefCounted_get_reference_count, o, nil, addr ret)
+    return int32 ret
+
   proc debugReference*(o: Object; reference: bool) {.raises: [].} =
     try:
       let count = hook_getReferenceCount o.owner

@@ -3,8 +3,7 @@ import std/[strutils]
 import gdext/utils/debugging
 import gdext/gdinterface/objects
 import gdext/gdinterface/classDB
-
-import gdext/core/gdrefs
+import gdext/private/gdinterface
 
 export objects.destroy
 export objects.getInstanceID
@@ -36,7 +35,7 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
     .getInstance(T)
 
 template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
-template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.unwrapped.castTo(typeof T).referenced
+template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.handle.castTo(typeof T).referenced
 
 {.push, inline.}
 
@@ -47,6 +46,7 @@ template `as`*[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result =
 
 {.pop.}
 
+proc unwrapped*[T](self: GdRef[T]): T = self.handle
 template `[]`*[T: RefCounted](x: GdRef[T]): T = x.unwrapped
 
 proc singleton*[T: SomeClass](_: typedesc[T]): T =

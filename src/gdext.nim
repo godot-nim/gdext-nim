@@ -11,9 +11,6 @@ export InitializationLevel, VariantType, gdcall
 import gdext/gdinterface/exceptions
 export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 
-import gdext/core/[ gdrefs ]
-export              gdrefs
-
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
 

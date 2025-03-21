@@ -1,6 +1,5 @@
 import gdext/builtinindex
 import gdext/core/gdclass
-import gdext/core/gdrefs
 import gdext/private/native
 import gdext/private/gdinterface
 
@@ -210,11 +209,11 @@ proc decode_result*(p: pointer; Type: typedesc): Type =
 
 template encoded*[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
 template encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
-  v.unwrapped.encode(p)
+  v.handle.encode(p)
 proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced
 proc variant*[T: RefCounted](v: GdRef[T]): Variant =
-  v.unwrapped.variant
+  v.handle.variant
 proc get*[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
   v.get(T).referenced
 

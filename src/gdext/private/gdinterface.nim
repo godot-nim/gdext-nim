@@ -1,5 +1,5 @@
 import std/[importutils]
-import gdext/builtinindex
+import gdext/builtinindex {.all.}
 import gdext/private/native
 
 var newStringNameFromString: PtrConstructor
@@ -48,33 +48,11 @@ proc empty*(_: typedesc[StringName]): var StringName =
   once: instance = stringName""
   instance
 
-proc hook_reference*(o: ObjectPtr): Bool {.raises: [].} =
-  if unlikely(o.isNil): return
-  try:
-    interface_Object_methodBindPtrCall(RefCounted_reference, o, nil, addr result)
-  except: discard
-proc hook_unreference*(o: ObjectPtr): Bool {.raises: [].} =
-  if unlikely(o.isNil): return
-  try:
-    interface_Object_methodBindPtrCall(RefCounted_unreference, o, nil, addr result)
-  except: discard
-proc hook_getReferenceCount*(o: ObjectPtr): int32 {.raises: [].} =
-  if unlikely(o.isNil): return
-  try:
-    var ret: Int
-    interface_Object_methodBindPtrCall(RefCounted_get_reference_count, o, nil, addr ret)
-    return int32 ret
-  except: discard
-
-proc hook_reference*(o: RefCounted): Bool {.raises: [].} =
-  if unlikely(o.owner.isNil): return
-  hook_reference o.owner
-proc hook_unreference*(o: RefCounted): Bool {.raises: [].} =
-  if unlikely(o.owner.isNil): return
-  hook_unreference o.owner
-proc hook_getReferenceCount*(o: RefCounted): int32 {.raises: [].} =
-  if unlikely(o.owner.isNil): return
-  hook_getReferenceCount o.owner
+proc referenced*[T](self: T): GdRef[T] =
+  result.handle = self
+  discard hook_reference(self.owner)
+proc asGdRef*[T](self: T): GdRef[T] =
+  result.handle = self
 
 proc load* =
   newStringNameFromString = interfaceVariantGetPtrConstructor(VariantType_StringName, 2)

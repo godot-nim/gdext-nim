@@ -4,8 +4,8 @@ export                    classDB, methodtools, exceptions
 import gdext/private/gdinterface
 export gdstring, stringname, classname
 
-import gdext/core/[typeshift, gdclass, gdrefs ]
-export             typeshift, gdclass, gdrefs
+import gdext/core/[typeshift, gdclass]
+export             typeshift, gdclass
 
 import gdext/builtinindex; export builtinindex
 
