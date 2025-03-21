@@ -6,10 +6,10 @@ import gdext/utils/[debugging]
 
 import gdext/builtinindex
 import gdext/objectcallbacks
+import gdext/stringtools
 
 import gdext/private/macros
 import gdext/private/native
-import gdext/private/gdinterface
 
 type
   GodotClassMeta* = object

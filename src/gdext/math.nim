@@ -1,9 +1,13 @@
+import std/strformat
 import std/genasts
 import std/math as stdmath
 from std/endians {.all.} import builtin_bswap16, builtin_bswap32, builtin_bswap64
 
-import gdext/builtinindex
+import gdext/gdinterface/methodtools
 import gdext/private/macros
+import gdext/private/native
+import gdext/private/staticevents
+import gdext/builtinindex
 
 export stdmath except
   sin, cos, tan,
@@ -83,6 +87,104 @@ macro vec*(exp: varargs[typed]): Vector =
   result = newStmtList(
     letSection,
     letSection.makeVec(exp[0..^1]))
+
+macro vector*(exp: varargs[typed]): VectorR =
+  let letstmt = newLetSection()
+  result = newStmtList(
+    letstmt,
+    letstmt.makeVec(real_elem, exp[0..^1]))
+macro vectori*(exp: varargs[typed]): VectorI =
+  let letstmt = newLetSection()
+  result = newStmtList(
+    letstmt,
+    letstmt.makeVec(int_elem, exp[0..^1]))
+
+{.push, inline.}
+proc vector2*(x, y: real_elem): Vector2 = [x, y]
+proc vector3*(x, y, z: real_elem): Vector3 = [x, y, z]
+proc vector4*(x, y, z, w: real_elem): Vector4 = [x, y, z, w]
+
+proc vector2i*(x, y: int_elem): Vector2i = [x, y]
+proc vector3i*(x, y, z: int_elem): Vector3i = [x, y, z]
+proc vector4i*(x, y, z, w: int_elem): Vector4i = [x, y, z, w]
+{.pop.}
+
+proc quaternion*(x, y, z, w: real_elem): Quaternion =
+  Quaternion(x: x, y: y, z: z, w: w)
+
+proc basis*(xx, xy, xz, yx, yy, yz, zx, zy, zz: real_elem): Basis =
+  Basis(
+    x: [xx, xy, xz],
+    y: [yx, yy, yz],
+    z: [zx, zy, zz])
+
+proc plane*(nx, ny, nz, d: real_elem): Plane =
+  Plane(normal: [nx, ny, nz], d: d)
+
+proc projection*(xx,xy,xz,xw, yx,yy,yz,yw, zx,zy,zz,zw, wx,wy,wz,ww: real_elem): Projection =
+  Projection(
+    x: [xx, xy, xz, xw],
+    y: [yx, yy, yz, yw],
+    z: [zx, zy, zz, zw],
+    w: [wx, wy, wz, ww],
+  )
+
+proc transform2D*(xx, xy, yx, yy, ox, oy: real_elem): Transform2D =
+  Transform2D(
+    x: [xx, xy],
+    y: [yx, yy],
+    origin: [ox, oy])
+
+proc transform3D*(xx, xy, xz, yx, yy, yz, zx, zy, zz, ox, oy, oz: real_elem): Transform3D =
+  Transform3D(
+    basis: Basis(
+      x: [xx, xy, xz],
+      y: [yx, yy, yz],
+      z: [zx, zy, zz]),
+    origin: [ox, oy, oz]
+  )
+
+include gdext/gen/gdaabbconstr
+include gdext/gen/gdbasisconstr
+include gdext/gen/gdplaneconstr
+include gdext/gen/gdprojectionconstr
+include gdext/gen/gdquaternionconstr
+include gdext/gen/gdrect2constr
+include gdext/gen/gdrect2iconstr
+include gdext/gen/gdtransform2dconstr
+include gdext/gen/gdtransform3dconstr
+
+include gdext/gen/gdaabb
+include gdext/gen/gdbasis
+include gdext/gen/gdplane
+include gdext/gen/gdprojection
+include gdext/gen/gdquaternion
+include gdext/gen/gdrect2
+include gdext/gen/gdrect2i
+include gdext/gen/gdtransform2d
+include gdext/gen/gdtransform3d
+include gdext/gen/gdvector2
+include gdext/gen/gdvector2i
+include gdext/gen/gdvector3
+include gdext/gen/gdvector3i
+include gdext/gen/gdvector4
+include gdext/gen/gdvector4i
+
+proc `[]`*(self: Basis; index: int): Vector3 =
+  if index notin 0..2: raise newException(IndexDefect, &"index must be in [0..2]; but got {index}")
+  cast[ptr array[3, Vector3]](addr self)[][index]
+
+proc `[]`*(self: Transform2D; index: int): Vector2 =
+  if index notin 0..2: raise newException(IndexDefect, &"index must be in [0..2]; but got {index}")
+  cast[ptr array[3, Vector2]](addr self)[][index]
+
+proc `[]`*(self: Projection; index: int): Vector4 =
+  if index notin 0..3: raise newException(IndexDefect, &"index must be in [0..3]; but got {index}")
+  cast[ptr array[4, Vector4]](addr self)[][index]
+
+proc `[]`*(self: Quaternion; index: int): real_elem =
+  if index notin 0..3: raise newException(IndexDefect, &"index must be in [0..3]; but got {index}")
+  cast[ptr array[4, real_elem]](addr self)[][index]
 
 proc extend*[T](value: T; N: static int): array[N,T] =
   extend_internal(value, length)
@@ -440,7 +542,7 @@ inline float smoothstep(float p_from, float p_to, float p_weight) {
 proc moveToward*[T: SomeFloat](`from`, to, delta: T): T =
   let dist = to - `from`
   if abs(dist) <= delta: return to
-  `from` + sign(dist) * delta
+  `from` + sgn(dist) * delta
 
 #[
 inline double linear2db(double p_linear) {
@@ -683,6 +785,8 @@ func normalized*[N: static int; T: SomeFloat](self: Vector[N,T]): NVector[N,T] =
   asNormalized(self / sqrt length2)
 
 # math
+func cross*[T](self: Vector[2, T]; with: Vector[2, T]): T =
+  self.x * with.y - self.y * with.x;
 func abs  *[N: static int; T: SomeNumber](self: Vector[N,T]): Vector[N,T] = abs.fmap(self)
 func ceil *[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = ceil.fmap(self)
 func floor*[N: static int; T: SomeFloat](self: Vector[N,T]): Vector[N,T] = floor.fmap(self)
@@ -709,6 +813,21 @@ proc moveToward*[N: static int; T: SomeFloat](`from`,to: Vector[N,T]; delta: T):
   let len = dist.length
   if len <= delta or len < CMP_EPSILON: return to
   `from` + (dist/len) * delta
+
+# angles
+func fromAngle*[T: SomeFloat](_: typedesc[NVector[2, T]]; angle: Radian[T]): NVector[2, T] =
+  NVector[2, T] [cos angle, sin angle]
+
+func angle*[T: SomeFloat](self: Vector[2, T]): Radian[T] =
+  arctan2(self.y, self.x)
+func angleToPoint*[T](self, to: Vector[2, T]): Radian[T] =
+  angle (to - self)
+func angleTo*[T: SomeFloat](self, to: Vector[2, T]): Radian[T] =
+  arctan2(self.cross(to), self.dot(to))
+
+# others
+func aspect*[T: SomeFloat](self: Vector[2, T]): T = self.x / self.y
+func aspect*[T: SomeInteger](self: Vector[2, T]): float = self.x / self.y
 
 # Godot-style aliases
 # -------------------

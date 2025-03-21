@@ -1,4 +1,5 @@
 import gdext/builtinindex
+import gdext/stringtools
 import gdext/core/gdclass
 import gdext/private/native
 import gdext/private/gdinterface

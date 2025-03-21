@@ -1,9 +1,35 @@
+import gdext/gdinterface/methodtools
 import gdext/private/native
+import gdext/private/staticevents
 import gdext/builtinindex
+import gdext/stringtools
 import gdext/core/typeshift
-import gdext/gen/[builtinclasses]
 
 import std/sequtils
+
+include gdext/gen/gdarrayconstr
+include gdext/gen/gdpackedbytearrayconstr
+include gdext/gen/gdpackedcolorarrayconstr
+include gdext/gen/gdpackedstringarrayconstr
+include gdext/gen/gdpackedint32arrayconstr
+include gdext/gen/gdpackedint64arrayconstr
+include gdext/gen/gdpackedfloat32arrayconstr
+include gdext/gen/gdpackedfloat64arrayconstr
+include gdext/gen/gdpackedvector2arrayconstr
+include gdext/gen/gdpackedvector3arrayconstr
+include gdext/gen/gdpackedvector4arrayconstr
+
+include gdext/gen/gdarray
+include gdext/gen/gdpackedbytearray
+include gdext/gen/gdpackedcolorarray
+include gdext/gen/gdpackedstringarray
+include gdext/gen/gdpackedint32array
+include gdext/gen/gdpackedint64array
+include gdext/gen/gdpackedfloat32array
+include gdext/gen/gdpackedfloat64array
+include gdext/gen/gdpackedvector2array
+include gdext/gen/gdpackedvector3array
+include gdext/gen/gdpackedvector4array
 
 {.push, inline.}
 proc setLen*(arr: Array; newlen: int) =

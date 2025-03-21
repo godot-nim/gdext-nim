@@ -1,6 +1,6 @@
 import gdext/builtinindex
+import gdext/stringtools
 import gdext/private/native
-import gdext/private/gdinterface
 
 export native
 export builtinindex

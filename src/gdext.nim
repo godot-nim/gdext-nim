@@ -14,11 +14,6 @@ export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
 
-import gdext/gen/[ builtinclasses]
-export             builtinclasses
-
-import gdext/gen/utilityfuncs
-export utilityfuncs except print
 
 import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, conversions ]
 export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, conversions
@@ -27,22 +22,14 @@ import gdext/builtinindex; export builtinindex
 import gdext/math; export math
 import gdext/swizzles; export swizzles
 import gdext/objectcallbacks; export objectcallbacks
+import gdext/stringtools; export stringtools
 import gdext/dicttools; export dicttools
 import gdext/arraytools; export arraytools
+import gdext/colortools; export colortools
+import gdext/othertools; export othertools
+import gdext/utilityfuncs; export utilityfuncs
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
-
-proc print*(args: varargs[Variant, variant]) =
-  if unlikely(args.len == 0): return
-  utilityfuncs.print(args[0], args[1..^1])
-
-proc printRich*(args: varargs[Variant, variant]) =
-  if unlikely(args.len == 0): return
-  utilityfuncs.printRich(args[0], args[1..^1])
-
-proc printerr*(args: varargs[Variant, variant]) =
-  if unlikely(args.len == 0): return
-  utilityfuncs.printerr(args[0], args[1..^1])

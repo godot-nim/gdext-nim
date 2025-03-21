@@ -1,7 +1,6 @@
 import std/[sequtils, sets, tables, genasts]
 
 import gdext/gdinterface/[objects, exceptions]
-import gdext/private/gdinterface
 
 import gdext/private/macros
 import gdext/core/gdclass

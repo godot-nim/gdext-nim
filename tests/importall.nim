@@ -1,2 +1,2 @@
 import gdext
-import gdext/classes
+import gdext/gen/classes

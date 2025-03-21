@@ -1,5 +1,4 @@
 import gdext/gdinterface/[variants, exceptions]
-import gdext/private/gdinterface
 
 import gdext/core/[typeshift]
 import gdext/builtinindex

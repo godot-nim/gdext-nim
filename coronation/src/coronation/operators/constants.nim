@@ -10,7 +10,7 @@ import std/strutils
 proc constValue*(t: string; value: string): string =
   case t
   of "Vector2", "Vector3", "Vector4":
-    value.multireplace((t, "vector"), ("inf", "Inf"))
+    value.multireplace((t, "vector"), ("inf", "system.Inf"))
   of "Vector2i", "Vector3i", "Vector4i":
     value.replace(t, "vectori")
   else:

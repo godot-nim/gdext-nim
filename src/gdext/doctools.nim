@@ -2,7 +2,6 @@ import gdext/buildconf
 
 when Assistance.genEditorHelp:
   import gdext/gdinterface/objects
-  import gdext/gen/builtinclasses
 
   import std/[strformat, strutils, tables]
 

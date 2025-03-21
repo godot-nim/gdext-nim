@@ -1,6 +1,6 @@
 import gdext/gdinterface/variants
 import gdext/builtinindex
-import gdext/gen/[builtinclasses]
+import gdext/stringtools
 import gdext/surface/[classutils]
 
 {.push, inline.}

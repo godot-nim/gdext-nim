@@ -2,18 +2,17 @@ import gdext/gdinterface/[classDB, methodtools, exceptions]
 export                    classDB, methodtools, exceptions
 
 import gdext/private/gdinterface
-export gdstring, stringname, classname
 
 import gdext/core/[typeshift, gdclass]
 export             typeshift, gdclass
 
 import gdext/builtinindex; export builtinindex
-
-import gdext/gen/[
-  builtinclasses
-]
-export
-  builtinclasses
+import gdext/stringtools; export stringtools
+import gdext/arraytools; export arraytools
+import gdext/dicttools; export dicttools
+import gdext/colortools; export colortools
+import gdext/othertools; export othertools
+import gdext/math; export math
 
 import std/tables; export Table, toTable, initTable
 

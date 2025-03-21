@@ -1,11 +1,10 @@
 import std/[sets]
 
 import gdext/gdinterface/[exceptions]
-import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 import gdext/core/userclass/contracts
-import gdext/gen/utilityfuncs
+import gdext/utilityfuncs
 import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
 import gdext/buildconf
@@ -88,7 +87,6 @@ template GDExtension_EntryPoint*: untyped =
       r_initialization.deinitialize = deinitialize
       r_initialization.minimum_initialization_level = Initialization_Scene
 
-      gdinterface.load() # load other usual functions to define core library
       utilityfuncs.load()
 
       load_builtinclassConstructor()

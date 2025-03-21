@@ -3,6 +3,7 @@ from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
+import gdext/stringtools
 import gdext/gdinterface/[classDB]
 import gdext/core/[gdclass]
 import gdext/core/typeshift
@@ -25,8 +26,6 @@ template className(iden: SomeClass): string = $iden.className
 type alias* = distinct string
 proc `==`*(x: alias, y: alias): bool = x.string == y.string
 const noAlias = alias ""
-
-import gdext/gen/[builtinclasses]
 
 type
   Appearance* = object
