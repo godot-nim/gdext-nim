@@ -1,6 +1,5 @@
 import std/[strutils]
 
-import gdext/gdinterface/[extracommands ]
 import gdext/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
@@ -8,6 +7,7 @@ import gdext/core/typeshift
 
 import gdext/private/macros
 import gdext/private/native
+import gdext/private/gdinterface
 
 type
   HeapPropertyInfo* = object

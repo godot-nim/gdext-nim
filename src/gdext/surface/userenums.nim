@@ -1,5 +1,6 @@
 import std/macros, std/sets
-import gdext/gdinterface/[extracommands, classDB]
+import gdext/gdinterface/[classDB]
+import gdext/private/gdinterface
 import gdext/core/[gdclass]
 import gdext/core/userclass/[contracts]
 

@@ -1,8 +1,8 @@
-import gdext/gdinterface/[extracommands]
 import gdext/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/private/native
+import gdext/private/gdinterface
 
 type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
 type AltFloat* = float32

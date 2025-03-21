@@ -1,3 +1,3 @@
-import gdext/gdinterface/extracommands
+import gdext/private/gdinterface
 
 export `$`

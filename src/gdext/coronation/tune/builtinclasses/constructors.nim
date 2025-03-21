@@ -1,4 +1,4 @@
-import gdext/gdinterface/extracommands
+import gdext/private/gdinterface
 import gdext/private/macros
 import gdext/builtinindex
 

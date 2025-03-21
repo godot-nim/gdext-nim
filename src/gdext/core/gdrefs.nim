@@ -1,5 +1,5 @@
 import gdext/private/native
-import gdext/gdinterface/extracommands
+import gdext/private/gdinterface
 
 type
   GdRef*[RefCounted] = object

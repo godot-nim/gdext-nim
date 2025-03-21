@@ -1,7 +1,7 @@
 import testutils
 
 import gdext
-import gdext/gdinterface/extracommands
+import gdext/private/gdinterface
 import classes/gdtestobject
 
 type Test = enum

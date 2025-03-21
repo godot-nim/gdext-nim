@@ -1,6 +1,7 @@
-import gdext/gdinterface/[ extracommands, methodtools ]
-export                     extracommands, methodtools
+import gdext/gdinterface/[ methodtools ]
+export                     methodtools
 
+import gdext/private/gdinterface; export gdinterface
 import gdext/builtinindex; export builtinindex
 
 import gdext/private/native

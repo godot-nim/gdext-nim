@@ -1,8 +1,8 @@
 import gdext/gdinterface/[classDB, methodtools, exceptions]
 export                    classDB, methodtools, exceptions
 
-from gdext/gdinterface/extracommands import gdstring, stringname, classname
-export extracommands.gdstring, extracommands.stringname, extracommands.classname
+import gdext/private/gdinterface
+export gdstring, stringname, classname
 
 import gdext/core/[typeshift, gdclass, gdrefs ]
 export             typeshift, gdclass, gdrefs

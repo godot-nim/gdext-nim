@@ -1,6 +1,6 @@
-import gdext/gdinterface/[extracommands]
 import gdext/builtinindex
 import gdext/private/native
+import gdext/private/gdinterface
 
 export native
 export builtinindex

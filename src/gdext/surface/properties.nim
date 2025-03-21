@@ -3,7 +3,7 @@ from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
-import gdext/gdinterface/[classDB, extracommands]
+import gdext/gdinterface/[classDB]
 import gdext/core/[gdclass, gdrefs]
 import gdext/core/typeshift
 
@@ -13,6 +13,7 @@ import gdext/core/userclass/procs
 
 import gdext/private/macros
 import gdext/private/staticevents
+import gdext/private/gdinterface
 
 when Assistance.genEditorHelp:
   import gdext/doctools

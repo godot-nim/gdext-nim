@@ -1,7 +1,8 @@
 import std/tables
 
 import gdext/buildconf
-import gdext/gdinterface/[extracommands, objects, classDB]
+import gdext/gdinterface/[objects, classDB]
+import gdext/private/gdinterface
 
 import gdext/utils/[debugging]
 import gdext/builtinindex
