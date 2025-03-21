@@ -27,6 +27,7 @@ import gdext/surface/[ init, userclass, userenums, properties, classutils, varia
 export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions
 
 import gdext/builtinindex; export builtinindex
+import gdext/swizzles; export swizzles
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
