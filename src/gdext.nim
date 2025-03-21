@@ -23,13 +23,14 @@ export             builtinclasses, classindex, globalenums, localenums, structs
 import gdext/gen/utilityfuncs
 export utilityfuncs except print
 
-import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions ]
-export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions
+import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, conversions ]
+export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, conversions
 
 import gdext/builtinindex; export builtinindex
 import gdext/math; export math
 import gdext/swizzles; export swizzles
 import gdext/dicttools; export dicttools
+import gdext/arraytools; export arraytools
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
