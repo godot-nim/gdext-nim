@@ -10,7 +10,6 @@ import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/core/userclass/virtuals
-import gdext/gen/classindex
 import gdext/surface/classutils
 import gdext/surface/properties
 

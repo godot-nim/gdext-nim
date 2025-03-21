@@ -102,5 +102,4 @@ template GDExtension_EntryPoint*: untyped =
       return false
 
 when isMainModule:
-  import gdext/gen/classindex
   GDExtension_EntryPoint

@@ -5,7 +5,6 @@ import gdext/builtinindex
 import gdext/core/gdclass
 import gdext/core/gdrefs
 import gdext/core/typeshift
-import gdext/gen/globalenums
 
 import gdext/private/macros
 import gdext/private/native

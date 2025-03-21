@@ -41,8 +41,6 @@ discard layout root "gdext/coronation":
     layout "builtinclasses".dir:
       let corona_constructors = dummy "constructors".nim
     let corona_builtinclasses = dummy "builtinclasses".nim
-    let corona_structs = dummy "structs".nim
-    let corona_classindex = dummy "classindex".nim
     let corona_classes = dummy "classes".nim
     let corona_utilityfuncs = dummy "utilityfuncs".nim
   layout dir "tune":
@@ -91,9 +89,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               weave with_registerDB localenum.convert(sym)
 
       # [Native Structures]
-      weave "structs".nim
-          .import(corona_structs)
-          .import(localenums):
+      weave "structs".nim:
         weave margin:
           for struct in api.native_structures:
             weave struct.convert
@@ -145,8 +141,7 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
           .import(builtinclasses.subitems.values.toSeq.mapIt(NimSource it))
           .export(builtinclasses.subitems.values.toSeq.mapIt(NimSource it))
 
-      let classindex = weave "classindex".nim
-          .import(corona_classindex):
+      let classindex = weave "classindex".nim:
         weave margin:
           weave multiline:
             "type"

@@ -1,7 +1,7 @@
 import std/macros
 
 import gdext/builtinindex
-import gdext/gen/[builtinclasses, classindex]
+import gdext/gen/[builtinclasses]
 import gdext/classes/gdNode
 
 import classutils

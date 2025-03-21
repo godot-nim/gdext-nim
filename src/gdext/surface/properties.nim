@@ -25,7 +25,7 @@ type alias* = distinct string
 proc `==`*(x: alias, y: alias): bool = x.string == y.string
 const noAlias = alias ""
 
-import gdext/gen/[globalenums, builtinclasses, classindex]
+import gdext/gen/[builtinclasses]
 
 type
   Appearance* = object

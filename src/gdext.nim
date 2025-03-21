@@ -17,8 +17,8 @@ export              gdrefs
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
 
-import gdext/gen/[ builtinclasses, classindex, globalenums, localenums, structs ]
-export             builtinclasses, classindex, globalenums, localenums, structs
+import gdext/gen/[ builtinclasses]
+export             builtinclasses
 
 import gdext/gen/utilityfuncs
 export utilityfuncs except print

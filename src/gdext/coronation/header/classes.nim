@@ -10,10 +10,10 @@ export             typeshift, gdclass, gdrefs
 import gdext/builtinindex; export builtinindex
 
 import gdext/gen/[
-  builtinclasses, classindex, globalenums, localenums, structs
+  builtinclasses
 ]
 export
-  builtinclasses, classindex, globalenums, localenums, structs
+  builtinclasses
 
 import std/tables; export Table, toTable, initTable
 

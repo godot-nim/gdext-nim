@@ -2,7 +2,6 @@ import std/[hashes, sequtils]
 
 import gdext/builtinindex
 import gdext/private/native
-import gdext/gen/globalenums
 
 export native
 

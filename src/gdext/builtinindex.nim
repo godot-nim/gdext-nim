@@ -187,6 +187,8 @@ template Item*(typ: typedesc[String]): typedesc = Rune
 template Item*(typ: typedesc[Array]): typedesc = Variant
 template Item*(typ: typedesc[Dictionary]): typedesc = Variant
 
+include gdext/gen/[classindex, localenums, globalenums, structs]
+
 proc `=destroy`*(val {.bycopy.}: String) =
   if val.opaque == String.opaque.default: return
   typeDestructor[VariantTypeString](addr val)
