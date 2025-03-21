@@ -14,6 +14,7 @@ import gdext/gen/classindex
 import gdext/surface/classutils
 import gdext/surface/properties
 
+import gdext/objectcallbacks
 import gdext/private/macros
 import gdext/private/native
 

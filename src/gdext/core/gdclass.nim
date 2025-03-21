@@ -6,6 +6,7 @@ import gdext/gdinterface/[extracommands]
 import gdext/utils/[debugging]
 
 import gdext/builtinindex
+import gdext/objectcallbacks
 
 import gdext/private/macros
 import gdext/private/native

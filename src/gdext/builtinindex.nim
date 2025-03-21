@@ -334,6 +334,3 @@ proc `=copy`*(dest: var Variant; source: Variant) =
   `=destroy` dest
   wasMoved dest
   interface_variantNewCopy(addr dest, addr source)
-
-method onInit*(self: Object) {.base.} = discard
-method onDestroy*(self: Object) {.base.} = discard

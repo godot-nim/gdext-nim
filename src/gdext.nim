@@ -29,6 +29,7 @@ export                 init, userclass, userenums, properties, classutils, varia
 import gdext/builtinindex; export builtinindex
 import gdext/math; export math
 import gdext/swizzles; export swizzles
+import gdext/objectcallbacks; export objectcallbacks
 import gdext/dicttools; export dicttools
 import gdext/arraytools; export arraytools
 
