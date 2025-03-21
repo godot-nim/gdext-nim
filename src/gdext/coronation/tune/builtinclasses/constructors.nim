@@ -2,7 +2,7 @@ import std/sequtils
 
 import gdext/gdinterface/extracommands
 import gdext/private/macros
-import gdext/core/builtinindex
+import gdext/builtinindex
 
 from gdext/core/geometrics/typedef {.all.} import makevec
 

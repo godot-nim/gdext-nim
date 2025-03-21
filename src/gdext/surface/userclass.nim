@@ -4,7 +4,7 @@ import gdext/buildconf
 import gdext/gdinterface/[extracommands, objects, classDB]
 
 import gdext/utils/[debugging]
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/core/gdclass
 import gdext/core/userclass/contracts
 import gdext/core/userclass/procs

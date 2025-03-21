@@ -11,8 +11,8 @@ export InitializationLevel, VariantType, gdcall
 import gdext/gdinterface/exceptions
 export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
 
-import gdext/core/[ builtinindex, geometrics, gdrefs ]
-export              builtinindex, geometrics, gdrefs
+import gdext/core/[ geometrics, gdrefs ]
+export              geometrics, gdrefs
 
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
@@ -25,6 +25,8 @@ export utilityfuncs except print
 
 import gdext/surface/[ init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions ]
 export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, arrayutils, conversions
+
+import gdext/builtinindex; export builtinindex
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint

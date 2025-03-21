@@ -1,5 +1,5 @@
 import gdext/private/native
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/core/typeshift
 import gdext/gen/[builtinclasses]
 

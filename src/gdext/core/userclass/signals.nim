@@ -3,7 +3,7 @@ import std/[tables, sets]
 import gdext/buildconf
 import gdext/gdinterface/classDB
 import gdext/core/gdclass
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/core/typeshift
 
 import gdext/classes/gdobject

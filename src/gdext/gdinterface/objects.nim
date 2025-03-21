@@ -1,6 +1,6 @@
 import gdext/gdinterface/[extracommands, methodtools, exceptions]
 import gdext/core/gdclass
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/private/native
 
 export native

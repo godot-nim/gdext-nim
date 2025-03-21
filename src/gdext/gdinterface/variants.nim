@@ -1,6 +1,6 @@
 import std/[hashes, sequtils]
 
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/private/native
 import gdext/gen/globalenums
 

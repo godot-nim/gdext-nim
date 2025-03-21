@@ -1,5 +1,5 @@
 import gdext/gdinterface/variants
-import gdext/core/[builtinindex]
+import gdext/builtinindex
 import gdext/gen/[builtinclasses]
 import gdext/surface/[classutils]
 

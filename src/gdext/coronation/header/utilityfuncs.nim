@@ -1,8 +1,7 @@
 import gdext/gdinterface/[ extracommands, methodtools ]
 export                     extracommands, methodtools
 
-import gdext/core/[ builtinindex]
-export              builtinindex
+import gdext/builtinindex; export builtinindex
 
 import gdext/private/native
 export native

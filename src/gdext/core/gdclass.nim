@@ -5,7 +5,7 @@ import gdext/buildconf
 import gdext/gdinterface/[extracommands]
 import gdext/utils/[debugging]
 
-import gdext/core/builtinindex
+import gdext/builtinindex
 
 import gdext/private/macros
 import gdext/private/native

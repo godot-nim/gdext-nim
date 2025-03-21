@@ -1,5 +1,5 @@
 import gdext/buildconf
-import gdext/core/builtinindex
+import gdext/builtinindex
 
 const DebugEnabled = Dev.debugCallbacks
 

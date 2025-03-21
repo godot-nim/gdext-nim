@@ -1,5 +1,5 @@
 import std/[importutils]
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/private/native
 
 var newStringNameFromString: PtrConstructor

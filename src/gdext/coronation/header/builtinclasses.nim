@@ -3,7 +3,7 @@ import gdext/gen/globalenums; export globalenums
 import gdext/gdinterface/methodtools; export methodtools
 import gdext/gdinterface/extracommands
 import gdext/utils/staticevents; export staticevents
-import gdext/core/builtinindex; export builtinindex
+import gdext/builtinindex; export builtinindex
 
 from std/unicode import Rune; export Rune
 

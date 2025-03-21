@@ -1,4 +1,5 @@
-import gdext/core/[builtinindex, gdclass]
+import gdext/core/[gdclass]
+import gdext/builtinindex
 import gdext/classes/[gdengine]
 import gdext/gen/[classindex]
 import gdext/surface/[userclass, classutils]

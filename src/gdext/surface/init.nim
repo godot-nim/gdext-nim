@@ -2,7 +2,7 @@ import std/[sets]
 
 import gdext/gdinterface/[extracommands, exceptions]
 import gdext/utils/staticevents
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/core/userclass/contracts
 import gdext/gen/utilityfuncs
 import gdext/surface/userclass

@@ -1,6 +1,7 @@
 import gdext/gdinterface/[variants, exceptions, extracommands]
 
-import gdext/core/[typeshift, builtinindex]
+import gdext/core/[typeshift]
+import gdext/builtinindex
 import gdext/gen/globalenums
 import std/[strformat]
 

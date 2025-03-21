@@ -1,4 +1,4 @@
-import std/[tables]
+import std/tables
 
 import gdext/private/native
 

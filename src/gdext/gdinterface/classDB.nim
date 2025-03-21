@@ -1,5 +1,5 @@
 import gdext/gdinterface/[extracommands]
-import gdext/core/builtinindex
+import gdext/builtinindex
 import gdext/private/native
 
 export native

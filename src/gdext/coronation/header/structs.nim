@@ -1,1 +1,1 @@
-import gdext/core/builtinindex; export builtinindex
+import gdext/builtinindex; export builtinindex
