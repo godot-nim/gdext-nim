@@ -2,7 +2,7 @@
 
 import gdext/buildconf
 
-import gdext/utils/staticevents
+import gdext/private/staticevents
 export staticevents.execon, staticevents.expandEvent
 
 import gdext/private/native

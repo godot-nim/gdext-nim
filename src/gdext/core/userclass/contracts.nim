@@ -1,6 +1,6 @@
 import std/sets
 
-import gdext/utils/staticevents
+import gdext/private/staticevents
 
 type Contract*[T] = object
 
