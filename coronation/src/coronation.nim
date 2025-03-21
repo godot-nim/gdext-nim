@@ -15,6 +15,16 @@ const version = staticRead("../coronation.nimble").splitLines
   .split('=')[1]
   .strip(chars= {'"', ' '})
 
+proc getContent(client: HttpClient; url: Uri): string =
+  var uri = url
+  if uri.scheme.len == 0:
+    uri.scheme = "file"
+
+  if uri.scheme == "file":
+    uri.path.expandFilename.readFile
+  else:
+    client.getContent(uri)
+
 proc coronation*(apisource: string; outdir= "out"; package= "gdext") =
   ## Description:
   ##   Read API spec from `apisource`, generate godot package named `package` into `outdir`.
@@ -23,11 +33,7 @@ proc coronation*(apisource: string; outdir= "out"; package= "gdext") =
   ##   coronation --apisorce:extension_api.json --outdir:out/godot410 --package:godot
 
   var client = newHttpClient()
-  var apiuri = apisource.parseuri
-  if apiuri.scheme.len == 0:
-    apiuri.scheme = "file"
-    apiuri.path = expandFilename apiuri.path
-  let api = client.getContent(apiuri).parsejson.to(JsonAPI)
+  let api = client.getContent(apisource.parseuri).parsejson.to(JsonAPI)
 
   build.run api= api, BuildConfig(
     apisource: apisource,
