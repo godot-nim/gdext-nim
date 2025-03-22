@@ -1,6 +1,6 @@
 import std/macros, std/sets
+import gdext/private/gdinterface
 import gdext/gdinterface/[classDB]
-import gdext/core/[gdclass]
 import gdext/core/userclass/[contracts]
 import gdext/stringtools
 

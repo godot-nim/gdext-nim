@@ -1,8 +1,8 @@
 import gdext/buildconf
 
 when Assistance.genEditorHelp:
-  import gdext/gdinterface/objects
-  import gdext/private/native
+  import gdext/private/gdinterface
+  import gdext/builtinindex
 
   import std/[strformat, strutils, tables]
 

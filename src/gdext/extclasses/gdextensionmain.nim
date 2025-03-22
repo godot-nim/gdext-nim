@@ -1,4 +1,4 @@
-import gdext/core/[gdclass]
+import gdext/private/gdinterface
 import gdext/builtinindex
 import gdext/classes/[gdengine]
 import gdext/surface/[userclass, classutils]

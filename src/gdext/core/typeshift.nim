@@ -1,6 +1,5 @@
 import gdext/builtinindex
 import gdext/stringtools
-import gdext/core/gdclass
 import gdext/private/gdinterface
 
 type AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8

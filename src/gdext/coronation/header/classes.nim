@@ -1,8 +1,8 @@
 import gdext/gdinterface/[classDB, methodtools]
 export                    classDB, methodtools
 
-import gdext/core/[typeshift, gdclass]
-export             typeshift, gdclass
+import gdext/core/[typeshift]
+export             typeshift
 
 import gdext/private/gdinterface; export gdinterface
 import gdext/builtinindex; export builtinindex

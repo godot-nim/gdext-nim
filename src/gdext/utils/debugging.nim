@@ -6,7 +6,7 @@ const DebugEnabled = Dev.debugCallbacks
 when DebugEnabled or isMainModule:
   import std/[importutils, logging, compilesettings, os]
   import gdext/private/native
-  import gdext/private/gdinterface
+  privateAccess Object
 
   type GroupLogger = ref object of Logger
     handlers: seq[Logger]
@@ -64,13 +64,7 @@ when DebugEnabled or isMainModule:
     global.warn(args)
 
   proc addDebugInfo*[T: Object](o: T) {.raises: [].} =
-    privateAccess Object
     o.debugName = $T
-
-  proc debugName(o: Object): string =
-    privateAccess Object
-    o.debugName
-
 
 else:
   template debug*(args: varargs[string, `$`]) = (discard)
@@ -100,11 +94,8 @@ when Dev.debugCallbacks or isMainModule:
 
   proc instanceInfo*(o: Object): string =
     result = o.debugName
-    result.add "("
-    result.add o.owner.classname
     result.add ":"
     result.add $interfaceObjectGetInstanceId(o.owner)
-    result.add ")"
 
   proc debugInstantiate*(o: Object) {.raises: [].} =
     try:

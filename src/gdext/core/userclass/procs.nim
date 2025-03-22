@@ -2,9 +2,9 @@ import std/[sequtils, strutils, sets, tables]
 
 import gdext/buildconf
 import gdext/private/macros
+import gdext/private/gdinterface
 
 import gdext/gdinterface/classDB
-import gdext/core/gdclass
 
 import tools
 import contracts

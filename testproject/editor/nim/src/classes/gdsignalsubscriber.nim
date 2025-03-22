@@ -1,5 +1,5 @@
 import gdext
-import gdext/core/gdclass
+import gdext/private/gdinterface
 import gdext/classes/gdNode
 
 import ./gdsignalpublisher

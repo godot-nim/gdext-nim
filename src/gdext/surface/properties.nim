@@ -5,7 +5,6 @@ from std/sequtils import concat, mapIt, toSeq
 import gdext/buildconf
 import gdext/stringtools
 import gdext/gdinterface/[classDB]
-import gdext/core/[gdclass]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts

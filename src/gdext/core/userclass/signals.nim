@@ -1,8 +1,8 @@
 import std/[tables, sets]
 
+import gdext/private/gdinterface
 import gdext/buildconf
 import gdext/gdinterface/classDB
-import gdext/core/gdclass
 import gdext/builtinindex
 import gdext/core/typeshift
 

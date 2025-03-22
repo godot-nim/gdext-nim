@@ -6,7 +6,6 @@ import gdext/private/gdinterface
 
 import gdext/utils/[debugging]
 import gdext/builtinindex
-import gdext/core/gdclass
 import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals

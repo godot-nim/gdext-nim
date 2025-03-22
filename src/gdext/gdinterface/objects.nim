@@ -1,9 +1,7 @@
 import gdext/gdinterface/[methodtools]
 import gdext/private/gdinterface
-import gdext/core/gdclass
 import gdext/builtinindex
 
-export gdclass
 export builtinindex
 export methodtools
 

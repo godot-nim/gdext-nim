@@ -4,7 +4,6 @@ import gdext/gdinterface/[objects]
 
 import gdext/private/macros
 import gdext/private/gdinterface
-import gdext/core/gdclass
 import gdext/core/typeshift
 
 import contracts
