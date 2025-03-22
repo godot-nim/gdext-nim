@@ -1,7 +1,7 @@
 import gdext/private/gdinterface
 import gdext/builtinindex
 import gdext/classes/[gdengine]
-import gdext/surface/[classutils]
+import gdext/objecttools
 import gdext/buildconf
 
 import std/macros

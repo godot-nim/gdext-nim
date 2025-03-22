@@ -8,7 +8,6 @@ import gdext/core/userclass/propertyinfo
 import gdext/private/typeshift
 import gdext/utils/[debugging]
 import gdext/core/userclass/procs
-import gdext/surface/classutils
 import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
@@ -16,6 +15,17 @@ import gdext/stringtools
 
 when Assistance.genEditorHelp:
   import gdext/doctools
+
+proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
+  let objectPtr = ClassDB.constructObject(classname Type)
+  result = createClass[T](objectPtr)
+  objectPtr.setInstanceBinding(result, addr T.callbacks)
+
+proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
+  let objectPtr = ClassDB.constructObject(classname Type.EngineClass)
+  result = createClass[T](objectPtr)
+  objectPtr.setInstance(classname T, result)
+  objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   cast[Object](p_instance).set(p_name, p_value)
