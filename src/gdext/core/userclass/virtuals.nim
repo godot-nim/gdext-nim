@@ -63,6 +63,4 @@ proc sync_virtualDef*(procdef: NimNode): NimNode =
     @(middle.emitterdef(procdef))
     @procdef
     proc register_virtualMethod {.execon: Contract[@(middle.self_T)].virtual_base.} =
-      let info = @(middle.virtualMethodInfo)
-      interface_classdb_register_extension_class_virtual_method(
-        environment.library, addr className @(middle.self_T), addr info)
+      ClassDB.registerExtensionClassVirtualMethod(className @(middle.self_T), @(middle.virtualMethodInfo))

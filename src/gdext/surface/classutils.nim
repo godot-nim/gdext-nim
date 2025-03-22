@@ -1,8 +1,8 @@
 import std/[strutils]
 
 import gdext/utils/debugging
-import gdext/gdinterface/classDB
 import gdext/private/gdinterface
+import gdext/builtinindex
 
 export getInstanceID
 export getClassName
@@ -11,12 +11,12 @@ proc destroy*(obj: Object) =
   interfaceObjectDestroy(obj.engineInstance)
 
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
-  let objectPtr = classDB.constructObject(classname Type)
+  let objectPtr = ClassDB.constructObject(classname Type)
   result = createClass[T](objectPtr)
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
-  let objectPtr = classDB.constructObject(classname Type.EngineClass)
+  let objectPtr = ClassDB.constructObject(classname Type.EngineClass)
   result = createClass[T](objectPtr)
   objectPtr.setInstance(classname T, result)
   objectPtr.setInstanceBinding(result, addr T.callbacks)
@@ -32,7 +32,7 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
   if self of T: return T self
   result = self
-    .castTo(classDB.getClassTag(className T))
+    .castTo(ClassDB.getClassTag(className T))
     .getInstanceBinding(T)
 
 template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef

@@ -1,6 +1,3 @@
-import gdext/gdinterface/[classDB]
-export                    classDB
-
 import gdext/core/[typeshift]
 export             typeshift
 
@@ -23,7 +20,7 @@ proc concat*[T,S](a, b: Table[T,S]): Table[T,S] =
 template expandMethodBind*(className; methodName; hash) =
   var methodbind {.global, inject.}: MethodBindPtr
   if unlikely(methodbind.isNil):
-    methodbind = classDB.getMethodBind(className, methodName, hash)
+    methodbind = ClassDB.getMethodBind(className, methodName, hash)
 
 proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, self.engineInstance, addr args[0], result)

@@ -1,11 +1,11 @@
 import std/macros, std/sets
 import gdext/private/gdinterface
-import gdext/gdinterface/[classDB]
 import gdext/core/userclass/[contracts]
+import gdext/builtinindex
 import gdext/stringtools
 
 proc registerEnumField(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
-  classDB.registerIntegerConstant(className, enumName, fieldName, value, isBitField)
+  ClassDB.registerExtensionClassIntegerConstant(className, enumName, fieldName, value, isBitField)
 
 proc registerEnumFields(className, enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
   for name, value in fields.items:

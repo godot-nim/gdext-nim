@@ -3,8 +3,8 @@ from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
 import gdext/buildconf
+import gdext/builtinindex
 import gdext/stringtools
-import gdext/gdinterface/[classDB]
 import gdext/core/typeshift
 
 import gdext/core/userclass/contracts
@@ -180,7 +180,7 @@ proc gdexport_internal*(
     typ: StringName;
     getter: StringName = StringName.empty;
     setter: StringName = StringName.empty) =
-  classDB.registerProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
+  ClassDB.registerExtensionClassProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
 
 proc gdexport_internal*(
     name: string;

@@ -180,6 +180,57 @@ proc getClassName*(o: ObjectPtr): StringName =
 proc getClassName*(self: Object): StringName =
   self.engineInstance.getClassName
 
+proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr =
+  interfaceClassdbConstructObject2(addr p_classname)
+
+proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
+  interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)
+proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: string; p_hash: Int): MethodBindPtr =
+  ClassDB.getMethodBind(p_classname, stringName p_methodname, p_hash)
+
+proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
+  interfaceClassdbGetClassTag(addr p_classname)
+
+proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo3) =
+  interfaceClassdbRegisterExtensionClass3(
+    environment.library, addr p_class_name, addr p_parent_class_name, p_extension_funcs)
+
+proc registerExtensionClassMethod*(_: typedesc[ClassDB]; p_class_name: StringName; p_method_info: ptr ClassMethodInfo) =
+  interfaceClassdbRegisterExtensionClassMethod(
+    environment.library, addr p_class_name, p_method_info)
+
+proc registerExtensionClassIntegerConstant*(_: typedesc[ClassDB]; p_class_name, p_enum_name, p_constant_name: StringName; p_constant_value: Int; p_is_bitfield: Bool) =
+  interfaceClassdbRegisterExtensionClassIntegerConstant(
+    environment.library, addr p_class_name, addr p_enum_name, addr p_constant_name, p_constant_value, p_is_bitfield)
+
+proc registerExtensionClassProperty*(_: typedesc[ClassDB]; p_class_name: StringName; p_info: ptr PropertyInfo; p_setter, p_getter: StringName) =
+  interfaceClassdbRegisterExtensionClassProperty(
+    environment.library, addr p_class_name, p_info, addr p_setter, addr p_getter)
+
+proc registerExtensionClassPropertyGroup*(_: typedesc[ClassDB]; p_class_name: StringName; p_group_name, p_prefix: String) =
+  interfaceClassdbRegisterExtensionClassPropertyGroup(
+    environment.library, addr p_class_name, addr p_group_name, addr p_prefix)
+
+proc registerExtensionClassPropertySubgroup*(_: typedesc[ClassDB]; p_class_name: StringName; p_subgroup_name, p_prefix: String) =
+  interfaceClassdbRegisterExtensionClassPropertySubgroup(
+    environment.library, addr p_class_name, addr p_subgroup_name, addr p_prefix)
+
+proc registerExtensionClassSignal*(_: typedesc[ClassDB]; p_class_name: StringName; p_signal_name: StringName; args: varargs[PropertyInfo]) =
+  if args.len == 0:
+    interfaceClassdbRegisterExtensionClassSignal(
+      environment.library, addr p_class_name, addr p_signal_name, nil, 0)
+  else:
+    interfaceClassdbRegisterExtensionClassSignal(
+      environment.library, addr p_class_name, addr p_signal_name, addr args[0], args.len)
+
+proc registerExtensionClassVirtualMethod*(_: typedesc[ClassDB]; p_class_name: StringName; p_method_info {.byref.}: ClassVirtualMethodInfo) =
+  interfaceClassdbRegisterExtensionClassVirtualMethod(
+    environment.library, addr p_class_name, addr p_method_info)
+
+proc unregisterExtensionClass*(_: typedesc[ClassDB]; p_class_name: StringName) =
+  interfaceClassdbUnregisterExtensionClass(
+    environment.library, addr p_class_name)
+
 proc empty*(_: typedesc[String]): var String =
   var instance {.global.}: String
   instance

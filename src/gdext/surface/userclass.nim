@@ -1,7 +1,6 @@
 import std/tables
 
 import gdext/buildconf
-import gdext/gdinterface/[classDB]
 import gdext/private/gdinterface
 
 import gdext/utils/[debugging]
@@ -157,7 +156,7 @@ proc register*(T: typedesc) =
   if cn in registered: return
 
   let info = T.creationInfo(false, false)
-  classDB.register(cn, className(T.Super), addr info)
+  ClassDB.registerExtensionClass(cn, className(T.Super), addr info)
   processExports T
   invoke Contract[T]
   when T is EditorPlugin:
@@ -172,7 +171,7 @@ proc unregisterAll* =
   for i in countdown(plugins.high, 0):
     interface_Editor_removePlugin addr plugins[i]
   for i in countdown(registered.high, 0):
-    classDB.unregister registered[i]
+    ClassDB.unregisterExtensionClass registered[i]
 
 macro register_implicitly*(level: static InitializationLevel) =
   let register = bindSym "register"

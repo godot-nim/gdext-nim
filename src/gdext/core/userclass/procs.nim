@@ -4,8 +4,6 @@ import gdext/buildconf
 import gdext/private/macros
 import gdext/private/gdinterface
 
-import gdext/gdinterface/classDB
-
 import tools
 import contracts
 import methodinfo
@@ -30,7 +28,7 @@ macro registerProc*(procdef): untyped =
   result = quote do:
     proc `gdname` {.execon: Contract[typedesc[`Self`]].procedure.} =
       let info = `methodinfoDef`
-      classDB.registerMethod(className(typedesc `Self`), addr info)
+      ClassDB.registerExtensionClassMethod(className(typedesc `Self`), addr info)
 
   when Assistance.genEditorHelp:
     let desc = procdef.getEditorHelp

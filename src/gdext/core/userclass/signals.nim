@@ -2,7 +2,6 @@ import std/[tables, sets]
 
 import gdext/private/gdinterface
 import gdext/buildconf
-import gdext/gdinterface/classDB
 import gdext/builtinindex
 import gdext/core/typeshift
 
@@ -53,7 +52,7 @@ macro contractSignal (params, procdef; gdname: string): untyped =
 
   result = quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
-      classDB.registerSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
+      ClassDB.registerExtensionClassSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
 
   when Assistance.genEditorHelp:
     let desc = procdef.getEditorHelp
