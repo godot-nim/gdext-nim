@@ -37,6 +37,10 @@ export Bool
 export Int
 
 type
+  GodotDefect* = object of CatchableError
+  GodotCallDefect* = object of GodotDefect
+  GodotVariantTypeDefect* = object of GodotDefect
+
   Variant* {.byref.} = object
     data*: tuple[
       `type`: uint64,

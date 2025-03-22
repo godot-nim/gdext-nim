@@ -8,9 +8,6 @@ export staticevents.execon, staticevents.expandEvent
 import gdext/private/native
 export InitializationLevel, VariantType, gdcall
 
-import gdext/gdinterface/exceptions
-export GodotDefect, GodotCallDefect, GodotVariantTypeDefect
-
 import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
 

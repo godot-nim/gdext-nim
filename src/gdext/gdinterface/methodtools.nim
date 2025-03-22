@@ -1,7 +1,6 @@
 import std/importutils
 import gdext/builtinindex {.all.}
 import gdext/stringtools
-import gdext/private/native
 import gdext/private/gdinterface
 
 export gdcall

@@ -16,7 +16,6 @@ import gdext/surface/properties
 
 import gdext/objectcallbacks
 import gdext/private/macros
-import gdext/private/native
 
 when Assistance.genEditorHelp:
   import gdext/doctools

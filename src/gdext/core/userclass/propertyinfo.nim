@@ -5,7 +5,6 @@ import gdext/core/gdclass
 import gdext/core/typeshift
 
 import gdext/private/macros
-import gdext/private/native
 import gdext/private/gdinterface
 
 type

@@ -1,8 +1,9 @@
 import std/[sequtils, sets, tables, genasts]
 
-import gdext/gdinterface/[objects, exceptions]
+import gdext/gdinterface/[objects]
 
 import gdext/private/macros
+import gdext/private/gdinterface
 import gdext/core/gdclass
 import gdext/core/typeshift
 

@@ -1,11 +1,10 @@
-import gdext/gdinterface/[classDB, methodtools, exceptions]
-export                    classDB, methodtools, exceptions
-
-import gdext/private/gdinterface
+import gdext/gdinterface/[classDB, methodtools]
+export                    classDB, methodtools
 
 import gdext/core/[typeshift, gdclass]
 export             typeshift, gdclass
 
+import gdext/private/gdinterface; export gdinterface
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
 import gdext/arraytools; export arraytools

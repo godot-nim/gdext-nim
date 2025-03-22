@@ -1,5 +1,6 @@
-import gdext/gdinterface/[variants, exceptions]
+import gdext/gdinterface/[variants]
 
+import gdext/private/gdinterface
 import gdext/core/[typeshift]
 import gdext/builtinindex
 import std/[strformat]

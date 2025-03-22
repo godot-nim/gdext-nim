@@ -1,14 +1,13 @@
 import std/[sets]
 
-import gdext/gdinterface/[exceptions]
 import gdext/private/staticevents
+import gdext/private/gdinterface
 import gdext/builtinindex
 import gdext/core/userclass/contracts
 import gdext/utilityfuncs
 import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
 import gdext/buildconf
-import gdext/private/native
 
 when Assistance.genEditorHelp:
   import gdext/doctools
