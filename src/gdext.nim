@@ -15,8 +15,8 @@ import gdext/core/[typeshift]
 export typeshift.get, typeshift.variant
 
 
-import gdext/surface/[ init, userenums, properties, classutils, variantutils, nodeutils, conversions ]
-export                 init, userenums, properties, classutils, variantutils, nodeutils, conversions
+import gdext/surface/[ init, properties, classutils, variantutils, nodeutils, conversions ]
+export                 init, properties, classutils, variantutils, nodeutils, conversions
 
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge

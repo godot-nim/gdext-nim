@@ -1,11 +1,14 @@
+import std/sets
+
 import gdext/private/gdinterface
 import gdext/private/internalbridge
-
+import gdext/private/staticevents
+import gdext/private/macros
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/core/userclass/virtuals
-
-import gdext/private/macros
+import gdext/builtinindex
+import gdext/stringtools
 
 template name*(newname: static string) {.pragma.} ## Attaching it to a function along with gdsync allows to alias to the registered function.
 ## ```nim
@@ -111,3 +114,83 @@ macro gdsync*(body): untyped =
   else:
     hint "gdsync for " & ($body.kind)[3..^1] & " is not defined; gdsync will do nothing."
     body
+
+proc registerEnumField(className, enumName, fieldName: StringName; value: Int; isBitField: bool) =
+  ClassDB.registerExtensionClassIntegerConstant(className, enumName, fieldName, value, isBitField)
+
+proc registerEnumFields(className, enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
+  for name, value in fields.items:
+    registerEnumField(className, enumName, name, value, isBitField)
+
+template registerEnumFields[T: SomeUserClass](Class: typedesc[T]; enumName: StringName; fields: varargs[tuple[name: StringName; value: Int]]; isBitField: bool) =
+  registerEnumFields(className Class, enumName, fields, isBitField)
+
+var registeredEnums {.compileTime.}: HashSet[string]
+
+macro registerEnumInternal(Class, Enum; isBitField: static bool) =
+  let Enum = Enum.getTypeInst
+  let def = Enum.getImpl
+  let enumType = Enum.getTypeInst
+  let enumTypeStr = $enumType.toStrLit
+  let enumName = newLit $Enum
+
+  if registeredEnums.contains enumTypeStr: return newStmtList()
+
+  let call = bindSym"registerEnumFields".newCall(
+    Class,
+    bindSym"stringName".newCall enumName,
+  )
+  for field in def[2][1..^1]:
+    let fieldsym = case field.kind
+    of nnkEnumFieldDef: field[0]
+    of nnkSym: field
+    else: field
+    let fieldName = newlit $fieldsym
+    call.add case isBitField
+    of true:
+      quote do: (stringName `fieldName`, Int 1 shl int `fieldsym`)
+    of false:
+      quote do: (stringName `fieldName`, Int `fieldsym`)
+
+  call.add newlit isBitField
+  result = quote do:
+    template EnumOwner*(_: typedesc[`enumType`]): typedesc = `Class`
+    proc `enumType` {.execon: Contract[`Class`].enums.} =
+      `call`
+  registeredEnums.incl enumTypeStr
+
+template `bind`*[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E]) =
+  ## Binds `Enum` to `Class` and tells the engine about it.
+  ## This causes the engine to treat the `Enum` as belonging to the `Class`.
+  ## ```nim
+  ## type TestEnum* = enum # Values in Editor:
+  ##   TestEnumA      # TestNode.TestEnumA = 0
+  ##   TestEnumB = 2  # TestNode.TestEnumB = 2
+  ##   TestEnumC      # TestNode.TestEnumC = 3
+  ## MyClass.bind TestEnum
+  ## ```
+  registerEnumInternal(Class, E, false)
+
+template `bind`*[T: SomeUserClass; E: enum](Class: typedesc[T]; Flags: typedesc[set[E]]) =
+  ## Binds `set[Enum]` to `Class` and tells the engine about it.
+  ## This causes the engine to treat the `Enum` is bitfields and it as belonging to the `Class`.
+  ## ```nim
+  ## type TestFlags* = enum # Values in Editor:
+  ##   TestFlagA      # TestNode.TestFlagA = 1 (1 << 0)
+  ##   TestFlagB = 2  # TestNode.TestFlagB = 4 (1 << 2)
+  ##   TestFlagC      # TestNode.TestFlagC = 8 (1 << 3)
+  ## MyClass.bind TestFlags
+  ## ```
+  ## If you want to use the `Enum` as a sets, at properties, arguments and return-value, bind it as `set[Enum]`.
+  ## ```nim
+  ## assert cast[int]({TestFlagA, TestFlagB, TestFlagC}) == (1 or 4 or 8)
+  ## ```
+  registerEnumInternal(Class, E, true)
+
+template `bind`*[E: enum](Enum: typedesc[E]) =
+  ## Same as `ExtensionMain.bind Enum`. ExtensionMain is a special sigleton class that names by config.nims
+  registerEnumInternal(ExtensionMain, E, false)
+
+template `bind`*[E: enum](Flags: typedesc[set[E]]) =
+  ## Same as `ExtensionMain.bind Flags`. ExtensionMain is a special sigleton class that names by config.nims
+  registerEnumInternal(Extensionmain, E, true)
