@@ -3,17 +3,12 @@ import std/tables
 import gdext/buildconf
 import gdext/private/gdinterface
 import gdext/private/staticevents
-
+import gdext/private/macros
 import gdext/utils/[debugging]
-import gdext/builtinindex
-import gdext/core/userclass/procs
-import gdext/core/userclass/signals
-import gdext/core/userclass/virtuals
 import gdext/surface/classutils
 import gdext/surface/properties
-
+import gdext/builtinindex
 import gdext/objectcallbacks
-import gdext/private/macros
 
 when Assistance.genEditorHelp:
   import gdext/doctools
@@ -97,57 +92,7 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
     class_userdata: addr Meta(T),
   )
 
-template name*(newname: static string) {.pragma.}
-template signal* {.pragma.}
-template initLevel*(level: InitializationLevel) {.pragma.}
-template description*(desc: string) {.pragma.}
-
-var implicitRegistrations {.compileTime.}: array[InitializationLevel, seq[NimNode]]
-
-var Initialization_Default* {.compileTime.} = Initialization_Scene
-
-proc toLevel(node: NimNode): InitializationLevel =
-  if node.isNil:
-    Initialization_Default
-  elif node.eqIdent "Initialization_Core":
-    Initialization_Core
-  elif node.eqIdent "Initialization_Servers":
-    Initialization_Servers
-  elif node.eqIdent "Initialization_Scene":
-    Initialization_Scene
-  elif node.eqIdent "Initialization_Editor":
-    Initialization_Editor
-  else:
-    Initialization_Default
-
-macro gdsync*(body): untyped =
-  case body.kind
-  of nnkMethodDef:
-    if body.body.kind == nnkEmpty: # forward declaration
-      hint "{.gdsync.} is not required for forward declarations.", body
-      body
-    elif body.name.eqIdent "onInit": # forward declaration
-      hint "{.gdsync.} is not required for onInit.", body
-      body
-    elif body.hasPragma("base"):
-      sync_virtualDef(body)
-    else:
-      sync_methodDef(body)
-  of nnkProcDef, nnkConverterDef, nnkFuncDef:
-    if body.isSignal:
-      sync_signal(body)
-    elif body.body.kind == nnkEmpty: # forward declaration
-      hint "{.gdsync.} is not required for forward declarations.", body
-      body
-    else:
-      sync_procDef(body)
-  of nnkTypeDef:
-    let level = body.getPragmaVal("initLevel").toLevel
-    implicitRegistrations[level].add body.typesym
-    body
-  else:
-    hint "gdsync for " & ($body.kind)[3..^1] & " is not defined; gdsync will do nothing."
-    body
+var implicitRegistrations* {.compileTime.}: array[InitializationLevel, seq[NimNode]]
 
 var registered: seq[StringName]
 var plugins: seq[StringName]

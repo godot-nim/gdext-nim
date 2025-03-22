@@ -2,9 +2,9 @@ import std/[sets]
 
 import gdext/private/staticevents
 import gdext/private/gdinterface
+import gdext/private/internalbridge
 import gdext/builtinindex
 import gdext/utilityfuncs
-import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
 import gdext/buildconf
 
@@ -67,7 +67,7 @@ template GDExtension_EntryPoint*: untyped =
       eliminateExtensionMain()
     of Initialization_Editor:
       exec_eliminate_editor()
-      userclass.unregisterAll()
+      unregisterAll()
 
   proc entryPoint*(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
     try:
