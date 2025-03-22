@@ -3,7 +3,6 @@ import std/[sets]
 import gdext/private/staticevents
 import gdext/private/gdinterface
 import gdext/builtinindex
-import gdext/core/userclass/contracts
 import gdext/utilityfuncs
 import gdext/surface/userclass
 import gdext/extclasses/gdextensionmain
@@ -21,10 +20,6 @@ const eliminate_core* = event("eliminate_core")
 const eliminate_servers* = event("eliminate_servers")
 const eliminate_scene* = event("eliminate_scene")
 const eliminate_editor* = event("eliminate_editor")
-
-var gLoaded: int
-proc getLoaded*: int {.inline.} = gLoaded
-template loaded*: int = getLoaded()
 
 template GDExtension_EntryPoint*: untyped =
   proc load_builtinclassConstructor {.expandEvent: staticevents.init_engine.on_load_builtinclassConstructor.}
@@ -56,8 +51,6 @@ template GDExtension_EntryPoint*: untyped =
     of Initialization_Editor:
       exec_initialize_editor()
       registerImplicitly(Initialization_Editor)
-      const loadedClasses = contracts.invoked.len
-      gLoaded = loadedClasses
       {.emit: "NimMain();".}
       when Assistance.genEditorHelp:
         doctools.generateEditorHelp()

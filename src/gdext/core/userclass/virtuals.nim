@@ -3,8 +3,8 @@ import std/[sequtils, sets, tables, genasts]
 import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/core/typeshift
+import gdext/private/staticevents
 
-import contracts
 import methodinfo
 
 proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =

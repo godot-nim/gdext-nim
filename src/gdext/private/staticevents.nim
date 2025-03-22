@@ -1,12 +1,15 @@
 import std/[macros, macrocache, sets, hashes]
 import gdext/buildconf
 
-type Event* = CacheSeq
+type
+  Event* = CacheSeq
+  Contract*[T] = object
 proc event*(name: string): Event = Event name
 proc hash*(event: Event): Hash {.borrow.}
 proc `==`*(a, b: Event): bool {.borrow.}
 
 var alreadyExpanded {.compileTime.} : HashSet[Event]
+var invoked* {.compileTime.} : HashSet[string]
 
 macro expandEvent*(event: static Event; def: untyped): untyped =
   if event in alreadyExpanded:
@@ -47,6 +50,32 @@ macro execon*(event: static Event; def): untyped =
     error "the event " & event.string & " is already consumed", def
   event.add name
   def
+
+template enums*(c: typedesc[Contract]): static Event = event $c.T & "::contract::enums"
+template virtual_base*(c: typedesc[Contract]): static Event = event $c.T & "::contract::virtual-base"
+template virtual*(c: typedesc[Contract]): static Event = event $c.T & "::contract::virtual"
+template procedure*(c: typedesc[Contract]): static Event = event $c.T & "::contract::procedure"
+template pre_property*(c: typedesc[Contract]): static Event = event $c.T & "::contract::pre-property"
+template property*(c: typedesc[Contract]): static Event = event $c.T & "::contract::property"
+template signal*(c: typedesc[Contract]): static Event = event $c.T & "::contract::signal"
+
+template invoke*(contract: typedesc[Contract]) =
+  proc register_enums {.expandEvent: contract.enums.}
+  proc register_virtual_base {.expandEvent: contract.virtual_base.}
+  proc register_virtual {.expandEvent: contract.virtual.}
+  proc register_procedure {.expandEvent: contract.procedure.}
+  proc register_pre_property {.expandEvent: contract.pre_property.}
+  proc register_property {.expandEvent: contract.property.}
+  proc register_signal {.expandEvent: contract.signal.}
+  register_enums()
+  register_virtual_base()
+  register_virtual()
+  register_procedure()
+  register_pre_property()
+  register_property()
+  register_signal()
+
+  static: invoked.incl $contract.T
 
 const init_engine* = (
     on_load_builtinclassConstructor: event("load_builtinclassConstructor"),

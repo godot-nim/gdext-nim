@@ -1,6 +1,7 @@
 import std/[tables, sets]
 
 import gdext/private/gdinterface
+import gdext/private/staticevents
 import gdext/buildconf
 import gdext/builtinindex
 import gdext/core/typeshift
@@ -8,7 +9,6 @@ import gdext/core/typeshift
 import gdext/classes/gdobject
 
 import tools
-import contracts
 import propertyinfo
 
 import gdext/private/macros

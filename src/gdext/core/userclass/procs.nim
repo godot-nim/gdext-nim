@@ -3,9 +3,9 @@ import std/[sequtils, strutils, sets, tables]
 import gdext/buildconf
 import gdext/private/macros
 import gdext/private/gdinterface
+import gdext/private/staticevents
 
 import tools
-import contracts
 import methodinfo
 import virtuals
 

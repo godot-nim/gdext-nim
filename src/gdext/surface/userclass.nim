@@ -2,10 +2,10 @@ import std/tables
 
 import gdext/buildconf
 import gdext/private/gdinterface
+import gdext/private/staticevents
 
 import gdext/utils/[debugging]
 import gdext/builtinindex
-import gdext/core/userclass/contracts
 import gdext/core/userclass/procs
 import gdext/core/userclass/signals
 import gdext/core/userclass/virtuals

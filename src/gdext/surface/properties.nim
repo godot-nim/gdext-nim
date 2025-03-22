@@ -4,7 +4,6 @@ import gdext/stringtools
 import gdext/appearances
 import gdext/core/typeshift
 
-import gdext/core/userclass/contracts
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs
 
