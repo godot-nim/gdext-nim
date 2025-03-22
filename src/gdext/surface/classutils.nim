@@ -1,13 +1,14 @@
 import std/[strutils]
 
 import gdext/utils/debugging
-import gdext/gdinterface/objects
 import gdext/gdinterface/classDB
 import gdext/private/gdinterface
 
-export objects.destroy
-export objects.getInstanceID
-export objects.getClassName
+export getInstanceID
+export getClassName
+
+proc destroy*(obj: Object) =
+  interfaceObjectDestroy(obj.engineInstance)
 
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
   let objectPtr = classDB.constructObject(classname Type)
@@ -32,7 +33,7 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self of T: return T self
   result = self
     .castTo(classDB.getClassTag(className T))
-    .getInstance(T)
+    .getInstanceBinding(T)
 
 template castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
 template castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.handle.castTo(typeof T).referenced
@@ -55,7 +56,7 @@ proc singleton*[T: SomeClass](_: typedesc[T]): T =
     let getsingleton = interfaceGlobalGetSingleton
     result = (addr className T)
       .getsingleton()
-      .getInstance(T)
+      .getInstanceBinding(T)
     cache = cast[pointer](result)
   else:
     result = cast[T](cache)

@@ -1,7 +1,7 @@
 import std/tables
 
 import gdext/buildconf
-import gdext/gdinterface/[objects, classDB]
+import gdext/gdinterface/[classDB]
 import gdext/private/gdinterface
 
 import gdext/utils/[debugging]

@@ -136,20 +136,49 @@ template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtu
 
 macro Super*(Type: typedesc): typedesc = Type.super
 
-proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
+proc getInstanceBinding*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
   if p_engine_object.isNil: return
-  let getInstanceBinding = interface_objectGetInstanceBinding
-  result = p_engine_object.getInstanceBinding(environment.library, nil)
+  result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, nil)
   if result.isNil:
-    result = p_engine_object.getInstanceBinding(environment.library, addr callbacks)
+    result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
 
-proc getInstance*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
-  cast[T](p_engine_object.getInstance(T.callbacks))
+proc getInstanceBinding*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
+  cast[T](p_engine_object.getInstanceBinding(T.callbacks))
 
-proc className*(o: ObjectPtr): string =
-  var sn: StringName
-  discard interfaceObjectGetClassName(o, environment.library, addr sn)
-  $sn
+proc setInstanceBinding*(p_o: ObjectPtr; p_binding: Object; p_callbacks: ptr InstanceBindingCallbacks) =
+  interfaceObjectSetInstanceBinding(p_o, environment.library, cast[pointer](p_binding), p_callbacks)
+
+proc setInstance*(p_o: ObjectPtr; p_classname: StringName; p_instance: Object) =
+  interfaceObjectSetInstance(p_o, addr p_classname, cast[pointer](p_instance))
+
+proc callScriptMethod*(obj: Object; p_method: StringName): Variant =
+  var ce: CallError
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
+  check ce
+proc callScriptMethod*(obj: Object; p_method: StringName; args: array[0, Variant]): Variant =
+  var ce: CallError
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
+  check ce
+proc callScriptMethod*[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant =
+  var ce: CallError
+  let args = getPtr args
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, addr args[0], args.len, addr result, addr ce)
+  check ce
+
+proc hasScriptMethod*(obj: Object; p_method: StringName): bool =
+  interfaceObjectHasScriptMethod(obj.engineInstance, addr p_method)
+
+proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
+  interfaceObjectCastTo(obj.engineInstance, p_class_tag)
+
+proc getInstanceID*(self: Object): GDObjectInstanceID =
+  interfaceObjectGetInstanceId self.engineInstance
+
+proc getClassName*(o: ObjectPtr): StringName =
+  if unlikely(o.isNil): return
+  discard interfaceObjectGetClassName(o, environment.library, addr result)
+proc getClassName*(self: Object): StringName =
+  self.engineInstance.getClassName
 
 proc empty*(_: typedesc[String]): var String =
   var instance {.global.}: String
