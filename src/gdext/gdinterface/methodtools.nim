@@ -5,9 +5,6 @@ import gdext/private/gdinterface
 
 export gdcall
 
-template CLASS_getOwner*(v: Object): ObjectPtr =
-  owner v
-
 include gdext/private/includes/stringtoolsbase
 export getPtr
 export load

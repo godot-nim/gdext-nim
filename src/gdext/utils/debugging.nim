@@ -95,7 +95,7 @@ when Dev.debugCallbacks or isMainModule:
   proc instanceInfo*(o: Object): string =
     result = o.debugName
     result.add ":"
-    result.add $interfaceObjectGetInstanceId(o.owner)
+    result.add $interfaceObjectGetInstanceId(o.unsafeEngineInstance)
 
   proc debugInstantiate*(o: Object) {.raises: [].} =
     try:
@@ -125,7 +125,7 @@ when Dev.debugCallbacks or isMainModule:
 
   proc debugReference*(o: Object; reference: bool) {.raises: [].} =
     try:
-      let count = hook_getReferenceCount o.owner
+      let count = hook_getReferenceCount o.unsafeEngineInstance
       let status = if reference: "UP" else: "DOWN"
       callbacks.notice SYNC.REFERENCE, o.instanceInfo, "(", $count, " ", status, ")"
     except: discard

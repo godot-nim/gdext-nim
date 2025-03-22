@@ -11,6 +11,11 @@ privateAccess Object
 
 export native
 
+proc engineInstance*(obj: Object): ObjectPtr =
+  privateAccess Object
+  if unlikely(obj.isNil): nil
+  else: obj.unsafeEngineInstance
+
 type
   GodotClassMeta* = object
     virtualMethods*: Table[StringName, ClassCallVirtual]
@@ -73,7 +78,7 @@ proc createClass*[T: Object](o: ObjectPtr): T =
   privateAccess Object
   result = cast[T](alloc sizeof pointerBase T)
   zeroMem result, sizeof pointerBase T
-  result[] = (pointerBase T)(owner: o)
+  result[] = (pointerBase T)(unsafeEngineInstance: o)
   when Dev.debugCallbacks:
     result.debugName = $T
   onInit result
@@ -126,15 +131,6 @@ proc getInstance*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCall
 proc getInstance*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
   cast[T](p_engine_object.getInstance(T.callbacks))
 
-proc ownerPtr*(obj: Object): ptr ObjectPtr =
-  privateAccess Object
-  if unlikely(obj.isNil or obj.owner.isNil): nil
-  else: addr obj.owner
-proc owner*(obj: Object): ObjectPtr =
-  privateAccess Object
-  if unlikely(obj.isNil): nil
-  else: obj.owner
-
 proc className*(o: ObjectPtr): string =
   var sn: StringName
   discard interfaceObjectGetClassName(o, environment.library, addr sn)
@@ -149,6 +145,6 @@ proc empty*(_: typedesc[StringName]): var StringName =
 
 proc referenced*[T](self: T): GdRef[T] =
   result.handle = self
-  discard hook_reference(self.owner)
+  discard hook_reference(self.engineInstance)
 proc asGdRef*[T](self: T): GdRef[T] =
   result.handle = self

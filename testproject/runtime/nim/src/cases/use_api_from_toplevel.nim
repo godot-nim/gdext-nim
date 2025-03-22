@@ -39,8 +39,8 @@ runtime: test "instantiate at global":
   let engineclass = instantiate Object
   let extentclass = instantiate TestObject
 
-  check engineclass.owner != nil
-  check extentclass.owner != nil
+  check engineclass.engineInstance != nil
+  check extentclass.engineInstance != nil
 
   destroy engineclass
   destroy extentclass

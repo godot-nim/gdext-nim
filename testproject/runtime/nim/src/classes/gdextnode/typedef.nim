@@ -40,7 +40,7 @@ proc test_Object(self: GDExtNode) =
   suite "Object":
     test "instantiate":
       let obj: Object = instantiate Object
-      check obj.owner != nil
+      check obj.engineInstance != nil
       destroy obj
 
     test "singleton":

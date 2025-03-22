@@ -1,7 +1,7 @@
 privateAccess Object
 proc engineInstancePtr(obj: Object): ptr ObjectPtr =
-  if unlikely(obj.isNil or obj.owner.isNil): nil
-  else: addr obj.owner
+  if unlikely(obj.isNil or obj.unsafeEngineInstance.isNil): nil
+  else: addr obj.unsafeEngineInstance
 
 template getPtr[T](v: T): pointer = cast[pointer](addr v)
 template getPtr(v: Variant): pointer = cast[pointer](addr v.data)

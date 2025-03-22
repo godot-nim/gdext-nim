@@ -13,29 +13,29 @@ proc setInstance*(p_o: ObjectPtr; p_classname: StringName; p_instance: Object) =
 
 proc callScriptMethod*(obj: Object; p_method: StringName): Variant =
   var ce: CallError
-  interfaceObjectCallScriptMethod(obj.owner, addr p_method, nil, 0, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
   check ce
 proc callScriptMethod*(obj: Object; p_method: StringName; args: array[0, Variant]): Variant =
   var ce: CallError
-  interfaceObjectCallScriptMethod(obj.owner, addr p_method, nil, 0, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
   check ce
 proc callScriptMethod*[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant =
   var ce: CallError
   let args = getPtr args
-  interfaceObjectCallScriptMethod(obj.owner, addr p_method, addr args[0], args.len, addr result, addr ce)
+  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, addr args[0], args.len, addr result, addr ce)
   check ce
 
 proc hasScriptMethod*(obj: Object; p_method: StringName): bool =
-  interfaceObjectHasScriptMethod(obj.owner, addr p_method)
+  interfaceObjectHasScriptMethod(obj.engineInstance, addr p_method)
 
 proc destroy*(obj: Object) =
-  interfaceObjectDestroy(obj.owner)
+  interfaceObjectDestroy(obj.engineInstance)
 
 proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
-  interfaceObjectCastTo(obj.owner, p_class_tag)
+  interfaceObjectCastTo(obj.engineInstance, p_class_tag)
 
 proc getInstanceID*(self: Object): GDObjectInstanceID =
-  interfaceObjectGetInstanceId self.owner
+  interfaceObjectGetInstanceId self.engineInstance
 
 proc getClassName*(self: Object): StringName =
-  discard interfaceObjectGetClassName(self.owner, environment.library, addr result)
+  discard interfaceObjectGetClassName(self.engineInstance, environment.library, addr result)

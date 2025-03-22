@@ -122,7 +122,7 @@ type
   PackedColorArray* = PackedArray[Color]
 
   Object* = ptr object of RootObj
-    owner: ObjectPtr
+    unsafeEngineInstance: ObjectPtr
     when Dev.debugCallbacks:
       debugName: string
   RefCounted* = ptr object of Object
@@ -349,14 +349,15 @@ proc hook_unreference(o: ObjectPtr): Bool {.raises: [].}
 
 proc `=destroy`*[T](self: GdRef[T]) =
   if self.handle.isNil: return
-  let objectptr = self.handle.owner
+  let objectptr = self.handle.unsafeEngineInstance
   if objectptr.isNil: return
   if hook_unreference(objectptr):
     interfaceObjectDestroy objectPtr
 proc `=dup`*[T](src: GdRef[T]): GdRef[T] =
   if src.handle.isNil: return
   result.handle = src.handle
-  let objectptr = src.handle.owner
+  let objectptr = src.handle.unsafeEngineInstance
+  if objectptr.isNil: return
   discard hook_reference(objectptr)
 proc `=copy`*[T](dst: var GdRef[T]; src: GdRef[T]) =
   `=destroy`dst
