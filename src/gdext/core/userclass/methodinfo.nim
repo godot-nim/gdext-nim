@@ -1,8 +1,6 @@
 import std/sequtils
 import std/tables
 import gdext/private/macros
-
-import gdext/gdinterface/[methodtools]
 import gdext/private/gdinterface
 import gdext/builtinindex
 import gdext/core/typeshift

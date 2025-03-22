@@ -1,9 +1,7 @@
-import gdext/gdinterface/[methodtools]
 import gdext/private/gdinterface
 import gdext/builtinindex
 
 export builtinindex
-export methodtools
 
 proc setInstanceBinding*(p_o: ObjectPtr; p_binding: Object; p_callbacks: ptr InstanceBindingCallbacks) =
   interfaceObjectSetInstanceBinding(p_o, environment.library, cast[pointer](p_binding), p_callbacks)

@@ -1,8 +1,7 @@
-import gdext/gdinterface/methodtools
-import gdext/builtinindex
-import gdext/private/native
+import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/core/typeshift
+import gdext/builtinindex
 
 include gdext/gen/gddictionaryconstr
 include gdext/gen/gddictionary

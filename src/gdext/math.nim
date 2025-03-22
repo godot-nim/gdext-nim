@@ -3,9 +3,8 @@ import std/genasts
 import std/math as stdmath
 from std/endians {.all.} import builtin_bswap16, builtin_bswap32, builtin_bswap64
 
-import gdext/gdinterface/methodtools
 import gdext/private/macros
-import gdext/private/native
+import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 

@@ -1,5 +1,5 @@
-import gdext/gdinterface/[classDB, methodtools]
-export                    classDB, methodtools
+import gdext/gdinterface/[classDB]
+export                    classDB
 
 import gdext/core/[typeshift]
 export             typeshift

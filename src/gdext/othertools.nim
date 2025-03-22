@@ -1,5 +1,4 @@
-import gdext/gdinterface/methodtools
-import gdext/private/native
+import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 
