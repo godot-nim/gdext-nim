@@ -95,10 +95,6 @@ template uniqueUsage*(T: typedesc[Variant]): set[PropertyUsageFlags] = {property
 template uniqueUsage*(T: typedesc[enum]): set[PropertyUsageFlags] = {propertyUsageClassIsEnum}
 template uniqueUsage*[E: enum](T: typedesc[set[E]]): set[PropertyUsageFlags] = {propertyUsageClassIsBitfield}
 
-type SomeProperty* = concept type t
-  t.variantType is VariantType
-  t.uniqueUsage is set[PropertyUsageFlags]
-
 proc unheap*(info: HeapPropertyInfo): PropertyInfo =
   cast[ptr PropertyInfo](addr info)[]
 

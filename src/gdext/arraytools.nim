@@ -74,19 +74,19 @@ proc gdarray*(len: Natural): Array =
   result = gdarray()
   discard result.resize(len)
 
-proc typedArray*[T: SomeVariant](arr: Array): TypedArray[T] =
+proc typedArray*[T](arr: Array): TypedArray[T] =
   TypedArray[T] gdarray(arr, Int T.variantType, stringName(), variant())
 
-proc typedArray*[T: SomeVariant](): TypedArray[T] =
+proc typedArray*[T](): TypedArray[T] =
   typedArray[T](gdarray())
 
-proc typedArray*[T: SomeVariant](len: Natural): TypedArray[T] =
+proc typedArray*[T](len: Natural): TypedArray[T] =
   result = typedArray[T]()
   discard result.Array.resize(len)
 
-proc `[]`*[T: SomeVariant](arr: TypedArray[T]; i: int): T =
+proc `[]`*[T](arr: TypedArray[T]; i: int): T =
   arr.Array[i].get(T)
-proc `[]=`*[T: SomeVariant](arr: TypedArray[T]; i: int; value: T) =
+proc `[]=`*[T](arr: TypedArray[T]; i: int; value: T) =
   arr.Array[i] = variant(value)
 
 proc toSeq*[T](arr: PackedArray[T]): seq[T] =

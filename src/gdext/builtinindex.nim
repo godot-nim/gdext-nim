@@ -108,7 +108,7 @@ type
   Array* {.byref.} = object
     opaque: Opaque[1]
 
-  TypedArray*[T: SomeVariant] = distinct Array
+  TypedArray*[T: SomeProperty] = distinct Array
 
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
@@ -187,8 +187,10 @@ type
     t is SomeClass
     t.EngineClass isnot t
 
-  SomeVariant* = concept type t
-    t is SomeBuiltins | Object
+  SomeProperty* = concept x, type t
+    t.variantType is VariantType
+    variant(x) is Variant
+    compiles(Variant().get(t))
 
   AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
   AltFloat* = float32

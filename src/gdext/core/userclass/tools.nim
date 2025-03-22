@@ -2,7 +2,6 @@ import std/[sequtils]
 
 import gdext/buildconf
 import gdext/private/macros
-import propertyinfo
 
 proc docComment*(def: NimNode): NimNode =
   if def.kind notin RoutineNodes: return
