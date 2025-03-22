@@ -2,7 +2,7 @@ import std/[sequtils, sets, tables, genasts]
 
 import gdext/private/macros
 import gdext/private/gdinterface
-import gdext/core/typeshift
+import gdext/private/typeshift
 import gdext/private/staticevents
 
 import methodinfo

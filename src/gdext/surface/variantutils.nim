@@ -1,7 +1,7 @@
 import gdext/gdinterface/[variants]
 
 import gdext/private/gdinterface
-import gdext/core/[typeshift]
+import gdext/private/typeshift
 import gdext/builtinindex
 import std/[strformat]
 

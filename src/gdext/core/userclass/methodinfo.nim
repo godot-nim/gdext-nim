@@ -2,8 +2,8 @@ import std/sequtils
 import std/tables
 import gdext/private/macros
 import gdext/private/gdinterface
+import gdext/private/typeshift
 import gdext/builtinindex
-import gdext/core/typeshift
 
 import propertyinfo
 

@@ -2,7 +2,7 @@ import gdext/buildconf
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/appearances
-import gdext/core/typeshift
+import gdext/private/typeshift
 
 import gdext/core/userclass/propertyinfo
 import gdext/core/userclass/procs

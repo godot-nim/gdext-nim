@@ -1,8 +1,6 @@
 import std/[strutils]
 
 import gdext/builtinindex
-import gdext/core/typeshift
-
 import gdext/private/macros
 import gdext/private/gdinterface
 

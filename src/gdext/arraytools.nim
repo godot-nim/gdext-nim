@@ -1,8 +1,8 @@
 import gdext/private/gdinterface
 import gdext/private/staticevents
+import gdext/private/typeshift
 import gdext/builtinindex
 import gdext/stringtools
-import gdext/core/typeshift
 
 import std/sequtils
 

@@ -1,7 +1,5 @@
-import gdext/core/[typeshift]
-export             typeshift
-
 import gdext/private/gdinterface; export gdinterface
+import gdext/private/typeshift; export typeshift
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
 import gdext/arraytools; export arraytools

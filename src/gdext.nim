@@ -11,7 +11,7 @@ export internalbridge.register
 import gdext/private/native
 export InitializationLevel, VariantType, gdcall
 
-import gdext/core/[typeshift]
+import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
 
