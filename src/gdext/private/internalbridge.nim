@@ -4,11 +4,15 @@ import gdext/buildconf
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/macros
+import gdext/core/userclass/propertyinfo
+import gdext/private/typeshift
 import gdext/utils/[debugging]
+import gdext/core/userclass/procs
 import gdext/surface/classutils
-import gdext/surface/properties
 import gdext/builtinindex
 import gdext/objectcallbacks
+import gdext/appearances
+import gdext/stringtools
 
 when Assistance.genEditorHelp:
   import gdext/doctools
@@ -91,6 +95,88 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract: bool): Cl
     get_rid_func: nil,
     class_userdata: addr Meta(T),
   )
+
+proc propertyinfo*(
+      name: StringName;
+      proptyp: typedesc[SomeProperty];
+      appearance: Appearance;
+    ): HeapPropertyInfo =
+  var hint = appearance.hint
+  var hintstring = appearance.hintstring
+  var usage = appearance.usage
+  if appearance.hint == propertyHintNone:
+    let ap = proptyp.appearance
+    hint = ap.hint
+    hintstring = ap.hintstring
+    usage = appearance.usage + ap.usage
+  propertyInfo(proptyp, name,
+    hint, hintstring, usage)
+
+proc propertyinfo*(
+      name: StringName;
+      appearance: Appearance;
+    ): HeapPropertyInfo =
+  propertyInfo(VariantType_Nil, name, StringName(),
+    appearance.hint, appearance.hintstring, appearance.usage)
+
+proc gdexport_internal*(
+    info: HeapPropertyInfo;
+    typ: StringName;
+    getter= StringName();
+    setter= StringName()) =
+  ClassDB.registerExtensionClassProperty(typ, cast[ptr PropertyInfo](addr info), setter, getter)
+
+proc gdexport_internal*(
+    name: string;
+    typ: typedesc[SomeUserClass];
+    proptyp: typedesc[SomeProperty];
+    getter, setter: StringName;
+    appearance: Appearance;
+    description: string) =
+  gdexport_internal(
+    propertyInfo(stringName name, proptyp, appearance),
+    className typ, getter, setter)
+  when Assistance.genEditorHelp:
+    docClassDB[typ].members.add DocMember(
+      name: name,
+      description: description,
+      typ: $APIType proptyp
+      )
+
+macro processExports(T: typed): untyped =
+  let classIdent = T.getTypeInst[1].identifier
+  let fields = T.recList
+  let eventname = ident $classIdent & "_properties"
+
+  result = newStmtList()
+  for field in fields:
+    if field.hasPragma("gdexport"):
+      let
+        fieldIdent = field.identifier
+        name = $fieldIdent
+        desc = field.getPragmaVal("description") or newLit ""
+        editorhint = field.getPragmaVal("gdexport") or (quote do: Appearance())
+        gettersym = genSym(nskProc, "get_" & name)
+        settersym = genSym(nskProc, "set_" & name)
+        getterdef = quote do:
+          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` = self.`fieldIdent`
+        setterdef = quote do:
+          proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
+        gettername  = newlit "get_" & name
+        settername  = newlit "set_" & name
+
+      result.add quote do:
+        `getterdef`
+        `setterdef`
+        registerProc `getterdef`
+        registerProc `setterdef`
+        gdexport_internal(`name`, typedesc `classIdent`, typedesc `classIdent`.`fieldIdent`,
+          stringName `gettername`, stringName `settername`, `editorhint`, `desc`)
+
+  if result.len != 0:
+    result = quote do:
+      proc `eventname` {.execon: Contract[`classIdent`].pre_property.} =
+        `result`
 
 var implicitRegistrations* {.compileTime.}: array[InitializationLevel, seq[NimNode]]
 

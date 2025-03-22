@@ -9,6 +9,7 @@ import gdext/core/userclass/signals
 import gdext/core/userclass/virtuals
 import gdext/builtinindex
 import gdext/stringtools
+import gdext/appearances
 
 template name*(newname: static string) {.pragma.} ## Attaching it to a function along with gdsync allows to alias to the registered function.
 ## ```nim
@@ -194,3 +195,134 @@ template `bind`*[E: enum](Enum: typedesc[E]) =
 template `bind`*[E: enum](Flags: typedesc[set[E]]) =
   ## Same as `ExtensionMain.bind Flags`. ExtensionMain is a special sigleton class that names by config.nims
   registerEnumInternal(Extensionmain, E, true)
+
+macro gdname(P: proc): string = P.getPragmaVal("name") or newLit $P
+
+template gdexport*() {.pragma.} ## Exposes a member variable to the engine as a property.
+## ```nim
+## type MyResource* {.gdsync.} = ptr object of Resource
+##   data* {.gdexport.}: PackedVector2Array
+## ```
+template gdexport*(appearance: Appearance) {.pragma.} ## Exposes a member variable to the engine as a property.
+## It receives Appearance.
+## ```nim
+## type Weapon* {.gdsync.} = ptr object of Node3D
+##   description* {.gdexport: Appearance.multiline.}: string
+## ```
+
+template gdexport*[T: SomeUserClass](
+      name: string;
+      appearance = default(Appearance);
+    ): untyped =
+  ## Registers non-entity properties such as groups and categories.
+  ## ```nim
+  ## gdexport[Actor] "Base Params", Appearance.category
+  ## ```
+  proc `name` {.execon: Contract[T].property.} =
+    gdexport_internal(propertyInfo(stringName name, appearance), className typedesc T)
+
+template gdexport*(
+      name: string;
+      typ: typedesc[SomeUserClass];
+      proptyp: typedesc[SomeProperty];
+      getter, setter: StringName;
+      appearance = default(Appearance);
+      description = "";
+    ): untyped =
+  ## Register virtual properties using your own defined getters and setters.
+  ## ```nim
+  ## proc get_power(self: Actor): Int {.gdsync.} = self.weapon.atk + self.atk
+  ## proc set_power(self: Actor; value: Int) {.gdsync.} = self.atk = max(0, (value - self.weapon.atk))
+  ## gdexport "power", Actor, Int, "get_power", "set_power"
+  ## ```
+  proc `name` {.execon: Contract[`typ`].property.} =
+    gdexport_internal(name, typ, proptyp, getter, setter, appearance, description)
+
+
+macro gdexport[T: SomeUserClass; P: SomeProperty](
+      name: static string;
+      typ: typedesc[T];
+      proptyp: typedesc[P];
+      getter: proc(self: T): P;
+      setter: proc(self: T; value: P);
+      appearance = default(Appearance);
+      description: string = "";
+    ): untyped =
+  result = newStmtList()
+  let
+    gettersym =
+      if getter.kind == nnkLambda: genSym(nskProc, "get_" & name)
+      else: getter
+    settersym =
+      if setter.kind == nnkLambda: genSym(nskProc, "set_" & name)
+      else: setter
+
+  if getter.kind == nnkLambda:
+    let getterdef = nnkProcDef.newTree(gettersym).add(getter[1..^1])
+    result.add getterdef
+    result.add quote do:
+      registerProc(`getterdef`)
+
+  if setter.kind == nnkLambda:
+    let setterdef = nnkProcDef.newTree(settersym).add(setter[1..^1])
+    result.add setterdef
+    result.add quote do:
+      registerProc(`settersym`)
+
+  result.add quote do:
+    proc `name` {.execon: Contract[`typ`].property.} =
+      gdexport_internal(`name`, typedesc `typ`, typedesc `proptyp`,
+        `gettersym`.gdname, `settersym`.gdname, `appearance`, `description`)
+
+template gdexport*[T: SomeUserClass; P: SomeProperty](
+      name: static string;
+      getter: proc(self: T): P;
+      setter: proc(self: T; value: P);
+      appearance = default(Appearance);
+      description = "";
+    ): untyped =
+  ## Register virtual properties using your own defined getters and setters.
+  ## ```nim
+  ## proc set_power(self: Actor; value: Int) {.gdsync.} = self.atk = max(0, (value - self.weapon.atk))
+  ## gdexport "power",
+  ##   proc(self: Actor): Int = self.weapon.atk + self.atk,
+  ##   set_power
+  ## ```
+  gdexport(name, typedesc T, typedesc P, getter, setter, appearance, description)
+
+
+macro gdexport*(
+      name: static string;
+      iden: typed;
+      appearance = default(Appearance);
+      description = "";
+    ): untyped =
+  ## Exposes a member variable to the engine as a property.
+  ## ```nim
+  ## type MyResource* {.gdsync.} = ptr object of Resource
+  ##   data: PackedVector2Array
+  ## gdexport "positions", MyResource.data
+  ## ```
+  let classType = iden[0]
+  let variable = iden[1]
+  let getter = quote do:
+    proc(self: `classType`): `iden` = self.`variable`
+  let setter = quote do:
+    proc(self: `classType`, value: `iden`) = self.`variable` = value
+  quote do:
+    gdexport(`name`, typedesc `classType`, typedesc `iden`, `getter`, `setter`, `appearance`, `description`)
+
+macro gdexport*(
+      iden: typed;
+      appearance = default(Appearance);
+      description = "";
+    ): untyped =
+  ## Exposes a member variable to the engine as a property.
+  ## ```nim
+  ## type MyResource* {.gdsync.} = ptr object of Resource
+  ##   data: PackedVector2Array
+  ## gdexport MyResource.data
+  ## ```
+  let name = $iden[1]
+  quote do:
+    gdexport(`name`, `iden`, `appearance`, `description`)
