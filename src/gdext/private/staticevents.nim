@@ -82,3 +82,12 @@ const init_engine* = (
     on_load_builtinclassOperator: event("load_builtinclassOperator"),
     on_load_builtinclassMethod: event("load_builtinclassMethod"),
 )
+
+const initialize_core* = event("initialize_core")
+const initialize_servers* = event("initialize_servers")
+const initialize_scene* = event("initialize_scene")
+const initialize_editor* = event("initialize_editor")
+const eliminate_core* = event("eliminate_core")
+const eliminate_servers* = event("eliminate_servers")
+const eliminate_scene* = event("eliminate_scene")
+const eliminate_editor* = event("eliminate_editor")

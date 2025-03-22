@@ -1,9 +1,13 @@
 {.warning[UnusedImport]: off.}
 
 import gdext/buildconf
+import gdext/private/gdinterface
 
 import gdext/private/staticevents
 export staticevents.execon, staticevents.expandEvent
+export # for backward compatibility
+  initialize_core, initialize_servers, initialize_scene, initialize_editor,
+  eliminate_core, eliminate_servers, eliminate_scene, eliminate_editor
 
 import gdext/private/internalbridge
 export internalbridge.register
@@ -15,8 +19,8 @@ import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
 
-import gdext/surface/[ init, variantutils, conversions ]
-export                 init, variantutils, conversions
+import gdext/surface/[ variantutils, conversions ]
+export                 variantutils, conversions
 
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge
@@ -36,3 +40,82 @@ import gdext/classes/[gdengine]
 export gdengine.isEditorHint
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
+
+when Assistance.genEditorHelp:
+  import gdext/doctools
+
+template GDExtension_EntryPoint*: untyped =
+  ## Responds to initialization requests by Godot and performs extension initialization, such as loading functions and registering classes.
+  bind expandEvent
+  proc load_builtinclassConstructor {.expandEvent: staticevents.init_engine.on_load_builtinclassConstructor.}
+  proc load_builtinclassOperator {.expandEvent: staticevents.init_engine.on_load_builtinclassOperator.}
+  proc load_builtinclassMethod {.expandEvent: staticevents.init_engine.on_load_builtinclassMethod.}
+  proc exec_initialize_core {.expandEvent: initialize_core.}
+  proc exec_initialize_servers {.expandEvent: initialize_servers.}
+  proc exec_initialize_scene {.expandEvent: initialize_scene.}
+  proc exec_initialize_editor {.expandEvent: initialize_editor.}
+  proc exec_eliminate_core {.expandEvent: eliminate_core.}
+  proc exec_eliminate_servers {.expandEvent: eliminate_servers.}
+  proc exec_eliminate_scene {.expandEvent: eliminate_scene.}
+  proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
+
+  {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
+  proc initializer(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
+    case p_level
+    # almost all uses is to register user-defined classes
+    of Initialization_Core:
+      exec_initialize_core()
+      registerImplicitly(Initialization_Core)
+    of Initialization_Servers:
+      exec_initialize_servers()
+      registerImplicitly(Initialization_Servers)
+    of Initialization_Scene:
+      initializeExtensionMain()
+      exec_initialize_scene()
+      registerImplicitly(Initialization_Scene)
+    of Initialization_Editor:
+      exec_initialize_editor()
+      registerImplicitly(Initialization_Editor)
+      {.emit: "NimMain();".}
+      when Assistance.genEditorHelp:
+        doctools.generateEditorHelp()
+
+  proc deinitializer(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
+    case p_level
+    # almost all uses is to register user-defined classes
+    of Initialization_Core:
+      exec_eliminate_core()
+    of Initialization_Servers:
+      exec_eliminate_servers()
+    of Initialization_Scene:
+      exec_eliminate_scene()
+      eliminateExtensionMain()
+    of Initialization_Editor:
+      exec_eliminate_editor()
+      unregisterAll()
+
+  proc entryPoint(p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr; r_initialization: ptr Initialization): Bool {.gdcall, exportc: Extension.entrySymbol, dynlib.} = once:
+    try:
+      gdinterface.init(
+        p_getProcAddress,
+        p_library)
+
+      r_initialization.initialize = initializer
+      r_initialization.deinitialize = deinitializer
+      r_initialization.minimum_initialization_level = Initialization_Scene
+
+      utilityfuncs.load()
+
+      load_builtinclassConstructor()
+      load_builtinclassOperator()
+      load_builtinclassMethod()
+
+      return true
+
+    except:
+      echo "FATAL ERROR: failed to initialize library."
+      echo $getCurrentException()
+      return false
+
+when isMainModule:
+  GDExtension_EntryPoint
