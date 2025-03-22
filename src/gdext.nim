@@ -16,6 +16,7 @@ import gdext/surface/[ init, userclass, userenums, properties, classutils, varia
 export                 init, userclass, userenums, properties, classutils, variantutils, nodeutils, conversions
 
 import gdext/builtinindex; export builtinindex
+import gdext/appearances; export appearances
 import gdext/math; export math
 import gdext/swizzles; export swizzles
 import gdext/objectcallbacks; export objectcallbacks
