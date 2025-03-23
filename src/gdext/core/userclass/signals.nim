@@ -14,7 +14,7 @@ import tools
 import gdext/private/macros
 
 when Assistance.genEditorHelp:
-  import gdext/doctools
+  import gdext/private/doctools
 
 proc isSignal*(procdef: NimNode): bool = procdef.hasPragma("signal")
 

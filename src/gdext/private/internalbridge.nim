@@ -14,7 +14,7 @@ import gdext/appearances
 import gdext/stringtools
 
 when Assistance.genEditorHelp:
-  import gdext/doctools
+  import gdext/private/doctools
 
 proc instantiate_internal*[T: SomeEngineClass](Type: typedesc[T]): T =
   let objectPtr = ClassDB.constructObject(classname Type)

@@ -15,7 +15,7 @@ proc getDescription*(def: NimNode): string =
   else: ""
 
 when Assistance.genEditorHelp:
-  import gdext/doctools
+  import gdext/private/doctools
   proc getEditorHelp*(def: NimNode): string =
     def.getDescription.descToEditorHelp
 

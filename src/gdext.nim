@@ -43,7 +43,7 @@ import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
 when Assistance.genEditorHelp:
-  import gdext/doctools
+  import gdext/private/doctools
 
 template GDExtension_EntryPoint*: untyped =
   ## Responds to initialization requests by Godot and performs extension initialization, such as loading functions and registering classes.

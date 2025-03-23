@@ -10,7 +10,7 @@ import tools
 import virtuals
 
 when Assistance.genEditorHelp:
-  import gdext/doctools
+  import gdext/private/doctools
 
 const errmsgSelfTypeMismatch = "invalid form; In order to synchronize the function, the first argument must inherit from the class provided by gdext."
 
