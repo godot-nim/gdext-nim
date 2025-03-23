@@ -63,7 +63,7 @@ proc `type`*(param: RenderableParamBase): string =
   name.add dbModify param.typeSym
   if param.typeSym == TypeSym"TypedArray":
     name.add "["
-    name.add $param.info.metaType
+    name.add $dbModify param.info.metaType
     name.add "]"
 
   result = case param.info.attribute
@@ -172,13 +172,7 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
         value
 
     of TypeSym"TypedArray":
-      case value
-      of "[]":
-        &"TypedArray[{arg.info.metaType}](gdarray())"
-      elif value.startsWith "Array":
-        "TypedArray[" & $value.split({'[', ']'})[1].convert(TypeSym) & "](gdarray())"
-      else:
-        value
+      &"typedArray[{dbModify arg.info.metaType}]()"
 
     of TypeSym"Dictionary":
       case value
