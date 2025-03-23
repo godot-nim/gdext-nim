@@ -73,6 +73,7 @@ proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
   new result
   new result.key
   result.key.name = operator operator.name
+  result.key.kind = pkFunc
   result.key.args.add RenderableArgument(
     variableSym: VariableSym"left",
     typeSym: caller)
@@ -112,7 +113,7 @@ proc weave_container(operator: BuiltinClassOperator): Cloth =
   &"var {operator.containerkey}: PtrOperatorEvaluator"
 
 proc weave_procdef(operator: BuiltinClassOperator): Cloth =
-  &"{weave operator.key} {operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
+  &"{weave operator.key} {{.noSideEffect.}}: {operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
 
 proc weave_loadstmt(operator: BuiltinClassOperator): Cloth =
   &"{operator.containerkey} = load({operator.opkey}, {operator.vt_first}, {operator.vt_second})"
