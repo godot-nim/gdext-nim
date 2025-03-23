@@ -7,7 +7,7 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/private/debugging
-import gdext/core/userclass/procs
+import gdext/private/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances

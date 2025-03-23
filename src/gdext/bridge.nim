@@ -4,9 +4,9 @@ import gdext/private/gdinterface
 import gdext/private/internalbridge
 import gdext/private/staticevents
 import gdext/private/macros
-import gdext/core/userclass/procs
-import gdext/core/userclass/signals
-import gdext/core/userclass/virtuals
+import gdext/private/userclass/procs
+import gdext/private/userclass/signals
+import gdext/private/userclass/virtuals
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/appearances
