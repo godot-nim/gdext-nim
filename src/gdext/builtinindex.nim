@@ -94,19 +94,19 @@ type
   RID* {.byref.} = object
     opaque: Opaque[2]
   String* {.byref.} = object
-    opaque: Opaque[1]
+    cowdata: pointer
   StringName* {.byref.} = object
-    opaque: Opaque[1]
+    cowdata: pointer
   NodePath* {.byref.} = object
-    opaque: Opaque[1]
+    cowdata: pointer
   Callable* {.byref.} = object
     opaque: Opaque[4]
   Signal* {.byref.} = object
     opaque: Opaque[4]
   Dictionary* {.byref.} = object
-    opaque: Opaque[1]
+    cowdata: pointer
   Array* {.byref.} = object
-    opaque: Opaque[1]
+    cowdata: pointer
 
   TypedArray*[T: SomeProperty] = distinct Array
 
@@ -264,13 +264,13 @@ template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_N
 include gdext/gen/[classindex, localenums, globalenums, structs]
 
 proc `=destroy`*(val {.bycopy.}: String) =
-  if val.opaque == String.opaque.default: return
+  if val.cowdata.isNil: return
   typeDestructor[VariantTypeString](addr val)
 proc `=destroy`*(val {.bycopy.}: StringName) =
-  if val.opaque == StringName.opaque.default: return
+  if val.cowdata.isNil: return
   typeDestructor[VariantTypeStringName](addr val)
 proc `=destroy`*(val {.bycopy.}: NodePath) =
-  if val.opaque == NodePath.opaque.default: return
+  if val.cowdata.isNil: return
   typeDestructor[VariantTypeNodePath](addr val)
 proc `=destroy`*(val {.bycopy.}: Callable) =
   if val.opaque == Callable.opaque.default: return
@@ -279,10 +279,10 @@ proc `=destroy`*(val {.bycopy.}: Signal) =
   if val.opaque == Signal.opaque.default: return
   typeDestructor[VariantTypeSignal](addr val)
 proc `=destroy`*(val {.bycopy.}: Array) =
-  if val.opaque == Array.opaque.default: return
+  if val.cowdata.isNil: return
   typeDestructor[VariantTypeArray](addr val)
 proc `=destroy`*(val {.bycopy.}: Dictionary) =
-  if val.opaque == Dictionary.opaque.default: return
+  if val.cowdata.isNil: return
   typeDestructor[VariantTypeDictionary](addr val)
 proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
   if val.opaque == PackedArray.opaque.default: return
