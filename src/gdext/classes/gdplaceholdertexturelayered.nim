@@ -23,7 +23,3 @@ template `size=`*(self: PlaceholderTextureLayered; value) = self.setSize(value)
 
 template layers*(self: PlaceholderTextureLayered): untyped = self.getLayers()
 template `layers=`*(self: PlaceholderTextureLayered; value) = self.setLayers(value)
-
-const PlaceholderTextureLayered_vmap =
-  TextureLayered.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PlaceholderTextureLayered]): Table[string, string] = PlaceholderTextureLayered_vmap

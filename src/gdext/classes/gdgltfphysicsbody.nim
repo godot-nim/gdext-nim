@@ -131,7 +131,3 @@ template `inertiaOrientation=`*(self: GLTFPhysicsBody; value) = self.setInertiaO
 
 template inertiaTensor*(self: GLTFPhysicsBody): untyped = self.getInertiaTensor()
 template `inertiaTensor=`*(self: GLTFPhysicsBody; value) = self.setInertiaTensor(value)
-
-const GLTFPhysicsBody_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFPhysicsBody]): Table[string, string] = GLTFPhysicsBody_vmap

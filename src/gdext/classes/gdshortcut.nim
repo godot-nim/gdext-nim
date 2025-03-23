@@ -34,7 +34,3 @@ proc getAsText*(self: Shortcut): String =
 
 template events*(self: Shortcut): untyped = self.getEvents()
 template `events=`*(self: Shortcut; value) = self.setEvents(value)
-
-const Shortcut_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Shortcut]): Table[string, string] = Shortcut_vmap

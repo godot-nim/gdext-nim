@@ -52,7 +52,3 @@ proc setEncodeBufferMaxSize*(self: PacketPeer; maxSize: int32): void =
 
 template encodeBufferMaxSize*(self: PacketPeer): untyped = self.getEncodeBufferMaxSize()
 template `encodeBufferMaxSize=`*(self: PacketPeer; value) = self.setEncodeBufferMaxSize(value)
-
-const PacketPeer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PacketPeer]): Table[string, string] = PacketPeer_vmap

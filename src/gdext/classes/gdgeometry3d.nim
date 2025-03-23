@@ -93,7 +93,3 @@ proc tetrahedralizeDelaunay*(self: Geometry3D; points: PackedVector3Array): Pack
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [getPtr points], addr ret)
   (addr ret).decode_result(PackedInt32Array)
-
-const Geometry3D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Geometry3D]): Table[string, string] = Geometry3D_vmap

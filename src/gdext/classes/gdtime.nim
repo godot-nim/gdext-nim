@@ -129,7 +129,3 @@ proc getTicksUsec*(self: Time): uint64 =
   var ret: encoded uint64
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
-
-const Time_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Time]): Table[string, string] = Time_vmap

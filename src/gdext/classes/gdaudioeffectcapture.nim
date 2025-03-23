@@ -56,7 +56,3 @@ proc getPushedFrames*(self: AudioEffectCapture): int64 =
 
 template bufferLength*(self: AudioEffectCapture): untyped = self.getBufferLength()
 template `bufferLength=`*(self: AudioEffectCapture; value) = self.setBufferLength(value)
-
-const AudioEffectCapture_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectCapture]): Table[string, string] = AudioEffectCapture_vmap

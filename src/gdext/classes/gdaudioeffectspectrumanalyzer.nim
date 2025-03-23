@@ -42,7 +42,3 @@ template `tapBackPos=`*(self: AudioEffectSpectrumAnalyzer; value) = self.setTapB
 
 template fftSize*(self: AudioEffectSpectrumAnalyzer): untyped = self.getFftSize()
 template `fftSize=`*(self: AudioEffectSpectrumAnalyzer; value) = self.setFftSize(value)
-
-const AudioEffectSpectrumAnalyzer_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectSpectrumAnalyzer]): Table[string, string] = AudioEffectSpectrumAnalyzer_vmap

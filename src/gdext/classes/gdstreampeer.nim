@@ -186,7 +186,3 @@ proc getVar*(self: StreamPeer; allowObjects: bool = false): Variant =
 
 template bigEndian*(self: StreamPeer): untyped = self.isBigEndianEnabled()
 template `bigEndian=`*(self: StreamPeer; value) = self.setBigEndian(value)
-
-const StreamPeer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StreamPeer]): Table[string, string] = StreamPeer_vmap

@@ -133,7 +133,3 @@ template `modulateColor=`*(self: StyleBoxTexture; value) = self.setModulate(valu
 
 template drawCenter*(self: StyleBoxTexture): untyped = self.isDrawCenterEnabled()
 template `drawCenter=`*(self: StyleBoxTexture; value) = self.setDrawCenter(value)
-
-const StyleBoxTexture_vmap =
-  StyleBox.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StyleBoxTexture]): Table[string, string] = StyleBoxTexture_vmap

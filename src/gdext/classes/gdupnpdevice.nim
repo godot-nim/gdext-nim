@@ -105,7 +105,3 @@ template `igdOurAddr=`*(self: UPNPDevice; value) = self.setIgdOurAddr(value)
 
 template igdStatus*(self: UPNPDevice): untyped = self.getIgdStatus()
 template `igdStatus=`*(self: UPNPDevice; value) = self.setIgdStatus(value)
-
-const UPNPDevice_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[UPNPDevice]): Table[string, string] = UPNPDevice_vmap

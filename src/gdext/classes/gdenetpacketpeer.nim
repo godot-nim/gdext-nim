@@ -83,7 +83,3 @@ proc isActive*(self: ENetPacketPeer): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const ENetPacketPeer_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ENetPacketPeer]): Table[string, string] = ENetPacketPeer_vmap

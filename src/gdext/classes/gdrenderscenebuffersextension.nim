@@ -5,36 +5,26 @@ import gdext/coronation/header/classes
 import gdrenderscenebuffers; export gdrenderscenebuffers
 
 method configure*(self: RenderSceneBuffersExtension; config: gdref RenderSceneBuffersConfiguration): void {.base.} = (discard)
-proc configure(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RenderSceneBuffersExtension](p_instance).configure(p_args[0].decode(gdref RenderSceneBuffersConfiguration))
-template configure_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = configure
+proc registerVirtual_configure*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_configure"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RenderSceneBuffersExtension](p_instance).configure(p_args[0].decode(gdref RenderSceneBuffersConfiguration))
 
 method setFsrSharpness*(self: RenderSceneBuffersExtension; fsrSharpness: Float): void {.base.} = (discard)
-proc setFsrSharpness(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RenderSceneBuffersExtension](p_instance).setFsrSharpness(p_args[0].decode(Float))
-template setFsrSharpness_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setFsrSharpness
+proc registerVirtual_setFsrSharpness*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_fsr_sharpness"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RenderSceneBuffersExtension](p_instance).setFsrSharpness(p_args[0].decode(Float))
 
 method setTextureMipmapBias*(self: RenderSceneBuffersExtension; textureMipmapBias: Float): void {.base.} = (discard)
-proc setTextureMipmapBias(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RenderSceneBuffersExtension](p_instance).setTextureMipmapBias(p_args[0].decode(Float))
-template setTextureMipmapBias_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setTextureMipmapBias
+proc registerVirtual_setTextureMipmapBias*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_texture_mipmap_bias"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RenderSceneBuffersExtension](p_instance).setTextureMipmapBias(p_args[0].decode(Float))
 
 method setAnisotropicFilteringLevel*(self: RenderSceneBuffersExtension; anisotropicFilteringLevel: int32): void {.base.} = (discard)
-proc setAnisotropicFilteringLevel(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RenderSceneBuffersExtension](p_instance).setAnisotropicFilteringLevel(p_args[0].decode(int32))
-template setAnisotropicFilteringLevel_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setAnisotropicFilteringLevel
+proc registerVirtual_setAnisotropicFilteringLevel*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_anisotropic_filtering_level"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RenderSceneBuffersExtension](p_instance).setAnisotropicFilteringLevel(p_args[0].decode(int32))
 
 method setUseDebanding*(self: RenderSceneBuffersExtension; useDebanding: bool): void {.base.} = (discard)
-proc setUseDebanding(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RenderSceneBuffersExtension](p_instance).setUseDebanding(p_args[0].decode(bool))
-template setUseDebanding_bind*(_: typedesc[RenderSceneBuffersExtension]): ClassCallVirtual = setUseDebanding
-
-const RenderSceneBuffersExtension_vmap =
-  RenderSceneBuffers.vmap.concat toTable {
-    "configure" : "_configure",
-    "setfsrsharpness" : "_set_fsr_sharpness",
-    "settexturemipmapbias" : "_set_texture_mipmap_bias",
-    "setanisotropicfilteringlevel" : "_set_anisotropic_filtering_level",
-    "setusedebanding" : "_set_use_debanding",
-    }
-template vmap*(_: typedesc[RenderSceneBuffersExtension]): Table[string, string] = RenderSceneBuffersExtension_vmap
+proc registerVirtual_setUseDebanding*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_use_debanding"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RenderSceneBuffersExtension](p_instance).setUseDebanding(p_args[0].decode(bool))

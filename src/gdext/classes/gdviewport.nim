@@ -761,17 +761,13 @@ template `globalCanvasTransform=`*(self: Viewport; value) = self.setGlobalCanvas
 template canvasCullMask*(self: Viewport): untyped = self.getCanvasCullMask()
 template `canvasCullMask=`*(self: Viewport; value) = self.setCanvasCullMask(value)
 
-const Viewport_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Viewport]): Table[string, string] = Viewport_vmap
-
-proc sizeChanged*(self: Viewport): Error =
+proc call_sizeChanged*(self: Viewport): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("size_changed")
   self.emitSignal(signalname)
 
-proc guiFocusChanged*(self: Viewport; node: Variant): Error =
+proc call_guiFocusChanged*(self: Viewport; node: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("gui_focus_changed")

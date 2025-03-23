@@ -384,7 +384,3 @@ proc loadSvgFromString*(self: Image; svgStr: String; scale: Float = 1.0): Error 
 
 template data*(self: Image): untyped = self.getData()
 template `data=`*(self: Image; value) = self.setData(value)
-
-const Image_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Image]): Table[string, string] = Image_vmap

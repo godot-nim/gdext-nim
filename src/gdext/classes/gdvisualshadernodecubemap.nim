@@ -42,7 +42,3 @@ template `cubeMap=`*(self: VisualShaderNodeCubemap; value) = self.setCubeMap(val
 
 template textureType*(self: VisualShaderNodeCubemap): untyped = self.getTextureType()
 template `textureType=`*(self: VisualShaderNodeCubemap; value) = self.setTextureType(value)
-
-const VisualShaderNodeCubemap_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeCubemap]): Table[string, string] = VisualShaderNodeCubemap_vmap

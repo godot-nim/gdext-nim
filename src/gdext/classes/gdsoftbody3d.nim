@@ -202,7 +202,3 @@ template `rayPickable=`*(self: SoftBody3D; value) = self.setRayPickable(value)
 
 template disableMode*(self: SoftBody3D): untyped = self.getDisableMode()
 template `disableMode=`*(self: SoftBody3D; value) = self.setDisableMode(value)
-
-const SoftBody3D_vmap =
-  MeshInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SoftBody3D]): Table[string, string] = SoftBody3D_vmap

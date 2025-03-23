@@ -223,7 +223,3 @@ proc isEnvironmentBlendModeAlphaSupported*(self: OpenXRAPIExtension): OpenXRAPIE
   var ret: encoded OpenXRAPIExtension_OpenXRAlphaBlendModeSupport
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OpenXRAPIExtension_OpenXRAlphaBlendModeSupport)
-
-const OpenXRAPIExtension_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRAPIExtension]): Table[string, string] = OpenXRAPIExtension_vmap

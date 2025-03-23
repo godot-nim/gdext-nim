@@ -3,7 +3,3 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-
-const OggPacketSequencePlayback_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OggPacketSequencePlayback]): Table[string, string] = OggPacketSequencePlayback_vmap

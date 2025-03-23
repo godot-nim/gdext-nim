@@ -140,7 +140,3 @@ template `enterCost=`*(self: NavigationLink2D; value) = self.setEnterCost(value)
 
 template travelCost*(self: NavigationLink2D): untyped = self.getTravelCost()
 template `travelCost=`*(self: NavigationLink2D; value) = self.setTravelCost(value)
-
-const NavigationLink2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationLink2D]): Table[string, string] = NavigationLink2D_vmap

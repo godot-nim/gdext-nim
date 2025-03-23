@@ -62,7 +62,3 @@ proc getBoneAngle*(self: Bone2D): Float =
 
 template rest*(self: Bone2D): untyped = self.getRest()
 template `rest=`*(self: Bone2D; value) = self.setRest(value)
-
-const Bone2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Bone2D]): Table[string, string] = Bone2D_vmap

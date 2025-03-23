@@ -62,11 +62,7 @@ template `menu=`*(self: StatusIndicator; value) = self.setMenu(value)
 template visible*(self: StatusIndicator): untyped = self.isVisible()
 template `visible=`*(self: StatusIndicator; value) = self.setVisible(value)
 
-const StatusIndicator_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StatusIndicator]): Table[string, string] = StatusIndicator_vmap
-
-proc pressed*(self: StatusIndicator; mouseButton: Variant; mousePosition: Variant): Error =
+proc call_pressed*(self: StatusIndicator; mouseButton: Variant; mousePosition: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pressed")

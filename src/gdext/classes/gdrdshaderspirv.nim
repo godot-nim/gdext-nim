@@ -53,7 +53,3 @@ template `compileErrorTesselationEvaluation=`*(self: RDShaderSPIRV; value) = sel
 
 template compileErrorCompute*(self: RDShaderSPIRV): untyped = self.getStageCompileError(RenderingDevice_ShaderStage(4))
 template `compileErrorCompute=`*(self: RDShaderSPIRV; value) = self.setStageCompileError(RenderingDevice_ShaderStage(4), value)
-
-const RDShaderSPIRV_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDShaderSPIRV]): Table[string, string] = RDShaderSPIRV_vmap

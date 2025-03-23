@@ -13,7 +13,3 @@ proc getHeldModificationStack*(self: SkeletonModification2DStackHolder): gdref S
   var ret: encoded gdref SkeletonModificationStack2D
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref SkeletonModificationStack2D)
-
-const SkeletonModification2DStackHolder_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DStackHolder]): Table[string, string] = SkeletonModification2DStackHolder_vmap

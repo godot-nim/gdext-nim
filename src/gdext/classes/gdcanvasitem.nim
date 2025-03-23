@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdnode; export gdnode
 
 method draw*(self: CanvasItem): void {.base.} = (discard)
-proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CanvasItem](p_instance).draw()
-template draw_bind*(_: typedesc[CanvasItem]): ClassCallVirtual = draw
+proc registerVirtual_draw*[T: CanvasItem](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CanvasItem](p_instance).draw()
 
 proc getCanvasItem*(self: CanvasItem): RID =
   expandMethodBind(className CanvasItem, "get_canvas_item", 2944877500)
@@ -480,31 +480,25 @@ template `material=`*(self: CanvasItem; value) = self.setMaterial(value)
 template useParentMaterial*(self: CanvasItem): untyped = self.getUseParentMaterial()
 template `useParentMaterial=`*(self: CanvasItem; value) = self.setUseParentMaterial(value)
 
-const CanvasItem_vmap =
-  Node.vmap.concat toTable {
-    "draw" : "_draw",
-    }
-template vmap*(_: typedesc[CanvasItem]): Table[string, string] = CanvasItem_vmap
-
-proc draw*(self: CanvasItem): Error =
+proc call_draw*(self: CanvasItem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("draw")
   self.emitSignal(signalname)
 
-proc visibilityChanged*(self: CanvasItem): Error =
+proc call_visibilityChanged*(self: CanvasItem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_changed")
   self.emitSignal(signalname)
 
-proc hidden*(self: CanvasItem): Error =
+proc call_hidden*(self: CanvasItem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("hidden")
   self.emitSignal(signalname)
 
-proc itemRectChanged*(self: CanvasItem): Error =
+proc call_itemRectChanged*(self: CanvasItem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_rect_changed")

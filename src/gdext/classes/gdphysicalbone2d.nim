@@ -80,7 +80,3 @@ template `simulatePhysics=`*(self: PhysicalBone2D; value) = self.setSimulatePhys
 
 template followBoneWhenSimulating*(self: PhysicalBone2D): untyped = self.getFollowBoneWhenSimulating()
 template `followBoneWhenSimulating=`*(self: PhysicalBone2D; value) = self.setFollowBoneWhenSimulating(value)
-
-const PhysicalBone2D_vmap =
-  RigidBody2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicalBone2D]): Table[string, string] = PhysicalBone2D_vmap

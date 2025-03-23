@@ -91,11 +91,7 @@ template `axisStretchHorizontal=`*(self: NinePatchRect; value) = self.setHAxisSt
 template axisStretchVertical*(self: NinePatchRect): untyped = self.getVAxisStretchMode()
 template `axisStretchVertical=`*(self: NinePatchRect; value) = self.setVAxisStretchMode(value)
 
-const NinePatchRect_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NinePatchRect]): Table[string, string] = NinePatchRect_vmap
-
-proc textureChanged*(self: NinePatchRect): Error =
+proc call_textureChanged*(self: NinePatchRect): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("texture_changed")

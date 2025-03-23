@@ -40,24 +40,20 @@ proc getExtension*(self: GDExtensionManager; path: String): gdref GDExtension =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(gdref GDExtension)
 
-const GDExtensionManager_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GDExtensionManager]): Table[string, string] = GDExtensionManager_vmap
-
-proc extensionsReloaded*(self: GDExtensionManager): Error =
+proc call_extensionsReloaded*(self: GDExtensionManager): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("extensions_reloaded")
   self.emitSignal(signalname)
 
-proc extensionLoaded*(self: GDExtensionManager; extension: Variant): Error =
+proc call_extensionLoaded*(self: GDExtensionManager; extension: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("extension_loaded")
   let args = [extension]
   self.emitSignal(signalname, args)
 
-proc extensionUnloading*(self: GDExtensionManager; extension: Variant): Error =
+proc call_extensionUnloading*(self: GDExtensionManager; extension: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("extension_unloading")

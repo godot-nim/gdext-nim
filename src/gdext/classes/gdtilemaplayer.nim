@@ -5,19 +5,19 @@ import gdext/coronation/header/classes
 import gdnode2d; export gdnode2d
 
 method useTileDataRuntimeUpdate*(self: TileMapLayer; coords: Vector2i): bool {.base.} = (discard)
-proc useTileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TileMapLayer](p_instance).useTileDataRuntimeUpdate(p_args[0].decode(Vector2i)).encode(r_ret)
-template useTileDataRuntimeUpdate_bind*(_: typedesc[TileMapLayer]): ClassCallVirtual = useTileDataRuntimeUpdate
+proc registerVirtual_useTileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) =
+  Self.vmethods[stringName"_use_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TileMapLayer](p_instance).useTileDataRuntimeUpdate(p_args[0].decode(Vector2i)).encode(r_ret)
 
 method tileDataRuntimeUpdate*(self: TileMapLayer; coords: Vector2i; tileData: TileData): void {.base.} = (discard)
-proc tileDataRuntimeUpdate(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TileMapLayer](p_instance).tileDataRuntimeUpdate(p_args[0].decode(Vector2i), p_args[1].decode(TileData))
-template tileDataRuntimeUpdate_bind*(_: typedesc[TileMapLayer]): ClassCallVirtual = tileDataRuntimeUpdate
+proc registerVirtual_tileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) =
+  Self.vmethods[stringName"_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TileMapLayer](p_instance).tileDataRuntimeUpdate(p_args[0].decode(Vector2i), p_args[1].decode(TileData))
 
 method updateCells*(self: TileMapLayer; coords: TypedArray[Vector2i]; forcedCleanup: bool): void {.base.} = (discard)
-proc updateCells(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(TypedArray[Vector2i]), p_args[1].decode(bool))
-template updateCells_bind*(_: typedesc[TileMapLayer]): ClassCallVirtual = updateCells
+proc registerVirtual_updateCells*[T: TileMapLayer](Self: typedesc[T]) =
+  Self.vmethods[stringName"_update_cells"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(TypedArray[Vector2i]), p_args[1].decode(bool))
 
 proc setCell*(self: TileMapLayer; coords: Vector2i; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = 0): void =
   expandMethodBind(className TileMapLayer, "set_cell", 2428518503)
@@ -329,15 +329,7 @@ template `navigationEnabled=`*(self: TileMapLayer; value) = self.setNavigationEn
 template navigationVisibilityMode*(self: TileMapLayer): untyped = self.getNavigationVisibilityMode()
 template `navigationVisibilityMode=`*(self: TileMapLayer; value) = self.setNavigationVisibilityMode(value)
 
-const TileMapLayer_vmap =
-  Node2D.vmap.concat toTable {
-    "usetiledataruntimeupdate" : "_use_tile_data_runtime_update",
-    "tiledataruntimeupdate" : "_tile_data_runtime_update",
-    "updatecells" : "_update_cells",
-    }
-template vmap*(_: typedesc[TileMapLayer]): Table[string, string] = TileMapLayer_vmap
-
-proc changed*(self: TileMapLayer): Error =
+proc call_changed*(self: TileMapLayer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("changed")

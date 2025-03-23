@@ -29,7 +29,3 @@ template `handTracker=`*(self: XRHandModifier3D; value) = self.setHandTracker(va
 
 template boneUpdate*(self: XRHandModifier3D): untyped = self.getBoneUpdate()
 template `boneUpdate=`*(self: XRHandModifier3D; value) = self.setBoneUpdate(value)
-
-const XRHandModifier3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRHandModifier3D]): Table[string, string] = XRHandModifier3D_vmap

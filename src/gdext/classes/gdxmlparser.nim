@@ -103,7 +103,3 @@ proc openBuffer*(self: XMLParser; buffer: PackedByteArray): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr buffer], addr ret)
   (addr ret).decode_result(Error)
-
-const XMLParser_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XMLParser]): Table[string, string] = XMLParser_vmap

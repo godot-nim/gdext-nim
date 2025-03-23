@@ -138,7 +138,3 @@ template `allowTransitionToSelf=`*(self: AnimationNodeStateMachine; value) = sel
 
 template resetEnds*(self: AnimationNodeStateMachine): untyped = self.areEndsReset()
 template `resetEnds=`*(self: AnimationNodeStateMachine; value) = self.setResetEnds(value)
-
-const AnimationNodeStateMachine_vmap =
-  AnimationRootNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeStateMachine]): Table[string, string] = AnimationNodeStateMachine_vmap

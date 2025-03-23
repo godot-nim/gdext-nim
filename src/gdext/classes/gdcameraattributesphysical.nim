@@ -113,7 +113,3 @@ template `autoExposureMinExposureValue=`*(self: CameraAttributesPhysical; value)
 
 template autoExposureMaxExposureValue*(self: CameraAttributesPhysical): untyped = self.getAutoExposureMaxExposureValue()
 template `autoExposureMaxExposureValue=`*(self: CameraAttributesPhysical; value) = self.setAutoExposureMaxExposureValue(value)
-
-const CameraAttributesPhysical_vmap =
-  CameraAttributes.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CameraAttributesPhysical]): Table[string, string] = CameraAttributesPhysical_vmap

@@ -107,7 +107,3 @@ template `capBottom=`*(self: TubeTrailMesh; value) = self.setCapBottom(value)
 
 template curve*(self: TubeTrailMesh): untyped = self.getCurve()
 template `curve=`*(self: TubeTrailMesh; value) = self.setCurve(value)
-
-const TubeTrailMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TubeTrailMesh]): Table[string, string] = TubeTrailMesh_vmap

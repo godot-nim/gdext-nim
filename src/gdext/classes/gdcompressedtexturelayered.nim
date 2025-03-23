@@ -18,7 +18,3 @@ proc getLoadPath*(self: CompressedTextureLayered): String =
 
 template loadPath*(self: CompressedTextureLayered): untyped = self.getLoadPath()
 template `loadPath=`*(self: CompressedTextureLayered; value) = self.load(value)
-
-const CompressedTextureLayered_vmap =
-  TextureLayered.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CompressedTextureLayered]): Table[string, string] = CompressedTextureLayered_vmap

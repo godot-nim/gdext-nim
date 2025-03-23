@@ -68,7 +68,3 @@ template `centerOffset=`*(self: PlaneMesh; value) = self.setCenterOffset(value)
 
 template orientation*(self: PlaneMesh): untyped = self.getOrientation()
 template `orientation=`*(self: PlaneMesh; value) = self.setOrientation(value)
-
-const PlaneMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PlaneMesh]): Table[string, string] = PlaneMesh_vmap

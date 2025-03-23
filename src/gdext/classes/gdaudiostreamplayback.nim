@@ -5,54 +5,54 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method start*(self: AudioStreamPlayback; fromPos: float64): void {.base.} = (discard)
-proc start(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).start(p_args[0].decode(float64))
-template start_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = start
+proc registerVirtual_start*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_start"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).start(p_args[0].decode(float64))
 
 method stop*(self: AudioStreamPlayback): void {.base.} = (discard)
-proc stop(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).stop()
-template stop_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = stop
+proc registerVirtual_stop*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_stop"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).stop()
 
 method isPlaying*(self: AudioStreamPlayback): bool {.base.} = (discard)
-proc isPlaying(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).isPlaying().encode(r_ret)
-template isPlaying_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = isPlaying
+proc registerVirtual_isPlaying*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_playing"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).isPlaying().encode(r_ret)
 
 method getLoopCount*(self: AudioStreamPlayback): int32 {.base.} = (discard)
-proc getLoopCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).getLoopCount().encode(r_ret)
-template getLoopCount_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = getLoopCount
+proc registerVirtual_getLoopCount*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_loop_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).getLoopCount().encode(r_ret)
 
 method getPlaybackPosition*(self: AudioStreamPlayback): float64 {.base.} = (discard)
-proc getPlaybackPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).getPlaybackPosition().encode(r_ret)
-template getPlaybackPosition_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = getPlaybackPosition
+proc registerVirtual_getPlaybackPosition*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_playback_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).getPlaybackPosition().encode(r_ret)
 
 method seek*(self: AudioStreamPlayback; position: float64): void {.base.} = (discard)
-proc seek(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).seek(p_args[0].decode(float64))
-template seek_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = seek
+proc registerVirtual_seek*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_seek"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).seek(p_args[0].decode(float64))
 
 method mix*(self: AudioStreamPlayback; buffer: ptr AudioFrame; rateScale: Float; frames: int32): int32 {.base.} = (discard)
-proc mix(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).mix(p_args[0].decode(ptr AudioFrame), p_args[1].decode(Float), p_args[2].decode(int32)).encode(r_ret)
-template mix_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = mix
+proc registerVirtual_mix*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_mix"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).mix(p_args[0].decode(ptr AudioFrame), p_args[1].decode(Float), p_args[2].decode(int32)).encode(r_ret)
 
 method tagUsedStreams*(self: AudioStreamPlayback): void {.base.} = (discard)
-proc tagUsedStreams(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).tagUsedStreams()
-template tagUsedStreams_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = tagUsedStreams
+proc registerVirtual_tagUsedStreams*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_tag_used_streams"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).tagUsedStreams()
 
 method setParameter*(self: AudioStreamPlayback; name: StringName; value: Variant): void {.base.} = (discard)
-proc setParameter(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).setParameter(p_args[0].decode(StringName), p_args[1].decode(Variant))
-template setParameter_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = setParameter
+proc registerVirtual_setParameter*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_parameter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).setParameter(p_args[0].decode(StringName), p_args[1].decode(Variant))
 
 method getParameter*(self: AudioStreamPlayback; name: StringName): Variant {.base.} = (discard)
-proc getParameter(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStreamPlayback](p_instance).getParameter(p_args[0].decode(StringName)).encode(r_ret)
-template getParameter_bind*(_: typedesc[AudioStreamPlayback]): ClassCallVirtual = getParameter
+proc registerVirtual_getParameter*[T: AudioStreamPlayback](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_parameter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStreamPlayback](p_instance).getParameter(p_args[0].decode(StringName)).encode(r_ret)
 
 proc setSamplePlayback*(self: AudioStreamPlayback; playbackSample: gdref AudioSamplePlayback): void =
   expandMethodBind(className AudioStreamPlayback, "set_sample_playback", 3195455091)
@@ -99,18 +99,3 @@ proc isPlaying*(self: AudioStreamPlayback): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const AudioStreamPlayback_vmap =
-  RefCounted.vmap.concat toTable {
-    "start" : "_start",
-    "stop" : "_stop",
-    "isplaying" : "_is_playing",
-    "getloopcount" : "_get_loop_count",
-    "getplaybackposition" : "_get_playback_position",
-    "seek" : "_seek",
-    "mix" : "_mix",
-    "tagusedstreams" : "_tag_used_streams",
-    "setparameter" : "_set_parameter",
-    "getparameter" : "_get_parameter",
-    }
-template vmap*(_: typedesc[AudioStreamPlayback]): Table[string, string] = AudioStreamPlayback_vmap

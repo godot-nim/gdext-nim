@@ -16,7 +16,3 @@ proc isSyncToPhysicsEnabled*(self: AnimatableBody3D): bool =
 
 template syncToPhysics*(self: AnimatableBody3D): untyped = self.isSyncToPhysicsEnabled()
 template `syncToPhysics=`*(self: AnimatableBody3D; value) = self.setSyncToPhysics(value)
-
-const AnimatableBody3D_vmap =
-  StaticBody3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimatableBody3D]): Table[string, string] = AnimatableBody3D_vmap

@@ -102,7 +102,3 @@ template `dry=`*(self: AudioEffectChorus; value) = self.setDry(value)
 
 template wet*(self: AudioEffectChorus): untyped = self.getWet()
 template `wet=`*(self: AudioEffectChorus; value) = self.setWet(value)
-
-const AudioEffectChorus_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectChorus]): Table[string, string] = AudioEffectChorus_vmap

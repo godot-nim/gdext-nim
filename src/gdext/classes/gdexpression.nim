@@ -27,7 +27,3 @@ proc getErrorText*(self: Expression): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-const Expression_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Expression]): Table[string, string] = Expression_vmap

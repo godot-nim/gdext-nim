@@ -56,17 +56,13 @@ template `tickCount=`*(self: Slider; value) = self.setTicks(value)
 template ticksOnBorders*(self: Slider): untyped = self.getTicksOnBorders()
 template `ticksOnBorders=`*(self: Slider; value) = self.setTicksOnBorders(value)
 
-const Slider_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Slider]): Table[string, string] = Slider_vmap
-
-proc dragStarted*(self: Slider): Error =
+proc call_dragStarted*(self: Slider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("drag_started")
   self.emitSignal(signalname)
 
-proc dragEnded*(self: Slider; valueChanged: Variant): Error =
+proc call_dragEnded*(self: Slider; valueChanged: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("drag_ended")

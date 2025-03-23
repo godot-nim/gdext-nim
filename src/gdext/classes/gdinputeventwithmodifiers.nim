@@ -80,7 +80,3 @@ template `ctrlPressed=`*(self: InputEventWithModifiers; value) = self.setCtrlPre
 
 template metaPressed*(self: InputEventWithModifiers): untyped = self.isMetaPressed()
 template `metaPressed=`*(self: InputEventWithModifiers; value) = self.setMetaPressed(value)
-
-const InputEventWithModifiers_vmap =
-  InputEventFromWindow.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventWithModifiers]): Table[string, string] = InputEventWithModifiers_vmap

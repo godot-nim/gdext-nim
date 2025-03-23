@@ -61,7 +61,3 @@ template `positionOffset=`*(self: SpringBoneCollision3D; value) = self.setPositi
 
 template rotationOffset*(self: SpringBoneCollision3D): untyped = self.getRotationOffset()
 template `rotationOffset=`*(self: SpringBoneCollision3D; value) = self.setRotationOffset(value)
-
-const SpringBoneCollision3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpringBoneCollision3D]): Table[string, string] = SpringBoneCollision3D_vmap

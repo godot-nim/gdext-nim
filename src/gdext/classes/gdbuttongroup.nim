@@ -29,11 +29,7 @@ proc isAllowUnpress*(self: ButtonGroup): bool =
 template allowUnpress*(self: ButtonGroup): untyped = self.isAllowUnpress()
 template `allowUnpress=`*(self: ButtonGroup; value) = self.setAllowUnpress(value)
 
-const ButtonGroup_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ButtonGroup]): Table[string, string] = ButtonGroup_vmap
-
-proc pressed*(self: ButtonGroup; button: Variant): Error =
+proc call_pressed*(self: ButtonGroup; button: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pressed")

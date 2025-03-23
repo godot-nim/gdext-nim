@@ -27,7 +27,3 @@ proc flush*(self: PCKPacker; verbose: bool = false): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr verbose], addr ret)
   (addr ret).decode_result(Error)
-
-const PCKPacker_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PCKPacker]): Table[string, string] = PCKPacker_vmap

@@ -104,7 +104,3 @@ template `customArrowStep=`*(self: SpinBox; value) = self.setCustomArrowStep(val
 
 template selectAllOnFocus*(self: SpinBox): untyped = self.isSelectAllOnFocus()
 template `selectAllOnFocus=`*(self: SpinBox; value) = self.setSelectAllOnFocus(value)
-
-const SpinBox_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpinBox]): Table[string, string] = SpinBox_vmap

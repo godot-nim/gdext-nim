@@ -35,7 +35,3 @@ template space*(self: World2D): untyped = self.getSpace()
 template navigationMap*(self: World2D): untyped = self.getNavigationMap()
 
 template directSpaceState*(self: World2D): untyped = self.getDirectSpaceState()
-
-const World2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[World2D]): Table[string, string] = World2D_vmap

@@ -380,7 +380,3 @@ proc reset*(self: SpringBoneSimulator3D): void =
 
 template settingCount*(self: SpringBoneSimulator3D): untyped = self.getSettingCount()
 template `settingCount=`*(self: SpringBoneSimulator3D; value) = self.setSettingCount(value)
-
-const SpringBoneSimulator3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpringBoneSimulator3D]): Table[string, string] = SpringBoneSimulator3D_vmap

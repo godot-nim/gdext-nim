@@ -162,11 +162,7 @@ template `groupSize=`*(self: SkeletonProfile; value) = self.setGroupSize(value)
 template boneSize*(self: SkeletonProfile): untyped = self.getBoneSize()
 template `boneSize=`*(self: SkeletonProfile; value) = self.setBoneSize(value)
 
-const SkeletonProfile_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonProfile]): Table[string, string] = SkeletonProfile_vmap
-
-proc profileUpdated*(self: SkeletonProfile): Error =
+proc call_profileUpdated*(self: SkeletonProfile): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("profile_updated")

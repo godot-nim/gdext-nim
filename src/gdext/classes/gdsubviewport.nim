@@ -68,7 +68,3 @@ template `renderTargetClearMode=`*(self: SubViewport; value) = self.setClearMode
 
 template renderTargetUpdateMode*(self: SubViewport): untyped = self.getUpdateMode()
 template `renderTargetUpdateMode=`*(self: SubViewport; value) = self.setUpdateMode(value)
-
-const SubViewport_vmap =
-  Viewport.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SubViewport]): Table[string, string] = SubViewport_vmap

@@ -140,25 +140,21 @@ template `maxSyncPacketSize=`*(self: SceneMultiplayer; value) = self.setMaxSyncP
 template maxDeltaPacketSize*(self: SceneMultiplayer): untyped = self.getMaxDeltaPacketSize()
 template `maxDeltaPacketSize=`*(self: SceneMultiplayer; value) = self.setMaxDeltaPacketSize(value)
 
-const SceneMultiplayer_vmap =
-  MultiplayerAPI.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SceneMultiplayer]): Table[string, string] = SceneMultiplayer_vmap
-
-proc peerAuthenticating*(self: SceneMultiplayer; id: Variant): Error =
+proc call_peerAuthenticating*(self: SceneMultiplayer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_authenticating")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc peerAuthenticationFailed*(self: SceneMultiplayer; id: Variant): Error =
+proc call_peerAuthenticationFailed*(self: SceneMultiplayer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_authentication_failed")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc peerPacket*(self: SceneMultiplayer; id: Variant; packet: Variant): Error =
+proc call_peerPacket*(self: SceneMultiplayer; id: Variant; packet: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_packet")

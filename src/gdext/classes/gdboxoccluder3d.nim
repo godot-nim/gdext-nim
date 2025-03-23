@@ -16,7 +16,3 @@ proc getSize*(self: BoxOccluder3D): Vector3 =
 
 template size*(self: BoxOccluder3D): untyped = self.getSize()
 template `size=`*(self: BoxOccluder3D; value) = self.setSize(value)
-
-const BoxOccluder3D_vmap =
-  Occluder3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BoxOccluder3D]): Table[string, string] = BoxOccluder3D_vmap

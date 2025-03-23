@@ -80,13 +80,13 @@ proc setUseNamedSkinBinds*(self: GLTFState; useNamedSkinBinds: bool): void =
   expandMethodBind(className GLTFState, "set_use_named_skin_binds", 2586408642)
   methodbind.ptrcall(self, [getPtr useNamedSkinBinds])
 
-proc getNodes*(self: GLTFState): TypedArray[GLTFNode] =
+proc getNodes*(self: GLTFState): TypedArray[gdref GLTFNode] =
   expandMethodBind(className GLTFState, "get_nodes", 2915620761)
-  var ret: encoded TypedArray[GLTFNode]
+  var ret: encoded TypedArray[gdref GLTFNode]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFNode])
+  (addr ret).decode_result(TypedArray[gdref GLTFNode])
 
-proc setNodes*(self: GLTFState; nodes: TypedArray[GLTFNode]): void =
+proc setNodes*(self: GLTFState; nodes: TypedArray[gdref GLTFNode]): void =
   expandMethodBind(className GLTFState, "set_nodes", 381264803)
   methodbind.ptrcall(self, [getPtr nodes])
 
@@ -100,33 +100,33 @@ proc setBuffers*(self: GLTFState; buffers: TypedArray[PackedByteArray]): void =
   expandMethodBind(className GLTFState, "set_buffers", 381264803)
   methodbind.ptrcall(self, [getPtr buffers])
 
-proc getBufferViews*(self: GLTFState): TypedArray[GLTFBufferView] =
+proc getBufferViews*(self: GLTFState): TypedArray[gdref GLTFBufferView] =
   expandMethodBind(className GLTFState, "get_buffer_views", 2915620761)
-  var ret: encoded TypedArray[GLTFBufferView]
+  var ret: encoded TypedArray[gdref GLTFBufferView]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFBufferView])
+  (addr ret).decode_result(TypedArray[gdref GLTFBufferView])
 
-proc setBufferViews*(self: GLTFState; bufferViews: TypedArray[GLTFBufferView]): void =
+proc setBufferViews*(self: GLTFState; bufferViews: TypedArray[gdref GLTFBufferView]): void =
   expandMethodBind(className GLTFState, "set_buffer_views", 381264803)
   methodbind.ptrcall(self, [getPtr bufferViews])
 
-proc getAccessors*(self: GLTFState): TypedArray[GLTFAccessor] =
+proc getAccessors*(self: GLTFState): TypedArray[gdref GLTFAccessor] =
   expandMethodBind(className GLTFState, "get_accessors", 2915620761)
-  var ret: encoded TypedArray[GLTFAccessor]
+  var ret: encoded TypedArray[gdref GLTFAccessor]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFAccessor])
+  (addr ret).decode_result(TypedArray[gdref GLTFAccessor])
 
-proc setAccessors*(self: GLTFState; accessors: TypedArray[GLTFAccessor]): void =
+proc setAccessors*(self: GLTFState; accessors: TypedArray[gdref GLTFAccessor]): void =
   expandMethodBind(className GLTFState, "set_accessors", 381264803)
   methodbind.ptrcall(self, [getPtr accessors])
 
-proc getMeshes*(self: GLTFState): TypedArray[GLTFMesh] =
+proc getMeshes*(self: GLTFState): TypedArray[gdref GLTFMesh] =
   expandMethodBind(className GLTFState, "get_meshes", 2915620761)
-  var ret: encoded TypedArray[GLTFMesh]
+  var ret: encoded TypedArray[gdref GLTFMesh]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFMesh])
+  (addr ret).decode_result(TypedArray[gdref GLTFMesh])
 
-proc setMeshes*(self: GLTFState; meshes: TypedArray[GLTFMesh]): void =
+proc setMeshes*(self: GLTFState; meshes: TypedArray[gdref GLTFMesh]): void =
   expandMethodBind(className GLTFState, "set_meshes", 381264803)
   methodbind.ptrcall(self, [getPtr meshes])
 
@@ -142,13 +142,13 @@ proc getAnimationPlayer*(self: GLTFState; idx: int32): AnimationPlayer =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(AnimationPlayer)
 
-proc getMaterials*(self: GLTFState): TypedArray[Material] =
+proc getMaterials*(self: GLTFState): TypedArray[gdref Material] =
   expandMethodBind(className GLTFState, "get_materials", 2915620761)
-  var ret: encoded TypedArray[Material]
+  var ret: encoded TypedArray[gdref Material]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Material])
+  (addr ret).decode_result(TypedArray[gdref Material])
 
-proc setMaterials*(self: GLTFState; materials: TypedArray[Material]): void =
+proc setMaterials*(self: GLTFState; materials: TypedArray[gdref Material]): void =
   expandMethodBind(className GLTFState, "set_materials", 381264803)
   methodbind.ptrcall(self, [getPtr materials])
 
@@ -192,63 +192,63 @@ proc setRootNodes*(self: GLTFState; rootNodes: PackedInt32Array): void =
   expandMethodBind(className GLTFState, "set_root_nodes", 3614634198)
   methodbind.ptrcall(self, [getPtr rootNodes])
 
-proc getTextures*(self: GLTFState): TypedArray[GLTFTexture] =
+proc getTextures*(self: GLTFState): TypedArray[gdref GLTFTexture] =
   expandMethodBind(className GLTFState, "get_textures", 2915620761)
-  var ret: encoded TypedArray[GLTFTexture]
+  var ret: encoded TypedArray[gdref GLTFTexture]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFTexture])
+  (addr ret).decode_result(TypedArray[gdref GLTFTexture])
 
-proc setTextures*(self: GLTFState; textures: TypedArray[GLTFTexture]): void =
+proc setTextures*(self: GLTFState; textures: TypedArray[gdref GLTFTexture]): void =
   expandMethodBind(className GLTFState, "set_textures", 381264803)
   methodbind.ptrcall(self, [getPtr textures])
 
-proc getTextureSamplers*(self: GLTFState): TypedArray[GLTFTextureSampler] =
+proc getTextureSamplers*(self: GLTFState): TypedArray[gdref GLTFTextureSampler] =
   expandMethodBind(className GLTFState, "get_texture_samplers", 2915620761)
-  var ret: encoded TypedArray[GLTFTextureSampler]
+  var ret: encoded TypedArray[gdref GLTFTextureSampler]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFTextureSampler])
+  (addr ret).decode_result(TypedArray[gdref GLTFTextureSampler])
 
-proc setTextureSamplers*(self: GLTFState; textureSamplers: TypedArray[GLTFTextureSampler]): void =
+proc setTextureSamplers*(self: GLTFState; textureSamplers: TypedArray[gdref GLTFTextureSampler]): void =
   expandMethodBind(className GLTFState, "set_texture_samplers", 381264803)
   methodbind.ptrcall(self, [getPtr textureSamplers])
 
-proc getImages*(self: GLTFState): TypedArray[Texture2D] =
+proc getImages*(self: GLTFState): TypedArray[gdref Texture2D] =
   expandMethodBind(className GLTFState, "get_images", 2915620761)
-  var ret: encoded TypedArray[Texture2D]
+  var ret: encoded TypedArray[gdref Texture2D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Texture2D])
+  (addr ret).decode_result(TypedArray[gdref Texture2D])
 
-proc setImages*(self: GLTFState; images: TypedArray[Texture2D]): void =
+proc setImages*(self: GLTFState; images: TypedArray[gdref Texture2D]): void =
   expandMethodBind(className GLTFState, "set_images", 381264803)
   methodbind.ptrcall(self, [getPtr images])
 
-proc getSkins*(self: GLTFState): TypedArray[GLTFSkin] =
+proc getSkins*(self: GLTFState): TypedArray[gdref GLTFSkin] =
   expandMethodBind(className GLTFState, "get_skins", 2915620761)
-  var ret: encoded TypedArray[GLTFSkin]
+  var ret: encoded TypedArray[gdref GLTFSkin]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFSkin])
+  (addr ret).decode_result(TypedArray[gdref GLTFSkin])
 
-proc setSkins*(self: GLTFState; skins: TypedArray[GLTFSkin]): void =
+proc setSkins*(self: GLTFState; skins: TypedArray[gdref GLTFSkin]): void =
   expandMethodBind(className GLTFState, "set_skins", 381264803)
   methodbind.ptrcall(self, [getPtr skins])
 
-proc getCameras*(self: GLTFState): TypedArray[GLTFCamera] =
+proc getCameras*(self: GLTFState): TypedArray[gdref GLTFCamera] =
   expandMethodBind(className GLTFState, "get_cameras", 2915620761)
-  var ret: encoded TypedArray[GLTFCamera]
+  var ret: encoded TypedArray[gdref GLTFCamera]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFCamera])
+  (addr ret).decode_result(TypedArray[gdref GLTFCamera])
 
-proc setCameras*(self: GLTFState; cameras: TypedArray[GLTFCamera]): void =
+proc setCameras*(self: GLTFState; cameras: TypedArray[gdref GLTFCamera]): void =
   expandMethodBind(className GLTFState, "set_cameras", 381264803)
   methodbind.ptrcall(self, [getPtr cameras])
 
-proc getLights*(self: GLTFState): TypedArray[GLTFLight] =
+proc getLights*(self: GLTFState): TypedArray[gdref GLTFLight] =
   expandMethodBind(className GLTFState, "get_lights", 2915620761)
-  var ret: encoded TypedArray[GLTFLight]
+  var ret: encoded TypedArray[gdref GLTFLight]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFLight])
+  (addr ret).decode_result(TypedArray[gdref GLTFLight])
 
-proc setLights*(self: GLTFState; lights: TypedArray[GLTFLight]): void =
+proc setLights*(self: GLTFState; lights: TypedArray[gdref GLTFLight]): void =
   expandMethodBind(className GLTFState, "set_lights", 381264803)
   methodbind.ptrcall(self, [getPtr lights])
 
@@ -272,13 +272,13 @@ proc setUniqueAnimationNames*(self: GLTFState; uniqueAnimationNames: TypedArray[
   expandMethodBind(className GLTFState, "set_unique_animation_names", 381264803)
   methodbind.ptrcall(self, [getPtr uniqueAnimationNames])
 
-proc getSkeletons*(self: GLTFState): TypedArray[GLTFSkeleton] =
+proc getSkeletons*(self: GLTFState): TypedArray[gdref GLTFSkeleton] =
   expandMethodBind(className GLTFState, "get_skeletons", 2915620761)
-  var ret: encoded TypedArray[GLTFSkeleton]
+  var ret: encoded TypedArray[gdref GLTFSkeleton]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFSkeleton])
+  (addr ret).decode_result(TypedArray[gdref GLTFSkeleton])
 
-proc setSkeletons*(self: GLTFState; skeletons: TypedArray[GLTFSkeleton]): void =
+proc setSkeletons*(self: GLTFState; skeletons: TypedArray[gdref GLTFSkeleton]): void =
   expandMethodBind(className GLTFState, "set_skeletons", 381264803)
   methodbind.ptrcall(self, [getPtr skeletons])
 
@@ -302,13 +302,13 @@ proc setImportAsSkeletonBones*(self: GLTFState; importAsSkeletonBones: bool): vo
   expandMethodBind(className GLTFState, "set_import_as_skeleton_bones", 2586408642)
   methodbind.ptrcall(self, [getPtr importAsSkeletonBones])
 
-proc getAnimations*(self: GLTFState): TypedArray[GLTFAnimation] =
+proc getAnimations*(self: GLTFState): TypedArray[gdref GLTFAnimation] =
   expandMethodBind(className GLTFState, "get_animations", 2915620761)
-  var ret: encoded TypedArray[GLTFAnimation]
+  var ret: encoded TypedArray[gdref GLTFAnimation]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[GLTFAnimation])
+  (addr ret).decode_result(TypedArray[gdref GLTFAnimation])
 
-proc setAnimations*(self: GLTFState; animations: TypedArray[GLTFAnimation]): void =
+proc setAnimations*(self: GLTFState; animations: TypedArray[gdref GLTFAnimation]): void =
   expandMethodBind(className GLTFState, "set_animations", 381264803)
   methodbind.ptrcall(self, [getPtr animations])
 
@@ -443,7 +443,3 @@ template `handleBinaryImage=`*(self: GLTFState; value) = self.setHandleBinaryIma
 
 template bakeFps*(self: GLTFState): untyped = self.getBakeFps()
 template `bakeFps=`*(self: GLTFState; value) = self.setBakeFps(value)
-
-const GLTFState_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFState]): Table[string, string] = GLTFState_vmap

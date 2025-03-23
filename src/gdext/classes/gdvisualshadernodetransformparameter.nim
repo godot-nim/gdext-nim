@@ -29,7 +29,3 @@ template `defaultValueEnabled=`*(self: VisualShaderNodeTransformParameter; value
 
 template defaultValue*(self: VisualShaderNodeTransformParameter): untyped = self.getDefaultValue()
 template `defaultValue=`*(self: VisualShaderNodeTransformParameter; value) = self.setDefaultValue(value)
-
-const VisualShaderNodeTransformParameter_vmap =
-  VisualShaderNodeParameter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTransformParameter]): Table[string, string] = VisualShaderNodeTransformParameter_vmap

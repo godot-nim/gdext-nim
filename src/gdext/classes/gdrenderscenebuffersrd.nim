@@ -163,7 +163,3 @@ proc getUseDebanding*(self: RenderSceneBuffersRD): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const RenderSceneBuffersRD_vmap =
-  RenderSceneBuffers.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderSceneBuffersRD]): Table[string, string] = RenderSceneBuffersRD_vmap

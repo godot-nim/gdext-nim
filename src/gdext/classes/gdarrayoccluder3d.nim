@@ -21,7 +21,3 @@ template `vertices=`*(self: ArrayOccluder3D; value) = self.setVertices(value)
 
 template indices*(self: ArrayOccluder3D): untyped = self.getIndices()
 template `indices=`*(self: ArrayOccluder3D; value) = self.setIndices(value)
-
-const ArrayOccluder3D_vmap =
-  Occluder3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ArrayOccluder3D]): Table[string, string] = ArrayOccluder3D_vmap

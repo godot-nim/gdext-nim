@@ -43,7 +43,3 @@ proc makeResponseError*(self: JSONRPC; code: int32; message: String; id: Variant
   var ret: encoded Dictionary
   methodbind.ptrcall(self, [getPtr code, getPtr message, getPtr id], addr ret)
   (addr ret).decode_result(Dictionary)
-
-const JSONRPC_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JSONRPC]): Table[string, string] = JSONRPC_vmap

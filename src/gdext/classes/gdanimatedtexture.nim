@@ -88,7 +88,3 @@ template `oneShot=`*(self: AnimatedTexture; value) = self.setOneShot(value)
 
 template speedScale*(self: AnimatedTexture): untyped = self.getSpeedScale()
 template `speedScale=`*(self: AnimatedTexture; value) = self.setSpeedScale(value)
-
-const AnimatedTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimatedTexture]): Table[string, string] = AnimatedTexture_vmap

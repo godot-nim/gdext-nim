@@ -177,11 +177,7 @@ template `bus=`*(self: AudioStreamPlayer; value) = self.setBus(value)
 template playbackType*(self: AudioStreamPlayer): untyped = self.getPlaybackType()
 template `playbackType=`*(self: AudioStreamPlayer; value) = self.setPlaybackType(value)
 
-const AudioStreamPlayer_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlayer]): Table[string, string] = AudioStreamPlayer_vmap
-
-proc finished*(self: AudioStreamPlayer): Error =
+proc call_finished*(self: AudioStreamPlayer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

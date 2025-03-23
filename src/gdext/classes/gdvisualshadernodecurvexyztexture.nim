@@ -16,7 +16,3 @@ proc getTexture*(self: VisualShaderNodeCurveXYZTexture): gdref CurveXYZTexture =
 
 template texture*(self: VisualShaderNodeCurveXYZTexture): untyped = self.getTexture()
 template `texture=`*(self: VisualShaderNodeCurveXYZTexture; value) = self.setTexture(value)
-
-const VisualShaderNodeCurveXYZTexture_vmap =
-  VisualShaderNodeResizableBase.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeCurveXYZTexture]): Table[string, string] = VisualShaderNodeCurveXYZTexture_vmap

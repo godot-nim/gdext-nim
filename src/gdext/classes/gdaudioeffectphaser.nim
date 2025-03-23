@@ -68,7 +68,3 @@ template `feedback=`*(self: AudioEffectPhaser; value) = self.setFeedback(value)
 
 template depth*(self: AudioEffectPhaser): untyped = self.getDepth()
 template `depth=`*(self: AudioEffectPhaser; value) = self.setDepth(value)
-
-const AudioEffectPhaser_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectPhaser]): Table[string, string] = AudioEffectPhaser_vmap

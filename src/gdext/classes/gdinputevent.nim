@@ -94,7 +94,3 @@ proc xformedBy*(self: InputEvent; xform: Transform2D; localOfs: Vector2 = vector
 
 template device*(self: InputEvent): untyped = self.getDevice()
 template `device=`*(self: InputEvent; value) = self.setDevice(value)
-
-const InputEvent_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEvent]): Table[string, string] = InputEvent_vmap

@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdphysicsbody2d; export gdphysicsbody2d
 
 method integrateForces*(self: RigidBody2D; state: PhysicsDirectBodyState2D): void {.base.} = (discard)
-proc integrateForces(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[RigidBody2D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState2D))
-template integrateForces_bind*(_: typedesc[RigidBody2D]): ClassCallVirtual = integrateForces
+proc registerVirtual_integrateForces*[T: RigidBody2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[RigidBody2D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState2D))
 
 proc setMass*(self: RigidBody2D; mass: Float): void =
   expandMethodBind(className RigidBody2D, "set_mass", 373806689)
@@ -360,41 +360,35 @@ template `constantForce=`*(self: RigidBody2D; value) = self.setConstantForce(val
 template constantTorque*(self: RigidBody2D): untyped = self.getConstantTorque()
 template `constantTorque=`*(self: RigidBody2D; value) = self.setConstantTorque(value)
 
-const RigidBody2D_vmap =
-  PhysicsBody2D.vmap.concat toTable {
-    "integrateforces" : "_integrate_forces",
-    }
-template vmap*(_: typedesc[RigidBody2D]): Table[string, string] = RigidBody2D_vmap
-
-proc bodyShapeEntered*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_bodyShapeEntered*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_shape_entered")
   let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc bodyShapeExited*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_bodyShapeExited*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_shape_exited")
   let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc bodyEntered*(self: RigidBody2D; body: Variant): Error =
+proc call_bodyEntered*(self: RigidBody2D; body: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_entered")
   let args = [body]
   self.emitSignal(signalname, args)
 
-proc bodyExited*(self: RigidBody2D; body: Variant): Error =
+proc call_bodyExited*(self: RigidBody2D; body: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_exited")
   let args = [body]
   self.emitSignal(signalname, args)
 
-proc sleepingStateChanged*(self: RigidBody2D): Error =
+proc call_sleepingStateChanged*(self: RigidBody2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("sleeping_state_changed")

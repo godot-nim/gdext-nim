@@ -5,34 +5,34 @@ import gdext/coronation/header/classes
 import gdcontrol; export gdcontrol
 
 method handleUnicodeInput*(self: TextEdit; unicodeChar: int32; caretIndex: int32): void {.base.} = (discard)
-proc handleUnicodeInput(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).handleUnicodeInput(p_args[0].decode(int32), p_args[1].decode(int32))
-template handleUnicodeInput_bind*(_: typedesc[TextEdit]): ClassCallVirtual = handleUnicodeInput
+proc registerVirtual_handleUnicodeInput*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_handle_unicode_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).handleUnicodeInput(p_args[0].decode(int32), p_args[1].decode(int32))
 
 method backspace*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
-proc backspace(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).backspace(p_args[0].decode(int32))
-template backspace_bind*(_: typedesc[TextEdit]): ClassCallVirtual = backspace
+proc registerVirtual_backspace*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_backspace"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).backspace(p_args[0].decode(int32))
 
 method cut*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
-proc cut(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).cut(p_args[0].decode(int32))
-template cut_bind*(_: typedesc[TextEdit]): ClassCallVirtual = cut
+proc registerVirtual_cut*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_cut"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).cut(p_args[0].decode(int32))
 
 method copy*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
-proc copy(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).copy(p_args[0].decode(int32))
-template copy_bind*(_: typedesc[TextEdit]): ClassCallVirtual = copy
+proc registerVirtual_copy*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_copy"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).copy(p_args[0].decode(int32))
 
 method paste*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
-proc paste(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).paste(p_args[0].decode(int32))
-template paste_bind*(_: typedesc[TextEdit]): ClassCallVirtual = paste
+proc registerVirtual_paste*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_paste"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).paste(p_args[0].decode(int32))
 
 method pastePrimaryClipboard*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
-proc pastePrimaryClipboard(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[TextEdit](p_instance).pastePrimaryClipboard(p_args[0].decode(int32))
-template pastePrimaryClipboard_bind*(_: typedesc[TextEdit]): ClassCallVirtual = pastePrimaryClipboard
+proc registerVirtual_pastePrimaryClipboard*[T: TextEdit](Self: typedesc[T]) =
+  Self.vmethods[stringName"_paste_primary_clipboard"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextEdit](p_instance).pastePrimaryClipboard(p_args[0].decode(int32))
 
 proc hasImeText*(self: TextEdit): bool =
   expandMethodBind(className TextEdit, "has_ime_text", 36873697)
@@ -1378,56 +1378,45 @@ template `structuredTextBidiOverride=`*(self: TextEdit; value) = self.setStructu
 template structuredTextBidiOverrideOptions*(self: TextEdit): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: TextEdit; value) = self.setStructuredTextBidiOverrideOptions(value)
 
-const TextEdit_vmap =
-  Control.vmap.concat toTable {
-    "handleunicodeinput" : "_handle_unicode_input",
-    "backspace" : "_backspace",
-    "cut" : "_cut",
-    "copy" : "_copy",
-    "paste" : "_paste",
-    "pasteprimaryclipboard" : "_paste_primary_clipboard",
-    }
-template vmap*(_: typedesc[TextEdit]): Table[string, string] = TextEdit_vmap
-
-proc textSet*(self: TextEdit): Error =
+proc call_textSet*(self: TextEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("text_set")
   self.emitSignal(signalname)
 
-proc textChanged*(self: TextEdit): Error =
+proc call_textChanged*(self: TextEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("text_changed")
   self.emitSignal(signalname)
 
-proc linesEditedFrom*(self: TextEdit; fromLine: Variant; toLine: Variant): Error =
+proc call_linesEditedFrom*(self: TextEdit; fromLine: Variant; toLine: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("lines_edited_from")
   let args = [fromLine, toLine]
   self.emitSignal(signalname, args)
 
-proc caretChanged*(self: TextEdit): Error =
+proc call_caretChanged*(self: TextEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("caret_changed")
   self.emitSignal(signalname)
 
-proc gutterClicked*(self: TextEdit; line: Variant; gutter: Variant): Error =
+proc call_gutterClicked*(self: TextEdit; line: Variant; gutter: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("gutter_clicked")
   let args = [line, gutter]
   self.emitSignal(signalname, args)
 
-proc gutterAdded*(self: TextEdit): Error =
+proc call_gutterAdded*(self: TextEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("gutter_added")
   self.emitSignal(signalname)
 
-proc gutterRemoved*(self: TextEdit): Error =
+proc call_gutterRemoved*(self: TextEdit): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("gutter_removed")

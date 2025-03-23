@@ -68,7 +68,3 @@ template `stride=`*(self: RDVertexAttribute; value) = self.setStride(value)
 
 template frequency*(self: RDVertexAttribute): untyped = self.getFrequency()
 template `frequency=`*(self: RDVertexAttribute; value) = self.setFrequency(value)
-
-const RDVertexAttribute_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDVertexAttribute]): Table[string, string] = RDVertexAttribute_vmap

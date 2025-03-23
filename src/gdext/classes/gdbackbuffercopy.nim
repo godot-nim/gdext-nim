@@ -29,7 +29,3 @@ template `copyMode=`*(self: BackBufferCopy; value) = self.setCopyMode(value)
 
 template rect*(self: BackBufferCopy): untyped = self.getRect()
 template `rect=`*(self: BackBufferCopy; value) = self.setRect(value)
-
-const BackBufferCopy_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BackBufferCopy]): Table[string, string] = BackBufferCopy_vmap

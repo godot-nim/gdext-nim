@@ -16,7 +16,3 @@ proc getOpType*(self: VisualShaderNodeMultiplyAdd): VisualShaderNodeMultiplyAdd_
 
 template opType*(self: VisualShaderNodeMultiplyAdd): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeMultiplyAdd; value) = self.setOpType(value)
-
-const VisualShaderNodeMultiplyAdd_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeMultiplyAdd]): Table[string, string] = VisualShaderNodeMultiplyAdd_vmap

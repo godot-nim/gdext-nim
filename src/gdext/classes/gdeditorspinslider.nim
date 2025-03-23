@@ -82,35 +82,31 @@ template `hideSlider=`*(self: EditorSpinSlider; value) = self.setHideSlider(valu
 template editingInteger*(self: EditorSpinSlider): untyped = self.isEditingInteger()
 template `editingInteger=`*(self: EditorSpinSlider; value) = self.setEditingInteger(value)
 
-const EditorSpinSlider_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorSpinSlider]): Table[string, string] = EditorSpinSlider_vmap
-
-proc grabbed*(self: EditorSpinSlider): Error =
+proc call_grabbed*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("grabbed")
   self.emitSignal(signalname)
 
-proc ungrabbed*(self: EditorSpinSlider): Error =
+proc call_ungrabbed*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("ungrabbed")
   self.emitSignal(signalname)
 
-proc updownPressed*(self: EditorSpinSlider): Error =
+proc call_updownPressed*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("updown_pressed")
   self.emitSignal(signalname)
 
-proc valueFocusEntered*(self: EditorSpinSlider): Error =
+proc call_valueFocusEntered*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("value_focus_entered")
   self.emitSignal(signalname)
 
-proc valueFocusExited*(self: EditorSpinSlider): Error =
+proc call_valueFocusExited*(self: EditorSpinSlider): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("value_focus_exited")

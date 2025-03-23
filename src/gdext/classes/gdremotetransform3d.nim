@@ -72,7 +72,3 @@ template `updateRotation=`*(self: RemoteTransform3D; value) = self.setUpdateRota
 
 template updateScale*(self: RemoteTransform3D): untyped = self.getUpdateScale()
 template `updateScale=`*(self: RemoteTransform3D; value) = self.setUpdateScale(value)
-
-const RemoteTransform3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RemoteTransform3D]): Table[string, string] = RemoteTransform3D_vmap

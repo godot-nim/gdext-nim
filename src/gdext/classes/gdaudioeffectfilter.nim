@@ -55,7 +55,3 @@ template `gain=`*(self: AudioEffectFilter; value) = self.setGain(value)
 
 template db*(self: AudioEffectFilter): untyped = self.getDb()
 template `db=`*(self: AudioEffectFilter; value) = self.setDb(value)
-
-const AudioEffectFilter_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectFilter]): Table[string, string] = AudioEffectFilter_vmap

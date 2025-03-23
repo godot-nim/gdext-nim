@@ -55,7 +55,3 @@ template `onHaptic=`*(self: OpenXRAnalogThresholdModifier; value) = self.setOnHa
 
 template offHaptic*(self: OpenXRAnalogThresholdModifier): untyped = self.getOffHaptic()
 template `offHaptic=`*(self: OpenXRAnalogThresholdModifier; value) = self.setOffHaptic(value)
-
-const OpenXRAnalogThresholdModifier_vmap =
-  OpenXRActionBindingModifier.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRAnalogThresholdModifier]): Table[string, string] = OpenXRAnalogThresholdModifier_vmap

@@ -16,7 +16,3 @@ proc getColors*(self: ColorPalette): PackedColorArray =
 
 template colors*(self: ColorPalette): untyped = self.getColors()
 template `colors=`*(self: ColorPalette; value) = self.setColors(value)
-
-const ColorPalette_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ColorPalette]): Table[string, string] = ColorPalette_vmap

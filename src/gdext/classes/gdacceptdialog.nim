@@ -101,23 +101,19 @@ template `dialogCloseOnEscape=`*(self: AcceptDialog; value) = self.setCloseOnEsc
 template dialogAutowrap*(self: AcceptDialog): untyped = self.hasAutowrap()
 template `dialogAutowrap=`*(self: AcceptDialog; value) = self.setAutowrap(value)
 
-const AcceptDialog_vmap =
-  Window.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AcceptDialog]): Table[string, string] = AcceptDialog_vmap
-
-proc confirmed*(self: AcceptDialog): Error =
+proc call_confirmed*(self: AcceptDialog): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("confirmed")
   self.emitSignal(signalname)
 
-proc canceled*(self: AcceptDialog): Error =
+proc call_canceled*(self: AcceptDialog): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("canceled")
   self.emitSignal(signalname)
 
-proc customAction*(self: AcceptDialog; action: Variant): Error =
+proc call_customAction*(self: AcceptDialog; action: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("custom_action")

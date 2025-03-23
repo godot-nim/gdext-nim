@@ -1,6 +1,7 @@
 import cloths
 import ../classindex
 
+import types/json
 import submodules/wordropes
 import submodules/semanticstrings
 import operators/arguments
@@ -8,13 +9,23 @@ import operators/arguments
 import std/options
 import std/strformat
 
+proc getMethodRecursive(class: Class; name: string): JsonClassMethod =
+  result = class.methods.getOrDefault(name, nil)
+  if result == nil:
+    let inherits = classDB.getOrDefault(class.inherits, nil)
+    if inherits != nil:
+      result = inherits.getMethodRecursive(name)
+
 proc weave_properties*(class: Class): Cloth =
   weave margin:
     for prop in class.json.properties.get(@[]):
       var typ =
         if prop.index.isSome:
-          var metho = class.methods[prop.getter]
-          metho.arguments.get(@[])[0].convert().typeSym
+          let metho = class.getMethodRecursive(prop.getter)
+          if metho != nil:
+            metho.arguments.get(@[])[0].convert().typeSym
+          else:
+            TypeSym.Void
         else:
           TypeSym.Void
 

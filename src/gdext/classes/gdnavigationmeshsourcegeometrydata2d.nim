@@ -86,7 +86,3 @@ template `obstructionOutlines=`*(self: NavigationMeshSourceGeometryData2D; value
 
 template projectedObstructions*(self: NavigationMeshSourceGeometryData2D): untyped = self.getProjectedObstructions()
 template `projectedObstructions=`*(self: NavigationMeshSourceGeometryData2D; value) = self.setProjectedObstructions(value)
-
-const NavigationMeshSourceGeometryData2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationMeshSourceGeometryData2D]): Table[string, string] = NavigationMeshSourceGeometryData2D_vmap

@@ -94,7 +94,3 @@ template `structuredTextBidiOverride=`*(self: LinkButton; value) = self.setStruc
 
 template structuredTextBidiOverrideOptions*(self: LinkButton): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: LinkButton; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-const LinkButton_vmap =
-  BaseButton.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LinkButton]): Table[string, string] = LinkButton_vmap

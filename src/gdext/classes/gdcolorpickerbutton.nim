@@ -42,24 +42,20 @@ template `color=`*(self: ColorPickerButton; value) = self.setPickColor(value)
 template editAlpha*(self: ColorPickerButton): untyped = self.isEditingAlpha()
 template `editAlpha=`*(self: ColorPickerButton; value) = self.setEditAlpha(value)
 
-const ColorPickerButton_vmap =
-  Button.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ColorPickerButton]): Table[string, string] = ColorPickerButton_vmap
-
-proc colorChanged*(self: ColorPickerButton; color: Variant): Error =
+proc call_colorChanged*(self: ColorPickerButton; color: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("color_changed")
   let args = [color]
   self.emitSignal(signalname, args)
 
-proc popupClosed*(self: ColorPickerButton): Error =
+proc call_popupClosed*(self: ColorPickerButton): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("popup_closed")
   self.emitSignal(signalname)
 
-proc pickerCreated*(self: ColorPickerButton): Error =
+proc call_pickerCreated*(self: ColorPickerButton): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("picker_created")

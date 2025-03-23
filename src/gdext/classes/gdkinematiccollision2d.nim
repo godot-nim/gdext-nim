@@ -81,7 +81,3 @@ proc getColliderVelocity*(self: KinematicCollision2D): Vector2 =
   var ret: encoded Vector2
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
-
-const KinematicCollision2D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[KinematicCollision2D]): Table[string, string] = KinematicCollision2D_vmap

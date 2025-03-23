@@ -16,7 +16,3 @@ proc getConstant*(self: VisualShaderNodeBooleanConstant): bool =
 
 template constant*(self: VisualShaderNodeBooleanConstant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeBooleanConstant; value) = self.setConstant(value)
-
-const VisualShaderNodeBooleanConstant_vmap =
-  VisualShaderNodeConstant.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeBooleanConstant]): Table[string, string] = VisualShaderNodeBooleanConstant_vmap

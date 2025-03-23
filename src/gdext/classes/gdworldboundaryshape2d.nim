@@ -29,7 +29,3 @@ template `normal=`*(self: WorldBoundaryShape2D; value) = self.setNormal(value)
 
 template distance*(self: WorldBoundaryShape2D): untyped = self.getDistance()
 template `distance=`*(self: WorldBoundaryShape2D; value) = self.setDistance(value)
-
-const WorldBoundaryShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WorldBoundaryShape2D]): Table[string, string] = WorldBoundaryShape2D_vmap

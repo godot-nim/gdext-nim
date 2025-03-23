@@ -94,7 +94,3 @@ template `velocity=`*(self: InputEventMouseMotion; value) = self.setVelocity(val
 
 template screenVelocity*(self: InputEventMouseMotion): untyped = self.getScreenVelocity()
 template `screenVelocity=`*(self: InputEventMouseMotion; value) = self.setScreenVelocity(value)
-
-const InputEventMouseMotion_vmap =
-  InputEventMouse.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventMouseMotion]): Table[string, string] = InputEventMouseMotion_vmap

@@ -5,24 +5,24 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
-proc draw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Rect2))
-template draw_bind*(_: typedesc[StyleBox]): ClassCallVirtual = draw
+proc registerVirtual_draw*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Rect2))
 
 method getDrawRect*(self: StyleBox; rect: Rect2): Rect2 {.base.} = (discard)
-proc getDrawRect(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[StyleBox](p_instance).getDrawRect(p_args[0].decode(Rect2)).encode(r_ret)
-template getDrawRect_bind*(_: typedesc[StyleBox]): ClassCallVirtual = getDrawRect
+proc registerVirtual_getDrawRect*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_draw_rect"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).getDrawRect(p_args[0].decode(Rect2)).encode(r_ret)
 
 method getMinimumSize*(self: StyleBox): Vector2 {.base.} = (discard)
-proc getMinimumSize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[StyleBox](p_instance).getMinimumSize().encode(r_ret)
-template getMinimumSize_bind*(_: typedesc[StyleBox]): ClassCallVirtual = getMinimumSize
+proc registerVirtual_getMinimumSize*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).getMinimumSize().encode(r_ret)
 
 method testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool {.base.} = (discard)
-proc testMask(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
-template testMask_bind*(_: typedesc[StyleBox]): ClassCallVirtual = testMask
+proc registerVirtual_testMask*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[stringName"_test_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
 
 proc getMinimumSize*(self: StyleBox): Vector2 =
   expandMethodBind(className StyleBox, "get_minimum_size", 3341600327)
@@ -83,12 +83,3 @@ template `contentMarginRight=`*(self: StyleBox; value) = self.setContentMargin(S
 
 template contentMarginBottom*(self: StyleBox): untyped = self.getContentMargin(Side(3))
 template `contentMarginBottom=`*(self: StyleBox; value) = self.setContentMargin(Side(3), value)
-
-const StyleBox_vmap =
-  Resource.vmap.concat toTable {
-    "draw" : "_draw",
-    "getdrawrect" : "_get_draw_rect",
-    "getminimumsize" : "_get_minimum_size",
-    "testmask" : "_test_mask",
-    }
-template vmap*(_: typedesc[StyleBox]): Table[string, string] = StyleBox_vmap

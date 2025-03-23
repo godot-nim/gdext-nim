@@ -40,10 +40,10 @@ proc default_value_complex(self: GDExtNode;
     ): string {.gdsync.} =
   "default_value_complex(" & str1 & " " & str2 & " " & str3 & " " & str4 & ")"
 
-proc varargs_simple(self: GDExtNode; args: varargs[ptr Variant]): string {.gdsync.} =
-  args.mapIt(it[].get int).join(", ")
-proc varargs_static(self: typedesc[GDExtNode]; args: varargs[ptr Variant]): string {.gdsync.} =
-  args.mapIt(it[].get int).join(", ")
+proc varargs_simple(self: GDExtNode; args: varargs[Variant]): string {.gdsync.} =
+  args.mapIt(it.get int).join(", ")
+proc varargs_static(self: typedesc[GDExtNode]; args: varargs[Variant]): string {.gdsync.} =
+  args.mapIt(it.get int).join(", ")
 
 proc varargs_concrete(self: GDExtNode; args: varargs[int]): string {.gdsync.} =
   args.join(", ")

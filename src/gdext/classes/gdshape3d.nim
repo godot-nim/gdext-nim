@@ -35,7 +35,3 @@ template `customSolverBias=`*(self: Shape3D; value) = self.setCustomSolverBias(v
 
 template margin*(self: Shape3D): untyped = self.getMargin()
 template `margin=`*(self: Shape3D; value) = self.setMargin(value)
-
-const Shape3D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Shape3D]): Table[string, string] = Shape3D_vmap

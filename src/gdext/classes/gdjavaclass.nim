@@ -21,7 +21,3 @@ proc getJavaParentClass*(self: JavaClass): gdref JavaClass =
   var ret: encoded gdref JavaClass
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref JavaClass)
-
-const JavaClass_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JavaClass]): Table[string, string] = JavaClass_vmap

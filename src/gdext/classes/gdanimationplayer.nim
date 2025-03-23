@@ -74,31 +74,31 @@ proc getAutoCaptureEaseType*(self: AnimationPlayer): Tween_EaseType =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Tween_EaseType)
 
-proc play*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+proc play*(self: AnimationPlayer; name: StringName = default(StringName); customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
   expandMethodBind(className AnimationPlayer, "play", 3118260607)
   methodbind.ptrcall(self, [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
 
-proc playSectionWithMarkers*(self: AnimationPlayer; name: StringName = stringName ""; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+proc playSectionWithMarkers*(self: AnimationPlayer; name: StringName = default(StringName); startMarker: StringName = default(StringName); endMarker: StringName = default(StringName); customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
   expandMethodBind(className AnimationPlayer, "play_section_with_markers", 1421431412)
   methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
 
-proc playSection*(self: AnimationPlayer; name: StringName = stringName ""; startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+proc playSection*(self: AnimationPlayer; name: StringName = default(StringName); startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
   expandMethodBind(className AnimationPlayer, "play_section", 284774635)
   methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
 
-proc playBackwards*(self: AnimationPlayer; name: StringName = stringName ""; customBlend: float64 = -1): void =
+proc playBackwards*(self: AnimationPlayer; name: StringName = default(StringName); customBlend: float64 = -1): void =
   expandMethodBind(className AnimationPlayer, "play_backwards", 2787282401)
   methodbind.ptrcall(self, [getPtr name, getPtr customBlend])
 
-proc playSectionWithMarkersBackwards*(self: AnimationPlayer; name: StringName = stringName ""; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""; customBlend: float64 = -1): void =
+proc playSectionWithMarkersBackwards*(self: AnimationPlayer; name: StringName = default(StringName); startMarker: StringName = default(StringName); endMarker: StringName = default(StringName); customBlend: float64 = -1): void =
   expandMethodBind(className AnimationPlayer, "play_section_with_markers_backwards", 910195100)
   methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend])
 
-proc playSectionBackwards*(self: AnimationPlayer; name: StringName = stringName ""; startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1): void =
+proc playSectionBackwards*(self: AnimationPlayer; name: StringName = default(StringName); startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1): void =
   expandMethodBind(className AnimationPlayer, "play_section_backwards", 831955981)
   methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend])
 
-proc playWithCapture*(self: AnimationPlayer; name: StringName = stringName ""; duration: float64 = -1.0; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false; transType: Tween_TransitionType = transLinear; easeType: Tween_EaseType = easeIn): void =
+proc playWithCapture*(self: AnimationPlayer; name: StringName = default(StringName); duration: float64 = -1.0; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false; transType: Tween_TransitionType = transLinear; easeType: Tween_EaseType = easeIn): void =
   expandMethodBind(className AnimationPlayer, "play_with_capture", 1572969103)
   methodbind.ptrcall(self, [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType])
 
@@ -198,7 +198,7 @@ proc getCurrentAnimationLength*(self: AnimationPlayer): float64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
-proc setSectionWithMarkers*(self: AnimationPlayer; startMarker: StringName = stringName ""; endMarker: StringName = stringName ""): void =
+proc setSectionWithMarkers*(self: AnimationPlayer; startMarker: StringName = default(StringName); endMarker: StringName = default(StringName)): void =
   expandMethodBind(className AnimationPlayer, "set_section_with_markers", 794792241)
   methodbind.ptrcall(self, [getPtr startMarker, getPtr endMarker])
 
@@ -296,18 +296,14 @@ template `speedScale=`*(self: AnimationPlayer; value) = self.setSpeedScale(value
 template movieQuitOnFinish*(self: AnimationPlayer): untyped = self.isMovieQuitOnFinishEnabled()
 template `movieQuitOnFinish=`*(self: AnimationPlayer; value) = self.setMovieQuitOnFinishEnabled(value)
 
-const AnimationPlayer_vmap =
-  AnimationMixer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationPlayer]): Table[string, string] = AnimationPlayer_vmap
-
-proc currentAnimationChanged*(self: AnimationPlayer; name: Variant): Error =
+proc call_currentAnimationChanged*(self: AnimationPlayer; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("current_animation_changed")
   let args = [name]
   self.emitSignal(signalname, args)
 
-proc animationChanged*(self: AnimationPlayer; oldName: Variant; newName: Variant): Error =
+proc call_animationChanged*(self: AnimationPlayer; oldName: Variant; newName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_changed")

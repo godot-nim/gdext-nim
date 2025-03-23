@@ -21,7 +21,3 @@ proc finish*(self: HashingContext): PackedByteArray =
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedByteArray)
-
-const HashingContext_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HashingContext]): Table[string, string] = HashingContext_vmap

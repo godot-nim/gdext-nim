@@ -9,7 +9,3 @@ proc getMagnitudeForFrequencyRange*(self: AudioEffectSpectrumAnalyzerInstance; f
   var ret: encoded Vector2
   methodbind.ptrcall(self, [getPtr fromHz, getPtr toHz, getPtr mode], addr ret)
   (addr ret).decode_result(Vector2)
-
-const AudioEffectSpectrumAnalyzerInstance_vmap =
-  AudioEffectInstance.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectSpectrumAnalyzerInstance]): Table[string, string] = AudioEffectSpectrumAnalyzerInstance_vmap

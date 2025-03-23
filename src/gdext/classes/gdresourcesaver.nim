@@ -29,7 +29,3 @@ proc getResourceIdForPath*(self: ResourceSaver; path: String; generate: bool = f
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr path, getPtr generate], addr ret)
   (addr ret).decode_result(int64)
-
-const ResourceSaver_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceSaver]): Table[string, string] = ResourceSaver_vmap

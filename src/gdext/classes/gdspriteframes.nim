@@ -92,7 +92,3 @@ proc clearAll*(self: SpriteFrames): void =
 
 template animations*(self: SpriteFrames): untyped = self.getAnimations()
 template `animations=`*(self: SpriteFrames; value) = self.setAnimations(value)
-
-const SpriteFrames_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpriteFrames]): Table[string, string] = SpriteFrames_vmap

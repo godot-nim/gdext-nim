@@ -15,7 +15,3 @@ proc getPlane*(self: XRAnchor3D): Plane =
   var ret: encoded Plane
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Plane)
-
-const XRAnchor3D_vmap =
-  XRNode3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRAnchor3D]): Table[string, string] = XRAnchor3D_vmap

@@ -172,17 +172,13 @@ template `regionRect=`*(self: Sprite2D; value) = self.setRegionRect(value)
 template regionFilterClipEnabled*(self: Sprite2D): untyped = self.isRegionFilterClipEnabled()
 template `regionFilterClipEnabled=`*(self: Sprite2D; value) = self.setRegionFilterClipEnabled(value)
 
-const Sprite2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Sprite2D]): Table[string, string] = Sprite2D_vmap
-
-proc frameChanged*(self: Sprite2D): Error =
+proc call_frameChanged*(self: Sprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_changed")
   self.emitSignal(signalname)
 
-proc textureChanged*(self: Sprite2D): Error =
+proc call_textureChanged*(self: Sprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("texture_changed")

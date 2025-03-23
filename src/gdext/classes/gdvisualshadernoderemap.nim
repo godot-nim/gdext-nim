@@ -16,7 +16,3 @@ proc getOpType*(self: VisualShaderNodeRemap): VisualShaderNodeRemap_OpType =
 
 template opType*(self: VisualShaderNodeRemap): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeRemap; value) = self.setOpType(value)
-
-const VisualShaderNodeRemap_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeRemap]): Table[string, string] = VisualShaderNodeRemap_vmap

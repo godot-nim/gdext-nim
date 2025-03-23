@@ -16,7 +16,3 @@ proc getSize*(self: GPUParticlesAttractorBox3D): Vector3 =
 
 template size*(self: GPUParticlesAttractorBox3D): untyped = self.getSize()
 template `size=`*(self: GPUParticlesAttractorBox3D; value) = self.setSize(value)
-
-const GPUParticlesAttractorBox3D_vmap =
-  GPUParticlesAttractor3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesAttractorBox3D]): Table[string, string] = GPUParticlesAttractorBox3D_vmap

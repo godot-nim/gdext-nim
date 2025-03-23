@@ -105,7 +105,3 @@ proc getFreeOutputPortId*(self: VisualShaderNodeGroupBase): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const VisualShaderNodeGroupBase_vmap =
-  VisualShaderNodeResizableBase.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeGroupBase]): Table[string, string] = VisualShaderNodeGroupBase_vmap

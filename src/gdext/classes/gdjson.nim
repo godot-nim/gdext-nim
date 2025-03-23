@@ -64,7 +64,3 @@ proc toNative*(_: typedesc[JSON]; json: Variant; allowObjects: bool = false): Va
 
 template data*(self: JSON): untyped = self.getData()
 template `data=`*(self: JSON; value) = self.setData(value)
-
-const JSON_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JSON]): Table[string, string] = JSON_vmap

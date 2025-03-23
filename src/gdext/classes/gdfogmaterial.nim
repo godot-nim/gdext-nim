@@ -81,7 +81,3 @@ template `edgeFade=`*(self: FogMaterial; value) = self.setEdgeFade(value)
 
 template densityTexture*(self: FogMaterial): untyped = self.getDensityTexture()
 template `densityTexture=`*(self: FogMaterial; value) = self.setDensityTexture(value)
-
-const FogMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FogMaterial]): Table[string, string] = FogMaterial_vmap

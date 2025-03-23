@@ -131,7 +131,3 @@ template `clipCount=`*(self: AudioStreamInteractive; value) = self.setClipCount(
 
 template initialClip*(self: AudioStreamInteractive): untyped = self.getInitialClip()
 template `initialClip=`*(self: AudioStreamInteractive; value) = self.setInitialClip(value)
-
-const AudioStreamInteractive_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamInteractive]): Table[string, string] = AudioStreamInteractive_vmap

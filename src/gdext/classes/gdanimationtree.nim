@@ -53,11 +53,7 @@ template `advanceExpressionBaseNode=`*(self: AnimationTree; value) = self.setAdv
 template animPlayer*(self: AnimationTree): untyped = self.getAnimationPlayer()
 template `animPlayer=`*(self: AnimationTree; value) = self.setAnimationPlayer(value)
 
-const AnimationTree_vmap =
-  AnimationMixer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationTree]): Table[string, string] = AnimationTree_vmap
-
-proc animationPlayerChanged*(self: AnimationTree): Error =
+proc call_animationPlayerChanged*(self: AnimationTree): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_player_changed")

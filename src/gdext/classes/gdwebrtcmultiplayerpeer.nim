@@ -49,7 +49,3 @@ proc getPeers*(self: WebRTCMultiplayerPeer): Dictionary =
   var ret: encoded Dictionary
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
-
-const WebRTCMultiplayerPeer_vmap =
-  MultiplayerPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebRTCMultiplayerPeer]): Table[string, string] = WebRTCMultiplayerPeer_vmap

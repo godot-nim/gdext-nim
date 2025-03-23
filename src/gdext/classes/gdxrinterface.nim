@@ -174,11 +174,7 @@ template `environmentBlendMode=`*(self: XRInterface; value) = self.setEnvironmen
 template arIsAnchorDetectionEnabled*(self: XRInterface): untyped = self.getAnchorDetectionIsEnabled()
 template `arIsAnchorDetectionEnabled=`*(self: XRInterface; value) = self.setAnchorDetectionIsEnabled(value)
 
-const XRInterface_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRInterface]): Table[string, string] = XRInterface_vmap
-
-proc playAreaChanged*(self: XRInterface; mode: Variant): Error =
+proc call_playAreaChanged*(self: XRInterface; mode: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("play_area_changed")

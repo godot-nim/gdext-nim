@@ -42,30 +42,26 @@ proc setBreakpoint*(self: EditorDebuggerSession; path: String; line: int32; enab
   expandMethodBind(className EditorDebuggerSession, "set_breakpoint", 4108344793)
   methodbind.ptrcall(self, [getPtr path, getPtr line, getPtr enabled])
 
-const EditorDebuggerSession_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorDebuggerSession]): Table[string, string] = EditorDebuggerSession_vmap
-
-proc started*(self: EditorDebuggerSession): Error =
+proc call_started*(self: EditorDebuggerSession): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("started")
   self.emitSignal(signalname)
 
-proc stopped*(self: EditorDebuggerSession): Error =
+proc call_stopped*(self: EditorDebuggerSession): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("stopped")
   self.emitSignal(signalname)
 
-proc breaked*(self: EditorDebuggerSession; canDebug: Variant): Error =
+proc call_breaked*(self: EditorDebuggerSession; canDebug: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("breaked")
   let args = [canDebug]
   self.emitSignal(signalname, args)
 
-proc continued*(self: EditorDebuggerSession): Error =
+proc call_continued*(self: EditorDebuggerSession): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("continued")

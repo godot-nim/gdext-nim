@@ -14,71 +14,67 @@ proc addSyntaxHighlighter*(self: ScriptEditorBase; highlighter: gdref EditorSynt
   expandMethodBind(className ScriptEditorBase, "add_syntax_highlighter", 1092774468)
   methodbind.ptrcall(self, [getPtr highlighter])
 
-const ScriptEditorBase_vmap =
-  VBoxContainer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ScriptEditorBase]): Table[string, string] = ScriptEditorBase_vmap
-
-proc nameChanged*(self: ScriptEditorBase): Error =
+proc call_nameChanged*(self: ScriptEditorBase): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("name_changed")
   self.emitSignal(signalname)
 
-proc editedScriptChanged*(self: ScriptEditorBase): Error =
+proc call_editedScriptChanged*(self: ScriptEditorBase): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("edited_script_changed")
   self.emitSignal(signalname)
 
-proc requestHelp*(self: ScriptEditorBase; topic: Variant): Error =
+proc call_requestHelp*(self: ScriptEditorBase; topic: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("request_help")
   let args = [topic]
   self.emitSignal(signalname, args)
 
-proc requestOpenScriptAtLine*(self: ScriptEditorBase; script: Variant; line: Variant): Error =
+proc call_requestOpenScriptAtLine*(self: ScriptEditorBase; script: Variant; line: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("request_open_script_at_line")
   let args = [script, line]
   self.emitSignal(signalname, args)
 
-proc requestSaveHistory*(self: ScriptEditorBase): Error =
+proc call_requestSaveHistory*(self: ScriptEditorBase): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("request_save_history")
   self.emitSignal(signalname)
 
-proc requestSavePreviousState*(self: ScriptEditorBase; state: Variant): Error =
+proc call_requestSavePreviousState*(self: ScriptEditorBase; state: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("request_save_previous_state")
   let args = [state]
   self.emitSignal(signalname, args)
 
-proc goToHelp*(self: ScriptEditorBase; what: Variant): Error =
+proc call_goToHelp*(self: ScriptEditorBase; what: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("go_to_help")
   let args = [what]
   self.emitSignal(signalname, args)
 
-proc searchInFilesRequested*(self: ScriptEditorBase; text: Variant): Error =
+proc call_searchInFilesRequested*(self: ScriptEditorBase; text: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("search_in_files_requested")
   let args = [text]
   self.emitSignal(signalname, args)
 
-proc replaceInFilesRequested*(self: ScriptEditorBase; text: Variant): Error =
+proc call_replaceInFilesRequested*(self: ScriptEditorBase; text: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("replace_in_files_requested")
   let args = [text]
   self.emitSignal(signalname, args)
 
-proc goToMethod*(self: ScriptEditorBase; script: Variant; `method`: Variant): Error =
+proc call_goToMethod*(self: ScriptEditorBase; script: Variant; `method`: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("go_to_method")

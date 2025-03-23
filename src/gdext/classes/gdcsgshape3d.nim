@@ -138,7 +138,3 @@ template `collisionMask=`*(self: CSGShape3D; value) = self.setCollisionMask(valu
 
 template collisionPriority*(self: CSGShape3D): untyped = self.getCollisionPriority()
 template `collisionPriority=`*(self: CSGShape3D; value) = self.setCollisionPriority(value)
-
-const CSGShape3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGShape3D]): Table[string, string] = CSGShape3D_vmap

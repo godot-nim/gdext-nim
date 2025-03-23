@@ -42,7 +42,3 @@ template `bodyUpdate=`*(self: XRBodyModifier3D; value) = self.setBodyUpdate(valu
 
 template boneUpdate*(self: XRBodyModifier3D): untyped = self.getBoneUpdate()
 template `boneUpdate=`*(self: XRBodyModifier3D; value) = self.setBoneUpdate(value)
-
-const XRBodyModifier3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRBodyModifier3D]): Table[string, string] = XRBodyModifier3D_vmap

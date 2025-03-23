@@ -16,7 +16,3 @@ proc getCode*(self: ShaderInclude): String =
 
 template code*(self: ShaderInclude): untyped = self.getCode()
 template `code=`*(self: ShaderInclude; value) = self.setCode(value)
-
-const ShaderInclude_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ShaderInclude]): Table[string, string] = ShaderInclude_vmap

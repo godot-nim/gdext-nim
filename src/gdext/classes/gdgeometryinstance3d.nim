@@ -221,7 +221,3 @@ template `visibilityRangeEndMargin=`*(self: GeometryInstance3D; value) = self.se
 
 template visibilityRangeFadeMode*(self: GeometryInstance3D): untyped = self.getVisibilityRangeFadeMode()
 template `visibilityRangeFadeMode=`*(self: GeometryInstance3D; value) = self.setVisibilityRangeFadeMode(value)
-
-const GeometryInstance3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GeometryInstance3D]): Table[string, string] = GeometryInstance3D_vmap

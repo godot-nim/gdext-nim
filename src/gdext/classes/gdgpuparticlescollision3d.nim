@@ -16,7 +16,3 @@ proc getCullMask*(self: GPUParticlesCollision3D): uint32 =
 
 template cullMask*(self: GPUParticlesCollision3D): untyped = self.getCullMask()
 template `cullMask=`*(self: GPUParticlesCollision3D; value) = self.setCullMask(value)
-
-const GPUParticlesCollision3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesCollision3D]): Table[string, string] = GPUParticlesCollision3D_vmap

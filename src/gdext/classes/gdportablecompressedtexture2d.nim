@@ -55,7 +55,3 @@ template `sizeOverride=`*(self: PortableCompressedTexture2D; value) = self.setSi
 
 template keepCompressedBuffer*(self: PortableCompressedTexture2D): untyped = self.isKeepingCompressedBuffer()
 template `keepCompressedBuffer=`*(self: PortableCompressedTexture2D; value) = self.setKeepCompressedBuffer(value)
-
-const PortableCompressedTexture2D_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PortableCompressedTexture2D]): Table[string, string] = PortableCompressedTexture2D_vmap

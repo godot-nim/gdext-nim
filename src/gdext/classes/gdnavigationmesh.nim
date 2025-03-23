@@ -369,7 +369,3 @@ template `filterBakingAabb=`*(self: NavigationMesh; value) = self.setFilterBakin
 
 template filterBakingAabbOffset*(self: NavigationMesh): untyped = self.getFilterBakingAabbOffset()
 template `filterBakingAabbOffset=`*(self: NavigationMesh; value) = self.setFilterBakingAabbOffset(value)
-
-const NavigationMesh_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationMesh]): Table[string, string] = NavigationMesh_vmap

@@ -567,11 +567,7 @@ template `animOffsetMax=`*(self: CPUParticles2D; value) = self.setParamMax(CPUPa
 template animOffsetCurve*(self: CPUParticles2D): untyped = self.getParamCurve(CPUParticles2D_Parameter(11))
 template `animOffsetCurve=`*(self: CPUParticles2D; value) = self.setParamCurve(CPUParticles2D_Parameter(11), value)
 
-const CPUParticles2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CPUParticles2D]): Table[string, string] = CPUParticles2D_vmap
-
-proc finished*(self: CPUParticles2D): Error =
+proc call_finished*(self: CPUParticles2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

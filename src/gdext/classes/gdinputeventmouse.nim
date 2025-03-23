@@ -42,7 +42,3 @@ template `position=`*(self: InputEventMouse; value) = self.setPosition(value)
 
 template globalPosition*(self: InputEventMouse): untyped = self.getGlobalPosition()
 template `globalPosition=`*(self: InputEventMouse; value) = self.setGlobalPosition(value)
-
-const InputEventMouse_vmap =
-  InputEventWithModifiers.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventMouse]): Table[string, string] = InputEventMouse_vmap

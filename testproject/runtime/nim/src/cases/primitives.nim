@@ -35,9 +35,15 @@ runtime: suite "TypedArray":
   test "mutable iter":
     var arr = typedArray[String](10)
     for i, val in arr.mpairs:
-      val = variant($i)
+      val = $i
     for i, val in arr:
       check $val == $i
+
+    var arr2 = typedArray[Object](10)
+    check not compiles(
+      for i, val in arr2.mpairs: discard
+    )
+
   test "subscript":
     var arr = typedArray[String](10)
     for i in 0..<arr.len:
@@ -46,45 +52,72 @@ runtime: suite "TypedArray":
       arr[i] = gdstring $i
     for i in 0..<arr.len:
       check arr[i] == gdstring $i
+  test "typed functions":
+    var arr = typedArray[String](2)
+    arr.fill "Hello, "
+    arr.pushBack "world!"
+    check $arr.popFront == "Hello, "
+    check $arr[0] == "Hello, "
+    check $arr[1] == "world!"
+
 
 runtime: suite "PackedArray":
-  var bytes: PackedByteArray = packedByteArray()
+  var strs: PackedStringArray = packedStringArray()
 
   test "resizing":
-    check bytes.size == 0
-    check bytes.resize(8) == 0
-    check bytes.size == 8
+    check strs.size == 0
+    check strs.resize(8) == 0
+    check strs.size == 8
 
-    for i in 0..<bytes.size:
-      check bytes[i] == 0
+    for i in 0..<strs.size:
+      check strs[i] == gdstring()
 
   test "assignment":
-    for i in 0..<bytes.size:
-      bytes[i] = byte i
-    for i in 0..<bytes.size:
-      check bytes[i] == byte i
+    for i in 0..<strs.size:
+      strs[i] = gdstring $i
+    for i in 0..<strs.size:
+      check strs[i] == gdstring $i
 
   test "to seq":
-    let s: seq[byte] = bytes.toSeq
-    check s == @[byte 0, 1, 2, 3, 4, 5, 6, 7]
+    let s: seq[String] = strs.toSeq
+    check s == @[gdstring"0", gdstring"1", gdstring"2", gdstring"3", gdstring"4", gdstring"5", gdstring"6", gdstring"7"]
 
   test "mutable iteration":
-    for b in bytes.mitems:
-      b = 255
-      check b == 255
+    for b in strs.mitems:
+      b = gdstring "Hello, world!"
+      check b == gdstring "Hello, world!"
 
-    for i, b in bytes.mpairs:
-      b = byte i
-      check b == byte i
+    for i, b in strs.mpairs:
+      b = gdstring $i
+      check b == gdstring $i
 
   test "immutable iteration":
-    for i, b in bytes:
-      check b == byte i
+    for i, b in strs:
+      check b == gdstring $i
 
     var i: int
-    for b in bytes:
-      check b == byte i
+    for b in strs:
+      check b == gdstring $i
       inc i
+
+  test "contains(PackedInt32Array)":
+    var arr = packedInt32Array()
+    discard arr.resize(10)
+    for i, v in arr.mpairs:
+      v = int32 i
+    check arr.contains 9
+    check 1 in arr
+    check 11 notin arr
+
+  test "contains(PackedStringArray)":
+    var arr = packedStringArray()
+    discard arr.resize(10)
+    for i, v in arr.mpairs:
+      v = gdstring $i
+    check arr.contains "9"
+    check "1" in arr
+    check "hello" notin arr
+
 
 runtime: suite "String":
   test "to nim-string":

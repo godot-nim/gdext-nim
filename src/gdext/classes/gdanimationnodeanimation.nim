@@ -107,7 +107,3 @@ template `startOffset=`*(self: AnimationNodeAnimation; value) = self.setStartOff
 
 template loopMode*(self: AnimationNodeAnimation): untyped = self.getLoopMode()
 template `loopMode=`*(self: AnimationNodeAnimation; value) = self.setLoopMode(value)
-
-const AnimationNodeAnimation_vmap =
-  AnimationRootNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeAnimation]): Table[string, string] = AnimationNodeAnimation_vmap

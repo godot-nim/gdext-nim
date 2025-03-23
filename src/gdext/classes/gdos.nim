@@ -464,7 +464,3 @@ template `lowProcessorUsageModeSleepUsec=`*(self: OS; value) = self.setLowProces
 
 template deltaSmoothing*(self: OS): untyped = self.isDeltaSmoothingEnabled()
 template `deltaSmoothing=`*(self: OS; value) = self.setDeltaSmoothing(value)
-
-const OS_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OS]): Table[string, string] = OS_vmap

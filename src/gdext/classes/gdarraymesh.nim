@@ -38,7 +38,7 @@ proc getBlendShapeMode*(self: ArrayMesh): Mesh_BlendShapeMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Mesh_BlendShapeMode)
 
-proc addSurfaceFromArrays*(self: ArrayMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = TypedArray[Array](gdarray()); lods: Dictionary = dictionary(); flags: set[Mesh_ArrayFormat] = {}): void =
+proc addSurfaceFromArrays*(self: ArrayMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = typedArray[Array](); lods: Dictionary = dictionary(); flags: set[Mesh_ArrayFormat] = {}): void =
   expandMethodBind(className ArrayMesh, "add_surface_from_arrays", 1796411378)
   methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr flags])
 
@@ -140,7 +140,3 @@ template `customAabb=`*(self: ArrayMesh; value) = self.setCustomAabb(value)
 
 template shadowMesh*(self: ArrayMesh): untyped = self.getShadowMesh()
 template `shadowMesh=`*(self: ArrayMesh; value) = self.setShadowMesh(value)
-
-const ArrayMesh_vmap =
-  Mesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ArrayMesh]): Table[string, string] = ArrayMesh_vmap

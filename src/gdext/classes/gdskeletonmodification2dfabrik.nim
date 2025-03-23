@@ -69,7 +69,3 @@ template `targetNodepath=`*(self: SkeletonModification2DFABRIK; value) = self.se
 
 template fabrikDataChainLength*(self: SkeletonModification2DFABRIK): untyped = self.getFabrikDataChainLength()
 template `fabrikDataChainLength=`*(self: SkeletonModification2DFABRIK; value) = self.setFabrikDataChainLength(value)
-
-const SkeletonModification2DFABRIK_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DFABRIK]): Table[string, string] = SkeletonModification2DFABRIK_vmap

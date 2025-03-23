@@ -185,7 +185,3 @@ template `useDebanding=`*(self: ProceduralSkyMaterial; value) = self.setUseDeban
 
 template energyMultiplier*(self: ProceduralSkyMaterial): untyped = self.getEnergyMultiplier()
 template `energyMultiplier=`*(self: ProceduralSkyMaterial; value) = self.setEnergyMultiplier(value)
-
-const ProceduralSkyMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ProceduralSkyMaterial]): Table[string, string] = ProceduralSkyMaterial_vmap

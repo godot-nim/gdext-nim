@@ -52,7 +52,3 @@ template `bakeMask=`*(self: OccluderInstance3D; value) = self.setBakeMask(value)
 
 template bakeSimplificationDistance*(self: OccluderInstance3D): untyped = self.getBakeSimplificationDistance()
 template `bakeSimplificationDistance=`*(self: OccluderInstance3D; value) = self.setBakeSimplificationDistance(value)
-
-const OccluderInstance3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OccluderInstance3D]): Table[string, string] = OccluderInstance3D_vmap

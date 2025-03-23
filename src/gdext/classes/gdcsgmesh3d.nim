@@ -29,7 +29,3 @@ template `mesh=`*(self: CSGMesh3D; value) = self.setMesh(value)
 
 template material*(self: CSGMesh3D): untyped = self.getMaterial()
 template `material=`*(self: CSGMesh3D; value) = self.setMaterial(value)
-
-const CSGMesh3D_vmap =
-  CSGPrimitive3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGMesh3D]): Table[string, string] = CSGMesh3D_vmap

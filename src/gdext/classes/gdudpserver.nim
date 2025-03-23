@@ -56,7 +56,3 @@ proc getMaxPendingConnections*(self: UDPServer): int32 =
 
 template maxPendingConnections*(self: UDPServer): untyped = self.getMaxPendingConnections()
 template `maxPendingConnections=`*(self: UDPServer; value) = self.setMaxPendingConnections(value)
-
-const UDPServer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[UDPServer]): Table[string, string] = UDPServer_vmap

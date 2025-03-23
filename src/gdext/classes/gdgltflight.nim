@@ -115,7 +115,3 @@ template `innerConeAngle=`*(self: GLTFLight; value) = self.setInnerConeAngle(val
 
 template outerConeAngle*(self: GLTFLight): untyped = self.getOuterConeAngle()
 template `outerConeAngle=`*(self: GLTFLight; value) = self.setOuterConeAngle(value)
-
-const GLTFLight_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFLight]): Table[string, string] = GLTFLight_vmap

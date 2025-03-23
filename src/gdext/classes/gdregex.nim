@@ -26,11 +26,11 @@ proc search*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1)
   methodbind.ptrcall(self, [getPtr subject, getPtr offset, getPtr `end`], addr ret)
   (addr ret).decode_result(gdref RegExMatch)
 
-proc searchAll*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1): TypedArray[RegExMatch] =
+proc searchAll*(self: RegEx; subject: String; offset: int32 = 0; `end`: int32 = -1): TypedArray[gdref RegExMatch] =
   expandMethodBind(className RegEx, "search_all", 849021363)
-  var ret: encoded TypedArray[RegExMatch]
+  var ret: encoded TypedArray[gdref RegExMatch]
   methodbind.ptrcall(self, [getPtr subject, getPtr offset, getPtr `end`], addr ret)
-  (addr ret).decode_result(TypedArray[RegExMatch])
+  (addr ret).decode_result(TypedArray[gdref RegExMatch])
 
 proc sub*(self: RegEx; subject: String; replacement: String; all: bool = false; offset: int32 = 0; `end`: int32 = -1): String =
   expandMethodBind(className RegEx, "sub", 54019702)
@@ -61,7 +61,3 @@ proc getNames*(self: RegEx): PackedStringArray =
   var ret: encoded PackedStringArray
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
-
-const RegEx_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RegEx]): Table[string, string] = RegEx_vmap

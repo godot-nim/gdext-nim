@@ -16,7 +16,3 @@ proc getRadius*(self: GPUParticlesAttractorSphere3D): Float =
 
 template radius*(self: GPUParticlesAttractorSphere3D): untyped = self.getRadius()
 template `radius=`*(self: GPUParticlesAttractorSphere3D; value) = self.setRadius(value)
-
-const GPUParticlesAttractorSphere3D_vmap =
-  GPUParticlesAttractor3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesAttractorSphere3D]): Table[string, string] = GPUParticlesAttractorSphere3D_vmap

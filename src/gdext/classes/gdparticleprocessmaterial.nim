@@ -823,11 +823,7 @@ template `subEmitterAmountAtStart=`*(self: ParticleProcessMaterial; value) = sel
 template subEmitterKeepVelocity*(self: ParticleProcessMaterial): untyped = self.getSubEmitterKeepVelocity()
 template `subEmitterKeepVelocity=`*(self: ParticleProcessMaterial; value) = self.setSubEmitterKeepVelocity(value)
 
-const ParticleProcessMaterial_vmap =
-  Material.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ParticleProcessMaterial]): Table[string, string] = ParticleProcessMaterial_vmap
-
-proc emissionShapeChanged*(self: ParticleProcessMaterial): Error =
+proc call_emissionShapeChanged*(self: ParticleProcessMaterial): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("emission_shape_changed")

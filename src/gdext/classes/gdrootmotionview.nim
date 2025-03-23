@@ -68,7 +68,3 @@ template `radius=`*(self: RootMotionView; value) = self.setRadius(value)
 
 template zeroY*(self: RootMotionView): untyped = self.getZeroY()
 template `zeroY=`*(self: RootMotionView; value) = self.setZeroY(value)
-
-const RootMotionView_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RootMotionView]): Table[string, string] = RootMotionView_vmap

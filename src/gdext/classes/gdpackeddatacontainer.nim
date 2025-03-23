@@ -15,7 +15,3 @@ proc size*(self: PackedDataContainer): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const PackedDataContainer_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PackedDataContainer]): Table[string, string] = PackedDataContainer_vmap

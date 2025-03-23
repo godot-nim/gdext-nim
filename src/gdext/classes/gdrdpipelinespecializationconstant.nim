@@ -29,7 +29,3 @@ template `value=`*(self: RDPipelineSpecializationConstant; value) = self.setValu
 
 template constantId*(self: RDPipelineSpecializationConstant): untyped = self.getConstantId()
 template `constantId=`*(self: RDPipelineSpecializationConstant; value) = self.setConstantId(value)
-
-const RDPipelineSpecializationConstant_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineSpecializationConstant]): Table[string, string] = RDPipelineSpecializationConstant_vmap

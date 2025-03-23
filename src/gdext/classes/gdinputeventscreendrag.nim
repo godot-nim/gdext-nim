@@ -120,7 +120,3 @@ template `velocity=`*(self: InputEventScreenDrag; value) = self.setVelocity(valu
 
 template screenVelocity*(self: InputEventScreenDrag): untyped = self.getScreenVelocity()
 template `screenVelocity=`*(self: InputEventScreenDrag; value) = self.setScreenVelocity(value)
-
-const InputEventScreenDrag_vmap =
-  InputEventFromWindow.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventScreenDrag]): Table[string, string] = InputEventScreenDrag_vmap

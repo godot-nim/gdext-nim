@@ -13,7 +13,3 @@ proc getParam*(self: PinJoint3D; param: PinJoint3D_Param): Float =
   var ret: encoded Float
   methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Float)
-
-const PinJoint3D_vmap =
-  Joint3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PinJoint3D]): Table[string, string] = PinJoint3D_vmap

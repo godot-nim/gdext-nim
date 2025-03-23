@@ -33,7 +33,3 @@ proc loadFromString*(self: CryptoKey; stringKey: String; publicOnly: bool = fals
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr stringKey, getPtr publicOnly], addr ret)
   (addr ret).decode_result(Error)
-
-const CryptoKey_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CryptoKey]): Table[string, string] = CryptoKey_vmap

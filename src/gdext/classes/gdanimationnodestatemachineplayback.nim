@@ -55,7 +55,3 @@ proc getTravelPath*(self: AnimationNodeStateMachinePlayback): TypedArray[StringN
   var ret: encoded TypedArray[StringName]
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
-
-const AnimationNodeStateMachinePlayback_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeStateMachinePlayback]): Table[string, string] = AnimationNodeStateMachinePlayback_vmap

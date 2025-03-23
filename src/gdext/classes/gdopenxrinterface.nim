@@ -180,53 +180,49 @@ template `vrsMinRadius=`*(self: OpenXRInterface; value) = self.setVrsMinRadius(v
 template vrsStrength*(self: OpenXRInterface): untyped = self.getVrsStrength()
 template `vrsStrength=`*(self: OpenXRInterface; value) = self.setVrsStrength(value)
 
-const OpenXRInterface_vmap =
-  XRInterface.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRInterface]): Table[string, string] = OpenXRInterface_vmap
-
-proc sessionBegun*(self: OpenXRInterface): Error =
+proc call_sessionBegun*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_begun")
   self.emitSignal(signalname)
 
-proc sessionStopping*(self: OpenXRInterface): Error =
+proc call_sessionStopping*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_stopping")
   self.emitSignal(signalname)
 
-proc sessionFocussed*(self: OpenXRInterface): Error =
+proc call_sessionFocussed*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_focussed")
   self.emitSignal(signalname)
 
-proc sessionVisible*(self: OpenXRInterface): Error =
+proc call_sessionVisible*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_visible")
   self.emitSignal(signalname)
 
-proc sessionLossPending*(self: OpenXRInterface): Error =
+proc call_sessionLossPending*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_loss_pending")
   self.emitSignal(signalname)
 
-proc instanceExiting*(self: OpenXRInterface): Error =
+proc call_instanceExiting*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("instance_exiting")
   self.emitSignal(signalname)
 
-proc poseRecentered*(self: OpenXRInterface): Error =
+proc call_poseRecentered*(self: OpenXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pose_recentered")
   self.emitSignal(signalname)
 
-proc refreshRateChanged*(self: OpenXRInterface; refreshRate: Variant): Error =
+proc call_refreshRateChanged*(self: OpenXRInterface; refreshRate: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("refresh_rate_changed")

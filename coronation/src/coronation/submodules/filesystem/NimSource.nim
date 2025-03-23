@@ -14,7 +14,7 @@ type
     Dummy
   MetaData* = object
     enableWarning: tuple[
-      unusedImport: bool
+      unusedImport: bool = true
     ]
     flags: set[Flag]
   NimSource* = ref object of VirtualFile
@@ -35,6 +35,10 @@ proc nim*(moduleName: string): NimSource =
 
 proc dummy*(source: NimSource): NimSource =
   source.metadata.flags.incl Dummy
+  source
+
+proc disableUnusedImport*(source: NimSource): NimSource =
+  source.metadata.enableWarning.unusedImport = false
   source
 
 proc `import`*(source: NimSource; targets: varargs[NimSource]): NimSource =

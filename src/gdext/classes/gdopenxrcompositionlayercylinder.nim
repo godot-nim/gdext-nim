@@ -55,7 +55,3 @@ template `centralAngle=`*(self: OpenXRCompositionLayerCylinder; value) = self.se
 
 template fallbackSegments*(self: OpenXRCompositionLayerCylinder): untyped = self.getFallbackSegments()
 template `fallbackSegments=`*(self: OpenXRCompositionLayerCylinder; value) = self.setFallbackSegments(value)
-
-const OpenXRCompositionLayerCylinder_vmap =
-  OpenXRCompositionLayer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRCompositionLayerCylinder]): Table[string, string] = OpenXRCompositionLayerCylinder_vmap

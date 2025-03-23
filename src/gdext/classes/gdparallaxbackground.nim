@@ -81,7 +81,3 @@ template `scrollLimitEnd=`*(self: ParallaxBackground; value) = self.setLimitEnd(
 
 template scrollIgnoreCameraZoom*(self: ParallaxBackground): untyped = self.isIgnoreCameraZoom()
 template `scrollIgnoreCameraZoom=`*(self: ParallaxBackground; value) = self.setIgnoreCameraZoom(value)
-
-const ParallaxBackground_vmap =
-  CanvasLayer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ParallaxBackground]): Table[string, string] = ParallaxBackground_vmap

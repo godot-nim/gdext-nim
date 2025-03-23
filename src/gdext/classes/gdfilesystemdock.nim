@@ -16,66 +16,62 @@ proc removeResourceTooltipPlugin*(self: FileSystemDock; plugin: gdref EditorReso
   expandMethodBind(className FileSystemDock, "remove_resource_tooltip_plugin", 2258356838)
   methodbind.ptrcall(self, [getPtr plugin])
 
-const FileSystemDock_vmap =
-  VBoxContainer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FileSystemDock]): Table[string, string] = FileSystemDock_vmap
-
-proc inherit*(self: FileSystemDock; file: Variant): Error =
+proc call_inherit*(self: FileSystemDock; file: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("inherit")
   let args = [file]
   self.emitSignal(signalname, args)
 
-proc instantiate*(self: FileSystemDock; files: Variant): Error =
+proc call_instantiate*(self: FileSystemDock; files: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("instantiate")
   let args = [files]
   self.emitSignal(signalname, args)
 
-proc resourceRemoved*(self: FileSystemDock; resource: Variant): Error =
+proc call_resourceRemoved*(self: FileSystemDock; resource: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resource_removed")
   let args = [resource]
   self.emitSignal(signalname, args)
 
-proc fileRemoved*(self: FileSystemDock; file: Variant): Error =
+proc call_fileRemoved*(self: FileSystemDock; file: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("file_removed")
   let args = [file]
   self.emitSignal(signalname, args)
 
-proc folderRemoved*(self: FileSystemDock; folder: Variant): Error =
+proc call_folderRemoved*(self: FileSystemDock; folder: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("folder_removed")
   let args = [folder]
   self.emitSignal(signalname, args)
 
-proc filesMoved*(self: FileSystemDock; oldFile: Variant; newFile: Variant): Error =
+proc call_filesMoved*(self: FileSystemDock; oldFile: Variant; newFile: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("files_moved")
   let args = [oldFile, newFile]
   self.emitSignal(signalname, args)
 
-proc folderMoved*(self: FileSystemDock; oldFolder: Variant; newFolder: Variant): Error =
+proc call_folderMoved*(self: FileSystemDock; oldFolder: Variant; newFolder: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("folder_moved")
   let args = [oldFolder, newFolder]
   self.emitSignal(signalname, args)
 
-proc folderColorChanged*(self: FileSystemDock): Error =
+proc call_folderColorChanged*(self: FileSystemDock): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("folder_color_changed")
   self.emitSignal(signalname)
 
-proc displayModeChanged*(self: FileSystemDock): Error =
+proc call_displayModeChanged*(self: FileSystemDock): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("display_mode_changed")

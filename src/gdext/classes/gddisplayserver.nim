@@ -987,7 +987,3 @@ proc hasAdditionalOutputs*(self: DisplayServer): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const DisplayServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[DisplayServer]): Table[string, string] = DisplayServer_vmap

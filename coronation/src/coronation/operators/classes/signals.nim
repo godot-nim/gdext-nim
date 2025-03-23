@@ -26,7 +26,7 @@ proc weave_signals*(class: Class): Cloth =
     for signal in class.json.signals.get(@[]):
       let typedkey = ProcKey(
         kind: pkTemplate,
-        name: signal.name.scan.convert(ProcSym),
+        name: ProcSym "call_" & $signal.name.scan.convert(ProcSym),
         self: RenderableSelfArgument(typesym: class.typesym),
         args: signal.arguments.get(@[]).mapIt(it.convert),
         result: RenderableResult(typesym: TypeSym"Error"),

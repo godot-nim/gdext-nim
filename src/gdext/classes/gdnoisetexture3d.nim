@@ -102,7 +102,3 @@ template `colorRamp=`*(self: NoiseTexture3D; value) = self.setColorRamp(value)
 
 template noise*(self: NoiseTexture3D): untyped = self.getNoise()
 template `noise=`*(self: NoiseTexture3D; value) = self.setNoise(value)
-
-const NoiseTexture3D_vmap =
-  Texture3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NoiseTexture3D]): Table[string, string] = NoiseTexture3D_vmap

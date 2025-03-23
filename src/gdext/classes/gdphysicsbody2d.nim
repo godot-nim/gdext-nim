@@ -35,7 +35,3 @@ proc addCollisionExceptionWith*(self: PhysicsBody2D; body: Node): void =
 proc removeCollisionExceptionWith*(self: PhysicsBody2D; body: Node): void =
   expandMethodBind(className PhysicsBody2D, "remove_collision_exception_with", 1078189570)
   methodbind.ptrcall(self, [getPtr body])
-
-const PhysicsBody2D_vmap =
-  CollisionObject2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsBody2D]): Table[string, string] = PhysicsBody2D_vmap

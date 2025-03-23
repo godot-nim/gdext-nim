@@ -172,7 +172,3 @@ template `relativeIndex=`*(self: CharFXTransform; value) = self.setRelativeIndex
 
 template font*(self: CharFXTransform): untyped = self.getFont()
 template `font=`*(self: CharFXTransform; value) = self.setFont(value)
-
-const CharFXTransform_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CharFXTransform]): Table[string, string] = CharFXTransform_vmap

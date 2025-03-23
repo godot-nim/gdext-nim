@@ -42,7 +42,3 @@ template `borderWidth=`*(self: ReferenceRect; value) = self.setBorderWidth(value
 
 template editorOnly*(self: ReferenceRect): untyped = self.getEditorOnly()
 template `editorOnly=`*(self: ReferenceRect; value) = self.setEditorOnly(value)
-
-const ReferenceRect_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ReferenceRect]): Table[string, string] = ReferenceRect_vmap

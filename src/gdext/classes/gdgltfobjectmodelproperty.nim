@@ -111,7 +111,3 @@ template `jsonPointers=`*(self: GLTFObjectModelProperty; value) = self.setJsonPo
 
 template variantType*(self: GLTFObjectModelProperty): untyped = self.getVariantType()
 template `variantType=`*(self: GLTFObjectModelProperty; value) = self.setVariantType(value)
-
-const GLTFObjectModelProperty_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFObjectModelProperty]): Table[string, string] = GLTFObjectModelProperty_vmap

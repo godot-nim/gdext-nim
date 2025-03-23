@@ -57,7 +57,3 @@ proc getOwnCertificate*(self: TLSOptions): gdref X509Certificate =
   var ret: encoded gdref X509Certificate
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref X509Certificate)
-
-const TLSOptions_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TLSOptions]): Table[string, string] = TLSOptions_vmap

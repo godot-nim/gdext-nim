@@ -22,13 +22,13 @@ proc clear*(self: TranslationDomain): void =
   expandMethodBind(className TranslationDomain, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc translate*(self: TranslationDomain; message: StringName; context: StringName = stringName ""): StringName =
+proc translate*(self: TranslationDomain; message: StringName; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationDomain, "translate", 1829228469)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
-proc translatePlural*(self: TranslationDomain; message: StringName; messagePlural: StringName; n: int32; context: StringName = stringName ""): StringName =
+proc translatePlural*(self: TranslationDomain; message: StringName; messagePlural: StringName; n: int32; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationDomain, "translate_plural", 229954002)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr messagePlural, getPtr n, getPtr context], addr ret)
@@ -156,7 +156,3 @@ template `pseudolocalizationPrefix=`*(self: TranslationDomain; value) = self.set
 
 template pseudolocalizationSuffix*(self: TranslationDomain): untyped = self.getPseudolocalizationSuffix()
 template `pseudolocalizationSuffix=`*(self: TranslationDomain; value) = self.setPseudolocalizationSuffix(value)
-
-const TranslationDomain_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TranslationDomain]): Table[string, string] = TranslationDomain_vmap

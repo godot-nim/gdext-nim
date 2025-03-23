@@ -221,7 +221,3 @@ template `dampingCompression=`*(self: VehicleWheel3D; value) = self.setDampingCo
 
 template dampingRelaxation*(self: VehicleWheel3D): untyped = self.getDampingRelaxation()
 template `dampingRelaxation=`*(self: VehicleWheel3D; value) = self.setDampingRelaxation(value)
-
-const VehicleWheel3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VehicleWheel3D]): Table[string, string] = VehicleWheel3D_vmap

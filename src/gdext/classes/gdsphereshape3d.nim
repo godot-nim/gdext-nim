@@ -16,7 +16,3 @@ proc getRadius*(self: SphereShape3D): Float =
 
 template radius*(self: SphereShape3D): untyped = self.getRadius()
 template `radius=`*(self: SphereShape3D; value) = self.setRadius(value)
-
-const SphereShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SphereShape3D]): Table[string, string] = SphereShape3D_vmap

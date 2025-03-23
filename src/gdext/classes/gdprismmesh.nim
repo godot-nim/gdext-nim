@@ -68,7 +68,3 @@ template `subdivideHeight=`*(self: PrismMesh; value) = self.setSubdivideHeight(v
 
 template subdivideDepth*(self: PrismMesh): untyped = self.getSubdivideDepth()
 template `subdivideDepth=`*(self: PrismMesh; value) = self.setSubdivideDepth(value)
-
-const PrismMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PrismMesh]): Table[string, string] = PrismMesh_vmap

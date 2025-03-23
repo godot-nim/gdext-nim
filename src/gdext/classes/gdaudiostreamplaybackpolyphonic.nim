@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
 
-proc playStream*(self: AudioStreamPlaybackPolyphonic; stream: gdref AudioStream; fromOffset: Float = 0; volumeDb: Float = 0; pitchScale: Float = 1.0; playbackType: AudioServer_PlaybackType = playbackTypeDefault; bus: StringName = &"Master"): int64 =
+proc playStream*(self: AudioStreamPlaybackPolyphonic; stream: gdref AudioStream; fromOffset: Float = 0; volumeDb: Float = 0; pitchScale: Float = 1.0; playbackType: AudioServer_PlaybackType = playbackTypeDefault; bus: StringName = stringName"Master"): int64 =
   expandMethodBind(className AudioStreamPlaybackPolyphonic, "play_stream", 1846744803)
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr stream, getPtr fromOffset, getPtr volumeDb, getPtr pitchScale, getPtr playbackType, getPtr bus], addr ret)
@@ -27,7 +27,3 @@ proc isStreamPlaying*(self: AudioStreamPlaybackPolyphonic; stream: int64): bool 
 proc stopStream*(self: AudioStreamPlaybackPolyphonic; stream: int64): void =
   expandMethodBind(className AudioStreamPlaybackPolyphonic, "stop_stream", 1286410249)
   methodbind.ptrcall(self, [getPtr stream])
-
-const AudioStreamPlaybackPolyphonic_vmap =
-  AudioStreamPlayback.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlaybackPolyphonic]): Table[string, string] = AudioStreamPlaybackPolyphonic_vmap

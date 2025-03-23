@@ -666,18 +666,14 @@ proc getDebugEnabled*(self: NavigationServer2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-const NavigationServer2D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationServer2D]): Table[string, string] = NavigationServer2D_vmap
-
-proc mapChanged*(self: NavigationServer2D; map: Variant): Error =
+proc call_mapChanged*(self: NavigationServer2D; map: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("map_changed")
   let args = [map]
   self.emitSignal(signalname, args)
 
-proc navigationDebugChanged*(self: NavigationServer2D): Error =
+proc call_navigationDebugChanged*(self: NavigationServer2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("navigation_debug_changed")

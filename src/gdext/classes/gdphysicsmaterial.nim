@@ -55,7 +55,3 @@ template `bounce=`*(self: PhysicsMaterial; value) = self.setBounce(value)
 
 template absorbent*(self: PhysicsMaterial): untyped = self.isAbsorbent()
 template `absorbent=`*(self: PhysicsMaterial; value) = self.setAbsorbent(value)
-
-const PhysicsMaterial_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsMaterial]): Table[string, string] = PhysicsMaterial_vmap

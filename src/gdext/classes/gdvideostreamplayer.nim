@@ -179,11 +179,7 @@ template `streamPosition=`*(self: VideoStreamPlayer; value) = self.setStreamPosi
 template bus*(self: VideoStreamPlayer): untyped = self.getBus()
 template `bus=`*(self: VideoStreamPlayer; value) = self.setBus(value)
 
-const VideoStreamPlayer_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VideoStreamPlayer]): Table[string, string] = VideoStreamPlayer_vmap
-
-proc finished*(self: VideoStreamPlayer): Error =
+proc call_finished*(self: VideoStreamPlayer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

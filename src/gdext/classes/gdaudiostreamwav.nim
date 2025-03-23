@@ -112,7 +112,3 @@ template `mixRate=`*(self: AudioStreamWAV; value) = self.setMixRate(value)
 
 template stereo*(self: AudioStreamWAV): untyped = self.isStereo()
 template `stereo=`*(self: AudioStreamWAV; value) = self.setStereo(value)
-
-const AudioStreamWAV_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamWAV]): Table[string, string] = AudioStreamWAV_vmap

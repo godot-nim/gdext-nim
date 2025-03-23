@@ -128,45 +128,41 @@ template `cameraLockedToOrigin=`*(self: XRServer; value) = self.setCameraLockedT
 template primaryInterface*(self: XRServer): untyped = self.getPrimaryInterface()
 template `primaryInterface=`*(self: XRServer; value) = self.setPrimaryInterface(value)
 
-const XRServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRServer]): Table[string, string] = XRServer_vmap
-
-proc referenceFrameChanged*(self: XRServer): Error =
+proc call_referenceFrameChanged*(self: XRServer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("reference_frame_changed")
   self.emitSignal(signalname)
 
-proc interfaceAdded*(self: XRServer; interfaceName: Variant): Error =
+proc call_interfaceAdded*(self: XRServer; interfaceName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("interface_added")
   let args = [interfaceName]
   self.emitSignal(signalname, args)
 
-proc interfaceRemoved*(self: XRServer; interfaceName: Variant): Error =
+proc call_interfaceRemoved*(self: XRServer; interfaceName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("interface_removed")
   let args = [interfaceName]
   self.emitSignal(signalname, args)
 
-proc trackerAdded*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
+proc call_trackerAdded*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tracker_added")
   let args = [trackerName, `type`]
   self.emitSignal(signalname, args)
 
-proc trackerUpdated*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
+proc call_trackerUpdated*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tracker_updated")
   let args = [trackerName, `type`]
   self.emitSignal(signalname, args)
 
-proc trackerRemoved*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
+proc call_trackerRemoved*(self: XRServer; trackerName: Variant; `type`: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tracker_removed")

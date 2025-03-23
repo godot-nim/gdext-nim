@@ -15,7 +15,7 @@ type PropTestNodePragmas* {.gdsync.} = ptr object of Node
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport: Appearance.placeholder("placeholder here...").}: string
   string_with_export_dir* {.gdexport: Appearance.dir.}: string = "res://nim"
-  string_with_export_file* {.gdexport: Appearance.file.}: string = "res://nim/bootstrap.nim"
+  string_with_export_file* {.gdexport: Appearance.file("*.nim", "*.nims").}: string = "res://nim/bootstrap.nim"
   string_with_export_global_dir* {.gdexport: Appearance.globalDir.}: string = "/dev"
   string_with_export_global_file* {.gdexport: Appearance.globalFile.}: string = "/dev/null"
   int_with_export_enum*
@@ -74,10 +74,10 @@ gdexport "string_with_export_through_proc",
     get_string_with_export_through_proc,
     set_string_with_export_through_proc
 
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_2d_navigation", Appearance.flags2dNavigation
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_2d_physics", Appearance.flags2dPhysics
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_2d_render", Appearance.flags2dRender
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_3d_navigation", Appearance.flags3dNavigation
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_3d_physics", Appearance.flags3dPhysics
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_3d_render", Appearance.flags3dRender
-gdexport PropTestNodePragmas.int_with_export_flags_some_layers, alias "int_with_export_flags_avoidance", Appearance.flagsAvoidance
+gdexport "int_with_export_flags_2d_navigation", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags2dNavigation
+gdexport "int_with_export_flags_2d_physics", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags2dPhysics
+gdexport "int_with_export_flags_2d_render", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags2dRender
+gdexport "int_with_export_flags_3d_navigation", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags3dNavigation
+gdexport "int_with_export_flags_3d_physics", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags3dPhysics
+gdexport "int_with_export_flags_3d_render", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flags3dRender
+gdexport "int_with_export_flags_avoidance", PropTestNodePragmas.int_with_export_flags_some_layers, Appearance.flagsAvoidance

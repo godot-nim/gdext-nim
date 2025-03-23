@@ -16,7 +16,3 @@ proc isUsingSync*(self: AnimationNodeSync): bool =
 
 template sync*(self: AnimationNodeSync): untyped = self.isUsingSync()
 template `sync=`*(self: AnimationNodeSync; value) = self.setUseSync(value)
-
-const AnimationNodeSync_vmap =
-  AnimationNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeSync]): Table[string, string] = AnimationNodeSync_vmap

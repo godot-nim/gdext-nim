@@ -29,7 +29,3 @@ template `parameterName=`*(self: VisualShaderNodeParameter; value) = self.setPar
 
 template qualifier*(self: VisualShaderNodeParameter): untyped = self.getQualifier()
 template `qualifier=`*(self: VisualShaderNodeParameter; value) = self.setQualifier(value)
-
-const VisualShaderNodeParameter_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParameter]): Table[string, string] = VisualShaderNodeParameter_vmap

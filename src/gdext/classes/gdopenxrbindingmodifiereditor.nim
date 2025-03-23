@@ -14,11 +14,7 @@ proc setup*(self: OpenXRBindingModifierEditor; actionMap: gdref OpenXRActionMap;
   expandMethodBind(className OpenXRBindingModifierEditor, "setup", 1284787389)
   methodbind.ptrcall(self, [getPtr actionMap, getPtr bindingModifier])
 
-const OpenXRBindingModifierEditor_vmap =
-  PanelContainer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRBindingModifierEditor]): Table[string, string] = OpenXRBindingModifierEditor_vmap
-
-proc bindingModifierRemoved*(self: OpenXRBindingModifierEditor; bindingModifierEditor: Variant): Error =
+proc call_bindingModifierRemoved*(self: OpenXRBindingModifierEditor; bindingModifierEditor: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("binding_modifier_removed")

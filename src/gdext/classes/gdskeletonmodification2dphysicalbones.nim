@@ -28,17 +28,13 @@ proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = typedArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
   methodbind.ptrcall(self, [getPtr bones])
 
-proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = typedArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
   methodbind.ptrcall(self, [getPtr bones])
 
 template physicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): untyped = self.getPhysicalBoneChainLength()
 template `physicalBoneChainLength=`*(self: SkeletonModification2DPhysicalBones; value) = self.setPhysicalBoneChainLength(value)
-
-const SkeletonModification2DPhysicalBones_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DPhysicalBones]): Table[string, string] = SkeletonModification2DPhysicalBones_vmap

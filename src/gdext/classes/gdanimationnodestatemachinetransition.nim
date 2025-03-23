@@ -121,11 +121,7 @@ template `advanceCondition=`*(self: AnimationNodeStateMachineTransition; value) 
 template advanceExpression*(self: AnimationNodeStateMachineTransition): untyped = self.getAdvanceExpression()
 template `advanceExpression=`*(self: AnimationNodeStateMachineTransition; value) = self.setAdvanceExpression(value)
 
-const AnimationNodeStateMachineTransition_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeStateMachineTransition]): Table[string, string] = AnimationNodeStateMachineTransition_vmap
-
-proc advanceConditionChanged*(self: AnimationNodeStateMachineTransition): Error =
+proc call_advanceConditionChanged*(self: AnimationNodeStateMachineTransition): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("advance_condition_changed")

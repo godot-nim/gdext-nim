@@ -146,7 +146,3 @@ template `lineWidth=`*(self: RDPipelineRasterizationState; value) = self.setLine
 
 template patchControlPoints*(self: RDPipelineRasterizationState): untyped = self.getPatchControlPoints()
 template `patchControlPoints=`*(self: RDPipelineRasterizationState; value) = self.setPatchControlPoints(value)
-
-const RDPipelineRasterizationState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineRasterizationState]): Table[string, string] = RDPipelineRasterizationState_vmap

@@ -7,9 +7,21 @@
     <img src="nimble.svg" height="24">
   </a>
 
+   [Documentation][9] | [Coding Guide][4] | [Examples][1] | Templates | [Forum][5] | [Source][8]
+
 </div>
 
 ---
+
+## Quick start
+
+```shell
+nimble install gdext
+mkdir testproject && cd $_
+touch project.godot
+gdextwiz new-extension MyExtension
+gdextwiz run
+```
 
 ## Features
 
@@ -93,3 +105,5 @@ nimble uninstall gdext
 [5]: https://github.com/godot-nim/gdext-nim/discussions
 [6]: https://github.com/godot-nim/gdext-nim/discussions/categories/ideas
 [7]: https://github.com/godot-nim/.github/issues/5
+[8]: https://github.com/godot-nim/gdext-nim
+[9]: https://godot-nim.github.io/gdext-nim/gdext.html

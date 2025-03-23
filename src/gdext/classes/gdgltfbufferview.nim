@@ -87,7 +87,3 @@ template `indices=`*(self: GLTFBufferView; value) = self.setIndices(value)
 
 template vertexAttributes*(self: GLTFBufferView): untyped = self.getVertexAttributes()
 template `vertexAttributes=`*(self: GLTFBufferView; value) = self.setVertexAttributes(value)
-
-const GLTFBufferView_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFBufferView]): Table[string, string] = GLTFBufferView_vmap

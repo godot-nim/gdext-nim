@@ -11,7 +11,3 @@ proc addCommand*(self: EditorCommandPalette; commandName: String; keyName: Strin
 proc removeCommand*(self: EditorCommandPalette; keyName: String): void =
   expandMethodBind(className EditorCommandPalette, "remove_command", 83702148)
   methodbind.ptrcall(self, [getPtr keyName])
-
-const EditorCommandPalette_vmap =
-  ConfirmationDialog.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorCommandPalette]): Table[string, string] = EditorCommandPalette_vmap

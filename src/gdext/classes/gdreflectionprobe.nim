@@ -198,7 +198,3 @@ template `ambientColor=`*(self: ReflectionProbe; value) = self.setAmbientColor(v
 
 template ambientColorEnergy*(self: ReflectionProbe): untyped = self.getAmbientColorEnergy()
 template `ambientColorEnergy=`*(self: ReflectionProbe; value) = self.setAmbientColorEnergy(value)
-
-const ReflectionProbe_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ReflectionProbe]): Table[string, string] = ReflectionProbe_vmap

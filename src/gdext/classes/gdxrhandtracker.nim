@@ -79,7 +79,3 @@ template `hasTrackingData=`*(self: XRHandTracker; value) = self.setHasTrackingDa
 
 template handTrackingSource*(self: XRHandTracker): untyped = self.getHandTrackingSource()
 template `handTrackingSource=`*(self: XRHandTracker; value) = self.setHandTrackingSource(value)
-
-const XRHandTracker_vmap =
-  XRPositionalTracker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRHandTracker]): Table[string, string] = XRHandTracker_vmap

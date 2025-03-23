@@ -1,10 +1,10 @@
 import gdext
-import gdext/core/gdclass
+import gdext/private/gdinterface
 import gdext/classes/gdNode
 
 import ./gdsignalpublisher
 
-type SignalSubscriber* = ptr object of Node
+type SignalSubscriber* {.tool.} = ptr object of Node
   publisher*: SignalPublisher
 
 gdexport "publisher",

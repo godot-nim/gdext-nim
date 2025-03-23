@@ -3,7 +3,3 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodevarying; export gdvisualshadernodevarying
-
-const VisualShaderNodeVaryingGetter_vmap =
-  VisualShaderNodeVarying.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeVaryingGetter]): Table[string, string] = VisualShaderNodeVaryingGetter_vmap

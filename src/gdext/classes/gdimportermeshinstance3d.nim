@@ -133,7 +133,3 @@ template `visibilityRangeEndMargin=`*(self: ImporterMeshInstance3D; value) = sel
 
 template visibilityRangeFadeMode*(self: ImporterMeshInstance3D): untyped = self.getVisibilityRangeFadeMode()
 template `visibilityRangeFadeMode=`*(self: ImporterMeshInstance3D; value) = self.setVisibilityRangeFadeMode(value)
-
-const ImporterMeshInstance3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ImporterMeshInstance3D]): Table[string, string] = ImporterMeshInstance3D_vmap

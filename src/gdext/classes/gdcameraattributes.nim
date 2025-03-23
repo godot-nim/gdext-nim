@@ -68,7 +68,3 @@ template `autoExposureScale=`*(self: CameraAttributes; value) = self.setAutoExpo
 
 template autoExposureSpeed*(self: CameraAttributes): untyped = self.getAutoExposureSpeed()
 template `autoExposureSpeed=`*(self: CameraAttributes; value) = self.setAutoExposureSpeed(value)
-
-const CameraAttributes_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CameraAttributes]): Table[string, string] = CameraAttributes_vmap

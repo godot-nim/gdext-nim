@@ -3,7 +3,7 @@ import gdext/classes/gdNode
 import std/random
 random.randomize()
 
-type SignalPublisher* = ptr object of Node
+type SignalPublisher* {.tool.} = ptr object of Node
   key: int
 
 proc send*(self: SignalPublisher; key: int): Error {.signal, gdsync.}

@@ -5,14 +5,14 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method estimateCost*(self: AStar2D; fromId: int64; endId: int64): Float {.base.} = (discard)
-proc estimateCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AStar2D](p_instance).estimateCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
-template estimateCost_bind*(_: typedesc[AStar2D]): ClassCallVirtual = estimateCost
+proc registerVirtual_estimateCost*[T: AStar2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStar2D](p_instance).estimateCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
 
 method computeCost*(self: AStar2D; fromId: int64; toId: int64): Float {.base.} = (discard)
-proc computeCost(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AStar2D](p_instance).computeCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
-template computeCost_bind*(_: typedesc[AStar2D]): ClassCallVirtual = computeCost
+proc registerVirtual_computeCost*[T: AStar2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStar2D](p_instance).computeCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
 
 proc getAvailablePointId*(self: AStar2D): int64 =
   expandMethodBind(className AStar2D, "get_available_point_id", 3905245786)
@@ -133,10 +133,3 @@ proc getIdPath*(self: AStar2D; fromId: int64; toId: int64; allowPartialPath: boo
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr fromId, getPtr toId, getPtr allowPartialPath], addr ret)
   (addr ret).decode_result(PackedInt64Array)
-
-const AStar2D_vmap =
-  RefCounted.vmap.concat toTable {
-    "estimatecost" : "_estimate_cost",
-    "computecost" : "_compute_cost",
-    }
-template vmap*(_: typedesc[AStar2D]): Table[string, string] = AStar2D_vmap

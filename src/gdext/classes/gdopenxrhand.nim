@@ -68,7 +68,3 @@ template `skeletonRig=`*(self: OpenXRHand; value) = self.setSkeletonRig(value)
 
 template boneUpdate*(self: OpenXRHand): untyped = self.getBoneUpdate()
 template `boneUpdate=`*(self: OpenXRHand; value) = self.setBoneUpdate(value)
-
-const OpenXRHand_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRHand]): Table[string, string] = OpenXRHand_vmap

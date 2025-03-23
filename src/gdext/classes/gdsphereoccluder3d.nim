@@ -16,7 +16,3 @@ proc getRadius*(self: SphereOccluder3D): Float =
 
 template radius*(self: SphereOccluder3D): untyped = self.getRadius()
 template `radius=`*(self: SphereOccluder3D; value) = self.setRadius(value)
-
-const SphereOccluder3D_vmap =
-  Occluder3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SphereOccluder3D]): Table[string, string] = SphereOccluder3D_vmap

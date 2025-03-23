@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdnode3d; export gdnode3d
 
 method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
-proc getAabb(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[VisualInstance3D](p_instance).getAabb().encode(r_ret)
-template getAabb_bind*(_: typedesc[VisualInstance3D]): ClassCallVirtual = getAabb
+proc registerVirtual_getAabb*[T: VisualInstance3D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[VisualInstance3D](p_instance).getAabb().encode(r_ret)
 
 proc setBase*(self: VisualInstance3D; base: RID): void =
   expandMethodBind(className VisualInstance3D, "set_base", 2722037293)
@@ -79,9 +79,3 @@ template `sortingOffset=`*(self: VisualInstance3D; value) = self.setSortingOffse
 
 template sortingUseAabbCenter*(self: VisualInstance3D): untyped = self.isSortingUseAabbCenter()
 template `sortingUseAabbCenter=`*(self: VisualInstance3D; value) = self.setSortingUseAabbCenter(value)
-
-const VisualInstance3D_vmap =
-  Node3D.vmap.concat toTable {
-    "getaabb" : "_get_aabb",
-    }
-template vmap*(_: typedesc[VisualInstance3D]): Table[string, string] = VisualInstance3D_vmap

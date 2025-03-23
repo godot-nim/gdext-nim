@@ -43,7 +43,3 @@ proc surfaceEnd*(self: ImmediateMesh): void =
 proc clearSurfaces*(self: ImmediateMesh): void =
   expandMethodBind(className ImmediateMesh, "clear_surfaces", 3218959716)
   methodbind.ptrcall(self, [])
-
-const ImmediateMesh_vmap =
-  Mesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ImmediateMesh]): Table[string, string] = ImmediateMesh_vmap

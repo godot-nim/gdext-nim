@@ -42,7 +42,3 @@ template `originalScene=`*(self: MissingNode; value) = self.setOriginalScene(val
 
 template recordingProperties*(self: MissingNode): untyped = self.isRecordingProperties()
 template `recordingProperties=`*(self: MissingNode; value) = self.setRecordingProperties(value)
-
-const MissingNode_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MissingNode]): Table[string, string] = MissingNode_vmap

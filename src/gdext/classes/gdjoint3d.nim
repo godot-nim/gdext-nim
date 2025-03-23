@@ -61,7 +61,3 @@ template `solverPriority=`*(self: Joint3D; value) = self.setSolverPriority(value
 
 template excludeNodesFromCollision*(self: Joint3D): untyped = self.getExcludeNodesFromCollision()
 template `excludeNodesFromCollision=`*(self: Joint3D; value) = self.setExcludeNodesFromCollision(value)
-
-const Joint3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Joint3D]): Table[string, string] = Joint3D_vmap

@@ -16,7 +16,3 @@ proc getConstant*(self: VisualShaderNodeVec2Constant): Vector2 =
 
 template constant*(self: VisualShaderNodeVec2Constant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeVec2Constant; value) = self.setConstant(value)
-
-const VisualShaderNodeVec2Constant_vmap =
-  VisualShaderNodeConstant.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeVec2Constant]): Table[string, string] = VisualShaderNodeVec2Constant_vmap

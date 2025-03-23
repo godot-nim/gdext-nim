@@ -175,25 +175,21 @@ template `hexVisible=`*(self: ColorPicker; value) = self.setHexVisible(value)
 template presetsVisible*(self: ColorPicker): untyped = self.arePresetsVisible()
 template `presetsVisible=`*(self: ColorPicker; value) = self.setPresetsVisible(value)
 
-const ColorPicker_vmap =
-  VBoxContainer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ColorPicker]): Table[string, string] = ColorPicker_vmap
-
-proc colorChanged*(self: ColorPicker; color: Variant): Error =
+proc call_colorChanged*(self: ColorPicker; color: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("color_changed")
   let args = [color]
   self.emitSignal(signalname, args)
 
-proc presetAdded*(self: ColorPicker; color: Variant): Error =
+proc call_presetAdded*(self: ColorPicker; color: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("preset_added")
   let args = [color]
   self.emitSignal(signalname, args)
 
-proc presetRemoved*(self: ColorPicker; color: Variant): Error =
+proc call_presetRemoved*(self: ColorPicker; color: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("preset_removed")

@@ -55,7 +55,3 @@ template `rings=`*(self: TorusMesh; value) = self.setRings(value)
 
 template ringSegments*(self: TorusMesh): untyped = self.getRingSegments()
 template `ringSegments=`*(self: TorusMesh; value) = self.setRingSegments(value)
-
-const TorusMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TorusMesh]): Table[string, string] = TorusMesh_vmap

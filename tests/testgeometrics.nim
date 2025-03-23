@@ -10,13 +10,14 @@ suite "Geometrics":
     check ([0f32, 1, 2] * 3f64) == [0f32, 3, 6]
 
   test "fmaps":
-    check ((v012, v345).fmap(a + b)) == [3f, 5, 7]
+    check `+`.fmap(v012, v345) == [3f, 5, 7]
+    check `+`.fmap([0f, 1, 2], [3f, 4, 5]) == [3f, 5, 7]
 
   test "fold":
-    check v012.all(a >= 0)
-    check not v012.all(a >= 1)
-    check v012.any(a >= 2)
-    check not v012.any(a >= 3)
+    check `>=`.all(v012, 0f)
+    check not `>=`.all(v012, 1f)
+    check `>=`.any(v012, 2f)
+    check not `>=`.any(v012, 3f)
 
   test "Vector [+-*/] Vector":
     check v012 + v345 == [3f, 5, 7]

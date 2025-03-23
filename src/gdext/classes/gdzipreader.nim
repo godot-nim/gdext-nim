@@ -33,7 +33,3 @@ proc fileExists*(self: ZIPReader; path: String; caseSensitive: bool = true): boo
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
   (addr ret).decode_result(bool)
-
-const ZIPReader_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ZIPReader]): Table[string, string] = ZIPReader_vmap

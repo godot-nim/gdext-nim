@@ -46,18 +46,14 @@ proc getPrimaryInterface*(self: TextServerManager): gdref TextServer =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref TextServer)
 
-const TextServerManager_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextServerManager]): Table[string, string] = TextServerManager_vmap
-
-proc interfaceAdded*(self: TextServerManager; interfaceName: Variant): Error =
+proc call_interfaceAdded*(self: TextServerManager; interfaceName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("interface_added")
   let args = [interfaceName]
   self.emitSignal(signalname, args)
 
-proc interfaceRemoved*(self: TextServerManager; interfaceName: Variant): Error =
+proc call_interfaceRemoved*(self: TextServerManager; interfaceName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("interface_removed")

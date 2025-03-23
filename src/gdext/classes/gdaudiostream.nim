@@ -5,49 +5,49 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback {.base.} = (discard)
-proc instantiatePlayback(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).instantiatePlayback().encode(r_ret)
-template instantiatePlayback_bind*(_: typedesc[AudioStream]): ClassCallVirtual = instantiatePlayback
+proc registerVirtual_instantiatePlayback*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).instantiatePlayback().encode(r_ret)
 
 method getStreamName*(self: AudioStream): String {.base.} = (discard)
-proc getStreamName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getStreamName().encode(r_ret)
-template getStreamName_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getStreamName
+proc registerVirtual_getStreamName*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_stream_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getStreamName().encode(r_ret)
 
 method getLength*(self: AudioStream): float64 {.base.} = (discard)
-proc getLength(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getLength().encode(r_ret)
-template getLength_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getLength
+proc registerVirtual_getLength*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_length"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getLength().encode(r_ret)
 
 method isMonophonic*(self: AudioStream): bool {.base.} = (discard)
-proc isMonophonic(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).isMonophonic().encode(r_ret)
-template isMonophonic_bind*(_: typedesc[AudioStream]): ClassCallVirtual = isMonophonic
+proc registerVirtual_isMonophonic*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_monophonic"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).isMonophonic().encode(r_ret)
 
 method getBpm*(self: AudioStream): float64 {.base.} = (discard)
-proc getBpm(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getBpm().encode(r_ret)
-template getBpm_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getBpm
+proc registerVirtual_getBpm*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_bpm"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getBpm().encode(r_ret)
 
 method getBeatCount*(self: AudioStream): int32 {.base.} = (discard)
-proc getBeatCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getBeatCount().encode(r_ret)
-template getBeatCount_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getBeatCount
+proc registerVirtual_getBeatCount*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_beat_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getBeatCount().encode(r_ret)
 
 method getParameterList*(self: AudioStream): TypedArray[Dictionary] {.base.} = (discard)
-proc getParameterList(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getParameterList().encode(r_ret)
-template getParameterList_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getParameterList
+proc registerVirtual_getParameterList*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getParameterList().encode(r_ret)
 
 method hasLoop*(self: AudioStream): bool {.base.} = (discard)
-proc hasLoop(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).hasLoop().encode(r_ret)
-template hasLoop_bind*(_: typedesc[AudioStream]): ClassCallVirtual = hasLoop
+proc registerVirtual_hasLoop*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_has_loop"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).hasLoop().encode(r_ret)
 
 method getBarBeats*(self: AudioStream): int32 {.base.} = (discard)
-proc getBarBeats(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AudioStream](p_instance).getBarBeats().encode(r_ret)
-template getBarBeats_bind*(_: typedesc[AudioStream]): ClassCallVirtual = getBarBeats
+proc registerVirtual_getBarBeats*[T: AudioStream](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_bar_beats"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AudioStream](p_instance).getBarBeats().encode(r_ret)
 
 proc getLength*(self: AudioStream): float64 =
   expandMethodBind(className AudioStream, "get_length", 1740695150)
@@ -85,21 +85,7 @@ proc isMetaStream*(self: AudioStream): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-const AudioStream_vmap =
-  Resource.vmap.concat toTable {
-    "instantiateplayback" : "_instantiate_playback",
-    "getstreamname" : "_get_stream_name",
-    "getlength" : "_get_length",
-    "ismonophonic" : "_is_monophonic",
-    "getbpm" : "_get_bpm",
-    "getbeatcount" : "_get_beat_count",
-    "getparameterlist" : "_get_parameter_list",
-    "hasloop" : "_has_loop",
-    "getbarbeats" : "_get_bar_beats",
-    }
-template vmap*(_: typedesc[AudioStream]): Table[string, string] = AudioStream_vmap
-
-proc parameterListChanged*(self: AudioStream): Error =
+proc call_parameterListChanged*(self: AudioStream): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("parameter_list_changed")

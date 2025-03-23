@@ -107,7 +107,3 @@ template `controllerNumber=`*(self: InputEventMIDI; value) = self.setControllerN
 
 template controllerValue*(self: InputEventMIDI): untyped = self.getControllerValue()
 template `controllerValue=`*(self: InputEventMIDI; value) = self.setControllerValue(value)
-
-const InputEventMIDI_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventMIDI]): Table[string, string] = InputEventMIDI_vmap

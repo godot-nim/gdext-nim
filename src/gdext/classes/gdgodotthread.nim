@@ -37,7 +37,3 @@ proc waitToFinish*(self: GodotThread): Variant =
 proc setThreadSafetyChecksEnabled*(_: typedesc[GodotThread]; enabled: bool): void =
   expandMethodBind(className GodotThread, "set_thread_safety_checks_enabled", 2586408642)
   methodbind.ptrcall([getPtr enabled])
-
-const GodotThread_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GodotThread]): Table[string, string] = GodotThread_vmap

@@ -28,7 +28,3 @@ template `softness=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJo
 
 template relaxation*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(4))
 template `relaxation=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(4), value)
-
-const ConeTwistJoint3D_vmap =
-  Joint3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConeTwistJoint3D]): Table[string, string] = ConeTwistJoint3D_vmap

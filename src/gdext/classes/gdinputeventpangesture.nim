@@ -16,7 +16,3 @@ proc getDelta*(self: InputEventPanGesture): Vector2 =
 
 template delta*(self: InputEventPanGesture): untyped = self.getDelta()
 template `delta=`*(self: InputEventPanGesture; value) = self.setDelta(value)
-
-const InputEventPanGesture_vmap =
-  InputEventGesture.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventPanGesture]): Table[string, string] = InputEventPanGesture_vmap

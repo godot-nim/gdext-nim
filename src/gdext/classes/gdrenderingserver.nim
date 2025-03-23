@@ -10,13 +10,13 @@ proc texture2DCreate*(self: RenderingServer; image: gdref Image): RID =
   methodbind.ptrcall(self, [getPtr image], addr ret)
   (addr ret).decode_result(RID)
 
-proc texture2DLayeredCreate*(self: RenderingServer; layers: TypedArray[Image]; layeredType: RenderingServer_TextureLayeredType): RID =
+proc texture2DLayeredCreate*(self: RenderingServer; layers: TypedArray[gdref Image]; layeredType: RenderingServer_TextureLayeredType): RID =
   expandMethodBind(className RenderingServer, "texture_2d_layered_create", 913689023)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr layers, getPtr layeredType], addr ret)
   (addr ret).decode_result(RID)
 
-proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: TypedArray[Image]): RID =
+proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: TypedArray[gdref Image]): RID =
   expandMethodBind(className RenderingServer, "texture_3d_create", 4036838706)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr format, getPtr width, getPtr height, getPtr depth, getPtr mipmaps, getPtr data], addr ret)
@@ -38,7 +38,7 @@ proc texture2DUpdate*(self: RenderingServer; texture: RID; image: gdref Image; l
   expandMethodBind(className RenderingServer, "texture_2d_update", 999539803)
   methodbind.ptrcall(self, [getPtr texture, getPtr image, getPtr layer])
 
-proc texture3DUpdate*(self: RenderingServer; texture: RID; data: TypedArray[Image]): void =
+proc texture3DUpdate*(self: RenderingServer; texture: RID; data: TypedArray[gdref Image]): void =
   expandMethodBind(className RenderingServer, "texture_3d_update", 684822712)
   methodbind.ptrcall(self, [getPtr texture, getPtr data])
 
@@ -76,11 +76,11 @@ proc texture2DLayerGet*(self: RenderingServer; texture: RID; layer: int32): gdre
   methodbind.ptrcall(self, [getPtr texture, getPtr layer], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc texture3DGet*(self: RenderingServer; texture: RID): TypedArray[Image] =
+proc texture3DGet*(self: RenderingServer; texture: RID): TypedArray[gdref Image] =
   expandMethodBind(className RenderingServer, "texture_3d_get", 2684255073)
-  var ret: encoded TypedArray[Image]
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, [getPtr texture], addr ret)
-  (addr ret).decode_result(TypedArray[Image])
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 proc textureReplace*(self: RenderingServer; texture: RID; byTexture: RID): void =
   expandMethodBind(className RenderingServer, "texture_replace", 395945892)
@@ -1740,11 +1740,11 @@ proc instancesCullConvex*(self: RenderingServer; convex: TypedArray[Plane]; scen
   methodbind.ptrcall(self, [getPtr convex, getPtr scenario], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
-proc bakeRenderUv2*(self: RenderingServer; base: RID; materialOverrides: TypedArray[RID]; imageSize: Vector2i): TypedArray[Image] =
+proc bakeRenderUv2*(self: RenderingServer; base: RID; materialOverrides: TypedArray[RID]; imageSize: Vector2i): TypedArray[gdref Image] =
   expandMethodBind(className RenderingServer, "bake_render_uv2", 1904608558)
-  var ret: encoded TypedArray[Image]
+  var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, [getPtr base, getPtr materialOverrides, getPtr imageSize], addr ret)
-  (addr ret).decode_result(TypedArray[Image])
+  (addr ret).decode_result(TypedArray[gdref Image])
 
 proc canvasCreate*(self: RenderingServer): RID =
   expandMethodBind(className RenderingServer, "canvas_create", 529393457)
@@ -2355,17 +2355,13 @@ proc hasFeature*(self: RenderingServer; feature: RenderingServer_Features): bool
 template renderLoopEnabled*(self: RenderingServer): untyped = self.isRenderLoopEnabled()
 template `renderLoopEnabled=`*(self: RenderingServer; value) = self.setRenderLoopEnabled(value)
 
-const RenderingServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderingServer]): Table[string, string] = RenderingServer_vmap
-
-proc framePreDraw*(self: RenderingServer): Error =
+proc call_framePreDraw*(self: RenderingServer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_pre_draw")
   self.emitSignal(signalname)
 
-proc framePostDraw*(self: RenderingServer): Error =
+proc call_framePostDraw*(self: RenderingServer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_post_draw")

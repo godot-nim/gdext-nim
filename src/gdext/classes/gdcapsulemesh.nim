@@ -55,7 +55,3 @@ template `radialSegments=`*(self: CapsuleMesh; value) = self.setRadialSegments(v
 
 template rings*(self: CapsuleMesh): untyped = self.getRings()
 template `rings=`*(self: CapsuleMesh; value) = self.setRings(value)
-
-const CapsuleMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CapsuleMesh]): Table[string, string] = CapsuleMesh_vmap

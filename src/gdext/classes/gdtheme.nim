@@ -360,7 +360,3 @@ template `defaultFont=`*(self: Theme; value) = self.setDefaultFont(value)
 
 template defaultFontSize*(self: Theme): untyped = self.getDefaultFontSize()
 template `defaultFontSize=`*(self: Theme; value) = self.setDefaultFontSize(value)
-
-const Theme_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Theme]): Table[string, string] = Theme_vmap

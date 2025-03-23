@@ -1,5 +1,3 @@
-{.warning[UnusedImport]:off.}
-
 type Side* {.size: sizeof(clong).} = enum
   sideLeft = 0
   sideTop = 1

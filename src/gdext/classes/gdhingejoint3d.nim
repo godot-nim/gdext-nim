@@ -23,7 +23,3 @@ proc getFlag*(self: HingeJoint3D; flag: HingeJoint3D_Flag): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr flag], addr ret)
   (addr ret).decode_result(bool)
-
-const HingeJoint3D_vmap =
-  Joint3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[HingeJoint3D]): Table[string, string] = HingeJoint3D_vmap

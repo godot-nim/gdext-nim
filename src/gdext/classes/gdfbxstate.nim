@@ -16,7 +16,3 @@ proc setAllowGeometryHelperNodes*(self: FBXState; allow: bool): void =
 
 template allowGeometryHelperNodes*(self: FBXState): untyped = self.getAllowGeometryHelperNodes()
 template `allowGeometryHelperNodes=`*(self: FBXState; value) = self.setAllowGeometryHelperNodes(value)
-
-const FBXState_vmap =
-  GLTFState.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FBXState]): Table[string, string] = FBXState_vmap

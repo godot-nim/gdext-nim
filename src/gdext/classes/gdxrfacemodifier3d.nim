@@ -29,7 +29,3 @@ template `faceTracker=`*(self: XRFaceModifier3D; value) = self.setFaceTracker(va
 
 template target*(self: XRFaceModifier3D): untyped = self.getTarget()
 template `target=`*(self: XRFaceModifier3D; value) = self.setTarget(value)
-
-const XRFaceModifier3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRFaceModifier3D]): Table[string, string] = XRFaceModifier3D_vmap

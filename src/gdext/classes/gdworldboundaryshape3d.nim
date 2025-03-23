@@ -16,7 +16,3 @@ proc getPlane*(self: WorldBoundaryShape3D): Plane =
 
 template plane*(self: WorldBoundaryShape3D): untyped = self.getPlane()
 template `plane=`*(self: WorldBoundaryShape3D; value) = self.setPlane(value)
-
-const WorldBoundaryShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WorldBoundaryShape3D]): Table[string, string] = WorldBoundaryShape3D_vmap

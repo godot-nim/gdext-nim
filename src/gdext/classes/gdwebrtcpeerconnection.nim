@@ -72,25 +72,21 @@ proc getSignalingState*(self: WebRTCPeerConnection): WebRTCPeerConnection_Signal
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(WebRTCPeerConnection_SignalingState)
 
-const WebRTCPeerConnection_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebRTCPeerConnection]): Table[string, string] = WebRTCPeerConnection_vmap
-
-proc sessionDescriptionCreated*(self: WebRTCPeerConnection; `type`: Variant; sdp: Variant): Error =
+proc call_sessionDescriptionCreated*(self: WebRTCPeerConnection; `type`: Variant; sdp: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_description_created")
   let args = [`type`, sdp]
   self.emitSignal(signalname, args)
 
-proc iceCandidateCreated*(self: WebRTCPeerConnection; media: Variant; index: Variant; name: Variant): Error =
+proc call_iceCandidateCreated*(self: WebRTCPeerConnection; media: Variant; index: Variant; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("ice_candidate_created")
   let args = [media, index, name]
   self.emitSignal(signalname, args)
 
-proc dataChannelReceived*(self: WebRTCPeerConnection; channel: Variant): Error =
+proc call_dataChannelReceived*(self: WebRTCPeerConnection; channel: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("data_channel_received")

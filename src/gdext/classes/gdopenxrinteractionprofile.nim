@@ -66,7 +66,3 @@ template `bindings=`*(self: OpenXRInteractionProfile; value) = self.setBindings(
 
 template bindingModifiers*(self: OpenXRInteractionProfile): untyped = self.getBindingModifiers()
 template `bindingModifiers=`*(self: OpenXRInteractionProfile; value) = self.setBindingModifiers(value)
-
-const OpenXRInteractionProfile_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRInteractionProfile]): Table[string, string] = OpenXRInteractionProfile_vmap

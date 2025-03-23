@@ -94,7 +94,3 @@ template `capTop=`*(self: CylinderMesh; value) = self.setCapTop(value)
 
 template capBottom*(self: CylinderMesh): untyped = self.isCapBottom()
 template `capBottom=`*(self: CylinderMesh; value) = self.setCapBottom(value)
-
-const CylinderMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CylinderMesh]): Table[string, string] = CylinderMesh_vmap

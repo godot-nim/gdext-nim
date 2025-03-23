@@ -61,7 +61,3 @@ template `vertical=`*(self: FlowContainer; value) = self.setVertical(value)
 
 template reverseFill*(self: FlowContainer): untyped = self.isReverseFill()
 template `reverseFill=`*(self: FlowContainer; value) = self.setReverseFill(value)
-
-const FlowContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FlowContainer]): Table[string, string] = FlowContainer_vmap

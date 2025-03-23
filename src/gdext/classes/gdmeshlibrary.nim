@@ -123,7 +123,3 @@ proc getLastUnusedItemId*(self: MeshLibrary): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-const MeshLibrary_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MeshLibrary]): Table[string, string] = MeshLibrary_vmap

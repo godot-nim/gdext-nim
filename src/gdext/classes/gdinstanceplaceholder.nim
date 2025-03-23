@@ -21,7 +21,3 @@ proc getInstancePath*(self: InstancePlaceholder): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-const InstancePlaceholder_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InstancePlaceholder]): Table[string, string] = InstancePlaceholder_vmap

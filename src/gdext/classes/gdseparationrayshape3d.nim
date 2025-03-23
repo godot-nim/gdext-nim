@@ -29,7 +29,3 @@ template `length=`*(self: SeparationRayShape3D; value) = self.setLength(value)
 
 template slideOnSlope*(self: SeparationRayShape3D): untyped = self.getSlideOnSlope()
 template `slideOnSlope=`*(self: SeparationRayShape3D; value) = self.setSlideOnSlope(value)
-
-const SeparationRayShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SeparationRayShape3D]): Table[string, string] = SeparationRayShape3D_vmap

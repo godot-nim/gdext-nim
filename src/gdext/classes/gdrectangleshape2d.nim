@@ -16,7 +16,3 @@ proc getSize*(self: RectangleShape2D): Vector2 =
 
 template size*(self: RectangleShape2D): untyped = self.getSize()
 template `size=`*(self: RectangleShape2D; value) = self.setSize(value)
-
-const RectangleShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RectangleShape2D]): Table[string, string] = RectangleShape2D_vmap

@@ -17,7 +17,3 @@ proc tryWait*(self: Semaphore): bool =
 proc post*(self: Semaphore; count: int32 = 1): void =
   expandMethodBind(className Semaphore, "post", 1667783136)
   methodbind.ptrcall(self, [getPtr count])
-
-const Semaphore_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Semaphore]): Table[string, string] = Semaphore_vmap

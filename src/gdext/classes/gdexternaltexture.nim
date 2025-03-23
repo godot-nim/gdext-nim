@@ -20,7 +20,3 @@ proc setExternalBufferId*(self: ExternalTexture; externalBufferId: uint64): void
 
 template size*(self: ExternalTexture): untyped = self.getSize()
 template `size=`*(self: ExternalTexture; value) = self.setSize(value)
-
-const ExternalTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ExternalTexture]): Table[string, string] = ExternalTexture_vmap

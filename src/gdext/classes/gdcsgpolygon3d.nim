@@ -224,7 +224,3 @@ template `smoothFaces=`*(self: CSGPolygon3D; value) = self.setSmoothFaces(value)
 
 template material*(self: CSGPolygon3D): untyped = self.getMaterial()
 template `material=`*(self: CSGPolygon3D; value) = self.setMaterial(value)
-
-const CSGPolygon3D_vmap =
-  CSGPrimitive3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGPolygon3D]): Table[string, string] = CSGPolygon3D_vmap

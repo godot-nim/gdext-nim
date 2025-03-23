@@ -57,7 +57,3 @@ proc isEmpty*(self: TileMapPattern): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-const TileMapPattern_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileMapPattern]): Table[string, string] = TileMapPattern_vmap

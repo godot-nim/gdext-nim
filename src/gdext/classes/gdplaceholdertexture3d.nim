@@ -16,7 +16,3 @@ proc getSize*(self: PlaceholderTexture3D): Vector3i =
 
 template size*(self: PlaceholderTexture3D): untyped = self.getSize()
 template `size=`*(self: PlaceholderTexture3D; value) = self.setSize(value)
-
-const PlaceholderTexture3D_vmap =
-  Texture3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PlaceholderTexture3D]): Table[string, string] = PlaceholderTexture3D_vmap

@@ -160,7 +160,3 @@ template `memberKeywordColors=`*(self: CodeHighlighter; value) = self.setMemberK
 
 template colorRegions*(self: CodeHighlighter): untyped = self.getColorRegions()
 template `colorRegions=`*(self: CodeHighlighter; value) = self.setColorRegions(value)
-
-const CodeHighlighter_vmap =
-  SyntaxHighlighter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CodeHighlighter]): Table[string, string] = CodeHighlighter_vmap

@@ -87,7 +87,3 @@ template `bindingModifiers=`*(self: OpenXRIPBinding; value) = self.setBindingMod
 
 template paths*(self: OpenXRIPBinding): untyped = self.getPaths()
 template `paths=`*(self: OpenXRIPBinding; value) = self.setPaths(value)
-
-const OpenXRIPBinding_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRIPBinding]): Table[string, string] = OpenXRIPBinding_vmap

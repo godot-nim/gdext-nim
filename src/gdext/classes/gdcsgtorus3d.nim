@@ -81,7 +81,3 @@ template `smoothFaces=`*(self: CSGTorus3D; value) = self.setSmoothFaces(value)
 
 template material*(self: CSGTorus3D): untyped = self.getMaterial()
 template `material=`*(self: CSGTorus3D; value) = self.setMaterial(value)
-
-const CSGTorus3D_vmap =
-  CSGPrimitive3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGTorus3D]): Table[string, string] = CSGTorus3D_vmap

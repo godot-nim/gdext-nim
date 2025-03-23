@@ -16,7 +16,3 @@ proc getSize*(self: QuadOccluder3D): Vector2 =
 
 template size*(self: QuadOccluder3D): untyped = self.getSize()
 template `size=`*(self: QuadOccluder3D; value) = self.setSize(value)
-
-const QuadOccluder3D_vmap =
-  Occluder3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[QuadOccluder3D]): Table[string, string] = QuadOccluder3D_vmap

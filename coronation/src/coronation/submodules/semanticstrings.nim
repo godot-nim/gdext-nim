@@ -82,6 +82,12 @@ proc convert*(s: string; _: typedesc[TypeSym]): TypeSym =
     .mapIt(it.typeConv)
     .join("_")
 
+proc convert*(ss: WordRope; _: typedesc[TypeSym]): TypeSym =
+  var str = newStringOfCap(ss.total)
+  for i, w in ss.words:
+    str.add: w.pascal
+  TypeSym str
+
 proc convert*(ss: WordRope; _: typedesc[VariableSym]): VariableSym =
   var str = newStringOfCap(ss.total)
   for i, w in ss.words:

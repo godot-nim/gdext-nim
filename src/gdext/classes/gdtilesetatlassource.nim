@@ -230,7 +230,3 @@ template `textureRegionSize=`*(self: TileSetAtlasSource; value) = self.setTextur
 
 template useTexturePadding*(self: TileSetAtlasSource): untyped = self.getUseTexturePadding()
 template `useTexturePadding=`*(self: TileSetAtlasSource; value) = self.setUseTexturePadding(value)
-
-const TileSetAtlasSource_vmap =
-  TileSetSource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileSetAtlasSource]): Table[string, string] = TileSetAtlasSource_vmap

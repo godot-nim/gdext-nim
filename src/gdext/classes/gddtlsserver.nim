@@ -15,7 +15,3 @@ proc takeConnection*(self: DTLSServer; udpPeer: gdref PacketPeerUDP): gdref Pack
   var ret: encoded gdref PacketPeerDTLS
   methodbind.ptrcall(self, [getPtr udpPeer], addr ret)
   (addr ret).decode_result(gdref PacketPeerDTLS)
-
-const DTLSServer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[DTLSServer]): Table[string, string] = DTLSServer_vmap

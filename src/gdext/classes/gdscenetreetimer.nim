@@ -17,11 +17,7 @@ proc getTimeLeft*(self: SceneTreeTimer): float64 =
 template timeLeft*(self: SceneTreeTimer): untyped = self.getTimeLeft()
 template `timeLeft=`*(self: SceneTreeTimer; value) = self.setTimeLeft(value)
 
-const SceneTreeTimer_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SceneTreeTimer]): Table[string, string] = SceneTreeTimer_vmap
-
-proc timeout*(self: SceneTreeTimer): Error =
+proc call_timeout*(self: SceneTreeTimer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("timeout")

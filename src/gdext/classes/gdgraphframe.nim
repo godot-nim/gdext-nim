@@ -88,11 +88,7 @@ template `tintColorEnabled=`*(self: GraphFrame; value) = self.setTintColorEnable
 template tintColor*(self: GraphFrame): untyped = self.getTintColor()
 template `tintColor=`*(self: GraphFrame; value) = self.setTintColor(value)
 
-const GraphFrame_vmap =
-  GraphElement.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GraphFrame]): Table[string, string] = GraphFrame_vmap
-
-proc autoshrinkChanged*(self: GraphFrame): Error =
+proc call_autoshrinkChanged*(self: GraphFrame): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("autoshrink_changed")

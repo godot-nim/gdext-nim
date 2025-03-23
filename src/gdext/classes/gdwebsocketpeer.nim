@@ -171,7 +171,3 @@ template `maxQueuedPackets=`*(self: WebSocketPeer; value) = self.setMaxQueuedPac
 
 template heartbeatInterval*(self: WebSocketPeer): untyped = self.getHeartbeatInterval()
 template `heartbeatInterval=`*(self: WebSocketPeer; value) = self.setHeartbeatInterval(value)
-
-const WebSocketPeer_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebSocketPeer]): Table[string, string] = WebSocketPeer_vmap

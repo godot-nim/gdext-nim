@@ -57,7 +57,3 @@ proc constantTimeCompare*(self: Crypto; trusted: PackedByteArray; received: Pack
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr trusted, getPtr received], addr ret)
   (addr ret).decode_result(bool)
-
-const Crypto_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Crypto]): Table[string, string] = Crypto_vmap

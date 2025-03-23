@@ -9,7 +9,3 @@ proc getRef*(self: WeakRef): Variant =
   var ret: encoded Variant
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Variant)
-
-const WeakRef_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WeakRef]): Table[string, string] = WeakRef_vmap

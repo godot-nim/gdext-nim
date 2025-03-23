@@ -4,15 +4,15 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc setFallbacks*(self: Font; fallbacks: TypedArray[Font]): void =
+proc setFallbacks*(self: Font; fallbacks: TypedArray[gdref Font]): void =
   expandMethodBind(className Font, "set_fallbacks", 381264803)
   methodbind.ptrcall(self, [getPtr fallbacks])
 
-proc getFallbacks*(self: Font): TypedArray[Font] =
+proc getFallbacks*(self: Font): TypedArray[gdref Font] =
   expandMethodBind(className Font, "get_fallbacks", 3995934104)
-  var ret: encoded TypedArray[Font]
+  var ret: encoded TypedArray[gdref Font]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Font])
+  (addr ret).decode_result(TypedArray[gdref Font])
 
 proc findVariation*(self: Font; variationCoordinates: Dictionary; faceIndex: int32 = 0; strength: Float = 0.0; transform: Transform2D = transform2D(); spacingTop: int32 = 0; spacingBottom: int32 = 0; spacingSpace: int32 = 0; spacingGlyph: int32 = 0; baselineOffset: Float = 0.0): RID =
   expandMethodBind(className Font, "find_variation", 2553855095)
@@ -198,7 +198,3 @@ proc getFaceCount*(self: Font): int64 =
 
 template fallbacks*(self: Font): untyped = self.getFallbacks()
 template `fallbacks=`*(self: Font; value) = self.setFallbacks(value)
-
-const Font_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Font]): Table[string, string] = Font_vmap

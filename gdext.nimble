@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.7.0"
+version       = "0.8.0"
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
@@ -18,8 +18,8 @@ import strformat
 var upstream = "https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.4-stable/gdextension/extension_api.json"
 
 task generate, "Generate extension API from the specified source. Remember all manual changes under src/ will be deleted.":
-  rmDir "src/classes"
-  rmDir "src/gen"
+  rmDir "src/gdext/classes"
+  rmDir "src/gdext/gen"
 
   withDir "coronation":
     exec &"nimble run -- --apisource:{upstream} --outdir:../src"
@@ -39,3 +39,6 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, "nimble test"
     report version, "gdextwiz run-editor testproject/editor"
   echo "All tests passed!"
+
+task docgen, "Generate project documentation":
+  exec "nim doc --project --index:on -o:docs -d:docgen src/gdext"

@@ -458,7 +458,3 @@ template `tileSize=`*(self: TileSet; value) = self.setTileSize(value)
 
 template uvClipping*(self: TileSet): untyped = self.isUvClipping()
 template `uvClipping=`*(self: TileSet; value) = self.setUvClipping(value)
-
-const TileSet_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TileSet]): Table[string, string] = TileSet_vmap
