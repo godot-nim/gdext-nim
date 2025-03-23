@@ -208,20 +208,25 @@ var implicitRegistrations* {.compileTime.}: array[InitializationLevel, seq[NimNo
 var registered: seq[StringName]
 var plugins: seq[StringName]
 proc register*(T: typedesc) =
-  let cn = className(T)
-  if cn in registered: return
+  when T is SomeEngineClass:
+    discard
+  else:
+    once:
+      register T.Super
+      let cn = className(T)
+      let info = T.creationInfo(false, false, true)
+      ClassDB.registerExtensionClass(cn, className(T.Super), addr info)
+      processExports T
+      invoke Contract[T]
+      for name, vmethod in T.Super.vmethods.pairs:
+        discard T.vmethods.hasKeyOrPut(name, vmethod)
+      when T is EditorPlugin:
+        interface_Editor_addPlugin addr cn
+        plugins.add cn
+      registered.add cn
 
-  let info = T.creationInfo(false, false, true)
-  ClassDB.registerExtensionClass(cn, className(T.Super), addr info)
-  processExports T
-  invoke Contract[T]
-  when T is EditorPlugin:
-    interface_Editor_addPlugin addr cn
-    plugins.add cn
-  registered.add cn
-
-  when Assistance.genEditorHelp and T.hasCustomPragma(description):
-    docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
+      when Assistance.genEditorHelp and T.hasCustomPragma(description):
+        docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
 proc unregisterAll* =
   for i in countdown(plugins.high, 0):
