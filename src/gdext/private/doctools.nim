@@ -3,6 +3,7 @@ import gdext/buildconf
 when Assistance.genEditorHelp:
   import gdext/private/gdinterface
   import gdext/builtinindex
+  import gdext/stringtools
 
   import std/[strformat, strutils, tables]
 
