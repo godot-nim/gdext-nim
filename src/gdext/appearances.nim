@@ -3,7 +3,7 @@ from std/strutils import join, strip, find, removeSuffix
 from std/sequtils import concat, mapIt, toSeq
 
 import gdext/private/gdinterface
-import gdext/core/userclass/propertyinfo
+import gdext/private/propertyinfo
 import gdext/private/macros
 import gdext/builtinindex
 import gdext/stringtools

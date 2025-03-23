@@ -4,7 +4,7 @@ import gdext/builtinindex
 import gdext/stringtools
 import gdext/private/gdinterface
 import gdext/private/macros
-import gdext/core/userclass/propertyinfo
+import gdext/private/propertyinfo
 import gdext/private/internalbridge
 import gdext/utils/debugging
 import gdext/classes/gdNode

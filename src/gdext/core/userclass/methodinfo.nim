@@ -3,9 +3,9 @@ import std/tables
 import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/private/typeshift
+import gdext/private/propertyinfo
 import gdext/builtinindex
 
-import propertyinfo
 
 type
   Arg* = tuple

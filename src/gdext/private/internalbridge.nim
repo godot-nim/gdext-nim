@@ -4,7 +4,7 @@ import gdext/buildconf
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/macros
-import gdext/core/userclass/propertyinfo
+import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/utils/[debugging]
 import gdext/core/userclass/procs
