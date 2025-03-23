@@ -92,7 +92,3 @@ template `depthFar=`*(self: GLTFCamera; value) = self.setDepthFar(value)
 
 template depthNear*(self: GLTFCamera): untyped = self.getDepthNear()
 template `depthNear=`*(self: GLTFCamera; value) = self.setDepthNear(value)
-
-const GLTFCamera_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFCamera]): Table[string, string] = GLTFCamera_vmap

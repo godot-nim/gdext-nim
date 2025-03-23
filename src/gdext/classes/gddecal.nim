@@ -168,7 +168,3 @@ template `distanceFadeLength=`*(self: Decal; value) = self.setDistanceFadeLength
 
 template cullMask*(self: Decal): untyped = self.getCullMask()
 template `cullMask=`*(self: Decal; value) = self.setCullMask(value)
-
-const Decal_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Decal]): Table[string, string] = Decal_vmap

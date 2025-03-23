@@ -49,7 +49,3 @@ template `hasTrackingData=`*(self: XRBodyTracker; value) = self.setHasTrackingDa
 
 template bodyFlags*(self: XRBodyTracker): untyped = self.getBodyFlags()
 template `bodyFlags=`*(self: XRBodyTracker; value) = self.setBodyFlags(value)
-
-const XRBodyTracker_vmap =
-  XRPositionalTracker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRBodyTracker]): Table[string, string] = XRBodyTracker_vmap

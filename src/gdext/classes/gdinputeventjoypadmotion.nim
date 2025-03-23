@@ -29,7 +29,3 @@ template `axis=`*(self: InputEventJoypadMotion; value) = self.setAxis(value)
 
 template axisValue*(self: InputEventJoypadMotion): untyped = self.getAxisValue()
 template `axisValue=`*(self: InputEventJoypadMotion; value) = self.setAxisValue(value)
-
-const InputEventJoypadMotion_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventJoypadMotion]): Table[string, string] = InputEventJoypadMotion_vmap

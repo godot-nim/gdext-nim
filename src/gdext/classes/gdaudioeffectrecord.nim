@@ -32,7 +32,3 @@ proc getRecording*(self: AudioEffectRecord): gdref AudioStreamWAV =
 
 template format*(self: AudioEffectRecord): untyped = self.getFormat()
 template `format=`*(self: AudioEffectRecord; value) = self.setFormat(value)
-
-const AudioEffectRecord_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectRecord]): Table[string, string] = AudioEffectRecord_vmap

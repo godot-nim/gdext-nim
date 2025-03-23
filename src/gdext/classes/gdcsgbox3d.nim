@@ -29,7 +29,3 @@ template `size=`*(self: CSGBox3D; value) = self.setSize(value)
 
 template material*(self: CSGBox3D): untyped = self.getMaterial()
 template `material=`*(self: CSGBox3D; value) = self.setMaterial(value)
-
-const CSGBox3D_vmap =
-  CSGPrimitive3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGBox3D]): Table[string, string] = CSGBox3D_vmap

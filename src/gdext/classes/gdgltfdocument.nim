@@ -104,7 +104,3 @@ template `lossyQuality=`*(self: GLTFDocument; value) = self.setLossyQuality(valu
 
 template rootNodeMode*(self: GLTFDocument): untyped = self.getRootNodeMode()
 template `rootNodeMode=`*(self: GLTFDocument; value) = self.setRootNodeMode(value)
-
-const GLTFDocument_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFDocument]): Table[string, string] = GLTFDocument_vmap

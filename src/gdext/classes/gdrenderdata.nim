@@ -27,7 +27,3 @@ proc getCameraAttributes*(self: RenderData): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
-
-const RenderData_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderData]): Table[string, string] = RenderData_vmap

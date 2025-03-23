@@ -9,7 +9,3 @@ proc createPlaceholder*(self: Cubemap): gdref Resource =
   var ret: encoded gdref Resource
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Resource)
-
-const Cubemap_vmap =
-  ImageTextureLayered.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Cubemap]): Table[string, string] = Cubemap_vmap

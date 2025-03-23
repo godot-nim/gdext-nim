@@ -68,7 +68,3 @@ template `thickness=`*(self: StyleBoxLine; value) = self.setThickness(value)
 
 template vertical*(self: StyleBoxLine): untyped = self.isVertical()
 template `vertical=`*(self: StyleBoxLine; value) = self.setVertical(value)
-
-const StyleBoxLine_vmap =
-  StyleBox.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StyleBoxLine]): Table[string, string] = StyleBoxLine_vmap

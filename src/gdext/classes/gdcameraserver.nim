@@ -16,11 +16,11 @@ proc getFeedCount*(self: CameraServer): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc feeds*(self: CameraServer): TypedArray[CameraFeed] =
+proc feeds*(self: CameraServer): TypedArray[gdref CameraFeed] =
   expandMethodBind(className CameraServer, "feeds", 2915620761)
-  var ret: encoded TypedArray[CameraFeed]
+  var ret: encoded TypedArray[gdref CameraFeed]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[CameraFeed])
+  (addr ret).decode_result(TypedArray[gdref CameraFeed])
 
 proc addFeed*(self: CameraServer; feed: gdref CameraFeed): void =
   expandMethodBind(className CameraServer, "add_feed", 3204782488)
@@ -30,18 +30,14 @@ proc removeFeed*(self: CameraServer; feed: gdref CameraFeed): void =
   expandMethodBind(className CameraServer, "remove_feed", 3204782488)
   methodbind.ptrcall(self, [getPtr feed])
 
-const CameraServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CameraServer]): Table[string, string] = CameraServer_vmap
-
-proc cameraFeedAdded*(self: CameraServer; id: Variant): Error =
+proc call_cameraFeedAdded*(self: CameraServer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("camera_feed_added")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc cameraFeedRemoved*(self: CameraServer; id: Variant): Error =
+proc call_cameraFeedRemoved*(self: CameraServer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("camera_feed_removed")

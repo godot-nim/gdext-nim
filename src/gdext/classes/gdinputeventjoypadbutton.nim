@@ -36,7 +36,3 @@ template `pressure=`*(self: InputEventJoypadButton; value) = self.setPressure(va
 
 template pressed*(self: InputEventJoypadButton): untyped = self.isPressed()
 template `pressed=`*(self: InputEventJoypadButton; value) = self.setPressed(value)
-
-const InputEventJoypadButton_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventJoypadButton]): Table[string, string] = InputEventJoypadButton_vmap

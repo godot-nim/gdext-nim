@@ -300,11 +300,7 @@ template `emulateMouseFromTouch=`*(self: Input; value) = self.setEmulateMouseFro
 template emulateTouchFromMouse*(self: Input): untyped = self.isEmulatingTouchFromMouse()
 template `emulateTouchFromMouse=`*(self: Input; value) = self.setEmulateTouchFromMouse(value)
 
-const Input_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Input]): Table[string, string] = Input_vmap
-
-proc joyConnectionChanged*(self: Input; device: Variant; connected: Variant): Error =
+proc call_joyConnectionChanged*(self: Input; device: Variant; connected: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("joy_connection_changed")

@@ -29,7 +29,3 @@ template `radius=`*(self: SpringBoneCollisionSphere3D; value) = self.setRadius(v
 
 template inside*(self: SpringBoneCollisionSphere3D): untyped = self.isInside()
 template `inside=`*(self: SpringBoneCollisionSphere3D; value) = self.setInside(value)
-
-const SpringBoneCollisionSphere3D_vmap =
-  SpringBoneCollision3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpringBoneCollisionSphere3D]): Table[string, string] = SpringBoneCollisionSphere3D_vmap

@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdnode; export gdnode
 
 method postProcessKeyValue*(self: AnimationMixer; animation: gdref Animation; track: int32; value: Variant; objectId: uint64; objectSubIdx: int32): Variant {.base.} = (discard)
-proc postProcessKeyValue(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[AnimationMixer](p_instance).postProcessKeyValue(p_args[0].decode(gdref Animation), p_args[1].decode(int32), p_args[2].decode(Variant), p_args[3].decode(uint64), p_args[4].decode(int32)).encode(r_ret)
-template postProcessKeyValue_bind*(_: typedesc[AnimationMixer]): ClassCallVirtual = postProcessKeyValue
+proc registerVirtual_postProcessKeyValue*[T: AnimationMixer](Self: typedesc[T]) =
+  Self.vmethods[stringName"_post_process_key_value"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AnimationMixer](p_instance).postProcessKeyValue(p_args[0].decode(gdref Animation), p_args[1].decode(int32), p_args[2].decode(Variant), p_args[3].decode(uint64), p_args[4].decode(int32)).encode(r_ret)
 
 proc addAnimationLibrary*(self: AnimationMixer; name: StringName; library: gdref AnimationLibrary): Error =
   expandMethodBind(className AnimationMixer, "add_animation_library", 618909818)
@@ -249,51 +249,45 @@ template `callbackModeMethod=`*(self: AnimationMixer; value) = self.setCallbackM
 template callbackModeDiscrete*(self: AnimationMixer): untyped = self.getCallbackModeDiscrete()
 template `callbackModeDiscrete=`*(self: AnimationMixer; value) = self.setCallbackModeDiscrete(value)
 
-const AnimationMixer_vmap =
-  Node.vmap.concat toTable {
-    "postprocesskeyvalue" : "_post_process_key_value",
-    }
-template vmap*(_: typedesc[AnimationMixer]): Table[string, string] = AnimationMixer_vmap
-
-proc animationListChanged*(self: AnimationMixer): Error =
+proc call_animationListChanged*(self: AnimationMixer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_list_changed")
   self.emitSignal(signalname)
 
-proc animationLibrariesUpdated*(self: AnimationMixer): Error =
+proc call_animationLibrariesUpdated*(self: AnimationMixer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_libraries_updated")
   self.emitSignal(signalname)
 
-proc animationFinished*(self: AnimationMixer; animName: Variant): Error =
+proc call_animationFinished*(self: AnimationMixer; animName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_finished")
   let args = [animName]
   self.emitSignal(signalname, args)
 
-proc animationStarted*(self: AnimationMixer; animName: Variant): Error =
+proc call_animationStarted*(self: AnimationMixer; animName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_started")
   let args = [animName]
   self.emitSignal(signalname, args)
 
-proc cachesCleared*(self: AnimationMixer): Error =
+proc call_cachesCleared*(self: AnimationMixer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("caches_cleared")
   self.emitSignal(signalname)
 
-proc mixerApplied*(self: AnimationMixer): Error =
+proc call_mixerApplied*(self: AnimationMixer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mixer_applied")
   self.emitSignal(signalname)
 
-proc mixerUpdated*(self: AnimationMixer): Error =
+proc call_mixerUpdated*(self: AnimationMixer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mixer_updated")

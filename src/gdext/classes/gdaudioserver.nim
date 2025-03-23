@@ -288,17 +288,13 @@ template `inputDevice=`*(self: AudioServer; value) = self.setInputDevice(value)
 template playbackSpeedScale*(self: AudioServer): untyped = self.getPlaybackSpeedScale()
 template `playbackSpeedScale=`*(self: AudioServer; value) = self.setPlaybackSpeedScale(value)
 
-const AudioServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioServer]): Table[string, string] = AudioServer_vmap
-
-proc busLayoutChanged*(self: AudioServer): Error =
+proc call_busLayoutChanged*(self: AudioServer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("bus_layout_changed")
   self.emitSignal(signalname)
 
-proc busRenamed*(self: AudioServer; busIndex: Variant; oldName: Variant; newName: Variant): Error =
+proc call_busRenamed*(self: AudioServer; busIndex: Variant; oldName: Variant; newName: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("bus_renamed")

@@ -17,7 +17,3 @@ proc tryLock*(self: Mutex): bool =
 proc unlock*(self: Mutex): void =
   expandMethodBind(className Mutex, "unlock", 3218959716)
   methodbind.ptrcall(self, [])
-
-const Mutex_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Mutex]): Table[string, string] = Mutex_vmap

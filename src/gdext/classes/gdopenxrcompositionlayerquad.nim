@@ -16,7 +16,3 @@ proc getQuadSize*(self: OpenXRCompositionLayerQuad): Vector2 =
 
 template quadSize*(self: OpenXRCompositionLayerQuad): untyped = self.getQuadSize()
 template `quadSize=`*(self: OpenXRCompositionLayerQuad; value) = self.setQuadSize(value)
-
-const OpenXRCompositionLayerQuad_vmap =
-  OpenXRCompositionLayer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRCompositionLayerQuad]): Table[string, string] = OpenXRCompositionLayerQuad_vmap

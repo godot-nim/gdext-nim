@@ -5,282 +5,231 @@ import gdext/coronation/header/classes
 import gdphysicsdirectbodystate3d; export gdphysicsdirectbodystate3d
 
 method getTotalGravity*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getTotalGravity(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalGravity().encode(r_ret)
-template getTotalGravity_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getTotalGravity
+proc registerVirtual_getTotalGravity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_total_gravity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalGravity().encode(r_ret)
 
 method getTotalLinearDamp*(self: PhysicsDirectBodyState3DExtension): Float {.base.} = (discard)
-proc getTotalLinearDamp(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalLinearDamp().encode(r_ret)
-template getTotalLinearDamp_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getTotalLinearDamp
+proc registerVirtual_getTotalLinearDamp*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_total_linear_damp"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalLinearDamp().encode(r_ret)
 
 method getTotalAngularDamp*(self: PhysicsDirectBodyState3DExtension): Float {.base.} = (discard)
-proc getTotalAngularDamp(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalAngularDamp().encode(r_ret)
-template getTotalAngularDamp_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getTotalAngularDamp
+proc registerVirtual_getTotalAngularDamp*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_total_angular_damp"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTotalAngularDamp().encode(r_ret)
 
 method getCenterOfMass*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getCenterOfMass(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getCenterOfMass().encode(r_ret)
-template getCenterOfMass_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getCenterOfMass
+proc registerVirtual_getCenterOfMass*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_center_of_mass"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getCenterOfMass().encode(r_ret)
 
 method getCenterOfMassLocal*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getCenterOfMassLocal(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getCenterOfMassLocal().encode(r_ret)
-template getCenterOfMassLocal_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getCenterOfMassLocal
+proc registerVirtual_getCenterOfMassLocal*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_center_of_mass_local"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getCenterOfMassLocal().encode(r_ret)
 
 method getPrincipalInertiaAxes*(self: PhysicsDirectBodyState3DExtension): Basis {.base.} = (discard)
-proc getPrincipalInertiaAxes(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getPrincipalInertiaAxes().encode(r_ret)
-template getPrincipalInertiaAxes_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getPrincipalInertiaAxes
+proc registerVirtual_getPrincipalInertiaAxes*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_principal_inertia_axes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getPrincipalInertiaAxes().encode(r_ret)
 
 method getInverseMass*(self: PhysicsDirectBodyState3DExtension): Float {.base.} = (discard)
-proc getInverseMass(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseMass().encode(r_ret)
-template getInverseMass_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getInverseMass
+proc registerVirtual_getInverseMass*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_inverse_mass"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseMass().encode(r_ret)
 
 method getInverseInertia*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getInverseInertia(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseInertia().encode(r_ret)
-template getInverseInertia_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getInverseInertia
+proc registerVirtual_getInverseInertia*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_inverse_inertia"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseInertia().encode(r_ret)
 
 method getInverseInertiaTensor*(self: PhysicsDirectBodyState3DExtension): Basis {.base.} = (discard)
-proc getInverseInertiaTensor(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseInertiaTensor().encode(r_ret)
-template getInverseInertiaTensor_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getInverseInertiaTensor
+proc registerVirtual_getInverseInertiaTensor*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_inverse_inertia_tensor"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getInverseInertiaTensor().encode(r_ret)
 
 method setLinearVelocity*(self: PhysicsDirectBodyState3DExtension; velocity: Vector3): void {.base.} = (discard)
-proc setLinearVelocity(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setLinearVelocity(p_args[0].decode(Vector3))
-template setLinearVelocity_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setLinearVelocity
+proc registerVirtual_setLinearVelocity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_linear_velocity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setLinearVelocity(p_args[0].decode(Vector3))
 
 method getLinearVelocity*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getLinearVelocity(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getLinearVelocity().encode(r_ret)
-template getLinearVelocity_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getLinearVelocity
+proc registerVirtual_getLinearVelocity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_linear_velocity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getLinearVelocity().encode(r_ret)
 
 method setAngularVelocity*(self: PhysicsDirectBodyState3DExtension; velocity: Vector3): void {.base.} = (discard)
-proc setAngularVelocity(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setAngularVelocity(p_args[0].decode(Vector3))
-template setAngularVelocity_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setAngularVelocity
+proc registerVirtual_setAngularVelocity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_angular_velocity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setAngularVelocity(p_args[0].decode(Vector3))
 
 method getAngularVelocity*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getAngularVelocity(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getAngularVelocity().encode(r_ret)
-template getAngularVelocity_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getAngularVelocity
+proc registerVirtual_getAngularVelocity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_angular_velocity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getAngularVelocity().encode(r_ret)
 
 method setTransform*(self: PhysicsDirectBodyState3DExtension; transform: Transform3D): void {.base.} = (discard)
-proc setTransform(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setTransform(p_args[0].decode(Transform3D))
-template setTransform_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setTransform
+proc registerVirtual_setTransform*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setTransform(p_args[0].decode(Transform3D))
 
 method getTransform*(self: PhysicsDirectBodyState3DExtension): Transform3D {.base.} = (discard)
-proc getTransform(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTransform().encode(r_ret)
-template getTransform_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getTransform
+proc registerVirtual_getTransform*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getTransform().encode(r_ret)
 
 method getVelocityAtLocalPosition*(self: PhysicsDirectBodyState3DExtension; localPosition: Vector3): Vector3 {.base.} = (discard)
-proc getVelocityAtLocalPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getVelocityAtLocalPosition(p_args[0].decode(Vector3)).encode(r_ret)
-template getVelocityAtLocalPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getVelocityAtLocalPosition
+proc registerVirtual_getVelocityAtLocalPosition*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_velocity_at_local_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getVelocityAtLocalPosition(p_args[0].decode(Vector3)).encode(r_ret)
 
 method applyCentralImpulse*(self: PhysicsDirectBodyState3DExtension; impulse: Vector3): void {.base.} = (discard)
-proc applyCentralImpulse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyCentralImpulse(p_args[0].decode(Vector3))
-template applyCentralImpulse_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyCentralImpulse
+proc registerVirtual_applyCentralImpulse*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_central_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyCentralImpulse(p_args[0].decode(Vector3))
 
 method applyImpulse*(self: PhysicsDirectBodyState3DExtension; impulse: Vector3; position: Vector3): void {.base.} = (discard)
-proc applyImpulse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyImpulse(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
-template applyImpulse_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyImpulse
+proc registerVirtual_applyImpulse*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyImpulse(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
 
 method applyTorqueImpulse*(self: PhysicsDirectBodyState3DExtension; impulse: Vector3): void {.base.} = (discard)
-proc applyTorqueImpulse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyTorqueImpulse(p_args[0].decode(Vector3))
-template applyTorqueImpulse_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyTorqueImpulse
+proc registerVirtual_applyTorqueImpulse*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_torque_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyTorqueImpulse(p_args[0].decode(Vector3))
 
 method applyCentralForce*(self: PhysicsDirectBodyState3DExtension; force: Vector3): void {.base.} = (discard)
-proc applyCentralForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyCentralForce(p_args[0].decode(Vector3))
-template applyCentralForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyCentralForce
+proc registerVirtual_applyCentralForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_central_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyCentralForce(p_args[0].decode(Vector3))
 
 method applyForce*(self: PhysicsDirectBodyState3DExtension; force: Vector3; position: Vector3): void {.base.} = (discard)
-proc applyForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyForce(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
-template applyForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyForce
+proc registerVirtual_applyForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyForce(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
 
 method applyTorque*(self: PhysicsDirectBodyState3DExtension; torque: Vector3): void {.base.} = (discard)
-proc applyTorque(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyTorque(p_args[0].decode(Vector3))
-template applyTorque_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = applyTorque
+proc registerVirtual_applyTorque*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_apply_torque"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).applyTorque(p_args[0].decode(Vector3))
 
 method addConstantCentralForce*(self: PhysicsDirectBodyState3DExtension; force: Vector3): void {.base.} = (discard)
-proc addConstantCentralForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantCentralForce(p_args[0].decode(Vector3))
-template addConstantCentralForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = addConstantCentralForce
+proc registerVirtual_addConstantCentralForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_add_constant_central_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantCentralForce(p_args[0].decode(Vector3))
 
 method addConstantForce*(self: PhysicsDirectBodyState3DExtension; force: Vector3; position: Vector3): void {.base.} = (discard)
-proc addConstantForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantForce(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
-template addConstantForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = addConstantForce
+proc registerVirtual_addConstantForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_add_constant_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantForce(p_args[0].decode(Vector3), p_args[1].decode(Vector3))
 
 method addConstantTorque*(self: PhysicsDirectBodyState3DExtension; torque: Vector3): void {.base.} = (discard)
-proc addConstantTorque(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantTorque(p_args[0].decode(Vector3))
-template addConstantTorque_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = addConstantTorque
+proc registerVirtual_addConstantTorque*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_add_constant_torque"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).addConstantTorque(p_args[0].decode(Vector3))
 
 method setConstantForce*(self: PhysicsDirectBodyState3DExtension; force: Vector3): void {.base.} = (discard)
-proc setConstantForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setConstantForce(p_args[0].decode(Vector3))
-template setConstantForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setConstantForce
+proc registerVirtual_setConstantForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_constant_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setConstantForce(p_args[0].decode(Vector3))
 
 method getConstantForce*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getConstantForce(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getConstantForce().encode(r_ret)
-template getConstantForce_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getConstantForce
+proc registerVirtual_getConstantForce*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_constant_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getConstantForce().encode(r_ret)
 
 method setConstantTorque*(self: PhysicsDirectBodyState3DExtension; torque: Vector3): void {.base.} = (discard)
-proc setConstantTorque(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setConstantTorque(p_args[0].decode(Vector3))
-template setConstantTorque_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setConstantTorque
+proc registerVirtual_setConstantTorque*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_constant_torque"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setConstantTorque(p_args[0].decode(Vector3))
 
 method getConstantTorque*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
-proc getConstantTorque(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getConstantTorque().encode(r_ret)
-template getConstantTorque_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getConstantTorque
+proc registerVirtual_getConstantTorque*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_constant_torque"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getConstantTorque().encode(r_ret)
 
 method setSleepState*(self: PhysicsDirectBodyState3DExtension; enabled: bool): void {.base.} = (discard)
-proc setSleepState(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setSleepState(p_args[0].decode(bool))
-template setSleepState_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = setSleepState
+proc registerVirtual_setSleepState*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_sleep_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).setSleepState(p_args[0].decode(bool))
 
 method isSleeping*(self: PhysicsDirectBodyState3DExtension): bool {.base.} = (discard)
-proc isSleeping(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).isSleeping().encode(r_ret)
-template isSleeping_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = isSleeping
+proc registerVirtual_isSleeping*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_sleeping"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).isSleeping().encode(r_ret)
 
 method getContactCount*(self: PhysicsDirectBodyState3DExtension): int32 {.base.} = (discard)
-proc getContactCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactCount().encode(r_ret)
-template getContactCount_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactCount
+proc registerVirtual_getContactCount*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactCount().encode(r_ret)
 
 method getContactLocalPosition*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactLocalPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalPosition(p_args[0].decode(int32)).encode(r_ret)
-template getContactLocalPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactLocalPosition
+proc registerVirtual_getContactLocalPosition*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_local_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalPosition(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactLocalNormal*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactLocalNormal(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalNormal(p_args[0].decode(int32)).encode(r_ret)
-template getContactLocalNormal_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactLocalNormal
+proc registerVirtual_getContactLocalNormal*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_local_normal"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalNormal(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactImpulse*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactImpulse(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactImpulse(p_args[0].decode(int32)).encode(r_ret)
-template getContactImpulse_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactImpulse
+proc registerVirtual_getContactImpulse*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactImpulse(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactLocalShape*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): int32 {.base.} = (discard)
-proc getContactLocalShape(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalShape(p_args[0].decode(int32)).encode(r_ret)
-template getContactLocalShape_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactLocalShape
+proc registerVirtual_getContactLocalShape*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_local_shape"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalShape(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactLocalVelocityAtPosition*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactLocalVelocityAtPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalVelocityAtPosition(p_args[0].decode(int32)).encode(r_ret)
-template getContactLocalVelocityAtPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactLocalVelocityAtPosition
+proc registerVirtual_getContactLocalVelocityAtPosition*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_local_velocity_at_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactLocalVelocityAtPosition(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactCollider*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): RID {.base.} = (discard)
-proc getContactCollider(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactCollider(p_args[0].decode(int32)).encode(r_ret)
-template getContactCollider_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactCollider
+proc registerVirtual_getContactCollider*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactCollider(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactColliderPosition*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactColliderPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderPosition(p_args[0].decode(int32)).encode(r_ret)
-template getContactColliderPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactColliderPosition
+proc registerVirtual_getContactColliderPosition*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderPosition(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactColliderId*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): uint64 {.base.} = (discard)
-proc getContactColliderId(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderId(p_args[0].decode(int32)).encode(r_ret)
-template getContactColliderId_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactColliderId
+proc registerVirtual_getContactColliderId*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider_id"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderId(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactColliderObject*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Object {.base.} = (discard)
-proc getContactColliderObject(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderObject(p_args[0].decode(int32)).encode(r_ret)
-template getContactColliderObject_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactColliderObject
+proc registerVirtual_getContactColliderObject*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderObject(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactColliderShape*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): int32 {.base.} = (discard)
-proc getContactColliderShape(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderShape(p_args[0].decode(int32)).encode(r_ret)
-template getContactColliderShape_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactColliderShape
+proc registerVirtual_getContactColliderShape*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider_shape"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderShape(p_args[0].decode(int32)).encode(r_ret)
 
 method getContactColliderVelocityAtPosition*(self: PhysicsDirectBodyState3DExtension; contactIdx: int32): Vector3 {.base.} = (discard)
-proc getContactColliderVelocityAtPosition(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderVelocityAtPosition(p_args[0].decode(int32)).encode(r_ret)
-template getContactColliderVelocityAtPosition_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getContactColliderVelocityAtPosition
+proc registerVirtual_getContactColliderVelocityAtPosition*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_contact_collider_velocity_at_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getContactColliderVelocityAtPosition(p_args[0].decode(int32)).encode(r_ret)
 
 method getStep*(self: PhysicsDirectBodyState3DExtension): Float {.base.} = (discard)
-proc getStep(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getStep().encode(r_ret)
-template getStep_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getStep
+proc registerVirtual_getStep*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_step"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getStep().encode(r_ret)
 
 method integrateForces*(self: PhysicsDirectBodyState3DExtension): void {.base.} = (discard)
-proc integrateForces(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).integrateForces()
-template integrateForces_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = integrateForces
+proc registerVirtual_integrateForces*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).integrateForces()
 
 method getSpaceState*(self: PhysicsDirectBodyState3DExtension): PhysicsDirectSpaceState3D {.base.} = (discard)
-proc getSpaceState(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getSpaceState().encode(r_ret)
-template getSpaceState_bind*(_: typedesc[PhysicsDirectBodyState3DExtension]): ClassCallVirtual = getSpaceState
-
-const PhysicsDirectBodyState3DExtension_vmap =
-  PhysicsDirectBodyState3D.vmap.concat toTable {
-    "gettotalgravity" : "_get_total_gravity",
-    "gettotallineardamp" : "_get_total_linear_damp",
-    "gettotalangulardamp" : "_get_total_angular_damp",
-    "getcenterofmass" : "_get_center_of_mass",
-    "getcenterofmasslocal" : "_get_center_of_mass_local",
-    "getprincipalinertiaaxes" : "_get_principal_inertia_axes",
-    "getinversemass" : "_get_inverse_mass",
-    "getinverseinertia" : "_get_inverse_inertia",
-    "getinverseinertiatensor" : "_get_inverse_inertia_tensor",
-    "setlinearvelocity" : "_set_linear_velocity",
-    "getlinearvelocity" : "_get_linear_velocity",
-    "setangularvelocity" : "_set_angular_velocity",
-    "getangularvelocity" : "_get_angular_velocity",
-    "settransform" : "_set_transform",
-    "gettransform" : "_get_transform",
-    "getvelocityatlocalposition" : "_get_velocity_at_local_position",
-    "applycentralimpulse" : "_apply_central_impulse",
-    "applyimpulse" : "_apply_impulse",
-    "applytorqueimpulse" : "_apply_torque_impulse",
-    "applycentralforce" : "_apply_central_force",
-    "applyforce" : "_apply_force",
-    "applytorque" : "_apply_torque",
-    "addconstantcentralforce" : "_add_constant_central_force",
-    "addconstantforce" : "_add_constant_force",
-    "addconstanttorque" : "_add_constant_torque",
-    "setconstantforce" : "_set_constant_force",
-    "getconstantforce" : "_get_constant_force",
-    "setconstanttorque" : "_set_constant_torque",
-    "getconstanttorque" : "_get_constant_torque",
-    "setsleepstate" : "_set_sleep_state",
-    "issleeping" : "_is_sleeping",
-    "getcontactcount" : "_get_contact_count",
-    "getcontactlocalposition" : "_get_contact_local_position",
-    "getcontactlocalnormal" : "_get_contact_local_normal",
-    "getcontactimpulse" : "_get_contact_impulse",
-    "getcontactlocalshape" : "_get_contact_local_shape",
-    "getcontactlocalvelocityatposition" : "_get_contact_local_velocity_at_position",
-    "getcontactcollider" : "_get_contact_collider",
-    "getcontactcolliderposition" : "_get_contact_collider_position",
-    "getcontactcolliderid" : "_get_contact_collider_id",
-    "getcontactcolliderobject" : "_get_contact_collider_object",
-    "getcontactcollidershape" : "_get_contact_collider_shape",
-    "getcontactcollidervelocityatposition" : "_get_contact_collider_velocity_at_position",
-    "getstep" : "_get_step",
-    "integrateforces" : "_integrate_forces",
-    "getspacestate" : "_get_space_state",
-    }
-template vmap*(_: typedesc[PhysicsDirectBodyState3DExtension]): Table[string, string] = PhysicsDirectBodyState3DExtension_vmap
+proc registerVirtual_getSpaceState*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_space_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState3DExtension](p_instance).getSpaceState().encode(r_ret)

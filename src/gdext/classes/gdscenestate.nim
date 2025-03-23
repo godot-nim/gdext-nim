@@ -129,7 +129,3 @@ proc getConnectionUnbinds*(self: SceneState; idx: int32): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(int32)
-
-const SceneState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SceneState]): Table[string, string] = SceneState_vmap

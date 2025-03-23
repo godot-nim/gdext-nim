@@ -172,7 +172,3 @@ template `feedbackLevelDb=`*(self: AudioEffectDelay; value) = self.setFeedbackLe
 
 template feedbackLowpass*(self: AudioEffectDelay): untyped = self.getFeedbackLowpass()
 template `feedbackLowpass=`*(self: AudioEffectDelay; value) = self.setFeedbackLowpass(value)
-
-const AudioEffectDelay_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectDelay]): Table[string, string] = AudioEffectDelay_vmap

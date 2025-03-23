@@ -107,7 +107,3 @@ template `excludeObjects=`*(self: PhysicsTestMotionParameters3D; value) = self.s
 
 template recoveryAsCollision*(self: PhysicsTestMotionParameters3D): untyped = self.isRecoveryAsCollisionEnabled()
 template `recoveryAsCollision=`*(self: PhysicsTestMotionParameters3D; value) = self.setRecoveryAsCollisionEnabled(value)
-
-const PhysicsTestMotionParameters3D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsTestMotionParameters3D]): Table[string, string] = PhysicsTestMotionParameters3D_vmap

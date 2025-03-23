@@ -120,7 +120,3 @@ template `simplifyPath=`*(self: NavigationPathQueryParameters3D; value) = self.s
 
 template simplifyEpsilon*(self: NavigationPathQueryParameters3D): untyped = self.getSimplifyEpsilon()
 template `simplifyEpsilon=`*(self: NavigationPathQueryParameters3D; value) = self.setSimplifyEpsilon(value)
-
-const NavigationPathQueryParameters3D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationPathQueryParameters3D]): Table[string, string] = NavigationPathQueryParameters3D_vmap

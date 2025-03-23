@@ -29,7 +29,3 @@ template `length=`*(self: GrooveJoint2D; value) = self.setLength(value)
 
 template initialOffset*(self: GrooveJoint2D): untyped = self.getInitialOffset()
 template `initialOffset=`*(self: GrooveJoint2D; value) = self.setInitialOffset(value)
-
-const GrooveJoint2D_vmap =
-  Joint2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GrooveJoint2D]): Table[string, string] = GrooveJoint2D_vmap

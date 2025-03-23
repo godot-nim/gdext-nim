@@ -94,7 +94,3 @@ template `mix=`*(self: AudioEffectCompressor; value) = self.setMix(value)
 
 template sidechain*(self: AudioEffectCompressor): untyped = self.getSidechain()
 template `sidechain=`*(self: AudioEffectCompressor; value) = self.setSidechain(value)
-
-const AudioEffectCompressor_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectCompressor]): Table[string, string] = AudioEffectCompressor_vmap

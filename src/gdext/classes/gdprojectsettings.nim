@@ -96,11 +96,7 @@ proc saveCustom*(self: ProjectSettings; file: String): Error =
   methodbind.ptrcall(self, [getPtr file], addr ret)
   (addr ret).decode_result(Error)
 
-const ProjectSettings_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ProjectSettings]): Table[string, string] = ProjectSettings_vmap
-
-proc settingsChanged*(self: ProjectSettings): Error =
+proc call_settingsChanged*(self: ProjectSettings): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("settings_changed")

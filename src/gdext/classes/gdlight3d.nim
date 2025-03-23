@@ -240,7 +240,3 @@ template `distanceFadeLength=`*(self: Light3D; value) = self.setDistanceFadeLeng
 
 template editorOnly*(self: Light3D): untyped = self.isEditorOnly()
 template `editorOnly=`*(self: Light3D; value) = self.setEditorOnly(value)
-
-const Light3D_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Light3D]): Table[string, string] = Light3D_vmap

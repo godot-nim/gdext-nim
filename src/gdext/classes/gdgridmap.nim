@@ -282,18 +282,14 @@ template `collisionPriority=`*(self: GridMap; value) = self.setCollisionPriority
 template bakeNavigation*(self: GridMap): untyped = self.isBakingNavigation()
 template `bakeNavigation=`*(self: GridMap; value) = self.setBakeNavigation(value)
 
-const GridMap_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GridMap]): Table[string, string] = GridMap_vmap
-
-proc cellSizeChanged*(self: GridMap; cellSize: Variant): Error =
+proc call_cellSizeChanged*(self: GridMap; cellSize: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("cell_size_changed")
   let args = [cellSize]
   self.emitSignal(signalname, args)
 
-proc changed*(self: GridMap): Error =
+proc call_changed*(self: GridMap): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("changed")

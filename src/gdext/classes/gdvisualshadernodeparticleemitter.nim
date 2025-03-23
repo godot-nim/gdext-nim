@@ -16,7 +16,3 @@ proc isMode2D*(self: VisualShaderNodeParticleEmitter): bool =
 
 template mode2D*(self: VisualShaderNodeParticleEmitter): untyped = self.isMode2D()
 template `mode2D=`*(self: VisualShaderNodeParticleEmitter; value) = self.setMode2D(value)
-
-const VisualShaderNodeParticleEmitter_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleEmitter]): Table[string, string] = VisualShaderNodeParticleEmitter_vmap

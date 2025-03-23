@@ -81,7 +81,3 @@ proc getCollisionUnsafeFraction*(self: PhysicsTestMotionResult2D): Float =
   var ret: encoded Float
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
-
-const PhysicsTestMotionResult2D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsTestMotionResult2D]): Table[string, string] = PhysicsTestMotionResult2D_vmap

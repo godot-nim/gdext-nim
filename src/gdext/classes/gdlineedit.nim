@@ -534,32 +534,28 @@ template `structuredTextBidiOverride=`*(self: LineEdit; value) = self.setStructu
 template structuredTextBidiOverrideOptions*(self: LineEdit): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: LineEdit; value) = self.setStructuredTextBidiOverrideOptions(value)
 
-const LineEdit_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LineEdit]): Table[string, string] = LineEdit_vmap
-
-proc textChanged*(self: LineEdit; newText: Variant): Error =
+proc call_textChanged*(self: LineEdit; newText: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("text_changed")
   let args = [newText]
   self.emitSignal(signalname, args)
 
-proc textChangeRejected*(self: LineEdit; rejectedSubstring: Variant): Error =
+proc call_textChangeRejected*(self: LineEdit; rejectedSubstring: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("text_change_rejected")
   let args = [rejectedSubstring]
   self.emitSignal(signalname, args)
 
-proc textSubmitted*(self: LineEdit; newText: Variant): Error =
+proc call_textSubmitted*(self: LineEdit; newText: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("text_submitted")
   let args = [newText]
   self.emitSignal(signalname, args)
 
-proc editingToggled*(self: LineEdit; toggledOn: Variant): Error =
+proc call_editingToggled*(self: LineEdit; toggledOn: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("editing_toggled")

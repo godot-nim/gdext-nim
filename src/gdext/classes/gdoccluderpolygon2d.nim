@@ -42,7 +42,3 @@ template `cullMode=`*(self: OccluderPolygon2D; value) = self.setCullMode(value)
 
 template polygon*(self: OccluderPolygon2D): untyped = self.getPolygon()
 template `polygon=`*(self: OccluderPolygon2D; value) = self.setPolygon(value)
-
-const OccluderPolygon2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OccluderPolygon2D]): Table[string, string] = OccluderPolygon2D_vmap

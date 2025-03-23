@@ -578,7 +578,3 @@ template `fixedSizeScaleMode=`*(self: FontFile; value) = self.setFixedSizeScaleM
 
 template opentypeFeatureOverrides*(self: FontFile): untyped = self.getOpentypeFeatureOverrides()
 template `opentypeFeatureOverrides=`*(self: FontFile; value) = self.setOpentypeFeatureOverrides(value)
-
-const FontFile_vmap =
-  Font.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[FontFile]): Table[string, string] = FontFile_vmap

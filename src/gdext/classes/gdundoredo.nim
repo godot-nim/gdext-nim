@@ -121,11 +121,7 @@ proc undo*(self: UndoRedo): bool =
 template maxSteps*(self: UndoRedo): untyped = self.getMaxSteps()
 template `maxSteps=`*(self: UndoRedo; value) = self.setMaxSteps(value)
 
-const UndoRedo_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[UndoRedo]): Table[string, string] = UndoRedo_vmap
-
-proc versionChanged*(self: UndoRedo): Error =
+proc call_versionChanged*(self: UndoRedo): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("version_changed")

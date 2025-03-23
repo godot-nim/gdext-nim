@@ -16,7 +16,3 @@ proc getPoints*(self: ConvexPolygonShape3D): PackedVector3Array =
 
 template points*(self: ConvexPolygonShape3D): untyped = self.getPoints()
 template `points=`*(self: ConvexPolygonShape3D; value) = self.setPoints(value)
-
-const ConvexPolygonShape3D_vmap =
-  Shape3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConvexPolygonShape3D]): Table[string, string] = ConvexPolygonShape3D_vmap

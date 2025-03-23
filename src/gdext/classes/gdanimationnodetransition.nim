@@ -79,7 +79,3 @@ template `allowTransitionToSelf=`*(self: AnimationNodeTransition; value) = self.
 
 template inputCount*(self: AnimationNodeTransition): untyped = self.getInputCount()
 template `inputCount=`*(self: AnimationNodeTransition; value) = self.setInputCount(value)
-
-const AnimationNodeTransition_vmap =
-  AnimationNodeSync.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeTransition]): Table[string, string] = AnimationNodeTransition_vmap

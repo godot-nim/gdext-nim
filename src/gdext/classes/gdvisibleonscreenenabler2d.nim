@@ -29,7 +29,3 @@ template `enableMode=`*(self: VisibleOnScreenEnabler2D; value) = self.setEnableM
 
 template enableNodePath*(self: VisibleOnScreenEnabler2D): untyped = self.getEnableNodePath()
 template `enableNodePath=`*(self: VisibleOnScreenEnabler2D; value) = self.setEnableNodePath(value)
-
-const VisibleOnScreenEnabler2D_vmap =
-  VisibleOnScreenNotifier2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisibleOnScreenEnabler2D]): Table[string, string] = VisibleOnScreenEnabler2D_vmap

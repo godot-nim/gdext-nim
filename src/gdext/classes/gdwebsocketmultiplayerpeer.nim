@@ -111,7 +111,3 @@ template `handshakeTimeout=`*(self: WebSocketMultiplayerPeer; value) = self.setH
 
 template maxQueuedPackets*(self: WebSocketMultiplayerPeer): untyped = self.getMaxQueuedPackets()
 template `maxQueuedPackets=`*(self: WebSocketMultiplayerPeer; value) = self.setMaxQueuedPackets(value)
-
-const WebSocketMultiplayerPeer_vmap =
-  MultiplayerPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebSocketMultiplayerPeer]): Table[string, string] = WebSocketMultiplayerPeer_vmap

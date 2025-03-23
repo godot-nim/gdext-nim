@@ -34,39 +34,35 @@ proc getTrackerHand*(self: XRController3D): XRPositionalTracker_TrackerHand =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(XRPositionalTracker_TrackerHand)
 
-const XRController3D_vmap =
-  XRNode3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRController3D]): Table[string, string] = XRController3D_vmap
-
-proc buttonPressed*(self: XRController3D; name: Variant): Error =
+proc call_buttonPressed*(self: XRController3D; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("button_pressed")
   let args = [name]
   self.emitSignal(signalname, args)
 
-proc buttonReleased*(self: XRController3D; name: Variant): Error =
+proc call_buttonReleased*(self: XRController3D; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("button_released")
   let args = [name]
   self.emitSignal(signalname, args)
 
-proc inputFloatChanged*(self: XRController3D; name: Variant; value: Variant): Error =
+proc call_inputFloatChanged*(self: XRController3D; name: Variant; value: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_float_changed")
   let args = [name, value]
   self.emitSignal(signalname, args)
 
-proc inputVector2Changed*(self: XRController3D; name: Variant; value: Variant): Error =
+proc call_inputVector2Changed*(self: XRController3D; name: Variant; value: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_vector2_changed")
   let args = [name, value]
   self.emitSignal(signalname, args)
 
-proc profileChanged*(self: XRController3D; role: Variant): Error =
+proc call_profileChanged*(self: XRController3D; role: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("profile_changed")

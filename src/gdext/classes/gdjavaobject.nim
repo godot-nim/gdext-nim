@@ -9,7 +9,3 @@ proc getJavaClass*(self: JavaObject): gdref JavaClass =
   var ret: encoded gdref JavaClass
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref JavaClass)
-
-const JavaObject_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[JavaObject]): Table[string, string] = JavaObject_vmap

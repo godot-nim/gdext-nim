@@ -16,7 +16,3 @@ proc getRadius*(self: GPUParticlesCollisionSphere3D): Float =
 
 template radius*(self: GPUParticlesCollisionSphere3D): untyped = self.getRadius()
 template `radius=`*(self: GPUParticlesCollisionSphere3D; value) = self.setRadius(value)
-
-const GPUParticlesCollisionSphere3D_vmap =
-  GPUParticlesCollision3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GPUParticlesCollisionSphere3D]): Table[string, string] = GPUParticlesCollisionSphere3D_vmap

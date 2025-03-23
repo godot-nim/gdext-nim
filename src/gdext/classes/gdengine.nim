@@ -246,7 +246,3 @@ template `timeScale=`*(self: Engine; value) = self.setTimeScale(value)
 
 template physicsJitterFix*(self: Engine): untyped = self.getPhysicsJitterFix()
 template `physicsJitterFix=`*(self: Engine; value) = self.setPhysicsJitterFix(value)
-
-const Engine_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Engine]): Table[string, string] = Engine_vmap

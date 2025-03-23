@@ -10,14 +10,15 @@ type BuildConfig* {.requiresinit.} = object
 type
   IgnoreConf* = object
     module*: bool
-    constructor*: bool
+    constructor*: set[0..255]
     subscript*: bool
-    constructor_white*: seq[int]
 
 template ck(str): ContainerKey = ContainerKey "`" & str & "`"
 template ts(str): TypeSym = TypeSym str
+template ps(str): ProcSym = ProcSym str
 
 const manualImplemented* = (
+  functionNames: toHashSet [ps"`!=`", ps"`>`", ps"`>=`", ps"`in`"],
   functions: toHashSet [
     ck"sin(Float)",
     ck"cos(Float)",
@@ -118,7 +119,7 @@ const manualImplemented* = (
     ck"-(Int Int)",
     ck"*(Int Int)",
     ck"/(Int Int)",
-    ck"mod(Int Int)",
+    ck"%(Int Int)",
     ck"shl(Int Int)",
     ck"shr(Int Int)",
     ck"and(Int Int)",
@@ -198,7 +199,7 @@ const manualImplemented* = (
     ck"not(Vector2i)",
     ck"*(Vector2i Int)",
     ck"/(Vector2i Int)",
-    ck"mod(Vector2i Int)",
+    ck"%(Vector2i Int)",
     ck"*(Vector2i Float)",
     ck"/(Vector2i Float)",
     ck"==(Vector2i Vector2i)",
@@ -211,7 +212,7 @@ const manualImplemented* = (
     ck"-(Vector2i Vector2i)",
     ck"*(Vector2i Vector2i)",
     ck"/(Vector2i Vector2i)",
-    ck"mod(Vector2i Vector2i)",
+    ck"%(Vector2i Vector2i)",
     ck"aspect(Vector2i)",
     ck"maxAxisIndex(Vector2i)",
     ck"minAxisIndex(Vector2i)",
@@ -270,7 +271,7 @@ const manualImplemented* = (
     ck"not(Vector3i)",
     ck"*(Vector3i Int)",
     ck"/(Vector3i Int)",
-    ck"mod(Vector3i Int)",
+    ck"%(Vector3i Int)",
     ck"*(Vector3i Float)",
     ck"/(Vector3i Float)",
     ck"==(Vector3i Vector3i)",
@@ -283,7 +284,7 @@ const manualImplemented* = (
     ck"-(Vector3i Vector3i)",
     ck"*(Vector3i Vector3i)",
     ck"/(Vector3i Vector3i)",
-    ck"mod(Vector3i Vector3i)",
+    ck"%(Vector3i Vector3i)",
     ck"minAxisIndex(Vector3i)",
     ck"maxAxisIndex(Vector3i)",
     ck"length(Vector3i)",
@@ -339,7 +340,7 @@ const manualImplemented* = (
     ck"not(Vector4i)",
     ck"*(Vector4i Int)",
     ck"/(Vector4i Int)",
-    ck"mod(Vector4i Int)",
+    ck"%(Vector4i Int)",
     ck"*(Vector4i Float)",
     ck"/(Vector4i Float)",
     ck"==(Vector4i Vector4i)",
@@ -352,7 +353,7 @@ const manualImplemented* = (
     ck"-(Vector4i Vector4i)",
     ck"*(Vector4i Vector4i)",
     ck"/(Vector4i Vector4i)",
-    ck"mod(Vector4i Vector4i)",
+    ck"%(Vector4i Vector4i)",
     ck"minAxisIndex(Vector4i)",
     ck"maxAxisIndex(Vector4i)",
     ck"length(Vector4i)",
@@ -362,72 +363,187 @@ const manualImplemented* = (
     ck"clamp(Vector4i Vector4i Vector4i)",
     ck"snapped(Vector4i Vector4i)",
 
-    ck"contains(String String)",
+    ck"==(AABB Variant)",
+    ck"==(Array Variant)",
+    ck"==(Basis Variant)",
+    ck"==(bool Variant)",
+    ck"==(Callable Variant)",
+    ck"==(Color Variant)",
+    ck"==(Dictionary Variant)",
+    ck"==(Float Variant)",
+    ck"==(Int Variant)",
+    ck"==(NodePath Variant)",
+    ck"==(PackedByteArray Variant)",
+    ck"==(PackedColorArray Variant)",
+    ck"==(PackedStringArray Variant)",
+    ck"==(PackedInt32Array Variant)",
+    ck"==(PackedInt64Array Variant)",
+    ck"==(PackedFloat32Array Variant)",
+    ck"==(PackedFloat64Array Variant)",
+    ck"==(PackedVector2Array Variant)",
+    ck"==(PackedVector3Array Variant)",
+    ck"==(PackedVector4Array Variant)",
+    ck"==(Plane Variant)",
+    ck"==(Projection Variant)",
+    ck"==(Quaternion Variant)",
+    ck"==(Rect2 Variant)",
+    ck"==(Rect2i Variant)",
+    ck"==(RID Variant)",
+    ck"==(Signal Variant)",
+    ck"==(String Variant)",
+    ck"==(StringName Variant)",
+    ck"==(Transform2D Variant)",
+    ck"==(Transform3D Variant)",
+    ck"==(Vector2 Variant)",
+    ck"==(Vector2i Variant)",
+    ck"==(Vector3 Variant)",
+    ck"==(Vector3i Variant)",
+    ck"==(Vector4 Variant)",
+    ck"==(Vector4i Variant)",
 
-    ck"contains(StringName String)",
+    ck"==(AABB AABB)",
+    ck"==(Basis Basis)",
+    ck"==(Color Color)",
+    ck"==(Plane Plane)",
+    ck"==(Projection Projection)",
+    ck"==(Quaternion Quaternion)",
+    ck"==(Rect2 Rect2)",
+    ck"==(Rect2i Rect2i)",
+    ck"==(Transform2D Transform2D)",
+    ck"==(Transform3D Transform3D)",
   ]
 )
 
 const ignoreConf: Table[TypeSym, IgnoreConf] = toTable {
+  ts"Nil": IgnoreConf(
+    module: true,
+    constructor: {0..1},
+  ),
+  ts"bool": IgnoreConf(
+    constructor: {0..3},
+  ),
+  ts"Int": IgnoreConf(
+    constructor: {0..4},
+  ),
+  ts"Float": IgnoreConf(
+    constructor: {0..4},
+  ),
   ts"Vector2": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Vector2i": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Vector3": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Vector3i": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Vector4": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Vector4i": IgnoreConf(
     subscript: true,
-    constructor: true,
+    constructor: {0..3},
   ),
   ts"Quaternion": IgnoreConf(
     subscript: true,
-    constructor: true,
-    constructor_white: @[1, 2, 3, 4],
+    constructor: {0..1, 5},
   ),
   ts"Color": IgnoreConf(
     subscript: true,
-    constructor: true,
-    constructor_white: @[5, 6],
+    constructor: {0..4},
+  ),
+  ts"AABB": IgnoreConf(
+    constructor: {0..1},
   ),
   ts"Plane": IgnoreConf(
-    constructor: true,
-    constructor_white: @[1, 2, 3, 4, 5],
+    constructor: {0..1, 3, 6},
   ),
   ts"Basis": IgnoreConf(
     subscript: true,
+    constructor: {0..1, 4},
   ),
   ts"Projection": IgnoreConf(
     subscript: true,
+    constructor: {0..1, 3},
   ),
   ts"Transform2D": IgnoreConf(
     subscript: true,
+    constructor: {0..1, 4},
   ),
-  ts"bool": IgnoreConf(
-    constructor: true,
+  ts"Transform3D": IgnoreConf(
+    constructor: {0..3},
   ),
-  ts"Int": IgnoreConf(
-    constructor: true,
+  ts"PackedByteArray": IgnoreConf(
+    subscript: true,
+    constructor: {0},
   ),
-  ts"Float": IgnoreConf(
-    constructor: true,
+  ts"PackedColorArray": IgnoreConf(
+    subscript: true,
+    constructor: {0},
   ),
-  ts"Nil": IgnoreConf(
-    module: true,
-    constructor: true,
+  ts"PackedFloat32Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedFloat64Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedInt32Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedInt64Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedStringArray": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedVector2Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedVector3Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"PackedVector4Array": IgnoreConf(
+    subscript: true,
+    constructor: {0},
+  ),
+  ts"String": IgnoreConf(
+    constructor: {0},
+  ),
+  ts"StringName": IgnoreConf(
+    constructor: {0},
+  ),
+  ts"NodePath": IgnoreConf(
+    constructor: {0},
+  ),
+  ts"Callable": IgnoreConf(
+    constructor: {0},
+  ),
+  ts"Signal": IgnoreConf(
+    constructor: {0},
+  ),
+  ts"RID": IgnoreConf(
+    constructor: {0..1},
+  ),
+  ts"Rect2": IgnoreConf(
+    constructor: {0..4},
+  ),
+  ts"Rect2i": IgnoreConf(
+    constructor: {0..4},
   ),
 }
 

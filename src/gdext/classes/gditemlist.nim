@@ -452,39 +452,35 @@ template `iconScale=`*(self: ItemList; value) = self.setIconScale(value)
 template fixedIconSize*(self: ItemList): untyped = self.getFixedIconSize()
 template `fixedIconSize=`*(self: ItemList; value) = self.setFixedIconSize(value)
 
-const ItemList_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ItemList]): Table[string, string] = ItemList_vmap
-
-proc itemSelected*(self: ItemList; index: Variant): Error =
+proc call_itemSelected*(self: ItemList; index: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_selected")
   let args = [index]
   self.emitSignal(signalname, args)
 
-proc emptyClicked*(self: ItemList; atPosition: Variant; mouseButtonIndex: Variant): Error =
+proc call_emptyClicked*(self: ItemList; atPosition: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("empty_clicked")
   let args = [atPosition, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc itemClicked*(self: ItemList; index: Variant; atPosition: Variant; mouseButtonIndex: Variant): Error =
+proc call_itemClicked*(self: ItemList; index: Variant; atPosition: Variant; mouseButtonIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_clicked")
   let args = [index, atPosition, mouseButtonIndex]
   self.emitSignal(signalname, args)
 
-proc multiSelected*(self: ItemList; index: Variant; selected: Variant): Error =
+proc call_multiSelected*(self: ItemList; index: Variant; selected: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("multi_selected")
   let args = [index, selected]
   self.emitSignal(signalname, args)
 
-proc itemActivated*(self: ItemList; index: Variant): Error =
+proc call_itemActivated*(self: ItemList; index: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_activated")

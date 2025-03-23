@@ -186,18 +186,14 @@ template `allowReselect=`*(self: OptionButton; value) = self.setAllowReselect(va
 template itemCount*(self: OptionButton): untyped = self.getItemCount()
 template `itemCount=`*(self: OptionButton; value) = self.setItemCount(value)
 
-const OptionButton_vmap =
-  Button.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OptionButton]): Table[string, string] = OptionButton_vmap
-
-proc itemSelected*(self: OptionButton; index: Variant): Error =
+proc call_itemSelected*(self: OptionButton; index: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_selected")
   let args = [index]
   self.emitSignal(signalname, args)
 
-proc itemFocused*(self: OptionButton; index: Variant): Error =
+proc call_itemFocused*(self: OptionButton; index: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("item_focused")

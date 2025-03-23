@@ -68,7 +68,3 @@ template `rings=`*(self: SphereMesh; value) = self.setRings(value)
 
 template isHemisphere*(self: SphereMesh): untyped = self.getIsHemisphere()
 template `isHemisphere=`*(self: SphereMesh; value) = self.setIsHemisphere(value)
-
-const SphereMesh_vmap =
-  PrimitiveMesh.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SphereMesh]): Table[string, string] = SphereMesh_vmap

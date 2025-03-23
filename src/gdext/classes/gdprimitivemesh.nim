@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdmesh; export gdmesh
 
 method createMeshArray*(self: PrimitiveMesh): Array {.base.} = (discard)
-proc createMeshArray(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PrimitiveMesh](p_instance).createMeshArray().encode(r_ret)
-template createMeshArray_bind*(_: typedesc[PrimitiveMesh]): ClassCallVirtual = createMeshArray
+proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =
+  Self.vmethods[stringName"_create_mesh_array"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PrimitiveMesh](p_instance).createMeshArray().encode(r_ret)
 
 proc setMaterial*(self: PrimitiveMesh; material: gdref Material): void =
   expandMethodBind(className PrimitiveMesh, "set_material", 2757459619)
@@ -83,9 +83,3 @@ template `addUv2=`*(self: PrimitiveMesh; value) = self.setAddUv2(value)
 
 template uv2Padding*(self: PrimitiveMesh): untyped = self.getUv2Padding()
 template `uv2Padding=`*(self: PrimitiveMesh; value) = self.setUv2Padding(value)
-
-const PrimitiveMesh_vmap =
-  Mesh.vmap.concat toTable {
-    "createmesharray" : "_create_mesh_array",
-    }
-template vmap*(_: typedesc[PrimitiveMesh]): Table[string, string] = PrimitiveMesh_vmap

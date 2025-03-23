@@ -43,7 +43,3 @@ template `uniformType=`*(self: RDUniform; value) = self.setUniformType(value)
 
 template binding*(self: RDUniform): untyped = self.getBinding()
 template `binding=`*(self: RDUniform; value) = self.setBinding(value)
-
-const RDUniform_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDUniform]): Table[string, string] = RDUniform_vmap

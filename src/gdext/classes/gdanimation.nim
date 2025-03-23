@@ -456,7 +456,3 @@ template step*(self: Animation): untyped = self.getStep()
 template `step=`*(self: Animation; value) = self.setStep(value)
 
 template captureIncluded*(self: Animation): untyped = self.isCaptureIncluded()
-
-const Animation_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Animation]): Table[string, string] = Animation_vmap

@@ -5,19 +5,19 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method execute*(self: SkeletonModification2D; delta: float64): void {.base.} = (discard)
-proc execute(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[SkeletonModification2D](p_instance).execute(p_args[0].decode(float64))
-template execute_bind*(_: typedesc[SkeletonModification2D]): ClassCallVirtual = execute
+proc registerVirtual_execute*[T: SkeletonModification2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_execute"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[SkeletonModification2D](p_instance).execute(p_args[0].decode(float64))
 
 method setupModification*(self: SkeletonModification2D; modificationStack: gdref SkeletonModificationStack2D): void {.base.} = (discard)
-proc setupModification(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[SkeletonModification2D](p_instance).setupModification(p_args[0].decode(gdref SkeletonModificationStack2D))
-template setupModification_bind*(_: typedesc[SkeletonModification2D]): ClassCallVirtual = setupModification
+proc registerVirtual_setupModification*[T: SkeletonModification2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_setup_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[SkeletonModification2D](p_instance).setupModification(p_args[0].decode(gdref SkeletonModificationStack2D))
 
 method drawEditorGizmo*(self: SkeletonModification2D): void {.base.} = (discard)
-proc drawEditorGizmo(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[SkeletonModification2D](p_instance).drawEditorGizmo()
-template drawEditorGizmo_bind*(_: typedesc[SkeletonModification2D]): ClassCallVirtual = drawEditorGizmo
+proc registerVirtual_drawEditorGizmo*[T: SkeletonModification2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw_editor_gizmo"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[SkeletonModification2D](p_instance).drawEditorGizmo()
 
 proc setEnabled*(self: SkeletonModification2D; enabled: bool): void =
   expandMethodBind(className SkeletonModification2D, "set_enabled", 2586408642)
@@ -76,11 +76,3 @@ template `enabled=`*(self: SkeletonModification2D; value) = self.setEnabled(valu
 
 template executionMode*(self: SkeletonModification2D): untyped = self.getExecutionMode()
 template `executionMode=`*(self: SkeletonModification2D; value) = self.setExecutionMode(value)
-
-const SkeletonModification2D_vmap =
-  Resource.vmap.concat toTable {
-    "execute" : "_execute",
-    "setupmodification" : "_setup_modification",
-    "draweditorgizmo" : "_draw_editor_gizmo",
-    }
-template vmap*(_: typedesc[SkeletonModification2D]): Table[string, string] = SkeletonModification2D_vmap

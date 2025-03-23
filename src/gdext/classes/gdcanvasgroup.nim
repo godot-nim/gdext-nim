@@ -42,7 +42,3 @@ template `clearMargin=`*(self: CanvasGroup; value) = self.setClearMargin(value)
 
 template useMipmaps*(self: CanvasGroup): untyped = self.isUsingMipmaps()
 template `useMipmaps=`*(self: CanvasGroup; value) = self.setUseMipmaps(value)
-
-const CanvasGroup_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CanvasGroup]): Table[string, string] = CanvasGroup_vmap

@@ -42,7 +42,3 @@ template `processMode=`*(self: Sky; value) = self.setProcessMode(value)
 
 template radianceSize*(self: Sky): untyped = self.getRadianceSize()
 template `radianceSize=`*(self: Sky; value) = self.setRadianceSize(value)
-
-const Sky_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Sky]): Table[string, string] = Sky_vmap

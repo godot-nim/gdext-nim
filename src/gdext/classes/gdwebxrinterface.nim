@@ -118,91 +118,87 @@ template enabledFeatures*(self: WebXRInterface): untyped = self.getEnabledFeatur
 
 template visibilityState*(self: WebXRInterface): untyped = self.getVisibilityState()
 
-const WebXRInterface_vmap =
-  XRInterface.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WebXRInterface]): Table[string, string] = WebXRInterface_vmap
-
-proc sessionSupported*(self: WebXRInterface; sessionMode: Variant; supported: Variant): Error =
+proc call_sessionSupported*(self: WebXRInterface; sessionMode: Variant; supported: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_supported")
   let args = [sessionMode, supported]
   self.emitSignal(signalname, args)
 
-proc sessionStarted*(self: WebXRInterface): Error =
+proc call_sessionStarted*(self: WebXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_started")
   self.emitSignal(signalname)
 
-proc sessionEnded*(self: WebXRInterface): Error =
+proc call_sessionEnded*(self: WebXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_ended")
   self.emitSignal(signalname)
 
-proc sessionFailed*(self: WebXRInterface; message: Variant): Error =
+proc call_sessionFailed*(self: WebXRInterface; message: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("session_failed")
   let args = [message]
   self.emitSignal(signalname, args)
 
-proc selectstart*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_selectstart*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("selectstart")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc select*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_select*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("select")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc selectend*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_selectend*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("selectend")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc squeezestart*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_squeezestart*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("squeezestart")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc squeeze*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_squeeze*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("squeeze")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc squeezeend*(self: WebXRInterface; inputSourceId: Variant): Error =
+proc call_squeezeend*(self: WebXRInterface; inputSourceId: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("squeezeend")
   let args = [inputSourceId]
   self.emitSignal(signalname, args)
 
-proc visibilityStateChanged*(self: WebXRInterface): Error =
+proc call_visibilityStateChanged*(self: WebXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_state_changed")
   self.emitSignal(signalname)
 
-proc referenceSpaceReset*(self: WebXRInterface): Error =
+proc call_referenceSpaceReset*(self: WebXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("reference_space_reset")
   self.emitSignal(signalname)
 
-proc displayRefreshRateChanged*(self: WebXRInterface): Error =
+proc call_displayRefreshRateChanged*(self: WebXRInterface): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("display_refresh_rate_changed")

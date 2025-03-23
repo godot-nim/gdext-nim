@@ -33,7 +33,3 @@ proc close*(self: ZIPPacker): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Error)
-
-const ZIPPacker_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ZIPPacker]): Table[string, string] = ZIPPacker_vmap

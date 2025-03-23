@@ -194,7 +194,3 @@ template `useGravity=`*(self: SkeletonModification2DJiggle; value) = self.setUse
 
 template gravity*(self: SkeletonModification2DJiggle): untyped = self.getGravity()
 template `gravity=`*(self: SkeletonModification2DJiggle; value) = self.setGravity(value)
-
-const SkeletonModification2DJiggle_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DJiggle]): Table[string, string] = SkeletonModification2DJiggle_vmap

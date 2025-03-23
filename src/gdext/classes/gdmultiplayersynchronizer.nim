@@ -104,23 +104,19 @@ template `visibilityUpdateMode=`*(self: MultiplayerSynchronizer; value) = self.s
 template publicVisibility*(self: MultiplayerSynchronizer): untyped = self.isVisibilityPublic()
 template `publicVisibility=`*(self: MultiplayerSynchronizer; value) = self.setVisibilityPublic(value)
 
-const MultiplayerSynchronizer_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiplayerSynchronizer]): Table[string, string] = MultiplayerSynchronizer_vmap
-
-proc synchronized*(self: MultiplayerSynchronizer): Error =
+proc call_synchronized*(self: MultiplayerSynchronizer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("synchronized")
   self.emitSignal(signalname)
 
-proc deltaSynchronized*(self: MultiplayerSynchronizer): Error =
+proc call_deltaSynchronized*(self: MultiplayerSynchronizer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("delta_synchronized")
   self.emitSignal(signalname)
 
-proc visibilityChanged*(self: MultiplayerSynchronizer; forPeer: Variant): Error =
+proc call_visibilityChanged*(self: MultiplayerSynchronizer; forPeer: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_changed")

@@ -42,7 +42,3 @@ template `ceilingDb=`*(self: AudioEffectHardLimiter; value) = self.setCeilingDb(
 
 template release*(self: AudioEffectHardLimiter): untyped = self.getRelease()
 template `release=`*(self: AudioEffectHardLimiter; value) = self.setRelease(value)
-
-const AudioEffectHardLimiter_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectHardLimiter]): Table[string, string] = AudioEffectHardLimiter_vmap

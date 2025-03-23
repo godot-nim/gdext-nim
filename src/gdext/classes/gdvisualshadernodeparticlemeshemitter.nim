@@ -42,7 +42,3 @@ template `useAllSurfaces=`*(self: VisualShaderNodeParticleMeshEmitter; value) = 
 
 template surfaceIndex*(self: VisualShaderNodeParticleMeshEmitter): untyped = self.getSurfaceIndex()
 template `surfaceIndex=`*(self: VisualShaderNodeParticleMeshEmitter; value) = self.setSurfaceIndex(value)
-
-const VisualShaderNodeParticleMeshEmitter_vmap =
-  VisualShaderNodeParticleEmitter.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleMeshEmitter]): Table[string, string] = VisualShaderNodeParticleMeshEmitter_vmap

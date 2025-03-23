@@ -152,25 +152,21 @@ proc interpolateValue*(_: typedesc[Tween]; initialValue: Variant; deltaValue: Va
   methodbind.ptrcall([getPtr initialValue, getPtr deltaValue, getPtr elapsedTime, getPtr duration, getPtr transType, getPtr easeType], addr ret)
   (addr ret).decode_result(Variant)
 
-const Tween_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Tween]): Table[string, string] = Tween_vmap
-
-proc stepFinished*(self: Tween; idx: Variant): Error =
+proc call_stepFinished*(self: Tween; idx: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("step_finished")
   let args = [idx]
   self.emitSignal(signalname, args)
 
-proc loopFinished*(self: Tween; loopCount: Variant): Error =
+proc call_loopFinished*(self: Tween; loopCount: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("loop_finished")
   let args = [loopCount]
   self.emitSignal(signalname, args)
 
-proc finished*(self: Tween): Error =
+proc call_finished*(self: Tween): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("finished")

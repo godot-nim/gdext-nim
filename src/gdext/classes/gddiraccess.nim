@@ -237,7 +237,3 @@ template `includeNavigational=`*(self: DirAccess; value) = self.setIncludeNaviga
 
 template includeHidden*(self: DirAccess): untyped = self.getIncludeHidden()
 template `includeHidden=`*(self: DirAccess; value) = self.setIncludeHidden(value)
-
-const DirAccess_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[DirAccess]): Table[string, string] = DirAccess_vmap

@@ -69,56 +69,52 @@ template `selectable=`*(self: GraphElement; value) = self.setSelectable(value)
 template selected*(self: GraphElement): untyped = self.isSelected()
 template `selected=`*(self: GraphElement; value) = self.setSelected(value)
 
-const GraphElement_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GraphElement]): Table[string, string] = GraphElement_vmap
-
-proc nodeSelected*(self: GraphElement): Error =
+proc call_nodeSelected*(self: GraphElement): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("node_selected")
   self.emitSignal(signalname)
 
-proc nodeDeselected*(self: GraphElement): Error =
+proc call_nodeDeselected*(self: GraphElement): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("node_deselected")
   self.emitSignal(signalname)
 
-proc raiseRequest*(self: GraphElement): Error =
+proc call_raiseRequest*(self: GraphElement): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("raise_request")
   self.emitSignal(signalname)
 
-proc deleteRequest*(self: GraphElement): Error =
+proc call_deleteRequest*(self: GraphElement): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("delete_request")
   self.emitSignal(signalname)
 
-proc resizeRequest*(self: GraphElement; newSize: Variant): Error =
+proc call_resizeRequest*(self: GraphElement; newSize: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resize_request")
   let args = [newSize]
   self.emitSignal(signalname, args)
 
-proc resizeEnd*(self: GraphElement; newSize: Variant): Error =
+proc call_resizeEnd*(self: GraphElement; newSize: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resize_end")
   let args = [newSize]
   self.emitSignal(signalname, args)
 
-proc dragged*(self: GraphElement; `from`: Variant; to: Variant): Error =
+proc call_dragged*(self: GraphElement; `from`: Variant; to: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("dragged")
   let args = [`from`, to]
   self.emitSignal(signalname, args)
 
-proc positionOffsetChanged*(self: GraphElement): Error =
+proc call_positionOffsetChanged*(self: GraphElement): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("position_offset_changed")

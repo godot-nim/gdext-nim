@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdresource; export gdresource
 
 method renderCallback*(self: CompositorEffect; effectCallbackType: int32; renderData: RenderData): void {.base.} = (discard)
-proc renderCallback(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CompositorEffect](p_instance).renderCallback(p_args[0].decode(int32), p_args[1].decode(RenderData))
-template renderCallback_bind*(_: typedesc[CompositorEffect]): ClassCallVirtual = renderCallback
+proc registerVirtual_renderCallback*[T: CompositorEffect](Self: typedesc[T]) =
+  Self.vmethods[stringName"_render_callback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CompositorEffect](p_instance).renderCallback(p_args[0].decode(int32), p_args[1].decode(RenderData))
 
 proc setEnabled*(self: CompositorEffect; enabled: bool): void =
   expandMethodBind(className CompositorEffect, "set_enabled", 2586408642)
@@ -99,9 +99,3 @@ template `needsNormalRoughness=`*(self: CompositorEffect; value) = self.setNeeds
 
 template needsSeparateSpecular*(self: CompositorEffect): untyped = self.getNeedsSeparateSpecular()
 template `needsSeparateSpecular=`*(self: CompositorEffect; value) = self.setNeedsSeparateSpecular(value)
-
-const CompositorEffect_vmap =
-  Resource.vmap.concat toTable {
-    "rendercallback" : "_render_callback",
-    }
-template vmap*(_: typedesc[CompositorEffect]): Table[string, string] = CompositorEffect_vmap

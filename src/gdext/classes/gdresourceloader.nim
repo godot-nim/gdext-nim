@@ -81,7 +81,3 @@ proc listDirectory*(self: ResourceLoader; directoryPath: String): PackedStringAr
   var ret: encoded PackedStringArray
   methodbind.ptrcall(self, [getPtr directoryPath], addr ret)
   (addr ret).decode_result(PackedStringArray)
-
-const ResourceLoader_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourceLoader]): Table[string, string] = ResourceLoader_vmap

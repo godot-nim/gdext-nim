@@ -326,60 +326,56 @@ template `reverbBusAmount=`*(self: Area3D; value) = self.setReverbAmount(value)
 template reverbBusUniformity*(self: Area3D): untyped = self.getReverbUniformity()
 template `reverbBusUniformity=`*(self: Area3D; value) = self.setReverbUniformity(value)
 
-const Area3D_vmap =
-  CollisionObject3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Area3D]): Table[string, string] = Area3D_vmap
-
-proc bodyShapeEntered*(self: Area3D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_bodyShapeEntered*(self: Area3D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_shape_entered")
   let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc bodyShapeExited*(self: Area3D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_bodyShapeExited*(self: Area3D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_shape_exited")
   let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc bodyEntered*(self: Area3D; body: Variant): Error =
+proc call_bodyEntered*(self: Area3D; body: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_entered")
   let args = [body]
   self.emitSignal(signalname, args)
 
-proc bodyExited*(self: Area3D; body: Variant): Error =
+proc call_bodyExited*(self: Area3D; body: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("body_exited")
   let args = [body]
   self.emitSignal(signalname, args)
 
-proc areaShapeEntered*(self: Area3D; areaRid: Variant; area: Variant; areaShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_areaShapeEntered*(self: Area3D; areaRid: Variant; area: Variant; areaShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("area_shape_entered")
   let args = [areaRid, area, areaShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc areaShapeExited*(self: Area3D; areaRid: Variant; area: Variant; areaShapeIndex: Variant; localShapeIndex: Variant): Error =
+proc call_areaShapeExited*(self: Area3D; areaRid: Variant; area: Variant; areaShapeIndex: Variant; localShapeIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("area_shape_exited")
   let args = [areaRid, area, areaShapeIndex, localShapeIndex]
   self.emitSignal(signalname, args)
 
-proc areaEntered*(self: Area3D; area: Variant): Error =
+proc call_areaEntered*(self: Area3D; area: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("area_entered")
   let args = [area]
   self.emitSignal(signalname, args)
 
-proc areaExited*(self: Area3D; area: Variant): Error =
+proc call_areaExited*(self: Area3D; area: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("area_exited")

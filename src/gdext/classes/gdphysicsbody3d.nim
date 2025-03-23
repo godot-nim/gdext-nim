@@ -63,7 +63,3 @@ template `axisLockAngularY=`*(self: PhysicsBody3D; value) = self.setAxisLock(Phy
 
 template axisLockAngularZ*(self: PhysicsBody3D): untyped = self.getAxisLock(PhysicsServer3D_BodyAxis(32))
 template `axisLockAngularZ=`*(self: PhysicsBody3D; value) = self.setAxisLock(PhysicsServer3D_BodyAxis(32), value)
-
-const PhysicsBody3D_vmap =
-  CollisionObject3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsBody3D]): Table[string, string] = PhysicsBody3D_vmap

@@ -42,7 +42,3 @@ template `timePulloutMs=`*(self: AudioEffectStereoEnhance; value) = self.setTime
 
 template surround*(self: AudioEffectStereoEnhance): untyped = self.getSurround()
 template `surround=`*(self: AudioEffectStereoEnhance; value) = self.setSurround(value)
-
-const AudioEffectStereoEnhance_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectStereoEnhance]): Table[string, string] = AudioEffectStereoEnhance_vmap

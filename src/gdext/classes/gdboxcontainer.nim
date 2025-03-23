@@ -35,7 +35,3 @@ template `alignment=`*(self: BoxContainer; value) = self.setAlignment(value)
 
 template vertical*(self: BoxContainer): untyped = self.isVertical()
 template `vertical=`*(self: BoxContainer; value) = self.setVertical(value)
-
-const BoxContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BoxContainer]): Table[string, string] = BoxContainer_vmap

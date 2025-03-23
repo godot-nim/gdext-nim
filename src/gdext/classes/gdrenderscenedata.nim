@@ -39,7 +39,3 @@ proc getUniformBuffer*(self: RenderSceneData): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
-
-const RenderSceneData_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RenderSceneData]): Table[string, string] = RenderSceneData_vmap

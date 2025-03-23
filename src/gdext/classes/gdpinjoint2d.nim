@@ -81,7 +81,3 @@ template `motorEnabled=`*(self: PinJoint2D; value) = self.setMotorEnabled(value)
 
 template motorTargetVelocity*(self: PinJoint2D): untyped = self.getMotorTargetVelocity()
 template `motorTargetVelocity=`*(self: PinJoint2D; value) = self.setMotorTargetVelocity(value)
-
-const PinJoint2D_vmap =
-  Joint2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PinJoint2D]): Table[string, string] = PinJoint2D_vmap

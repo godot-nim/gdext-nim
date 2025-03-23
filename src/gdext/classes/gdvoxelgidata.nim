@@ -134,7 +134,3 @@ template `useTwoBounces=`*(self: VoxelGIData; value) = self.setUseTwoBounces(val
 
 template interior*(self: VoxelGIData): untyped = self.isInterior()
 template `interior=`*(self: VoxelGIData; value) = self.setInterior(value)
-
-const VoxelGIData_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VoxelGIData]): Table[string, string] = VoxelGIData_vmap

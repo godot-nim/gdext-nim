@@ -218,7 +218,3 @@ template `textOverrunBehavior=`*(self: TextLine; value) = self.setTextOverrunBeh
 
 template ellipsisChar*(self: TextLine): untyped = self.getEllipsisChar()
 template `ellipsisChar=`*(self: TextLine; value) = self.setEllipsisChar(value)
-
-const TextLine_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextLine]): Table[string, string] = TextLine_vmap

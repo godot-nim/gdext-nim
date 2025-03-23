@@ -16,7 +16,3 @@ proc isDegreesMode*(self: VisualShaderNodeParticleMultiplyByAxisAngle): bool =
 
 template degreesMode*(self: VisualShaderNodeParticleMultiplyByAxisAngle): untyped = self.isDegreesMode()
 template `degreesMode=`*(self: VisualShaderNodeParticleMultiplyByAxisAngle; value) = self.setDegreesMode(value)
-
-const VisualShaderNodeParticleMultiplyByAxisAngle_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleMultiplyByAxisAngle]): Table[string, string] = VisualShaderNodeParticleMultiplyByAxisAngle_vmap

@@ -16,7 +16,3 @@ proc getDescription*(self: VisualShaderNodeComment): String =
 
 template description*(self: VisualShaderNodeComment): untyped = self.getDescription()
 template `description=`*(self: VisualShaderNodeComment; value) = self.setDescription(value)
-
-const VisualShaderNodeComment_vmap =
-  VisualShaderNodeFrame.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeComment]): Table[string, string] = VisualShaderNodeComment_vmap

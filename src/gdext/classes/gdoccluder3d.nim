@@ -15,7 +15,3 @@ proc getIndices*(self: Occluder3D): PackedInt32Array =
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
-
-const Occluder3D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Occluder3D]): Table[string, string] = Occluder3D_vmap

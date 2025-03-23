@@ -1,7 +1,3 @@
-{.warning[UnusedImport]:off.}
-
-import gdext/coronation/header/classindex
-
 type
   AudioServer* = ptr object of Object
   CameraServer* = ptr object of Object

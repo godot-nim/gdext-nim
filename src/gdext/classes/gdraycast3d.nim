@@ -209,7 +209,3 @@ template `debugShapeCustomColor=`*(self: RayCast3D; value) = self.setDebugShapeC
 
 template debugShapeThickness*(self: RayCast3D): untyped = self.getDebugShapeThickness()
 template `debugShapeThickness=`*(self: RayCast3D; value) = self.setDebugShapeThickness(value)
-
-const RayCast3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RayCast3D]): Table[string, string] = RayCast3D_vmap

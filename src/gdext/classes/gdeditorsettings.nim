@@ -62,7 +62,7 @@ proc getRecentDirs*(self: EditorSettings): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: TypedArray[InputEvent]): void =
+proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: TypedArray[gdref InputEvent]): void =
   expandMethodBind(className EditorSettings, "set_builtin_action_override", 1209351045)
   methodbind.ptrcall(self, [getPtr name, getPtr actionsList])
 
@@ -82,11 +82,7 @@ proc markSettingChanged*(self: EditorSettings; setting: String): void =
   expandMethodBind(className EditorSettings, "mark_setting_changed", 83702148)
   methodbind.ptrcall(self, [getPtr setting])
 
-const EditorSettings_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorSettings]): Table[string, string] = EditorSettings_vmap
-
-proc settingsChanged*(self: EditorSettings): Error =
+proc call_settingsChanged*(self: EditorSettings): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("settings_changed")

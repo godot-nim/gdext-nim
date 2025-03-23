@@ -16,7 +16,3 @@ proc getOperator*(self: VisualShaderNodeTransformVecMult): VisualShaderNodeTrans
 
 template operator*(self: VisualShaderNodeTransformVecMult): untyped = self.getOperator()
 template `operator=`*(self: VisualShaderNodeTransformVecMult; value) = self.setOperator(value)
-
-const VisualShaderNodeTransformVecMult_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTransformVecMult]): Table[string, string] = VisualShaderNodeTransformVecMult_vmap

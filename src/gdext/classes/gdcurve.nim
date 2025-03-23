@@ -184,17 +184,13 @@ template `bakeResolution=`*(self: Curve; value) = self.setBakeResolution(value)
 template pointCount*(self: Curve): untyped = self.getPointCount()
 template `pointCount=`*(self: Curve; value) = self.setPointCount(value)
 
-const Curve_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Curve]): Table[string, string] = Curve_vmap
-
-proc rangeChanged*(self: Curve): Error =
+proc call_rangeChanged*(self: Curve): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("range_changed")
   self.emitSignal(signalname)
 
-proc domainChanged*(self: Curve): Error =
+proc call_domainChanged*(self: Curve): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("domain_changed")

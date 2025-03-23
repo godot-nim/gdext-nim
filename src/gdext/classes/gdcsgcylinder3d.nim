@@ -81,7 +81,3 @@ template `smoothFaces=`*(self: CSGCylinder3D; value) = self.setSmoothFaces(value
 
 template material*(self: CSGCylinder3D): untyped = self.getMaterial()
 template `material=`*(self: CSGCylinder3D; value) = self.setMaterial(value)
-
-const CSGCylinder3D_vmap =
-  CSGPrimitive3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CSGCylinder3D]): Table[string, string] = CSGCylinder3D_vmap

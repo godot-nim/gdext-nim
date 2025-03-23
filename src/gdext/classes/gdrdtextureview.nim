@@ -68,7 +68,3 @@ template `swizzleB=`*(self: RDTextureView; value) = self.setSwizzleB(value)
 
 template swizzleA*(self: RDTextureView): untyped = self.getSwizzleA()
 template `swizzleA=`*(self: RDTextureView; value) = self.setSwizzleA(value)
-
-const RDTextureView_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDTextureView]): Table[string, string] = RDTextureView_vmap

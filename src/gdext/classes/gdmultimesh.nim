@@ -186,7 +186,3 @@ template `customDataArray=`*(self: MultiMesh; value) = self.setCustomDataArray(v
 
 template physicsInterpolationQuality*(self: MultiMesh): untyped = self.getPhysicsInterpolationQuality()
 template `physicsInterpolationQuality=`*(self: MultiMesh; value) = self.setPhysicsInterpolationQuality(value)
-
-const MultiMesh_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiMesh]): Table[string, string] = MultiMesh_vmap

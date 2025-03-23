@@ -153,7 +153,3 @@ template `maxIterations=`*(self: SkeletonIK3D; value) = self.setMaxIterations(va
 
 template interpolation*(self: SkeletonIK3D): untyped = self.getInterpolation()
 template `interpolation=`*(self: SkeletonIK3D; value) = self.setInterpolation(value)
-
-const SkeletonIK3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonIK3D]): Table[string, string] = SkeletonIK3D_vmap

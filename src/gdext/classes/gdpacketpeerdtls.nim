@@ -23,7 +23,3 @@ proc getStatus*(self: PacketPeerDTLS): PacketPeerDTLS_Status =
 proc disconnectFromPeer*(self: PacketPeerDTLS): void =
   expandMethodBind(className PacketPeerDTLS, "disconnect_from_peer", 3218959716)
   methodbind.ptrcall(self, [])
-
-const PacketPeerDTLS_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PacketPeerDTLS]): Table[string, string] = PacketPeerDTLS_vmap

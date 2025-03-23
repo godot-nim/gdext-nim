@@ -21,7 +21,3 @@ proc getBuiltInIncludeFile*(_: typedesc[ShaderIncludeDB]; filename: String): Str
   var ret: encoded String
   methodbind.ptrcall([getPtr filename], addr ret)
   (addr ret).decode_result(String)
-
-const ShaderIncludeDB_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ShaderIncludeDB]): Table[string, string] = ShaderIncludeDB_vmap

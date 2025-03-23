@@ -61,7 +61,3 @@ template `bias=`*(self: Joint2D; value) = self.setBias(value)
 
 template disableCollision*(self: Joint2D): untyped = self.getExcludeNodesFromCollision()
 template `disableCollision=`*(self: Joint2D; value) = self.setExcludeNodesFromCollision(value)
-
-const Joint2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Joint2D]): Table[string, string] = Joint2D_vmap

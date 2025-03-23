@@ -27,7 +27,3 @@ proc getState*(self: PackedScene): gdref SceneState =
   var ret: encoded gdref SceneState
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref SceneState)
-
-const PackedScene_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PackedScene]): Table[string, string] = PackedScene_vmap

@@ -165,11 +165,7 @@ template `blendMode=`*(self: AnimationNodeBlendSpace2D; value) = self.setBlendMo
 template sync*(self: AnimationNodeBlendSpace2D): untyped = self.isUsingSync()
 template `sync=`*(self: AnimationNodeBlendSpace2D; value) = self.setUseSync(value)
 
-const AnimationNodeBlendSpace2D_vmap =
-  AnimationRootNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeBlendSpace2D]): Table[string, string] = AnimationNodeBlendSpace2D_vmap
-
-proc trianglesUpdated*(self: AnimationNodeBlendSpace2D): Error =
+proc call_trianglesUpdated*(self: AnimationNodeBlendSpace2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("triangles_updated")

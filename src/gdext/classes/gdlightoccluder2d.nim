@@ -42,7 +42,3 @@ template `sdfCollision=`*(self: LightOccluder2D; value) = self.setAsSdfCollision
 
 template occluderLightMask*(self: LightOccluder2D): untyped = self.getOccluderLightMask()
 template `occluderLightMask=`*(self: LightOccluder2D; value) = self.setOccluderLightMask(value)
-
-const LightOccluder2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LightOccluder2D]): Table[string, string] = LightOccluder2D_vmap

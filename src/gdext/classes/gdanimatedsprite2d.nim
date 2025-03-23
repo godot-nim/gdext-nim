@@ -40,11 +40,11 @@ proc isPlaying*(self: AnimatedSprite2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc play*(self: AnimatedSprite2D; name: StringName = stringName ""; customSpeed: Float = 1.0; fromEnd: bool = false): void =
+proc play*(self: AnimatedSprite2D; name: StringName = default(StringName); customSpeed: Float = 1.0; fromEnd: bool = false): void =
   expandMethodBind(className AnimatedSprite2D, "play", 3269405555)
   methodbind.ptrcall(self, [getPtr name, getPtr customSpeed, getPtr fromEnd])
 
-proc playBackwards*(self: AnimatedSprite2D; name: StringName = stringName ""): void =
+proc playBackwards*(self: AnimatedSprite2D; name: StringName = default(StringName)): void =
   expandMethodBind(className AnimatedSprite2D, "play_backwards", 3323268493)
   methodbind.ptrcall(self, [getPtr name])
 
@@ -166,35 +166,31 @@ template `flipH=`*(self: AnimatedSprite2D; value) = self.setFlipH(value)
 template flipV*(self: AnimatedSprite2D): untyped = self.isFlippedV()
 template `flipV=`*(self: AnimatedSprite2D; value) = self.setFlipV(value)
 
-const AnimatedSprite2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimatedSprite2D]): Table[string, string] = AnimatedSprite2D_vmap
-
-proc spriteFramesChanged*(self: AnimatedSprite2D): Error =
+proc call_spriteFramesChanged*(self: AnimatedSprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("sprite_frames_changed")
   self.emitSignal(signalname)
 
-proc animationChanged*(self: AnimatedSprite2D): Error =
+proc call_animationChanged*(self: AnimatedSprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_changed")
   self.emitSignal(signalname)
 
-proc frameChanged*(self: AnimatedSprite2D): Error =
+proc call_frameChanged*(self: AnimatedSprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("frame_changed")
   self.emitSignal(signalname)
 
-proc animationLooped*(self: AnimatedSprite2D): Error =
+proc call_animationLooped*(self: AnimatedSprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_looped")
   self.emitSignal(signalname)
 
-proc animationFinished*(self: AnimatedSprite2D): Error =
+proc call_animationFinished*(self: AnimatedSprite2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("animation_finished")

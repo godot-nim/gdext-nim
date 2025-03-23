@@ -74,13 +74,13 @@ proc getLocaleName*(self: TranslationServer; locale: String): String =
   methodbind.ptrcall(self, [getPtr locale], addr ret)
   (addr ret).decode_result(String)
 
-proc translate*(self: TranslationServer; message: StringName; context: StringName = stringName ""): StringName =
+proc translate*(self: TranslationServer; message: StringName; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationServer, "translate", 1829228469)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
-proc translatePlural*(self: TranslationServer; message: StringName; pluralMessage: StringName; n: int32; context: StringName = stringName ""): StringName =
+proc translatePlural*(self: TranslationServer; message: StringName; pluralMessage: StringName; n: int32; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationServer, "translate_plural", 229954002)
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
@@ -148,7 +148,3 @@ proc pseudolocalize*(self: TranslationServer; message: StringName): StringName =
 
 template pseudolocalizationEnabled*(self: TranslationServer): untyped = self.isPseudolocalizationEnabled()
 template `pseudolocalizationEnabled=`*(self: TranslationServer; value) = self.setPseudolocalizationEnabled(value)
-
-const TranslationServer_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TranslationServer]): Table[string, string] = TranslationServer_vmap

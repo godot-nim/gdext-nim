@@ -29,7 +29,3 @@ template `a=`*(self: SegmentShape2D; value) = self.setA(value)
 
 template b*(self: SegmentShape2D): untyped = self.getB()
 template `b=`*(self: SegmentShape2D; value) = self.setB(value)
-
-const SegmentShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SegmentShape2D]): Table[string, string] = SegmentShape2D_vmap

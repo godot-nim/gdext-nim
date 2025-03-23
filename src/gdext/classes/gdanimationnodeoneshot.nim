@@ -120,7 +120,3 @@ template `autorestartDelay=`*(self: AnimationNodeOneShot; value) = self.setAutor
 
 template autorestartRandomDelay*(self: AnimationNodeOneShot): untyped = self.getAutorestartRandomDelay()
 template `autorestartRandomDelay=`*(self: AnimationNodeOneShot; value) = self.setAutorestartRandomDelay(value)
-
-const AnimationNodeOneShot_vmap =
-  AnimationNodeSync.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeOneShot]): Table[string, string] = AnimationNodeOneShot_vmap

@@ -55,7 +55,3 @@ template `margin=`*(self: AtlasTexture; value) = self.setMargin(value)
 
 template filterClip*(self: AtlasTexture): untyped = self.hasFilterClip()
 template `filterClip=`*(self: AtlasTexture; value) = self.setFilterClip(value)
-
-const AtlasTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AtlasTexture]): Table[string, string] = AtlasTexture_vmap

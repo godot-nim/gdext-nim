@@ -16,7 +16,3 @@ proc getExpression*(self: VisualShaderNodeExpression): String =
 
 template expression*(self: VisualShaderNodeExpression): untyped = self.getExpression()
 template `expression=`*(self: VisualShaderNodeExpression; value) = self.setExpression(value)
-
-const VisualShaderNodeExpression_vmap =
-  VisualShaderNodeGroupBase.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeExpression]): Table[string, string] = VisualShaderNodeExpression_vmap

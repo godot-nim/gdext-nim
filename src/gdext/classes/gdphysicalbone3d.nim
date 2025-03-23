@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdphysicsbody3d; export gdphysicsbody3d
 
 method integrateForces*(self: PhysicalBone3D; state: PhysicsDirectBodyState3D): void {.base.} = (discard)
-proc integrateForces(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[PhysicalBone3D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState3D))
-template integrateForces_bind*(_: typedesc[PhysicalBone3D]): ClassCallVirtual = integrateForces
+proc registerVirtual_integrateForces*[T: PhysicalBone3D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicalBone3D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState3D))
 
 proc applyCentralImpulse*(self: PhysicalBone3D; impulse: Vector3): void =
   expandMethodBind(className PhysicalBone3D, "apply_central_impulse", 3460891852)
@@ -242,9 +242,3 @@ template `angularVelocity=`*(self: PhysicalBone3D; value) = self.setAngularVeloc
 
 template canSleep*(self: PhysicalBone3D): untyped = self.isAbleToSleep()
 template `canSleep=`*(self: PhysicalBone3D; value) = self.setCanSleep(value)
-
-const PhysicalBone3D_vmap =
-  PhysicsBody3D.vmap.concat toTable {
-    "integrateforces" : "_integrate_forces",
-    }
-template vmap*(_: typedesc[PhysicalBone3D]): Table[string, string] = PhysicalBone3D_vmap

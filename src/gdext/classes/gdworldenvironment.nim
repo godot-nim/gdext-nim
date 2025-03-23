@@ -42,7 +42,3 @@ template `cameraAttributes=`*(self: WorldEnvironment; value) = self.setCameraAtt
 
 template compositor*(self: WorldEnvironment): untyped = self.getCompositor()
 template `compositor=`*(self: WorldEnvironment; value) = self.setCompositor(value)
-
-const WorldEnvironment_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[WorldEnvironment]): Table[string, string] = WorldEnvironment_vmap

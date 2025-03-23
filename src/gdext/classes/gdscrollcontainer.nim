@@ -137,17 +137,13 @@ template `verticalScrollMode=`*(self: ScrollContainer; value) = self.setVertical
 template scrollDeadzone*(self: ScrollContainer): untyped = self.getDeadzone()
 template `scrollDeadzone=`*(self: ScrollContainer; value) = self.setDeadzone(value)
 
-const ScrollContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ScrollContainer]): Table[string, string] = ScrollContainer_vmap
-
-proc scrollStarted*(self: ScrollContainer): Error =
+proc call_scrollStarted*(self: ScrollContainer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("scroll_started")
   self.emitSignal(signalname)
 
-proc scrollEnded*(self: ScrollContainer): Error =
+proc call_scrollEnded*(self: ScrollContainer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("scroll_ended")

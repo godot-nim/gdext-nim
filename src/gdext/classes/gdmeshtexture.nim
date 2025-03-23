@@ -42,7 +42,3 @@ template `baseTexture=`*(self: MeshTexture; value) = self.setBaseTexture(value)
 
 template imageSize*(self: MeshTexture): untyped = self.getImageSize()
 template `imageSize=`*(self: MeshTexture; value) = self.setImageSize(value)
-
-const MeshTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MeshTexture]): Table[string, string] = MeshTexture_vmap

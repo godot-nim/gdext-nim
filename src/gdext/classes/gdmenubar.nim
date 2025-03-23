@@ -143,7 +143,3 @@ template `textDirection=`*(self: MenuBar; value) = self.setTextDirection(value)
 
 template language*(self: MenuBar): untyped = self.getLanguage()
 template `language=`*(self: MenuBar; value) = self.setLanguage(value)
-
-const MenuBar_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MenuBar]): Table[string, string] = MenuBar_vmap

@@ -115,7 +115,3 @@ template `blendMode=`*(self: AnimationNodeBlendSpace1D; value) = self.setBlendMo
 
 template sync*(self: AnimationNodeBlendSpace1D): untyped = self.isUsingSync()
 template `sync=`*(self: AnimationNodeBlendSpace1D; value) = self.setUseSync(value)
-
-const AnimationNodeBlendSpace1D_vmap =
-  AnimationRootNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeBlendSpace1D]): Table[string, string] = AnimationNodeBlendSpace1D_vmap

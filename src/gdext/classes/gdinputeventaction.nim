@@ -49,7 +49,3 @@ template `strength=`*(self: InputEventAction; value) = self.setStrength(value)
 
 template eventIndex*(self: InputEventAction): untyped = self.getEventIndex()
 template `eventIndex=`*(self: InputEventAction; value) = self.setEventIndex(value)
-
-const InputEventAction_vmap =
-  InputEvent.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventAction]): Table[string, string] = InputEventAction_vmap

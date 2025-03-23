@@ -27,7 +27,3 @@ proc update*(self: ImageTexture; image: gdref Image): void =
 proc setSizeOverride*(self: ImageTexture; size: Vector2i): void =
   expandMethodBind(className ImageTexture, "set_size_override", 1130785943)
   methodbind.ptrcall(self, [getPtr size])
-
-const ImageTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ImageTexture]): Table[string, string] = ImageTexture_vmap

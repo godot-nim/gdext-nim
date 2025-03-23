@@ -16,7 +16,3 @@ proc isExplicitElapse*(self: AnimationNodeTimeSeek): bool =
 
 template explicitElapse*(self: AnimationNodeTimeSeek): untyped = self.isExplicitElapse()
 template `explicitElapse=`*(self: AnimationNodeTimeSeek; value) = self.setExplicitElapse(value)
-
-const AnimationNodeTimeSeek_vmap =
-  AnimationNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AnimationNodeTimeSeek]): Table[string, string] = AnimationNodeTimeSeek_vmap

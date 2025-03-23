@@ -84,7 +84,3 @@ template `strength=`*(self: SkeletonModificationStack2D; value) = self.setStreng
 
 template modificationCount*(self: SkeletonModificationStack2D): untyped = self.getModificationCount()
 template `modificationCount=`*(self: SkeletonModificationStack2D; value) = self.setModificationCount(value)
-
-const SkeletonModificationStack2D_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModificationStack2D]): Table[string, string] = SkeletonModificationStack2D_vmap

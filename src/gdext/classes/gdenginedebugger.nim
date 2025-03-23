@@ -111,7 +111,3 @@ proc removeBreakpoint*(self: EngineDebugger; line: int32; source: StringName): v
 proc clearBreakpoints*(self: EngineDebugger): void =
   expandMethodBind(className EngineDebugger, "clear_breakpoints", 3218959716)
   methodbind.ptrcall(self, [])
-
-const EngineDebugger_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EngineDebugger]): Table[string, string] = EngineDebugger_vmap

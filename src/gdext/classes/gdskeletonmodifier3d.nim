@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdnode3d; export gdnode3d
 
 method processModification*(self: SkeletonModifier3D): void {.base.} = (discard)
-proc processModification(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[SkeletonModifier3D](p_instance).processModification()
-template processModification_bind*(_: typedesc[SkeletonModifier3D]): ClassCallVirtual = processModification
+proc registerVirtual_processModification*[T: SkeletonModifier3D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_process_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[SkeletonModifier3D](p_instance).processModification()
 
 proc getSkeleton*(self: SkeletonModifier3D): Skeleton3D =
   expandMethodBind(className SkeletonModifier3D, "get_skeleton", 1488626673)
@@ -41,13 +41,7 @@ template `active=`*(self: SkeletonModifier3D; value) = self.setActive(value)
 template influence*(self: SkeletonModifier3D): untyped = self.getInfluence()
 template `influence=`*(self: SkeletonModifier3D; value) = self.setInfluence(value)
 
-const SkeletonModifier3D_vmap =
-  Node3D.vmap.concat toTable {
-    "processmodification" : "_process_modification",
-    }
-template vmap*(_: typedesc[SkeletonModifier3D]): Table[string, string] = SkeletonModifier3D_vmap
-
-proc modificationProcessed*(self: SkeletonModifier3D): Error =
+proc call_modificationProcessed*(self: SkeletonModifier3D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("modification_processed")

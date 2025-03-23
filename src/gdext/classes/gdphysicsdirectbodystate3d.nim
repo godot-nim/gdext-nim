@@ -279,7 +279,3 @@ template `sleeping=`*(self: PhysicsDirectBodyState3D; value) = self.setSleepStat
 
 template transform*(self: PhysicsDirectBodyState3D): untyped = self.getTransform()
 template `transform=`*(self: PhysicsDirectBodyState3D; value) = self.setTransform(value)
-
-const PhysicsDirectBodyState3D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsDirectBodyState3D]): Table[string, string] = PhysicsDirectBodyState3D_vmap

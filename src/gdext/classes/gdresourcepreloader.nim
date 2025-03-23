@@ -36,7 +36,3 @@ proc getResourceList*(self: ResourcePreloader): PackedStringArray =
 
 template resources*(self: ResourcePreloader): untyped = self.getResources()
 template `resources=`*(self: ResourcePreloader; value) = self.setResources(value)
-
-const ResourcePreloader_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ResourcePreloader]): Table[string, string] = ResourcePreloader_vmap

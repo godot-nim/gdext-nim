@@ -120,7 +120,3 @@ template `autoExposureMinSensitivity=`*(self: CameraAttributesPractical; value) 
 
 template autoExposureMaxSensitivity*(self: CameraAttributesPractical): untyped = self.getAutoExposureMaxSensitivity()
 template `autoExposureMaxSensitivity=`*(self: CameraAttributesPractical; value) = self.setAutoExposureMaxSensitivity(value)
-
-const CameraAttributesPractical_vmap =
-  CameraAttributes.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CameraAttributesPractical]): Table[string, string] = CameraAttributesPractical_vmap

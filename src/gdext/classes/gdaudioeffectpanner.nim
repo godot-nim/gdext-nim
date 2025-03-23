@@ -16,7 +16,3 @@ proc getPan*(self: AudioEffectPanner): Float =
 
 template pan*(self: AudioEffectPanner): untyped = self.getPan()
 template `pan=`*(self: AudioEffectPanner; value) = self.setPan(value)
-
-const AudioEffectPanner_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectPanner]): Table[string, string] = AudioEffectPanner_vmap

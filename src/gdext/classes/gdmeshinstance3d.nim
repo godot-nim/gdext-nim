@@ -120,7 +120,3 @@ template `skin=`*(self: MeshInstance3D; value) = self.setSkin(value)
 
 template skeleton*(self: MeshInstance3D): untyped = self.getSkeletonPath()
 template `skeleton=`*(self: MeshInstance3D; value) = self.setSkeletonPath(value)
-
-const MeshInstance3D_vmap =
-  GeometryInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MeshInstance3D]): Table[string, string] = MeshInstance3D_vmap

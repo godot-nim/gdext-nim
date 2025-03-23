@@ -398,7 +398,3 @@ template `secondaryNegativeLimitAngle=`*(self: LookAtModifier3D; value) = self.s
 
 template secondaryNegativeDampThreshold*(self: LookAtModifier3D): untyped = self.getSecondaryNegativeDampThreshold()
 template `secondaryNegativeDampThreshold=`*(self: LookAtModifier3D; value) = self.setSecondaryNegativeDampThreshold(value)
-
-const LookAtModifier3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LookAtModifier3D]): Table[string, string] = LookAtModifier3D_vmap

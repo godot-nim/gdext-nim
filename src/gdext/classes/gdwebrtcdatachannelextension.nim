@@ -5,114 +5,91 @@ import gdext/coronation/header/classes
 import gdwebrtcdatachannel; export gdwebrtcdatachannel
 
 method getPacket*(self: WebRTCDataChannelExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
-proc getPacket(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getPacket(p_args[0].decode(ptr ptr uint8), p_args[1].decode(ptr int32)).encode(r_ret)
-template getPacket_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getPacket
+proc registerVirtual_getPacket*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getPacket(p_args[0].decode(ptr ptr uint8), p_args[1].decode(ptr int32)).encode(r_ret)
 
 method putPacket*(self: WebRTCDataChannelExtension; pBuffer: ptr uint8; pBufferSize: int32): Error {.base.} = (discard)
-proc putPacket(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).putPacket(p_args[0].decode(ptr uint8), p_args[1].decode(int32)).encode(r_ret)
-template putPacket_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = putPacket
+proc registerVirtual_putPacket*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_put_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).putPacket(p_args[0].decode(ptr uint8), p_args[1].decode(int32)).encode(r_ret)
 
 method getAvailablePacketCount*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getAvailablePacketCount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getAvailablePacketCount().encode(r_ret)
-template getAvailablePacketCount_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getAvailablePacketCount
+proc registerVirtual_getAvailablePacketCount*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_available_packet_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getAvailablePacketCount().encode(r_ret)
 
 method getMaxPacketSize*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getMaxPacketSize(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxPacketSize().encode(r_ret)
-template getMaxPacketSize_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getMaxPacketSize
+proc registerVirtual_getMaxPacketSize*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_max_packet_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxPacketSize().encode(r_ret)
 
 method poll*(self: WebRTCDataChannelExtension): Error {.base.} = (discard)
-proc poll(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).poll().encode(r_ret)
-template poll_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = poll
+proc registerVirtual_poll*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_poll"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).poll().encode(r_ret)
 
 method close*(self: WebRTCDataChannelExtension): void {.base.} = (discard)
-proc close(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).close()
-template close_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = close
+proc registerVirtual_close*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_close"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).close()
 
 method setWriteMode*(self: WebRTCDataChannelExtension; pWriteMode: WebRTCDataChannel_WriteMode): void {.base.} = (discard)
-proc setWriteMode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).setWriteMode(p_args[0].decode(WebRTCDataChannel_WriteMode))
-template setWriteMode_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = setWriteMode
+proc registerVirtual_setWriteMode*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_write_mode"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).setWriteMode(p_args[0].decode(WebRTCDataChannel_WriteMode))
 
 method getWriteMode*(self: WebRTCDataChannelExtension): WebRTCDataChannel_WriteMode {.base.} = (discard)
-proc getWriteMode(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getWriteMode().encode(r_ret)
-template getWriteMode_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getWriteMode
+proc registerVirtual_getWriteMode*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_write_mode"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getWriteMode().encode(r_ret)
 
 method wasStringPacket*(self: WebRTCDataChannelExtension): bool {.base.} = (discard)
-proc wasStringPacket(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).wasStringPacket().encode(r_ret)
-template wasStringPacket_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = wasStringPacket
+proc registerVirtual_wasStringPacket*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_was_string_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).wasStringPacket().encode(r_ret)
 
 method getReadyState*(self: WebRTCDataChannelExtension): WebRTCDataChannel_ChannelState {.base.} = (discard)
-proc getReadyState(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getReadyState().encode(r_ret)
-template getReadyState_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getReadyState
+proc registerVirtual_getReadyState*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_ready_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getReadyState().encode(r_ret)
 
 method getLabel*(self: WebRTCDataChannelExtension): String {.base.} = (discard)
-proc getLabel(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getLabel().encode(r_ret)
-template getLabel_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getLabel
+proc registerVirtual_getLabel*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_label"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getLabel().encode(r_ret)
 
 method isOrdered*(self: WebRTCDataChannelExtension): bool {.base.} = (discard)
-proc isOrdered(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).isOrdered().encode(r_ret)
-template isOrdered_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = isOrdered
+proc registerVirtual_isOrdered*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_ordered"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).isOrdered().encode(r_ret)
 
 method getId*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getId(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getId().encode(r_ret)
-template getId_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getId
+proc registerVirtual_getId*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_id"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getId().encode(r_ret)
 
 method getMaxPacketLifeTime*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getMaxPacketLifeTime(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxPacketLifeTime().encode(r_ret)
-template getMaxPacketLifeTime_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getMaxPacketLifeTime
+proc registerVirtual_getMaxPacketLifeTime*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_max_packet_life_time"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxPacketLifeTime().encode(r_ret)
 
 method getMaxRetransmits*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getMaxRetransmits(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxRetransmits().encode(r_ret)
-template getMaxRetransmits_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getMaxRetransmits
+proc registerVirtual_getMaxRetransmits*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_max_retransmits"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getMaxRetransmits().encode(r_ret)
 
 method getProtocol*(self: WebRTCDataChannelExtension): String {.base.} = (discard)
-proc getProtocol(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getProtocol().encode(r_ret)
-template getProtocol_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getProtocol
+proc registerVirtual_getProtocol*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_protocol"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getProtocol().encode(r_ret)
 
 method isNegotiated*(self: WebRTCDataChannelExtension): bool {.base.} = (discard)
-proc isNegotiated(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).isNegotiated().encode(r_ret)
-template isNegotiated_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = isNegotiated
+proc registerVirtual_isNegotiated*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_negotiated"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).isNegotiated().encode(r_ret)
 
 method getBufferedAmount*(self: WebRTCDataChannelExtension): int32 {.base.} = (discard)
-proc getBufferedAmount(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[WebRTCDataChannelExtension](p_instance).getBufferedAmount().encode(r_ret)
-template getBufferedAmount_bind*(_: typedesc[WebRTCDataChannelExtension]): ClassCallVirtual = getBufferedAmount
-
-const WebRTCDataChannelExtension_vmap =
-  WebRTCDataChannel.vmap.concat toTable {
-    "getpacket" : "_get_packet",
-    "putpacket" : "_put_packet",
-    "getavailablepacketcount" : "_get_available_packet_count",
-    "getmaxpacketsize" : "_get_max_packet_size",
-    "poll" : "_poll",
-    "close" : "_close",
-    "setwritemode" : "_set_write_mode",
-    "getwritemode" : "_get_write_mode",
-    "wasstringpacket" : "_was_string_packet",
-    "getreadystate" : "_get_ready_state",
-    "getlabel" : "_get_label",
-    "isordered" : "_is_ordered",
-    "getid" : "_get_id",
-    "getmaxpacketlifetime" : "_get_max_packet_life_time",
-    "getmaxretransmits" : "_get_max_retransmits",
-    "getprotocol" : "_get_protocol",
-    "isnegotiated" : "_is_negotiated",
-    "getbufferedamount" : "_get_buffered_amount",
-    }
-template vmap*(_: typedesc[WebRTCDataChannelExtension]): Table[string, string] = WebRTCDataChannelExtension_vmap
+proc registerVirtual_getBufferedAmount*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_buffered_amount"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[WebRTCDataChannelExtension](p_instance).getBufferedAmount().encode(r_ret)

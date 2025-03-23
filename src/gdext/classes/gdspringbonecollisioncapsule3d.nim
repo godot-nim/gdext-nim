@@ -42,7 +42,3 @@ template `height=`*(self: SpringBoneCollisionCapsule3D; value) = self.setHeight(
 
 template inside*(self: SpringBoneCollisionCapsule3D): untyped = self.isInside()
 template `inside=`*(self: SpringBoneCollisionCapsule3D; value) = self.setInside(value)
-
-const SpringBoneCollisionCapsule3D_vmap =
-  SpringBoneCollision3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SpringBoneCollisionCapsule3D]): Table[string, string] = SpringBoneCollisionCapsule3D_vmap

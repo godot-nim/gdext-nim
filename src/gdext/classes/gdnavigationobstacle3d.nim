@@ -146,7 +146,3 @@ template `avoidanceLayers=`*(self: NavigationObstacle3D; value) = self.setAvoida
 
 template use3DAvoidance*(self: NavigationObstacle3D): untyped = self.getUse3DAvoidance()
 template `use3DAvoidance=`*(self: NavigationObstacle3D; value) = self.setUse3DAvoidance(value)
-
-const NavigationObstacle3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationObstacle3D]): Table[string, string] = NavigationObstacle3D_vmap

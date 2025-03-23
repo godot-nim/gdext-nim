@@ -50,44 +50,40 @@ proc reimportFiles*(self: EditorFileSystem; files: PackedStringArray): void =
   expandMethodBind(className EditorFileSystem, "reimport_files", 4015028928)
   methodbind.ptrcall(self, [getPtr files])
 
-const EditorFileSystem_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorFileSystem]): Table[string, string] = EditorFileSystem_vmap
-
-proc filesystemChanged*(self: EditorFileSystem): Error =
+proc call_filesystemChanged*(self: EditorFileSystem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("filesystem_changed")
   self.emitSignal(signalname)
 
-proc scriptClassesUpdated*(self: EditorFileSystem): Error =
+proc call_scriptClassesUpdated*(self: EditorFileSystem): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("script_classes_updated")
   self.emitSignal(signalname)
 
-proc sourcesChanged*(self: EditorFileSystem; exist: Variant): Error =
+proc call_sourcesChanged*(self: EditorFileSystem; exist: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("sources_changed")
   let args = [exist]
   self.emitSignal(signalname, args)
 
-proc resourcesReimporting*(self: EditorFileSystem; resources: Variant): Error =
+proc call_resourcesReimporting*(self: EditorFileSystem; resources: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resources_reimporting")
   let args = [resources]
   self.emitSignal(signalname, args)
 
-proc resourcesReimported*(self: EditorFileSystem; resources: Variant): Error =
+proc call_resourcesReimported*(self: EditorFileSystem; resources: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resources_reimported")
   let args = [resources]
   self.emitSignal(signalname, args)
 
-proc resourcesReload*(self: EditorFileSystem; resources: Variant): Error =
+proc call_resourcesReload*(self: EditorFileSystem; resources: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("resources_reload")

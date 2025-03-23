@@ -208,7 +208,3 @@ template `shadowFilterSmooth=`*(self: Light2D; value) = self.setShadowSmooth(val
 
 template shadowItemCullMask*(self: Light2D): untyped = self.getItemShadowCullMask()
 template `shadowItemCullMask=`*(self: Light2D; value) = self.setItemShadowCullMask(value)
-
-const Light2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Light2D]): Table[string, string] = Light2D_vmap

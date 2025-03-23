@@ -48,7 +48,3 @@ template `vrsStrength=`*(self: XRVRS; value) = self.setVrsStrength(value)
 
 template vrsRenderRegion*(self: XRVRS): untyped = self.getVrsRenderRegion()
 template `vrsRenderRegion=`*(self: XRVRS; value) = self.setVrsRenderRegion(value)
-
-const XRVRS_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRVRS]): Table[string, string] = XRVRS_vmap

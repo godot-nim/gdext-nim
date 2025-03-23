@@ -42,7 +42,3 @@ template `whichFeed=`*(self: CameraTexture; value) = self.setWhichFeed(value)
 
 template cameraIsActive*(self: CameraTexture): untyped = self.getCameraActive()
 template `cameraIsActive=`*(self: CameraTexture; value) = self.setCameraActive(value)
-
-const CameraTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CameraTexture]): Table[string, string] = CameraTexture_vmap

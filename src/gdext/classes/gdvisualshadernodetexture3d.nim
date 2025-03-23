@@ -16,7 +16,3 @@ proc getTexture*(self: VisualShaderNodeTexture3D): gdref Texture3D =
 
 template texture*(self: VisualShaderNodeTexture3D): untyped = self.getTexture()
 template `texture=`*(self: VisualShaderNodeTexture3D; value) = self.setTexture(value)
-
-const VisualShaderNodeTexture3D_vmap =
-  VisualShaderNodeSample3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTexture3D]): Table[string, string] = VisualShaderNodeTexture3D_vmap

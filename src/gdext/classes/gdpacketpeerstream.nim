@@ -42,7 +42,3 @@ template `outputBufferMaxSize=`*(self: PacketPeerStream; value) = self.setOutput
 
 template streamPeer*(self: PacketPeerStream): untyped = self.getStreamPeer()
 template `streamPeer=`*(self: PacketPeerStream; value) = self.setStreamPeer(value)
-
-const PacketPeerStream_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PacketPeerStream]): Table[string, string] = PacketPeerStream_vmap

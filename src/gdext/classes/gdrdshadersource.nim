@@ -41,7 +41,3 @@ template `sourceCompute=`*(self: RDShaderSource; value) = self.setStageSource(Re
 
 template language*(self: RDShaderSource): untyped = self.getLanguage()
 template `language=`*(self: RDShaderSource; value) = self.setLanguage(value)
-
-const RDShaderSource_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDShaderSource]): Table[string, string] = RDShaderSource_vmap

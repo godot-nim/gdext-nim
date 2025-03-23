@@ -65,11 +65,7 @@ template `pose=`*(self: XRNode3D; value) = self.setPoseName(value)
 template showWhenTracked*(self: XRNode3D): untyped = self.getShowWhenTracked()
 template `showWhenTracked=`*(self: XRNode3D; value) = self.setShowWhenTracked(value)
 
-const XRNode3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRNode3D]): Table[string, string] = XRNode3D_vmap
-
-proc trackingChanged*(self: XRNode3D; tracking: Variant): Error =
+proc call_trackingChanged*(self: XRNode3D; tracking: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("tracking_changed")

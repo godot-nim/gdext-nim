@@ -68,7 +68,3 @@ template `specularFactor=`*(self: GLTFSpecGloss; value) = self.setSpecularFactor
 
 template specGlossImg*(self: GLTFSpecGloss): untyped = self.getSpecGlossImg()
 template `specGlossImg=`*(self: GLTFSpecGloss; value) = self.setSpecGlossImg(value)
-
-const GLTFSpecGloss_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFSpecGloss]): Table[string, string] = GLTFSpecGloss_vmap

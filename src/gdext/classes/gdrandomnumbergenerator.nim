@@ -69,7 +69,3 @@ template `seed=`*(self: RandomNumberGenerator; value) = self.setSeed(value)
 
 template state*(self: RandomNumberGenerator): untyped = self.getState()
 template `state=`*(self: RandomNumberGenerator; value) = self.setState(value)
-
-const RandomNumberGenerator_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RandomNumberGenerator]): Table[string, string] = RandomNumberGenerator_vmap

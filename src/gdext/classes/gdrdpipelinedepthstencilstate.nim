@@ -276,7 +276,3 @@ template `backOpWriteMask=`*(self: RDPipelineDepthStencilState; value) = self.se
 
 template backOpReference*(self: RDPipelineDepthStencilState): untyped = self.getBackOpReference()
 template `backOpReference=`*(self: RDPipelineDepthStencilState; value) = self.setBackOpReference(value)
-
-const RDPipelineDepthStencilState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineDepthStencilState]): Table[string, string] = RDPipelineDepthStencilState_vmap

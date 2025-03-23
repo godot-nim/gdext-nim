@@ -29,7 +29,3 @@ template `varyingName=`*(self: VisualShaderNodeVarying; value) = self.setVarying
 
 template varyingType*(self: VisualShaderNodeVarying): untyped = self.getVaryingType()
 template `varyingType=`*(self: VisualShaderNodeVarying; value) = self.setVaryingType(value)
-
-const VisualShaderNodeVarying_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeVarying]): Table[string, string] = VisualShaderNodeVarying_vmap

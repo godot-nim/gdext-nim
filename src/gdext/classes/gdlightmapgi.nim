@@ -289,7 +289,3 @@ template `generateProbesSubdiv=`*(self: LightmapGI; value) = self.setGeneratePro
 
 template lightData*(self: LightmapGI): untyped = self.getLightData()
 template `lightData=`*(self: LightmapGI; value) = self.setLightData(value)
-
-const LightmapGI_vmap =
-  VisualInstance3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[LightmapGI]): Table[string, string] = LightmapGI_vmap

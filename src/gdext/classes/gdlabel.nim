@@ -306,7 +306,3 @@ template `structuredTextBidiOverride=`*(self: Label; value) = self.setStructured
 
 template structuredTextBidiOverrideOptions*(self: Label): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: Label; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-const Label_vmap =
-  Control.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Label]): Table[string, string] = Label_vmap

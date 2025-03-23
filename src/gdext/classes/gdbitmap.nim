@@ -70,7 +70,3 @@ proc opaqueToPolygons*(self: BitMap; rect: Rect2i; epsilon: Float = 2.0): TypedA
 
 template data*(self: BitMap): untyped = self.getData()
 template `data=`*(self: BitMap; value) = self.setData(value)
-
-const BitMap_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[BitMap]): Table[string, string] = BitMap_vmap

@@ -5,18 +5,11 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method parseFile*(self: EditorTranslationParserPlugin; path: String): TypedArray[PackedStringArray] {.base.} = (discard)
-proc parseFile(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorTranslationParserPlugin](p_instance).parseFile(p_args[0].decode(String)).encode(r_ret)
-template parseFile_bind*(_: typedesc[EditorTranslationParserPlugin]): ClassCallVirtual = parseFile
+proc registerVirtual_parseFile*[T: EditorTranslationParserPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_parse_file"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorTranslationParserPlugin](p_instance).parseFile(p_args[0].decode(String)).encode(r_ret)
 
 method getRecognizedExtensions*(self: EditorTranslationParserPlugin): PackedStringArray {.base.} = (discard)
-proc getRecognizedExtensions(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorTranslationParserPlugin](p_instance).getRecognizedExtensions().encode(r_ret)
-template getRecognizedExtensions_bind*(_: typedesc[EditorTranslationParserPlugin]): ClassCallVirtual = getRecognizedExtensions
-
-const EditorTranslationParserPlugin_vmap =
-  RefCounted.vmap.concat toTable {
-    "parsefile" : "_parse_file",
-    "getrecognizedextensions" : "_get_recognized_extensions",
-    }
-template vmap*(_: typedesc[EditorTranslationParserPlugin]): Table[string, string] = EditorTranslationParserPlugin_vmap
+proc registerVirtual_getRecognizedExtensions*[T: EditorTranslationParserPlugin](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_recognized_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorTranslationParserPlugin](p_instance).getRecognizedExtensions().encode(r_ret)

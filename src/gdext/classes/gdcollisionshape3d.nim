@@ -63,7 +63,3 @@ template `debugColor=`*(self: CollisionShape3D; value) = self.setDebugColor(valu
 
 template debugFill*(self: CollisionShape3D): untyped = self.getEnableDebugFill()
 template `debugFill=`*(self: CollisionShape3D; value) = self.setEnableDebugFill(value)
-
-const CollisionShape3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CollisionShape3D]): Table[string, string] = CollisionShape3D_vmap

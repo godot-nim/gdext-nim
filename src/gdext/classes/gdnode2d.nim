@@ -199,7 +199,3 @@ template `globalSkew=`*(self: Node2D; value) = self.setGlobalSkew(value)
 
 template globalTransform*(self: Node2D): untyped = self.getGlobalTransform()
 template `globalTransform=`*(self: Node2D; value) = self.setGlobalTransform(value)
-
-const Node2D_vmap =
-  CanvasItem.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Node2D]): Table[string, string] = Node2D_vmap

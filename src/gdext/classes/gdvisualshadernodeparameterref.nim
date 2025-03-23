@@ -19,7 +19,3 @@ template `parameterName=`*(self: VisualShaderNodeParameterRef; value) = self.set
 
 template paramType*(self: VisualShaderNodeParameterRef): untyped = self.getParameterType()
 template `paramType=`*(self: VisualShaderNodeParameterRef; value) = self.setParameterType(value)
-
-const VisualShaderNodeParameterRef_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParameterRef]): Table[string, string] = VisualShaderNodeParameterRef_vmap

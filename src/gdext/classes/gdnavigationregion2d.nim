@@ -130,17 +130,13 @@ template `enterCost=`*(self: NavigationRegion2D; value) = self.setEnterCost(valu
 template travelCost*(self: NavigationRegion2D): untyped = self.getTravelCost()
 template `travelCost=`*(self: NavigationRegion2D; value) = self.setTravelCost(value)
 
-const NavigationRegion2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationRegion2D]): Table[string, string] = NavigationRegion2D_vmap
-
-proc navigationPolygonChanged*(self: NavigationRegion2D): Error =
+proc call_navigationPolygonChanged*(self: NavigationRegion2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("navigation_polygon_changed")
   self.emitSignal(signalname)
 
-proc bakeFinished*(self: NavigationRegion2D): Error =
+proc call_bakeFinished*(self: NavigationRegion2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("bake_finished")

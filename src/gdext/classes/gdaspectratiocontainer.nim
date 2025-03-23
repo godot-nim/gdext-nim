@@ -55,7 +55,3 @@ template `alignmentHorizontal=`*(self: AspectRatioContainer; value) = self.setAl
 
 template alignmentVertical*(self: AspectRatioContainer): untyped = self.getAlignmentVertical()
 template `alignmentVertical=`*(self: AspectRatioContainer; value) = self.setAlignmentVertical(value)
-
-const AspectRatioContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AspectRatioContainer]): Table[string, string] = AspectRatioContainer_vmap

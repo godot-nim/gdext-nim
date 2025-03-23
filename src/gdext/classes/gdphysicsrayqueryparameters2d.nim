@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc create*(_: typedesc[PhysicsRayQueryParameters2D]; `from`: Vector2; to: Vector2; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[RID] = TypedArray[RID](gdarray())): gdref PhysicsRayQueryParameters2D =
+proc create*(_: typedesc[PhysicsRayQueryParameters2D]; `from`: Vector2; to: Vector2; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[RID] = typedArray[RID]()): gdref PhysicsRayQueryParameters2D =
   expandMethodBind(className PhysicsRayQueryParameters2D, "create", 3196569324)
   var ret: encoded gdref PhysicsRayQueryParameters2D
   methodbind.ptrcall([getPtr `from`, getPtr to, getPtr collisionMask, getPtr exclude], addr ret)
@@ -100,7 +100,3 @@ template `collideWithAreas=`*(self: PhysicsRayQueryParameters2D; value) = self.s
 
 template hitFromInside*(self: PhysicsRayQueryParameters2D): untyped = self.isHitFromInsideEnabled()
 template `hitFromInside=`*(self: PhysicsRayQueryParameters2D; value) = self.setHitFromInside(value)
-
-const PhysicsRayQueryParameters2D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsRayQueryParameters2D]): Table[string, string] = PhysicsRayQueryParameters2D_vmap

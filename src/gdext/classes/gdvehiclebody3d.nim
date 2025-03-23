@@ -42,7 +42,3 @@ template `brake=`*(self: VehicleBody3D; value) = self.setBrake(value)
 
 template steering*(self: VehicleBody3D): untyped = self.getSteering()
 template `steering=`*(self: VehicleBody3D; value) = self.setSteering(value)
-
-const VehicleBody3D_vmap =
-  RigidBody3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VehicleBody3D]): Table[string, string] = VehicleBody3D_vmap

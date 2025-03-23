@@ -141,11 +141,7 @@ template `followViewportEnabled=`*(self: CanvasLayer; value) = self.setFollowVie
 template followViewportScale*(self: CanvasLayer): untyped = self.getFollowViewportScale()
 template `followViewportScale=`*(self: CanvasLayer; value) = self.setFollowViewportScale(value)
 
-const CanvasLayer_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CanvasLayer]): Table[string, string] = CanvasLayer_vmap
-
-proc visibilityChanged*(self: CanvasLayer): Error =
+proc call_visibilityChanged*(self: CanvasLayer): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("visibility_changed")

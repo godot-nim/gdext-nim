@@ -55,7 +55,3 @@ template `indeterminate=`*(self: ProgressBar; value) = self.setIndeterminate(val
 
 template editorPreviewIndeterminate*(self: ProgressBar): untyped = self.isEditorPreviewIndeterminateEnabled()
 template `editorPreviewIndeterminate=`*(self: ProgressBar; value) = self.setEditorPreviewIndeterminate(value)
-
-const ProgressBar_vmap =
-  Range.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ProgressBar]): Table[string, string] = ProgressBar_vmap

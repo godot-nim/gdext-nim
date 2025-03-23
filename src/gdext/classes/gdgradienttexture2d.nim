@@ -95,7 +95,3 @@ template `fillTo=`*(self: GradientTexture2D; value) = self.setFillTo(value)
 
 template repeat*(self: GradientTexture2D): untyped = self.getRepeat()
 template `repeat=`*(self: GradientTexture2D; value) = self.setRepeat(value)
-
-const GradientTexture2D_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GradientTexture2D]): Table[string, string] = GradientTexture2D_vmap

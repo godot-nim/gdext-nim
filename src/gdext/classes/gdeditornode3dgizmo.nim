@@ -5,64 +5,64 @@ import gdext/coronation/header/classes
 import gdnode3dgizmo; export gdnode3dgizmo
 
 method redraw*(self: EditorNode3DGizmo): void {.base.} = (discard)
-proc redraw(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).redraw()
-template redraw_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = redraw
+proc registerVirtual_redraw*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_redraw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).redraw()
 
 method getHandleName*(self: EditorNode3DGizmo; id: int32; secondary: bool): String {.base.} = (discard)
-proc getHandleName(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).getHandleName(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
-template getHandleName_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = getHandleName
+proc registerVirtual_getHandleName*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_handle_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).getHandleName(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
 
 method isHandleHighlighted*(self: EditorNode3DGizmo; id: int32; secondary: bool): bool {.base.} = (discard)
-proc isHandleHighlighted(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).isHandleHighlighted(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
-template isHandleHighlighted_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = isHandleHighlighted
+proc registerVirtual_isHandleHighlighted*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_is_handle_highlighted"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).isHandleHighlighted(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
 
 method getHandleValue*(self: EditorNode3DGizmo; id: int32; secondary: bool): Variant {.base.} = (discard)
-proc getHandleValue(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).getHandleValue(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
-template getHandleValue_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = getHandleValue
+proc registerVirtual_getHandleValue*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_handle_value"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).getHandleValue(p_args[0].decode(int32), p_args[1].decode(bool)).encode(r_ret)
 
 method beginHandleAction*(self: EditorNode3DGizmo; id: int32; secondary: bool): void {.base.} = (discard)
-proc beginHandleAction(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).beginHandleAction(p_args[0].decode(int32), p_args[1].decode(bool))
-template beginHandleAction_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = beginHandleAction
+proc registerVirtual_beginHandleAction*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_begin_handle_action"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).beginHandleAction(p_args[0].decode(int32), p_args[1].decode(bool))
 
 method setHandle*(self: EditorNode3DGizmo; id: int32; secondary: bool; camera: Camera3D; point: Vector2): void {.base.} = (discard)
-proc setHandle(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).setHandle(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(Camera3D), p_args[3].decode(Vector2))
-template setHandle_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = setHandle
+proc registerVirtual_setHandle*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_handle"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).setHandle(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(Camera3D), p_args[3].decode(Vector2))
 
 method commitHandle*(self: EditorNode3DGizmo; id: int32; secondary: bool; restore: Variant; cancel: bool): void {.base.} = (discard)
-proc commitHandle(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).commitHandle(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(Variant), p_args[3].decode(bool))
-template commitHandle_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = commitHandle
+proc registerVirtual_commitHandle*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_commit_handle"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).commitHandle(p_args[0].decode(int32), p_args[1].decode(bool), p_args[2].decode(Variant), p_args[3].decode(bool))
 
 method subgizmosIntersectRay*(self: EditorNode3DGizmo; camera: Camera3D; point: Vector2): int32 {.base.} = (discard)
-proc subgizmosIntersectRay(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectRay(p_args[0].decode(Camera3D), p_args[1].decode(Vector2)).encode(r_ret)
-template subgizmosIntersectRay_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = subgizmosIntersectRay
+proc registerVirtual_subgizmosIntersectRay*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_subgizmos_intersect_ray"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectRay(p_args[0].decode(Camera3D), p_args[1].decode(Vector2)).encode(r_ret)
 
 method subgizmosIntersectFrustum*(self: EditorNode3DGizmo; camera: Camera3D; frustum: TypedArray[Plane]): PackedInt32Array {.base.} = (discard)
-proc subgizmosIntersectFrustum(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectFrustum(p_args[0].decode(Camera3D), p_args[1].decode(TypedArray[Plane])).encode(r_ret)
-template subgizmosIntersectFrustum_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = subgizmosIntersectFrustum
+proc registerVirtual_subgizmosIntersectFrustum*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_subgizmos_intersect_frustum"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectFrustum(p_args[0].decode(Camera3D), p_args[1].decode(TypedArray[Plane])).encode(r_ret)
 
 method setSubgizmoTransform*(self: EditorNode3DGizmo; id: int32; transform: Transform3D): void {.base.} = (discard)
-proc setSubgizmoTransform(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).setSubgizmoTransform(p_args[0].decode(int32), p_args[1].decode(Transform3D))
-template setSubgizmoTransform_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = setSubgizmoTransform
+proc registerVirtual_setSubgizmoTransform*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_subgizmo_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).setSubgizmoTransform(p_args[0].decode(int32), p_args[1].decode(Transform3D))
 
 method getSubgizmoTransform*(self: EditorNode3DGizmo; id: int32): Transform3D {.base.} = (discard)
-proc getSubgizmoTransform(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).getSubgizmoTransform(p_args[0].decode(int32)).encode(r_ret)
-template getSubgizmoTransform_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = getSubgizmoTransform
+proc registerVirtual_getSubgizmoTransform*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_subgizmo_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).getSubgizmoTransform(p_args[0].decode(int32)).encode(r_ret)
 
 method commitSubgizmos*(self: EditorNode3DGizmo; ids: PackedInt32Array; restores: TypedArray[Transform3D]; cancel: bool): void {.base.} = (discard)
-proc commitSubgizmos(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[EditorNode3DGizmo](p_instance).commitSubgizmos(p_args[0].decode(PackedInt32Array), p_args[1].decode(TypedArray[Transform3D]), p_args[2].decode(bool))
-template commitSubgizmos_bind*(_: typedesc[EditorNode3DGizmo]): ClassCallVirtual = commitSubgizmos
+proc registerVirtual_commitSubgizmos*[T: EditorNode3DGizmo](Self: typedesc[T]) =
+  Self.vmethods[stringName"_commit_subgizmos"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorNode3DGizmo](p_instance).commitSubgizmos(p_args[0].decode(PackedInt32Array), p_args[1].decode(TypedArray[Transform3D]), p_args[2].decode(bool))
 
 proc addLines*(self: EditorNode3DGizmo; lines: PackedVector3Array; material: gdref Material; billboard: bool = false; modulate: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className EditorNode3DGizmo, "add_lines", 2910971437)
@@ -123,20 +123,3 @@ proc getSubgizmoSelection*(self: EditorNode3DGizmo): PackedInt32Array =
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
-
-const EditorNode3DGizmo_vmap =
-  Node3DGizmo.vmap.concat toTable {
-    "redraw" : "_redraw",
-    "gethandlename" : "_get_handle_name",
-    "ishandlehighlighted" : "_is_handle_highlighted",
-    "gethandlevalue" : "_get_handle_value",
-    "beginhandleaction" : "_begin_handle_action",
-    "sethandle" : "_set_handle",
-    "commithandle" : "_commit_handle",
-    "subgizmosintersectray" : "_subgizmos_intersect_ray",
-    "subgizmosintersectfrustum" : "_subgizmos_intersect_frustum",
-    "setsubgizmotransform" : "_set_subgizmo_transform",
-    "getsubgizmotransform" : "_get_subgizmo_transform",
-    "commitsubgizmos" : "_commit_subgizmos",
-    }
-template vmap*(_: typedesc[EditorNode3DGizmo]): Table[string, string] = EditorNode3DGizmo_vmap

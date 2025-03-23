@@ -42,7 +42,3 @@ template `actionType=`*(self: OpenXRAction; value) = self.setActionType(value)
 
 template toplevelPaths*(self: OpenXRAction): untyped = self.getToplevelPaths()
 template `toplevelPaths=`*(self: OpenXRAction; value) = self.setToplevelPaths(value)
-
-const OpenXRAction_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRAction]): Table[string, string] = OpenXRAction_vmap

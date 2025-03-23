@@ -55,7 +55,3 @@ template `wrapS=`*(self: GLTFTextureSampler; value) = self.setWrapS(value)
 
 template wrapT*(self: GLTFTextureSampler): untyped = self.getWrapT()
 template `wrapT=`*(self: GLTFTextureSampler; value) = self.setWrapT(value)
-
-const GLTFTextureSampler_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFTextureSampler]): Table[string, string] = GLTFTextureSampler_vmap

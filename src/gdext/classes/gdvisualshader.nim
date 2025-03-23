@@ -114,7 +114,3 @@ proc hasVarying*(self: VisualShader; name: String): bool =
 
 template graphOffset*(self: VisualShader): untyped = self.getGraphOffset()
 template `graphOffset=`*(self: VisualShader; value) = self.setGraphOffset(value)
-
-const VisualShader_vmap =
-  Shader.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShader]): Table[string, string] = VisualShader_vmap

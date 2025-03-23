@@ -68,7 +68,3 @@ template `drive=`*(self: AudioEffectDistortion; value) = self.setDrive(value)
 
 template postGain*(self: AudioEffectDistortion): untyped = self.getPostGain()
 template `postGain=`*(self: AudioEffectDistortion; value) = self.setPostGain(value)
-
-const AudioEffectDistortion_vmap =
-  AudioEffect.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioEffectDistortion]): Table[string, string] = AudioEffectDistortion_vmap

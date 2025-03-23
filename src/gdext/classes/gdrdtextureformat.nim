@@ -154,7 +154,3 @@ template `isResolveBuffer=`*(self: RDTextureFormat; value) = self.setIsResolveBu
 
 template isDiscardable*(self: RDTextureFormat): untyped = self.getIsDiscardable()
 template `isDiscardable=`*(self: RDTextureFormat; value) = self.setIsDiscardable(value)
-
-const RDTextureFormat_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDTextureFormat]): Table[string, string] = RDTextureFormat_vmap

@@ -5,9 +5,9 @@ import gdext/coronation/header/classes
 import gdgraphelement; export gdgraphelement
 
 method drawPort*(self: GraphNode; slotIndex: int32; position: Vector2i; left: bool; color: Color): void {.base.} = (discard)
-proc drawPort(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[GraphNode](p_instance).drawPort(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(bool), p_args[3].decode(Color))
-template drawPort_bind*(_: typedesc[GraphNode]): ClassCallVirtual = drawPort
+proc registerVirtual_drawPort*[T: GraphNode](Self: typedesc[T]) =
+  Self.vmethods[stringName"_draw_port"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[GraphNode](p_instance).drawPort(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(bool), p_args[3].decode(Color))
 
 proc setTitle*(self: GraphNode; title: String): void =
   expandMethodBind(className GraphNode, "set_title", 83702148)
@@ -203,13 +203,7 @@ template `title=`*(self: GraphNode; value) = self.setTitle(value)
 template ignoreInvalidConnectionType*(self: GraphNode): untyped = self.isIgnoringValidConnectionType()
 template `ignoreInvalidConnectionType=`*(self: GraphNode; value) = self.setIgnoreInvalidConnectionType(value)
 
-const GraphNode_vmap =
-  GraphElement.vmap.concat toTable {
-    "drawport" : "_draw_port",
-    }
-template vmap*(_: typedesc[GraphNode]): Table[string, string] = GraphNode_vmap
-
-proc slotUpdated*(self: GraphNode; slotIndex: Variant): Error =
+proc call_slotUpdated*(self: GraphNode; slotIndex: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("slot_updated")

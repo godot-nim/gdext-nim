@@ -99,7 +99,3 @@ template `alphaBlend=`*(self: OpenXRCompositionLayer; value) = self.setAlphaBlen
 
 template enableHolePunch*(self: OpenXRCompositionLayer): untyped = self.getEnableHolePunch()
 template `enableHolePunch=`*(self: OpenXRCompositionLayer; value) = self.setEnableHolePunch(value)
-
-const OpenXRCompositionLayer_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRCompositionLayer]): Table[string, string] = OpenXRCompositionLayer_vmap

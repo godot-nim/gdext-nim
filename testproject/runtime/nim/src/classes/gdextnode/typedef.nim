@@ -2,8 +2,9 @@ import testutils
 import std/[tables, strutils]
 
 import gdext
-import gdext/gdinterface/[native, extracommands]
-import gdext/core/[gdclass, typeshift]
+import gdext/private/typeshift
+import gdext/private/native
+import gdext/private/gdinterface
 
 import classes/gdvirtualnode01
 
@@ -39,7 +40,7 @@ proc test_Object(self: GDExtNode) =
   suite "Object":
     test "instantiate":
       let obj: Object = instantiate Object
-      check obj.owner != nil
+      check obj.engineInstance != nil
       destroy obj
 
     test "singleton":
@@ -143,7 +144,7 @@ proc test_FirstClassFunction(self: GDExtNode) =
       check self.connect("signal_arg1", self.callable"listen_1") == ok
 
     test "execute call_group":
-      self.getTree.callGroup(&"tester", &"lesten_call_group", variant "Hello, world!")
+      self.getTree.callGroup("tester", "lesten_call_group", variant "Hello, world!")
       check result_call_group
     test "send Signal":
       check self.signal_arg0() == ok

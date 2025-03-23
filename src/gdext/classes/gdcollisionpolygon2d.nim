@@ -68,7 +68,3 @@ template `oneWayCollision=`*(self: CollisionPolygon2D; value) = self.setOneWayCo
 
 template oneWayCollisionMargin*(self: CollisionPolygon2D): untyped = self.getOneWayCollisionMargin()
 template `oneWayCollisionMargin=`*(self: CollisionPolygon2D; value) = self.setOneWayCollisionMargin(value)
-
-const CollisionPolygon2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CollisionPolygon2D]): Table[string, string] = CollisionPolygon2D_vmap

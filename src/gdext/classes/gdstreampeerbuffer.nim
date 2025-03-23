@@ -46,7 +46,3 @@ proc duplicate*(self: StreamPeerBuffer): gdref StreamPeerBuffer =
 
 template dataArray*(self: StreamPeerBuffer): untyped = self.getDataArray()
 template `dataArray=`*(self: StreamPeerBuffer; value) = self.setDataArray(value)
-
-const StreamPeerBuffer_vmap =
-  StreamPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[StreamPeerBuffer]): Table[string, string] = StreamPeerBuffer_vmap

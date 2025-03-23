@@ -48,7 +48,3 @@ template `granulePositions=`*(self: OggPacketSequence; value) = self.setPacketGr
 
 template samplingRate*(self: OggPacketSequence): untyped = self.getSamplingRate()
 template `samplingRate=`*(self: OggPacketSequence; value) = self.setSamplingRate(value)
-
-const OggPacketSequence_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OggPacketSequence]): Table[string, string] = OggPacketSequence_vmap

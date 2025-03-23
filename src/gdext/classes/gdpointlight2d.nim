@@ -45,7 +45,3 @@ template `textureScale=`*(self: PointLight2D; value) = self.setTextureScale(valu
 
 template height*(self: PointLight2D): untyped = self.getHeight()
 template `height=`*(self: PointLight2D; value) = self.setHeight(value)
-
-const PointLight2D_vmap =
-  Light2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PointLight2D]): Table[string, string] = PointLight2D_vmap

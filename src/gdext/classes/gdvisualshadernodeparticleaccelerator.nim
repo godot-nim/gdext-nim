@@ -16,7 +16,3 @@ proc getMode*(self: VisualShaderNodeParticleAccelerator): VisualShaderNodePartic
 
 template mode*(self: VisualShaderNodeParticleAccelerator): untyped = self.getMode()
 template `mode=`*(self: VisualShaderNodeParticleAccelerator; value) = self.setMode(value)
-
-const VisualShaderNodeParticleAccelerator_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeParticleAccelerator]): Table[string, string] = VisualShaderNodeParticleAccelerator_vmap

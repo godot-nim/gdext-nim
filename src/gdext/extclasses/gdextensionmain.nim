@@ -1,7 +1,7 @@
-import gdext/core/[builtinindex, gdclass]
+import gdext/private/gdinterface
+import gdext/builtinindex
 import gdext/classes/[gdengine]
-import gdext/gen/[classindex]
-import gdext/surface/[userclass, classutils]
+import gdext/objecttools
 import gdext/buildconf
 
 import std/macros
@@ -29,5 +29,5 @@ template eliminateExtensionMain* =
   destroy extmain
 
 when isMainModule:
-  import gdext/gdinterface/native
+  import gdext/private/native
   initializeExtensionMain()

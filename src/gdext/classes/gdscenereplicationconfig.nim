@@ -69,7 +69,3 @@ proc propertyGetWatch*(self: SceneReplicationConfig; path: NodePath): bool =
 proc propertySetWatch*(self: SceneReplicationConfig; path: NodePath; enabled: bool): void =
   expandMethodBind(className SceneReplicationConfig, "property_set_watch", 3868023870)
   methodbind.ptrcall(self, [getPtr path, getPtr enabled])
-
-const SceneReplicationConfig_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SceneReplicationConfig]): Table[string, string] = SceneReplicationConfig_vmap

@@ -16,7 +16,3 @@ proc getColor*(self: CanvasModulate): Color =
 
 template color*(self: CanvasModulate): untyped = self.getColor()
 template `color=`*(self: CanvasModulate; value) = self.setColor(value)
-
-const CanvasModulate_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CanvasModulate]): Table[string, string] = CanvasModulate_vmap

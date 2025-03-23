@@ -55,7 +55,3 @@ proc getBindBone*(self: Skin; bindIndex: int32): int32 =
 proc clearBinds*(self: Skin): void =
   expandMethodBind(className Skin, "clear_binds", 3218959716)
   methodbind.ptrcall(self, [])
-
-const Skin_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Skin]): Table[string, string] = Skin_vmap

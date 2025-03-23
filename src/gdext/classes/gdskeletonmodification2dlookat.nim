@@ -92,7 +92,3 @@ template `bone2dNode=`*(self: SkeletonModification2DLookAt; value) = self.setBon
 
 template targetNodepath*(self: SkeletonModification2DLookAt): untyped = self.getTargetNode()
 template `targetNodepath=`*(self: SkeletonModification2DLookAt; value) = self.setTargetNode(value)
-
-const SkeletonModification2DLookAt_vmap =
-  SkeletonModification2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkeletonModification2DLookAt]): Table[string, string] = SkeletonModification2DLookAt_vmap

@@ -23,7 +23,3 @@ proc getListenerTransform*(self: AudioListener3D): Transform3D =
   var ret: encoded Transform3D
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform3D)
-
-const AudioListener3D_vmap =
-  Node3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioListener3D]): Table[string, string] = AudioListener3D_vmap

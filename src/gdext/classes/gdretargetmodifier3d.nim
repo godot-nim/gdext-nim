@@ -72,7 +72,3 @@ template `useGlobalPose=`*(self: RetargetModifier3D; value) = self.setUseGlobalP
 
 template enable*(self: RetargetModifier3D): untyped = self.getEnableFlags()
 template `enable=`*(self: RetargetModifier3D; value) = self.setEnableFlags(value)
-
-const RetargetModifier3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RetargetModifier3D]): Table[string, string] = RetargetModifier3D_vmap

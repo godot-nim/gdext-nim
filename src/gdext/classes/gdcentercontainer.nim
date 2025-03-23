@@ -16,7 +16,3 @@ proc isUsingTopLeft*(self: CenterContainer): bool =
 
 template useTopLeft*(self: CenterContainer): untyped = self.isUsingTopLeft()
 template `useTopLeft=`*(self: CenterContainer; value) = self.setUseTopLeft(value)
-
-const CenterContainer_vmap =
-  Container.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CenterContainer]): Table[string, string] = CenterContainer_vmap

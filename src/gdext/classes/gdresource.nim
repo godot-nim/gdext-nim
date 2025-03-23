@@ -5,24 +5,24 @@ import gdext/coronation/header/classes
 import gdrefcounted; export gdrefcounted
 
 method setupLocalToScene*(self: Resource): void {.base.} = (discard)
-proc setupLocalToScene(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Resource](p_instance).setupLocalToScene()
-template setupLocalToScene_bind*(_: typedesc[Resource]): ClassCallVirtual = setupLocalToScene
+proc registerVirtual_setupLocalToScene*[T: Resource](Self: typedesc[T]) =
+  Self.vmethods[stringName"_setup_local_to_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Resource](p_instance).setupLocalToScene()
 
 method getRid*(self: Resource): RID {.base.} = (discard)
-proc getRid(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Resource](p_instance).getRid().encode(r_ret)
-template getRid_bind*(_: typedesc[Resource]): ClassCallVirtual = getRid
+proc registerVirtual_getRid*[T: Resource](Self: typedesc[T]) =
+  Self.vmethods[stringName"_get_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Resource](p_instance).getRid().encode(r_ret)
 
 method resetState*(self: Resource): void {.base.} = (discard)
-proc resetState(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Resource](p_instance).resetState()
-template resetState_bind*(_: typedesc[Resource]): ClassCallVirtual = resetState
+proc registerVirtual_resetState*[T: Resource](Self: typedesc[T]) =
+  Self.vmethods[stringName"_reset_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Resource](p_instance).resetState()
 
 method setPathCache*(self: Resource; path: String): void {.base.} = (discard)
-proc setPathCache(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
-template setPathCache_bind*(_: typedesc[Resource]): ClassCallVirtual = setPathCache
+proc registerVirtual_setPathCache*[T: Resource](Self: typedesc[T]) =
+  Self.vmethods[stringName"_set_path_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
 
 proc setPath*(self: Resource; path: String): void =
   expandMethodBind(className Resource, "set_path", 83702148)
@@ -136,22 +136,13 @@ template `resourceName=`*(self: Resource; value) = self.setName(value)
 template resourceSceneUniqueId*(self: Resource): untyped = self.getSceneUniqueId()
 template `resourceSceneUniqueId=`*(self: Resource; value) = self.setSceneUniqueId(value)
 
-const Resource_vmap =
-  RefCounted.vmap.concat toTable {
-    "setuplocaltoscene" : "_setup_local_to_scene",
-    "getrid" : "_get_rid",
-    "resetstate" : "_reset_state",
-    "setpathcache" : "_set_path_cache",
-    }
-template vmap*(_: typedesc[Resource]): Table[string, string] = Resource_vmap
-
-proc changed*(self: Resource): Error =
+proc call_changed*(self: Resource): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("changed")
   self.emitSignal(signalname)
 
-proc setupLocalToSceneRequested*(self: Resource): Error =
+proc call_setupLocalToSceneRequested*(self: Resource): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("setup_local_to_scene_requested")

@@ -16,7 +16,3 @@ proc getFactor*(self: InputEventMagnifyGesture): Float =
 
 template factor*(self: InputEventMagnifyGesture): untyped = self.getFactor()
 template `factor=`*(self: InputEventMagnifyGesture; value) = self.setFactor(value)
-
-const InputEventMagnifyGesture_vmap =
-  InputEventGesture.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[InputEventMagnifyGesture]): Table[string, string] = InputEventMagnifyGesture_vmap

@@ -15,7 +15,3 @@ proc getMinimumLibraryInitializationLevel*(self: GDExtension): GDExtension_Initi
   var ret: encoded GDExtension_InitializationLevel
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GDExtension_InitializationLevel)
-
-const GDExtension_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GDExtension]): Table[string, string] = GDExtension_vmap

@@ -263,7 +263,3 @@ template `stream62=`*(self: AudioStreamPlaylist; value) = self.setListStream(int
 
 template stream63*(self: AudioStreamPlaylist): untyped = self.getListStream(int32(63))
 template `stream63=`*(self: AudioStreamPlaylist; value) = self.setListStream(int32(63), value)
-
-const AudioStreamPlaylist_vmap =
-  AudioStream.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[AudioStreamPlaylist]): Table[string, string] = AudioStreamPlaylist_vmap

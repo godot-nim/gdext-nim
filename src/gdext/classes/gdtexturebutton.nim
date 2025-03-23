@@ -133,7 +133,3 @@ template `flipH=`*(self: TextureButton; value) = self.setFlipH(value)
 
 template flipV*(self: TextureButton): untyped = self.isFlippedV()
 template `flipV=`*(self: TextureButton; value) = self.setFlipV(value)
-
-const TextureButton_vmap =
-  BaseButton.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[TextureButton]): Table[string, string] = TextureButton_vmap

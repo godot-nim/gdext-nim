@@ -16,7 +16,3 @@ proc getSegments*(self: ConcavePolygonShape2D): PackedVector2Array =
 
 template segments*(self: ConcavePolygonShape2D): untyped = self.getSegments()
 template `segments=`*(self: ConcavePolygonShape2D; value) = self.setSegments(value)
-
-const ConcavePolygonShape2D_vmap =
-  Shape2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[ConcavePolygonShape2D]): Table[string, string] = ConcavePolygonShape2D_vmap

@@ -59,7 +59,3 @@ proc getLocalInterfaces*(self: IP): TypedArray[Dictionary] =
 proc clearCache*(self: IP; hostname: String = gdstring""): void =
   expandMethodBind(className IP, "clear_cache", 3005725572)
   methodbind.ptrcall(self, [getPtr hostname])
-
-const IP_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[IP]): Table[string, string] = IP_vmap

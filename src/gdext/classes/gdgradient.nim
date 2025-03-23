@@ -99,7 +99,3 @@ template `offsets=`*(self: Gradient; value) = self.setOffsets(value)
 
 template colors*(self: Gradient): untyped = self.getColors()
 template `colors=`*(self: Gradient; value) = self.setColors(value)
-
-const Gradient_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Gradient]): Table[string, string] = Gradient_vmap

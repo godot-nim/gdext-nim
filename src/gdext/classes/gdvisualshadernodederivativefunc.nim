@@ -42,7 +42,3 @@ template `function=`*(self: VisualShaderNodeDerivativeFunc; value) = self.setFun
 
 template precision*(self: VisualShaderNodeDerivativeFunc): untyped = self.getPrecision()
 template `precision=`*(self: VisualShaderNodeDerivativeFunc; value) = self.setPrecision(value)
-
-const VisualShaderNodeDerivativeFunc_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeDerivativeFunc]): Table[string, string] = VisualShaderNodeDerivativeFunc_vmap

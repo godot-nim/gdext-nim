@@ -42,7 +42,3 @@ template `function=`*(self: VisualShaderNodeCompare; value) = self.setFunction(v
 
 template condition*(self: VisualShaderNodeCompare): untyped = self.getCondition()
 template `condition=`*(self: VisualShaderNodeCompare; value) = self.setCondition(value)
-
-const VisualShaderNodeCompare_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeCompare]): Table[string, string] = VisualShaderNodeCompare_vmap

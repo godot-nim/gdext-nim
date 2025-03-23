@@ -13,7 +13,3 @@ proc getParam*(self: SliderJoint3D; param: SliderJoint3D_Param): Float =
   var ret: encoded Float
   methodbind.ptrcall(self, [getPtr param], addr ret)
   (addr ret).decode_result(Float)
-
-const SliderJoint3D_vmap =
-  Joint3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SliderJoint3D]): Table[string, string] = SliderJoint3D_vmap

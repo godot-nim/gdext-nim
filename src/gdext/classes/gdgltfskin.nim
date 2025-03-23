@@ -133,7 +133,3 @@ template `jointIToName=`*(self: GLTFSkin; value) = self.setJointIToName(value)
 
 template godotSkin*(self: GLTFSkin): untyped = self.getGodotSkin()
 template `godotSkin=`*(self: GLTFSkin; value) = self.setGodotSkin(value)
-
-const GLTFSkin_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFSkin]): Table[string, string] = GLTFSkin_vmap

@@ -446,43 +446,39 @@ template `debugPathCustomPointSize=`*(self: NavigationAgent2D; value) = self.set
 template debugPathCustomLineWidth*(self: NavigationAgent2D): untyped = self.getDebugPathCustomLineWidth()
 template `debugPathCustomLineWidth=`*(self: NavigationAgent2D; value) = self.setDebugPathCustomLineWidth(value)
 
-const NavigationAgent2D_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationAgent2D]): Table[string, string] = NavigationAgent2D_vmap
-
-proc pathChanged*(self: NavigationAgent2D): Error =
+proc call_pathChanged*(self: NavigationAgent2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("path_changed")
   self.emitSignal(signalname)
 
-proc targetReached*(self: NavigationAgent2D): Error =
+proc call_targetReached*(self: NavigationAgent2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("target_reached")
   self.emitSignal(signalname)
 
-proc waypointReached*(self: NavigationAgent2D; details: Variant): Error =
+proc call_waypointReached*(self: NavigationAgent2D; details: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("waypoint_reached")
   let args = [details]
   self.emitSignal(signalname, args)
 
-proc linkReached*(self: NavigationAgent2D; details: Variant): Error =
+proc call_linkReached*(self: NavigationAgent2D; details: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("link_reached")
   let args = [details]
   self.emitSignal(signalname, args)
 
-proc navigationFinished*(self: NavigationAgent2D): Error =
+proc call_navigationFinished*(self: NavigationAgent2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("navigation_finished")
   self.emitSignal(signalname)
 
-proc velocityComputed*(self: NavigationAgent2D; safeVelocity: Variant): Error =
+proc call_velocityComputed*(self: NavigationAgent2D; safeVelocity: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("velocity_computed")

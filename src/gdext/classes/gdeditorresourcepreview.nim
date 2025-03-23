@@ -24,11 +24,7 @@ proc checkForInvalidation*(self: EditorResourcePreview; path: String): void =
   expandMethodBind(className EditorResourcePreview, "check_for_invalidation", 83702148)
   methodbind.ptrcall(self, [getPtr path])
 
-const EditorResourcePreview_vmap =
-  Node.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[EditorResourcePreview]): Table[string, string] = EditorResourcePreview_vmap
-
-proc previewInvalidated*(self: EditorResourcePreview; path: Variant): Error =
+proc call_previewInvalidated*(self: EditorResourcePreview; path: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("preview_invalidated")

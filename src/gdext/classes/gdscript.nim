@@ -112,7 +112,3 @@ proc getRpcConfig*(self: Script): Variant =
 
 template sourceCode*(self: Script): untyped = self.getSourceCode()
 template `sourceCode=`*(self: Script; value) = self.setSourceCode(value)
-
-const Script_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[Script]): Table[string, string] = Script_vmap

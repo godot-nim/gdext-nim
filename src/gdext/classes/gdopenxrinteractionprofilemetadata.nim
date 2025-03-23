@@ -19,7 +19,3 @@ proc registerInteractionProfile*(self: OpenXRInteractionProfileMetadata; display
 proc registerIoPath*(self: OpenXRInteractionProfileMetadata; interactionProfile: String; displayName: String; toplevelPath: String; openxrPath: String; openxrExtensionName: String; actionType: OpenXRAction_ActionType): void =
   expandMethodBind(className OpenXRInteractionProfileMetadata, "register_io_path", 3443511926)
   methodbind.ptrcall(self, [getPtr interactionProfile, getPtr displayName, getPtr toplevelPath, getPtr openxrPath, getPtr openxrExtensionName, getPtr actionType])
-
-const OpenXRInteractionProfileMetadata_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[OpenXRInteractionProfileMetadata]): Table[string, string] = OpenXRInteractionProfileMetadata_vmap

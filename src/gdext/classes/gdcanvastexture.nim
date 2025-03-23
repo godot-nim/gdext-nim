@@ -94,7 +94,3 @@ template `textureFilter=`*(self: CanvasTexture; value) = self.setTextureFilter(v
 
 template textureRepeat*(self: CanvasTexture): untyped = self.getTextureRepeat()
 template `textureRepeat=`*(self: CanvasTexture; value) = self.setTextureRepeat(value)
-
-const CanvasTexture_vmap =
-  Texture2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[CanvasTexture]): Table[string, string] = CanvasTexture_vmap

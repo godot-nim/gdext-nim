@@ -94,7 +94,3 @@ template `cubicInterp=`*(self: PathFollow2D; value) = self.setCubicInterpolation
 
 template loop*(self: PathFollow2D): untyped = self.hasLoop()
 template `loop=`*(self: PathFollow2D; value) = self.setLoop(value)
-
-const PathFollow2D_vmap =
-  Node2D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PathFollow2D]): Table[string, string] = PathFollow2D_vmap

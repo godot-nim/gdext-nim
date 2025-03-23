@@ -81,7 +81,3 @@ template `enableAlphaToOne=`*(self: RDPipelineMultisampleState; value) = self.se
 
 template sampleMasks*(self: RDPipelineMultisampleState): untyped = self.getSampleMasks()
 template `sampleMasks=`*(self: RDPipelineMultisampleState; value) = self.setSampleMasks(value)
-
-const RDPipelineMultisampleState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDPipelineMultisampleState]): Table[string, string] = RDPipelineMultisampleState_vmap

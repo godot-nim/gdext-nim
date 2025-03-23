@@ -59,7 +59,3 @@ template `pathRids=`*(self: NavigationPathQueryResult3D; value) = self.setPathRi
 
 template pathOwnerIds*(self: NavigationPathQueryResult3D): untyped = self.getPathOwnerIds()
 template `pathOwnerIds=`*(self: NavigationPathQueryResult3D; value) = self.setPathOwnerIds(value)
-
-const NavigationPathQueryResult3D_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[NavigationPathQueryResult3D]): Table[string, string] = NavigationPathQueryResult3D_vmap

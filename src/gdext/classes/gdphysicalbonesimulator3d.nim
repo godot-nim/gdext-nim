@@ -14,7 +14,7 @@ proc physicalBonesStopSimulation*(self: PhysicalBoneSimulator3D): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_stop_simulation", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedArray[StringName] = TypedArray[StringName](gdarray())): void =
+proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedArray[StringName] = typedArray[StringName]()): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_start_simulation", 2787316981)
   methodbind.ptrcall(self, [getPtr bones])
 
@@ -25,7 +25,3 @@ proc physicalBonesAddCollisionException*(self: PhysicalBoneSimulator3D; exceptio
 proc physicalBonesRemoveCollisionException*(self: PhysicalBoneSimulator3D; exception: RID): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_remove_collision_exception", 2722037293)
   methodbind.ptrcall(self, [getPtr exception])
-
-const PhysicalBoneSimulator3D_vmap =
-  SkeletonModifier3D.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicalBoneSimulator3D]): Table[string, string] = PhysicalBoneSimulator3D_vmap

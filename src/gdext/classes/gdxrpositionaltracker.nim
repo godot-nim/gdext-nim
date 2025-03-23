@@ -60,53 +60,49 @@ template `profile=`*(self: XRPositionalTracker; value) = self.setTrackerProfile(
 template hand*(self: XRPositionalTracker): untyped = self.getTrackerHand()
 template `hand=`*(self: XRPositionalTracker; value) = self.setTrackerHand(value)
 
-const XRPositionalTracker_vmap =
-  XRTracker.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[XRPositionalTracker]): Table[string, string] = XRPositionalTracker_vmap
-
-proc poseChanged*(self: XRPositionalTracker; pose: Variant): Error =
+proc call_poseChanged*(self: XRPositionalTracker; pose: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pose_changed")
   let args = [pose]
   self.emitSignal(signalname, args)
 
-proc poseLostTracking*(self: XRPositionalTracker; pose: Variant): Error =
+proc call_poseLostTracking*(self: XRPositionalTracker; pose: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("pose_lost_tracking")
   let args = [pose]
   self.emitSignal(signalname, args)
 
-proc buttonPressed*(self: XRPositionalTracker; name: Variant): Error =
+proc call_buttonPressed*(self: XRPositionalTracker; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("button_pressed")
   let args = [name]
   self.emitSignal(signalname, args)
 
-proc buttonReleased*(self: XRPositionalTracker; name: Variant): Error =
+proc call_buttonReleased*(self: XRPositionalTracker; name: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("button_released")
   let args = [name]
   self.emitSignal(signalname, args)
 
-proc inputFloatChanged*(self: XRPositionalTracker; name: Variant; value: Variant): Error =
+proc call_inputFloatChanged*(self: XRPositionalTracker; name: Variant; value: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_float_changed")
   let args = [name, value]
   self.emitSignal(signalname, args)
 
-proc inputVector2Changed*(self: XRPositionalTracker; name: Variant; vector: Variant): Error =
+proc call_inputVector2Changed*(self: XRPositionalTracker; name: Variant; vector: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_vector2_changed")
   let args = [name, vector]
   self.emitSignal(signalname, args)
 
-proc profileChanged*(self: XRPositionalTracker; role: Variant): Error =
+proc call_profileChanged*(self: XRPositionalTracker; role: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("profile_changed")

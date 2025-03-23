@@ -42,7 +42,3 @@ template `texture=`*(self: VisualShaderNodeTexture; value) = self.setTexture(val
 
 template textureType*(self: VisualShaderNodeTexture): untyped = self.getTextureType()
 template `textureType=`*(self: VisualShaderNodeTexture; value) = self.setTextureType(value)
-
-const VisualShaderNodeTexture_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeTexture]): Table[string, string] = VisualShaderNodeTexture_vmap

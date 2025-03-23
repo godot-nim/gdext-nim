@@ -15,7 +15,3 @@ proc getSkin*(self: SkinReference): gdref Skin =
   var ret: encoded gdref Skin
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Skin)
-
-const SkinReference_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[SkinReference]): Table[string, string] = SkinReference_vmap

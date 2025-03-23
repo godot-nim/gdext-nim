@@ -5,29 +5,29 @@ import gdext/coronation/header/classes
 import gdnode2d; export gdnode2d
 
 method inputEvent*(self: CollisionObject2D; viewport: Viewport; event: gdref InputEvent; shapeIdx: int32): void {.base.} = (discard)
-proc inputEvent(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CollisionObject2D](p_instance).inputEvent(p_args[0].decode(Viewport), p_args[1].decode(gdref InputEvent), p_args[2].decode(int32))
-template inputEvent_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = inputEvent
+proc registerVirtual_inputEvent*[T: CollisionObject2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CollisionObject2D](p_instance).inputEvent(p_args[0].decode(Viewport), p_args[1].decode(gdref InputEvent), p_args[2].decode(int32))
 
 method mouseEnter*(self: CollisionObject2D): void {.base.} = (discard)
-proc mouseEnter(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CollisionObject2D](p_instance).mouseEnter()
-template mouseEnter_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = mouseEnter
+proc registerVirtual_mouseEnter*[T: CollisionObject2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_mouse_enter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CollisionObject2D](p_instance).mouseEnter()
 
 method mouseExit*(self: CollisionObject2D): void {.base.} = (discard)
-proc mouseExit(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CollisionObject2D](p_instance).mouseExit()
-template mouseExit_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = mouseExit
+proc registerVirtual_mouseExit*[T: CollisionObject2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_mouse_exit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CollisionObject2D](p_instance).mouseExit()
 
 method mouseShapeEnter*(self: CollisionObject2D; shapeIdx: int32): void {.base.} = (discard)
-proc mouseShapeEnter(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CollisionObject2D](p_instance).mouseShapeEnter(p_args[0].decode(int32))
-template mouseShapeEnter_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = mouseShapeEnter
+proc registerVirtual_mouseShapeEnter*[T: CollisionObject2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_mouse_shape_enter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CollisionObject2D](p_instance).mouseShapeEnter(p_args[0].decode(int32))
 
 method mouseShapeExit*(self: CollisionObject2D; shapeIdx: int32): void {.base.} = (discard)
-proc mouseShapeExit(p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-  errproof: cast[CollisionObject2D](p_instance).mouseShapeExit(p_args[0].decode(int32))
-template mouseShapeExit_bind*(_: typedesc[CollisionObject2D]): ClassCallVirtual = mouseShapeExit
+proc registerVirtual_mouseShapeExit*[T: CollisionObject2D](Self: typedesc[T]) =
+  Self.vmethods[stringName"_mouse_shape_exit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[CollisionObject2D](p_instance).mouseShapeExit(p_args[0].decode(int32))
 
 proc getRid*(self: CollisionObject2D): RID =
   expandMethodBind(className CollisionObject2D, "get_rid", 2944877500)
@@ -218,43 +218,33 @@ template `collisionPriority=`*(self: CollisionObject2D; value) = self.setCollisi
 template inputPickable*(self: CollisionObject2D): untyped = self.isPickable()
 template `inputPickable=`*(self: CollisionObject2D; value) = self.setPickable(value)
 
-const CollisionObject2D_vmap =
-  Node2D.vmap.concat toTable {
-    "inputevent" : "_input_event",
-    "mouseenter" : "_mouse_enter",
-    "mouseexit" : "_mouse_exit",
-    "mouseshapeenter" : "_mouse_shape_enter",
-    "mouseshapeexit" : "_mouse_shape_exit",
-    }
-template vmap*(_: typedesc[CollisionObject2D]): Table[string, string] = CollisionObject2D_vmap
-
-proc inputEvent*(self: CollisionObject2D; viewport: Variant; event: Variant; shapeIdx: Variant): Error =
+proc call_inputEvent*(self: CollisionObject2D; viewport: Variant; event: Variant; shapeIdx: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_event")
   let args = [viewport, event, shapeIdx]
   self.emitSignal(signalname, args)
 
-proc mouseEntered*(self: CollisionObject2D): Error =
+proc call_mouseEntered*(self: CollisionObject2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_entered")
   self.emitSignal(signalname)
 
-proc mouseExited*(self: CollisionObject2D): Error =
+proc call_mouseExited*(self: CollisionObject2D): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_exited")
   self.emitSignal(signalname)
 
-proc mouseShapeEntered*(self: CollisionObject2D; shapeIdx: Variant): Error =
+proc call_mouseShapeEntered*(self: CollisionObject2D; shapeIdx: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_shape_entered")
   let args = [shapeIdx]
   self.emitSignal(signalname, args)
 
-proc mouseShapeExited*(self: CollisionObject2D; shapeIdx: Variant): Error =
+proc call_mouseShapeExited*(self: CollisionObject2D; shapeIdx: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("mouse_shape_exited")

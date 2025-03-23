@@ -101,18 +101,14 @@ template `transferMode=`*(self: MultiplayerPeer; value) = self.setTransferMode(v
 template transferChannel*(self: MultiplayerPeer): untyped = self.getTransferChannel()
 template `transferChannel=`*(self: MultiplayerPeer; value) = self.setTransferChannel(value)
 
-const MultiplayerPeer_vmap =
-  PacketPeer.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MultiplayerPeer]): Table[string, string] = MultiplayerPeer_vmap
-
-proc peerConnected*(self: MultiplayerPeer; id: Variant): Error =
+proc call_peerConnected*(self: MultiplayerPeer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_connected")
   let args = [id]
   self.emitSignal(signalname, args)
 
-proc peerDisconnected*(self: MultiplayerPeer; id: Variant): Error =
+proc call_peerDisconnected*(self: MultiplayerPeer; id: Variant): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("peer_disconnected")

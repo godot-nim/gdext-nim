@@ -23,11 +23,7 @@ proc getInputRealName*(self: VisualShaderNodeInput): String =
 template inputName*(self: VisualShaderNodeInput): untyped = self.getInputName()
 template `inputName=`*(self: VisualShaderNodeInput; value) = self.setInputName(value)
 
-const VisualShaderNodeInput_vmap =
-  VisualShaderNode.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[VisualShaderNodeInput]): Table[string, string] = VisualShaderNodeInput_vmap
-
-proc inputTypeChanged*(self: VisualShaderNodeInput): Error =
+proc call_inputTypeChanged*(self: VisualShaderNodeInput): Error =
   var signalname {.global.} : Variant
   once:
     signalname = variant stringname("input_type_changed")

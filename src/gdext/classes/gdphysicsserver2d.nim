@@ -585,7 +585,3 @@ proc getProcessInfo*(self: PhysicsServer2D; processInfo: PhysicsServer2D_Process
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr processInfo], addr ret)
   (addr ret).decode_result(int32)
-
-const PhysicsServer2D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsServer2D]): Table[string, string] = PhysicsServer2D_vmap

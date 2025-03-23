@@ -133,7 +133,3 @@ template `vrsMinRadius=`*(self: MobileVRInterface; value) = self.setVrsMinRadius
 
 template vrsStrength*(self: MobileVRInterface): untyped = self.getVrsStrength()
 template `vrsStrength=`*(self: MobileVRInterface; value) = self.setVrsStrength(value)
-
-const MobileVRInterface_vmap =
-  XRInterface.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[MobileVRInterface]): Table[string, string] = MobileVRInterface_vmap

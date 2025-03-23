@@ -198,7 +198,3 @@ template `borderColor=`*(self: RDSamplerState; value) = self.setBorderColor(valu
 
 template unnormalizedUvw*(self: RDSamplerState): untyped = self.getUnnormalizedUvw()
 template `unnormalizedUvw=`*(self: RDSamplerState; value) = self.setUnnormalizedUvw(value)
-
-const RDSamplerState_vmap =
-  RefCounted.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[RDSamplerState]): Table[string, string] = RDSamplerState_vmap

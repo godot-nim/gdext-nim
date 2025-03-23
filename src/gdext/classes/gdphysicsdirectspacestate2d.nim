@@ -39,7 +39,3 @@ proc getRestInfo*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShap
   var ret: encoded Dictionary
   methodbind.ptrcall(self, [getPtr parameters], addr ret)
   (addr ret).decode_result(Dictionary)
-
-const PhysicsDirectSpaceState2D_vmap =
-  Object.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PhysicsDirectSpaceState2D]): Table[string, string] = PhysicsDirectSpaceState2D_vmap

@@ -192,7 +192,3 @@ template `children=`*(self: GLTFNode; value) = self.setChildren(value)
 
 template light*(self: GLTFNode): untyped = self.getLight()
 template `light=`*(self: GLTFNode; value) = self.setLight(value)
-
-const GLTFNode_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[GLTFNode]): Table[string, string] = GLTFNode_vmap

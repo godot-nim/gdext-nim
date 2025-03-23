@@ -50,7 +50,3 @@ proc getBounds*(self: PolygonPathFinder): Rect2 =
 
 template data*(self: PolygonPathFinder): untyped = self.getData()
 template `data=`*(self: PolygonPathFinder; value) = self.setData(value)
-
-const PolygonPathFinder_vmap =
-  Resource.vmap.concat initTable[string, string]()
-template vmap*(_: typedesc[PolygonPathFinder]): Table[string, string] = PolygonPathFinder_vmap
