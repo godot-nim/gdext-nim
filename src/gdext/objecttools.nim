@@ -33,7 +33,7 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
     .getInstanceBinding(T)
 
 {.push, inline.}
-proc castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).asGdRef
+proc castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).referenced
 proc castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.handle.castTo(typeof T).referenced
 
 proc `as`*[T: SomeClass](self: SomeClass; _: typedesc[T]): T = castTo(self, typedesc[T])
