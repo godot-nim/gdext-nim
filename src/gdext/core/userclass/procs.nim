@@ -4,9 +4,9 @@ import gdext/buildconf
 import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/private/staticevents
+import gdext/private/methodinfo
 
 import tools
-import methodinfo
 import virtuals
 
 when Assistance.genEditorHelp:
