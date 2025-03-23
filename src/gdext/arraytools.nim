@@ -1,3 +1,22 @@
+## Array
+## =====
+##
+## A standard collection of Variants provided by Godot that holds values of any type whose conversion to Variant is supported. Create with `gdarray()`.
+##
+## TypedArray\[SomeVariant\]
+## =========================
+##
+## Array that to be statically typed. Internally, it is the same as Array since that uses Variant for the element type, but the type is statically checked. (Attempting to add a `Texture2D` to a `TypedArray[Node]` will result in a compile error.)
+##
+## A good alternative if you want to use Array's API under a static type system.
+##
+## Create with `typedArray[T]()`.
+##
+## PackedArray
+## ===========
+##
+## A primitive dynamic array provided by Godot. Create with `packedByteArray()`, and so on.
+
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
@@ -31,29 +50,20 @@ include gdext/gen/gdpackedvector2array
 include gdext/gen/gdpackedvector3array
 include gdext/gen/gdpackedvector4array
 
-{.push, inline.}
+# Array
+# =====
+
+proc gdarray*(len: Natural): Array =
+  result = gdarray()
+  discard result.resize(len)
+
 proc setLen*(arr: Array; newlen: int) =
   discard arr.resize(newlen)
 proc len*(arr: Array): int = arr.size
 
-proc setLen*(arr: PackedArray; newlen: int) =
-  discard arr.resize(newlen)
-proc len*(arr: PackedArray): int = arr.size
-{.pop.}
-
 iterator items*(arr: Array): Variant =
   for i in 0..<arr.len: yield arr[i]
 iterator pairs*(arr: Array): (int, Variant) =
-  for i in 0..<arr.len: yield (int i, arr[i])
-
-iterator items*[T](arr: TypedArray[T]): T =
-  for i in 0..<arr.len: yield arr[i].get(T)
-iterator pairs*[T](arr: TypedArray[T]): (int, T) =
-  for i in 0..<arr.len: yield (int i, arr[i])
-
-iterator items*[T](arr: PackedArray[T]): T =
-  for i in 0..<arr.len: yield arr[i]
-iterator pairs*[T](arr: PackedArray[T]): (int, T) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
 iterator mitems*(arr: Array): var Variant =
@@ -61,19 +71,8 @@ iterator mitems*(arr: Array): var Variant =
 iterator mpairs*(arr: Array): (int, var Variant) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
-iterator mitems*(arr: TypedArray): var Variant =
-  for v in arr.Array.mitems: yield v
-iterator mpairs*(arr: TypedArray): (int, var Variant) =
-  for i, v in arr.Array.mpairs: yield (i, v)
-
-iterator mitems*[T](arr: PackedArray[T]): var T =
-  for i in 0..<arr.len: yield arr[i]
-iterator mpairs*[T](arr: PackedArray[T]): (int, var T) =
-  for i in 0..<arr.len: yield (int i, arr[i])
-
-proc gdarray*(len: Natural): Array =
-  result = gdarray()
-  discard result.resize(len)
+# TypedArray
+# ==========
 
 proc typedArray*[T](arr: Array): TypedArray[T] =
   TypedArray[T] gdarray(arr, Int T.variantType, stringName(), variant())
@@ -85,10 +84,37 @@ proc typedArray*[T](len: Natural): TypedArray[T] =
   result = typedArray[T]()
   discard result.Array.resize(len)
 
+iterator items*[T](arr: TypedArray[T]): T =
+  for i in 0..<arr.len: yield arr[i].get(T)
+iterator pairs*[T](arr: TypedArray[T]): (int, T) =
+  for i in 0..<arr.len: yield (int i, arr[i])
+
+iterator mitems*(arr: TypedArray): var Variant =
+  for v in arr.Array.mitems: yield v
+iterator mpairs*(arr: TypedArray): (int, var Variant) =
+  for i, v in arr.Array.mpairs: yield (i, v)
+
 proc `[]`*[T](arr: TypedArray[T]; i: int): T =
   arr.Array[i].get(T)
 proc `[]=`*[T](arr: TypedArray[T]; i: int; value: T) =
   arr.Array[i] = variant(value)
+
+# PackedArray
+# ===========
+
+proc setLen*(arr: PackedArray; newlen: int) =
+  discard arr.resize(newlen)
+proc len*(arr: PackedArray): int = arr.size
+
+iterator items*[T](arr: PackedArray[T]): T =
+  for i in 0..<arr.len: yield arr[i]
+iterator pairs*[T](arr: PackedArray[T]): (int, T) =
+  for i in 0..<arr.len: yield (int i, arr[i])
+
+iterator mitems*[T](arr: PackedArray[T]): var T =
+  for i in 0..<arr.len: yield arr[i]
+iterator mpairs*[T](arr: PackedArray[T]): (int, var T) =
+  for i in 0..<arr.len: yield (int i, arr[i])
 
 proc toSeq*[T](arr: PackedArray[T]): seq[T] =
   arr.dataUnsafe.toOpenArray(0, arr.size-1).toSeq
