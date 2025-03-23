@@ -107,10 +107,10 @@ proc new(x: StringName): ref StringName =
 
 
 proc propertyInfo*(typ: VariantType;
-      name: StringName = StringName.empty;
-      class_name: StringName = StringName.empty;
+      name= StringName();
+      class_name= StringName();
       hint: PropertyHint = propertyHint_None;
-      hint_string: String = String.empty;
+      hint_string= String();
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): HeapPropertyInfo =
   HeapPropertyInfo(
@@ -123,9 +123,9 @@ proc propertyInfo*(typ: VariantType;
   )
 
 proc propertyInfo*[T: SomeProperty](_: typedesc[T];
-      name: StringName = StringName.empty;
+      name= StringName();
       hint: PropertyHint = propertyHint_None;
-      hint_string: String = String.empty;
+      hint_string= String();
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): HeapPropertyInfo =
   propertyInfo(
@@ -138,16 +138,16 @@ proc propertyInfo*[T: SomeProperty](_: typedesc[T];
     elif T is enum:
       className T
     else:
-      StringName.empty),
+      StringName()),
     hint,
     hint_string,
     usage + T.uniqueUsage,
   )
 
 proc propertyInfo*[T: SomeProperty](_: typedesc[varargs[T]];
-      name: StringName = StringName.empty;
+      name= StringName();
       hint: PropertyHint = propertyHint_None;
-      hint_string: String = String.empty;
+      hint_string= String();
       usage: system.set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault;
     ): HeapPropertyInfo =
   propertyInfo(typedesc T, name, hint, hint_string, usage)
