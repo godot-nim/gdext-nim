@@ -6,7 +6,7 @@ import gdext/private/staticevents
 import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/typeshift
-import gdext/utils/[debugging]
+import gdext/private/debugging
 import gdext/core/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks

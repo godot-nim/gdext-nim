@@ -1,7 +1,7 @@
 import std/[tables, typetraits, importutils]
 import gdext/private/native
 import gdext/private/macros
-import gdext/utils/debugging
+import gdext/private/debugging
 import gdext/buildconf
 import gdext/builtinindex {.all.}
 import gdext/stringtools
