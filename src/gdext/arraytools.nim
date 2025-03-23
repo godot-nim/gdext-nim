@@ -3,6 +3,7 @@ import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/builtinindex
 import gdext/stringtools
+import gdext/varianttools
 
 import std/sequtils
 

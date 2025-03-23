@@ -19,8 +19,8 @@ import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
 
-import gdext/surface/[ variantutils, conversions ]
-export                 variantutils, conversions
+import gdext/surface/[ conversions ]
+export                 conversions
 
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge
@@ -29,6 +29,7 @@ import gdext/math; export math
 import gdext/swizzles; export swizzles
 import gdext/objectcallbacks; export objectcallbacks
 import gdext/objecttools; export objecttools
+import gdext/varianttools; export varianttools
 import gdext/stringtools; export stringtools
 import gdext/dicttools; export dicttools
 import gdext/arraytools; export arraytools

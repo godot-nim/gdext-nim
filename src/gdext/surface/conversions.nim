@@ -1,7 +1,7 @@
-import gdext/gdinterface/variants
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/objecttools
+import gdext/varianttools
 
 {.push, inline.}
 
