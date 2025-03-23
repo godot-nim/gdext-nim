@@ -91,8 +91,8 @@ type
     g*: float_elem
     b*: float_elem
     a*: float_elem = 1
-  RID* {.byref.} = object
-    opaque: Opaque[2]
+  RID* = object
+    value: uint64
   String* {.byref.} = object
     cowdata: pointer
   StringName* {.byref.} = object
