@@ -39,3 +39,6 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, "nimble test"
     report version, "gdextwiz run-editor testproject/editor"
   echo "All tests passed!"
+
+task docgen, "Generate project documentation":
+  exec "nim doc --project --index:on -o:docs -d:docgen src/gdext"
