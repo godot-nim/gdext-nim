@@ -7,6 +7,8 @@
     <img src="nimble.svg" height="24">
   </a>
 
+   [Documentation][9] | [Coding Guide][4] | [Examples][1] | Templates | [Forum][5] | [Source][8]
+
 </div>
 
 ---
@@ -103,3 +105,5 @@ nimble uninstall gdext
 [5]: https://github.com/godot-nim/gdext-nim/discussions
 [6]: https://github.com/godot-nim/gdext-nim/discussions/categories/ideas
 [7]: https://github.com/godot-nim/.github/issues/5
+[8]: https://github.com/godot-nim/gdext-nim
+[9]: https://godot-nim.github.io/gdext-nim/gdext.html
