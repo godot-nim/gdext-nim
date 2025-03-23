@@ -48,7 +48,7 @@ proc callwithEmitter*(procdef: NimNode): NimNode =
   let errormsg = newlit "The " & $procdef.name & " method of the parent class cannot be called. Verify that the method exists, that the name is correct, and that the class module declaring the method is imported."
   let error = bindSym"lineerror".newCall(errormsg, procdef.name)
   quote do:
-    when compiles(`call`):
+    when declared(`emitter`):
       `call`
     else:
       `error`
