@@ -18,10 +18,6 @@ export InitializationLevel, VariantType, gdcall
 import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
-
-import gdext/surface/[ conversions ]
-export                 conversions
-
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge
 import gdext/appearances; export appearances
@@ -36,6 +32,7 @@ import gdext/arraytools; export arraytools
 import gdext/colortools; export colortools
 import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
+import gdext/conversions; export conversions
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
