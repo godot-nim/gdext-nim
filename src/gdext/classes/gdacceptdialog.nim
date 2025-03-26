@@ -36,7 +36,7 @@ proc getCloseOnEscape*(self: AcceptDialog): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc addButton*(self: AcceptDialog; text: String; right: bool = false; action: String = gdstring""): Button =
+proc addButton*(self: AcceptDialog; text: String; right: bool = false; action: String = newGdString()): Button =
   expandMethodBind(className AcceptDialog, "add_button", 3328440682)
   var ret: encoded Button
   methodbind.ptrcall(self, [getPtr text, getPtr right, getPtr action], addr ret)
@@ -100,22 +100,3 @@ template `dialogCloseOnEscape=`*(self: AcceptDialog; value) = self.setCloseOnEsc
 
 template dialogAutowrap*(self: AcceptDialog): untyped = self.hasAutowrap()
 template `dialogAutowrap=`*(self: AcceptDialog; value) = self.setAutowrap(value)
-
-proc call_confirmed*(self: AcceptDialog): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("confirmed")
-  self.emitSignal(signalname)
-
-proc call_canceled*(self: AcceptDialog): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("canceled")
-  self.emitSignal(signalname)
-
-proc call_customAction*(self: AcceptDialog; action: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("custom_action")
-  let args = [action]
-  self.emitSignal(signalname, args)

@@ -28,10 +28,3 @@ proc isAllowUnpress*(self: ButtonGroup): bool =
 
 template allowUnpress*(self: ButtonGroup): untyped = self.isAllowUnpress()
 template `allowUnpress=`*(self: ButtonGroup; value) = self.setAllowUnpress(value)
-
-proc call_pressed*(self: ButtonGroup; button: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("pressed")
-  let args = [button]
-  self.emitSignal(signalname, args)

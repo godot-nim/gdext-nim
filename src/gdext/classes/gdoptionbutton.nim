@@ -84,7 +84,7 @@ proc isItemSeparator*(self: OptionButton; idx: int32): bool =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(bool)
 
-proc addSeparator*(self: OptionButton; text: String = gdstring""): void =
+proc addSeparator*(self: OptionButton; text: String = newGdString()): void =
   expandMethodBind(className OptionButton, "add_separator", 3005725572)
   methodbind.ptrcall(self, [getPtr text])
 
@@ -185,17 +185,3 @@ template `allowReselect=`*(self: OptionButton; value) = self.setAllowReselect(va
 
 template itemCount*(self: OptionButton): untyped = self.getItemCount()
 template `itemCount=`*(self: OptionButton; value) = self.setItemCount(value)
-
-proc call_itemSelected*(self: OptionButton; index: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("item_selected")
-  let args = [index]
-  self.emitSignal(signalname, args)
-
-proc call_itemFocused*(self: OptionButton; index: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("item_focused")
-  let args = [index]
-  self.emitSignal(signalname, args)

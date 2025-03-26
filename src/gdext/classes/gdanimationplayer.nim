@@ -295,17 +295,3 @@ template `speedScale=`*(self: AnimationPlayer; value) = self.setSpeedScale(value
 
 template movieQuitOnFinish*(self: AnimationPlayer): untyped = self.isMovieQuitOnFinishEnabled()
 template `movieQuitOnFinish=`*(self: AnimationPlayer; value) = self.setMovieQuitOnFinishEnabled(value)
-
-proc call_currentAnimationChanged*(self: AnimationPlayer; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("current_animation_changed")
-  let args = [name]
-  self.emitSignal(signalname, args)
-
-proc call_animationChanged*(self: AnimationPlayer; oldName: Variant; newName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_changed")
-  let args = [oldName, newName]
-  self.emitSignal(signalname, args)

@@ -39,23 +39,3 @@ proc getExtension*(self: GDExtensionManager; path: String): gdref GDExtension =
   var ret: encoded gdref GDExtension
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(gdref GDExtension)
-
-proc call_extensionsReloaded*(self: GDExtensionManager): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("extensions_reloaded")
-  self.emitSignal(signalname)
-
-proc call_extensionLoaded*(self: GDExtensionManager; extension: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("extension_loaded")
-  let args = [extension]
-  self.emitSignal(signalname, args)
-
-proc call_extensionUnloading*(self: GDExtensionManager; extension: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("extension_unloading")
-  let args = [extension]
-  self.emitSignal(signalname, args)

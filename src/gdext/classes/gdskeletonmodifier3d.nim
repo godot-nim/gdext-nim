@@ -6,7 +6,7 @@ import gdnode3d; export gdnode3d
 
 method processModification*(self: SkeletonModifier3D): void {.base.} = (discard)
 proc registerVirtual_processModification*[T: SkeletonModifier3D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_process_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_process_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SkeletonModifier3D](p_instance).processModification()
 
 proc getSkeleton*(self: SkeletonModifier3D): Skeleton3D =
@@ -40,9 +40,3 @@ template `active=`*(self: SkeletonModifier3D; value) = self.setActive(value)
 
 template influence*(self: SkeletonModifier3D): untyped = self.getInfluence()
 template `influence=`*(self: SkeletonModifier3D; value) = self.setInfluence(value)
-
-proc call_modificationProcessed*(self: SkeletonModifier3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("modification_processed")
-  self.emitSignal(signalname)

@@ -6,12 +6,12 @@ import gdhboxcontainer; export gdhboxcontainer
 
 method setCreateOptions*(self: EditorResourcePicker; menuNode: Object): void {.base.} = (discard)
 proc registerVirtual_setCreateOptions*[T: EditorResourcePicker](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_create_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_create_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorResourcePicker](p_instance).setCreateOptions(p_args[0].decode(Object))
 
 method handleMenuSelected*(self: EditorResourcePicker; id: int32): bool {.base.} = (discard)
 proc registerVirtual_handleMenuSelected*[T: EditorResourcePicker](Self: typedesc[T]) =
-  Self.vmethods[stringName"_handle_menu_selected"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_handle_menu_selected"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorResourcePicker](p_instance).handleMenuSelected(p_args[0].decode(int32)).encode(r_ret)
 
 proc setBaseType*(self: EditorResourcePicker; baseType: String): void =
@@ -75,17 +75,3 @@ template `editable=`*(self: EditorResourcePicker; value) = self.setEditable(valu
 
 template toggleMode*(self: EditorResourcePicker): untyped = self.isToggleMode()
 template `toggleMode=`*(self: EditorResourcePicker; value) = self.setToggleMode(value)
-
-proc call_resourceSelected*(self: EditorResourcePicker; resource: Variant; inspect: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("resource_selected")
-  let args = [resource, inspect]
-  self.emitSignal(signalname, args)
-
-proc call_resourceChanged*(self: EditorResourcePicker; resource: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("resource_changed")
-  let args = [resource]
-  self.emitSignal(signalname, args)

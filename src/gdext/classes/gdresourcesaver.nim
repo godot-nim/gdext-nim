@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc save*(self: ResourceSaver; resource: gdref Resource; path: String = gdstring""; flags: set[ResourceSaver_SaverFlags] = {}): Error =
+proc save*(self: ResourceSaver; resource: gdref Resource; path: String = newGdString(); flags: set[ResourceSaver_SaverFlags] = {}): Error =
   expandMethodBind(className ResourceSaver, "save", 2983274697)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr resource, getPtr path, getPtr flags], addr ret)

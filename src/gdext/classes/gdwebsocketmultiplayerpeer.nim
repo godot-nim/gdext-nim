@@ -10,7 +10,7 @@ proc createClient*(self: WebSocketMultiplayerPeer; url: String; tlsClientOptions
   methodbind.ptrcall(self, [getPtr url, getPtr tlsClientOptions], addr ret)
   (addr ret).decode_result(Error)
 
-proc createServer*(self: WebSocketMultiplayerPeer; port: int32; bindAddress: String = gdstring"*"; tlsServerOptions: gdref TLSOptions = default gdref TLSOptions): Error =
+proc createServer*(self: WebSocketMultiplayerPeer; port: int32; bindAddress: String = newGdString("*"); tlsServerOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketMultiplayerPeer, "create_server", 2400822951)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr port, getPtr bindAddress, getPtr tlsServerOptions], addr ret)

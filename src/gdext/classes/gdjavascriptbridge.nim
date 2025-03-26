@@ -42,7 +42,7 @@ proc createObject*(self: JavaScriptBridge; `object`: Variant; args: varargs[Vari
 template createObject*(self: JavaScriptBridge; `object`: String; args: varargs[Variant]): Variant =
   createObject(self, variant `object`, args)
 
-proc downloadBuffer*(self: JavaScriptBridge; buffer: PackedByteArray; name: String; mime: String = gdstring"application/octet-stream"): void =
+proc downloadBuffer*(self: JavaScriptBridge; buffer: PackedByteArray; name: String; mime: String = newGdString("application/octet-stream")): void =
   expandMethodBind(className JavaScriptBridge, "download_buffer", 3352272093)
   methodbind.ptrcall(self, [getPtr buffer, getPtr name, getPtr mime])
 
@@ -61,9 +61,3 @@ proc pwaUpdate*(self: JavaScriptBridge): Error =
 proc forceFsSync*(self: JavaScriptBridge): void =
   expandMethodBind(className JavaScriptBridge, "force_fs_sync", 3218959716)
   methodbind.ptrcall(self, [])
-
-proc call_pwaUpdateAvailable*(self: JavaScriptBridge): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("pwa_update_available")
-  self.emitSignal(signalname)

@@ -43,9 +43,3 @@ template `switchOnHover=`*(self: MenuButton; value) = self.setSwitchOnHover(valu
 
 template itemCount*(self: MenuButton): untyped = self.getItemCount()
 template `itemCount=`*(self: MenuButton; value) = self.setItemCount(value)
-
-proc call_aboutToPopup*(self: MenuButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("about_to_popup")
-  self.emitSignal(signalname)

@@ -16,9 +16,3 @@ proc getCurve*(self: Path3D): gdref Curve3D =
 
 template curve*(self: Path3D): untyped = self.getCurve()
 template `curve=`*(self: Path3D; value) = self.setCurve(value)
-
-proc call_curveChanged*(self: Path3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("curve_changed")
-  self.emitSignal(signalname)

@@ -6,12 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 method estimateCost*(self: AStarGrid2D; fromId: Vector2i; endId: Vector2i): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStarGrid2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AStarGrid2D](p_instance).estimateCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
 
 method computeCost*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i): Float {.base.} = (discard)
 proc registerVirtual_computeCost*[T: AStarGrid2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AStarGrid2D](p_instance).computeCost(p_args[0].decode(Vector2i), p_args[1].decode(Vector2i)).encode(r_ret)
 
 proc setRegion*(self: AStarGrid2D; region: Rect2i): void =

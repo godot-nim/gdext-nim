@@ -6,7 +6,7 @@ import gdrefcounted; export gdrefcounted
 
 method run*(self: EditorScript): void {.base.} = (discard)
 proc registerVirtual_run*[T: EditorScript](Self: typedesc[T]) =
-  Self.vmethods[stringName"_run"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_run"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorScript](p_instance).run()
 
 proc addRootNode*(self: EditorScript; node: Node): void =

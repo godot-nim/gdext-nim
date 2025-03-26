@@ -44,7 +44,7 @@ proc poll*(self: MultiplayerAPI): Error =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Error)
 
-proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array = gdarray()): Error =
+proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array = newArray()): Error =
   expandMethodBind(className MultiplayerAPI, "rpc", 2077486355)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peer, getPtr `object`, getPtr `method`, getPtr arguments], addr ret)
@@ -86,35 +86,3 @@ proc createDefaultInterface*(_: typedesc[MultiplayerAPI]): gdref MultiplayerAPI 
 
 template multiplayerPeer*(self: MultiplayerAPI): untyped = self.getMultiplayerPeer()
 template `multiplayerPeer=`*(self: MultiplayerAPI; value) = self.setMultiplayerPeer(value)
-
-proc call_peerConnected*(self: MultiplayerAPI; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_connected")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_peerDisconnected*(self: MultiplayerAPI; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_disconnected")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_connectedToServer*(self: MultiplayerAPI): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connected_to_server")
-  self.emitSignal(signalname)
-
-proc call_connectionFailed*(self: MultiplayerAPI): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_failed")
-  self.emitSignal(signalname)
-
-proc call_serverDisconnected*(self: MultiplayerAPI): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("server_disconnected")
-  self.emitSignal(signalname)

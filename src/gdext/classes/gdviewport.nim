@@ -760,16 +760,3 @@ template `globalCanvasTransform=`*(self: Viewport; value) = self.setGlobalCanvas
 
 template canvasCullMask*(self: Viewport): untyped = self.getCanvasCullMask()
 template `canvasCullMask=`*(self: Viewport; value) = self.setCanvasCullMask(value)
-
-proc call_sizeChanged*(self: Viewport): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("size_changed")
-  self.emitSignal(signalname)
-
-proc call_guiFocusChanged*(self: Viewport; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("gui_focus_changed")
-  let args = [node]
-  self.emitSignal(signalname, args)

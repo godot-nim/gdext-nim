@@ -94,15 +94,3 @@ template `regionEnabled=`*(self: Sprite3D; value) = self.setRegionEnabled(value)
 
 template regionRect*(self: Sprite3D): untyped = self.getRegionRect()
 template `regionRect=`*(self: Sprite3D; value) = self.setRegionRect(value)
-
-proc call_frameChanged*(self: Sprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_changed")
-  self.emitSignal(signalname)
-
-proc call_textureChanged*(self: Sprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("texture_changed")
-  self.emitSignal(signalname)

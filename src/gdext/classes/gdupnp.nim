@@ -38,7 +38,7 @@ proc getGateway*(self: UPNP): gdref UPNPDevice =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref UPNPDevice)
 
-proc discover*(self: UPNP; timeout: int32 = 2000; ttl: int32 = 2; deviceFilter: String = gdstring"InternetGatewayDevice"): int32 =
+proc discover*(self: UPNP; timeout: int32 = 2000; ttl: int32 = 2; deviceFilter: String = newGdString("InternetGatewayDevice")): int32 =
   expandMethodBind(className UPNP, "discover", 1575334765)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr timeout, getPtr ttl, getPtr deviceFilter], addr ret)
@@ -50,13 +50,13 @@ proc queryExternalAddress*(self: UPNP): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc addPortMapping*(self: UPNP; port: int32; portInternal: int32 = 0; desc: String = gdstring""; proto: String = gdstring"UDP"; duration: int32 = 0): int32 =
+proc addPortMapping*(self: UPNP; port: int32; portInternal: int32 = 0; desc: String = newGdString(); proto: String = newGdString("UDP"); duration: int32 = 0): int32 =
   expandMethodBind(className UPNP, "add_port_mapping", 818314583)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr port, getPtr portInternal, getPtr desc, getPtr proto, getPtr duration], addr ret)
   (addr ret).decode_result(int32)
 
-proc deletePortMapping*(self: UPNP; port: int32; proto: String = gdstring"UDP"): int32 =
+proc deletePortMapping*(self: UPNP; port: int32; proto: String = newGdString("UDP")): int32 =
   expandMethodBind(className UPNP, "delete_port_mapping", 3444187325)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr port, getPtr proto], addr ret)

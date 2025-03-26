@@ -173,10 +173,3 @@ template `environmentBlendMode=`*(self: XRInterface; value) = self.setEnvironmen
 
 template arIsAnchorDetectionEnabled*(self: XRInterface): untyped = self.getAnchorDetectionIsEnabled()
 template `arIsAnchorDetectionEnabled=`*(self: XRInterface; value) = self.setAnchorDetectionIsEnabled(value)
-
-proc call_playAreaChanged*(self: XRInterface; mode: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("play_area_changed")
-  let args = [mode]
-  self.emitSignal(signalname, args)

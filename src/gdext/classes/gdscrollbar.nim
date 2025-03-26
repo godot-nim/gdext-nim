@@ -16,9 +16,3 @@ proc getCustomStep*(self: ScrollBar): Float =
 
 template customStep*(self: ScrollBar): untyped = self.getCustomStep()
 template `customStep=`*(self: ScrollBar; value) = self.setCustomStep(value)
-
-proc call_scrolling*(self: ScrollBar): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scrolling")
-  self.emitSignal(signalname)

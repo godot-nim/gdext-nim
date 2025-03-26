@@ -6,72 +6,72 @@ import gdresource; export gdresource
 
 method getSurfaceCount*(self: Mesh): int32 {.base.} = (discard)
 proc registerVirtual_getSurfaceCount*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_surface_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_surface_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getSurfaceCount().encode(r_ret)
 
 method surfaceGetArrayLen*(self: Mesh; index: int32): int32 {.base.} = (discard)
 proc registerVirtual_surfaceGetArrayLen*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_array_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_array_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrayLen(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetArrayIndexLen*(self: Mesh; index: int32): int32 {.base.} = (discard)
 proc registerVirtual_surfaceGetArrayIndexLen*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_array_index_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_array_index_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrayIndexLen(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetArrays*(self: Mesh; index: int32): Array {.base.} = (discard)
 proc registerVirtual_surfaceGetArrays*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrays(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetBlendShapeArrays*(self: Mesh; index: int32): TypedArray[Array] {.base.} = (discard)
 proc registerVirtual_surfaceGetBlendShapeArrays*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_blend_shape_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_blend_shape_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetBlendShapeArrays(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetLods*(self: Mesh; index: int32): Dictionary {.base.} = (discard)
 proc registerVirtual_surfaceGetLods*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_lods"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_lods"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetLods(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetFormat*(self: Mesh; index: int32): uint32 {.base.} = (discard)
 proc registerVirtual_surfaceGetFormat*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_format"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_format"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetFormat(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceGetPrimitiveType*(self: Mesh; index: int32): uint32 {.base.} = (discard)
 proc registerVirtual_surfaceGetPrimitiveType*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_primitive_type"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_primitive_type"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetPrimitiveType(p_args[0].decode(int32)).encode(r_ret)
 
 method surfaceSetMaterial*(self: Mesh; index: int32; material: gdref Material): void {.base.} = (discard)
 proc registerVirtual_surfaceSetMaterial*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_set_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_set_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceSetMaterial(p_args[0].decode(int32), p_args[1].decode(gdref Material))
 
 method surfaceGetMaterial*(self: Mesh; index: int32): gdref Material {.base.} = (discard)
 proc registerVirtual_surfaceGetMaterial*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_surface_get_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_surface_get_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetMaterial(p_args[0].decode(int32)).encode(r_ret)
 
 method getBlendShapeCount*(self: Mesh): int32 {.base.} = (discard)
 proc registerVirtual_getBlendShapeCount*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_blend_shape_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_blend_shape_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getBlendShapeCount().encode(r_ret)
 
 method getBlendShapeName*(self: Mesh; index: int32): StringName {.base.} = (discard)
 proc registerVirtual_getBlendShapeName*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_blend_shape_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_blend_shape_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getBlendShapeName(p_args[0].decode(int32)).encode(r_ret)
 
 method setBlendShapeName*(self: Mesh; index: int32; name: StringName): void {.base.} = (discard)
 proc registerVirtual_setBlendShapeName*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_blend_shape_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_blend_shape_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).setBlendShapeName(p_args[0].decode(int32), p_args[1].decode(StringName))
 
 method getAabb*(self: Mesh): AABB {.base.} = (discard)
 proc registerVirtual_getAabb*[T: Mesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getAabb().encode(r_ret)
 
 proc setLightmapSizeHint*(self: Mesh; size: Vector2i): void =

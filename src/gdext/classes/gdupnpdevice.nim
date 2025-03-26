@@ -16,13 +16,13 @@ proc queryExternalAddress*(self: UPNPDevice): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc addPortMapping*(self: UPNPDevice; port: int32; portInternal: int32 = 0; desc: String = gdstring""; proto: String = gdstring"UDP"; duration: int32 = 0): int32 =
+proc addPortMapping*(self: UPNPDevice; port: int32; portInternal: int32 = 0; desc: String = newGdString(); proto: String = newGdString("UDP"); duration: int32 = 0): int32 =
   expandMethodBind(className UPNPDevice, "add_port_mapping", 818314583)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr port, getPtr portInternal, getPtr desc, getPtr proto, getPtr duration], addr ret)
   (addr ret).decode_result(int32)
 
-proc deletePortMapping*(self: UPNPDevice; port: int32; proto: String = gdstring"UDP"): int32 =
+proc deletePortMapping*(self: UPNPDevice; port: int32; proto: String = newGdString("UDP")): int32 =
   expandMethodBind(className UPNPDevice, "delete_port_mapping", 3444187325)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr port, getPtr proto], addr ret)

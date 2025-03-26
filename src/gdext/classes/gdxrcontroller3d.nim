@@ -33,38 +33,3 @@ proc getTrackerHand*(self: XRController3D): XRPositionalTracker_TrackerHand =
   var ret: encoded XRPositionalTracker_TrackerHand
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(XRPositionalTracker_TrackerHand)
-
-proc call_buttonPressed*(self: XRController3D; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("button_pressed")
-  let args = [name]
-  self.emitSignal(signalname, args)
-
-proc call_buttonReleased*(self: XRController3D; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("button_released")
-  let args = [name]
-  self.emitSignal(signalname, args)
-
-proc call_inputFloatChanged*(self: XRController3D; name: Variant; value: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("input_float_changed")
-  let args = [name, value]
-  self.emitSignal(signalname, args)
-
-proc call_inputVector2Changed*(self: XRController3D; name: Variant; value: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("input_vector2_changed")
-  let args = [name, value]
-  self.emitSignal(signalname, args)
-
-proc call_profileChanged*(self: XRController3D; role: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("profile_changed")
-  let args = [role]
-  self.emitSignal(signalname, args)

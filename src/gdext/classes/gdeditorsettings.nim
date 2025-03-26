@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+const NotificationEditorSettingsChanged* = 10000
+
 proc hasSetting*(self: EditorSettings; name: String): bool =
   expandMethodBind(className EditorSettings, "has_setting", 3927539163)
   var ret: encoded bool
@@ -81,9 +83,3 @@ proc getChangedSettings*(self: EditorSettings): PackedStringArray =
 proc markSettingChanged*(self: EditorSettings; setting: String): void =
   expandMethodBind(className EditorSettings, "mark_setting_changed", 83702148)
   methodbind.ptrcall(self, [getPtr setting])
-
-proc call_settingsChanged*(self: EditorSettings): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("settings_changed")
-  self.emitSignal(signalname)

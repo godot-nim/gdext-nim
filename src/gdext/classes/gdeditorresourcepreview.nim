@@ -23,10 +23,3 @@ proc removePreviewGenerator*(self: EditorResourcePreview; generator: gdref Edito
 proc checkForInvalidation*(self: EditorResourcePreview; path: String): void =
   expandMethodBind(className EditorResourcePreview, "check_for_invalidation", 83702148)
   methodbind.ptrcall(self, [getPtr path])
-
-proc call_previewInvalidated*(self: EditorResourcePreview; path: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("preview_invalidated")
-  let args = [path]
-  self.emitSignal(signalname, args)

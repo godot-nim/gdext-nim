@@ -16,7 +16,7 @@ proc getOpenError*(_: typedesc[DirAccess]): Error =
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(Error)
 
-proc createTemp*(_: typedesc[DirAccess]; prefix: String = gdstring""; keep: bool = false): gdref DirAccess =
+proc createTemp*(_: typedesc[DirAccess]; prefix: String = newGdString(); keep: bool = false): gdref DirAccess =
   expandMethodBind(className DirAccess, "create_temp", 812913566)
   var ret: encoded gdref DirAccess
   methodbind.ptrcall([getPtr prefix, getPtr keep], addr ret)

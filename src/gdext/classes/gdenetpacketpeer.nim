@@ -4,6 +4,12 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+const PacketLossScale* = 65536
+const PacketThrottleScale* = 32
+const FlagReliable* = 1
+const FlagUnsequenced* = 2
+const FlagUnreliableFragment* = 8
+
 proc peerDisconnect*(self: ENetPacketPeer; data: int32 = 0): void =
   expandMethodBind(className ENetPacketPeer, "peer_disconnect", 1995695955)
   methodbind.ptrcall(self, [getPtr data])

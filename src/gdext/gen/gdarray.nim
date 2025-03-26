@@ -1,6 +1,3 @@
-proc `[]`*(self: Array; index: int): var Array.Item = cast[ptr Array.Item](interface_Array_operatorIndex(addr self, index))[]
-proc `[]=`*(self: Array; index: int; value: Array.Item) = cast[ptr Array.Item](interface_Array_operatorIndex(addr self, index))[] = value
-
 # `==(Array Variant)`
 # `!=(Array Variant)`
 var `not(Array)`: PtrOperatorEvaluator
@@ -80,44 +77,44 @@ proc size*(self: Array): Int =
   `size(Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: Array): bool =
   `isEmpty(Array)`(addr self, nil, addr result, 0)
-proc clear*(self: Array): void =
+proc clear*(self: var Array): void =
   `clear(Array)`(addr self, nil, nil, 0)
 proc hash*(self: Array): Int =
   `hash(Array)`(addr self, nil, addr result, 0)
-proc assign*(self: Array; array: Array): void =
+proc assign*(self: var Array; array: Array): void =
   let argArr = [getPtr array]
   `assign(Array Array)`(addr self, addr argArr[0], nil, 1)
 proc get*(self: Array; index: Int): Variant =
   let argArr = [getPtr index]
   `get(Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc set*(self: Array; index: Int; value: Variant): void =
+proc set*(self: var Array; index: Int; value: Variant): void =
   let argArr = [getPtr index, getPtr value]
   `set(Array Int Variant)`(addr self, addr argArr[0], nil, 2)
-proc pushBack*(self: Array; value: Variant): void =
+proc pushBack*(self: var Array; value: Variant): void =
   let argArr = [getPtr value]
   `pushBack(Array Variant)`(addr self, addr argArr[0], nil, 1)
-proc pushFront*(self: Array; value: Variant): void =
+proc pushFront*(self: var Array; value: Variant): void =
   let argArr = [getPtr value]
   `pushFront(Array Variant)`(addr self, addr argArr[0], nil, 1)
-proc append*(self: Array; value: Variant): void =
+proc append*(self: var Array; value: Variant): void =
   let argArr = [getPtr value]
   `append(Array Variant)`(addr self, addr argArr[0], nil, 1)
-proc appendArray*(self: Array; array: Array): void =
+proc appendArray*(self: var Array; array: Array): void =
   let argArr = [getPtr array]
   `appendArray(Array Array)`(addr self, addr argArr[0], nil, 1)
-proc resize*(self: Array; size: Int): Int =
+proc resize*(self: var Array; size: Int): Int =
   let argArr = [getPtr size]
   `resize(Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc insert*(self: Array; position: Int; value: Variant): Int =
+proc insert*(self: var Array; position: Int; value: Variant): Int =
   let argArr = [getPtr position, getPtr value]
   `insert(Array Int Variant)`(addr self, addr argArr[0], addr result, 2)
-proc removeAt*(self: Array; position: Int): void =
+proc removeAt*(self: var Array; position: Int): void =
   let argArr = [getPtr position]
   `removeAt(Array Int)`(addr self, addr argArr[0], nil, 1)
-proc fill*(self: Array; value: Variant): void =
+proc fill*(self: var Array; value: Variant): void =
   let argArr = [getPtr value]
   `fill(Array Variant)`(addr self, addr argArr[0], nil, 1)
-proc erase*(self: Array; value: Variant): void =
+proc erase*(self: var Array; value: Variant): void =
   let argArr = [getPtr value]
   `erase(Array Variant)`(addr self, addr argArr[0], nil, 1)
 proc front*(self: Array): Variant =
@@ -144,19 +141,19 @@ proc count*(self: Array; value: Variant): Int =
 proc has*(self: Array; value: Variant): bool =
   let argArr = [getPtr value]
   `has(Array Variant)`(addr self, addr argArr[0], addr result, 1)
-proc popBack*(self: Array): Variant =
+proc popBack*(self: var Array): Variant =
   `popBack(Array)`(addr self, nil, addr result, 0)
-proc popFront*(self: Array): Variant =
+proc popFront*(self: var Array): Variant =
   `popFront(Array)`(addr self, nil, addr result, 0)
-proc popAt*(self: Array; position: Int): Variant =
+proc popAt*(self: var Array; position: Int): Variant =
   let argArr = [getPtr position]
   `popAt(Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc sort*(self: Array): void =
+proc sort*(self: var Array): void =
   `sort(Array)`(addr self, nil, nil, 0)
-proc sortCustom*(self: Array; `func`: Callable): void =
+proc sortCustom*(self: var Array; `func`: Callable): void =
   let argArr = [getPtr `func`]
   `sortCustom(Array Callable)`(addr self, addr argArr[0], nil, 1)
-proc shuffle*(self: Array): void =
+proc shuffle*(self: var Array): void =
   `shuffle(Array)`(addr self, nil, nil, 0)
 proc bsearch*(self: Array; value: Variant; before: bool = true): Int =
   let argArr = [getPtr value, getPtr before]
@@ -164,7 +161,7 @@ proc bsearch*(self: Array; value: Variant; before: bool = true): Int =
 proc bsearchCustom*(self: Array; value: Variant; `func`: Callable; before: bool = true): Int =
   let argArr = [getPtr value, getPtr `func`, getPtr before]
   `bsearchCustom(Array Variant Callable bool)`(addr self, addr argArr[0], addr result, 3)
-proc reverse*(self: Array): void =
+proc reverse*(self: var Array): void =
   `reverse(Array)`(addr self, nil, nil, 0)
 proc duplicate*(self: Array; deep: bool = false): Array =
   let argArr = [getPtr deep]
@@ -202,7 +199,7 @@ proc getTypedClassName*(self: Array): StringName =
   `getTypedClassName(Array)`(addr self, nil, addr result, 0)
 proc getTypedScript*(self: Array): Variant =
   `getTypedScript(Array)`(addr self, nil, addr result, 0)
-proc makeReadOnly*(self: Array): void =
+proc makeReadOnly*(self: var Array): void =
   `makeReadOnly(Array)`(addr self, nil, nil, 0)
 proc isReadOnly*(self: Array): bool =
   `isReadOnly(Array)`(addr self, nil, addr result, 0)

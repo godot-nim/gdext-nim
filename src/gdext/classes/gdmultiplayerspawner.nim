@@ -68,17 +68,3 @@ template `spawnLimit=`*(self: MultiplayerSpawner; value) = self.setSpawnLimit(va
 
 template spawnFunction*(self: MultiplayerSpawner): untyped = self.getSpawnFunction()
 template `spawnFunction=`*(self: MultiplayerSpawner; value) = self.setSpawnFunction(value)
-
-proc call_despawned*(self: MultiplayerSpawner; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("despawned")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_spawned*(self: MultiplayerSpawner; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("spawned")
-  let args = [node]
-  self.emitSignal(signalname, args)

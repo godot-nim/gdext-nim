@@ -52,7 +52,7 @@ proc setBidiOverride*(self: TextLine; override: Array): void =
   expandMethodBind(className TextLine, "set_bidi_override", 381264803)
   methodbind.ptrcall(self, [getPtr override])
 
-proc addString*(self: TextLine; text: String; font: gdref Font; fontSize: int32; language: String = gdstring""; meta: Variant = default(Variant)): bool =
+proc addString*(self: TextLine; text: String; font: gdref Font; fontSize: int32; language: String = newGdString(); meta: Variant = default(Variant)): bool =
   expandMethodBind(className TextLine, "add_string", 621426851)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr text, getPtr font, getPtr fontSize, getPtr language, getPtr meta], addr ret)

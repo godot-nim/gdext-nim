@@ -4,6 +4,9 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+const ResolverMaxQueries* = 256
+const ResolverInvalidId* = -1
+
 proc resolveHostname*(self: IP; host: String; ipType: IP_Type = typeAny): String =
   expandMethodBind(className IP, "resolve_hostname", 4283295457)
   var ret: encoded String
@@ -56,6 +59,6 @@ proc getLocalInterfaces*(self: IP): TypedArray[Dictionary] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
-proc clearCache*(self: IP; hostname: String = gdstring""): void =
+proc clearCache*(self: IP; hostname: String = newGdString()): void =
   expandMethodBind(className IP, "clear_cache", 3005725572)
   methodbind.ptrcall(self, [getPtr hostname])

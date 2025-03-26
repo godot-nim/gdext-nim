@@ -792,7 +792,7 @@ proc shapedTextGetSpacing*(self: TextServer; shaped: RID; spacing: TextServer_Sp
   methodbind.ptrcall(self, [getPtr shaped, getPtr spacing], addr ret)
   (addr ret).decode_result(int64)
 
-proc shapedTextAddString*(self: TextServer; shaped: RID; text: String; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = dictionary(); language: String = gdstring""; meta: Variant = default(Variant)): bool =
+proc shapedTextAddString*(self: TextServer; shaped: RID; text: String; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary(); language: String = newGdString(); meta: Variant = default(Variant)): bool =
   expandMethodBind(className TextServer, "shaped_text_add_string", 623473029)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr shaped, getPtr text, getPtr fonts, getPtr size, getPtr opentypeFeatures, getPtr language, getPtr meta], addr ret)
@@ -828,7 +828,7 @@ proc shapedGetSpanEmbeddedObject*(self: TextServer; shaped: RID; index: int64): 
   methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
   (addr ret).decode_result(Variant)
 
-proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = dictionary()): void =
+proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary()): void =
   expandMethodBind(className TextServer, "shaped_set_span_update_font", 2022725822)
   methodbind.ptrcall(self, [getPtr shaped, getPtr index, getPtr fonts, getPtr size, getPtr opentypeFeatures])
 
@@ -1084,31 +1084,31 @@ proc shapedTextGetDominantDirectionInRange*(self: TextServer; shaped: RID; start
   methodbind.ptrcall(self, [getPtr shaped, getPtr start, getPtr `end`], addr ret)
   (addr ret).decode_result(TextServer_Direction)
 
-proc formatNumber*(self: TextServer; number: String; language: String = gdstring""): String =
+proc formatNumber*(self: TextServer; number: String; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "format_number", 2664628024)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr number, getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc parseNumber*(self: TextServer; number: String; language: String = gdstring""): String =
+proc parseNumber*(self: TextServer; number: String; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "parse_number", 2664628024)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr number, getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc percentSign*(self: TextServer; language: String = gdstring""): String =
+proc percentSign*(self: TextServer; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "percent_sign", 993269549)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc stringGetWordBreaks*(self: TextServer; string: String; language: String = gdstring""; charsPerLine: int64 = 0): PackedInt32Array =
+proc stringGetWordBreaks*(self: TextServer; string: String; language: String = newGdString(); charsPerLine: int64 = 0): PackedInt32Array =
   expandMethodBind(className TextServer, "string_get_word_breaks", 581857818)
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [getPtr string, getPtr language, getPtr charsPerLine], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
-proc stringGetCharacterBreaks*(self: TextServer; string: String; language: String = gdstring""): PackedInt32Array =
+proc stringGetCharacterBreaks*(self: TextServer; string: String; language: String = newGdString()): PackedInt32Array =
   expandMethodBind(className TextServer, "string_get_character_breaks", 2333794773)
   var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [getPtr string, getPtr language], addr ret)
@@ -1144,19 +1144,19 @@ proc isValidLetter*(self: TextServer; unicode: uint64): bool =
   methodbind.ptrcall(self, [getPtr unicode], addr ret)
   (addr ret).decode_result(bool)
 
-proc stringToUpper*(self: TextServer; string: String; language: String = gdstring""): String =
+proc stringToUpper*(self: TextServer; string: String; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "string_to_upper", 2664628024)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr string, getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc stringToLower*(self: TextServer; string: String; language: String = gdstring""): String =
+proc stringToLower*(self: TextServer; string: String; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "string_to_lower", 2664628024)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr string, getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc stringToTitle*(self: TextServer; string: String; language: String = gdstring""): String =
+proc stringToTitle*(self: TextServer; string: String; language: String = newGdString()): String =
   expandMethodBind(className TextServer, "string_to_title", 2664628024)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr string, getPtr language], addr ret)

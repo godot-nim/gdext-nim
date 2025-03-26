@@ -3,10 +3,10 @@ proc load_PackedFloat32Array_constructor {.execon: staticevents.init_engine.on_l
   for i in {1, 2}:
     PackedFloat32Array_constr[i] = interface_Variant_getPtrConstructor(VariantType_PackedFloat32Array, int32 i)
 
-# proc packedFloat32Array*(): PackedFloat32Array =
-proc packedFloat32Array*(`from`: PackedFloat32Array): PackedFloat32Array =
+# proc newPackedFloat32Array*(): PackedFloat32Array =
+proc newPackedFloat32Array*(`from`: PackedFloat32Array): PackedFloat32Array =
   let argArr = [getPtr `from`]
   PackedFloat32Array_constr[1](addr result, addr argArr[0])
-proc packedFloat32Array*(`from`: Array): PackedFloat32Array =
+proc newPackedFloat32Array*(`from`: Array): PackedFloat32Array =
   let argArr = [getPtr `from`]
   PackedFloat32Array_constr[2](addr result, addr argArr[0])

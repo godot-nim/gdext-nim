@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+const MaxFrames* = 256
+
 proc setFrames*(self: AnimatedTexture; frames: int32): void =
   expandMethodBind(className AnimatedTexture, "set_frames", 1286410249)
   methodbind.ptrcall(self, [getPtr frames])

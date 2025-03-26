@@ -4,6 +4,9 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+const TargetPeerBroadcast* = 0
+const TargetPeerServer* = 1
+
 proc setTransferChannel*(self: MultiplayerPeer; channel: int32): void =
   expandMethodBind(className MultiplayerPeer, "set_transfer_channel", 1286410249)
   methodbind.ptrcall(self, [getPtr channel])
@@ -100,17 +103,3 @@ template `transferMode=`*(self: MultiplayerPeer; value) = self.setTransferMode(v
 
 template transferChannel*(self: MultiplayerPeer): untyped = self.getTransferChannel()
 template `transferChannel=`*(self: MultiplayerPeer; value) = self.setTransferChannel(value)
-
-proc call_peerConnected*(self: MultiplayerPeer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_connected")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_peerDisconnected*(self: MultiplayerPeer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_disconnected")
-  let args = [id]
-  self.emitSignal(signalname, args)

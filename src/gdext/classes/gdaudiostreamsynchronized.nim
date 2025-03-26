@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+const MaxStreams* = 32
+
 proc setStreamCount*(self: AudioStreamSynchronized; streamCount: int32): void =
   expandMethodBind(className AudioStreamSynchronized, "set_stream_count", 1286410249)
   methodbind.ptrcall(self, [getPtr streamCount])

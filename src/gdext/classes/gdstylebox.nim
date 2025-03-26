@@ -6,22 +6,22 @@ import gdresource; export gdresource
 
 method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
 proc registerVirtual_draw*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[stringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Rect2))
 
 method getDrawRect*(self: StyleBox; rect: Rect2): Rect2 {.base.} = (discard)
 proc registerVirtual_getDrawRect*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_draw_rect"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_draw_rect"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).getDrawRect(p_args[0].decode(Rect2)).encode(r_ret)
 
 method getMinimumSize*(self: StyleBox): Vector2 {.base.} = (discard)
 proc registerVirtual_getMinimumSize*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).getMinimumSize().encode(r_ret)
 
 method testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool {.base.} = (discard)
 proc registerVirtual_testMask*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[stringName"_test_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_test_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
 
 proc getMinimumSize*(self: StyleBox): Vector2 =

@@ -6,12 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 method activateFeed*(self: CameraFeed): bool {.base.} = (discard)
 proc registerVirtual_activateFeed*[T: CameraFeed](Self: typedesc[T]) =
-  Self.vmethods[stringName"_activate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_activate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CameraFeed](p_instance).activateFeed().encode(r_ret)
 
 method deactivateFeed*(self: CameraFeed): void {.base.} = (discard)
 proc registerVirtual_deactivateFeed*[T: CameraFeed](Self: typedesc[T]) =
-  Self.vmethods[stringName"_deactivate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_deactivate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CameraFeed](p_instance).deactivateFeed()
 
 proc getId*(self: CameraFeed): int32 =
@@ -103,15 +103,3 @@ template feedTransform*(self: CameraFeed): untyped = self.getTransform()
 template `feedTransform=`*(self: CameraFeed; value) = self.setTransform(value)
 
 template formats*(self: CameraFeed): untyped = self.getFormats()
-
-proc call_frameChanged*(self: CameraFeed): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_changed")
-  self.emitSignal(signalname)
-
-proc call_formatChanged*(self: CameraFeed): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("format_changed")
-  self.emitSignal(signalname)

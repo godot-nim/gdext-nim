@@ -6,7 +6,7 @@ import gdgraphelement; export gdgraphelement
 
 method drawPort*(self: GraphNode; slotIndex: int32; position: Vector2i; left: bool; color: Color): void {.base.} = (discard)
 proc registerVirtual_drawPort*[T: GraphNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_draw_port"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_draw_port"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphNode](p_instance).drawPort(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(bool), p_args[3].decode(Color))
 
 proc setTitle*(self: GraphNode; title: String): void =
@@ -202,10 +202,3 @@ template `title=`*(self: GraphNode; value) = self.setTitle(value)
 
 template ignoreInvalidConnectionType*(self: GraphNode): untyped = self.isIgnoringValidConnectionType()
 template `ignoreInvalidConnectionType=`*(self: GraphNode; value) = self.setIgnoreInvalidConnectionType(value)
-
-proc call_slotUpdated*(self: GraphNode; slotIndex: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("slot_updated")
-  let args = [slotIndex]
-  self.emitSignal(signalname, args)

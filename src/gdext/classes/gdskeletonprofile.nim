@@ -161,9 +161,3 @@ template `groupSize=`*(self: SkeletonProfile; value) = self.setGroupSize(value)
 
 template boneSize*(self: SkeletonProfile): untyped = self.getBoneSize()
 template `boneSize=`*(self: SkeletonProfile; value) = self.setBoneSize(value)
-
-proc call_profileUpdated*(self: SkeletonProfile): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("profile_updated")
-  self.emitSignal(signalname)

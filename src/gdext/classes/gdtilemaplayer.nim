@@ -6,17 +6,17 @@ import gdnode2d; export gdnode2d
 
 method useTileDataRuntimeUpdate*(self: TileMapLayer; coords: Vector2i): bool {.base.} = (discard)
 proc registerVirtual_useTileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) =
-  Self.vmethods[stringName"_use_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_use_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TileMapLayer](p_instance).useTileDataRuntimeUpdate(p_args[0].decode(Vector2i)).encode(r_ret)
 
 method tileDataRuntimeUpdate*(self: TileMapLayer; coords: Vector2i; tileData: TileData): void {.base.} = (discard)
 proc registerVirtual_tileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) =
-  Self.vmethods[stringName"_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TileMapLayer](p_instance).tileDataRuntimeUpdate(p_args[0].decode(Vector2i), p_args[1].decode(TileData))
 
 method updateCells*(self: TileMapLayer; coords: TypedArray[Vector2i]; forcedCleanup: bool): void {.base.} = (discard)
 proc registerVirtual_updateCells*[T: TileMapLayer](Self: typedesc[T]) =
-  Self.vmethods[stringName"_update_cells"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_update_cells"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(TypedArray[Vector2i]), p_args[1].decode(bool))
 
 proc setCell*(self: TileMapLayer; coords: Vector2i; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = 0): void =
@@ -328,9 +328,3 @@ template `navigationEnabled=`*(self: TileMapLayer; value) = self.setNavigationEn
 
 template navigationVisibilityMode*(self: TileMapLayer): untyped = self.getNavigationVisibilityMode()
 template `navigationVisibilityMode=`*(self: TileMapLayer; value) = self.setNavigationVisibilityMode(value)
-
-proc call_changed*(self: TileMapLayer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("changed")
-  self.emitSignal(signalname)

@@ -40,52 +40,52 @@ var `count(PackedVector4Array Vector4)`: PtrBuiltinMethod
 proc get*(self: PackedVector4Array; index: Int): Vector4 =
   let argArr = [getPtr index]
   `get(PackedVector4Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc set*(self: PackedVector4Array; index: Int; value: Vector4): void =
+proc set*(self: var PackedVector4Array; index: Int; value: Vector4): void =
   let argArr = [getPtr index, getPtr value]
   `set(PackedVector4Array Int Vector4)`(addr self, addr argArr[0], nil, 2)
 proc size*(self: PackedVector4Array): Int =
   `size(PackedVector4Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: PackedVector4Array): bool =
   `isEmpty(PackedVector4Array)`(addr self, nil, addr result, 0)
-proc pushBack*(self: PackedVector4Array; value: Vector4): bool =
+proc pushBack*(self: var PackedVector4Array; value: Vector4): bool =
   let argArr = [getPtr value]
   `pushBack(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
-proc append*(self: PackedVector4Array; value: Vector4): bool =
+proc append*(self: var PackedVector4Array; value: Vector4): bool =
   let argArr = [getPtr value]
   `append(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
-proc appendArray*(self: PackedVector4Array; array: PackedVector4Array): void =
+proc appendArray*(self: var PackedVector4Array; array: PackedVector4Array): void =
   let argArr = [getPtr array]
   `appendArray(PackedVector4Array PackedVector4Array)`(addr self, addr argArr[0], nil, 1)
-proc removeAt*(self: PackedVector4Array; index: Int): void =
+proc removeAt*(self: var PackedVector4Array; index: Int): void =
   let argArr = [getPtr index]
   `removeAt(PackedVector4Array Int)`(addr self, addr argArr[0], nil, 1)
-proc insert*(self: PackedVector4Array; atIndex: Int; value: Vector4): Int =
+proc insert*(self: var PackedVector4Array; atIndex: Int; value: Vector4): Int =
   let argArr = [getPtr atIndex, getPtr value]
   `insert(PackedVector4Array Int Vector4)`(addr self, addr argArr[0], addr result, 2)
-proc fill*(self: PackedVector4Array; value: Vector4): void =
+proc fill*(self: var PackedVector4Array; value: Vector4): void =
   let argArr = [getPtr value]
   `fill(PackedVector4Array Vector4)`(addr self, addr argArr[0], nil, 1)
-proc resize*(self: PackedVector4Array; newSize: Int): Int =
+proc resize*(self: var PackedVector4Array; newSize: Int): Int =
   let argArr = [getPtr newSize]
   `resize(PackedVector4Array Int)`(addr self, addr argArr[0], addr result, 1)
-proc clear*(self: PackedVector4Array): void =
+proc clear*(self: var PackedVector4Array): void =
   `clear(PackedVector4Array)`(addr self, nil, nil, 0)
 proc has*(self: PackedVector4Array; value: Vector4): bool =
   let argArr = [getPtr value]
   `has(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
-proc reverse*(self: PackedVector4Array): void =
+proc reverse*(self: var PackedVector4Array): void =
   `reverse(PackedVector4Array)`(addr self, nil, nil, 0)
 proc slice*(self: PackedVector4Array; begin: Int; `end`: Int = 2147483647): PackedVector4Array =
   let argArr = [getPtr begin, getPtr `end`]
   `slice(PackedVector4Array Int Int)`(addr self, addr argArr[0], addr result, 2)
 proc toByteArray*(self: PackedVector4Array): PackedByteArray =
   `toByteArray(PackedVector4Array)`(addr self, nil, addr result, 0)
-proc sort*(self: PackedVector4Array): void =
+proc sort*(self: var PackedVector4Array): void =
   `sort(PackedVector4Array)`(addr self, nil, nil, 0)
-proc bsearch*(self: PackedVector4Array; value: Vector4; before: bool = true): Int =
+proc bsearch*(self: var PackedVector4Array; value: Vector4; before: bool = true): Int =
   let argArr = [getPtr value, getPtr before]
   `bsearch(PackedVector4Array Vector4 bool)`(addr self, addr argArr[0], addr result, 2)
-proc duplicate*(self: PackedVector4Array): PackedVector4Array =
+proc duplicate*(self: var PackedVector4Array): PackedVector4Array =
   `duplicate(PackedVector4Array)`(addr self, nil, addr result, 0)
 proc find*(self: PackedVector4Array; value: Vector4; `from`: Int = 0): Int =
   let argArr = [getPtr value, getPtr `from`]

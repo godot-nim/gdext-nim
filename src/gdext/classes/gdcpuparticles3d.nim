@@ -682,9 +682,3 @@ template `animOffsetMax=`*(self: CPUParticles3D; value) = self.setParamMax(CPUPa
 
 template animOffsetCurve*(self: CPUParticles3D): untyped = self.getParamCurve(CPUParticles3D_Parameter(11))
 template `animOffsetCurve=`*(self: CPUParticles3D; value) = self.setParamCurve(CPUParticles3D_Parameter(11), value)
-
-proc call_finished*(self: CPUParticles3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

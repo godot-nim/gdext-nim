@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+const NotificationUpdateSkeleton* = 50
+
 proc addBone*(self: Skeleton3D; name: String): int32 =
   expandMethodBind(className Skeleton3D, "add_bone", 1597066294)
   var ret: encoded int32
@@ -268,7 +270,7 @@ proc physicalBonesStopSimulation*(self: Skeleton3D): void =
   expandMethodBind(className Skeleton3D, "physical_bones_stop_simulation", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc physicalBonesStartSimulation*(self: Skeleton3D; bones: TypedArray[StringName] = typedArray[StringName]()): void =
+proc physicalBonesStartSimulation*(self: Skeleton3D; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className Skeleton3D, "physical_bones_start_simulation", 2787316981)
   methodbind.ptrcall(self, [getPtr bones])
 
@@ -291,40 +293,3 @@ template `modifierCallbackModeProcess=`*(self: Skeleton3D; value) = self.setModi
 
 template animatePhysicalBones*(self: Skeleton3D): untyped = self.getAnimatePhysicalBones()
 template `animatePhysicalBones=`*(self: Skeleton3D; value) = self.setAnimatePhysicalBones(value)
-
-proc call_restUpdated*(self: Skeleton3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("rest_updated")
-  self.emitSignal(signalname)
-
-proc call_poseUpdated*(self: Skeleton3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("pose_updated")
-  self.emitSignal(signalname)
-
-proc call_skeletonUpdated*(self: Skeleton3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("skeleton_updated")
-  self.emitSignal(signalname)
-
-proc call_boneEnabledChanged*(self: Skeleton3D; boneIdx: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bone_enabled_changed")
-  let args = [boneIdx]
-  self.emitSignal(signalname, args)
-
-proc call_boneListChanged*(self: Skeleton3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bone_list_changed")
-  self.emitSignal(signalname)
-
-proc call_showRestOnlyChanged*(self: Skeleton3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("show_rest_only_changed")
-  self.emitSignal(signalname)

@@ -299,10 +299,3 @@ template `emulateMouseFromTouch=`*(self: Input; value) = self.setEmulateMouseFro
 
 template emulateTouchFromMouse*(self: Input): untyped = self.isEmulatingTouchFromMouse()
 template `emulateTouchFromMouse=`*(self: Input; value) = self.setEmulateTouchFromMouse(value)
-
-proc call_joyConnectionChanged*(self: Input; device: Variant; connected: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("joy_connection_changed")
-  let args = [device, connected]
-  self.emitSignal(signalname, args)

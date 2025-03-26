@@ -136,15 +136,3 @@ template `verticalScrollMode=`*(self: ScrollContainer; value) = self.setVertical
 
 template scrollDeadzone*(self: ScrollContainer): untyped = self.getDeadzone()
 template `scrollDeadzone=`*(self: ScrollContainer; value) = self.setDeadzone(value)
-
-proc call_scrollStarted*(self: ScrollContainer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scroll_started")
-  self.emitSignal(signalname)
-
-proc call_scrollEnded*(self: ScrollContainer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scroll_ended")
-  self.emitSignal(signalname)

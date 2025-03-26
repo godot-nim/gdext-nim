@@ -773,22 +773,3 @@ proc getProcessInfo*(self: NavigationServer3D; processInfo: NavigationServer3D_P
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr processInfo], addr ret)
   (addr ret).decode_result(int32)
-
-proc call_mapChanged*(self: NavigationServer3D; map: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("map_changed")
-  let args = [map]
-  self.emitSignal(signalname, args)
-
-proc call_navigationDebugChanged*(self: NavigationServer3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("navigation_debug_changed")
-  self.emitSignal(signalname)
-
-proc call_avoidanceDebugChanged*(self: NavigationServer3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("avoidance_debug_changed")
-  self.emitSignal(signalname)

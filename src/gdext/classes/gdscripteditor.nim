@@ -57,17 +57,3 @@ proc gotoHelp*(self: ScriptEditor; topic: String): void =
 proc updateDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
   expandMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
   methodbind.ptrcall(self, [getPtr script])
-
-proc call_editorScriptChanged*(self: ScriptEditor; script: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("editor_script_changed")
-  let args = [script]
-  self.emitSignal(signalname, args)
-
-proc call_scriptClose*(self: ScriptEditor; script: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("script_close")
-  let args = [script]
-  self.emitSignal(signalname, args)

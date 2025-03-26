@@ -6,22 +6,22 @@ import gdcontrol; export gdcontrol
 
 method isInInputHotzone*(self: GraphEdit; inNode: Object; inPort: int32; mousePosition: Vector2): bool {.base.} = (discard)
 proc registerVirtual_isInInputHotzone*[T: GraphEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_is_in_input_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_is_in_input_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).isInInputHotzone(p_args[0].decode(Object), p_args[1].decode(int32), p_args[2].decode(Vector2)).encode(r_ret)
 
 method isInOutputHotzone*(self: GraphEdit; inNode: Object; inPort: int32; mousePosition: Vector2): bool {.base.} = (discard)
 proc registerVirtual_isInOutputHotzone*[T: GraphEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_is_in_output_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_is_in_output_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).isInOutputHotzone(p_args[0].decode(Object), p_args[1].decode(int32), p_args[2].decode(Vector2)).encode(r_ret)
 
 method getConnectionLine*(self: GraphEdit; fromPosition: Vector2; toPosition: Vector2): PackedVector2Array {.base.} = (discard)
 proc registerVirtual_getConnectionLine*[T: GraphEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_connection_line"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_connection_line"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).getConnectionLine(p_args[0].decode(Vector2), p_args[1].decode(Vector2)).encode(r_ret)
 
 method isNodeHoverValid*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32): bool {.base.} = (discard)
 proc registerVirtual_isNodeHoverValid*[T: GraphEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_is_node_hover_valid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_is_node_hover_valid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).isNodeHoverValid(p_args[0].decode(StringName), p_args[1].decode(int32), p_args[2].decode(StringName), p_args[3].decode(int32)).encode(r_ret)
 
 proc connectNode*(self: GraphEdit; fromNode: StringName; fromPort: int32; toNode: StringName; toPort: int32; keepAlive: bool = false): Error =
@@ -451,129 +451,3 @@ template `showMinimapButton=`*(self: GraphEdit; value) = self.setShowMinimapButt
 
 template showArrangeButton*(self: GraphEdit): untyped = self.isShowingArrangeButton()
 template `showArrangeButton=`*(self: GraphEdit; value) = self.setShowArrangeButton(value)
-
-proc call_connectionRequest*(self: GraphEdit; fromNode: Variant; fromPort: Variant; toNode: Variant; toPort: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_request")
-  let args = [fromNode, fromPort, toNode, toPort]
-  self.emitSignal(signalname, args)
-
-proc call_disconnectionRequest*(self: GraphEdit; fromNode: Variant; fromPort: Variant; toNode: Variant; toPort: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("disconnection_request")
-  let args = [fromNode, fromPort, toNode, toPort]
-  self.emitSignal(signalname, args)
-
-proc call_connectionToEmpty*(self: GraphEdit; fromNode: Variant; fromPort: Variant; releasePosition: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_to_empty")
-  let args = [fromNode, fromPort, releasePosition]
-  self.emitSignal(signalname, args)
-
-proc call_connectionFromEmpty*(self: GraphEdit; toNode: Variant; toPort: Variant; releasePosition: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_from_empty")
-  let args = [toNode, toPort, releasePosition]
-  self.emitSignal(signalname, args)
-
-proc call_connectionDragStarted*(self: GraphEdit; fromNode: Variant; fromPort: Variant; isOutput: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_drag_started")
-  let args = [fromNode, fromPort, isOutput]
-  self.emitSignal(signalname, args)
-
-proc call_connectionDragEnded*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("connection_drag_ended")
-  self.emitSignal(signalname)
-
-proc call_copyNodesRequest*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("copy_nodes_request")
-  self.emitSignal(signalname)
-
-proc call_cutNodesRequest*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("cut_nodes_request")
-  self.emitSignal(signalname)
-
-proc call_pasteNodesRequest*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("paste_nodes_request")
-  self.emitSignal(signalname)
-
-proc call_duplicateNodesRequest*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("duplicate_nodes_request")
-  self.emitSignal(signalname)
-
-proc call_deleteNodesRequest*(self: GraphEdit; nodes: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("delete_nodes_request")
-  let args = [nodes]
-  self.emitSignal(signalname, args)
-
-proc call_nodeSelected*(self: GraphEdit; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_selected")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_nodeDeselected*(self: GraphEdit; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_deselected")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_frameRectChanged*(self: GraphEdit; frame: Variant; newRect: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_rect_changed")
-  let args = [frame, newRect]
-  self.emitSignal(signalname, args)
-
-proc call_popupRequest*(self: GraphEdit; atPosition: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("popup_request")
-  let args = [atPosition]
-  self.emitSignal(signalname, args)
-
-proc call_beginNodeMove*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("begin_node_move")
-  self.emitSignal(signalname)
-
-proc call_endNodeMove*(self: GraphEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("end_node_move")
-  self.emitSignal(signalname)
-
-proc call_graphElementsLinkedToFrameRequest*(self: GraphEdit; elements: Variant; frame: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("graph_elements_linked_to_frame_request")
-  let args = [elements, frame]
-  self.emitSignal(signalname, args)
-
-proc call_scrollOffsetChanged*(self: GraphEdit; offset: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scroll_offset_changed")
-  let args = [offset]
-  self.emitSignal(signalname, args)

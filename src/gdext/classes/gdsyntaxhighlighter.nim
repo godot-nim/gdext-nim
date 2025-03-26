@@ -6,17 +6,17 @@ import gdresource; export gdresource
 
 method getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary {.base.} = (discard)
 proc registerVirtual_getLineSyntaxHighlighting*[T: SyntaxHighlighter](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_line_syntax_highlighting"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_line_syntax_highlighting"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SyntaxHighlighter](p_instance).getLineSyntaxHighlighting(p_args[0].decode(int32)).encode(r_ret)
 
 method clearHighlightingCache*(self: SyntaxHighlighter): void {.base.} = (discard)
 proc registerVirtual_clearHighlightingCache*[T: SyntaxHighlighter](Self: typedesc[T]) =
-  Self.vmethods[stringName"_clear_highlighting_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_clear_highlighting_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SyntaxHighlighter](p_instance).clearHighlightingCache()
 
 method updateCache*(self: SyntaxHighlighter): void {.base.} = (discard)
 proc registerVirtual_updateCache*[T: SyntaxHighlighter](Self: typedesc[T]) =
-  Self.vmethods[stringName"_update_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_update_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SyntaxHighlighter](p_instance).updateCache()
 
 proc getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary =

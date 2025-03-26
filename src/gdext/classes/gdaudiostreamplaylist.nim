@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+const MaxStreams* = 64
+
 proc setStreamCount*(self: AudioStreamPlaylist; streamCount: int32): void =
   expandMethodBind(className AudioStreamPlaylist, "set_stream_count", 1286410249)
   methodbind.ptrcall(self, [getPtr streamCount])

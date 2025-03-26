@@ -126,15 +126,3 @@ template `action=`*(self: TouchScreenButton; value) = self.setAction(value)
 
 template visibilityMode*(self: TouchScreenButton): untyped = self.getVisibilityMode()
 template `visibilityMode=`*(self: TouchScreenButton; value) = self.setVisibilityMode(value)
-
-proc call_pressed*(self: TouchScreenButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("pressed")
-  self.emitSignal(signalname)
-
-proc call_released*(self: TouchScreenButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("released")
-  self.emitSignal(signalname)

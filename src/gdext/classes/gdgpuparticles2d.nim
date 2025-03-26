@@ -363,9 +363,3 @@ template `trailSectionSubdivisions=`*(self: GPUParticles2D; value) = self.setTra
 
 template processMaterial*(self: GPUParticles2D): untyped = self.getProcessMaterial()
 template `processMaterial=`*(self: GPUParticles2D; value) = self.setProcessMaterial(value)
-
-proc call_finished*(self: GPUParticles2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

@@ -216,11 +216,11 @@ proc unloadCurrentScene*(self: SceneTree): void =
   expandMethodBind(className SceneTree, "unload_current_scene", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc setMultiplayer*(self: SceneTree; multiplayer: gdref MultiplayerAPI; rootPath: NodePath = nodePath()): void =
+proc setMultiplayer*(self: SceneTree; multiplayer: gdref MultiplayerAPI; rootPath: NodePath = newNodePath()): void =
   expandMethodBind(className SceneTree, "set_multiplayer", 2385607013)
   methodbind.ptrcall(self, [getPtr multiplayer, getPtr rootPath])
 
-proc getMultiplayer*(self: SceneTree; forPath: NodePath = nodePath()): gdref MultiplayerAPI =
+proc getMultiplayer*(self: SceneTree; forPath: NodePath = newNodePath()): gdref MultiplayerAPI =
   expandMethodBind(className SceneTree, "get_multiplayer", 3453401404)
   var ret: encoded gdref MultiplayerAPI
   methodbind.ptrcall(self, [getPtr forPath], addr ret)
@@ -267,55 +267,3 @@ template `multiplayerPoll=`*(self: SceneTree; value) = self.setMultiplayerPollEn
 
 template physicsInterpolation*(self: SceneTree): untyped = self.isPhysicsInterpolationEnabled()
 template `physicsInterpolation=`*(self: SceneTree; value) = self.setPhysicsInterpolationEnabled(value)
-
-proc call_treeChanged*(self: SceneTree): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_changed")
-  self.emitSignal(signalname)
-
-proc call_treeProcessModeChanged*(self: SceneTree): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_process_mode_changed")
-  self.emitSignal(signalname)
-
-proc call_nodeAdded*(self: SceneTree; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_added")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_nodeRemoved*(self: SceneTree; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_removed")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_nodeRenamed*(self: SceneTree; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_renamed")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_nodeConfigurationWarningChanged*(self: SceneTree; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_configuration_warning_changed")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_processFrame*(self: SceneTree): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("process_frame")
-  self.emitSignal(signalname)
-
-proc call_physicsFrame*(self: SceneTree): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("physics_frame")
-  self.emitSignal(signalname)

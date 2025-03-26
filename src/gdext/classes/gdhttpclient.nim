@@ -26,7 +26,7 @@ proc requestRaw*(self: HTTPClient; `method`: HTTPClient_Method; url: String; hea
   methodbind.ptrcall(self, [getPtr `method`, getPtr url, getPtr headers, getPtr body], addr ret)
   (addr ret).decode_result(Error)
 
-proc request*(self: HTTPClient; `method`: HTTPClient_Method; url: String; headers: PackedStringArray; body: String = gdstring""): Error =
+proc request*(self: HTTPClient; `method`: HTTPClient_Method; url: String; headers: PackedStringArray; body: String = newGdString()): Error =
   expandMethodBind(className HTTPClient, "request", 3778990155)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr `method`, getPtr url, getPtr headers, getPtr body], addr ret)

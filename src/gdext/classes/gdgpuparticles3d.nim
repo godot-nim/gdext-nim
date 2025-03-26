@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+const MaxDrawPasses* = 4
+
 proc setEmitting*(self: GPUParticles3D; emitting: bool): void =
   expandMethodBind(className GPUParticles3D, "set_emitting", 2586408642)
   methodbind.ptrcall(self, [getPtr emitting])
@@ -385,9 +387,3 @@ template `drawPass4=`*(self: GPUParticles3D; value) = self.setDrawPassMesh(int32
 
 template drawSkin*(self: GPUParticles3D): untyped = self.getSkin()
 template `drawSkin=`*(self: GPUParticles3D; value) = self.setSkin(value)
-
-proc call_finished*(self: GPUParticles3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

@@ -14,7 +14,7 @@ proc physicalBonesStopSimulation*(self: PhysicalBoneSimulator3D): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_stop_simulation", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedArray[StringName] = typedArray[StringName]()): void =
+proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_start_simulation", 2787316981)
   methodbind.ptrcall(self, [getPtr bones])
 

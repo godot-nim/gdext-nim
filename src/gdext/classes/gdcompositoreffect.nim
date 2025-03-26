@@ -6,7 +6,7 @@ import gdresource; export gdresource
 
 method renderCallback*(self: CompositorEffect; effectCallbackType: int32; renderData: RenderData): void {.base.} = (discard)
 proc registerVirtual_renderCallback*[T: CompositorEffect](Self: typedesc[T]) =
-  Self.vmethods[stringName"_render_callback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_render_callback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CompositorEffect](p_instance).renderCallback(p_args[0].decode(int32), p_args[1].decode(RenderData))
 
 proc setEnabled*(self: CompositorEffect; enabled: bool): void =

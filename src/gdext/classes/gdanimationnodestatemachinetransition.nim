@@ -120,9 +120,3 @@ template `advanceCondition=`*(self: AnimationNodeStateMachineTransition; value) 
 
 template advanceExpression*(self: AnimationNodeStateMachineTransition): untyped = self.getAdvanceExpression()
 template `advanceExpression=`*(self: AnimationNodeStateMachineTransition; value) = self.setAdvanceExpression(value)
-
-proc call_advanceConditionChanged*(self: AnimationNodeStateMachineTransition): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("advance_condition_changed")
-  self.emitSignal(signalname)

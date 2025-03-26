@@ -6,122 +6,122 @@ import gdnode; export gdnode
 
 method forwardCanvasGuiInput*(self: EditorPlugin; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_forwardCanvasGuiInput*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_canvas_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_canvas_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forwardCanvasGuiInput(p_args[0].decode(gdref InputEvent)).encode(r_ret)
 
 method forwardCanvasDrawOverViewport*(self: EditorPlugin; viewportControl: Control): void {.base.} = (discard)
 proc registerVirtual_forwardCanvasDrawOverViewport*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_canvas_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_canvas_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forwardCanvasDrawOverViewport(p_args[0].decode(Control))
 
 method forwardCanvasForceDrawOverViewport*(self: EditorPlugin; viewportControl: Control): void {.base.} = (discard)
 proc registerVirtual_forwardCanvasForceDrawOverViewport*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_canvas_force_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_canvas_force_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forwardCanvasForceDrawOverViewport(p_args[0].decode(Control))
 
 method forward3DGuiInput*(self: EditorPlugin; viewportCamera: Camera3D; event: gdref InputEvent): int32 {.base.} = (discard)
 proc registerVirtual_forward3DGuiInput*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_3d_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_3d_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forward3DGuiInput(p_args[0].decode(Camera3D), p_args[1].decode(gdref InputEvent)).encode(r_ret)
 
 method forward3DDrawOverViewport*(self: EditorPlugin; viewportControl: Control): void {.base.} = (discard)
 proc registerVirtual_forward3DDrawOverViewport*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_3d_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_3d_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forward3DDrawOverViewport(p_args[0].decode(Control))
 
 method forward3DForceDrawOverViewport*(self: EditorPlugin; viewportControl: Control): void {.base.} = (discard)
 proc registerVirtual_forward3DForceDrawOverViewport*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_forward_3d_force_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_forward_3d_force_draw_over_viewport"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).forward3DForceDrawOverViewport(p_args[0].decode(Control))
 
 method getPluginName*(self: EditorPlugin): String {.base.} = (discard)
 proc registerVirtual_getPluginName*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_plugin_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_plugin_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getPluginName().encode(r_ret)
 
 method getPluginIcon*(self: EditorPlugin): gdref Texture2D {.base.} = (discard)
 proc registerVirtual_getPluginIcon*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_plugin_icon"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_plugin_icon"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getPluginIcon().encode(r_ret)
 
 method hasMainScreen*(self: EditorPlugin): bool {.base.} = (discard)
 proc registerVirtual_hasMainScreen*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_has_main_screen"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_has_main_screen"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).hasMainScreen().encode(r_ret)
 
 method makeVisible*(self: EditorPlugin; visible: bool): void {.base.} = (discard)
 proc registerVirtual_makeVisible*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_make_visible"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_make_visible"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).makeVisible(p_args[0].decode(bool))
 
 method edit*(self: EditorPlugin; `object`: Object): void {.base.} = (discard)
 proc registerVirtual_edit*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_edit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_edit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).edit(p_args[0].decode(Object))
 
 method handles*(self: EditorPlugin; `object`: Object): bool {.base.} = (discard)
 proc registerVirtual_handles*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_handles"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_handles"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).handles(p_args[0].decode(Object)).encode(r_ret)
 
 method getState*(self: EditorPlugin): Dictionary {.base.} = (discard)
 proc registerVirtual_getState*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getState().encode(r_ret)
 
 method setState*(self: EditorPlugin; state: Dictionary): void {.base.} = (discard)
 proc registerVirtual_setState*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).setState(p_args[0].decode(Dictionary))
 
 method clear*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_clear*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_clear"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_clear"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).clear()
 
 method getUnsavedStatus*(self: EditorPlugin; forScene: String): String {.base.} = (discard)
 proc registerVirtual_getUnsavedStatus*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_unsaved_status"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_unsaved_status"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getUnsavedStatus(p_args[0].decode(String)).encode(r_ret)
 
 method saveExternalData*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_saveExternalData*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_save_external_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_save_external_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).saveExternalData()
 
 method applyChanges*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_applyChanges*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_apply_changes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_apply_changes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).applyChanges()
 
 method getBreakpoints*(self: EditorPlugin): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getBreakpoints*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_breakpoints"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_breakpoints"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getBreakpoints().encode(r_ret)
 
 method setWindowLayout*(self: EditorPlugin; configuration: gdref ConfigFile): void {.base.} = (discard)
 proc registerVirtual_setWindowLayout*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_window_layout"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_window_layout"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).setWindowLayout(p_args[0].decode(gdref ConfigFile))
 
 method getWindowLayout*(self: EditorPlugin; configuration: gdref ConfigFile): void {.base.} = (discard)
 proc registerVirtual_getWindowLayout*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_window_layout"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_window_layout"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getWindowLayout(p_args[0].decode(gdref ConfigFile))
 
 method build*(self: EditorPlugin): bool {.base.} = (discard)
 proc registerVirtual_build*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_build"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_build"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).build().encode(r_ret)
 
 method enablePlugin*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_enablePlugin*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_enable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_enable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).enablePlugin()
 
 method disablePlugin*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_disablePlugin*[T: EditorPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_disable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_disable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).disablePlugin()
 
 proc addControlToContainer*(self: EditorPlugin; container: EditorPlugin_CustomControlContainer; control: Control): void =
@@ -333,44 +333,3 @@ proc getPluginVersion*(self: EditorPlugin): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-proc call_sceneChanged*(self: EditorPlugin; sceneRoot: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scene_changed")
-  let args = [sceneRoot]
-  self.emitSignal(signalname, args)
-
-proc call_sceneClosed*(self: EditorPlugin; filepath: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scene_closed")
-  let args = [filepath]
-  self.emitSignal(signalname, args)
-
-proc call_mainScreenChanged*(self: EditorPlugin; screenName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("main_screen_changed")
-  let args = [screenName]
-  self.emitSignal(signalname, args)
-
-proc call_resourceSaved*(self: EditorPlugin; resource: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("resource_saved")
-  let args = [resource]
-  self.emitSignal(signalname, args)
-
-proc call_sceneSaved*(self: EditorPlugin; filepath: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("scene_saved")
-  let args = [filepath]
-  self.emitSignal(signalname, args)
-
-proc call_projectSettingsChanged*(self: EditorPlugin): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("project_settings_changed")
-  self.emitSignal(signalname)

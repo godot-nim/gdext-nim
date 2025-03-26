@@ -6,22 +6,22 @@ import gdrefcounted; export gdrefcounted
 
 method setupLocalToScene*(self: Resource): void {.base.} = (discard)
 proc registerVirtual_setupLocalToScene*[T: Resource](Self: typedesc[T]) =
-  Self.vmethods[stringName"_setup_local_to_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_setup_local_to_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).setupLocalToScene()
 
 method getRid*(self: Resource): RID {.base.} = (discard)
 proc registerVirtual_getRid*[T: Resource](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).getRid().encode(r_ret)
 
 method resetState*(self: Resource): void {.base.} = (discard)
 proc registerVirtual_resetState*[T: Resource](Self: typedesc[T]) =
-  Self.vmethods[stringName"_reset_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_reset_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).resetState()
 
 method setPathCache*(self: Resource; path: String): void {.base.} = (discard)
 proc registerVirtual_setPathCache*[T: Resource](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_path_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_path_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
 
 proc setPath*(self: Resource; path: String): void =
@@ -135,15 +135,3 @@ template `resourceName=`*(self: Resource; value) = self.setName(value)
 
 template resourceSceneUniqueId*(self: Resource): untyped = self.getSceneUniqueId()
 template `resourceSceneUniqueId=`*(self: Resource; value) = self.setSceneUniqueId(value)
-
-proc call_changed*(self: Resource): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("changed")
-  self.emitSignal(signalname)
-
-proc call_setupLocalToSceneRequested*(self: Resource): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("setup_local_to_scene_requested")
-  self.emitSignal(signalname)

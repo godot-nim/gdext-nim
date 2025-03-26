@@ -45,9 +45,3 @@ proc getBoneLocalPoseOverride*(self: Skeleton2D; boneIdx: int32): Transform2D =
   var ret: encoded Transform2D
   methodbind.ptrcall(self, [getPtr boneIdx], addr ret)
   (addr ret).decode_result(Transform2D)
-
-proc call_boneSetupChanged*(self: Skeleton2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bone_setup_changed")
-  self.emitSignal(signalname)

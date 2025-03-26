@@ -304,9 +304,3 @@ template `terrain=`*(self: TileData; value) = self.setTerrain(value)
 
 template probability*(self: TileData): untyped = self.getProbability()
 template `probability=`*(self: TileData; value) = self.setProbability(value)
-
-proc call_changed*(self: TileData): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("changed")
-  self.emitSignal(signalname)

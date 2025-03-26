@@ -16,9 +16,3 @@ proc getTimeLeft*(self: SceneTreeTimer): float64 =
 
 template timeLeft*(self: SceneTreeTimer): untyped = self.getTimeLeft()
 template `timeLeft=`*(self: SceneTreeTimer; value) = self.setTimeLeft(value)
-
-proc call_timeout*(self: SceneTreeTimer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("timeout")
-  self.emitSignal(signalname)

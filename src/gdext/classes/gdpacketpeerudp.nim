@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
-proc `bind`*(self: PacketPeerUDP; port: int32; bindAddress: String = gdstring"*"; recvBufSize: int32 = 65536): Error =
+proc `bind`*(self: PacketPeerUDP; port: int32; bindAddress: String = newGdString("*"); recvBufSize: int32 = 65536): Error =
   expandMethodBind(className PacketPeerUDP, "bind", 4051239242)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr port, getPtr bindAddress, getPtr recvBufSize], addr ret)

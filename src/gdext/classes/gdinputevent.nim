@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+const DeviceIdEmulation* = -1
+
 proc setDevice*(self: InputEvent; device: int32): void =
   expandMethodBind(className InputEvent, "set_device", 1286410249)
   methodbind.ptrcall(self, [getPtr device])

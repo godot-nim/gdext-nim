@@ -151,23 +151,3 @@ proc interpolateValue*(_: typedesc[Tween]; initialValue: Variant; deltaValue: Va
   var ret: encoded Variant
   methodbind.ptrcall([getPtr initialValue, getPtr deltaValue, getPtr elapsedTime, getPtr duration, getPtr transType, getPtr easeType], addr ret)
   (addr ret).decode_result(Variant)
-
-proc call_stepFinished*(self: Tween; idx: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("step_finished")
-  let args = [idx]
-  self.emitSignal(signalname, args)
-
-proc call_loopFinished*(self: Tween; loopCount: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("loop_finished")
-  let args = [loopCount]
-  self.emitSignal(signalname, args)
-
-proc call_finished*(self: Tween): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

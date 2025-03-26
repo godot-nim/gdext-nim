@@ -6,7 +6,7 @@ import gdmesh; export gdmesh
 
 method createMeshArray*(self: PrimitiveMesh): Array {.base.} = (discard)
 proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =
-  Self.vmethods[stringName"_create_mesh_array"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_create_mesh_array"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PrimitiveMesh](p_instance).createMeshArray().encode(r_ret)
 
 proc setMaterial*(self: PrimitiveMesh; material: gdref Material): void =

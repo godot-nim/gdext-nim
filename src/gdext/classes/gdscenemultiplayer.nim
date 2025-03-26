@@ -139,24 +139,3 @@ template `maxSyncPacketSize=`*(self: SceneMultiplayer; value) = self.setMaxSyncP
 
 template maxDeltaPacketSize*(self: SceneMultiplayer): untyped = self.getMaxDeltaPacketSize()
 template `maxDeltaPacketSize=`*(self: SceneMultiplayer; value) = self.setMaxDeltaPacketSize(value)
-
-proc call_peerAuthenticating*(self: SceneMultiplayer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_authenticating")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_peerAuthenticationFailed*(self: SceneMultiplayer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_authentication_failed")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_peerPacket*(self: SceneMultiplayer; id: Variant; packet: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("peer_packet")
-  let args = [id, packet]
-  self.emitSignal(signalname, args)

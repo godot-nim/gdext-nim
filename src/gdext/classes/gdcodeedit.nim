@@ -6,17 +6,17 @@ import gdtextedit; export gdtextedit
 
 method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
 proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).confirmCodeCompletion(p_args[0].decode(bool))
 
 method requestCodeCompletion*(self: CodeEdit; force: bool): void {.base.} = (discard)
 proc registerVirtual_requestCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
 
 method filterCodeCompletionCandidates*(self: CodeEdit; candidates: TypedArray[Dictionary]): TypedArray[Dictionary] {.base.} = (discard)
 proc registerVirtual_filterCodeCompletionCandidates*[T: CodeEdit](Self: typedesc[T]) =
-  Self.vmethods[stringName"_filter_code_completion_candidates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_filter_code_completion_candidates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(TypedArray[Dictionary])).encode(r_ret)
 
 proc setIndentSize*(self: CodeEdit; size: int32): void =
@@ -315,7 +315,7 @@ proc getCodeRegionEndTag*(self: CodeEdit): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc setCodeRegionTags*(self: CodeEdit; start: String = gdstring"region"; `end`: String = gdstring"endregion"): void =
+proc setCodeRegionTags*(self: CodeEdit; start: String = newGdString("region"); `end`: String = newGdString("endregion")): void =
   expandMethodBind(className CodeEdit, "set_code_region_tags", 708800718)
   methodbind.ptrcall(self, [getPtr start, getPtr `end`])
 
@@ -627,37 +627,3 @@ template `autoBraceCompletionHighlightMatching=`*(self: CodeEdit; value) = self.
 
 template autoBraceCompletionPairs*(self: CodeEdit): untyped = self.getAutoBraceCompletionPairs()
 template `autoBraceCompletionPairs=`*(self: CodeEdit; value) = self.setAutoBraceCompletionPairs(value)
-
-proc call_breakpointToggled*(self: CodeEdit; line: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("breakpoint_toggled")
-  let args = [line]
-  self.emitSignal(signalname, args)
-
-proc call_codeCompletionRequested*(self: CodeEdit): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("code_completion_requested")
-  self.emitSignal(signalname)
-
-proc call_symbolLookup*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("symbol_lookup")
-  let args = [symbol, line, column]
-  self.emitSignal(signalname, args)
-
-proc call_symbolValidate*(self: CodeEdit; symbol: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("symbol_validate")
-  let args = [symbol]
-  self.emitSignal(signalname, args)
-
-proc call_symbolHovered*(self: CodeEdit; symbol: Variant; line: Variant; column: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("symbol_hovered")
-  let args = [symbol, line, column]
-  self.emitSignal(signalname, args)

@@ -16,7 +16,7 @@ proc generateRsa*(self: Crypto; size: int32): gdref CryptoKey =
   methodbind.ptrcall(self, [getPtr size], addr ret)
   (addr ret).decode_result(gdref CryptoKey)
 
-proc generateSelfSignedCertificate*(self: Crypto; key: gdref CryptoKey; issuerName: String = gdstring"CN=myserver,O=myorganisation,C=IT"; notBefore: String = gdstring"20140101000000"; notAfter: String = gdstring"20340101000000"): gdref X509Certificate =
+proc generateSelfSignedCertificate*(self: Crypto; key: gdref CryptoKey; issuerName: String = newGdString("CN=myserver,O=myorganisation,C=IT"); notBefore: String = newGdString("20140101000000"); notAfter: String = newGdString("20340101000000")): gdref X509Certificate =
   expandMethodBind(className Crypto, "generate_self_signed_certificate", 492266173)
   var ret: encoded gdref X509Certificate
   methodbind.ptrcall(self, [getPtr key, getPtr issuerName, getPtr notBefore, getPtr notAfter], addr ret)

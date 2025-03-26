@@ -95,9 +95,3 @@ proc saveCustom*(self: ProjectSettings; file: String): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr file], addr ret)
   (addr ret).decode_result(Error)
-
-proc call_settingsChanged*(self: ProjectSettings): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("settings_changed")
-  self.emitSignal(signalname)

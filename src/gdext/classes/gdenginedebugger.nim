@@ -34,7 +34,7 @@ proc profilerAddFrameData*(self: EngineDebugger; name: StringName; data: Array):
   expandMethodBind(className EngineDebugger, "profiler_add_frame_data", 1895267858)
   methodbind.ptrcall(self, [getPtr name, getPtr data])
 
-proc profilerEnable*(self: EngineDebugger; name: StringName; enable: bool; arguments: Array = gdarray()): void =
+proc profilerEnable*(self: EngineDebugger; name: StringName; enable: bool; arguments: Array = newArray()): void =
   expandMethodBind(className EngineDebugger, "profiler_enable", 3192561009)
   methodbind.ptrcall(self, [getPtr name, getPtr enable, getPtr arguments])
 

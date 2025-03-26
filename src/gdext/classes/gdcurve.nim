@@ -183,15 +183,3 @@ template `bakeResolution=`*(self: Curve; value) = self.setBakeResolution(value)
 
 template pointCount*(self: Curve): untyped = self.getPointCount()
 template `pointCount=`*(self: Curve; value) = self.setPointCount(value)
-
-proc call_rangeChanged*(self: Curve): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("range_changed")
-  self.emitSignal(signalname)
-
-proc call_domainChanged*(self: Curve): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("domain_changed")
-  self.emitSignal(signalname)

@@ -62,7 +62,7 @@ proc setBidiOverride*(self: TextParagraph; override: Array): void =
   expandMethodBind(className TextParagraph, "set_bidi_override", 381264803)
   methodbind.ptrcall(self, [getPtr override])
 
-proc setDropcap*(self: TextParagraph; text: String; font: gdref Font; fontSize: int32; dropcapMargins: Rect2 = rect2(0, 0, 0, 0); language: String = gdstring""): bool =
+proc setDropcap*(self: TextParagraph; text: String; font: gdref Font; fontSize: int32; dropcapMargins: Rect2 = rect2(0, 0, 0, 0); language: String = newGdString()): bool =
   expandMethodBind(className TextParagraph, "set_dropcap", 2498990330)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr text, getPtr font, getPtr fontSize, getPtr dropcapMargins, getPtr language], addr ret)
@@ -72,7 +72,7 @@ proc clearDropcap*(self: TextParagraph): void =
   expandMethodBind(className TextParagraph, "clear_dropcap", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addString*(self: TextParagraph; text: String; font: gdref Font; fontSize: int32; language: String = gdstring""; meta: Variant = default(Variant)): bool =
+proc addString*(self: TextParagraph; text: String; font: gdref Font; fontSize: int32; language: String = newGdString(); meta: Variant = default(Variant)): bool =
   expandMethodBind(className TextParagraph, "add_string", 621426851)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr text, getPtr font, getPtr fontSize, getPtr language, getPtr meta], addr ret)

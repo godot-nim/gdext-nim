@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+const InvalidId* = -1
+
 proc idToText*(self: ResourceUID; id: int64): String =
   expandMethodBind(className ResourceUID, "id_to_text", 844755477)
   var ret: encoded String

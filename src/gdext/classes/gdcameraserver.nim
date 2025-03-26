@@ -29,17 +29,3 @@ proc addFeed*(self: CameraServer; feed: gdref CameraFeed): void =
 proc removeFeed*(self: CameraServer; feed: gdref CameraFeed): void =
   expandMethodBind(className CameraServer, "remove_feed", 3204782488)
   methodbind.ptrcall(self, [getPtr feed])
-
-proc call_cameraFeedAdded*(self: CameraServer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("camera_feed_added")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_cameraFeedRemoved*(self: CameraServer; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("camera_feed_removed")
-  let args = [id]
-  self.emitSignal(signalname, args)

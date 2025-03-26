@@ -6,12 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 method estimateCost*(self: AStar2D; fromId: int64; endId: int64): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStar2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AStar2D](p_instance).estimateCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
 
 method computeCost*(self: AStar2D; fromId: int64; toId: int64): Float {.base.} = (discard)
 proc registerVirtual_computeCost*[T: AStar2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_compute_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AStar2D](p_instance).computeCost(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
 
 proc getAvailablePointId*(self: AStar2D): int64 =

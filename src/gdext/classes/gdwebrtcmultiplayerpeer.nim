@@ -4,19 +4,19 @@ import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
 
-proc createServer*(self: WebRTCMultiplayerPeer; channelsConfig: Array = gdarray()): Error =
+proc createServer*(self: WebRTCMultiplayerPeer; channelsConfig: Array = newArray()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_server", 2865356025)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr channelsConfig], addr ret)
   (addr ret).decode_result(Error)
 
-proc createClient*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = gdarray()): Error =
+proc createClient*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = newArray()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_client", 2641732907)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peerId, getPtr channelsConfig], addr ret)
   (addr ret).decode_result(Error)
 
-proc createMesh*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = gdarray()): Error =
+proc createMesh*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = newArray()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_mesh", 2641732907)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peerId, getPtr channelsConfig], addr ret)

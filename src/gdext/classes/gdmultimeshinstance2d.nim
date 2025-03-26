@@ -29,9 +29,3 @@ template `multimesh=`*(self: MultiMeshInstance2D; value) = self.setMultimesh(val
 
 template texture*(self: MultiMeshInstance2D): untyped = self.getTexture()
 template `texture=`*(self: MultiMeshInstance2D; value) = self.setTexture(value)
-
-proc call_textureChanged*(self: MultiMeshInstance2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("texture_changed")
-  self.emitSignal(signalname)

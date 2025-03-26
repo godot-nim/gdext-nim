@@ -171,15 +171,3 @@ template `regionRect=`*(self: Sprite2D; value) = self.setRegionRect(value)
 
 template regionFilterClipEnabled*(self: Sprite2D): untyped = self.isRegionFilterClipEnabled()
 template `regionFilterClipEnabled=`*(self: Sprite2D; value) = self.setRegionFilterClipEnabled(value)
-
-proc call_frameChanged*(self: Sprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_changed")
-  self.emitSignal(signalname)
-
-proc call_textureChanged*(self: Sprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("texture_changed")
-  self.emitSignal(signalname)

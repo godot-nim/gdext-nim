@@ -4,13 +4,13 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc loadThreadedRequest*(self: ResourceLoader; path: String; typeHint: String = gdstring""; useSubThreads: bool = false; cacheMode: ResourceLoader_CacheMode = cacheModeReuse): Error =
+proc loadThreadedRequest*(self: ResourceLoader; path: String; typeHint: String = newGdString(); useSubThreads: bool = false; cacheMode: ResourceLoader_CacheMode = cacheModeReuse): Error =
   expandMethodBind(className ResourceLoader, "load_threaded_request", 3614384323)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr path, getPtr typeHint, getPtr useSubThreads, getPtr cacheMode], addr ret)
   (addr ret).decode_result(Error)
 
-proc loadThreadedGetStatus*(self: ResourceLoader; path: String; progress: Array = gdarray()): ResourceLoader_ThreadLoadStatus =
+proc loadThreadedGetStatus*(self: ResourceLoader; path: String; progress: Array = newArray()): ResourceLoader_ThreadLoadStatus =
   expandMethodBind(className ResourceLoader, "load_threaded_get_status", 4137685479)
   var ret: encoded ResourceLoader_ThreadLoadStatus
   methodbind.ptrcall(self, [getPtr path, getPtr progress], addr ret)
@@ -22,7 +22,7 @@ proc loadThreadedGet*(self: ResourceLoader; path: String): gdref Resource =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(gdref Resource)
 
-proc load*(self: ResourceLoader; path: String; typeHint: String = gdstring""; cacheMode: ResourceLoader_CacheMode = cacheModeReuse): gdref Resource =
+proc load*(self: ResourceLoader; path: String; typeHint: String = newGdString(); cacheMode: ResourceLoader_CacheMode = cacheModeReuse): gdref Resource =
   expandMethodBind(className ResourceLoader, "load", 3358495409)
   var ret: encoded gdref Resource
   methodbind.ptrcall(self, [getPtr path, getPtr typeHint, getPtr cacheMode], addr ret)
@@ -64,7 +64,7 @@ proc getCachedRef*(self: ResourceLoader; path: String): gdref Resource =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(gdref Resource)
 
-proc exists*(self: ResourceLoader; path: String; typeHint: String = gdstring""): bool =
+proc exists*(self: ResourceLoader; path: String; typeHint: String = newGdString()): bool =
   expandMethodBind(className ResourceLoader, "exists", 4185558881)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr path, getPtr typeHint], addr ret)

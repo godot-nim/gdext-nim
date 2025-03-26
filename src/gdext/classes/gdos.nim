@@ -30,7 +30,7 @@ proc closeMidiInputs*(self: OS): void =
   expandMethodBind(className OS, "close_midi_inputs", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc alert*(self: OS; text: String; title: String = gdstring"Alert!"): void =
+proc alert*(self: OS; text: String; title: String = newGdString("Alert!")): void =
   expandMethodBind(className OS, "alert", 1783970740)
   methodbind.ptrcall(self, [getPtr text, getPtr title])
 
@@ -92,7 +92,7 @@ proc getSystemFontPath*(self: OS; fontName: String; weight: int32 = 400; stretch
   methodbind.ptrcall(self, [getPtr fontName, getPtr weight, getPtr stretch, getPtr italic], addr ret)
   (addr ret).decode_result(String)
 
-proc getSystemFontPathForText*(self: OS; fontName: String; text: String; locale: String = gdstring""; script: String = gdstring""; weight: int32 = 400; stretch: int32 = 100; italic: bool = false): PackedStringArray =
+proc getSystemFontPathForText*(self: OS; fontName: String; text: String; locale: String = newGdString(); script: String = newGdString(); weight: int32 = 400; stretch: int32 = 100; italic: bool = false): PackedStringArray =
   expandMethodBind(className OS, "get_system_font_path_for_text", 197317981)
   var ret: encoded PackedStringArray
   methodbind.ptrcall(self, [getPtr fontName, getPtr text, getPtr locale, getPtr script, getPtr weight, getPtr stretch, getPtr italic], addr ret)
@@ -134,7 +134,7 @@ proc getStderrType*(self: OS): OS_StdHandleType =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OS_StdHandleType)
 
-proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Array = gdarray(); readStderr: bool = false; openConsole: bool = false): int32 =
+proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Array = newArray(); readStderr: bool = false; openConsole: bool = false): int32 =
   expandMethodBind(className OS, "execute", 1488299882)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr path, getPtr arguments, getPtr output, getPtr readStderr, getPtr openConsole], addr ret)

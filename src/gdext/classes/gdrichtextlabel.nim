@@ -18,11 +18,11 @@ proc setText*(self: RichTextLabel; text: String): void =
   expandMethodBind(className RichTextLabel, "set_text", 83702148)
   methodbind.ptrcall(self, [getPtr text])
 
-proc addImage*(self: RichTextLabel; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); key: Variant = default(Variant); pad: bool = false; tooltip: String = gdstring""; sizeInPercent: bool = false): void =
+proc addImage*(self: RichTextLabel; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); key: Variant = default(Variant); pad: bool = false; tooltip: String = newGdString(); sizeInPercent: bool = false): void =
   expandMethodBind(className RichTextLabel, "add_image", 3017663154)
   methodbind.ptrcall(self, [getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr key, getPtr pad, getPtr tooltip, getPtr sizeInPercent])
 
-proc updateImage*(self: RichTextLabel; key: Variant; mask: set[RichTextLabel_ImageUpdateMask]; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); pad: bool = false; tooltip: String = gdstring""; sizeInPercent: bool = false): void =
+proc updateImage*(self: RichTextLabel; key: Variant; mask: set[RichTextLabel_ImageUpdateMask]; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); pad: bool = false; tooltip: String = newGdString(); sizeInPercent: bool = false): void =
   expandMethodBind(className RichTextLabel, "update_image", 815048486)
   methodbind.ptrcall(self, [getPtr key, getPtr mask, getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr pad, getPtr tooltip, getPtr sizeInPercent])
 
@@ -82,7 +82,7 @@ proc pushOutlineColor*(self: RichTextLabel; color: Color): void =
   expandMethodBind(className RichTextLabel, "push_outline_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])
 
-proc pushParagraph*(self: RichTextLabel; alignment: HorizontalAlignment; baseDirection: Control_TextDirection = textDirectionAuto; language: String = gdstring""; stParser: TextServer_StructuredTextParser = structuredTextDefault; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound, justificationSkipLastLine, justificationDoNotSkipSingleLine}; tabStops: PackedFloat32Array = PackedFloat32Array()): void =
+proc pushParagraph*(self: RichTextLabel; alignment: HorizontalAlignment; baseDirection: Control_TextDirection = textDirectionAuto; language: String = newGdString(); stParser: TextServer_StructuredTextParser = structuredTextDefault; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound, justificationSkipLastLine, justificationDoNotSkipSingleLine}; tabStops: PackedFloat32Array = PackedFloat32Array()): void =
   expandMethodBind(className RichTextLabel, "push_paragraph", 3089306873)
   methodbind.ptrcall(self, [getPtr alignment, getPtr baseDirection, getPtr language, getPtr stParser, getPtr justificationFlags, getPtr tabStops])
 
@@ -90,11 +90,11 @@ proc pushIndent*(self: RichTextLabel; level: int32): void =
   expandMethodBind(className RichTextLabel, "push_indent", 1286410249)
   methodbind.ptrcall(self, [getPtr level])
 
-proc pushList*(self: RichTextLabel; level: int32; `type`: RichTextLabel_ListType; capitalize: bool; bullet: String = gdstring"•"): void =
+proc pushList*(self: RichTextLabel; level: int32; `type`: RichTextLabel_ListType; capitalize: bool; bullet: String = newGdString("•")): void =
   expandMethodBind(className RichTextLabel, "push_list", 3017143144)
   methodbind.ptrcall(self, [getPtr level, getPtr `type`, getPtr capitalize, getPtr bullet])
 
-proc pushMeta*(self: RichTextLabel; data: Variant; underlineMode: RichTextLabel_MetaUnderline = metaUnderlineAlways; tooltip: String = gdstring""): void =
+proc pushMeta*(self: RichTextLabel; data: Variant; underlineMode: RichTextLabel_MetaUnderline = metaUnderlineAlways; tooltip: String = newGdString()): void =
   expandMethodBind(className RichTextLabel, "push_meta", 3765356747)
   methodbind.ptrcall(self, [getPtr data, getPtr underlineMode, getPtr tooltip])
 
@@ -705,36 +705,3 @@ template `structuredTextBidiOverride=`*(self: RichTextLabel; value) = self.setSt
 
 template structuredTextBidiOverrideOptions*(self: RichTextLabel): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: RichTextLabel; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-proc call_metaClicked*(self: RichTextLabel; meta: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("meta_clicked")
-  let args = [meta]
-  self.emitSignal(signalname, args)
-template call_metaClicked*(self: RichTextLabel; meta: Variant): Error =
-  self.call_metaClicked(variant meta)
-
-proc call_metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("meta_hover_started")
-  let args = [meta]
-  self.emitSignal(signalname, args)
-template call_metaHoverStarted*(self: RichTextLabel; meta: Variant): Error =
-  self.call_metaHoverStarted(variant meta)
-
-proc call_metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("meta_hover_ended")
-  let args = [meta]
-  self.emitSignal(signalname, args)
-template call_metaHoverEnded*(self: RichTextLabel; meta: Variant): Error =
-  self.call_metaHoverEnded(variant meta)
-
-proc call_finished*(self: RichTextLabel): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

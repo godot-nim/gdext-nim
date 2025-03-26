@@ -3,10 +3,10 @@ proc load_PackedFloat64Array_constructor {.execon: staticevents.init_engine.on_l
   for i in {1, 2}:
     PackedFloat64Array_constr[i] = interface_Variant_getPtrConstructor(VariantType_PackedFloat64Array, int32 i)
 
-# proc packedFloat64Array*(): PackedFloat64Array =
-proc packedFloat64Array*(`from`: PackedFloat64Array): PackedFloat64Array =
+# proc newPackedFloat64Array*(): PackedFloat64Array =
+proc newPackedFloat64Array*(`from`: PackedFloat64Array): PackedFloat64Array =
   let argArr = [getPtr `from`]
   PackedFloat64Array_constr[1](addr result, addr argArr[0])
-proc packedFloat64Array*(`from`: Array): PackedFloat64Array =
+proc newPackedFloat64Array*(`from`: Array): PackedFloat64Array =
   let argArr = [getPtr `from`]
   PackedFloat64Array_constr[2](addr result, addr argArr[0])

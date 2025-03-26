@@ -10,7 +10,7 @@ proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
   methodbind.ptrcall(self, [getPtr monitor], addr ret)
   (addr ret).decode_result(float64)
 
-proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array = gdarray()): void =
+proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array = newArray()): void =
   expandMethodBind(className Performance, "add_custom_monitor", 4099036814)
   methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments])
 

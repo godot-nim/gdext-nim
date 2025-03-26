@@ -176,9 +176,3 @@ template `bus=`*(self: AudioStreamPlayer; value) = self.setBus(value)
 
 template playbackType*(self: AudioStreamPlayer): untyped = self.getPlaybackType()
 template `playbackType=`*(self: AudioStreamPlayer; value) = self.setPlaybackType(value)
-
-proc call_finished*(self: AudioStreamPlayer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)
