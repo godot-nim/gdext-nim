@@ -50,13 +50,21 @@ proc weave_loadstmt*(utilfunc: UtilityFunction): Cloth =
 
 proc weave_procdef*(utilfunc: UtilityFunction): Cloth =
   if utilfunc.isImplemented: return
+  let nonvarargs =
+    if utilfunc.json.is_vararg: utilfunc.key.args[0..^2]
+    else: utilfunc.key.args
+  let argsaddr =
+    if utilfunc.key.args.len == 0: "nil"
+    else: "addr ptrargs[0]"
+  let resaddr =
+    if utilfunc.key.result.typeSym == TypeSym.Void: "nil"
+    else: "getPtr result"
+
   weave multiline:
     weave utilfunc.key
     weave cloths.indent:
       if utilfunc.key.args.len != 0:
-        let args = utilfunc.key.args
-          .filterIt(not it.info.isVarargs)
-          .mapIt("getPtr " & $it.name).join(", ")
+        let args = nonvarargs.mapIt("getPtr " & $it.name).join(", ")
         if utilfunc.key.args[^1].info.isVarargs:
           &"let argslen = cint({utilfunc.key.args.high} + {utilfunc.key.args[^1].name}.len)"
           &"var ptrargs = newSeqOfCap[pointer](argslen)"
@@ -68,10 +76,4 @@ proc weave_procdef*(utilfunc: UtilityFunction): Cloth =
           &"let ptrargs = [{args}]"
       else:
         "const argslen = cint 0"
-      let argsaddr =
-        if utilfunc.key.args.len == 0: "nil"
-        else: "addr ptrargs[0]"
-      let resaddr =
-        if utilfunc.key.result.typeSym == TypeSym.Void: "nil"
-        else: "getPtr result"
       &"{utilfunc.container}({resaddr}, {argsaddr}, argslen)"

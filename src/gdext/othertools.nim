@@ -1,3 +1,5 @@
+{.experimental: "callOperator".}
+
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
@@ -18,3 +20,8 @@ include gdext/gen/gdrid
 include gdext/gen/gdint
 include gdext/gen/gdfloat
 include gdext/gen/gdbool
+
+{.push, inline.}
+proc `()`*(signal: Signal; args: varargs[Variant, variant]) =
+  signal.emit(args)
+{.pop.}

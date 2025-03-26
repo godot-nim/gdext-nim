@@ -124,12 +124,11 @@ proc test_Resource(self: GDExtNode) =
 proc signal_arg0*(self: GDExtNode): Error {.gdsync, signal.}
 proc signal_arg1*(self: GDExtNode; what: string): Error {.gdsync, signal.}
 
-var listen_0_result: seq[bool]
-var listen_1_result: seq[string]
+var listen_result: (bool, string)
 proc listen_0*(self: GDExtNode) {.gdsync.} =
-  listen_0_result.add true
+  listen_result[0] = true
 proc listen_1*(self: GDExtNode; what: string) {.gdsync.} =
-  listen_1_result.add what
+  listen_result[1] = what
 
 var result_call_group: bool
 proc lesten_call_group(self: GDExtNode, str: string) {.gdsync.} =
@@ -139,7 +138,6 @@ proc test_FirstClassFunction(self: GDExtNode) =
   suite "First-class function":
     test "connect to signal":
       check self.connect("signal_arg0", self.callable"listen_0") == ok
-      check self.connect("signal_arg0", self.callable"listen_1") == ok
       check self.connect("signal_arg1", self.callable"listen_0") == ok
       check self.connect("signal_arg1", self.callable"listen_1") == ok
 
@@ -148,11 +146,20 @@ proc test_FirstClassFunction(self: GDExtNode) =
       check result_call_group
     test "send Signal":
       check self.signal_arg0() == ok
-      check listen_0_result[0]
-      check listen_1_result[0].len != 0
+      check listen_result[0]
+      reset listen_result
       check self.signal_arg1("SIGNAL") == ok
-      check listen_0_result[1]
-      check listen_1_result[1] == "SIGNAL"
+      check listen_result[0]
+      check listen_result[1] == "SIGNAL"
+      reset listen_result
+    test "send Signal with emit":
+      self.signal"signal_arg0"()
+      check listen_result[0]
+      reset listen_result
+      self.signal"signal_arg1"("SIGNAL")
+      check listen_result[0]
+      check listen_result[1] == "SIGNAL"
+      reset listen_result
 
 proc test_VirtualMethod(self: GDExtNode) =
   suite "virtuals":
