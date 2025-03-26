@@ -23,6 +23,10 @@ proc engineInstance*(obj: Object): ObjectPtr =
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
   for i in 0..<arr.len:
     result[i] = getPtr arr[i]
+proc getPtr*(arr: varargs[Variant] | seq[Variant]): seq[pointer] =
+  result = newSeqOfCap[pointer](arr.len)
+  for i in 0..<arr.len:
+    result.add getPtr arr[i]
 proc getPtr*(arr: array[0, Variant]): array[0, pointer] = discard
 
 template getTypedPtr*(v: Variant): VariantPtr = addr v
