@@ -18,6 +18,7 @@ import std/sets
 type
   BuiltinClassMethodEntry* = ref object of GodotProc
     containerKey: ContainerKey
+    isVarargs: bool
 
 proc extract_result(self: JsonBuiltinClassMethod): RenderableResult =
   convertToResult self.return_type
@@ -42,11 +43,9 @@ proc convert*(json: JsonBuiltinClassMethod; self_type: RenderableSelfArgument): 
 
     native_name: json.name,
     hash: some json.hash,
+    isVarargs: json.is_vararg,
   )
   result.containerKey = gen_containerKey result
-  # TODO: Support varargs
-  if json.is_vararg:
-    result.pragmas.list.add "error"
 
 proc weave_container*(entry: BuiltinClassMethodEntry): Cloth =
   &"var {entry.containerKey}: PtrBuiltinMethod"
@@ -55,25 +54,43 @@ proc weave_loadstmt*(entry: BuiltinClassMethodEntry): Cloth =
   &"{entry.containerKey} = load({variantType entry.self.typesym}, \"{entry.native_name}\", {get entry.hash})"
 
 proc weave_procdef*(entry: BuiltinClassMethodEntry): Cloth =
-  if "error" in entry.pragmas.list:
-    return
-
   let p_self = case entry.self.isStatic
   of false: &"addr {entry.self.name}"
   of true: "nil"
-  let p_args =
-    if entry.args.len == 0: "nil"
-    else: "addr argArr[0]"
   let p_result =
     if entry.result.typeSym == TypeSym.Void: "nil"
     else: "addr result"
 
+  let nonvarargs=
+    if entry.isVarargs: entry.args[0..^2]
+    else: entry.args
+  let argarr = "[" & nonvarargs.mapIt(&"getPtr {it.name}").join(", ") & "]"
+
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
-      if entry.args.len != 0:
-        &"let argArr = [" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
-      &"{entry.containerKey}({p_self}, {p_args}, {p_result}, {entry.args.len})"
+      if entry.isVarargs:
+        let vararg = entry.args[^1]
+        if nonvarargs.len == 0:
+          &"if {vararg.name}.len == 0:"
+          &"  {entry.containerKey}({p_self}, nil, {p_result}, 0)"
+          "else:"
+          &"  let argArr = getptr {vararg.name}"
+          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, cint {vararg.name}.len)"
+        else:
+          &"if {vararg.name}.len == 0:"
+          &"  let argArr = {argarr}"
+          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, {nonvarargs.len})"
+          "else:"
+          &"  var argArr = @{argarr}"
+          &"  argArr.add {vararg.name}.getptr"
+          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, cint argArr.len)"
+      else:
+        if nonvarargs.len == 0:
+          &"{entry.containerKey}({p_self}, nil, {p_result}, {entry.args.len})"
+        else:
+          &"let argArr = {argarr}"
+          &"{entry.containerKey}({p_self}, addr argArr[0], {p_result}, {nonvarargs.len})"
 
 proc weave_methods*(json: JsonBuiltinClass): Cloth =
   let typesym = json.name.convert(TypeSym)
