@@ -13,8 +13,6 @@ type float_elem* = float32
 type char16* = char16_t
 type char32* = char32_t
 
-type Opaque[I: static int] = array[I, pointer]
-
 type
   Vector*[N: static int; T] = array[N, T]
   NVector*[N: static int; T: SomeFloat] = distinct Vector[N, T]
@@ -98,16 +96,10 @@ type
     cowdata: pointer
   NodePath* {.byref.} = object
     cowdata: pointer
-  Callable* {.byref.} = object
-    opaque: Opaque[4]
-  Signal* {.byref.} = object
-    opaque: Opaque[4]
   Dictionary* {.byref.} = object
     cowdata: pointer
   Array* {.byref.} = object
     cowdata: pointer
-
-  TypedArray*[T: SomeProperty] = distinct Array
 
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
@@ -128,6 +120,17 @@ type
 
   GdRef*[RefCounted] = object
     handle*: RefCounted
+
+include gdext/gen/[localenums, globalenums, structs]
+
+type
+  Signal* {.byref.} = object
+    name: StringName
+    `object`: ObjectID
+  Callable* {.byref.} = object
+    `method`: StringName
+    `object`: ObjectID
+  TypedArray*[T: SomeProperty] = distinct Array
 
   SomePackedArray* =
     PackedByteArray    |
@@ -260,6 +263,7 @@ template variantType*[E: enum](Type: typedesc[set[E]]): Variant_Type = VariantTy
 
 template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 
+include gdext/gen/[classindex]
 
 proc `=dup`*(src: String): String =
   let argPtr = cast[pointer](addr src)
@@ -310,7 +314,7 @@ proc `=dup`*(src: Callable): Callable =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeCallable](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Callable) =
-  if val.opaque == Callable.opaque.default: return
+  if val.`method` == StringName() and val.object == ObjectID(): return
   typeDestructor[VariantTypeCallable](addr val)
 proc `=copy`*(dst: var Callable; src: Callable) =
   if dst == src: return
@@ -322,7 +326,7 @@ proc `=dup`*(src: Signal): Signal =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeSignal](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Signal) =
-  if val.opaque == Signal.opaque.default: return
+  if val.name == StringName() and val.object == ObjectID(): return
   typeDestructor[VariantTypeSignal](addr val)
 proc `=copy`*(dst: var Signal; src: Signal) =
   if dst == src: return
