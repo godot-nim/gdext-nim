@@ -24,7 +24,6 @@ import operators/builtinclasses/methods
 import operators/classindex
 import operators/classes/methods
 import operators/classes/properties
-import operators/classes/signals
 
 import std/sequtils
 import std/strformat
@@ -164,7 +163,6 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               for entry in class.json.methods.get(@[]):
                 weave entry.convert(sym)
             weave_properties class
-            weave_signals(class)
 
     layout gen:
       let trueClasses = classes.subitems.values.toSeq.filterIt(it of NimSource.NimSource).mapIt(NimSource it)
