@@ -157,6 +157,9 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
             if sym != TypeSym.Object:
               let mdlbase = base.convert(ModuleSym)
               &"import {mdlbase}; export {mdlbase}"
+            weave multiline:
+              for constant in class.json.constants.get(@[]):
+                constant.weave(sym)
             weave margin:
               for entry in class.json.methods.get(@[]):
                 weave entry.convert(sym)
