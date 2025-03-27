@@ -1,7 +1,7 @@
 ## Array
 ## =====
 ##
-## A standard collection of Variants provided by Godot that holds values of any type whose conversion to Variant is supported. Create with `gdarray()`.
+## A standard collection of Variants provided by Godot that holds values of any type whose conversion to Variant is supported.
 ##
 ## TypedArray\[SomeVariant\]
 ## =========================
@@ -10,32 +10,31 @@
 ##
 ## A good alternative if you want to use Array's API under a static type system.
 ##
-## Create with `typedArray[T]()`.
-##
 ## PackedArray
 ## ===========
 ##
-## A primitive dynamic array provided by Godot. Create with `packedByteArray()`, and so on.
+## A primitive dynamic array provided by Godot.
 
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
+import gdext/private/macros
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/varianttools
 
 import std/sequtils
 
-proc packedByteArray*(): PackedByteArray = (discard)
-proc packedColorArray*(): PackedColorArray = (discard)
-proc packedStringArray*(): PackedStringArray = (discard)
-proc packedInt32Array*(): PackedInt32Array = (discard)
-proc packedInt64Array*(): PackedInt64Array = (discard)
-proc packedFloat32Array*(): PackedFloat32Array = (discard)
-proc packedFloat64Array*(): PackedFloat64Array = (discard)
-proc packedVector2Array*(): PackedVector2Array = (discard)
-proc packedVector3Array*(): PackedVector3Array = (discard)
-proc packedVector4Array*(): PackedVector4Array = (discard)
+proc newPackedByteArray*(): PackedByteArray = (discard)
+proc newPackedColorArray*(): PackedColorArray = (discard)
+proc newPackedStringArray*(): PackedStringArray = (discard)
+proc newPackedInt32Array*(): PackedInt32Array = (discard)
+proc newPackedInt64Array*(): PackedInt64Array = (discard)
+proc newPackedFloat32Array*(): PackedFloat32Array = (discard)
+proc newPackedFloat64Array*(): PackedFloat64Array = (discard)
+proc newPackedVector2Array*(): PackedVector2Array = (discard)
+proc newPackedVector3Array*(): PackedVector3Array = (discard)
+proc newPackedVector4Array*(): PackedVector4Array = (discard)
 
 include gdext/gen/gdarrayconstr
 include gdext/gen/gdpackedbytearrayconstr
@@ -64,8 +63,8 @@ include gdext/gen/gdpackedvector4array
 # Array
 # =====
 
-proc gdarray*(len: Natural): Array =
-  result = gdarray()
+proc newArray*(len: Natural): Array =
+  result = newArray()
   discard result.resize(len)
 
 proc setLen*(arr: Array; newlen: int) =
@@ -87,15 +86,22 @@ proc contains*[T: SomeProperty](arr: Array; value: T): bool = arr.find(variant v
 # TypedArray
 # ==========
 
-proc typedArray*[T](arr: Array): TypedArray[T] =
-  TypedArray[T] gdarray(arr, Int T.variantType, stringName(), variant())
+proc newTypedArray*[T](arr: Array): TypedArray[T] =
+  TypedArray[T] newArray(arr, Int T.variantType, newStringName(), variant())
 
-proc typedArray*[T](): TypedArray[T] =
-  typedArray[T](gdarray())
+proc newTypedArray*[T](): TypedArray[T] =
+  newTypedArray[T](newArray())
 
-proc typedArray*[T](len: Natural): TypedArray[T] =
-  result = typedArray[T]()
+proc newTypedArray*[T](len: Natural): TypedArray[T] =
+  result = newTypedArray[T]()
   discard result.Array.resize(len)
+
+template typedArray*[T](arr: Array): TypedArray[T] {.deprecated: "use newTypedArray instead".} =
+  newTypedArray[T](arr)
+template typedArray*[T](): TypedArray[T] {.deprecated: "use newTypedArray instead".} =
+  newTypedArray[T]()
+template typedArray*[T](len: Natural): TypedArray[T] {.deprecated: "use newTypedArray instead".} =
+  newTypedArray[T](len)
 
 iterator items*[T](arr: TypedArray[T]): T =
   for i in 0..<arr.len: yield arr[i].get(T)
@@ -104,11 +110,11 @@ iterator pairs*[T](arr: TypedArray[T]): (int, T) =
 
 iterator mitems*[T](arr: TypedArray[T]): var T =
   when T is Object or T is GdRef:
-    {.error: "mutable items for " & $T & " is unavailable; use items instead.".}
+    {.error: "mutable items for " & $T & " is unavailable; use items instead".}
   for v in arr.Array.mitems: yield v.getAddr(T)[]
 iterator mpairs*[T](arr: TypedArray[T]): (int, var T) =
   when T is Object or T is GdRef:
-    {.error: "mutable pairs for " & $T & " is unavailable; use pairs instead.".}
+    {.error: "mutable pairs for " & $T & " is unavailable; use pairs instead".}
   for i, v in arr.Array.mpairs: yield (i, v.getAddr(T)[])
 
 proc `[]`*[T](arr: TypedArray[T]; i: int): T =
@@ -201,3 +207,15 @@ proc toSeq*[T](arr: PackedArray[T]): seq[T] =
 
 proc contains*[T](arr: PackedArray[T]; item: T): bool =
   arr.toOpenArray.contains item
+
+template gdArray*(args: varargs[untyped]): untyped {.deprecated: "use newArray instead".} = unpackVarargs(newArray, args)
+template packedByteArray*(args: varargs[untyped]): untyped {.deprecated: "use newPackedByteArray instead".} = unpackVarargs(newPackedByteArray, args)
+template packedColorArray*(args: varargs[untyped]): untyped {.deprecated: "use newPackedColorArray instead".} = unpackVarargs(newPackedColorArray, args)
+template packedStringArray*(args: varargs[untyped]): untyped {.deprecated: "use newPackedStringArray instead".} = unpackVarargs(newPackedStringArray, args)
+template packedInt32Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedInt32Array instead".} = unpackVarargs(newPackedInt32Array, args)
+template packedInt64Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedInt64Array instead".} = unpackVarargs(newPackedInt64Array, args)
+template packedFloat32Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedFloat32Array instead".} = unpackVarargs(newPackedFloat32Array, args)
+template packedFloat64Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedFloat64Array instead".} = unpackVarargs(newPackedFloat64Array, args)
+template packedVector2Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedVector2Array instead".} = unpackVarargs(newPackedVector2Array, args)
+template packedVector3Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedVector3Array instead".} = unpackVarargs(newPackedVector3Array, args)
+template packedVector4Array*(args: varargs[untyped]): untyped {.deprecated: "use newPackedVector4Array instead".} = unpackVarargs(newPackedVector4Array, args)

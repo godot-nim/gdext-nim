@@ -31,7 +31,7 @@ proc makebody (params, gdname, self: NimNode): NimNode =
   quote do:
     var signalName {.global.}: Variant
     once:
-      signalName = variant stringName `gdname`
+      signalName = variant newStringName `gdname`
     let variantArr = `variantArrDef`
     `self`.emitSignal(signalName, variantArr)
 
@@ -42,7 +42,7 @@ macro parseParams (params): seq[PropertyInfo] =
     if i == 0: continue
     let namelit = name.toStrLit
     arguments.add quote do:
-      propertyInfo(typedesc `typ`, stringName `namelit`).unheap
+      propertyInfo(typedesc `typ`, newStringName `namelit`).unheap
 
   quote do: @`arguments`
 

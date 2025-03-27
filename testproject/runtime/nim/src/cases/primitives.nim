@@ -4,19 +4,19 @@ import std/unicode
 
 runtime: suite "Array":
   test "construct":
-    var arr = gdarray(10)
+    var arr = newArray(10)
     check not arr.isTyped
     check arr.len == 10
     for i, val in arr:
       check val == variant()
   test "mutable iter":
-    var arr = gdarray(10)
+    var arr = newArray(10)
     for i, val in arr.mpairs:
       val = variant(i)
     for i, val in arr:
       check val.get(int) == i
   test "subscript":
-    var arr = gdarray(10)
+    var arr = newArray(10)
     for i in 0..<arr.len:
       check arr[i] == variant()
     for i in 0..<arr.len:
@@ -26,34 +26,34 @@ runtime: suite "Array":
 
 runtime: suite "TypedArray":
   test "construct":
-    var arr = typedArray[String](10)
+    var arr = newTypedArray[String](10)
     check arr.isTyped
     check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
     check arr.len == 10
     for i, val in arr:
       check val.length == 0
   test "mutable iter":
-    var arr = typedArray[String](10)
+    var arr = newTypedArray[String](10)
     for i, val in arr.mpairs:
       val = $i
     for i, val in arr:
       check $val == $i
 
-    var arr2 = typedArray[Object](10)
+    var arr2 = newTypedArray[Object](10)
     check not compiles(
       for i, val in arr2.mpairs: discard
     )
 
   test "subscript":
-    var arr = typedArray[String](10)
+    var arr = newTypedArray[String](10)
     for i in 0..<arr.len:
-      check arr[i] == gdstring""
+      check arr[i] == newGdString""
     for i in 0..<arr.len:
-      arr[i] = gdstring $i
+      arr[i] = newGdString $i
     for i in 0..<arr.len:
-      check arr[i] == gdstring $i
+      check arr[i] == newGdString $i
   test "typed functions":
-    var arr = typedArray[String](2)
+    var arr = newTypedArray[String](2)
     arr.fill "Hello, "
     arr.pushBack "world!"
     check $arr.popFront == "Hello, "
@@ -61,8 +61,8 @@ runtime: suite "TypedArray":
     check $arr[1] == "world!"
 
 
-runtime: suite "PackedArray":
-  var strs: PackedStringArray = packedStringArray()
+runtime: suite "newPackedArray":
+  var strs: PackedStringArray = newPackedStringArray()
 
   test "resizing":
     check strs.size == 0
@@ -70,38 +70,38 @@ runtime: suite "PackedArray":
     check strs.size == 8
 
     for i in 0..<strs.size:
-      check strs[i] == gdstring()
+      check strs[i] == newGdString()
 
   test "assignment":
     for i in 0..<strs.size:
-      strs[i] = gdstring $i
+      strs[i] = newGdString $i
     for i in 0..<strs.size:
-      check strs[i] == gdstring $i
+      check strs[i] == newGdString $i
 
   test "to seq":
     let s: seq[String] = strs.toSeq
-    check s == @[gdstring"0", gdstring"1", gdstring"2", gdstring"3", gdstring"4", gdstring"5", gdstring"6", gdstring"7"]
+    check s == @[newGdString"0", newGdString"1", newGdString"2", newGdString"3", newGdString"4", newGdString"5", newGdString"6", newGdString"7"]
 
   test "mutable iteration":
     for b in strs.mitems:
-      b = gdstring "Hello, world!"
-      check b == gdstring "Hello, world!"
+      b = newGdString "Hello, world!"
+      check b == newGdString "Hello, world!"
 
     for i, b in strs.mpairs:
-      b = gdstring $i
-      check b == gdstring $i
+      b = newGdString $i
+      check b == newGdString $i
 
   test "immutable iteration":
     for i, b in strs:
-      check b == gdstring $i
+      check b == newGdString $i
 
     var i: int
     for b in strs:
-      check b == gdstring $i
+      check b == newGdString $i
       inc i
 
-  test "contains(PackedInt32Array)":
-    var arr = packedInt32Array()
+  test "contains(newPackedInt32Array)":
+    var arr = newPackedInt32Array()
     discard arr.resize(10)
     for i, v in arr.mpairs:
       v = int32 i
@@ -109,11 +109,11 @@ runtime: suite "PackedArray":
     check 1 in arr
     check 11 notin arr
 
-  test "contains(PackedStringArray)":
-    var arr = packedStringArray()
+  test "contains(newPackedStringArray)":
+    var arr = newPackedStringArray()
     discard arr.resize(10)
     for i, v in arr.mpairs:
-      v = gdstring $i
+      v = newGdString $i
     check arr.contains "9"
     check "1" in arr
     check "hello" notin arr

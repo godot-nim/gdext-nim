@@ -23,7 +23,7 @@ proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
 proc instantiate*[T_Node: Node](T: typedesc[T_Node]; name: string): T =
   result = instantiate_internal T
   debugInstantiate(result)
-  result.name = gdstring name
+  result.name = newGdString name
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
@@ -63,6 +63,6 @@ proc `$`*(self: Node): string =
   $self.name() & " [" & $Object(self) & "]"
 
 template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
-template `/`*(self: Node; path: string): Node = self/nodepath(gdstring path)
+template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub

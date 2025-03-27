@@ -6,6 +6,7 @@ import ./classindex
 import submodules/wordropes
 import submodules/semanticstrings
 import types/json
+import utils
 
 import std/hashes
 import std/strutils
@@ -125,73 +126,87 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
       value
 
   else:
+    const withGeneric = [TypeSym"TypedArray"]
+    proc constr(typ: TypeSym): string =
+      $constructorName(typesym) &
+      (if typ in withGeneric: "[" & dbModify(arg.info.metaType) & "]" else: "") &
+      "()"
+    proc constr(typ: TypeSym; expr: string): string =
+      result = $constructorName(typesym) &
+      (if typ in withGeneric: "[" & dbModify(arg.info.metaType) & "]" else: "") &
+      "(" & expr & ")"
+      result = result.multiReplace(("((", "("), ("))", ")"))
+    proc drop(expr: string; typ: TypeSym): string =
+      expr.replace($typ, "")
     case typesym
     of TypeSym"String":
-      if value[0] == '"':
-        "gdstring" & value
+      if value.drop(typesym) == "\"\"":
+        typesym.constr()
+      elif value[0] == '"':
+        typesym.constr(value)
       else:
-        value.replace("String", "gdstring")
+        typesym.constr(value.drop(typesym))
 
     of TypeSym"StringName":
       case value
       of "&\"\"", "\"\"":
         "default(StringName)"
       elif value.startsWith"&":
-        "stringName" & value[1..^1]
+        typesym.constr(value[1..^1])
       else:
         value
 
     of TypeSym"Vector3", TypeSym"Vector3i", TypeSym"Vector2", TypeSym"Vector2i":
-      value.replace("Vector", "vector")
+      typesym.constr(value.drop(typesym))
 
     of TypeSym"Rect2", TypeSym"Rect2i":
-      value.replace("Rect2", "rect2")
+      typesym.constr(value.drop(typesym))
 
     of TypeSym"Transform3D":
       case value
       of "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)":
-        "transform3D()"
+        typesym.constr()
       else:
-        value.replace("Transform3D", "transform3D")
+        typesym.constr(value.drop(typesym))
 
     of TypeSym"Transform2D":
       case value
       of "Transform2D(1, 0, 0, 1, 0, 0)":
-        "transform2D()"
+        typesym.constr()
       else:
-        value.replace("Transform2D", "transform2D")
+        typesym.constr(value.drop(typesym))
 
     of TypeSym"Color":
-        value.replace("Color", "color")
+        typesym.constr(value.drop(typesym))
 
     of TypeSym"Array":
       case value
       of "[]":
-        "gdarray()"
+        typesym.constr()
       else:
         value
 
     of TypeSym"TypedArray":
-      &"typedArray[{dbModify arg.info.metaType}]()"
+      typesym.constr()
 
     of TypeSym"Dictionary":
       case value
       of "{}":
-        "dictionary()"
+        typesym.constr()
       else:
         value
 
     of TypeSym"Callable":
       case value
       of "Callable()":
-        "callable()"
+        typesym.constr()
       else:
         value
 
     of TypeSym"NodePath":
       case value
       of "NodePath(\"\")":
-        "nodePath()"
+        typesym.constr()
       else:
         value
 

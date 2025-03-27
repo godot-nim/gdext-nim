@@ -5,9 +5,9 @@ import gdext/varianttools
 
 {.push, inline.}
 
-converter convertToString*(str: string): String = gdstring str
-converter convertToStringName*(str: string): StringName = stringName str
-converter convertToNodePath*(str: string): NodePath = nodePath gdstring str
+converter convertToString*(str: string): String = newGdString str
+converter convertToStringName*(str: string): StringName = newStringName str
+converter convertToNodePath*(str: string): NodePath = newNodePath newGdString str
 
 converter convertToArray*(arr: TypedArray): Array = Array arr
 

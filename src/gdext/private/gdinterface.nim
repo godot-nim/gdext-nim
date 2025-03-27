@@ -118,7 +118,7 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   var instance {.global.} : GodotClassMeta
   once:
     instance = GodotClassMeta(
-      className: stringName $T,
+      className: newStringName $T,
     )
     when T is SomeEngineClass:
       instance.callbacks = InstanceBindingCallbacks(
@@ -186,7 +186,7 @@ proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr 
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
   interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: string; p_hash: Int): MethodBindPtr =
-  ClassDB.getMethodBind(p_classname, stringName p_methodname, p_hash)
+  ClassDB.getMethodBind(p_classname, newStringName p_methodname, p_hash)
 
 proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
   interfaceClassdbGetClassTag(addr p_classname)
