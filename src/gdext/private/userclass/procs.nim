@@ -1,6 +1,6 @@
 import std/[sequtils, strutils, sets, tables]
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/private/staticevents

@@ -1,5 +1,5 @@
 import std/[macros, macrocache, sets, hashes]
-import gdext/buildconf
+import gdext/private/buildsettings
 
 type
   Event* = CacheSeq

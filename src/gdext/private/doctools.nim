@@ -1,4 +1,4 @@
-import gdext/buildconf
+import gdext/private/buildsettings
 
 when Assistance.genEditorHelp:
   import gdext/private/gdinterface

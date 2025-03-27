@@ -6,6 +6,7 @@
 ## =======
 ## The following modules are automatically imported by gdext. There is no need to import them explicitly.
 ## 
+## * `buildconf <gdext/buildconf.html>`_: It's required to build GDExtension. You **must** import it from your project's config.nims.
 ## * `bridge <gdext/bridge.html>`_: Core functionalities of gdext
 ## * `appearances <gdext/appearances.html>`_: Appearance of properties on the editor inspector
 ## * `objectcallbacks <gdext/objectcallbacks.html>`_: Object callbacks called by the engine
@@ -25,7 +26,7 @@
 
 {.warning[UnusedImport]: off.}
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 
 import gdext/private/staticevents
@@ -139,6 +140,9 @@ template GDExtension_EntryPoint*: untyped =
       echo "FATAL ERROR: failed to initialize library."
       echo $getCurrentException()
       return false
+
+when defined(docgen):
+  import gdext/buildconf
 
 when isMainModule:
   GDExtension_EntryPoint

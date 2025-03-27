@@ -1,10 +1,10 @@
 import std/[tables, sets]
 
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/propertyinfo
-import gdext/buildconf
 import gdext/builtinindex
 
 import gdext/classes/gdobject
