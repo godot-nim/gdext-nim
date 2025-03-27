@@ -19,6 +19,7 @@ type
     ptaNake
     ptaSet
   ParamInfo* = object
+    isMutable*: bool
     isVarargs*: bool
     attribute*: ParamTypeAttr
     metaType*: TypeSym
@@ -73,6 +74,8 @@ proc `type`*(param: RenderableParamBase): string =
   of ptaSet:
     &"set[{name}]"
 
+  if param.info.isMutable:
+    return "var " & result
   if param.info.isVarargs:
     return &"varargs[{result}]"
 
@@ -82,6 +85,8 @@ proc `type`*(param: RenderableArgument): string =
 proc `type`*(param: RenderableSelfArgument): string =
   if param.isStatic:
     result.add "typedesc["
+  elif param.info.isMutable:
+    result.add "var "
   result.add $param.typeSym
 
   if param.isStatic:

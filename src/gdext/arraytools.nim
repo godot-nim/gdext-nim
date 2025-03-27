@@ -88,7 +88,7 @@ proc newArray*(len: Natural): Array =
   result = newArray()
   discard result.resize(len)
 
-proc setLen*(arr: Array; newlen: int) =
+proc setLen*(arr: var Array; newlen: int) =
   discard arr.resize(newlen)
 proc len*(arr: Array): int = arr.size
 
@@ -97,9 +97,9 @@ iterator items*(arr: Array): Variant =
 iterator pairs*(arr: Array): (int, Variant) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
-iterator mitems*(arr: Array): var Variant =
+iterator mitems*(arr: var Array): var Variant =
   for i in 0..<arr.len: yield arr[i]
-iterator mpairs*(arr: Array): (int, var Variant) =
+iterator mpairs*(arr: var Array): (int, var Variant) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
 proc contains*[T: SomeProperty](arr: Array; value: T): bool = arr.find(variant value)
@@ -129,30 +129,30 @@ iterator items*[T](arr: TypedArray[T]): T =
 iterator pairs*[T](arr: TypedArray[T]): (int, T) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
-iterator mitems*[T](arr: TypedArray[T]): var T =
+iterator mitems*[T](arr: var TypedArray[T]): var T =
   when T is Object or T is GdRef:
     {.error: "mutable items for " & $T & " is unavailable; use items instead".}
   for v in arr.Array.mitems: yield v.getAddr(T)[]
-iterator mpairs*[T](arr: TypedArray[T]): (int, var T) =
+iterator mpairs*[T](arr: var TypedArray[T]): (int, var T) =
   when T is Object or T is GdRef:
     {.error: "mutable pairs for " & $T & " is unavailable; use pairs instead".}
   for i, v in arr.Array.mpairs: yield (i, v.getAddr(T)[])
 
 proc get*[T](self: TypedArray[T]; index: Int): T =
   self.Array.get(index)
-proc set*[T](self: TypedArray[T]; index: Int; value: T): void =
+proc set*[T](self: var TypedArray[T]; index: Int; value: T): void =
   self.Array.set(index, variant value)
-proc pushBack*[T](self: TypedArray[T]; value: T): void =
+proc pushBack*[T](self: var TypedArray[T]; value: T): void =
   self.Array.pushBack(variant value)
-proc pushFront*[T](self: TypedArray[T]; value: T): void =
+proc pushFront*[T](self: var TypedArray[T]; value: T): void =
   self.Array.pushFront(variant value)
-proc append*[T](self: TypedArray[T]; value: T): void =
+proc append*[T](self: var TypedArray[T]; value: T): void =
   self.Array.append(variant value)
-proc insert*[T](self: TypedArray[T]; position: Int; value: T): Int =
+proc insert*[T](self: var TypedArray[T]; position: Int; value: T): Int =
   self.Array.insert(position, variant value)
-proc fill*[T](self: TypedArray[T]; value: T): void =
+proc fill*[T](self: var TypedArray[T]; value: T): void =
   self.Array.fill(variant value)
-proc erase*[T](self: TypedArray[T]; value: T): void =
+proc erase*[T](self: var TypedArray[T]; value: T): void =
   self.Array.erase(variant value)
 proc front*[T](self: TypedArray[T]): T =
   self.Array.front().get(T)
@@ -170,23 +170,23 @@ proc count*[T](self: TypedArray[T]; value: T): Int =
   self.Array.count(variant value)
 proc has*[T](self: TypedArray[T]; value: T): bool =
   self.Array.has(variant value)
-proc popBack*[T](self: TypedArray[T]): T =
+proc popBack*[T](self: var TypedArray[T]): T =
   self.Array.popBack().get(T)
-proc popFront*[T](self: TypedArray[T]): T =
+proc popFront*[T](self: var TypedArray[T]): T =
   self.Array.popFront().get(T)
-proc popAt*[T](self: TypedArray[T]; position: Int): T =
+proc popAt*[T](self: var TypedArray[T]; position: Int): T =
   self.Array.popAt(position).get(T)
-# proc sortCustom*[T](self: TypedArray[T]; `func`: Callable): void =
+# proc sortCustom*[T](self: var TypedArray[T]; `func`: Callable): void =
 proc bsearch*[T](self: TypedArray[T]; value: T; before: bool = true): Int =
   self.Array.bsearch(variant value, before)
 proc bsearchCustom*[T](self: TypedArray[T]; value: T; `func`: Callable; before: bool = true): Int =
   self.Array.bsearchCustom(variant value, `func`, before)
 proc duplicate*[T](self: TypedArray[T]; deep: bool = false): TypedArray[T] =
-  typedArray[T](self.Array.duplicate())
+  TypedArray[T](self.Array.duplicate())
 proc slice*[T](self: TypedArray[T]; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): TypedArray[T] =
-  typedArray[T](self.Array.slice(begin, `end`, step, deep))
+  TypedArray[T](self.Array.slice(begin, `end`, step, deep))
 proc filter*[T](self: TypedArray[T]; `method`: Callable): TypedArray[T] =
-  typedArray[T](self.Array.filter(`method`))
+  TypedArray[T](self.Array.filter(`method`))
 # proc map*[T](self: TypedArray[T]; `method`: Callable): Array =
 # proc reduce*[T](self: TypedArray[T]; `method`: Callable; accum: T = default(Variant)): Variant =
 # proc any*[T](self: TypedArray[T]; `method`: Callable): bool =
@@ -199,7 +199,7 @@ proc min*[T](self: TypedArray[T]): T =
 # PackedArray
 # ===========
 
-proc setLen*(arr: PackedArray; newlen: int) =
+proc setLen*(arr: var PackedArray; newlen: int) =
   discard arr.resize(newlen)
 proc len*(arr: PackedArray): int = arr.size
 
@@ -208,9 +208,9 @@ iterator items*[T](arr: PackedArray[T]): T =
 iterator pairs*[T](arr: PackedArray[T]): (int, T) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
-iterator mitems*[T](arr: PackedArray[T]): var T =
+iterator mitems*[T](arr: var PackedArray[T]): var T =
   for i in 0..<arr.len: yield arr[i]
-iterator mpairs*[T](arr: PackedArray[T]): (int, var T) =
+iterator mpairs*[T](arr: var PackedArray[T]): (int, var T) =
   for i in 0..<arr.len: yield (int i, arr[i])
 
 template toOpenArray*[T](arr: PackedArray[T]): openArray[T] =
