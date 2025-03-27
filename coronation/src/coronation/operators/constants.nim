@@ -26,3 +26,9 @@ proc weave*(constant: JsonConstant; caller: TypeSym): Cloth =
     weave multiline:
       &"const {caller}_{pred}: {constant.`type`} = {value}"
       &"template {pred}*(_: typedesc[{caller}]): {constant.`type`} = {caller}_{pred}"
+
+proc weave*(constant: JsonClassConstant; caller: TypeSym): Cloth =
+  let pred = constant.name.scan().convert(TypeSym)
+  let value = constant.value
+  weave multiline:
+    &"const {pred}* = {value}"
