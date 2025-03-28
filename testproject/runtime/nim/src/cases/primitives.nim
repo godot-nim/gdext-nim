@@ -123,6 +123,19 @@ runtime: suite "Array":
     for i in 0..<arr.len:
       check arr[i].get(int) == i
 
+  test "`[]`(HSlice)":
+    var pi = newArray [1, 2, 3, 4]
+    check pi[0..2] == newArray [1, 2, 3]
+
+  test "`[]=`(HSlice)":
+    var ps = newArray [String "a","b","c","d","e","f","g","h"]
+    ps[1 .. ^2] = newArray [String "x","y","z"]
+    check ps == newArray [String "a","x","y","z","h"]
+
+    var pb = newArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
+    pb[1 .. ^2] = newArray [byte 24, 25, 26]
+    check pb == newArray [byte 1, 24, 25, 26, 8]
+
 runtime: suite "TypedArray":
   test "construct":
     var arr = newTypedArray[String](10)
@@ -159,6 +172,18 @@ runtime: suite "TypedArray":
     check $arr[0] == "Hello, "
     check $arr[1] == "world!"
 
+  test "`[]`(HSlice)":
+    var pi = newTypedArray [1, 2, 3, 4]
+    check pi[0..2] == newTypedArray [1, 2, 3]
+
+  test "`[]=`(HSlice)":
+    var ps = newTypedArray [String "a","b","c","d","e","f","g","h"]
+    ps[1 .. ^2] = newTypedArray [String "x","y","z"]
+    check ps == newTypedArray [String "a","x","y","z","h"]
+
+    var pb = newTypedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
+    pb[1 .. ^2] = newTypedArray [byte 24, 25, 26]
+    check pb == newTypedArray [byte 1, 24, 25, 26, 8]
 
 runtime: suite "newPackedArray":
   var strs: PackedStringArray = newPackedStringArray()
@@ -178,7 +203,7 @@ runtime: suite "newPackedArray":
       check strs[i] == newGdString $i
 
   test "to seq":
-    let s: seq[String] = strs.toSeq
+    let s: seq[String] = @strs
     check s == @[newGdString"0", newGdString"1", newGdString"2", newGdString"3", newGdString"4", newGdString"5", newGdString"6", newGdString"7"]
 
   test "mutable iteration":
@@ -217,6 +242,18 @@ runtime: suite "newPackedArray":
     check "1" in arr
     check "hello" notin arr
 
+  test "`[]`(HSlice)":
+    var pi = newPackedArray [int64 1, 2, 3, 4]
+    check pi[0..2] == newPackedArray [int64 1, 2, 3]
+
+  test "`[]=`(HSlice)":
+    var ps = newPackedArray [String "a","b","c","d","e","f","g","h"]
+    ps[1 .. ^2] = newPackedArray [String "x","y","z"]
+    check ps == newPackedArray [String "a","x","y","z","h"]
+
+    var pb = newPackedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
+    pb[1 .. ^2] = newPackedArray [byte 24, 25, 26]
+    check pb == newPackedArray [byte 1, 24, 25, 26, 8]
 
 runtime: suite "String":
   test "to nim-string":
