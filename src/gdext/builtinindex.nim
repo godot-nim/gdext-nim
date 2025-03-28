@@ -13,6 +13,11 @@ type float_elem* = float32
 type char16* = char16_t
 type char32* = char32_t
 
+when real_elem is float32:
+  type VariantData = array[16, uint8]
+else:
+  type VariantData = array[32, uint8]
+
 type
   Vector*[N: static int; T] = array[N, T]
   NVector*[N: static int; T: SomeFloat] = distinct Vector[N, T]
@@ -39,10 +44,8 @@ type
   GodotVariantTypeDefect* = object of GodotDefect
 
   Variant* {.byref.} = object
-    data*: tuple[
-      `type`: uint64,
-      opaque: array[4, pointer],
-    ]
+    `type`: VariantType
+    opaque: VariantData
   Float* = float64
   Vector2* = VectorR[2]
   Vector3* = VectorR[3]
@@ -408,7 +411,7 @@ proc `=copy`*[T](dst: var PackedArray[T]; src: PackedArray[T]) =
   wasMoved dst
   dst = `=dup` src
 
-proc `=destroy`*(x: Variant) =
+proc `=destroy`*(x {.bycopy.}: Variant) =
   interface_variantDestroy(addr x)
 proc `=dup`*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
