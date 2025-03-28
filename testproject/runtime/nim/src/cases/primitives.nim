@@ -1,6 +1,105 @@
 import gdext
 import testutils
-import std/unicode
+import std/[unicode, strutils]
+import gdext/classes/gdnode
+
+runtime: suite "to string":
+  test "Bool":
+    check $true == $variant(true)
+    check $false == $variant(false)
+  test "Int":
+    check $3141592 == $variant(3141592)
+  test "Float":
+    check $Inf == $variant(Inf)
+    check $3.141592 == $variant(3.141592)
+  test "Color":
+    check $AliceBlue == $variant(AliceBlue)
+  test "AABB":
+    check $AABB() == $variant(AABB())
+  test "Basis":
+    check $Basis() == $variant(Basis())
+  test "Plane":
+    check $Plane() == $variant(Plane())
+    let plane1 = plane(vector3(0, 0, 1), 1.5)
+    check $plane1 == $variant(plane1)
+    let plane2 = plane(vector3(0, 0, 1), 1000000.12345)
+    check $plane2 == $variant(plane2)
+  test "Projection":
+    check $Projection() == $variant(Projection())
+  test "Quaternion":
+    check $Quaternion() == $variant(Quaternion())
+  test "Rect2":
+    check $Rect2() == $variant(Rect2())
+  test "Rect2i":
+    check $Rect2i() == $variant(Rect2i())
+  test "Transform2D":
+    check $Transform2D() == $variant(Transform2D())
+  test "Transform3D":
+    check $Transform3D() == $variant(Transform3D())
+  test "Vector2":
+    check $vector2() == $variant(vector2())
+    check $vector2(PI, Inf) == $variant(vector2(PI, Inf))
+  test "Vector2i":
+    check $vector2i() == $variant(vector2i())
+  test "Vector3":
+    check $vector3() == $variant(vector3())
+  test "Vector3i":
+    check $vector3i() == $variant(vector3i())
+  test "Vector4":
+    check $vector4() == $variant(vector4())
+  test "Vector4i":
+    check $vector4i() == $variant(vector4i())
+  test "RID":
+    check $rid() == $variant(rid())
+  test "String":
+    check $newGdString("Hello, world!") == $variant(newGdString("Hello, world!"))
+  test "StringName":
+    check $newStringName("Object") == $variant(newStringName("Object"))
+  test "NodePath":
+    check $newNodePath("path/to/somewhere") == $variant(newNodePath("path/to/somewhere"))
+  test "Array":
+    var arr = newArray(5)
+    for i in 0..<arr.len:
+      arr[i] = variant i
+    check $arr == $variant(arr)
+    check ($arr).startsWith "["
+  test "TypedArray":
+    var arr = newTypedArray[int](5)
+    for i in 0..<arr.len:
+      arr[i] = i
+    check $arr == $variant(arr)
+    check ($arr).startsWith "["
+  test "PackedArray":
+    var arr = newPackedInt64Array()
+    arr.setLen(5)
+    for i in 0..<arr.len:
+      arr[i] = i
+    check $arr == $variant(arr)
+    check ($arr).startsWith "["
+  test "Dictionary":
+    var dict = newDictionary()
+    for i, s in ["a", "b", "c"]:
+      dict[variant s] = variant i
+    check $dict == $variant(dict)
+    check ($dict).startsWith "{"
+  test "Object":
+    var obj = instantiate Object
+    check $obj == $variant(obj)
+    destroy obj
+    var nilobj: Object
+    check $nilobj == $variant(nilobj)
+  test "RefCounted":
+    var refc = instantiate RefCounted
+    check $refc == $variant(refc)
+    check $refc[] == $variant(refc[])
+    var nilrefc: GdRef[RefCounted]
+    check $nilrefc == $variant(nilrefc)
+  test "Node":
+    var node = instantiate(Node, "MyNode")
+    check $node == $variant(node)
+    destroy node
+    var nilnode: Node
+    check $nilnode == $variant(nilnode)
 
 runtime: suite "Array":
   test "construct":
