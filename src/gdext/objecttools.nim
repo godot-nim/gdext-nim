@@ -1,4 +1,4 @@
-import std/[tables, sets, strutils]
+import std/[tables, sets]
 
 import gdext/builtinindex
 import gdext/stringtools
@@ -56,11 +56,13 @@ proc singleton*[T: SomeClass](_: typedesc[T]): T =
     result = cast[T](cache)
 
 proc `$`*[T: Object](self: T): string =
-  if self.isNil: return $self.getClassName & "(nil)"
-  $self.getClassName & "(ID: 0x" & gdinterface.getInstanceID(self).toHex & ")"
+  if unlikely(self.isNil):
+    "<Object#null>"
+  else:
+    $self.toString
 
-proc `$`*(self: Node): string =
-  $self.name() & " [" & $Object(self) & "]"
+proc `$`*(self: GdRef): string =
+  $self.handle
 
 template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
 template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)

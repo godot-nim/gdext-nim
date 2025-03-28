@@ -22,6 +22,7 @@
 ## * `swizzles <gdext/swizzles.html>`_: GLSLang-like swizzling operator
 ## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
 ## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
+## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
 
 
 {.warning[UnusedImport]: off.}
@@ -59,6 +60,7 @@ import gdext/colortools; export colortools
 import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
 import gdext/conversions; export conversions
+import gdext/dollars; export dollars
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint

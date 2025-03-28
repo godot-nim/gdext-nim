@@ -28,6 +28,8 @@ include gdext/gen/gdstring
 include gdext/gen/gdstringname
 include gdext/gen/gdnodepath
 
+proc newNodePath*(str: string): NodePath = newNodePath(newGdString(str))
+
 template gdstring*(args: varargs[untyped]): untyped {.deprecated: "use newGdString instead".} = unpackVarargs(newGdString, args)
 template stringname*(args: varargs[untyped]): untyped {.deprecated: "use newStringName instead".} = unpackVarargs(newStringName, args)
 template nodepath*(args: varargs[untyped]): untyped {.deprecated: "use newNodePath instead".} = unpackVarargs(newNodePath, args)
@@ -41,4 +43,5 @@ proc `$`*(s: String): string =
 
 {.push, inline.}
 proc `$`*(s: StringName): string = $newGdString s
+proc `$`*(s: NodePath): string = $newGdString s
 {.pop.}
