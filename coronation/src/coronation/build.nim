@@ -18,7 +18,6 @@ import operators/structs
 import operators/constants
 import operators/utilityfuncs
 import operators/builtinclasses/constructors
-import operators/builtinclasses/subscripts
 import operators/builtinclasses/operators
 import operators/builtinclasses/methods
 import operators/classindex
@@ -120,7 +119,6 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
                   "# constant values"
                 for constant in builtin.constants.get(@[]):
                   constant.weave(sym)
-              weave_subscript builtin
               weave_operators builtin
               weave_methods builtin
 

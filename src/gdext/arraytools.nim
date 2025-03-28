@@ -60,6 +60,27 @@ include gdext/gen/gdpackedvector2array
 include gdext/gen/gdpackedvector3array
 include gdext/gen/gdpackedvector4array
 
+proc `[]`*(self: Array; index: Natural): Variant =
+  cast[ptr Variant](interface_Array_operatorIndexConst(addr self, index))[]
+proc `[]`*(self: var Array; index: Natural): var Variant =
+  cast[ptr Variant](interface_Array_operatorIndex(addr self, index))[]
+proc `[]=`*(self: var Array; index: Natural; value: sink Variant) =
+  `[]`(self, index) = value
+
+proc `[]`*[T](self: TypedArray[T]; index: Natural): T =
+  self.Array[index].get(T)
+proc `[]`*[T: SomeBuiltins](self: var TypedArray[T]; index: Natural): var T =
+  self.Array[index].getAddr(T)[]
+proc `[]=`*[T](self: var TypedArray[T]; index: Natural; value: sink T) =
+  `[]`(Array(self), index) = variant(value)
+
+proc `[]`*[T](self: PackedArray[T]; index: Natural): T =
+  self.data_unsafe[index]
+proc `[]`*[T](self: var PackedArray[T]; index: Natural): var T =
+  self.data_unsafe[index]
+proc `[]=`*[T](self: var PackedArray[T]; index: Natural; value: sink T) =
+  self.data_unsafe[index] = value
+
 # Array
 # =====
 
@@ -116,11 +137,6 @@ iterator mpairs*[T](arr: TypedArray[T]): (int, var T) =
   when T is Object or T is GdRef:
     {.error: "mutable pairs for " & $T & " is unavailable; use pairs instead".}
   for i, v in arr.Array.mpairs: yield (i, v.getAddr(T)[])
-
-proc `[]`*[T](arr: TypedArray[T]; i: int): T =
-  arr.Array[i].get(T)
-proc `[]=`*[T](arr: TypedArray[T]; i: int; value: T) =
-  arr.Array[i] = variant(value)
 
 proc get*[T](self: TypedArray[T]; index: Int): T =
   self.Array.get(index)
@@ -196,9 +212,6 @@ iterator mitems*[T](arr: PackedArray[T]): var T =
   for i in 0..<arr.len: yield arr[i]
 iterator mpairs*[T](arr: PackedArray[T]): (int, var T) =
   for i in 0..<arr.len: yield (int i, arr[i])
-
-proc `[]`*[T](self: PackedArray[T]; index: int): var T = self.data_unsafe[index]
-proc `[]=`*[T](self: PackedArray[T]; index: int; value: T) = self.data_unsafe[index] = value
 
 template toOpenArray*[T](arr: PackedArray[T]): openArray[T] =
   arr.dataUnsafe.toOpenArray(0, arr.size-1)
