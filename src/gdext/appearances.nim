@@ -98,23 +98,23 @@ proc appearance*[T: Object](_: typedesc[T]): Appearance =
     const hint = propertyHintNone
   Appearance(
     hint: hint,
-    hintstring: gdstring className T)
+    hintstring: newGdString className T)
 proc appearance*[T](_: typedesc[GdRef[T]]): Appearance = T.appearance
 proc appearance*(T: typedesc[enum]): Appearance =
   const hintstring = T.makeDefaultHintStringEnum
   Appearance(
     hint: propertyHintEnum,
-    hintstring: gdstring hintstring)
+    hintstring: newGdString hintstring)
 proc appearance*[T: enum](_: typedesc[set[T]]): Appearance =
   const hintstring = T.makeDefaultHintStringBitField
   Appearance(
     hint: propertyHintFlags,
-    hintstring: gdstring hintstring)
+    hintstring: newGdString hintstring)
 proc appearance*(T: typedesc[range]): Appearance =
   const hintstring = T.makeDefaultHintStringRange
   Appearance(
     hint: propertyHintRange,
-    hintstring: gdstring hintstring)
+    hintstring: newGdString hintstring)
 proc appearance*[T](_: typedesc[TypedArray[T]]): Appearance =
   var elementApp = T.appearance
   let typ = T.variantType.ord
@@ -122,7 +122,7 @@ proc appearance*[T](_: typedesc[TypedArray[T]]): Appearance =
   let str = fmt"{typ}{hint}:{elementApp.hint_string}"
   Appearance(
     hint: propertyHintArrayType,
-    hintstring: gdstring str)
+    hintstring: newGdString str)
 
 template joinArg(s: varargs[string]): string = s.join(",")
 
@@ -164,13 +164,13 @@ proc file*(T: typedesc[Appearance]; filter: varargs[string]): Appearance =
   ## `@export_file <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-file>`_
   Appearance(
     hint: propertyHintFile,
-    hintstring: gdstring filter.joinArg)
+    hintstring: newGdString filter.joinArg)
 
 proc globalFile*(T: typedesc[Appearance]; filter: varargs[string]): Appearance =
   ## `@export_global_file <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-global-file>`_
   Appearance(
     hint: propertyHintGlobalFile,
-    hintstring: gdstring filter.joinArg)
+    hintstring: newGdString filter.joinArg)
 
 proc flags2dNavigation*(T: typedesc[Appearance]): Appearance =
   ## `@export_flags_2d_navigation <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-flags-2d-navigation>`_
@@ -217,28 +217,28 @@ proc `enum`*(T: typedesc[Appearance];
   ## `@export_enum <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-enum>`_
   Appearance(
     hint: propertyHintEnum,
-    hint_string: gdstring enums.joinArg)
+    hint_string: newGdString enums.joinArg)
 
 proc `flags`*(T: typedesc[Appearance];
     flags: varargs[string]): Appearance =
   ## `@export_flags <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-flags>`_
   Appearance(
     hint: propertyHintFlags,
-    hint_string: gdstring flags.joinArg)
+    hint_string: newGdString flags.joinArg)
 
 proc expEasing*(T: typedesc[Appearance];
     extra: varargs[ExpEasingArgument]): Appearance =
   ## `@export_exp_easing <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-exp-easing>`_
   Appearance(
     hint: propertyHintExpEasing,
-    hint_string: gdstring @extra.mapIt($it).joinArg)
+    hint_string: newGdString @extra.mapIt($it).joinArg)
 
 proc nodePath*(T: typedesc[Appearance];
     validTypes: varargs[string]): Appearance =
   ## `@export_node_path <https://docs.godotengine.org/en/stable/classes/class_%40gdscript.html#class-gdscript-annotation-export-node-path>`_
   Appearance(
     hint: propertyHintNodePathValidTypes,
-    hint_string: gdstring @validTypes.joinArg)
+    hint_string: newGdString @validTypes.joinArg)
 
 macro nodePath*(T: typedesc[Appearance];
     validTypes: varargs[typedesc[Node]]): Appearance =

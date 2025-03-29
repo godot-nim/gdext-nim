@@ -69,7 +69,7 @@ template convert_generic_params_forcecast(Decoded, Encoded): untyped =
     cast[Decoded[T]](v.get(Encoded))
 
 
-convert_alternative AltString, String, gdstring, `$`
+convert_alternative AltString, String, newGdString, `$`
 
 convert_alternative_autocast AltInt, Int
 

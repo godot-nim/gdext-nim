@@ -32,7 +32,7 @@ proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
 
   result.body = genAst(namesym, namelit = middle.name.toStrLit, sentence, body):
     try:
-      let namesym {.global.} = stringName namelit
+      let namesym {.global.} = newStringName namelit
       if self.hasScriptMethod(namesym):
         sentence
       else:

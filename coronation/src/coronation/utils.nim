@@ -24,8 +24,33 @@ method apply(style: Comment; data: Data): Data =
   super[style.enable].apply data
 
 
+const withNew = [
+  TypeSym"Array",
+  TypeSym"TypedArray",
+  TypeSym"PackedByteArray",
+  TypeSym"PackedColorArray",
+  TypeSym"PackedStringArray",
+  TypeSym"PackedInt32Array",
+  TypeSym"PackedInt64Array",
+  TypeSym"PackedFloat32Array",
+  TypeSym"PackedFloat64Array",
+  TypeSym"PackedVector2Array",
+  TypeSym"PackedVector3Array",
+  TypeSym"PackedVector4Array",
+  TypeSym"Dictionary",
+  TYpeSym"String",
+  TYpeSym"StringName",
+  TYpeSym"NodePath",
+]
+const withGd = [
+  TYpeSym"String",
+]
+func uncapitalizeAscii(s: string): string =
+  if s.len == 0: result = ""
+  else: result = toLowerAscii(s[0]) & substr(s, 1)
+
 proc constructorName*(sym: TypeSym): ProcSym =
-  case sym
-  of TypeSym"String": ProcSym"gdstring"
-  of TypeSym"Array": ProcSym"gdarray"
-  else: ProcSym variablefy sym
+  ProcSym uncapitalizeAscii do:
+    (if sym in withNew: "New" else: "") &
+    (if sym in withGd: "Gd" else: "") &
+    capitalizeAscii($sym)
