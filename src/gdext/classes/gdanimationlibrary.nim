@@ -41,31 +41,3 @@ proc getAnimationListSize*(self: AnimationLibrary): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-proc call_animationAdded*(self: AnimationLibrary; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_added")
-  let args = [name]
-  self.emitSignal(signalname, args)
-
-proc call_animationRemoved*(self: AnimationLibrary; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_removed")
-  let args = [name]
-  self.emitSignal(signalname, args)
-
-proc call_animationRenamed*(self: AnimationLibrary; name: Variant; toName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_renamed")
-  let args = [name, toName]
-  self.emitSignal(signalname, args)
-
-proc call_animationChanged*(self: AnimationLibrary; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_changed")
-  let args = [name]
-  self.emitSignal(signalname, args)

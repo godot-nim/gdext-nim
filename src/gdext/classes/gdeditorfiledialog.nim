@@ -8,7 +8,7 @@ proc clearFilters*(self: EditorFileDialog): void =
   expandMethodBind(className EditorFileDialog, "clear_filters", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addFilter*(self: EditorFileDialog; filter: String; description: String = gdstring""): void =
+proc addFilter*(self: EditorFileDialog; filter: String; description: String = newGdString()): void =
   expandMethodBind(className EditorFileDialog, "add_filter", 3388804757)
   methodbind.ptrcall(self, [getPtr filter, getPtr description])
 
@@ -178,7 +178,7 @@ proc isOverwriteWarningDisabled*(self: EditorFileDialog): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc addSideMenu*(self: EditorFileDialog; menu: Control; title: String = gdstring""): void =
+proc addSideMenu*(self: EditorFileDialog; menu: Control; title: String = newGdString()): void =
   expandMethodBind(className EditorFileDialog, "add_side_menu", 402368861)
   methodbind.ptrcall(self, [getPtr menu, getPtr title])
 
@@ -219,31 +219,3 @@ template `showHiddenFiles=`*(self: EditorFileDialog; value) = self.setShowHidden
 
 template disableOverwriteWarning*(self: EditorFileDialog): untyped = self.isOverwriteWarningDisabled()
 template `disableOverwriteWarning=`*(self: EditorFileDialog; value) = self.setDisableOverwriteWarning(value)
-
-proc call_fileSelected*(self: EditorFileDialog; path: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("file_selected")
-  let args = [path]
-  self.emitSignal(signalname, args)
-
-proc call_filesSelected*(self: EditorFileDialog; paths: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("files_selected")
-  let args = [paths]
-  self.emitSignal(signalname, args)
-
-proc call_dirSelected*(self: EditorFileDialog; dir: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("dir_selected")
-  let args = [dir]
-  self.emitSignal(signalname, args)
-
-proc call_filenameFilterChanged*(self: EditorFileDialog; filter: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("filename_filter_changed")
-  let args = [filter]
-  self.emitSignal(signalname, args)

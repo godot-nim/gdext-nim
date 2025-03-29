@@ -4,24 +4,27 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+const RenderPriorityMax* = 127
+const RenderPriorityMin* = -128
+
 method getShaderRid*(self: Material): RID {.base.} = (discard)
 proc registerVirtual_getShaderRid*[T: Material](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_shader_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_shader_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Material](p_instance).getShaderRid().encode(r_ret)
 
 method getShaderMode*(self: Material): Shader_Mode {.base.} = (discard)
 proc registerVirtual_getShaderMode*[T: Material](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_shader_mode"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_shader_mode"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Material](p_instance).getShaderMode().encode(r_ret)
 
 method canDoNextPass*(self: Material): bool {.base.} = (discard)
 proc registerVirtual_canDoNextPass*[T: Material](Self: typedesc[T]) =
-  Self.vmethods[stringName"_can_do_next_pass"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_can_do_next_pass"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Material](p_instance).canDoNextPass().encode(r_ret)
 
 method canUseRenderPriority*(self: Material): bool {.base.} = (discard)
 proc registerVirtual_canUseRenderPriority*[T: Material](Self: typedesc[T]) =
-  Self.vmethods[stringName"_can_use_render_priority"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_can_use_render_priority"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Material](p_instance).canUseRenderPriority().encode(r_ret)
 
 proc setNextPass*(self: Material; nextPass: gdref Material): void =

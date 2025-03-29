@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
-proc stringify*(_: typedesc[JSON]; data: Variant; indent: String = gdstring""; sortKeys: bool = true; fullPrecision: bool = false): String =
+proc stringify*(_: typedesc[JSON]; data: Variant; indent: String = newGdString(); sortKeys: bool = true; fullPrecision: bool = false): String =
   expandMethodBind(className JSON, "stringify", 462733549)
   var ret: encoded String
   methodbind.ptrcall([getPtr data, getPtr indent, getPtr sortKeys, getPtr fullPrecision], addr ret)

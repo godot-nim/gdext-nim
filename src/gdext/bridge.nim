@@ -154,7 +154,7 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
 
   let call = bindSym"registerEnumFields".newCall(
     Class,
-    bindSym"stringName".newCall enumName,
+    bindSym"newStringName".newCall enumName,
   )
   for field in def[2][1..^1]:
     let fieldsym = case field.kind
@@ -164,9 +164,9 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
     let fieldName = newlit $fieldsym
     call.add case isBitField
     of true:
-      quote do: (stringName `fieldName`, Int 1 shl int `fieldsym`)
+      quote do: (newStringName `fieldName`, Int 1 shl int `fieldsym`)
     of false:
-      quote do: (stringName `fieldName`, Int `fieldsym`)
+      quote do: (newStringName `fieldName`, Int `fieldsym`)
 
   call.add newlit isBitField
   result = quote do:
@@ -234,7 +234,7 @@ template gdexport*[T: SomeUserClass](
   ## gdexport[Actor] "Base Params", Appearance.category
   ## ```
   proc `name` {.execon: Contract[T].property.} =
-    gdexport_internal(propertyInfo(stringName name, appearance), className typedesc T)
+    gdexport_internal(propertyInfo(newStringName name, appearance), className typedesc T)
 
 template gdexport*(
       name: string;

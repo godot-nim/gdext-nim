@@ -8,13 +8,13 @@ proc setDefaultExtension*(_: typedesc[WebRTCPeerConnection]; extensionClass: Str
   expandMethodBind(className WebRTCPeerConnection, "set_default_extension", 3304788590)
   methodbind.ptrcall([getPtr extensionClass])
 
-proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary = dictionary()): Error =
+proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary = newDictionary()): Error =
   expandMethodBind(className WebRTCPeerConnection, "initialize", 2625064318)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr configuration], addr ret)
   (addr ret).decode_result(Error)
 
-proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary = dictionary()): gdref WebRTCDataChannel =
+proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary = newDictionary()): gdref WebRTCDataChannel =
   expandMethodBind(className WebRTCPeerConnection, "create_data_channel", 1288557393)
   var ret: encoded gdref WebRTCDataChannel
   methodbind.ptrcall(self, [getPtr label, getPtr options], addr ret)
@@ -71,24 +71,3 @@ proc getSignalingState*(self: WebRTCPeerConnection): WebRTCPeerConnection_Signal
   var ret: encoded WebRTCPeerConnection_SignalingState
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(WebRTCPeerConnection_SignalingState)
-
-proc call_sessionDescriptionCreated*(self: WebRTCPeerConnection; `type`: Variant; sdp: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("session_description_created")
-  let args = [`type`, sdp]
-  self.emitSignal(signalname, args)
-
-proc call_iceCandidateCreated*(self: WebRTCPeerConnection; media: Variant; index: Variant; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("ice_candidate_created")
-  let args = [media, index, name]
-  self.emitSignal(signalname, args)
-
-proc call_dataChannelReceived*(self: WebRTCPeerConnection; channel: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("data_channel_received")
-  let args = [channel]
-  self.emitSignal(signalname, args)

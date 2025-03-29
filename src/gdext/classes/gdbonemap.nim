@@ -32,15 +32,3 @@ proc findProfileBoneName*(self: BoneMap; skeletonBoneName: StringName): StringNa
 
 template profile*(self: BoneMap): untyped = self.getProfile()
 template `profile=`*(self: BoneMap; value) = self.setProfile(value)
-
-proc call_boneMapUpdated*(self: BoneMap): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bone_map_updated")
-  self.emitSignal(signalname)
-
-proc call_profileUpdated*(self: BoneMap): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("profile_updated")
-  self.emitSignal(signalname)

@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc addTask*(self: WorkerThreadPool; action: Callable; highPriority: bool = false; description: String = gdstring""): int64 =
+proc addTask*(self: WorkerThreadPool; action: Callable; highPriority: bool = false; description: String = newGdString()): int64 =
   expandMethodBind(className WorkerThreadPool, "add_task", 3745067146)
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr action, getPtr highPriority, getPtr description], addr ret)
@@ -22,7 +22,7 @@ proc waitForTaskCompletion*(self: WorkerThreadPool; taskId: int64): Error =
   methodbind.ptrcall(self, [getPtr taskId], addr ret)
   (addr ret).decode_result(Error)
 
-proc addGroupTask*(self: WorkerThreadPool; action: Callable; elements: int32; tasksNeeded: int32 = -1; highPriority: bool = false; description: String = gdstring""): int64 =
+proc addGroupTask*(self: WorkerThreadPool; action: Callable; elements: int32; tasksNeeded: int32 = -1; highPriority: bool = false; description: String = newGdString()): int64 =
   expandMethodBind(className WorkerThreadPool, "add_group_task", 1801953219)
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr action, getPtr elements, getPtr tasksNeeded, getPtr highPriority, getPtr description], addr ret)

@@ -6,7 +6,7 @@ import gdphysicsbody2d; export gdphysicsbody2d
 
 method integrateForces*(self: RigidBody2D; state: PhysicsDirectBodyState2D): void {.base.} = (discard)
 proc registerVirtual_integrateForces*[T: RigidBody2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[RigidBody2D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState2D))
 
 proc setMass*(self: RigidBody2D; mass: Float): void =
@@ -359,37 +359,3 @@ template `constantForce=`*(self: RigidBody2D; value) = self.setConstantForce(val
 
 template constantTorque*(self: RigidBody2D): untyped = self.getConstantTorque()
 template `constantTorque=`*(self: RigidBody2D; value) = self.setConstantTorque(value)
-
-proc call_bodyShapeEntered*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("body_shape_entered")
-  let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
-  self.emitSignal(signalname, args)
-
-proc call_bodyShapeExited*(self: RigidBody2D; bodyRid: Variant; body: Variant; bodyShapeIndex: Variant; localShapeIndex: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("body_shape_exited")
-  let args = [bodyRid, body, bodyShapeIndex, localShapeIndex]
-  self.emitSignal(signalname, args)
-
-proc call_bodyEntered*(self: RigidBody2D; body: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("body_entered")
-  let args = [body]
-  self.emitSignal(signalname, args)
-
-proc call_bodyExited*(self: RigidBody2D; body: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("body_exited")
-  let args = [body]
-  self.emitSignal(signalname, args)
-
-proc call_sleepingStateChanged*(self: RigidBody2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("sleeping_state_changed")
-  self.emitSignal(signalname)

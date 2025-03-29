@@ -29,9 +29,3 @@ template `mesh=`*(self: MeshInstance2D; value) = self.setMesh(value)
 
 template texture*(self: MeshInstance2D): untyped = self.getTexture()
 template `texture=`*(self: MeshInstance2D; value) = self.setTexture(value)
-
-proc call_textureChanged*(self: MeshInstance2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("texture_changed")
-  self.emitSignal(signalname)

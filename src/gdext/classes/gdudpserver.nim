@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc listen*(self: UDPServer; port: uint16; bindAddress: String = gdstring"*"): Error =
+proc listen*(self: UDPServer; port: uint16; bindAddress: String = newGdString("*")): Error =
   expandMethodBind(className UDPServer, "listen", 3167955072)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr port, getPtr bindAddress], addr ret)

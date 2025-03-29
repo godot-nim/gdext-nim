@@ -6,6 +6,7 @@
 ## =======
 ## The following modules are automatically imported by gdext. There is no need to import them explicitly.
 ## 
+## * `buildconf <gdext/buildconf.html>`_: It's required to build GDExtension. You **must** import it from your project's config.nims.
 ## * `bridge <gdext/bridge.html>`_: Core functionalities of gdext
 ## * `appearances <gdext/appearances.html>`_: Appearance of properties on the editor inspector
 ## * `objectcallbacks <gdext/objectcallbacks.html>`_: Object callbacks called by the engine
@@ -21,11 +22,12 @@
 ## * `swizzles <gdext/swizzles.html>`_: GLSLang-like swizzling operator
 ## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
 ## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
+## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
 
 
 {.warning[UnusedImport]: off.}
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 
 import gdext/private/staticevents
@@ -58,6 +60,7 @@ import gdext/colortools; export colortools
 import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
 import gdext/conversions; export conversions
+import gdext/dollars; export dollars
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
@@ -139,6 +142,9 @@ template GDExtension_EntryPoint*: untyped =
       echo "FATAL ERROR: failed to initialize library."
       echo $getCurrentException()
       return false
+
+when defined(docgen):
+  import gdext/buildconf
 
 when isMainModule:
   GDExtension_EntryPoint

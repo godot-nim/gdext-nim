@@ -4,49 +4,61 @@ import gdext/coronation/header/classes
 
 import gdcanvasitem; export gdcanvasitem
 
+const NotificationResized* = 40
+const NotificationMouseEnter* = 41
+const NotificationMouseExit* = 42
+const NotificationMouseEnterSelf* = 60
+const NotificationMouseExitSelf* = 61
+const NotificationFocusEnter* = 43
+const NotificationFocusExit* = 44
+const NotificationThemeChanged* = 45
+const NotificationScrollBegin* = 47
+const NotificationScrollEnd* = 48
+const NotificationLayoutDirectionChanged* = 49
+
 method hasPoint*(self: Control; point: Vector2): bool {.base.} = (discard)
 proc registerVirtual_hasPoint*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_has_point"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_has_point"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).hasPoint(p_args[0].decode(Vector2)).encode(r_ret)
 
 method structuredTextParser*(self: Control; args: Array; text: String): TypedArray[Vector3i] {.base.} = (discard)
 proc registerVirtual_structuredTextParser*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_structured_text_parser"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_structured_text_parser"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array), p_args[1].decode(String)).encode(r_ret)
 
 method getMinimumSize*(self: Control): Vector2 {.base.} = (discard)
 proc registerVirtual_getMinimumSize*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getMinimumSize().encode(r_ret)
 
 method getTooltip*(self: Control; atPosition: Vector2): String {.base.} = (discard)
 proc registerVirtual_getTooltip*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getTooltip(p_args[0].decode(Vector2)).encode(r_ret)
 
 method getDragData*(self: Control; atPosition: Vector2): Variant {.base.} = (discard)
 proc registerVirtual_getDragData*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_drag_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_drag_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getDragData(p_args[0].decode(Vector2)).encode(r_ret)
 
 method canDropData*(self: Control; atPosition: Vector2; data: Variant): bool {.base.} = (discard)
 proc registerVirtual_canDropData*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_can_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_can_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).canDropData(p_args[0].decode(Vector2), p_args[1].decode(Variant)).encode(r_ret)
 
 method dropData*(self: Control; atPosition: Vector2; data: Variant): void {.base.} = (discard)
 proc registerVirtual_dropData*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_drop_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).dropData(p_args[0].decode(Vector2), p_args[1].decode(Variant))
 
 method makeCustomTooltip*(self: Control; forText: String): Object {.base.} = (discard)
 proc registerVirtual_makeCustomTooltip*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_make_custom_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_make_custom_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).makeCustomTooltip(p_args[0].decode(String)).encode(r_ret)
 
 method guiInput*(self: Control; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_guiInput*[T: Control](Self: typedesc[T]) =
-  Self.vmethods[stringName"_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).guiInput(p_args[0].decode(gdref InputEvent))
 
 proc acceptEvent*(self: Control): void =
@@ -832,58 +844,3 @@ template `theme=`*(self: Control; value) = self.setTheme(value)
 
 template themeTypeVariation*(self: Control): untyped = self.getThemeTypeVariation()
 template `themeTypeVariation=`*(self: Control; value) = self.setThemeTypeVariation(value)
-
-proc call_resized*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("resized")
-  self.emitSignal(signalname)
-
-proc call_guiInput*(self: Control; event: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("gui_input")
-  let args = [event]
-  self.emitSignal(signalname, args)
-
-proc call_mouseEntered*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_entered")
-  self.emitSignal(signalname)
-
-proc call_mouseExited*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_exited")
-  self.emitSignal(signalname)
-
-proc call_focusEntered*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("focus_entered")
-  self.emitSignal(signalname)
-
-proc call_focusExited*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("focus_exited")
-  self.emitSignal(signalname)
-
-proc call_sizeFlagsChanged*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("size_flags_changed")
-  self.emitSignal(signalname)
-
-proc call_minimumSizeChanged*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("minimum_size_changed")
-  self.emitSignal(signalname)
-
-proc call_themeChanged*(self: Control): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("theme_changed")
-  self.emitSignal(signalname)

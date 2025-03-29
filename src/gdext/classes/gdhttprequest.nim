@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
-proc request*(self: HTTPRequest; url: String; customHeaders: PackedStringArray = PackedStringArray(); `method`: HTTPClient_Method = methodGet; requestData: String = gdstring""): Error =
+proc request*(self: HTTPRequest; url: String; customHeaders: PackedStringArray = PackedStringArray(); `method`: HTTPClient_Method = methodGet; requestData: String = newGdString()): Error =
   expandMethodBind(className HTTPRequest, "request", 3215244323)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr url, getPtr customHeaders, getPtr `method`, getPtr requestData], addr ret)
@@ -140,10 +140,3 @@ template `maxRedirects=`*(self: HTTPRequest; value) = self.setMaxRedirects(value
 
 template timeout*(self: HTTPRequest): untyped = self.getTimeout()
 template `timeout=`*(self: HTTPRequest; value) = self.setTimeout(value)
-
-proc call_requestCompleted*(self: HTTPRequest; retval: Variant; responseCode: Variant; headers: Variant; body: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("request_completed")
-  let args = [retval, responseCode, headers, body]
-  self.emitSignal(signalname, args)

@@ -30,10 +30,10 @@ proc getObjectId*(self: Signal): Int =
   `getObjectId(Signal)`(addr self, nil, addr result, 0)
 proc getName*(self: Signal): StringName =
   `getName(Signal)`(addr self, nil, addr result, 0)
-proc connect*(self: Signal; callable: Callable; flags: Int = 0): Int =
+proc connect*(self: var Signal; callable: Callable; flags: Int = 0): Int =
   let argArr = [getPtr callable, getPtr flags]
   `connect(Signal Callable Int)`(addr self, addr argArr[0], addr result, 2)
-proc disconnect*(self: Signal; callable: Callable): void =
+proc disconnect*(self: var Signal; callable: Callable): void =
   let argArr = [getPtr callable]
   `disconnect(Signal Callable)`(addr self, addr argArr[0], nil, 1)
 proc isConnected*(self: Signal; callable: Callable): bool =
@@ -43,6 +43,12 @@ proc getConnections*(self: Signal): Array =
   `getConnections(Signal)`(addr self, nil, addr result, 0)
 proc hasConnections*(self: Signal): bool =
   `hasConnections(Signal)`(addr self, nil, addr result, 0)
+proc emit*(self: Signal; args: varargs[Variant]): void =
+  if args.len == 0:
+    `emit(Signal Variant)`(addr self, nil, nil, 0)
+  else:
+    let argArr = getptr args
+    `emit(Signal Variant)`(addr self, addr argArr[0], nil, cint args.len)
 
 proc load_Signal_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `isNull(Signal)` = load(VariantType_Signal, "is_null", 3918633141)

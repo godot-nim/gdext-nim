@@ -665,16 +665,3 @@ proc getDebugEnabled*(self: NavigationServer2D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-proc call_mapChanged*(self: NavigationServer2D; map: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("map_changed")
-  let args = [map]
-  self.emitSignal(signalname, args)
-
-proc call_navigationDebugChanged*(self: NavigationServer2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("navigation_debug_changed")
-  self.emitSignal(signalname)

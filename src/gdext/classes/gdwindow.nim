@@ -4,9 +4,12 @@ import gdext/coronation/header/classes
 
 import gdviewport; export gdviewport
 
+const NotificationVisibilityChanged* = 30
+const NotificationThemeChanged* = 32
+
 method getContentsMinimumSize*(self: Window): Vector2 {.base.} = (discard)
 proc registerVirtual_getContentsMinimumSize*[T: Window](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_contents_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_contents_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Window](p_instance).getContentsMinimumSize().encode(r_ret)
 
 proc setTitle*(self: Window; title: String): void =
@@ -708,89 +711,3 @@ template `theme=`*(self: Window; value) = self.setTheme(value)
 
 template themeTypeVariation*(self: Window): untyped = self.getThemeTypeVariation()
 template `themeTypeVariation=`*(self: Window; value) = self.setThemeTypeVariation(value)
-
-proc call_windowInput*(self: Window; event: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("window_input")
-  let args = [event]
-  self.emitSignal(signalname, args)
-
-proc call_filesDropped*(self: Window; files: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("files_dropped")
-  let args = [files]
-  self.emitSignal(signalname, args)
-
-proc call_mouseEntered*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_entered")
-  self.emitSignal(signalname)
-
-proc call_mouseExited*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_exited")
-  self.emitSignal(signalname)
-
-proc call_focusEntered*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("focus_entered")
-  self.emitSignal(signalname)
-
-proc call_focusExited*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("focus_exited")
-  self.emitSignal(signalname)
-
-proc call_closeRequested*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("close_requested")
-  self.emitSignal(signalname)
-
-proc call_goBackRequested*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("go_back_requested")
-  self.emitSignal(signalname)
-
-proc call_visibilityChanged*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("visibility_changed")
-  self.emitSignal(signalname)
-
-proc call_aboutToPopup*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("about_to_popup")
-  self.emitSignal(signalname)
-
-proc call_themeChanged*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("theme_changed")
-  self.emitSignal(signalname)
-
-proc call_dpiChanged*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("dpi_changed")
-  self.emitSignal(signalname)
-
-proc call_titlebarChanged*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("titlebar_changed")
-  self.emitSignal(signalname)
-
-proc call_titleChanged*(self: Window): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("title_changed")
-  self.emitSignal(signalname)

@@ -4,6 +4,9 @@ import gdext/coronation/header/classes
 
 import gdshader; export gdshader
 
+const NodeIdInvalid* = -1
+const NodeIdOutput* = 0
+
 proc setMode*(self: VisualShader; mode: Shader_Mode): void =
   expandMethodBind(className VisualShader, "set_mode", 3978014962)
   methodbind.ptrcall(self, [getPtr mode])

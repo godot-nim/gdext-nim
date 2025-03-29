@@ -8,7 +8,7 @@ proc clearFilters*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "clear_filters", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addFilter*(self: FileDialog; filter: String; description: String = gdstring""): void =
+proc addFilter*(self: FileDialog; filter: String; description: String = newGdString()): void =
   expandMethodBind(className FileDialog, "add_filter", 3388804757)
   methodbind.ptrcall(self, [getPtr filter, getPtr description])
 
@@ -231,31 +231,3 @@ template `currentFile=`*(self: FileDialog; value) = self.setCurrentFile(value)
 
 template currentPath*(self: FileDialog): untyped = self.getCurrentPath()
 template `currentPath=`*(self: FileDialog; value) = self.setCurrentPath(value)
-
-proc call_fileSelected*(self: FileDialog; path: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("file_selected")
-  let args = [path]
-  self.emitSignal(signalname, args)
-
-proc call_filesSelected*(self: FileDialog; paths: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("files_selected")
-  let args = [paths]
-  self.emitSignal(signalname, args)
-
-proc call_dirSelected*(self: FileDialog; dir: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("dir_selected")
-  let args = [dir]
-  self.emitSignal(signalname, args)
-
-proc call_filenameFilterChanged*(self: FileDialog; filter: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("filename_filter_changed")
-  let args = [filter]
-  self.emitSignal(signalname, args)

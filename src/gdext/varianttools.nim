@@ -3,9 +3,6 @@ import std/[strformat, hashes, sequtils]
 import gdext/builtinindex
 import gdext/private/[gdinterface, typeshift]
 
-proc stringify(v: Variant): String =
-  interfaceVariantStringify(addr v, addr result)
-
 proc iterInit(self: Variant; r_iter: var Variant; r_valid: var bool): bool =
   interfaceVariantIterInit(addr self, addr r_iter, addr r_valid)
 
@@ -138,8 +135,6 @@ proc clear*(self: Variant) =
   if unlikely(needs_deinit[self.getType]):
     interfaceVariantDestroy(addr self)
   interfaceVariantNewNil(addr self)
-
-proc `$`*(v: Variant): string = $v.stringify
 
 const OpName: array[VariantOperator, string] = [
   "==",

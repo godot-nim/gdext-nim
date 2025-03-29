@@ -6,12 +6,12 @@ import gdcontainer; export gdcontainer
 
 method updateProperty*(self: EditorProperty): void {.base.} = (discard)
 proc registerVirtual_updateProperty*[T: EditorProperty](Self: typedesc[T]) =
-  Self.vmethods[stringName"_update_property"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_update_property"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorProperty](p_instance).updateProperty()
 
 method setReadOnly*(self: EditorProperty; readOnly: bool): void {.base.} = (discard)
 proc registerVirtual_setReadOnly*[T: EditorProperty](Self: typedesc[T]) =
-  Self.vmethods[stringName"_set_read_only"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_set_read_only"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorProperty](p_instance).setReadOnly(p_args[0].decode(bool))
 
 proc setLabel*(self: EditorProperty; text: String): void =
@@ -219,87 +219,3 @@ template `useFolding=`*(self: EditorProperty; value) = self.setUseFolding(value)
 
 template nameSplitRatio*(self: EditorProperty): untyped = self.getNameSplitRatio()
 template `nameSplitRatio=`*(self: EditorProperty; value) = self.setNameSplitRatio(value)
-
-proc call_propertyChanged*(self: EditorProperty; property: Variant; value: Variant; field: Variant; changing: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_changed")
-  let args = [property, value, field, changing]
-  self.emitSignal(signalname, args)
-
-proc call_multiplePropertiesChanged*(self: EditorProperty; properties: Variant; value: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("multiple_properties_changed")
-  let args = [properties, value]
-  self.emitSignal(signalname, args)
-
-proc call_propertyKeyed*(self: EditorProperty; property: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_keyed")
-  let args = [property]
-  self.emitSignal(signalname, args)
-
-proc call_propertyDeleted*(self: EditorProperty; property: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_deleted")
-  let args = [property]
-  self.emitSignal(signalname, args)
-
-proc call_propertyKeyedWithValue*(self: EditorProperty; property: Variant; value: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_keyed_with_value")
-  let args = [property, value]
-  self.emitSignal(signalname, args)
-
-proc call_propertyChecked*(self: EditorProperty; property: Variant; checked: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_checked")
-  let args = [property, checked]
-  self.emitSignal(signalname, args)
-
-proc call_propertyFavorited*(self: EditorProperty; property: Variant; favorited: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_favorited")
-  let args = [property, favorited]
-  self.emitSignal(signalname, args)
-
-proc call_propertyPinned*(self: EditorProperty; property: Variant; pinned: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_pinned")
-  let args = [property, pinned]
-  self.emitSignal(signalname, args)
-
-proc call_propertyCanRevertChanged*(self: EditorProperty; property: Variant; canRevert: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_can_revert_changed")
-  let args = [property, canRevert]
-  self.emitSignal(signalname, args)
-
-proc call_resourceSelected*(self: EditorProperty; path: Variant; resource: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("resource_selected")
-  let args = [path, resource]
-  self.emitSignal(signalname, args)
-
-proc call_objectIdSelected*(self: EditorProperty; property: Variant; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("object_id_selected")
-  let args = [property, id]
-  self.emitSignal(signalname, args)
-
-proc call_selected*(self: EditorProperty; path: Variant; focusableIdx: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("selected")
-  let args = [path, focusableIdx]
-  self.emitSignal(signalname, args)

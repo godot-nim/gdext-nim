@@ -4,6 +4,14 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+const ScreenWithMouseFocus* = -4
+const ScreenWithKeyboardFocus* = -3
+const ScreenPrimary* = -2
+const ScreenOfMainWindow* = -1
+const MainWindowId* = 0
+const InvalidWindowId* = -1
+const InvalidIndicatorId* = -1
+
 proc hasFeature*(self: DisplayServer; feature: DisplayServer_Feature): bool =
   expandMethodBind(className DisplayServer, "has_feature", 334065950)
   var ret: encoded bool

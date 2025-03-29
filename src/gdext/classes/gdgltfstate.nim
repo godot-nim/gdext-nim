@@ -4,6 +4,11 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+const HandleBinaryDiscardTextures* = 0
+const HandleBinaryExtractTextures* = 1
+const HandleBinaryEmbedAsBasisu* = 2
+const HandleBinaryEmbedAsUncompressed* = 3
+
 proc addUsedExtension*(self: GLTFState; extensionName: String; required: bool): void =
   expandMethodBind(className GLTFState, "add_used_extension", 2678287736)
   methodbind.ptrcall(self, [getPtr extensionName, getPtr required])

@@ -129,15 +129,3 @@ template `enterCost=`*(self: NavigationRegion2D; value) = self.setEnterCost(valu
 
 template travelCost*(self: NavigationRegion2D): untyped = self.getTravelCost()
 template `travelCost=`*(self: NavigationRegion2D; value) = self.setTravelCost(value)
-
-proc call_navigationPolygonChanged*(self: NavigationRegion2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("navigation_polygon_changed")
-  self.emitSignal(signalname)
-
-proc call_bakeFinished*(self: NavigationRegion2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bake_finished")
-  self.emitSignal(signalname)

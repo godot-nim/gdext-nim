@@ -69,15 +69,3 @@ proc getHistoryUndoRedo*(self: EditorUndoRedoManager; id: int32): UndoRedo =
 proc clearHistory*(self: EditorUndoRedoManager; id: int32 = -99; increaseVersion: bool = true): void =
   expandMethodBind(className EditorUndoRedoManager, "clear_history", 2020603371)
   methodbind.ptrcall(self, [getPtr id, getPtr increaseVersion])
-
-proc call_historyChanged*(self: EditorUndoRedoManager): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("history_changed")
-  self.emitSignal(signalname)
-
-proc call_versionChanged*(self: EditorUndoRedoManager): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("version_changed")
-  self.emitSignal(signalname)

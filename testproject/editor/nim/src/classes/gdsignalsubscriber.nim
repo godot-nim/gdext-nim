@@ -14,7 +14,7 @@ gdexport "publisher",
     self.publisher = value,
   Appearance.custom(
   hint = propertyHintNodeType,
-  hint_string = gdstring className Node)
+  hint_string = newGdString className Node)
 
 proc recv*(self: SignalSubscriber; key: int) {.gdsync.} =
   ## Take a argument and echo it.

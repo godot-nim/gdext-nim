@@ -130,22 +130,3 @@ template `dragAreaOffset=`*(self: SplitContainer; value) = self.setDragAreaOffse
 
 template dragAreaHighlightInEditor*(self: SplitContainer): untyped = self.isDragAreaHighlightInEditorEnabled()
 template `dragAreaHighlightInEditor=`*(self: SplitContainer; value) = self.setDragAreaHighlightInEditor(value)
-
-proc call_dragged*(self: SplitContainer; offset: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("dragged")
-  let args = [offset]
-  self.emitSignal(signalname, args)
-
-proc call_dragStarted*(self: SplitContainer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("drag_started")
-  self.emitSignal(signalname)
-
-proc call_dragEnded*(self: SplitContainer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("drag_ended")
-  self.emitSignal(signalname)

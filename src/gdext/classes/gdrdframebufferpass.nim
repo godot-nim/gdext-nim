@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+const AttachmentUnused* = -1
+
 proc setColorAttachments*(self: RDFramebufferPass; pMember: PackedInt32Array): void =
   expandMethodBind(className RDFramebufferPass, "set_color_attachments", 3614634198)
   methodbind.ptrcall(self, [getPtr pMember])

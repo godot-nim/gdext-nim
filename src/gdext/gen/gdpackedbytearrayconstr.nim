@@ -3,10 +3,10 @@ proc load_PackedByteArray_constructor {.execon: staticevents.init_engine.on_load
   for i in {1, 2}:
     PackedByteArray_constr[i] = interface_Variant_getPtrConstructor(VariantType_PackedByteArray, int32 i)
 
-# proc packedByteArray*(): PackedByteArray =
-proc packedByteArray*(`from`: PackedByteArray): PackedByteArray =
+# proc newPackedByteArray*(): PackedByteArray =
+proc newPackedByteArray*(`from`: PackedByteArray): PackedByteArray =
   let argArr = [getPtr `from`]
   PackedByteArray_constr[1](addr result, addr argArr[0])
-proc packedByteArray*(`from`: Array): PackedByteArray =
+proc newPackedByteArray*(`from`: Array): PackedByteArray =
   let argArr = [getPtr `from`]
   PackedByteArray_constr[2](addr result, addr argArr[0])

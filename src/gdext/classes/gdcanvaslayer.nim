@@ -140,9 +140,3 @@ template `followViewportEnabled=`*(self: CanvasLayer; value) = self.setFollowVie
 
 template followViewportScale*(self: CanvasLayer): untyped = self.getFollowViewportScale()
 template `followViewportScale=`*(self: CanvasLayer; value) = self.setFollowViewportScale(value)
-
-proc call_visibilityChanged*(self: CanvasLayer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("visibility_changed")
-  self.emitSignal(signalname)

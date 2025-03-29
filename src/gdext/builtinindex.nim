@@ -1,8 +1,7 @@
 import std/tables
 
+import gdext/private/buildsettings
 import gdext/private/native
-
-import gdext/buildconf
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64
@@ -14,7 +13,10 @@ type float_elem* = float32
 type char16* = char16_t
 type char32* = char32_t
 
-type Opaque[I: static int] = array[I, pointer]
+when real_elem is float32:
+  type VariantData = array[16, uint8]
+else:
+  type VariantData = array[32, uint8]
 
 type
   Vector*[N: static int; T] = array[N, T]
@@ -42,10 +44,8 @@ type
   GodotVariantTypeDefect* = object of GodotDefect
 
   Variant* {.byref.} = object
-    data*: tuple[
-      `type`: uint64,
-      opaque: array[4, pointer],
-    ]
+    `type`: VariantType
+    opaque: VariantData
   Float* = float64
   Vector2* = VectorR[2]
   Vector3* = VectorR[3]
@@ -99,16 +99,10 @@ type
     cowdata: pointer
   NodePath* {.byref.} = object
     cowdata: pointer
-  Callable* {.byref.} = object
-    opaque: Opaque[4]
-  Signal* {.byref.} = object
-    opaque: Opaque[4]
   Dictionary* {.byref.} = object
     cowdata: pointer
   Array* {.byref.} = object
     cowdata: pointer
-
-  TypedArray*[T: SomeProperty] = distinct Array
 
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
@@ -129,6 +123,17 @@ type
 
   GdRef*[RefCounted] = object
     handle*: RefCounted
+
+include gdext/gen/[localenums, globalenums, structs]
+
+type
+  Signal* {.byref.} = object
+    name: StringName
+    `object`: ObjectID
+  Callable* {.byref.} = object
+    `method`: StringName
+    `object`: ObjectID
+  TypedArray*[T: SomeProperty] = distinct Array
 
   SomePackedArray* =
     PackedByteArray    |
@@ -261,76 +266,100 @@ template variantType*[E: enum](Type: typedesc[set[E]]): Variant_Type = VariantTy
 
 template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 
-include gdext/gen/[classindex, localenums, globalenums, structs]
-
-proc `=destroy`*(val {.bycopy.}: String) =
-  if val.cowdata.isNil: return
-  typeDestructor[VariantTypeString](addr val)
-proc `=destroy`*(val {.bycopy.}: StringName) =
-  if val.cowdata.isNil: return
-  typeDestructor[VariantTypeStringName](addr val)
-proc `=destroy`*(val {.bycopy.}: NodePath) =
-  if val.cowdata.isNil: return
-  typeDestructor[VariantTypeNodePath](addr val)
-proc `=destroy`*(val {.bycopy.}: Callable) =
-  if val.opaque == Callable.opaque.default: return
-  typeDestructor[VariantTypeCallable](addr val)
-proc `=destroy`*(val {.bycopy.}: Signal) =
-  if val.opaque == Signal.opaque.default: return
-  typeDestructor[VariantTypeSignal](addr val)
-proc `=destroy`*(val {.bycopy.}: Array) =
-  if val.cowdata.isNil: return
-  typeDestructor[VariantTypeArray](addr val)
-proc `=destroy`*(val {.bycopy.}: Dictionary) =
-  if val.cowdata.isNil: return
-  typeDestructor[VariantTypeDictionary](addr val)
-proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
-  if val.opaque == PackedArray.opaque.default: return
-  when T is byte:
-    typeDestructor[VariantTypePackedByteArray](addr val)
-  elif T is int32:
-    typeDestructor[VariantTypePackedInt32Array](addr val)
-  elif T is int64:
-    typeDestructor[VariantTypePackedInt64Array](addr val)
-  elif T is float32:
-    typeDestructor[VariantTypePackedFloat32Array](addr val)
-  elif T is float64:
-    typeDestructor[VariantTypePackedFloat64Array](addr val)
-  elif T is String:
-    typeDestructor[VariantTypePackedStringArray](addr val)
-  elif T is Vector2:
-    typeDestructor[VariantTypePackedVector2Array](addr val)
-  elif T is Vector3:
-    typeDestructor[VariantTypePackedVector3Array](addr val)
-  elif T is Vector4:
-    typeDestructor[VariantTypePackedVector4Array](addr val)
-  elif T is Color:
-    typeDestructor[VariantTypePackedColorArray](addr val)
+include gdext/gen/[classindex]
 
 proc `=dup`*(src: String): String =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeString](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: String) =
+  if val.cowdata.isNil: return
+  typeDestructor[VariantTypeString](addr val)
+proc `=copy`*(dst: var String; src: String) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: StringName): StringName =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeStringName](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: StringName) =
+  if val.cowdata.isNil: return
+  typeDestructor[VariantTypeStringName](addr val)
+proc `=copy`*(dst: var StringName; src: StringName) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: NodePath): NodePath =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeNodePath](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: NodePath) =
+  if val.cowdata.isNil: return
+  typeDestructor[VariantTypeNodePath](addr val)
+proc `=copy`*(dst: var NodePath; src: NodePath) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: RID): RID =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeRID](addr result, addr argPtr)
+proc `=copy`*(dst: var RID; src: RID) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: Callable): Callable =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeCallable](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: Callable) =
+  if val.`method` == StringName() and val.object == ObjectID(): return
+  typeDestructor[VariantTypeCallable](addr val)
+proc `=copy`*(dst: var Callable; src: Callable) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: Signal): Signal =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeSignal](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: Signal) =
+  if val.name == StringName() and val.object == ObjectID(): return
+  typeDestructor[VariantTypeSignal](addr val)
+proc `=copy`*(dst: var Signal; src: Signal) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: Dictionary): Dictionary =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeDictionary](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: Dictionary) =
+  if val.cowdata.isNil: return
+  typeDestructor[VariantTypeDictionary](addr val)
+proc `=copy`*(dst: var Dictionary; src: Dictionary) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
+
 proc `=dup`*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeArray](addr result, addr argPtr)
+proc `=destroy`*(val {.bycopy.}: Array) =
+  if val.cowdata.isNil: return
+  typeDestructor[VariantTypeArray](addr val)
+proc `=copy`*(dst: var Array; src: Array) =
+  if dst == src: return
+  `=destroy` dst
+  wasMoved dst
+  dst = `=dup` src
 
 proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
   let argPtr = cast[pointer](addr src)
@@ -354,55 +383,35 @@ proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
     typeConstructor[VariantTypePackedVector4Array](addr result, addr argPtr)
   elif T is Color:
     typeConstructor[VariantTypePackedColorArray](addr result, addr argPtr)
-
-
-proc `=copy`*(dst: var String; src: String) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var StringName; src: StringName) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var NodePath; src: NodePath) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var RID; src: RID) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var Callable; src: Callable) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var Signal; src: Signal) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var Dictionary; src: Dictionary) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
-proc `=copy`*(dst: var Array; src: Array) =
-  if dst == src: return
-  `=destroy` dst
-  wasMoved dst
-  dst = `=dup` src
+proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
+  if val.opaque == PackedArray.opaque.default: return
+  when T is byte:
+    typeDestructor[VariantTypePackedByteArray](addr val)
+  elif T is int32:
+    typeDestructor[VariantTypePackedInt32Array](addr val)
+  elif T is int64:
+    typeDestructor[VariantTypePackedInt64Array](addr val)
+  elif T is float32:
+    typeDestructor[VariantTypePackedFloat32Array](addr val)
+  elif T is float64:
+    typeDestructor[VariantTypePackedFloat64Array](addr val)
+  elif T is String:
+    typeDestructor[VariantTypePackedStringArray](addr val)
+  elif T is Vector2:
+    typeDestructor[VariantTypePackedVector2Array](addr val)
+  elif T is Vector3:
+    typeDestructor[VariantTypePackedVector3Array](addr val)
+  elif T is Vector4:
+    typeDestructor[VariantTypePackedVector4Array](addr val)
+  elif T is Color:
+    typeDestructor[VariantTypePackedColorArray](addr val)
 proc `=copy`*[T](dst: var PackedArray[T]; src: PackedArray[T]) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
   dst = `=dup` src
 
-proc `=destroy`*(x: Variant) =
+proc `=destroy`*(x {.bycopy.}: Variant) =
   interface_variantDestroy(addr x)
 proc `=dup`*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)

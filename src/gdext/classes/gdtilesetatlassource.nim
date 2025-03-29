@@ -4,6 +4,10 @@ import gdext/coronation/header/classes
 
 import gdtilesetsource; export gdtilesetsource
 
+const TransformFlipH* = 4096
+const TransformFlipV* = 8192
+const TransformTranspose* = 16384
+
 proc setTexture*(self: TileSetAtlasSource; texture: gdref Texture2D): void =
   expandMethodBind(className TileSetAtlasSource, "set_texture", 4051416890)
   methodbind.ptrcall(self, [getPtr texture])

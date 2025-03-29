@@ -4,6 +4,13 @@ import gdext/coronation/header/classes
 
 import gdanimationrootnode; export gdanimationrootnode
 
+const ConnectionOk* = 0
+const ConnectionErrorNoInput* = 1
+const ConnectionErrorNoInputIndex* = 2
+const ConnectionErrorNoOutput* = 3
+const ConnectionErrorSameNode* = 4
+const ConnectionErrorConnectionExists* = 5
+
 proc addNode*(self: AnimationNodeBlendTree; name: StringName; node: gdref AnimationNode; position: Vector2 = vector2(0, 0)): void =
   expandMethodBind(className AnimationNodeBlendTree, "add_node", 1980270704)
   methodbind.ptrcall(self, [getPtr name, getPtr node, getPtr position])
@@ -58,10 +65,3 @@ proc getGraphOffset*(self: AnimationNodeBlendTree): Vector2 =
 
 template graphOffset*(self: AnimationNodeBlendTree): untyped = self.getGraphOffset()
 template `graphOffset=`*(self: AnimationNodeBlendTree; value) = self.setGraphOffset(value)
-
-proc call_nodeChanged*(self: AnimationNodeBlendTree; nodeName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("node_changed")
-  let args = [nodeName]
-  self.emitSignal(signalname, args)

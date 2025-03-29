@@ -164,9 +164,3 @@ template `blendMode=`*(self: AnimationNodeBlendSpace2D; value) = self.setBlendMo
 
 template sync*(self: AnimationNodeBlendSpace2D): untyped = self.isUsingSync()
 template `sync=`*(self: AnimationNodeBlendSpace2D; value) = self.setUseSync(value)
-
-proc call_trianglesUpdated*(self: AnimationNodeBlendSpace2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("triangles_updated")
-  self.emitSignal(signalname)

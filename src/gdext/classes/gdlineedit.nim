@@ -533,31 +533,3 @@ template `structuredTextBidiOverride=`*(self: LineEdit; value) = self.setStructu
 
 template structuredTextBidiOverrideOptions*(self: LineEdit): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: LineEdit; value) = self.setStructuredTextBidiOverrideOptions(value)
-
-proc call_textChanged*(self: LineEdit; newText: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("text_changed")
-  let args = [newText]
-  self.emitSignal(signalname, args)
-
-proc call_textChangeRejected*(self: LineEdit; rejectedSubstring: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("text_change_rejected")
-  let args = [rejectedSubstring]
-  self.emitSignal(signalname, args)
-
-proc call_textSubmitted*(self: LineEdit; newText: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("text_submitted")
-  let args = [newText]
-  self.emitSignal(signalname, args)
-
-proc call_editingToggled*(self: LineEdit; toggledOn: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("editing_toggled")
-  let args = [toggledOn]
-  self.emitSignal(signalname, args)

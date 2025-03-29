@@ -45,17 +45,3 @@ proc getPrimaryInterface*(self: TextServerManager): gdref TextServer =
   var ret: encoded gdref TextServer
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref TextServer)
-
-proc call_interfaceAdded*(self: TextServerManager; interfaceName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("interface_added")
-  let args = [interfaceName]
-  self.emitSignal(signalname, args)
-
-proc call_interfaceRemoved*(self: TextServerManager; interfaceName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("interface_removed")
-  let args = [interfaceName]
-  self.emitSignal(signalname, args)

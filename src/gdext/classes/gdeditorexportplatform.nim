@@ -132,7 +132,7 @@ proc getWorstMessageType*(self: EditorExportPlatform): EditorExportPlatform_Expo
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorExportPlatform_ExportMessageType)
 
-proc sshRunOnRemote*(self: EditorExportPlatform; host: String; port: String; sshArg: PackedStringArray; cmdArgs: String; output: Array = gdarray(); portFwd: int32 = -1): Error =
+proc sshRunOnRemote*(self: EditorExportPlatform; host: String; port: String; sshArg: PackedStringArray; cmdArgs: String; output: Array = newArray(); portFwd: int32 = -1): Error =
   expandMethodBind(className EditorExportPlatform, "ssh_run_on_remote", 3163734797)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr host, getPtr port, getPtr sshArg, getPtr cmdArgs, getPtr output, getPtr portFwd], addr ret)

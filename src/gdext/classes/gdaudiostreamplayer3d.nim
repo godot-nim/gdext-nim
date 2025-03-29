@@ -319,9 +319,3 @@ template `attenuationFilterDb=`*(self: AudioStreamPlayer3D; value) = self.setAtt
 
 template dopplerTracking*(self: AudioStreamPlayer3D): untyped = self.getDopplerTracking()
 template `dopplerTracking=`*(self: AudioStreamPlayer3D; value) = self.setDopplerTracking(value)
-
-proc call_finished*(self: AudioStreamPlayer3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

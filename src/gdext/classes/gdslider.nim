@@ -55,16 +55,3 @@ template `tickCount=`*(self: Slider; value) = self.setTicks(value)
 
 template ticksOnBorders*(self: Slider): untyped = self.getTicksOnBorders()
 template `ticksOnBorders=`*(self: Slider; value) = self.setTicksOnBorders(value)
-
-proc call_dragStarted*(self: Slider): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("drag_started")
-  self.emitSignal(signalname)
-
-proc call_dragEnded*(self: Slider; valueChanged: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("drag_ended")
-  let args = [valueChanged]
-  self.emitSignal(signalname, args)

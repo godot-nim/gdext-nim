@@ -822,9 +822,3 @@ template `subEmitterAmountAtStart=`*(self: ParticleProcessMaterial; value) = sel
 
 template subEmitterKeepVelocity*(self: ParticleProcessMaterial): untyped = self.getSubEmitterKeepVelocity()
 template `subEmitterKeepVelocity=`*(self: ParticleProcessMaterial; value) = self.setSubEmitterKeepVelocity(value)
-
-proc call_emissionShapeChanged*(self: ParticleProcessMaterial): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("emission_shape_changed")
-  self.emitSignal(signalname)

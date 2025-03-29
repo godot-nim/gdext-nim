@@ -52,9 +52,3 @@ template `advanceExpressionBaseNode=`*(self: AnimationTree; value) = self.setAdv
 
 template animPlayer*(self: AnimationTree): untyped = self.getAnimationPlayer()
 template `animPlayer=`*(self: AnimationTree; value) = self.setAnimationPlayer(value)
-
-proc call_animationPlayerChanged*(self: AnimationTree): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_player_changed")
-  self.emitSignal(signalname)

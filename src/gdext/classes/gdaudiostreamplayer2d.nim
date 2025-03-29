@@ -215,9 +215,3 @@ template `areaMask=`*(self: AudioStreamPlayer2D; value) = self.setAreaMask(value
 
 template playbackType*(self: AudioStreamPlayer2D): untyped = self.getPlaybackType()
 template `playbackType=`*(self: AudioStreamPlayer2D; value) = self.setPlaybackType(value)
-
-proc call_finished*(self: AudioStreamPlayer2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

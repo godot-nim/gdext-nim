@@ -80,9 +80,3 @@ template `fallbackIcon=`*(self: ThemeDB; value) = self.setFallbackIcon(value)
 
 template fallbackStylebox*(self: ThemeDB): untyped = self.getFallbackStylebox()
 template `fallbackStylebox=`*(self: ThemeDB; value) = self.setFallbackStylebox(value)
-
-proc call_fallbackChanged*(self: ThemeDB): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("fallback_changed")
-  self.emitSignal(signalname)

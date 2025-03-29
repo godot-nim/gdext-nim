@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
-proc pckStart*(self: PCKPacker; pckPath: String; alignment: int32 = 32; key: String = gdstring"0000000000000000000000000000000000000000000000000000000000000000"; encryptDirectory: bool = false): Error =
+proc pckStart*(self: PCKPacker; pckPath: String; alignment: int32 = 32; key: String = newGdString("0000000000000000000000000000000000000000000000000000000000000000"); encryptDirectory: bool = false): Error =
   expandMethodBind(className PCKPacker, "pck_start", 508410629)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr pckPath, getPtr alignment, getPtr key, getPtr encryptDirectory], addr ret)

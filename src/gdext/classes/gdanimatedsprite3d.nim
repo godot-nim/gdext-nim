@@ -113,33 +113,3 @@ template `frameProgress=`*(self: AnimatedSprite3D; value) = self.setFrameProgres
 
 template speedScale*(self: AnimatedSprite3D): untyped = self.getSpeedScale()
 template `speedScale=`*(self: AnimatedSprite3D; value) = self.setSpeedScale(value)
-
-proc call_spriteFramesChanged*(self: AnimatedSprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("sprite_frames_changed")
-  self.emitSignal(signalname)
-
-proc call_animationChanged*(self: AnimatedSprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_changed")
-  self.emitSignal(signalname)
-
-proc call_frameChanged*(self: AnimatedSprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_changed")
-  self.emitSignal(signalname)
-
-proc call_animationLooped*(self: AnimatedSprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_looped")
-  self.emitSignal(signalname)
-
-proc call_animationFinished*(self: AnimatedSprite3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_finished")
-  self.emitSignal(signalname)

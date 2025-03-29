@@ -287,16 +287,3 @@ template `inputDevice=`*(self: AudioServer; value) = self.setInputDevice(value)
 
 template playbackSpeedScale*(self: AudioServer): untyped = self.getPlaybackSpeedScale()
 template `playbackSpeedScale=`*(self: AudioServer; value) = self.setPlaybackSpeedScale(value)
-
-proc call_busLayoutChanged*(self: AudioServer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bus_layout_changed")
-  self.emitSignal(signalname)
-
-proc call_busRenamed*(self: AudioServer; busIndex: Variant; oldName: Variant; newName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bus_renamed")
-  let args = [busIndex, oldName, newName]
-  self.emitSignal(signalname, args)

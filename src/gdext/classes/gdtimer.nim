@@ -103,9 +103,3 @@ template ignoreTimeScale*(self: Timer): untyped = self.isIgnoringTimeScale()
 template `ignoreTimeScale=`*(self: Timer; value) = self.setIgnoreTimeScale(value)
 
 template timeLeft*(self: Timer): untyped = self.getTimeLeft()
-
-proc call_timeout*(self: Timer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("timeout")
-  self.emitSignal(signalname)

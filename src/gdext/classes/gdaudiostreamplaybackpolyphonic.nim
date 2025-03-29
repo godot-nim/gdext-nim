@@ -4,7 +4,9 @@ import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
 
-proc playStream*(self: AudioStreamPlaybackPolyphonic; stream: gdref AudioStream; fromOffset: Float = 0; volumeDb: Float = 0; pitchScale: Float = 1.0; playbackType: AudioServer_PlaybackType = playbackTypeDefault; bus: StringName = stringName"Master"): int64 =
+const InvalidId* = -1
+
+proc playStream*(self: AudioStreamPlaybackPolyphonic; stream: gdref AudioStream; fromOffset: Float = 0; volumeDb: Float = 0; pitchScale: Float = 1.0; playbackType: AudioServer_PlaybackType = playbackTypeDefault; bus: StringName = newStringName("Master")): int64 =
   expandMethodBind(className AudioStreamPlaybackPolyphonic, "play_stream", 1846744803)
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr stream, getPtr fromOffset, getPtr volumeDb, getPtr pitchScale, getPtr playbackType, getPtr bus], addr ret)

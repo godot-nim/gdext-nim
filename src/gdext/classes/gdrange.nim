@@ -6,7 +6,7 @@ import gdcontrol; export gdcontrol
 
 method valueChanged*(self: Range; newValue: float64): void {.base.} = (discard)
 proc registerVirtual_valueChanged*[T: Range](Self: typedesc[T]) =
-  Self.vmethods[stringName"_value_changed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_value_changed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Range](p_instance).valueChanged(p_args[0].decode(float64))
 
 proc getValue*(self: Range): float64 =
@@ -150,16 +150,3 @@ template `allowGreater=`*(self: Range; value) = self.setAllowGreater(value)
 
 template allowLesser*(self: Range): untyped = self.isLesserAllowed()
 template `allowLesser=`*(self: Range; value) = self.setAllowLesser(value)
-
-proc call_valueChanged*(self: Range; value: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("value_changed")
-  let args = [value]
-  self.emitSignal(signalname, args)
-
-proc call_changed*(self: Range): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("changed")
-  self.emitSignal(signalname)

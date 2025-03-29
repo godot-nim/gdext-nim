@@ -41,8 +41,8 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export_no_alpha*: Color = color(1, 1, 1)
 
 method onInit(self: PropTestNode) =
-  self.StringArray_with_export_multiline = typedArray[String](1)
-  self.PackedStringArray_with_export_multiline = packedStringArray()
+  self.StringArray_with_export_multiline = newTypedArray[String](1)
+  self.PackedStringArray_with_export_multiline = newPackedStringArray()
   assert self.PackedStringArray_with_export_multiline.resize(1) == 0
 
 method enterTree(self: PropTestNode) {.gdsync.} =

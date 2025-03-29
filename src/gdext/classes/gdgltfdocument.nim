@@ -34,7 +34,7 @@ proc getRootNodeMode*(self: GLTFDocument): GLTFDocument_RootNodeMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GLTFDocument_RootNodeMode)
 
-proc appendFromFile*(self: GLTFDocument; path: String; state: gdref GLTFState; flags: uint32 = 0'u32; basePath: String = gdstring""): Error =
+proc appendFromFile*(self: GLTFDocument; path: String; state: gdref GLTFState; flags: uint32 = 0'u32; basePath: String = newGdString()): Error =
   expandMethodBind(className GLTFDocument, "append_from_file", 866380864)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr path, getPtr state, getPtr flags, getPtr basePath], addr ret)

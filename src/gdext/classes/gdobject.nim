@@ -2,6 +2,10 @@
 
 import gdext/coronation/header/classes
 
+const NotificationPostinitialize* = 0
+const NotificationPredelete* = 1
+const NotificationExtensionReloaded* = 2
+
 proc getClass*(self: Object): String =
   expandMethodBind(className Object, "get_class", 201670096)
   var ret: encoded String
@@ -110,7 +114,7 @@ proc getMetaList*(self: Object): TypedArray[StringName] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[StringName])
 
-proc addUserSignal*(self: Object; signal: String; arguments: Array = gdarray()): void =
+proc addUserSignal*(self: Object; signal: String; arguments: Array = newArray()): void =
   expandMethodBind(className Object, "add_user_signal", 85656714)
   methodbind.ptrcall(self, [getPtr signal, getPtr arguments])
 
@@ -271,15 +275,3 @@ proc isQueuedForDeletion*(self: Object): bool =
 proc cancelFree*(self: Object): void =
   expandMethodBind(className Object, "cancel_free", 3218959716)
   methodbind.ptrcall(self, [])
-
-proc call_scriptChanged*(self: Object): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("script_changed")
-  self.emitSignal(signalname)
-
-proc call_propertyListChanged*(self: Object): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("property_list_changed")
-  self.emitSignal(signalname)

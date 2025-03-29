@@ -6,7 +6,7 @@ import gdrefcounted; export gdrefcounted
 
 method popupMenu*(self: EditorContextMenuPlugin; paths: PackedStringArray): void {.base.} = (discard)
 proc registerVirtual_popupMenu*[T: EditorContextMenuPlugin](Self: typedesc[T]) =
-  Self.vmethods[stringName"_popup_menu"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_popup_menu"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorContextMenuPlugin](p_instance).popupMenu(p_args[0].decode(PackedStringArray))
 
 proc addMenuShortcut*(self: EditorContextMenuPlugin; shortcut: gdref Shortcut; callback: Callable): void =

@@ -1,4 +1,4 @@
-import std/[tables, sets, strutils]
+import std/[tables, sets]
 
 import gdext/builtinindex
 import gdext/stringtools
@@ -23,7 +23,7 @@ proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
 proc instantiate*[T_Node: Node](T: typedesc[T_Node]; name: string): T =
   result = instantiate_internal T
   debugInstantiate(result)
-  result.name = gdstring name
+  result.name = newGdString name
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
@@ -56,13 +56,15 @@ proc singleton*[T: SomeClass](_: typedesc[T]): T =
     result = cast[T](cache)
 
 proc `$`*[T: Object](self: T): string =
-  if self.isNil: return $self.getClassName & "(nil)"
-  $self.getClassName & "(ID: 0x" & gdinterface.getInstanceID(self).toHex & ")"
+  if unlikely(self.isNil):
+    "<Object#null>"
+  else:
+    $self.toString
 
-proc `$`*(self: Node): string =
-  $self.name() & " [" & $Object(self) & "]"
+proc `$`*(self: GdRef): string =
+  $self.handle
 
 template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
-template `/`*(self: Node; path: string): Node = self/nodepath(gdstring path)
+template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub

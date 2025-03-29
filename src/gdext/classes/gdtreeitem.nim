@@ -378,7 +378,7 @@ proc clearButtons*(self: TreeItem): void =
   expandMethodBind(className TreeItem, "clear_buttons", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addButton*(self: TreeItem; column: int32; button: gdref Texture2D; id: int32 = -1; disabled: bool = false; tooltipText: String = gdstring""): void =
+proc addButton*(self: TreeItem; column: int32; button: gdref Texture2D; id: int32 = -1; disabled: bool = false; tooltipText: String = newGdString()): void =
   expandMethodBind(className TreeItem, "add_button", 1688223362)
   methodbind.ptrcall(self, [getPtr column, getPtr button, getPtr id, getPtr disabled, getPtr tooltipText])
 

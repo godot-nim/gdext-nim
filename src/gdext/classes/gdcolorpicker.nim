@@ -174,24 +174,3 @@ template `hexVisible=`*(self: ColorPicker; value) = self.setHexVisible(value)
 
 template presetsVisible*(self: ColorPicker): untyped = self.arePresetsVisible()
 template `presetsVisible=`*(self: ColorPicker; value) = self.setPresetsVisible(value)
-
-proc call_colorChanged*(self: ColorPicker; color: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("color_changed")
-  let args = [color]
-  self.emitSignal(signalname, args)
-
-proc call_presetAdded*(self: ColorPicker; color: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("preset_added")
-  let args = [color]
-  self.emitSignal(signalname, args)
-
-proc call_presetRemoved*(self: ColorPicker; color: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("preset_removed")
-  let args = [color]
-  self.emitSignal(signalname, args)

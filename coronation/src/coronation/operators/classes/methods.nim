@@ -166,7 +166,8 @@ proc weave_native(entry: ClassMethodVirtualEntry): Cloth =
   weave multiline:
     &"proc registerVirtual_{entry.name.dropQuote}*[T: {entry.self.typeSym}](Self: typedesc[T]) ="
     weave cloths.indent:
-      &"Self.vmethods[stringName\"{entry.native_name}\"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
+      const StringName = TypeSym"StringName"
+      &"Self.vmethods[{constructorName StringName}\"{entry.native_name}\"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
       weave cloths.indent >> Join(delim: ""):
         &"errproof: cast[{entry.self.typesym}](p_instance).{entry.name}("
         weave Join(delim: ", "):

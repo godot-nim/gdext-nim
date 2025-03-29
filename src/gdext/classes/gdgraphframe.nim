@@ -87,9 +87,3 @@ template `tintColorEnabled=`*(self: GraphFrame; value) = self.setTintColorEnable
 
 template tintColor*(self: GraphFrame): untyped = self.getTintColor()
 template `tintColor=`*(self: GraphFrame; value) = self.setTintColor(value)
-
-proc call_autoshrinkChanged*(self: GraphFrame): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("autoshrink_changed")
-  self.emitSignal(signalname)

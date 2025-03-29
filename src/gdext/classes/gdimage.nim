@@ -4,6 +4,9 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+const MaxWidth* = 16777216
+const MaxHeight* = 16777216
+
 proc getWidth*(self: Image): int32 =
   expandMethodBind(className Image, "get_width", 3905245786)
   var ret: encoded int32

@@ -63,12 +63,44 @@ proc getUnboundArgumentsCount*(self: Callable): Int =
   `getUnboundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
 proc hash*(self: Callable): Int =
   `hash(Callable)`(addr self, nil, addr result, 0)
-proc bindv*(self: Callable; arguments: Array): Callable =
+proc bindv*(self: var Callable; arguments: Array): Callable =
   let argArr = [getPtr arguments]
   `bindv(Callable Array)`(addr self, addr argArr[0], addr result, 1)
 proc unbind*(self: Callable; argcount: Int): Callable =
   let argArr = [getPtr argcount]
   `unbind(Callable Int)`(addr self, addr argArr[0], addr result, 1)
+proc call*(self: Callable; args: varargs[Variant]): Variant =
+  if args.len == 0:
+    `call(Callable Variant)`(addr self, nil, addr result, 0)
+  else:
+    let argArr = getptr args
+    `call(Callable Variant)`(addr self, addr argArr[0], addr result, cint args.len)
+proc callDeferred*(self: Callable; args: varargs[Variant]): void =
+  if args.len == 0:
+    `callDeferred(Callable Variant)`(addr self, nil, nil, 0)
+  else:
+    let argArr = getptr args
+    `callDeferred(Callable Variant)`(addr self, addr argArr[0], nil, cint args.len)
+proc rpc*(self: Callable; args: varargs[Variant]): void =
+  if args.len == 0:
+    `rpc(Callable Variant)`(addr self, nil, nil, 0)
+  else:
+    let argArr = getptr args
+    `rpc(Callable Variant)`(addr self, addr argArr[0], nil, cint args.len)
+proc rpcId*(self: Callable; peerId: Int; args: varargs[Variant]): void =
+  if args.len == 0:
+    let argArr = [getPtr peerId]
+    `rpcId(Callable Int Variant)`(addr self, addr argArr[0], nil, 1)
+  else:
+    var argArr = @[getPtr peerId]
+    argArr.add args.getptr
+    `rpcId(Callable Int Variant)`(addr self, addr argArr[0], nil, cint argArr.len)
+proc `bind`*(self: Callable; args: varargs[Variant]): Callable =
+  if args.len == 0:
+    `bind(Callable Variant)`(addr self, nil, addr result, 0)
+  else:
+    let argArr = getptr args
+    `bind(Callable Variant)`(addr self, addr argArr[0], addr result, cint args.len)
 
 proc load_Callable_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `create(Callable Variant StringName)` = load(VariantType_Callable, "create", 1709381114)

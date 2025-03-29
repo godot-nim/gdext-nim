@@ -1,8 +1,8 @@
 import std/[tables, typetraits, importutils]
+import gdext/private/buildsettings
 import gdext/private/native
 import gdext/private/macros
 import gdext/private/debugging
-import gdext/buildconf
 import gdext/builtinindex {.all.}
 import gdext/stringtools
 import gdext/objectcallbacks
@@ -23,6 +23,10 @@ proc engineInstance*(obj: Object): ObjectPtr =
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
   for i in 0..<arr.len:
     result[i] = getPtr arr[i]
+proc getPtr*(arr: varargs[Variant] | seq[Variant]): seq[pointer] =
+  result = newSeqOfCap[pointer](arr.len)
+  for i in 0..<arr.len:
+    result.add getPtr arr[i]
 proc getPtr*(arr: array[0, Variant]): array[0, pointer] = discard
 
 template getTypedPtr*(v: Variant): VariantPtr = addr v
@@ -118,7 +122,7 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   var instance {.global.} : GodotClassMeta
   once:
     instance = GodotClassMeta(
-      className: stringName $T,
+      className: newStringName $T,
     )
     when T is SomeEngineClass:
       instance.callbacks = InstanceBindingCallbacks(
@@ -186,7 +190,7 @@ proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr 
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
   interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: string; p_hash: Int): MethodBindPtr =
-  ClassDB.getMethodBind(p_classname, stringName p_methodname, p_hash)
+  ClassDB.getMethodBind(p_classname, newStringName p_methodname, p_hash)
 
 proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
   interfaceClassdbGetClassTag(addr p_classname)

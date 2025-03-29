@@ -6,12 +6,12 @@ import gdresource; export gdresource
 
 method getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName): StringName {.base.} = (discard)
 proc registerVirtual_getPluralMessage*[T: Translation](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_plural_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_plural_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Translation](p_instance).getPluralMessage(p_args[0].decode(StringName), p_args[1].decode(StringName), p_args[2].decode(int32), p_args[3].decode(StringName)).encode(r_ret)
 
 method getMessage*(self: Translation; srcMessage: StringName; context: StringName): StringName {.base.} = (discard)
 proc registerVirtual_getMessage*[T: Translation](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Translation](p_instance).getMessage(p_args[0].decode(StringName), p_args[1].decode(StringName)).encode(r_ret)
 
 proc setLocale*(self: Translation; locale: String): void =

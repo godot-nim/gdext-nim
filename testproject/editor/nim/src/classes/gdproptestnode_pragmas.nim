@@ -59,9 +59,9 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 PropTestNodePragmas.bind PropTestPragmasEnum
 
 method onInit(self: PropTestNodePragmas) =
-  self.StringArray_with_export_multiline = typedArray[String](1)
-  self.string_array = typedArray[String]()
-  self.texture2D_array = typedArray[Texture2D]()
+  self.StringArray_with_export_multiline = newTypedArray[String](1)
+  self.string_array = newTypedArray[String]()
+  self.texture2D_array = newTypedArray[Texture2D]()
 
 method enterTree(self: PropTestNodePragmas) {.gdsync.} =
   self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D

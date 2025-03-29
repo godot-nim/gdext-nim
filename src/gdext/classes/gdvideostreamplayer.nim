@@ -178,9 +178,3 @@ template `streamPosition=`*(self: VideoStreamPlayer; value) = self.setStreamPosi
 
 template bus*(self: VideoStreamPlayer): untyped = self.getBus()
 template `bus=`*(self: VideoStreamPlayer; value) = self.setBus(value)
-
-proc call_finished*(self: VideoStreamPlayer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("finished")
-  self.emitSignal(signalname)

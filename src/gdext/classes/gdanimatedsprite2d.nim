@@ -165,33 +165,3 @@ template `flipH=`*(self: AnimatedSprite2D; value) = self.setFlipH(value)
 
 template flipV*(self: AnimatedSprite2D): untyped = self.isFlippedV()
 template `flipV=`*(self: AnimatedSprite2D; value) = self.setFlipV(value)
-
-proc call_spriteFramesChanged*(self: AnimatedSprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("sprite_frames_changed")
-  self.emitSignal(signalname)
-
-proc call_animationChanged*(self: AnimatedSprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_changed")
-  self.emitSignal(signalname)
-
-proc call_frameChanged*(self: AnimatedSprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_changed")
-  self.emitSignal(signalname)
-
-proc call_animationLooped*(self: AnimatedSprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_looped")
-  self.emitSignal(signalname)
-
-proc call_animationFinished*(self: AnimatedSprite2D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_finished")
-  self.emitSignal(signalname)

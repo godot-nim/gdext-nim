@@ -160,23 +160,23 @@ proc setCurrentFeatureProfile*(self: EditorInterface; profileName: String): void
   expandMethodBind(className EditorInterface, "set_current_feature_profile", 83702148)
   methodbind.ptrcall(self, [getPtr profileName])
 
-proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = typedArray[StringName](); currentValue: Node = default Node): void =
+proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = newTypedArray[StringName](); currentValue: Node = default Node): void =
   expandMethodBind(className EditorInterface, "popup_node_selector", 2444591477)
   methodbind.ptrcall(self, [getPtr callback, getPtr validTypes, getPtr currentValue])
 
-proc popupPropertySelector*(self: EditorInterface; `object`: Object; callback: Callable; typeFilter: PackedInt32Array = PackedInt32Array(); currentValue: String = gdstring""): void =
+proc popupPropertySelector*(self: EditorInterface; `object`: Object; callback: Callable; typeFilter: PackedInt32Array = PackedInt32Array(); currentValue: String = newGdString()): void =
   expandMethodBind(className EditorInterface, "popup_property_selector", 2955609011)
   methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr typeFilter, getPtr currentValue])
 
-proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Callable; currentValue: String = gdstring""): void =
+proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Callable; currentValue: String = newGdString()): void =
   expandMethodBind(className EditorInterface, "popup_method_selector", 3585505226)
   methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr currentValue])
 
-proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = typedArray[StringName]()): void =
+proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_quick_open", 2271411043)
   methodbind.ptrcall(self, [getPtr callback, getPtr baseTypes])
 
-proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = gdstring""; dialogTitle: String = gdstring""; typeBlocklist: TypedArray[StringName] = typedArray[StringName]()): void =
+proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = newGdString(); dialogTitle: String = newGdString(); typeBlocklist: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_create_dialog", 495277124)
   methodbind.ptrcall(self, [getPtr callback, getPtr baseType, getPtr currentType, getPtr dialogTitle, getPtr typeBlocklist])
 
@@ -214,7 +214,7 @@ proc getInspector*(self: EditorInterface): EditorInspector =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorInspector)
 
-proc inspectObject*(self: EditorInterface; `object`: Object; forProperty: String = gdstring""; inspectorOnly: bool = false): void =
+proc inspectObject*(self: EditorInterface; `object`: Object; forProperty: String = newGdString(); inspectorOnly: bool = false): void =
   expandMethodBind(className EditorInterface, "inspect_object", 127962172)
   methodbind.ptrcall(self, [getPtr `object`, getPtr forProperty, getPtr inspectorOnly])
 

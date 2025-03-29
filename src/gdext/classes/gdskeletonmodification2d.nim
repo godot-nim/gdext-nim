@@ -6,17 +6,17 @@ import gdresource; export gdresource
 
 method execute*(self: SkeletonModification2D; delta: float64): void {.base.} = (discard)
 proc registerVirtual_execute*[T: SkeletonModification2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_execute"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_execute"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SkeletonModification2D](p_instance).execute(p_args[0].decode(float64))
 
 method setupModification*(self: SkeletonModification2D; modificationStack: gdref SkeletonModificationStack2D): void {.base.} = (discard)
 proc registerVirtual_setupModification*[T: SkeletonModification2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_setup_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_setup_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SkeletonModification2D](p_instance).setupModification(p_args[0].decode(gdref SkeletonModificationStack2D))
 
 method drawEditorGizmo*(self: SkeletonModification2D): void {.base.} = (discard)
 proc registerVirtual_drawEditorGizmo*[T: SkeletonModification2D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_draw_editor_gizmo"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_draw_editor_gizmo"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SkeletonModification2D](p_instance).drawEditorGizmo()
 
 proc setEnabled*(self: SkeletonModification2D; enabled: bool): void =

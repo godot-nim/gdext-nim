@@ -6,12 +6,12 @@ import gdcontrol; export gdcontrol
 
 method pressed*(self: BaseButton): void {.base.} = (discard)
 proc registerVirtual_pressed*[T: BaseButton](Self: typedesc[T]) =
-  Self.vmethods[stringName"_pressed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_pressed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[BaseButton](p_instance).pressed()
 
 method toggled*(self: BaseButton; toggledOn: bool): void {.base.} = (discard)
 proc registerVirtual_toggled*[T: BaseButton](Self: typedesc[T]) =
-  Self.vmethods[stringName"_toggled"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_toggled"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[BaseButton](p_instance).toggled(p_args[0].decode(bool))
 
 proc setPressed*(self: BaseButton; pressed: bool): void =
@@ -159,28 +159,3 @@ template `shortcutFeedback=`*(self: BaseButton; value) = self.setShortcutFeedbac
 
 template shortcutInTooltip*(self: BaseButton): untyped = self.isShortcutInTooltipEnabled()
 template `shortcutInTooltip=`*(self: BaseButton; value) = self.setShortcutInTooltip(value)
-
-proc call_pressed*(self: BaseButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("pressed")
-  self.emitSignal(signalname)
-
-proc call_buttonUp*(self: BaseButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("button_up")
-  self.emitSignal(signalname)
-
-proc call_buttonDown*(self: BaseButton): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("button_down")
-  self.emitSignal(signalname)
-
-proc call_toggled*(self: BaseButton; toggledOn: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("toggled")
-  let args = [toggledOn]
-  self.emitSignal(signalname, args)

@@ -18,13 +18,11 @@ import operators/structs
 import operators/constants
 import operators/utilityfuncs
 import operators/builtinclasses/constructors
-import operators/builtinclasses/subscripts
 import operators/builtinclasses/operators
 import operators/builtinclasses/methods
 import operators/classindex
 import operators/classes/methods
 import operators/classes/properties
-import operators/classes/signals
 
 import std/sequtils
 import std/strformat
@@ -121,7 +119,6 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
                   "# constant values"
                 for constant in builtin.constants.get(@[]):
                   constant.weave(sym)
-              weave_subscript builtin
               weave_operators builtin
               weave_methods builtin
 
@@ -160,11 +157,13 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
             if sym != TypeSym.Object:
               let mdlbase = base.convert(ModuleSym)
               &"import {mdlbase}; export {mdlbase}"
+            weave multiline:
+              for constant in class.json.constants.get(@[]):
+                constant.weave(sym)
             weave margin:
               for entry in class.json.methods.get(@[]):
                 weave entry.convert(sym)
             weave_properties class
-            weave_signals(class)
 
     layout gen:
       let trueClasses = classes.subitems.values.toSeq.filterIt(it of NimSource.NimSource).mapIt(NimSource it)

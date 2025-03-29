@@ -4,6 +4,23 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+const NoIndexArray* = -1
+const ArrayWeightsSize* = 4
+const CanvasItemZMin* = -4096
+const CanvasItemZMax* = 4096
+const MaxGlowLevels* = 7
+const MaxCursors* = 8
+const Max2DDirectionalLights* = 8
+const MaxMeshSurfaces* = 256
+const MaterialRenderPriorityMin* = -128
+const MaterialRenderPriorityMax* = 127
+const ArrayCustomCount* = 4
+const ParticlesEmitFlagPosition* = 1
+const ParticlesEmitFlagRotationScale* = 2
+const ParticlesEmitFlagVelocity* = 4
+const ParticlesEmitFlagColor* = 8
+const ParticlesEmitFlagCustom* = 16
+
 proc texture2DCreate*(self: RenderingServer; image: gdref Image): RID =
   expandMethodBind(className RenderingServer, "texture_2d_create", 2010018390)
   var ret: encoded RID
@@ -244,7 +261,7 @@ proc meshAddSurface*(self: RenderingServer; mesh: RID; surface: Dictionary): voi
   expandMethodBind(className RenderingServer, "mesh_add_surface", 1217542888)
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface])
 
-proc meshAddSurfaceFromArrays*(self: RenderingServer; mesh: RID; primitive: RenderingServer_PrimitiveType; arrays: Array; blendShapes: Array = gdarray(); lods: Dictionary = dictionary(); compressFormat: set[RenderingServer_ArrayFormat] = {}): void =
+proc meshAddSurfaceFromArrays*(self: RenderingServer; mesh: RID; primitive: RenderingServer_PrimitiveType; arrays: Array; blendShapes: Array = newArray(); lods: Dictionary = newDictionary(); compressFormat: set[RenderingServer_ArrayFormat] = {}): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface_from_arrays", 2342446560)
   methodbind.ptrcall(self, [getPtr mesh, getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr compressFormat])
 
@@ -2354,15 +2371,3 @@ proc hasFeature*(self: RenderingServer; feature: RenderingServer_Features): bool
 
 template renderLoopEnabled*(self: RenderingServer): untyped = self.isRenderLoopEnabled()
 template `renderLoopEnabled=`*(self: RenderingServer; value) = self.setRenderLoopEnabled(value)
-
-proc call_framePreDraw*(self: RenderingServer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_pre_draw")
-  self.emitSignal(signalname)
-
-proc call_framePostDraw*(self: RenderingServer): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("frame_post_draw")
-  self.emitSignal(signalname)

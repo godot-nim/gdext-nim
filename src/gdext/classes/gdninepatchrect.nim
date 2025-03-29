@@ -90,9 +90,3 @@ template `axisStretchHorizontal=`*(self: NinePatchRect; value) = self.setHAxisSt
 
 template axisStretchVertical*(self: NinePatchRect): untyped = self.getVAxisStretchMode()
 template `axisStretchVertical=`*(self: NinePatchRect; value) = self.setVAxisStretchMode(value)
-
-proc call_textureChanged*(self: NinePatchRect): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("texture_changed")
-  self.emitSignal(signalname)

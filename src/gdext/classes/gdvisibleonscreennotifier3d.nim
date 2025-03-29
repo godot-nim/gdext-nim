@@ -16,15 +16,3 @@ proc isOnScreen*(self: VisibleOnScreenNotifier3D): bool =
 
 template aabb*(self: VisibleOnScreenNotifier3D): untyped = self.getAabb()
 template `aabb=`*(self: VisibleOnScreenNotifier3D; value) = self.setAabb(value)
-
-proc call_screenEntered*(self: VisibleOnScreenNotifier3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("screen_entered")
-  self.emitSignal(signalname)
-
-proc call_screenExited*(self: VisibleOnScreenNotifier3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("screen_exited")
-  self.emitSignal(signalname)

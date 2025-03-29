@@ -6,7 +6,7 @@ import gdnode3d; export gdnode3d
 
 method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
 proc registerVirtual_getAabb*[T: VisualInstance3D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[VisualInstance3D](p_instance).getAabb().encode(r_ret)
 
 proc setBase*(self: VisualInstance3D; base: RID): void =

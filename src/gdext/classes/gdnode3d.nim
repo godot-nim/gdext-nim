@@ -4,6 +4,12 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+const NotificationTransformChanged* = 2000
+const NotificationEnterWorld* = 41
+const NotificationExitWorld* = 42
+const NotificationVisibilityChanged* = 43
+const NotificationLocalTransformChanged* = 44
+
 proc setTransform*(self: Node3D; local: Transform3D): void =
   expandMethodBind(className Node3D, "set_transform", 2952846383)
   methodbind.ptrcall(self, [getPtr local])
@@ -392,9 +398,3 @@ template `visible=`*(self: Node3D; value) = self.setVisible(value)
 
 template visibilityParent*(self: Node3D): untyped = self.getVisibilityParent()
 template `visibilityParent=`*(self: Node3D; value) = self.setVisibilityParent(value)
-
-proc call_visibilityChanged*(self: Node3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("visibility_changed")
-  self.emitSignal(signalname)

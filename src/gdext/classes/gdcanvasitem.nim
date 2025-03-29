@@ -4,9 +4,17 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+const NotificationTransformChanged* = 2000
+const NotificationLocalTransformChanged* = 35
+const NotificationDraw* = 30
+const NotificationVisibilityChanged* = 31
+const NotificationEnterCanvas* = 32
+const NotificationExitCanvas* = 33
+const NotificationWorld2DChanged* = 36
+
 method draw*(self: CanvasItem): void {.base.} = (discard)
 proc registerVirtual_draw*[T: CanvasItem](Self: typedesc[T]) =
-  Self.vmethods[stringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CanvasItem](p_instance).draw()
 
 proc getCanvasItem*(self: CanvasItem): RID =
@@ -479,27 +487,3 @@ template `material=`*(self: CanvasItem; value) = self.setMaterial(value)
 
 template useParentMaterial*(self: CanvasItem): untyped = self.getUseParentMaterial()
 template `useParentMaterial=`*(self: CanvasItem; value) = self.setUseParentMaterial(value)
-
-proc call_draw*(self: CanvasItem): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("draw")
-  self.emitSignal(signalname)
-
-proc call_visibilityChanged*(self: CanvasItem): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("visibility_changed")
-  self.emitSignal(signalname)
-
-proc call_hidden*(self: CanvasItem): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("hidden")
-  self.emitSignal(signalname)
-
-proc call_itemRectChanged*(self: CanvasItem): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("item_rect_changed")
-  self.emitSignal(signalname)

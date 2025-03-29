@@ -1,6 +1,6 @@
 import std/tables
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/macros
@@ -95,7 +95,7 @@ else:
 
 proc icon_path[T](_: typedesc[T]): String =
   when T.hasCustomPragma(icon):
-    gdstring T.getCustomPragmaVal(icon)
+    newGdString T.getCustomPragmaVal(icon)
 
 proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool; icon_path: String): ClassCreationInfo4 =
   ClassCreationInfo4(
@@ -162,7 +162,7 @@ proc gdexport_internal*(
     appearance: Appearance;
     description: string) =
   gdexport_internal(
-    propertyInfo(stringName name, proptyp, appearance),
+    propertyInfo(newStringName name, proptyp, appearance),
     className typ, getter, setter)
   when Assistance.genEditorHelp:
     docClassDB[typ].members.add DocMember(
@@ -199,7 +199,7 @@ macro processExports(T: typed): untyped =
         registerProc `getterdef`
         registerProc `setterdef`
         gdexport_internal(`name`, typedesc `classIdent`, typedesc `classIdent`.`fieldIdent`,
-          stringName `gettername`, stringName `settername`, `editorhint`, `desc`)
+          newStringName `gettername`, newStringName `settername`, `editorhint`, `desc`)
 
   if result.len != 0:
     result = quote do:

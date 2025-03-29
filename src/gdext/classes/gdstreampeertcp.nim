@@ -4,7 +4,7 @@ import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
 
-proc `bind`*(self: StreamPeerTCP; port: int32; host: String = gdstring"*"): Error =
+proc `bind`*(self: StreamPeerTCP; port: int32; host: String = newGdString("*")): Error =
   expandMethodBind(className StreamPeerTCP, "bind", 3167955072)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr port, getPtr host], addr ret)

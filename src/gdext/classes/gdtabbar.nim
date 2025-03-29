@@ -146,7 +146,7 @@ proc removeTab*(self: TabBar; tabIdx: int32): void =
   expandMethodBind(className TabBar, "remove_tab", 1286410249)
   methodbind.ptrcall(self, [getPtr tabIdx])
 
-proc addTab*(self: TabBar; title: String = gdstring""; icon: gdref Texture2D = default gdref Texture2D): void =
+proc addTab*(self: TabBar; title: String = newGdString(); icon: gdref Texture2D = default gdref Texture2D): void =
   expandMethodBind(className TabBar, "add_tab", 1465444425)
   methodbind.ptrcall(self, [getPtr title, getPtr icon])
 
@@ -321,59 +321,3 @@ template `deselectEnabled=`*(self: TabBar; value) = self.setDeselectEnabled(valu
 
 template tabCount*(self: TabBar): untyped = self.getTabCount()
 template `tabCount=`*(self: TabBar; value) = self.setTabCount(value)
-
-proc call_tabSelected*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_selected")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabChanged*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_changed")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabClicked*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_clicked")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabRmbClicked*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_rmb_clicked")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabClosePressed*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_close_pressed")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabButtonPressed*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_button_pressed")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_tabHovered*(self: TabBar; tab: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tab_hovered")
-  let args = [tab]
-  self.emitSignal(signalname, args)
-
-proc call_activeTabRearranged*(self: TabBar; idxTo: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("active_tab_rearranged")
-  let args = [idxTo]
-  self.emitSignal(signalname, args)

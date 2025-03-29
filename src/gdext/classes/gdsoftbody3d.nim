@@ -150,7 +150,7 @@ proc getPointTransform*(self: SoftBody3D; pointIndex: int32): Vector3 =
   methodbind.ptrcall(self, [getPtr pointIndex], addr ret)
   (addr ret).decode_result(Vector3)
 
-proc setPointPinned*(self: SoftBody3D; pointIndex: int32; pinned: bool; attachmentPath: NodePath = nodePath(); insertAt: int32 = -1): void =
+proc setPointPinned*(self: SoftBody3D; pointIndex: int32; pinned: bool; attachmentPath: NodePath = newNodePath(); insertAt: int32 = -1): void =
   expandMethodBind(className SoftBody3D, "set_point_pinned", 528784402)
   methodbind.ptrcall(self, [getPtr pointIndex, getPtr pinned, getPtr attachmentPath, getPtr insertAt])
 

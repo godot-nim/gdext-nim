@@ -34,7 +34,7 @@ proc getOpenError*(_: typedesc[FileAccess]): Error =
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(Error)
 
-proc createTemp*(_: typedesc[FileAccess]; modeFlags: int32; prefix: String = gdstring""; extension: String = gdstring""; keep: bool = false): gdref FileAccess =
+proc createTemp*(_: typedesc[FileAccess]; modeFlags: int32; prefix: String = newGdString(); extension: String = newGdString(); keep: bool = false): gdref FileAccess =
   expandMethodBind(className FileAccess, "create_temp", 3075606245)
   var ret: encoded gdref FileAccess
   methodbind.ptrcall([getPtr modeFlags, getPtr prefix, getPtr extension, getPtr keep], addr ret)
@@ -166,7 +166,7 @@ proc getLine*(self: FileAccess): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getCsvLine*(self: FileAccess; delim: String = gdstring","): PackedStringArray =
+proc getCsvLine*(self: FileAccess; delim: String = newGdString(",")): PackedStringArray =
   expandMethodBind(className FileAccess, "get_csv_line", 2358116058)
   var ret: encoded PackedStringArray
   methodbind.ptrcall(self, [getPtr delim], addr ret)
@@ -272,7 +272,7 @@ proc storeLine*(self: FileAccess; line: String): bool =
   methodbind.ptrcall(self, [getPtr line], addr ret)
   (addr ret).decode_result(bool)
 
-proc storeCsvLine*(self: FileAccess; values: PackedStringArray; delim: String = gdstring","): bool =
+proc storeCsvLine*(self: FileAccess; values: PackedStringArray; delim: String = newGdString(",")): bool =
   expandMethodBind(className FileAccess, "store_csv_line", 1611473434)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr values, getPtr delim], addr ret)

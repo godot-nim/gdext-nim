@@ -120,9 +120,3 @@ proc undo*(self: UndoRedo): bool =
 
 template maxSteps*(self: UndoRedo): untyped = self.getMaxSteps()
 template `maxSteps=`*(self: UndoRedo; value) = self.setMaxSteps(value)
-
-proc call_versionChanged*(self: UndoRedo): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("version_changed")
-  self.emitSignal(signalname)

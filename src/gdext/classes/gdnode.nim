@@ -4,54 +4,98 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+const NotificationEnterTree* = 10
+const NotificationExitTree* = 11
+const NotificationMovedInParent* = 12
+const NotificationReady* = 13
+const NotificationPaused* = 14
+const NotificationUnpaused* = 15
+const NotificationPhysicsProcess* = 16
+const NotificationProcess* = 17
+const NotificationParented* = 18
+const NotificationUnparented* = 19
+const NotificationSceneInstantiated* = 20
+const NotificationDragBegin* = 21
+const NotificationDragEnd* = 22
+const NotificationPathRenamed* = 23
+const NotificationChildOrderChanged* = 24
+const NotificationInternalProcess* = 25
+const NotificationInternalPhysicsProcess* = 26
+const NotificationPostEnterTree* = 27
+const NotificationDisabled* = 28
+const NotificationEnabled* = 29
+const NotificationResetPhysicsInterpolation* = 2001
+const NotificationEditorPreSave* = 9001
+const NotificationEditorPostSave* = 9002
+const NotificationWmMouseEnter* = 1002
+const NotificationWmMouseExit* = 1003
+const NotificationWmWindowFocusIn* = 1004
+const NotificationWmWindowFocusOut* = 1005
+const NotificationWmCloseRequest* = 1006
+const NotificationWmGoBackRequest* = 1007
+const NotificationWmSizeChanged* = 1008
+const NotificationWmDpiChange* = 1009
+const NotificationVpMouseEnter* = 1010
+const NotificationVpMouseExit* = 1011
+const NotificationOsMemoryWarning* = 2009
+const NotificationTranslationChanged* = 2010
+const NotificationWmAbout* = 2011
+const NotificationCrash* = 2012
+const NotificationOsImeUpdate* = 2013
+const NotificationApplicationResumed* = 2014
+const NotificationApplicationPaused* = 2015
+const NotificationApplicationFocusIn* = 2016
+const NotificationApplicationFocusOut* = 2017
+const NotificationTextServerChanged* = 2018
+
 method process*(self: Node; delta: float64): void {.base.} = (discard)
 proc registerVirtual_process*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).process(p_args[0].decode(float64))
 
 method physicsProcess*(self: Node; delta: float64): void {.base.} = (discard)
 proc registerVirtual_physicsProcess*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_physics_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_physics_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).physicsProcess(p_args[0].decode(float64))
 
 method enterTree*(self: Node): void {.base.} = (discard)
 proc registerVirtual_enterTree*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_enter_tree"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_enter_tree"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).enterTree()
 
 method exitTree*(self: Node): void {.base.} = (discard)
 proc registerVirtual_exitTree*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_exit_tree"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_exit_tree"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).exitTree()
 
 method ready*(self: Node): void {.base.} = (discard)
 proc registerVirtual_ready*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_ready"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_ready"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).ready()
 
 method getConfigurationWarnings*(self: Node): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getConfigurationWarnings*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_configuration_warnings"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_configuration_warnings"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).getConfigurationWarnings().encode(r_ret)
 
 method input*(self: Node; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_input*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).input(p_args[0].decode(gdref InputEvent))
 
 method shortcutInput*(self: Node; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_shortcutInput*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_shortcut_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_shortcut_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).shortcutInput(p_args[0].decode(gdref InputEvent))
 
 method unhandledInput*(self: Node; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_unhandledInput*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_unhandled_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_unhandled_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).unhandledInput(p_args[0].decode(gdref InputEvent))
 
 method unhandledKeyInput*(self: Node; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_unhandledKeyInput*[T: Node](Self: typedesc[T]) =
-  Self.vmethods[stringName"_unhandled_key_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_unhandled_key_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).unhandledKeyInput(p_args[0].decode(gdref InputEvent))
 
 proc printOrphanNodes*(_: typedesc[Node]): void =
@@ -132,7 +176,7 @@ proc findChild*(self: Node; pattern: String; recursive: bool = true; owned: bool
   methodbind.ptrcall(self, [getPtr pattern, getPtr recursive, getPtr owned], addr ret)
   (addr ret).decode_result(Node)
 
-proc findChildren*(self: Node; pattern: String; `type`: String = gdstring""; recursive: bool = true; owned: bool = true): TypedArray[Node] =
+proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): TypedArray[Node] =
   expandMethodBind(className Node, "find_children", 2560337219)
   var ret: encoded TypedArray[Node]
   methodbind.ptrcall(self, [getPtr pattern, getPtr `type`, getPtr recursive, getPtr owned], addr ret)
@@ -266,7 +310,7 @@ proc propagateNotification*(self: Node; what: int32): void =
   expandMethodBind(className Node, "propagate_notification", 1286410249)
   methodbind.ptrcall(self, [getPtr what])
 
-proc propagateCall*(self: Node; `method`: StringName; args: Array = gdarray(); parentFirst: bool = false): void =
+proc propagateCall*(self: Node; `method`: StringName; args: Array = newArray(); parentFirst: bool = false): void =
   expandMethodBind(className Node, "propagate_call", 1871007965)
   methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst])
 
@@ -708,73 +752,3 @@ template `autoTranslateMode=`*(self: Node; value) = self.setAutoTranslateMode(va
 
 template editorDescription*(self: Node): untyped = self.getEditorDescription()
 template `editorDescription=`*(self: Node; value) = self.setEditorDescription(value)
-
-proc call_ready*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("ready")
-  self.emitSignal(signalname)
-
-proc call_renamed*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("renamed")
-  self.emitSignal(signalname)
-
-proc call_treeEntered*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_entered")
-  self.emitSignal(signalname)
-
-proc call_treeExiting*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_exiting")
-  self.emitSignal(signalname)
-
-proc call_treeExited*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_exited")
-  self.emitSignal(signalname)
-
-proc call_childEnteredTree*(self: Node; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("child_entered_tree")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_childExitingTree*(self: Node; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("child_exiting_tree")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_childOrderChanged*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("child_order_changed")
-  self.emitSignal(signalname)
-
-proc call_replacingBy*(self: Node; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("replacing_by")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_editorDescriptionChanged*(self: Node; node: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("editor_description_changed")
-  let args = [node]
-  self.emitSignal(signalname, args)
-
-proc call_editorStateChanged*(self: Node): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("editor_state_changed")
-  self.emitSignal(signalname)

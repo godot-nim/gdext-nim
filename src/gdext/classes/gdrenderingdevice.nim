@@ -4,7 +4,10 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
-proc textureCreate*(self: RenderingDevice; format: gdref RDTextureFormat; view: gdref RDTextureView; data: TypedArray[PackedByteArray] = typedArray[PackedByteArray]()): RID =
+const InvalidId* = -1
+const InvalidFormatId* = -1
+
+proc textureCreate*(self: RenderingDevice; format: gdref RDTextureFormat; view: gdref RDTextureView; data: TypedArray[PackedByteArray] = newTypedArray[PackedByteArray]()): RID =
   expandMethodBind(className RenderingDevice, "texture_create", 3709173589)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr format, getPtr view, getPtr data], addr ret)
@@ -206,13 +209,13 @@ proc shaderCompileSpirvFromSource*(self: RenderingDevice; shaderSource: gdref RD
   methodbind.ptrcall(self, [getPtr shaderSource, getPtr allowCache], addr ret)
   (addr ret).decode_result(gdref RDShaderSPIRV)
 
-proc shaderCompileBinaryFromSpirv*(self: RenderingDevice; spirvData: gdref RDShaderSPIRV; name: String = gdstring""): PackedByteArray =
+proc shaderCompileBinaryFromSpirv*(self: RenderingDevice; spirvData: gdref RDShaderSPIRV; name: String = newGdString()): PackedByteArray =
   expandMethodBind(className RenderingDevice, "shader_compile_binary_from_spirv", 134910450)
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, [getPtr spirvData, getPtr name], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
-proc shaderCreateFromSpirv*(self: RenderingDevice; spirvData: gdref RDShaderSPIRV; name: String = gdstring""): RID =
+proc shaderCreateFromSpirv*(self: RenderingDevice; spirvData: gdref RDShaderSPIRV; name: String = newGdString()): RID =
   expandMethodBind(className RenderingDevice, "shader_create_from_spirv", 342949005)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr spirvData, getPtr name], addr ret)
@@ -302,7 +305,7 @@ proc bufferGetDeviceAddress*(self: RenderingDevice; buffer: RID): uint64 =
   methodbind.ptrcall(self, [getPtr buffer], addr ret)
   (addr ret).decode_result(uint64)
 
-proc renderPipelineCreate*(self: RenderingDevice; shader: RID; framebufferFormat: int64; vertexFormat: int64; primitive: RenderingDevice_RenderPrimitive; rasterizationState: gdref RDPipelineRasterizationState; multisampleState: gdref RDPipelineMultisampleState; stencilState: gdref RDPipelineDepthStencilState; colorBlendState: gdref RDPipelineColorBlendState; dynamicStateFlags: set[RenderingDevice_PipelineDynamicStateFlags] = {}; forRenderPass: uint32 = 0'u32; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = typedArray[gdref RDPipelineSpecializationConstant]()): RID =
+proc renderPipelineCreate*(self: RenderingDevice; shader: RID; framebufferFormat: int64; vertexFormat: int64; primitive: RenderingDevice_RenderPrimitive; rasterizationState: gdref RDPipelineRasterizationState; multisampleState: gdref RDPipelineMultisampleState; stencilState: gdref RDPipelineDepthStencilState; colorBlendState: gdref RDPipelineColorBlendState; dynamicStateFlags: set[RenderingDevice_PipelineDynamicStateFlags] = {}; forRenderPass: uint32 = 0'u32; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = newTypedArray[gdref RDPipelineSpecializationConstant]()): RID =
   expandMethodBind(className RenderingDevice, "render_pipeline_create", 2385451958)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr shader, getPtr framebufferFormat, getPtr vertexFormat, getPtr primitive, getPtr rasterizationState, getPtr multisampleState, getPtr stencilState, getPtr colorBlendState, getPtr dynamicStateFlags, getPtr forRenderPass, getPtr specializationConstants], addr ret)
@@ -314,7 +317,7 @@ proc renderPipelineIsValid*(self: RenderingDevice; renderPipeline: RID): bool =
   methodbind.ptrcall(self, [getPtr renderPipeline], addr ret)
   (addr ret).decode_result(bool)
 
-proc computePipelineCreate*(self: RenderingDevice; shader: RID; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = typedArray[gdref RDPipelineSpecializationConstant]()): RID =
+proc computePipelineCreate*(self: RenderingDevice; shader: RID; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = newTypedArray[gdref RDPipelineSpecializationConstant]()): RID =
   expandMethodBind(className RenderingDevice, "compute_pipeline_create", 1448838280)
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr shader, getPtr specializationConstants], addr ret)
@@ -356,7 +359,7 @@ proc drawListBegin*(self: RenderingDevice; framebuffer: RID; drawFlags: set[Rend
   methodbind.ptrcall(self, [getPtr framebuffer, getPtr drawFlags, getPtr clearColorValues, getPtr clearDepthValue, getPtr clearStencilValue, getPtr region, getPtr breadcrumb], addr ret)
   (addr ret).decode_result(int64)
 
-proc drawListBeginSplit*(self: RenderingDevice; framebuffer: RID; splits: uint32; initialColorAction: RenderingDevice_InitialAction; finalColorAction: RenderingDevice_FinalAction; initialDepthAction: RenderingDevice_InitialAction; finalDepthAction: RenderingDevice_FinalAction; clearColorValues: PackedColorArray = PackedColorArray(); clearDepth: Float = 1.0; clearStencil: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0); storageTextures: TypedArray[RID] = typedArray[RID]()): PackedInt64Array =
+proc drawListBeginSplit*(self: RenderingDevice; framebuffer: RID; splits: uint32; initialColorAction: RenderingDevice_InitialAction; finalColorAction: RenderingDevice_FinalAction; initialDepthAction: RenderingDevice_InitialAction; finalDepthAction: RenderingDevice_FinalAction; clearColorValues: PackedColorArray = PackedColorArray(); clearDepth: Float = 1.0; clearStencil: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0); storageTextures: TypedArray[RID] = newTypedArray[RID]()): PackedInt64Array =
   expandMethodBind(className RenderingDevice, "draw_list_begin_split", 2406300660)
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr framebuffer, getPtr splits, getPtr initialColorAction, getPtr finalColorAction, getPtr initialDepthAction, getPtr finalDepthAction, getPtr clearColorValues, getPtr clearDepth, getPtr clearStencil, getPtr region, getPtr storageTextures], addr ret)

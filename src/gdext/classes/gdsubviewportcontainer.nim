@@ -6,7 +6,7 @@ import gdcontainer; export gdcontainer
 
 method propagateInputEvent*(self: SubViewportContainer; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_propagateInputEvent*[T: SubViewportContainer](Self: typedesc[T]) =
-  Self.vmethods[stringName"_propagate_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_propagate_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SubViewportContainer](p_instance).propagateInputEvent(p_args[0].decode(gdref InputEvent)).encode(r_ret)
 
 proc setStretch*(self: SubViewportContainer; enable: bool): void =

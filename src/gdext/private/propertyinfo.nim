@@ -26,13 +26,13 @@ proc className*(E: typedesc[enum]): StringName =
   once:
     Meta(E).className =
       when compiles(E.EnumOwner):
-        stringName $className(E.EnumOwner) & "." & $E
+        newStringName $className(E.EnumOwner) & "." & $E
       else:
         let s = ($E).split("_")
         if s.len == 2 and s[0][0].isUpperAscii and s[1][0].isUpperAscii:
-          stringName s.join(".")
+          newStringName s.join(".")
         else:
-          stringName $E
+          newStringName $E
   Meta(E).className
 
 # Metadata

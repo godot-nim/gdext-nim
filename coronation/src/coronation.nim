@@ -23,7 +23,7 @@ proc getContent(client: HttpClient; url: Uri): string =
   if uri.scheme == "file":
     uri.path.expandFilename.readFile
   else:
-    client.getContent(uri)
+    httpclient.getContent(client, uri)
 
 proc coronation*(apisource: string; outdir= "out"; package= "gdext") =
   ## Description:

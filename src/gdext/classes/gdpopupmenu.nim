@@ -348,7 +348,7 @@ proc removeItem*(self: PopupMenu; index: int32): void =
   expandMethodBind(className PopupMenu, "remove_item", 1286410249)
   methodbind.ptrcall(self, [getPtr index])
 
-proc addSeparator*(self: PopupMenu; label: String = gdstring""; id: int32 = -1): void =
+proc addSeparator*(self: PopupMenu; label: String = newGdString(); id: int32 = -1): void =
   expandMethodBind(className PopupMenu, "add_separator", 2266703459)
   methodbind.ptrcall(self, [getPtr label, getPtr id])
 
@@ -445,30 +445,3 @@ template `preferNativeMenu=`*(self: PopupMenu; value) = self.setPreferNativeMenu
 
 template itemCount*(self: PopupMenu): untyped = self.getItemCount()
 template `itemCount=`*(self: PopupMenu; value) = self.setItemCount(value)
-
-proc call_idPressed*(self: PopupMenu; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("id_pressed")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_idFocused*(self: PopupMenu; id: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("id_focused")
-  let args = [id]
-  self.emitSignal(signalname, args)
-
-proc call_indexPressed*(self: PopupMenu; index: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("index_pressed")
-  let args = [index]
-  self.emitSignal(signalname, args)
-
-proc call_menuChanged*(self: PopupMenu): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("menu_changed")
-  self.emitSignal(signalname)

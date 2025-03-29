@@ -4,6 +4,6 @@ import gdext/coronation/header/classes
 
 import gdhboxcontainer; export gdhboxcontainer
 
-proc pushToast*(self: EditorToaster; message: String; severity: EditorToaster_Severity = severityInfo; tooltip: String = gdstring""): void =
+proc pushToast*(self: EditorToaster; message: String; severity: EditorToaster_Severity = severityInfo; tooltip: String = newGdString()): void =
   expandMethodBind(className EditorToaster, "push_toast", 1813923476)
   methodbind.ptrcall(self, [getPtr message, getPtr severity, getPtr tooltip])

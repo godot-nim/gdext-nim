@@ -38,7 +38,7 @@ proc poll*(self: WebSocketPeer): void =
   expandMethodBind(className WebSocketPeer, "poll", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc close*(self: WebSocketPeer; code: int32 = 1000; reason: String = gdstring""): void =
+proc close*(self: WebSocketPeer; code: int32 = 1000; reason: String = newGdString()): void =
   expandMethodBind(className WebSocketPeer, "close", 1047156615)
   methodbind.ptrcall(self, [getPtr code, getPtr reason])
 

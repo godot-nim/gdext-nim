@@ -129,15 +129,3 @@ template `enterCost=`*(self: NavigationRegion3D; value) = self.setEnterCost(valu
 
 template travelCost*(self: NavigationRegion3D): untyped = self.getTravelCost()
 template `travelCost=`*(self: NavigationRegion3D; value) = self.setTravelCost(value)
-
-proc call_navigationMeshChanged*(self: NavigationRegion3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("navigation_mesh_changed")
-  self.emitSignal(signalname)
-
-proc call_bakeFinished*(self: NavigationRegion3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("bake_finished")
-  self.emitSignal(signalname)

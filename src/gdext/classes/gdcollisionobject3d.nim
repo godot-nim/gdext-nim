@@ -6,17 +6,17 @@ import gdnode3d; export gdnode3d
 
 method inputEvent*(self: CollisionObject3D; camera: Camera3D; event: gdref InputEvent; eventPosition: Vector3; normal: Vector3; shapeIdx: int32): void {.base.} = (discard)
 proc registerVirtual_inputEvent*[T: CollisionObject3D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CollisionObject3D](p_instance).inputEvent(p_args[0].decode(Camera3D), p_args[1].decode(gdref InputEvent), p_args[2].decode(Vector3), p_args[3].decode(Vector3), p_args[4].decode(int32))
 
 method mouseEnter*(self: CollisionObject3D): void {.base.} = (discard)
 proc registerVirtual_mouseEnter*[T: CollisionObject3D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_mouse_enter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_mouse_enter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CollisionObject3D](p_instance).mouseEnter()
 
 method mouseExit*(self: CollisionObject3D): void {.base.} = (discard)
 proc registerVirtual_mouseExit*[T: CollisionObject3D](Self: typedesc[T]) =
-  Self.vmethods[stringName"_mouse_exit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_mouse_exit"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CollisionObject3D](p_instance).mouseExit()
 
 proc setCollisionLayer*(self: CollisionObject3D; layer: uint32): void =
@@ -200,22 +200,3 @@ template `inputRayPickable=`*(self: CollisionObject3D; value) = self.setRayPicka
 
 template inputCaptureOnDrag*(self: CollisionObject3D): untyped = self.getCaptureInputOnDrag()
 template `inputCaptureOnDrag=`*(self: CollisionObject3D; value) = self.setCaptureInputOnDrag(value)
-
-proc call_inputEvent*(self: CollisionObject3D; camera: Variant; event: Variant; eventPosition: Variant; normal: Variant; shapeIdx: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("input_event")
-  let args = [camera, event, eventPosition, normal, shapeIdx]
-  self.emitSignal(signalname, args)
-
-proc call_mouseEntered*(self: CollisionObject3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_entered")
-  self.emitSignal(signalname)
-
-proc call_mouseExited*(self: CollisionObject3D): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("mouse_exited")
-  self.emitSignal(signalname)

@@ -1,6 +1,3 @@
-proc `[]`*(self: String; index: int): var String.Item = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[]
-proc `[]=`*(self: String; index: int; value: String.Item) = cast[ptr String.Item](interface_String_operatorIndex(addr self, index))[] = value
-
 # `==(String Variant)`
 # `!=(String Variant)`
 var `%(String Variant)`: PtrOperatorEvaluator
@@ -333,7 +330,7 @@ proc bigrams*(self: String): PackedStringArray =
 proc similarity*(self: String; text: String): Float =
   let argArr = [getPtr text]
   `similarity(String String)`(addr self, addr argArr[0], addr result, 1)
-proc format*(self: String; values: Variant; placeholder: String = gdstring"{_}"): String =
+proc format*(self: String; values: Variant; placeholder: String = newGdString("{_}")): String =
   let argArr = [getPtr values, getPtr placeholder]
   `format(String Variant String)`(addr self, addr argArr[0], addr result, 2)
 proc replace*(self: String; what: String; forwhat: String): String =
@@ -361,10 +358,10 @@ proc toPascalCase*(self: String): String =
   `toPascalCase(String)`(addr self, nil, addr result, 0)
 proc toSnakeCase*(self: String): String =
   `toSnakeCase(String)`(addr self, nil, addr result, 0)
-proc split*(self: String; delimiter: String = gdstring""; allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
+proc split*(self: String; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
   let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
   `split(String String bool Int)`(addr self, addr argArr[0], addr result, 3)
-proc rsplit*(self: String; delimiter: String = gdstring""; allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
+proc rsplit*(self: String; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
   let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
   `rsplit(String String bool Int)`(addr self, addr argArr[0], addr result, 3)
 proc splitFloats*(self: String; delimiter: String; allowEmpty: bool = true): PackedFloat64Array =
@@ -487,10 +484,10 @@ proc hexToInt*(self: String): Int =
   `hexToInt(String)`(addr self, nil, addr result, 0)
 proc binToInt*(self: String): Int =
   `binToInt(String)`(addr self, nil, addr result, 0)
-proc lpad*(self: String; minLength: Int; character: String = gdstring" "): String =
+proc lpad*(self: String; minLength: Int; character: String = newGdString(" ")): String =
   let argArr = [getPtr minLength, getPtr character]
   `lpad(String Int String)`(addr self, addr argArr[0], addr result, 2)
-proc rpad*(self: String; minLength: Int; character: String = gdstring" "): String =
+proc rpad*(self: String; minLength: Int; character: String = newGdString(" ")): String =
   let argArr = [getPtr minLength, getPtr character]
   `rpad(String Int String)`(addr self, addr argArr[0], addr result, 2)
 proc padDecimals*(self: String; digits: Int): String =

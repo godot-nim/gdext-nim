@@ -64,7 +64,7 @@ proc argumentsInfo(middle: MiddleExp): NimNode =
   result = newNimNode nnkBracket
   for (name, Type, default) in middle.args:
     result.add quote("@") do:
-      propertyInfo(typedesc @Type, stringName @(name.toStrLit)).unheap
+      propertyInfo(typedesc @Type, newStringName @(name.toStrLit)).unheap
 
 proc argumentsMeta(middle: MiddleExp): NimNode =
   result = newNimNode nnkBracket
@@ -213,7 +213,7 @@ proc classMethodInfo(
 proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
   result = quote("@") do:
     classMethodInfo(
-      stringName @gdname,
+      newStringName @gdname,
       @(middle.callFunc),
       @(middle.ptrCallFunc),
       @(middle.method_flags),
@@ -264,7 +264,7 @@ proc classVirtualMethodInfo(
 proc virtualMethodInfo*(middle: MiddleExp): NimNode =
   quote"@" do:
     classVirtualMethodInfo(
-      stringName @(middle.name.toStrLit),
+      newStringName @(middle.name.toStrLit),
       @(middle.returnValue),
       @(middle.returnValueMeta),
       @(middle.argumentsInfo),

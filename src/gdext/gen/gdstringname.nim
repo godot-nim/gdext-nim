@@ -324,7 +324,7 @@ proc bigrams*(self: StringName): PackedStringArray =
 proc similarity*(self: StringName; text: String): Float =
   let argArr = [getPtr text]
   `similarity(StringName String)`(addr self, addr argArr[0], addr result, 1)
-proc format*(self: StringName; values: Variant; placeholder: String = gdstring"{_}"): String =
+proc format*(self: StringName; values: Variant; placeholder: String = newGdString("{_}")): String =
   let argArr = [getPtr values, getPtr placeholder]
   `format(StringName Variant String)`(addr self, addr argArr[0], addr result, 2)
 proc replace*(self: StringName; what: String; forwhat: String): String =
@@ -352,10 +352,10 @@ proc toPascalCase*(self: StringName): String =
   `toPascalCase(StringName)`(addr self, nil, addr result, 0)
 proc toSnakeCase*(self: StringName): String =
   `toSnakeCase(StringName)`(addr self, nil, addr result, 0)
-proc split*(self: StringName; delimiter: String = gdstring""; allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
+proc split*(self: StringName; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
   let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
   `split(StringName String bool Int)`(addr self, addr argArr[0], addr result, 3)
-proc rsplit*(self: StringName; delimiter: String = gdstring""; allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
+proc rsplit*(self: StringName; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
   let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
   `rsplit(StringName String bool Int)`(addr self, addr argArr[0], addr result, 3)
 proc splitFloats*(self: StringName; delimiter: String; allowEmpty: bool = true): PackedFloat64Array =
@@ -476,10 +476,10 @@ proc hexToInt*(self: StringName): Int =
   `hexToInt(StringName)`(addr self, nil, addr result, 0)
 proc binToInt*(self: StringName): Int =
   `binToInt(StringName)`(addr self, nil, addr result, 0)
-proc lpad*(self: StringName; minLength: Int; character: String = gdstring" "): String =
+proc lpad*(self: StringName; minLength: Int; character: String = newGdString(" ")): String =
   let argArr = [getPtr minLength, getPtr character]
   `lpad(StringName Int String)`(addr self, addr argArr[0], addr result, 2)
-proc rpad*(self: StringName; minLength: Int; character: String = gdstring" "): String =
+proc rpad*(self: StringName; minLength: Int; character: String = newGdString(" ")): String =
   let argArr = [getPtr minLength, getPtr character]
   `rpad(StringName Int String)`(addr self, addr argArr[0], addr result, 2)
 proc padDecimals*(self: StringName; digits: Int): String =

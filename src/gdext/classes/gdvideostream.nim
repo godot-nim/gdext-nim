@@ -6,7 +6,7 @@ import gdresource; export gdresource
 
 method instantiatePlayback*(self: VideoStream): gdref VideoStreamPlayback {.base.} = (discard)
 proc registerVirtual_instantiatePlayback*[T: VideoStream](Self: typedesc[T]) =
-  Self.vmethods[stringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[VideoStream](p_instance).instantiatePlayback().encode(r_ret)
 
 proc setFile*(self: VideoStream; file: String): void =

@@ -6,42 +6,42 @@ import gdresource; export gdresource
 
 method getChildNodes*(self: AnimationNode): Dictionary {.base.} = (discard)
 proc registerVirtual_getChildNodes*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_child_nodes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_child_nodes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getChildNodes().encode(r_ret)
 
 method getParameterList*(self: AnimationNode): Array {.base.} = (discard)
 proc registerVirtual_getParameterList*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getParameterList().encode(r_ret)
 
 method getChildByName*(self: AnimationNode; name: StringName): gdref AnimationNode {.base.} = (discard)
 proc registerVirtual_getChildByName*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_child_by_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_child_by_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getChildByName(p_args[0].decode(StringName)).encode(r_ret)
 
 method getParameterDefaultValue*(self: AnimationNode; parameter: StringName): Variant {.base.} = (discard)
 proc registerVirtual_getParameterDefaultValue*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_parameter_default_value"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_parameter_default_value"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getParameterDefaultValue(p_args[0].decode(StringName)).encode(r_ret)
 
 method isParameterReadOnly*(self: AnimationNode; parameter: StringName): bool {.base.} = (discard)
 proc registerVirtual_isParameterReadOnly*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_is_parameter_read_only"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_is_parameter_read_only"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).isParameterReadOnly(p_args[0].decode(StringName)).encode(r_ret)
 
 method process*(self: AnimationNode; time: float64; seek: bool; isExternalSeeking: bool; testOnly: bool): float64 {.base.} = (discard)
 proc registerVirtual_process*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).process(p_args[0].decode(float64), p_args[1].decode(bool), p_args[2].decode(bool), p_args[3].decode(bool)).encode(r_ret)
 
 method getCaption*(self: AnimationNode): String {.base.} = (discard)
 proc registerVirtual_getCaption*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_get_caption"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_get_caption"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getCaption().encode(r_ret)
 
 method hasFilter*(self: AnimationNode): bool {.base.} = (discard)
 proc registerVirtual_hasFilter*[T: AnimationNode](Self: typedesc[T]) =
-  Self.vmethods[stringName"_has_filter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+  Self.vmethods[newStringName"_has_filter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).hasFilter().encode(r_ret)
 
 proc addInput*(self: AnimationNode; name: String): bool =
@@ -141,23 +141,3 @@ template `filterEnabled=`*(self: AnimationNode; value) = self.setFilterEnabled(v
 
 template filters*(self: AnimationNode): untyped = self.getFilters()
 template `filters=`*(self: AnimationNode; value) = self.setFilters(value)
-
-proc call_treeChanged*(self: AnimationNode): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("tree_changed")
-  self.emitSignal(signalname)
-
-proc call_animationNodeRenamed*(self: AnimationNode; objectId: Variant; oldName: Variant; newName: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_node_renamed")
-  let args = [objectId, oldName, newName]
-  self.emitSignal(signalname, args)
-
-proc call_animationNodeRemoved*(self: AnimationNode; objectId: Variant; name: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("animation_node_removed")
-  let args = [objectId, name]
-  self.emitSignal(signalname, args)

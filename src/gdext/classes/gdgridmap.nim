@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+const InvalidCellItem* = -1
+
 proc setCollisionLayer*(self: GridMap; layer: uint32): void =
   expandMethodBind(className GridMap, "set_collision_layer", 1286410249)
   methodbind.ptrcall(self, [getPtr layer])
@@ -281,16 +283,3 @@ template `collisionPriority=`*(self: GridMap; value) = self.setCollisionPriority
 
 template bakeNavigation*(self: GridMap): untyped = self.isBakingNavigation()
 template `bakeNavigation=`*(self: GridMap; value) = self.setBakeNavigation(value)
-
-proc call_cellSizeChanged*(self: GridMap; cellSize: Variant): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("cell_size_changed")
-  let args = [cellSize]
-  self.emitSignal(signalname, args)
-
-proc call_changed*(self: GridMap): Error =
-  var signalname {.global.} : Variant
-  once:
-    signalname = variant stringname("changed")
-  self.emitSignal(signalname)
