@@ -12,6 +12,13 @@ proc newStringName*(str: string): StringName =
 
 proc newNodePath*(): NodePath = discard
 
+proc `[]`*(self: String; index: Natural): Rune =
+  cast[ptr Rune](interface_String_operatorIndexConst(addr self, index))[]
+proc `[]`*(self: var String; index: Natural): var Rune =
+  cast[ptr Rune](interface_String_operatorIndex(addr self, index))[]
+proc `[]=`*(self: var String; index: Natural; value: sink Rune) =
+  `[]`(self, index) = value
+
 include gdext/private/includes/stringtoolsbase
 
 include gdext/gen/gdstringconstr

@@ -81,6 +81,9 @@ proc weave_methods*(json: JsonBuiltinClass): Cloth =
   proc extract_self(it: JsonBuiltinClassMethod): RenderableSelfArgument =
     RenderableSelfArgument(
       typeSym: typeSym,
+      info: ParamInfo(
+        isMutable: not it.is_const,
+      ),
       isStatic: it.isStatic,
     )
 
