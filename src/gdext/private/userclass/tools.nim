@@ -1,6 +1,6 @@
 import std/[sequtils]
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/macros
 
 proc docComment*(def: NimNode): NimNode =

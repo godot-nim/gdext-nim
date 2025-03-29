@@ -1,8 +1,7 @@
 import std/tables
 
+import gdext/private/buildsettings
 import gdext/private/native
-
-import gdext/buildconf
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64

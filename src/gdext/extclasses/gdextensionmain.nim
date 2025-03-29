@@ -1,8 +1,8 @@
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 import gdext/builtinindex
 import gdext/classes/[gdengine]
 import gdext/objecttools
-import gdext/buildconf
 
 import std/macros
 

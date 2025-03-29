@@ -1,6 +1,6 @@
 import std/tables
 
-import gdext/buildconf
+import gdext/private/buildsettings
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/macros
