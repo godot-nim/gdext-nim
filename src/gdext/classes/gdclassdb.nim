@@ -124,12 +124,12 @@ proc classGetMethodList*(self: ClassDB; class: StringName; noInheritance: bool =
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
-proc classCallStatic*(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant]): Variant =
+proc classCallStatic*(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className ClassDB, "class_call_static", 3344196419)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr class, getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
-template classCallStatic*(self: ClassDB; class: StringName; `method`: StringName; args: varargs[Variant]): Variant =
+template classCallStatic*(self: ClassDB; class: StringName; `method`: StringName; args: varargs[Variant, variant]): Variant =
   classCallStatic(self, variant class, variant `method`, args)
 
 proc classGetIntegerConstantList*(self: ClassDB; class: StringName; noInheritance: bool = false): PackedStringArray =

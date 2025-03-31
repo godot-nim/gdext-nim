@@ -43,7 +43,7 @@ proc getConnections*(self: Signal): Array =
   `getConnections(Signal)`(addr self, nil, addr result, 0)
 proc hasConnections*(self: Signal): bool =
   `hasConnections(Signal)`(addr self, nil, addr result, 0)
-proc emit*(self: Signal; args: varargs[Variant]): void =
+proc emit*(self: Signal; args: varargs[Variant, variant]): void =
   if args.len == 0:
     `emit(Signal Variant)`(addr self, nil, nil, 0)
   else:
