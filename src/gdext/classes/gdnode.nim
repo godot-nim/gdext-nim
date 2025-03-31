@@ -660,32 +660,32 @@ proc atrN*(self: Node; message: String; pluralMessage: StringName; n: int32; con
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(String)
 
-proc rpc*(self: Node; `method`: Variant; args: varargs[Variant]): Error =
+proc rpc*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Node, "rpc", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Error)
-template rpc*(self: Node; `method`: StringName; args: varargs[Variant]): Error =
+template rpc*(self: Node; `method`: StringName; args: varargs[Variant, variant]): Error =
   rpc(self, variant `method`, args)
 
-proc rpcId*(self: Node; peerId: Variant; `method`: Variant; args: varargs[Variant]): Error =
+proc rpcId*(self: Node; peerId: Variant; `method`: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Node, "rpc_id", 361499283)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr peerId, getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Error)
-template rpcId*(self: Node; peerId: Int; `method`: StringName; args: varargs[Variant]): Error =
+template rpcId*(self: Node; peerId: Int; `method`: StringName; args: varargs[Variant, variant]): Error =
   rpcId(self, variant peerId, variant `method`, args)
 
 proc updateConfigurationWarnings*(self: Node): void =
   expandMethodBind(className Node, "update_configuration_warnings", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc callDeferredThreadGroup*(self: Node; `method`: Variant; args: varargs[Variant]): Variant =
+proc callDeferredThreadGroup*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Node, "call_deferred_thread_group", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
-template callDeferredThreadGroup*(self: Node; `method`: StringName; args: varargs[Variant]): Variant =
+template callDeferredThreadGroup*(self: Node; `method`: StringName; args: varargs[Variant, variant]): Variant =
   callDeferredThreadGroup(self, variant `method`, args)
 
 proc setDeferredThreadGroup*(self: Node; property: StringName; value: Variant): void =
@@ -696,12 +696,12 @@ proc notifyDeferredThreadGroup*(self: Node; what: int32): void =
   expandMethodBind(className Node, "notify_deferred_thread_group", 1286410249)
   methodbind.ptrcall(self, [getPtr what])
 
-proc callThreadSafe*(self: Node; `method`: Variant; args: varargs[Variant]): Variant =
+proc callThreadSafe*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Node, "call_thread_safe", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
-template callThreadSafe*(self: Node; `method`: StringName; args: varargs[Variant]): Variant =
+template callThreadSafe*(self: Node; `method`: StringName; args: varargs[Variant, variant]): Variant =
   callThreadSafe(self, variant `method`, args)
 
 proc setThreadSafe*(self: Node; property: StringName; value: Variant): void =

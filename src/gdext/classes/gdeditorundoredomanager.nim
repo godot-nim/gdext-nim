@@ -22,20 +22,20 @@ proc forceFixedHistory*(self: EditorUndoRedoManager): void =
   expandMethodBind(className EditorUndoRedoManager, "force_fixed_history", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addDoMethod*(self: EditorUndoRedoManager; `object`: Variant; `method`: Variant; args: varargs[Variant]): void =
+proc addDoMethod*(self: EditorUndoRedoManager; `object`: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className EditorUndoRedoManager, "add_do_method", 1517810467)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr `object`, getTypedPtr `method`]
   discard methodbind.call(self, `?param`, args)
-template addDoMethod*(self: EditorUndoRedoManager; `object`: Object; `method`: StringName; args: varargs[Variant]): void =
+template addDoMethod*(self: EditorUndoRedoManager; `object`: Object; `method`: StringName; args: varargs[Variant, variant]): void =
   addDoMethod(self, variant `object`, variant `method`, args)
 
-proc addUndoMethod*(self: EditorUndoRedoManager; `object`: Variant; `method`: Variant; args: varargs[Variant]): void =
+proc addUndoMethod*(self: EditorUndoRedoManager; `object`: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className EditorUndoRedoManager, "add_undo_method", 1517810467)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr `object`, getTypedPtr `method`]
   discard methodbind.call(self, `?param`, args)
-template addUndoMethod*(self: EditorUndoRedoManager; `object`: Object; `method`: StringName; args: varargs[Variant]): void =
+template addUndoMethod*(self: EditorUndoRedoManager; `object`: Object; `method`: StringName; args: varargs[Variant, variant]): void =
   addUndoMethod(self, variant `object`, variant `method`, args)
 
 proc addDoProperty*(self: EditorUndoRedoManager; `object`: Object; property: StringName; value: Variant): void =

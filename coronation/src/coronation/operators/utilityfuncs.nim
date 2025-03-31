@@ -21,11 +21,19 @@ proc extract_args(self: JsonUtilityFunction): seq[RenderableArgument] =
       typeSym: TypeSym.Variant,
       default_value: none string)
 
+proc mergeVarargs(s: var seq[RenderableArgument]): bool =
+  if s.len == 2 and s[0].typeSym == TypeSym.Variant and s[1].info.isVarargs:
+    s = s[1..1]
+    true
+  else:
+    false
+
 type UtilityFunction* = object
   key: ProcKey
   container: ContainerKey
   json: JsonUtilityFunction
   isImplemented: bool
+  isVarargsMerged: bool
 
 proc convert*(json: JsonUtilityFunction): UtilityFunction =
   result.key = ProcKey(
@@ -37,6 +45,7 @@ proc convert*(json: JsonUtilityFunction): UtilityFunction =
   result.container = gen_containerKey result.key
   result.json = json
   result.isImplemented = result.container in manualImplemented.functions
+  result.isVarargsMerged = result.key.args.mergeVarargs()
 
 proc weave_container*(utilfunc: UtilityFunction): Cloth =
   if utilfunc.isImplemented:
@@ -65,10 +74,16 @@ proc weave_procdef*(utilfunc: UtilityFunction): Cloth =
     weave cloths.indent:
       if utilfunc.key.args.len != 0:
         let args = nonvarargs.mapIt("getPtr " & $it.name).join(", ")
-        if utilfunc.key.args[^1].info.isVarargs:
-          &"let argslen = cint({utilfunc.key.args.high} + {utilfunc.key.args[^1].name}.len)"
-          &"var ptrargs = newSeqOfCap[pointer](argslen)"
-          &"ptrargs.add [{args}]"
+        if utilfunc.json.is_vararg:
+          let vararg = utilfunc.key.args[^1]
+          if nonvarargs.len == 0:
+            if utilfunc.isVarargsMerged:
+              &"if unlikely({vararg.name}.len < 1): return"
+            &"var ptrargs = newSeqOfCap[pointer]({vararg.name}.len)"
+          else:
+            &"let argslen = cint({nonvarargs.len} + {vararg.name}.len)"
+            &"var ptrargs = newSeqOfCap[pointer](argslen)"
+            &"ptrargs.add [{args}]"
           &"for arg in {utilfunc.key.args[^1].name}:"
           &"  ptrargs.add getPtr arg"
         else:

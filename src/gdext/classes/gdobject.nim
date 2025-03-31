@@ -128,28 +128,28 @@ proc removeUserSignal*(self: Object; signal: StringName): void =
   expandMethodBind(className Object, "remove_user_signal", 3304788590)
   methodbind.ptrcall(self, [getPtr signal])
 
-proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant]): Error =
+proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Object, "emit_signal", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr signal]
   methodbind.call(self, `?param`, args).get(Error)
-template emitSignal*(self: Object; signal: StringName; args: varargs[Variant]): Error =
+template emitSignal*(self: Object; signal: StringName; args: varargs[Variant, variant]): Error =
   emitSignal(self, variant signal, args)
 
-proc call*(self: Object; `method`: Variant; args: varargs[Variant]): Variant =
+proc call*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
-template call*(self: Object; `method`: StringName; args: varargs[Variant]): Variant =
+template call*(self: Object; `method`: StringName; args: varargs[Variant, variant]): Variant =
   call(self, variant `method`, args)
 
-proc callDeferred*(self: Object; `method`: Variant; args: varargs[Variant]): Variant =
+proc callDeferred*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call_deferred", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
-template callDeferred*(self: Object; `method`: StringName; args: varargs[Variant]): Variant =
+template callDeferred*(self: Object; `method`: StringName; args: varargs[Variant, variant]): Variant =
   callDeferred(self, variant `method`, args)
 
 proc setDeferred*(self: Object; property: StringName; value: Variant): void =
