@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.9.0"
+version       = "0.10.0"
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
