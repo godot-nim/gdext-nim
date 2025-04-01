@@ -3,14 +3,21 @@ import std/[os, parseopt, strutils]
 import gdext/wizard/sdk/cli
 import gdext/wizard/sdk/opttools
 
-proc nim_c(args: seq[string]; path: string): 0..1 =
-  execShellCmd("nim c " & args.join(" ") & " " & path)
+proc nim_c(args: seq[string]; path: string): int =
+  execShellCmd quoteShellCommand(@["nim", "c"] & args & path)
 
-template interrupt(code: 0..1) =
+proc godot*(cli: var CliContext; path: string; args: varargs[string]): int =
+  if findExe("godot").len == 0:
+    cli.failure "failed to run. godot executable not found."
+    quit 1
+  cli.info "godot executable found. launching..."
+  execShellCmd quoteShellCommand(@["godot", "--path", path] & @args)
+
+template interrupt(code: int) =
   if code == QuitFailure:
     return QuitFailure
 
-proc build_recursive(cli: var CliContext; nimargs: seq[string], current: string; limit: int): 0..1 =
+proc build_recursive(cli: var CliContext; nimargs: seq[string], current: string; limit: int): int =
   if limit < 0: return
   for kind, path in current.walkDir:
     case kind
@@ -36,22 +43,14 @@ proc getParent*(cli: var CliContext; search_from: string; files: varargs[string]
 proc getProjectRoot*(cli: var CliContext; search_from: string): string =
   cli.getParent(search_from, "project.godot").dir
 
-proc launchEditor*(cli: var CliContext; path: string; args: varargs[string]): 0..1 =
-  let exe = findExe("godot")
-  if exe.len == 0:
-    cli.failure "failed to run. godot executable not found."
-    quit 1
-  cli.info "godot executable found. launching..."
-  execShellCmd(exe & " --path " & path & " " & args.join(" "))
-
-proc build_all*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
+proc build_all*(nimargs: seq[string]; search_path: string; depth: int): int =
   var cli = CliContext(wizard: "wizard build-all*")
   var projectRoot = cli.getProjectRoot(search_path)
 
   cli.info "using " & projectRoot/"project.godot"
   interrupt cli.build_recursive(nimargs, projectRoot, depth)
 
-proc build*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
+proc build*(nimargs: seq[string]; search_path: string; depth: int): int =
   var cli = CliContext(wizard: "wizard build*")
   let (dir, file) = cli.getParent(search_path, "project.godot", "bootstrap.nim")
 
@@ -62,25 +61,25 @@ proc build*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
     cli.info "using " & dir/file
     interrupt nim_c(nimargs, dir/file)
 
-proc run*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
+proc run*(nimargs: seq[string]; search_path: string; depth: int): int =
   var cli = CliContext(wizard: "wizard run*")
   let projectRoot = cli.getProjectRoot(search_path)
   interrupt build(nimargs, search_path, depth)
   if dirExists(projectRoot/".godot"):
-    cli.launchEditor(projectRoot)
+    cli.godot(projectRoot)
   else:
-    cli.launchEditor(projectRoot, "--editor")
+    cli.godot(projectRoot, "--editor")
 
-proc editor*(search_path: string): 0..1 =
+proc editor*(search_path: string): int =
   var cli = CliContext(wizard: "wizard editor*")
   let projectRoot = cli.getProjectRoot(search_path)
-  cli.launchEditor(projectRoot, "--editor")
+  cli.godot(projectRoot, "--editor")
 
-proc run_editor*(nimargs: seq[string]; search_path: string; depth: int): 0..1 =
+proc run_editor*(nimargs: seq[string]; search_path: string; depth: int): int =
   interrupt build(nimargs, search_path, depth)
   editor(search_path)
 
-type Command = proc (nimargs: seq[string]; search_path: string; depth: int): 0..1
+type Command = proc (nimargs: seq[string]; search_path: string; depth: int): int
 proc dispatch_iteration(opt: var OptParser; command: Command) =
   next opt
   var nimargs: seq[string]
