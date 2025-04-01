@@ -44,7 +44,7 @@ proc overwrite_dialog*(path: string; content: string): bool =
       of "yes":
         return true
       of "show diff":
-        discard execShellCmd(&"diff {path} <(echo '{content}')")
+        discard execShellCmd quoteShellCommand(@["diff", path]) & fmt" <(echo {quoteShell content})"
   true
 
 proc writeFileWithDialog*(path: string; content: string) =
