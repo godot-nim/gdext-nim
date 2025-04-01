@@ -352,8 +352,9 @@ proc typeConvert*(variant: Variant; `type`: Int): Variant =
   `typeConvert(Variant Int)`(getPtr result, addr ptrargs[0], argslen)
 
 proc str*(args: varargs[Variant, variant]): String =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `str(Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
@@ -369,64 +370,73 @@ proc typeString*(`type`: Int): String =
   `typeString(Int)`(getPtr result, addr ptrargs[0], argslen)
 
 proc print*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `print(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc printRich*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `printRich(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc printerr*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `printerr(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc printt*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `printt(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc prints*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `prints(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc printraw*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `printraw(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc printVerbose*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `printVerbose(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc pushError*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `pushError(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
 proc pushWarning*(args: varargs[Variant, variant]): void =
-  if unlikely(args.len < 1): return
-  var ptrargs = newSeqOfCap[pointer](args.len)
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
+  var ptrargs = newSeqOfCap[pointer](argslen)
   for arg in args:
     ptrargs.add getPtr arg
   `pushWarning(Variant Variant)`(nil, addr ptrargs[0], argslen)
