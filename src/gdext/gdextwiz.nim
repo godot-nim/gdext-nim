@@ -62,9 +62,9 @@ proc dispatch_addon(opt: var OptParser) =
     next opt
 
   if findExe("gdextwiz-" & subcmd) != "":
-    quit execShellCmd("gdextwiz-" & subcmd & " " & args.join(" "))
+    quit execShellCmd quoteShellCommand(@["gdextwiz-" & subcmd] & args)
   if findExe("gdextwiz_" & subcmd) != "":
-    quit execShellCmd("gdextwiz-" & subcmd & " " & args.join(" "))
+    quit execShellCmd quoteShellCommand(@["gdextwiz_" & subcmd] & args)
 
 proc dispatch_subcmd(opt: var OptParser) =
   while true:
