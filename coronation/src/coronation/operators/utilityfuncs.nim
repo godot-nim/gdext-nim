@@ -77,9 +77,10 @@ proc weave_procdef*(utilfunc: UtilityFunction): Cloth =
         if utilfunc.json.is_vararg:
           let vararg = utilfunc.key.args[^1]
           if nonvarargs.len == 0:
+            &"let argslen = cint({vararg.name}.len)"
             if utilfunc.isVarargsMerged:
-              &"if unlikely({vararg.name}.len < 1): return"
-            &"var ptrargs = newSeqOfCap[pointer]({vararg.name}.len)"
+              &"if unlikely(argslen < 1): return"
+            &"var ptrargs = newSeqOfCap[pointer](argslen)"
           else:
             &"let argslen = cint({nonvarargs.len} + {vararg.name}.len)"
             &"var ptrargs = newSeqOfCap[pointer](argslen)"
