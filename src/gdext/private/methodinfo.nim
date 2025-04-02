@@ -113,14 +113,14 @@ proc callFunc(middle: MiddleExp): NimNode =
       let Type = Type[1]
       if Type.repr == "ptr Variant":
         quote do: cast[ptr UncheckedArray[ptr Variant]](p_args)
-          .toOpenArray(`i`, p_argument_count.pred)
+          .toOpenArray(`i`, p_argument_count.int.pred)
       else:
         quote do: retrieve[`Type`](p_args, `i`..<p_argument_count.int)
 
     elif default.kind == nnkEmpty:
       quote do: retrieve[`Type`](p_args[`i`])
     else:
-      quote do: retrieve[`Type`](p_args, p_argument_count, `i`, `default`)
+      quote do: retrieve[`Type`](p_args, p_argument_count.int, `i`, `default`)
 
   result = callFunc_template
   result.body =
