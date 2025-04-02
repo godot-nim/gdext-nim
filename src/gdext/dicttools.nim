@@ -4,6 +4,8 @@ import gdext/private/typeshift
 import gdext/private/macros
 import gdext/builtinindex
 
+import std/[hashes]
+
 proc `[]`*(self: Dictionary; key: Variant): Variant =
   cast[ptr Variant](interface_Dictionary_operatorIndexConst(addr self, addr key))[]
 proc `[]`*(self: var Dictionary; key: Variant): var Variant =

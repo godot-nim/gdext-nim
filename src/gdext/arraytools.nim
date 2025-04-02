@@ -23,7 +23,7 @@ import gdext/builtinindex
 import gdext/stringtools
 import gdext/varianttools
 
-import std/[sequtils, importutils]
+import std/[sequtils, importutils, hashes]
 
 proc setTyped(self: var Array; typ: VariantType; className: StringName; script: Variant) =
   interfaceArraySetTyped(addr self, typ, addr className, addr script)
