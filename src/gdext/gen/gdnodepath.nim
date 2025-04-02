@@ -32,7 +32,7 @@ proc getName*(self: NodePath; idx: Int): StringName =
   `getName(NodePath Int)`(addr self, addr argArr[0], addr result, 1)
 proc getSubnameCount*(self: NodePath): Int =
   `getSubnameCount(NodePath)`(addr self, nil, addr result, 0)
-proc hash*(self: NodePath): Int =
+proc hash*(self: NodePath): Hash =
   `hash(NodePath)`(addr self, nil, addr result, 0)
 proc getSubname*(self: NodePath; idx: Int): StringName =
   let argArr = [getPtr idx]

@@ -61,7 +61,7 @@ proc getBoundArguments*(self: Callable): Array =
   `getBoundArguments(Callable)`(addr self, nil, addr result, 0)
 proc getUnboundArgumentsCount*(self: Callable): Int =
   `getUnboundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
-proc hash*(self: Callable): Int =
+proc hash*(self: Callable): Hash =
   `hash(Callable)`(addr self, nil, addr result, 0)
 proc bindv*(self: var Callable; arguments: Array): Callable =
   let argArr = [getPtr arguments]

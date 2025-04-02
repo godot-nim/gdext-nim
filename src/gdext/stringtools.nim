@@ -1,4 +1,4 @@
-import std/[unicode, importutils]
+import std/[unicode, importutils, hashes]
 import gdext/builtinindex
 import gdext/private/[native, staticevents, macros]
 

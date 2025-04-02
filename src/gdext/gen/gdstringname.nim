@@ -506,7 +506,7 @@ proc hexDecode*(self: StringName): PackedByteArray =
   `hexDecode(StringName)`(addr self, nil, addr result, 0)
 proc toWcharBuffer*(self: StringName): PackedByteArray =
   `toWcharBuffer(StringName)`(addr self, nil, addr result, 0)
-proc hash*(self: StringName): Int =
+proc hash*(self: StringName): Hash =
   `hash(StringName)`(addr self, nil, addr result, 0)
 
 proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
