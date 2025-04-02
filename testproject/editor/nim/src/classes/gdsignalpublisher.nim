@@ -1,14 +1,13 @@
 import gdext
 import gdext/classes/gdNode
-import std/random
-random.randomize()
+randomize()
 
 type SignalPublisher* {.tool.} = ptr object of Node
-  key: int
+  key: Int
 
-proc send*(self: SignalPublisher; key: int): Error {.signal, gdsync.}
+proc send*(self: SignalPublisher; key: Int): Error {.signal, gdsync.}
 
 method process(self: SignalPublisher; delta: float64) {.gdsync.} =
   if self.key == 0:
-    self.key = rand(0..255)
+    self.key = randiRange(0, 255)
   assert self.send(self.key) == ok

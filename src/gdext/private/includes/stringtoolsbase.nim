@@ -10,7 +10,7 @@ template getPtr[T: Object](v: T): pointer =
 template getPtr(v: GdRef): pointer =
   getPtr v.handle
 
-proc load(typ: VariantType; proc_name: string; hash: int): PtrBuiltinMethod =
+proc load(typ: VariantType; proc_name: string; hash: int64): PtrBuiltinMethod =
   let name = newStringName proc_name
   interface_Variant_getPtrBuiltinMethod(typ, addr name, hash)
 proc load(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator =
