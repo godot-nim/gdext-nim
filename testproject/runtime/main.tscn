@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyswbjsdvglbr"]
+[gd_scene load_steps=6 format=3 uid="uid://dyswbjsdvglbr"]
 
 [ext_resource type="Script" uid="uid://b4m3g7vm27kwg" path="res://main.gd" id="1_x2b6x"]
 [ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_x3ep8"]
 [ext_resource type="Script" uid="uid://br2aj64ry7rs1" path="res://inherited_node01.gd" id="3_6ul88"]
 [ext_resource type="Script" uid="uid://7lji1hr8xghd" path="res://inherited_node02.gd" id="4_lmn8h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
+font_size = 64
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x2b6x")
@@ -22,3 +25,12 @@ script = ExtResource("3_6ul88")
 
 [node name="InheritedNode02" type="VirtualNode02" parent="."]
 script = ExtResource("4_lmn8h")
+
+[node name="ExtLabel" type="ExtLabel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "Awesome gdext!"
+label_settings = SubResource("LabelSettings_1bvp3")
+horizontal_alignment = 1
