@@ -43,14 +43,14 @@ func test_virtual_func():
 	"virtualMethod of InheritedNode02 is called from GDScript")
 
 func test_grobal_func():
-	NimMain.signal_arg0.connect(_on_nim_signal_arg0)
-	NimMain.signal_arg1.connect(_on_nim_signal_arg1)
-	NimMain.arg0_noret()
-	NimMain.arg1_noret(NimMain.arg1_ret(NimMain.arg0_ret()))
-	NimMain.signal_arg0.emit()
-	NimMain.signal_arg1.emit("signal")
+	RuntimeTest.signal_arg0.connect(_on_nim_signal_arg0)
+	RuntimeTest.signal_arg1.connect(_on_nim_signal_arg1)
+	RuntimeTest.arg0_noret()
+	RuntimeTest.arg1_noret(RuntimeTest.arg1_ret(RuntimeTest.arg0_ret()))
+	RuntimeTest.signal_arg0.emit()
+	RuntimeTest.signal_arg1.emit("signal")
 
-	NimMain.exec_checks_use_api_from_toplevel()
+	RuntimeTest.exec_checks_use_api_from_toplevel()
 	assert_true(signal_arg0_executed and signal_arg1_executed)
 
 func test_enum():

@@ -27,8 +27,10 @@
 
 {.warning[UnusedImport]: off.}
 
-import gdext/private/buildsettings
 import gdext/private/gdinterface
+
+import gdext/private/buildsettings
+export BuildSettings, Platform, Target, Architecture
 
 import gdext/private/staticevents
 export staticevents.execon, staticevents.expandEvent

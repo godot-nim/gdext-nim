@@ -42,7 +42,7 @@ func assert_not_equal(actual, expected):
 		print ("    |-> Expected '%s' NOT to equal '%s'" % [expected, actual])
 
 func exit_with_status() -> void:
-	var success: bool = (test_failures == 0 and NimMain.test_success)
+	var success: bool = (test_failures == 0 and RuntimeTest.test_success)
 	print ("")
 	print_rich ("[color=%s] ==== TESTS FINISHED ==== [/color]" % ("green" if success else "red"))
 	print ("")

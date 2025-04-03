@@ -1,0 +1,16 @@
+[configuration]
+
+entry_symbol = "init_library"
+compatibility_minimum = 4.4
+reloadable = true
+
+[libraries]
+
+windows.debug = "res://./nim/lib/RuntimeTest.windows.debug.dll"
+windows.release = "res://./nim/lib/RuntimeTest.windows.release.dll"
+linux.debug = "res://./nim/lib/libRuntimeTest.linux.debug.so"
+linux.release = "res://./nim/lib/libRuntimeTest.linux.release.so"
+macos.debug = "res://./nim/lib/libRuntimeTest.macos.debug.dylib"
+macos.release = "res://./nim/lib/libRuntimeTest.macos.release.dylib"
+web.debug = "res://./nim/lib/libRuntimeTest.web.debug.wasm"
+web.release = "res://./nim/lib/libRuntimeTest.web.release.wasm"
