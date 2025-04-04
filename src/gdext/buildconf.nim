@@ -299,6 +299,27 @@ proc switch(setting: BuildSettings) =
     # --passL: "-static"
     --passL: "-static-libgcc"
 
+  of web:
+    if findExe("emcc").len == 0 and findExe("emcc.bat").len == 0:
+      quit """
+emcc binary not found. web export of Nim program depends on emscripten.
+Please install it following the guide below and activate the PATH to emcc.
+
+https://emscripten.org/docs/getting_started/downloads.html
+"""
+    --cpu: wasm32
+    --cc: clang
+
+    when buildOS == "windows":
+      --clang.exe: emcc.bat
+      --clang.linkerexe: emcc.bat
+    else:
+      --clang.exe: emcc
+      --clang.linkerexe: emcc
+
+    --passC: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm'"
+    --passL: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm' -s WASM_BIGINT"
+
   else:
     discard
 
