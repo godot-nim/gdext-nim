@@ -5,7 +5,10 @@
 import gdext/buildconf
 import std/strutils
 
-Extension.name = capitalizeAscii "$name"
-# Extension.libdir = "$projectdir/lib"
-
 --path: src
+
+let setting = BuildSettings(
+  name: capitalizeAscii "$name"
+)
+
+configure(setting)
