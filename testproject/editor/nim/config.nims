@@ -1,7 +1,11 @@
 import gdext/buildconf
 
-Extension.name = "GdextTester"
-Assistance.genEditorHelp = on
-
 --path: "src"
 --path: "../../../src"
+
+let setting = BuildSettings(
+  name: "EditorTest",
+  genEditorHelp: on,
+)
+
+configure(setting)
