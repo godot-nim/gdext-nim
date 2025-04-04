@@ -268,7 +268,7 @@ proc wrap*(value: Variant; min: Variant; max: Variant): Variant =
   let ptrargs = [getPtr value, getPtr min, getPtr max]
   `wrap(Variant Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
 
-proc max*(arg1: Variant; arg2: Variant; args: varargs[Variant]): Variant =
+proc max*(arg1: Variant; arg2: Variant; args: varargs[Variant, variant]): Variant =
   let argslen = cint(2 + args.len)
   var ptrargs = newSeqOfCap[pointer](argslen)
   ptrargs.add [getPtr arg1, getPtr arg2]
@@ -276,7 +276,7 @@ proc max*(arg1: Variant; arg2: Variant; args: varargs[Variant]): Variant =
     ptrargs.add getPtr arg
   `max(Variant Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
 
-proc min*(arg1: Variant; arg2: Variant; args: varargs[Variant]): Variant =
+proc min*(arg1: Variant; arg2: Variant; args: varargs[Variant, variant]): Variant =
   let argslen = cint(2 + args.len)
   var ptrargs = newSeqOfCap[pointer](argslen)
   ptrargs.add [getPtr arg1, getPtr arg2]
@@ -351,10 +351,10 @@ proc typeConvert*(variant: Variant; `type`: Int): Variant =
   let ptrargs = [getPtr variant, getPtr `type`]
   `typeConvert(Variant Int)`(getPtr result, addr ptrargs[0], argslen)
 
-proc str*(arg1: Variant; args: varargs[Variant]): String =
-  let argslen = cint(1 + args.len)
+proc str*(args: varargs[Variant, variant]): String =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `str(Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
@@ -369,74 +369,74 @@ proc typeString*(`type`: Int): String =
   let ptrargs = [getPtr `type`]
   `typeString(Int)`(getPtr result, addr ptrargs[0], argslen)
 
-proc print*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc print*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `print(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc printRich*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc printRich*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `printRich(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc printerr*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc printerr*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `printerr(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc printt*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc printt*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `printt(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc prints*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc prints*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `prints(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc printraw*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc printraw*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `printraw(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc printVerbose*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc printVerbose*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `printVerbose(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc pushError*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc pushError*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `pushError(Variant Variant)`(nil, addr ptrargs[0], argslen)
 
-proc pushWarning*(arg1: Variant; args: varargs[Variant]): void =
-  let argslen = cint(1 + args.len)
+proc pushWarning*(args: varargs[Variant, variant]): void =
+  let argslen = cint(args.len)
+  if unlikely(argslen < 1): return
   var ptrargs = newSeqOfCap[pointer](argslen)
-  ptrargs.add [getPtr arg1]
   for arg in args:
     ptrargs.add getPtr arg
   `pushWarning(Variant Variant)`(nil, addr ptrargs[0], argslen)

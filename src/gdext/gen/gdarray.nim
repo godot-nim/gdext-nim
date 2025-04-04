@@ -79,7 +79,7 @@ proc isEmpty*(self: Array): bool =
   `isEmpty(Array)`(addr self, nil, addr result, 0)
 proc clear*(self: var Array): void =
   `clear(Array)`(addr self, nil, nil, 0)
-proc hash*(self: Array): Int =
+proc hash*(self: Array): Hash =
   `hash(Array)`(addr self, nil, addr result, 0)
 proc assign*(self: var Array; array: Array): void =
   let argArr = [getPtr array]

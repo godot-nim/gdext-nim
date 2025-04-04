@@ -584,12 +584,12 @@ proc moveAfter*(self: TreeItem; item: TreeItem): void =
   expandMethodBind(className TreeItem, "move_after", 1819951137)
   methodbind.ptrcall(self, [getPtr item])
 
-proc callRecursive*(self: TreeItem; `method`: Variant; args: varargs[Variant]): void =
+proc callRecursive*(self: TreeItem; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className TreeItem, "call_recursive", 2866548813)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   discard methodbind.call(self, `?param`, args)
-template callRecursive*(self: TreeItem; `method`: StringName; args: varargs[Variant]): void =
+template callRecursive*(self: TreeItem; `method`: StringName; args: varargs[Variant, variant]): void =
   callRecursive(self, variant `method`, args)
 
 template collapsed*(self: TreeItem): untyped = self.isCollapsed()

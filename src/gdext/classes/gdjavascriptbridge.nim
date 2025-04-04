@@ -34,12 +34,12 @@ proc jsBufferToPackedByteArray*(self: JavaScriptBridge; javascriptBuffer: gdref 
   methodbind.ptrcall(self, [getPtr javascriptBuffer], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
-proc createObject*(self: JavaScriptBridge; `object`: Variant; args: varargs[Variant]): Variant =
+proc createObject*(self: JavaScriptBridge; `object`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className JavaScriptBridge, "create_object", 3093893586)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `object`]
   methodbind.call(self, `?param`, args).get(Variant)
-template createObject*(self: JavaScriptBridge; `object`: String; args: varargs[Variant]): Variant =
+template createObject*(self: JavaScriptBridge; `object`: String; args: varargs[Variant, variant]): Variant =
   createObject(self, variant `object`, args)
 
 proc downloadBuffer*(self: JavaScriptBridge; buffer: PackedByteArray; name: String; mime: String = newGdString("application/octet-stream")): void =

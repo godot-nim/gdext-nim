@@ -77,7 +77,10 @@ proc `type`*(param: RenderableParamBase): string =
   if param.info.isMutable:
     return "var " & result
   if param.info.isVarargs:
-    return &"varargs[{result}]"
+    if param.typeSym == TypeSym.Variant:
+      return "varargs[Variant, variant]"
+    else:
+      return &"varargs[{result}]"
 
 proc `type`*(param: RenderableArgument): string =
   param.RenderableParamBase.type

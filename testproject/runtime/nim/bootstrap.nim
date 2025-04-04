@@ -13,6 +13,7 @@ import classes/gdextnode
 import classes/gdvirtualnode01
 import classes/gdvirtualnode02
 import classes/gdtestobject
+import classes/gdextlabel
 
 # ==================================
 

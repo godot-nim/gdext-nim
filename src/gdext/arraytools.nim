@@ -23,7 +23,7 @@ import gdext/builtinindex
 import gdext/stringtools
 import gdext/varianttools
 
-import std/[sequtils, importutils]
+import std/[sequtils, importutils, hashes]
 
 proc setTyped(self: var Array; typ: VariantType; className: StringName; script: Variant) =
   interfaceArraySetTyped(addr self, typ, addr className, addr script)
@@ -307,7 +307,7 @@ iterator mpairs*[T](arr: var PackedArray[T]): (int, var T) =
   for i in 0..<arr.size: yield (int i, arr[i])
 
 template toOpenArray*[T](arr: PackedArray[T]): openArray[T] =
-  arr.dataUnsafe.toOpenArray(0, arr.size-1)
+  arr.dataUnsafe.toOpenArray(0, arr.size.int-1)
 proc `@`*[T](arr: PackedArray[T]): seq[T] =
   @(arr.toOpenArray)
 
@@ -381,13 +381,13 @@ proc setLen*(arr: var PackedArray; newlen: int) =
   discard arr.resize(newlen)
 
 # len
-proc len*(arr: Array): int = arr.size
-template len(arr: TypedArray): int = arr.Array.len
-proc len*(arr: PackedArray): int = arr.size
+proc len*(arr: Array): int = int arr.size
+template len(arr: TypedArray): int = int arr.Array.len
+proc len*(arr: PackedArray): int = int arr.size
 
 # high
-proc high*(arr: Array): int = arr.size.pred
-proc high*(arr: PackedArray): int = arr.size.pred
+proc high*(arr: Array): int = int arr.size.pred
+proc high*(arr: PackedArray): int = int arr.size.pred
 
 # low
 proc low*(arr: Array): int = 0

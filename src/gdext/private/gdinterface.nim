@@ -185,7 +185,7 @@ proc getClassName*(self: Object): StringName =
   self.engineInstance.getClassName
 
 proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr =
-  interfaceClassdbConstructObject2(addr p_classname)
+  interfaceClassdbConstructObject(addr p_classname)
 
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
   interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)

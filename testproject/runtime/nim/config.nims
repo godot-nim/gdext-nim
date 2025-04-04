@@ -1,7 +1,11 @@
 import gdext/buildconf
 
-Extension.name = "NimMain"
-Assistance.genEditorHelp = off
-
 --path: "src"
 --path: "../../../src"
+
+let setting = BuildSettings(
+  name: "RuntimeTest",
+  genEditorHelp: off,
+)
+
+configure(setting)

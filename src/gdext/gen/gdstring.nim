@@ -406,7 +406,7 @@ proc indent*(self: String; prefix: String): String =
   `indent(String String)`(addr self, addr argArr[0], addr result, 1)
 proc dedent*(self: String): String =
   `dedent(String)`(addr self, nil, addr result, 0)
-proc hash*(self: String): Int =
+proc hash*(self: String): Hash =
   `hash(String)`(addr self, nil, addr result, 0)
 proc md5Text*(self: String): String =
   `md5Text(String)`(addr self, nil, addr result, 0)

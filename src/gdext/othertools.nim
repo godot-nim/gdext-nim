@@ -4,6 +4,8 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 
+import std/[hashes]
+
 proc callable*(): Callable = discard
 proc signal*(): Signal = discard
 

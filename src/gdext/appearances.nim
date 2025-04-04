@@ -23,7 +23,7 @@ type
 
 macro makeDefaultHintStringEnum(Enum): string  =
   var str: string
-  var i: int
+  var i: BiggestInt
   for elem in Enum.enumTy[1..^1]:
     if str != "": str.add ","
     case elem.kind
@@ -42,7 +42,7 @@ macro makeDefaultHintStringEnum(Enum): string  =
 
 macro makeDefaultHintStringBitField(Enum): string  =
   var str: string
-  var i: int
+  var i: BiggestInt
   for elem in Enum.enumTy[1..^1]:
     if str != "": str.add ","
     case elem.kind

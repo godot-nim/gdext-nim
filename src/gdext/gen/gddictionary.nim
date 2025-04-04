@@ -74,7 +74,7 @@ proc findKey*(self: Dictionary; value: Variant): Variant =
 proc erase*(self: var Dictionary; key: Variant): bool =
   let argArr = [getPtr key]
   `erase(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
-proc hash*(self: Dictionary): Int =
+proc hash*(self: Dictionary): Hash =
   `hash(Dictionary)`(addr self, nil, addr result, 0)
 proc keys*(self: Dictionary): Array =
   `keys(Dictionary)`(addr self, nil, addr result, 0)

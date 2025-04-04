@@ -1,0 +1,16 @@
+[configuration]
+
+entry_symbol = "init_library"
+compatibility_minimum = 4.4
+reloadable = true
+
+[libraries]
+
+windows.debug = "res://./nim/lib/EditorTest.windows.debug.dll"
+windows.release = "res://./nim/lib/EditorTest.windows.release.dll"
+linux.debug = "res://./nim/lib/libEditorTest.linux.debug.so"
+linux.release = "res://./nim/lib/libEditorTest.linux.release.so"
+macos.debug = "res://./nim/lib/libEditorTest.macos.debug.dylib"
+macos.release = "res://./nim/lib/libEditorTest.macos.release.dylib"
+web.debug = "res://./nim/lib/libEditorTest.web.debug.wasm"
+web.release = "res://./nim/lib/libEditorTest.web.release.wasm"
