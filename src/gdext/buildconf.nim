@@ -1,6 +1,6 @@
 ## Note:
 ## This is a module for NimScript; do not import from Nim modules.
-## If you want to get the information extconfigured by this module from Nim modules,
+## If you want to get the information configured by this module from Nim modules,
 ## import `gdext/private/buildsettings` instead.
 
 when not declared(switch) and not defined(docgen):
