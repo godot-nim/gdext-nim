@@ -5,7 +5,6 @@ import std/[os, parseopt, strutils]
 
 const
   templateroot = "extension/template"
-  `.gdextension` = staticRead templateroot/".gdextension"
   `.gitignore` = staticRead templateroot/".gitignore"
   `bootstrap.nim` = staticRead templateroot/"bootstrap.nim"
   `config.nims` = staticRead templateroot/"config.nims"
@@ -33,7 +32,6 @@ proc new_extension*(name = default Directory): 0..1 =
   ]
   createDir extensionPath/"src/classes"
 
-  writeFileWithDialog(extensionPath/extension & ".gdextension", `.gdextension`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/".gitignore", `.gitignore`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/"config.nims", `config.nims`.multiReplace(symbols))
   writeFileWithDialog(extensionPath/"bootstrap.nim", `bootstrap.nim`.multiReplace(symbols))
