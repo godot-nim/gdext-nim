@@ -7,7 +7,7 @@
     <img src="nimble.svg" height="24">
   </a>
 
-   [Documentation][9] | [Coding Guide][4] | [Examples][1] | Templates | [Forum][5] | [Source][8]
+   [Documentation][9] | [Coding Guide][4] | [Tutorial] | [Examples][1] | Templates | [Forum][5] | [Source][8]
 
 </div>
 
@@ -107,3 +107,4 @@ nimble uninstall gdext
 [7]: https://github.com/godot-nim/.github/issues/5
 [8]: https://github.com/godot-nim/gdext-nim
 [9]: https://godot-nim.github.io/gdext-nim/gdext.html
+[Tutorial]: https://github.com/godot-nim/gdext-nim/wiki/Your-first-2D-game
