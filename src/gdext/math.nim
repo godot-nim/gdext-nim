@@ -8,9 +8,8 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/builtinindex
 
-export stdmath except
-  sin, cos, tan,
-  arcsin, arccos, arctan, arctan2
+export stdmath
+
 export builtin_bswap16, builtin_bswap32, builtin_bswap64
 
 macro genVecFieldAccess(): untyped =
@@ -453,20 +452,10 @@ func fposmodp*[T: SomeFloat](pX, pY: T): T {.inline.} =
     return result + pY
 
 {.push, inline.}
-func sin*[T: SomeFloat](pX: Radian[T]): T = stdmath.sin T(pX)
-func cos*[T: SomeFloat](pX: Radian[T]): T = stdmath.cos T(pX)
-func tan*[T: SomeFloat](pX: Radian[T]): T = stdmath.tan T(pX)
-
 func sinc*[T: SomeFloat](pX: T): T = (if pX == 0: 1 else: sin(pX)/pX)
-func sinc*[T: SomeFloat](pX: Radian[T]): T = sinc T(pX)
 
 func sincn*[T: SomeFloat](pX: T): T = sinc(PI * pX)
-func sincn*[T: SomeFloat](pX: Radian[T]): T = sincn T(pX)
 
-func arcsin*[T: SomeFloat](pX: T): Radian[T] = Radian stdmath.arcsin pX
-func arccos*[T: SomeFloat](pX: T): Radian[T] = Radian stdmath.arccos pX
-func arctan*[T: SomeFloat](pX: T): Radian[T] = Radian stdmath.arctan pX
-func arctan2*[T: SomeFloat](pY, pX: T): Radian[T] = Radian stdmath.arctan2(pY, pX)
 {.pop.}
 
 func isFinite*[T: SomeFloat](pX: T): bool = pX == NaN or pX == Inf or pX == NegInf
@@ -552,9 +541,6 @@ inline float bezier_interpolate(float p_start, float p_control_1, float p_contro
 ]#
 
 func clamp01*[T: SomeFloat](x: T): T = x.clamp(0, 1)
-
-func degToRad*[T: SomeFloat](degree: T): Radian[T] = Radian[T](degree * PI / 180)
-func degree*[T: SomeFloat](rad: Radian[T]): T = rad * 180 / PI
 
 #[
 inline double inverse_lerp(double p_from, double p_to, double p_value) {
@@ -705,11 +691,11 @@ inline float snap_scalar_separation(float p_offset, float p_step, float p_target
 func lerp*[T: SomeFloat](pFrom,pTo: T; t: T): T {.inline.} =
   pFrom + t * (pTo - pFrom)
 
-func lerp*[T: SomeFloat](pFrom,pTo: Radian[T]; t: T): Radian[T] {.inline.} =
+func lerpAngle*[T: SomeFloat](pFrom,pTo: T; t: T): T {.inline.} =
   let
     difference: T = floorMod(T(pTo) - T(pFrom), TAU)
     distance: T = floorMod(T(2) * difference, TAU) - difference
-  Radian(T(p_from) + distance * t)
+  p_from + distance * t
 
 func cubicInterpolate*[T: SomeFloat](pFrom, pTo, pPre, pPost, pWeight: T): T {.inline.} =
   0.5 * ((2*pFrom) +
@@ -717,7 +703,7 @@ func cubicInterpolate*[T: SomeFloat](pFrom, pTo, pPre, pPost, pWeight: T): T {.i
     (2*pPre - 5*pFrom + 4*pTo - pPost) * (pWeight * pWeight) +
     (-pPre + 3*pFrom - 3*pTo + pPost) * (pWeight * pWeight * pWeight))
 
-func cubicInterpolate*[T: SomeFloat](pFrom, pTo, pPre, pPost: Radian[T]; pWeight: T): Radian[T] {.inline.} =
+func cubicInterpolateAngle*[T: SomeFloat](pFrom, pTo, pPre, pPost: T; pWeight: T): T {.inline.} =
   let
     fromRot = floorMod(T(pFrom), TAU)
 
@@ -730,7 +716,7 @@ func cubicInterpolate*[T: SomeFloat](pFrom, pTo, pPre, pPost: Radian[T]; pWeight
     postDiff = floorMod(T(pPost) - toRot, TAU)
     postRot = toRot + floorMod(2.0 * postDiff, TAU) - postDiff
 
-  Radian cubicInterpolate(fromRot, toRot, preRot, postRot, pWeight)
+  cubicInterpolate(fromRot, toRot, preRot, postRot, pWeight)
 
 {.push, inline.}
 
@@ -880,14 +866,14 @@ proc moveToward*[N: static int; T: SomeFloat](`from`,to: Vector[N,T]; delta: T):
   `from` + (dist/len) * delta
 
 # angles
-func fromAngle*[T: SomeFloat](_: typedesc[NVector[2, T]]; angle: Radian[T]): NVector[2, T] =
+func fromAngle*[T: SomeFloat](_: typedesc[NVector[2, T]]; angle: T): NVector[2, T] =
   NVector[2, T] [cos angle, sin angle]
 
-func angle*[T: SomeFloat](self: Vector[2, T]): Radian[T] =
+func angle*[T: SomeFloat](self: Vector[2, T]): T =
   arctan2(self.y, self.x)
-func angleToPoint*[T](self, to: Vector[2, T]): Radian[T] =
+func angleToPoint*[T](self, to: Vector[2, T]): T =
   angle (to - self)
-func angleTo*[T: SomeFloat](self, to: Vector[2, T]): Radian[T] =
+func angleTo*[T: SomeFloat](self, to: Vector[2, T]): T =
   arctan2(self.cross(to), self.dot(to))
 
 # others
@@ -898,10 +884,10 @@ func aspect*[T: SomeInteger](self: Vector[2, T]): float = self.x / self.y
 # -------------------
 
 template sign*[T](v: T): auto = sgn(v)
-template asin*[T: SomeFloat](pX: T): Radian[T] = arcsin pX
-template acos*[T: SomeFloat](pX: T): Radian[T] = arccos pX
-template atan*[T: SomeFloat](pX: T): Radian[T] = arctan pX
-template atan2*[T: SomeFloat](pY, pX: T): Radian[T] = arctan2(pY, pX)
+template asin*[T: SomeFloat](pX: T): T = arcsin pX
+template acos*[T: SomeFloat](pX: T): T = arccos pX
+template atan*[T: SomeFloat](pX: T): T = arctan pX
+template atan2*[T: SomeFloat](pY, pX: T): T = arctan2(pY, pX)
 template fmod*[T: SomeNumber](x, y: T): T = floorMod(x, y)
 template fposmod*[T: SomeFloat](x, y: T): T = posmod(x, y)
 template floorf*[T: SomeFloat](x: T): T = floor x
