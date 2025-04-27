@@ -21,11 +21,6 @@ else:
 type
   Vector*[N: static int; T] = array[N, T]
   NVector*[N: static int; T: SomeFloat] = distinct Vector[N, T]
-  Radian*[T: SomeFloat] = distinct T
-
-type
-  Radian32* = Radian[float32]
-  Radian64* = Radian[float64]
 
 type
   VectorR*[N: static int] = Vector[N, real_elem]
