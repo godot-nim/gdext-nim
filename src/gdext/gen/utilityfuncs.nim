@@ -8,9 +8,9 @@
 # `acos(Float)`
 # `atan(Float)`
 # `atan2(Float Float)`
-var `asinh(Float)`: PtrUtilityFunction
-var `acosh(Float)`: PtrUtilityFunction
-var `atanh(Float)`: PtrUtilityFunction
+# `asinh(Float)`
+# `acosh(Float)`
+# `atanh(Float)`
 # `sqrt(Float)`
 # `fmod(Float Float)`
 # `fposmod(Float Float)`
@@ -44,22 +44,22 @@ var `snapped(Variant Variant)`: PtrUtilityFunction
 var `ease(Float Float)`: PtrUtilityFunction
 var `stepDecimals(Float)`: PtrUtilityFunction
 var `lerp(Variant Variant Variant)`: PtrUtilityFunction
-var `lerpf(Float Float Float)`: PtrUtilityFunction
-var `cubicInterpolate(Float Float Float Float Float)`: PtrUtilityFunction
-var `cubicInterpolateAngle(Float Float Float Float Float)`: PtrUtilityFunction
+# `lerpf(Float Float Float)`
+# `cubicInterpolate(Float Float Float Float Float)`
+# `cubicInterpolateAngle(Float Float Float Float Float)`
 var `cubicInterpolateInTime(Float Float Float Float Float Float Float Float)`: PtrUtilityFunction
 var `cubicInterpolateAngleInTime(Float Float Float Float Float Float Float Float)`: PtrUtilityFunction
 var `bezierInterpolate(Float Float Float Float Float)`: PtrUtilityFunction
 var `bezierDerivative(Float Float Float Float Float)`: PtrUtilityFunction
 var `angleDifference(Float Float)`: PtrUtilityFunction
-var `lerpAngle(Float Float Float)`: PtrUtilityFunction
+# `lerpAngle(Float Float Float)`
 var `inverseLerp(Float Float Float)`: PtrUtilityFunction
 var `remap(Float Float Float Float Float)`: PtrUtilityFunction
 var `smoothstep(Float Float Float)`: PtrUtilityFunction
 var `moveToward(Float Float Float)`: PtrUtilityFunction
 var `rotateToward(Float Float Float)`: PtrUtilityFunction
-var `degToRad(Float)`: PtrUtilityFunction
-var `radToDeg(Float)`: PtrUtilityFunction
+# `degToRad(Float)`
+# `radToDeg(Float)`
 var `linearToDb(Float)`: PtrUtilityFunction
 var `dbToLinear(Float)`: PtrUtilityFunction
 var `wrap(Variant Variant Variant)`: PtrUtilityFunction
@@ -74,7 +74,7 @@ var `min(Variant Variant Variant)`: PtrUtilityFunction
 var `clamp(Variant Variant Variant)`: PtrUtilityFunction
 # `clampi(Int Int Int)`
 # `clampf(Float Float Float)`
-var `nearestPo2(Int)`: PtrUtilityFunction
+# `nearestPo2(Int)`
 var `pingpong(Float Float)`: PtrUtilityFunction
 var `randomize()`: PtrUtilityFunction
 var `randi()`: PtrUtilityFunction
@@ -112,21 +112,6 @@ var `isInstanceValid(Variant)`: PtrUtilityFunction
 var `ridAllocateId()`: PtrUtilityFunction
 var `ridFromInt64(Int)`: PtrUtilityFunction
 var `isSame(Variant Variant)`: PtrUtilityFunction
-
-proc asinh*(x: Float): Float =
-  const argslen = cint 1
-  let ptrargs = [getPtr x]
-  `asinh(Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc acosh*(x: Float): Float =
-  const argslen = cint 1
-  let ptrargs = [getPtr x]
-  `acosh(Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc atanh*(x: Float): Float =
-  const argslen = cint 1
-  let ptrargs = [getPtr x]
-  `atanh(Float)`(getPtr result, addr ptrargs[0], argslen)
 
 proc floor*(x: Variant): Variant =
   const argslen = cint 1
@@ -173,21 +158,6 @@ proc lerp*(`from`: Variant; to: Variant; weight: Variant): Variant =
   let ptrargs = [getPtr `from`, getPtr to, getPtr weight]
   `lerp(Variant Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
 
-proc lerpf*(`from`: Float; to: Float; weight: Float): Float =
-  const argslen = cint 3
-  let ptrargs = [getPtr `from`, getPtr to, getPtr weight]
-  `lerpf(Float Float Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc cubicInterpolate*(`from`: Float; to: Float; pre: Float; post: Float; weight: Float): Float =
-  const argslen = cint 5
-  let ptrargs = [getPtr `from`, getPtr to, getPtr pre, getPtr post, getPtr weight]
-  `cubicInterpolate(Float Float Float Float Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc cubicInterpolateAngle*(`from`: Float; to: Float; pre: Float; post: Float; weight: Float): Float =
-  const argslen = cint 5
-  let ptrargs = [getPtr `from`, getPtr to, getPtr pre, getPtr post, getPtr weight]
-  `cubicInterpolateAngle(Float Float Float Float Float)`(getPtr result, addr ptrargs[0], argslen)
-
 proc cubicInterpolateInTime*(`from`: Float; to: Float; pre: Float; post: Float; weight: Float; toT: Float; preT: Float; postT: Float): Float =
   const argslen = cint 8
   let ptrargs = [getPtr `from`, getPtr to, getPtr pre, getPtr post, getPtr weight, getPtr toT, getPtr preT, getPtr postT]
@@ -213,11 +183,6 @@ proc angleDifference*(`from`: Float; to: Float): Float =
   let ptrargs = [getPtr `from`, getPtr to]
   `angleDifference(Float Float)`(getPtr result, addr ptrargs[0], argslen)
 
-proc lerpAngle*(`from`: Float; to: Float; weight: Float): Float =
-  const argslen = cint 3
-  let ptrargs = [getPtr `from`, getPtr to, getPtr weight]
-  `lerpAngle(Float Float Float)`(getPtr result, addr ptrargs[0], argslen)
-
 proc inverseLerp*(`from`: Float; to: Float; weight: Float): Float =
   const argslen = cint 3
   let ptrargs = [getPtr `from`, getPtr to, getPtr weight]
@@ -242,16 +207,6 @@ proc rotateToward*(`from`: Float; to: Float; delta: Float): Float =
   const argslen = cint 3
   let ptrargs = [getPtr `from`, getPtr to, getPtr delta]
   `rotateToward(Float Float Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc degToRad*(deg: Float): Float =
-  const argslen = cint 1
-  let ptrargs = [getPtr deg]
-  `degToRad(Float)`(getPtr result, addr ptrargs[0], argslen)
-
-proc radToDeg*(rad: Float): Float =
-  const argslen = cint 1
-  let ptrargs = [getPtr rad]
-  `radToDeg(Float)`(getPtr result, addr ptrargs[0], argslen)
 
 proc linearToDb*(lin: Float): Float =
   const argslen = cint 1
@@ -288,11 +243,6 @@ proc clamp*(value: Variant; min: Variant; max: Variant): Variant =
   const argslen = cint 3
   let ptrargs = [getPtr value, getPtr min, getPtr max]
   `clamp(Variant Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
-
-proc nearestPo2*(value: Int): Int =
-  const argslen = cint 1
-  let ptrargs = [getPtr value]
-  `nearestPo2(Int)`(getPtr result, addr ptrargs[0], argslen)
 
 proc pingpong*(value: Float; length: Float): Float =
   const argslen = cint 2
@@ -501,9 +451,6 @@ proc isSame*(a: Variant; b: Variant): bool =
   `isSame(Variant Variant)`(getPtr result, addr ptrargs[0], argslen)
 
 proc load* =
-  `asinh(Float)` = load("asinh", 2140049587)
-  `acosh(Float)` = load("acosh", 2140049587)
-  `atanh(Float)` = load("atanh", 2140049587)
   `floor(Variant)` = load("floor", 4776452)
   `ceil(Variant)` = load("ceil", 4776452)
   `round(Variant)` = load("round", 4776452)
@@ -513,29 +460,22 @@ proc load* =
   `ease(Float Float)` = load("ease", 92296394)
   `stepDecimals(Float)` = load("step_decimals", 2780425386)
   `lerp(Variant Variant Variant)` = load("lerp", 3389874542)
-  `lerpf(Float Float Float)` = load("lerpf", 998901048)
-  `cubicInterpolate(Float Float Float Float Float)` = load("cubic_interpolate", 1090965791)
-  `cubicInterpolateAngle(Float Float Float Float Float)` = load("cubic_interpolate_angle", 1090965791)
   `cubicInterpolateInTime(Float Float Float Float Float Float Float Float)` = load("cubic_interpolate_in_time", 388121036)
   `cubicInterpolateAngleInTime(Float Float Float Float Float Float Float Float)` = load("cubic_interpolate_angle_in_time", 388121036)
   `bezierInterpolate(Float Float Float Float Float)` = load("bezier_interpolate", 1090965791)
   `bezierDerivative(Float Float Float Float Float)` = load("bezier_derivative", 1090965791)
   `angleDifference(Float Float)` = load("angle_difference", 92296394)
-  `lerpAngle(Float Float Float)` = load("lerp_angle", 998901048)
   `inverseLerp(Float Float Float)` = load("inverse_lerp", 998901048)
   `remap(Float Float Float Float Float)` = load("remap", 1090965791)
   `smoothstep(Float Float Float)` = load("smoothstep", 998901048)
   `moveToward(Float Float Float)` = load("move_toward", 998901048)
   `rotateToward(Float Float Float)` = load("rotate_toward", 998901048)
-  `degToRad(Float)` = load("deg_to_rad", 2140049587)
-  `radToDeg(Float)` = load("rad_to_deg", 2140049587)
   `linearToDb(Float)` = load("linear_to_db", 2140049587)
   `dbToLinear(Float)` = load("db_to_linear", 2140049587)
   `wrap(Variant Variant Variant)` = load("wrap", 3389874542)
   `max(Variant Variant Variant)` = load("max", 3896050336)
   `min(Variant Variant Variant)` = load("min", 3896050336)
   `clamp(Variant Variant Variant)` = load("clamp", 3389874542)
-  `nearestPo2(Int)` = load("nearest_po2", 2157319888)
   `pingpong(Float Float)` = load("pingpong", 92296394)
   `randomize()` = load("randomize", 1691721052)
   `randi()` = load("randi", 701202648)

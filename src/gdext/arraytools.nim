@@ -116,7 +116,7 @@ template toOpenArray*(arr: Array): openArray[Variant] =
 # ==========
 
 proc newTypedArray*[T](arr: TypedArray[T]): TypedArray[T] =
-  TypedArray[T] newArray(arr)
+  TypedArray[T] newArray(arr.Array)
 
 proc newTypedArray*[T](arr: Array): TypedArray[T] =
   when T is Object:

@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.10.1"
+version       = "0.11.0"
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
@@ -12,7 +12,7 @@ binDir        = "bin"
 
 # Dependencies
 
-requires "nim >= 2.0.0"
+requires "nim >= 2.0.12"
 
 import strformat
 var upstream = "https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.4-stable/gdextension/extension_api.json"
@@ -31,7 +31,7 @@ proc report(version, script: string) =
     quit &"[Nim {version}] \"{script}\" failed."
 
 task compatibilityTest, "Compile with a supported range of Nims and check for compatibility.":
-  const versions = ["2.0.0", "2.0.14", "2.2.0", "2.2.2"]
+  const versions = ["2.0.12", "2.0.14", "2.2.0", "2.2.2"]
   for version in versions:
     report version, &"choosenim {version}"
     report version, "nim c tests/importall"
