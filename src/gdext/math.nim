@@ -365,55 +365,6 @@ func max*[T](x: T; xs: varargs[T]): T =
   for i in 0..high(xs):
     if xs[i] > result: result = xs[i]
 
-# Function to find the next power of 2 to an integer.
-template nextPowerOf2*(x: uint32): uint32 =
-  if x == 0: return 0
-  var x = x-1
-  x = x or (x shr 1)
-  x = x or (x shr 2)
-  x = x or (x shr 4)
-  x = x or (x shr 8)
-  x = x or (x shr 16)
-  x+1
-
-# Function to find the previous power of 2 to an integer.
-template previousPowerOf2*(x: uint32): uint32 =
-  var x = x
-  x = x or (x shr 1)
-  x = x or (x shr 2)
-  x = x or (x shr 4)
-  x = x or (x shr 8)
-  x = x or (x shr 16)
-  x - (x shr 1)
-
-# Function to find the closest power of 2 to an integer.
-template closestPowerOf2*(x: uint32): uint32 =
-  let
-    nx = next_power_of_2(x)
-    px = previous_power_of_2(x)
-  if (nx - x) > (x - px): px
-  else: nx
-
-# Get a shift value from a power of 2.
-func getShiftFromPowerOf2*(pBits: uint32): int32 {.inline.} =
-  for i in 0..<32:
-    if pBits == uint32(1 shl i): return int32 i
-  return -1
-
-
-template nearestPowerOf2Templated*[T](x: T): T =
-  var x = x-1
-  let num = getShiftFromPowerOf2(sizeof(T)) + 3
-  for i in 0..<num: x = x or x.shr(1.shl i)
-  return x+1
-
-# Function to find the nearest (bigger) power of 2 to an integer.
-func nearestShift*(pNumber: uint32): uint32 {.inline.} =
-  for i in countdown(30, 0):
-    if (p_number and uint32(1 shl i)) != 0:
-      return uint32 i + 1
-  return 0
-
 # constexpr function to find the floored log2 of a number
 func floorLog2*[T: SomeOrdinal](x: T): T =
   if x < 2: x
@@ -888,6 +839,9 @@ template asin*[T: SomeFloat](pX: T): T = arcsin pX
 template acos*[T: SomeFloat](pX: T): T = arccos pX
 template atan*[T: SomeFloat](pX: T): T = arctan pX
 template atan2*[T: SomeFloat](pY, pX: T): T = arctan2(pY, pX)
+template asinh*[T: SomeFloat](pX: T): T = arcsinh pX
+template acosh*[T: SomeFloat](pX: T): T = arccosh pX
+template atanh*[T: SomeFloat](pX: T): T = arctanh pX
 template fmod*[T: SomeNumber](x, y: T): T = floorMod(x, y)
 template fposmod*[T: SomeFloat](x, y: T): T = posmod(x, y)
 template floorf*[T: SomeFloat](x: T): T = floor x
@@ -911,6 +865,8 @@ template minf*[T: SomeFloat](a, b: T): T = min(a, b)
 template mini*[T: SomeInteger](a, b: T): T = min(a, b)
 template clampf*[T: SomeFloat](value, min, max: T): T = clamp(value, min, max)
 template clampi*[T: SomeInteger](value, min, max: T): T = clamp(value, min, max)
+template lerpf*(`from`: Float; to: Float; weight: Float): Float = lerp(`from`, to, weight)
+template nearestPo2*(value: Int): Int = Int nextPowerOfTwo(int value)
 
 when isMainModule:
   let a = [1f, 0]
