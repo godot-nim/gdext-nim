@@ -33,11 +33,85 @@ gdextwiz run
 - [x] Arithmetic operations such as Vector are more expressive than those in Godot, for example, GLSLang's swizzle operation is also available.
 - [x] It has a CLI tool that allows you to create new extensions, compile, run projects, and so on from a unified interface. (see [wiki - gdextwiz][3])
 - [x] Generate class references from comments and annotations left in the code.
+- [x] [Web platform support](https://github.com/godot-nim/gdext-nim/wiki/Build,-Configure-and-Export-your-project#export-to-web) via Emscripten.
 
 ## Limitation
 
 - [ ] Editor plug-ins cannot be created using only pure Nim code.
 - [ ] Due to engine specifications, Nim code works in the form of calls from the engine; it is not possible to run Nim stand-alone.
+
+## vs. GDScript
+
+Nim and GDScript have very similar syntax. Porting is relatively easy.
+
+<table>
+
+<td valign="top">
+
+```nim
+# Nim
+
+import gdext
+import gdext/classes/[gdSprite2D, gdInput]
+
+type MySprite2D* {.gdsync.} = ptr object of Sprite2D
+  speed: float = 400
+  angular_speed: float = PI
+
+
+method process(self: MySprite2D; delta: float64) {.gdsync.} =
+  var direction = 0
+  if Input.is_action_pressed("ui_left"):
+    direction = -1
+  if Input.is_action_pressed("ui_right"):
+    direction = 1
+
+  self.rotation = self.rotation + self.angular_speed * direction * delta
+
+  var velocity: Vector2
+  if Input.is_action_pressed("ui_up"):
+    velocity = Vector2.Up.rotated(self.rotation) * self.speed
+
+  self.position = self.position + velocity * delta
+```
+
+</td>
+<td valign="top">
+
+
+```GDScript
+# GDScript
+
+extends Sprite2D
+
+var speed = 400
+var angular_speed = PI
+
+
+func _process(delta):
+	var direction = 0
+	if Input.is_action_pressed("ui_left"):
+		direction = -1
+	if Input.is_action_pressed("ui_right"):
+		direction = 1
+
+	rotation += angular_speed * direction * delta
+
+	var velocity = Vector2.ZERO
+	if Input.is_action_pressed("ui_up"):
+		velocity = Vector2.UP.rotated(rotation) * speed
+
+	position += velocity * delta
+```
+
+</td>
+</table>
+
+![gif](https://docs.godotengine.org/en/stable/_images/scripting_first_script_moving_with_input.gif)
+
+Guntur Sarwohadi([@guntur-ctech](https://github.com/guntur-ctech) reports that setting better build options for a simple port will give approximately six times the performance.)
+
+https://github.com/guntur-ctech/simulation-performance-comparison
 
 ## Commands
 
@@ -81,22 +155,6 @@ nimble uninstall gdext
 * Engine: Godot 4.3.stable.arch_linux
 * Nim: 2.0.12, 2.0.14, 2.2.0, 2.2.2
 * CC: gcc version 14.2.1 20240910 (GCC)
-
----
-
-<div align="center">
-
-## Project guides
-
-| | |
-|-|-|
-| Q. How does this library work for instance? | See [demo][1] repository. Several runnable examples are available. |
-| Q. What does this syntax mean? How can I do it? | Refer our [Wiki][2], especially [Coding Quick Guide][4]. |
-| Q. Where can I ask my questions?<br> Q. Where can I share my work or get feedbacks? | Welcome to our [Discussions][5]. Any github user can participate.<br> Let's start with [New discussion]. |
-| Q. I have a feature request! | Please tell us in [Discussions/Ideas][6]. |
-| Q. I'd like to join the dev-team! | Let us know in [Discussions][5] or [Invitation Request][7].<br> We will send you an email invitation. |
-
-</div>
 
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
