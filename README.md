@@ -109,7 +109,7 @@ func _process(delta):
 
 ![gif](https://docs.godotengine.org/en/stable/_images/scripting_first_script_moving_with_input.gif)
 
-Guntur Sarwohadi([@guntur-ctech](https://github.com/guntur-ctech) reports that setting better build options for a simple port will give approximately six times the performance.)
+Guntur Sarwohadi ([@guntur-ctech](https://github.com/guntur-ctech)) reports that setting better build options for a simple port will give approximately six times the performance.
 
 https://github.com/guntur-ctech/simulation-performance-comparison
 
