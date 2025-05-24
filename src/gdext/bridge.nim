@@ -58,6 +58,13 @@ template icon*(icon_path: string) {.pragma.} ## Specify the class icon on the ed
 ## type MyIconClass {.gdsync, icon: "res://icon.png".} = ptr object of Node
 ## ```
 
+template singleton* {.pragma.}
+  ## Register the class as a singleton.
+  ## You can refer the unique instance of it as same as Godot's singletons e.g. Input.
+  ## ```nim
+  ## type MySingleton {.gdsync, singleton.} = ptr object of Object
+  ## ```
+
 var Initialization_Default* {.compileTime.} = Initialization_Scene
 
 proc toLevel(node: NimNode): InitializationLevel =
