@@ -12,6 +12,7 @@ import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
 import gdext/stringtools
+import gdext/classes/gdEngine
 
 when Assistance.genEditorHelp:
   import gdext/private/doctools
@@ -46,7 +47,7 @@ proc property_get_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringN
   cast[Object](p_instance).property_getRevert(p_name, r_ret)
 
 proc notification_func(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-  cast[Object](p_instance).notification(p_what)
+  objectcallbacks.notification(cast[Object](p_instance), p_what)
 
 proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
   cast[Object](p_instance).toString(r_is_valid, p_out)
@@ -207,6 +208,7 @@ macro processExports(T: typed): untyped =
         `result`
 
 var implicitRegistrations* {.compileTime.}: array[InitializationLevel, seq[NimNode]]
+var implicitRegistrationSingletons* {.compileTime.}: seq[NimNode]
 
 var registered: seq[StringName]
 var plugins: seq[StringName]
@@ -231,7 +233,16 @@ proc register*(T: typedesc) =
       when Assistance.genEditorHelp and T.hasCustomPragma(description):
         docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
-proc unregisterAll* =
+macro unregister_singletons =
+  let register = bindSym "register"
+  result = newStmtList()
+  for singleton in implicitRegistrationSingletons:
+    result.add quote do:
+      destroy `singleton`.singleton
+      Engine.unregisterSingleton(className `singleton`)
+
+template unregisterAll* =
+  unregister_singletons
   for i in countdown(plugins.high, 0):
     interface_Editor_removePlugin addr plugins[i]
   for i in countdown(registered.high, 0):
@@ -242,3 +253,6 @@ macro register_implicitly*(level: static InitializationLevel) =
   result = newStmtList()
   for registration in implicitRegistrations[level]:
     result.add register.newCall registration
+    if registration in implicitRegistrationSingletons:
+      result.add quote do:
+        Engine.singleton.registerSingleton(className `registration`, instantiate `registration`)

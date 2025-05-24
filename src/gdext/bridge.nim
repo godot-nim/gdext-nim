@@ -133,6 +133,8 @@ macro gdsync*(body): untyped =
   of nnkTypeDef:
     let level = body.getPragmaVal("initLevel").toLevel
     implicitRegistrations[level].add body.typesym
+    if body.hasPragma("singleton"):
+      implicitRegistrationSingletons.add body.typesym
     body
   else:
     hint "gdsync for " & ($body.kind)[3..^1] & " is not defined; gdsync will do nothing."
