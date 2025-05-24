@@ -9,11 +9,13 @@ import cases/variant
 import cases/image
 import cases/prints
 import cases/issues
+import cases/singletons
 import classes/gdextnode
 import classes/gdvirtualnode01
 import classes/gdvirtualnode02
 import classes/gdtestobject
 import classes/gdextlabel
+import classes/gdsingleton
 
 # ==================================
 

@@ -58,6 +58,13 @@ template icon*(icon_path: string) {.pragma.} ## Specify the class icon on the ed
 ## type MyIconClass {.gdsync, icon: "res://icon.png".} = ptr object of Node
 ## ```
 
+template singleton* {.pragma.}
+  ## Register the class as a singleton.
+  ## You can refer the unique instance of it as same as Godot's singletons e.g. Input.
+  ## ```nim
+  ## type MySingleton {.gdsync, singleton.} = ptr object of Object
+  ## ```
+
 var Initialization_Default* {.compileTime.} = Initialization_Scene
 
 proc toLevel(node: NimNode): InitializationLevel =
@@ -126,6 +133,8 @@ macro gdsync*(body): untyped =
   of nnkTypeDef:
     let level = body.getPragmaVal("initLevel").toLevel
     implicitRegistrations[level].add body.typesym
+    if body.hasPragma("singleton"):
+      implicitRegistrationSingletons.add body.typesym
     body
   else:
     hint "gdsync for " & ($body.kind)[3..^1] & " is not defined; gdsync will do nothing."
