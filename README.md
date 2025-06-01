@@ -2,7 +2,8 @@
 
   # <img src="https://raw.githubusercontent.com/nim-lang/assets/master/Art/logo-crown.png" height="28px"/> godot-nim/gdext
 
-  Nim for GDExtension. A pure library and a CLI tool.  
+  Nim for GDExtension — a pure library and CLI tool.
+  
   <a href="https://github.com/godot-nim/gdext-nim">
     <img src="nimble.svg" height="24">
   </a>
@@ -25,24 +26,27 @@ gdextwiz run
 
 ## Features
 
-- [x] All classes and methods provided by the engine are available from Nim.
-- [x] New extension classes can be defined that inherit from the engine class and exposed to editors and GDScript.
-- [x] New methods, signals, properties, and enums can be defined in your extension classes and exposed.
-- [x] New virtual functions can be defined and exposed, and overridden from both Nim and GDScript.
-- [x] Recompiled GDExtension can be loaded without restarting the editor. (Hot Reloading)
-- [x] Arithmetic operations such as Vector are more expressive than those in Godot, for example, GLSLang's swizzle operation is also available.
-- [x] It has a CLI tool that allows you to create new extensions, compile, run projects, and so on from a unified interface. (see [wiki - gdextwiz][3])
-- [x] Generate class references from comments and annotations left in the code.
+- [x] Access all classes and methods provided by the engine directly from Nim.
+- [x] Define new extension classes that inherit from engine classes and expose them to the editor and GDScript.
+- [x] Add new methods, signals, properties, and enums to your extension classes and expose them as needed.
+- [x] Define and expose virtual functions, which can be overridden in both Nim and GDScript.
+- [x] Reload recompiled GDExtensions without restarting the editor (Hot Reloading).
+- [x] More expressive arithmetic operations (e.g., vectors) than Godot’s defaults — GLSLang-style swizzling is also supported.
+- [x] Includes a CLI tool for creating new extensions, compiling, running projects, and more — all from a single interface (see [wiki - gdextwiz][3]).
+- [x] Generate class references from comments and annotations in the code.
 - [x] [Web platform support](https://github.com/godot-nim/gdext-nim/wiki/Build,-Configure-and-Export-your-project#export-to-web) via Emscripten.
 
-## Limitation
+## Limitations
 
-- [ ] Editor plug-ins cannot be created using only pure Nim code.
-- [ ] Due to engine specifications, Nim code works in the form of calls from the engine; it is not possible to run Nim stand-alone.
+- [ ] Editor plugins cannot be written using pure Nim alone.  
+      To create an editor plugin, your extension class must be properly wrapped in GDScript and integrated via a `plugin.cfg` file. This setup is currently not automated.
+
+- [ ] Due to engine constraints, Nim code is executed only when called from the engine.  
+      It is not possible to run Nim as a standalone Godot application entry point.
 
 ## vs. GDScript
 
-Nim and GDScript have very similar syntax. Porting is relatively easy.
+Nim and GDScript have very similar syntax, making porting between them relatively straightforward.
 
 <table>
 
@@ -109,7 +113,7 @@ func _process(delta):
 
 ![gif](https://docs.godotengine.org/en/stable/_images/scripting_first_script_moving_with_input.gif)
 
-Guntur Sarwohadi ([@guntur-ctech](https://github.com/guntur-ctech)) reports that setting better build options for a simple port will give approximately six times the performance.
+Guntur Sarwohadi ([@guntur-ctech](https://github.com/guntur-ctech)) reports that optimizing the build configuration for a simple port can yield performance gains of up to 6×.
 
 https://github.com/guntur-ctech/simulation-performance-comparison
 
@@ -117,15 +121,26 @@ https://github.com/guntur-ctech/simulation-performance-comparison
 
 ### install
 
+Installs the `gdext` library and its CLI tool `gdextwiz`.
+
 ```
 nimble install gdext
 ```
 
+The gdextwiz tool will be installed to ~/.nimble/bin, which is automatically added to your PATH if you've installed Nim via the official method.
+
 ### uninstall
+
+Removes the library and CLI tool:
 
 ```
 nimble uninstall gdext
 ```
+
+## CLI Tool: gdextwiz
+Use gdextwiz to create, build, and run your GDExtension projects from the command line.
+
+📘 For detailed usage and subcommands, see the [gdextwiz manual][3].
 
 ## Supported environments
 
@@ -137,19 +152,19 @@ nimble uninstall gdext
 
 ### Engine
 
-- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.4.0
+- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.4.0 or higher
 
 ### Nim compiler
 
 * [nim-lang/nim](https://github.com/nim-lang/nim) 2.0.12 or higher
   #### Macos
-  Use Nim installed via Homebrew, not choosenim.
-  Due to the execution environment of Godot itself, a native AArch64/ARM64 build of Nim is required, and that choosenim installs a x86_64 build emulated via Rosetta.
+  Use Nim installed via Homebrew, not `choosenim`.
+  This is because Godot requires a native AArch64/ARM64 binary, while choosenim installs an x86_64 version that runs via Rosetta emulation.
 
 ## Tested by author
 
 > [!NOTE]
-> Support for environments not listed here is based on your reports. Please consider contributing.
+> Support for other environments depends on community feedback. Please consider contributing your findings!
 
 * OS: Linux (Arch)
 * Engine: Godot 4.3.stable.arch_linux
