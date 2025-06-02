@@ -167,9 +167,9 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 > Support for other environments depends on community feedback. Please consider contributing your findings!
 
 * OS: Linux (Arch)
-* Engine: Godot 4.3.stable.arch_linux
+* Engine: Godot 4.4.stable.arch_linux
 * Nim: 2.0.12, 2.0.14, 2.2.0, 2.2.2
-* CC: gcc version 14.2.1 20240910 (GCC)
+* CC: gcc version 15.1.1 20250425 (GCC)
 
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
