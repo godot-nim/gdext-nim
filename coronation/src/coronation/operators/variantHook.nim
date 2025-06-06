@@ -36,7 +36,7 @@ proc parse(variant: JsonBuiltinClass): VariantHook =
 proc prototype(v: VariantHook): Cloth = weave multiline:
   if v.kind in {All, WithOutDestructor}:
     &"proc `=copy`(dst: var {v.typename}; src: {v.typename})"
-    &"proc `=dup`(src: {v.typename}): {v.typename}"
+    &"proc dup(src: {v.typename}): {v.typename}"
   if v.kind in {All}:
     &"proc `=destroy`(val: {v.typename})"
 
@@ -51,7 +51,7 @@ proc define(v: VariantHook): Cloth = weave multiline:
     &"  `=destroy` dst"
     &"  wasMoved dst"
     &"  dst = {copyhook}(src)"
-    &"proc `=dup`(src: {v.typename}): {v.typename} ="
+    &"proc dup(src: {v.typename}): {v.typename} ="
     &"  {copyhook}(src)"
   if v.kind in {All}:
     &"var {v.ptrdestr}: PtrDestructor"
