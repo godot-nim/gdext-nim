@@ -26,7 +26,7 @@ type
   char32_t* = uint32_t
   char16_t* = uint16_t
 
-  VariantType* {.size: sizeof(culong).} = enum
+  VariantType* {.size: 8.} = enum
     VariantType_Nil,
     VariantType_Bool, VariantType_Int,
     VariantType_Float, VariantType_String,
