@@ -94,7 +94,7 @@ proc convert*(raw: JsonGlobalEnum): Enum =
   if is_bitfield:
     padding_bitfield(result)
   else:
-    result.pragmas.list.add "size: sizeof(clong)"
+    result.pragmas.list.add "size: EnumSize.default"
 
 proc convert*(raw: JsonClassEnum; caller: TypeSym): Enum =
   new result
@@ -105,7 +105,7 @@ proc convert*(raw: JsonClassEnum; caller: TypeSym): Enum =
   if is_bitfield:
     padding_bitfield(result)
   else:
-    result.pragmas.list.add "size: sizeof(clong)"
+    result.pragmas.list.add "size: EnumSize.default"
 
 proc convert*(raw: JsonBuiltinClassEnum; caller: TypeSym): Enum =
   new result
@@ -116,7 +116,7 @@ proc convert*(raw: JsonBuiltinClassEnum; caller: TypeSym): Enum =
   if is_bitfield:
     padding_bitfield(result)
   else:
-    result.pragmas.list.add "size: sizeof(clong)"
+    result.pragmas.list.add "size: EnumSize.default"
 
 
 proc weave*(renderable: Enum): Cloth =

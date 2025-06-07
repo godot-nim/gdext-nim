@@ -7,6 +7,7 @@ macro gdcall*(someProc: untyped): untyped =
     elif true or (defined linux) or (defined macosx): "cdecl"
   return someProc
 
+const EnumSize* = (default: 8,)
 
 type
   ExtentEnvironment* = ref object
@@ -26,7 +27,7 @@ type
   char32_t* = uint32_t
   char16_t* = uint16_t
 
-  VariantType* {.size: 8.} = enum
+  VariantType* {.size: EnumSize.default.} = enum
     VariantType_Nil,
     VariantType_Bool, VariantType_Int,
     VariantType_Float, VariantType_String,
