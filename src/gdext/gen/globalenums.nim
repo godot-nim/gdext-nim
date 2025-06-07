@@ -1,36 +1,36 @@
-type Side* {.size: sizeof(clong).} = enum
+type Side* {.size: EnumSize.default.} = enum
   sideLeft = 0
   sideTop = 1
   sideRight = 2
   sideBottom = 3
 
-type Corner* {.size: sizeof(clong).} = enum
+type Corner* {.size: EnumSize.default.} = enum
   cornerTopLeft = 0
   cornerTopRight = 1
   cornerBottomRight = 2
   cornerBottomLeft = 3
 
-type Orientation* {.size: sizeof(clong).} = enum
+type Orientation* {.size: EnumSize.default.} = enum
   horizontal = 0
   vertical = 1
 
-type ClockDirection* {.size: sizeof(clong).} = enum
+type ClockDirection* {.size: EnumSize.default.} = enum
   clockwise = 0
   counterclockwise = 1
 
-type HorizontalAlignment* {.size: sizeof(clong).} = enum
+type HorizontalAlignment* {.size: EnumSize.default.} = enum
   horizontalAlignmentLeft = 0
   horizontalAlignmentCenter = 1
   horizontalAlignmentRight = 2
   horizontalAlignmentFill = 3
 
-type VerticalAlignment* {.size: sizeof(clong).} = enum
+type VerticalAlignment* {.size: EnumSize.default.} = enum
   verticalAlignmentTop = 0
   verticalAlignmentCenter = 1
   verticalAlignmentBottom = 2
   verticalAlignmentFill = 3
 
-type InlineAlignment* {.size: sizeof(clong).} = enum
+type InlineAlignment* {.size: EnumSize.default.} = enum
   inlineAlignmentTopTo = 0
   inlineAlignmentCenterTo = 1
   inlineAlignmentBottomTo = 2
@@ -45,7 +45,7 @@ template inlineAlignmentTop*[T: InlineAlignment](_: typedesc[T]): T = T(0)
 template inlineAlignmentImageMask*[T: InlineAlignment](_: typedesc[T]): T = T(3)
 template inlineAlignmentTextMask*[T: InlineAlignment](_: typedesc[T]): T = T(12)
 
-type EulerOrder* {.size: sizeof(clong).} = enum
+type EulerOrder* {.size: EnumSize.default.} = enum
   eulerOrderXyz = 0
   eulerOrderXzy = 1
   eulerOrderYxz = 2
@@ -53,7 +53,7 @@ type EulerOrder* {.size: sizeof(clong).} = enum
   eulerOrderZxy = 4
   eulerOrderZyx = 5
 
-type Key* {.size: sizeof(clong).} = enum
+type Key* {.size: EnumSize.default.} = enum
   keyNone = 0
   keySpace = 32
   keyExclam = 33
@@ -261,12 +261,12 @@ type KeyModifierMask* = enum
   `--Padding-Max--` = 63 # To align size-of set[KeyModifierMask] to size-of Int.
 template keyModifierMask*[T: KeyModifierMask](_: typedesc[T]): set[T] = cast[set[T]](2130706432)
 
-type KeyLocation* {.size: sizeof(clong).} = enum
+type KeyLocation* {.size: EnumSize.default.} = enum
   keyLocationUnspecified = 0
   keyLocationLeft = 1
   keyLocationRight = 2
 
-type MouseButton* {.size: sizeof(clong).} = enum
+type MouseButton* {.size: EnumSize.default.} = enum
   mouseButtonNone = 0
   mouseButtonLeft = 1
   mouseButtonRight = 2
@@ -286,7 +286,7 @@ type MouseButtonMask* = enum
   mouseButtonMaskMbXbutton2 = 8
   `--Padding-Max--` = 63 # To align size-of set[MouseButtonMask] to size-of Int.
 
-type JoyButton* {.size: sizeof(clong).} = enum
+type JoyButton* {.size: EnumSize.default.} = enum
   joyButtonInvalid = -1
   joyButtonA = 0
   joyButtonB = 1
@@ -312,7 +312,7 @@ type JoyButton* {.size: sizeof(clong).} = enum
   joyButtonSdlMax = 21
   joyButtonMax = 128
 
-type JoyAxis* {.size: sizeof(clong).} = enum
+type JoyAxis* {.size: EnumSize.default.} = enum
   joyAxisInvalid = -1
   joyAxisLeftX = 0
   joyAxisLeftY = 1
@@ -323,7 +323,7 @@ type JoyAxis* {.size: sizeof(clong).} = enum
   joyAxisSdlMax = 6
   joyAxisMax = 10
 
-type MIDIMessage* {.size: sizeof(clong).} = enum
+type MIDIMessage* {.size: EnumSize.default.} = enum
   midiMessageNone = 0
   midiMessageNoteOff = 8
   midiMessageNoteOn = 9
@@ -344,7 +344,7 @@ type MIDIMessage* {.size: sizeof(clong).} = enum
   midiMessageActiveSensing = 254
   midiMessageSystemReset = 255
 
-type Error* {.size: sizeof(clong).} = enum
+type Error* {.size: EnumSize.default.} = enum
   ok = 0
   failed = 1
   errUnavailable = 2
@@ -395,7 +395,7 @@ type Error* {.size: sizeof(clong).} = enum
   errBug = 47
   errPrinterOnFire = 48
 
-type PropertyHint* {.size: sizeof(clong).} = enum
+type PropertyHint* {.size: EnumSize.default.} = enum
   propertyHintNone = 0
   propertyHintRange = 1
   propertyHintEnum = 2
@@ -487,7 +487,7 @@ type MethodFlags* = enum
   `--Padding-Max--` = 63 # To align size-of set[MethodFlags] to size-of Int.
 template methodFlagsDefault*[T: MethodFlags](_: typedesc[T]): T = T(0)
 
-type Variant_Operator* {.size: sizeof(clong).} = enum
+type Variant_Operator* {.size: EnumSize.default.} = enum
   opEqual = 0
   opNotEqual = 1
   opLess = 2

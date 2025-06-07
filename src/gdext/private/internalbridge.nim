@@ -28,29 +28,29 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstance(classname T, result)
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
-proc set_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  cast[Object](p_instance).set(p_name, p_value)
+proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
+  procCall set(cast[T](p_instance), p_name, p_value)
 
-proc get_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[Object](p_instance).get(p_name, r_ret)
+proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
+  procCall get(cast[T](p_instance), p_name, r_ret)
 
-proc get_property_list_func(p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  cast[Object](p_instance).get_propertyList(r_count)
+proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
+  procCall getPropertyList(cast[T](p_instance), r_count)
 
-proc free_property_list_func(p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
-  cast[Object](p_instance).free_propertyList(p_list.toOpenArray(0, int p_count))
+proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
+  procCall freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
 
-proc property_can_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  cast[Object](p_instance).property_canRevert(p_name)
+proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
+  procCall propertyCanRevert(cast[T](p_instance), p_name)
 
-proc property_get_revert_func(p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  cast[Object](p_instance).property_getRevert(p_name, r_ret)
+proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
+  procCall propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
-proc notification_func(p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-  objectcallbacks.notification(cast[Object](p_instance), p_what)
+proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
+  procCall notification(cast[T](p_instance), p_what)
 
-proc to_string_func(p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  cast[Object](p_instance).toString(r_is_valid, p_out)
+proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
+  procCall toString(cast[T](p_instance), r_is_valid, p_out)
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
@@ -105,15 +105,31 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_expose
     is_exposed: is_exposed,
     is_runtime: not T.hasCustomPragma(tool),
     icon_path: addr icon_path,
-    set_func: set_func,
-    get_func: get_func,
-    get_property_list_func: get_property_list_func,
-    free_property_list_func: free_property_list_func,
-    property_can_revert_func: property_can_revert_func,
-    property_get_revert_func: property_get_revert_func,
+    set_func:
+      when compiles(setT[T](set)): nil
+      else: set_func[T],
+    get_func:
+      when compiles(getT[T](get)): nil
+      else: get_func[T],
+    get_property_list_func:
+      when compiles(getPropertyListT[T](getPropertyList)): nil
+      else: get_property_list_func[T],
+    free_property_list_func:
+      when compiles(freePropertyListT[T](freePropertyList)): nil
+      else: free_property_list_func[T],
+    property_can_revert_func:
+      when compiles(propertyCanRevertT[T](propertyCanRevert)): nil
+      else: property_can_revert_func[T],
+    property_get_revert_func:
+      when compiles(propertyGetRevertT[T](propertyGetRevert)): nil
+      else: property_get_revert_func[T],
     validate_property_func: nil,
-    notification_func: notification_func,
-    to_string_func: to_string_func,
+    notification_func:
+      when compiles(notificationT[T](notification)): nil
+      else: notification_func[T],
+    to_string_func:
+      when compiles(toStringT[T](toString)): nil
+      else: to_string_func[T],
     reference_func: reference_func,
     unreference_func: unreference_func,
     create_instance_func: create_instance_func[T],

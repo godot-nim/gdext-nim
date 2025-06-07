@@ -111,8 +111,16 @@ type
     version_build*: string
     version_full_name*: string
 
+  JsonVariantSizeWithConf* = ref object
+    build_configuration*: string
+    sizes*: seq[JsonVariantSize]
+  JsonVariantSize* = object
+    name*: string
+    size*: int
+
   JsonAPI* = ref object
     header*: JsonHeader
+    builtin_class_sizes*: seq[JsonVariantSizeWithConf]
     global_enums*: seq[JsonGlobalEnum]
     utility_functions*: seq[JsonUtilityFunction]
     builtin_classes*: JsonBuiltinClasses

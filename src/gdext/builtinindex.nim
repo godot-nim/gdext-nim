@@ -14,9 +14,9 @@ type char16* = char16_t
 type char32* = char32_t
 
 when real_elem is float32:
-  type VariantData = array[16, uint8]
+  type VariantData = array[24 - 8, uint8]
 else:
-  type VariantData = array[32, uint8]
+  type VariantData = array[40 - 8, uint8]
 
 type
   Vector*[N: static int; T] = array[N, T]
@@ -263,7 +263,7 @@ template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_N
 
 include gdext/gen/[classindex]
 
-proc `=dup`*(src: String): String =
+proc dup*(src: String): String =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeString](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: String) =
@@ -273,9 +273,9 @@ proc `=copy`*(dst: var String; src: String) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: StringName): StringName =
+proc dup*(src: StringName): StringName =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeStringName](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: StringName) =
@@ -285,9 +285,9 @@ proc `=copy`*(dst: var StringName; src: StringName) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: NodePath): NodePath =
+proc dup*(src: NodePath): NodePath =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeNodePath](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: NodePath) =
@@ -297,18 +297,18 @@ proc `=copy`*(dst: var NodePath; src: NodePath) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: RID): RID =
+proc dup*(src: RID): RID =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeRID](addr result, addr argPtr)
 proc `=copy`*(dst: var RID; src: RID) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: Callable): Callable =
+proc dup*(src: Callable): Callable =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeCallable](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Callable) =
@@ -318,9 +318,9 @@ proc `=copy`*(dst: var Callable; src: Callable) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: Signal): Signal =
+proc dup*(src: Signal): Signal =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeSignal](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Signal) =
@@ -330,9 +330,9 @@ proc `=copy`*(dst: var Signal; src: Signal) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: Dictionary): Dictionary =
+proc dup*(src: Dictionary): Dictionary =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeDictionary](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Dictionary) =
@@ -342,9 +342,9 @@ proc `=copy`*(dst: var Dictionary; src: Dictionary) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*(src: Array): Array =
+proc dup*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeArray](addr result, addr argPtr)
 proc `=destroy`*(val {.bycopy.}: Array) =
@@ -354,9 +354,9 @@ proc `=copy`*(dst: var Array; src: Array) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
-proc `=dup`*[T](src: PackedArray[T]): PackedArray[T] =
+proc dup*[T](src: PackedArray[T]): PackedArray[T] =
   let argPtr = cast[pointer](addr src)
   when T is byte:
     typeConstructor[VariantTypePackedByteArray](addr result, addr argPtr)
@@ -404,11 +404,11 @@ proc `=copy`*[T](dst: var PackedArray[T]; src: PackedArray[T]) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
-  dst = `=dup` src
+  dst = dup src
 
 proc `=destroy`*(x {.bycopy.}: Variant) =
   interface_variantDestroy(addr x)
-proc `=dup`*(x: Variant): Variant =
+proc dup*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
 proc `=copy`*(dest: var Variant; source: Variant) =
   `=destroy` dest
@@ -424,7 +424,7 @@ proc `=destroy`*[T](self: GdRef[T]) =
   if objectptr.isNil: return
   if hook_unreference(objectptr):
     interfaceObjectDestroy objectPtr
-proc `=dup`*[T](src: GdRef[T]): GdRef[T] =
+proc dup*[T](src: GdRef[T]): GdRef[T] =
   if src.handle.isNil: return
   result.handle = src.handle
   let objectptr = src.handle.unsafeEngineInstance
@@ -433,7 +433,7 @@ proc `=dup`*[T](src: GdRef[T]): GdRef[T] =
 proc `=copy`*[T](dst: var GdRef[T]; src: GdRef[T]) =
   `=destroy`dst
   `=wasMoved`dst
-  dst = `=dup`src
+  dst = dup src
 
 proc hook_reference(o: ObjectPtr): Bool {.raises: [].} =
   if unlikely(o.isNil): return
