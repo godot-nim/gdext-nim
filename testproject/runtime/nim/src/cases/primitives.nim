@@ -2,6 +2,7 @@ import gdext
 import testutils
 import std/[unicode, strutils]
 import gdext/classes/gdnode
+include gdext/gen/variantsizes
 
 runtime: suite "to string":
   test "Bool":
@@ -100,6 +101,87 @@ runtime: suite "to string":
     destroy node
     var nilnode: Node
     check $nilnode == $variant(nilnode)
+
+runtime: suite "size":
+  test "bool":
+    check sizeof(bool) == boolSize
+    check sizeof(Bool) == boolSize
+  test "int":
+    check sizeof(Int) == intSize
+  test "float":
+    check sizeof(Float) == floatSize
+  test "String":
+    check sizeof(String) == StringSize
+  test "Vector2":
+    check sizeof(Vector2) == Vector2Size
+  test "Vector2i":
+    check sizeof(Vector2i) == Vector2iSize
+  test "Rect2":
+    check sizeof(Rect2) == Rect2Size
+  test "Rect2i":
+    check sizeof(Rect2i) == Rect2iSize
+  test "Vector3":
+    check sizeof(Vector3) == Vector3Size
+  test "Vector3i":
+    check sizeof(Vector3i) == Vector3iSize
+  test "Transform2D":
+    check sizeof(Transform2D) == Transform2DSize
+  test "Vector4":
+    check sizeof(Vector4) == Vector4Size
+  test "Vector4i":
+    check sizeof(Vector4i) == Vector4iSize
+  test "Plane":
+    check sizeof(Plane) == PlaneSize
+  test "Quaternion":
+    check sizeof(Quaternion) == QuaternionSize
+  test "AABB":
+    check sizeof(AABB) == AABBSize
+  test "Basis":
+    check sizeof(Basis) == BasisSize
+  test "Transform3D":
+    check sizeof(Transform3D) == Transform3DSize
+  test "Projection":
+    check sizeof(Projection) == ProjectionSize
+  test "Color":
+    check sizeof(Color) == ColorSize
+  test "StringName":
+    check sizeof(StringName) == StringNameSize
+  test "NodePath":
+    check sizeof(NodePath) == NodePathSize
+  test "RID":
+    check sizeof(RID) == RIDSize
+  test "Object":
+    check sizeof(Object) == ObjectSize
+  test "Callable":
+    check sizeof(Callable) == CallableSize
+  test "Signal":
+    check sizeof(Signal) == SignalSize
+  test "Dictionary":
+    check sizeof(Dictionary) == DictionarySize
+  test "Array":
+    check sizeof(Array) == ArraySize
+  test "PackedByteArray":
+    check sizeof(PackedByteArray) == PackedByteArraySize
+  test "PackedInt32Array":
+    check sizeof(PackedInt32Array) == PackedInt32ArraySize
+  test "PackedInt64Array":
+    check sizeof(PackedInt64Array) == PackedInt64ArraySize
+  test "PackedFloat32Array":
+    check sizeof(PackedFloat32Array) == PackedFloat32ArraySize
+  test "PackedFloat64Array":
+    check sizeof(PackedFloat64Array) == PackedFloat64ArraySize
+  test "PackedStringArray":
+    check sizeof(PackedStringArray) == PackedStringArraySize
+  test "PackedVector2Array":
+    check sizeof(PackedVector2Array) == PackedVector2ArraySize
+  test "PackedVector3Array":
+    check sizeof(PackedVector3Array) == PackedVector3ArraySize
+  test "PackedColorArray":
+    check sizeof(PackedColorArray) == PackedColorArraySize
+  test "PackedVector4Array":
+    check sizeof(PackedVector4Array) == PackedVector4ArraySize
+  test "Variant":
+    check sizeof(Variant) == VariantSize
 
 runtime: suite "Array":
   test "construct":

@@ -23,6 +23,7 @@ import operators/builtinclasses/methods
 import operators/classindex
 import operators/classes/methods
 import operators/classes/properties
+import operators/variantsizes
 
 import std/sequtils
 import std/strformat
@@ -63,6 +64,12 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
           "This directory will contain automatically generated files that do not need to be imported manually by the user."
           "Newly created/modified files in this directory are cleared each time `nimble generate` is run."
           "Manual editing of this directory is therefore not recommended."
+
+      # [Builtin Class Sizes]
+      weave "variantsizes".nim:
+        weave margin:
+          for size in api.builtin_class_sizes:
+            weave size
 
       # [Global Enums]
       let globalenums = weave "globalenums".nim:

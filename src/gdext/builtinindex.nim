@@ -14,9 +14,9 @@ type char16* = char16_t
 type char32* = char32_t
 
 when real_elem is float32:
-  type VariantData = array[16, uint8]
+  type VariantData = array[24 - 8, uint8]
 else:
-  type VariantData = array[32, uint8]
+  type VariantData = array[40 - 8, uint8]
 
 type
   Vector*[N: static int; T] = array[N, T]
