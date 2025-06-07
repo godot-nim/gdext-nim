@@ -1,34 +1,34 @@
-type Vector2_Axis* {.size: sizeof(clong).} = enum
+type Vector2_Axis* {.size: EnumSize.default.} = enum
   axisX = 0
   axisY = 1
 
-type Vector2i_Axis* {.size: sizeof(clong).} = enum
+type Vector2i_Axis* {.size: EnumSize.default.} = enum
   axisX = 0
   axisY = 1
 
-type Vector3_Axis* {.size: sizeof(clong).} = enum
-  axisX = 0
-  axisY = 1
-  axisZ = 2
-
-type Vector3i_Axis* {.size: sizeof(clong).} = enum
+type Vector3_Axis* {.size: EnumSize.default.} = enum
   axisX = 0
   axisY = 1
   axisZ = 2
 
-type Vector4_Axis* {.size: sizeof(clong).} = enum
+type Vector3i_Axis* {.size: EnumSize.default.} = enum
   axisX = 0
   axisY = 1
   axisZ = 2
-  axisW = 3
 
-type Vector4i_Axis* {.size: sizeof(clong).} = enum
+type Vector4_Axis* {.size: EnumSize.default.} = enum
   axisX = 0
   axisY = 1
   axisZ = 2
   axisW = 3
 
-type Projection_Planes* {.size: sizeof(clong).} = enum
+type Vector4i_Axis* {.size: EnumSize.default.} = enum
+  axisX = 0
+  axisY = 1
+  axisZ = 2
+  axisW = 3
+
+type Projection_Planes* {.size: EnumSize.default.} = enum
   planeNear = 0
   planeFar = 1
   planeLeft = 2
@@ -36,34 +36,34 @@ type Projection_Planes* {.size: sizeof(clong).} = enum
   planeRight = 4
   planeBottom = 5
 
-type AESContext_Mode* {.size: sizeof(clong).} = enum
+type AESContext_Mode* {.size: EnumSize.default.} = enum
   modeEcbEncrypt = 0
   modeEcbDecrypt = 1
   modeCbcEncrypt = 2
   modeCbcDecrypt = 3
   modeMax = 4
 
-type AStarGrid2D_Heuristic* {.size: sizeof(clong).} = enum
+type AStarGrid2D_Heuristic* {.size: EnumSize.default.} = enum
   heuristicEuclidean = 0
   heuristicManhattan = 1
   heuristicOctile = 2
   heuristicChebyshev = 3
   heuristicMax = 4
 
-type AStarGrid2D_DiagonalMode* {.size: sizeof(clong).} = enum
+type AStarGrid2D_DiagonalMode* {.size: EnumSize.default.} = enum
   diagonalModeAlways = 0
   diagonalModeNever = 1
   diagonalModeAtLeastOneWalkable = 2
   diagonalModeOnlyIfNoObstacles = 3
   diagonalModeMax = 4
 
-type AStarGrid2D_CellShape* {.size: sizeof(clong).} = enum
+type AStarGrid2D_CellShape* {.size: EnumSize.default.} = enum
   cellShapeSquare = 0
   cellShapeIsometricRight = 1
   cellShapeIsometricDown = 2
   cellShapeMax = 3
 
-type Animation_TrackType* {.size: sizeof(clong).} = enum
+type Animation_TrackType* {.size: EnumSize.default.} = enum
   typeValue = 0
   typePosition3D = 1
   typeRotation3D = 2
@@ -74,145 +74,145 @@ type Animation_TrackType* {.size: sizeof(clong).} = enum
   typeAudio = 7
   typeAnimation = 8
 
-type Animation_InterpolationType* {.size: sizeof(clong).} = enum
+type Animation_InterpolationType* {.size: EnumSize.default.} = enum
   interpolationNearest = 0
   interpolationLinear = 1
   interpolationCubic = 2
   interpolationLinearAngle = 3
   interpolationCubicAngle = 4
 
-type Animation_UpdateMode* {.size: sizeof(clong).} = enum
+type Animation_UpdateMode* {.size: EnumSize.default.} = enum
   updateContinuous = 0
   updateDiscrete = 1
   updateCapture = 2
 
-type Animation_LoopMode* {.size: sizeof(clong).} = enum
+type Animation_LoopMode* {.size: EnumSize.default.} = enum
   loopNone = 0
   loopLinear = 1
   loopPingpong = 2
 
-type Animation_LoopedFlag* {.size: sizeof(clong).} = enum
+type Animation_LoopedFlag* {.size: EnumSize.default.} = enum
   loopedFlagNone = 0
   loopedFlagEnd = 1
   loopedFlagStart = 2
 
-type Animation_FindMode* {.size: sizeof(clong).} = enum
+type Animation_FindMode* {.size: EnumSize.default.} = enum
   findModeNearest = 0
   findModeApprox = 1
   findModeExact = 2
 
-type AnimationMixer_AnimationCallbackModeProcess* {.size: sizeof(clong).} = enum
+type AnimationMixer_AnimationCallbackModeProcess* {.size: EnumSize.default.} = enum
   animationCallbackModeProcessPhysics = 0
   animationCallbackModeProcessIdle = 1
   animationCallbackModeProcessManual = 2
 
-type AnimationMixer_AnimationCallbackModeMethod* {.size: sizeof(clong).} = enum
+type AnimationMixer_AnimationCallbackModeMethod* {.size: EnumSize.default.} = enum
   animationCallbackModeMethodDeferred = 0
   animationCallbackModeMethodImmediate = 1
 
-type AnimationMixer_AnimationCallbackModeDiscrete* {.size: sizeof(clong).} = enum
+type AnimationMixer_AnimationCallbackModeDiscrete* {.size: EnumSize.default.} = enum
   animationCallbackModeDiscreteDominant = 0
   animationCallbackModeDiscreteRecessive = 1
   animationCallbackModeDiscreteForceContinuous = 2
 
-type AnimationNode_FilterAction* {.size: sizeof(clong).} = enum
+type AnimationNode_FilterAction* {.size: EnumSize.default.} = enum
   filterIgnore = 0
   filterPass = 1
   filterStop = 2
   filterBlend = 3
 
-type AnimationNodeAnimation_PlayMode* {.size: sizeof(clong).} = enum
+type AnimationNodeAnimation_PlayMode* {.size: EnumSize.default.} = enum
   playModeForward = 0
   playModeBackward = 1
 
-type AnimationNodeBlendSpace1D_BlendMode* {.size: sizeof(clong).} = enum
+type AnimationNodeBlendSpace1D_BlendMode* {.size: EnumSize.default.} = enum
   blendModeInterpolated = 0
   blendModeDiscrete = 1
   blendModeDiscreteCarry = 2
 
-type AnimationNodeBlendSpace2D_BlendMode* {.size: sizeof(clong).} = enum
+type AnimationNodeBlendSpace2D_BlendMode* {.size: EnumSize.default.} = enum
   blendModeInterpolated = 0
   blendModeDiscrete = 1
   blendModeDiscreteCarry = 2
 
-type AnimationNodeOneShot_OneShotRequest* {.size: sizeof(clong).} = enum
+type AnimationNodeOneShot_OneShotRequest* {.size: EnumSize.default.} = enum
   oneShotRequestNone = 0
   oneShotRequestFire = 1
   oneShotRequestAbort = 2
   oneShotRequestFadeOut = 3
 
-type AnimationNodeOneShot_MixMode* {.size: sizeof(clong).} = enum
+type AnimationNodeOneShot_MixMode* {.size: EnumSize.default.} = enum
   mixModeBlend = 0
   mixModeAdd = 1
 
-type AnimationNodeStateMachine_StateMachineType* {.size: sizeof(clong).} = enum
+type AnimationNodeStateMachine_StateMachineType* {.size: EnumSize.default.} = enum
   stateMachineTypeRoot = 0
   stateMachineTypeNested = 1
   stateMachineTypeGrouped = 2
 
-type AnimationNodeStateMachineTransition_SwitchMode* {.size: sizeof(clong).} = enum
+type AnimationNodeStateMachineTransition_SwitchMode* {.size: EnumSize.default.} = enum
   switchModeImmediate = 0
   switchModeSync = 1
   switchModeAtEnd = 2
 
-type AnimationNodeStateMachineTransition_AdvanceMode* {.size: sizeof(clong).} = enum
+type AnimationNodeStateMachineTransition_AdvanceMode* {.size: EnumSize.default.} = enum
   advanceModeDisabled = 0
   advanceModeEnabled = 1
   advanceModeAuto = 2
 
-type AnimationPlayer_AnimationProcessCallback* {.size: sizeof(clong).} = enum
+type AnimationPlayer_AnimationProcessCallback* {.size: EnumSize.default.} = enum
   animationProcessPhysics = 0
   animationProcessIdle = 1
   animationProcessManual = 2
 
-type AnimationPlayer_AnimationMethodCallMode* {.size: sizeof(clong).} = enum
+type AnimationPlayer_AnimationMethodCallMode* {.size: EnumSize.default.} = enum
   animationMethodCallDeferred = 0
   animationMethodCallImmediate = 1
 
-type AnimationTree_AnimationProcessCallback* {.size: sizeof(clong).} = enum
+type AnimationTree_AnimationProcessCallback* {.size: EnumSize.default.} = enum
   animationProcessPhysics = 0
   animationProcessIdle = 1
   animationProcessManual = 2
 
-type Area2D_SpaceOverride* {.size: sizeof(clong).} = enum
+type Area2D_SpaceOverride* {.size: EnumSize.default.} = enum
   spaceOverrideDisabled = 0
   spaceOverrideCombine = 1
   spaceOverrideCombineReplace = 2
   spaceOverrideReplace = 3
   spaceOverrideReplaceCombine = 4
 
-type Area3D_SpaceOverride* {.size: sizeof(clong).} = enum
+type Area3D_SpaceOverride* {.size: EnumSize.default.} = enum
   spaceOverrideDisabled = 0
   spaceOverrideCombine = 1
   spaceOverrideCombineReplace = 2
   spaceOverrideReplace = 3
   spaceOverrideReplaceCombine = 4
 
-type AspectRatioContainer_StretchMode* {.size: sizeof(clong).} = enum
+type AspectRatioContainer_StretchMode* {.size: EnumSize.default.} = enum
   stretchWidthControlsHeight = 0
   stretchHeightControlsWidth = 1
   stretchFit = 2
   stretchCover = 3
 
-type AspectRatioContainer_AlignmentMode* {.size: sizeof(clong).} = enum
+type AspectRatioContainer_AlignmentMode* {.size: EnumSize.default.} = enum
   alignmentBegin = 0
   alignmentCenter = 1
   alignmentEnd = 2
 
-type AudioEffectDistortion_Mode* {.size: sizeof(clong).} = enum
+type AudioEffectDistortion_Mode* {.size: EnumSize.default.} = enum
   modeClip = 0
   modeAtan = 1
   modeLofi = 2
   modeOverdrive = 3
   modeWaveshape = 4
 
-type AudioEffectFilter_FilterDB* {.size: sizeof(clong).} = enum
+type AudioEffectFilter_FilterDB* {.size: EnumSize.default.} = enum
   filter6Db = 0
   filter12Db = 1
   filter18Db = 2
   filter24Db = 3
 
-type AudioEffectPitchShift_FFTSize* {.size: sizeof(clong).} = enum
+type AudioEffectPitchShift_FFTSize* {.size: EnumSize.default.} = enum
   fftSize256 = 0
   fftSize512 = 1
   fftSize1024 = 2
@@ -220,7 +220,7 @@ type AudioEffectPitchShift_FFTSize* {.size: sizeof(clong).} = enum
   fftSize4096 = 4
   fftSizeMax = 5
 
-type AudioEffectSpectrumAnalyzer_FFTSize* {.size: sizeof(clong).} = enum
+type AudioEffectSpectrumAnalyzer_FFTSize* {.size: EnumSize.default.} = enum
   fftSize256 = 0
   fftSize512 = 1
   fftSize1024 = 2
@@ -228,100 +228,100 @@ type AudioEffectSpectrumAnalyzer_FFTSize* {.size: sizeof(clong).} = enum
   fftSize4096 = 4
   fftSizeMax = 5
 
-type AudioEffectSpectrumAnalyzerInstance_MagnitudeMode* {.size: sizeof(clong).} = enum
+type AudioEffectSpectrumAnalyzerInstance_MagnitudeMode* {.size: EnumSize.default.} = enum
   magnitudeAverage = 0
   magnitudeMax = 1
 
-type AudioServer_SpeakerMode* {.size: sizeof(clong).} = enum
+type AudioServer_SpeakerMode* {.size: EnumSize.default.} = enum
   speakerModeStereo = 0
   speakerSurround31 = 1
   speakerSurround51 = 2
   speakerSurround71 = 3
 
-type AudioServer_PlaybackType* {.size: sizeof(clong).} = enum
+type AudioServer_PlaybackType* {.size: EnumSize.default.} = enum
   playbackTypeDefault = 0
   playbackTypeStream = 1
   playbackTypeSample = 2
   playbackTypeMax = 3
 
-type AudioStreamGenerator_AudioStreamGeneratorMixRate* {.size: sizeof(clong).} = enum
+type AudioStreamGenerator_AudioStreamGeneratorMixRate* {.size: EnumSize.default.} = enum
   mixRateOutput = 0
   mixRateInput = 1
   mixRateCustom = 2
   mixRateMax = 3
 
-type AudioStreamInteractive_TransitionFromTime* {.size: sizeof(clong).} = enum
+type AudioStreamInteractive_TransitionFromTime* {.size: EnumSize.default.} = enum
   transitionFromTimeImmediate = 0
   transitionFromTimeNextBeat = 1
   transitionFromTimeNextBar = 2
   transitionFromTimeEnd = 3
 
-type AudioStreamInteractive_TransitionToTime* {.size: sizeof(clong).} = enum
+type AudioStreamInteractive_TransitionToTime* {.size: EnumSize.default.} = enum
   transitionToTimeSamePosition = 0
   transitionToTimeStart = 1
 
-type AudioStreamInteractive_FadeMode* {.size: sizeof(clong).} = enum
+type AudioStreamInteractive_FadeMode* {.size: EnumSize.default.} = enum
   fadeDisabled = 0
   fadeIn = 1
   fadeOut = 2
   fadeCross = 3
   fadeAutomatic = 4
 
-type AudioStreamInteractive_AutoAdvanceMode* {.size: sizeof(clong).} = enum
+type AudioStreamInteractive_AutoAdvanceMode* {.size: EnumSize.default.} = enum
   autoAdvanceDisabled = 0
   autoAdvanceEnabled = 1
   autoAdvanceReturnToHold = 2
 
-type AudioStreamPlayer_MixTarget* {.size: sizeof(clong).} = enum
+type AudioStreamPlayer_MixTarget* {.size: EnumSize.default.} = enum
   mixTargetStereo = 0
   mixTargetSurround = 1
   mixTargetCenter = 2
 
-type AudioStreamPlayer3D_AttenuationModel* {.size: sizeof(clong).} = enum
+type AudioStreamPlayer3D_AttenuationModel* {.size: EnumSize.default.} = enum
   attenuationInverseDistance = 0
   attenuationInverseSquareDistance = 1
   attenuationLogarithmic = 2
   attenuationDisabled = 3
 
-type AudioStreamPlayer3D_DopplerTracking* {.size: sizeof(clong).} = enum
+type AudioStreamPlayer3D_DopplerTracking* {.size: EnumSize.default.} = enum
   dopplerTrackingDisabled = 0
   dopplerTrackingIdleStep = 1
   dopplerTrackingPhysicsStep = 2
 
-type AudioStreamRandomizer_PlaybackMode* {.size: sizeof(clong).} = enum
+type AudioStreamRandomizer_PlaybackMode* {.size: EnumSize.default.} = enum
   playbackRandomNoRepeats = 0
   playbackRandom = 1
   playbackSequential = 2
 
-type AudioStreamWAV_Format* {.size: sizeof(clong).} = enum
+type AudioStreamWAV_Format* {.size: EnumSize.default.} = enum
   format8Bits = 0
   format16Bits = 1
   formatImaAdpcm = 2
   formatQoa = 3
 
-type AudioStreamWAV_LoopMode* {.size: sizeof(clong).} = enum
+type AudioStreamWAV_LoopMode* {.size: EnumSize.default.} = enum
   loopDisabled = 0
   loopForward = 1
   loopPingpong = 2
   loopBackward = 3
 
-type BackBufferCopy_CopyMode* {.size: sizeof(clong).} = enum
+type BackBufferCopy_CopyMode* {.size: EnumSize.default.} = enum
   copyModeDisabled = 0
   copyModeRect = 1
   copyModeViewport = 2
 
-type BaseButton_DrawMode* {.size: sizeof(clong).} = enum
+type BaseButton_DrawMode* {.size: EnumSize.default.} = enum
   drawNormal = 0
   drawPressed = 1
   drawHover = 2
   drawDisabled = 3
   drawHoverPressed = 4
 
-type BaseButton_ActionMode* {.size: sizeof(clong).} = enum
+type BaseButton_ActionMode* {.size: EnumSize.default.} = enum
   actionModeButtonPress = 0
   actionModeButtonRelease = 1
 
-type BaseMaterial3D_TextureParam* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_TextureParam* {.size: EnumSize.default.} = enum
   textureAlbedo = 0
   textureMetallic = 1
   textureRoughness = 2
@@ -342,7 +342,7 @@ type BaseMaterial3D_TextureParam* {.size: sizeof(clong).} = enum
   textureOrm = 17
   textureMax = 18
 
-type BaseMaterial3D_TextureFilter* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_TextureFilter* {.size: EnumSize.default.} = enum
   textureFilterNearest = 0
   textureFilterLinear = 1
   textureFilterNearestWithMipmaps = 2
@@ -351,11 +351,11 @@ type BaseMaterial3D_TextureFilter* {.size: sizeof(clong).} = enum
   textureFilterLinearWithMipmapsAnisotropic = 5
   textureFilterMax = 6
 
-type BaseMaterial3D_DetailUV* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_DetailUV* {.size: EnumSize.default.} = enum
   detailUv1 = 0
   detailUv2 = 1
 
-type BaseMaterial3D_Transparency* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_Transparency* {.size: EnumSize.default.} = enum
   transparencyDisabled = 0
   transparencyAlpha = 1
   transparencyAlphaScissor = 2
@@ -363,13 +363,13 @@ type BaseMaterial3D_Transparency* {.size: sizeof(clong).} = enum
   transparencyAlphaDepthPrePass = 4
   transparencyMax = 5
 
-type BaseMaterial3D_ShadingMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_ShadingMode* {.size: EnumSize.default.} = enum
   shadingModeUnshaded = 0
   shadingModePerPixel = 1
   shadingModePerVertex = 2
   shadingModeMax = 3
 
-type BaseMaterial3D_Feature* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_Feature* {.size: EnumSize.default.} = enum
   featureEmission = 0
   featureNormalMapping = 1
   featureRim = 2
@@ -384,29 +384,29 @@ type BaseMaterial3D_Feature* {.size: sizeof(clong).} = enum
   featureDetail = 11
   featureMax = 12
 
-type BaseMaterial3D_BlendMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_BlendMode* {.size: EnumSize.default.} = enum
   blendModeMix = 0
   blendModeAdd = 1
   blendModeSub = 2
   blendModeMul = 3
   blendModePremultAlpha = 4
 
-type BaseMaterial3D_AlphaAntiAliasing* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_AlphaAntiAliasing* {.size: EnumSize.default.} = enum
   alphaAntialiasingOff = 0
   alphaAntialiasingAlphaToCoverage = 1
   alphaAntialiasingAlphaToCoverageAndToOne = 2
 
-type BaseMaterial3D_DepthDrawMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_DepthDrawMode* {.size: EnumSize.default.} = enum
   depthDrawOpaqueOnly = 0
   depthDrawAlways = 1
   depthDrawDisabled = 2
 
-type BaseMaterial3D_CullMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_CullMode* {.size: EnumSize.default.} = enum
   cullBack = 0
   cullFront = 1
   cullDisabled = 2
 
-type BaseMaterial3D_Flags* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_Flags* {.size: EnumSize.default.} = enum
   flagDisableDepthTest = 0
   flagAlbedoFromVertexColor = 1
   flagSrgbVertexColor = 2
@@ -431,50 +431,50 @@ type BaseMaterial3D_Flags* {.size: sizeof(clong).} = enum
   flagDisableFog = 21
   flagMax = 22
 
-type BaseMaterial3D_DiffuseMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_DiffuseMode* {.size: EnumSize.default.} = enum
   diffuseBurley = 0
   diffuseLambert = 1
   diffuseLambertWrap = 2
   diffuseToon = 3
 
-type BaseMaterial3D_SpecularMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_SpecularMode* {.size: EnumSize.default.} = enum
   specularSchlickGgx = 0
   specularToon = 1
   specularDisabled = 2
 
-type BaseMaterial3D_BillboardMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_BillboardMode* {.size: EnumSize.default.} = enum
   billboardDisabled = 0
   billboardEnabled = 1
   billboardFixedY = 2
   billboardParticles = 3
 
-type BaseMaterial3D_TextureChannel* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_TextureChannel* {.size: EnumSize.default.} = enum
   textureChannelRed = 0
   textureChannelGreen = 1
   textureChannelBlue = 2
   textureChannelAlpha = 3
   textureChannelGrayscale = 4
 
-type BaseMaterial3D_EmissionOperator* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_EmissionOperator* {.size: EnumSize.default.} = enum
   emissionOpAdd = 0
   emissionOpMultiply = 1
 
-type BaseMaterial3D_DistanceFadeMode* {.size: sizeof(clong).} = enum
+type BaseMaterial3D_DistanceFadeMode* {.size: EnumSize.default.} = enum
   distanceFadeDisabled = 0
   distanceFadePixelAlpha = 1
   distanceFadePixelDither = 2
   distanceFadeObjectDither = 3
 
-type BoxContainer_AlignmentMode* {.size: sizeof(clong).} = enum
+type BoxContainer_AlignmentMode* {.size: EnumSize.default.} = enum
   alignmentBegin = 0
   alignmentCenter = 1
   alignmentEnd = 2
 
-type CPUParticles2D_DrawOrder* {.size: sizeof(clong).} = enum
+type CPUParticles2D_DrawOrder* {.size: EnumSize.default.} = enum
   drawOrderIndex = 0
   drawOrderLifetime = 1
 
-type CPUParticles2D_Parameter* {.size: sizeof(clong).} = enum
+type CPUParticles2D_Parameter* {.size: EnumSize.default.} = enum
   paramInitialLinearVelocity = 0
   paramAngularVelocity = 1
   paramOrbitVelocity = 2
@@ -489,13 +489,13 @@ type CPUParticles2D_Parameter* {.size: sizeof(clong).} = enum
   paramAnimOffset = 11
   paramMax = 12
 
-type CPUParticles2D_ParticleFlags* {.size: sizeof(clong).} = enum
+type CPUParticles2D_ParticleFlags* {.size: EnumSize.default.} = enum
   particleFlagAlignYToVelocity = 0
   particleFlagRotateY = 1
   particleFlagDisableZ = 2
   particleFlagMax = 3
 
-type CPUParticles2D_EmissionShape* {.size: sizeof(clong).} = enum
+type CPUParticles2D_EmissionShape* {.size: EnumSize.default.} = enum
   emissionShapePoint = 0
   emissionShapeSphere = 1
   emissionShapeSphereSurface = 2
@@ -504,12 +504,12 @@ type CPUParticles2D_EmissionShape* {.size: sizeof(clong).} = enum
   emissionShapeDirectedPoints = 5
   emissionShapeMax = 6
 
-type CPUParticles3D_DrawOrder* {.size: sizeof(clong).} = enum
+type CPUParticles3D_DrawOrder* {.size: EnumSize.default.} = enum
   drawOrderIndex = 0
   drawOrderLifetime = 1
   drawOrderViewDepth = 2
 
-type CPUParticles3D_Parameter* {.size: sizeof(clong).} = enum
+type CPUParticles3D_Parameter* {.size: EnumSize.default.} = enum
   paramInitialLinearVelocity = 0
   paramAngularVelocity = 1
   paramOrbitVelocity = 2
@@ -524,13 +524,13 @@ type CPUParticles3D_Parameter* {.size: sizeof(clong).} = enum
   paramAnimOffset = 11
   paramMax = 12
 
-type CPUParticles3D_ParticleFlags* {.size: sizeof(clong).} = enum
+type CPUParticles3D_ParticleFlags* {.size: EnumSize.default.} = enum
   particleFlagAlignYToVelocity = 0
   particleFlagRotateY = 1
   particleFlagDisableZ = 2
   particleFlagMax = 3
 
-type CPUParticles3D_EmissionShape* {.size: sizeof(clong).} = enum
+type CPUParticles3D_EmissionShape* {.size: EnumSize.default.} = enum
   emissionShapePoint = 0
   emissionShapeSphere = 1
   emissionShapeSphereSurface = 2
@@ -540,66 +540,66 @@ type CPUParticles3D_EmissionShape* {.size: sizeof(clong).} = enum
   emissionShapeRing = 6
   emissionShapeMax = 7
 
-type CSGPolygon3D_Mode* {.size: sizeof(clong).} = enum
+type CSGPolygon3D_Mode* {.size: EnumSize.default.} = enum
   modeDepth = 0
   modeSpin = 1
   modePath = 2
 
-type CSGPolygon3D_PathRotation* {.size: sizeof(clong).} = enum
+type CSGPolygon3D_PathRotation* {.size: EnumSize.default.} = enum
   pathRotationPolygon = 0
   pathRotationPath = 1
   pathRotationPathFollow = 2
 
-type CSGPolygon3D_PathIntervalType* {.size: sizeof(clong).} = enum
+type CSGPolygon3D_PathIntervalType* {.size: EnumSize.default.} = enum
   pathIntervalDistance = 0
   pathIntervalSubdivide = 1
 
-type CSGShape3D_Operation* {.size: sizeof(clong).} = enum
+type CSGShape3D_Operation* {.size: EnumSize.default.} = enum
   operationUnion = 0
   operationIntersection = 1
   operationSubtraction = 2
 
-type Camera2D_AnchorMode* {.size: sizeof(clong).} = enum
+type Camera2D_AnchorMode* {.size: EnumSize.default.} = enum
   anchorModeFixedTopLeft = 0
   anchorModeDragCenter = 1
 
-type Camera2D_Camera2DProcessCallback* {.size: sizeof(clong).} = enum
+type Camera2D_Camera2DProcessCallback* {.size: EnumSize.default.} = enum
   camera2DProcessPhysics = 0
   camera2DProcessIdle = 1
 
-type Camera3D_ProjectionType* {.size: sizeof(clong).} = enum
+type Camera3D_ProjectionType* {.size: EnumSize.default.} = enum
   projectionPerspective = 0
   projectionOrthogonal = 1
   projectionFrustum = 2
 
-type Camera3D_KeepAspect* {.size: sizeof(clong).} = enum
+type Camera3D_KeepAspect* {.size: EnumSize.default.} = enum
   keepWidth = 0
   keepHeight = 1
 
-type Camera3D_DopplerTracking* {.size: sizeof(clong).} = enum
+type Camera3D_DopplerTracking* {.size: EnumSize.default.} = enum
   dopplerTrackingDisabled = 0
   dopplerTrackingIdleStep = 1
   dopplerTrackingPhysicsStep = 2
 
-type CameraFeed_FeedDataType* {.size: sizeof(clong).} = enum
+type CameraFeed_FeedDataType* {.size: EnumSize.default.} = enum
   feedNoimage = 0
   feedRgb = 1
   feedYcbcr = 2
   feedYcbcrSep = 3
   feedExternal = 4
 
-type CameraFeed_FeedPosition* {.size: sizeof(clong).} = enum
+type CameraFeed_FeedPosition* {.size: EnumSize.default.} = enum
   feedUnspecified = 0
   feedFront = 1
   feedBack = 2
 
-type CameraServer_FeedImage* {.size: sizeof(clong).} = enum
+type CameraServer_FeedImage* {.size: EnumSize.default.} = enum
   feedRgbaImage = 0
   feedCbcrImage = 1
 template feedYcbcrImage*[T: CameraServer_FeedImage](_: typedesc[T]): T = T(0)
 template feedYImage*[T: CameraServer_FeedImage](_: typedesc[T]): T = T(0)
 
-type CanvasItem_TextureFilter* {.size: sizeof(clong).} = enum
+type CanvasItem_TextureFilter* {.size: EnumSize.default.} = enum
   textureFilterParentNode = 0
   textureFilterNearest = 1
   textureFilterLinear = 2
@@ -609,57 +609,57 @@ type CanvasItem_TextureFilter* {.size: sizeof(clong).} = enum
   textureFilterLinearWithMipmapsAnisotropic = 6
   textureFilterMax = 7
 
-type CanvasItem_TextureRepeat* {.size: sizeof(clong).} = enum
+type CanvasItem_TextureRepeat* {.size: EnumSize.default.} = enum
   textureRepeatParentNode = 0
   textureRepeatDisabled = 1
   textureRepeatEnabled = 2
   textureRepeatMirror = 3
   textureRepeatMax = 4
 
-type CanvasItem_ClipChildrenMode* {.size: sizeof(clong).} = enum
+type CanvasItem_ClipChildrenMode* {.size: EnumSize.default.} = enum
   clipChildrenDisabled = 0
   clipChildrenOnly = 1
   clipChildrenAndDraw = 2
   clipChildrenMax = 3
 
-type CanvasItemMaterial_BlendMode* {.size: sizeof(clong).} = enum
+type CanvasItemMaterial_BlendMode* {.size: EnumSize.default.} = enum
   blendModeMix = 0
   blendModeAdd = 1
   blendModeSub = 2
   blendModeMul = 3
   blendModePremultAlpha = 4
 
-type CanvasItemMaterial_LightMode* {.size: sizeof(clong).} = enum
+type CanvasItemMaterial_LightMode* {.size: EnumSize.default.} = enum
   lightModeNormal = 0
   lightModeUnshaded = 1
   lightModeLightOnly = 2
 
-type CharacterBody2D_MotionMode* {.size: sizeof(clong).} = enum
+type CharacterBody2D_MotionMode* {.size: EnumSize.default.} = enum
   motionModeGrounded = 0
   motionModeFloating = 1
 
-type CharacterBody2D_PlatformOnLeave* {.size: sizeof(clong).} = enum
+type CharacterBody2D_PlatformOnLeave* {.size: EnumSize.default.} = enum
   platformOnLeaveAddVelocity = 0
   platformOnLeaveAddUpwardVelocity = 1
   platformOnLeaveDoNothing = 2
 
-type CharacterBody3D_MotionMode* {.size: sizeof(clong).} = enum
+type CharacterBody3D_MotionMode* {.size: EnumSize.default.} = enum
   motionModeGrounded = 0
   motionModeFloating = 1
 
-type CharacterBody3D_PlatformOnLeave* {.size: sizeof(clong).} = enum
+type CharacterBody3D_PlatformOnLeave* {.size: EnumSize.default.} = enum
   platformOnLeaveAddVelocity = 0
   platformOnLeaveAddUpwardVelocity = 1
   platformOnLeaveDoNothing = 2
 
-type ClassDB_APIType* {.size: sizeof(clong).} = enum
+type ClassDB_APIType* {.size: EnumSize.default.} = enum
   apiCore = 0
   apiEditor = 1
   apiExtension = 2
   apiEditorExtension = 3
   apiNone = 4
 
-type CodeEdit_CodeCompletionKind* {.size: sizeof(clong).} = enum
+type CodeEdit_CodeCompletionKind* {.size: EnumSize.default.} = enum
   kindClass = 0
   kindFunction = 1
   kindSignal = 2
@@ -671,40 +671,40 @@ type CodeEdit_CodeCompletionKind* {.size: sizeof(clong).} = enum
   kindFilePath = 8
   kindPlainText = 9
 
-type CodeEdit_CodeCompletionLocation* {.size: sizeof(clong).} = enum
+type CodeEdit_CodeCompletionLocation* {.size: EnumSize.default.} = enum
   locationLocal = 0
   locationParentMask = 256
   locationOtherUserCode = 512
   locationOther = 1024
 
-type CollisionObject2D_DisableMode* {.size: sizeof(clong).} = enum
+type CollisionObject2D_DisableMode* {.size: EnumSize.default.} = enum
   disableModeRemove = 0
   disableModeMakeStatic = 1
   disableModeKeepActive = 2
 
-type CollisionObject3D_DisableMode* {.size: sizeof(clong).} = enum
+type CollisionObject3D_DisableMode* {.size: EnumSize.default.} = enum
   disableModeRemove = 0
   disableModeMakeStatic = 1
   disableModeKeepActive = 2
 
-type CollisionPolygon2D_BuildMode* {.size: sizeof(clong).} = enum
+type CollisionPolygon2D_BuildMode* {.size: EnumSize.default.} = enum
   buildSolids = 0
   buildSegments = 1
 
-type ColorPicker_ColorModeType* {.size: sizeof(clong).} = enum
+type ColorPicker_ColorModeType* {.size: EnumSize.default.} = enum
   modeRgb = 0
   modeHsv = 1
   modeRaw = 2
   modeOkhsl = 3
 
-type ColorPicker_PickerShapeType* {.size: sizeof(clong).} = enum
+type ColorPicker_PickerShapeType* {.size: EnumSize.default.} = enum
   shapeHsvRectangle = 0
   shapeHsvWheel = 1
   shapeVhsCircle = 2
   shapeOkhslCircle = 3
   shapeNone = 4
 
-type CompositorEffect_EffectCallbackType* {.size: sizeof(clong).} = enum
+type CompositorEffect_EffectCallbackType* {.size: EnumSize.default.} = enum
   effectCallbackTypePreOpaque = 0
   effectCallbackTypePostOpaque = 1
   effectCallbackTypePostSky = 2
@@ -712,7 +712,7 @@ type CompositorEffect_EffectCallbackType* {.size: sizeof(clong).} = enum
   effectCallbackTypePostTransparent = 4
   effectCallbackTypeMax = 5
 
-type ConeTwistJoint3D_Param* {.size: sizeof(clong).} = enum
+type ConeTwistJoint3D_Param* {.size: EnumSize.default.} = enum
   paramSwingSpan = 0
   paramTwistSpan = 1
   paramBias = 2
@@ -720,12 +720,12 @@ type ConeTwistJoint3D_Param* {.size: sizeof(clong).} = enum
   paramRelaxation = 4
   paramMax = 5
 
-type Control_FocusMode* {.size: sizeof(clong).} = enum
+type Control_FocusMode* {.size: EnumSize.default.} = enum
   focusNone = 0
   focusClick = 1
   focusAll = 2
 
-type Control_CursorShape* {.size: sizeof(clong).} = enum
+type Control_CursorShape* {.size: EnumSize.default.} = enum
   cursorArrow = 0
   cursorIbeam = 1
   cursorPointingHand = 2
@@ -744,7 +744,7 @@ type Control_CursorShape* {.size: sizeof(clong).} = enum
   cursorHsplit = 15
   cursorHelp = 16
 
-type Control_LayoutPreset* {.size: sizeof(clong).} = enum
+type Control_LayoutPreset* {.size: EnumSize.default.} = enum
   presetTopLeft = 0
   presetTopRight = 1
   presetBottomLeft = 2
@@ -762,7 +762,7 @@ type Control_LayoutPreset* {.size: sizeof(clong).} = enum
   presetHcenterWide = 14
   presetFullRect = 15
 
-type Control_LayoutPresetMode* {.size: sizeof(clong).} = enum
+type Control_LayoutPresetMode* {.size: EnumSize.default.} = enum
   presetModeMinsize = 0
   presetModeKeepWidth = 1
   presetModeKeepHeight = 2
@@ -777,21 +777,21 @@ type Control_SizeFlags* = enum
   `--Padding-Max--` = 63 # To align size-of set[Control_SizeFlags] to size-of Int.
 template sizeExpandFill*[T: Control_SizeFlags](_: typedesc[T]): set[T] = cast[set[T]](3)
 
-type Control_MouseFilter* {.size: sizeof(clong).} = enum
+type Control_MouseFilter* {.size: EnumSize.default.} = enum
   mouseFilterStop = 0
   mouseFilterPass = 1
   mouseFilterIgnore = 2
 
-type Control_GrowDirection* {.size: sizeof(clong).} = enum
+type Control_GrowDirection* {.size: EnumSize.default.} = enum
   growDirectionBegin = 0
   growDirectionEnd = 1
   growDirectionBoth = 2
 
-type Control_Anchor* {.size: sizeof(clong).} = enum
+type Control_Anchor* {.size: EnumSize.default.} = enum
   anchorBegin = 0
   anchorEnd = 1
 
-type Control_LayoutDirection* {.size: sizeof(clong).} = enum
+type Control_LayoutDirection* {.size: EnumSize.default.} = enum
   layoutDirectionInherited = 0
   layoutDirectionApplicationLocale = 1
   layoutDirectionLtr = 2
@@ -800,39 +800,39 @@ type Control_LayoutDirection* {.size: sizeof(clong).} = enum
   layoutDirectionMax = 5
 template layoutDirectionLocale*[T: Control_LayoutDirection](_: typedesc[T]): T = T(1)
 
-type Control_TextDirection* {.size: sizeof(clong).} = enum
+type Control_TextDirection* {.size: EnumSize.default.} = enum
   textDirectionAuto = 0
   textDirectionLtr = 1
   textDirectionRtl = 2
   textDirectionInherited = 3
 
-type Curve_TangentMode* {.size: sizeof(clong).} = enum
+type Curve_TangentMode* {.size: EnumSize.default.} = enum
   tangentFree = 0
   tangentLinear = 1
   tangentModeCount = 2
 
-type CurveTexture_TextureMode* {.size: sizeof(clong).} = enum
+type CurveTexture_TextureMode* {.size: EnumSize.default.} = enum
   textureModeRgb = 0
   textureModeRed = 1
 
-type Decal_DecalTexture* {.size: sizeof(clong).} = enum
+type Decal_DecalTexture* {.size: EnumSize.default.} = enum
   textureAlbedo = 0
   textureNormal = 1
   textureOrm = 2
   textureEmission = 3
   textureMax = 4
 
-type DirectionalLight3D_ShadowMode* {.size: sizeof(clong).} = enum
+type DirectionalLight3D_ShadowMode* {.size: EnumSize.default.} = enum
   shadowOrthogonal = 0
   shadowParallel2Splits = 1
   shadowParallel4Splits = 2
 
-type DirectionalLight3D_SkyMode* {.size: sizeof(clong).} = enum
+type DirectionalLight3D_SkyMode* {.size: EnumSize.default.} = enum
   skyModeLightAndSky = 0
   skyModeLightOnly = 1
   skyModeSkyOnly = 2
 
-type DisplayServer_Feature* {.size: sizeof(clong).} = enum
+type DisplayServer_Feature* {.size: EnumSize.default.} = enum
   featureGlobalMenu = 0
   featureSubwindows = 1
   featureTouchscreen = 2
@@ -865,7 +865,7 @@ type DisplayServer_Feature* {.size: sizeof(clong).} = enum
   featureNativeDialogFileMime = 30
   featureEmojiAndSymbolPicker = 31
 
-type DisplayServer_MouseMode* {.size: sizeof(clong).} = enum
+type DisplayServer_MouseMode* {.size: EnumSize.default.} = enum
   mouseModeVisible = 0
   mouseModeHidden = 1
   mouseModeCaptured = 2
@@ -873,7 +873,7 @@ type DisplayServer_MouseMode* {.size: sizeof(clong).} = enum
   mouseModeConfinedHidden = 4
   mouseModeMax = 5
 
-type DisplayServer_ScreenOrientation* {.size: sizeof(clong).} = enum
+type DisplayServer_ScreenOrientation* {.size: EnumSize.default.} = enum
   screenLandscape = 0
   screenPortrait = 1
   screenReverseLandscape = 2
@@ -882,7 +882,7 @@ type DisplayServer_ScreenOrientation* {.size: sizeof(clong).} = enum
   screenSensorPortrait = 5
   screenSensor = 6
 
-type DisplayServer_VirtualKeyboardType* {.size: sizeof(clong).} = enum
+type DisplayServer_VirtualKeyboardType* {.size: EnumSize.default.} = enum
   keyboardTypeDefault = 0
   keyboardTypeMultiline = 1
   keyboardTypeNumber = 2
@@ -892,7 +892,7 @@ type DisplayServer_VirtualKeyboardType* {.size: sizeof(clong).} = enum
   keyboardTypePassword = 6
   keyboardTypeUrl = 7
 
-type DisplayServer_CursorShape* {.size: sizeof(clong).} = enum
+type DisplayServer_CursorShape* {.size: EnumSize.default.} = enum
   cursorArrow = 0
   cursorIbeam = 1
   cursorPointingHand = 2
@@ -912,21 +912,21 @@ type DisplayServer_CursorShape* {.size: sizeof(clong).} = enum
   cursorHelp = 16
   cursorMax = 17
 
-type DisplayServer_FileDialogMode* {.size: sizeof(clong).} = enum
+type DisplayServer_FileDialogMode* {.size: EnumSize.default.} = enum
   fileDialogModeOpenFile = 0
   fileDialogModeOpenFiles = 1
   fileDialogModeOpenDir = 2
   fileDialogModeOpenAny = 3
   fileDialogModeSaveFile = 4
 
-type DisplayServer_WindowMode* {.size: sizeof(clong).} = enum
+type DisplayServer_WindowMode* {.size: EnumSize.default.} = enum
   windowModeWindowed = 0
   windowModeMinimized = 1
   windowModeMaximized = 2
   windowModeFullscreen = 3
   windowModeExclusiveFullscreen = 4
 
-type DisplayServer_WindowFlags* {.size: sizeof(clong).} = enum
+type DisplayServer_WindowFlags* {.size: EnumSize.default.} = enum
   windowFlagResizeDisabled = 0
   windowFlagBorderless = 1
   windowFlagAlwaysOnTop = 2
@@ -939,7 +939,7 @@ type DisplayServer_WindowFlags* {.size: sizeof(clong).} = enum
   windowFlagExcludeFromCapture = 9
   windowFlagMax = 10
 
-type DisplayServer_WindowEvent* {.size: sizeof(clong).} = enum
+type DisplayServer_WindowEvent* {.size: EnumSize.default.} = enum
   windowEventMouseEnter = 0
   windowEventMouseExit = 1
   windowEventFocusIn = 2
@@ -949,7 +949,7 @@ type DisplayServer_WindowEvent* {.size: sizeof(clong).} = enum
   windowEventDpiChange = 6
   windowEventTitlebarChange = 7
 
-type DisplayServer_WindowResizeEdge* {.size: sizeof(clong).} = enum
+type DisplayServer_WindowResizeEdge* {.size: EnumSize.default.} = enum
   windowEdgeTopLeft = 0
   windowEdgeTop = 1
   windowEdgeTopRight = 2
@@ -960,13 +960,13 @@ type DisplayServer_WindowResizeEdge* {.size: sizeof(clong).} = enum
   windowEdgeBottomRight = 7
   windowEdgeMax = 8
 
-type DisplayServer_VSyncMode* {.size: sizeof(clong).} = enum
+type DisplayServer_VSyncMode* {.size: EnumSize.default.} = enum
   vsyncDisabled = 0
   vsyncEnabled = 1
   vsyncAdaptive = 2
   vsyncMailbox = 3
 
-type DisplayServer_HandleType* {.size: sizeof(clong).} = enum
+type DisplayServer_HandleType* {.size: EnumSize.default.} = enum
   displayHandle = 0
   windowHandle = 1
   windowView = 2
@@ -974,33 +974,33 @@ type DisplayServer_HandleType* {.size: sizeof(clong).} = enum
   eglDisplay = 4
   eglConfig = 5
 
-type DisplayServer_TTSUtteranceEvent* {.size: sizeof(clong).} = enum
+type DisplayServer_TTSUtteranceEvent* {.size: EnumSize.default.} = enum
   ttsUtteranceStarted = 0
   ttsUtteranceEnded = 1
   ttsUtteranceCanceled = 2
   ttsUtteranceBoundary = 3
 
-type ENetConnection_CompressionMode* {.size: sizeof(clong).} = enum
+type ENetConnection_CompressionMode* {.size: EnumSize.default.} = enum
   compressNone = 0
   compressRangeCoder = 1
   compressFastlz = 2
   compressZlib = 3
   compressZstd = 4
 
-type ENetConnection_EventType* {.size: sizeof(clong).} = enum
+type ENetConnection_EventType* {.size: EnumSize.default.} = enum
   eventError = -1
   eventNone = 0
   eventConnect = 1
   eventDisconnect = 2
   eventReceive = 3
 
-type ENetConnection_HostStatistic* {.size: sizeof(clong).} = enum
+type ENetConnection_HostStatistic* {.size: EnumSize.default.} = enum
   hostTotalSentData = 0
   hostTotalSentPackets = 1
   hostTotalReceivedData = 2
   hostTotalReceivedPackets = 3
 
-type ENetPacketPeer_PeerState* {.size: sizeof(clong).} = enum
+type ENetPacketPeer_PeerState* {.size: EnumSize.default.} = enum
   stateDisconnected = 0
   stateConnecting = 1
   stateAcknowledgingConnect = 2
@@ -1012,7 +1012,7 @@ type ENetPacketPeer_PeerState* {.size: sizeof(clong).} = enum
   stateAcknowledgingDisconnect = 8
   stateZombie = 9
 
-type ENetPacketPeer_PeerStatistic* {.size: sizeof(clong).} = enum
+type ENetPacketPeer_PeerStatistic* {.size: EnumSize.default.} = enum
   peerPacketLoss = 0
   peerPacketLossVariance = 1
   peerPacketLossEpoch = 2
@@ -1028,7 +1028,7 @@ type ENetPacketPeer_PeerStatistic* {.size: sizeof(clong).} = enum
   peerPacketThrottleDeceleration = 12
   peerPacketThrottleInterval = 13
 
-type EditorContextMenuPlugin_ContextMenuSlot* {.size: sizeof(clong).} = enum
+type EditorContextMenuPlugin_ContextMenuSlot* {.size: EnumSize.default.} = enum
   contextSlotSceneTree = 0
   contextSlotFilesystem = 1
   contextSlotScriptEditor = 2
@@ -1037,7 +1037,7 @@ type EditorContextMenuPlugin_ContextMenuSlot* {.size: sizeof(clong).} = enum
   contextSlotSceneTabs = 5
   contextSlot2DEditor = 6
 
-type EditorExportPlatform_ExportMessageType* {.size: sizeof(clong).} = enum
+type EditorExportPlatform_ExportMessageType* {.size: EnumSize.default.} = enum
   exportMessageNone = 0
   exportMessageInfo = 1
   exportMessageWarning = 2
@@ -1051,25 +1051,25 @@ type EditorExportPlatform_DebugFlags* = enum
   debugFlagViewNavigation = 4
   `--Padding-Max--` = 63 # To align size-of set[EditorExportPlatform_DebugFlags] to size-of Int.
 
-type EditorExportPreset_ExportFilter* {.size: sizeof(clong).} = enum
+type EditorExportPreset_ExportFilter* {.size: EnumSize.default.} = enum
   exportAllResources = 0
   exportSelectedScenes = 1
   exportSelectedResources = 2
   excludeSelectedResources = 3
   exportCustomized = 4
 
-type EditorExportPreset_FileExportMode* {.size: sizeof(clong).} = enum
+type EditorExportPreset_FileExportMode* {.size: EnumSize.default.} = enum
   modeFileNotCustomized = 0
   modeFileStrip = 1
   modeFileKeep = 2
   modeFileRemove = 3
 
-type EditorExportPreset_ScriptExportMode* {.size: sizeof(clong).} = enum
+type EditorExportPreset_ScriptExportMode* {.size: EnumSize.default.} = enum
   modeScriptText = 0
   modeScriptBinaryTokens = 1
   modeScriptBinaryTokensCompressed = 2
 
-type EditorFeatureProfile_Feature* {.size: sizeof(clong).} = enum
+type EditorFeatureProfile_Feature* {.size: EnumSize.default.} = enum
   feature3D = 0
   featureScript = 1
   featureAssetLib = 2
@@ -1081,23 +1081,23 @@ type EditorFeatureProfile_Feature* {.size: sizeof(clong).} = enum
   featureGame = 8
   featureMax = 9
 
-type EditorFileDialog_FileMode* {.size: sizeof(clong).} = enum
+type EditorFileDialog_FileMode* {.size: EnumSize.default.} = enum
   fileModeOpenFile = 0
   fileModeOpenFiles = 1
   fileModeOpenDir = 2
   fileModeOpenAny = 3
   fileModeSaveFile = 4
 
-type EditorFileDialog_Access* {.size: sizeof(clong).} = enum
+type EditorFileDialog_Access* {.size: EnumSize.default.} = enum
   accessResources = 0
   accessUserdata = 1
   accessFilesystem = 2
 
-type EditorFileDialog_DisplayMode* {.size: sizeof(clong).} = enum
+type EditorFileDialog_DisplayMode* {.size: EnumSize.default.} = enum
   displayThumbnails = 0
   displayList = 1
 
-type EditorPlugin_CustomControlContainer* {.size: sizeof(clong).} = enum
+type EditorPlugin_CustomControlContainer* {.size: EnumSize.default.} = enum
   containerToolbar = 0
   containerSpatialEditorMenu = 1
   containerSpatialEditorSideLeft = 2
@@ -1111,7 +1111,7 @@ type EditorPlugin_CustomControlContainer* {.size: sizeof(clong).} = enum
   containerProjectSettingTabLeft = 10
   containerProjectSettingTabRight = 11
 
-type EditorPlugin_DockSlot* {.size: sizeof(clong).} = enum
+type EditorPlugin_DockSlot* {.size: EnumSize.default.} = enum
   dockSlotLeftUl = 0
   dockSlotLeftBl = 1
   dockSlotLeftUr = 2
@@ -1122,12 +1122,12 @@ type EditorPlugin_DockSlot* {.size: sizeof(clong).} = enum
   dockSlotRightBr = 7
   dockSlotMax = 8
 
-type EditorPlugin_AfterGUIInput* {.size: sizeof(clong).} = enum
+type EditorPlugin_AfterGUIInput* {.size: EnumSize.default.} = enum
   afterGuiInputPass = 0
   afterGuiInputStop = 1
   afterGuiInputCustom = 2
 
-type EditorScenePostImportPlugin_InternalImportCategory* {.size: sizeof(clong).} = enum
+type EditorScenePostImportPlugin_InternalImportCategory* {.size: EnumSize.default.} = enum
   internalImportCategoryNode = 0
   internalImportCategoryMesh3DNode = 1
   internalImportCategoryMesh = 2
@@ -1137,17 +1137,17 @@ type EditorScenePostImportPlugin_InternalImportCategory* {.size: sizeof(clong).}
   internalImportCategorySkeleton3DNode = 6
   internalImportCategoryMax = 7
 
-type EditorToaster_Severity* {.size: sizeof(clong).} = enum
+type EditorToaster_Severity* {.size: EnumSize.default.} = enum
   severityInfo = 0
   severityWarning = 1
   severityError = 2
 
-type EditorUndoRedoManager_SpecialHistory* {.size: sizeof(clong).} = enum
+type EditorUndoRedoManager_SpecialHistory* {.size: EnumSize.default.} = enum
   invalidHistory = -99
   remoteHistory = -9
   globalHistory = 0
 
-type EditorVCSInterface_ChangeType* {.size: sizeof(clong).} = enum
+type EditorVCSInterface_ChangeType* {.size: EnumSize.default.} = enum
   changeTypeNew = 0
   changeTypeModified = 1
   changeTypeRenamed = 2
@@ -1155,12 +1155,12 @@ type EditorVCSInterface_ChangeType* {.size: sizeof(clong).} = enum
   changeTypeTypechange = 4
   changeTypeUnmerged = 5
 
-type EditorVCSInterface_TreeArea* {.size: sizeof(clong).} = enum
+type EditorVCSInterface_TreeArea* {.size: EnumSize.default.} = enum
   treeAreaCommit = 0
   treeAreaStaged = 1
   treeAreaUnstaged = 2
 
-type Environment_BGMode* {.size: sizeof(clong).} = enum
+type Environment_BGMode* {.size: EnumSize.default.} = enum
   bgClearColor = 0
   bgColor = 1
   bgSky = 2
@@ -1169,41 +1169,41 @@ type Environment_BGMode* {.size: sizeof(clong).} = enum
   bgCameraFeed = 5
   bgMax = 6
 
-type Environment_AmbientSource* {.size: sizeof(clong).} = enum
+type Environment_AmbientSource* {.size: EnumSize.default.} = enum
   ambientSourceBg = 0
   ambientSourceDisabled = 1
   ambientSourceColor = 2
   ambientSourceSky = 3
 
-type Environment_ReflectionSource* {.size: sizeof(clong).} = enum
+type Environment_ReflectionSource* {.size: EnumSize.default.} = enum
   reflectionSourceBg = 0
   reflectionSourceDisabled = 1
   reflectionSourceSky = 2
 
-type Environment_ToneMapper* {.size: sizeof(clong).} = enum
+type Environment_ToneMapper* {.size: EnumSize.default.} = enum
   toneMapperLinear = 0
   toneMapperReinhardt = 1
   toneMapperFilmic = 2
   toneMapperAces = 3
   toneMapperAgx = 4
 
-type Environment_GlowBlendMode* {.size: sizeof(clong).} = enum
+type Environment_GlowBlendMode* {.size: EnumSize.default.} = enum
   glowBlendModeAdditive = 0
   glowBlendModeScreen = 1
   glowBlendModeSoftlight = 2
   glowBlendModeReplace = 3
   glowBlendModeMix = 4
 
-type Environment_FogMode* {.size: sizeof(clong).} = enum
+type Environment_FogMode* {.size: EnumSize.default.} = enum
   fogModeExponential = 0
   fogModeDepth = 1
 
-type Environment_SDFGIYScale* {.size: sizeof(clong).} = enum
+type Environment_SDFGIYScale* {.size: EnumSize.default.} = enum
   sdfgiYScale50Percent = 0
   sdfgiYScale75Percent = 1
   sdfgiYScale100Percent = 2
 
-type FastNoiseLite_NoiseType* {.size: sizeof(clong).} = enum
+type FastNoiseLite_NoiseType* {.size: EnumSize.default.} = enum
   typeSimplex = 0
   typeSimplexSmooth = 1
   typeCellular = 2
@@ -1211,19 +1211,19 @@ type FastNoiseLite_NoiseType* {.size: sizeof(clong).} = enum
   typeValueCubic = 4
   typeValue = 5
 
-type FastNoiseLite_FractalType* {.size: sizeof(clong).} = enum
+type FastNoiseLite_FractalType* {.size: EnumSize.default.} = enum
   fractalNone = 0
   fractalFbm = 1
   fractalRidged = 2
   fractalPingPong = 3
 
-type FastNoiseLite_CellularDistanceFunction* {.size: sizeof(clong).} = enum
+type FastNoiseLite_CellularDistanceFunction* {.size: EnumSize.default.} = enum
   distanceEuclidean = 0
   distanceEuclideanSquared = 1
   distanceManhattan = 2
   distanceHybrid = 3
 
-type FastNoiseLite_CellularReturnType* {.size: sizeof(clong).} = enum
+type FastNoiseLite_CellularReturnType* {.size: EnumSize.default.} = enum
   returnCellValue = 0
   returnDistance = 1
   returnDistance2 = 2
@@ -1232,23 +1232,23 @@ type FastNoiseLite_CellularReturnType* {.size: sizeof(clong).} = enum
   returnDistance2Mul = 5
   returnDistance2Div = 6
 
-type FastNoiseLite_DomainWarpType* {.size: sizeof(clong).} = enum
+type FastNoiseLite_DomainWarpType* {.size: EnumSize.default.} = enum
   domainWarpSimplex = 0
   domainWarpSimplexReduced = 1
   domainWarpBasicGrid = 2
 
-type FastNoiseLite_DomainWarpFractalType* {.size: sizeof(clong).} = enum
+type FastNoiseLite_DomainWarpFractalType* {.size: EnumSize.default.} = enum
   domainWarpFractalNone = 0
   domainWarpFractalProgressive = 1
   domainWarpFractalIndependent = 2
 
-type FileAccess_ModeFlags* {.size: sizeof(clong).} = enum
+type FileAccess_ModeFlags* {.size: EnumSize.default.} = enum
   read = 1
   write = 2
   readWrite = 3
   writeRead = 7
 
-type FileAccess_CompressionMode* {.size: sizeof(clong).} = enum
+type FileAccess_CompressionMode* {.size: EnumSize.default.} = enum
   compressionFastlz = 0
   compressionDeflate = 1
   compressionZstd = 2
@@ -1270,43 +1270,43 @@ type FileAccess_UnixPermissionFlags* = enum
   unixSetUserId = 11
   `--Padding-Max--` = 63 # To align size-of set[FileAccess_UnixPermissionFlags] to size-of Int.
 
-type FileDialog_FileMode* {.size: sizeof(clong).} = enum
+type FileDialog_FileMode* {.size: EnumSize.default.} = enum
   fileModeOpenFile = 0
   fileModeOpenFiles = 1
   fileModeOpenDir = 2
   fileModeOpenAny = 3
   fileModeSaveFile = 4
 
-type FileDialog_Access* {.size: sizeof(clong).} = enum
+type FileDialog_Access* {.size: EnumSize.default.} = enum
   accessResources = 0
   accessUserdata = 1
   accessFilesystem = 2
 
-type FlowContainer_AlignmentMode* {.size: sizeof(clong).} = enum
+type FlowContainer_AlignmentMode* {.size: EnumSize.default.} = enum
   alignmentBegin = 0
   alignmentCenter = 1
   alignmentEnd = 2
 
-type FlowContainer_LastWrapAlignmentMode* {.size: sizeof(clong).} = enum
+type FlowContainer_LastWrapAlignmentMode* {.size: EnumSize.default.} = enum
   lastWrapAlignmentInherit = 0
   lastWrapAlignmentBegin = 1
   lastWrapAlignmentCenter = 2
   lastWrapAlignmentEnd = 3
 
-type GDExtension_InitializationLevel* {.size: sizeof(clong).} = enum
+type GDExtension_InitializationLevel* {.size: EnumSize.default.} = enum
   initializationLevelCore = 0
   initializationLevelServers = 1
   initializationLevelScene = 2
   initializationLevelEditor = 3
 
-type GDExtensionManager_LoadStatus* {.size: sizeof(clong).} = enum
+type GDExtensionManager_LoadStatus* {.size: EnumSize.default.} = enum
   loadStatusOk = 0
   loadStatusFailed = 1
   loadStatusAlreadyLoaded = 2
   loadStatusNotLoaded = 3
   loadStatusNeedsRestart = 4
 
-type GLTFAccessor_GLTFAccessorType* {.size: sizeof(clong).} = enum
+type GLTFAccessor_GLTFAccessorType* {.size: EnumSize.default.} = enum
   typeScalar = 0
   typeVec2 = 1
   typeVec3 = 2
@@ -1315,7 +1315,7 @@ type GLTFAccessor_GLTFAccessorType* {.size: sizeof(clong).} = enum
   typeMat3 = 5
   typeMat4 = 6
 
-type GLTFAccessor_GLTFComponentType* {.size: sizeof(clong).} = enum
+type GLTFAccessor_GLTFComponentType* {.size: EnumSize.default.} = enum
   componentTypeNone = 0
   componentTypeSignedByte = 5120
   componentTypeUnsignedByte = 5121
@@ -1329,12 +1329,12 @@ type GLTFAccessor_GLTFComponentType* {.size: sizeof(clong).} = enum
   componentTypeSignedLong = 5134
   componentTypeUnsignedLong = 5135
 
-type GLTFDocument_RootNodeMode* {.size: sizeof(clong).} = enum
+type GLTFDocument_RootNodeMode* {.size: EnumSize.default.} = enum
   rootNodeModeSingleRoot = 0
   rootNodeModeKeepRoot = 1
   rootNodeModeMultiRoot = 2
 
-type GLTFObjectModelProperty_GLTFObjectModelType* {.size: sizeof(clong).} = enum
+type GLTFObjectModelProperty_GLTFObjectModelType* {.size: EnumSize.default.} = enum
   gltfObjectModelTypeUnknown = 0
   gltfObjectModelTypeBool = 1
   gltfObjectModelTypeFloat = 2
@@ -1347,38 +1347,38 @@ type GLTFObjectModelProperty_GLTFObjectModelType* {.size: sizeof(clong).} = enum
   gltfObjectModelTypeFloat4X4 = 9
   gltfObjectModelTypeInt = 10
 
-type GPUParticles2D_DrawOrder* {.size: sizeof(clong).} = enum
+type GPUParticles2D_DrawOrder* {.size: EnumSize.default.} = enum
   drawOrderIndex = 0
   drawOrderLifetime = 1
   drawOrderReverseLifetime = 2
 
-type GPUParticles2D_EmitFlags* {.size: sizeof(clong).} = enum
+type GPUParticles2D_EmitFlags* {.size: EnumSize.default.} = enum
   emitFlagPosition = 1
   emitFlagRotationScale = 2
   emitFlagVelocity = 4
   emitFlagColor = 8
   emitFlagCustom = 16
 
-type GPUParticles3D_DrawOrder* {.size: sizeof(clong).} = enum
+type GPUParticles3D_DrawOrder* {.size: EnumSize.default.} = enum
   drawOrderIndex = 0
   drawOrderLifetime = 1
   drawOrderReverseLifetime = 2
   drawOrderViewDepth = 3
 
-type GPUParticles3D_EmitFlags* {.size: sizeof(clong).} = enum
+type GPUParticles3D_EmitFlags* {.size: EnumSize.default.} = enum
   emitFlagPosition = 1
   emitFlagRotationScale = 2
   emitFlagVelocity = 4
   emitFlagColor = 8
   emitFlagCustom = 16
 
-type GPUParticles3D_TransformAlign* {.size: sizeof(clong).} = enum
+type GPUParticles3D_TransformAlign* {.size: EnumSize.default.} = enum
   transformAlignDisabled = 0
   transformAlignZBillboard = 1
   transformAlignYToVelocity = 2
   transformAlignZBillboardYToVelocity = 3
 
-type GPUParticlesCollisionHeightField3D_Resolution* {.size: sizeof(clong).} = enum
+type GPUParticlesCollisionHeightField3D_Resolution* {.size: EnumSize.default.} = enum
   resolution256 = 0
   resolution512 = 1
   resolution1024 = 2
@@ -1387,11 +1387,11 @@ type GPUParticlesCollisionHeightField3D_Resolution* {.size: sizeof(clong).} = en
   resolution8192 = 5
   resolutionMax = 6
 
-type GPUParticlesCollisionHeightField3D_UpdateMode* {.size: sizeof(clong).} = enum
+type GPUParticlesCollisionHeightField3D_UpdateMode* {.size: EnumSize.default.} = enum
   updateModeWhenMoved = 0
   updateModeAlways = 1
 
-type GPUParticlesCollisionSDF3D_Resolution* {.size: sizeof(clong).} = enum
+type GPUParticlesCollisionSDF3D_Resolution* {.size: EnumSize.default.} = enum
   resolution16 = 0
   resolution32 = 1
   resolution64 = 2
@@ -1400,7 +1400,7 @@ type GPUParticlesCollisionSDF3D_Resolution* {.size: sizeof(clong).} = enum
   resolution512 = 5
   resolutionMax = 6
 
-type Generic6DOFJoint3D_Param* {.size: sizeof(clong).} = enum
+type Generic6DOFJoint3D_Param* {.size: EnumSize.default.} = enum
   paramLinearLowerLimit = 0
   paramLinearUpperLimit = 1
   paramLinearLimitSoftness = 2
@@ -1425,7 +1425,7 @@ type Generic6DOFJoint3D_Param* {.size: sizeof(clong).} = enum
   paramAngularSpringEquilibriumPoint = 21
   paramMax = 22
 
-type Generic6DOFJoint3D_Flag* {.size: sizeof(clong).} = enum
+type Generic6DOFJoint3D_Flag* {.size: EnumSize.default.} = enum
   flagEnableLinearLimit = 0
   flagEnableAngularLimit = 1
   flagEnableAngularSpring = 2
@@ -1434,76 +1434,76 @@ type Generic6DOFJoint3D_Flag* {.size: sizeof(clong).} = enum
   flagEnableLinearMotor = 5
   flagMax = 6
 
-type Geometry2D_PolyBooleanOperation* {.size: sizeof(clong).} = enum
+type Geometry2D_PolyBooleanOperation* {.size: EnumSize.default.} = enum
   operationUnion = 0
   operationDifference = 1
   operationIntersection = 2
   operationXor = 3
 
-type Geometry2D_PolyJoinType* {.size: sizeof(clong).} = enum
+type Geometry2D_PolyJoinType* {.size: EnumSize.default.} = enum
   joinSquare = 0
   joinRound = 1
   joinMiter = 2
 
-type Geometry2D_PolyEndType* {.size: sizeof(clong).} = enum
+type Geometry2D_PolyEndType* {.size: EnumSize.default.} = enum
   endPolygon = 0
   endJoined = 1
   endButt = 2
   endSquare = 3
   endRound = 4
 
-type GeometryInstance3D_ShadowCastingSetting* {.size: sizeof(clong).} = enum
+type GeometryInstance3D_ShadowCastingSetting* {.size: EnumSize.default.} = enum
   shadowCastingSettingOff = 0
   shadowCastingSettingOn = 1
   shadowCastingSettingDoubleSided = 2
   shadowCastingSettingShadowsOnly = 3
 
-type GeometryInstance3D_GIMode* {.size: sizeof(clong).} = enum
+type GeometryInstance3D_GIMode* {.size: EnumSize.default.} = enum
   giModeDisabled = 0
   giModeStatic = 1
   giModeDynamic = 2
 
-type GeometryInstance3D_LightmapScale* {.size: sizeof(clong).} = enum
+type GeometryInstance3D_LightmapScale* {.size: EnumSize.default.} = enum
   lightmapScale1X = 0
   lightmapScale2X = 1
   lightmapScale4X = 2
   lightmapScale8X = 3
   lightmapScaleMax = 4
 
-type GeometryInstance3D_VisibilityRangeFadeMode* {.size: sizeof(clong).} = enum
+type GeometryInstance3D_VisibilityRangeFadeMode* {.size: EnumSize.default.} = enum
   visibilityRangeFadeDisabled = 0
   visibilityRangeFadeSelf = 1
   visibilityRangeFadeDependencies = 2
 
-type Gradient_InterpolationMode* {.size: sizeof(clong).} = enum
+type Gradient_InterpolationMode* {.size: EnumSize.default.} = enum
   gradientInterpolateLinear = 0
   gradientInterpolateConstant = 1
   gradientInterpolateCubic = 2
 
-type Gradient_ColorSpace* {.size: sizeof(clong).} = enum
+type Gradient_ColorSpace* {.size: EnumSize.default.} = enum
   gradientColorSpaceSrgb = 0
   gradientColorSpaceLinearSrgb = 1
   gradientColorSpaceOklab = 2
 
-type GradientTexture2D_Fill* {.size: sizeof(clong).} = enum
+type GradientTexture2D_Fill* {.size: EnumSize.default.} = enum
   fillLinear = 0
   fillRadial = 1
   fillSquare = 2
 
-type GradientTexture2D_Repeat* {.size: sizeof(clong).} = enum
+type GradientTexture2D_Repeat* {.size: EnumSize.default.} = enum
   repeatNone = 0
   repeat = 1
   repeatMirror = 2
 
-type GraphEdit_PanningScheme* {.size: sizeof(clong).} = enum
+type GraphEdit_PanningScheme* {.size: EnumSize.default.} = enum
   scrollZooms = 0
   scrollPans = 1
 
-type GraphEdit_GridPattern* {.size: sizeof(clong).} = enum
+type GraphEdit_GridPattern* {.size: EnumSize.default.} = enum
   gridPatternLines = 0
   gridPatternDots = 1
 
-type HTTPClient_Method* {.size: sizeof(clong).} = enum
+type HTTPClient_Method* {.size: EnumSize.default.} = enum
   methodGet = 0
   methodHead = 1
   methodPost = 2
@@ -1515,7 +1515,7 @@ type HTTPClient_Method* {.size: sizeof(clong).} = enum
   methodPatch = 8
   methodMax = 9
 
-type HTTPClient_Status* {.size: sizeof(clong).} = enum
+type HTTPClient_Status* {.size: EnumSize.default.} = enum
   statusDisconnected = 0
   statusResolving = 1
   statusCantResolve = 2
@@ -1527,7 +1527,7 @@ type HTTPClient_Status* {.size: sizeof(clong).} = enum
   statusConnectionError = 8
   statusTlsHandshakeError = 9
 
-type HTTPClient_ResponseCode* {.size: sizeof(clong).} = enum
+type HTTPClient_ResponseCode* {.size: EnumSize.default.} = enum
   responseContinue = 100
   responseSwitchingProtocols = 101
   responseProcessing = 102
@@ -1590,7 +1590,7 @@ type HTTPClient_ResponseCode* {.size: sizeof(clong).} = enum
   responseNotExtended = 510
   responseNetworkAuthRequired = 511
 
-type HTTPRequest_Result* {.size: sizeof(clong).} = enum
+type HTTPRequest_Result* {.size: EnumSize.default.} = enum
   resultSuccess = 0
   resultChunkedBodySizeMismatch = 1
   resultCantConnect = 2
@@ -1606,12 +1606,12 @@ type HTTPRequest_Result* {.size: sizeof(clong).} = enum
   resultRedirectLimitReached = 12
   resultTimeout = 13
 
-type HashingContext_HashType* {.size: sizeof(clong).} = enum
+type HashingContext_HashType* {.size: EnumSize.default.} = enum
   hashMd5 = 0
   hashSha1 = 1
   hashSha256 = 2
 
-type HingeJoint3D_Param* {.size: sizeof(clong).} = enum
+type HingeJoint3D_Param* {.size: EnumSize.default.} = enum
   paramBias = 0
   paramLimitUpper = 1
   paramLimitLower = 2
@@ -1622,24 +1622,24 @@ type HingeJoint3D_Param* {.size: sizeof(clong).} = enum
   paramMotorMaxImpulse = 7
   paramMax = 8
 
-type HingeJoint3D_Flag* {.size: sizeof(clong).} = enum
+type HingeJoint3D_Flag* {.size: EnumSize.default.} = enum
   flagUseLimit = 0
   flagEnableMotor = 1
   flagMax = 2
 
-type IP_ResolverStatus* {.size: sizeof(clong).} = enum
+type IP_ResolverStatus* {.size: EnumSize.default.} = enum
   resolverStatusNone = 0
   resolverStatusWaiting = 1
   resolverStatusDone = 2
   resolverStatusError = 3
 
-type IP_Type* {.size: sizeof(clong).} = enum
+type IP_Type* {.size: EnumSize.default.} = enum
   typeNone = 0
   typeIpv4 = 1
   typeIpv6 = 2
   typeAny = 3
 
-type Image_Format* {.size: sizeof(clong).} = enum
+type Image_Format* {.size: EnumSize.default.} = enum
   formatL8 = 0
   formatLa8 = 1
   formatR8 = 2
@@ -1681,19 +1681,19 @@ type Image_Format* {.size: sizeof(clong).} = enum
   formatAstc8X8Hdr = 38
   formatMax = 39
 
-type Image_Interpolation* {.size: sizeof(clong).} = enum
+type Image_Interpolation* {.size: EnumSize.default.} = enum
   interpolateNearest = 0
   interpolateBilinear = 1
   interpolateCubic = 2
   interpolateTrilinear = 3
   interpolateLanczos = 4
 
-type Image_AlphaMode* {.size: sizeof(clong).} = enum
+type Image_AlphaMode* {.size: EnumSize.default.} = enum
   alphaNone = 0
   alphaBit = 1
   alphaBlend = 2
 
-type Image_CompressMode* {.size: sizeof(clong).} = enum
+type Image_CompressMode* {.size: EnumSize.default.} = enum
   compressS3Tc = 0
   compressEtc = 1
   compressEtc2 = 2
@@ -1701,7 +1701,7 @@ type Image_CompressMode* {.size: sizeof(clong).} = enum
   compressAstc = 4
   compressMax = 5
 
-type Image_UsedChannels* {.size: sizeof(clong).} = enum
+type Image_UsedChannels* {.size: EnumSize.default.} = enum
   usedChannelsL = 0
   usedChannelsLa = 1
   usedChannelsR = 2
@@ -1709,12 +1709,12 @@ type Image_UsedChannels* {.size: sizeof(clong).} = enum
   usedChannelsRgb = 4
   usedChannelsRgba = 5
 
-type Image_CompressSource* {.size: sizeof(clong).} = enum
+type Image_CompressSource* {.size: EnumSize.default.} = enum
   compressSourceGeneric = 0
   compressSourceSrgb = 1
   compressSourceNormal = 2
 
-type Image_ASTCFormat* {.size: sizeof(clong).} = enum
+type Image_ASTCFormat* {.size: EnumSize.default.} = enum
   astcFormat4X4 = 0
   astcFormat8X8 = 1
 
@@ -1724,7 +1724,7 @@ type ImageFormatLoader_LoaderFlags* = enum
   flagConvertColors = 1
   `--Padding-Max--` = 63 # To align size-of set[ImageFormatLoader_LoaderFlags] to size-of Int.
 
-type Input_MouseMode* {.size: sizeof(clong).} = enum
+type Input_MouseMode* {.size: EnumSize.default.} = enum
   mouseModeVisible = 0
   mouseModeHidden = 1
   mouseModeCaptured = 2
@@ -1732,7 +1732,7 @@ type Input_MouseMode* {.size: sizeof(clong).} = enum
   mouseModeConfinedHidden = 4
   mouseModeMax = 5
 
-type Input_CursorShape* {.size: sizeof(clong).} = enum
+type Input_CursorShape* {.size: EnumSize.default.} = enum
   cursorArrow = 0
   cursorIbeam = 1
   cursorPointingHand = 2
@@ -1751,46 +1751,46 @@ type Input_CursorShape* {.size: sizeof(clong).} = enum
   cursorHsplit = 15
   cursorHelp = 16
 
-type ItemList_IconMode* {.size: sizeof(clong).} = enum
+type ItemList_IconMode* {.size: EnumSize.default.} = enum
   iconModeTop = 0
   iconModeLeft = 1
 
-type ItemList_SelectMode* {.size: sizeof(clong).} = enum
+type ItemList_SelectMode* {.size: EnumSize.default.} = enum
   selectSingle = 0
   selectMulti = 1
   selectToggle = 2
 
-type JSONRPC_ErrorCode* {.size: sizeof(clong).} = enum
+type JSONRPC_ErrorCode* {.size: EnumSize.default.} = enum
   parseError = -32700
   internalError = -32603
   invalidParams = -32602
   methodNotFound = -32601
   invalidRequest = -32600
 
-type Label3D_DrawFlags* {.size: sizeof(clong).} = enum
+type Label3D_DrawFlags* {.size: EnumSize.default.} = enum
   flagShaded = 0
   flagDoubleSided = 1
   flagDisableDepthTest = 2
   flagFixedSize = 3
   flagMax = 4
 
-type Label3D_AlphaCutMode* {.size: sizeof(clong).} = enum
+type Label3D_AlphaCutMode* {.size: EnumSize.default.} = enum
   alphaCutDisabled = 0
   alphaCutDiscard = 1
   alphaCutOpaquePrepass = 2
   alphaCutHash = 3
 
-type Light2D_ShadowFilter* {.size: sizeof(clong).} = enum
+type Light2D_ShadowFilter* {.size: EnumSize.default.} = enum
   shadowFilterNone = 0
   shadowFilterPcf5 = 1
   shadowFilterPcf13 = 2
 
-type Light2D_BlendMode* {.size: sizeof(clong).} = enum
+type Light2D_BlendMode* {.size: EnumSize.default.} = enum
   blendModeAdd = 0
   blendModeSub = 1
   blendModeMix = 2
 
-type Light3D_Param* {.size: sizeof(clong).} = enum
+type Light3D_Param* {.size: EnumSize.default.} = enum
   paramEnergy = 0
   paramIndirectEnergy = 1
   paramVolumetricFogEnergy = 2
@@ -1814,25 +1814,25 @@ type Light3D_Param* {.size: sizeof(clong).} = enum
   paramIntensity = 20
   paramMax = 21
 
-type Light3D_BakeMode* {.size: sizeof(clong).} = enum
+type Light3D_BakeMode* {.size: EnumSize.default.} = enum
   bakeDisabled = 0
   bakeStatic = 1
   bakeDynamic = 2
 
-type LightmapGI_BakeQuality* {.size: sizeof(clong).} = enum
+type LightmapGI_BakeQuality* {.size: EnumSize.default.} = enum
   bakeQualityLow = 0
   bakeQualityMedium = 1
   bakeQualityHigh = 2
   bakeQualityUltra = 3
 
-type LightmapGI_GenerateProbes* {.size: sizeof(clong).} = enum
+type LightmapGI_GenerateProbes* {.size: EnumSize.default.} = enum
   generateProbesDisabled = 0
   generateProbesSubdiv4 = 1
   generateProbesSubdiv8 = 2
   generateProbesSubdiv16 = 3
   generateProbesSubdiv32 = 4
 
-type LightmapGI_BakeError* {.size: sizeof(clong).} = enum
+type LightmapGI_BakeError* {.size: EnumSize.default.} = enum
   bakeErrorOk = 0
   bakeErrorNoSceneRoot = 1
   bakeErrorForeignData = 2
@@ -1846,33 +1846,33 @@ type LightmapGI_BakeError* {.size: sizeof(clong).} = enum
   bakeErrorLightmapTooSmall = 10
   bakeErrorAtlasTooSmall = 11
 
-type LightmapGI_EnvironmentMode* {.size: sizeof(clong).} = enum
+type LightmapGI_EnvironmentMode* {.size: EnumSize.default.} = enum
   environmentModeDisabled = 0
   environmentModeScene = 1
   environmentModeCustomSky = 2
   environmentModeCustomColor = 3
 
-type LightmapGIData_ShadowmaskMode* {.size: sizeof(clong).} = enum
+type LightmapGIData_ShadowmaskMode* {.size: EnumSize.default.} = enum
   shadowmaskModeNone = 0
   shadowmaskModeReplace = 1
   shadowmaskModeOverlay = 2
 
-type Line2D_LineJointMode* {.size: sizeof(clong).} = enum
+type Line2D_LineJointMode* {.size: EnumSize.default.} = enum
   lineJointSharp = 0
   lineJointBevel = 1
   lineJointRound = 2
 
-type Line2D_LineCapMode* {.size: sizeof(clong).} = enum
+type Line2D_LineCapMode* {.size: EnumSize.default.} = enum
   lineCapNone = 0
   lineCapBox = 1
   lineCapRound = 2
 
-type Line2D_LineTextureMode* {.size: sizeof(clong).} = enum
+type Line2D_LineTextureMode* {.size: EnumSize.default.} = enum
   lineTextureNone = 0
   lineTextureTile = 1
   lineTextureStretch = 2
 
-type LineEdit_MenuItems* {.size: sizeof(clong).} = enum
+type LineEdit_MenuItems* {.size: EnumSize.default.} = enum
   menuCut = 0
   menuCopy = 1
   menuPaste = 2
@@ -1906,7 +1906,7 @@ type LineEdit_MenuItems* {.size: sizeof(clong).} = enum
   menuEmojiAndSymbol = 30
   menuMax = 31
 
-type LineEdit_VirtualKeyboardType* {.size: sizeof(clong).} = enum
+type LineEdit_VirtualKeyboardType* {.size: EnumSize.default.} = enum
   keyboardTypeDefault = 0
   keyboardTypeMultiline = 1
   keyboardTypeNumber = 2
@@ -1916,24 +1916,24 @@ type LineEdit_VirtualKeyboardType* {.size: sizeof(clong).} = enum
   keyboardTypePassword = 6
   keyboardTypeUrl = 7
 
-type LinkButton_UnderlineMode* {.size: sizeof(clong).} = enum
+type LinkButton_UnderlineMode* {.size: EnumSize.default.} = enum
   underlineModeAlways = 0
   underlineModeOnHover = 1
   underlineModeNever = 2
 
-type LookAtModifier3D_OriginFrom* {.size: sizeof(clong).} = enum
+type LookAtModifier3D_OriginFrom* {.size: EnumSize.default.} = enum
   originFromSelf = 0
   originFromSpecificBone = 1
   originFromExternalNode = 2
 
-type Mesh_PrimitiveType* {.size: sizeof(clong).} = enum
+type Mesh_PrimitiveType* {.size: EnumSize.default.} = enum
   primitivePoints = 0
   primitiveLines = 1
   primitiveLineStrip = 2
   primitiveTriangles = 3
   primitiveTriangleStrip = 4
 
-type Mesh_ArrayType* {.size: sizeof(clong).} = enum
+type Mesh_ArrayType* {.size: EnumSize.default.} = enum
   arrayVertex = 0
   arrayNormal = 1
   arrayTangent = 2
@@ -1949,7 +1949,7 @@ type Mesh_ArrayType* {.size: sizeof(clong).} = enum
   arrayIndex = 12
   arrayMax = 13
 
-type Mesh_ArrayCustomFormat* {.size: sizeof(clong).} = enum
+type Mesh_ArrayCustomFormat* {.size: EnumSize.default.} = enum
   arrayCustomRgba8Unorm = 0
   arrayCustomRgba8Snorm = 1
   arrayCustomRgHalf = 2
@@ -1990,50 +1990,50 @@ template arrayFormatCustom2Shift*[T: Mesh_ArrayFormat](_: typedesc[T]): set[T] =
 template arrayFormatCustom3Shift*[T: Mesh_ArrayFormat](_: typedesc[T]): set[T] = cast[set[T]](22)
 template arrayCompressFlagsBase*[T: Mesh_ArrayFormat](_: typedesc[T]): set[T] = cast[set[T]](25)
 
-type Mesh_BlendShapeMode* {.size: sizeof(clong).} = enum
+type Mesh_BlendShapeMode* {.size: EnumSize.default.} = enum
   blendShapeModeNormalized = 0
   blendShapeModeRelative = 1
 
-type MeshConvexDecompositionSettings_Mode* {.size: sizeof(clong).} = enum
+type MeshConvexDecompositionSettings_Mode* {.size: EnumSize.default.} = enum
   convexDecompositionModeVoxel = 0
   convexDecompositionModeTetrahedron = 1
 
-type MultiMesh_TransformFormat* {.size: sizeof(clong).} = enum
+type MultiMesh_TransformFormat* {.size: EnumSize.default.} = enum
   transform2D = 0
   transform3D = 1
 
-type MultiMesh_PhysicsInterpolationQuality* {.size: sizeof(clong).} = enum
+type MultiMesh_PhysicsInterpolationQuality* {.size: EnumSize.default.} = enum
   interpQualityFast = 0
   interpQualityHigh = 1
 
-type MultiplayerAPI_RPCMode* {.size: sizeof(clong).} = enum
+type MultiplayerAPI_RPCMode* {.size: EnumSize.default.} = enum
   rpcModeDisabled = 0
   rpcModeAnyPeer = 1
   rpcModeAuthority = 2
 
-type MultiplayerPeer_ConnectionStatus* {.size: sizeof(clong).} = enum
+type MultiplayerPeer_ConnectionStatus* {.size: EnumSize.default.} = enum
   connectionDisconnected = 0
   connectionConnecting = 1
   connectionConnected = 2
 
-type MultiplayerPeer_TransferMode* {.size: sizeof(clong).} = enum
+type MultiplayerPeer_TransferMode* {.size: EnumSize.default.} = enum
   transferModeUnreliable = 0
   transferModeUnreliableOrdered = 1
   transferModeReliable = 2
 
-type MultiplayerSynchronizer_VisibilityUpdateMode* {.size: sizeof(clong).} = enum
+type MultiplayerSynchronizer_VisibilityUpdateMode* {.size: EnumSize.default.} = enum
   visibilityProcessIdle = 0
   visibilityProcessPhysics = 1
   visibilityProcessNone = 2
 
-type NativeMenu_Feature* {.size: sizeof(clong).} = enum
+type NativeMenu_Feature* {.size: EnumSize.default.} = enum
   featureGlobalMenu = 0
   featurePopupMenu = 1
   featureOpenCloseCallback = 2
   featureHoverCallback = 3
   featureKeyCallback = 4
 
-type NativeMenu_SystemMenus* {.size: sizeof(clong).} = enum
+type NativeMenu_SystemMenus* {.size: EnumSize.default.} = enum
   invalidMenuId = 0
   mainMenuId = 1
   applicationMenuId = 2
@@ -2041,28 +2041,28 @@ type NativeMenu_SystemMenus* {.size: sizeof(clong).} = enum
   helpMenuId = 4
   dockMenuId = 5
 
-type NavigationMesh_SamplePartitionType* {.size: sizeof(clong).} = enum
+type NavigationMesh_SamplePartitionType* {.size: EnumSize.default.} = enum
   samplePartitionWatershed = 0
   samplePartitionMonotone = 1
   samplePartitionLayers = 2
   samplePartitionMax = 3
 
-type NavigationMesh_ParsedGeometryType* {.size: sizeof(clong).} = enum
+type NavigationMesh_ParsedGeometryType* {.size: EnumSize.default.} = enum
   parsedGeometryMeshInstances = 0
   parsedGeometryStaticColliders = 1
   parsedGeometryBoth = 2
   parsedGeometryMax = 3
 
-type NavigationMesh_SourceGeometryMode* {.size: sizeof(clong).} = enum
+type NavigationMesh_SourceGeometryMode* {.size: EnumSize.default.} = enum
   sourceGeometryRootNodeChildren = 0
   sourceGeometryGroupsWithChildren = 1
   sourceGeometryGroupsExplicit = 2
   sourceGeometryMax = 3
 
-type NavigationPathQueryParameters2D_PathfindingAlgorithm* {.size: sizeof(clong).} = enum
+type NavigationPathQueryParameters2D_PathfindingAlgorithm* {.size: EnumSize.default.} = enum
   pathfindingAlgorithmAstar = 0
 
-type NavigationPathQueryParameters2D_PathPostProcessing* {.size: sizeof(clong).} = enum
+type NavigationPathQueryParameters2D_PathPostProcessing* {.size: EnumSize.default.} = enum
   pathPostprocessingCorridorfunnel = 0
   pathPostprocessingEdgecentered = 1
   pathPostprocessingNone = 2
@@ -2075,10 +2075,10 @@ type NavigationPathQueryParameters2D_PathMetadataFlags* = enum
   `--Padding-Max--` = 63 # To align size-of set[NavigationPathQueryParameters2D_PathMetadataFlags] to size-of Int.
 template pathMetadataIncludeAll*[T: NavigationPathQueryParameters2D_PathMetadataFlags](_: typedesc[T]): set[T] = cast[set[T]](7)
 
-type NavigationPathQueryParameters3D_PathfindingAlgorithm* {.size: sizeof(clong).} = enum
+type NavigationPathQueryParameters3D_PathfindingAlgorithm* {.size: EnumSize.default.} = enum
   pathfindingAlgorithmAstar = 0
 
-type NavigationPathQueryParameters3D_PathPostProcessing* {.size: sizeof(clong).} = enum
+type NavigationPathQueryParameters3D_PathPostProcessing* {.size: EnumSize.default.} = enum
   pathPostprocessingCorridorfunnel = 0
   pathPostprocessingEdgecentered = 1
   pathPostprocessingNone = 2
@@ -2091,32 +2091,32 @@ type NavigationPathQueryParameters3D_PathMetadataFlags* = enum
   `--Padding-Max--` = 63 # To align size-of set[NavigationPathQueryParameters3D_PathMetadataFlags] to size-of Int.
 template pathMetadataIncludeAll*[T: NavigationPathQueryParameters3D_PathMetadataFlags](_: typedesc[T]): set[T] = cast[set[T]](7)
 
-type NavigationPathQueryResult2D_PathSegmentType* {.size: sizeof(clong).} = enum
+type NavigationPathQueryResult2D_PathSegmentType* {.size: EnumSize.default.} = enum
   pathSegmentTypeRegion = 0
   pathSegmentTypeLink = 1
 
-type NavigationPathQueryResult3D_PathSegmentType* {.size: sizeof(clong).} = enum
+type NavigationPathQueryResult3D_PathSegmentType* {.size: EnumSize.default.} = enum
   pathSegmentTypeRegion = 0
   pathSegmentTypeLink = 1
 
-type NavigationPolygon_SamplePartitionType* {.size: sizeof(clong).} = enum
+type NavigationPolygon_SamplePartitionType* {.size: EnumSize.default.} = enum
   samplePartitionConvexPartition = 0
   samplePartitionTriangulate = 1
   samplePartitionMax = 2
 
-type NavigationPolygon_ParsedGeometryType* {.size: sizeof(clong).} = enum
+type NavigationPolygon_ParsedGeometryType* {.size: EnumSize.default.} = enum
   parsedGeometryMeshInstances = 0
   parsedGeometryStaticColliders = 1
   parsedGeometryBoth = 2
   parsedGeometryMax = 3
 
-type NavigationPolygon_SourceGeometryMode* {.size: sizeof(clong).} = enum
+type NavigationPolygon_SourceGeometryMode* {.size: EnumSize.default.} = enum
   sourceGeometryRootNodeChildren = 0
   sourceGeometryGroupsWithChildren = 1
   sourceGeometryGroupsExplicit = 2
   sourceGeometryMax = 3
 
-type NavigationServer3D_ProcessInfo* {.size: sizeof(clong).} = enum
+type NavigationServer3D_ProcessInfo* {.size: EnumSize.default.} = enum
   infoActiveMaps = 0
   infoRegionCount = 1
   infoAgentCount = 2
@@ -2128,19 +2128,19 @@ type NavigationServer3D_ProcessInfo* {.size: sizeof(clong).} = enum
   infoEdgeFreeCount = 8
   infoObstacleCount = 9
 
-type NinePatchRect_AxisStretchMode* {.size: sizeof(clong).} = enum
+type NinePatchRect_AxisStretchMode* {.size: EnumSize.default.} = enum
   axisStretchModeStretch = 0
   axisStretchModeTile = 1
   axisStretchModeTileFit = 2
 
-type Node_ProcessMode* {.size: sizeof(clong).} = enum
+type Node_ProcessMode* {.size: EnumSize.default.} = enum
   processModeInherit = 0
   processModePausable = 1
   processModeWhenPaused = 2
   processModeAlways = 3
   processModeDisabled = 4
 
-type Node_ProcessThreadGroup* {.size: sizeof(clong).} = enum
+type Node_ProcessThreadGroup* {.size: EnumSize.default.} = enum
   processThreadGroupInherit = 0
   processThreadGroupMainThread = 1
   processThreadGroupSubThread = 2
@@ -2151,39 +2151,39 @@ type Node_ProcessThreadMessages* = enum
   `--Padding-Max--` = 63 # To align size-of set[Node_ProcessThreadMessages] to size-of Int.
 template flagProcessThreadMessagesAll*[T: Node_ProcessThreadMessages](_: typedesc[T]): set[T] = cast[set[T]](3)
 
-type Node_PhysicsInterpolationMode* {.size: sizeof(clong).} = enum
+type Node_PhysicsInterpolationMode* {.size: EnumSize.default.} = enum
   physicsInterpolationModeInherit = 0
   physicsInterpolationModeOn = 1
   physicsInterpolationModeOff = 2
 
-type Node_DuplicateFlags* {.size: sizeof(clong).} = enum
+type Node_DuplicateFlags* {.size: EnumSize.default.} = enum
   duplicateSignals = 1
   duplicateGroups = 2
   duplicateScripts = 4
   duplicateUseInstantiation = 8
 
-type Node_InternalMode* {.size: sizeof(clong).} = enum
+type Node_InternalMode* {.size: EnumSize.default.} = enum
   internalModeDisabled = 0
   internalModeFront = 1
   internalModeBack = 2
 
-type Node_AutoTranslateMode* {.size: sizeof(clong).} = enum
+type Node_AutoTranslateMode* {.size: EnumSize.default.} = enum
   autoTranslateModeInherit = 0
   autoTranslateModeAlways = 1
   autoTranslateModeDisabled = 2
 
-type Node3D_RotationEditMode* {.size: sizeof(clong).} = enum
+type Node3D_RotationEditMode* {.size: EnumSize.default.} = enum
   rotationEditModeEuler = 0
   rotationEditModeQuaternion = 1
   rotationEditModeBasis = 2
 
-type OS_RenderingDriver* {.size: sizeof(clong).} = enum
+type OS_RenderingDriver* {.size: EnumSize.default.} = enum
   renderingDriverVulkan = 0
   renderingDriverOpengl3 = 1
   renderingDriverD3D12 = 2
   renderingDriverMetal = 3
 
-type OS_SystemDir* {.size: sizeof(clong).} = enum
+type OS_SystemDir* {.size: EnumSize.default.} = enum
   systemDirDesktop = 0
   systemDirDcim = 1
   systemDirDocuments = 2
@@ -2193,76 +2193,76 @@ type OS_SystemDir* {.size: sizeof(clong).} = enum
   systemDirPictures = 6
   systemDirRingtones = 7
 
-type OS_StdHandleType* {.size: sizeof(clong).} = enum
+type OS_StdHandleType* {.size: EnumSize.default.} = enum
   stdHandleInvalid = 0
   stdHandleConsole = 1
   stdHandleFile = 2
   stdHandlePipe = 3
   stdHandleUnknown = 4
 
-type Object_ConnectFlags* {.size: sizeof(clong).} = enum
+type Object_ConnectFlags* {.size: EnumSize.default.} = enum
   connectDeferred = 1
   connectPersist = 2
   connectOneShot = 4
   connectReferenceCounted = 8
 
-type OccluderPolygon2D_CullMode* {.size: sizeof(clong).} = enum
+type OccluderPolygon2D_CullMode* {.size: EnumSize.default.} = enum
   cullDisabled = 0
   cullClockwise = 1
   cullCounterClockwise = 2
 
-type OmniLight3D_ShadowMode* {.size: sizeof(clong).} = enum
+type OmniLight3D_ShadowMode* {.size: EnumSize.default.} = enum
   shadowDualParaboloid = 0
   shadowCube = 1
 
-type OpenXRAPIExtension_OpenXRAlphaBlendModeSupport* {.size: sizeof(clong).} = enum
+type OpenXRAPIExtension_OpenXRAlphaBlendModeSupport* {.size: EnumSize.default.} = enum
   openxrAlphaBlendModeSupportNone = 0
   openxrAlphaBlendModeSupportReal = 1
   openxrAlphaBlendModeSupportEmulating = 2
 
-type OpenXRAction_ActionType* {.size: sizeof(clong).} = enum
+type OpenXRAction_ActionType* {.size: EnumSize.default.} = enum
   openxrActionBool = 0
   openxrActionFloat = 1
   openxrActionVector2 = 2
   openxrActionPose = 3
 
-type OpenXRHand_Hands* {.size: sizeof(clong).} = enum
+type OpenXRHand_Hands* {.size: EnumSize.default.} = enum
   handLeft = 0
   handRight = 1
   handMax = 2
 
-type OpenXRHand_MotionRange* {.size: sizeof(clong).} = enum
+type OpenXRHand_MotionRange* {.size: EnumSize.default.} = enum
   motionRangeUnobstructed = 0
   motionRangeConformToController = 1
   motionRangeMax = 2
 
-type OpenXRHand_SkeletonRig* {.size: sizeof(clong).} = enum
+type OpenXRHand_SkeletonRig* {.size: EnumSize.default.} = enum
   skeletonRigOpenxr = 0
   skeletonRigHumanoid = 1
   skeletonRigMax = 2
 
-type OpenXRHand_BoneUpdate* {.size: sizeof(clong).} = enum
+type OpenXRHand_BoneUpdate* {.size: EnumSize.default.} = enum
   boneUpdateFull = 0
   boneUpdateRotationOnly = 1
   boneUpdateMax = 2
 
-type OpenXRInterface_Hand* {.size: sizeof(clong).} = enum
+type OpenXRInterface_Hand* {.size: EnumSize.default.} = enum
   handLeft = 0
   handRight = 1
   handMax = 2
 
-type OpenXRInterface_HandMotionRange* {.size: sizeof(clong).} = enum
+type OpenXRInterface_HandMotionRange* {.size: EnumSize.default.} = enum
   handMotionRangeUnobstructed = 0
   handMotionRangeConformToController = 1
   handMotionRangeMax = 2
 
-type OpenXRInterface_HandTrackedSource* {.size: sizeof(clong).} = enum
+type OpenXRInterface_HandTrackedSource* {.size: EnumSize.default.} = enum
   handTrackedSourceUnknown = 0
   handTrackedSourceUnobstructed = 1
   handTrackedSourceController = 2
   handTrackedSourceMax = 3
 
-type OpenXRInterface_HandJoints* {.size: sizeof(clong).} = enum
+type OpenXRInterface_HandJoints* {.size: EnumSize.default.} = enum
   handJointPalm = 0
   handJointWrist = 1
   handJointThumbMetacarpal = 2
@@ -2301,20 +2301,20 @@ type OpenXRInterface_HandJointFlags* = enum
   handJointAngularVelocityValid = 5
   `--Padding-Max--` = 63 # To align size-of set[OpenXRInterface_HandJointFlags] to size-of Int.
 
-type PackedScene_GenEditState* {.size: sizeof(clong).} = enum
+type PackedScene_GenEditState* {.size: EnumSize.default.} = enum
   genEditStateDisabled = 0
   genEditStateInstance = 1
   genEditStateMain = 2
   genEditStateMainInherited = 3
 
-type PacketPeerDTLS_Status* {.size: sizeof(clong).} = enum
+type PacketPeerDTLS_Status* {.size: EnumSize.default.} = enum
   statusDisconnected = 0
   statusHandshaking = 1
   statusConnected = 2
   statusError = 3
   statusErrorHostnameMismatch = 4
 
-type ParticleProcessMaterial_Parameter* {.size: sizeof(clong).} = enum
+type ParticleProcessMaterial_Parameter* {.size: EnumSize.default.} = enum
   paramInitialLinearVelocity = 0
   paramAngularVelocity = 1
   paramOrbitVelocity = 2
@@ -2335,14 +2335,14 @@ type ParticleProcessMaterial_Parameter* {.size: sizeof(clong).} = enum
   paramScaleOverVelocity = 17
   paramMax = 18
 
-type ParticleProcessMaterial_ParticleFlags* {.size: sizeof(clong).} = enum
+type ParticleProcessMaterial_ParticleFlags* {.size: EnumSize.default.} = enum
   particleFlagAlignYToVelocity = 0
   particleFlagRotateY = 1
   particleFlagDisableZ = 2
   particleFlagDampingAsFriction = 3
   particleFlagMax = 4
 
-type ParticleProcessMaterial_EmissionShape* {.size: sizeof(clong).} = enum
+type ParticleProcessMaterial_EmissionShape* {.size: EnumSize.default.} = enum
   emissionShapePoint = 0
   emissionShapeSphere = 1
   emissionShapeSphereSurface = 2
@@ -2352,7 +2352,7 @@ type ParticleProcessMaterial_EmissionShape* {.size: sizeof(clong).} = enum
   emissionShapeRing = 6
   emissionShapeMax = 7
 
-type ParticleProcessMaterial_SubEmitterMode* {.size: sizeof(clong).} = enum
+type ParticleProcessMaterial_SubEmitterMode* {.size: EnumSize.default.} = enum
   subEmitterDisabled = 0
   subEmitterConstant = 1
   subEmitterAtEnd = 2
@@ -2360,20 +2360,20 @@ type ParticleProcessMaterial_SubEmitterMode* {.size: sizeof(clong).} = enum
   subEmitterAtStart = 4
   subEmitterMax = 5
 
-type ParticleProcessMaterial_CollisionMode* {.size: sizeof(clong).} = enum
+type ParticleProcessMaterial_CollisionMode* {.size: EnumSize.default.} = enum
   collisionDisabled = 0
   collisionRigid = 1
   collisionHideOnContact = 2
   collisionMax = 3
 
-type PathFollow3D_RotationMode* {.size: sizeof(clong).} = enum
+type PathFollow3D_RotationMode* {.size: EnumSize.default.} = enum
   rotationNone = 0
   rotationY = 1
   rotationXy = 2
   rotationXyz = 3
   rotationOriented = 4
 
-type Performance_Monitor* {.size: sizeof(clong).} = enum
+type Performance_Monitor* {.size: EnumSize.default.} = enum
   timeFps = 0
   timeProcess = 1
   timePhysicsProcess = 2
@@ -2415,11 +2415,11 @@ type Performance_Monitor* {.size: sizeof(clong).} = enum
   pipelineCompilationsSpecialization = 38
   monitorMax = 39
 
-type PhysicalBone3D_DampMode* {.size: sizeof(clong).} = enum
+type PhysicalBone3D_DampMode* {.size: EnumSize.default.} = enum
   dampModeCombine = 0
   dampModeReplace = 1
 
-type PhysicalBone3D_JointType* {.size: sizeof(clong).} = enum
+type PhysicalBone3D_JointType* {.size: EnumSize.default.} = enum
   jointTypeNone = 0
   jointTypePin = 1
   jointTypeCone = 2
@@ -2427,7 +2427,7 @@ type PhysicalBone3D_JointType* {.size: sizeof(clong).} = enum
   jointTypeSlider = 4
   jointType6Dof = 5
 
-type PhysicsServer2D_SpaceParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_SpaceParameter* {.size: EnumSize.default.} = enum
   spaceParamContactRecycleRadius = 0
   spaceParamContactMaxSeparation = 1
   spaceParamContactMaxAllowedPenetration = 2
@@ -2438,7 +2438,7 @@ type PhysicsServer2D_SpaceParameter* {.size: sizeof(clong).} = enum
   spaceParamConstraintDefaultBias = 7
   spaceParamSolverIterations = 8
 
-type PhysicsServer2D_ShapeType* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_ShapeType* {.size: EnumSize.default.} = enum
   shapeWorldBoundary = 0
   shapeSeparationRay = 1
   shapeSegment = 2
@@ -2449,7 +2449,7 @@ type PhysicsServer2D_ShapeType* {.size: sizeof(clong).} = enum
   shapeConcavePolygon = 7
   shapeCustom = 8
 
-type PhysicsServer2D_AreaParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_AreaParameter* {.size: EnumSize.default.} = enum
   areaParamGravityOverrideMode = 0
   areaParamGravity = 1
   areaParamGravityVector = 2
@@ -2461,20 +2461,20 @@ type PhysicsServer2D_AreaParameter* {.size: sizeof(clong).} = enum
   areaParamAngularDamp = 8
   areaParamPriority = 9
 
-type PhysicsServer2D_AreaSpaceOverrideMode* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_AreaSpaceOverrideMode* {.size: EnumSize.default.} = enum
   areaSpaceOverrideDisabled = 0
   areaSpaceOverrideCombine = 1
   areaSpaceOverrideCombineReplace = 2
   areaSpaceOverrideReplace = 3
   areaSpaceOverrideReplaceCombine = 4
 
-type PhysicsServer2D_BodyMode* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_BodyMode* {.size: EnumSize.default.} = enum
   bodyModeStatic = 0
   bodyModeKinematic = 1
   bodyModeRigid = 2
   bodyModeRigidLinear = 3
 
-type PhysicsServer2D_BodyParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_BodyParameter* {.size: EnumSize.default.} = enum
   bodyParamBounce = 0
   bodyParamFriction = 1
   bodyParamMass = 2
@@ -2487,58 +2487,58 @@ type PhysicsServer2D_BodyParameter* {.size: sizeof(clong).} = enum
   bodyParamAngularDamp = 9
   bodyParamMax = 10
 
-type PhysicsServer2D_BodyDampMode* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_BodyDampMode* {.size: EnumSize.default.} = enum
   bodyDampModeCombine = 0
   bodyDampModeReplace = 1
 
-type PhysicsServer2D_BodyState* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_BodyState* {.size: EnumSize.default.} = enum
   bodyStateTransform = 0
   bodyStateLinearVelocity = 1
   bodyStateAngularVelocity = 2
   bodyStateSleeping = 3
   bodyStateCanSleep = 4
 
-type PhysicsServer2D_JointType* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_JointType* {.size: EnumSize.default.} = enum
   jointTypePin = 0
   jointTypeGroove = 1
   jointTypeDampedSpring = 2
   jointTypeMax = 3
 
-type PhysicsServer2D_JointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_JointParam* {.size: EnumSize.default.} = enum
   jointParamBias = 0
   jointParamMaxBias = 1
   jointParamMaxForce = 2
 
-type PhysicsServer2D_PinJointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_PinJointParam* {.size: EnumSize.default.} = enum
   pinJointSoftness = 0
   pinJointLimitUpper = 1
   pinJointLimitLower = 2
   pinJointMotorTargetVelocity = 3
 
-type PhysicsServer2D_PinJointFlag* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_PinJointFlag* {.size: EnumSize.default.} = enum
   pinJointFlagAngularLimitEnabled = 0
   pinJointFlagMotorEnabled = 1
 
-type PhysicsServer2D_DampedSpringParam* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_DampedSpringParam* {.size: EnumSize.default.} = enum
   dampedSpringRestLength = 0
   dampedSpringStiffness = 1
   dampedSpringDamping = 2
 
-type PhysicsServer2D_CCDMode* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_CCDMode* {.size: EnumSize.default.} = enum
   ccdModeDisabled = 0
   ccdModeCastRay = 1
   ccdModeCastShape = 2
 
-type PhysicsServer2D_AreaBodyStatus* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_AreaBodyStatus* {.size: EnumSize.default.} = enum
   areaBodyAdded = 0
   areaBodyRemoved = 1
 
-type PhysicsServer2D_ProcessInfo* {.size: sizeof(clong).} = enum
+type PhysicsServer2D_ProcessInfo* {.size: EnumSize.default.} = enum
   infoActiveObjects = 0
   infoCollisionPairs = 1
   infoIslandCount = 2
 
-type PhysicsServer3D_JointType* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_JointType* {.size: EnumSize.default.} = enum
   jointTypePin = 0
   jointTypeHinge = 1
   jointTypeSlider = 2
@@ -2546,12 +2546,12 @@ type PhysicsServer3D_JointType* {.size: sizeof(clong).} = enum
   jointType6Dof = 4
   jointTypeMax = 5
 
-type PhysicsServer3D_PinJointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_PinJointParam* {.size: EnumSize.default.} = enum
   pinJointBias = 0
   pinJointDamping = 1
   pinJointImpulseClamp = 2
 
-type PhysicsServer3D_HingeJointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_HingeJointParam* {.size: EnumSize.default.} = enum
   hingeJointBias = 0
   hingeJointLimitUpper = 1
   hingeJointLimitLower = 2
@@ -2561,11 +2561,11 @@ type PhysicsServer3D_HingeJointParam* {.size: sizeof(clong).} = enum
   hingeJointMotorTargetVelocity = 6
   hingeJointMotorMaxImpulse = 7
 
-type PhysicsServer3D_HingeJointFlag* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_HingeJointFlag* {.size: EnumSize.default.} = enum
   hingeJointFlagUseLimit = 0
   hingeJointFlagEnableMotor = 1
 
-type PhysicsServer3D_SliderJointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_SliderJointParam* {.size: EnumSize.default.} = enum
   sliderJointLinearLimitUpper = 0
   sliderJointLinearLimitLower = 1
   sliderJointLinearLimitSoftness = 2
@@ -2590,14 +2590,14 @@ type PhysicsServer3D_SliderJointParam* {.size: sizeof(clong).} = enum
   sliderJointAngularOrthogonalDamping = 21
   sliderJointMax = 22
 
-type PhysicsServer3D_ConeTwistJointParam* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_ConeTwistJointParam* {.size: EnumSize.default.} = enum
   coneTwistJointSwingSpan = 0
   coneTwistJointTwistSpan = 1
   coneTwistJointBias = 2
   coneTwistJointSoftness = 3
   coneTwistJointRelaxation = 4
 
-type PhysicsServer3D_G6DOFJointAxisParam* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_G6DOFJointAxisParam* {.size: EnumSize.default.} = enum
   g6DofJointLinearLowerLimit = 0
   g6DofJointLinearUpperLimit = 1
   g6DofJointLinearLimitSoftness = 2
@@ -2622,7 +2622,7 @@ type PhysicsServer3D_G6DOFJointAxisParam* {.size: sizeof(clong).} = enum
   g6DofJointAngularSpringEquilibriumPoint = 21
   g6DofJointMax = 22
 
-type PhysicsServer3D_G6DOFJointAxisFlag* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_G6DOFJointAxisFlag* {.size: EnumSize.default.} = enum
   g6DofJointFlagEnableLinearLimit = 0
   g6DofJointFlagEnableAngularLimit = 1
   g6DofJointFlagEnableAngularSpring = 2
@@ -2631,7 +2631,7 @@ type PhysicsServer3D_G6DOFJointAxisFlag* {.size: sizeof(clong).} = enum
   g6DofJointFlagEnableLinearMotor = 5
   g6DofJointFlagMax = 6
 
-type PhysicsServer3D_ShapeType* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_ShapeType* {.size: EnumSize.default.} = enum
   shapeWorldBoundary = 0
   shapeSeparationRay = 1
   shapeSphere = 2
@@ -2644,7 +2644,7 @@ type PhysicsServer3D_ShapeType* {.size: sizeof(clong).} = enum
   shapeSoftBody = 9
   shapeCustom = 10
 
-type PhysicsServer3D_AreaParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_AreaParameter* {.size: EnumSize.default.} = enum
   areaParamGravityOverrideMode = 0
   areaParamGravity = 1
   areaParamGravityVector = 2
@@ -2660,20 +2660,20 @@ type PhysicsServer3D_AreaParameter* {.size: sizeof(clong).} = enum
   areaParamWindDirection = 12
   areaParamWindAttenuationFactor = 13
 
-type PhysicsServer3D_AreaSpaceOverrideMode* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_AreaSpaceOverrideMode* {.size: EnumSize.default.} = enum
   areaSpaceOverrideDisabled = 0
   areaSpaceOverrideCombine = 1
   areaSpaceOverrideCombineReplace = 2
   areaSpaceOverrideReplace = 3
   areaSpaceOverrideReplaceCombine = 4
 
-type PhysicsServer3D_BodyMode* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_BodyMode* {.size: EnumSize.default.} = enum
   bodyModeStatic = 0
   bodyModeKinematic = 1
   bodyModeRigid = 2
   bodyModeRigidLinear = 3
 
-type PhysicsServer3D_BodyParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_BodyParameter* {.size: EnumSize.default.} = enum
   bodyParamBounce = 0
   bodyParamFriction = 1
   bodyParamMass = 2
@@ -2686,27 +2686,27 @@ type PhysicsServer3D_BodyParameter* {.size: sizeof(clong).} = enum
   bodyParamAngularDamp = 9
   bodyParamMax = 10
 
-type PhysicsServer3D_BodyDampMode* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_BodyDampMode* {.size: EnumSize.default.} = enum
   bodyDampModeCombine = 0
   bodyDampModeReplace = 1
 
-type PhysicsServer3D_BodyState* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_BodyState* {.size: EnumSize.default.} = enum
   bodyStateTransform = 0
   bodyStateLinearVelocity = 1
   bodyStateAngularVelocity = 2
   bodyStateSleeping = 3
   bodyStateCanSleep = 4
 
-type PhysicsServer3D_AreaBodyStatus* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_AreaBodyStatus* {.size: EnumSize.default.} = enum
   areaBodyAdded = 0
   areaBodyRemoved = 1
 
-type PhysicsServer3D_ProcessInfo* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_ProcessInfo* {.size: EnumSize.default.} = enum
   infoActiveObjects = 0
   infoCollisionPairs = 1
   infoIslandCount = 2
 
-type PhysicsServer3D_SpaceParameter* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_SpaceParameter* {.size: EnumSize.default.} = enum
   spaceParamContactRecycleRadius = 0
   spaceParamContactMaxSeparation = 1
   spaceParamContactMaxAllowedPenetration = 2
@@ -2716,7 +2716,7 @@ type PhysicsServer3D_SpaceParameter* {.size: sizeof(clong).} = enum
   spaceParamBodyTimeToSleep = 6
   spaceParamSolverIterations = 7
 
-type PhysicsServer3D_BodyAxis* {.size: sizeof(clong).} = enum
+type PhysicsServer3D_BodyAxis* {.size: EnumSize.default.} = enum
   bodyAxisLinearX = 1
   bodyAxisLinearY = 2
   bodyAxisLinearZ = 4
@@ -2724,17 +2724,17 @@ type PhysicsServer3D_BodyAxis* {.size: sizeof(clong).} = enum
   bodyAxisAngularY = 16
   bodyAxisAngularZ = 32
 
-type PinJoint3D_Param* {.size: sizeof(clong).} = enum
+type PinJoint3D_Param* {.size: EnumSize.default.} = enum
   paramBias = 0
   paramDamping = 1
   paramImpulseClamp = 2
 
-type PlaneMesh_Orientation* {.size: sizeof(clong).} = enum
+type PlaneMesh_Orientation* {.size: EnumSize.default.} = enum
   faceX = 0
   faceY = 1
   faceZ = 2
 
-type PortableCompressedTexture2D_CompressionMode* {.size: sizeof(clong).} = enum
+type PortableCompressedTexture2D_CompressionMode* {.size: EnumSize.default.} = enum
   compressionModeLossless = 0
   compressionModeLossy = 1
   compressionModeBasisUniversal = 2
@@ -2742,22 +2742,22 @@ type PortableCompressedTexture2D_CompressionMode* {.size: sizeof(clong).} = enum
   compressionModeEtc2 = 4
   compressionModeBptc = 5
 
-type ProgressBar_FillMode* {.size: sizeof(clong).} = enum
+type ProgressBar_FillMode* {.size: EnumSize.default.} = enum
   fillBeginToEnd = 0
   fillEndToBegin = 1
   fillTopToBottom = 2
   fillBottomToTop = 3
 
-type ReflectionProbe_UpdateMode* {.size: sizeof(clong).} = enum
+type ReflectionProbe_UpdateMode* {.size: EnumSize.default.} = enum
   updateOnce = 0
   updateAlways = 1
 
-type ReflectionProbe_AmbientMode* {.size: sizeof(clong).} = enum
+type ReflectionProbe_AmbientMode* {.size: EnumSize.default.} = enum
   ambientDisabled = 0
   ambientEnvironment = 1
   ambientColor = 2
 
-type RenderingDevice_DeviceType* {.size: sizeof(clong).} = enum
+type RenderingDevice_DeviceType* {.size: EnumSize.default.} = enum
   deviceTypeOther = 0
   deviceTypeIntegratedGpu = 1
   deviceTypeDiscreteGpu = 2
@@ -2765,7 +2765,7 @@ type RenderingDevice_DeviceType* {.size: sizeof(clong).} = enum
   deviceTypeCpu = 4
   deviceTypeMax = 5
 
-type RenderingDevice_DriverResource* {.size: sizeof(clong).} = enum
+type RenderingDevice_DriverResource* {.size: EnumSize.default.} = enum
   driverResourceLogicalDevice = 0
   driverResourcePhysicalDevice = 1
   driverResourceTopmostObject = 2
@@ -2793,7 +2793,7 @@ template driverResourceVulkanBuffer*[T: RenderingDevice_DriverResource](_: typed
 template driverResourceVulkanComputePipeline*[T: RenderingDevice_DriverResource](_: typedesc[T]): T = T(11)
 template driverResourceVulkanRenderPipeline*[T: RenderingDevice_DriverResource](_: typedesc[T]): T = T(12)
 
-type RenderingDevice_DataFormat* {.size: sizeof(clong).} = enum
+type RenderingDevice_DataFormat* {.size: EnumSize.default.} = enum
   dataFormatR4G4UnormPack8 = 0
   dataFormatR4G4B4A4UnormPack16 = 1
   dataFormatB4G4R4A4UnormPack16 = 2
@@ -3024,7 +3024,7 @@ type RenderingDevice_BarrierMask* = enum
 template barrierMaskRaster*[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T] = cast[set[T]](9)
 template barrierMaskAllBarriers*[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T] = cast[set[T]](32767)
 
-type RenderingDevice_TextureType* {.size: sizeof(clong).} = enum
+type RenderingDevice_TextureType* {.size: EnumSize.default.} = enum
   textureType1D = 0
   textureType2D = 1
   textureType3D = 2
@@ -3034,7 +3034,7 @@ type RenderingDevice_TextureType* {.size: sizeof(clong).} = enum
   textureTypeCubeArray = 6
   textureTypeMax = 7
 
-type RenderingDevice_TextureSamples* {.size: sizeof(clong).} = enum
+type RenderingDevice_TextureSamples* {.size: EnumSize.default.} = enum
   textureSamples1 = 0
   textureSamples2 = 1
   textureSamples4 = 2
@@ -3057,7 +3057,7 @@ type RenderingDevice_TextureUsageBits* = enum
   textureUsageInputAttachmentBit = 9
   `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_TextureUsageBits] to size-of Int.
 
-type RenderingDevice_TextureSwizzle* {.size: sizeof(clong).} = enum
+type RenderingDevice_TextureSwizzle* {.size: EnumSize.default.} = enum
   textureSwizzleIdentity = 0
   textureSwizzleZero = 1
   textureSwizzleOne = 2
@@ -3067,16 +3067,16 @@ type RenderingDevice_TextureSwizzle* {.size: sizeof(clong).} = enum
   textureSwizzleA = 6
   textureSwizzleMax = 7
 
-type RenderingDevice_TextureSliceType* {.size: sizeof(clong).} = enum
+type RenderingDevice_TextureSliceType* {.size: EnumSize.default.} = enum
   textureSlice2D = 0
   textureSliceCubemap = 1
   textureSlice3D = 2
 
-type RenderingDevice_SamplerFilter* {.size: sizeof(clong).} = enum
+type RenderingDevice_SamplerFilter* {.size: EnumSize.default.} = enum
   samplerFilterNearest = 0
   samplerFilterLinear = 1
 
-type RenderingDevice_SamplerRepeatMode* {.size: sizeof(clong).} = enum
+type RenderingDevice_SamplerRepeatMode* {.size: EnumSize.default.} = enum
   samplerRepeatModeRepeat = 0
   samplerRepeatModeMirroredRepeat = 1
   samplerRepeatModeClampToEdge = 2
@@ -3084,7 +3084,7 @@ type RenderingDevice_SamplerRepeatMode* {.size: sizeof(clong).} = enum
   samplerRepeatModeMirrorClampToEdge = 4
   samplerRepeatModeMax = 5
 
-type RenderingDevice_SamplerBorderColor* {.size: sizeof(clong).} = enum
+type RenderingDevice_SamplerBorderColor* {.size: EnumSize.default.} = enum
   samplerBorderColorFloatTransparentBlack = 0
   samplerBorderColorIntTransparentBlack = 1
   samplerBorderColorFloatOpaqueBlack = 2
@@ -3093,11 +3093,11 @@ type RenderingDevice_SamplerBorderColor* {.size: sizeof(clong).} = enum
   samplerBorderColorIntOpaqueWhite = 5
   samplerBorderColorMax = 6
 
-type RenderingDevice_VertexFrequency* {.size: sizeof(clong).} = enum
+type RenderingDevice_VertexFrequency* {.size: EnumSize.default.} = enum
   vertexFrequencyVertex = 0
   vertexFrequencyInstance = 1
 
-type RenderingDevice_IndexBufferFormat* {.size: sizeof(clong).} = enum
+type RenderingDevice_IndexBufferFormat* {.size: EnumSize.default.} = enum
   indexBufferFormatUint16 = 0
   indexBufferFormatUint32 = 1
 
@@ -3110,7 +3110,7 @@ type RenderingDevice_BufferCreationBits* = enum
   bufferCreationAsStorageBit = 1
   `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_BufferCreationBits] to size-of Int.
 
-type RenderingDevice_UniformType* {.size: sizeof(clong).} = enum
+type RenderingDevice_UniformType* {.size: EnumSize.default.} = enum
   uniformTypeSampler = 0
   uniformTypeSamplerWithTexture = 1
   uniformTypeTexture = 2
@@ -3123,7 +3123,7 @@ type RenderingDevice_UniformType* {.size: sizeof(clong).} = enum
   uniformTypeInputAttachment = 9
   uniformTypeMax = 10
 
-type RenderingDevice_RenderPrimitive* {.size: sizeof(clong).} = enum
+type RenderingDevice_RenderPrimitive* {.size: EnumSize.default.} = enum
   renderPrimitivePoints = 0
   renderPrimitiveLines = 1
   renderPrimitiveLinesWithAdjacency = 2
@@ -3137,16 +3137,16 @@ type RenderingDevice_RenderPrimitive* {.size: sizeof(clong).} = enum
   renderPrimitiveTesselationPatch = 10
   renderPrimitiveMax = 11
 
-type RenderingDevice_PolygonCullMode* {.size: sizeof(clong).} = enum
+type RenderingDevice_PolygonCullMode* {.size: EnumSize.default.} = enum
   polygonCullDisabled = 0
   polygonCullFront = 1
   polygonCullBack = 2
 
-type RenderingDevice_PolygonFrontFace* {.size: sizeof(clong).} = enum
+type RenderingDevice_PolygonFrontFace* {.size: EnumSize.default.} = enum
   polygonFrontFaceClockwise = 0
   polygonFrontFaceCounterClockwise = 1
 
-type RenderingDevice_StencilOperation* {.size: sizeof(clong).} = enum
+type RenderingDevice_StencilOperation* {.size: EnumSize.default.} = enum
   stencilOpKeep = 0
   stencilOpZero = 1
   stencilOpReplace = 2
@@ -3157,7 +3157,7 @@ type RenderingDevice_StencilOperation* {.size: sizeof(clong).} = enum
   stencilOpDecrementAndWrap = 7
   stencilOpMax = 8
 
-type RenderingDevice_CompareOperator* {.size: sizeof(clong).} = enum
+type RenderingDevice_CompareOperator* {.size: EnumSize.default.} = enum
   compareOpNever = 0
   compareOpLess = 1
   compareOpEqual = 2
@@ -3168,7 +3168,7 @@ type RenderingDevice_CompareOperator* {.size: sizeof(clong).} = enum
   compareOpAlways = 7
   compareOpMax = 8
 
-type RenderingDevice_LogicOperation* {.size: sizeof(clong).} = enum
+type RenderingDevice_LogicOperation* {.size: EnumSize.default.} = enum
   logicOpClear = 0
   logicOpAnd = 1
   logicOpAndReverse = 2
@@ -3187,7 +3187,7 @@ type RenderingDevice_LogicOperation* {.size: sizeof(clong).} = enum
   logicOpSet = 15
   logicOpMax = 16
 
-type RenderingDevice_BlendFactor* {.size: sizeof(clong).} = enum
+type RenderingDevice_BlendFactor* {.size: EnumSize.default.} = enum
   blendFactorZero = 0
   blendFactorOne = 1
   blendFactorSrcColor = 2
@@ -3209,7 +3209,7 @@ type RenderingDevice_BlendFactor* {.size: sizeof(clong).} = enum
   blendFactorOneMinusSrc1Alpha = 18
   blendFactorMax = 19
 
-type RenderingDevice_BlendOperation* {.size: sizeof(clong).} = enum
+type RenderingDevice_BlendOperation* {.size: EnumSize.default.} = enum
   blendOpAdd = 0
   blendOpSubtract = 1
   blendOpReverseSubtract = 2
@@ -3227,7 +3227,7 @@ type RenderingDevice_PipelineDynamicStateFlags* = enum
   dynamicStateStencilReference = 6
   `--Padding-Max--` = 63 # To align size-of set[RenderingDevice_PipelineDynamicStateFlags] to size-of Int.
 
-type RenderingDevice_InitialAction* {.size: sizeof(clong).} = enum
+type RenderingDevice_InitialAction* {.size: EnumSize.default.} = enum
   initialActionLoad = 0
   initialActionClear = 1
   initialActionDiscard = 2
@@ -3238,14 +3238,14 @@ template initialActionClearRegion*[T: RenderingDevice_InitialAction](_: typedesc
 template initialActionClearRegionContinue*[T: RenderingDevice_InitialAction](_: typedesc[T]): T = T(1)
 template initialActionDrop*[T: RenderingDevice_InitialAction](_: typedesc[T]): T = T(2)
 
-type RenderingDevice_FinalAction* {.size: sizeof(clong).} = enum
+type RenderingDevice_FinalAction* {.size: EnumSize.default.} = enum
   finalActionStore = 0
   finalActionDiscard = 1
   finalActionMax = 2
 template finalActionRead*[T: RenderingDevice_FinalAction](_: typedesc[T]): T = T(0)
 template finalActionContinue*[T: RenderingDevice_FinalAction](_: typedesc[T]): T = T(0)
 
-type RenderingDevice_ShaderStage* {.size: sizeof(clong).} = enum
+type RenderingDevice_ShaderStage* {.size: EnumSize.default.} = enum
   shaderStageVertex = 0
   shaderStageFragment = 1
   shaderStageTesselationControl = 2
@@ -3258,19 +3258,19 @@ template shaderStageVertexBit*[T: RenderingDevice_ShaderStage](_: typedesc[T]): 
 template shaderStageFragmentBit*[T: RenderingDevice_ShaderStage](_: typedesc[T]): T = T(2)
 template shaderStageTesselationControlBit*[T: RenderingDevice_ShaderStage](_: typedesc[T]): T = T(4)
 
-type RenderingDevice_ShaderLanguage* {.size: sizeof(clong).} = enum
+type RenderingDevice_ShaderLanguage* {.size: EnumSize.default.} = enum
   shaderLanguageGlsl = 0
   shaderLanguageHlsl = 1
 
-type RenderingDevice_PipelineSpecializationConstantType* {.size: sizeof(clong).} = enum
+type RenderingDevice_PipelineSpecializationConstantType* {.size: EnumSize.default.} = enum
   pipelineSpecializationConstantTypeBool = 0
   pipelineSpecializationConstantTypeInt = 1
   pipelineSpecializationConstantTypeFloat = 2
 
-type RenderingDevice_Features* {.size: sizeof(clong).} = enum
+type RenderingDevice_Features* {.size: EnumSize.default.} = enum
   supportsBufferDeviceAddress = 6
 
-type RenderingDevice_Limit* {.size: sizeof(clong).} = enum
+type RenderingDevice_Limit* {.size: EnumSize.default.} = enum
   limitMaxBoundUniformSets = 0
   limitMaxFramebufferColorAttachments = 1
   limitMaxTexturesPerUniformSet = 2
@@ -3311,12 +3311,12 @@ type RenderingDevice_Limit* {.size: sizeof(clong).} = enum
   limitMetalfxTemporalScalerMinScale = 46
   limitMetalfxTemporalScalerMaxScale = 47
 
-type RenderingDevice_MemoryType* {.size: sizeof(clong).} = enum
+type RenderingDevice_MemoryType* {.size: EnumSize.default.} = enum
   memoryTextures = 0
   memoryBuffers = 1
   memoryTotal = 2
 
-type RenderingDevice_BreadcrumbMarker* {.size: sizeof(clong).} = enum
+type RenderingDevice_BreadcrumbMarker* {.size: EnumSize.default.} = enum
   none = 0
   reflectionProbes = 65536
   skyPass = 131072
@@ -3361,17 +3361,17 @@ template drawIgnoreColorAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[
 template drawClearAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](327935)
 template drawIgnoreAll*[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T] = cast[set[T]](720640)
 
-type RenderingServer_TextureType* {.size: sizeof(clong).} = enum
+type RenderingServer_TextureType* {.size: EnumSize.default.} = enum
   textureType2D = 0
   textureTypeLayered = 1
   textureType3D = 2
 
-type RenderingServer_TextureLayeredType* {.size: sizeof(clong).} = enum
+type RenderingServer_TextureLayeredType* {.size: EnumSize.default.} = enum
   textureLayered2DArray = 0
   textureLayeredCubemap = 1
   textureLayeredCubemapArray = 2
 
-type RenderingServer_CubeMapLayer* {.size: sizeof(clong).} = enum
+type RenderingServer_CubeMapLayer* {.size: EnumSize.default.} = enum
   cubemapLayerLeft = 0
   cubemapLayerRight = 1
   cubemapLayerBottom = 2
@@ -3379,7 +3379,7 @@ type RenderingServer_CubeMapLayer* {.size: sizeof(clong).} = enum
   cubemapLayerFront = 4
   cubemapLayerBack = 5
 
-type RenderingServer_ShaderMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ShaderMode* {.size: EnumSize.default.} = enum
   shaderSpatial = 0
   shaderCanvasItem = 1
   shaderParticles = 2
@@ -3387,7 +3387,7 @@ type RenderingServer_ShaderMode* {.size: sizeof(clong).} = enum
   shaderFog = 4
   shaderMax = 5
 
-type RenderingServer_ArrayType* {.size: sizeof(clong).} = enum
+type RenderingServer_ArrayType* {.size: EnumSize.default.} = enum
   arrayVertex = 0
   arrayNormal = 1
   arrayTangent = 2
@@ -3403,7 +3403,7 @@ type RenderingServer_ArrayType* {.size: sizeof(clong).} = enum
   arrayIndex = 12
   arrayMax = 13
 
-type RenderingServer_ArrayCustomFormat* {.size: sizeof(clong).} = enum
+type RenderingServer_ArrayCustomFormat* {.size: EnumSize.default.} = enum
   arrayCustomRgba8Unorm = 0
   arrayCustomRgba8Snorm = 1
   arrayCustomRgHalf = 2
@@ -3450,7 +3450,7 @@ template arrayFlagFormatVersionShift*[T: RenderingServer_ArrayFormat](_: typedes
 template arrayFlagFormatVersionMask*[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T] = cast[set[T]](255)
 template arrayFlagFormatCurrentVersion*[T: RenderingServer_ArrayFormat](_: typedesc[T]): T = T(35)
 
-type RenderingServer_PrimitiveType* {.size: sizeof(clong).} = enum
+type RenderingServer_PrimitiveType* {.size: EnumSize.default.} = enum
   primitivePoints = 0
   primitiveLines = 1
   primitiveLineStrip = 2
@@ -3458,19 +3458,19 @@ type RenderingServer_PrimitiveType* {.size: sizeof(clong).} = enum
   primitiveTriangleStrip = 4
   primitiveMax = 5
 
-type RenderingServer_BlendShapeMode* {.size: sizeof(clong).} = enum
+type RenderingServer_BlendShapeMode* {.size: EnumSize.default.} = enum
   blendShapeModeNormalized = 0
   blendShapeModeRelative = 1
 
-type RenderingServer_MultimeshTransformFormat* {.size: sizeof(clong).} = enum
+type RenderingServer_MultimeshTransformFormat* {.size: EnumSize.default.} = enum
   multimeshTransform2D = 0
   multimeshTransform3D = 1
 
-type RenderingServer_MultimeshPhysicsInterpolationQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_MultimeshPhysicsInterpolationQuality* {.size: EnumSize.default.} = enum
   multimeshInterpQualityFast = 0
   multimeshInterpQualityHigh = 1
 
-type RenderingServer_LightProjectorFilter* {.size: sizeof(clong).} = enum
+type RenderingServer_LightProjectorFilter* {.size: EnumSize.default.} = enum
   lightProjectorFilterNearest = 0
   lightProjectorFilterLinear = 1
   lightProjectorFilterNearestMipmaps = 2
@@ -3478,12 +3478,12 @@ type RenderingServer_LightProjectorFilter* {.size: sizeof(clong).} = enum
   lightProjectorFilterNearestMipmapsAnisotropic = 4
   lightProjectorFilterLinearMipmapsAnisotropic = 5
 
-type RenderingServer_LightType* {.size: sizeof(clong).} = enum
+type RenderingServer_LightType* {.size: EnumSize.default.} = enum
   lightDirectional = 0
   lightOmni = 1
   lightSpot = 2
 
-type RenderingServer_LightParam* {.size: sizeof(clong).} = enum
+type RenderingServer_LightParam* {.size: EnumSize.default.} = enum
   lightParamEnergy = 0
   lightParamIndirectEnergy = 1
   lightParamVolumetricFogEnergy = 2
@@ -3507,26 +3507,26 @@ type RenderingServer_LightParam* {.size: sizeof(clong).} = enum
   lightParamIntensity = 20
   lightParamMax = 21
 
-type RenderingServer_LightBakeMode* {.size: sizeof(clong).} = enum
+type RenderingServer_LightBakeMode* {.size: EnumSize.default.} = enum
   lightBakeDisabled = 0
   lightBakeStatic = 1
   lightBakeDynamic = 2
 
-type RenderingServer_LightOmniShadowMode* {.size: sizeof(clong).} = enum
+type RenderingServer_LightOmniShadowMode* {.size: EnumSize.default.} = enum
   lightOmniShadowDualParaboloid = 0
   lightOmniShadowCube = 1
 
-type RenderingServer_LightDirectionalShadowMode* {.size: sizeof(clong).} = enum
+type RenderingServer_LightDirectionalShadowMode* {.size: EnumSize.default.} = enum
   lightDirectionalShadowOrthogonal = 0
   lightDirectionalShadowParallel2Splits = 1
   lightDirectionalShadowParallel4Splits = 2
 
-type RenderingServer_LightDirectionalSkyMode* {.size: sizeof(clong).} = enum
+type RenderingServer_LightDirectionalSkyMode* {.size: EnumSize.default.} = enum
   lightDirectionalSkyModeLightAndSky = 0
   lightDirectionalSkyModeLightOnly = 1
   lightDirectionalSkyModeSkyOnly = 2
 
-type RenderingServer_ShadowQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_ShadowQuality* {.size: EnumSize.default.} = enum
   shadowQualityHard = 0
   shadowQualitySoftVeryLow = 1
   shadowQualitySoftLow = 2
@@ -3535,23 +3535,23 @@ type RenderingServer_ShadowQuality* {.size: sizeof(clong).} = enum
   shadowQualitySoftUltra = 5
   shadowQualityMax = 6
 
-type RenderingServer_ReflectionProbeUpdateMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ReflectionProbeUpdateMode* {.size: EnumSize.default.} = enum
   reflectionProbeUpdateOnce = 0
   reflectionProbeUpdateAlways = 1
 
-type RenderingServer_ReflectionProbeAmbientMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ReflectionProbeAmbientMode* {.size: EnumSize.default.} = enum
   reflectionProbeAmbientDisabled = 0
   reflectionProbeAmbientEnvironment = 1
   reflectionProbeAmbientColor = 2
 
-type RenderingServer_DecalTexture* {.size: sizeof(clong).} = enum
+type RenderingServer_DecalTexture* {.size: EnumSize.default.} = enum
   decalTextureAlbedo = 0
   decalTextureNormal = 1
   decalTextureOrm = 2
   decalTextureEmission = 3
   decalTextureMax = 4
 
-type RenderingServer_DecalFilter* {.size: sizeof(clong).} = enum
+type RenderingServer_DecalFilter* {.size: EnumSize.default.} = enum
   decalFilterNearest = 0
   decalFilterLinear = 1
   decalFilterNearestMipmaps = 2
@@ -3559,27 +3559,27 @@ type RenderingServer_DecalFilter* {.size: sizeof(clong).} = enum
   decalFilterNearestMipmapsAnisotropic = 4
   decalFilterLinearMipmapsAnisotropic = 5
 
-type RenderingServer_VoxelGIQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_VoxelGIQuality* {.size: EnumSize.default.} = enum
   voxelGiQualityLow = 0
   voxelGiQualityHigh = 1
 
-type RenderingServer_ParticlesMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ParticlesMode* {.size: EnumSize.default.} = enum
   particlesMode2D = 0
   particlesMode3D = 1
 
-type RenderingServer_ParticlesTransformAlign* {.size: sizeof(clong).} = enum
+type RenderingServer_ParticlesTransformAlign* {.size: EnumSize.default.} = enum
   particlesTransformAlignDisabled = 0
   particlesTransformAlignZBillboard = 1
   particlesTransformAlignYToVelocity = 2
   particlesTransformAlignZBillboardYToVelocity = 3
 
-type RenderingServer_ParticlesDrawOrder* {.size: sizeof(clong).} = enum
+type RenderingServer_ParticlesDrawOrder* {.size: EnumSize.default.} = enum
   particlesDrawOrderIndex = 0
   particlesDrawOrderLifetime = 1
   particlesDrawOrderReverseLifetime = 2
   particlesDrawOrderViewDepth = 3
 
-type RenderingServer_ParticlesCollisionType* {.size: sizeof(clong).} = enum
+type RenderingServer_ParticlesCollisionType* {.size: EnumSize.default.} = enum
   particlesCollisionTypeSphereAttract = 0
   particlesCollisionTypeBoxAttract = 1
   particlesCollisionTypeVectorFieldAttract = 2
@@ -3588,7 +3588,7 @@ type RenderingServer_ParticlesCollisionType* {.size: sizeof(clong).} = enum
   particlesCollisionTypeSdfCollide = 5
   particlesCollisionTypeHeightfieldCollide = 6
 
-type RenderingServer_ParticlesCollisionHeightfieldResolution* {.size: sizeof(clong).} = enum
+type RenderingServer_ParticlesCollisionHeightfieldResolution* {.size: EnumSize.default.} = enum
   particlesCollisionHeightfieldResolution256 = 0
   particlesCollisionHeightfieldResolution512 = 1
   particlesCollisionHeightfieldResolution1024 = 2
@@ -3597,7 +3597,7 @@ type RenderingServer_ParticlesCollisionHeightfieldResolution* {.size: sizeof(clo
   particlesCollisionHeightfieldResolution8192 = 5
   particlesCollisionHeightfieldResolutionMax = 6
 
-type RenderingServer_FogVolumeShape* {.size: sizeof(clong).} = enum
+type RenderingServer_FogVolumeShape* {.size: EnumSize.default.} = enum
   fogVolumeShapeEllipsoid = 0
   fogVolumeShapeCone = 1
   fogVolumeShapeCylinder = 2
@@ -3605,7 +3605,7 @@ type RenderingServer_FogVolumeShape* {.size: sizeof(clong).} = enum
   fogVolumeShapeWorld = 4
   fogVolumeShapeMax = 5
 
-type RenderingServer_ViewportScaling3DMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportScaling3DMode* {.size: EnumSize.default.} = enum
   viewportScaling3DModeBilinear = 0
   viewportScaling3DModeFsr = 1
   viewportScaling3DModeFsr2 = 2
@@ -3613,45 +3613,45 @@ type RenderingServer_ViewportScaling3DMode* {.size: sizeof(clong).} = enum
   viewportScaling3DModeMetalfxTemporal = 4
   viewportScaling3DModeMax = 5
 
-type RenderingServer_ViewportUpdateMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportUpdateMode* {.size: EnumSize.default.} = enum
   viewportUpdateDisabled = 0
   viewportUpdateOnce = 1
   viewportUpdateWhenVisible = 2
   viewportUpdateWhenParentVisible = 3
   viewportUpdateAlways = 4
 
-type RenderingServer_ViewportClearMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportClearMode* {.size: EnumSize.default.} = enum
   viewportClearAlways = 0
   viewportClearNever = 1
   viewportClearOnlyNextFrame = 2
 
-type RenderingServer_ViewportEnvironmentMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportEnvironmentMode* {.size: EnumSize.default.} = enum
   viewportEnvironmentDisabled = 0
   viewportEnvironmentEnabled = 1
   viewportEnvironmentInherit = 2
   viewportEnvironmentMax = 3
 
-type RenderingServer_ViewportSDFOversize* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportSDFOversize* {.size: EnumSize.default.} = enum
   viewportSdfOversize100Percent = 0
   viewportSdfOversize120Percent = 1
   viewportSdfOversize150Percent = 2
   viewportSdfOversize200Percent = 3
   viewportSdfOversizeMax = 4
 
-type RenderingServer_ViewportSDFScale* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportSDFScale* {.size: EnumSize.default.} = enum
   viewportSdfScale100Percent = 0
   viewportSdfScale50Percent = 1
   viewportSdfScale25Percent = 2
   viewportSdfScaleMax = 3
 
-type RenderingServer_ViewportMSAA* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportMSAA* {.size: EnumSize.default.} = enum
   viewportMsaaDisabled = 0
   viewportMsaa2X = 1
   viewportMsaa4X = 2
   viewportMsaa8X = 3
   viewportMsaaMax = 4
 
-type RenderingServer_ViewportAnisotropicFiltering* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportAnisotropicFiltering* {.size: EnumSize.default.} = enum
   viewportAnisotropyDisabled = 0
   viewportAnisotropy2X = 1
   viewportAnisotropy4X = 2
@@ -3659,29 +3659,29 @@ type RenderingServer_ViewportAnisotropicFiltering* {.size: sizeof(clong).} = enu
   viewportAnisotropy16X = 4
   viewportAnisotropyMax = 5
 
-type RenderingServer_ViewportScreenSpaceAA* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportScreenSpaceAA* {.size: EnumSize.default.} = enum
   viewportScreenSpaceAaDisabled = 0
   viewportScreenSpaceAaFxaa = 1
   viewportScreenSpaceAaMax = 2
 
-type RenderingServer_ViewportOcclusionCullingBuildQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportOcclusionCullingBuildQuality* {.size: EnumSize.default.} = enum
   viewportOcclusionBuildQualityLow = 0
   viewportOcclusionBuildQualityMedium = 1
   viewportOcclusionBuildQualityHigh = 2
 
-type RenderingServer_ViewportRenderInfo* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportRenderInfo* {.size: EnumSize.default.} = enum
   viewportRenderInfoObjectsInFrame = 0
   viewportRenderInfoPrimitivesInFrame = 1
   viewportRenderInfoDrawCallsInFrame = 2
   viewportRenderInfoMax = 3
 
-type RenderingServer_ViewportRenderInfoType* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportRenderInfoType* {.size: EnumSize.default.} = enum
   viewportRenderInfoTypeVisible = 0
   viewportRenderInfoTypeShadow = 1
   viewportRenderInfoTypeCanvas = 2
   viewportRenderInfoTypeMax = 3
 
-type RenderingServer_ViewportDebugDraw* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportDebugDraw* {.size: EnumSize.default.} = enum
   viewportDebugDrawDisabled = 0
   viewportDebugDrawUnshaded = 1
   viewportDebugDrawLighting = 2
@@ -3710,32 +3710,32 @@ type RenderingServer_ViewportDebugDraw* {.size: sizeof(clong).} = enum
   viewportDebugDrawMotionVectors = 25
   viewportDebugDrawInternalBuffer = 26
 
-type RenderingServer_ViewportVRSMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportVRSMode* {.size: EnumSize.default.} = enum
   viewportVrsDisabled = 0
   viewportVrsTexture = 1
   viewportVrsXr = 2
   viewportVrsMax = 3
 
-type RenderingServer_ViewportVRSUpdateMode* {.size: sizeof(clong).} = enum
+type RenderingServer_ViewportVRSUpdateMode* {.size: EnumSize.default.} = enum
   viewportVrsUpdateDisabled = 0
   viewportVrsUpdateOnce = 1
   viewportVrsUpdateAlways = 2
   viewportVrsUpdateMax = 3
 
-type RenderingServer_SkyMode* {.size: sizeof(clong).} = enum
+type RenderingServer_SkyMode* {.size: EnumSize.default.} = enum
   skyModeAutomatic = 0
   skyModeQuality = 1
   skyModeIncremental = 2
   skyModeRealtime = 3
 
-type RenderingServer_CompositorEffectFlags* {.size: sizeof(clong).} = enum
+type RenderingServer_CompositorEffectFlags* {.size: EnumSize.default.} = enum
   compositorEffectFlagAccessResolvedColor = 1
   compositorEffectFlagAccessResolvedDepth = 2
   compositorEffectFlagNeedsMotionVectors = 4
   compositorEffectFlagNeedsRoughness = 8
   compositorEffectFlagNeedsSeparateSpecular = 16
 
-type RenderingServer_CompositorEffectCallbackType* {.size: sizeof(clong).} = enum
+type RenderingServer_CompositorEffectCallbackType* {.size: EnumSize.default.} = enum
   compositorEffectCallbackTypeAny = -1
   compositorEffectCallbackTypePreOpaque = 0
   compositorEffectCallbackTypePostOpaque = 1
@@ -3743,7 +3743,7 @@ type RenderingServer_CompositorEffectCallbackType* {.size: sizeof(clong).} = enu
   compositorEffectCallbackTypePreTransparent = 3
   compositorEffectCallbackTypePostTransparent = 4
 
-type RenderingServer_EnvironmentBG* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentBG* {.size: EnumSize.default.} = enum
   envBgClearColor = 0
   envBgColor = 1
   envBgSky = 2
@@ -3752,61 +3752,61 @@ type RenderingServer_EnvironmentBG* {.size: sizeof(clong).} = enum
   envBgCameraFeed = 5
   envBgMax = 6
 
-type RenderingServer_EnvironmentAmbientSource* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentAmbientSource* {.size: EnumSize.default.} = enum
   envAmbientSourceBg = 0
   envAmbientSourceDisabled = 1
   envAmbientSourceColor = 2
   envAmbientSourceSky = 3
 
-type RenderingServer_EnvironmentReflectionSource* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentReflectionSource* {.size: EnumSize.default.} = enum
   envReflectionSourceBg = 0
   envReflectionSourceDisabled = 1
   envReflectionSourceSky = 2
 
-type RenderingServer_EnvironmentGlowBlendMode* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentGlowBlendMode* {.size: EnumSize.default.} = enum
   envGlowBlendModeAdditive = 0
   envGlowBlendModeScreen = 1
   envGlowBlendModeSoftlight = 2
   envGlowBlendModeReplace = 3
   envGlowBlendModeMix = 4
 
-type RenderingServer_EnvironmentFogMode* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentFogMode* {.size: EnumSize.default.} = enum
   envFogModeExponential = 0
   envFogModeDepth = 1
 
-type RenderingServer_EnvironmentToneMapper* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentToneMapper* {.size: EnumSize.default.} = enum
   envToneMapperLinear = 0
   envToneMapperReinhard = 1
   envToneMapperFilmic = 2
   envToneMapperAces = 3
   envToneMapperAgx = 4
 
-type RenderingServer_EnvironmentSSRRoughnessQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSSRRoughnessQuality* {.size: EnumSize.default.} = enum
   envSsrRoughnessQualityDisabled = 0
   envSsrRoughnessQualityLow = 1
   envSsrRoughnessQualityMedium = 2
   envSsrRoughnessQualityHigh = 3
 
-type RenderingServer_EnvironmentSSAOQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSSAOQuality* {.size: EnumSize.default.} = enum
   envSsaoQualityVeryLow = 0
   envSsaoQualityLow = 1
   envSsaoQualityMedium = 2
   envSsaoQualityHigh = 3
   envSsaoQualityUltra = 4
 
-type RenderingServer_EnvironmentSSILQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSSILQuality* {.size: EnumSize.default.} = enum
   envSsilQualityVeryLow = 0
   envSsilQualityLow = 1
   envSsilQualityMedium = 2
   envSsilQualityHigh = 3
   envSsilQualityUltra = 4
 
-type RenderingServer_EnvironmentSDFGIYScale* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSDFGIYScale* {.size: EnumSize.default.} = enum
   envSdfgiYScale50Percent = 0
   envSdfgiYScale75Percent = 1
   envSdfgiYScale100Percent = 2
 
-type RenderingServer_EnvironmentSDFGIRayCount* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSDFGIRayCount* {.size: EnumSize.default.} = enum
   envSdfgiRayCount4 = 0
   envSdfgiRayCount8 = 1
   envSdfgiRayCount16 = 2
@@ -3816,7 +3816,7 @@ type RenderingServer_EnvironmentSDFGIRayCount* {.size: sizeof(clong).} = enum
   envSdfgiRayCount128 = 6
   envSdfgiRayCountMax = 7
 
-type RenderingServer_EnvironmentSDFGIFramesToConverge* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSDFGIFramesToConverge* {.size: EnumSize.default.} = enum
   envSdfgiConvergeIn5Frames = 0
   envSdfgiConvergeIn10Frames = 1
   envSdfgiConvergeIn15Frames = 2
@@ -3825,7 +3825,7 @@ type RenderingServer_EnvironmentSDFGIFramesToConverge* {.size: sizeof(clong).} =
   envSdfgiConvergeIn30Frames = 5
   envSdfgiConvergeMax = 6
 
-type RenderingServer_EnvironmentSDFGIFramesToUpdateLight* {.size: sizeof(clong).} = enum
+type RenderingServer_EnvironmentSDFGIFramesToUpdateLight* {.size: EnumSize.default.} = enum
   envSdfgiUpdateLightIn1Frame = 0
   envSdfgiUpdateLightIn2Frames = 1
   envSdfgiUpdateLightIn4Frames = 2
@@ -3833,24 +3833,24 @@ type RenderingServer_EnvironmentSDFGIFramesToUpdateLight* {.size: sizeof(clong).
   envSdfgiUpdateLightIn16Frames = 4
   envSdfgiUpdateLightMax = 5
 
-type RenderingServer_SubSurfaceScatteringQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_SubSurfaceScatteringQuality* {.size: EnumSize.default.} = enum
   subSurfaceScatteringQualityDisabled = 0
   subSurfaceScatteringQualityLow = 1
   subSurfaceScatteringQualityMedium = 2
   subSurfaceScatteringQualityHigh = 3
 
-type RenderingServer_DOFBokehShape* {.size: sizeof(clong).} = enum
+type RenderingServer_DOFBokehShape* {.size: EnumSize.default.} = enum
   dofBokehBox = 0
   dofBokehHexagon = 1
   dofBokehCircle = 2
 
-type RenderingServer_DOFBlurQuality* {.size: sizeof(clong).} = enum
+type RenderingServer_DOFBlurQuality* {.size: EnumSize.default.} = enum
   dofBlurQualityVeryLow = 0
   dofBlurQualityLow = 1
   dofBlurQualityMedium = 2
   dofBlurQualityHigh = 3
 
-type RenderingServer_InstanceType* {.size: sizeof(clong).} = enum
+type RenderingServer_InstanceType* {.size: EnumSize.default.} = enum
   instanceNone = 0
   instanceMesh = 1
   instanceMultimesh = 2
@@ -3867,41 +3867,41 @@ type RenderingServer_InstanceType* {.size: sizeof(clong).} = enum
   instanceMax = 13
   instanceGeometryMask = 14
 
-type RenderingServer_InstanceFlags* {.size: sizeof(clong).} = enum
+type RenderingServer_InstanceFlags* {.size: EnumSize.default.} = enum
   instanceFlagUseBakedLight = 0
   instanceFlagUseDynamicGi = 1
   instanceFlagDrawNextFrameIfVisible = 2
   instanceFlagIgnoreOcclusionCulling = 3
   instanceFlagMax = 4
 
-type RenderingServer_ShadowCastingSetting* {.size: sizeof(clong).} = enum
+type RenderingServer_ShadowCastingSetting* {.size: EnumSize.default.} = enum
   shadowCastingSettingOff = 0
   shadowCastingSettingOn = 1
   shadowCastingSettingDoubleSided = 2
   shadowCastingSettingShadowsOnly = 3
 
-type RenderingServer_VisibilityRangeFadeMode* {.size: sizeof(clong).} = enum
+type RenderingServer_VisibilityRangeFadeMode* {.size: EnumSize.default.} = enum
   visibilityRangeFadeDisabled = 0
   visibilityRangeFadeSelf = 1
   visibilityRangeFadeDependencies = 2
 
-type RenderingServer_BakeChannels* {.size: sizeof(clong).} = enum
+type RenderingServer_BakeChannels* {.size: EnumSize.default.} = enum
   bakeChannelAlbedoAlpha = 0
   bakeChannelNormal = 1
   bakeChannelOrm = 2
   bakeChannelEmission = 3
 
-type RenderingServer_CanvasTextureChannel* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasTextureChannel* {.size: EnumSize.default.} = enum
   canvasTextureChannelDiffuse = 0
   canvasTextureChannelNormal = 1
   canvasTextureChannelSpecular = 2
 
-type RenderingServer_NinePatchAxisMode* {.size: sizeof(clong).} = enum
+type RenderingServer_NinePatchAxisMode* {.size: EnumSize.default.} = enum
   ninePatchStretch = 0
   ninePatchTile = 1
   ninePatchTileFit = 2
 
-type RenderingServer_CanvasItemTextureFilter* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasItemTextureFilter* {.size: EnumSize.default.} = enum
   canvasItemTextureFilterDefault = 0
   canvasItemTextureFilterNearest = 1
   canvasItemTextureFilterLinear = 2
@@ -3911,40 +3911,40 @@ type RenderingServer_CanvasItemTextureFilter* {.size: sizeof(clong).} = enum
   canvasItemTextureFilterLinearWithMipmapsAnisotropic = 6
   canvasItemTextureFilterMax = 7
 
-type RenderingServer_CanvasItemTextureRepeat* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasItemTextureRepeat* {.size: EnumSize.default.} = enum
   canvasItemTextureRepeatDefault = 0
   canvasItemTextureRepeatDisabled = 1
   canvasItemTextureRepeatEnabled = 2
   canvasItemTextureRepeatMirror = 3
   canvasItemTextureRepeatMax = 4
 
-type RenderingServer_CanvasGroupMode* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasGroupMode* {.size: EnumSize.default.} = enum
   canvasGroupModeDisabled = 0
   canvasGroupModeClipOnly = 1
   canvasGroupModeClipAndDraw = 2
   canvasGroupModeTransparent = 3
 
-type RenderingServer_CanvasLightMode* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasLightMode* {.size: EnumSize.default.} = enum
   canvasLightModePoint = 0
   canvasLightModeDirectional = 1
 
-type RenderingServer_CanvasLightBlendMode* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasLightBlendMode* {.size: EnumSize.default.} = enum
   canvasLightBlendModeAdd = 0
   canvasLightBlendModeSub = 1
   canvasLightBlendModeMix = 2
 
-type RenderingServer_CanvasLightShadowFilter* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasLightShadowFilter* {.size: EnumSize.default.} = enum
   canvasLightFilterNone = 0
   canvasLightFilterPcf5 = 1
   canvasLightFilterPcf13 = 2
   canvasLightFilterMax = 3
 
-type RenderingServer_CanvasOccluderPolygonCullMode* {.size: sizeof(clong).} = enum
+type RenderingServer_CanvasOccluderPolygonCullMode* {.size: EnumSize.default.} = enum
   canvasOccluderPolygonCullDisabled = 0
   canvasOccluderPolygonCullClockwise = 1
   canvasOccluderPolygonCullCounterClockwise = 2
 
-type RenderingServer_GlobalShaderParameterType* {.size: sizeof(clong).} = enum
+type RenderingServer_GlobalShaderParameterType* {.size: EnumSize.default.} = enum
   globalVarTypeBool = 0
   globalVarTypeBvec2 = 1
   globalVarTypeBvec3 = 2
@@ -3976,7 +3976,7 @@ type RenderingServer_GlobalShaderParameterType* {.size: sizeof(clong).} = enum
   globalVarTypeSamplerext = 28
   globalVarTypeMax = 29
 
-type RenderingServer_RenderingInfo* {.size: sizeof(clong).} = enum
+type RenderingServer_RenderingInfo* {.size: EnumSize.default.} = enum
   renderingInfoTotalObjectsInFrame = 0
   renderingInfoTotalPrimitivesInFrame = 1
   renderingInfoTotalDrawCallsInFrame = 2
@@ -3989,7 +3989,7 @@ type RenderingServer_RenderingInfo* {.size: sizeof(clong).} = enum
   renderingInfoPipelineCompilationsDraw = 9
   renderingInfoPipelineCompilationsSpecialization = 10
 
-type RenderingServer_PipelineSource* {.size: sizeof(clong).} = enum
+type RenderingServer_PipelineSource* {.size: EnumSize.default.} = enum
   pipelineSourceCanvas = 0
   pipelineSourceMesh = 1
   pipelineSourceSurface = 2
@@ -3997,28 +3997,28 @@ type RenderingServer_PipelineSource* {.size: sizeof(clong).} = enum
   pipelineSourceSpecialization = 4
   pipelineSourceMax = 5
 
-type RenderingServer_Features* {.size: sizeof(clong).} = enum
+type RenderingServer_Features* {.size: EnumSize.default.} = enum
   featureShaders = 0
   featureMultithreaded = 1
 
-type ResourceFormatLoader_CacheMode* {.size: sizeof(clong).} = enum
+type ResourceFormatLoader_CacheMode* {.size: EnumSize.default.} = enum
   cacheModeIgnore = 0
   cacheModeReuse = 1
   cacheModeReplace = 2
   cacheModeIgnoreDeep = 3
   cacheModeReplaceDeep = 4
 
-type ResourceImporter_ImportOrder* {.size: sizeof(clong).} = enum
+type ResourceImporter_ImportOrder* {.size: EnumSize.default.} = enum
   importOrderDefault = 0
   importOrderScene = 100
 
-type ResourceLoader_ThreadLoadStatus* {.size: sizeof(clong).} = enum
+type ResourceLoader_ThreadLoadStatus* {.size: EnumSize.default.} = enum
   threadLoadInvalidResource = 0
   threadLoadInProgress = 1
   threadLoadFailed = 2
   threadLoadLoaded = 3
 
-type ResourceLoader_CacheMode* {.size: sizeof(clong).} = enum
+type ResourceLoader_CacheMode* {.size: EnumSize.default.} = enum
   cacheModeIgnore = 0
   cacheModeReuse = 1
   cacheModeReplace = 2
@@ -4043,22 +4043,22 @@ type RetargetModifier3D_TransformFlag* = enum
   `--Padding-Max--` = 63 # To align size-of set[RetargetModifier3D_TransformFlag] to size-of Int.
 template transformFlagAll*[T: RetargetModifier3D_TransformFlag](_: typedesc[T]): set[T] = cast[set[T]](7)
 
-type RibbonTrailMesh_Shape* {.size: sizeof(clong).} = enum
+type RibbonTrailMesh_Shape* {.size: EnumSize.default.} = enum
   shapeFlat = 0
   shapeCross = 1
 
-type RichTextLabel_ListType* {.size: sizeof(clong).} = enum
+type RichTextLabel_ListType* {.size: EnumSize.default.} = enum
   listNumbers = 0
   listLetters = 1
   listRoman = 2
   listDots = 3
 
-type RichTextLabel_MenuItems* {.size: sizeof(clong).} = enum
+type RichTextLabel_MenuItems* {.size: EnumSize.default.} = enum
   menuCopy = 0
   menuSelectAll = 1
   menuMax = 2
 
-type RichTextLabel_MetaUnderline* {.size: sizeof(clong).} = enum
+type RichTextLabel_MetaUnderline* {.size: EnumSize.default.} = enum
   metaUnderlineNever = 0
   metaUnderlineAlways = 1
   metaUnderlineOnHover = 2
@@ -4074,59 +4074,59 @@ type RichTextLabel_ImageUpdateMask* = enum
   updateWidthInPercent = 7
   `--Padding-Max--` = 63 # To align size-of set[RichTextLabel_ImageUpdateMask] to size-of Int.
 
-type RigidBody2D_FreezeMode* {.size: sizeof(clong).} = enum
+type RigidBody2D_FreezeMode* {.size: EnumSize.default.} = enum
   freezeModeStatic = 0
   freezeModeKinematic = 1
 
-type RigidBody2D_CenterOfMassMode* {.size: sizeof(clong).} = enum
+type RigidBody2D_CenterOfMassMode* {.size: EnumSize.default.} = enum
   centerOfMassModeAuto = 0
   centerOfMassModeCustom = 1
 
-type RigidBody2D_DampMode* {.size: sizeof(clong).} = enum
+type RigidBody2D_DampMode* {.size: EnumSize.default.} = enum
   dampModeCombine = 0
   dampModeReplace = 1
 
-type RigidBody2D_CCDMode* {.size: sizeof(clong).} = enum
+type RigidBody2D_CCDMode* {.size: EnumSize.default.} = enum
   ccdModeDisabled = 0
   ccdModeCastRay = 1
   ccdModeCastShape = 2
 
-type RigidBody3D_FreezeMode* {.size: sizeof(clong).} = enum
+type RigidBody3D_FreezeMode* {.size: EnumSize.default.} = enum
   freezeModeStatic = 0
   freezeModeKinematic = 1
 
-type RigidBody3D_CenterOfMassMode* {.size: sizeof(clong).} = enum
+type RigidBody3D_CenterOfMassMode* {.size: EnumSize.default.} = enum
   centerOfMassModeAuto = 0
   centerOfMassModeCustom = 1
 
-type RigidBody3D_DampMode* {.size: sizeof(clong).} = enum
+type RigidBody3D_DampMode* {.size: EnumSize.default.} = enum
   dampModeCombine = 0
   dampModeReplace = 1
 
-type SceneReplicationConfig_ReplicationMode* {.size: sizeof(clong).} = enum
+type SceneReplicationConfig_ReplicationMode* {.size: EnumSize.default.} = enum
   replicationModeNever = 0
   replicationModeAlways = 1
   replicationModeOnChange = 2
 
-type SceneState_GenEditState* {.size: sizeof(clong).} = enum
+type SceneState_GenEditState* {.size: EnumSize.default.} = enum
   genEditStateDisabled = 0
   genEditStateInstance = 1
   genEditStateMain = 2
   genEditStateMainInherited = 3
 
-type SceneTree_GroupCallFlags* {.size: sizeof(clong).} = enum
+type SceneTree_GroupCallFlags* {.size: EnumSize.default.} = enum
   groupCallDefault = 0
   groupCallReverse = 1
   groupCallDeferred = 2
   groupCallUnique = 4
 
-type ScriptLanguage_ScriptNameCasing* {.size: sizeof(clong).} = enum
+type ScriptLanguage_ScriptNameCasing* {.size: EnumSize.default.} = enum
   scriptNameCasingAuto = 0
   scriptNameCasingPascalCase = 1
   scriptNameCasingSnakeCase = 2
   scriptNameCasingKebabCase = 3
 
-type ScriptLanguageExtension_LookupResultType* {.size: sizeof(clong).} = enum
+type ScriptLanguageExtension_LookupResultType* {.size: EnumSize.default.} = enum
   lookupResultScriptLocation = 0
   lookupResultClass = 1
   lookupResultClassConstant = 2
@@ -4140,13 +4140,13 @@ type ScriptLanguageExtension_LookupResultType* {.size: sizeof(clong).} = enum
   lookupResultLocalVariable = 10
   lookupResultMax = 11
 
-type ScriptLanguageExtension_CodeCompletionLocation* {.size: sizeof(clong).} = enum
+type ScriptLanguageExtension_CodeCompletionLocation* {.size: EnumSize.default.} = enum
   locationLocal = 0
   locationParentMask = 256
   locationOtherUserCode = 512
   locationOther = 1024
 
-type ScriptLanguageExtension_CodeCompletionKind* {.size: sizeof(clong).} = enum
+type ScriptLanguageExtension_CodeCompletionKind* {.size: EnumSize.default.} = enum
   codeCompletionKindClass = 0
   codeCompletionKindFunction = 1
   codeCompletionKindSignal = 2
@@ -4159,25 +4159,25 @@ type ScriptLanguageExtension_CodeCompletionKind* {.size: sizeof(clong).} = enum
   codeCompletionKindPlainText = 9
   codeCompletionKindMax = 10
 
-type ScrollContainer_ScrollMode* {.size: sizeof(clong).} = enum
+type ScrollContainer_ScrollMode* {.size: EnumSize.default.} = enum
   scrollModeDisabled = 0
   scrollModeAuto = 1
   scrollModeShowAlways = 2
   scrollModeShowNever = 3
   scrollModeReserve = 4
 
-type Shader_Mode* {.size: sizeof(clong).} = enum
+type Shader_Mode* {.size: EnumSize.default.} = enum
   modeSpatial = 0
   modeCanvasItem = 1
   modeParticles = 2
   modeSky = 3
   modeFog = 4
 
-type Skeleton3D_ModifierCallbackModeProcess* {.size: sizeof(clong).} = enum
+type Skeleton3D_ModifierCallbackModeProcess* {.size: EnumSize.default.} = enum
   modifierCallbackModeProcessPhysics = 0
   modifierCallbackModeProcessIdle = 1
 
-type SkeletonModifier3D_BoneAxis* {.size: sizeof(clong).} = enum
+type SkeletonModifier3D_BoneAxis* {.size: EnumSize.default.} = enum
   boneAxisPlusX = 0
   boneAxisMinusX = 1
   boneAxisPlusY = 2
@@ -4185,12 +4185,12 @@ type SkeletonModifier3D_BoneAxis* {.size: sizeof(clong).} = enum
   boneAxisPlusZ = 4
   boneAxisMinusZ = 5
 
-type SkeletonProfile_TailDirection* {.size: sizeof(clong).} = enum
+type SkeletonProfile_TailDirection* {.size: EnumSize.default.} = enum
   tailDirectionAverageChildren = 0
   tailDirectionSpecificChild = 1
   tailDirectionEnd = 2
 
-type Sky_RadianceSize* {.size: sizeof(clong).} = enum
+type Sky_RadianceSize* {.size: EnumSize.default.} = enum
   radianceSize32 = 0
   radianceSize64 = 1
   radianceSize128 = 2
@@ -4200,13 +4200,13 @@ type Sky_RadianceSize* {.size: sizeof(clong).} = enum
   radianceSize2048 = 6
   radianceSizeMax = 7
 
-type Sky_ProcessMode* {.size: sizeof(clong).} = enum
+type Sky_ProcessMode* {.size: EnumSize.default.} = enum
   processModeAutomatic = 0
   processModeQuality = 1
   processModeIncremental = 2
   processModeRealtime = 3
 
-type SliderJoint3D_Param* {.size: sizeof(clong).} = enum
+type SliderJoint3D_Param* {.size: EnumSize.default.} = enum
   paramLinearLimitUpper = 0
   paramLinearLimitLower = 1
   paramLinearLimitSoftness = 2
@@ -4231,16 +4231,16 @@ type SliderJoint3D_Param* {.size: sizeof(clong).} = enum
   paramAngularOrthogonalDamping = 21
   paramMax = 22
 
-type SoftBody3D_DisableMode* {.size: sizeof(clong).} = enum
+type SoftBody3D_DisableMode* {.size: EnumSize.default.} = enum
   disableModeRemove = 0
   disableModeKeepActive = 1
 
-type SplitContainer_DraggerVisibility* {.size: sizeof(clong).} = enum
+type SplitContainer_DraggerVisibility* {.size: EnumSize.default.} = enum
   draggerVisible = 0
   draggerHidden = 1
   draggerHiddenCollapsed = 2
 
-type SpringBoneSimulator3D_BoneDirection* {.size: sizeof(clong).} = enum
+type SpringBoneSimulator3D_BoneDirection* {.size: EnumSize.default.} = enum
   boneDirectionPlusX = 0
   boneDirectionMinusX = 1
   boneDirectionPlusY = 2
@@ -4249,18 +4249,18 @@ type SpringBoneSimulator3D_BoneDirection* {.size: sizeof(clong).} = enum
   boneDirectionMinusZ = 5
   boneDirectionFromParent = 6
 
-type SpringBoneSimulator3D_CenterFrom* {.size: sizeof(clong).} = enum
+type SpringBoneSimulator3D_CenterFrom* {.size: EnumSize.default.} = enum
   centerFromWorldOrigin = 0
   centerFromNode = 1
   centerFromBone = 2
 
-type SpringBoneSimulator3D_RotationAxis* {.size: sizeof(clong).} = enum
+type SpringBoneSimulator3D_RotationAxis* {.size: EnumSize.default.} = enum
   rotationAxisX = 0
   rotationAxisY = 1
   rotationAxisZ = 2
   rotationAxisAll = 3
 
-type SpriteBase3D_DrawFlags* {.size: sizeof(clong).} = enum
+type SpriteBase3D_DrawFlags* {.size: EnumSize.default.} = enum
   flagTransparent = 0
   flagShaded = 1
   flagDoubleSided = 2
@@ -4268,43 +4268,43 @@ type SpriteBase3D_DrawFlags* {.size: sizeof(clong).} = enum
   flagFixedSize = 4
   flagMax = 5
 
-type SpriteBase3D_AlphaCutMode* {.size: sizeof(clong).} = enum
+type SpriteBase3D_AlphaCutMode* {.size: EnumSize.default.} = enum
   alphaCutDisabled = 0
   alphaCutDiscard = 1
   alphaCutOpaquePrepass = 2
   alphaCutHash = 3
 
-type StreamPeerTCP_Status* {.size: sizeof(clong).} = enum
+type StreamPeerTCP_Status* {.size: EnumSize.default.} = enum
   statusNone = 0
   statusConnecting = 1
   statusConnected = 2
   statusError = 3
 
-type StreamPeerTLS_Status* {.size: sizeof(clong).} = enum
+type StreamPeerTLS_Status* {.size: EnumSize.default.} = enum
   statusDisconnected = 0
   statusHandshaking = 1
   statusConnected = 2
   statusError = 3
   statusErrorHostnameMismatch = 4
 
-type StyleBoxTexture_AxisStretchMode* {.size: sizeof(clong).} = enum
+type StyleBoxTexture_AxisStretchMode* {.size: EnumSize.default.} = enum
   axisStretchModeStretch = 0
   axisStretchModeTile = 1
   axisStretchModeTileFit = 2
 
-type SubViewport_ClearMode* {.size: sizeof(clong).} = enum
+type SubViewport_ClearMode* {.size: EnumSize.default.} = enum
   clearModeAlways = 0
   clearModeNever = 1
   clearModeOnce = 2
 
-type SubViewport_UpdateMode* {.size: sizeof(clong).} = enum
+type SubViewport_UpdateMode* {.size: EnumSize.default.} = enum
   updateDisabled = 0
   updateOnce = 1
   updateWhenVisible = 2
   updateWhenParentVisible = 3
   updateAlways = 4
 
-type SurfaceTool_CustomFormat* {.size: sizeof(clong).} = enum
+type SurfaceTool_CustomFormat* {.size: EnumSize.default.} = enum
   customRgba8Unorm = 0
   customRgba8Snorm = 1
   customRgHalf = 2
@@ -4315,28 +4315,28 @@ type SurfaceTool_CustomFormat* {.size: sizeof(clong).} = enum
   customRgbaFloat = 7
   customMax = 8
 
-type SurfaceTool_SkinWeightCount* {.size: sizeof(clong).} = enum
+type SurfaceTool_SkinWeightCount* {.size: EnumSize.default.} = enum
   skin4Weights = 0
   skin8Weights = 1
 
-type TabBar_AlignmentMode* {.size: sizeof(clong).} = enum
+type TabBar_AlignmentMode* {.size: EnumSize.default.} = enum
   alignmentLeft = 0
   alignmentCenter = 1
   alignmentRight = 2
   alignmentMax = 3
 
-type TabBar_CloseButtonDisplayPolicy* {.size: sizeof(clong).} = enum
+type TabBar_CloseButtonDisplayPolicy* {.size: EnumSize.default.} = enum
   closeButtonShowNever = 0
   closeButtonShowActiveOnly = 1
   closeButtonShowAlways = 2
   closeButtonMax = 3
 
-type TabContainer_TabPosition* {.size: sizeof(clong).} = enum
+type TabContainer_TabPosition* {.size: EnumSize.default.} = enum
   positionTop = 0
   positionBottom = 1
   positionMax = 2
 
-type TextEdit_MenuItems* {.size: sizeof(clong).} = enum
+type TextEdit_MenuItems* {.size: EnumSize.default.} = enum
   menuCut = 0
   menuCopy = 1
   menuPaste = 2
@@ -4370,43 +4370,43 @@ type TextEdit_MenuItems* {.size: sizeof(clong).} = enum
   menuEmojiAndSymbol = 30
   menuMax = 31
 
-type TextEdit_EditAction* {.size: sizeof(clong).} = enum
+type TextEdit_EditAction* {.size: EnumSize.default.} = enum
   actionNone = 0
   actionTyping = 1
   actionBackspace = 2
   actionDelete = 3
 
-type TextEdit_SearchFlags* {.size: sizeof(clong).} = enum
+type TextEdit_SearchFlags* {.size: EnumSize.default.} = enum
   searchMatchCase = 1
   searchWholeWords = 2
   searchBackwards = 4
 
-type TextEdit_CaretType* {.size: sizeof(clong).} = enum
+type TextEdit_CaretType* {.size: EnumSize.default.} = enum
   caretTypeLine = 0
   caretTypeBlock = 1
 
-type TextEdit_SelectionMode* {.size: sizeof(clong).} = enum
+type TextEdit_SelectionMode* {.size: EnumSize.default.} = enum
   selectionModeNone = 0
   selectionModeShift = 1
   selectionModePointer = 2
   selectionModeWord = 3
   selectionModeLine = 4
 
-type TextEdit_LineWrappingMode* {.size: sizeof(clong).} = enum
+type TextEdit_LineWrappingMode* {.size: EnumSize.default.} = enum
   lineWrappingNone = 0
   lineWrappingBoundary = 1
 
-type TextEdit_GutterType* {.size: sizeof(clong).} = enum
+type TextEdit_GutterType* {.size: EnumSize.default.} = enum
   gutterTypeString = 0
   gutterTypeIcon = 1
   gutterTypeCustom = 2
 
-type TextServer_FontAntialiasing* {.size: sizeof(clong).} = enum
+type TextServer_FontAntialiasing* {.size: EnumSize.default.} = enum
   fontAntialiasingNone = 0
   fontAntialiasingGray = 1
   fontAntialiasingLcd = 2
 
-type TextServer_FontLCDSubpixelLayout* {.size: sizeof(clong).} = enum
+type TextServer_FontLCDSubpixelLayout* {.size: EnumSize.default.} = enum
   fontLcdSubpixelLayoutNone = 0
   fontLcdSubpixelLayoutHrgb = 1
   fontLcdSubpixelLayoutHbgr = 2
@@ -4414,13 +4414,13 @@ type TextServer_FontLCDSubpixelLayout* {.size: sizeof(clong).} = enum
   fontLcdSubpixelLayoutVbgr = 4
   fontLcdSubpixelLayoutMax = 5
 
-type TextServer_Direction* {.size: sizeof(clong).} = enum
+type TextServer_Direction* {.size: EnumSize.default.} = enum
   directionAuto = 0
   directionLtr = 1
   directionRtl = 2
   directionInherited = 3
 
-type TextServer_Orientation* {.size: sizeof(clong).} = enum
+type TextServer_Orientation* {.size: EnumSize.default.} = enum
   orientationHorizontal = 0
   orientationVertical = 1
 
@@ -4436,7 +4436,7 @@ type TextServer_JustificationFlag* = enum
   justificationDoNotSkipSingleLine = 7
   `--Padding-Max--` = 63 # To align size-of set[TextServer_JustificationFlag] to size-of Int.
 
-type TextServer_AutowrapMode* {.size: sizeof(clong).} = enum
+type TextServer_AutowrapMode* {.size: EnumSize.default.} = enum
   autowrapOff = 0
   autowrapArbitrary = 1
   autowrapWord = 2
@@ -4452,14 +4452,14 @@ type TextServer_LineBreakFlag* = enum
   breakTrimIndent = 5
   `--Padding-Max--` = 63 # To align size-of set[TextServer_LineBreakFlag] to size-of Int.
 
-type TextServer_VisibleCharactersBehavior* {.size: sizeof(clong).} = enum
+type TextServer_VisibleCharactersBehavior* {.size: EnumSize.default.} = enum
   vcCharsBeforeShaping = 0
   vcCharsAfterShaping = 1
   vcGlyphsAuto = 2
   vcGlyphsLtr = 3
   vcGlyphsRtl = 4
 
-type TextServer_OverrunBehavior* {.size: sizeof(clong).} = enum
+type TextServer_OverrunBehavior* {.size: EnumSize.default.} = enum
   overrunNoTrimming = 0
   overrunTrimChar = 1
   overrunTrimWord = 2
@@ -4492,12 +4492,12 @@ type TextServer_GraphemeFlag* = enum
   graphemeIsSoftHyphen = 13
   `--Padding-Max--` = 63 # To align size-of set[TextServer_GraphemeFlag] to size-of Int.
 
-type TextServer_Hinting* {.size: sizeof(clong).} = enum
+type TextServer_Hinting* {.size: EnumSize.default.} = enum
   hintingNone = 0
   hintingLight = 1
   hintingNormal = 2
 
-type TextServer_SubpixelPositioning* {.size: sizeof(clong).} = enum
+type TextServer_SubpixelPositioning* {.size: EnumSize.default.} = enum
   subpixelPositioningDisabled = 0
   subpixelPositioningAuto = 1
   subpixelPositioningOneHalf = 2
@@ -4505,7 +4505,7 @@ type TextServer_SubpixelPositioning* {.size: sizeof(clong).} = enum
   subpixelPositioningOneQuarterMaxSize = 16
   subpixelPositioningOneHalfMaxSize = 20
 
-type TextServer_Feature* {.size: sizeof(clong).} = enum
+type TextServer_Feature* {.size: EnumSize.default.} = enum
   featureSimpleLayout = 1
   featureBidiLayout = 2
   featureVerticalLayout = 4
@@ -4522,12 +4522,12 @@ type TextServer_Feature* {.size: sizeof(clong).} = enum
   featureUnicodeIdentifiers = 8192
   featureUnicodeSecurity = 16384
 
-type TextServer_ContourPointTag* {.size: sizeof(clong).} = enum
+type TextServer_ContourPointTag* {.size: EnumSize.default.} = enum
   contourCurveTagOffConic = 0
   contourCurveTagOn = 1
   contourCurveTagOffCubic = 2
 
-type TextServer_SpacingType* {.size: sizeof(clong).} = enum
+type TextServer_SpacingType* {.size: EnumSize.default.} = enum
   spacingGlyph = 0
   spacingSpace = 1
   spacingTop = 2
@@ -4540,7 +4540,7 @@ type TextServer_FontStyle* = enum
   fontFixedWidth = 2
   `--Padding-Max--` = 63 # To align size-of set[TextServer_FontStyle] to size-of Int.
 
-type TextServer_StructuredTextParser* {.size: sizeof(clong).} = enum
+type TextServer_StructuredTextParser* {.size: EnumSize.default.} = enum
   structuredTextDefault = 0
   structuredTextUri = 1
   structuredTextFile = 2
@@ -4549,12 +4549,12 @@ type TextServer_StructuredTextParser* {.size: sizeof(clong).} = enum
   structuredTextGdscript = 5
   structuredTextCustom = 6
 
-type TextServer_FixedSizeScaleMode* {.size: sizeof(clong).} = enum
+type TextServer_FixedSizeScaleMode* {.size: EnumSize.default.} = enum
   fixedSizeScaleDisable = 0
   fixedSizeScaleIntegerOnly = 1
   fixedSizeScaleEnabled = 2
 
-type TextureButton_StretchMode* {.size: sizeof(clong).} = enum
+type TextureButton_StretchMode* {.size: EnumSize.default.} = enum
   stretchScale = 0
   stretchTile = 1
   stretchKeep = 2
@@ -4563,12 +4563,12 @@ type TextureButton_StretchMode* {.size: sizeof(clong).} = enum
   stretchKeepAspectCentered = 5
   stretchKeepAspectCovered = 6
 
-type TextureLayered_LayeredType* {.size: sizeof(clong).} = enum
+type TextureLayered_LayeredType* {.size: EnumSize.default.} = enum
   layeredType2DArray = 0
   layeredTypeCubemap = 1
   layeredTypeCubemapArray = 2
 
-type TextureProgressBar_FillMode* {.size: sizeof(clong).} = enum
+type TextureProgressBar_FillMode* {.size: EnumSize.default.} = enum
   fillLeftToRight = 0
   fillRightToLeft = 1
   fillTopToBottom = 2
@@ -4579,7 +4579,7 @@ type TextureProgressBar_FillMode* {.size: sizeof(clong).} = enum
   fillBilinearTopAndBottom = 7
   fillClockwiseAndCounterClockwise = 8
 
-type TextureRect_ExpandMode* {.size: sizeof(clong).} = enum
+type TextureRect_ExpandMode* {.size: EnumSize.default.} = enum
   expandKeepSize = 0
   expandIgnoreSize = 1
   expandFitWidth = 2
@@ -4587,7 +4587,7 @@ type TextureRect_ExpandMode* {.size: sizeof(clong).} = enum
   expandFitHeight = 4
   expandFitHeightProportional = 5
 
-type TextureRect_StretchMode* {.size: sizeof(clong).} = enum
+type TextureRect_StretchMode* {.size: EnumSize.default.} = enum
   stretchScale = 0
   stretchTile = 1
   stretchKeep = 2
@@ -4596,7 +4596,7 @@ type TextureRect_StretchMode* {.size: sizeof(clong).} = enum
   stretchKeepAspectCentered = 5
   stretchKeepAspectCovered = 6
 
-type Theme_DataType* {.size: sizeof(clong).} = enum
+type Theme_DataType* {.size: EnumSize.default.} = enum
   dataTypeColor = 0
   dataTypeConstant = 1
   dataTypeFont = 2
@@ -4605,28 +4605,28 @@ type Theme_DataType* {.size: sizeof(clong).} = enum
   dataTypeStylebox = 5
   dataTypeMax = 6
 
-type GodotThread_Priority* {.size: sizeof(clong).} = enum
+type GodotThread_Priority* {.size: EnumSize.default.} = enum
   priorityLow = 0
   priorityNormal = 1
   priorityHigh = 2
 
-type TileMap_VisibilityMode* {.size: sizeof(clong).} = enum
+type TileMap_VisibilityMode* {.size: EnumSize.default.} = enum
   visibilityModeDefault = 0
   visibilityModeForceShow = 1
   visibilityModeForceHide = 2
 
-type TileMapLayer_DebugVisibilityMode* {.size: sizeof(clong).} = enum
+type TileMapLayer_DebugVisibilityMode* {.size: EnumSize.default.} = enum
   debugVisibilityModeDefault = 0
   debugVisibilityModeForceShow = 1
   debugVisibilityModeForceHide = 2
 
-type TileSet_TileShape* {.size: sizeof(clong).} = enum
+type TileSet_TileShape* {.size: EnumSize.default.} = enum
   tileShapeSquare = 0
   tileShapeIsometric = 1
   tileShapeHalfOffsetSquare = 2
   tileShapeHexagon = 3
 
-type TileSet_TileLayout* {.size: sizeof(clong).} = enum
+type TileSet_TileLayout* {.size: EnumSize.default.} = enum
   tileLayoutStacked = 0
   tileLayoutStackedOffset = 1
   tileLayoutStairsRight = 2
@@ -4634,11 +4634,11 @@ type TileSet_TileLayout* {.size: sizeof(clong).} = enum
   tileLayoutDiamondRight = 4
   tileLayoutDiamondDown = 5
 
-type TileSet_TileOffsetAxis* {.size: sizeof(clong).} = enum
+type TileSet_TileOffsetAxis* {.size: EnumSize.default.} = enum
   tileOffsetAxisHorizontal = 0
   tileOffsetAxisVertical = 1
 
-type TileSet_CellNeighbor* {.size: sizeof(clong).} = enum
+type TileSet_CellNeighbor* {.size: EnumSize.default.} = enum
   cellNeighborRightSide = 0
   cellNeighborRightCorner = 1
   cellNeighborBottomRightSide = 2
@@ -4656,17 +4656,17 @@ type TileSet_CellNeighbor* {.size: sizeof(clong).} = enum
   cellNeighborTopRightSide = 14
   cellNeighborTopRightCorner = 15
 
-type TileSet_TerrainMode* {.size: sizeof(clong).} = enum
+type TileSet_TerrainMode* {.size: EnumSize.default.} = enum
   terrainModeMatchCornersAndSides = 0
   terrainModeMatchCorners = 1
   terrainModeMatchSides = 2
 
-type TileSetAtlasSource_TileAnimationMode* {.size: sizeof(clong).} = enum
+type TileSetAtlasSource_TileAnimationMode* {.size: EnumSize.default.} = enum
   tileAnimationModeDefault = 0
   tileAnimationModeRandomStartTimes = 1
   tileAnimationModeMax = 2
 
-type Time_Month* {.size: sizeof(clong).} = enum
+type Time_Month* {.size: EnumSize.default.} = enum
   monthJanuary = 1
   monthFebruary = 2
   monthMarch = 3
@@ -4680,7 +4680,7 @@ type Time_Month* {.size: sizeof(clong).} = enum
   monthNovember = 11
   monthDecember = 12
 
-type Time_Weekday* {.size: sizeof(clong).} = enum
+type Time_Weekday* {.size: EnumSize.default.} = enum
   weekdaySunday = 0
   weekdayMonday = 1
   weekdayTuesday = 2
@@ -4689,41 +4689,41 @@ type Time_Weekday* {.size: sizeof(clong).} = enum
   weekdayFriday = 5
   weekdaySaturday = 6
 
-type Timer_TimerProcessCallback* {.size: sizeof(clong).} = enum
+type Timer_TimerProcessCallback* {.size: EnumSize.default.} = enum
   timerProcessPhysics = 0
   timerProcessIdle = 1
 
-type TouchScreenButton_VisibilityMode* {.size: sizeof(clong).} = enum
+type TouchScreenButton_VisibilityMode* {.size: EnumSize.default.} = enum
   visibilityAlways = 0
   visibilityTouchscreenOnly = 1
 
-type Tree_SelectMode* {.size: sizeof(clong).} = enum
+type Tree_SelectMode* {.size: EnumSize.default.} = enum
   selectSingle = 0
   selectRow = 1
   selectMulti = 2
 
-type Tree_DropModeFlags* {.size: sizeof(clong).} = enum
+type Tree_DropModeFlags* {.size: EnumSize.default.} = enum
   dropModeDisabled = 0
   dropModeOnItem = 1
   dropModeInbetween = 2
 
-type TreeItem_TreeCellMode* {.size: sizeof(clong).} = enum
+type TreeItem_TreeCellMode* {.size: EnumSize.default.} = enum
   cellModeString = 0
   cellModeCheck = 1
   cellModeRange = 2
   cellModeIcon = 3
   cellModeCustom = 4
 
-type Tween_TweenProcessMode* {.size: sizeof(clong).} = enum
+type Tween_TweenProcessMode* {.size: EnumSize.default.} = enum
   tweenProcessPhysics = 0
   tweenProcessIdle = 1
 
-type Tween_TweenPauseMode* {.size: sizeof(clong).} = enum
+type Tween_TweenPauseMode* {.size: EnumSize.default.} = enum
   tweenPauseBound = 0
   tweenPauseStop = 1
   tweenPauseProcess = 2
 
-type Tween_TransitionType* {.size: sizeof(clong).} = enum
+type Tween_TransitionType* {.size: EnumSize.default.} = enum
   transLinear = 0
   transSine = 1
   transQuint = 2
@@ -4737,13 +4737,13 @@ type Tween_TransitionType* {.size: sizeof(clong).} = enum
   transBack = 10
   transSpring = 11
 
-type Tween_EaseType* {.size: sizeof(clong).} = enum
+type Tween_EaseType* {.size: EnumSize.default.} = enum
   easeIn = 0
   easeOut = 1
   easeInOut = 2
   easeOutIn = 3
 
-type UPNP_UPNPResult* {.size: sizeof(clong).} = enum
+type UPNP_UPNPResult* {.size: EnumSize.default.} = enum
   upnpResultSuccess = 0
   upnpResultNotAuthorized = 1
   upnpResultPortMappingNotFound = 2
@@ -4774,7 +4774,7 @@ type UPNP_UPNPResult* {.size: sizeof(clong).} = enum
   upnpResultNoDevices = 27
   upnpResultUnknownError = 28
 
-type UPNPDevice_IGDStatus* {.size: sizeof(clong).} = enum
+type UPNPDevice_IGDStatus* {.size: EnumSize.default.} = enum
   igdStatusOk = 0
   igdStatusHttpError = 1
   igdStatusHttpEmpty = 2
@@ -4786,12 +4786,12 @@ type UPNPDevice_IGDStatus* {.size: sizeof(clong).} = enum
   igdStatusMallocError = 8
   igdStatusUnknownError = 9
 
-type UndoRedo_MergeMode* {.size: sizeof(clong).} = enum
+type UndoRedo_MergeMode* {.size: EnumSize.default.} = enum
   mergeDisable = 0
   mergeEnds = 1
   mergeAll = 2
 
-type Viewport_PositionalShadowAtlasQuadrantSubdiv* {.size: sizeof(clong).} = enum
+type Viewport_PositionalShadowAtlasQuadrantSubdiv* {.size: EnumSize.default.} = enum
   shadowAtlasQuadrantSubdivDisabled = 0
   shadowAtlasQuadrantSubdiv1 = 1
   shadowAtlasQuadrantSubdiv4 = 2
@@ -4801,7 +4801,7 @@ type Viewport_PositionalShadowAtlasQuadrantSubdiv* {.size: sizeof(clong).} = enu
   shadowAtlasQuadrantSubdiv1024 = 6
   shadowAtlasQuadrantSubdivMax = 7
 
-type Viewport_Scaling3DMode* {.size: sizeof(clong).} = enum
+type Viewport_Scaling3DMode* {.size: EnumSize.default.} = enum
   scaling3DModeBilinear = 0
   scaling3DModeFsr = 1
   scaling3DModeFsr2 = 2
@@ -4809,14 +4809,14 @@ type Viewport_Scaling3DMode* {.size: sizeof(clong).} = enum
   scaling3DModeMetalfxTemporal = 4
   scaling3DModeMax = 5
 
-type Viewport_MSAA* {.size: sizeof(clong).} = enum
+type Viewport_MSAA* {.size: EnumSize.default.} = enum
   msaaDisabled = 0
   msaa2X = 1
   msaa4X = 2
   msaa8X = 3
   msaaMax = 4
 
-type Viewport_AnisotropicFiltering* {.size: sizeof(clong).} = enum
+type Viewport_AnisotropicFiltering* {.size: EnumSize.default.} = enum
   anisotropyDisabled = 0
   anisotropy2X = 1
   anisotropy4X = 2
@@ -4824,24 +4824,24 @@ type Viewport_AnisotropicFiltering* {.size: sizeof(clong).} = enum
   anisotropy16X = 4
   anisotropyMax = 5
 
-type Viewport_ScreenSpaceAA* {.size: sizeof(clong).} = enum
+type Viewport_ScreenSpaceAA* {.size: EnumSize.default.} = enum
   screenSpaceAaDisabled = 0
   screenSpaceAaFxaa = 1
   screenSpaceAaMax = 2
 
-type Viewport_RenderInfo* {.size: sizeof(clong).} = enum
+type Viewport_RenderInfo* {.size: EnumSize.default.} = enum
   renderInfoObjectsInFrame = 0
   renderInfoPrimitivesInFrame = 1
   renderInfoDrawCallsInFrame = 2
   renderInfoMax = 3
 
-type Viewport_RenderInfoType* {.size: sizeof(clong).} = enum
+type Viewport_RenderInfoType* {.size: EnumSize.default.} = enum
   renderInfoTypeVisible = 0
   renderInfoTypeShadow = 1
   renderInfoTypeCanvas = 2
   renderInfoTypeMax = 3
 
-type Viewport_DebugDraw* {.size: sizeof(clong).} = enum
+type Viewport_DebugDraw* {.size: EnumSize.default.} = enum
   debugDrawDisabled = 0
   debugDrawUnshaded = 1
   debugDrawLighting = 2
@@ -4870,55 +4870,55 @@ type Viewport_DebugDraw* {.size: sizeof(clong).} = enum
   debugDrawMotionVectors = 25
   debugDrawInternalBuffer = 26
 
-type Viewport_DefaultCanvasItemTextureFilter* {.size: sizeof(clong).} = enum
+type Viewport_DefaultCanvasItemTextureFilter* {.size: EnumSize.default.} = enum
   defaultCanvasItemTextureFilterNearest = 0
   defaultCanvasItemTextureFilterLinear = 1
   defaultCanvasItemTextureFilterLinearWithMipmaps = 2
   defaultCanvasItemTextureFilterNearestWithMipmaps = 3
   defaultCanvasItemTextureFilterMax = 4
 
-type Viewport_DefaultCanvasItemTextureRepeat* {.size: sizeof(clong).} = enum
+type Viewport_DefaultCanvasItemTextureRepeat* {.size: EnumSize.default.} = enum
   defaultCanvasItemTextureRepeatDisabled = 0
   defaultCanvasItemTextureRepeatEnabled = 1
   defaultCanvasItemTextureRepeatMirror = 2
   defaultCanvasItemTextureRepeatMax = 3
 
-type Viewport_SDFOversize* {.size: sizeof(clong).} = enum
+type Viewport_SDFOversize* {.size: EnumSize.default.} = enum
   sdfOversize100Percent = 0
   sdfOversize120Percent = 1
   sdfOversize150Percent = 2
   sdfOversize200Percent = 3
   sdfOversizeMax = 4
 
-type Viewport_SDFScale* {.size: sizeof(clong).} = enum
+type Viewport_SDFScale* {.size: EnumSize.default.} = enum
   sdfScale100Percent = 0
   sdfScale50Percent = 1
   sdfScale25Percent = 2
   sdfScaleMax = 3
 
-type Viewport_VRSMode* {.size: sizeof(clong).} = enum
+type Viewport_VRSMode* {.size: EnumSize.default.} = enum
   vrsDisabled = 0
   vrsTexture = 1
   vrsXr = 2
   vrsMax = 3
 
-type Viewport_VRSUpdateMode* {.size: sizeof(clong).} = enum
+type Viewport_VRSUpdateMode* {.size: EnumSize.default.} = enum
   vrsUpdateDisabled = 0
   vrsUpdateOnce = 1
   vrsUpdateAlways = 2
   vrsUpdateMax = 3
 
-type VisibleOnScreenEnabler2D_EnableMode* {.size: sizeof(clong).} = enum
+type VisibleOnScreenEnabler2D_EnableMode* {.size: EnumSize.default.} = enum
   enableModeInherit = 0
   enableModeAlways = 1
   enableModeWhenPaused = 2
 
-type VisibleOnScreenEnabler3D_EnableMode* {.size: sizeof(clong).} = enum
+type VisibleOnScreenEnabler3D_EnableMode* {.size: EnumSize.default.} = enum
   enableModeInherit = 0
   enableModeAlways = 1
   enableModeWhenPaused = 2
 
-type VisualShader_Type* {.size: sizeof(clong).} = enum
+type VisualShader_Type* {.size: EnumSize.default.} = enum
   typeVertex = 0
   typeFragment = 1
   typeLight = 2
@@ -4931,12 +4931,12 @@ type VisualShader_Type* {.size: sizeof(clong).} = enum
   typeFog = 9
   typeMax = 10
 
-type VisualShader_VaryingMode* {.size: sizeof(clong).} = enum
+type VisualShader_VaryingMode* {.size: EnumSize.default.} = enum
   varyingModeVertexToFragLight = 0
   varyingModeFragToLight = 1
   varyingModeMax = 2
 
-type VisualShader_VaryingType* {.size: sizeof(clong).} = enum
+type VisualShader_VaryingType* {.size: EnumSize.default.} = enum
   varyingTypeFloat = 0
   varyingTypeInt = 1
   varyingTypeUint = 2
@@ -4947,7 +4947,7 @@ type VisualShader_VaryingType* {.size: sizeof(clong).} = enum
   varyingTypeTransform = 7
   varyingTypeMax = 8
 
-type VisualShaderNode_PortType* {.size: sizeof(clong).} = enum
+type VisualShaderNode_PortType* {.size: EnumSize.default.} = enum
   portTypeScalar = 0
   portTypeScalarInt = 1
   portTypeScalarUint = 2
@@ -4959,14 +4959,14 @@ type VisualShaderNode_PortType* {.size: sizeof(clong).} = enum
   portTypeSampler = 8
   portTypeMax = 9
 
-type VisualShaderNodeBillboard_BillboardType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeBillboard_BillboardType* {.size: EnumSize.default.} = enum
   billboardTypeDisabled = 0
   billboardTypeEnabled = 1
   billboardTypeFixedY = 2
   billboardTypeParticles = 3
   billboardTypeMax = 4
 
-type VisualShaderNodeClamp_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeClamp_OpType* {.size: EnumSize.default.} = enum
   opTypeFloat = 0
   opTypeInt = 1
   opTypeUint = 2
@@ -4975,7 +4975,7 @@ type VisualShaderNodeClamp_OpType* {.size: sizeof(clong).} = enum
   opTypeVector4D = 5
   opTypeMax = 6
 
-type VisualShaderNodeColorFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeColorFunc_Function* {.size: EnumSize.default.} = enum
   funcGrayscale = 0
   funcHsv2Rgb = 1
   funcRgb2Hsv = 2
@@ -4984,7 +4984,7 @@ type VisualShaderNodeColorFunc_Function* {.size: sizeof(clong).} = enum
   funcSrgbToLinear = 5
   funcMax = 6
 
-type VisualShaderNodeColorOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeColorOp_Operator* {.size: EnumSize.default.} = enum
   opScreen = 0
   opDifference = 1
   opDarken = 2
@@ -4996,7 +4996,7 @@ type VisualShaderNodeColorOp_Operator* {.size: sizeof(clong).} = enum
   opHardLight = 8
   opMax = 9
 
-type VisualShaderNodeCompare_ComparisonType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeCompare_ComparisonType* {.size: EnumSize.default.} = enum
   ctypeScalar = 0
   ctypeScalarInt = 1
   ctypeScalarUint = 2
@@ -5007,7 +5007,7 @@ type VisualShaderNodeCompare_ComparisonType* {.size: sizeof(clong).} = enum
   ctypeTransform = 7
   ctypeMax = 8
 
-type VisualShaderNodeCompare_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeCompare_Function* {.size: EnumSize.default.} = enum
   funcEqual = 0
   funcNotEqual = 1
   funcGreaterThan = 2
@@ -5016,42 +5016,42 @@ type VisualShaderNodeCompare_Function* {.size: sizeof(clong).} = enum
   funcLessThanEqual = 5
   funcMax = 6
 
-type VisualShaderNodeCompare_Condition* {.size: sizeof(clong).} = enum
+type VisualShaderNodeCompare_Condition* {.size: EnumSize.default.} = enum
   condAll = 0
   condAny = 1
   condMax = 2
 
-type VisualShaderNodeCubemap_Source* {.size: sizeof(clong).} = enum
+type VisualShaderNodeCubemap_Source* {.size: EnumSize.default.} = enum
   sourceTexture = 0
   sourcePort = 1
   sourceMax = 2
 
-type VisualShaderNodeCubemap_TextureType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeCubemap_TextureType* {.size: EnumSize.default.} = enum
   typeData = 0
   typeColor = 1
   typeNormalMap = 2
   typeMax = 3
 
-type VisualShaderNodeDerivativeFunc_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeDerivativeFunc_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector3D = 2
   opTypeVector4D = 3
   opTypeMax = 4
 
-type VisualShaderNodeDerivativeFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeDerivativeFunc_Function* {.size: EnumSize.default.} = enum
   funcSum = 0
   funcX = 1
   funcY = 2
   funcMax = 3
 
-type VisualShaderNodeDerivativeFunc_Precision* {.size: sizeof(clong).} = enum
+type VisualShaderNodeDerivativeFunc_Precision* {.size: EnumSize.default.} = enum
   precisionNone = 0
   precisionCoarse = 1
   precisionFine = 2
   precisionMax = 3
 
-type VisualShaderNodeFloatFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeFloatFunc_Function* {.size: EnumSize.default.} = enum
   funcSin = 0
   funcCos = 1
   funcTan = 2
@@ -5086,7 +5086,7 @@ type VisualShaderNodeFloatFunc_Function* {.size: sizeof(clong).} = enum
   funcOneminus = 31
   funcMax = 32
 
-type VisualShaderNodeFloatOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeFloatOp_Operator* {.size: EnumSize.default.} = enum
   opAdd = 0
   opSub = 1
   opMul = 2
@@ -5099,20 +5099,20 @@ type VisualShaderNodeFloatOp_Operator* {.size: sizeof(clong).} = enum
   opStep = 9
   opEnumSize = 10
 
-type VisualShaderNodeFloatParameter_Hint* {.size: sizeof(clong).} = enum
+type VisualShaderNodeFloatParameter_Hint* {.size: EnumSize.default.} = enum
   hintNone = 0
   hintRange = 1
   hintRangeStep = 2
   hintMax = 3
 
-type VisualShaderNodeIntFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeIntFunc_Function* {.size: EnumSize.default.} = enum
   funcAbs = 0
   funcNegate = 1
   funcSign = 2
   funcBitwiseNot = 3
   funcMax = 4
 
-type VisualShaderNodeIntOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeIntOp_Operator* {.size: EnumSize.default.} = enum
   opAdd = 0
   opSub = 1
   opMul = 2
@@ -5127,19 +5127,19 @@ type VisualShaderNodeIntOp_Operator* {.size: sizeof(clong).} = enum
   opBitwiseRightShift = 11
   opEnumSize = 12
 
-type VisualShaderNodeIntParameter_Hint* {.size: sizeof(clong).} = enum
+type VisualShaderNodeIntParameter_Hint* {.size: EnumSize.default.} = enum
   hintNone = 0
   hintRange = 1
   hintRangeStep = 2
   hintEnum = 3
   hintMax = 4
 
-type VisualShaderNodeIs_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeIs_Function* {.size: EnumSize.default.} = enum
   funcIsInf = 0
   funcIsNan = 1
   funcMax = 2
 
-type VisualShaderNodeMix_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeMix_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector2DScalar = 2
@@ -5149,40 +5149,40 @@ type VisualShaderNodeMix_OpType* {.size: sizeof(clong).} = enum
   opTypeVector4DScalar = 6
   opTypeMax = 7
 
-type VisualShaderNodeMultiplyAdd_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeMultiplyAdd_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector3D = 2
   opTypeVector4D = 3
   opTypeMax = 4
 
-type VisualShaderNodeParameter_Qualifier* {.size: sizeof(clong).} = enum
+type VisualShaderNodeParameter_Qualifier* {.size: EnumSize.default.} = enum
   qualNone = 0
   qualGlobal = 1
   qualInstance = 2
   qualMax = 3
 
-type VisualShaderNodeParticleAccelerator_Mode* {.size: sizeof(clong).} = enum
+type VisualShaderNodeParticleAccelerator_Mode* {.size: EnumSize.default.} = enum
   modeLinear = 0
   modeRadial = 1
   modeTangential = 2
   modeMax = 3
 
-type VisualShaderNodeParticleEmit_EmitFlags* {.size: sizeof(clong).} = enum
+type VisualShaderNodeParticleEmit_EmitFlags* {.size: EnumSize.default.} = enum
   emitFlagPosition = 1
   emitFlagRotScale = 2
   emitFlagVelocity = 4
   emitFlagColor = 8
   emitFlagCustom = 16
 
-type VisualShaderNodeParticleRandomness_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeParticleRandomness_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector3D = 2
   opTypeVector4D = 3
   opTypeMax = 4
 
-type VisualShaderNodeRemap_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeRemap_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector2DScalar = 2
@@ -5192,12 +5192,12 @@ type VisualShaderNodeRemap_OpType* {.size: sizeof(clong).} = enum
   opTypeVector4DScalar = 6
   opTypeMax = 7
 
-type VisualShaderNodeSample3D_Source* {.size: sizeof(clong).} = enum
+type VisualShaderNodeSample3D_Source* {.size: EnumSize.default.} = enum
   sourceTexture = 0
   sourcePort = 1
   sourceMax = 2
 
-type VisualShaderNodeSmoothStep_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeSmoothStep_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector2DScalar = 2
@@ -5207,7 +5207,7 @@ type VisualShaderNodeSmoothStep_OpType* {.size: sizeof(clong).} = enum
   opTypeVector4DScalar = 6
   opTypeMax = 7
 
-type VisualShaderNodeStep_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeStep_OpType* {.size: EnumSize.default.} = enum
   opTypeScalar = 0
   opTypeVector2D = 1
   opTypeVector2DScalar = 2
@@ -5217,7 +5217,7 @@ type VisualShaderNodeStep_OpType* {.size: sizeof(clong).} = enum
   opTypeVector4DScalar = 6
   opTypeMax = 7
 
-type VisualShaderNodeSwitch_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeSwitch_OpType* {.size: EnumSize.default.} = enum
   opTypeFloat = 0
   opTypeInt = 1
   opTypeUint = 2
@@ -5228,7 +5228,7 @@ type VisualShaderNodeSwitch_OpType* {.size: sizeof(clong).} = enum
   opTypeTransform = 7
   opTypeMax = 8
 
-type VisualShaderNodeTexture_Source* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTexture_Source* {.size: EnumSize.default.} = enum
   sourceTexture = 0
   sourceScreen = 1
   source2DTexture = 2
@@ -5239,26 +5239,26 @@ type VisualShaderNodeTexture_Source* {.size: sizeof(clong).} = enum
   sourceRoughness = 7
   sourceMax = 8
 
-type VisualShaderNodeTexture_TextureType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTexture_TextureType* {.size: EnumSize.default.} = enum
   typeData = 0
   typeColor = 1
   typeNormalMap = 2
   typeMax = 3
 
-type VisualShaderNodeTextureParameter_TextureType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTextureParameter_TextureType* {.size: EnumSize.default.} = enum
   typeData = 0
   typeColor = 1
   typeNormalMap = 2
   typeAnisotropy = 3
   typeMax = 4
 
-type VisualShaderNodeTextureParameter_ColorDefault* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTextureParameter_ColorDefault* {.size: EnumSize.default.} = enum
   colorDefaultWhite = 0
   colorDefaultBlack = 1
   colorDefaultTransparent = 2
   colorDefaultMax = 3
 
-type VisualShaderNodeTextureParameter_TextureFilter* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTextureParameter_TextureFilter* {.size: EnumSize.default.} = enum
   filterDefault = 0
   filterNearest = 1
   filterLinear = 2
@@ -5268,25 +5268,25 @@ type VisualShaderNodeTextureParameter_TextureFilter* {.size: sizeof(clong).} = e
   filterLinearMipmapAnisotropic = 6
   filterMax = 7
 
-type VisualShaderNodeTextureParameter_TextureRepeat* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTextureParameter_TextureRepeat* {.size: EnumSize.default.} = enum
   repeatDefault = 0
   repeatEnabled = 1
   repeatDisabled = 2
   repeatMax = 3
 
-type VisualShaderNodeTextureParameter_TextureSource* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTextureParameter_TextureSource* {.size: EnumSize.default.} = enum
   sourceNone = 0
   sourceScreen = 1
   sourceDepth = 2
   sourceNormalRoughness = 3
   sourceMax = 4
 
-type VisualShaderNodeTransformFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTransformFunc_Function* {.size: EnumSize.default.} = enum
   funcInverse = 0
   funcTranspose = 1
   funcMax = 2
 
-type VisualShaderNodeTransformOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTransformOp_Operator* {.size: EnumSize.default.} = enum
   opAxB = 0
   opBxA = 1
   opAxBComp = 2
@@ -5298,19 +5298,19 @@ type VisualShaderNodeTransformOp_Operator* {.size: sizeof(clong).} = enum
   opBDivA = 8
   opMax = 9
 
-type VisualShaderNodeTransformVecMult_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeTransformVecMult_Operator* {.size: EnumSize.default.} = enum
   opAxB = 0
   opBxA = 1
   op3X3AxB = 2
   op3X3BxA = 3
   opMax = 4
 
-type VisualShaderNodeUIntFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeUIntFunc_Function* {.size: EnumSize.default.} = enum
   funcNegate = 0
   funcBitwiseNot = 1
   funcMax = 2
 
-type VisualShaderNodeUIntOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeUIntOp_Operator* {.size: EnumSize.default.} = enum
   opAdd = 0
   opSub = 1
   opMul = 2
@@ -5325,18 +5325,18 @@ type VisualShaderNodeUIntOp_Operator* {.size: sizeof(clong).} = enum
   opBitwiseRightShift = 11
   opEnumSize = 12
 
-type VisualShaderNodeUVFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeUVFunc_Function* {.size: EnumSize.default.} = enum
   funcPanning = 0
   funcScaling = 1
   funcMax = 2
 
-type VisualShaderNodeVectorBase_OpType* {.size: sizeof(clong).} = enum
+type VisualShaderNodeVectorBase_OpType* {.size: EnumSize.default.} = enum
   opTypeVector2D = 0
   opTypeVector3D = 1
   opTypeVector4D = 2
   opTypeMax = 3
 
-type VisualShaderNodeVectorFunc_Function* {.size: sizeof(clong).} = enum
+type VisualShaderNodeVectorFunc_Function* {.size: EnumSize.default.} = enum
   funcNormalize = 0
   funcSaturate = 1
   funcNegate = 2
@@ -5372,7 +5372,7 @@ type VisualShaderNodeVectorFunc_Function* {.size: sizeof(clong).} = enum
   funcOneminus = 32
   funcMax = 33
 
-type VisualShaderNodeVectorOp_Operator* {.size: sizeof(clong).} = enum
+type VisualShaderNodeVectorOp_Operator* {.size: EnumSize.default.} = enum
   opAdd = 0
   opSub = 1
   opMul = 2
@@ -5387,24 +5387,24 @@ type VisualShaderNodeVectorOp_Operator* {.size: sizeof(clong).} = enum
   opStep = 11
   opEnumSize = 12
 
-type VoxelGI_Subdiv* {.size: sizeof(clong).} = enum
+type VoxelGI_Subdiv* {.size: EnumSize.default.} = enum
   subdiv64 = 0
   subdiv128 = 1
   subdiv256 = 2
   subdiv512 = 3
   subdivMax = 4
 
-type WebRTCDataChannel_WriteMode* {.size: sizeof(clong).} = enum
+type WebRTCDataChannel_WriteMode* {.size: EnumSize.default.} = enum
   writeModeText = 0
   writeModeBinary = 1
 
-type WebRTCDataChannel_ChannelState* {.size: sizeof(clong).} = enum
+type WebRTCDataChannel_ChannelState* {.size: EnumSize.default.} = enum
   stateConnecting = 0
   stateOpen = 1
   stateClosing = 2
   stateClosed = 3
 
-type WebRTCPeerConnection_ConnectionState* {.size: sizeof(clong).} = enum
+type WebRTCPeerConnection_ConnectionState* {.size: EnumSize.default.} = enum
   stateNew = 0
   stateConnecting = 1
   stateConnected = 2
@@ -5412,12 +5412,12 @@ type WebRTCPeerConnection_ConnectionState* {.size: sizeof(clong).} = enum
   stateFailed = 4
   stateClosed = 5
 
-type WebRTCPeerConnection_GatheringState* {.size: sizeof(clong).} = enum
+type WebRTCPeerConnection_GatheringState* {.size: EnumSize.default.} = enum
   gatheringStateNew = 0
   gatheringStateGathering = 1
   gatheringStateComplete = 2
 
-type WebRTCPeerConnection_SignalingState* {.size: sizeof(clong).} = enum
+type WebRTCPeerConnection_SignalingState* {.size: EnumSize.default.} = enum
   signalingStateStable = 0
   signalingStateHaveLocalOffer = 1
   signalingStateHaveRemoteOffer = 2
@@ -5425,30 +5425,30 @@ type WebRTCPeerConnection_SignalingState* {.size: sizeof(clong).} = enum
   signalingStateHaveRemotePranswer = 4
   signalingStateClosed = 5
 
-type WebSocketPeer_WriteMode* {.size: sizeof(clong).} = enum
+type WebSocketPeer_WriteMode* {.size: EnumSize.default.} = enum
   writeModeText = 0
   writeModeBinary = 1
 
-type WebSocketPeer_State* {.size: sizeof(clong).} = enum
+type WebSocketPeer_State* {.size: EnumSize.default.} = enum
   stateConnecting = 0
   stateOpen = 1
   stateClosing = 2
   stateClosed = 3
 
-type WebXRInterface_TargetRayMode* {.size: sizeof(clong).} = enum
+type WebXRInterface_TargetRayMode* {.size: EnumSize.default.} = enum
   targetRayModeUnknown = 0
   targetRayModeGaze = 1
   targetRayModeTrackedPointer = 2
   targetRayModeScreen = 3
 
-type Window_Mode* {.size: sizeof(clong).} = enum
+type Window_Mode* {.size: EnumSize.default.} = enum
   modeWindowed = 0
   modeMinimized = 1
   modeMaximized = 2
   modeFullscreen = 3
   modeExclusiveFullscreen = 4
 
-type Window_Flags* {.size: sizeof(clong).} = enum
+type Window_Flags* {.size: EnumSize.default.} = enum
   flagResizeDisabled = 0
   flagBorderless = 1
   flagAlwaysOnTop = 2
@@ -5461,23 +5461,23 @@ type Window_Flags* {.size: sizeof(clong).} = enum
   flagExcludeFromCapture = 9
   flagMax = 10
 
-type Window_ContentScaleMode* {.size: sizeof(clong).} = enum
+type Window_ContentScaleMode* {.size: EnumSize.default.} = enum
   contentScaleModeDisabled = 0
   contentScaleModeCanvasItems = 1
   contentScaleModeViewport = 2
 
-type Window_ContentScaleAspect* {.size: sizeof(clong).} = enum
+type Window_ContentScaleAspect* {.size: EnumSize.default.} = enum
   contentScaleAspectIgnore = 0
   contentScaleAspectKeep = 1
   contentScaleAspectKeepWidth = 2
   contentScaleAspectKeepHeight = 3
   contentScaleAspectExpand = 4
 
-type Window_ContentScaleStretch* {.size: sizeof(clong).} = enum
+type Window_ContentScaleStretch* {.size: EnumSize.default.} = enum
   contentScaleStretchFractional = 0
   contentScaleStretchInteger = 1
 
-type Window_LayoutDirection* {.size: sizeof(clong).} = enum
+type Window_LayoutDirection* {.size: EnumSize.default.} = enum
   layoutDirectionInherited = 0
   layoutDirectionApplicationLocale = 1
   layoutDirectionLtr = 2
@@ -5486,7 +5486,7 @@ type Window_LayoutDirection* {.size: sizeof(clong).} = enum
   layoutDirectionMax = 5
 template layoutDirectionLocale*[T: Window_LayoutDirection](_: typedesc[T]): T = T(1)
 
-type Window_WindowInitialPosition* {.size: sizeof(clong).} = enum
+type Window_WindowInitialPosition* {.size: EnumSize.default.} = enum
   windowInitialPositionAbsolute = 0
   windowInitialPositionCenterPrimaryScreen = 1
   windowInitialPositionCenterMainWindowScreen = 2
@@ -5494,7 +5494,7 @@ type Window_WindowInitialPosition* {.size: sizeof(clong).} = enum
   windowInitialPositionCenterScreenWithMouseFocus = 4
   windowInitialPositionCenterScreenWithKeyboardFocus = 5
 
-type XMLParser_NodeType* {.size: sizeof(clong).} = enum
+type XMLParser_NodeType* {.size: EnumSize.default.} = enum
   nodeNone = 0
   nodeElement = 1
   nodeElementEnd = 2
@@ -5509,7 +5509,7 @@ type XRBodyModifier3D_BodyUpdate* = enum
   bodyUpdateHands = 2
   `--Padding-Max--` = 63 # To align size-of set[XRBodyModifier3D_BodyUpdate] to size-of Int.
 
-type XRBodyModifier3D_BoneUpdate* {.size: sizeof(clong).} = enum
+type XRBodyModifier3D_BoneUpdate* {.size: EnumSize.default.} = enum
   boneUpdateFull = 0
   boneUpdateRotationOnly = 1
   boneUpdateMax = 2
@@ -5520,7 +5520,7 @@ type XRBodyTracker_BodyFlags* = enum
   bodyFlagHandsSupported = 2
   `--Padding-Max--` = 63 # To align size-of set[XRBodyTracker_BodyFlags] to size-of Int.
 
-type XRBodyTracker_Joint* {.size: sizeof(clong).} = enum
+type XRBodyTracker_Joint* {.size: EnumSize.default.} = enum
   jointRoot = 0
   jointHips = 1
   jointSpine = 2
@@ -5606,7 +5606,7 @@ type XRBodyTracker_JointFlags* = enum
   jointFlagPositionTracked = 3
   `--Padding-Max--` = 63 # To align size-of set[XRBodyTracker_JointFlags] to size-of Int.
 
-type XRFaceTracker_BlendShapeEntry* {.size: sizeof(clong).} = enum
+type XRFaceTracker_BlendShapeEntry* {.size: EnumSize.default.} = enum
   ftEyeLookOutRight = 0
   ftEyeLookInRight = 1
   ftEyeLookUpRight = 2
@@ -5752,19 +5752,19 @@ type XRFaceTracker_BlendShapeEntry* {.size: sizeof(clong).} = enum
   ftMouthPress = 142
   ftMax = 143
 
-type XRHandModifier3D_BoneUpdate* {.size: sizeof(clong).} = enum
+type XRHandModifier3D_BoneUpdate* {.size: EnumSize.default.} = enum
   boneUpdateFull = 0
   boneUpdateRotationOnly = 1
   boneUpdateMax = 2
 
-type XRHandTracker_HandTrackingSource* {.size: sizeof(clong).} = enum
+type XRHandTracker_HandTrackingSource* {.size: EnumSize.default.} = enum
   handTrackingSourceUnknown = 0
   handTrackingSourceUnobstructed = 1
   handTrackingSourceController = 2
   handTrackingSourceNotTracked = 3
   handTrackingSourceMax = 4
 
-type XRHandTracker_HandJoint* {.size: sizeof(clong).} = enum
+type XRHandTracker_HandJoint* {.size: EnumSize.default.} = enum
   handJointPalm = 0
   handJointWrist = 1
   handJointThumbMetacarpal = 2
@@ -5802,7 +5802,7 @@ type XRHandTracker_HandJointFlags* = enum
   handJointFlagAngularVelocityValid = 5
   `--Padding-Max--` = 63 # To align size-of set[XRHandTracker_HandJointFlags] to size-of Int.
 
-type XRInterface_Capabilities* {.size: sizeof(clong).} = enum
+type XRInterface_Capabilities* {.size: EnumSize.default.} = enum
   xrNone = 0
   xrMono = 1
   xrStereo = 2
@@ -5811,37 +5811,37 @@ type XRInterface_Capabilities* {.size: sizeof(clong).} = enum
   xrAr = 16
   xrExternal = 32
 
-type XRInterface_TrackingStatus* {.size: sizeof(clong).} = enum
+type XRInterface_TrackingStatus* {.size: EnumSize.default.} = enum
   xrNormalTracking = 0
   xrExcessiveMotion = 1
   xrInsufficientFeatures = 2
   xrUnknownTracking = 3
   xrNotTracking = 4
 
-type XRInterface_PlayAreaMode* {.size: sizeof(clong).} = enum
+type XRInterface_PlayAreaMode* {.size: EnumSize.default.} = enum
   xrPlayAreaUnknown = 0
   xrPlayArea3Dof = 1
   xrPlayAreaSitting = 2
   xrPlayAreaRoomscale = 3
   xrPlayAreaStage = 4
 
-type XRInterface_EnvironmentBlendMode* {.size: sizeof(clong).} = enum
+type XRInterface_EnvironmentBlendMode* {.size: EnumSize.default.} = enum
   xrEnvBlendModeOpaque = 0
   xrEnvBlendModeAdditive = 1
   xrEnvBlendModeAlphaBlend = 2
 
-type XRPose_TrackingConfidence* {.size: sizeof(clong).} = enum
+type XRPose_TrackingConfidence* {.size: EnumSize.default.} = enum
   xrTrackingConfidenceNone = 0
   xrTrackingConfidenceLow = 1
   xrTrackingConfidenceHigh = 2
 
-type XRPositionalTracker_TrackerHand* {.size: sizeof(clong).} = enum
+type XRPositionalTracker_TrackerHand* {.size: EnumSize.default.} = enum
   trackerHandUnknown = 0
   trackerHandLeft = 1
   trackerHandRight = 2
   trackerHandMax = 3
 
-type XRServer_TrackerType* {.size: sizeof(clong).} = enum
+type XRServer_TrackerType* {.size: EnumSize.default.} = enum
   trackerHead = 1
   trackerController = 2
   trackerBasestation = 4
@@ -5853,12 +5853,12 @@ type XRServer_TrackerType* {.size: sizeof(clong).} = enum
   trackerUnknown = 128
   trackerAny = 255
 
-type XRServer_RotationMode* {.size: sizeof(clong).} = enum
+type XRServer_RotationMode* {.size: EnumSize.default.} = enum
   resetFullRotation = 0
   resetButKeepTilt = 1
   dontResetRotation = 2
 
-type ZIPPacker_ZipAppend* {.size: sizeof(clong).} = enum
+type ZIPPacker_ZipAppend* {.size: EnumSize.default.} = enum
   appendCreate = 0
   appendCreateafter = 1
   appendAddinzip = 2
