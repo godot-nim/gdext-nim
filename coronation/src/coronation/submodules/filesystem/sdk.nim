@@ -75,11 +75,11 @@ proc rootNode*(node: VirtualNode): VirtualNode =
 
 proc absolutePath*(node: VirtualNode): string =
   if node.pParent == nil: return node.name
-  absolutePath(node.pParent)/node.name
+  (absolutePath(node.pParent)/node.name).replace("\\", "/")
 
 proc relativePath*(dst: VirtualNode; src: VirtualNode): string =
   if dst.rootNode != src.rootNode: return dst.absolutePath
-  result = "."/relativePath(dst.absolutePath, src.absolutePath)
+  result = ("."/relativePath(dst.absolutePath, src.absolutePath)).replace("\\", "/")
 
 template path*(node: VirtualNode): string = node.absolutePath
 
