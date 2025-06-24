@@ -246,6 +246,17 @@ runtime: suite "TypedArray":
       arr[i] = newGdString $i
     for i in 0..<arr.len:
       check arr[i] == newGdString $i
+
+  test "backward subscript":
+    var obj = instantiate Object
+    var po = newTypedArray [obj]
+    var pi = newTypedArray [1]
+    check po[0] != nil
+    check po[^1] != nil
+    check pi[0] == 1
+    check pi[^1] == 1
+    destroy obj
+
   test "typed functions":
     var arr = newTypedArray[String](2)
     arr.fill "Hello, "
