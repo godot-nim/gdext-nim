@@ -335,8 +335,8 @@ proc `[]`*[T](arr: PackedArray[T]; index: BackwardsIndex): T =
 # var []
 proc `[]`*(arr: var Array; index: BackwardsIndex): var Variant =
   arr[arr.size - int(index)]
-proc `[]`*[T](arr: var TypedArray[T]; index: BackwardsIndex): var T =
-  arr[arr.size - int(index)]
+proc `[]`*[T: not Object and not RefCounted](arr: var TypedArray[T]; index: BackwardsIndex): var T =
+  arr.Array[arr.size - int(index)].getAddr(T)[]
 proc `[]`*[T](arr: var PackedArray[T]; index: BackwardsIndex): var T =
   arr[arr.size - int(index)]
 
