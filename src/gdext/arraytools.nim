@@ -152,7 +152,7 @@ template typedArray*[T](len: Natural): TypedArray[T] {.deprecated: "use newTyped
   newTypedArray[T](len)
 
 iterator items*[T](arr: TypedArray[T]): T =
-  for i in 0..<arr.size: yield arr[i].get(T)
+  for i in 0..<arr.size: yield arr[i]
 iterator pairs*[T](arr: TypedArray[T]): (int, T) =
   for i in 0..<arr.size: yield (int i, arr[i])
 
