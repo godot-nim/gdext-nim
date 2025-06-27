@@ -226,6 +226,30 @@ runtime: suite "TypedArray":
     check arr.len == 10
     for i, val in arr:
       check val.length == 0
+
+  test "iter":
+    let res = ["a", "b", "c"]
+    let arr = newTypedArray [newGdString"a", "b", "c"]
+    for i, val in arr:
+      check $val == res[i]
+    block:
+      var i: int
+      for val in arr:
+        check $val == res[i]
+        inc i
+ 
+    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
+    for i, r in res2:
+      r.name = res[i]
+    let arr2 = newTypedArray res2
+    for i, val in arr2:
+      check $val.name == res[i]
+    block:
+      var i: int
+      for val in arr2:
+        check $val.name == res[i]
+        inc i
+
   test "mutable iter":
     var arr = newTypedArray[String](10)
     for i, val in arr.mpairs:
