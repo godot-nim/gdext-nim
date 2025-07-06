@@ -12,7 +12,6 @@ import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
 import gdext/stringtools
-import gdext/classes/gdEngine
 
 when Assistance.genEditorHelp:
   import gdext/private/doctools
@@ -163,6 +162,8 @@ proc propertyinfo*(
     ): HeapPropertyInfo =
   propertyInfo(VariantType_Nil, name, StringName(),
     appearance.hint, appearance.hintstring, appearance.usage)
+
+import gdext/classes/gdEngine
 
 proc gdexport_internal*(
     info: HeapPropertyInfo;
