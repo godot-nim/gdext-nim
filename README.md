@@ -179,6 +179,7 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 [6]: https://github.com/godot-nim/gdext-nim/discussions/categories/ideas
 [7]: https://github.com/godot-nim/.github/issues/5
 [8]: https://github.com/godot-nim/gdext-nim
-[9]: https://godot-nim.github.io/gdext-nim/gdext.html
+[9]: https://deepwiki.com/godot-nim/gdext-nim/
+[10]: https://godot-nim.github.io/gdext-nim/gdext.html
 [Tutorial]: https://github.com/godot-nim/gdext-nim/wiki/Your-first-2D-game
 [Architecture]: https://deepwiki.com/godot-nim/gdext-nim/3.3-data-structures-and-collections
