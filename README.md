@@ -1,18 +1,69 @@
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a id="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
+
+
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+
+
+
 <div align="center">
 
   # <img src="https://raw.githubusercontent.com/nim-lang/assets/master/Art/logo-crown.png" height="28px"/> godot-nim/gdext
+<p align="center">
 
-  Nim for GDExtension — a pure library and CLI tool.
-  
   <a href="https://github.com/godot-nim/gdext-nim">
-    <img src="nimble.svg" height="24">
+    <img src="nimble.svg" height="29">
+  </a>
+  <a href="https://github.com/godot-nim/gdext-nim/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/godot-nim/gdext-nim.svg?style=for-the-badge" alt="Contributors" />
+  </a>
+  <a href="https://github.com/godot-nim/gdext-nim/network/members">
+    <img src="https://img.shields.io/github/forks/godot-nim/gdext-nim.svg?style=for-the-badge" alt="Forks" />
+  </a>
+  <a href="https://github.com/godot-nim/gdext-nim/stargazers">
+    <img src="https://img.shields.io/github/stars/godot-nim/gdext-nim.svg?style=for-the-badge" alt="Stars" />
+  </a>
+  <a href="https://github.com/godot-nim/gdext-nim/issues">
+    <img src="https://img.shields.io/github/issues/godot-nim/gdext-nim.svg?style=for-the-badge" alt="Issues" />
+  </a>
+  <a href="https://github.com/godot-nim/gdext-nim/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/godot-nim/gdext-nim.svg?style=for-the-badge" alt="MIT License" />
   </a>
 
-   [Documentation][9] | [Coding Guide][4] | [Tutorial] | [Examples][1] | Templates | [Forum][5] | [Source][8] | [Architecture]
+	
+</p>
+
+</div>
+
+
+  
+<div align = "center">
+
+📚 [Documentation][9] | 🔌 [API][10]  | 🧑‍💻 [Coding Guide][4] | 🎓 [Tutorial] | 🧪 [Examples][1] | 🧩 Templates | 💬 [Discord][11]  | 🧵 [Forum][5] | 🛠️ [Source][8]
+
 
 </div>
 
 ---
+  > Nim for GDExtension — a pure library and CLI tool.
+
+
 
 ## Quick start
 
@@ -161,15 +212,59 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
   Use Nim installed via Homebrew, not `choosenim`.
   This is because Godot requires a native AArch64/ARM64 binary, while choosenim installs an x86_64 version that runs via Rosetta emulation.
 
-## Tested by author
+## Tested by author and maintainers
 
 > [!NOTE]
 > Support for other environments depends on community feedback. Please consider contributing your findings!
 
-* OS: Linux (Arch)
-* Engine: Godot 4.4.stable.arch_linux
-* Nim: 2.0.12, 2.0.14, 2.2.0, 2.2.4
-* CC: gcc version 15.1.1 20250425 (GCC)
+* OS: Linux (Arch) — Author | Mac M2 — @ArikRahman
+* Engine: Godot 4.4.stable.arch_linux | Homebrew Godot 4.4.1 arm64-apple-darwin24.5.0
+* Nim: 2.0.12 | 2.0.14 | 2.2.0 | 2.2.4
+* CC: gcc version 15.1.1 20250425 (GCC) | clang version 17.0.0
+
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request.
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+### Top contributors:
+
+<a href="https://github.com/godot-nim/gdext-nim/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=godot-nim/gdext-nim" alt="Contributors to godot-nim/gdext-nim" />
+</a>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/godot-nim/gdext-nim.svg?style=for-the-badge
+[contributors-url]: https://github.com/godot-nim/gdext-nim/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/godot-nim/gdext-nim.svg?style=for-the-badge
+[forks-url]: https://github.com/godot-nim/gdext-nim/network/members
+[stars-shield]: https://img.shields.io/github/stars/godot-nim/gdext-nim.svg?style=for-the-badge
+[stars-url]: https://github.com/godot-nim/gdext-nim/stargazers
+[issues-shield]: https://img.shields.io/github/issues/godot-nim/gdext-nim.svg?style=for-the-badge
+[issues-url]: https://github.com/godot-nim/gdext-nim/issues
+[license-shield]: https://img.shields.io/github/license/godot-nim/gdext-nim.svg?style=for-the-badge
+[license-url]: https://github.com/godot-nim/gdext-nim/blob/master/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
+
 
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
@@ -181,5 +276,8 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 [8]: https://github.com/godot-nim/gdext-nim
 [9]: https://deepwiki.com/godot-nim/gdext-nim/
 [10]: https://godot-nim.github.io/gdext-nim/gdext.html
+[11]: https://discord.gg/nXGmV6TFKQ
 [Tutorial]: https://github.com/godot-nim/gdext-nim/wiki/Your-first-2D-game
 [Architecture]: https://deepwiki.com/godot-nim/gdext-nim/3.3-data-structures-and-collections
+
+
