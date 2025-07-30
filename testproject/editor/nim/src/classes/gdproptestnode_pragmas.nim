@@ -60,7 +60,7 @@ PropTestNodePragmas.bind PropTestPragmasEnum
 
 method onInit(self: PropTestNodePragmas) =
   self.StringArray_with_export_multiline = newTypedArray[String](1)
-  self.string_array = newTypedArray[String]()
+  # self.string_array = newTypedArray[String]()
   self.texture2D_array = newTypedArray[Texture2D]()
 
 method enterTree(self: PropTestNodePragmas) {.gdsync.} =

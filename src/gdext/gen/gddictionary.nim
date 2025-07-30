@@ -45,85 +45,203 @@ var `makeReadOnly(Dictionary)`: PtrBuiltinMethod
 var `isReadOnly(Dictionary)`: PtrBuiltinMethod
 var `recursiveEqual(Dictionary Dictionary Int)`: PtrBuiltinMethod
 
-proc size*(self: Dictionary): Int =
+proc size*(self: var Dictionary): Int =
+  nilCheck self
   `size(Dictionary)`(addr self, nil, addr result, 0)
+proc size*(self: Dictionary): Int =
+  nilCheck self
+  `size(Dictionary)`(addr self, nil, addr result, 0)
+proc isEmpty*(self: var Dictionary): bool =
+  nilCheck self
+  `isEmpty(Dictionary)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: Dictionary): bool =
+  nilCheck self
   `isEmpty(Dictionary)`(addr self, nil, addr result, 0)
 proc clear*(self: var Dictionary): void =
+  nilCheck self
   `clear(Dictionary)`(addr self, nil, nil, 0)
 proc assign*(self: var Dictionary; dictionary: Dictionary): void =
+  nilCheck self
   let argArr = [getPtr dictionary]
   `assign(Dictionary Dictionary)`(addr self, addr argArr[0], nil, 1)
 proc sort*(self: var Dictionary): void =
+  nilCheck self
   `sort(Dictionary)`(addr self, nil, nil, 0)
 proc merge*(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): void =
+  nilCheck self
   let argArr = [getPtr dictionary, getPtr overwrite]
   `merge(Dictionary Dictionary bool)`(addr self, addr argArr[0], nil, 2)
-proc merged*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary =
+proc merged*(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary =
+  nilCheck self
   let argArr = [getPtr dictionary, getPtr overwrite]
   `merged(Dictionary Dictionary bool)`(addr self, addr argArr[0], addr result, 2)
-proc has*(self: Dictionary; key: Variant): bool =
+proc merged*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary =
+  nilCheck self
+  let argArr = [getPtr dictionary, getPtr overwrite]
+  `merged(Dictionary Dictionary bool)`(addr self, addr argArr[0], addr result, 2)
+proc has*(self: var Dictionary; key: Variant): bool =
+  nilCheck self
   let argArr = [getPtr key]
   `has(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
-proc hasAll*(self: Dictionary; keys: Array): bool =
+proc has*(self: Dictionary; key: Variant): bool =
+  nilCheck self
+  let argArr = [getPtr key]
+  `has(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
+proc hasAll*(self: var Dictionary; keys: Array): bool =
+  nilCheck self
   let argArr = [getPtr keys]
   `hasAll(Dictionary Array)`(addr self, addr argArr[0], addr result, 1)
+proc hasAll*(self: Dictionary; keys: Array): bool =
+  nilCheck self
+  let argArr = [getPtr keys]
+  `hasAll(Dictionary Array)`(addr self, addr argArr[0], addr result, 1)
+proc findKey*(self: var Dictionary; value: Variant): Variant =
+  nilCheck self
+  let argArr = [getPtr value]
+  `findKey(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
 proc findKey*(self: Dictionary; value: Variant): Variant =
+  nilCheck self
   let argArr = [getPtr value]
   `findKey(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
 proc erase*(self: var Dictionary; key: Variant): bool =
+  nilCheck self
   let argArr = [getPtr key]
   `erase(Dictionary Variant)`(addr self, addr argArr[0], addr result, 1)
-proc hash*(self: Dictionary): Hash =
+proc hash*(self: var Dictionary): Hash =
+  nilCheck self
   `hash(Dictionary)`(addr self, nil, addr result, 0)
-proc keys*(self: Dictionary): Array =
+proc hash*(self: Dictionary): Hash =
+  nilCheck self
+  `hash(Dictionary)`(addr self, nil, addr result, 0)
+proc keys*(self: var Dictionary): Array =
+  nilCheck self
   `keys(Dictionary)`(addr self, nil, addr result, 0)
-proc values*(self: Dictionary): Array =
+proc keys*(self: Dictionary): Array =
+  nilCheck self
+  `keys(Dictionary)`(addr self, nil, addr result, 0)
+proc values*(self: var Dictionary): Array =
+  nilCheck self
   `values(Dictionary)`(addr self, nil, addr result, 0)
-proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =
+proc values*(self: Dictionary): Array =
+  nilCheck self
+  `values(Dictionary)`(addr self, nil, addr result, 0)
+proc duplicate*(self: var Dictionary; deep: bool = false): Dictionary =
+  nilCheck self
   let argArr = [getPtr deep]
   `duplicate(Dictionary bool)`(addr self, addr argArr[0], addr result, 1)
+proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =
+  nilCheck self
+  let argArr = [getPtr deep]
+  `duplicate(Dictionary bool)`(addr self, addr argArr[0], addr result, 1)
+proc get*(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+  nilCheck self
+  let argArr = [getPtr key, getPtr default]
+  `get(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
 proc get*(self: Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+  nilCheck self
   let argArr = [getPtr key, getPtr default]
   `get(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
 proc getOrAdd*(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+  nilCheck self
   let argArr = [getPtr key, getPtr default]
   `getOrAdd(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
 proc set*(self: var Dictionary; key: Variant; value: Variant): bool =
+  nilCheck self
   let argArr = [getPtr key, getPtr value]
   `set(Dictionary Variant Variant)`(addr self, addr argArr[0], addr result, 2)
-proc isTyped*(self: Dictionary): bool =
+proc isTyped*(self: var Dictionary): bool =
+  nilCheck self
   `isTyped(Dictionary)`(addr self, nil, addr result, 0)
-proc isTypedKey*(self: Dictionary): bool =
+proc isTyped*(self: Dictionary): bool =
+  nilCheck self
+  `isTyped(Dictionary)`(addr self, nil, addr result, 0)
+proc isTypedKey*(self: var Dictionary): bool =
+  nilCheck self
   `isTypedKey(Dictionary)`(addr self, nil, addr result, 0)
-proc isTypedValue*(self: Dictionary): bool =
+proc isTypedKey*(self: Dictionary): bool =
+  nilCheck self
+  `isTypedKey(Dictionary)`(addr self, nil, addr result, 0)
+proc isTypedValue*(self: var Dictionary): bool =
+  nilCheck self
   `isTypedValue(Dictionary)`(addr self, nil, addr result, 0)
-proc isSameTyped*(self: Dictionary; dictionary: Dictionary): bool =
+proc isTypedValue*(self: Dictionary): bool =
+  nilCheck self
+  `isTypedValue(Dictionary)`(addr self, nil, addr result, 0)
+proc isSameTyped*(self: var Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
   let argArr = [getPtr dictionary]
   `isSameTyped(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
-proc isSameTypedKey*(self: Dictionary; dictionary: Dictionary): bool =
+proc isSameTyped*(self: Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
+  let argArr = [getPtr dictionary]
+  `isSameTyped(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
+proc isSameTypedKey*(self: var Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
   let argArr = [getPtr dictionary]
   `isSameTypedKey(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
-proc isSameTypedValue*(self: Dictionary; dictionary: Dictionary): bool =
+proc isSameTypedKey*(self: Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
+  let argArr = [getPtr dictionary]
+  `isSameTypedKey(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
+proc isSameTypedValue*(self: var Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
   let argArr = [getPtr dictionary]
   `isSameTypedValue(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
-proc getTypedKeyBuiltin*(self: Dictionary): Int =
+proc isSameTypedValue*(self: Dictionary; dictionary: Dictionary): bool =
+  nilCheck self
+  let argArr = [getPtr dictionary]
+  `isSameTypedValue(Dictionary Dictionary)`(addr self, addr argArr[0], addr result, 1)
+proc getTypedKeyBuiltin*(self: var Dictionary): Int =
+  nilCheck self
   `getTypedKeyBuiltin(Dictionary)`(addr self, nil, addr result, 0)
-proc getTypedValueBuiltin*(self: Dictionary): Int =
+proc getTypedKeyBuiltin*(self: Dictionary): Int =
+  nilCheck self
+  `getTypedKeyBuiltin(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedValueBuiltin*(self: var Dictionary): Int =
+  nilCheck self
   `getTypedValueBuiltin(Dictionary)`(addr self, nil, addr result, 0)
-proc getTypedKeyClassName*(self: Dictionary): StringName =
+proc getTypedValueBuiltin*(self: Dictionary): Int =
+  nilCheck self
+  `getTypedValueBuiltin(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedKeyClassName*(self: var Dictionary): StringName =
+  nilCheck self
   `getTypedKeyClassName(Dictionary)`(addr self, nil, addr result, 0)
-proc getTypedValueClassName*(self: Dictionary): StringName =
+proc getTypedKeyClassName*(self: Dictionary): StringName =
+  nilCheck self
+  `getTypedKeyClassName(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedValueClassName*(self: var Dictionary): StringName =
+  nilCheck self
   `getTypedValueClassName(Dictionary)`(addr self, nil, addr result, 0)
-proc getTypedKeyScript*(self: Dictionary): Variant =
+proc getTypedValueClassName*(self: Dictionary): StringName =
+  nilCheck self
+  `getTypedValueClassName(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedKeyScript*(self: var Dictionary): Variant =
+  nilCheck self
   `getTypedKeyScript(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedKeyScript*(self: Dictionary): Variant =
+  nilCheck self
+  `getTypedKeyScript(Dictionary)`(addr self, nil, addr result, 0)
+proc getTypedValueScript*(self: var Dictionary): Variant =
+  nilCheck self
+  `getTypedValueScript(Dictionary)`(addr self, nil, addr result, 0)
 proc getTypedValueScript*(self: Dictionary): Variant =
+  nilCheck self
   `getTypedValueScript(Dictionary)`(addr self, nil, addr result, 0)
 proc makeReadOnly*(self: var Dictionary): void =
+  nilCheck self
   `makeReadOnly(Dictionary)`(addr self, nil, nil, 0)
-proc isReadOnly*(self: Dictionary): bool =
+proc isReadOnly*(self: var Dictionary): bool =
+  nilCheck self
   `isReadOnly(Dictionary)`(addr self, nil, addr result, 0)
+proc isReadOnly*(self: Dictionary): bool =
+  nilCheck self
+  `isReadOnly(Dictionary)`(addr self, nil, addr result, 0)
+proc recursiveEqual*(self: var Dictionary; dictionary: Dictionary; recursionCount: Int): bool =
+  nilCheck self
+  let argArr = [getPtr dictionary, getPtr recursionCount]
+  `recursiveEqual(Dictionary Dictionary Int)`(addr self, addr argArr[0], addr result, 2)
 proc recursiveEqual*(self: Dictionary; dictionary: Dictionary; recursionCount: Int): bool =
+  nilCheck self
   let argArr = [getPtr dictionary, getPtr recursionCount]
   `recursiveEqual(Dictionary Dictionary Int)`(addr self, addr argArr[0], addr result, 2)
 

@@ -73,135 +73,292 @@ var `getTypedScript(Array)`: PtrBuiltinMethod
 var `makeReadOnly(Array)`: PtrBuiltinMethod
 var `isReadOnly(Array)`: PtrBuiltinMethod
 
-proc size*(self: Array): Int =
+proc size*(self: var Array): Int =
+  nilCheck self
   `size(Array)`(addr self, nil, addr result, 0)
+proc size*(self: Array): Int =
+  nilCheck self
+  `size(Array)`(addr self, nil, addr result, 0)
+proc isEmpty*(self: var Array): bool =
+  nilCheck self
+  `isEmpty(Array)`(addr self, nil, addr result, 0)
 proc isEmpty*(self: Array): bool =
+  nilCheck self
   `isEmpty(Array)`(addr self, nil, addr result, 0)
 proc clear*(self: var Array): void =
+  nilCheck self
   `clear(Array)`(addr self, nil, nil, 0)
+proc hash*(self: var Array): Hash =
+  nilCheck self
+  `hash(Array)`(addr self, nil, addr result, 0)
 proc hash*(self: Array): Hash =
+  nilCheck self
   `hash(Array)`(addr self, nil, addr result, 0)
 proc assign*(self: var Array; array: Array): void =
+  nilCheck self
   let argArr = [getPtr array]
   `assign(Array Array)`(addr self, addr argArr[0], nil, 1)
+proc get*(self: var Array; index: Int): Variant =
+  nilCheck self
+  let argArr = [getPtr index]
+  `get(Array Int)`(addr self, addr argArr[0], addr result, 1)
 proc get*(self: Array; index: Int): Variant =
+  nilCheck self
   let argArr = [getPtr index]
   `get(Array Int)`(addr self, addr argArr[0], addr result, 1)
 proc set*(self: var Array; index: Int; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr index, getPtr value]
   `set(Array Int Variant)`(addr self, addr argArr[0], nil, 2)
 proc pushBack*(self: var Array; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr value]
   `pushBack(Array Variant)`(addr self, addr argArr[0], nil, 1)
 proc pushFront*(self: var Array; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr value]
   `pushFront(Array Variant)`(addr self, addr argArr[0], nil, 1)
 proc append*(self: var Array; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr value]
   `append(Array Variant)`(addr self, addr argArr[0], nil, 1)
 proc appendArray*(self: var Array; array: Array): void =
+  nilCheck self
   let argArr = [getPtr array]
   `appendArray(Array Array)`(addr self, addr argArr[0], nil, 1)
 proc resize*(self: var Array; size: Int): Int =
+  nilCheck self
   let argArr = [getPtr size]
   `resize(Array Int)`(addr self, addr argArr[0], addr result, 1)
 proc insert*(self: var Array; position: Int; value: Variant): Int =
+  nilCheck self
   let argArr = [getPtr position, getPtr value]
   `insert(Array Int Variant)`(addr self, addr argArr[0], addr result, 2)
 proc removeAt*(self: var Array; position: Int): void =
+  nilCheck self
   let argArr = [getPtr position]
   `removeAt(Array Int)`(addr self, addr argArr[0], nil, 1)
 proc fill*(self: var Array; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr value]
   `fill(Array Variant)`(addr self, addr argArr[0], nil, 1)
 proc erase*(self: var Array; value: Variant): void =
+  nilCheck self
   let argArr = [getPtr value]
   `erase(Array Variant)`(addr self, addr argArr[0], nil, 1)
-proc front*(self: Array): Variant =
+proc front*(self: var Array): Variant =
+  nilCheck self
   `front(Array)`(addr self, nil, addr result, 0)
-proc back*(self: Array): Variant =
+proc front*(self: Array): Variant =
+  nilCheck self
+  `front(Array)`(addr self, nil, addr result, 0)
+proc back*(self: var Array): Variant =
+  nilCheck self
   `back(Array)`(addr self, nil, addr result, 0)
-proc pickRandom*(self: Array): Variant =
+proc back*(self: Array): Variant =
+  nilCheck self
+  `back(Array)`(addr self, nil, addr result, 0)
+proc pickRandom*(self: var Array): Variant =
+  nilCheck self
   `pickRandom(Array)`(addr self, nil, addr result, 0)
-proc find*(self: Array; what: Variant; `from`: Int = 0): Int =
+proc pickRandom*(self: Array): Variant =
+  nilCheck self
+  `pickRandom(Array)`(addr self, nil, addr result, 0)
+proc find*(self: var Array; what: Variant; `from`: Int = 0): Int =
+  nilCheck self
   let argArr = [getPtr what, getPtr `from`]
   `find(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
-proc findCustom*(self: Array; `method`: Callable; `from`: Int = 0): Int =
+proc find*(self: Array; what: Variant; `from`: Int = 0): Int =
+  nilCheck self
+  let argArr = [getPtr what, getPtr `from`]
+  `find(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
+proc findCustom*(self: var Array; `method`: Callable; `from`: Int = 0): Int =
+  nilCheck self
   let argArr = [getPtr `method`, getPtr `from`]
   `findCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
-proc rfind*(self: Array; what: Variant; `from`: Int = -1): Int =
+proc findCustom*(self: Array; `method`: Callable; `from`: Int = 0): Int =
+  nilCheck self
+  let argArr = [getPtr `method`, getPtr `from`]
+  `findCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
+proc rfind*(self: var Array; what: Variant; `from`: Int = -1): Int =
+  nilCheck self
   let argArr = [getPtr what, getPtr `from`]
   `rfind(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
-proc rfindCustom*(self: Array; `method`: Callable; `from`: Int = -1): Int =
+proc rfind*(self: Array; what: Variant; `from`: Int = -1): Int =
+  nilCheck self
+  let argArr = [getPtr what, getPtr `from`]
+  `rfind(Array Variant Int)`(addr self, addr argArr[0], addr result, 2)
+proc rfindCustom*(self: var Array; `method`: Callable; `from`: Int = -1): Int =
+  nilCheck self
   let argArr = [getPtr `method`, getPtr `from`]
   `rfindCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
-proc count*(self: Array; value: Variant): Int =
+proc rfindCustom*(self: Array; `method`: Callable; `from`: Int = -1): Int =
+  nilCheck self
+  let argArr = [getPtr `method`, getPtr `from`]
+  `rfindCustom(Array Callable Int)`(addr self, addr argArr[0], addr result, 2)
+proc count*(self: var Array; value: Variant): Int =
+  nilCheck self
   let argArr = [getPtr value]
   `count(Array Variant)`(addr self, addr argArr[0], addr result, 1)
+proc count*(self: Array; value: Variant): Int =
+  nilCheck self
+  let argArr = [getPtr value]
+  `count(Array Variant)`(addr self, addr argArr[0], addr result, 1)
+proc has*(self: var Array; value: Variant): bool =
+  nilCheck self
+  let argArr = [getPtr value]
+  `has(Array Variant)`(addr self, addr argArr[0], addr result, 1)
 proc has*(self: Array; value: Variant): bool =
+  nilCheck self
   let argArr = [getPtr value]
   `has(Array Variant)`(addr self, addr argArr[0], addr result, 1)
 proc popBack*(self: var Array): Variant =
+  nilCheck self
   `popBack(Array)`(addr self, nil, addr result, 0)
 proc popFront*(self: var Array): Variant =
+  nilCheck self
   `popFront(Array)`(addr self, nil, addr result, 0)
 proc popAt*(self: var Array; position: Int): Variant =
+  nilCheck self
   let argArr = [getPtr position]
   `popAt(Array Int)`(addr self, addr argArr[0], addr result, 1)
 proc sort*(self: var Array): void =
+  nilCheck self
   `sort(Array)`(addr self, nil, nil, 0)
 proc sortCustom*(self: var Array; `func`: Callable): void =
+  nilCheck self
   let argArr = [getPtr `func`]
   `sortCustom(Array Callable)`(addr self, addr argArr[0], nil, 1)
 proc shuffle*(self: var Array): void =
+  nilCheck self
   `shuffle(Array)`(addr self, nil, nil, 0)
-proc bsearch*(self: Array; value: Variant; before: bool = true): Int =
+proc bsearch*(self: var Array; value: Variant; before: bool = true): Int =
+  nilCheck self
   let argArr = [getPtr value, getPtr before]
   `bsearch(Array Variant bool)`(addr self, addr argArr[0], addr result, 2)
+proc bsearch*(self: Array; value: Variant; before: bool = true): Int =
+  nilCheck self
+  let argArr = [getPtr value, getPtr before]
+  `bsearch(Array Variant bool)`(addr self, addr argArr[0], addr result, 2)
+proc bsearchCustom*(self: var Array; value: Variant; `func`: Callable; before: bool = true): Int =
+  nilCheck self
+  let argArr = [getPtr value, getPtr `func`, getPtr before]
+  `bsearchCustom(Array Variant Callable bool)`(addr self, addr argArr[0], addr result, 3)
 proc bsearchCustom*(self: Array; value: Variant; `func`: Callable; before: bool = true): Int =
+  nilCheck self
   let argArr = [getPtr value, getPtr `func`, getPtr before]
   `bsearchCustom(Array Variant Callable bool)`(addr self, addr argArr[0], addr result, 3)
 proc reverse*(self: var Array): void =
+  nilCheck self
   `reverse(Array)`(addr self, nil, nil, 0)
-proc duplicate*(self: Array; deep: bool = false): Array =
+proc duplicate*(self: var Array; deep: bool = false): Array =
+  nilCheck self
   let argArr = [getPtr deep]
   `duplicate(Array bool)`(addr self, addr argArr[0], addr result, 1)
-proc slice*(self: Array; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array =
+proc duplicate*(self: Array; deep: bool = false): Array =
+  nilCheck self
+  let argArr = [getPtr deep]
+  `duplicate(Array bool)`(addr self, addr argArr[0], addr result, 1)
+proc slice*(self: var Array; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array =
+  nilCheck self
   let argArr = [getPtr begin, getPtr `end`, getPtr step, getPtr deep]
   `slice(Array Int Int Int bool)`(addr self, addr argArr[0], addr result, 4)
-proc filter*(self: Array; `method`: Callable): Array =
+proc slice*(self: Array; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array =
+  nilCheck self
+  let argArr = [getPtr begin, getPtr `end`, getPtr step, getPtr deep]
+  `slice(Array Int Int Int bool)`(addr self, addr argArr[0], addr result, 4)
+proc filter*(self: var Array; `method`: Callable): Array =
+  nilCheck self
   let argArr = [getPtr `method`]
   `filter(Array Callable)`(addr self, addr argArr[0], addr result, 1)
-proc map*(self: Array; `method`: Callable): Array =
+proc filter*(self: Array; `method`: Callable): Array =
+  nilCheck self
+  let argArr = [getPtr `method`]
+  `filter(Array Callable)`(addr self, addr argArr[0], addr result, 1)
+proc map*(self: var Array; `method`: Callable): Array =
+  nilCheck self
   let argArr = [getPtr `method`]
   `map(Array Callable)`(addr self, addr argArr[0], addr result, 1)
-proc reduce*(self: Array; `method`: Callable; accum: Variant = default(Variant)): Variant =
+proc map*(self: Array; `method`: Callable): Array =
+  nilCheck self
+  let argArr = [getPtr `method`]
+  `map(Array Callable)`(addr self, addr argArr[0], addr result, 1)
+proc reduce*(self: var Array; `method`: Callable; accum: Variant = default(Variant)): Variant =
+  nilCheck self
   let argArr = [getPtr `method`, getPtr accum]
   `reduce(Array Callable Variant)`(addr self, addr argArr[0], addr result, 2)
-proc any*(self: Array; `method`: Callable): bool =
+proc reduce*(self: Array; `method`: Callable; accum: Variant = default(Variant)): Variant =
+  nilCheck self
+  let argArr = [getPtr `method`, getPtr accum]
+  `reduce(Array Callable Variant)`(addr self, addr argArr[0], addr result, 2)
+proc any*(self: var Array; `method`: Callable): bool =
+  nilCheck self
   let argArr = [getPtr `method`]
   `any(Array Callable)`(addr self, addr argArr[0], addr result, 1)
-proc all*(self: Array; `method`: Callable): bool =
+proc any*(self: Array; `method`: Callable): bool =
+  nilCheck self
+  let argArr = [getPtr `method`]
+  `any(Array Callable)`(addr self, addr argArr[0], addr result, 1)
+proc all*(self: var Array; `method`: Callable): bool =
+  nilCheck self
   let argArr = [getPtr `method`]
   `all(Array Callable)`(addr self, addr argArr[0], addr result, 1)
-proc max*(self: Array): Variant =
+proc all*(self: Array; `method`: Callable): bool =
+  nilCheck self
+  let argArr = [getPtr `method`]
+  `all(Array Callable)`(addr self, addr argArr[0], addr result, 1)
+proc max*(self: var Array): Variant =
+  nilCheck self
   `max(Array)`(addr self, nil, addr result, 0)
-proc min*(self: Array): Variant =
+proc max*(self: Array): Variant =
+  nilCheck self
+  `max(Array)`(addr self, nil, addr result, 0)
+proc min*(self: var Array): Variant =
+  nilCheck self
   `min(Array)`(addr self, nil, addr result, 0)
-proc isTyped*(self: Array): bool =
+proc min*(self: Array): Variant =
+  nilCheck self
+  `min(Array)`(addr self, nil, addr result, 0)
+proc isTyped*(self: var Array): bool =
+  nilCheck self
   `isTyped(Array)`(addr self, nil, addr result, 0)
-proc isSameTyped*(self: Array; array: Array): bool =
+proc isTyped*(self: Array): bool =
+  nilCheck self
+  `isTyped(Array)`(addr self, nil, addr result, 0)
+proc isSameTyped*(self: var Array; array: Array): bool =
+  nilCheck self
   let argArr = [getPtr array]
   `isSameTyped(Array Array)`(addr self, addr argArr[0], addr result, 1)
-proc getTypedBuiltin*(self: Array): Int =
+proc isSameTyped*(self: Array; array: Array): bool =
+  nilCheck self
+  let argArr = [getPtr array]
+  `isSameTyped(Array Array)`(addr self, addr argArr[0], addr result, 1)
+proc getTypedBuiltin*(self: var Array): Int =
+  nilCheck self
   `getTypedBuiltin(Array)`(addr self, nil, addr result, 0)
-proc getTypedClassName*(self: Array): StringName =
+proc getTypedBuiltin*(self: Array): Int =
+  nilCheck self
+  `getTypedBuiltin(Array)`(addr self, nil, addr result, 0)
+proc getTypedClassName*(self: var Array): StringName =
+  nilCheck self
   `getTypedClassName(Array)`(addr self, nil, addr result, 0)
+proc getTypedClassName*(self: Array): StringName =
+  nilCheck self
+  `getTypedClassName(Array)`(addr self, nil, addr result, 0)
+proc getTypedScript*(self: var Array): Variant =
+  nilCheck self
+  `getTypedScript(Array)`(addr self, nil, addr result, 0)
 proc getTypedScript*(self: Array): Variant =
+  nilCheck self
   `getTypedScript(Array)`(addr self, nil, addr result, 0)
 proc makeReadOnly*(self: var Array): void =
+  nilCheck self
   `makeReadOnly(Array)`(addr self, nil, nil, 0)
+proc isReadOnly*(self: var Array): bool =
+  nilCheck self
+  `isReadOnly(Array)`(addr self, nil, addr result, 0)
 proc isReadOnly*(self: Array): bool =
+  nilCheck self
   `isReadOnly(Array)`(addr self, nil, addr result, 0)
 
 proc load_Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
