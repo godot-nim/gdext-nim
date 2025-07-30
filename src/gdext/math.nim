@@ -881,6 +881,18 @@ template clampi*[T: SomeInteger](value, min, max: T): T = clamp(value, min, max)
 template lerpf*(`from`: Float; to: Float; weight: Float): Float = lerp(`from`, to, weight)
 template nearestPo2*(value: Int): Int = Int nextPowerOfTwo(int value)
 
+proc `+=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a + b
+proc `+=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a + b
+
+proc `-=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a - b
+proc `-=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a - b
+
+proc `*=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a * b
+proc `*=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a * b
+
+proc `/=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a / b
+proc `/=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a / b
+
 when isMainModule:
   let a = [1f, 0]
   echo a * a
