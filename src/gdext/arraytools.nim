@@ -80,25 +80,51 @@ include gdext/gen/gdpackedvector2array
 include gdext/gen/gdpackedvector3array
 include gdext/gen/gdpackedvector4array
 
+template checkBoundsIsNil(self) =
+  if cast[pointer](self) == nil:
+    raise newException(IndexDefect, "index out of bounds, the container is empty")
+template checkBounds(self: Array | TypedArray; index: int) =
+  checkBoundsIsNil self
+  let size = self.size
+  if size == 0:
+    raise newException(IndexDefect, "index out of bounds, the container is empty")
+  if size <= index:
+    raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $size.pred)
+template checkBounds(self: PackedArray; index: int) =
+  let size = self.size
+  if size == 0:
+    raise newException(IndexDefect, "index out of bounds, the container is empty")
+  if size <= index:
+    raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $size.pred)
+
 proc `[]`*(self: Array; index: Natural): Variant =
+  checkBounds self, index
   cast[ptr Variant](interface_Array_operatorIndexConst(addr self, index))[]
 proc `[]`*(self: var Array; index: Natural): var Variant =
+  checkBounds self, index
   cast[ptr Variant](interface_Array_operatorIndex(addr self, index))[]
 proc `[]=`*(self: var Array; index: Natural; value: sink Variant) =
+  checkBounds self, index
   `[]`(self, index) = value
 
 proc `[]`*[T](self: TypedArray[T]; index: Natural): T =
+  checkBounds self.Array, index
   self.Array[index].get(T)
 proc `[]`*[T: SomeBuiltins](self: var TypedArray[T]; index: Natural): var T =
+  checkBounds self.Array, index
   self.Array[index].getAddr(T)[]
 proc `[]=`*[T](self: var TypedArray[T]; index: Natural; value: sink T) =
+  checkBounds self.Array, index
   `[]`(Array(self), index) = variant(value)
 
 proc `[]`*[T](self: PackedArray[T]; index: Natural): T =
+  checkBounds self, index
   self.data_unsafe[index]
 proc `[]`*[T](self: var PackedArray[T]; index: Natural): var T =
+  checkBounds self, index
   self.data_unsafe[index]
 proc `[]=`*[T](self: var PackedArray[T]; index: Natural; value: sink T) =
+  checkBounds self, index
   self.data_unsafe[index] = value
 
 # Array
@@ -410,26 +436,32 @@ func `&`*[T](x, y: PackedArray[T]) = x + y
 
 # []
 proc `[]`*(arr: Array; index: BackwardsIndex): Variant =
+  checkBoundsIsNil arr
   arr[arr.size - int(index)]
 proc `[]`*[T](arr: TypedArray[T]; index: BackwardsIndex): T =
+  checkBoundsIsNil arr
   arr[arr.size - int(index)]
 proc `[]`*[T](arr: PackedArray[T]; index: BackwardsIndex): T =
   arr[arr.size - int(index)]
 
 # var []
 proc `[]`*(arr: var Array; index: BackwardsIndex): var Variant =
+  checkBoundsIsNil arr
   arr[arr.size - int(index)]
 proc `[]`*[T: not Object and not RefCounted](arr: var TypedArray[T]; index: BackwardsIndex): var T =
+  checkBoundsIsNil arr
   arr.Array[arr.size - int(index)].getAddr(T)[]
 proc `[]`*[T](arr: var PackedArray[T]; index: BackwardsIndex): var T =
   arr[arr.size - int(index)]
 
 # [] slice
 proc `[]`*[U, V: Ordinal](arr: Array, x: HSlice[U, V]): Array =
+  checkBoundsIsNil arr
   when U is BackwardsIndex or V is BackwardsIndex:
     let size = arr.size
   arr.slice((size ^^* x.a), succ(size ^^* x.b))
 proc `[]`*[T; U, V: Ordinal](arr: TypedArray[T], x: HSlice[U, V]): TypedArray[T] =
+  checkBoundsIsNil arr
   when U is BackwardsIndex or V is BackwardsIndex:
     let size = arr.size
   arr.slice((size ^^* x.a), succ(size ^^* x.b))
@@ -440,8 +472,10 @@ proc `[]`*[T; U, V: Ordinal](arr: PackedArray[T], x: HSlice[U, V]): PackedArray[
 
 # []=
 proc `[]=`*(arr: var Array; index: BackwardsIndex; value: Variant) =
+  checkBoundsIsNil arr
   arr[arr.size - int(index)] = value
 proc `[]=`*[T](arr: var TypedArray[T]; index: BackwardsIndex; value: T) =
+  checkBoundsIsNil arr
   arr[arr.size - int(index)] = value
 proc `[]=`*[T](arr: var PackedArray[T]; index: BackwardsIndex; value: T) =
   arr[arr.size - int(index)] = value

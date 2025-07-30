@@ -224,6 +224,11 @@ runtime: suite "Array":
     pb[1 .. ^2] = newArray [byte 24, 25, 26]
     check pb == newArray [byte 1, 24, 25, 26, 8]
 
+  test "subscript(out of bounds)":
+    var arr = newArray(10)
+    expect IndexDefect:
+      discard arr[10]
+
 runtime: suite "TypedArray":
   test "nil access":
     var arr: TypedArray[String]
@@ -314,6 +319,11 @@ runtime: suite "TypedArray":
     pb[1 .. ^2] = newTypedArray [byte 24, 25, 26]
     check pb == newTypedArray [byte 1, 24, 25, 26, 8]
 
+  test "subscript(out of bounds)":
+    var arr = newTypedArray[String](10)
+    expect IndexDefect:
+      discard arr[10]
+
 runtime: suite "newPackedArray":
   var strs: PackedStringArray = newPackedStringArray()
 
@@ -383,6 +393,11 @@ runtime: suite "newPackedArray":
     var pb = newPackedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
     pb[1 .. ^2] = newPackedArray [byte 24, 25, 26]
     check pb == newPackedArray [byte 1, 24, 25, 26, 8]
+
+  test "subscript(out of bounds)":
+    var arr = newPackedStringArray(10)
+    expect IndexDefect:
+      discard arr[10]
 
 runtime: suite "Dictionary":
   test "nil access":
