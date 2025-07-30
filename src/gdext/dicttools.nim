@@ -6,6 +6,13 @@ import gdext/builtinindex
 
 import std/[hashes]
 
+template nilCheck*(self: Dictionary) =
+  if unlikely(cast[pointer](self) == nil):
+    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
+template nilCheck*(self: var Dictionary) =
+  if unlikely(cast[pointer](self) == nil):
+    self = newDictionary()
+
 proc `[]`*(self: Dictionary; key: Variant): Variant =
   cast[ptr Variant](interface_Dictionary_operatorIndexConst(addr self, addr key))[]
 proc `[]`*(self: var Dictionary; key: Variant): var Variant =

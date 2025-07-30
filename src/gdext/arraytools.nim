@@ -25,6 +25,20 @@ import gdext/varianttools
 
 import std/[sequtils, importutils, hashes]
 
+template nilCheck*(self: Array) =
+  if unlikely(cast[pointer](self) == nil):
+    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
+template nilCheck*(self: var Array) =
+  if unlikely(cast[pointer](self) == nil):
+    self = newArray()
+
+template nilCheck*[T](self: TypedArray[T]) =
+  if unlikely(cast[pointer](self) == nil):
+    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
+template nilCheck*[T](self: var TypedArray[T]) =
+  if unlikely(cast[pointer](self) == nil):
+    self = newTypedArray[T]()
+
 proc setTyped(self: var Array; typ: VariantType; className: StringName; script: Variant) =
   interfaceArraySetTyped(addr self, typ, addr className, addr script)
 
@@ -115,9 +129,6 @@ template toOpenArray*(arr: Array): openArray[Variant] =
 # TypedArray
 # ==========
 
-proc newTypedArray*[T](arr: TypedArray[T]): TypedArray[T] =
-  TypedArray[T] newArray(arr.Array)
-
 proc newTypedArray*[T](arr: Array): TypedArray[T] =
   when T is Object:
     TypedArray[T] newArray(arr, Int VariantType_Object, T.className, variant())
@@ -125,6 +136,9 @@ proc newTypedArray*[T](arr: Array): TypedArray[T] =
     TypedArray[T] newArray(arr, Int VariantType_Object, T.RefCounted.className, variant())
   else:
     TypedArray[T] newArray(arr, Int T.variantType, newStringName(), variant())
+
+proc newTypedArray*[T](arr: TypedArray[T]): TypedArray[T] =
+  TypedArray[T] newArray(arr.Array)
 
 proc newTypedArray*[T](): TypedArray[T] =
   result = TypedArray[T] newArray()
@@ -168,62 +182,132 @@ iterator mpairs*[T](arr: var TypedArray[T]): (int, var T) =
 
 # func `+`*[T](left, right: TypedArray[T]): TypedArray[T] =
 #   TypedArray[T](left + right)
+proc get*[T](self: var TypedArray[T]; index: Int): T =
+  nilCheck self
+  self.Array.get(index).get(T)
 proc get*[T](self: TypedArray[T]; index: Int): T =
+  nilCheck self
   self.Array.get(index).get(T)
 proc set*[T](self: var TypedArray[T]; index: Int; value: T): void =
+  nilCheck self
   self.Array.set(index, variant value)
 proc pushBack*[T](self: var TypedArray[T]; value: T): void =
+  nilCheck self
   self.Array.pushBack(variant value)
 proc pushFront*[T](self: var TypedArray[T]; value: T): void =
+  nilCheck self
   self.Array.pushFront(variant value)
 proc append*[T](self: var TypedArray[T]; value: T): void =
+  nilCheck self
   self.Array.append(variant value)
 proc insert*[T](self: var TypedArray[T]; position: Int; value: T): Int =
+  nilCheck self
   self.Array.insert(position, variant value)
 proc fill*[T](self: var TypedArray[T]; value: T): void =
+  nilCheck self
   self.Array.fill(variant value)
 proc erase*[T](self: var TypedArray[T]; value: T): void =
+  nilCheck self
   self.Array.erase(variant value)
-proc front*[T](self: TypedArray[T]): T =
+proc front*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.front().get(T)
-proc back*[T](self: TypedArray[T]): T =
+proc front*[T](self: TypedArray[T]): T =
+  nilCheck self
+  self.Array.front().get(T)
+proc back*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.back().get(T)
-proc pickRandom*[T](self: TypedArray[T]): T =
+proc back*[T](self: TypedArray[T]): T =
+  nilCheck self
+  self.Array.back().get(T)
+proc pickRandom*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.pickRandom().get(T)
+proc pickRandom*[T](self: TypedArray[T]): T =
+  nilCheck self
+  self.Array.pickRandom().get(T)
+proc find*[T](self: var TypedArray[T]; what: T; `from`: Int = 0): Int =
+  nilCheck self
+  self.Array.find(variant what, `from`)
 proc find*[T](self: TypedArray[T]; what: T; `from`: Int = 0): Int =
+  nilCheck self
   self.Array.find(variant what, `from`)
 # proc findCustom*[T](self: TypedArray[T]; `method`: Callable; `from`: Int = 0): Int =
+proc rfind*[T](self: var TypedArray[T]; what: T; `from`: Int = -1): Int =
+  nilCheck self
+  self.Array.rFind(variant what, `from`)
 proc rfind*[T](self: TypedArray[T]; what: T; `from`: Int = -1): Int =
+  nilCheck self
   self.Array.rFind(variant what, `from`)
 # proc rfindCustom*[T](self: TypedArray[T]; `method`: Callable; `from`: Int = -1): Int =
-proc count*[T](self: TypedArray[T]; value: T): Int =
+proc count*[T](self: var TypedArray[T]; value: T): Int =
+  nilCheck self
   self.Array.count(variant value)
+proc count*[T](self: TypedArray[T]; value: T): Int =
+  nilCheck self
+  self.Array.count(variant value)
+proc has*[T](self: var TypedArray[T]; value: T): bool =
+  nilCheck self
+  self.Array.has(variant value)
 proc has*[T](self: TypedArray[T]; value: T): bool =
+  nilCheck self
   self.Array.has(variant value)
 proc popBack*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.popBack().get(T)
 proc popFront*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.popFront().get(T)
 proc popAt*[T](self: var TypedArray[T]; position: Int): T =
+  nilCheck self
   self.Array.popAt(position).get(T)
 # proc sortCustom*[T](self: var TypedArray[T]; `func`: Callable): void =
-proc bsearch*[T](self: TypedArray[T]; value: T; before: bool = true): Int =
+proc bsearch*[T](self: var TypedArray[T]; value: T; before: bool = true): Int =
+  nilCheck self
   self.Array.bsearch(variant value, before)
-proc bsearchCustom*[T](self: TypedArray[T]; value: T; `func`: Callable; before: bool = true): Int =
+proc bsearch*[T](self: TypedArray[T]; value: T; before: bool = true): Int =
+  nilCheck self
+  self.Array.bsearch(variant value, before)
+proc bsearchCustom*[T](self: var TypedArray[T]; value: T; `func`: Callable; before: bool = true): Int =
+  nilCheck self
   self.Array.bsearchCustom(variant value, `func`, before)
-proc duplicate*[T](self: TypedArray[T]; deep: bool = false): TypedArray[T] =
+proc bsearchCustom*[T](self: TypedArray[T]; value: T; `func`: Callable; before: bool = true): Int =
+  nilCheck self
+  self.Array.bsearchCustom(variant value, `func`, before)
+proc duplicate*[T](self: var TypedArray[T]; deep: bool = false): TypedArray[T] =
+  nilCheck self
   TypedArray[T](self.Array.duplicate())
-proc slice*[T](self: TypedArray[T]; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): TypedArray[T] =
+proc duplicate*[T](self: TypedArray[T]; deep: bool = false): TypedArray[T] =
+  nilCheck self
+  TypedArray[T](self.Array.duplicate())
+proc slice*[T](self: var TypedArray[T]; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): TypedArray[T] =
+  nilCheck self
   TypedArray[T](self.Array.slice(begin, `end`, step, deep))
+proc slice*[T](self: TypedArray[T]; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): TypedArray[T] =
+  nilCheck self
+  TypedArray[T](self.Array.slice(begin, `end`, step, deep))
+proc filter*[T](self: var TypedArray[T]; `method`: Callable): TypedArray[T] =
+  nilCheck self
+  TypedArray[T](self.Array.filter(`method`))
 proc filter*[T](self: TypedArray[T]; `method`: Callable): TypedArray[T] =
+  nilCheck self
   TypedArray[T](self.Array.filter(`method`))
 # proc map*[T](self: TypedArray[T]; `method`: Callable): Array =
 # proc reduce*[T](self: TypedArray[T]; `method`: Callable; accum: T = default(Variant)): Variant =
 # proc any*[T](self: TypedArray[T]; `method`: Callable): bool =
 # proc all*[T](self: TypedArray[T]; `method`: Callable): bool =
-proc max*[T](self: TypedArray[T]): T =
+proc max*[T](self: var TypedArray[T]): T =
+  nilCheck self
   self.Array.max().get(T)
+proc max*[T](self: TypedArray[T]): T =
+  nilCheck self
+  self.Array.max().get(T)
+proc min*[T](self: var TypedArray[T]): T =
+  nilCheck self
+  self.Array.min().get(T)
 proc min*[T](self: TypedArray[T]): T =
+  nilCheck self
   self.Array.min().get(T)
 
 # PackedArray
@@ -365,9 +449,15 @@ proc `[]=`*[T](arr: var PackedArray[T]; index: BackwardsIndex; value: T) =
 # contains
 proc contains*(arr: Array; value: Variant): bool =
   arr.has(value)
+proc contains*(arr: var Array; value: Variant): bool =
+  arr.has(value)
 proc contains*[T: SomeProperty](arr: Array; value: T): bool =
   arr.has(variant value)
+proc contains*[T: SomeProperty](arr: var Array; value: T): bool =
+  arr.has(variant value)
 proc contains*[T](arr: TypedArray[T]; value: T): bool =
+  arr.has(value)
+proc contains*[T](arr: var TypedArray[T]; value: T): bool =
   arr.has(value)
 proc contains*[T](arr: PackedArray[T]; item: T): bool =
   arr.toOpenArray.contains item
@@ -382,12 +472,16 @@ proc setLen*(arr: var PackedArray; newlen: int) =
 
 # len
 proc len*(arr: Array): int = int arr.size
-template len(arr: TypedArray): int = int arr.Array.len
+proc len*(arr: var Array): int = int arr.size
+proc len*(arr: TypedArray): int = int arr.Array.len
+proc len*(arr: var TypedArray): int = int arr.Array.len
 proc len*(arr: PackedArray): int = int arr.size
 
 # high
 proc high*(arr: Array): int = int arr.size.pred
+proc high*(arr: var Array): int = int arr.size.pred
 proc high*(arr: PackedArray): int = int arr.size.pred
+proc high*(arr: var PackedArray): int = int arr.size.pred
 
 # low
 proc low*(arr: Array): int = 0

@@ -205,7 +205,10 @@ macro processExports(T: typed): untyped =
         gettersym = genSym(nskProc, "get_" & name)
         settersym = genSym(nskProc, "set_" & name)
         getterdef = quote do:
-          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` = self.`fieldIdent`
+          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` =
+            when compiles(nilCheck self.`fieldIdent`):
+              nilCheck self.`fieldIdent`
+            self.`fieldIdent`
         setterdef = quote do:
           proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
         gettername  = newlit "get_" & name
