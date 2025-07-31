@@ -22,6 +22,9 @@ const cmddefPlatform  {.define: "platform".} = ""
 const cmddefTarget {.define: "target".} = ""
 const cmddefArchitecture {.define: "arch".} = ""
 
+const cmddefAndroidNdkVersion {.define: "android_ndk_version".} = "23.2.8568313"
+const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
+
 proc switchHint(key, value: string) =
   echo "--", key, ":", value
   switch(key, value)
@@ -169,6 +172,8 @@ type BuildSettings* = ref object
   updateMethod*: UpdateMethod = create
   genEditorHelp*: bool = true ## Specifies whether to generate in-editor class references.
   extconfig: Config
+  androidNdkVersion*: string = cmddefAndroidNdkVersion
+  androidApiLevel*: string = cmddefAndroidApiLevel
 
 
 proc toOS(sys: Platform): string =
@@ -184,9 +189,9 @@ proc defaultExtensionPath(name: string): string =
   &"{projectDir()}/{name}.gdextension"
 
 proc isCrossPlatformBuild(setting: BuildSettings): bool =
-  (setting.platform != buildOS.toPlatform) and
-  (setting.arch != default) and
-  (setting.arch != buildCPU.toArchitecture)
+  (setting.platform != buildOS.toPlatform) or
+  ( (setting.arch != default) and
+    (setting.arch != buildCPU.toArchitecture))
 
 proc toDll(str: string; platform: Platform): string =
   let prefix = case platform
@@ -320,6 +325,43 @@ https://emscripten.org/docs/getting_started/downloads.html
     --passC: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm'"
     --passL: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm' -s WASM_BIGINT"
 
+  of android:
+    let NDK_ROOT =
+      if getEnv("ANDROID_NDK_ROOT").len != 0:
+        getEnv("ANDROID_NDK_ROOT")
+      elif getEnv("ANDROID_HOME").len != 0:
+        getEnv("ANDROID_HOME")/"ndk"/setting.androidNdkVersion
+      elif getEnv("ANDROID_SDK_ROOT").len != 0:
+        getEnv("ANDROID_SDK_ROOT")/"ndk"/setting.androidNdkVersion
+      else:
+        quit """
+Unable to locate the Android NDK (default version: 23.2.8568313).
+Please set the environment variable ANDROID_NDK_ROOT to the root directory of your NDK installation (e.g. /nix/store/.../ndk-bundle).
+Alternatively, set ANDROID_HOME or ANDROID_SDK_ROOT to the root of your Android SDK (e.g. ~/Android/Sdk), so the required NDK can be resolved from ANDROID_HOME/ndk/23.2.8568313. """
+
+    when buildOS.startsWith"linux":
+      const OS_SUBDIR = "linux-x86_64"
+    elif buildOS.startsWith"windows":
+      const OS_SUBDIR = "windows-x86_64"
+    elif buildOS.startsWith"macos":
+      const OS_SUBDIR = "darwin-x86_64"
+    let BIN_DIR = NDK_ROOT/"toolchains/llvm/prebuilt"/OS_SUBDIR/"bin"
+
+    let (TARGET, ARCH) =
+      case setting.arch
+      of arm64:
+        ("aarch64-linux-android", "armv8-a")
+      of x86_64:
+        ("x86_64-linux-android", "x86-64")
+      else:
+        quit "The architecture `" & $setting.arch & "` is not supported for android target; use -d:arch=arm64 or -d:arch=x86-64."
+    --cpu: arm64
+    --cc: clang
+    switch("clang.exe", BIN_DIR/"clang")
+    switch("clang.linkerexe", BIN_DIR/"clang")
+    switch("passC", &"--target={TARGET & setting.androidApiLevel} -march={ARCH} -fPIC")
+    switch("passL", &"--target={TARGET & setting.androidApiLevel} -march={ARCH}")
+
   else:
     discard
 
@@ -335,7 +377,7 @@ proc fillupMissingRequirements(setting: BuildSettings) =
   configuration.update(setting.updateMethod, "reloadable", "true")
 
   let libraries = setting.extconfig.mgetOrPut("libraries", newSection())
-  for platform in [windows, linux, macos, web]:
+  for platform in [windows, linux, macos, web, android]:
     for target in [debug, release]:
       let key = platformkey(platform, target)
       libraries.update(setting.updateMethod, key, outdir(setting.name, platform, target).resourcepath)
