@@ -184,6 +184,12 @@ runtime: suite "size":
     check sizeof(Variant) == VariantSize
 
 runtime: suite "Array":
+  test "nil access":
+    var arr: Array
+    let imm_arr = arr
+    check arr.len == 0
+    expect NilAccessDefect:
+      discard imm_arr.len
   test "construct":
     var arr = newArray(10)
     check not arr.isTyped
@@ -218,7 +224,18 @@ runtime: suite "Array":
     pb[1 .. ^2] = newArray [byte 24, 25, 26]
     check pb == newArray [byte 1, 24, 25, 26, 8]
 
+  test "subscript(out of bounds)":
+    var arr = newArray(10)
+    expect IndexDefect:
+      discard arr[10]
+
 runtime: suite "TypedArray":
+  test "nil access":
+    var arr: TypedArray[String]
+    let imm_arr = arr
+    check arr.len == 0
+    expect NilAccessDefect:
+      discard imm_arr.len
   test "construct":
     var arr = newTypedArray[String](10)
     check arr.isTyped
@@ -226,6 +243,30 @@ runtime: suite "TypedArray":
     check arr.len == 10
     for i, val in arr:
       check val.length == 0
+
+  test "iter":
+    let res = ["a", "b", "c"]
+    let arr = newTypedArray [newGdString"a", "b", "c"]
+    for i, val in arr:
+      check $val == res[i]
+    block:
+      var i: int
+      for val in arr:
+        check $val == res[i]
+        inc i
+ 
+    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
+    for i, r in res2:
+      r.name = res[i]
+    let arr2 = newTypedArray res2
+    for i, val in arr2:
+      check $val.name == res[i]
+    block:
+      var i: int
+      for val in arr2:
+        check $val.name == res[i]
+        inc i
+
   test "mutable iter":
     var arr = newTypedArray[String](10)
     for i, val in arr.mpairs:
@@ -246,6 +287,17 @@ runtime: suite "TypedArray":
       arr[i] = newGdString $i
     for i in 0..<arr.len:
       check arr[i] == newGdString $i
+
+  test "backward subscript":
+    var obj = instantiate Object
+    var po = newTypedArray [obj]
+    var pi = newTypedArray [1]
+    check po[0] != nil
+    check po[^1] != nil
+    check pi[0] == 1
+    check pi[^1] == 1
+    destroy obj
+
   test "typed functions":
     var arr = newTypedArray[String](2)
     arr.fill "Hello, "
@@ -266,6 +318,11 @@ runtime: suite "TypedArray":
     var pb = newTypedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
     pb[1 .. ^2] = newTypedArray [byte 24, 25, 26]
     check pb == newTypedArray [byte 1, 24, 25, 26, 8]
+
+  test "subscript(out of bounds)":
+    var arr = newTypedArray[String](10)
+    expect IndexDefect:
+      discard arr[10]
 
 runtime: suite "newPackedArray":
   var strs: PackedStringArray = newPackedStringArray()
@@ -336,6 +393,19 @@ runtime: suite "newPackedArray":
     var pb = newPackedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
     pb[1 .. ^2] = newPackedArray [byte 24, 25, 26]
     check pb == newPackedArray [byte 1, 24, 25, 26, 8]
+
+  test "subscript(out of bounds)":
+    var arr = newPackedStringArray(10)
+    expect IndexDefect:
+      discard arr[10]
+
+runtime: suite "Dictionary":
+  test "nil access":
+    var dict: Dictionary
+    let imm_dict = dict
+    check dict.size == 0
+    expect NilAccessDefect:
+      discard imm_dict.size
 
 runtime: suite "String":
   test "to nim-string":

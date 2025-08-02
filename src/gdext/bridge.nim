@@ -330,7 +330,10 @@ macro gdexport*(
   let classType = iden[0]
   let variable = iden[1]
   let getter = quote do:
-    proc(self: `classType`): `iden` = self.`variable`
+    proc(self: `classType`): `iden` =
+      when compiles(nilCheck self.`variable`):
+        nilCheck self.`variable`
+      self.`variable`
   let setter = quote do:
     proc(self: `classType`, value: `iden`) = self.`variable` = value
   quote do:

@@ -22,6 +22,9 @@ const cmddefPlatform  {.define: "platform".} = ""
 const cmddefTarget {.define: "target".} = ""
 const cmddefArchitecture {.define: "arch".} = ""
 
+const cmddefAndroidNdkVersion {.define: "android_ndk_version".} = "23.2.8568313"
+const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
+
 proc switchHint(key, value: string) =
   echo "--", key, ":", value
   switch(key, value)
@@ -75,7 +78,9 @@ type Architecture* = enum
   default ## HostCPU. The architecture what you use
   double ## double-precision build
   single ## single-precision build
+  x86_32 ## 32-bit x86 build
   x86_64 ## 64-bit x86 build
+  arm32 ## 32-bit ARM build
   arm64 ## 64-bit ARM build
   rv64 ## 64-bit RISC-V build
   riscv ## RISC-V build (any bitness)
@@ -86,6 +91,36 @@ type UpdateMethod* = enum
   create ## Discard the original file and create a new one
   overwrite ## Retain the original changes and overwrites the updated ones
   inject ## Retain the original changes and inject the missing ones
+
+const availableArch = {
+  macos: @[Architecture.default],
+  windows: @[x86_32, x86_64, arm64],
+  linux: @[x86_32, x86_64, arm32, arm64, rv64],
+  android: @[x86_64, arm64],
+  ios: @[Architecture.default],
+  web: @[wasm32],
+}.toTable
+
+proc hostCpuAsArch: Architecture =
+  case hostCPU
+  of "i386":         x86_32
+  of "amd64":        x86_64
+  of "arm":          arm32
+  of "arm64":        arm64
+  of "riscv32":      riscv
+  of "riscv64":      rv64
+  of "wasm32":       wasm32
+  else: default
+
+const fallbackArch = {
+  macos: Architecture.default,
+  windows: hostCpuAsArch(),
+  linux: hostCpuAsArch(),
+  android: arm64,
+  ios: Architecture.default,
+  web: wasm32,
+}.toTable
+
 
 proc cmdswitched*(_: typedesc[Platform]): bool =
   cmddefPlatform.len != 0
@@ -133,10 +168,16 @@ proc toArchitecture(str: string): Architecture =
   case str.nimIdentNormalize.toLowerAscii
   of "double": Architecture.double
   of "single": Architecture.single
+  of "xi386": Architecture.x86_32
+  of "amd64": Architecture.x86_64
   of "x8664": Architecture.x86_64 # "x86_64".nimIdentNormalize == "x8664"
+  of "x86-64": Architecture.x86_64
+  of "arm": Architecture.arm64
   of "arm64": Architecture.arm64
-  of "rv64": Architecture.rv64
   of "riscv": Architecture.riscv
+  of "riscv32": Architecture.riscv
+  of "rv64": Architecture.rv64
+  of "riscv64": Architecture.rv64
   of "wasm32": Architecture.wasm32
   else:
     quit "Error: the architecture \"" & str & "\" is invalid or not supported."
@@ -169,6 +210,8 @@ type BuildSettings* = ref object
   updateMethod*: UpdateMethod = create
   genEditorHelp*: bool = true ## Specifies whether to generate in-editor class references.
   extconfig: Config
+  androidNdkVersion*: string = cmddefAndroidNdkVersion
+  androidApiLevel*: string = cmddefAndroidApiLevel
 
 
 proc toOS(sys: Platform): string =
@@ -180,13 +223,26 @@ proc toOS(sys: Platform): string =
   of web:
     "linux"
 
+proc toCPU(arch: Architecture): string =
+  case arch
+  of default: hostCPU
+  of double: hostCPU
+  of single: hostCPU
+  of x86_32: "i386"
+  of x86_64: "amd64"
+  of arm32: "arm"
+  of arm64: "arm64"
+  of rv64: "riscv64"
+  of riscv: "riscv32"
+  of wasm32: "wasm32"
+
 proc defaultExtensionPath(name: string): string =
   &"{projectDir()}/{name}.gdextension"
 
 proc isCrossPlatformBuild(setting: BuildSettings): bool =
-  (setting.platform != buildOS.toPlatform) and
-  (setting.arch != default) and
-  (setting.arch != buildCPU.toArchitecture)
+  (setting.platform != buildOS.toPlatform) or
+  ( (setting.arch != default) and
+    (setting.arch != buildCPU.toArchitecture))
 
 proc toDll(str: string; platform: Platform): string =
   let prefix = case platform
@@ -246,6 +302,8 @@ proc validate(setting: BuildSettings) =
     setting.extconfig = case setting.updateMethod
     of create: newConfig()
     of overwrite, inject: loadConfig(setting.extpath)
+  if setting.arch == default:
+    setting.arch = fallbackArch.getOrDefault(setting.platform)
 
 proc switch(setting: BuildSettings) =
   # GDExtension is loaded into the engine as a DLL.
@@ -281,8 +339,7 @@ proc switch(setting: BuildSettings) =
     defineHint("release")
 
   if setting.isCrossPlatformBuild:
-    if setting.arch notin {default}:
-      switchHint("cpu", $setting.arch)
+    switchHint("cpu", setting.arch.toCPU)
     if setting.platform == web:
       switchHint("os", "linux")
     else:
@@ -307,7 +364,6 @@ Please install it following the guide below and activate the PATH to emcc.
 
 https://emscripten.org/docs/getting_started/downloads.html
 """
-    --cpu: wasm32
     --cc: clang
 
     when buildOS == "windows":
@@ -319,6 +375,43 @@ https://emscripten.org/docs/getting_started/downloads.html
 
     --passC: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm'"
     --passL: "-s SIDE_MODULE=1 -s SUPPORT_LONGJMP='wasm' -s WASM_BIGINT"
+
+  of android:
+    let NDK_ROOT =
+      if getEnv("ANDROID_NDK_ROOT").len != 0:
+        getEnv("ANDROID_NDK_ROOT")
+      elif getEnv("ANDROID_HOME").len != 0:
+        getEnv("ANDROID_HOME")/"ndk"/setting.androidNdkVersion
+      elif getEnv("ANDROID_SDK_ROOT").len != 0:
+        getEnv("ANDROID_SDK_ROOT")/"ndk"/setting.androidNdkVersion
+      else:
+        quit """
+Unable to locate the Android NDK (default version: 23.2.8568313).
+Please set the environment variable ANDROID_NDK_ROOT to the root directory of your NDK installation (e.g. /nix/store/.../ndk-bundle).
+Alternatively, set ANDROID_HOME or ANDROID_SDK_ROOT to the root of your Android SDK (e.g. ~/Android/Sdk), so the required NDK can be resolved from ANDROID_HOME/ndk/23.2.8568313. """
+
+    when buildOS.startsWith"linux":
+      const OS_SUBDIR = "linux-x86_64"
+    elif buildOS.startsWith"windows":
+      const OS_SUBDIR = "windows-x86_64"
+    elif buildOS.startsWith"macos":
+      const OS_SUBDIR = "darwin-x86_64"
+    let BIN_DIR = NDK_ROOT/"toolchains/llvm/prebuilt"/OS_SUBDIR/"bin"
+
+    let (TARGET, ARCH) =
+      case setting.arch
+      of arm64:
+        ("aarch64-linux-android", "armv8-a")
+      of x86_64:
+        ("x86_64-linux-android", "x86-64")
+      else:
+        quit "The architecture `" & $setting.arch & "` is not supported for android target; use -d:arch=arm64 or -d:arch=x86-64."
+    --cpu: arm64
+    --cc: clang
+    switch("clang.exe", BIN_DIR/"clang")
+    switch("clang.linkerexe", BIN_DIR/"clang")
+    switch("passC", &"--target={TARGET & setting.androidApiLevel} -march={ARCH} -fPIC")
+    switch("passL", &"--target={TARGET & setting.androidApiLevel} -march={ARCH}")
 
   else:
     discard
@@ -335,10 +428,11 @@ proc fillupMissingRequirements(setting: BuildSettings) =
   configuration.update(setting.updateMethod, "reloadable", "true")
 
   let libraries = setting.extconfig.mgetOrPut("libraries", newSection())
-  for platform in [windows, linux, macos, web]:
-    for target in [debug, release]:
-      let key = platformkey(platform, target)
-      libraries.update(setting.updateMethod, key, outdir(setting.name, platform, target).resourcepath)
+  for platform in [windows, linux, macos, web, android]:
+    for arch in availableArch[platform]:
+      for target in [debug, release]:
+        let key = platformkey(platform, target, arch)
+        libraries.update(setting.updateMethod, key, outdir(setting.name, platform, target, arch).resourcepath)
 
 template configure*(setting: BuildSettings; body) =
   validate(setting)

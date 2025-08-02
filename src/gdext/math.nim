@@ -740,6 +740,19 @@ when real_elem is float32:
   func `*`(left: float64; right: float32): float32 = float32 system.`*`(left,right)
   func `/`(left: float64; right: float32): float32 = float32 system.`/`(left,right)
 
+when int_elem is int32:
+  func `+`(left: int32; right: int64): int32 = int32 system.`+`(left,right)
+  func `-`(left: int32; right: int64): int32 = int32 system.`-`(left,right)
+  func `*`(left: int32; right: int64): int32 = int32 system.`*`(left,right)
+  func `div`(left: int32; right: int64): int32 = int32 system.`div`(left,right)
+  func `mod`(left: int32; right: int64): int32 = int32 system.`mod`(left,right)
+
+  func `+`(left: int64; right: int32): int32 = int32 system.`+`(left,right)
+  func `-`(left: int64; right: int32): int32 = int32 system.`-`(left,right)
+  func `*`(left: int64; right: int32): int32 = int32 system.`*`(left,right)
+  func `div`(left: int64; right: int32): int32 = int32 system.`div`(left,right)
+  func `mod`(left: int64; right: int32): int32 = int32 system.`mod`(left,right)
+
 # basic
 func `+`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `+`.fmap(left, right)
 func `-`*[N: static int; T,S: SomeNumber](left: Vector[N,T]; right: Vector[N,S]): auto = `-`.fmap(left, right)
@@ -867,6 +880,18 @@ template clampf*[T: SomeFloat](value, min, max: T): T = clamp(value, min, max)
 template clampi*[T: SomeInteger](value, min, max: T): T = clamp(value, min, max)
 template lerpf*(`from`: Float; to: Float; weight: Float): Float = lerp(`from`, to, weight)
 template nearestPo2*(value: Int): Int = Int nextPowerOfTwo(int value)
+
+proc `+=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a + b
+proc `+=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a + b
+
+proc `-=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a - b
+proc `-=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a - b
+
+proc `*=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a * b
+proc `*=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a * b
+
+proc `/=`*[I, T, S](a: var Vector[I, T]; b: Vector[I, S]) {.inline.} = a = a / b
+proc `/=`*[I, T, S](a: var Vector[I, T]; b: S) {.inline.} = a = a / b
 
 when isMainModule:
   let a = [1f, 0]
