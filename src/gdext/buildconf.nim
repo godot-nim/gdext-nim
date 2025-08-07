@@ -13,8 +13,7 @@ import `gdext/private/buildsettings` instead.
 when not declared(switch):
   import system/nimscript
 
-import std/[strformat, strutils, tables]
-import std/private/ospaths2
+import std/[strformat, strutils, tables, os, private/globs]
 from std/parsecfg import Config, newConfig
 import gdext/private/configdsl
 
@@ -24,6 +23,26 @@ const cmddefArchitecture {.define: "arch".} = ""
 
 const cmddefAndroidNdkVersion {.define: "android_ndk_version".} = "23.2.8568313"
 const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
+
+proc toBuildOS(path: string): string =
+  when buildOS == "windows":
+    result = path.unixToNativePath()
+  when buildOS == "linux":
+    result = path.nativeToUnixPath()
+
+proc `/`(a, b: string): string =
+  os.`/`(a, b).toBuildOS
+
+proc relativePath(a, b: string): string =
+  result = os.relativePath(a, b).toBuildOS
+
+proc absolutePath(a: string): string =
+  result = os.absolutePath(a).toBuildOS
+
+iterator parentDirs(a: string): string =
+  for parent in os.parentDirs(a):
+    yield parent.toBuildOS
+
 
 proc switchHint(key, value: string) =
   echo "--", key, ":", value
