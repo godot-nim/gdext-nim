@@ -375,6 +375,27 @@ proc switch(setting: BuildSettings) =
     # --passL: "-static"
     --passL: "-static-libgcc"
 
+    if buildOS != "windows":
+      let gccexe = case setting.arch
+      of x86_64:
+        "x86_64-w64-mingw32-cc"
+      of x86_32:
+        "i686-w64-mingw32-cc"
+      else:
+        "x86_64-w64-mingw32-cc"
+      if findExe(gccexe).len == 0:
+        quit """
+Error: mingw is not installed.
+mingw is required for compiling for Windows."""
+      if not defined(mingw):
+        quit """
+Error: `-d:mingw` is not defined.
+E.g. nim c -d:platform=windows -d:mingw bootstrap.nim
+     gdextwiz build -d:platform=windows -d:mingw"""
+
+      switch("gcc.exe", gccexe)
+      switch("gcc.linkerexe", gccexe)
+
   of web:
     if findExe("emcc").len == 0 and findExe("emcc.bat").len == 0:
       quit """
