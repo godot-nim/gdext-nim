@@ -8,13 +8,17 @@ var signal_arg1_executed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	test_func()
+
+	test_func($FunctionTester)
+	test_func(FunctionTester.new())
 	test_virtual_func()
 	test_grobal_func()
-	test_enum()
+	test_enum($EnumTester)
+	test_enum(EnumTester.new())
+
 	exit_with_status()
 
-func test_func():
+func test_func(node: FunctionTester):
 	node.arg0_noret()
 	assert_equal(node.arg0_noret_result, "arg0_noret()")
 
@@ -29,7 +33,7 @@ func test_func():
 	assert_equal(node.default_value_complex("a", "b", "c", "d"), "default_value_complex(a b c d)")
 
 	assert_equal(node.varargs_simple(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
-	assert_equal(GDExtNode.varargs_static(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
+	assert_equal(FunctionTester.varargs_static(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
 	assert_equal(node.varargs_concrete(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
 
 	assert_equal(node.most_complex("a", "b", "c", "d", "e", "f", "g"), "a b c d e f g")
@@ -49,28 +53,30 @@ func test_grobal_func():
 	RuntimeTest.arg1_noret(RuntimeTest.arg1_ret(RuntimeTest.arg0_ret()))
 	RuntimeTest.signal_arg0.emit()
 	RuntimeTest.signal_arg1.emit("signal")
+	RuntimeTest.emit_signal_arg0()
+	RuntimeTest.emit_signal_arg1("signal")
 
 	RuntimeTest.exec_checks_use_api_from_toplevel()
 	assert_true(signal_arg0_executed and signal_arg1_executed)
 
-func test_enum():
-	assert_equal(node.echoTestEnumA(GDExtNode.EnumA1), GDExtNode.EnumA1)
-	assert_equal(node.echoTestEnumB(GDExtNode.EnumB1), GDExtNode.EnumB1)
-	assert_equal(node.test_enum_a, GDExtNode.EnumA2)
-	assert_equal(node.test_enum_b, GDExtNode.EnumB2)
-	node.test_enum_a = GDExtNode.EnumA3
-	node.test_enum_b = GDExtNode.EnumB3
-	assert_equal(node.test_enum_a, GDExtNode.EnumA3)
-	assert_equal(node.test_enum_b, GDExtNode.EnumB3)
+func test_enum(node: EnumTester):
+	assert_equal(node.echoTestEnumA(EnumTester.EnumA1), EnumTester.EnumA1)
+	assert_equal(node.echoTestEnumB(EnumTester.EnumB1), EnumTester.EnumB1)
+	assert_equal(node.test_enum_a, EnumTester.EnumA2)
+	assert_equal(node.test_enum_b, EnumTester.EnumB2)
+	node.test_enum_a = EnumTester.EnumA3
+	node.test_enum_b = EnumTester.EnumB3
+	assert_equal(node.test_enum_a, EnumTester.EnumA3)
+	assert_equal(node.test_enum_b, EnumTester.EnumB3)
 	assert_equal(node.echoVector2Axis(Vector2.AXIS_X), Vector2.AXIS_X)
 
-	assert_equal(node.echoTestFlags(GDExtNode.Flag1), GDExtNode.Flag1)
-	assert_equal(node.echoTestFlags(GDExtNode.Flag2 | GDExtNode.Flag4), GDExtNode.Flag2 | GDExtNode.Flag4)
-	assert_equal(node.test_flags, GDExtNode.Flag2)
-	node.test_flags = GDExtNode.Flag3
-	assert_equal(node.test_flags, GDExtNode.Flag3)
-	node.test_flags = GDExtNode.Flag1 | GDExtNode.Flag4
-	assert_equal(node.test_flags, GDExtNode.Flag1 | GDExtNode.Flag4)
+	assert_equal(node.echoTestFlags(EnumTester.Flag1), EnumTester.Flag1)
+	assert_equal(node.echoTestFlags(EnumTester.Flag2 | EnumTester.Flag4), EnumTester.Flag2 | EnumTester.Flag4)
+	assert_equal(node.test_flags, EnumTester.Flag2)
+	node.test_flags = EnumTester.Flag3
+	assert_equal(node.test_flags, EnumTester.Flag3)
+	node.test_flags = EnumTester.Flag1 | EnumTester.Flag4
+	assert_equal(node.test_flags, EnumTester.Flag1 | EnumTester.Flag4)
 
 func _on_nim_signal_arg0():
 	signal_arg0_executed = true
