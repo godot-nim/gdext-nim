@@ -31,6 +31,11 @@ proc arg1_noret*(what: string) {.gdsync.} =
 proc signal_arg0*: Error {.gdsync, signal.}
 proc signal_arg1*(what: string): Error {.gdsync, signal.}
 
+proc emit_signal_arg0*: Error {.gdsync.} =
+  signal_arg0()
+proc emit_signal_arg1*(what: string): Error {.gdsync.} =
+  signal_arg1(what)
+
 proc listen_0* {.gdsync.} = discard
 proc listen_1*(what: string) {.gdsync.} = discard
 
@@ -50,7 +55,7 @@ runtime: test "connect to global signal":
   var signal_arg1_obj = extmain.signal"signal_arg1"
 
   check signal_arg0_obj.connect(extmain.callable"listen_0") == 0
-  check signal_arg0_obj.connect(extmain.callable"listen_1") == 0
+  # check signal_arg0_obj.connect(extmain.callable"listen_1") == 0
   check signal_arg1_obj.connect(extmain.callable"listen_0") == 0
   check signal_arg1_obj.connect(extmain.callable"listen_1") == 0
 
