@@ -25,15 +25,11 @@ proc makebody (params, gdname, self: NimNode): NimNode =
     if i == 0: continue
     variantArrDef.add bindSym"variant".newCall(name)
 
-  if variantArrDef.len == 0:
-    variantArrDef.add newObjConstr(bindSym"Variant")
-
   quote do:
     var signalName {.global.}: Variant
     once:
       signalName = variant newStringName `gdname`
-    let variantArr = `variantArrDef`
-    `self`.emitSignal(signalName, variantArr)
+    `self`.emitSignal(signalName, `variantArrDef`)
 
 macro parseParams (params): seq[PropertyInfo] =
   var arguments = newNimNode nnkBracket

@@ -16,6 +16,8 @@ import classes/gdvirtualnode02
 import classes/gdtestobject
 import classes/gdextlabel
 import classes/gdsingleton
+import classes/gdfunctiontester
+import classes/gdenumtester
 
 # ==================================
 
