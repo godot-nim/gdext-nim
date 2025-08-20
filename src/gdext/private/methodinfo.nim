@@ -84,7 +84,7 @@ proc retrieve[T](x: ptr UncheckedArray[ConstVariantPtr]; len: int; at: int; defa
   if len > at: retrieve[T](x[at])
   else:        default
 
-template encode[T: void](_: T; p: TypePtr) = (discard)
+template encode[T: void](t: T; p: TypePtr): untyped = t
 
 let
   callFunc_template {.compileTime.} = quote do:
