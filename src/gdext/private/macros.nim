@@ -83,7 +83,14 @@ func typeSym*(node: NimNode): NimNode =
   of nnkOfInherit:
     node[0]
   of nnkSym:
-    node
+    case node.symKind
+    of nskType:
+      node
+    of nskParam:
+      node.getTypeImpl[1].typeSym
+    else:
+      error lisprepr node, node
+      nil
   of nnkPostfix:
     if node[0].eqIdent "*":
       node[1]
