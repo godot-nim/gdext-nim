@@ -23,7 +23,7 @@
 ## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
 ## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
 ## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
-
+## * `nameformats <gdext/nameformats.html>`_: Provides formatter functions for transforming Nim identifiers when exporting them to Godot.
 
 {.warning[UnusedImport]: off.}
 
