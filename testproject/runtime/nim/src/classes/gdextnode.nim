@@ -126,9 +126,9 @@ proc lesten_call_group(self: GDExtNode, str: string) {.gdsync.} =
 proc test_FirstClassFunction(self: GDExtNode) =
   suite "First-class function":
     test "connect to signal":
-      check self.connect("signal_arg0", self.callable"listen_0") == ok
-      check self.connect("signal_arg1", self.callable"listen_0") == ok
-      check self.connect("signal_arg1", self.callable"listen_1") == ok
+      check self.connect("signal_arg_0", self.callable"listen_0") == ok
+      check self.connect("signal_arg_1", self.callable"listen_0") == ok
+      check self.connect("signal_arg_1", self.callable"listen_1") == ok
 
     test "execute call_group":
       self.getTree.callGroup("tester", "lesten_call_group", variant "Hello, world!")
@@ -142,10 +142,10 @@ proc test_FirstClassFunction(self: GDExtNode) =
       check listen_result[1] == "SIGNAL"
       reset listen_result
     test "send Signal with emit":
-      self.signal"signal_arg0"()
+      self.signal"signal_arg_0"()
       check listen_result[0]
       reset listen_result
-      self.signal"signal_arg1"("SIGNAL")
+      self.signal"signal_arg_1"("SIGNAL")
       check listen_result[0]
       check listen_result[1] == "SIGNAL"
       reset listen_result
