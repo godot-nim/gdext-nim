@@ -12,6 +12,7 @@ import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
 import gdext/stringtools
+import gdext/nameformats
 
 when Assistance.genEditorHelp:
   import gdext/private/doctools
@@ -211,8 +212,8 @@ macro processExports(T: typed): untyped =
             self.`fieldIdent`
         setterdef = quote do:
           proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
-        gettername  = newlit "get_" & name
-        settername  = newlit "set_" & name
+        gettername  = newlit nameformats.defaultFunctionFormatter("get_" & name)
+        settername  = newlit nameformats.defaultFunctionFormatter("set_" & name)
 
       result.add quote do:
         `getterdef`
