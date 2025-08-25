@@ -128,6 +128,19 @@ macro gdname*(T: typedesc[SomeClass]): string =
   if result.isNil:
     result = newLit nameformats.defaultClassFormatter($T.typeSym)
 
+proc gdname*(someProc: NimNode): NimNode =
+  someProc.expectKind RoutineNodes
+  result = someProc.getPragmaVal("name")
+  if result.isNil:
+    result = someProc.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall(result.name.toStrLit)
+  if result.isNil:
+    result = newLit nameformats.defaultFunctionFormatter($someProc.name)
+
+macro gdname*(P: proc): string =
+  P.getImpl.gdname()
+
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   var instance {.global.} : GodotClassMeta
   once:
