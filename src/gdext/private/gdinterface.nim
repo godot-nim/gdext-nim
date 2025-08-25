@@ -134,7 +134,7 @@ proc gdname*(someProc: NimNode): NimNode =
   if result.isNil:
     result = someProc.getPragmaVal("rename")
     if not result.isNil:
-      result = result.newCall(result.name.toStrLit)
+      result = result.newCall(someProc.name.toStrLit)
   if result.isNil:
     result = newLit nameformats.defaultFunctionFormatter($someProc.name)
 
