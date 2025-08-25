@@ -10,6 +10,7 @@ import gdext/private/userclass/virtuals
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/appearances
+import gdext/nameformats
 
 template name*(newname: static string) {.pragma.}
   ## Specifies a **fixed name** for a function when exporting it to Godot.
@@ -251,7 +252,14 @@ template `bind`*[E: enum](Flags: typedesc[set[E]]) =
   ## Same as `ExtensionMain.bind Flags`. ExtensionMain is a special sigleton class that names by config.nims
   registerEnumInternal(Extensionmain, E, true)
 
-macro gdname(P: proc): string = P.getPragmaVal("name") or newLit $P
+macro gdname(P: proc): string =
+  result = P.getPragmaVal("name")
+  if result.isNil:
+    result = P.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall(newLit $P)
+  if result.isNil:
+    result = newLit nameformats.defaultFunctionFormatter($P)
 
 template gdexport*() {.pragma.} ## Exposes a member variable to the engine as a property.
 ## ```nim
