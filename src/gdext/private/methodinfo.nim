@@ -5,8 +5,6 @@ import gdext/private/gdinterface
 import gdext/private/typeshift
 import gdext/private/propertyinfo
 import gdext/builtinindex
-import gdext/nameformats
-
 
 type
   Arg* = tuple
@@ -25,13 +23,7 @@ proc parseMiddle*(procdef: NimNode): MiddleExp =
   result.name = procdef[0]
   if result.name.kind == nnkPostfix: result.name = result.name[1]
 
-  result.gdname = procdef.getPragmaVal("name")
-  if result.gdname.isNil:
-    result.gdname = procdef.getPragmaVal("rename")
-    if not result.gdname.isNil:
-      result.gdname = result.gdname.newCall(result.name.toStrLit)
-  if result.gdname.isNil:
-    result.gdname = newLit nameformats.defaultFunctionFormatter($result.name)
+  result.gdname = procdef.gdname
 
   result.self_T = procdef.params[1][1]
   if procdef.hasReturn:
