@@ -11,11 +11,42 @@ import gdext/builtinindex
 import gdext/stringtools
 import gdext/appearances
 
-template name*(newname: static string) {.pragma.} ## Attaching it to a function along with gdsync allows to alias to the registered function.
-## ```nim
-## proc myCallback(self: MyClass; value: Int) {.gdsync, name:　"_my_callback".} =
-##   print "hi! the value is: ", value, "!"
-## ```
+template name*(newname: static string) {.pragma.}
+  ## Specifies a **fixed name** for a function when exporting it to Godot.
+  ## When this pragma is used, the specified string will be used as the name on the Godot side instead of the original Nim name.
+  ## If used together with `{.rename.}`, `{.name.}` takes precedence and a warning will be issued.
+  ## 
+  ## **See also:**
+  ## * `rename template<#rename.t,staticproc(string)>`_
+  ## 
+  ## **Example:**
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, name:　"_my_callback".} =
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
+
+
+template rename*(f: proc(str: string): string) {.pragma.}
+  ## Used when you want to **dynamically transform** the name of a function or property when exporting it to Godot.
+  ## By providing a formatter function, you can convert camelCase to snake_case, prefix an underscore for internal use, or apply other transformations.
+  ## If no formatter is specified, **the formatter set in the compile-time variable** `nameformats.defaultFunctionFormatter` will be used.
+  ## By default, `defaultFunctionFormatter` is set to `nameformats.asIs`, but you can change it to switch the default formatter for the entire project.
+  ## 
+  ## **See also:**
+  ## * `name template<#name.t,staticstring>`_
+  ## * `nameformats module<nameformats.html>`_
+  ## 
+  ## **Example:**
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, rename:　nameformats.toGodotInternalFuncCase.} =
+  ## # => "_my_callback"
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, rename:　proc(s: string): string = "_" & s.} =
+  ## # => "_myCallback"
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
 
 template signal* {.pragma.} ## With gdsync, register a function as a signal. Thereafter, calling the function will emit the associated signal.
 ## ```nim
