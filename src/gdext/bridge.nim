@@ -205,9 +205,9 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
     let fieldName = newlit $fieldsym
     call.add case isBitField
     of true:
-      quote do: (newStringName `fieldName`, Int 1 shl int `fieldsym`)
+      quote do: (newStringName defaultConstFormatter(`fieldName`), Int 1 shl int `fieldsym`)
     of false:
-      quote do: (newStringName `fieldName`, Int `fieldsym`)
+      quote do: (newStringName defaultConstFormatter(`fieldName`), Int `fieldsym`)
 
   call.add newlit isBitField
   result = quote do:
