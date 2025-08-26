@@ -128,19 +128,22 @@ macro gdname*(T: typedesc[SomeClass]): string =
   if result.isNil:
     result = bindSym"defaultClassFormatter".newCall newLit($T.typeSym)
 
-proc gdname*(someProc: NimNode): NimNode =
-  someProc.expectKind RoutineNodes
-  result = someProc.getPragmaVal("name")
+proc gdname*(node: NimNode): NimNode =
+  result = node.getPragmaVal("name")
   if result.isNil:
-    result = someProc.getPragmaVal("rename")
+    result = node.getPragmaVal("rename")
     if not result.isNil:
-      result = result.newCall newLit($someProc.name)
+      result = result.newCall newLit($node.identifier)
   if result.isNil:
-    case someProc.kind
+    case node.kind
     of nnkMethodDef:
-      result = bindsym"defaultVirtualMethodFormatter".newCall newLit($someProc.name)
+      result = bindsym"defaultVirtualMethodFormatter".newCall newLit($node.identifier)
+    of (RoutineNodes - {nnkMethodDef}):
+      result = bindSym"defaultFunctionFormatter".newCall newLit($node.identifier)
+    of nnkIdentDefs:
+      result = bindSym"defaultPropertyFormatter".newCall newLit($node.identifier)
     else:
-      result = bindSym"defaultFunctionFormatter".newCall newLit($someProc.name)
+      discard
 
 macro gdname*(P: proc): string =
   P.getImpl.gdname()
