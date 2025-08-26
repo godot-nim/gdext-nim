@@ -244,7 +244,7 @@ proc multiReplace*(replacements: varargs[tuple[sub, by: string]]): Formatter =
 # ========
 
 var
-  defaultClassFormatter* {.compileTime.}: Formatter = asIs
+  defaultClassFormatter*: Formatter
     ## The default formatter intended for exported classes
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
@@ -253,11 +253,11 @@ var
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
-    ## static:
+    ## proc set_formatters {.execon: EntryPoint.} =
     ##   nameformats.defaultClassFormatter = nameformats.toGodotClassCase
     ## ```
 
-  defaultFunctionFormatter* {.compileTime.}: Formatter = asIs
+  defaultFunctionFormatter*: Formatter
     ## The default formatter applied to exported functions
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
@@ -266,11 +266,11 @@ var
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
-    ## static:
+    ## proc set_formatters {.execon: EntryPoint.} =
     ##   nameformats.defaultFunctionFormatter = nameformats.toGodotFuncCase
     ## ```
 
-  defaultVirtualMethodFormatter* {.compileTime.}: Formatter = withLeadingUnderscore
+  defaultVirtualMethodFormatter*: Formatter
     ## The default formatter intended for exported virtual methods
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
@@ -279,11 +279,11 @@ var
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
-    ## static:
+    ## proc set_formatters {.execon: EntryPoint.} =
     ##   nameformats.defaultVirtualMethodFormatter = nameformats.toGodotInternalFuncCase
     ## ```
 
-  defaultConstFormatter* {.compileTime.}: Formatter = asIs
+  defaultConstFormatter*: Formatter
     ## The default formatter intended for exported constants
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
@@ -292,11 +292,11 @@ var
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
-    ## static:
+    ## proc set_formatters {.execon: EntryPoint.} =
     ##   nameformats.defaultConstFormatter = nameformats.toUpperSnakeCase
     ## ```
 
-  defaultPropertyFormatter* {.compileTime.}: Formatter = asIs
+  defaultPropertyFormatter*: Formatter
     ## The default formatter intended for exported properties and signals
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
@@ -305,6 +305,6 @@ var
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
-    ## static:
+    ## proc set_formatters {.execon: EntryPoint.} =
     ##   nameformats.defaultPropertyFormatter = nameformats.toGodotFuncCase
     ## ```
