@@ -136,7 +136,11 @@ proc gdname*(someProc: NimNode): NimNode =
     if not result.isNil:
       result = result.newCall(someProc.name.toStrLit)
   if result.isNil:
-    result = newLit nameformats.defaultFunctionFormatter($someProc.name)
+    case someProc.kind
+    of nnkMethodDef:
+      result = newLit nameformats.defaultVirtualMethodFormatter($someProc.name)
+    else:
+      result = newLit nameformats.defaultFunctionFormatter($someProc.name)
 
 macro gdname*(P: proc): string =
   P.getImpl.gdname()
