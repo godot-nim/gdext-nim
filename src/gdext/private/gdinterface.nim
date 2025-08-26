@@ -142,6 +142,8 @@ proc gdname*(node: NimNode): NimNode =
       result = bindSym"defaultFunctionFormatter".newCall newLit($node.identifier)
     of nnkIdentDefs:
       result = bindSym"defaultPropertyFormatter".newCall newLit($node.identifier)
+    of nnkTypeDef:
+      result = bindSym"defaultClassFormatter".newCall newLit($node.typeSym)
     else:
       discard
 
