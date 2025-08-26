@@ -200,20 +200,21 @@ macro processExports(T: typed): untyped =
     if field.hasPragma("gdexport"):
       let
         fieldIdent = field.identifier
-        name = $fieldIdent
+        name = field.gdname
         desc = field.getPragmaVal("description") or newLit ""
         editorhint = field.getPragmaVal("gdexport") or (quote do: Appearance())
-        gettersym = genSym(nskProc, "get_" & name)
-        settersym = genSym(nskProc, "set_" & name)
+        gettersym = genSym(nskProc, "get_" & $fieldIdent)
+        settersym = genSym(nskProc, "set_" & $fieldIdent)
+        gettername  = bindSym"defaultFunctionFormatter".newCall "&".newCall(newLit"get_", name)
+        settername  = bindSym"defaultFunctionFormatter".newCall "&".newCall(newLit"set_", name)
         getterdef = quote do:
-          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` =
+          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` {.rename: proc(s: string): string = `gettername`.} =
             when compiles(nilCheck self.`fieldIdent`):
               nilCheck self.`fieldIdent`
             self.`fieldIdent`
         setterdef = quote do:
-          proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
-        gettername  = bindSym"defaultFunctionFormatter".newCall newLit("get_" & name)
-        settername  = bindSym"defaultFunctionFormatter".newCall newLit("set_" & name)
+          proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) {.rename: proc(s: string): string = `settername`.} =
+            self.`fieldIdent` = value
 
       result.add quote do:
         `getterdef`

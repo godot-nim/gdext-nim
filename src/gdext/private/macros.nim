@@ -112,12 +112,12 @@ func recList*(node: NimNode): NimNode =
 
 func identifier*(node: NimNode): NimNode =
   case node.kind
-  of nnkIdent:
+  of nnkIdent, nnkSym, nnkAccQuoted:
     node
-  of nnkSym:
-    newIdentNode($node)
-  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr, nnkTemplateDef:
+  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr:
     node[0].identifier
+  of RoutineNodes:
+    node.name
   of nnkPostfix:
     node[1].identifier
   else:
