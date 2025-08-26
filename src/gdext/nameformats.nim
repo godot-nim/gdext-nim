@@ -102,6 +102,9 @@ proc toCamelCase*(str: string): string =
   ## **Example:** "sendHTTPResponse200" -> "sendHttpResponse200"
   str.toPascalCase.uncapitalizeAscii
 
+proc withLeadingUnderscore*(str: string): string =
+  "_" & str
+
 proc toGodotFuncCase*(str: string): string =
   ## Converts `str` into Godot’s recommended function naming convention (snake_case).
   ## 
@@ -113,7 +116,7 @@ proc toGodotInternalFuncCase*(str: string): string =
   ## snake_case with a leading underscore.
   ## 
   ## **Example:** "sendHTTPRequest" -> "_send_http_request"
-  "_" & str.toGodotFuncCase
+  str.toSnakeCase.withLeadingUnderscore
 
 proc toGodotClassCase*(str: string): string =
   ## Converts `str` into Godot’s recommended type/class naming convention (PascalCase).
@@ -267,17 +270,17 @@ var
     ##   nameformats.defaultFunctionFormatter = nameformats.toGodotFuncCase
     ## ```
 
-  defaultVirtualMethodFormatter* {.compileTime.}: Formatter = asIs
+  defaultVirtualMethodFormatter* {.compileTime.}: Formatter = withLeadingUnderscore
     ## The default formatter intended for exported virtual methods
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
-    ## By default this is `asIs`, but it can be overridden at compile time.
+    ## By default this is `withLeadingUnderscore`, but it can be overridden at compile time.
     ##
     ## **Example:**
     ## ```nim
     ## import gdext/nameformats
     ## static:
-    ##   nameformats.defaultVirtualMethodFormatter = nameformats.toGodotVirtualMethodCase
+    ##   nameformats.defaultVirtualMethodFormatter = nameformats.toGodotInternalFuncCase
     ## ```
 
   defaultConstFormatter* {.compileTime.}: Formatter = asIs
