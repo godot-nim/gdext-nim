@@ -212,8 +212,8 @@ macro processExports(T: typed): untyped =
             self.`fieldIdent`
         setterdef = quote do:
           proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
-        gettername  = newlit nameformats.defaultFunctionFormatter("get_" & name)
-        settername  = newlit nameformats.defaultFunctionFormatter("set_" & name)
+        gettername  = bindSym"defaultFunctionFormatter".newCall newLit("get_" & name)
+        settername  = bindSym"defaultFunctionFormatter".newCall newLit("set_" & name)
 
       result.add quote do:
         `getterdef`

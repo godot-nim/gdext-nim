@@ -12,7 +12,7 @@ import gdext/stringtools
 import gdext/appearances
 import gdext/nameformats
 
-template name*(newname: static string) {.pragma.}
+template name*(newname: string) {.pragma.}
   ## Specifies a **fixed name** for a function when exporting it to Godot.
   ## When this pragma is used, the specified string will be used as the name on the Godot side instead of the original Nim name.
   ## If used together with `{.rename.}`, `{.name.}` takes precedence and a warning will be issued.
