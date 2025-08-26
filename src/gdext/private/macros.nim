@@ -114,7 +114,7 @@ func identifier*(node: NimNode): NimNode =
   case node.kind
   of nnkIdent, nnkSym, nnkAccQuoted:
     node
-  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr:
+  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr, nnkTypeDef:
     node[0].identifier
   of RoutineNodes:
     node.name

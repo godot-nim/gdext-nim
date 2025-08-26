@@ -189,7 +189,7 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
   let def = Enum.getImpl
   let enumType = Enum.getTypeInst
   let enumTypeStr = $enumType.toStrLit
-  let enumName = newLit $Enum
+  let enumName = def.gdname
 
   if registeredEnums.contains enumTypeStr: return newStmtList()
 
