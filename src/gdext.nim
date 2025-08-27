@@ -139,7 +139,7 @@ template GDExtension_EntryPoint*: untyped =
 
       defaultClassFormatter = asIs
       defaultFunctionFormatter = asIs
-      defaultVirtualMethodFormatter = withLeadingUnderScore
+      defaultVirtualMethodFormatter = asIs
       defaultConstFormatter = asIs
       defaultPropertyFormatter = asIs
 

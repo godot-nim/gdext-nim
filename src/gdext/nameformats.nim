@@ -277,7 +277,7 @@ var
     ## The default formatter intended for exported virtual methods
     ## when neither `{.name.}` nor `{.rename.}` is specified.
     ##
-    ## By default this is `withLeadingUnderscore`, but it can be overridden at compile time.
+    ## By default this is `asIs`, but it can be overridden at compile time.
     ##
     ## **Example:**
     ## ```nim
