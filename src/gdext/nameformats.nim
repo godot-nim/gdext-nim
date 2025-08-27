@@ -103,7 +103,10 @@ proc toCamelCase*(str: string): string =
   str.toPascalCase.uncapitalizeAscii
 
 proc withLeadingUnderscore*(str: string): string =
-  "_" & str
+  if str[0] == '_':
+    str
+  else:
+    "_" & str
 
 proc toGodotFuncCase*(str: string): string =
   ## Converts `str` into Godot’s recommended function naming convention (snake_case).
