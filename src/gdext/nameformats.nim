@@ -102,7 +102,7 @@ proc toCamelCase*(str: string): string =
   ## **Example:** "sendHTTPResponse200" -> "sendHttpResponse200"
   str.toPascalCase.uncapitalizeAscii
 
-proc withLeadingUnderscore*(str: string): string =
+proc ensureLeadingUnderscore*(str: string): string =
   if str[0] == '_':
     str
   else:
@@ -119,7 +119,7 @@ proc toGodotInternalFuncCase*(str: string): string =
   ## snake_case with a leading underscore.
   ## 
   ## **Example:** "sendHTTPRequest" -> "_send_http_request"
-  str.toSnakeCase.withLeadingUnderscore
+  str.toSnakeCase.ensureLeadingUnderscore
 
 proc toGodotClassCase*(str: string): string =
   ## Converts `str` into Godot’s recommended type/class naming convention (PascalCase).
