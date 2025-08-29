@@ -6,6 +6,7 @@ import gdext/private/debugging
 import gdext/builtinindex {.all.}
 import gdext/stringtools
 import gdext/objectcallbacks
+import gdext/nameformats
 
 privateAccess Object
 
@@ -118,19 +119,54 @@ proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool)
   result = true
   debugReference(cast[Object](p_binding), p_reference)
 
+macro gdname*(T: typedesc[SomeClass]): string =
+  result = T.typeDef.getPragmaVal("name")
+  if result.isNil:
+    result = T.typeDef.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall newLit($T.typeSym)
+  if result.isNil:
+    result = bindSym"defaultClassFormatter".newCall newLit($T.typeSym)
+
+proc gdname*(node: NimNode): NimNode =
+  result = node.getPragmaVal("name")
+  if result.isNil:
+    result = node.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall newLit($node.identifier)
+  if result.isNil:
+    case node.kind
+    of nnkMethodDef:
+      result = bindsym"defaultVirtualMethodFormatter".newCall newLit($node.identifier)
+    of (RoutineNodes - {nnkMethodDef}):
+      result = bindSym"defaultFunctionFormatter".newCall newLit($node.identifier)
+    of nnkIdentDefs:
+      result = bindSym"defaultPropertyFormatter".newCall newLit($node.identifier)
+    of nnkTypeDef:
+      result = bindSym"defaultClassFormatter".newCall newLit($node.typeSym)
+    else:
+      discard
+
+macro gdname*(P: proc): string =
+  P.getImpl.gdname()
+
 proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   var instance {.global.} : GodotClassMeta
   once:
-    instance = GodotClassMeta(
-      className: newStringName $T,
-    )
     when T is SomeEngineClass:
-      instance.callbacks = InstanceBindingCallbacks(
-        create_callback: create_callback[T],
-        free_callback: free_callback[T],
-        reference_callback:
-          when T is RefCounted: reference_callback
-          else: nil
+      instance = GodotClassMeta(
+        className: newStringName $T,
+        callbacks: InstanceBindingCallbacks(
+          create_callback: create_callback[T],
+          free_callback: free_callback[T],
+          reference_callback:
+            when T is RefCounted: reference_callback
+            else: nil
+        )
+      )
+    else:
+      instance = GodotClassMeta(
+        className: newStringName gdname T,
       )
   instance
 

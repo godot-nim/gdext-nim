@@ -21,9 +21,9 @@ macro registerProc*(procdef): untyped =
     else: procdef.getImpl
   let Self = procdef.params[1][1]
 
-  let gdname = procdef.getPragmaVal("name") or newLit $procdef.name
-
-  let methodinfoDef = procdef.classMethodInfo(gdname)
+  let middle = procdef.parseMiddle
+  let methodinfoDef = middle.classMethodInfo()
+  let gdname = middle.gdname
 
   result = quote do:
     proc `gdname` {.execon: Contract[typedesc[`Self`]].procedure.} =

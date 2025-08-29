@@ -10,12 +10,44 @@ import gdext/private/userclass/virtuals
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/appearances
+import gdext/nameformats
 
-template name*(newname: static string) {.pragma.} ## Attaching it to a function along with gdsync allows to alias to the registered function.
-## ```nim
-## proc myCallback(self: MyClass; value: Int) {.gdsync, name:　"_my_callback".} =
-##   print "hi! the value is: ", value, "!"
-## ```
+template name*(newname: string) {.pragma.}
+  ## Specifies a **fixed name** for a function when exporting it to Godot.
+  ## When this pragma is used, the specified string will be used as the name on the Godot side instead of the original Nim name.
+  ## If used together with `{.rename.}`, `{.name.}` takes precedence and a warning will be issued.
+  ## 
+  ## **See also:**
+  ## * `rename template<#rename.t,staticproc(string)>`_
+  ## 
+  ## **Example:**
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, name:　"_my_callback".} =
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
+
+
+template rename*(f: proc(str: string): string) {.pragma.}
+  ## Used when you want to **dynamically transform** the name of a function or property when exporting it to Godot.
+  ## By providing a formatter function, you can convert camelCase to snake_case, prefix an underscore for internal use, or apply other transformations.
+  ## If no formatter is specified, **the formatter set in the compile-time variable** `nameformats.defaultFunctionFormatter` will be used.
+  ## By default, `defaultFunctionFormatter` is set to `nameformats.asIs`, but you can change it to switch the default formatter for the entire project.
+  ## 
+  ## **See also:**
+  ## * `name template<#name.t,staticstring>`_
+  ## * `nameformats module<nameformats.html>`_
+  ## 
+  ## **Example:**
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, rename:　nameformats.toGodotInternalFuncCase.} =
+  ## # => "_my_callback"
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
+  ## ```nim
+  ## proc myCallback(self: MyClass; value: Int) {.gdsync, rename:　proc(s: string): string = "_" & s.} =
+  ## # => "_myCallback"
+  ##   print "hi! the value is: ", value, "!"
+  ## ```
 
 template signal* {.pragma.} ## With gdsync, register a function as a signal. Thereafter, calling the function will emit the associated signal.
 ## ```nim
@@ -157,7 +189,7 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
   let def = Enum.getImpl
   let enumType = Enum.getTypeInst
   let enumTypeStr = $enumType.toStrLit
-  let enumName = newLit $Enum
+  let enumName = def.gdname
 
   if registeredEnums.contains enumTypeStr: return newStmtList()
 
@@ -173,9 +205,9 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
     let fieldName = newlit $fieldsym
     call.add case isBitField
     of true:
-      quote do: (newStringName `fieldName`, Int 1 shl int `fieldsym`)
+      quote do: (newStringName defaultConstFormatter(`fieldName`), Int 1 shl int `fieldsym`)
     of false:
-      quote do: (newStringName `fieldName`, Int `fieldsym`)
+      quote do: (newStringName defaultConstFormatter(`fieldName`), Int `fieldsym`)
 
   call.add newlit isBitField
   result = quote do:
@@ -219,8 +251,6 @@ template `bind`*[E: enum](Enum: typedesc[E]) =
 template `bind`*[E: enum](Flags: typedesc[set[E]]) =
   ## Same as `ExtensionMain.bind Flags`. ExtensionMain is a special sigleton class that names by config.nims
   registerEnumInternal(Extensionmain, E, true)
-
-macro gdname(P: proc): string = P.getPragmaVal("name") or newLit $P
 
 template gdexport*() {.pragma.} ## Exposes a member variable to the engine as a property.
 ## ```nim

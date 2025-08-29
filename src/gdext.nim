@@ -23,7 +23,7 @@
 ## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
 ## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
 ## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
-
+## * `nameformats <gdext/nameformats.html>`_: Provides formatter functions for transforming Nim identifiers when exporting them to Godot.
 
 {.warning[UnusedImport]: off.}
 
@@ -69,8 +69,12 @@ export gdengine.isEditorHint
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
+import gdext/nameformats
+
 when Assistance.genEditorHelp:
   import gdext/private/doctools
+
+const EntryPoint* = event("EntryPoint")
 
 template GDExtension_EntryPoint*: untyped =
   ## Responds to initialization requests by Godot and performs extension initialization, such as loading functions and registering classes.
@@ -86,6 +90,7 @@ template GDExtension_EntryPoint*: untyped =
   proc exec_eliminate_servers {.expandEvent: eliminate_servers.}
   proc exec_eliminate_scene {.expandEvent: eliminate_scene.}
   proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
+  proc execEntryPoint{.expandEvent: EntryPoint.}
 
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc initializer(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
@@ -132,11 +137,19 @@ template GDExtension_EntryPoint*: untyped =
       r_initialization.deinitialize = deinitializer
       r_initialization.minimum_initialization_level = Initialization_Scene
 
+      defaultClassFormatter = asIs
+      defaultFunctionFormatter = asIs
+      defaultVirtualMethodFormatter = asIs
+      defaultConstFormatter = asIs
+      defaultPropertyFormatter = asIs
+
       utilityfuncs.load()
 
       load_builtinclassConstructor()
       load_builtinclassOperator()
       load_builtinclassMethod()
+
+      execEntryPoint()
 
       return true
 
