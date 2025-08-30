@@ -41,6 +41,7 @@ type
     virtualMethods*: Table[StringName, ClassCallVirtual]
     className*: StringName
     callbacks*: InstanceBindingCallbacks
+    rpcConfigs*: Table[StringName, Variant]
 
 const ErrorName: array[CallErrorType, string] = [
   "ok",

@@ -97,6 +97,9 @@ template singleton* {.pragma.}
   ## type MySingleton {.gdsync, singleton.} = ptr object of Object
   ## ```
 
+template rpc*(mode= rpcModeAnyPeer; callLocal= false; transferMode= transferModeReliable; transferChannel= 0) {.pragma.}
+  ## See `Godot Docs - Remote procedure calls <https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html#remote-procedure-calls>`_
+
 var Initialization_Default* {.compileTime.} = Initialization_Scene
 
 proc toLevel(node: NimNode): InitializationLevel =

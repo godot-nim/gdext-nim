@@ -14,6 +14,8 @@ import gdext/appearances
 import gdext/stringtools
 import gdext/nameformats
 
+from gdext/classes/gdNode import NotificationReady, rpc_config
+
 when Assistance.genEditorHelp:
   import gdext/private/doctools
 
@@ -46,7 +48,13 @@ proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStri
 proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   procCall propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
+proc registerRpcConfigsRecursive[T: Object](instance: T)
 proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
+  case p_what
+  of NotificationReady:
+    cast[T](p_instance).registerRpcConfigsRecursive()
+  else:
+    discard
   procCall notification(cast[T](p_instance), p_what)
 
 proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
@@ -125,8 +133,11 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_expose
       else: property_get_revert_func[T],
     validate_property_func: nil,
     notification_func:
-      when compiles(notificationT[T](notification)): nil
-      else: notification_func[T],
+      if Meta(T).rpcConfigs.len != 0:
+        notification_func[T]
+      else:
+        when compiles(notificationT[T](notification)): nil
+        else: notification_func[T],
     to_string_func:
       when compiles(toStringT[T](toString)): nil
       else: to_string_func[T],
@@ -278,3 +289,9 @@ macro register_implicitly*(level: static InitializationLevel) =
     if registration in implicitRegistrationSingletons:
       result.add quote do:
         Engine.singleton.registerSingleton(className `registration`, instantiate `registration`)
+
+proc registerRpcConfigsRecursive[T: Object](instance: T) =
+  when T is SomeUserClass and T is Node:
+    for key, value in Meta(T).rpcConfigs.pairs:
+      instance.rpc_config(key, value)
+    ((T.Super) instance).registerRpcConfigsRecursive()
