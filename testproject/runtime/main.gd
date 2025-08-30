@@ -10,6 +10,7 @@ var signal_arg_1_executed = false
 func _ready():
 
 	test_func($FunctionTester)
+	call_deferred("test_rpc_func", $FunctionTester)
 	test_func(FunctionTester.new())
 	test_virtual_func()
 	test_grobal_func()
@@ -17,7 +18,7 @@ func _ready():
 	test_enum(EnumTester.new())
 	test_rename()
 
-	exit_with_status()
+	call_deferred("exit_with_status")
 
 func test_rename():
 	assert_true(RenameTestSnakeCaseNoPragma.new() != null)
@@ -52,6 +53,11 @@ func test_func(node: FunctionTester):
 	assert_equal(node.varargs_concrete(1, 2, 3, 4, 5), "1, 2, 3, 4, 5")
 
 	assert_equal(node.most_complex("a", "b", "c", "d", "e", "f", "g"), "a b c d e f g")
+
+func test_rpc_func(node: FunctionTester):
+	node.test_nim_rpc()
+	node.rpc("rpc_func", "GDScriptRPC")
+	assert_equal(node.rpc_result, "GDScriptRPC")
 
 func test_virtual_func():
 	# $VirtualNode01.virtualMethod()
