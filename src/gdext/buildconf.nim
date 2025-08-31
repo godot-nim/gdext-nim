@@ -13,8 +13,7 @@ import `gdext/private/buildsettings` instead.
 when not declared(switch):
   import system/nimscript
 
-import std/[strformat, strutils, tables]
-import std/private/ospaths2
+import std/[strformat, strutils, tables, os, private/globs]
 from std/parsecfg import Config, newConfig
 import gdext/private/configdsl
 
@@ -24,6 +23,26 @@ const cmddefArchitecture {.define: "arch".} = ""
 
 const cmddefAndroidNdkVersion {.define: "android_ndk_version".} = "23.2.8568313"
 const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
+
+proc toBuildOS(path: string): string =
+  when buildOS == "windows":
+    result = path.unixToNativePath()
+  when buildOS == "linux":
+    result = path.nativeToUnixPath()
+
+proc `/`(a, b: string): string =
+  os.`/`(a, b).toBuildOS
+
+proc relativePath(a, b: string): string =
+  result = os.relativePath(a, b).toBuildOS
+
+proc absolutePath(a: string): string =
+  result = os.absolutePath(a).toBuildOS
+
+iterator parentDirs(a: string): string =
+  for parent in os.parentDirs(a):
+    yield parent.toBuildOS
+
 
 proc switchHint(key, value: string) =
   echo "--", key, ":", value
@@ -355,6 +374,27 @@ proc switch(setting: BuildSettings) =
 
     # --passL: "-static"
     --passL: "-static-libgcc"
+
+    if buildOS != "windows":
+      let gccexe = case setting.arch
+      of x86_64:
+        "x86_64-w64-mingw32-cc"
+      of x86_32:
+        "i686-w64-mingw32-cc"
+      else:
+        "x86_64-w64-mingw32-cc"
+      if findExe(gccexe).len == 0:
+        quit """
+Error: mingw is not installed.
+mingw is required for compiling for Windows."""
+      if not defined(mingw):
+        quit """
+Error: `-d:mingw` is not defined.
+E.g. nim c -d:platform=windows -d:mingw bootstrap.nim
+     gdextwiz build -d:platform=windows -d:mingw"""
+
+      switch("gcc.exe", gccexe)
+      switch("gcc.linkerexe", gccexe)
 
   of web:
     if findExe("emcc").len == 0 and findExe("emcc.bat").len == 0:
