@@ -12,6 +12,7 @@ import cases/prints
 import cases/issues
 import cases/singletons
 import classes/gdextnode
+import classes/gdextresource
 import classes/gdvirtualnode01
 import classes/gdvirtualnode02
 import classes/gdtestobject
