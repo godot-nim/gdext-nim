@@ -31,22 +31,22 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  procCall set(cast[T](p_instance), p_name, p_value)
+  set(cast[T](p_instance), p_name, p_value)
 
 proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  procCall get(cast[T](p_instance), p_name, r_ret)
+  get(cast[T](p_instance), p_name, r_ret)
 
 proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  procCall getPropertyList(cast[T](p_instance), r_count)
+  getPropertyList(cast[T](p_instance), r_count)
 
 proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
-  procCall freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
+  freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
 
 proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  procCall propertyCanRevert(cast[T](p_instance), p_name)
+  propertyCanRevert(cast[T](p_instance), p_name)
 
 proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  procCall propertyGetRevert(cast[T](p_instance), p_name, r_ret)
+  propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
 proc registerRpcConfigsRecursive[T: Object](instance: T)
 proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
@@ -55,10 +55,10 @@ proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reverse
     cast[T](p_instance).registerRpcConfigsRecursive()
   else:
     discard
-  procCall notification(cast[T](p_instance), p_what)
+  notification(cast[T](p_instance), p_what)
 
 proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  procCall toString(cast[T](p_instance), r_is_valid, p_out)
+  toString(cast[T](p_instance), r_is_valid, p_out)
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T

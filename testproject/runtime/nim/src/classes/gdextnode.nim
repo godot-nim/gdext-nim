@@ -173,3 +173,8 @@ method ready(self: GDExtNode) {.gdsync.} =
   self.test_Resource()
   self.test_FirstclassFunction()
   self.test_VirtualMethod()
+
+method notification(self: GDExtNode; what: int32) =
+  once:
+    test "notification":
+      check true
