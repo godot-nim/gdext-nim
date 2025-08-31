@@ -17,8 +17,14 @@ func _ready():
 	test_enum($EnumTester)
 	test_enum(EnumTester.new())
 	test_rename()
+	test_resource()
 
 	call_deferred("exit_with_status")
+
+func test_resource():
+	assert_true(GdExtResource.nimtest())
+	var resource = GdExtResource.create()
+	assert_equal(resource.get_reference_count(), 1)
 
 func test_rename():
 	assert_true(RenameTestSnakeCaseNoPragma.new() != null)
