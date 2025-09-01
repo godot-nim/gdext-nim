@@ -1,0 +1,6 @@
+nimTitle	gdextensionmain	gdext/extclasses/gdextensionmain.html	module gdext/extclasses/gdextensionmain		0
+nim	Gdext	gdext/extclasses/gdextensionmain.html#Gdext	type Gdext		12
+nim	ExtensionMain	gdext/extclasses/gdextensionmain.html#ExtensionMain.m	macro ExtensionMain(): untyped		16
+nim	extmain	gdext/extclasses/gdextensionmain.html#extmain	var extmain		18
+nim	initializeExtensionMain	gdext/extclasses/gdextensionmain.html#initializeExtensionMain.t	template initializeExtensionMain()		23
+nim	eliminateExtensionMain	gdext/extclasses/gdextensionmain.html#eliminateExtensionMain.t	template eliminateExtensionMain()		27

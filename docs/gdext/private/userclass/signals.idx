@@ -1,0 +1,3 @@
+nimTitle	signals	gdext/private/userclass/signals.html	module gdext/private/userclass/signals		0
+nim	isSignal	gdext/private/userclass/signals.html#isSignal,NimNode	proc isSignal(procdef: NimNode): bool		19
+nim	syncSignal	gdext/private/userclass/signals.html#syncSignal,NimNode	proc syncSignal(procdef: NimNode): NimNode		101

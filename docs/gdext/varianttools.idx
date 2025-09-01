@@ -1,0 +1,41 @@
+nimTitle	varianttools	gdext/varianttools.html	module gdext/varianttools		0
+nim	evaluate	gdext/varianttools.html#evaluate,Variant_Operator,ptr.Variant,ptr.Variant,bool	proc evaluate(op: Variant_Operator; a, b: ptr Variant; valid: var bool): Variant		35
+nim	call	gdext/varianttools.html#call,Variant,StringName,CallError,varargs[Variant,variant]	proc call(self: Variant; method: StringName; err: var CallError;\n     args: varargs[Variant, variant]): Variant		38
+nim	callStatic	gdext/varianttools.html#callStatic,VariantType,StringName,CallError,varargs[Variant,variant]	proc callStatic(T: VariantType; method: StringName; err: var CallError;\n           args: varargs[Variant, variant]): Variant		45
+nim	hasMethod	gdext/varianttools.html#hasMethod,Variant,StringName	proc hasMethod(self: Variant; metho: StringName): bool		52
+nim	hasMember	gdext/varianttools.html#hasMember,VariantType,StringName	proc hasMember(typ: VariantType; member: StringName): bool		55
+nim	hash	gdext/varianttools.html#hash,Variant	proc hash(self: Variant): Hash		58
+nim	recursiveHash	gdext/varianttools.html#recursiveHash,Variant,int	proc recursiveHash(self: Variant; recursion_count: int): Hash		61
+nim	hashCompare	gdext/varianttools.html#hashCompare,Variant,Variant	proc hashCompare(self, other: Variant): bool		64
+nim	booleanize	gdext/varianttools.html#booleanize,Variant	proc booleanize(self: Variant): bool		67
+nim	duplicate	gdext/varianttools.html#duplicate,Variant	proc duplicate(self: Variant): Variant		70
+nim	canConvert	gdext/varianttools.html#canConvert,VariantType,VariantType	proc canConvert(src, dst: VariantType): bool		73
+nim	canConvertStrict	gdext/varianttools.html#canConvertStrict,VariantType,VariantType	proc canConvertStrict(src, dst: VariantType): bool		76
+nim	getType	gdext/varianttools.html#getType,Variant	proc getType(v: Variant): VariantType		79
+nim	variant	gdext/varianttools.html#variant	proc variant(): Variant		82
+nim	copy	gdext/varianttools.html#copy,Variant	proc copy(src: Variant): Variant		85
+nim	clear	gdext/varianttools.html#clear,Variant	proc clear(self: Variant)		88
+nim	evaluate	gdext/varianttools.html#evaluate,Variant_Operator,ptr.Variant,ptr.Variant	proc evaluate(op: Variant_Operator; a, b: ptr Variant): Variant		175
+nim	`==`	gdext/varianttools.html#==,Variant,Variant	proc `==`(self, other: Variant): bool		181
+nim	`==`	gdext/varianttools.html#==.t,Variant,T	template `==`[T: SomeProperty](self: Variant; other: T): bool		187
+nim	`==`	gdext/varianttools.html#==.t,T,Variant	template `==`[T: SomeProperty](other: T; self: Variant): bool		188
+nim	`<`	gdext/varianttools.html#<,Variant,Variant	proc `<`(self, other: Variant): bool		190
+nim	`<=`	gdext/varianttools.html#<=,Variant,Variant	proc `<=`(self, other: Variant): bool		192
+nim	contains	gdext/varianttools.html#contains,Variant,Variant	proc contains(self: Variant; index: Variant): bool		195
+nim	call	gdext/varianttools.html#call,Variant,StringName,varargs[Variant,variant]	proc call(self: Variant; method: StringName; args: varargs[Variant, variant]): Variant		198
+nim	callStatic	gdext/varianttools.html#callStatic,VariantType,StringName,varargs[Variant,variant]	proc callStatic(T: VariantType; method: StringName; args: varargs[Variant, variant]): Variant		203
+nim	`[]=`	gdext/varianttools.html#[]=,Variant,Variant,Variant	proc `[]=`(self: Variant; key: Variant; value: Variant)		213
+nim	`[]=`	gdext/varianttools.html#[]=,Variant,StringName,Variant	proc `[]=`(self: Variant; name: StringName; value: Variant)		218
+nim	`[]=`	gdext/varianttools.html#[]=,Variant,int,Variant	proc `[]=`(self: Variant; index: int; value: Variant)		222
+nim	`[]`	gdext/varianttools.html#[],Variant,Variant	proc `[]`(self: Variant; key: Variant): Variant		228
+nim	`[]`	gdext/varianttools.html#[],Variant,StringName	proc `[]`(self: Variant; name: StringName): Variant		232
+nim	`[]`	gdext/varianttools.html#[],Variant,int	proc `[]`(self: Variant; index: int): Variant		236
+nim	keys	gdext/varianttools.html#keys.i,Variant	iterator keys(self: Variant): Variant		242
+nim	items	gdext/varianttools.html#items.i,Variant	iterator items(self: Variant): Variant		250
+nim	pairs	gdext/varianttools.html#pairs.i,Variant	iterator pairs(self: Variant): tuple[key, item: Variant]		252
+nimgrp	evaluate	gdext/varianttools.html#evaluate-procs-all	proc		35
+nimgrp	[]=	gdext/varianttools.html#[]=-procs-all	proc		213
+nimgrp	callstatic	gdext/varianttools.html#callStatic-procs-all	proc		45
+nimgrp	[]	gdext/varianttools.html#[]-procs-all	proc		228
+nimgrp	call	gdext/varianttools.html#call-procs-all	proc		38
+nimgrp	==	gdext/varianttools.html#==-templates-all	template		187

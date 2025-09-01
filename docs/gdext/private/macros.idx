@@ -1,0 +1,29 @@
+nimTitle	macros	gdext/private/macros.html	module gdext/private/macros		0
+nim	lineerror	gdext/private/macros.html#lineerror.m,staticstring,	macro lineerror(msg: static string; expr)		4
+nim	breakArgs	gdext/private/macros.html#breakArgs.i,NimNode	iterator breakArgs(node: NimNode): tuple[index: int,\n                                def: tuple[name, Type, default: NimNode]]		7
+nim	hasNoReturn	gdext/private/macros.html#hasNoReturn,NimNode	proc hasNoReturn(node: NimNode): bool		15
+nim	hasReturn	gdext/private/macros.html#hasReturn,NimNode	proc hasReturn(node: NimNode): bool		19
+nim	typeDef	gdext/private/macros.html#typeDef,NimNode	proc typeDef(node: NimNode): NimNode		22
+nim	objectTy	gdext/private/macros.html#objectTy,NimNode	proc objectTy(node: NimNode): NimNode		41
+nim	ofInherit	gdext/private/macros.html#ofInherit,NimNode	proc ofInherit(node: NimNode): NimNode		53
+nim	enumTy	gdext/private/macros.html#enumTy,NimNode	proc enumTy(node: NimNode): NimNode		63
+nim	typeSym	gdext/private/macros.html#typeSym,NimNode	proc typeSym(node: NimNode): NimNode		77
+nim	recList	gdext/private/macros.html#recList,NimNode	proc recList(node: NimNode): NimNode		104
+nim	identifier	gdext/private/macros.html#identifier,NimNode	proc identifier(node: NimNode): NimNode		113
+nim	pragmas	gdext/private/macros.html#pragmas,NimNode	proc pragmas(node: NimNode): seq[NimNode]		127
+nim	args	gdext/private/macros.html#args,NimNode	proc args(node: NimNode): seq[NimNode]		148
+nim	isVarargs	gdext/private/macros.html#isVarargs,NimNode	proc isVarargs(node: NimNode): bool		166
+nim	super	gdext/private/macros.html#super,NimNode	proc super(typedes: NimNode): NimNode		173
+nim	getPragmaVal	gdext/private/macros.html#getPragmaVal,NimNode,string	proc getPragmaVal(node: NimNode; key: string): NimNode		175
+nim	hasPragma	gdext/private/macros.html#hasPragma,NimNode,string	proc hasPragma(node: NimNode; key: string): bool		183
+nim	newBracket	gdext/private/macros.html#newBracket,varargs[NimNode]	proc newBracket(elems: varargs[NimNode]): NimNode		194
+nim	newBracketExpr	gdext/private/macros.html#newBracketExpr,varargs[NimNode]	proc newBracketExpr(elems: varargs[NimNode]): NimNode		197
+nim	newLetSection	gdext/private/macros.html#newLetSection,varargs[NimNode]	proc newLetSection(elems: varargs[NimNode]): NimNode		200
+nim	newElifBranch	gdext/private/macros.html#newElifBranch,NimNode,NimNode	proc newElifBranch(predicate, body: NimNode): NimNode		203
+nim	newElse	gdext/private/macros.html#newElse,NimNode	proc newElse(body: NimNode): NimNode		206
+nim	newObjConstr	gdext/private/macros.html#newObjConstr,NimNode,varargs[NimNode]	proc newObjConstr(obj: NimNode; members: varargs[NimNode]): NimNode		209
+nim	newFormalParams	gdext/private/macros.html#newFormalParams,NimNode,varargs[NimNode]	proc newFormalParams(ret: NimNode = newEmptyNode(); args: varargs[NimNode]): NimNode		212
+nim	newDiscardStmt	gdext/private/macros.html#newDiscardStmt,NimNode	proc newDiscardStmt(sentence: NimNode = newEmptyNode()): NimNode		215
+nim	assigned	gdext/private/macros.html#assigned,NimNode,NimNode	proc assigned(section, value: NimNode): NimNode		218
+nim	assigned	gdext/private/macros.html#assigned,NimNode,seq[NimNode]	proc assigned(section: NimNode; values: seq[NimNode]): seq[NimNode]		223
+nimgrp	assigned	gdext/private/macros.html#assigned-procs-all	proc		218

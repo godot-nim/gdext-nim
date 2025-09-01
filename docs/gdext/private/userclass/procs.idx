@@ -1,0 +1,6 @@
+nimTitle	procs	gdext/private/userclass/procs.html	module gdext/private/userclass/procs		0
+nim	registerProc	gdext/private/userclass/procs.html#registerProc.m	macro registerProc(procdef): untyped		20
+nim	syncProcGlobal	gdext/private/userclass/procs.html#syncProcGlobal.m	macro syncProcGlobal(procdef): untyped		61
+nim	syncProcLocal	gdext/private/userclass/procs.html#syncProcLocal.m	macro syncProcLocal(procdef): untyped		72
+nim	sync_procDef	gdext/private/userclass/procs.html#sync_procDef,NimNode	proc sync_procDef(procdef: NimNode): NimNode		86
+nim	sync_methodDef	gdext/private/userclass/procs.html#sync_methodDef,NimNode	proc sync_methodDef(body: NimNode): NimNode		95

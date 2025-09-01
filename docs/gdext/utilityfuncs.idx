@@ -1,0 +1,63 @@
+nimTitle	utilityfuncs	gdext/utilityfuncs.html	module gdext/utilityfuncs		0
+nim	floor	gdext/utilityfuncs.html#floor,Variant	proc floor(x: Variant): Variant		116
+nim	ceil	gdext/utilityfuncs.html#ceil,Variant	proc ceil(x: Variant): Variant		121
+nim	round	gdext/utilityfuncs.html#round,Variant	proc round(x: Variant): Variant		126
+nim	abs	gdext/utilityfuncs.html#abs,Variant	proc abs(x: Variant): Variant		131
+nim	sign	gdext/utilityfuncs.html#sign,Variant	proc sign(x: Variant): Variant		136
+nim	snapped	gdext/utilityfuncs.html#snapped,Variant,Variant	proc snapped(x: Variant; step: Variant): Variant		141
+nim	ease	gdext/utilityfuncs.html#ease,Float,Float	proc ease(x: Float; curve: Float): Float		146
+nim	stepDecimals	gdext/utilityfuncs.html#stepDecimals,Float	proc stepDecimals(x: Float): Int		151
+nim	lerp	gdext/utilityfuncs.html#lerp,Variant,Variant,Variant	proc lerp(from: Variant; to: Variant; weight: Variant): Variant		156
+nim	cubicInterpolateInTime	gdext/utilityfuncs.html#cubicInterpolateInTime,Float,Float,Float,Float,Float,Float,Float,Float	proc cubicInterpolateInTime(from: Float; to: Float; pre: Float; post: Float;\n                       weight: Float; toT: Float; preT: Float; postT: Float): Float		161
+nim	cubicInterpolateAngleInTime	gdext/utilityfuncs.html#cubicInterpolateAngleInTime,Float,Float,Float,Float,Float,Float,Float,Float	proc cubicInterpolateAngleInTime(from: Float; to: Float; pre: Float; post: Float;\n                            weight: Float; toT: Float; preT: Float; postT: Float): Float		166
+nim	bezierInterpolate	gdext/utilityfuncs.html#bezierInterpolate,Float,Float,Float,Float,Float	proc bezierInterpolate(start: Float; control1: Float; control2: Float; end: Float;\n                  t: Float): Float		171
+nim	bezierDerivative	gdext/utilityfuncs.html#bezierDerivative,Float,Float,Float,Float,Float	proc bezierDerivative(start: Float; control1: Float; control2: Float; end: Float;\n                 t: Float): Float		176
+nim	angleDifference	gdext/utilityfuncs.html#angleDifference,Float,Float	proc angleDifference(from: Float; to: Float): Float		181
+nim	inverseLerp	gdext/utilityfuncs.html#inverseLerp,Float,Float,Float	proc inverseLerp(from: Float; to: Float; weight: Float): Float		186
+nim	remap	gdext/utilityfuncs.html#remap,Float,Float,Float,Float,Float	proc remap(value: Float; istart: Float; istop: Float; ostart: Float; ostop: Float): Float		191
+nim	smoothstep	gdext/utilityfuncs.html#smoothstep,Float,Float,Float	proc smoothstep(from: Float; to: Float; x: Float): Float		196
+nim	moveToward	gdext/utilityfuncs.html#moveToward,Float,Float,Float	proc moveToward(from: Float; to: Float; delta: Float): Float		201
+nim	rotateToward	gdext/utilityfuncs.html#rotateToward,Float,Float,Float	proc rotateToward(from: Float; to: Float; delta: Float): Float		206
+nim	linearToDb	gdext/utilityfuncs.html#linearToDb,Float	proc linearToDb(lin: Float): Float		211
+nim	dbToLinear	gdext/utilityfuncs.html#dbToLinear,Float	proc dbToLinear(db: Float): Float		216
+nim	wrap	gdext/utilityfuncs.html#wrap,Variant,Variant,Variant	proc wrap(value: Variant; min: Variant; max: Variant): Variant		221
+nim	max	gdext/utilityfuncs.html#max,Variant,Variant,varargs[Variant,variant]	proc max(arg1: Variant; arg2: Variant; args: varargs[Variant, variant]): Variant		226
+nim	min	gdext/utilityfuncs.html#min,Variant,Variant,varargs[Variant,variant]	proc min(arg1: Variant; arg2: Variant; args: varargs[Variant, variant]): Variant		234
+nim	clamp	gdext/utilityfuncs.html#clamp,Variant,Variant,Variant	proc clamp(value: Variant; min: Variant; max: Variant): Variant		242
+nim	pingpong	gdext/utilityfuncs.html#pingpong,Float,Float	proc pingpong(value: Float; length: Float): Float		247
+nim	randomize	gdext/utilityfuncs.html#randomize	proc randomize(): void		252
+nim	randi	gdext/utilityfuncs.html#randi	proc randi(): Int		256
+nim	randf	gdext/utilityfuncs.html#randf	proc randf(): Float		260
+nim	randiRange	gdext/utilityfuncs.html#randiRange,Int,Int	proc randiRange(from: Int; to: Int): Int		264
+nim	randfRange	gdext/utilityfuncs.html#randfRange,Float,Float	proc randfRange(from: Float; to: Float): Float		269
+nim	randfn	gdext/utilityfuncs.html#randfn,Float,Float	proc randfn(mean: Float; deviation: Float): Float		274
+nim	seed	gdext/utilityfuncs.html#seed,Int	proc seed(base: Int): void		279
+nim	randFromSeed	gdext/utilityfuncs.html#randFromSeed,Int	proc randFromSeed(seed: Int): PackedInt64Array		284
+nim	weakref	gdext/utilityfuncs.html#weakref,Variant	proc weakref(obj: Variant): Variant		289
+nim	typeof	gdext/utilityfuncs.html#typeof,Variant	proc typeof(variable: Variant): Int		294
+nim	typeConvert	gdext/utilityfuncs.html#typeConvert,Variant,Int	proc typeConvert(variant: Variant; type: Int): Variant		299
+nim	str	gdext/utilityfuncs.html#str,varargs[Variant,variant]	proc str(args: varargs[Variant, variant]): String		304
+nim	errorString	gdext/utilityfuncs.html#errorString,Int	proc errorString(error: Int): String		312
+nim	typeString	gdext/utilityfuncs.html#typeString,Int	proc typeString(type: Int): String		317
+nim	print	gdext/utilityfuncs.html#print,varargs[Variant,variant]	proc print(args: varargs[Variant, variant]): void		322
+nim	printRich	gdext/utilityfuncs.html#printRich,varargs[Variant,variant]	proc printRich(args: varargs[Variant, variant]): void		330
+nim	printerr	gdext/utilityfuncs.html#printerr,varargs[Variant,variant]	proc printerr(args: varargs[Variant, variant]): void		338
+nim	printt	gdext/utilityfuncs.html#printt,varargs[Variant,variant]	proc printt(args: varargs[Variant, variant]): void		346
+nim	prints	gdext/utilityfuncs.html#prints,varargs[Variant,variant]	proc prints(args: varargs[Variant, variant]): void		354
+nim	printraw	gdext/utilityfuncs.html#printraw,varargs[Variant,variant]	proc printraw(args: varargs[Variant, variant]): void		362
+nim	printVerbose	gdext/utilityfuncs.html#printVerbose,varargs[Variant,variant]	proc printVerbose(args: varargs[Variant, variant]): void		370
+nim	pushError	gdext/utilityfuncs.html#pushError,varargs[Variant,variant]	proc pushError(args: varargs[Variant, variant]): void		378
+nim	pushWarning	gdext/utilityfuncs.html#pushWarning,varargs[Variant,variant]	proc pushWarning(args: varargs[Variant, variant]): void		386
+nim	varToStr	gdext/utilityfuncs.html#varToStr,Variant	proc varToStr(variable: Variant): String		394
+nim	strToVar	gdext/utilityfuncs.html#strToVar,String	proc strToVar(string: String): Variant		399
+nim	varToBytes	gdext/utilityfuncs.html#varToBytes,Variant	proc varToBytes(variable: Variant): PackedByteArray		404
+nim	bytesToVar	gdext/utilityfuncs.html#bytesToVar,PackedByteArray	proc bytesToVar(bytes: PackedByteArray): Variant		409
+nim	varToBytesWithObjects	gdext/utilityfuncs.html#varToBytesWithObjects,Variant	proc varToBytesWithObjects(variable: Variant): PackedByteArray		414
+nim	bytesToVarWithObjects	gdext/utilityfuncs.html#bytesToVarWithObjects,PackedByteArray	proc bytesToVarWithObjects(bytes: PackedByteArray): Variant		419
+nim	instanceFromId	gdext/utilityfuncs.html#instanceFromId,Int	proc instanceFromId(instanceId: Int): Object		424
+nim	isInstanceIdValid	gdext/utilityfuncs.html#isInstanceIdValid,Int	proc isInstanceIdValid(id: Int): bool		429
+nim	isInstanceValid	gdext/utilityfuncs.html#isInstanceValid,Variant	proc isInstanceValid(instance: Variant): bool		434
+nim	ridAllocateId	gdext/utilityfuncs.html#ridAllocateId	proc ridAllocateId(): Int		439
+nim	ridFromInt64	gdext/utilityfuncs.html#ridFromInt64,Int	proc ridFromInt64(base: Int): RID		443
+nim	isSame	gdext/utilityfuncs.html#isSame,Variant,Variant	proc isSame(a: Variant; b: Variant): bool		448
+nim	load	gdext/utilityfuncs.html#load	proc load()		453

@@ -1,0 +1,197 @@
+nimTitle	colortools	gdext/colortools.html	module gdext/colortools		0
+nim	color	gdext/colortools.html#color	proc color(): Color		6
+nim	color	gdext/colortools.html#color,Color	proc color(from: Color): Color		7
+nim	color	gdext/colortools.html#color,Color,float32	proc color(from: Color; alpha: float32): Color		8
+nim	color	gdext/colortools.html#color,float32,float32,float32	proc color(r, g, b: float32): Color		10
+nim	color	gdext/colortools.html#color,float32,float32,float32,float32	proc color(r, g, b, a: float32): Color		11
+nim	color	gdext/colortools.html#color,String	proc color(code: String): Color		11
+nim	color	gdext/colortools.html#color,String,Float	proc color(code: String; alpha: Float): Color		14
+nim	AliceBlue	gdext/colortools.html#AliceBlue	const AliceBlue		3
+nim	AntiqueWhite	gdext/colortools.html#AntiqueWhite	const AntiqueWhite		5
+nim	Aqua	gdext/colortools.html#Aqua	const Aqua		7
+nim	Aquamarine	gdext/colortools.html#Aquamarine	const Aquamarine		9
+nim	Azure	gdext/colortools.html#Azure	const Azure		11
+nim	Beige	gdext/colortools.html#Beige	const Beige		13
+nim	Bisque	gdext/colortools.html#Bisque	const Bisque		15
+nim	Black	gdext/colortools.html#Black	const Black		17
+nim	BlanchedAlmond	gdext/colortools.html#BlanchedAlmond	const BlanchedAlmond		19
+nim	Blue	gdext/colortools.html#Blue	const Blue		21
+nim	BlueViolet	gdext/colortools.html#BlueViolet	const BlueViolet		23
+nim	Brown	gdext/colortools.html#Brown	const Brown		25
+nim	Burlywood	gdext/colortools.html#Burlywood	const Burlywood		27
+nim	CadetBlue	gdext/colortools.html#CadetBlue	const CadetBlue		29
+nim	Chartreuse	gdext/colortools.html#Chartreuse	const Chartreuse		31
+nim	Chocolate	gdext/colortools.html#Chocolate	const Chocolate		33
+nim	Coral	gdext/colortools.html#Coral	const Coral		35
+nim	CornflowerBlue	gdext/colortools.html#CornflowerBlue	const CornflowerBlue		37
+nim	Cornsilk	gdext/colortools.html#Cornsilk	const Cornsilk		39
+nim	Crimson	gdext/colortools.html#Crimson	const Crimson		41
+nim	Cyan	gdext/colortools.html#Cyan	const Cyan		43
+nim	DarkBlue	gdext/colortools.html#DarkBlue	const DarkBlue		45
+nim	DarkCyan	gdext/colortools.html#DarkCyan	const DarkCyan		47
+nim	DarkGoldenrod	gdext/colortools.html#DarkGoldenrod	const DarkGoldenrod		49
+nim	DarkGray	gdext/colortools.html#DarkGray	const DarkGray		51
+nim	DarkGreen	gdext/colortools.html#DarkGreen	const DarkGreen		53
+nim	DarkKhaki	gdext/colortools.html#DarkKhaki	const DarkKhaki		55
+nim	DarkMagenta	gdext/colortools.html#DarkMagenta	const DarkMagenta		57
+nim	DarkOliveGreen	gdext/colortools.html#DarkOliveGreen	const DarkOliveGreen		59
+nim	DarkOrange	gdext/colortools.html#DarkOrange	const DarkOrange		61
+nim	DarkOrchid	gdext/colortools.html#DarkOrchid	const DarkOrchid		63
+nim	DarkRed	gdext/colortools.html#DarkRed	const DarkRed		65
+nim	DarkSalmon	gdext/colortools.html#DarkSalmon	const DarkSalmon		67
+nim	DarkSeaGreen	gdext/colortools.html#DarkSeaGreen	const DarkSeaGreen		69
+nim	DarkSlateBlue	gdext/colortools.html#DarkSlateBlue	const DarkSlateBlue		71
+nim	DarkSlateGray	gdext/colortools.html#DarkSlateGray	const DarkSlateGray		73
+nim	DarkTurquoise	gdext/colortools.html#DarkTurquoise	const DarkTurquoise		75
+nim	DarkViolet	gdext/colortools.html#DarkViolet	const DarkViolet		77
+nim	DeepPink	gdext/colortools.html#DeepPink	const DeepPink		79
+nim	DeepSkyBlue	gdext/colortools.html#DeepSkyBlue	const DeepSkyBlue		81
+nim	DimGray	gdext/colortools.html#DimGray	const DimGray		83
+nim	DodgerBlue	gdext/colortools.html#DodgerBlue	const DodgerBlue		85
+nim	Firebrick	gdext/colortools.html#Firebrick	const Firebrick		87
+nim	FloralWhite	gdext/colortools.html#FloralWhite	const FloralWhite		89
+nim	ForestGreen	gdext/colortools.html#ForestGreen	const ForestGreen		91
+nim	Fuchsia	gdext/colortools.html#Fuchsia	const Fuchsia		93
+nim	Gainsboro	gdext/colortools.html#Gainsboro	const Gainsboro		95
+nim	GhostWhite	gdext/colortools.html#GhostWhite	const GhostWhite		97
+nim	Gold	gdext/colortools.html#Gold	const Gold		99
+nim	Goldenrod	gdext/colortools.html#Goldenrod	const Goldenrod		101
+nim	Gray	gdext/colortools.html#Gray	const Gray		103
+nim	Green	gdext/colortools.html#Green	const Green		105
+nim	GreenYellow	gdext/colortools.html#GreenYellow	const GreenYellow		107
+nim	Honeydew	gdext/colortools.html#Honeydew	const Honeydew		109
+nim	HotPink	gdext/colortools.html#HotPink	const HotPink		111
+nim	IndianRed	gdext/colortools.html#IndianRed	const IndianRed		113
+nim	Indigo	gdext/colortools.html#Indigo	const Indigo		115
+nim	Ivory	gdext/colortools.html#Ivory	const Ivory		117
+nim	Khaki	gdext/colortools.html#Khaki	const Khaki		119
+nim	Lavender	gdext/colortools.html#Lavender	const Lavender		121
+nim	LavenderBlush	gdext/colortools.html#LavenderBlush	const LavenderBlush		123
+nim	LawnGreen	gdext/colortools.html#LawnGreen	const LawnGreen		125
+nim	LemonChiffon	gdext/colortools.html#LemonChiffon	const LemonChiffon		127
+nim	LightBlue	gdext/colortools.html#LightBlue	const LightBlue		129
+nim	LightCoral	gdext/colortools.html#LightCoral	const LightCoral		131
+nim	LightCyan	gdext/colortools.html#LightCyan	const LightCyan		133
+nim	LightGoldenrod	gdext/colortools.html#LightGoldenrod	const LightGoldenrod		135
+nim	LightGray	gdext/colortools.html#LightGray	const LightGray		137
+nim	LightGreen	gdext/colortools.html#LightGreen	const LightGreen		139
+nim	LightPink	gdext/colortools.html#LightPink	const LightPink		141
+nim	LightSalmon	gdext/colortools.html#LightSalmon	const LightSalmon		143
+nim	LightSeaGreen	gdext/colortools.html#LightSeaGreen	const LightSeaGreen		145
+nim	LightSkyBlue	gdext/colortools.html#LightSkyBlue	const LightSkyBlue		147
+nim	LightSlateGray	gdext/colortools.html#LightSlateGray	const LightSlateGray		149
+nim	LightSteelBlue	gdext/colortools.html#LightSteelBlue	const LightSteelBlue		151
+nim	LightYellow	gdext/colortools.html#LightYellow	const LightYellow		153
+nim	Lime	gdext/colortools.html#Lime	const Lime		155
+nim	LimeGreen	gdext/colortools.html#LimeGreen	const LimeGreen		157
+nim	Linen	gdext/colortools.html#Linen	const Linen		159
+nim	Magenta	gdext/colortools.html#Magenta	const Magenta		161
+nim	Maroon	gdext/colortools.html#Maroon	const Maroon		163
+nim	MediumAquamarine	gdext/colortools.html#MediumAquamarine	const MediumAquamarine		165
+nim	MediumBlue	gdext/colortools.html#MediumBlue	const MediumBlue		167
+nim	MediumOrchid	gdext/colortools.html#MediumOrchid	const MediumOrchid		169
+nim	MediumPurple	gdext/colortools.html#MediumPurple	const MediumPurple		171
+nim	MediumSeaGreen	gdext/colortools.html#MediumSeaGreen	const MediumSeaGreen		173
+nim	MediumSlateBlue	gdext/colortools.html#MediumSlateBlue	const MediumSlateBlue		175
+nim	MediumSpringGreen	gdext/colortools.html#MediumSpringGreen	const MediumSpringGreen		177
+nim	MediumTurquoise	gdext/colortools.html#MediumTurquoise	const MediumTurquoise		179
+nim	MediumVioletRed	gdext/colortools.html#MediumVioletRed	const MediumVioletRed		181
+nim	MidnightBlue	gdext/colortools.html#MidnightBlue	const MidnightBlue		183
+nim	MintCream	gdext/colortools.html#MintCream	const MintCream		185
+nim	MistyRose	gdext/colortools.html#MistyRose	const MistyRose		187
+nim	Moccasin	gdext/colortools.html#Moccasin	const Moccasin		189
+nim	NavajoWhite	gdext/colortools.html#NavajoWhite	const NavajoWhite		191
+nim	NavyBlue	gdext/colortools.html#NavyBlue	const NavyBlue		193
+nim	OldLace	gdext/colortools.html#OldLace	const OldLace		195
+nim	Olive	gdext/colortools.html#Olive	const Olive		197
+nim	OliveDrab	gdext/colortools.html#OliveDrab	const OliveDrab		199
+nim	Orange	gdext/colortools.html#Orange	const Orange		201
+nim	OrangeRed	gdext/colortools.html#OrangeRed	const OrangeRed		203
+nim	Orchid	gdext/colortools.html#Orchid	const Orchid		205
+nim	PaleGoldenrod	gdext/colortools.html#PaleGoldenrod	const PaleGoldenrod		207
+nim	PaleGreen	gdext/colortools.html#PaleGreen	const PaleGreen		209
+nim	PaleTurquoise	gdext/colortools.html#PaleTurquoise	const PaleTurquoise		211
+nim	PaleVioletRed	gdext/colortools.html#PaleVioletRed	const PaleVioletRed		213
+nim	PapayaWhip	gdext/colortools.html#PapayaWhip	const PapayaWhip		215
+nim	PeachPuff	gdext/colortools.html#PeachPuff	const PeachPuff		217
+nim	Peru	gdext/colortools.html#Peru	const Peru		219
+nim	Pink	gdext/colortools.html#Pink	const Pink		221
+nim	Plum	gdext/colortools.html#Plum	const Plum		223
+nim	PowderBlue	gdext/colortools.html#PowderBlue	const PowderBlue		225
+nim	Purple	gdext/colortools.html#Purple	const Purple		227
+nim	RebeccaPurple	gdext/colortools.html#RebeccaPurple	const RebeccaPurple		229
+nim	Red	gdext/colortools.html#Red	const Red		231
+nim	RosyBrown	gdext/colortools.html#RosyBrown	const RosyBrown		233
+nim	RoyalBlue	gdext/colortools.html#RoyalBlue	const RoyalBlue		235
+nim	SaddleBrown	gdext/colortools.html#SaddleBrown	const SaddleBrown		237
+nim	Salmon	gdext/colortools.html#Salmon	const Salmon		239
+nim	SandyBrown	gdext/colortools.html#SandyBrown	const SandyBrown		241
+nim	SeaGreen	gdext/colortools.html#SeaGreen	const SeaGreen		243
+nim	Seashell	gdext/colortools.html#Seashell	const Seashell		245
+nim	Sienna	gdext/colortools.html#Sienna	const Sienna		247
+nim	Silver	gdext/colortools.html#Silver	const Silver		249
+nim	SkyBlue	gdext/colortools.html#SkyBlue	const SkyBlue		251
+nim	SlateBlue	gdext/colortools.html#SlateBlue	const SlateBlue		253
+nim	SlateGray	gdext/colortools.html#SlateGray	const SlateGray		255
+nim	Snow	gdext/colortools.html#Snow	const Snow		257
+nim	SpringGreen	gdext/colortools.html#SpringGreen	const SpringGreen		259
+nim	SteelBlue	gdext/colortools.html#SteelBlue	const SteelBlue		261
+nim	Tan	gdext/colortools.html#Tan	const Tan		263
+nim	Teal	gdext/colortools.html#Teal	const Teal		265
+nim	Thistle	gdext/colortools.html#Thistle	const Thistle		267
+nim	Tomato	gdext/colortools.html#Tomato	const Tomato		269
+nim	Transparent	gdext/colortools.html#Transparent	const Transparent		271
+nim	Turquoise	gdext/colortools.html#Turquoise	const Turquoise		273
+nim	Violet	gdext/colortools.html#Violet	const Violet		275
+nim	WebGray	gdext/colortools.html#WebGray	const WebGray		277
+nim	WebGreen	gdext/colortools.html#WebGreen	const WebGreen		279
+nim	WebMaroon	gdext/colortools.html#WebMaroon	const WebMaroon		281
+nim	WebPurple	gdext/colortools.html#WebPurple	const WebPurple		283
+nim	Wheat	gdext/colortools.html#Wheat	const Wheat		285
+nim	White	gdext/colortools.html#White	const White		287
+nim	WhiteSmoke	gdext/colortools.html#WhiteSmoke	const WhiteSmoke		289
+nim	Yellow	gdext/colortools.html#Yellow	const Yellow		291
+nim	YellowGreen	gdext/colortools.html#YellowGreen	const YellowGreen		293
+nim	`-`	gdext/colortools.html#-,Color	proc `-`(left: Color): Color		313
+nim	`+`	gdext/colortools.html#+,Color	proc `+`(left: Color): Color		314
+nim	`not`	gdext/colortools.html#not,Color	proc `not`(left: Color): bool		315
+nim	`*`	gdext/colortools.html#*,Color,Int	proc `*`(left: Color; right: Int): Color		316
+nim	`/`	gdext/colortools.html#/,Color,Int	proc `/`(left: Color; right: Int): Color		317
+nim	`*`	gdext/colortools.html#*,Color,Float	proc `*`(left: Color; right: Float): Color		318
+nim	`/`	gdext/colortools.html#/,Color,Float	proc `/`(left: Color; right: Float): Color		319
+nim	`+`	gdext/colortools.html#+,Color,Color	proc `+`(left: Color; right: Color): Color		320
+nim	`-`	gdext/colortools.html#-,Color,Color	proc `-`(left: Color; right: Color): Color		321
+nim	`*`	gdext/colortools.html#*,Color,Color	proc `*`(left: Color; right: Color): Color		322
+nim	`/`	gdext/colortools.html#/,Color,Color	proc `/`(left: Color; right: Color): Color		323
+nim	toArgb32	gdext/colortools.html#toArgb32,Color	proc toArgb32(self: Color): Int		364
+nim	toAbgr32	gdext/colortools.html#toAbgr32,Color	proc toAbgr32(self: Color): Int		366
+nim	toRgba32	gdext/colortools.html#toRgba32,Color	proc toRgba32(self: Color): Int		368
+nim	toArgb64	gdext/colortools.html#toArgb64,Color	proc toArgb64(self: Color): Int		370
+nim	toAbgr64	gdext/colortools.html#toAbgr64,Color	proc toAbgr64(self: Color): Int		372
+nim	toRgba64	gdext/colortools.html#toRgba64,Color	proc toRgba64(self: Color): Int		374
+nim	toHtml	gdext/colortools.html#toHtml,Color,bool	proc toHtml(self: Color; withAlpha: bool = true): String		376
+nim	clamp	gdext/colortools.html#clamp,Color,Color,Color	proc clamp(self: Color; min: Color = color(0, 0, 0, 0);\n      max: Color = color(1, 1, 1, 1)): Color		379
+nim	inverted	gdext/colortools.html#inverted,Color	proc inverted(self: Color): Color		382
+nim	lerp	gdext/colortools.html#lerp,Color,Color,Float	proc lerp(self: Color; to: Color; weight: Float): Color		384
+nim	lightened	gdext/colortools.html#lightened,Color,Float	proc lightened(self: Color; amount: Float): Color		387
+nim	darkened	gdext/colortools.html#darkened,Color,Float	proc darkened(self: Color; amount: Float): Color		390
+nim	blend	gdext/colortools.html#blend,Color,Color	proc blend(self: Color; over: Color): Color		393
+nim	getLuminance	gdext/colortools.html#getLuminance,Color	proc getLuminance(self: Color): Float		396
+nim	srgbToLinear	gdext/colortools.html#srgbToLinear,Color	proc srgbToLinear(self: Color): Color		398
+nim	linearToSrgb	gdext/colortools.html#linearToSrgb,Color	proc linearToSrgb(self: Color): Color		400
+nim	isEqualApprox	gdext/colortools.html#isEqualApprox,Color,Color	proc isEqualApprox(self: Color; to: Color): bool		402
+nim	hex	gdext/colortools.html#hex,typedesc[Color],Int	proc hex(_: typedesc[Color]; hex: Int): Color		405
+nim	hex64	gdext/colortools.html#hex64,typedesc[Color],Int	proc hex64(_: typedesc[Color]; hex: Int): Color		408
+nim	html	gdext/colortools.html#html,typedesc[Color],String	proc html(_: typedesc[Color]; rgba: String): Color		411
+nim	htmlIsValid	gdext/colortools.html#htmlIsValid,typedesc[Color],String	proc htmlIsValid(_: typedesc[Color]; color: String): bool		414
+nim	fromString	gdext/colortools.html#fromString,typedesc[Color],String,Color	proc fromString(_: typedesc[Color]; str: String; default: Color): Color		417
+nim	fromHsv	gdext/colortools.html#fromHsv,typedesc[Color],Float,Float,Float,Float	proc fromHsv(_: typedesc[Color]; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color		420
+nim	fromOkHsl	gdext/colortools.html#fromOkHsl,typedesc[Color],Float,Float,Float,Float	proc fromOkHsl(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color		423
+nim	fromRgbe9995	gdext/colortools.html#fromRgbe9995,typedesc[Color],Int	proc fromRgbe9995(_: typedesc[Color]; rgbe: Int): Color		426
+nim	fromRgba8	gdext/colortools.html#fromRgba8,typedesc[Color],Int,Int,Int,Int	proc fromRgba8(_: typedesc[Color]; r8: Int; g8: Int; b8: Int; a8: Int = 255): Color		429
+nim	`[]`	gdext/colortools.html#[],Color,int	proc `[]`(self: Color; index: int): float_elem		16
+nimgrp	color	gdext/colortools.html#color-procs-all	proc		6
+nimgrp	+	gdext/colortools.html#+-procs-all	proc		314
+nimgrp	-	gdext/colortools.html#--procs-all	proc		313
+nimgrp	/	gdext/colortools.html#/-procs-all	proc		317
+nimgrp	*	gdext/colortools.html#*-procs-all	proc		316

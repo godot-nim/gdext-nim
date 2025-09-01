@@ -1,0 +1,26 @@
+nimTitle	staticevents	gdext/private/staticevents.html	module gdext/private/staticevents		0
+nim	Event	gdext/private/staticevents.html#Event	type Event		5
+nim	Contract	gdext/private/staticevents.html#Contract	object Contract		6
+nim	event	gdext/private/staticevents.html#event,string	proc event(name: string): Event		7
+nim	hash	gdext/private/staticevents.html#hash,CacheSeq	proc hash(event: Event): Hash		8
+nim	`==`	gdext/private/staticevents.html#==,CacheSeq,CacheSeq	proc `==`(a, b: Event): bool		9
+nim	invoked	gdext/private/staticevents.html#invoked	var invoked		12
+nim	expandEvent	gdext/private/staticevents.html#expandEvent.m,staticEvent,untyped	macro expandEvent(event: static Event; def: untyped): untyped		14
+nim	execon	gdext/private/staticevents.html#execon.m,staticEvent,	macro execon(event: static Event; def): untyped		41
+nim	enums	gdext/private/staticevents.html#enums.t,typedesc[Contract]	template enums(c: typedesc[Contract]): static Event		54
+nim	virtual_base	gdext/private/staticevents.html#virtual_base.t,typedesc[Contract]	template virtual_base(c: typedesc[Contract]): static Event		55
+nim	virtual	gdext/private/staticevents.html#virtual.t,typedesc[Contract]	template virtual(c: typedesc[Contract]): static Event		56
+nim	procedure	gdext/private/staticevents.html#procedure.t,typedesc[Contract]	template procedure(c: typedesc[Contract]): static Event		57
+nim	pre_property	gdext/private/staticevents.html#pre_property.t,typedesc[Contract]	template pre_property(c: typedesc[Contract]): static Event		58
+nim	property	gdext/private/staticevents.html#property.t,typedesc[Contract]	template property(c: typedesc[Contract]): static Event		59
+nim	signal	gdext/private/staticevents.html#signal.t,typedesc[Contract]	template signal(c: typedesc[Contract]): static Event		60
+nim	invoke	gdext/private/staticevents.html#invoke.t,typedesc[Contract]	template invoke(contract: typedesc[Contract])		62
+nim	init_engine	gdext/private/staticevents.html#init_engine	const init_engine		80
+nim	initialize_core	gdext/private/staticevents.html#initialize_core	const initialize_core		86
+nim	initialize_servers	gdext/private/staticevents.html#initialize_servers	const initialize_servers		87
+nim	initialize_scene	gdext/private/staticevents.html#initialize_scene	const initialize_scene		88
+nim	initialize_editor	gdext/private/staticevents.html#initialize_editor	const initialize_editor		89
+nim	eliminate_core	gdext/private/staticevents.html#eliminate_core	const eliminate_core		90
+nim	eliminate_servers	gdext/private/staticevents.html#eliminate_servers	const eliminate_servers		91
+nim	eliminate_scene	gdext/private/staticevents.html#eliminate_scene	const eliminate_scene		92
+nim	eliminate_editor	gdext/private/staticevents.html#eliminate_editor	const eliminate_editor		93

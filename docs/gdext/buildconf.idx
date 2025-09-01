@@ -1,0 +1,34 @@
+nimTitle	buildconf	gdext/buildconf.html	module gdext/buildconf		0
+nim	windows	gdext/buildconf.html#windows	Platform.windows		79
+nim	macos	gdext/buildconf.html#macos	Platform.macos		79
+nim	linux	gdext/buildconf.html#linux	Platform.linux		79
+nim	android	gdext/buildconf.html#android	Platform.android		79
+nim	ios	gdext/buildconf.html#ios	Platform.ios		79
+nim	web	gdext/buildconf.html#web	Platform.web		79
+nim	Platform	gdext/buildconf.html#Platform	enum Platform		79
+nim	debug	gdext/buildconf.html#debug	Target.debug		90
+nim	release	gdext/buildconf.html#release	Target.release		90
+nim	editor	gdext/buildconf.html#editor	Target.editor		90
+nim	Target	gdext/buildconf.html#Target	enum Target		90
+nim	default	gdext/buildconf.html#default	Architecture.default		96
+nim	double	gdext/buildconf.html#double	Architecture.double		96
+nim	single	gdext/buildconf.html#single	Architecture.single		96
+nim	x86_32	gdext/buildconf.html#x86_32	Architecture.x86_32		96
+nim	x86_64	gdext/buildconf.html#x86_64	Architecture.x86_64		96
+nim	arm32	gdext/buildconf.html#arm32	Architecture.arm32		96
+nim	arm64	gdext/buildconf.html#arm64	Architecture.arm64		96
+nim	rv64	gdext/buildconf.html#rv64	Architecture.rv64		96
+nim	riscv	gdext/buildconf.html#riscv	Architecture.riscv		96
+nim	wasm32	gdext/buildconf.html#wasm32	Architecture.wasm32		96
+nim	Architecture	gdext/buildconf.html#Architecture	enum Architecture		96
+nim	create	gdext/buildconf.html#create	UpdateMethod.create		109
+nim	overwrite	gdext/buildconf.html#overwrite	UpdateMethod.overwrite		109
+nim	inject	gdext/buildconf.html#inject	UpdateMethod.inject		109
+nim	UpdateMethod	gdext/buildconf.html#UpdateMethod	enum UpdateMethod		109
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Platform]	proc cmdswitched(_: typedesc[Platform]): bool		145
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Target]	proc cmdswitched(_: typedesc[Target]): bool		147
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Architecture]	proc cmdswitched(_: typedesc[Architecture]): bool		149
+nim	BuildSettings	gdext/buildconf.html#BuildSettings	type BuildSettings		211
+nim	configure	gdext/buildconf.html#configure.t,BuildSettings,	template configure(setting: BuildSettings; body)		478
+nim	configure	gdext/buildconf.html#configure,BuildSettings	proc configure(setting: BuildSettings)		485
+nimgrp	cmdswitched	gdext/buildconf.html#cmdswitched-procs-all	proc		145
