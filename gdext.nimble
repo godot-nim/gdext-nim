@@ -40,5 +40,23 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, "gdextwiz run-editor testproject/editor"
   echo "All tests passed!"
 
-task docgen, "Generate project documentation":
+task genDocs, "Generate API reference from Nim sources":
   exec "nim doc --project --index:on -o:docs -d:docgen src/gdext"
+
+task serveDocs, "Start local docs site with Docker (foreground)":
+  exec "docker-compose up"
+
+task stopDocs, "Stop the local docs site (Docker)":
+  exec "docker-compose down"
+
+task openDocs, "Open docs site in default browser":
+  when defined(windows):
+    exec "start http://localhost:4000"
+  elif defined(macosx):
+    exec "open http://localhost:4000"
+  else:
+    exec "xdg-open http://localhost:4000"
+
+task docs, "Start docs in background (Docker) and open browser":
+  exec "docker-compose up -d"
+  openDocsTask()

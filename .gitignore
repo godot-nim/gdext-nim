@@ -6,3 +6,4 @@ bin/
 lib/
 
 **/.DS_Store
+docs/_site
