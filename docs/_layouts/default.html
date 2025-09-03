@@ -42,6 +42,10 @@
               <option value="light">🌕 Light</option>
             </select>
           </div>
+          <div id="global-links">
+            {% include sitemap.html %}
+          </div>
+          <b>Table of contents</b>
         </div>
 
         <div class="nine columns" id="content">
@@ -49,6 +53,10 @@
         </div>
       </div>
       <div class="twelve-columns footer">
+        <div style="display: flex; justify-content: space-between; gap: 2rem;">
+          {% include sitemap.html %}
+        </div>
+
         <span class="nim-sprite"></span>
       </div>
     </div>
