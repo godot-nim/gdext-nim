@@ -49,6 +49,22 @@
         </div>
 
         <div class="nine columns" id="content">
+          <table class="docinfo" frame="void" rules="none">
+            <colgroup>
+              <col class="docinfo-name">
+              <col class="docinfo-content">
+            </colgroup>
+            <tbody valign="top">
+              <tr>
+                <th class="docinfo-name">Authors:</th>
+                <td>{{ page.author | default: "gdext-nim community"}}</td>
+              </tr>
+              <tr>
+                <th class="docinfo-name">Version:</th>
+                <td>0.14.0</td>
+              </tr>
+            </tbody>
+          </table>
           {{ content }}
         </div>
       </div>

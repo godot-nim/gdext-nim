@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Quick Reference
+author: la.panon.
 ---
 
 * TOC

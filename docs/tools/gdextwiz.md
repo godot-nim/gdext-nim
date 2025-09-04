@@ -1,6 +1,7 @@
 ---
 layout: default
 title: gdextwiz Manual
+author: la.panon.
 ---
 
 * TOC
