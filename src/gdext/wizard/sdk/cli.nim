@@ -77,7 +77,7 @@ proc display*(context: var CliContext; notifier: Notifier; msg: string) =
       setForegroundColor notifyColor[notifier]
       writeStyled padding, notifyStyle[notifier]
 
-    setForegroundColor fgDefault
+    setForegroundColor fgWhite
     echo line
 
 
@@ -133,17 +133,17 @@ proc promptSelect(context: var CliContext; msg: string; options: openArray[strin
       if i == selecting:
         setForegroundColor fgMagenta
         stdout.write select
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
         stdout.writeLine option
       elif i == lower(selecting, options.len):
         setForegroundColor fgMagenta
         writeStyled below, {styleDim}
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
         writeStyled option & '\n', {styleDim}
       elif i == upper(selecting, options.len):
         setForegroundColor fgMagenta
         writeStyled above, {styleDim}
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
         writeStyled option & '\n', {styleDim}
       else:
         stdout.write padding
@@ -242,24 +242,24 @@ proc promptMultiIndex*(context: var CliContext; msg: string; options: openArray[
       if i == selecting:
         setForegroundColor fgMagenta
         stdout.write select & check[i in sets]
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
         stdout.writeLine option
       elif i == lower(selecting, options.len):
         setForegroundColor fgMagenta
         writeStyled below & check[i in sets], {styleDim}
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
 
         writeStyled option & '\n', {styleDim}
       elif i == upper(selecting, options.len):
         setForegroundColor fgMagenta
         writeStyled above & check[i in sets], {styleDim}
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
 
         writeStyled option & '\n', {styleDim}
       else:
         setForegroundColor fgMagenta
         writeStyled padding & check[i in sets], {styleDim}
-        setForegroundColor fgDefault
+        setForegroundColor fgWhite
 
         writeStyled option & '\n', {styleDim}
 
