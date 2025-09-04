@@ -79,6 +79,7 @@ proc display*(context: var CliContext; notifier: Notifier; msg: string) =
 
     setForegroundColor fgWhite
     echo line
+    setForegroundColor fgWhite
 
 
 proc info*(context: var CliContext; msg: string) = context.display(Info, msg)
