@@ -4,6 +4,9 @@ title: Home
 author: la.panon. & gdext-nim Community
 ---
 
+* TOC
+{:toc}
+
 gdext-nimは **Nimの表現力 × Godotのゲーム制作** を実現する拡張です。  
 このサイトでは、gdext-nimの導入、開発サイクル、API参照方法、チュートリアルまでを段階的に学べます。
 

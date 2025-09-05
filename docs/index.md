@@ -4,6 +4,9 @@ title: Home
 author: la.panon. & gdext-nim Community
 ---
 
+* TOC
+{:toc}
+
 gdext-nim is an extension that brings together **the expressiveness of Nim × Godot game development**.  
 This site guides you through gdext-nim step by step, from setup and development workflow to API references and tutorials.
 
