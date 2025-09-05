@@ -82,6 +82,14 @@ pre.highlight, code.highlighter-rouge {
   color: white;
 }
 
+.highlight .gi {
+  background-color: greenyellow;
+}
+
+.highlight .gd {
+  background-color: darkred;
+}
+
 pre.code, code {
   background-color: initial;
 }
