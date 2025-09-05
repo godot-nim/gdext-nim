@@ -6,6 +6,7 @@
 [Tutorial]: {{site.baseurl}}/tutorial.html
 
 [gdextwiz User's manual]: {{site.baseurl}}/tools/gdextwiz.html
+[gdextwiz]: {{site.baseurl}}/tools/gdextwiz.html
 
 [Discord]: https://discord.gg/nXGmV6TFKQ
 [Forum]: https://github.com/godot-nim/gdext-nim/discussions

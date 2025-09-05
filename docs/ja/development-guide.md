@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Development Guide (ja)
+title: Development Guide
 author: la.panon.
 ---
 
@@ -304,7 +304,7 @@ gdext-nim の API は Godot 本体の API に準拠しています。
 クラス名やメソッド名は基本的に同じですが、Nim の命名規則（camelCase / PascalCase）に従って定義されています。
 
 - [Godot 公式 API ドキュメント](https://docs.godotengine.org/en/stable/classes/index.html)
-- [gdext-nim - Full API Reference](https://godot-nim.github.io/gdext-nim/)
+- [Full API Reference]
 
 実装の際はまず Godot 公式 API を参照し、うまくいかない場合に対応するクラスやメソッドを gdext-nim API Reference で確認する流れが便利です。
 
@@ -366,8 +366,4 @@ Sprite2Dのtextureに"res://icon.png"を設定し、実行しましょう。
 
   詳細な型や関数のドキュメント。bridgeモジュールのページが特に有益です。
 
-[gdextwiz]: {{ site.baseurl }}/tools/gdextwiz
-[Building & Exporting Guide]: {{ site.baseurl }}/building-and-exporting-guide
-[Quick Reference]: {{ site.baseurl }}/quick-reference
-[Full API Reference]: {{ site.baseurl }}/gdext
-[Tutorial]: {{ site.baseurl }}/tutorial
+{% include ja_links.md %}

@@ -312,7 +312,7 @@ gdext-nim’s API follows Godot’s official API.
 Class/method names are mostly identical but follow Nim’s conventions (camelCase / PascalCase).
 
 - [Godot Official API Docs](https://docs.godotengine.org/en/stable/classes/index.html)
-- [gdext-nim - Full API Reference](Full API Reference)
+- [Full API Reference]
 
 In practice, check Godot’s docs first, then confirm with gdext-nim’s reference if needed.
 
@@ -376,8 +376,4 @@ set its Sprite2D texture to "res://icon.png", and run.
   Complete type/function docs.
   The bridge module pages are especially useful.
 
-[gdextwiz]: {{ site.baseurl }}/tools/gdextwiz
-[Building & Exporting Guide]: {{ site.baseurl }}/building-and-exporting-guide
-[Quick Reference]: {{ site.baseurl }}/quick-reference
-[Full API Reference]: {{ site.baseurl }}/gdext
-[Tutorial]: {{ site.baseurl }}/tutorial
+{% include links.md %}
