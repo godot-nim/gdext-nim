@@ -32,6 +32,11 @@
   <div class="document" id="documentId">
     <div class="container">
       <h1 class="title">{{ page.title }}</h1>
+      <!-- Language Switcher -->
+      <div style="text-align: right;">
+        <a href="{{ site.baseurl }}{{ page.url | remove: '/ja' }}">English</a> |
+        <a href="{{ site.baseurl }}/ja{{ page.url | remove: '/ja' }}">日本語</a>
+      </div>
       <div class="row">
         <div class="three columns">
           <div class="theme-select-wrapper">
