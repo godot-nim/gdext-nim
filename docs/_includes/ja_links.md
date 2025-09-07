@@ -14,3 +14,5 @@
 
 [Examples]: https://github.com/godot-nim/demo
 [GitHub Source]: https://github.com/godot-nim/gdext-nim
+
+[buildconf.nim]:{{site.baseurl}}/gdext/buildconf.html
