@@ -643,4 +643,36 @@ var vector3: Vector3 = Vector3.Zero
 var vector3: Vector3 = Vector3.ZERO
 ```
 
+# Recipes
+
+## Compare types
+
+### Using **typeof**
+
+**GDScript:**
+
+```gdscript
+var foo = 2
+match typeof(foo):
+	TYPE_NIL:
+		print("foo is null")
+	TYPE_INT:
+		print("foo is an integer")
+	TYPE_OBJECT:
+		print("foo is a(n) %s" % foo.get_class())
+```
+
+**Nim:**
+
+```nim
+var foo = variant 2
+case cast[VariantType](gdext.typeof(foo))
+of VariantTypeNil:
+	print("foo is null")
+of VariantTypeInt:
+  print("foo is an integer")
+of VariantTypeObject:
+	print("foo is a(n) %s" % foo.getClass())
+```
+
 [reference]: {{ site.baseurl }}/gdext.html
