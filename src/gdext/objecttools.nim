@@ -35,10 +35,6 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
 {.push, inline.}
 proc castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).referenced
 proc castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.handle.castTo(typeof T).referenced
-
-proc `as`*[T: SomeClass](self: SomeClass; _: typedesc[T]): T = castTo(self, typedesc[T])
-proc `as`*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)
-proc `as`*[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)
 {.pop.}
 
 template unwrapped*[T: RefCounted](x: GdRef[T]): T = x.handle
