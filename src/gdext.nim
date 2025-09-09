@@ -24,6 +24,7 @@
 ## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
 ## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
 ## * `nameformats <gdext/nameformats.html>`_: Provides formatter functions for transforming Nim identifiers when exporting them to Godot.
+## * `versions <gdext/versions.html>`_: gdext version and supported Godot version
 
 {.warning[UnusedImport]: off.}
 
@@ -63,6 +64,7 @@ import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
 import gdext/conversions; export conversions
 import gdext/dollars; export dollars
+import gdext/versions; export versions
 
 import gdext/classes/[gdengine]
 export gdengine.isEditorHint
