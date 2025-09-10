@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export AudioStreamPlayer2D
 
 proc setStream*(self: AudioStreamPlayer2D; stream: gdref AudioStream): void =
   expandMethodBind(className AudioStreamPlayer2D, "set_stream", 2210767741)

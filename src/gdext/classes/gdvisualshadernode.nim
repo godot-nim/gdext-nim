@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export VisualShaderNode
 
 proc getDefaultInputPort*(self: VisualShaderNode; `type`: VisualShaderNode_PortType): int32 =
   expandMethodBind(className VisualShaderNode, "get_default_input_port", 1894493699)

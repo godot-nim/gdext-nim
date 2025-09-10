@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFTexture
 
 proc getSrcImage*(self: GLTFTexture): int32 =
   expandMethodBind(className GLTFTexture, "get_src_image", 3905245786)

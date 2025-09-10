@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectLimiter
 
 proc setCeilingDb*(self: AudioEffectLimiter; ceiling: Float): void =
   expandMethodBind(className AudioEffectLimiter, "set_ceiling_db", 373806689)

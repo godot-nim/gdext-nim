@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
+export CSGSphere3D
 
 proc setRadius*(self: CSGSphere3D; radius: Float): void =
   expandMethodBind(className CSGSphere3D, "set_radius", 373806689)

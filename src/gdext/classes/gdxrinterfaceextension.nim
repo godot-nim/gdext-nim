@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrinterface; export gdxrinterface
+export XRInterfaceExtension
 
 method getName*(self: XRInterfaceExtension): StringName {.base.} = (discard)
 proc registerVirtual_getName*[T: XRInterfaceExtension](Self: typedesc[T]) =

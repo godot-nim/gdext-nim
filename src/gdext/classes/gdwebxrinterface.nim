@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrinterface; export gdxrinterface
+export WebXRInterface
 
 proc isSessionSupported*(self: WebXRInterface; sessionMode: String): void =
   expandMethodBind(className WebXRInterface, "is_session_supported", 83702148)

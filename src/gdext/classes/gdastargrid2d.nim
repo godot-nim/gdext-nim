@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export AStarGrid2D
 
 method estimateCost*(self: AStarGrid2D; fromId: Vector2i; endId: Vector2i): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStarGrid2D](Self: typedesc[T]) =

@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdtexturelayeredrd; export gdtexturelayeredrd
+export TextureCubemapArrayRD

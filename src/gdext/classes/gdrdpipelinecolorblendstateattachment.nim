@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RDPipelineColorBlendStateAttachment
 
 proc setAsMix*(self: RDPipelineColorBlendStateAttachment): void =
   expandMethodBind(className RDPipelineColorBlendStateAttachment, "set_as_mix", 3218959716)

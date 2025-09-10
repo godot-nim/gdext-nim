@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export SurfaceTool
 
 proc setSkinWeightCount*(self: SurfaceTool; count: SurfaceTool_SkinWeightCount): void =
   expandMethodBind(className SurfaceTool, "set_skin_weight_count", 618679515)

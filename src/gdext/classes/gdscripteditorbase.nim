@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvboxcontainer; export gdvboxcontainer
+export ScriptEditorBase
 
 proc getBaseEditor*(self: ScriptEditorBase): Control =
   expandMethodBind(className ScriptEditorBase, "get_base_editor", 2783021301)

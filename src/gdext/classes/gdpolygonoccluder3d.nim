@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
+export PolygonOccluder3D
 
 proc setPolygon*(self: PolygonOccluder3D; polygon: PackedVector2Array): void =
   expandMethodBind(className PolygonOccluder3D, "set_polygon", 1509147220)

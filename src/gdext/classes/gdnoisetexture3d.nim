@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture3d; export gdtexture3d
+export NoiseTexture3D
 
 proc setWidth*(self: NoiseTexture3D; width: int32): void =
   expandMethodBind(className NoiseTexture3D, "set_width", 1286410249)

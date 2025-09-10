@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export NavigationMeshGenerator
 
 proc bake*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh; rootNode: Node): void =
   expandMethodBind(className NavigationMeshGenerator, "bake", 1401173477)

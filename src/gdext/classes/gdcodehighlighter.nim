@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdsyntaxhighlighter; export gdsyntaxhighlighter
+export CodeHighlighter
 
 proc addKeywordColor*(self: CodeHighlighter; keyword: String; color: Color): void =
   expandMethodBind(className CodeHighlighter, "add_keyword_color", 1636512886)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Curve2D
 
 proc getPointCount*(self: Curve2D): int32 =
   expandMethodBind(className Curve2D, "get_point_count", 3905245786)

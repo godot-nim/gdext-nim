@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export PhysicsDirectSpaceState3D
 
 proc intersectPoint*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsPointQueryParameters3D; maxRetvals: int32 = 32): TypedArray[Dictionary] =
   expandMethodBind(className PhysicsDirectSpaceState3D, "intersect_point", 975173756)

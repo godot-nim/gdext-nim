@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export NavigationMeshSourceGeometryData3D
 
 proc setVertices*(self: NavigationMeshSourceGeometryData3D; vertices: PackedFloat32Array): void =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "set_vertices", 2899603908)

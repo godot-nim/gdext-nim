@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdanimationrootnode; export gdanimationrootnode
+export AnimationNodeAnimation
 
 proc setAnimation*(self: AnimationNodeAnimation; name: StringName): void =
   expandMethodBind(className AnimationNodeAnimation, "set_animation", 3304788590)

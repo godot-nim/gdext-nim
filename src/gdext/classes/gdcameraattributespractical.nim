@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcameraattributes; export gdcameraattributes
+export CameraAttributesPractical
 
 proc setDofBlurFarEnabled*(self: CameraAttributesPractical; enabled: bool): void =
   expandMethodBind(className CameraAttributesPractical, "set_dof_blur_far_enabled", 2586408642)

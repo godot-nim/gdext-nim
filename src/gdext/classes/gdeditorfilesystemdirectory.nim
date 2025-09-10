@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export EditorFileSystemDirectory
 
 proc getSubdirCount*(self: EditorFileSystemDirectory): int32 =
   expandMethodBind(className EditorFileSystemDirectory, "get_subdir_count", 3905245786)

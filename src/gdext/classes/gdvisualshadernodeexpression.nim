@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodegroupbase; export gdvisualshadernodegroupbase
+export VisualShaderNodeExpression
 
 proc setExpression*(self: VisualShaderNodeExpression; expression: String): void =
   expandMethodBind(className VisualShaderNodeExpression, "set_expression", 83702148)

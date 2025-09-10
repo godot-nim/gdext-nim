@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export VideoStream
 
 method instantiatePlayback*(self: VideoStream): gdref VideoStreamPlayback {.base.} = (discard)
 proc registerVirtual_instantiatePlayback*[T: VideoStream](Self: typedesc[T]) =

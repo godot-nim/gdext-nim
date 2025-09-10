@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdfont; export gdfont
+export FontVariation
 
 proc setBaseFont*(self: FontVariation; font: gdref Font): void =
   expandMethodBind(className FontVariation, "set_base_font", 1262170328)

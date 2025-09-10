@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
+export AudioStreamMicrophone

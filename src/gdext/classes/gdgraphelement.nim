@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export GraphElement
 
 proc setResizable*(self: GraphElement; resizable: bool): void =
   expandMethodBind(className GraphElement, "set_resizable", 2586408642)

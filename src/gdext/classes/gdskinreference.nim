@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export SkinReference
 
 proc getSkeleton*(self: SkinReference): RID =
   expandMethodBind(className SkinReference, "get_skeleton", 2944877500)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdimagetexturelayered; export gdimagetexturelayered
+export CubemapArray
 
 proc createPlaceholder*(self: CubemapArray): gdref Resource =
   expandMethodBind(className CubemapArray, "create_placeholder", 121922552)

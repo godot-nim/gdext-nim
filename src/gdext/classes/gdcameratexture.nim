@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export CameraTexture
 
 proc setCameraFeedId*(self: CameraTexture; feedId: int32): void =
   expandMethodBind(className CameraTexture, "set_camera_feed_id", 1286410249)

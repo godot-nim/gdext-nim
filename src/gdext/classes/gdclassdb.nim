@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export ClassDB
 
 proc getClassList*(self: ClassDB): PackedStringArray =
   expandMethodBind(className ClassDB, "get_class_list", 1139954409)

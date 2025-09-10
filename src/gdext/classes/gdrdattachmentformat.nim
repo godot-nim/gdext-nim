@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RDAttachmentFormat
 
 proc setFormat*(self: RDAttachmentFormat; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDAttachmentFormat, "set_format", 565531219)

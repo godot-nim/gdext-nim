@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdphysicsdirectspacestate3d; export gdphysicsdirectspacestate3d
+export PhysicsDirectSpaceState3DExtension
 
 method intersectRay*(self: PhysicsDirectSpaceState3DExtension; `from`: Vector3; to: Vector3; collisionMask: uint32; collideWithBodies: bool; collideWithAreas: bool; hitFromInside: bool; hitBackFaces: bool; pickRay: bool; retval: ptr PhysicsServer3DExtensionRayResult): bool {.base.} = (discard)
 proc registerVirtual_intersectRay*[T: PhysicsDirectSpaceState3DExtension](Self: typedesc[T]) =

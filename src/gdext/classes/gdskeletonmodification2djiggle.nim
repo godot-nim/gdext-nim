@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
+export SkeletonModification2DJiggle
 
 proc setTargetNode*(self: SkeletonModification2DJiggle; targetNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DJiggle, "set_target_node", 1348162250)

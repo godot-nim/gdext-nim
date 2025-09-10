@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export RemoteTransform2D
 
 proc setRemoteNode*(self: RemoteTransform2D; path: NodePath): void =
   expandMethodBind(className RemoteTransform2D, "set_remote_node", 1348162250)

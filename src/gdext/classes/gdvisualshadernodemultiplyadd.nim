@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeMultiplyAdd
 
 proc setOpType*(self: VisualShaderNodeMultiplyAdd; `type`: VisualShaderNodeMultiplyAdd_OpType): void =
   expandMethodBind(className VisualShaderNodeMultiplyAdd, "set_op_type", 1409862380)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export GradientTexture2D
 
 proc setGradient*(self: GradientTexture2D; gradient: gdref Gradient): void =
   expandMethodBind(className GradientTexture2D, "set_gradient", 2756054477)

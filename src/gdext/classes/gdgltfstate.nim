@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFState
 
 const HandleBinaryDiscardTextures* = 0
 const HandleBinaryExtractTextures* = 1

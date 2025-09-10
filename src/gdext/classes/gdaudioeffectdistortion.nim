@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectDistortion
 
 proc setMode*(self: AudioEffectDistortion; mode: AudioEffectDistortion_Mode): void =
   expandMethodBind(className AudioEffectDistortion, "set_mode", 1314744793)

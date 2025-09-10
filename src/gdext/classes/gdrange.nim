@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
+export Range
 
 method valueChanged*(self: Range; newValue: float64): void {.base.} = (discard)
 proc registerVirtual_valueChanged*[T: Range](Self: typedesc[T]) =

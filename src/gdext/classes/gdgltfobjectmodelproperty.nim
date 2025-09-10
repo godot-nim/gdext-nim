@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export GLTFObjectModelProperty
 
 proc appendNodePath*(self: GLTFObjectModelProperty; nodePath: NodePath): void =
   expandMethodBind(className GLTFObjectModelProperty, "append_node_path", 1348162250)

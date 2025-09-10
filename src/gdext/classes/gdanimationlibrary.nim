@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export AnimationLibrary
 
 proc addAnimation*(self: AnimationLibrary; name: StringName; animation: gdref Animation): Error =
   expandMethodBind(className AnimationLibrary, "add_animation", 1811855551)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectSpectrumAnalyzer
 
 proc setBufferLength*(self: AudioEffectSpectrumAnalyzer; seconds: Float): void =
   expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_buffer_length", 373806689)

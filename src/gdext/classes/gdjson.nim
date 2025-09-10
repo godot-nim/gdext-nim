@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export JSON
 
 proc stringify*(_: typedesc[JSON]; data: Variant; indent: String = newGdString(); sortKeys: bool = true; fullPrecision: bool = false): String =
   expandMethodBind(className JSON, "stringify", 462733549)

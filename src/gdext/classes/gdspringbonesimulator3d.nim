@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
+export SpringBoneSimulator3D
 
 proc setRootBoneName*(self: SpringBoneSimulator3D; index: int32; boneName: String): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_root_bone_name", 501894301)

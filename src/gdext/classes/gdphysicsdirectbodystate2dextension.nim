@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdphysicsdirectbodystate2d; export gdphysicsdirectbodystate2d
+export PhysicsDirectBodyState2DExtension
 
 method getTotalGravity*(self: PhysicsDirectBodyState2DExtension): Vector2 {.base.} = (discard)
 proc registerVirtual_getTotalGravity*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =

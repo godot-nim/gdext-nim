@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export MultiMesh
 
 proc setMesh*(self: MultiMesh; mesh: gdref Mesh): void =
   expandMethodBind(className MultiMesh, "set_mesh", 194775623)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export ShapeCast3D
 
 proc resourceChanged*(self: ShapeCast3D; resource: gdref Resource): void =
   expandMethodBind(className ShapeCast3D, "resource_changed", 968641751)

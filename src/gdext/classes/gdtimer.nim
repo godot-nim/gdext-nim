@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export Timer
 
 proc setWaitTime*(self: Timer; timeSec: float64): void =
   expandMethodBind(className Timer, "set_wait_time", 373806689)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export Polygon2D
 
 proc setPolygon*(self: Polygon2D; polygon: PackedVector2Array): void =
   expandMethodBind(className Polygon2D, "set_polygon", 1509147220)

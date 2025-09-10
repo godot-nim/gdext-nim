@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export AudioServer
 
 proc setBusCount*(self: AudioServer; amount: int32): void =
   expandMethodBind(className AudioServer, "set_bus_count", 1286410249)

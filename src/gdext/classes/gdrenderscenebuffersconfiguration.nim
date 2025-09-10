@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RenderSceneBuffersConfiguration
 
 proc getRenderTarget*(self: RenderSceneBuffersConfiguration): RID =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)

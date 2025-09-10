@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrtracker; export gdxrtracker
+export XRPositionalTracker
 
 proc getTrackerProfile*(self: XRPositionalTracker): String =
   expandMethodBind(className XRPositionalTracker, "get_tracker_profile", 201670096)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export SkeletonModifier3D
 
 method processModification*(self: SkeletonModifier3D): void {.base.} = (discard)
 proc registerVirtual_processModification*[T: SkeletonModifier3D](Self: typedesc[T]) =

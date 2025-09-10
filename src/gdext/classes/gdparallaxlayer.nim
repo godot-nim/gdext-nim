@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export ParallaxLayer
 
 proc setMotionScale*(self: ParallaxLayer; scale: Vector2): void =
   expandMethodBind(className ParallaxLayer, "set_motion_scale", 743155724)

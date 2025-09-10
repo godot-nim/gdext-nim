@@ -7,6 +7,7 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/internalbridge
 import gdext/private/debugging
+import gdext/private/classindex
 import gdext/classes/gdNode
 
 export gdinterface.getClassName

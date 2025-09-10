@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export SpriteFrames
 
 proc addAnimation*(self: SpriteFrames; anim: StringName): void =
   expandMethodBind(className SpriteFrames, "add_animation", 3304788590)

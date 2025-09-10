@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export RenderData
 
 proc getRenderSceneBuffers*(self: RenderData): gdref RenderSceneBuffers =
   expandMethodBind(className RenderData, "get_render_scene_buffers", 2793216201)

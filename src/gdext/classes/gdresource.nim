@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export Resource
 
 method setupLocalToScene*(self: Resource): void {.base.} = (discard)
 proc registerVirtual_setupLocalToScene*[T: Resource](Self: typedesc[T]) =

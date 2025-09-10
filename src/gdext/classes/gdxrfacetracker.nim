@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrtracker; export gdxrtracker
+export XRFaceTracker
 
 proc getBlendShape*(self: XRFaceTracker; blendShape: XRFaceTracker_BlendShapeEntry): Float =
   expandMethodBind(className XRFaceTracker, "get_blend_shape", 330010046)

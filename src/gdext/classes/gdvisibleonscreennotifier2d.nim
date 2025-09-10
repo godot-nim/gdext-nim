@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export VisibleOnScreenNotifier2D
 
 proc setRect*(self: VisibleOnScreenNotifier2D; rect: Rect2): void =
   expandMethodBind(className VisibleOnScreenNotifier2D, "set_rect", 2046264180)

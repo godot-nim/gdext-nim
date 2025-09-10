@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrange; export gdrange
+export ProgressBar
 
 proc setFillMode*(self: ProgressBar; mode: int32): void =
   expandMethodBind(className ProgressBar, "set_fill_mode", 1286410249)

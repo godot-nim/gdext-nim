@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export PackedDataContainer
 
 proc pack*(self: PackedDataContainer; value: Variant): Error =
   expandMethodBind(className PackedDataContainer, "pack", 966674026)

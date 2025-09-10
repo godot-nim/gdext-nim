@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
+export FogVolume
 
 proc setSize*(self: FogVolume; size: Vector3): void =
   expandMethodBind(className FogVolume, "set_size", 3460891852)

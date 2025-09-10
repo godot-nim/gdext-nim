@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodevectorbase; export gdvisualshadernodevectorbase
+export VisualShaderNodeVectorOp
 
 proc setOperator*(self: VisualShaderNodeVectorOp; op: VisualShaderNodeVectorOp_Operator): void =
   expandMethodBind(className VisualShaderNodeVectorOp, "set_operator", 3371507302)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
+export InputEventJoypadMotion
 
 proc setAxis*(self: InputEventJoypadMotion; axis: JoyAxis): void =
   expandMethodBind(className InputEventJoypadMotion, "set_axis", 1332685170)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export SkeletonProfile
 
 proc setRootBone*(self: SkeletonProfile; boneName: StringName): void =
   expandMethodBind(className SkeletonProfile, "set_root_bone", 3304788590)

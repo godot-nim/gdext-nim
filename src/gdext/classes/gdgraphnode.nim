@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgraphelement; export gdgraphelement
+export GraphNode
 
 method drawPort*(self: GraphNode; slotIndex: int32; position: Vector2i; left: bool; color: Color): void {.base.} = (discard)
 proc registerVirtual_drawPort*[T: GraphNode](Self: typedesc[T]) =

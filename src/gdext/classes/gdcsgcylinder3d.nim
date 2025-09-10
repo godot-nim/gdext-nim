@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
+export CSGCylinder3D
 
 proc setRadius*(self: CSGCylinder3D; radius: Float): void =
   expandMethodBind(className CSGCylinder3D, "set_radius", 373806689)

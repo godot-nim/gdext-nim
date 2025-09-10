@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
+export ConvexPolygonShape2D
 
 proc setPointCloud*(self: ConvexPolygonShape2D; pointCloud: PackedVector2Array): void =
   expandMethodBind(className ConvexPolygonShape2D, "set_point_cloud", 1509147220)

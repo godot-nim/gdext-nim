@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdscrollbar; export gdscrollbar
+export HScrollBar

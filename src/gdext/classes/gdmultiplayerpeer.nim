@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
+export MultiplayerPeer
 
 const TargetPeerBroadcast* = 0
 const TargetPeerServer* = 1

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeParticleEmitter
 
 proc setMode2D*(self: VisualShaderNodeParticleEmitter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeParticleEmitter, "set_mode_2d", 2586408642)

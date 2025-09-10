@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export EngineDebugger
 
 proc isActive*(self: EngineDebugger): bool =
   expandMethodBind(className EngineDebugger, "is_active", 2240911060)

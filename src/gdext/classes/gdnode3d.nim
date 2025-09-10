@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export Node3D
 
 const NotificationTransformChanged* = 2000
 const NotificationEnterWorld* = 41

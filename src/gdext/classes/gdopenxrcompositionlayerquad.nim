@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
+export OpenXRCompositionLayerQuad
 
 proc setQuadSize*(self: OpenXRCompositionLayerQuad; size: Vector2): void =
   expandMethodBind(className OpenXRCompositionLayerQuad, "set_quad_size", 743155724)

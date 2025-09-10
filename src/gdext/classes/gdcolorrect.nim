@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
+export ColorRect
 
 proc setColor*(self: ColorRect; color: Color): void =
   expandMethodBind(className ColorRect, "set_color", 2920490490)

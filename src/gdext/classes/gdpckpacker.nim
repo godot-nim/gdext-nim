@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export PCKPacker
 
 proc pckStart*(self: PCKPacker; pckPath: String; alignment: int32 = 32; key: String = newGdString("0000000000000000000000000000000000000000000000000000000000000000"); encryptDirectory: bool = false): Error =
   expandMethodBind(className PCKPacker, "pck_start", 508410629)

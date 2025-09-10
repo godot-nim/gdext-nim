@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrpositionaltracker; export gdxrpositionaltracker
+export XRBodyTracker
 
 proc setHasTrackingData*(self: XRBodyTracker; hasData: bool): void =
   expandMethodBind(className XRBodyTracker, "set_has_tracking_data", 2586408642)

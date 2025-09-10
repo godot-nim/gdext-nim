@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export JSONRPC
 
 proc setScope*(self: JSONRPC; scope: String; target: Object): void =
   expandMethodBind(className JSONRPC, "set_scope", 2572618360)

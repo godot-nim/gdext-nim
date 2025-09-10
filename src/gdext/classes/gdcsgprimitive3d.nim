@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcsgshape3d; export gdcsgshape3d
+export CSGPrimitive3D
 
 proc setFlipFaces*(self: CSGPrimitive3D; flipFaces: bool): void =
   expandMethodBind(className CSGPrimitive3D, "set_flip_faces", 2586408642)

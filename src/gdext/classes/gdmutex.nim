@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export Mutex
 
 proc lock*(self: Mutex): void =
   expandMethodBind(className Mutex, "lock", 3218959716)

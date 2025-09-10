@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Skin
 
 proc setBindCount*(self: Skin; bindCount: int32): void =
   expandMethodBind(className Skin, "set_bind_count", 1286410249)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
+export RetargetModifier3D
 
 proc setProfile*(self: RetargetModifier3D; profile: gdref SkeletonProfile): void =
   expandMethodBind(className RetargetModifier3D, "set_profile", 3870374136)

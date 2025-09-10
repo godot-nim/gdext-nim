@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export ShaderIncludeDB
 
 proc listBuiltInIncludeFiles*(_: typedesc[ShaderIncludeDB]): PackedStringArray =
   expandMethodBind(className ShaderIncludeDB, "list_built_in_include_files", 2981934095)

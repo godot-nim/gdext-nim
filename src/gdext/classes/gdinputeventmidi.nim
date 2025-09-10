@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
+export InputEventMIDI
 
 proc setChannel*(self: InputEventMIDI; channel: int32): void =
   expandMethodBind(className InputEventMIDI, "set_channel", 1286410249)

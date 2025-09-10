@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdconfirmationdialog; export gdconfirmationdialog
+export ScriptCreateDialog
 
 proc config*(self: ScriptCreateDialog; inherits: String; path: String; builtInEnabled: bool = true; loadEnabled: bool = true): void =
   expandMethodBind(className ScriptCreateDialog, "config", 869314288)

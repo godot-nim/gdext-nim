@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrenderscenedata; export gdrenderscenedata
+export RenderSceneDataExtension
 
 method getCamTransform*(self: RenderSceneDataExtension): Transform3D {.base.} = (discard)
 proc registerVirtual_getCamTransform*[T: RenderSceneDataExtension](Self: typedesc[T]) =

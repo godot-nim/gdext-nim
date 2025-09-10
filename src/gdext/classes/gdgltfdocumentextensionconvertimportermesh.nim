@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdgltfdocumentextension; export gdgltfdocumentextension
+export GLTFDocumentExtensionConvertImporterMesh

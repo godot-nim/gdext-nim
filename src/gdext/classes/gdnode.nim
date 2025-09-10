@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export Node
 
 const NotificationEnterTree* = 10
 const NotificationExitTree* = 11

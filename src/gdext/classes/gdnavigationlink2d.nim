@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export NavigationLink2D
 
 proc getRid*(self: NavigationLink2D): RID =
   expandMethodBind(className NavigationLink2D, "get_rid", 2944877500)

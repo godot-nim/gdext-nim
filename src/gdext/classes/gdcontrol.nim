@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcanvasitem; export gdcanvasitem
+export Control
 
 const NotificationResized* = 40
 const NotificationMouseEnter* = 41

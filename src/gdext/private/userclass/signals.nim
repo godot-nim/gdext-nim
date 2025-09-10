@@ -5,6 +5,7 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/propertyinfo
+import gdext/private/classindex
 import gdext/builtinindex
 
 import gdext/classes/gdobject

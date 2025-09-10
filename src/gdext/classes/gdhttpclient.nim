@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export HTTPClient
 
 proc connectToHost*(self: HTTPClient; host: String; port: int32 = -1; tlsOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className HTTPClient, "connect_to_host", 504540374)

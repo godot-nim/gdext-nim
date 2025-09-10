@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
+export InputEventGesture
 
 proc setPosition*(self: InputEventGesture; position: Vector2): void =
   expandMethodBind(className InputEventGesture, "set_position", 743155724)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export SceneReplicationConfig
 
 proc getProperties*(self: SceneReplicationConfig): TypedArray[NodePath] =
   expandMethodBind(className SceneReplicationConfig, "get_properties", 3995934104)

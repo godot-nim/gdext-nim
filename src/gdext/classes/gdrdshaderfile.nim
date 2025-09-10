@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export RDShaderFile
 
 proc setBytecode*(self: RDShaderFile; bytecode: gdref RDShaderSPIRV; version: StringName = default(StringName)): void =
   expandMethodBind(className RDShaderFile, "set_bytecode", 1526857008)

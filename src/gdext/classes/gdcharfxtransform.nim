@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export CharFXTransform
 
 proc getTransform*(self: CharFXTransform): Transform2D =
   expandMethodBind(className CharFXTransform, "get_transform", 3761352769)

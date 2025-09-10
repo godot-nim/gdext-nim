@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RDVertexAttribute
 
 proc setLocation*(self: RDVertexAttribute; pMember: uint32): void =
   expandMethodBind(className RDVertexAttribute, "set_location", 1286410249)

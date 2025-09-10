@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export PhysicsShapeQueryParameters3D
 
 proc setShape*(self: PhysicsShapeQueryParameters3D; shape: gdref Resource): void =
   expandMethodBind(className PhysicsShapeQueryParameters3D, "set_shape", 968641751)

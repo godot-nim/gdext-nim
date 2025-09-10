@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrinterface; export gdxrinterface
+export OpenXRInterface
 
 proc getDisplayRefreshRate*(self: OpenXRInterface): Float =
   expandMethodBind(className OpenXRInterface, "get_display_refresh_rate", 1740695150)

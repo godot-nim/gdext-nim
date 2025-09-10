@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Font
 
 proc setFallbacks*(self: Font; fallbacks: TypedArray[gdref Font]): void =
   expandMethodBind(className Font, "set_fallbacks", 381264803)

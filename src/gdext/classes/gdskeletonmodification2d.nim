@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export SkeletonModification2D
 
 method execute*(self: SkeletonModification2D; delta: float64): void {.base.} = (discard)
 proc registerVirtual_execute*[T: SkeletonModification2D](Self: typedesc[T]) =

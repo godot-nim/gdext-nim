@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
+export LightmapGI
 
 proc setLightData*(self: LightmapGI; data: gdref LightmapGIData): void =
   expandMethodBind(className LightmapGI, "set_light_data", 1790597277)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorTranslationParserPlugin
 
 method parseFile*(self: EditorTranslationParserPlugin; path: String): TypedArray[PackedStringArray] {.base.} = (discard)
 proc registerVirtual_parseFile*[T: EditorTranslationParserPlugin](Self: typedesc[T]) =

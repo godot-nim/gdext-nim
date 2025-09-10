@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeframe; export gdvisualshadernodeframe
+export VisualShaderNodeComment
 
 proc setDescription*(self: VisualShaderNodeComment; description: String): void =
   expandMethodBind(className VisualShaderNodeComment, "set_description", 83702148)

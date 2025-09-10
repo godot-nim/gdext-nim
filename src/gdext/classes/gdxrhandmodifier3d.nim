@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
+export XRHandModifier3D
 
 proc setHandTracker*(self: XRHandModifier3D; trackerName: StringName): void =
   expandMethodBind(className XRHandModifier3D, "set_hand_tracker", 3304788590)

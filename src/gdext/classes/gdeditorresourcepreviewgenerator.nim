@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorResourcePreviewGenerator
 
 method handles*(self: EditorResourcePreviewGenerator; `type`: String): bool {.base.} = (discard)
 proc registerVirtual_handles*[T: EditorResourcePreviewGenerator](Self: typedesc[T]) =

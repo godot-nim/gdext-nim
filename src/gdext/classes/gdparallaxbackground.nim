@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcanvaslayer; export gdcanvaslayer
+export ParallaxBackground
 
 proc setScrollOffset*(self: ParallaxBackground; offset: Vector2): void =
   expandMethodBind(className ParallaxBackground, "set_scroll_offset", 743155724)

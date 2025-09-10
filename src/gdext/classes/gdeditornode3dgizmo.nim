@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3dgizmo; export gdnode3dgizmo
+export EditorNode3DGizmo
 
 method redraw*(self: EditorNode3DGizmo): void {.base.} = (discard)
 proc registerVirtual_redraw*[T: EditorNode3DGizmo](Self: typedesc[T]) =

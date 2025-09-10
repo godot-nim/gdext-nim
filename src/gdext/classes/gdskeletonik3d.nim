@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
+export SkeletonIK3D
 
 proc setRootBone*(self: SkeletonIK3D; rootBone: StringName): void =
   expandMethodBind(className SkeletonIK3D, "set_root_bone", 3304788590)

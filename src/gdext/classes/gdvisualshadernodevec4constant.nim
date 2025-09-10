@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
+export VisualShaderNodeVec4Constant
 
 proc setConstant*(self: VisualShaderNodeVec4Constant; constant: Quaternion): void =
   expandMethodBind(className VisualShaderNodeVec4Constant, "set_constant", 1727505552)

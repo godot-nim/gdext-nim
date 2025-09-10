@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
+export OpenXRCompositionLayerCylinder
 
 proc setRadius*(self: OpenXRCompositionLayerCylinder; radius: Float): void =
   expandMethodBind(className OpenXRCompositionLayerCylinder, "set_radius", 373806689)

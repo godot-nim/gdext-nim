@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export ViewportTexture
 
 proc setViewportPathInScene*(self: ViewportTexture; path: NodePath): void =
   expandMethodBind(className ViewportTexture, "set_viewport_path_in_scene", 1348162250)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export AudioEffect
 
 method instantiate*(self: AudioEffect): gdref AudioEffectInstance {.base.} = (discard)
 proc registerVirtual_instantiate*[T: AudioEffect](Self: typedesc[T]) =

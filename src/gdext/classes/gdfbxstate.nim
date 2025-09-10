@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgltfstate; export gdgltfstate
+export FBXState
 
 proc getAllowGeometryHelperNodes*(self: FBXState): bool =
   expandMethodBind(className FBXState, "get_allow_geometry_helper_nodes", 2240911060)

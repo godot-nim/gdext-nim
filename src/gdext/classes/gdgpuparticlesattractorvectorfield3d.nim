@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgpuparticlesattractor3d; export gdgpuparticlesattractor3d
+export GPUParticlesAttractorVectorField3D
 
 proc setSize*(self: GPUParticlesAttractorVectorField3D; size: Vector3): void =
   expandMethodBind(className GPUParticlesAttractorVectorField3D, "set_size", 3460891852)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFDocument
 
 proc setImageFormat*(self: GLTFDocument; imageFormat: String): void =
   expandMethodBind(className GLTFDocument, "set_image_format", 83702148)

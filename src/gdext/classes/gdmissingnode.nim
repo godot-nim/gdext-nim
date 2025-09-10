@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export MissingNode
 
 proc setOriginalClass*(self: MissingNode; name: String): void =
   expandMethodBind(className MissingNode, "set_original_class", 83702148)

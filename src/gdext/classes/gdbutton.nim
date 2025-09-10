@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdbasebutton; export gdbasebutton
+export Button
 
 proc setText*(self: Button; text: String): void =
   expandMethodBind(className Button, "set_text", 83702148)

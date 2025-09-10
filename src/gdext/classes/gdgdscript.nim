@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdscript; export gdscript
+export GDScript
 
 proc new*(self: GDScript; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className GDScript, "new", 1545262638)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export UPNPDevice
 
 proc isValidGateway*(self: UPNPDevice): bool =
   expandMethodBind(className UPNPDevice, "is_valid_gateway", 36873697)

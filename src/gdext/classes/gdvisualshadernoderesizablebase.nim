@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeResizableBase
 
 proc setSize*(self: VisualShaderNodeResizableBase; size: Vector2): void =
   expandMethodBind(className VisualShaderNodeResizableBase, "set_size", 743155724)

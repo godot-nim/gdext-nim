@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export XMLParser
 
 proc read*(self: XMLParser): Error =
   expandMethodBind(className XMLParser, "read", 166280745)

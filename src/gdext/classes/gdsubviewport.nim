@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdviewport; export gdviewport
+export SubViewport
 
 proc setSize*(self: SubViewport; size: Vector2i): void =
   expandMethodBind(className SubViewport, "set_size", 1130785943)

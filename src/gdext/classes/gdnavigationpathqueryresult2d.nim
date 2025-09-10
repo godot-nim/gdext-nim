@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export NavigationPathQueryResult2D
 
 proc setPath*(self: NavigationPathQueryResult2D; path: PackedVector2Array): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path", 1509147220)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
+export CSGShape3D
 
 proc isRootShape*(self: CSGShape3D): bool =
   expandMethodBind(className CSGShape3D, "is_root_shape", 36873697)

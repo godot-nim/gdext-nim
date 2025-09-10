@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export NavigationObstacle3D
 
 proc getRid*(self: NavigationObstacle3D): RID =
   expandMethodBind(className NavigationObstacle3D, "get_rid", 2944877500)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdsyntaxhighlighter; export gdsyntaxhighlighter
+export EditorSyntaxHighlighter
 
 method getName*(self: EditorSyntaxHighlighter): String {.base.} = (discard)
 proc registerVirtual_getName*[T: EditorSyntaxHighlighter](Self: typedesc[T]) =

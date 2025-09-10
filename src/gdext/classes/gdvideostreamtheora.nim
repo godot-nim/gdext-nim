@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdvideostream; export gdvideostream
+export VideoStreamTheora

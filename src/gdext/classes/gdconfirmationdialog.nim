@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdacceptdialog; export gdacceptdialog
+export ConfirmationDialog
 
 proc getCancelButton*(self: ConfirmationDialog): Button =
   expandMethodBind(className ConfirmationDialog, "get_cancel_button", 1856205918)

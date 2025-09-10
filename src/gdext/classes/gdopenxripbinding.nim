@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export OpenXRIPBinding
 
 proc setAction*(self: OpenXRIPBinding; action: gdref OpenXRAction): void =
   expandMethodBind(className OpenXRIPBinding, "set_action", 349361333)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
+export SkeletonModification2DLookAt
 
 proc setBone2dNode*(self: SkeletonModification2DLookAt; bone2dNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DLookAt, "set_bone2d_node", 1348162250)

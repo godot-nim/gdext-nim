@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export CurveTexture
 
 proc setWidth*(self: CurveTexture; width: int32): void =
   expandMethodBind(className CurveTexture, "set_width", 1286410249)

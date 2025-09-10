@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export CollisionShape2D
 
 proc setShape*(self: CollisionShape2D; shape: gdref Shape2D): void =
   expandMethodBind(className CollisionShape2D, "set_shape", 771364740)

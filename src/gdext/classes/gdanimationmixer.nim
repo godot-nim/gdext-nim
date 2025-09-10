@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export AnimationMixer
 
 method postProcessKeyValue*(self: AnimationMixer; animation: gdref Animation; track: int32; value: Variant; objectId: uint64; objectSubIdx: int32): Variant {.base.} = (discard)
 proc registerVirtual_postProcessKeyValue*[T: AnimationMixer](Self: typedesc[T]) =

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgpuparticlescollision3d; export gdgpuparticlescollision3d
+export GPUParticlesCollisionSphere3D
 
 proc setRadius*(self: GPUParticlesCollisionSphere3D; radius: Float): void =
   expandMethodBind(className GPUParticlesCollisionSphere3D, "set_radius", 373806689)

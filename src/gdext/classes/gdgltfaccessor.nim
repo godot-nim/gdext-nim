@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFAccessor
 
 proc getBufferView*(self: GLTFAccessor): int32 =
   expandMethodBind(className GLTFAccessor, "get_buffer_view", 2455072627)

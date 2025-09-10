@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export MultiplayerSpawner
 
 proc addSpawnableScene*(self: MultiplayerSpawner; path: String): void =
   expandMethodBind(className MultiplayerSpawner, "add_spawnable_scene", 83702148)

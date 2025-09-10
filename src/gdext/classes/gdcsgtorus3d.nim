@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
+export CSGTorus3D
 
 proc setInnerRadius*(self: CSGTorus3D; radius: Float): void =
   expandMethodBind(className CSGTorus3D, "set_inner_radius", 373806689)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RDPipelineDepthStencilState
 
 proc setEnableDepthTest*(self: RDPipelineDepthStencilState; pMember: bool): void =
   expandMethodBind(className RDPipelineDepthStencilState, "set_enable_depth_test", 2586408642)

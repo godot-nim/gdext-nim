@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Shape3D
 
 proc setCustomSolverBias*(self: Shape3D; bias: Float): void =
   expandMethodBind(className Shape3D, "set_custom_solver_bias", 373806689)

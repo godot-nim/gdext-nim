@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RegEx
 
 proc createFromString*(_: typedesc[RegEx]; pattern: String; showError: bool = true): gdref RegEx =
   expandMethodBind(className RegEx, "create_from_string", 4249111514)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export ProjectSettings
 
 proc hasSetting*(self: ProjectSettings; name: String): bool =
   expandMethodBind(className ProjectSettings, "has_setting", 3927539163)
