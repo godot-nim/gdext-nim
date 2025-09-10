@@ -1,4 +1,5 @@
 import gdext
+import gdext/classes/gdNode
 
 
 const Const = 1'u8

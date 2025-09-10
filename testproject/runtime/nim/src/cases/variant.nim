@@ -1,4 +1,5 @@
 import gdext
+import gdext/classes/[gdResource, gdNode]
 import testutils
 import std/strutils
 
