@@ -383,14 +383,12 @@ method ready(self: MyNode) {.gdsync.} =
 
 ## Cast objects
 
+### Object kinds
+
 **GDScript:**
 
 ```gdscript
 var node: Node = object as Node
-```
-
-```gdscript
-var refcounted: RefCounted = object as RefCounted
 ```
 
 **Nim:**
@@ -400,11 +398,30 @@ var node: Node = object as Node
 ```
 
 ```nim
+var node: Node = object.castTo(Node)
+```
+
+### RefCounted kinds
+
+**GDScript:**
+
+```gdscript
+var refcounted: RefCounted = object as RefCounted
+```
+
+**Nim:**
+
+```nim
 var refcounted: gdref RefCounted = object as gdref RefCounted
+```
+
+```nim
+var refcounted: gdref RefCounted = object.castTo(gdref RefCounted)
 ```
 
 **Note:**
 
+`castTo` and `as` are the same.  
 In gdext-nim, these type casts are valid (A and B are subtypes of **Object**):
 
 - A as B
@@ -492,22 +509,43 @@ var subnode: SubNode = self.getNode("path/to/SubNode").castTo(SubNode)
 
 ## Primitives ⇔ Variant
 
+### Using `as`
+
 **GDScript:**
 
 ```gdscript
 var v: Variant = 10
-var i: int = v
+var i: int = v as int
 ```
 
 ```gdscript
 var v: Variant = Object.new()
-var o: Object = v
+var o: Object = v as Object
 ```
 
 ```gdscript
 var v: Variant = RefCounted.new()
-var r: RefCounted = v
+var r: RefCounted = v as RefCounted
 ```
+
+**Nim:**
+
+```nim
+var v: Variant = variant 10
+var i: int = v as int
+```
+
+```nim
+var v: Variant = variant instantiate Node
+var n: Node = v as Node
+```
+
+```nim
+var v: Variant = variant instantiate Refcounted
+var r: gdref RefCounted = v as gdref RefCounted
+```
+
+### Using `get`:
 
 **Nim:**
 
@@ -517,8 +555,8 @@ var i: int = v.get(int)
 ```
 
 ```nim
-var v: Variant = variant instantiate Object
-var o: Object = v.get(Object)
+var v: Variant = variant instantiate Node
+var n: Node = v.get(Node)
 ```
 
 ```nim
@@ -643,7 +681,7 @@ var vector3: Vector3 = Vector3.Zero
 var vector3: Vector3 = Vector3.ZERO
 ```
 
-# Recipes
+# Advanced Recipes
 
 ## Compare types
 
