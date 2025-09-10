@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtextedit; export gdtextedit
+export CodeEdit
 
 method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
 proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =

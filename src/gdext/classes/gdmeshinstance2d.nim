@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export MeshInstance2D
 
 proc setMesh*(self: MeshInstance2D; mesh: gdref Mesh): void =
   expandMethodBind(className MeshInstance2D, "set_mesh", 194775623)

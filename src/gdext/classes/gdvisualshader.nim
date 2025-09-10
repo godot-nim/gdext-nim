@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdshader; export gdshader
+export VisualShader
 
 const NodeIdInvalid* = -1
 const NodeIdOutput* = 0

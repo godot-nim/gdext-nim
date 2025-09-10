@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectPitchShift
 
 proc setPitchScale*(self: AudioEffectPitchShift; rate: Float): void =
   expandMethodBind(className AudioEffectPitchShift, "set_pitch_scale", 373806689)

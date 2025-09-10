@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Shortcut
 
 proc setEvents*(self: Shortcut; events: Array): void =
   expandMethodBind(className Shortcut, "set_events", 381264803)

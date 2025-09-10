@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export ButtonGroup
 
 proc getPressedButton*(self: ButtonGroup): BaseButton =
   expandMethodBind(className ButtonGroup, "get_pressed_button", 3886434893)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export KinematicCollision2D
 
 proc getPosition*(self: KinematicCollision2D): Vector2 =
   expandMethodBind(className KinematicCollision2D, "get_position", 3341600327)

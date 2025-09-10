@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export ResourceFormatSaver
 
 method save*(self: ResourceFormatSaver; resource: gdref Resource; path: String; flags: uint32): Error {.base.} = (discard)
 proc registerVirtual_save*[T: ResourceFormatSaver](Self: typedesc[T]) =

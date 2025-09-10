@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export OpenXRCompositionLayer
 
 proc setLayerViewport*(self: OpenXRCompositionLayer; viewport: SubViewport): void =
   expandMethodBind(className OpenXRCompositionLayer, "set_layer_viewport", 3888077664)

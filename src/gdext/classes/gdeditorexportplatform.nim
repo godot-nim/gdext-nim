@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorExportPlatform
 
 proc getOsName*(self: EditorExportPlatform): String =
   expandMethodBind(className EditorExportPlatform, "get_os_name", 201670096)

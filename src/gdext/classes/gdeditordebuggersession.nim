@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorDebuggerSession
 
 proc sendMessage*(self: EditorDebuggerSession; message: String; data: Array = newArray()): void =
   expandMethodBind(className EditorDebuggerSession, "send_message", 85656714)

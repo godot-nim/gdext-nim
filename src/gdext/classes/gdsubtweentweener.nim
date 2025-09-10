@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtweener; export gdtweener
+export SubtweenTweener
 
 proc setDelay*(self: SubtweenTweener; delay: float64): gdref SubtweenTweener =
   expandMethodBind(className SubtweenTweener, "set_delay", 449181780)

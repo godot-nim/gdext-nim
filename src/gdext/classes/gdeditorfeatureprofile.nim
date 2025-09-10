@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorFeatureProfile
 
 proc setDisableClass*(self: EditorFeatureProfile; className: StringName; disable: bool): void =
   expandMethodBind(className EditorFeatureProfile, "set_disable_class", 2524380260)

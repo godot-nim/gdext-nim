@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RDPipelineColorBlendState
 
 proc setEnableLogicOp*(self: RDPipelineColorBlendState; pMember: bool): void =
   expandMethodBind(className RDPipelineColorBlendState, "set_enable_logic_op", 2586408642)

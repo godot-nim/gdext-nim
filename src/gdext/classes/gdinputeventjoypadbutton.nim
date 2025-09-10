@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
+export InputEventJoypadButton
 
 proc setButtonIndex*(self: InputEventJoypadButton; buttonIndex: JoyButton): void =
   expandMethodBind(className InputEventJoypadButton, "set_button_index", 1466368136)

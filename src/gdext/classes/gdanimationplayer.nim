@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdanimationmixer; export gdanimationmixer
+export AnimationPlayer
 
 proc animationSetNext*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): void =
   expandMethodBind(className AnimationPlayer, "animation_set_next", 3740211285)

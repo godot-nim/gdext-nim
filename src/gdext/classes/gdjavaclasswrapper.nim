@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export JavaClassWrapper
 
 proc wrap*(self: JavaClassWrapper; name: String): gdref JavaClass =
   expandMethodBind(className JavaClassWrapper, "wrap", 1124367868)

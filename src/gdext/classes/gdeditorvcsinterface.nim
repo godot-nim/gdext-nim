@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export EditorVCSInterface
 
 method initialize*(self: EditorVCSInterface; projectPath: String): bool {.base.} = (discard)
 proc registerVirtual_initialize*[T: EditorVCSInterface](Self: typedesc[T]) =

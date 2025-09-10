@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GDExtension
 
 proc isLibraryOpen*(self: GDExtension): bool =
   expandMethodBind(className GDExtension, "is_library_open", 36873697)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectDelay
 
 proc setDry*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_dry", 373806689)

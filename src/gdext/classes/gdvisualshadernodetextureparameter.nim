@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
+export VisualShaderNodeTextureParameter
 
 proc setTextureType*(self: VisualShaderNodeTextureParameter; `type`: VisualShaderNodeTextureParameter_TextureType): void =
   expandMethodBind(className VisualShaderNodeTextureParameter, "set_texture_type", 2227296876)

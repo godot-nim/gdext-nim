@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdrenderscenedata; export gdrenderscenedata
+export RenderSceneDataRD

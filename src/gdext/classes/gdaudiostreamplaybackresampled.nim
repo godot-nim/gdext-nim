@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
+export AudioStreamPlaybackResampled
 
 method mixResampled*(self: AudioStreamPlaybackResampled; dstBuffer: ptr AudioFrame; frameCount: int32): int32 {.base.} = (discard)
 proc registerVirtual_mixResampled*[T: AudioStreamPlaybackResampled](Self: typedesc[T]) =

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrnode3d; export gdxrnode3d
+export XRController3D
 
 proc isButtonPressed*(self: XRController3D; name: StringName): bool =
   expandMethodBind(className XRController3D, "is_button_pressed", 2619796661)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
+export MultiMeshInstance3D
 
 proc setMultimesh*(self: MultiMeshInstance3D; multimesh: gdref MultiMesh): void =
   expandMethodBind(className MultiMeshInstance3D, "set_multimesh", 2246127404)

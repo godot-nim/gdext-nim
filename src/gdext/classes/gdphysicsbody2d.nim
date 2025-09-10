@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcollisionobject2d; export gdcollisionobject2d
+export PhysicsBody2D
 
 proc moveAndCollide*(self: PhysicsBody2D; motion: Vector2; testOnly: bool = false; safeMargin: Float = 0.08; recoveryAsCollision: bool = false): gdref KinematicCollision2D =
   expandMethodBind(className PhysicsBody2D, "move_and_collide", 3681923724)

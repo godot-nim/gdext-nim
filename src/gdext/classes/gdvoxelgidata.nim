@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export VoxelGIData
 
 proc allocate*(self: VoxelGIData; toCellXform: Transform3D; aabb: AABB; octreeSize: Vector3; octreeCells: PackedByteArray; dataCells: PackedByteArray; distanceField: PackedByteArray; levelCounts: PackedInt32Array): void =
   expandMethodBind(className VoxelGIData, "allocate", 4041601946)

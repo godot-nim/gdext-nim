@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export RenderingDevice
 
 const InvalidId* = -1
 const InvalidFormatId* = -1

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdstylebox; export gdstylebox
+export StyleBoxLine
 
 proc setColor*(self: StyleBoxLine; color: Color): void =
   expandMethodBind(className StyleBoxLine, "set_color", 2920490490)

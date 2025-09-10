@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeIntFunc
 
 proc setFunction*(self: VisualShaderNodeIntFunc; `func`: VisualShaderNodeIntFunc_Function): void =
   expandMethodBind(className VisualShaderNodeIntFunc, "set_function", 424195284)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export AnimatedSprite2D
 
 proc setSpriteFrames*(self: AnimatedSprite2D; spriteFrames: gdref SpriteFrames): void =
   expandMethodBind(className AnimatedSprite2D, "set_sprite_frames", 905781144)

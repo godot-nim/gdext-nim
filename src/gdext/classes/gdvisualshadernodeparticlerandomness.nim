@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeParticleRandomness
 
 proc setOpType*(self: VisualShaderNodeParticleRandomness; `type`: VisualShaderNodeParticleRandomness_OpType): void =
   expandMethodBind(className VisualShaderNodeParticleRandomness, "set_op_type", 2060089061)

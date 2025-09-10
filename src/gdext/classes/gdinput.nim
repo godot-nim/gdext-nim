@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export Input
 
 proc isAnythingPressed*(self: Input): bool =
   expandMethodBind(className Input, "is_anything_pressed", 36873697)

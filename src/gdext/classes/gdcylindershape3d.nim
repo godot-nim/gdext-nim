@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
+export CylinderShape3D
 
 proc setRadius*(self: CylinderShape3D; radius: Float): void =
   expandMethodBind(className CylinderShape3D, "set_radius", 373806689)

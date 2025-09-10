@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeSmoothStep
 
 proc setOpType*(self: VisualShaderNodeSmoothStep; opType: VisualShaderNodeSmoothStep_OpType): void =
   expandMethodBind(className VisualShaderNodeSmoothStep, "set_op_type", 2427426148)

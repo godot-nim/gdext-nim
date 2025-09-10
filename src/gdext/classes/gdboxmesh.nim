@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
+export BoxMesh
 
 proc setSize*(self: BoxMesh; size: Vector3): void =
   expandMethodBind(className BoxMesh, "set_size", 3460891852)

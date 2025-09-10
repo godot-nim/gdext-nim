@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export StyleBox
 
 method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
 proc registerVirtual_draw*[T: StyleBox](Self: typedesc[T]) =

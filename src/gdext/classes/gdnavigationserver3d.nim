@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export NavigationServer3D
 
 proc getMaps*(self: NavigationServer3D): TypedArray[RID] =
   expandMethodBind(className NavigationServer3D, "get_maps", 3995934104)

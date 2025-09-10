@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputeventgesture; export gdinputeventgesture
+export InputEventPanGesture
 
 proc setDelta*(self: InputEventPanGesture; delta: Vector2): void =
   expandMethodBind(className InputEventPanGesture, "set_delta", 743155724)

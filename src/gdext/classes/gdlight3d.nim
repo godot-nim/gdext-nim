@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
+export Light3D
 
 proc setEditorOnly*(self: Light3D; editorOnly: bool): void =
   expandMethodBind(className Light3D, "set_editor_only", 2586408642)

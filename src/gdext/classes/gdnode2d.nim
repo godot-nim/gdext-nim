@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcanvasitem; export gdcanvasitem
+export Node2D
 
 proc setPosition*(self: Node2D; position: Vector2): void =
   expandMethodBind(className Node2D, "set_position", 743155724)

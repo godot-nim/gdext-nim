@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Compositor
 
 proc setCompositorEffects*(self: Compositor; compositorEffects: TypedArray[gdref CompositorEffect]): void =
   expandMethodBind(className Compositor, "set_compositor_effects", 381264803)

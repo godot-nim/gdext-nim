@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export RenderSceneBuffers
 
 proc configure*(self: RenderSceneBuffers; config: gdref RenderSceneBuffersConfiguration): void =
   expandMethodBind(className RenderSceneBuffers, "configure", 3072623270)

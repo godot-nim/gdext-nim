@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export SubViewportContainer
 
 method propagateInputEvent*(self: SubViewportContainer; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_propagateInputEvent*[T: SubViewportContainer](Self: typedesc[T]) =

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
+export CSGMesh3D
 
 proc setMesh*(self: CSGMesh3D; mesh: gdref Mesh): void =
   expandMethodBind(className CSGMesh3D, "set_mesh", 194775623)

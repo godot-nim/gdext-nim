@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorExportPreset
 
 proc has*(self: EditorExportPreset; property: StringName): bool =
   expandMethodBind(className EditorExportPreset, "has", 2619796661)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnoise; export gdnoise
+export FastNoiseLite
 
 proc setNoiseType*(self: FastNoiseLite; `type`: FastNoiseLite_NoiseType): void =
   expandMethodBind(className FastNoiseLite, "set_noise_type", 2624461392)

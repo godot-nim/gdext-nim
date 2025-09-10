@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdjoint2d; export gdjoint2d
+export GrooveJoint2D
 
 proc setLength*(self: GrooveJoint2D; length: Float): void =
   expandMethodBind(className GrooveJoint2D, "set_length", 373806689)

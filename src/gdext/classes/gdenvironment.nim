@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Environment
 
 proc setBackground*(self: Environment; mode: Environment_BGMode): void =
   expandMethodBind(className Environment, "set_background", 4071623990)

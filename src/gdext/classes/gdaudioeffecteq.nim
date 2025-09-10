@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectEQ
 
 proc setBandGainDb*(self: AudioEffectEQ; bandIdx: int32; volumeDb: Float): void =
   expandMethodBind(className AudioEffectEQ, "set_band_gain_db", 1602489585)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
+export Label3D
 
 proc setHorizontalAlignment*(self: Label3D; alignment: HorizontalAlignment): void =
   expandMethodBind(className Label3D, "set_horizontal_alignment", 2312603777)

@@ -47,6 +47,9 @@ export InitializationLevel, VariantType, gdcall
 import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
+import gdext/private/classindex
+export EngineClass
+
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge
 import gdext/appearances; export appearances
@@ -65,8 +68,6 @@ import gdext/dollars; export dollars
 import gdext/sugars; export sugars
 import gdext/versions; export versions
 
-import gdext/classes/[gdengine]
-export gdengine.isEditorHint
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 

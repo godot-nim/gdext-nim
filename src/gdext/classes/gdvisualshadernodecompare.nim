@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeCompare
 
 proc setComparisonType*(self: VisualShaderNodeCompare; `type`: VisualShaderNodeCompare_ComparisonType): void =
   expandMethodBind(className VisualShaderNodeCompare, "set_comparison_type", 516558320)

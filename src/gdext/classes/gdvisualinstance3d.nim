@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export VisualInstance3D
 
 method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
 proc registerVirtual_getAabb*[T: VisualInstance3D](Self: typedesc[T]) =

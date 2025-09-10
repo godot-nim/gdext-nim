@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export Engine
 
 proc setPhysicsTicksPerSecond*(self: Engine; physicsTicksPerSecond: int32): void =
   expandMethodBind(className Engine, "set_physics_ticks_per_second", 1286410249)

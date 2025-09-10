@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFDocumentExtension
 
 method importPreflight*(self: GLTFDocumentExtension; state: gdref GLTFState; extensions: PackedStringArray): Error {.base.} = (discard)
 proc registerVirtual_importPreflight*[T: GLTFDocumentExtension](Self: typedesc[T]) =

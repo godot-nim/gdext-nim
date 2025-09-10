@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export ShaderInclude
 
 proc setCode*(self: ShaderInclude; code: String): void =
   expandMethodBind(className ShaderInclude, "set_code", 83702148)

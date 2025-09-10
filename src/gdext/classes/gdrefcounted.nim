@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export RefCounted
 
 proc initRef*(self: RefCounted): bool =
   expandMethodBind(className RefCounted, "init_ref", 2240911060)

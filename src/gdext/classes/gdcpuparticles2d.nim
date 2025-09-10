@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export CPUParticles2D
 
 proc setEmitting*(self: CPUParticles2D; emitting: bool): void =
   expandMethodBind(className CPUParticles2D, "set_emitting", 2586408642)

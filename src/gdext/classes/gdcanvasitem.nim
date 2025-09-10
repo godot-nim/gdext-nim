@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export CanvasItem
 
 const NotificationTransformChanged* = 2000
 const NotificationLocalTransformChanged* = 35

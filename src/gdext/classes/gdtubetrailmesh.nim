@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
+export TubeTrailMesh
 
 proc setRadius*(self: TubeTrailMesh; radius: Float): void =
   expandMethodBind(className TubeTrailMesh, "set_radius", 373806689)

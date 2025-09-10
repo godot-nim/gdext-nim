@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudiostreamplaybackresampled; export gdaudiostreamplaybackresampled
+export AudioStreamGeneratorPlayback
 
 proc pushFrame*(self: AudioStreamGeneratorPlayback; frame: Vector2): bool =
   expandMethodBind(className AudioStreamGeneratorPlayback, "push_frame", 3975407249)

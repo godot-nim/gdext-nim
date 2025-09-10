@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputeventfromwindow; export gdinputeventfromwindow
+export InputEventScreenTouch
 
 proc setIndex*(self: InputEventScreenTouch; index: int32): void =
   expandMethodBind(className InputEventScreenTouch, "set_index", 1286410249)

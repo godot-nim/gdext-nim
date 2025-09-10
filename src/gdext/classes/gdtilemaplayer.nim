@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export TileMapLayer
 
 method useTileDataRuntimeUpdate*(self: TileMapLayer; coords: Vector2i): bool {.base.} = (discard)
 proc registerVirtual_useTileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) =

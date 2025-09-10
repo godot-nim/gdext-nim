@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Mesh
 
 method getSurfaceCount*(self: Mesh): int32 {.base.} = (discard)
 proc registerVirtual_getSurfaceCount*[T: Mesh](Self: typedesc[T]) =

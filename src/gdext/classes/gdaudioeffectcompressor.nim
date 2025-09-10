@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectCompressor
 
 proc setThreshold*(self: AudioEffectCompressor; threshold: Float): void =
   expandMethodBind(className AudioEffectCompressor, "set_threshold", 373806689)

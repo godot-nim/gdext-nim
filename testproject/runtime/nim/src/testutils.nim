@@ -1,4 +1,6 @@
 import gdext
+import gdext/classes/gdEngine; export gdEngine
+
 import std/[unittest, exitprocs]
 
 # paramFiltering tryes to access to `paramCount` and it cause `OSError`

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
+export VisualShaderNodeTransformConstant
 
 proc setConstant*(self: VisualShaderNodeTransformConstant; constant: Transform3D): void =
   expandMethodBind(className VisualShaderNodeTransformConstant, "set_constant", 2952846383)

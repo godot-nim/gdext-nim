@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
+export ArrayMesh
 
 proc addBlendShape*(self: ArrayMesh; name: StringName): void =
   expandMethodBind(className ArrayMesh, "add_blend_shape", 3304788590)

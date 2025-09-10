@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
+export SkeletonModification2DStackHolder
 
 proc setHeldModificationStack*(self: SkeletonModification2DStackHolder; heldModificationStack: gdref SkeletonModificationStack2D): void =
   expandMethodBind(className SkeletonModification2DStackHolder, "set_held_modification_stack", 3907307132)

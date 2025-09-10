@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export OpenXRInteractionProfile
 
 proc setInteractionProfilePath*(self: OpenXRInteractionProfile; interactionProfilePath: String): void =
   expandMethodBind(className OpenXRInteractionProfile, "set_interaction_profile_path", 83702148)

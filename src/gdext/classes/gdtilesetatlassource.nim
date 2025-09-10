@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtilesetsource; export gdtilesetsource
+export TileSetAtlasSource
 
 const TransformFlipH* = 4096
 const TransformFlipV* = 8192

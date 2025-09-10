@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
+export RayCast3D
 
 proc setEnabled*(self: RayCast3D; enabled: bool): void =
   expandMethodBind(className RayCast3D, "set_enabled", 2586408642)

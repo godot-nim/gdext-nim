@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+export VisualShaderNodeCustom
 
 method getName*(self: VisualShaderNodeCustom): String {.base.} = (discard)
 proc registerVirtual_getName*[T: VisualShaderNodeCustom](Self: typedesc[T]) =

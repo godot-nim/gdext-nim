@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export InputMap
 
 proc hasAction*(self: InputMap; action: StringName): bool =
   expandMethodBind(className InputMap, "has_action", 2619796661)

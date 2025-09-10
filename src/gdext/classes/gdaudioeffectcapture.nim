@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
+export AudioEffectCapture
 
 proc canGetBuffer*(self: AudioEffectCapture; frames: int32): bool =
   expandMethodBind(className AudioEffectCapture, "can_get_buffer", 1116898809)

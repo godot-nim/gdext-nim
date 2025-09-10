@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export TriangleMesh

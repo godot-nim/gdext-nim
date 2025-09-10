@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrenderscenebuffers; export gdrenderscenebuffers
+export RenderSceneBuffersExtension
 
 method configure*(self: RenderSceneBuffersExtension; config: gdref RenderSceneBuffersConfiguration): void {.base.} = (discard)
 proc registerVirtual_configure*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export EditorPlugin
 
 method forwardCanvasGuiInput*(self: EditorPlugin; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_forwardCanvasGuiInput*[T: EditorPlugin](Self: typedesc[T]) =

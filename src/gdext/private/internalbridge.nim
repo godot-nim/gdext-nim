@@ -7,6 +7,7 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/private/debugging
+import gdext/private/classindex
 import gdext/private/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks
@@ -31,7 +32,7 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  set(cast[T](p_instance), p_name, p_value)
+  objectcallbacks.set(cast[T](p_instance), p_name, p_value)
 
 proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   get(cast[T](p_instance), p_name, r_ret)

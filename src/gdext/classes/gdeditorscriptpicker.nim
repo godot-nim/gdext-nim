@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdeditorresourcepicker; export gdeditorresourcepicker
+export EditorScriptPicker
 
 proc setScriptOwner*(self: EditorScriptPicker; ownerNode: Node): void =
   expandMethodBind(className EditorScriptPicker, "set_script_owner", 1078189570)

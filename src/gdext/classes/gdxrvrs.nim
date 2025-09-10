@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export XRVRS
 
 proc getVrsMinRadius*(self: XRVRS): Float =
   expandMethodBind(className XRVRS, "get_vrs_min_radius", 1740695150)

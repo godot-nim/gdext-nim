@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture3d; export gdtexture3d
+export CompressedTexture3D
 
 proc load*(self: CompressedTexture3D; path: String): Error =
   expandMethodBind(className CompressedTexture3D, "load", 166001499)

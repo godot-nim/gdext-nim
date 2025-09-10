@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
+export VisualShaderNodeGroupBase
 
 proc setInputs*(self: VisualShaderNodeGroupBase; inputs: String): void =
   expandMethodBind(className VisualShaderNodeGroupBase, "set_inputs", 83702148)

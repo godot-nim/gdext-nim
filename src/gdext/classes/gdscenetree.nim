@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdmainloop; export gdmainloop
+export SceneTree
 
 proc getRoot*(self: SceneTree): Window =
   expandMethodBind(className SceneTree, "get_root", 1757182445)

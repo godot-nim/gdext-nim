@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdbasebutton; export gdbasebutton
+export TextureButton
 
 proc setTextureNormal*(self: TextureButton; texture: gdref Texture2D): void =
   expandMethodBind(className TextureButton, "set_texture_normal", 4051416890)

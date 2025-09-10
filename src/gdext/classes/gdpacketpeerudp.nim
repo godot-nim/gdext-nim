@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
+export PacketPeerUDP
 
 proc `bind`*(self: PacketPeerUDP; port: int32; bindAddress: String = newGdString("*"); recvBufSize: int32 = 65536): Error =
   expandMethodBind(className PacketPeerUDP, "bind", 4051239242)

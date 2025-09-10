@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export GridContainer
 
 proc setColumns*(self: GridContainer; columns: int32): void =
   expandMethodBind(className GridContainer, "set_columns", 1286410249)

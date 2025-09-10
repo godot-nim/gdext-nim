@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export AnimatedTexture
 
 const MaxFrames* = 256
 

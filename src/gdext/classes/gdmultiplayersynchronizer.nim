@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export MultiplayerSynchronizer
 
 proc setRootPath*(self: MultiplayerSynchronizer; path: NodePath): void =
   expandMethodBind(className MultiplayerSynchronizer, "set_root_path", 1348162250)

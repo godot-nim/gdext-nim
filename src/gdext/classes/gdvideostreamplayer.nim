@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
+export VideoStreamPlayer
 
 proc setStream*(self: VideoStreamPlayer; stream: gdref VideoStream): void =
   expandMethodBind(className VideoStreamPlayer, "set_stream", 2317102564)

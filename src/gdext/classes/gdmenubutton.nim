@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdbutton; export gdbutton
+export MenuButton
 
 proc getPopup*(self: MenuButton): PopupMenu =
   expandMethodBind(className MenuButton, "get_popup", 229722558)

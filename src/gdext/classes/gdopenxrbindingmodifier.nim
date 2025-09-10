@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export OpenXRBindingModifier
 
 method getDescription*(self: OpenXRBindingModifier): String {.base.} = (discard)
 proc registerVirtual_getDescription*[T: OpenXRBindingModifier](Self: typedesc[T]) =

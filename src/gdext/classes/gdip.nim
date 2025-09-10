@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export IP
 
 const ResolverMaxQueries* = 256
 const ResolverInvalidId* = -1

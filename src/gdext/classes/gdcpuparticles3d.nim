@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
+export CPUParticles3D
 
 proc setEmitting*(self: CPUParticles3D; emitting: bool): void =
   expandMethodBind(className CPUParticles3D, "set_emitting", 2586408642)

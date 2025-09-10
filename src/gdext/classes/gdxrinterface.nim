@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export XRInterface
 
 proc getName*(self: XRInterface): StringName =
   expandMethodBind(className XRInterface, "get_name", 2002593661)

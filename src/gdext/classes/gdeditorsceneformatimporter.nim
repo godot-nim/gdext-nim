@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorSceneFormatImporter
 
 const ImportScene* = 1
 const ImportAnimation* = 2

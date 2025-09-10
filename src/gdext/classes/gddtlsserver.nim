@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export DTLSServer
 
 proc setup*(self: DTLSServer; serverOptions: gdref TLSOptions): Error =
   expandMethodBind(className DTLSServer, "setup", 1262296096)

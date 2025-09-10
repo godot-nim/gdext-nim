@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export CanvasTexture
 
 proc setDiffuseTexture*(self: CanvasTexture; texture: gdref Texture2D): void =
   expandMethodBind(className CanvasTexture, "set_diffuse_texture", 4051416890)

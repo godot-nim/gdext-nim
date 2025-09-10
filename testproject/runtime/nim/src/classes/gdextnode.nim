@@ -6,6 +6,7 @@ import gdext/private/typeshift
 import gdext/private/native
 import gdext/private/gdinterface
 
+import gdext/classes/[gdTexture2D]
 import classes/gdvirtualnode01
 
 # sugar of `import godot/classDetail/classDetail_native_T`

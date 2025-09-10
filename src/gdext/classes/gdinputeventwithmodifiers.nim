@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdinputeventfromwindow; export gdinputeventfromwindow
+export InputEventWithModifiers
 
 proc setCommandOrControlAutoremap*(self: InputEventWithModifiers; enable: bool): void =
   expandMethodBind(className InputEventWithModifiers, "set_command_or_control_autoremap", 2586408642)

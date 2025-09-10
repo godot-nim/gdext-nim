@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdconfirmationdialog; export gdconfirmationdialog
+export EditorCommandPalette
 
 proc addCommand*(self: EditorCommandPalette; commandName: String; keyName: String; bindedCallable: Callable; shortcutText: String = newGdString("None")): void =
   expandMethodBind(className EditorCommandPalette, "add_command", 864043298)

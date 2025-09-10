@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdxrnode3d; export gdxrnode3d
+export XRAnchor3D
 
 proc getSize*(self: XRAnchor3D): Vector3 =
   expandMethodBind(className XRAnchor3D, "get_size", 3360562783)

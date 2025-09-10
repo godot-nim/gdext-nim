@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
+export AudioStreamSynchronized
 
 const MaxStreams* = 32
 

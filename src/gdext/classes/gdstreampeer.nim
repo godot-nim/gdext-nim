@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export StreamPeer
 
 proc putData*(self: StreamPeer; data: PackedByteArray): Error =
   expandMethodBind(className StreamPeer, "put_data", 680677267)

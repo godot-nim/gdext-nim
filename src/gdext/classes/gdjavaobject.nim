@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export JavaObject
 
 proc getJavaClass*(self: JavaObject): gdref JavaClass =
   expandMethodBind(className JavaObject, "get_java_class", 541536347)

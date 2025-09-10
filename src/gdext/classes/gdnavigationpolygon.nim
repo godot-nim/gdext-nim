@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export NavigationPolygon
 
 proc setVertices*(self: NavigationPolygon; vertices: PackedVector2Array): void =
   expandMethodBind(className NavigationPolygon, "set_vertices", 1509147220)

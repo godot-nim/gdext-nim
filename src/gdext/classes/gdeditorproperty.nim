@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export EditorProperty
 
 method updateProperty*(self: EditorProperty): void {.base.} = (discard)
 proc registerVirtual_updateProperty*[T: EditorProperty](Self: typedesc[T]) =

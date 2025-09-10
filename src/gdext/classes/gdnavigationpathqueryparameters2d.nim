@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export NavigationPathQueryParameters2D
 
 proc setPathfindingAlgorithm*(self: NavigationPathQueryParameters2D; pathfindingAlgorithm: NavigationPathQueryParameters2D_PathfindingAlgorithm): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_pathfinding_algorithm", 2783519915)

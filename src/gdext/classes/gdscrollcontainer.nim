@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export ScrollContainer
 
 proc setHScroll*(self: ScrollContainer; value: int32): void =
   expandMethodBind(className ScrollContainer, "set_h_scroll", 1286410249)

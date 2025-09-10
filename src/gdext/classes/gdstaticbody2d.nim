@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdphysicsbody2d; export gdphysicsbody2d
+export StaticBody2D
 
 proc setConstantLinearVelocity*(self: StaticBody2D; vel: Vector2): void =
   expandMethodBind(className StaticBody2D, "set_constant_linear_velocity", 743155724)

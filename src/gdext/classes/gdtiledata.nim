@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export TileData
 
 proc setFlipH*(self: TileData; flipH: bool): void =
   expandMethodBind(className TileData, "set_flip_h", 2586408642)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
+export Texture2DRD
 
 proc setTextureRdRid*(self: Texture2DRD; textureRdRid: RID): void =
   expandMethodBind(className Texture2DRD, "set_texture_rd_rid", 2722037293)

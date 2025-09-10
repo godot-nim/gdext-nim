@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export EditorScenePostImportPlugin
 
 method getInternalImportOptions*(self: EditorScenePostImportPlugin; category: int32): void {.base.} = (discard)
 proc registerVirtual_getInternalImportOptions*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =

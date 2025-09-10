@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
+export GeometryInstance3D
 
 proc setMaterialOverride*(self: GeometryInstance3D; material: gdref Material): void =
   expandMethodBind(className GeometryInstance3D, "set_material_override", 2757459619)

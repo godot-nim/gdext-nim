@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export AspectRatioContainer
 
 proc setRatio*(self: AspectRatioContainer; ratio: Float): void =
   expandMethodBind(className AspectRatioContainer, "set_ratio", 373806689)

@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrenderdata; export gdrenderdata
+export RenderDataExtension
 
 method getRenderSceneBuffers*(self: RenderDataExtension): gdref RenderSceneBuffers {.base.} = (discard)
 proc registerVirtual_getRenderSceneBuffers*[T: RenderDataExtension](Self: typedesc[T]) =

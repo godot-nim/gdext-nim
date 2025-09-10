@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdanimationnodesync; export gdanimationnodesync
+export AnimationNodeTransition
 
 proc setInputCount*(self: AnimationNodeTransition; inputCount: int32): void =
   expandMethodBind(className AnimationNodeTransition, "set_input_count", 1286410249)

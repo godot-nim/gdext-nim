@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
+export ParticleProcessMaterial
 
 proc setDirection*(self: ParticleProcessMaterial; degrees: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_direction", 3460891852)

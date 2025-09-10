@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Sky
 
 proc setRadianceSize*(self: Sky; size: Sky_RadianceSize): void =
   expandMethodBind(className Sky, "set_radiance_size", 1512957179)

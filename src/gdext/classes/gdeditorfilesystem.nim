@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
+export EditorFileSystem
 
 proc getFilesystem*(self: EditorFileSystem): EditorFileSystemDirectory =
   expandMethodBind(className EditorFileSystem, "get_filesystem", 842323275)

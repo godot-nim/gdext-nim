@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export PhysicsTestMotionResult3D
 
 proc getTravel*(self: PhysicsTestMotionResult3D): Vector3 =
   expandMethodBind(className PhysicsTestMotionResult3D, "get_travel", 3360562783)

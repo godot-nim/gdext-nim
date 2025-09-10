@@ -3,3 +3,4 @@
 import gdext/coronation/header/classes
 
 import gdplanemesh; export gdplanemesh
+export QuadMesh

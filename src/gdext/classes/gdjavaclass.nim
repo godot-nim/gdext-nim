@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export JavaClass
 
 proc getJavaClassName*(self: JavaClass): String =
   expandMethodBind(className JavaClass, "get_java_class_name", 201670096)

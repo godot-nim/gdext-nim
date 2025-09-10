@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
+export WorldBoundaryShape3D
 
 proc setPlane*(self: WorldBoundaryShape3D; plane: Plane): void =
   expandMethodBind(className WorldBoundaryShape3D, "set_plane", 3505987427)

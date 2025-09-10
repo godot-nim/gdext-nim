@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export FlowContainer
 
 proc getLineCount*(self: FlowContainer): int32 =
   expandMethodBind(className FlowContainer, "get_line_count", 3905245786)

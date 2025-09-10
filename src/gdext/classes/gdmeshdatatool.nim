@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export MeshDataTool
 
 proc clear*(self: MeshDataTool): void =
   expandMethodBind(className MeshDataTool, "clear", 3218959716)

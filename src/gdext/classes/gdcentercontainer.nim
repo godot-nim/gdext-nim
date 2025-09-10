@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export CenterContainer
 
 proc setUseTopLeft*(self: CenterContainer; enable: bool): void =
   expandMethodBind(className CenterContainer, "set_use_top_left", 2586408642)

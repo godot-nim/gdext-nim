@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdanimationnode; export gdanimationnode
+export AnimationNodeExtension
 
 method processAnimationNode*(self: AnimationNodeExtension; playbackInfo: PackedFloat64Array; testOnly: bool): PackedFloat32Array {.base.} = (discard)
 proc registerVirtual_processAnimationNode*[T: AnimationNodeExtension](Self: typedesc[T]) =

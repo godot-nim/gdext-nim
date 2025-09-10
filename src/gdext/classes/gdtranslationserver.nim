@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export TranslationServer
 
 proc setLocale*(self: TranslationServer; locale: String): void =
   expandMethodBind(className TranslationServer, "set_locale", 83702148)

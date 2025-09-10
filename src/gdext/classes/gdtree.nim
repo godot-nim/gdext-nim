@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
+export Tree
 
 proc clear*(self: Tree): void =
   expandMethodBind(className Tree, "clear", 3218959716)

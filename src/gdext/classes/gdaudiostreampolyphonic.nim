@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
+export AudioStreamPolyphonic
 
 proc setPolyphony*(self: AudioStreamPolyphonic; voices: int32): void =
   expandMethodBind(className AudioStreamPolyphonic, "set_polyphony", 1286410249)

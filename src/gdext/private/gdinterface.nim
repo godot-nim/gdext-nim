@@ -3,6 +3,7 @@ import gdext/private/buildsettings
 import gdext/private/native
 import gdext/private/macros
 import gdext/private/debugging
+import gdext/private/classindex
 import gdext/builtinindex {.all.}
 import gdext/stringtools
 import gdext/objectcallbacks

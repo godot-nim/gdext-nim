@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export GLTFSkeleton
 
 proc getJoints*(self: GLTFSkeleton): PackedInt32Array =
   expandMethodBind(className GLTFSkeleton, "get_joints", 969006518)

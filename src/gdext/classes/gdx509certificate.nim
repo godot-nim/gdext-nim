@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export X509Certificate
 
 proc save*(self: X509Certificate; path: String): Error =
   expandMethodBind(className X509Certificate, "save", 166001499)

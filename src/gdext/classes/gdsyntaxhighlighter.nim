@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export SyntaxHighlighter
 
 method getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary {.base.} = (discard)
 proc registerVirtual_getLineSyntaxHighlighting*[T: SyntaxHighlighter](Self: typedesc[T]) =

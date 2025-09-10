@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
+export TabContainer
 
 proc getTabCount*(self: TabContainer): int32 =
   expandMethodBind(className TabContainer, "get_tab_count", 3905245786)

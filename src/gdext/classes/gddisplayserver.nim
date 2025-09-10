@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
+export DisplayServer
 
 const ScreenWithMouseFocus* = -4
 const ScreenWithKeyboardFocus* = -3

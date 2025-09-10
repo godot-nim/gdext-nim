@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+export Gradient
 
 proc addPoint*(self: Gradient; offset: Float; color: Color): void =
   expandMethodBind(className Gradient, "add_point", 3629403827)

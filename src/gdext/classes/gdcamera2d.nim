@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export Camera2D
 
 proc setOffset*(self: Camera2D; offset: Vector2): void =
   expandMethodBind(className Camera2D, "set_offset", 743155724)

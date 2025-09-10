@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
+export PhysicsPointQueryParameters2D
 
 proc setPosition*(self: PhysicsPointQueryParameters2D; position: Vector2): void =
   expandMethodBind(className PhysicsPointQueryParameters2D, "set_position", 743155724)

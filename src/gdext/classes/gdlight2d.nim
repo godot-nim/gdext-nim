@@ -3,6 +3,7 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
+export Light2D
 
 proc setEnabled*(self: Light2D; enabled: bool): void =
   expandMethodBind(className Light2D, "set_enabled", 2586408642)
