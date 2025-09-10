@@ -183,8 +183,9 @@ proc getInstanceBinding*(p_engine_object: ObjectPtr; callbacks: var InstanceBind
   if result.isNil:
     result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
 
+proc castTo[T](obj: ObjectPtr; _: typedesc[T]): ObjectPtr
 proc getInstanceBinding*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
-  cast[T](p_engine_object.getInstanceBinding(T.callbacks))
+  cast[T](p_engine_object.castTo(T).getInstanceBinding(T.callbacks))
 
 proc setInstanceBinding*(p_o: ObjectPtr; p_binding: Object; p_callbacks: ptr InstanceBindingCallbacks) =
   interfaceObjectSetInstanceBinding(p_o, environment.library, cast[pointer](p_binding), p_callbacks)
@@ -209,8 +210,10 @@ proc callScriptMethod*[I](obj: Object; p_method: StringName; args: array[I, Vari
 proc hasScriptMethod*(obj: Object; p_method: StringName): bool =
   interfaceObjectHasScriptMethod(obj.engineInstance, addr p_method)
 
+proc castTo(obj: ObjectPtr; p_class_tag: pointer): ObjectPtr =
+  interfaceObjectCastTo(obj, p_class_tag)
 proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
-  interfaceObjectCastTo(obj.engineInstance, p_class_tag)
+  obj.engineInstance.castTo(p_class_tag)
 
 proc getInstanceID*(self: Object): GDObjectInstanceID =
   interfaceObjectGetInstanceId self.engineInstance
@@ -231,6 +234,9 @@ proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname:
 
 proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
   interfaceClassdbGetClassTag(addr p_classname)
+
+proc castTo[T](obj: ObjectPtr; _: typedesc[T]): ObjectPtr =
+  obj.castTo(ClassDB.getClassTag(className T))
 
 proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo4) =
   interfaceClassdbRegisterExtensionClass4(

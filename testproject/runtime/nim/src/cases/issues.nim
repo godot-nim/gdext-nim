@@ -13,3 +13,9 @@ runtime: suite "Community Reported":
     s.material = mat as GdRef[Material]
 
     destroy s
+
+  test "variant(Object).get(RefCounted) should be nil #286":
+    var obj = instantiate Object
+    var v = variant obj
+    check v.get(RefCounted) == nil
+    destroy obj
