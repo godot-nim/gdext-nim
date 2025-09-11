@@ -131,3 +131,28 @@ runtime: suite "Variant":
       check (v as Object) == (refc[] as Object)
       check (v as RefCounted) == refc[]
       check (v as gdref RefCounted) == refc
+
+  test "of":
+    block:
+      var v = variant 10
+      check v of int
+      check not(v of float)
+      check not(v of Object)
+      check not(v of RefCounted)
+
+    block:
+      var obj = instantiate Object
+      var v = variant obj
+      check not(v of int)
+      check not(v of float)
+      check v of Object
+      check not(v of RefCounted)
+      destroy obj
+
+    block:
+      var refc = instantiate RefCounted
+      var v = variant refc
+      check not(v of int)
+      check not(v of float)
+      check v of Object
+      check v of RefCounted
