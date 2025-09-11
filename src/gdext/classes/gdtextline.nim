@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export TextLine
+
+expandOnClassImported(TextLine, RefCounted)
 
 proc clear*(self: TextLine): void =
   expandMethodBind(className TextLine, "clear", 3218959716)

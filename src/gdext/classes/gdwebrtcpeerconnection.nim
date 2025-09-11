@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export WebRTCPeerConnection
+
+expandOnClassImported(WebRTCPeerConnection, RefCounted)
 
 proc setDefaultExtension*(_: typedesc[WebRTCPeerConnection]; extensionClass: StringName): void =
   expandMethodBind(className WebRTCPeerConnection, "set_default_extension", 3304788590)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
-export AtlasTexture
+
+expandOnClassImported(AtlasTexture, Texture2D)
 
 proc setAtlas*(self: AtlasTexture; atlas: gdref Texture2D): void =
   expandMethodBind(className AtlasTexture, "set_atlas", 4051416890)

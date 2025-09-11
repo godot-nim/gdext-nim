@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export ENetConnection
+
+expandOnClassImported(ENetConnection, RefCounted)
 
 proc createHostBound*(self: ENetConnection; bindAddress: String; bindPort: int32; maxPeers: int32 = 32; maxChannels: int32 = 0; inBandwidth: int32 = 0; outBandwidth: int32 = 0): Error =
   expandMethodBind(className ENetConnection, "create_host_bound", 1515002313)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdphysicsdirectspacestate2d; export gdphysicsdirectspacestate2d
-export PhysicsDirectSpaceState2DExtension
+
+expandOnClassImported(PhysicsDirectSpaceState2DExtension, PhysicsDirectSpaceState2D)
 
 method intersectRay*(self: PhysicsDirectSpaceState2DExtension; `from`: Vector2; to: Vector2; collisionMask: uint32; collideWithBodies: bool; collideWithAreas: bool; hitFromInside: bool; retval: ptr PhysicsServer2DExtensionRayResult): bool {.base.} = (discard)
 proc registerVirtual_intersectRay*[T: PhysicsDirectSpaceState2DExtension](Self: typedesc[T]) =

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export VehicleWheel3D
+
+expandOnClassImported(VehicleWheel3D, Node3D)
 
 proc setRadius*(self: VehicleWheel3D; length: Float): void =
   expandMethodBind(className VehicleWheel3D, "set_radius", 373806689)

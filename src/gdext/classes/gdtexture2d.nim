@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture; export gdtexture
-export Texture2D
+
+expandOnClassImported(Texture2D, Texture)
 
 method getWidth*(self: Texture2D): int32 {.base.} = (discard)
 proc registerVirtual_getWidth*[T: Texture2D](Self: typedesc[T]) =

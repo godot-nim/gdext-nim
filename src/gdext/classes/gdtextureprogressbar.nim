@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrange; export gdrange
-export TextureProgressBar
+
+expandOnClassImported(TextureProgressBar, Range)
 
 proc setUnderTexture*(self: TextureProgressBar; tex: gdref Texture2D): void =
   expandMethodBind(className TextureProgressBar, "set_under_texture", 4051416890)

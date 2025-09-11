@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodesample3d; export gdvisualshadernodesample3d
-export VisualShaderNodeTexture3D
+
+expandOnClassImported(VisualShaderNodeTexture3D, VisualShaderNodeSample3D)
 
 proc setTexture*(self: VisualShaderNodeTexture3D; value: gdref Texture3D): void =
   expandMethodBind(className VisualShaderNodeTexture3D, "set_texture", 1188404210)

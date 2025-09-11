@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export PathFollow3D
+
+expandOnClassImported(PathFollow3D, Node3D)
 
 proc setProgress*(self: PathFollow3D; progress: Float): void =
   expandMethodBind(className PathFollow3D, "set_progress", 373806689)

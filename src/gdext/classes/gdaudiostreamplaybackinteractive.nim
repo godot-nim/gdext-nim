@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
-export AudioStreamPlaybackInteractive
+
+expandOnClassImported(AudioStreamPlaybackInteractive, AudioStreamPlayback)
 
 proc switchToClipByName*(self: AudioStreamPlaybackInteractive; clipName: StringName): void =
   expandMethodBind(className AudioStreamPlaybackInteractive, "switch_to_clip_by_name", 3304788590)

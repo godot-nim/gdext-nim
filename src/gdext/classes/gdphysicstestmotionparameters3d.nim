@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export PhysicsTestMotionParameters3D
+
+expandOnClassImported(PhysicsTestMotionParameters3D, RefCounted)
 
 proc getFrom*(self: PhysicsTestMotionParameters3D): Transform3D =
   expandMethodBind(className PhysicsTestMotionParameters3D, "get_from", 3229777777)

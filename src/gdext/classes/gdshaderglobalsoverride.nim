@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
-export ShaderGlobalsOverride
+
+expandOnClassImported(ShaderGlobalsOverride, Node)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdscript; export gdscript
-export ScriptExtension
+
+expandOnClassImported(ScriptExtension, Script)
 
 method editorCanReloadFromFile*(self: ScriptExtension): bool {.base.} = (discard)
 proc registerVirtual_editorCanReloadFromFile*[T: ScriptExtension](Self: typedesc[T]) =

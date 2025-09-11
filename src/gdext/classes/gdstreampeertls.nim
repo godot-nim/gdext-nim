@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
-export StreamPeerTLS
+
+expandOnClassImported(StreamPeerTLS, StreamPeer)
 
 proc poll*(self: StreamPeerTLS): void =
   expandMethodBind(className StreamPeerTLS, "poll", 3218959716)

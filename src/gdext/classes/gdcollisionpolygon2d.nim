@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export CollisionPolygon2D
+
+expandOnClassImported(CollisionPolygon2D, Node2D)
 
 proc setPolygon*(self: CollisionPolygon2D; polygon: PackedVector2Array): void =
   expandMethodBind(className CollisionPolygon2D, "set_polygon", 1509147220)

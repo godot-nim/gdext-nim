@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
-export BoxShape3D
+
+expandOnClassImported(BoxShape3D, Shape3D)
 
 proc setSize*(self: BoxShape3D; size: Vector3): void =
   expandMethodBind(className BoxShape3D, "set_size", 3460891852)

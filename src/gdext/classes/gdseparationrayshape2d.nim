@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
-export SeparationRayShape2D
+
+expandOnClassImported(SeparationRayShape2D, Shape2D)
 
 proc setLength*(self: SeparationRayShape2D; length: Float): void =
   expandMethodBind(className SeparationRayShape2D, "set_length", 373806689)

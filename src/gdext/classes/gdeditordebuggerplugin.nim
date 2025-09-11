@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorDebuggerPlugin
+
+expandOnClassImported(EditorDebuggerPlugin, RefCounted)
 
 method setupSession*(self: EditorDebuggerPlugin; sessionId: int32): void {.base.} = (discard)
 proc registerVirtual_setupSession*[T: EditorDebuggerPlugin](Self: typedesc[T]) =

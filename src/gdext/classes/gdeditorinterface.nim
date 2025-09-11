@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export EditorInterface
+
+expandOnClassImported(EditorInterface, Object)
 
 proc restartEditor*(self: EditorInterface; save: bool = true): void =
   expandMethodBind(className EditorInterface, "restart_editor", 3216645846)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdflowcontainer; export gdflowcontainer
-export VFlowContainer
+
+expandOnClassImported(VFlowContainer, FlowContainer)

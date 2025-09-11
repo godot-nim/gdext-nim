@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorScenePostImport
+
+expandOnClassImported(EditorScenePostImport, RefCounted)
 
 method postImport*(self: EditorScenePostImport; scene: Node): Object {.base.} = (discard)
 proc registerVirtual_postImport*[T: EditorScenePostImport](Self: typedesc[T]) =

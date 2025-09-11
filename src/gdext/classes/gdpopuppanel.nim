@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdpopup; export gdpopup
-export PopupPanel
+
+expandOnClassImported(PopupPanel, Popup)

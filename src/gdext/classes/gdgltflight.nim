@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFLight
+
+expandOnClassImported(GLTFLight, Resource)
 
 proc fromNode*(_: typedesc[GLTFLight]; lightNode: Light3D): gdref GLTFLight =
   expandMethodBind(className GLTFLight, "from_node", 3907677874)

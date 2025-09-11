@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export NavigationObstacle2D
+
+expandOnClassImported(NavigationObstacle2D, Node2D)
 
 proc getRid*(self: NavigationObstacle2D): RID =
   expandMethodBind(className NavigationObstacle2D, "get_rid", 2944877500)

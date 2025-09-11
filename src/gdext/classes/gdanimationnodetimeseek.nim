@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationnode; export gdanimationnode
-export AnimationNodeTimeSeek
+
+expandOnClassImported(AnimationNodeTimeSeek, AnimationNode)
 
 proc setExplicitElapse*(self: AnimationNodeTimeSeek; enable: bool): void =
   expandMethodBind(className AnimationNodeTimeSeek, "set_explicit_elapse", 2586408642)

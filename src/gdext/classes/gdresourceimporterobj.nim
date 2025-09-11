@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
-export ResourceImporterOBJ
+
+expandOnClassImported(ResourceImporterOBJ, ResourceImporter)

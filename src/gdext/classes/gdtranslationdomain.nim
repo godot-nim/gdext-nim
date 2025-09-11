@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export TranslationDomain
+
+expandOnClassImported(TranslationDomain, RefCounted)
 
 proc getTranslationObject*(self: TranslationDomain; locale: String): gdref Translation =
   expandMethodBind(className TranslationDomain, "get_translation_object", 606768082)

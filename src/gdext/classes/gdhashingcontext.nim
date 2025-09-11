@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export HashingContext
+
+expandOnClassImported(HashingContext, RefCounted)
 
 proc start*(self: HashingContext; `type`: HashingContext_HashType): Error =
   expandMethodBind(className HashingContext, "start", 3940338335)

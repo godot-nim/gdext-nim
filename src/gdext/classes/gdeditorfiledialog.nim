@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdconfirmationdialog; export gdconfirmationdialog
-export EditorFileDialog
+
+expandOnClassImported(EditorFileDialog, ConfirmationDialog)
 
 proc clearFilters*(self: EditorFileDialog): void =
   expandMethodBind(className EditorFileDialog, "clear_filters", 3218959716)

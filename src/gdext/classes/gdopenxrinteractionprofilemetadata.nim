@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export OpenXRInteractionProfileMetadata
+
+expandOnClassImported(OpenXRInteractionProfileMetadata, Object)
 
 proc registerProfileRename*(self: OpenXRInteractionProfileMetadata; oldName: String; newName: String): void =
   expandMethodBind(className OpenXRInteractionProfileMetadata, "register_profile_rename", 3186203200)

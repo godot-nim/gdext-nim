@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export RDSamplerState
+
+expandOnClassImported(RDSamplerState, RefCounted)
 
 proc setMagFilter*(self: RDSamplerState; pMember: RenderingDevice_SamplerFilter): void =
   expandMethodBind(className RDSamplerState, "set_mag_filter", 1493420382)

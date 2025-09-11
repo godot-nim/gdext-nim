@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export Geometry2D
+
+expandOnClassImported(Geometry2D, Object)
 
 proc isPointInCircle*(self: Geometry2D; point: Vector2; circlePosition: Vector2; circleRadius: Float): bool =
   expandMethodBind(className Geometry2D, "is_point_in_circle", 2929491703)

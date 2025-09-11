@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export HMACContext
+
+expandOnClassImported(HMACContext, RefCounted)
 
 proc start*(self: HMACContext; hashType: HashingContext_HashType; key: PackedByteArray): Error =
   expandMethodBind(className HMACContext, "start", 3537364598)

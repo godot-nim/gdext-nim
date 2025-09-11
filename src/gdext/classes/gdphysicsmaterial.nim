@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export PhysicsMaterial
+
+expandOnClassImported(PhysicsMaterial, Resource)
 
 proc setFriction*(self: PhysicsMaterial; friction: Float): void =
   expandMethodBind(className PhysicsMaterial, "set_friction", 373806689)

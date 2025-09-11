@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFPhysicsShape
+
+expandOnClassImported(GLTFPhysicsShape, Resource)
 
 proc fromNode*(_: typedesc[GLTFPhysicsShape]; shapeNode: CollisionShape3D): gdref GLTFPhysicsShape =
   expandMethodBind(className GLTFPhysicsShape, "from_node", 3613751275)

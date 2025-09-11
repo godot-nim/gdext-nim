@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export PhysicsServer3DManager
+
+expandOnClassImported(PhysicsServer3DManager, Object)
 
 proc registerServer*(self: PhysicsServer3DManager; name: String; createCallback: Callable): void =
   expandMethodBind(className PhysicsServer3DManager, "register_server", 2137474292)

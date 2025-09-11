@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export Sprite2D
+
+expandOnClassImported(Sprite2D, Node2D)
 
 proc setTexture*(self: Sprite2D; texture: gdref Texture2D): void =
   expandMethodBind(className Sprite2D, "set_texture", 4051416890)

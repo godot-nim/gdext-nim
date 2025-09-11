@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
-export VisualShaderNodeColorConstant
+
+expandOnClassImported(VisualShaderNodeColorConstant, VisualShaderNodeConstant)
 
 proc setConstant*(self: VisualShaderNodeColorConstant; constant: Color): void =
   expandMethodBind(className VisualShaderNodeColorConstant, "set_constant", 2920490490)

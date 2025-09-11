@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorScript
+
+expandOnClassImported(EditorScript, RefCounted)
 
 method run*(self: EditorScript): void {.base.} = (discard)
 proc registerVirtual_run*[T: EditorScript](Self: typedesc[T]) =

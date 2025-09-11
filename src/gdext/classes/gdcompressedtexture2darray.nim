@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdcompressedtexturelayered; export gdcompressedtexturelayered
-export CompressedTexture2DArray
+
+expandOnClassImported(CompressedTexture2DArray, CompressedTextureLayered)

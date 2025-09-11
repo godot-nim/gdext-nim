@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeRemap
+
+expandOnClassImported(VisualShaderNodeRemap, VisualShaderNode)
 
 proc setOpType*(self: VisualShaderNodeRemap; opType: VisualShaderNodeRemap_OpType): void =
   expandMethodBind(className VisualShaderNodeRemap, "set_op_type", 1703697889)

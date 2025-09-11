@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export RDPipelineRasterizationState
+
+expandOnClassImported(RDPipelineRasterizationState, RefCounted)
 
 proc setEnableDepthClamp*(self: RDPipelineRasterizationState; pMember: bool): void =
   expandMethodBind(className RDPipelineRasterizationState, "set_enable_depth_clamp", 2586408642)

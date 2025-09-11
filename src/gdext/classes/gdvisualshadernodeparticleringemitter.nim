@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparticleemitter; export gdvisualshadernodeparticleemitter
-export VisualShaderNodeParticleRingEmitter
+
+expandOnClassImported(VisualShaderNodeParticleRingEmitter, VisualShaderNodeParticleEmitter)

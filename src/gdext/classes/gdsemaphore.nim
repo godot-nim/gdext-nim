@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export Semaphore
+
+expandOnClassImported(Semaphore, RefCounted)
 
 proc wait*(self: Semaphore): void =
   expandMethodBind(className Semaphore, "wait", 3218959716)

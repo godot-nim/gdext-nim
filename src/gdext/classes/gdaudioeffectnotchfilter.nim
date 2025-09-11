@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffectfilter; export gdaudioeffectfilter
-export AudioEffectNotchFilter
+
+expandOnClassImported(AudioEffectNotchFilter, AudioEffectFilter)

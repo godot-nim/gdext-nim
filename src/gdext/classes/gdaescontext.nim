@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export AESContext
+
+expandOnClassImported(AESContext, RefCounted)
 
 proc start*(self: AESContext; mode: AESContext_Mode; key: PackedByteArray; iv: PackedByteArray = PackedByteArray()): Error =
   expandMethodBind(className AESContext, "start", 3122411423)

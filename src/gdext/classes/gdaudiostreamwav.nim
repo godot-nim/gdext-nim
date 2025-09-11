@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
-export AudioStreamWAV
+
+expandOnClassImported(AudioStreamWAV, AudioStream)
 
 proc loadFromBuffer*(_: typedesc[AudioStreamWAV]; streamData: PackedByteArray; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
   expandMethodBind(className AudioStreamWAV, "load_from_buffer", 4266838938)

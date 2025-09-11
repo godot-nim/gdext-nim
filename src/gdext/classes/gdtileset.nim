@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export TileSet
+
+expandOnClassImported(TileSet, Resource)
 
 proc getNextSourceId*(self: TileSet): int32 =
   expandMethodBind(className TileSet, "get_next_source_id", 3905245786)

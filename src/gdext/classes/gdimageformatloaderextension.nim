@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdimageformatloader; export gdimageformatloader
-export ImageFormatLoaderExtension
+
+expandOnClassImported(ImageFormatLoaderExtension, ImageFormatLoader)
 
 method getRecognizedExtensions*(self: ImageFormatLoaderExtension): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getRecognizedExtensions*[T: ImageFormatLoaderExtension](Self: typedesc[T]) =

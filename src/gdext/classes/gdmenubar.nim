@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export MenuBar
+
+expandOnClassImported(MenuBar, Control)
 
 proc setSwitchOnHover*(self: MenuBar; enable: bool): void =
   expandMethodBind(className MenuBar, "set_switch_on_hover", 2586408642)

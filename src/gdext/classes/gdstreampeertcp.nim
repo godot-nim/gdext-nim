@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
-export StreamPeerTCP
+
+expandOnClassImported(StreamPeerTCP, StreamPeer)
 
 proc `bind`*(self: StreamPeerTCP; port: int32; host: String = newGdString("*")): Error =
   expandMethodBind(className StreamPeerTCP, "bind", 3167955072)

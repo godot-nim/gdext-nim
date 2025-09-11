@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export TorusMesh
+
+expandOnClassImported(TorusMesh, PrimitiveMesh)
 
 proc setInnerRadius*(self: TorusMesh; radius: Float): void =
   expandMethodBind(className TorusMesh, "set_inner_radius", 373806689)

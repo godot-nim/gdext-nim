@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdseparator; export gdseparator
-export VSeparator
+
+expandOnClassImported(VSeparator, Separator)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
-export SplitContainer
+
+expandOnClassImported(SplitContainer, Container)
 
 proc setSplitOffset*(self: SplitContainer; offset: int32): void =
   expandMethodBind(className SplitContainer, "set_split_offset", 1286410249)

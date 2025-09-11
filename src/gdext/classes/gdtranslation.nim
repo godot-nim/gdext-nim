@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export Translation
+
+expandOnClassImported(Translation, Resource)
 
 method getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName): StringName {.base.} = (discard)
 proc registerVirtual_getPluralMessage*[T: Translation](Self: typedesc[T]) =

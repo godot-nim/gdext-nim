@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdopenxrhapticbase; export gdopenxrhapticbase
-export OpenXRHapticVibration
+
+expandOnClassImported(OpenXRHapticVibration, OpenXRHapticBase)
 
 proc setDuration*(self: OpenXRHapticVibration; duration: int64): void =
   expandMethodBind(className OpenXRHapticVibration, "set_duration", 1286410249)

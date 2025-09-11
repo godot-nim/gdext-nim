@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeColorOp
+
+expandOnClassImported(VisualShaderNodeColorOp, VisualShaderNode)
 
 proc setOperator*(self: VisualShaderNodeColorOp; op: VisualShaderNodeColorOp_Operator): void =
   expandMethodBind(className VisualShaderNodeColorOp, "set_operator", 4260370673)

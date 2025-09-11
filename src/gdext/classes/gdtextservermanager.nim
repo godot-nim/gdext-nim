@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export TextServerManager
+
+expandOnClassImported(TextServerManager, Object)
 
 proc addInterface*(self: TextServerManager; `interface`: gdref TextServer): void =
   expandMethodBind(className TextServerManager, "add_interface", 1799689403)

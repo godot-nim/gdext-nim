@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export TileSetSource
+
+expandOnClassImported(TileSetSource, Resource)
 
 proc getTilesCount*(self: TileSetSource): int32 =
   expandMethodBind(className TileSetSource, "get_tiles_count", 3905245786)

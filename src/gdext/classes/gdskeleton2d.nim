@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export Skeleton2D
+
+expandOnClassImported(Skeleton2D, Node2D)
 
 proc getBoneCount*(self: Skeleton2D): int32 =
   expandMethodBind(className Skeleton2D, "get_bone_count", 3905245786)

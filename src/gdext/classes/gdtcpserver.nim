@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export TCPServer
+
+expandOnClassImported(TCPServer, RefCounted)
 
 proc listen*(self: TCPServer; port: uint16; bindAddress: String = newGdString("*")): Error =
   expandMethodBind(className TCPServer, "listen", 3167955072)

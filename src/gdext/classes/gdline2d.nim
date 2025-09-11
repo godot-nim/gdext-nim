@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export Line2D
+
+expandOnClassImported(Line2D, Node2D)
 
 proc setPoints*(self: Line2D; points: PackedVector2Array): void =
   expandMethodBind(className Line2D, "set_points", 1509147220)

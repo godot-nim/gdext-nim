@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export BackBufferCopy
+
+expandOnClassImported(BackBufferCopy, Node2D)
 
 proc setRect*(self: BackBufferCopy; rect: Rect2): void =
   expandMethodBind(className BackBufferCopy, "set_rect", 2046264180)

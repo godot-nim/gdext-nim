@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EngineProfiler
+
+expandOnClassImported(EngineProfiler, RefCounted)
 
 method toggle*(self: EngineProfiler; enable: bool; options: Array): void {.base.} = (discard)
 proc registerVirtual_toggle*[T: EngineProfiler](Self: typedesc[T]) =

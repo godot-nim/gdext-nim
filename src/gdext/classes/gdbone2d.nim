@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export Bone2D
+
+expandOnClassImported(Bone2D, Node2D)
 
 proc setRest*(self: Bone2D; rest: Transform2D): void =
   expandMethodBind(className Bone2D, "set_rest", 2761652528)

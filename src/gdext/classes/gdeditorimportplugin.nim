@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
-export EditorImportPlugin
+
+expandOnClassImported(EditorImportPlugin, ResourceImporter)
 
 method getImporterName*(self: EditorImportPlugin): String {.base.} = (discard)
 proc registerVirtual_getImporterName*[T: EditorImportPlugin](Self: typedesc[T]) =

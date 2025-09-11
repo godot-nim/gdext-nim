@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
-export CurveXYZTexture
+
+expandOnClassImported(CurveXYZTexture, Texture2D)
 
 proc setWidth*(self: CurveXYZTexture; width: int32): void =
   expandMethodBind(className CurveXYZTexture, "set_width", 1286410249)

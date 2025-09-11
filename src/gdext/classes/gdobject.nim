@@ -2,7 +2,7 @@
 
 import gdext/coronation/header/classes
 
-export Object
+expandOnClassImported(Object, RootObj)
 
 const NotificationPostinitialize* = 0
 const NotificationPredelete* = 1

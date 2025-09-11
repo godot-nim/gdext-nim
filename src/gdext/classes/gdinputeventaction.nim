@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
-export InputEventAction
+
+expandOnClassImported(InputEventAction, InputEvent)
 
 proc setAction*(self: InputEventAction; action: StringName): void =
   expandMethodBind(className InputEventAction, "set_action", 3304788590)

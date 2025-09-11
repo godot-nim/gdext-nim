@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpopup; export gdpopup
-export PopupMenu
+
+expandOnClassImported(PopupMenu, Popup)
 
 proc activateItemByEvent*(self: PopupMenu; event: gdref InputEvent; forGlobalOnly: bool = false): bool =
   expandMethodBind(className PopupMenu, "activate_item_by_event", 3716412023)

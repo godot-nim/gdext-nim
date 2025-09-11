@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export PhysicsServer2D
+
+expandOnClassImported(PhysicsServer2D, Object)
 
 proc worldBoundaryShapeCreate*(self: PhysicsServer2D): RID =
   expandMethodBind(className PhysicsServer2D, "world_boundary_shape_create", 529393457)

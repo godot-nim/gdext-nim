@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorInspectorPlugin
+
+expandOnClassImported(EditorInspectorPlugin, RefCounted)
 
 method canHandle*(self: EditorInspectorPlugin; `object`: Object): bool {.base.} = (discard)
 proc registerVirtual_canHandle*[T: EditorInspectorPlugin](Self: typedesc[T]) =

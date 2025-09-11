@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
-export XRBodyModifier3D
+
+expandOnClassImported(XRBodyModifier3D, SkeletonModifier3D)
 
 proc setBodyTracker*(self: XRBodyModifier3D; trackerName: StringName): void =
   expandMethodBind(className XRBodyModifier3D, "set_body_tracker", 3304788590)

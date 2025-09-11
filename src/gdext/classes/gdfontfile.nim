@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdfont; export gdfont
-export FontFile
+
+expandOnClassImported(FontFile, Font)
 
 proc loadBitmapFont*(self: FontFile; path: String): Error =
   expandMethodBind(className FontFile, "load_bitmap_font", 166001499)

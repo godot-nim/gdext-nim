@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdtexturelayeredrd; export gdtexturelayeredrd
-export Texture2DArrayRD
+
+expandOnClassImported(Texture2DArrayRD, TextureLayeredRD)

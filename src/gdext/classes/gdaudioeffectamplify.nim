@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
-export AudioEffectAmplify
+
+expandOnClassImported(AudioEffectAmplify, AudioEffect)
 
 proc setVolumeDb*(self: AudioEffectAmplify; volume: Float): void =
   expandMethodBind(className AudioEffectAmplify, "set_volume_db", 373806689)

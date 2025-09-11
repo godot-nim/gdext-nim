@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrange; export gdrange
-export ScrollBar
+
+expandOnClassImported(ScrollBar, Range)
 
 proc setCustomStep*(self: ScrollBar; step: Float): void =
   expandMethodBind(className ScrollBar, "set_custom_step", 373806689)

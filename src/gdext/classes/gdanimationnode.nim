@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export AnimationNode
+
+expandOnClassImported(AnimationNode, Resource)
 
 method getChildNodes*(self: AnimationNode): Dictionary {.base.} = (discard)
 proc registerVirtual_getChildNodes*[T: AnimationNode](Self: typedesc[T]) =

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export VideoStreamPlayback
+
+expandOnClassImported(VideoStreamPlayback, Resource)
 
 method stop*(self: VideoStreamPlayback): void {.base.} = (discard)
 proc registerVirtual_stop*[T: VideoStreamPlayback](Self: typedesc[T]) =

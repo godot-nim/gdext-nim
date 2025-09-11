@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
-export PacketPeerExtension
+
+expandOnClassImported(PacketPeerExtension, PacketPeer)
 
 method getPacket*(self: PacketPeerExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: PacketPeerExtension](Self: typedesc[T]) =

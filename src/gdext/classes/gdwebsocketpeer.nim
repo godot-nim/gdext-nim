@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
-export WebSocketPeer
+
+expandOnClassImported(WebSocketPeer, PacketPeer)
 
 proc connectToUrl*(self: WebSocketPeer; url: String; tlsClientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketPeer, "connect_to_url", 1966198364)

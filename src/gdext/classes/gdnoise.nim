@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export Noise
+
+expandOnClassImported(Noise, Resource)
 
 proc getNoise1D*(self: Noise; x: Float): Float =
   expandMethodBind(className Noise, "get_noise_1d", 3919130443)

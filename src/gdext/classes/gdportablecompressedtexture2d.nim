@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
-export PortableCompressedTexture2D
+
+expandOnClassImported(PortableCompressedTexture2D, Texture2D)
 
 proc createFromImage*(self: PortableCompressedTexture2D; image: gdref Image; compressionMode: PortableCompressedTexture2D_CompressionMode; normalMap: bool = false; lossyQuality: Float = 0.8): void =
   expandMethodBind(className PortableCompressedTexture2D, "create_from_image", 3679243433)

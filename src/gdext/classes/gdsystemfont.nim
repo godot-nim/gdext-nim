@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdfont; export gdfont
-export SystemFont
+
+expandOnClassImported(SystemFont, Font)
 
 proc setAntialiasing*(self: SystemFont; antialiasing: TextServer_FontAntialiasing): void =
   expandMethodBind(className SystemFont, "set_antialiasing", 1669900)

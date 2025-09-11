@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
-export EditorResourcePreview
+
+expandOnClassImported(EditorResourcePreview, Node)
 
 proc queueResourcePreview*(self: EditorResourcePreview; path: String; receiver: Object; receiverFunc: StringName; userdata: Variant): void =
   expandMethodBind(className EditorResourcePreview, "queue_resource_preview", 233177534)

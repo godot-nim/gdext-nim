@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export WorkerThreadPool
+
+expandOnClassImported(WorkerThreadPool, Object)
 
 proc addTask*(self: WorkerThreadPool; action: Callable; highPriority: bool = false; description: String = newGdString()): int64 =
   expandMethodBind(className WorkerThreadPool, "add_task", 3745067146)

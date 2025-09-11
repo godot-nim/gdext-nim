@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeDotProduct
+
+expandOnClassImported(VisualShaderNodeDotProduct, VisualShaderNode)

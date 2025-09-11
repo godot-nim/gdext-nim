@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtweener; export gdtweener
-export PropertyTweener
+
+expandOnClassImported(PropertyTweener, Tweener)
 
 proc `from`*(self: PropertyTweener; value: Variant): gdref PropertyTweener =
   expandMethodBind(className PropertyTweener, "from", 4190193059)

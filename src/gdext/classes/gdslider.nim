@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrange; export gdrange
-export Slider
+
+expandOnClassImported(Slider, Range)
 
 proc setTicks*(self: Slider; count: int32): void =
   expandMethodBind(className Slider, "set_ticks", 1286410249)

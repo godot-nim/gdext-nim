@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrigidbody3d; export gdrigidbody3d
-export VehicleBody3D
+
+expandOnClassImported(VehicleBody3D, RigidBody3D)
 
 proc setEngineForce*(self: VehicleBody3D; engineForce: Float): void =
   expandMethodBind(className VehicleBody3D, "set_engine_force", 373806689)

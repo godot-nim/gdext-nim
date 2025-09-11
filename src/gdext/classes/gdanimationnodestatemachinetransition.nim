@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export AnimationNodeStateMachineTransition
+
+expandOnClassImported(AnimationNodeStateMachineTransition, Resource)
 
 proc setSwitchMode*(self: AnimationNodeStateMachineTransition; mode: AnimationNodeStateMachineTransition_SwitchMode): void =
   expandMethodBind(className AnimationNodeStateMachineTransition, "set_switch_mode", 2074906633)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export GodotThread
+
+expandOnClassImported(GodotThread, RefCounted)
 
 proc start*(self: GodotThread; callable: Callable; priority: GodotThread_Priority = priorityNormal): Error =
   expandMethodBind(className GodotThread, "start", 1327203254)

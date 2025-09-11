@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export Joint3D
+
+expandOnClassImported(Joint3D, Node3D)
 
 proc setNodeA*(self: Joint3D; node: NodePath): void =
   expandMethodBind(className Joint3D, "set_node_a", 1348162250)

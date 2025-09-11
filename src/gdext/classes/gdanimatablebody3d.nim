@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdstaticbody3d; export gdstaticbody3d
-export AnimatableBody3D
+
+expandOnClassImported(AnimatableBody3D, StaticBody3D)
 
 proc setSyncToPhysics*(self: AnimatableBody3D; enable: bool): void =
   expandMethodBind(className AnimatableBody3D, "set_sync_to_physics", 2586408642)

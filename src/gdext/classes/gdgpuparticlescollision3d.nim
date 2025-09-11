@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
-export GPUParticlesCollision3D
+
+expandOnClassImported(GPUParticlesCollision3D, VisualInstance3D)
 
 proc setCullMask*(self: GPUParticlesCollision3D; mask: uint32): void =
   expandMethodBind(className GPUParticlesCollision3D, "set_cull_mask", 1286410249)

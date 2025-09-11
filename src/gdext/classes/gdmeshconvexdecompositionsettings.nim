@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export MeshConvexDecompositionSettings
+
+expandOnClassImported(MeshConvexDecompositionSettings, RefCounted)
 
 proc setMaxConcavity*(self: MeshConvexDecompositionSettings; maxConcavity: Float): void =
   expandMethodBind(className MeshConvexDecompositionSettings, "set_max_concavity", 373806689)

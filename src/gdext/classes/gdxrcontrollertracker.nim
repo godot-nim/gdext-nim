@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdxrpositionaltracker; export gdxrpositionaltracker
-export XRControllerTracker
+
+expandOnClassImported(XRControllerTracker, XRPositionalTracker)

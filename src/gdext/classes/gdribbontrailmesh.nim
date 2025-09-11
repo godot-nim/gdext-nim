@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export RibbonTrailMesh
+
+expandOnClassImported(RibbonTrailMesh, PrimitiveMesh)
 
 proc setSize*(self: RibbonTrailMesh; size: Float): void =
   expandMethodBind(className RibbonTrailMesh, "set_size", 373806689)

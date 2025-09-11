@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisibleonscreennotifier2d; export gdvisibleonscreennotifier2d
-export VisibleOnScreenEnabler2D
+
+expandOnClassImported(VisibleOnScreenEnabler2D, VisibleOnScreenNotifier2D)
 
 proc setEnableMode*(self: VisibleOnScreenEnabler2D; mode: VisibleOnScreenEnabler2D_EnableMode): void =
   expandMethodBind(className VisibleOnScreenEnabler2D, "set_enable_mode", 2961788752)

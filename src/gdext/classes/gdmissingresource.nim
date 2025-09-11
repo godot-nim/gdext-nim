@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export MissingResource
+
+expandOnClassImported(MissingResource, Resource)
 
 proc setOriginalClass*(self: MissingResource; name: String): void =
   expandMethodBind(className MissingResource, "set_original_class", 83702148)

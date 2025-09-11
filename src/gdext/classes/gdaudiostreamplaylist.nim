@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
-export AudioStreamPlaylist
+
+expandOnClassImported(AudioStreamPlaylist, AudioStream)
 
 const MaxStreams* = 64
 

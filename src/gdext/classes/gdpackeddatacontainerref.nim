@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export PackedDataContainerRef
+
+expandOnClassImported(PackedDataContainerRef, RefCounted)
 
 proc size*(self: PackedDataContainerRef): int32 =
   expandMethodBind(className PackedDataContainerRef, "size", 3905245786)

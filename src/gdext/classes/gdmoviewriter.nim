@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export MovieWriter
+
+expandOnClassImported(MovieWriter, Object)
 
 method getAudioMixRate*(self: MovieWriter): uint32 {.base.} = (discard)
 proc registerVirtual_getAudioMixRate*[T: MovieWriter](Self: typedesc[T]) =

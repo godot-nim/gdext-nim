@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export Marker3D
+
+expandOnClassImported(Marker3D, Node3D)
 
 proc setGizmoExtents*(self: Marker3D; extents: Float): void =
   expandMethodBind(className Marker3D, "set_gizmo_extents", 373806689)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export DirAccess
+
+expandOnClassImported(DirAccess, RefCounted)
 
 proc open*(_: typedesc[DirAccess]; path: String): gdref DirAccess =
   expandMethodBind(className DirAccess, "open", 1923528528)

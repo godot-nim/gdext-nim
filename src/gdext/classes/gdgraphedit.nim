@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export GraphEdit
+
+expandOnClassImported(GraphEdit, Control)
 
 method isInInputHotzone*(self: GraphEdit; inNode: Object; inPort: int32; mousePosition: Vector2): bool {.base.} = (discard)
 proc registerVirtual_isInInputHotzone*[T: GraphEdit](Self: typedesc[T]) =

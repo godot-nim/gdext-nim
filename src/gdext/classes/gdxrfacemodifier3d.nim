@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export XRFaceModifier3D
+
+expandOnClassImported(XRFaceModifier3D, Node3D)
 
 proc setFaceTracker*(self: XRFaceModifier3D; trackerName: StringName): void =
   expandMethodBind(className XRFaceModifier3D, "set_face_tracker", 3304788590)

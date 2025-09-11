@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export OccluderPolygon2D
+
+expandOnClassImported(OccluderPolygon2D, Resource)
 
 proc setClosed*(self: OccluderPolygon2D; closed: bool): void =
   expandMethodBind(className OccluderPolygon2D, "set_closed", 2586408642)

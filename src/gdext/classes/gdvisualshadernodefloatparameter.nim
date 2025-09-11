@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
-export VisualShaderNodeFloatParameter
+
+expandOnClassImported(VisualShaderNodeFloatParameter, VisualShaderNodeParameter)
 
 proc setHint*(self: VisualShaderNodeFloatParameter; hint: VisualShaderNodeFloatParameter_Hint): void =
   expandMethodBind(className VisualShaderNodeFloatParameter, "set_hint", 3712586466)

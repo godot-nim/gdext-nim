@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
-export WebSocketMultiplayerPeer
+
+expandOnClassImported(WebSocketMultiplayerPeer, MultiplayerPeer)
 
 proc createClient*(self: WebSocketMultiplayerPeer; url: String; tlsClientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
   expandMethodBind(className WebSocketMultiplayerPeer, "create_client", 1966198364)

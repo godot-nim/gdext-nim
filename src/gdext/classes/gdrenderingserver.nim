@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export RenderingServer
+
+expandOnClassImported(RenderingServer, Object)
 
 const NoIndexArray* = -1
 const ArrayWeightsSize* = 4

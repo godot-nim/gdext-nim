@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationnodesync; export gdanimationnodesync
-export AnimationNodeOneShot
+
+expandOnClassImported(AnimationNodeOneShot, AnimationNodeSync)
 
 proc setFadeinTime*(self: AnimationNodeOneShot; time: float64): void =
   expandMethodBind(className AnimationNodeOneShot, "set_fadein_time", 373806689)

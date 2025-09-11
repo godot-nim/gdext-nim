@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorFileSystemImportFormatSupportQuery
+
+expandOnClassImported(EditorFileSystemImportFormatSupportQuery, RefCounted)
 
 method isActive*(self: EditorFileSystemImportFormatSupportQuery): bool {.base.} = (discard)
 proc registerVirtual_isActive*[T: EditorFileSystemImportFormatSupportQuery](Self: typedesc[T]) =

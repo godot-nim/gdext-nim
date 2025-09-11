@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export Shader
+
+expandOnClassImported(Shader, Resource)
 
 proc getMode*(self: Shader): Shader_Mode =
   expandMethodBind(className Shader, "get_mode", 3392948163)

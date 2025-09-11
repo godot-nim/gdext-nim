@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export OpenXRAPIExtension
+
+expandOnClassImported(OpenXRAPIExtension, RefCounted)
 
 proc getInstance*(self: OpenXRAPIExtension): uint64 =
   expandMethodBind(className OpenXRAPIExtension, "get_instance", 2455072627)

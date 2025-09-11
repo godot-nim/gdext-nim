@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export ImporterMesh
+
+expandOnClassImported(ImporterMesh, Resource)
 
 proc addBlendShape*(self: ImporterMesh; name: String): void =
   expandMethodBind(className ImporterMesh, "add_blend_shape", 83702148)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdscrollbar; export gdscrollbar
-export VScrollBar
+
+expandOnClassImported(VScrollBar, ScrollBar)

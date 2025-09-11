@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
-export ConvexPolygonShape3D
+
+expandOnClassImported(ConvexPolygonShape3D, Shape3D)
 
 proc setPoints*(self: ConvexPolygonShape3D; points: PackedVector3Array): void =
   expandMethodBind(className ConvexPolygonShape3D, "set_points", 334873810)

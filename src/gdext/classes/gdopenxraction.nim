@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export OpenXRAction
+
+expandOnClassImported(OpenXRAction, Resource)
 
 proc setLocalizedName*(self: OpenXRAction; localizedName: String): void =
   expandMethodBind(className OpenXRAction, "set_localized_name", 83702148)

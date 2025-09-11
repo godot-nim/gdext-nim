@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export AudioListener3D
+
+expandOnClassImported(AudioListener3D, Node3D)
 
 proc makeCurrent*(self: AudioListener3D): void =
   expandMethodBind(className AudioListener3D, "make_current", 3218959716)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export SphereMesh
+
+expandOnClassImported(SphereMesh, PrimitiveMesh)
 
 proc setRadius*(self: SphereMesh; radius: Float): void =
   expandMethodBind(className SphereMesh, "set_radius", 373806689)

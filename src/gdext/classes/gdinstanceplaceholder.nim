@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
-export InstancePlaceholder
+
+expandOnClassImported(InstancePlaceholder, Node)
 
 proc getStoredValues*(self: InstancePlaceholder; withOrder: bool = false): Dictionary =
   expandMethodBind(className InstancePlaceholder, "get_stored_values", 2230153369)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export Material
+
+expandOnClassImported(Material, Resource)
 
 const RenderPriorityMax* = 127
 const RenderPriorityMin* = -128

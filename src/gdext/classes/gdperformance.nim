@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export Performance
+
+expandOnClassImported(Performance, Object)
 
 proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
   expandMethodBind(className Performance, "get_monitor", 1943275655)

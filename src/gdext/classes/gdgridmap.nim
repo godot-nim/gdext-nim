@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export GridMap
+
+expandOnClassImported(GridMap, Node3D)
 
 const InvalidCellItem* = -1
 

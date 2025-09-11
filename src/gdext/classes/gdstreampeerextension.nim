@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
-export StreamPeerExtension
+
+expandOnClassImported(StreamPeerExtension, StreamPeer)
 
 method getData*(self: StreamPeerExtension; rBuffer: ptr uint8; rBytes: int32; rReceived: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getData*[T: StreamPeerExtension](Self: typedesc[T]) =

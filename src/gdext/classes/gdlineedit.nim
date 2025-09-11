@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export LineEdit
+
+expandOnClassImported(LineEdit, Control)
 
 proc hasImeText*(self: LineEdit): bool =
   expandMethodBind(className LineEdit, "has_ime_text", 36873697)

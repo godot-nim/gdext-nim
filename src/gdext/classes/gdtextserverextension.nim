@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtextserver; export gdtextserver
-export TextServerExtension
+
+expandOnClassImported(TextServerExtension, TextServer)
 
 method hasFeature*(self: TextServerExtension; feature: TextServer_Feature): bool {.base.} = (discard)
 proc registerVirtual_hasFeature*[T: TextServerExtension](Self: typedesc[T]) =

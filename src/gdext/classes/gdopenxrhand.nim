@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export OpenXRHand
+
+expandOnClassImported(OpenXRHand, Node3D)
 
 proc setHand*(self: OpenXRHand; hand: OpenXRHand_Hands): void =
   expandMethodBind(className OpenXRHand, "set_hand", 1849328560)

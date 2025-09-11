@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export CollisionShape3D
+
+expandOnClassImported(CollisionShape3D, Node3D)
 
 proc resourceChanged*(self: CollisionShape3D; resource: gdref Resource): void =
   expandMethodBind(className CollisionShape3D, "resource_changed", 968641751)

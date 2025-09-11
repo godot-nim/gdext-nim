@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export AudioEffectInstance
+
+expandOnClassImported(AudioEffectInstance, RefCounted)
 
 method process*(self: AudioEffectInstance; srcBuffer: pointer; dstBuffer: ptr AudioFrame; frameCount: int32): void {.base.} = (discard)
 proc registerVirtual_process*[T: AudioEffectInstance](Self: typedesc[T]) =

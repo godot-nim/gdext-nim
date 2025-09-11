@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdsplitcontainer; export gdsplitcontainer
-export VSplitContainer
+
+expandOnClassImported(VSplitContainer, SplitContainer)

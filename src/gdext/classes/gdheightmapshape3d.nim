@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
-export HeightMapShape3D
+
+expandOnClassImported(HeightMapShape3D, Shape3D)
 
 proc setMapWidth*(self: HeightMapShape3D; width: int32): void =
   expandMethodBind(className HeightMapShape3D, "set_map_width", 1286410249)

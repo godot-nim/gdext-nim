@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeParticleEmit
+
+expandOnClassImported(VisualShaderNodeParticleEmit, VisualShaderNode)
 
 proc setFlags*(self: VisualShaderNodeParticleEmit; flags: VisualShaderNodeParticleEmit_EmitFlags): void =
   expandMethodBind(className VisualShaderNodeParticleEmit, "set_flags", 3960756792)

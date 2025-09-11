@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
-export PlaceholderMaterial
+
+expandOnClassImported(PlaceholderMaterial, Material)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdlight2d; export gdlight2d
-export PointLight2D
+
+expandOnClassImported(PointLight2D, Light2D)
 
 proc setTexture*(self: PointLight2D; texture: gdref Texture2D): void =
   expandMethodBind(className PointLight2D, "set_texture", 4051416890)

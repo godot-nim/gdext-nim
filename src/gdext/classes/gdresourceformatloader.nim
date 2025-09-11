@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export ResourceFormatLoader
+
+expandOnClassImported(ResourceFormatLoader, RefCounted)
 
 method getRecognizedExtensions*(self: ResourceFormatLoader): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getRecognizedExtensions*[T: ResourceFormatLoader](Self: typedesc[T]) =

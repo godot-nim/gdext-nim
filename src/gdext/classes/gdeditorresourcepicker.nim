@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdhboxcontainer; export gdhboxcontainer
-export EditorResourcePicker
+
+expandOnClassImported(EditorResourcePicker, HBoxContainer)
 
 method setCreateOptions*(self: EditorResourcePicker; menuNode: Object): void {.base.} = (discard)
 proc registerVirtual_setCreateOptions*[T: EditorResourcePicker](Self: typedesc[T]) =

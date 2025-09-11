@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdlightmapper; export gdlightmapper
-export LightmapperRD
+
+expandOnClassImported(LightmapperRD, Lightmapper)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
-export AudioEffectStereoEnhance
+
+expandOnClassImported(AudioEffectStereoEnhance, AudioEffect)
 
 proc setPanPullout*(self: AudioEffectStereoEnhance; amount: Float): void =
   expandMethodBind(className AudioEffectStereoEnhance, "set_pan_pullout", 373806689)

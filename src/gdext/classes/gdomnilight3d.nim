@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdlight3d; export gdlight3d
-export OmniLight3D
+
+expandOnClassImported(OmniLight3D, Light3D)
 
 proc setShadowMode*(self: OmniLight3D; mode: OmniLight3D_ShadowMode): void =
   expandMethodBind(className OmniLight3D, "set_shadow_mode", 121862228)

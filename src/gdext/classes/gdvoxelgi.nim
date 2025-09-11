@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
-export VoxelGI
+
+expandOnClassImported(VoxelGI, VisualInstance3D)
 
 proc setProbeData*(self: VoxelGI; data: gdref VoxelGIData): void =
   expandMethodBind(className VoxelGI, "set_probe_data", 1637849675)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdskeletonprofile; export gdskeletonprofile
-export SkeletonProfileHumanoid
+
+expandOnClassImported(SkeletonProfileHumanoid, SkeletonProfile)

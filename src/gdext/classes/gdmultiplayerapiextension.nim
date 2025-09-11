@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmultiplayerapi; export gdmultiplayerapi
-export MultiplayerAPIExtension
+
+expandOnClassImported(MultiplayerAPIExtension, MultiplayerAPI)
 
 method poll*(self: MultiplayerAPIExtension): Error {.base.} = (discard)
 proc registerVirtual_poll*[T: MultiplayerAPIExtension](Self: typedesc[T]) =
