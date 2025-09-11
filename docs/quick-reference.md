@@ -75,7 +75,7 @@ method onInit(self: MyObject) =
 
 ```gdscript
 func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
+  if what == NOTIFICATION_PREDELETE:
     pass
 ```
 
@@ -692,12 +692,12 @@ var vector3: Vector3 = Vector3.ZERO
 ```gdscript
 var foo = 2
 match typeof(foo):
-	TYPE_NIL:
-		print("foo is null")
-	TYPE_INT:
-		print("foo is an integer")
-	TYPE_OBJECT:
-		print("foo is a(n) %s" % foo.get_class())
+  TYPE_NIL:
+    print("foo is null")
+  TYPE_INT:
+    print("foo is an integer")
+  TYPE_OBJECT:
+    print("foo is a(n) %s" % foo.get_class())
 ```
 
 **Nim:**
@@ -706,11 +706,59 @@ match typeof(foo):
 var foo = variant 2
 case cast[VariantType](gdext.typeof(foo))
 of VariantTypeNil:
-	print("foo is null")
+  print("foo is null")
 of VariantTypeInt:
   print("foo is an integer")
 of VariantTypeObject:
-	print("foo is a(n) %s" % foo.getClass())
+  print("foo is a(n) %s" % foo.getClass())
+```
+
+## Remote procedure call (RPC)
+
+### Define RPC func
+
+**GDScript:**
+
+```gdscript
+@rpc
+func rpc_func():
+  print("RPC!")
+```
+
+```gdscript
+@rpc("any_peer", "call_remote", "reliable", 0)
+func rpc_func():
+  print("RPC!")
+```
+
+**Nim:**
+
+```nim
+proc rpc_func(self: MyNode) {.rpc.} =
+  print("RPC!")
+```
+
+```nim
+proc rpc_func(self: MyNode) {.rpc(
+    mode = rpcModeAnyPeer,
+    callLocal = false,
+    transferMode = transferModeReliable,
+    transferChannel = 0).}
+  print("RPC!")
+```
+
+### Call RPC func
+
+**GDScript:**
+
+```gdscript
+rpc_func.rpc()
+```
+
+**Nim:**
+
+```nim
+var error: Error = self.rpc("rpc_func")
 ```
 
 [reference]: {{ site.baseurl }}/gdext.html
