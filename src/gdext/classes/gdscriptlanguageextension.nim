@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdscriptlanguage; export gdscriptlanguage
-export ScriptLanguageExtension
+
+expandOnClassImported(ScriptLanguageExtension, ScriptLanguage)
 
 method getName*(self: ScriptLanguageExtension): String {.base.} = (discard)
 proc registerVirtual_getName*[T: ScriptLanguageExtension](Self: typedesc[T]) =

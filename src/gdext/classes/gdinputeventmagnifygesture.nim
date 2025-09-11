@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputeventgesture; export gdinputeventgesture
-export InputEventMagnifyGesture
+
+expandOnClassImported(InputEventMagnifyGesture, InputEventGesture)
 
 proc setFactor*(self: InputEventMagnifyGesture; factor: Float): void =
   expandMethodBind(className InputEventMagnifyGesture, "set_factor", 373806689)

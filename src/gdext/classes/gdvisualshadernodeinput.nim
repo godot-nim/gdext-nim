@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeInput
+
+expandOnClassImported(VisualShaderNodeInput, VisualShaderNode)
 
 proc setInputName*(self: VisualShaderNodeInput; name: String): void =
   expandMethodBind(className VisualShaderNodeInput, "set_input_name", 83702148)

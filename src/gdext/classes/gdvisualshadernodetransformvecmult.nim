@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeTransformVecMult
+
+expandOnClassImported(VisualShaderNodeTransformVecMult, VisualShaderNode)
 
 proc setOperator*(self: VisualShaderNodeTransformVecMult; op: VisualShaderNodeTransformVecMult_Operator): void =
   expandMethodBind(className VisualShaderNodeTransformVecMult, "set_operator", 1785665912)

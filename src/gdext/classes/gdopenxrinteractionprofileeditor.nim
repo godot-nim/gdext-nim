@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdopenxrinteractionprofileeditorbase; export gdopenxrinteractionprofileeditorbase
-export OpenXRInteractionProfileEditor
+
+expandOnClassImported(OpenXRInteractionProfileEditor, OpenXRInteractionProfileEditorBase)

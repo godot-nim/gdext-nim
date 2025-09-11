@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
-export InputEventFromWindow
+
+expandOnClassImported(InputEventFromWindow, InputEvent)
 
 proc setWindowId*(self: InputEventFromWindow; id: int64): void =
   expandMethodBind(className InputEventFromWindow, "set_window_id", 1286410249)

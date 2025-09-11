@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
-export AudioStreamPlaybackPolyphonic
+
+expandOnClassImported(AudioStreamPlaybackPolyphonic, AudioStreamPlayback)
 
 const InvalidId* = -1
 

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdboxcontainer; export gdboxcontainer
-export VBoxContainer
+
+expandOnClassImported(VBoxContainer, BoxContainer)

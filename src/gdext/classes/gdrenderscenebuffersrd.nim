@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrenderscenebuffers; export gdrenderscenebuffers
-export RenderSceneBuffersRD
+
+expandOnClassImported(RenderSceneBuffersRD, RenderSceneBuffers)
 
 proc hasTexture*(self: RenderSceneBuffersRD; context: StringName; name: StringName): bool =
   expandMethodBind(className RenderSceneBuffersRD, "has_texture", 471820014)

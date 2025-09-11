@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdspritebase3d; export gdspritebase3d
-export AnimatedSprite3D
+
+expandOnClassImported(AnimatedSprite3D, SpriteBase3D)
 
 proc setSpriteFrames*(self: AnimatedSprite3D; spriteFrames: gdref SpriteFrames): void =
   expandMethodBind(className AnimatedSprite3D, "set_sprite_frames", 905781144)

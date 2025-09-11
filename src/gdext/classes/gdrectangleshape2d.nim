@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
-export RectangleShape2D
+
+expandOnClassImported(RectangleShape2D, Shape2D)
 
 proc setSize*(self: RectangleShape2D; size: Vector2): void =
   expandMethodBind(className RectangleShape2D, "set_size", 743155724)

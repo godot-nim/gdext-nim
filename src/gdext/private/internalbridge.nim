@@ -247,9 +247,7 @@ var implicitRegistrationSingletons* {.compileTime.}: seq[NimNode]
 var registered: seq[StringName]
 var plugins: seq[StringName]
 proc register*(T: typedesc) =
-  when T is SomeEngineClass:
-    discard
-  else:
+  when T is SomeUserClass:
     once:
       register T.Super
       let cn = className(T)
@@ -259,6 +257,7 @@ proc register*(T: typedesc) =
       invoke Contract[T]
       for name, vmethod in T.Super.vmethods.pairs:
         discard T.vmethods.hasKeyOrPut(name, vmethod)
+      callbackTable[cn] = addr T.callbacks
       when T is EditorPlugin:
         interface_Editor_addPlugin addr cn
         plugins.add cn
@@ -268,7 +267,6 @@ proc register*(T: typedesc) =
         docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
 macro unregister_singletons =
-  let register = bindSym "register"
   result = newStmtList()
   for singleton in implicitRegistrationSingletons:
     result.add quote do:

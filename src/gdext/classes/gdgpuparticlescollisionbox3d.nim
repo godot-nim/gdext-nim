@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdgpuparticlescollision3d; export gdgpuparticlescollision3d
-export GPUParticlesCollisionBox3D
+
+expandOnClassImported(GPUParticlesCollisionBox3D, GPUParticlesCollision3D)
 
 proc setSize*(self: GPUParticlesCollisionBox3D; size: Vector3): void =
   expandMethodBind(className GPUParticlesCollisionBox3D, "set_size", 3460891852)

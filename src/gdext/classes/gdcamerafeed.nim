@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export CameraFeed
+
+expandOnClassImported(CameraFeed, RefCounted)
 
 method activateFeed*(self: CameraFeed): bool {.base.} = (discard)
 proc registerVirtual_activateFeed*[T: CameraFeed](Self: typedesc[T]) =

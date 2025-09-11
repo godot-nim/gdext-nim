@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeParticleMultiplyByAxisAngle
+
+expandOnClassImported(VisualShaderNodeParticleMultiplyByAxisAngle, VisualShaderNode)
 
 proc setDegreesMode*(self: VisualShaderNodeParticleMultiplyByAxisAngle; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeParticleMultiplyByAxisAngle, "set_degrees_mode", 2586408642)

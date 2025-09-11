@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export LabelSettings
+
+expandOnClassImported(LabelSettings, Resource)
 
 proc setLineSpacing*(self: LabelSettings; spacing: Float): void =
   expandMethodBind(className LabelSettings, "set_line_spacing", 373806689)

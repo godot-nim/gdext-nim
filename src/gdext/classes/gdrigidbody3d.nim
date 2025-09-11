@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdphysicsbody3d; export gdphysicsbody3d
-export RigidBody3D
+
+expandOnClassImported(RigidBody3D, PhysicsBody3D)
 
 method integrateForces*(self: RigidBody3D; state: PhysicsDirectBodyState3D): void {.base.} = (discard)
 proc registerVirtual_integrateForces*[T: RigidBody3D](Self: typedesc[T]) =

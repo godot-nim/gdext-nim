@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export PhysicsServer3DRenderingServerHandler
+
+expandOnClassImported(PhysicsServer3DRenderingServerHandler, Object)
 
 method setVertex*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; vertex: Vector3): void {.base.} = (discard)
 proc registerVirtual_setVertex*[T: PhysicsServer3DRenderingServerHandler](Self: typedesc[T]) =

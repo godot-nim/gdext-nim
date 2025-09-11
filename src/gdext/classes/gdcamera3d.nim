@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export Camera3D
+
+expandOnClassImported(Camera3D, Node3D)
 
 proc projectRayNormal*(self: Camera3D; screenPoint: Vector2): Vector3 =
   expandMethodBind(className Camera3D, "project_ray_normal", 1718073306)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdeditorsceneformatimporter; export gdeditorsceneformatimporter
-export EditorSceneFormatImporterUFBX
+
+expandOnClassImported(EditorSceneFormatImporterUFBX, EditorSceneFormatImporter)

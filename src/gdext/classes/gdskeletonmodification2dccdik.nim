@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
-export SkeletonModification2DCCDIK
+
+expandOnClassImported(SkeletonModification2DCCDIK, SkeletonModification2D)
 
 proc setTargetNode*(self: SkeletonModification2DCCDIK; targetNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DCCDIK, "set_target_node", 1348162250)

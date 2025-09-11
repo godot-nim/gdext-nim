@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
-export PrimitiveMesh
+
+expandOnClassImported(PrimitiveMesh, Mesh)
 
 method createMeshArray*(self: PrimitiveMesh): Array {.base.} = (discard)
 proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =

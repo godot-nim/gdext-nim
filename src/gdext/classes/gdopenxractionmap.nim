@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export OpenXRActionMap
+
+expandOnClassImported(OpenXRActionMap, Resource)
 
 proc setActionSets*(self: OpenXRActionMap; actionSets: Array): void =
   expandMethodBind(className OpenXRActionMap, "set_action_sets", 381264803)

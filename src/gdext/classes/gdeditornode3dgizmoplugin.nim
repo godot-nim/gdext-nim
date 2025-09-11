@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export EditorNode3DGizmoPlugin
+
+expandOnClassImported(EditorNode3DGizmoPlugin, Resource)
 
 method hasGizmo*(self: EditorNode3DGizmoPlugin; forNode3D: Node3D): bool {.base.} = (discard)
 proc registerVirtual_hasGizmo*[T: EditorNode3DGizmoPlugin](Self: typedesc[T]) =

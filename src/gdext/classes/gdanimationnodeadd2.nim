@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdanimationnodesync; export gdanimationnodesync
-export AnimationNodeAdd2
+
+expandOnClassImported(AnimationNodeAdd2, AnimationNodeSync)

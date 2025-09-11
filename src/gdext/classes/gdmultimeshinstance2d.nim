@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export MultiMeshInstance2D
+
+expandOnClassImported(MultiMeshInstance2D, Node2D)
 
 proc setMultimesh*(self: MultiMeshInstance2D; multimesh: gdref MultiMesh): void =
   expandMethodBind(className MultiMeshInstance2D, "set_multimesh", 2246127404)

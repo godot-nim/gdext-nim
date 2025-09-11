@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export ReferenceRect
+
+expandOnClassImported(ReferenceRect, Control)
 
 proc getBorderColor*(self: ReferenceRect): Color =
   expandMethodBind(className ReferenceRect, "get_border_color", 3444240500)

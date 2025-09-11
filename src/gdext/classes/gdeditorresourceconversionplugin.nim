@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorResourceConversionPlugin
+
+expandOnClassImported(EditorResourceConversionPlugin, RefCounted)
 
 method convertsTo*(self: EditorResourceConversionPlugin): String {.base.} = (discard)
 proc registerVirtual_convertsTo*[T: EditorResourceConversionPlugin](Self: typedesc[T]) =

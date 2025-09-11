@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
-export AudioEffectChorus
+
+expandOnClassImported(AudioEffectChorus, AudioEffect)
 
 proc setVoiceCount*(self: AudioEffectChorus; voices: int32): void =
   expandMethodBind(className AudioEffectChorus, "set_voice_count", 1286410249)

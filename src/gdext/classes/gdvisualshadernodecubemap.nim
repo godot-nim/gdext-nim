@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeCubemap
+
+expandOnClassImported(VisualShaderNodeCubemap, VisualShaderNode)
 
 proc setSource*(self: VisualShaderNodeCubemap; value: VisualShaderNodeCubemap_Source): void =
   expandMethodBind(className VisualShaderNodeCubemap, "set_source", 1625400621)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export PolygonPathFinder
+
+expandOnClassImported(PolygonPathFinder, Resource)
 
 proc setup*(self: PolygonPathFinder; points: PackedVector2Array; connections: PackedInt32Array): void =
   expandMethodBind(className PolygonPathFinder, "setup", 3251786936)

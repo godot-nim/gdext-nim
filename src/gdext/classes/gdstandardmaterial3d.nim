@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdbasematerial3d; export gdbasematerial3d
-export StandardMaterial3D
+
+expandOnClassImported(StandardMaterial3D, BaseMaterial3D)

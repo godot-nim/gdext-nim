@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export FramebufferCacheRD
+
+expandOnClassImported(FramebufferCacheRD, Object)
 
 proc getCacheMultipass*(_: typedesc[FramebufferCacheRD]; textures: TypedArray[RID]; passes: TypedArray[gdref RDFramebufferPass]; views: uint32): RID =
   expandMethodBind(className FramebufferCacheRD, "get_cache_multipass", 3437881813)

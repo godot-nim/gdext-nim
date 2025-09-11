@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export MultiplayerAPI
+
+expandOnClassImported(MultiplayerAPI, RefCounted)
 
 proc hasMultiplayerPeer*(self: MultiplayerAPI): bool =
   expandMethodBind(className MultiplayerAPI, "has_multiplayer_peer", 2240911060)

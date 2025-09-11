@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture3d; export gdtexture3d
-export ImageTexture3D
+
+expandOnClassImported(ImageTexture3D, Texture3D)
 
 proc create*(self: ImageTexture3D; format: Image_Format; width: int32; height: int32; depth: int32; useMipmaps: bool; data: TypedArray[gdref Image]): Error =
   expandMethodBind(className ImageTexture3D, "create", 1130379827)

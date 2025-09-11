@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationmixer; export gdanimationmixer
-export AnimationTree
+
+expandOnClassImported(AnimationTree, AnimationMixer)
 
 proc setTreeRoot*(self: AnimationTree; animationNode: gdref AnimationRootNode): void =
   expandMethodBind(className AnimationTree, "set_tree_root", 2581683800)

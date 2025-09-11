@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdjoint3d; export gdjoint3d
-export PinJoint3D
+
+expandOnClassImported(PinJoint3D, Joint3D)
 
 proc setParam*(self: PinJoint3D; param: PinJoint3D_Param; value: Float): void =
   expandMethodBind(className PinJoint3D, "set_param", 2059913726)

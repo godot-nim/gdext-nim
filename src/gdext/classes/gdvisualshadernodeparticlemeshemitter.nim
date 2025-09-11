@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparticleemitter; export gdvisualshadernodeparticleemitter
-export VisualShaderNodeParticleMeshEmitter
+
+expandOnClassImported(VisualShaderNodeParticleMeshEmitter, VisualShaderNodeParticleEmitter)
 
 proc setMesh*(self: VisualShaderNodeParticleMeshEmitter; mesh: gdref Mesh): void =
   expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_mesh", 194775623)

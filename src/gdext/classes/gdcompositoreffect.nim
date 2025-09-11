@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export CompositorEffect
+
+expandOnClassImported(CompositorEffect, Resource)
 
 method renderCallback*(self: CompositorEffect; effectCallbackType: int32; renderData: RenderData): void {.base.} = (discard)
 proc registerVirtual_renderCallback*[T: CompositorEffect](Self: typedesc[T]) =

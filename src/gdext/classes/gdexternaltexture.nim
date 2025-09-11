@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
-export ExternalTexture
+
+expandOnClassImported(ExternalTexture, Texture2D)
 
 proc setSize*(self: ExternalTexture; size: Vector2): void =
   expandMethodBind(className ExternalTexture, "set_size", 743155724)

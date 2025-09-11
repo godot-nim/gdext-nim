@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export Parallax2D
+
+expandOnClassImported(Parallax2D, Node2D)
 
 proc setScrollScale*(self: Parallax2D; scale: Vector2): void =
   expandMethodBind(className Parallax2D, "set_scroll_scale", 743155724)

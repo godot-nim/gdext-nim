@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdopenxrbindingmodifier; export gdopenxrbindingmodifier
-export OpenXRActionBindingModifier
+
+expandOnClassImported(OpenXRActionBindingModifier, OpenXRBindingModifier)

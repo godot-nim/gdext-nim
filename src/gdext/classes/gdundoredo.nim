@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export UndoRedo
+
+expandOnClassImported(UndoRedo, Object)
 
 proc createAction*(self: UndoRedo; name: String; mergeMode: UndoRedo_MergeMode = mergeDisable; backwardUndoOps: bool = false): void =
   expandMethodBind(className UndoRedo, "create_action", 3171901514)

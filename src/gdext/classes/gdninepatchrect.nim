@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export NinePatchRect
+
+expandOnClassImported(NinePatchRect, Control)
 
 proc setTexture*(self: NinePatchRect; texture: gdref Texture2D): void =
   expandMethodBind(className NinePatchRect, "set_texture", 4051416890)

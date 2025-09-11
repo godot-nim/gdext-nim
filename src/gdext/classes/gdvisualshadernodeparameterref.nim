@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeParameterRef
+
+expandOnClassImported(VisualShaderNodeParameterRef, VisualShaderNode)
 
 proc setParameterName*(self: VisualShaderNodeParameterRef; name: String): void =
   expandMethodBind(className VisualShaderNodeParameterRef, "set_parameter_name", 83702148)

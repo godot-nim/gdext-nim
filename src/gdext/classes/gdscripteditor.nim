@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpanelcontainer; export gdpanelcontainer
-export ScriptEditor
+
+expandOnClassImported(ScriptEditor, PanelContainer)
 
 proc getCurrentEditor*(self: ScriptEditor): ScriptEditorBase =
   expandMethodBind(className ScriptEditor, "get_current_editor", 1906266726)

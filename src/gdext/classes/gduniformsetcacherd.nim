@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export UniformSetCacheRD
+
+expandOnClassImported(UniformSetCacheRD, Object)
 
 proc getCache*(_: typedesc[UniformSetCacheRD]; shader: RID; set: uint32; uniforms: TypedArray[gdref RDUniform]): RID =
   expandMethodBind(className UniformSetCacheRD, "get_cache", 658571723)

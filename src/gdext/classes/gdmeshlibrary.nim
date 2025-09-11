@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export MeshLibrary
+
+expandOnClassImported(MeshLibrary, Resource)
 
 proc createItem*(self: MeshLibrary; id: int32): void =
   expandMethodBind(className MeshLibrary, "create_item", 1286410249)

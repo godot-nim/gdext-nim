@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export CanvasModulate
+
+expandOnClassImported(CanvasModulate, Node2D)
 
 proc setColor*(self: CanvasModulate; color: Color): void =
   expandMethodBind(className CanvasModulate, "set_color", 2920490490)

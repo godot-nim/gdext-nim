@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdeditorexportplatform; export gdeditorexportplatform
-export EditorExportPlatformExtension
+
+expandOnClassImported(EditorExportPlatformExtension, EditorExportPlatform)
 
 method getPresetFeatures*(self: EditorExportPlatformExtension; preset: gdref EditorExportPreset): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getPresetFeatures*[T: EditorExportPlatformExtension](Self: typedesc[T]) =

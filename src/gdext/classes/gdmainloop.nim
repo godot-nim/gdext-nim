@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export MainLoop
+
+expandOnClassImported(MainLoop, Object)
 
 const NotificationOsMemoryWarning* = 2009
 const NotificationTranslationChanged* = 2010

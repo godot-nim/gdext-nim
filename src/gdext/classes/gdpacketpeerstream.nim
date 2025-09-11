@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
-export PacketPeerStream
+
+expandOnClassImported(PacketPeerStream, PacketPeer)
 
 proc setStreamPeer*(self: PacketPeerStream; peer: gdref StreamPeer): void =
   expandMethodBind(className PacketPeerStream, "set_stream_peer", 3281897016)

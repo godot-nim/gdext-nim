@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export XRNode3D
+
+expandOnClassImported(XRNode3D, Node3D)
 
 proc setTracker*(self: XRNode3D; trackerName: StringName): void =
   expandMethodBind(className XRNode3D, "set_tracker", 3304788590)

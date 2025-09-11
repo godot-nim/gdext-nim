@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdspringbonecollision3d; export gdspringbonecollision3d
-export SpringBoneCollisionCapsule3D
+
+expandOnClassImported(SpringBoneCollisionCapsule3D, SpringBoneCollision3D)
 
 proc setRadius*(self: SpringBoneCollisionCapsule3D; radius: Float): void =
   expandMethodBind(className SpringBoneCollisionCapsule3D, "set_radius", 373806689)

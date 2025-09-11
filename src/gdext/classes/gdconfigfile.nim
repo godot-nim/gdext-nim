@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export ConfigFile
+
+expandOnClassImported(ConfigFile, RefCounted)
 
 proc setValue*(self: ConfigFile; section: String; key: String; value: Variant): void =
   expandMethodBind(className ConfigFile, "set_value", 2504492430)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export LightOccluder2D
+
+expandOnClassImported(LightOccluder2D, Node2D)
 
 proc setOccluderPolygon*(self: LightOccluder2D; polygon: gdref OccluderPolygon2D): void =
   expandMethodBind(className LightOccluder2D, "set_occluder_polygon", 3258315893)

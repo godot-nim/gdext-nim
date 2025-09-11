@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdxrpositionaltracker; export gdxrpositionaltracker
-export XRHandTracker
+
+expandOnClassImported(XRHandTracker, XRPositionalTracker)
 
 proc setHasTrackingData*(self: XRHandTracker; hasData: bool): void =
   expandMethodBind(className XRHandTracker, "set_has_tracking_data", 2586408642)

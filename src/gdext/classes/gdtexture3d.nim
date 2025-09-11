@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture; export gdtexture
-export Texture3D
+
+expandOnClassImported(Texture3D, Texture)
 
 method getFormat*(self: Texture3D): Image_Format {.base.} = (discard)
 proc registerVirtual_getFormat*[T: Texture3D](Self: typedesc[T]) =

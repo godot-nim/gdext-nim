@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export AnimationNodeStateMachinePlayback
+
+expandOnClassImported(AnimationNodeStateMachinePlayback, Resource)
 
 proc travel*(self: AnimationNodeStateMachinePlayback; toNode: StringName; resetOnTeleport: bool = true): void =
   expandMethodBind(className AnimationNodeStateMachinePlayback, "travel", 3823612587)

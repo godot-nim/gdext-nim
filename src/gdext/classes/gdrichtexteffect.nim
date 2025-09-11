@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export RichTextEffect
+
+expandOnClassImported(RichTextEffect, Resource)
 
 method processCustomFx*(self: RichTextEffect; charFx: gdref CharFXTransform): bool {.base.} = (discard)
 proc registerVirtual_processCustomFx*[T: RichTextEffect](Self: typedesc[T]) =

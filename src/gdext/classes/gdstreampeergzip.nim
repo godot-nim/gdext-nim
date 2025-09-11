@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
-export StreamPeerGZIP
+
+expandOnClassImported(StreamPeerGZIP, StreamPeer)
 
 proc startCompression*(self: StreamPeerGZIP; useDeflate: bool = false; bufferSize: int32 = 65535): Error =
   expandMethodBind(className StreamPeerGZIP, "start_compression", 781582770)

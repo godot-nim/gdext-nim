@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export TextEdit
+
+expandOnClassImported(TextEdit, Control)
 
 method handleUnicodeInput*(self: TextEdit; unicodeChar: int32; caretIndex: int32): void {.base.} = (discard)
 proc registerVirtual_handleUnicodeInput*[T: TextEdit](Self: typedesc[T]) =

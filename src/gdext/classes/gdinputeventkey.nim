@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
-export InputEventKey
+
+expandOnClassImported(InputEventKey, InputEventWithModifiers)
 
 proc setPressed*(self: InputEventKey; pressed: bool): void =
   expandMethodBind(className InputEventKey, "set_pressed", 2586408642)

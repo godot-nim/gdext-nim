@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
-export LookAtModifier3D
+
+expandOnClassImported(LookAtModifier3D, SkeletonModifier3D)
 
 proc setTargetNode*(self: LookAtModifier3D; targetNode: NodePath): void =
   expandMethodBind(className LookAtModifier3D, "set_target_node", 1348162250)

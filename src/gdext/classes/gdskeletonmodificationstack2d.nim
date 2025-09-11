@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export SkeletonModificationStack2D
+
+expandOnClassImported(SkeletonModificationStack2D, Resource)
 
 proc setup*(self: SkeletonModificationStack2D): void =
   expandMethodBind(className SkeletonModificationStack2D, "setup", 3218959716)

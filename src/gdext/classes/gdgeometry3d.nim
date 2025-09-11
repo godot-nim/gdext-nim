@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export Geometry3D
+
+expandOnClassImported(Geometry3D, Object)
 
 proc computeConvexMeshPoints*(self: Geometry3D; planes: TypedArray[Plane]): PackedVector3Array =
   expandMethodBind(className Geometry3D, "compute_convex_mesh_points", 1936902142)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
-export PanelContainer
+
+expandOnClassImported(PanelContainer, Container)

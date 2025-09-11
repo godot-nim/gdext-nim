@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export InputEvent
+
+expandOnClassImported(InputEvent, Resource)
 
 const DeviceIdEmulation* = -1
 

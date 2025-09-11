@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export RDUniform
+
+expandOnClassImported(RDUniform, RefCounted)
 
 proc setUniformType*(self: RDUniform; pMember: RenderingDevice_UniformType): void =
   expandMethodBind(className RDUniform, "set_uniform_type", 1664894931)

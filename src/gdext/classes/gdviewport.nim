@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode; export gdnode
-export Viewport
+
+expandOnClassImported(Viewport, Node)
 
 proc setWorld2D*(self: Viewport; world2D: gdref World2D): void =
   expandMethodBind(className Viewport, "set_world_2d", 2736080068)

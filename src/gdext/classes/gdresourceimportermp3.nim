@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
-export ResourceImporterMP3
+
+expandOnClassImported(ResourceImporterMP3, ResourceImporter)

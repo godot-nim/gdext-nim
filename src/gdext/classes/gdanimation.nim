@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export Animation
+
+expandOnClassImported(Animation, Resource)
 
 proc addTrack*(self: Animation; `type`: Animation_TrackType; atPosition: int32 = -1): int32 =
   expandMethodBind(className Animation, "add_track", 3843682357)

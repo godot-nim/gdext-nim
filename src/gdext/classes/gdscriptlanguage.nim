@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export ScriptLanguage
+
+expandOnClassImported(ScriptLanguage, Object)

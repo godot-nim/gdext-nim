@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
-export CapsuleShape2D
+
+expandOnClassImported(CapsuleShape2D, Shape2D)
 
 proc setRadius*(self: CapsuleShape2D; radius: Float): void =
   expandMethodBind(className CapsuleShape2D, "set_radius", 373806689)

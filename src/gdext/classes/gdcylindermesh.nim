@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export CylinderMesh
+
+expandOnClassImported(CylinderMesh, PrimitiveMesh)
 
 proc setTopRadius*(self: CylinderMesh; radius: Float): void =
   expandMethodBind(className CylinderMesh, "set_top_radius", 373806689)

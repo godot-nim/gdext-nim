@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdhboxcontainer; export gdhboxcontainer
-export OpenXRInteractionProfileEditorBase
+
+expandOnClassImported(OpenXRInteractionProfileEditorBase, HBoxContainer)
 
 proc setup*(self: OpenXRInteractionProfileEditorBase; actionMap: gdref OpenXRActionMap; interactionProfile: gdref OpenXRInteractionProfile): void =
   expandMethodBind(className OpenXRInteractionProfileEditorBase, "setup", 421962938)

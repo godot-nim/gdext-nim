@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
-export VisualShaderNodeFrame
+
+expandOnClassImported(VisualShaderNodeFrame, VisualShaderNodeResizableBase)
 
 proc setTitle*(self: VisualShaderNodeFrame; title: String): void =
   expandMethodBind(className VisualShaderNodeFrame, "set_title", 83702148)

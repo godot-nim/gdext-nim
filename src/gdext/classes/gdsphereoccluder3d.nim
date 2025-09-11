@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
-export SphereOccluder3D
+
+expandOnClassImported(SphereOccluder3D, Occluder3D)
 
 proc setRadius*(self: SphereOccluder3D; radius: Float): void =
   expandMethodBind(className SphereOccluder3D, "set_radius", 373806689)

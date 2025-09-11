@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationrootnode; export gdanimationrootnode
-export AnimationNodeBlendSpace1D
+
+expandOnClassImported(AnimationNodeBlendSpace1D, AnimationRootNode)
 
 proc addBlendPoint*(self: AnimationNodeBlendSpace1D; node: gdref AnimationRootNode; pos: Float; atIndex: int32 = -1): void =
   expandMethodBind(className AnimationNodeBlendSpace1D, "add_blend_point", 285050433)

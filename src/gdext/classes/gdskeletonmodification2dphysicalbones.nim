@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
-export SkeletonModification2DPhysicalBones
+
+expandOnClassImported(SkeletonModification2DPhysicalBones, SkeletonModification2D)
 
 proc setPhysicalBoneChainLength*(self: SkeletonModification2DPhysicalBones; length: int32): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_chain_length", 1286410249)

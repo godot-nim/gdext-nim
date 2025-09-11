@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export AudioStreamPlayback
+
+expandOnClassImported(AudioStreamPlayback, RefCounted)
 
 method start*(self: AudioStreamPlayback; fromPos: float64): void {.base.} = (discard)
 proc registerVirtual_start*[T: AudioStreamPlayback](Self: typedesc[T]) =

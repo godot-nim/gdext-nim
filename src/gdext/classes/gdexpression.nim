@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export Expression
+
+expandOnClassImported(Expression, RefCounted)
 
 proc parse*(self: Expression; expression: String; inputNames: PackedStringArray = PackedStringArray()): Error =
   expandMethodBind(className Expression, "parse", 3069722906)

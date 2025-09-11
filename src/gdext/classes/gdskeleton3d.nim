@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
-export Skeleton3D
+
+expandOnClassImported(Skeleton3D, Node3D)
 
 const NotificationUpdateSkeleton* = 50
 

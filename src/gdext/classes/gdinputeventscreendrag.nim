@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputeventfromwindow; export gdinputeventfromwindow
-export InputEventScreenDrag
+
+expandOnClassImported(InputEventScreenDrag, InputEventFromWindow)
 
 proc setIndex*(self: InputEventScreenDrag; index: int32): void =
   expandMethodBind(className InputEventScreenDrag, "set_index", 1286410249)

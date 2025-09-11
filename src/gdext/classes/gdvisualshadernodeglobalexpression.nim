@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeexpression; export gdvisualshadernodeexpression
-export VisualShaderNodeGlobalExpression
+
+expandOnClassImported(VisualShaderNodeGlobalExpression, VisualShaderNodeExpression)

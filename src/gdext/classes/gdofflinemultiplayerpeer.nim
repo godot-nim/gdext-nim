@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
-export OfflineMultiplayerPeer
+
+expandOnClassImported(OfflineMultiplayerPeer, MultiplayerPeer)

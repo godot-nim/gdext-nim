@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
-export BoxOccluder3D
+
+expandOnClassImported(BoxOccluder3D, Occluder3D)
 
 proc setSize*(self: BoxOccluder3D; size: Vector3): void =
   expandMethodBind(className BoxOccluder3D, "set_size", 3460891852)

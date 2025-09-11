@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorContextMenuPlugin
+
+expandOnClassImported(EditorContextMenuPlugin, RefCounted)
 
 method popupMenu*(self: EditorContextMenuPlugin; paths: PackedStringArray): void {.base.} = (discard)
 proc registerVirtual_popupMenu*[T: EditorContextMenuPlugin](Self: typedesc[T]) =

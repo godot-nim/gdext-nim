@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvboxcontainer; export gdvboxcontainer
-export ColorPicker
+
+expandOnClassImported(ColorPicker, VBoxContainer)
 
 proc setPickColor*(self: ColorPicker; color: Color): void =
   expandMethodBind(className ColorPicker, "set_pick_color", 2920490490)

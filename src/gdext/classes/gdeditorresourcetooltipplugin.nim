@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorResourceTooltipPlugin
+
+expandOnClassImported(EditorResourceTooltipPlugin, RefCounted)
 
 method handles*(self: EditorResourceTooltipPlugin; `type`: String): bool {.base.} = (discard)
 proc registerVirtual_handles*[T: EditorResourceTooltipPlugin](Self: typedesc[T]) =

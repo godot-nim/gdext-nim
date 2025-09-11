@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodetextureparameter; export gdvisualshadernodetextureparameter
-export VisualShaderNodeTexture2DParameter
+
+expandOnClassImported(VisualShaderNodeTexture2DParameter, VisualShaderNodeTextureParameter)

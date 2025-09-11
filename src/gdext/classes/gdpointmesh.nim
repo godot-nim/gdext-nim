@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export PointMesh
+
+expandOnClassImported(PointMesh, PrimitiveMesh)

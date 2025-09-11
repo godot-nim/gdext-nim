@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export EditorSelection
+
+expandOnClassImported(EditorSelection, Object)
 
 proc clear*(self: EditorSelection): void =
   expandMethodBind(className EditorSelection, "clear", 3218959716)

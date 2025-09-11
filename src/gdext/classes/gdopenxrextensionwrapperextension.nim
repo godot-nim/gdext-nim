@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export OpenXRExtensionWrapperExtension
+
+expandOnClassImported(OpenXRExtensionWrapperExtension, Object)
 
 method getRequestedExtensions*(self: OpenXRExtensionWrapperExtension): Dictionary {.base.} = (discard)
 proc registerVirtual_getRequestedExtensions*[T: OpenXRExtensionWrapperExtension](Self: typedesc[T]) =

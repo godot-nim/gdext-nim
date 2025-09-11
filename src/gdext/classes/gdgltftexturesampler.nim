@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFTextureSampler
+
+expandOnClassImported(GLTFTextureSampler, Resource)
 
 proc getMagFilter*(self: GLTFTextureSampler): int32 =
   expandMethodBind(className GLTFTextureSampler, "get_mag_filter", 3905245786)

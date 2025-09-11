@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtweener; export gdtweener
-export MethodTweener
+
+expandOnClassImported(MethodTweener, Tweener)
 
 proc setDelay*(self: MethodTweener; delay: float64): gdref MethodTweener =
   expandMethodBind(className MethodTweener, "set_delay", 266477812)

@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdstylebox; export gdstylebox
-export StyleBoxEmpty
+
+expandOnClassImported(StyleBoxEmpty, StyleBox)

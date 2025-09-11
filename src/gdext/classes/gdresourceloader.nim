@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export ResourceLoader
+
+expandOnClassImported(ResourceLoader, Object)
 
 proc loadThreadedRequest*(self: ResourceLoader; path: String; typeHint: String = newGdString(); useSubThreads: bool = false; cacheMode: ResourceLoader_CacheMode = cacheModeReuse): Error =
   expandMethodBind(className ResourceLoader, "load_threaded_request", 3614384323)

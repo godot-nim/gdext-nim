@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
-export MultiplayerPeerExtension
+
+expandOnClassImported(MultiplayerPeerExtension, MultiplayerPeer)
 
 method getPacket*(self: MultiplayerPeerExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: MultiplayerPeerExtension](Self: typedesc[T]) =

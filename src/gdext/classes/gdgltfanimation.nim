@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFAnimation
+
+expandOnClassImported(GLTFAnimation, Resource)
 
 proc getOriginalName*(self: GLTFAnimation): String =
   expandMethodBind(className GLTFAnimation, "get_original_name", 2841200299)

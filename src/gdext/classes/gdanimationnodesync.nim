@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationnode; export gdanimationnode
-export AnimationNodeSync
+
+expandOnClassImported(AnimationNodeSync, AnimationNode)
 
 proc setUseSync*(self: AnimationNodeSync; enable: bool): void =
   expandMethodBind(className AnimationNodeSync, "set_use_sync", 2586408642)

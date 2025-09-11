@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
-export CollisionObject2D
+
+expandOnClassImported(CollisionObject2D, Node2D)
 
 method inputEvent*(self: CollisionObject2D; viewport: Viewport; event: gdref InputEvent; shapeIdx: int32): void {.base.} = (discard)
 proc registerVirtual_inputEvent*[T: CollisionObject2D](Self: typedesc[T]) =

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
-export ENetPacketPeer
+
+expandOnClassImported(ENetPacketPeer, PacketPeer)
 
 const PacketLossScale* = 65536
 const PacketThrottleScale* = 32

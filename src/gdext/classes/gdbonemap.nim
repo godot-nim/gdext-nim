@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export BoneMap
+
+expandOnClassImported(BoneMap, Resource)
 
 proc getProfile*(self: BoneMap): gdref SkeletonProfile =
   expandMethodBind(className BoneMap, "get_profile", 4291782652)

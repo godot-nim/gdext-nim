@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
-export VisualShaderNodeBooleanParameter
+
+expandOnClassImported(VisualShaderNodeBooleanParameter, VisualShaderNodeParameter)
 
 proc setDefaultValueEnabled*(self: VisualShaderNodeBooleanParameter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeBooleanParameter, "set_default_value_enabled", 2586408642)

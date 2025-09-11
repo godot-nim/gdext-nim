@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export ResourceUID
+
+expandOnClassImported(ResourceUID, Object)
 
 const InvalidId* = -1
 

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFMesh
+
+expandOnClassImported(GLTFMesh, Resource)
 
 proc getOriginalName*(self: GLTFMesh): String =
   expandMethodBind(className GLTFMesh, "get_original_name", 2841200299)

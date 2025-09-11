@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
-export CanvasItemMaterial
+
+expandOnClassImported(CanvasItemMaterial, Material)
 
 proc setBlendMode*(self: CanvasItemMaterial; blendMode: CanvasItemMaterial_BlendMode): void =
   expandMethodBind(className CanvasItemMaterial, "set_blend_mode", 1786054936)

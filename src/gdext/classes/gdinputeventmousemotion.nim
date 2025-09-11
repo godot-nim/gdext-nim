@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputeventmouse; export gdinputeventmouse
-export InputEventMouseMotion
+
+expandOnClassImported(InputEventMouseMotion, InputEventMouse)
 
 proc setTilt*(self: InputEventMouseMotion; tilt: Vector2): void =
   expandMethodBind(className InputEventMouseMotion, "set_tilt", 743155724)

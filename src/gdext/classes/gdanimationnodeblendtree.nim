@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdanimationrootnode; export gdanimationrootnode
-export AnimationNodeBlendTree
+
+expandOnClassImported(AnimationNodeBlendTree, AnimationRootNode)
 
 const ConnectionOk* = 0
 const ConnectionErrorNoInput* = 1

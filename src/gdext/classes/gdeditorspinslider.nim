@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrange; export gdrange
-export EditorSpinSlider
+
+expandOnClassImported(EditorSpinSlider, Range)
 
 proc setLabel*(self: EditorSpinSlider; label: String): void =
   expandMethodBind(className EditorSpinSlider, "set_label", 83702148)

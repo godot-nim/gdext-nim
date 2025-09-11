@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdopenxractionbindingmodifier; export gdopenxractionbindingmodifier
-export OpenXRAnalogThresholdModifier
+
+expandOnClassImported(OpenXRAnalogThresholdModifier, OpenXRActionBindingModifier)
 
 proc setOnThreshold*(self: OpenXRAnalogThresholdModifier; onThreshold: Float): void =
   expandMethodBind(className OpenXRAnalogThresholdModifier, "set_on_threshold", 373806689)

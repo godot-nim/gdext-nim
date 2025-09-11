@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
-export ArrayOccluder3D
+
+expandOnClassImported(ArrayOccluder3D, Occluder3D)
 
 proc setArrays*(self: ArrayOccluder3D; vertices: PackedVector3Array; indices: PackedInt32Array): void =
   expandMethodBind(className ArrayOccluder3D, "set_arrays", 3233972621)

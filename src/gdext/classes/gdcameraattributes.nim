@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export CameraAttributes
+
+expandOnClassImported(CameraAttributes, Resource)
 
 proc setExposureMultiplier*(self: CameraAttributes; multiplier: Float): void =
   expandMethodBind(className CameraAttributes, "set_exposure_multiplier", 373806689)

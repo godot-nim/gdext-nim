@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrigidbody2d; export gdrigidbody2d
-export PhysicalBone2D
+
+expandOnClassImported(PhysicalBone2D, RigidBody2D)
 
 proc getJoint*(self: PhysicalBone2D): Joint2D =
   expandMethodBind(className PhysicalBone2D, "get_joint", 3582132112)

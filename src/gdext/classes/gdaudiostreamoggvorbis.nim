@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
-export AudioStreamOggVorbis
+
+expandOnClassImported(AudioStreamOggVorbis, AudioStream)
 
 proc loadFromBuffer*(_: typedesc[AudioStreamOggVorbis]; streamData: PackedByteArray): gdref AudioStreamOggVorbis =
   expandMethodBind(className AudioStreamOggVorbis, "load_from_buffer", 354904730)

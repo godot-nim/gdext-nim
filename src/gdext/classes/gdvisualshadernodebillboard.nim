@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
-export VisualShaderNodeBillboard
+
+expandOnClassImported(VisualShaderNodeBillboard, VisualShaderNode)
 
 proc setBillboardType*(self: VisualShaderNodeBillboard; billboardType: VisualShaderNodeBillboard_BillboardType): void =
   expandMethodBind(className VisualShaderNodeBillboard, "set_billboard_type", 1227463289)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export RandomNumberGenerator
+
+expandOnClassImported(RandomNumberGenerator, RefCounted)
 
 proc setSeed*(self: RandomNumberGenerator; seed: uint64): void =
   expandMethodBind(className RandomNumberGenerator, "set_seed", 1286410249)

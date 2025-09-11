@@ -71,6 +71,8 @@ import gdext/versions; export versions
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
 
+import gdext/classes/[gdClassDB]
+
 import gdext/nameformats
 
 when Assistance.genEditorHelp:
@@ -151,6 +153,8 @@ template GDExtension_EntryPoint*: untyped =
       load_builtinclassOperator()
       load_builtinclassMethod()
 
+      gdinterface.getParentClass = proc(class: StringName): StringName =
+        gdClassDB.getParentClass(singleton(ClassDB), class)
       execEntryPoint()
 
       return true

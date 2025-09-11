@@ -17,6 +17,9 @@ include gdext/private/includes/stringtoolsbase
 export getPtr
 export load
 
+var callbackTable*: Table[StringName, ptr InstanceBindingCallbacks]
+var getParentClass*: proc(class: StringName): StringName
+
 proc engineInstance*(obj: Object): ObjectPtr =
   privateAccess Object
   if unlikely(obj.isNil): nil
@@ -185,8 +188,20 @@ proc getInstanceBinding*(p_engine_object: ObjectPtr; callbacks: var InstanceBind
     result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
 
 proc castTo[T](obj: ObjectPtr; _: typedesc[T]): ObjectPtr
+proc getClassName*(o: ObjectPtr): StringName
 proc getInstanceBinding*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
-  cast[T](p_engine_object.castTo(T).getInstanceBinding(T.callbacks))
+  var cname = p_engine_object.getClassName
+  var callbacks: ptr InstanceBindingCallbacks
+  while true:
+    if cname == newStringName():
+      break
+    callbacks = callbackTable.getOrDefault(cname)
+    if callbacks != nil:
+      break
+    cname = getParentClass(cname)
+  if callbacks == nil:
+    callbacks = addr T.callbacks
+  cast[T](p_engine_object.castTo(T).getInstanceBinding(callbacks[]))
 
 proc setInstanceBinding*(p_o: ObjectPtr; p_binding: Object; p_callbacks: ptr InstanceBindingCallbacks) =
   interfaceObjectSetInstanceBinding(p_o, environment.library, cast[pointer](p_binding), p_callbacks)

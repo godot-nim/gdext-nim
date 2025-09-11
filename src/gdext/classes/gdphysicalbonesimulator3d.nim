@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdskeletonmodifier3d; export gdskeletonmodifier3d
-export PhysicalBoneSimulator3D
+
+expandOnClassImported(PhysicalBoneSimulator3D, SkeletonModifier3D)
 
 proc isSimulatingPhysics*(self: PhysicalBoneSimulator3D): bool =
   expandMethodBind(className PhysicalBoneSimulator3D, "is_simulating_physics", 36873697)

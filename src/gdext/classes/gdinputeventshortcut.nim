@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
-export InputEventShortcut
+
+expandOnClassImported(InputEventShortcut, InputEvent)
 
 proc setShortcut*(self: InputEventShortcut; shortcut: gdref Shortcut): void =
   expandMethodBind(className InputEventShortcut, "set_shortcut", 857163497)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
-export GPUParticles3D
+
+expandOnClassImported(GPUParticles3D, GeometryInstance3D)
 
 const MaxDrawPasses* = 4
 

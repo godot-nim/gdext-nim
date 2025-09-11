@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export RDShaderSPIRV
+
+expandOnClassImported(RDShaderSPIRV, Resource)
 
 proc setStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
   expandMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)

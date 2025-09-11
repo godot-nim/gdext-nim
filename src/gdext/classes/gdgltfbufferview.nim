@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export GLTFBufferView
+
+expandOnClassImported(GLTFBufferView, Resource)
 
 proc loadBufferViewData*(self: GLTFBufferView; state: gdref GLTFState): PackedByteArray =
   expandMethodBind(className GLTFBufferView, "load_buffer_view_data", 3945446907)

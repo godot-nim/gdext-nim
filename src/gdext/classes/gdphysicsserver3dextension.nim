@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdphysicsserver3d; export gdphysicsserver3d
-export PhysicsServer3DExtension
+
+expandOnClassImported(PhysicsServer3DExtension, PhysicsServer3D)
 
 method worldBoundaryShapeCreate*(self: PhysicsServer3DExtension): RID {.base.} = (discard)
 proc registerVirtual_worldBoundaryShapeCreate*[T: PhysicsServer3DExtension](Self: typedesc[T]) =

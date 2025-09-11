@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdwebrtcdatachannel; export gdwebrtcdatachannel
-export WebRTCDataChannelExtension
+
+expandOnClassImported(WebRTCDataChannelExtension, WebRTCDataChannel)
 
 method getPacket*(self: WebRTCDataChannelExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =

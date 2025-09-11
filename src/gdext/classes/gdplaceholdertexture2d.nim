@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
-export PlaceholderTexture2D
+
+expandOnClassImported(PlaceholderTexture2D, Texture2D)
 
 proc setSize*(self: PlaceholderTexture2D; size: Vector2): void =
   expandMethodBind(className PlaceholderTexture2D, "set_size", 743155724)

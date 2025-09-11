@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export TreeItem
+
+expandOnClassImported(TreeItem, Object)
 
 proc setCellMode*(self: TreeItem; column: int32; mode: TreeItem_TreeCellMode): void =
   expandMethodBind(className TreeItem, "set_cell_mode", 289920701)

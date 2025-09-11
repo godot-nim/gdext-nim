@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdinputeventmouse; export gdinputeventmouse
-export InputEventMouseButton
+
+expandOnClassImported(InputEventMouseButton, InputEventMouse)
 
 proc setFactor*(self: InputEventMouseButton; factor: Float): void =
   expandMethodBind(className InputEventMouseButton, "set_factor", 373806689)

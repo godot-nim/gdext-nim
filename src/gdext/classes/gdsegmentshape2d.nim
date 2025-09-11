@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
-export SegmentShape2D
+
+expandOnClassImported(SegmentShape2D, Shape2D)
 
 proc setA*(self: SegmentShape2D; a: Vector2): void =
   expandMethodBind(className SegmentShape2D, "set_a", 743155724)

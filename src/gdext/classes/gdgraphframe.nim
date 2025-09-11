@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdgraphelement; export gdgraphelement
-export GraphFrame
+
+expandOnClassImported(GraphFrame, GraphElement)
 
 proc setTitle*(self: GraphFrame; title: String): void =
   expandMethodBind(className GraphFrame, "set_title", 83702148)

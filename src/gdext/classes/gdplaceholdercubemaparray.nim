@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdplaceholdertexturelayered; export gdplaceholdertexturelayered
-export PlaceholderCubemapArray
+
+expandOnClassImported(PlaceholderCubemapArray, PlaceholderTextureLayered)

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export Time
+
+expandOnClassImported(Time, Object)
 
 proc getDatetimeDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary =
   expandMethodBind(className Time, "get_datetime_dict_from_unix_time", 3485342025)

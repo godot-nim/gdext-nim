@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
-export Label
+
+expandOnClassImported(Label, Control)
 
 proc setHorizontalAlignment*(self: Label; alignment: HorizontalAlignment): void =
   expandMethodBind(className Label, "set_horizontal_alignment", 2312603777)

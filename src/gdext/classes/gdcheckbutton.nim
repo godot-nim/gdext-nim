@@ -3,4 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdbutton; export gdbutton
-export CheckButton
+
+expandOnClassImported(CheckButton, Button)

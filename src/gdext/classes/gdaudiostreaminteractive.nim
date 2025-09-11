@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
-export AudioStreamInteractive
+
+expandOnClassImported(AudioStreamInteractive, AudioStream)
 
 const ClipAny* = -1
 

@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
-export EditorSettings
+
+expandOnClassImported(EditorSettings, Resource)
 
 const NotificationEditorSettingsChanged* = 10000
 

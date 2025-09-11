@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdlight3d; export gdlight3d
-export DirectionalLight3D
+
+expandOnClassImported(DirectionalLight3D, Light3D)
 
 proc setShadowMode*(self: DirectionalLight3D; mode: DirectionalLight3D_ShadowMode): void =
   expandMethodBind(className DirectionalLight3D, "set_shadow_mode", 1261211726)

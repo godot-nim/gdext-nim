@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export EditorExportPlugin
+
+expandOnClassImported(EditorExportPlugin, RefCounted)
 
 method exportFile*(self: EditorExportPlugin; path: String; `type`: String; features: PackedStringArray): void {.base.} = (discard)
 proc registerVirtual_exportFile*[T: EditorExportPlugin](Self: typedesc[T]) =

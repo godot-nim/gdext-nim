@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
-export TextMesh
+
+expandOnClassImported(TextMesh, PrimitiveMesh)
 
 proc setHorizontalAlignment*(self: TextMesh; alignment: HorizontalAlignment): void =
   expandMethodBind(className TextMesh, "set_horizontal_alignment", 2312603777)

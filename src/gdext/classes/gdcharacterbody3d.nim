@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdphysicsbody3d; export gdphysicsbody3d
-export CharacterBody3D
+
+expandOnClassImported(CharacterBody3D, PhysicsBody3D)
 
 proc moveAndSlide*(self: CharacterBody3D): bool =
   expandMethodBind(className CharacterBody3D, "move_and_slide", 2240911060)

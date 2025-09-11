@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdobject; export gdobject
-export IP
+
+expandOnClassImported(IP, Object)
 
 const ResolverMaxQueries* = 256
 const ResolverInvalidId* = -1

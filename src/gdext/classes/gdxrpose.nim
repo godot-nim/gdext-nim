@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export XRPose
+
+expandOnClassImported(XRPose, RefCounted)
 
 proc setHasTrackingData*(self: XRPose; hasTrackingData: bool): void =
   expandMethodBind(className XRPose, "set_has_tracking_data", 2586408642)

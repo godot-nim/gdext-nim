@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
-export RDFramebufferPass
+
+expandOnClassImported(RDFramebufferPass, RefCounted)
 
 const AttachmentUnused* = -1
 

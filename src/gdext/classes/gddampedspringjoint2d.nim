@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdjoint2d; export gdjoint2d
-export DampedSpringJoint2D
+
+expandOnClassImported(DampedSpringJoint2D, Joint2D)
 
 proc setLength*(self: DampedSpringJoint2D; length: Float): void =
   expandMethodBind(className DampedSpringJoint2D, "set_length", 373806689)

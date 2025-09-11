@@ -3,7 +3,8 @@
 import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
-export ShaderMaterial
+
+expandOnClassImported(ShaderMaterial, Material)
 
 proc setShader*(self: ShaderMaterial; shader: gdref Shader): void =
   expandMethodBind(className ShaderMaterial, "set_shader", 3341921675)
