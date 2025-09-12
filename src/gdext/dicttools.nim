@@ -3,6 +3,7 @@ import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/macros
 import gdext/builtinindex
+import gdext/varianttools
 
 import std/[hashes, tables]
 
@@ -37,6 +38,26 @@ proc newDictionary*[A, B](pairs: openArray[(A, B)]): Dictionary =
   result = newDictionary()
   for (key, value) in pairs:
     result[variant key] = variant value
+
+iterator keys*(self: Dictionary): Variant =
+  for key in self.variant.keys:
+    yield key
+
+iterator values*(self: Dictionary): Variant =
+  for key in self.variant.keys:
+    yield self[key]
+
+iterator pairs*(self: Dictionary): tuple[key, item: Variant] =
+  for key in self.variant.keys:
+    yield (key, self[key])
+
+iterator mvalues*(self: var Dictionary): var Variant =
+  for key in self.variant.keys:
+    yield self[key]
+
+iterator mpairs*(self: var Dictionary): tuple[key: Variant; item: var Variant] =
+  for key in self.variant.keys:
+    yield (key, self[key])
 
 proc contains*[T: SomeProperty](dict: Dictionary; value: T): bool = dict.has(variant value)
 
