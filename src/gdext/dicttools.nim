@@ -61,4 +61,13 @@ iterator mpairs*(self: var Dictionary): tuple[key: Variant; item: var Variant] =
 
 proc contains*[T: SomeProperty](dict: Dictionary; value: T): bool = dict.has(variant value)
 
+proc `[]`*(self: Dictionary; key: SomeProperty): Variant =
+  self[variant key]
+proc `[]`*(self: var Dictionary; key: SomeProperty): var Variant =
+  self[variant key]
+proc `[]=`*(self: var Dictionary; key: SomeProperty; value: sink Variant) =
+  self[variant key] = value
+proc `[]=`*[A, B: SomeProperty](self: var Dictionary; key: A; value: sink B) =
+  self[variant key] = variant value
+
 template dictionary*(args: varargs[untyped]): untyped {.deprecated: "use newDictionary instead".} = unpackVarargs(newDictionary, args)
