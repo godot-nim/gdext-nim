@@ -6,11 +6,12 @@ import gdext/private/gdinterface
 import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/internalbridge
+import gdext/private/internalobjecttools
 import gdext/private/debugging
 import gdext/private/classindex
 import gdext/classes/gdNode
 
-export gdinterface.getClassName
+export getClassName
 
 proc destroy*(obj: Object) =
   interfaceObjectDestroy(obj.engineInstance)

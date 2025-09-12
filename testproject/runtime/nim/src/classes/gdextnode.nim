@@ -5,6 +5,7 @@ import gdext
 import gdext/private/typeshift
 import gdext/private/native
 import gdext/private/gdinterface
+import gdext/private/propertyinfo
 
 import gdext/classes/[gdTexture2D]
 import classes/gdvirtualnode01

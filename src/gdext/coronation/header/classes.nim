@@ -1,6 +1,8 @@
 import gdext/private/gdinterface; export gdinterface
 import gdext/private/typeshift; export typeshift
 import gdext/private/staticevents; export staticevents
+import gdext/private/propertyinfo; export propertyinfo
+import gdext/private/internalobjecttools
 import gdext/private/classindex; export classindex
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools

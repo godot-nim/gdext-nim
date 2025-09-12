@@ -5,6 +5,7 @@ import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/methodinfo
+import gdext/private/propertyinfo
 import gdext/private/classindex
 
 import gdext/dicttools

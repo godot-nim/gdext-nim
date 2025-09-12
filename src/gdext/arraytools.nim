@@ -19,6 +19,7 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/macros
+import gdext/private/propertyinfo
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/varianttools

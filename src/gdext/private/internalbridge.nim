@@ -8,6 +8,7 @@ import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/private/debugging
 import gdext/private/classindex
+import gdext/private/internalobjecttools
 import gdext/private/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks
