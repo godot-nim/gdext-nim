@@ -4,7 +4,7 @@ import gdext/private/typeshift
 import gdext/private/macros
 import gdext/builtinindex
 
-import std/[hashes]
+import std/[hashes, tables]
 
 template nilCheck*(self: Dictionary) =
   if unlikely(cast[pointer](self) == nil):
@@ -22,6 +22,21 @@ proc `[]=`*(self: var Dictionary; key: Variant; value: sink Variant) =
 
 include gdext/gen/gddictionaryconstr
 include gdext/gen/gddictionary
+
+proc newDictionary*(table: Table): Dictionary =
+  result = newDictionary()
+  for key, value in table:
+    result[variant key] = variant value
+
+proc newDictionary*(table: TableRef): Dictionary =
+  result = newDictionary()
+  for key, value in table:
+    result[variant key] = variant value
+
+proc newDictionary*[A, B](pairs: openArray[(A, B)]): Dictionary =
+  result = newDictionary()
+  for (key, value) in pairs:
+    result[variant key] = variant value
 
 proc contains*[T: SomeProperty](dict: Dictionary; value: T): bool = dict.has(variant value)
 
