@@ -1,5 +1,5 @@
 import gdext/private/buildsettings
-import gdext/private/gdinterface
+import gdext/private/propertyinfo
 import gdext/builtinindex
 import gdext/classes/[gdengine]
 import gdext/objecttools

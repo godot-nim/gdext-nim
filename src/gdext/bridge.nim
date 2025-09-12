@@ -2,6 +2,7 @@ import std/sets
 
 import gdext/private/gdinterface
 import gdext/private/internalbridge
+import gdext/private/propertyinfo
 import gdext/private/staticevents
 import gdext/private/macros
 import gdext/private/userclass/procs
