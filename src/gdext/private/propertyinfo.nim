@@ -76,7 +76,7 @@ proc className*[T: not (SomeClass|GdRef|enum)](_: typedesc[T]): var StringName =
   name
 
 proc className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
-template className*(T: typedesc[GdRef[SomeClass]]): var StringName = Meta(T.RefCounted).className
+proc className*(T: typedesc[GdRef]): var StringName = Meta(T.RefCounted).className
 proc className*(E: typedesc[enum]): StringName =
   mixin EnumOwner
   once:

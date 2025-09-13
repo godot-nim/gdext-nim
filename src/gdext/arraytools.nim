@@ -22,7 +22,6 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/builtinindex
 import gdext/stringtools
-import gdext/varianttools
 
 import std/[sequtils, importutils, hashes]
 
@@ -157,14 +156,14 @@ template toOpenArray*(arr: Array): openArray[Variant] =
 # ==========
 
 proc newTypedArray*[T](arr: Array): TypedArray[T] =
-  TypedArray[T] newArray(arr, Int T.variantType, T.className, variant())
+  TypedArray[T] newArray(arr, Int T.variantType, T.className, Variant())
 
 proc newTypedArray*[T](arr: TypedArray[T]): TypedArray[T] =
   TypedArray[T] newArray(arr.Array)
 
 proc newTypedArray*[T](): TypedArray[T] =
   result = TypedArray[T] newArray()
-  result.Array.setTyped(T.variantType, T.className, variant())
+  result.Array.setTyped(T.variantType, T.className, Variant())
 
 proc newTypedArray*[T](len: Natural): TypedArray[T] =
   result = newTypedArray[T]()
