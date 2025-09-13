@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(OpenXRIPBinding, Resource)
+
 proc setAction*(self: OpenXRIPBinding; action: gdref OpenXRAction): void =
   expandMethodBind(className OpenXRIPBinding, "set_action", 349361333)
   methodbind.ptrcall(self, [getPtr action])

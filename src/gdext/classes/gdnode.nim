@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(Node, Object)
+
 const NotificationEnterTree* = 10
 const NotificationExitTree* = 11
 const NotificationMovedInParent* = 12

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(FileAccess, RefCounted)
+
 proc open*(_: typedesc[FileAccess]; path: String; flags: FileAccess_ModeFlags): gdref FileAccess =
   expandMethodBind(className FileAccess, "open", 1247358404)
   var ret: encoded gdref FileAccess

@@ -1,6 +1,8 @@
 import gdext
 import gdext/classes/[
   gdNode,
+  gdTexture2D,
+  gdSprite2D,
   gdResourceLoader,
 ]
 

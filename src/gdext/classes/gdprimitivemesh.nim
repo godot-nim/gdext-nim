@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
 
+expandOnClassImported(PrimitiveMesh, Mesh)
+
 method createMeshArray*(self: PrimitiveMesh): Array {.base.} = (discard)
 proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_create_mesh_array"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

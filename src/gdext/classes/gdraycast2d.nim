@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(RayCast2D, Node2D)
+
 proc setEnabled*(self: RayCast2D; enabled: bool): void =
   expandMethodBind(className RayCast2D, "set_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])

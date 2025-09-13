@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(WeakRef, RefCounted)
+
 proc getRef*(self: WeakRef): Variant =
   expandMethodBind(className WeakRef, "get_ref", 1214101251)
   var ret: encoded Variant

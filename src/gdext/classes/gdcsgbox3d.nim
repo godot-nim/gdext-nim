@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
 
+expandOnClassImported(CSGBox3D, CSGPrimitive3D)
+
 proc setSize*(self: CSGBox3D; size: Vector3): void =
   expandMethodBind(className CSGBox3D, "set_size", 3460891852)
   methodbind.ptrcall(self, [getPtr size])

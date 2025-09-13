@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeParticleRandomness, VisualShaderNode)
+
 proc setOpType*(self: VisualShaderNodeParticleRandomness; `type`: VisualShaderNodeParticleRandomness_OpType): void =
   expandMethodBind(className VisualShaderNodeParticleRandomness, "set_op_type", 2060089061)
   methodbind.ptrcall(self, [getPtr `type`])

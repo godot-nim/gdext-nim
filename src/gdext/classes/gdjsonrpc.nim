@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(JSONRPC, Object)
+
 proc setScope*(self: JSONRPC; scope: String; target: Object): void =
   expandMethodBind(className JSONRPC, "set_scope", 2572618360)
   methodbind.ptrcall(self, [getPtr scope, getPtr target])

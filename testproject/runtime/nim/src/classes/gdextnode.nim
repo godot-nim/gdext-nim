@@ -5,7 +5,9 @@ import gdext
 import gdext/private/typeshift
 import gdext/private/native
 import gdext/private/gdinterface
+import gdext/private/propertyinfo
 
+import gdext/classes/[gdTexture2D]
 import classes/gdvirtualnode01
 
 # sugar of `import godot/classDetail/classDetail_native_T`
@@ -17,6 +19,7 @@ import gdext/classes/[
   gdInputEventKey,
   gdEngine,
   gdSprite2D,
+  gdLabel,
   gdResourceLoader,
 ]
 
@@ -162,6 +165,17 @@ proc test_VirtualMethod(self: GDExtNode) =
       check (self/"../InheritedNode02" as VirtualNode01).virtualMethod("from Nim Source") ==
         "virtualMethod of InheritedNode02 is called from Nim Source"
 
+proc test_typeComparison(self: GDExtNode) =
+  test "type comparison":
+    check self/"../Control" of Control
+    check self/"../Control/Label" of Control
+    check self/"../Control/RichTextLabel" of Control
+
+    check not(self/"../Control" of Label)
+    check self/"../Control/Label" of Label
+    check not(self/"../Control/RichTextLabel" of Label)
+
+
 # Using `method` to override virtual functions of Engine-Class.
 # No specific pragma is needed.
 # based on Node.ready()
@@ -173,6 +187,7 @@ method ready(self: GDExtNode) {.gdsync.} =
   self.test_Resource()
   self.test_FirstclassFunction()
   self.test_VirtualMethod()
+  self.test_typeComparison()
 
 method notification(self: GDExtNode; what: int32) =
   once:

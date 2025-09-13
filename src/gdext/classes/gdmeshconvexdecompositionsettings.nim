@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(MeshConvexDecompositionSettings, RefCounted)
+
 proc setMaxConcavity*(self: MeshConvexDecompositionSettings; maxConcavity: Float): void =
   expandMethodBind(className MeshConvexDecompositionSettings, "set_max_concavity", 373806689)
   methodbind.ptrcall(self, [getPtr maxConcavity])

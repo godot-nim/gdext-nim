@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
 
+expandOnClassImported(SkeletonModification2DLookAt, SkeletonModification2D)
+
 proc setBone2dNode*(self: SkeletonModification2DLookAt; bone2dNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DLookAt, "set_bone2d_node", 1348162250)
   methodbind.ptrcall(self, [getPtr bone2dNodepath])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDTextureView, RefCounted)
+
 proc setFormatOverride*(self: RDTextureView; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureView, "set_format_override", 565531219)
   methodbind.ptrcall(self, [getPtr pMember])

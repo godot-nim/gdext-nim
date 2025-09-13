@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
 
+expandOnClassImported(PlaneMesh, PrimitiveMesh)
+
 proc setSize*(self: PlaneMesh; size: Vector2): void =
   expandMethodBind(className PlaneMesh, "set_size", 743155724)
   methodbind.ptrcall(self, [getPtr size])

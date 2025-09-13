@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+expandOnClassImported(ImageTexture, Texture2D)
+
 proc createFromImage*(_: typedesc[ImageTexture]; image: gdref Image): gdref ImageTexture =
   expandMethodBind(className ImageTexture, "create_from_image", 2775144163)
   var ret: encoded gdref ImageTexture

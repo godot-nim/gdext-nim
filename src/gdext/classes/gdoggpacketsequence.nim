@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(OggPacketSequence, Resource)
+
 proc setPacketData*(self: OggPacketSequence; packetData: TypedArray[Array]): void =
   expandMethodBind(className OggPacketSequence, "set_packet_data", 381264803)
   methodbind.ptrcall(self, [getPtr packetData])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(EditorNode3DGizmoPlugin, Resource)
+
 method hasGizmo*(self: EditorNode3DGizmoPlugin; forNode3D: Node3D): bool {.base.} = (discard)
 proc registerVirtual_hasGizmo*[T: EditorNode3DGizmoPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_gizmo"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFAccessor, Resource)
+
 proc getBufferView*(self: GLTFAccessor): int32 =
   expandMethodBind(className GLTFAccessor, "get_buffer_view", 2455072627)
   var ret: encoded int32

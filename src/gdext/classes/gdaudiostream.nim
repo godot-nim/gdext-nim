@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(AudioStream, Resource)
+
 method instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback {.base.} = (discard)
 proc registerVirtual_instantiatePlayback*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

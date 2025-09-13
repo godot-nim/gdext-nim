@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcanvasitem; export gdcanvasitem
 
+expandOnClassImported(Node2D, CanvasItem)
+
 proc setPosition*(self: Node2D; position: Vector2): void =
   expandMethodBind(className Node2D, "set_position", 743155724)
   methodbind.ptrcall(self, [getPtr position])

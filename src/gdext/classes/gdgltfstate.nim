@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFState, Resource)
+
 const HandleBinaryDiscardTextures* = 0
 const HandleBinaryExtractTextures* = 1
 const HandleBinaryEmbedAsBasisu* = 2

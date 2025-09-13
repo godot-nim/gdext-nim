@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdeditorplugin; export gdeditorplugin
 
+expandOnClassImported(GridMapEditorPlugin, EditorPlugin)
+
 proc getCurrentGridMap*(self: GridMapEditorPlugin): GridMap =
   expandMethodBind(className GridMapEditorPlugin, "get_current_grid_map", 1184264483)
   var ret: encoded GridMap

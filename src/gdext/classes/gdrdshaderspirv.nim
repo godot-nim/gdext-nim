@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(RDShaderSPIRV, Resource)
+
 proc setStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
   expandMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)
   methodbind.ptrcall(self, [getPtr stage, getPtr bytecode])

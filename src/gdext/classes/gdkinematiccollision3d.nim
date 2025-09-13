@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(KinematicCollision3D, RefCounted)
+
 proc getTravel*(self: KinematicCollision3D): Vector3 =
   expandMethodBind(className KinematicCollision3D, "get_travel", 3360562783)
   var ret: encoded Vector3

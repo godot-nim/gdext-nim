@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(TextServer, RefCounted)
+
 proc hasFeature*(self: TextServer; feature: TextServer_Feature): bool =
   expandMethodBind(className TextServer, "has_feature", 3967367083)
   var ret: encoded bool

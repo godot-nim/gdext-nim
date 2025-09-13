@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(ResourceFormatSaver, RefCounted)
+
 method save*(self: ResourceFormatSaver; resource: gdref Resource; path: String; flags: uint32): Error {.base.} = (discard)
 proc registerVirtual_save*[T: ResourceFormatSaver](Self: typedesc[T]) =
   Self.vmethods[newStringName"_save"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
 
+expandOnClassImported(StreamPeerBuffer, StreamPeer)
+
 proc seek*(self: StreamPeerBuffer; position: int32): void =
   expandMethodBind(className StreamPeerBuffer, "seek", 1286410249)
   methodbind.ptrcall(self, [getPtr position])

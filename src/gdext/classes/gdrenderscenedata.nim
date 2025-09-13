@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(RenderSceneData, Object)
+
 proc getCamTransform*(self: RenderSceneData): Transform3D =
   expandMethodBind(className RenderSceneData, "get_cam_transform", 3229777777)
   var ret: encoded Transform3D

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDAttachmentFormat, RefCounted)
+
 proc setFormat*(self: RDAttachmentFormat; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDAttachmentFormat, "set_format", 565531219)
   methodbind.ptrcall(self, [getPtr pMember])

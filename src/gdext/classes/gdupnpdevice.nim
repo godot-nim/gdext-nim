@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(UPNPDevice, RefCounted)
+
 proc isValidGateway*(self: UPNPDevice): bool =
   expandMethodBind(className UPNPDevice, "is_valid_gateway", 36873697)
   var ret: encoded bool

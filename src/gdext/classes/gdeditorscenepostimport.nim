@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorScenePostImport, RefCounted)
+
 method postImport*(self: EditorScenePostImport; scene: Node): Object {.base.} = (discard)
 proc registerVirtual_postImport*[T: EditorScenePostImport](Self: typedesc[T]) =
   Self.vmethods[newStringName"_post_import"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

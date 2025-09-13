@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Mesh, Resource)
+
 method getSurfaceCount*(self: Mesh): int32 {.base.} = (discard)
 proc registerVirtual_getSurfaceCount*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_surface_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

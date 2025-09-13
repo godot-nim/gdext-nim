@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(OpenXRBindingModifier, Resource)
+
 method getDescription*(self: OpenXRBindingModifier): String {.base.} = (discard)
 proc registerVirtual_getDescription*[T: OpenXRBindingModifier](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_description"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

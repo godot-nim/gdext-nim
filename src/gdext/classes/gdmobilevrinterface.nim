@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdxrinterface; export gdxrinterface
 
+expandOnClassImported(MobileVRInterface, XRInterface)
+
 proc setEyeHeight*(self: MobileVRInterface; eyeHeight: float64): void =
   expandMethodBind(className MobileVRInterface, "set_eye_height", 373806689)
   methodbind.ptrcall(self, [getPtr eyeHeight])

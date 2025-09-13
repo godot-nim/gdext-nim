@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmeshinstance3d; export gdmeshinstance3d
 
+expandOnClassImported(SoftBody3D, MeshInstance3D)
+
 proc getPhysicsRid*(self: SoftBody3D): RID =
   expandMethodBind(className SoftBody3D, "get_physics_rid", 2944877500)
   var ret: encoded RID

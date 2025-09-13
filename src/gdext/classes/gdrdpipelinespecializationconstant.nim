@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDPipelineSpecializationConstant, RefCounted)
+
 proc setValue*(self: RDPipelineSpecializationConstant; value: Variant): void =
   expandMethodBind(className RDPipelineSpecializationConstant, "set_value", 1114965689)
   methodbind.ptrcall(self, [getPtr value])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(StyleBox, Resource)
+
 method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
 proc registerVirtual_draw*[T: StyleBox](Self: typedesc[T]) =
   Self.vmethods[newStringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

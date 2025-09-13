@@ -1,5 +1,7 @@
 import gdext
+import gdext/classes/[gdResource, gdNode]
 import testutils
+import std/strutils
 
 runtime: suite "Variant":
   test "has.*":
@@ -84,3 +86,80 @@ runtime: suite "Variant":
     check deep[1].get(string) == "Value2"
     varr[1] = variant "Value3"
     check deep[1].get(string) == "Value2"
+
+  test "as":
+    block:
+      var v = variant 10
+      check (v as int) == 10
+      check (v as float) == 10.0
+      check (v as string) == "10"
+      check (v as Object) == nil
+      check (v as RefCounted) == nil
+      check (v as gdref RefCounted) == GdRef[RefCounted]()
+    block:
+      var v = variant 10.0
+      check (v as int) == 10
+      check (v as float) == 10.0
+      check (v as string) == "10.0"
+      check (v as Object) == nil
+      check (v as RefCounted) == nil
+      check (v as gdref RefCounted) == GdRef[RefCounted]()
+    block:
+      var v = variant "10"
+      check (v as int) == 10
+      check (v as float) == 10.0
+      check (v as string) == "10"
+      check (v as Object) == nil
+      check (v as RefCounted) == nil
+      check (v as gdref RefCounted) == GdRef[RefCounted]()
+    block:
+      var obj = instantiate Node
+      var v = variant obj
+      check (v as int) == 0
+      check (v as float) == 0.0
+      check (v as string).startsWith("<Node#")
+      check (v as Node) == obj
+      check (v as RefCounted) == nil
+      check (v as gdref RefCounted) == GdRef[RefCounted]()
+      destroy obj
+    block:
+      var refc = instantiate RefCounted
+      var v = variant refc
+      check (v as int) == 0
+      check (v as float) == 0.0
+      check (v as string).startsWith("<RefCounted#")
+      check (v as Object) == (refc[] as Object)
+      check (v as RefCounted) == refc[]
+      check (v as gdref RefCounted) == refc
+
+  test "of":
+    block:
+      var v = variant 10
+      check v of int
+      check not(v of float)
+      check not(v of Object)
+      check not(v of RefCounted)
+
+    block:
+      var obj = instantiate Object
+      var v = variant obj
+      check not(v of int)
+      check not(v of float)
+      check v of Object
+      check not(v of RefCounted)
+      destroy obj
+
+    block:
+      var refc = instantiate RefCounted
+      var v = variant refc
+      check not(v of int)
+      check not(v of float)
+      check v of Object
+      check v of RefCounted
+
+    block:
+      var tarr = newTypedArray[String]()
+      var v = variant tarr
+      check v of Array
+      check v of TypedArray[String]
+      check not (v of TypedArray[StringName])

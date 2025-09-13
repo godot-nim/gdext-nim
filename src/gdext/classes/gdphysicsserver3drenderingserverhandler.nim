@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(PhysicsServer3DRenderingServerHandler, Object)
+
 method setVertex*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; vertex: Vector3): void {.base.} = (discard)
 proc registerVirtual_setVertex*[T: PhysicsServer3DRenderingServerHandler](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_vertex"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

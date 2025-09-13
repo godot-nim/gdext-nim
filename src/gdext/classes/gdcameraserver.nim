@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(CameraServer, Object)
+
 proc getFeed*(self: CameraServer; index: int32): gdref CameraFeed =
   expandMethodBind(className CameraServer, "get_feed", 361927068)
   var ret: encoded gdref CameraFeed

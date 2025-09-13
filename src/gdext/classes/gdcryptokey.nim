@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(CryptoKey, Resource)
+
 proc save*(self: CryptoKey; path: String; publicOnly: bool = false): Error =
   expandMethodBind(className CryptoKey, "save", 885841341)
   var ret: encoded Error

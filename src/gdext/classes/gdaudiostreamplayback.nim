@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(AudioStreamPlayback, RefCounted)
+
 method start*(self: AudioStreamPlayback; fromPos: float64): void {.base.} = (discard)
 proc registerVirtual_start*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_start"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

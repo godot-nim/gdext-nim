@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Gradient, Resource)
+
 proc addPoint*(self: Gradient; offset: Float; color: Color): void =
   expandMethodBind(className Gradient, "add_point", 3629403827)
   methodbind.ptrcall(self, [getPtr offset, getPtr color])

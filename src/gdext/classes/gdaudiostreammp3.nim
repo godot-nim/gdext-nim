@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamMP3, AudioStream)
+
 proc loadFromBuffer*(_: typedesc[AudioStreamMP3]; streamData: PackedByteArray): gdref AudioStreamMP3 =
   expandMethodBind(className AudioStreamMP3, "load_from_buffer", 1674970313)
   var ret: encoded gdref AudioStreamMP3

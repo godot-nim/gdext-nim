@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeTexture, VisualShaderNode)
+
 proc setSource*(self: VisualShaderNodeTexture; value: VisualShaderNodeTexture_Source): void =
   expandMethodBind(className VisualShaderNodeTexture, "set_source", 905262939)
   methodbind.ptrcall(self, [getPtr value])

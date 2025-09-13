@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDTextureFormat, RefCounted)
+
 proc setFormat*(self: RDTextureFormat; pMember: RenderingDevice_DataFormat): void =
   expandMethodBind(className RDTextureFormat, "set_format", 565531219)
   methodbind.ptrcall(self, [getPtr pMember])

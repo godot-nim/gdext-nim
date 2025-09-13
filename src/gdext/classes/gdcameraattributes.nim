@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(CameraAttributes, Resource)
+
 proc setExposureMultiplier*(self: CameraAttributes; multiplier: Float): void =
   expandMethodBind(className CameraAttributes, "set_exposure_multiplier", 373806689)
   methodbind.ptrcall(self, [getPtr multiplier])

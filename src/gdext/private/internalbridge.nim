@@ -7,6 +7,8 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/private/debugging
+import gdext/private/classindex
+import gdext/private/internalobjecttools
 import gdext/private/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks
@@ -31,7 +33,7 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  set(cast[T](p_instance), p_name, p_value)
+  objectcallbacks.set(cast[T](p_instance), p_name, p_value)
 
 proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   get(cast[T](p_instance), p_name, r_ret)
@@ -246,9 +248,7 @@ var implicitRegistrationSingletons* {.compileTime.}: seq[NimNode]
 var registered: seq[StringName]
 var plugins: seq[StringName]
 proc register*(T: typedesc) =
-  when T is SomeEngineClass:
-    discard
-  else:
+  when T is SomeUserClass:
     once:
       register T.Super
       let cn = className(T)
@@ -258,6 +258,7 @@ proc register*(T: typedesc) =
       invoke Contract[T]
       for name, vmethod in T.Super.vmethods.pairs:
         discard T.vmethods.hasKeyOrPut(name, vmethod)
+      callbackTable[cn] = addr T.callbacks
       when T is EditorPlugin:
         interface_Editor_addPlugin addr cn
         plugins.add cn
@@ -267,7 +268,6 @@ proc register*(T: typedesc) =
         docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
 macro unregister_singletons =
-  let register = bindSym "register"
   result = newStmtList()
   for singleton in implicitRegistrationSingletons:
     result.add quote do:

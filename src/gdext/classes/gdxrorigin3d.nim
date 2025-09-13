@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(XROrigin3D, Node3D)
+
 proc setWorldScale*(self: XROrigin3D; worldScale: Float): void =
   expandMethodBind(className XROrigin3D, "set_world_scale", 373806689)
   methodbind.ptrcall(self, [getPtr worldScale])

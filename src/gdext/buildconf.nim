@@ -28,7 +28,7 @@ const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
 proc toBuildOS(path: string): string =
   when buildOS == "windows":
     result = path.unixToNativePath()
-  when buildOS == "linux":
+  when buildOS in ["linux", "macosx"]:
     result = path.nativeToUnixPath()
 
 proc `/`(a, b: string): string =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgraphelement; export gdgraphelement
 
+expandOnClassImported(GraphNode, GraphElement)
+
 method drawPort*(self: GraphNode; slotIndex: int32; position: Vector2i; left: bool; color: Color): void {.base.} = (discard)
 proc registerVirtual_drawPort*[T: GraphNode](Self: typedesc[T]) =
   Self.vmethods[newStringName"_draw_port"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

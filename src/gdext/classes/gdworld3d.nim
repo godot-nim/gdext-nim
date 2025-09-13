@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(World3D, Resource)
+
 proc getSpace*(self: World3D): RID =
   expandMethodBind(className World3D, "get_space", 2944877500)
   var ret: encoded RID

@@ -261,8 +261,6 @@ template variantType*[E: enum](Type: typedesc[set[E]]): Variant_Type = VariantTy
 
 template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_Nil
 
-include gdext/gen/[classindex]
-
 proc dup*(src: String): String =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeString](addr result, addr argPtr)

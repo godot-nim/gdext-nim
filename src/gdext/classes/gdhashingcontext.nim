@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(HashingContext, RefCounted)
+
 proc start*(self: HashingContext; `type`: HashingContext_HashType): Error =
   expandMethodBind(className HashingContext, "start", 3940338335)
   var ret: encoded Error

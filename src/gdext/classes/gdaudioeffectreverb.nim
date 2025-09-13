@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectReverb, AudioEffect)
+
 proc setPredelayMsec*(self: AudioEffectReverb; msec: Float): void =
   expandMethodBind(className AudioEffectReverb, "set_predelay_msec", 373806689)
   methodbind.ptrcall(self, [getPtr msec])

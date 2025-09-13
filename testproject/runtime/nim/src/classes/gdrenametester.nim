@@ -1,5 +1,6 @@
 import gdext
 import gdext/nameformats
+import gdext/classes/gdNode
 
 type rename_test_snake_case_no_pragma* {.gdsync.} = ptr object of Node
 

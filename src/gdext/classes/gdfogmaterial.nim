@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(FogMaterial, Material)
+
 proc setDensity*(self: FogMaterial; density: Float): void =
   expandMethodBind(className FogMaterial, "set_density", 373806689)
   methodbind.ptrcall(self, [getPtr density])

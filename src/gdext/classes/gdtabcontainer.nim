@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(TabContainer, Container)
+
 proc getTabCount*(self: TabContainer): int32 =
   expandMethodBind(className TabContainer, "get_tab_count", 3905245786)
   var ret: encoded int32

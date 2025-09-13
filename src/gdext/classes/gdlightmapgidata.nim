@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(LightmapGIData, Resource)
+
 proc setLightmapTextures*(self: LightmapGIData; lightTextures: TypedArray[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_lightmap_textures", 381264803)
   methodbind.ptrcall(self, [getPtr lightTextures])

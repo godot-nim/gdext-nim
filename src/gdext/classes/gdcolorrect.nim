@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(ColorRect, Control)
+
 proc setColor*(self: ColorRect; color: Color): void =
   expandMethodBind(className ColorRect, "set_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])

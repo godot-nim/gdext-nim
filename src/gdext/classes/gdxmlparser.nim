@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(XMLParser, RefCounted)
+
 proc read*(self: XMLParser): Error =
   expandMethodBind(className XMLParser, "read", 166280745)
   var ret: encoded Error

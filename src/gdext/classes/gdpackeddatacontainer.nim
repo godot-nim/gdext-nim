@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(PackedDataContainer, Resource)
+
 proc pack*(self: PackedDataContainer; value: Variant): Error =
   expandMethodBind(className PackedDataContainer, "pack", 966674026)
   var ret: encoded Error

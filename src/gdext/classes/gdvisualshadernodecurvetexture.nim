@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
 
+expandOnClassImported(VisualShaderNodeCurveTexture, VisualShaderNodeResizableBase)
+
 proc setTexture*(self: VisualShaderNodeCurveTexture; texture: gdref CurveTexture): void =
   expandMethodBind(className VisualShaderNodeCurveTexture, "set_texture", 181872837)
   methodbind.ptrcall(self, [getPtr texture])

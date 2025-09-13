@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
 
+expandOnClassImported(PrismMesh, PrimitiveMesh)
+
 proc setLeftToRight*(self: PrismMesh; leftToRight: Float): void =
   expandMethodBind(className PrismMesh, "set_left_to_right", 373806689)
   methodbind.ptrcall(self, [getPtr leftToRight])

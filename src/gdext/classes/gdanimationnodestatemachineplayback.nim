@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(AnimationNodeStateMachinePlayback, Resource)
+
 proc travel*(self: AnimationNodeStateMachinePlayback; toNode: StringName; resetOnTeleport: bool = true): void =
   expandMethodBind(className AnimationNodeStateMachinePlayback, "travel", 3823612587)
   methodbind.ptrcall(self, [getPtr toNode, getPtr resetOnTeleport])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(Joint2D, Node2D)
+
 proc setNodeA*(self: Joint2D; node: NodePath): void =
   expandMethodBind(className Joint2D, "set_node_a", 1348162250)
   methodbind.ptrcall(self, [getPtr node])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(NavigationMesh, Resource)
+
 proc setSamplePartitionType*(self: NavigationMesh; samplePartitionType: NavigationMesh_SamplePartitionType): void =
   expandMethodBind(className NavigationMesh, "set_sample_partition_type", 2472437533)
   methodbind.ptrcall(self, [getPtr samplePartitionType])

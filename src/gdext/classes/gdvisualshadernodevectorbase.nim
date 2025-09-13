@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeVectorBase, VisualShaderNode)
+
 proc setOpType*(self: VisualShaderNodeVectorBase; `type`: VisualShaderNodeVectorBase_OpType): void =
   expandMethodBind(className VisualShaderNodeVectorBase, "set_op_type", 1692596998)
   methodbind.ptrcall(self, [getPtr `type`])

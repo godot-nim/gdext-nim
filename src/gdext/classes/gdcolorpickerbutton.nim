@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdbutton; export gdbutton
 
+expandOnClassImported(ColorPickerButton, Button)
+
 proc setPickColor*(self: ColorPickerButton; color: Color): void =
   expandMethodBind(className ColorPickerButton, "set_pick_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])

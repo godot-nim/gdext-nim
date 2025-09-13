@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+expandOnClassImported(PacketPeerExtension, PacketPeer)
+
 method getPacket*(self: PacketPeerExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: PacketPeerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

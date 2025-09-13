@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(PhysicsServer2DManager, Object)
+
 proc registerServer*(self: PhysicsServer2DManager; name: String; createCallback: Callable): void =
   expandMethodBind(className PhysicsServer2DManager, "register_server", 2137474292)
   methodbind.ptrcall(self, [getPtr name, getPtr createCallback])

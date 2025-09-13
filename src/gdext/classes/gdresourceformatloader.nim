@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(ResourceFormatLoader, RefCounted)
+
 method getRecognizedExtensions*(self: ResourceFormatLoader): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getRecognizedExtensions*[T: ResourceFormatLoader](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_recognized_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

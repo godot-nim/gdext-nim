@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodevectorbase; export gdvisualshadernodevectorbase
+
+expandOnClassImported(VisualShaderNodeFaceForward, VisualShaderNodeVectorBase)

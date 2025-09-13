@@ -21,9 +21,9 @@
 ## * `math <gdext/math.html>`_: Mathematical (geometrical) functions
 ## * `swizzles <gdext/swizzles.html>`_: GLSLang-like swizzling operator
 ## * `utilityfuncs <gdext/utilityfuncs.html>`_: Printing functions + misc
-## * `conversions <gdext/conversions.html>`_: Utility converters to make easier to convert types
 ## * `dollars <gdext/dollars.html>`_: `$` for all engine-builtins
 ## * `nameformats <gdext/nameformats.html>`_: Provides formatter functions for transforming Nim identifiers when exporting them to Godot.
+## * `versions <gdext/versions.html>`_: gdext version and supported Godot version
 
 {.warning[UnusedImport]: off.}
 
@@ -47,6 +47,9 @@ export InitializationLevel, VariantType, gdcall
 import gdext/private/typeshift
 export typeshift.get, typeshift.variant
 
+import gdext/private/classindex
+export EngineClass
+
 import gdext/builtinindex; export builtinindex
 import gdext/bridge; export bridge
 import gdext/appearances; export appearances
@@ -61,13 +64,14 @@ import gdext/arraytools; export arraytools
 import gdext/colortools; export colortools
 import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
-import gdext/conversions; export conversions
 import gdext/dollars; export dollars
+import gdext/sugars; export sugars
+import gdext/versions; export versions
 
-import gdext/classes/[gdengine]
-export gdengine.isEditorHint
 import gdext/extclasses/[gdextensionmain]
 export gdextensionmain.ExtensionMain, gdextensionmain.extmain
+
+import gdext/classes/[gdClassDB]
 
 import gdext/nameformats
 
@@ -149,6 +153,8 @@ template GDExtension_EntryPoint*: untyped =
       load_builtinclassOperator()
       load_builtinclassMethod()
 
+      gdinterface.getParentClass = proc(class: StringName): StringName =
+        gdClassDB.getParentClass(singleton(ClassDB), class)
       execEntryPoint()
 
       return true

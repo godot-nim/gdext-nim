@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdxrpositionaltracker; export gdxrpositionaltracker
 
+expandOnClassImported(XRBodyTracker, XRPositionalTracker)
+
 proc setHasTrackingData*(self: XRBodyTracker; hasData: bool): void =
   expandMethodBind(className XRBodyTracker, "set_has_tracking_data", 2586408642)
   methodbind.ptrcall(self, [getPtr hasData])

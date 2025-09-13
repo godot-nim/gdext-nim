@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamPlaylist, AudioStream)
+
 const MaxStreams* = 64
 
 proc setStreamCount*(self: AudioStreamPlaylist; streamCount: int32): void =

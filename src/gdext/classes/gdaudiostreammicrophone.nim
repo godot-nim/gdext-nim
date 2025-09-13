@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
+
+expandOnClassImported(AudioStreamMicrophone, AudioStream)

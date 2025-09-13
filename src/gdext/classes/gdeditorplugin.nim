@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(EditorPlugin, Node)
+
 method forwardCanvasGuiInput*(self: EditorPlugin; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_forwardCanvasGuiInput*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_forward_canvas_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

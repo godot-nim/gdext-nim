@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(VideoStreamPlayback, Resource)
+
 method stop*(self: VideoStreamPlayback): void {.base.} = (discard)
 proc registerVirtual_stop*[T: VideoStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_stop"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

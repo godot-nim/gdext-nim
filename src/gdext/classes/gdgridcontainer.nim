@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(GridContainer, Container)
+
 proc setColumns*(self: GridContainer; columns: int32): void =
   expandMethodBind(className GridContainer, "set_columns", 1286410249)
   methodbind.ptrcall(self, [getPtr columns])

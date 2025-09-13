@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(Semaphore, RefCounted)
+
 proc wait*(self: Semaphore): void =
   expandMethodBind(className Semaphore, "wait", 3218959716)
   methodbind.ptrcall(self, [])

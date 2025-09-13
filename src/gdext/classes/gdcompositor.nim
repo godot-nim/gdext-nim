@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Compositor, Resource)
+
 proc setCompositorEffects*(self: Compositor; compositorEffects: TypedArray[gdref CompositorEffect]): void =
   expandMethodBind(className Compositor, "set_compositor_effects", 381264803)
   methodbind.ptrcall(self, [getPtr compositorEffects])

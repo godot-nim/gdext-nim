@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdjoint3d; export gdjoint3d
 
+expandOnClassImported(ConeTwistJoint3D, Joint3D)
+
 proc setParam*(self: ConeTwistJoint3D; param: ConeTwistJoint3D_Param; value: Float): void =
   expandMethodBind(className ConeTwistJoint3D, "set_param", 1062470226)
   methodbind.ptrcall(self, [getPtr param, getPtr value])

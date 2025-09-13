@@ -1,6 +1,6 @@
 import gdext
 import testutils
-import std/[unicode, strutils]
+import std/[unicode, strutils, tables]
 import gdext/classes/gdnode
 include gdext/gen/variantsizes
 
@@ -400,12 +400,94 @@ runtime: suite "newPackedArray":
       discard arr[10]
 
 runtime: suite "Dictionary":
+  let keys = [
+    "int",
+    "float",
+    "string",
+    "Object",
+    ]
+  let values = [
+    variant(1),
+    variant(2.0),
+    variant("three"),
+    variant(instantiate Object),
+    ]
+  let data = {
+    keys[0]: values[0],
+    keys[1]: values[1],
+    keys[2]: values[2],
+    keys[3]: values[3],
+    }
   test "nil access":
     var dict: Dictionary
     let imm_dict = dict
     check dict.size == 0
     expect NilAccessDefect:
       discard imm_dict.size
+
+  test "construct from Table":
+    var tab = data.toTable
+    var dict = newDictionary(tab)
+    check not dict.isTyped
+    check dict.size == 4
+    for (key, val) in data:
+      check dict[variant key] == val
+
+  test "construct from TableRef":
+    var tab = data.newTable
+    var dict = newDictionary(tab)
+    check not dict.isTyped
+    check dict.size == 4
+    for (key, val) in data:
+      check dict[variant key] == val
+
+  test "construct from openArray":
+    var dict = newDictionary(data)
+    check not dict.isTyped
+    check dict.size == 4
+    for (key, val) in data:
+      check dict[variant key] == val
+
+  test "keys":
+    var dict = newDictionary(data)
+    for key in dict.keys:
+      check key as string in keys
+
+  test "values":
+    var dict = newDictionary(data)
+    for value in dict.values:
+      check value in values
+
+  test "pairs":
+    var dict = newDictionary(data)
+    for key, value in dict:
+      check values[keys.find(key)] == value
+
+  test "mvalues":
+    var dict = newDictionary(data)
+    for value in dict.mvalues:
+      value = variant Inf
+    for value in dict.values:
+      check value as float == Inf
+
+  test "mpairs":
+    var dict = newDictionary(data)
+    for key, value in dict.mpairs:
+      value = key
+    for key, value in dict:
+      check value == key
+
+  test "[]":
+    var dict = newDictionary(data)
+    check dict["int"] of int and dict["int"] as int == 1
+    check dict["float"] of float and dict["float"] as float == 2.0
+    check dict["string"] of string and dict["string"] as string == "three"
+    check dict["Object"] of Object and dict["Object"] as Object == values[3]
+
+  test "[]=":
+    var dict = newDictionary(data)
+    dict["int"] = 10
+    check dict["int"] as int == 10
 
 runtime: suite "String":
   test "to nim-string":

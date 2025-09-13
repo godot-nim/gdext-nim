@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(PhysicsTestMotionResult2D, RefCounted)
+
 proc getTravel*(self: PhysicsTestMotionResult2D): Vector2 =
   expandMethodBind(className PhysicsTestMotionResult2D, "get_travel", 3341600327)
   var ret: encoded Vector2

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamPolyphonic, AudioStream)
+
 proc setPolyphony*(self: AudioStreamPolyphonic; voices: int32): void =
   expandMethodBind(className AudioStreamPolyphonic, "set_polyphony", 1286410249)
   methodbind.ptrcall(self, [getPtr voices])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(HTTPRequest, Node)
+
 proc request*(self: HTTPRequest; url: String; customHeaders: PackedStringArray = PackedStringArray(); `method`: HTTPClient_Method = methodGet; requestData: String = newGdString()): Error =
   expandMethodBind(className HTTPRequest, "request", 3215244323)
   var ret: encoded Error

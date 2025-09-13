@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
 
+expandOnClassImported(WebRTCMultiplayerPeer, MultiplayerPeer)
+
 proc createServer*(self: WebRTCMultiplayerPeer; channelsConfig: Array = newArray()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_server", 2865356025)
   var ret: encoded Error

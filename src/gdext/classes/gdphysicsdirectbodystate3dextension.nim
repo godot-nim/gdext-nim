@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdphysicsdirectbodystate3d; export gdphysicsdirectbodystate3d
 
+expandOnClassImported(PhysicsDirectBodyState3DExtension, PhysicsDirectBodyState3D)
+
 method getTotalGravity*(self: PhysicsDirectBodyState3DExtension): Vector3 {.base.} = (discard)
 proc registerVirtual_getTotalGravity*[T: PhysicsDirectBodyState3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_total_gravity"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

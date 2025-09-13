@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(SkinReference, RefCounted)
+
 proc getSkeleton*(self: SkinReference): RID =
   expandMethodBind(className SkinReference, "get_skeleton", 2944877500)
   var ret: encoded RID

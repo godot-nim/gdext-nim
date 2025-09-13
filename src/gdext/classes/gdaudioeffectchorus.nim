@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectChorus, AudioEffect)
+
 proc setVoiceCount*(self: AudioEffectChorus; voices: int32): void =
   expandMethodBind(className AudioEffectChorus, "set_voice_count", 1286410249)
   methodbind.ptrcall(self, [getPtr voices])

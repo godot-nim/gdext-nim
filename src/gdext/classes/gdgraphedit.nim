@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(GraphEdit, Control)
+
 method isInInputHotzone*(self: GraphEdit; inNode: Object; inPort: int32; mousePosition: Vector2): bool {.base.} = (discard)
 proc registerVirtual_isInInputHotzone*[T: GraphEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_in_input_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdjoint3d; export gdjoint3d
 
+expandOnClassImported(Generic6DOFJoint3D, Joint3D)
+
 proc setParamX*(self: Generic6DOFJoint3D; param: Generic6DOFJoint3D_Param; value: Float): void =
   expandMethodBind(className Generic6DOFJoint3D, "set_param_x", 2018184242)
   methodbind.ptrcall(self, [getPtr param, getPtr value])

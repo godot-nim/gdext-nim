@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+expandOnClassImported(SpriteBase3D, GeometryInstance3D)
+
 proc setCentered*(self: SpriteBase3D; centered: bool): void =
   expandMethodBind(className SpriteBase3D, "set_centered", 2586408642)
   methodbind.ptrcall(self, [getPtr centered])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectRecord, AudioEffect)
+
 proc setRecordingActive*(self: AudioEffectRecord; record: bool): void =
   expandMethodBind(className AudioEffectRecord, "set_recording_active", 2586408642)
   methodbind.ptrcall(self, [getPtr record])

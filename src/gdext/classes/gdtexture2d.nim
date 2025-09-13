@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture; export gdtexture
 
+expandOnClassImported(Texture2D, Texture)
+
 method getWidth*(self: Texture2D): int32 {.base.} = (discard)
 proc registerVirtual_getWidth*[T: Texture2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_width"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

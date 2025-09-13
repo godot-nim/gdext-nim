@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrange; export gdrange
 
+expandOnClassImported(ProgressBar, Range)
+
 proc setFillMode*(self: ProgressBar; mode: int32): void =
   expandMethodBind(className ProgressBar, "set_fill_mode", 1286410249)
   methodbind.ptrcall(self, [getPtr mode])

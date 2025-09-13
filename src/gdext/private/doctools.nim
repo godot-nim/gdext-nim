@@ -2,6 +2,7 @@ import gdext/private/buildsettings
 
 when Assistance.genEditorHelp:
   import gdext/private/gdinterface
+  import gdext/private/propertyinfo
   import gdext/builtinindex
   import gdext/stringtools
 

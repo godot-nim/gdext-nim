@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(OpenXRExtensionWrapperExtension, Object)
+
 method getRequestedExtensions*(self: OpenXRExtensionWrapperExtension): Dictionary {.base.} = (discard)
 proc registerVirtual_getRequestedExtensions*[T: OpenXRExtensionWrapperExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_requested_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

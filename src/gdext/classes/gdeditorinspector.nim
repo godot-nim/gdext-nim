@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdscrollcontainer; export gdscrollcontainer
 
+expandOnClassImported(EditorInspector, ScrollContainer)
+
 proc edit*(self: EditorInspector; `object`: Object): void =
   expandMethodBind(className EditorInspector, "edit", 3975164845)
   methodbind.ptrcall(self, [getPtr `object`])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorFileSystemImportFormatSupportQuery, RefCounted)
+
 method isActive*(self: EditorFileSystemImportFormatSupportQuery): bool {.base.} = (discard)
 proc registerVirtual_isActive*[T: EditorFileSystemImportFormatSupportQuery](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_active"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

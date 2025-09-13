@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(NavigationPathQueryParameters2D, RefCounted)
+
 proc setPathfindingAlgorithm*(self: NavigationPathQueryParameters2D; pathfindingAlgorithm: NavigationPathQueryParameters2D_PathfindingAlgorithm): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_pathfinding_algorithm", 2783519915)
   methodbind.ptrcall(self, [getPtr pathfindingAlgorithm])

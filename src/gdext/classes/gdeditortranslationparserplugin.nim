@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorTranslationParserPlugin, RefCounted)
+
 method parseFile*(self: EditorTranslationParserPlugin; path: String): TypedArray[PackedStringArray] {.base.} = (discard)
 proc registerVirtual_parseFile*[T: EditorTranslationParserPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_parse_file"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

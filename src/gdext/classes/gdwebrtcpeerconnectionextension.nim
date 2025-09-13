@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdwebrtcpeerconnection; export gdwebrtcpeerconnection
 
+expandOnClassImported(WebRTCPeerConnectionExtension, WebRTCPeerConnection)
+
 method getConnectionState*(self: WebRTCPeerConnectionExtension): WebRTCPeerConnection_ConnectionState {.base.} = (discard)
 proc registerVirtual_getConnectionState*[T: WebRTCPeerConnectionExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_connection_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

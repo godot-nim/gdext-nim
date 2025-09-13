@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(TextLine, RefCounted)
+
 proc clear*(self: TextLine): void =
   expandMethodBind(className TextLine, "clear", 3218959716)
   methodbind.ptrcall(self, [])

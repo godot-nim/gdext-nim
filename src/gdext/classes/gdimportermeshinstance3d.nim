@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(ImporterMeshInstance3D, Node3D)
+
 proc setMesh*(self: ImporterMeshInstance3D; mesh: gdref ImporterMesh): void =
   expandMethodBind(className ImporterMeshInstance3D, "set_mesh", 2255166972)
   methodbind.ptrcall(self, [getPtr mesh])

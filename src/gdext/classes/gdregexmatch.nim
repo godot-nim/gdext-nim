@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RegExMatch, RefCounted)
+
 proc getSubject*(self: RegExMatch): String =
   expandMethodBind(className RegExMatch, "get_subject", 201670096)
   var ret: encoded String

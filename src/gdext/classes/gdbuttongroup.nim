@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(ButtonGroup, Resource)
+
 proc getPressedButton*(self: ButtonGroup): BaseButton =
   expandMethodBind(className ButtonGroup, "get_pressed_button", 3886434893)
   var ret: encoded BaseButton

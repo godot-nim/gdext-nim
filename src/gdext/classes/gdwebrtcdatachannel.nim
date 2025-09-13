@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+expandOnClassImported(WebRTCDataChannel, PacketPeer)
+
 proc poll*(self: WebRTCDataChannel): Error =
   expandMethodBind(className WebRTCDataChannel, "poll", 166280745)
   var ret: encoded Error

@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdanimationnode; export gdanimationnode
+
+expandOnClassImported(AnimationNodeOutput, AnimationNode)

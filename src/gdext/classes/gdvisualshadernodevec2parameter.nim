@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
 
+expandOnClassImported(VisualShaderNodeVec2Parameter, VisualShaderNodeParameter)
+
 proc setDefaultValueEnabled*(self: VisualShaderNodeVec2Parameter; enabled: bool): void =
   expandMethodBind(className VisualShaderNodeVec2Parameter, "set_default_value_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])

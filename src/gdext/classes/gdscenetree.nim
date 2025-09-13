@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmainloop; export gdmainloop
 
+expandOnClassImported(SceneTree, MainLoop)
+
 proc getRoot*(self: SceneTree): Window =
   expandMethodBind(className SceneTree, "get_root", 1757182445)
   var ret: encoded Window

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
+expandOnClassImported(OccluderInstance3D, VisualInstance3D)
+
 proc setBakeMask*(self: OccluderInstance3D; mask: uint32): void =
   expandMethodBind(className OccluderInstance3D, "set_bake_mask", 1286410249)
   methodbind.ptrcall(self, [getPtr mask])

@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdboxcontainer; export gdboxcontainer
+
+expandOnClassImported(HBoxContainer, BoxContainer)

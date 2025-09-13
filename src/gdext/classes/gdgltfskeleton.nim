@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFSkeleton, Resource)
+
 proc getJoints*(self: GLTFSkeleton): PackedInt32Array =
   expandMethodBind(className GLTFSkeleton, "get_joints", 969006518)
   var ret: encoded PackedInt32Array

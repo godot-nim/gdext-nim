@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmultiplayerapi; export gdmultiplayerapi
 
+expandOnClassImported(SceneMultiplayer, MultiplayerAPI)
+
 proc setRootPath*(self: SceneMultiplayer; path: NodePath): void =
   expandMethodBind(className SceneMultiplayer, "set_root_path", 1348162250)
   methodbind.ptrcall(self, [getPtr path])

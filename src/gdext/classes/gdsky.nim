@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Sky, Resource)
+
 proc setRadianceSize*(self: Sky; size: Sky_RadianceSize): void =
   expandMethodBind(className Sky, "set_radiance_size", 1512957179)
   methodbind.ptrcall(self, [getPtr size])

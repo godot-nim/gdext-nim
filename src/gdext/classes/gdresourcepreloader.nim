@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(ResourcePreloader, Node)
+
 proc addResource*(self: ResourcePreloader; name: StringName; resource: gdref Resource): void =
   expandMethodBind(className ResourcePreloader, "add_resource", 1168801743)
   methodbind.ptrcall(self, [getPtr name, getPtr resource])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(SkeletonModifier3D, Node3D)
+
 method processModification*(self: SkeletonModifier3D): void {.base.} = (discard)
 proc registerVirtual_processModification*[T: SkeletonModifier3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_process_modification"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

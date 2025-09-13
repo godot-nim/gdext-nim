@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdscriptlanguage; export gdscriptlanguage
 
+expandOnClassImported(ScriptLanguageExtension, ScriptLanguage)
+
 method getName*(self: ScriptLanguageExtension): String {.base.} = (discard)
 proc registerVirtual_getName*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

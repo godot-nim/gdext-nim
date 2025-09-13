@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeParticleAccelerator, VisualShaderNode)
+
 proc setMode*(self: VisualShaderNodeParticleAccelerator; mode: VisualShaderNodeParticleAccelerator_Mode): void =
   expandMethodBind(className VisualShaderNodeParticleAccelerator, "set_mode", 3457585749)
   methodbind.ptrcall(self, [getPtr mode])

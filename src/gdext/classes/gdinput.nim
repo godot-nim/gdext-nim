@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(Input, Object)
+
 proc isAnythingPressed*(self: Input): bool =
   expandMethodBind(className Input, "is_anything_pressed", 36873697)
   var ret: encoded bool

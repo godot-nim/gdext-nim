@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdeditorexportplatformpc; export gdeditorexportplatformpc
+
+expandOnClassImported(EditorExportPlatformWindows, EditorExportPlatformPC)

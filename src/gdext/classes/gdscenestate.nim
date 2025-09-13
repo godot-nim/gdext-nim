@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(SceneState, RefCounted)
+
 proc getNodeCount*(self: SceneState): int32 =
   expandMethodBind(className SceneState, "get_node_count", 3905245786)
   var ret: encoded int32

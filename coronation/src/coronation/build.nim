@@ -161,9 +161,11 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
             .disableUnusedImport
             .import(corona_classes):
           weave margin:
-            if sym != TypeSym.Object:
-              let mdlbase = base.convert(ModuleSym)
-              &"import {mdlbase}; export {mdlbase}"
+            weave multiline:
+              if sym != TypeSym.Object:
+                let mdlbase = base.convert(ModuleSym)
+                &"import {mdlbase}; export {mdlbase}"
+            &"expandOnClassImported({sym}, {base})"
             weave multiline:
               for constant in class.json.constants.get(@[]):
                 constant.weave(sym)

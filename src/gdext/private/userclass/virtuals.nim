@@ -5,6 +5,9 @@ import gdext/private/gdinterface
 import gdext/private/typeshift
 import gdext/private/staticevents
 import gdext/private/methodinfo
+import gdext/private/propertyinfo
+import gdext/private/classindex
+import gdext/private/internalobjecttools
 
 proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
   let body = ident"body"

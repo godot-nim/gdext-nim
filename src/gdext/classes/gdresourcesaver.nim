@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(ResourceSaver, Object)
+
 proc save*(self: ResourceSaver; resource: gdref Resource; path: String = newGdString(); flags: set[ResourceSaver_SaverFlags] = {}): Error =
   expandMethodBind(className ResourceSaver, "save", 2983274697)
   var ret: encoded Error

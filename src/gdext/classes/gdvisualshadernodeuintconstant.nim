@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
 
+expandOnClassImported(VisualShaderNodeUIntConstant, VisualShaderNodeConstant)
+
 proc setConstant*(self: VisualShaderNodeUIntConstant; constant: int32): void =
   expandMethodBind(className VisualShaderNodeUIntConstant, "set_constant", 1286410249)
   methodbind.ptrcall(self, [getPtr constant])

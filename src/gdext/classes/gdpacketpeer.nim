@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(PacketPeer, RefCounted)
+
 proc getVar*(self: PacketPeer; allowObjects: bool = false): Variant =
   expandMethodBind(className PacketPeer, "get_var", 3442865206)
   var ret: encoded Variant

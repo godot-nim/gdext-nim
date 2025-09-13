@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(SpringArm3D, Node3D)
+
 proc getHitLength*(self: SpringArm3D): Float =
   expandMethodBind(className SpringArm3D, "get_hit_length", 191475506)
   var ret: encoded Float

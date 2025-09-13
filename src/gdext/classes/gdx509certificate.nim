@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(X509Certificate, Resource)
+
 proc save*(self: X509Certificate; path: String): Error =
   expandMethodBind(className X509Certificate, "save", 166001499)
   var ret: encoded Error

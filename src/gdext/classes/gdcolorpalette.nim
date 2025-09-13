@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(ColorPalette, Resource)
+
 proc setColors*(self: ColorPalette; colors: PackedColorArray): void =
   expandMethodBind(className ColorPalette, "set_colors", 3546319833)
   methodbind.ptrcall(self, [getPtr colors])

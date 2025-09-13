@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdscript; export gdscript
 
+expandOnClassImported(ScriptExtension, Script)
+
 method editorCanReloadFromFile*(self: ScriptExtension): bool {.base.} = (discard)
 proc registerVirtual_editorCanReloadFromFile*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_editor_can_reload_from_file"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

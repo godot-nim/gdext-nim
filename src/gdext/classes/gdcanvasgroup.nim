@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(CanvasGroup, Node2D)
+
 proc setFitMargin*(self: CanvasGroup; fitMargin: Float): void =
   expandMethodBind(className CanvasGroup, "set_fit_margin", 373806689)
   methodbind.ptrcall(self, [getPtr fitMargin])

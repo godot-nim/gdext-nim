@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(SceneTreeTimer, RefCounted)
+
 proc setTimeLeft*(self: SceneTreeTimer; time: float64): void =
   expandMethodBind(className SceneTreeTimer, "set_time_left", 373806689)
   methodbind.ptrcall(self, [getPtr time])

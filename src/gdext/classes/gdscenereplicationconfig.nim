@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(SceneReplicationConfig, Resource)
+
 proc getProperties*(self: SceneReplicationConfig): TypedArray[NodePath] =
   expandMethodBind(className SceneReplicationConfig, "get_properties", 3995934104)
   var ret: encoded TypedArray[NodePath]

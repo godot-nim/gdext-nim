@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtextedit; export gdtextedit
 
+expandOnClassImported(CodeEdit, TextEdit)
+
 method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
 proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

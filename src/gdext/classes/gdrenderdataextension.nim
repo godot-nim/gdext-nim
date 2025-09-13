@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrenderdata; export gdrenderdata
 
+expandOnClassImported(RenderDataExtension, RenderData)
+
 method getRenderSceneBuffers*(self: RenderDataExtension): gdref RenderSceneBuffers {.base.} = (discard)
 proc registerVirtual_getRenderSceneBuffers*[T: RenderDataExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_render_scene_buffers"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(OpenXRHand, Node3D)
+
 proc setHand*(self: OpenXRHand; hand: OpenXRHand_Hands): void =
   expandMethodBind(className OpenXRHand, "set_hand", 1849328560)
   methodbind.ptrcall(self, [getPtr hand])

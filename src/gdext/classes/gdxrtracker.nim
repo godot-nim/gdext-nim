@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(XRTracker, RefCounted)
+
 proc getTrackerType*(self: XRTracker): XRServer_TrackerType =
   expandMethodBind(className XRTracker, "get_tracker_type", 2784508102)
   var ret: encoded XRServer_TrackerType

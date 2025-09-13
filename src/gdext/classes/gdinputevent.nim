@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(InputEvent, Resource)
+
 const DeviceIdEmulation* = -1
 
 proc setDevice*(self: InputEvent; device: int32): void =

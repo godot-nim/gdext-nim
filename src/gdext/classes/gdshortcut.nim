@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Shortcut, Resource)
+
 proc setEvents*(self: Shortcut; events: Array): void =
   expandMethodBind(className Shortcut, "set_events", 381264803)
   methodbind.ptrcall(self, [getPtr events])

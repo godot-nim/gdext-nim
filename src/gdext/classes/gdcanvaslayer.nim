@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(CanvasLayer, Node)
+
 proc setLayer*(self: CanvasLayer; layer: int32): void =
   expandMethodBind(className CanvasLayer, "set_layer", 1286410249)
   methodbind.ptrcall(self, [getPtr layer])

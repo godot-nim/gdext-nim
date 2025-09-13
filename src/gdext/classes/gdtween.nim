@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(Tween, RefCounted)
+
 proc tweenProperty*(self: Tween; `object`: Object; property: NodePath; finalVal: Variant; duration: float64): gdref PropertyTweener =
   expandMethodBind(className Tween, "tween_property", 4049770449)
   var ret: encoded gdref PropertyTweener

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdphysicsserver3d; export gdphysicsserver3d
 
+expandOnClassImported(PhysicsServer3DExtension, PhysicsServer3D)
+
 method worldBoundaryShapeCreate*(self: PhysicsServer3DExtension): RID {.base.} = (discard)
 proc registerVirtual_worldBoundaryShapeCreate*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_world_boundary_shape_create"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -19,6 +19,7 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/macros
+import gdext/private/propertyinfo
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/varianttools
@@ -156,24 +157,14 @@ template toOpenArray*(arr: Array): openArray[Variant] =
 # ==========
 
 proc newTypedArray*[T](arr: Array): TypedArray[T] =
-  when T is Object:
-    TypedArray[T] newArray(arr, Int VariantType_Object, T.className, variant())
-  elif T is GdRef:
-    TypedArray[T] newArray(arr, Int VariantType_Object, T.RefCounted.className, variant())
-  else:
-    TypedArray[T] newArray(arr, Int T.variantType, newStringName(), variant())
+  TypedArray[T] newArray(arr, Int T.variantType, T.className, variant())
 
 proc newTypedArray*[T](arr: TypedArray[T]): TypedArray[T] =
   TypedArray[T] newArray(arr.Array)
 
 proc newTypedArray*[T](): TypedArray[T] =
   result = TypedArray[T] newArray()
-  when T is Object:
-    result.Array.setTyped(VariantType_Object, T.className, variant())
-  elif T is GdRef:
-    result.Array.setTyped(VariantType_Object, T.RefCounted.className, variant())
-  else:
-    result.Array.setTyped(T.variantType, newStringName(), variant())
+  result.Array.setTyped(T.variantType, T.className, variant())
 
 proc newTypedArray*[T](len: Natural): TypedArray[T] =
   result = newTypedArray[T]()

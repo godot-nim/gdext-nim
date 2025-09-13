@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodevarying; export gdvisualshadernodevarying
+
+expandOnClassImported(VisualShaderNodeVaryingSetter, VisualShaderNodeVarying)

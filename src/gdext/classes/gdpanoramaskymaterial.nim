@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(PanoramaSkyMaterial, Material)
+
 proc setPanorama*(self: PanoramaSkyMaterial; texture: gdref Texture2D): void =
   expandMethodBind(className PanoramaSkyMaterial, "set_panorama", 4051416890)
   methodbind.ptrcall(self, [getPtr texture])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDShaderSource, RefCounted)
+
 proc setStageSource*(self: RDShaderSource; stage: RenderingDevice_ShaderStage; source: String): void =
   expandMethodBind(className RDShaderSource, "set_stage_source", 620821314)
   methodbind.ptrcall(self, [getPtr stage, getPtr source])

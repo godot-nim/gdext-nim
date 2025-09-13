@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(EditorProperty, Container)
+
 method updateProperty*(self: EditorProperty): void {.base.} = (discard)
 proc registerVirtual_updateProperty*[T: EditorProperty](Self: typedesc[T]) =
   Self.vmethods[newStringName"_update_property"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

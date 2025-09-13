@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdviewport; export gdviewport
 
+expandOnClassImported(Window, Viewport)
+
 const NotificationVisibilityChanged* = 30
 const NotificationThemeChanged* = 32
 

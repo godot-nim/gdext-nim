@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(BitMap, Resource)
+
 proc create*(self: BitMap; size: Vector2i): void =
   expandMethodBind(className BitMap, "create", 1130785943)
   methodbind.ptrcall(self, [getPtr size])

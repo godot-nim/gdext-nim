@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(StatusIndicator, Node)
+
 proc setTooltip*(self: StatusIndicator; tooltip: String): void =
   expandMethodBind(className StatusIndicator, "set_tooltip", 83702148)
   methodbind.ptrcall(self, [getPtr tooltip])

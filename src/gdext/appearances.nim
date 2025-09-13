@@ -5,6 +5,7 @@ from std/sequtils import concat, mapIt, toSeq
 import gdext/private/gdinterface
 import gdext/private/propertyinfo
 import gdext/private/macros
+import gdext/private/classindex
 import gdext/builtinindex
 import gdext/stringtools
 

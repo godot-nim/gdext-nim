@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
 
+expandOnClassImported(ConcavePolygonShape2D, Shape2D)
+
 proc setSegments*(self: ConcavePolygonShape2D; segments: PackedVector2Array): void =
   expandMethodBind(className ConcavePolygonShape2D, "set_segments", 1509147220)
   methodbind.ptrcall(self, [getPtr segments])

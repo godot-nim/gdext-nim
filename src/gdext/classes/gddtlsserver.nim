@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(DTLSServer, RefCounted)
+
 proc setup*(self: DTLSServer; serverOptions: gdref TLSOptions): Error =
   expandMethodBind(className DTLSServer, "setup", 1262296096)
   var ret: encoded Error

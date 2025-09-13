@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(Label, Control)
+
 proc setHorizontalAlignment*(self: Label; alignment: HorizontalAlignment): void =
   expandMethodBind(className Label, "set_horizontal_alignment", 2312603777)
   methodbind.ptrcall(self, [getPtr alignment])

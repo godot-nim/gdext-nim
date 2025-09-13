@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(AnimationLibrary, Resource)
+
 proc addAnimation*(self: AnimationLibrary; name: StringName; animation: gdref Animation): Error =
   expandMethodBind(className AnimationLibrary, "add_animation", 1811855551)
   var ret: encoded Error

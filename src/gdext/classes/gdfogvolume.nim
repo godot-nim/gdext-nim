@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
+expandOnClassImported(FogVolume, VisualInstance3D)
+
 proc setSize*(self: FogVolume; size: Vector3): void =
   expandMethodBind(className FogVolume, "set_size", 3460891852)
   methodbind.ptrcall(self, [getPtr size])

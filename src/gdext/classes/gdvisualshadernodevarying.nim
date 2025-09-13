@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeVarying, VisualShaderNode)
+
 proc setVaryingName*(self: VisualShaderNodeVarying; name: String): void =
   expandMethodBind(className VisualShaderNodeVarying, "set_varying_name", 83702148)
   methodbind.ptrcall(self, [getPtr name])

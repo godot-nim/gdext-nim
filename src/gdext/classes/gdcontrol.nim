@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcanvasitem; export gdcanvasitem
 
+expandOnClassImported(Control, CanvasItem)
+
 const NotificationResized* = 40
 const NotificationMouseEnter* = 41
 const NotificationMouseExit* = 42

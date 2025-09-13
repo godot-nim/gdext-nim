@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdpanelcontainer; export gdpanelcontainer
 
+expandOnClassImported(OpenXRBindingModifierEditor, PanelContainer)
+
 proc getBindingModifier*(self: OpenXRBindingModifierEditor): gdref OpenXRBindingModifier =
   expandMethodBind(className OpenXRBindingModifierEditor, "get_binding_modifier", 2930765082)
   var ret: encoded gdref OpenXRBindingModifier

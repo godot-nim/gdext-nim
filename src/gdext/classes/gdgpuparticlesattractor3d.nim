@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
+expandOnClassImported(GPUParticlesAttractor3D, VisualInstance3D)
+
 proc setCullMask*(self: GPUParticlesAttractor3D; mask: uint32): void =
   expandMethodBind(className GPUParticlesAttractor3D, "set_cull_mask", 1286410249)
   methodbind.ptrcall(self, [getPtr mask])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(Path3D, Node3D)
+
 proc setCurve*(self: Path3D; curve: gdref Curve3D): void =
   expandMethodBind(className Path3D, "set_curve", 408955118)
   methodbind.ptrcall(self, [getPtr curve])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(JavaClass, RefCounted)
+
 proc getJavaClassName*(self: JavaClass): String =
   expandMethodBind(className JavaClass, "get_java_class_name", 201670096)
   var ret: encoded String

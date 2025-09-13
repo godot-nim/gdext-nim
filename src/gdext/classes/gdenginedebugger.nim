@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EngineDebugger, Object)
+
 proc isActive*(self: EngineDebugger): bool =
   expandMethodBind(className EngineDebugger, "is_active", 2240911060)
   var ret: encoded bool

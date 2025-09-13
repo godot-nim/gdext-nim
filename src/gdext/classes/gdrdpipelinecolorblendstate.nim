@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDPipelineColorBlendState, RefCounted)
+
 proc setEnableLogicOp*(self: RDPipelineColorBlendState; pMember: bool): void =
   expandMethodBind(className RDPipelineColorBlendState, "set_enable_logic_op", 2586408642)
   methodbind.ptrcall(self, [getPtr pMember])

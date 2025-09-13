@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdlight3d; export gdlight3d
 
+expandOnClassImported(SpotLight3D, Light3D)
+
 template spotRange*(self: SpotLight3D): untyped = self.getParam(Light3D_Param(4))
 template `spotRange=`*(self: SpotLight3D; value) = self.setParam(Light3D_Param(4), value)
 

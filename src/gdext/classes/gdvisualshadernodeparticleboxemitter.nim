@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernodeparticleemitter; export gdvisualshadernodeparticleemitter
+
+expandOnClassImported(VisualShaderNodeParticleBoxEmitter, VisualShaderNodeParticleEmitter)

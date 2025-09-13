@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
 
+expandOnClassImported(ArrayMesh, Mesh)
+
 proc addBlendShape*(self: ArrayMesh; name: StringName): void =
   expandMethodBind(className ArrayMesh, "add_blend_shape", 3304788590)
   methodbind.ptrcall(self, [getPtr name])

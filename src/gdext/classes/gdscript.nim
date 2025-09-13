@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Script, Resource)
+
 proc canInstantiate*(self: Script): bool =
   expandMethodBind(className Script, "can_instantiate", 36873697)
   var ret: encoded bool

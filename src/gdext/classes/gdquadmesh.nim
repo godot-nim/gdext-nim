@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdplanemesh; export gdplanemesh
+
+expandOnClassImported(QuadMesh, PlaneMesh)

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(ParallaxLayer, Node2D)
+
 proc setMotionScale*(self: ParallaxLayer; scale: Vector2): void =
   expandMethodBind(className ParallaxLayer, "set_motion_scale", 743155724)
   methodbind.ptrcall(self, [getPtr scale])

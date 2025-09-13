@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(TileData, Object)
+
 proc setFlipH*(self: TileData; flipH: bool): void =
   expandMethodBind(className TileData, "set_flip_h", 2586408642)
   methodbind.ptrcall(self, [getPtr flipH])

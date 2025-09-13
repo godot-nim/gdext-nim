@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(VideoStreamPlayer, Control)
+
 proc setStream*(self: VideoStreamPlayer; stream: gdref VideoStream): void =
   expandMethodBind(className VideoStreamPlayer, "set_stream", 2317102564)
   methodbind.ptrcall(self, [getPtr stream])

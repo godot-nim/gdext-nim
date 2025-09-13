@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(AStarGrid2D, RefCounted)
+
 method estimateCost*(self: AStarGrid2D; fromId: Vector2i; endId: Vector2i): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStarGrid2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

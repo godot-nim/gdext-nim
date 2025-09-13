@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdhboxcontainer; export gdhboxcontainer
 
+expandOnClassImported(EditorResourcePicker, HBoxContainer)
+
 method setCreateOptions*(self: EditorResourcePicker; menuNode: Object): void {.base.} = (discard)
 proc registerVirtual_setCreateOptions*[T: EditorResourcePicker](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_create_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

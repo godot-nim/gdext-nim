@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdstylebox; export gdstylebox
 
+expandOnClassImported(StyleBoxTexture, StyleBox)
+
 proc setTexture*(self: StyleBoxTexture; texture: gdref Texture2D): void =
   expandMethodBind(className StyleBoxTexture, "set_texture", 4051416890)
   methodbind.ptrcall(self, [getPtr texture])

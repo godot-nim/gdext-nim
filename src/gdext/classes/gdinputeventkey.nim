@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
 
+expandOnClassImported(InputEventKey, InputEventWithModifiers)
+
 proc setPressed*(self: InputEventKey; pressed: bool): void =
   expandMethodBind(className InputEventKey, "set_pressed", 2586408642)
   methodbind.ptrcall(self, [getPtr pressed])

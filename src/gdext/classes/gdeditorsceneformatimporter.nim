@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorSceneFormatImporter, RefCounted)
+
 const ImportScene* = 1
 const ImportAnimation* = 2
 const ImportFailOnMissingDependencies* = 4

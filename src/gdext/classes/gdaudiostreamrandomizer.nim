@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamRandomizer, AudioStream)
+
 proc addStream*(self: AudioStreamRandomizer; index: int32; stream: gdref AudioStream; weight: Float = 1.0): void =
   expandMethodBind(className AudioStreamRandomizer, "add_stream", 1892018854)
   methodbind.ptrcall(self, [getPtr index, getPtr stream, getPtr weight])

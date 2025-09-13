@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+expandOnClassImported(CPUParticles3D, GeometryInstance3D)
+
 proc setEmitting*(self: CPUParticles3D; emitting: bool): void =
   expandMethodBind(className CPUParticles3D, "set_emitting", 2586408642)
   methodbind.ptrcall(self, [getPtr emitting])

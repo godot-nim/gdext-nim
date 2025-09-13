@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(Node3D, Node)
+
 const NotificationTransformChanged* = 2000
 const NotificationEnterWorld* = 41
 const NotificationExitWorld* = 42

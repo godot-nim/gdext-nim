@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EditorUndoRedoManager, Object)
+
 proc createAction*(self: EditorUndoRedoManager; name: String; mergeMode: UndoRedo_MergeMode = mergeDisable; customContext: Object = default Object; backwardUndoOps: bool = false): void =
   expandMethodBind(className EditorUndoRedoManager, "create_action", 2107025470)
   methodbind.ptrcall(self, [getPtr name, getPtr mergeMode, getPtr customContext, getPtr backwardUndoOps])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+expandOnClassImported(MeshTexture, Texture2D)
+
 proc setMesh*(self: MeshTexture; mesh: gdref Mesh): void =
   expandMethodBind(className MeshTexture, "set_mesh", 194775623)
   methodbind.ptrcall(self, [getPtr mesh])

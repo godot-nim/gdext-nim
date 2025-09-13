@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorExportPreset, RefCounted)
+
 proc has*(self: EditorExportPreset; property: StringName): bool =
   expandMethodBind(className EditorExportPreset, "has", 2619796661)
   var ret: encoded bool

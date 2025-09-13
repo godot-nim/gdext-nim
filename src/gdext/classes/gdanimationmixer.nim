@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(AnimationMixer, Node)
+
 method postProcessKeyValue*(self: AnimationMixer; animation: gdref Animation; track: int32; value: Variant; objectId: uint64; objectSubIdx: int32): Variant {.base.} = (discard)
 proc registerVirtual_postProcessKeyValue*[T: AnimationMixer](Self: typedesc[T]) =
   Self.vmethods[newStringName"_post_process_key_value"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

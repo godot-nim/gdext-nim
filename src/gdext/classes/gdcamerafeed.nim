@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(CameraFeed, RefCounted)
+
 method activateFeed*(self: CameraFeed): bool {.base.} = (discard)
 proc registerVirtual_activateFeed*[T: CameraFeed](Self: typedesc[T]) =
   Self.vmethods[newStringName"_activate_feed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

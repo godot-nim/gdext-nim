@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(ClassDB, Object)
+
 proc getClassList*(self: ClassDB): PackedStringArray =
   expandMethodBind(className ClassDB, "get_class_list", 1139954409)
   var ret: encoded PackedStringArray

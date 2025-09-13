@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdresource; export gdresource
+
+expandOnClassImported(Texture, Resource)

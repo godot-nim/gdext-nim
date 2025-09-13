@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(TLSOptions, RefCounted)
+
 proc client*(_: typedesc[TLSOptions]; trustedChain: gdref X509Certificate = default gdref X509Certificate; commonNameOverride: String = newGdString()): gdref TLSOptions =
   expandMethodBind(className TLSOptions, "client", 3565000357)
   var ret: encoded gdref TLSOptions

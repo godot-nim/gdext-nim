@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(NavigationAgent3D, Node)
+
 proc getRid*(self: NavigationAgent3D): RID =
   expandMethodBind(className NavigationAgent3D, "get_rid", 2944877500)
   var ret: encoded RID

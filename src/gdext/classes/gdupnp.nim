@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(UPNP, RefCounted)
+
 proc getDeviceCount*(self: UPNP): int32 =
   expandMethodBind(className UPNP, "get_device_count", 3905245786)
   var ret: encoded int32

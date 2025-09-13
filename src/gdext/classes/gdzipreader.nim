@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(ZIPReader, RefCounted)
+
 proc open*(self: ZIPReader; path: String): Error =
   expandMethodBind(className ZIPReader, "open", 166001499)
   var ret: encoded Error

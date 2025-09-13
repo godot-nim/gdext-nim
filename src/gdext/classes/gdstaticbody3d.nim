@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdphysicsbody3d; export gdphysicsbody3d
 
+expandOnClassImported(StaticBody3D, PhysicsBody3D)
+
 proc setConstantLinearVelocity*(self: StaticBody3D; vel: Vector3): void =
   expandMethodBind(className StaticBody3D, "set_constant_linear_velocity", 3460891852)
   methodbind.ptrcall(self, [getPtr vel])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
 
+expandOnClassImported(PolygonOccluder3D, Occluder3D)
+
 proc setPolygon*(self: PolygonOccluder3D; polygon: PackedVector2Array): void =
   expandMethodBind(className PolygonOccluder3D, "set_polygon", 1509147220)
   methodbind.ptrcall(self, [getPtr polygon])

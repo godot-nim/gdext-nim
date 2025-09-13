@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgraphelement; export gdgraphelement
 
+expandOnClassImported(GraphFrame, GraphElement)
+
 proc setTitle*(self: GraphFrame; title: String): void =
   expandMethodBind(className GraphFrame, "set_title", 83702148)
   methodbind.ptrcall(self, [getPtr title])

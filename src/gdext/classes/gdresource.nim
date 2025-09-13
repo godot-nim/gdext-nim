@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(Resource, RefCounted)
+
 method setupLocalToScene*(self: Resource): void {.base.} = (discard)
 proc registerVirtual_setupLocalToScene*[T: Resource](Self: typedesc[T]) =
   Self.vmethods[newStringName"_setup_local_to_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

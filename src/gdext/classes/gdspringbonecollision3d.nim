@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(SpringBoneCollision3D, Node3D)
+
 proc getSkeleton*(self: SpringBoneCollision3D): Skeleton3D =
   expandMethodBind(className SpringBoneCollision3D, "get_skeleton", 1488626673)
   var ret: encoded Skeleton3D

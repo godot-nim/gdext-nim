@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(Marker2D, Node2D)
+
 proc setGizmoExtents*(self: Marker2D; extents: Float): void =
   expandMethodBind(className Marker2D, "set_gizmo_extents", 373806689)
   methodbind.ptrcall(self, [getPtr extents])
