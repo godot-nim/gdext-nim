@@ -156,3 +156,10 @@ runtime: suite "Variant":
       check not(v of float)
       check v of Object
       check v of RefCounted
+
+    block:
+      var tarr = newTypedArray[String]()
+      var v = variant tarr
+      check v of Array
+      check v of TypedArray[String]
+      check not (v of TypedArray[StringName])
