@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresourceimporter; export gdresourceimporter
 
+expandOnClassImported(EditorImportPlugin, ResourceImporter)
+
 method getImporterName*(self: EditorImportPlugin): String {.base.} = (discard)
 proc registerVirtual_getImporterName*[T: EditorImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_importer_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

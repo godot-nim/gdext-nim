@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(RichTextLabel, Control)
+
 proc getParsedText*(self: RichTextLabel): String =
   expandMethodBind(className RichTextLabel, "get_parsed_text", 201670096)
   var ret: encoded String

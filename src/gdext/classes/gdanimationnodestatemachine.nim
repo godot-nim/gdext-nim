@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdanimationrootnode; export gdanimationrootnode
 
+expandOnClassImported(AnimationNodeStateMachine, AnimationRootNode)
+
 proc addNode*(self: AnimationNodeStateMachine; name: StringName; node: gdref AnimationNode; position: Vector2 = vector2(0, 0)): void =
   expandMethodBind(className AnimationNodeStateMachine, "add_node", 1980270704)
   methodbind.ptrcall(self, [getPtr name, getPtr node, getPtr position])

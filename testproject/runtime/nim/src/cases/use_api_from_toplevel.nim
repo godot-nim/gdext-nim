@@ -51,8 +51,8 @@ runtime: test "instantiate at global":
   destroy extentclass
 
 runtime: test "connect to global signal":
-  var signal_arg0_obj = extmain.signal"signal_arg0"
-  var signal_arg1_obj = extmain.signal"signal_arg1"
+  var signal_arg0_obj = extmain.signal"signal_arg_0"
+  var signal_arg1_obj = extmain.signal"signal_arg_1"
 
   check signal_arg0_obj.connect(extmain.callable"listen_0") == 0
   # check signal_arg0_obj.connect(extmain.callable"listen_1") == 0

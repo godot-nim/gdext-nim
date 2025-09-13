@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
 
+expandOnClassImported(InputEventGesture, InputEventWithModifiers)
+
 proc setPosition*(self: InputEventGesture; position: Vector2): void =
   expandMethodBind(className InputEventGesture, "set_position", 743155724)
   methodbind.ptrcall(self, [getPtr position])

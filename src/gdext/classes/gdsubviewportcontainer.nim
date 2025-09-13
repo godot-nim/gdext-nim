@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(SubViewportContainer, Container)
+
 method propagateInputEvent*(self: SubViewportContainer; event: gdref InputEvent): bool {.base.} = (discard)
 proc registerVirtual_propagateInputEvent*[T: SubViewportContainer](Self: typedesc[T]) =
   Self.vmethods[newStringName"_propagate_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

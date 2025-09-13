@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdsyntaxhighlighter; export gdsyntaxhighlighter
 
+expandOnClassImported(CodeHighlighter, SyntaxHighlighter)
+
 proc addKeywordColor*(self: CodeHighlighter; keyword: String; color: Color): void =
   expandMethodBind(className CodeHighlighter, "add_keyword_color", 1636512886)
   methodbind.ptrcall(self, [getPtr keyword, getPtr color])

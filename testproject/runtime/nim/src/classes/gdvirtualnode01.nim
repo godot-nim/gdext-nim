@@ -1,4 +1,5 @@
 import gdext
+import gdext/classes/gdNode
 
 type VirtualNode01* {.gdsync.} = ptr object of Node
 

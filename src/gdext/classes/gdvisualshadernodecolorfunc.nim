@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeColorFunc, VisualShaderNode)
+
 proc setFunction*(self: VisualShaderNodeColorFunc; `func`: VisualShaderNodeColorFunc_Function): void =
   expandMethodBind(className VisualShaderNodeColorFunc, "set_function", 3973396138)
   methodbind.ptrcall(self, [getPtr `func`])

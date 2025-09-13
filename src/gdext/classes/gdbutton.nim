@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdbasebutton; export gdbasebutton
 
+expandOnClassImported(Button, BaseButton)
+
 proc setText*(self: Button; text: String): void =
   expandMethodBind(className Button, "set_text", 83702148)
   methodbind.ptrcall(self, [getPtr text])

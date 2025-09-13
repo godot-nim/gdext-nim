@@ -6,12 +6,12 @@ import gdext/private/typeshift
 import gdext/private/propertyinfo
 import gdext/builtinindex
 
-
 type
   Arg* = tuple
     namesym, typesym, default: NimNode
   MiddleExp* = object
     name*: NimNode
+    gdname*: NimNode
     isStatic*: bool
     isVarargs*: bool
     self_T*: NimNode
@@ -22,6 +22,8 @@ type
 proc parseMiddle*(procdef: NimNode): MiddleExp =
   result.name = procdef[0]
   if result.name.kind == nnkPostfix: result.name = result.name[1]
+
+  result.gdname = procdef.gdname
 
   result.self_T = procdef.params[1][1]
   if procdef.hasReturn:
@@ -210,10 +212,10 @@ proc classMethodInfo(
     default_arguments: default_arguments.head,
   )
 
-proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
+proc classMethodInfo*(middle: MiddleExp): NimNode =
   result = quote("@") do:
     classMethodInfo(
-      newStringName @gdname,
+      newStringName @(middle.gdname),
       @(middle.callFunc),
       @(middle.ptrCallFunc),
       @(middle.method_flags),
@@ -225,9 +227,6 @@ proc classMethodInfo(middle: MiddleExp; gdname: NimNode): NimNode =
     result.add(
       middle.returnValueInfo,
       middle.returnValueMeta,)
-
-proc classMethodInfo*(procdef: NimNode; gdname: NimNode): NimNode =
-  parseMiddle(procdef).classMethodInfo(gdname)
 
 proc classVirtualMethodInfo(
       name: Stringname;
@@ -264,7 +263,7 @@ proc classVirtualMethodInfo(
 proc virtualMethodInfo*(middle: MiddleExp): NimNode =
   quote"@" do:
     classVirtualMethodInfo(
-      newStringName @(middle.name.toStrLit),
+      newStringName @(middle.gdname),
       @(middle.returnValue),
       @(middle.returnValueMeta),
       @(middle.argumentsInfo),

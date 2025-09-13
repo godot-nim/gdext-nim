@@ -1,0 +1,47 @@
+nimTitle	appearances	gdext/appearances.html	module gdext/appearances		0
+nim	Appearance	gdext/appearances.html#Appearance	object Appearance		13
+nim	attenuation	gdext/appearances.html#attenuation	ExpEasingArgument.attenuation		20
+nim	positive_only	gdext/appearances.html#positive_only	ExpEasingArgument.positive_only		20
+nim	ExpEasingArgument	gdext/appearances.html#ExpEasingArgument	enum ExpEasingArgument		20
+nim	or_less	gdext/appearances.html#or_less	RangeArgument.or_less		22
+nim	or_greater	gdext/appearances.html#or_greater	RangeArgument.or_greater		22
+nim	exp	gdext/appearances.html#exp	RangeArgument.exp		22
+nim	radians_as_degrees	gdext/appearances.html#radians_as_degrees	RangeArgument.radians_as_degrees		22
+nim	degrees	gdext/appearances.html#degrees	RangeArgument.degrees		22
+nim	hide_slider	gdext/appearances.html#hide_slider	RangeArgument.hide_slider		22
+nim	RangeArgument	gdext/appearances.html#RangeArgument	enum RangeArgument		22
+nim	appearance	gdext/appearances.html#appearance,typedesc[T]	proc appearance[T](_: typedesc[T]): Appearance		92
+nim	appearance	gdext/appearances.html#appearance,typedesc[T]_2	proc appearance[T: Object](_: typedesc[T]): Appearance		93
+nim	appearance	gdext/appearances.html#appearance,typedesc[GdRef[T]]	proc appearance[T](_: typedesc[GdRef[T]]): Appearance		103
+nim	appearance	gdext/appearances.html#appearance,typedesc[]	proc appearance(T: typedesc[enum]): Appearance		104
+nim	appearance	gdext/appearances.html#appearance,typedesc[set[T]]	proc appearance[T: enum](_: typedesc[set[T]]): Appearance		109
+nim	appearance	gdext/appearances.html#appearance,typedesc[range]	proc appearance(T: typedesc[range]): Appearance		114
+nim	appearance	gdext/appearances.html#appearance,typedesc[TypedArray[T]]	proc appearance[T](_: typedesc[TypedArray[T]]): Appearance		119
+nim	storage	gdext/appearances.html#storage,typedesc[Appearance]	proc storage(T: typedesc[Appearance]): Appearance		130
+nim	category	gdext/appearances.html#category,typedesc[Appearance]	proc category(T: typedesc[Appearance]): Appearance		134
+nim	group	gdext/appearances.html#group,typedesc[Appearance]	proc group(T: typedesc[Appearance]; prefix = String()): T:type		138
+nim	subgroup	gdext/appearances.html#subgroup,typedesc[Appearance]	proc subgroup(T: typedesc[Appearance]; prefix = String()): T:type		145
+nim	colorNoAlpha	gdext/appearances.html#colorNoAlpha,typedesc[Appearance]	proc colorNoAlpha(T: typedesc[Appearance]): Appearance		152
+nim	dir	gdext/appearances.html#dir,typedesc[Appearance]	proc dir(T: typedesc[Appearance]): Appearance		156
+nim	globalDir	gdext/appearances.html#globalDir,typedesc[Appearance]	proc globalDir(T: typedesc[Appearance]): Appearance		160
+nim	file	gdext/appearances.html#file,typedesc[Appearance],varargs[string]	proc file(T: typedesc[Appearance]; filter: varargs[string]): Appearance		164
+nim	globalFile	gdext/appearances.html#globalFile,typedesc[Appearance],varargs[string]	proc globalFile(T: typedesc[Appearance]; filter: varargs[string]): Appearance		170
+nim	flags2dNavigation	gdext/appearances.html#flags2dNavigation,typedesc[Appearance]	proc flags2dNavigation(T: typedesc[Appearance]): Appearance		176
+nim	flags2dPhysics	gdext/appearances.html#flags2dPhysics,typedesc[Appearance]	proc flags2dPhysics(T: typedesc[Appearance]): Appearance		180
+nim	flags2dRender	gdext/appearances.html#flags2dRender,typedesc[Appearance]	proc flags2dRender(T: typedesc[Appearance]): Appearance		184
+nim	flags3dNavigation	gdext/appearances.html#flags3dNavigation,typedesc[Appearance]	proc flags3dNavigation(T: typedesc[Appearance]): Appearance		188
+nim	flags3dPhysics	gdext/appearances.html#flags3dPhysics,typedesc[Appearance]	proc flags3dPhysics(T: typedesc[Appearance]): Appearance		192
+nim	flags3dRender	gdext/appearances.html#flags3dRender,typedesc[Appearance]	proc flags3dRender(T: typedesc[Appearance]): Appearance		196
+nim	flagsAvoidance	gdext/appearances.html#flagsAvoidance,typedesc[Appearance]	proc flagsAvoidance(T: typedesc[Appearance]): Appearance		200
+nim	multiline	gdext/appearances.html#multiline,typedesc[Appearance]	proc multiline(T: typedesc[Appearance]): Appearance		204
+nim	custom	gdext/appearances.html#custom,typedesc[Appearance],PropertyHint,set[PropertyUsageFlags]	proc custom(T: typedesc[Appearance]; hint: PropertyHint = propertyHintNone;\n       hintstring = String(); usage: set[PropertyUsageFlags] = {\n    propertyUsageEditor, propertyUsageStorage}): Appearance		208
+nim	`enum`	gdext/appearances.html#enum,typedesc[Appearance],varargs[string]	proc `enum`(T: typedesc[Appearance]; enums: varargs[string]): Appearance		216
+nim	flags	gdext/appearances.html#flags,typedesc[Appearance],varargs[string]	proc flags(T: typedesc[Appearance]; flags: varargs[string]): Appearance		223
+nim	expEasing	gdext/appearances.html#expEasing,typedesc[Appearance],varargs[ExpEasingArgument]	proc expEasing(T: typedesc[Appearance]; extra: varargs[ExpEasingArgument]): Appearance		230
+nim	nodePath	gdext/appearances.html#nodePath,typedesc[Appearance],varargs[string]	proc nodePath(T: typedesc[Appearance]; validTypes: varargs[string]): Appearance		237
+nim	nodePath	gdext/appearances.html#nodePath.m,typedesc[Appearance],varargs[typedesc[Node]]	macro nodePath(T: typedesc[Appearance]; validTypes: varargs[typedesc[Node]]): Appearance		244
+nim	placeholder	gdext/appearances.html#placeholder,typedesc[Appearance],String	proc placeholder(T: typedesc[Appearance]; placeholder: String): Appearance		251
+nim	range	gdext/appearances.html#range,typedesc[Appearance],S,S,S,varargs[RangeArgument]	proc range[S: SomeNumber](T: typedesc[Appearance]; min, max: S; step: S;\n                     extra: varargs[RangeArgument]): Appearance		258
+nim	range	gdext/appearances.html#range,typedesc[Appearance],S,S,varargs[RangeArgument]	proc range[S: SomeNumber](T: typedesc[Appearance]; min, max: S;\n                     extra: varargs[RangeArgument]): Appearance		270
+nimgrp	appearance	gdext/appearances.html#appearance-procs-all	proc		92
+nimgrp	range	gdext/appearances.html#range-procs-all	proc		258

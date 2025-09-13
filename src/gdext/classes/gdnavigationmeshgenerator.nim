@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(NavigationMeshGenerator, Object)
+
 proc bake*(self: NavigationMeshGenerator; navigationMesh: gdref NavigationMesh; rootNode: Node): void =
   expandMethodBind(className NavigationMeshGenerator, "bake", 1401173477)
   methodbind.ptrcall(self, [getPtr navigationMesh, getPtr rootNode])

@@ -1,0 +1,14 @@
+nimTitle	configdsl	gdext/private/configdsl.html	module gdext/private/configdsl		0
+nim	Section	gdext/private/configdsl.html#Section	type Section		8
+nim	newSection	gdext/private/configdsl.html#newSection	proc newSection(): Section		24
+nim	`[]=`	gdext/private/configdsl.html#[]=,Section,string,string	proc `[]=`(sec: Section; key: string; value: string)		32
+nim	`[]=`	gdext/private/configdsl.html#[]=,Section,string,T	proc `[]=`[T](sec: Section; key: string; value: T)		34
+nim	`[]=`	gdext/private/configdsl.html#[]=.m,Section,string,untyped	macro `[]=`(sec: Section; key: string; value: untyped)		36
+nim	loadConfig	gdext/private/configdsl.html#loadConfig,string	proc loadConfig(filename: string): Config		40
+nim	evalSection	gdext/private/configdsl.html#evalSection,NimNode,NimNode	proc evalSection(section, body: NimNode): NimNode		49
+nim	eval	gdext/private/configdsl.html#eval.m,Section,	macro eval(section: Section; body): untyped		74
+nim	eval	gdext/private/configdsl.html#eval.m,Config,	macro eval(cfg: Config; body): untyped		77
+nim	`$`	gdext/private/configdsl.html#$,Config	proc `$`(cfg: Config): string		92
+nim	writeConfig	gdext/private/configdsl.html#writeConfig,Config,string	proc writeConfig(cfg: Config; filename: string)		121
+nimgrp	[]=	gdext/private/configdsl.html#[]=-procs-all	proc		32
+nimgrp	eval	gdext/private/configdsl.html#eval-macros-all	macro		74

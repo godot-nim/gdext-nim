@@ -1,0 +1,27 @@
+nimTitle	nameformats	gdext/nameformats.html	module gdext/nameformats		0
+nim	Formatter	gdext/nameformats.html#Formatter	type Formatter		8
+nim	words	gdext/nameformats.html#words.i,string	iterator words(str: string): string		25
+nim	toSnakeCase	gdext/nameformats.html#toSnakeCase,string	proc toSnakeCase(str: string): string		81
+nim	toUpperSnakeCase	gdext/nameformats.html#toUpperSnakeCase,string	proc toUpperSnakeCase(str: string): string		87
+nim	toPascalCase	gdext/nameformats.html#toPascalCase,string	proc toPascalCase(str: string): string		93
+nim	toCamelCase	gdext/nameformats.html#toCamelCase,string	proc toCamelCase(str: string): string		99
+nim	ensureLeadingUnderscore	gdext/nameformats.html#ensureLeadingUnderscore,string	proc ensureLeadingUnderscore(str: string): string		105
+nim	toGodotFuncCase	gdext/nameformats.html#toGodotFuncCase,string	proc toGodotFuncCase(str: string): string		111
+nim	toGodotInternalFuncCase	gdext/nameformats.html#toGodotInternalFuncCase,string	proc toGodotInternalFuncCase(str: string): string		117
+nim	toGodotClassCase	gdext/nameformats.html#toGodotClassCase,string	proc toGodotClassCase(str: string): string		124
+nim	toGodotConstCase	gdext/nameformats.html#toGodotConstCase,string	proc toGodotConstCase(str: string): string		130
+nim	toGodotPropertyCase	gdext/nameformats.html#toGodotPropertyCase,string	proc toGodotPropertyCase(str: string): string		136
+nim	asIs	gdext/nameformats.html#asIs,string	proc asIs(str: string): string		142
+nim	prefix	gdext/nameformats.html#prefix,string	proc prefix(prefix: string): Formatter		147
+nim	suffix	gdext/nameformats.html#suffix,string	proc suffix(suffix: string): Formatter		157
+nim	then	gdext/nameformats.html#then,Formatter,Formatter	proc then(a, b: Formatter): Formatter		167
+nim	`>>`	gdext/nameformats.html#>>.t,Formatter,Formatter	template `>>`(a, b: Formatter): Formatter		178
+nim	removePrefix	gdext/nameformats.html#removePrefix,string	proc removePrefix(prefix: string): Formatter		195
+nim	removeSuffix	gdext/nameformats.html#removeSuffix,string	proc removeSuffix(suffix: string): Formatter		209
+nim	replace	gdext/nameformats.html#replace,string,string	proc replace(sub, by: string): Formatter		223
+nim	multiReplace	gdext/nameformats.html#multiReplace,varargs[tuple[string,string]]	proc multiReplace(replacements: varargs[tuple[sub, by: string]]): Formatter		234
+nim	defaultClassFormatter	gdext/nameformats.html#defaultClassFormatter	var defaultClassFormatter		250
+nim	defaultFunctionFormatter	gdext/nameformats.html#defaultFunctionFormatter	var defaultFunctionFormatter		263
+nim	defaultVirtualMethodFormatter	gdext/nameformats.html#defaultVirtualMethodFormatter	var defaultVirtualMethodFormatter		276
+nim	defaultConstFormatter	gdext/nameformats.html#defaultConstFormatter	var defaultConstFormatter		289
+nim	defaultPropertyFormatter	gdext/nameformats.html#defaultPropertyFormatter	var defaultPropertyFormatter		302

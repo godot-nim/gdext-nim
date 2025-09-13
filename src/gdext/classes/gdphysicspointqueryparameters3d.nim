@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(PhysicsPointQueryParameters3D, RefCounted)
+
 proc setPosition*(self: PhysicsPointQueryParameters3D; position: Vector3): void =
   expandMethodBind(className PhysicsPointQueryParameters3D, "set_position", 3460891852)
   methodbind.ptrcall(self, [getPtr position])

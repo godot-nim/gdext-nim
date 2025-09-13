@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(SyntaxHighlighter, Resource)
+
 method getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary {.base.} = (discard)
 proc registerVirtual_getLineSyntaxHighlighting*[T: SyntaxHighlighter](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_line_syntax_highlighting"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

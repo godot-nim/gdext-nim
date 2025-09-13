@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdlight2d; export gdlight2d
 
+expandOnClassImported(DirectionalLight2D, Light2D)
+
 proc setMaxDistance*(self: DirectionalLight2D; pixels: Float): void =
   expandMethodBind(className DirectionalLight2D, "set_max_distance", 373806689)
   methodbind.ptrcall(self, [getPtr pixels])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(PolygonPathFinder, Resource)
+
 proc setup*(self: PolygonPathFinder; points: PackedVector2Array; connections: PackedInt32Array): void =
   expandMethodBind(className PolygonPathFinder, "setup", 3251786936)
   methodbind.ptrcall(self, [getPtr points, getPtr connections])

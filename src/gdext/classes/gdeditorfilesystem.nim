@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(EditorFileSystem, Node)
+
 proc getFilesystem*(self: EditorFileSystem): EditorFileSystemDirectory =
   expandMethodBind(className EditorFileSystem, "get_filesystem", 842323275)
   var ret: encoded EditorFileSystemDirectory

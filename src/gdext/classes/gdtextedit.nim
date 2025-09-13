@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(TextEdit, Control)
+
 method handleUnicodeInput*(self: TextEdit; unicodeChar: int32; caretIndex: int32): void {.base.} = (discard)
 proc registerVirtual_handleUnicodeInput*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_handle_unicode_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

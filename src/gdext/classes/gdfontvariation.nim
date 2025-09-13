@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdfont; export gdfont
 
+expandOnClassImported(FontVariation, Font)
+
 proc setBaseFont*(self: FontVariation; font: gdref Font): void =
   expandMethodBind(className FontVariation, "set_base_font", 1262170328)
   methodbind.ptrcall(self, [getPtr font])

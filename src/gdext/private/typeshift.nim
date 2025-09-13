@@ -1,4 +1,5 @@
 import gdext/private/gdinterface
+import gdext/private/internalobjecttools
 import gdext/builtinindex {.all.}
 import gdext/stringtools
 
@@ -139,7 +140,8 @@ proc decode_result*(p: pointer; Type: typedesc): Type =
   p.decode(Type)
 
 template encoded*[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr] = ObjectPtr
-template encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
+proc encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
+  discard hook_reference v.handle.engineInstance
   v.handle.encode(p)
 proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
 
+expandOnClassImported(AudioStreamPlaybackResampled, AudioStreamPlayback)
+
 method mixResampled*(self: AudioStreamPlaybackResampled; dstBuffer: ptr AudioFrame; frameCount: int32): int32 {.base.} = (discard)
 proc registerVirtual_mixResampled*[T: AudioStreamPlaybackResampled](Self: typedesc[T]) =
   Self.vmethods[newStringName"_mix_resampled"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

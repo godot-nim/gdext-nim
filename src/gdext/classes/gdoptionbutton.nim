@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdbutton; export gdbutton
 
+expandOnClassImported(OptionButton, Button)
+
 proc addItem*(self: OptionButton; label: String; id: int32 = -1): void =
   expandMethodBind(className OptionButton, "add_item", 2697778442)
   methodbind.ptrcall(self, [getPtr label, getPtr id])

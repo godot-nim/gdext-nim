@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
 
+expandOnClassImported(WorldBoundaryShape3D, Shape3D)
+
 proc setPlane*(self: WorldBoundaryShape3D; plane: Plane): void =
   expandMethodBind(className WorldBoundaryShape3D, "set_plane", 3505987427)
   methodbind.ptrcall(self, [getPtr plane])

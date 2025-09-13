@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdconfirmationdialog; export gdconfirmationdialog
 
+expandOnClassImported(FileDialog, ConfirmationDialog)
+
 proc clearFilters*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "clear_filters", 3218959716)
   methodbind.ptrcall(self, [])

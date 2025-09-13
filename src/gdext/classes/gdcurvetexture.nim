@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+expandOnClassImported(CurveTexture, Texture2D)
+
 proc setWidth*(self: CurveTexture; width: int32): void =
   expandMethodBind(className CurveTexture, "set_width", 1286410249)
   methodbind.ptrcall(self, [getPtr width])

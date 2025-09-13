@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(PhysicalSkyMaterial, Material)
+
 proc setRayleighCoefficient*(self: PhysicalSkyMaterial; rayleigh: Float): void =
   expandMethodBind(className PhysicalSkyMaterial, "set_rayleigh_coefficient", 373806689)
   methodbind.ptrcall(self, [getPtr rayleigh])

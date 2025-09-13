@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Image, Resource)
+
 const MaxWidth* = 16777216
 const MaxHeight* = 16777216
 

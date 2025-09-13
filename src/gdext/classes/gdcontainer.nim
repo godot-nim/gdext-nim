@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(Container, Control)
+
 const NotificationPreSortChildren* = 50
 const NotificationSortChildren* = 51
 

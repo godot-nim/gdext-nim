@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(AspectRatioContainer, Container)
+
 proc setRatio*(self: AspectRatioContainer; ratio: Float): void =
   expandMethodBind(className AspectRatioContainer, "set_ratio", 373806689)
   methodbind.ptrcall(self, [getPtr ratio])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcollisionobject2d; export gdcollisionobject2d
 
+expandOnClassImported(Area2D, CollisionObject2D)
+
 proc setGravitySpaceOverrideMode*(self: Area2D; spaceOverrideMode: Area2D_SpaceOverride): void =
   expandMethodBind(className Area2D, "set_gravity_space_override_mode", 2879900038)
   methodbind.ptrcall(self, [getPtr spaceOverrideMode])

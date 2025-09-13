@@ -1,6 +1,7 @@
+import gdext/versions
 # Package
 
-version       = "0.13.1"
+version       = GdextVersionString
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
@@ -15,7 +16,9 @@ binDir        = "bin"
 requires "nim >= 2.0.12"
 
 import strformat
-var upstream = "https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.4-stable/gdextension/extension_api.json"
+
+var gdv = &"godot-{CurrentSupportedGodotVersion.Major}.{CurrentSupportedGodotVersion.Minor}-stable"
+var upstream = &"https://raw.githubusercontent.com/godotengine/godot-cpp/{gdv}/gdextension/extension_api.json"
 
 task generate, "Generate extension API from the specified source. Remember all manual changes under src/ will be deleted.":
   rmDir "src/gdext/classes"
@@ -40,5 +43,23 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, "gdextwiz run-editor testproject/editor"
   echo "All tests passed!"
 
-task docgen, "Generate project documentation":
+task genDocs, "Generate API reference from Nim sources":
   exec "nim doc --project --index:on -o:docs -d:docgen src/gdext"
+
+task serveDocs, "Start local docs site with Docker (foreground)":
+  exec "docker-compose up"
+
+task stopDocs, "Stop the local docs site (Docker)":
+  exec "docker-compose down"
+
+task openDocs, "Open docs site in default browser":
+  when defined(windows):
+    exec "start http://localhost:4000"
+  elif defined(macosx):
+    exec "open http://localhost:4000"
+  else:
+    exec "xdg-open http://localhost:4000"
+
+task docs, "Start docs in background (Docker) and open browser":
+  exec "docker-compose up -d"
+  openDocsTask()

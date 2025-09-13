@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(ResourceUID, Object)
+
 const InvalidId* = -1
 
 proc idToText*(self: ResourceUID; id: int64): String =

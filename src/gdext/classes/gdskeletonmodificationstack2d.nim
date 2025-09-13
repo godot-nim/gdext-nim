@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(SkeletonModificationStack2D, Resource)
+
 proc setup*(self: SkeletonModificationStack2D): void =
   expandMethodBind(className SkeletonModificationStack2D, "setup", 3218959716)
   methodbind.ptrcall(self, [])

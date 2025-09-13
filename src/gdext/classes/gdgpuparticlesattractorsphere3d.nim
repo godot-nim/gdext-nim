@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgpuparticlesattractor3d; export gdgpuparticlesattractor3d
 
+expandOnClassImported(GPUParticlesAttractorSphere3D, GPUParticlesAttractor3D)
+
 proc setRadius*(self: GPUParticlesAttractorSphere3D; radius: Float): void =
   expandMethodBind(className GPUParticlesAttractorSphere3D, "set_radius", 373806689)
   methodbind.ptrcall(self, [getPtr radius])

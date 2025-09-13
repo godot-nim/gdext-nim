@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(SkeletonModification2D, Resource)
+
 method execute*(self: SkeletonModification2D; delta: float64): void {.base.} = (discard)
 proc registerVirtual_execute*[T: SkeletonModification2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_execute"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

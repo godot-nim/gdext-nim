@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
 
+expandOnClassImported(AudioStreamPlaybackPolyphonic, AudioStreamPlayback)
+
 const InvalidId* = -1
 
 proc playStream*(self: AudioStreamPlaybackPolyphonic; stream: gdref AudioStream; fromOffset: Float = 0; volumeDb: Float = 0; pitchScale: Float = 1.0; playbackType: AudioServer_PlaybackType = playbackTypeDefault; bus: StringName = newStringName("Master")): int64 =

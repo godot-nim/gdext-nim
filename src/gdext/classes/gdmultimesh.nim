@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(MultiMesh, Resource)
+
 proc setMesh*(self: MultiMesh; mesh: gdref Mesh): void =
   expandMethodBind(className MultiMesh, "set_mesh", 194775623)
   methodbind.ptrcall(self, [getPtr mesh])

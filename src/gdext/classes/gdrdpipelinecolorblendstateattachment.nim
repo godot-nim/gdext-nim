@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDPipelineColorBlendStateAttachment, RefCounted)
+
 proc setAsMix*(self: RDPipelineColorBlendStateAttachment): void =
   expandMethodBind(className RDPipelineColorBlendStateAttachment, "set_as_mix", 3218959716)
   methodbind.ptrcall(self, [])

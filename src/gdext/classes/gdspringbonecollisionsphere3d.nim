@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdspringbonecollision3d; export gdspringbonecollision3d
 
+expandOnClassImported(SpringBoneCollisionSphere3D, SpringBoneCollision3D)
+
 proc setRadius*(self: SpringBoneCollisionSphere3D; radius: Float): void =
   expandMethodBind(className SpringBoneCollisionSphere3D, "set_radius", 373806689)
   methodbind.ptrcall(self, [getPtr radius])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(ProjectSettings, Object)
+
 proc hasSetting*(self: ProjectSettings; name: String): bool =
   expandMethodBind(className ProjectSettings, "has_setting", 3927539163)
   var ret: encoded bool

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(BaseButton, Control)
+
 method pressed*(self: BaseButton): void {.base.} = (discard)
 proc registerVirtual_pressed*[T: BaseButton](Self: typedesc[T]) =
   Self.vmethods[newStringName"_pressed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RenderSceneBuffersConfiguration, RefCounted)
+
 proc getRenderTarget*(self: RenderSceneBuffersConfiguration): RID =
   expandMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)
   var ret: encoded RID

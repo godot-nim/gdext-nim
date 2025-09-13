@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+expandOnClassImported(PacketPeerDTLS, PacketPeer)
+
 proc poll*(self: PacketPeerDTLS): void =
   expandMethodBind(className PacketPeerDTLS, "poll", 3218959716)
   methodbind.ptrcall(self, [])

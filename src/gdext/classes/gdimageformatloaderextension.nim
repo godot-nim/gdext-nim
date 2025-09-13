@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdimageformatloader; export gdimageformatloader
 
+expandOnClassImported(ImageFormatLoaderExtension, ImageFormatLoader)
+
 method getRecognizedExtensions*(self: ImageFormatLoaderExtension): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getRecognizedExtensions*[T: ImageFormatLoaderExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_recognized_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcanvaslayer; export gdcanvaslayer
 
+expandOnClassImported(ParallaxBackground, CanvasLayer)
+
 proc setScrollOffset*(self: ParallaxBackground; offset: Vector2): void =
   expandMethodBind(className ParallaxBackground, "set_scroll_offset", 743155724)
   methodbind.ptrcall(self, [getPtr offset])

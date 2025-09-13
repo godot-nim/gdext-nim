@@ -5,6 +5,7 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/propertyinfo
+import gdext/private/classindex
 import gdext/builtinindex
 
 import gdext/classes/gdobject
@@ -44,7 +45,7 @@ macro parseParams (params): seq[PropertyInfo] =
 
 macro contractSignal (params, procdef; gdname: string): untyped =
   let arg0_T = params[1][1]
-  let procsym = ident $gdname
+  let procsym = ident gdname.repr
 
   result = quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
@@ -63,7 +64,7 @@ macro syncSignalGlobal(procdef): untyped =
   if procdef.hasNoReturn:
     error errmsgSignalResultTypeMismatch, procdef
 
-  let gdname = procdef.getPragmaVal("name") or procdef.name.toStrLit
+  let gdname = procdef.gdname
 
   let params = newFormalParams(
       procdef.params[0],
@@ -86,7 +87,7 @@ macro syncSignalLocal(procdef): untyped =
 
   let params = procdef.params
 
-  let gdname = procdef.getPragmaVal("name") or procdef.name.toStrLit
+  let gdname = procdef.gdname
 
   let arg0T = params[1][1]
 

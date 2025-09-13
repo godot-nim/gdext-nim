@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
 
+expandOnClassImported(InputEventMIDI, InputEvent)
+
 proc setChannel*(self: InputEventMIDI; channel: int32): void =
   expandMethodBind(className InputEventMIDI, "set_channel", 1286410249)
   methodbind.ptrcall(self, [getPtr channel])

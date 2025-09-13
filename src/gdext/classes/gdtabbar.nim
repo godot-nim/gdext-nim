@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(TabBar, Control)
+
 proc setTabCount*(self: TabBar; count: int32): void =
   expandMethodBind(className TabBar, "set_tab_count", 1286410249)
   methodbind.ptrcall(self, [getPtr count])

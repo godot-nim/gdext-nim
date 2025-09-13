@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(CollisionObject3D, Node3D)
+
 method inputEvent*(self: CollisionObject3D; camera: Camera3D; event: gdref InputEvent; eventPosition: Vector3; normal: Vector3; shapeIdx: int32): void {.base.} = (discard)
 proc registerVirtual_inputEvent*[T: CollisionObject3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

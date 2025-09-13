@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdslider; export gdslider
+
+expandOnClassImported(VSlider, Slider)

@@ -1,4 +1,5 @@
 import gdext
+import gdext/classes/gdNode
 
 type DocTestNode* {.gdsync, icon: "res://icon.png", description: """
 A node defined for documentation testing.

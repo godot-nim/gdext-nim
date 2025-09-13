@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(TouchScreenButton, Node2D)
+
 proc setTextureNormal*(self: TouchScreenButton; texture: gdref Texture2D): void =
   expandMethodBind(className TouchScreenButton, "set_texture_normal", 4051416890)
   methodbind.ptrcall(self, [getPtr texture])

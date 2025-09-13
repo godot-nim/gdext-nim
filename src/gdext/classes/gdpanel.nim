@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
+
+expandOnClassImported(Panel, Control)

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(Tree, Control)
+
 proc clear*(self: Tree): void =
   expandMethodBind(className Tree, "clear", 3218959716)
   methodbind.ptrcall(self, [])

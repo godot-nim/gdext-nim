@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(UDPServer, RefCounted)
+
 proc listen*(self: UDPServer; port: uint16; bindAddress: String = newGdString("*")): Error =
   expandMethodBind(className UDPServer, "listen", 3167955072)
   var ret: encoded Error

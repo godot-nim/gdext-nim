@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(KinematicCollision2D, RefCounted)
+
 proc getPosition*(self: KinematicCollision2D): Vector2 =
   expandMethodBind(className KinematicCollision2D, "get_position", 3341600327)
   var ret: encoded Vector2

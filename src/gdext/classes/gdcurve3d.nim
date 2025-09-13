@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Curve3D, Resource)
+
 proc getPointCount*(self: Curve3D): int32 =
   expandMethodBind(className Curve3D, "get_point_count", 3905245786)
   var ret: encoded int32

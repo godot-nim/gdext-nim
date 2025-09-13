@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdphysicsbody2d; export gdphysicsbody2d
 
+expandOnClassImported(RigidBody2D, PhysicsBody2D)
+
 method integrateForces*(self: RigidBody2D; state: PhysicsDirectBodyState2D): void {.base.} = (discard)
 proc registerVirtual_integrateForces*[T: RigidBody2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_integrate_forces"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

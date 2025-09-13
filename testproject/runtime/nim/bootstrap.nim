@@ -1,4 +1,5 @@
 import gdext
+import gdext/nameformats
 
 {.warning[UnusedImport]:off.}
 # import your extension classes here
@@ -11,6 +12,7 @@ import cases/prints
 import cases/issues
 import cases/singletons
 import classes/gdextnode
+import classes/gdextresource
 import classes/gdvirtualnode01
 import classes/gdvirtualnode02
 import classes/gdtestobject
@@ -18,8 +20,16 @@ import classes/gdextlabel
 import classes/gdsingleton
 import classes/gdfunctiontester
 import classes/gdenumtester
+import classes/gdrenametester
 
 # ==================================
+
+proc set_formatters {.execon: EntryPoint.} =
+  nameformats.defaultClassFormatter = nameformats.toGodotClassCase
+  nameformats.defaultPropertyFormatter = nameformats.toGodotPropertyCase
+  nameformats.defaultFunctionFormatter = nameformats.toGodotFuncCase
+  nameformats.defaultVirtualMethodFormatter = nameformats.toGodotInternalFuncCase
+  nameformats.defaultConstFormatter = nameformats.toUpperSnakeCase
 
 proc register_classes {.execon: initialize_scene.} =
   # register your extension classes here

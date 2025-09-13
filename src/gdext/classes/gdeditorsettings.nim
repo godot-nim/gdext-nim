@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(EditorSettings, Resource)
+
 const NotificationEditorSettingsChanged* = 10000
 
 proc hasSetting*(self: EditorSettings; name: String): bool =

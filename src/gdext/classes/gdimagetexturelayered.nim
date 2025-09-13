@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexturelayered; export gdtexturelayered
 
+expandOnClassImported(ImageTextureLayered, TextureLayered)
+
 proc createFromImages*(self: ImageTextureLayered; images: TypedArray[gdref Image]): Error =
   expandMethodBind(className ImageTextureLayered, "create_from_images", 2785773503)
   var ret: encoded Error

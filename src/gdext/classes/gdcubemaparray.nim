@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdimagetexturelayered; export gdimagetexturelayered
 
+expandOnClassImported(CubemapArray, ImageTextureLayered)
+
 proc createPlaceholder*(self: CubemapArray): gdref Resource =
   expandMethodBind(className CubemapArray, "create_placeholder", 121922552)
   var ret: encoded gdref Resource

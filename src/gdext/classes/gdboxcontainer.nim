@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(BoxContainer, Container)
+
 proc addSpacer*(self: BoxContainer; begin: bool): Control =
   expandMethodBind(className BoxContainer, "add_spacer", 1326660695)
   var ret: encoded Control

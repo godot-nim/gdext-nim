@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+expandOnClassImported(MeshInstance3D, GeometryInstance3D)
+
 proc setMesh*(self: MeshInstance3D; mesh: gdref Mesh): void =
   expandMethodBind(className MeshInstance3D, "set_mesh", 194775623)
   methodbind.ptrcall(self, [getPtr mesh])

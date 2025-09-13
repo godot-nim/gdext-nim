@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdxrnode3d; export gdxrnode3d
 
+expandOnClassImported(XRAnchor3D, XRNode3D)
+
 proc getSize*(self: XRAnchor3D): Vector3 =
   expandMethodBind(className XRAnchor3D, "get_size", 3360562783)
   var ret: encoded Vector3

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdskeletonmodification2d; export gdskeletonmodification2d
 
+expandOnClassImported(SkeletonModification2DFABRIK, SkeletonModification2D)
+
 proc setTargetNode*(self: SkeletonModification2DFABRIK; targetNodepath: NodePath): void =
   expandMethodBind(className SkeletonModification2DFABRIK, "set_target_node", 1348162250)
   methodbind.ptrcall(self, [getPtr targetNodepath])

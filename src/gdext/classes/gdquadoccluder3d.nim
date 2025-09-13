@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdoccluder3d; export gdoccluder3d
 
+expandOnClassImported(QuadOccluder3D, Occluder3D)
+
 proc setSize*(self: QuadOccluder3D; size: Vector2): void =
   expandMethodBind(className QuadOccluder3D, "set_size", 743155724)
   methodbind.ptrcall(self, [getPtr size])

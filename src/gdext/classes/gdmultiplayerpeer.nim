@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdpacketpeer; export gdpacketpeer
 
+expandOnClassImported(MultiplayerPeer, PacketPeer)
+
 const TargetPeerBroadcast* = 0
 const TargetPeerServer* = 1
 

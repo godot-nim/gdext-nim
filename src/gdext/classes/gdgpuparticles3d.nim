@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+expandOnClassImported(GPUParticles3D, GeometryInstance3D)
+
 const MaxDrawPasses* = 4
 
 proc setEmitting*(self: GPUParticles3D; emitting: bool): void =

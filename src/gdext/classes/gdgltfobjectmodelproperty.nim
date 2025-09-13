@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(GLTFObjectModelProperty, RefCounted)
+
 proc appendNodePath*(self: GLTFObjectModelProperty; nodePath: NodePath): void =
   expandMethodBind(className GLTFObjectModelProperty, "append_node_path", 1348162250)
   methodbind.ptrcall(self, [getPtr nodePath])

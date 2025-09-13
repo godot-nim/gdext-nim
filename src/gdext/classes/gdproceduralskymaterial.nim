@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(ProceduralSkyMaterial, Material)
+
 proc setSkyTopColor*(self: ProceduralSkyMaterial; color: Color): void =
   expandMethodBind(className ProceduralSkyMaterial, "set_sky_top_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])

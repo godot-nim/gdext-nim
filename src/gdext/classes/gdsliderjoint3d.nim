@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdjoint3d; export gdjoint3d
 
+expandOnClassImported(SliderJoint3D, Joint3D)
+
 proc setParam*(self: SliderJoint3D; param: SliderJoint3D_Param; value: Float): void =
   expandMethodBind(className SliderJoint3D, "set_param", 918243683)
   methodbind.ptrcall(self, [getPtr param, getPtr value])

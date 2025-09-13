@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(ParticleProcessMaterial, Material)
+
 proc setDirection*(self: ParticleProcessMaterial; degrees: Vector3): void =
   expandMethodBind(className ParticleProcessMaterial, "set_direction", 3460891852)
   methodbind.ptrcall(self, [getPtr degrees])

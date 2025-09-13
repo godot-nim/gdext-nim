@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdopenxripbindingmodifier; export gdopenxripbindingmodifier
 
+expandOnClassImported(OpenXRDpadBindingModifier, OpenXRIPBindingModifier)
+
 proc setActionSet*(self: OpenXRDpadBindingModifier; actionSet: gdref OpenXRActionSet): void =
   expandMethodBind(className OpenXRDpadBindingModifier, "set_action_set", 2093310581)
   methodbind.ptrcall(self, [getPtr actionSet])

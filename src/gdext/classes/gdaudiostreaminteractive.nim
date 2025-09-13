@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamInteractive, AudioStream)
+
 const ClipAny* = -1
 
 proc setClipCount*(self: AudioStreamInteractive; clipCount: int32): void =

@@ -1,0 +1,3 @@
+nimTitle	swizzles	gdext/swizzles.html	module gdext/swizzles		0
+nim	swizzle	gdext/swizzles.html#swizzle.m,array[I,T],untyped	macro swizzle[I: static int; T](v: array[I, T]; key: untyped): untyped		21
+nim	`.*`	gdext/swizzles.html#.*.t,array[I,T],	template `.*`[I: static int; T](v: array[I, T]; key): untyped		42

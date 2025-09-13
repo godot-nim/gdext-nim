@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EditorSelection, Object)
+
 proc clear*(self: EditorSelection): void =
   expandMethodBind(className EditorSelection, "clear", 3218959716)
   methodbind.ptrcall(self, [])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(NativeMenu, Object)
+
 proc hasFeature*(self: NativeMenu; feature: NativeMenu_Feature): bool =
   expandMethodBind(className NativeMenu, "has_feature", 1708975490)
   var ret: encoded bool

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdxrinterface; export gdxrinterface
 
+expandOnClassImported(XRInterfaceExtension, XRInterface)
+
 method getName*(self: XRInterfaceExtension): StringName {.base.} = (discard)
 proc registerVirtual_getName*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

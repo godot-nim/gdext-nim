@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdjoint2d; export gdjoint2d
 
+expandOnClassImported(PinJoint2D, Joint2D)
+
 proc setSoftness*(self: PinJoint2D; softness: Float): void =
   expandMethodBind(className PinJoint2D, "set_softness", 373806689)
   methodbind.ptrcall(self, [getPtr softness])

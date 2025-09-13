@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(Mutex, RefCounted)
+
 proc lock*(self: Mutex): void =
   expandMethodBind(className Mutex, "lock", 3218959716)
   methodbind.ptrcall(self, [])

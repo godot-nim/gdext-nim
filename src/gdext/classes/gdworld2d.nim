@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(World2D, Resource)
+
 proc getCanvas*(self: World2D): RID =
   expandMethodBind(className World2D, "get_canvas", 2944877500)
   var ret: encoded RID

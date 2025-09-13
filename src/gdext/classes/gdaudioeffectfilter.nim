@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectFilter, AudioEffect)
+
 proc setCutoff*(self: AudioEffectFilter; freq: Float): void =
   expandMethodBind(className AudioEffectFilter, "set_cutoff", 373806689)
   methodbind.ptrcall(self, [getPtr freq])

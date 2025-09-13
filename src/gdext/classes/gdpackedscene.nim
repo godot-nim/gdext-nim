@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(PackedScene, Resource)
+
 proc pack*(self: PackedScene; path: Node): Error =
   expandMethodBind(className PackedScene, "pack", 2584678054)
   var ret: encoded Error

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(PhysicsDirectBodyState3D, Object)
+
 proc getTotalGravity*(self: PhysicsDirectBodyState3D): Vector3 =
   expandMethodBind(className PhysicsDirectBodyState3D, "get_total_gravity", 3360562783)
   var ret: encoded Vector3

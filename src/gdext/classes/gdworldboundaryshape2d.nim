@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
 
+expandOnClassImported(WorldBoundaryShape2D, Shape2D)
+
 proc setNormal*(self: WorldBoundaryShape2D; normal: Vector2): void =
   expandMethodBind(className WorldBoundaryShape2D, "set_normal", 743155724)
   methodbind.ptrcall(self, [getPtr normal])

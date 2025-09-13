@@ -1,5 +1,9 @@
 import gdext/private/gdinterface; export gdinterface
 import gdext/private/typeshift; export typeshift
+import gdext/private/staticevents; export staticevents
+import gdext/private/propertyinfo; export propertyinfo
+import gdext/private/internalobjecttools
+import gdext/private/classindex; export classindex
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
 import gdext/arraytools; export arraytools
@@ -40,3 +44,8 @@ proc call*(methodbind: MethodBindPtr; args: var seq[VariantPtr]; vararg: varargs
   for vararg in vararg: args.add addr vararg
   interface_Object_methodBindCall(methodbind, nil,
       (if args.len == 0: nil else: addr args[0]), args.len, addr result, addr error)
+
+template expandOnClassImported*(Class, Super: typedesc) =
+  export Class
+  proc register_callbacks {.execon: event"EntryPoint".} =
+    callbackTable[className Class] = addr Class.callbacks

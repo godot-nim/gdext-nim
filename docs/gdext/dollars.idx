@@ -1,0 +1,26 @@
+nimTitle	dollars	gdext/dollars.html	module gdext/dollars		0
+nim	`$`	gdext/dollars.html#$,Variant	proc `$`(v {.bycopy.}: Variant): string		111
+nim	`$`	gdext/dollars.html#$,Array	proc `$`(v: Array): string		113
+nim	`$`	gdext/dollars.html#$,TypedArray	proc `$`(v: TypedArray): string		117
+nim	`$`	gdext/dollars.html#$,PackedArray[T]	proc `$`[T](v: PackedArray[T]): string		120
+nim	`$`	gdext/dollars.html#$,Dictionary	proc `$`(v: Dictionary): string		125
+nim	`$`	gdext/dollars.html#$,Callable	proc `$`(v: Callable): string		130
+nim	`$`	gdext/dollars.html#$,Signal	proc `$`(v: Signal): string		135
+nim	`$`	gdext/dollars.html#$,Color	proc `$`(v: Color): string		140
+nim	`$`	gdext/dollars.html#$,AABB	proc `$`(v: AABB): string		154
+nim	`$`	gdext/dollars.html#$,Basis	proc `$`(v: Basis): string		164
+nim	`$`	gdext/dollars.html#$,Plane	proc `$`(v: Plane): string		176
+nim	`$`	gdext/dollars.html#$,Projection	proc `$`(v: Projection): string		186
+nim	`$`	gdext/dollars.html#$,Quaternion	proc `$`(v: Quaternion): string		200
+nim	`$`	gdext/dollars.html#$,Rect2	proc `$`(v: Rect2): string		214
+nim	`$`	gdext/dollars.html#$,Rect2i	proc `$`(v: Rect2i): string		224
+nim	`$`	gdext/dollars.html#$,Transform2D	proc `$`(v: Transform2D): string		234
+nim	`$`	gdext/dollars.html#$,Transform3D	proc `$`(v: Transform3D): string		246
+nim	`$`	gdext/dollars.html#$,Vector2	proc `$`(v: Vector2): string		260
+nim	`$`	gdext/dollars.html#$,Vector2i	proc `$`(v: Vector2i): string		266
+nim	`$`	gdext/dollars.html#$,Vector3	proc `$`(v: Vector3): string		272
+nim	`$`	gdext/dollars.html#$,Vector3i	proc `$`(v: Vector3i): string		278
+nim	`$`	gdext/dollars.html#$,Vector4	proc `$`(v: Vector4): string		284
+nim	`$`	gdext/dollars.html#$,Vector4i	proc `$`(v: Vector4i): string		290
+nim	`$`	gdext/dollars.html#$,RID	proc `$`(v: RID): string		296
+nimgrp	$	gdext/dollars.html#$-procs-all	proc		111

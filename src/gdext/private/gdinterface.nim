@@ -3,9 +3,11 @@ import gdext/private/buildsettings
 import gdext/private/native
 import gdext/private/macros
 import gdext/private/debugging
+import gdext/private/classindex
 import gdext/builtinindex {.all.}
 import gdext/stringtools
 import gdext/objectcallbacks
+import gdext/nameformats
 
 privateAccess Object
 
@@ -14,6 +16,9 @@ export native
 include gdext/private/includes/stringtoolsbase
 export getPtr
 export load
+
+var callbackTable*: Table[StringName, ptr InstanceBindingCallbacks]
+var getParentClass*: proc(class: StringName): StringName
 
 proc engineInstance*(obj: Object): ObjectPtr =
   privateAccess Object
@@ -34,12 +39,6 @@ template getTypedPtr*(v: Variant): VariantPtr = addr v
 proc head*[T](a: openArray[T]): ptr T =
   if a.len == 0: nil
   else: addr a[0]
-
-type
-  GodotClassMeta* = object
-    virtualMethods*: Table[StringName, ClassCallVirtual]
-    className*: StringName
-    callbacks*: InstanceBindingCallbacks
 
 const ErrorName: array[CallErrorType, string] = [
   "ok",
@@ -102,98 +101,38 @@ proc createClass*[T: Object](o: ObjectPtr): T =
     result.debugName = $T
   onInit result
 
-proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
-  let class = createClass[T](cast[ObjectPtr](p_instance))
-  result = cast[pointer](class)
-  debugCreate(class)
+macro gdname*(T: typedesc[SomeClass]): string =
+  result = T.typeDef.getPragmaVal("name")
+  if result.isNil:
+    result = T.typeDef.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall newLit($T.typeSym)
+  if result.isNil:
+    result = bindSym"defaultClassFormatter".newCall newLit($T.typeSym)
 
-proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
-  let class = cast[T](p_binding)
-  debugFree(class)
-  onDestroy class
-  `=destroy` class[]
-  dealloc class
+proc gdname*(node: NimNode): NimNode =
+  result = node.getPragmaVal("name")
+  if result.isNil:
+    result = node.getPragmaVal("rename")
+    if not result.isNil:
+      result = result.newCall newLit($node.identifier)
+  if result.isNil:
+    case node.kind
+    of nnkMethodDef:
+      result = bindsym"defaultVirtualMethodFormatter".newCall newLit($node.identifier)
+    of (RoutineNodes - {nnkMethodDef}):
+      result = bindSym"defaultFunctionFormatter".newCall newLit($node.identifier)
+    of nnkIdentDefs:
+      result = bindSym"defaultPropertyFormatter".newCall newLit($node.identifier)
+    of nnkTypeDef:
+      result = bindSym"defaultClassFormatter".newCall newLit($node.typeSym)
+    else:
+      discard
 
-proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
-  result = true
-  debugReference(cast[Object](p_binding), p_reference)
-
-proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
-  var instance {.global.} : GodotClassMeta
-  once:
-    instance = GodotClassMeta(
-      className: newStringName $T,
-    )
-    when T is SomeEngineClass:
-      instance.callbacks = InstanceBindingCallbacks(
-        create_callback: create_callback[T],
-        free_callback: free_callback[T],
-        reference_callback:
-          when T is RefCounted: reference_callback
-          else: nil
-      )
-  instance
-
-template className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
-template callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
-template vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
+macro gdname*(P: proc): string =
+  P.getImpl.gdname()
 
 macro Super*(Type: typedesc): typedesc = Type.super
-
-proc getInstanceBinding*(p_engine_object: ObjectPtr; callbacks: var InstanceBindingCallbacks): pointer =
-  if p_engine_object.isNil: return
-  result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, nil)
-  if result.isNil:
-    result = interfaceObjectGetInstanceBinding(p_engine_object, environment.library, addr callbacks)
-
-proc getInstanceBinding*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T =
-  cast[T](p_engine_object.getInstanceBinding(T.callbacks))
-
-proc setInstanceBinding*(p_o: ObjectPtr; p_binding: Object; p_callbacks: ptr InstanceBindingCallbacks) =
-  interfaceObjectSetInstanceBinding(p_o, environment.library, cast[pointer](p_binding), p_callbacks)
-
-proc setInstance*(p_o: ObjectPtr; p_classname: StringName; p_instance: Object) =
-  interfaceObjectSetInstance(p_o, addr p_classname, cast[pointer](p_instance))
-
-proc callScriptMethod*(obj: Object; p_method: StringName): Variant =
-  var ce: CallError
-  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
-  check ce
-proc callScriptMethod*(obj: Object; p_method: StringName; args: array[0, Variant]): Variant =
-  var ce: CallError
-  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, nil, 0, addr result, addr ce)
-  check ce
-proc callScriptMethod*[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant =
-  var ce: CallError
-  let args = getPtr args
-  interfaceObjectCallScriptMethod(obj.engineInstance, addr p_method, addr args[0], args.len, addr result, addr ce)
-  check ce
-
-proc hasScriptMethod*(obj: Object; p_method: StringName): bool =
-  interfaceObjectHasScriptMethod(obj.engineInstance, addr p_method)
-
-proc castTo*(obj: Object; p_class_tag: pointer): ObjectPtr =
-  interfaceObjectCastTo(obj.engineInstance, p_class_tag)
-
-proc getInstanceID*(self: Object): GDObjectInstanceID =
-  interfaceObjectGetInstanceId self.engineInstance
-
-proc getClassName*(o: ObjectPtr): StringName =
-  if unlikely(o.isNil): return
-  discard interfaceObjectGetClassName(o, environment.library, addr result)
-proc getClassName*(self: Object): StringName =
-  self.engineInstance.getClassName
-
-proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr =
-  interfaceClassdbConstructObject(addr p_classname)
-
-proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
-  interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)
-proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: string; p_hash: Int): MethodBindPtr =
-  ClassDB.getMethodBind(p_classname, newStringName p_methodname, p_hash)
-
-proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
-  interfaceClassdbGetClassTag(addr p_classname)
 
 proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo4) =
   interfaceClassdbRegisterExtensionClass4(

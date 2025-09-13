@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(GDExtensionManager, Object)
+
 proc loadExtension*(self: GDExtensionManager; path: String): GDExtensionManager_LoadStatus =
   expandMethodBind(className GDExtensionManager, "load_extension", 4024158731)
   var ret: encoded GDExtensionManager_LoadStatus

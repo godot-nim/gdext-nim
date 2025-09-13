@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectCompressor, AudioEffect)
+
 proc setThreshold*(self: AudioEffectCompressor; threshold: Float): void =
   expandMethodBind(className AudioEffectCompressor, "set_threshold", 373806689)
   methodbind.ptrcall(self, [getPtr threshold])

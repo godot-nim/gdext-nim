@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(RefCounted, Object)
+
 proc initRef*(self: RefCounted): bool =
   expandMethodBind(className RefCounted, "init_ref", 2240911060)
   var ret: encoded bool

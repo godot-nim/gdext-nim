@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdstylebox; export gdstylebox
 
+expandOnClassImported(StyleBoxFlat, StyleBox)
+
 proc setBgColor*(self: StyleBoxFlat; color: Color): void =
   expandMethodBind(className StyleBoxFlat, "set_bg_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])

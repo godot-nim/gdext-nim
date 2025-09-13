@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture; export gdtexture
 
+expandOnClassImported(Texture3D, Texture)
+
 method getFormat*(self: Texture3D): Image_Format {.base.} = (discard)
 proc registerVirtual_getFormat*[T: Texture3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_format"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -5,6 +5,9 @@ import gdext/private/gdinterface
 import gdext/private/typeshift
 import gdext/private/staticevents
 import gdext/private/methodinfo
+import gdext/private/propertyinfo
+import gdext/private/classindex
+import gdext/private/internalobjecttools
 
 proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
   let body = ident"body"
@@ -30,7 +33,7 @@ proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
         discard call
         return
 
-  result.body = genAst(namesym, namelit = middle.name.toStrLit, sentence, body):
+  result.body = genAst(namesym, namelit = middle.gdname, sentence, body):
     try:
       let namesym {.global.} = newStringName namelit
       if self.hasScriptMethod(namesym):
@@ -58,7 +61,7 @@ proc sync_virtualDef*(procdef: NimNode): NimNode =
 
   procdef.body = procdef.callWithEmitter()
 
-  result = quote"@" do:
+  quote"@" do:
     @(middle.emitterdef(procdef))
     @procdef
     proc register_virtualMethod {.execon: Contract[@(middle.self_T)].virtual_base.} =

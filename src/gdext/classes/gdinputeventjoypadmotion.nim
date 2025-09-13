@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
 
+expandOnClassImported(InputEventJoypadMotion, InputEvent)
+
 proc setAxis*(self: InputEventJoypadMotion; axis: JoyAxis): void =
   expandMethodBind(className InputEventJoypadMotion, "set_axis", 1332685170)
   methodbind.ptrcall(self, [getPtr axis])

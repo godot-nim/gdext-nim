@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(MeshDataTool, RefCounted)
+
 proc clear*(self: MeshDataTool): void =
   expandMethodBind(className MeshDataTool, "clear", 3218959716)
   methodbind.ptrcall(self, [])

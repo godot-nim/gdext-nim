@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontrol; export gdcontrol
 
+expandOnClassImported(Range, Control)
+
 method valueChanged*(self: Range; newValue: float64): void {.base.} = (discard)
 proc registerVirtual_valueChanged*[T: Range](Self: typedesc[T]) =
   Self.vmethods[newStringName"_value_changed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

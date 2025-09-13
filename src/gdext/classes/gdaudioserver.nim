@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(AudioServer, Object)
+
 proc setBusCount*(self: AudioServer; amount: int32): void =
   expandMethodBind(className AudioServer, "set_bus_count", 1286410249)
   methodbind.ptrcall(self, [getPtr amount])

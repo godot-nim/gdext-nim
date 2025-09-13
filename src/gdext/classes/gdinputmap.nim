@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(InputMap, Object)
+
 proc hasAction*(self: InputMap; action: StringName): bool =
   expandMethodBind(className InputMap, "has_action", 2619796661)
   var ret: encoded bool

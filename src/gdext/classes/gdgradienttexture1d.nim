@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+expandOnClassImported(GradientTexture1D, Texture2D)
+
 proc setGradient*(self: GradientTexture1D; gradient: gdref Gradient): void =
   expandMethodBind(className GradientTexture1D, "set_gradient", 2756054477)
   methodbind.ptrcall(self, [getPtr gradient])

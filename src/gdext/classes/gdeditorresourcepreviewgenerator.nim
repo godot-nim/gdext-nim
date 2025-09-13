@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorResourcePreviewGenerator, RefCounted)
+
 method handles*(self: EditorResourcePreviewGenerator; `type`: String): bool {.base.} = (discard)
 proc registerVirtual_handles*[T: EditorResourcePreviewGenerator](Self: typedesc[T]) =
   Self.vmethods[newStringName"_handles"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectPhaser, AudioEffect)
+
 proc setRangeMinHz*(self: AudioEffectPhaser; hz: Float): void =
   expandMethodBind(className AudioEffectPhaser, "set_range_min_hz", 373806689)
   methodbind.ptrcall(self, [getPtr hz])

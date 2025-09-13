@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(Crypto, RefCounted)
+
 proc generateRandomBytes*(self: Crypto; size: int32): PackedByteArray =
   expandMethodBind(className Crypto, "generate_random_bytes", 47165747)
   var ret: encoded PackedByteArray

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(MissingNode, Node)
+
 proc setOriginalClass*(self: MissingNode; name: String): void =
   expandMethodBind(className MissingNode, "set_original_class", 83702148)
   methodbind.ptrcall(self, [getPtr name])

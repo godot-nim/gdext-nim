@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnoise; export gdnoise
 
+expandOnClassImported(FastNoiseLite, Noise)
+
 proc setNoiseType*(self: FastNoiseLite; `type`: FastNoiseLite_NoiseType): void =
   expandMethodBind(className FastNoiseLite, "set_noise_type", 2624461392)
   methodbind.ptrcall(self, [getPtr `type`])

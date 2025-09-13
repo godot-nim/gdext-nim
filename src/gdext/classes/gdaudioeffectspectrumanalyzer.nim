@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectSpectrumAnalyzer, AudioEffect)
+
 proc setBufferLength*(self: AudioEffectSpectrumAnalyzer; seconds: Float): void =
   expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_buffer_length", 373806689)
   methodbind.ptrcall(self, [getPtr seconds])

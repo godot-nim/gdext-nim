@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(RenderingServer, Object)
+
 const NoIndexArray* = -1
 const ArrayWeightsSize* = 4
 const CanvasItemZMin* = -4096

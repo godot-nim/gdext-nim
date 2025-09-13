@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(CollisionObject2D, Node2D)
+
 method inputEvent*(self: CollisionObject2D; viewport: Viewport; event: gdref InputEvent; shapeIdx: int32): void {.base.} = (discard)
 proc registerVirtual_inputEvent*[T: CollisionObject2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_input_event"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

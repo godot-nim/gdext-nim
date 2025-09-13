@@ -5,6 +5,10 @@ import gdext/private/macros
 import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/methodinfo
+import gdext/private/propertyinfo
+import gdext/private/classindex
+
+import gdext/dicttools
 
 import tools
 import virtuals
@@ -21,14 +25,23 @@ macro registerProc*(procdef): untyped =
     else: procdef.getImpl
   let Self = procdef.params[1][1]
 
-  let gdname = procdef.getPragmaVal("name") or newLit $procdef.name
-
-  let methodinfoDef = procdef.classMethodInfo(gdname)
+  let middle = procdef.parseMiddle
+  let methodinfoDef = middle.classMethodInfo()
+  let gdname = middle.gdname
+  let name = middle.name
 
   result = quote do:
     proc `gdname` {.execon: Contract[typedesc[`Self`]].procedure.} =
       let info = `methodinfoDef`
       ClassDB.registerExtensionClassMethod(className(typedesc `Self`), addr info)
+      when `name`.hasCustomPragma(bridge.rpc):
+        var dict = newDictionary()
+        const (rpc_mode, call_local, transfer_mode, transfer_channel) = `name`.getCustomPragmaVal(bridge.rpc)
+        dict[variant "rpc_mode"] = variant rpc_mode
+        dict[variant "call_local"] = variant call_local
+        dict[variant "transfer_mode"] = variant transfer_mode
+        dict[variant "transfer_channel"] = variant transfer_channel
+        Meta(`Self`).rpcConfigs[cast[ptr StringName](info.name)[]] = variant dict
 
   when Assistance.genEditorHelp:
     let desc = procdef.getEditorHelp
@@ -37,7 +50,7 @@ macro registerProc*(procdef): untyped =
 
 proc makeNimMainProc(procdef: NimNode): NimNode =
   newProc(
-    name = ident $procdef.name,
+    name = genSym(nskProc, $procdef.name),
     params = concat(
       @[procdef.params[0],
         newIdentDefs(ident"_", bindsym"typeof".newcall(ident"extmain"))],

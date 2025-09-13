@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(NavigationPathQueryResult3D, RefCounted)
+
 proc setPath*(self: NavigationPathQueryResult3D; path: PackedVector3Array): void =
   expandMethodBind(className NavigationPathQueryResult3D, "set_path", 334873810)
   methodbind.ptrcall(self, [getPtr path])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(CollisionPolygon3D, Node3D)
+
 proc setDepth*(self: CollisionPolygon3D; depth: Float): void =
   expandMethodBind(className CollisionPolygon3D, "set_depth", 373806689)
   methodbind.ptrcall(self, [getPtr depth])

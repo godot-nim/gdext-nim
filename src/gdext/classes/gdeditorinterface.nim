@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EditorInterface, Object)
+
 proc restartEditor*(self: EditorInterface; save: bool = true): void =
   expandMethodBind(className EditorInterface, "restart_editor", 3216645846)
   methodbind.ptrcall(self, [getPtr save])

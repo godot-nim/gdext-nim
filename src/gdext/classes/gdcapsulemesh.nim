@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdprimitivemesh; export gdprimitivemesh
 
+expandOnClassImported(CapsuleMesh, PrimitiveMesh)
+
 proc setRadius*(self: CapsuleMesh; radius: Float): void =
   expandMethodBind(className CapsuleMesh, "set_radius", 373806689)
   methodbind.ptrcall(self, [getPtr radius])

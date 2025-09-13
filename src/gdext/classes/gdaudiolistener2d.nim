@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(AudioListener2D, Node2D)
+
 proc makeCurrent*(self: AudioListener2D): void =
   expandMethodBind(className AudioListener2D, "make_current", 3218959716)
   methodbind.ptrcall(self, [])

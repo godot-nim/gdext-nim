@@ -4,6 +4,11 @@ import gdext/builtinindex
 import gdext/private/macros
 import gdext/private/gdinterface
 
+import std/[tables, typetraits]
+import gdext/private/debugging
+import gdext/stringtools
+import gdext/objectcallbacks
+
 type
   HeapPropertyInfo* = object
     `type`*: VariantType
@@ -13,6 +18,12 @@ type
     hintString*: ref String
     usage*: set[PropertyUsageFlags]
 
+  GodotClassMeta* = object
+    virtualMethods*: Table[StringName, ClassCallVirtual]
+    className*: StringName
+    callbacks*: InstanceBindingCallbacks
+    rpcConfigs*: Table[StringName, Variant]
+
   GodotEnumMeta* = object
     className*: StringName
     hintString*: String
@@ -21,6 +32,51 @@ proc Meta*[T: enum](_: typedesc[T|set[T]]): var GodotEnumMeta =
   var instance {.global.} : GodotEnumMeta
   instance
 
+proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
+  let class = createClass[T](cast[ObjectPtr](p_instance))
+  result = cast[pointer](class)
+  debugCreate(class)
+
+proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
+  let class = cast[T](p_binding)
+  debugFree(class)
+  onDestroy class
+  `=destroy` class[]
+  dealloc class
+
+proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
+  result = true
+  debugReference(cast[Object](p_binding), p_reference)
+
+proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
+  var instance {.global.} : GodotClassMeta
+  once:
+    when T is SomeEngineClass:
+      instance = GodotClassMeta(
+        className: newStringName $T,
+        callbacks: InstanceBindingCallbacks(
+          create_callback: create_callback[T],
+          free_callback: free_callback[T],
+          reference_callback:
+            when T is RefCounted: reference_callback
+            else: nil
+        )
+      )
+    else:
+      instance = GodotClassMeta(
+        className: newStringName gdname T,
+      )
+  instance
+
+
+proc className*[T: not (SomeClass|GdRef|enum)](_: typedesc[T]): var StringName =
+  var name {.global.}: StringName
+  once:
+    name = newStringName()
+  name
+
+proc className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
+template className*(T: typedesc[GdRef[SomeClass]]): var StringName = Meta(T.RefCounted).className
 proc className*(E: typedesc[enum]): StringName =
   mixin EnumOwner
   once:
@@ -34,6 +90,9 @@ proc className*(E: typedesc[enum]): StringName =
         else:
           newStringName $E
   Meta(E).className
+proc callbacks*(T: typedesc[SomeClass]): var InstanceBindingCallbacks = Meta(T).callbacks
+proc vmethods*(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual] = Meta(T).virtualMethods
+
 
 # Metadata
 # ========

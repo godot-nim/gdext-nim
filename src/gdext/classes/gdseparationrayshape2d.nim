@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdshape2d; export gdshape2d
 
+expandOnClassImported(SeparationRayShape2D, Shape2D)
+
 proc setLength*(self: SeparationRayShape2D; length: Float): void =
   expandMethodBind(className SeparationRayShape2D, "set_length", 373806689)
   methodbind.ptrcall(self, [getPtr length])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(GridMap, Node3D)
+
 const InvalidCellItem* = -1
 
 proc setCollisionLayer*(self: GridMap; layer: uint32): void =

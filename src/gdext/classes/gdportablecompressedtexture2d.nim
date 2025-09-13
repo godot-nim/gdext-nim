@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexture2d; export gdtexture2d
 
+expandOnClassImported(PortableCompressedTexture2D, Texture2D)
+
 proc createFromImage*(self: PortableCompressedTexture2D; image: gdref Image; compressionMode: PortableCompressedTexture2D_CompressionMode; normalMap: bool = false; lossyQuality: Float = 0.8): void =
   expandMethodBind(className PortableCompressedTexture2D, "create_from_image", 3679243433)
   methodbind.ptrcall(self, [getPtr image, getPtr compressionMode, getPtr normalMap, getPtr lossyQuality])

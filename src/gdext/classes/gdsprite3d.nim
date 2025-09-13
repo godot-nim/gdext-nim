@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdspritebase3d; export gdspritebase3d
 
+expandOnClassImported(Sprite3D, SpriteBase3D)
+
 proc setTexture*(self: Sprite3D; texture: gdref Texture2D): void =
   expandMethodBind(className Sprite3D, "set_texture", 4051416890)
   methodbind.ptrcall(self, [getPtr texture])

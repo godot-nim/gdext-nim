@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Shape2D, Resource)
+
 proc setCustomSolverBias*(self: Shape2D; bias: Float): void =
   expandMethodBind(className Shape2D, "set_custom_solver_bias", 373806689)
   methodbind.ptrcall(self, [getPtr bias])

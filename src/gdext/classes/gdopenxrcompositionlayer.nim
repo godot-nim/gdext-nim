@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(OpenXRCompositionLayer, Node3D)
+
 proc setLayerViewport*(self: OpenXRCompositionLayer; viewport: SubViewport): void =
   expandMethodBind(className OpenXRCompositionLayer, "set_layer_viewport", 3888077664)
   methodbind.ptrcall(self, [getPtr viewport])

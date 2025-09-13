@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
 
+expandOnClassImported(InputEventMouse, InputEventWithModifiers)
+
 proc setButtonMask*(self: InputEventMouse; buttonMask: set[MouseButtonMask]): void =
   expandMethodBind(className InputEventMouse, "set_button_mask", 3950145251)
   methodbind.ptrcall(self, [getPtr buttonMask])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(NavigationMeshSourceGeometryData2D, Resource)
+
 proc clear*(self: NavigationMeshSourceGeometryData2D): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "clear", 3218959716)
   methodbind.ptrcall(self, [])

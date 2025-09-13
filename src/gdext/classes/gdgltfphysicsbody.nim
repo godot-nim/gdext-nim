@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFPhysicsBody, Resource)
+
 proc fromNode*(_: typedesc[GLTFPhysicsBody]; bodyNode: CollisionObject3D): gdref GLTFPhysicsBody =
   expandMethodBind(className GLTFPhysicsBody, "from_node", 420544174)
   var ret: encoded gdref GLTFPhysicsBody

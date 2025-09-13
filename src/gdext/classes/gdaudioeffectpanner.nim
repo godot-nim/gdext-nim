@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectPanner, AudioEffect)
+
 proc setPan*(self: AudioEffectPanner; cpanume: Float): void =
   expandMethodBind(className AudioEffectPanner, "set_pan", 373806689)
   methodbind.ptrcall(self, [getPtr cpanume])

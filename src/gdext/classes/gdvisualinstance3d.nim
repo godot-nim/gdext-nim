@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(VisualInstance3D, Node3D)
+
 method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
 proc registerVirtual_getAabb*[T: VisualInstance3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdanimationmixer; export gdanimationmixer
 
+expandOnClassImported(AnimationPlayer, AnimationMixer)
+
 proc animationSetNext*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): void =
   expandMethodBind(className AnimationPlayer, "animation_set_next", 3740211285)
   methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo])

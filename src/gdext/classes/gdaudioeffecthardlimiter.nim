@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectHardLimiter, AudioEffect)
+
 proc setCeilingDb*(self: AudioEffectHardLimiter; ceiling: Float): void =
   expandMethodBind(className AudioEffectHardLimiter, "set_ceiling_db", 373806689)
   methodbind.ptrcall(self, [getPtr ceiling])

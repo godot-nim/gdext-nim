@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtexturelayered; export gdtexturelayered
 
+expandOnClassImported(CompressedTextureLayered, TextureLayered)
+
 proc load*(self: CompressedTextureLayered; path: String): Error =
   expandMethodBind(className CompressedTextureLayered, "load", 166001499)
   var ret: encoded Error

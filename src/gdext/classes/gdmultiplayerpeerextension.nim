@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmultiplayerpeer; export gdmultiplayerpeer
 
+expandOnClassImported(MultiplayerPeerExtension, MultiplayerPeer)
+
 method getPacket*(self: MultiplayerPeerExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: MultiplayerPeerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

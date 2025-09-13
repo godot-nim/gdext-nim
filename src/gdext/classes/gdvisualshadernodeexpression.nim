@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernodegroupbase; export gdvisualshadernodegroupbase
 
+expandOnClassImported(VisualShaderNodeExpression, VisualShaderNodeGroupBase)
+
 proc setExpression*(self: VisualShaderNodeExpression; expression: String): void =
   expandMethodBind(className VisualShaderNodeExpression, "set_expression", 83702148)
   methodbind.ptrcall(self, [getPtr expression])

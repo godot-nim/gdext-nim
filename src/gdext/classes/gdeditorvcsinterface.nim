@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EditorVCSInterface, Object)
+
 method initialize*(self: EditorVCSInterface; projectPath: String): bool {.base.} = (discard)
 proc registerVirtual_initialize*[T: EditorVCSInterface](Self: typedesc[T]) =
   Self.vmethods[newStringName"_initialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

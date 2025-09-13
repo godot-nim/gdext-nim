@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorScript, RefCounted)
+
 method run*(self: EditorScript): void {.base.} = (discard)
 proc registerVirtual_run*[T: EditorScript](Self: typedesc[T]) =
   Self.vmethods[newStringName"_run"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

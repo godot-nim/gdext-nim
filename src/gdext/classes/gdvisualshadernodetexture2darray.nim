@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernodesample3d; export gdvisualshadernodesample3d
 
+expandOnClassImported(VisualShaderNodeTexture2DArray, VisualShaderNodeSample3D)
+
 proc setTextureArray*(self: VisualShaderNodeTexture2DArray; value: gdref TextureLayered): void =
   expandMethodBind(className VisualShaderNodeTexture2DArray, "set_texture_array", 1278366092)
   methodbind.ptrcall(self, [getPtr value])

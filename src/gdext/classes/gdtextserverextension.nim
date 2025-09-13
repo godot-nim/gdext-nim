@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdtextserver; export gdtextserver
 
+expandOnClassImported(TextServerExtension, TextServer)
+
 method hasFeature*(self: TextServerExtension; feature: TextServer_Feature): bool {.base.} = (discard)
 proc registerVirtual_hasFeature*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_feature"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

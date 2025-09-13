@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorContextMenuPlugin, RefCounted)
+
 method popupMenu*(self: EditorContextMenuPlugin; paths: PackedStringArray): void {.base.} = (discard)
 proc registerVirtual_popupMenu*[T: EditorContextMenuPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_popup_menu"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

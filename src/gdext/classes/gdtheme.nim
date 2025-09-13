@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Theme, Resource)
+
 proc setIcon*(self: Theme; name: StringName; themeType: StringName; texture: gdref Texture2D): void =
   expandMethodBind(className Theme, "set_icon", 2188371082)
   methodbind.ptrcall(self, [getPtr name, getPtr themeType, getPtr texture])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode; export gdnode
 
+expandOnClassImported(WorldEnvironment, Node)
+
 proc setEnvironment*(self: WorldEnvironment; env: gdref Environment): void =
   expandMethodBind(className WorldEnvironment, "set_environment", 4143518816)
   methodbind.ptrcall(self, [getPtr env])

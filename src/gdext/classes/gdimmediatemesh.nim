@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmesh; export gdmesh
 
+expandOnClassImported(ImmediateMesh, Mesh)
+
 proc surfaceBegin*(self: ImmediateMesh; primitive: Mesh_PrimitiveType; material: gdref Material = default gdref Material): void =
   expandMethodBind(className ImmediateMesh, "surface_begin", 2794442543)
   methodbind.ptrcall(self, [getPtr primitive, getPtr material])

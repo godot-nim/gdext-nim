@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFCamera, Resource)
+
 proc fromNode*(_: typedesc[GLTFCamera]; cameraNode: Camera3D): gdref GLTFCamera =
   expandMethodBind(className GLTFCamera, "from_node", 237784)
   var ret: encoded gdref GLTFCamera

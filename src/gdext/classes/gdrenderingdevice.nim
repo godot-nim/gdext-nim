@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(RenderingDevice, Object)
+
 const InvalidId* = -1
 const InvalidFormatId* = -1
 

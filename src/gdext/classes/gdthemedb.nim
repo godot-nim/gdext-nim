@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(ThemeDB, Object)
+
 proc getDefaultTheme*(self: ThemeDB): gdref Theme =
   expandMethodBind(className ThemeDB, "get_default_theme", 754276358)
   var ret: encoded gdref Theme

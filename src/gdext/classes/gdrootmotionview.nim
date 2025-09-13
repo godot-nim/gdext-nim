@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
+expandOnClassImported(RootMotionView, VisualInstance3D)
+
 proc setAnimationPath*(self: RootMotionView; path: NodePath): void =
   expandMethodBind(className RootMotionView, "set_animation_path", 1348162250)
   methodbind.ptrcall(self, [getPtr path])

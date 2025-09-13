@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(PathFollow2D, Node2D)
+
 proc setProgress*(self: PathFollow2D; progress: Float): void =
   expandMethodBind(className PathFollow2D, "set_progress", 373806689)
   methodbind.ptrcall(self, [getPtr progress])

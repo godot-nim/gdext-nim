@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(Occluder3D, Resource)
+
 proc getVertices*(self: Occluder3D): PackedVector3Array =
   expandMethodBind(className Occluder3D, "get_vertices", 497664490)
   var ret: encoded PackedVector3Array

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdanimationnode; export gdanimationnode
 
+expandOnClassImported(AnimationNodeExtension, AnimationNode)
+
 method processAnimationNode*(self: AnimationNodeExtension; playbackInfo: PackedFloat64Array; testOnly: bool): PackedFloat32Array {.base.} = (discard)
 proc registerVirtual_processAnimationNode*[T: AnimationNodeExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_process_animation_node"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

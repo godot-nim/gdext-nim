@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 
+expandOnClassImported(OpenXRCompositionLayerQuad, OpenXRCompositionLayer)
+
 proc setQuadSize*(self: OpenXRCompositionLayerQuad; size: Vector2): void =
   expandMethodBind(className OpenXRCompositionLayerQuad, "set_quad_size", 743155724)
   methodbind.ptrcall(self, [getPtr size])

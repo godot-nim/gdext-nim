@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdwebrtcdatachannel; export gdwebrtcdatachannel
 
+expandOnClassImported(WebRTCDataChannelExtension, WebRTCDataChannel)
+
 method getPacket*(self: WebRTCDataChannelExtension; rBuffer: ptr ptr uint8; rBufferSize: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getPacket*[T: WebRTCDataChannelExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_packet"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

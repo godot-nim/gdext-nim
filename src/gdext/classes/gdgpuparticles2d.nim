@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode2d; export gdnode2d
 
+expandOnClassImported(GPUParticles2D, Node2D)
+
 proc setEmitting*(self: GPUParticles2D; emitting: bool): void =
   expandMethodBind(className GPUParticles2D, "set_emitting", 2586408642)
   methodbind.ptrcall(self, [getPtr emitting])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFNode, Resource)
+
 proc getOriginalName*(self: GLTFNode): String =
   expandMethodBind(className GLTFNode, "get_original_name", 2841200299)
   var ret: encoded String

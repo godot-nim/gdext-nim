@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(MainLoop, Object)
+
 const NotificationOsMemoryWarning* = 2009
 const NotificationTranslationChanged* = 2010
 const NotificationWmAbout* = 2011

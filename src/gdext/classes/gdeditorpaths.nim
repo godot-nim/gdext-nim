@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(EditorPaths, Object)
+
 proc getDataDir*(self: EditorPaths): String =
   expandMethodBind(className EditorPaths, "get_data_dir", 201670096)
   var ret: encoded String

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdstreampeer; export gdstreampeer
 
+expandOnClassImported(StreamPeerExtension, StreamPeer)
+
 method getData*(self: StreamPeerExtension; rBuffer: ptr uint8; rBytes: int32; rReceived: ptr int32): Error {.base.} = (discard)
 proc registerVirtual_getData*[T: StreamPeerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

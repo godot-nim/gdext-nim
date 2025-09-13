@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdeditorexportplatform; export gdeditorexportplatform
 
+expandOnClassImported(EditorExportPlatformExtension, EditorExportPlatform)
+
 method getPresetFeatures*(self: EditorExportPlatformExtension; preset: gdref EditorExportPreset): PackedStringArray {.base.} = (discard)
 proc registerVirtual_getPresetFeatures*[T: EditorExportPlatformExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_preset_features"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

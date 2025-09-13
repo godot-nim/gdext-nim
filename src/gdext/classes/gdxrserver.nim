@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(XRServer, Object)
+
 proc getWorldScale*(self: XRServer): float64 =
   expandMethodBind(className XRServer, "get_world_scale", 1740695150)
   var ret: encoded float64

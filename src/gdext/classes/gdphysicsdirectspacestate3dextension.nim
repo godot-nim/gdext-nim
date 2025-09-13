@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdphysicsdirectspacestate3d; export gdphysicsdirectspacestate3d
 
+expandOnClassImported(PhysicsDirectSpaceState3DExtension, PhysicsDirectSpaceState3D)
+
 method intersectRay*(self: PhysicsDirectSpaceState3DExtension; `from`: Vector3; to: Vector3; collisionMask: uint32; collideWithBodies: bool; collideWithAreas: bool; hitFromInside: bool; hitBackFaces: bool; pickRay: bool; retval: ptr PhysicsServer3DExtensionRayResult): bool {.base.} = (discard)
 proc registerVirtual_intersectRay*[T: PhysicsDirectSpaceState3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_intersect_ray"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

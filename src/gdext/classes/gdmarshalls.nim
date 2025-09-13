@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(Marshalls, Object)
+
 proc variantToBase64*(self: Marshalls; variant: Variant; fullObjects: bool = false): String =
   expandMethodBind(className Marshalls, "variant_to_base64", 3876248563)
   var ret: encoded String

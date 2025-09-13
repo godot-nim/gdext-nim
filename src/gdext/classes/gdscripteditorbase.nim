@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvboxcontainer; export gdvboxcontainer
 
+expandOnClassImported(ScriptEditorBase, VBoxContainer)
+
 proc getBaseEditor*(self: ScriptEditorBase): Control =
   expandMethodBind(className ScriptEditorBase, "get_base_editor", 2783021301)
   var ret: encoded Control

@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdaudiostreamplayback; export gdaudiostreamplayback
+
+expandOnClassImported(AudioStreamPlaybackSynchronized, AudioStreamPlayback)

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdnode3d; export gdnode3d
 
+expandOnClassImported(Skeleton3D, Node3D)
+
 const NotificationUpdateSkeleton* = 50
 
 proc addBone*(self: Skeleton3D; name: String): int32 =

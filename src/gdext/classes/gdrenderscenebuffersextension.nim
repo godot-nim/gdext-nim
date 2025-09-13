@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrenderscenebuffers; export gdrenderscenebuffers
 
+expandOnClassImported(RenderSceneBuffersExtension, RenderSceneBuffers)
+
 method configure*(self: RenderSceneBuffersExtension; config: gdref RenderSceneBuffersConfiguration): void {.base.} = (discard)
 proc registerVirtual_configure*[T: RenderSceneBuffersExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_configure"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

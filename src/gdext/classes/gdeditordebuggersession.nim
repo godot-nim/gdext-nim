@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorDebuggerSession, RefCounted)
+
 proc sendMessage*(self: EditorDebuggerSession; message: String; data: Array = newArray()): void =
   expandMethodBind(className EditorDebuggerSession, "send_message", 85656714)
   methodbind.ptrcall(self, [getPtr message, getPtr data])

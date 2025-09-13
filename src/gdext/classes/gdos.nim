@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(OS, Object)
+
 proc getEntropy*(self: OS; size: int32): PackedByteArray =
   expandMethodBind(className OS, "get_entropy", 47165747)
   var ret: encoded PackedByteArray

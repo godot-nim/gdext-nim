@@ -83,7 +83,14 @@ func typeSym*(node: NimNode): NimNode =
   of nnkOfInherit:
     node[0]
   of nnkSym:
-    node
+    case node.symKind
+    of nskType:
+      node
+    of nskParam:
+      node.getTypeImpl[1].typeSym
+    else:
+      error lisprepr node, node
+      nil
   of nnkPostfix:
     if node[0].eqIdent "*":
       node[1]
@@ -105,12 +112,12 @@ func recList*(node: NimNode): NimNode =
 
 func identifier*(node: NimNode): NimNode =
   case node.kind
-  of nnkIdent:
+  of nnkIdent, nnkSym, nnkAccQuoted:
     node
-  of nnkSym:
-    newIdentNode($node)
-  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr, nnkTemplateDef:
+  of nnkIdentDefs, nnkPragma, nnkPragmaExpr, nnkCall, nnkExprColonExpr, nnkTypeDef:
     node[0].identifier
+  of RoutineNodes:
+    node.name
   of nnkPostfix:
     node[1].identifier
   else:

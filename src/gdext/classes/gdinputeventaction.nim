@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdinputevent; export gdinputevent
 
+expandOnClassImported(InputEventAction, InputEvent)
+
 proc setAction*(self: InputEventAction; action: StringName): void =
   expandMethodBind(className InputEventAction, "set_action", 3304788590)
   methodbind.ptrcall(self, [getPtr action])

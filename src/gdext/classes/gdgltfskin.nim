@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFSkin, Resource)
+
 proc getSkinRoot*(self: GLTFSkin): int32 =
   expandMethodBind(className GLTFSkin, "get_skin_root", 2455072627)
   var ret: encoded int32

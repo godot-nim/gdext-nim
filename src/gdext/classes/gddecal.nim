@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualinstance3d; export gdvisualinstance3d
 
+expandOnClassImported(Decal, VisualInstance3D)
+
 proc setSize*(self: Decal; size: Vector3): void =
   expandMethodBind(className Decal, "set_size", 3460891852)
   methodbind.ptrcall(self, [getPtr size])

@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrange; export gdrange
 
+expandOnClassImported(SpinBox, Range)
+
 proc setHorizontalAlignment*(self: SpinBox; alignment: HorizontalAlignment): void =
   expandMethodBind(className SpinBox, "set_horizontal_alignment", 2312603777)
   methodbind.ptrcall(self, [getPtr alignment])

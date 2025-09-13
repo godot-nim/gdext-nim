@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(CompositorEffect, Resource)
+
 method renderCallback*(self: CompositorEffect; effectCallbackType: int32; renderData: RenderData): void {.base.} = (discard)
 proc registerVirtual_renderCallback*[T: CompositorEffect](Self: typedesc[T]) =
   Self.vmethods[newStringName"_render_callback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

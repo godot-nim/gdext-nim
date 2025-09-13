@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcsgprimitive3d; export gdcsgprimitive3d
 
+expandOnClassImported(CSGPolygon3D, CSGPrimitive3D)
+
 proc setPolygon*(self: CSGPolygon3D; polygon: PackedVector2Array): void =
   expandMethodBind(className CSGPolygon3D, "set_polygon", 1509147220)
   methodbind.ptrcall(self, [getPtr polygon])

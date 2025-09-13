@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrenderscenedata; export gdrenderscenedata
 
+expandOnClassImported(RenderSceneDataExtension, RenderSceneData)
+
 method getCamTransform*(self: RenderSceneDataExtension): Transform3D {.base.} = (discard)
 proc registerVirtual_getCamTransform*[T: RenderSceneDataExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_cam_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

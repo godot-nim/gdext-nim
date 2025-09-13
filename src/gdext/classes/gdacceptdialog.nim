@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdwindow; export gdwindow
 
+expandOnClassImported(AcceptDialog, Window)
+
 proc getOkButton*(self: AcceptDialog): Button =
   expandMethodBind(className AcceptDialog, "get_ok_button", 1856205918)
   var ret: encoded Button

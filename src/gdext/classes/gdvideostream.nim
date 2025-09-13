@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(VideoStream, Resource)
+
 method instantiatePlayback*(self: VideoStream): gdref VideoStreamPlayback {.base.} = (discard)
 proc registerVirtual_instantiatePlayback*[T: VideoStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

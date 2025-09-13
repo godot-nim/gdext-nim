@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectDelay, AudioEffect)
+
 proc setDry*(self: AudioEffectDelay; amount: Float): void =
   expandMethodBind(className AudioEffectDelay, "set_dry", 373806689)
   methodbind.ptrcall(self, [getPtr amount])

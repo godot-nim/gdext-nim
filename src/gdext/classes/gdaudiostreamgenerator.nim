@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudiostream; export gdaudiostream
 
+expandOnClassImported(AudioStreamGenerator, AudioStream)
+
 proc setMixRate*(self: AudioStreamGenerator; hz: Float): void =
   expandMethodBind(className AudioStreamGenerator, "set_mix_rate", 373806689)
   methodbind.ptrcall(self, [getPtr hz])

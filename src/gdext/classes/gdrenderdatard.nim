@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdrenderdata; export gdrenderdata
+
+expandOnClassImported(RenderDataRD, RenderData)

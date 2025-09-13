@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDFramebufferPass, RefCounted)
+
 const AttachmentUnused* = -1
 
 proc setColorAttachments*(self: RDFramebufferPass; pMember: PackedInt32Array): void =

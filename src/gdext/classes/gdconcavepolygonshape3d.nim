@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdshape3d; export gdshape3d
 
+expandOnClassImported(ConcavePolygonShape3D, Shape3D)
+
 proc setFaces*(self: ConcavePolygonShape3D; faces: PackedVector3Array): void =
   expandMethodBind(className ConcavePolygonShape3D, "set_faces", 334873810)
   methodbind.ptrcall(self, [getPtr faces])

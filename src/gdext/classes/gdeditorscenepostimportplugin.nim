@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorScenePostImportPlugin, RefCounted)
+
 method getInternalImportOptions*(self: EditorScenePostImportPlugin; category: int32): void {.base.} = (discard)
 proc registerVirtual_getInternalImportOptions*[T: EditorScenePostImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_internal_import_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

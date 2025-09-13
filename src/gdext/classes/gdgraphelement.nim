@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcontainer; export gdcontainer
 
+expandOnClassImported(GraphElement, Container)
+
 proc setResizable*(self: GraphElement; resizable: bool): void =
   expandMethodBind(className GraphElement, "set_resizable", 2586408642)
   methodbind.ptrcall(self, [getPtr resizable])

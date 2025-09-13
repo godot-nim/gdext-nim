@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdgeometryinstance3d; export gdgeometryinstance3d
 
+expandOnClassImported(CSGShape3D, GeometryInstance3D)
+
 proc isRootShape*(self: CSGShape3D): bool =
   expandMethodBind(className CSGShape3D, "is_root_shape", 36873697)
   var ret: encoded bool

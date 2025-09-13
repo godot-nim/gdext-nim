@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdtweener; export gdtweener
+
+expandOnClassImported(IntervalTweener, Tweener)

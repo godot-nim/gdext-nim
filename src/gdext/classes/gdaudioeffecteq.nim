@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdaudioeffect; export gdaudioeffect
 
+expandOnClassImported(AudioEffectEQ, AudioEffect)
+
 proc setBandGainDb*(self: AudioEffectEQ; bandIdx: int32; volumeDb: Float): void =
   expandMethodBind(className AudioEffectEQ, "set_band_gain_db", 1602489585)
   methodbind.ptrcall(self, [getPtr bandIdx, getPtr volumeDb])

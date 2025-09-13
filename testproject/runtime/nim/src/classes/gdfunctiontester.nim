@@ -1,9 +1,11 @@
-import std/[sequtils, strutils]
+import std/[sequtils, strutils, unittest]
 import gdext
+import gdext/classes/[gdNode]
 
 type FunctionTester* {.gdsync.} = ptr object of Node
   arg0_noret_result: string
   arg1_noret_result: string
+  rpcResult* {.gdexport.}: String
 
 # {.gdsync.} for forward declaration should be ignored.
 proc arg0_noret(self: FunctionTester) {.gdsync.}
@@ -54,3 +56,11 @@ proc most_complex(self: FunctionTester;
       args: varargs[string]
     ): string {.gdsync.} =
   @[str1, str2, str3, str4].concat(@args).join(" ")
+
+proc rpcFunc(self: FunctionTester; value: String) {.gdsync, rpc(callLocal = true).} =
+  self.rpcResult = value
+
+proc testNimRPC(self: FunctionTester) {.gdsync.} =
+  test "RPC":
+    check self.rpc("rpc_func", "NimRPC") == ok
+    check $self.rpcResult == "NimRPC"

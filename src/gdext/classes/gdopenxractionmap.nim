@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(OpenXRActionMap, Resource)
+
 proc setActionSets*(self: OpenXRActionMap; actionSets: Array): void =
   expandMethodBind(className OpenXRActionMap, "set_action_sets", 381264803)
   methodbind.ptrcall(self, [getPtr actionSets])

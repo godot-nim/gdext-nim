@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdcameraattributes; export gdcameraattributes
 
+expandOnClassImported(CameraAttributesPhysical, CameraAttributes)
+
 proc setAperture*(self: CameraAttributesPhysical; aperture: Float): void =
   expandMethodBind(className CameraAttributesPhysical, "set_aperture", 373806689)
   methodbind.ptrcall(self, [getPtr aperture])

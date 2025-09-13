@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdmaterial; export gdmaterial
 
+expandOnClassImported(BaseMaterial3D, Material)
+
 proc setAlbedo*(self: BaseMaterial3D; albedo: Color): void =
   expandMethodBind(className BaseMaterial3D, "set_albedo", 2920490490)
   methodbind.ptrcall(self, [getPtr albedo])

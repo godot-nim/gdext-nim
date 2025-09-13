@@ -7,11 +7,16 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/typeshift
 import gdext/private/debugging
+import gdext/private/classindex
+import gdext/private/internalobjecttools
 import gdext/private/userclass/procs
 import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
 import gdext/stringtools
+import gdext/nameformats
+
+from gdext/classes/gdNode import NotificationReady, rpc_config
 
 when Assistance.genEditorHelp:
   import gdext/private/doctools
@@ -28,28 +33,34 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
 proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  procCall set(cast[T](p_instance), p_name, p_value)
+  objectcallbacks.set(cast[T](p_instance), p_name, p_value)
 
 proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  procCall get(cast[T](p_instance), p_name, r_ret)
+  get(cast[T](p_instance), p_name, r_ret)
 
 proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  procCall getPropertyList(cast[T](p_instance), r_count)
+  getPropertyList(cast[T](p_instance), r_count)
 
 proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
-  procCall freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
+  freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
 
 proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  procCall propertyCanRevert(cast[T](p_instance), p_name)
+  propertyCanRevert(cast[T](p_instance), p_name)
 
 proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  procCall propertyGetRevert(cast[T](p_instance), p_name, r_ret)
+  propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
+proc registerRpcConfigsRecursive[T: Object](instance: T)
 proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-  procCall notification(cast[T](p_instance), p_what)
+  case p_what
+  of NotificationReady:
+    cast[T](p_instance).registerRpcConfigsRecursive()
+  else:
+    discard
+  notification(cast[T](p_instance), p_what)
 
 proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  procCall toString(cast[T](p_instance), r_is_valid, p_out)
+  toString(cast[T](p_instance), r_is_valid, p_out)
 
 proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
   let class = instantiate_internal T
@@ -124,8 +135,11 @@ proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_expose
       else: property_get_revert_func[T],
     validate_property_func: nil,
     notification_func:
-      when compiles(notificationT[T](notification)): nil
-      else: notification_func[T],
+      if Meta(T).rpcConfigs.len != 0:
+        notification_func[T]
+      else:
+        when compiles(notificationT[T](notification)): nil
+        else: notification_func[T],
     to_string_func:
       when compiles(toStringT[T](toString)): nil
       else: to_string_func[T],
@@ -199,20 +213,21 @@ macro processExports(T: typed): untyped =
     if field.hasPragma("gdexport"):
       let
         fieldIdent = field.identifier
-        name = $fieldIdent
+        name = field.gdname
         desc = field.getPragmaVal("description") or newLit ""
         editorhint = field.getPragmaVal("gdexport") or (quote do: Appearance())
-        gettersym = genSym(nskProc, "get_" & name)
-        settersym = genSym(nskProc, "set_" & name)
+        gettersym = genSym(nskProc, "get_" & $fieldIdent)
+        settersym = genSym(nskProc, "set_" & $fieldIdent)
+        gettername  = bindSym"defaultFunctionFormatter".newCall "&".newCall(newLit"get_", name)
+        settername  = bindSym"defaultFunctionFormatter".newCall "&".newCall(newLit"set_", name)
         getterdef = quote do:
-          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` =
+          proc `gettersym`(self: `classIdent`): `classIdent`.`fieldIdent` {.rename: proc(s: string): string = `gettername`.} =
             when compiles(nilCheck self.`fieldIdent`):
               nilCheck self.`fieldIdent`
             self.`fieldIdent`
         setterdef = quote do:
-          proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) = self.`fieldIdent` = value
-        gettername  = newlit "get_" & name
-        settername  = newlit "set_" & name
+          proc `settersym`(self: `classIdent`; value: `classIdent`.`fieldIdent`) {.rename: proc(s: string): string = `settername`.} =
+            self.`fieldIdent` = value
 
       result.add quote do:
         `getterdef`
@@ -233,9 +248,7 @@ var implicitRegistrationSingletons* {.compileTime.}: seq[NimNode]
 var registered: seq[StringName]
 var plugins: seq[StringName]
 proc register*(T: typedesc) =
-  when T is SomeEngineClass:
-    discard
-  else:
+  when T is SomeUserClass:
     once:
       register T.Super
       let cn = className(T)
@@ -245,6 +258,7 @@ proc register*(T: typedesc) =
       invoke Contract[T]
       for name, vmethod in T.Super.vmethods.pairs:
         discard T.vmethods.hasKeyOrPut(name, vmethod)
+      callbackTable[cn] = addr T.callbacks
       when T is EditorPlugin:
         interface_Editor_addPlugin addr cn
         plugins.add cn
@@ -254,7 +268,6 @@ proc register*(T: typedesc) =
         docClassDB[T].description = T.getCustomPragmaVal(description).descToEditorHelp
 
 macro unregister_singletons =
-  let register = bindSym "register"
   result = newStmtList()
   for singleton in implicitRegistrationSingletons:
     result.add quote do:
@@ -276,3 +289,9 @@ macro register_implicitly*(level: static InitializationLevel) =
     if registration in implicitRegistrationSingletons:
       result.add quote do:
         Engine.singleton.registerSingleton(className `registration`, instantiate `registration`)
+
+proc registerRpcConfigsRecursive[T: Object](instance: T) =
+  when T is SomeUserClass and T is Node:
+    for key, value in Meta(T).rpcConfigs.pairs:
+      instance.rpc_config(key, value)
+    ((T.Super) instance).registerRpcConfigsRecursive()

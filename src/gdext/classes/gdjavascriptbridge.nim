@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdobject; export gdobject
 
+expandOnClassImported(JavaScriptBridge, Object)
+
 proc eval*(self: JavaScriptBridge; code: String; useGlobalExecutionContext: bool = false): Variant =
   expandMethodBind(className JavaScriptBridge, "eval", 218087648)
   var ret: encoded Variant

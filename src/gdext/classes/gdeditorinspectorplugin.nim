@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorInspectorPlugin, RefCounted)
+
 method canHandle*(self: EditorInspectorPlugin; `object`: Object): bool {.base.} = (discard)
 proc registerVirtual_canHandle*[T: EditorInspectorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_can_handle"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

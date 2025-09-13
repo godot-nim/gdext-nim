@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorExportPlugin, RefCounted)
+
 method exportFile*(self: EditorExportPlugin; path: String; `type`: String; features: PackedStringArray): void {.base.} = (discard)
 proc registerVirtual_exportFile*[T: EditorExportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_export_file"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

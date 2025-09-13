@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(RDPipelineMultisampleState, RefCounted)
+
 proc setSampleCount*(self: RDPipelineMultisampleState; pMember: RenderingDevice_TextureSamples): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_sample_count", 3774171498)
   methodbind.ptrcall(self, [getPtr pMember])

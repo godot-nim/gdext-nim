@@ -3,3 +3,5 @@
 import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
+
+expandOnClassImported(VisualShaderNodeRandomRange, VisualShaderNode)

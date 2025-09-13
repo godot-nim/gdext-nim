@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFTexture, Resource)
+
 proc getSrcImage*(self: GLTFTexture): int32 =
   expandMethodBind(className GLTFTexture, "get_src_image", 3905245786)
   var ret: encoded int32

@@ -1,0 +1,7 @@
+nimTitle	conversions	gdext/conversions.html	module gdext/conversions		0
+nim	convertToString	gdext/conversions.html#convertToString.c,string	converter convertToString(str: string): String		8
+nim	convertToStringName	gdext/conversions.html#convertToStringName.c,string	converter convertToStringName(str: string): StringName		9
+nim	convertToNodePath	gdext/conversions.html#convertToNodePath.c,string	converter convertToNodePath(str: string): NodePath		10
+nim	convertToArray	gdext/conversions.html#convertToArray.c,TypedArray	converter convertToArray(arr: TypedArray): Array		12
+nim	convertToSingleton	gdext/conversions.html#convertToSingleton.c,typedesc[T]	converter convertToSingleton[T: SomeClass](_: typedesc[T]): T		14
+nim	convertToBool	gdext/conversions.html#convertToBool.c,Variant	converter convertToBool(variant: Variant): bool		16

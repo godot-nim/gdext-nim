@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdresource; export gdresource
 
+expandOnClassImported(GLTFSpecGloss, Resource)
+
 proc getDiffuseImg*(self: GLTFSpecGloss): gdref Image =
   expandMethodBind(className GLTFSpecGloss, "get_diffuse_img", 564927088)
   var ret: encoded gdref Image

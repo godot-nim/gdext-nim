@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EditorDebuggerPlugin, RefCounted)
+
 method setupSession*(self: EditorDebuggerPlugin; sessionId: int32): void {.base.} = (discard)
 proc registerVirtual_setupSession*[T: EditorDebuggerPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_setup_session"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

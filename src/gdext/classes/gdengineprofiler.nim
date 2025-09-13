@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdrefcounted; export gdrefcounted
 
+expandOnClassImported(EngineProfiler, RefCounted)
+
 method toggle*(self: EngineProfiler; enable: bool; options: Array): void {.base.} = (discard)
 proc registerVirtual_toggle*[T: EngineProfiler](Self: typedesc[T]) =
   Self.vmethods[newStringName"_toggle"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

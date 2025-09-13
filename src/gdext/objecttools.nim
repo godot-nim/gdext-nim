@@ -6,10 +6,12 @@ import gdext/private/gdinterface
 import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/internalbridge
+import gdext/private/internalobjecttools
 import gdext/private/debugging
+import gdext/private/classindex
 import gdext/classes/gdNode
 
-export gdinterface.getClassName
+export getClassName
 
 proc destroy*(obj: Object) =
   interfaceObjectDestroy(obj.engineInstance)
@@ -35,10 +37,6 @@ proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
 {.push, inline.}
 proc castTo*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = self.castTo(typeof T).referenced
 proc castTo*[T: RefCounted](self: GDRef; Result: typedesc[GdRef[T]]): Result = self.handle.castTo(typeof T).referenced
-
-proc `as`*[T: SomeClass](self: SomeClass; _: typedesc[T]): T = castTo(self, typedesc[T])
-proc `as`*[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)
-proc `as`*[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result = castTo(self, Result)
 {.pop.}
 
 template unwrapped*[T: RefCounted](x: GdRef[T]): T = x.handle

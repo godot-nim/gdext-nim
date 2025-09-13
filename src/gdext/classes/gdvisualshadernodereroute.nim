@@ -4,6 +4,8 @@ import gdext/coronation/header/classes
 
 import gdvisualshadernode; export gdvisualshadernode
 
+expandOnClassImported(VisualShaderNodeReroute, VisualShaderNode)
+
 proc getPortType*(self: VisualShaderNodeReroute): VisualShaderNode_PortType =
   expandMethodBind(className VisualShaderNodeReroute, "get_port_type", 1287173294)
   var ret: encoded VisualShaderNode_PortType
