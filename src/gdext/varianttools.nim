@@ -1,6 +1,7 @@
 import std/[strformat, hashes, sequtils]
 
 import gdext/builtinindex
+import gdext/arraytools
 import gdext/private/[gdinterface, typeshift]
 
 proc iterInit(self: Variant; r_iter: var Variant; r_valid: var bool): bool =
@@ -253,10 +254,14 @@ iterator pairs*(self: Variant): tuple[key, item: Variant] =
   for key in self.keys: yield (key, self[key])
 
 proc `of`*[T: SomeProperty](a: Variant; b: typedesc[T]): bool =
+  when T is TypedArray:
+    var empty {.global.} = newTypedArray[T.T]()
   {.hint[CondTrue]: off.}
   result = if a.getType == b.variantType:
     when b is Object:
       (a as Object) of b
+    elif b is TypedArray:
+      (a as Array).isSameTyped(empty)
     else:
       true
   else:
