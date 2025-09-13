@@ -1,0 +1,56 @@
+nimTitle	gdobject	gdext/classes/gdobject.html	module gdext/classes/gdobject		0
+nim	NotificationPostinitialize	gdext/classes/gdobject.html#NotificationPostinitialize	const NotificationPostinitialize		7
+nim	NotificationPredelete	gdext/classes/gdobject.html#NotificationPredelete	const NotificationPredelete		8
+nim	NotificationExtensionReloaded	gdext/classes/gdobject.html#NotificationExtensionReloaded	const NotificationExtensionReloaded		9
+nim	getClass	gdext/classes/gdobject.html#getClass,Object	proc getClass(self: Object): String		11
+nim	isClass	gdext/classes/gdobject.html#isClass,Object,String	proc isClass(self: Object; class: String): bool		17
+nim	set	gdext/classes/gdobject.html#set,Object,StringName,Variant	proc set(self: Object; property: StringName; value: Variant): void		23
+nim	get	gdext/classes/gdobject.html#get,Object,StringName	proc get(self: Object; property: StringName): Variant		27
+nim	setIndexed	gdext/classes/gdobject.html#setIndexed,Object,NodePath,Variant	proc setIndexed(self: Object; propertyPath: NodePath; value: Variant): void		33
+nim	getIndexed	gdext/classes/gdobject.html#getIndexed,Object,NodePath	proc getIndexed(self: Object; propertyPath: NodePath): Variant		37
+nim	getPropertyList	gdext/classes/gdobject.html#getPropertyList,Object	proc getPropertyList(self: Object): TypedArray[Dictionary]		43
+nim	getMethodList	gdext/classes/gdobject.html#getMethodList,Object	proc getMethodList(self: Object): TypedArray[Dictionary]		49
+nim	propertyCanRevert	gdext/classes/gdobject.html#propertyCanRevert,Object,StringName	proc propertyCanRevert(self: Object; property: StringName): bool		55
+nim	propertyGetRevert	gdext/classes/gdobject.html#propertyGetRevert,Object,StringName	proc propertyGetRevert(self: Object; property: StringName): Variant		61
+nim	notification	gdext/classes/gdobject.html#notification,Object,int32,bool	proc notification(self: Object; what: int32; reversed: bool = false): void		67
+nim	toString	gdext/classes/gdobject.html#toString,Object	proc toString(self: Object): String		71
+nim	getInstanceId	gdext/classes/gdobject.html#getInstanceId,Object	proc getInstanceId(self: Object): uint64		77
+nim	setScript	gdext/classes/gdobject.html#setScript,Object,Variant	proc setScript(self: Object; script: Variant): void		83
+nim	getScript	gdext/classes/gdobject.html#getScript,Object	proc getScript(self: Object): Variant		87
+nim	setMeta	gdext/classes/gdobject.html#setMeta,Object,StringName,Variant	proc setMeta(self: Object; name: StringName; value: Variant): void		93
+nim	removeMeta	gdext/classes/gdobject.html#removeMeta,Object,StringName	proc removeMeta(self: Object; name: StringName): void		97
+nim	getMeta	gdext/classes/gdobject.html#getMeta,Object,StringName,Variant	proc getMeta(self: Object; name: StringName; default: Variant = default(Variant)): Variant		101
+nim	hasMeta	gdext/classes/gdobject.html#hasMeta,Object,StringName	proc hasMeta(self: Object; name: StringName): bool		107
+nim	getMetaList	gdext/classes/gdobject.html#getMetaList,Object	proc getMetaList(self: Object): TypedArray[StringName]		113
+nim	addUserSignal	gdext/classes/gdobject.html#addUserSignal,Object,String,Array	proc addUserSignal(self: Object; signal: String; arguments: Array = newArray()): void		119
+nim	hasUserSignal	gdext/classes/gdobject.html#hasUserSignal,Object,StringName	proc hasUserSignal(self: Object; signal: StringName): bool		123
+nim	removeUserSignal	gdext/classes/gdobject.html#removeUserSignal,Object,StringName	proc removeUserSignal(self: Object; signal: StringName): void		129
+nim	emitSignal	gdext/classes/gdobject.html#emitSignal,Object,Variant,varargs[Variant,variant]	proc emitSignal(self: Object; signal: Variant; args: varargs[Variant, variant]): Error		133
+nim	emitSignal	gdext/classes/gdobject.html#emitSignal.t,Object,StringName,varargs[Variant,variant]	template emitSignal(self: Object; signal: StringName; args: varargs[Variant, variant]): Error		138
+nim	call	gdext/classes/gdobject.html#call,Object,Variant,varargs[Variant,variant]	proc call(self: Object; method: Variant; args: varargs[Variant, variant]): Variant		141
+nim	call	gdext/classes/gdobject.html#call.t,Object,StringName,varargs[Variant,variant]	template call(self: Object; method: StringName; args: varargs[Variant, variant]): Variant		146
+nim	callDeferred	gdext/classes/gdobject.html#callDeferred,Object,Variant,varargs[Variant,variant]	proc callDeferred(self: Object; method: Variant; args: varargs[Variant, variant]): Variant		149
+nim	callDeferred	gdext/classes/gdobject.html#callDeferred.t,Object,StringName,varargs[Variant,variant]	template callDeferred(self: Object; method: StringName; args: varargs[Variant, variant]): Variant		154
+nim	setDeferred	gdext/classes/gdobject.html#setDeferred,Object,StringName,Variant	proc setDeferred(self: Object; property: StringName; value: Variant): void		157
+nim	callv	gdext/classes/gdobject.html#callv,Object,StringName,Array	proc callv(self: Object; method: StringName; argArray: Array): Variant		161
+nim	hasMethod	gdext/classes/gdobject.html#hasMethod,Object,StringName	proc hasMethod(self: Object; method: StringName): bool		167
+nim	getMethodArgumentCount	gdext/classes/gdobject.html#getMethodArgumentCount,Object,StringName	proc getMethodArgumentCount(self: Object; method: StringName): int32		173
+nim	hasSignal	gdext/classes/gdobject.html#hasSignal,Object,StringName	proc hasSignal(self: Object; signal: StringName): bool		179
+nim	getSignalList	gdext/classes/gdobject.html#getSignalList,Object	proc getSignalList(self: Object): TypedArray[Dictionary]		185
+nim	getSignalConnectionList	gdext/classes/gdobject.html#getSignalConnectionList,Object,StringName	proc getSignalConnectionList(self: Object; signal: StringName): TypedArray[Dictionary]		191
+nim	getIncomingConnections	gdext/classes/gdobject.html#getIncomingConnections,Object	proc getIncomingConnections(self: Object): TypedArray[Dictionary]		197
+nim	connect	gdext/classes/gdobject.html#connect,Object,StringName,Callable,uint32	proc connect(self: Object; signal: StringName; callable: Callable;\n        flags: uint32 = 0'u32): Error		203
+nim	disconnect	gdext/classes/gdobject.html#disconnect,Object,StringName,Callable	proc disconnect(self: Object; signal: StringName; callable: Callable): void		209
+nim	isConnected	gdext/classes/gdobject.html#isConnected,Object,StringName,Callable	proc isConnected(self: Object; signal: StringName; callable: Callable): bool		213
+nim	hasConnections	gdext/classes/gdobject.html#hasConnections,Object,StringName	proc hasConnections(self: Object; signal: StringName): bool		219
+nim	setBlockSignals	gdext/classes/gdobject.html#setBlockSignals,Object,bool	proc setBlockSignals(self: Object; enable: bool): void		225
+nim	isBlockingSignals	gdext/classes/gdobject.html#isBlockingSignals,Object	proc isBlockingSignals(self: Object): bool		229
+nim	notifyPropertyListChanged	gdext/classes/gdobject.html#notifyPropertyListChanged,Object	proc notifyPropertyListChanged(self: Object): void		235
+nim	setMessageTranslation	gdext/classes/gdobject.html#setMessageTranslation,Object,bool	proc setMessageTranslation(self: Object; enable: bool): void		239
+nim	canTranslateMessages	gdext/classes/gdobject.html#canTranslateMessages,Object	proc canTranslateMessages(self: Object): bool		243
+nim	tr	gdext/classes/gdobject.html#tr,Object,StringName,StringName	proc tr(self: Object; message: StringName; context: StringName = default(StringName)): String		249
+nim	trN	gdext/classes/gdobject.html#trN,Object,StringName,StringName,int32,StringName	proc trN(self: Object; message: StringName; pluralMessage: StringName; n: int32;\n    context: StringName = default(StringName)): String		255
+nim	getTranslationDomain	gdext/classes/gdobject.html#getTranslationDomain,Object	proc getTranslationDomain(self: Object): StringName		261
+nim	setTranslationDomain	gdext/classes/gdobject.html#setTranslationDomain,Object,StringName	proc setTranslationDomain(self: Object; domain: StringName): void		267
+nim	isQueuedForDeletion	gdext/classes/gdobject.html#isQueuedForDeletion,Object	proc isQueuedForDeletion(self: Object): bool		271
+nim	cancelFree	gdext/classes/gdobject.html#cancelFree,Object	proc cancelFree(self: Object): void		277

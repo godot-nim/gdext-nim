@@ -1,0 +1,32 @@
+nimTitle	gdclassdb	gdext/classes/gdclassdb.html	module gdext/classes/gdclassdb		0
+nim	getClassList	gdext/classes/gdclassdb.html#getClassList,ClassDB	proc getClassList(self: ClassDB): PackedStringArray		9
+nim	getInheritersFromClass	gdext/classes/gdclassdb.html#getInheritersFromClass,ClassDB,StringName	proc getInheritersFromClass(self: ClassDB; class: StringName): PackedStringArray		15
+nim	getParentClass	gdext/classes/gdclassdb.html#getParentClass,ClassDB,StringName	proc getParentClass(self: ClassDB; class: StringName): StringName		21
+nim	classExists	gdext/classes/gdclassdb.html#classExists,ClassDB,StringName	proc classExists(self: ClassDB; class: StringName): bool		27
+nim	isParentClass	gdext/classes/gdclassdb.html#isParentClass,ClassDB,StringName,StringName	proc isParentClass(self: ClassDB; class: StringName; inherits: StringName): bool		33
+nim	canInstantiate	gdext/classes/gdclassdb.html#canInstantiate,ClassDB,StringName	proc canInstantiate(self: ClassDB; class: StringName): bool		39
+nim	instantiate	gdext/classes/gdclassdb.html#instantiate,ClassDB,StringName	proc instantiate(self: ClassDB; class: StringName): Variant		45
+nim	classGetApiType	gdext/classes/gdclassdb.html#classGetApiType,ClassDB,StringName	proc classGetApiType(self: ClassDB; class: StringName): ClassDB_APIType		51
+nim	classHasSignal	gdext/classes/gdclassdb.html#classHasSignal,ClassDB,StringName,StringName	proc classHasSignal(self: ClassDB; class: StringName; signal: StringName): bool		57
+nim	classGetSignal	gdext/classes/gdclassdb.html#classGetSignal,ClassDB,StringName,StringName	proc classGetSignal(self: ClassDB; class: StringName; signal: StringName): Dictionary		63
+nim	classGetSignalList	gdext/classes/gdclassdb.html#classGetSignalList,ClassDB,StringName,bool	proc classGetSignalList(self: ClassDB; class: StringName; noInheritance: bool = false): TypedArray[\n    Dictionary]		69
+nim	classGetPropertyList	gdext/classes/gdclassdb.html#classGetPropertyList,ClassDB,StringName,bool	proc classGetPropertyList(self: ClassDB; class: StringName;\n                     noInheritance: bool = false): TypedArray[Dictionary]		75
+nim	classGetPropertyGetter	gdext/classes/gdclassdb.html#classGetPropertyGetter,ClassDB,StringName,StringName	proc classGetPropertyGetter(self: ClassDB; class: StringName; property: StringName): StringName		81
+nim	classGetPropertySetter	gdext/classes/gdclassdb.html#classGetPropertySetter,ClassDB,StringName,StringName	proc classGetPropertySetter(self: ClassDB; class: StringName; property: StringName): StringName		87
+nim	classGetProperty	gdext/classes/gdclassdb.html#classGetProperty,ClassDB,Object,StringName	proc classGetProperty(self: ClassDB; object: Object; property: StringName): Variant		93
+nim	classSetProperty	gdext/classes/gdclassdb.html#classSetProperty,ClassDB,Object,StringName,Variant	proc classSetProperty(self: ClassDB; object: Object; property: StringName;\n                 value: Variant): Error		99
+nim	classGetPropertyDefaultValue	gdext/classes/gdclassdb.html#classGetPropertyDefaultValue,ClassDB,StringName,StringName	proc classGetPropertyDefaultValue(self: ClassDB; class: StringName;\n                             property: StringName): Variant		105
+nim	classHasMethod	gdext/classes/gdclassdb.html#classHasMethod,ClassDB,StringName,StringName,bool	proc classHasMethod(self: ClassDB; class: StringName; method: StringName;\n               noInheritance: bool = false): bool		111
+nim	classGetMethodArgumentCount	gdext/classes/gdclassdb.html#classGetMethodArgumentCount,ClassDB,StringName,StringName,bool	proc classGetMethodArgumentCount(self: ClassDB; class: StringName;\n                            method: StringName; noInheritance: bool = false): int32		117
+nim	classGetMethodList	gdext/classes/gdclassdb.html#classGetMethodList,ClassDB,StringName,bool	proc classGetMethodList(self: ClassDB; class: StringName; noInheritance: bool = false): TypedArray[\n    Dictionary]		123
+nim	classCallStatic	gdext/classes/gdclassdb.html#classCallStatic,ClassDB,Variant,Variant,varargs[Variant,variant]	proc classCallStatic(self: ClassDB; class: Variant; method: Variant;\n                args: varargs[Variant, variant]): Variant		129
+nim	classCallStatic	gdext/classes/gdclassdb.html#classCallStatic.t,ClassDB,StringName,StringName,varargs[Variant,variant]	template classCallStatic(self: ClassDB; class: StringName; method: StringName;\n                args: varargs[Variant, variant]): Variant		134
+nim	classGetIntegerConstantList	gdext/classes/gdclassdb.html#classGetIntegerConstantList,ClassDB,StringName,bool	proc classGetIntegerConstantList(self: ClassDB; class: StringName;\n                            noInheritance: bool = false): PackedStringArray		137
+nim	classHasIntegerConstant	gdext/classes/gdclassdb.html#classHasIntegerConstant,ClassDB,StringName,StringName	proc classHasIntegerConstant(self: ClassDB; class: StringName; name: StringName): bool		143
+nim	classGetIntegerConstant	gdext/classes/gdclassdb.html#classGetIntegerConstant,ClassDB,StringName,StringName	proc classGetIntegerConstant(self: ClassDB; class: StringName; name: StringName): int64		149
+nim	classHasEnum	gdext/classes/gdclassdb.html#classHasEnum,ClassDB,StringName,StringName,bool	proc classHasEnum(self: ClassDB; class: StringName; name: StringName;\n             noInheritance: bool = false): bool		155
+nim	classGetEnumList	gdext/classes/gdclassdb.html#classGetEnumList,ClassDB,StringName,bool	proc classGetEnumList(self: ClassDB; class: StringName; noInheritance: bool = false): PackedStringArray		161
+nim	classGetEnumConstants	gdext/classes/gdclassdb.html#classGetEnumConstants,ClassDB,StringName,StringName,bool	proc classGetEnumConstants(self: ClassDB; class: StringName; enum: StringName;\n                      noInheritance: bool = false): PackedStringArray		167
+nim	classGetIntegerConstantEnum	gdext/classes/gdclassdb.html#classGetIntegerConstantEnum,ClassDB,StringName,StringName,bool	proc classGetIntegerConstantEnum(self: ClassDB; class: StringName; name: StringName;\n                            noInheritance: bool = false): StringName		173
+nim	isClassEnumBitfield	gdext/classes/gdclassdb.html#isClassEnumBitfield,ClassDB,StringName,StringName,bool	proc isClassEnumBitfield(self: ClassDB; class: StringName; enum: StringName;\n                    noInheritance: bool = false): bool		179
+nim	isClassEnabled	gdext/classes/gdclassdb.html#isClassEnabled,ClassDB,StringName	proc isClassEnabled(self: ClassDB; class: StringName): bool		185

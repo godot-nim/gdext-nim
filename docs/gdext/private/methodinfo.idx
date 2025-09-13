@@ -1,0 +1,7 @@
+nimTitle	methodinfo	gdext/private/methodinfo.html	module gdext/private/methodinfo		0
+nim	Arg	gdext/private/methodinfo.html#Arg	tuple Arg		10
+nim	MiddleExp	gdext/private/methodinfo.html#MiddleExp	object MiddleExp		12
+nim	parseMiddle	gdext/private/methodinfo.html#parseMiddle,NimNode	proc parseMiddle(procdef: NimNode): MiddleExp		22
+nim	hasResult	gdext/private/methodinfo.html#hasResult.t,MiddleExp	template hasResult(middle: MiddleExp): bool		49
+nim	classMethodInfo	gdext/private/methodinfo.html#classMethodInfo,MiddleExp	proc classMethodInfo(middle: MiddleExp): NimNode		215
+nim	virtualMethodInfo	gdext/private/methodinfo.html#virtualMethodInfo,MiddleExp	proc virtualMethodInfo(middle: MiddleExp): NimNode		263

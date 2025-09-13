@@ -1,0 +1,10 @@
+version: "3"
+services:
+  jekyll:
+    image: ghcr.io/github/pages-gem:master
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./docs:/usr/src/app
+    working_dir: /usr/src/app
+    command: jekyll serve --host 0.0.0.0 --port 4000

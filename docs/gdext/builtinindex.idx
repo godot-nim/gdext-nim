@@ -1,0 +1,1232 @@
+nimTitle	builtinindex	gdext/builtinindex.html	module gdext/builtinindex		0
+nim	real_elem	gdext/builtinindex.html#real_elem	type real_elem		9
+nim	int_elem	gdext/builtinindex.html#int_elem	type int_elem		11
+nim	float_elem	gdext/builtinindex.html#float_elem	type float_elem		12
+nim	char16	gdext/builtinindex.html#char16	type char16		13
+nim	char32	gdext/builtinindex.html#char32	type char32		14
+nim	Vector	gdext/builtinindex.html#Vector	type Vector		22
+nim	NVector	gdext/builtinindex.html#NVector	type NVector		23
+nim	VectorR	gdext/builtinindex.html#VectorR	type VectorR		26
+nim	VectorI	gdext/builtinindex.html#VectorI	type VectorI		27
+nim	PackedArray	gdext/builtinindex.html#PackedArray	object PackedArray		29
+nim	GodotDefect	gdext/builtinindex.html#GodotDefect	object GodotDefect		37
+nim	GodotCallDefect	gdext/builtinindex.html#GodotCallDefect	object GodotCallDefect		38
+nim	GodotVariantTypeDefect	gdext/builtinindex.html#GodotVariantTypeDefect	object GodotVariantTypeDefect		39
+nim	Variant	gdext/builtinindex.html#Variant	object Variant		41
+nim	Float	gdext/builtinindex.html#Float	type Float		44
+nim	Vector2	gdext/builtinindex.html#Vector2	type Vector2		45
+nim	Vector3	gdext/builtinindex.html#Vector3	type Vector3		46
+nim	Vector4	gdext/builtinindex.html#Vector4	type Vector4		47
+nim	Vector2i	gdext/builtinindex.html#Vector2i	type Vector2i		48
+nim	Vector3i	gdext/builtinindex.html#Vector3i	type Vector3i		49
+nim	Vector4i	gdext/builtinindex.html#Vector4i	type Vector4i		50
+nim	Rect2	gdext/builtinindex.html#Rect2	object Rect2		51
+nim	Rect2i	gdext/builtinindex.html#Rect2i	object Rect2i		54
+nim	Transform2D	gdext/builtinindex.html#Transform2D	object Transform2D		57
+nim	Plane	gdext/builtinindex.html#Plane	object Plane		61
+nim	Quaternion	gdext/builtinindex.html#Quaternion	object Quaternion		64
+nim	AABB	gdext/builtinindex.html#AABB	object AABB		69
+nim	Basis	gdext/builtinindex.html#Basis	object Basis		72
+nim	Transform3D	gdext/builtinindex.html#Transform3D	object Transform3D		76
+nim	Projection	gdext/builtinindex.html#Projection	object Projection		79
+nim	Color	gdext/builtinindex.html#Color	object Color		84
+nim	RID	gdext/builtinindex.html#RID	object RID		89
+nim	String	gdext/builtinindex.html#String	object String		91
+nim	StringName	gdext/builtinindex.html#StringName	object StringName		93
+nim	NodePath	gdext/builtinindex.html#NodePath	object NodePath		95
+nim	Dictionary	gdext/builtinindex.html#Dictionary	object Dictionary		97
+nim	Array	gdext/builtinindex.html#Array	object Array		99
+nim	PackedByteArray	gdext/builtinindex.html#PackedByteArray	type PackedByteArray		102
+nim	PackedInt32Array	gdext/builtinindex.html#PackedInt32Array	type PackedInt32Array		103
+nim	PackedInt64Array	gdext/builtinindex.html#PackedInt64Array	type PackedInt64Array		104
+nim	PackedFloat32Array	gdext/builtinindex.html#PackedFloat32Array	type PackedFloat32Array		105
+nim	PackedFloat64Array	gdext/builtinindex.html#PackedFloat64Array	type PackedFloat64Array		106
+nim	PackedStringArray	gdext/builtinindex.html#PackedStringArray	type PackedStringArray		107
+nim	PackedVector2Array	gdext/builtinindex.html#PackedVector2Array	type PackedVector2Array		108
+nim	PackedVector3Array	gdext/builtinindex.html#PackedVector3Array	type PackedVector3Array		109
+nim	PackedVector4Array	gdext/builtinindex.html#PackedVector4Array	type PackedVector4Array		110
+nim	PackedColorArray	gdext/builtinindex.html#PackedColorArray	type PackedColorArray		111
+nim	Object	gdext/builtinindex.html#Object	type Object		113
+nim	RefCounted	gdext/builtinindex.html#RefCounted	type RefCounted		117
+nim	GdRef	gdext/builtinindex.html#GdRef	object GdRef		119
+nim	Vector2_Axis	gdext/builtinindex.html#Vector2_Axis	enum Vector2_Axis		1
+nim	Vector2i_Axis	gdext/builtinindex.html#Vector2i_Axis	enum Vector2i_Axis		5
+nim	Vector3_Axis	gdext/builtinindex.html#Vector3_Axis	enum Vector3_Axis		9
+nim	Vector3i_Axis	gdext/builtinindex.html#Vector3i_Axis	enum Vector3i_Axis		14
+nim	Vector4_Axis	gdext/builtinindex.html#Vector4_Axis	enum Vector4_Axis		19
+nim	Vector4i_Axis	gdext/builtinindex.html#Vector4i_Axis	enum Vector4i_Axis		25
+nim	Projection_Planes	gdext/builtinindex.html#Projection_Planes	enum Projection_Planes		31
+nim	AESContext_Mode	gdext/builtinindex.html#AESContext_Mode	enum AESContext_Mode		39
+nim	AStarGrid2D_Heuristic	gdext/builtinindex.html#AStarGrid2D_Heuristic	enum AStarGrid2D_Heuristic		46
+nim	AStarGrid2D_DiagonalMode	gdext/builtinindex.html#AStarGrid2D_DiagonalMode	enum AStarGrid2D_DiagonalMode		53
+nim	AStarGrid2D_CellShape	gdext/builtinindex.html#AStarGrid2D_CellShape	enum AStarGrid2D_CellShape		60
+nim	Animation_TrackType	gdext/builtinindex.html#Animation_TrackType	enum Animation_TrackType		66
+nim	Animation_InterpolationType	gdext/builtinindex.html#Animation_InterpolationType	enum Animation_InterpolationType		77
+nim	Animation_UpdateMode	gdext/builtinindex.html#Animation_UpdateMode	enum Animation_UpdateMode		84
+nim	Animation_LoopMode	gdext/builtinindex.html#Animation_LoopMode	enum Animation_LoopMode		89
+nim	Animation_LoopedFlag	gdext/builtinindex.html#Animation_LoopedFlag	enum Animation_LoopedFlag		94
+nim	Animation_FindMode	gdext/builtinindex.html#Animation_FindMode	enum Animation_FindMode		99
+nim	AnimationMixer_AnimationCallbackModeProcess	gdext/builtinindex.html#AnimationMixer_AnimationCallbackModeProcess	enum AnimationMixer_AnimationCallbackModeProcess		104
+nim	AnimationMixer_AnimationCallbackModeMethod	gdext/builtinindex.html#AnimationMixer_AnimationCallbackModeMethod	enum AnimationMixer_AnimationCallbackModeMethod		109
+nim	AnimationMixer_AnimationCallbackModeDiscrete	gdext/builtinindex.html#AnimationMixer_AnimationCallbackModeDiscrete	enum AnimationMixer_AnimationCallbackModeDiscrete		113
+nim	AnimationNode_FilterAction	gdext/builtinindex.html#AnimationNode_FilterAction	enum AnimationNode_FilterAction		118
+nim	AnimationNodeAnimation_PlayMode	gdext/builtinindex.html#AnimationNodeAnimation_PlayMode	enum AnimationNodeAnimation_PlayMode		124
+nim	AnimationNodeBlendSpace1D_BlendMode	gdext/builtinindex.html#AnimationNodeBlendSpace1D_BlendMode	enum AnimationNodeBlendSpace1D_BlendMode		128
+nim	AnimationNodeBlendSpace2D_BlendMode	gdext/builtinindex.html#AnimationNodeBlendSpace2D_BlendMode	enum AnimationNodeBlendSpace2D_BlendMode		133
+nim	AnimationNodeOneShot_OneShotRequest	gdext/builtinindex.html#AnimationNodeOneShot_OneShotRequest	enum AnimationNodeOneShot_OneShotRequest		138
+nim	AnimationNodeOneShot_MixMode	gdext/builtinindex.html#AnimationNodeOneShot_MixMode	enum AnimationNodeOneShot_MixMode		144
+nim	AnimationNodeStateMachine_StateMachineType	gdext/builtinindex.html#AnimationNodeStateMachine_StateMachineType	enum AnimationNodeStateMachine_StateMachineType		148
+nim	AnimationNodeStateMachineTransition_SwitchMode	gdext/builtinindex.html#AnimationNodeStateMachineTransition_SwitchMode	enum AnimationNodeStateMachineTransition_SwitchMode		153
+nim	AnimationNodeStateMachineTransition_AdvanceMode	gdext/builtinindex.html#AnimationNodeStateMachineTransition_AdvanceMode	enum AnimationNodeStateMachineTransition_AdvanceMode		158
+nim	AnimationPlayer_AnimationProcessCallback	gdext/builtinindex.html#AnimationPlayer_AnimationProcessCallback	enum AnimationPlayer_AnimationProcessCallback		163
+nim	AnimationPlayer_AnimationMethodCallMode	gdext/builtinindex.html#AnimationPlayer_AnimationMethodCallMode	enum AnimationPlayer_AnimationMethodCallMode		168
+nim	AnimationTree_AnimationProcessCallback	gdext/builtinindex.html#AnimationTree_AnimationProcessCallback	enum AnimationTree_AnimationProcessCallback		172
+nim	Area2D_SpaceOverride	gdext/builtinindex.html#Area2D_SpaceOverride	enum Area2D_SpaceOverride		177
+nim	Area3D_SpaceOverride	gdext/builtinindex.html#Area3D_SpaceOverride	enum Area3D_SpaceOverride		184
+nim	AspectRatioContainer_StretchMode	gdext/builtinindex.html#AspectRatioContainer_StretchMode	enum AspectRatioContainer_StretchMode		191
+nim	AspectRatioContainer_AlignmentMode	gdext/builtinindex.html#AspectRatioContainer_AlignmentMode	enum AspectRatioContainer_AlignmentMode		197
+nim	AudioEffectDistortion_Mode	gdext/builtinindex.html#AudioEffectDistortion_Mode	enum AudioEffectDistortion_Mode		202
+nim	AudioEffectFilter_FilterDB	gdext/builtinindex.html#AudioEffectFilter_FilterDB	enum AudioEffectFilter_FilterDB		209
+nim	AudioEffectPitchShift_FFTSize	gdext/builtinindex.html#AudioEffectPitchShift_FFTSize	enum AudioEffectPitchShift_FFTSize		215
+nim	AudioEffectSpectrumAnalyzer_FFTSize	gdext/builtinindex.html#AudioEffectSpectrumAnalyzer_FFTSize	enum AudioEffectSpectrumAnalyzer_FFTSize		223
+nim	AudioEffectSpectrumAnalyzerInstance_MagnitudeMode	gdext/builtinindex.html#AudioEffectSpectrumAnalyzerInstance_MagnitudeMode	enum AudioEffectSpectrumAnalyzerInstance_MagnitudeMode		231
+nim	AudioServer_SpeakerMode	gdext/builtinindex.html#AudioServer_SpeakerMode	enum AudioServer_SpeakerMode		235
+nim	AudioServer_PlaybackType	gdext/builtinindex.html#AudioServer_PlaybackType	enum AudioServer_PlaybackType		241
+nim	AudioStreamGenerator_AudioStreamGeneratorMixRate	gdext/builtinindex.html#AudioStreamGenerator_AudioStreamGeneratorMixRate	enum AudioStreamGenerator_AudioStreamGeneratorMixRate		247
+nim	AudioStreamInteractive_TransitionFromTime	gdext/builtinindex.html#AudioStreamInteractive_TransitionFromTime	enum AudioStreamInteractive_TransitionFromTime		253
+nim	AudioStreamInteractive_TransitionToTime	gdext/builtinindex.html#AudioStreamInteractive_TransitionToTime	enum AudioStreamInteractive_TransitionToTime		259
+nim	AudioStreamInteractive_FadeMode	gdext/builtinindex.html#AudioStreamInteractive_FadeMode	enum AudioStreamInteractive_FadeMode		263
+nim	AudioStreamInteractive_AutoAdvanceMode	gdext/builtinindex.html#AudioStreamInteractive_AutoAdvanceMode	enum AudioStreamInteractive_AutoAdvanceMode		270
+nim	AudioStreamPlayer_MixTarget	gdext/builtinindex.html#AudioStreamPlayer_MixTarget	enum AudioStreamPlayer_MixTarget		275
+nim	AudioStreamPlayer3D_AttenuationModel	gdext/builtinindex.html#AudioStreamPlayer3D_AttenuationModel	enum AudioStreamPlayer3D_AttenuationModel		280
+nim	AudioStreamPlayer3D_DopplerTracking	gdext/builtinindex.html#AudioStreamPlayer3D_DopplerTracking	enum AudioStreamPlayer3D_DopplerTracking		286
+nim	AudioStreamRandomizer_PlaybackMode	gdext/builtinindex.html#AudioStreamRandomizer_PlaybackMode	enum AudioStreamRandomizer_PlaybackMode		291
+nim	AudioStreamWAV_Format	gdext/builtinindex.html#AudioStreamWAV_Format	enum AudioStreamWAV_Format		296
+nim	AudioStreamWAV_LoopMode	gdext/builtinindex.html#AudioStreamWAV_LoopMode	enum AudioStreamWAV_LoopMode		302
+nim	BackBufferCopy_CopyMode	gdext/builtinindex.html#BackBufferCopy_CopyMode	enum BackBufferCopy_CopyMode		308
+nim	BaseButton_DrawMode	gdext/builtinindex.html#BaseButton_DrawMode	enum BaseButton_DrawMode		313
+nim	BaseButton_ActionMode	gdext/builtinindex.html#BaseButton_ActionMode	enum BaseButton_ActionMode		320
+nim	BaseMaterial3D_TextureParam	gdext/builtinindex.html#BaseMaterial3D_TextureParam	enum BaseMaterial3D_TextureParam		324
+nim	BaseMaterial3D_TextureFilter	gdext/builtinindex.html#BaseMaterial3D_TextureFilter	enum BaseMaterial3D_TextureFilter		345
+nim	BaseMaterial3D_DetailUV	gdext/builtinindex.html#BaseMaterial3D_DetailUV	enum BaseMaterial3D_DetailUV		354
+nim	BaseMaterial3D_Transparency	gdext/builtinindex.html#BaseMaterial3D_Transparency	enum BaseMaterial3D_Transparency		358
+nim	BaseMaterial3D_ShadingMode	gdext/builtinindex.html#BaseMaterial3D_ShadingMode	enum BaseMaterial3D_ShadingMode		366
+nim	BaseMaterial3D_Feature	gdext/builtinindex.html#BaseMaterial3D_Feature	enum BaseMaterial3D_Feature		372
+nim	BaseMaterial3D_BlendMode	gdext/builtinindex.html#BaseMaterial3D_BlendMode	enum BaseMaterial3D_BlendMode		387
+nim	BaseMaterial3D_AlphaAntiAliasing	gdext/builtinindex.html#BaseMaterial3D_AlphaAntiAliasing	enum BaseMaterial3D_AlphaAntiAliasing		394
+nim	BaseMaterial3D_DepthDrawMode	gdext/builtinindex.html#BaseMaterial3D_DepthDrawMode	enum BaseMaterial3D_DepthDrawMode		399
+nim	BaseMaterial3D_CullMode	gdext/builtinindex.html#BaseMaterial3D_CullMode	enum BaseMaterial3D_CullMode		404
+nim	BaseMaterial3D_Flags	gdext/builtinindex.html#BaseMaterial3D_Flags	enum BaseMaterial3D_Flags		409
+nim	BaseMaterial3D_DiffuseMode	gdext/builtinindex.html#BaseMaterial3D_DiffuseMode	enum BaseMaterial3D_DiffuseMode		434
+nim	BaseMaterial3D_SpecularMode	gdext/builtinindex.html#BaseMaterial3D_SpecularMode	enum BaseMaterial3D_SpecularMode		440
+nim	BaseMaterial3D_BillboardMode	gdext/builtinindex.html#BaseMaterial3D_BillboardMode	enum BaseMaterial3D_BillboardMode		445
+nim	BaseMaterial3D_TextureChannel	gdext/builtinindex.html#BaseMaterial3D_TextureChannel	enum BaseMaterial3D_TextureChannel		451
+nim	BaseMaterial3D_EmissionOperator	gdext/builtinindex.html#BaseMaterial3D_EmissionOperator	enum BaseMaterial3D_EmissionOperator		458
+nim	BaseMaterial3D_DistanceFadeMode	gdext/builtinindex.html#BaseMaterial3D_DistanceFadeMode	enum BaseMaterial3D_DistanceFadeMode		462
+nim	BoxContainer_AlignmentMode	gdext/builtinindex.html#BoxContainer_AlignmentMode	enum BoxContainer_AlignmentMode		468
+nim	CPUParticles2D_DrawOrder	gdext/builtinindex.html#CPUParticles2D_DrawOrder	enum CPUParticles2D_DrawOrder		473
+nim	CPUParticles2D_Parameter	gdext/builtinindex.html#CPUParticles2D_Parameter	enum CPUParticles2D_Parameter		477
+nim	CPUParticles2D_ParticleFlags	gdext/builtinindex.html#CPUParticles2D_ParticleFlags	enum CPUParticles2D_ParticleFlags		492
+nim	CPUParticles2D_EmissionShape	gdext/builtinindex.html#CPUParticles2D_EmissionShape	enum CPUParticles2D_EmissionShape		498
+nim	CPUParticles3D_DrawOrder	gdext/builtinindex.html#CPUParticles3D_DrawOrder	enum CPUParticles3D_DrawOrder		507
+nim	CPUParticles3D_Parameter	gdext/builtinindex.html#CPUParticles3D_Parameter	enum CPUParticles3D_Parameter		512
+nim	CPUParticles3D_ParticleFlags	gdext/builtinindex.html#CPUParticles3D_ParticleFlags	enum CPUParticles3D_ParticleFlags		527
+nim	CPUParticles3D_EmissionShape	gdext/builtinindex.html#CPUParticles3D_EmissionShape	enum CPUParticles3D_EmissionShape		533
+nim	CSGPolygon3D_Mode	gdext/builtinindex.html#CSGPolygon3D_Mode	enum CSGPolygon3D_Mode		543
+nim	CSGPolygon3D_PathRotation	gdext/builtinindex.html#CSGPolygon3D_PathRotation	enum CSGPolygon3D_PathRotation		548
+nim	CSGPolygon3D_PathIntervalType	gdext/builtinindex.html#CSGPolygon3D_PathIntervalType	enum CSGPolygon3D_PathIntervalType		553
+nim	CSGShape3D_Operation	gdext/builtinindex.html#CSGShape3D_Operation	enum CSGShape3D_Operation		557
+nim	Camera2D_AnchorMode	gdext/builtinindex.html#Camera2D_AnchorMode	enum Camera2D_AnchorMode		562
+nim	Camera2D_Camera2DProcessCallback	gdext/builtinindex.html#Camera2D_Camera2DProcessCallback	enum Camera2D_Camera2DProcessCallback		566
+nim	Camera3D_ProjectionType	gdext/builtinindex.html#Camera3D_ProjectionType	enum Camera3D_ProjectionType		570
+nim	Camera3D_KeepAspect	gdext/builtinindex.html#Camera3D_KeepAspect	enum Camera3D_KeepAspect		575
+nim	Camera3D_DopplerTracking	gdext/builtinindex.html#Camera3D_DopplerTracking	enum Camera3D_DopplerTracking		579
+nim	CameraFeed_FeedDataType	gdext/builtinindex.html#CameraFeed_FeedDataType	enum CameraFeed_FeedDataType		584
+nim	CameraFeed_FeedPosition	gdext/builtinindex.html#CameraFeed_FeedPosition	enum CameraFeed_FeedPosition		591
+nim	CameraServer_FeedImage	gdext/builtinindex.html#CameraServer_FeedImage	enum CameraServer_FeedImage		596
+nim	feedYcbcrImage	gdext/builtinindex.html#feedYcbcrImage.t,typedesc[T]	template feedYcbcrImage[T: CameraServer_FeedImage](_: typedesc[T]): T		599
+nim	feedYImage	gdext/builtinindex.html#feedYImage.t,typedesc[T]	template feedYImage[T: CameraServer_FeedImage](_: typedesc[T]): T		600
+nim	CanvasItem_TextureFilter	gdext/builtinindex.html#CanvasItem_TextureFilter	enum CanvasItem_TextureFilter		602
+nim	CanvasItem_TextureRepeat	gdext/builtinindex.html#CanvasItem_TextureRepeat	enum CanvasItem_TextureRepeat		612
+nim	CanvasItem_ClipChildrenMode	gdext/builtinindex.html#CanvasItem_ClipChildrenMode	enum CanvasItem_ClipChildrenMode		619
+nim	CanvasItemMaterial_BlendMode	gdext/builtinindex.html#CanvasItemMaterial_BlendMode	enum CanvasItemMaterial_BlendMode		625
+nim	CanvasItemMaterial_LightMode	gdext/builtinindex.html#CanvasItemMaterial_LightMode	enum CanvasItemMaterial_LightMode		632
+nim	CharacterBody2D_MotionMode	gdext/builtinindex.html#CharacterBody2D_MotionMode	enum CharacterBody2D_MotionMode		637
+nim	CharacterBody2D_PlatformOnLeave	gdext/builtinindex.html#CharacterBody2D_PlatformOnLeave	enum CharacterBody2D_PlatformOnLeave		641
+nim	CharacterBody3D_MotionMode	gdext/builtinindex.html#CharacterBody3D_MotionMode	enum CharacterBody3D_MotionMode		646
+nim	CharacterBody3D_PlatformOnLeave	gdext/builtinindex.html#CharacterBody3D_PlatformOnLeave	enum CharacterBody3D_PlatformOnLeave		650
+nim	ClassDB_APIType	gdext/builtinindex.html#ClassDB_APIType	enum ClassDB_APIType		655
+nim	CodeEdit_CodeCompletionKind	gdext/builtinindex.html#CodeEdit_CodeCompletionKind	enum CodeEdit_CodeCompletionKind		662
+nim	CodeEdit_CodeCompletionLocation	gdext/builtinindex.html#CodeEdit_CodeCompletionLocation	enum CodeEdit_CodeCompletionLocation		674
+nim	CollisionObject2D_DisableMode	gdext/builtinindex.html#CollisionObject2D_DisableMode	enum CollisionObject2D_DisableMode		680
+nim	CollisionObject3D_DisableMode	gdext/builtinindex.html#CollisionObject3D_DisableMode	enum CollisionObject3D_DisableMode		685
+nim	CollisionPolygon2D_BuildMode	gdext/builtinindex.html#CollisionPolygon2D_BuildMode	enum CollisionPolygon2D_BuildMode		690
+nim	ColorPicker_ColorModeType	gdext/builtinindex.html#ColorPicker_ColorModeType	enum ColorPicker_ColorModeType		694
+nim	ColorPicker_PickerShapeType	gdext/builtinindex.html#ColorPicker_PickerShapeType	enum ColorPicker_PickerShapeType		700
+nim	CompositorEffect_EffectCallbackType	gdext/builtinindex.html#CompositorEffect_EffectCallbackType	enum CompositorEffect_EffectCallbackType		707
+nim	ConeTwistJoint3D_Param	gdext/builtinindex.html#ConeTwistJoint3D_Param	enum ConeTwistJoint3D_Param		715
+nim	Control_FocusMode	gdext/builtinindex.html#Control_FocusMode	enum Control_FocusMode		723
+nim	Control_CursorShape	gdext/builtinindex.html#Control_CursorShape	enum Control_CursorShape		728
+nim	Control_LayoutPreset	gdext/builtinindex.html#Control_LayoutPreset	enum Control_LayoutPreset		747
+nim	Control_LayoutPresetMode	gdext/builtinindex.html#Control_LayoutPresetMode	enum Control_LayoutPresetMode		765
+nim	sizeFill	gdext/builtinindex.html#sizeFill	Control_SizeFlags.sizeFill		771
+nim	sizeExpand	gdext/builtinindex.html#sizeExpand	Control_SizeFlags.sizeExpand		771
+nim	sizeShrinkCenter	gdext/builtinindex.html#sizeShrinkCenter	Control_SizeFlags.sizeShrinkCenter		771
+nim	sizeShrinkEnd	gdext/builtinindex.html#sizeShrinkEnd	Control_SizeFlags.sizeShrinkEnd		771
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--	Control_SizeFlags.--Padding-Max--		771
+nim	Control_SizeFlags	gdext/builtinindex.html#Control_SizeFlags	enum Control_SizeFlags		771
+nim	sizeExpandFill	gdext/builtinindex.html#sizeExpandFill.t,typedesc[T]	template sizeExpandFill[T: Control_SizeFlags](_: typedesc[T]): set[T]		778
+nim	Control_MouseFilter	gdext/builtinindex.html#Control_MouseFilter	enum Control_MouseFilter		780
+nim	Control_GrowDirection	gdext/builtinindex.html#Control_GrowDirection	enum Control_GrowDirection		785
+nim	Control_Anchor	gdext/builtinindex.html#Control_Anchor	enum Control_Anchor		790
+nim	Control_LayoutDirection	gdext/builtinindex.html#Control_LayoutDirection	enum Control_LayoutDirection		794
+nim	layoutDirectionLocale	gdext/builtinindex.html#layoutDirectionLocale.t,typedesc[T]	template layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T		801
+nim	Control_TextDirection	gdext/builtinindex.html#Control_TextDirection	enum Control_TextDirection		803
+nim	Curve_TangentMode	gdext/builtinindex.html#Curve_TangentMode	enum Curve_TangentMode		809
+nim	CurveTexture_TextureMode	gdext/builtinindex.html#CurveTexture_TextureMode	enum CurveTexture_TextureMode		814
+nim	Decal_DecalTexture	gdext/builtinindex.html#Decal_DecalTexture	enum Decal_DecalTexture		818
+nim	DirectionalLight3D_ShadowMode	gdext/builtinindex.html#DirectionalLight3D_ShadowMode	enum DirectionalLight3D_ShadowMode		825
+nim	DirectionalLight3D_SkyMode	gdext/builtinindex.html#DirectionalLight3D_SkyMode	enum DirectionalLight3D_SkyMode		830
+nim	DisplayServer_Feature	gdext/builtinindex.html#DisplayServer_Feature	enum DisplayServer_Feature		835
+nim	DisplayServer_MouseMode	gdext/builtinindex.html#DisplayServer_MouseMode	enum DisplayServer_MouseMode		868
+nim	DisplayServer_ScreenOrientation	gdext/builtinindex.html#DisplayServer_ScreenOrientation	enum DisplayServer_ScreenOrientation		876
+nim	DisplayServer_VirtualKeyboardType	gdext/builtinindex.html#DisplayServer_VirtualKeyboardType	enum DisplayServer_VirtualKeyboardType		885
+nim	DisplayServer_CursorShape	gdext/builtinindex.html#DisplayServer_CursorShape	enum DisplayServer_CursorShape		895
+nim	DisplayServer_FileDialogMode	gdext/builtinindex.html#DisplayServer_FileDialogMode	enum DisplayServer_FileDialogMode		915
+nim	DisplayServer_WindowMode	gdext/builtinindex.html#DisplayServer_WindowMode	enum DisplayServer_WindowMode		922
+nim	DisplayServer_WindowFlags	gdext/builtinindex.html#DisplayServer_WindowFlags	enum DisplayServer_WindowFlags		929
+nim	DisplayServer_WindowEvent	gdext/builtinindex.html#DisplayServer_WindowEvent	enum DisplayServer_WindowEvent		942
+nim	DisplayServer_WindowResizeEdge	gdext/builtinindex.html#DisplayServer_WindowResizeEdge	enum DisplayServer_WindowResizeEdge		952
+nim	DisplayServer_VSyncMode	gdext/builtinindex.html#DisplayServer_VSyncMode	enum DisplayServer_VSyncMode		963
+nim	DisplayServer_HandleType	gdext/builtinindex.html#DisplayServer_HandleType	enum DisplayServer_HandleType		969
+nim	DisplayServer_TTSUtteranceEvent	gdext/builtinindex.html#DisplayServer_TTSUtteranceEvent	enum DisplayServer_TTSUtteranceEvent		977
+nim	ENetConnection_CompressionMode	gdext/builtinindex.html#ENetConnection_CompressionMode	enum ENetConnection_CompressionMode		983
+nim	ENetConnection_EventType	gdext/builtinindex.html#ENetConnection_EventType	enum ENetConnection_EventType		990
+nim	ENetConnection_HostStatistic	gdext/builtinindex.html#ENetConnection_HostStatistic	enum ENetConnection_HostStatistic		997
+nim	ENetPacketPeer_PeerState	gdext/builtinindex.html#ENetPacketPeer_PeerState	enum ENetPacketPeer_PeerState		1003
+nim	ENetPacketPeer_PeerStatistic	gdext/builtinindex.html#ENetPacketPeer_PeerStatistic	enum ENetPacketPeer_PeerStatistic		1015
+nim	EditorContextMenuPlugin_ContextMenuSlot	gdext/builtinindex.html#EditorContextMenuPlugin_ContextMenuSlot	enum EditorContextMenuPlugin_ContextMenuSlot		1031
+nim	EditorExportPlatform_ExportMessageType	gdext/builtinindex.html#EditorExportPlatform_ExportMessageType	enum EditorExportPlatform_ExportMessageType		1040
+nim	debugFlagDumbClient	gdext/builtinindex.html#debugFlagDumbClient	EditorExportPlatform_DebugFlags.debugFlagDumbClient		1046
+nim	debugFlagRemoteDebug	gdext/builtinindex.html#debugFlagRemoteDebug	EditorExportPlatform_DebugFlags.debugFlagRemoteDebug		1046
+nim	debugFlagRemoteDebugLocalhost	gdext/builtinindex.html#debugFlagRemoteDebugLocalhost	EditorExportPlatform_DebugFlags.debugFlagRemoteDebugLocalhost		1046
+nim	debugFlagViewCollisions	gdext/builtinindex.html#debugFlagViewCollisions	EditorExportPlatform_DebugFlags.debugFlagViewCollisions		1046
+nim	debugFlagViewNavigation	gdext/builtinindex.html#debugFlagViewNavigation	EditorExportPlatform_DebugFlags.debugFlagViewNavigation		1046
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_2	EditorExportPlatform_DebugFlags.--Padding-Max--		1046
+nim	EditorExportPlatform_DebugFlags	gdext/builtinindex.html#EditorExportPlatform_DebugFlags	enum EditorExportPlatform_DebugFlags		1046
+nim	EditorExportPreset_ExportFilter	gdext/builtinindex.html#EditorExportPreset_ExportFilter	enum EditorExportPreset_ExportFilter		1054
+nim	EditorExportPreset_FileExportMode	gdext/builtinindex.html#EditorExportPreset_FileExportMode	enum EditorExportPreset_FileExportMode		1061
+nim	EditorExportPreset_ScriptExportMode	gdext/builtinindex.html#EditorExportPreset_ScriptExportMode	enum EditorExportPreset_ScriptExportMode		1067
+nim	EditorFeatureProfile_Feature	gdext/builtinindex.html#EditorFeatureProfile_Feature	enum EditorFeatureProfile_Feature		1072
+nim	EditorFileDialog_FileMode	gdext/builtinindex.html#EditorFileDialog_FileMode	enum EditorFileDialog_FileMode		1084
+nim	EditorFileDialog_Access	gdext/builtinindex.html#EditorFileDialog_Access	enum EditorFileDialog_Access		1091
+nim	EditorFileDialog_DisplayMode	gdext/builtinindex.html#EditorFileDialog_DisplayMode	enum EditorFileDialog_DisplayMode		1096
+nim	EditorPlugin_CustomControlContainer	gdext/builtinindex.html#EditorPlugin_CustomControlContainer	enum EditorPlugin_CustomControlContainer		1100
+nim	EditorPlugin_DockSlot	gdext/builtinindex.html#EditorPlugin_DockSlot	enum EditorPlugin_DockSlot		1114
+nim	EditorPlugin_AfterGUIInput	gdext/builtinindex.html#EditorPlugin_AfterGUIInput	enum EditorPlugin_AfterGUIInput		1125
+nim	EditorScenePostImportPlugin_InternalImportCategory	gdext/builtinindex.html#EditorScenePostImportPlugin_InternalImportCategory	enum EditorScenePostImportPlugin_InternalImportCategory		1130
+nim	EditorToaster_Severity	gdext/builtinindex.html#EditorToaster_Severity	enum EditorToaster_Severity		1140
+nim	EditorUndoRedoManager_SpecialHistory	gdext/builtinindex.html#EditorUndoRedoManager_SpecialHistory	enum EditorUndoRedoManager_SpecialHistory		1145
+nim	EditorVCSInterface_ChangeType	gdext/builtinindex.html#EditorVCSInterface_ChangeType	enum EditorVCSInterface_ChangeType		1150
+nim	EditorVCSInterface_TreeArea	gdext/builtinindex.html#EditorVCSInterface_TreeArea	enum EditorVCSInterface_TreeArea		1158
+nim	Environment_BGMode	gdext/builtinindex.html#Environment_BGMode	enum Environment_BGMode		1163
+nim	Environment_AmbientSource	gdext/builtinindex.html#Environment_AmbientSource	enum Environment_AmbientSource		1172
+nim	Environment_ReflectionSource	gdext/builtinindex.html#Environment_ReflectionSource	enum Environment_ReflectionSource		1178
+nim	Environment_ToneMapper	gdext/builtinindex.html#Environment_ToneMapper	enum Environment_ToneMapper		1183
+nim	Environment_GlowBlendMode	gdext/builtinindex.html#Environment_GlowBlendMode	enum Environment_GlowBlendMode		1190
+nim	Environment_FogMode	gdext/builtinindex.html#Environment_FogMode	enum Environment_FogMode		1197
+nim	Environment_SDFGIYScale	gdext/builtinindex.html#Environment_SDFGIYScale	enum Environment_SDFGIYScale		1201
+nim	FastNoiseLite_NoiseType	gdext/builtinindex.html#FastNoiseLite_NoiseType	enum FastNoiseLite_NoiseType		1206
+nim	FastNoiseLite_FractalType	gdext/builtinindex.html#FastNoiseLite_FractalType	enum FastNoiseLite_FractalType		1214
+nim	FastNoiseLite_CellularDistanceFunction	gdext/builtinindex.html#FastNoiseLite_CellularDistanceFunction	enum FastNoiseLite_CellularDistanceFunction		1220
+nim	FastNoiseLite_CellularReturnType	gdext/builtinindex.html#FastNoiseLite_CellularReturnType	enum FastNoiseLite_CellularReturnType		1226
+nim	FastNoiseLite_DomainWarpType	gdext/builtinindex.html#FastNoiseLite_DomainWarpType	enum FastNoiseLite_DomainWarpType		1235
+nim	FastNoiseLite_DomainWarpFractalType	gdext/builtinindex.html#FastNoiseLite_DomainWarpFractalType	enum FastNoiseLite_DomainWarpFractalType		1240
+nim	FileAccess_ModeFlags	gdext/builtinindex.html#FileAccess_ModeFlags	enum FileAccess_ModeFlags		1245
+nim	FileAccess_CompressionMode	gdext/builtinindex.html#FileAccess_CompressionMode	enum FileAccess_CompressionMode		1251
+nim	unixExecuteOther	gdext/builtinindex.html#unixExecuteOther	FileAccess_UnixPermissionFlags.unixExecuteOther		1258
+nim	unixWriteOther	gdext/builtinindex.html#unixWriteOther	FileAccess_UnixPermissionFlags.unixWriteOther		1258
+nim	unixReadOther	gdext/builtinindex.html#unixReadOther	FileAccess_UnixPermissionFlags.unixReadOther		1258
+nim	unixExecuteGroup	gdext/builtinindex.html#unixExecuteGroup	FileAccess_UnixPermissionFlags.unixExecuteGroup		1258
+nim	unixWriteGroup	gdext/builtinindex.html#unixWriteGroup	FileAccess_UnixPermissionFlags.unixWriteGroup		1258
+nim	unixReadGroup	gdext/builtinindex.html#unixReadGroup	FileAccess_UnixPermissionFlags.unixReadGroup		1258
+nim	unixExecuteOwner	gdext/builtinindex.html#unixExecuteOwner	FileAccess_UnixPermissionFlags.unixExecuteOwner		1258
+nim	unixWriteOwner	gdext/builtinindex.html#unixWriteOwner	FileAccess_UnixPermissionFlags.unixWriteOwner		1258
+nim	unixReadOwner	gdext/builtinindex.html#unixReadOwner	FileAccess_UnixPermissionFlags.unixReadOwner		1258
+nim	unixRestrictedDelete	gdext/builtinindex.html#unixRestrictedDelete	FileAccess_UnixPermissionFlags.unixRestrictedDelete		1258
+nim	unixSetGroupId	gdext/builtinindex.html#unixSetGroupId	FileAccess_UnixPermissionFlags.unixSetGroupId		1258
+nim	unixSetUserId	gdext/builtinindex.html#unixSetUserId	FileAccess_UnixPermissionFlags.unixSetUserId		1258
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_3	FileAccess_UnixPermissionFlags.--Padding-Max--		1258
+nim	FileAccess_UnixPermissionFlags	gdext/builtinindex.html#FileAccess_UnixPermissionFlags	enum FileAccess_UnixPermissionFlags		1258
+nim	FileDialog_FileMode	gdext/builtinindex.html#FileDialog_FileMode	enum FileDialog_FileMode		1273
+nim	FileDialog_Access	gdext/builtinindex.html#FileDialog_Access	enum FileDialog_Access		1280
+nim	FlowContainer_AlignmentMode	gdext/builtinindex.html#FlowContainer_AlignmentMode	enum FlowContainer_AlignmentMode		1285
+nim	FlowContainer_LastWrapAlignmentMode	gdext/builtinindex.html#FlowContainer_LastWrapAlignmentMode	enum FlowContainer_LastWrapAlignmentMode		1290
+nim	GDExtension_InitializationLevel	gdext/builtinindex.html#GDExtension_InitializationLevel	enum GDExtension_InitializationLevel		1296
+nim	GDExtensionManager_LoadStatus	gdext/builtinindex.html#GDExtensionManager_LoadStatus	enum GDExtensionManager_LoadStatus		1302
+nim	GLTFAccessor_GLTFAccessorType	gdext/builtinindex.html#GLTFAccessor_GLTFAccessorType	enum GLTFAccessor_GLTFAccessorType		1309
+nim	GLTFAccessor_GLTFComponentType	gdext/builtinindex.html#GLTFAccessor_GLTFComponentType	enum GLTFAccessor_GLTFComponentType		1318
+nim	GLTFDocument_RootNodeMode	gdext/builtinindex.html#GLTFDocument_RootNodeMode	enum GLTFDocument_RootNodeMode		1332
+nim	GLTFObjectModelProperty_GLTFObjectModelType	gdext/builtinindex.html#GLTFObjectModelProperty_GLTFObjectModelType	enum GLTFObjectModelProperty_GLTFObjectModelType		1337
+nim	GPUParticles2D_DrawOrder	gdext/builtinindex.html#GPUParticles2D_DrawOrder	enum GPUParticles2D_DrawOrder		1350
+nim	GPUParticles2D_EmitFlags	gdext/builtinindex.html#GPUParticles2D_EmitFlags	enum GPUParticles2D_EmitFlags		1355
+nim	GPUParticles3D_DrawOrder	gdext/builtinindex.html#GPUParticles3D_DrawOrder	enum GPUParticles3D_DrawOrder		1362
+nim	GPUParticles3D_EmitFlags	gdext/builtinindex.html#GPUParticles3D_EmitFlags	enum GPUParticles3D_EmitFlags		1368
+nim	GPUParticles3D_TransformAlign	gdext/builtinindex.html#GPUParticles3D_TransformAlign	enum GPUParticles3D_TransformAlign		1375
+nim	GPUParticlesCollisionHeightField3D_Resolution	gdext/builtinindex.html#GPUParticlesCollisionHeightField3D_Resolution	enum GPUParticlesCollisionHeightField3D_Resolution		1381
+nim	GPUParticlesCollisionHeightField3D_UpdateMode	gdext/builtinindex.html#GPUParticlesCollisionHeightField3D_UpdateMode	enum GPUParticlesCollisionHeightField3D_UpdateMode		1390
+nim	GPUParticlesCollisionSDF3D_Resolution	gdext/builtinindex.html#GPUParticlesCollisionSDF3D_Resolution	enum GPUParticlesCollisionSDF3D_Resolution		1394
+nim	Generic6DOFJoint3D_Param	gdext/builtinindex.html#Generic6DOFJoint3D_Param	enum Generic6DOFJoint3D_Param		1403
+nim	Generic6DOFJoint3D_Flag	gdext/builtinindex.html#Generic6DOFJoint3D_Flag	enum Generic6DOFJoint3D_Flag		1428
+nim	Geometry2D_PolyBooleanOperation	gdext/builtinindex.html#Geometry2D_PolyBooleanOperation	enum Geometry2D_PolyBooleanOperation		1437
+nim	Geometry2D_PolyJoinType	gdext/builtinindex.html#Geometry2D_PolyJoinType	enum Geometry2D_PolyJoinType		1443
+nim	Geometry2D_PolyEndType	gdext/builtinindex.html#Geometry2D_PolyEndType	enum Geometry2D_PolyEndType		1448
+nim	GeometryInstance3D_ShadowCastingSetting	gdext/builtinindex.html#GeometryInstance3D_ShadowCastingSetting	enum GeometryInstance3D_ShadowCastingSetting		1455
+nim	GeometryInstance3D_GIMode	gdext/builtinindex.html#GeometryInstance3D_GIMode	enum GeometryInstance3D_GIMode		1461
+nim	GeometryInstance3D_LightmapScale	gdext/builtinindex.html#GeometryInstance3D_LightmapScale	enum GeometryInstance3D_LightmapScale		1466
+nim	GeometryInstance3D_VisibilityRangeFadeMode	gdext/builtinindex.html#GeometryInstance3D_VisibilityRangeFadeMode	enum GeometryInstance3D_VisibilityRangeFadeMode		1473
+nim	Gradient_InterpolationMode	gdext/builtinindex.html#Gradient_InterpolationMode	enum Gradient_InterpolationMode		1478
+nim	Gradient_ColorSpace	gdext/builtinindex.html#Gradient_ColorSpace	enum Gradient_ColorSpace		1483
+nim	GradientTexture2D_Fill	gdext/builtinindex.html#GradientTexture2D_Fill	enum GradientTexture2D_Fill		1488
+nim	GradientTexture2D_Repeat	gdext/builtinindex.html#GradientTexture2D_Repeat	enum GradientTexture2D_Repeat		1493
+nim	GraphEdit_PanningScheme	gdext/builtinindex.html#GraphEdit_PanningScheme	enum GraphEdit_PanningScheme		1498
+nim	GraphEdit_GridPattern	gdext/builtinindex.html#GraphEdit_GridPattern	enum GraphEdit_GridPattern		1502
+nim	HTTPClient_Method	gdext/builtinindex.html#HTTPClient_Method	enum HTTPClient_Method		1506
+nim	HTTPClient_Status	gdext/builtinindex.html#HTTPClient_Status	enum HTTPClient_Status		1518
+nim	HTTPClient_ResponseCode	gdext/builtinindex.html#HTTPClient_ResponseCode	enum HTTPClient_ResponseCode		1530
+nim	HTTPRequest_Result	gdext/builtinindex.html#HTTPRequest_Result	enum HTTPRequest_Result		1593
+nim	HashingContext_HashType	gdext/builtinindex.html#HashingContext_HashType	enum HashingContext_HashType		1609
+nim	HingeJoint3D_Param	gdext/builtinindex.html#HingeJoint3D_Param	enum HingeJoint3D_Param		1614
+nim	HingeJoint3D_Flag	gdext/builtinindex.html#HingeJoint3D_Flag	enum HingeJoint3D_Flag		1625
+nim	IP_ResolverStatus	gdext/builtinindex.html#IP_ResolverStatus	enum IP_ResolverStatus		1630
+nim	IP_Type	gdext/builtinindex.html#IP_Type	enum IP_Type		1636
+nim	Image_Format	gdext/builtinindex.html#Image_Format	enum Image_Format		1642
+nim	Image_Interpolation	gdext/builtinindex.html#Image_Interpolation	enum Image_Interpolation		1684
+nim	Image_AlphaMode	gdext/builtinindex.html#Image_AlphaMode	enum Image_AlphaMode		1691
+nim	Image_CompressMode	gdext/builtinindex.html#Image_CompressMode	enum Image_CompressMode		1696
+nim	Image_UsedChannels	gdext/builtinindex.html#Image_UsedChannels	enum Image_UsedChannels		1704
+nim	Image_CompressSource	gdext/builtinindex.html#Image_CompressSource	enum Image_CompressSource		1712
+nim	Image_ASTCFormat	gdext/builtinindex.html#Image_ASTCFormat	enum Image_ASTCFormat		1717
+nim	flagForceLinear	gdext/builtinindex.html#flagForceLinear	ImageFormatLoader_LoaderFlags.flagForceLinear		1721
+nim	flagConvertColors	gdext/builtinindex.html#flagConvertColors	ImageFormatLoader_LoaderFlags.flagConvertColors		1721
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_4	ImageFormatLoader_LoaderFlags.--Padding-Max--		1721
+nim	ImageFormatLoader_LoaderFlags	gdext/builtinindex.html#ImageFormatLoader_LoaderFlags	enum ImageFormatLoader_LoaderFlags		1721
+nim	Input_MouseMode	gdext/builtinindex.html#Input_MouseMode	enum Input_MouseMode		1727
+nim	Input_CursorShape	gdext/builtinindex.html#Input_CursorShape	enum Input_CursorShape		1735
+nim	ItemList_IconMode	gdext/builtinindex.html#ItemList_IconMode	enum ItemList_IconMode		1754
+nim	ItemList_SelectMode	gdext/builtinindex.html#ItemList_SelectMode	enum ItemList_SelectMode		1758
+nim	JSONRPC_ErrorCode	gdext/builtinindex.html#JSONRPC_ErrorCode	enum JSONRPC_ErrorCode		1763
+nim	Label3D_DrawFlags	gdext/builtinindex.html#Label3D_DrawFlags	enum Label3D_DrawFlags		1770
+nim	Label3D_AlphaCutMode	gdext/builtinindex.html#Label3D_AlphaCutMode	enum Label3D_AlphaCutMode		1777
+nim	Light2D_ShadowFilter	gdext/builtinindex.html#Light2D_ShadowFilter	enum Light2D_ShadowFilter		1783
+nim	Light2D_BlendMode	gdext/builtinindex.html#Light2D_BlendMode	enum Light2D_BlendMode		1788
+nim	Light3D_Param	gdext/builtinindex.html#Light3D_Param	enum Light3D_Param		1793
+nim	Light3D_BakeMode	gdext/builtinindex.html#Light3D_BakeMode	enum Light3D_BakeMode		1817
+nim	LightmapGI_BakeQuality	gdext/builtinindex.html#LightmapGI_BakeQuality	enum LightmapGI_BakeQuality		1822
+nim	LightmapGI_GenerateProbes	gdext/builtinindex.html#LightmapGI_GenerateProbes	enum LightmapGI_GenerateProbes		1828
+nim	LightmapGI_BakeError	gdext/builtinindex.html#LightmapGI_BakeError	enum LightmapGI_BakeError		1835
+nim	LightmapGI_EnvironmentMode	gdext/builtinindex.html#LightmapGI_EnvironmentMode	enum LightmapGI_EnvironmentMode		1849
+nim	LightmapGIData_ShadowmaskMode	gdext/builtinindex.html#LightmapGIData_ShadowmaskMode	enum LightmapGIData_ShadowmaskMode		1855
+nim	Line2D_LineJointMode	gdext/builtinindex.html#Line2D_LineJointMode	enum Line2D_LineJointMode		1860
+nim	Line2D_LineCapMode	gdext/builtinindex.html#Line2D_LineCapMode	enum Line2D_LineCapMode		1865
+nim	Line2D_LineTextureMode	gdext/builtinindex.html#Line2D_LineTextureMode	enum Line2D_LineTextureMode		1870
+nim	LineEdit_MenuItems	gdext/builtinindex.html#LineEdit_MenuItems	enum LineEdit_MenuItems		1875
+nim	LineEdit_VirtualKeyboardType	gdext/builtinindex.html#LineEdit_VirtualKeyboardType	enum LineEdit_VirtualKeyboardType		1909
+nim	LinkButton_UnderlineMode	gdext/builtinindex.html#LinkButton_UnderlineMode	enum LinkButton_UnderlineMode		1919
+nim	LookAtModifier3D_OriginFrom	gdext/builtinindex.html#LookAtModifier3D_OriginFrom	enum LookAtModifier3D_OriginFrom		1924
+nim	Mesh_PrimitiveType	gdext/builtinindex.html#Mesh_PrimitiveType	enum Mesh_PrimitiveType		1929
+nim	Mesh_ArrayType	gdext/builtinindex.html#Mesh_ArrayType	enum Mesh_ArrayType		1936
+nim	Mesh_ArrayCustomFormat	gdext/builtinindex.html#Mesh_ArrayCustomFormat	enum Mesh_ArrayCustomFormat		1952
+nim	arrayFormatVertex	gdext/builtinindex.html#arrayFormatVertex	Mesh_ArrayFormat.arrayFormatVertex		1963
+nim	arrayFormatNormal	gdext/builtinindex.html#arrayFormatNormal	Mesh_ArrayFormat.arrayFormatNormal		1963
+nim	arrayFormatTangent	gdext/builtinindex.html#arrayFormatTangent	Mesh_ArrayFormat.arrayFormatTangent		1963
+nim	arrayFormatColor	gdext/builtinindex.html#arrayFormatColor	Mesh_ArrayFormat.arrayFormatColor		1963
+nim	arrayFormatTexUv	gdext/builtinindex.html#arrayFormatTexUv	Mesh_ArrayFormat.arrayFormatTexUv		1963
+nim	arrayFormatTexUv2	gdext/builtinindex.html#arrayFormatTexUv2	Mesh_ArrayFormat.arrayFormatTexUv2		1963
+nim	arrayFormatCustom0	gdext/builtinindex.html#arrayFormatCustom0	Mesh_ArrayFormat.arrayFormatCustom0		1963
+nim	arrayFormatCustom1	gdext/builtinindex.html#arrayFormatCustom1	Mesh_ArrayFormat.arrayFormatCustom1		1963
+nim	arrayFormatCustom2	gdext/builtinindex.html#arrayFormatCustom2	Mesh_ArrayFormat.arrayFormatCustom2		1963
+nim	arrayFormatCustom3	gdext/builtinindex.html#arrayFormatCustom3	Mesh_ArrayFormat.arrayFormatCustom3		1963
+nim	arrayFormatBones	gdext/builtinindex.html#arrayFormatBones	Mesh_ArrayFormat.arrayFormatBones		1963
+nim	arrayFormatWeights	gdext/builtinindex.html#arrayFormatWeights	Mesh_ArrayFormat.arrayFormatWeights		1963
+nim	arrayFormatIndex	gdext/builtinindex.html#arrayFormatIndex	Mesh_ArrayFormat.arrayFormatIndex		1963
+nim	arrayFlagUse2DVertices	gdext/builtinindex.html#arrayFlagUse2DVertices	Mesh_ArrayFormat.arrayFlagUse2DVertices		1963
+nim	arrayFlagUseDynamicUpdate	gdext/builtinindex.html#arrayFlagUseDynamicUpdate	Mesh_ArrayFormat.arrayFlagUseDynamicUpdate		1963
+nim	arrayFlagUse8BoneWeights	gdext/builtinindex.html#arrayFlagUse8BoneWeights	Mesh_ArrayFormat.arrayFlagUse8BoneWeights		1963
+nim	arrayFlagUsesEmptyVertexArray	gdext/builtinindex.html#arrayFlagUsesEmptyVertexArray	Mesh_ArrayFormat.arrayFlagUsesEmptyVertexArray		1963
+nim	arrayFlagCompressAttributes	gdext/builtinindex.html#arrayFlagCompressAttributes	Mesh_ArrayFormat.arrayFlagCompressAttributes		1963
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_5	Mesh_ArrayFormat.--Padding-Max--		1963
+nim	Mesh_ArrayFormat	gdext/builtinindex.html#Mesh_ArrayFormat	enum Mesh_ArrayFormat		1963
+nim	arrayFormatCustomBits	gdext/builtinindex.html#arrayFormatCustomBits.t,typedesc[T]	template arrayFormatCustomBits[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1983
+nim	arrayFormatBlendShapeMask	gdext/builtinindex.html#arrayFormatBlendShapeMask.t,typedesc[T]	template arrayFormatBlendShapeMask[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1984
+nim	arrayFormatCustomMask	gdext/builtinindex.html#arrayFormatCustomMask.t,typedesc[T]	template arrayFormatCustomMask[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1985
+nim	arrayFormatCustomBase	gdext/builtinindex.html#arrayFormatCustomBase.t,typedesc[T]	template arrayFormatCustomBase[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1986
+nim	arrayFormatCustom0Shift	gdext/builtinindex.html#arrayFormatCustom0Shift.t,typedesc[T]	template arrayFormatCustom0Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1987
+nim	arrayFormatCustom1Shift	gdext/builtinindex.html#arrayFormatCustom1Shift.t,typedesc[T]	template arrayFormatCustom1Shift[T: Mesh_ArrayFormat](_: typedesc[T]): T		1988
+nim	arrayFormatCustom2Shift	gdext/builtinindex.html#arrayFormatCustom2Shift.t,typedesc[T]	template arrayFormatCustom2Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1989
+nim	arrayFormatCustom3Shift	gdext/builtinindex.html#arrayFormatCustom3Shift.t,typedesc[T]	template arrayFormatCustom3Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1990
+nim	arrayCompressFlagsBase	gdext/builtinindex.html#arrayCompressFlagsBase.t,typedesc[T]	template arrayCompressFlagsBase[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		1991
+nim	Mesh_BlendShapeMode	gdext/builtinindex.html#Mesh_BlendShapeMode	enum Mesh_BlendShapeMode		1993
+nim	MeshConvexDecompositionSettings_Mode	gdext/builtinindex.html#MeshConvexDecompositionSettings_Mode	enum MeshConvexDecompositionSettings_Mode		1997
+nim	MultiMesh_TransformFormat	gdext/builtinindex.html#MultiMesh_TransformFormat	enum MultiMesh_TransformFormat		2001
+nim	MultiMesh_PhysicsInterpolationQuality	gdext/builtinindex.html#MultiMesh_PhysicsInterpolationQuality	enum MultiMesh_PhysicsInterpolationQuality		2005
+nim	MultiplayerAPI_RPCMode	gdext/builtinindex.html#MultiplayerAPI_RPCMode	enum MultiplayerAPI_RPCMode		2009
+nim	MultiplayerPeer_ConnectionStatus	gdext/builtinindex.html#MultiplayerPeer_ConnectionStatus	enum MultiplayerPeer_ConnectionStatus		2014
+nim	MultiplayerPeer_TransferMode	gdext/builtinindex.html#MultiplayerPeer_TransferMode	enum MultiplayerPeer_TransferMode		2019
+nim	MultiplayerSynchronizer_VisibilityUpdateMode	gdext/builtinindex.html#MultiplayerSynchronizer_VisibilityUpdateMode	enum MultiplayerSynchronizer_VisibilityUpdateMode		2024
+nim	NativeMenu_Feature	gdext/builtinindex.html#NativeMenu_Feature	enum NativeMenu_Feature		2029
+nim	NativeMenu_SystemMenus	gdext/builtinindex.html#NativeMenu_SystemMenus	enum NativeMenu_SystemMenus		2036
+nim	NavigationMesh_SamplePartitionType	gdext/builtinindex.html#NavigationMesh_SamplePartitionType	enum NavigationMesh_SamplePartitionType		2044
+nim	NavigationMesh_ParsedGeometryType	gdext/builtinindex.html#NavigationMesh_ParsedGeometryType	enum NavigationMesh_ParsedGeometryType		2050
+nim	NavigationMesh_SourceGeometryMode	gdext/builtinindex.html#NavigationMesh_SourceGeometryMode	enum NavigationMesh_SourceGeometryMode		2056
+nim	NavigationPathQueryParameters2D_PathfindingAlgorithm	gdext/builtinindex.html#NavigationPathQueryParameters2D_PathfindingAlgorithm	enum NavigationPathQueryParameters2D_PathfindingAlgorithm		2062
+nim	NavigationPathQueryParameters2D_PathPostProcessing	gdext/builtinindex.html#NavigationPathQueryParameters2D_PathPostProcessing	enum NavigationPathQueryParameters2D_PathPostProcessing		2065
+nim	pathMetadataIncludeTypes	gdext/builtinindex.html#pathMetadataIncludeTypes	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeTypes		2070
+nim	pathMetadataIncludeRids	gdext/builtinindex.html#pathMetadataIncludeRids	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeRids		2070
+nim	pathMetadataIncludeOwners	gdext/builtinindex.html#pathMetadataIncludeOwners	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeOwners		2070
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_6	NavigationPathQueryParameters2D_PathMetadataFlags.--Padding-Max--		2070
+nim	NavigationPathQueryParameters2D_PathMetadataFlags	gdext/builtinindex.html#NavigationPathQueryParameters2D_PathMetadataFlags	enum NavigationPathQueryParameters2D_PathMetadataFlags		2070
+nim	pathMetadataIncludeAll	gdext/builtinindex.html#pathMetadataIncludeAll.t,typedesc[T]	template pathMetadataIncludeAll[T: NavigationPathQueryParameters2D_PathMetadataFlags](\n    _: typedesc[T]): set[T]		2076
+nim	NavigationPathQueryParameters3D_PathfindingAlgorithm	gdext/builtinindex.html#NavigationPathQueryParameters3D_PathfindingAlgorithm	enum NavigationPathQueryParameters3D_PathfindingAlgorithm		2078
+nim	NavigationPathQueryParameters3D_PathPostProcessing	gdext/builtinindex.html#NavigationPathQueryParameters3D_PathPostProcessing	enum NavigationPathQueryParameters3D_PathPostProcessing		2081
+nim	pathMetadataIncludeTypes	gdext/builtinindex.html#pathMetadataIncludeTypes_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeTypes		2086
+nim	pathMetadataIncludeRids	gdext/builtinindex.html#pathMetadataIncludeRids_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeRids		2086
+nim	pathMetadataIncludeOwners	gdext/builtinindex.html#pathMetadataIncludeOwners_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeOwners		2086
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_7	NavigationPathQueryParameters3D_PathMetadataFlags.--Padding-Max--		2086
+nim	NavigationPathQueryParameters3D_PathMetadataFlags	gdext/builtinindex.html#NavigationPathQueryParameters3D_PathMetadataFlags	enum NavigationPathQueryParameters3D_PathMetadataFlags		2086
+nim	pathMetadataIncludeAll	gdext/builtinindex.html#pathMetadataIncludeAll.t,typedesc[T]_2	template pathMetadataIncludeAll[T: NavigationPathQueryParameters3D_PathMetadataFlags](\n    _: typedesc[T]): set[T]		2092
+nim	NavigationPathQueryResult2D_PathSegmentType	gdext/builtinindex.html#NavigationPathQueryResult2D_PathSegmentType	enum NavigationPathQueryResult2D_PathSegmentType		2094
+nim	NavigationPathQueryResult3D_PathSegmentType	gdext/builtinindex.html#NavigationPathQueryResult3D_PathSegmentType	enum NavigationPathQueryResult3D_PathSegmentType		2098
+nim	NavigationPolygon_SamplePartitionType	gdext/builtinindex.html#NavigationPolygon_SamplePartitionType	enum NavigationPolygon_SamplePartitionType		2102
+nim	NavigationPolygon_ParsedGeometryType	gdext/builtinindex.html#NavigationPolygon_ParsedGeometryType	enum NavigationPolygon_ParsedGeometryType		2107
+nim	NavigationPolygon_SourceGeometryMode	gdext/builtinindex.html#NavigationPolygon_SourceGeometryMode	enum NavigationPolygon_SourceGeometryMode		2113
+nim	NavigationServer3D_ProcessInfo	gdext/builtinindex.html#NavigationServer3D_ProcessInfo	enum NavigationServer3D_ProcessInfo		2119
+nim	NinePatchRect_AxisStretchMode	gdext/builtinindex.html#NinePatchRect_AxisStretchMode	enum NinePatchRect_AxisStretchMode		2131
+nim	Node_ProcessMode	gdext/builtinindex.html#Node_ProcessMode	enum Node_ProcessMode		2136
+nim	Node_ProcessThreadGroup	gdext/builtinindex.html#Node_ProcessThreadGroup	enum Node_ProcessThreadGroup		2143
+nim	flagProcessThreadMessages	gdext/builtinindex.html#flagProcessThreadMessages	Node_ProcessThreadMessages.flagProcessThreadMessages		2148
+nim	flagProcessThreadMessagesPhysics	gdext/builtinindex.html#flagProcessThreadMessagesPhysics	Node_ProcessThreadMessages.flagProcessThreadMessagesPhysics		2148
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_8	Node_ProcessThreadMessages.--Padding-Max--		2148
+nim	Node_ProcessThreadMessages	gdext/builtinindex.html#Node_ProcessThreadMessages	enum Node_ProcessThreadMessages		2148
+nim	flagProcessThreadMessagesAll	gdext/builtinindex.html#flagProcessThreadMessagesAll.t,typedesc[T]	template flagProcessThreadMessagesAll[T: Node_ProcessThreadMessages](_: typedesc[T]): set[\n    T]		2152
+nim	Node_PhysicsInterpolationMode	gdext/builtinindex.html#Node_PhysicsInterpolationMode	enum Node_PhysicsInterpolationMode		2154
+nim	Node_DuplicateFlags	gdext/builtinindex.html#Node_DuplicateFlags	enum Node_DuplicateFlags		2159
+nim	Node_InternalMode	gdext/builtinindex.html#Node_InternalMode	enum Node_InternalMode		2165
+nim	Node_AutoTranslateMode	gdext/builtinindex.html#Node_AutoTranslateMode	enum Node_AutoTranslateMode		2170
+nim	Node3D_RotationEditMode	gdext/builtinindex.html#Node3D_RotationEditMode	enum Node3D_RotationEditMode		2175
+nim	OS_RenderingDriver	gdext/builtinindex.html#OS_RenderingDriver	enum OS_RenderingDriver		2180
+nim	OS_SystemDir	gdext/builtinindex.html#OS_SystemDir	enum OS_SystemDir		2186
+nim	OS_StdHandleType	gdext/builtinindex.html#OS_StdHandleType	enum OS_StdHandleType		2196
+nim	Object_ConnectFlags	gdext/builtinindex.html#Object_ConnectFlags	enum Object_ConnectFlags		2203
+nim	OccluderPolygon2D_CullMode	gdext/builtinindex.html#OccluderPolygon2D_CullMode	enum OccluderPolygon2D_CullMode		2209
+nim	OmniLight3D_ShadowMode	gdext/builtinindex.html#OmniLight3D_ShadowMode	enum OmniLight3D_ShadowMode		2214
+nim	OpenXRAPIExtension_OpenXRAlphaBlendModeSupport	gdext/builtinindex.html#OpenXRAPIExtension_OpenXRAlphaBlendModeSupport	enum OpenXRAPIExtension_OpenXRAlphaBlendModeSupport		2218
+nim	OpenXRAction_ActionType	gdext/builtinindex.html#OpenXRAction_ActionType	enum OpenXRAction_ActionType		2223
+nim	OpenXRHand_Hands	gdext/builtinindex.html#OpenXRHand_Hands	enum OpenXRHand_Hands		2229
+nim	OpenXRHand_MotionRange	gdext/builtinindex.html#OpenXRHand_MotionRange	enum OpenXRHand_MotionRange		2234
+nim	OpenXRHand_SkeletonRig	gdext/builtinindex.html#OpenXRHand_SkeletonRig	enum OpenXRHand_SkeletonRig		2239
+nim	OpenXRHand_BoneUpdate	gdext/builtinindex.html#OpenXRHand_BoneUpdate	enum OpenXRHand_BoneUpdate		2244
+nim	OpenXRInterface_Hand	gdext/builtinindex.html#OpenXRInterface_Hand	enum OpenXRInterface_Hand		2249
+nim	OpenXRInterface_HandMotionRange	gdext/builtinindex.html#OpenXRInterface_HandMotionRange	enum OpenXRInterface_HandMotionRange		2254
+nim	OpenXRInterface_HandTrackedSource	gdext/builtinindex.html#OpenXRInterface_HandTrackedSource	enum OpenXRInterface_HandTrackedSource		2259
+nim	OpenXRInterface_HandJoints	gdext/builtinindex.html#OpenXRInterface_HandJoints	enum OpenXRInterface_HandJoints		2265
+nim	handJointOrientationValid	gdext/builtinindex.html#handJointOrientationValid	OpenXRInterface_HandJointFlags.handJointOrientationValid		2294
+nim	handJointOrientationTracked	gdext/builtinindex.html#handJointOrientationTracked	OpenXRInterface_HandJointFlags.handJointOrientationTracked		2294
+nim	handJointPositionValid	gdext/builtinindex.html#handJointPositionValid	OpenXRInterface_HandJointFlags.handJointPositionValid		2294
+nim	handJointPositionTracked	gdext/builtinindex.html#handJointPositionTracked	OpenXRInterface_HandJointFlags.handJointPositionTracked		2294
+nim	handJointLinearVelocityValid	gdext/builtinindex.html#handJointLinearVelocityValid	OpenXRInterface_HandJointFlags.handJointLinearVelocityValid		2294
+nim	handJointAngularVelocityValid	gdext/builtinindex.html#handJointAngularVelocityValid	OpenXRInterface_HandJointFlags.handJointAngularVelocityValid		2294
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_9	OpenXRInterface_HandJointFlags.--Padding-Max--		2294
+nim	OpenXRInterface_HandJointFlags	gdext/builtinindex.html#OpenXRInterface_HandJointFlags	enum OpenXRInterface_HandJointFlags		2294
+nim	PackedScene_GenEditState	gdext/builtinindex.html#PackedScene_GenEditState	enum PackedScene_GenEditState		2304
+nim	PacketPeerDTLS_Status	gdext/builtinindex.html#PacketPeerDTLS_Status	enum PacketPeerDTLS_Status		2310
+nim	ParticleProcessMaterial_Parameter	gdext/builtinindex.html#ParticleProcessMaterial_Parameter	enum ParticleProcessMaterial_Parameter		2317
+nim	ParticleProcessMaterial_ParticleFlags	gdext/builtinindex.html#ParticleProcessMaterial_ParticleFlags	enum ParticleProcessMaterial_ParticleFlags		2338
+nim	ParticleProcessMaterial_EmissionShape	gdext/builtinindex.html#ParticleProcessMaterial_EmissionShape	enum ParticleProcessMaterial_EmissionShape		2345
+nim	ParticleProcessMaterial_SubEmitterMode	gdext/builtinindex.html#ParticleProcessMaterial_SubEmitterMode	enum ParticleProcessMaterial_SubEmitterMode		2355
+nim	ParticleProcessMaterial_CollisionMode	gdext/builtinindex.html#ParticleProcessMaterial_CollisionMode	enum ParticleProcessMaterial_CollisionMode		2363
+nim	PathFollow3D_RotationMode	gdext/builtinindex.html#PathFollow3D_RotationMode	enum PathFollow3D_RotationMode		2369
+nim	Performance_Monitor	gdext/builtinindex.html#Performance_Monitor	enum Performance_Monitor		2376
+nim	PhysicalBone3D_DampMode	gdext/builtinindex.html#PhysicalBone3D_DampMode	enum PhysicalBone3D_DampMode		2418
+nim	PhysicalBone3D_JointType	gdext/builtinindex.html#PhysicalBone3D_JointType	enum PhysicalBone3D_JointType		2422
+nim	PhysicsServer2D_SpaceParameter	gdext/builtinindex.html#PhysicsServer2D_SpaceParameter	enum PhysicsServer2D_SpaceParameter		2430
+nim	PhysicsServer2D_ShapeType	gdext/builtinindex.html#PhysicsServer2D_ShapeType	enum PhysicsServer2D_ShapeType		2441
+nim	PhysicsServer2D_AreaParameter	gdext/builtinindex.html#PhysicsServer2D_AreaParameter	enum PhysicsServer2D_AreaParameter		2452
+nim	PhysicsServer2D_AreaSpaceOverrideMode	gdext/builtinindex.html#PhysicsServer2D_AreaSpaceOverrideMode	enum PhysicsServer2D_AreaSpaceOverrideMode		2464
+nim	PhysicsServer2D_BodyMode	gdext/builtinindex.html#PhysicsServer2D_BodyMode	enum PhysicsServer2D_BodyMode		2471
+nim	PhysicsServer2D_BodyParameter	gdext/builtinindex.html#PhysicsServer2D_BodyParameter	enum PhysicsServer2D_BodyParameter		2477
+nim	PhysicsServer2D_BodyDampMode	gdext/builtinindex.html#PhysicsServer2D_BodyDampMode	enum PhysicsServer2D_BodyDampMode		2490
+nim	PhysicsServer2D_BodyState	gdext/builtinindex.html#PhysicsServer2D_BodyState	enum PhysicsServer2D_BodyState		2494
+nim	PhysicsServer2D_JointType	gdext/builtinindex.html#PhysicsServer2D_JointType	enum PhysicsServer2D_JointType		2501
+nim	PhysicsServer2D_JointParam	gdext/builtinindex.html#PhysicsServer2D_JointParam	enum PhysicsServer2D_JointParam		2507
+nim	PhysicsServer2D_PinJointParam	gdext/builtinindex.html#PhysicsServer2D_PinJointParam	enum PhysicsServer2D_PinJointParam		2512
+nim	PhysicsServer2D_PinJointFlag	gdext/builtinindex.html#PhysicsServer2D_PinJointFlag	enum PhysicsServer2D_PinJointFlag		2518
+nim	PhysicsServer2D_DampedSpringParam	gdext/builtinindex.html#PhysicsServer2D_DampedSpringParam	enum PhysicsServer2D_DampedSpringParam		2522
+nim	PhysicsServer2D_CCDMode	gdext/builtinindex.html#PhysicsServer2D_CCDMode	enum PhysicsServer2D_CCDMode		2527
+nim	PhysicsServer2D_AreaBodyStatus	gdext/builtinindex.html#PhysicsServer2D_AreaBodyStatus	enum PhysicsServer2D_AreaBodyStatus		2532
+nim	PhysicsServer2D_ProcessInfo	gdext/builtinindex.html#PhysicsServer2D_ProcessInfo	enum PhysicsServer2D_ProcessInfo		2536
+nim	PhysicsServer3D_JointType	gdext/builtinindex.html#PhysicsServer3D_JointType	enum PhysicsServer3D_JointType		2541
+nim	PhysicsServer3D_PinJointParam	gdext/builtinindex.html#PhysicsServer3D_PinJointParam	enum PhysicsServer3D_PinJointParam		2549
+nim	PhysicsServer3D_HingeJointParam	gdext/builtinindex.html#PhysicsServer3D_HingeJointParam	enum PhysicsServer3D_HingeJointParam		2554
+nim	PhysicsServer3D_HingeJointFlag	gdext/builtinindex.html#PhysicsServer3D_HingeJointFlag	enum PhysicsServer3D_HingeJointFlag		2564
+nim	PhysicsServer3D_SliderJointParam	gdext/builtinindex.html#PhysicsServer3D_SliderJointParam	enum PhysicsServer3D_SliderJointParam		2568
+nim	PhysicsServer3D_ConeTwistJointParam	gdext/builtinindex.html#PhysicsServer3D_ConeTwistJointParam	enum PhysicsServer3D_ConeTwistJointParam		2593
+nim	PhysicsServer3D_G6DOFJointAxisParam	gdext/builtinindex.html#PhysicsServer3D_G6DOFJointAxisParam	enum PhysicsServer3D_G6DOFJointAxisParam		2600
+nim	PhysicsServer3D_G6DOFJointAxisFlag	gdext/builtinindex.html#PhysicsServer3D_G6DOFJointAxisFlag	enum PhysicsServer3D_G6DOFJointAxisFlag		2625
+nim	PhysicsServer3D_ShapeType	gdext/builtinindex.html#PhysicsServer3D_ShapeType	enum PhysicsServer3D_ShapeType		2634
+nim	PhysicsServer3D_AreaParameter	gdext/builtinindex.html#PhysicsServer3D_AreaParameter	enum PhysicsServer3D_AreaParameter		2647
+nim	PhysicsServer3D_AreaSpaceOverrideMode	gdext/builtinindex.html#PhysicsServer3D_AreaSpaceOverrideMode	enum PhysicsServer3D_AreaSpaceOverrideMode		2663
+nim	PhysicsServer3D_BodyMode	gdext/builtinindex.html#PhysicsServer3D_BodyMode	enum PhysicsServer3D_BodyMode		2670
+nim	PhysicsServer3D_BodyParameter	gdext/builtinindex.html#PhysicsServer3D_BodyParameter	enum PhysicsServer3D_BodyParameter		2676
+nim	PhysicsServer3D_BodyDampMode	gdext/builtinindex.html#PhysicsServer3D_BodyDampMode	enum PhysicsServer3D_BodyDampMode		2689
+nim	PhysicsServer3D_BodyState	gdext/builtinindex.html#PhysicsServer3D_BodyState	enum PhysicsServer3D_BodyState		2693
+nim	PhysicsServer3D_AreaBodyStatus	gdext/builtinindex.html#PhysicsServer3D_AreaBodyStatus	enum PhysicsServer3D_AreaBodyStatus		2700
+nim	PhysicsServer3D_ProcessInfo	gdext/builtinindex.html#PhysicsServer3D_ProcessInfo	enum PhysicsServer3D_ProcessInfo		2704
+nim	PhysicsServer3D_SpaceParameter	gdext/builtinindex.html#PhysicsServer3D_SpaceParameter	enum PhysicsServer3D_SpaceParameter		2709
+nim	PhysicsServer3D_BodyAxis	gdext/builtinindex.html#PhysicsServer3D_BodyAxis	enum PhysicsServer3D_BodyAxis		2719
+nim	PinJoint3D_Param	gdext/builtinindex.html#PinJoint3D_Param	enum PinJoint3D_Param		2727
+nim	PlaneMesh_Orientation	gdext/builtinindex.html#PlaneMesh_Orientation	enum PlaneMesh_Orientation		2732
+nim	PortableCompressedTexture2D_CompressionMode	gdext/builtinindex.html#PortableCompressedTexture2D_CompressionMode	enum PortableCompressedTexture2D_CompressionMode		2737
+nim	ProgressBar_FillMode	gdext/builtinindex.html#ProgressBar_FillMode	enum ProgressBar_FillMode		2745
+nim	ReflectionProbe_UpdateMode	gdext/builtinindex.html#ReflectionProbe_UpdateMode	enum ReflectionProbe_UpdateMode		2751
+nim	ReflectionProbe_AmbientMode	gdext/builtinindex.html#ReflectionProbe_AmbientMode	enum ReflectionProbe_AmbientMode		2755
+nim	RenderingDevice_DeviceType	gdext/builtinindex.html#RenderingDevice_DeviceType	enum RenderingDevice_DeviceType		2760
+nim	RenderingDevice_DriverResource	gdext/builtinindex.html#RenderingDevice_DriverResource	enum RenderingDevice_DriverResource		2768
+nim	driverResourceVulkanDevice	gdext/builtinindex.html#driverResourceVulkanDevice.t,typedesc[T]	template driverResourceVulkanDevice[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2782
+nim	driverResourceVulkanPhysicalDevice	gdext/builtinindex.html#driverResourceVulkanPhysicalDevice.t,typedesc[T]	template driverResourceVulkanPhysicalDevice[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2783
+nim	driverResourceVulkanInstance	gdext/builtinindex.html#driverResourceVulkanInstance.t,typedesc[T]	template driverResourceVulkanInstance[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2784
+nim	driverResourceVulkanQueue	gdext/builtinindex.html#driverResourceVulkanQueue.t,typedesc[T]	template driverResourceVulkanQueue[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2785
+nim	driverResourceVulkanQueueFamilyIndex	gdext/builtinindex.html#driverResourceVulkanQueueFamilyIndex.t,typedesc[T]	template driverResourceVulkanQueueFamilyIndex[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2786
+nim	driverResourceVulkanImage	gdext/builtinindex.html#driverResourceVulkanImage.t,typedesc[T]	template driverResourceVulkanImage[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2787
+nim	driverResourceVulkanImageView	gdext/builtinindex.html#driverResourceVulkanImageView.t,typedesc[T]	template driverResourceVulkanImageView[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2788
+nim	driverResourceVulkanImageNativeTextureFormat	gdext/builtinindex.html#driverResourceVulkanImageNativeTextureFormat.t,typedesc[T]	template driverResourceVulkanImageNativeTextureFormat[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2789
+nim	driverResourceVulkanSampler	gdext/builtinindex.html#driverResourceVulkanSampler.t,typedesc[T]	template driverResourceVulkanSampler[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2790
+nim	driverResourceVulkanDescriptorSet	gdext/builtinindex.html#driverResourceVulkanDescriptorSet.t,typedesc[T]	template driverResourceVulkanDescriptorSet[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2791
+nim	driverResourceVulkanBuffer	gdext/builtinindex.html#driverResourceVulkanBuffer.t,typedesc[T]	template driverResourceVulkanBuffer[T: RenderingDevice_DriverResource](_: typedesc[T]): T		2792
+nim	driverResourceVulkanComputePipeline	gdext/builtinindex.html#driverResourceVulkanComputePipeline.t,typedesc[T]	template driverResourceVulkanComputePipeline[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2793
+nim	driverResourceVulkanRenderPipeline	gdext/builtinindex.html#driverResourceVulkanRenderPipeline.t,typedesc[T]	template driverResourceVulkanRenderPipeline[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		2794
+nim	RenderingDevice_DataFormat	gdext/builtinindex.html#RenderingDevice_DataFormat	enum RenderingDevice_DataFormat		2796
+nim	barrierMaskVertex	gdext/builtinindex.html#barrierMaskVertex	RenderingDevice_BarrierMask.barrierMaskVertex		3017
+nim	barrierMaskCompute	gdext/builtinindex.html#barrierMaskCompute	RenderingDevice_BarrierMask.barrierMaskCompute		3017
+nim	barrierMaskTransfer	gdext/builtinindex.html#barrierMaskTransfer	RenderingDevice_BarrierMask.barrierMaskTransfer		3017
+nim	barrierMaskFragment	gdext/builtinindex.html#barrierMaskFragment	RenderingDevice_BarrierMask.barrierMaskFragment		3017
+nim	barrierMaskNoBarrier	gdext/builtinindex.html#barrierMaskNoBarrier	RenderingDevice_BarrierMask.barrierMaskNoBarrier		3017
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_10	RenderingDevice_BarrierMask.--Padding-Max--		3017
+nim	RenderingDevice_BarrierMask	gdext/builtinindex.html#RenderingDevice_BarrierMask	enum RenderingDevice_BarrierMask		3017
+nim	barrierMaskRaster	gdext/builtinindex.html#barrierMaskRaster.t,typedesc[T]	template barrierMaskRaster[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]		3024
+nim	barrierMaskAllBarriers	gdext/builtinindex.html#barrierMaskAllBarriers.t,typedesc[T]	template barrierMaskAllBarriers[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]		3025
+nim	RenderingDevice_TextureType	gdext/builtinindex.html#RenderingDevice_TextureType	enum RenderingDevice_TextureType		3027
+nim	RenderingDevice_TextureSamples	gdext/builtinindex.html#RenderingDevice_TextureSamples	enum RenderingDevice_TextureSamples		3037
+nim	textureUsageSamplingBit	gdext/builtinindex.html#textureUsageSamplingBit	RenderingDevice_TextureUsageBits.textureUsageSamplingBit		3047
+nim	textureUsageColorAttachmentBit	gdext/builtinindex.html#textureUsageColorAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageColorAttachmentBit		3047
+nim	textureUsageDepthStencilAttachmentBit	gdext/builtinindex.html#textureUsageDepthStencilAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageDepthStencilAttachmentBit		3047
+nim	textureUsageStorageBit	gdext/builtinindex.html#textureUsageStorageBit	RenderingDevice_TextureUsageBits.textureUsageStorageBit		3047
+nim	textureUsageStorageAtomicBit	gdext/builtinindex.html#textureUsageStorageAtomicBit	RenderingDevice_TextureUsageBits.textureUsageStorageAtomicBit		3047
+nim	textureUsageCpuReadBit	gdext/builtinindex.html#textureUsageCpuReadBit	RenderingDevice_TextureUsageBits.textureUsageCpuReadBit		3047
+nim	textureUsageCanUpdateBit	gdext/builtinindex.html#textureUsageCanUpdateBit	RenderingDevice_TextureUsageBits.textureUsageCanUpdateBit		3047
+nim	textureUsageCanCopyFromBit	gdext/builtinindex.html#textureUsageCanCopyFromBit	RenderingDevice_TextureUsageBits.textureUsageCanCopyFromBit		3047
+nim	textureUsageCanCopyToBit	gdext/builtinindex.html#textureUsageCanCopyToBit	RenderingDevice_TextureUsageBits.textureUsageCanCopyToBit		3047
+nim	textureUsageInputAttachmentBit	gdext/builtinindex.html#textureUsageInputAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageInputAttachmentBit		3047
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_11	RenderingDevice_TextureUsageBits.--Padding-Max--		3047
+nim	RenderingDevice_TextureUsageBits	gdext/builtinindex.html#RenderingDevice_TextureUsageBits	enum RenderingDevice_TextureUsageBits		3047
+nim	RenderingDevice_TextureSwizzle	gdext/builtinindex.html#RenderingDevice_TextureSwizzle	enum RenderingDevice_TextureSwizzle		3060
+nim	RenderingDevice_TextureSliceType	gdext/builtinindex.html#RenderingDevice_TextureSliceType	enum RenderingDevice_TextureSliceType		3070
+nim	RenderingDevice_SamplerFilter	gdext/builtinindex.html#RenderingDevice_SamplerFilter	enum RenderingDevice_SamplerFilter		3075
+nim	RenderingDevice_SamplerRepeatMode	gdext/builtinindex.html#RenderingDevice_SamplerRepeatMode	enum RenderingDevice_SamplerRepeatMode		3079
+nim	RenderingDevice_SamplerBorderColor	gdext/builtinindex.html#RenderingDevice_SamplerBorderColor	enum RenderingDevice_SamplerBorderColor		3087
+nim	RenderingDevice_VertexFrequency	gdext/builtinindex.html#RenderingDevice_VertexFrequency	enum RenderingDevice_VertexFrequency		3096
+nim	RenderingDevice_IndexBufferFormat	gdext/builtinindex.html#RenderingDevice_IndexBufferFormat	enum RenderingDevice_IndexBufferFormat		3100
+nim	storageBufferUsageDispatchIndirect	gdext/builtinindex.html#storageBufferUsageDispatchIndirect	RenderingDevice_StorageBufferUsage.storageBufferUsageDispatchIndirect		3104
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_12	RenderingDevice_StorageBufferUsage.--Padding-Max--		3104
+nim	RenderingDevice_StorageBufferUsage	gdext/builtinindex.html#RenderingDevice_StorageBufferUsage	enum RenderingDevice_StorageBufferUsage		3104
+nim	bufferCreationDeviceAddressBit	gdext/builtinindex.html#bufferCreationDeviceAddressBit	RenderingDevice_BufferCreationBits.bufferCreationDeviceAddressBit		3108
+nim	bufferCreationAsStorageBit	gdext/builtinindex.html#bufferCreationAsStorageBit	RenderingDevice_BufferCreationBits.bufferCreationAsStorageBit		3108
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_13	RenderingDevice_BufferCreationBits.--Padding-Max--		3108
+nim	RenderingDevice_BufferCreationBits	gdext/builtinindex.html#RenderingDevice_BufferCreationBits	enum RenderingDevice_BufferCreationBits		3108
+nim	RenderingDevice_UniformType	gdext/builtinindex.html#RenderingDevice_UniformType	enum RenderingDevice_UniformType		3113
+nim	RenderingDevice_RenderPrimitive	gdext/builtinindex.html#RenderingDevice_RenderPrimitive	enum RenderingDevice_RenderPrimitive		3126
+nim	RenderingDevice_PolygonCullMode	gdext/builtinindex.html#RenderingDevice_PolygonCullMode	enum RenderingDevice_PolygonCullMode		3140
+nim	RenderingDevice_PolygonFrontFace	gdext/builtinindex.html#RenderingDevice_PolygonFrontFace	enum RenderingDevice_PolygonFrontFace		3145
+nim	RenderingDevice_StencilOperation	gdext/builtinindex.html#RenderingDevice_StencilOperation	enum RenderingDevice_StencilOperation		3149
+nim	RenderingDevice_CompareOperator	gdext/builtinindex.html#RenderingDevice_CompareOperator	enum RenderingDevice_CompareOperator		3160
+nim	RenderingDevice_LogicOperation	gdext/builtinindex.html#RenderingDevice_LogicOperation	enum RenderingDevice_LogicOperation		3171
+nim	RenderingDevice_BlendFactor	gdext/builtinindex.html#RenderingDevice_BlendFactor	enum RenderingDevice_BlendFactor		3190
+nim	RenderingDevice_BlendOperation	gdext/builtinindex.html#RenderingDevice_BlendOperation	enum RenderingDevice_BlendOperation		3212
+nim	dynamicStateLineWidth	gdext/builtinindex.html#dynamicStateLineWidth	RenderingDevice_PipelineDynamicStateFlags.dynamicStateLineWidth		3220
+nim	dynamicStateDepthBias	gdext/builtinindex.html#dynamicStateDepthBias	RenderingDevice_PipelineDynamicStateFlags.dynamicStateDepthBias		3220
+nim	dynamicStateBlendConstants	gdext/builtinindex.html#dynamicStateBlendConstants	RenderingDevice_PipelineDynamicStateFlags.dynamicStateBlendConstants		3220
+nim	dynamicStateDepthBounds	gdext/builtinindex.html#dynamicStateDepthBounds	RenderingDevice_PipelineDynamicStateFlags.dynamicStateDepthBounds		3220
+nim	dynamicStateStencilCompareMask	gdext/builtinindex.html#dynamicStateStencilCompareMask	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilCompareMask		3220
+nim	dynamicStateStencilWriteMask	gdext/builtinindex.html#dynamicStateStencilWriteMask	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilWriteMask		3220
+nim	dynamicStateStencilReference	gdext/builtinindex.html#dynamicStateStencilReference	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilReference		3220
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_14	RenderingDevice_PipelineDynamicStateFlags.--Padding-Max--		3220
+nim	RenderingDevice_PipelineDynamicStateFlags	gdext/builtinindex.html#RenderingDevice_PipelineDynamicStateFlags	enum RenderingDevice_PipelineDynamicStateFlags		3220
+nim	RenderingDevice_InitialAction	gdext/builtinindex.html#RenderingDevice_InitialAction	enum RenderingDevice_InitialAction		3230
+nim	initialActionKeep	gdext/builtinindex.html#initialActionKeep.t,typedesc[T]	template initialActionKeep[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3235
+nim	initialActionContinue	gdext/builtinindex.html#initialActionContinue.t,typedesc[T]	template initialActionContinue[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3236
+nim	initialActionClearRegion	gdext/builtinindex.html#initialActionClearRegion.t,typedesc[T]	template initialActionClearRegion[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3237
+nim	initialActionClearRegionContinue	gdext/builtinindex.html#initialActionClearRegionContinue.t,typedesc[T]	template initialActionClearRegionContinue[T: RenderingDevice_InitialAction](\n    _: typedesc[T]): T		3238
+nim	initialActionDrop	gdext/builtinindex.html#initialActionDrop.t,typedesc[T]	template initialActionDrop[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3239
+nim	RenderingDevice_FinalAction	gdext/builtinindex.html#RenderingDevice_FinalAction	enum RenderingDevice_FinalAction		3241
+nim	finalActionRead	gdext/builtinindex.html#finalActionRead.t,typedesc[T]	template finalActionRead[T: RenderingDevice_FinalAction](_: typedesc[T]): T		3245
+nim	finalActionContinue	gdext/builtinindex.html#finalActionContinue.t,typedesc[T]	template finalActionContinue[T: RenderingDevice_FinalAction](_: typedesc[T]): T		3246
+nim	RenderingDevice_ShaderStage	gdext/builtinindex.html#RenderingDevice_ShaderStage	enum RenderingDevice_ShaderStage		3248
+nim	shaderStageVertexBit	gdext/builtinindex.html#shaderStageVertexBit.t,typedesc[T]	template shaderStageVertexBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3257
+nim	shaderStageFragmentBit	gdext/builtinindex.html#shaderStageFragmentBit.t,typedesc[T]	template shaderStageFragmentBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3258
+nim	shaderStageTesselationControlBit	gdext/builtinindex.html#shaderStageTesselationControlBit.t,typedesc[T]	template shaderStageTesselationControlBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3259
+nim	RenderingDevice_ShaderLanguage	gdext/builtinindex.html#RenderingDevice_ShaderLanguage	enum RenderingDevice_ShaderLanguage		3261
+nim	RenderingDevice_PipelineSpecializationConstantType	gdext/builtinindex.html#RenderingDevice_PipelineSpecializationConstantType	enum RenderingDevice_PipelineSpecializationConstantType		3265
+nim	RenderingDevice_Features	gdext/builtinindex.html#RenderingDevice_Features	enum RenderingDevice_Features		3270
+nim	RenderingDevice_Limit	gdext/builtinindex.html#RenderingDevice_Limit	enum RenderingDevice_Limit		3273
+nim	RenderingDevice_MemoryType	gdext/builtinindex.html#RenderingDevice_MemoryType	enum RenderingDevice_MemoryType		3314
+nim	RenderingDevice_BreadcrumbMarker	gdext/builtinindex.html#RenderingDevice_BreadcrumbMarker	enum RenderingDevice_BreadcrumbMarker		3319
+nim	drawClearColor0	gdext/builtinindex.html#drawClearColor0	RenderingDevice_DrawFlags.drawClearColor0		3334
+nim	drawClearColor1	gdext/builtinindex.html#drawClearColor1	RenderingDevice_DrawFlags.drawClearColor1		3334
+nim	drawClearColor2	gdext/builtinindex.html#drawClearColor2	RenderingDevice_DrawFlags.drawClearColor2		3334
+nim	drawClearColor3	gdext/builtinindex.html#drawClearColor3	RenderingDevice_DrawFlags.drawClearColor3		3334
+nim	drawClearColor4	gdext/builtinindex.html#drawClearColor4	RenderingDevice_DrawFlags.drawClearColor4		3334
+nim	drawClearColor5	gdext/builtinindex.html#drawClearColor5	RenderingDevice_DrawFlags.drawClearColor5		3334
+nim	drawClearColor6	gdext/builtinindex.html#drawClearColor6	RenderingDevice_DrawFlags.drawClearColor6		3334
+nim	drawClearColor7	gdext/builtinindex.html#drawClearColor7	RenderingDevice_DrawFlags.drawClearColor7		3334
+nim	drawIgnoreColor0	gdext/builtinindex.html#drawIgnoreColor0	RenderingDevice_DrawFlags.drawIgnoreColor0		3334
+nim	drawIgnoreColor1	gdext/builtinindex.html#drawIgnoreColor1	RenderingDevice_DrawFlags.drawIgnoreColor1		3334
+nim	drawIgnoreColor2	gdext/builtinindex.html#drawIgnoreColor2	RenderingDevice_DrawFlags.drawIgnoreColor2		3334
+nim	drawIgnoreColor3	gdext/builtinindex.html#drawIgnoreColor3	RenderingDevice_DrawFlags.drawIgnoreColor3		3334
+nim	drawIgnoreColor4	gdext/builtinindex.html#drawIgnoreColor4	RenderingDevice_DrawFlags.drawIgnoreColor4		3334
+nim	drawIgnoreColor5	gdext/builtinindex.html#drawIgnoreColor5	RenderingDevice_DrawFlags.drawIgnoreColor5		3334
+nim	drawIgnoreColor6	gdext/builtinindex.html#drawIgnoreColor6	RenderingDevice_DrawFlags.drawIgnoreColor6		3334
+nim	drawIgnoreColor7	gdext/builtinindex.html#drawIgnoreColor7	RenderingDevice_DrawFlags.drawIgnoreColor7		3334
+nim	drawClearDepth	gdext/builtinindex.html#drawClearDepth	RenderingDevice_DrawFlags.drawClearDepth		3334
+nim	drawIgnoreDepth	gdext/builtinindex.html#drawIgnoreDepth	RenderingDevice_DrawFlags.drawIgnoreDepth		3334
+nim	drawClearStencil	gdext/builtinindex.html#drawClearStencil	RenderingDevice_DrawFlags.drawClearStencil		3334
+nim	drawIgnoreStencil	gdext/builtinindex.html#drawIgnoreStencil	RenderingDevice_DrawFlags.drawIgnoreStencil		3334
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_15	RenderingDevice_DrawFlags.--Padding-Max--		3334
+nim	RenderingDevice_DrawFlags	gdext/builtinindex.html#RenderingDevice_DrawFlags	enum RenderingDevice_DrawFlags		3334
+nim	drawClearColorMask	gdext/builtinindex.html#drawClearColorMask.t,typedesc[T]	template drawClearColorMask[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3357
+nim	drawClearColorAll	gdext/builtinindex.html#drawClearColorAll.t,typedesc[T]	template drawClearColorAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3358
+nim	drawIgnoreColorMask	gdext/builtinindex.html#drawIgnoreColorMask.t,typedesc[T]	template drawIgnoreColorMask[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3359
+nim	drawIgnoreColorAll	gdext/builtinindex.html#drawIgnoreColorAll.t,typedesc[T]	template drawIgnoreColorAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3360
+nim	drawClearAll	gdext/builtinindex.html#drawClearAll.t,typedesc[T]	template drawClearAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3361
+nim	drawIgnoreAll	gdext/builtinindex.html#drawIgnoreAll.t,typedesc[T]	template drawIgnoreAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3362
+nim	RenderingServer_TextureType	gdext/builtinindex.html#RenderingServer_TextureType	enum RenderingServer_TextureType		3364
+nim	RenderingServer_TextureLayeredType	gdext/builtinindex.html#RenderingServer_TextureLayeredType	enum RenderingServer_TextureLayeredType		3369
+nim	RenderingServer_CubeMapLayer	gdext/builtinindex.html#RenderingServer_CubeMapLayer	enum RenderingServer_CubeMapLayer		3374
+nim	RenderingServer_ShaderMode	gdext/builtinindex.html#RenderingServer_ShaderMode	enum RenderingServer_ShaderMode		3382
+nim	RenderingServer_ArrayType	gdext/builtinindex.html#RenderingServer_ArrayType	enum RenderingServer_ArrayType		3390
+nim	RenderingServer_ArrayCustomFormat	gdext/builtinindex.html#RenderingServer_ArrayCustomFormat	enum RenderingServer_ArrayCustomFormat		3406
+nim	arrayFormatVertex	gdext/builtinindex.html#arrayFormatVertex_2	RenderingServer_ArrayFormat.arrayFormatVertex		3417
+nim	arrayFormatNormal	gdext/builtinindex.html#arrayFormatNormal_2	RenderingServer_ArrayFormat.arrayFormatNormal		3417
+nim	arrayFormatTangent	gdext/builtinindex.html#arrayFormatTangent_2	RenderingServer_ArrayFormat.arrayFormatTangent		3417
+nim	arrayFormatColor	gdext/builtinindex.html#arrayFormatColor_2	RenderingServer_ArrayFormat.arrayFormatColor		3417
+nim	arrayFormatTexUv	gdext/builtinindex.html#arrayFormatTexUv_2	RenderingServer_ArrayFormat.arrayFormatTexUv		3417
+nim	arrayFormatTexUv2	gdext/builtinindex.html#arrayFormatTexUv2_2	RenderingServer_ArrayFormat.arrayFormatTexUv2		3417
+nim	arrayFormatCustom0	gdext/builtinindex.html#arrayFormatCustom0_2	RenderingServer_ArrayFormat.arrayFormatCustom0		3417
+nim	arrayFormatCustom1	gdext/builtinindex.html#arrayFormatCustom1_2	RenderingServer_ArrayFormat.arrayFormatCustom1		3417
+nim	arrayFormatCustom2	gdext/builtinindex.html#arrayFormatCustom2_2	RenderingServer_ArrayFormat.arrayFormatCustom2		3417
+nim	arrayFormatCustom3	gdext/builtinindex.html#arrayFormatCustom3_2	RenderingServer_ArrayFormat.arrayFormatCustom3		3417
+nim	arrayFormatBones	gdext/builtinindex.html#arrayFormatBones_2	RenderingServer_ArrayFormat.arrayFormatBones		3417
+nim	arrayFormatWeights	gdext/builtinindex.html#arrayFormatWeights_2	RenderingServer_ArrayFormat.arrayFormatWeights		3417
+nim	arrayFormatIndex	gdext/builtinindex.html#arrayFormatIndex_2	RenderingServer_ArrayFormat.arrayFormatIndex		3417
+nim	arrayFlagUse2DVertices	gdext/builtinindex.html#arrayFlagUse2DVertices_2	RenderingServer_ArrayFormat.arrayFlagUse2DVertices		3417
+nim	arrayFlagUseDynamicUpdate	gdext/builtinindex.html#arrayFlagUseDynamicUpdate_2	RenderingServer_ArrayFormat.arrayFlagUseDynamicUpdate		3417
+nim	arrayFlagUse8BoneWeights	gdext/builtinindex.html#arrayFlagUse8BoneWeights_2	RenderingServer_ArrayFormat.arrayFlagUse8BoneWeights		3417
+nim	arrayFlagUsesEmptyVertexArray	gdext/builtinindex.html#arrayFlagUsesEmptyVertexArray_2	RenderingServer_ArrayFormat.arrayFlagUsesEmptyVertexArray		3417
+nim	arrayFlagCompressAttributes	gdext/builtinindex.html#arrayFlagCompressAttributes_2	RenderingServer_ArrayFormat.arrayFlagCompressAttributes		3417
+nim	arrayFlagFormatVersion2	gdext/builtinindex.html#arrayFlagFormatVersion2	RenderingServer_ArrayFormat.arrayFlagFormatVersion2		3417
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_16	RenderingServer_ArrayFormat.--Padding-Max--		3417
+nim	RenderingServer_ArrayFormat	gdext/builtinindex.html#RenderingServer_ArrayFormat	enum RenderingServer_ArrayFormat		3417
+nim	arrayFormatCustomBits	gdext/builtinindex.html#arrayFormatCustomBits.t,typedesc[T]_2	template arrayFormatCustomBits[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3439
+nim	arrayFormatBlendShapeMask	gdext/builtinindex.html#arrayFormatBlendShapeMask.t,typedesc[T]_2	template arrayFormatBlendShapeMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3440
+nim	arrayFormatCustomMask	gdext/builtinindex.html#arrayFormatCustomMask.t,typedesc[T]_2	template arrayFormatCustomMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3441
+nim	arrayFormatCustomBase	gdext/builtinindex.html#arrayFormatCustomBase.t,typedesc[T]_2	template arrayFormatCustomBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3442
+nim	arrayFormatCustom0Shift	gdext/builtinindex.html#arrayFormatCustom0Shift.t,typedesc[T]_2	template arrayFormatCustom0Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3443
+nim	arrayFormatCustom1Shift	gdext/builtinindex.html#arrayFormatCustom1Shift.t,typedesc[T]_2	template arrayFormatCustom1Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): T		3444
+nim	arrayFormatCustom2Shift	gdext/builtinindex.html#arrayFormatCustom2Shift.t,typedesc[T]_2	template arrayFormatCustom2Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3445
+nim	arrayFormatCustom3Shift	gdext/builtinindex.html#arrayFormatCustom3Shift.t,typedesc[T]_2	template arrayFormatCustom3Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3446
+nim	arrayCompressFlagsBase	gdext/builtinindex.html#arrayCompressFlagsBase.t,typedesc[T]_2	template arrayCompressFlagsBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3447
+nim	arrayFlagFormatVersionBase	gdext/builtinindex.html#arrayFlagFormatVersionBase.t,typedesc[T]	template arrayFlagFormatVersionBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3448
+nim	arrayFlagFormatVersionShift	gdext/builtinindex.html#arrayFlagFormatVersionShift.t,typedesc[T]	template arrayFlagFormatVersionShift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3449
+nim	arrayFlagFormatVersionMask	gdext/builtinindex.html#arrayFlagFormatVersionMask.t,typedesc[T]	template arrayFlagFormatVersionMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3450
+nim	arrayFlagFormatCurrentVersion	gdext/builtinindex.html#arrayFlagFormatCurrentVersion.t,typedesc[T]	template arrayFlagFormatCurrentVersion[T: RenderingServer_ArrayFormat](_: typedesc[T]): T		3451
+nim	RenderingServer_PrimitiveType	gdext/builtinindex.html#RenderingServer_PrimitiveType	enum RenderingServer_PrimitiveType		3453
+nim	RenderingServer_BlendShapeMode	gdext/builtinindex.html#RenderingServer_BlendShapeMode	enum RenderingServer_BlendShapeMode		3461
+nim	RenderingServer_MultimeshTransformFormat	gdext/builtinindex.html#RenderingServer_MultimeshTransformFormat	enum RenderingServer_MultimeshTransformFormat		3465
+nim	RenderingServer_MultimeshPhysicsInterpolationQuality	gdext/builtinindex.html#RenderingServer_MultimeshPhysicsInterpolationQuality	enum RenderingServer_MultimeshPhysicsInterpolationQuality		3469
+nim	RenderingServer_LightProjectorFilter	gdext/builtinindex.html#RenderingServer_LightProjectorFilter	enum RenderingServer_LightProjectorFilter		3473
+nim	RenderingServer_LightType	gdext/builtinindex.html#RenderingServer_LightType	enum RenderingServer_LightType		3481
+nim	RenderingServer_LightParam	gdext/builtinindex.html#RenderingServer_LightParam	enum RenderingServer_LightParam		3486
+nim	RenderingServer_LightBakeMode	gdext/builtinindex.html#RenderingServer_LightBakeMode	enum RenderingServer_LightBakeMode		3510
+nim	RenderingServer_LightOmniShadowMode	gdext/builtinindex.html#RenderingServer_LightOmniShadowMode	enum RenderingServer_LightOmniShadowMode		3515
+nim	RenderingServer_LightDirectionalShadowMode	gdext/builtinindex.html#RenderingServer_LightDirectionalShadowMode	enum RenderingServer_LightDirectionalShadowMode		3519
+nim	RenderingServer_LightDirectionalSkyMode	gdext/builtinindex.html#RenderingServer_LightDirectionalSkyMode	enum RenderingServer_LightDirectionalSkyMode		3524
+nim	RenderingServer_ShadowQuality	gdext/builtinindex.html#RenderingServer_ShadowQuality	enum RenderingServer_ShadowQuality		3529
+nim	RenderingServer_ReflectionProbeUpdateMode	gdext/builtinindex.html#RenderingServer_ReflectionProbeUpdateMode	enum RenderingServer_ReflectionProbeUpdateMode		3538
+nim	RenderingServer_ReflectionProbeAmbientMode	gdext/builtinindex.html#RenderingServer_ReflectionProbeAmbientMode	enum RenderingServer_ReflectionProbeAmbientMode		3542
+nim	RenderingServer_DecalTexture	gdext/builtinindex.html#RenderingServer_DecalTexture	enum RenderingServer_DecalTexture		3547
+nim	RenderingServer_DecalFilter	gdext/builtinindex.html#RenderingServer_DecalFilter	enum RenderingServer_DecalFilter		3554
+nim	RenderingServer_VoxelGIQuality	gdext/builtinindex.html#RenderingServer_VoxelGIQuality	enum RenderingServer_VoxelGIQuality		3562
+nim	RenderingServer_ParticlesMode	gdext/builtinindex.html#RenderingServer_ParticlesMode	enum RenderingServer_ParticlesMode		3566
+nim	RenderingServer_ParticlesTransformAlign	gdext/builtinindex.html#RenderingServer_ParticlesTransformAlign	enum RenderingServer_ParticlesTransformAlign		3570
+nim	RenderingServer_ParticlesDrawOrder	gdext/builtinindex.html#RenderingServer_ParticlesDrawOrder	enum RenderingServer_ParticlesDrawOrder		3576
+nim	RenderingServer_ParticlesCollisionType	gdext/builtinindex.html#RenderingServer_ParticlesCollisionType	enum RenderingServer_ParticlesCollisionType		3582
+nim	RenderingServer_ParticlesCollisionHeightfieldResolution	gdext/builtinindex.html#RenderingServer_ParticlesCollisionHeightfieldResolution	enum RenderingServer_ParticlesCollisionHeightfieldResolution		3591
+nim	RenderingServer_FogVolumeShape	gdext/builtinindex.html#RenderingServer_FogVolumeShape	enum RenderingServer_FogVolumeShape		3600
+nim	RenderingServer_ViewportScaling3DMode	gdext/builtinindex.html#RenderingServer_ViewportScaling3DMode	enum RenderingServer_ViewportScaling3DMode		3608
+nim	RenderingServer_ViewportUpdateMode	gdext/builtinindex.html#RenderingServer_ViewportUpdateMode	enum RenderingServer_ViewportUpdateMode		3616
+nim	RenderingServer_ViewportClearMode	gdext/builtinindex.html#RenderingServer_ViewportClearMode	enum RenderingServer_ViewportClearMode		3623
+nim	RenderingServer_ViewportEnvironmentMode	gdext/builtinindex.html#RenderingServer_ViewportEnvironmentMode	enum RenderingServer_ViewportEnvironmentMode		3628
+nim	RenderingServer_ViewportSDFOversize	gdext/builtinindex.html#RenderingServer_ViewportSDFOversize	enum RenderingServer_ViewportSDFOversize		3634
+nim	RenderingServer_ViewportSDFScale	gdext/builtinindex.html#RenderingServer_ViewportSDFScale	enum RenderingServer_ViewportSDFScale		3641
+nim	RenderingServer_ViewportMSAA	gdext/builtinindex.html#RenderingServer_ViewportMSAA	enum RenderingServer_ViewportMSAA		3647
+nim	RenderingServer_ViewportAnisotropicFiltering	gdext/builtinindex.html#RenderingServer_ViewportAnisotropicFiltering	enum RenderingServer_ViewportAnisotropicFiltering		3654
+nim	RenderingServer_ViewportScreenSpaceAA	gdext/builtinindex.html#RenderingServer_ViewportScreenSpaceAA	enum RenderingServer_ViewportScreenSpaceAA		3662
+nim	RenderingServer_ViewportOcclusionCullingBuildQuality	gdext/builtinindex.html#RenderingServer_ViewportOcclusionCullingBuildQuality	enum RenderingServer_ViewportOcclusionCullingBuildQuality		3667
+nim	RenderingServer_ViewportRenderInfo	gdext/builtinindex.html#RenderingServer_ViewportRenderInfo	enum RenderingServer_ViewportRenderInfo		3672
+nim	RenderingServer_ViewportRenderInfoType	gdext/builtinindex.html#RenderingServer_ViewportRenderInfoType	enum RenderingServer_ViewportRenderInfoType		3678
+nim	RenderingServer_ViewportDebugDraw	gdext/builtinindex.html#RenderingServer_ViewportDebugDraw	enum RenderingServer_ViewportDebugDraw		3684
+nim	RenderingServer_ViewportVRSMode	gdext/builtinindex.html#RenderingServer_ViewportVRSMode	enum RenderingServer_ViewportVRSMode		3713
+nim	RenderingServer_ViewportVRSUpdateMode	gdext/builtinindex.html#RenderingServer_ViewportVRSUpdateMode	enum RenderingServer_ViewportVRSUpdateMode		3719
+nim	RenderingServer_SkyMode	gdext/builtinindex.html#RenderingServer_SkyMode	enum RenderingServer_SkyMode		3725
+nim	RenderingServer_CompositorEffectFlags	gdext/builtinindex.html#RenderingServer_CompositorEffectFlags	enum RenderingServer_CompositorEffectFlags		3731
+nim	RenderingServer_CompositorEffectCallbackType	gdext/builtinindex.html#RenderingServer_CompositorEffectCallbackType	enum RenderingServer_CompositorEffectCallbackType		3738
+nim	RenderingServer_EnvironmentBG	gdext/builtinindex.html#RenderingServer_EnvironmentBG	enum RenderingServer_EnvironmentBG		3746
+nim	RenderingServer_EnvironmentAmbientSource	gdext/builtinindex.html#RenderingServer_EnvironmentAmbientSource	enum RenderingServer_EnvironmentAmbientSource		3755
+nim	RenderingServer_EnvironmentReflectionSource	gdext/builtinindex.html#RenderingServer_EnvironmentReflectionSource	enum RenderingServer_EnvironmentReflectionSource		3761
+nim	RenderingServer_EnvironmentGlowBlendMode	gdext/builtinindex.html#RenderingServer_EnvironmentGlowBlendMode	enum RenderingServer_EnvironmentGlowBlendMode		3766
+nim	RenderingServer_EnvironmentFogMode	gdext/builtinindex.html#RenderingServer_EnvironmentFogMode	enum RenderingServer_EnvironmentFogMode		3773
+nim	RenderingServer_EnvironmentToneMapper	gdext/builtinindex.html#RenderingServer_EnvironmentToneMapper	enum RenderingServer_EnvironmentToneMapper		3777
+nim	RenderingServer_EnvironmentSSRRoughnessQuality	gdext/builtinindex.html#RenderingServer_EnvironmentSSRRoughnessQuality	enum RenderingServer_EnvironmentSSRRoughnessQuality		3784
+nim	RenderingServer_EnvironmentSSAOQuality	gdext/builtinindex.html#RenderingServer_EnvironmentSSAOQuality	enum RenderingServer_EnvironmentSSAOQuality		3790
+nim	RenderingServer_EnvironmentSSILQuality	gdext/builtinindex.html#RenderingServer_EnvironmentSSILQuality	enum RenderingServer_EnvironmentSSILQuality		3797
+nim	RenderingServer_EnvironmentSDFGIYScale	gdext/builtinindex.html#RenderingServer_EnvironmentSDFGIYScale	enum RenderingServer_EnvironmentSDFGIYScale		3804
+nim	RenderingServer_EnvironmentSDFGIRayCount	gdext/builtinindex.html#RenderingServer_EnvironmentSDFGIRayCount	enum RenderingServer_EnvironmentSDFGIRayCount		3809
+nim	RenderingServer_EnvironmentSDFGIFramesToConverge	gdext/builtinindex.html#RenderingServer_EnvironmentSDFGIFramesToConverge	enum RenderingServer_EnvironmentSDFGIFramesToConverge		3819
+nim	RenderingServer_EnvironmentSDFGIFramesToUpdateLight	gdext/builtinindex.html#RenderingServer_EnvironmentSDFGIFramesToUpdateLight	enum RenderingServer_EnvironmentSDFGIFramesToUpdateLight		3828
+nim	RenderingServer_SubSurfaceScatteringQuality	gdext/builtinindex.html#RenderingServer_SubSurfaceScatteringQuality	enum RenderingServer_SubSurfaceScatteringQuality		3836
+nim	RenderingServer_DOFBokehShape	gdext/builtinindex.html#RenderingServer_DOFBokehShape	enum RenderingServer_DOFBokehShape		3842
+nim	RenderingServer_DOFBlurQuality	gdext/builtinindex.html#RenderingServer_DOFBlurQuality	enum RenderingServer_DOFBlurQuality		3847
+nim	RenderingServer_InstanceType	gdext/builtinindex.html#RenderingServer_InstanceType	enum RenderingServer_InstanceType		3853
+nim	RenderingServer_InstanceFlags	gdext/builtinindex.html#RenderingServer_InstanceFlags	enum RenderingServer_InstanceFlags		3870
+nim	RenderingServer_ShadowCastingSetting	gdext/builtinindex.html#RenderingServer_ShadowCastingSetting	enum RenderingServer_ShadowCastingSetting		3877
+nim	RenderingServer_VisibilityRangeFadeMode	gdext/builtinindex.html#RenderingServer_VisibilityRangeFadeMode	enum RenderingServer_VisibilityRangeFadeMode		3883
+nim	RenderingServer_BakeChannels	gdext/builtinindex.html#RenderingServer_BakeChannels	enum RenderingServer_BakeChannels		3888
+nim	RenderingServer_CanvasTextureChannel	gdext/builtinindex.html#RenderingServer_CanvasTextureChannel	enum RenderingServer_CanvasTextureChannel		3894
+nim	RenderingServer_NinePatchAxisMode	gdext/builtinindex.html#RenderingServer_NinePatchAxisMode	enum RenderingServer_NinePatchAxisMode		3899
+nim	RenderingServer_CanvasItemTextureFilter	gdext/builtinindex.html#RenderingServer_CanvasItemTextureFilter	enum RenderingServer_CanvasItemTextureFilter		3904
+nim	RenderingServer_CanvasItemTextureRepeat	gdext/builtinindex.html#RenderingServer_CanvasItemTextureRepeat	enum RenderingServer_CanvasItemTextureRepeat		3914
+nim	RenderingServer_CanvasGroupMode	gdext/builtinindex.html#RenderingServer_CanvasGroupMode	enum RenderingServer_CanvasGroupMode		3921
+nim	RenderingServer_CanvasLightMode	gdext/builtinindex.html#RenderingServer_CanvasLightMode	enum RenderingServer_CanvasLightMode		3927
+nim	RenderingServer_CanvasLightBlendMode	gdext/builtinindex.html#RenderingServer_CanvasLightBlendMode	enum RenderingServer_CanvasLightBlendMode		3931
+nim	RenderingServer_CanvasLightShadowFilter	gdext/builtinindex.html#RenderingServer_CanvasLightShadowFilter	enum RenderingServer_CanvasLightShadowFilter		3936
+nim	RenderingServer_CanvasOccluderPolygonCullMode	gdext/builtinindex.html#RenderingServer_CanvasOccluderPolygonCullMode	enum RenderingServer_CanvasOccluderPolygonCullMode		3942
+nim	RenderingServer_GlobalShaderParameterType	gdext/builtinindex.html#RenderingServer_GlobalShaderParameterType	enum RenderingServer_GlobalShaderParameterType		3947
+nim	RenderingServer_RenderingInfo	gdext/builtinindex.html#RenderingServer_RenderingInfo	enum RenderingServer_RenderingInfo		3979
+nim	RenderingServer_PipelineSource	gdext/builtinindex.html#RenderingServer_PipelineSource	enum RenderingServer_PipelineSource		3992
+nim	RenderingServer_Features	gdext/builtinindex.html#RenderingServer_Features	enum RenderingServer_Features		4000
+nim	ResourceFormatLoader_CacheMode	gdext/builtinindex.html#ResourceFormatLoader_CacheMode	enum ResourceFormatLoader_CacheMode		4004
+nim	ResourceImporter_ImportOrder	gdext/builtinindex.html#ResourceImporter_ImportOrder	enum ResourceImporter_ImportOrder		4011
+nim	ResourceLoader_ThreadLoadStatus	gdext/builtinindex.html#ResourceLoader_ThreadLoadStatus	enum ResourceLoader_ThreadLoadStatus		4015
+nim	ResourceLoader_CacheMode	gdext/builtinindex.html#ResourceLoader_CacheMode	enum ResourceLoader_CacheMode		4021
+nim	flagRelativePaths	gdext/builtinindex.html#flagRelativePaths	ResourceSaver_SaverFlags.flagRelativePaths		4028
+nim	flagBundleResources	gdext/builtinindex.html#flagBundleResources	ResourceSaver_SaverFlags.flagBundleResources		4028
+nim	flagChangePath	gdext/builtinindex.html#flagChangePath	ResourceSaver_SaverFlags.flagChangePath		4028
+nim	flagOmitEditorProperties	gdext/builtinindex.html#flagOmitEditorProperties	ResourceSaver_SaverFlags.flagOmitEditorProperties		4028
+nim	flagSaveBigEndian	gdext/builtinindex.html#flagSaveBigEndian	ResourceSaver_SaverFlags.flagSaveBigEndian		4028
+nim	flagCompress	gdext/builtinindex.html#flagCompress	ResourceSaver_SaverFlags.flagCompress		4028
+nim	flagReplaceSubresourcePaths	gdext/builtinindex.html#flagReplaceSubresourcePaths	ResourceSaver_SaverFlags.flagReplaceSubresourcePaths		4028
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_17	ResourceSaver_SaverFlags.--Padding-Max--		4028
+nim	ResourceSaver_SaverFlags	gdext/builtinindex.html#ResourceSaver_SaverFlags	enum ResourceSaver_SaverFlags		4028
+nim	transformFlagPosition	gdext/builtinindex.html#transformFlagPosition	RetargetModifier3D_TransformFlag.transformFlagPosition		4039
+nim	transformFlagRotation	gdext/builtinindex.html#transformFlagRotation	RetargetModifier3D_TransformFlag.transformFlagRotation		4039
+nim	transformFlagScale	gdext/builtinindex.html#transformFlagScale	RetargetModifier3D_TransformFlag.transformFlagScale		4039
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_18	RetargetModifier3D_TransformFlag.--Padding-Max--		4039
+nim	RetargetModifier3D_TransformFlag	gdext/builtinindex.html#RetargetModifier3D_TransformFlag	enum RetargetModifier3D_TransformFlag		4039
+nim	transformFlagAll	gdext/builtinindex.html#transformFlagAll.t,typedesc[T]	template transformFlagAll[T: RetargetModifier3D_TransformFlag](_: typedesc[T]): set[T]		4044
+nim	RibbonTrailMesh_Shape	gdext/builtinindex.html#RibbonTrailMesh_Shape	enum RibbonTrailMesh_Shape		4046
+nim	RichTextLabel_ListType	gdext/builtinindex.html#RichTextLabel_ListType	enum RichTextLabel_ListType		4050
+nim	RichTextLabel_MenuItems	gdext/builtinindex.html#RichTextLabel_MenuItems	enum RichTextLabel_MenuItems		4056
+nim	RichTextLabel_MetaUnderline	gdext/builtinindex.html#RichTextLabel_MetaUnderline	enum RichTextLabel_MetaUnderline		4061
+nim	updateTexture	gdext/builtinindex.html#updateTexture	RichTextLabel_ImageUpdateMask.updateTexture		4066
+nim	updateSize	gdext/builtinindex.html#updateSize	RichTextLabel_ImageUpdateMask.updateSize		4066
+nim	updateColor	gdext/builtinindex.html#updateColor	RichTextLabel_ImageUpdateMask.updateColor		4066
+nim	updateAlignment	gdext/builtinindex.html#updateAlignment	RichTextLabel_ImageUpdateMask.updateAlignment		4066
+nim	updateRegion	gdext/builtinindex.html#updateRegion	RichTextLabel_ImageUpdateMask.updateRegion		4066
+nim	updatePad	gdext/builtinindex.html#updatePad	RichTextLabel_ImageUpdateMask.updatePad		4066
+nim	updateTooltip	gdext/builtinindex.html#updateTooltip	RichTextLabel_ImageUpdateMask.updateTooltip		4066
+nim	updateWidthInPercent	gdext/builtinindex.html#updateWidthInPercent	RichTextLabel_ImageUpdateMask.updateWidthInPercent		4066
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_19	RichTextLabel_ImageUpdateMask.--Padding-Max--		4066
+nim	RichTextLabel_ImageUpdateMask	gdext/builtinindex.html#RichTextLabel_ImageUpdateMask	enum RichTextLabel_ImageUpdateMask		4066
+nim	RigidBody2D_FreezeMode	gdext/builtinindex.html#RigidBody2D_FreezeMode	enum RigidBody2D_FreezeMode		4077
+nim	RigidBody2D_CenterOfMassMode	gdext/builtinindex.html#RigidBody2D_CenterOfMassMode	enum RigidBody2D_CenterOfMassMode		4081
+nim	RigidBody2D_DampMode	gdext/builtinindex.html#RigidBody2D_DampMode	enum RigidBody2D_DampMode		4085
+nim	RigidBody2D_CCDMode	gdext/builtinindex.html#RigidBody2D_CCDMode	enum RigidBody2D_CCDMode		4089
+nim	RigidBody3D_FreezeMode	gdext/builtinindex.html#RigidBody3D_FreezeMode	enum RigidBody3D_FreezeMode		4094
+nim	RigidBody3D_CenterOfMassMode	gdext/builtinindex.html#RigidBody3D_CenterOfMassMode	enum RigidBody3D_CenterOfMassMode		4098
+nim	RigidBody3D_DampMode	gdext/builtinindex.html#RigidBody3D_DampMode	enum RigidBody3D_DampMode		4102
+nim	SceneReplicationConfig_ReplicationMode	gdext/builtinindex.html#SceneReplicationConfig_ReplicationMode	enum SceneReplicationConfig_ReplicationMode		4106
+nim	SceneState_GenEditState	gdext/builtinindex.html#SceneState_GenEditState	enum SceneState_GenEditState		4111
+nim	SceneTree_GroupCallFlags	gdext/builtinindex.html#SceneTree_GroupCallFlags	enum SceneTree_GroupCallFlags		4117
+nim	ScriptLanguage_ScriptNameCasing	gdext/builtinindex.html#ScriptLanguage_ScriptNameCasing	enum ScriptLanguage_ScriptNameCasing		4123
+nim	ScriptLanguageExtension_LookupResultType	gdext/builtinindex.html#ScriptLanguageExtension_LookupResultType	enum ScriptLanguageExtension_LookupResultType		4129
+nim	ScriptLanguageExtension_CodeCompletionLocation	gdext/builtinindex.html#ScriptLanguageExtension_CodeCompletionLocation	enum ScriptLanguageExtension_CodeCompletionLocation		4143
+nim	ScriptLanguageExtension_CodeCompletionKind	gdext/builtinindex.html#ScriptLanguageExtension_CodeCompletionKind	enum ScriptLanguageExtension_CodeCompletionKind		4149
+nim	ScrollContainer_ScrollMode	gdext/builtinindex.html#ScrollContainer_ScrollMode	enum ScrollContainer_ScrollMode		4162
+nim	Shader_Mode	gdext/builtinindex.html#Shader_Mode	enum Shader_Mode		4169
+nim	Skeleton3D_ModifierCallbackModeProcess	gdext/builtinindex.html#Skeleton3D_ModifierCallbackModeProcess	enum Skeleton3D_ModifierCallbackModeProcess		4176
+nim	SkeletonModifier3D_BoneAxis	gdext/builtinindex.html#SkeletonModifier3D_BoneAxis	enum SkeletonModifier3D_BoneAxis		4180
+nim	SkeletonProfile_TailDirection	gdext/builtinindex.html#SkeletonProfile_TailDirection	enum SkeletonProfile_TailDirection		4188
+nim	Sky_RadianceSize	gdext/builtinindex.html#Sky_RadianceSize	enum Sky_RadianceSize		4193
+nim	Sky_ProcessMode	gdext/builtinindex.html#Sky_ProcessMode	enum Sky_ProcessMode		4203
+nim	SliderJoint3D_Param	gdext/builtinindex.html#SliderJoint3D_Param	enum SliderJoint3D_Param		4209
+nim	SoftBody3D_DisableMode	gdext/builtinindex.html#SoftBody3D_DisableMode	enum SoftBody3D_DisableMode		4234
+nim	SplitContainer_DraggerVisibility	gdext/builtinindex.html#SplitContainer_DraggerVisibility	enum SplitContainer_DraggerVisibility		4238
+nim	SpringBoneSimulator3D_BoneDirection	gdext/builtinindex.html#SpringBoneSimulator3D_BoneDirection	enum SpringBoneSimulator3D_BoneDirection		4243
+nim	SpringBoneSimulator3D_CenterFrom	gdext/builtinindex.html#SpringBoneSimulator3D_CenterFrom	enum SpringBoneSimulator3D_CenterFrom		4252
+nim	SpringBoneSimulator3D_RotationAxis	gdext/builtinindex.html#SpringBoneSimulator3D_RotationAxis	enum SpringBoneSimulator3D_RotationAxis		4257
+nim	SpriteBase3D_DrawFlags	gdext/builtinindex.html#SpriteBase3D_DrawFlags	enum SpriteBase3D_DrawFlags		4263
+nim	SpriteBase3D_AlphaCutMode	gdext/builtinindex.html#SpriteBase3D_AlphaCutMode	enum SpriteBase3D_AlphaCutMode		4271
+nim	StreamPeerTCP_Status	gdext/builtinindex.html#StreamPeerTCP_Status	enum StreamPeerTCP_Status		4277
+nim	StreamPeerTLS_Status	gdext/builtinindex.html#StreamPeerTLS_Status	enum StreamPeerTLS_Status		4283
+nim	StyleBoxTexture_AxisStretchMode	gdext/builtinindex.html#StyleBoxTexture_AxisStretchMode	enum StyleBoxTexture_AxisStretchMode		4290
+nim	SubViewport_ClearMode	gdext/builtinindex.html#SubViewport_ClearMode	enum SubViewport_ClearMode		4295
+nim	SubViewport_UpdateMode	gdext/builtinindex.html#SubViewport_UpdateMode	enum SubViewport_UpdateMode		4300
+nim	SurfaceTool_CustomFormat	gdext/builtinindex.html#SurfaceTool_CustomFormat	enum SurfaceTool_CustomFormat		4307
+nim	SurfaceTool_SkinWeightCount	gdext/builtinindex.html#SurfaceTool_SkinWeightCount	enum SurfaceTool_SkinWeightCount		4318
+nim	TabBar_AlignmentMode	gdext/builtinindex.html#TabBar_AlignmentMode	enum TabBar_AlignmentMode		4322
+nim	TabBar_CloseButtonDisplayPolicy	gdext/builtinindex.html#TabBar_CloseButtonDisplayPolicy	enum TabBar_CloseButtonDisplayPolicy		4328
+nim	TabContainer_TabPosition	gdext/builtinindex.html#TabContainer_TabPosition	enum TabContainer_TabPosition		4334
+nim	TextEdit_MenuItems	gdext/builtinindex.html#TextEdit_MenuItems	enum TextEdit_MenuItems		4339
+nim	TextEdit_EditAction	gdext/builtinindex.html#TextEdit_EditAction	enum TextEdit_EditAction		4373
+nim	TextEdit_SearchFlags	gdext/builtinindex.html#TextEdit_SearchFlags	enum TextEdit_SearchFlags		4379
+nim	TextEdit_CaretType	gdext/builtinindex.html#TextEdit_CaretType	enum TextEdit_CaretType		4384
+nim	TextEdit_SelectionMode	gdext/builtinindex.html#TextEdit_SelectionMode	enum TextEdit_SelectionMode		4388
+nim	TextEdit_LineWrappingMode	gdext/builtinindex.html#TextEdit_LineWrappingMode	enum TextEdit_LineWrappingMode		4395
+nim	TextEdit_GutterType	gdext/builtinindex.html#TextEdit_GutterType	enum TextEdit_GutterType		4399
+nim	TextServer_FontAntialiasing	gdext/builtinindex.html#TextServer_FontAntialiasing	enum TextServer_FontAntialiasing		4404
+nim	TextServer_FontLCDSubpixelLayout	gdext/builtinindex.html#TextServer_FontLCDSubpixelLayout	enum TextServer_FontLCDSubpixelLayout		4409
+nim	TextServer_Direction	gdext/builtinindex.html#TextServer_Direction	enum TextServer_Direction		4417
+nim	TextServer_Orientation	gdext/builtinindex.html#TextServer_Orientation	enum TextServer_Orientation		4423
+nim	justificationKashida	gdext/builtinindex.html#justificationKashida	TextServer_JustificationFlag.justificationKashida		4427
+nim	justificationWordBound	gdext/builtinindex.html#justificationWordBound	TextServer_JustificationFlag.justificationWordBound		4427
+nim	justificationTrimEdgeSpaces	gdext/builtinindex.html#justificationTrimEdgeSpaces	TextServer_JustificationFlag.justificationTrimEdgeSpaces		4427
+nim	justificationAfterLastTab	gdext/builtinindex.html#justificationAfterLastTab	TextServer_JustificationFlag.justificationAfterLastTab		4427
+nim	justificationConstrainEllipsis	gdext/builtinindex.html#justificationConstrainEllipsis	TextServer_JustificationFlag.justificationConstrainEllipsis		4427
+nim	justificationSkipLastLine	gdext/builtinindex.html#justificationSkipLastLine	TextServer_JustificationFlag.justificationSkipLastLine		4427
+nim	justificationSkipLastLineWithVisibleChars	gdext/builtinindex.html#justificationSkipLastLineWithVisibleChars	TextServer_JustificationFlag.justificationSkipLastLineWithVisibleChars		4427
+nim	justificationDoNotSkipSingleLine	gdext/builtinindex.html#justificationDoNotSkipSingleLine	TextServer_JustificationFlag.justificationDoNotSkipSingleLine		4427
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_20	TextServer_JustificationFlag.--Padding-Max--		4427
+nim	TextServer_JustificationFlag	gdext/builtinindex.html#TextServer_JustificationFlag	enum TextServer_JustificationFlag		4427
+nim	TextServer_AutowrapMode	gdext/builtinindex.html#TextServer_AutowrapMode	enum TextServer_AutowrapMode		4439
+nim	breakMandatory	gdext/builtinindex.html#breakMandatory	TextServer_LineBreakFlag.breakMandatory		4445
+nim	breakWordBound	gdext/builtinindex.html#breakWordBound	TextServer_LineBreakFlag.breakWordBound		4445
+nim	breakGraphemeBound	gdext/builtinindex.html#breakGraphemeBound	TextServer_LineBreakFlag.breakGraphemeBound		4445
+nim	breakAdaptive	gdext/builtinindex.html#breakAdaptive	TextServer_LineBreakFlag.breakAdaptive		4445
+nim	breakTrimEdgeSpaces	gdext/builtinindex.html#breakTrimEdgeSpaces	TextServer_LineBreakFlag.breakTrimEdgeSpaces		4445
+nim	breakTrimIndent	gdext/builtinindex.html#breakTrimIndent	TextServer_LineBreakFlag.breakTrimIndent		4445
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_21	TextServer_LineBreakFlag.--Padding-Max--		4445
+nim	TextServer_LineBreakFlag	gdext/builtinindex.html#TextServer_LineBreakFlag	enum TextServer_LineBreakFlag		4445
+nim	TextServer_VisibleCharactersBehavior	gdext/builtinindex.html#TextServer_VisibleCharactersBehavior	enum TextServer_VisibleCharactersBehavior		4455
+nim	TextServer_OverrunBehavior	gdext/builtinindex.html#TextServer_OverrunBehavior	enum TextServer_OverrunBehavior		4462
+nim	overrunTrim	gdext/builtinindex.html#overrunTrim	TextServer_TextOverrunFlag.overrunTrim		4469
+nim	overrunTrimWordOnly	gdext/builtinindex.html#overrunTrimWordOnly	TextServer_TextOverrunFlag.overrunTrimWordOnly		4469
+nim	overrunAddEllipsis	gdext/builtinindex.html#overrunAddEllipsis	TextServer_TextOverrunFlag.overrunAddEllipsis		4469
+nim	overrunEnforceEllipsis	gdext/builtinindex.html#overrunEnforceEllipsis	TextServer_TextOverrunFlag.overrunEnforceEllipsis		4469
+nim	overrunJustificationAware	gdext/builtinindex.html#overrunJustificationAware	TextServer_TextOverrunFlag.overrunJustificationAware		4469
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_22	TextServer_TextOverrunFlag.--Padding-Max--		4469
+nim	TextServer_TextOverrunFlag	gdext/builtinindex.html#TextServer_TextOverrunFlag	enum TextServer_TextOverrunFlag		4469
+nim	graphemeIsValid	gdext/builtinindex.html#graphemeIsValid	TextServer_GraphemeFlag.graphemeIsValid		4478
+nim	graphemeIsRtl	gdext/builtinindex.html#graphemeIsRtl	TextServer_GraphemeFlag.graphemeIsRtl		4478
+nim	graphemeIsVirtual	gdext/builtinindex.html#graphemeIsVirtual	TextServer_GraphemeFlag.graphemeIsVirtual		4478
+nim	graphemeIsSpace	gdext/builtinindex.html#graphemeIsSpace	TextServer_GraphemeFlag.graphemeIsSpace		4478
+nim	graphemeIsBreakHard	gdext/builtinindex.html#graphemeIsBreakHard	TextServer_GraphemeFlag.graphemeIsBreakHard		4478
+nim	graphemeIsBreakSoft	gdext/builtinindex.html#graphemeIsBreakSoft	TextServer_GraphemeFlag.graphemeIsBreakSoft		4478
+nim	graphemeIsTab	gdext/builtinindex.html#graphemeIsTab	TextServer_GraphemeFlag.graphemeIsTab		4478
+nim	graphemeIsElongation	gdext/builtinindex.html#graphemeIsElongation	TextServer_GraphemeFlag.graphemeIsElongation		4478
+nim	graphemeIsPunctuation	gdext/builtinindex.html#graphemeIsPunctuation	TextServer_GraphemeFlag.graphemeIsPunctuation		4478
+nim	graphemeIsUnderscore	gdext/builtinindex.html#graphemeIsUnderscore	TextServer_GraphemeFlag.graphemeIsUnderscore		4478
+nim	graphemeIsConnected	gdext/builtinindex.html#graphemeIsConnected	TextServer_GraphemeFlag.graphemeIsConnected		4478
+nim	graphemeIsSafeToInsertTatweel	gdext/builtinindex.html#graphemeIsSafeToInsertTatweel	TextServer_GraphemeFlag.graphemeIsSafeToInsertTatweel		4478
+nim	graphemeIsEmbeddedObject	gdext/builtinindex.html#graphemeIsEmbeddedObject	TextServer_GraphemeFlag.graphemeIsEmbeddedObject		4478
+nim	graphemeIsSoftHyphen	gdext/builtinindex.html#graphemeIsSoftHyphen	TextServer_GraphemeFlag.graphemeIsSoftHyphen		4478
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_23	TextServer_GraphemeFlag.--Padding-Max--		4478
+nim	TextServer_GraphemeFlag	gdext/builtinindex.html#TextServer_GraphemeFlag	enum TextServer_GraphemeFlag		4478
+nim	TextServer_Hinting	gdext/builtinindex.html#TextServer_Hinting	enum TextServer_Hinting		4495
+nim	TextServer_SubpixelPositioning	gdext/builtinindex.html#TextServer_SubpixelPositioning	enum TextServer_SubpixelPositioning		4500
+nim	TextServer_Feature	gdext/builtinindex.html#TextServer_Feature	enum TextServer_Feature		4508
+nim	TextServer_ContourPointTag	gdext/builtinindex.html#TextServer_ContourPointTag	enum TextServer_ContourPointTag		4525
+nim	TextServer_SpacingType	gdext/builtinindex.html#TextServer_SpacingType	enum TextServer_SpacingType		4530
+nim	fontBold	gdext/builtinindex.html#fontBold	TextServer_FontStyle.fontBold		4537
+nim	fontItalic	gdext/builtinindex.html#fontItalic	TextServer_FontStyle.fontItalic		4537
+nim	fontFixedWidth	gdext/builtinindex.html#fontFixedWidth	TextServer_FontStyle.fontFixedWidth		4537
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_24	TextServer_FontStyle.--Padding-Max--		4537
+nim	TextServer_FontStyle	gdext/builtinindex.html#TextServer_FontStyle	enum TextServer_FontStyle		4537
+nim	TextServer_StructuredTextParser	gdext/builtinindex.html#TextServer_StructuredTextParser	enum TextServer_StructuredTextParser		4543
+nim	TextServer_FixedSizeScaleMode	gdext/builtinindex.html#TextServer_FixedSizeScaleMode	enum TextServer_FixedSizeScaleMode		4552
+nim	TextureButton_StretchMode	gdext/builtinindex.html#TextureButton_StretchMode	enum TextureButton_StretchMode		4557
+nim	TextureLayered_LayeredType	gdext/builtinindex.html#TextureLayered_LayeredType	enum TextureLayered_LayeredType		4566
+nim	TextureProgressBar_FillMode	gdext/builtinindex.html#TextureProgressBar_FillMode	enum TextureProgressBar_FillMode		4571
+nim	TextureRect_ExpandMode	gdext/builtinindex.html#TextureRect_ExpandMode	enum TextureRect_ExpandMode		4582
+nim	TextureRect_StretchMode	gdext/builtinindex.html#TextureRect_StretchMode	enum TextureRect_StretchMode		4590
+nim	Theme_DataType	gdext/builtinindex.html#Theme_DataType	enum Theme_DataType		4599
+nim	GodotThread_Priority	gdext/builtinindex.html#GodotThread_Priority	enum GodotThread_Priority		4608
+nim	TileMap_VisibilityMode	gdext/builtinindex.html#TileMap_VisibilityMode	enum TileMap_VisibilityMode		4613
+nim	TileMapLayer_DebugVisibilityMode	gdext/builtinindex.html#TileMapLayer_DebugVisibilityMode	enum TileMapLayer_DebugVisibilityMode		4618
+nim	TileSet_TileShape	gdext/builtinindex.html#TileSet_TileShape	enum TileSet_TileShape		4623
+nim	TileSet_TileLayout	gdext/builtinindex.html#TileSet_TileLayout	enum TileSet_TileLayout		4629
+nim	TileSet_TileOffsetAxis	gdext/builtinindex.html#TileSet_TileOffsetAxis	enum TileSet_TileOffsetAxis		4637
+nim	TileSet_CellNeighbor	gdext/builtinindex.html#TileSet_CellNeighbor	enum TileSet_CellNeighbor		4641
+nim	TileSet_TerrainMode	gdext/builtinindex.html#TileSet_TerrainMode	enum TileSet_TerrainMode		4659
+nim	TileSetAtlasSource_TileAnimationMode	gdext/builtinindex.html#TileSetAtlasSource_TileAnimationMode	enum TileSetAtlasSource_TileAnimationMode		4664
+nim	Time_Month	gdext/builtinindex.html#Time_Month	enum Time_Month		4669
+nim	Time_Weekday	gdext/builtinindex.html#Time_Weekday	enum Time_Weekday		4683
+nim	Timer_TimerProcessCallback	gdext/builtinindex.html#Timer_TimerProcessCallback	enum Timer_TimerProcessCallback		4692
+nim	TouchScreenButton_VisibilityMode	gdext/builtinindex.html#TouchScreenButton_VisibilityMode	enum TouchScreenButton_VisibilityMode		4696
+nim	Tree_SelectMode	gdext/builtinindex.html#Tree_SelectMode	enum Tree_SelectMode		4700
+nim	Tree_DropModeFlags	gdext/builtinindex.html#Tree_DropModeFlags	enum Tree_DropModeFlags		4705
+nim	TreeItem_TreeCellMode	gdext/builtinindex.html#TreeItem_TreeCellMode	enum TreeItem_TreeCellMode		4710
+nim	Tween_TweenProcessMode	gdext/builtinindex.html#Tween_TweenProcessMode	enum Tween_TweenProcessMode		4717
+nim	Tween_TweenPauseMode	gdext/builtinindex.html#Tween_TweenPauseMode	enum Tween_TweenPauseMode		4721
+nim	Tween_TransitionType	gdext/builtinindex.html#Tween_TransitionType	enum Tween_TransitionType		4726
+nim	Tween_EaseType	gdext/builtinindex.html#Tween_EaseType	enum Tween_EaseType		4740
+nim	UPNP_UPNPResult	gdext/builtinindex.html#UPNP_UPNPResult	enum UPNP_UPNPResult		4746
+nim	UPNPDevice_IGDStatus	gdext/builtinindex.html#UPNPDevice_IGDStatus	enum UPNPDevice_IGDStatus		4777
+nim	UndoRedo_MergeMode	gdext/builtinindex.html#UndoRedo_MergeMode	enum UndoRedo_MergeMode		4789
+nim	Viewport_PositionalShadowAtlasQuadrantSubdiv	gdext/builtinindex.html#Viewport_PositionalShadowAtlasQuadrantSubdiv	enum Viewport_PositionalShadowAtlasQuadrantSubdiv		4794
+nim	Viewport_Scaling3DMode	gdext/builtinindex.html#Viewport_Scaling3DMode	enum Viewport_Scaling3DMode		4804
+nim	Viewport_MSAA	gdext/builtinindex.html#Viewport_MSAA	enum Viewport_MSAA		4812
+nim	Viewport_AnisotropicFiltering	gdext/builtinindex.html#Viewport_AnisotropicFiltering	enum Viewport_AnisotropicFiltering		4819
+nim	Viewport_ScreenSpaceAA	gdext/builtinindex.html#Viewport_ScreenSpaceAA	enum Viewport_ScreenSpaceAA		4827
+nim	Viewport_RenderInfo	gdext/builtinindex.html#Viewport_RenderInfo	enum Viewport_RenderInfo		4832
+nim	Viewport_RenderInfoType	gdext/builtinindex.html#Viewport_RenderInfoType	enum Viewport_RenderInfoType		4838
+nim	Viewport_DebugDraw	gdext/builtinindex.html#Viewport_DebugDraw	enum Viewport_DebugDraw		4844
+nim	Viewport_DefaultCanvasItemTextureFilter	gdext/builtinindex.html#Viewport_DefaultCanvasItemTextureFilter	enum Viewport_DefaultCanvasItemTextureFilter		4873
+nim	Viewport_DefaultCanvasItemTextureRepeat	gdext/builtinindex.html#Viewport_DefaultCanvasItemTextureRepeat	enum Viewport_DefaultCanvasItemTextureRepeat		4880
+nim	Viewport_SDFOversize	gdext/builtinindex.html#Viewport_SDFOversize	enum Viewport_SDFOversize		4886
+nim	Viewport_SDFScale	gdext/builtinindex.html#Viewport_SDFScale	enum Viewport_SDFScale		4893
+nim	Viewport_VRSMode	gdext/builtinindex.html#Viewport_VRSMode	enum Viewport_VRSMode		4899
+nim	Viewport_VRSUpdateMode	gdext/builtinindex.html#Viewport_VRSUpdateMode	enum Viewport_VRSUpdateMode		4905
+nim	VisibleOnScreenEnabler2D_EnableMode	gdext/builtinindex.html#VisibleOnScreenEnabler2D_EnableMode	enum VisibleOnScreenEnabler2D_EnableMode		4911
+nim	VisibleOnScreenEnabler3D_EnableMode	gdext/builtinindex.html#VisibleOnScreenEnabler3D_EnableMode	enum VisibleOnScreenEnabler3D_EnableMode		4916
+nim	VisualShader_Type	gdext/builtinindex.html#VisualShader_Type	enum VisualShader_Type		4921
+nim	VisualShader_VaryingMode	gdext/builtinindex.html#VisualShader_VaryingMode	enum VisualShader_VaryingMode		4934
+nim	VisualShader_VaryingType	gdext/builtinindex.html#VisualShader_VaryingType	enum VisualShader_VaryingType		4939
+nim	VisualShaderNode_PortType	gdext/builtinindex.html#VisualShaderNode_PortType	enum VisualShaderNode_PortType		4950
+nim	VisualShaderNodeBillboard_BillboardType	gdext/builtinindex.html#VisualShaderNodeBillboard_BillboardType	enum VisualShaderNodeBillboard_BillboardType		4962
+nim	VisualShaderNodeClamp_OpType	gdext/builtinindex.html#VisualShaderNodeClamp_OpType	enum VisualShaderNodeClamp_OpType		4969
+nim	VisualShaderNodeColorFunc_Function	gdext/builtinindex.html#VisualShaderNodeColorFunc_Function	enum VisualShaderNodeColorFunc_Function		4978
+nim	VisualShaderNodeColorOp_Operator	gdext/builtinindex.html#VisualShaderNodeColorOp_Operator	enum VisualShaderNodeColorOp_Operator		4987
+nim	VisualShaderNodeCompare_ComparisonType	gdext/builtinindex.html#VisualShaderNodeCompare_ComparisonType	enum VisualShaderNodeCompare_ComparisonType		4999
+nim	VisualShaderNodeCompare_Function	gdext/builtinindex.html#VisualShaderNodeCompare_Function	enum VisualShaderNodeCompare_Function		5010
+nim	VisualShaderNodeCompare_Condition	gdext/builtinindex.html#VisualShaderNodeCompare_Condition	enum VisualShaderNodeCompare_Condition		5019
+nim	VisualShaderNodeCubemap_Source	gdext/builtinindex.html#VisualShaderNodeCubemap_Source	enum VisualShaderNodeCubemap_Source		5024
+nim	VisualShaderNodeCubemap_TextureType	gdext/builtinindex.html#VisualShaderNodeCubemap_TextureType	enum VisualShaderNodeCubemap_TextureType		5029
+nim	VisualShaderNodeDerivativeFunc_OpType	gdext/builtinindex.html#VisualShaderNodeDerivativeFunc_OpType	enum VisualShaderNodeDerivativeFunc_OpType		5035
+nim	VisualShaderNodeDerivativeFunc_Function	gdext/builtinindex.html#VisualShaderNodeDerivativeFunc_Function	enum VisualShaderNodeDerivativeFunc_Function		5042
+nim	VisualShaderNodeDerivativeFunc_Precision	gdext/builtinindex.html#VisualShaderNodeDerivativeFunc_Precision	enum VisualShaderNodeDerivativeFunc_Precision		5048
+nim	VisualShaderNodeFloatFunc_Function	gdext/builtinindex.html#VisualShaderNodeFloatFunc_Function	enum VisualShaderNodeFloatFunc_Function		5054
+nim	VisualShaderNodeFloatOp_Operator	gdext/builtinindex.html#VisualShaderNodeFloatOp_Operator	enum VisualShaderNodeFloatOp_Operator		5089
+nim	VisualShaderNodeFloatParameter_Hint	gdext/builtinindex.html#VisualShaderNodeFloatParameter_Hint	enum VisualShaderNodeFloatParameter_Hint		5102
+nim	VisualShaderNodeIntFunc_Function	gdext/builtinindex.html#VisualShaderNodeIntFunc_Function	enum VisualShaderNodeIntFunc_Function		5108
+nim	VisualShaderNodeIntOp_Operator	gdext/builtinindex.html#VisualShaderNodeIntOp_Operator	enum VisualShaderNodeIntOp_Operator		5115
+nim	VisualShaderNodeIntParameter_Hint	gdext/builtinindex.html#VisualShaderNodeIntParameter_Hint	enum VisualShaderNodeIntParameter_Hint		5130
+nim	VisualShaderNodeIs_Function	gdext/builtinindex.html#VisualShaderNodeIs_Function	enum VisualShaderNodeIs_Function		5137
+nim	VisualShaderNodeMix_OpType	gdext/builtinindex.html#VisualShaderNodeMix_OpType	enum VisualShaderNodeMix_OpType		5142
+nim	VisualShaderNodeMultiplyAdd_OpType	gdext/builtinindex.html#VisualShaderNodeMultiplyAdd_OpType	enum VisualShaderNodeMultiplyAdd_OpType		5152
+nim	VisualShaderNodeParameter_Qualifier	gdext/builtinindex.html#VisualShaderNodeParameter_Qualifier	enum VisualShaderNodeParameter_Qualifier		5159
+nim	VisualShaderNodeParticleAccelerator_Mode	gdext/builtinindex.html#VisualShaderNodeParticleAccelerator_Mode	enum VisualShaderNodeParticleAccelerator_Mode		5165
+nim	VisualShaderNodeParticleEmit_EmitFlags	gdext/builtinindex.html#VisualShaderNodeParticleEmit_EmitFlags	enum VisualShaderNodeParticleEmit_EmitFlags		5171
+nim	VisualShaderNodeParticleRandomness_OpType	gdext/builtinindex.html#VisualShaderNodeParticleRandomness_OpType	enum VisualShaderNodeParticleRandomness_OpType		5178
+nim	VisualShaderNodeRemap_OpType	gdext/builtinindex.html#VisualShaderNodeRemap_OpType	enum VisualShaderNodeRemap_OpType		5185
+nim	VisualShaderNodeSample3D_Source	gdext/builtinindex.html#VisualShaderNodeSample3D_Source	enum VisualShaderNodeSample3D_Source		5195
+nim	VisualShaderNodeSmoothStep_OpType	gdext/builtinindex.html#VisualShaderNodeSmoothStep_OpType	enum VisualShaderNodeSmoothStep_OpType		5200
+nim	VisualShaderNodeStep_OpType	gdext/builtinindex.html#VisualShaderNodeStep_OpType	enum VisualShaderNodeStep_OpType		5210
+nim	VisualShaderNodeSwitch_OpType	gdext/builtinindex.html#VisualShaderNodeSwitch_OpType	enum VisualShaderNodeSwitch_OpType		5220
+nim	VisualShaderNodeTexture_Source	gdext/builtinindex.html#VisualShaderNodeTexture_Source	enum VisualShaderNodeTexture_Source		5231
+nim	VisualShaderNodeTexture_TextureType	gdext/builtinindex.html#VisualShaderNodeTexture_TextureType	enum VisualShaderNodeTexture_TextureType		5242
+nim	VisualShaderNodeTextureParameter_TextureType	gdext/builtinindex.html#VisualShaderNodeTextureParameter_TextureType	enum VisualShaderNodeTextureParameter_TextureType		5248
+nim	VisualShaderNodeTextureParameter_ColorDefault	gdext/builtinindex.html#VisualShaderNodeTextureParameter_ColorDefault	enum VisualShaderNodeTextureParameter_ColorDefault		5255
+nim	VisualShaderNodeTextureParameter_TextureFilter	gdext/builtinindex.html#VisualShaderNodeTextureParameter_TextureFilter	enum VisualShaderNodeTextureParameter_TextureFilter		5261
+nim	VisualShaderNodeTextureParameter_TextureRepeat	gdext/builtinindex.html#VisualShaderNodeTextureParameter_TextureRepeat	enum VisualShaderNodeTextureParameter_TextureRepeat		5271
+nim	VisualShaderNodeTextureParameter_TextureSource	gdext/builtinindex.html#VisualShaderNodeTextureParameter_TextureSource	enum VisualShaderNodeTextureParameter_TextureSource		5277
+nim	VisualShaderNodeTransformFunc_Function	gdext/builtinindex.html#VisualShaderNodeTransformFunc_Function	enum VisualShaderNodeTransformFunc_Function		5284
+nim	VisualShaderNodeTransformOp_Operator	gdext/builtinindex.html#VisualShaderNodeTransformOp_Operator	enum VisualShaderNodeTransformOp_Operator		5289
+nim	VisualShaderNodeTransformVecMult_Operator	gdext/builtinindex.html#VisualShaderNodeTransformVecMult_Operator	enum VisualShaderNodeTransformVecMult_Operator		5301
+nim	VisualShaderNodeUIntFunc_Function	gdext/builtinindex.html#VisualShaderNodeUIntFunc_Function	enum VisualShaderNodeUIntFunc_Function		5308
+nim	VisualShaderNodeUIntOp_Operator	gdext/builtinindex.html#VisualShaderNodeUIntOp_Operator	enum VisualShaderNodeUIntOp_Operator		5313
+nim	VisualShaderNodeUVFunc_Function	gdext/builtinindex.html#VisualShaderNodeUVFunc_Function	enum VisualShaderNodeUVFunc_Function		5328
+nim	VisualShaderNodeVectorBase_OpType	gdext/builtinindex.html#VisualShaderNodeVectorBase_OpType	enum VisualShaderNodeVectorBase_OpType		5333
+nim	VisualShaderNodeVectorFunc_Function	gdext/builtinindex.html#VisualShaderNodeVectorFunc_Function	enum VisualShaderNodeVectorFunc_Function		5339
+nim	VisualShaderNodeVectorOp_Operator	gdext/builtinindex.html#VisualShaderNodeVectorOp_Operator	enum VisualShaderNodeVectorOp_Operator		5375
+nim	VoxelGI_Subdiv	gdext/builtinindex.html#VoxelGI_Subdiv	enum VoxelGI_Subdiv		5390
+nim	WebRTCDataChannel_WriteMode	gdext/builtinindex.html#WebRTCDataChannel_WriteMode	enum WebRTCDataChannel_WriteMode		5397
+nim	WebRTCDataChannel_ChannelState	gdext/builtinindex.html#WebRTCDataChannel_ChannelState	enum WebRTCDataChannel_ChannelState		5401
+nim	WebRTCPeerConnection_ConnectionState	gdext/builtinindex.html#WebRTCPeerConnection_ConnectionState	enum WebRTCPeerConnection_ConnectionState		5407
+nim	WebRTCPeerConnection_GatheringState	gdext/builtinindex.html#WebRTCPeerConnection_GatheringState	enum WebRTCPeerConnection_GatheringState		5415
+nim	WebRTCPeerConnection_SignalingState	gdext/builtinindex.html#WebRTCPeerConnection_SignalingState	enum WebRTCPeerConnection_SignalingState		5420
+nim	WebSocketPeer_WriteMode	gdext/builtinindex.html#WebSocketPeer_WriteMode	enum WebSocketPeer_WriteMode		5428
+nim	WebSocketPeer_State	gdext/builtinindex.html#WebSocketPeer_State	enum WebSocketPeer_State		5432
+nim	WebXRInterface_TargetRayMode	gdext/builtinindex.html#WebXRInterface_TargetRayMode	enum WebXRInterface_TargetRayMode		5438
+nim	Window_Mode	gdext/builtinindex.html#Window_Mode	enum Window_Mode		5444
+nim	Window_Flags	gdext/builtinindex.html#Window_Flags	enum Window_Flags		5451
+nim	Window_ContentScaleMode	gdext/builtinindex.html#Window_ContentScaleMode	enum Window_ContentScaleMode		5464
+nim	Window_ContentScaleAspect	gdext/builtinindex.html#Window_ContentScaleAspect	enum Window_ContentScaleAspect		5469
+nim	Window_ContentScaleStretch	gdext/builtinindex.html#Window_ContentScaleStretch	enum Window_ContentScaleStretch		5476
+nim	Window_LayoutDirection	gdext/builtinindex.html#Window_LayoutDirection	enum Window_LayoutDirection		5480
+nim	layoutDirectionLocale	gdext/builtinindex.html#layoutDirectionLocale.t,typedesc[T]_2	template layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T		5487
+nim	Window_WindowInitialPosition	gdext/builtinindex.html#Window_WindowInitialPosition	enum Window_WindowInitialPosition		5489
+nim	XMLParser_NodeType	gdext/builtinindex.html#XMLParser_NodeType	enum XMLParser_NodeType		5497
+nim	bodyUpdateUpperBody	gdext/builtinindex.html#bodyUpdateUpperBody	XRBodyModifier3D_BodyUpdate.bodyUpdateUpperBody		5506
+nim	bodyUpdateLowerBody	gdext/builtinindex.html#bodyUpdateLowerBody	XRBodyModifier3D_BodyUpdate.bodyUpdateLowerBody		5506
+nim	bodyUpdateHands	gdext/builtinindex.html#bodyUpdateHands	XRBodyModifier3D_BodyUpdate.bodyUpdateHands		5506
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_25	XRBodyModifier3D_BodyUpdate.--Padding-Max--		5506
+nim	XRBodyModifier3D_BodyUpdate	gdext/builtinindex.html#XRBodyModifier3D_BodyUpdate	enum XRBodyModifier3D_BodyUpdate		5506
+nim	XRBodyModifier3D_BoneUpdate	gdext/builtinindex.html#XRBodyModifier3D_BoneUpdate	enum XRBodyModifier3D_BoneUpdate		5512
+nim	bodyFlagUpperBodySupported	gdext/builtinindex.html#bodyFlagUpperBodySupported	XRBodyTracker_BodyFlags.bodyFlagUpperBodySupported		5517
+nim	bodyFlagLowerBodySupported	gdext/builtinindex.html#bodyFlagLowerBodySupported	XRBodyTracker_BodyFlags.bodyFlagLowerBodySupported		5517
+nim	bodyFlagHandsSupported	gdext/builtinindex.html#bodyFlagHandsSupported	XRBodyTracker_BodyFlags.bodyFlagHandsSupported		5517
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_26	XRBodyTracker_BodyFlags.--Padding-Max--		5517
+nim	XRBodyTracker_BodyFlags	gdext/builtinindex.html#XRBodyTracker_BodyFlags	enum XRBodyTracker_BodyFlags		5517
+nim	XRBodyTracker_Joint	gdext/builtinindex.html#XRBodyTracker_Joint	enum XRBodyTracker_Joint		5523
+nim	jointFlagOrientationValid	gdext/builtinindex.html#jointFlagOrientationValid	XRBodyTracker_JointFlags.jointFlagOrientationValid		5602
+nim	jointFlagOrientationTracked	gdext/builtinindex.html#jointFlagOrientationTracked	XRBodyTracker_JointFlags.jointFlagOrientationTracked		5602
+nim	jointFlagPositionValid	gdext/builtinindex.html#jointFlagPositionValid	XRBodyTracker_JointFlags.jointFlagPositionValid		5602
+nim	jointFlagPositionTracked	gdext/builtinindex.html#jointFlagPositionTracked	XRBodyTracker_JointFlags.jointFlagPositionTracked		5602
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_27	XRBodyTracker_JointFlags.--Padding-Max--		5602
+nim	XRBodyTracker_JointFlags	gdext/builtinindex.html#XRBodyTracker_JointFlags	enum XRBodyTracker_JointFlags		5602
+nim	XRFaceTracker_BlendShapeEntry	gdext/builtinindex.html#XRFaceTracker_BlendShapeEntry	enum XRFaceTracker_BlendShapeEntry		5609
+nim	XRHandModifier3D_BoneUpdate	gdext/builtinindex.html#XRHandModifier3D_BoneUpdate	enum XRHandModifier3D_BoneUpdate		5755
+nim	XRHandTracker_HandTrackingSource	gdext/builtinindex.html#XRHandTracker_HandTrackingSource	enum XRHandTracker_HandTrackingSource		5760
+nim	XRHandTracker_HandJoint	gdext/builtinindex.html#XRHandTracker_HandJoint	enum XRHandTracker_HandJoint		5767
+nim	handJointFlagOrientationValid	gdext/builtinindex.html#handJointFlagOrientationValid	XRHandTracker_HandJointFlags.handJointFlagOrientationValid		5796
+nim	handJointFlagOrientationTracked	gdext/builtinindex.html#handJointFlagOrientationTracked	XRHandTracker_HandJointFlags.handJointFlagOrientationTracked		5796
+nim	handJointFlagPositionValid	gdext/builtinindex.html#handJointFlagPositionValid	XRHandTracker_HandJointFlags.handJointFlagPositionValid		5796
+nim	handJointFlagPositionTracked	gdext/builtinindex.html#handJointFlagPositionTracked	XRHandTracker_HandJointFlags.handJointFlagPositionTracked		5796
+nim	handJointFlagLinearVelocityValid	gdext/builtinindex.html#handJointFlagLinearVelocityValid	XRHandTracker_HandJointFlags.handJointFlagLinearVelocityValid		5796
+nim	handJointFlagAngularVelocityValid	gdext/builtinindex.html#handJointFlagAngularVelocityValid	XRHandTracker_HandJointFlags.handJointFlagAngularVelocityValid		5796
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_28	XRHandTracker_HandJointFlags.--Padding-Max--		5796
+nim	XRHandTracker_HandJointFlags	gdext/builtinindex.html#XRHandTracker_HandJointFlags	enum XRHandTracker_HandJointFlags		5796
+nim	XRInterface_Capabilities	gdext/builtinindex.html#XRInterface_Capabilities	enum XRInterface_Capabilities		5805
+nim	XRInterface_TrackingStatus	gdext/builtinindex.html#XRInterface_TrackingStatus	enum XRInterface_TrackingStatus		5814
+nim	XRInterface_PlayAreaMode	gdext/builtinindex.html#XRInterface_PlayAreaMode	enum XRInterface_PlayAreaMode		5821
+nim	XRInterface_EnvironmentBlendMode	gdext/builtinindex.html#XRInterface_EnvironmentBlendMode	enum XRInterface_EnvironmentBlendMode		5828
+nim	XRPose_TrackingConfidence	gdext/builtinindex.html#XRPose_TrackingConfidence	enum XRPose_TrackingConfidence		5833
+nim	XRPositionalTracker_TrackerHand	gdext/builtinindex.html#XRPositionalTracker_TrackerHand	enum XRPositionalTracker_TrackerHand		5838
+nim	XRServer_TrackerType	gdext/builtinindex.html#XRServer_TrackerType	enum XRServer_TrackerType		5844
+nim	XRServer_RotationMode	gdext/builtinindex.html#XRServer_RotationMode	enum XRServer_RotationMode		5856
+nim	ZIPPacker_ZipAppend	gdext/builtinindex.html#ZIPPacker_ZipAppend	enum ZIPPacker_ZipAppend		5861
+nim	Side	gdext/builtinindex.html#Side	enum Side		1
+nim	Corner	gdext/builtinindex.html#Corner	enum Corner		7
+nim	Orientation	gdext/builtinindex.html#Orientation	enum Orientation		13
+nim	ClockDirection	gdext/builtinindex.html#ClockDirection	enum ClockDirection		17
+nim	HorizontalAlignment	gdext/builtinindex.html#HorizontalAlignment	enum HorizontalAlignment		21
+nim	VerticalAlignment	gdext/builtinindex.html#VerticalAlignment	enum VerticalAlignment		27
+nim	InlineAlignment	gdext/builtinindex.html#InlineAlignment	enum InlineAlignment		33
+nim	inlineAlignmentToTop	gdext/builtinindex.html#inlineAlignmentToTop.t,typedesc[T]	template inlineAlignmentToTop[T: InlineAlignment](_: typedesc[T]): T		43
+nim	inlineAlignmentTop	gdext/builtinindex.html#inlineAlignmentTop.t,typedesc[T]	template inlineAlignmentTop[T: InlineAlignment](_: typedesc[T]): T		44
+nim	inlineAlignmentImageMask	gdext/builtinindex.html#inlineAlignmentImageMask.t,typedesc[T]	template inlineAlignmentImageMask[T: InlineAlignment](_: typedesc[T]): T		45
+nim	inlineAlignmentTextMask	gdext/builtinindex.html#inlineAlignmentTextMask.t,typedesc[T]	template inlineAlignmentTextMask[T: InlineAlignment](_: typedesc[T]): T		46
+nim	EulerOrder	gdext/builtinindex.html#EulerOrder	enum EulerOrder		48
+nim	Key	gdext/builtinindex.html#Key	enum Key		56
+nim	--Padding-Min--	gdext/builtinindex.html#--Padding-Min--	KeyModifierMask.--Padding-Min--		251
+nim	keyCodeMask	gdext/builtinindex.html#keyCodeMask	KeyModifierMask.keyCodeMask		251
+nim	keyMaskCmdOrCtrl	gdext/builtinindex.html#keyMaskCmdOrCtrl	KeyModifierMask.keyMaskCmdOrCtrl		251
+nim	keyMaskShift	gdext/builtinindex.html#keyMaskShift	KeyModifierMask.keyMaskShift		251
+nim	keyMaskAlt	gdext/builtinindex.html#keyMaskAlt	KeyModifierMask.keyMaskAlt		251
+nim	keyMaskMeta	gdext/builtinindex.html#keyMaskMeta	KeyModifierMask.keyMaskMeta		251
+nim	keyMaskCtrl	gdext/builtinindex.html#keyMaskCtrl	KeyModifierMask.keyMaskCtrl		251
+nim	keyMaskKpad	gdext/builtinindex.html#keyMaskKpad	KeyModifierMask.keyMaskKpad		251
+nim	keyMaskGroupSwitch	gdext/builtinindex.html#keyMaskGroupSwitch	KeyModifierMask.keyMaskGroupSwitch		251
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_29	KeyModifierMask.--Padding-Max--		251
+nim	KeyModifierMask	gdext/builtinindex.html#KeyModifierMask	enum KeyModifierMask		251
+nim	keyModifierMask	gdext/builtinindex.html#keyModifierMask.t,typedesc[T]	template keyModifierMask[T: KeyModifierMask](_: typedesc[T]): set[T]		262
+nim	KeyLocation	gdext/builtinindex.html#KeyLocation	enum KeyLocation		264
+nim	MouseButton	gdext/builtinindex.html#MouseButton	enum MouseButton		269
+nim	mouseButtonMaskLeft	gdext/builtinindex.html#mouseButtonMaskLeft	MouseButtonMask.mouseButtonMaskLeft		281
+nim	mouseButtonMaskRight	gdext/builtinindex.html#mouseButtonMaskRight	MouseButtonMask.mouseButtonMaskRight		281
+nim	mouseButtonMaskMiddle	gdext/builtinindex.html#mouseButtonMaskMiddle	MouseButtonMask.mouseButtonMaskMiddle		281
+nim	mouseButtonMaskMbXbutton1	gdext/builtinindex.html#mouseButtonMaskMbXbutton1	MouseButtonMask.mouseButtonMaskMbXbutton1		281
+nim	mouseButtonMaskMbXbutton2	gdext/builtinindex.html#mouseButtonMaskMbXbutton2	MouseButtonMask.mouseButtonMaskMbXbutton2		281
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_30	MouseButtonMask.--Padding-Max--		281
+nim	MouseButtonMask	gdext/builtinindex.html#MouseButtonMask	enum MouseButtonMask		281
+nim	JoyButton	gdext/builtinindex.html#JoyButton	enum JoyButton		289
+nim	JoyAxis	gdext/builtinindex.html#JoyAxis	enum JoyAxis		315
+nim	MIDIMessage	gdext/builtinindex.html#MIDIMessage	enum MIDIMessage		326
+nim	Error	gdext/builtinindex.html#Error	enum Error		347
+nim	PropertyHint	gdext/builtinindex.html#PropertyHint	enum PropertyHint		398
+nim	--Padding-Min--	gdext/builtinindex.html#--Padding-Min--_2	PropertyUsageFlags.--Padding-Min--		442
+nim	propertyUsageStorage	gdext/builtinindex.html#propertyUsageStorage	PropertyUsageFlags.propertyUsageStorage		442
+nim	propertyUsageEditor	gdext/builtinindex.html#propertyUsageEditor	PropertyUsageFlags.propertyUsageEditor		442
+nim	propertyUsageInternal	gdext/builtinindex.html#propertyUsageInternal	PropertyUsageFlags.propertyUsageInternal		442
+nim	propertyUsageCheckable	gdext/builtinindex.html#propertyUsageCheckable	PropertyUsageFlags.propertyUsageCheckable		442
+nim	propertyUsageChecked	gdext/builtinindex.html#propertyUsageChecked	PropertyUsageFlags.propertyUsageChecked		442
+nim	propertyUsageGroup	gdext/builtinindex.html#propertyUsageGroup	PropertyUsageFlags.propertyUsageGroup		442
+nim	propertyUsageCategory	gdext/builtinindex.html#propertyUsageCategory	PropertyUsageFlags.propertyUsageCategory		442
+nim	propertyUsageSubgroup	gdext/builtinindex.html#propertyUsageSubgroup	PropertyUsageFlags.propertyUsageSubgroup		442
+nim	propertyUsageClassIsBitfield	gdext/builtinindex.html#propertyUsageClassIsBitfield	PropertyUsageFlags.propertyUsageClassIsBitfield		442
+nim	propertyUsageNoInstanceState	gdext/builtinindex.html#propertyUsageNoInstanceState	PropertyUsageFlags.propertyUsageNoInstanceState		442
+nim	propertyUsageRestartIfChanged	gdext/builtinindex.html#propertyUsageRestartIfChanged	PropertyUsageFlags.propertyUsageRestartIfChanged		442
+nim	propertyUsageScriptVariable	gdext/builtinindex.html#propertyUsageScriptVariable	PropertyUsageFlags.propertyUsageScriptVariable		442
+nim	propertyUsageStoreIfNull	gdext/builtinindex.html#propertyUsageStoreIfNull	PropertyUsageFlags.propertyUsageStoreIfNull		442
+nim	propertyUsageUpdateAllIfModified	gdext/builtinindex.html#propertyUsageUpdateAllIfModified	PropertyUsageFlags.propertyUsageUpdateAllIfModified		442
+nim	propertyUsageScriptDefaultValue	gdext/builtinindex.html#propertyUsageScriptDefaultValue	PropertyUsageFlags.propertyUsageScriptDefaultValue		442
+nim	propertyUsageClassIsEnum	gdext/builtinindex.html#propertyUsageClassIsEnum	PropertyUsageFlags.propertyUsageClassIsEnum		442
+nim	propertyUsageNilIsVariant	gdext/builtinindex.html#propertyUsageNilIsVariant	PropertyUsageFlags.propertyUsageNilIsVariant		442
+nim	propertyUsageArray	gdext/builtinindex.html#propertyUsageArray	PropertyUsageFlags.propertyUsageArray		442
+nim	propertyUsageAlwaysDuplicate	gdext/builtinindex.html#propertyUsageAlwaysDuplicate	PropertyUsageFlags.propertyUsageAlwaysDuplicate		442
+nim	propertyUsageNeverDuplicate	gdext/builtinindex.html#propertyUsageNeverDuplicate	PropertyUsageFlags.propertyUsageNeverDuplicate		442
+nim	propertyUsageHighEndGfx	gdext/builtinindex.html#propertyUsageHighEndGfx	PropertyUsageFlags.propertyUsageHighEndGfx		442
+nim	propertyUsageNodePathFromSceneRoot	gdext/builtinindex.html#propertyUsageNodePathFromSceneRoot	PropertyUsageFlags.propertyUsageNodePathFromSceneRoot		442
+nim	propertyUsageResourceNotPersistent	gdext/builtinindex.html#propertyUsageResourceNotPersistent	PropertyUsageFlags.propertyUsageResourceNotPersistent		442
+nim	propertyUsageKeyingIncrements	gdext/builtinindex.html#propertyUsageKeyingIncrements	PropertyUsageFlags.propertyUsageKeyingIncrements		442
+nim	propertyUsageDeferredSetResource	gdext/builtinindex.html#propertyUsageDeferredSetResource	PropertyUsageFlags.propertyUsageDeferredSetResource		442
+nim	propertyUsageEditorInstantiateObject	gdext/builtinindex.html#propertyUsageEditorInstantiateObject	PropertyUsageFlags.propertyUsageEditorInstantiateObject		442
+nim	propertyUsageEditorBasicSetting	gdext/builtinindex.html#propertyUsageEditorBasicSetting	PropertyUsageFlags.propertyUsageEditorBasicSetting		442
+nim	propertyUsageReadOnly	gdext/builtinindex.html#propertyUsageReadOnly	PropertyUsageFlags.propertyUsageReadOnly		442
+nim	propertyUsageSecret	gdext/builtinindex.html#propertyUsageSecret	PropertyUsageFlags.propertyUsageSecret		442
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_31	PropertyUsageFlags.--Padding-Max--		442
+nim	PropertyUsageFlags	gdext/builtinindex.html#PropertyUsageFlags	enum PropertyUsageFlags		442
+nim	propertyUsageNoEditor	gdext/builtinindex.html#propertyUsageNoEditor.t,typedesc[T]	template propertyUsageNoEditor[T: PropertyUsageFlags](_: typedesc[T]): T		475
+nim	propertyUsageDefault	gdext/builtinindex.html#propertyUsageDefault.t,typedesc[T]	template propertyUsageDefault[T: PropertyUsageFlags](_: typedesc[T]): set[T]		476
+nim	methodFlagNormal	gdext/builtinindex.html#methodFlagNormal	MethodFlags.methodFlagNormal		478
+nim	methodFlagEditor	gdext/builtinindex.html#methodFlagEditor	MethodFlags.methodFlagEditor		478
+nim	methodFlagConst	gdext/builtinindex.html#methodFlagConst	MethodFlags.methodFlagConst		478
+nim	methodFlagVirtual	gdext/builtinindex.html#methodFlagVirtual	MethodFlags.methodFlagVirtual		478
+nim	methodFlagVararg	gdext/builtinindex.html#methodFlagVararg	MethodFlags.methodFlagVararg		478
+nim	methodFlagStatic	gdext/builtinindex.html#methodFlagStatic	MethodFlags.methodFlagStatic		478
+nim	methodFlagObjectCore	gdext/builtinindex.html#methodFlagObjectCore	MethodFlags.methodFlagObjectCore		478
+nim	methodFlagVirtualRequired	gdext/builtinindex.html#methodFlagVirtualRequired	MethodFlags.methodFlagVirtualRequired		478
+nim	--Padding-Max--	gdext/builtinindex.html#--Padding-Max--_32	MethodFlags.--Padding-Max--		478
+nim	MethodFlags	gdext/builtinindex.html#MethodFlags	enum MethodFlags		478
+nim	methodFlagsDefault	gdext/builtinindex.html#methodFlagsDefault.t,typedesc[T]	template methodFlagsDefault[T: MethodFlags](_: typedesc[T]): T		488
+nim	Variant_Operator	gdext/builtinindex.html#Variant_Operator	enum Variant_Operator		490
+nim	AudioFrame	gdext/builtinindex.html#AudioFrame	object AudioFrame		1
+nim	CaretInfo	gdext/builtinindex.html#CaretInfo	object CaretInfo		5
+nim	Glyph	gdext/builtinindex.html#Glyph	object Glyph		11
+nim	ObjectID	gdext/builtinindex.html#ObjectID	object ObjectID		24
+nim	PhysicsServer2DExtensionMotionResult	gdext/builtinindex.html#PhysicsServer2DExtensionMotionResult	object PhysicsServer2DExtensionMotionResult		27
+nim	PhysicsServer2DExtensionRayResult	gdext/builtinindex.html#PhysicsServer2DExtensionRayResult	object PhysicsServer2DExtensionRayResult		41
+nim	PhysicsServer2DExtensionShapeRestInfo	gdext/builtinindex.html#PhysicsServer2DExtensionShapeRestInfo	object PhysicsServer2DExtensionShapeRestInfo		49
+nim	PhysicsServer2DExtensionShapeResult	gdext/builtinindex.html#PhysicsServer2DExtensionShapeResult	object PhysicsServer2DExtensionShapeResult		57
+nim	PhysicsServer3DExtensionMotionCollision	gdext/builtinindex.html#PhysicsServer3DExtensionMotionCollision	object PhysicsServer3DExtensionMotionCollision		63
+nim	PhysicsServer3DExtensionMotionResult	gdext/builtinindex.html#PhysicsServer3DExtensionMotionResult	object PhysicsServer3DExtensionMotionResult		74
+nim	PhysicsServer3DExtensionRayResult	gdext/builtinindex.html#PhysicsServer3DExtensionRayResult	object PhysicsServer3DExtensionRayResult		83
+nim	PhysicsServer3DExtensionShapeRestInfo	gdext/builtinindex.html#PhysicsServer3DExtensionShapeRestInfo	object PhysicsServer3DExtensionShapeRestInfo		92
+nim	PhysicsServer3DExtensionShapeResult	gdext/builtinindex.html#PhysicsServer3DExtensionShapeResult	object PhysicsServer3DExtensionShapeResult		100
+nim	ScriptLanguageExtensionProfilingInfo	gdext/builtinindex.html#ScriptLanguageExtensionProfilingInfo	object ScriptLanguageExtensionProfilingInfo		106
+nim	Signal	gdext/builtinindex.html#Signal	object Signal		125
+nim	Callable	gdext/builtinindex.html#Callable	object Callable		128
+nim	TypedArray	gdext/builtinindex.html#TypedArray	type TypedArray		131
+nim	SomePackedArray	gdext/builtinindex.html#SomePackedArray	type SomePackedArray		133
+nim	SomeFloatVector	gdext/builtinindex.html#SomeFloatVector	type SomeFloatVector		144
+nim	SomeIntVector	gdext/builtinindex.html#SomeIntVector	type SomeIntVector		148
+nim	SomeVector	gdext/builtinindex.html#SomeVector	type SomeVector		152
+nim	SomePrimitives	gdext/builtinindex.html#SomePrimitives	type SomePrimitives		155
+nim	SomeGodotUniques	gdext/builtinindex.html#SomeGodotUniques	type SomeGodotUniques		170
+nim	SomeBuiltins	gdext/builtinindex.html#SomeBuiltins	type SomeBuiltins		180
+nim	SomeClass	gdext/builtinindex.html#SomeClass	type SomeClass		182
+nim	SomeEngineClass	gdext/builtinindex.html#SomeEngineClass	type SomeEngineClass		183
+nim	SomeUserClass	gdext/builtinindex.html#SomeUserClass	type SomeUserClass		186
+nim	SomeProperty	gdext/builtinindex.html#SomeProperty	type SomeProperty		190
+nim	AltInt	gdext/builtinindex.html#AltInt	type AltInt		195
+nim	AltFloat	gdext/builtinindex.html#AltFloat	type AltFloat		196
+nim	AltString	gdext/builtinindex.html#AltString	type AltString		197
+nim	Item	gdext/builtinindex.html#Item.t,typedesc[String]	template Item(typ: typedesc[String]): typedesc		199
+nim	Item	gdext/builtinindex.html#Item.t,typedesc[Array]	template Item(typ: typedesc[Array]): typedesc		200
+nim	Item	gdext/builtinindex.html#Item.t,typedesc[Dictionary]	template Item(typ: typedesc[Dictionary]): typedesc		201
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Bool]	template variantType(_: typedesc[Bool]): VariantType		203
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Int]	template variantType(_: typedesc[Int]): VariantType		204
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Float]	template variantType(_: typedesc[Float]): VariantType		205
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector2]	template variantType(_: typedesc[Vector2]): VariantType		206
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector3]	template variantType(_: typedesc[Vector3]): VariantType		207
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector4]	template variantType(_: typedesc[Vector4]): VariantType		208
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector2i]	template variantType(_: typedesc[Vector2i]): VariantType		209
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector3i]	template variantType(_: typedesc[Vector3i]): VariantType		210
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Vector4i]	template variantType(_: typedesc[Vector4i]): VariantType		211
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Rect2]	template variantType(_: typedesc[Rect2]): VariantType		212
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Rect2i]	template variantType(_: typedesc[Rect2i]): VariantType		213
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Transform2D]	template variantType(_: typedesc[Transform2D]): VariantType		214
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Plane]	template variantType(_: typedesc[Plane]): VariantType		215
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Quaternion]	template variantType(_: typedesc[Quaternion]): VariantType		216
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[AABB]	template variantType(_: typedesc[AABB]): VariantType		217
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Basis]	template variantType(_: typedesc[Basis]): VariantType		218
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Transform3D]	template variantType(_: typedesc[Transform3D]): VariantType		219
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Projection]	template variantType(_: typedesc[Projection]): VariantType		220
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Color]	template variantType(_: typedesc[Color]): VariantType		221
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[RID]	template variantType(_: typedesc[RID]): VariantType		222
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[String]	template variantType(_: typedesc[String]): VariantType		223
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[StringName]	template variantType(_: typedesc[StringName]): VariantType		224
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[NodePath]	template variantType(_: typedesc[NodePath]): VariantType		225
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Callable]	template variantType(_: typedesc[Callable]): VariantType		226
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Signal]	template variantType(_: typedesc[Signal]): VariantType		227
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Dictionary]	template variantType(_: typedesc[Dictionary]): VariantType		228
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Array]	template variantType(_: typedesc[Array]): VariantType		229
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedByteArray]	template variantType(_: typedesc[PackedByteArray]): VariantType		230
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedInt32Array]	template variantType(_: typedesc[PackedInt32Array]): VariantType		231
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedInt64Array]	template variantType(_: typedesc[PackedInt64Array]): VariantType		232
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedFloat32Array]	template variantType(_: typedesc[PackedFloat32Array]): VariantType		233
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedFloat64Array]	template variantType(_: typedesc[PackedFloat64Array]): VariantType		234
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedStringArray]	template variantType(_: typedesc[PackedStringArray]): VariantType		235
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedVector2Array]	template variantType(_: typedesc[PackedVector2Array]): VariantType		236
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedVector3Array]	template variantType(_: typedesc[PackedVector3Array]): VariantType		237
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedVector4Array]	template variantType(_: typedesc[PackedVector4Array]): VariantType		238
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[PackedColorArray]	template variantType(_: typedesc[PackedColorArray]): VariantType		239
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[TypedArray]	template variantType(_: typedesc[TypedArray]): VariantType		241
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[ObjectPtr]	template variantType(Type: typedesc[ObjectPtr]): VariantType		245
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Object]	template variantType(Type: typedesc[Object]): VariantType		246
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[GdRef]	template variantType(Type: typedesc[GdRef]): VariantType		248
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[Variant]	template variantType(Type: typedesc[Variant]): VariantType		252
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[AltInt]	template variantType(Type: typedesc[AltInt]): VariantType		256
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[AltFloat]	template variantType(Type: typedesc[AltFloat]): VariantType		257
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[AltString]	template variantType(Type: typedesc[AltString]): VariantType		258
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[]	template variantType(Type: typedesc[enum]): VariantType		259
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[set[E]]	template variantType[E: enum](Type: typedesc[set[E]]): VariantType		260
+nim	variantType	gdext/builtinindex.html#variantType.t,typedesc[ptr.Variant]	template variantType(Type: typedesc[ptr Variant]): VariantType		262
+nim	dup	gdext/builtinindex.html#dup,String	proc dup(src: String): String		264
+nim	`=destroy`	gdext/builtinindex.html#=destroy,String	proc `=destroy`(val {.bycopy.}: String)		267
+nim	`=copy`	gdext/builtinindex.html#=copy,String,String	proc `=copy`(dst: var String; src: String)		270
+nim	dup	gdext/builtinindex.html#dup,StringName	proc dup(src: StringName): StringName		276
+nim	`=destroy`	gdext/builtinindex.html#=destroy,StringName	proc `=destroy`(val {.bycopy.}: StringName)		279
+nim	`=copy`	gdext/builtinindex.html#=copy,StringName,StringName	proc `=copy`(dst: var StringName; src: StringName)		282
+nim	dup	gdext/builtinindex.html#dup,NodePath	proc dup(src: NodePath): NodePath		288
+nim	`=destroy`	gdext/builtinindex.html#=destroy,NodePath	proc `=destroy`(val {.bycopy.}: NodePath)		291
+nim	`=copy`	gdext/builtinindex.html#=copy,NodePath,NodePath	proc `=copy`(dst: var NodePath; src: NodePath)		294
+nim	dup	gdext/builtinindex.html#dup,RID	proc dup(src: RID): RID		300
+nim	`=copy`	gdext/builtinindex.html#=copy,RID,RID	proc `=copy`(dst: var RID; src: RID)		303
+nim	dup	gdext/builtinindex.html#dup,Callable	proc dup(src: Callable): Callable		309
+nim	`=destroy`	gdext/builtinindex.html#=destroy,Callable	proc `=destroy`(val {.bycopy.}: Callable)		312
+nim	`=copy`	gdext/builtinindex.html#=copy,Callable,Callable	proc `=copy`(dst: var Callable; src: Callable)		315
+nim	dup	gdext/builtinindex.html#dup,Signal	proc dup(src: Signal): Signal		321
+nim	`=destroy`	gdext/builtinindex.html#=destroy,Signal	proc `=destroy`(val {.bycopy.}: Signal)		324
+nim	`=copy`	gdext/builtinindex.html#=copy,Signal,Signal	proc `=copy`(dst: var Signal; src: Signal)		327
+nim	dup	gdext/builtinindex.html#dup,Dictionary	proc dup(src: Dictionary): Dictionary		333
+nim	`=destroy`	gdext/builtinindex.html#=destroy,Dictionary	proc `=destroy`(val {.bycopy.}: Dictionary)		336
+nim	`=copy`	gdext/builtinindex.html#=copy,Dictionary,Dictionary	proc `=copy`(dst: var Dictionary; src: Dictionary)		339
+nim	dup	gdext/builtinindex.html#dup,Array	proc dup(src: Array): Array		345
+nim	`=destroy`	gdext/builtinindex.html#=destroy,Array	proc `=destroy`(val {.bycopy.}: Array)		348
+nim	`=copy`	gdext/builtinindex.html#=copy,Array,Array	proc `=copy`(dst: var Array; src: Array)		351
+nim	dup	gdext/builtinindex.html#dup,PackedArray[T]	proc dup[T](src: PackedArray[T]): PackedArray[T]		357
+nim	`=destroy`	gdext/builtinindex.html#=destroy,PackedArray[T]	proc `=destroy`[T](val {.bycopy.}: PackedArray[T])		379
+nim	`=copy`	gdext/builtinindex.html#=copy,PackedArray[T],PackedArray[T]	proc `=copy`[T](dst: var PackedArray[T]; src: PackedArray[T])		401
+nim	`=destroy`	gdext/builtinindex.html#=destroy,Variant	proc `=destroy`(x {.bycopy.}: Variant)		407
+nim	dup	gdext/builtinindex.html#dup,Variant	proc dup(x: Variant): Variant		409
+nim	`=copy`	gdext/builtinindex.html#=copy,Variant,Variant	proc `=copy`(dest: var Variant; source: Variant)		411
+nim	`=destroy`	gdext/builtinindex.html#=destroy,GdRef[T]	proc `=destroy`[T](self: GdRef[T])		419
+nim	dup	gdext/builtinindex.html#dup,GdRef[T]	proc dup[T](src: GdRef[T]): GdRef[T]		425
+nim	`=copy`	gdext/builtinindex.html#=copy,GdRef[T],GdRef[T]	proc `=copy`[T](dst: var GdRef[T]; src: GdRef[T])		431
+nim	gdref	gdext/builtinindex.html#gdref.t,typedesc[T]	template gdref[T](Type: typedesc[T]): typedesc		443
+nimgrp	=destroy	gdext/builtinindex.html#=destroy-procs-all	proc		267
+nimgrp	=copy	gdext/builtinindex.html#=copy-procs-all	proc		270
+nimgrp	dup	gdext/builtinindex.html#dup-procs-all	proc		264
+nimgrp	arrayformatcustombase	gdext/builtinindex.html#arrayFormatCustomBase-templates-all	template		1986
+nimgrp	pathmetadataincludeall	gdext/builtinindex.html#pathMetadataIncludeAll-templates-all	template		2076
+nimgrp	Item	gdext/builtinindex.html#Item-templates-all	template		199
+nimgrp	arrayformatcustom2shift	gdext/builtinindex.html#arrayFormatCustom2Shift-templates-all	template		1989
+nimgrp	arrayformatblendshapemask	gdext/builtinindex.html#arrayFormatBlendShapeMask-templates-all	template		1984
+nimgrp	arrayformatcustommask	gdext/builtinindex.html#arrayFormatCustomMask-templates-all	template		1985
+nimgrp	arrayformatcustom1shift	gdext/builtinindex.html#arrayFormatCustom1Shift-templates-all	template		1988
+nimgrp	arrayformatcustombits	gdext/builtinindex.html#arrayFormatCustomBits-templates-all	template		1983
+nimgrp	arrayformatcustom3shift	gdext/builtinindex.html#arrayFormatCustom3Shift-templates-all	template		1990
+nimgrp	varianttype	gdext/builtinindex.html#variantType-templates-all	template		203
+nimgrp	arraycompressflagsbase	gdext/builtinindex.html#arrayCompressFlagsBase-templates-all	template		1991
+nimgrp	arrayformatcustom0shift	gdext/builtinindex.html#arrayFormatCustom0Shift-templates-all	template		1987
+nimgrp	layoutdirectionlocale	gdext/builtinindex.html#layoutDirectionLocale-templates-all	template		801

@@ -1,0 +1,13 @@
+nimTitle	debugging	gdext/private/debugging.html	module gdext/private/debugging		0
+nim	debug	gdext/private/debugging.html#debug.t,varargs[string,]	template debug(args: varargs[string, `$`])		70
+nim	error	gdext/private/debugging.html#error.t,varargs[string,]	template error(args: varargs[string, `$`])		71
+nim	fatal	gdext/private/debugging.html#fatal.t,varargs[string,]	template fatal(args: varargs[string, `$`])		72
+nim	info	gdext/private/debugging.html#info.t,varargs[string,]	template info(args: varargs[string, `$`])		73
+nim	notice	gdext/private/debugging.html#notice.t,varargs[string,]	template notice(args: varargs[string, `$`])		74
+nim	warn	gdext/private/debugging.html#warn.t,varargs[string,]	template warn(args: varargs[string, `$`])		75
+nim	addDebugInfo	gdext/private/debugging.html#addDebugInfo.t,Object	template addDebugInfo(o: Object)		77
+nim	debugInstantiate	gdext/private/debugging.html#debugInstantiate.t,Object	template debugInstantiate(o: Object)		134
+nim	debugCreate	gdext/private/debugging.html#debugCreate.t,Object	template debugCreate(o: Object)		135
+nim	debugRecreate	gdext/private/debugging.html#debugRecreate.t,Object	template debugRecreate(o: Object)		136
+nim	debugReference	gdext/private/debugging.html#debugReference.t,Object,bool	template debugReference(o: Object; reference: bool)		137
+nim	debugFree	gdext/private/debugging.html#debugFree.t,Object	template debugFree(o: Object)		138

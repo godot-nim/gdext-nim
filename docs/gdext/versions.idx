@@ -1,0 +1,11 @@
+nimTitle	versions	gdext/versions.html	module gdext/versions		0
+nim	GdextVersionString	gdext/versions.html#GdextVersionString	const GdextVersionString		8
+nim	GdextVersion	gdext/versions.html#GdextVersion	const GdextVersion		9
+nim	GdextVersionMajor	gdext/versions.html#GdextVersionMajor	const GdextVersionMajor		10
+nim	GdextVersionMinor	gdext/versions.html#GdextVersionMinor	const GdextVersionMinor		11
+nim	GdextVersionPatch	gdext/versions.html#GdextVersionPatch	const GdextVersionPatch		12
+nim	CurrentSupportedGodotVersionString	gdext/versions.html#CurrentSupportedGodotVersionString	const CurrentSupportedGodotVersionString		14
+nim	CurrentSupportedGodotVersion	gdext/versions.html#CurrentSupportedGodotVersion	const CurrentSupportedGodotVersion		15
+nim	CurrentSupportedGodotVersionMajor	gdext/versions.html#CurrentSupportedGodotVersionMajor	const CurrentSupportedGodotVersionMajor		16
+nim	CurrentSupportedGodotVersionMinor	gdext/versions.html#CurrentSupportedGodotVersionMinor	const CurrentSupportedGodotVersionMinor		17
+nim	CurrentSupportedGodotVersionPatch	gdext/versions.html#CurrentSupportedGodotVersionPatch	const CurrentSupportedGodotVersionPatch		18

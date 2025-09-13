@@ -1,0 +1,21 @@
+nimTitle	doctools	gdext/private/doctools.html	module gdext/private/doctools		0
+nim	NoNamespaceSchemaLocation	gdext/private/doctools.html#NoNamespaceSchemaLocation	var NoNamespaceSchemaLocation		13
+nim	DocClass	gdext/private/doctools.html#DocClass	object DocClass		16
+nim	DocMethod	gdext/private/doctools.html#DocMethod	object DocMethod		24
+nim	DocMember	gdext/private/doctools.html#DocMember	object DocMember		27
+nim	DocSignal	gdext/private/doctools.html#DocSignal	object DocSignal		31
+nim	DocConstant	gdext/private/doctools.html#DocConstant	object DocConstant		34
+nim	docClassDB	gdext/private/doctools.html#docClassDB	var docClassDB		40
+nim	`[]=`	gdext/private/doctools.html#[]=,DocClassDB,typedesc,sinkDocClass	proc `[]=`(table: var DocClassDB; typ: typedesc; value: sink DocClass)		42
+nim	`[]`	gdext/private/doctools.html#[],DocClassDB,StringName	proc `[]`(table: var DocClassDB; key: StringName): var DocClass		45
+nim	`[]`	gdext/private/doctools.html#[],DocClassDB,typedesc	proc `[]`(table: var DocClassDB; typ: typedesc): var DocClass		47
+nim	render	gdext/private/doctools.html#render,string,string,string,string	proc render(tag, name, description: string; result: var string)		51
+nim	render	gdext/private/doctools.html#render,DocMethod,string	proc render(doc: DocMethod; result: var string)		59
+nim	render	gdext/private/doctools.html#render,DocMember,string	proc render(doc: DocMember; result: var string)		61
+nim	render	gdext/private/doctools.html#render,DocSignal,string	proc render(doc: DocSignal; result: var string)		67
+nim	render	gdext/private/doctools.html#render,DocConstant,string	proc render(doc: DocConstant; result: var string)		69
+nim	render	gdext/private/doctools.html#render,DocClass,StringName,string	proc render(doc: DocClass; name: StringName; result: var string)		88
+nim	descToEditorHelp	gdext/private/doctools.html#descToEditorHelp,string	proc descToEditorHelp(str: string): string		108
+nim	generateEditorHelp	gdext/private/doctools.html#generateEditorHelp	proc generateEditorHelp()		111
+nimgrp	[]	gdext/private/doctools.html#[]-procs-all	proc		45
+nimgrp	render	gdext/private/doctools.html#render-procs-all	proc		51

@@ -1,0 +1,21 @@
+nimTitle	objectcallbacks	gdext/objectcallbacks.html	module gdext/objectcallbacks		0
+nim	onInit	gdext/objectcallbacks.html#onInit.e,Object	method onInit(self: Object)		4
+nim	onDestroy	gdext/objectcallbacks.html#onDestroy.e,Object	method onDestroy(self: Object)		5
+nim	notification	gdext/objectcallbacks.html#notification.e,Object,int32	method notification(self: Object; p_what: int32)		6
+nim	set	gdext/objectcallbacks.html#set.e,Object,ConstStringNamePtr,ConstVariantPtr	method set(self: Object; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool		7
+nim	get	gdext/objectcallbacks.html#get.e,Object,ConstStringNamePtr,VariantPtr	method get(self: Object; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool		8
+nim	property_canRevert	gdext/objectcallbacks.html#property_canRevert.e,Object,ConstStringNamePtr	method property_canRevert(self: Object; p_name: ConstStringNamePtr): Bool		9
+nim	property_getRevert	gdext/objectcallbacks.html#property_getRevert.e,Object,ConstStringNamePtr,VariantPtr	method property_getRevert(self: Object; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool		10
+nim	toString	gdext/objectcallbacks.html#toString.e,Object,ptr.Bool,StringPtr	method toString(self: Object; r_is_valid: ptr Bool; p_out: StringPtr)		11
+nim	get_propertyList	gdext/objectcallbacks.html#get_propertyList.e,Object,ptr.uint32	method get_propertyList(self: Object; r_count: ptr uint32): ptr PropertyInfo		12
+nim	free_propertyList	gdext/objectcallbacks.html#free_propertyList.e,Object,openArray[PropertyInfo]	method free_propertyList(self: Object; p_list: openArray[PropertyInfo])		13
+nim	onInitT	gdext/objectcallbacks.html#onInitT	type onInitT		16
+nim	onDestroyT	gdext/objectcallbacks.html#onDestroyT	type onDestroyT		17
+nim	notificationT	gdext/objectcallbacks.html#notificationT	type notificationT		18
+nim	setT	gdext/objectcallbacks.html#setT	type setT		19
+nim	getT	gdext/objectcallbacks.html#getT	type getT		20
+nim	property_canRevertT	gdext/objectcallbacks.html#property_canRevertT	type property_canRevertT		21
+nim	property_getRevertT	gdext/objectcallbacks.html#property_getRevertT	type property_getRevertT		22
+nim	toStringT	gdext/objectcallbacks.html#toStringT	type toStringT		23
+nim	get_propertyListT	gdext/objectcallbacks.html#get_propertyListT	type get_propertyListT		24
+nim	free_propertyListT	gdext/objectcallbacks.html#free_propertyListT	type free_propertyListT		25

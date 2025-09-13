@@ -1,0 +1,25 @@
+nimTitle	buildsettings	gdext/private/buildsettings.html	module gdext/private/buildsettings		0
+nim	windows	gdext/private/buildsettings.html#windows	Platform.windows		3
+nim	macos	gdext/private/buildsettings.html#macos	Platform.macos		3
+nim	linux	gdext/private/buildsettings.html#linux	Platform.linux		3
+nim	android	gdext/private/buildsettings.html#android	Platform.android		3
+nim	ios	gdext/private/buildsettings.html#ios	Platform.ios		3
+nim	web	gdext/private/buildsettings.html#web	Platform.web		3
+nim	Platform	gdext/private/buildsettings.html#Platform	enum Platform		3
+nim	debug	gdext/private/buildsettings.html#debug	Target.debug		14
+nim	release	gdext/private/buildsettings.html#release	Target.release		14
+nim	editor	gdext/private/buildsettings.html#editor	Target.editor		14
+nim	Target	gdext/private/buildsettings.html#Target	enum Target		14
+nim	default	gdext/private/buildsettings.html#default	Architecture.default		20
+nim	double	gdext/private/buildsettings.html#double	Architecture.double		20
+nim	single	gdext/private/buildsettings.html#single	Architecture.single		20
+nim	x86_64	gdext/private/buildsettings.html#x86_64	Architecture.x86_64		20
+nim	arm64	gdext/private/buildsettings.html#arm64	Architecture.arm64		20
+nim	rv64	gdext/private/buildsettings.html#rv64	Architecture.rv64		20
+nim	riscv	gdext/private/buildsettings.html#riscv	Architecture.riscv		20
+nim	wasm32	gdext/private/buildsettings.html#wasm32	Architecture.wasm32		20
+nim	Architecture	gdext/private/buildsettings.html#Architecture	enum Architecture		20
+nim	BuildSettings	gdext/private/buildsettings.html#BuildSettings	const BuildSettings		75
+nim	Extension	gdext/private/buildsettings.html#Extension	const Extension		81
+nim	Assistance	gdext/private/buildsettings.html#Assistance	const Assistance		86
+nim	Dev	gdext/private/buildsettings.html#Dev	const Dev		90

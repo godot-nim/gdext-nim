@@ -13,7 +13,8 @@ import `gdext/private/buildsettings` instead.
 when not declared(switch):
   import system/nimscript
 
-import std/[strformat, strutils, tables, os, private/globs]
+import std/[strformat, strutils, tables, private/globs]
+import os except fileExists, findExe, getEnv
 from std/parsecfg import Config, newConfig
 import gdext/private/configdsl
 

@@ -1,0 +1,12 @@
+nimTitle	classes	gdext/coronation/header/classes.html	module gdext/coronation/header/classes		0
+nim	concat	gdext/coronation/header/classes.html#concat,Table[T,S],Table[T,S]	proc concat[T, S](a, b: Table[T, S]): Table[T, S]		17
+nim	expandMethodBind	gdext/coronation/header/classes.html#expandMethodBind.t,,,	template expandMethodBind(className; methodName; hash)		22
+nim	ptrcall	gdext/coronation/header/classes.html#ptrcall,MethodBindPtr,SomeClass,openArray[ConstTypePtr],TypePtr	proc ptrcall(methodbind: MethodBindPtr; self: SomeClass;\n        args: openArray[ConstTypePtr]; result: TypePtr = nil)		27
+nim	ptrcall	gdext/coronation/header/classes.html#ptrcall,MethodBindPtr,openArray[ConstTypePtr],TypePtr	proc ptrcall(methodbind: MethodBindPtr; args: openArray[ConstTypePtr];\n        result: TypePtr = nil)		29
+nim	ptrcall	gdext/coronation/header/classes.html#ptrcall,MethodBindPtr,SomeClass,array[,ConstTypePtr],TypePtr	proc ptrcall(methodbind: MethodBindPtr; self: SomeClass;\n        args: array[0, ConstTypePtr]; result: TypePtr = nil)		31
+nim	ptrcall	gdext/coronation/header/classes.html#ptrcall,MethodBindPtr,array[,ConstTypePtr],TypePtr	proc ptrcall(methodbind: MethodBindPtr; args: array[0, ConstTypePtr];\n        result: TypePtr = nil)		33
+nim	call	gdext/coronation/header/classes.html#call,MethodBindPtr,SomeClass,seq[VariantPtr],varargs[Variant]	proc call(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr];\n     vararg: varargs[Variant]): Variant		37
+nim	call	gdext/coronation/header/classes.html#call,MethodBindPtr,seq[VariantPtr],varargs[Variant]	proc call(methodbind: MethodBindPtr; args: var seq[VariantPtr];\n     vararg: varargs[Variant]): Variant		42
+nim	expandOnClassImported	gdext/coronation/header/classes.html#expandOnClassImported.t,typedesc,typedesc	template expandOnClassImported(Class, Super: typedesc)		48
+nimgrp	ptrcall	gdext/coronation/header/classes.html#ptrcall-procs-all	proc		27
+nimgrp	call	gdext/coronation/header/classes.html#call-procs-all	proc		37

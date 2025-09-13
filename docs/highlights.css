@@ -1,0 +1,95 @@
+pre.highlight, code.highlighter-rouge {
+  background: var(--secondary-background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5em;
+  overflow-x: auto;
+}
+
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
+  color: var(--comment);
+  font-style: italic;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+  color: var(--keyword);
+  font-weight: bold;
+}
+
+.highlight .n,
+.highlight .nf,
+.highlight .ni,
+.highlight .nn,
+.highlight .nx {
+  color: var(--identifier);
+}
+
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s1,
+.highlight .s2,
+.highlight .se {
+  color: var(--literal);
+}
+
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il {
+  color: var(--number);
+}
+
+.highlight .o,
+.highlight .ow {
+  color: var(--operator);
+}
+
+.highlight .p {
+  color: var(--punctuation);
+}
+
+.highlight .ss,
+.highlight .si,
+.highlight .sr {
+  color: var(--escapeSequence);
+}
+
+.highlight .na {
+  color: var(--program);
+}
+.highlight .no {
+  color: var(--option);
+}
+.highlight .dl {
+  color: var(--raw-data);
+}
+
+.highlight .err {
+  background-color: var(--error-background);
+  color: white;
+}
+
+.highlight .gi {
+  background-color: greenyellow;
+}
+
+.highlight .gd {
+  background-color: darkred;
+}
+
+pre.code, code {
+  background-color: initial;
+}

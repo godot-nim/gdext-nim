@@ -1,0 +1,43 @@
+nimTitle	gdinterface	gdext/private/gdinterface.html	module gdext/private/gdinterface		0
+nim	getPtr	gdext/private/gdinterface.html#getPtr.t,T	template getPtr[T](v: T): pointer		6
+nim	getPtr	gdext/private/gdinterface.html#getPtr.t,Variant	template getPtr(v: Variant): pointer		7
+nim	getPtr	gdext/private/gdinterface.html#getPtr.t,T_2	template getPtr[T: Object](v: T): pointer		8
+nim	getPtr	gdext/private/gdinterface.html#getPtr.t,GdRef	template getPtr(v: GdRef): pointer		10
+nim	load	gdext/private/gdinterface.html#load,VariantType,string,int64	proc load(typ: VariantType; proc_name: string; hash: int64): PtrBuiltInMethod		13
+nim	load	gdext/private/gdinterface.html#load,Variant_Operator,VariantType,VariantType	proc load(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator		16
+nim	callbackTable	gdext/private/gdinterface.html#callbackTable	var callbackTable		20
+nim	getParentClass	gdext/private/gdinterface.html#getParentClass	var getParentClass		21
+nim	engineInstance	gdext/private/gdinterface.html#engineInstance,Object	proc engineInstance(obj: Object): ObjectPtr		23
+nim	getPtr	gdext/private/gdinterface.html#getPtr,array[I,Variant]	proc getPtr[I](arr: array[I, Variant]): array[I, pointer]		28
+nim	getPtr	gdext/private/gdinterface.html#getPtr	proc getPtr(arr: varargs[Variant] | seq[Variant]): seq[pointer]		31
+nim	getPtr	gdext/private/gdinterface.html#getPtr,array[,Variant]	proc getPtr(arr: array[0, Variant]): array[0, pointer]		35
+nim	getTypedPtr	gdext/private/gdinterface.html#getTypedPtr.t,Variant	template getTypedPtr(v: Variant): VariantPtr		37
+nim	head	gdext/private/gdinterface.html#head,openArray[T]	proc head[T](a: openArray[T]): ptr T		39
+nim	newException	gdext/private/gdinterface.html#newException,CallError	proc newException(ce: CallError): ref GodotCallDefect		53
+nim	check	gdext/private/gdinterface.html#check.t,CallError	template check(ce: CallError): untyped		58
+nim	`$`	gdext/private/gdinterface.html#$,ref.Exception	proc `$`(exception: ref Exception): string		63
+nim	reporterr	gdext/private/gdinterface.html#reporterr,ref.Exception	proc reporterr(exception: ref Exception)		86
+nim	errproof	gdext/private/gdinterface.html#errproof.t	template errproof(body): untyped		89
+nim	createClass	gdext/private/gdinterface.html#createClass,ObjectPtr	proc createClass[T: Object](o: ObjectPtr): T		95
+nim	gdname	gdext/private/gdinterface.html#gdname.m,typedesc[SomeClass]	macro gdname(T: typedesc[SomeClass]): string		104
+nim	gdname	gdext/private/gdinterface.html#gdname,NimNode	proc gdname(node: NimNode): NimNode		113
+nim	gdname	gdext/private/gdinterface.html#gdname.m,proc	macro gdname(P: proc): string		132
+nim	Super	gdext/private/gdinterface.html#Super.m,typedesc	macro Super(Type: typedesc): typedesc		135
+nim	registerExtensionClass	gdext/private/gdinterface.html#registerExtensionClass,typedesc[ClassDB],StringName,StringName,ptr.ClassCreationInfo4	proc registerExtensionClass(_: typedesc[ClassDB];\n                       p_class_name, p_parent_class_name: StringName;\n                       p_extension_funcs: ptr ClassCreationInfo4)		137
+nim	registerExtensionClassMethod	gdext/private/gdinterface.html#registerExtensionClassMethod,typedesc[ClassDB],StringName,ptr.ClassMethodInfo	proc registerExtensionClassMethod(_: typedesc[ClassDB]; p_class_name: StringName;\n                             p_method_info: ptr ClassMethodInfo)		141
+nim	registerExtensionClassIntegerConstant	gdext/private/gdinterface.html#registerExtensionClassIntegerConstant,typedesc[ClassDB],StringName,StringName,StringName,Int,Bool	proc registerExtensionClassIntegerConstant(_: typedesc[ClassDB]; p_class_name,\n    p_enum_name, p_constant_name: StringName; p_constant_value: Int;\n                                      p_is_bitfield: Bool)		145
+nim	registerExtensionClassProperty	gdext/private/gdinterface.html#registerExtensionClassProperty,typedesc[ClassDB],StringName,ptr.PropertyInfo,StringName,StringName	proc registerExtensionClassProperty(_: typedesc[ClassDB]; p_class_name: StringName;\n                               p_info: ptr PropertyInfo;\n                               p_setter, p_getter: StringName)		149
+nim	registerExtensionClassPropertyGroup	gdext/private/gdinterface.html#registerExtensionClassPropertyGroup,typedesc[ClassDB],StringName,String,String	proc registerExtensionClassPropertyGroup(_: typedesc[ClassDB];\n                                    p_class_name: StringName;\n                                    p_group_name, p_prefix: String)		153
+nim	registerExtensionClassPropertySubgroup	gdext/private/gdinterface.html#registerExtensionClassPropertySubgroup,typedesc[ClassDB],StringName,String,String	proc registerExtensionClassPropertySubgroup(_: typedesc[ClassDB];\n                                       p_class_name: StringName;\n                                       p_subgroup_name, p_prefix: String)		157
+nim	registerExtensionClassSignal	gdext/private/gdinterface.html#registerExtensionClassSignal,typedesc[ClassDB],StringName,StringName,varargs[PropertyInfo]	proc registerExtensionClassSignal(_: typedesc[ClassDB]; p_class_name: StringName;\n                             p_signal_name: StringName;\n                             args: varargs[PropertyInfo])		161
+nim	registerExtensionClassVirtualMethod	gdext/private/gdinterface.html#registerExtensionClassVirtualMethod,typedesc[ClassDB],StringName,ClassVirtualMethodInfo	proc registerExtensionClassVirtualMethod(_: typedesc[ClassDB];\n                                    p_class_name: StringName;\n    p_method_info {.byref.}: ClassVirtualMethodInfo)		169
+nim	unregisterExtensionClass	gdext/private/gdinterface.html#unregisterExtensionClass,typedesc[ClassDB],StringName	proc unregisterExtensionClass(_: typedesc[ClassDB]; p_class_name: StringName)		173
+nim	empty	gdext/private/gdinterface.html#empty,typedesc[String]	proc empty(_: typedesc[String]): var String		177
+nim	empty	gdext/private/gdinterface.html#empty,typedesc[StringName]	proc empty(_: typedesc[StringName]): var StringName		180
+nim	referenced	gdext/private/gdinterface.html#referenced,T	proc referenced[T](self: T): GdRef[T]		184
+nim	asGdRef	gdext/private/gdinterface.html#asGdRef,T	proc asGdRef[T](self: T): GdRef[T]		187
+nimgrp	empty	gdext/private/gdinterface.html#empty-procs-all	proc		177
+nimgrp	getptr	gdext/private/gdinterface.html#getPtr-procs-all	proc		28
+nimgrp	load	gdext/private/gdinterface.html#load-procs-all	proc		13
+nimgrp	gdname	gdext/private/gdinterface.html#gdname-macros-all	macro		104
+nimgrp	getptr	gdext/private/gdinterface.html#getPtr-templates-all	template		6

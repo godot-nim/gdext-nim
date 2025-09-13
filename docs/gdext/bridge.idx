@@ -1,0 +1,30 @@
+nimTitle	bridge	gdext/bridge.html	module gdext/bridge		0
+nim	name	gdext/bridge.html#name.t,string	template name(newname: string)		17
+nim	rename	gdext/bridge.html#rename.t,proc(string)	template rename(f: proc (str: string): string)		32
+nim	signal	gdext/bridge.html#signal.t	template signal()		54
+nim	initLevel	gdext/bridge.html#initLevel.t,InitializationLevel	template initLevel(level: InitializationLevel)		62
+nim	description	gdext/bridge.html#description.t,string	template description(desc: string)		67
+nim	tool	gdext/bridge.html#tool.t	template tool()		80
+nim	icon	gdext/bridge.html#icon.t,string	template icon(icon_path: string)		90
+nim	singleton	gdext/bridge.html#singleton.t	template singleton()		95
+nim	rpc	gdext/bridge.html#rpc.t,int	template rpc(mode = rpcModeAnyPeer; callLocal = false;\n    transferMode = transferModeReliable; transferChannel = 0)		102
+nim	Initialization_Default	gdext/bridge.html#Initialization_Default	var Initialization_Default		105
+nim	gdsync	gdext/bridge.html#gdsync.m	macro gdsync(body): untyped		121
+nim	`bind`	gdext/bridge.html#bind.t,typedesc[T],typedesc[E]	template `bind`[T: SomeUserClass; E: enum](Class: typedesc[T]; Enum: typedesc[E])		224
+nim	`bind`	gdext/bridge.html#bind.t,typedesc[T],typedesc[set[E]]	template `bind`[T: SomeUserClass; E: enum](Class: typedesc[T]; Flags: typedesc[set[E]])		236
+nim	`bind`	gdext/bridge.html#bind.t,typedesc[E]	template `bind`[E: enum](Enum: typedesc[E])		252
+nim	`bind`	gdext/bridge.html#bind.t,typedesc[set[E]]	template `bind`[E: enum](Flags: typedesc[set[E]])		256
+nim	gdexport	gdext/bridge.html#gdexport.t	template gdexport()		260
+nim	gdexport	gdext/bridge.html#gdexport.t,Appearance	template gdexport(appearance: Appearance)		265
+nim	gdexport	gdext/bridge.html#gdexport.t,string	template gdexport[T: SomeUserClass](name: string; appearance = default(Appearance)): untyped		272
+nim	gdexport	gdext/bridge.html#gdexport.t,string,typedesc[SomeUserClass],typedesc[SomeProperty],StringName,StringName,string	template gdexport(name: string; typ: typedesc[SomeUserClass];\n         proptyp: typedesc[SomeProperty]; getter, setter: StringName;\n         appearance = default(Appearance); description = ""): untyped		283
+nim	gdexport	gdext/bridge.html#gdexport.t,staticstring,proc(T),proc(T,P),string	template gdexport[T: SomeUserClass; P: SomeProperty](name: static string;\n    getter: proc (self: T): P; setter: proc (self: T; value: P);\n    appearance = default(Appearance); description = ""): untyped		336
+nim	gdexport	gdext/bridge.html#gdexport.m,staticstring,typed,string	macro gdexport(name: static string; iden: typed; appearance = default(Appearance);\n         description = ""): untyped		353
+nim	gdexport	gdext/bridge.html#gdexport.m,typed,string	macro gdexport(iden: typed; appearance = default(Appearance); description = ""): untyped		377
+nimgrp	gdexport	gdext/bridge.html#gdexport-macros-all	macro		353
+nimgrp	bind	gdext/bridge.html#bind-templates-all	template		224
+nimgrp	gdexport	gdext/bridge.html#gdexport-templates-all	template		260
+heading	Class definition	gdext/bridge.html#class-definition	   Class definition		0
+heading	Procedure definition / Method overriding	gdext/bridge.html#procedure-definition-slash-method-overriding	   Procedure definition / Method overriding		0
+heading	Signal definition	gdext/bridge.html#signal-definition	   Signal definition		0
+heading	Virtual method definition	gdext/bridge.html#virtual-method-definition	   Virtual method definition		0

@@ -1,0 +1,12 @@
+nimTitle	sugars	gdext/sugars.html	module gdext/sugars		0
+nim	convertToString	gdext/sugars.html#convertToString.c,string	converter convertToString(str: string): String		8
+nim	convertToStringName	gdext/sugars.html#convertToStringName.c,string	converter convertToStringName(str: string): StringName		9
+nim	convertToNodePath	gdext/sugars.html#convertToNodePath.c,string	converter convertToNodePath(str: string): NodePath		10
+nim	convertToArray	gdext/sugars.html#convertToArray.c,TypedArray	converter convertToArray(arr: TypedArray): Array		12
+nim	convertToSingleton	gdext/sugars.html#convertToSingleton.c,typedesc[T]	converter convertToSingleton[T: SomeClass](_: typedesc[T]): T		14
+nim	convertToBool	gdext/sugars.html#convertToBool.c,Variant	converter convertToBool(variant: Variant): bool		16
+nim	`as`	gdext/sugars.html#as,SomeClass,typedesc[T]	proc `as`[T: SomeClass](self: SomeClass; _: typedesc[T]): T		18
+nim	`as`	gdext/sugars.html#as,Object,typedesc[GdRef[T: RefCounted]]	proc `as`[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result:type		19
+nim	`as`	gdext/sugars.html#as,GdRef,typedesc[GdRef[T: RefCounted]]	proc `as`[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result:type		20
+nim	`as`	gdext/sugars.html#as.t,Variant,typedesc[T]	template `as`[T](v: Variant; Result: typedesc[T]): Result:type		22
+nimgrp	as	gdext/sugars.html#as-procs-all	proc		18

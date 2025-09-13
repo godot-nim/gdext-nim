@@ -1,0 +1,110 @@
+nimTitle	othertools	gdext/othertools.html	module gdext/othertools		0
+nim	callable	gdext/othertools.html#callable	proc callable(): Callable		9
+nim	signal	gdext/othertools.html#signal	proc signal(): Signal		10
+nim	rid	gdext/othertools.html#rid	proc rid(): RID		12
+nim	rid	gdext/othertools.html#rid,RID	proc rid(from: RID): RID		13
+nim	callable	gdext/othertools.html#callable,Callable	proc callable(from: Callable): Callable		7
+nim	callable	gdext/othertools.html#callable,Object,StringName	proc callable(object: Object; method: StringName): Callable		10
+nim	signal	gdext/othertools.html#signal,Signal	proc signal(from: Signal): Signal		7
+nim	signal	gdext/othertools.html#signal,Object,StringName	proc signal(object: Object; signal: StringName): Signal		10
+nim	`not`	gdext/othertools.html#not,Callable	proc `not`(left: Callable): bool		8
+nim	`==`	gdext/othertools.html#==,Callable,Callable	proc `==`(left: Callable; right: Callable): bool		9
+nim	create	gdext/othertools.html#create,typedesc[Callable],Variant,StringName	proc create(_: typedesc[Callable]; variant: Variant; method: StringName): Callable		36
+nim	callv	gdext/othertools.html#callv,Callable,Array	proc callv(self: Callable; arguments: Array): Variant		39
+nim	isNull	gdext/othertools.html#isNull,Callable	proc isNull(self: Callable): bool		42
+nim	isCustom	gdext/othertools.html#isCustom,Callable	proc isCustom(self: Callable): bool		44
+nim	isStandard	gdext/othertools.html#isStandard,Callable	proc isStandard(self: Callable): bool		46
+nim	isValid	gdext/othertools.html#isValid,Callable	proc isValid(self: Callable): bool		48
+nim	getObject	gdext/othertools.html#getObject,Callable	proc getObject(self: Callable): Object		50
+nim	getObjectId	gdext/othertools.html#getObjectId,Callable	proc getObjectId(self: Callable): Int		52
+nim	getMethod	gdext/othertools.html#getMethod,Callable	proc getMethod(self: Callable): StringName		54
+nim	getArgumentCount	gdext/othertools.html#getArgumentCount,Callable	proc getArgumentCount(self: Callable): Int		56
+nim	getBoundArgumentsCount	gdext/othertools.html#getBoundArgumentsCount,Callable	proc getBoundArgumentsCount(self: Callable): Int		58
+nim	getBoundArguments	gdext/othertools.html#getBoundArguments,Callable	proc getBoundArguments(self: Callable): Array		60
+nim	getUnboundArgumentsCount	gdext/othertools.html#getUnboundArgumentsCount,Callable	proc getUnboundArgumentsCount(self: Callable): Int		62
+nim	hash	gdext/othertools.html#hash,Callable	proc hash(self: Callable): Hash		64
+nim	bindv	gdext/othertools.html#bindv,Callable,Array	proc bindv(self: var Callable; arguments: Array): Callable		66
+nim	unbind	gdext/othertools.html#unbind,Callable,Int	proc unbind(self: Callable; argcount: Int): Callable		69
+nim	call	gdext/othertools.html#call,Callable,varargs[Variant,variant]	proc call(self: Callable; args: varargs[Variant, variant]): Variant		72
+nim	callDeferred	gdext/othertools.html#callDeferred,Callable,varargs[Variant,variant]	proc callDeferred(self: Callable; args: varargs[Variant, variant]): void		78
+nim	rpc	gdext/othertools.html#rpc,Callable,varargs[Variant,variant]	proc rpc(self: Callable; args: varargs[Variant, variant]): void		84
+nim	rpcId	gdext/othertools.html#rpcId,Callable,Int,varargs[Variant,variant]	proc rpcId(self: Callable; peerId: Int; args: varargs[Variant, variant]): void		90
+nim	`bind`	gdext/othertools.html#bind,Callable,varargs[Variant,variant]	proc `bind`(self: Callable; args: varargs[Variant, variant]): Callable		98
+nim	`not`	gdext/othertools.html#not,Signal	proc `not`(left: Signal): bool		8
+nim	`==`	gdext/othertools.html#==,Signal,Signal	proc `==`(left: Signal; right: Signal): bool		9
+nim	isNull	gdext/othertools.html#isNull,Signal	proc isNull(self: Signal): bool		25
+nim	getObject	gdext/othertools.html#getObject,Signal	proc getObject(self: Signal): Object		27
+nim	getObjectId	gdext/othertools.html#getObjectId,Signal	proc getObjectId(self: Signal): Int		29
+nim	getName	gdext/othertools.html#getName,Signal	proc getName(self: Signal): StringName		31
+nim	connect	gdext/othertools.html#connect,Signal,Callable,Int	proc connect(self: var Signal; callable: Callable; flags: Int = 0): Int		33
+nim	disconnect	gdext/othertools.html#disconnect,Signal,Callable	proc disconnect(self: var Signal; callable: Callable): void		36
+nim	isConnected	gdext/othertools.html#isConnected,Signal,Callable	proc isConnected(self: Signal; callable: Callable): bool		39
+nim	getConnections	gdext/othertools.html#getConnections,Signal	proc getConnections(self: Signal): Array		42
+nim	hasConnections	gdext/othertools.html#hasConnections,Signal	proc hasConnections(self: Signal): bool		44
+nim	emit	gdext/othertools.html#emit,Signal,varargs[Variant,variant]	proc emit(self: Signal; args: varargs[Variant, variant]): void		46
+nim	`not`	gdext/othertools.html#not,RID	proc `not`(left: RID): bool		12
+nim	`==`	gdext/othertools.html#==,RID,RID	proc `==`(left: RID; right: RID): bool		13
+nim	`<`	gdext/othertools.html#<,RID,RID	proc `<`(left: RID; right: RID): bool		14
+nim	`<=`	gdext/othertools.html#<=,RID,RID	proc `<=`(left: RID; right: RID): bool		15
+nim	isValid	gdext/othertools.html#isValid,RID	proc isValid(self: RID): bool		25
+nim	getId	gdext/othertools.html#getId,RID	proc getId(self: RID): Int		27
+nim	`and`	gdext/othertools.html#and,Int,Variant	proc `and`(left: Int; right: Variant): bool		65
+nim	`or`	gdext/othertools.html#or,Int,Variant	proc `or`(left: Int; right: Variant): bool		66
+nim	`xor`	gdext/othertools.html#xor,Int,Variant	proc `xor`(left: Int; right: Variant): bool		67
+nim	`and`	gdext/othertools.html#and,Int,bool	proc `and`(left: Int; right: bool): bool		68
+nim	`or`	gdext/othertools.html#or,Int,bool	proc `or`(left: Int; right: bool): bool		69
+nim	`xor`	gdext/othertools.html#xor,Int,bool	proc `xor`(left: Int; right: bool): bool		70
+nim	`**`	gdext/othertools.html#**,Int,Int	proc `**`(left: Int; right: Int): Int		71
+nim	`**`	gdext/othertools.html#**,Int,Float	proc `**`(left: Int; right: Float): Float		72
+nim	`and`	gdext/othertools.html#and,Int,Float	proc `and`(left: Int; right: Float): bool		73
+nim	`or`	gdext/othertools.html#or,Int,Float	proc `or`(left: Int; right: Float): bool		74
+nim	`xor`	gdext/othertools.html#xor,Int,Float	proc `xor`(left: Int; right: Float): bool		75
+nim	`*`	gdext/othertools.html#*,Int,Quaternion	proc `*`(left: Int; right: Quaternion): Quaternion		76
+nim	`*`	gdext/othertools.html#*,Int,Color	proc `*`(left: Int; right: Color): Color		77
+nim	`and`	gdext/othertools.html#and,Int,Object	proc `and`(left: Int; right: Object): bool		78
+nim	`or`	gdext/othertools.html#or,Int,Object	proc `or`(left: Int; right: Object): bool		79
+nim	`xor`	gdext/othertools.html#xor,Int,Object	proc `xor`(left: Int; right: Object): bool		80
+nim	`and`	gdext/othertools.html#and,Float,Variant	proc `and`(left: Float; right: Variant): bool		58
+nim	`or`	gdext/othertools.html#or,Float,Variant	proc `or`(left: Float; right: Variant): bool		59
+nim	`xor`	gdext/othertools.html#xor,Float,Variant	proc `xor`(left: Float; right: Variant): bool		60
+nim	`not`	gdext/othertools.html#not,Float	proc `not`(left: Float): bool		61
+nim	`and`	gdext/othertools.html#and,Float,bool	proc `and`(left: Float; right: bool): bool		62
+nim	`or`	gdext/othertools.html#or,Float,bool	proc `or`(left: Float; right: bool): bool		63
+nim	`xor`	gdext/othertools.html#xor,Float,bool	proc `xor`(left: Float; right: bool): bool		64
+nim	`**`	gdext/othertools.html#**,Float,Int	proc `**`(left: Float; right: Int): Float		65
+nim	`and`	gdext/othertools.html#and,Float,Int	proc `and`(left: Float; right: Int): bool		66
+nim	`or`	gdext/othertools.html#or,Float,Int	proc `or`(left: Float; right: Int): bool		67
+nim	`xor`	gdext/othertools.html#xor,Float,Int	proc `xor`(left: Float; right: Int): bool		68
+nim	`**`	gdext/othertools.html#**,Float,Float	proc `**`(left: Float; right: Float): Float		69
+nim	`and`	gdext/othertools.html#and,Float,Float	proc `and`(left: Float; right: Float): bool		70
+nim	`or`	gdext/othertools.html#or,Float,Float	proc `or`(left: Float; right: Float): bool		71
+nim	`xor`	gdext/othertools.html#xor,Float,Float	proc `xor`(left: Float; right: Float): bool		72
+nim	`*`	gdext/othertools.html#*,Float,Quaternion	proc `*`(left: Float; right: Quaternion): Quaternion		73
+nim	`*`	gdext/othertools.html#*,Float,Color	proc `*`(left: Float; right: Color): Color		74
+nim	`and`	gdext/othertools.html#and,Float,Object	proc `and`(left: Float; right: Object): bool		75
+nim	`or`	gdext/othertools.html#or,Float,Object	proc `or`(left: Float; right: Object): bool		76
+nim	`xor`	gdext/othertools.html#xor,Float,Object	proc `xor`(left: Float; right: Object): bool		77
+nim	`and`	gdext/othertools.html#and,bool,Int	proc `and`(left: bool; right: Int): bool		25
+nim	`or`	gdext/othertools.html#or,bool,Int	proc `or`(left: bool; right: Int): bool		26
+nim	`xor`	gdext/othertools.html#xor,bool,Int	proc `xor`(left: bool; right: Int): bool		27
+nim	`and`	gdext/othertools.html#and,bool,Float	proc `and`(left: bool; right: Float): bool		28
+nim	`or`	gdext/othertools.html#or,bool,Float	proc `or`(left: bool; right: Float): bool		29
+nim	`xor`	gdext/othertools.html#xor,bool,Float	proc `xor`(left: bool; right: Float): bool		30
+nim	`and`	gdext/othertools.html#and,bool,Object	proc `and`(left: bool; right: Object): bool		31
+nim	`or`	gdext/othertools.html#or,bool,Object	proc `or`(left: bool; right: Object): bool		32
+nim	`xor`	gdext/othertools.html#xor,bool,Object	proc `xor`(left: bool; right: Object): bool		33
+nim	`()`	gdext/othertools.html#(),Signal,varargs[Variant,variant]	proc `()`(signal: Signal; args: varargs[Variant, variant])		27
+nimgrp	getobject	gdext/othertools.html#getObject-procs-all	proc		50
+nimgrp	isnull	gdext/othertools.html#isNull-procs-all	proc		42
+nimgrp	xor	gdext/othertools.html#xor-procs-all	proc		67
+nimgrp	getobjectid	gdext/othertools.html#getObjectId-procs-all	proc		52
+nimgrp	==	gdext/othertools.html#==-procs-all	proc		9
+nimgrp	and	gdext/othertools.html#and-procs-all	proc		65
+nimgrp	isvalid	gdext/othertools.html#isValid-procs-all	proc		48
+nimgrp	callable	gdext/othertools.html#callable-procs-all	proc		9
+nimgrp	**	gdext/othertools.html#**-procs-all	proc		71
+nimgrp	*	gdext/othertools.html#*-procs-all	proc		76
+nimgrp	rid	gdext/othertools.html#rid-procs-all	proc		12
+nimgrp	not	gdext/othertools.html#not-procs-all	proc		8
+nimgrp	or	gdext/othertools.html#or-procs-all	proc		66
+nimgrp	signal	gdext/othertools.html#signal-procs-all	proc		10

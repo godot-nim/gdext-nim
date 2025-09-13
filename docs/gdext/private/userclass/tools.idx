@@ -1,0 +1,5 @@
+nimTitle	tools	gdext/private/userclass/tools.html	module gdext/private/userclass/tools		0
+nim	docComment	gdext/private/userclass/tools.html#docComment,NimNode	proc docComment(def: NimNode): NimNode		6
+nim	getDescription	gdext/private/userclass/tools.html#getDescription,NimNode	proc getDescription(def: NimNode): string		12
+nim	getEditorHelp	gdext/private/userclass/tools.html#getEditorHelp,NimNode	proc getEditorHelp(def: NimNode): string		19
+nim	withCheckTypes	gdext/private/userclass/tools.html#withCheckTypes,NimNode,NimNode,NimNode	proc withCheckTypes(node, onSelfTypeFailed, onDefault: NimNode): NimNode		22
