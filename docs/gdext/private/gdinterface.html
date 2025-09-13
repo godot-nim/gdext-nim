@@ -56,13 +56,10 @@
 </li>
 <li>
   <details open>
-    <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
+    <summary><a class="reference reference-toplevel" href="#8" id="58">Vars</a></summary>
     <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#GodotClassMeta" title="GodotClassMeta = object
-  virtualMethods*: Table[StringName, ClassCallVirtual]
-  className*: StringName
-  callbacks*: InstanceBindingCallbacks
-  rpcConfigs*: Table[StringName, Variant]">GodotClassMeta</a></li>
+      <li><a class="reference" href="#callbackTable" title="callbackTable: Table[StringName, ptr InstanceBindingCallbacks]">callbackTable</a></li>
+<li><a class="reference" href="#getParentClass" title="getParentClass: proc (class: StringName): StringName">getParentClass</a></li>
 
     </ul>
   </details>
@@ -77,20 +74,6 @@
 </ul>
 <ul class="simple nested-toc-section">asGdRef
   <li><a class="reference" href="#asGdRef%2CT" title="asGdRef[T](self: T): GdRef[T]">asGdRef[T](self: T): GdRef[T]</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">callScriptMethod
-  <li><a class="reference" href="#callScriptMethod%2CObject%2CStringName" title="callScriptMethod(obj: Object; p_method: StringName): Variant">callScriptMethod(obj: Object; p_method: StringName): Variant</a></li>
-<li><a class="reference" href="#callScriptMethod%2CObject%2CStringName%2Carray%5B%2CVariant%5D" title="callScriptMethod(obj: Object; p_method: StringName; args: array[0, Variant]): Variant">callScriptMethod(obj: Object; p_method: StringName; args: array[0, Variant]): Variant</a></li>
-<li><a class="reference" href="#callScriptMethod%2CObject%2CStringName%2Carray%5BI%2CVariant%5D" title="callScriptMethod[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant">callScriptMethod[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">castTo
-  <li><a class="reference" href="#castTo%2CObject%2Cpointer" title="castTo(obj: Object; p_class_tag: pointer): ObjectPtr">castTo(obj: Object; p_class_tag: pointer): ObjectPtr</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">constructObject
-  <li><a class="reference" href="#constructObject%2Ctypedesc%5BClassDB%5D%2CStringName" title="constructObject(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr">constructObject(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">createClass
@@ -110,43 +93,10 @@
   <li><a class="reference" href="#gdname%2CNimNode" title="gdname(node: NimNode): NimNode">gdname(node: NimNode): NimNode</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">getClassName
-  <li><a class="reference" href="#getClassName%2CObjectPtr" title="getClassName(o: ObjectPtr): StringName">getClassName(o: ObjectPtr): StringName</a></li>
-<li><a class="reference" href="#getClassName%2CObject" title="getClassName(self: Object): StringName">getClassName(self: Object): StringName</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">getClassTag
-  <li><a class="reference" href="#getClassTag%2Ctypedesc%5BClassDB%5D%2CStringName" title="getClassTag(_: typedesc[ClassDB]; p_classname: StringName): pointer">getClassTag(_: typedesc[ClassDB]; p_classname: StringName): pointer</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">getInstanceBinding
-  <li><a class="reference" href="#getInstanceBinding%2CObjectPtr%2CInstanceBindingCallbacks" title="getInstanceBinding(p_engine_object: ObjectPtr;
-                   callbacks: var InstanceBindingCallbacks): pointer">getInstanceBinding(p_engine_object: ObjectPtr;
-                   callbacks: var InstanceBindingCallbacks): pointer</a></li>
-<li><a class="reference" href="#getInstanceBinding%2CObjectPtr%2Ctypedesc%5BT%5D" title="getInstanceBinding[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T">getInstanceBinding[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">getInstanceID
-  <li><a class="reference" href="#getInstanceID%2CObject" title="getInstanceID(self: Object): GDObjectInstanceID">getInstanceID(self: Object): GDObjectInstanceID</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">getMethodBind
-  <li><a class="reference" href="#getMethodBind%2Ctypedesc%5BClassDB%5D%2CStringName%2Cstring%2CInt" title="getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;
-              p_methodname: string; p_hash: Int): MethodBindPtr">getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;
-              p_methodname: string; p_hash: Int): MethodBindPtr</a></li>
-<li><a class="reference" href="#getMethodBind%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2CInt" title="getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;
-              p_methodname: StringName; p_hash: Int): MethodBindPtr">getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;
-              p_methodname: StringName; p_hash: Int): MethodBindPtr</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">getPtr
   <li><a class="reference" href="#getPtr%2Carray%5B%2CVariant%5D" title="getPtr(arr: array[0, Variant]): array[0, pointer]">getPtr(arr: array[0, Variant]): array[0, pointer]</a></li>
 <li><a class="reference" href="#getPtr" title="getPtr(arr: varargs[Variant] | seq[Variant]): seq[pointer]">getPtr(arr: varargs[Variant] | seq[Variant]): seq[pointer]</a></li>
 <li><a class="reference" href="#getPtr%2Carray%5BI%2CVariant%5D" title="getPtr[I](arr: array[I, Variant]): array[I, pointer]">getPtr[I](arr: array[I, Variant]): array[I, pointer]</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">hasScriptMethod
-  <li><a class="reference" href="#hasScriptMethod%2CObject%2CStringName" title="hasScriptMethod(obj: Object; p_method: StringName): bool">hasScriptMethod(obj: Object; p_method: StringName): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">head
@@ -156,10 +106,6 @@
 <ul class="simple nested-toc-section">load
   <li><a class="reference" href="#load%2CVariant_Operator%2CVariantType%2CVariantType" title="load(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator">load(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator</a></li>
 <li><a class="reference" href="#load%2CVariantType%2Cstring%2Cint64" title="load(typ: VariantType; proc_name: string; hash: int64): PtrBuiltInMethod">load(typ: VariantType; proc_name: string; hash: int64): PtrBuiltInMethod</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">Meta
-  <li><a class="reference" href="#Meta%2Ctypedesc%5BSomeClass%5D" title="Meta(T: typedesc[SomeClass]): var GodotClassMeta">Meta(T: typedesc[SomeClass]): var GodotClassMeta</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">newException
@@ -236,16 +182,6 @@
   <li><a class="reference" href="#reporterr%2Cref.Exception" title="reporterr(exception: ref Exception)">reporterr(exception: ref Exception)</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">setInstance
-  <li><a class="reference" href="#setInstance%2CObjectPtr%2CStringName%2CObject" title="setInstance(p_o: ObjectPtr; p_classname: StringName; p_instance: Object)">setInstance(p_o: ObjectPtr; p_classname: StringName; p_instance: Object)</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">setInstanceBinding
-  <li><a class="reference" href="#setInstanceBinding%2CObjectPtr%2CObject%2Cptr.InstanceBindingCallbacks" title="setInstanceBinding(p_o: ObjectPtr; p_binding: Object;
-                   p_callbacks: ptr InstanceBindingCallbacks)">setInstanceBinding(p_o: ObjectPtr; p_binding: Object;
-                   p_callbacks: ptr InstanceBindingCallbacks)</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">unregisterExtensionClass
   <li><a class="reference" href="#unregisterExtensionClass%2Ctypedesc%5BClassDB%5D%2CStringName" title="unregisterExtensionClass(_: typedesc[ClassDB]; p_class_name: StringName)">unregisterExtensionClass(_: typedesc[ClassDB]; p_class_name: StringName)</a></li>
 
@@ -275,16 +211,8 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#18" id="68">Templates</a></summary>
     <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">callbacks
-  <li><a class="reference" href="#callbacks.t%2Ctypedesc%5BSomeClass%5D" title="callbacks(T: typedesc[SomeClass]): var InstanceBindingCallbacks">callbacks(T: typedesc[SomeClass]): var InstanceBindingCallbacks</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">check
+      <ul class="simple nested-toc-section">check
   <li><a class="reference" href="#check.t%2CCallError" title="check(ce: CallError): untyped">check(ce: CallError): untyped</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">className
-  <li><a class="reference" href="#className.t%2Ctypedesc%5BSomeClass%5D" title="className(T: typedesc[SomeClass]): var StringName">className(T: typedesc[SomeClass]): var StringName</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">errproof
@@ -300,10 +228,6 @@
 </ul>
 <ul class="simple nested-toc-section">getTypedPtr
   <li><a class="reference" href="#getTypedPtr.t%2CVariant" title="getTypedPtr(v: Variant): VariantPtr">getTypedPtr(v: Variant): VariantPtr</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">vmethods
-  <li><a class="reference" href="#vmethods.t%2Ctypedesc%5BSomeClass%5D" title="vmethods(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual]">vmethods(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual]</a></li>
 
 </ul>
 
@@ -325,18 +249,22 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="buildsettings.html">buildsettings</a>, <a class="reference external" href="native.html">native</a>, <a class="reference external" href="macros.html">macros</a>, <a class="reference external" href="debugging.html">debugging</a>, <a class="reference external" href="../builtinindex.html">../builtinindex</a>, <a class="reference external" href="../stringtools.html">../stringtools</a>, <a class="reference external" href="../objectcallbacks.html">../objectcallbacks</a>, <a class="reference external" href="../nameformats.html">../nameformats</a>
+    <a class="reference external" href="buildsettings.html">buildsettings</a>, <a class="reference external" href="native.html">native</a>, <a class="reference external" href="macros.html">macros</a>, <a class="reference external" href="debugging.html">debugging</a>, <a class="reference external" href="classindex.html">classindex</a>, <a class="reference external" href="../builtinindex.html">../builtinindex</a>, <a class="reference external" href="../stringtools.html">../stringtools</a>, <a class="reference external" href="../objectcallbacks.html">../objectcallbacks</a>, <a class="reference external" href="../nameformats.html">../nameformats</a>
   </dl>
 </div>
-<div class="section" id="7">
-  <h1><a class="toc-backref" href="#7">Types</a></h1>
+<div class="section" id="8">
+  <h1><a class="toc-backref" href="#8">Vars</a></h1>
   <dl class="item">
-    <div id="GodotClassMeta">
-  <dt><pre><a href="gdinterface.html#GodotClassMeta"><span class="Identifier">GodotClassMeta</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">virtualMethods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">,</span> <a href="native.html#ClassCallVirtual"><span class="Identifier">ClassCallVirtual</span></a><span class="Other">]</span>
-  <span class="Identifier">className</span><span class="Operator">*</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a>
-  <span class="Identifier">callbacks</span><span class="Operator">*</span><span class="Other">:</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a>
-  <span class="Identifier">rpcConfigs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span></pre></dt>
+    <div id="callbackTable">
+  <dt><pre><a href="gdinterface.html#callbackTable"><span class="Identifier">callbackTable</span></a><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">,</span> <span class="Keyword">ptr</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="getParentClass">
+  <dt><pre><a href="gdinterface.html#getParentClass"><span class="Identifier">getParentClass</span></a><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">class</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a></pre></dt>
   <dd>
     
     
@@ -363,59 +291,6 @@
 <div id="asGdRef-procs-all">
   <div id="asGdRef,T">
   <dt><pre><span class="Keyword">proc</span> <a href="#asGdRef%2CT"><span class="Identifier">asGdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="callScriptMethod-procs-all">
-  <div id="callScriptMethod,Object,StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callScriptMethod%2CObject%2CStringName"><span class="Identifier">callScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="callScriptMethod,Object,StringName,array[,Variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callScriptMethod%2CObject%2CStringName%2Carray%5B%2CVariant%5D"><span class="Identifier">callScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">0</span><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="callScriptMethod,Object,StringName,array[I,Variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callScriptMethod%2CObject%2CStringName%2Carray%5BI%2CVariant%5D"><span class="Identifier">callScriptMethod</span></a><span class="Other">[</span><span class="Identifier">I</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
-                         <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">I</span><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="castTo-procs-all">
-  <div id="castTo,Object,pointer">
-  <dt><pre><span class="Keyword">proc</span> <a href="#castTo%2CObject%2Cpointer"><span class="Identifier">castTo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_class_tag</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="constructObject-procs-all">
-  <div id="constructObject,typedesc[ClassDB],StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#constructObject%2Ctypedesc%5BClassDB%5D%2CStringName"><span class="Identifier">constructObject</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a></pre></dt>
   <dd>
     
     
@@ -476,92 +351,6 @@
 </div>
 
 </div>
-<div id="getClassName-procs-all">
-  <div id="getClassName,ObjectPtr">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObjectPtr"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="getClassName,Object">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObject"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="getClassTag-procs-all">
-  <div id="getClassTag,typedesc[ClassDB],StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getClassTag%2Ctypedesc%5BClassDB%5D%2CStringName"><span class="Identifier">getClassTag</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="getInstanceBinding-procs-all">
-  <div id="getInstanceBinding,ObjectPtr,InstanceBindingCallbacks">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceBinding%2CObjectPtr%2CInstanceBindingCallbacks"><span class="Identifier">getInstanceBinding</span></a><span class="Other">(</span><span class="Identifier">p_engine_object</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span>
-                        <span class="Identifier">callbacks</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="getInstanceBinding,ObjectPtr,typedesc[T]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceBinding%2CObjectPtr%2Ctypedesc%5BT%5D"><span class="Identifier">getInstanceBinding</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">p_engine_object</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="getInstanceID-procs-all">
-  <div id="getInstanceID,Object">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceID%2CObject"><span class="Identifier">getInstanceID</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#GDObjectInstanceID"><span class="Identifier">GDObjectInstanceID</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="getMethodBind-procs-all">
-  <div id="getMethodBind,typedesc[ClassDB],StringName,string,Int">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getMethodBind%2Ctypedesc%5BClassDB%5D%2CStringName%2Cstring%2CInt"><span class="Identifier">getMethodBind</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
-                   <span class="Identifier">p_methodname</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">p_hash</span><span class="Other">:</span> <a href="native.html#Int"><span class="Identifier">Int</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#MethodBindPtr"><span class="Identifier">MethodBindPtr</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="getMethodBind,typedesc[ClassDB],StringName,StringName,Int">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getMethodBind%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2CInt"><span class="Identifier">getMethodBind</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
-                   <span class="Identifier">p_methodname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_hash</span><span class="Other">:</span> <a href="native.html#Int"><span class="Identifier">Int</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#MethodBindPtr"><span class="Identifier">MethodBindPtr</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="getPtr-procs-all">
   <div id="getPtr,array[,Variant]">
   <dt><pre><span class="Keyword">proc</span> <a href="#getPtr%2Carray%5B%2CVariant%5D"><span class="Identifier">getPtr</span></a><span class="Other">(</span><span class="Identifier">arr</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">0</span><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">pointer</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
@@ -582,18 +371,6 @@
 </div>
 <div id="getPtr,array[I,Variant]">
   <dt><pre><span class="Keyword">proc</span> <a href="#getPtr%2Carray%5BI%2CVariant%5D"><span class="Identifier">getPtr</span></a><span class="Other">[</span><span class="Identifier">I</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">arr</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">I</span><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">I</span><span class="Other">,</span> <span class="Identifier">pointer</span><span class="Other">]</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="hasScriptMethod-procs-all">
-  <div id="hasScriptMethod,Object,StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#hasScriptMethod%2CObject%2CStringName"><span class="Identifier">hasScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -634,17 +411,6 @@
 </div>
 
 </div>
-<div id="Meta-procs-all">
-  <div id="Meta,typedesc[SomeClass]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#Meta%2Ctypedesc%5BSomeClass%5D"><span class="Identifier">Meta</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="gdinterface.html#GodotClassMeta"><span class="Identifier">GodotClassMeta</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="newException-procs-all">
   <div id="newException,CallError">
   <dt><pre><span class="Keyword">proc</span> <a href="#newException%2CCallError"><span class="Identifier">newException</span></a><span class="Other">(</span><span class="Identifier">ce</span><span class="Other">:</span> <a href="native.html#CallError"><span class="Identifier">CallError</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="../builtinindex.html#GodotCallDefect"><span class="Identifier">GodotCallDefect</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
@@ -670,7 +436,7 @@
 </div>
 <div id="registerExtensionClass-procs-all">
   <div id="registerExtensionClass,typedesc[ClassDB],StringName,StringName,ptr.ClassCreationInfo4">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClass%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2Cptr.ClassCreationInfo4"><span class="Identifier">registerExtensionClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClass%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2Cptr.ClassCreationInfo4"><span class="Identifier">registerExtensionClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
                             <span class="Identifier">p_class_name</span><span class="Other">,</span> <span class="Identifier">p_parent_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
                             <span class="Identifier">p_extension_funcs</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#ClassCreationInfo4"><span class="Identifier">ClassCreationInfo4</span></a><span class="Other">)</span></pre></dt>
   <dd>
@@ -683,7 +449,7 @@
 </div>
 <div id="registerExtensionClassIntegerConstant-procs-all">
   <div id="registerExtensionClassIntegerConstant,typedesc[ClassDB],StringName,StringName,StringName,Int,Bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassIntegerConstant%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2CStringName%2CInt%2CBool"><span class="Identifier">registerExtensionClassIntegerConstant</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassIntegerConstant%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2CStringName%2CInt%2CBool"><span class="Identifier">registerExtensionClassIntegerConstant</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
     <span class="Identifier">p_class_name</span><span class="Other">,</span> <span class="Identifier">p_enum_name</span><span class="Other">,</span> <span class="Identifier">p_constant_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
     <span class="Identifier">p_constant_value</span><span class="Other">:</span> <a href="native.html#Int"><span class="Identifier">Int</span></a><span class="Other">;</span> <span class="Identifier">p_is_bitfield</span><span class="Other">:</span> <a href="native.html#Bool"><span class="Identifier">Bool</span></a><span class="Other">)</span></pre></dt>
   <dd>
@@ -696,7 +462,7 @@
 </div>
 <div id="registerExtensionClassMethod-procs-all">
   <div id="registerExtensionClassMethod,typedesc[ClassDB],StringName,ptr.ClassMethodInfo">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassMethod%2Ctypedesc%5BClassDB%5D%2CStringName%2Cptr.ClassMethodInfo"><span class="Identifier">registerExtensionClassMethod</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassMethod%2Ctypedesc%5BClassDB%5D%2CStringName%2Cptr.ClassMethodInfo"><span class="Identifier">registerExtensionClassMethod</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
                                   <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
                                   <span class="Identifier">p_method_info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#ClassMethodInfo"><span class="Identifier">ClassMethodInfo</span></a><span class="Other">)</span></pre></dt>
   <dd>
@@ -709,7 +475,7 @@
 </div>
 <div id="registerExtensionClassProperty-procs-all">
   <div id="registerExtensionClassProperty,typedesc[ClassDB],StringName,ptr.PropertyInfo,StringName,StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassProperty%2Ctypedesc%5BClassDB%5D%2CStringName%2Cptr.PropertyInfo%2CStringName%2CStringName"><span class="Identifier">registerExtensionClassProperty</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassProperty%2Ctypedesc%5BClassDB%5D%2CStringName%2Cptr.PropertyInfo%2CStringName%2CStringName"><span class="Identifier">registerExtensionClassProperty</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
                                     <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
                                     <span class="Identifier">p_info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#PropertyInfo"><span class="Identifier">PropertyInfo</span></a><span class="Other">;</span>
                                     <span class="Identifier">p_setter</span><span class="Other">,</span> <span class="Identifier">p_getter</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span></pre></dt>
@@ -723,7 +489,7 @@
 </div>
 <div id="registerExtensionClassPropertyGroup-procs-all">
   <div id="registerExtensionClassPropertyGroup,typedesc[ClassDB],StringName,String,String">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassPropertyGroup%2Ctypedesc%5BClassDB%5D%2CStringName%2CString%2CString"><span class="Identifier">registerExtensionClassPropertyGroup</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassPropertyGroup%2Ctypedesc%5BClassDB%5D%2CStringName%2CString%2CString"><span class="Identifier">registerExtensionClassPropertyGroup</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
     <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_group_name</span><span class="Other">,</span> <span class="Identifier">p_prefix</span><span class="Other">:</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">)</span></pre></dt>
   <dd>
     
@@ -735,7 +501,7 @@
 </div>
 <div id="registerExtensionClassPropertySubgroup-procs-all">
   <div id="registerExtensionClassPropertySubgroup,typedesc[ClassDB],StringName,String,String">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassPropertySubgroup%2Ctypedesc%5BClassDB%5D%2CStringName%2CString%2CString"><span class="Identifier">registerExtensionClassPropertySubgroup</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassPropertySubgroup%2Ctypedesc%5BClassDB%5D%2CStringName%2CString%2CString"><span class="Identifier">registerExtensionClassPropertySubgroup</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
     <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_subgroup_name</span><span class="Other">,</span> <span class="Identifier">p_prefix</span><span class="Other">:</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">)</span></pre></dt>
   <dd>
     
@@ -747,7 +513,7 @@
 </div>
 <div id="registerExtensionClassSignal-procs-all">
   <div id="registerExtensionClassSignal,typedesc[ClassDB],StringName,StringName,varargs[PropertyInfo]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassSignal%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2Cvarargs%5BPropertyInfo%5D"><span class="Identifier">registerExtensionClassSignal</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassSignal%2Ctypedesc%5BClassDB%5D%2CStringName%2CStringName%2Cvarargs%5BPropertyInfo%5D"><span class="Identifier">registerExtensionClassSignal</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
                                   <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
                                   <span class="Identifier">p_signal_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
                                   <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="native.html#PropertyInfo"><span class="Identifier">PropertyInfo</span></a><span class="Other">]</span><span class="Other">)</span></pre></dt>
@@ -761,7 +527,7 @@
 </div>
 <div id="registerExtensionClassVirtualMethod-procs-all">
   <div id="registerExtensionClassVirtualMethod,typedesc[ClassDB],StringName,ClassVirtualMethodInfo">
-  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassVirtualMethod%2Ctypedesc%5BClassDB%5D%2CStringName%2CClassVirtualMethodInfo"><span class="Identifier">registerExtensionClassVirtualMethod</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#registerExtensionClassVirtualMethod%2Ctypedesc%5BClassDB%5D%2CStringName%2CClassVirtualMethodInfo"><span class="Identifier">registerExtensionClassVirtualMethod</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span>
     <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_method_info</span> {.<span class="Identifier">byref</span>.}<span class="Other">:</span> <a href="native.html#ClassVirtualMethodInfo"><span class="Identifier">ClassVirtualMethodInfo</span></a><span class="Other">)</span></pre></dt>
   <dd>
     
@@ -783,34 +549,9 @@
 </div>
 
 </div>
-<div id="setInstance-procs-all">
-  <div id="setInstance,ObjectPtr,StringName,Object">
-  <dt><pre><span class="Keyword">proc</span> <a href="#setInstance%2CObjectPtr%2CStringName%2CObject"><span class="Identifier">setInstance</span></a><span class="Other">(</span><span class="Identifier">p_o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_instance</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="setInstanceBinding-procs-all">
-  <div id="setInstanceBinding,ObjectPtr,Object,ptr.InstanceBindingCallbacks">
-  <dt><pre><span class="Keyword">proc</span> <a href="#setInstanceBinding%2CObjectPtr%2CObject%2Cptr.InstanceBindingCallbacks"><span class="Identifier">setInstanceBinding</span></a><span class="Other">(</span><span class="Identifier">p_o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_binding</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span>
-                        <span class="Identifier">p_callbacks</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="unregisterExtensionClass-procs-all">
   <div id="unregisterExtensionClass,typedesc[ClassDB],StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#unregisterExtensionClass%2Ctypedesc%5BClassDB%5D%2CStringName"><span class="Identifier">unregisterExtensionClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#unregisterExtensionClass%2Ctypedesc%5BClassDB%5D%2CStringName"><span class="Identifier">unregisterExtensionClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ClassDB"><span class="Identifier">ClassDB</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">p_class_name</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span></pre></dt>
   <dd>
     
     
@@ -861,31 +602,9 @@
 <div class="section" id="18">
   <h1><a class="toc-backref" href="#18">Templates</a></h1>
   <dl class="item">
-    <div id="callbacks-templates-all">
-  <div id="callbacks.t,typedesc[SomeClass]">
-  <dt><pre><span class="Keyword">template</span> <a href="#callbacks.t%2Ctypedesc%5BSomeClass%5D"><span class="Identifier">callbacks</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="check-templates-all">
+    <div id="check-templates-all">
   <div id="check.t,CallError">
   <dt><pre><span class="Keyword">template</span> <a href="#check.t%2CCallError"><span class="Identifier">check</span></a><span class="Other">(</span><span class="Identifier">ce</span><span class="Other">:</span> <a href="native.html#CallError"><span class="Identifier">CallError</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="className-templates-all">
-  <div id="className.t,typedesc[SomeClass]">
-  <dt><pre><span class="Keyword">template</span> <a href="#className.t%2Ctypedesc%5BSomeClass%5D"><span class="Identifier">className</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a></pre></dt>
   <dd>
     
     
@@ -951,18 +670,6 @@
 </div>
 
 </div>
-<div id="vmethods-templates-all">
-  <div id="vmethods.t,typedesc[SomeClass]">
-  <dt><pre><span class="Keyword">template</span> <a href="#vmethods.t%2Ctypedesc%5BSomeClass%5D"><span class="Identifier">vmethods</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Table</span><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">,</span>
-    <a href="native.html#ClassCallVirtual"><span class="Identifier">ClassCallVirtual</span></a><span class="Other">]</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 
   </dl>
 </div>
@@ -979,7 +686,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-01 12:38:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
       </div>
     </div>
   </div>

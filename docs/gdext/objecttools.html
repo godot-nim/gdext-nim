@@ -63,12 +63,6 @@
 <li><a class="reference" href="#%24%2CT" title="`$`[T: Object](self: T): string">`$`[T: Object](self: T): string</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">as
-  <li><a class="reference" href="#as%2CGdRef%2Ctypedesc%5BGdRef%5BT%3A%20RefCounted%5D%5D" title="`as`[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result:type">`as`[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result:type</a></li>
-<li><a class="reference" href="#as%2CObject%2Ctypedesc%5BGdRef%5BT%3A%20RefCounted%5D%5D" title="`as`[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result:type">`as`[T: RefCounted](self: Object; Result: typedesc[GdRef[T]]): Result:type</a></li>
-<li><a class="reference" href="#as%2CSomeClass%2Ctypedesc%5BT%5D" title="`as`[T: SomeClass](self: SomeClass; _: typedesc[T]): T">`as`[T: SomeClass](self: SomeClass; _: typedesc[T]): T</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">castTo
   <li><a class="reference" href="#castTo%2CObject%2Ctypedesc%5BT%5D" title="castTo[T: Object](self: Object; _: typedesc[T]): T">castTo[T: Object](self: Object; _: typedesc[T]): T</a></li>
 <li><a class="reference" href="#castTo%2CGdRef%2Ctypedesc%5BGdRef%5BT%3A%20RefCounted%5D%5D" title="castTo[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result:type">castTo[T: RefCounted](self: GdRef; Result: typedesc[GdRef[T]]): Result:type</a></li>
@@ -130,7 +124,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="stringtools.html">stringtools</a>, <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/macros.html">private/macros</a>, <a class="reference external" href="private/propertyinfo.html">private/propertyinfo</a>, <a class="reference external" href="private/internalbridge.html">private/internalbridge</a>, <a class="reference external" href="private/debugging.html">private/debugging</a>, <a class="reference external" href="classes/gdnode.html">classes/gdnode</a>
+    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="stringtools.html">stringtools</a>, <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/macros.html">private/macros</a>, <a class="reference external" href="private/propertyinfo.html">private/propertyinfo</a>, <a class="reference external" href="private/internalbridge.html">private/internalbridge</a>, <a class="reference external" href="private/internalobjecttools.html">private/internalobjecttools</a>, <a class="reference external" href="private/debugging.html">private/debugging</a>, <a class="reference external" href="private/classindex.html">private/classindex</a>, <a class="reference external" href="classes/gdnode.html">classes/gdnode</a>
   </dl>
 </div>
 <div class="section" id="12">
@@ -147,35 +141,6 @@
 </div>
 <div id="$,T">
   <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CT"><span class="Identifier">`$`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="as-procs-all">
-  <div id="as,GdRef,typedesc[GdRef[T: RefCounted]]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#as%2CGdRef%2Ctypedesc%5BGdRef%5BT%3A%20RefCounted%5D%5D"><span class="Identifier">`as`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">;</span> <span class="Identifier">Result</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">GdRef</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Result:type</span> {.
-    <span class="Identifier">inline</span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="as,Object,typedesc[GdRef[T: RefCounted]]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#as%2CObject%2Ctypedesc%5BGdRef%5BT%3A%20RefCounted%5D%5D"><span class="Identifier">`as`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">Result</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Result:type</span> {.
-    <span class="Identifier">inline</span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="as,SomeClass,typedesc[T]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#as%2CSomeClass%2Ctypedesc%5BT%5D"><span class="Identifier">`as`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">;</span> <span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span> {.<span class="Identifier">inline</span>.}</pre></dt>
   <dd>
     
     
@@ -242,7 +207,7 @@
   </dd>
 </div>
 <div id="instantiate,typedesc[T_Node],string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#instantiate%2Ctypedesc%5BT_Node%5D%2Cstring"><span class="Identifier">instantiate</span></a><span class="Other">[</span><span class="Identifier">T_Node</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T_Node</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T:type</span></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#instantiate%2Ctypedesc%5BT_Node%5D%2Cstring"><span class="Identifier">instantiate</span></a><span class="Other">[</span><span class="Identifier">T_Node</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T_Node</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T:type</span></pre></dt>
   <dd>
     
     
@@ -270,7 +235,7 @@
   <dl class="item">
     <div id="/-templates-all">
   <div id="/.t,Node,NodePath">
-  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2CNodePath"><span class="Identifier">`/`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <a href="builtinindex.html#NodePath"><span class="Identifier">NodePath</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2CNodePath"><span class="Identifier">`/`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <a href="builtinindex.html#NodePath"><span class="Identifier">NodePath</span></a><span class="Other">)</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a></pre></dt>
   <dd>
     
     
@@ -278,7 +243,7 @@
   </dd>
 </div>
 <div id="/.t,Node,string">
-  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2Cstring"><span class="Identifier">`/`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2Cstring"><span class="Identifier">`/`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a></pre></dt>
   <dd>
     
     
@@ -286,7 +251,7 @@
   </dd>
 </div>
 <div id="/.t,Node,typedesc[T]">
-  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2Ctypedesc%5BT%5D"><span class="Identifier">`/`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">sub</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#%2F.t%2CNode%2Ctypedesc%5BT%5D"><span class="Identifier">`/`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">sub</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
   <dd>
     
     
@@ -323,7 +288,7 @@
 <div class="section" id="19">
   <h1><a class="toc-backref" href="#19">Exports</a></h1>
   <dl class="item">
-    <a href="private/gdinterface.html#getClassName,ObjectPtr"><span class="Identifier">getClassName</span></a>, <a href="private/gdinterface.html#getClassName,Object"><span class="Identifier">getClassName</span></a>
+    <a href="private/internalobjecttools.html#getClassName,Object"><span class="Identifier">getClassName</span></a>, <a href="private/internalobjecttools.html#getClassName,ObjectPtr"><span class="Identifier">getClassName</span></a>
   </dl>
 </div>
 
@@ -333,7 +298,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-01 12:38:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
       </div>
     </div>
   </div>

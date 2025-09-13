@@ -1,18 +1,18 @@
 nimTitle	arraytools	gdext/arraytools.html	module gdext/arraytools		0
-nim	nilCheck	gdext/arraytools.html#nilCheck.t,Array	template nilCheck(self: Array)		28
-nim	nilCheck	gdext/arraytools.html#nilCheck.t,Array_2	template nilCheck(self: var Array)		31
-nim	nilCheck	gdext/arraytools.html#nilCheck.t,TypedArray[T]	template nilCheck[T](self: TypedArray[T])		35
-nim	nilCheck	gdext/arraytools.html#nilCheck.t,TypedArray[T]_2	template nilCheck[T](self: var TypedArray[T])		38
-nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray	proc newPackedByteArray(): PackedByteArray		48
-nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray	proc newPackedColorArray(): PackedColorArray		49
-nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray	proc newPackedStringArray(): PackedStringArray		50
-nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array	proc newPackedInt32Array(): PackedInt32Array		51
-nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array	proc newPackedInt64Array(): PackedInt64Array		52
-nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array	proc newPackedFloat32Array(): PackedFloat32Array		53
-nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array	proc newPackedFloat64Array(): PackedFloat64Array		54
-nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array	proc newPackedVector2Array(): PackedVector2Array		55
-nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array	proc newPackedVector3Array(): PackedVector3Array		56
-nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array	proc newPackedVector4Array(): PackedVector4Array		57
+nim	nilCheck	gdext/arraytools.html#nilCheck.t,Array	template nilCheck(self: Array)		29
+nim	nilCheck	gdext/arraytools.html#nilCheck.t,Array_2	template nilCheck(self: var Array)		32
+nim	nilCheck	gdext/arraytools.html#nilCheck.t,TypedArray[T]	template nilCheck[T](self: TypedArray[T])		36
+nim	nilCheck	gdext/arraytools.html#nilCheck.t,TypedArray[T]_2	template nilCheck[T](self: var TypedArray[T])		39
+nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray	proc newPackedByteArray(): PackedByteArray		49
+nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray	proc newPackedColorArray(): PackedColorArray		50
+nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray	proc newPackedStringArray(): PackedStringArray		51
+nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array	proc newPackedInt32Array(): PackedInt32Array		52
+nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array	proc newPackedInt64Array(): PackedInt64Array		53
+nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array	proc newPackedFloat32Array(): PackedFloat32Array		54
+nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array	proc newPackedFloat64Array(): PackedFloat64Array		55
+nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array	proc newPackedVector2Array(): PackedVector2Array		56
+nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array	proc newPackedVector3Array(): PackedVector3Array		57
+nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array	proc newPackedVector4Array(): PackedVector4Array		58
 nim	newArray	gdext/arraytools.html#newArray	proc newArray(): Array		6
 nim	newArray	gdext/arraytools.html#newArray,Array	proc newArray(from: Array): Array		8
 nim	newArray	gdext/arraytools.html#newArray,Array,Int,StringName,Variant	proc newArray(base: Array; type: Int; className: StringName; script: Variant): Array		11
@@ -421,189 +421,189 @@ nim	duplicate	gdext/arraytools.html#duplicate,PackedVector4Array	proc duplicate(
 nim	find	gdext/arraytools.html#find,PackedVector4Array,Vector4,Int	proc find(self: PackedVector4Array; value: Vector4; from: Int = 0): Int		90
 nim	rfind	gdext/arraytools.html#rfind,PackedVector4Array,Vector4,Int	proc rfind(self: PackedVector4Array; value: Vector4; from: Int = -1): Int		93
 nim	count	gdext/arraytools.html#count,PackedVector4Array,Vector4	proc count(self: PackedVector4Array; value: Vector4): Int		96
-nim	`[]`	gdext/arraytools.html#[],Array,Natural	proc `[]`(self: Array; index: Natural): Variant		100
-nim	`[]`	gdext/arraytools.html#[],Array,Natural_2	proc `[]`(self: var Array; index: Natural): var Variant		103
-nim	`[]=`	gdext/arraytools.html#[]=,Array,Natural,sinkVariant	proc `[]=`(self: var Array; index: Natural; value: sink Variant)		106
-nim	`[]`	gdext/arraytools.html#[],TypedArray[T],Natural	proc `[]`[T](self: TypedArray[T]; index: Natural): T		110
-nim	`[]`	gdext/arraytools.html#[],TypedArray[T: SomeBuiltins],Natural	proc `[]`[T: SomeBuiltins](self: var TypedArray[T]; index: Natural): var T		113
-nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],Natural,sinkT	proc `[]=`[T](self: var TypedArray[T]; index: Natural; value: sink T)		116
-nim	`[]`	gdext/arraytools.html#[],PackedArray[T],Natural	proc `[]`[T](self: PackedArray[T]; index: Natural): T		120
-nim	`[]`	gdext/arraytools.html#[],PackedArray[T],Natural_2	proc `[]`[T](self: var PackedArray[T]; index: Natural): var T		123
-nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],Natural,sinkT	proc `[]=`[T](self: var PackedArray[T]; index: Natural; value: sink T)		126
-nim	newArray	gdext/arraytools.html#newArray,Natural	proc newArray(len: Natural): Array		133
-nim	newArray	gdext/arraytools.html#newArray,openArray[T]	proc newArray[T](s: openArray[T]): Array		137
-nim	items	gdext/arraytools.html#items.i,Array	iterator items(arr: Array): Variant		142
-nim	pairs	gdext/arraytools.html#pairs.i,Array	iterator pairs(arr: Array): (int, Variant)		144
-nim	mitems	gdext/arraytools.html#mitems.i,Array	iterator mitems(arr: var Array): var Variant		147
-nim	mpairs	gdext/arraytools.html#mpairs.i,Array	iterator mpairs(arr: var Array): (int, var Variant)		149
-nim	toOpenArray	gdext/arraytools.html#toOpenArray.t,Array	template toOpenArray(arr: Array): openArray[Variant]		152
-nim	newTypedArray	gdext/arraytools.html#newTypedArray,Array	proc newTypedArray[T](arr: Array): TypedArray[T]		158
-nim	newTypedArray	gdext/arraytools.html#newTypedArray,TypedArray[T]	proc newTypedArray[T](arr: TypedArray[T]): TypedArray[T]		166
-nim	newTypedArray	gdext/arraytools.html#newTypedArray	proc newTypedArray[T](): TypedArray[T]		169
-nim	newTypedArray	gdext/arraytools.html#newTypedArray,Natural	proc newTypedArray[T](len: Natural): TypedArray[T]		178
-nim	newTypedArray	gdext/arraytools.html#newTypedArray,openArray[T]	proc newTypedArray[T](s: openArray[T]): TypedArray[T]		182
-nim	typedArray	gdext/arraytools.html#typedArray.t,Array	template typedArray[T](arr: Array): TypedArray[T]		187
-nim	typedArray	gdext/arraytools.html#typedArray.t	template typedArray[T](): TypedArray[T]		189
-nim	typedArray	gdext/arraytools.html#typedArray.t,Natural	template typedArray[T](len: Natural): TypedArray[T]		191
-nim	items	gdext/arraytools.html#items.i,TypedArray[T]	iterator items[T](arr: TypedArray[T]): T		194
-nim	pairs	gdext/arraytools.html#pairs.i,TypedArray[T]	iterator pairs[T](arr: TypedArray[T]): (int, T)		196
-nim	mitems	gdext/arraytools.html#mitems.i,TypedArray[T]	iterator mitems[T](arr: var TypedArray[T]): var T		199
-nim	mpairs	gdext/arraytools.html#mpairs.i,TypedArray[T]	iterator mpairs[T](arr: var TypedArray[T]): (int, var T)		203
-nim	get	gdext/arraytools.html#get,TypedArray[T],Int	proc get[T](self: var TypedArray[T]; index: Int): T		211
-nim	get	gdext/arraytools.html#get,TypedArray[T],Int_2	proc get[T](self: TypedArray[T]; index: Int): T		214
-nim	set	gdext/arraytools.html#set,TypedArray[T],Int,T	proc set[T](self: var TypedArray[T]; index: Int; value: T): void		217
-nim	pushBack	gdext/arraytools.html#pushBack,TypedArray[T],T	proc pushBack[T](self: var TypedArray[T]; value: T): void		220
-nim	pushFront	gdext/arraytools.html#pushFront,TypedArray[T],T	proc pushFront[T](self: var TypedArray[T]; value: T): void		223
-nim	append	gdext/arraytools.html#append,TypedArray[T],T	proc append[T](self: var TypedArray[T]; value: T): void		226
-nim	insert	gdext/arraytools.html#insert,TypedArray[T],Int,T	proc insert[T](self: var TypedArray[T]; position: Int; value: T): Int		229
-nim	fill	gdext/arraytools.html#fill,TypedArray[T],T	proc fill[T](self: var TypedArray[T]; value: T): void		232
-nim	erase	gdext/arraytools.html#erase,TypedArray[T],T	proc erase[T](self: var TypedArray[T]; value: T): void		235
-nim	front	gdext/arraytools.html#front,TypedArray[T]	proc front[T](self: var TypedArray[T]): T		238
-nim	front	gdext/arraytools.html#front,TypedArray[T]_2	proc front[T](self: TypedArray[T]): T		241
-nim	back	gdext/arraytools.html#back,TypedArray[T]	proc back[T](self: var TypedArray[T]): T		244
-nim	back	gdext/arraytools.html#back,TypedArray[T]_2	proc back[T](self: TypedArray[T]): T		247
-nim	pickRandom	gdext/arraytools.html#pickRandom,TypedArray[T]	proc pickRandom[T](self: var TypedArray[T]): T		250
-nim	pickRandom	gdext/arraytools.html#pickRandom,TypedArray[T]_2	proc pickRandom[T](self: TypedArray[T]): T		253
-nim	find	gdext/arraytools.html#find,TypedArray[T],T,Int	proc find[T](self: var TypedArray[T]; what: T; from: Int = 0): Int		256
-nim	find	gdext/arraytools.html#find,TypedArray[T],T,Int_2	proc find[T](self: TypedArray[T]; what: T; from: Int = 0): Int		259
-nim	rfind	gdext/arraytools.html#rfind,TypedArray[T],T,Int	proc rfind[T](self: var TypedArray[T]; what: T; from: Int = -1): Int		263
-nim	rfind	gdext/arraytools.html#rfind,TypedArray[T],T,Int_2	proc rfind[T](self: TypedArray[T]; what: T; from: Int = -1): Int		266
-nim	count	gdext/arraytools.html#count,TypedArray[T],T	proc count[T](self: var TypedArray[T]; value: T): Int		270
-nim	count	gdext/arraytools.html#count,TypedArray[T],T_2	proc count[T](self: TypedArray[T]; value: T): Int		273
-nim	has	gdext/arraytools.html#has,TypedArray[T],T	proc has[T](self: var TypedArray[T]; value: T): bool		276
-nim	has	gdext/arraytools.html#has,TypedArray[T],T_2	proc has[T](self: TypedArray[T]; value: T): bool		279
-nim	popBack	gdext/arraytools.html#popBack,TypedArray[T]	proc popBack[T](self: var TypedArray[T]): T		282
-nim	popFront	gdext/arraytools.html#popFront,TypedArray[T]	proc popFront[T](self: var TypedArray[T]): T		285
-nim	popAt	gdext/arraytools.html#popAt,TypedArray[T],Int	proc popAt[T](self: var TypedArray[T]; position: Int): T		288
-nim	bsearch	gdext/arraytools.html#bsearch,TypedArray[T],T,bool	proc bsearch[T](self: var TypedArray[T]; value: T; before: bool = true): Int		292
-nim	bsearch	gdext/arraytools.html#bsearch,TypedArray[T],T,bool_2	proc bsearch[T](self: TypedArray[T]; value: T; before: bool = true): Int		295
-nim	bsearchCustom	gdext/arraytools.html#bsearchCustom,TypedArray[T],T,Callable,bool	proc bsearchCustom[T](self: var TypedArray[T]; value: T; func: Callable;\n                 before: bool = true): Int		298
-nim	bsearchCustom	gdext/arraytools.html#bsearchCustom,TypedArray[T],T,Callable,bool_2	proc bsearchCustom[T](self: TypedArray[T]; value: T; func: Callable;\n                 before: bool = true): Int		301
-nim	duplicate	gdext/arraytools.html#duplicate,TypedArray[T],bool	proc duplicate[T](self: var TypedArray[T]; deep: bool = false): TypedArray[T]		304
-nim	duplicate	gdext/arraytools.html#duplicate,TypedArray[T],bool_2	proc duplicate[T](self: TypedArray[T]; deep: bool = false): TypedArray[T]		307
-nim	slice	gdext/arraytools.html#slice,TypedArray[T],Int,Int,Int,bool	proc slice[T](self: var TypedArray[T]; begin: Int; end: Int = 2147483647;\n         step: Int = 1; deep: bool = false): TypedArray[T]		310
-nim	slice	gdext/arraytools.html#slice,TypedArray[T],Int,Int,Int,bool_2	proc slice[T](self: TypedArray[T]; begin: Int; end: Int = 2147483647; step: Int = 1;\n         deep: bool = false): TypedArray[T]		313
-nim	filter	gdext/arraytools.html#filter,TypedArray[T],Callable	proc filter[T](self: var TypedArray[T]; method: Callable): TypedArray[T]		316
-nim	filter	gdext/arraytools.html#filter,TypedArray[T],Callable_2	proc filter[T](self: TypedArray[T]; method: Callable): TypedArray[T]		319
-nim	max	gdext/arraytools.html#max,TypedArray[T]	proc max[T](self: var TypedArray[T]): T		326
-nim	max	gdext/arraytools.html#max,TypedArray[T]_2	proc max[T](self: TypedArray[T]): T		329
-nim	min	gdext/arraytools.html#min,TypedArray[T]	proc min[T](self: var TypedArray[T]): T		332
-nim	min	gdext/arraytools.html#min,TypedArray[T]_2	proc min[T](self: TypedArray[T]): T		335
-nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray,int	proc newPackedByteArray(size: int): PackedByteArray		342
-nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray,int	proc newPackedColorArray(size: int): PackedColorArray		344
-nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray,int	proc newPackedStringArray(size: int): PackedStringArray		346
-nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array,int	proc newPackedInt32Array(size: int): PackedInt32Array		348
-nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array,int	proc newPackedInt64Array(size: int): PackedInt64Array		350
-nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array,int	proc newPackedFloat32Array(size: int): PackedFloat32Array		352
-nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array,int	proc newPackedFloat64Array(size: int): PackedFloat64Array		354
-nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array,int	proc newPackedVector2Array(size: int): PackedVector2Array		356
-nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array,int	proc newPackedVector3Array(size: int): PackedVector3Array		358
-nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array,int	proc newPackedVector4Array(size: int): PackedVector4Array		360
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[byte]	proc newPackedArray(s: openArray[byte]): PackedByteArray		363
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Color]	proc newPackedArray(s: openArray[Color]): PackedColorArray		366
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[String]	proc newPackedArray(s: openArray[String]): PackedStringArray		369
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[int32]	proc newPackedArray(s: openArray[int32]): PackedInt32Array		374
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[int64]	proc newPackedArray(s: openArray[int64]): PackedInt64Array		377
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[float32]	proc newPackedArray(s: openArray[float32]): PackedFloat32Array		380
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[float64]	proc newPackedArray(s: openArray[float64]): PackedFloat64Array		383
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector2]	proc newPackedArray(s: openArray[Vector2]): PackedVector2Array		386
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector3]	proc newPackedArray(s: openArray[Vector3]): PackedVector3Array		389
-nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector4]	proc newPackedArray(s: openArray[Vector4]): PackedVector4Array		392
-nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray,openArray[byte]	proc newPackedByteArray(s: openArray[byte]): PackedByteArray		397
-nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray,openArray[Color]	proc newPackedColorArray(s: openArray[Color]): PackedColorArray		398
-nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray,openArray[String]	proc newPackedStringArray(s: openArray[String]): PackedStringArray		399
-nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array,openArray[int32]	proc newPackedInt32Array(s: openArray[int32]): PackedInt32Array		400
-nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array,openArray[int64]	proc newPackedInt64Array(s: openArray[int64]): PackedInt64Array		401
-nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array,openArray[float32]	proc newPackedFloat32Array(s: openArray[float32]): PackedFloat32Array		402
-nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array,openArray[float64]	proc newPackedFloat64Array(s: openArray[float64]): PackedFloat64Array		403
-nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array,openArray[Vector2]	proc newPackedVector2Array(s: openArray[Vector2]): PackedVector2Array		404
-nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array,openArray[Vector3]	proc newPackedVector3Array(s: openArray[Vector3]): PackedVector3Array		405
-nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array,openArray[Vector4]	proc newPackedVector4Array(s: openArray[Vector4]): PackedVector4Array		406
-nim	items	gdext/arraytools.html#items.i,PackedArray[T]	iterator items[T](arr: PackedArray[T]): T		409
-nim	pairs	gdext/arraytools.html#pairs.i,PackedArray[T]	iterator pairs[T](arr: PackedArray[T]): (int, T)		411
-nim	mitems	gdext/arraytools.html#mitems.i,PackedArray[T]	iterator mitems[T](arr: var PackedArray[T]): var T		414
-nim	mpairs	gdext/arraytools.html#mpairs.i,PackedArray[T]	iterator mpairs[T](arr: var PackedArray[T]): (int, var T)		416
-nim	toOpenArray	gdext/arraytools.html#toOpenArray.t,PackedArray[T]	template toOpenArray[T](arr: PackedArray[T]): openArray[T]		419
-nim	`@`	gdext/arraytools.html#@,PackedArray[T]	proc `@`[T](arr: PackedArray[T]): seq[T]		421
-nim	`&`	gdext/arraytools.html#&,Array,Array	proc `&`(x, y: Array): Array		433
-nim	`&`	gdext/arraytools.html#&,TypedArray[T],TypedArray[T]	proc `&`[T](x, y: TypedArray[T]): TypedArray[T]		434
-nim	`&`	gdext/arraytools.html#&,PackedArray[T],PackedArray[T]	proc `&`[T](x, y: PackedArray[T])		435
-nim	`[]`	gdext/arraytools.html#[],Array,BackwardsIndex	proc `[]`(arr: Array; index: BackwardsIndex): Variant		438
-nim	`[]`	gdext/arraytools.html#[],TypedArray[T],BackwardsIndex	proc `[]`[T](arr: TypedArray[T]; index: BackwardsIndex): T		441
-nim	`[]`	gdext/arraytools.html#[],PackedArray[T],BackwardsIndex	proc `[]`[T](arr: PackedArray[T]; index: BackwardsIndex): T		444
-nim	`[]`	gdext/arraytools.html#[],Array,BackwardsIndex_2	proc `[]`(arr: var Array; index: BackwardsIndex): var Variant		448
-nim	`[]`	gdext/arraytools.html#[],TypedArray[T: not Object and not RefCounted],BackwardsIndex	proc `[]`[T: not Object and not RefCounted](arr: var TypedArray[T];\n                                       index: BackwardsIndex): var T		451
-nim	`[]`	gdext/arraytools.html#[],PackedArray[T],BackwardsIndex_2	proc `[]`[T](arr: var PackedArray[T]; index: BackwardsIndex): var T		454
-nim	`[]`	gdext/arraytools.html#[],Array,HSlice[U: Ordinal,V: Ordinal]	proc `[]`[U, V: Ordinal](arr: Array; x: HSlice[U, V]): Array		458
-nim	`[]`	gdext/arraytools.html#[],TypedArray[T],HSlice[U: Ordinal,V: Ordinal]	proc `[]`[T; U, V: Ordinal](arr: TypedArray[T]; x: HSlice[U, V]): TypedArray[T]		463
-nim	`[]`	gdext/arraytools.html#[],PackedArray[T],HSlice[U: Ordinal,V: Ordinal]	proc `[]`[T; U, V: Ordinal](arr: PackedArray[T]; x: HSlice[U, V]): PackedArray[T]		468
-nim	`[]=`	gdext/arraytools.html#[]=,Array,BackwardsIndex,Variant	proc `[]=`(arr: var Array; index: BackwardsIndex; value: Variant)		474
-nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],BackwardsIndex,T	proc `[]=`[T](arr: var TypedArray[T]; index: BackwardsIndex; value: T)		477
-nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],BackwardsIndex,T	proc `[]=`[T](arr: var PackedArray[T]; index: BackwardsIndex; value: T)		480
-nim	contains	gdext/arraytools.html#contains,Array,Variant	proc contains(arr: Array; value: Variant): bool		484
-nim	contains	gdext/arraytools.html#contains,Array,Variant_2	proc contains(arr: var Array; value: Variant): bool		486
-nim	contains	gdext/arraytools.html#contains,Array,T	proc contains[T: SomeProperty](arr: Array; value: T): bool		488
-nim	contains	gdext/arraytools.html#contains,Array,T_2	proc contains[T: SomeProperty](arr: var Array; value: T): bool		490
-nim	contains	gdext/arraytools.html#contains,TypedArray[T],T	proc contains[T](arr: TypedArray[T]; value: T): bool		492
-nim	contains	gdext/arraytools.html#contains,TypedArray[T],T_2	proc contains[T](arr: var TypedArray[T]; value: T): bool		494
-nim	contains	gdext/arraytools.html#contains,PackedArray[T],T	proc contains[T](arr: PackedArray[T]; item: T): bool		496
-nim	setLen	gdext/arraytools.html#setLen,Array,int	proc setLen(arr: var Array; newlen: int)		500
-nim	setLen	gdext/arraytools.html#setLen,PackedArray,int	proc setLen(arr: var PackedArray; newlen: int)		504
-nim	len	gdext/arraytools.html#len,Array	proc len(arr: Array): int		508
-nim	len	gdext/arraytools.html#len,Array_2	proc len(arr: var Array): int		509
-nim	len	gdext/arraytools.html#len,TypedArray	proc len(arr: TypedArray): int		510
-nim	len	gdext/arraytools.html#len,TypedArray_2	proc len(arr: var TypedArray): int		511
-nim	len	gdext/arraytools.html#len,PackedArray	proc len(arr: PackedArray): int		512
-nim	high	gdext/arraytools.html#high,Array	proc high(arr: Array): int		515
-nim	high	gdext/arraytools.html#high,Array_2	proc high(arr: var Array): int		516
-nim	high	gdext/arraytools.html#high,PackedArray	proc high(arr: PackedArray): int		517
-nim	high	gdext/arraytools.html#high,PackedArray_2	proc high(arr: var PackedArray): int		518
-nim	low	gdext/arraytools.html#low,Array	proc low(arr: Array): int		521
-nim	low	gdext/arraytools.html#low,PackedArray	proc low(arr: PackedArray): int		522
-nim	add	gdext/arraytools.html#add,Array,Variant	proc add(self: var Array; value: Variant)		525
-nim	add	gdext/arraytools.html#add,Array,Array	proc add(self: var Array; array: Array)		527
-nim	add	gdext/arraytools.html#add,TypedArray[T],T	proc add[T](self: var TypedArray[T]; value: T)		530
-nim	add	gdext/arraytools.html#add,PackedArray[T],T	proc add[T](self: var PackedArray[T]; value: T)		533
-nim	add	gdext/arraytools.html#add,PackedArray[T],PackedArray[T]	proc add[T](self: var PackedArray[T]; array: PackedArray[T])		535
-nim	delete	gdext/arraytools.html#delete,Array,Natural	proc delete(self: var Array; index: Natural)		539
-nim	delete	gdext/arraytools.html#delete,PackedArray[T],Natural	proc delete[T](self: var PackedArray[T]; index: Natural)		541
-nim	pop	gdext/arraytools.html#pop,Array	proc pop(self: var Array): Variant		545
-nim	pop	gdext/arraytools.html#pop,TypedArray[T]	proc pop[T](self: var TypedArray[T]): T		546
-nim	pop	gdext/arraytools.html#pop,PackedArray[T]	proc pop[T](self: var PackedArray[T]): T		547
-nim	`&`	gdext/arraytools.html#&,Array,Variant	proc `&`(x: Array; y: Variant): Array		581
-nim	`&`	gdext/arraytools.html#&,Variant,Array	proc `&`(x: Variant; y: Array): Array		587
-nim	`&`	gdext/arraytools.html#&,TypedArray,T	proc `&`[T](x: TypedArray; y: T): TypedArray[T]		594
-nim	`&`	gdext/arraytools.html#&,T,TypedArray	proc `&`[T](x: T; y: TypedArray): TypedArray[T]		600
-nim	`&`	gdext/arraytools.html#&,PackedArray,T	proc `&`[T](x: PackedArray; y: T): PackedArray[T]		607
-nim	`&`	gdext/arraytools.html#&,T,PackedArray	proc `&`[T](x: T; y: PackedArray): PackedArray[T]		613
-nim	`[]=`	gdext/arraytools.html#[]=,Array,HSlice[U: Ordinal,V: Ordinal],Array	proc `[]=`[U, V: Ordinal](s: var Array; x: HSlice[U, V]; b: Array)		639
-nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],HSlice[U: Ordinal,V: Ordinal],TypedArray[T]	proc `[]=`[T; U, V: Ordinal](s: var TypedArray[T]; x: HSlice[U, V]; b: TypedArray[T])		647
-nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],HSlice[U: Ordinal,V: Ordinal],PackedArray[T]	proc `[]=`[T; U, V: Ordinal](s: var PackedArray[T]; x: HSlice[U, V];\n                        b: PackedArray[T])		655
-nim	gdArray	gdext/arraytools.html#gdArray.t,varargs[untyped]	template gdArray(args: varargs[untyped]): untyped		666
-nim	packedByteArray	gdext/arraytools.html#packedByteArray.t,varargs[untyped]	template packedByteArray(args: varargs[untyped]): untyped		667
-nim	packedColorArray	gdext/arraytools.html#packedColorArray.t,varargs[untyped]	template packedColorArray(args: varargs[untyped]): untyped		668
-nim	packedStringArray	gdext/arraytools.html#packedStringArray.t,varargs[untyped]	template packedStringArray(args: varargs[untyped]): untyped		669
-nim	packedInt32Array	gdext/arraytools.html#packedInt32Array.t,varargs[untyped]	template packedInt32Array(args: varargs[untyped]): untyped		670
-nim	packedInt64Array	gdext/arraytools.html#packedInt64Array.t,varargs[untyped]	template packedInt64Array(args: varargs[untyped]): untyped		671
-nim	packedFloat32Array	gdext/arraytools.html#packedFloat32Array.t,varargs[untyped]	template packedFloat32Array(args: varargs[untyped]): untyped		672
-nim	packedFloat64Array	gdext/arraytools.html#packedFloat64Array.t,varargs[untyped]	template packedFloat64Array(args: varargs[untyped]): untyped		673
-nim	packedVector2Array	gdext/arraytools.html#packedVector2Array.t,varargs[untyped]	template packedVector2Array(args: varargs[untyped]): untyped		674
-nim	packedVector3Array	gdext/arraytools.html#packedVector3Array.t,varargs[untyped]	template packedVector3Array(args: varargs[untyped]): untyped		675
-nim	packedVector4Array	gdext/arraytools.html#packedVector4Array.t,varargs[untyped]	template packedVector4Array(args: varargs[untyped]): untyped		676
-nim	toSeq	gdext/arraytools.html#toSeq.t,PackedArray[T]	template toSeq[T](arr: PackedArray[T]): seq[T]		678
+nim	`[]`	gdext/arraytools.html#[],Array,Natural	proc `[]`(self: Array; index: Natural): Variant		101
+nim	`[]`	gdext/arraytools.html#[],Array,Natural_2	proc `[]`(self: var Array; index: Natural): var Variant		104
+nim	`[]=`	gdext/arraytools.html#[]=,Array,Natural,sinkVariant	proc `[]=`(self: var Array; index: Natural; value: sink Variant)		107
+nim	`[]`	gdext/arraytools.html#[],TypedArray[T],Natural	proc `[]`[T](self: TypedArray[T]; index: Natural): T		111
+nim	`[]`	gdext/arraytools.html#[],TypedArray[T: SomeBuiltins],Natural	proc `[]`[T: SomeBuiltins](self: var TypedArray[T]; index: Natural): var T		114
+nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],Natural,sinkT	proc `[]=`[T](self: var TypedArray[T]; index: Natural; value: sink T)		117
+nim	`[]`	gdext/arraytools.html#[],PackedArray[T],Natural	proc `[]`[T](self: PackedArray[T]; index: Natural): T		121
+nim	`[]`	gdext/arraytools.html#[],PackedArray[T],Natural_2	proc `[]`[T](self: var PackedArray[T]; index: Natural): var T		124
+nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],Natural,sinkT	proc `[]=`[T](self: var PackedArray[T]; index: Natural; value: sink T)		127
+nim	newArray	gdext/arraytools.html#newArray,Natural	proc newArray(len: Natural): Array		134
+nim	newArray	gdext/arraytools.html#newArray,openArray[T]	proc newArray[T](s: openArray[T]): Array		138
+nim	items	gdext/arraytools.html#items.i,Array	iterator items(arr: Array): Variant		143
+nim	pairs	gdext/arraytools.html#pairs.i,Array	iterator pairs(arr: Array): (int, Variant)		145
+nim	mitems	gdext/arraytools.html#mitems.i,Array	iterator mitems(arr: var Array): var Variant		148
+nim	mpairs	gdext/arraytools.html#mpairs.i,Array	iterator mpairs(arr: var Array): (int, var Variant)		150
+nim	toOpenArray	gdext/arraytools.html#toOpenArray.t,Array	template toOpenArray(arr: Array): openArray[Variant]		153
+nim	newTypedArray	gdext/arraytools.html#newTypedArray,Array	proc newTypedArray[T](arr: Array): TypedArray[T]		159
+nim	newTypedArray	gdext/arraytools.html#newTypedArray,TypedArray[T]	proc newTypedArray[T](arr: TypedArray[T]): TypedArray[T]		162
+nim	newTypedArray	gdext/arraytools.html#newTypedArray	proc newTypedArray[T](): TypedArray[T]		165
+nim	newTypedArray	gdext/arraytools.html#newTypedArray,Natural	proc newTypedArray[T](len: Natural): TypedArray[T]		169
+nim	newTypedArray	gdext/arraytools.html#newTypedArray,openArray[T]	proc newTypedArray[T](s: openArray[T]): TypedArray[T]		173
+nim	typedArray	gdext/arraytools.html#typedArray.t,Array	template typedArray[T](arr: Array): TypedArray[T]		178
+nim	typedArray	gdext/arraytools.html#typedArray.t	template typedArray[T](): TypedArray[T]		180
+nim	typedArray	gdext/arraytools.html#typedArray.t,Natural	template typedArray[T](len: Natural): TypedArray[T]		182
+nim	items	gdext/arraytools.html#items.i,TypedArray[T]	iterator items[T](arr: TypedArray[T]): T		185
+nim	pairs	gdext/arraytools.html#pairs.i,TypedArray[T]	iterator pairs[T](arr: TypedArray[T]): (int, T)		187
+nim	mitems	gdext/arraytools.html#mitems.i,TypedArray[T]	iterator mitems[T](arr: var TypedArray[T]): var T		190
+nim	mpairs	gdext/arraytools.html#mpairs.i,TypedArray[T]	iterator mpairs[T](arr: var TypedArray[T]): (int, var T)		194
+nim	get	gdext/arraytools.html#get,TypedArray[T],Int	proc get[T](self: var TypedArray[T]; index: Int): T		202
+nim	get	gdext/arraytools.html#get,TypedArray[T],Int_2	proc get[T](self: TypedArray[T]; index: Int): T		205
+nim	set	gdext/arraytools.html#set,TypedArray[T],Int,T	proc set[T](self: var TypedArray[T]; index: Int; value: T): void		208
+nim	pushBack	gdext/arraytools.html#pushBack,TypedArray[T],T	proc pushBack[T](self: var TypedArray[T]; value: T): void		211
+nim	pushFront	gdext/arraytools.html#pushFront,TypedArray[T],T	proc pushFront[T](self: var TypedArray[T]; value: T): void		214
+nim	append	gdext/arraytools.html#append,TypedArray[T],T	proc append[T](self: var TypedArray[T]; value: T): void		217
+nim	insert	gdext/arraytools.html#insert,TypedArray[T],Int,T	proc insert[T](self: var TypedArray[T]; position: Int; value: T): Int		220
+nim	fill	gdext/arraytools.html#fill,TypedArray[T],T	proc fill[T](self: var TypedArray[T]; value: T): void		223
+nim	erase	gdext/arraytools.html#erase,TypedArray[T],T	proc erase[T](self: var TypedArray[T]; value: T): void		226
+nim	front	gdext/arraytools.html#front,TypedArray[T]	proc front[T](self: var TypedArray[T]): T		229
+nim	front	gdext/arraytools.html#front,TypedArray[T]_2	proc front[T](self: TypedArray[T]): T		232
+nim	back	gdext/arraytools.html#back,TypedArray[T]	proc back[T](self: var TypedArray[T]): T		235
+nim	back	gdext/arraytools.html#back,TypedArray[T]_2	proc back[T](self: TypedArray[T]): T		238
+nim	pickRandom	gdext/arraytools.html#pickRandom,TypedArray[T]	proc pickRandom[T](self: var TypedArray[T]): T		241
+nim	pickRandom	gdext/arraytools.html#pickRandom,TypedArray[T]_2	proc pickRandom[T](self: TypedArray[T]): T		244
+nim	find	gdext/arraytools.html#find,TypedArray[T],T,Int	proc find[T](self: var TypedArray[T]; what: T; from: Int = 0): Int		247
+nim	find	gdext/arraytools.html#find,TypedArray[T],T,Int_2	proc find[T](self: TypedArray[T]; what: T; from: Int = 0): Int		250
+nim	rfind	gdext/arraytools.html#rfind,TypedArray[T],T,Int	proc rfind[T](self: var TypedArray[T]; what: T; from: Int = -1): Int		254
+nim	rfind	gdext/arraytools.html#rfind,TypedArray[T],T,Int_2	proc rfind[T](self: TypedArray[T]; what: T; from: Int = -1): Int		257
+nim	count	gdext/arraytools.html#count,TypedArray[T],T	proc count[T](self: var TypedArray[T]; value: T): Int		261
+nim	count	gdext/arraytools.html#count,TypedArray[T],T_2	proc count[T](self: TypedArray[T]; value: T): Int		264
+nim	has	gdext/arraytools.html#has,TypedArray[T],T	proc has[T](self: var TypedArray[T]; value: T): bool		267
+nim	has	gdext/arraytools.html#has,TypedArray[T],T_2	proc has[T](self: TypedArray[T]; value: T): bool		270
+nim	popBack	gdext/arraytools.html#popBack,TypedArray[T]	proc popBack[T](self: var TypedArray[T]): T		273
+nim	popFront	gdext/arraytools.html#popFront,TypedArray[T]	proc popFront[T](self: var TypedArray[T]): T		276
+nim	popAt	gdext/arraytools.html#popAt,TypedArray[T],Int	proc popAt[T](self: var TypedArray[T]; position: Int): T		279
+nim	bsearch	gdext/arraytools.html#bsearch,TypedArray[T],T,bool	proc bsearch[T](self: var TypedArray[T]; value: T; before: bool = true): Int		283
+nim	bsearch	gdext/arraytools.html#bsearch,TypedArray[T],T,bool_2	proc bsearch[T](self: TypedArray[T]; value: T; before: bool = true): Int		286
+nim	bsearchCustom	gdext/arraytools.html#bsearchCustom,TypedArray[T],T,Callable,bool	proc bsearchCustom[T](self: var TypedArray[T]; value: T; func: Callable;\n                 before: bool = true): Int		289
+nim	bsearchCustom	gdext/arraytools.html#bsearchCustom,TypedArray[T],T,Callable,bool_2	proc bsearchCustom[T](self: TypedArray[T]; value: T; func: Callable;\n                 before: bool = true): Int		292
+nim	duplicate	gdext/arraytools.html#duplicate,TypedArray[T],bool	proc duplicate[T](self: var TypedArray[T]; deep: bool = false): TypedArray[T]		295
+nim	duplicate	gdext/arraytools.html#duplicate,TypedArray[T],bool_2	proc duplicate[T](self: TypedArray[T]; deep: bool = false): TypedArray[T]		298
+nim	slice	gdext/arraytools.html#slice,TypedArray[T],Int,Int,Int,bool	proc slice[T](self: var TypedArray[T]; begin: Int; end: Int = 2147483647;\n         step: Int = 1; deep: bool = false): TypedArray[T]		301
+nim	slice	gdext/arraytools.html#slice,TypedArray[T],Int,Int,Int,bool_2	proc slice[T](self: TypedArray[T]; begin: Int; end: Int = 2147483647; step: Int = 1;\n         deep: bool = false): TypedArray[T]		304
+nim	filter	gdext/arraytools.html#filter,TypedArray[T],Callable	proc filter[T](self: var TypedArray[T]; method: Callable): TypedArray[T]		307
+nim	filter	gdext/arraytools.html#filter,TypedArray[T],Callable_2	proc filter[T](self: TypedArray[T]; method: Callable): TypedArray[T]		310
+nim	max	gdext/arraytools.html#max,TypedArray[T]	proc max[T](self: var TypedArray[T]): T		317
+nim	max	gdext/arraytools.html#max,TypedArray[T]_2	proc max[T](self: TypedArray[T]): T		320
+nim	min	gdext/arraytools.html#min,TypedArray[T]	proc min[T](self: var TypedArray[T]): T		323
+nim	min	gdext/arraytools.html#min,TypedArray[T]_2	proc min[T](self: TypedArray[T]): T		326
+nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray,int	proc newPackedByteArray(size: int): PackedByteArray		333
+nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray,int	proc newPackedColorArray(size: int): PackedColorArray		335
+nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray,int	proc newPackedStringArray(size: int): PackedStringArray		337
+nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array,int	proc newPackedInt32Array(size: int): PackedInt32Array		339
+nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array,int	proc newPackedInt64Array(size: int): PackedInt64Array		341
+nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array,int	proc newPackedFloat32Array(size: int): PackedFloat32Array		343
+nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array,int	proc newPackedFloat64Array(size: int): PackedFloat64Array		345
+nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array,int	proc newPackedVector2Array(size: int): PackedVector2Array		347
+nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array,int	proc newPackedVector3Array(size: int): PackedVector3Array		349
+nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array,int	proc newPackedVector4Array(size: int): PackedVector4Array		351
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[byte]	proc newPackedArray(s: openArray[byte]): PackedByteArray		354
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Color]	proc newPackedArray(s: openArray[Color]): PackedColorArray		357
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[String]	proc newPackedArray(s: openArray[String]): PackedStringArray		360
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[int32]	proc newPackedArray(s: openArray[int32]): PackedInt32Array		365
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[int64]	proc newPackedArray(s: openArray[int64]): PackedInt64Array		368
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[float32]	proc newPackedArray(s: openArray[float32]): PackedFloat32Array		371
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[float64]	proc newPackedArray(s: openArray[float64]): PackedFloat64Array		374
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector2]	proc newPackedArray(s: openArray[Vector2]): PackedVector2Array		377
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector3]	proc newPackedArray(s: openArray[Vector3]): PackedVector3Array		380
+nim	newPackedArray	gdext/arraytools.html#newPackedArray,openArray[Vector4]	proc newPackedArray(s: openArray[Vector4]): PackedVector4Array		383
+nim	newPackedByteArray	gdext/arraytools.html#newPackedByteArray,openArray[byte]	proc newPackedByteArray(s: openArray[byte]): PackedByteArray		388
+nim	newPackedColorArray	gdext/arraytools.html#newPackedColorArray,openArray[Color]	proc newPackedColorArray(s: openArray[Color]): PackedColorArray		389
+nim	newPackedStringArray	gdext/arraytools.html#newPackedStringArray,openArray[String]	proc newPackedStringArray(s: openArray[String]): PackedStringArray		390
+nim	newPackedInt32Array	gdext/arraytools.html#newPackedInt32Array,openArray[int32]	proc newPackedInt32Array(s: openArray[int32]): PackedInt32Array		391
+nim	newPackedInt64Array	gdext/arraytools.html#newPackedInt64Array,openArray[int64]	proc newPackedInt64Array(s: openArray[int64]): PackedInt64Array		392
+nim	newPackedFloat32Array	gdext/arraytools.html#newPackedFloat32Array,openArray[float32]	proc newPackedFloat32Array(s: openArray[float32]): PackedFloat32Array		393
+nim	newPackedFloat64Array	gdext/arraytools.html#newPackedFloat64Array,openArray[float64]	proc newPackedFloat64Array(s: openArray[float64]): PackedFloat64Array		394
+nim	newPackedVector2Array	gdext/arraytools.html#newPackedVector2Array,openArray[Vector2]	proc newPackedVector2Array(s: openArray[Vector2]): PackedVector2Array		395
+nim	newPackedVector3Array	gdext/arraytools.html#newPackedVector3Array,openArray[Vector3]	proc newPackedVector3Array(s: openArray[Vector3]): PackedVector3Array		396
+nim	newPackedVector4Array	gdext/arraytools.html#newPackedVector4Array,openArray[Vector4]	proc newPackedVector4Array(s: openArray[Vector4]): PackedVector4Array		397
+nim	items	gdext/arraytools.html#items.i,PackedArray[T]	iterator items[T](arr: PackedArray[T]): T		400
+nim	pairs	gdext/arraytools.html#pairs.i,PackedArray[T]	iterator pairs[T](arr: PackedArray[T]): (int, T)		402
+nim	mitems	gdext/arraytools.html#mitems.i,PackedArray[T]	iterator mitems[T](arr: var PackedArray[T]): var T		405
+nim	mpairs	gdext/arraytools.html#mpairs.i,PackedArray[T]	iterator mpairs[T](arr: var PackedArray[T]): (int, var T)		407
+nim	toOpenArray	gdext/arraytools.html#toOpenArray.t,PackedArray[T]	template toOpenArray[T](arr: PackedArray[T]): openArray[T]		410
+nim	`@`	gdext/arraytools.html#@,PackedArray[T]	proc `@`[T](arr: PackedArray[T]): seq[T]		412
+nim	`&`	gdext/arraytools.html#&,Array,Array	proc `&`(x, y: Array): Array		424
+nim	`&`	gdext/arraytools.html#&,TypedArray[T],TypedArray[T]	proc `&`[T](x, y: TypedArray[T]): TypedArray[T]		425
+nim	`&`	gdext/arraytools.html#&,PackedArray[T],PackedArray[T]	proc `&`[T](x, y: PackedArray[T])		426
+nim	`[]`	gdext/arraytools.html#[],Array,BackwardsIndex	proc `[]`(arr: Array; index: BackwardsIndex): Variant		429
+nim	`[]`	gdext/arraytools.html#[],TypedArray[T],BackwardsIndex	proc `[]`[T](arr: TypedArray[T]; index: BackwardsIndex): T		432
+nim	`[]`	gdext/arraytools.html#[],PackedArray[T],BackwardsIndex	proc `[]`[T](arr: PackedArray[T]; index: BackwardsIndex): T		435
+nim	`[]`	gdext/arraytools.html#[],Array,BackwardsIndex_2	proc `[]`(arr: var Array; index: BackwardsIndex): var Variant		439
+nim	`[]`	gdext/arraytools.html#[],TypedArray[T: not Object and not RefCounted],BackwardsIndex	proc `[]`[T: not Object and not RefCounted](arr: var TypedArray[T];\n                                       index: BackwardsIndex): var T		442
+nim	`[]`	gdext/arraytools.html#[],PackedArray[T],BackwardsIndex_2	proc `[]`[T](arr: var PackedArray[T]; index: BackwardsIndex): var T		445
+nim	`[]`	gdext/arraytools.html#[],Array,HSlice[U: Ordinal,V: Ordinal]	proc `[]`[U, V: Ordinal](arr: Array; x: HSlice[U, V]): Array		449
+nim	`[]`	gdext/arraytools.html#[],TypedArray[T],HSlice[U: Ordinal,V: Ordinal]	proc `[]`[T; U, V: Ordinal](arr: TypedArray[T]; x: HSlice[U, V]): TypedArray[T]		454
+nim	`[]`	gdext/arraytools.html#[],PackedArray[T],HSlice[U: Ordinal,V: Ordinal]	proc `[]`[T; U, V: Ordinal](arr: PackedArray[T]; x: HSlice[U, V]): PackedArray[T]		459
+nim	`[]=`	gdext/arraytools.html#[]=,Array,BackwardsIndex,Variant	proc `[]=`(arr: var Array; index: BackwardsIndex; value: Variant)		465
+nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],BackwardsIndex,T	proc `[]=`[T](arr: var TypedArray[T]; index: BackwardsIndex; value: T)		468
+nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],BackwardsIndex,T	proc `[]=`[T](arr: var PackedArray[T]; index: BackwardsIndex; value: T)		471
+nim	contains	gdext/arraytools.html#contains,Array,Variant	proc contains(arr: Array; value: Variant): bool		475
+nim	contains	gdext/arraytools.html#contains,Array,Variant_2	proc contains(arr: var Array; value: Variant): bool		477
+nim	contains	gdext/arraytools.html#contains,Array,T	proc contains[T: SomeProperty](arr: Array; value: T): bool		479
+nim	contains	gdext/arraytools.html#contains,Array,T_2	proc contains[T: SomeProperty](arr: var Array; value: T): bool		481
+nim	contains	gdext/arraytools.html#contains,TypedArray[T],T	proc contains[T](arr: TypedArray[T]; value: T): bool		483
+nim	contains	gdext/arraytools.html#contains,TypedArray[T],T_2	proc contains[T](arr: var TypedArray[T]; value: T): bool		485
+nim	contains	gdext/arraytools.html#contains,PackedArray[T],T	proc contains[T](arr: PackedArray[T]; item: T): bool		487
+nim	setLen	gdext/arraytools.html#setLen,Array,int	proc setLen(arr: var Array; newlen: int)		491
+nim	setLen	gdext/arraytools.html#setLen,PackedArray,int	proc setLen(arr: var PackedArray; newlen: int)		495
+nim	len	gdext/arraytools.html#len,Array	proc len(arr: Array): int		499
+nim	len	gdext/arraytools.html#len,Array_2	proc len(arr: var Array): int		500
+nim	len	gdext/arraytools.html#len,TypedArray	proc len(arr: TypedArray): int		501
+nim	len	gdext/arraytools.html#len,TypedArray_2	proc len(arr: var TypedArray): int		502
+nim	len	gdext/arraytools.html#len,PackedArray	proc len(arr: PackedArray): int		503
+nim	high	gdext/arraytools.html#high,Array	proc high(arr: Array): int		506
+nim	high	gdext/arraytools.html#high,Array_2	proc high(arr: var Array): int		507
+nim	high	gdext/arraytools.html#high,PackedArray	proc high(arr: PackedArray): int		508
+nim	high	gdext/arraytools.html#high,PackedArray_2	proc high(arr: var PackedArray): int		509
+nim	low	gdext/arraytools.html#low,Array	proc low(arr: Array): int		512
+nim	low	gdext/arraytools.html#low,PackedArray	proc low(arr: PackedArray): int		513
+nim	add	gdext/arraytools.html#add,Array,Variant	proc add(self: var Array; value: Variant)		516
+nim	add	gdext/arraytools.html#add,Array,Array	proc add(self: var Array; array: Array)		518
+nim	add	gdext/arraytools.html#add,TypedArray[T],T	proc add[T](self: var TypedArray[T]; value: T)		521
+nim	add	gdext/arraytools.html#add,PackedArray[T],T	proc add[T](self: var PackedArray[T]; value: T)		524
+nim	add	gdext/arraytools.html#add,PackedArray[T],PackedArray[T]	proc add[T](self: var PackedArray[T]; array: PackedArray[T])		526
+nim	delete	gdext/arraytools.html#delete,Array,Natural	proc delete(self: var Array; index: Natural)		530
+nim	delete	gdext/arraytools.html#delete,PackedArray[T],Natural	proc delete[T](self: var PackedArray[T]; index: Natural)		532
+nim	pop	gdext/arraytools.html#pop,Array	proc pop(self: var Array): Variant		536
+nim	pop	gdext/arraytools.html#pop,TypedArray[T]	proc pop[T](self: var TypedArray[T]): T		537
+nim	pop	gdext/arraytools.html#pop,PackedArray[T]	proc pop[T](self: var PackedArray[T]): T		538
+nim	`&`	gdext/arraytools.html#&,Array,Variant	proc `&`(x: Array; y: Variant): Array		572
+nim	`&`	gdext/arraytools.html#&,Variant,Array	proc `&`(x: Variant; y: Array): Array		578
+nim	`&`	gdext/arraytools.html#&,TypedArray,T	proc `&`[T](x: TypedArray; y: T): TypedArray[T]		585
+nim	`&`	gdext/arraytools.html#&,T,TypedArray	proc `&`[T](x: T; y: TypedArray): TypedArray[T]		591
+nim	`&`	gdext/arraytools.html#&,PackedArray,T	proc `&`[T](x: PackedArray; y: T): PackedArray[T]		598
+nim	`&`	gdext/arraytools.html#&,T,PackedArray	proc `&`[T](x: T; y: PackedArray): PackedArray[T]		604
+nim	`[]=`	gdext/arraytools.html#[]=,Array,HSlice[U: Ordinal,V: Ordinal],Array	proc `[]=`[U, V: Ordinal](s: var Array; x: HSlice[U, V]; b: Array)		630
+nim	`[]=`	gdext/arraytools.html#[]=,TypedArray[T],HSlice[U: Ordinal,V: Ordinal],TypedArray[T]	proc `[]=`[T; U, V: Ordinal](s: var TypedArray[T]; x: HSlice[U, V]; b: TypedArray[T])		638
+nim	`[]=`	gdext/arraytools.html#[]=,PackedArray[T],HSlice[U: Ordinal,V: Ordinal],PackedArray[T]	proc `[]=`[T; U, V: Ordinal](s: var PackedArray[T]; x: HSlice[U, V];\n                        b: PackedArray[T])		646
+nim	gdArray	gdext/arraytools.html#gdArray.t,varargs[untyped]	template gdArray(args: varargs[untyped]): untyped		657
+nim	packedByteArray	gdext/arraytools.html#packedByteArray.t,varargs[untyped]	template packedByteArray(args: varargs[untyped]): untyped		658
+nim	packedColorArray	gdext/arraytools.html#packedColorArray.t,varargs[untyped]	template packedColorArray(args: varargs[untyped]): untyped		659
+nim	packedStringArray	gdext/arraytools.html#packedStringArray.t,varargs[untyped]	template packedStringArray(args: varargs[untyped]): untyped		660
+nim	packedInt32Array	gdext/arraytools.html#packedInt32Array.t,varargs[untyped]	template packedInt32Array(args: varargs[untyped]): untyped		661
+nim	packedInt64Array	gdext/arraytools.html#packedInt64Array.t,varargs[untyped]	template packedInt64Array(args: varargs[untyped]): untyped		662
+nim	packedFloat32Array	gdext/arraytools.html#packedFloat32Array.t,varargs[untyped]	template packedFloat32Array(args: varargs[untyped]): untyped		663
+nim	packedFloat64Array	gdext/arraytools.html#packedFloat64Array.t,varargs[untyped]	template packedFloat64Array(args: varargs[untyped]): untyped		664
+nim	packedVector2Array	gdext/arraytools.html#packedVector2Array.t,varargs[untyped]	template packedVector2Array(args: varargs[untyped]): untyped		665
+nim	packedVector3Array	gdext/arraytools.html#packedVector3Array.t,varargs[untyped]	template packedVector3Array(args: varargs[untyped]): untyped		666
+nim	packedVector4Array	gdext/arraytools.html#packedVector4Array.t,varargs[untyped]	template packedVector4Array(args: varargs[untyped]): untyped		667
+nim	toSeq	gdext/arraytools.html#toSeq.t,PackedArray[T]	template toSeq[T](arr: PackedArray[T]): seq[T]		669
 nimgrp	pushfront	gdext/arraytools.html#pushFront-procs-all	proc		117
 nimgrp	pickrandom	gdext/arraytools.html#pickRandom-procs-all	proc		161
 nimgrp	gettypedscript	gdext/arraytools.html#getTypedScript-procs-all	proc		348
 nimgrp	has	gdext/arraytools.html#has-procs-all	proc		207
-nimgrp	[]	gdext/arraytools.html#[]-procs-all	proc		100
-nimgrp	&	gdext/arraytools.html#&-procs-all	proc		433
-nimgrp	setlen	gdext/arraytools.html#setLen-procs-all	proc		500
+nimgrp	[]	gdext/arraytools.html#[]-procs-all	proc		101
+nimgrp	&	gdext/arraytools.html#&-procs-all	proc		424
+nimgrp	setlen	gdext/arraytools.html#setLen-procs-all	proc		491
 nimgrp	append	gdext/arraytools.html#append-procs-all	proc		121
 nimgrp	find	gdext/arraytools.html#find-procs-all	proc		167
 nimgrp	min	gdext/arraytools.html#min-procs-all	proc		316
 nimgrp	fill	gdext/arraytools.html#fill-procs-all	proc		141
 nimgrp	front	gdext/arraytools.html#front-procs-all	proc		149
-nimgrp	newpackedfloat64array	gdext/arraytools.html#newPackedFloat64Array-procs-all	proc		54
+nimgrp	newpackedfloat64array	gdext/arraytools.html#newPackedFloat64Array-procs-all	proc		55
 nimgrp	rfind	gdext/arraytools.html#rfind-procs-all	proc		183
 nimgrp	map	gdext/arraytools.html#map-procs-all	proc		278
 nimgrp	==	gdext/arraytools.html#==-procs-all	proc		14
@@ -615,33 +615,33 @@ nimgrp	isempty	gdext/arraytools.html#isEmpty-procs-all	proc		82
 nimgrp	*	gdext/arraytools.html#*-procs-all	proc		11
 nimgrp	reverse	gdext/arraytools.html#reverse-procs-all	proc		251
 nimgrp	bsearchcustom	gdext/arraytools.html#bsearchCustom-procs-all	proc		243
-nimgrp	contains	gdext/arraytools.html#contains-procs-all	proc		484
+nimgrp	contains	gdext/arraytools.html#contains-procs-all	proc		475
 nimgrp	clear	gdext/arraytools.html#clear-procs-all	proc		88
 nimgrp	popback	gdext/arraytools.html#popBack-procs-all	proc		215
-nimgrp	len	gdext/arraytools.html#len-procs-all	proc		508
+nimgrp	len	gdext/arraytools.html#len-procs-all	proc		499
 nimgrp	popfront	gdext/arraytools.html#popFront-procs-all	proc		218
 nimgrp	isreadonly	gdext/arraytools.html#isReadOnly-procs-all	proc		357
-nimgrp	pop	gdext/arraytools.html#pop-procs-all	proc		545
+nimgrp	pop	gdext/arraytools.html#pop-procs-all	proc		536
 nimgrp	hash	gdext/arraytools.html#hash-procs-all	proc		91
 nimgrp	gettypedclassname	gdext/arraytools.html#getTypedClassName-procs-all	proc		342
 nimgrp	max	gdext/arraytools.html#max-procs-all	proc		310
-nimgrp	newpackedstringarray	gdext/arraytools.html#newPackedStringArray-procs-all	proc		50
+nimgrp	newpackedstringarray	gdext/arraytools.html#newPackedStringArray-procs-all	proc		51
 nimgrp	filter	gdext/arraytools.html#filter-procs-all	proc		270
-nimgrp	[]=	gdext/arraytools.html#[]=-procs-all	proc		106
+nimgrp	[]=	gdext/arraytools.html#[]=-procs-all	proc		107
 nimgrp	newarray	gdext/arraytools.html#newArray-procs-all	proc		6
-nimgrp	newpackedvector2array	gdext/arraytools.html#newPackedVector2Array-procs-all	proc		55
-nimgrp	high	gdext/arraytools.html#high-procs-all	proc		515
+nimgrp	newpackedvector2array	gdext/arraytools.html#newPackedVector2Array-procs-all	proc		56
+nimgrp	high	gdext/arraytools.html#high-procs-all	proc		506
 nimgrp	not	gdext/arraytools.html#not-procs-all	proc		13
 nimgrp	popat	gdext/arraytools.html#popAt-procs-all	proc		221
-nimgrp	newtypedarray	gdext/arraytools.html#newTypedArray-procs-all	proc		158
+nimgrp	newtypedarray	gdext/arraytools.html#newTypedArray-procs-all	proc		159
 nimgrp	erase	gdext/arraytools.html#erase-procs-all	proc		145
 nimgrp	count	gdext/arraytools.html#count-procs-all	proc		199
-nimgrp	add	gdext/arraytools.html#add-procs-all	proc		525
+nimgrp	add	gdext/arraytools.html#add-procs-all	proc		516
 nimgrp	rfindcustom	gdext/arraytools.html#rfindCustom-procs-all	proc		191
 nimgrp	reduce	gdext/arraytools.html#reduce-procs-all	proc		286
-nimgrp	low	gdext/arraytools.html#low-procs-all	proc		521
-nimgrp	newpackedcolorarray	gdext/arraytools.html#newPackedColorArray-procs-all	proc		49
-nimgrp	newpackedvector3array	gdext/arraytools.html#newPackedVector3Array-procs-all	proc		56
+nimgrp	low	gdext/arraytools.html#low-procs-all	proc		512
+nimgrp	newpackedcolorarray	gdext/arraytools.html#newPackedColorArray-procs-all	proc		50
+nimgrp	newpackedvector3array	gdext/arraytools.html#newPackedVector3Array-procs-all	proc		57
 nimgrp	+	gdext/arraytools.html#+-procs-all	proc		17
 nimgrp	duplicate	gdext/arraytools.html#duplicate-procs-all	proc		254
 nimgrp	all	gdext/arraytools.html#all-procs-all	proc		302
@@ -650,29 +650,29 @@ nimgrp	gettypedbuiltin	gdext/arraytools.html#getTypedBuiltin-procs-all	proc		336
 nimgrp	appendarray	gdext/arraytools.html#appendArray-procs-all	proc		125
 nimgrp	removeat	gdext/arraytools.html#removeAt-procs-all	proc		137
 nimgrp	pushback	gdext/arraytools.html#pushBack-procs-all	proc		113
-nimgrp	delete	gdext/arraytools.html#delete-procs-all	proc		539
+nimgrp	delete	gdext/arraytools.html#delete-procs-all	proc		530
 nimgrp	issametyped	gdext/arraytools.html#isSameTyped-procs-all	proc		328
-nimgrp	newpackedarray	gdext/arraytools.html#newPackedArray-procs-all	proc		363
+nimgrp	newpackedarray	gdext/arraytools.html#newPackedArray-procs-all	proc		354
 nimgrp	bsearch	gdext/arraytools.html#bsearch-procs-all	proc		235
-nimgrp	newpackedfloat32array	gdext/arraytools.html#newPackedFloat32Array-procs-all	proc		53
+nimgrp	newpackedfloat32array	gdext/arraytools.html#newPackedFloat32Array-procs-all	proc		54
 nimgrp	get	gdext/arraytools.html#get-procs-all	proc		101
 nimgrp	any	gdext/arraytools.html#any-procs-all	proc		294
-nimgrp	newpackedvector4array	gdext/arraytools.html#newPackedVector4Array-procs-all	proc		57
+nimgrp	newpackedvector4array	gdext/arraytools.html#newPackedVector4Array-procs-all	proc		58
 nimgrp	slice	gdext/arraytools.html#slice-procs-all	proc		262
 nimgrp	istyped	gdext/arraytools.html#isTyped-procs-all	proc		322
-nimgrp	newpackedint64array	gdext/arraytools.html#newPackedInt64Array-procs-all	proc		52
-nimgrp	newpackedbytearray	gdext/arraytools.html#newPackedByteArray-procs-all	proc		48
-nimgrp	newpackedint32array	gdext/arraytools.html#newPackedInt32Array-procs-all	proc		51
+nimgrp	newpackedint64array	gdext/arraytools.html#newPackedInt64Array-procs-all	proc		53
+nimgrp	newpackedbytearray	gdext/arraytools.html#newPackedByteArray-procs-all	proc		49
+nimgrp	newpackedint32array	gdext/arraytools.html#newPackedInt32Array-procs-all	proc		52
 nimgrp	set	gdext/arraytools.html#set-procs-all	proc		109
 nimgrp	back	gdext/arraytools.html#back-procs-all	proc		155
 nimgrp	insert	gdext/arraytools.html#insert-procs-all	proc		133
-nimgrp	items	gdext/arraytools.html#items-iterators-all	iterator		142
-nimgrp	mpairs	gdext/arraytools.html#mpairs-iterators-all	iterator		149
-nimgrp	mitems	gdext/arraytools.html#mitems-iterators-all	iterator		147
-nimgrp	pairs	gdext/arraytools.html#pairs-iterators-all	iterator		144
-nimgrp	nilcheck	gdext/arraytools.html#nilCheck-templates-all	template		28
-nimgrp	typedarray	gdext/arraytools.html#typedArray-templates-all	template		187
-nimgrp	toopenarray	gdext/arraytools.html#toOpenArray-templates-all	template		152
+nimgrp	items	gdext/arraytools.html#items-iterators-all	iterator		143
+nimgrp	mpairs	gdext/arraytools.html#mpairs-iterators-all	iterator		150
+nimgrp	mitems	gdext/arraytools.html#mitems-iterators-all	iterator		148
+nimgrp	pairs	gdext/arraytools.html#pairs-iterators-all	iterator		145
+nimgrp	nilcheck	gdext/arraytools.html#nilCheck-templates-all	template		29
+nimgrp	typedarray	gdext/arraytools.html#typedArray-templates-all	template		178
+nimgrp	toopenarray	gdext/arraytools.html#toOpenArray-templates-all	template		153
 heading	Array	gdext/arraytools.html#array	 Array		0
 heading	TypedArray[SomeVariant]	gdext/arraytools.html#typedarray-somevariant	 TypedArray[SomeVariant]		0
 heading	PackedArray	gdext/arraytools.html#packedarray	 PackedArray		0

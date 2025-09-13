@@ -1,4 +1,4 @@
 nimTitle	gdext	gdext.html	module gdext		0
-nim	EntryPoint	gdext.html#EntryPoint	const EntryPoint		77
-nim	GDExtension_EntryPoint	gdext.html#GDExtension_EntryPoint.t	template GDExtension_EntryPoint(): untyped		79
+nim	EntryPoint	gdext.html#EntryPoint	const EntryPoint		81
+nim	GDExtension_EntryPoint	gdext.html#GDExtension_EntryPoint.t	template GDExtension_EntryPoint(): untyped		83
 heading	Modules	gdext.html#modules	 Modules		0

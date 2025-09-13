@@ -63,12 +63,16 @@
 
 </ul>
 <ul class="simple nested-toc-section">[]
-  <li><a class="reference" href="#%5B%5D%2CDictionary%2CVariant" title="`[]`(self: Dictionary; key: Variant): Variant">`[]`(self: Dictionary; key: Variant): Variant</a></li>
+  <li><a class="reference" href="#%5B%5D%2CDictionary%2CSomeProperty" title="`[]`(self: Dictionary; key: SomeProperty): Variant">`[]`(self: Dictionary; key: SomeProperty): Variant</a></li>
+<li><a class="reference" href="#%5B%5D%2CDictionary%2CVariant" title="`[]`(self: Dictionary; key: Variant): Variant">`[]`(self: Dictionary; key: Variant): Variant</a></li>
+<li><a class="reference" href="#%5B%5D%2CDictionary%2CSomeProperty_2" title="`[]`(self: var Dictionary; key: SomeProperty): var Variant">`[]`(self: var Dictionary; key: SomeProperty): var Variant</a></li>
 <li><a class="reference" href="#%5B%5D%2CDictionary%2CVariant_2" title="`[]`(self: var Dictionary; key: Variant): var Variant">`[]`(self: var Dictionary; key: Variant): var Variant</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">[]=
-  <li><a class="reference" href="#%5B%5D%3D%2CDictionary%2CVariant%2CsinkVariant" title="`[]=`(self: var Dictionary; key: Variant; value: sink Variant)">`[]=`(self: var Dictionary; key: Variant; value: sink Variant)</a></li>
+  <li><a class="reference" href="#%5B%5D%3D%2CDictionary%2CSomeProperty%2CsinkVariant" title="`[]=`(self: var Dictionary; key: SomeProperty; value: sink Variant)">`[]=`(self: var Dictionary; key: SomeProperty; value: sink Variant)</a></li>
+<li><a class="reference" href="#%5B%5D%3D%2CDictionary%2CVariant%2CsinkVariant" title="`[]=`(self: var Dictionary; key: Variant; value: sink Variant)">`[]=`(self: var Dictionary; key: Variant; value: sink Variant)</a></li>
+<li><a class="reference" href="#%5B%5D%3D%2CDictionary%2CA%2CsinkB" title="`[]=`[A, B: SomeProperty](self: var Dictionary; key: A; value: sink B)">`[]=`[A, B: SomeProperty](self: var Dictionary; key: A; value: sink B)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">assign
@@ -217,6 +221,9 @@
               keyScript: Variant; valueType: Int; valueClassName: StringName;
               valueScript: Variant): Dictionary</a></li>
 <li><a class="reference" href="#newDictionary%2CDictionary" title="newDictionary(from: Dictionary): Dictionary">newDictionary(from: Dictionary): Dictionary</a></li>
+<li><a class="reference" href="#newDictionary%2CTable" title="newDictionary(table: Table): Dictionary">newDictionary(table: Table): Dictionary</a></li>
+<li><a class="reference" href="#newDictionary%2CTableRef" title="newDictionary(table: TableRef): Dictionary">newDictionary(table: TableRef): Dictionary</a></li>
+<li><a class="reference" href="#newDictionary%2CopenArray%5B%5D" title="newDictionary[A, B](pairs: openArray[(A, B)]): Dictionary">newDictionary[A, B](pairs: openArray[(A, B)]): Dictionary</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">not
@@ -252,6 +259,34 @@
 </li>
 <li>
   <details open>
+    <summary><a class="reference reference-toplevel" href="#15" id="65">Iterators</a></summary>
+    <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">keys
+  <li><a class="reference" href="#keys.i%2CDictionary" title="keys(self: Dictionary): Variant">keys(self: Dictionary): Variant</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">mpairs
+  <li><a class="reference" href="#mpairs.i%2CDictionary" title="mpairs(self: var Dictionary): tuple[key: Variant, item: var Variant]">mpairs(self: var Dictionary): tuple[key: Variant, item: var Variant]</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">mvalues
+  <li><a class="reference" href="#mvalues.i%2CDictionary" title="mvalues(self: var Dictionary): var Variant">mvalues(self: var Dictionary): var Variant</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">pairs
+  <li><a class="reference" href="#pairs.i%2CDictionary" title="pairs(self: Dictionary): tuple[key, item: Variant]">pairs(self: Dictionary): tuple[key, item: Variant]</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">values
+  <li><a class="reference" href="#values.i%2CDictionary" title="values(self: Dictionary): Variant">values(self: Dictionary): Variant</a></li>
+
+</ul>
+
+    </ul>
+  </details>
+</li>
+<li>
+  <details open>
     <summary><a class="reference reference-toplevel" href="#18" id="68">Templates</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">dictionary
@@ -279,7 +314,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="private/typeshift.html">private/typeshift</a>, <a class="reference external" href="private/macros.html">private/macros</a>, <a class="reference external" href="builtinindex.html">builtinindex</a>
+    <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="private/typeshift.html">private/typeshift</a>, <a class="reference external" href="private/macros.html">private/macros</a>, <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="varianttools.html">varianttools</a>
   </dl>
 </div>
 <div class="section" id="12">
@@ -298,9 +333,25 @@
 
 </div>
 <div id="[]-procs-all">
-  <div id="[],Dictionary,Variant">
+  <div id="[],Dictionary,SomeProperty">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CDictionary%2CSomeProperty"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="[],Dictionary,Variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CDictionary%2CVariant"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="[],Dictionary,SomeProperty_2">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CDictionary%2CSomeProperty_2"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a></pre></dt>
   <dd>
     
     
@@ -319,9 +370,25 @@
 
 </div>
 <div id="[]=-procs-all">
-  <div id="[]=,Dictionary,Variant,sinkVariant">
+  <div id="[]=,Dictionary,SomeProperty,sinkVariant">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CDictionary%2CSomeProperty%2CsinkVariant"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">sink</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="[]=,Dictionary,Variant,sinkVariant">
   <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CDictionary%2CVariant%2CsinkVariant"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">sink</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="[]=,Dictionary,A,sinkB">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CDictionary%2CA%2CsinkB"><span class="Identifier">`[]=`</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">sink</span> <span class="Identifier">B</span><span class="Other">)</span></pre></dt>
   <dd>
     
     
@@ -904,6 +971,30 @@
     
   </dd>
 </div>
+<div id="newDictionary,Table">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newDictionary%2CTable"><span class="Identifier">newDictionary</span></a><span class="Other">(</span><span class="Identifier">table</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="newDictionary,TableRef">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newDictionary%2CTableRef"><span class="Identifier">newDictionary</span></a><span class="Other">(</span><span class="Identifier">table</span><span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="newDictionary,openArray[]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newDictionary%2CopenArray%5B%5D"><span class="Identifier">newDictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">pairs</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 
 </div>
 <div id="not-procs-all">
@@ -1008,6 +1099,72 @@
 
   </dl>
 </div>
+<div class="section" id="15">
+  <h1><a class="toc-backref" href="#15">Iterators</a></h1>
+  <dl class="item">
+    <div id="keys-iterators-all">
+  <div id="keys.i,Dictionary">
+  <dt><pre><span class="Keyword">iterator</span> <a href="#keys.i%2CDictionary"><span class="Identifier">keys</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="mpairs-iterators-all">
+  <div id="mpairs.i,Dictionary">
+  <dt><pre><span class="Keyword">iterator</span> <a href="#mpairs.i%2CDictionary"><span class="Identifier">mpairs</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <span class="Identifier">item</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="mvalues-iterators-all">
+  <div id="mvalues.i,Dictionary">
+  <dt><pre><span class="Keyword">iterator</span> <a href="#mvalues.i%2CDictionary"><span class="Identifier">mvalues</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="pairs-iterators-all">
+  <div id="pairs.i,Dictionary">
+  <dt><pre><span class="Keyword">iterator</span> <a href="#pairs.i%2CDictionary"><span class="Identifier">pairs</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">key</span><span class="Other">,</span> <span class="Identifier">item</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="values-iterators-all">
+  <div id="values.i,Dictionary">
+  <dt><pre><span class="Keyword">iterator</span> <a href="#values.i%2CDictionary"><span class="Identifier">values</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+
+  </dl>
+</div>
 <div class="section" id="18">
   <h1><a class="toc-backref" href="#18">Templates</a></h1>
   <dl class="item">
@@ -1055,7 +1212,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-01 12:38:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
       </div>
     </div>
   </div>

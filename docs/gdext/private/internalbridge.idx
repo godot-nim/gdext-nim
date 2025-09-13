@@ -1,15 +1,15 @@
 nimTitle	internalbridge	gdext/private/internalbridge.html	module gdext/private/internalbridge		0
-nim	instantiate_internal	gdext/private/internalbridge.html#instantiate_internal,typedesc[T]	proc instantiate_internal[T: SomeEngineClass](Type: typedesc[T]): T		22
-nim	instantiate_internal	gdext/private/internalbridge.html#instantiate_internal,typedesc[T]_2	proc instantiate_internal[T: SomeUserClass](Type: typedesc[T]): T		27
-nim	propertyinfo	gdext/private/internalbridge.html#propertyinfo,StringName,typedesc[SomeProperty],Appearance	proc propertyinfo(name: StringName; proptyp: typedesc[SomeProperty];\n             appearance: Appearance): HeapPropertyInfo		155
-nim	propertyinfo	gdext/private/internalbridge.html#propertyinfo,StringName,Appearance	proc propertyinfo(name: StringName; appearance: Appearance): HeapPropertyInfo		171
-nim	gdexport_internal	gdext/private/internalbridge.html#gdexport_internal,HeapPropertyInfo,StringName	proc gdexport_internal(info: HeapPropertyInfo; typ: StringName;\n                  getter = StringName(); setter = StringName())		180
-nim	gdexport_internal	gdext/private/internalbridge.html#gdexport_internal,string,typedesc[SomeUserClass],typedesc[SomeProperty],StringName,StringName,Appearance,string	proc gdexport_internal(name: string; typ: typedesc[SomeUserClass];\n                  proptyp: typedesc[SomeProperty]; getter, setter: StringName;\n                  appearance: Appearance; description: string)		187
-nim	implicitRegistrations	gdext/private/internalbridge.html#implicitRegistrations	var implicitRegistrations		243
-nim	implicitRegistrationSingletons	gdext/private/internalbridge.html#implicitRegistrationSingletons	var implicitRegistrationSingletons		244
-nim	register	gdext/private/internalbridge.html#register,typedesc	proc register(T: typedesc)		248
+nim	instantiate_internal	gdext/private/internalbridge.html#instantiate_internal,typedesc[T]	proc instantiate_internal[T: SomeEngineClass](Type: typedesc[T]): T		24
+nim	instantiate_internal	gdext/private/internalbridge.html#instantiate_internal,typedesc[T]_2	proc instantiate_internal[T: SomeUserClass](Type: typedesc[T]): T		29
+nim	propertyinfo	gdext/private/internalbridge.html#propertyinfo,StringName,typedesc[SomeProperty],Appearance	proc propertyinfo(name: StringName; proptyp: typedesc[SomeProperty];\n             appearance: Appearance): HeapPropertyInfo		157
+nim	propertyinfo	gdext/private/internalbridge.html#propertyinfo,StringName,Appearance	proc propertyinfo(name: StringName; appearance: Appearance): HeapPropertyInfo		173
+nim	gdexport_internal	gdext/private/internalbridge.html#gdexport_internal,HeapPropertyInfo,StringName	proc gdexport_internal(info: HeapPropertyInfo; typ: StringName;\n                  getter = StringName(); setter = StringName())		182
+nim	gdexport_internal	gdext/private/internalbridge.html#gdexport_internal,string,typedesc[SomeUserClass],typedesc[SomeProperty],StringName,StringName,Appearance,string	proc gdexport_internal(name: string; typ: typedesc[SomeUserClass];\n                  proptyp: typedesc[SomeProperty]; getter, setter: StringName;\n                  appearance: Appearance; description: string)		189
+nim	implicitRegistrations	gdext/private/internalbridge.html#implicitRegistrations	var implicitRegistrations		245
+nim	implicitRegistrationSingletons	gdext/private/internalbridge.html#implicitRegistrationSingletons	var implicitRegistrationSingletons		246
+nim	register	gdext/private/internalbridge.html#register,typedesc	proc register(T: typedesc)		250
 nim	unregisterAll	gdext/private/internalbridge.html#unregisterAll.t	template unregisterAll()		277
 nim	register_implicitly	gdext/private/internalbridge.html#register_implicitly.m,staticInitializationLevel	macro register_implicitly(level: static InitializationLevel)		284
-nimgrp	propertyinfo	gdext/private/internalbridge.html#propertyinfo-procs-all	proc		155
-nimgrp	instantiateinternal	gdext/private/internalbridge.html#instantiate_internal-procs-all	proc		22
-nimgrp	gdexportinternal	gdext/private/internalbridge.html#gdexport_internal-procs-all	proc		180
+nimgrp	propertyinfo	gdext/private/internalbridge.html#propertyinfo-procs-all	proc		157
+nimgrp	instantiateinternal	gdext/private/internalbridge.html#instantiate_internal-procs-all	proc		24
+nimgrp	gdexportinternal	gdext/private/internalbridge.html#gdexport_internal-procs-all	proc		182

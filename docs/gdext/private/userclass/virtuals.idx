@@ -1,3 +1,3 @@
 nimTitle	virtuals	gdext/private/userclass/virtuals.html	module gdext/private/userclass/virtuals		0
-nim	callwithEmitter	gdext/private/userclass/virtuals.html#callwithEmitter,NimNode	proc callwithEmitter(procdef: NimNode): NimNode		44
-nim	sync_virtualDef	gdext/private/userclass/virtuals.html#sync_virtualDef,NimNode	proc sync_virtualDef(procdef: NimNode): NimNode		56
+nim	callwithEmitter	gdext/private/userclass/virtuals.html#callwithEmitter,NimNode	proc callwithEmitter(procdef: NimNode): NimNode		47
+nim	sync_virtualDef	gdext/private/userclass/virtuals.html#sync_virtualDef,NimNode	proc sync_virtualDef(procdef: NimNode): NimNode		59

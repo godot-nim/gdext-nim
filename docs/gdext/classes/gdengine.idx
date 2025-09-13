@@ -1,55 +1,55 @@
 nimTitle	gdengine	gdext/classes/gdengine.html	module gdext/classes/gdengine		0
-nim	setPhysicsTicksPerSecond	gdext/classes/gdengine.html#setPhysicsTicksPerSecond,Engine,int32	proc setPhysicsTicksPerSecond(self: Engine; physicsTicksPerSecond: int32): void		7
-nim	getPhysicsTicksPerSecond	gdext/classes/gdengine.html#getPhysicsTicksPerSecond,Engine	proc getPhysicsTicksPerSecond(self: Engine): int32		11
-nim	setMaxPhysicsStepsPerFrame	gdext/classes/gdengine.html#setMaxPhysicsStepsPerFrame,Engine,int32	proc setMaxPhysicsStepsPerFrame(self: Engine; maxPhysicsSteps: int32): void		17
-nim	getMaxPhysicsStepsPerFrame	gdext/classes/gdengine.html#getMaxPhysicsStepsPerFrame,Engine	proc getMaxPhysicsStepsPerFrame(self: Engine): int32		21
-nim	setPhysicsJitterFix	gdext/classes/gdengine.html#setPhysicsJitterFix,Engine,float64	proc setPhysicsJitterFix(self: Engine; physicsJitterFix: float64): void		27
-nim	getPhysicsJitterFix	gdext/classes/gdengine.html#getPhysicsJitterFix,Engine	proc getPhysicsJitterFix(self: Engine): float64		31
-nim	getPhysicsInterpolationFraction	gdext/classes/gdengine.html#getPhysicsInterpolationFraction,Engine	proc getPhysicsInterpolationFraction(self: Engine): float64		37
-nim	setMaxFps	gdext/classes/gdengine.html#setMaxFps,Engine,int32	proc setMaxFps(self: Engine; maxFps: int32): void		43
-nim	getMaxFps	gdext/classes/gdengine.html#getMaxFps,Engine	proc getMaxFps(self: Engine): int32		47
-nim	setTimeScale	gdext/classes/gdengine.html#setTimeScale,Engine,float64	proc setTimeScale(self: Engine; timeScale: float64): void		53
-nim	getTimeScale	gdext/classes/gdengine.html#getTimeScale,Engine	proc getTimeScale(self: Engine): float64		57
-nim	getFramesDrawn	gdext/classes/gdengine.html#getFramesDrawn,Engine	proc getFramesDrawn(self: Engine): int32		63
-nim	getFramesPerSecond	gdext/classes/gdengine.html#getFramesPerSecond,Engine	proc getFramesPerSecond(self: Engine): float64		69
-nim	getPhysicsFrames	gdext/classes/gdengine.html#getPhysicsFrames,Engine	proc getPhysicsFrames(self: Engine): uint64		75
-nim	getProcessFrames	gdext/classes/gdengine.html#getProcessFrames,Engine	proc getProcessFrames(self: Engine): uint64		81
-nim	getMainLoop	gdext/classes/gdengine.html#getMainLoop,Engine	proc getMainLoop(self: Engine): MainLoop		87
-nim	getVersionInfo	gdext/classes/gdengine.html#getVersionInfo,Engine	proc getVersionInfo(self: Engine): Dictionary		93
-nim	getAuthorInfo	gdext/classes/gdengine.html#getAuthorInfo,Engine	proc getAuthorInfo(self: Engine): Dictionary		99
-nim	getCopyrightInfo	gdext/classes/gdengine.html#getCopyrightInfo,Engine	proc getCopyrightInfo(self: Engine): TypedArray[Dictionary]		105
-nim	getDonorInfo	gdext/classes/gdengine.html#getDonorInfo,Engine	proc getDonorInfo(self: Engine): Dictionary		111
-nim	getLicenseInfo	gdext/classes/gdengine.html#getLicenseInfo,Engine	proc getLicenseInfo(self: Engine): Dictionary		117
-nim	getLicenseText	gdext/classes/gdengine.html#getLicenseText,Engine	proc getLicenseText(self: Engine): String		123
-nim	getArchitectureName	gdext/classes/gdengine.html#getArchitectureName,Engine	proc getArchitectureName(self: Engine): String		129
-nim	isInPhysicsFrame	gdext/classes/gdengine.html#isInPhysicsFrame,Engine	proc isInPhysicsFrame(self: Engine): bool		135
-nim	hasSingleton	gdext/classes/gdengine.html#hasSingleton,Engine,StringName	proc hasSingleton(self: Engine; name: StringName): bool		141
-nim	getSingleton	gdext/classes/gdengine.html#getSingleton,Engine,StringName	proc getSingleton(self: Engine; name: StringName): Object		147
-nim	registerSingleton	gdext/classes/gdengine.html#registerSingleton,Engine,StringName,Object	proc registerSingleton(self: Engine; name: StringName; instance: Object): void		153
-nim	unregisterSingleton	gdext/classes/gdengine.html#unregisterSingleton,Engine,StringName	proc unregisterSingleton(self: Engine; name: StringName): void		157
-nim	getSingletonList	gdext/classes/gdengine.html#getSingletonList,Engine	proc getSingletonList(self: Engine): PackedStringArray		161
-nim	registerScriptLanguage	gdext/classes/gdengine.html#registerScriptLanguage,Engine,ScriptLanguage	proc registerScriptLanguage(self: Engine; language: ScriptLanguage): Error		167
-nim	unregisterScriptLanguage	gdext/classes/gdengine.html#unregisterScriptLanguage,Engine,ScriptLanguage	proc unregisterScriptLanguage(self: Engine; language: ScriptLanguage): Error		173
-nim	getScriptLanguageCount	gdext/classes/gdengine.html#getScriptLanguageCount,Engine	proc getScriptLanguageCount(self: Engine): int32		179
-nim	getScriptLanguage	gdext/classes/gdengine.html#getScriptLanguage,Engine,int32	proc getScriptLanguage(self: Engine; index: int32): ScriptLanguage		185
-nim	isEditorHint	gdext/classes/gdengine.html#isEditorHint,Engine	proc isEditorHint(self: Engine): bool		191
-nim	isEmbeddedInEditor	gdext/classes/gdengine.html#isEmbeddedInEditor,Engine	proc isEmbeddedInEditor(self: Engine): bool		197
-nim	getWriteMoviePath	gdext/classes/gdengine.html#getWriteMoviePath,Engine	proc getWriteMoviePath(self: Engine): String		203
-nim	setPrintToStdout	gdext/classes/gdengine.html#setPrintToStdout,Engine,bool	proc setPrintToStdout(self: Engine; enabled: bool): void		209
-nim	isPrintingToStdout	gdext/classes/gdengine.html#isPrintingToStdout,Engine	proc isPrintingToStdout(self: Engine): bool		213
-nim	setPrintErrorMessages	gdext/classes/gdengine.html#setPrintErrorMessages,Engine,bool	proc setPrintErrorMessages(self: Engine; enabled: bool): void		219
-nim	isPrintingErrorMessages	gdext/classes/gdengine.html#isPrintingErrorMessages,Engine	proc isPrintingErrorMessages(self: Engine): bool		223
-nim	printErrorMessages	gdext/classes/gdengine.html#printErrorMessages.t,Engine	template printErrorMessages(self: Engine): untyped		229
-nim	printErrorMessages=	gdext/classes/gdengine.html#printErrorMessages=.t,Engine,	template printErrorMessages=(self: Engine; value)		230
-nim	printToStdout	gdext/classes/gdengine.html#printToStdout.t,Engine	template printToStdout(self: Engine): untyped		232
-nim	printToStdout=	gdext/classes/gdengine.html#printToStdout=.t,Engine,	template printToStdout=(self: Engine; value)		233
-nim	physicsTicksPerSecond	gdext/classes/gdengine.html#physicsTicksPerSecond.t,Engine	template physicsTicksPerSecond(self: Engine): untyped		235
-nim	physicsTicksPerSecond=	gdext/classes/gdengine.html#physicsTicksPerSecond=.t,Engine,	template physicsTicksPerSecond=(self: Engine; value)		236
-nim	maxPhysicsStepsPerFrame	gdext/classes/gdengine.html#maxPhysicsStepsPerFrame.t,Engine	template maxPhysicsStepsPerFrame(self: Engine): untyped		238
-nim	maxPhysicsStepsPerFrame=	gdext/classes/gdengine.html#maxPhysicsStepsPerFrame=.t,Engine,	template maxPhysicsStepsPerFrame=(self: Engine; value)		239
-nim	maxFps	gdext/classes/gdengine.html#maxFps.t,Engine	template maxFps(self: Engine): untyped		241
-nim	maxFps=	gdext/classes/gdengine.html#maxFps=.t,Engine,	template maxFps=(self: Engine; value)		242
-nim	timeScale	gdext/classes/gdengine.html#timeScale.t,Engine	template timeScale(self: Engine): untyped		244
-nim	timeScale=	gdext/classes/gdengine.html#timeScale=.t,Engine,	template timeScale=(self: Engine; value)		245
-nim	physicsJitterFix	gdext/classes/gdengine.html#physicsJitterFix.t,Engine	template physicsJitterFix(self: Engine): untyped		247
-nim	physicsJitterFix=	gdext/classes/gdengine.html#physicsJitterFix=.t,Engine,	template physicsJitterFix=(self: Engine; value)		248
+nim	setPhysicsTicksPerSecond	gdext/classes/gdengine.html#setPhysicsTicksPerSecond,Engine,int32	proc setPhysicsTicksPerSecond(self: Engine; physicsTicksPerSecond: int32): void		9
+nim	getPhysicsTicksPerSecond	gdext/classes/gdengine.html#getPhysicsTicksPerSecond,Engine	proc getPhysicsTicksPerSecond(self: Engine): int32		13
+nim	setMaxPhysicsStepsPerFrame	gdext/classes/gdengine.html#setMaxPhysicsStepsPerFrame,Engine,int32	proc setMaxPhysicsStepsPerFrame(self: Engine; maxPhysicsSteps: int32): void		19
+nim	getMaxPhysicsStepsPerFrame	gdext/classes/gdengine.html#getMaxPhysicsStepsPerFrame,Engine	proc getMaxPhysicsStepsPerFrame(self: Engine): int32		23
+nim	setPhysicsJitterFix	gdext/classes/gdengine.html#setPhysicsJitterFix,Engine,float64	proc setPhysicsJitterFix(self: Engine; physicsJitterFix: float64): void		29
+nim	getPhysicsJitterFix	gdext/classes/gdengine.html#getPhysicsJitterFix,Engine	proc getPhysicsJitterFix(self: Engine): float64		33
+nim	getPhysicsInterpolationFraction	gdext/classes/gdengine.html#getPhysicsInterpolationFraction,Engine	proc getPhysicsInterpolationFraction(self: Engine): float64		39
+nim	setMaxFps	gdext/classes/gdengine.html#setMaxFps,Engine,int32	proc setMaxFps(self: Engine; maxFps: int32): void		45
+nim	getMaxFps	gdext/classes/gdengine.html#getMaxFps,Engine	proc getMaxFps(self: Engine): int32		49
+nim	setTimeScale	gdext/classes/gdengine.html#setTimeScale,Engine,float64	proc setTimeScale(self: Engine; timeScale: float64): void		55
+nim	getTimeScale	gdext/classes/gdengine.html#getTimeScale,Engine	proc getTimeScale(self: Engine): float64		59
+nim	getFramesDrawn	gdext/classes/gdengine.html#getFramesDrawn,Engine	proc getFramesDrawn(self: Engine): int32		65
+nim	getFramesPerSecond	gdext/classes/gdengine.html#getFramesPerSecond,Engine	proc getFramesPerSecond(self: Engine): float64		71
+nim	getPhysicsFrames	gdext/classes/gdengine.html#getPhysicsFrames,Engine	proc getPhysicsFrames(self: Engine): uint64		77
+nim	getProcessFrames	gdext/classes/gdengine.html#getProcessFrames,Engine	proc getProcessFrames(self: Engine): uint64		83
+nim	getMainLoop	gdext/classes/gdengine.html#getMainLoop,Engine	proc getMainLoop(self: Engine): MainLoop		89
+nim	getVersionInfo	gdext/classes/gdengine.html#getVersionInfo,Engine	proc getVersionInfo(self: Engine): Dictionary		95
+nim	getAuthorInfo	gdext/classes/gdengine.html#getAuthorInfo,Engine	proc getAuthorInfo(self: Engine): Dictionary		101
+nim	getCopyrightInfo	gdext/classes/gdengine.html#getCopyrightInfo,Engine	proc getCopyrightInfo(self: Engine): TypedArray[Dictionary]		107
+nim	getDonorInfo	gdext/classes/gdengine.html#getDonorInfo,Engine	proc getDonorInfo(self: Engine): Dictionary		113
+nim	getLicenseInfo	gdext/classes/gdengine.html#getLicenseInfo,Engine	proc getLicenseInfo(self: Engine): Dictionary		119
+nim	getLicenseText	gdext/classes/gdengine.html#getLicenseText,Engine	proc getLicenseText(self: Engine): String		125
+nim	getArchitectureName	gdext/classes/gdengine.html#getArchitectureName,Engine	proc getArchitectureName(self: Engine): String		131
+nim	isInPhysicsFrame	gdext/classes/gdengine.html#isInPhysicsFrame,Engine	proc isInPhysicsFrame(self: Engine): bool		137
+nim	hasSingleton	gdext/classes/gdengine.html#hasSingleton,Engine,StringName	proc hasSingleton(self: Engine; name: StringName): bool		143
+nim	getSingleton	gdext/classes/gdengine.html#getSingleton,Engine,StringName	proc getSingleton(self: Engine; name: StringName): Object		149
+nim	registerSingleton	gdext/classes/gdengine.html#registerSingleton,Engine,StringName,Object	proc registerSingleton(self: Engine; name: StringName; instance: Object): void		155
+nim	unregisterSingleton	gdext/classes/gdengine.html#unregisterSingleton,Engine,StringName	proc unregisterSingleton(self: Engine; name: StringName): void		159
+nim	getSingletonList	gdext/classes/gdengine.html#getSingletonList,Engine	proc getSingletonList(self: Engine): PackedStringArray		163
+nim	registerScriptLanguage	gdext/classes/gdengine.html#registerScriptLanguage,Engine,ScriptLanguage	proc registerScriptLanguage(self: Engine; language: ScriptLanguage): Error		169
+nim	unregisterScriptLanguage	gdext/classes/gdengine.html#unregisterScriptLanguage,Engine,ScriptLanguage	proc unregisterScriptLanguage(self: Engine; language: ScriptLanguage): Error		175
+nim	getScriptLanguageCount	gdext/classes/gdengine.html#getScriptLanguageCount,Engine	proc getScriptLanguageCount(self: Engine): int32		181
+nim	getScriptLanguage	gdext/classes/gdengine.html#getScriptLanguage,Engine,int32	proc getScriptLanguage(self: Engine; index: int32): ScriptLanguage		187
+nim	isEditorHint	gdext/classes/gdengine.html#isEditorHint,Engine	proc isEditorHint(self: Engine): bool		193
+nim	isEmbeddedInEditor	gdext/classes/gdengine.html#isEmbeddedInEditor,Engine	proc isEmbeddedInEditor(self: Engine): bool		199
+nim	getWriteMoviePath	gdext/classes/gdengine.html#getWriteMoviePath,Engine	proc getWriteMoviePath(self: Engine): String		205
+nim	setPrintToStdout	gdext/classes/gdengine.html#setPrintToStdout,Engine,bool	proc setPrintToStdout(self: Engine; enabled: bool): void		211
+nim	isPrintingToStdout	gdext/classes/gdengine.html#isPrintingToStdout,Engine	proc isPrintingToStdout(self: Engine): bool		215
+nim	setPrintErrorMessages	gdext/classes/gdengine.html#setPrintErrorMessages,Engine,bool	proc setPrintErrorMessages(self: Engine; enabled: bool): void		221
+nim	isPrintingErrorMessages	gdext/classes/gdengine.html#isPrintingErrorMessages,Engine	proc isPrintingErrorMessages(self: Engine): bool		225
+nim	printErrorMessages	gdext/classes/gdengine.html#printErrorMessages.t,Engine	template printErrorMessages(self: Engine): untyped		231
+nim	printErrorMessages=	gdext/classes/gdengine.html#printErrorMessages=.t,Engine,	template printErrorMessages=(self: Engine; value)		232
+nim	printToStdout	gdext/classes/gdengine.html#printToStdout.t,Engine	template printToStdout(self: Engine): untyped		234
+nim	printToStdout=	gdext/classes/gdengine.html#printToStdout=.t,Engine,	template printToStdout=(self: Engine; value)		235
+nim	physicsTicksPerSecond	gdext/classes/gdengine.html#physicsTicksPerSecond.t,Engine	template physicsTicksPerSecond(self: Engine): untyped		237
+nim	physicsTicksPerSecond=	gdext/classes/gdengine.html#physicsTicksPerSecond=.t,Engine,	template physicsTicksPerSecond=(self: Engine; value)		238
+nim	maxPhysicsStepsPerFrame	gdext/classes/gdengine.html#maxPhysicsStepsPerFrame.t,Engine	template maxPhysicsStepsPerFrame(self: Engine): untyped		240
+nim	maxPhysicsStepsPerFrame=	gdext/classes/gdengine.html#maxPhysicsStepsPerFrame=.t,Engine,	template maxPhysicsStepsPerFrame=(self: Engine; value)		241
+nim	maxFps	gdext/classes/gdengine.html#maxFps.t,Engine	template maxFps(self: Engine): untyped		243
+nim	maxFps=	gdext/classes/gdengine.html#maxFps=.t,Engine,	template maxFps=(self: Engine; value)		244
+nim	timeScale	gdext/classes/gdengine.html#timeScale.t,Engine	template timeScale(self: Engine): untyped		246
+nim	timeScale=	gdext/classes/gdengine.html#timeScale=.t,Engine,	template timeScale=(self: Engine; value)		247
+nim	physicsJitterFix	gdext/classes/gdengine.html#physicsJitterFix.t,Engine	template physicsJitterFix(self: Engine): untyped		249
+nim	physicsJitterFix=	gdext/classes/gdengine.html#physicsJitterFix=.t,Engine,	template physicsJitterFix=(self: Engine; value)		250

@@ -1,212 +1,212 @@
 nimTitle	gdnode	gdext/classes/gdnode.html	module gdext/classes/gdnode		0
-nim	NotificationEnterTree	gdext/classes/gdnode.html#NotificationEnterTree	const NotificationEnterTree		7
-nim	NotificationExitTree	gdext/classes/gdnode.html#NotificationExitTree	const NotificationExitTree		8
-nim	NotificationMovedInParent	gdext/classes/gdnode.html#NotificationMovedInParent	const NotificationMovedInParent		9
-nim	NotificationReady	gdext/classes/gdnode.html#NotificationReady	const NotificationReady		10
-nim	NotificationPaused	gdext/classes/gdnode.html#NotificationPaused	const NotificationPaused		11
-nim	NotificationUnpaused	gdext/classes/gdnode.html#NotificationUnpaused	const NotificationUnpaused		12
-nim	NotificationPhysicsProcess	gdext/classes/gdnode.html#NotificationPhysicsProcess	const NotificationPhysicsProcess		13
-nim	NotificationProcess	gdext/classes/gdnode.html#NotificationProcess	const NotificationProcess		14
-nim	NotificationParented	gdext/classes/gdnode.html#NotificationParented	const NotificationParented		15
-nim	NotificationUnparented	gdext/classes/gdnode.html#NotificationUnparented	const NotificationUnparented		16
-nim	NotificationSceneInstantiated	gdext/classes/gdnode.html#NotificationSceneInstantiated	const NotificationSceneInstantiated		17
-nim	NotificationDragBegin	gdext/classes/gdnode.html#NotificationDragBegin	const NotificationDragBegin		18
-nim	NotificationDragEnd	gdext/classes/gdnode.html#NotificationDragEnd	const NotificationDragEnd		19
-nim	NotificationPathRenamed	gdext/classes/gdnode.html#NotificationPathRenamed	const NotificationPathRenamed		20
-nim	NotificationChildOrderChanged	gdext/classes/gdnode.html#NotificationChildOrderChanged	const NotificationChildOrderChanged		21
-nim	NotificationInternalProcess	gdext/classes/gdnode.html#NotificationInternalProcess	const NotificationInternalProcess		22
-nim	NotificationInternalPhysicsProcess	gdext/classes/gdnode.html#NotificationInternalPhysicsProcess	const NotificationInternalPhysicsProcess		23
-nim	NotificationPostEnterTree	gdext/classes/gdnode.html#NotificationPostEnterTree	const NotificationPostEnterTree		24
-nim	NotificationDisabled	gdext/classes/gdnode.html#NotificationDisabled	const NotificationDisabled		25
-nim	NotificationEnabled	gdext/classes/gdnode.html#NotificationEnabled	const NotificationEnabled		26
-nim	NotificationResetPhysicsInterpolation	gdext/classes/gdnode.html#NotificationResetPhysicsInterpolation	const NotificationResetPhysicsInterpolation		27
-nim	NotificationEditorPreSave	gdext/classes/gdnode.html#NotificationEditorPreSave	const NotificationEditorPreSave		28
-nim	NotificationEditorPostSave	gdext/classes/gdnode.html#NotificationEditorPostSave	const NotificationEditorPostSave		29
-nim	NotificationWmMouseEnter	gdext/classes/gdnode.html#NotificationWmMouseEnter	const NotificationWmMouseEnter		30
-nim	NotificationWmMouseExit	gdext/classes/gdnode.html#NotificationWmMouseExit	const NotificationWmMouseExit		31
-nim	NotificationWmWindowFocusIn	gdext/classes/gdnode.html#NotificationWmWindowFocusIn	const NotificationWmWindowFocusIn		32
-nim	NotificationWmWindowFocusOut	gdext/classes/gdnode.html#NotificationWmWindowFocusOut	const NotificationWmWindowFocusOut		33
-nim	NotificationWmCloseRequest	gdext/classes/gdnode.html#NotificationWmCloseRequest	const NotificationWmCloseRequest		34
-nim	NotificationWmGoBackRequest	gdext/classes/gdnode.html#NotificationWmGoBackRequest	const NotificationWmGoBackRequest		35
-nim	NotificationWmSizeChanged	gdext/classes/gdnode.html#NotificationWmSizeChanged	const NotificationWmSizeChanged		36
-nim	NotificationWmDpiChange	gdext/classes/gdnode.html#NotificationWmDpiChange	const NotificationWmDpiChange		37
-nim	NotificationVpMouseEnter	gdext/classes/gdnode.html#NotificationVpMouseEnter	const NotificationVpMouseEnter		38
-nim	NotificationVpMouseExit	gdext/classes/gdnode.html#NotificationVpMouseExit	const NotificationVpMouseExit		39
-nim	NotificationOsMemoryWarning	gdext/classes/gdnode.html#NotificationOsMemoryWarning	const NotificationOsMemoryWarning		40
-nim	NotificationTranslationChanged	gdext/classes/gdnode.html#NotificationTranslationChanged	const NotificationTranslationChanged		41
-nim	NotificationWmAbout	gdext/classes/gdnode.html#NotificationWmAbout	const NotificationWmAbout		42
-nim	NotificationCrash	gdext/classes/gdnode.html#NotificationCrash	const NotificationCrash		43
-nim	NotificationOsImeUpdate	gdext/classes/gdnode.html#NotificationOsImeUpdate	const NotificationOsImeUpdate		44
-nim	NotificationApplicationResumed	gdext/classes/gdnode.html#NotificationApplicationResumed	const NotificationApplicationResumed		45
-nim	NotificationApplicationPaused	gdext/classes/gdnode.html#NotificationApplicationPaused	const NotificationApplicationPaused		46
-nim	NotificationApplicationFocusIn	gdext/classes/gdnode.html#NotificationApplicationFocusIn	const NotificationApplicationFocusIn		47
-nim	NotificationApplicationFocusOut	gdext/classes/gdnode.html#NotificationApplicationFocusOut	const NotificationApplicationFocusOut		48
-nim	NotificationTextServerChanged	gdext/classes/gdnode.html#NotificationTextServerChanged	const NotificationTextServerChanged		49
-nim	process	gdext/classes/gdnode.html#process.e,Node,float64	method process(self: Node; delta: float64): void		51
-nim	registerVirtual_process	gdext/classes/gdnode.html#registerVirtual_process,typedesc[T]	proc registerVirtual_process[T: Node](Self: typedesc[T])		52
-nim	physicsProcess	gdext/classes/gdnode.html#physicsProcess.e,Node,float64	method physicsProcess(self: Node; delta: float64): void		56
-nim	registerVirtual_physicsProcess	gdext/classes/gdnode.html#registerVirtual_physicsProcess,typedesc[T]	proc registerVirtual_physicsProcess[T: Node](Self: typedesc[T])		57
-nim	enterTree	gdext/classes/gdnode.html#enterTree.e,Node	method enterTree(self: Node): void		61
-nim	registerVirtual_enterTree	gdext/classes/gdnode.html#registerVirtual_enterTree,typedesc[T]	proc registerVirtual_enterTree[T: Node](Self: typedesc[T])		62
-nim	exitTree	gdext/classes/gdnode.html#exitTree.e,Node	method exitTree(self: Node): void		66
-nim	registerVirtual_exitTree	gdext/classes/gdnode.html#registerVirtual_exitTree,typedesc[T]	proc registerVirtual_exitTree[T: Node](Self: typedesc[T])		67
-nim	ready	gdext/classes/gdnode.html#ready.e,Node	method ready(self: Node): void		71
-nim	registerVirtual_ready	gdext/classes/gdnode.html#registerVirtual_ready,typedesc[T]	proc registerVirtual_ready[T: Node](Self: typedesc[T])		72
-nim	getConfigurationWarnings	gdext/classes/gdnode.html#getConfigurationWarnings.e,Node	method getConfigurationWarnings(self: Node): PackedStringArray		76
-nim	registerVirtual_getConfigurationWarnings	gdext/classes/gdnode.html#registerVirtual_getConfigurationWarnings,typedesc[T]	proc registerVirtual_getConfigurationWarnings[T: Node](Self: typedesc[T])		77
-nim	input	gdext/classes/gdnode.html#input.e,Node,gdrefInputEvent	method input(self: Node; event: gdref InputEvent): void		81
-nim	registerVirtual_input	gdext/classes/gdnode.html#registerVirtual_input,typedesc[T]	proc registerVirtual_input[T: Node](Self: typedesc[T])		82
-nim	shortcutInput	gdext/classes/gdnode.html#shortcutInput.e,Node,gdrefInputEvent	method shortcutInput(self: Node; event: gdref InputEvent): void		86
-nim	registerVirtual_shortcutInput	gdext/classes/gdnode.html#registerVirtual_shortcutInput,typedesc[T]	proc registerVirtual_shortcutInput[T: Node](Self: typedesc[T])		87
-nim	unhandledInput	gdext/classes/gdnode.html#unhandledInput.e,Node,gdrefInputEvent	method unhandledInput(self: Node; event: gdref InputEvent): void		91
-nim	registerVirtual_unhandledInput	gdext/classes/gdnode.html#registerVirtual_unhandledInput,typedesc[T]	proc registerVirtual_unhandledInput[T: Node](Self: typedesc[T])		92
-nim	unhandledKeyInput	gdext/classes/gdnode.html#unhandledKeyInput.e,Node,gdrefInputEvent	method unhandledKeyInput(self: Node; event: gdref InputEvent): void		96
-nim	registerVirtual_unhandledKeyInput	gdext/classes/gdnode.html#registerVirtual_unhandledKeyInput,typedesc[T]	proc registerVirtual_unhandledKeyInput[T: Node](Self: typedesc[T])		97
-nim	printOrphanNodes	gdext/classes/gdnode.html#printOrphanNodes,typedesc[Node]	proc printOrphanNodes(_: typedesc[Node]): void		101
-nim	addSibling	gdext/classes/gdnode.html#addSibling,Node,Node,bool	proc addSibling(self: Node; sibling: Node; forceReadableName: bool = false): void		105
-nim	setName	gdext/classes/gdnode.html#setName,Node,String	proc setName(self: Node; name: String): void		109
-nim	getName	gdext/classes/gdnode.html#getName,Node	proc getName(self: Node): StringName		113
-nim	addChild	gdext/classes/gdnode.html#addChild,Node,Node,bool,Node_InternalMode	proc addChild(self: Node; node: Node; forceReadableName: bool = false;\n         internal: Node_InternalMode = internalModeDisabled): void		119
-nim	removeChild	gdext/classes/gdnode.html#removeChild,Node,Node	proc removeChild(self: Node; node: Node): void		123
-nim	reparent	gdext/classes/gdnode.html#reparent,Node,Node,bool	proc reparent(self: Node; newParent: Node; keepGlobalTransform: bool = true): void		127
-nim	getChildCount	gdext/classes/gdnode.html#getChildCount,Node,bool	proc getChildCount(self: Node; includeInternal: bool = false): int32		131
-nim	getChildren	gdext/classes/gdnode.html#getChildren,Node,bool	proc getChildren(self: Node; includeInternal: bool = false): TypedArray[Node]		137
-nim	getChild	gdext/classes/gdnode.html#getChild,Node,int32,bool	proc getChild(self: Node; idx: int32; includeInternal: bool = false): Node		143
-nim	hasNode	gdext/classes/gdnode.html#hasNode,Node,NodePath	proc hasNode(self: Node; path: NodePath): bool		149
-nim	getNode	gdext/classes/gdnode.html#getNode,Node,NodePath	proc getNode(self: Node; path: NodePath): Node		155
-nim	getNodeOrNull	gdext/classes/gdnode.html#getNodeOrNull,Node,NodePath	proc getNodeOrNull(self: Node; path: NodePath): Node		161
-nim	getParent	gdext/classes/gdnode.html#getParent,Node	proc getParent(self: Node): Node		167
-nim	findChild	gdext/classes/gdnode.html#findChild,Node,String,bool,bool	proc findChild(self: Node; pattern: String; recursive: bool = true;\n          owned: bool = true): Node		173
-nim	findChildren	gdext/classes/gdnode.html#findChildren,Node,String,String,bool,bool	proc findChildren(self: Node; pattern: String; type: String = newGdString();\n             recursive: bool = true; owned: bool = true): TypedArray[Node]		179
-nim	findParent	gdext/classes/gdnode.html#findParent,Node,String	proc findParent(self: Node; pattern: String): Node		185
-nim	hasNodeAndResource	gdext/classes/gdnode.html#hasNodeAndResource,Node,NodePath	proc hasNodeAndResource(self: Node; path: NodePath): bool		191
-nim	getNodeAndResource	gdext/classes/gdnode.html#getNodeAndResource,Node,NodePath	proc getNodeAndResource(self: Node; path: NodePath): Array		197
-nim	isInsideTree	gdext/classes/gdnode.html#isInsideTree,Node	proc isInsideTree(self: Node): bool		203
-nim	isPartOfEditedScene	gdext/classes/gdnode.html#isPartOfEditedScene,Node	proc isPartOfEditedScene(self: Node): bool		209
-nim	isAncestorOf	gdext/classes/gdnode.html#isAncestorOf,Node,Node	proc isAncestorOf(self: Node; node: Node): bool		215
-nim	isGreaterThan	gdext/classes/gdnode.html#isGreaterThan,Node,Node	proc isGreaterThan(self: Node; node: Node): bool		221
-nim	getPath	gdext/classes/gdnode.html#getPath,Node	proc getPath(self: Node): NodePath		227
-nim	getPathTo	gdext/classes/gdnode.html#getPathTo,Node,Node,bool	proc getPathTo(self: Node; node: Node; useUniquePath: bool = false): NodePath		233
-nim	addToGroup	gdext/classes/gdnode.html#addToGroup,Node,StringName,bool	proc addToGroup(self: Node; group: StringName; persistent: bool = false): void		239
-nim	removeFromGroup	gdext/classes/gdnode.html#removeFromGroup,Node,StringName	proc removeFromGroup(self: Node; group: StringName): void		243
-nim	isInGroup	gdext/classes/gdnode.html#isInGroup,Node,StringName	proc isInGroup(self: Node; group: StringName): bool		247
-nim	moveChild	gdext/classes/gdnode.html#moveChild,Node,Node,int32	proc moveChild(self: Node; childNode: Node; toIndex: int32): void		253
-nim	getGroups	gdext/classes/gdnode.html#getGroups,Node	proc getGroups(self: Node): TypedArray[StringName]		257
-nim	setOwner	gdext/classes/gdnode.html#setOwner,Node,Node	proc setOwner(self: Node; owner: Node): void		263
-nim	getOwner	gdext/classes/gdnode.html#getOwner,Node	proc getOwner(self: Node): Node		267
-nim	getIndex	gdext/classes/gdnode.html#getIndex,Node,bool	proc getIndex(self: Node; includeInternal: bool = false): int32		273
-nim	printTree	gdext/classes/gdnode.html#printTree,Node	proc printTree(self: Node): void		279
-nim	printTreePretty	gdext/classes/gdnode.html#printTreePretty,Node	proc printTreePretty(self: Node): void		283
-nim	getTreeString	gdext/classes/gdnode.html#getTreeString,Node	proc getTreeString(self: Node): String		287
-nim	getTreeStringPretty	gdext/classes/gdnode.html#getTreeStringPretty,Node	proc getTreeStringPretty(self: Node): String		293
-nim	setSceneFilePath	gdext/classes/gdnode.html#setSceneFilePath,Node,String	proc setSceneFilePath(self: Node; sceneFilePath: String): void		299
-nim	getSceneFilePath	gdext/classes/gdnode.html#getSceneFilePath,Node	proc getSceneFilePath(self: Node): String		303
-nim	propagateNotification	gdext/classes/gdnode.html#propagateNotification,Node,int32	proc propagateNotification(self: Node; what: int32): void		309
-nim	propagateCall	gdext/classes/gdnode.html#propagateCall,Node,StringName,Array,bool	proc propagateCall(self: Node; method: StringName; args: Array = newArray();\n              parentFirst: bool = false): void		313
-nim	setPhysicsProcess	gdext/classes/gdnode.html#setPhysicsProcess,Node,bool	proc setPhysicsProcess(self: Node; enable: bool): void		317
-nim	getPhysicsProcessDeltaTime	gdext/classes/gdnode.html#getPhysicsProcessDeltaTime,Node	proc getPhysicsProcessDeltaTime(self: Node): float64		321
-nim	isPhysicsProcessing	gdext/classes/gdnode.html#isPhysicsProcessing,Node	proc isPhysicsProcessing(self: Node): bool		327
-nim	getProcessDeltaTime	gdext/classes/gdnode.html#getProcessDeltaTime,Node	proc getProcessDeltaTime(self: Node): float64		333
-nim	setProcess	gdext/classes/gdnode.html#setProcess,Node,bool	proc setProcess(self: Node; enable: bool): void		339
-nim	setProcessPriority	gdext/classes/gdnode.html#setProcessPriority,Node,int32	proc setProcessPriority(self: Node; priority: int32): void		343
-nim	getProcessPriority	gdext/classes/gdnode.html#getProcessPriority,Node	proc getProcessPriority(self: Node): int32		347
-nim	setPhysicsProcessPriority	gdext/classes/gdnode.html#setPhysicsProcessPriority,Node,int32	proc setPhysicsProcessPriority(self: Node; priority: int32): void		353
-nim	getPhysicsProcessPriority	gdext/classes/gdnode.html#getPhysicsProcessPriority,Node	proc getPhysicsProcessPriority(self: Node): int32		357
-nim	isProcessing	gdext/classes/gdnode.html#isProcessing,Node	proc isProcessing(self: Node): bool		363
-nim	setProcessInput	gdext/classes/gdnode.html#setProcessInput,Node,bool	proc setProcessInput(self: Node; enable: bool): void		369
-nim	isProcessingInput	gdext/classes/gdnode.html#isProcessingInput,Node	proc isProcessingInput(self: Node): bool		373
-nim	setProcessShortcutInput	gdext/classes/gdnode.html#setProcessShortcutInput,Node,bool	proc setProcessShortcutInput(self: Node; enable: bool): void		379
-nim	isProcessingShortcutInput	gdext/classes/gdnode.html#isProcessingShortcutInput,Node	proc isProcessingShortcutInput(self: Node): bool		383
-nim	setProcessUnhandledInput	gdext/classes/gdnode.html#setProcessUnhandledInput,Node,bool	proc setProcessUnhandledInput(self: Node; enable: bool): void		389
-nim	isProcessingUnhandledInput	gdext/classes/gdnode.html#isProcessingUnhandledInput,Node	proc isProcessingUnhandledInput(self: Node): bool		393
-nim	setProcessUnhandledKeyInput	gdext/classes/gdnode.html#setProcessUnhandledKeyInput,Node,bool	proc setProcessUnhandledKeyInput(self: Node; enable: bool): void		399
-nim	isProcessingUnhandledKeyInput	gdext/classes/gdnode.html#isProcessingUnhandledKeyInput,Node	proc isProcessingUnhandledKeyInput(self: Node): bool		403
-nim	setProcessMode	gdext/classes/gdnode.html#setProcessMode,Node,Node_ProcessMode	proc setProcessMode(self: Node; mode: Node_ProcessMode): void		409
-nim	getProcessMode	gdext/classes/gdnode.html#getProcessMode,Node	proc getProcessMode(self: Node): Node_ProcessMode		413
-nim	canProcess	gdext/classes/gdnode.html#canProcess,Node	proc canProcess(self: Node): bool		419
-nim	setProcessThreadGroup	gdext/classes/gdnode.html#setProcessThreadGroup,Node,Node_ProcessThreadGroup	proc setProcessThreadGroup(self: Node; mode: Node_ProcessThreadGroup): void		425
-nim	getProcessThreadGroup	gdext/classes/gdnode.html#getProcessThreadGroup,Node	proc getProcessThreadGroup(self: Node): Node_ProcessThreadGroup		429
-nim	setProcessThreadMessages	gdext/classes/gdnode.html#setProcessThreadMessages,Node,set[Node_ProcessThreadMessages]	proc setProcessThreadMessages(self: Node; flags: set[Node_ProcessThreadMessages]): void		435
-nim	getProcessThreadMessages	gdext/classes/gdnode.html#getProcessThreadMessages,Node	proc getProcessThreadMessages(self: Node): set[Node_ProcessThreadMessages]		439
-nim	setProcessThreadGroupOrder	gdext/classes/gdnode.html#setProcessThreadGroupOrder,Node,int32	proc setProcessThreadGroupOrder(self: Node; order: int32): void		445
-nim	getProcessThreadGroupOrder	gdext/classes/gdnode.html#getProcessThreadGroupOrder,Node	proc getProcessThreadGroupOrder(self: Node): int32		449
-nim	setDisplayFolded	gdext/classes/gdnode.html#setDisplayFolded,Node,bool	proc setDisplayFolded(self: Node; fold: bool): void		455
-nim	isDisplayedFolded	gdext/classes/gdnode.html#isDisplayedFolded,Node	proc isDisplayedFolded(self: Node): bool		459
-nim	setProcessInternal	gdext/classes/gdnode.html#setProcessInternal,Node,bool	proc setProcessInternal(self: Node; enable: bool): void		465
-nim	isProcessingInternal	gdext/classes/gdnode.html#isProcessingInternal,Node	proc isProcessingInternal(self: Node): bool		469
-nim	setPhysicsProcessInternal	gdext/classes/gdnode.html#setPhysicsProcessInternal,Node,bool	proc setPhysicsProcessInternal(self: Node; enable: bool): void		475
-nim	isPhysicsProcessingInternal	gdext/classes/gdnode.html#isPhysicsProcessingInternal,Node	proc isPhysicsProcessingInternal(self: Node): bool		479
-nim	setPhysicsInterpolationMode	gdext/classes/gdnode.html#setPhysicsInterpolationMode,Node,Node_PhysicsInterpolationMode	proc setPhysicsInterpolationMode(self: Node; mode: Node_PhysicsInterpolationMode): void		485
-nim	getPhysicsInterpolationMode	gdext/classes/gdnode.html#getPhysicsInterpolationMode,Node	proc getPhysicsInterpolationMode(self: Node): Node_PhysicsInterpolationMode		489
-nim	isPhysicsInterpolated	gdext/classes/gdnode.html#isPhysicsInterpolated,Node	proc isPhysicsInterpolated(self: Node): bool		495
-nim	isPhysicsInterpolatedAndEnabled	gdext/classes/gdnode.html#isPhysicsInterpolatedAndEnabled,Node	proc isPhysicsInterpolatedAndEnabled(self: Node): bool		501
-nim	resetPhysicsInterpolation	gdext/classes/gdnode.html#resetPhysicsInterpolation,Node	proc resetPhysicsInterpolation(self: Node): void		507
-nim	setAutoTranslateMode	gdext/classes/gdnode.html#setAutoTranslateMode,Node,Node_AutoTranslateMode	proc setAutoTranslateMode(self: Node; mode: Node_AutoTranslateMode): void		511
-nim	getAutoTranslateMode	gdext/classes/gdnode.html#getAutoTranslateMode,Node	proc getAutoTranslateMode(self: Node): Node_AutoTranslateMode		515
-nim	setTranslationDomainInherited	gdext/classes/gdnode.html#setTranslationDomainInherited,Node	proc setTranslationDomainInherited(self: Node): void		521
-nim	getWindow	gdext/classes/gdnode.html#getWindow,Node	proc getWindow(self: Node): Window		525
-nim	getLastExclusiveWindow	gdext/classes/gdnode.html#getLastExclusiveWindow,Node	proc getLastExclusiveWindow(self: Node): Window		531
-nim	getTree	gdext/classes/gdnode.html#getTree,Node	proc getTree(self: Node): SceneTree		537
-nim	createTween	gdext/classes/gdnode.html#createTween,Node	proc createTween(self: Node): gdref Tween		543
-nim	duplicate	gdext/classes/gdnode.html#duplicate,Node,int32	proc duplicate(self: Node; flags: int32 = 15): Node		549
-nim	replaceBy	gdext/classes/gdnode.html#replaceBy,Node,Node,bool	proc replaceBy(self: Node; node: Node; keepGroups: bool = false): void		555
-nim	setSceneInstanceLoadPlaceholder	gdext/classes/gdnode.html#setSceneInstanceLoadPlaceholder,Node,bool	proc setSceneInstanceLoadPlaceholder(self: Node; loadPlaceholder: bool): void		559
-nim	getSceneInstanceLoadPlaceholder	gdext/classes/gdnode.html#getSceneInstanceLoadPlaceholder,Node	proc getSceneInstanceLoadPlaceholder(self: Node): bool		563
-nim	setEditableInstance	gdext/classes/gdnode.html#setEditableInstance,Node,Node,bool	proc setEditableInstance(self: Node; node: Node; isEditable: bool): void		569
-nim	isEditableInstance	gdext/classes/gdnode.html#isEditableInstance,Node,Node	proc isEditableInstance(self: Node; node: Node): bool		573
-nim	getViewport	gdext/classes/gdnode.html#getViewport,Node	proc getViewport(self: Node): Viewport		579
-nim	queueFree	gdext/classes/gdnode.html#queueFree,Node	proc queueFree(self: Node): void		585
-nim	requestReady	gdext/classes/gdnode.html#requestReady,Node	proc requestReady(self: Node): void		589
-nim	isNodeReady	gdext/classes/gdnode.html#isNodeReady,Node	proc isNodeReady(self: Node): bool		593
-nim	setMultiplayerAuthority	gdext/classes/gdnode.html#setMultiplayerAuthority,Node,int32,bool	proc setMultiplayerAuthority(self: Node; id: int32; recursive: bool = true): void		599
-nim	getMultiplayerAuthority	gdext/classes/gdnode.html#getMultiplayerAuthority,Node	proc getMultiplayerAuthority(self: Node): int32		603
-nim	isMultiplayerAuthority	gdext/classes/gdnode.html#isMultiplayerAuthority,Node	proc isMultiplayerAuthority(self: Node): bool		609
-nim	getMultiplayer	gdext/classes/gdnode.html#getMultiplayer,Node	proc getMultiplayer(self: Node): gdref MultiplayerAPI		615
-nim	rpcConfig	gdext/classes/gdnode.html#rpcConfig,Node,StringName,Variant	proc rpcConfig(self: Node; method: StringName; config: Variant): void		621
-nim	getRpcConfig	gdext/classes/gdnode.html#getRpcConfig,Node	proc getRpcConfig(self: Node): Variant		625
-nim	setEditorDescription	gdext/classes/gdnode.html#setEditorDescription,Node,String	proc setEditorDescription(self: Node; editorDescription: String): void		631
-nim	getEditorDescription	gdext/classes/gdnode.html#getEditorDescription,Node	proc getEditorDescription(self: Node): String		635
-nim	setUniqueNameInOwner	gdext/classes/gdnode.html#setUniqueNameInOwner,Node,bool	proc setUniqueNameInOwner(self: Node; enable: bool): void		641
-nim	isUniqueNameInOwner	gdext/classes/gdnode.html#isUniqueNameInOwner,Node	proc isUniqueNameInOwner(self: Node): bool		645
-nim	atr	gdext/classes/gdnode.html#atr,Node,String,StringName	proc atr(self: Node; message: String; context: StringName = default(StringName)): String		651
-nim	atrN	gdext/classes/gdnode.html#atrN,Node,String,StringName,int32,StringName	proc atrN(self: Node; message: String; pluralMessage: StringName; n: int32;\n     context: StringName = default(StringName)): String		657
-nim	rpc	gdext/classes/gdnode.html#rpc,Node,Variant,varargs[Variant,variant]	proc rpc(self: Node; method: Variant; args: varargs[Variant, variant]): Error		663
-nim	rpc	gdext/classes/gdnode.html#rpc.t,Node,StringName,varargs[Variant,variant]	template rpc(self: Node; method: StringName; args: varargs[Variant, variant]): Error		668
-nim	rpcId	gdext/classes/gdnode.html#rpcId,Node,Variant,Variant,varargs[Variant,variant]	proc rpcId(self: Node; peerId: Variant; method: Variant;\n      args: varargs[Variant, variant]): Error		671
-nim	rpcId	gdext/classes/gdnode.html#rpcId.t,Node,Int,StringName,varargs[Variant,variant]	template rpcId(self: Node; peerId: Int; method: StringName;\n      args: varargs[Variant, variant]): Error		676
-nim	updateConfigurationWarnings	gdext/classes/gdnode.html#updateConfigurationWarnings,Node	proc updateConfigurationWarnings(self: Node): void		679
-nim	callDeferredThreadGroup	gdext/classes/gdnode.html#callDeferredThreadGroup,Node,Variant,varargs[Variant,variant]	proc callDeferredThreadGroup(self: Node; method: Variant;\n                        args: varargs[Variant, variant]): Variant		683
-nim	callDeferredThreadGroup	gdext/classes/gdnode.html#callDeferredThreadGroup.t,Node,StringName,varargs[Variant,variant]	template callDeferredThreadGroup(self: Node; method: StringName;\n                        args: varargs[Variant, variant]): Variant		688
-nim	setDeferredThreadGroup	gdext/classes/gdnode.html#setDeferredThreadGroup,Node,StringName,Variant	proc setDeferredThreadGroup(self: Node; property: StringName; value: Variant): void		691
-nim	notifyDeferredThreadGroup	gdext/classes/gdnode.html#notifyDeferredThreadGroup,Node,int32	proc notifyDeferredThreadGroup(self: Node; what: int32): void		695
-nim	callThreadSafe	gdext/classes/gdnode.html#callThreadSafe,Node,Variant,varargs[Variant,variant]	proc callThreadSafe(self: Node; method: Variant; args: varargs[Variant, variant]): Variant		699
-nim	callThreadSafe	gdext/classes/gdnode.html#callThreadSafe.t,Node,StringName,varargs[Variant,variant]	template callThreadSafe(self: Node; method: StringName; args: varargs[Variant, variant]): Variant		704
-nim	setThreadSafe	gdext/classes/gdnode.html#setThreadSafe,Node,StringName,Variant	proc setThreadSafe(self: Node; property: StringName; value: Variant): void		707
-nim	notifyThreadSafe	gdext/classes/gdnode.html#notifyThreadSafe,Node,int32	proc notifyThreadSafe(self: Node; what: int32): void		711
-nim	name	gdext/classes/gdnode.html#name.t,Node	template name(self: Node): untyped		715
-nim	name=	gdext/classes/gdnode.html#name=.t,Node,	template name=(self: Node; value)		716
-nim	uniqueNameInOwner	gdext/classes/gdnode.html#uniqueNameInOwner.t,Node	template uniqueNameInOwner(self: Node): untyped		718
-nim	uniqueNameInOwner=	gdext/classes/gdnode.html#uniqueNameInOwner=.t,Node,	template uniqueNameInOwner=(self: Node; value)		719
-nim	sceneFilePath	gdext/classes/gdnode.html#sceneFilePath.t,Node	template sceneFilePath(self: Node): untyped		721
-nim	sceneFilePath=	gdext/classes/gdnode.html#sceneFilePath=.t,Node,	template sceneFilePath=(self: Node; value)		722
-nim	owner	gdext/classes/gdnode.html#owner.t,Node	template owner(self: Node): untyped		724
-nim	owner=	gdext/classes/gdnode.html#owner=.t,Node,	template owner=(self: Node; value)		725
-nim	multiplayer	gdext/classes/gdnode.html#multiplayer.t,Node	template multiplayer(self: Node): untyped		727
-nim	processMode	gdext/classes/gdnode.html#processMode.t,Node	template processMode(self: Node): untyped		729
-nim	processMode=	gdext/classes/gdnode.html#processMode=.t,Node,	template processMode=(self: Node; value)		730
-nim	processPriority	gdext/classes/gdnode.html#processPriority.t,Node	template processPriority(self: Node): untyped		732
-nim	processPriority=	gdext/classes/gdnode.html#processPriority=.t,Node,	template processPriority=(self: Node; value)		733
-nim	processPhysicsPriority	gdext/classes/gdnode.html#processPhysicsPriority.t,Node	template processPhysicsPriority(self: Node): untyped		735
-nim	processPhysicsPriority=	gdext/classes/gdnode.html#processPhysicsPriority=.t,Node,	template processPhysicsPriority=(self: Node; value)		736
-nim	processThreadGroup	gdext/classes/gdnode.html#processThreadGroup.t,Node	template processThreadGroup(self: Node): untyped		738
-nim	processThreadGroup=	gdext/classes/gdnode.html#processThreadGroup=.t,Node,	template processThreadGroup=(self: Node; value)		739
-nim	processThreadGroupOrder	gdext/classes/gdnode.html#processThreadGroupOrder.t,Node	template processThreadGroupOrder(self: Node): untyped		741
-nim	processThreadGroupOrder=	gdext/classes/gdnode.html#processThreadGroupOrder=.t,Node,	template processThreadGroupOrder=(self: Node; value)		742
-nim	processThreadMessages	gdext/classes/gdnode.html#processThreadMessages.t,Node	template processThreadMessages(self: Node): untyped		744
-nim	processThreadMessages=	gdext/classes/gdnode.html#processThreadMessages=.t,Node,	template processThreadMessages=(self: Node; value)		745
-nim	physicsInterpolationMode	gdext/classes/gdnode.html#physicsInterpolationMode.t,Node	template physicsInterpolationMode(self: Node): untyped		747
-nim	physicsInterpolationMode=	gdext/classes/gdnode.html#physicsInterpolationMode=.t,Node,	template physicsInterpolationMode=(self: Node; value)		748
-nim	autoTranslateMode	gdext/classes/gdnode.html#autoTranslateMode.t,Node	template autoTranslateMode(self: Node): untyped		750
-nim	autoTranslateMode=	gdext/classes/gdnode.html#autoTranslateMode=.t,Node,	template autoTranslateMode=(self: Node; value)		751
-nim	editorDescription	gdext/classes/gdnode.html#editorDescription.t,Node	template editorDescription(self: Node): untyped		753
-nim	editorDescription=	gdext/classes/gdnode.html#editorDescription=.t,Node,	template editorDescription=(self: Node; value)		754
+nim	NotificationEnterTree	gdext/classes/gdnode.html#NotificationEnterTree	const NotificationEnterTree		9
+nim	NotificationExitTree	gdext/classes/gdnode.html#NotificationExitTree	const NotificationExitTree		10
+nim	NotificationMovedInParent	gdext/classes/gdnode.html#NotificationMovedInParent	const NotificationMovedInParent		11
+nim	NotificationReady	gdext/classes/gdnode.html#NotificationReady	const NotificationReady		12
+nim	NotificationPaused	gdext/classes/gdnode.html#NotificationPaused	const NotificationPaused		13
+nim	NotificationUnpaused	gdext/classes/gdnode.html#NotificationUnpaused	const NotificationUnpaused		14
+nim	NotificationPhysicsProcess	gdext/classes/gdnode.html#NotificationPhysicsProcess	const NotificationPhysicsProcess		15
+nim	NotificationProcess	gdext/classes/gdnode.html#NotificationProcess	const NotificationProcess		16
+nim	NotificationParented	gdext/classes/gdnode.html#NotificationParented	const NotificationParented		17
+nim	NotificationUnparented	gdext/classes/gdnode.html#NotificationUnparented	const NotificationUnparented		18
+nim	NotificationSceneInstantiated	gdext/classes/gdnode.html#NotificationSceneInstantiated	const NotificationSceneInstantiated		19
+nim	NotificationDragBegin	gdext/classes/gdnode.html#NotificationDragBegin	const NotificationDragBegin		20
+nim	NotificationDragEnd	gdext/classes/gdnode.html#NotificationDragEnd	const NotificationDragEnd		21
+nim	NotificationPathRenamed	gdext/classes/gdnode.html#NotificationPathRenamed	const NotificationPathRenamed		22
+nim	NotificationChildOrderChanged	gdext/classes/gdnode.html#NotificationChildOrderChanged	const NotificationChildOrderChanged		23
+nim	NotificationInternalProcess	gdext/classes/gdnode.html#NotificationInternalProcess	const NotificationInternalProcess		24
+nim	NotificationInternalPhysicsProcess	gdext/classes/gdnode.html#NotificationInternalPhysicsProcess	const NotificationInternalPhysicsProcess		25
+nim	NotificationPostEnterTree	gdext/classes/gdnode.html#NotificationPostEnterTree	const NotificationPostEnterTree		26
+nim	NotificationDisabled	gdext/classes/gdnode.html#NotificationDisabled	const NotificationDisabled		27
+nim	NotificationEnabled	gdext/classes/gdnode.html#NotificationEnabled	const NotificationEnabled		28
+nim	NotificationResetPhysicsInterpolation	gdext/classes/gdnode.html#NotificationResetPhysicsInterpolation	const NotificationResetPhysicsInterpolation		29
+nim	NotificationEditorPreSave	gdext/classes/gdnode.html#NotificationEditorPreSave	const NotificationEditorPreSave		30
+nim	NotificationEditorPostSave	gdext/classes/gdnode.html#NotificationEditorPostSave	const NotificationEditorPostSave		31
+nim	NotificationWmMouseEnter	gdext/classes/gdnode.html#NotificationWmMouseEnter	const NotificationWmMouseEnter		32
+nim	NotificationWmMouseExit	gdext/classes/gdnode.html#NotificationWmMouseExit	const NotificationWmMouseExit		33
+nim	NotificationWmWindowFocusIn	gdext/classes/gdnode.html#NotificationWmWindowFocusIn	const NotificationWmWindowFocusIn		34
+nim	NotificationWmWindowFocusOut	gdext/classes/gdnode.html#NotificationWmWindowFocusOut	const NotificationWmWindowFocusOut		35
+nim	NotificationWmCloseRequest	gdext/classes/gdnode.html#NotificationWmCloseRequest	const NotificationWmCloseRequest		36
+nim	NotificationWmGoBackRequest	gdext/classes/gdnode.html#NotificationWmGoBackRequest	const NotificationWmGoBackRequest		37
+nim	NotificationWmSizeChanged	gdext/classes/gdnode.html#NotificationWmSizeChanged	const NotificationWmSizeChanged		38
+nim	NotificationWmDpiChange	gdext/classes/gdnode.html#NotificationWmDpiChange	const NotificationWmDpiChange		39
+nim	NotificationVpMouseEnter	gdext/classes/gdnode.html#NotificationVpMouseEnter	const NotificationVpMouseEnter		40
+nim	NotificationVpMouseExit	gdext/classes/gdnode.html#NotificationVpMouseExit	const NotificationVpMouseExit		41
+nim	NotificationOsMemoryWarning	gdext/classes/gdnode.html#NotificationOsMemoryWarning	const NotificationOsMemoryWarning		42
+nim	NotificationTranslationChanged	gdext/classes/gdnode.html#NotificationTranslationChanged	const NotificationTranslationChanged		43
+nim	NotificationWmAbout	gdext/classes/gdnode.html#NotificationWmAbout	const NotificationWmAbout		44
+nim	NotificationCrash	gdext/classes/gdnode.html#NotificationCrash	const NotificationCrash		45
+nim	NotificationOsImeUpdate	gdext/classes/gdnode.html#NotificationOsImeUpdate	const NotificationOsImeUpdate		46
+nim	NotificationApplicationResumed	gdext/classes/gdnode.html#NotificationApplicationResumed	const NotificationApplicationResumed		47
+nim	NotificationApplicationPaused	gdext/classes/gdnode.html#NotificationApplicationPaused	const NotificationApplicationPaused		48
+nim	NotificationApplicationFocusIn	gdext/classes/gdnode.html#NotificationApplicationFocusIn	const NotificationApplicationFocusIn		49
+nim	NotificationApplicationFocusOut	gdext/classes/gdnode.html#NotificationApplicationFocusOut	const NotificationApplicationFocusOut		50
+nim	NotificationTextServerChanged	gdext/classes/gdnode.html#NotificationTextServerChanged	const NotificationTextServerChanged		51
+nim	process	gdext/classes/gdnode.html#process.e,Node,float64	method process(self: Node; delta: float64): void		53
+nim	registerVirtual_process	gdext/classes/gdnode.html#registerVirtual_process,typedesc[T]	proc registerVirtual_process[T: Node](Self: typedesc[T])		54
+nim	physicsProcess	gdext/classes/gdnode.html#physicsProcess.e,Node,float64	method physicsProcess(self: Node; delta: float64): void		58
+nim	registerVirtual_physicsProcess	gdext/classes/gdnode.html#registerVirtual_physicsProcess,typedesc[T]	proc registerVirtual_physicsProcess[T: Node](Self: typedesc[T])		59
+nim	enterTree	gdext/classes/gdnode.html#enterTree.e,Node	method enterTree(self: Node): void		63
+nim	registerVirtual_enterTree	gdext/classes/gdnode.html#registerVirtual_enterTree,typedesc[T]	proc registerVirtual_enterTree[T: Node](Self: typedesc[T])		64
+nim	exitTree	gdext/classes/gdnode.html#exitTree.e,Node	method exitTree(self: Node): void		68
+nim	registerVirtual_exitTree	gdext/classes/gdnode.html#registerVirtual_exitTree,typedesc[T]	proc registerVirtual_exitTree[T: Node](Self: typedesc[T])		69
+nim	ready	gdext/classes/gdnode.html#ready.e,Node	method ready(self: Node): void		73
+nim	registerVirtual_ready	gdext/classes/gdnode.html#registerVirtual_ready,typedesc[T]	proc registerVirtual_ready[T: Node](Self: typedesc[T])		74
+nim	getConfigurationWarnings	gdext/classes/gdnode.html#getConfigurationWarnings.e,Node	method getConfigurationWarnings(self: Node): PackedStringArray		78
+nim	registerVirtual_getConfigurationWarnings	gdext/classes/gdnode.html#registerVirtual_getConfigurationWarnings,typedesc[T]	proc registerVirtual_getConfigurationWarnings[T: Node](Self: typedesc[T])		79
+nim	input	gdext/classes/gdnode.html#input.e,Node,gdrefInputEvent	method input(self: Node; event: gdref InputEvent): void		83
+nim	registerVirtual_input	gdext/classes/gdnode.html#registerVirtual_input,typedesc[T]	proc registerVirtual_input[T: Node](Self: typedesc[T])		84
+nim	shortcutInput	gdext/classes/gdnode.html#shortcutInput.e,Node,gdrefInputEvent	method shortcutInput(self: Node; event: gdref InputEvent): void		88
+nim	registerVirtual_shortcutInput	gdext/classes/gdnode.html#registerVirtual_shortcutInput,typedesc[T]	proc registerVirtual_shortcutInput[T: Node](Self: typedesc[T])		89
+nim	unhandledInput	gdext/classes/gdnode.html#unhandledInput.e,Node,gdrefInputEvent	method unhandledInput(self: Node; event: gdref InputEvent): void		93
+nim	registerVirtual_unhandledInput	gdext/classes/gdnode.html#registerVirtual_unhandledInput,typedesc[T]	proc registerVirtual_unhandledInput[T: Node](Self: typedesc[T])		94
+nim	unhandledKeyInput	gdext/classes/gdnode.html#unhandledKeyInput.e,Node,gdrefInputEvent	method unhandledKeyInput(self: Node; event: gdref InputEvent): void		98
+nim	registerVirtual_unhandledKeyInput	gdext/classes/gdnode.html#registerVirtual_unhandledKeyInput,typedesc[T]	proc registerVirtual_unhandledKeyInput[T: Node](Self: typedesc[T])		99
+nim	printOrphanNodes	gdext/classes/gdnode.html#printOrphanNodes,typedesc[Node]	proc printOrphanNodes(_: typedesc[Node]): void		103
+nim	addSibling	gdext/classes/gdnode.html#addSibling,Node,Node,bool	proc addSibling(self: Node; sibling: Node; forceReadableName: bool = false): void		107
+nim	setName	gdext/classes/gdnode.html#setName,Node,String	proc setName(self: Node; name: String): void		111
+nim	getName	gdext/classes/gdnode.html#getName,Node	proc getName(self: Node): StringName		115
+nim	addChild	gdext/classes/gdnode.html#addChild,Node,Node,bool,Node_InternalMode	proc addChild(self: Node; node: Node; forceReadableName: bool = false;\n         internal: Node_InternalMode = internalModeDisabled): void		121
+nim	removeChild	gdext/classes/gdnode.html#removeChild,Node,Node	proc removeChild(self: Node; node: Node): void		125
+nim	reparent	gdext/classes/gdnode.html#reparent,Node,Node,bool	proc reparent(self: Node; newParent: Node; keepGlobalTransform: bool = true): void		129
+nim	getChildCount	gdext/classes/gdnode.html#getChildCount,Node,bool	proc getChildCount(self: Node; includeInternal: bool = false): int32		133
+nim	getChildren	gdext/classes/gdnode.html#getChildren,Node,bool	proc getChildren(self: Node; includeInternal: bool = false): TypedArray[Node]		139
+nim	getChild	gdext/classes/gdnode.html#getChild,Node,int32,bool	proc getChild(self: Node; idx: int32; includeInternal: bool = false): Node		145
+nim	hasNode	gdext/classes/gdnode.html#hasNode,Node,NodePath	proc hasNode(self: Node; path: NodePath): bool		151
+nim	getNode	gdext/classes/gdnode.html#getNode,Node,NodePath	proc getNode(self: Node; path: NodePath): Node		157
+nim	getNodeOrNull	gdext/classes/gdnode.html#getNodeOrNull,Node,NodePath	proc getNodeOrNull(self: Node; path: NodePath): Node		163
+nim	getParent	gdext/classes/gdnode.html#getParent,Node	proc getParent(self: Node): Node		169
+nim	findChild	gdext/classes/gdnode.html#findChild,Node,String,bool,bool	proc findChild(self: Node; pattern: String; recursive: bool = true;\n          owned: bool = true): Node		175
+nim	findChildren	gdext/classes/gdnode.html#findChildren,Node,String,String,bool,bool	proc findChildren(self: Node; pattern: String; type: String = newGdString();\n             recursive: bool = true; owned: bool = true): TypedArray[Node]		181
+nim	findParent	gdext/classes/gdnode.html#findParent,Node,String	proc findParent(self: Node; pattern: String): Node		187
+nim	hasNodeAndResource	gdext/classes/gdnode.html#hasNodeAndResource,Node,NodePath	proc hasNodeAndResource(self: Node; path: NodePath): bool		193
+nim	getNodeAndResource	gdext/classes/gdnode.html#getNodeAndResource,Node,NodePath	proc getNodeAndResource(self: Node; path: NodePath): Array		199
+nim	isInsideTree	gdext/classes/gdnode.html#isInsideTree,Node	proc isInsideTree(self: Node): bool		205
+nim	isPartOfEditedScene	gdext/classes/gdnode.html#isPartOfEditedScene,Node	proc isPartOfEditedScene(self: Node): bool		211
+nim	isAncestorOf	gdext/classes/gdnode.html#isAncestorOf,Node,Node	proc isAncestorOf(self: Node; node: Node): bool		217
+nim	isGreaterThan	gdext/classes/gdnode.html#isGreaterThan,Node,Node	proc isGreaterThan(self: Node; node: Node): bool		223
+nim	getPath	gdext/classes/gdnode.html#getPath,Node	proc getPath(self: Node): NodePath		229
+nim	getPathTo	gdext/classes/gdnode.html#getPathTo,Node,Node,bool	proc getPathTo(self: Node; node: Node; useUniquePath: bool = false): NodePath		235
+nim	addToGroup	gdext/classes/gdnode.html#addToGroup,Node,StringName,bool	proc addToGroup(self: Node; group: StringName; persistent: bool = false): void		241
+nim	removeFromGroup	gdext/classes/gdnode.html#removeFromGroup,Node,StringName	proc removeFromGroup(self: Node; group: StringName): void		245
+nim	isInGroup	gdext/classes/gdnode.html#isInGroup,Node,StringName	proc isInGroup(self: Node; group: StringName): bool		249
+nim	moveChild	gdext/classes/gdnode.html#moveChild,Node,Node,int32	proc moveChild(self: Node; childNode: Node; toIndex: int32): void		255
+nim	getGroups	gdext/classes/gdnode.html#getGroups,Node	proc getGroups(self: Node): TypedArray[StringName]		259
+nim	setOwner	gdext/classes/gdnode.html#setOwner,Node,Node	proc setOwner(self: Node; owner: Node): void		265
+nim	getOwner	gdext/classes/gdnode.html#getOwner,Node	proc getOwner(self: Node): Node		269
+nim	getIndex	gdext/classes/gdnode.html#getIndex,Node,bool	proc getIndex(self: Node; includeInternal: bool = false): int32		275
+nim	printTree	gdext/classes/gdnode.html#printTree,Node	proc printTree(self: Node): void		281
+nim	printTreePretty	gdext/classes/gdnode.html#printTreePretty,Node	proc printTreePretty(self: Node): void		285
+nim	getTreeString	gdext/classes/gdnode.html#getTreeString,Node	proc getTreeString(self: Node): String		289
+nim	getTreeStringPretty	gdext/classes/gdnode.html#getTreeStringPretty,Node	proc getTreeStringPretty(self: Node): String		295
+nim	setSceneFilePath	gdext/classes/gdnode.html#setSceneFilePath,Node,String	proc setSceneFilePath(self: Node; sceneFilePath: String): void		301
+nim	getSceneFilePath	gdext/classes/gdnode.html#getSceneFilePath,Node	proc getSceneFilePath(self: Node): String		305
+nim	propagateNotification	gdext/classes/gdnode.html#propagateNotification,Node,int32	proc propagateNotification(self: Node; what: int32): void		311
+nim	propagateCall	gdext/classes/gdnode.html#propagateCall,Node,StringName,Array,bool	proc propagateCall(self: Node; method: StringName; args: Array = newArray();\n              parentFirst: bool = false): void		315
+nim	setPhysicsProcess	gdext/classes/gdnode.html#setPhysicsProcess,Node,bool	proc setPhysicsProcess(self: Node; enable: bool): void		319
+nim	getPhysicsProcessDeltaTime	gdext/classes/gdnode.html#getPhysicsProcessDeltaTime,Node	proc getPhysicsProcessDeltaTime(self: Node): float64		323
+nim	isPhysicsProcessing	gdext/classes/gdnode.html#isPhysicsProcessing,Node	proc isPhysicsProcessing(self: Node): bool		329
+nim	getProcessDeltaTime	gdext/classes/gdnode.html#getProcessDeltaTime,Node	proc getProcessDeltaTime(self: Node): float64		335
+nim	setProcess	gdext/classes/gdnode.html#setProcess,Node,bool	proc setProcess(self: Node; enable: bool): void		341
+nim	setProcessPriority	gdext/classes/gdnode.html#setProcessPriority,Node,int32	proc setProcessPriority(self: Node; priority: int32): void		345
+nim	getProcessPriority	gdext/classes/gdnode.html#getProcessPriority,Node	proc getProcessPriority(self: Node): int32		349
+nim	setPhysicsProcessPriority	gdext/classes/gdnode.html#setPhysicsProcessPriority,Node,int32	proc setPhysicsProcessPriority(self: Node; priority: int32): void		355
+nim	getPhysicsProcessPriority	gdext/classes/gdnode.html#getPhysicsProcessPriority,Node	proc getPhysicsProcessPriority(self: Node): int32		359
+nim	isProcessing	gdext/classes/gdnode.html#isProcessing,Node	proc isProcessing(self: Node): bool		365
+nim	setProcessInput	gdext/classes/gdnode.html#setProcessInput,Node,bool	proc setProcessInput(self: Node; enable: bool): void		371
+nim	isProcessingInput	gdext/classes/gdnode.html#isProcessingInput,Node	proc isProcessingInput(self: Node): bool		375
+nim	setProcessShortcutInput	gdext/classes/gdnode.html#setProcessShortcutInput,Node,bool	proc setProcessShortcutInput(self: Node; enable: bool): void		381
+nim	isProcessingShortcutInput	gdext/classes/gdnode.html#isProcessingShortcutInput,Node	proc isProcessingShortcutInput(self: Node): bool		385
+nim	setProcessUnhandledInput	gdext/classes/gdnode.html#setProcessUnhandledInput,Node,bool	proc setProcessUnhandledInput(self: Node; enable: bool): void		391
+nim	isProcessingUnhandledInput	gdext/classes/gdnode.html#isProcessingUnhandledInput,Node	proc isProcessingUnhandledInput(self: Node): bool		395
+nim	setProcessUnhandledKeyInput	gdext/classes/gdnode.html#setProcessUnhandledKeyInput,Node,bool	proc setProcessUnhandledKeyInput(self: Node; enable: bool): void		401
+nim	isProcessingUnhandledKeyInput	gdext/classes/gdnode.html#isProcessingUnhandledKeyInput,Node	proc isProcessingUnhandledKeyInput(self: Node): bool		405
+nim	setProcessMode	gdext/classes/gdnode.html#setProcessMode,Node,Node_ProcessMode	proc setProcessMode(self: Node; mode: Node_ProcessMode): void		411
+nim	getProcessMode	gdext/classes/gdnode.html#getProcessMode,Node	proc getProcessMode(self: Node): Node_ProcessMode		415
+nim	canProcess	gdext/classes/gdnode.html#canProcess,Node	proc canProcess(self: Node): bool		421
+nim	setProcessThreadGroup	gdext/classes/gdnode.html#setProcessThreadGroup,Node,Node_ProcessThreadGroup	proc setProcessThreadGroup(self: Node; mode: Node_ProcessThreadGroup): void		427
+nim	getProcessThreadGroup	gdext/classes/gdnode.html#getProcessThreadGroup,Node	proc getProcessThreadGroup(self: Node): Node_ProcessThreadGroup		431
+nim	setProcessThreadMessages	gdext/classes/gdnode.html#setProcessThreadMessages,Node,set[Node_ProcessThreadMessages]	proc setProcessThreadMessages(self: Node; flags: set[Node_ProcessThreadMessages]): void		437
+nim	getProcessThreadMessages	gdext/classes/gdnode.html#getProcessThreadMessages,Node	proc getProcessThreadMessages(self: Node): set[Node_ProcessThreadMessages]		441
+nim	setProcessThreadGroupOrder	gdext/classes/gdnode.html#setProcessThreadGroupOrder,Node,int32	proc setProcessThreadGroupOrder(self: Node; order: int32): void		447
+nim	getProcessThreadGroupOrder	gdext/classes/gdnode.html#getProcessThreadGroupOrder,Node	proc getProcessThreadGroupOrder(self: Node): int32		451
+nim	setDisplayFolded	gdext/classes/gdnode.html#setDisplayFolded,Node,bool	proc setDisplayFolded(self: Node; fold: bool): void		457
+nim	isDisplayedFolded	gdext/classes/gdnode.html#isDisplayedFolded,Node	proc isDisplayedFolded(self: Node): bool		461
+nim	setProcessInternal	gdext/classes/gdnode.html#setProcessInternal,Node,bool	proc setProcessInternal(self: Node; enable: bool): void		467
+nim	isProcessingInternal	gdext/classes/gdnode.html#isProcessingInternal,Node	proc isProcessingInternal(self: Node): bool		471
+nim	setPhysicsProcessInternal	gdext/classes/gdnode.html#setPhysicsProcessInternal,Node,bool	proc setPhysicsProcessInternal(self: Node; enable: bool): void		477
+nim	isPhysicsProcessingInternal	gdext/classes/gdnode.html#isPhysicsProcessingInternal,Node	proc isPhysicsProcessingInternal(self: Node): bool		481
+nim	setPhysicsInterpolationMode	gdext/classes/gdnode.html#setPhysicsInterpolationMode,Node,Node_PhysicsInterpolationMode	proc setPhysicsInterpolationMode(self: Node; mode: Node_PhysicsInterpolationMode): void		487
+nim	getPhysicsInterpolationMode	gdext/classes/gdnode.html#getPhysicsInterpolationMode,Node	proc getPhysicsInterpolationMode(self: Node): Node_PhysicsInterpolationMode		491
+nim	isPhysicsInterpolated	gdext/classes/gdnode.html#isPhysicsInterpolated,Node	proc isPhysicsInterpolated(self: Node): bool		497
+nim	isPhysicsInterpolatedAndEnabled	gdext/classes/gdnode.html#isPhysicsInterpolatedAndEnabled,Node	proc isPhysicsInterpolatedAndEnabled(self: Node): bool		503
+nim	resetPhysicsInterpolation	gdext/classes/gdnode.html#resetPhysicsInterpolation,Node	proc resetPhysicsInterpolation(self: Node): void		509
+nim	setAutoTranslateMode	gdext/classes/gdnode.html#setAutoTranslateMode,Node,Node_AutoTranslateMode	proc setAutoTranslateMode(self: Node; mode: Node_AutoTranslateMode): void		513
+nim	getAutoTranslateMode	gdext/classes/gdnode.html#getAutoTranslateMode,Node	proc getAutoTranslateMode(self: Node): Node_AutoTranslateMode		517
+nim	setTranslationDomainInherited	gdext/classes/gdnode.html#setTranslationDomainInherited,Node	proc setTranslationDomainInherited(self: Node): void		523
+nim	getWindow	gdext/classes/gdnode.html#getWindow,Node	proc getWindow(self: Node): Window		527
+nim	getLastExclusiveWindow	gdext/classes/gdnode.html#getLastExclusiveWindow,Node	proc getLastExclusiveWindow(self: Node): Window		533
+nim	getTree	gdext/classes/gdnode.html#getTree,Node	proc getTree(self: Node): SceneTree		539
+nim	createTween	gdext/classes/gdnode.html#createTween,Node	proc createTween(self: Node): gdref Tween		545
+nim	duplicate	gdext/classes/gdnode.html#duplicate,Node,int32	proc duplicate(self: Node; flags: int32 = 15): Node		551
+nim	replaceBy	gdext/classes/gdnode.html#replaceBy,Node,Node,bool	proc replaceBy(self: Node; node: Node; keepGroups: bool = false): void		557
+nim	setSceneInstanceLoadPlaceholder	gdext/classes/gdnode.html#setSceneInstanceLoadPlaceholder,Node,bool	proc setSceneInstanceLoadPlaceholder(self: Node; loadPlaceholder: bool): void		561
+nim	getSceneInstanceLoadPlaceholder	gdext/classes/gdnode.html#getSceneInstanceLoadPlaceholder,Node	proc getSceneInstanceLoadPlaceholder(self: Node): bool		565
+nim	setEditableInstance	gdext/classes/gdnode.html#setEditableInstance,Node,Node,bool	proc setEditableInstance(self: Node; node: Node; isEditable: bool): void		571
+nim	isEditableInstance	gdext/classes/gdnode.html#isEditableInstance,Node,Node	proc isEditableInstance(self: Node; node: Node): bool		575
+nim	getViewport	gdext/classes/gdnode.html#getViewport,Node	proc getViewport(self: Node): Viewport		581
+nim	queueFree	gdext/classes/gdnode.html#queueFree,Node	proc queueFree(self: Node): void		587
+nim	requestReady	gdext/classes/gdnode.html#requestReady,Node	proc requestReady(self: Node): void		591
+nim	isNodeReady	gdext/classes/gdnode.html#isNodeReady,Node	proc isNodeReady(self: Node): bool		595
+nim	setMultiplayerAuthority	gdext/classes/gdnode.html#setMultiplayerAuthority,Node,int32,bool	proc setMultiplayerAuthority(self: Node; id: int32; recursive: bool = true): void		601
+nim	getMultiplayerAuthority	gdext/classes/gdnode.html#getMultiplayerAuthority,Node	proc getMultiplayerAuthority(self: Node): int32		605
+nim	isMultiplayerAuthority	gdext/classes/gdnode.html#isMultiplayerAuthority,Node	proc isMultiplayerAuthority(self: Node): bool		611
+nim	getMultiplayer	gdext/classes/gdnode.html#getMultiplayer,Node	proc getMultiplayer(self: Node): gdref MultiplayerAPI		617
+nim	rpcConfig	gdext/classes/gdnode.html#rpcConfig,Node,StringName,Variant	proc rpcConfig(self: Node; method: StringName; config: Variant): void		623
+nim	getRpcConfig	gdext/classes/gdnode.html#getRpcConfig,Node	proc getRpcConfig(self: Node): Variant		627
+nim	setEditorDescription	gdext/classes/gdnode.html#setEditorDescription,Node,String	proc setEditorDescription(self: Node; editorDescription: String): void		633
+nim	getEditorDescription	gdext/classes/gdnode.html#getEditorDescription,Node	proc getEditorDescription(self: Node): String		637
+nim	setUniqueNameInOwner	gdext/classes/gdnode.html#setUniqueNameInOwner,Node,bool	proc setUniqueNameInOwner(self: Node; enable: bool): void		643
+nim	isUniqueNameInOwner	gdext/classes/gdnode.html#isUniqueNameInOwner,Node	proc isUniqueNameInOwner(self: Node): bool		647
+nim	atr	gdext/classes/gdnode.html#atr,Node,String,StringName	proc atr(self: Node; message: String; context: StringName = default(StringName)): String		653
+nim	atrN	gdext/classes/gdnode.html#atrN,Node,String,StringName,int32,StringName	proc atrN(self: Node; message: String; pluralMessage: StringName; n: int32;\n     context: StringName = default(StringName)): String		659
+nim	rpc	gdext/classes/gdnode.html#rpc,Node,Variant,varargs[Variant,variant]	proc rpc(self: Node; method: Variant; args: varargs[Variant, variant]): Error		665
+nim	rpc	gdext/classes/gdnode.html#rpc.t,Node,StringName,varargs[Variant,variant]	template rpc(self: Node; method: StringName; args: varargs[Variant, variant]): Error		670
+nim	rpcId	gdext/classes/gdnode.html#rpcId,Node,Variant,Variant,varargs[Variant,variant]	proc rpcId(self: Node; peerId: Variant; method: Variant;\n      args: varargs[Variant, variant]): Error		673
+nim	rpcId	gdext/classes/gdnode.html#rpcId.t,Node,Int,StringName,varargs[Variant,variant]	template rpcId(self: Node; peerId: Int; method: StringName;\n      args: varargs[Variant, variant]): Error		678
+nim	updateConfigurationWarnings	gdext/classes/gdnode.html#updateConfigurationWarnings,Node	proc updateConfigurationWarnings(self: Node): void		681
+nim	callDeferredThreadGroup	gdext/classes/gdnode.html#callDeferredThreadGroup,Node,Variant,varargs[Variant,variant]	proc callDeferredThreadGroup(self: Node; method: Variant;\n                        args: varargs[Variant, variant]): Variant		685
+nim	callDeferredThreadGroup	gdext/classes/gdnode.html#callDeferredThreadGroup.t,Node,StringName,varargs[Variant,variant]	template callDeferredThreadGroup(self: Node; method: StringName;\n                        args: varargs[Variant, variant]): Variant		690
+nim	setDeferredThreadGroup	gdext/classes/gdnode.html#setDeferredThreadGroup,Node,StringName,Variant	proc setDeferredThreadGroup(self: Node; property: StringName; value: Variant): void		693
+nim	notifyDeferredThreadGroup	gdext/classes/gdnode.html#notifyDeferredThreadGroup,Node,int32	proc notifyDeferredThreadGroup(self: Node; what: int32): void		697
+nim	callThreadSafe	gdext/classes/gdnode.html#callThreadSafe,Node,Variant,varargs[Variant,variant]	proc callThreadSafe(self: Node; method: Variant; args: varargs[Variant, variant]): Variant		701
+nim	callThreadSafe	gdext/classes/gdnode.html#callThreadSafe.t,Node,StringName,varargs[Variant,variant]	template callThreadSafe(self: Node; method: StringName; args: varargs[Variant, variant]): Variant		706
+nim	setThreadSafe	gdext/classes/gdnode.html#setThreadSafe,Node,StringName,Variant	proc setThreadSafe(self: Node; property: StringName; value: Variant): void		709
+nim	notifyThreadSafe	gdext/classes/gdnode.html#notifyThreadSafe,Node,int32	proc notifyThreadSafe(self: Node; what: int32): void		713
+nim	name	gdext/classes/gdnode.html#name.t,Node	template name(self: Node): untyped		717
+nim	name=	gdext/classes/gdnode.html#name=.t,Node,	template name=(self: Node; value)		718
+nim	uniqueNameInOwner	gdext/classes/gdnode.html#uniqueNameInOwner.t,Node	template uniqueNameInOwner(self: Node): untyped		720
+nim	uniqueNameInOwner=	gdext/classes/gdnode.html#uniqueNameInOwner=.t,Node,	template uniqueNameInOwner=(self: Node; value)		721
+nim	sceneFilePath	gdext/classes/gdnode.html#sceneFilePath.t,Node	template sceneFilePath(self: Node): untyped		723
+nim	sceneFilePath=	gdext/classes/gdnode.html#sceneFilePath=.t,Node,	template sceneFilePath=(self: Node; value)		724
+nim	owner	gdext/classes/gdnode.html#owner.t,Node	template owner(self: Node): untyped		726
+nim	owner=	gdext/classes/gdnode.html#owner=.t,Node,	template owner=(self: Node; value)		727
+nim	multiplayer	gdext/classes/gdnode.html#multiplayer.t,Node	template multiplayer(self: Node): untyped		729
+nim	processMode	gdext/classes/gdnode.html#processMode.t,Node	template processMode(self: Node): untyped		731
+nim	processMode=	gdext/classes/gdnode.html#processMode=.t,Node,	template processMode=(self: Node; value)		732
+nim	processPriority	gdext/classes/gdnode.html#processPriority.t,Node	template processPriority(self: Node): untyped		734
+nim	processPriority=	gdext/classes/gdnode.html#processPriority=.t,Node,	template processPriority=(self: Node; value)		735
+nim	processPhysicsPriority	gdext/classes/gdnode.html#processPhysicsPriority.t,Node	template processPhysicsPriority(self: Node): untyped		737
+nim	processPhysicsPriority=	gdext/classes/gdnode.html#processPhysicsPriority=.t,Node,	template processPhysicsPriority=(self: Node; value)		738
+nim	processThreadGroup	gdext/classes/gdnode.html#processThreadGroup.t,Node	template processThreadGroup(self: Node): untyped		740
+nim	processThreadGroup=	gdext/classes/gdnode.html#processThreadGroup=.t,Node,	template processThreadGroup=(self: Node; value)		741
+nim	processThreadGroupOrder	gdext/classes/gdnode.html#processThreadGroupOrder.t,Node	template processThreadGroupOrder(self: Node): untyped		743
+nim	processThreadGroupOrder=	gdext/classes/gdnode.html#processThreadGroupOrder=.t,Node,	template processThreadGroupOrder=(self: Node; value)		744
+nim	processThreadMessages	gdext/classes/gdnode.html#processThreadMessages.t,Node	template processThreadMessages(self: Node): untyped		746
+nim	processThreadMessages=	gdext/classes/gdnode.html#processThreadMessages=.t,Node,	template processThreadMessages=(self: Node; value)		747
+nim	physicsInterpolationMode	gdext/classes/gdnode.html#physicsInterpolationMode.t,Node	template physicsInterpolationMode(self: Node): untyped		749
+nim	physicsInterpolationMode=	gdext/classes/gdnode.html#physicsInterpolationMode=.t,Node,	template physicsInterpolationMode=(self: Node; value)		750
+nim	autoTranslateMode	gdext/classes/gdnode.html#autoTranslateMode.t,Node	template autoTranslateMode(self: Node): untyped		752
+nim	autoTranslateMode=	gdext/classes/gdnode.html#autoTranslateMode=.t,Node,	template autoTranslateMode=(self: Node; value)		753
+nim	editorDescription	gdext/classes/gdnode.html#editorDescription.t,Node	template editorDescription(self: Node): untyped		755
+nim	editorDescription=	gdext/classes/gdnode.html#editorDescription=.t,Node,	template editorDescription=(self: Node; value)		756

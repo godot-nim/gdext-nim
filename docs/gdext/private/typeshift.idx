@@ -1,77 +1,77 @@
 nimTitle	typeshift	gdext/private/typeshift.html	module gdext/private/typeshift		0
-nim	decode	gdext/private/typeshift.html#decode,ptr.T,typedesc[T]	proc decode[T](p: ptr T; _: typedesc[T]): T		10
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[T]	template encoded[T: SomeBuiltins](_: typedesc[T]): typedesc[T]		12
-nim	encode	gdext/private/typeshift.html#encode.t,T,pointer	template encode[T: SomeBuiltins](v: T; p: pointer)		13
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[T]	proc decode[T: SomeBuiltins](p: pointer; _: typedesc[T]): T		15
-nim	variant	gdext/private/typeshift.html#variant,T	proc variant[T: SomeBuiltins](v: T): Variant		17
-nim	get	gdext/private/typeshift.html#get,Variant,typedesc[T]	proc get[T: SomeBuiltins](v: Variant; _: typedesc[T]): T		19
-nim	getAddr	gdext/private/typeshift.html#getAddr,Variant,typedesc[T]	proc getAddr[T: SomeBuiltins](v: Variant; _: typedesc[T]): ptr T		21
-nim	encoded	gdext/private/typeshift.html#encoded.t	template encoded(T`gensym0: typedesc[AltString]): typedesc[String]		28
-nim	encode	gdext/private/typeshift.html#encode.t,AltString,pointer	template encode(v`gensym0: AltString; p`gensym0: pointer)		29
-nim	decode	gdext/private/typeshift.html#decode,pointer,	proc decode(p`gensym0: pointer; _: typedesc[AltString]): AltString		31
-nim	variant	gdext/private/typeshift.html#variant,AltString	proc variant(v`gensym0: AltString): Variant		33
-nim	get	gdext/private/typeshift.html#get,Variant,	proc get(v`gensym0: Variant; _: typedesc[AltString]): AltString		72
-nim	encoded	gdext/private/typeshift.html#encoded.t_2	template encoded(T`gensym2: typedesc[AltInt]): typedesc[Int]		39
-nim	encode	gdext/private/typeshift.html#encode.t,AltInt,pointer	template encode(v`gensym2: AltInt; p`gensym2: pointer)		40
-nim	decode	gdext/private/typeshift.html#decode,pointer,_2	proc decode(p`gensym2: pointer; D`gensym2: typedesc[AltInt]): D`gensym2:type		42
-nim	variant	gdext/private/typeshift.html#variant,AltInt	proc variant(v`gensym2: AltInt): Variant		44
-nim	get	gdext/private/typeshift.html#get,Variant,_2	proc get(v`gensym2: Variant; D`gensym2: typedesc[AltInt]): D`gensym2:type		74
-nim	encoded	gdext/private/typeshift.html#encoded.t_3	template encoded(T`gensym3: typedesc[AltFloat]): typedesc[Float]		39
-nim	encode	gdext/private/typeshift.html#encode.t,AltFloat,pointer	template encode(v`gensym3: AltFloat; p`gensym3: pointer)		40
-nim	decode	gdext/private/typeshift.html#decode,pointer,_3	proc decode(p`gensym3: pointer; D`gensym3: typedesc[AltFloat]): D`gensym3:type		42
-nim	variant	gdext/private/typeshift.html#variant,AltFloat	proc variant(v`gensym3: AltFloat): Variant		44
-nim	get	gdext/private/typeshift.html#get,Variant,_3	proc get(v`gensym3: Variant; D`gensym3: typedesc[AltFloat]): D`gensym3:type		76
-nim	encoded	gdext/private/typeshift.html#encoded.t_4	template encoded[T: enum](_: typedesc[T]): typedesc[Int]		50
-nim	encode	gdext/private/typeshift.html#encode.t,T,pointer_2	template encode[T: enum](v`gensym5: T; p`gensym5: pointer)		51
-nim	decode	gdext/private/typeshift.html#decode,pointer,_4	proc decode[T: enum](p`gensym5: pointer; _: typedesc[T]): T		53
-nim	variant	gdext/private/typeshift.html#variant,T_2	proc variant[T: enum](v`gensym5: T): Variant		55
-nim	get	gdext/private/typeshift.html#get,Variant,_4	proc get[T: enum](v`gensym5: Variant; _: typedesc[T]): T		78
-nim	encoded	gdext/private/typeshift.html#encoded.t_5	template encoded[T](_: typedesc[set[T]]): typedesc[Int]		61
-nim	encode	gdext/private/typeshift.html#encode.t,,pointer	template encode[T](v`gensym6: set[T]; p`gensym6: pointer)		62
-nim	decode	gdext/private/typeshift.html#decode,pointer,_5	proc decode[T](p`gensym6: pointer; _: typedesc[set[T]]): set[T]		64
-nim	variant	gdext/private/typeshift.html#variant	proc variant[T](v`gensym6: set[T]): Variant		66
-nim	get	gdext/private/typeshift.html#get,Variant,_5	proc get[T](v`gensym6: Variant; _: typedesc[set[T]]): set[T]		80
-nim	encoded	gdext/private/typeshift.html#encoded.t_6	template encoded[T](_: typedesc[TypedArray[T]]): typedesc[Array]		61
-nim	encode	gdext/private/typeshift.html#encode.t,,pointer_2	template encode[T](v`gensym7: TypedArray[T]; p`gensym7: pointer)		62
-nim	decode	gdext/private/typeshift.html#decode,pointer,_6	proc decode[T](p`gensym7: pointer; _: typedesc[TypedArray[T]]): TypedArray[T]		64
-nim	variant	gdext/private/typeshift.html#variant_2	proc variant[T](v`gensym7: TypedArray[T]): Variant		66
-nim	get	gdext/private/typeshift.html#get,Variant,_6	proc get[T](v`gensym7: Variant; _: typedesc[TypedArray[T]]): TypedArray[T]		81
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[Variant]	template encoded(T: typedesc[Variant]): typedesc[Variant]		85
-nim	encode	gdext/private/typeshift.html#encode.t,Variant,pointer	template encode(v: Variant; p: pointer)		86
-nim	decode	gdext/private/typeshift.html#decode.t,pointer,typedesc[Variant]	template decode(p: pointer; T: typedesc[Variant]): T:type		88
-nim	variant	gdext/private/typeshift.html#variant.t,Variant	template variant(v: Variant): Variant		90
-nim	get	gdext/private/typeshift.html#get.t,Variant,typedesc[Variant]	template get(v: Variant; T: typedesc[Variant]): T:type		91
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[pointer]	template encoded(_: typedesc[pointer]): typedesc[pointer]		96
-nim	encode	gdext/private/typeshift.html#encode.t,pointer,pointer	template encode(v: pointer; p: pointer)		97
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[pointer]	proc decode(p: pointer; _: typedesc[pointer]): pointer		99
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[ptr.T]	template encoded[T](_: typedesc[ptr T]): typedesc[pointer]		102
-nim	encode	gdext/private/typeshift.html#encode.t,ptr.T,pointer	template encode[T](v: ptr T; p: pointer)		103
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[ptr.T]	proc decode[T](p: pointer; _: typedesc[ptr T]): ptr T		105
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[ObjectPtr]	template encoded(T: typedesc[ObjectPtr]): typedesc[ObjectPtr]		111
-nim	encode	gdext/private/typeshift.html#encode.t,ObjectPtr,pointer	template encode(v: ObjectPtr; p: pointer)		112
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[ObjectPtr]	proc decode(p: pointer; T: typedesc[ObjectPtr]): T:type		114
-nim	variant	gdext/private/typeshift.html#variant,ObjectPtr	proc variant(v: ObjectPtr): Variant		117
-nim	get	gdext/private/typeshift.html#get,Variant,typedesc[ObjectPtr]	proc get(v: Variant; T: typedesc[ObjectPtr]): T:type		119
-nim	getAddr	gdext/private/typeshift.html#getAddr,Variant,typedesc[ObjectPtr]	proc getAddr(v: Variant; T: typedesc[ObjectPtr]): ptr T:type		121
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[T]_2	template encoded[T: Object](_: typedesc[T]): typedesc[ObjectPtr]		127
-nim	encode	gdext/private/typeshift.html#encode.t,T,pointer_3	template encode[T: Object](v: T; p: pointer)		128
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[T]_2	proc decode[T: Object](p: pointer; _: typedesc[T]): T		130
-nim	variant	gdext/private/typeshift.html#variant,T_3	proc variant[T: Object](v: T): Variant		132
-nim	get	gdext/private/typeshift.html#get,Variant,typedesc[T]_2	proc get[T: Object](v: Variant; _: typedesc[T]): T		134
-nim	decode_result	gdext/private/typeshift.html#decode_result,pointer,typedesc	proc decode_result(p: pointer; Type: typedesc): Type:type		138
-nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[GdRef[T: RefCounted]]	template encoded[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr]		141
-nim	encode	gdext/private/typeshift.html#encode,GdRef[T: RefCounted],pointer	proc encode[T: RefCounted](v: GdRef[T]; p: pointer)		142
-nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[GdRef[T: RefCounted]]	proc decode[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result:type		145
-nim	variant	gdext/private/typeshift.html#variant,GdRef[T: RefCounted]	proc variant[T: RefCounted](v: GdRef[T]): Variant		147
-nim	get	gdext/private/typeshift.html#get,Variant,typedesc[GdRef[T: RefCounted]]	proc get[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result:type		150
-nim	decode_result	gdext/private/typeshift.html#decode_result,pointer,typedesc[GdRef[T: RefCounted]]	proc decode_result[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result:type		153
-nim	APIType	gdext/private/typeshift.html#APIType.t,typedesc[Object]	template APIType(T: typedesc[Object]): typedesc		158
-nim	APIType	gdext/private/typeshift.html#APIType.t,typedesc[]	template APIType(T: typedesc[not Object]): typedesc		159
-nimgrp	decode	gdext/private/typeshift.html#decode-procs-all	proc		10
-nimgrp	decoderesult	gdext/private/typeshift.html#decode_result-procs-all	proc		138
-nimgrp	variant	gdext/private/typeshift.html#variant-procs-all	proc		17
-nimgrp	get	gdext/private/typeshift.html#get-procs-all	proc		19
-nimgrp	getaddr	gdext/private/typeshift.html#getAddr-procs-all	proc		21
-nimgrp	encode	gdext/private/typeshift.html#encode-templates-all	template		13
-nimgrp	encoded	gdext/private/typeshift.html#encoded-templates-all	template		12
-nimgrp	Apitype	gdext/private/typeshift.html#APIType-templates-all	template		158
+nim	decode	gdext/private/typeshift.html#decode,ptr.T,typedesc[T]	proc decode[T](p: ptr T; _: typedesc[T]): T		11
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[T]	template encoded[T: SomeBuiltins](_: typedesc[T]): typedesc[T]		13
+nim	encode	gdext/private/typeshift.html#encode.t,T,pointer	template encode[T: SomeBuiltins](v: T; p: pointer)		14
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[T]	proc decode[T: SomeBuiltins](p: pointer; _: typedesc[T]): T		16
+nim	variant	gdext/private/typeshift.html#variant,T	proc variant[T: SomeBuiltins](v: T): Variant		18
+nim	get	gdext/private/typeshift.html#get,Variant,typedesc[T]	proc get[T: SomeBuiltins](v: Variant; _: typedesc[T]): T		20
+nim	getAddr	gdext/private/typeshift.html#getAddr,Variant,typedesc[T]	proc getAddr[T: SomeBuiltins](v: Variant; _: typedesc[T]): ptr T		22
+nim	encoded	gdext/private/typeshift.html#encoded.t	template encoded(T`gensym0: typedesc[AltString]): typedesc[String]		29
+nim	encode	gdext/private/typeshift.html#encode.t,AltString,pointer	template encode(v`gensym0: AltString; p`gensym0: pointer)		30
+nim	decode	gdext/private/typeshift.html#decode,pointer,	proc decode(p`gensym0: pointer; _: typedesc[AltString]): AltString		32
+nim	variant	gdext/private/typeshift.html#variant,AltString	proc variant(v`gensym0: AltString): Variant		34
+nim	get	gdext/private/typeshift.html#get,Variant,	proc get(v`gensym0: Variant; _: typedesc[AltString]): AltString		73
+nim	encoded	gdext/private/typeshift.html#encoded.t_2	template encoded(T`gensym2: typedesc[AltInt]): typedesc[Int]		40
+nim	encode	gdext/private/typeshift.html#encode.t,AltInt,pointer	template encode(v`gensym2: AltInt; p`gensym2: pointer)		41
+nim	decode	gdext/private/typeshift.html#decode,pointer,_2	proc decode(p`gensym2: pointer; D`gensym2: typedesc[AltInt]): D`gensym2:type		43
+nim	variant	gdext/private/typeshift.html#variant,AltInt	proc variant(v`gensym2: AltInt): Variant		45
+nim	get	gdext/private/typeshift.html#get,Variant,_2	proc get(v`gensym2: Variant; D`gensym2: typedesc[AltInt]): D`gensym2:type		75
+nim	encoded	gdext/private/typeshift.html#encoded.t_3	template encoded(T`gensym3: typedesc[AltFloat]): typedesc[Float]		40
+nim	encode	gdext/private/typeshift.html#encode.t,AltFloat,pointer	template encode(v`gensym3: AltFloat; p`gensym3: pointer)		41
+nim	decode	gdext/private/typeshift.html#decode,pointer,_3	proc decode(p`gensym3: pointer; D`gensym3: typedesc[AltFloat]): D`gensym3:type		43
+nim	variant	gdext/private/typeshift.html#variant,AltFloat	proc variant(v`gensym3: AltFloat): Variant		45
+nim	get	gdext/private/typeshift.html#get,Variant,_3	proc get(v`gensym3: Variant; D`gensym3: typedesc[AltFloat]): D`gensym3:type		77
+nim	encoded	gdext/private/typeshift.html#encoded.t_4	template encoded[T: enum](_: typedesc[T]): typedesc[Int]		51
+nim	encode	gdext/private/typeshift.html#encode.t,T,pointer_2	template encode[T: enum](v`gensym5: T; p`gensym5: pointer)		52
+nim	decode	gdext/private/typeshift.html#decode,pointer,_4	proc decode[T: enum](p`gensym5: pointer; _: typedesc[T]): T		54
+nim	variant	gdext/private/typeshift.html#variant,T_2	proc variant[T: enum](v`gensym5: T): Variant		56
+nim	get	gdext/private/typeshift.html#get,Variant,_4	proc get[T: enum](v`gensym5: Variant; _: typedesc[T]): T		79
+nim	encoded	gdext/private/typeshift.html#encoded.t_5	template encoded[T](_: typedesc[set[T]]): typedesc[Int]		62
+nim	encode	gdext/private/typeshift.html#encode.t,,pointer	template encode[T](v`gensym6: set[T]; p`gensym6: pointer)		63
+nim	decode	gdext/private/typeshift.html#decode,pointer,_5	proc decode[T](p`gensym6: pointer; _: typedesc[set[T]]): set[T]		65
+nim	variant	gdext/private/typeshift.html#variant	proc variant[T](v`gensym6: set[T]): Variant		67
+nim	get	gdext/private/typeshift.html#get,Variant,_5	proc get[T](v`gensym6: Variant; _: typedesc[set[T]]): set[T]		81
+nim	encoded	gdext/private/typeshift.html#encoded.t_6	template encoded[T](_: typedesc[TypedArray[T]]): typedesc[Array]		62
+nim	encode	gdext/private/typeshift.html#encode.t,,pointer_2	template encode[T](v`gensym7: TypedArray[T]; p`gensym7: pointer)		63
+nim	decode	gdext/private/typeshift.html#decode,pointer,_6	proc decode[T](p`gensym7: pointer; _: typedesc[TypedArray[T]]): TypedArray[T]		65
+nim	variant	gdext/private/typeshift.html#variant_2	proc variant[T](v`gensym7: TypedArray[T]): Variant		67
+nim	get	gdext/private/typeshift.html#get,Variant,_6	proc get[T](v`gensym7: Variant; _: typedesc[TypedArray[T]]): TypedArray[T]		82
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[Variant]	template encoded(T: typedesc[Variant]): typedesc[Variant]		86
+nim	encode	gdext/private/typeshift.html#encode.t,Variant,pointer	template encode(v: Variant; p: pointer)		87
+nim	decode	gdext/private/typeshift.html#decode.t,pointer,typedesc[Variant]	template decode(p: pointer; T: typedesc[Variant]): T:type		89
+nim	variant	gdext/private/typeshift.html#variant.t,Variant	template variant(v: Variant): Variant		91
+nim	get	gdext/private/typeshift.html#get.t,Variant,typedesc[Variant]	template get(v: Variant; T: typedesc[Variant]): T:type		92
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[pointer]	template encoded(_: typedesc[pointer]): typedesc[pointer]		97
+nim	encode	gdext/private/typeshift.html#encode.t,pointer,pointer	template encode(v: pointer; p: pointer)		98
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[pointer]	proc decode(p: pointer; _: typedesc[pointer]): pointer		100
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[ptr.T]	template encoded[T](_: typedesc[ptr T]): typedesc[pointer]		103
+nim	encode	gdext/private/typeshift.html#encode.t,ptr.T,pointer	template encode[T](v: ptr T; p: pointer)		104
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[ptr.T]	proc decode[T](p: pointer; _: typedesc[ptr T]): ptr T		106
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[ObjectPtr]	template encoded(T: typedesc[ObjectPtr]): typedesc[ObjectPtr]		112
+nim	encode	gdext/private/typeshift.html#encode.t,ObjectPtr,pointer	template encode(v: ObjectPtr; p: pointer)		113
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[ObjectPtr]	proc decode(p: pointer; T: typedesc[ObjectPtr]): T:type		115
+nim	variant	gdext/private/typeshift.html#variant,ObjectPtr	proc variant(v: ObjectPtr): Variant		118
+nim	get	gdext/private/typeshift.html#get,Variant,typedesc[ObjectPtr]	proc get(v: Variant; T: typedesc[ObjectPtr]): T:type		120
+nim	getAddr	gdext/private/typeshift.html#getAddr,Variant,typedesc[ObjectPtr]	proc getAddr(v: Variant; T: typedesc[ObjectPtr]): ptr T:type		122
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[T]_2	template encoded[T: Object](_: typedesc[T]): typedesc[ObjectPtr]		128
+nim	encode	gdext/private/typeshift.html#encode.t,T,pointer_3	template encode[T: Object](v: T; p: pointer)		129
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[T]_2	proc decode[T: Object](p: pointer; _: typedesc[T]): T		131
+nim	variant	gdext/private/typeshift.html#variant,T_3	proc variant[T: Object](v: T): Variant		133
+nim	get	gdext/private/typeshift.html#get,Variant,typedesc[T]_2	proc get[T: Object](v: Variant; _: typedesc[T]): T		135
+nim	decode_result	gdext/private/typeshift.html#decode_result,pointer,typedesc	proc decode_result(p: pointer; Type: typedesc): Type:type		139
+nim	encoded	gdext/private/typeshift.html#encoded.t,typedesc[GdRef[T: RefCounted]]	template encoded[T: RefCounted](_: typedesc[GdRef[T]]): typedesc[ObjectPtr]		142
+nim	encode	gdext/private/typeshift.html#encode,GdRef[T: RefCounted],pointer	proc encode[T: RefCounted](v: GdRef[T]; p: pointer)		143
+nim	decode	gdext/private/typeshift.html#decode,pointer,typedesc[GdRef[T: RefCounted]]	proc decode[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result:type		146
+nim	variant	gdext/private/typeshift.html#variant,GdRef[T: RefCounted]	proc variant[T: RefCounted](v: GdRef[T]): Variant		148
+nim	get	gdext/private/typeshift.html#get,Variant,typedesc[GdRef[T: RefCounted]]	proc get[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result:type		151
+nim	decode_result	gdext/private/typeshift.html#decode_result,pointer,typedesc[GdRef[T: RefCounted]]	proc decode_result[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result:type		154
+nim	APIType	gdext/private/typeshift.html#APIType.t,typedesc[Object]	template APIType(T: typedesc[Object]): typedesc		159
+nim	APIType	gdext/private/typeshift.html#APIType.t,typedesc[]	template APIType(T: typedesc[not Object]): typedesc		160
+nimgrp	decode	gdext/private/typeshift.html#decode-procs-all	proc		11
+nimgrp	decoderesult	gdext/private/typeshift.html#decode_result-procs-all	proc		139
+nimgrp	variant	gdext/private/typeshift.html#variant-procs-all	proc		18
+nimgrp	get	gdext/private/typeshift.html#get-procs-all	proc		20
+nimgrp	getaddr	gdext/private/typeshift.html#getAddr-procs-all	proc		22
+nimgrp	encode	gdext/private/typeshift.html#encode-templates-all	template		14
+nimgrp	encoded	gdext/private/typeshift.html#encoded-templates-all	template		13
+nimgrp	Apitype	gdext/private/typeshift.html#APIType-templates-all	template		159
