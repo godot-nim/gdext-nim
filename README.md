@@ -55,7 +55,7 @@
   
 <div align = "center">
 
-📚 [Documentation][9] | 🔌 [API][10]  | 🧑‍💻 [Coding Guide][4] | 🎓 [Tutorial] | 🧪 [Examples][1] | 🧩 Templates | 💬 [Discord][11]  | 🧵 [Forum][5] | 🛠️ [Source][8]
+📚 [Documentation][Pages] | ⚛️ [DeepWiki][9] | 🧪 [Examples][1] | 💬 [Discord][11]  | 🧵 [Forum][5] | 🛠️ [Source][8]
 
 
 </div>
@@ -264,7 +264,7 @@ Don't forget to give the project a star! Thanks again!
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
-
+[Pages]: https://godot-nim.github.io/gdext-nim
 
 [1]: https://github.com/godot-nim/demo
 [2]: https://github.com/godot-nim/gdext-nim/wiki
