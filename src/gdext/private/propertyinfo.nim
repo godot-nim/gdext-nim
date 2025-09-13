@@ -69,7 +69,14 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   instance
 
 
+proc className*[T: not (SomeClass|GdRef|enum)](_: typedesc[T]): var StringName =
+  var name {.global.}: StringName
+  once:
+    name = newStringName()
+  name
+
 proc className*(T: typedesc[SomeClass]): var StringName = Meta(T).className
+template className*(T: typedesc[GdRef[SomeClass]]): var StringName = Meta(T.RefCounted).className
 proc className*(E: typedesc[enum]): StringName =
   mixin EnumOwner
   once:
