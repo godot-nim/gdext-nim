@@ -22,6 +22,6 @@ runtime: suite "Community Reported":
 
   test "adding a string to PackedStringArray must compile":
     var myPackedString = newPackedStringArray()
-    let myString = "test"
+    let myString : String = "test"
     myPackedString.add(myString)
-    myPackedString.clear()
+    check myPackedString[0] == myString
