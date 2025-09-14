@@ -19,3 +19,9 @@ runtime: suite "Community Reported":
     var v = variant obj
     check v.get(RefCounted) == nil
     destroy obj
+
+  test "adding a string to PackedStringArray must compile":
+    var myPackedString = newPackedStringArray()
+    let myString = "test"
+    myPackedString.add(myString)
+    myPackedString.clear()
