@@ -1,5 +1,5 @@
 import std/[tables, sets]
-
+import gdext
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/private/gdinterface
@@ -66,3 +66,6 @@ template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
 template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub
+
+proc set*(self: Object; property: StringName; value: SomeProperty) {.inline.} =
+  set(self, property, variant value)
