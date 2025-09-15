@@ -1,5 +1,5 @@
 import std/[tables, sets]
-import gdext
+import gdext/private/typeshift
 import gdext/builtinindex
 import gdext/stringtools
 import gdext/private/gdinterface
