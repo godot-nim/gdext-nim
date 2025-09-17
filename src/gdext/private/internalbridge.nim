@@ -32,32 +32,32 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstance(classname T, result)
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
-proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall, raises: [].} =
+proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
   errproof:
     return objectcallbacks.set(cast[T](p_instance), p_name, p_value)
 
-proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall, raises: [].} =
+proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   errproof:
     return get(cast[T](p_instance), p_name, r_ret)
 
-proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall, raises: [].} =
+proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
   errproof:
     return getPropertyList(cast[T](p_instance), r_count)
 
-proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall, raises: [].} =
+proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
   errproof:
     freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
 
-proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall, raises: [].} =
+proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
   errproof:
     return propertyCanRevert(cast[T](p_instance), p_name)
 
-proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall, raises: [].} =
+proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
   errproof:
     return propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
 proc registerRpcConfigsRecursive[T: Object](instance: T)
-proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall, raises: [].} =
+proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
   errproof:
     case p_what
     of NotificationReady:
@@ -66,17 +66,17 @@ proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reverse
       discard
     notification(cast[T](p_instance), p_what)
 
-proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall, raises: [].} =
+proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
   errproof:
     toString(cast[T](p_instance), r_is_valid, p_out)
 
-proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall, raises: [].} =
+proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
   errproof:
     let class = instantiate_internal T
     result =  class.engineInstance
     debugCreate(class)
 
-proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall, raises: [].} =
+proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
   errproof:
     let class = cast[T](p_instance)
     debugFree(class)
@@ -84,7 +84,7 @@ proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: point
     `=destroy` class[]
     dealloc class
 
-proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall, raises: [].} =
+proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
   errproof:
     let class = createClass[T](p_object)
     p_object.setInstance(classname T, class)
@@ -92,16 +92,16 @@ proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_objec
     result = cast[pointer](class)
     debugRecreate(class)
 
-proc reference_func(p_instance: pointer) {.gdcall, raises: [].} =
+proc reference_func(p_instance: pointer) {.gdcall.} =
   errproof:
     debugReference(cast[Object](p_instance), true)
 
-proc unreference_func(p_instance: pointer) {.gdcall, raises: [].} =
+proc unreference_func(p_instance: pointer) {.gdcall.} =
   errproof:
     debugReference(cast[Object](p_instance), false)
 
 when true:
-  proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32): ClassCallVirtual {.gdcall, raises: [].} =
+  proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32): ClassCallVirtual {.gdcall.} =
     errproof:
       # echo cast[ptr GodotClassMeta](p_userdata)[].className, ".", cast[ptr StringName](p_name)[], ".hash = ", p_hash
       return cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])

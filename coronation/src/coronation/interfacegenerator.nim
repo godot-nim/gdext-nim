@@ -128,7 +128,6 @@ proc postprocess(ast: PNode): PNode =
       of nkProcTy:
         ast[1] = nkPragma.newTree(
           ident"gdcall",
-          nkExprColonExpr.newTree(ident"raises", nkBracket.newNode),
         )
         ast
 

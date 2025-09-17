@@ -89,7 +89,7 @@ proc reporterr*(exception: ref Exception) =
 template errproof*(body): untyped =
   try:
     body
-  except:
+  except CatchableError:
     reporterr getCurrentException()
 
 proc createClass*[T: Object](o: ObjectPtr): T =
