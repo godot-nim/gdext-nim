@@ -14,4 +14,4 @@ proc load(typ: VariantType; proc_name: string; hash: int64): PtrBuiltinMethod =
   let name = newStringName proc_name
   interface_Variant_getPtrBuiltinMethod(typ, addr name, hash)
 proc load(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator =
-  interfaceVariantGetPtrOperatorEvaluator(cuint op.ord, left, right)
+  interfaceVariantGetPtrOperatorEvaluator(op, left, right)

@@ -2,6 +2,7 @@ import std/tables
 
 import gdext/private/buildsettings
 import gdext/private/native
+import gdext/enums; export enums
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64
@@ -119,7 +120,7 @@ type
   GdRef*[RefCounted] = object
     handle*: RefCounted
 
-include gdext/gen/[localenums, globalenums, structs]
+include gdext/gen/[structs]
 
 type
   Signal* {.byref.} = object

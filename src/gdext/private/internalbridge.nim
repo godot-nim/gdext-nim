@@ -32,65 +32,79 @@ proc instantiate_internal*[T: SomeUserClass](Type: typedesc[T]): T =
   objectPtr.setInstance(classname T, result)
   objectPtr.setInstanceBinding(result, addr T.callbacks)
 
-proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall.} =
-  objectcallbacks.set(cast[T](p_instance), p_name, p_value)
+proc set_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; p_value: ConstVariantPtr): Bool {.gdcall, raises: [].} =
+  errproof:
+    return objectcallbacks.set(cast[T](p_instance), p_name, p_value)
 
-proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  get(cast[T](p_instance), p_name, r_ret)
+proc get_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall, raises: [].} =
+  errproof:
+    return get(cast[T](p_instance), p_name, r_ret)
 
-proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall.} =
-  getPropertyList(cast[T](p_instance), r_count)
+proc get_property_list_func[T](p_instance: ClassInstancePtr; r_count: ptr uint32): ptr PropertyInfo {.gdcall, raises: [].} =
+  errproof:
+    return getPropertyList(cast[T](p_instance), r_count)
 
-proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.} =
-  freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
+proc free_property_list_func[T](p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall, raises: [].} =
+  errproof:
+    freePropertyList(cast[T](p_instance), p_list.toOpenArray(0, int p_count))
 
-proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.} =
-  propertyCanRevert(cast[T](p_instance), p_name)
+proc property_can_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall, raises: [].} =
+  errproof:
+    return propertyCanRevert(cast[T](p_instance), p_name)
 
-proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall.} =
-  propertyGetRevert(cast[T](p_instance), p_name, r_ret)
+proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStringNamePtr; r_ret: VariantPtr): Bool {.gdcall, raises: [].} =
+  errproof:
+    return propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
 proc registerRpcConfigsRecursive[T: Object](instance: T)
-proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
-  case p_what
-  of NotificationReady:
-    cast[T](p_instance).registerRpcConfigsRecursive()
-  else:
-    discard
-  notification(cast[T](p_instance), p_what)
+proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall, raises: [].} =
+  errproof:
+    case p_what
+    of NotificationReady:
+      cast[T](p_instance).registerRpcConfigsRecursive()
+    else:
+      discard
+    notification(cast[T](p_instance), p_what)
 
-proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall.} =
-  toString(cast[T](p_instance), r_is_valid, p_out)
+proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.gdcall, raises: [].} =
+  errproof:
+    toString(cast[T](p_instance), r_is_valid, p_out)
 
-proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
-  let class = instantiate_internal T
-  result =  class.engineInstance
-  debugCreate(class)
+proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall, raises: [].} =
+  errproof:
+    let class = instantiate_internal T
+    result =  class.engineInstance
+    debugCreate(class)
 
-proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall.} =
-  let class = cast[T](p_instance)
-  debugFree(class)
-  onDestroy class
-  `=destroy` class[]
-  dealloc class
+proc free_instance_func[T: SomeUserClass](p_userdata: pointer; p_instance: pointer) {.gdcall, raises: [].} =
+  errproof:
+    let class = cast[T](p_instance)
+    debugFree(class)
+    onDestroy class
+    `=destroy` class[]
+    dealloc class
 
-proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.} =
-  let class = createClass[T](p_object)
-  p_object.setInstance(classname T, class)
-  p_object.setInstanceBinding(class, addr T.callbacks)
-  result = cast[pointer](class)
-  debugRecreate(class)
+proc recreate_instance_func[T: SomeUserClass](p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall, raises: [].} =
+  errproof:
+    let class = createClass[T](p_object)
+    p_object.setInstance(classname T, class)
+    p_object.setInstanceBinding(class, addr T.callbacks)
+    result = cast[pointer](class)
+    debugRecreate(class)
 
-proc reference_func(p_instance: pointer) {.gdcall.} =
-  debugReference(cast[Object](p_instance), true)
+proc reference_func(p_instance: pointer) {.gdcall, raises: [].} =
+  errproof:
+    debugReference(cast[Object](p_instance), true)
 
-proc unreference_func(p_instance: pointer) {.gdcall.} =
-  debugReference(cast[Object](p_instance), false)
+proc unreference_func(p_instance: pointer) {.gdcall, raises: [].} =
+  errproof:
+    debugReference(cast[Object](p_instance), false)
 
 when true:
-  proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32): ClassCallVirtual {.gdcall.} =
-    # echo cast[ptr GodotClassMeta](p_userdata)[].className, ".", cast[ptr StringName](p_name)[], ".hash = ", p_hash
-    cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
+  proc get_virtual_func(p_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32): ClassCallVirtual {.gdcall, raises: [].} =
+    errproof:
+      # echo cast[ptr GodotClassMeta](p_userdata)[].className, ".", cast[ptr StringName](p_name)[], ".hash = ", p_hash
+      return cast[ptr GodotClassMeta](p_userdata).virtualMethods.getOrDefault(cast[ptr StringName](p_name)[])
 
   const get_virtual_call_data_func = nil
   const call_virtual_with_data_func = nil
