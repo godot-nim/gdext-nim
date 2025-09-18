@@ -25,7 +25,7 @@ proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
 proc instantiate*[T_Node: Node](T: typedesc[T_Node]; name: string): T =
   result = instantiate_internal T
   debugInstantiate(result)
-  result.name = newGdString name
+  result.name = newStringName name
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
