@@ -25,7 +25,7 @@ type
   ExtentEnvironment* = ref object
     getProcAddress*: InterfaceGetProcAddress
     library*: ClassLibraryPtr
-    version*: GodotVersion
+    version*: GodotVersion2
 
 var
   environment*: ExtentEnvironment
@@ -45,7 +45,7 @@ proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
   environment.getProcAddress = getProcAddress
   environment.library = library
   loadApi(environment.getProcAddress)
-  interfaceGetGodotVersion(addr environment.version)
+  interfaceGetGodotVersion2(addr environment.version)
 
   for i in (VariantType_Nil.succ)..Variant_Type.high:
     variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)

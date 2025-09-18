@@ -122,8 +122,8 @@ proc icon_path[T](_: typedesc[T]): String =
   when T.hasCustomPragma(icon):
     newGdString T.getCustomPragmaVal(icon)
 
-proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool; icon_path: String): ClassCreationInfo4 =
-  ClassCreationInfo4(
+proc creationInfo(T: typedesc[SomeUserClass]; is_virtual, is_abstract, is_exposed: bool; icon_path: String): ClassCreationInfo5 =
+  ClassCreationInfo5(
     is_virtual: is_virtual,
     is_abstract: is_abstract,
     is_exposed: is_exposed,
