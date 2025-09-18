@@ -17,6 +17,7 @@ gensem NormalizedProcSym
 gensem VariantType
 gensem ContainerKey
 gensem ModuleSym
+gensem SnakeCase
 
 proc dropQuote*(sym: ProcSym): string = ($sym).replace("`", "")
 
@@ -113,6 +114,14 @@ proc convert*(ss: WordRope; _: typedesc[NormalizedProcSym]): NormalizedProcSym =
 
 proc convert*(typesym: TypeSym; _: typedesc[ModuleSym]): ModuleSym =
   ModuleSym "gd" & ($typesym).toLowerAscii
+
+proc convert*(ss: WordRope; _: typedesc[SnakeCase]): SnakeCase =
+  var str = newStringOfCap(ss.total)
+  for i, w in ss.words:
+    if i != 0:
+      str.add "_"
+    str.add w.snake
+  SnakeCase str
 
 when isMainModule:
   echo scan("set_getter").convert(ProcSym)
