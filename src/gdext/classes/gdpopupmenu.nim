@@ -100,6 +100,10 @@ proc setItemLanguage*(self: PopupMenu; index: int32; language: String): void =
   expandMethodBind(className PopupMenu, "set_item_language", 501894301)
   methodbind.ptrcall(self, [getPtr index, getPtr language])
 
+proc setItemAutoTranslateMode*(self: PopupMenu; index: int32; mode: Node_AutoTranslateMode): void =
+  expandMethodBind(className PopupMenu, "set_item_auto_translate_mode", 287402019)
+  methodbind.ptrcall(self, [getPtr index, getPtr mode])
+
 proc setItemIcon*(self: PopupMenu; index: int32; icon: gdref Texture2D): void =
   expandMethodBind(className PopupMenu, "set_item_icon", 666127730)
   methodbind.ptrcall(self, [getPtr index, getPtr icon])
@@ -201,6 +205,12 @@ proc getItemLanguage*(self: PopupMenu; index: int32): String =
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(String)
+
+proc getItemAutoTranslateMode*(self: PopupMenu; index: int32): Node_AutoTranslateMode =
+  expandMethodBind(className PopupMenu, "get_item_auto_translate_mode", 906302372)
+  var ret: encoded Node_AutoTranslateMode
+  methodbind.ptrcall(self, [getPtr index], addr ret)
+  (addr ret).decode_result(Node_AutoTranslateMode)
 
 proc getItemIcon*(self: PopupMenu; index: int32): gdref Texture2D =
   expandMethodBind(className PopupMenu, "get_item_icon", 3536238170)

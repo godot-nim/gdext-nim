@@ -106,14 +106,14 @@ proc getExecutablePath*(self: OS): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc readStringFromStdin*(self: OS; bufferSize: int64): String =
-  expandMethodBind(className OS, "read_string_from_stdin", 990163283)
+proc readStringFromStdin*(self: OS; bufferSize: int64 = 1024): String =
+  expandMethodBind(className OS, "read_string_from_stdin", 723587915)
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr bufferSize], addr ret)
   (addr ret).decode_result(String)
 
-proc readBufferFromStdin*(self: OS; bufferSize: int64): PackedByteArray =
-  expandMethodBind(className OS, "read_buffer_from_stdin", 47165747)
+proc readBufferFromStdin*(self: OS; bufferSize: int64 = 1024): PackedByteArray =
+  expandMethodBind(className OS, "read_buffer_from_stdin", 3249455752)
   var ret: encoded PackedByteArray
   methodbind.ptrcall(self, [getPtr bufferSize], addr ret)
   (addr ret).decode_result(PackedByteArray)
@@ -159,6 +159,12 @@ proc createInstance*(self: OS; arguments: PackedStringArray): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr arguments], addr ret)
   (addr ret).decode_result(int32)
+
+proc openWithProgram*(self: OS; programPath: String; paths: PackedStringArray): Error =
+  expandMethodBind(className OS, "open_with_program", 2848259907)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr programPath, getPtr paths], addr ret)
+  (addr ret).decode_result(Error)
 
 proc kill*(self: OS; pid: int32): Error =
   expandMethodBind(className OS, "kill", 844576869)
@@ -457,6 +463,14 @@ proc getGrantedPermissions*(self: OS): PackedStringArray =
 proc revokeGrantedPermissions*(self: OS): void =
   expandMethodBind(className OS, "revoke_granted_permissions", 3218959716)
   methodbind.ptrcall(self, [])
+
+proc addLogger*(self: OS; logger: gdref Logger): void =
+  expandMethodBind(className OS, "add_logger", 4261188958)
+  methodbind.ptrcall(self, [getPtr logger])
+
+proc removeLogger*(self: OS; logger: gdref Logger): void =
+  expandMethodBind(className OS, "remove_logger", 4261188958)
+  methodbind.ptrcall(self, [getPtr logger])
 
 template lowProcessorUsageMode*(self: OS): untyped = self.isInLowProcessorUsageMode()
 template `lowProcessorUsageMode=`*(self: OS; value) = self.setLowProcessorUsageMode(value)

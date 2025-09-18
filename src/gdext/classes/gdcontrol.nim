@@ -58,6 +58,16 @@ proc registerVirtual_makeCustomTooltip*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_make_custom_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).makeCustomTooltip(p_args[0].decode(String)).encode(r_ret)
 
+method accessibilityGetContextualInfo*(self: Control): String {.base.} = (discard)
+proc registerVirtual_accessibilityGetContextualInfo*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_accessibility_get_contextual_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).accessibilityGetContextualInfo().encode(r_ret)
+
+method getAccessibilityContainerName*(self: Control; node: Node): String {.base.} = (discard)
+proc registerVirtual_getAccessibilityContainerName*[T: Control](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_accessibility_container_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Control](p_instance).getAccessibilityContainerName(p_args[0].decode(Node)).encode(r_ret)
+
 method guiInput*(self: Control; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_guiInput*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_gui_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -252,6 +262,22 @@ proc getFocusMode*(self: Control): Control_FocusMode =
   var ret: encoded Control_FocusMode
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control_FocusMode)
+
+proc getFocusModeWithOverride*(self: Control): Control_FocusMode =
+  expandMethodBind(className Control, "get_focus_mode_with_override", 2132829277)
+  var ret: encoded Control_FocusMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control_FocusMode)
+
+proc setFocusBehaviorRecursive*(self: Control; focusBehaviorRecursive: Control_FocusBehaviorRecursive): void =
+  expandMethodBind(className Control, "set_focus_behavior_recursive", 4256832521)
+  methodbind.ptrcall(self, [getPtr focusBehaviorRecursive])
+
+proc getFocusBehaviorRecursive*(self: Control): Control_FocusBehaviorRecursive =
+  expandMethodBind(className Control, "get_focus_behavior_recursive", 2435707181)
+  var ret: encoded Control_FocusBehaviorRecursive
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control_FocusBehaviorRecursive)
 
 proc hasFocus*(self: Control): bool =
   expandMethodBind(className Control, "has_focus", 36873697)
@@ -619,6 +645,84 @@ proc forceDrag*(self: Control; data: Variant; preview: Control): void =
   expandMethodBind(className Control, "force_drag", 3191844692)
   methodbind.ptrcall(self, [getPtr data, getPtr preview])
 
+proc accessibilityDrag*(self: Control): void =
+  expandMethodBind(className Control, "accessibility_drag", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc accessibilityDrop*(self: Control): void =
+  expandMethodBind(className Control, "accessibility_drop", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc setAccessibilityName*(self: Control; name: String): void =
+  expandMethodBind(className Control, "set_accessibility_name", 83702148)
+  methodbind.ptrcall(self, [getPtr name])
+
+proc getAccessibilityName*(self: Control): String =
+  expandMethodBind(className Control, "get_accessibility_name", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc setAccessibilityDescription*(self: Control; description: String): void =
+  expandMethodBind(className Control, "set_accessibility_description", 83702148)
+  methodbind.ptrcall(self, [getPtr description])
+
+proc getAccessibilityDescription*(self: Control): String =
+  expandMethodBind(className Control, "get_accessibility_description", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc setAccessibilityLive*(self: Control; mode: DisplayServer_AccessibilityLiveMode): void =
+  expandMethodBind(className Control, "set_accessibility_live", 1720261470)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getAccessibilityLive*(self: Control): DisplayServer_AccessibilityLiveMode =
+  expandMethodBind(className Control, "get_accessibility_live", 3311037003)
+  var ret: encoded DisplayServer_AccessibilityLiveMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(DisplayServer_AccessibilityLiveMode)
+
+proc setAccessibilityControlsNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+  expandMethodBind(className Control, "set_accessibility_controls_nodes", 381264803)
+  methodbind.ptrcall(self, [getPtr nodePath])
+
+proc getAccessibilityControlsNodes*(self: Control): TypedArray[NodePath] =
+  expandMethodBind(className Control, "get_accessibility_controls_nodes", 3995934104)
+  var ret: encoded TypedArray[NodePath]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[NodePath])
+
+proc setAccessibilityDescribedByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+  expandMethodBind(className Control, "set_accessibility_described_by_nodes", 381264803)
+  methodbind.ptrcall(self, [getPtr nodePath])
+
+proc getAccessibilityDescribedByNodes*(self: Control): TypedArray[NodePath] =
+  expandMethodBind(className Control, "get_accessibility_described_by_nodes", 3995934104)
+  var ret: encoded TypedArray[NodePath]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[NodePath])
+
+proc setAccessibilityLabeledByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+  expandMethodBind(className Control, "set_accessibility_labeled_by_nodes", 381264803)
+  methodbind.ptrcall(self, [getPtr nodePath])
+
+proc getAccessibilityLabeledByNodes*(self: Control): TypedArray[NodePath] =
+  expandMethodBind(className Control, "get_accessibility_labeled_by_nodes", 3995934104)
+  var ret: encoded TypedArray[NodePath]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[NodePath])
+
+proc setAccessibilityFlowToNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+  expandMethodBind(className Control, "set_accessibility_flow_to_nodes", 381264803)
+  methodbind.ptrcall(self, [getPtr nodePath])
+
+proc getAccessibilityFlowToNodes*(self: Control): TypedArray[NodePath] =
+  expandMethodBind(className Control, "get_accessibility_flow_to_nodes", 3995934104)
+  var ret: encoded TypedArray[NodePath]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[NodePath])
+
 proc setMouseFilter*(self: Control; filter: Control_MouseFilter): void =
   expandMethodBind(className Control, "set_mouse_filter", 3891156122)
   methodbind.ptrcall(self, [getPtr filter])
@@ -628,6 +732,22 @@ proc getMouseFilter*(self: Control): Control_MouseFilter =
   var ret: encoded Control_MouseFilter
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control_MouseFilter)
+
+proc getMouseFilterWithOverride*(self: Control): Control_MouseFilter =
+  expandMethodBind(className Control, "get_mouse_filter_with_override", 1572545674)
+  var ret: encoded Control_MouseFilter
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control_MouseFilter)
+
+proc setMouseBehaviorRecursive*(self: Control; mouseBehaviorRecursive: Control_MouseBehaviorRecursive): void =
+  expandMethodBind(className Control, "set_mouse_behavior_recursive", 849284636)
+  methodbind.ptrcall(self, [getPtr mouseBehaviorRecursive])
+
+proc getMouseBehaviorRecursive*(self: Control): Control_MouseBehaviorRecursive =
+  expandMethodBind(className Control, "get_mouse_behavior_recursive", 3779367402)
+  var ret: encoded Control_MouseBehaviorRecursive
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control_MouseBehaviorRecursive)
 
 proc setForcePassScrollEvents*(self: Control; forcePassScrollEvents: bool): void =
   expandMethodBind(className Control, "set_force_pass_scroll_events", 2586408642)
@@ -829,8 +949,14 @@ template `focusPrevious=`*(self: Control; value) = self.setFocusPrevious(value)
 template focusMode*(self: Control): untyped = self.getFocusMode()
 template `focusMode=`*(self: Control; value) = self.setFocusMode(value)
 
+template focusBehaviorRecursive*(self: Control): untyped = self.getFocusBehaviorRecursive()
+template `focusBehaviorRecursive=`*(self: Control; value) = self.setFocusBehaviorRecursive(value)
+
 template mouseFilter*(self: Control): untyped = self.getMouseFilter()
 template `mouseFilter=`*(self: Control; value) = self.setMouseFilter(value)
+
+template mouseBehaviorRecursive*(self: Control): untyped = self.getMouseBehaviorRecursive()
+template `mouseBehaviorRecursive=`*(self: Control; value) = self.setMouseBehaviorRecursive(value)
 
 template mouseForcePassScrollEvents*(self: Control): untyped = self.isForcePassScrollEvents()
 template `mouseForcePassScrollEvents=`*(self: Control; value) = self.setForcePassScrollEvents(value)
@@ -840,6 +966,27 @@ template `mouseDefaultCursorShape=`*(self: Control; value) = self.setDefaultCurs
 
 template shortcutContext*(self: Control): untyped = self.getShortcutContext()
 template `shortcutContext=`*(self: Control; value) = self.setShortcutContext(value)
+
+template accessibilityName*(self: Control): untyped = self.getAccessibilityName()
+template `accessibilityName=`*(self: Control; value) = self.setAccessibilityName(value)
+
+template accessibilityDescription*(self: Control): untyped = self.getAccessibilityDescription()
+template `accessibilityDescription=`*(self: Control; value) = self.setAccessibilityDescription(value)
+
+template accessibilityLive*(self: Control): untyped = self.getAccessibilityLive()
+template `accessibilityLive=`*(self: Control; value) = self.setAccessibilityLive(value)
+
+template accessibilityControlsNodes*(self: Control): untyped = self.getAccessibilityControlsNodes()
+template `accessibilityControlsNodes=`*(self: Control; value) = self.setAccessibilityControlsNodes(value)
+
+template accessibilityDescribedByNodes*(self: Control): untyped = self.getAccessibilityDescribedByNodes()
+template `accessibilityDescribedByNodes=`*(self: Control; value) = self.setAccessibilityDescribedByNodes(value)
+
+template accessibilityLabeledByNodes*(self: Control): untyped = self.getAccessibilityLabeledByNodes()
+template `accessibilityLabeledByNodes=`*(self: Control; value) = self.setAccessibilityLabeledByNodes(value)
+
+template accessibilityFlowToNodes*(self: Control): untyped = self.getAccessibilityFlowToNodes()
+template `accessibilityFlowToNodes=`*(self: Control; value) = self.setAccessibilityFlowToNodes(value)
 
 template theme*(self: Control): untyped = self.getTheme()
 template `theme=`*(self: Control; value) = self.setTheme(value)

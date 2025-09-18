@@ -16,6 +16,16 @@ proc getRect*(self: VisibleOnScreenNotifier2D): Rect2 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2)
 
+proc setShowRect*(self: VisibleOnScreenNotifier2D; showRect: bool): void =
+  expandMethodBind(className VisibleOnScreenNotifier2D, "set_show_rect", 2586408642)
+  methodbind.ptrcall(self, [getPtr showRect])
+
+proc isShowingRect*(self: VisibleOnScreenNotifier2D): bool =
+  expandMethodBind(className VisibleOnScreenNotifier2D, "is_showing_rect", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc isOnScreen*(self: VisibleOnScreenNotifier2D): bool =
   expandMethodBind(className VisibleOnScreenNotifier2D, "is_on_screen", 36873697)
   var ret: encoded bool
@@ -24,3 +34,6 @@ proc isOnScreen*(self: VisibleOnScreenNotifier2D): bool =
 
 template rect*(self: VisibleOnScreenNotifier2D): untyped = self.getRect()
 template `rect=`*(self: VisibleOnScreenNotifier2D; value) = self.setRect(value)
+
+template showRect*(self: VisibleOnScreenNotifier2D): untyped = self.isShowingRect()
+template `showRect=`*(self: VisibleOnScreenNotifier2D; value) = self.setShowRect(value)

@@ -437,7 +437,10 @@ type PropertyHint* {.size: EnumSize.default.} = enum
   propertyHintDictionaryType = 38
   propertyHintToolButton = 39
   propertyHintOneshot = 40
-  propertyHintMax = 42
+  propertyHintGroupEnable = 42
+  propertyHintInputName = 43
+  propertyHintFilePath = 44
+  propertyHintMax = 45
 
 type PropertyUsageFlags* = enum
   # propertyUsageNone = 0

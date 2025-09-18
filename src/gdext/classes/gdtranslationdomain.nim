@@ -36,6 +36,26 @@ proc translatePlural*(self: TranslationDomain; message: StringName; messagePlura
   methodbind.ptrcall(self, [getPtr message, getPtr messagePlural, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(StringName)
 
+proc getLocaleOverride*(self: TranslationDomain): String =
+  expandMethodBind(className TranslationDomain, "get_locale_override", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc setLocaleOverride*(self: TranslationDomain; locale: String): void =
+  expandMethodBind(className TranslationDomain, "set_locale_override", 83702148)
+  methodbind.ptrcall(self, [getPtr locale])
+
+proc isEnabled*(self: TranslationDomain): bool =
+  expandMethodBind(className TranslationDomain, "is_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setEnabled*(self: TranslationDomain; enabled: bool): void =
+  expandMethodBind(className TranslationDomain, "set_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
 proc isPseudolocalizationEnabled*(self: TranslationDomain): bool =
   expandMethodBind(className TranslationDomain, "is_pseudolocalization_enabled", 36873697)
   var ret: encoded bool
@@ -131,6 +151,9 @@ proc pseudolocalize*(self: TranslationDomain; message: StringName): StringName =
   var ret: encoded StringName
   methodbind.ptrcall(self, [getPtr message], addr ret)
   (addr ret).decode_result(StringName)
+
+template enabled*(self: TranslationDomain): untyped = self.isEnabled()
+template `enabled=`*(self: TranslationDomain; value) = self.setEnabled(value)
 
 template pseudolocalizationEnabled*(self: TranslationDomain): untyped = self.isPseudolocalizationEnabled()
 template `pseudolocalizationEnabled=`*(self: TranslationDomain; value) = self.setPseudolocalizationEnabled(value)

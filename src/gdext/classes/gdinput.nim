@@ -60,6 +60,18 @@ proc isActionJustReleased*(self: Input; action: StringName; exactMatch: bool = f
   methodbind.ptrcall(self, [getPtr action, getPtr exactMatch], addr ret)
   (addr ret).decode_result(bool)
 
+proc isActionJustPressedByEvent*(self: Input; action: StringName; event: gdref InputEvent; exactMatch: bool = false): bool =
+  expandMethodBind(className Input, "is_action_just_pressed_by_event", 551972873)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr action, getPtr event, getPtr exactMatch], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isActionJustReleasedByEvent*(self: Input; action: StringName; event: gdref InputEvent; exactMatch: bool = false): bool =
+  expandMethodBind(className Input, "is_action_just_released_by_event", 551972873)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr action, getPtr event, getPtr exactMatch], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getActionStrength*(self: Input; action: StringName; exactMatch: bool = false): Float =
   expandMethodBind(className Input, "get_action_strength", 801543509)
   var ret: encoded Float

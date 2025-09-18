@@ -74,3 +74,9 @@ template `boneIdx=`*(self: BoneAttachment3D; value) = self.setBoneIdx(value)
 
 template overridePose*(self: BoneAttachment3D): untyped = self.getOverridePose()
 template `overridePose=`*(self: BoneAttachment3D; value) = self.setOverridePose(value)
+
+template useExternalSkeleton*(self: BoneAttachment3D): untyped = self.getUseExternalSkeleton()
+template `useExternalSkeleton=`*(self: BoneAttachment3D; value) = self.setUseExternalSkeleton(value)
+
+template externalSkeleton*(self: BoneAttachment3D): untyped = self.getExternalSkeleton()
+template `externalSkeleton=`*(self: BoneAttachment3D; value) = self.setExternalSkeleton(value)

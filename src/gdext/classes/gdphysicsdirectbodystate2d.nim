@@ -150,6 +150,26 @@ proc isSleeping*(self: PhysicsDirectBodyState2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setCollisionLayer*(self: PhysicsDirectBodyState2D; layer: uint32): void =
+  expandMethodBind(className PhysicsDirectBodyState2D, "set_collision_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr layer])
+
+proc getCollisionLayer*(self: PhysicsDirectBodyState2D): uint32 =
+  expandMethodBind(className PhysicsDirectBodyState2D, "get_collision_layer", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
+proc setCollisionMask*(self: PhysicsDirectBodyState2D; mask: uint32): void =
+  expandMethodBind(className PhysicsDirectBodyState2D, "set_collision_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr mask])
+
+proc getCollisionMask*(self: PhysicsDirectBodyState2D): uint32 =
+  expandMethodBind(className PhysicsDirectBodyState2D, "get_collision_mask", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc getContactCount*(self: PhysicsDirectBodyState2D): int32 =
   expandMethodBind(className PhysicsDirectBodyState2D, "get_contact_count", 3905245786)
   var ret: encoded int32
@@ -262,6 +282,12 @@ template `linearVelocity=`*(self: PhysicsDirectBodyState2D; value) = self.setLin
 
 template sleeping*(self: PhysicsDirectBodyState2D): untyped = self.isSleeping()
 template `sleeping=`*(self: PhysicsDirectBodyState2D; value) = self.setSleepState(value)
+
+template collisionLayer*(self: PhysicsDirectBodyState2D): untyped = self.getCollisionLayer()
+template `collisionLayer=`*(self: PhysicsDirectBodyState2D; value) = self.setCollisionLayer(value)
+
+template collisionMask*(self: PhysicsDirectBodyState2D): untyped = self.getCollisionMask()
+template `collisionMask=`*(self: PhysicsDirectBodyState2D; value) = self.setCollisionMask(value)
 
 template transform*(self: PhysicsDirectBodyState2D): untyped = self.getTransform()
 template `transform=`*(self: PhysicsDirectBodyState2D; value) = self.setTransform(value)

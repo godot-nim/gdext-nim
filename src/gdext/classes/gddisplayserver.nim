@@ -6,6 +6,7 @@ import gdobject; export gdobject
 
 expandOnClassImported(DisplayServer, Object)
 
+const InvalidScreen* = -1
 const ScreenWithMouseFocus* = -4
 const ScreenWithKeyboardFocus* = -3
 const ScreenPrimary* = -2
@@ -780,6 +781,330 @@ proc windowStartResize*(self: DisplayServer; edge: DisplayServer_WindowResizeEdg
   expandMethodBind(className DisplayServer, "window_start_resize", 4009722312)
   methodbind.ptrcall(self, [getPtr edge, getPtr windowId])
 
+proc accessibilityShouldIncreaseContrast*(self: DisplayServer): int32 =
+  expandMethodBind(className DisplayServer, "accessibility_should_increase_contrast", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc accessibilityShouldReduceAnimation*(self: DisplayServer): int32 =
+  expandMethodBind(className DisplayServer, "accessibility_should_reduce_animation", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc accessibilityShouldReduceTransparency*(self: DisplayServer): int32 =
+  expandMethodBind(className DisplayServer, "accessibility_should_reduce_transparency", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc accessibilityScreenReaderActive*(self: DisplayServer): int32 =
+  expandMethodBind(className DisplayServer, "accessibility_screen_reader_active", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc accessibilityCreateElement*(self: DisplayServer; windowId: int32; role: DisplayServer_AccessibilityRole): RID =
+  expandMethodBind(className DisplayServer, "accessibility_create_element", 2968347744)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr windowId, getPtr role], addr ret)
+  (addr ret).decode_result(RID)
+
+proc accessibilityCreateSubElement*(self: DisplayServer; parentRid: RID; role: DisplayServer_AccessibilityRole; insertPos: int32 = -1): RID =
+  expandMethodBind(className DisplayServer, "accessibility_create_sub_element", 1949948826)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr parentRid, getPtr role, getPtr insertPos], addr ret)
+  (addr ret).decode_result(RID)
+
+proc accessibilityCreateSubTextEditElements*(self: DisplayServer; parentRid: RID; shapedText: RID; minHeight: Float; insertPos: int32 = -1): RID =
+  expandMethodBind(className DisplayServer, "accessibility_create_sub_text_edit_elements", 3328635351)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr parentRid, getPtr shapedText, getPtr minHeight, getPtr insertPos], addr ret)
+  (addr ret).decode_result(RID)
+
+proc accessibilityHasElement*(self: DisplayServer; id: RID): bool =
+  expandMethodBind(className DisplayServer, "accessibility_has_element", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr id], addr ret)
+  (addr ret).decode_result(bool)
+
+proc accessibilityFreeElement*(self: DisplayServer; id: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_free_element", 2722037293)
+  methodbind.ptrcall(self, [getPtr id])
+
+proc accessibilityElementSetMeta*(self: DisplayServer; id: RID; meta: Variant): void =
+  expandMethodBind(className DisplayServer, "accessibility_element_set_meta", 3175752987)
+  methodbind.ptrcall(self, [getPtr id, getPtr meta])
+
+proc accessibilityElementGetMeta*(self: DisplayServer; id: RID): Variant =
+  expandMethodBind(className DisplayServer, "accessibility_element_get_meta", 4171304767)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr id], addr ret)
+  (addr ret).decode_result(Variant)
+
+proc accessibilitySetWindowRect*(self: DisplayServer; windowId: int32; rectOut: Rect2; rectIn: Rect2): void =
+  expandMethodBind(className DisplayServer, "accessibility_set_window_rect", 2386961724)
+  methodbind.ptrcall(self, [getPtr windowId, getPtr rectOut, getPtr rectIn])
+
+proc accessibilitySetWindowFocused*(self: DisplayServer; windowId: int32; focused: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_set_window_focused", 300928843)
+  methodbind.ptrcall(self, [getPtr windowId, getPtr focused])
+
+proc accessibilityUpdateSetFocus*(self: DisplayServer; id: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_focus", 2722037293)
+  methodbind.ptrcall(self, [getPtr id])
+
+proc accessibilityGetWindowRoot*(self: DisplayServer; windowId: int32): RID =
+  expandMethodBind(className DisplayServer, "accessibility_get_window_root", 495598643)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr windowId], addr ret)
+  (addr ret).decode_result(RID)
+
+proc accessibilityUpdateSetRole*(self: DisplayServer; id: RID; role: DisplayServer_AccessibilityRole): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_role", 3352768215)
+  methodbind.ptrcall(self, [getPtr id, getPtr role])
+
+proc accessibilityUpdateSetName*(self: DisplayServer; id: RID; name: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_name", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr name])
+
+proc accessibilityUpdateSetExtraInfo*(self: DisplayServer; id: RID; name: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_extra_info", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr name])
+
+proc accessibilityUpdateSetDescription*(self: DisplayServer; id: RID; description: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_description", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr description])
+
+proc accessibilityUpdateSetValue*(self: DisplayServer; id: RID; value: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_value", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr value])
+
+proc accessibilityUpdateSetTooltip*(self: DisplayServer; id: RID; tooltip: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_tooltip", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr tooltip])
+
+proc accessibilityUpdateSetBounds*(self: DisplayServer; id: RID; pRect: Rect2): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_bounds", 1378122625)
+  methodbind.ptrcall(self, [getPtr id, getPtr pRect])
+
+proc accessibilityUpdateSetTransform*(self: DisplayServer; id: RID; transform: Transform2D): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_transform", 1246044741)
+  methodbind.ptrcall(self, [getPtr id, getPtr transform])
+
+proc accessibilityUpdateAddChild*(self: DisplayServer; id: RID; childId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_child", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr childId])
+
+proc accessibilityUpdateAddRelatedControls*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_controls", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateAddRelatedDetails*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_details", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateAddRelatedDescribedBy*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_described_by", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateAddRelatedFlowTo*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_flow_to", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateAddRelatedLabeledBy*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_labeled_by", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateAddRelatedRadioGroup*(self: DisplayServer; id: RID; relatedId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_related_radio_group", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr relatedId])
+
+proc accessibilityUpdateSetActiveDescendant*(self: DisplayServer; id: RID; otherId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_active_descendant", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr otherId])
+
+proc accessibilityUpdateSetNextOnLine*(self: DisplayServer; id: RID; otherId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_next_on_line", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr otherId])
+
+proc accessibilityUpdateSetPreviousOnLine*(self: DisplayServer; id: RID; otherId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_previous_on_line", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr otherId])
+
+proc accessibilityUpdateSetMemberOf*(self: DisplayServer; id: RID; groupId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_member_of", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr groupId])
+
+proc accessibilityUpdateSetInPageLinkTarget*(self: DisplayServer; id: RID; otherId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_in_page_link_target", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr otherId])
+
+proc accessibilityUpdateSetErrorMessage*(self: DisplayServer; id: RID; otherId: RID): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_error_message", 395945892)
+  methodbind.ptrcall(self, [getPtr id, getPtr otherId])
+
+proc accessibilityUpdateSetLive*(self: DisplayServer; id: RID; live: DisplayServer_AccessibilityLiveMode): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_live", 2683302212)
+  methodbind.ptrcall(self, [getPtr id, getPtr live])
+
+proc accessibilityUpdateAddAction*(self: DisplayServer; id: RID; action: DisplayServer_AccessibilityAction; callable: Callable): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_action", 2898696987)
+  methodbind.ptrcall(self, [getPtr id, getPtr action, getPtr callable])
+
+proc accessibilityUpdateAddCustomAction*(self: DisplayServer; id: RID; actionId: int32; actionDescription: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_add_custom_action", 4153150897)
+  methodbind.ptrcall(self, [getPtr id, getPtr actionId, getPtr actionDescription])
+
+proc accessibilityUpdateSetTableRowCount*(self: DisplayServer; id: RID; count: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_row_count", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr count])
+
+proc accessibilityUpdateSetTableColumnCount*(self: DisplayServer; id: RID; count: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_column_count", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr count])
+
+proc accessibilityUpdateSetTableRowIndex*(self: DisplayServer; id: RID; index: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_row_index", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr index])
+
+proc accessibilityUpdateSetTableColumnIndex*(self: DisplayServer; id: RID; index: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_column_index", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr index])
+
+proc accessibilityUpdateSetTableCellPosition*(self: DisplayServer; id: RID; rowIndex: int32; columnIndex: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_cell_position", 4288446313)
+  methodbind.ptrcall(self, [getPtr id, getPtr rowIndex, getPtr columnIndex])
+
+proc accessibilityUpdateSetTableCellSpan*(self: DisplayServer; id: RID; rowSpan: int32; columnSpan: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_table_cell_span", 4288446313)
+  methodbind.ptrcall(self, [getPtr id, getPtr rowSpan, getPtr columnSpan])
+
+proc accessibilityUpdateSetListItemCount*(self: DisplayServer; id: RID; size: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_item_count", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr size])
+
+proc accessibilityUpdateSetListItemIndex*(self: DisplayServer; id: RID; index: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_item_index", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr index])
+
+proc accessibilityUpdateSetListItemLevel*(self: DisplayServer; id: RID; level: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_item_level", 3411492887)
+  methodbind.ptrcall(self, [getPtr id, getPtr level])
+
+proc accessibilityUpdateSetListItemSelected*(self: DisplayServer; id: RID; selected: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_item_selected", 1265174801)
+  methodbind.ptrcall(self, [getPtr id, getPtr selected])
+
+proc accessibilityUpdateSetListItemExpanded*(self: DisplayServer; id: RID; expanded: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_item_expanded", 1265174801)
+  methodbind.ptrcall(self, [getPtr id, getPtr expanded])
+
+proc accessibilityUpdateSetPopupType*(self: DisplayServer; id: RID; popup: DisplayServer_AccessibilityPopupType): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_popup_type", 2040885448)
+  methodbind.ptrcall(self, [getPtr id, getPtr popup])
+
+proc accessibilityUpdateSetChecked*(self: DisplayServer; id: RID; checekd: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_checked", 1265174801)
+  methodbind.ptrcall(self, [getPtr id, getPtr checekd])
+
+proc accessibilityUpdateSetNumValue*(self: DisplayServer; id: RID; position: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_num_value", 1794382983)
+  methodbind.ptrcall(self, [getPtr id, getPtr position])
+
+proc accessibilityUpdateSetNumRange*(self: DisplayServer; id: RID; min: float64; max: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_num_range", 2513314492)
+  methodbind.ptrcall(self, [getPtr id, getPtr min, getPtr max])
+
+proc accessibilityUpdateSetNumStep*(self: DisplayServer; id: RID; step: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_num_step", 1794382983)
+  methodbind.ptrcall(self, [getPtr id, getPtr step])
+
+proc accessibilityUpdateSetNumJump*(self: DisplayServer; id: RID; jump: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_num_jump", 1794382983)
+  methodbind.ptrcall(self, [getPtr id, getPtr jump])
+
+proc accessibilityUpdateSetScrollX*(self: DisplayServer; id: RID; position: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_scroll_x", 1794382983)
+  methodbind.ptrcall(self, [getPtr id, getPtr position])
+
+proc accessibilityUpdateSetScrollXRange*(self: DisplayServer; id: RID; min: float64; max: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_scroll_x_range", 2513314492)
+  methodbind.ptrcall(self, [getPtr id, getPtr min, getPtr max])
+
+proc accessibilityUpdateSetScrollY*(self: DisplayServer; id: RID; position: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_scroll_y", 1794382983)
+  methodbind.ptrcall(self, [getPtr id, getPtr position])
+
+proc accessibilityUpdateSetScrollYRange*(self: DisplayServer; id: RID; min: float64; max: float64): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_scroll_y_range", 2513314492)
+  methodbind.ptrcall(self, [getPtr id, getPtr min, getPtr max])
+
+proc accessibilityUpdateSetTextDecorations*(self: DisplayServer; id: RID; underline: bool; strikethrough: bool; overline: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_text_decorations", 1672422386)
+  methodbind.ptrcall(self, [getPtr id, getPtr underline, getPtr strikethrough, getPtr overline])
+
+proc accessibilityUpdateSetTextAlign*(self: DisplayServer; id: RID; align: HorizontalAlignment): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_text_align", 3725995085)
+  methodbind.ptrcall(self, [getPtr id, getPtr align])
+
+proc accessibilityUpdateSetTextSelection*(self: DisplayServer; id: RID; textStartId: RID; startChar: int32; textEndId: RID; endChar: int32): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_text_selection", 3119144029)
+  methodbind.ptrcall(self, [getPtr id, getPtr textStartId, getPtr startChar, getPtr textEndId, getPtr endChar])
+
+proc accessibilityUpdateSetFlag*(self: DisplayServer; id: RID; flag: DisplayServer_AccessibilityFlags; value: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_flag", 3758675396)
+  methodbind.ptrcall(self, [getPtr id, getPtr flag, getPtr value])
+
+proc accessibilityUpdateSetClassname*(self: DisplayServer; id: RID; classname: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_classname", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr classname])
+
+proc accessibilityUpdateSetPlaceholder*(self: DisplayServer; id: RID; placeholder: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_placeholder", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr placeholder])
+
+proc accessibilityUpdateSetLanguage*(self: DisplayServer; id: RID; language: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_language", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr language])
+
+proc accessibilityUpdateSetTextOrientation*(self: DisplayServer; id: RID; vertical: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_text_orientation", 1265174801)
+  methodbind.ptrcall(self, [getPtr id, getPtr vertical])
+
+proc accessibilityUpdateSetListOrientation*(self: DisplayServer; id: RID; vertical: bool): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_list_orientation", 1265174801)
+  methodbind.ptrcall(self, [getPtr id, getPtr vertical])
+
+proc accessibilityUpdateSetShortcut*(self: DisplayServer; id: RID; shortcut: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_shortcut", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr shortcut])
+
+proc accessibilityUpdateSetUrl*(self: DisplayServer; id: RID; url: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_url", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr url])
+
+proc accessibilityUpdateSetRoleDescription*(self: DisplayServer; id: RID; description: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_role_description", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr description])
+
+proc accessibilityUpdateSetStateDescription*(self: DisplayServer; id: RID; description: String): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_state_description", 2726140452)
+  methodbind.ptrcall(self, [getPtr id, getPtr description])
+
+proc accessibilityUpdateSetColorValue*(self: DisplayServer; id: RID; color: Color): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_color_value", 2948539648)
+  methodbind.ptrcall(self, [getPtr id, getPtr color])
+
+proc accessibilityUpdateSetBackgroundColor*(self: DisplayServer; id: RID; color: Color): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_background_color", 2948539648)
+  methodbind.ptrcall(self, [getPtr id, getPtr color])
+
+proc accessibilityUpdateSetForegroundColor*(self: DisplayServer; id: RID; color: Color): void =
+  expandMethodBind(className DisplayServer, "accessibility_update_set_foreground_color", 2948539648)
+  methodbind.ptrcall(self, [getPtr id, getPtr color])
+
 proc imeGetSelection*(self: DisplayServer): Vector2i =
   expandMethodBind(className DisplayServer, "ime_get_selection", 3690982128)
   var ret: encoded Vector2i
@@ -811,6 +1136,10 @@ proc hasHardwareKeyboard*(self: DisplayServer): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
+
+proc setHardwareKeyboardConnectionChangeCallback*(self: DisplayServer; callable: Callable): void =
+  expandMethodBind(className DisplayServer, "set_hardware_keyboard_connection_change_callback", 1611583062)
+  methodbind.ptrcall(self, [getPtr callable])
 
 proc cursorSetShape*(self: DisplayServer; shape: DisplayServer_CursorShape): void =
   expandMethodBind(className DisplayServer, "cursor_set_shape", 2026291549)
@@ -848,16 +1177,16 @@ proc dialogInputText*(self: DisplayServer; title: String; description: String; e
   methodbind.ptrcall(self, [getPtr title, getPtr description, getPtr existingText, getPtr callback], addr ret)
   (addr ret).decode_result(Error)
 
-proc fileDialogShow*(self: DisplayServer; title: String; currentDirectory: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; callback: Callable): Error =
-  expandMethodBind(className DisplayServer, "file_dialog_show", 1531299078)
+proc fileDialogShow*(self: DisplayServer; title: String; currentDirectory: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; callback: Callable; parentWindowId: int32 = 0): Error =
+  expandMethodBind(className DisplayServer, "file_dialog_show", 1386825884)
   var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr callback], addr ret)
+  methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr callback, getPtr parentWindowId], addr ret)
   (addr ret).decode_result(Error)
 
-proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirectory: String; root: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; options: TypedArray[Dictionary]; callback: Callable): Error =
-  expandMethodBind(className DisplayServer, "file_dialog_with_options_show", 1305318754)
+proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirectory: String; root: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; options: TypedArray[Dictionary]; callback: Callable; parentWindowId: int32 = 0): Error =
+  expandMethodBind(className DisplayServer, "file_dialog_with_options_show", 1448789813)
   var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr root, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr options, getPtr callback], addr ret)
+  methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr root, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr options, getPtr callback, getPtr parentWindowId], addr ret)
   (addr ret).decode_result(Error)
 
 proc beep*(self: DisplayServer): void =
@@ -907,6 +1236,12 @@ proc keyboardGetLabelFromPhysical*(self: DisplayServer; keycode: Key): Key =
 proc showEmojiAndSymbolPicker*(self: DisplayServer): void =
   expandMethodBind(className DisplayServer, "show_emoji_and_symbol_picker", 4051624405)
   methodbind.ptrcall(self, [])
+
+proc colorPicker*(self: DisplayServer; callback: Callable): bool =
+  expandMethodBind(className DisplayServer, "color_picker", 151643214)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr callback], addr ret)
+  (addr ret).decode_result(bool)
 
 proc processEvents*(self: DisplayServer): void =
   expandMethodBind(className DisplayServer, "process_events", 3218959716)

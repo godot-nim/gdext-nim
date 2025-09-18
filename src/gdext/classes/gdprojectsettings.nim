@@ -34,6 +34,12 @@ proc getGlobalClassList*(self: ProjectSettings): TypedArray[Dictionary] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
+proc getSettingWithOverrideAndCustomFeatures*(self: ProjectSettings; name: StringName; features: PackedStringArray): Variant =
+  expandMethodBind(className ProjectSettings, "get_setting_with_override_and_custom_features", 2434817427)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr name, getPtr features], addr ret)
+  (addr ret).decode_result(Variant)
+
 proc setOrder*(self: ProjectSettings; name: String; position: int32): void =
   expandMethodBind(className ProjectSettings, "set_order", 2956805083)
   methodbind.ptrcall(self, [getPtr name, getPtr position])

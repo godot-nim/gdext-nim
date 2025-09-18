@@ -35,11 +35,13 @@ var `duplicate(PackedByteArray)`: PtrBuiltinMethod
 var `find(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `rfind(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `count(PackedByteArray Int)`: PtrBuiltinMethod
+var `erase(PackedByteArray Int)`: PtrBuiltinMethod
 var `getStringFromAscii(PackedByteArray)`: PtrBuiltinMethod
 var `getStringFromUtf8(PackedByteArray)`: PtrBuiltinMethod
 var `getStringFromUtf16(PackedByteArray)`: PtrBuiltinMethod
 var `getStringFromUtf32(PackedByteArray)`: PtrBuiltinMethod
 var `getStringFromWchar(PackedByteArray)`: PtrBuiltinMethod
+var `getStringFromMultibyteChar(PackedByteArray String)`: PtrBuiltinMethod
 var `hexEncode(PackedByteArray)`: PtrBuiltinMethod
 var `compress(PackedByteArray Int)`: PtrBuiltinMethod
 var `decompress(PackedByteArray Int Int)`: PtrBuiltinMethod
@@ -62,6 +64,13 @@ var `toInt32Array(PackedByteArray)`: PtrBuiltinMethod
 var `toInt64Array(PackedByteArray)`: PtrBuiltinMethod
 var `toFloat32Array(PackedByteArray)`: PtrBuiltinMethod
 var `toFloat64Array(PackedByteArray)`: PtrBuiltinMethod
+var `toVector2Array(PackedByteArray)`: PtrBuiltinMethod
+var `toVector3Array(PackedByteArray)`: PtrBuiltinMethod
+var `toVector4Array(PackedByteArray)`: PtrBuiltinMethod
+var `toColorArray(PackedByteArray)`: PtrBuiltinMethod
+var `bswap16(PackedByteArray Int Int)`: PtrBuiltinMethod
+var `bswap32(PackedByteArray Int Int)`: PtrBuiltinMethod
+var `bswap64(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `encodeU8(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `encodeS8(PackedByteArray Int Int)`: PtrBuiltinMethod
 var `encodeU16(PackedByteArray Int Int)`: PtrBuiltinMethod
@@ -132,6 +141,9 @@ proc rfind*(self: PackedByteArray; value: Int; `from`: Int = -1): Int =
 proc count*(self: PackedByteArray; value: Int): Int =
   let argArr = [getPtr value]
   `count(PackedByteArray Int)`(addr self, addr argArr[0], addr result, 1)
+proc erase*(self: var PackedByteArray; value: Int): bool =
+  let argArr = [getPtr value]
+  `erase(PackedByteArray Int)`(addr self, addr argArr[0], addr result, 1)
 proc getStringFromAscii*(self: PackedByteArray): String =
   `getStringFromAscii(PackedByteArray)`(addr self, nil, addr result, 0)
 proc getStringFromUtf8*(self: PackedByteArray): String =
@@ -142,6 +154,9 @@ proc getStringFromUtf32*(self: PackedByteArray): String =
   `getStringFromUtf32(PackedByteArray)`(addr self, nil, addr result, 0)
 proc getStringFromWchar*(self: PackedByteArray): String =
   `getStringFromWchar(PackedByteArray)`(addr self, nil, addr result, 0)
+proc getStringFromMultibyteChar*(self: PackedByteArray; encoding: String = newGdString()): String =
+  let argArr = [getPtr encoding]
+  `getStringFromMultibyteChar(PackedByteArray String)`(addr self, addr argArr[0], addr result, 1)
 proc hexEncode*(self: PackedByteArray): String =
   `hexEncode(PackedByteArray)`(addr self, nil, addr result, 0)
 proc compress*(self: PackedByteArray; compressionMode: Int = 0): PackedByteArray =
@@ -203,6 +218,23 @@ proc toFloat32Array*(self: PackedByteArray): PackedFloat32Array =
   `toFloat32Array(PackedByteArray)`(addr self, nil, addr result, 0)
 proc toFloat64Array*(self: PackedByteArray): PackedFloat64Array =
   `toFloat64Array(PackedByteArray)`(addr self, nil, addr result, 0)
+proc toVector2Array*(self: PackedByteArray): PackedVector2Array =
+  `toVector2Array(PackedByteArray)`(addr self, nil, addr result, 0)
+proc toVector3Array*(self: PackedByteArray): PackedVector3Array =
+  `toVector3Array(PackedByteArray)`(addr self, nil, addr result, 0)
+proc toVector4Array*(self: PackedByteArray): PackedVector4Array =
+  `toVector4Array(PackedByteArray)`(addr self, nil, addr result, 0)
+proc toColorArray*(self: PackedByteArray): PackedColorArray =
+  `toColorArray(PackedByteArray)`(addr self, nil, addr result, 0)
+proc bswap16*(self: var PackedByteArray; offset: Int = 0; count: Int = -1): void =
+  let argArr = [getPtr offset, getPtr count]
+  `bswap16(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
+proc bswap32*(self: var PackedByteArray; offset: Int = 0; count: Int = -1): void =
+  let argArr = [getPtr offset, getPtr count]
+  `bswap32(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
+proc bswap64*(self: var PackedByteArray; offset: Int = 0; count: Int = -1): void =
+  let argArr = [getPtr offset, getPtr count]
+  `bswap64(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
 proc encodeU8*(self: var PackedByteArray; byteOffset: Int; value: Int): void =
   let argArr = [getPtr byteOffset, getPtr value]
   `encodeU8(PackedByteArray Int Int)`(addr self, addr argArr[0], nil, 2)
@@ -262,11 +294,13 @@ proc load_PackedByteArray_methods {.execon: staticevents.init_engine.on_load_bui
   `find(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "find", 2984303840)
   `rfind(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "rfind", 2984303840)
   `count(PackedByteArray Int)` = load(VariantType_PackedByteArray, "count", 4103005248)
+  `erase(PackedByteArray Int)` = load(VariantType_PackedByteArray, "erase", 694024632)
   `getStringFromAscii(PackedByteArray)` = load(VariantType_PackedByteArray, "get_string_from_ascii", 3942272618)
   `getStringFromUtf8(PackedByteArray)` = load(VariantType_PackedByteArray, "get_string_from_utf8", 3942272618)
   `getStringFromUtf16(PackedByteArray)` = load(VariantType_PackedByteArray, "get_string_from_utf16", 3942272618)
   `getStringFromUtf32(PackedByteArray)` = load(VariantType_PackedByteArray, "get_string_from_utf32", 3942272618)
   `getStringFromWchar(PackedByteArray)` = load(VariantType_PackedByteArray, "get_string_from_wchar", 3942272618)
+  `getStringFromMultibyteChar(PackedByteArray String)` = load(VariantType_PackedByteArray, "get_string_from_multibyte_char", 3134094431)
   `hexEncode(PackedByteArray)` = load(VariantType_PackedByteArray, "hex_encode", 3942272618)
   `compress(PackedByteArray Int)` = load(VariantType_PackedByteArray, "compress", 1845905913)
   `decompress(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "decompress", 2278869132)
@@ -289,6 +323,13 @@ proc load_PackedByteArray_methods {.execon: staticevents.init_engine.on_load_bui
   `toInt64Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_int64_array", 1961294120)
   `toFloat32Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_float32_array", 3575107827)
   `toFloat64Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_float64_array", 1627308337)
+  `toVector2Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_vector2_array", 1660374357)
+  `toVector3Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_vector3_array", 4171207452)
+  `toVector4Array(PackedByteArray)` = load(VariantType_PackedByteArray, "to_vector4_array", 146203628)
+  `toColorArray(PackedByteArray)` = load(VariantType_PackedByteArray, "to_color_array", 3072026941)
+  `bswap16(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "bswap16", 3638975848)
+  `bswap32(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "bswap32", 3638975848)
+  `bswap64(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "bswap64", 3638975848)
   `encodeU8(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "encode_u8", 3638975848)
   `encodeS8(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "encode_s8", 3638975848)
   `encodeU16(PackedByteArray Int Int)` = load(VariantType_PackedByteArray, "encode_u16", 3638975848)

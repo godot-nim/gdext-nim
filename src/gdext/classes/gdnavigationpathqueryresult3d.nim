@@ -46,6 +46,16 @@ proc getPathOwnerIds*(self: NavigationPathQueryResult3D): PackedInt64Array =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
+proc setPathLength*(self: NavigationPathQueryResult3D; length: Float): void =
+  expandMethodBind(className NavigationPathQueryResult3D, "set_path_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length])
+
+proc getPathLength*(self: NavigationPathQueryResult3D): Float =
+  expandMethodBind(className NavigationPathQueryResult3D, "get_path_length", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc reset*(self: NavigationPathQueryResult3D): void =
   expandMethodBind(className NavigationPathQueryResult3D, "reset", 3218959716)
   methodbind.ptrcall(self, [])
@@ -61,3 +71,6 @@ template `pathRids=`*(self: NavigationPathQueryResult3D; value) = self.setPathRi
 
 template pathOwnerIds*(self: NavigationPathQueryResult3D): untyped = self.getPathOwnerIds()
 template `pathOwnerIds=`*(self: NavigationPathQueryResult3D; value) = self.setPathOwnerIds(value)
+
+template pathLength*(self: NavigationPathQueryResult3D): untyped = self.getPathLength()
+template `pathLength=`*(self: NavigationPathQueryResult3D; value) = self.setPathLength(value)

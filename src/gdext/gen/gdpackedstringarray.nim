@@ -36,6 +36,7 @@ var `duplicate(PackedStringArray)`: PtrBuiltinMethod
 var `find(PackedStringArray String Int)`: PtrBuiltinMethod
 var `rfind(PackedStringArray String Int)`: PtrBuiltinMethod
 var `count(PackedStringArray String)`: PtrBuiltinMethod
+var `erase(PackedStringArray String)`: PtrBuiltinMethod
 
 proc get*(self: PackedStringArray; index: Int): String =
   let argArr = [getPtr index]
@@ -96,6 +97,9 @@ proc rfind*(self: PackedStringArray; value: String; `from`: Int = -1): Int =
 proc count*(self: PackedStringArray; value: String): Int =
   let argArr = [getPtr value]
   `count(PackedStringArray String)`(addr self, addr argArr[0], addr result, 1)
+proc erase*(self: var PackedStringArray; value: String): bool =
+  let argArr = [getPtr value]
+  `erase(PackedStringArray String)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedStringArray_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedStringArray Int)` = load(VariantType_PackedStringArray, "get", 2162347432)
@@ -120,3 +124,4 @@ proc load_PackedStringArray_methods {.execon: staticevents.init_engine.on_load_b
   `find(PackedStringArray String Int)` = load(VariantType_PackedStringArray, "find", 1760645412)
   `rfind(PackedStringArray String Int)` = load(VariantType_PackedStringArray, "rfind", 1760645412)
   `count(PackedStringArray String)` = load(VariantType_PackedStringArray, "count", 2920860731)
+  `erase(PackedStringArray String)` = load(VariantType_PackedStringArray, "erase", 816187996)

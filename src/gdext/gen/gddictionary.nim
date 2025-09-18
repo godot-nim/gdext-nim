@@ -26,6 +26,7 @@ var `hash(Dictionary)`: PtrBuiltinMethod
 var `keys(Dictionary)`: PtrBuiltinMethod
 var `values(Dictionary)`: PtrBuiltinMethod
 var `duplicate(Dictionary bool)`: PtrBuiltinMethod
+var `duplicateDeep(Dictionary Int)`: PtrBuiltinMethod
 var `get(Dictionary Variant Variant)`: PtrBuiltinMethod
 var `getOrAdd(Dictionary Variant Variant)`: PtrBuiltinMethod
 var `set(Dictionary Variant Variant)`: PtrBuiltinMethod
@@ -133,6 +134,14 @@ proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =
   nilCheck self
   let argArr = [getPtr deep]
   `duplicate(Dictionary bool)`(addr self, addr argArr[0], addr result, 1)
+proc duplicateDeep*(self: var Dictionary; deepSubresourcesMode: Int = 1): Dictionary =
+  nilCheck self
+  let argArr = [getPtr deepSubresourcesMode]
+  `duplicateDeep(Dictionary Int)`(addr self, addr argArr[0], addr result, 1)
+proc duplicateDeep*(self: Dictionary; deepSubresourcesMode: Int = 1): Dictionary =
+  nilCheck self
+  let argArr = [getPtr deepSubresourcesMode]
+  `duplicateDeep(Dictionary Int)`(addr self, addr argArr[0], addr result, 1)
 proc get*(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
   nilCheck self
   let argArr = [getPtr key, getPtr default]
@@ -261,6 +270,7 @@ proc load_Dictionary_methods {.execon: staticevents.init_engine.on_load_builtinc
   `keys(Dictionary)` = load(VariantType_Dictionary, "keys", 4144163970)
   `values(Dictionary)` = load(VariantType_Dictionary, "values", 4144163970)
   `duplicate(Dictionary bool)` = load(VariantType_Dictionary, "duplicate", 830099069)
+  `duplicateDeep(Dictionary Int)` = load(VariantType_Dictionary, "duplicate_deep", 2160600714)
   `get(Dictionary Variant Variant)` = load(VariantType_Dictionary, "get", 2205440559)
   `getOrAdd(Dictionary Variant Variant)` = load(VariantType_Dictionary, "get_or_add", 1052551076)
   `set(Dictionary Variant Variant)` = load(VariantType_Dictionary, "set", 2175348267)

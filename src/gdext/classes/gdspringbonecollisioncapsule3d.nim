@@ -26,6 +26,16 @@ proc getHeight*(self: SpringBoneCollisionCapsule3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setMidHeight*(self: SpringBoneCollisionCapsule3D; midHeight: Float): void =
+  expandMethodBind(className SpringBoneCollisionCapsule3D, "set_mid_height", 373806689)
+  methodbind.ptrcall(self, [getPtr midHeight])
+
+proc getMidHeight*(self: SpringBoneCollisionCapsule3D): Float =
+  expandMethodBind(className SpringBoneCollisionCapsule3D, "get_mid_height", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setInside*(self: SpringBoneCollisionCapsule3D; enabled: bool): void =
   expandMethodBind(className SpringBoneCollisionCapsule3D, "set_inside", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -41,6 +51,9 @@ template `radius=`*(self: SpringBoneCollisionCapsule3D; value) = self.setRadius(
 
 template height*(self: SpringBoneCollisionCapsule3D): untyped = self.getHeight()
 template `height=`*(self: SpringBoneCollisionCapsule3D; value) = self.setHeight(value)
+
+template midHeight*(self: SpringBoneCollisionCapsule3D): untyped = self.getMidHeight()
+template `midHeight=`*(self: SpringBoneCollisionCapsule3D; value) = self.setMidHeight(value)
 
 template inside*(self: SpringBoneCollisionCapsule3D): untyped = self.isInside()
 template `inside=`*(self: SpringBoneCollisionCapsule3D; value) = self.setInside(value)

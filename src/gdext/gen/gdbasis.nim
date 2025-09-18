@@ -47,6 +47,7 @@ var `orthonormalized(Basis)`: PtrBuiltinMethod
 var `determinant(Basis)`: PtrBuiltinMethod
 var `rotated(Basis Vector3 Float)`: PtrBuiltinMethod
 var `scaled(Basis Vector3)`: PtrBuiltinMethod
+var `scaledLocal(Basis Vector3)`: PtrBuiltinMethod
 var `getScale(Basis)`: PtrBuiltinMethod
 var `getEuler(Basis Int)`: PtrBuiltinMethod
 var `tdotx(Basis Vector3)`: PtrBuiltinMethod
@@ -75,6 +76,9 @@ proc rotated*(self: Basis; axis: Vector3; angle: Float): Basis =
 proc scaled*(self: Basis; scale: Vector3): Basis =
   let argArr = [getPtr scale]
   `scaled(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+proc scaledLocal*(self: Basis; scale: Vector3): Basis =
+  let argArr = [getPtr scale]
+  `scaledLocal(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
 proc getScale*(self: Basis): Vector3 =
   `getScale(Basis)`(addr self, nil, addr result, 0)
 proc getEuler*(self: Basis; order: Int = 2): Vector3 =
@@ -118,6 +122,7 @@ proc load_Basis_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `determinant(Basis)` = load(VariantType_Basis, "determinant", 466405837)
   `rotated(Basis Vector3 Float)` = load(VariantType_Basis, "rotated", 1998708965)
   `scaled(Basis Vector3)` = load(VariantType_Basis, "scaled", 3934786792)
+  `scaledLocal(Basis Vector3)` = load(VariantType_Basis, "scaled_local", 3934786792)
   `getScale(Basis)` = load(VariantType_Basis, "get_scale", 1776574132)
   `getEuler(Basis Int)` = load(VariantType_Basis, "get_euler", 1394941017)
   `tdotx(Basis Vector3)` = load(VariantType_Basis, "tdotx", 1047977935)

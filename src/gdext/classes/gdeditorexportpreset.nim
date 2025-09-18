@@ -42,6 +42,12 @@ proc getFileExportMode*(self: EditorExportPreset; path: String; default: EditorE
   methodbind.ptrcall(self, [getPtr path, getPtr default], addr ret)
   (addr ret).decode_result(EditorExportPreset_FileExportMode)
 
+proc getProjectSetting*(self: EditorExportPreset; name: StringName): Variant =
+  expandMethodBind(className EditorExportPreset, "get_project_setting", 2138907829)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr name], addr ret)
+  (addr ret).decode_result(Variant)
+
 proc getPresetName*(self: EditorExportPreset): String =
   expandMethodBind(className EditorExportPreset, "get_preset_name", 201670096)
   var ret: encoded String

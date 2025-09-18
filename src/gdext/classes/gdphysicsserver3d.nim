@@ -618,6 +618,16 @@ proc softBodyGetLinearStiffness*(self: PhysicsServer3D; body: RID): Float =
   methodbind.ptrcall(self, [getPtr body], addr ret)
   (addr ret).decode_result(Float)
 
+proc softBodySetShrinkingFactor*(self: PhysicsServer3D; body: RID; shrinkingFactor: Float): void =
+  expandMethodBind(className PhysicsServer3D, "soft_body_set_shrinking_factor", 1794382983)
+  methodbind.ptrcall(self, [getPtr body, getPtr shrinkingFactor])
+
+proc softBodyGetShrinkingFactor*(self: PhysicsServer3D; body: RID): Float =
+  expandMethodBind(className PhysicsServer3D, "soft_body_get_shrinking_factor", 866169185)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [getPtr body], addr ret)
+  (addr ret).decode_result(Float)
+
 proc softBodySetPressureCoefficient*(self: PhysicsServer3D; body: RID; pressureCoefficient: Float): void =
   expandMethodBind(className PhysicsServer3D, "soft_body_set_pressure_coefficient", 1794382983)
   methodbind.ptrcall(self, [getPtr body, getPtr pressureCoefficient])
@@ -671,6 +681,22 @@ proc softBodyIsPointPinned*(self: PhysicsServer3D; body: RID; pointIndex: int32)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr body, getPtr pointIndex], addr ret)
   (addr ret).decode_result(bool)
+
+proc softBodyApplyPointImpulse*(self: PhysicsServer3D; body: RID; pointIndex: int32; impulse: Vector3): void =
+  expandMethodBind(className PhysicsServer3D, "soft_body_apply_point_impulse", 831953689)
+  methodbind.ptrcall(self, [getPtr body, getPtr pointIndex, getPtr impulse])
+
+proc softBodyApplyPointForce*(self: PhysicsServer3D; body: RID; pointIndex: int32; force: Vector3): void =
+  expandMethodBind(className PhysicsServer3D, "soft_body_apply_point_force", 831953689)
+  methodbind.ptrcall(self, [getPtr body, getPtr pointIndex, getPtr force])
+
+proc softBodyApplyCentralImpulse*(self: PhysicsServer3D; body: RID; impulse: Vector3): void =
+  expandMethodBind(className PhysicsServer3D, "soft_body_apply_central_impulse", 3227306858)
+  methodbind.ptrcall(self, [getPtr body, getPtr impulse])
+
+proc softBodyApplyCentralForce*(self: PhysicsServer3D; body: RID; force: Vector3): void =
+  expandMethodBind(className PhysicsServer3D, "soft_body_apply_central_force", 3227306858)
+  methodbind.ptrcall(self, [getPtr body, getPtr force])
 
 proc jointCreate*(self: PhysicsServer3D): RID =
   expandMethodBind(className PhysicsServer3D, "joint_create", 529393457)

@@ -20,6 +20,12 @@ proc getDirection*(self: TextParagraph): TextServer_Direction =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_Direction)
 
+proc getInferredDirection*(self: TextParagraph): TextServer_Direction =
+  expandMethodBind(className TextParagraph, "get_inferred_direction", 2516697328)
+  var ret: encoded TextServer_Direction
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TextServer_Direction)
+
 proc setCustomPunctuation*(self: TextParagraph; customPunctuation: String): void =
   expandMethodBind(className TextParagraph, "set_custom_punctuation", 83702148)
   methodbind.ptrcall(self, [getPtr customPunctuation])
@@ -186,6 +192,12 @@ proc getDropcapRid*(self: TextParagraph): RID =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
+proc getRange*(self: TextParagraph): Vector2i =
+  expandMethodBind(className TextParagraph, "get_range", 3690982128)
+  var ret: encoded Vector2i
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2i)
+
 proc getLineCount*(self: TextParagraph): int32 =
   expandMethodBind(className TextParagraph, "get_line_count", 3905245786)
   var ret: encoded int32
@@ -278,29 +290,29 @@ proc getDropcapLines*(self: TextParagraph): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc draw*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw", 1567802413)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color, getPtr dcColor])
+proc draw*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw", 1492808103)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color, getPtr dcColor, getPtr oversampling])
 
-proc drawOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw_outline", 1893131224)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color, getPtr dcColor])
+proc drawOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); dcColor: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw_outline", 3820500590)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color, getPtr dcColor, getPtr oversampling])
 
-proc drawLine*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw_line", 1242169894)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr line, getPtr color])
+proc drawLine*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw_line", 828033758)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr line, getPtr color, getPtr oversampling])
 
-proc drawLineOutline*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw_line_outline", 2664926980)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr line, getPtr outlineSize, getPtr color])
+proc drawLineOutline*(self: TextParagraph; canvas: RID; pos: Vector2; line: int32; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw_line_outline", 2822696703)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr line, getPtr outlineSize, getPtr color, getPtr oversampling])
 
-proc drawDropcap*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw_dropcap", 856975658)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color])
+proc drawDropcap*(self: TextParagraph; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw_dropcap", 3625105422)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color, getPtr oversampling])
 
-proc drawDropcapOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextParagraph, "draw_dropcap_outline", 1343401456)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color])
+proc drawDropcapOutline*(self: TextParagraph; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextParagraph, "draw_dropcap_outline", 2592177763)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color, getPtr oversampling])
 
 proc hitTest*(self: TextParagraph; coords: Vector2): int32 =
   expandMethodBind(className TextParagraph, "hit_test", 3820158470)

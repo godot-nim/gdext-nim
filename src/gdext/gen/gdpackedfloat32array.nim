@@ -36,6 +36,7 @@ var `duplicate(PackedFloat32Array)`: PtrBuiltinMethod
 var `find(PackedFloat32Array Float Int)`: PtrBuiltinMethod
 var `rfind(PackedFloat32Array Float Int)`: PtrBuiltinMethod
 var `count(PackedFloat32Array Float)`: PtrBuiltinMethod
+var `erase(PackedFloat32Array Float)`: PtrBuiltinMethod
 
 proc get*(self: PackedFloat32Array; index: Int): Float =
   let argArr = [getPtr index]
@@ -96,6 +97,9 @@ proc rfind*(self: PackedFloat32Array; value: Float; `from`: Int = -1): Int =
 proc count*(self: PackedFloat32Array; value: Float): Int =
   let argArr = [getPtr value]
   `count(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+proc erase*(self: var PackedFloat32Array; value: Float): bool =
+  let argArr = [getPtr value]
+  `erase(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedFloat32Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedFloat32Array Int)` = load(VariantType_PackedFloat32Array, "get", 1401583798)
@@ -120,3 +124,4 @@ proc load_PackedFloat32Array_methods {.execon: staticevents.init_engine.on_load_
   `find(PackedFloat32Array Float Int)` = load(VariantType_PackedFloat32Array, "find", 1343150241)
   `rfind(PackedFloat32Array Float Int)` = load(VariantType_PackedFloat32Array, "rfind", 1343150241)
   `count(PackedFloat32Array Float)` = load(VariantType_PackedFloat32Array, "count", 2859915090)
+  `erase(PackedFloat32Array Float)` = load(VariantType_PackedFloat32Array, "erase", 4094791666)

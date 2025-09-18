@@ -188,6 +188,22 @@ proc regionCreate*(self: NavigationServer3D): RID =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
+proc regionGetIterationId*(self: NavigationServer3D; region: RID): uint32 =
+  expandMethodBind(className NavigationServer3D, "region_get_iteration_id", 2198884583)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(uint32)
+
+proc regionSetUseAsyncIterations*(self: NavigationServer3D; region: RID; enabled: bool): void =
+  expandMethodBind(className NavigationServer3D, "region_set_use_async_iterations", 1265174801)
+  methodbind.ptrcall(self, [getPtr region, getPtr enabled])
+
+proc regionGetUseAsyncIterations*(self: NavigationServer3D; region: RID): bool =
+  expandMethodBind(className NavigationServer3D, "region_get_use_async_iterations", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(bool)
+
 proc regionSetEnabled*(self: NavigationServer3D; region: RID; enabled: bool): void =
   expandMethodBind(className NavigationServer3D, "region_set_enabled", 1265174801)
   methodbind.ptrcall(self, [getPtr region, getPtr enabled])
@@ -335,6 +351,12 @@ proc linkCreate*(self: NavigationServer3D): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+
+proc linkGetIterationId*(self: NavigationServer3D; link: RID): uint32 =
+  expandMethodBind(className NavigationServer3D, "link_get_iteration_id", 2198884583)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [getPtr link], addr ret)
+  (addr ret).decode_result(uint32)
 
 proc linkSetMap*(self: NavigationServer3D; link: RID; map: RID): void =
   expandMethodBind(className NavigationServer3D, "link_set_map", 395945892)

@@ -106,6 +106,16 @@ proc getDragAreaControl*(self: SplitContainer): Control =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control)
 
+proc setTouchDraggerEnabled*(self: SplitContainer; enabled: bool): void =
+  expandMethodBind(className SplitContainer, "set_touch_dragger_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isTouchDraggerEnabled*(self: SplitContainer): bool =
+  expandMethodBind(className SplitContainer, "is_touch_dragger_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template splitOffset*(self: SplitContainer): untyped = self.getSplitOffset()
 template `splitOffset=`*(self: SplitContainer; value) = self.setSplitOffset(value)
 
@@ -120,6 +130,9 @@ template `draggerVisibility=`*(self: SplitContainer; value) = self.setDraggerVis
 
 template vertical*(self: SplitContainer): untyped = self.isVertical()
 template `vertical=`*(self: SplitContainer; value) = self.setVertical(value)
+
+template touchDraggerEnabled*(self: SplitContainer): untyped = self.isTouchDraggerEnabled()
+template `touchDraggerEnabled=`*(self: SplitContainer; value) = self.setTouchDraggerEnabled(value)
 
 template dragAreaMarginBegin*(self: SplitContainer): untyped = self.getDragAreaMarginBegin()
 template `dragAreaMarginBegin=`*(self: SplitContainer; value) = self.setDragAreaMarginBegin(value)

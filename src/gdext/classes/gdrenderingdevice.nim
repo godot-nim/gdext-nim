@@ -27,10 +27,10 @@ proc textureCreateSharedFromSlice*(self: RenderingDevice; view: gdref RDTextureV
   methodbind.ptrcall(self, [getPtr view, getPtr withTexture, getPtr layer, getPtr mipmap, getPtr mipmaps, getPtr sliceType], addr ret)
   (addr ret).decode_result(RID)
 
-proc textureCreateFromExtension*(self: RenderingDevice; `type`: RenderingDevice_TextureType; format: RenderingDevice_DataFormat; samples: RenderingDevice_TextureSamples; usageFlags: set[RenderingDevice_TextureUsageBits]; image: uint64; width: uint64; height: uint64; depth: uint64; layers: uint64): RID =
-  expandMethodBind(className RenderingDevice, "texture_create_from_extension", 1397171480)
+proc textureCreateFromExtension*(self: RenderingDevice; `type`: RenderingDevice_TextureType; format: RenderingDevice_DataFormat; samples: RenderingDevice_TextureSamples; usageFlags: set[RenderingDevice_TextureUsageBits]; image: uint64; width: uint64; height: uint64; depth: uint64; layers: uint64; mipmaps: uint64 = 1): RID =
+  expandMethodBind(className RenderingDevice, "texture_create_from_extension", 3732868568)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr `type`, getPtr format, getPtr samples, getPtr usageFlags, getPtr image, getPtr width, getPtr height, getPtr depth, getPtr layers], addr ret)
+  methodbind.ptrcall(self, [getPtr `type`, getPtr format, getPtr samples, getPtr usageFlags, getPtr image, getPtr width, getPtr height, getPtr depth, getPtr layers, getPtr mipmaps], addr ret)
   (addr ret).decode_result(RID)
 
 proc textureUpdate*(self: RenderingDevice; texture: RID; layer: uint32; data: PackedByteArray): Error =

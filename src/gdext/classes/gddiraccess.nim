@@ -228,10 +228,22 @@ proc getIncludeHidden*(self: DirAccess): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc getFilesystemType*(self: DirAccess): String =
+  expandMethodBind(className DirAccess, "get_filesystem_type", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc isCaseSensitive*(self: DirAccess; path: String): bool =
   expandMethodBind(className DirAccess, "is_case_sensitive", 3927539163)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isEquivalent*(self: DirAccess; pathA: String; pathB: String): bool =
+  expandMethodBind(className DirAccess, "is_equivalent", 820780508)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr pathA, getPtr pathB], addr ret)
   (addr ret).decode_result(bool)
 
 template includeNavigational*(self: DirAccess): untyped = self.getIncludeNavigational()

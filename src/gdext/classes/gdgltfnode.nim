@@ -140,6 +140,16 @@ proc setLight*(self: GLTFNode; light: int32): void =
   expandMethodBind(className GLTFNode, "set_light", 1286410249)
   methodbind.ptrcall(self, [getPtr light])
 
+proc getVisible*(self: GLTFNode): bool =
+  expandMethodBind(className GLTFNode, "get_visible", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setVisible*(self: GLTFNode; visible: bool): void =
+  expandMethodBind(className GLTFNode, "set_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible])
+
 proc getAdditionalData*(self: GLTFNode; extensionName: StringName): Variant =
   expandMethodBind(className GLTFNode, "get_additional_data", 2138907829)
   var ret: encoded Variant
@@ -194,3 +204,6 @@ template `children=`*(self: GLTFNode; value) = self.setChildren(value)
 
 template light*(self: GLTFNode): untyped = self.getLight()
 template `light=`*(self: GLTFNode; value) = self.setLight(value)
+
+template visible*(self: GLTFNode): untyped = self.getVisible()
+template `visible=`*(self: GLTFNode; value) = self.setVisible(value)

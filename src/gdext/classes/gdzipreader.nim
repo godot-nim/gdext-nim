@@ -35,3 +35,9 @@ proc fileExists*(self: ZIPReader; path: String; caseSensitive: bool = true): boo
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
   (addr ret).decode_result(bool)
+
+proc getCompressionLevel*(self: ZIPReader; path: String; caseSensitive: bool = true): int32 =
+  expandMethodBind(className ZIPReader, "get_compression_level", 3694577386)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
+  (addr ret).decode_result(int32)

@@ -36,6 +36,7 @@ var `duplicate(PackedVector4Array)`: PtrBuiltinMethod
 var `find(PackedVector4Array Vector4 Int)`: PtrBuiltinMethod
 var `rfind(PackedVector4Array Vector4 Int)`: PtrBuiltinMethod
 var `count(PackedVector4Array Vector4)`: PtrBuiltinMethod
+var `erase(PackedVector4Array Vector4)`: PtrBuiltinMethod
 
 proc get*(self: PackedVector4Array; index: Int): Vector4 =
   let argArr = [getPtr index]
@@ -96,6 +97,9 @@ proc rfind*(self: PackedVector4Array; value: Vector4; `from`: Int = -1): Int =
 proc count*(self: PackedVector4Array; value: Vector4): Int =
   let argArr = [getPtr value]
   `count(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+proc erase*(self: var PackedVector4Array; value: Vector4): bool =
+  let argArr = [getPtr value]
+  `erase(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedVector4Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedVector4Array Int)` = load(VariantType_PackedVector4Array, "get", 1227817084)
@@ -120,3 +124,4 @@ proc load_PackedVector4Array_methods {.execon: staticevents.init_engine.on_load_
   `find(PackedVector4Array Vector4 Int)` = load(VariantType_PackedVector4Array, "find", 3091171314)
   `rfind(PackedVector4Array Vector4 Int)` = load(VariantType_PackedVector4Array, "rfind", 3091171314)
   `count(PackedVector4Array Vector4)` = load(VariantType_PackedVector4Array, "count", 3956594488)
+  `erase(PackedVector4Array Vector4)` = load(VariantType_PackedVector4Array, "erase", 3289167688)

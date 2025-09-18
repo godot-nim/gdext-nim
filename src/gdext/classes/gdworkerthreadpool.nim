@@ -24,6 +24,12 @@ proc waitForTaskCompletion*(self: WorkerThreadPool; taskId: int64): Error =
   methodbind.ptrcall(self, [getPtr taskId], addr ret)
   (addr ret).decode_result(Error)
 
+proc getCallerTaskId*(self: WorkerThreadPool): int64 =
+  expandMethodBind(className WorkerThreadPool, "get_caller_task_id", 3905245786)
+  var ret: encoded int64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int64)
+
 proc addGroupTask*(self: WorkerThreadPool; action: Callable; elements: int32; tasksNeeded: int32 = -1; highPriority: bool = false; description: String = newGdString()): int64 =
   expandMethodBind(className WorkerThreadPool, "add_group_task", 1801953219)
   var ret: encoded int64
@@ -45,3 +51,9 @@ proc getGroupProcessedElementCount*(self: WorkerThreadPool; groupId: int64): uin
 proc waitForGroupTaskCompletion*(self: WorkerThreadPool; groupId: int64): void =
   expandMethodBind(className WorkerThreadPool, "wait_for_group_task_completion", 1286410249)
   methodbind.ptrcall(self, [getPtr groupId])
+
+proc getCallerGroupId*(self: WorkerThreadPool): int64 =
+  expandMethodBind(className WorkerThreadPool, "get_caller_group_id", 3905245786)
+  var ret: encoded int64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int64)

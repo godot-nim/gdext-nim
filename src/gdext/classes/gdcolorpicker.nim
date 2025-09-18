@@ -46,6 +46,16 @@ proc isEditingAlpha*(self: ColorPicker): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setEditIntensity*(self: ColorPicker; show: bool): void =
+  expandMethodBind(className ColorPicker, "set_edit_intensity", 2586408642)
+  methodbind.ptrcall(self, [getPtr show])
+
+proc isEditingIntensity*(self: ColorPicker): bool =
+  expandMethodBind(className ColorPicker, "is_editing_intensity", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setCanAddSwatches*(self: ColorPicker; enabled: bool): void =
   expandMethodBind(className ColorPicker, "set_can_add_swatches", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -149,6 +159,9 @@ template `color=`*(self: ColorPicker; value) = self.setPickColor(value)
 
 template editAlpha*(self: ColorPicker): untyped = self.isEditingAlpha()
 template `editAlpha=`*(self: ColorPicker; value) = self.setEditAlpha(value)
+
+template editIntensity*(self: ColorPicker): untyped = self.isEditingIntensity()
+template `editIntensity=`*(self: ColorPicker; value) = self.setEditIntensity(value)
 
 template colorMode*(self: ColorPicker): untyped = self.getColorMode()
 template `colorMode=`*(self: ColorPicker; value) = self.setColorMode(value)

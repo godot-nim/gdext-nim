@@ -286,6 +286,16 @@ proc getDepthDrawMode*(self: BaseMaterial3D): BaseMaterial3D_DepthDrawMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseMaterial3D_DepthDrawMode)
 
+proc setDepthTest*(self: BaseMaterial3D; depthTest: BaseMaterial3D_DepthTest): void =
+  expandMethodBind(className BaseMaterial3D, "set_depth_test", 3918692338)
+  methodbind.ptrcall(self, [getPtr depthTest])
+
+proc getDepthTest*(self: BaseMaterial3D): BaseMaterial3D_DepthTest =
+  expandMethodBind(className BaseMaterial3D, "get_depth_test", 3434785811)
+  var ret: encoded BaseMaterial3D_DepthTest
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(BaseMaterial3D_DepthTest)
+
 proc setCullMode*(self: BaseMaterial3D; cullMode: BaseMaterial3D_CullMode): void =
   expandMethodBind(className BaseMaterial3D, "set_cull_mode", 2338909218)
   methodbind.ptrcall(self, [getPtr cullMode])
@@ -686,6 +696,86 @@ proc getDistanceFadeMinDistance*(self: BaseMaterial3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setZClipScale*(self: BaseMaterial3D; scale: Float): void =
+  expandMethodBind(className BaseMaterial3D, "set_z_clip_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale])
+
+proc getZClipScale*(self: BaseMaterial3D): Float =
+  expandMethodBind(className BaseMaterial3D, "get_z_clip_scale", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setFovOverride*(self: BaseMaterial3D; scale: Float): void =
+  expandMethodBind(className BaseMaterial3D, "set_fov_override", 373806689)
+  methodbind.ptrcall(self, [getPtr scale])
+
+proc getFovOverride*(self: BaseMaterial3D): Float =
+  expandMethodBind(className BaseMaterial3D, "get_fov_override", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setStencilMode*(self: BaseMaterial3D; stencilMode: BaseMaterial3D_StencilMode): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_mode", 2272367200)
+  methodbind.ptrcall(self, [getPtr stencilMode])
+
+proc getStencilMode*(self: BaseMaterial3D): BaseMaterial3D_StencilMode =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_mode", 2908443456)
+  var ret: encoded BaseMaterial3D_StencilMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(BaseMaterial3D_StencilMode)
+
+proc setStencilFlags*(self: BaseMaterial3D; stencilFlags: int32): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_flags", 1286410249)
+  methodbind.ptrcall(self, [getPtr stencilFlags])
+
+proc getStencilFlags*(self: BaseMaterial3D): int32 =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_flags", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc setStencilCompare*(self: BaseMaterial3D; stencilCompare: BaseMaterial3D_StencilCompare): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_compare", 3741726481)
+  methodbind.ptrcall(self, [getPtr stencilCompare])
+
+proc getStencilCompare*(self: BaseMaterial3D): BaseMaterial3D_StencilCompare =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_compare", 2824600492)
+  var ret: encoded BaseMaterial3D_StencilCompare
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(BaseMaterial3D_StencilCompare)
+
+proc setStencilReference*(self: BaseMaterial3D; stencilReference: int32): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_reference", 1286410249)
+  methodbind.ptrcall(self, [getPtr stencilReference])
+
+proc getStencilReference*(self: BaseMaterial3D): int32 =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_reference", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc setStencilEffectColor*(self: BaseMaterial3D; stencilColor: Color): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_effect_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr stencilColor])
+
+proc getStencilEffectColor*(self: BaseMaterial3D): Color =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_effect_color", 3444240500)
+  var ret: encoded Color
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Color)
+
+proc setStencilEffectOutlineThickness*(self: BaseMaterial3D; stencilOutlineThickness: Float): void =
+  expandMethodBind(className BaseMaterial3D, "set_stencil_effect_outline_thickness", 373806689)
+  methodbind.ptrcall(self, [getPtr stencilOutlineThickness])
+
+proc getStencilEffectOutlineThickness*(self: BaseMaterial3D): Float =
+  expandMethodBind(className BaseMaterial3D, "get_stencil_effect_outline_thickness", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 template transparency*(self: BaseMaterial3D): untyped = self.getTransparency()
 template `transparency=`*(self: BaseMaterial3D; value) = self.setTransparency(value)
 
@@ -713,6 +803,9 @@ template `depthDrawMode=`*(self: BaseMaterial3D; value) = self.setDepthDrawMode(
 template noDepthTest*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(0))
 template `noDepthTest=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(0), value)
 
+template depthTest*(self: BaseMaterial3D): untyped = self.getDepthTest()
+template `depthTest=`*(self: BaseMaterial3D; value) = self.setDepthTest(value)
+
 template shadingMode*(self: BaseMaterial3D): untyped = self.getShadingMode()
 template `shadingMode=`*(self: BaseMaterial3D; value) = self.setShadingMode(value)
 
@@ -727,6 +820,9 @@ template `disableAmbientLight=`*(self: BaseMaterial3D; value) = self.setFlag(Bas
 
 template disableFog*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(21))
 template `disableFog=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(21), value)
+
+template disableSpecularOcclusion*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(22))
+template `disableSpecularOcclusion=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(22), value)
 
 template vertexColorUseAsAlbedo*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(1))
 template `vertexColorUseAsAlbedo=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(1), value)
@@ -799,6 +895,12 @@ template `normalScale=`*(self: BaseMaterial3D; value) = self.setNormalScale(valu
 
 template normalTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(4))
 template `normalTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(4), value)
+
+template bentNormalEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(12))
+template `bentNormalEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(12), value)
+
+template bentNormalTexture*(self: BaseMaterial3D): untyped = self.getTexture(BaseMaterial3D_TextureParam(18))
+template `bentNormalTexture=`*(self: BaseMaterial3D; value) = self.setTexture(BaseMaterial3D_TextureParam(18), value)
 
 template rimEnabled*(self: BaseMaterial3D): untyped = self.getFeature(BaseMaterial3D_Feature(2))
 template `rimEnabled=`*(self: BaseMaterial3D; value) = self.setFeature(BaseMaterial3D_Feature(2), value)
@@ -1016,6 +1118,18 @@ template `pointSize=`*(self: BaseMaterial3D; value) = self.setPointSize(value)
 template useParticleTrails*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(19))
 template `useParticleTrails=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(19), value)
 
+template useZClipScale*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(23))
+template `useZClipScale=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(23), value)
+
+template zClipScale*(self: BaseMaterial3D): untyped = self.getZClipScale()
+template `zClipScale=`*(self: BaseMaterial3D; value) = self.setZClipScale(value)
+
+template useFovOverride*(self: BaseMaterial3D): untyped = self.getFlag(BaseMaterial3D_Flags(24))
+template `useFovOverride=`*(self: BaseMaterial3D; value) = self.setFlag(BaseMaterial3D_Flags(24), value)
+
+template fovOverride*(self: BaseMaterial3D): untyped = self.getFovOverride()
+template `fovOverride=`*(self: BaseMaterial3D; value) = self.setFovOverride(value)
+
 template proximityFadeEnabled*(self: BaseMaterial3D): untyped = self.isProximityFadeEnabled()
 template `proximityFadeEnabled=`*(self: BaseMaterial3D; value) = self.setProximityFadeEnabled(value)
 
@@ -1036,3 +1150,21 @@ template `distanceFadeMinDistance=`*(self: BaseMaterial3D; value) = self.setDist
 
 template distanceFadeMaxDistance*(self: BaseMaterial3D): untyped = self.getDistanceFadeMaxDistance()
 template `distanceFadeMaxDistance=`*(self: BaseMaterial3D; value) = self.setDistanceFadeMaxDistance(value)
+
+template stencilMode*(self: BaseMaterial3D): untyped = self.getStencilMode()
+template `stencilMode=`*(self: BaseMaterial3D; value) = self.setStencilMode(value)
+
+template stencilFlags*(self: BaseMaterial3D): untyped = self.getStencilFlags()
+template `stencilFlags=`*(self: BaseMaterial3D; value) = self.setStencilFlags(value)
+
+template stencilCompare*(self: BaseMaterial3D): untyped = self.getStencilCompare()
+template `stencilCompare=`*(self: BaseMaterial3D; value) = self.setStencilCompare(value)
+
+template stencilReference*(self: BaseMaterial3D): untyped = self.getStencilReference()
+template `stencilReference=`*(self: BaseMaterial3D; value) = self.setStencilReference(value)
+
+template stencilColor*(self: BaseMaterial3D): untyped = self.getStencilEffectColor()
+template `stencilColor=`*(self: BaseMaterial3D; value) = self.setStencilEffectColor(value)
+
+template stencilOutlineThickness*(self: BaseMaterial3D): untyped = self.getStencilEffectOutlineThickness()
+template `stencilOutlineThickness=`*(self: BaseMaterial3D; value) = self.setStencilEffectOutlineThickness(value)

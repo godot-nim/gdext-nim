@@ -148,6 +148,16 @@ proc isForceAutohinter*(self: FontFile): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setModulateColorGlyphs*(self: FontFile; modulate: bool): void =
+  expandMethodBind(className FontFile, "set_modulate_color_glyphs", 2586408642)
+  methodbind.ptrcall(self, [getPtr modulate])
+
+proc isModulateColorGlyphs*(self: FontFile): bool =
+  expandMethodBind(className FontFile, "is_modulate_color_glyphs", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setHinting*(self: FontFile; hinting: TextServer_Hinting): void =
   expandMethodBind(className FontFile, "set_hinting", 1827459492)
   methodbind.ptrcall(self, [getPtr hinting])
@@ -566,11 +576,11 @@ template `allowSystemFallback=`*(self: FontFile; value) = self.setAllowSystemFal
 template forceAutohinter*(self: FontFile): untyped = self.isForceAutohinter()
 template `forceAutohinter=`*(self: FontFile; value) = self.setForceAutohinter(value)
 
+template modulateColorGlyphs*(self: FontFile): untyped = self.isModulateColorGlyphs()
+template `modulateColorGlyphs=`*(self: FontFile; value) = self.setModulateColorGlyphs(value)
+
 template hinting*(self: FontFile): untyped = self.getHinting()
 template `hinting=`*(self: FontFile; value) = self.setHinting(value)
-
-template oversampling*(self: FontFile): untyped = self.getOversampling()
-template `oversampling=`*(self: FontFile; value) = self.setOversampling(value)
 
 template fixedSize*(self: FontFile): untyped = self.getFixedSize()
 template `fixedSize=`*(self: FontFile; value) = self.setFixedSize(value)
@@ -580,3 +590,6 @@ template `fixedSizeScaleMode=`*(self: FontFile; value) = self.setFixedSizeScaleM
 
 template opentypeFeatureOverrides*(self: FontFile): untyped = self.getOpentypeFeatureOverrides()
 template `opentypeFeatureOverrides=`*(self: FontFile; value) = self.setOpentypeFeatureOverrides(value)
+
+template oversampling*(self: FontFile): untyped = self.getOversampling()
+template `oversampling=`*(self: FontFile; value) = self.setOversampling(value)

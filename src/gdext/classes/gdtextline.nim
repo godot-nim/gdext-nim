@@ -20,6 +20,12 @@ proc getDirection*(self: TextLine): TextServer_Direction =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_Direction)
 
+proc getInferredDirection*(self: TextLine): TextServer_Direction =
+  expandMethodBind(className TextLine, "get_inferred_direction", 2516697328)
+  var ret: encoded TextServer_Direction
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TextServer_Direction)
+
 proc setOrientation*(self: TextLine; orientation: TextServer_Orientation): void =
   expandMethodBind(className TextLine, "set_orientation", 42823726)
   methodbind.ptrcall(self, [getPtr orientation])
@@ -180,13 +186,13 @@ proc getLineUnderlineThickness*(self: TextLine): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc draw*(self: TextLine; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextLine, "draw", 856975658)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color])
+proc draw*(self: TextLine; canvas: RID; pos: Vector2; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextLine, "draw", 3625105422)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr color, getPtr oversampling])
 
-proc drawOutline*(self: TextLine; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextLine, "draw_outline", 1343401456)
-  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color])
+proc drawOutline*(self: TextLine; canvas: RID; pos: Vector2; outlineSize: int32 = 1; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextLine, "draw_outline", 2592177763)
+  methodbind.ptrcall(self, [getPtr canvas, getPtr pos, getPtr outlineSize, getPtr color, getPtr oversampling])
 
 proc hitTest*(self: TextLine; coords: Float): int32 =
   expandMethodBind(className TextLine, "hit_test", 2401831903)

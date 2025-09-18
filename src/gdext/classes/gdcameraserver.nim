@@ -6,6 +6,16 @@ import gdobject; export gdobject
 
 expandOnClassImported(CameraServer, Object)
 
+proc setMonitoringFeeds*(self: CameraServer; isMonitoringFeeds: bool): void =
+  expandMethodBind(className CameraServer, "set_monitoring_feeds", 2586408642)
+  methodbind.ptrcall(self, [getPtr isMonitoringFeeds])
+
+proc isMonitoringFeeds*(self: CameraServer): bool =
+  expandMethodBind(className CameraServer, "is_monitoring_feeds", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getFeed*(self: CameraServer; index: int32): gdref CameraFeed =
   expandMethodBind(className CameraServer, "get_feed", 361927068)
   var ret: encoded gdref CameraFeed
@@ -31,3 +41,6 @@ proc addFeed*(self: CameraServer; feed: gdref CameraFeed): void =
 proc removeFeed*(self: CameraServer; feed: gdref CameraFeed): void =
   expandMethodBind(className CameraServer, "remove_feed", 3204782488)
   methodbind.ptrcall(self, [getPtr feed])
+
+template monitoringFeeds*(self: CameraServer): untyped = self.isMonitoringFeeds()
+template `monitoringFeeds=`*(self: CameraServer; value) = self.setMonitoringFeeds(value)

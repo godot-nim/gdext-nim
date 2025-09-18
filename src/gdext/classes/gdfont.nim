@@ -122,21 +122,21 @@ proc getMultilineStringSize*(self: Font; text: String; alignment: HorizontalAlig
   methodbind.ptrcall(self, [getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc drawString*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; modulate: Color = color(1, 1, 1, 1); justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal): void =
-  expandMethodBind(className Font, "draw_string", 1983721962)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr modulate, getPtr justificationFlags, getPtr direction, getPtr orientation])
+proc drawString*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; modulate: Color = color(1, 1, 1, 1); justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal; oversampling: Float = 0.0): void =
+  expandMethodBind(className Font, "draw_string", 1976686372)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr modulate, getPtr justificationFlags, getPtr direction, getPtr orientation, getPtr oversampling])
 
-proc drawMultilineString*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; maxLines: int32 = -1; modulate: Color = color(1, 1, 1, 1); brkFlags: set[TextServer_LineBreakFlag] = {breakMandatory, breakWordBound}; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal): void =
-  expandMethodBind(className Font, "draw_multiline_string", 1171506176)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr modulate, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation])
+proc drawMultilineString*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; maxLines: int32 = -1; modulate: Color = color(1, 1, 1, 1); brkFlags: set[TextServer_LineBreakFlag] = {breakMandatory, breakWordBound}; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal; oversampling: Float = 0.0): void =
+  expandMethodBind(className Font, "draw_multiline_string", 2686601589)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr modulate, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation, getPtr oversampling])
 
-proc drawStringOutline*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; size: int32 = 1; modulate: Color = color(1, 1, 1, 1); justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal): void =
-  expandMethodBind(className Font, "draw_string_outline", 623754045)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr size, getPtr modulate, getPtr justificationFlags, getPtr direction, getPtr orientation])
+proc drawStringOutline*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; size: int32 = 1; modulate: Color = color(1, 1, 1, 1); justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal; oversampling: Float = 0.0): void =
+  expandMethodBind(className Font, "draw_string_outline", 701417663)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr size, getPtr modulate, getPtr justificationFlags, getPtr direction, getPtr orientation, getPtr oversampling])
 
-proc drawMultilineStringOutline*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; maxLines: int32 = -1; size: int32 = 1; modulate: Color = color(1, 1, 1, 1); brkFlags: set[TextServer_LineBreakFlag] = {breakMandatory, breakWordBound}; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal): void =
-  expandMethodBind(className Font, "draw_multiline_string_outline", 3206388178)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr size, getPtr modulate, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation])
+proc drawMultilineStringOutline*(self: Font; canvasItem: RID; pos: Vector2; text: String; alignment: HorizontalAlignment = horizontalAlignmentLeft; width: Float = -1; fontSize: int32 = 16; maxLines: int32 = -1; size: int32 = 1; modulate: Color = color(1, 1, 1, 1); brkFlags: set[TextServer_LineBreakFlag] = {breakMandatory, breakWordBound}; justificationFlags: set[TextServer_JustificationFlag] = {justificationKashida, justificationWordBound}; direction: TextServer_Direction = directionAuto; orientation: TextServer_Orientation = orientationHorizontal; oversampling: Float = 0.0): void =
+  expandMethodBind(className Font, "draw_multiline_string_outline", 4147839237)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr text, getPtr alignment, getPtr width, getPtr fontSize, getPtr maxLines, getPtr size, getPtr modulate, getPtr brkFlags, getPtr justificationFlags, getPtr direction, getPtr orientation, getPtr oversampling])
 
 proc getCharSize*(self: Font; char: char32; fontSize: int32): Vector2 =
   expandMethodBind(className Font, "get_char_size", 3016396712)
@@ -144,16 +144,16 @@ proc getCharSize*(self: Font; char: char32; fontSize: int32): Vector2 =
   methodbind.ptrcall(self, [getPtr char, getPtr fontSize], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc drawChar*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; modulate: Color = color(1, 1, 1, 1)): Float =
-  expandMethodBind(className Font, "draw_char", 3815617597)
+proc drawChar*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; modulate: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): Float =
+  expandMethodBind(className Font, "draw_char", 3500170256)
   var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr modulate], addr ret)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr modulate, getPtr oversampling], addr ret)
   (addr ret).decode_result(Float)
 
-proc drawCharOutline*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; size: int32 = -1; modulate: Color = color(1, 1, 1, 1)): Float =
-  expandMethodBind(className Font, "draw_char_outline", 209525354)
+proc drawCharOutline*(self: Font; canvasItem: RID; pos: Vector2; char: char32; fontSize: int32; size: int32 = -1; modulate: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): Float =
+  expandMethodBind(className Font, "draw_char_outline", 1684114874)
   var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr size, getPtr modulate], addr ret)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr pos, getPtr char, getPtr fontSize, getPtr size, getPtr modulate, getPtr oversampling], addr ret)
   (addr ret).decode_result(Float)
 
 proc hasChar*(self: Font; char: char32): bool =
