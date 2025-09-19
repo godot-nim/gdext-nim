@@ -1,0 +1,1114 @@
+nimTitle	enums	gdext/enums.html	module gdext/enums		0
+nim	EnumSize	gdext/enums.html#EnumSize	const EnumSize		1
+nim	Vector2_Axis	gdext/enums.html#Vector2_Axis	enum Vector2_Axis		1
+nim	Vector2i_Axis	gdext/enums.html#Vector2i_Axis	enum Vector2i_Axis		5
+nim	Vector3_Axis	gdext/enums.html#Vector3_Axis	enum Vector3_Axis		9
+nim	Vector3i_Axis	gdext/enums.html#Vector3i_Axis	enum Vector3i_Axis		14
+nim	Vector4_Axis	gdext/enums.html#Vector4_Axis	enum Vector4_Axis		19
+nim	Vector4i_Axis	gdext/enums.html#Vector4i_Axis	enum Vector4i_Axis		25
+nim	Projection_Planes	gdext/enums.html#Projection_Planes	enum Projection_Planes		31
+nim	AESContext_Mode	gdext/enums.html#AESContext_Mode	enum AESContext_Mode		39
+nim	AStarGrid2D_Heuristic	gdext/enums.html#AStarGrid2D_Heuristic	enum AStarGrid2D_Heuristic		46
+nim	AStarGrid2D_DiagonalMode	gdext/enums.html#AStarGrid2D_DiagonalMode	enum AStarGrid2D_DiagonalMode		53
+nim	AStarGrid2D_CellShape	gdext/enums.html#AStarGrid2D_CellShape	enum AStarGrid2D_CellShape		60
+nim	Animation_TrackType	gdext/enums.html#Animation_TrackType	enum Animation_TrackType		66
+nim	Animation_InterpolationType	gdext/enums.html#Animation_InterpolationType	enum Animation_InterpolationType		77
+nim	Animation_UpdateMode	gdext/enums.html#Animation_UpdateMode	enum Animation_UpdateMode		84
+nim	Animation_LoopMode	gdext/enums.html#Animation_LoopMode	enum Animation_LoopMode		89
+nim	Animation_LoopedFlag	gdext/enums.html#Animation_LoopedFlag	enum Animation_LoopedFlag		94
+nim	Animation_FindMode	gdext/enums.html#Animation_FindMode	enum Animation_FindMode		99
+nim	AnimationMixer_AnimationCallbackModeProcess	gdext/enums.html#AnimationMixer_AnimationCallbackModeProcess	enum AnimationMixer_AnimationCallbackModeProcess		104
+nim	AnimationMixer_AnimationCallbackModeMethod	gdext/enums.html#AnimationMixer_AnimationCallbackModeMethod	enum AnimationMixer_AnimationCallbackModeMethod		109
+nim	AnimationMixer_AnimationCallbackModeDiscrete	gdext/enums.html#AnimationMixer_AnimationCallbackModeDiscrete	enum AnimationMixer_AnimationCallbackModeDiscrete		113
+nim	AnimationNode_FilterAction	gdext/enums.html#AnimationNode_FilterAction	enum AnimationNode_FilterAction		118
+nim	AnimationNodeAnimation_PlayMode	gdext/enums.html#AnimationNodeAnimation_PlayMode	enum AnimationNodeAnimation_PlayMode		124
+nim	AnimationNodeBlendSpace1D_BlendMode	gdext/enums.html#AnimationNodeBlendSpace1D_BlendMode	enum AnimationNodeBlendSpace1D_BlendMode		128
+nim	AnimationNodeBlendSpace2D_BlendMode	gdext/enums.html#AnimationNodeBlendSpace2D_BlendMode	enum AnimationNodeBlendSpace2D_BlendMode		133
+nim	AnimationNodeOneShot_OneShotRequest	gdext/enums.html#AnimationNodeOneShot_OneShotRequest	enum AnimationNodeOneShot_OneShotRequest		138
+nim	AnimationNodeOneShot_MixMode	gdext/enums.html#AnimationNodeOneShot_MixMode	enum AnimationNodeOneShot_MixMode		144
+nim	AnimationNodeStateMachine_StateMachineType	gdext/enums.html#AnimationNodeStateMachine_StateMachineType	enum AnimationNodeStateMachine_StateMachineType		148
+nim	AnimationNodeStateMachineTransition_SwitchMode	gdext/enums.html#AnimationNodeStateMachineTransition_SwitchMode	enum AnimationNodeStateMachineTransition_SwitchMode		153
+nim	AnimationNodeStateMachineTransition_AdvanceMode	gdext/enums.html#AnimationNodeStateMachineTransition_AdvanceMode	enum AnimationNodeStateMachineTransition_AdvanceMode		158
+nim	AnimationPlayer_AnimationProcessCallback	gdext/enums.html#AnimationPlayer_AnimationProcessCallback	enum AnimationPlayer_AnimationProcessCallback		163
+nim	AnimationPlayer_AnimationMethodCallMode	gdext/enums.html#AnimationPlayer_AnimationMethodCallMode	enum AnimationPlayer_AnimationMethodCallMode		168
+nim	AnimationTree_AnimationProcessCallback	gdext/enums.html#AnimationTree_AnimationProcessCallback	enum AnimationTree_AnimationProcessCallback		172
+nim	Area2D_SpaceOverride	gdext/enums.html#Area2D_SpaceOverride	enum Area2D_SpaceOverride		177
+nim	Area3D_SpaceOverride	gdext/enums.html#Area3D_SpaceOverride	enum Area3D_SpaceOverride		184
+nim	AspectRatioContainer_StretchMode	gdext/enums.html#AspectRatioContainer_StretchMode	enum AspectRatioContainer_StretchMode		191
+nim	AspectRatioContainer_AlignmentMode	gdext/enums.html#AspectRatioContainer_AlignmentMode	enum AspectRatioContainer_AlignmentMode		197
+nim	AudioEffectDistortion_Mode	gdext/enums.html#AudioEffectDistortion_Mode	enum AudioEffectDistortion_Mode		202
+nim	AudioEffectFilter_FilterDB	gdext/enums.html#AudioEffectFilter_FilterDB	enum AudioEffectFilter_FilterDB		209
+nim	AudioEffectPitchShift_FFTSize	gdext/enums.html#AudioEffectPitchShift_FFTSize	enum AudioEffectPitchShift_FFTSize		215
+nim	AudioEffectSpectrumAnalyzer_FFTSize	gdext/enums.html#AudioEffectSpectrumAnalyzer_FFTSize	enum AudioEffectSpectrumAnalyzer_FFTSize		223
+nim	AudioEffectSpectrumAnalyzerInstance_MagnitudeMode	gdext/enums.html#AudioEffectSpectrumAnalyzerInstance_MagnitudeMode	enum AudioEffectSpectrumAnalyzerInstance_MagnitudeMode		231
+nim	AudioListener3D_DopplerTracking	gdext/enums.html#AudioListener3D_DopplerTracking	enum AudioListener3D_DopplerTracking		235
+nim	AudioServer_SpeakerMode	gdext/enums.html#AudioServer_SpeakerMode	enum AudioServer_SpeakerMode		240
+nim	AudioServer_PlaybackType	gdext/enums.html#AudioServer_PlaybackType	enum AudioServer_PlaybackType		246
+nim	AudioStreamGenerator_AudioStreamGeneratorMixRate	gdext/enums.html#AudioStreamGenerator_AudioStreamGeneratorMixRate	enum AudioStreamGenerator_AudioStreamGeneratorMixRate		252
+nim	AudioStreamInteractive_TransitionFromTime	gdext/enums.html#AudioStreamInteractive_TransitionFromTime	enum AudioStreamInteractive_TransitionFromTime		258
+nim	AudioStreamInteractive_TransitionToTime	gdext/enums.html#AudioStreamInteractive_TransitionToTime	enum AudioStreamInteractive_TransitionToTime		264
+nim	AudioStreamInteractive_FadeMode	gdext/enums.html#AudioStreamInteractive_FadeMode	enum AudioStreamInteractive_FadeMode		268
+nim	AudioStreamInteractive_AutoAdvanceMode	gdext/enums.html#AudioStreamInteractive_AutoAdvanceMode	enum AudioStreamInteractive_AutoAdvanceMode		275
+nim	AudioStreamPlayer_MixTarget	gdext/enums.html#AudioStreamPlayer_MixTarget	enum AudioStreamPlayer_MixTarget		280
+nim	AudioStreamPlayer3D_AttenuationModel	gdext/enums.html#AudioStreamPlayer3D_AttenuationModel	enum AudioStreamPlayer3D_AttenuationModel		285
+nim	AudioStreamPlayer3D_DopplerTracking	gdext/enums.html#AudioStreamPlayer3D_DopplerTracking	enum AudioStreamPlayer3D_DopplerTracking		291
+nim	AudioStreamRandomizer_PlaybackMode	gdext/enums.html#AudioStreamRandomizer_PlaybackMode	enum AudioStreamRandomizer_PlaybackMode		296
+nim	AudioStreamWAV_Format	gdext/enums.html#AudioStreamWAV_Format	enum AudioStreamWAV_Format		301
+nim	AudioStreamWAV_LoopMode	gdext/enums.html#AudioStreamWAV_LoopMode	enum AudioStreamWAV_LoopMode		307
+nim	BackBufferCopy_CopyMode	gdext/enums.html#BackBufferCopy_CopyMode	enum BackBufferCopy_CopyMode		313
+nim	BaseButton_DrawMode	gdext/enums.html#BaseButton_DrawMode	enum BaseButton_DrawMode		318
+nim	BaseButton_ActionMode	gdext/enums.html#BaseButton_ActionMode	enum BaseButton_ActionMode		325
+nim	BaseMaterial3D_TextureParam	gdext/enums.html#BaseMaterial3D_TextureParam	enum BaseMaterial3D_TextureParam		329
+nim	BaseMaterial3D_TextureFilter	gdext/enums.html#BaseMaterial3D_TextureFilter	enum BaseMaterial3D_TextureFilter		351
+nim	BaseMaterial3D_DetailUV	gdext/enums.html#BaseMaterial3D_DetailUV	enum BaseMaterial3D_DetailUV		360
+nim	BaseMaterial3D_Transparency	gdext/enums.html#BaseMaterial3D_Transparency	enum BaseMaterial3D_Transparency		364
+nim	BaseMaterial3D_ShadingMode	gdext/enums.html#BaseMaterial3D_ShadingMode	enum BaseMaterial3D_ShadingMode		372
+nim	BaseMaterial3D_Feature	gdext/enums.html#BaseMaterial3D_Feature	enum BaseMaterial3D_Feature		378
+nim	BaseMaterial3D_BlendMode	gdext/enums.html#BaseMaterial3D_BlendMode	enum BaseMaterial3D_BlendMode		394
+nim	BaseMaterial3D_AlphaAntiAliasing	gdext/enums.html#BaseMaterial3D_AlphaAntiAliasing	enum BaseMaterial3D_AlphaAntiAliasing		401
+nim	BaseMaterial3D_DepthDrawMode	gdext/enums.html#BaseMaterial3D_DepthDrawMode	enum BaseMaterial3D_DepthDrawMode		406
+nim	BaseMaterial3D_DepthTest	gdext/enums.html#BaseMaterial3D_DepthTest	enum BaseMaterial3D_DepthTest		411
+nim	BaseMaterial3D_CullMode	gdext/enums.html#BaseMaterial3D_CullMode	enum BaseMaterial3D_CullMode		415
+nim	BaseMaterial3D_Flags	gdext/enums.html#BaseMaterial3D_Flags	enum BaseMaterial3D_Flags		420
+nim	BaseMaterial3D_DiffuseMode	gdext/enums.html#BaseMaterial3D_DiffuseMode	enum BaseMaterial3D_DiffuseMode		448
+nim	BaseMaterial3D_SpecularMode	gdext/enums.html#BaseMaterial3D_SpecularMode	enum BaseMaterial3D_SpecularMode		454
+nim	BaseMaterial3D_BillboardMode	gdext/enums.html#BaseMaterial3D_BillboardMode	enum BaseMaterial3D_BillboardMode		459
+nim	BaseMaterial3D_TextureChannel	gdext/enums.html#BaseMaterial3D_TextureChannel	enum BaseMaterial3D_TextureChannel		465
+nim	BaseMaterial3D_EmissionOperator	gdext/enums.html#BaseMaterial3D_EmissionOperator	enum BaseMaterial3D_EmissionOperator		472
+nim	BaseMaterial3D_DistanceFadeMode	gdext/enums.html#BaseMaterial3D_DistanceFadeMode	enum BaseMaterial3D_DistanceFadeMode		476
+nim	BaseMaterial3D_StencilMode	gdext/enums.html#BaseMaterial3D_StencilMode	enum BaseMaterial3D_StencilMode		482
+nim	BaseMaterial3D_StencilFlags	gdext/enums.html#BaseMaterial3D_StencilFlags	enum BaseMaterial3D_StencilFlags		488
+nim	BaseMaterial3D_StencilCompare	gdext/enums.html#BaseMaterial3D_StencilCompare	enum BaseMaterial3D_StencilCompare		493
+nim	BoxContainer_AlignmentMode	gdext/enums.html#BoxContainer_AlignmentMode	enum BoxContainer_AlignmentMode		502
+nim	CPUParticles2D_DrawOrder	gdext/enums.html#CPUParticles2D_DrawOrder	enum CPUParticles2D_DrawOrder		507
+nim	CPUParticles2D_Parameter	gdext/enums.html#CPUParticles2D_Parameter	enum CPUParticles2D_Parameter		511
+nim	CPUParticles2D_ParticleFlags	gdext/enums.html#CPUParticles2D_ParticleFlags	enum CPUParticles2D_ParticleFlags		526
+nim	CPUParticles2D_EmissionShape	gdext/enums.html#CPUParticles2D_EmissionShape	enum CPUParticles2D_EmissionShape		532
+nim	CPUParticles3D_DrawOrder	gdext/enums.html#CPUParticles3D_DrawOrder	enum CPUParticles3D_DrawOrder		541
+nim	CPUParticles3D_Parameter	gdext/enums.html#CPUParticles3D_Parameter	enum CPUParticles3D_Parameter		546
+nim	CPUParticles3D_ParticleFlags	gdext/enums.html#CPUParticles3D_ParticleFlags	enum CPUParticles3D_ParticleFlags		561
+nim	CPUParticles3D_EmissionShape	gdext/enums.html#CPUParticles3D_EmissionShape	enum CPUParticles3D_EmissionShape		567
+nim	CSGPolygon3D_Mode	gdext/enums.html#CSGPolygon3D_Mode	enum CSGPolygon3D_Mode		577
+nim	CSGPolygon3D_PathRotation	gdext/enums.html#CSGPolygon3D_PathRotation	enum CSGPolygon3D_PathRotation		582
+nim	CSGPolygon3D_PathIntervalType	gdext/enums.html#CSGPolygon3D_PathIntervalType	enum CSGPolygon3D_PathIntervalType		587
+nim	CSGShape3D_Operation	gdext/enums.html#CSGShape3D_Operation	enum CSGShape3D_Operation		591
+nim	Camera2D_AnchorMode	gdext/enums.html#Camera2D_AnchorMode	enum Camera2D_AnchorMode		596
+nim	Camera2D_Camera2DProcessCallback	gdext/enums.html#Camera2D_Camera2DProcessCallback	enum Camera2D_Camera2DProcessCallback		600
+nim	Camera3D_ProjectionType	gdext/enums.html#Camera3D_ProjectionType	enum Camera3D_ProjectionType		604
+nim	Camera3D_KeepAspect	gdext/enums.html#Camera3D_KeepAspect	enum Camera3D_KeepAspect		609
+nim	Camera3D_DopplerTracking	gdext/enums.html#Camera3D_DopplerTracking	enum Camera3D_DopplerTracking		613
+nim	CameraFeed_FeedDataType	gdext/enums.html#CameraFeed_FeedDataType	enum CameraFeed_FeedDataType		618
+nim	CameraFeed_FeedPosition	gdext/enums.html#CameraFeed_FeedPosition	enum CameraFeed_FeedPosition		625
+nim	CameraServer_FeedImage	gdext/enums.html#CameraServer_FeedImage	enum CameraServer_FeedImage		630
+nim	feedYcbcrImage	gdext/enums.html#feedYcbcrImage.t,typedesc[T]	template feedYcbcrImage[T: CameraServer_FeedImage](_: typedesc[T]): T		633
+nim	feedYImage	gdext/enums.html#feedYImage.t,typedesc[T]	template feedYImage[T: CameraServer_FeedImage](_: typedesc[T]): T		634
+nim	CanvasItem_TextureFilter	gdext/enums.html#CanvasItem_TextureFilter	enum CanvasItem_TextureFilter		636
+nim	CanvasItem_TextureRepeat	gdext/enums.html#CanvasItem_TextureRepeat	enum CanvasItem_TextureRepeat		646
+nim	CanvasItem_ClipChildrenMode	gdext/enums.html#CanvasItem_ClipChildrenMode	enum CanvasItem_ClipChildrenMode		653
+nim	CanvasItemMaterial_BlendMode	gdext/enums.html#CanvasItemMaterial_BlendMode	enum CanvasItemMaterial_BlendMode		659
+nim	CanvasItemMaterial_LightMode	gdext/enums.html#CanvasItemMaterial_LightMode	enum CanvasItemMaterial_LightMode		666
+nim	CharacterBody2D_MotionMode	gdext/enums.html#CharacterBody2D_MotionMode	enum CharacterBody2D_MotionMode		671
+nim	CharacterBody2D_PlatformOnLeave	gdext/enums.html#CharacterBody2D_PlatformOnLeave	enum CharacterBody2D_PlatformOnLeave		675
+nim	CharacterBody3D_MotionMode	gdext/enums.html#CharacterBody3D_MotionMode	enum CharacterBody3D_MotionMode		680
+nim	CharacterBody3D_PlatformOnLeave	gdext/enums.html#CharacterBody3D_PlatformOnLeave	enum CharacterBody3D_PlatformOnLeave		684
+nim	ClassDB_APIType	gdext/enums.html#ClassDB_APIType	enum ClassDB_APIType		689
+nim	CodeEdit_CodeCompletionKind	gdext/enums.html#CodeEdit_CodeCompletionKind	enum CodeEdit_CodeCompletionKind		696
+nim	CodeEdit_CodeCompletionLocation	gdext/enums.html#CodeEdit_CodeCompletionLocation	enum CodeEdit_CodeCompletionLocation		708
+nim	CollisionObject2D_DisableMode	gdext/enums.html#CollisionObject2D_DisableMode	enum CollisionObject2D_DisableMode		714
+nim	CollisionObject3D_DisableMode	gdext/enums.html#CollisionObject3D_DisableMode	enum CollisionObject3D_DisableMode		719
+nim	CollisionPolygon2D_BuildMode	gdext/enums.html#CollisionPolygon2D_BuildMode	enum CollisionPolygon2D_BuildMode		724
+nim	ColorPicker_ColorModeType	gdext/enums.html#ColorPicker_ColorModeType	enum ColorPicker_ColorModeType		728
+nim	modeLinear	gdext/enums.html#modeLinear.t,typedesc[T]	template modeLinear[T: ColorPicker_ColorModeType](_: typedesc[T]): T		733
+nim	ColorPicker_PickerShapeType	gdext/enums.html#ColorPicker_PickerShapeType	enum ColorPicker_PickerShapeType		735
+nim	CompositorEffect_EffectCallbackType	gdext/enums.html#CompositorEffect_EffectCallbackType	enum CompositorEffect_EffectCallbackType		744
+nim	ConeTwistJoint3D_Param	gdext/enums.html#ConeTwistJoint3D_Param	enum ConeTwistJoint3D_Param		752
+nim	Control_FocusMode	gdext/enums.html#Control_FocusMode	enum Control_FocusMode		760
+nim	Control_FocusBehaviorRecursive	gdext/enums.html#Control_FocusBehaviorRecursive	enum Control_FocusBehaviorRecursive		766
+nim	Control_MouseBehaviorRecursive	gdext/enums.html#Control_MouseBehaviorRecursive	enum Control_MouseBehaviorRecursive		771
+nim	Control_CursorShape	gdext/enums.html#Control_CursorShape	enum Control_CursorShape		776
+nim	Control_LayoutPreset	gdext/enums.html#Control_LayoutPreset	enum Control_LayoutPreset		795
+nim	Control_LayoutPresetMode	gdext/enums.html#Control_LayoutPresetMode	enum Control_LayoutPresetMode		813
+nim	sizeFill	gdext/enums.html#sizeFill	Control_SizeFlags.sizeFill		819
+nim	sizeExpand	gdext/enums.html#sizeExpand	Control_SizeFlags.sizeExpand		819
+nim	sizeShrinkCenter	gdext/enums.html#sizeShrinkCenter	Control_SizeFlags.sizeShrinkCenter		819
+nim	sizeShrinkEnd	gdext/enums.html#sizeShrinkEnd	Control_SizeFlags.sizeShrinkEnd		819
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--	Control_SizeFlags.--Padding-Max--		819
+nim	Control_SizeFlags	gdext/enums.html#Control_SizeFlags	enum Control_SizeFlags		819
+nim	sizeExpandFill	gdext/enums.html#sizeExpandFill.t,typedesc[T]	template sizeExpandFill[T: Control_SizeFlags](_: typedesc[T]): set[T]		826
+nim	Control_MouseFilter	gdext/enums.html#Control_MouseFilter	enum Control_MouseFilter		828
+nim	Control_GrowDirection	gdext/enums.html#Control_GrowDirection	enum Control_GrowDirection		833
+nim	Control_Anchor	gdext/enums.html#Control_Anchor	enum Control_Anchor		838
+nim	Control_LayoutDirection	gdext/enums.html#Control_LayoutDirection	enum Control_LayoutDirection		842
+nim	layoutDirectionLocale	gdext/enums.html#layoutDirectionLocale.t,typedesc[T]	template layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T		849
+nim	Control_TextDirection	gdext/enums.html#Control_TextDirection	enum Control_TextDirection		851
+nim	ConvertTransformModifier3D_TransformMode	gdext/enums.html#ConvertTransformModifier3D_TransformMode	enum ConvertTransformModifier3D_TransformMode		857
+nim	transformFlagPosition	gdext/enums.html#transformFlagPosition	CopyTransformModifier3D_TransformFlag.transformFlagPosition		862
+nim	transformFlagRotation	gdext/enums.html#transformFlagRotation	CopyTransformModifier3D_TransformFlag.transformFlagRotation		862
+nim	transformFlagScale	gdext/enums.html#transformFlagScale	CopyTransformModifier3D_TransformFlag.transformFlagScale		862
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_2	CopyTransformModifier3D_TransformFlag.--Padding-Max--		862
+nim	CopyTransformModifier3D_TransformFlag	gdext/enums.html#CopyTransformModifier3D_TransformFlag	enum CopyTransformModifier3D_TransformFlag		862
+nim	transformFlagAll	gdext/enums.html#transformFlagAll.t,typedesc[T]	template transformFlagAll[T: CopyTransformModifier3D_TransformFlag](_: typedesc[T]): set[\n    T]		867
+nim	axisFlagX	gdext/enums.html#axisFlagX	CopyTransformModifier3D_AxisFlag.axisFlagX		869
+nim	axisFlagY	gdext/enums.html#axisFlagY	CopyTransformModifier3D_AxisFlag.axisFlagY		869
+nim	axisFlagZ	gdext/enums.html#axisFlagZ	CopyTransformModifier3D_AxisFlag.axisFlagZ		869
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_3	CopyTransformModifier3D_AxisFlag.--Padding-Max--		869
+nim	CopyTransformModifier3D_AxisFlag	gdext/enums.html#CopyTransformModifier3D_AxisFlag	enum CopyTransformModifier3D_AxisFlag		869
+nim	axisFlagAll	gdext/enums.html#axisFlagAll.t,typedesc[T]	template axisFlagAll[T: CopyTransformModifier3D_AxisFlag](_: typedesc[T]): set[T]		874
+nim	Curve_TangentMode	gdext/enums.html#Curve_TangentMode	enum Curve_TangentMode		876
+nim	CurveTexture_TextureMode	gdext/enums.html#CurveTexture_TextureMode	enum CurveTexture_TextureMode		881
+nim	Decal_DecalTexture	gdext/enums.html#Decal_DecalTexture	enum Decal_DecalTexture		885
+nim	DirectionalLight3D_ShadowMode	gdext/enums.html#DirectionalLight3D_ShadowMode	enum DirectionalLight3D_ShadowMode		892
+nim	DirectionalLight3D_SkyMode	gdext/enums.html#DirectionalLight3D_SkyMode	enum DirectionalLight3D_SkyMode		897
+nim	DisplayServer_Feature	gdext/enums.html#DisplayServer_Feature	enum DisplayServer_Feature		902
+nim	DisplayServer_AccessibilityRole	gdext/enums.html#DisplayServer_AccessibilityRole	enum DisplayServer_AccessibilityRole		938
+nim	DisplayServer_AccessibilityPopupType	gdext/enums.html#DisplayServer_AccessibilityPopupType	enum DisplayServer_AccessibilityPopupType		986
+nim	DisplayServer_AccessibilityFlags	gdext/enums.html#DisplayServer_AccessibilityFlags	enum DisplayServer_AccessibilityFlags		992
+nim	DisplayServer_AccessibilityAction	gdext/enums.html#DisplayServer_AccessibilityAction	enum DisplayServer_AccessibilityAction		1004
+nim	DisplayServer_AccessibilityLiveMode	gdext/enums.html#DisplayServer_AccessibilityLiveMode	enum DisplayServer_AccessibilityLiveMode		1029
+nim	DisplayServer_AccessibilityScrollUnit	gdext/enums.html#DisplayServer_AccessibilityScrollUnit	enum DisplayServer_AccessibilityScrollUnit		1034
+nim	DisplayServer_AccessibilityScrollHint	gdext/enums.html#DisplayServer_AccessibilityScrollHint	enum DisplayServer_AccessibilityScrollHint		1038
+nim	DisplayServer_MouseMode	gdext/enums.html#DisplayServer_MouseMode	enum DisplayServer_MouseMode		1046
+nim	DisplayServer_ScreenOrientation	gdext/enums.html#DisplayServer_ScreenOrientation	enum DisplayServer_ScreenOrientation		1054
+nim	DisplayServer_VirtualKeyboardType	gdext/enums.html#DisplayServer_VirtualKeyboardType	enum DisplayServer_VirtualKeyboardType		1063
+nim	DisplayServer_CursorShape	gdext/enums.html#DisplayServer_CursorShape	enum DisplayServer_CursorShape		1073
+nim	DisplayServer_FileDialogMode	gdext/enums.html#DisplayServer_FileDialogMode	enum DisplayServer_FileDialogMode		1093
+nim	DisplayServer_WindowMode	gdext/enums.html#DisplayServer_WindowMode	enum DisplayServer_WindowMode		1100
+nim	DisplayServer_WindowFlags	gdext/enums.html#DisplayServer_WindowFlags	enum DisplayServer_WindowFlags		1107
+nim	DisplayServer_WindowEvent	gdext/enums.html#DisplayServer_WindowEvent	enum DisplayServer_WindowEvent		1123
+nim	DisplayServer_WindowResizeEdge	gdext/enums.html#DisplayServer_WindowResizeEdge	enum DisplayServer_WindowResizeEdge		1134
+nim	DisplayServer_VSyncMode	gdext/enums.html#DisplayServer_VSyncMode	enum DisplayServer_VSyncMode		1145
+nim	DisplayServer_HandleType	gdext/enums.html#DisplayServer_HandleType	enum DisplayServer_HandleType		1151
+nim	DisplayServer_TTSUtteranceEvent	gdext/enums.html#DisplayServer_TTSUtteranceEvent	enum DisplayServer_TTSUtteranceEvent		1159
+nim	ENetConnection_CompressionMode	gdext/enums.html#ENetConnection_CompressionMode	enum ENetConnection_CompressionMode		1165
+nim	ENetConnection_EventType	gdext/enums.html#ENetConnection_EventType	enum ENetConnection_EventType		1172
+nim	ENetConnection_HostStatistic	gdext/enums.html#ENetConnection_HostStatistic	enum ENetConnection_HostStatistic		1179
+nim	ENetPacketPeer_PeerState	gdext/enums.html#ENetPacketPeer_PeerState	enum ENetPacketPeer_PeerState		1185
+nim	ENetPacketPeer_PeerStatistic	gdext/enums.html#ENetPacketPeer_PeerStatistic	enum ENetPacketPeer_PeerStatistic		1197
+nim	EditorContextMenuPlugin_ContextMenuSlot	gdext/enums.html#EditorContextMenuPlugin_ContextMenuSlot	enum EditorContextMenuPlugin_ContextMenuSlot		1213
+nim	EditorExportPlatform_ExportMessageType	gdext/enums.html#EditorExportPlatform_ExportMessageType	enum EditorExportPlatform_ExportMessageType		1222
+nim	debugFlagDumbClient	gdext/enums.html#debugFlagDumbClient	EditorExportPlatform_DebugFlags.debugFlagDumbClient		1228
+nim	debugFlagRemoteDebug	gdext/enums.html#debugFlagRemoteDebug	EditorExportPlatform_DebugFlags.debugFlagRemoteDebug		1228
+nim	debugFlagRemoteDebugLocalhost	gdext/enums.html#debugFlagRemoteDebugLocalhost	EditorExportPlatform_DebugFlags.debugFlagRemoteDebugLocalhost		1228
+nim	debugFlagViewCollisions	gdext/enums.html#debugFlagViewCollisions	EditorExportPlatform_DebugFlags.debugFlagViewCollisions		1228
+nim	debugFlagViewNavigation	gdext/enums.html#debugFlagViewNavigation	EditorExportPlatform_DebugFlags.debugFlagViewNavigation		1228
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_4	EditorExportPlatform_DebugFlags.--Padding-Max--		1228
+nim	EditorExportPlatform_DebugFlags	gdext/enums.html#EditorExportPlatform_DebugFlags	enum EditorExportPlatform_DebugFlags		1228
+nim	EditorExportPreset_ExportFilter	gdext/enums.html#EditorExportPreset_ExportFilter	enum EditorExportPreset_ExportFilter		1236
+nim	EditorExportPreset_FileExportMode	gdext/enums.html#EditorExportPreset_FileExportMode	enum EditorExportPreset_FileExportMode		1243
+nim	EditorExportPreset_ScriptExportMode	gdext/enums.html#EditorExportPreset_ScriptExportMode	enum EditorExportPreset_ScriptExportMode		1249
+nim	EditorFeatureProfile_Feature	gdext/enums.html#EditorFeatureProfile_Feature	enum EditorFeatureProfile_Feature		1254
+nim	EditorFileDialog_FileMode	gdext/enums.html#EditorFileDialog_FileMode	enum EditorFileDialog_FileMode		1266
+nim	EditorFileDialog_Access	gdext/enums.html#EditorFileDialog_Access	enum EditorFileDialog_Access		1273
+nim	EditorFileDialog_DisplayMode	gdext/enums.html#EditorFileDialog_DisplayMode	enum EditorFileDialog_DisplayMode		1278
+nim	EditorPlugin_CustomControlContainer	gdext/enums.html#EditorPlugin_CustomControlContainer	enum EditorPlugin_CustomControlContainer		1282
+nim	EditorPlugin_DockSlot	gdext/enums.html#EditorPlugin_DockSlot	enum EditorPlugin_DockSlot		1296
+nim	EditorPlugin_AfterGUIInput	gdext/enums.html#EditorPlugin_AfterGUIInput	enum EditorPlugin_AfterGUIInput		1307
+nim	EditorScenePostImportPlugin_InternalImportCategory	gdext/enums.html#EditorScenePostImportPlugin_InternalImportCategory	enum EditorScenePostImportPlugin_InternalImportCategory		1312
+nim	EditorToaster_Severity	gdext/enums.html#EditorToaster_Severity	enum EditorToaster_Severity		1322
+nim	EditorUndoRedoManager_SpecialHistory	gdext/enums.html#EditorUndoRedoManager_SpecialHistory	enum EditorUndoRedoManager_SpecialHistory		1327
+nim	EditorVCSInterface_ChangeType	gdext/enums.html#EditorVCSInterface_ChangeType	enum EditorVCSInterface_ChangeType		1332
+nim	EditorVCSInterface_TreeArea	gdext/enums.html#EditorVCSInterface_TreeArea	enum EditorVCSInterface_TreeArea		1340
+nim	Environment_BGMode	gdext/enums.html#Environment_BGMode	enum Environment_BGMode		1345
+nim	Environment_AmbientSource	gdext/enums.html#Environment_AmbientSource	enum Environment_AmbientSource		1354
+nim	Environment_ReflectionSource	gdext/enums.html#Environment_ReflectionSource	enum Environment_ReflectionSource		1360
+nim	Environment_ToneMapper	gdext/enums.html#Environment_ToneMapper	enum Environment_ToneMapper		1365
+nim	Environment_GlowBlendMode	gdext/enums.html#Environment_GlowBlendMode	enum Environment_GlowBlendMode		1372
+nim	Environment_FogMode	gdext/enums.html#Environment_FogMode	enum Environment_FogMode		1379
+nim	Environment_SDFGIYScale	gdext/enums.html#Environment_SDFGIYScale	enum Environment_SDFGIYScale		1383
+nim	FastNoiseLite_NoiseType	gdext/enums.html#FastNoiseLite_NoiseType	enum FastNoiseLite_NoiseType		1388
+nim	FastNoiseLite_FractalType	gdext/enums.html#FastNoiseLite_FractalType	enum FastNoiseLite_FractalType		1396
+nim	FastNoiseLite_CellularDistanceFunction	gdext/enums.html#FastNoiseLite_CellularDistanceFunction	enum FastNoiseLite_CellularDistanceFunction		1402
+nim	FastNoiseLite_CellularReturnType	gdext/enums.html#FastNoiseLite_CellularReturnType	enum FastNoiseLite_CellularReturnType		1408
+nim	FastNoiseLite_DomainWarpType	gdext/enums.html#FastNoiseLite_DomainWarpType	enum FastNoiseLite_DomainWarpType		1417
+nim	FastNoiseLite_DomainWarpFractalType	gdext/enums.html#FastNoiseLite_DomainWarpFractalType	enum FastNoiseLite_DomainWarpFractalType		1422
+nim	FileAccess_ModeFlags	gdext/enums.html#FileAccess_ModeFlags	enum FileAccess_ModeFlags		1427
+nim	FileAccess_CompressionMode	gdext/enums.html#FileAccess_CompressionMode	enum FileAccess_CompressionMode		1433
+nim	unixExecuteOther	gdext/enums.html#unixExecuteOther	FileAccess_UnixPermissionFlags.unixExecuteOther		1440
+nim	unixWriteOther	gdext/enums.html#unixWriteOther	FileAccess_UnixPermissionFlags.unixWriteOther		1440
+nim	unixReadOther	gdext/enums.html#unixReadOther	FileAccess_UnixPermissionFlags.unixReadOther		1440
+nim	unixExecuteGroup	gdext/enums.html#unixExecuteGroup	FileAccess_UnixPermissionFlags.unixExecuteGroup		1440
+nim	unixWriteGroup	gdext/enums.html#unixWriteGroup	FileAccess_UnixPermissionFlags.unixWriteGroup		1440
+nim	unixReadGroup	gdext/enums.html#unixReadGroup	FileAccess_UnixPermissionFlags.unixReadGroup		1440
+nim	unixExecuteOwner	gdext/enums.html#unixExecuteOwner	FileAccess_UnixPermissionFlags.unixExecuteOwner		1440
+nim	unixWriteOwner	gdext/enums.html#unixWriteOwner	FileAccess_UnixPermissionFlags.unixWriteOwner		1440
+nim	unixReadOwner	gdext/enums.html#unixReadOwner	FileAccess_UnixPermissionFlags.unixReadOwner		1440
+nim	unixRestrictedDelete	gdext/enums.html#unixRestrictedDelete	FileAccess_UnixPermissionFlags.unixRestrictedDelete		1440
+nim	unixSetGroupId	gdext/enums.html#unixSetGroupId	FileAccess_UnixPermissionFlags.unixSetGroupId		1440
+nim	unixSetUserId	gdext/enums.html#unixSetUserId	FileAccess_UnixPermissionFlags.unixSetUserId		1440
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_5	FileAccess_UnixPermissionFlags.--Padding-Max--		1440
+nim	FileAccess_UnixPermissionFlags	gdext/enums.html#FileAccess_UnixPermissionFlags	enum FileAccess_UnixPermissionFlags		1440
+nim	FileDialog_FileMode	gdext/enums.html#FileDialog_FileMode	enum FileDialog_FileMode		1455
+nim	FileDialog_Access	gdext/enums.html#FileDialog_Access	enum FileDialog_Access		1462
+nim	FileDialog_DisplayMode	gdext/enums.html#FileDialog_DisplayMode	enum FileDialog_DisplayMode		1467
+nim	FileDialog_Customization	gdext/enums.html#FileDialog_Customization	enum FileDialog_Customization		1471
+nim	FlowContainer_AlignmentMode	gdext/enums.html#FlowContainer_AlignmentMode	enum FlowContainer_AlignmentMode		1480
+nim	FlowContainer_LastWrapAlignmentMode	gdext/enums.html#FlowContainer_LastWrapAlignmentMode	enum FlowContainer_LastWrapAlignmentMode		1485
+nim	FoldableContainer_TitlePosition	gdext/enums.html#FoldableContainer_TitlePosition	enum FoldableContainer_TitlePosition		1491
+nim	GDExtension_InitializationLevel	gdext/enums.html#GDExtension_InitializationLevel	enum GDExtension_InitializationLevel		1495
+nim	GDExtensionManager_LoadStatus	gdext/enums.html#GDExtensionManager_LoadStatus	enum GDExtensionManager_LoadStatus		1501
+nim	GLTFAccessor_GLTFAccessorType	gdext/enums.html#GLTFAccessor_GLTFAccessorType	enum GLTFAccessor_GLTFAccessorType		1508
+nim	GLTFAccessor_GLTFComponentType	gdext/enums.html#GLTFAccessor_GLTFComponentType	enum GLTFAccessor_GLTFComponentType		1517
+nim	GLTFDocument_RootNodeMode	gdext/enums.html#GLTFDocument_RootNodeMode	enum GLTFDocument_RootNodeMode		1531
+nim	GLTFDocument_VisibilityMode	gdext/enums.html#GLTFDocument_VisibilityMode	enum GLTFDocument_VisibilityMode		1536
+nim	GLTFObjectModelProperty_GLTFObjectModelType	gdext/enums.html#GLTFObjectModelProperty_GLTFObjectModelType	enum GLTFObjectModelProperty_GLTFObjectModelType		1541
+nim	GPUParticles2D_DrawOrder	gdext/enums.html#GPUParticles2D_DrawOrder	enum GPUParticles2D_DrawOrder		1554
+nim	GPUParticles2D_EmitFlags	gdext/enums.html#GPUParticles2D_EmitFlags	enum GPUParticles2D_EmitFlags		1559
+nim	GPUParticles3D_DrawOrder	gdext/enums.html#GPUParticles3D_DrawOrder	enum GPUParticles3D_DrawOrder		1566
+nim	GPUParticles3D_EmitFlags	gdext/enums.html#GPUParticles3D_EmitFlags	enum GPUParticles3D_EmitFlags		1572
+nim	GPUParticles3D_TransformAlign	gdext/enums.html#GPUParticles3D_TransformAlign	enum GPUParticles3D_TransformAlign		1579
+nim	GPUParticlesCollisionHeightField3D_Resolution	gdext/enums.html#GPUParticlesCollisionHeightField3D_Resolution	enum GPUParticlesCollisionHeightField3D_Resolution		1585
+nim	GPUParticlesCollisionHeightField3D_UpdateMode	gdext/enums.html#GPUParticlesCollisionHeightField3D_UpdateMode	enum GPUParticlesCollisionHeightField3D_UpdateMode		1594
+nim	GPUParticlesCollisionSDF3D_Resolution	gdext/enums.html#GPUParticlesCollisionSDF3D_Resolution	enum GPUParticlesCollisionSDF3D_Resolution		1598
+nim	Generic6DOFJoint3D_Param	gdext/enums.html#Generic6DOFJoint3D_Param	enum Generic6DOFJoint3D_Param		1607
+nim	Generic6DOFJoint3D_Flag	gdext/enums.html#Generic6DOFJoint3D_Flag	enum Generic6DOFJoint3D_Flag		1632
+nim	Geometry2D_PolyBooleanOperation	gdext/enums.html#Geometry2D_PolyBooleanOperation	enum Geometry2D_PolyBooleanOperation		1641
+nim	Geometry2D_PolyJoinType	gdext/enums.html#Geometry2D_PolyJoinType	enum Geometry2D_PolyJoinType		1647
+nim	Geometry2D_PolyEndType	gdext/enums.html#Geometry2D_PolyEndType	enum Geometry2D_PolyEndType		1652
+nim	GeometryInstance3D_ShadowCastingSetting	gdext/enums.html#GeometryInstance3D_ShadowCastingSetting	enum GeometryInstance3D_ShadowCastingSetting		1659
+nim	GeometryInstance3D_GIMode	gdext/enums.html#GeometryInstance3D_GIMode	enum GeometryInstance3D_GIMode		1665
+nim	GeometryInstance3D_LightmapScale	gdext/enums.html#GeometryInstance3D_LightmapScale	enum GeometryInstance3D_LightmapScale		1670
+nim	GeometryInstance3D_VisibilityRangeFadeMode	gdext/enums.html#GeometryInstance3D_VisibilityRangeFadeMode	enum GeometryInstance3D_VisibilityRangeFadeMode		1677
+nim	Gradient_InterpolationMode	gdext/enums.html#Gradient_InterpolationMode	enum Gradient_InterpolationMode		1682
+nim	Gradient_ColorSpace	gdext/enums.html#Gradient_ColorSpace	enum Gradient_ColorSpace		1687
+nim	GradientTexture2D_Fill	gdext/enums.html#GradientTexture2D_Fill	enum GradientTexture2D_Fill		1692
+nim	GradientTexture2D_Repeat	gdext/enums.html#GradientTexture2D_Repeat	enum GradientTexture2D_Repeat		1697
+nim	GraphEdit_PanningScheme	gdext/enums.html#GraphEdit_PanningScheme	enum GraphEdit_PanningScheme		1702
+nim	GraphEdit_GridPattern	gdext/enums.html#GraphEdit_GridPattern	enum GraphEdit_GridPattern		1706
+nim	HTTPClient_Method	gdext/enums.html#HTTPClient_Method	enum HTTPClient_Method		1710
+nim	HTTPClient_Status	gdext/enums.html#HTTPClient_Status	enum HTTPClient_Status		1722
+nim	HTTPClient_ResponseCode	gdext/enums.html#HTTPClient_ResponseCode	enum HTTPClient_ResponseCode		1734
+nim	HTTPRequest_Result	gdext/enums.html#HTTPRequest_Result	enum HTTPRequest_Result		1797
+nim	HashingContext_HashType	gdext/enums.html#HashingContext_HashType	enum HashingContext_HashType		1813
+nim	HingeJoint3D_Param	gdext/enums.html#HingeJoint3D_Param	enum HingeJoint3D_Param		1818
+nim	HingeJoint3D_Flag	gdext/enums.html#HingeJoint3D_Flag	enum HingeJoint3D_Flag		1829
+nim	IP_ResolverStatus	gdext/enums.html#IP_ResolverStatus	enum IP_ResolverStatus		1834
+nim	IP_Type	gdext/enums.html#IP_Type	enum IP_Type		1840
+nim	Image_Format	gdext/enums.html#Image_Format	enum Image_Format		1846
+nim	Image_Interpolation	gdext/enums.html#Image_Interpolation	enum Image_Interpolation		1888
+nim	Image_AlphaMode	gdext/enums.html#Image_AlphaMode	enum Image_AlphaMode		1895
+nim	Image_CompressMode	gdext/enums.html#Image_CompressMode	enum Image_CompressMode		1900
+nim	Image_UsedChannels	gdext/enums.html#Image_UsedChannels	enum Image_UsedChannels		1908
+nim	Image_CompressSource	gdext/enums.html#Image_CompressSource	enum Image_CompressSource		1916
+nim	Image_ASTCFormat	gdext/enums.html#Image_ASTCFormat	enum Image_ASTCFormat		1921
+nim	flagForceLinear	gdext/enums.html#flagForceLinear	ImageFormatLoader_LoaderFlags.flagForceLinear		1925
+nim	flagConvertColors	gdext/enums.html#flagConvertColors	ImageFormatLoader_LoaderFlags.flagConvertColors		1925
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_6	ImageFormatLoader_LoaderFlags.--Padding-Max--		1925
+nim	ImageFormatLoader_LoaderFlags	gdext/enums.html#ImageFormatLoader_LoaderFlags	enum ImageFormatLoader_LoaderFlags		1925
+nim	Input_MouseMode	gdext/enums.html#Input_MouseMode	enum Input_MouseMode		1931
+nim	Input_CursorShape	gdext/enums.html#Input_CursorShape	enum Input_CursorShape		1939
+nim	ItemList_IconMode	gdext/enums.html#ItemList_IconMode	enum ItemList_IconMode		1958
+nim	ItemList_SelectMode	gdext/enums.html#ItemList_SelectMode	enum ItemList_SelectMode		1962
+nim	JSONRPC_ErrorCode	gdext/enums.html#JSONRPC_ErrorCode	enum JSONRPC_ErrorCode		1967
+nim	Label3D_DrawFlags	gdext/enums.html#Label3D_DrawFlags	enum Label3D_DrawFlags		1974
+nim	Label3D_AlphaCutMode	gdext/enums.html#Label3D_AlphaCutMode	enum Label3D_AlphaCutMode		1981
+nim	Light2D_ShadowFilter	gdext/enums.html#Light2D_ShadowFilter	enum Light2D_ShadowFilter		1987
+nim	Light2D_BlendMode	gdext/enums.html#Light2D_BlendMode	enum Light2D_BlendMode		1992
+nim	Light3D_Param	gdext/enums.html#Light3D_Param	enum Light3D_Param		1997
+nim	Light3D_BakeMode	gdext/enums.html#Light3D_BakeMode	enum Light3D_BakeMode		2021
+nim	LightmapGI_BakeQuality	gdext/enums.html#LightmapGI_BakeQuality	enum LightmapGI_BakeQuality		2026
+nim	LightmapGI_GenerateProbes	gdext/enums.html#LightmapGI_GenerateProbes	enum LightmapGI_GenerateProbes		2032
+nim	LightmapGI_BakeError	gdext/enums.html#LightmapGI_BakeError	enum LightmapGI_BakeError		2039
+nim	LightmapGI_EnvironmentMode	gdext/enums.html#LightmapGI_EnvironmentMode	enum LightmapGI_EnvironmentMode		2053
+nim	LightmapGIData_ShadowmaskMode	gdext/enums.html#LightmapGIData_ShadowmaskMode	enum LightmapGIData_ShadowmaskMode		2059
+nim	Line2D_LineJointMode	gdext/enums.html#Line2D_LineJointMode	enum Line2D_LineJointMode		2064
+nim	Line2D_LineCapMode	gdext/enums.html#Line2D_LineCapMode	enum Line2D_LineCapMode		2069
+nim	Line2D_LineTextureMode	gdext/enums.html#Line2D_LineTextureMode	enum Line2D_LineTextureMode		2074
+nim	LineEdit_MenuItems	gdext/enums.html#LineEdit_MenuItems	enum LineEdit_MenuItems		2079
+nim	LineEdit_VirtualKeyboardType	gdext/enums.html#LineEdit_VirtualKeyboardType	enum LineEdit_VirtualKeyboardType		2113
+nim	LinkButton_UnderlineMode	gdext/enums.html#LinkButton_UnderlineMode	enum LinkButton_UnderlineMode		2123
+nim	Logger_ErrorType	gdext/enums.html#Logger_ErrorType	enum Logger_ErrorType		2128
+nim	LookAtModifier3D_OriginFrom	gdext/enums.html#LookAtModifier3D_OriginFrom	enum LookAtModifier3D_OriginFrom		2134
+nim	Mesh_PrimitiveType	gdext/enums.html#Mesh_PrimitiveType	enum Mesh_PrimitiveType		2139
+nim	Mesh_ArrayType	gdext/enums.html#Mesh_ArrayType	enum Mesh_ArrayType		2146
+nim	Mesh_ArrayCustomFormat	gdext/enums.html#Mesh_ArrayCustomFormat	enum Mesh_ArrayCustomFormat		2162
+nim	arrayFormatVertex	gdext/enums.html#arrayFormatVertex	Mesh_ArrayFormat.arrayFormatVertex		2173
+nim	arrayFormatNormal	gdext/enums.html#arrayFormatNormal	Mesh_ArrayFormat.arrayFormatNormal		2173
+nim	arrayFormatTangent	gdext/enums.html#arrayFormatTangent	Mesh_ArrayFormat.arrayFormatTangent		2173
+nim	arrayFormatColor	gdext/enums.html#arrayFormatColor	Mesh_ArrayFormat.arrayFormatColor		2173
+nim	arrayFormatTexUv	gdext/enums.html#arrayFormatTexUv	Mesh_ArrayFormat.arrayFormatTexUv		2173
+nim	arrayFormatTexUv2	gdext/enums.html#arrayFormatTexUv2	Mesh_ArrayFormat.arrayFormatTexUv2		2173
+nim	arrayFormatCustom0	gdext/enums.html#arrayFormatCustom0	Mesh_ArrayFormat.arrayFormatCustom0		2173
+nim	arrayFormatCustom1	gdext/enums.html#arrayFormatCustom1	Mesh_ArrayFormat.arrayFormatCustom1		2173
+nim	arrayFormatCustom2	gdext/enums.html#arrayFormatCustom2	Mesh_ArrayFormat.arrayFormatCustom2		2173
+nim	arrayFormatCustom3	gdext/enums.html#arrayFormatCustom3	Mesh_ArrayFormat.arrayFormatCustom3		2173
+nim	arrayFormatBones	gdext/enums.html#arrayFormatBones	Mesh_ArrayFormat.arrayFormatBones		2173
+nim	arrayFormatWeights	gdext/enums.html#arrayFormatWeights	Mesh_ArrayFormat.arrayFormatWeights		2173
+nim	arrayFormatIndex	gdext/enums.html#arrayFormatIndex	Mesh_ArrayFormat.arrayFormatIndex		2173
+nim	arrayFlagUse2DVertices	gdext/enums.html#arrayFlagUse2DVertices	Mesh_ArrayFormat.arrayFlagUse2DVertices		2173
+nim	arrayFlagUseDynamicUpdate	gdext/enums.html#arrayFlagUseDynamicUpdate	Mesh_ArrayFormat.arrayFlagUseDynamicUpdate		2173
+nim	arrayFlagUse8BoneWeights	gdext/enums.html#arrayFlagUse8BoneWeights	Mesh_ArrayFormat.arrayFlagUse8BoneWeights		2173
+nim	arrayFlagUsesEmptyVertexArray	gdext/enums.html#arrayFlagUsesEmptyVertexArray	Mesh_ArrayFormat.arrayFlagUsesEmptyVertexArray		2173
+nim	arrayFlagCompressAttributes	gdext/enums.html#arrayFlagCompressAttributes	Mesh_ArrayFormat.arrayFlagCompressAttributes		2173
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_7	Mesh_ArrayFormat.--Padding-Max--		2173
+nim	Mesh_ArrayFormat	gdext/enums.html#Mesh_ArrayFormat	enum Mesh_ArrayFormat		2173
+nim	arrayFormatCustomBits	gdext/enums.html#arrayFormatCustomBits.t,typedesc[T]	template arrayFormatCustomBits[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2193
+nim	arrayFormatBlendShapeMask	gdext/enums.html#arrayFormatBlendShapeMask.t,typedesc[T]	template arrayFormatBlendShapeMask[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2194
+nim	arrayFormatCustomMask	gdext/enums.html#arrayFormatCustomMask.t,typedesc[T]	template arrayFormatCustomMask[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2195
+nim	arrayFormatCustomBase	gdext/enums.html#arrayFormatCustomBase.t,typedesc[T]	template arrayFormatCustomBase[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2196
+nim	arrayFormatCustom0Shift	gdext/enums.html#arrayFormatCustom0Shift.t,typedesc[T]	template arrayFormatCustom0Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2197
+nim	arrayFormatCustom1Shift	gdext/enums.html#arrayFormatCustom1Shift.t,typedesc[T]	template arrayFormatCustom1Shift[T: Mesh_ArrayFormat](_: typedesc[T]): T		2198
+nim	arrayFormatCustom2Shift	gdext/enums.html#arrayFormatCustom2Shift.t,typedesc[T]	template arrayFormatCustom2Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2199
+nim	arrayFormatCustom3Shift	gdext/enums.html#arrayFormatCustom3Shift.t,typedesc[T]	template arrayFormatCustom3Shift[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2200
+nim	arrayCompressFlagsBase	gdext/enums.html#arrayCompressFlagsBase.t,typedesc[T]	template arrayCompressFlagsBase[T: Mesh_ArrayFormat](_: typedesc[T]): set[T]		2201
+nim	Mesh_BlendShapeMode	gdext/enums.html#Mesh_BlendShapeMode	enum Mesh_BlendShapeMode		2203
+nim	MeshConvexDecompositionSettings_Mode	gdext/enums.html#MeshConvexDecompositionSettings_Mode	enum MeshConvexDecompositionSettings_Mode		2207
+nim	MultiMesh_TransformFormat	gdext/enums.html#MultiMesh_TransformFormat	enum MultiMesh_TransformFormat		2211
+nim	MultiMesh_PhysicsInterpolationQuality	gdext/enums.html#MultiMesh_PhysicsInterpolationQuality	enum MultiMesh_PhysicsInterpolationQuality		2215
+nim	MultiplayerAPI_RPCMode	gdext/enums.html#MultiplayerAPI_RPCMode	enum MultiplayerAPI_RPCMode		2219
+nim	MultiplayerPeer_ConnectionStatus	gdext/enums.html#MultiplayerPeer_ConnectionStatus	enum MultiplayerPeer_ConnectionStatus		2224
+nim	MultiplayerPeer_TransferMode	gdext/enums.html#MultiplayerPeer_TransferMode	enum MultiplayerPeer_TransferMode		2229
+nim	MultiplayerSynchronizer_VisibilityUpdateMode	gdext/enums.html#MultiplayerSynchronizer_VisibilityUpdateMode	enum MultiplayerSynchronizer_VisibilityUpdateMode		2234
+nim	NativeMenu_Feature	gdext/enums.html#NativeMenu_Feature	enum NativeMenu_Feature		2239
+nim	NativeMenu_SystemMenus	gdext/enums.html#NativeMenu_SystemMenus	enum NativeMenu_SystemMenus		2246
+nim	NavigationMesh_SamplePartitionType	gdext/enums.html#NavigationMesh_SamplePartitionType	enum NavigationMesh_SamplePartitionType		2254
+nim	NavigationMesh_ParsedGeometryType	gdext/enums.html#NavigationMesh_ParsedGeometryType	enum NavigationMesh_ParsedGeometryType		2260
+nim	NavigationMesh_SourceGeometryMode	gdext/enums.html#NavigationMesh_SourceGeometryMode	enum NavigationMesh_SourceGeometryMode		2266
+nim	NavigationPathQueryParameters2D_PathfindingAlgorithm	gdext/enums.html#NavigationPathQueryParameters2D_PathfindingAlgorithm	enum NavigationPathQueryParameters2D_PathfindingAlgorithm		2272
+nim	NavigationPathQueryParameters2D_PathPostProcessing	gdext/enums.html#NavigationPathQueryParameters2D_PathPostProcessing	enum NavigationPathQueryParameters2D_PathPostProcessing		2275
+nim	pathMetadataIncludeTypes	gdext/enums.html#pathMetadataIncludeTypes	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeTypes		2280
+nim	pathMetadataIncludeRids	gdext/enums.html#pathMetadataIncludeRids	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeRids		2280
+nim	pathMetadataIncludeOwners	gdext/enums.html#pathMetadataIncludeOwners	NavigationPathQueryParameters2D_PathMetadataFlags.pathMetadataIncludeOwners		2280
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_8	NavigationPathQueryParameters2D_PathMetadataFlags.--Padding-Max--		2280
+nim	NavigationPathQueryParameters2D_PathMetadataFlags	gdext/enums.html#NavigationPathQueryParameters2D_PathMetadataFlags	enum NavigationPathQueryParameters2D_PathMetadataFlags		2280
+nim	pathMetadataIncludeAll	gdext/enums.html#pathMetadataIncludeAll.t,typedesc[T]	template pathMetadataIncludeAll[T: NavigationPathQueryParameters2D_PathMetadataFlags](\n    _: typedesc[T]): set[T]		2286
+nim	NavigationPathQueryParameters3D_PathfindingAlgorithm	gdext/enums.html#NavigationPathQueryParameters3D_PathfindingAlgorithm	enum NavigationPathQueryParameters3D_PathfindingAlgorithm		2288
+nim	NavigationPathQueryParameters3D_PathPostProcessing	gdext/enums.html#NavigationPathQueryParameters3D_PathPostProcessing	enum NavigationPathQueryParameters3D_PathPostProcessing		2291
+nim	pathMetadataIncludeTypes	gdext/enums.html#pathMetadataIncludeTypes_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeTypes		2296
+nim	pathMetadataIncludeRids	gdext/enums.html#pathMetadataIncludeRids_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeRids		2296
+nim	pathMetadataIncludeOwners	gdext/enums.html#pathMetadataIncludeOwners_2	NavigationPathQueryParameters3D_PathMetadataFlags.pathMetadataIncludeOwners		2296
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_9	NavigationPathQueryParameters3D_PathMetadataFlags.--Padding-Max--		2296
+nim	NavigationPathQueryParameters3D_PathMetadataFlags	gdext/enums.html#NavigationPathQueryParameters3D_PathMetadataFlags	enum NavigationPathQueryParameters3D_PathMetadataFlags		2296
+nim	pathMetadataIncludeAll	gdext/enums.html#pathMetadataIncludeAll.t,typedesc[T]_2	template pathMetadataIncludeAll[T: NavigationPathQueryParameters3D_PathMetadataFlags](\n    _: typedesc[T]): set[T]		2302
+nim	NavigationPathQueryResult2D_PathSegmentType	gdext/enums.html#NavigationPathQueryResult2D_PathSegmentType	enum NavigationPathQueryResult2D_PathSegmentType		2304
+nim	NavigationPathQueryResult3D_PathSegmentType	gdext/enums.html#NavigationPathQueryResult3D_PathSegmentType	enum NavigationPathQueryResult3D_PathSegmentType		2308
+nim	NavigationPolygon_SamplePartitionType	gdext/enums.html#NavigationPolygon_SamplePartitionType	enum NavigationPolygon_SamplePartitionType		2312
+nim	NavigationPolygon_ParsedGeometryType	gdext/enums.html#NavigationPolygon_ParsedGeometryType	enum NavigationPolygon_ParsedGeometryType		2317
+nim	NavigationPolygon_SourceGeometryMode	gdext/enums.html#NavigationPolygon_SourceGeometryMode	enum NavigationPolygon_SourceGeometryMode		2323
+nim	NavigationServer2D_ProcessInfo	gdext/enums.html#NavigationServer2D_ProcessInfo	enum NavigationServer2D_ProcessInfo		2329
+nim	NavigationServer3D_ProcessInfo	gdext/enums.html#NavigationServer3D_ProcessInfo	enum NavigationServer3D_ProcessInfo		2341
+nim	NinePatchRect_AxisStretchMode	gdext/enums.html#NinePatchRect_AxisStretchMode	enum NinePatchRect_AxisStretchMode		2353
+nim	Node_ProcessMode	gdext/enums.html#Node_ProcessMode	enum Node_ProcessMode		2358
+nim	Node_ProcessThreadGroup	gdext/enums.html#Node_ProcessThreadGroup	enum Node_ProcessThreadGroup		2365
+nim	flagProcessThreadMessages	gdext/enums.html#flagProcessThreadMessages	Node_ProcessThreadMessages.flagProcessThreadMessages		2370
+nim	flagProcessThreadMessagesPhysics	gdext/enums.html#flagProcessThreadMessagesPhysics	Node_ProcessThreadMessages.flagProcessThreadMessagesPhysics		2370
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_10	Node_ProcessThreadMessages.--Padding-Max--		2370
+nim	Node_ProcessThreadMessages	gdext/enums.html#Node_ProcessThreadMessages	enum Node_ProcessThreadMessages		2370
+nim	flagProcessThreadMessagesAll	gdext/enums.html#flagProcessThreadMessagesAll.t,typedesc[T]	template flagProcessThreadMessagesAll[T: Node_ProcessThreadMessages](_: typedesc[T]): set[\n    T]		2374
+nim	Node_PhysicsInterpolationMode	gdext/enums.html#Node_PhysicsInterpolationMode	enum Node_PhysicsInterpolationMode		2376
+nim	Node_DuplicateFlags	gdext/enums.html#Node_DuplicateFlags	enum Node_DuplicateFlags		2381
+nim	Node_InternalMode	gdext/enums.html#Node_InternalMode	enum Node_InternalMode		2387
+nim	Node_AutoTranslateMode	gdext/enums.html#Node_AutoTranslateMode	enum Node_AutoTranslateMode		2392
+nim	Node3D_RotationEditMode	gdext/enums.html#Node3D_RotationEditMode	enum Node3D_RotationEditMode		2397
+nim	OS_RenderingDriver	gdext/enums.html#OS_RenderingDriver	enum OS_RenderingDriver		2402
+nim	OS_SystemDir	gdext/enums.html#OS_SystemDir	enum OS_SystemDir		2408
+nim	OS_StdHandleType	gdext/enums.html#OS_StdHandleType	enum OS_StdHandleType		2418
+nim	Object_ConnectFlags	gdext/enums.html#Object_ConnectFlags	enum Object_ConnectFlags		2425
+nim	OccluderPolygon2D_CullMode	gdext/enums.html#OccluderPolygon2D_CullMode	enum OccluderPolygon2D_CullMode		2432
+nim	OmniLight3D_ShadowMode	gdext/enums.html#OmniLight3D_ShadowMode	enum OmniLight3D_ShadowMode		2437
+nim	OpenXRAPIExtension_OpenXRAlphaBlendModeSupport	gdext/enums.html#OpenXRAPIExtension_OpenXRAlphaBlendModeSupport	enum OpenXRAPIExtension_OpenXRAlphaBlendModeSupport		2441
+nim	OpenXRAction_ActionType	gdext/enums.html#OpenXRAction_ActionType	enum OpenXRAction_ActionType		2446
+nim	OpenXRCompositionLayer_Filter	gdext/enums.html#OpenXRCompositionLayer_Filter	enum OpenXRCompositionLayer_Filter		2452
+nim	OpenXRCompositionLayer_MipmapMode	gdext/enums.html#OpenXRCompositionLayer_MipmapMode	enum OpenXRCompositionLayer_MipmapMode		2457
+nim	OpenXRCompositionLayer_Wrap	gdext/enums.html#OpenXRCompositionLayer_Wrap	enum OpenXRCompositionLayer_Wrap		2462
+nim	OpenXRCompositionLayer_Swizzle	gdext/enums.html#OpenXRCompositionLayer_Swizzle	enum OpenXRCompositionLayer_Swizzle		2469
+nim	OpenXRFutureResult_ResultStatus	gdext/enums.html#OpenXRFutureResult_ResultStatus	enum OpenXRFutureResult_ResultStatus		2477
+nim	OpenXRHand_Hands	gdext/enums.html#OpenXRHand_Hands	enum OpenXRHand_Hands		2482
+nim	OpenXRHand_MotionRange	gdext/enums.html#OpenXRHand_MotionRange	enum OpenXRHand_MotionRange		2487
+nim	OpenXRHand_SkeletonRig	gdext/enums.html#OpenXRHand_SkeletonRig	enum OpenXRHand_SkeletonRig		2492
+nim	OpenXRHand_BoneUpdate	gdext/enums.html#OpenXRHand_BoneUpdate	enum OpenXRHand_BoneUpdate		2497
+nim	OpenXRInterface_SessionState	gdext/enums.html#OpenXRInterface_SessionState	enum OpenXRInterface_SessionState		2502
+nim	OpenXRInterface_Hand	gdext/enums.html#OpenXRInterface_Hand	enum OpenXRInterface_Hand		2513
+nim	OpenXRInterface_HandMotionRange	gdext/enums.html#OpenXRInterface_HandMotionRange	enum OpenXRInterface_HandMotionRange		2518
+nim	OpenXRInterface_HandTrackedSource	gdext/enums.html#OpenXRInterface_HandTrackedSource	enum OpenXRInterface_HandTrackedSource		2523
+nim	OpenXRInterface_HandJoints	gdext/enums.html#OpenXRInterface_HandJoints	enum OpenXRInterface_HandJoints		2529
+nim	OpenXRInterface_PerfSettingsLevel	gdext/enums.html#OpenXRInterface_PerfSettingsLevel	enum OpenXRInterface_PerfSettingsLevel		2558
+nim	OpenXRInterface_PerfSettingsSubDomain	gdext/enums.html#OpenXRInterface_PerfSettingsSubDomain	enum OpenXRInterface_PerfSettingsSubDomain		2564
+nim	OpenXRInterface_PerfSettingsNotificationLevel	gdext/enums.html#OpenXRInterface_PerfSettingsNotificationLevel	enum OpenXRInterface_PerfSettingsNotificationLevel		2569
+nim	handJointOrientationValid	gdext/enums.html#handJointOrientationValid	OpenXRInterface_HandJointFlags.handJointOrientationValid		2574
+nim	handJointOrientationTracked	gdext/enums.html#handJointOrientationTracked	OpenXRInterface_HandJointFlags.handJointOrientationTracked		2574
+nim	handJointPositionValid	gdext/enums.html#handJointPositionValid	OpenXRInterface_HandJointFlags.handJointPositionValid		2574
+nim	handJointPositionTracked	gdext/enums.html#handJointPositionTracked	OpenXRInterface_HandJointFlags.handJointPositionTracked		2574
+nim	handJointLinearVelocityValid	gdext/enums.html#handJointLinearVelocityValid	OpenXRInterface_HandJointFlags.handJointLinearVelocityValid		2574
+nim	handJointAngularVelocityValid	gdext/enums.html#handJointAngularVelocityValid	OpenXRInterface_HandJointFlags.handJointAngularVelocityValid		2574
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_11	OpenXRInterface_HandJointFlags.--Padding-Max--		2574
+nim	OpenXRInterface_HandJointFlags	gdext/enums.html#OpenXRInterface_HandJointFlags	enum OpenXRInterface_HandJointFlags		2574
+nim	OpenXRRenderModelManager_RenderModelTracker	gdext/enums.html#OpenXRRenderModelManager_RenderModelTracker	enum OpenXRRenderModelManager_RenderModelTracker		2584
+nim	PackedScene_GenEditState	gdext/enums.html#PackedScene_GenEditState	enum PackedScene_GenEditState		2590
+nim	PacketPeerDTLS_Status	gdext/enums.html#PacketPeerDTLS_Status	enum PacketPeerDTLS_Status		2596
+nim	ParticleProcessMaterial_Parameter	gdext/enums.html#ParticleProcessMaterial_Parameter	enum ParticleProcessMaterial_Parameter		2603
+nim	ParticleProcessMaterial_ParticleFlags	gdext/enums.html#ParticleProcessMaterial_ParticleFlags	enum ParticleProcessMaterial_ParticleFlags		2624
+nim	ParticleProcessMaterial_EmissionShape	gdext/enums.html#ParticleProcessMaterial_EmissionShape	enum ParticleProcessMaterial_EmissionShape		2631
+nim	ParticleProcessMaterial_SubEmitterMode	gdext/enums.html#ParticleProcessMaterial_SubEmitterMode	enum ParticleProcessMaterial_SubEmitterMode		2641
+nim	ParticleProcessMaterial_CollisionMode	gdext/enums.html#ParticleProcessMaterial_CollisionMode	enum ParticleProcessMaterial_CollisionMode		2649
+nim	PathFollow3D_RotationMode	gdext/enums.html#PathFollow3D_RotationMode	enum PathFollow3D_RotationMode		2655
+nim	Performance_Monitor	gdext/enums.html#Performance_Monitor	enum Performance_Monitor		2662
+nim	PhysicalBone3D_DampMode	gdext/enums.html#PhysicalBone3D_DampMode	enum PhysicalBone3D_DampMode		2724
+nim	PhysicalBone3D_JointType	gdext/enums.html#PhysicalBone3D_JointType	enum PhysicalBone3D_JointType		2728
+nim	PhysicsServer2D_SpaceParameter	gdext/enums.html#PhysicsServer2D_SpaceParameter	enum PhysicsServer2D_SpaceParameter		2736
+nim	PhysicsServer2D_ShapeType	gdext/enums.html#PhysicsServer2D_ShapeType	enum PhysicsServer2D_ShapeType		2747
+nim	PhysicsServer2D_AreaParameter	gdext/enums.html#PhysicsServer2D_AreaParameter	enum PhysicsServer2D_AreaParameter		2758
+nim	PhysicsServer2D_AreaSpaceOverrideMode	gdext/enums.html#PhysicsServer2D_AreaSpaceOverrideMode	enum PhysicsServer2D_AreaSpaceOverrideMode		2770
+nim	PhysicsServer2D_BodyMode	gdext/enums.html#PhysicsServer2D_BodyMode	enum PhysicsServer2D_BodyMode		2777
+nim	PhysicsServer2D_BodyParameter	gdext/enums.html#PhysicsServer2D_BodyParameter	enum PhysicsServer2D_BodyParameter		2783
+nim	PhysicsServer2D_BodyDampMode	gdext/enums.html#PhysicsServer2D_BodyDampMode	enum PhysicsServer2D_BodyDampMode		2796
+nim	PhysicsServer2D_BodyState	gdext/enums.html#PhysicsServer2D_BodyState	enum PhysicsServer2D_BodyState		2800
+nim	PhysicsServer2D_JointType	gdext/enums.html#PhysicsServer2D_JointType	enum PhysicsServer2D_JointType		2807
+nim	PhysicsServer2D_JointParam	gdext/enums.html#PhysicsServer2D_JointParam	enum PhysicsServer2D_JointParam		2813
+nim	PhysicsServer2D_PinJointParam	gdext/enums.html#PhysicsServer2D_PinJointParam	enum PhysicsServer2D_PinJointParam		2818
+nim	PhysicsServer2D_PinJointFlag	gdext/enums.html#PhysicsServer2D_PinJointFlag	enum PhysicsServer2D_PinJointFlag		2824
+nim	PhysicsServer2D_DampedSpringParam	gdext/enums.html#PhysicsServer2D_DampedSpringParam	enum PhysicsServer2D_DampedSpringParam		2828
+nim	PhysicsServer2D_CCDMode	gdext/enums.html#PhysicsServer2D_CCDMode	enum PhysicsServer2D_CCDMode		2833
+nim	PhysicsServer2D_AreaBodyStatus	gdext/enums.html#PhysicsServer2D_AreaBodyStatus	enum PhysicsServer2D_AreaBodyStatus		2838
+nim	PhysicsServer2D_ProcessInfo	gdext/enums.html#PhysicsServer2D_ProcessInfo	enum PhysicsServer2D_ProcessInfo		2842
+nim	PhysicsServer3D_JointType	gdext/enums.html#PhysicsServer3D_JointType	enum PhysicsServer3D_JointType		2847
+nim	PhysicsServer3D_PinJointParam	gdext/enums.html#PhysicsServer3D_PinJointParam	enum PhysicsServer3D_PinJointParam		2855
+nim	PhysicsServer3D_HingeJointParam	gdext/enums.html#PhysicsServer3D_HingeJointParam	enum PhysicsServer3D_HingeJointParam		2860
+nim	PhysicsServer3D_HingeJointFlag	gdext/enums.html#PhysicsServer3D_HingeJointFlag	enum PhysicsServer3D_HingeJointFlag		2870
+nim	PhysicsServer3D_SliderJointParam	gdext/enums.html#PhysicsServer3D_SliderJointParam	enum PhysicsServer3D_SliderJointParam		2874
+nim	PhysicsServer3D_ConeTwistJointParam	gdext/enums.html#PhysicsServer3D_ConeTwistJointParam	enum PhysicsServer3D_ConeTwistJointParam		2899
+nim	PhysicsServer3D_G6DOFJointAxisParam	gdext/enums.html#PhysicsServer3D_G6DOFJointAxisParam	enum PhysicsServer3D_G6DOFJointAxisParam		2906
+nim	PhysicsServer3D_G6DOFJointAxisFlag	gdext/enums.html#PhysicsServer3D_G6DOFJointAxisFlag	enum PhysicsServer3D_G6DOFJointAxisFlag		2931
+nim	PhysicsServer3D_ShapeType	gdext/enums.html#PhysicsServer3D_ShapeType	enum PhysicsServer3D_ShapeType		2940
+nim	PhysicsServer3D_AreaParameter	gdext/enums.html#PhysicsServer3D_AreaParameter	enum PhysicsServer3D_AreaParameter		2953
+nim	PhysicsServer3D_AreaSpaceOverrideMode	gdext/enums.html#PhysicsServer3D_AreaSpaceOverrideMode	enum PhysicsServer3D_AreaSpaceOverrideMode		2969
+nim	PhysicsServer3D_BodyMode	gdext/enums.html#PhysicsServer3D_BodyMode	enum PhysicsServer3D_BodyMode		2976
+nim	PhysicsServer3D_BodyParameter	gdext/enums.html#PhysicsServer3D_BodyParameter	enum PhysicsServer3D_BodyParameter		2982
+nim	PhysicsServer3D_BodyDampMode	gdext/enums.html#PhysicsServer3D_BodyDampMode	enum PhysicsServer3D_BodyDampMode		2995
+nim	PhysicsServer3D_BodyState	gdext/enums.html#PhysicsServer3D_BodyState	enum PhysicsServer3D_BodyState		2999
+nim	PhysicsServer3D_AreaBodyStatus	gdext/enums.html#PhysicsServer3D_AreaBodyStatus	enum PhysicsServer3D_AreaBodyStatus		3006
+nim	PhysicsServer3D_ProcessInfo	gdext/enums.html#PhysicsServer3D_ProcessInfo	enum PhysicsServer3D_ProcessInfo		3010
+nim	PhysicsServer3D_SpaceParameter	gdext/enums.html#PhysicsServer3D_SpaceParameter	enum PhysicsServer3D_SpaceParameter		3015
+nim	PhysicsServer3D_BodyAxis	gdext/enums.html#PhysicsServer3D_BodyAxis	enum PhysicsServer3D_BodyAxis		3025
+nim	PinJoint3D_Param	gdext/enums.html#PinJoint3D_Param	enum PinJoint3D_Param		3033
+nim	PlaneMesh_Orientation	gdext/enums.html#PlaneMesh_Orientation	enum PlaneMesh_Orientation		3038
+nim	PortableCompressedTexture2D_CompressionMode	gdext/enums.html#PortableCompressedTexture2D_CompressionMode	enum PortableCompressedTexture2D_CompressionMode		3043
+nim	ProgressBar_FillMode	gdext/enums.html#ProgressBar_FillMode	enum ProgressBar_FillMode		3052
+nim	ReflectionProbe_UpdateMode	gdext/enums.html#ReflectionProbe_UpdateMode	enum ReflectionProbe_UpdateMode		3058
+nim	ReflectionProbe_AmbientMode	gdext/enums.html#ReflectionProbe_AmbientMode	enum ReflectionProbe_AmbientMode		3062
+nim	RenderingDevice_DeviceType	gdext/enums.html#RenderingDevice_DeviceType	enum RenderingDevice_DeviceType		3067
+nim	RenderingDevice_DriverResource	gdext/enums.html#RenderingDevice_DriverResource	enum RenderingDevice_DriverResource		3075
+nim	driverResourceVulkanDevice	gdext/enums.html#driverResourceVulkanDevice.t,typedesc[T]	template driverResourceVulkanDevice[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3089
+nim	driverResourceVulkanPhysicalDevice	gdext/enums.html#driverResourceVulkanPhysicalDevice.t,typedesc[T]	template driverResourceVulkanPhysicalDevice[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3090
+nim	driverResourceVulkanInstance	gdext/enums.html#driverResourceVulkanInstance.t,typedesc[T]	template driverResourceVulkanInstance[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3091
+nim	driverResourceVulkanQueue	gdext/enums.html#driverResourceVulkanQueue.t,typedesc[T]	template driverResourceVulkanQueue[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3092
+nim	driverResourceVulkanQueueFamilyIndex	gdext/enums.html#driverResourceVulkanQueueFamilyIndex.t,typedesc[T]	template driverResourceVulkanQueueFamilyIndex[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3093
+nim	driverResourceVulkanImage	gdext/enums.html#driverResourceVulkanImage.t,typedesc[T]	template driverResourceVulkanImage[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3094
+nim	driverResourceVulkanImageView	gdext/enums.html#driverResourceVulkanImageView.t,typedesc[T]	template driverResourceVulkanImageView[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3095
+nim	driverResourceVulkanImageNativeTextureFormat	gdext/enums.html#driverResourceVulkanImageNativeTextureFormat.t,typedesc[T]	template driverResourceVulkanImageNativeTextureFormat[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3096
+nim	driverResourceVulkanSampler	gdext/enums.html#driverResourceVulkanSampler.t,typedesc[T]	template driverResourceVulkanSampler[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3097
+nim	driverResourceVulkanDescriptorSet	gdext/enums.html#driverResourceVulkanDescriptorSet.t,typedesc[T]	template driverResourceVulkanDescriptorSet[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3098
+nim	driverResourceVulkanBuffer	gdext/enums.html#driverResourceVulkanBuffer.t,typedesc[T]	template driverResourceVulkanBuffer[T: RenderingDevice_DriverResource](_: typedesc[T]): T		3099
+nim	driverResourceVulkanComputePipeline	gdext/enums.html#driverResourceVulkanComputePipeline.t,typedesc[T]	template driverResourceVulkanComputePipeline[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3100
+nim	driverResourceVulkanRenderPipeline	gdext/enums.html#driverResourceVulkanRenderPipeline.t,typedesc[T]	template driverResourceVulkanRenderPipeline[T: RenderingDevice_DriverResource](\n    _: typedesc[T]): T		3101
+nim	RenderingDevice_DataFormat	gdext/enums.html#RenderingDevice_DataFormat	enum RenderingDevice_DataFormat		3103
+nim	barrierMaskVertex	gdext/enums.html#barrierMaskVertex	RenderingDevice_BarrierMask.barrierMaskVertex		3338
+nim	barrierMaskCompute	gdext/enums.html#barrierMaskCompute	RenderingDevice_BarrierMask.barrierMaskCompute		3338
+nim	barrierMaskTransfer	gdext/enums.html#barrierMaskTransfer	RenderingDevice_BarrierMask.barrierMaskTransfer		3338
+nim	barrierMaskFragment	gdext/enums.html#barrierMaskFragment	RenderingDevice_BarrierMask.barrierMaskFragment		3338
+nim	barrierMaskNoBarrier	gdext/enums.html#barrierMaskNoBarrier	RenderingDevice_BarrierMask.barrierMaskNoBarrier		3338
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_12	RenderingDevice_BarrierMask.--Padding-Max--		3338
+nim	RenderingDevice_BarrierMask	gdext/enums.html#RenderingDevice_BarrierMask	enum RenderingDevice_BarrierMask		3338
+nim	barrierMaskRaster	gdext/enums.html#barrierMaskRaster.t,typedesc[T]	template barrierMaskRaster[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]		3345
+nim	barrierMaskAllBarriers	gdext/enums.html#barrierMaskAllBarriers.t,typedesc[T]	template barrierMaskAllBarriers[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]		3346
+nim	RenderingDevice_TextureType	gdext/enums.html#RenderingDevice_TextureType	enum RenderingDevice_TextureType		3348
+nim	RenderingDevice_TextureSamples	gdext/enums.html#RenderingDevice_TextureSamples	enum RenderingDevice_TextureSamples		3358
+nim	textureUsageSamplingBit	gdext/enums.html#textureUsageSamplingBit	RenderingDevice_TextureUsageBits.textureUsageSamplingBit		3368
+nim	textureUsageColorAttachmentBit	gdext/enums.html#textureUsageColorAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageColorAttachmentBit		3368
+nim	textureUsageDepthStencilAttachmentBit	gdext/enums.html#textureUsageDepthStencilAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageDepthStencilAttachmentBit		3368
+nim	textureUsageStorageBit	gdext/enums.html#textureUsageStorageBit	RenderingDevice_TextureUsageBits.textureUsageStorageBit		3368
+nim	textureUsageStorageAtomicBit	gdext/enums.html#textureUsageStorageAtomicBit	RenderingDevice_TextureUsageBits.textureUsageStorageAtomicBit		3368
+nim	textureUsageCpuReadBit	gdext/enums.html#textureUsageCpuReadBit	RenderingDevice_TextureUsageBits.textureUsageCpuReadBit		3368
+nim	textureUsageCanUpdateBit	gdext/enums.html#textureUsageCanUpdateBit	RenderingDevice_TextureUsageBits.textureUsageCanUpdateBit		3368
+nim	textureUsageCanCopyFromBit	gdext/enums.html#textureUsageCanCopyFromBit	RenderingDevice_TextureUsageBits.textureUsageCanCopyFromBit		3368
+nim	textureUsageCanCopyToBit	gdext/enums.html#textureUsageCanCopyToBit	RenderingDevice_TextureUsageBits.textureUsageCanCopyToBit		3368
+nim	textureUsageInputAttachmentBit	gdext/enums.html#textureUsageInputAttachmentBit	RenderingDevice_TextureUsageBits.textureUsageInputAttachmentBit		3368
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_13	RenderingDevice_TextureUsageBits.--Padding-Max--		3368
+nim	RenderingDevice_TextureUsageBits	gdext/enums.html#RenderingDevice_TextureUsageBits	enum RenderingDevice_TextureUsageBits		3368
+nim	RenderingDevice_TextureSwizzle	gdext/enums.html#RenderingDevice_TextureSwizzle	enum RenderingDevice_TextureSwizzle		3381
+nim	RenderingDevice_TextureSliceType	gdext/enums.html#RenderingDevice_TextureSliceType	enum RenderingDevice_TextureSliceType		3391
+nim	RenderingDevice_SamplerFilter	gdext/enums.html#RenderingDevice_SamplerFilter	enum RenderingDevice_SamplerFilter		3396
+nim	RenderingDevice_SamplerRepeatMode	gdext/enums.html#RenderingDevice_SamplerRepeatMode	enum RenderingDevice_SamplerRepeatMode		3400
+nim	RenderingDevice_SamplerBorderColor	gdext/enums.html#RenderingDevice_SamplerBorderColor	enum RenderingDevice_SamplerBorderColor		3408
+nim	RenderingDevice_VertexFrequency	gdext/enums.html#RenderingDevice_VertexFrequency	enum RenderingDevice_VertexFrequency		3417
+nim	RenderingDevice_IndexBufferFormat	gdext/enums.html#RenderingDevice_IndexBufferFormat	enum RenderingDevice_IndexBufferFormat		3421
+nim	storageBufferUsageDispatchIndirect	gdext/enums.html#storageBufferUsageDispatchIndirect	RenderingDevice_StorageBufferUsage.storageBufferUsageDispatchIndirect		3425
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_14	RenderingDevice_StorageBufferUsage.--Padding-Max--		3425
+nim	RenderingDevice_StorageBufferUsage	gdext/enums.html#RenderingDevice_StorageBufferUsage	enum RenderingDevice_StorageBufferUsage		3425
+nim	bufferCreationDeviceAddressBit	gdext/enums.html#bufferCreationDeviceAddressBit	RenderingDevice_BufferCreationBits.bufferCreationDeviceAddressBit		3429
+nim	bufferCreationAsStorageBit	gdext/enums.html#bufferCreationAsStorageBit	RenderingDevice_BufferCreationBits.bufferCreationAsStorageBit		3429
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_15	RenderingDevice_BufferCreationBits.--Padding-Max--		3429
+nim	RenderingDevice_BufferCreationBits	gdext/enums.html#RenderingDevice_BufferCreationBits	enum RenderingDevice_BufferCreationBits		3429
+nim	RenderingDevice_UniformType	gdext/enums.html#RenderingDevice_UniformType	enum RenderingDevice_UniformType		3434
+nim	RenderingDevice_RenderPrimitive	gdext/enums.html#RenderingDevice_RenderPrimitive	enum RenderingDevice_RenderPrimitive		3447
+nim	RenderingDevice_PolygonCullMode	gdext/enums.html#RenderingDevice_PolygonCullMode	enum RenderingDevice_PolygonCullMode		3461
+nim	RenderingDevice_PolygonFrontFace	gdext/enums.html#RenderingDevice_PolygonFrontFace	enum RenderingDevice_PolygonFrontFace		3466
+nim	RenderingDevice_StencilOperation	gdext/enums.html#RenderingDevice_StencilOperation	enum RenderingDevice_StencilOperation		3470
+nim	RenderingDevice_CompareOperator	gdext/enums.html#RenderingDevice_CompareOperator	enum RenderingDevice_CompareOperator		3481
+nim	RenderingDevice_LogicOperation	gdext/enums.html#RenderingDevice_LogicOperation	enum RenderingDevice_LogicOperation		3492
+nim	RenderingDevice_BlendFactor	gdext/enums.html#RenderingDevice_BlendFactor	enum RenderingDevice_BlendFactor		3511
+nim	RenderingDevice_BlendOperation	gdext/enums.html#RenderingDevice_BlendOperation	enum RenderingDevice_BlendOperation		3533
+nim	dynamicStateLineWidth	gdext/enums.html#dynamicStateLineWidth	RenderingDevice_PipelineDynamicStateFlags.dynamicStateLineWidth		3541
+nim	dynamicStateDepthBias	gdext/enums.html#dynamicStateDepthBias	RenderingDevice_PipelineDynamicStateFlags.dynamicStateDepthBias		3541
+nim	dynamicStateBlendConstants	gdext/enums.html#dynamicStateBlendConstants	RenderingDevice_PipelineDynamicStateFlags.dynamicStateBlendConstants		3541
+nim	dynamicStateDepthBounds	gdext/enums.html#dynamicStateDepthBounds	RenderingDevice_PipelineDynamicStateFlags.dynamicStateDepthBounds		3541
+nim	dynamicStateStencilCompareMask	gdext/enums.html#dynamicStateStencilCompareMask	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilCompareMask		3541
+nim	dynamicStateStencilWriteMask	gdext/enums.html#dynamicStateStencilWriteMask	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilWriteMask		3541
+nim	dynamicStateStencilReference	gdext/enums.html#dynamicStateStencilReference	RenderingDevice_PipelineDynamicStateFlags.dynamicStateStencilReference		3541
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_16	RenderingDevice_PipelineDynamicStateFlags.--Padding-Max--		3541
+nim	RenderingDevice_PipelineDynamicStateFlags	gdext/enums.html#RenderingDevice_PipelineDynamicStateFlags	enum RenderingDevice_PipelineDynamicStateFlags		3541
+nim	RenderingDevice_InitialAction	gdext/enums.html#RenderingDevice_InitialAction	enum RenderingDevice_InitialAction		3551
+nim	initialActionKeep	gdext/enums.html#initialActionKeep.t,typedesc[T]	template initialActionKeep[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3556
+nim	initialActionContinue	gdext/enums.html#initialActionContinue.t,typedesc[T]	template initialActionContinue[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3557
+nim	initialActionClearRegion	gdext/enums.html#initialActionClearRegion.t,typedesc[T]	template initialActionClearRegion[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3558
+nim	initialActionClearRegionContinue	gdext/enums.html#initialActionClearRegionContinue.t,typedesc[T]	template initialActionClearRegionContinue[T: RenderingDevice_InitialAction](\n    _: typedesc[T]): T		3559
+nim	initialActionDrop	gdext/enums.html#initialActionDrop.t,typedesc[T]	template initialActionDrop[T: RenderingDevice_InitialAction](_: typedesc[T]): T		3560
+nim	RenderingDevice_FinalAction	gdext/enums.html#RenderingDevice_FinalAction	enum RenderingDevice_FinalAction		3562
+nim	finalActionRead	gdext/enums.html#finalActionRead.t,typedesc[T]	template finalActionRead[T: RenderingDevice_FinalAction](_: typedesc[T]): T		3566
+nim	finalActionContinue	gdext/enums.html#finalActionContinue.t,typedesc[T]	template finalActionContinue[T: RenderingDevice_FinalAction](_: typedesc[T]): T		3567
+nim	RenderingDevice_ShaderStage	gdext/enums.html#RenderingDevice_ShaderStage	enum RenderingDevice_ShaderStage		3569
+nim	shaderStageVertexBit	gdext/enums.html#shaderStageVertexBit.t,typedesc[T]	template shaderStageVertexBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3578
+nim	shaderStageFragmentBit	gdext/enums.html#shaderStageFragmentBit.t,typedesc[T]	template shaderStageFragmentBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3579
+nim	shaderStageTesselationControlBit	gdext/enums.html#shaderStageTesselationControlBit.t,typedesc[T]	template shaderStageTesselationControlBit[T: RenderingDevice_ShaderStage](_: typedesc[T]): T		3580
+nim	RenderingDevice_ShaderLanguage	gdext/enums.html#RenderingDevice_ShaderLanguage	enum RenderingDevice_ShaderLanguage		3582
+nim	RenderingDevice_PipelineSpecializationConstantType	gdext/enums.html#RenderingDevice_PipelineSpecializationConstantType	enum RenderingDevice_PipelineSpecializationConstantType		3586
+nim	RenderingDevice_Features	gdext/enums.html#RenderingDevice_Features	enum RenderingDevice_Features		3591
+nim	RenderingDevice_Limit	gdext/enums.html#RenderingDevice_Limit	enum RenderingDevice_Limit		3597
+nim	RenderingDevice_MemoryType	gdext/enums.html#RenderingDevice_MemoryType	enum RenderingDevice_MemoryType		3638
+nim	RenderingDevice_BreadcrumbMarker	gdext/enums.html#RenderingDevice_BreadcrumbMarker	enum RenderingDevice_BreadcrumbMarker		3643
+nim	drawClearColor0	gdext/enums.html#drawClearColor0	RenderingDevice_DrawFlags.drawClearColor0		3658
+nim	drawClearColor1	gdext/enums.html#drawClearColor1	RenderingDevice_DrawFlags.drawClearColor1		3658
+nim	drawClearColor2	gdext/enums.html#drawClearColor2	RenderingDevice_DrawFlags.drawClearColor2		3658
+nim	drawClearColor3	gdext/enums.html#drawClearColor3	RenderingDevice_DrawFlags.drawClearColor3		3658
+nim	drawClearColor4	gdext/enums.html#drawClearColor4	RenderingDevice_DrawFlags.drawClearColor4		3658
+nim	drawClearColor5	gdext/enums.html#drawClearColor5	RenderingDevice_DrawFlags.drawClearColor5		3658
+nim	drawClearColor6	gdext/enums.html#drawClearColor6	RenderingDevice_DrawFlags.drawClearColor6		3658
+nim	drawClearColor7	gdext/enums.html#drawClearColor7	RenderingDevice_DrawFlags.drawClearColor7		3658
+nim	drawIgnoreColor0	gdext/enums.html#drawIgnoreColor0	RenderingDevice_DrawFlags.drawIgnoreColor0		3658
+nim	drawIgnoreColor1	gdext/enums.html#drawIgnoreColor1	RenderingDevice_DrawFlags.drawIgnoreColor1		3658
+nim	drawIgnoreColor2	gdext/enums.html#drawIgnoreColor2	RenderingDevice_DrawFlags.drawIgnoreColor2		3658
+nim	drawIgnoreColor3	gdext/enums.html#drawIgnoreColor3	RenderingDevice_DrawFlags.drawIgnoreColor3		3658
+nim	drawIgnoreColor4	gdext/enums.html#drawIgnoreColor4	RenderingDevice_DrawFlags.drawIgnoreColor4		3658
+nim	drawIgnoreColor5	gdext/enums.html#drawIgnoreColor5	RenderingDevice_DrawFlags.drawIgnoreColor5		3658
+nim	drawIgnoreColor6	gdext/enums.html#drawIgnoreColor6	RenderingDevice_DrawFlags.drawIgnoreColor6		3658
+nim	drawIgnoreColor7	gdext/enums.html#drawIgnoreColor7	RenderingDevice_DrawFlags.drawIgnoreColor7		3658
+nim	drawClearDepth	gdext/enums.html#drawClearDepth	RenderingDevice_DrawFlags.drawClearDepth		3658
+nim	drawIgnoreDepth	gdext/enums.html#drawIgnoreDepth	RenderingDevice_DrawFlags.drawIgnoreDepth		3658
+nim	drawClearStencil	gdext/enums.html#drawClearStencil	RenderingDevice_DrawFlags.drawClearStencil		3658
+nim	drawIgnoreStencil	gdext/enums.html#drawIgnoreStencil	RenderingDevice_DrawFlags.drawIgnoreStencil		3658
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_17	RenderingDevice_DrawFlags.--Padding-Max--		3658
+nim	RenderingDevice_DrawFlags	gdext/enums.html#RenderingDevice_DrawFlags	enum RenderingDevice_DrawFlags		3658
+nim	drawClearColorMask	gdext/enums.html#drawClearColorMask.t,typedesc[T]	template drawClearColorMask[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3681
+nim	drawClearColorAll	gdext/enums.html#drawClearColorAll.t,typedesc[T]	template drawClearColorAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3682
+nim	drawIgnoreColorMask	gdext/enums.html#drawIgnoreColorMask.t,typedesc[T]	template drawIgnoreColorMask[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3683
+nim	drawIgnoreColorAll	gdext/enums.html#drawIgnoreColorAll.t,typedesc[T]	template drawIgnoreColorAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3684
+nim	drawClearAll	gdext/enums.html#drawClearAll.t,typedesc[T]	template drawClearAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3685
+nim	drawIgnoreAll	gdext/enums.html#drawIgnoreAll.t,typedesc[T]	template drawIgnoreAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]		3686
+nim	RenderingServer_TextureType	gdext/enums.html#RenderingServer_TextureType	enum RenderingServer_TextureType		3688
+nim	RenderingServer_TextureLayeredType	gdext/enums.html#RenderingServer_TextureLayeredType	enum RenderingServer_TextureLayeredType		3693
+nim	RenderingServer_CubeMapLayer	gdext/enums.html#RenderingServer_CubeMapLayer	enum RenderingServer_CubeMapLayer		3698
+nim	RenderingServer_ShaderMode	gdext/enums.html#RenderingServer_ShaderMode	enum RenderingServer_ShaderMode		3706
+nim	RenderingServer_ArrayType	gdext/enums.html#RenderingServer_ArrayType	enum RenderingServer_ArrayType		3714
+nim	RenderingServer_ArrayCustomFormat	gdext/enums.html#RenderingServer_ArrayCustomFormat	enum RenderingServer_ArrayCustomFormat		3730
+nim	arrayFormatVertex	gdext/enums.html#arrayFormatVertex_2	RenderingServer_ArrayFormat.arrayFormatVertex		3741
+nim	arrayFormatNormal	gdext/enums.html#arrayFormatNormal_2	RenderingServer_ArrayFormat.arrayFormatNormal		3741
+nim	arrayFormatTangent	gdext/enums.html#arrayFormatTangent_2	RenderingServer_ArrayFormat.arrayFormatTangent		3741
+nim	arrayFormatColor	gdext/enums.html#arrayFormatColor_2	RenderingServer_ArrayFormat.arrayFormatColor		3741
+nim	arrayFormatTexUv	gdext/enums.html#arrayFormatTexUv_2	RenderingServer_ArrayFormat.arrayFormatTexUv		3741
+nim	arrayFormatTexUv2	gdext/enums.html#arrayFormatTexUv2_2	RenderingServer_ArrayFormat.arrayFormatTexUv2		3741
+nim	arrayFormatCustom0	gdext/enums.html#arrayFormatCustom0_2	RenderingServer_ArrayFormat.arrayFormatCustom0		3741
+nim	arrayFormatCustom1	gdext/enums.html#arrayFormatCustom1_2	RenderingServer_ArrayFormat.arrayFormatCustom1		3741
+nim	arrayFormatCustom2	gdext/enums.html#arrayFormatCustom2_2	RenderingServer_ArrayFormat.arrayFormatCustom2		3741
+nim	arrayFormatCustom3	gdext/enums.html#arrayFormatCustom3_2	RenderingServer_ArrayFormat.arrayFormatCustom3		3741
+nim	arrayFormatBones	gdext/enums.html#arrayFormatBones_2	RenderingServer_ArrayFormat.arrayFormatBones		3741
+nim	arrayFormatWeights	gdext/enums.html#arrayFormatWeights_2	RenderingServer_ArrayFormat.arrayFormatWeights		3741
+nim	arrayFormatIndex	gdext/enums.html#arrayFormatIndex_2	RenderingServer_ArrayFormat.arrayFormatIndex		3741
+nim	arrayFlagUse2DVertices	gdext/enums.html#arrayFlagUse2DVertices_2	RenderingServer_ArrayFormat.arrayFlagUse2DVertices		3741
+nim	arrayFlagUseDynamicUpdate	gdext/enums.html#arrayFlagUseDynamicUpdate_2	RenderingServer_ArrayFormat.arrayFlagUseDynamicUpdate		3741
+nim	arrayFlagUse8BoneWeights	gdext/enums.html#arrayFlagUse8BoneWeights_2	RenderingServer_ArrayFormat.arrayFlagUse8BoneWeights		3741
+nim	arrayFlagUsesEmptyVertexArray	gdext/enums.html#arrayFlagUsesEmptyVertexArray_2	RenderingServer_ArrayFormat.arrayFlagUsesEmptyVertexArray		3741
+nim	arrayFlagCompressAttributes	gdext/enums.html#arrayFlagCompressAttributes_2	RenderingServer_ArrayFormat.arrayFlagCompressAttributes		3741
+nim	arrayFlagFormatVersion2	gdext/enums.html#arrayFlagFormatVersion2	RenderingServer_ArrayFormat.arrayFlagFormatVersion2		3741
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_18	RenderingServer_ArrayFormat.--Padding-Max--		3741
+nim	RenderingServer_ArrayFormat	gdext/enums.html#RenderingServer_ArrayFormat	enum RenderingServer_ArrayFormat		3741
+nim	arrayFormatCustomBits	gdext/enums.html#arrayFormatCustomBits.t,typedesc[T]_2	template arrayFormatCustomBits[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3763
+nim	arrayFormatBlendShapeMask	gdext/enums.html#arrayFormatBlendShapeMask.t,typedesc[T]_2	template arrayFormatBlendShapeMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3764
+nim	arrayFormatCustomMask	gdext/enums.html#arrayFormatCustomMask.t,typedesc[T]_2	template arrayFormatCustomMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3765
+nim	arrayFormatCustomBase	gdext/enums.html#arrayFormatCustomBase.t,typedesc[T]_2	template arrayFormatCustomBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3766
+nim	arrayFormatCustom0Shift	gdext/enums.html#arrayFormatCustom0Shift.t,typedesc[T]_2	template arrayFormatCustom0Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3767
+nim	arrayFormatCustom1Shift	gdext/enums.html#arrayFormatCustom1Shift.t,typedesc[T]_2	template arrayFormatCustom1Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): T		3768
+nim	arrayFormatCustom2Shift	gdext/enums.html#arrayFormatCustom2Shift.t,typedesc[T]_2	template arrayFormatCustom2Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3769
+nim	arrayFormatCustom3Shift	gdext/enums.html#arrayFormatCustom3Shift.t,typedesc[T]_2	template arrayFormatCustom3Shift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3770
+nim	arrayCompressFlagsBase	gdext/enums.html#arrayCompressFlagsBase.t,typedesc[T]_2	template arrayCompressFlagsBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[T]		3771
+nim	arrayFlagFormatVersionBase	gdext/enums.html#arrayFlagFormatVersionBase.t,typedesc[T]	template arrayFlagFormatVersionBase[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3772
+nim	arrayFlagFormatVersionShift	gdext/enums.html#arrayFlagFormatVersionShift.t,typedesc[T]	template arrayFlagFormatVersionShift[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3773
+nim	arrayFlagFormatVersionMask	gdext/enums.html#arrayFlagFormatVersionMask.t,typedesc[T]	template arrayFlagFormatVersionMask[T: RenderingServer_ArrayFormat](_: typedesc[T]): set[\n    T]		3774
+nim	arrayFlagFormatCurrentVersion	gdext/enums.html#arrayFlagFormatCurrentVersion.t,typedesc[T]	template arrayFlagFormatCurrentVersion[T: RenderingServer_ArrayFormat](_: typedesc[T]): T		3775
+nim	RenderingServer_PrimitiveType	gdext/enums.html#RenderingServer_PrimitiveType	enum RenderingServer_PrimitiveType		3777
+nim	RenderingServer_BlendShapeMode	gdext/enums.html#RenderingServer_BlendShapeMode	enum RenderingServer_BlendShapeMode		3785
+nim	RenderingServer_MultimeshTransformFormat	gdext/enums.html#RenderingServer_MultimeshTransformFormat	enum RenderingServer_MultimeshTransformFormat		3789
+nim	RenderingServer_MultimeshPhysicsInterpolationQuality	gdext/enums.html#RenderingServer_MultimeshPhysicsInterpolationQuality	enum RenderingServer_MultimeshPhysicsInterpolationQuality		3793
+nim	RenderingServer_LightProjectorFilter	gdext/enums.html#RenderingServer_LightProjectorFilter	enum RenderingServer_LightProjectorFilter		3797
+nim	RenderingServer_LightType	gdext/enums.html#RenderingServer_LightType	enum RenderingServer_LightType		3805
+nim	RenderingServer_LightParam	gdext/enums.html#RenderingServer_LightParam	enum RenderingServer_LightParam		3810
+nim	RenderingServer_LightBakeMode	gdext/enums.html#RenderingServer_LightBakeMode	enum RenderingServer_LightBakeMode		3834
+nim	RenderingServer_LightOmniShadowMode	gdext/enums.html#RenderingServer_LightOmniShadowMode	enum RenderingServer_LightOmniShadowMode		3839
+nim	RenderingServer_LightDirectionalShadowMode	gdext/enums.html#RenderingServer_LightDirectionalShadowMode	enum RenderingServer_LightDirectionalShadowMode		3843
+nim	RenderingServer_LightDirectionalSkyMode	gdext/enums.html#RenderingServer_LightDirectionalSkyMode	enum RenderingServer_LightDirectionalSkyMode		3848
+nim	RenderingServer_ShadowQuality	gdext/enums.html#RenderingServer_ShadowQuality	enum RenderingServer_ShadowQuality		3853
+nim	RenderingServer_ReflectionProbeUpdateMode	gdext/enums.html#RenderingServer_ReflectionProbeUpdateMode	enum RenderingServer_ReflectionProbeUpdateMode		3862
+nim	RenderingServer_ReflectionProbeAmbientMode	gdext/enums.html#RenderingServer_ReflectionProbeAmbientMode	enum RenderingServer_ReflectionProbeAmbientMode		3866
+nim	RenderingServer_DecalTexture	gdext/enums.html#RenderingServer_DecalTexture	enum RenderingServer_DecalTexture		3871
+nim	RenderingServer_DecalFilter	gdext/enums.html#RenderingServer_DecalFilter	enum RenderingServer_DecalFilter		3878
+nim	RenderingServer_VoxelGIQuality	gdext/enums.html#RenderingServer_VoxelGIQuality	enum RenderingServer_VoxelGIQuality		3886
+nim	RenderingServer_ParticlesMode	gdext/enums.html#RenderingServer_ParticlesMode	enum RenderingServer_ParticlesMode		3890
+nim	RenderingServer_ParticlesTransformAlign	gdext/enums.html#RenderingServer_ParticlesTransformAlign	enum RenderingServer_ParticlesTransformAlign		3894
+nim	RenderingServer_ParticlesDrawOrder	gdext/enums.html#RenderingServer_ParticlesDrawOrder	enum RenderingServer_ParticlesDrawOrder		3900
+nim	RenderingServer_ParticlesCollisionType	gdext/enums.html#RenderingServer_ParticlesCollisionType	enum RenderingServer_ParticlesCollisionType		3906
+nim	RenderingServer_ParticlesCollisionHeightfieldResolution	gdext/enums.html#RenderingServer_ParticlesCollisionHeightfieldResolution	enum RenderingServer_ParticlesCollisionHeightfieldResolution		3915
+nim	RenderingServer_FogVolumeShape	gdext/enums.html#RenderingServer_FogVolumeShape	enum RenderingServer_FogVolumeShape		3924
+nim	RenderingServer_ViewportScaling3DMode	gdext/enums.html#RenderingServer_ViewportScaling3DMode	enum RenderingServer_ViewportScaling3DMode		3932
+nim	RenderingServer_ViewportUpdateMode	gdext/enums.html#RenderingServer_ViewportUpdateMode	enum RenderingServer_ViewportUpdateMode		3940
+nim	RenderingServer_ViewportClearMode	gdext/enums.html#RenderingServer_ViewportClearMode	enum RenderingServer_ViewportClearMode		3947
+nim	RenderingServer_ViewportEnvironmentMode	gdext/enums.html#RenderingServer_ViewportEnvironmentMode	enum RenderingServer_ViewportEnvironmentMode		3952
+nim	RenderingServer_ViewportSDFOversize	gdext/enums.html#RenderingServer_ViewportSDFOversize	enum RenderingServer_ViewportSDFOversize		3958
+nim	RenderingServer_ViewportSDFScale	gdext/enums.html#RenderingServer_ViewportSDFScale	enum RenderingServer_ViewportSDFScale		3965
+nim	RenderingServer_ViewportMSAA	gdext/enums.html#RenderingServer_ViewportMSAA	enum RenderingServer_ViewportMSAA		3971
+nim	RenderingServer_ViewportAnisotropicFiltering	gdext/enums.html#RenderingServer_ViewportAnisotropicFiltering	enum RenderingServer_ViewportAnisotropicFiltering		3978
+nim	RenderingServer_ViewportScreenSpaceAA	gdext/enums.html#RenderingServer_ViewportScreenSpaceAA	enum RenderingServer_ViewportScreenSpaceAA		3986
+nim	RenderingServer_ViewportOcclusionCullingBuildQuality	gdext/enums.html#RenderingServer_ViewportOcclusionCullingBuildQuality	enum RenderingServer_ViewportOcclusionCullingBuildQuality		3992
+nim	RenderingServer_ViewportRenderInfo	gdext/enums.html#RenderingServer_ViewportRenderInfo	enum RenderingServer_ViewportRenderInfo		3997
+nim	RenderingServer_ViewportRenderInfoType	gdext/enums.html#RenderingServer_ViewportRenderInfoType	enum RenderingServer_ViewportRenderInfoType		4003
+nim	RenderingServer_ViewportDebugDraw	gdext/enums.html#RenderingServer_ViewportDebugDraw	enum RenderingServer_ViewportDebugDraw		4009
+nim	RenderingServer_ViewportVRSMode	gdext/enums.html#RenderingServer_ViewportVRSMode	enum RenderingServer_ViewportVRSMode		4038
+nim	RenderingServer_ViewportVRSUpdateMode	gdext/enums.html#RenderingServer_ViewportVRSUpdateMode	enum RenderingServer_ViewportVRSUpdateMode		4044
+nim	RenderingServer_SkyMode	gdext/enums.html#RenderingServer_SkyMode	enum RenderingServer_SkyMode		4050
+nim	RenderingServer_CompositorEffectFlags	gdext/enums.html#RenderingServer_CompositorEffectFlags	enum RenderingServer_CompositorEffectFlags		4056
+nim	RenderingServer_CompositorEffectCallbackType	gdext/enums.html#RenderingServer_CompositorEffectCallbackType	enum RenderingServer_CompositorEffectCallbackType		4063
+nim	RenderingServer_EnvironmentBG	gdext/enums.html#RenderingServer_EnvironmentBG	enum RenderingServer_EnvironmentBG		4071
+nim	RenderingServer_EnvironmentAmbientSource	gdext/enums.html#RenderingServer_EnvironmentAmbientSource	enum RenderingServer_EnvironmentAmbientSource		4080
+nim	RenderingServer_EnvironmentReflectionSource	gdext/enums.html#RenderingServer_EnvironmentReflectionSource	enum RenderingServer_EnvironmentReflectionSource		4086
+nim	RenderingServer_EnvironmentGlowBlendMode	gdext/enums.html#RenderingServer_EnvironmentGlowBlendMode	enum RenderingServer_EnvironmentGlowBlendMode		4091
+nim	RenderingServer_EnvironmentFogMode	gdext/enums.html#RenderingServer_EnvironmentFogMode	enum RenderingServer_EnvironmentFogMode		4098
+nim	RenderingServer_EnvironmentToneMapper	gdext/enums.html#RenderingServer_EnvironmentToneMapper	enum RenderingServer_EnvironmentToneMapper		4102
+nim	RenderingServer_EnvironmentSSRRoughnessQuality	gdext/enums.html#RenderingServer_EnvironmentSSRRoughnessQuality	enum RenderingServer_EnvironmentSSRRoughnessQuality		4109
+nim	RenderingServer_EnvironmentSSAOQuality	gdext/enums.html#RenderingServer_EnvironmentSSAOQuality	enum RenderingServer_EnvironmentSSAOQuality		4115
+nim	RenderingServer_EnvironmentSSILQuality	gdext/enums.html#RenderingServer_EnvironmentSSILQuality	enum RenderingServer_EnvironmentSSILQuality		4122
+nim	RenderingServer_EnvironmentSDFGIYScale	gdext/enums.html#RenderingServer_EnvironmentSDFGIYScale	enum RenderingServer_EnvironmentSDFGIYScale		4129
+nim	RenderingServer_EnvironmentSDFGIRayCount	gdext/enums.html#RenderingServer_EnvironmentSDFGIRayCount	enum RenderingServer_EnvironmentSDFGIRayCount		4134
+nim	RenderingServer_EnvironmentSDFGIFramesToConverge	gdext/enums.html#RenderingServer_EnvironmentSDFGIFramesToConverge	enum RenderingServer_EnvironmentSDFGIFramesToConverge		4144
+nim	RenderingServer_EnvironmentSDFGIFramesToUpdateLight	gdext/enums.html#RenderingServer_EnvironmentSDFGIFramesToUpdateLight	enum RenderingServer_EnvironmentSDFGIFramesToUpdateLight		4153
+nim	RenderingServer_SubSurfaceScatteringQuality	gdext/enums.html#RenderingServer_SubSurfaceScatteringQuality	enum RenderingServer_SubSurfaceScatteringQuality		4161
+nim	RenderingServer_DOFBokehShape	gdext/enums.html#RenderingServer_DOFBokehShape	enum RenderingServer_DOFBokehShape		4167
+nim	RenderingServer_DOFBlurQuality	gdext/enums.html#RenderingServer_DOFBlurQuality	enum RenderingServer_DOFBlurQuality		4172
+nim	RenderingServer_InstanceType	gdext/enums.html#RenderingServer_InstanceType	enum RenderingServer_InstanceType		4178
+nim	RenderingServer_InstanceFlags	gdext/enums.html#RenderingServer_InstanceFlags	enum RenderingServer_InstanceFlags		4195
+nim	RenderingServer_ShadowCastingSetting	gdext/enums.html#RenderingServer_ShadowCastingSetting	enum RenderingServer_ShadowCastingSetting		4202
+nim	RenderingServer_VisibilityRangeFadeMode	gdext/enums.html#RenderingServer_VisibilityRangeFadeMode	enum RenderingServer_VisibilityRangeFadeMode		4208
+nim	RenderingServer_BakeChannels	gdext/enums.html#RenderingServer_BakeChannels	enum RenderingServer_BakeChannels		4213
+nim	RenderingServer_CanvasTextureChannel	gdext/enums.html#RenderingServer_CanvasTextureChannel	enum RenderingServer_CanvasTextureChannel		4219
+nim	RenderingServer_NinePatchAxisMode	gdext/enums.html#RenderingServer_NinePatchAxisMode	enum RenderingServer_NinePatchAxisMode		4224
+nim	RenderingServer_CanvasItemTextureFilter	gdext/enums.html#RenderingServer_CanvasItemTextureFilter	enum RenderingServer_CanvasItemTextureFilter		4229
+nim	RenderingServer_CanvasItemTextureRepeat	gdext/enums.html#RenderingServer_CanvasItemTextureRepeat	enum RenderingServer_CanvasItemTextureRepeat		4239
+nim	RenderingServer_CanvasGroupMode	gdext/enums.html#RenderingServer_CanvasGroupMode	enum RenderingServer_CanvasGroupMode		4246
+nim	RenderingServer_CanvasLightMode	gdext/enums.html#RenderingServer_CanvasLightMode	enum RenderingServer_CanvasLightMode		4252
+nim	RenderingServer_CanvasLightBlendMode	gdext/enums.html#RenderingServer_CanvasLightBlendMode	enum RenderingServer_CanvasLightBlendMode		4256
+nim	RenderingServer_CanvasLightShadowFilter	gdext/enums.html#RenderingServer_CanvasLightShadowFilter	enum RenderingServer_CanvasLightShadowFilter		4261
+nim	RenderingServer_CanvasOccluderPolygonCullMode	gdext/enums.html#RenderingServer_CanvasOccluderPolygonCullMode	enum RenderingServer_CanvasOccluderPolygonCullMode		4267
+nim	RenderingServer_GlobalShaderParameterType	gdext/enums.html#RenderingServer_GlobalShaderParameterType	enum RenderingServer_GlobalShaderParameterType		4272
+nim	RenderingServer_RenderingInfo	gdext/enums.html#RenderingServer_RenderingInfo	enum RenderingServer_RenderingInfo		4304
+nim	RenderingServer_PipelineSource	gdext/enums.html#RenderingServer_PipelineSource	enum RenderingServer_PipelineSource		4317
+nim	RenderingServer_Features	gdext/enums.html#RenderingServer_Features	enum RenderingServer_Features		4325
+nim	Resource_DeepDuplicateMode	gdext/enums.html#Resource_DeepDuplicateMode	enum Resource_DeepDuplicateMode		4329
+nim	ResourceFormatLoader_CacheMode	gdext/enums.html#ResourceFormatLoader_CacheMode	enum ResourceFormatLoader_CacheMode		4334
+nim	ResourceImporter_ImportOrder	gdext/enums.html#ResourceImporter_ImportOrder	enum ResourceImporter_ImportOrder		4341
+nim	ResourceLoader_ThreadLoadStatus	gdext/enums.html#ResourceLoader_ThreadLoadStatus	enum ResourceLoader_ThreadLoadStatus		4345
+nim	ResourceLoader_CacheMode	gdext/enums.html#ResourceLoader_CacheMode	enum ResourceLoader_CacheMode		4351
+nim	flagRelativePaths	gdext/enums.html#flagRelativePaths	ResourceSaver_SaverFlags.flagRelativePaths		4358
+nim	flagBundleResources	gdext/enums.html#flagBundleResources	ResourceSaver_SaverFlags.flagBundleResources		4358
+nim	flagChangePath	gdext/enums.html#flagChangePath	ResourceSaver_SaverFlags.flagChangePath		4358
+nim	flagOmitEditorProperties	gdext/enums.html#flagOmitEditorProperties	ResourceSaver_SaverFlags.flagOmitEditorProperties		4358
+nim	flagSaveBigEndian	gdext/enums.html#flagSaveBigEndian	ResourceSaver_SaverFlags.flagSaveBigEndian		4358
+nim	flagCompress	gdext/enums.html#flagCompress	ResourceSaver_SaverFlags.flagCompress		4358
+nim	flagReplaceSubresourcePaths	gdext/enums.html#flagReplaceSubresourcePaths	ResourceSaver_SaverFlags.flagReplaceSubresourcePaths		4358
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_19	ResourceSaver_SaverFlags.--Padding-Max--		4358
+nim	ResourceSaver_SaverFlags	gdext/enums.html#ResourceSaver_SaverFlags	enum ResourceSaver_SaverFlags		4358
+nim	transformFlagPosition	gdext/enums.html#transformFlagPosition_2	RetargetModifier3D_TransformFlag.transformFlagPosition		4369
+nim	transformFlagRotation	gdext/enums.html#transformFlagRotation_2	RetargetModifier3D_TransformFlag.transformFlagRotation		4369
+nim	transformFlagScale	gdext/enums.html#transformFlagScale_2	RetargetModifier3D_TransformFlag.transformFlagScale		4369
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_20	RetargetModifier3D_TransformFlag.--Padding-Max--		4369
+nim	RetargetModifier3D_TransformFlag	gdext/enums.html#RetargetModifier3D_TransformFlag	enum RetargetModifier3D_TransformFlag		4369
+nim	transformFlagAll	gdext/enums.html#transformFlagAll.t,typedesc[T]_2	template transformFlagAll[T: RetargetModifier3D_TransformFlag](_: typedesc[T]): set[T]		4374
+nim	RibbonTrailMesh_Shape	gdext/enums.html#RibbonTrailMesh_Shape	enum RibbonTrailMesh_Shape		4376
+nim	RichTextLabel_ListType	gdext/enums.html#RichTextLabel_ListType	enum RichTextLabel_ListType		4380
+nim	RichTextLabel_MenuItems	gdext/enums.html#RichTextLabel_MenuItems	enum RichTextLabel_MenuItems		4386
+nim	RichTextLabel_MetaUnderline	gdext/enums.html#RichTextLabel_MetaUnderline	enum RichTextLabel_MetaUnderline		4391
+nim	updateTexture	gdext/enums.html#updateTexture	RichTextLabel_ImageUpdateMask.updateTexture		4396
+nim	updateSize	gdext/enums.html#updateSize	RichTextLabel_ImageUpdateMask.updateSize		4396
+nim	updateColor	gdext/enums.html#updateColor	RichTextLabel_ImageUpdateMask.updateColor		4396
+nim	updateAlignment	gdext/enums.html#updateAlignment	RichTextLabel_ImageUpdateMask.updateAlignment		4396
+nim	updateRegion	gdext/enums.html#updateRegion	RichTextLabel_ImageUpdateMask.updateRegion		4396
+nim	updatePad	gdext/enums.html#updatePad	RichTextLabel_ImageUpdateMask.updatePad		4396
+nim	updateTooltip	gdext/enums.html#updateTooltip	RichTextLabel_ImageUpdateMask.updateTooltip		4396
+nim	updateWidthInPercent	gdext/enums.html#updateWidthInPercent	RichTextLabel_ImageUpdateMask.updateWidthInPercent		4396
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_21	RichTextLabel_ImageUpdateMask.--Padding-Max--		4396
+nim	RichTextLabel_ImageUpdateMask	gdext/enums.html#RichTextLabel_ImageUpdateMask	enum RichTextLabel_ImageUpdateMask		4396
+nim	RigidBody2D_FreezeMode	gdext/enums.html#RigidBody2D_FreezeMode	enum RigidBody2D_FreezeMode		4407
+nim	RigidBody2D_CenterOfMassMode	gdext/enums.html#RigidBody2D_CenterOfMassMode	enum RigidBody2D_CenterOfMassMode		4411
+nim	RigidBody2D_DampMode	gdext/enums.html#RigidBody2D_DampMode	enum RigidBody2D_DampMode		4415
+nim	RigidBody2D_CCDMode	gdext/enums.html#RigidBody2D_CCDMode	enum RigidBody2D_CCDMode		4419
+nim	RigidBody3D_FreezeMode	gdext/enums.html#RigidBody3D_FreezeMode	enum RigidBody3D_FreezeMode		4424
+nim	RigidBody3D_CenterOfMassMode	gdext/enums.html#RigidBody3D_CenterOfMassMode	enum RigidBody3D_CenterOfMassMode		4428
+nim	RigidBody3D_DampMode	gdext/enums.html#RigidBody3D_DampMode	enum RigidBody3D_DampMode		4432
+nim	SceneReplicationConfig_ReplicationMode	gdext/enums.html#SceneReplicationConfig_ReplicationMode	enum SceneReplicationConfig_ReplicationMode		4436
+nim	SceneState_GenEditState	gdext/enums.html#SceneState_GenEditState	enum SceneState_GenEditState		4441
+nim	SceneTree_GroupCallFlags	gdext/enums.html#SceneTree_GroupCallFlags	enum SceneTree_GroupCallFlags		4447
+nim	ScriptLanguage_ScriptNameCasing	gdext/enums.html#ScriptLanguage_ScriptNameCasing	enum ScriptLanguage_ScriptNameCasing		4453
+nim	ScriptLanguageExtension_LookupResultType	gdext/enums.html#ScriptLanguageExtension_LookupResultType	enum ScriptLanguageExtension_LookupResultType		4460
+nim	ScriptLanguageExtension_CodeCompletionLocation	gdext/enums.html#ScriptLanguageExtension_CodeCompletionLocation	enum ScriptLanguageExtension_CodeCompletionLocation		4474
+nim	ScriptLanguageExtension_CodeCompletionKind	gdext/enums.html#ScriptLanguageExtension_CodeCompletionKind	enum ScriptLanguageExtension_CodeCompletionKind		4480
+nim	ScrollContainer_ScrollMode	gdext/enums.html#ScrollContainer_ScrollMode	enum ScrollContainer_ScrollMode		4493
+nim	Shader_Mode	gdext/enums.html#Shader_Mode	enum Shader_Mode		4500
+nim	Skeleton3D_ModifierCallbackModeProcess	gdext/enums.html#Skeleton3D_ModifierCallbackModeProcess	enum Skeleton3D_ModifierCallbackModeProcess		4507
+nim	SkeletonModifier3D_BoneAxis	gdext/enums.html#SkeletonModifier3D_BoneAxis	enum SkeletonModifier3D_BoneAxis		4512
+nim	SkeletonProfile_TailDirection	gdext/enums.html#SkeletonProfile_TailDirection	enum SkeletonProfile_TailDirection		4520
+nim	Sky_RadianceSize	gdext/enums.html#Sky_RadianceSize	enum Sky_RadianceSize		4525
+nim	Sky_ProcessMode	gdext/enums.html#Sky_ProcessMode	enum Sky_ProcessMode		4535
+nim	Slider_TickPosition	gdext/enums.html#Slider_TickPosition	enum Slider_TickPosition		4541
+nim	SliderJoint3D_Param	gdext/enums.html#SliderJoint3D_Param	enum SliderJoint3D_Param		4547
+nim	SoftBody3D_DisableMode	gdext/enums.html#SoftBody3D_DisableMode	enum SoftBody3D_DisableMode		4572
+nim	SplitContainer_DraggerVisibility	gdext/enums.html#SplitContainer_DraggerVisibility	enum SplitContainer_DraggerVisibility		4576
+nim	SpringBoneSimulator3D_BoneDirection	gdext/enums.html#SpringBoneSimulator3D_BoneDirection	enum SpringBoneSimulator3D_BoneDirection		4581
+nim	SpringBoneSimulator3D_CenterFrom	gdext/enums.html#SpringBoneSimulator3D_CenterFrom	enum SpringBoneSimulator3D_CenterFrom		4590
+nim	SpringBoneSimulator3D_RotationAxis	gdext/enums.html#SpringBoneSimulator3D_RotationAxis	enum SpringBoneSimulator3D_RotationAxis		4595
+nim	SpriteBase3D_DrawFlags	gdext/enums.html#SpriteBase3D_DrawFlags	enum SpriteBase3D_DrawFlags		4602
+nim	SpriteBase3D_AlphaCutMode	gdext/enums.html#SpriteBase3D_AlphaCutMode	enum SpriteBase3D_AlphaCutMode		4610
+nim	StreamPeerTCP_Status	gdext/enums.html#StreamPeerTCP_Status	enum StreamPeerTCP_Status		4616
+nim	StreamPeerTLS_Status	gdext/enums.html#StreamPeerTLS_Status	enum StreamPeerTLS_Status		4622
+nim	StyleBoxTexture_AxisStretchMode	gdext/enums.html#StyleBoxTexture_AxisStretchMode	enum StyleBoxTexture_AxisStretchMode		4629
+nim	SubViewport_ClearMode	gdext/enums.html#SubViewport_ClearMode	enum SubViewport_ClearMode		4634
+nim	SubViewport_UpdateMode	gdext/enums.html#SubViewport_UpdateMode	enum SubViewport_UpdateMode		4639
+nim	SurfaceTool_CustomFormat	gdext/enums.html#SurfaceTool_CustomFormat	enum SurfaceTool_CustomFormat		4646
+nim	SurfaceTool_SkinWeightCount	gdext/enums.html#SurfaceTool_SkinWeightCount	enum SurfaceTool_SkinWeightCount		4657
+nim	TabBar_AlignmentMode	gdext/enums.html#TabBar_AlignmentMode	enum TabBar_AlignmentMode		4661
+nim	TabBar_CloseButtonDisplayPolicy	gdext/enums.html#TabBar_CloseButtonDisplayPolicy	enum TabBar_CloseButtonDisplayPolicy		4667
+nim	TabContainer_TabPosition	gdext/enums.html#TabContainer_TabPosition	enum TabContainer_TabPosition		4673
+nim	TextEdit_MenuItems	gdext/enums.html#TextEdit_MenuItems	enum TextEdit_MenuItems		4678
+nim	TextEdit_EditAction	gdext/enums.html#TextEdit_EditAction	enum TextEdit_EditAction		4712
+nim	TextEdit_SearchFlags	gdext/enums.html#TextEdit_SearchFlags	enum TextEdit_SearchFlags		4718
+nim	TextEdit_CaretType	gdext/enums.html#TextEdit_CaretType	enum TextEdit_CaretType		4723
+nim	TextEdit_SelectionMode	gdext/enums.html#TextEdit_SelectionMode	enum TextEdit_SelectionMode		4727
+nim	TextEdit_LineWrappingMode	gdext/enums.html#TextEdit_LineWrappingMode	enum TextEdit_LineWrappingMode		4734
+nim	TextEdit_GutterType	gdext/enums.html#TextEdit_GutterType	enum TextEdit_GutterType		4738
+nim	TextServer_FontAntialiasing	gdext/enums.html#TextServer_FontAntialiasing	enum TextServer_FontAntialiasing		4743
+nim	TextServer_FontLCDSubpixelLayout	gdext/enums.html#TextServer_FontLCDSubpixelLayout	enum TextServer_FontLCDSubpixelLayout		4748
+nim	TextServer_Direction	gdext/enums.html#TextServer_Direction	enum TextServer_Direction		4756
+nim	TextServer_Orientation	gdext/enums.html#TextServer_Orientation	enum TextServer_Orientation		4762
+nim	justificationKashida	gdext/enums.html#justificationKashida	TextServer_JustificationFlag.justificationKashida		4766
+nim	justificationWordBound	gdext/enums.html#justificationWordBound	TextServer_JustificationFlag.justificationWordBound		4766
+nim	justificationTrimEdgeSpaces	gdext/enums.html#justificationTrimEdgeSpaces	TextServer_JustificationFlag.justificationTrimEdgeSpaces		4766
+nim	justificationAfterLastTab	gdext/enums.html#justificationAfterLastTab	TextServer_JustificationFlag.justificationAfterLastTab		4766
+nim	justificationConstrainEllipsis	gdext/enums.html#justificationConstrainEllipsis	TextServer_JustificationFlag.justificationConstrainEllipsis		4766
+nim	justificationSkipLastLine	gdext/enums.html#justificationSkipLastLine	TextServer_JustificationFlag.justificationSkipLastLine		4766
+nim	justificationSkipLastLineWithVisibleChars	gdext/enums.html#justificationSkipLastLineWithVisibleChars	TextServer_JustificationFlag.justificationSkipLastLineWithVisibleChars		4766
+nim	justificationDoNotSkipSingleLine	gdext/enums.html#justificationDoNotSkipSingleLine	TextServer_JustificationFlag.justificationDoNotSkipSingleLine		4766
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_22	TextServer_JustificationFlag.--Padding-Max--		4766
+nim	TextServer_JustificationFlag	gdext/enums.html#TextServer_JustificationFlag	enum TextServer_JustificationFlag		4766
+nim	TextServer_AutowrapMode	gdext/enums.html#TextServer_AutowrapMode	enum TextServer_AutowrapMode		4778
+nim	breakMandatory	gdext/enums.html#breakMandatory	TextServer_LineBreakFlag.breakMandatory		4784
+nim	breakWordBound	gdext/enums.html#breakWordBound	TextServer_LineBreakFlag.breakWordBound		4784
+nim	breakGraphemeBound	gdext/enums.html#breakGraphemeBound	TextServer_LineBreakFlag.breakGraphemeBound		4784
+nim	breakAdaptive	gdext/enums.html#breakAdaptive	TextServer_LineBreakFlag.breakAdaptive		4784
+nim	breakTrimEdgeSpaces	gdext/enums.html#breakTrimEdgeSpaces	TextServer_LineBreakFlag.breakTrimEdgeSpaces		4784
+nim	breakTrimIndent	gdext/enums.html#breakTrimIndent	TextServer_LineBreakFlag.breakTrimIndent		4784
+nim	breakTrimStartEdgeSpaces	gdext/enums.html#breakTrimStartEdgeSpaces	TextServer_LineBreakFlag.breakTrimStartEdgeSpaces		4784
+nim	breakTrimEndEdgeSpaces	gdext/enums.html#breakTrimEndEdgeSpaces	TextServer_LineBreakFlag.breakTrimEndEdgeSpaces		4784
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_23	TextServer_LineBreakFlag.--Padding-Max--		4784
+nim	TextServer_LineBreakFlag	gdext/enums.html#TextServer_LineBreakFlag	enum TextServer_LineBreakFlag		4784
+nim	TextServer_VisibleCharactersBehavior	gdext/enums.html#TextServer_VisibleCharactersBehavior	enum TextServer_VisibleCharactersBehavior		4796
+nim	TextServer_OverrunBehavior	gdext/enums.html#TextServer_OverrunBehavior	enum TextServer_OverrunBehavior		4803
+nim	overrunTrim	gdext/enums.html#overrunTrim	TextServer_TextOverrunFlag.overrunTrim		4812
+nim	overrunTrimWordOnly	gdext/enums.html#overrunTrimWordOnly	TextServer_TextOverrunFlag.overrunTrimWordOnly		4812
+nim	overrunAddEllipsis	gdext/enums.html#overrunAddEllipsis	TextServer_TextOverrunFlag.overrunAddEllipsis		4812
+nim	overrunEnforceEllipsis	gdext/enums.html#overrunEnforceEllipsis	TextServer_TextOverrunFlag.overrunEnforceEllipsis		4812
+nim	overrunJustificationAware	gdext/enums.html#overrunJustificationAware	TextServer_TextOverrunFlag.overrunJustificationAware		4812
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_24	TextServer_TextOverrunFlag.--Padding-Max--		4812
+nim	TextServer_TextOverrunFlag	gdext/enums.html#TextServer_TextOverrunFlag	enum TextServer_TextOverrunFlag		4812
+nim	graphemeIsValid	gdext/enums.html#graphemeIsValid	TextServer_GraphemeFlag.graphemeIsValid		4821
+nim	graphemeIsRtl	gdext/enums.html#graphemeIsRtl	TextServer_GraphemeFlag.graphemeIsRtl		4821
+nim	graphemeIsVirtual	gdext/enums.html#graphemeIsVirtual	TextServer_GraphemeFlag.graphemeIsVirtual		4821
+nim	graphemeIsSpace	gdext/enums.html#graphemeIsSpace	TextServer_GraphemeFlag.graphemeIsSpace		4821
+nim	graphemeIsBreakHard	gdext/enums.html#graphemeIsBreakHard	TextServer_GraphemeFlag.graphemeIsBreakHard		4821
+nim	graphemeIsBreakSoft	gdext/enums.html#graphemeIsBreakSoft	TextServer_GraphemeFlag.graphemeIsBreakSoft		4821
+nim	graphemeIsTab	gdext/enums.html#graphemeIsTab	TextServer_GraphemeFlag.graphemeIsTab		4821
+nim	graphemeIsElongation	gdext/enums.html#graphemeIsElongation	TextServer_GraphemeFlag.graphemeIsElongation		4821
+nim	graphemeIsPunctuation	gdext/enums.html#graphemeIsPunctuation	TextServer_GraphemeFlag.graphemeIsPunctuation		4821
+nim	graphemeIsUnderscore	gdext/enums.html#graphemeIsUnderscore	TextServer_GraphemeFlag.graphemeIsUnderscore		4821
+nim	graphemeIsConnected	gdext/enums.html#graphemeIsConnected	TextServer_GraphemeFlag.graphemeIsConnected		4821
+nim	graphemeIsSafeToInsertTatweel	gdext/enums.html#graphemeIsSafeToInsertTatweel	TextServer_GraphemeFlag.graphemeIsSafeToInsertTatweel		4821
+nim	graphemeIsEmbeddedObject	gdext/enums.html#graphemeIsEmbeddedObject	TextServer_GraphemeFlag.graphemeIsEmbeddedObject		4821
+nim	graphemeIsSoftHyphen	gdext/enums.html#graphemeIsSoftHyphen	TextServer_GraphemeFlag.graphemeIsSoftHyphen		4821
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_25	TextServer_GraphemeFlag.--Padding-Max--		4821
+nim	TextServer_GraphemeFlag	gdext/enums.html#TextServer_GraphemeFlag	enum TextServer_GraphemeFlag		4821
+nim	TextServer_Hinting	gdext/enums.html#TextServer_Hinting	enum TextServer_Hinting		4838
+nim	TextServer_SubpixelPositioning	gdext/enums.html#TextServer_SubpixelPositioning	enum TextServer_SubpixelPositioning		4843
+nim	TextServer_Feature	gdext/enums.html#TextServer_Feature	enum TextServer_Feature		4851
+nim	TextServer_ContourPointTag	gdext/enums.html#TextServer_ContourPointTag	enum TextServer_ContourPointTag		4868
+nim	TextServer_SpacingType	gdext/enums.html#TextServer_SpacingType	enum TextServer_SpacingType		4873
+nim	fontBold	gdext/enums.html#fontBold	TextServer_FontStyle.fontBold		4880
+nim	fontItalic	gdext/enums.html#fontItalic	TextServer_FontStyle.fontItalic		4880
+nim	fontFixedWidth	gdext/enums.html#fontFixedWidth	TextServer_FontStyle.fontFixedWidth		4880
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_26	TextServer_FontStyle.--Padding-Max--		4880
+nim	TextServer_FontStyle	gdext/enums.html#TextServer_FontStyle	enum TextServer_FontStyle		4880
+nim	TextServer_StructuredTextParser	gdext/enums.html#TextServer_StructuredTextParser	enum TextServer_StructuredTextParser		4886
+nim	TextServer_FixedSizeScaleMode	gdext/enums.html#TextServer_FixedSizeScaleMode	enum TextServer_FixedSizeScaleMode		4895
+nim	TextureButton_StretchMode	gdext/enums.html#TextureButton_StretchMode	enum TextureButton_StretchMode		4900
+nim	TextureLayered_LayeredType	gdext/enums.html#TextureLayered_LayeredType	enum TextureLayered_LayeredType		4909
+nim	TextureProgressBar_FillMode	gdext/enums.html#TextureProgressBar_FillMode	enum TextureProgressBar_FillMode		4914
+nim	TextureRect_ExpandMode	gdext/enums.html#TextureRect_ExpandMode	enum TextureRect_ExpandMode		4925
+nim	TextureRect_StretchMode	gdext/enums.html#TextureRect_StretchMode	enum TextureRect_StretchMode		4933
+nim	Theme_DataType	gdext/enums.html#Theme_DataType	enum Theme_DataType		4942
+nim	GodotThread_Priority	gdext/enums.html#GodotThread_Priority	enum GodotThread_Priority		4951
+nim	TileMap_VisibilityMode	gdext/enums.html#TileMap_VisibilityMode	enum TileMap_VisibilityMode		4956
+nim	TileMapLayer_DebugVisibilityMode	gdext/enums.html#TileMapLayer_DebugVisibilityMode	enum TileMapLayer_DebugVisibilityMode		4961
+nim	TileSet_TileShape	gdext/enums.html#TileSet_TileShape	enum TileSet_TileShape		4966
+nim	TileSet_TileLayout	gdext/enums.html#TileSet_TileLayout	enum TileSet_TileLayout		4972
+nim	TileSet_TileOffsetAxis	gdext/enums.html#TileSet_TileOffsetAxis	enum TileSet_TileOffsetAxis		4980
+nim	TileSet_CellNeighbor	gdext/enums.html#TileSet_CellNeighbor	enum TileSet_CellNeighbor		4984
+nim	TileSet_TerrainMode	gdext/enums.html#TileSet_TerrainMode	enum TileSet_TerrainMode		5002
+nim	TileSetAtlasSource_TileAnimationMode	gdext/enums.html#TileSetAtlasSource_TileAnimationMode	enum TileSetAtlasSource_TileAnimationMode		5007
+nim	Time_Month	gdext/enums.html#Time_Month	enum Time_Month		5012
+nim	Time_Weekday	gdext/enums.html#Time_Weekday	enum Time_Weekday		5026
+nim	Timer_TimerProcessCallback	gdext/enums.html#Timer_TimerProcessCallback	enum Timer_TimerProcessCallback		5035
+nim	TouchScreenButton_VisibilityMode	gdext/enums.html#TouchScreenButton_VisibilityMode	enum TouchScreenButton_VisibilityMode		5039
+nim	Tree_SelectMode	gdext/enums.html#Tree_SelectMode	enum Tree_SelectMode		5043
+nim	Tree_DropModeFlags	gdext/enums.html#Tree_DropModeFlags	enum Tree_DropModeFlags		5048
+nim	TreeItem_TreeCellMode	gdext/enums.html#TreeItem_TreeCellMode	enum TreeItem_TreeCellMode		5053
+nim	Tween_TweenProcessMode	gdext/enums.html#Tween_TweenProcessMode	enum Tween_TweenProcessMode		5060
+nim	Tween_TweenPauseMode	gdext/enums.html#Tween_TweenPauseMode	enum Tween_TweenPauseMode		5064
+nim	Tween_TransitionType	gdext/enums.html#Tween_TransitionType	enum Tween_TransitionType		5069
+nim	Tween_EaseType	gdext/enums.html#Tween_EaseType	enum Tween_EaseType		5083
+nim	UPNP_UPNPResult	gdext/enums.html#UPNP_UPNPResult	enum UPNP_UPNPResult		5089
+nim	UPNPDevice_IGDStatus	gdext/enums.html#UPNPDevice_IGDStatus	enum UPNPDevice_IGDStatus		5120
+nim	UndoRedo_MergeMode	gdext/enums.html#UndoRedo_MergeMode	enum UndoRedo_MergeMode		5132
+nim	Viewport_PositionalShadowAtlasQuadrantSubdiv	gdext/enums.html#Viewport_PositionalShadowAtlasQuadrantSubdiv	enum Viewport_PositionalShadowAtlasQuadrantSubdiv		5137
+nim	Viewport_Scaling3DMode	gdext/enums.html#Viewport_Scaling3DMode	enum Viewport_Scaling3DMode		5147
+nim	Viewport_MSAA	gdext/enums.html#Viewport_MSAA	enum Viewport_MSAA		5155
+nim	Viewport_AnisotropicFiltering	gdext/enums.html#Viewport_AnisotropicFiltering	enum Viewport_AnisotropicFiltering		5162
+nim	Viewport_ScreenSpaceAA	gdext/enums.html#Viewport_ScreenSpaceAA	enum Viewport_ScreenSpaceAA		5170
+nim	Viewport_RenderInfo	gdext/enums.html#Viewport_RenderInfo	enum Viewport_RenderInfo		5176
+nim	Viewport_RenderInfoType	gdext/enums.html#Viewport_RenderInfoType	enum Viewport_RenderInfoType		5182
+nim	Viewport_DebugDraw	gdext/enums.html#Viewport_DebugDraw	enum Viewport_DebugDraw		5188
+nim	Viewport_DefaultCanvasItemTextureFilter	gdext/enums.html#Viewport_DefaultCanvasItemTextureFilter	enum Viewport_DefaultCanvasItemTextureFilter		5217
+nim	Viewport_DefaultCanvasItemTextureRepeat	gdext/enums.html#Viewport_DefaultCanvasItemTextureRepeat	enum Viewport_DefaultCanvasItemTextureRepeat		5224
+nim	Viewport_SDFOversize	gdext/enums.html#Viewport_SDFOversize	enum Viewport_SDFOversize		5230
+nim	Viewport_SDFScale	gdext/enums.html#Viewport_SDFScale	enum Viewport_SDFScale		5237
+nim	Viewport_VRSMode	gdext/enums.html#Viewport_VRSMode	enum Viewport_VRSMode		5243
+nim	Viewport_VRSUpdateMode	gdext/enums.html#Viewport_VRSUpdateMode	enum Viewport_VRSUpdateMode		5249
+nim	VisibleOnScreenEnabler2D_EnableMode	gdext/enums.html#VisibleOnScreenEnabler2D_EnableMode	enum VisibleOnScreenEnabler2D_EnableMode		5255
+nim	VisibleOnScreenEnabler3D_EnableMode	gdext/enums.html#VisibleOnScreenEnabler3D_EnableMode	enum VisibleOnScreenEnabler3D_EnableMode		5260
+nim	VisualShader_Type	gdext/enums.html#VisualShader_Type	enum VisualShader_Type		5265
+nim	VisualShader_VaryingMode	gdext/enums.html#VisualShader_VaryingMode	enum VisualShader_VaryingMode		5278
+nim	VisualShader_VaryingType	gdext/enums.html#VisualShader_VaryingType	enum VisualShader_VaryingType		5283
+nim	VisualShaderNode_PortType	gdext/enums.html#VisualShaderNode_PortType	enum VisualShaderNode_PortType		5294
+nim	VisualShaderNodeBillboard_BillboardType	gdext/enums.html#VisualShaderNodeBillboard_BillboardType	enum VisualShaderNodeBillboard_BillboardType		5306
+nim	VisualShaderNodeClamp_OpType	gdext/enums.html#VisualShaderNodeClamp_OpType	enum VisualShaderNodeClamp_OpType		5313
+nim	VisualShaderNodeColorFunc_Function	gdext/enums.html#VisualShaderNodeColorFunc_Function	enum VisualShaderNodeColorFunc_Function		5322
+nim	VisualShaderNodeColorOp_Operator	gdext/enums.html#VisualShaderNodeColorOp_Operator	enum VisualShaderNodeColorOp_Operator		5331
+nim	VisualShaderNodeCompare_ComparisonType	gdext/enums.html#VisualShaderNodeCompare_ComparisonType	enum VisualShaderNodeCompare_ComparisonType		5343
+nim	VisualShaderNodeCompare_Function	gdext/enums.html#VisualShaderNodeCompare_Function	enum VisualShaderNodeCompare_Function		5354
+nim	VisualShaderNodeCompare_Condition	gdext/enums.html#VisualShaderNodeCompare_Condition	enum VisualShaderNodeCompare_Condition		5363
+nim	VisualShaderNodeCubemap_Source	gdext/enums.html#VisualShaderNodeCubemap_Source	enum VisualShaderNodeCubemap_Source		5368
+nim	VisualShaderNodeCubemap_TextureType	gdext/enums.html#VisualShaderNodeCubemap_TextureType	enum VisualShaderNodeCubemap_TextureType		5373
+nim	VisualShaderNodeDerivativeFunc_OpType	gdext/enums.html#VisualShaderNodeDerivativeFunc_OpType	enum VisualShaderNodeDerivativeFunc_OpType		5379
+nim	VisualShaderNodeDerivativeFunc_Function	gdext/enums.html#VisualShaderNodeDerivativeFunc_Function	enum VisualShaderNodeDerivativeFunc_Function		5386
+nim	VisualShaderNodeDerivativeFunc_Precision	gdext/enums.html#VisualShaderNodeDerivativeFunc_Precision	enum VisualShaderNodeDerivativeFunc_Precision		5392
+nim	VisualShaderNodeFloatFunc_Function	gdext/enums.html#VisualShaderNodeFloatFunc_Function	enum VisualShaderNodeFloatFunc_Function		5398
+nim	VisualShaderNodeFloatOp_Operator	gdext/enums.html#VisualShaderNodeFloatOp_Operator	enum VisualShaderNodeFloatOp_Operator		5433
+nim	VisualShaderNodeFloatParameter_Hint	gdext/enums.html#VisualShaderNodeFloatParameter_Hint	enum VisualShaderNodeFloatParameter_Hint		5446
+nim	VisualShaderNodeIntFunc_Function	gdext/enums.html#VisualShaderNodeIntFunc_Function	enum VisualShaderNodeIntFunc_Function		5452
+nim	VisualShaderNodeIntOp_Operator	gdext/enums.html#VisualShaderNodeIntOp_Operator	enum VisualShaderNodeIntOp_Operator		5459
+nim	VisualShaderNodeIntParameter_Hint	gdext/enums.html#VisualShaderNodeIntParameter_Hint	enum VisualShaderNodeIntParameter_Hint		5474
+nim	VisualShaderNodeIs_Function	gdext/enums.html#VisualShaderNodeIs_Function	enum VisualShaderNodeIs_Function		5481
+nim	VisualShaderNodeMix_OpType	gdext/enums.html#VisualShaderNodeMix_OpType	enum VisualShaderNodeMix_OpType		5486
+nim	VisualShaderNodeMultiplyAdd_OpType	gdext/enums.html#VisualShaderNodeMultiplyAdd_OpType	enum VisualShaderNodeMultiplyAdd_OpType		5496
+nim	VisualShaderNodeParameter_Qualifier	gdext/enums.html#VisualShaderNodeParameter_Qualifier	enum VisualShaderNodeParameter_Qualifier		5503
+nim	VisualShaderNodeParticleAccelerator_Mode	gdext/enums.html#VisualShaderNodeParticleAccelerator_Mode	enum VisualShaderNodeParticleAccelerator_Mode		5509
+nim	VisualShaderNodeParticleEmit_EmitFlags	gdext/enums.html#VisualShaderNodeParticleEmit_EmitFlags	enum VisualShaderNodeParticleEmit_EmitFlags		5515
+nim	VisualShaderNodeParticleRandomness_OpType	gdext/enums.html#VisualShaderNodeParticleRandomness_OpType	enum VisualShaderNodeParticleRandomness_OpType		5522
+nim	VisualShaderNodeRemap_OpType	gdext/enums.html#VisualShaderNodeRemap_OpType	enum VisualShaderNodeRemap_OpType		5529
+nim	VisualShaderNodeSample3D_Source	gdext/enums.html#VisualShaderNodeSample3D_Source	enum VisualShaderNodeSample3D_Source		5539
+nim	VisualShaderNodeSmoothStep_OpType	gdext/enums.html#VisualShaderNodeSmoothStep_OpType	enum VisualShaderNodeSmoothStep_OpType		5544
+nim	VisualShaderNodeStep_OpType	gdext/enums.html#VisualShaderNodeStep_OpType	enum VisualShaderNodeStep_OpType		5554
+nim	VisualShaderNodeSwitch_OpType	gdext/enums.html#VisualShaderNodeSwitch_OpType	enum VisualShaderNodeSwitch_OpType		5564
+nim	VisualShaderNodeTexture_Source	gdext/enums.html#VisualShaderNodeTexture_Source	enum VisualShaderNodeTexture_Source		5575
+nim	VisualShaderNodeTexture_TextureType	gdext/enums.html#VisualShaderNodeTexture_TextureType	enum VisualShaderNodeTexture_TextureType		5586
+nim	VisualShaderNodeTextureParameter_TextureType	gdext/enums.html#VisualShaderNodeTextureParameter_TextureType	enum VisualShaderNodeTextureParameter_TextureType		5592
+nim	VisualShaderNodeTextureParameter_ColorDefault	gdext/enums.html#VisualShaderNodeTextureParameter_ColorDefault	enum VisualShaderNodeTextureParameter_ColorDefault		5599
+nim	VisualShaderNodeTextureParameter_TextureFilter	gdext/enums.html#VisualShaderNodeTextureParameter_TextureFilter	enum VisualShaderNodeTextureParameter_TextureFilter		5605
+nim	VisualShaderNodeTextureParameter_TextureRepeat	gdext/enums.html#VisualShaderNodeTextureParameter_TextureRepeat	enum VisualShaderNodeTextureParameter_TextureRepeat		5615
+nim	VisualShaderNodeTextureParameter_TextureSource	gdext/enums.html#VisualShaderNodeTextureParameter_TextureSource	enum VisualShaderNodeTextureParameter_TextureSource		5621
+nim	VisualShaderNodeTransformFunc_Function	gdext/enums.html#VisualShaderNodeTransformFunc_Function	enum VisualShaderNodeTransformFunc_Function		5628
+nim	VisualShaderNodeTransformOp_Operator	gdext/enums.html#VisualShaderNodeTransformOp_Operator	enum VisualShaderNodeTransformOp_Operator		5633
+nim	VisualShaderNodeTransformVecMult_Operator	gdext/enums.html#VisualShaderNodeTransformVecMult_Operator	enum VisualShaderNodeTransformVecMult_Operator		5645
+nim	VisualShaderNodeUIntFunc_Function	gdext/enums.html#VisualShaderNodeUIntFunc_Function	enum VisualShaderNodeUIntFunc_Function		5652
+nim	VisualShaderNodeUIntOp_Operator	gdext/enums.html#VisualShaderNodeUIntOp_Operator	enum VisualShaderNodeUIntOp_Operator		5657
+nim	VisualShaderNodeUVFunc_Function	gdext/enums.html#VisualShaderNodeUVFunc_Function	enum VisualShaderNodeUVFunc_Function		5672
+nim	VisualShaderNodeVectorBase_OpType	gdext/enums.html#VisualShaderNodeVectorBase_OpType	enum VisualShaderNodeVectorBase_OpType		5677
+nim	VisualShaderNodeVectorFunc_Function	gdext/enums.html#VisualShaderNodeVectorFunc_Function	enum VisualShaderNodeVectorFunc_Function		5683
+nim	VisualShaderNodeVectorOp_Operator	gdext/enums.html#VisualShaderNodeVectorOp_Operator	enum VisualShaderNodeVectorOp_Operator		5719
+nim	VoxelGI_Subdiv	gdext/enums.html#VoxelGI_Subdiv	enum VoxelGI_Subdiv		5734
+nim	WebRTCDataChannel_WriteMode	gdext/enums.html#WebRTCDataChannel_WriteMode	enum WebRTCDataChannel_WriteMode		5741
+nim	WebRTCDataChannel_ChannelState	gdext/enums.html#WebRTCDataChannel_ChannelState	enum WebRTCDataChannel_ChannelState		5745
+nim	WebRTCPeerConnection_ConnectionState	gdext/enums.html#WebRTCPeerConnection_ConnectionState	enum WebRTCPeerConnection_ConnectionState		5751
+nim	WebRTCPeerConnection_GatheringState	gdext/enums.html#WebRTCPeerConnection_GatheringState	enum WebRTCPeerConnection_GatheringState		5759
+nim	WebRTCPeerConnection_SignalingState	gdext/enums.html#WebRTCPeerConnection_SignalingState	enum WebRTCPeerConnection_SignalingState		5764
+nim	WebSocketPeer_WriteMode	gdext/enums.html#WebSocketPeer_WriteMode	enum WebSocketPeer_WriteMode		5772
+nim	WebSocketPeer_State	gdext/enums.html#WebSocketPeer_State	enum WebSocketPeer_State		5776
+nim	WebXRInterface_TargetRayMode	gdext/enums.html#WebXRInterface_TargetRayMode	enum WebXRInterface_TargetRayMode		5782
+nim	Window_Mode	gdext/enums.html#Window_Mode	enum Window_Mode		5788
+nim	Window_Flags	gdext/enums.html#Window_Flags	enum Window_Flags		5795
+nim	Window_ContentScaleMode	gdext/enums.html#Window_ContentScaleMode	enum Window_ContentScaleMode		5811
+nim	Window_ContentScaleAspect	gdext/enums.html#Window_ContentScaleAspect	enum Window_ContentScaleAspect		5816
+nim	Window_ContentScaleStretch	gdext/enums.html#Window_ContentScaleStretch	enum Window_ContentScaleStretch		5823
+nim	Window_LayoutDirection	gdext/enums.html#Window_LayoutDirection	enum Window_LayoutDirection		5827
+nim	layoutDirectionLocale	gdext/enums.html#layoutDirectionLocale.t,typedesc[T]_2	template layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T		5834
+nim	Window_WindowInitialPosition	gdext/enums.html#Window_WindowInitialPosition	enum Window_WindowInitialPosition		5836
+nim	XMLParser_NodeType	gdext/enums.html#XMLParser_NodeType	enum XMLParser_NodeType		5844
+nim	bodyUpdateUpperBody	gdext/enums.html#bodyUpdateUpperBody	XRBodyModifier3D_BodyUpdate.bodyUpdateUpperBody		5853
+nim	bodyUpdateLowerBody	gdext/enums.html#bodyUpdateLowerBody	XRBodyModifier3D_BodyUpdate.bodyUpdateLowerBody		5853
+nim	bodyUpdateHands	gdext/enums.html#bodyUpdateHands	XRBodyModifier3D_BodyUpdate.bodyUpdateHands		5853
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_27	XRBodyModifier3D_BodyUpdate.--Padding-Max--		5853
+nim	XRBodyModifier3D_BodyUpdate	gdext/enums.html#XRBodyModifier3D_BodyUpdate	enum XRBodyModifier3D_BodyUpdate		5853
+nim	XRBodyModifier3D_BoneUpdate	gdext/enums.html#XRBodyModifier3D_BoneUpdate	enum XRBodyModifier3D_BoneUpdate		5859
+nim	bodyFlagUpperBodySupported	gdext/enums.html#bodyFlagUpperBodySupported	XRBodyTracker_BodyFlags.bodyFlagUpperBodySupported		5864
+nim	bodyFlagLowerBodySupported	gdext/enums.html#bodyFlagLowerBodySupported	XRBodyTracker_BodyFlags.bodyFlagLowerBodySupported		5864
+nim	bodyFlagHandsSupported	gdext/enums.html#bodyFlagHandsSupported	XRBodyTracker_BodyFlags.bodyFlagHandsSupported		5864
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_28	XRBodyTracker_BodyFlags.--Padding-Max--		5864
+nim	XRBodyTracker_BodyFlags	gdext/enums.html#XRBodyTracker_BodyFlags	enum XRBodyTracker_BodyFlags		5864
+nim	XRBodyTracker_Joint	gdext/enums.html#XRBodyTracker_Joint	enum XRBodyTracker_Joint		5870
+nim	jointFlagOrientationValid	gdext/enums.html#jointFlagOrientationValid	XRBodyTracker_JointFlags.jointFlagOrientationValid		5960
+nim	jointFlagOrientationTracked	gdext/enums.html#jointFlagOrientationTracked	XRBodyTracker_JointFlags.jointFlagOrientationTracked		5960
+nim	jointFlagPositionValid	gdext/enums.html#jointFlagPositionValid	XRBodyTracker_JointFlags.jointFlagPositionValid		5960
+nim	jointFlagPositionTracked	gdext/enums.html#jointFlagPositionTracked	XRBodyTracker_JointFlags.jointFlagPositionTracked		5960
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_29	XRBodyTracker_JointFlags.--Padding-Max--		5960
+nim	XRBodyTracker_JointFlags	gdext/enums.html#XRBodyTracker_JointFlags	enum XRBodyTracker_JointFlags		5960
+nim	XRFaceTracker_BlendShapeEntry	gdext/enums.html#XRFaceTracker_BlendShapeEntry	enum XRFaceTracker_BlendShapeEntry		5967
+nim	XRHandModifier3D_BoneUpdate	gdext/enums.html#XRHandModifier3D_BoneUpdate	enum XRHandModifier3D_BoneUpdate		6113
+nim	XRHandTracker_HandTrackingSource	gdext/enums.html#XRHandTracker_HandTrackingSource	enum XRHandTracker_HandTrackingSource		6118
+nim	XRHandTracker_HandJoint	gdext/enums.html#XRHandTracker_HandJoint	enum XRHandTracker_HandJoint		6125
+nim	handJointFlagOrientationValid	gdext/enums.html#handJointFlagOrientationValid	XRHandTracker_HandJointFlags.handJointFlagOrientationValid		6154
+nim	handJointFlagOrientationTracked	gdext/enums.html#handJointFlagOrientationTracked	XRHandTracker_HandJointFlags.handJointFlagOrientationTracked		6154
+nim	handJointFlagPositionValid	gdext/enums.html#handJointFlagPositionValid	XRHandTracker_HandJointFlags.handJointFlagPositionValid		6154
+nim	handJointFlagPositionTracked	gdext/enums.html#handJointFlagPositionTracked	XRHandTracker_HandJointFlags.handJointFlagPositionTracked		6154
+nim	handJointFlagLinearVelocityValid	gdext/enums.html#handJointFlagLinearVelocityValid	XRHandTracker_HandJointFlags.handJointFlagLinearVelocityValid		6154
+nim	handJointFlagAngularVelocityValid	gdext/enums.html#handJointFlagAngularVelocityValid	XRHandTracker_HandJointFlags.handJointFlagAngularVelocityValid		6154
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_30	XRHandTracker_HandJointFlags.--Padding-Max--		6154
+nim	XRHandTracker_HandJointFlags	gdext/enums.html#XRHandTracker_HandJointFlags	enum XRHandTracker_HandJointFlags		6154
+nim	XRInterface_Capabilities	gdext/enums.html#XRInterface_Capabilities	enum XRInterface_Capabilities		6163
+nim	XRInterface_TrackingStatus	gdext/enums.html#XRInterface_TrackingStatus	enum XRInterface_TrackingStatus		6172
+nim	XRInterface_PlayAreaMode	gdext/enums.html#XRInterface_PlayAreaMode	enum XRInterface_PlayAreaMode		6179
+nim	XRInterface_EnvironmentBlendMode	gdext/enums.html#XRInterface_EnvironmentBlendMode	enum XRInterface_EnvironmentBlendMode		6187
+nim	XRInterface_VRSTextureFormat	gdext/enums.html#XRInterface_VRSTextureFormat	enum XRInterface_VRSTextureFormat		6192
+nim	XRPose_TrackingConfidence	gdext/enums.html#XRPose_TrackingConfidence	enum XRPose_TrackingConfidence		6197
+nim	XRPositionalTracker_TrackerHand	gdext/enums.html#XRPositionalTracker_TrackerHand	enum XRPositionalTracker_TrackerHand		6202
+nim	XRServer_TrackerType	gdext/enums.html#XRServer_TrackerType	enum XRServer_TrackerType		6208
+nim	XRServer_RotationMode	gdext/enums.html#XRServer_RotationMode	enum XRServer_RotationMode		6220
+nim	ZIPPacker_ZipAppend	gdext/enums.html#ZIPPacker_ZipAppend	enum ZIPPacker_ZipAppend		6225
+nim	ZIPPacker_CompressionLevel	gdext/enums.html#ZIPPacker_CompressionLevel	enum ZIPPacker_CompressionLevel		6230
+nim	Side	gdext/enums.html#Side	enum Side		1
+nim	Corner	gdext/enums.html#Corner	enum Corner		7
+nim	Orientation	gdext/enums.html#Orientation	enum Orientation		13
+nim	ClockDirection	gdext/enums.html#ClockDirection	enum ClockDirection		17
+nim	HorizontalAlignment	gdext/enums.html#HorizontalAlignment	enum HorizontalAlignment		21
+nim	VerticalAlignment	gdext/enums.html#VerticalAlignment	enum VerticalAlignment		27
+nim	InlineAlignment	gdext/enums.html#InlineAlignment	enum InlineAlignment		33
+nim	inlineAlignmentToTop	gdext/enums.html#inlineAlignmentToTop.t,typedesc[T]	template inlineAlignmentToTop[T: InlineAlignment](_: typedesc[T]): T		43
+nim	inlineAlignmentTop	gdext/enums.html#inlineAlignmentTop.t,typedesc[T]	template inlineAlignmentTop[T: InlineAlignment](_: typedesc[T]): T		44
+nim	inlineAlignmentImageMask	gdext/enums.html#inlineAlignmentImageMask.t,typedesc[T]	template inlineAlignmentImageMask[T: InlineAlignment](_: typedesc[T]): T		45
+nim	inlineAlignmentTextMask	gdext/enums.html#inlineAlignmentTextMask.t,typedesc[T]	template inlineAlignmentTextMask[T: InlineAlignment](_: typedesc[T]): T		46
+nim	EulerOrder	gdext/enums.html#EulerOrder	enum EulerOrder		48
+nim	Key	gdext/enums.html#Key	enum Key		56
+nim	--Padding-Min--	gdext/enums.html#--Padding-Min--	KeyModifierMask.--Padding-Min--		251
+nim	keyCodeMask	gdext/enums.html#keyCodeMask	KeyModifierMask.keyCodeMask		251
+nim	keyMaskCmdOrCtrl	gdext/enums.html#keyMaskCmdOrCtrl	KeyModifierMask.keyMaskCmdOrCtrl		251
+nim	keyMaskShift	gdext/enums.html#keyMaskShift	KeyModifierMask.keyMaskShift		251
+nim	keyMaskAlt	gdext/enums.html#keyMaskAlt	KeyModifierMask.keyMaskAlt		251
+nim	keyMaskMeta	gdext/enums.html#keyMaskMeta	KeyModifierMask.keyMaskMeta		251
+nim	keyMaskCtrl	gdext/enums.html#keyMaskCtrl	KeyModifierMask.keyMaskCtrl		251
+nim	keyMaskKpad	gdext/enums.html#keyMaskKpad	KeyModifierMask.keyMaskKpad		251
+nim	keyMaskGroupSwitch	gdext/enums.html#keyMaskGroupSwitch	KeyModifierMask.keyMaskGroupSwitch		251
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_31	KeyModifierMask.--Padding-Max--		251
+nim	KeyModifierMask	gdext/enums.html#KeyModifierMask	enum KeyModifierMask		251
+nim	keyModifierMask	gdext/enums.html#keyModifierMask.t,typedesc[T]	template keyModifierMask[T: KeyModifierMask](_: typedesc[T]): set[T]		262
+nim	KeyLocation	gdext/enums.html#KeyLocation	enum KeyLocation		264
+nim	MouseButton	gdext/enums.html#MouseButton	enum MouseButton		269
+nim	mouseButtonMaskLeft	gdext/enums.html#mouseButtonMaskLeft	MouseButtonMask.mouseButtonMaskLeft		281
+nim	mouseButtonMaskRight	gdext/enums.html#mouseButtonMaskRight	MouseButtonMask.mouseButtonMaskRight		281
+nim	mouseButtonMaskMiddle	gdext/enums.html#mouseButtonMaskMiddle	MouseButtonMask.mouseButtonMaskMiddle		281
+nim	mouseButtonMaskMbXbutton1	gdext/enums.html#mouseButtonMaskMbXbutton1	MouseButtonMask.mouseButtonMaskMbXbutton1		281
+nim	mouseButtonMaskMbXbutton2	gdext/enums.html#mouseButtonMaskMbXbutton2	MouseButtonMask.mouseButtonMaskMbXbutton2		281
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_32	MouseButtonMask.--Padding-Max--		281
+nim	MouseButtonMask	gdext/enums.html#MouseButtonMask	enum MouseButtonMask		281
+nim	JoyButton	gdext/enums.html#JoyButton	enum JoyButton		289
+nim	JoyAxis	gdext/enums.html#JoyAxis	enum JoyAxis		315
+nim	MIDIMessage	gdext/enums.html#MIDIMessage	enum MIDIMessage		326
+nim	Error	gdext/enums.html#Error	enum Error		347
+nim	PropertyHint	gdext/enums.html#PropertyHint	enum PropertyHint		398
+nim	--Padding-Min--	gdext/enums.html#--Padding-Min--_2	PropertyUsageFlags.--Padding-Min--		445
+nim	propertyUsageStorage	gdext/enums.html#propertyUsageStorage	PropertyUsageFlags.propertyUsageStorage		445
+nim	propertyUsageEditor	gdext/enums.html#propertyUsageEditor	PropertyUsageFlags.propertyUsageEditor		445
+nim	propertyUsageInternal	gdext/enums.html#propertyUsageInternal	PropertyUsageFlags.propertyUsageInternal		445
+nim	propertyUsageCheckable	gdext/enums.html#propertyUsageCheckable	PropertyUsageFlags.propertyUsageCheckable		445
+nim	propertyUsageChecked	gdext/enums.html#propertyUsageChecked	PropertyUsageFlags.propertyUsageChecked		445
+nim	propertyUsageGroup	gdext/enums.html#propertyUsageGroup	PropertyUsageFlags.propertyUsageGroup		445
+nim	propertyUsageCategory	gdext/enums.html#propertyUsageCategory	PropertyUsageFlags.propertyUsageCategory		445
+nim	propertyUsageSubgroup	gdext/enums.html#propertyUsageSubgroup	PropertyUsageFlags.propertyUsageSubgroup		445
+nim	propertyUsageClassIsBitfield	gdext/enums.html#propertyUsageClassIsBitfield	PropertyUsageFlags.propertyUsageClassIsBitfield		445
+nim	propertyUsageNoInstanceState	gdext/enums.html#propertyUsageNoInstanceState	PropertyUsageFlags.propertyUsageNoInstanceState		445
+nim	propertyUsageRestartIfChanged	gdext/enums.html#propertyUsageRestartIfChanged	PropertyUsageFlags.propertyUsageRestartIfChanged		445
+nim	propertyUsageScriptVariable	gdext/enums.html#propertyUsageScriptVariable	PropertyUsageFlags.propertyUsageScriptVariable		445
+nim	propertyUsageStoreIfNull	gdext/enums.html#propertyUsageStoreIfNull	PropertyUsageFlags.propertyUsageStoreIfNull		445
+nim	propertyUsageUpdateAllIfModified	gdext/enums.html#propertyUsageUpdateAllIfModified	PropertyUsageFlags.propertyUsageUpdateAllIfModified		445
+nim	propertyUsageScriptDefaultValue	gdext/enums.html#propertyUsageScriptDefaultValue	PropertyUsageFlags.propertyUsageScriptDefaultValue		445
+nim	propertyUsageClassIsEnum	gdext/enums.html#propertyUsageClassIsEnum	PropertyUsageFlags.propertyUsageClassIsEnum		445
+nim	propertyUsageNilIsVariant	gdext/enums.html#propertyUsageNilIsVariant	PropertyUsageFlags.propertyUsageNilIsVariant		445
+nim	propertyUsageArray	gdext/enums.html#propertyUsageArray	PropertyUsageFlags.propertyUsageArray		445
+nim	propertyUsageAlwaysDuplicate	gdext/enums.html#propertyUsageAlwaysDuplicate	PropertyUsageFlags.propertyUsageAlwaysDuplicate		445
+nim	propertyUsageNeverDuplicate	gdext/enums.html#propertyUsageNeverDuplicate	PropertyUsageFlags.propertyUsageNeverDuplicate		445
+nim	propertyUsageHighEndGfx	gdext/enums.html#propertyUsageHighEndGfx	PropertyUsageFlags.propertyUsageHighEndGfx		445
+nim	propertyUsageNodePathFromSceneRoot	gdext/enums.html#propertyUsageNodePathFromSceneRoot	PropertyUsageFlags.propertyUsageNodePathFromSceneRoot		445
+nim	propertyUsageResourceNotPersistent	gdext/enums.html#propertyUsageResourceNotPersistent	PropertyUsageFlags.propertyUsageResourceNotPersistent		445
+nim	propertyUsageKeyingIncrements	gdext/enums.html#propertyUsageKeyingIncrements	PropertyUsageFlags.propertyUsageKeyingIncrements		445
+nim	propertyUsageDeferredSetResource	gdext/enums.html#propertyUsageDeferredSetResource	PropertyUsageFlags.propertyUsageDeferredSetResource		445
+nim	propertyUsageEditorInstantiateObject	gdext/enums.html#propertyUsageEditorInstantiateObject	PropertyUsageFlags.propertyUsageEditorInstantiateObject		445
+nim	propertyUsageEditorBasicSetting	gdext/enums.html#propertyUsageEditorBasicSetting	PropertyUsageFlags.propertyUsageEditorBasicSetting		445
+nim	propertyUsageReadOnly	gdext/enums.html#propertyUsageReadOnly	PropertyUsageFlags.propertyUsageReadOnly		445
+nim	propertyUsageSecret	gdext/enums.html#propertyUsageSecret	PropertyUsageFlags.propertyUsageSecret		445
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_33	PropertyUsageFlags.--Padding-Max--		445
+nim	PropertyUsageFlags	gdext/enums.html#PropertyUsageFlags	enum PropertyUsageFlags		445
+nim	propertyUsageNoEditor	gdext/enums.html#propertyUsageNoEditor.t,typedesc[T]	template propertyUsageNoEditor[T: PropertyUsageFlags](_: typedesc[T]): T		478
+nim	propertyUsageDefault	gdext/enums.html#propertyUsageDefault.t,typedesc[T]	template propertyUsageDefault[T: PropertyUsageFlags](_: typedesc[T]): set[T]		479
+nim	methodFlagNormal	gdext/enums.html#methodFlagNormal	MethodFlags.methodFlagNormal		481
+nim	methodFlagEditor	gdext/enums.html#methodFlagEditor	MethodFlags.methodFlagEditor		481
+nim	methodFlagConst	gdext/enums.html#methodFlagConst	MethodFlags.methodFlagConst		481
+nim	methodFlagVirtual	gdext/enums.html#methodFlagVirtual	MethodFlags.methodFlagVirtual		481
+nim	methodFlagVararg	gdext/enums.html#methodFlagVararg	MethodFlags.methodFlagVararg		481
+nim	methodFlagStatic	gdext/enums.html#methodFlagStatic	MethodFlags.methodFlagStatic		481
+nim	methodFlagObjectCore	gdext/enums.html#methodFlagObjectCore	MethodFlags.methodFlagObjectCore		481
+nim	methodFlagVirtualRequired	gdext/enums.html#methodFlagVirtualRequired	MethodFlags.methodFlagVirtualRequired		481
+nim	--Padding-Max--	gdext/enums.html#--Padding-Max--_34	MethodFlags.--Padding-Max--		481
+nim	MethodFlags	gdext/enums.html#MethodFlags	enum MethodFlags		481
+nim	methodFlagsDefault	gdext/enums.html#methodFlagsDefault.t,typedesc[T]	template methodFlagsDefault[T: MethodFlags](_: typedesc[T]): T		491
+nim	Variant_Operator	gdext/enums.html#Variant_Operator	enum Variant_Operator		493
+nimgrp	arrayformatcustombase	gdext/enums.html#arrayFormatCustomBase-templates-all	template		2196
+nimgrp	pathmetadataincludeall	gdext/enums.html#pathMetadataIncludeAll-templates-all	template		2286
+nimgrp	arrayformatcustom2shift	gdext/enums.html#arrayFormatCustom2Shift-templates-all	template		2199
+nimgrp	transformflagall	gdext/enums.html#transformFlagAll-templates-all	template		867
+nimgrp	arrayformatblendshapemask	gdext/enums.html#arrayFormatBlendShapeMask-templates-all	template		2194
+nimgrp	arrayformatcustommask	gdext/enums.html#arrayFormatCustomMask-templates-all	template		2195
+nimgrp	arrayformatcustom1shift	gdext/enums.html#arrayFormatCustom1Shift-templates-all	template		2198
+nimgrp	arrayformatcustombits	gdext/enums.html#arrayFormatCustomBits-templates-all	template		2193
+nimgrp	arrayformatcustom3shift	gdext/enums.html#arrayFormatCustom3Shift-templates-all	template		2200
+nimgrp	arraycompressflagsbase	gdext/enums.html#arrayCompressFlagsBase-templates-all	template		2201
+nimgrp	arrayformatcustom0shift	gdext/enums.html#arrayFormatCustom0Shift-templates-all	template		2197
+nimgrp	layoutdirectionlocale	gdext/enums.html#layoutDirectionLocale-templates-all	template		849
