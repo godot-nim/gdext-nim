@@ -78,7 +78,12 @@ import gdext/nameformats
 when Assistance.genEditorHelp:
   import gdext/private/doctools
 
+import std/macrocache
+
 const EntryPoint* = event("EntryPoint")
+const MainLoopStartup* = event("MainLoop.startup")
+const MainLoopFrame* = event("MainLoop.frame")
+const MainLoopShutdown* = event("MainLoop.shutdown")
 
 template GDExtension_EntryPoint*: untyped =
   ## Responds to initialization requests by Godot and performs extension initialization, such as loading functions and registering classes.
@@ -95,6 +100,9 @@ template GDExtension_EntryPoint*: untyped =
   proc exec_eliminate_scene {.expandEvent: eliminate_scene.}
   proc exec_eliminate_editor {.expandEvent: eliminate_editor.}
   proc execEntryPoint{.expandEvent: EntryPoint.}
+  proc execMainLoopStartup {.expandEvent: MainLoopStartup, gdcall, used.}
+  proc execMainLoopFrame {.expandEvent: MainLoopFrame, gdcall, used.}
+  proc execMainLoopShutdown {.expandEvent: MainLoopShutdown, gdcall, used.}
 
   {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
   proc initializer(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
@@ -156,6 +164,20 @@ template GDExtension_EntryPoint*: untyped =
       gdinterface.getParentClass = proc(class: StringName): StringName =
         gdClassDB.getParentClass(singleton(ClassDB), class)
       execEntryPoint()
+
+      when (MainLoopStartup.len + MainLoopFrame.len + MainLoopShutdown.len) != 0:
+        var mainLoopCallbacks = MainLoopCallbacks(
+          startupFunc:
+            when MainLoopStartup.len == 0: nil
+            else: execMainLoopStartup,
+          frameFunc:
+            when MainLoopFrame.len == 0: nil
+            else: execMainLoopFrame,
+          shutdownFunc:
+            when MainLoopShutdown.len == 0: nil
+            else: execMainLoopShutdown,
+        )
+        interfaceRegisterMainLoopCallbacks(environment.library, addr mainLoopCallbacks)
 
       return true
 
