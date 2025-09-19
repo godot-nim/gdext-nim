@@ -320,6 +320,18 @@ proc getModifiedTime*(_: typedesc[FileAccess]; file: String): uint64 =
   methodbind.ptrcall([getPtr file], addr ret)
   (addr ret).decode_result(uint64)
 
+proc getAccessTime*(_: typedesc[FileAccess]; file: String): uint64 =
+  expandMethodBind(className FileAccess, "get_access_time", 1597066294)
+  var ret: encoded uint64
+  methodbind.ptrcall([getPtr file], addr ret)
+  (addr ret).decode_result(uint64)
+
+proc getSize*(_: typedesc[FileAccess]; file: String): int64 =
+  expandMethodBind(className FileAccess, "get_size", 1597066294)
+  var ret: encoded int64
+  methodbind.ptrcall([getPtr file], addr ret)
+  (addr ret).decode_result(int64)
+
 proc getUnixPermissions*(_: typedesc[FileAccess]; file: String): set[FileAccess_UnixPermissionFlags] =
   expandMethodBind(className FileAccess, "get_unix_permissions", 524341837)
   var ret: encoded set[FileAccess_UnixPermissionFlags]

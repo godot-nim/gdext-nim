@@ -36,6 +36,16 @@ proc getAutowrapMode*(self: Button): TextServer_AutowrapMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_AutowrapMode)
 
+proc setAutowrapTrimFlags*(self: Button; autowrapTrimFlags: set[TextServer_LineBreakFlag]): void =
+  expandMethodBind(className Button, "set_autowrap_trim_flags", 2809697122)
+  methodbind.ptrcall(self, [getPtr autowrapTrimFlags])
+
+proc getAutowrapTrimFlags*(self: Button): set[TextServer_LineBreakFlag] =
+  expandMethodBind(className Button, "get_autowrap_trim_flags", 2340632602)
+  var ret: encoded set[TextServer_LineBreakFlag]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(set[TextServer_LineBreakFlag])
+
 proc setTextDirection*(self: Button; direction: Control_TextDirection): void =
   expandMethodBind(className Button, "set_text_direction", 119160795)
   methodbind.ptrcall(self, [getPtr direction])
@@ -143,6 +153,9 @@ template `textOverrunBehavior=`*(self: Button; value) = self.setTextOverrunBehav
 
 template autowrapMode*(self: Button): untyped = self.getAutowrapMode()
 template `autowrapMode=`*(self: Button; value) = self.setAutowrapMode(value)
+
+template autowrapTrimFlags*(self: Button): untyped = self.getAutowrapTrimFlags()
+template `autowrapTrimFlags=`*(self: Button; value) = self.setAutowrapTrimFlags(value)
 
 template clipText*(self: Button): untyped = self.getClipText()
 template `clipText=`*(self: Button; value) = self.setClipText(value)

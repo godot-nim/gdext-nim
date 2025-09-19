@@ -20,13 +20,17 @@ proc setText*(self: RichTextLabel; text: String): void =
   expandMethodBind(className RichTextLabel, "set_text", 83702148)
   methodbind.ptrcall(self, [getPtr text])
 
-proc addImage*(self: RichTextLabel; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); key: Variant = default(Variant); pad: bool = false; tooltip: String = newGdString(); sizeInPercent: bool = false): void =
-  expandMethodBind(className RichTextLabel, "add_image", 3017663154)
-  methodbind.ptrcall(self, [getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr key, getPtr pad, getPtr tooltip, getPtr sizeInPercent])
+proc addHr*(self: RichTextLabel; width: int32 = 90; height: int32 = 2; color: Color = color(1, 1, 1, 1); alignment: HorizontalAlignment = horizontalAlignmentCenter; widthInPercent: bool = true; heightInPercent: bool = false): void =
+  expandMethodBind(className RichTextLabel, "add_hr", 16816895)
+  methodbind.ptrcall(self, [getPtr width, getPtr height, getPtr color, getPtr alignment, getPtr widthInPercent, getPtr heightInPercent])
 
-proc updateImage*(self: RichTextLabel; key: Variant; mask: set[RichTextLabel_ImageUpdateMask]; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); pad: bool = false; tooltip: String = newGdString(); sizeInPercent: bool = false): void =
-  expandMethodBind(className RichTextLabel, "update_image", 815048486)
-  methodbind.ptrcall(self, [getPtr key, getPtr mask, getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr pad, getPtr tooltip, getPtr sizeInPercent])
+proc addImage*(self: RichTextLabel; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); key: Variant = default(Variant); pad: bool = false; tooltip: String = newGdString(); widthInPercent: bool = false; heightInPercent: bool = false; altText: String = newGdString()): void =
+  expandMethodBind(className RichTextLabel, "add_image", 1390915033)
+  methodbind.ptrcall(self, [getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr key, getPtr pad, getPtr tooltip, getPtr widthInPercent, getPtr heightInPercent, getPtr altText])
+
+proc updateImage*(self: RichTextLabel; key: Variant; mask: set[RichTextLabel_ImageUpdateMask]; image: gdref Texture2D; width: int32 = 0; height: int32 = 0; color: Color = color(1, 1, 1, 1); inlineAlign: InlineAlignment = inlineAlignmentCenter; region: Rect2 = rect2(0, 0, 0, 0); pad: bool = false; tooltip: String = newGdString(); widthInPercent: bool = false; heightInPercent: bool = false): void =
+  expandMethodBind(className RichTextLabel, "update_image", 6389170)
+  methodbind.ptrcall(self, [getPtr key, getPtr mask, getPtr image, getPtr width, getPtr height, getPtr color, getPtr inlineAlign, getPtr region, getPtr pad, getPtr tooltip, getPtr widthInPercent, getPtr heightInPercent])
 
 proc newline*(self: RichTextLabel): void =
   expandMethodBind(className RichTextLabel, "newline", 3218959716)
@@ -108,17 +112,17 @@ proc pushLanguage*(self: RichTextLabel; language: String): void =
   expandMethodBind(className RichTextLabel, "push_language", 83702148)
   methodbind.ptrcall(self, [getPtr language])
 
-proc pushUnderline*(self: RichTextLabel): void =
-  expandMethodBind(className RichTextLabel, "push_underline", 3218959716)
-  methodbind.ptrcall(self, [])
+proc pushUnderline*(self: RichTextLabel; color: Color = color(0, 0, 0, 0)): void =
+  expandMethodBind(className RichTextLabel, "push_underline", 1458098034)
+  methodbind.ptrcall(self, [getPtr color])
 
-proc pushStrikethrough*(self: RichTextLabel): void =
-  expandMethodBind(className RichTextLabel, "push_strikethrough", 3218959716)
-  methodbind.ptrcall(self, [])
+proc pushStrikethrough*(self: RichTextLabel; color: Color = color(0, 0, 0, 0)): void =
+  expandMethodBind(className RichTextLabel, "push_strikethrough", 1458098034)
+  methodbind.ptrcall(self, [getPtr color])
 
-proc pushTable*(self: RichTextLabel; columns: int32; inlineAlign: InlineAlignment = inlineAlignmentTopTo; alignToRow: int32 = -1): void =
-  expandMethodBind(className RichTextLabel, "push_table", 2623499273)
-  methodbind.ptrcall(self, [getPtr columns, getPtr inlineAlign, getPtr alignToRow])
+proc pushTable*(self: RichTextLabel; columns: int32; inlineAlign: InlineAlignment = inlineAlignmentTopTo; alignToRow: int32 = -1; name: String = newGdString()): void =
+  expandMethodBind(className RichTextLabel, "push_table", 3426862026)
+  methodbind.ptrcall(self, [getPtr columns, getPtr inlineAlign, getPtr alignToRow, getPtr name])
 
 proc pushDropcap*(self: RichTextLabel; string: String; font: gdref Font; size: int32; dropcapMargins: Rect2 = rect2(0, 0, 0, 0); color: Color = color(1, 1, 1, 1); outlineSize: int32 = 0; outlineColor: Color = color(0, 0, 0, 0)): void =
   expandMethodBind(className RichTextLabel, "push_dropcap", 4061635501)
@@ -127,6 +131,10 @@ proc pushDropcap*(self: RichTextLabel; string: String; font: gdref Font; size: i
 proc setTableColumnExpand*(self: RichTextLabel; column: int32; expand: bool; ratio: int32 = 1; shrink: bool = true): void =
   expandMethodBind(className RichTextLabel, "set_table_column_expand", 117236061)
   methodbind.ptrcall(self, [getPtr column, getPtr expand, getPtr ratio, getPtr shrink])
+
+proc setTableColumnName*(self: RichTextLabel; column: int32; name: String): void =
+  expandMethodBind(className RichTextLabel, "set_table_column_name", 501894301)
+  methodbind.ptrcall(self, [getPtr column, getPtr name])
 
 proc setCellRowBackgroundColor*(self: RichTextLabel; oddRowBg: Color; evenRowBg: Color): void =
   expandMethodBind(className RichTextLabel, "set_cell_row_background_color", 3465483165)
@@ -270,6 +278,16 @@ proc getAutowrapMode*(self: RichTextLabel): TextServer_AutowrapMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_AutowrapMode)
 
+proc setAutowrapTrimFlags*(self: RichTextLabel; autowrapTrimFlags: set[TextServer_LineBreakFlag]): void =
+  expandMethodBind(className RichTextLabel, "set_autowrap_trim_flags", 2809697122)
+  methodbind.ptrcall(self, [getPtr autowrapTrimFlags])
+
+proc getAutowrapTrimFlags*(self: RichTextLabel): set[TextServer_LineBreakFlag] =
+  expandMethodBind(className RichTextLabel, "get_autowrap_trim_flags", 2340632602)
+  var ret: encoded set[TextServer_LineBreakFlag]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(set[TextServer_LineBreakFlag])
+
 proc setMetaUnderline*(self: RichTextLabel; enable: bool): void =
   expandMethodBind(className RichTextLabel, "set_meta_underline", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -296,6 +314,16 @@ proc setScrollActive*(self: RichTextLabel; active: bool): void =
 
 proc isScrollActive*(self: RichTextLabel): bool =
   expandMethodBind(className RichTextLabel, "is_scroll_active", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setScrollFollowVisibleCharacters*(self: RichTextLabel; follow: bool): void =
+  expandMethodBind(className RichTextLabel, "set_scroll_follow_visible_characters", 2586408642)
+  methodbind.ptrcall(self, [getPtr follow])
+
+proc isScrollFollowingVisibleCharacters*(self: RichTextLabel): bool =
+  expandMethodBind(className RichTextLabel, "is_scroll_following_visible_characters", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -576,6 +604,24 @@ proc getContentWidth*(self: RichTextLabel): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc getLineHeight*(self: RichTextLabel; line: int32): int32 =
+  expandMethodBind(className RichTextLabel, "get_line_height", 923996154)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr line], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getLineWidth*(self: RichTextLabel; line: int32): int32 =
+  expandMethodBind(className RichTextLabel, "get_line_width", 923996154)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr line], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getVisibleContentRect*(self: RichTextLabel): Rect2i =
+  expandMethodBind(className RichTextLabel, "get_visible_content_rect", 410525958)
+  var ret: encoded Rect2i
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Rect2i)
+
 proc getLineOffset*(self: RichTextLabel; line: int32): Float =
   expandMethodBind(className RichTextLabel, "get_line_offset", 4025615559)
   var ret: encoded Float
@@ -608,6 +654,10 @@ proc installEffect*(self: RichTextLabel; effect: Variant): void =
   expandMethodBind(className RichTextLabel, "install_effect", 1114965689)
   methodbind.ptrcall(self, [getPtr effect])
 
+proc reloadEffects*(self: RichTextLabel): void =
+  expandMethodBind(className RichTextLabel, "reload_effects", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc getMenu*(self: RichTextLabel): PopupMenu =
   expandMethodBind(className RichTextLabel, "get_menu", 229722558)
   var ret: encoded PopupMenu
@@ -639,8 +689,14 @@ template `scrollActive=`*(self: RichTextLabel; value) = self.setScrollActive(val
 template scrollFollowing*(self: RichTextLabel): untyped = self.isScrollFollowing()
 template `scrollFollowing=`*(self: RichTextLabel; value) = self.setScrollFollow(value)
 
+template scrollFollowingVisibleCharacters*(self: RichTextLabel): untyped = self.isScrollFollowingVisibleCharacters()
+template `scrollFollowingVisibleCharacters=`*(self: RichTextLabel; value) = self.setScrollFollowVisibleCharacters(value)
+
 template autowrapMode*(self: RichTextLabel): untyped = self.getAutowrapMode()
 template `autowrapMode=`*(self: RichTextLabel; value) = self.setAutowrapMode(value)
+
+template autowrapTrimFlags*(self: RichTextLabel): untyped = self.getAutowrapTrimFlags()
+template `autowrapTrimFlags=`*(self: RichTextLabel; value) = self.setAutowrapTrimFlags(value)
 
 template tabSize*(self: RichTextLabel): untyped = self.getTabSize()
 template `tabSize=`*(self: RichTextLabel; value) = self.setTabSize(value)

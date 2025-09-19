@@ -241,7 +241,9 @@ type
     getVirtualCallDataFunc*: ClassGetVirtualCallData2
     callVirtualWithDataFunc*: ClassCallVirtualWithData
     classUserdata*: pointer
+  ClassCreationInfo5* = ClassCreationInfo4
   ClassLibraryPtr* = pointer
+  EditorGetClassesUsedCallback* = proc (pPackedStringArray: TypePtr) {.gdcall.}
   ClassMethodFlags* = enum
     MethodFlagNormal = 0, MethodFlagEditor = 1, MethodFlagConst = 2,
     MethodFlagVirtual = 3, MethodFlagVararg = 4, MethodFlagStatic = 5
@@ -468,15 +470,20 @@ type
     getFallbackFunc*: ScriptInstanceGet
     getLanguageFunc*: ScriptInstanceGetLanguage
     freeFunc*: ScriptInstanceFree
+  WorkerThreadPoolGroupTask* = proc (a1: pointer; a2: uint32T) {.gdcall.}
+  WorkerThreadPoolTask* = proc (a1: pointer) {.gdcall.}
   InitializationLevel* = enum
     InitializationCore, InitializationServers, InitializationScene,
     InitializationEditor
+  InitializeCallback* = proc (pUserdata: pointer; pLevel: InitializationLevel) {.
+      gdcall.}
+  DeinitializeCallback* = proc (pUserdata: pointer; pLevel: InitializationLevel) {.
+      gdcall.}
   Initialization* {.byref.} = object
     minimumInitializationLevel*: InitializationLevel
     userdata*: pointer
-    initialize*: proc (userdata: pointer; pLevel: InitializationLevel) {.gdcall.}
-    deinitialize*: proc (userdata: pointer; pLevel: InitializationLevel) {.
-        gdcall.}
+    initialize*: InitializeCallback
+    deinitialize*: DeinitializeCallback
   InterfaceFunctionPtr* = proc () {.gdcall.}
   InterfaceGetProcAddress* = proc (pFunctionName: cstring): InterfaceFunctionPtr {.
       gdcall.}
@@ -489,7 +496,25 @@ type
     minor*: uint32T
     patch*: uint32T
     string*: cstring
+  GodotVersion2* {.byref.} = object
+    major*: uint32T
+    minor*: uint32T
+    patch*: uint32T
+    hex*: uint32T
+    status*: cstring
+    build*: cstring
+    hash*: cstring
+    timestamp*: uint64T
+    string*: cstring
+  MainLoopStartupCallback* = proc () {.gdcall.}
+  MainLoopShutdownCallback* = proc () {.gdcall.}
+  MainLoopFrameCallback* = proc () {.gdcall.}
+  MainLoopCallbacks* {.byref.} = object
+    startupFunc*: MainLoopStartupCallback
+    shutdownFunc*: MainLoopShutdownCallback
+    frameFunc*: MainLoopFrameCallback
   InterfaceGetGodotVersion* = proc (rGodotVersion: ptr GodotVersion) {.gdcall.}
+  InterfaceGetGodotVersion2* = proc (rGodotVersion: ptr GodotVersion2) {.gdcall.}
   InterfaceMemAlloc* = proc (pBytes: csizeT): pointer {.gdcall.}
   InterfaceMemRealloc* = proc (pPtr: pointer; pBytes: csizeT): pointer {.gdcall.}
   InterfaceMemFree* = proc (pPtr: pointer) {.gdcall.}
@@ -700,12 +725,12 @@ type
   InterfaceImagePtrw* = proc (pInstance: ObjectPtr): ptr uint8T {.gdcall.}
   InterfaceImagePtr* = proc (pInstance: ObjectPtr): ptr uint8T {.gdcall.}
   InterfaceWorkerThreadPoolAddNativeGroupTask* = proc (pInstance: ObjectPtr;
-      pFunc: proc (a1: pointer; a2: uint32T) {.gdcall.}; pUserdata: pointer;
-      pElements: cint; pTasks: cint; pHighPriority: Bool;
-      pDescription: ConstStringPtr): int64T {.gdcall.}
+      pFunc: WorkerThreadPoolGroupTask; pUserdata: pointer; pElements: cint;
+      pTasks: cint; pHighPriority: Bool; pDescription: ConstStringPtr): int64T {.
+      gdcall.}
   InterfaceWorkerThreadPoolAddNativeTask* = proc (pInstance: ObjectPtr;
-      pFunc: proc (a1: pointer) {.gdcall.}; pUserdata: pointer;
-      pHighPriority: Bool; pDescription: ConstStringPtr): int64T {.gdcall.}
+      pFunc: WorkerThreadPoolTask; pUserdata: pointer; pHighPriority: Bool;
+      pDescription: ConstStringPtr): int64T {.gdcall.}
   InterfacePackedByteArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr uint8T {.
       gdcall.}
   InterfacePackedByteArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
@@ -812,6 +837,8 @@ type
       pValues: ConstTypePtr) {.gdcall.}
   InterfaceObjectGetScriptInstance* = proc (pObject: ConstObjectPtr;
       pLanguage: ObjectPtr): ScriptInstanceDataPtr {.gdcall.}
+  InterfaceObjectSetScriptInstance* = proc (pObject: ObjectPtr;
+      pScriptInstance: ScriptInstanceDataPtr) {.gdcall.}
   InterfaceCallableCustomCreate* = proc (rCallable: UninitializedTypePtr;
       pCallableCustomInfo: ptr CallableCustomInfo) {.gdcall.}
   InterfaceCallableCustomCreate2* = proc (rCallable: UninitializedTypePtr;
@@ -838,6 +865,9 @@ type
   InterfaceClassdbRegisterExtensionClass4* = proc (pLibrary: ClassLibraryPtr;
       pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
       pExtensionFuncs: ptr ClassCreationInfo4) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass5* = proc (pLibrary: ClassLibraryPtr;
+      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
+      pExtensionFuncs: ptr ClassCreationInfo5) {.gdcall.}
   InterfaceClassdbRegisterExtensionClassMethod* = proc (
       pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
       pMethodInfo: ptr ClassMethodInfo) {.gdcall.}
@@ -875,8 +905,14 @@ type
   InterfaceEditorHelpLoadXmlFromUtf8Chars* = proc (pData: cstring) {.gdcall.}
   InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen* = proc (pData: cstring;
       pSize: Int) {.gdcall.}
+  InterfaceEditorRegisterGetClassesUsedCallback* = proc (
+      pLibrary: ClassLibraryPtr; pCallback: EditorGetClassesUsedCallback) {.
+      gdcall.}
+  InterfaceRegisterMainLoopCallbacks* = proc (pLibrary: ClassLibraryPtr;
+      pCallbacks: ptr MainLoopCallbacks) {.gdcall.}
 var
   interfaceGetGodotVersion*: InterfaceGetGodotVersion
+  interfaceGetGodotVersion2*: InterfaceGetGodotVersion2
   interfaceMemAlloc*: InterfaceMemAlloc
   interfaceMemRealloc*: InterfaceMemRealloc
   interfaceMemFree*: InterfaceMemFree
@@ -1019,6 +1055,7 @@ var
   interfacePlaceHolderScriptInstanceCreate*: InterfacePlaceHolderScriptInstanceCreate
   interfacePlaceHolderScriptInstanceUpdate*: InterfacePlaceHolderScriptInstanceUpdate
   interfaceObjectGetScriptInstance*: InterfaceObjectGetScriptInstance
+  interfaceObjectSetScriptInstance*: InterfaceObjectSetScriptInstance
   interfaceCallableCustomCreate*: InterfaceCallableCustomCreate
   interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
   interfaceCallableCustomGetUserData*: InterfaceCallableCustomGetUserData
@@ -1030,6 +1067,7 @@ var
   interfaceClassdbRegisterExtensionClass2*: InterfaceClassdbRegisterExtensionClass2
   interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
   interfaceClassdbRegisterExtensionClass4*: InterfaceClassdbRegisterExtensionClass4
+  interfaceClassdbRegisterExtensionClass5*: InterfaceClassdbRegisterExtensionClass5
   interfaceClassdbRegisterExtensionClassMethod*: InterfaceClassdbRegisterExtensionClassMethod
   interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
   interfaceClassdbRegisterExtensionClassIntegerConstant*: InterfaceClassdbRegisterExtensionClassIntegerConstant
@@ -1044,9 +1082,13 @@ var
   interfaceEditorRemovePlugin*: InterfaceEditorRemovePlugin
   interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
+  interfaceEditorRegisterGetClassesUsedCallback*: InterfaceEditorRegisterGetClassesUsedCallback
+  interfaceRegisterMainLoopCallbacks*: InterfaceRegisterMainLoopCallbacks
 proc loadApi(getProcAddress: InterfaceGetProcAddress) =
   interfaceGetGodotVersion = cast[InterfaceGetGodotVersion](getProcAddress(
       cstring("get_godot_version")))
+  interfaceGetGodotVersion2 = cast[InterfaceGetGodotVersion2](getProcAddress(
+      cstring("get_godot_version2")))
   interfaceMemAlloc = cast[InterfaceMemAlloc](getProcAddress(
       cstring("mem_alloc")))
   interfaceMemRealloc = cast[InterfaceMemRealloc](getProcAddress(
@@ -1330,6 +1372,8 @@ proc loadApi(getProcAddress: InterfaceGetProcAddress) =
       cstring("placeholder_script_instance_update")))
   interfaceObjectGetScriptInstance = cast[InterfaceObjectGetScriptInstance](getProcAddress(
       cstring("object_get_script_instance")))
+  interfaceObjectSetScriptInstance = cast[InterfaceObjectSetScriptInstance](getProcAddress(
+      cstring("object_set_script_instance")))
   interfaceCallableCustomCreate = cast[InterfaceCallableCustomCreate](getProcAddress(
       cstring("callable_custom_create")))
   interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(
@@ -1352,6 +1396,8 @@ proc loadApi(getProcAddress: InterfaceGetProcAddress) =
       cstring("classdb_register_extension_class3")))
   interfaceClassdbRegisterExtensionClass4 = cast[InterfaceClassdbRegisterExtensionClass4](getProcAddress(
       cstring("classdb_register_extension_class4")))
+  interfaceClassdbRegisterExtensionClass5 = cast[InterfaceClassdbRegisterExtensionClass5](getProcAddress(
+      cstring("classdb_register_extension_class5")))
   interfaceClassdbRegisterExtensionClassMethod = cast[InterfaceClassdbRegisterExtensionClassMethod](getProcAddress(
       cstring("classdb_register_extension_class_method")))
   interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(
@@ -1380,3 +1426,7 @@ proc loadApi(getProcAddress: InterfaceGetProcAddress) =
       cstring("editor_help_load_xml_from_utf8_chars")))
   interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(
       cstring("editor_help_load_xml_from_utf8_chars_and_len")))
+  interfaceEditorRegisterGetClassesUsedCallback = cast[InterfaceEditorRegisterGetClassesUsedCallback](getProcAddress(
+      cstring("editor_register_get_classes_used_callback")))
+  interfaceRegisterMainLoopCallbacks = cast[InterfaceRegisterMainLoopCallbacks](getProcAddress(
+      cstring("register_main_loop_callbacks")))

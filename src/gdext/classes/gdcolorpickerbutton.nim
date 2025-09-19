@@ -38,8 +38,21 @@ proc isEditingAlpha*(self: ColorPickerButton): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setEditIntensity*(self: ColorPickerButton; show: bool): void =
+  expandMethodBind(className ColorPickerButton, "set_edit_intensity", 2586408642)
+  methodbind.ptrcall(self, [getPtr show])
+
+proc isEditingIntensity*(self: ColorPickerButton): bool =
+  expandMethodBind(className ColorPickerButton, "is_editing_intensity", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template color*(self: ColorPickerButton): untyped = self.getPickColor()
 template `color=`*(self: ColorPickerButton; value) = self.setPickColor(value)
 
 template editAlpha*(self: ColorPickerButton): untyped = self.isEditingAlpha()
 template `editAlpha=`*(self: ColorPickerButton; value) = self.setEditAlpha(value)
+
+template editIntensity*(self: ColorPickerButton): untyped = self.isEditingIntensity()
+template `editIntensity=`*(self: ColorPickerButton; value) = self.setEditIntensity(value)

@@ -2,6 +2,7 @@
 
 import ./../classes/gdacceptdialog
 import ./../classes/gdaescontext
+import ./../classes/gdaimmodifier3d
 import ./../classes/gdanimatablebody2d
 import ./../classes/gdanimatablebody3d
 import ./../classes/gdanimatedsprite2d
@@ -106,6 +107,7 @@ import ./../classes/gdbasematerial3d
 import ./../classes/gdbitmap
 import ./../classes/gdbone2d
 import ./../classes/gdboneattachment3d
+import ./../classes/gdboneconstraint3d
 import ./../classes/gdbonemap
 import ./../classes/gdboxcontainer
 import ./../classes/gdboxmesh
@@ -166,8 +168,10 @@ import ./../classes/gdconfigfile
 import ./../classes/gdconfirmationdialog
 import ./../classes/gdcontainer
 import ./../classes/gdcontrol
+import ./../classes/gdconverttransformmodifier3d
 import ./../classes/gdconvexpolygonshape2d
 import ./../classes/gdconvexpolygonshape3d
+import ./../classes/gdcopytransformmodifier3d
 import ./../classes/gdcpuparticles2d
 import ./../classes/gdcpuparticles3d
 import ./../classes/gdcrypto
@@ -196,6 +200,7 @@ import ./../classes/gddiraccess
 import ./../classes/gddirectionallight2d
 import ./../classes/gddirectionallight3d
 import ./../classes/gddisplayserver
+import ./../classes/gddpitexture
 import ./../classes/gddtlsserver
 import ./../classes/gdeditorcommandpalette
 import ./../classes/gdeditorcontextmenuplugin
@@ -203,11 +208,13 @@ import ./../classes/gdeditordebuggerplugin
 import ./../classes/gdeditordebuggersession
 import ./../classes/gdeditorexportplatform
 import ./../classes/gdeditorexportplatformandroid
+import ./../classes/gdeditorexportplatformappleembedded
 import ./../classes/gdeditorexportplatformextension
 import ./../classes/gdeditorexportplatformios
 import ./../classes/gdeditorexportplatformlinuxbsd
 import ./../classes/gdeditorexportplatformmacos
 import ./../classes/gdeditorexportplatformpc
+import ./../classes/gdeditorexportplatformvisionos
 import ./../classes/gdeditorexportplatformweb
 import ./../classes/gdeditorexportplatformwindows
 import ./../classes/gdeditorexportplugin
@@ -267,6 +274,8 @@ import ./../classes/gdfilesystemdock
 import ./../classes/gdflowcontainer
 import ./../classes/gdfogmaterial
 import ./../classes/gdfogvolume
+import ./../classes/gdfoldablecontainer
+import ./../classes/gdfoldablegroup
 import ./../classes/gdfont
 import ./../classes/gdfontfile
 import ./../classes/gdfontvariation
@@ -391,6 +400,7 @@ import ./../classes/gdlightoccluder2d
 import ./../classes/gdline2d
 import ./../classes/gdlineedit
 import ./../classes/gdlinkbutton
+import ./../classes/gdlogger
 import ./../classes/gdlookatmodifier3d
 import ./../classes/gdmainloop
 import ./../classes/gdmargincontainer
@@ -411,6 +421,7 @@ import ./../classes/gdmethodtweener
 import ./../classes/gdmissingnode
 import ./../classes/gdmissingresource
 import ./../classes/gdmobilevrinterface
+import ./../classes/gdmodifierbonetarget3d
 import ./../classes/gdmoviewriter
 import ./../classes/gdmultimesh
 import ./../classes/gdmultimeshinstance2d
@@ -471,7 +482,10 @@ import ./../classes/gdopenxrcompositionlayercylinder
 import ./../classes/gdopenxrcompositionlayerequirect
 import ./../classes/gdopenxrcompositionlayerquad
 import ./../classes/gdopenxrdpadbindingmodifier
+import ./../classes/gdopenxrextensionwrapper
 import ./../classes/gdopenxrextensionwrapperextension
+import ./../classes/gdopenxrfutureextension
+import ./../classes/gdopenxrfutureresult
 import ./../classes/gdopenxrhand
 import ./../classes/gdopenxrhapticbase
 import ./../classes/gdopenxrhapticvibration
@@ -482,6 +496,9 @@ import ./../classes/gdopenxrinteractionprofilemetadata
 import ./../classes/gdopenxrinterface
 import ./../classes/gdopenxripbinding
 import ./../classes/gdopenxripbindingmodifier
+import ./../classes/gdopenxrrendermodel
+import ./../classes/gdopenxrrendermodelextension
+import ./../classes/gdopenxrrendermodelmanager
 import ./../classes/gdopenxrvisibilitymask
 import ./../classes/gdoptimizedtranslation
 import ./../classes/gdoptionbutton
@@ -624,6 +641,7 @@ import ./../classes/gdresourceimporterobj
 import ./../classes/gdresourceimporteroggvorbis
 import ./../classes/gdresourceimporterscene
 import ./../classes/gdresourceimportershaderfile
+import ./../classes/gdresourceimportersvg
 import ./../classes/gdresourceimportertexture
 import ./../classes/gdresourceimportertextureatlas
 import ./../classes/gdresourceimporterwav
@@ -644,6 +662,7 @@ import ./../classes/gdscenestate
 import ./../classes/gdscenetree
 import ./../classes/gdscenetreetimer
 import ./../classes/gdscript
+import ./../classes/gdscriptbacktrace
 import ./../classes/gdscriptcreatedialog
 import ./../classes/gdscripteditor
 import ./../classes/gdscripteditorbase

@@ -38,6 +38,16 @@ proc mapGetCellSize*(self: NavigationServer2D; map: RID): Float =
   methodbind.ptrcall(self, [getPtr map], addr ret)
   (addr ret).decode_result(Float)
 
+proc mapSetMergeRasterizerCellScale*(self: NavigationServer2D; map: RID; scale: Float): void =
+  expandMethodBind(className NavigationServer2D, "map_set_merge_rasterizer_cell_scale", 1794382983)
+  methodbind.ptrcall(self, [getPtr map, getPtr scale])
+
+proc mapGetMergeRasterizerCellScale*(self: NavigationServer2D; map: RID): Float =
+  expandMethodBind(className NavigationServer2D, "map_get_merge_rasterizer_cell_scale", 866169185)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [getPtr map], addr ret)
+  (addr ret).decode_result(Float)
+
 proc mapSetUseEdgeConnections*(self: NavigationServer2D; map: RID; enabled: bool): void =
   expandMethodBind(className NavigationServer2D, "map_set_use_edge_connections", 1265174801)
   methodbind.ptrcall(self, [getPtr map, getPtr enabled])
@@ -145,6 +155,22 @@ proc regionCreate*(self: NavigationServer2D): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+
+proc regionGetIterationId*(self: NavigationServer2D; region: RID): uint32 =
+  expandMethodBind(className NavigationServer2D, "region_get_iteration_id", 2198884583)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(uint32)
+
+proc regionSetUseAsyncIterations*(self: NavigationServer2D; region: RID; enabled: bool): void =
+  expandMethodBind(className NavigationServer2D, "region_set_use_async_iterations", 1265174801)
+  methodbind.ptrcall(self, [getPtr region, getPtr enabled])
+
+proc regionGetUseAsyncIterations*(self: NavigationServer2D; region: RID): bool =
+  expandMethodBind(className NavigationServer2D, "region_get_use_async_iterations", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr region], addr ret)
+  (addr ret).decode_result(bool)
 
 proc regionSetEnabled*(self: NavigationServer2D; region: RID; enabled: bool): void =
   expandMethodBind(className NavigationServer2D, "region_set_enabled", 1265174801)
@@ -277,6 +303,12 @@ proc linkCreate*(self: NavigationServer2D): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+
+proc linkGetIterationId*(self: NavigationServer2D; link: RID): uint32 =
+  expandMethodBind(className NavigationServer2D, "link_get_iteration_id", 2198884583)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [getPtr link], addr ret)
+  (addr ret).decode_result(uint32)
 
 proc linkSetMap*(self: NavigationServer2D; link: RID; map: RID): void =
   expandMethodBind(className NavigationServer2D, "link_set_map", 395945892)
@@ -658,6 +690,10 @@ proc freeRid*(self: NavigationServer2D; rid: RID): void =
   expandMethodBind(className NavigationServer2D, "free_rid", 2722037293)
   methodbind.ptrcall(self, [getPtr rid])
 
+proc setActive*(self: NavigationServer2D; active: bool): void =
+  expandMethodBind(className NavigationServer2D, "set_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr active])
+
 proc setDebugEnabled*(self: NavigationServer2D; enabled: bool): void =
   expandMethodBind(className NavigationServer2D, "set_debug_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -667,3 +703,9 @@ proc getDebugEnabled*(self: NavigationServer2D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
+
+proc getProcessInfo*(self: NavigationServer2D; processInfo: NavigationServer2D_ProcessInfo): int32 =
+  expandMethodBind(className NavigationServer2D, "get_process_info", 1640219858)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr processInfo], addr ret)
+  (addr ret).decode_result(int32)

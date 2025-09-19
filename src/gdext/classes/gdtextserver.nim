@@ -260,12 +260,26 @@ proc fontIsAllowSystemFallback*(self: TextServer; fontRid: RID): bool =
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
   (addr ret).decode_result(bool)
 
+proc fontClearSystemFallbackCache*(self: TextServer): void =
+  expandMethodBind(className TextServer, "font_clear_system_fallback_cache", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc fontSetForceAutohinter*(self: TextServer; fontRid: RID; forceAutohinter: bool): void =
   expandMethodBind(className TextServer, "font_set_force_autohinter", 1265174801)
   methodbind.ptrcall(self, [getPtr fontRid, getPtr forceAutohinter])
 
 proc fontIsForceAutohinter*(self: TextServer; fontRid: RID): bool =
   expandMethodBind(className TextServer, "font_is_force_autohinter", 4155700596)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr fontRid], addr ret)
+  (addr ret).decode_result(bool)
+
+proc fontSetModulateColorGlyphs*(self: TextServer; fontRid: RID; forceAutohinter: bool): void =
+  expandMethodBind(className TextServer, "font_set_modulate_color_glyphs", 1265174801)
+  methodbind.ptrcall(self, [getPtr fontRid, getPtr forceAutohinter])
+
+proc fontIsModulateColorGlyphs*(self: TextServer; fontRid: RID): bool =
+  expandMethodBind(className TextServer, "font_is_modulate_color_glyphs", 4155700596)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
   (addr ret).decode_result(bool)
@@ -373,6 +387,12 @@ proc fontClearSizeCache*(self: TextServer; fontRid: RID): void =
 proc fontRemoveSizeCache*(self: TextServer; fontRid: RID; size: Vector2i): void =
   expandMethodBind(className TextServer, "font_remove_size_cache", 2450610377)
   methodbind.ptrcall(self, [getPtr fontRid, getPtr size])
+
+proc fontGetSizeCacheInfo*(self: TextServer; fontRid: RID): TypedArray[Dictionary] =
+  expandMethodBind(className TextServer, "font_get_size_cache_info", 2684255073)
+  var ret: encoded TypedArray[Dictionary]
+  methodbind.ptrcall(self, [getPtr fontRid], addr ret)
+  (addr ret).decode_result(TypedArray[Dictionary])
 
 proc fontSetAscent*(self: TextServer; fontRid: RID; size: int64; ascent: float64): void =
   expandMethodBind(className TextServer, "font_set_ascent", 1892459533)
@@ -602,13 +622,13 @@ proc fontRenderGlyph*(self: TextServer; fontRid: RID; size: Vector2i; index: int
   expandMethodBind(className TextServer, "font_render_glyph", 3810512262)
   methodbind.ptrcall(self, [getPtr fontRid, getPtr size, getPtr index])
 
-proc fontDrawGlyph*(self: TextServer; fontRid: RID; canvas: RID; size: int64; pos: Vector2; index: int64; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextServer, "font_draw_glyph", 1339057948)
-  methodbind.ptrcall(self, [getPtr fontRid, getPtr canvas, getPtr size, getPtr pos, getPtr index, getPtr color])
+proc fontDrawGlyph*(self: TextServer; fontRid: RID; canvas: RID; size: int64; pos: Vector2; index: int64; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextServer, "font_draw_glyph", 3103234926)
+  methodbind.ptrcall(self, [getPtr fontRid, getPtr canvas, getPtr size, getPtr pos, getPtr index, getPtr color, getPtr oversampling])
 
-proc fontDrawGlyphOutline*(self: TextServer; fontRid: RID; canvas: RID; size: int64; outlineSize: int64; pos: Vector2; index: int64; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextServer, "font_draw_glyph_outline", 2626165733)
-  methodbind.ptrcall(self, [getPtr fontRid, getPtr canvas, getPtr size, getPtr outlineSize, getPtr pos, getPtr index, getPtr color])
+proc fontDrawGlyphOutline*(self: TextServer; fontRid: RID; canvas: RID; size: int64; outlineSize: int64; pos: Vector2; index: int64; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextServer, "font_draw_glyph_outline", 1976041553)
+  methodbind.ptrcall(self, [getPtr fontRid, getPtr canvas, getPtr size, getPtr outlineSize, getPtr pos, getPtr index, getPtr color, getPtr oversampling])
 
 proc fontIsLanguageSupported*(self: TextServer; fontRid: RID; language: String): bool =
   expandMethodBind(className TextServer, "font_is_language_supported", 3199320846)
@@ -812,6 +832,12 @@ proc shapedTextResizeObject*(self: TextServer; shaped: RID; key: Variant; size: 
   methodbind.ptrcall(self, [getPtr shaped, getPtr key, getPtr size, getPtr inlineAlign, getPtr baseline], addr ret)
   (addr ret).decode_result(bool)
 
+proc shapedGetText*(self: TextServer; shaped: RID): String =
+  expandMethodBind(className TextServer, "shaped_get_text", 642473191)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr shaped], addr ret)
+  (addr ret).decode_result(String)
+
 proc shapedGetSpanCount*(self: TextServer; shaped: RID): int64 =
   expandMethodBind(className TextServer, "shaped_get_span_count", 2198884583)
   var ret: encoded int64
@@ -830,9 +856,69 @@ proc shapedGetSpanEmbeddedObject*(self: TextServer; shaped: RID; index: int64): 
   methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
   (addr ret).decode_result(Variant)
 
+proc shapedGetSpanText*(self: TextServer; shaped: RID; index: int64): String =
+  expandMethodBind(className TextServer, "shaped_get_span_text", 1464764419)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(String)
+
+proc shapedGetSpanObject*(self: TextServer; shaped: RID; index: int64): Variant =
+  expandMethodBind(className TextServer, "shaped_get_span_object", 4069510997)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(Variant)
+
 proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary()): void =
   expandMethodBind(className TextServer, "shaped_set_span_update_font", 2022725822)
   methodbind.ptrcall(self, [getPtr shaped, getPtr index, getPtr fonts, getPtr size, getPtr opentypeFeatures])
+
+proc shapedGetRunCount*(self: TextServer; shaped: RID): int64 =
+  expandMethodBind(className TextServer, "shaped_get_run_count", 2198884583)
+  var ret: encoded int64
+  methodbind.ptrcall(self, [getPtr shaped], addr ret)
+  (addr ret).decode_result(int64)
+
+proc shapedGetRunText*(self: TextServer; shaped: RID; index: int64): String =
+  expandMethodBind(className TextServer, "shaped_get_run_text", 1464764419)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(String)
+
+proc shapedGetRunRange*(self: TextServer; shaped: RID; index: int64): Vector2i =
+  expandMethodBind(className TextServer, "shaped_get_run_range", 4069534484)
+  var ret: encoded Vector2i
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(Vector2i)
+
+proc shapedGetRunFontRid*(self: TextServer; shaped: RID; index: int64): RID =
+  expandMethodBind(className TextServer, "shaped_get_run_font_rid", 1066463050)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(RID)
+
+proc shapedGetRunFontSize*(self: TextServer; shaped: RID; index: int64): int32 =
+  expandMethodBind(className TextServer, "shaped_get_run_font_size", 1120910005)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(int32)
+
+proc shapedGetRunLanguage*(self: TextServer; shaped: RID; index: int64): String =
+  expandMethodBind(className TextServer, "shaped_get_run_language", 1464764419)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(String)
+
+proc shapedGetRunDirection*(self: TextServer; shaped: RID; index: int64): TextServer_Direction =
+  expandMethodBind(className TextServer, "shaped_get_run_direction", 2413896864)
+  var ret: encoded TextServer_Direction
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(TextServer_Direction)
+
+proc shapedGetRunObject*(self: TextServer; shaped: RID; index: int64): Variant =
+  expandMethodBind(className TextServer, "shaped_get_run_object", 4069510997)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
+  (addr ret).decode_result(Variant)
 
 proc shapedTextSubstr*(self: TextServer; shaped: RID; start: int64; length: int64): RID =
   expandMethodBind(className TextServer, "shaped_text_substr", 1937682086)
@@ -1072,13 +1158,13 @@ proc shapedTextClosestCharacterPos*(self: TextServer; shaped: RID; pos: int64): 
   methodbind.ptrcall(self, [getPtr shaped, getPtr pos], addr ret)
   (addr ret).decode_result(int64)
 
-proc shapedTextDraw*(self: TextServer; shaped: RID; canvas: RID; pos: Vector2; clipL: float64 = -1; clipR: float64 = -1; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextServer, "shaped_text_draw", 880389142)
-  methodbind.ptrcall(self, [getPtr shaped, getPtr canvas, getPtr pos, getPtr clipL, getPtr clipR, getPtr color])
+proc shapedTextDraw*(self: TextServer; shaped: RID; canvas: RID; pos: Vector2; clipL: float64 = -1; clipR: float64 = -1; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextServer, "shaped_text_draw", 1647687596)
+  methodbind.ptrcall(self, [getPtr shaped, getPtr canvas, getPtr pos, getPtr clipL, getPtr clipR, getPtr color, getPtr oversampling])
 
-proc shapedTextDrawOutline*(self: TextServer; shaped: RID; canvas: RID; pos: Vector2; clipL: float64 = -1; clipR: float64 = -1; outlineSize: int64 = 1; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className TextServer, "shaped_text_draw_outline", 2559184194)
-  methodbind.ptrcall(self, [getPtr shaped, getPtr canvas, getPtr pos, getPtr clipL, getPtr clipR, getPtr outlineSize, getPtr color])
+proc shapedTextDrawOutline*(self: TextServer; shaped: RID; canvas: RID; pos: Vector2; clipL: float64 = -1; clipR: float64 = -1; outlineSize: int64 = 1; color: Color = color(1, 1, 1, 1); oversampling: Float = 0.0): void =
+  expandMethodBind(className TextServer, "shaped_text_draw_outline", 1217146601)
+  methodbind.ptrcall(self, [getPtr shaped, getPtr canvas, getPtr pos, getPtr clipL, getPtr clipR, getPtr outlineSize, getPtr color, getPtr oversampling])
 
 proc shapedTextGetDominantDirectionInRange*(self: TextServer; shaped: RID; start: int64; `end`: int64): TextServer_Direction =
   expandMethodBind(className TextServer, "shaped_text_get_dominant_direction_in_range", 3326907668)

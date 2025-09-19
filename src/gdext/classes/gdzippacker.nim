@@ -12,6 +12,16 @@ proc open*(self: ZIPPacker; path: String; append: ZIPPacker_ZipAppend = appendCr
   methodbind.ptrcall(self, [getPtr path, getPtr append], addr ret)
   (addr ret).decode_result(Error)
 
+proc setCompressionLevel*(self: ZIPPacker; compressionLevel: int32): void =
+  expandMethodBind(className ZIPPacker, "set_compression_level", 1286410249)
+  methodbind.ptrcall(self, [getPtr compressionLevel])
+
+proc getCompressionLevel*(self: ZIPPacker): int32 =
+  expandMethodBind(className ZIPPacker, "get_compression_level", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 proc startFile*(self: ZIPPacker; path: String): Error =
   expandMethodBind(className ZIPPacker, "start_file", 166001499)
   var ret: encoded Error
@@ -35,3 +45,6 @@ proc close*(self: ZIPPacker): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Error)
+
+template compressionLevel*(self: ZIPPacker): untyped = self.getCompressionLevel()
+template `compressionLevel=`*(self: ZIPPacker; value) = self.setCompressionLevel(value)

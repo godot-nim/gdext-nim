@@ -66,6 +66,16 @@ proc isCurrent*(self: Camera2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setLimitEnabled*(self: Camera2D; limitEnabled: bool): void =
+  expandMethodBind(className Camera2D, "set_limit_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr limitEnabled])
+
+proc isLimitEnabled*(self: Camera2D): bool =
+  expandMethodBind(className Camera2D, "is_limit_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setLimit*(self: Camera2D; margin: Side; limit: int32): void =
   expandMethodBind(className Camera2D, "set_limit", 437707142)
   methodbind.ptrcall(self, [getPtr margin, getPtr limit])
@@ -148,6 +158,12 @@ proc getScreenCenterPosition*(self: Camera2D): Vector2 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
+proc getScreenRotation*(self: Camera2D): Float =
+  expandMethodBind(className Camera2D, "get_screen_rotation", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setZoom*(self: Camera2D; zoom: Vector2): void =
   expandMethodBind(className Camera2D, "set_zoom", 743155724)
   methodbind.ptrcall(self, [getPtr zoom])
@@ -178,9 +194,9 @@ proc getPositionSmoothingSpeed*(self: Camera2D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc setPositionSmoothingEnabled*(self: Camera2D; positionSmoothingSpeed: bool): void =
+proc setPositionSmoothingEnabled*(self: Camera2D; enabled: bool): void =
   expandMethodBind(className Camera2D, "set_position_smoothing_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr positionSmoothingSpeed])
+  methodbind.ptrcall(self, [getPtr enabled])
 
 proc isPositionSmoothingEnabled*(self: Camera2D): bool =
   expandMethodBind(className Camera2D, "is_position_smoothing_enabled", 36873697)
@@ -270,6 +286,9 @@ template `customViewport=`*(self: Camera2D; value) = self.setCustomViewport(valu
 
 template processCallback*(self: Camera2D): untyped = self.getProcessCallback()
 template `processCallback=`*(self: Camera2D; value) = self.setProcessCallback(value)
+
+template limitEnabled*(self: Camera2D): untyped = self.isLimitEnabled()
+template `limitEnabled=`*(self: Camera2D; value) = self.setLimitEnabled(value)
 
 template limitLeft*(self: Camera2D): untyped = self.getLimit(Side(0))
 template `limitLeft=`*(self: Camera2D; value) = self.setLimit(Side(0), value)

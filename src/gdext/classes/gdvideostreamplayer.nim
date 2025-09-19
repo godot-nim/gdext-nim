@@ -70,6 +70,16 @@ proc getVolumeDb*(self: VideoStreamPlayer): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setSpeedScale*(self: VideoStreamPlayer; speedScale: Float): void =
+  expandMethodBind(className VideoStreamPlayer, "set_speed_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr speedScale])
+
+proc getSpeedScale*(self: VideoStreamPlayer): Float =
+  expandMethodBind(className VideoStreamPlayer, "get_speed_scale", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setAudioTrack*(self: VideoStreamPlayer; track: int32): void =
   expandMethodBind(className VideoStreamPlayer, "set_audio_track", 1286410249)
   methodbind.ptrcall(self, [getPtr track])
@@ -159,6 +169,9 @@ template `volumeDb=`*(self: VideoStreamPlayer; value) = self.setVolumeDb(value)
 
 template volume*(self: VideoStreamPlayer): untyped = self.getVolume()
 template `volume=`*(self: VideoStreamPlayer; value) = self.setVolume(value)
+
+template speedScale*(self: VideoStreamPlayer): untyped = self.getSpeedScale()
+template `speedScale=`*(self: VideoStreamPlayer; value) = self.setSpeedScale(value)
 
 template autoplay*(self: VideoStreamPlayer): untyped = self.hasAutoplay()
 template `autoplay=`*(self: VideoStreamPlayer; value) = self.setAutoplay(value)

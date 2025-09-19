@@ -6,9 +6,9 @@ import gdobject; export gdobject
 
 expandOnClassImported(EditorUndoRedoManager, Object)
 
-proc createAction*(self: EditorUndoRedoManager; name: String; mergeMode: UndoRedo_MergeMode = mergeDisable; customContext: Object = default Object; backwardUndoOps: bool = false): void =
-  expandMethodBind(className EditorUndoRedoManager, "create_action", 2107025470)
-  methodbind.ptrcall(self, [getPtr name, getPtr mergeMode, getPtr customContext, getPtr backwardUndoOps])
+proc createAction*(self: EditorUndoRedoManager; name: String; mergeMode: UndoRedo_MergeMode = mergeDisable; customContext: Object = default Object; backwardUndoOps: bool = false; markUnsaved: bool = true): void =
+  expandMethodBind(className EditorUndoRedoManager, "create_action", 796197507)
+  methodbind.ptrcall(self, [getPtr name, getPtr mergeMode, getPtr customContext, getPtr backwardUndoOps, getPtr markUnsaved])
 
 proc commitAction*(self: EditorUndoRedoManager; execute: bool = true): void =
   expandMethodBind(className EditorUndoRedoManager, "commit_action", 3216645846)

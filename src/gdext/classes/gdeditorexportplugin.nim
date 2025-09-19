@@ -126,17 +126,50 @@ proc registerVirtual_getAndroidManifestElementContents*[T: EditorExportPlugin](S
   Self.vmethods[newStringName"_get_android_manifest_element_contents"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlugin](p_instance).getAndroidManifestElementContents(p_args[0].decode(gdref EditorExportPlatform), p_args[1].decode(bool)).encode(r_ret)
 
+method updateAndroidPrebuiltManifest*(self: EditorExportPlugin; platform: gdref EditorExportPlatform; manifestData: PackedByteArray): PackedByteArray {.base.} = (discard)
+proc registerVirtual_updateAndroidPrebuiltManifest*[T: EditorExportPlugin](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_update_android_prebuilt_manifest"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorExportPlugin](p_instance).updateAndroidPrebuiltManifest(p_args[0].decode(gdref EditorExportPlatform), p_args[1].decode(PackedByteArray)).encode(r_ret)
+
 proc addSharedObject*(self: EditorExportPlugin; path: String; tags: PackedStringArray; target: String): void =
   expandMethodBind(className EditorExportPlugin, "add_shared_object", 3098291045)
   methodbind.ptrcall(self, [getPtr path, getPtr tags, getPtr target])
 
-proc addIosProjectStaticLib*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_project_static_lib", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
-
 proc addFile*(self: EditorExportPlugin; path: String; file: PackedByteArray; remap: bool): void =
   expandMethodBind(className EditorExportPlugin, "add_file", 527928637)
   methodbind.ptrcall(self, [getPtr path, getPtr file, getPtr remap])
+
+proc addAppleEmbeddedPlatformProjectStaticLib*(self: EditorExportPlugin; path: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_project_static_lib", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
+
+proc addAppleEmbeddedPlatformFramework*(self: EditorExportPlugin; path: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
+
+proc addAppleEmbeddedPlatformEmbeddedFramework*(self: EditorExportPlugin; path: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_embedded_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
+
+proc addAppleEmbeddedPlatformPlistContent*(self: EditorExportPlugin; plistContent: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_plist_content", 83702148)
+  methodbind.ptrcall(self, [getPtr plistContent])
+
+proc addAppleEmbeddedPlatformLinkerFlags*(self: EditorExportPlugin; flags: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_linker_flags", 83702148)
+  methodbind.ptrcall(self, [getPtr flags])
+
+proc addAppleEmbeddedPlatformBundleFile*(self: EditorExportPlugin; path: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_bundle_file", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
+
+proc addAppleEmbeddedPlatformCppCode*(self: EditorExportPlugin; code: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_cpp_code", 83702148)
+  methodbind.ptrcall(self, [getPtr code])
+
+proc addIosProjectStaticLib*(self: EditorExportPlugin; path: String): void =
+  expandMethodBind(className EditorExportPlugin, "add_ios_project_static_lib", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
 
 proc addIosFramework*(self: EditorExportPlugin; path: String): void =
   expandMethodBind(className EditorExportPlugin, "add_ios_framework", 83702148)

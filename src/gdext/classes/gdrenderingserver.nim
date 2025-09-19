@@ -10,6 +10,8 @@ const NoIndexArray* = -1
 const ArrayWeightsSize* = 4
 const CanvasItemZMin* = -4096
 const CanvasItemZMax* = 4096
+const CanvasLayerMin* = -2147483648
+const CanvasLayerMax* = 2147483647
 const MaxGlowLevels* = 7
 const MaxCursors* = 8
 const Max2DDirectionalLights* = 8
@@ -259,6 +261,12 @@ proc meshSurfaceGetFormatSkinStride*(self: RenderingServer; format: set[Renderin
   methodbind.ptrcall(self, [getPtr format, getPtr vertexCount], addr ret)
   (addr ret).decode_result(uint32)
 
+proc meshSurfaceGetFormatIndexStride*(self: RenderingServer; format: set[RenderingServer_ArrayFormat]; vertexCount: int32): uint32 =
+  expandMethodBind(className RenderingServer, "mesh_surface_get_format_index_stride", 3188363337)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [getPtr format, getPtr vertexCount], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc meshAddSurface*(self: RenderingServer; mesh: RID; surface: Dictionary): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface", 1217542888)
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface])
@@ -345,6 +353,10 @@ proc meshSurfaceUpdateAttributeRegion*(self: RenderingServer; mesh: RID; surface
 
 proc meshSurfaceUpdateSkinRegion*(self: RenderingServer; mesh: RID; surface: int32; offset: int32; data: PackedByteArray): void =
   expandMethodBind(className RenderingServer, "mesh_surface_update_skin_region", 2900195149)
+  methodbind.ptrcall(self, [getPtr mesh, getPtr surface, getPtr offset, getPtr data])
+
+proc meshSurfaceUpdateIndexRegion*(self: RenderingServer; mesh: RID; surface: int32; offset: int32; data: PackedByteArray): void =
+  expandMethodBind(className RenderingServer, "mesh_surface_update_index_region", 2900195149)
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface, getPtr offset, getPtr data])
 
 proc meshSetShadowMesh*(self: RenderingServer; mesh: RID; shadowMesh: RID): void =
@@ -1501,6 +1513,10 @@ proc environmentSetFog*(self: RenderingServer; env: RID; enable: bool; lightColo
   expandMethodBind(className RenderingServer, "environment_set_fog", 105051629)
   methodbind.ptrcall(self, [getPtr env, getPtr enable, getPtr lightColor, getPtr lightEnergy, getPtr sunScatter, getPtr density, getPtr height, getPtr heightDensity, getPtr aerialPerspective, getPtr skyAffect, getPtr fogMode])
 
+proc environmentSetFogDepth*(self: RenderingServer; env: RID; curve: Float; begin: Float; `end`: Float): void =
+  expandMethodBind(className RenderingServer, "environment_set_fog_depth", 157498339)
+  methodbind.ptrcall(self, [getPtr env, getPtr curve, getPtr begin, getPtr `end`])
+
 proc environmentSetSdfgi*(self: RenderingServer; env: RID; enable: bool; cascades: int32; minCellSize: Float; yScale: RenderingServer_EnvironmentSDFGIYScale; useOcclusion: bool; bounceFeedback: Float; readSky: bool; energy: Float; normalBias: Float; probeBias: Float): void =
   expandMethodBind(className RenderingServer, "environment_set_sdfgi", 3519144388)
   methodbind.ptrcall(self, [getPtr env, getPtr enable, getPtr cascades, getPtr minCellSize, getPtr yScale, getPtr useOcclusion, getPtr bounceFeedback, getPtr readSky, getPtr energy, getPtr normalBias, getPtr probeBias])
@@ -1643,14 +1659,6 @@ proc instanceSetTransform*(self: RenderingServer; instance: RID; transform: Tran
   expandMethodBind(className RenderingServer, "instance_set_transform", 3935195649)
   methodbind.ptrcall(self, [getPtr instance, getPtr transform])
 
-proc instanceSetInterpolated*(self: RenderingServer; instance: RID; interpolated: bool): void =
-  expandMethodBind(className RenderingServer, "instance_set_interpolated", 1265174801)
-  methodbind.ptrcall(self, [getPtr instance, getPtr interpolated])
-
-proc instanceResetPhysicsInterpolation*(self: RenderingServer; instance: RID): void =
-  expandMethodBind(className RenderingServer, "instance_reset_physics_interpolation", 2722037293)
-  methodbind.ptrcall(self, [getPtr instance])
-
 proc instanceAttachObjectInstanceId*(self: RenderingServer; instance: RID; id: uint64): void =
   expandMethodBind(className RenderingServer, "instance_attach_object_instance_id", 3411492887)
   methodbind.ptrcall(self, [getPtr instance, getPtr id])
@@ -1670,6 +1678,10 @@ proc instanceSetVisible*(self: RenderingServer; instance: RID; visible: bool): v
 proc instanceGeometrySetTransparency*(self: RenderingServer; instance: RID; transparency: Float): void =
   expandMethodBind(className RenderingServer, "instance_geometry_set_transparency", 1794382983)
   methodbind.ptrcall(self, [getPtr instance, getPtr transparency])
+
+proc instanceTeleport*(self: RenderingServer; instance: RID): void =
+  expandMethodBind(className RenderingServer, "instance_teleport", 2722037293)
+  methodbind.ptrcall(self, [getPtr instance])
 
 proc instanceSetCustomAabb*(self: RenderingServer; instance: RID; aabb: AABB): void =
   expandMethodBind(className RenderingServer, "instance_set_custom_aabb", 3696536120)

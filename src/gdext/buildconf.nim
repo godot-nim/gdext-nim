@@ -465,7 +465,7 @@ proc update(section: Section; updateMethod: UpdateMethod; key, value: string) =
 proc fillupMissingRequirements(setting: BuildSettings) =
   let configuration = setting.extconfig.mgetOrPut("configuration", newSection())
   configuration.update(setting.updateMethod, "entry_symbol", "init_library")
-  configuration.update(setting.updateMethod, "compatibility_minimum", "4.4")
+  configuration.update(setting.updateMethod, "compatibility_minimum", "4.5")
   configuration.update(setting.updateMethod, "reloadable", "true")
 
   let libraries = setting.extconfig.mgetOrPut("libraries", newSection())

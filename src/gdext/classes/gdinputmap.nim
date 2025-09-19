@@ -26,6 +26,12 @@ proc eraseAction*(self: InputMap; action: StringName): void =
   expandMethodBind(className InputMap, "erase_action", 3304788590)
   methodbind.ptrcall(self, [getPtr action])
 
+proc getActionDescription*(self: InputMap; action: StringName): String =
+  expandMethodBind(className InputMap, "get_action_description", 957595536)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr action], addr ret)
+  (addr ret).decode_result(String)
+
 proc actionSetDeadzone*(self: InputMap; action: StringName; deadzone: Float): void =
   expandMethodBind(className InputMap, "action_set_deadzone", 4135858297)
   methodbind.ptrcall(self, [getPtr action, getPtr deadzone])

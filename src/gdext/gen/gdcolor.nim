@@ -1,296 +1,296 @@
 # constant values
 
-const AliceBlue*: Color = color(0.941176, 0.972549, 1, 1)
+const AliceBlue*: Color = color(0.9411765, 0.972549, 1, 1)
 
-const AntiqueWhite*: Color = color(0.980392, 0.921569, 0.843137, 1)
+const AntiqueWhite*: Color = color(0.98039216, 0.92156863, 0.84313726, 1)
 
 const Aqua*: Color = color(0, 1, 1, 1)
 
-const Aquamarine*: Color = color(0.498039, 1, 0.831373, 1)
+const Aquamarine*: Color = color(0.49803922, 1, 0.83137256, 1)
 
-const Azure*: Color = color(0.941176, 1, 1, 1)
+const Azure*: Color = color(0.9411765, 1, 1, 1)
 
-const Beige*: Color = color(0.960784, 0.960784, 0.862745, 1)
+const Beige*: Color = color(0.9607843, 0.9607843, 0.8627451, 1)
 
-const Bisque*: Color = color(1, 0.894118, 0.768627, 1)
+const Bisque*: Color = color(1, 0.89411765, 0.76862746, 1)
 
 const Black*: Color = color(0, 0, 0, 1)
 
-const BlanchedAlmond*: Color = color(1, 0.921569, 0.803922, 1)
+const BlanchedAlmond*: Color = color(1, 0.92156863, 0.8039216, 1)
 
 const Blue*: Color = color(0, 0, 1, 1)
 
-const BlueViolet*: Color = color(0.541176, 0.168627, 0.886275, 1)
+const BlueViolet*: Color = color(0.5411765, 0.16862746, 0.8862745, 1)
 
-const Brown*: Color = color(0.647059, 0.164706, 0.164706, 1)
+const Brown*: Color = color(0.64705884, 0.16470589, 0.16470589, 1)
 
-const Burlywood*: Color = color(0.870588, 0.721569, 0.529412, 1)
+const Burlywood*: Color = color(0.87058824, 0.72156864, 0.5294118, 1)
 
-const CadetBlue*: Color = color(0.372549, 0.619608, 0.627451, 1)
+const CadetBlue*: Color = color(0.37254903, 0.61960787, 0.627451, 1)
 
-const Chartreuse*: Color = color(0.498039, 1, 0, 1)
+const Chartreuse*: Color = color(0.49803922, 1, 0, 1)
 
-const Chocolate*: Color = color(0.823529, 0.411765, 0.117647, 1)
+const Chocolate*: Color = color(0.8235294, 0.4117647, 0.11764706, 1)
 
-const Coral*: Color = color(1, 0.498039, 0.313726, 1)
+const Coral*: Color = color(1, 0.49803922, 0.3137255, 1)
 
-const CornflowerBlue*: Color = color(0.392157, 0.584314, 0.929412, 1)
+const CornflowerBlue*: Color = color(0.39215687, 0.58431375, 0.92941177, 1)
 
-const Cornsilk*: Color = color(1, 0.972549, 0.862745, 1)
+const Cornsilk*: Color = color(1, 0.972549, 0.8627451, 1)
 
-const Crimson*: Color = color(0.862745, 0.0784314, 0.235294, 1)
+const Crimson*: Color = color(0.8627451, 0.078431375, 0.23529412, 1)
 
 const Cyan*: Color = color(0, 1, 1, 1)
 
-const DarkBlue*: Color = color(0, 0, 0.545098, 1)
+const DarkBlue*: Color = color(0, 0, 0.54509807, 1)
 
-const DarkCyan*: Color = color(0, 0.545098, 0.545098, 1)
+const DarkCyan*: Color = color(0, 0.54509807, 0.54509807, 1)
 
-const DarkGoldenrod*: Color = color(0.721569, 0.52549, 0.0431373, 1)
+const DarkGoldenrod*: Color = color(0.72156864, 0.5254902, 0.043137256, 1)
 
-const DarkGray*: Color = color(0.662745, 0.662745, 0.662745, 1)
+const DarkGray*: Color = color(0.6627451, 0.6627451, 0.6627451, 1)
 
-const DarkGreen*: Color = color(0, 0.392157, 0, 1)
+const DarkGreen*: Color = color(0, 0.39215687, 0, 1)
 
-const DarkKhaki*: Color = color(0.741176, 0.717647, 0.419608, 1)
+const DarkKhaki*: Color = color(0.7411765, 0.7176471, 0.41960785, 1)
 
-const DarkMagenta*: Color = color(0.545098, 0, 0.545098, 1)
+const DarkMagenta*: Color = color(0.54509807, 0, 0.54509807, 1)
 
-const DarkOliveGreen*: Color = color(0.333333, 0.419608, 0.184314, 1)
+const DarkOliveGreen*: Color = color(0.33333334, 0.41960785, 0.18431373, 1)
 
-const DarkOrange*: Color = color(1, 0.54902, 0, 1)
+const DarkOrange*: Color = color(1, 0.54901963, 0, 1)
 
-const DarkOrchid*: Color = color(0.6, 0.196078, 0.8, 1)
+const DarkOrchid*: Color = color(0.6, 0.19607843, 0.8, 1)
 
-const DarkRed*: Color = color(0.545098, 0, 0, 1)
+const DarkRed*: Color = color(0.54509807, 0, 0, 1)
 
-const DarkSalmon*: Color = color(0.913725, 0.588235, 0.478431, 1)
+const DarkSalmon*: Color = color(0.9137255, 0.5882353, 0.47843137, 1)
 
-const DarkSeaGreen*: Color = color(0.560784, 0.737255, 0.560784, 1)
+const DarkSeaGreen*: Color = color(0.56078434, 0.7372549, 0.56078434, 1)
 
-const DarkSlateBlue*: Color = color(0.282353, 0.239216, 0.545098, 1)
+const DarkSlateBlue*: Color = color(0.28235295, 0.23921569, 0.54509807, 1)
 
-const DarkSlateGray*: Color = color(0.184314, 0.309804, 0.309804, 1)
+const DarkSlateGray*: Color = color(0.18431373, 0.30980393, 0.30980393, 1)
 
-const DarkTurquoise*: Color = color(0, 0.807843, 0.819608, 1)
+const DarkTurquoise*: Color = color(0, 0.80784315, 0.81960785, 1)
 
-const DarkViolet*: Color = color(0.580392, 0, 0.827451, 1)
+const DarkViolet*: Color = color(0.5803922, 0, 0.827451, 1)
 
-const DeepPink*: Color = color(1, 0.0784314, 0.576471, 1)
+const DeepPink*: Color = color(1, 0.078431375, 0.5764706, 1)
 
-const DeepSkyBlue*: Color = color(0, 0.74902, 1, 1)
+const DeepSkyBlue*: Color = color(0, 0.7490196, 1, 1)
 
-const DimGray*: Color = color(0.411765, 0.411765, 0.411765, 1)
+const DimGray*: Color = color(0.4117647, 0.4117647, 0.4117647, 1)
 
-const DodgerBlue*: Color = color(0.117647, 0.564706, 1, 1)
+const DodgerBlue*: Color = color(0.11764706, 0.5647059, 1, 1)
 
-const Firebrick*: Color = color(0.698039, 0.133333, 0.133333, 1)
+const Firebrick*: Color = color(0.69803923, 0.13333334, 0.13333334, 1)
 
-const FloralWhite*: Color = color(1, 0.980392, 0.941176, 1)
+const FloralWhite*: Color = color(1, 0.98039216, 0.9411765, 1)
 
-const ForestGreen*: Color = color(0.133333, 0.545098, 0.133333, 1)
+const ForestGreen*: Color = color(0.13333334, 0.54509807, 0.13333334, 1)
 
 const Fuchsia*: Color = color(1, 0, 1, 1)
 
-const Gainsboro*: Color = color(0.862745, 0.862745, 0.862745, 1)
+const Gainsboro*: Color = color(0.8627451, 0.8627451, 0.8627451, 1)
 
 const GhostWhite*: Color = color(0.972549, 0.972549, 1, 1)
 
-const Gold*: Color = color(1, 0.843137, 0, 1)
+const Gold*: Color = color(1, 0.84313726, 0, 1)
 
-const Goldenrod*: Color = color(0.854902, 0.647059, 0.12549, 1)
+const Goldenrod*: Color = color(0.85490197, 0.64705884, 0.1254902, 1)
 
-const Gray*: Color = color(0.745098, 0.745098, 0.745098, 1)
+const Gray*: Color = color(0.74509805, 0.74509805, 0.74509805, 1)
 
 const Green*: Color = color(0, 1, 0, 1)
 
-const GreenYellow*: Color = color(0.678431, 1, 0.184314, 1)
+const GreenYellow*: Color = color(0.6784314, 1, 0.18431373, 1)
 
-const Honeydew*: Color = color(0.941176, 1, 0.941176, 1)
+const Honeydew*: Color = color(0.9411765, 1, 0.9411765, 1)
 
-const HotPink*: Color = color(1, 0.411765, 0.705882, 1)
+const HotPink*: Color = color(1, 0.4117647, 0.7058824, 1)
 
-const IndianRed*: Color = color(0.803922, 0.360784, 0.360784, 1)
+const IndianRed*: Color = color(0.8039216, 0.36078432, 0.36078432, 1)
 
-const Indigo*: Color = color(0.294118, 0, 0.509804, 1)
+const Indigo*: Color = color(0.29411766, 0, 0.50980395, 1)
 
-const Ivory*: Color = color(1, 1, 0.941176, 1)
+const Ivory*: Color = color(1, 1, 0.9411765, 1)
 
-const Khaki*: Color = color(0.941176, 0.901961, 0.54902, 1)
+const Khaki*: Color = color(0.9411765, 0.9019608, 0.54901963, 1)
 
-const Lavender*: Color = color(0.901961, 0.901961, 0.980392, 1)
+const Lavender*: Color = color(0.9019608, 0.9019608, 0.98039216, 1)
 
-const LavenderBlush*: Color = color(1, 0.941176, 0.960784, 1)
+const LavenderBlush*: Color = color(1, 0.9411765, 0.9607843, 1)
 
-const LawnGreen*: Color = color(0.486275, 0.988235, 0, 1)
+const LawnGreen*: Color = color(0.4862745, 0.9882353, 0, 1)
 
-const LemonChiffon*: Color = color(1, 0.980392, 0.803922, 1)
+const LemonChiffon*: Color = color(1, 0.98039216, 0.8039216, 1)
 
-const LightBlue*: Color = color(0.678431, 0.847059, 0.901961, 1)
+const LightBlue*: Color = color(0.6784314, 0.84705883, 0.9019608, 1)
 
-const LightCoral*: Color = color(0.941176, 0.501961, 0.501961, 1)
+const LightCoral*: Color = color(0.9411765, 0.5019608, 0.5019608, 1)
 
-const LightCyan*: Color = color(0.878431, 1, 1, 1)
+const LightCyan*: Color = color(0.8784314, 1, 1, 1)
 
-const LightGoldenrod*: Color = color(0.980392, 0.980392, 0.823529, 1)
+const LightGoldenrod*: Color = color(0.98039216, 0.98039216, 0.8235294, 1)
 
 const LightGray*: Color = color(0.827451, 0.827451, 0.827451, 1)
 
-const LightGreen*: Color = color(0.564706, 0.933333, 0.564706, 1)
+const LightGreen*: Color = color(0.5647059, 0.93333334, 0.5647059, 1)
 
-const LightPink*: Color = color(1, 0.713726, 0.756863, 1)
+const LightPink*: Color = color(1, 0.7137255, 0.75686276, 1)
 
-const LightSalmon*: Color = color(1, 0.627451, 0.478431, 1)
+const LightSalmon*: Color = color(1, 0.627451, 0.47843137, 1)
 
-const LightSeaGreen*: Color = color(0.12549, 0.698039, 0.666667, 1)
+const LightSeaGreen*: Color = color(0.1254902, 0.69803923, 0.6666667, 1)
 
-const LightSkyBlue*: Color = color(0.529412, 0.807843, 0.980392, 1)
+const LightSkyBlue*: Color = color(0.5294118, 0.80784315, 0.98039216, 1)
 
-const LightSlateGray*: Color = color(0.466667, 0.533333, 0.6, 1)
+const LightSlateGray*: Color = color(0.46666667, 0.53333336, 0.6, 1)
 
-const LightSteelBlue*: Color = color(0.690196, 0.768627, 0.870588, 1)
+const LightSteelBlue*: Color = color(0.6901961, 0.76862746, 0.87058824, 1)
 
-const LightYellow*: Color = color(1, 1, 0.878431, 1)
+const LightYellow*: Color = color(1, 1, 0.8784314, 1)
 
 const Lime*: Color = color(0, 1, 0, 1)
 
-const LimeGreen*: Color = color(0.196078, 0.803922, 0.196078, 1)
+const LimeGreen*: Color = color(0.19607843, 0.8039216, 0.19607843, 1)
 
-const Linen*: Color = color(0.980392, 0.941176, 0.901961, 1)
+const Linen*: Color = color(0.98039216, 0.9411765, 0.9019608, 1)
 
 const Magenta*: Color = color(1, 0, 1, 1)
 
-const Maroon*: Color = color(0.690196, 0.188235, 0.376471, 1)
+const Maroon*: Color = color(0.6901961, 0.1882353, 0.3764706, 1)
 
-const MediumAquamarine*: Color = color(0.4, 0.803922, 0.666667, 1)
+const MediumAquamarine*: Color = color(0.4, 0.8039216, 0.6666667, 1)
 
-const MediumBlue*: Color = color(0, 0, 0.803922, 1)
+const MediumBlue*: Color = color(0, 0, 0.8039216, 1)
 
-const MediumOrchid*: Color = color(0.729412, 0.333333, 0.827451, 1)
+const MediumOrchid*: Color = color(0.7294118, 0.33333334, 0.827451, 1)
 
-const MediumPurple*: Color = color(0.576471, 0.439216, 0.858824, 1)
+const MediumPurple*: Color = color(0.5764706, 0.4392157, 0.85882354, 1)
 
-const MediumSeaGreen*: Color = color(0.235294, 0.701961, 0.443137, 1)
+const MediumSeaGreen*: Color = color(0.23529412, 0.7019608, 0.44313726, 1)
 
-const MediumSlateBlue*: Color = color(0.482353, 0.407843, 0.933333, 1)
+const MediumSlateBlue*: Color = color(0.48235294, 0.40784314, 0.93333334, 1)
 
-const MediumSpringGreen*: Color = color(0, 0.980392, 0.603922, 1)
+const MediumSpringGreen*: Color = color(0, 0.98039216, 0.6039216, 1)
 
-const MediumTurquoise*: Color = color(0.282353, 0.819608, 0.8, 1)
+const MediumTurquoise*: Color = color(0.28235295, 0.81960785, 0.8, 1)
 
-const MediumVioletRed*: Color = color(0.780392, 0.0823529, 0.521569, 1)
+const MediumVioletRed*: Color = color(0.78039217, 0.08235294, 0.52156866, 1)
 
-const MidnightBlue*: Color = color(0.0980392, 0.0980392, 0.439216, 1)
+const MidnightBlue*: Color = color(0.09803922, 0.09803922, 0.4392157, 1)
 
-const MintCream*: Color = color(0.960784, 1, 0.980392, 1)
+const MintCream*: Color = color(0.9607843, 1, 0.98039216, 1)
 
-const MistyRose*: Color = color(1, 0.894118, 0.882353, 1)
+const MistyRose*: Color = color(1, 0.89411765, 0.88235295, 1)
 
-const Moccasin*: Color = color(1, 0.894118, 0.709804, 1)
+const Moccasin*: Color = color(1, 0.89411765, 0.70980394, 1)
 
-const NavajoWhite*: Color = color(1, 0.870588, 0.678431, 1)
+const NavajoWhite*: Color = color(1, 0.87058824, 0.6784314, 1)
 
-const NavyBlue*: Color = color(0, 0, 0.501961, 1)
+const NavyBlue*: Color = color(0, 0, 0.5019608, 1)
 
-const OldLace*: Color = color(0.992157, 0.960784, 0.901961, 1)
+const OldLace*: Color = color(0.99215686, 0.9607843, 0.9019608, 1)
 
-const Olive*: Color = color(0.501961, 0.501961, 0, 1)
+const Olive*: Color = color(0.5019608, 0.5019608, 0, 1)
 
-const OliveDrab*: Color = color(0.419608, 0.556863, 0.137255, 1)
+const OliveDrab*: Color = color(0.41960785, 0.5568628, 0.13725491, 1)
 
-const Orange*: Color = color(1, 0.647059, 0, 1)
+const Orange*: Color = color(1, 0.64705884, 0, 1)
 
-const OrangeRed*: Color = color(1, 0.270588, 0, 1)
+const OrangeRed*: Color = color(1, 0.27058825, 0, 1)
 
-const Orchid*: Color = color(0.854902, 0.439216, 0.839216, 1)
+const Orchid*: Color = color(0.85490197, 0.4392157, 0.8392157, 1)
 
-const PaleGoldenrod*: Color = color(0.933333, 0.909804, 0.666667, 1)
+const PaleGoldenrod*: Color = color(0.93333334, 0.9098039, 0.6666667, 1)
 
-const PaleGreen*: Color = color(0.596078, 0.984314, 0.596078, 1)
+const PaleGreen*: Color = color(0.59607846, 0.9843137, 0.59607846, 1)
 
-const PaleTurquoise*: Color = color(0.686275, 0.933333, 0.933333, 1)
+const PaleTurquoise*: Color = color(0.6862745, 0.93333334, 0.93333334, 1)
 
-const PaleVioletRed*: Color = color(0.858824, 0.439216, 0.576471, 1)
+const PaleVioletRed*: Color = color(0.85882354, 0.4392157, 0.5764706, 1)
 
-const PapayaWhip*: Color = color(1, 0.937255, 0.835294, 1)
+const PapayaWhip*: Color = color(1, 0.9372549, 0.8352941, 1)
 
-const PeachPuff*: Color = color(1, 0.854902, 0.72549, 1)
+const PeachPuff*: Color = color(1, 0.85490197, 0.7254902, 1)
 
-const Peru*: Color = color(0.803922, 0.521569, 0.247059, 1)
+const Peru*: Color = color(0.8039216, 0.52156866, 0.24705882, 1)
 
-const Pink*: Color = color(1, 0.752941, 0.796078, 1)
+const Pink*: Color = color(1, 0.7529412, 0.79607844, 1)
 
-const Plum*: Color = color(0.866667, 0.627451, 0.866667, 1)
+const Plum*: Color = color(0.8666667, 0.627451, 0.8666667, 1)
 
-const PowderBlue*: Color = color(0.690196, 0.878431, 0.901961, 1)
+const PowderBlue*: Color = color(0.6901961, 0.8784314, 0.9019608, 1)
 
-const Purple*: Color = color(0.627451, 0.12549, 0.941176, 1)
+const Purple*: Color = color(0.627451, 0.1254902, 0.9411765, 1)
 
 const RebeccaPurple*: Color = color(0.4, 0.2, 0.6, 1)
 
 const Red*: Color = color(1, 0, 0, 1)
 
-const RosyBrown*: Color = color(0.737255, 0.560784, 0.560784, 1)
+const RosyBrown*: Color = color(0.7372549, 0.56078434, 0.56078434, 1)
 
-const RoyalBlue*: Color = color(0.254902, 0.411765, 0.882353, 1)
+const RoyalBlue*: Color = color(0.25490198, 0.4117647, 0.88235295, 1)
 
-const SaddleBrown*: Color = color(0.545098, 0.270588, 0.0745098, 1)
+const SaddleBrown*: Color = color(0.54509807, 0.27058825, 0.07450981, 1)
 
-const Salmon*: Color = color(0.980392, 0.501961, 0.447059, 1)
+const Salmon*: Color = color(0.98039216, 0.5019608, 0.44705883, 1)
 
-const SandyBrown*: Color = color(0.956863, 0.643137, 0.376471, 1)
+const SandyBrown*: Color = color(0.95686275, 0.6431373, 0.3764706, 1)
 
-const SeaGreen*: Color = color(0.180392, 0.545098, 0.341176, 1)
+const SeaGreen*: Color = color(0.18039216, 0.54509807, 0.34117648, 1)
 
-const Seashell*: Color = color(1, 0.960784, 0.933333, 1)
+const Seashell*: Color = color(1, 0.9607843, 0.93333334, 1)
 
-const Sienna*: Color = color(0.627451, 0.321569, 0.176471, 1)
+const Sienna*: Color = color(0.627451, 0.32156864, 0.1764706, 1)
 
-const Silver*: Color = color(0.752941, 0.752941, 0.752941, 1)
+const Silver*: Color = color(0.7529412, 0.7529412, 0.7529412, 1)
 
-const SkyBlue*: Color = color(0.529412, 0.807843, 0.921569, 1)
+const SkyBlue*: Color = color(0.5294118, 0.80784315, 0.92156863, 1)
 
-const SlateBlue*: Color = color(0.415686, 0.352941, 0.803922, 1)
+const SlateBlue*: Color = color(0.41568628, 0.3529412, 0.8039216, 1)
 
-const SlateGray*: Color = color(0.439216, 0.501961, 0.564706, 1)
+const SlateGray*: Color = color(0.4392157, 0.5019608, 0.5647059, 1)
 
-const Snow*: Color = color(1, 0.980392, 0.980392, 1)
+const Snow*: Color = color(1, 0.98039216, 0.98039216, 1)
 
-const SpringGreen*: Color = color(0, 1, 0.498039, 1)
+const SpringGreen*: Color = color(0, 1, 0.49803922, 1)
 
-const SteelBlue*: Color = color(0.27451, 0.509804, 0.705882, 1)
+const SteelBlue*: Color = color(0.27450982, 0.50980395, 0.7058824, 1)
 
-const Tan*: Color = color(0.823529, 0.705882, 0.54902, 1)
+const Tan*: Color = color(0.8235294, 0.7058824, 0.54901963, 1)
 
-const Teal*: Color = color(0, 0.501961, 0.501961, 1)
+const Teal*: Color = color(0, 0.5019608, 0.5019608, 1)
 
-const Thistle*: Color = color(0.847059, 0.74902, 0.847059, 1)
+const Thistle*: Color = color(0.84705883, 0.7490196, 0.84705883, 1)
 
-const Tomato*: Color = color(1, 0.388235, 0.278431, 1)
+const Tomato*: Color = color(1, 0.3882353, 0.2784314, 1)
 
 const Transparent*: Color = color(1, 1, 1, 0)
 
-const Turquoise*: Color = color(0.25098, 0.878431, 0.815686, 1)
+const Turquoise*: Color = color(0.2509804, 0.8784314, 0.8156863, 1)
 
-const Violet*: Color = color(0.933333, 0.509804, 0.933333, 1)
+const Violet*: Color = color(0.93333334, 0.50980395, 0.93333334, 1)
 
-const WebGray*: Color = color(0.501961, 0.501961, 0.501961, 1)
+const WebGray*: Color = color(0.5019608, 0.5019608, 0.5019608, 1)
 
-const WebGreen*: Color = color(0, 0.501961, 0, 1)
+const WebGreen*: Color = color(0, 0.5019608, 0, 1)
 
-const WebMaroon*: Color = color(0.501961, 0, 0, 1)
+const WebMaroon*: Color = color(0.5019608, 0, 0, 1)
 
-const WebPurple*: Color = color(0.501961, 0, 0.501961, 1)
+const WebPurple*: Color = color(0.5019608, 0, 0.5019608, 1)
 
-const Wheat*: Color = color(0.960784, 0.870588, 0.701961, 1)
+const Wheat*: Color = color(0.9607843, 0.87058824, 0.7019608, 1)
 
 const White*: Color = color(1, 1, 1, 1)
 
-const WhiteSmoke*: Color = color(0.960784, 0.960784, 0.960784, 1)
+const WhiteSmoke*: Color = color(0.9607843, 0.9607843, 0.9607843, 1)
 
 const Yellow*: Color = color(1, 1, 0, 1)
 
-const YellowGreen*: Color = color(0.603922, 0.803922, 0.196078, 1)
+const YellowGreen*: Color = color(0.6039216, 0.8039216, 0.19607843, 1)
 
 # `==(Color Variant)`
 # `!=(Color Variant)`

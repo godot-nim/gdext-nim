@@ -151,6 +151,26 @@ proc registerVirtual_isSleeping*[T: PhysicsDirectBodyState2DExtension](Self: typ
   Self.vmethods[newStringName"_is_sleeping"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsDirectBodyState2DExtension](p_instance).isSleeping().encode(r_ret)
 
+method setCollisionLayer*(self: PhysicsDirectBodyState2DExtension; layer: uint32): void {.base.} = (discard)
+proc registerVirtual_setCollisionLayer*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_set_collision_layer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState2DExtension](p_instance).setCollisionLayer(p_args[0].decode(uint32))
+
+method getCollisionLayer*(self: PhysicsDirectBodyState2DExtension): uint32 {.base.} = (discard)
+proc registerVirtual_getCollisionLayer*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_collision_layer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState2DExtension](p_instance).getCollisionLayer().encode(r_ret)
+
+method setCollisionMask*(self: PhysicsDirectBodyState2DExtension; mask: uint32): void {.base.} = (discard)
+proc registerVirtual_setCollisionMask*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_set_collision_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState2DExtension](p_instance).setCollisionMask(p_args[0].decode(uint32))
+
+method getCollisionMask*(self: PhysicsDirectBodyState2DExtension): uint32 {.base.} = (discard)
+proc registerVirtual_getCollisionMask*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_collision_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsDirectBodyState2DExtension](p_instance).getCollisionMask().encode(r_ret)
+
 method getContactCount*(self: PhysicsDirectBodyState2DExtension): int32 {.base.} = (discard)
 proc registerVirtual_getContactCount*[T: PhysicsDirectBodyState2DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_contact_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

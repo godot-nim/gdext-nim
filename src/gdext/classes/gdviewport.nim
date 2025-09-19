@@ -156,6 +156,32 @@ proc getDebugDraw*(self: Viewport): Viewport_DebugDraw =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Viewport_DebugDraw)
 
+proc setUseOversampling*(self: Viewport; enable: bool): void =
+  expandMethodBind(className Viewport, "set_use_oversampling", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isUsingOversampling*(self: Viewport): bool =
+  expandMethodBind(className Viewport, "is_using_oversampling", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setOversamplingOverride*(self: Viewport; oversampling: Float): void =
+  expandMethodBind(className Viewport, "set_oversampling_override", 373806689)
+  methodbind.ptrcall(self, [getPtr oversampling])
+
+proc getOversamplingOverride*(self: Viewport): Float =
+  expandMethodBind(className Viewport, "get_oversampling_override", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getOversampling*(self: Viewport): Float =
+  expandMethodBind(className Viewport, "get_oversampling", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getRenderInfo*(self: Viewport; `type`: Viewport_RenderInfoType; info: Viewport_RenderInfo): int32 =
   expandMethodBind(className Viewport, "get_render_info", 481977019)
   var ret: encoded int32
@@ -247,6 +273,16 @@ proc guiGetDragData*(self: Viewport): Variant =
   var ret: encoded Variant
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Variant)
+
+proc guiGetDragDescription*(self: Viewport): String =
+  expandMethodBind(className Viewport, "gui_get_drag_description", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc guiSetDragDescription*(self: Viewport; description: String): void =
+  expandMethodBind(className Viewport, "gui_set_drag_description", 83702148)
+  methodbind.ptrcall(self, [getPtr description])
 
 proc guiIsDragging*(self: Viewport): bool =
   expandMethodBind(className Viewport, "gui_is_dragging", 36873697)
@@ -762,3 +798,9 @@ template `globalCanvasTransform=`*(self: Viewport; value) = self.setGlobalCanvas
 
 template canvasCullMask*(self: Viewport): untyped = self.getCanvasCullMask()
 template `canvasCullMask=`*(self: Viewport; value) = self.setCanvasCullMask(value)
+
+template oversampling*(self: Viewport): untyped = self.isUsingOversampling()
+template `oversampling=`*(self: Viewport; value) = self.setUseOversampling(value)
+
+template oversamplingOverride*(self: Viewport): untyped = self.getOversamplingOverride()
+template `oversamplingOverride=`*(self: Viewport; value) = self.setOversamplingOverride(value)

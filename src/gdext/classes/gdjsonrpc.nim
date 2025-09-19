@@ -6,9 +6,9 @@ import gdobject; export gdobject
 
 expandOnClassImported(JSONRPC, Object)
 
-proc setScope*(self: JSONRPC; scope: String; target: Object): void =
-  expandMethodBind(className JSONRPC, "set_scope", 2572618360)
-  methodbind.ptrcall(self, [getPtr scope, getPtr target])
+proc setMethod*(self: JSONRPC; name: String; callback: Callable): void =
+  expandMethodBind(className JSONRPC, "set_method", 2137474292)
+  methodbind.ptrcall(self, [getPtr name, getPtr callback])
 
 proc processAction*(self: JSONRPC; action: Variant; recurse: bool = false): Variant =
   expandMethodBind(className JSONRPC, "process_action", 2963479484)

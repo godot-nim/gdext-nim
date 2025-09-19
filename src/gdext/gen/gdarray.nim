@@ -57,6 +57,7 @@ var `bsearch(Array Variant bool)`: PtrBuiltinMethod
 var `bsearchCustom(Array Variant Callable bool)`: PtrBuiltinMethod
 var `reverse(Array)`: PtrBuiltinMethod
 var `duplicate(Array bool)`: PtrBuiltinMethod
+var `duplicateDeep(Array Int)`: PtrBuiltinMethod
 var `slice(Array Int Int Int bool)`: PtrBuiltinMethod
 var `filter(Array Callable)`: PtrBuiltinMethod
 var `map(Array Callable)`: PtrBuiltinMethod
@@ -259,6 +260,14 @@ proc duplicate*(self: Array; deep: bool = false): Array =
   nilCheck self
   let argArr = [getPtr deep]
   `duplicate(Array bool)`(addr self, addr argArr[0], addr result, 1)
+proc duplicateDeep*(self: var Array; deepSubresourcesMode: Int = 1): Array =
+  nilCheck self
+  let argArr = [getPtr deepSubresourcesMode]
+  `duplicateDeep(Array Int)`(addr self, addr argArr[0], addr result, 1)
+proc duplicateDeep*(self: Array; deepSubresourcesMode: Int = 1): Array =
+  nilCheck self
+  let argArr = [getPtr deepSubresourcesMode]
+  `duplicateDeep(Array Int)`(addr self, addr argArr[0], addr result, 1)
 proc slice*(self: var Array; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array =
   nilCheck self
   let argArr = [getPtr begin, getPtr `end`, getPtr step, getPtr deep]
@@ -397,6 +406,7 @@ proc load_Array_methods {.execon: staticevents.init_engine.on_load_builtinclassM
   `bsearchCustom(Array Variant Callable bool)` = load(VariantType_Array, "bsearch_custom", 161317131)
   `reverse(Array)` = load(VariantType_Array, "reverse", 3218959716)
   `duplicate(Array bool)` = load(VariantType_Array, "duplicate", 636440122)
+  `duplicateDeep(Array Int)` = load(VariantType_Array, "duplicate_deep", 1949240801)
   `slice(Array Int Int Int bool)` = load(VariantType_Array, "slice", 1393718243)
   `filter(Array Callable)` = load(VariantType_Array, "filter", 4075186556)
   `map(Array Callable)` = load(VariantType_Array, "map", 4075186556)

@@ -59,3 +59,7 @@ proc gotoHelp*(self: ScriptEditor; topic: String): void =
 proc updateDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
   expandMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
   methodbind.ptrcall(self, [getPtr script])
+
+proc clearDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
+  expandMethodBind(className ScriptEditor, "clear_docs_from_script", 3657522847)
+  methodbind.ptrcall(self, [getPtr script])

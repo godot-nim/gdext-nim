@@ -246,6 +246,12 @@ proc getOpenScenes*(self: EditorInterface): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
+proc getOpenSceneRoots*(self: EditorInterface): TypedArray[Node] =
+  expandMethodBind(className EditorInterface, "get_open_scene_roots", 3995934104)
+  var ret: encoded TypedArray[Node]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[Node])
+
 proc getEditedSceneRoot*(self: EditorInterface): Node =
   expandMethodBind(className EditorInterface, "get_edited_scene_root", 3160264692)
   var ret: encoded Node
@@ -265,6 +271,12 @@ proc saveSceneAs*(self: EditorInterface; path: String; withPreview: bool = true)
 proc saveAllScenes*(self: EditorInterface): void =
   expandMethodBind(className EditorInterface, "save_all_scenes", 3218959716)
   methodbind.ptrcall(self, [])
+
+proc closeScene*(self: EditorInterface): Error =
+  expandMethodBind(className EditorInterface, "close_scene", 166280745)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Error)
 
 proc markSceneAsUnsaved*(self: EditorInterface): void =
   expandMethodBind(className EditorInterface, "mark_scene_as_unsaved", 3218959716)

@@ -36,6 +36,7 @@ var `duplicate(PackedColorArray)`: PtrBuiltinMethod
 var `find(PackedColorArray Color Int)`: PtrBuiltinMethod
 var `rfind(PackedColorArray Color Int)`: PtrBuiltinMethod
 var `count(PackedColorArray Color)`: PtrBuiltinMethod
+var `erase(PackedColorArray Color)`: PtrBuiltinMethod
 
 proc get*(self: PackedColorArray; index: Int): Color =
   let argArr = [getPtr index]
@@ -96,6 +97,9 @@ proc rfind*(self: PackedColorArray; value: Color; `from`: Int = -1): Int =
 proc count*(self: PackedColorArray; value: Color): Int =
   let argArr = [getPtr value]
   `count(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
+proc erase*(self: var PackedColorArray; value: Color): bool =
+  let argArr = [getPtr value]
+  `erase(PackedColorArray Color)`(addr self, addr argArr[0], addr result, 1)
 
 proc load_PackedColorArray_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedColorArray Int)` = load(VariantType_PackedColorArray, "get", 2972831132)
@@ -120,3 +124,4 @@ proc load_PackedColorArray_methods {.execon: staticevents.init_engine.on_load_bu
   `find(PackedColorArray Color Int)` = load(VariantType_PackedColorArray, "find", 3156095363)
   `rfind(PackedColorArray Color Int)` = load(VariantType_PackedColorArray, "rfind", 3156095363)
   `count(PackedColorArray Color)` = load(VariantType_PackedColorArray, "count", 1682108616)
+  `erase(PackedColorArray Color)` = load(VariantType_PackedColorArray, "erase", 1007858200)

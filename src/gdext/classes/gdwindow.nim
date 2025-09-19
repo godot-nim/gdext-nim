@@ -24,12 +24,6 @@ proc getTitle*(self: Window): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getWindowId*(self: Window): int32 =
-  expandMethodBind(className Window, "get_window_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
-
 proc setInitialPosition*(self: Window; initialPosition: Window_WindowInitialPosition): void =
   expandMethodBind(className Window, "set_initial_position", 4084468099)
   methodbind.ptrcall(self, [getPtr initialPosition])
@@ -310,16 +304,6 @@ proc getContentScaleFactor*(self: Window): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc setUseFontOversampling*(self: Window; enable: bool): void =
-  expandMethodBind(className Window, "set_use_font_oversampling", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
-
-proc isUsingFontOversampling*(self: Window): bool =
-  expandMethodBind(className Window, "is_using_font_oversampling", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
-
 proc setMousePassthroughPolygon*(self: Window; polygon: PackedVector2Array): void =
   expandMethodBind(className Window, "set_mouse_passthrough_polygon", 1509147220)
   methodbind.ptrcall(self, [getPtr polygon])
@@ -546,6 +530,38 @@ proc getThemeDefaultFontSize*(self: Window): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc getWindowId*(self: Window): int32 =
+  expandMethodBind(className Window, "get_window_id", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc setAccessibilityName*(self: Window; name: String): void =
+  expandMethodBind(className Window, "set_accessibility_name", 83702148)
+  methodbind.ptrcall(self, [getPtr name])
+
+proc getAccessibilityName*(self: Window): String =
+  expandMethodBind(className Window, "get_accessibility_name", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc setAccessibilityDescription*(self: Window; description: String): void =
+  expandMethodBind(className Window, "set_accessibility_description", 83702148)
+  methodbind.ptrcall(self, [getPtr description])
+
+proc getAccessibilityDescription*(self: Window): String =
+  expandMethodBind(className Window, "get_accessibility_description", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getFocusedWindow*(_: typedesc[Window]): Window =
+  expandMethodBind(className Window, "get_focused_window", 1835468782)
+  var ret: encoded Window
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(Window)
+
 proc setLayoutDirection*(self: Window; direction: Window_LayoutDirection): void =
   expandMethodBind(className Window, "set_layout_direction", 3094704184)
   methodbind.ptrcall(self, [getPtr direction])
@@ -568,6 +584,16 @@ proc setAutoTranslate*(self: Window; enable: bool): void =
 
 proc isAutoTranslating*(self: Window): bool =
   expandMethodBind(className Window, "is_auto_translating", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setUseFontOversampling*(self: Window; enable: bool): void =
+  expandMethodBind(className Window, "set_use_font_oversampling", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isUsingFontOversampling*(self: Window): bool =
+  expandMethodBind(className Window, "is_using_font_oversampling", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -678,6 +704,15 @@ template `sharpCorners=`*(self: Window; value) = self.setFlag(Window_Flags(8), v
 template excludeFromCapture*(self: Window): untyped = self.getFlag(Window_Flags(9))
 template `excludeFromCapture=`*(self: Window; value) = self.setFlag(Window_Flags(9), value)
 
+template popupWmHint*(self: Window): untyped = self.getFlag(Window_Flags(10))
+template `popupWmHint=`*(self: Window; value) = self.setFlag(Window_Flags(10), value)
+
+template minimizeDisabled*(self: Window): untyped = self.getFlag(Window_Flags(11))
+template `minimizeDisabled=`*(self: Window; value) = self.setFlag(Window_Flags(11), value)
+
+template maximizeDisabled*(self: Window): untyped = self.getFlag(Window_Flags(12))
+template `maximizeDisabled=`*(self: Window; value) = self.setFlag(Window_Flags(12), value)
+
 template forceNative*(self: Window): untyped = self.getForceNative()
 template `forceNative=`*(self: Window; value) = self.setForceNative(value)
 
@@ -707,6 +742,12 @@ template `contentScaleFactor=`*(self: Window; value) = self.setContentScaleFacto
 
 template autoTranslate*(self: Window): untyped = self.isAutoTranslating()
 template `autoTranslate=`*(self: Window; value) = self.setAutoTranslate(value)
+
+template accessibilityName*(self: Window): untyped = self.getAccessibilityName()
+template `accessibilityName=`*(self: Window; value) = self.setAccessibilityName(value)
+
+template accessibilityDescription*(self: Window): untyped = self.getAccessibilityDescription()
+template `accessibilityDescription=`*(self: Window; value) = self.setAccessibilityDescription(value)
 
 template theme*(self: Window): untyped = self.getTheme()
 template `theme=`*(self: Window; value) = self.setTheme(value)

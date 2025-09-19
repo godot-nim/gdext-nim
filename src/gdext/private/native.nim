@@ -25,7 +25,7 @@ type
   ExtentEnvironment* = ref object
     getProcAddress*: InterfaceGetProcAddress
     library*: ClassLibraryPtr
-    version*: GodotVersion
+    version*: GodotVersion2
 
 var
   environment*: ExtentEnvironment
@@ -45,7 +45,7 @@ proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
   environment.getProcAddress = getProcAddress
   environment.library = library
   loadApi(environment.getProcAddress)
-  interfaceGetGodotVersion(addr environment.version)
+  interfaceGetGodotVersion2(addr environment.version)
 
   for i in (VariantType_Nil.succ)..Variant_Type.high:
     variantFromType[i] = interface_getVariantFromTypeConstructor(Variant_Type i)
@@ -105,14 +105,14 @@ proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
 
   interfaceStringNameNewWithLatin1Chars(addr MethodName, "reference", false)
   RefCounted_reference = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 2240911060)
-  typeDestructor[VariantType_String](addr MethodName)
+  typeDestructor[VariantType_StringName](addr MethodName)
 
   interfaceStringNameNewWithLatin1Chars(addr MethodName, "unreference", false)
   RefCounted_unreference = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 2240911060)
-  typeDestructor[VariantType_String](addr MethodName)
+  typeDestructor[VariantType_StringName](addr MethodName)
 
   interfaceStringNameNewWithLatin1Chars(addr MethodName, "get_reference_count", false)
   RefCounted_get_reference_count = interface_ClassDB_getMethodBind(addr ClassName, addr MethodName, 3905245786)
-  typeDestructor[VariantType_String](addr MethodName)
+  typeDestructor[VariantType_StringName](addr MethodName)
 
-  typeDestructor[VariantType_String](addr ClassName)
+  typeDestructor[VariantType_StringName](addr ClassName)

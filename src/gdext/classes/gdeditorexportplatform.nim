@@ -158,8 +158,8 @@ proc getInternalExportFiles*(self: EditorExportPlatform; preset: gdref EditorExp
   methodbind.ptrcall(self, [getPtr preset, getPtr debug], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getForcedExportFiles*(_: typedesc[EditorExportPlatform]): PackedStringArray =
-  expandMethodBind(className EditorExportPlatform, "get_forced_export_files", 2981934095)
+proc getForcedExportFiles*(_: typedesc[EditorExportPlatform]; preset: gdref EditorExportPreset = default gdref EditorExportPreset): PackedStringArray =
+  expandMethodBind(className EditorExportPlatform, "get_forced_export_files", 1939331020)
   var ret: encoded PackedStringArray
-  methodbind.ptrcall([], addr ret)
+  methodbind.ptrcall([getPtr preset], addr ret)
   (addr ret).decode_result(PackedStringArray)

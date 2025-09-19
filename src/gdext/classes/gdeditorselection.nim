@@ -24,6 +24,12 @@ proc getSelectedNodes*(self: EditorSelection): TypedArray[Node] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TypedArray[Node])
 
+proc getTopSelectedNodes*(self: EditorSelection): TypedArray[Node] =
+  expandMethodBind(className EditorSelection, "get_top_selected_nodes", 2915620761)
+  var ret: encoded TypedArray[Node]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TypedArray[Node])
+
 proc getTransformableSelectedNodes*(self: EditorSelection): TypedArray[Node] =
   expandMethodBind(className EditorSelection, "get_transformable_selected_nodes", 2915620761)
   var ret: encoded TypedArray[Node]

@@ -85,16 +85,6 @@ proc getNodeConnections*(self: VisualShader; `type`: VisualShader_Type): TypedAr
   methodbind.ptrcall(self, [getPtr `type`], addr ret)
   (addr ret).decode_result(TypedArray[Dictionary])
 
-proc setGraphOffset*(self: VisualShader; offset: Vector2): void =
-  expandMethodBind(className VisualShader, "set_graph_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
-
-proc getGraphOffset*(self: VisualShader): Vector2 =
-  expandMethodBind(className VisualShader, "get_graph_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
-
 proc attachNodeToFrame*(self: VisualShader; `type`: VisualShader_Type; id: int32; frame: int32): void =
   expandMethodBind(className VisualShader, "attach_node_to_frame", 2479945279)
   methodbind.ptrcall(self, [getPtr `type`, getPtr id, getPtr frame])
@@ -116,6 +106,16 @@ proc hasVarying*(self: VisualShader; name: String): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
+
+proc setGraphOffset*(self: VisualShader; offset: Vector2): void =
+  expandMethodBind(className VisualShader, "set_graph_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset])
+
+proc getGraphOffset*(self: VisualShader): Vector2 =
+  expandMethodBind(className VisualShader, "get_graph_offset", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
 
 template graphOffset*(self: VisualShader): untyped = self.getGraphOffset()
 template `graphOffset=`*(self: VisualShader; value) = self.setGraphOffset(value)

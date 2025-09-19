@@ -86,6 +86,16 @@ proc getAutowrapMode*(self: Label): TextServer_AutowrapMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_AutowrapMode)
 
+proc setAutowrapTrimFlags*(self: Label; autowrapTrimFlags: set[TextServer_LineBreakFlag]): void =
+  expandMethodBind(className Label, "set_autowrap_trim_flags", 2809697122)
+  methodbind.ptrcall(self, [getPtr autowrapTrimFlags])
+
+proc getAutowrapTrimFlags*(self: Label): set[TextServer_LineBreakFlag] =
+  expandMethodBind(className Label, "get_autowrap_trim_flags", 2340632602)
+  var ret: encoded set[TextServer_LineBreakFlag]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(set[TextServer_LineBreakFlag])
+
 proc setJustificationFlags*(self: Label; justificationFlags: set[TextServer_JustificationFlag]): void =
   expandMethodBind(className Label, "set_justification_flags", 2877345813)
   methodbind.ptrcall(self, [getPtr justificationFlags])
@@ -260,6 +270,9 @@ template `verticalAlignment=`*(self: Label; value) = self.setVerticalAlignment(v
 
 template autowrapMode*(self: Label): untyped = self.getAutowrapMode()
 template `autowrapMode=`*(self: Label; value) = self.setAutowrapMode(value)
+
+template autowrapTrimFlags*(self: Label): untyped = self.getAutowrapTrimFlags()
+template `autowrapTrimFlags=`*(self: Label; value) = self.setAutowrapTrimFlags(value)
 
 template justificationFlags*(self: Label): untyped = self.getJustificationFlags()
 template `justificationFlags=`*(self: Label; value) = self.setJustificationFlags(value)

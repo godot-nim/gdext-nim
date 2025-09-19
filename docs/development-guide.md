@@ -49,7 +49,7 @@ Afterward, depending on your interest, continue with other resources such as “
 
 ### Mandatory:
 
-- **Godot**: >= 4.4.0  
+- **Godot**: >= 4.5.0  
 - **Nim**: >= 2.0.12  
 - **gdext-nim**  
 - **C Compiler**  

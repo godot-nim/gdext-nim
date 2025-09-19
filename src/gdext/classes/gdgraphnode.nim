@@ -139,6 +139,16 @@ proc isIgnoringValidConnectionType*(self: GraphNode): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setSlotsFocusMode*(self: GraphNode; focusMode: Control_FocusMode): void =
+  expandMethodBind(className GraphNode, "set_slots_focus_mode", 3232914922)
+  methodbind.ptrcall(self, [getPtr focusMode])
+
+proc getSlotsFocusMode*(self: GraphNode): Control_FocusMode =
+  expandMethodBind(className GraphNode, "get_slots_focus_mode", 2132829277)
+  var ret: encoded Control_FocusMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control_FocusMode)
+
 proc getInputPortCount*(self: GraphNode): int32 =
   expandMethodBind(className GraphNode, "get_input_port_count", 2455072627)
   var ret: encoded int32
@@ -204,3 +214,6 @@ template `title=`*(self: GraphNode; value) = self.setTitle(value)
 
 template ignoreInvalidConnectionType*(self: GraphNode): untyped = self.isIgnoringValidConnectionType()
 template `ignoreInvalidConnectionType=`*(self: GraphNode; value) = self.setIgnoreInvalidConnectionType(value)
+
+template slotsFocusMode*(self: GraphNode): untyped = self.getSlotsFocusMode()
+template `slotsFocusMode=`*(self: GraphNode; value) = self.setSlotsFocusMode(value)

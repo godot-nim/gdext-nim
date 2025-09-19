@@ -88,6 +88,10 @@ proc isRunning*(self: OpenXRAPIExtension): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setCustomPlaySpace*(self: OpenXRAPIExtension; space: pointer): void =
+  expandMethodBind(className OpenXRAPIExtension, "set_custom_play_space", 1286410249)
+  methodbind.ptrcall(self, [getPtr space])
+
 proc getPlaySpace*(self: OpenXRAPIExtension): uint64 =
   expandMethodBind(className OpenXRAPIExtension, "get_play_space", 2455072627)
   var ret: encoded uint64
@@ -130,20 +134,28 @@ proc getHandTracker*(self: OpenXRAPIExtension; handIndex: int32): uint64 =
   methodbind.ptrcall(self, [getPtr handIndex], addr ret)
   (addr ret).decode_result(uint64)
 
-proc registerCompositionLayerProvider*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
-  expandMethodBind(className OpenXRAPIExtension, "register_composition_layer_provider", 1997997368)
+proc registerCompositionLayerProvider*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "register_composition_layer_provider", 1477360496)
   methodbind.ptrcall(self, [getPtr extension])
 
-proc unregisterCompositionLayerProvider*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
-  expandMethodBind(className OpenXRAPIExtension, "unregister_composition_layer_provider", 1997997368)
+proc unregisterCompositionLayerProvider*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "unregister_composition_layer_provider", 1477360496)
   methodbind.ptrcall(self, [getPtr extension])
 
-proc registerProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
-  expandMethodBind(className OpenXRAPIExtension, "register_projection_views_extension", 1997997368)
+proc registerProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "register_projection_views_extension", 1477360496)
   methodbind.ptrcall(self, [getPtr extension])
 
-proc unregisterProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapperExtension): void =
-  expandMethodBind(className OpenXRAPIExtension, "unregister_projection_views_extension", 1997997368)
+proc unregisterProjectionViewsExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "unregister_projection_views_extension", 1477360496)
+  methodbind.ptrcall(self, [getPtr extension])
+
+proc registerFrameInfoExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "register_frame_info_extension", 1477360496)
+  methodbind.ptrcall(self, [getPtr extension])
+
+proc unregisterFrameInfoExtension*(self: OpenXRAPIExtension; extension: OpenXRExtensionWrapper): void =
+  expandMethodBind(className OpenXRAPIExtension, "unregister_frame_info_extension", 1477360496)
   methodbind.ptrcall(self, [getPtr extension])
 
 proc getRenderStateZNear*(self: OpenXRAPIExtension): float64 =

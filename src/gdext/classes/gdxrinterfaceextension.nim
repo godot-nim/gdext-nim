@@ -86,6 +86,11 @@ proc registerVirtual_getVrsTexture*[T: XRInterfaceExtension](Self: typedesc[T]) 
   Self.vmethods[newStringName"_get_vrs_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).getVrsTexture().encode(r_ret)
 
+method getVrsTextureFormat*(self: XRInterfaceExtension): XRInterface_VRSTextureFormat {.base.} = (discard)
+proc registerVirtual_getVrsTextureFormat*[T: XRInterfaceExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_vrs_texture_format"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[XRInterfaceExtension](p_instance).getVrsTextureFormat().encode(r_ret)
+
 method process*(self: XRInterfaceExtension): void {.base.} = (discard)
 proc registerVirtual_process*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_process"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =

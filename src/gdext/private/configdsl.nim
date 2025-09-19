@@ -130,7 +130,7 @@ when isMainModule:
   config.eval:
     # ignore those!
     entry_symbol = "init_library"
-    compatibility_minimum = 4.4
+    compatibility_minimum = 4.5
     reloadable = true
     linux.debug = &"res://nim/lib/linux/debug/lib{bin}.so"
     # comment
@@ -138,7 +138,7 @@ when isMainModule:
     [configuration]
 
     entry_symbol = "init_library"
-    compatibility_minimum = 4.4
+    compatibility_minimum = 4.5
     reloadable = true
 
     [libraries]
@@ -155,7 +155,7 @@ when isMainModule:
 [configuration]
 
 entry_symbol = "init_library"
-compatibility_minimum = 4.4
+compatibility_minimum = 4.5
 reloadable = true
 
 [libraries]

@@ -676,6 +676,16 @@ proc registerVirtual_softBodyGetLinearStiffness*[T: PhysicsServer3DExtension](Se
   Self.vmethods[newStringName"_soft_body_get_linear_stiffness"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).softBodyGetLinearStiffness(p_args[0].decode(RID)).encode(r_ret)
 
+method softBodySetShrinkingFactor*(self: PhysicsServer3DExtension; body: RID; shrinkingFactor: Float): void {.base.} = (discard)
+proc registerVirtual_softBodySetShrinkingFactor*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_set_shrinking_factor"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodySetShrinkingFactor(p_args[0].decode(RID), p_args[1].decode(Float))
+
+method softBodyGetShrinkingFactor*(self: PhysicsServer3DExtension; body: RID): Float {.base.} = (discard)
+proc registerVirtual_softBodyGetShrinkingFactor*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_get_shrinking_factor"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodyGetShrinkingFactor(p_args[0].decode(RID)).encode(r_ret)
+
 method softBodySetPressureCoefficient*(self: PhysicsServer3DExtension; body: RID; pressureCoefficient: Float): void {.base.} = (discard)
 proc registerVirtual_softBodySetPressureCoefficient*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_soft_body_set_pressure_coefficient"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -740,6 +750,26 @@ method softBodyIsPointPinned*(self: PhysicsServer3DExtension; body: RID; pointIn
 proc registerVirtual_softBodyIsPointPinned*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_soft_body_is_point_pinned"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).softBodyIsPointPinned(p_args[0].decode(RID), p_args[1].decode(int32)).encode(r_ret)
+
+method softBodyApplyPointImpulse*(self: PhysicsServer3DExtension; body: RID; pointIndex: int32; impulse: Vector3): void {.base.} = (discard)
+proc registerVirtual_softBodyApplyPointImpulse*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_apply_point_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodyApplyPointImpulse(p_args[0].decode(RID), p_args[1].decode(int32), p_args[2].decode(Vector3))
+
+method softBodyApplyPointForce*(self: PhysicsServer3DExtension; body: RID; pointIndex: int32; force: Vector3): void {.base.} = (discard)
+proc registerVirtual_softBodyApplyPointForce*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_apply_point_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodyApplyPointForce(p_args[0].decode(RID), p_args[1].decode(int32), p_args[2].decode(Vector3))
+
+method softBodyApplyCentralImpulse*(self: PhysicsServer3DExtension; body: RID; impulse: Vector3): void {.base.} = (discard)
+proc registerVirtual_softBodyApplyCentralImpulse*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_apply_central_impulse"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodyApplyCentralImpulse(p_args[0].decode(RID), p_args[1].decode(Vector3))
+
+method softBodyApplyCentralForce*(self: PhysicsServer3DExtension; body: RID; force: Vector3): void {.base.} = (discard)
+proc registerVirtual_softBodyApplyCentralForce*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_soft_body_apply_central_force"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[PhysicsServer3DExtension](p_instance).softBodyApplyCentralForce(p_args[0].decode(RID), p_args[1].decode(Vector3))
 
 method jointCreate*(self: PhysicsServer3DExtension): RID {.base.} = (discard)
 proc registerVirtual_jointCreate*[T: PhysicsServer3DExtension](Self: typedesc[T]) =

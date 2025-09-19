@@ -18,6 +18,18 @@ proc hasGroup*(self: SceneTree; name: StringName): bool =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
+proc isAccessibilityEnabled*(self: SceneTree): bool =
+  expandMethodBind(className SceneTree, "is_accessibility_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc isAccessibilitySupported*(self: SceneTree): bool =
+  expandMethodBind(className SceneTree, "is_accessibility_supported", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc isAutoAcceptQuit*(self: SceneTree): bool =
   expandMethodBind(className SceneTree, "is_auto_accept_quit", 36873697)
   var ret: encoded bool

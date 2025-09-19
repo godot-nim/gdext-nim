@@ -190,6 +190,12 @@ proc getScriptLanguage*(self: Engine; index: int32): ScriptLanguage =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(ScriptLanguage)
 
+proc captureScriptBacktraces*(self: Engine; includeVariables: bool = false): TypedArray[gdref ScriptBacktrace] =
+  expandMethodBind(className Engine, "capture_script_backtraces", 873284517)
+  var ret: encoded TypedArray[gdref ScriptBacktrace]
+  methodbind.ptrcall(self, [getPtr includeVariables], addr ret)
+  (addr ret).decode_result(TypedArray[gdref ScriptBacktrace])
+
 proc isEditorHint*(self: Engine): bool =
   expandMethodBind(className Engine, "is_editor_hint", 36873697)
   var ret: encoded bool
