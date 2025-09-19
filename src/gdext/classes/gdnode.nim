@@ -39,6 +39,7 @@ const NotificationWmSizeChanged* = 1008
 const NotificationWmDpiChange* = 1009
 const NotificationVpMouseEnter* = 1010
 const NotificationVpMouseExit* = 1011
+const NotificationWmPositionChanged* = 1012
 const NotificationOsMemoryWarning* = 2009
 const NotificationTranslationChanged* = 2010
 const NotificationWmAbout* = 2011
@@ -49,6 +50,8 @@ const NotificationApplicationPaused* = 2015
 const NotificationApplicationFocusIn* = 2016
 const NotificationApplicationFocusOut* = 2017
 const NotificationTextServerChanged* = 2018
+const NotificationAccessibilityUpdate* = 3000
+const NotificationAccessibilityInvalidate* = 3001
 
 method process*(self: Node; delta: float64): void {.base.} = (discard)
 proc registerVirtual_process*[T: Node](Self: typedesc[T]) =
@@ -80,6 +83,11 @@ proc registerVirtual_getConfigurationWarnings*[T: Node](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_configuration_warnings"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).getConfigurationWarnings().encode(r_ret)
 
+method getAccessibilityConfigurationWarnings*(self: Node): PackedStringArray {.base.} = (discard)
+proc registerVirtual_getAccessibilityConfigurationWarnings*[T: Node](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_accessibility_configuration_warnings"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Node](p_instance).getAccessibilityConfigurationWarnings().encode(r_ret)
+
 method input*(self: Node; event: gdref InputEvent): void {.base.} = (discard)
 proc registerVirtual_input*[T: Node](Self: typedesc[T]) =
   Self.vmethods[newStringName"_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -100,16 +108,27 @@ proc registerVirtual_unhandledKeyInput*[T: Node](Self: typedesc[T]) =
   Self.vmethods[newStringName"_unhandled_key_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Node](p_instance).unhandledKeyInput(p_args[0].decode(gdref InputEvent))
 
+method getFocusedAccessibilityElement*(self: Node): RID {.base.} = (discard)
+proc registerVirtual_getFocusedAccessibilityElement*[T: Node](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_focused_accessibility_element"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[Node](p_instance).getFocusedAccessibilityElement().encode(r_ret)
+
 proc printOrphanNodes*(_: typedesc[Node]): void =
   expandMethodBind(className Node, "print_orphan_nodes", 3218959716)
   methodbind.ptrcall([])
+
+proc getOrphanNodeIds*(_: typedesc[Node]): TypedArray[Int] =
+  expandMethodBind(className Node, "get_orphan_node_ids", 2915620761)
+  var ret: encoded TypedArray[Int]
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(TypedArray[Int])
 
 proc addSibling*(self: Node; sibling: Node; forceReadableName: bool = false): void =
   expandMethodBind(className Node, "add_sibling", 2570952461)
   methodbind.ptrcall(self, [getPtr sibling, getPtr forceReadableName])
 
-proc setName*(self: Node; name: String): void =
-  expandMethodBind(className Node, "set_name", 83702148)
+proc setName*(self: Node; name: StringName): void =
+  expandMethodBind(className Node, "set_name", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
 proc getName*(self: Node): StringName =
@@ -454,6 +473,16 @@ proc getProcessThreadGroupOrder*(self: Node): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc queueAccessibilityUpdate*(self: Node): void =
+  expandMethodBind(className Node, "queue_accessibility_update", 3218959716)
+  methodbind.ptrcall(self, [])
+
+proc getAccessibilityElement*(self: Node): RID =
+  expandMethodBind(className Node, "get_accessibility_element", 2944877500)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(RID)
+
 proc setDisplayFolded*(self: Node; fold: bool): void =
   expandMethodBind(className Node, "set_display_folded", 2586408642)
   methodbind.ptrcall(self, [getPtr fold])
@@ -519,6 +548,12 @@ proc getAutoTranslateMode*(self: Node): Node_AutoTranslateMode =
   var ret: encoded Node_AutoTranslateMode
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node_AutoTranslateMode)
+
+proc canAutoTranslate*(self: Node): bool =
+  expandMethodBind(className Node, "can_auto_translate", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc setTranslationDomainInherited*(self: Node): void =
   expandMethodBind(className Node, "set_translation_domain_inherited", 3218959716)
@@ -624,8 +659,8 @@ proc rpcConfig*(self: Node; `method`: StringName; config: Variant): void =
   expandMethodBind(className Node, "rpc_config", 3776071444)
   methodbind.ptrcall(self, [getPtr `method`, getPtr config])
 
-proc getRpcConfig*(self: Node): Variant =
-  expandMethodBind(className Node, "get_rpc_config", 1214101251)
+proc getNodeRpcConfig*(self: Node): Variant =
+  expandMethodBind(className Node, "get_node_rpc_config", 1214101251)
   var ret: encoded Variant
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Variant)

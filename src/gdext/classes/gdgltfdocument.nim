@@ -26,6 +26,26 @@ proc getLossyQuality*(self: GLTFDocument): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setFallbackImageFormat*(self: GLTFDocument; fallbackImageFormat: String): void =
+  expandMethodBind(className GLTFDocument, "set_fallback_image_format", 83702148)
+  methodbind.ptrcall(self, [getPtr fallbackImageFormat])
+
+proc getFallbackImageFormat*(self: GLTFDocument): String =
+  expandMethodBind(className GLTFDocument, "get_fallback_image_format", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc setFallbackImageQuality*(self: GLTFDocument; fallbackImageQuality: Float): void =
+  expandMethodBind(className GLTFDocument, "set_fallback_image_quality", 373806689)
+  methodbind.ptrcall(self, [getPtr fallbackImageQuality])
+
+proc getFallbackImageQuality*(self: GLTFDocument): Float =
+  expandMethodBind(className GLTFDocument, "get_fallback_image_quality", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setRootNodeMode*(self: GLTFDocument; rootNodeMode: GLTFDocument_RootNodeMode): void =
   expandMethodBind(className GLTFDocument, "set_root_node_mode", 463633402)
   methodbind.ptrcall(self, [getPtr rootNodeMode])
@@ -35,6 +55,16 @@ proc getRootNodeMode*(self: GLTFDocument): GLTFDocument_RootNodeMode =
   var ret: encoded GLTFDocument_RootNodeMode
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(GLTFDocument_RootNodeMode)
+
+proc setVisibilityMode*(self: GLTFDocument; visibilityMode: GLTFDocument_VisibilityMode): void =
+  expandMethodBind(className GLTFDocument, "set_visibility_mode", 2803579218)
+  methodbind.ptrcall(self, [getPtr visibilityMode])
+
+proc getVisibilityMode*(self: GLTFDocument): GLTFDocument_VisibilityMode =
+  expandMethodBind(className GLTFDocument, "get_visibility_mode", 3885445962)
+  var ret: encoded GLTFDocument_VisibilityMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(GLTFDocument_VisibilityMode)
 
 proc appendFromFile*(self: GLTFDocument; path: String; state: gdref GLTFState; flags: uint32 = 0'u32; basePath: String = newGdString()): Error =
   expandMethodBind(className GLTFDocument, "append_from_file", 866380864)
@@ -104,5 +134,14 @@ template `imageFormat=`*(self: GLTFDocument; value) = self.setImageFormat(value)
 template lossyQuality*(self: GLTFDocument): untyped = self.getLossyQuality()
 template `lossyQuality=`*(self: GLTFDocument; value) = self.setLossyQuality(value)
 
+template fallbackImageFormat*(self: GLTFDocument): untyped = self.getFallbackImageFormat()
+template `fallbackImageFormat=`*(self: GLTFDocument; value) = self.setFallbackImageFormat(value)
+
+template fallbackImageQuality*(self: GLTFDocument): untyped = self.getFallbackImageQuality()
+template `fallbackImageQuality=`*(self: GLTFDocument; value) = self.setFallbackImageQuality(value)
+
 template rootNodeMode*(self: GLTFDocument): untyped = self.getRootNodeMode()
 template `rootNodeMode=`*(self: GLTFDocument; value) = self.setRootNodeMode(value)
+
+template visibilityMode*(self: GLTFDocument): untyped = self.getVisibilityMode()
+template `visibilityMode=`*(self: GLTFDocument; value) = self.setVisibilityMode(value)

@@ -116,6 +116,16 @@ proc getLinearStiffness*(self: SoftBody3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setShrinkingFactor*(self: SoftBody3D; shrinkingFactor: Float): void =
+  expandMethodBind(className SoftBody3D, "set_shrinking_factor", 373806689)
+  methodbind.ptrcall(self, [getPtr shrinkingFactor])
+
+proc getShrinkingFactor*(self: SoftBody3D): Float =
+  expandMethodBind(className SoftBody3D, "get_shrinking_factor", 191475506)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setPressureCoefficient*(self: SoftBody3D; pressureCoefficient: Float): void =
   expandMethodBind(className SoftBody3D, "set_pressure_coefficient", 373806689)
   methodbind.ptrcall(self, [getPtr pressureCoefficient])
@@ -151,6 +161,22 @@ proc getPointTransform*(self: SoftBody3D; pointIndex: int32): Vector3 =
   var ret: encoded Vector3
   methodbind.ptrcall(self, [getPtr pointIndex], addr ret)
   (addr ret).decode_result(Vector3)
+
+proc applyImpulse*(self: SoftBody3D; pointIndex: int32; impulse: Vector3): void =
+  expandMethodBind(className SoftBody3D, "apply_impulse", 1530502735)
+  methodbind.ptrcall(self, [getPtr pointIndex, getPtr impulse])
+
+proc applyForce*(self: SoftBody3D; pointIndex: int32; force: Vector3): void =
+  expandMethodBind(className SoftBody3D, "apply_force", 1530502735)
+  methodbind.ptrcall(self, [getPtr pointIndex, getPtr force])
+
+proc applyCentralImpulse*(self: SoftBody3D; impulse: Vector3): void =
+  expandMethodBind(className SoftBody3D, "apply_central_impulse", 3460891852)
+  methodbind.ptrcall(self, [getPtr impulse])
+
+proc applyCentralForce*(self: SoftBody3D; force: Vector3): void =
+  expandMethodBind(className SoftBody3D, "apply_central_force", 3460891852)
+  methodbind.ptrcall(self, [getPtr force])
 
 proc setPointPinned*(self: SoftBody3D; pointIndex: int32; pinned: bool; attachmentPath: NodePath = newNodePath(); insertAt: int32 = -1): void =
   expandMethodBind(className SoftBody3D, "set_point_pinned", 528784402)
@@ -189,6 +215,9 @@ template `totalMass=`*(self: SoftBody3D; value) = self.setTotalMass(value)
 
 template linearStiffness*(self: SoftBody3D): untyped = self.getLinearStiffness()
 template `linearStiffness=`*(self: SoftBody3D; value) = self.setLinearStiffness(value)
+
+template shrinkingFactor*(self: SoftBody3D): untyped = self.getShrinkingFactor()
+template `shrinkingFactor=`*(self: SoftBody3D; value) = self.setShrinkingFactor(value)
 
 template pressureCoefficient*(self: SoftBody3D): untyped = self.getPressureCoefficient()
 template `pressureCoefficient=`*(self: SoftBody3D; value) = self.setPressureCoefficient(value)

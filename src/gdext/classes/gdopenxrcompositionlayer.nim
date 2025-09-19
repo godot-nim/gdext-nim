@@ -78,6 +78,116 @@ proc isNativelySupported*(self: OpenXRCompositionLayer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setMinFilter*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Filter): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_min_filter", 3653437593)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getMinFilter*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Filter =
+  expandMethodBind(className OpenXRCompositionLayer, "get_min_filter", 845677307)
+  var ret: encoded OpenXRCompositionLayer_Filter
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Filter)
+
+proc setMagFilter*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Filter): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_mag_filter", 3653437593)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getMagFilter*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Filter =
+  expandMethodBind(className OpenXRCompositionLayer, "get_mag_filter", 845677307)
+  var ret: encoded OpenXRCompositionLayer_Filter
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Filter)
+
+proc setMipmapMode*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_MipmapMode): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_mipmap_mode", 3271133183)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getMipmapMode*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_MipmapMode =
+  expandMethodBind(className OpenXRCompositionLayer, "get_mipmap_mode", 3962697095)
+  var ret: encoded OpenXRCompositionLayer_MipmapMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_MipmapMode)
+
+proc setHorizontalWrap*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Wrap): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_horizontal_wrap", 15634990)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getHorizontalWrap*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Wrap =
+  expandMethodBind(className OpenXRCompositionLayer, "get_horizontal_wrap", 2798816834)
+  var ret: encoded OpenXRCompositionLayer_Wrap
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Wrap)
+
+proc setVerticalWrap*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Wrap): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_vertical_wrap", 15634990)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getVerticalWrap*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Wrap =
+  expandMethodBind(className OpenXRCompositionLayer, "get_vertical_wrap", 2798816834)
+  var ret: encoded OpenXRCompositionLayer_Wrap
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Wrap)
+
+proc setRedSwizzle*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Swizzle): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_red_swizzle", 741598951)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getRedSwizzle*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Swizzle =
+  expandMethodBind(className OpenXRCompositionLayer, "get_red_swizzle", 2334776767)
+  var ret: encoded OpenXRCompositionLayer_Swizzle
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Swizzle)
+
+proc setGreenSwizzle*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Swizzle): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_green_swizzle", 741598951)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getGreenSwizzle*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Swizzle =
+  expandMethodBind(className OpenXRCompositionLayer, "get_green_swizzle", 2334776767)
+  var ret: encoded OpenXRCompositionLayer_Swizzle
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Swizzle)
+
+proc setBlueSwizzle*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Swizzle): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_blue_swizzle", 741598951)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getBlueSwizzle*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Swizzle =
+  expandMethodBind(className OpenXRCompositionLayer, "get_blue_swizzle", 2334776767)
+  var ret: encoded OpenXRCompositionLayer_Swizzle
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Swizzle)
+
+proc setAlphaSwizzle*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Swizzle): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_alpha_swizzle", 741598951)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getAlphaSwizzle*(self: OpenXRCompositionLayer): OpenXRCompositionLayer_Swizzle =
+  expandMethodBind(className OpenXRCompositionLayer, "get_alpha_swizzle", 2334776767)
+  var ret: encoded OpenXRCompositionLayer_Swizzle
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRCompositionLayer_Swizzle)
+
+proc setMaxAnisotropy*(self: OpenXRCompositionLayer; value: Float): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_max_anisotropy", 373806689)
+  methodbind.ptrcall(self, [getPtr value])
+
+proc getMaxAnisotropy*(self: OpenXRCompositionLayer): Float =
+  expandMethodBind(className OpenXRCompositionLayer, "get_max_anisotropy", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setBorderColor*(self: OpenXRCompositionLayer; color: Color): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_border_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color])
+
+proc getBorderColor*(self: OpenXRCompositionLayer): Color =
+  expandMethodBind(className OpenXRCompositionLayer, "get_border_color", 3444240500)
+  var ret: encoded Color
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Color)
+
 proc intersectsRay*(self: OpenXRCompositionLayer; origin: Vector3; direction: Vector3): Vector2 =
   expandMethodBind(className OpenXRCompositionLayer, "intersects_ray", 1091262597)
   var ret: encoded Vector2
@@ -101,3 +211,36 @@ template `alphaBlend=`*(self: OpenXRCompositionLayer; value) = self.setAlphaBlen
 
 template enableHolePunch*(self: OpenXRCompositionLayer): untyped = self.getEnableHolePunch()
 template `enableHolePunch=`*(self: OpenXRCompositionLayer; value) = self.setEnableHolePunch(value)
+
+template swapchainStateMinFilter*(self: OpenXRCompositionLayer): untyped = self.getMinFilter()
+template `swapchainStateMinFilter=`*(self: OpenXRCompositionLayer; value) = self.setMinFilter(value)
+
+template swapchainStateMagFilter*(self: OpenXRCompositionLayer): untyped = self.getMagFilter()
+template `swapchainStateMagFilter=`*(self: OpenXRCompositionLayer; value) = self.setMagFilter(value)
+
+template swapchainStateMipmapMode*(self: OpenXRCompositionLayer): untyped = self.getMipmapMode()
+template `swapchainStateMipmapMode=`*(self: OpenXRCompositionLayer; value) = self.setMipmapMode(value)
+
+template swapchainStateHorizontalWrap*(self: OpenXRCompositionLayer): untyped = self.getHorizontalWrap()
+template `swapchainStateHorizontalWrap=`*(self: OpenXRCompositionLayer; value) = self.setHorizontalWrap(value)
+
+template swapchainStateVerticalWrap*(self: OpenXRCompositionLayer): untyped = self.getVerticalWrap()
+template `swapchainStateVerticalWrap=`*(self: OpenXRCompositionLayer; value) = self.setVerticalWrap(value)
+
+template swapchainStateRedSwizzle*(self: OpenXRCompositionLayer): untyped = self.getRedSwizzle()
+template `swapchainStateRedSwizzle=`*(self: OpenXRCompositionLayer; value) = self.setRedSwizzle(value)
+
+template swapchainStateGreenSwizzle*(self: OpenXRCompositionLayer): untyped = self.getGreenSwizzle()
+template `swapchainStateGreenSwizzle=`*(self: OpenXRCompositionLayer; value) = self.setGreenSwizzle(value)
+
+template swapchainStateBlueSwizzle*(self: OpenXRCompositionLayer): untyped = self.getBlueSwizzle()
+template `swapchainStateBlueSwizzle=`*(self: OpenXRCompositionLayer; value) = self.setBlueSwizzle(value)
+
+template swapchainStateAlphaSwizzle*(self: OpenXRCompositionLayer): untyped = self.getAlphaSwizzle()
+template `swapchainStateAlphaSwizzle=`*(self: OpenXRCompositionLayer; value) = self.setAlphaSwizzle(value)
+
+template swapchainStateMaxAnisotropy*(self: OpenXRCompositionLayer): untyped = self.getMaxAnisotropy()
+template `swapchainStateMaxAnisotropy=`*(self: OpenXRCompositionLayer; value) = self.setMaxAnisotropy(value)
+
+template swapchainStateBorderColor*(self: OpenXRCompositionLayer): untyped = self.getBorderColor()
+template `swapchainStateBorderColor=`*(self: OpenXRCompositionLayer; value) = self.setBorderColor(value)

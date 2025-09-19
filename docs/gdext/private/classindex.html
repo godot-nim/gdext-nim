@@ -60,6 +60,7 @@
     <ul class="simple simple-toc-section">
       <li><a class="reference" href="#AcceptDialog" title="AcceptDialog = ptr object of Window">AcceptDialog</a></li>
 <li><a class="reference" href="#AESContext" title="AESContext = ptr object of RefCounted">AESContext</a></li>
+<li><a class="reference" href="#AimModifier3D" title="AimModifier3D = ptr object of BoneConstraint3D">AimModifier3D</a></li>
 <li><a class="reference" href="#AnimatableBody2D" title="AnimatableBody2D = ptr object of StaticBody2D">AnimatableBody2D</a></li>
 <li><a class="reference" href="#AnimatableBody3D" title="AnimatableBody3D = ptr object of StaticBody3D">AnimatableBody3D</a></li>
 <li><a class="reference" href="#AnimatedSprite2D" title="AnimatedSprite2D = ptr object of Node2D">AnimatedSprite2D</a></li>
@@ -164,6 +165,7 @@
 <li><a class="reference" href="#BitMap" title="BitMap = ptr object of Resource">BitMap</a></li>
 <li><a class="reference" href="#Bone2D" title="Bone2D = ptr object of Node2D">Bone2D</a></li>
 <li><a class="reference" href="#BoneAttachment3D" title="BoneAttachment3D = ptr object of Node3D">BoneAttachment3D</a></li>
+<li><a class="reference" href="#BoneConstraint3D" title="BoneConstraint3D = ptr object of SkeletonModifier3D">BoneConstraint3D</a></li>
 <li><a class="reference" href="#BoneMap" title="BoneMap = ptr object of Resource">BoneMap</a></li>
 <li><a class="reference" href="#BoxContainer" title="BoxContainer = ptr object of Container">BoxContainer</a></li>
 <li><a class="reference" href="#BoxMesh" title="BoxMesh = ptr object of PrimitiveMesh">BoxMesh</a></li>
@@ -224,8 +226,10 @@
 <li><a class="reference" href="#ConfirmationDialog" title="ConfirmationDialog = ptr object of AcceptDialog">ConfirmationDialog</a></li>
 <li><a class="reference" href="#Container" title="Container = ptr object of Control">Container</a></li>
 <li><a class="reference" href="#Control" title="Control = ptr object of CanvasItem">Control</a></li>
+<li><a class="reference" href="#ConvertTransformModifier3D" title="ConvertTransformModifier3D = ptr object of BoneConstraint3D">ConvertTransformModifier3D</a></li>
 <li><a class="reference" href="#ConvexPolygonShape2D" title="ConvexPolygonShape2D = ptr object of Shape2D">ConvexPolygonShape2D</a></li>
 <li><a class="reference" href="#ConvexPolygonShape3D" title="ConvexPolygonShape3D = ptr object of Shape3D">ConvexPolygonShape3D</a></li>
+<li><a class="reference" href="#CopyTransformModifier3D" title="CopyTransformModifier3D = ptr object of BoneConstraint3D">CopyTransformModifier3D</a></li>
 <li><a class="reference" href="#CPUParticles2D" title="CPUParticles2D = ptr object of Node2D">CPUParticles2D</a></li>
 <li><a class="reference" href="#CPUParticles3D" title="CPUParticles3D = ptr object of GeometryInstance3D">CPUParticles3D</a></li>
 <li><a class="reference" href="#Crypto" title="Crypto = ptr object of RefCounted">Crypto</a></li>
@@ -254,6 +258,7 @@
 <li><a class="reference" href="#DirectionalLight2D" title="DirectionalLight2D = ptr object of Light2D">DirectionalLight2D</a></li>
 <li><a class="reference" href="#DirectionalLight3D" title="DirectionalLight3D = ptr object of Light3D">DirectionalLight3D</a></li>
 <li><a class="reference" href="#DisplayServer" title="DisplayServer = ptr object of Object">DisplayServer</a></li>
+<li><a class="reference" href="#DPITexture" title="DPITexture = ptr object of Texture2D">DPITexture</a></li>
 <li><a class="reference" href="#DTLSServer" title="DTLSServer = ptr object of RefCounted">DTLSServer</a></li>
 <li><a class="reference" href="#EditorCommandPalette" title="EditorCommandPalette = ptr object of ConfirmationDialog">EditorCommandPalette</a></li>
 <li><a class="reference" href="#EditorContextMenuPlugin" title="EditorContextMenuPlugin = ptr object of RefCounted">EditorContextMenuPlugin</a></li>
@@ -261,11 +266,13 @@
 <li><a class="reference" href="#EditorDebuggerSession" title="EditorDebuggerSession = ptr object of RefCounted">EditorDebuggerSession</a></li>
 <li><a class="reference" href="#EditorExportPlatform" title="EditorExportPlatform = ptr object of RefCounted">EditorExportPlatform</a></li>
 <li><a class="reference" href="#EditorExportPlatformAndroid" title="EditorExportPlatformAndroid = ptr object of EditorExportPlatform">EditorExportPlatformAndroid</a></li>
+<li><a class="reference" href="#EditorExportPlatformAppleEmbedded" title="EditorExportPlatformAppleEmbedded = ptr object of EditorExportPlatform">EditorExportPlatformAppleEmbedded</a></li>
 <li><a class="reference" href="#EditorExportPlatformExtension" title="EditorExportPlatformExtension = ptr object of EditorExportPlatform">EditorExportPlatformExtension</a></li>
-<li><a class="reference" href="#EditorExportPlatformIOS" title="EditorExportPlatformIOS = ptr object of EditorExportPlatform">EditorExportPlatformIOS</a></li>
+<li><a class="reference" href="#EditorExportPlatformIOS" title="EditorExportPlatformIOS = ptr object of EditorExportPlatformAppleEmbedded">EditorExportPlatformIOS</a></li>
 <li><a class="reference" href="#EditorExportPlatformLinuxBSD" title="EditorExportPlatformLinuxBSD = ptr object of EditorExportPlatformPC">EditorExportPlatformLinuxBSD</a></li>
 <li><a class="reference" href="#EditorExportPlatformMacOS" title="EditorExportPlatformMacOS = ptr object of EditorExportPlatform">EditorExportPlatformMacOS</a></li>
 <li><a class="reference" href="#EditorExportPlatformPC" title="EditorExportPlatformPC = ptr object of EditorExportPlatform">EditorExportPlatformPC</a></li>
+<li><a class="reference" href="#EditorExportPlatformVisionOS" title="EditorExportPlatformVisionOS = ptr object of EditorExportPlatformAppleEmbedded">EditorExportPlatformVisionOS</a></li>
 <li><a class="reference" href="#EditorExportPlatformWeb" title="EditorExportPlatformWeb = ptr object of EditorExportPlatform">EditorExportPlatformWeb</a></li>
 <li><a class="reference" href="#EditorExportPlatformWindows" title="EditorExportPlatformWindows = ptr object of EditorExportPlatformPC">EditorExportPlatformWindows</a></li>
 <li><a class="reference" href="#EditorExportPlugin" title="EditorExportPlugin = ptr object of RefCounted">EditorExportPlugin</a></li>
@@ -325,6 +332,8 @@
 <li><a class="reference" href="#FlowContainer" title="FlowContainer = ptr object of Container">FlowContainer</a></li>
 <li><a class="reference" href="#FogMaterial" title="FogMaterial = ptr object of Material">FogMaterial</a></li>
 <li><a class="reference" href="#FogVolume" title="FogVolume = ptr object of VisualInstance3D">FogVolume</a></li>
+<li><a class="reference" href="#FoldableContainer" title="FoldableContainer = ptr object of Container">FoldableContainer</a></li>
+<li><a class="reference" href="#FoldableGroup" title="FoldableGroup = ptr object of Resource">FoldableGroup</a></li>
 <li><a class="reference" href="#Font" title="Font = ptr object of Resource">Font</a></li>
 <li><a class="reference" href="#FontFile" title="FontFile = ptr object of Font">FontFile</a></li>
 <li><a class="reference" href="#FontVariation" title="FontVariation = ptr object of Font">FontVariation</a></li>
@@ -449,6 +458,7 @@
 <li><a class="reference" href="#Line2D" title="Line2D = ptr object of Node2D">Line2D</a></li>
 <li><a class="reference" href="#LineEdit" title="LineEdit = ptr object of Control">LineEdit</a></li>
 <li><a class="reference" href="#LinkButton" title="LinkButton = ptr object of BaseButton">LinkButton</a></li>
+<li><a class="reference" href="#Logger" title="Logger = ptr object of RefCounted">Logger</a></li>
 <li><a class="reference" href="#LookAtModifier3D" title="LookAtModifier3D = ptr object of SkeletonModifier3D">LookAtModifier3D</a></li>
 <li><a class="reference" href="#MainLoop" title="MainLoop = ptr object of Object">MainLoop</a></li>
 <li><a class="reference" href="#MarginContainer" title="MarginContainer = ptr object of Container">MarginContainer</a></li>
@@ -469,6 +479,7 @@
 <li><a class="reference" href="#MissingNode" title="MissingNode = ptr object of Node">MissingNode</a></li>
 <li><a class="reference" href="#MissingResource" title="MissingResource = ptr object of Resource">MissingResource</a></li>
 <li><a class="reference" href="#MobileVRInterface" title="MobileVRInterface = ptr object of XRInterface">MobileVRInterface</a></li>
+<li><a class="reference" href="#ModifierBoneTarget3D" title="ModifierBoneTarget3D = ptr object of SkeletonModifier3D">ModifierBoneTarget3D</a></li>
 <li><a class="reference" href="#MovieWriter" title="MovieWriter = ptr object of Object">MovieWriter</a></li>
 <li><a class="reference" href="#MultiMesh" title="MultiMesh = ptr object of Resource">MultiMesh</a></li>
 <li><a class="reference" href="#MultiMeshInstance2D" title="MultiMeshInstance2D = ptr object of Node2D">MultiMeshInstance2D</a></li>
@@ -528,7 +539,10 @@
 <li><a class="reference" href="#OpenXRCompositionLayerEquirect" title="OpenXRCompositionLayerEquirect = ptr object of OpenXRCompositionLayer">OpenXRCompositionLayerEquirect</a></li>
 <li><a class="reference" href="#OpenXRCompositionLayerQuad" title="OpenXRCompositionLayerQuad = ptr object of OpenXRCompositionLayer">OpenXRCompositionLayerQuad</a></li>
 <li><a class="reference" href="#OpenXRDpadBindingModifier" title="OpenXRDpadBindingModifier = ptr object of OpenXRIPBindingModifier">OpenXRDpadBindingModifier</a></li>
-<li><a class="reference" href="#OpenXRExtensionWrapperExtension" title="OpenXRExtensionWrapperExtension = ptr object of Object">OpenXRExtensionWrapperExtension</a></li>
+<li><a class="reference" href="#OpenXRExtensionWrapper" title="OpenXRExtensionWrapper = ptr object of Object">OpenXRExtensionWrapper</a></li>
+<li><a class="reference" href="#OpenXRExtensionWrapperExtension" title="OpenXRExtensionWrapperExtension = ptr object of OpenXRExtensionWrapper">OpenXRExtensionWrapperExtension</a></li>
+<li><a class="reference" href="#OpenXRFutureExtension" title="OpenXRFutureExtension = ptr object of OpenXRExtensionWrapper">OpenXRFutureExtension</a></li>
+<li><a class="reference" href="#OpenXRFutureResult" title="OpenXRFutureResult = ptr object of RefCounted">OpenXRFutureResult</a></li>
 <li><a class="reference" href="#OpenXRHand" title="OpenXRHand = ptr object of Node3D">OpenXRHand</a></li>
 <li><a class="reference" href="#OpenXRHapticBase" title="OpenXRHapticBase = ptr object of Resource">OpenXRHapticBase</a></li>
 <li><a class="reference" href="#OpenXRHapticVibration" title="OpenXRHapticVibration = ptr object of OpenXRHapticBase">OpenXRHapticVibration</a></li>
@@ -539,6 +553,9 @@
 <li><a class="reference" href="#OpenXRInterface" title="OpenXRInterface = ptr object of XRInterface">OpenXRInterface</a></li>
 <li><a class="reference" href="#OpenXRIPBinding" title="OpenXRIPBinding = ptr object of Resource">OpenXRIPBinding</a></li>
 <li><a class="reference" href="#OpenXRIPBindingModifier" title="OpenXRIPBindingModifier = ptr object of OpenXRBindingModifier">OpenXRIPBindingModifier</a></li>
+<li><a class="reference" href="#OpenXRRenderModel" title="OpenXRRenderModel = ptr object of Node3D">OpenXRRenderModel</a></li>
+<li><a class="reference" href="#OpenXRRenderModelExtension" title="OpenXRRenderModelExtension = ptr object of OpenXRExtensionWrapper">OpenXRRenderModelExtension</a></li>
+<li><a class="reference" href="#OpenXRRenderModelManager" title="OpenXRRenderModelManager = ptr object of Node3D">OpenXRRenderModelManager</a></li>
 <li><a class="reference" href="#OpenXRVisibilityMask" title="OpenXRVisibilityMask = ptr object of VisualInstance3D">OpenXRVisibilityMask</a></li>
 <li><a class="reference" href="#OptimizedTranslation" title="OptimizedTranslation = ptr object of Translation">OptimizedTranslation</a></li>
 <li><a class="reference" href="#OptionButton" title="OptionButton = ptr object of Button">OptionButton</a></li>
@@ -680,6 +697,7 @@
 <li><a class="reference" href="#ResourceImporterOggVorbis" title="ResourceImporterOggVorbis = ptr object of ResourceImporter">ResourceImporterOggVorbis</a></li>
 <li><a class="reference" href="#ResourceImporterScene" title="ResourceImporterScene = ptr object of ResourceImporter">ResourceImporterScene</a></li>
 <li><a class="reference" href="#ResourceImporterShaderFile" title="ResourceImporterShaderFile = ptr object of ResourceImporter">ResourceImporterShaderFile</a></li>
+<li><a class="reference" href="#ResourceImporterSVG" title="ResourceImporterSVG = ptr object of ResourceImporter">ResourceImporterSVG</a></li>
 <li><a class="reference" href="#ResourceImporterTexture" title="ResourceImporterTexture = ptr object of ResourceImporter">ResourceImporterTexture</a></li>
 <li><a class="reference" href="#ResourceImporterTextureAtlas" title="ResourceImporterTextureAtlas = ptr object of ResourceImporter">ResourceImporterTextureAtlas</a></li>
 <li><a class="reference" href="#ResourceImporterWAV" title="ResourceImporterWAV = ptr object of ResourceImporter">ResourceImporterWAV</a></li>
@@ -700,6 +718,7 @@
 <li><a class="reference" href="#SceneTree" title="SceneTree = ptr object of MainLoop">SceneTree</a></li>
 <li><a class="reference" href="#SceneTreeTimer" title="SceneTreeTimer = ptr object of RefCounted">SceneTreeTimer</a></li>
 <li><a class="reference" href="#Script" title="Script = ptr object of Resource">Script</a></li>
+<li><a class="reference" href="#ScriptBacktrace" title="ScriptBacktrace = ptr object of RefCounted">ScriptBacktrace</a></li>
 <li><a class="reference" href="#ScriptCreateDialog" title="ScriptCreateDialog = ptr object of ConfirmationDialog">ScriptCreateDialog</a></li>
 <li><a class="reference" href="#ScriptEditor" title="ScriptEditor = ptr object of PanelContainer">ScriptEditor</a></li>
 <li><a class="reference" href="#ScriptEditorBase" title="ScriptEditorBase = ptr object of VBoxContainer">ScriptEditorBase</a></li>
@@ -1020,6 +1039,7 @@
       <ul class="simple nested-toc-section">EngineClass
   <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAcceptDialog%5D" title="EngineClass(_: typedesc[AcceptDialog]): typedesc">EngineClass(_: typedesc[AcceptDialog]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAESContext%5D" title="EngineClass(_: typedesc[AESContext]): typedesc">EngineClass(_: typedesc[AESContext]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAimModifier3D%5D" title="EngineClass(_: typedesc[AimModifier3D]): typedesc">EngineClass(_: typedesc[AimModifier3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAnimatableBody2D%5D" title="EngineClass(_: typedesc[AnimatableBody2D]): typedesc">EngineClass(_: typedesc[AnimatableBody2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAnimatableBody3D%5D" title="EngineClass(_: typedesc[AnimatableBody3D]): typedesc">EngineClass(_: typedesc[AnimatableBody3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BAnimatedSprite2D%5D" title="EngineClass(_: typedesc[AnimatedSprite2D]): typedesc">EngineClass(_: typedesc[AnimatedSprite2D]): typedesc</a></li>
@@ -1124,6 +1144,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBitMap%5D" title="EngineClass(_: typedesc[BitMap]): typedesc">EngineClass(_: typedesc[BitMap]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBone2D%5D" title="EngineClass(_: typedesc[Bone2D]): typedesc">EngineClass(_: typedesc[Bone2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBoneAttachment3D%5D" title="EngineClass(_: typedesc[BoneAttachment3D]): typedesc">EngineClass(_: typedesc[BoneAttachment3D]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBoneConstraint3D%5D" title="EngineClass(_: typedesc[BoneConstraint3D]): typedesc">EngineClass(_: typedesc[BoneConstraint3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBoneMap%5D" title="EngineClass(_: typedesc[BoneMap]): typedesc">EngineClass(_: typedesc[BoneMap]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBoxContainer%5D" title="EngineClass(_: typedesc[BoxContainer]): typedesc">EngineClass(_: typedesc[BoxContainer]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BBoxMesh%5D" title="EngineClass(_: typedesc[BoxMesh]): typedesc">EngineClass(_: typedesc[BoxMesh]): typedesc</a></li>
@@ -1184,8 +1205,10 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BConfirmationDialog%5D" title="EngineClass(_: typedesc[ConfirmationDialog]): typedesc">EngineClass(_: typedesc[ConfirmationDialog]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BContainer%5D" title="EngineClass(_: typedesc[Container]): typedesc">EngineClass(_: typedesc[Container]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BControl%5D" title="EngineClass(_: typedesc[Control]): typedesc">EngineClass(_: typedesc[Control]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BConvertTransformModifier3D%5D" title="EngineClass(_: typedesc[ConvertTransformModifier3D]): typedesc">EngineClass(_: typedesc[ConvertTransformModifier3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BConvexPolygonShape2D%5D" title="EngineClass(_: typedesc[ConvexPolygonShape2D]): typedesc">EngineClass(_: typedesc[ConvexPolygonShape2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BConvexPolygonShape3D%5D" title="EngineClass(_: typedesc[ConvexPolygonShape3D]): typedesc">EngineClass(_: typedesc[ConvexPolygonShape3D]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BCopyTransformModifier3D%5D" title="EngineClass(_: typedesc[CopyTransformModifier3D]): typedesc">EngineClass(_: typedesc[CopyTransformModifier3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BCPUParticles2D%5D" title="EngineClass(_: typedesc[CPUParticles2D]): typedesc">EngineClass(_: typedesc[CPUParticles2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BCPUParticles3D%5D" title="EngineClass(_: typedesc[CPUParticles3D]): typedesc">EngineClass(_: typedesc[CPUParticles3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BCrypto%5D" title="EngineClass(_: typedesc[Crypto]): typedesc">EngineClass(_: typedesc[Crypto]): typedesc</a></li>
@@ -1214,6 +1237,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BDirectionalLight2D%5D" title="EngineClass(_: typedesc[DirectionalLight2D]): typedesc">EngineClass(_: typedesc[DirectionalLight2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BDirectionalLight3D%5D" title="EngineClass(_: typedesc[DirectionalLight3D]): typedesc">EngineClass(_: typedesc[DirectionalLight3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BDisplayServer%5D" title="EngineClass(_: typedesc[DisplayServer]): typedesc">EngineClass(_: typedesc[DisplayServer]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BDPITexture%5D" title="EngineClass(_: typedesc[DPITexture]): typedesc">EngineClass(_: typedesc[DPITexture]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BDTLSServer%5D" title="EngineClass(_: typedesc[DTLSServer]): typedesc">EngineClass(_: typedesc[DTLSServer]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorCommandPalette%5D" title="EngineClass(_: typedesc[EditorCommandPalette]): typedesc">EngineClass(_: typedesc[EditorCommandPalette]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorContextMenuPlugin%5D" title="EngineClass(_: typedesc[EditorContextMenuPlugin]): typedesc">EngineClass(_: typedesc[EditorContextMenuPlugin]): typedesc</a></li>
@@ -1221,11 +1245,13 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorDebuggerSession%5D" title="EngineClass(_: typedesc[EditorDebuggerSession]): typedesc">EngineClass(_: typedesc[EditorDebuggerSession]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatform%5D" title="EngineClass(_: typedesc[EditorExportPlatform]): typedesc">EngineClass(_: typedesc[EditorExportPlatform]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformAndroid%5D" title="EngineClass(_: typedesc[EditorExportPlatformAndroid]): typedesc">EngineClass(_: typedesc[EditorExportPlatformAndroid]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformAppleEmbedded%5D" title="EngineClass(_: typedesc[EditorExportPlatformAppleEmbedded]): typedesc">EngineClass(_: typedesc[EditorExportPlatformAppleEmbedded]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformExtension%5D" title="EngineClass(_: typedesc[EditorExportPlatformExtension]): typedesc">EngineClass(_: typedesc[EditorExportPlatformExtension]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformIOS%5D" title="EngineClass(_: typedesc[EditorExportPlatformIOS]): typedesc">EngineClass(_: typedesc[EditorExportPlatformIOS]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformLinuxBSD%5D" title="EngineClass(_: typedesc[EditorExportPlatformLinuxBSD]): typedesc">EngineClass(_: typedesc[EditorExportPlatformLinuxBSD]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformMacOS%5D" title="EngineClass(_: typedesc[EditorExportPlatformMacOS]): typedesc">EngineClass(_: typedesc[EditorExportPlatformMacOS]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformPC%5D" title="EngineClass(_: typedesc[EditorExportPlatformPC]): typedesc">EngineClass(_: typedesc[EditorExportPlatformPC]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformVisionOS%5D" title="EngineClass(_: typedesc[EditorExportPlatformVisionOS]): typedesc">EngineClass(_: typedesc[EditorExportPlatformVisionOS]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformWeb%5D" title="EngineClass(_: typedesc[EditorExportPlatformWeb]): typedesc">EngineClass(_: typedesc[EditorExportPlatformWeb]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformWindows%5D" title="EngineClass(_: typedesc[EditorExportPlatformWindows]): typedesc">EngineClass(_: typedesc[EditorExportPlatformWindows]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BEditorExportPlugin%5D" title="EngineClass(_: typedesc[EditorExportPlugin]): typedesc">EngineClass(_: typedesc[EditorExportPlugin]): typedesc</a></li>
@@ -1285,6 +1311,8 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFlowContainer%5D" title="EngineClass(_: typedesc[FlowContainer]): typedesc">EngineClass(_: typedesc[FlowContainer]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFogMaterial%5D" title="EngineClass(_: typedesc[FogMaterial]): typedesc">EngineClass(_: typedesc[FogMaterial]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFogVolume%5D" title="EngineClass(_: typedesc[FogVolume]): typedesc">EngineClass(_: typedesc[FogVolume]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFoldableContainer%5D" title="EngineClass(_: typedesc[FoldableContainer]): typedesc">EngineClass(_: typedesc[FoldableContainer]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFoldableGroup%5D" title="EngineClass(_: typedesc[FoldableGroup]): typedesc">EngineClass(_: typedesc[FoldableGroup]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFont%5D" title="EngineClass(_: typedesc[Font]): typedesc">EngineClass(_: typedesc[Font]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFontFile%5D" title="EngineClass(_: typedesc[FontFile]): typedesc">EngineClass(_: typedesc[FontFile]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BFontVariation%5D" title="EngineClass(_: typedesc[FontVariation]): typedesc">EngineClass(_: typedesc[FontVariation]): typedesc</a></li>
@@ -1408,6 +1436,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BLine2D%5D" title="EngineClass(_: typedesc[Line2D]): typedesc">EngineClass(_: typedesc[Line2D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BLineEdit%5D" title="EngineClass(_: typedesc[LineEdit]): typedesc">EngineClass(_: typedesc[LineEdit]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BLinkButton%5D" title="EngineClass(_: typedesc[LinkButton]): typedesc">EngineClass(_: typedesc[LinkButton]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BLogger%5D" title="EngineClass(_: typedesc[Logger]): typedesc">EngineClass(_: typedesc[Logger]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BLookAtModifier3D%5D" title="EngineClass(_: typedesc[LookAtModifier3D]): typedesc">EngineClass(_: typedesc[LookAtModifier3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMainLoop%5D" title="EngineClass(_: typedesc[MainLoop]): typedesc">EngineClass(_: typedesc[MainLoop]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMarginContainer%5D" title="EngineClass(_: typedesc[MarginContainer]): typedesc">EngineClass(_: typedesc[MarginContainer]): typedesc</a></li>
@@ -1428,6 +1457,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMissingNode%5D" title="EngineClass(_: typedesc[MissingNode]): typedesc">EngineClass(_: typedesc[MissingNode]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMissingResource%5D" title="EngineClass(_: typedesc[MissingResource]): typedesc">EngineClass(_: typedesc[MissingResource]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMobileVRInterface%5D" title="EngineClass(_: typedesc[MobileVRInterface]): typedesc">EngineClass(_: typedesc[MobileVRInterface]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BModifierBoneTarget3D%5D" title="EngineClass(_: typedesc[ModifierBoneTarget3D]): typedesc">EngineClass(_: typedesc[ModifierBoneTarget3D]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMovieWriter%5D" title="EngineClass(_: typedesc[MovieWriter]): typedesc">EngineClass(_: typedesc[MovieWriter]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMultiMesh%5D" title="EngineClass(_: typedesc[MultiMesh]): typedesc">EngineClass(_: typedesc[MultiMesh]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BMultiMeshInstance2D%5D" title="EngineClass(_: typedesc[MultiMeshInstance2D]): typedesc">EngineClass(_: typedesc[MultiMeshInstance2D]): typedesc</a></li>
@@ -1488,7 +1518,10 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRCompositionLayerEquirect%5D" title="EngineClass(_: typedesc[OpenXRCompositionLayerEquirect]): typedesc">EngineClass(_: typedesc[OpenXRCompositionLayerEquirect]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRCompositionLayerQuad%5D" title="EngineClass(_: typedesc[OpenXRCompositionLayerQuad]): typedesc">EngineClass(_: typedesc[OpenXRCompositionLayerQuad]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRDpadBindingModifier%5D" title="EngineClass(_: typedesc[OpenXRDpadBindingModifier]): typedesc">EngineClass(_: typedesc[OpenXRDpadBindingModifier]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRExtensionWrapper%5D" title="EngineClass(_: typedesc[OpenXRExtensionWrapper]): typedesc">EngineClass(_: typedesc[OpenXRExtensionWrapper]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRExtensionWrapperExtension%5D" title="EngineClass(_: typedesc[OpenXRExtensionWrapperExtension]): typedesc">EngineClass(_: typedesc[OpenXRExtensionWrapperExtension]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRFutureExtension%5D" title="EngineClass(_: typedesc[OpenXRFutureExtension]): typedesc">EngineClass(_: typedesc[OpenXRFutureExtension]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRFutureResult%5D" title="EngineClass(_: typedesc[OpenXRFutureResult]): typedesc">EngineClass(_: typedesc[OpenXRFutureResult]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRHand%5D" title="EngineClass(_: typedesc[OpenXRHand]): typedesc">EngineClass(_: typedesc[OpenXRHand]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRHapticBase%5D" title="EngineClass(_: typedesc[OpenXRHapticBase]): typedesc">EngineClass(_: typedesc[OpenXRHapticBase]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRHapticVibration%5D" title="EngineClass(_: typedesc[OpenXRHapticVibration]): typedesc">EngineClass(_: typedesc[OpenXRHapticVibration]): typedesc</a></li>
@@ -1499,6 +1532,9 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRInterface%5D" title="EngineClass(_: typedesc[OpenXRInterface]): typedesc">EngineClass(_: typedesc[OpenXRInterface]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRIPBinding%5D" title="EngineClass(_: typedesc[OpenXRIPBinding]): typedesc">EngineClass(_: typedesc[OpenXRIPBinding]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRIPBindingModifier%5D" title="EngineClass(_: typedesc[OpenXRIPBindingModifier]): typedesc">EngineClass(_: typedesc[OpenXRIPBindingModifier]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModel%5D" title="EngineClass(_: typedesc[OpenXRRenderModel]): typedesc">EngineClass(_: typedesc[OpenXRRenderModel]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModelExtension%5D" title="EngineClass(_: typedesc[OpenXRRenderModelExtension]): typedesc">EngineClass(_: typedesc[OpenXRRenderModelExtension]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModelManager%5D" title="EngineClass(_: typedesc[OpenXRRenderModelManager]): typedesc">EngineClass(_: typedesc[OpenXRRenderModelManager]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOpenXRVisibilityMask%5D" title="EngineClass(_: typedesc[OpenXRVisibilityMask]): typedesc">EngineClass(_: typedesc[OpenXRVisibilityMask]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOptimizedTranslation%5D" title="EngineClass(_: typedesc[OptimizedTranslation]): typedesc">EngineClass(_: typedesc[OptimizedTranslation]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BOptionButton%5D" title="EngineClass(_: typedesc[OptionButton]): typedesc">EngineClass(_: typedesc[OptionButton]): typedesc</a></li>
@@ -1641,6 +1677,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterOggVorbis%5D" title="EngineClass(_: typedesc[ResourceImporterOggVorbis]): typedesc">EngineClass(_: typedesc[ResourceImporterOggVorbis]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterScene%5D" title="EngineClass(_: typedesc[ResourceImporterScene]): typedesc">EngineClass(_: typedesc[ResourceImporterScene]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterShaderFile%5D" title="EngineClass(_: typedesc[ResourceImporterShaderFile]): typedesc">EngineClass(_: typedesc[ResourceImporterShaderFile]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterSVG%5D" title="EngineClass(_: typedesc[ResourceImporterSVG]): typedesc">EngineClass(_: typedesc[ResourceImporterSVG]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterTexture%5D" title="EngineClass(_: typedesc[ResourceImporterTexture]): typedesc">EngineClass(_: typedesc[ResourceImporterTexture]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterTextureAtlas%5D" title="EngineClass(_: typedesc[ResourceImporterTextureAtlas]): typedesc">EngineClass(_: typedesc[ResourceImporterTextureAtlas]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BResourceImporterWAV%5D" title="EngineClass(_: typedesc[ResourceImporterWAV]): typedesc">EngineClass(_: typedesc[ResourceImporterWAV]): typedesc</a></li>
@@ -1661,6 +1698,7 @@
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BSceneTree%5D" title="EngineClass(_: typedesc[SceneTree]): typedesc">EngineClass(_: typedesc[SceneTree]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BSceneTreeTimer%5D" title="EngineClass(_: typedesc[SceneTreeTimer]): typedesc">EngineClass(_: typedesc[SceneTreeTimer]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BScript%5D" title="EngineClass(_: typedesc[Script]): typedesc">EngineClass(_: typedesc[Script]): typedesc</a></li>
+<li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BScriptBacktrace%5D" title="EngineClass(_: typedesc[ScriptBacktrace]): typedesc">EngineClass(_: typedesc[ScriptBacktrace]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BScriptCreateDialog%5D" title="EngineClass(_: typedesc[ScriptCreateDialog]): typedesc">EngineClass(_: typedesc[ScriptCreateDialog]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BScriptEditor%5D" title="EngineClass(_: typedesc[ScriptEditor]): typedesc">EngineClass(_: typedesc[ScriptEditor]): typedesc</a></li>
 <li><a class="reference" href="#EngineClass.t%2Ctypedesc%5BScriptEditorBase%5D" title="EngineClass(_: typedesc[ScriptEditorBase]): typedesc">EngineClass(_: typedesc[ScriptEditorBase]): typedesc</a></li>
@@ -2004,6 +2042,14 @@
 </div>
 <div id="AESContext">
   <dt><pre><a href="classindex.html#AESContext"><span class="Identifier">AESContext</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="AimModifier3D">
+  <dt><pre><a href="classindex.html#AimModifier3D"><span class="Identifier">AimModifier3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#BoneConstraint3D"><span class="Identifier">BoneConstraint3D</span></a></pre></dt>
   <dd>
     
     
@@ -2842,6 +2888,14 @@
     
   </dd>
 </div>
+<div id="BoneConstraint3D">
+  <dt><pre><a href="classindex.html#BoneConstraint3D"><span class="Identifier">BoneConstraint3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#SkeletonModifier3D"><span class="Identifier">SkeletonModifier3D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="BoneMap">
   <dt><pre><a href="classindex.html#BoneMap"><span class="Identifier">BoneMap</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Resource"><span class="Identifier">Resource</span></a></pre></dt>
   <dd>
@@ -3322,6 +3376,14 @@
     
   </dd>
 </div>
+<div id="ConvertTransformModifier3D">
+  <dt><pre><a href="classindex.html#ConvertTransformModifier3D"><span class="Identifier">ConvertTransformModifier3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#BoneConstraint3D"><span class="Identifier">BoneConstraint3D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="ConvexPolygonShape2D">
   <dt><pre><a href="classindex.html#ConvexPolygonShape2D"><span class="Identifier">ConvexPolygonShape2D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Shape2D"><span class="Identifier">Shape2D</span></a></pre></dt>
   <dd>
@@ -3332,6 +3394,14 @@
 </div>
 <div id="ConvexPolygonShape3D">
   <dt><pre><a href="classindex.html#ConvexPolygonShape3D"><span class="Identifier">ConvexPolygonShape3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Shape3D"><span class="Identifier">Shape3D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="CopyTransformModifier3D">
+  <dt><pre><a href="classindex.html#CopyTransformModifier3D"><span class="Identifier">CopyTransformModifier3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#BoneConstraint3D"><span class="Identifier">BoneConstraint3D</span></a></pre></dt>
   <dd>
     
     
@@ -3562,6 +3632,14 @@
     
   </dd>
 </div>
+<div id="DPITexture">
+  <dt><pre><a href="classindex.html#DPITexture"><span class="Identifier">DPITexture</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Texture2D"><span class="Identifier">Texture2D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="DTLSServer">
   <dt><pre><a href="classindex.html#DTLSServer"><span class="Identifier">DTLSServer</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a></pre></dt>
   <dd>
@@ -3618,6 +3696,14 @@
     
   </dd>
 </div>
+<div id="EditorExportPlatformAppleEmbedded">
+  <dt><pre><a href="classindex.html#EditorExportPlatformAppleEmbedded"><span class="Identifier">EditorExportPlatformAppleEmbedded</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatform"><span class="Identifier">EditorExportPlatform</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EditorExportPlatformExtension">
   <dt><pre><a href="classindex.html#EditorExportPlatformExtension"><span class="Identifier">EditorExportPlatformExtension</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatform"><span class="Identifier">EditorExportPlatform</span></a></pre></dt>
   <dd>
@@ -3627,7 +3713,7 @@
   </dd>
 </div>
 <div id="EditorExportPlatformIOS">
-  <dt><pre><a href="classindex.html#EditorExportPlatformIOS"><span class="Identifier">EditorExportPlatformIOS</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatform"><span class="Identifier">EditorExportPlatform</span></a></pre></dt>
+  <dt><pre><a href="classindex.html#EditorExportPlatformIOS"><span class="Identifier">EditorExportPlatformIOS</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatformAppleEmbedded"><span class="Identifier">EditorExportPlatformAppleEmbedded</span></a></pre></dt>
   <dd>
     
     
@@ -3652,6 +3738,14 @@
 </div>
 <div id="EditorExportPlatformPC">
   <dt><pre><a href="classindex.html#EditorExportPlatformPC"><span class="Identifier">EditorExportPlatformPC</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatform"><span class="Identifier">EditorExportPlatform</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EditorExportPlatformVisionOS">
+  <dt><pre><a href="classindex.html#EditorExportPlatformVisionOS"><span class="Identifier">EditorExportPlatformVisionOS</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#EditorExportPlatformAppleEmbedded"><span class="Identifier">EditorExportPlatformAppleEmbedded</span></a></pre></dt>
   <dd>
     
     
@@ -4124,6 +4218,22 @@
 </div>
 <div id="FogVolume">
   <dt><pre><a href="classindex.html#FogVolume"><span class="Identifier">FogVolume</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#VisualInstance3D"><span class="Identifier">VisualInstance3D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="FoldableContainer">
+  <dt><pre><a href="classindex.html#FoldableContainer"><span class="Identifier">FoldableContainer</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Container"><span class="Identifier">Container</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="FoldableGroup">
+  <dt><pre><a href="classindex.html#FoldableGroup"><span class="Identifier">FoldableGroup</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Resource"><span class="Identifier">Resource</span></a></pre></dt>
   <dd>
     
     
@@ -5122,6 +5232,14 @@
     
   </dd>
 </div>
+<div id="Logger">
+  <dt><pre><a href="classindex.html#Logger"><span class="Identifier">Logger</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="LookAtModifier3D">
   <dt><pre><a href="classindex.html#LookAtModifier3D"><span class="Identifier">LookAtModifier3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#SkeletonModifier3D"><span class="Identifier">SkeletonModifier3D</span></a></pre></dt>
   <dd>
@@ -5276,6 +5394,14 @@
 </div>
 <div id="MobileVRInterface">
   <dt><pre><a href="classindex.html#MobileVRInterface"><span class="Identifier">MobileVRInterface</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#XRInterface"><span class="Identifier">XRInterface</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="ModifierBoneTarget3D">
+  <dt><pre><a href="classindex.html#ModifierBoneTarget3D"><span class="Identifier">ModifierBoneTarget3D</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#SkeletonModifier3D"><span class="Identifier">SkeletonModifier3D</span></a></pre></dt>
   <dd>
     
     
@@ -5754,8 +5880,32 @@
     
   </dd>
 </div>
+<div id="OpenXRExtensionWrapper">
+  <dt><pre><a href="classindex.html#OpenXRExtensionWrapper"><span class="Identifier">OpenXRExtensionWrapper</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="OpenXRExtensionWrapperExtension">
-  <dt><pre><a href="classindex.html#OpenXRExtensionWrapperExtension"><span class="Identifier">OpenXRExtensionWrapperExtension</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a></pre></dt>
+  <dt><pre><a href="classindex.html#OpenXRExtensionWrapperExtension"><span class="Identifier">OpenXRExtensionWrapperExtension</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#OpenXRExtensionWrapper"><span class="Identifier">OpenXRExtensionWrapper</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRFutureExtension">
+  <dt><pre><a href="classindex.html#OpenXRFutureExtension"><span class="Identifier">OpenXRFutureExtension</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#OpenXRExtensionWrapper"><span class="Identifier">OpenXRExtensionWrapper</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRFutureResult">
+  <dt><pre><a href="classindex.html#OpenXRFutureResult"><span class="Identifier">OpenXRFutureResult</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a></pre></dt>
   <dd>
     
     
@@ -5836,6 +5986,30 @@
 </div>
 <div id="OpenXRIPBindingModifier">
   <dt><pre><a href="classindex.html#OpenXRIPBindingModifier"><span class="Identifier">OpenXRIPBindingModifier</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#OpenXRBindingModifier"><span class="Identifier">OpenXRBindingModifier</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRRenderModel">
+  <dt><pre><a href="classindex.html#OpenXRRenderModel"><span class="Identifier">OpenXRRenderModel</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Node3D"><span class="Identifier">Node3D</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRRenderModelExtension">
+  <dt><pre><a href="classindex.html#OpenXRRenderModelExtension"><span class="Identifier">OpenXRRenderModelExtension</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#OpenXRExtensionWrapper"><span class="Identifier">OpenXRExtensionWrapper</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRRenderModelManager">
+  <dt><pre><a href="classindex.html#OpenXRRenderModelManager"><span class="Identifier">OpenXRRenderModelManager</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Node3D"><span class="Identifier">Node3D</span></a></pre></dt>
   <dd>
     
     
@@ -6970,6 +7144,14 @@
     
   </dd>
 </div>
+<div id="ResourceImporterSVG">
+  <dt><pre><a href="classindex.html#ResourceImporterSVG"><span class="Identifier">ResourceImporterSVG</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#ResourceImporter"><span class="Identifier">ResourceImporter</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="ResourceImporterTexture">
   <dt><pre><a href="classindex.html#ResourceImporterTexture"><span class="Identifier">ResourceImporterTexture</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#ResourceImporter"><span class="Identifier">ResourceImporter</span></a></pre></dt>
   <dd>
@@ -7124,6 +7306,14 @@
 </div>
 <div id="Script">
   <dt><pre><a href="classindex.html#Script"><span class="Identifier">Script</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="classindex.html#Resource"><span class="Identifier">Resource</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="ScriptBacktrace">
+  <dt><pre><a href="classindex.html#ScriptBacktrace"><span class="Identifier">ScriptBacktrace</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../builtinindex.html#RefCounted"><span class="Identifier">RefCounted</span></a></pre></dt>
   <dd>
     
     
@@ -9625,6 +9815,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[AimModifier3D]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BAimModifier3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#AimModifier3D"><span class="Identifier">AimModifier3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[AnimatableBody2D]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BAnimatableBody2D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#AnimatableBody2D"><span class="Identifier">AnimatableBody2D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -10457,6 +10655,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[BoneConstraint3D]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BBoneConstraint3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#BoneConstraint3D"><span class="Identifier">BoneConstraint3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[BoneMap]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BBoneMap%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#BoneMap"><span class="Identifier">BoneMap</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -10937,6 +11143,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[ConvertTransformModifier3D]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BConvertTransformModifier3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ConvertTransformModifier3D"><span class="Identifier">ConvertTransformModifier3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[ConvexPolygonShape2D]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BConvexPolygonShape2D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ConvexPolygonShape2D"><span class="Identifier">ConvexPolygonShape2D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -10947,6 +11161,14 @@
 </div>
 <div id="EngineClass.t,typedesc[ConvexPolygonShape3D]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BConvexPolygonShape3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ConvexPolygonShape3D"><span class="Identifier">ConvexPolygonShape3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[CopyTransformModifier3D]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BCopyTransformModifier3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#CopyTransformModifier3D"><span class="Identifier">CopyTransformModifier3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -11177,6 +11399,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[DPITexture]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BDPITexture%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#DPITexture"><span class="Identifier">DPITexture</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[DTLSServer]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BDTLSServer%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#DTLSServer"><span class="Identifier">DTLSServer</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -11233,6 +11463,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[EditorExportPlatformAppleEmbedded]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformAppleEmbedded%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#EditorExportPlatformAppleEmbedded"><span class="Identifier">EditorExportPlatformAppleEmbedded</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[EditorExportPlatformExtension]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformExtension%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#EditorExportPlatformExtension"><span class="Identifier">EditorExportPlatformExtension</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -11267,6 +11505,14 @@
 </div>
 <div id="EngineClass.t,typedesc[EditorExportPlatformPC]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformPC%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#EditorExportPlatformPC"><span class="Identifier">EditorExportPlatformPC</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[EditorExportPlatformVisionOS]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BEditorExportPlatformVisionOS%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#EditorExportPlatformVisionOS"><span class="Identifier">EditorExportPlatformVisionOS</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -11739,6 +11985,22 @@
 </div>
 <div id="EngineClass.t,typedesc[FogVolume]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BFogVolume%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#FogVolume"><span class="Identifier">FogVolume</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[FoldableContainer]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BFoldableContainer%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#FoldableContainer"><span class="Identifier">FoldableContainer</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[FoldableGroup]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BFoldableGroup%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#FoldableGroup"><span class="Identifier">FoldableGroup</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -12729,6 +12991,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[Logger]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BLogger%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#Logger"><span class="Identifier">Logger</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[LookAtModifier3D]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BLookAtModifier3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#LookAtModifier3D"><span class="Identifier">LookAtModifier3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -12883,6 +13153,14 @@
 </div>
 <div id="EngineClass.t,typedesc[MobileVRInterface]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BMobileVRInterface%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#MobileVRInterface"><span class="Identifier">MobileVRInterface</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[ModifierBoneTarget3D]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BModifierBoneTarget3D%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ModifierBoneTarget3D"><span class="Identifier">ModifierBoneTarget3D</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -13369,8 +13647,32 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[OpenXRExtensionWrapper]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRExtensionWrapper%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRExtensionWrapper"><span class="Identifier">OpenXRExtensionWrapper</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[OpenXRExtensionWrapperExtension]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRExtensionWrapperExtension%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRExtensionWrapperExtension"><span class="Identifier">OpenXRExtensionWrapperExtension</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[OpenXRFutureExtension]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRFutureExtension%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRFutureExtension"><span class="Identifier">OpenXRFutureExtension</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[OpenXRFutureResult]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRFutureResult%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRFutureResult"><span class="Identifier">OpenXRFutureResult</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -13451,6 +13753,30 @@
 </div>
 <div id="EngineClass.t,typedesc[OpenXRIPBindingModifier]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRIPBindingModifier%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRIPBindingModifier"><span class="Identifier">OpenXRIPBindingModifier</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[OpenXRRenderModel]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModel%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRRenderModel"><span class="Identifier">OpenXRRenderModel</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[OpenXRRenderModelExtension]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModelExtension%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRRenderModelExtension"><span class="Identifier">OpenXRRenderModelExtension</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[OpenXRRenderModelManager]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BOpenXRRenderModelManager%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#OpenXRRenderModelManager"><span class="Identifier">OpenXRRenderModelManager</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -14593,6 +14919,14 @@
     
   </dd>
 </div>
+<div id="EngineClass.t,typedesc[ResourceImporterSVG]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BResourceImporterSVG%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ResourceImporterSVG"><span class="Identifier">ResourceImporterSVG</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EngineClass.t,typedesc[ResourceImporterTexture]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BResourceImporterTexture%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ResourceImporterTexture"><span class="Identifier">ResourceImporterTexture</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
@@ -14747,6 +15081,14 @@
 </div>
 <div id="EngineClass.t,typedesc[Script]">
   <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BScript%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#Script"><span class="Identifier">Script</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EngineClass.t,typedesc[ScriptBacktrace]">
+  <dt><pre><span class="Keyword">template</span> <a href="#EngineClass.t%2Ctypedesc%5BScriptBacktrace%5D"><span class="Identifier">EngineClass</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="classindex.html#ScriptBacktrace"><span class="Identifier">ScriptBacktrace</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">typedesc</span></pre></dt>
   <dd>
     
     
@@ -17237,7 +17579,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-19 09:53:09 UTC</small>
       </div>
     </div>
   </div>

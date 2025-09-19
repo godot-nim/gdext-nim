@@ -68,6 +68,12 @@ proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: 
   methodbind.ptrcall(self, [getPtr point, getPtr maxDistance], addr ret)
   (addr ret).decode_result(Dictionary)
 
+proc getConnectionListFromNode*(self: GraphEdit; node: StringName): TypedArray[Dictionary] =
+  expandMethodBind(className GraphEdit, "get_connection_list_from_node", 3147814860)
+  var ret: encoded TypedArray[Dictionary]
+  methodbind.ptrcall(self, [getPtr node], addr ret)
+  (addr ret).decode_result(TypedArray[Dictionary])
+
 proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): TypedArray[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connections_intersecting_with_rect", 2709748719)
   var ret: encoded TypedArray[Dictionary]
@@ -368,6 +374,16 @@ proc isRightDisconnectsEnabled*(self: GraphEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setTypeNames*(self: GraphEdit; typeNames: Dictionary): void =
+  expandMethodBind(className GraphEdit, "set_type_names", 4155329257)
+  methodbind.ptrcall(self, [getPtr typeNames])
+
+proc getTypeNames*(self: GraphEdit): Dictionary =
+  expandMethodBind(className GraphEdit, "get_type_names", 3102165223)
+  var ret: encoded Dictionary
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Dictionary)
+
 proc getMenuHbox*(self: GraphEdit): HBoxContainer =
   expandMethodBind(className GraphEdit, "get_menu_hbox", 3590609951)
   var ret: encoded HBoxContainer
@@ -402,6 +418,9 @@ template `panningScheme=`*(self: GraphEdit; value) = self.setPanningScheme(value
 
 template rightDisconnects*(self: GraphEdit): untyped = self.isRightDisconnectsEnabled()
 template `rightDisconnects=`*(self: GraphEdit; value) = self.setRightDisconnects(value)
+
+template typeNames*(self: GraphEdit): untyped = self.getTypeNames()
+template `typeNames=`*(self: GraphEdit; value) = self.setTypeNames(value)
 
 template connectionLinesCurvature*(self: GraphEdit): untyped = self.getConnectionLinesCurvature()
 template `connectionLinesCurvature=`*(self: GraphEdit; value) = self.setConnectionLinesCurvature(value)

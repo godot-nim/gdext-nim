@@ -138,6 +138,16 @@ proc getFileMode*(self: FileDialog): FileDialog_FileMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(FileDialog_FileMode)
 
+proc setDisplayMode*(self: FileDialog; mode: FileDialog_DisplayMode): void =
+  expandMethodBind(className FileDialog, "set_display_mode", 2692197101)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getDisplayMode*(self: FileDialog): FileDialog_DisplayMode =
+  expandMethodBind(className FileDialog, "get_display_mode", 1092104624)
+  var ret: encoded FileDialog_DisplayMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(FileDialog_DisplayMode)
+
 proc getVbox*(self: FileDialog): VBoxContainer =
   expandMethodBind(className FileDialog, "get_vbox", 915758477)
   var ret: encoded VBoxContainer
@@ -190,6 +200,16 @@ proc getUseNativeDialog*(self: FileDialog): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setCustomizationFlagEnabled*(self: FileDialog; flag: FileDialog_Customization; enabled: bool): void =
+  expandMethodBind(className FileDialog, "set_customization_flag_enabled", 3849177100)
+  methodbind.ptrcall(self, [getPtr flag, getPtr enabled])
+
+proc isCustomizationFlagEnabled*(self: FileDialog; flag: FileDialog_Customization): bool =
+  expandMethodBind(className FileDialog, "is_customization_flag_enabled", 3722277863)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr flag], addr ret)
+  (addr ret).decode_result(bool)
+
 proc deselectAll*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "deselect_all", 3218959716)
   methodbind.ptrcall(self, [])
@@ -204,6 +224,9 @@ template `modeOverridesTitle=`*(self: FileDialog; value) = self.setModeOverrides
 template fileMode*(self: FileDialog): untyped = self.getFileMode()
 template `fileMode=`*(self: FileDialog; value) = self.setFileMode(value)
 
+template displayMode*(self: FileDialog): untyped = self.getDisplayMode()
+template `displayMode=`*(self: FileDialog; value) = self.setDisplayMode(value)
+
 template access*(self: FileDialog): untyped = self.getAccess()
 template `access=`*(self: FileDialog; value) = self.setAccess(value)
 
@@ -216,14 +239,35 @@ template `filters=`*(self: FileDialog; value) = self.setFilters(value)
 template filenameFilter*(self: FileDialog): untyped = self.getFilenameFilter()
 template `filenameFilter=`*(self: FileDialog; value) = self.setFilenameFilter(value)
 
-template optionCount*(self: FileDialog): untyped = self.getOptionCount()
-template `optionCount=`*(self: FileDialog; value) = self.setOptionCount(value)
-
 template showHiddenFiles*(self: FileDialog): untyped = self.isShowingHiddenFiles()
 template `showHiddenFiles=`*(self: FileDialog; value) = self.setShowHiddenFiles(value)
 
 template useNativeDialog*(self: FileDialog): untyped = self.getUseNativeDialog()
 template `useNativeDialog=`*(self: FileDialog; value) = self.setUseNativeDialog(value)
+
+template optionCount*(self: FileDialog): untyped = self.getOptionCount()
+template `optionCount=`*(self: FileDialog; value) = self.setOptionCount(value)
+
+template hiddenFilesToggleEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(0))
+template `hiddenFilesToggleEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(0), value)
+
+template fileFilterToggleEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(2))
+template `fileFilterToggleEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(2), value)
+
+template fileSortOptionsEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(3))
+template `fileSortOptionsEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(3), value)
+
+template folderCreationEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(1))
+template `folderCreationEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(1), value)
+
+template favoritesEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(4))
+template `favoritesEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(4), value)
+
+template recentListEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(5))
+template `recentListEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(5), value)
+
+template layoutToggleEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(6))
+template `layoutToggleEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(6), value)
 
 template currentDir*(self: FileDialog): untyped = self.getCurrentDir()
 template `currentDir=`*(self: FileDialog; value) = self.setCurrentDir(value)

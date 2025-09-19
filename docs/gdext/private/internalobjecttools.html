@@ -91,7 +91,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getInstanceID
-  <li><a class="reference" href="#getInstanceID%2CObject" title="getInstanceID(self: Object): GDObjectInstanceID">getInstanceID(self: Object): GDObjectInstanceID</a></li>
+  <li><a class="reference" href="#getInstanceID%2CObject" title="getInstanceID(self: Object): GdObjectInstanceId">getInstanceID(self: Object): GdObjectInstanceId</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getMethodBind
@@ -142,7 +142,7 @@
     <div id="callScriptMethod-procs-all">
   <div id="callScriptMethod,Object,StringName">
   <dt><pre><span class="Keyword">proc</span> <a href="#callScriptMethod%2CObject%2CStringName"><span class="Identifier">callScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -151,7 +151,7 @@
 </div>
 <div id="callScriptMethod,Object,StringName,array[,Variant]">
   <dt><pre><span class="Keyword">proc</span> <a href="#callScriptMethod%2CObject%2CStringName%2Carray%5B%2CVariant%5D"><span class="Identifier">callScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">0</span><span class="Other">,</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">GodotCallDefect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -171,7 +171,7 @@
 </div>
 <div id="castTo-procs-all">
   <div id="castTo,Object,pointer">
-  <dt><pre><span class="Keyword">proc</span> <a href="#castTo%2CObject%2Cpointer"><span class="Identifier">castTo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_class_tag</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#castTo%2CObject%2Cpointer"><span class="Identifier">castTo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_class_tag</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -180,8 +180,8 @@
   </dd>
 </div>
 <div id="castTo,ObjectPtr,pointer">
-  <dt><pre><span class="Keyword">proc</span> <a href="#castTo%2CObjectPtr%2Cpointer"><span class="Identifier">castTo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_class_tag</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#castTo%2CObjectPtr%2Cpointer"><span class="Identifier">castTo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_class_tag</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -211,8 +211,8 @@
 </div>
 <div id="getClassName-procs-all">
   <div id="getClassName,ObjectPtr">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObjectPtr"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObjectPtr"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -220,8 +220,8 @@
   </dd>
 </div>
 <div id="getClassName,Object">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObject"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getClassName%2CObject"><span class="Identifier">getClassName</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -245,7 +245,7 @@
   <div id="getInstanceBinding,ObjectPtr,InstanceBindingCallbacks">
   <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceBinding%2CObjectPtr%2CInstanceBindingCallbacks"><span class="Identifier">getInstanceBinding</span></a><span class="Other">(</span><span class="Identifier">p_engine_object</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span>
                         <span class="Identifier">callbacks</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -264,7 +264,7 @@
 </div>
 <div id="getInstanceID-procs-all">
   <div id="getInstanceID,Object">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceID%2CObject"><span class="Identifier">getInstanceID</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#GDObjectInstanceID"><span class="Identifier">GDObjectInstanceID</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getInstanceID%2CObject"><span class="Identifier">getInstanceID</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span><span class="Other">:</span> <a href="native.html#GdObjectInstanceId"><span class="Identifier">GdObjectInstanceId</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -297,8 +297,8 @@
 </div>
 <div id="hasScriptMethod-procs-all">
   <div id="hasScriptMethod,Object,StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#hasScriptMethod%2CObject%2CStringName"><span class="Identifier">hasScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#hasScriptMethod%2CObject%2CStringName"><span class="Identifier">hasScriptMethod</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span> <span class="Identifier">p_method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -310,7 +310,7 @@
 <div id="setInstance-procs-all">
   <div id="setInstance,ObjectPtr,StringName,Object">
   <dt><pre><span class="Keyword">proc</span> <a href="#setInstance%2CObjectPtr%2CStringName%2CObject"><span class="Identifier">setInstance</span></a><span class="Other">(</span><span class="Identifier">p_o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_classname</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">p_instance</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -322,8 +322,8 @@
 <div id="setInstanceBinding-procs-all">
   <div id="setInstanceBinding,ObjectPtr,Object,ptr.InstanceBindingCallbacks">
   <dt><pre><span class="Keyword">proc</span> <a href="#setInstanceBinding%2CObjectPtr%2CObject%2Cptr.InstanceBindingCallbacks"><span class="Identifier">setInstanceBinding</span></a><span class="Other">(</span><span class="Identifier">p_o</span><span class="Other">:</span> <a href="native.html#ObjectPtr"><span class="Identifier">ObjectPtr</span></a><span class="Other">;</span> <span class="Identifier">p_binding</span><span class="Other">:</span> <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a><span class="Other">;</span>
-                        <span class="Identifier">p_callbacks</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+                        <span class="Identifier">p_callbacks</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="native.html#InstanceBindingCallbacks"><span class="Identifier">InstanceBindingCallbacks</span></a><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -342,7 +342,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-19 09:53:09 UTC</small>
       </div>
     </div>
   </div>

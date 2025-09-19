@@ -6,6 +6,11 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(AStar2D, RefCounted)
 
+method filterNeighbor*(self: AStar2D; fromId: int64; neighborId: int64): bool {.base.} = (discard)
+proc registerVirtual_filterNeighbor*[T: AStar2D](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_filter_neighbor"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStar2D](p_instance).filterNeighbor(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
+
 method estimateCost*(self: AStar2D; fromId: int64; endId: int64): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStar2D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -67,6 +72,16 @@ proc getPointIds*(self: AStar2D): PackedInt64Array =
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt64Array)
+
+proc setNeighborFilterEnabled*(self: AStar2D; enabled: bool): void =
+  expandMethodBind(className AStar2D, "set_neighbor_filter_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isNeighborFilterEnabled*(self: AStar2D): bool =
+  expandMethodBind(className AStar2D, "is_neighbor_filter_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 
 proc setPointDisabled*(self: AStar2D; id: int64; disabled: bool = true): void =
   expandMethodBind(className AStar2D, "set_point_disabled", 972357352)
@@ -135,3 +150,6 @@ proc getIdPath*(self: AStar2D; fromId: int64; toId: int64; allowPartialPath: boo
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr fromId, getPtr toId, getPtr allowPartialPath], addr ret)
   (addr ret).decode_result(PackedInt64Array)
+
+template neighborFilterEnabled*(self: AStar2D): untyped = self.isNeighborFilterEnabled()
+template `neighborFilterEnabled=`*(self: AStar2D; value) = self.setNeighborFilterEnabled(value)

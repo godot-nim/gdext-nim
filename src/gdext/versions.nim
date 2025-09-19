@@ -5,13 +5,13 @@ proc strToTuple(str: string): tuple[Major, Minor, Patch: int] =
   (s[0], s[1], s[2])
 
 const
-  GdextVersionString* = "0.14.1"
+  GdextVersionString* = "0.15.0"
   GdextVersion* = strToTuple(GdextVersionString)
   GdextVersionMajor* = GdextVersion.Major
   GdextVersionMinor* = GdextVersion.Minor
   GdextVersionPatch* = GdextVersion.Patch
 
-  CurrentSupportedGodotVersionString* = "4.4.1"
+  CurrentSupportedGodotVersionString* = "4.5.0"
   CurrentSupportedGodotVersion* = strToTuple(CurrentSupportedGodotVersionString)
   CurrentSupportedGodotVersionMajor* = CurrentSupportedGodotVersion.Major
   CurrentSupportedGodotVersionMinor* = CurrentSupportedGodotVersion.Minor

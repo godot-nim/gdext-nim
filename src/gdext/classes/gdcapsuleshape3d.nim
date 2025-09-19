@@ -26,8 +26,21 @@ proc getHeight*(self: CapsuleShape3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setMidHeight*(self: CapsuleShape3D; midHeight: Float): void =
+  expandMethodBind(className CapsuleShape3D, "set_mid_height", 373806689)
+  methodbind.ptrcall(self, [getPtr midHeight])
+
+proc getMidHeight*(self: CapsuleShape3D): Float =
+  expandMethodBind(className CapsuleShape3D, "get_mid_height", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 template radius*(self: CapsuleShape3D): untyped = self.getRadius()
 template `radius=`*(self: CapsuleShape3D; value) = self.setRadius(value)
 
 template height*(self: CapsuleShape3D): untyped = self.getHeight()
 template `height=`*(self: CapsuleShape3D; value) = self.setHeight(value)
+
+template midHeight*(self: CapsuleShape3D): untyped = self.getMidHeight()
+template `midHeight=`*(self: CapsuleShape3D; value) = self.setMidHeight(value)

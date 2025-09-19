@@ -255,6 +255,16 @@ proc getCollisionVisibilityMode*(self: TileMapLayer): TileMapLayer_DebugVisibili
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TileMapLayer_DebugVisibilityMode)
 
+proc setPhysicsQuadrantSize*(self: TileMapLayer; size: int32): void =
+  expandMethodBind(className TileMapLayer, "set_physics_quadrant_size", 1286410249)
+  methodbind.ptrcall(self, [getPtr size])
+
+proc getPhysicsQuadrantSize*(self: TileMapLayer): int32 =
+  expandMethodBind(className TileMapLayer, "get_physics_quadrant_size", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 proc setOcclusionEnabled*(self: TileMapLayer; enabled: bool): void =
   expandMethodBind(className TileMapLayer, "set_occlusion_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -324,6 +334,9 @@ template `useKinematicBodies=`*(self: TileMapLayer; value) = self.setUseKinemati
 
 template collisionVisibilityMode*(self: TileMapLayer): untyped = self.getCollisionVisibilityMode()
 template `collisionVisibilityMode=`*(self: TileMapLayer; value) = self.setCollisionVisibilityMode(value)
+
+template physicsQuadrantSize*(self: TileMapLayer): untyped = self.getPhysicsQuadrantSize()
+template `physicsQuadrantSize=`*(self: TileMapLayer; value) = self.setPhysicsQuadrantSize(value)
 
 template navigationEnabled*(self: TileMapLayer): untyped = self.isNavigationEnabled()
 template `navigationEnabled=`*(self: TileMapLayer; value) = self.setNavigationEnabled(value)

@@ -521,7 +521,8 @@ proc add*[T](self: var TypedArray[T]; value: T) =
   append(self, value)
 
 proc add*[T](self: var PackedArray[T]; value: T) =
-  append(self, value)
+  discard append(self, value)
+  
 proc add*[T](self: var PackedArray[T]; array: PackedArray[T]) =
   appendArray(self, array)
 

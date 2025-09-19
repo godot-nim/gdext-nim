@@ -251,6 +251,11 @@ proc registerVirtual_fontIsAllowSystemFallback*[T: TextServerExtension](Self: ty
   Self.vmethods[newStringName"_font_is_allow_system_fallback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontIsAllowSystemFallback(p_args[0].decode(RID)).encode(r_ret)
 
+method fontClearSystemFallbackCache*(self: TextServerExtension): void {.base.} = (discard)
+proc registerVirtual_fontClearSystemFallbackCache*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_font_clear_system_fallback_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).fontClearSystemFallbackCache()
+
 method fontSetForceAutohinter*(self: TextServerExtension; fontRid: RID; forceAutohinter: bool): void {.base.} = (discard)
 proc registerVirtual_fontSetForceAutohinter*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_set_force_autohinter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -260,6 +265,16 @@ method fontIsForceAutohinter*(self: TextServerExtension; fontRid: RID): bool {.b
 proc registerVirtual_fontIsForceAutohinter*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_is_force_autohinter"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontIsForceAutohinter(p_args[0].decode(RID)).encode(r_ret)
+
+method fontSetModulateColorGlyphs*(self: TextServerExtension; fontRid: RID; modulate: bool): void {.base.} = (discard)
+proc registerVirtual_fontSetModulateColorGlyphs*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_font_set_modulate_color_glyphs"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).fontSetModulateColorGlyphs(p_args[0].decode(RID), p_args[1].decode(bool))
+
+method fontIsModulateColorGlyphs*(self: TextServerExtension; fontRid: RID): bool {.base.} = (discard)
+proc registerVirtual_fontIsModulateColorGlyphs*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_font_is_modulate_color_glyphs"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).fontIsModulateColorGlyphs(p_args[0].decode(RID)).encode(r_ret)
 
 method fontSetHinting*(self: TextServerExtension; fontRid: RID; hinting: TextServer_Hinting): void {.base.} = (discard)
 proc registerVirtual_fontSetHinting*[T: TextServerExtension](Self: typedesc[T]) =
@@ -365,6 +380,11 @@ method fontRemoveSizeCache*(self: TextServerExtension; fontRid: RID; size: Vecto
 proc registerVirtual_fontRemoveSizeCache*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_remove_size_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontRemoveSizeCache(p_args[0].decode(RID), p_args[1].decode(Vector2i))
+
+method fontGetSizeCacheInfo*(self: TextServerExtension; fontRid: RID): TypedArray[Dictionary] {.base.} = (discard)
+proc registerVirtual_fontGetSizeCacheInfo*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_font_get_size_cache_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).fontGetSizeCacheInfo(p_args[0].decode(RID)).encode(r_ret)
 
 method fontSetAscent*(self: TextServerExtension; fontRid: RID; size: int64; ascent: float64): void {.base.} = (discard)
 proc registerVirtual_fontSetAscent*[T: TextServerExtension](Self: typedesc[T]) =
@@ -591,15 +611,15 @@ proc registerVirtual_fontRenderGlyph*[T: TextServerExtension](Self: typedesc[T])
   Self.vmethods[newStringName"_font_render_glyph"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontRenderGlyph(p_args[0].decode(RID), p_args[1].decode(Vector2i), p_args[2].decode(int64))
 
-method fontDrawGlyph*(self: TextServerExtension; fontRid: RID; canvas: RID; size: int64; pos: Vector2; index: int64; color: Color): void {.base.} = (discard)
+method fontDrawGlyph*(self: TextServerExtension; fontRid: RID; canvas: RID; size: int64; pos: Vector2; index: int64; color: Color; oversampling: Float): void {.base.} = (discard)
 proc registerVirtual_fontDrawGlyph*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_draw_glyph"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).fontDrawGlyph(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(int64), p_args[3].decode(Vector2), p_args[4].decode(int64), p_args[5].decode(Color))
+    errproof: cast[TextServerExtension](p_instance).fontDrawGlyph(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(int64), p_args[3].decode(Vector2), p_args[4].decode(int64), p_args[5].decode(Color), p_args[6].decode(Float))
 
-method fontDrawGlyphOutline*(self: TextServerExtension; fontRid: RID; canvas: RID; size: int64; outlineSize: int64; pos: Vector2; index: int64; color: Color): void {.base.} = (discard)
+method fontDrawGlyphOutline*(self: TextServerExtension; fontRid: RID; canvas: RID; size: int64; outlineSize: int64; pos: Vector2; index: int64; color: Color; oversampling: Float): void {.base.} = (discard)
 proc registerVirtual_fontDrawGlyphOutline*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_draw_glyph_outline"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).fontDrawGlyphOutline(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(int64), p_args[3].decode(int64), p_args[4].decode(Vector2), p_args[5].decode(int64), p_args[6].decode(Color))
+    errproof: cast[TextServerExtension](p_instance).fontDrawGlyphOutline(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(int64), p_args[3].decode(int64), p_args[4].decode(Vector2), p_args[5].decode(int64), p_args[6].decode(Color), p_args[7].decode(Float))
 
 method fontIsLanguageSupported*(self: TextServerExtension; fontRid: RID; language: String): bool {.base.} = (discard)
 proc registerVirtual_fontIsLanguageSupported*[T: TextServerExtension](Self: typedesc[T]) =
@@ -680,6 +700,16 @@ method fontSetGlobalOversampling*(self: TextServerExtension; oversampling: float
 proc registerVirtual_fontSetGlobalOversampling*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_set_global_oversampling"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontSetGlobalOversampling(p_args[0].decode(float64))
+
+method referenceOversamplingLevel*(self: TextServerExtension; oversampling: float64): void {.base.} = (discard)
+proc registerVirtual_referenceOversamplingLevel*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_reference_oversampling_level"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).referenceOversamplingLevel(p_args[0].decode(float64))
+
+method unreferenceOversamplingLevel*(self: TextServerExtension; oversampling: float64): void {.base.} = (discard)
+proc registerVirtual_unreferenceOversamplingLevel*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_unreference_oversampling_level"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).unreferenceOversamplingLevel(p_args[0].decode(float64))
 
 method getHexCodeBoxSize*(self: TextServerExtension; size: int64; index: int64): Vector2 {.base.} = (discard)
 proc registerVirtual_getHexCodeBoxSize*[T: TextServerExtension](Self: typedesc[T]) =
@@ -796,6 +826,11 @@ proc registerVirtual_shapedTextResizeObject*[T: TextServerExtension](Self: typed
   Self.vmethods[newStringName"_shaped_text_resize_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextResizeObject(p_args[0].decode(RID), p_args[1].decode(Variant), p_args[2].decode(Vector2), p_args[3].decode(InlineAlignment), p_args[4].decode(float64)).encode(r_ret)
 
+method shapedGetText*(self: TextServerExtension; shaped: RID): String {.base.} = (discard)
+proc registerVirtual_shapedGetText*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_text"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetText(p_args[0].decode(RID)).encode(r_ret)
+
 method shapedGetSpanCount*(self: TextServerExtension; shaped: RID): int64 {.base.} = (discard)
 proc registerVirtual_shapedGetSpanCount*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_get_span_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -811,10 +846,60 @@ proc registerVirtual_shapedGetSpanEmbeddedObject*[T: TextServerExtension](Self: 
   Self.vmethods[newStringName"_shaped_get_span_embedded_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedGetSpanEmbeddedObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
 
+method shapedGetSpanText*(self: TextServerExtension; shaped: RID; index: int64): String {.base.} = (discard)
+proc registerVirtual_shapedGetSpanText*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_span_text"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetSpanText(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetSpanObject*(self: TextServerExtension; shaped: RID; index: int64): Variant {.base.} = (discard)
+proc registerVirtual_shapedGetSpanObject*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_span_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetSpanObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
 method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary): void {.base.} = (discard)
 proc registerVirtual_shapedSetSpanUpdateFont*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_set_span_update_font"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedSetSpanUpdateFont(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(TypedArray[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary))
+
+method shapedGetRunCount*(self: TextServerExtension; shaped: RID): int64 {.base.} = (discard)
+proc registerVirtual_shapedGetRunCount*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunCount(p_args[0].decode(RID)).encode(r_ret)
+
+method shapedGetRunText*(self: TextServerExtension; shaped: RID; index: int64): String {.base.} = (discard)
+proc registerVirtual_shapedGetRunText*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_text"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunText(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunRange*(self: TextServerExtension; shaped: RID; index: int64): Vector2i {.base.} = (discard)
+proc registerVirtual_shapedGetRunRange*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_range"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunRange(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunFontRid*(self: TextServerExtension; shaped: RID; index: int64): RID {.base.} = (discard)
+proc registerVirtual_shapedGetRunFontRid*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_font_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunFontRid(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunFontSize*(self: TextServerExtension; shaped: RID; index: int64): int32 {.base.} = (discard)
+proc registerVirtual_shapedGetRunFontSize*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_font_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunFontSize(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunLanguage*(self: TextServerExtension; shaped: RID; index: int64): String {.base.} = (discard)
+proc registerVirtual_shapedGetRunLanguage*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_language"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunLanguage(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunDirection*(self: TextServerExtension; shaped: RID; index: int64): TextServer_Direction {.base.} = (discard)
+proc registerVirtual_shapedGetRunDirection*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_direction"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunDirection(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
+
+method shapedGetRunObject*(self: TextServerExtension; shaped: RID; index: int64): Variant {.base.} = (discard)
+proc registerVirtual_shapedGetRunObject*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_get_run_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedGetRunObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
 
 method shapedTextSubstr*(self: TextServerExtension; shaped: RID; start: int64; length: int64): RID {.base.} = (discard)
 proc registerVirtual_shapedTextSubstr*[T: TextServerExtension](Self: typedesc[T]) =
@@ -991,15 +1076,15 @@ proc registerVirtual_shapedTextHitTestPosition*[T: TextServerExtension](Self: ty
   Self.vmethods[newStringName"_shaped_text_hit_test_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextHitTestPosition(p_args[0].decode(RID), p_args[1].decode(float64)).encode(r_ret)
 
-method shapedTextDraw*(self: TextServerExtension; shaped: RID; canvas: RID; pos: Vector2; clipL: float64; clipR: float64; color: Color): void {.base.} = (discard)
+method shapedTextDraw*(self: TextServerExtension; shaped: RID; canvas: RID; pos: Vector2; clipL: float64; clipR: float64; color: Color; oversampling: Float): void {.base.} = (discard)
 proc registerVirtual_shapedTextDraw*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedTextDraw(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(Vector2), p_args[3].decode(float64), p_args[4].decode(float64), p_args[5].decode(Color))
+    errproof: cast[TextServerExtension](p_instance).shapedTextDraw(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(Vector2), p_args[3].decode(float64), p_args[4].decode(float64), p_args[5].decode(Color), p_args[6].decode(Float))
 
-method shapedTextDrawOutline*(self: TextServerExtension; shaped: RID; canvas: RID; pos: Vector2; clipL: float64; clipR: float64; outlineSize: int64; color: Color): void {.base.} = (discard)
+method shapedTextDrawOutline*(self: TextServerExtension; shaped: RID; canvas: RID; pos: Vector2; clipL: float64; clipR: float64; outlineSize: int64; color: Color; oversampling: Float): void {.base.} = (discard)
 proc registerVirtual_shapedTextDrawOutline*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_draw_outline"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedTextDrawOutline(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(Vector2), p_args[3].decode(float64), p_args[4].decode(float64), p_args[5].decode(int64), p_args[6].decode(Color))
+    errproof: cast[TextServerExtension](p_instance).shapedTextDrawOutline(p_args[0].decode(RID), p_args[1].decode(RID), p_args[2].decode(Vector2), p_args[3].decode(float64), p_args[4].decode(float64), p_args[5].decode(int64), p_args[6].decode(Color), p_args[7].decode(Float))
 
 method shapedTextGetGraphemeBounds*(self: TextServerExtension; shaped: RID; pos: int64): Vector2 {.base.} = (discard)
 proc registerVirtual_shapedTextGetGraphemeBounds*[T: TextServerExtension](Self: typedesc[T]) =

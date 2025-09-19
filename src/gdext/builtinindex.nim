@@ -2,6 +2,7 @@ import std/tables
 
 import gdext/private/buildsettings
 import gdext/private/native
+import gdext/enums; export enums
 
 when Extension.decimalPrecision == "double":
   type real_elem* = float64
@@ -119,7 +120,7 @@ type
   GdRef*[RefCounted] = object
     handle*: RefCounted
 
-include gdext/gen/[localenums, globalenums, structs]
+include gdext/gen/[structs]
 
 type
   Signal* {.byref.} = object
@@ -264,7 +265,7 @@ template variantType*(Type: typedesc[ptr Variant]): Variant_Type = VariantType_N
 proc dup*(src: String): String =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeString](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: String) =
+proc `=destroy`*(val {.bycopy.}: String) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeString](addr val)
 proc `=copy`*(dst: var String; src: String) =
@@ -276,7 +277,7 @@ proc `=copy`*(dst: var String; src: String) =
 proc dup*(src: StringName): StringName =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeStringName](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: StringName) =
+proc `=destroy`*(val {.bycopy.}: StringName) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeStringName](addr val)
 proc `=copy`*(dst: var StringName; src: StringName) =
@@ -288,7 +289,7 @@ proc `=copy`*(dst: var StringName; src: StringName) =
 proc dup*(src: NodePath): NodePath =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeNodePath](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: NodePath) =
+proc `=destroy`*(val {.bycopy.}: NodePath) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeNodePath](addr val)
 proc `=copy`*(dst: var NodePath; src: NodePath) =
@@ -309,7 +310,7 @@ proc `=copy`*(dst: var RID; src: RID) =
 proc dup*(src: Callable): Callable =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeCallable](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Callable) =
+proc `=destroy`*(val {.bycopy.}: Callable) {.raises: [Exception].} =
   if val.`method` == StringName() and val.object == ObjectID(): return
   typeDestructor[VariantTypeCallable](addr val)
 proc `=copy`*(dst: var Callable; src: Callable) =
@@ -321,7 +322,7 @@ proc `=copy`*(dst: var Callable; src: Callable) =
 proc dup*(src: Signal): Signal =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeSignal](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Signal) =
+proc `=destroy`*(val {.bycopy.}: Signal) {.raises: [Exception].} =
   if val.name == StringName() and val.object == ObjectID(): return
   typeDestructor[VariantTypeSignal](addr val)
 proc `=copy`*(dst: var Signal; src: Signal) =
@@ -333,7 +334,7 @@ proc `=copy`*(dst: var Signal; src: Signal) =
 proc dup*(src: Dictionary): Dictionary =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeDictionary](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Dictionary) =
+proc `=destroy`*(val {.bycopy.}: Dictionary) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeDictionary](addr val)
 proc `=copy`*(dst: var Dictionary; src: Dictionary) =
@@ -345,7 +346,7 @@ proc `=copy`*(dst: var Dictionary; src: Dictionary) =
 proc dup*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeArray](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Array) =
+proc `=destroy`*(val {.bycopy.}: Array) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeArray](addr val)
 proc `=copy`*(dst: var Array; src: Array) =
@@ -376,7 +377,7 @@ proc dup*[T](src: PackedArray[T]): PackedArray[T] =
     typeConstructor[VariantTypePackedVector4Array](addr result, addr argPtr)
   elif T is Color:
     typeConstructor[VariantTypePackedColorArray](addr result, addr argPtr)
-proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) =
+proc `=destroy`*[T](val {.bycopy.}: PackedArray[T]) {.raises: [Exception].} =
   if val.opaque == PackedArray.opaque.default: return
   when T is byte:
     typeDestructor[VariantTypePackedByteArray](addr val)
@@ -404,7 +405,7 @@ proc `=copy`*[T](dst: var PackedArray[T]; src: PackedArray[T]) =
   wasMoved dst
   dst = dup src
 
-proc `=destroy`*(x {.bycopy.}: Variant) =
+proc `=destroy`*(x {.bycopy.}: Variant) {.raises: [Exception].} =
   interface_variantDestroy(addr x)
 proc dup*(x: Variant): Variant =
   interface_variantNewCopy(addr result, addr x)
@@ -413,10 +414,10 @@ proc `=copy`*(dest: var Variant; source: Variant) =
   wasMoved dest
   interface_variantNewCopy(addr dest, addr source)
 
-proc hook_reference(o: ObjectPtr): Bool {.raises: [].}
-proc hook_unreference(o: ObjectPtr): Bool {.raises: [].}
+proc hook_reference(o: ObjectPtr): Bool
+proc hook_unreference(o: ObjectPtr): Bool
 
-proc `=destroy`*[T](self: GdRef[T]) =
+proc `=destroy`*[T](self: GdRef[T]) {.raises: [Exception].} =
   if self.handle.isNil: return
   let objectptr = self.handle.unsafeEngineInstance
   if objectptr.isNil: return
@@ -433,10 +434,10 @@ proc `=copy`*[T](dst: var GdRef[T]; src: GdRef[T]) =
   `=wasMoved`dst
   dst = dup src
 
-proc hook_reference(o: ObjectPtr): Bool {.raises: [].} =
+proc hook_reference(o: ObjectPtr): Bool =
   if unlikely(o.isNil): return
   interface_Object_methodBindPtrCall(RefCounted_reference, o, nil, addr result)
-proc hook_unreference(o: ObjectPtr): Bool {.raises: [].} =
+proc hook_unreference(o: ObjectPtr): Bool =
   if unlikely(o.isNil): return
   interface_Object_methodBindPtrCall(RefCounted_unreference, o, nil, addr result)
 

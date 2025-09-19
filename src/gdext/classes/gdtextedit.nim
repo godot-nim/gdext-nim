@@ -120,6 +120,16 @@ proc isIndentWrappedLines*(self: TextEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setTabInputMode*(self: TextEdit; enabled: bool): void =
+  expandMethodBind(className TextEdit, "set_tab_input_mode", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc getTabInputMode*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "get_tab_input_mode", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setOvertypeModeEnabled*(self: TextEdit; enabled: bool): void =
   expandMethodBind(className TextEdit, "set_overtype_mode_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -150,6 +160,16 @@ proc isEmojiMenuEnabled*(self: TextEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setBackspaceDeletesCompositeCharacterEnabled*(self: TextEdit; enable: bool): void =
+  expandMethodBind(className TextEdit, "set_backspace_deletes_composite_character_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isBackspaceDeletesCompositeCharacterEnabled*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "is_backspace_deletes_composite_character_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setShortcutKeysEnabled*(self: TextEdit; enabled: bool): void =
   expandMethodBind(className TextEdit, "set_shortcut_keys_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -166,6 +186,16 @@ proc setVirtualKeyboardEnabled*(self: TextEdit; enabled: bool): void =
 
 proc isVirtualKeyboardEnabled*(self: TextEdit): bool =
   expandMethodBind(className TextEdit, "is_virtual_keyboard_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setVirtualKeyboardShowOnFocus*(self: TextEdit; showOnFocus: bool): void =
+  expandMethodBind(className TextEdit, "set_virtual_keyboard_show_on_focus", 2586408642)
+  methodbind.ptrcall(self, [getPtr showOnFocus])
+
+proc getVirtualKeyboardShowOnFocus*(self: TextEdit): bool =
+  expandMethodBind(className TextEdit, "get_virtual_keyboard_show_on_focus", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -602,6 +632,18 @@ proc getCaretColumn*(self: TextEdit; caretIndex: int32 = 0): int32 =
   expandMethodBind(className TextEdit, "get_caret_column", 1591665591)
   var ret: encoded int32
   methodbind.ptrcall(self, [getPtr caretIndex], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getNextCompositeCharacterColumn*(self: TextEdit; line: int32; column: int32): int32 =
+  expandMethodBind(className TextEdit, "get_next_composite_character_column", 3175239445)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr line, getPtr column], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getPreviousCompositeCharacterColumn*(self: TextEdit; line: int32; column: int32): int32 =
+  expandMethodBind(className TextEdit, "get_previous_composite_character_column", 3175239445)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr line, getPtr column], addr ret)
   (addr ret).decode_result(int32)
 
 proc getCaretWrapIndex*(self: TextEdit; caretIndex: int32 = 0): int32 =
@@ -1263,6 +1305,9 @@ template `contextMenuEnabled=`*(self: TextEdit; value) = self.setContextMenuEnab
 template emojiMenuEnabled*(self: TextEdit): untyped = self.isEmojiMenuEnabled()
 template `emojiMenuEnabled=`*(self: TextEdit; value) = self.setEmojiMenuEnabled(value)
 
+template backspaceDeletesCompositeCharacterEnabled*(self: TextEdit): untyped = self.isBackspaceDeletesCompositeCharacterEnabled()
+template `backspaceDeletesCompositeCharacterEnabled=`*(self: TextEdit; value) = self.setBackspaceDeletesCompositeCharacterEnabled(value)
+
 template shortcutKeysEnabled*(self: TextEdit): untyped = self.isShortcutKeysEnabled()
 template `shortcutKeysEnabled=`*(self: TextEdit; value) = self.setShortcutKeysEnabled(value)
 
@@ -1278,6 +1323,9 @@ template `dragAndDropSelectionEnabled=`*(self: TextEdit; value) = self.setDragAn
 template virtualKeyboardEnabled*(self: TextEdit): untyped = self.isVirtualKeyboardEnabled()
 template `virtualKeyboardEnabled=`*(self: TextEdit; value) = self.setVirtualKeyboardEnabled(value)
 
+template virtualKeyboardShowOnFocus*(self: TextEdit): untyped = self.getVirtualKeyboardShowOnFocus()
+template `virtualKeyboardShowOnFocus=`*(self: TextEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
+
 template middleMousePasteEnabled*(self: TextEdit): untyped = self.isMiddleMousePasteEnabled()
 template `middleMousePasteEnabled=`*(self: TextEdit; value) = self.setMiddleMousePasteEnabled(value)
 
@@ -1292,6 +1340,9 @@ template `autowrapMode=`*(self: TextEdit; value) = self.setAutowrapMode(value)
 
 template indentWrappedLines*(self: TextEdit): untyped = self.isIndentWrappedLines()
 template `indentWrappedLines=`*(self: TextEdit; value) = self.setIndentWrappedLines(value)
+
+template tabInputMode*(self: TextEdit): untyped = self.getTabInputMode()
+template `tabInputMode=`*(self: TextEdit; value) = self.setTabInputMode(value)
 
 template scrollSmooth*(self: TextEdit): untyped = self.isSmoothScrollEnabled()
 template `scrollSmooth=`*(self: TextEdit; value) = self.setSmoothScrollEnabled(value)

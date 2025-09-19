@@ -11,6 +11,6 @@ proc weave*(conf: JsonVariantSizeWithConf): Cloth =
   let intSize = (if c[1] == "32": "4" else: "8")
   weave multiline:
     &"when sizeof(real_elem) == {floatSize} and sizeof(int) == {intSize}:"
-    weave indent:
+    weave Indent.indent:
       for size in conf.sizes:
         weave size

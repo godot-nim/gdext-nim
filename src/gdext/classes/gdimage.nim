@@ -177,6 +177,18 @@ proc saveExrToBuffer*(self: Image; grayscale: bool = false): PackedByteArray =
   methodbind.ptrcall(self, [getPtr grayscale], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
+proc saveDds*(self: Image; path: String): Error =
+  expandMethodBind(className Image, "save_dds", 2113323047)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(Error)
+
+proc saveDdsToBuffer*(self: Image): PackedByteArray =
+  expandMethodBind(className Image, "save_dds_to_buffer", 2362200018)
+  var ret: encoded PackedByteArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedByteArray)
+
 proc saveWebp*(self: Image; path: String; lossy: bool = false; quality: Float = 0.75): Error =
   expandMethodBind(className Image, "save_webp", 2781156876)
   var ret: encoded Error
@@ -371,6 +383,12 @@ proc loadBmpFromBuffer*(self: Image; buffer: PackedByteArray): Error =
 
 proc loadKtxFromBuffer*(self: Image; buffer: PackedByteArray): Error =
   expandMethodBind(className Image, "load_ktx_from_buffer", 680677267)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr buffer], addr ret)
+  (addr ret).decode_result(Error)
+
+proc loadDdsFromBuffer*(self: Image; buffer: PackedByteArray): Error =
+  expandMethodBind(className Image, "load_dds_from_buffer", 680677267)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr buffer], addr ret)
   (addr ret).decode_result(Error)

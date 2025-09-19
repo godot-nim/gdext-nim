@@ -186,6 +186,18 @@ proc getCaretColumn*(self: LineEdit): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc getNextCompositeCharacterColumn*(self: LineEdit; column: int32): int32 =
+  expandMethodBind(className LineEdit, "get_next_composite_character_column", 923996154)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getPreviousCompositeCharacterColumn*(self: LineEdit; column: int32): int32 =
+  expandMethodBind(className LineEdit, "get_previous_composite_character_column", 923996154)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(int32)
+
 proc getScrollOffset*(self: LineEdit): Float =
   expandMethodBind(className LineEdit, "get_scroll_offset", 1740695150)
   var ret: encoded Float
@@ -330,12 +342,32 @@ proc isEmojiMenuEnabled*(self: LineEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setBackspaceDeletesCompositeCharacterEnabled*(self: LineEdit; enable: bool): void =
+  expandMethodBind(className LineEdit, "set_backspace_deletes_composite_character_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isBackspaceDeletesCompositeCharacterEnabled*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "is_backspace_deletes_composite_character_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setVirtualKeyboardEnabled*(self: LineEdit; enable: bool): void =
   expandMethodBind(className LineEdit, "set_virtual_keyboard_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
 
 proc isVirtualKeyboardEnabled*(self: LineEdit): bool =
   expandMethodBind(className LineEdit, "is_virtual_keyboard_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setVirtualKeyboardShowOnFocus*(self: LineEdit; showOnFocus: bool): void =
+  expandMethodBind(className LineEdit, "set_virtual_keyboard_show_on_focus", 2586408642)
+  methodbind.ptrcall(self, [getPtr showOnFocus])
+
+proc getVirtualKeyboardShowOnFocus*(self: LineEdit): bool =
+  expandMethodBind(className LineEdit, "get_virtual_keyboard_show_on_focus", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -467,8 +499,14 @@ template `contextMenuEnabled=`*(self: LineEdit; value) = self.setContextMenuEnab
 template emojiMenuEnabled*(self: LineEdit): untyped = self.isEmojiMenuEnabled()
 template `emojiMenuEnabled=`*(self: LineEdit; value) = self.setEmojiMenuEnabled(value)
 
+template backspaceDeletesCompositeCharacterEnabled*(self: LineEdit): untyped = self.isBackspaceDeletesCompositeCharacterEnabled()
+template `backspaceDeletesCompositeCharacterEnabled=`*(self: LineEdit; value) = self.setBackspaceDeletesCompositeCharacterEnabled(value)
+
 template virtualKeyboardEnabled*(self: LineEdit): untyped = self.isVirtualKeyboardEnabled()
 template `virtualKeyboardEnabled=`*(self: LineEdit; value) = self.setVirtualKeyboardEnabled(value)
+
+template virtualKeyboardShowOnFocus*(self: LineEdit): untyped = self.getVirtualKeyboardShowOnFocus()
+template `virtualKeyboardShowOnFocus=`*(self: LineEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
 
 template virtualKeyboardType*(self: LineEdit): untyped = self.getVirtualKeyboardType()
 template `virtualKeyboardType=`*(self: LineEdit; value) = self.setVirtualKeyboardType(value)

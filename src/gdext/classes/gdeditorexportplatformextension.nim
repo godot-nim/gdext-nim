@@ -66,7 +66,7 @@ proc registerVirtual_getOptionsTooltip*[T: EditorExportPlatformExtension](Self: 
   Self.vmethods[newStringName"_get_options_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlatformExtension](p_instance).getOptionsTooltip().encode(r_ret)
 
-method getOptionIcon*(self: EditorExportPlatformExtension; device: int32): gdref ImageTexture {.base.} = (discard)
+method getOptionIcon*(self: EditorExportPlatformExtension; device: int32): gdref Texture2D {.base.} = (discard)
 proc registerVirtual_getOptionIcon*[T: EditorExportPlatformExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_option_icon"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlatformExtension](p_instance).getOptionIcon(p_args[0].decode(int32)).encode(r_ret)

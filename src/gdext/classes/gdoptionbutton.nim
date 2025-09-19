@@ -38,6 +38,10 @@ proc setItemTooltip*(self: OptionButton; idx: int32; tooltip: String): void =
   expandMethodBind(className OptionButton, "set_item_tooltip", 501894301)
   methodbind.ptrcall(self, [getPtr idx, getPtr tooltip])
 
+proc setItemAutoTranslateMode*(self: OptionButton; idx: int32; mode: Node_AutoTranslateMode): void =
+  expandMethodBind(className OptionButton, "set_item_auto_translate_mode", 287402019)
+  methodbind.ptrcall(self, [getPtr idx, getPtr mode])
+
 proc getItemText*(self: OptionButton; idx: int32): String =
   expandMethodBind(className OptionButton, "get_item_text", 844755477)
   var ret: encoded String
@@ -73,6 +77,12 @@ proc getItemTooltip*(self: OptionButton; idx: int32): String =
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(String)
+
+proc getItemAutoTranslateMode*(self: OptionButton; idx: int32): Node_AutoTranslateMode =
+  expandMethodBind(className OptionButton, "get_item_auto_translate_mode", 906302372)
+  var ret: encoded Node_AutoTranslateMode
+  methodbind.ptrcall(self, [getPtr idx], addr ret)
+  (addr ret).decode_result(Node_AutoTranslateMode)
 
 proc isItemDisabled*(self: OptionButton; idx: int32): bool =
   expandMethodBind(className OptionButton, "is_item_disabled", 1116898809)

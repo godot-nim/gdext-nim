@@ -26,6 +26,16 @@ proc setTicksOnBorders*(self: Slider; ticksOnBorder: bool): void =
   expandMethodBind(className Slider, "set_ticks_on_borders", 2586408642)
   methodbind.ptrcall(self, [getPtr ticksOnBorder])
 
+proc getTicksPosition*(self: Slider): Slider_TickPosition =
+  expandMethodBind(className Slider, "get_ticks_position", 3567635531)
+  var ret: encoded Slider_TickPosition
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Slider_TickPosition)
+
+proc setTicksPosition*(self: Slider; ticksOnBorder: Slider_TickPosition): void =
+  expandMethodBind(className Slider, "set_ticks_position", 2952822224)
+  methodbind.ptrcall(self, [getPtr ticksOnBorder])
+
 proc setEditable*(self: Slider; editable: bool): void =
   expandMethodBind(className Slider, "set_editable", 2586408642)
   methodbind.ptrcall(self, [getPtr editable])
@@ -57,3 +67,6 @@ template `tickCount=`*(self: Slider; value) = self.setTicks(value)
 
 template ticksOnBorders*(self: Slider): untyped = self.getTicksOnBorders()
 template `ticksOnBorders=`*(self: Slider; value) = self.setTicksOnBorders(value)
+
+template ticksPosition*(self: Slider): untyped = self.getTicksPosition()
+template `ticksPosition=`*(self: Slider; value) = self.setTicksPosition(value)

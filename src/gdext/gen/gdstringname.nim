@@ -36,6 +36,7 @@ var `+(StringName StringName)`: PtrOperatorEvaluator
 var `%(StringName StringName)`: PtrOperatorEvaluator
 # `in(StringName StringName)`
 var `%(StringName NodePath)`: PtrOperatorEvaluator
+var `%(StringName RID)`: PtrOperatorEvaluator
 var `%(StringName Object)`: PtrOperatorEvaluator
 # `in(StringName Object)`
 var `%(StringName Callable)`: PtrOperatorEvaluator
@@ -85,6 +86,7 @@ func `<=`*(left: StringName; right: StringName): bool = {.noSideEffect.}: `<=(St
 func `+`*(left: StringName; right: StringName): String = {.noSideEffect.}: `+(StringName StringName)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: StringName): String = {.noSideEffect.}: `%(StringName StringName)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: NodePath): String = {.noSideEffect.}: `%(StringName NodePath)`(getPtr left, getPtr right, addr result)
+func `%`*(left: StringName; right: RID): String = {.noSideEffect.}: `%(StringName RID)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: Object): String = {.noSideEffect.}: `%(StringName Object)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: Callable): String = {.noSideEffect.}: `%(StringName Callable)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: Signal): String = {.noSideEffect.}: `%(StringName Signal)`(getPtr left, getPtr right, addr result)
@@ -131,6 +133,7 @@ proc load_StringName_operators {.execon: staticevents.init_engine.on_load_builti
   `+(StringName StringName)` = load(opAdd, VariantType_StringName, VariantType_StringName)
   `%(StringName StringName)` = load(opModule, VariantType_StringName, VariantType_StringName)
   `%(StringName NodePath)` = load(opModule, VariantType_StringName, VariantType_NodePath)
+  `%(StringName RID)` = load(opModule, VariantType_StringName, VariantType_RID)
   `%(StringName Object)` = load(opModule, VariantType_StringName, VariantType_Object)
   `%(StringName Callable)` = load(opModule, VariantType_StringName, VariantType_Callable)
   `%(StringName Signal)` = load(opModule, VariantType_StringName, VariantType_Signal)
@@ -175,6 +178,10 @@ var `similarity(StringName String)`: PtrBuiltinMethod
 var `format(StringName Variant String)`: PtrBuiltinMethod
 var `replace(StringName String String)`: PtrBuiltinMethod
 var `replacen(StringName String String)`: PtrBuiltinMethod
+var `replaceChar(StringName Int Int)`: PtrBuiltinMethod
+var `replaceChars(StringName String Int)`: PtrBuiltinMethod
+var `removeChar(StringName Int)`: PtrBuiltinMethod
+var `removeChars(StringName String)`: PtrBuiltinMethod
 var `repeat(StringName Int)`: PtrBuiltinMethod
 var `reverse(StringName)`: PtrBuiltinMethod
 var `insert(StringName Int String)`: PtrBuiltinMethod
@@ -183,6 +190,7 @@ var `capitalize(StringName)`: PtrBuiltinMethod
 var `toCamelCase(StringName)`: PtrBuiltinMethod
 var `toPascalCase(StringName)`: PtrBuiltinMethod
 var `toSnakeCase(StringName)`: PtrBuiltinMethod
+var `toKebabCase(StringName)`: PtrBuiltinMethod
 var `split(StringName String bool Int)`: PtrBuiltinMethod
 var `rsplit(StringName String bool Int)`: PtrBuiltinMethod
 var `splitFloats(StringName String bool)`: PtrBuiltinMethod
@@ -219,6 +227,7 @@ var `xmlEscape(StringName bool)`: PtrBuiltinMethod
 var `xmlUnescape(StringName)`: PtrBuiltinMethod
 var `uriEncode(StringName)`: PtrBuiltinMethod
 var `uriDecode(StringName)`: PtrBuiltinMethod
+var `uriFileDecode(StringName)`: PtrBuiltinMethod
 var `cEscape(StringName)`: PtrBuiltinMethod
 var `cUnescape(StringName)`: PtrBuiltinMethod
 var `jsonEscape(StringName)`: PtrBuiltinMethod
@@ -247,8 +256,9 @@ var `toAsciiBuffer(StringName)`: PtrBuiltinMethod
 var `toUtf8Buffer(StringName)`: PtrBuiltinMethod
 var `toUtf16Buffer(StringName)`: PtrBuiltinMethod
 var `toUtf32Buffer(StringName)`: PtrBuiltinMethod
-var `hexDecode(StringName)`: PtrBuiltinMethod
 var `toWcharBuffer(StringName)`: PtrBuiltinMethod
+var `toMultibyteCharBuffer(StringName String)`: PtrBuiltinMethod
+var `hexDecode(StringName)`: PtrBuiltinMethod
 var `hash(StringName)`: PtrBuiltinMethod
 
 proc casecmpTo*(self: StringName; to: String): Int =
@@ -333,6 +343,18 @@ proc replace*(self: StringName; what: String; forwhat: String): String =
 proc replacen*(self: StringName; what: String; forwhat: String): String =
   let argArr = [getPtr what, getPtr forwhat]
   `replacen(StringName String String)`(addr self, addr argArr[0], addr result, 2)
+proc replaceChar*(self: StringName; key: Int; with: Int): String =
+  let argArr = [getPtr key, getPtr with]
+  `replaceChar(StringName Int Int)`(addr self, addr argArr[0], addr result, 2)
+proc replaceChars*(self: StringName; keys: String; with: Int): String =
+  let argArr = [getPtr keys, getPtr with]
+  `replaceChars(StringName String Int)`(addr self, addr argArr[0], addr result, 2)
+proc removeChar*(self: StringName; what: Int): String =
+  let argArr = [getPtr what]
+  `removeChar(StringName Int)`(addr self, addr argArr[0], addr result, 1)
+proc removeChars*(self: StringName; chars: String): String =
+  let argArr = [getPtr chars]
+  `removeChars(StringName String)`(addr self, addr argArr[0], addr result, 1)
 proc repeat*(self: StringName; count: Int): String =
   let argArr = [getPtr count]
   `repeat(StringName Int)`(addr self, addr argArr[0], addr result, 1)
@@ -352,6 +374,8 @@ proc toPascalCase*(self: StringName): String =
   `toPascalCase(StringName)`(addr self, nil, addr result, 0)
 proc toSnakeCase*(self: StringName): String =
   `toSnakeCase(StringName)`(addr self, nil, addr result, 0)
+proc toKebabCase*(self: StringName): String =
+  `toKebabCase(StringName)`(addr self, nil, addr result, 0)
 proc split*(self: StringName; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
   let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
   `split(StringName String bool Int)`(addr self, addr argArr[0], addr result, 3)
@@ -389,8 +413,8 @@ proc getExtension*(self: StringName): String =
   `getExtension(StringName)`(addr self, nil, addr result, 0)
 proc getBasename*(self: StringName): String =
   `getBasename(StringName)`(addr self, nil, addr result, 0)
-proc pathJoin*(self: StringName; file: String): String =
-  let argArr = [getPtr file]
+proc pathJoin*(self: StringName; path: String): String =
+  let argArr = [getPtr path]
   `pathJoin(StringName String)`(addr self, addr argArr[0], addr result, 1)
 proc unicodeAt*(self: StringName; at: Int): Int =
   let argArr = [getPtr at]
@@ -439,6 +463,8 @@ proc uriEncode*(self: StringName): String =
   `uriEncode(StringName)`(addr self, nil, addr result, 0)
 proc uriDecode*(self: StringName): String =
   `uriDecode(StringName)`(addr self, nil, addr result, 0)
+proc uriFileDecode*(self: StringName): String =
+  `uriFileDecode(StringName)`(addr self, nil, addr result, 0)
 proc cEscape*(self: StringName): String =
   `cEscape(StringName)`(addr self, nil, addr result, 0)
 proc cUnescape*(self: StringName): String =
@@ -502,10 +528,13 @@ proc toUtf16Buffer*(self: StringName): PackedByteArray =
   `toUtf16Buffer(StringName)`(addr self, nil, addr result, 0)
 proc toUtf32Buffer*(self: StringName): PackedByteArray =
   `toUtf32Buffer(StringName)`(addr self, nil, addr result, 0)
-proc hexDecode*(self: StringName): PackedByteArray =
-  `hexDecode(StringName)`(addr self, nil, addr result, 0)
 proc toWcharBuffer*(self: StringName): PackedByteArray =
   `toWcharBuffer(StringName)`(addr self, nil, addr result, 0)
+proc toMultibyteCharBuffer*(self: StringName; encoding: String = newGdString()): PackedByteArray =
+  let argArr = [getPtr encoding]
+  `toMultibyteCharBuffer(StringName String)`(addr self, addr argArr[0], addr result, 1)
+proc hexDecode*(self: StringName): PackedByteArray =
+  `hexDecode(StringName)`(addr self, nil, addr result, 0)
 proc hash*(self: StringName): Hash =
   `hash(StringName)`(addr self, nil, addr result, 0)
 
@@ -538,6 +567,10 @@ proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinc
   `format(StringName Variant String)` = load(VariantType_StringName, "format", 3212199029)
   `replace(StringName String String)` = load(VariantType_StringName, "replace", 1340436205)
   `replacen(StringName String String)` = load(VariantType_StringName, "replacen", 1340436205)
+  `replaceChar(StringName Int Int)` = load(VariantType_StringName, "replace_char", 787537301)
+  `replaceChars(StringName String Int)` = load(VariantType_StringName, "replace_chars", 3535100402)
+  `removeChar(StringName Int)` = load(VariantType_StringName, "remove_char", 2162347432)
+  `removeChars(StringName String)` = load(VariantType_StringName, "remove_chars", 3134094431)
   `repeat(StringName Int)` = load(VariantType_StringName, "repeat", 2162347432)
   `reverse(StringName)` = load(VariantType_StringName, "reverse", 3942272618)
   `insert(StringName Int String)` = load(VariantType_StringName, "insert", 248737229)
@@ -546,6 +579,7 @@ proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinc
   `toCamelCase(StringName)` = load(VariantType_StringName, "to_camel_case", 3942272618)
   `toPascalCase(StringName)` = load(VariantType_StringName, "to_pascal_case", 3942272618)
   `toSnakeCase(StringName)` = load(VariantType_StringName, "to_snake_case", 3942272618)
+  `toKebabCase(StringName)` = load(VariantType_StringName, "to_kebab_case", 3942272618)
   `split(StringName String bool Int)` = load(VariantType_StringName, "split", 1252735785)
   `rsplit(StringName String bool Int)` = load(VariantType_StringName, "rsplit", 1252735785)
   `splitFloats(StringName String bool)` = load(VariantType_StringName, "split_floats", 2092079095)
@@ -582,6 +616,7 @@ proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinc
   `xmlUnescape(StringName)` = load(VariantType_StringName, "xml_unescape", 3942272618)
   `uriEncode(StringName)` = load(VariantType_StringName, "uri_encode", 3942272618)
   `uriDecode(StringName)` = load(VariantType_StringName, "uri_decode", 3942272618)
+  `uriFileDecode(StringName)` = load(VariantType_StringName, "uri_file_decode", 3942272618)
   `cEscape(StringName)` = load(VariantType_StringName, "c_escape", 3942272618)
   `cUnescape(StringName)` = load(VariantType_StringName, "c_unescape", 3942272618)
   `jsonEscape(StringName)` = load(VariantType_StringName, "json_escape", 3942272618)
@@ -610,6 +645,7 @@ proc load_StringName_methods {.execon: staticevents.init_engine.on_load_builtinc
   `toUtf8Buffer(StringName)` = load(VariantType_StringName, "to_utf8_buffer", 247621236)
   `toUtf16Buffer(StringName)` = load(VariantType_StringName, "to_utf16_buffer", 247621236)
   `toUtf32Buffer(StringName)` = load(VariantType_StringName, "to_utf32_buffer", 247621236)
-  `hexDecode(StringName)` = load(VariantType_StringName, "hex_decode", 247621236)
   `toWcharBuffer(StringName)` = load(VariantType_StringName, "to_wchar_buffer", 247621236)
+  `toMultibyteCharBuffer(StringName String)` = load(VariantType_StringName, "to_multibyte_char_buffer", 3055765187)
+  `hexDecode(StringName)` = load(VariantType_StringName, "hex_decode", 247621236)
   `hash(StringName)` = load(VariantType_StringName, "hash", 3173160232)

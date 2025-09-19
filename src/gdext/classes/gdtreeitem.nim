@@ -70,6 +70,16 @@ proc getText*(self: TreeItem; column: int32): String =
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(String)
 
+proc setDescription*(self: TreeItem; column: int32; description: String): void =
+  expandMethodBind(className TreeItem, "set_description", 501894301)
+  methodbind.ptrcall(self, [getPtr column, getPtr description])
+
+proc getDescription*(self: TreeItem; column: int32): String =
+  expandMethodBind(className TreeItem, "get_description", 844755477)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(String)
+
 proc setTextDirection*(self: TreeItem; column: int32; direction: Control_TextDirection): void =
   expandMethodBind(className TreeItem, "set_text_direction", 1707680378)
   methodbind.ptrcall(self, [getPtr column, getPtr direction])
@@ -380,9 +390,9 @@ proc clearButtons*(self: TreeItem): void =
   expandMethodBind(className TreeItem, "clear_buttons", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addButton*(self: TreeItem; column: int32; button: gdref Texture2D; id: int32 = -1; disabled: bool = false; tooltipText: String = newGdString()): void =
-  expandMethodBind(className TreeItem, "add_button", 1688223362)
-  methodbind.ptrcall(self, [getPtr column, getPtr button, getPtr id, getPtr disabled, getPtr tooltipText])
+proc addButton*(self: TreeItem; column: int32; button: gdref Texture2D; id: int32 = -1; disabled: bool = false; tooltipText: String = newGdString(); description: String = newGdString()): void =
+  expandMethodBind(className TreeItem, "add_button", 973481897)
+  methodbind.ptrcall(self, [getPtr column, getPtr button, getPtr id, getPtr disabled, getPtr tooltipText, getPtr description])
 
 proc getButtonCount*(self: TreeItem; column: int32): int32 =
   expandMethodBind(className TreeItem, "get_button_count", 923996154)
@@ -431,6 +441,10 @@ proc setButton*(self: TreeItem; column: int32; buttonIndex: int32; button: gdref
 proc eraseButton*(self: TreeItem; column: int32; buttonIndex: int32): void =
   expandMethodBind(className TreeItem, "erase_button", 3937882851)
   methodbind.ptrcall(self, [getPtr column, getPtr buttonIndex])
+
+proc setButtonDescription*(self: TreeItem; column: int32; buttonIndex: int32; description: String): void =
+  expandMethodBind(className TreeItem, "set_button_description", 2285447957)
+  methodbind.ptrcall(self, [getPtr column, getPtr buttonIndex, getPtr description])
 
 proc setButtonDisabled*(self: TreeItem; column: int32; buttonIndex: int32; disabled: bool): void =
   expandMethodBind(className TreeItem, "set_button_disabled", 1383440665)

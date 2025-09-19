@@ -42,6 +42,10 @@ proc isKeepingCompressedBuffer*(self: PortableCompressedTexture2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setBasisuCompressorParams*(self: PortableCompressedTexture2D; uastcLevel: int32; rdoQualityLoss: Float): void =
+  expandMethodBind(className PortableCompressedTexture2D, "set_basisu_compressor_params", 1602489585)
+  methodbind.ptrcall(self, [getPtr uastcLevel, getPtr rdoQualityLoss])
+
 proc setKeepAllCompressedBuffers*(_: typedesc[PortableCompressedTexture2D]; keep: bool): void =
   expandMethodBind(className PortableCompressedTexture2D, "set_keep_all_compressed_buffers", 2586408642)
   methodbind.ptrcall([getPtr keep])

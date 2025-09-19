@@ -22,33 +22,33 @@ proc setBuffer*(self: GLTFBufferView; buffer: int32): void =
   expandMethodBind(className GLTFBufferView, "set_buffer", 1286410249)
   methodbind.ptrcall(self, [getPtr buffer])
 
-proc getByteOffset*(self: GLTFBufferView): int32 =
+proc getByteOffset*(self: GLTFBufferView): int64 =
   expandMethodBind(className GLTFBufferView, "get_byte_offset", 3905245786)
-  var ret: encoded int32
+  var ret: encoded int64
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  (addr ret).decode_result(int64)
 
-proc setByteOffset*(self: GLTFBufferView; byteOffset: int32): void =
+proc setByteOffset*(self: GLTFBufferView; byteOffset: int64): void =
   expandMethodBind(className GLTFBufferView, "set_byte_offset", 1286410249)
   methodbind.ptrcall(self, [getPtr byteOffset])
 
-proc getByteLength*(self: GLTFBufferView): int32 =
+proc getByteLength*(self: GLTFBufferView): int64 =
   expandMethodBind(className GLTFBufferView, "get_byte_length", 3905245786)
-  var ret: encoded int32
+  var ret: encoded int64
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  (addr ret).decode_result(int64)
 
-proc setByteLength*(self: GLTFBufferView; byteLength: int32): void =
+proc setByteLength*(self: GLTFBufferView; byteLength: int64): void =
   expandMethodBind(className GLTFBufferView, "set_byte_length", 1286410249)
   methodbind.ptrcall(self, [getPtr byteLength])
 
-proc getByteStride*(self: GLTFBufferView): int32 =
+proc getByteStride*(self: GLTFBufferView): int64 =
   expandMethodBind(className GLTFBufferView, "get_byte_stride", 3905245786)
-  var ret: encoded int32
+  var ret: encoded int64
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  (addr ret).decode_result(int64)
 
-proc setByteStride*(self: GLTFBufferView; byteStride: int32): void =
+proc setByteStride*(self: GLTFBufferView; byteStride: int64): void =
   expandMethodBind(className GLTFBufferView, "set_byte_stride", 1286410249)
   methodbind.ptrcall(self, [getPtr byteStride])
 

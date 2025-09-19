@@ -56,6 +56,16 @@ proc isForceAutohinter*(self: SystemFont): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setModulateColorGlyphs*(self: SystemFont; modulate: bool): void =
+  expandMethodBind(className SystemFont, "set_modulate_color_glyphs", 2586408642)
+  methodbind.ptrcall(self, [getPtr modulate])
+
+proc isModulateColorGlyphs*(self: SystemFont): bool =
+  expandMethodBind(className SystemFont, "is_modulate_color_glyphs", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setHinting*(self: SystemFont; hinting: TextServer_Hinting): void =
   expandMethodBind(className SystemFont, "set_hinting", 1827459492)
   methodbind.ptrcall(self, [getPtr hinting])
@@ -180,6 +190,9 @@ template `allowSystemFallback=`*(self: SystemFont; value) = self.setAllowSystemF
 
 template forceAutohinter*(self: SystemFont): untyped = self.isForceAutohinter()
 template `forceAutohinter=`*(self: SystemFont; value) = self.setForceAutohinter(value)
+
+template modulateColorGlyphs*(self: SystemFont): untyped = self.isModulateColorGlyphs()
+template `modulateColorGlyphs=`*(self: SystemFont; value) = self.setModulateColorGlyphs(value)
 
 template hinting*(self: SystemFont): untyped = self.getHinting()
 template `hinting=`*(self: SystemFont; value) = self.setHinting(value)

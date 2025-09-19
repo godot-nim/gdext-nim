@@ -6,6 +6,12 @@ import gdxrinterface; export gdxrinterface
 
 expandOnClassImported(OpenXRInterface, XRInterface)
 
+proc getSessionState*(self: OpenXRInterface): OpenXRInterface_SessionState =
+  expandMethodBind(className OpenXRInterface, "get_session_state", 896364779)
+  var ret: encoded OpenXRInterface_SessionState
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(OpenXRInterface_SessionState)
+
 proc getDisplayRefreshRate*(self: OpenXRInterface): Float =
   expandMethodBind(className OpenXRInterface, "get_display_refresh_rate", 1740695150)
   var ret: encoded Float
@@ -163,6 +169,14 @@ proc getVrsStrength*(self: OpenXRInterface): Float =
 proc setVrsStrength*(self: OpenXRInterface; strength: Float): void =
   expandMethodBind(className OpenXRInterface, "set_vrs_strength", 373806689)
   methodbind.ptrcall(self, [getPtr strength])
+
+proc setCpuLevel*(self: OpenXRInterface; level: OpenXRInterface_PerfSettingsLevel): void =
+  expandMethodBind(className OpenXRInterface, "set_cpu_level", 2940842095)
+  methodbind.ptrcall(self, [getPtr level])
+
+proc setGpuLevel*(self: OpenXRInterface; level: OpenXRInterface_PerfSettingsLevel): void =
+  expandMethodBind(className OpenXRInterface, "set_gpu_level", 2940842095)
+  methodbind.ptrcall(self, [getPtr level])
 
 template displayRefreshRate*(self: OpenXRInterface): untyped = self.getDisplayRefreshRate()
 template `displayRefreshRate=`*(self: OpenXRInterface; value) = self.setDisplayRefreshRate(value)

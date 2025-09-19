@@ -204,6 +204,16 @@ proc moveTab*(self: TabBar; `from`: int32; to: int32): void =
   expandMethodBind(className TabBar, "move_tab", 3937882851)
   methodbind.ptrcall(self, [getPtr `from`, getPtr to])
 
+proc setCloseWithMiddleMouse*(self: TabBar; enabled: bool): void =
+  expandMethodBind(className TabBar, "set_close_with_middle_mouse", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc getCloseWithMiddleMouse*(self: TabBar): bool =
+  expandMethodBind(className TabBar, "get_close_with_middle_mouse", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setTabCloseDisplayPolicy*(self: TabBar; policy: TabBar_CloseButtonDisplayPolicy): void =
   expandMethodBind(className TabBar, "set_tab_close_display_policy", 2212906737)
   methodbind.ptrcall(self, [getPtr policy])
@@ -296,6 +306,9 @@ template `tabAlignment=`*(self: TabBar; value) = self.setTabAlignment(value)
 
 template clipTabs*(self: TabBar): untyped = self.getClipTabs()
 template `clipTabs=`*(self: TabBar; value) = self.setClipTabs(value)
+
+template closeWithMiddleMouse*(self: TabBar): untyped = self.getCloseWithMiddleMouse()
+template `closeWithMiddleMouse=`*(self: TabBar; value) = self.setCloseWithMiddleMouse(value)
 
 template tabCloseDisplayPolicy*(self: TabBar): untyped = self.getTabCloseDisplayPolicy()
 template `tabCloseDisplayPolicy=`*(self: TabBar; value) = self.setTabCloseDisplayPolicy(value)

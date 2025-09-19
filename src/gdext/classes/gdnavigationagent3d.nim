@@ -242,6 +242,52 @@ proc getSimplifyEpsilon*(self: NavigationAgent3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setPathReturnMaxLength*(self: NavigationAgent3D; length: Float): void =
+  expandMethodBind(className NavigationAgent3D, "set_path_return_max_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length])
+
+proc getPathReturnMaxLength*(self: NavigationAgent3D): Float =
+  expandMethodBind(className NavigationAgent3D, "get_path_return_max_length", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setPathReturnMaxRadius*(self: NavigationAgent3D; radius: Float): void =
+  expandMethodBind(className NavigationAgent3D, "set_path_return_max_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius])
+
+proc getPathReturnMaxRadius*(self: NavigationAgent3D): Float =
+  expandMethodBind(className NavigationAgent3D, "get_path_return_max_radius", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setPathSearchMaxPolygons*(self: NavigationAgent3D; maxPolygons: int32): void =
+  expandMethodBind(className NavigationAgent3D, "set_path_search_max_polygons", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxPolygons])
+
+proc getPathSearchMaxPolygons*(self: NavigationAgent3D): int32 =
+  expandMethodBind(className NavigationAgent3D, "get_path_search_max_polygons", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc setPathSearchMaxDistance*(self: NavigationAgent3D; distance: Float): void =
+  expandMethodBind(className NavigationAgent3D, "set_path_search_max_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr distance])
+
+proc getPathSearchMaxDistance*(self: NavigationAgent3D): Float =
+  expandMethodBind(className NavigationAgent3D, "get_path_search_max_distance", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getPathLength*(self: NavigationAgent3D): Float =
+  expandMethodBind(className NavigationAgent3D, "get_path_length", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getNextPathPosition*(self: NavigationAgent3D): Vector3 =
   expandMethodBind(className NavigationAgent3D, "get_next_path_position", 3783033775)
   var ret: encoded Vector3
@@ -432,6 +478,18 @@ template `simplifyPath=`*(self: NavigationAgent3D; value) = self.setSimplifyPath
 
 template simplifyEpsilon*(self: NavigationAgent3D): untyped = self.getSimplifyEpsilon()
 template `simplifyEpsilon=`*(self: NavigationAgent3D; value) = self.setSimplifyEpsilon(value)
+
+template pathReturnMaxLength*(self: NavigationAgent3D): untyped = self.getPathReturnMaxLength()
+template `pathReturnMaxLength=`*(self: NavigationAgent3D; value) = self.setPathReturnMaxLength(value)
+
+template pathReturnMaxRadius*(self: NavigationAgent3D): untyped = self.getPathReturnMaxRadius()
+template `pathReturnMaxRadius=`*(self: NavigationAgent3D; value) = self.setPathReturnMaxRadius(value)
+
+template pathSearchMaxPolygons*(self: NavigationAgent3D): untyped = self.getPathSearchMaxPolygons()
+template `pathSearchMaxPolygons=`*(self: NavigationAgent3D; value) = self.setPathSearchMaxPolygons(value)
+
+template pathSearchMaxDistance*(self: NavigationAgent3D): untyped = self.getPathSearchMaxDistance()
+template `pathSearchMaxDistance=`*(self: NavigationAgent3D; value) = self.setPathSearchMaxDistance(value)
 
 template avoidanceEnabled*(self: NavigationAgent3D): untyped = self.getAvoidanceEnabled()
 template `avoidanceEnabled=`*(self: NavigationAgent3D; value) = self.setAvoidanceEnabled(value)

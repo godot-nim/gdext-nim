@@ -18,14 +18,16 @@ requires "nim >= 2.0.12"
 import strformat
 
 var gdv = &"godot-{CurrentSupportedGodotVersion.Major}.{CurrentSupportedGodotVersion.Minor}-stable"
-var upstream = &"https://raw.githubusercontent.com/godotengine/godot-cpp/{gdv}/gdextension/extension_api.json"
+var upstreamroot = &"https://raw.githubusercontent.com/godotengine/godot-cpp/{gdv}/gdextension"
+var apiupstream = &"{upstreamroot}/extension_api.json"
+var ifceupstream = &"{upstreamroot}/gdextension_interface.h"
 
 task generate, "Generate extension API from the specified source. Remember all manual changes under src/ will be deleted.":
   rmDir "src/gdext/classes"
   rmDir "src/gdext/gen"
 
   withDir "coronation":
-    exec &"nimble run -- --apisource:{upstream} --outdir:../src"
+    exec &"nimble run -- --apisource:{apiupstream} --ifcesource:{ifceupstream} --outdir:../src"
 
 proc report(version, script: string) =
   try:

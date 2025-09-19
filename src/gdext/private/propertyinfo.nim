@@ -33,16 +33,18 @@ proc Meta*[T: enum](_: typedesc[T|set[T]]): var GodotEnumMeta =
   instance
 
 proc create_callback[T](p_token: pointer; p_instance: pointer): pointer {.gdcall.} =
-  let class = createClass[T](cast[ObjectPtr](p_instance))
-  result = cast[pointer](class)
-  debugCreate(class)
+  errproof:
+    let class = createClass[T](cast[ObjectPtr](p_instance))
+    result = cast[pointer](class)
+    debugCreate(class)
 
 proc free_callback[T](p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.} =
-  let class = cast[T](p_binding)
-  debugFree(class)
-  onDestroy class
-  `=destroy` class[]
-  dealloc class
+  errproof:
+    let class = cast[T](p_binding)
+    debugFree(class)
+    onDestroy class
+    `=destroy` class[]
+    dealloc class
 
 proc reference_callback(p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.} =
   result = true

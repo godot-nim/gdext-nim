@@ -12,14 +12,14 @@ proc getCanvas*(self: World2D): RID =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
-proc getSpace*(self: World2D): RID =
-  expandMethodBind(className World2D, "get_space", 2944877500)
+proc getNavigationMap*(self: World2D): RID =
+  expandMethodBind(className World2D, "get_navigation_map", 2944877500)
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
-proc getNavigationMap*(self: World2D): RID =
-  expandMethodBind(className World2D, "get_navigation_map", 2944877500)
+proc getSpace*(self: World2D): RID =
+  expandMethodBind(className World2D, "get_space", 2944877500)
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
@@ -32,8 +32,8 @@ proc getDirectSpaceState*(self: World2D): PhysicsDirectSpaceState2D =
 
 template canvas*(self: World2D): untyped = self.getCanvas()
 
-template space*(self: World2D): untyped = self.getSpace()
-
 template navigationMap*(self: World2D): untyped = self.getNavigationMap()
+
+template space*(self: World2D): untyped = self.getSpace()
 
 template directSpaceState*(self: World2D): untyped = self.getDirectSpaceState()

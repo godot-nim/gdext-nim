@@ -92,6 +92,12 @@ proc getCollisionPriority*(self: CSGShape3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc bakeCollisionShape*(self: CSGShape3D): gdref ConcavePolygonShape3D =
+  expandMethodBind(className CSGShape3D, "bake_collision_shape", 36102322)
+  var ret: encoded gdref ConcavePolygonShape3D
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref ConcavePolygonShape3D)
+
 proc setCalculateTangents*(self: CSGShape3D; enabled: bool): void =
   expandMethodBind(className CSGShape3D, "set_calculate_tangents", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -113,12 +119,6 @@ proc bakeStaticMesh*(self: CSGShape3D): gdref ArrayMesh =
   var ret: encoded gdref ArrayMesh
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref ArrayMesh)
-
-proc bakeCollisionShape*(self: CSGShape3D): gdref ConcavePolygonShape3D =
-  expandMethodBind(className CSGShape3D, "bake_collision_shape", 36102322)
-  var ret: encoded gdref ConcavePolygonShape3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref ConcavePolygonShape3D)
 
 template operation*(self: CSGShape3D): untyped = self.getOperation()
 template `operation=`*(self: CSGShape3D; value) = self.setOperation(value)

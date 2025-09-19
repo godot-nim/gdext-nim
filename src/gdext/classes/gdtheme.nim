@@ -340,6 +340,10 @@ proc removeType*(self: Theme; themeType: StringName): void =
   expandMethodBind(className Theme, "remove_type", 3304788590)
   methodbind.ptrcall(self, [getPtr themeType])
 
+proc renameType*(self: Theme; oldThemeType: StringName; themeType: StringName): void =
+  expandMethodBind(className Theme, "rename_type", 3740211285)
+  methodbind.ptrcall(self, [getPtr oldThemeType, getPtr themeType])
+
 proc getTypeList*(self: Theme): PackedStringArray =
   expandMethodBind(className Theme, "get_type_list", 1139954409)
   var ret: encoded PackedStringArray

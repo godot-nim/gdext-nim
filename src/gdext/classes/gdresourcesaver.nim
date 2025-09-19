@@ -12,6 +12,12 @@ proc save*(self: ResourceSaver; resource: gdref Resource; path: String = newGdSt
   methodbind.ptrcall(self, [getPtr resource, getPtr path, getPtr flags], addr ret)
   (addr ret).decode_result(Error)
 
+proc setUid*(self: ResourceSaver; resource: String; uid: int64): Error =
+  expandMethodBind(className ResourceSaver, "set_uid", 993915709)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr resource, getPtr uid], addr ret)
+  (addr ret).decode_result(Error)
+
 proc getRecognizedExtensions*(self: ResourceSaver; `type`: gdref Resource): PackedStringArray =
   expandMethodBind(className ResourceSaver, "get_recognized_extensions", 4223597960)
   var ret: encoded PackedStringArray

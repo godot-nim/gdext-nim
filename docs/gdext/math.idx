@@ -131,25 +131,26 @@ nim	`*`	gdext/math.html#*,Basis,Float	proc `*`(left: Basis; right: Float): Basis
 nim	`/`	gdext/math.html#/,Basis,Float	proc `/`(left: Basis; right: Float): Basis		32
 nim	`*`	gdext/math.html#*,Basis,Vector3	proc `*`(left: Basis; right: Vector3): Vector3		33
 nim	`*`	gdext/math.html#*,Basis,Basis	proc `*`(left: Basis; right: Basis): Basis		34
-nim	inverse	gdext/math.html#inverse,Basis	proc inverse(self: Basis): Basis		64
-nim	transposed	gdext/math.html#transposed,Basis	proc transposed(self: Basis): Basis		66
-nim	orthonormalized	gdext/math.html#orthonormalized,Basis	proc orthonormalized(self: Basis): Basis		68
-nim	determinant	gdext/math.html#determinant,Basis	proc determinant(self: Basis): Float		70
-nim	rotated	gdext/math.html#rotated,Basis,Vector3,Float	proc rotated(self: Basis; axis: Vector3; angle: Float): Basis		72
-nim	scaled	gdext/math.html#scaled,Basis,Vector3	proc scaled(self: Basis; scale: Vector3): Basis		75
-nim	getScale	gdext/math.html#getScale,Basis	proc getScale(self: Basis): Vector3		78
-nim	getEuler	gdext/math.html#getEuler,Basis,Int	proc getEuler(self: Basis; order: Int = 2): Vector3		80
-nim	tdotx	gdext/math.html#tdotx,Basis,Vector3	proc tdotx(self: Basis; with: Vector3): Float		83
-nim	tdoty	gdext/math.html#tdoty,Basis,Vector3	proc tdoty(self: Basis; with: Vector3): Float		86
-nim	tdotz	gdext/math.html#tdotz,Basis,Vector3	proc tdotz(self: Basis; with: Vector3): Float		89
-nim	slerp	gdext/math.html#slerp,Basis,Basis,Float	proc slerp(self: Basis; to: Basis; weight: Float): Basis		92
-nim	isConformal	gdext/math.html#isConformal,Basis	proc isConformal(self: Basis): bool		95
-nim	isEqualApprox	gdext/math.html#isEqualApprox,Basis,Basis	proc isEqualApprox(self: Basis; b: Basis): bool		97
-nim	isFinite	gdext/math.html#isFinite,Basis	proc isFinite(self: Basis): bool		100
-nim	getRotationQuaternion	gdext/math.html#getRotationQuaternion,Basis	proc getRotationQuaternion(self: Basis): Quaternion		102
-nim	lookingAt	gdext/math.html#lookingAt,typedesc[Basis],Vector3,Vector3,bool	proc lookingAt(_: typedesc[Basis]; target: Vector3; up: Vector3 = vector3(0, 1, 0);\n          useModelFront: bool = false): Basis		104
-nim	fromScale	gdext/math.html#fromScale,typedesc[Basis],Vector3	proc fromScale(_: typedesc[Basis]; scale: Vector3): Basis		107
-nim	fromEuler	gdext/math.html#fromEuler,typedesc[Basis],Vector3,Int	proc fromEuler(_: typedesc[Basis]; euler: Vector3; order: Int = 2): Basis		110
+nim	inverse	gdext/math.html#inverse,Basis	proc inverse(self: Basis): Basis		65
+nim	transposed	gdext/math.html#transposed,Basis	proc transposed(self: Basis): Basis		67
+nim	orthonormalized	gdext/math.html#orthonormalized,Basis	proc orthonormalized(self: Basis): Basis		69
+nim	determinant	gdext/math.html#determinant,Basis	proc determinant(self: Basis): Float		71
+nim	rotated	gdext/math.html#rotated,Basis,Vector3,Float	proc rotated(self: Basis; axis: Vector3; angle: Float): Basis		73
+nim	scaled	gdext/math.html#scaled,Basis,Vector3	proc scaled(self: Basis; scale: Vector3): Basis		76
+nim	scaledLocal	gdext/math.html#scaledLocal,Basis,Vector3	proc scaledLocal(self: Basis; scale: Vector3): Basis		79
+nim	getScale	gdext/math.html#getScale,Basis	proc getScale(self: Basis): Vector3		82
+nim	getEuler	gdext/math.html#getEuler,Basis,Int	proc getEuler(self: Basis; order: Int = 2): Vector3		84
+nim	tdotx	gdext/math.html#tdotx,Basis,Vector3	proc tdotx(self: Basis; with: Vector3): Float		87
+nim	tdoty	gdext/math.html#tdoty,Basis,Vector3	proc tdoty(self: Basis; with: Vector3): Float		90
+nim	tdotz	gdext/math.html#tdotz,Basis,Vector3	proc tdotz(self: Basis; with: Vector3): Float		93
+nim	slerp	gdext/math.html#slerp,Basis,Basis,Float	proc slerp(self: Basis; to: Basis; weight: Float): Basis		96
+nim	isConformal	gdext/math.html#isConformal,Basis	proc isConformal(self: Basis): bool		99
+nim	isEqualApprox	gdext/math.html#isEqualApprox,Basis,Basis	proc isEqualApprox(self: Basis; b: Basis): bool		101
+nim	isFinite	gdext/math.html#isFinite,Basis	proc isFinite(self: Basis): bool		104
+nim	getRotationQuaternion	gdext/math.html#getRotationQuaternion,Basis	proc getRotationQuaternion(self: Basis): Quaternion		106
+nim	lookingAt	gdext/math.html#lookingAt,typedesc[Basis],Vector3,Vector3,bool	proc lookingAt(_: typedesc[Basis]; target: Vector3; up: Vector3 = vector3(0, 1, 0);\n          useModelFront: bool = false): Basis		108
+nim	fromScale	gdext/math.html#fromScale,typedesc[Basis],Vector3	proc fromScale(_: typedesc[Basis]; scale: Vector3): Basis		111
+nim	fromEuler	gdext/math.html#fromEuler,typedesc[Basis],Vector3,Int	proc fromEuler(_: typedesc[Basis]; euler: Vector3; order: Int = 2): Basis		114
 nim	PlaneYz	gdext/math.html#PlaneYz.t,typedesc[Plane]	template PlaneYz(_: typedesc[Plane]): Plane		4
 nim	PlaneXz	gdext/math.html#PlaneXz.t,typedesc[Plane]	template PlaneXz(_: typedesc[Plane]): Plane		7
 nim	PlaneXy	gdext/math.html#PlaneXy.t,typedesc[Plane]	template PlaneXy(_: typedesc[Plane]): Plane		10
@@ -617,7 +618,7 @@ nimgrp	movetoward	gdext/math.html#moveToward-procs-all	proc		544
 nimgrp	posmod	gdext/math.html#posmod-procs-all	proc		393
 nimgrp	vector2	gdext/math.html#vector2-procs-all	proc		101
 nimgrp	reflect	gdext/math.html#reflect-procs-all	proc		129
-nimgrp	slerp	gdext/math.html#slerp-procs-all	proc		92
+nimgrp	slerp	gdext/math.html#slerp-procs-all	proc		96
 nimgrp	translatedlocal	gdext/math.html#translatedLocal-procs-all	proc		98
 nimgrp	intersection	gdext/math.html#intersection-procs-all	proc		68
 nimgrp	vector4i	gdext/math.html#vector4i-procs-all	proc		126
@@ -625,7 +626,7 @@ nimgrp	affineinverse	gdext/math.html#affineInverse-procs-all	proc		71
 nimgrp	/	gdext/math.html#/-procs-all	proc		30
 nimgrp	distanceto	gdext/math.html#distanceTo-procs-all	proc		56
 nimgrp	vector3	gdext/math.html#vector3-procs-all	proc		106
-nimgrp	determinant	gdext/math.html#determinant-procs-all	proc		70
+nimgrp	determinant	gdext/math.html#determinant-procs-all	proc		71
 nimgrp	limitlength	gdext/math.html#limitLength-procs-all	proc		100
 nimgrp	vector4	gdext/math.html#vector4-procs-all	proc		111
 nimgrp	expand	gdext/math.html#expand-procs-all	proc		74
@@ -635,7 +636,7 @@ nimgrp	transform3d	gdext/math.html#transform3D-procs-all	proc		178
 nimgrp	mini	gdext/math.html#mini-procs-all	proc		84
 nimgrp	growindividual	gdext/math.html#growIndividual-procs-all	proc		70
 nimgrp	bounce	gdext/math.html#bounce-procs-all	proc		126
-nimgrp	getscale	gdext/math.html#getScale-procs-all	proc		78
+nimgrp	getscale	gdext/math.html#getScale-procs-all	proc		82
 nimgrp	clampi	gdext/math.html#clampi-procs-all	proc		75
 nimgrp	snapped	gdext/math.html#snapped-procs-all	proc		619
 nimgrp	aspect	gdext/math.html#aspect-procs-all	proc		844
@@ -646,13 +647,13 @@ nimgrp	vector2i	gdext/math.html#vector2i-procs-all	proc		116
 nimgrp	getcenter	gdext/math.html#getCenter-procs-all	proc		43
 nimgrp	snappedi	gdext/math.html#snappedi-procs-all	proc		78
 nimgrp	plane	gdext/math.html#plane-procs-all	proc		149
-nimgrp	rotated	gdext/math.html#rotated-procs-all	proc		72
+nimgrp	rotated	gdext/math.html#rotated-procs-all	proc		73
 nimgrp	div	gdext/math.html#div-procs-all	proc		762
-nimgrp	isconformal	gdext/math.html#isConformal-procs-all	proc		95
-nimgrp	fromeuler	gdext/math.html#fromEuler-procs-all	proc		110
+nimgrp	isconformal	gdext/math.html#isConformal-procs-all	proc		99
+nimgrp	fromeuler	gdext/math.html#fromEuler-procs-all	proc		114
 nimgrp	normalized	gdext/math.html#normalized-procs-all	proc		44
 nimgrp	vector3i	gdext/math.html#vector3i-procs-all	proc		121
-nimgrp	geteuler	gdext/math.html#getEuler-procs-all	proc		80
+nimgrp	geteuler	gdext/math.html#getEuler-procs-all	proc		84
 nimgrp	rect2	gdext/math.html#rect2-procs-all	proc		193
 nimgrp	dot	gdext/math.html#dot-procs-all	proc		89
 nimgrp	-	gdext/math.html#--procs-all	proc		22
@@ -663,7 +664,7 @@ nimgrp	growside	gdext/math.html#growSide-procs-all	proc		67
 nimgrp	cubicinterpolateintime	gdext/math.html#cubicInterpolateInTime-procs-all	proc		112
 nimgrp	mod	gdext/math.html#mod-procs-all	proc		763
 nimgrp	min	gdext/math.html#min-procs-all	proc		138
-nimgrp	lookingat	gdext/math.html#lookingAt-procs-all	proc		104
+nimgrp	lookingat	gdext/math.html#lookingAt-procs-all	proc		108
 nimgrp	basis	gdext/math.html#basis-procs-all	proc		140
 nimgrp	getsupport	gdext/math.html#getSupport-procs-all	proc		80
 nimgrp	quaternion	gdext/math.html#quaternion-procs-all	proc		132
@@ -676,11 +677,11 @@ nimgrp	distancesquaredto	gdext/math.html#distanceSquaredTo-procs-all	proc		72
 nimgrp	bezierinterpolate	gdext/math.html#bezierInterpolate-procs-all	proc		115
 nimgrp	grow	gdext/math.html#grow-procs-all	proc		77
 nimgrp	length	gdext/math.html#length-procs-all	proc		67
-nimgrp	inverse	gdext/math.html#inverse-procs-all	proc		64
-nimgrp	orthonormalized	gdext/math.html#orthonormalized-procs-all	proc		68
+nimgrp	inverse	gdext/math.html#inverse-procs-all	proc		65
+nimgrp	orthonormalized	gdext/math.html#orthonormalized-procs-all	proc		69
 nimgrp	merge	gdext/math.html#merge-procs-all	proc		71
 nimgrp	hasarea	gdext/math.html#hasArea-procs-all	proc		36
-nimgrp	scaled	gdext/math.html#scaled-procs-all	proc		75
+nimgrp	scaled	gdext/math.html#scaled-procs-all	proc		76
 nimgrp	max	gdext/math.html#max-procs-all	proc		144
 nimgrp	abs	gdext/math.html#abs-procs-all	proc		41
 nimgrp	cubicinterpolate	gdext/math.html#cubicInterpolate-procs-all	proc		109
@@ -688,7 +689,7 @@ nimgrp	rotatedlocal	gdext/math.html#rotatedLocal-procs-all	proc		86
 nimgrp	haspoint	gdext/math.html#hasPoint-procs-all	proc		51
 nimgrp	-=	gdext/math.html#-=-procs-all	proc		887
 nimgrp	isequalapprox	gdext/math.html#isEqualApprox-procs-all	proc		54
-nimgrp	scaledlocal	gdext/math.html#scaledLocal-procs-all	proc		92
+nimgrp	scaledlocal	gdext/math.html#scaledLocal-procs-all	proc		79
 nimgrp	not	gdext/math.html#not-procs-all	proc		9
 nimgrp	aabb	gdext/math.html#aabb-procs-all	proc		137
 nimgrp	maxi	gdext/math.html#maxi-procs-all	proc		90

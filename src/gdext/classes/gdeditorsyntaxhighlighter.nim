@@ -15,3 +15,8 @@ method getSupportedLanguages*(self: EditorSyntaxHighlighter): PackedStringArray 
 proc registerVirtual_getSupportedLanguages*[T: EditorSyntaxHighlighter](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_supported_languages"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorSyntaxHighlighter](p_instance).getSupportedLanguages().encode(r_ret)
+
+method create*(self: EditorSyntaxHighlighter): gdref EditorSyntaxHighlighter {.base.} = (discard)
+proc registerVirtual_create*[T: EditorSyntaxHighlighter](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_create"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorSyntaxHighlighter](p_instance).create().encode(r_ret)

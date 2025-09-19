@@ -120,10 +120,16 @@ proc emitChanged*(self: Resource): void =
   expandMethodBind(className Resource, "emit_changed", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc duplicate*(self: Resource; subresources: bool = false): gdref Resource =
+proc duplicate*(self: Resource; deep: bool = false): gdref Resource =
   expandMethodBind(className Resource, "duplicate", 482882304)
   var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [getPtr subresources], addr ret)
+  methodbind.ptrcall(self, [getPtr deep], addr ret)
+  (addr ret).decode_result(gdref Resource)
+
+proc duplicateDeep*(self: Resource; deepSubresourcesMode: Resource_DeepDuplicateMode = deepDuplicateInternal): gdref Resource =
+  expandMethodBind(className Resource, "duplicate_deep", 905779109)
+  var ret: encoded gdref Resource
+  methodbind.ptrcall(self, [getPtr deepSubresourcesMode], addr ret)
   (addr ret).decode_result(gdref Resource)
 
 template resourceLocalToScene*(self: Resource): untyped = self.isLocalToScene()

@@ -89,7 +89,7 @@ proc reporterr*(exception: ref Exception) =
 template errproof*(body): untyped =
   try:
     body
-  except:
+  except CatchableError:
     reporterr getCurrentException()
 
 proc createClass*[T: Object](o: ObjectPtr): T =
@@ -134,8 +134,8 @@ macro gdname*(P: proc): string =
 
 macro Super*(Type: typedesc): typedesc = Type.super
 
-proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo4) =
-  interfaceClassdbRegisterExtensionClass4(
+proc registerExtensionClass*(_: typedesc[ClassDB]; p_class_name, p_parent_class_name: StringName; p_extension_funcs: ptr ClassCreationInfo5) =
+  interfaceClassdbRegisterExtensionClass5(
     environment.library, addr p_class_name, addr p_parent_class_name, p_extension_funcs)
 
 proc registerExtensionClassMethod*(_: typedesc[ClassDB]; p_class_name: StringName; p_method_info: ptr ClassMethodInfo) =

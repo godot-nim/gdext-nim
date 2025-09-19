@@ -2,6 +2,6 @@
 
 import gdext/coronation/header/classes
 
-import gdeditorexportplatform; export gdeditorexportplatform
+import gdeditorexportplatformappleembedded; export gdeditorexportplatformappleembedded
 
-expandOnClassImported(EditorExportPlatformIOS, EditorExportPlatform)
+expandOnClassImported(EditorExportPlatformIOS, EditorExportPlatformAppleEmbedded)

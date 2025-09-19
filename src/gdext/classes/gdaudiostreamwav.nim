@@ -88,6 +88,16 @@ proc isStereo*(self: AudioStreamWAV): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setTags*(self: AudioStreamWAV; tags: Dictionary): void =
+  expandMethodBind(className AudioStreamWAV, "set_tags", 4155329257)
+  methodbind.ptrcall(self, [getPtr tags])
+
+proc getTags*(self: AudioStreamWAV): Dictionary =
+  expandMethodBind(className AudioStreamWAV, "get_tags", 3102165223)
+  var ret: encoded Dictionary
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Dictionary)
+
 proc saveToWav*(self: AudioStreamWAV; path: String): Error =
   expandMethodBind(className AudioStreamWAV, "save_to_wav", 166001499)
   var ret: encoded Error
@@ -114,3 +124,6 @@ template `mixRate=`*(self: AudioStreamWAV; value) = self.setMixRate(value)
 
 template stereo*(self: AudioStreamWAV): untyped = self.isStereo()
 template `stereo=`*(self: AudioStreamWAV; value) = self.setStereo(value)
+
+template tags*(self: AudioStreamWAV): untyped = self.getTags()
+template `tags=`*(self: AudioStreamWAV; value) = self.setTags(value)

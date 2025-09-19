@@ -6,6 +6,11 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(AStar3D, RefCounted)
 
+method filterNeighbor*(self: AStar3D; fromId: int64; neighborId: int64): bool {.base.} = (discard)
+proc registerVirtual_filterNeighbor*[T: AStar3D](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_filter_neighbor"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[AStar3D](p_instance).filterNeighbor(p_args[0].decode(int64), p_args[1].decode(int64)).encode(r_ret)
+
 method estimateCost*(self: AStar3D; fromId: int64; endId: int64): Float {.base.} = (discard)
 proc registerVirtual_estimateCost*[T: AStar3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_estimate_cost"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -78,6 +83,16 @@ proc isPointDisabled*(self: AStar3D; id: int64): bool =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(bool)
 
+proc setNeighborFilterEnabled*(self: AStar3D; enabled: bool): void =
+  expandMethodBind(className AStar3D, "set_neighbor_filter_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isNeighborFilterEnabled*(self: AStar3D): bool =
+  expandMethodBind(className AStar3D, "is_neighbor_filter_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc connectPoints*(self: AStar3D; id: int64; toId: int64; bidirectional: bool = true): void =
   expandMethodBind(className AStar3D, "connect_points", 3710494224)
   methodbind.ptrcall(self, [getPtr id, getPtr toId, getPtr bidirectional])
@@ -135,3 +150,6 @@ proc getIdPath*(self: AStar3D; fromId: int64; toId: int64; allowPartialPath: boo
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr fromId, getPtr toId, getPtr allowPartialPath], addr ret)
   (addr ret).decode_result(PackedInt64Array)
+
+template neighborFilterEnabled*(self: AStar3D): untyped = self.isNeighborFilterEnabled()
+template `neighborFilterEnabled=`*(self: AStar3D; value) = self.setNeighborFilterEnabled(value)

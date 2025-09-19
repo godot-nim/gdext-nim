@@ -6,6 +6,18 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(SceneState, RefCounted)
 
+proc getPath*(self: SceneState): String =
+  expandMethodBind(className SceneState, "get_path", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc getBaseSceneState*(self: SceneState): gdref SceneState =
+  expandMethodBind(className SceneState, "get_base_scene_state", 3479783971)
+  var ret: encoded gdref SceneState
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref SceneState)
+
 proc getNodeCount*(self: SceneState): int32 =
   expandMethodBind(className SceneState, "get_node_count", 3905245786)
   var ret: encoded int32

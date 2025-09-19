@@ -238,6 +238,10 @@ proc getModifierCallbackModeProcess*(self: Skeleton3D): Skeleton3D_ModifierCallb
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Skeleton3D_ModifierCallbackModeProcess)
 
+proc advance*(self: Skeleton3D; delta: float64): void =
+  expandMethodBind(className Skeleton3D, "advance", 373806689)
+  methodbind.ptrcall(self, [getPtr delta])
+
 proc clearBonesGlobalPoseOverride*(self: Skeleton3D): void =
   expandMethodBind(className Skeleton3D, "clear_bones_global_pose_override", 3218959716)
   methodbind.ptrcall(self, [])

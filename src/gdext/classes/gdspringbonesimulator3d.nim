@@ -136,6 +136,16 @@ proc getRotationAxis*(self: SpringBoneSimulator3D; index: int32): SpringBoneSimu
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(SpringBoneSimulator3D_RotationAxis)
 
+proc setRotationAxisVector*(self: SpringBoneSimulator3D; index: int32; vector: Vector3): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_rotation_axis_vector", 1530502735)
+  methodbind.ptrcall(self, [getPtr index, getPtr vector])
+
+proc getRotationAxisVector*(self: SpringBoneSimulator3D; index: int32): Vector3 =
+  expandMethodBind(className SpringBoneSimulator3D, "get_rotation_axis_vector", 711720468)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [getPtr index], addr ret)
+  (addr ret).decode_result(Vector3)
+
 proc setRadiusDampingCurve*(self: SpringBoneSimulator3D; index: int32; curve: gdref Curve): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_radius_damping_curve", 1447180063)
   methodbind.ptrcall(self, [getPtr index, getPtr curve])
@@ -262,6 +272,16 @@ proc getJointRotationAxis*(self: SpringBoneSimulator3D; index: int32; joint: int
   methodbind.ptrcall(self, [getPtr index, getPtr joint], addr ret)
   (addr ret).decode_result(SpringBoneSimulator3D_RotationAxis)
 
+proc setJointRotationAxisVector*(self: SpringBoneSimulator3D; index: int32; joint: int32; vector: Vector3): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_joint_rotation_axis_vector", 2866752138)
+  methodbind.ptrcall(self, [getPtr index, getPtr joint, getPtr vector])
+
+proc getJointRotationAxisVector*(self: SpringBoneSimulator3D; index: int32; joint: int32): Vector3 =
+  expandMethodBind(className SpringBoneSimulator3D, "get_joint_rotation_axis_vector", 1592972041)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [getPtr index, getPtr joint], addr ret)
+  (addr ret).decode_result(Vector3)
+
 proc setJointRadius*(self: SpringBoneSimulator3D; index: int32; joint: int32; radius: Float): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_joint_radius", 3506521499)
   methodbind.ptrcall(self, [getPtr index, getPtr joint, getPtr radius])
@@ -376,9 +396,22 @@ proc clearCollisions*(self: SpringBoneSimulator3D; index: int32): void =
   expandMethodBind(className SpringBoneSimulator3D, "clear_collisions", 1286410249)
   methodbind.ptrcall(self, [getPtr index])
 
+proc setExternalForce*(self: SpringBoneSimulator3D; force: Vector3): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_external_force", 3460891852)
+  methodbind.ptrcall(self, [getPtr force])
+
+proc getExternalForce*(self: SpringBoneSimulator3D): Vector3 =
+  expandMethodBind(className SpringBoneSimulator3D, "get_external_force", 3360562783)
+  var ret: encoded Vector3
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector3)
+
 proc reset*(self: SpringBoneSimulator3D): void =
   expandMethodBind(className SpringBoneSimulator3D, "reset", 3218959716)
   methodbind.ptrcall(self, [])
+
+template externalForce*(self: SpringBoneSimulator3D): untyped = self.getExternalForce()
+template `externalForce=`*(self: SpringBoneSimulator3D; value) = self.setExternalForce(value)
 
 template settingCount*(self: SpringBoneSimulator3D): untyped = self.getSettingCount()
 template `settingCount=`*(self: SpringBoneSimulator3D; value) = self.setSettingCount(value)
