@@ -14,6 +14,7 @@ nim	`$`	gdext/objecttools.html#$,GdRef	proc `$`(self: GdRef): string		62
 nim	`/`	gdext/objecttools.html#/.t,Node,NodePath	template `/`(self: Node; path: NodePath): Node		65
 nim	`/`	gdext/objecttools.html#/.t,Node,string	template `/`(self: Node; path: string): Node		66
 nim	`/`	gdext/objecttools.html#/.t,Node,typedesc[T]	template `/`[T: Node](self: Node; sub: typedesc[T]): T		68
+nim	set	gdext/objecttools.html#set,Object,StringName,SomeProperty	proc set(self: Object; property: StringName; value: SomeProperty)		70
 nimgrp	castto	gdext/objecttools.html#castTo-procs-all	proc		30
 nimgrp	$	gdext/objecttools.html#$-procs-all	proc		56
 nimgrp	instantiate	gdext/objecttools.html#instantiate-procs-all	proc		19

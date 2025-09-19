@@ -86,6 +86,7 @@
 </ul>
 <ul class="simple nested-toc-section">className
   <li><a class="reference" href="#className%2Ctypedesc%5B%5D" title="className(E: typedesc[enum]): StringName">className(E: typedesc[enum]): StringName</a></li>
+<li><a class="reference" href="#className%2Ctypedesc%5BGdRef%5D" title="className(T: typedesc[GdRef]): var StringName">className(T: typedesc[GdRef]): var StringName</a></li>
 <li><a class="reference" href="#className%2Ctypedesc%5BSomeClass%5D" title="className(T: typedesc[SomeClass]): var StringName">className(T: typedesc[SomeClass]): var StringName</a></li>
 <li><a class="reference" href="#className%2Ctypedesc%5BT%5D" title="className[T: not (SomeClass | GdRef | enum)](_: typedesc[T]): var StringName">className[T: not (SomeClass | GdRef | enum)](_: typedesc[T]): var StringName</a></li>
 
@@ -133,11 +134,7 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#18" id="68">Templates</a></summary>
     <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">className
-  <li><a class="reference" href="#className.t%2Ctypedesc%5BGdRef%5BSomeClass%5D%5D" title="className(T: typedesc[GdRef[SomeClass]]): var StringName">className(T: typedesc[GdRef[SomeClass]]): var StringName</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">metadata
+      <ul class="simple nested-toc-section">metadata
   <li><a class="reference" href="#metadata.t%2Ctypedesc" title="metadata(T: typedesc): ClassMethodArgumentMetadata">metadata(T: typedesc): ClassMethodArgumentMetadata</a></li>
 <li><a class="reference" href="#metadata.t%2Ctypedesc%5B%5D" title="metadata(T: typedesc[enum]): ClassMethodArgumentMetadata">metadata(T: typedesc[enum]): ClassMethodArgumentMetadata</a></li>
 <li><a class="reference" href="#metadata.t%2Ctypedesc%5Bfloat32%5D" title="metadata(T: typedesc[float32]): ClassMethodArgumentMetadata">metadata(T: typedesc[float32]): ClassMethodArgumentMetadata</a></li>
@@ -210,9 +207,9 @@
   <dt><pre><a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a>
   <span class="Identifier">className</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a>
-  <span class="Identifier">hint</span><span class="Operator">*</span><span class="Other">:</span> <a href="../builtinindex.html#PropertyHint"><span class="Identifier">PropertyHint</span></a>
+  <span class="Identifier">hint</span><span class="Operator">*</span><span class="Other">:</span> <a href="../enums.html#PropertyHint"><span class="Identifier">PropertyHint</span></a>
   <span class="Identifier">hintString</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a>
-  <span class="Identifier">usage</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
+  <span class="Identifier">usage</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -239,6 +236,14 @@
 <div id="className-procs-all">
   <div id="className,typedesc[]">
   <dt><pre><span class="Keyword">proc</span> <a href="#className%2Ctypedesc%5B%5D"><span class="Identifier">className</span></a><span class="Other">(</span><span class="Identifier">E</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Keyword">enum</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="className,typedesc[GdRef]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#className%2Ctypedesc%5BGdRef%5D"><span class="Identifier">className</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a></pre></dt>
   <dd>
     
     
@@ -286,8 +291,8 @@
   <div id="propertyInfo,VariantType,PropertyHint,set[PropertyUsageFlags]">
   <dt><pre><span class="Keyword">proc</span> <a href="#propertyInfo%2CVariantType%2CPropertyHint%2Cset%5BPropertyUsageFlags%5D"><span class="Identifier">propertyInfo</span></a><span class="Other">(</span><span class="Identifier">typ</span><span class="Other">:</span> <a href="native.html#VariantType"><span class="Identifier">VariantType</span></a><span class="Other">;</span> <span class="Identifier">name</span> <span class="Other">=</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
                   <span class="Identifier">class_name</span> <span class="Other">=</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
-                  <span class="Identifier">hint</span><span class="Other">:</span> <a href="../builtinindex.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
-                  <span class="Identifier">hint_string</span> <span class="Other">=</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">usage</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a> {.
+                  <span class="Identifier">hint</span><span class="Other">:</span> <a href="../enums.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
+                  <span class="Identifier">hint_string</span> <span class="Other">=</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">usage</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -297,9 +302,9 @@
 </div>
 <div id="propertyInfo,typedesc[T],PropertyHint,set[PropertyUsageFlags]">
   <dt><pre><span class="Keyword">proc</span> <a href="#propertyInfo%2Ctypedesc%5BT%5D%2CPropertyHint%2Cset%5BPropertyUsageFlags%5D"><span class="Identifier">propertyInfo</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="../builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span> <span class="Other">=</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
-                                   <span class="Identifier">hint</span><span class="Other">:</span> <a href="../builtinindex.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
+                                   <span class="Identifier">hint</span><span class="Other">:</span> <a href="../enums.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
                                    <span class="Identifier">hint_string</span> <span class="Other">=</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">usage</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span>
-    <a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a></pre></dt>
+    <a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a></pre></dt>
   <dd>
     
     
@@ -308,9 +313,9 @@
 </div>
 <div id="propertyInfo,typedesc[varargs[T]],PropertyHint,set[PropertyUsageFlags]">
   <dt><pre><span class="Keyword">proc</span> <a href="#propertyInfo%2Ctypedesc%5Bvarargs%5BT%5D%5D%2CPropertyHint%2Cset%5BPropertyUsageFlags%5D"><span class="Identifier">propertyInfo</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="../builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span> <span class="Other">=</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
-                                   <span class="Identifier">hint</span><span class="Other">:</span> <a href="../builtinindex.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
+                                   <span class="Identifier">hint</span><span class="Other">:</span> <a href="../enums.html#PropertyHint"><span class="Identifier">PropertyHint</span></a> <span class="Other">=</span> <span class="Identifier">propertyHint_None</span><span class="Other">;</span>
                                    <span class="Identifier">hint_string</span> <span class="Other">=</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">usage</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span>
-    <a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a></pre></dt>
+    <a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span> <span class="Other">=</span> <a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">.</span><span class="Identifier">propertyUsageDefault</span><span class="Other">)</span><span class="Other">:</span> <a href="propertyinfo.html#HeapPropertyInfo"><span class="Identifier">HeapPropertyInfo</span></a></pre></dt>
   <dd>
     
     
@@ -348,18 +353,7 @@
 <div class="section" id="18">
   <h1><a class="toc-backref" href="#18">Templates</a></h1>
   <dl class="item">
-    <div id="className-templates-all">
-  <div id="className.t,typedesc[GdRef[SomeClass]]">
-  <dt><pre><span class="Keyword">template</span> <a href="#className.t%2Ctypedesc%5BGdRef%5BSomeClass%5D%5D"><span class="Identifier">className</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><a href="../builtinindex.html#SomeClass"><span class="Identifier">SomeClass</span></a><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="metadata-templates-all">
+    <div id="metadata-templates-all">
   <div id="metadata.t,typedesc">
   <dt><pre><span class="Keyword">template</span> <a href="#metadata.t%2Ctypedesc"><span class="Identifier">metadata</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">)</span><span class="Other">:</span> <a href="native.html#ClassMethodArgumentMetadata"><span class="Identifier">ClassMethodArgumentMetadata</span></a></pre></dt>
   <dd>
@@ -484,7 +478,7 @@
 </div>
 <div id="uniqueUsage-templates-all">
   <div id="uniqueUsage.t,typedesc">
-  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -492,7 +486,7 @@
   </dd>
 </div>
 <div id="uniqueUsage.t,typedesc[]">
-  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5B%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Keyword">enum</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5B%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Keyword">enum</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -500,7 +494,7 @@
   </dd>
 </div>
 <div id="uniqueUsage.t,typedesc[Variant]">
-  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5BVariant%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5BVariant%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -508,7 +502,7 @@
   </dd>
 </div>
 <div id="uniqueUsage.t,typedesc[set[E]]">
-  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5Bset%5BE%5D%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">[</span><span class="Identifier">E</span><span class="Other">:</span> <span class="Keyword">enum</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">E</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../builtinindex.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#uniqueUsage.t%2Ctypedesc%5Bset%5BE%5D%5D"><span class="Identifier">uniqueUsage</span></a><span class="Other">[</span><span class="Identifier">E</span><span class="Other">:</span> <span class="Keyword">enum</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">E</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><a href="../enums.html#PropertyUsageFlags"><span class="Identifier">PropertyUsageFlags</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -527,7 +521,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-13 06:05:00 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-09-19 09:53:09 UTC</small>
       </div>
     </div>
   </div>
