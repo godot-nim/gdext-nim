@@ -1,3 +1,5 @@
+import std/unittest
+
 import gdext
 import gdext/nameformats
 
@@ -30,6 +32,18 @@ proc set_formatters {.execon: EntryPoint.} =
   nameformats.defaultFunctionFormatter = nameformats.toGodotFuncCase
   nameformats.defaultVirtualMethodFormatter = nameformats.toGodotInternalFuncCase
   nameformats.defaultConstFormatter = nameformats.toUpperSnakeCase
+
+proc startup {.execon: MainLoopStartup.} =
+  test "call startup":
+    check true
+
+proc frame {.execon: MainLoopFrame.} = once:
+  test "call frame":
+    check true
+
+proc shutdown {.execon: MainLoopShutdown.} =
+  test "call shutdown":
+    check true
 
 proc register_classes {.execon: initialize_scene.} =
   # register your extension classes here
