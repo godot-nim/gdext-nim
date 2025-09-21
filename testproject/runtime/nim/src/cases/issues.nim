@@ -1,5 +1,5 @@
 import gdext
-import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode]
+import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode,gdLabel3D]
 import testutils
 type
   TestNode* {.gdsync.} = ptr object of Node
@@ -34,4 +34,11 @@ runtime: suite "Community Reported":
     myTestNode.set("a",1)
     let a = myTestNode.get("a").as(int)
     check a == 1
+    destroy myTestNode
+
+  test "Check node for overloaded proc to ensure it has the proper functionality":
+    var myTestNode = TestNode.instantiate
+    let myLabel = Label3D.instantiate("myLabel3D")
+    myTestNode.addChild(myLabel)
+    check "myLabel3D" in myTestNode
     destroy myTestNode
