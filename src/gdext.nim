@@ -66,6 +66,7 @@ import gdext/othertools; export othertools
 import gdext/utilityfuncs; export utilityfuncs
 import gdext/dollars; export dollars
 import gdext/sugars; export sugars
+import gdext/implicitsugars;
 import gdext/versions; export versions
 
 import gdext/extclasses/[gdextensionmain]

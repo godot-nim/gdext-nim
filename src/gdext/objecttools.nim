@@ -67,8 +67,5 @@ template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString pat
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub
 
-proc set*(self: Object; property: StringName; value: SomeProperty) {.inline.} =
-  set(self, property, variant value)
-
 proc contains*(node : Node, path: NodePath) : bool =
   return node.hasNode(path)
