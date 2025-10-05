@@ -43,3 +43,10 @@ runtime: suite "Community Reported":
     arr.add(myString)
     check arr[0].as(string) == myString
     arr.clear()
+    
+  test "Check node for overloaded proc to ensure it has the proper functionality":
+    var myTestNode = TestNode.instantiate
+    let myLabel = Label3D.instantiate("myLabel3D")
+    myTestNode.addChild(myLabel)
+    check "myLabel3D" in myTestNode
+    destroy myTestNode
