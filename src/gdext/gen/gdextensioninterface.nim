@@ -1,1432 +1,1060 @@
 
 type
-  char32T* = uint32T
-  char16T* = uint16T
-  VariantType* {.size: EnumSize.default.} = enum
-    VariantTypeNil, VariantTypeBool, VariantTypeInt, VariantTypeFloat,
-    VariantTypeString, VariantTypeVector2, VariantTypeVector2I,
-    VariantTypeRect2, VariantTypeRect2I, VariantTypeVector3,
-    VariantTypeVector3I, VariantTypeTransform2D, VariantTypeVector4,
-    VariantTypeVector4I, VariantTypePlane, VariantTypeQuaternion,
-    VariantTypeAabb, VariantTypeBasis, VariantTypeTransform3D,
-    VariantTypeProjection, VariantTypeColor, VariantTypeStringName,
-    VariantTypeNodePath, VariantTypeRid, VariantTypeObject, VariantTypeCallable,
-    VariantTypeSignal, VariantTypeDictionary, VariantTypeArray,
-    VariantTypePackedByteArray, VariantTypePackedInt32Array,
-    VariantTypePackedInt64Array, VariantTypePackedFloat32Array,
-    VariantTypePackedFloat64Array, VariantTypePackedStringArray,
-    VariantTypePackedVector2Array, VariantTypePackedVector3Array,
-    VariantTypePackedColorArray, VariantTypePackedVector4Array
-  VariantPtr* = pointer
-  ConstVariantPtr* = pointer
-  UninitializedVariantPtr* = pointer
-  StringNamePtr* = pointer
-  ConstStringNamePtr* = pointer
-  UninitializedStringNamePtr* = pointer
-  StringPtr* = pointer
-  ConstStringPtr* = pointer
-  UninitializedStringPtr* = pointer
-  ObjectPtr* = ptr GodotInternalObject
-  ConstObjectPtr* = pointer
-  UninitializedObjectPtr* = pointer
-  TypePtr* = pointer
-  ConstTypePtr* = pointer
-  UninitializedTypePtr* = pointer
-  MethodBindPtr* = pointer
-  Int* = int64T
-  Bool* = bool
-  GdObjectInstanceId* = uint64T
-  RefPtr* = pointer
-  ConstRefPtr* = pointer
-  CallErrorType* = enum
-    CallOk, CallErrorInvalidMethod, CallErrorInvalidArgument,
-    CallErrorTooManyArguments, CallErrorTooFewArguments,
-    CallErrorInstanceIsNull, CallErrorMethodNotConst
-  CallError* {.byref.} = object
+  char32_t* {.importc: "char32_t".} = uint32_t
+  char16_t* {.importc: "char16_t".} = uint16_t
+  VariantType* {.importc: "GDExtensionVariantType".} = enum
+    VARIANT_TYPE_NIL, VARIANT_TYPE_BOOL, VARIANT_TYPE_INT, VARIANT_TYPE_FLOAT,
+    VARIANT_TYPE_STRING, VARIANT_TYPE_VECTOR2, VARIANT_TYPE_VECTOR2I,
+    VARIANT_TYPE_RECT2, VARIANT_TYPE_RECT2I, VARIANT_TYPE_VECTOR3,
+    VARIANT_TYPE_VECTOR3I, VARIANT_TYPE_TRANSFORM2D, VARIANT_TYPE_VECTOR4,
+    VARIANT_TYPE_VECTOR4I, VARIANT_TYPE_PLANE, VARIANT_TYPE_QUATERNION,
+    VARIANT_TYPE_AABB, VARIANT_TYPE_BASIS, VARIANT_TYPE_TRANSFORM3D,
+    VARIANT_TYPE_PROJECTION, VARIANT_TYPE_COLOR, VARIANT_TYPE_STRING_NAME,
+    VARIANT_TYPE_NODE_PATH, VARIANT_TYPE_RID, VARIANT_TYPE_OBJECT,
+    VARIANT_TYPE_CALLABLE, VARIANT_TYPE_SIGNAL, VARIANT_TYPE_DICTIONARY,
+    VARIANT_TYPE_ARRAY, VARIANT_TYPE_PACKED_BYTE_ARRAY,
+    VARIANT_TYPE_PACKED_INT32_ARRAY, VARIANT_TYPE_PACKED_INT64_ARRAY,
+    VARIANT_TYPE_PACKED_FLOAT32_ARRAY, VARIANT_TYPE_PACKED_FLOAT64_ARRAY,
+    VARIANT_TYPE_PACKED_STRING_ARRAY, VARIANT_TYPE_PACKED_VECTOR2_ARRAY,
+    VARIANT_TYPE_PACKED_VECTOR3_ARRAY, VARIANT_TYPE_PACKED_COLOR_ARRAY,
+    VARIANT_TYPE_PACKED_VECTOR4_ARRAY
+  VariantPtr* {.importc: "GDExtensionVariantPtr".} = pointer
+  ConstVariantPtr* {.importc: "GDExtensionConstVariantPtr".} = pointer
+  UninitializedVariantPtr* {.importc: "GDExtensionUninitializedVariantPtr".} = pointer
+  StringNamePtr* {.importc: "GDExtensionStringNamePtr".} = pointer
+  ConstStringNamePtr* {.importc: "GDExtensionConstStringNamePtr".} = pointer
+  UninitializedStringNamePtr* {.importc: "GDExtensionUninitializedStringNamePtr".} = pointer
+  StringPtr* {.importc: "GDExtensionStringPtr".} = pointer
+  ConstStringPtr* {.importc: "GDExtensionConstStringPtr".} = pointer
+  UninitializedStringPtr* {.importc: "GDExtensionUninitializedStringPtr".} = pointer
+  ObjectPtr* {.importc: "GDExtensionObjectPtr".} = distinct pointer
+  ConstObjectPtr* {.importc: "GDExtensionConstObjectPtr".} = ObjectPtr
+  UninitializedObjectPtr* {.importc: "GDExtensionUninitializedObjectPtr".} = pointer
+  TypePtr* {.importc: "GDExtensionTypePtr".} = pointer
+  ConstTypePtr* {.importc: "GDExtensionConstTypePtr".} = pointer
+  UninitializedTypePtr* {.importc: "GDExtensionUninitializedTypePtr".} = pointer
+  MethodBindPtr* {.importc: "GDExtensionMethodBindPtr".} = pointer
+  Int* {.importc: "GDExtensionInt".} = int64_t
+  Bool* {.importc: "GDExtensionBool".} = bool
+  GDObjectInstanceID* {.importc: "GDObjectInstanceID".} = uint64_t
+  RefPtr* {.importc: "GDExtensionRefPtr".} = pointer
+  ConstRefPtr* {.importc: "GDExtensionConstRefPtr".} = pointer
+  CallErrorType* {.importc: "GDExtensionCallErrorType".} = enum
+    CALL_OK, CALL_ERROR_INVALID_METHOD, CALL_ERROR_INVALID_ARGUMENT,
+    CALL_ERROR_TOO_MANY_ARGUMENTS, CALL_ERROR_TOO_FEW_ARGUMENTS,
+    CALL_ERROR_INSTANCE_IS_NULL, CALL_ERROR_METHOD_NOT_CONST
+  CallError* {.byref, importc: "GDExtensionCallError".} = object
     error*: CallErrorType
-    argument*: int32T
-    expected*: int32T
-  VariantFromTypeConstructorFunc* = proc (a1: UninitializedVariantPtr;
-      a2: TypePtr) {.gdcall.}
-  TypeFromVariantConstructorFunc* = proc (a1: UninitializedTypePtr;
-      a2: VariantPtr) {.gdcall.}
-  VariantGetInternalPtrFunc* = proc (a1: VariantPtr): pointer {.gdcall.}
-  PtrOperatorEvaluator* = proc (pLeft: ConstTypePtr; pRight: ConstTypePtr;
-                                rResult: TypePtr) {.gdcall.}
-  PtrBuiltInMethod* = proc (pBase: TypePtr; pArgs: ptr ConstTypePtr;
-                            rReturn: TypePtr; pArgumentCount: cint) {.gdcall.}
-  PtrConstructor* = proc (pBase: UninitializedTypePtr; pArgs: ptr ConstTypePtr) {.
+    argument*: int32_t
+    expected*: int32_t
+  VariantFromTypeConstructorFunc* {.importc: "GDExtensionVariantFromTypeConstructorFunc".} = proc (
+      a1: UninitializedVariantPtr; a2: TypePtr) {.gdcall.}
+  TypeFromVariantConstructorFunc* {.importc: "GDExtensionTypeFromVariantConstructorFunc".} = proc (
+      a1: UninitializedTypePtr; a2: VariantPtr) {.gdcall.}
+  VariantGetInternalPtrFunc* {.importc: "GDExtensionVariantGetInternalPtrFunc".} = proc (
+      a1: VariantPtr): pointer {.gdcall.}
+  PtrOperatorEvaluator* {.importc: "GDExtensionPtrOperatorEvaluator".} = proc (
+      p_left: ConstTypePtr; p_right: ConstTypePtr; r_result: TypePtr) {.gdcall.}
+  PtrBuiltInMethod* {.importc: "GDExtensionPtrBuiltInMethod".} = proc (
+      p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr;
+      p_argument_count: cint) {.gdcall.}
+  PtrConstructor* {.importc: "GDExtensionPtrConstructor".} = proc (
+      p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall.}
+  PtrDestructor* {.importc: "GDExtensionPtrDestructor".} = proc (p_base: TypePtr) {.
       gdcall.}
-  PtrDestructor* = proc (pBase: TypePtr) {.gdcall.}
-  PtrSetter* = proc (pBase: TypePtr; pValue: ConstTypePtr) {.gdcall.}
-  PtrGetter* = proc (pBase: ConstTypePtr; rValue: TypePtr) {.gdcall.}
-  PtrIndexedSetter* = proc (pBase: TypePtr; pIndex: Int; pValue: ConstTypePtr) {.
+  PtrSetter* {.importc: "GDExtensionPtrSetter".} = proc (p_base: TypePtr;
+      p_value: ConstTypePtr) {.gdcall.}
+  PtrGetter* {.importc: "GDExtensionPtrGetter".} = proc (p_base: ConstTypePtr;
+      r_value: TypePtr) {.gdcall.}
+  PtrIndexedSetter* {.importc: "GDExtensionPtrIndexedSetter".} = proc (
+      p_base: TypePtr; p_index: Int; p_value: ConstTypePtr) {.gdcall.}
+  PtrIndexedGetter* {.importc: "GDExtensionPtrIndexedGetter".} = proc (
+      p_base: ConstTypePtr; p_index: Int; r_value: TypePtr) {.gdcall.}
+  PtrKeyedSetter* {.importc: "GDExtensionPtrKeyedSetter".} = proc (
+      p_base: TypePtr; p_key: ConstTypePtr; p_value: ConstTypePtr) {.gdcall.}
+  PtrKeyedGetter* {.importc: "GDExtensionPtrKeyedGetter".} = proc (
+      p_base: ConstTypePtr; p_key: ConstTypePtr; r_value: TypePtr) {.gdcall.}
+  PtrKeyedChecker* {.importc: "GDExtensionPtrKeyedChecker".} = proc (
+      p_base: ConstVariantPtr; p_key: ConstVariantPtr): uint32_t {.gdcall.}
+  PtrUtilityFunction* {.importc: "GDExtensionPtrUtilityFunction".} = proc (
+      r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: cint) {.
       gdcall.}
-  PtrIndexedGetter* = proc (pBase: ConstTypePtr; pIndex: Int; rValue: TypePtr) {.
+  ClassConstructor* {.importc: "GDExtensionClassConstructor".} = proc (): ObjectPtr {.
       gdcall.}
-  PtrKeyedSetter* = proc (pBase: TypePtr; pKey: ConstTypePtr;
-                          pValue: ConstTypePtr) {.gdcall.}
-  PtrKeyedGetter* = proc (pBase: ConstTypePtr; pKey: ConstTypePtr;
-                          rValue: TypePtr) {.gdcall.}
-  PtrKeyedChecker* = proc (pBase: ConstVariantPtr; pKey: ConstVariantPtr): uint32T {.
-      gdcall.}
-  PtrUtilityFunction* = proc (rReturn: TypePtr; pArgs: ptr ConstTypePtr;
-                              pArgumentCount: cint) {.gdcall.}
-  ClassConstructor* = proc (): ObjectPtr {.gdcall.}
-  InstanceBindingCreateCallback* = proc (pToken: pointer; pInstance: pointer): pointer {.
-      gdcall.}
-  InstanceBindingFreeCallback* = proc (pToken: pointer; pInstance: pointer;
-                                       pBinding: pointer) {.gdcall.}
-  InstanceBindingReferenceCallback* = proc (pToken: pointer; pBinding: pointer;
-      pReference: Bool): Bool {.gdcall.}
-  InstanceBindingCallbacks* {.byref.} = object
-    createCallback*: InstanceBindingCreateCallback
-    freeCallback*: InstanceBindingFreeCallback
-    referenceCallback*: InstanceBindingReferenceCallback
-  ClassInstancePtr* = pointer
-  ClassSet* = proc (pInstance: ClassInstancePtr; pName: ConstStringNamePtr;
-                    pValue: ConstVariantPtr): Bool {.gdcall.}
-  ClassGet* = proc (pInstance: ClassInstancePtr; pName: ConstStringNamePtr;
-                    rRet: VariantPtr): Bool {.gdcall.}
-  ClassGetRid* = proc (pInstance: ClassInstancePtr): uint64T {.gdcall.}
-  PropertyInfo* {.byref.} = object
+  InstanceBindingCreateCallback* {.importc: "GDExtensionInstanceBindingCreateCallback".} = proc (
+      p_token: pointer; p_instance: pointer): pointer {.gdcall.}
+  InstanceBindingFreeCallback* {.importc: "GDExtensionInstanceBindingFreeCallback".} = proc (
+      p_token: pointer; p_instance: pointer; p_binding: pointer) {.gdcall.}
+  InstanceBindingReferenceCallback* {.importc: "GDExtensionInstanceBindingReferenceCallback".} = proc (
+      p_token: pointer; p_binding: pointer; p_reference: Bool): Bool {.gdcall.}
+  InstanceBindingCallbacks* {.byref,
+                              importc: "GDExtensionInstanceBindingCallbacks".} = object
+    create_callback*: InstanceBindingCreateCallback
+    free_callback*: InstanceBindingFreeCallback
+    reference_callback*: InstanceBindingReferenceCallback
+  ClassInstancePtr* {.importc: "GDExtensionClassInstancePtr".} = pointer
+  ClassSet* {.importc: "GDExtensionClassSet".} = proc (
+      p_instance: ClassInstancePtr; p_name: ConstStringNamePtr;
+      p_value: ConstVariantPtr): Bool {.gdcall.}
+  ClassGet* {.importc: "GDExtensionClassGet".} = proc (
+      p_instance: ClassInstancePtr; p_name: ConstStringNamePtr;
+      r_ret: VariantPtr): Bool {.gdcall.}
+  ClassGetRID* {.importc: "GDExtensionClassGetRID".} = proc (
+      p_instance: ClassInstancePtr): uint64_t {.gdcall.}
+  PropertyInfo* {.byref, importc: "GDExtensionPropertyInfo".} = object
     `type`*: VariantType
     name*: StringNamePtr
-    className*: StringNamePtr
-    hint*: uint32T
-    hintString*: StringPtr
-    usage*: uint32T
-  MethodInfo* {.byref.} = object
+    class_name*: StringNamePtr
+    hint*: uint32_t
+    hint_string*: StringPtr
+    usage*: uint32_t
+  MethodInfo* {.byref, importc: "GDExtensionMethodInfo".} = object
     name*: StringNamePtr
-    returnValue*: PropertyInfo
-    flags*: uint32T
-    id*: int32T
-    argumentCount*: uint32T
+    return_value*: PropertyInfo
+    flags*: uint32_t
+    id*: int32_t
+    argument_count*: uint32_t
     arguments*: ptr PropertyInfo
-    defaultArgumentCount*: uint32T
-    defaultArguments*: ptr VariantPtr
-  ClassGetPropertyList* = proc (pInstance: ClassInstancePtr; rCount: ptr uint32T): ptr PropertyInfo {.
+    default_argument_count*: uint32_t
+    default_arguments*: ptr VariantPtr
+  ClassGetPropertyList* {.importc: "GDExtensionClassGetPropertyList".} = proc (
+      p_instance: ClassInstancePtr; r_count: ptr uint32_t): ptr PropertyInfo {.
       gdcall.}
-  ClassFreePropertyList* = proc (pInstance: ClassInstancePtr;
-                                 pList: ptr UncheckedArray[PropertyInfo]) {.
+  ClassFreePropertyList* {.importc: "GDExtensionClassFreePropertyList".} = proc (
+      p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo]) {.
       gdcall.}
-  ClassFreePropertyList2* = proc (pInstance: ClassInstancePtr;
-                                  pList: ptr UncheckedArray[PropertyInfo];
-                                  pCount: uint32T) {.gdcall.}
-  ClassPropertyCanRevert* = proc (pInstance: ClassInstancePtr;
-                                  pName: ConstStringNamePtr): Bool {.gdcall.}
-  ClassPropertyGetRevert* = proc (pInstance: ClassInstancePtr;
-                                  pName: ConstStringNamePtr; rRet: VariantPtr): Bool {.
+  ClassFreePropertyList2* {.importc: "GDExtensionClassFreePropertyList2".} = proc (
+      p_instance: ClassInstancePtr; p_list: ptr UncheckedArray[PropertyInfo];
+      p_count: uint32_t) {.gdcall.}
+  ClassPropertyCanRevert* {.importc: "GDExtensionClassPropertyCanRevert".} = proc (
+      p_instance: ClassInstancePtr; p_name: ConstStringNamePtr): Bool {.gdcall.}
+  ClassPropertyGetRevert* {.importc: "GDExtensionClassPropertyGetRevert".} = proc (
+      p_instance: ClassInstancePtr; p_name: ConstStringNamePtr;
+      r_ret: VariantPtr): Bool {.gdcall.}
+  ClassValidateProperty* {.importc: "GDExtensionClassValidateProperty".} = proc (
+      p_instance: ClassInstancePtr; p_property: ptr PropertyInfo): Bool {.gdcall.}
+  ClassNotification* {.importc: "GDExtensionClassNotification".} = proc (
+      p_instance: ClassInstancePtr; p_what: int32_t) {.gdcall.}
+  ClassNotification2* {.importc: "GDExtensionClassNotification2".} = proc (
+      p_instance: ClassInstancePtr; p_what: int32_t; p_reversed: Bool) {.gdcall.}
+  ClassToString* {.importc: "GDExtensionClassToString".} = proc (
+      p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out: StringPtr) {.
       gdcall.}
-  ClassValidateProperty* = proc (pInstance: ClassInstancePtr;
-                                 pProperty: ptr PropertyInfo): Bool {.gdcall.}
-  ClassNotification* = proc (pInstance: ClassInstancePtr; pWhat: int32T) {.
+  ClassReference* {.importc: "GDExtensionClassReference".} = proc (
+      p_instance: ClassInstancePtr) {.gdcall.}
+  ClassUnreference* {.importc: "GDExtensionClassUnreference".} = proc (
+      p_instance: ClassInstancePtr) {.gdcall.}
+  ClassCallVirtual* {.importc: "GDExtensionClassCallVirtual".} = proc (
+      p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr];
+      r_ret: TypePtr) {.gdcall.}
+  ClassCreateInstance* {.importc: "GDExtensionClassCreateInstance".} = proc (
+      p_class_userdata: pointer): ObjectPtr {.gdcall.}
+  ClassCreateInstance2* {.importc: "GDExtensionClassCreateInstance2".} = proc (
+      p_class_userdata: pointer; p_notify_postinitialize: Bool): ObjectPtr {.
       gdcall.}
-  ClassNotification2* = proc (pInstance: ClassInstancePtr; pWhat: int32T;
-                              pReversed: Bool) {.gdcall.}
-  ClassToString* = proc (pInstance: ClassInstancePtr; rIsValid: ptr Bool;
-                         pOut: StringPtr) {.gdcall.}
-  ClassReference* = proc (pInstance: ClassInstancePtr) {.gdcall.}
-  ClassUnreference* = proc (pInstance: ClassInstancePtr) {.gdcall.}
-  ClassCallVirtual* = proc (pInstance: ClassInstancePtr;
-                            pArgs: ptr UncheckedArray[ConstTypePtr];
-                            rRet: TypePtr) {.gdcall.}
-  ClassCreateInstance* = proc (pClassUserdata: pointer): ObjectPtr {.gdcall.}
-  ClassCreateInstance2* = proc (pClassUserdata: pointer;
-                                pNotifyPostinitialize: Bool): ObjectPtr {.gdcall.}
-  ClassFreeInstance* = proc (pClassUserdata: pointer;
-                             pInstance: ClassInstancePtr) {.gdcall.}
-  ClassRecreateInstance* = proc (pClassUserdata: pointer; pObject: ObjectPtr): ClassInstancePtr {.
+  ClassFreeInstance* {.importc: "GDExtensionClassFreeInstance".} = proc (
+      p_class_userdata: pointer; p_instance: ClassInstancePtr) {.gdcall.}
+  ClassRecreateInstance* {.importc: "GDExtensionClassRecreateInstance".} = proc (
+      p_class_userdata: pointer; p_object: ObjectPtr): ClassInstancePtr {.gdcall.}
+  ClassGetVirtual* {.importc: "GDExtensionClassGetVirtual".} = proc (
+      p_class_userdata: pointer; p_name: ConstStringNamePtr): ClassCallVirtual {.
       gdcall.}
-  ClassGetVirtual* = proc (pClassUserdata: pointer; pName: ConstStringNamePtr): ClassCallVirtual {.
+  ClassGetVirtual2* {.importc: "GDExtensionClassGetVirtual2".} = proc (
+      p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): ClassCallVirtual {.
       gdcall.}
-  ClassGetVirtual2* = proc (pClassUserdata: pointer; pName: ConstStringNamePtr;
-                            pHash: uint32T): ClassCallVirtual {.gdcall.}
-  ClassGetVirtualCallData* = proc (pClassUserdata: pointer;
-                                   pName: ConstStringNamePtr): pointer {.gdcall.}
-  ClassGetVirtualCallData2* = proc (pClassUserdata: pointer;
-                                    pName: ConstStringNamePtr; pHash: uint32T): pointer {.
+  ClassGetVirtualCallData* {.importc: "GDExtensionClassGetVirtualCallData".} = proc (
+      p_class_userdata: pointer; p_name: ConstStringNamePtr): pointer {.gdcall.}
+  ClassGetVirtualCallData2* {.importc: "GDExtensionClassGetVirtualCallData2".} = proc (
+      p_class_userdata: pointer; p_name: ConstStringNamePtr; p_hash: uint32_t): pointer {.
       gdcall.}
-  ClassCallVirtualWithData* = proc (pInstance: ClassInstancePtr;
-                                    pName: ConstStringNamePtr;
-                                    pVirtualCallUserdata: pointer;
-                                    pArgs: ptr UncheckedArray[ConstTypePtr];
-                                    rRet: TypePtr) {.gdcall.}
-  ClassCreationInfo* {.byref.} = object
-    isVirtual*: Bool
-    isAbstract*: Bool
-    setFunc*: ClassSet
-    getFunc*: ClassGet
-    getPropertyListFunc*: ClassGetPropertyList
-    freePropertyListFunc*: ClassFreePropertyList
-    propertyCanRevertFunc*: ClassPropertyCanRevert
-    propertyGetRevertFunc*: ClassPropertyGetRevert
-    notificationFunc*: ClassNotification
-    toStringFunc*: ClassToString
-    referenceFunc*: ClassReference
-    unreferenceFunc*: ClassUnreference
-    createInstanceFunc*: ClassCreateInstance
-    freeInstanceFunc*: ClassFreeInstance
-    getVirtualFunc*: ClassGetVirtual
-    getRidFunc*: ClassGetRid
-    classUserdata*: pointer
-  ClassCreationInfo2* {.byref.} = object
-    isVirtual*: Bool
-    isAbstract*: Bool
-    isExposed*: Bool
-    setFunc*: ClassSet
-    getFunc*: ClassGet
-    getPropertyListFunc*: ClassGetPropertyList
-    freePropertyListFunc*: ClassFreePropertyList
-    propertyCanRevertFunc*: ClassPropertyCanRevert
-    propertyGetRevertFunc*: ClassPropertyGetRevert
-    validatePropertyFunc*: ClassValidateProperty
-    notificationFunc*: ClassNotification2
-    toStringFunc*: ClassToString
-    referenceFunc*: ClassReference
-    unreferenceFunc*: ClassUnreference
-    createInstanceFunc*: ClassCreateInstance
-    freeInstanceFunc*: ClassFreeInstance
-    recreateInstanceFunc*: ClassRecreateInstance
-    getVirtualFunc*: ClassGetVirtual
-    getVirtualCallDataFunc*: ClassGetVirtualCallData
-    callVirtualWithDataFunc*: ClassCallVirtualWithData
-    getRidFunc*: ClassGetRid
-    classUserdata*: pointer
-  ClassCreationInfo3* {.byref.} = object
-    isVirtual*: Bool
-    isAbstract*: Bool
-    isExposed*: Bool
-    isRuntime*: Bool
-    setFunc*: ClassSet
-    getFunc*: ClassGet
-    getPropertyListFunc*: ClassGetPropertyList
-    freePropertyListFunc*: ClassFreePropertyList2
-    propertyCanRevertFunc*: ClassPropertyCanRevert
-    propertyGetRevertFunc*: ClassPropertyGetRevert
-    validatePropertyFunc*: ClassValidateProperty
-    notificationFunc*: ClassNotification2
-    toStringFunc*: ClassToString
-    referenceFunc*: ClassReference
-    unreferenceFunc*: ClassUnreference
-    createInstanceFunc*: ClassCreateInstance
-    freeInstanceFunc*: ClassFreeInstance
-    recreateInstanceFunc*: ClassRecreateInstance
-    getVirtualFunc*: ClassGetVirtual
-    getVirtualCallDataFunc*: ClassGetVirtualCallData
-    callVirtualWithDataFunc*: ClassCallVirtualWithData
-    getRidFunc*: ClassGetRid
-    classUserdata*: pointer
-  ClassCreationInfo4* {.byref.} = object
-    isVirtual*: Bool
-    isAbstract*: Bool
-    isExposed*: Bool
-    isRuntime*: Bool
-    iconPath*: ConstStringPtr
-    setFunc*: ClassSet
-    getFunc*: ClassGet
-    getPropertyListFunc*: ClassGetPropertyList
-    freePropertyListFunc*: ClassFreePropertyList2
-    propertyCanRevertFunc*: ClassPropertyCanRevert
-    propertyGetRevertFunc*: ClassPropertyGetRevert
-    validatePropertyFunc*: ClassValidateProperty
-    notificationFunc*: ClassNotification2
-    toStringFunc*: ClassToString
-    referenceFunc*: ClassReference
-    unreferenceFunc*: ClassUnreference
-    createInstanceFunc*: ClassCreateInstance2
-    freeInstanceFunc*: ClassFreeInstance
-    recreateInstanceFunc*: ClassRecreateInstance
-    getVirtualFunc*: ClassGetVirtual2
-    getVirtualCallDataFunc*: ClassGetVirtualCallData2
-    callVirtualWithDataFunc*: ClassCallVirtualWithData
-    classUserdata*: pointer
-  ClassCreationInfo5* = ClassCreationInfo4
-  ClassLibraryPtr* = pointer
-  EditorGetClassesUsedCallback* = proc (pPackedStringArray: TypePtr) {.gdcall.}
-  ClassMethodFlags* = enum
-    MethodFlagNormal = 0, MethodFlagEditor = 1, MethodFlagConst = 2,
-    MethodFlagVirtual = 3, MethodFlagVararg = 4, MethodFlagStatic = 5
-  ClassMethodArgumentMetadata* = enum
-    MethodArgumentMetadataNone, MethodArgumentMetadataIntIsInt8,
-    MethodArgumentMetadataIntIsInt16, MethodArgumentMetadataIntIsInt32,
-    MethodArgumentMetadataIntIsInt64, MethodArgumentMetadataIntIsUint8,
-    MethodArgumentMetadataIntIsUint16, MethodArgumentMetadataIntIsUint32,
-    MethodArgumentMetadataIntIsUint64, MethodArgumentMetadataRealIsFloat,
-    MethodArgumentMetadataRealIsDouble, MethodArgumentMetadataIntIsChar16,
-    MethodArgumentMetadataIntIsChar32
-  ClassMethodCall* = proc (methodUserdata: pointer; pInstance: ClassInstancePtr;
-                           pArgs: ptr UncheckedArray[ConstVariantPtr];
-                           pArgumentCount: Int; rReturn: VariantPtr;
-                           rError: ptr CallError) {.gdcall.}
-  ClassMethodValidatedCall* = proc (methodUserdata: pointer;
-                                    pInstance: ClassInstancePtr;
-                                    pArgs: ptr UncheckedArray[ConstVariantPtr];
-                                    rReturn: VariantPtr) {.gdcall.}
-  ClassMethodPtrCall* = proc (methodUserdata: pointer;
-                              pInstance: ClassInstancePtr;
-                              pArgs: ptr UncheckedArray[ConstTypePtr];
-                              rRet: TypePtr) {.gdcall.}
-  ClassMethodInfo* {.byref.} = object
+  ClassCallVirtualWithData* {.importc: "GDExtensionClassCallVirtualWithData".} = proc (
+      p_instance: ClassInstancePtr; p_name: ConstStringNamePtr;
+      p_virtual_call_userdata: pointer;
+      p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
+  ClassCreationInfo* {.byref, importc: "GDExtensionClassCreationInfo".} = object
+    is_virtual*: Bool
+    is_abstract*: Bool
+    set_func*: ClassSet
+    get_func*: ClassGet
+    get_property_list_func*: ClassGetPropertyList
+    free_property_list_func*: ClassFreePropertyList
+    property_can_revert_func*: ClassPropertyCanRevert
+    property_get_revert_func*: ClassPropertyGetRevert
+    notification_func*: ClassNotification
+    to_string_func*: ClassToString
+    reference_func*: ClassReference
+    unreference_func*: ClassUnreference
+    create_instance_func*: ClassCreateInstance
+    free_instance_func*: ClassFreeInstance
+    get_virtual_func*: ClassGetVirtual
+    get_rid_func*: ClassGetRID
+    class_userdata*: pointer
+  ClassCreationInfo2* {.byref, importc: "GDExtensionClassCreationInfo2".} = object
+    is_virtual*: Bool
+    is_abstract*: Bool
+    is_exposed*: Bool
+    set_func*: ClassSet
+    get_func*: ClassGet
+    get_property_list_func*: ClassGetPropertyList
+    free_property_list_func*: ClassFreePropertyList
+    property_can_revert_func*: ClassPropertyCanRevert
+    property_get_revert_func*: ClassPropertyGetRevert
+    validate_property_func*: ClassValidateProperty
+    notification_func*: ClassNotification2
+    to_string_func*: ClassToString
+    reference_func*: ClassReference
+    unreference_func*: ClassUnreference
+    create_instance_func*: ClassCreateInstance
+    free_instance_func*: ClassFreeInstance
+    recreate_instance_func*: ClassRecreateInstance
+    get_virtual_func*: ClassGetVirtual
+    get_virtual_call_data_func*: ClassGetVirtualCallData
+    call_virtual_with_data_func*: ClassCallVirtualWithData
+    get_rid_func*: ClassGetRID
+    class_userdata*: pointer
+  ClassCreationInfo3* {.byref, importc: "GDExtensionClassCreationInfo3".} = object
+    is_virtual*: Bool
+    is_abstract*: Bool
+    is_exposed*: Bool
+    is_runtime*: Bool
+    set_func*: ClassSet
+    get_func*: ClassGet
+    get_property_list_func*: ClassGetPropertyList
+    free_property_list_func*: ClassFreePropertyList2
+    property_can_revert_func*: ClassPropertyCanRevert
+    property_get_revert_func*: ClassPropertyGetRevert
+    validate_property_func*: ClassValidateProperty
+    notification_func*: ClassNotification2
+    to_string_func*: ClassToString
+    reference_func*: ClassReference
+    unreference_func*: ClassUnreference
+    create_instance_func*: ClassCreateInstance
+    free_instance_func*: ClassFreeInstance
+    recreate_instance_func*: ClassRecreateInstance
+    get_virtual_func*: ClassGetVirtual
+    get_virtual_call_data_func*: ClassGetVirtualCallData
+    call_virtual_with_data_func*: ClassCallVirtualWithData
+    get_rid_func*: ClassGetRID
+    class_userdata*: pointer
+  ClassCreationInfo4* {.byref, importc: "GDExtensionClassCreationInfo4".} = object
+    is_virtual*: Bool
+    is_abstract*: Bool
+    is_exposed*: Bool
+    is_runtime*: Bool
+    icon_path*: ConstStringPtr
+    set_func*: ClassSet
+    get_func*: ClassGet
+    get_property_list_func*: ClassGetPropertyList
+    free_property_list_func*: ClassFreePropertyList2
+    property_can_revert_func*: ClassPropertyCanRevert
+    property_get_revert_func*: ClassPropertyGetRevert
+    validate_property_func*: ClassValidateProperty
+    notification_func*: ClassNotification2
+    to_string_func*: ClassToString
+    reference_func*: ClassReference
+    unreference_func*: ClassUnreference
+    create_instance_func*: ClassCreateInstance2
+    free_instance_func*: ClassFreeInstance
+    recreate_instance_func*: ClassRecreateInstance
+    get_virtual_func*: ClassGetVirtual2
+    get_virtual_call_data_func*: ClassGetVirtualCallData2
+    call_virtual_with_data_func*: ClassCallVirtualWithData
+    class_userdata*: pointer
+  ClassCreationInfo5* {.importc: "GDExtensionClassCreationInfo5".} = ClassCreationInfo4
+  ClassLibraryPtr* {.importc: "GDExtensionClassLibraryPtr".} = pointer
+  EditorGetClassesUsedCallback* {.importc: "GDExtensionEditorGetClassesUsedCallback".} = proc (
+      p_packed_string_array: TypePtr) {.gdcall.}
+  ClassMethodFlags* {.importc: "GDExtensionClassMethodFlags".} = enum
+    METHOD_FLAG_NORMAL = 0, METHOD_FLAG_EDITOR = 1, METHOD_FLAG_CONST = 2,
+    METHOD_FLAG_VIRTUAL = 3, METHOD_FLAG_VARARG = 4, METHOD_FLAG_STATIC = 5
+  ClassMethodArgumentMetadata* {.importc: "GDExtensionClassMethodArgumentMetadata".} = enum
+    METHOD_ARGUMENT_METADATA_NONE, METHOD_ARGUMENT_METADATA_INT_IS_INT8,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT16,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT32,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT64,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT8,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT16,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT32,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT64,
+    METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT,
+    METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE,
+    METHOD_ARGUMENT_METADATA_INT_IS_CHAR16,
+    METHOD_ARGUMENT_METADATA_INT_IS_CHAR32
+  ClassMethodCall* {.importc: "GDExtensionClassMethodCall".} = proc (
+      method_userdata: pointer; p_instance: ClassInstancePtr;
+      p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int;
+      r_return: VariantPtr; r_error: ptr CallError) {.gdcall.}
+  ClassMethodValidatedCall* {.importc: "GDExtensionClassMethodValidatedCall".} = proc (
+      method_userdata: pointer; p_instance: ClassInstancePtr;
+      p_args: ptr UncheckedArray[ConstVariantPtr]; r_return: VariantPtr) {.
+      gdcall.}
+  ClassMethodPtrCall* {.importc: "GDExtensionClassMethodPtrCall".} = proc (
+      method_userdata: pointer; p_instance: ClassInstancePtr;
+      p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.}
+  ClassMethodInfo* {.byref, importc: "GDExtensionClassMethodInfo".} = object
     name*: StringNamePtr
-    methodUserdata*: pointer
-    callFunc*: ClassMethodCall
-    ptrcallFunc*: ClassMethodPtrCall
-    methodFlags*: uint32T
-    hasReturnValue*: Bool
-    returnValueInfo*: ptr PropertyInfo
-    returnValueMetadata*: ClassMethodArgumentMetadata
-    argumentCount*: uint32T
-    argumentsInfo*: ptr PropertyInfo
-    argumentsMetadata*: ptr ClassMethodArgumentMetadata
-    defaultArgumentCount*: uint32T
-    defaultArguments*: ptr VariantPtr
-  ClassVirtualMethodInfo* {.byref.} = object
+    method_userdata*: pointer
+    call_func*: ClassMethodCall
+    ptrcall_func*: ClassMethodPtrCall
+    method_flags*: uint32_t
+    has_return_value*: Bool
+    return_value_info*: ptr PropertyInfo
+    return_value_metadata*: ClassMethodArgumentMetadata
+    argument_count*: uint32_t
+    arguments_info*: ptr PropertyInfo
+    arguments_metadata*: ptr ClassMethodArgumentMetadata
+    default_argument_count*: uint32_t
+    default_arguments*: ptr VariantPtr
+  ClassVirtualMethodInfo* {.byref, importc: "GDExtensionClassVirtualMethodInfo".} = object
     name*: StringNamePtr
-    methodFlags*: uint32T
-    returnValue*: PropertyInfo
-    returnValueMetadata*: ClassMethodArgumentMetadata
-    argumentCount*: uint32T
+    method_flags*: uint32_t
+    return_value*: PropertyInfo
+    return_value_metadata*: ClassMethodArgumentMetadata
+    argument_count*: uint32_t
     arguments*: ptr PropertyInfo
-    argumentsMetadata*: ptr ClassMethodArgumentMetadata
-  CallableCustomCall* = proc (callableUserdata: pointer;
-                              pArgs: ptr UncheckedArray[ConstVariantPtr];
-                              pArgumentCount: Int; rReturn: VariantPtr;
-                              rError: ptr CallError) {.gdcall.}
-  CallableCustomIsValid* = proc (callableUserdata: pointer): Bool {.gdcall.}
-  CallableCustomFree* = proc (callableUserdata: pointer) {.gdcall.}
-  CallableCustomHash* = proc (callableUserdata: pointer): uint32T {.gdcall.}
-  CallableCustomEqual* = proc (callableUserdataA: pointer;
-                               callableUserdataB: pointer): Bool {.gdcall.}
-  CallableCustomLessThan* = proc (callableUserdataA: pointer;
-                                  callableUserdataB: pointer): Bool {.gdcall.}
-  CallableCustomToString* = proc (callableUserdata: pointer; rIsValid: ptr Bool;
-                                  rOut: StringPtr) {.gdcall.}
-  CallableCustomGetArgumentCount* = proc (callableUserdata: pointer;
-      rIsValid: ptr Bool): Int {.gdcall.}
-  CallableCustomInfo* {.byref.} = object
-    callableUserdata*: pointer
+    arguments_metadata*: ptr ClassMethodArgumentMetadata
+  CallableCustomCall* {.importc: "GDExtensionCallableCustomCall".} = proc (
+      callable_userdata: pointer; p_args: ptr UncheckedArray[ConstVariantPtr];
+      p_argument_count: Int; r_return: VariantPtr; r_error: ptr CallError) {.
+      gdcall.}
+  CallableCustomIsValid* {.importc: "GDExtensionCallableCustomIsValid".} = proc (
+      callable_userdata: pointer): Bool {.gdcall.}
+  CallableCustomFree* {.importc: "GDExtensionCallableCustomFree".} = proc (
+      callable_userdata: pointer) {.gdcall.}
+  CallableCustomHash* {.importc: "GDExtensionCallableCustomHash".} = proc (
+      callable_userdata: pointer): uint32_t {.gdcall.}
+  CallableCustomEqual* {.importc: "GDExtensionCallableCustomEqual".} = proc (
+      callable_userdata_a: pointer; callable_userdata_b: pointer): Bool {.gdcall.}
+  CallableCustomLessThan* {.importc: "GDExtensionCallableCustomLessThan".} = proc (
+      callable_userdata_a: pointer; callable_userdata_b: pointer): Bool {.gdcall.}
+  CallableCustomToString* {.importc: "GDExtensionCallableCustomToString".} = proc (
+      callable_userdata: pointer; r_is_valid: ptr Bool; r_out: StringPtr) {.
+      gdcall.}
+  CallableCustomGetArgumentCount* {.importc: "GDExtensionCallableCustomGetArgumentCount".} = proc (
+      callable_userdata: pointer; r_is_valid: ptr Bool): Int {.gdcall.}
+  CallableCustomInfo* {.byref, importc: "GDExtensionCallableCustomInfo".} = object
+    callable_userdata*: pointer
     token*: pointer
-    objectId*: GdObjectInstanceId
-    callFunc*: CallableCustomCall
-    isValidFunc*: CallableCustomIsValid
-    freeFunc*: CallableCustomFree
-    hashFunc*: CallableCustomHash
-    equalFunc*: CallableCustomEqual
-    lessThanFunc*: CallableCustomLessThan
-    toStringFunc*: CallableCustomToString
-  CallableCustomInfo2* {.byref.} = object
-    callableUserdata*: pointer
+    object_id*: GDObjectInstanceID
+    call_func*: CallableCustomCall
+    is_valid_func*: CallableCustomIsValid
+    free_func*: CallableCustomFree
+    hash_func*: CallableCustomHash
+    equal_func*: CallableCustomEqual
+    less_than_func*: CallableCustomLessThan
+    to_string_func*: CallableCustomToString
+  CallableCustomInfo2* {.byref, importc: "GDExtensionCallableCustomInfo2".} = object
+    callable_userdata*: pointer
     token*: pointer
-    objectId*: GdObjectInstanceId
-    callFunc*: CallableCustomCall
-    isValidFunc*: CallableCustomIsValid
-    freeFunc*: CallableCustomFree
-    hashFunc*: CallableCustomHash
-    equalFunc*: CallableCustomEqual
-    lessThanFunc*: CallableCustomLessThan
-    toStringFunc*: CallableCustomToString
-    getArgumentCountFunc*: CallableCustomGetArgumentCount
-  ScriptInstanceDataPtr* = pointer
-  ScriptInstanceSet* = proc (pInstance: ScriptInstanceDataPtr;
-                             pName: ConstStringNamePtr; pValue: ConstVariantPtr): Bool {.
+    object_id*: GDObjectInstanceID
+    call_func*: CallableCustomCall
+    is_valid_func*: CallableCustomIsValid
+    free_func*: CallableCustomFree
+    hash_func*: CallableCustomHash
+    equal_func*: CallableCustomEqual
+    less_than_func*: CallableCustomLessThan
+    to_string_func*: CallableCustomToString
+    get_argument_count_func*: CallableCustomGetArgumentCount
+  ScriptInstanceDataPtr* {.importc: "GDExtensionScriptInstanceDataPtr".} = pointer
+  ScriptInstanceSet* {.importc: "GDExtensionScriptInstanceSet".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr;
+      p_value: ConstVariantPtr): Bool {.gdcall.}
+  ScriptInstanceGet* {.importc: "GDExtensionScriptInstanceGet".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr;
+      r_ret: VariantPtr): Bool {.gdcall.}
+  ScriptInstanceGetPropertyList* {.importc: "GDExtensionScriptInstanceGetPropertyList".} = proc (
+      p_instance: ScriptInstanceDataPtr; r_count: ptr uint32_t): ptr PropertyInfo {.
       gdcall.}
-  ScriptInstanceGet* = proc (pInstance: ScriptInstanceDataPtr;
-                             pName: ConstStringNamePtr; rRet: VariantPtr): Bool {.
+  ScriptInstanceFreePropertyList* {.importc: "GDExtensionScriptInstanceFreePropertyList".} = proc (
+      p_instance: ScriptInstanceDataPtr;
+      p_list: ptr UncheckedArray[PropertyInfo]) {.gdcall.}
+  ScriptInstanceFreePropertyList2* {.importc: "GDExtensionScriptInstanceFreePropertyList2".} = proc (
+      p_instance: ScriptInstanceDataPtr;
+      p_list: ptr UncheckedArray[PropertyInfo]; p_count: uint32_t) {.gdcall.}
+  ScriptInstanceGetClassCategory* {.importc: "GDExtensionScriptInstanceGetClassCategory".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_class_category: ptr PropertyInfo): Bool {.
       gdcall.}
-  ScriptInstanceGetPropertyList* = proc (pInstance: ScriptInstanceDataPtr;
-      rCount: ptr uint32T): ptr PropertyInfo {.gdcall.}
-  ScriptInstanceFreePropertyList* = proc (pInstance: ScriptInstanceDataPtr;
-      pList: ptr UncheckedArray[PropertyInfo]) {.gdcall.}
-  ScriptInstanceFreePropertyList2* = proc (pInstance: ScriptInstanceDataPtr;
-      pList: ptr UncheckedArray[PropertyInfo]; pCount: uint32T) {.gdcall.}
-  ScriptInstanceGetClassCategory* = proc (pInstance: ScriptInstanceDataPtr;
-      pClassCategory: ptr PropertyInfo): Bool {.gdcall.}
-  ScriptInstanceGetPropertyType* = proc (pInstance: ScriptInstanceDataPtr;
-      pName: ConstStringNamePtr; rIsValid: ptr Bool): VariantType {.gdcall.}
-  ScriptInstanceValidateProperty* = proc (pInstance: ScriptInstanceDataPtr;
-      pProperty: ptr PropertyInfo): Bool {.gdcall.}
-  ScriptInstancePropertyCanRevert* = proc (pInstance: ScriptInstanceDataPtr;
-      pName: ConstStringNamePtr): Bool {.gdcall.}
-  ScriptInstancePropertyGetRevert* = proc (pInstance: ScriptInstanceDataPtr;
-      pName: ConstStringNamePtr; rRet: VariantPtr): Bool {.gdcall.}
-  ScriptInstanceGetOwner* = proc (pInstance: ScriptInstanceDataPtr): ObjectPtr {.
+  ScriptInstanceGetPropertyType* {.importc: "GDExtensionScriptInstanceGetPropertyType".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr;
+      r_is_valid: ptr Bool): VariantType {.gdcall.}
+  ScriptInstanceValidateProperty* {.importc: "GDExtensionScriptInstanceValidateProperty".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_property: ptr PropertyInfo): Bool {.
       gdcall.}
-  ScriptInstancePropertyStateAdd* = proc (pName: ConstStringNamePtr;
-      pValue: ConstVariantPtr; pUserdata: pointer) {.gdcall.}
-  ScriptInstanceGetPropertyState* = proc (pInstance: ScriptInstanceDataPtr;
-      pAddFunc: ScriptInstancePropertyStateAdd; pUserdata: pointer) {.gdcall.}
-  ScriptInstanceGetMethodList* = proc (pInstance: ScriptInstanceDataPtr;
-                                       rCount: ptr uint32T): ptr MethodInfo {.
+  ScriptInstancePropertyCanRevert* {.importc: "GDExtensionScriptInstancePropertyCanRevert".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr): Bool {.
       gdcall.}
-  ScriptInstanceFreeMethodList* = proc (pInstance: ScriptInstanceDataPtr;
-                                        pList: ptr UncheckedArray[MethodInfo]) {.
+  ScriptInstancePropertyGetRevert* {.importc: "GDExtensionScriptInstancePropertyGetRevert".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr;
+      r_ret: VariantPtr): Bool {.gdcall.}
+  ScriptInstanceGetOwner* {.importc: "GDExtensionScriptInstanceGetOwner".} = proc (
+      p_instance: ScriptInstanceDataPtr): ObjectPtr {.gdcall.}
+  ScriptInstancePropertyStateAdd* {.importc: "GDExtensionScriptInstancePropertyStateAdd".} = proc (
+      p_name: ConstStringNamePtr; p_value: ConstVariantPtr; p_userdata: pointer) {.
       gdcall.}
-  ScriptInstanceFreeMethodList2* = proc (pInstance: ScriptInstanceDataPtr;
-      pList: ptr UncheckedArray[MethodInfo]; pCount: uint32T) {.gdcall.}
-  ScriptInstanceHasMethod* = proc (pInstance: ScriptInstanceDataPtr;
-                                   pName: ConstStringNamePtr): Bool {.gdcall.}
-  ScriptInstanceGetMethodArgumentCount* = proc (
-      pInstance: ScriptInstanceDataPtr; pName: ConstStringNamePtr;
-      rIsValid: ptr Bool): Int {.gdcall.}
-  ScriptInstanceCall* = proc (pSelf: ScriptInstanceDataPtr;
-                              pMethod: ConstStringNamePtr;
-                              pArgs: ptr UncheckedArray[ConstVariantPtr];
-                              pArgumentCount: Int; rReturn: VariantPtr;
-                              rError: ptr CallError) {.gdcall.}
-  ScriptInstanceNotification* = proc (pInstance: ScriptInstanceDataPtr;
-                                      pWhat: int32T) {.gdcall.}
-  ScriptInstanceNotification2* = proc (pInstance: ScriptInstanceDataPtr;
-                                       pWhat: int32T; pReversed: Bool) {.gdcall.}
-  ScriptInstanceToString* = proc (pInstance: ScriptInstanceDataPtr;
-                                  rIsValid: ptr Bool; rOut: StringPtr) {.gdcall.}
-  ScriptInstanceRefCountIncremented* = proc (pInstance: ScriptInstanceDataPtr) {.
+  ScriptInstanceGetPropertyState* {.importc: "GDExtensionScriptInstanceGetPropertyState".} = proc (
+      p_instance: ScriptInstanceDataPtr;
+      p_add_func: ScriptInstancePropertyStateAdd; p_userdata: pointer) {.gdcall.}
+  ScriptInstanceGetMethodList* {.importc: "GDExtensionScriptInstanceGetMethodList".} = proc (
+      p_instance: ScriptInstanceDataPtr; r_count: ptr uint32_t): ptr MethodInfo {.
       gdcall.}
-  ScriptInstanceRefCountDecremented* = proc (pInstance: ScriptInstanceDataPtr): Bool {.
+  ScriptInstanceFreeMethodList* {.importc: "GDExtensionScriptInstanceFreeMethodList".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_list: ptr UncheckedArray[MethodInfo]) {.
       gdcall.}
-  ScriptInstanceGetScript* = proc (pInstance: ScriptInstanceDataPtr): ObjectPtr {.
+  ScriptInstanceFreeMethodList2* {.importc: "GDExtensionScriptInstanceFreeMethodList2".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_list: ptr UncheckedArray[MethodInfo];
+      p_count: uint32_t) {.gdcall.}
+  ScriptInstanceHasMethod* {.importc: "GDExtensionScriptInstanceHasMethod".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr): Bool {.
       gdcall.}
-  ScriptInstanceIsPlaceholder* = proc (pInstance: ScriptInstanceDataPtr): Bool {.
+  ScriptInstanceGetMethodArgumentCount* {.
+      importc: "GDExtensionScriptInstanceGetMethodArgumentCount".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_name: ConstStringNamePtr;
+      r_is_valid: ptr Bool): Int {.gdcall.}
+  ScriptInstanceCall* {.importc: "GDExtensionScriptInstanceCall".} = proc (
+      p_self: ScriptInstanceDataPtr; p_method: ConstStringNamePtr;
+      p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int;
+      r_return: VariantPtr; r_error: ptr CallError) {.gdcall.}
+  ScriptInstanceNotification* {.importc: "GDExtensionScriptInstanceNotification".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_what: int32_t) {.gdcall.}
+  ScriptInstanceNotification2* {.importc: "GDExtensionScriptInstanceNotification2".} = proc (
+      p_instance: ScriptInstanceDataPtr; p_what: int32_t; p_reversed: Bool) {.
       gdcall.}
-  ScriptLanguagePtr* = pointer
-  ScriptInstanceGetLanguage* = proc (pInstance: ScriptInstanceDataPtr): ScriptLanguagePtr {.
+  ScriptInstanceToString* {.importc: "GDExtensionScriptInstanceToString".} = proc (
+      p_instance: ScriptInstanceDataPtr; r_is_valid: ptr Bool; r_out: StringPtr) {.
       gdcall.}
-  ScriptInstanceFree* = proc (pInstance: ScriptInstanceDataPtr) {.gdcall.}
-  ScriptInstancePtr* = pointer
-  ScriptInstanceInfo* {.byref.} = object
-    setFunc*: ScriptInstanceSet
-    getFunc*: ScriptInstanceGet
-    getPropertyListFunc*: ScriptInstanceGetPropertyList
-    freePropertyListFunc*: ScriptInstanceFreePropertyList
-    propertyCanRevertFunc*: ScriptInstancePropertyCanRevert
-    propertyGetRevertFunc*: ScriptInstancePropertyGetRevert
-    getOwnerFunc*: ScriptInstanceGetOwner
-    getPropertyStateFunc*: ScriptInstanceGetPropertyState
-    getMethodListFunc*: ScriptInstanceGetMethodList
-    freeMethodListFunc*: ScriptInstanceFreeMethodList
-    getPropertyTypeFunc*: ScriptInstanceGetPropertyType
-    hasMethodFunc*: ScriptInstanceHasMethod
-    callFunc*: ScriptInstanceCall
-    notificationFunc*: ScriptInstanceNotification
-    toStringFunc*: ScriptInstanceToString
-    refcountIncrementedFunc*: ScriptInstanceRefCountIncremented
-    refcountDecrementedFunc*: ScriptInstanceRefCountDecremented
-    getScriptFunc*: ScriptInstanceGetScript
-    isPlaceholderFunc*: ScriptInstanceIsPlaceholder
-    setFallbackFunc*: ScriptInstanceSet
-    getFallbackFunc*: ScriptInstanceGet
-    getLanguageFunc*: ScriptInstanceGetLanguage
-    freeFunc*: ScriptInstanceFree
-  ScriptInstanceInfo2* {.byref.} = object
-    setFunc*: ScriptInstanceSet
-    getFunc*: ScriptInstanceGet
-    getPropertyListFunc*: ScriptInstanceGetPropertyList
-    freePropertyListFunc*: ScriptInstanceFreePropertyList
-    getClassCategoryFunc*: ScriptInstanceGetClassCategory
-    propertyCanRevertFunc*: ScriptInstancePropertyCanRevert
-    propertyGetRevertFunc*: ScriptInstancePropertyGetRevert
-    getOwnerFunc*: ScriptInstanceGetOwner
-    getPropertyStateFunc*: ScriptInstanceGetPropertyState
-    getMethodListFunc*: ScriptInstanceGetMethodList
-    freeMethodListFunc*: ScriptInstanceFreeMethodList
-    getPropertyTypeFunc*: ScriptInstanceGetPropertyType
-    validatePropertyFunc*: ScriptInstanceValidateProperty
-    hasMethodFunc*: ScriptInstanceHasMethod
-    callFunc*: ScriptInstanceCall
-    notificationFunc*: ScriptInstanceNotification2
-    toStringFunc*: ScriptInstanceToString
-    refcountIncrementedFunc*: ScriptInstanceRefCountIncremented
-    refcountDecrementedFunc*: ScriptInstanceRefCountDecremented
-    getScriptFunc*: ScriptInstanceGetScript
-    isPlaceholderFunc*: ScriptInstanceIsPlaceholder
-    setFallbackFunc*: ScriptInstanceSet
-    getFallbackFunc*: ScriptInstanceGet
-    getLanguageFunc*: ScriptInstanceGetLanguage
-    freeFunc*: ScriptInstanceFree
-  ScriptInstanceInfo3* {.byref.} = object
-    setFunc*: ScriptInstanceSet
-    getFunc*: ScriptInstanceGet
-    getPropertyListFunc*: ScriptInstanceGetPropertyList
-    freePropertyListFunc*: ScriptInstanceFreePropertyList2
-    getClassCategoryFunc*: ScriptInstanceGetClassCategory
-    propertyCanRevertFunc*: ScriptInstancePropertyCanRevert
-    propertyGetRevertFunc*: ScriptInstancePropertyGetRevert
-    getOwnerFunc*: ScriptInstanceGetOwner
-    getPropertyStateFunc*: ScriptInstanceGetPropertyState
-    getMethodListFunc*: ScriptInstanceGetMethodList
-    freeMethodListFunc*: ScriptInstanceFreeMethodList2
-    getPropertyTypeFunc*: ScriptInstanceGetPropertyType
-    validatePropertyFunc*: ScriptInstanceValidateProperty
-    hasMethodFunc*: ScriptInstanceHasMethod
-    getMethodArgumentCountFunc*: ScriptInstanceGetMethodArgumentCount
-    callFunc*: ScriptInstanceCall
-    notificationFunc*: ScriptInstanceNotification2
-    toStringFunc*: ScriptInstanceToString
-    refcountIncrementedFunc*: ScriptInstanceRefCountIncremented
-    refcountDecrementedFunc*: ScriptInstanceRefCountDecremented
-    getScriptFunc*: ScriptInstanceGetScript
-    isPlaceholderFunc*: ScriptInstanceIsPlaceholder
-    setFallbackFunc*: ScriptInstanceSet
-    getFallbackFunc*: ScriptInstanceGet
-    getLanguageFunc*: ScriptInstanceGetLanguage
-    freeFunc*: ScriptInstanceFree
-  WorkerThreadPoolGroupTask* = proc (a1: pointer; a2: uint32T) {.gdcall.}
-  WorkerThreadPoolTask* = proc (a1: pointer) {.gdcall.}
-  InitializationLevel* = enum
-    InitializationCore, InitializationServers, InitializationScene,
-    InitializationEditor
-  InitializeCallback* = proc (pUserdata: pointer; pLevel: InitializationLevel) {.
-      gdcall.}
-  DeinitializeCallback* = proc (pUserdata: pointer; pLevel: InitializationLevel) {.
-      gdcall.}
-  Initialization* {.byref.} = object
-    minimumInitializationLevel*: InitializationLevel
+  ScriptInstanceRefCountIncremented* {.importc: "GDExtensionScriptInstanceRefCountIncremented".} = proc (
+      p_instance: ScriptInstanceDataPtr) {.gdcall.}
+  ScriptInstanceRefCountDecremented* {.importc: "GDExtensionScriptInstanceRefCountDecremented".} = proc (
+      p_instance: ScriptInstanceDataPtr): Bool {.gdcall.}
+  ScriptInstanceGetScript* {.importc: "GDExtensionScriptInstanceGetScript".} = proc (
+      p_instance: ScriptInstanceDataPtr): ObjectPtr {.gdcall.}
+  ScriptInstanceIsPlaceholder* {.importc: "GDExtensionScriptInstanceIsPlaceholder".} = proc (
+      p_instance: ScriptInstanceDataPtr): Bool {.gdcall.}
+  ScriptLanguagePtr* {.importc: "GDExtensionScriptLanguagePtr".} = pointer
+  ScriptInstanceGetLanguage* {.importc: "GDExtensionScriptInstanceGetLanguage".} = proc (
+      p_instance: ScriptInstanceDataPtr): ScriptLanguagePtr {.gdcall.}
+  ScriptInstanceFree* {.importc: "GDExtensionScriptInstanceFree".} = proc (
+      p_instance: ScriptInstanceDataPtr) {.gdcall.}
+  ScriptInstancePtr* {.importc: "GDExtensionScriptInstancePtr".} = pointer
+  ScriptInstanceInfo* {.byref, importc: "GDExtensionScriptInstanceInfo".} = object
+    set_func*: ScriptInstanceSet
+    get_func*: ScriptInstanceGet
+    get_property_list_func*: ScriptInstanceGetPropertyList
+    free_property_list_func*: ScriptInstanceFreePropertyList
+    property_can_revert_func*: ScriptInstancePropertyCanRevert
+    property_get_revert_func*: ScriptInstancePropertyGetRevert
+    get_owner_func*: ScriptInstanceGetOwner
+    get_property_state_func*: ScriptInstanceGetPropertyState
+    get_method_list_func*: ScriptInstanceGetMethodList
+    free_method_list_func*: ScriptInstanceFreeMethodList
+    get_property_type_func*: ScriptInstanceGetPropertyType
+    has_method_func*: ScriptInstanceHasMethod
+    call_func*: ScriptInstanceCall
+    notification_func*: ScriptInstanceNotification
+    to_string_func*: ScriptInstanceToString
+    refcount_incremented_func*: ScriptInstanceRefCountIncremented
+    refcount_decremented_func*: ScriptInstanceRefCountDecremented
+    get_script_func*: ScriptInstanceGetScript
+    is_placeholder_func*: ScriptInstanceIsPlaceholder
+    set_fallback_func*: ScriptInstanceSet
+    get_fallback_func*: ScriptInstanceGet
+    get_language_func*: ScriptInstanceGetLanguage
+    free_func*: ScriptInstanceFree
+  ScriptInstanceInfo2* {.byref, importc: "GDExtensionScriptInstanceInfo2".} = object
+    set_func*: ScriptInstanceSet
+    get_func*: ScriptInstanceGet
+    get_property_list_func*: ScriptInstanceGetPropertyList
+    free_property_list_func*: ScriptInstanceFreePropertyList
+    get_class_category_func*: ScriptInstanceGetClassCategory
+    property_can_revert_func*: ScriptInstancePropertyCanRevert
+    property_get_revert_func*: ScriptInstancePropertyGetRevert
+    get_owner_func*: ScriptInstanceGetOwner
+    get_property_state_func*: ScriptInstanceGetPropertyState
+    get_method_list_func*: ScriptInstanceGetMethodList
+    free_method_list_func*: ScriptInstanceFreeMethodList
+    get_property_type_func*: ScriptInstanceGetPropertyType
+    validate_property_func*: ScriptInstanceValidateProperty
+    has_method_func*: ScriptInstanceHasMethod
+    call_func*: ScriptInstanceCall
+    notification_func*: ScriptInstanceNotification2
+    to_string_func*: ScriptInstanceToString
+    refcount_incremented_func*: ScriptInstanceRefCountIncremented
+    refcount_decremented_func*: ScriptInstanceRefCountDecremented
+    get_script_func*: ScriptInstanceGetScript
+    is_placeholder_func*: ScriptInstanceIsPlaceholder
+    set_fallback_func*: ScriptInstanceSet
+    get_fallback_func*: ScriptInstanceGet
+    get_language_func*: ScriptInstanceGetLanguage
+    free_func*: ScriptInstanceFree
+  ScriptInstanceInfo3* {.byref, importc: "GDExtensionScriptInstanceInfo3".} = object
+    set_func*: ScriptInstanceSet
+    get_func*: ScriptInstanceGet
+    get_property_list_func*: ScriptInstanceGetPropertyList
+    free_property_list_func*: ScriptInstanceFreePropertyList2
+    get_class_category_func*: ScriptInstanceGetClassCategory
+    property_can_revert_func*: ScriptInstancePropertyCanRevert
+    property_get_revert_func*: ScriptInstancePropertyGetRevert
+    get_owner_func*: ScriptInstanceGetOwner
+    get_property_state_func*: ScriptInstanceGetPropertyState
+    get_method_list_func*: ScriptInstanceGetMethodList
+    free_method_list_func*: ScriptInstanceFreeMethodList2
+    get_property_type_func*: ScriptInstanceGetPropertyType
+    validate_property_func*: ScriptInstanceValidateProperty
+    has_method_func*: ScriptInstanceHasMethod
+    get_method_argument_count_func*: ScriptInstanceGetMethodArgumentCount
+    call_func*: ScriptInstanceCall
+    notification_func*: ScriptInstanceNotification2
+    to_string_func*: ScriptInstanceToString
+    refcount_incremented_func*: ScriptInstanceRefCountIncremented
+    refcount_decremented_func*: ScriptInstanceRefCountDecremented
+    get_script_func*: ScriptInstanceGetScript
+    is_placeholder_func*: ScriptInstanceIsPlaceholder
+    set_fallback_func*: ScriptInstanceSet
+    get_fallback_func*: ScriptInstanceGet
+    get_language_func*: ScriptInstanceGetLanguage
+    free_func*: ScriptInstanceFree
+  WorkerThreadPoolGroupTask* {.importc: "GDExtensionWorkerThreadPoolGroupTask".} = proc (
+      a1: pointer; a2: uint32_t) {.gdcall.}
+  WorkerThreadPoolTask* {.importc: "GDExtensionWorkerThreadPoolTask".} = proc (
+      a1: pointer) {.gdcall.}
+  InitializationLevel* {.importc: "GDExtensionInitializationLevel".} = enum
+    INITIALIZATION_CORE, INITIALIZATION_SERVERS, INITIALIZATION_SCENE,
+    INITIALIZATION_EDITOR
+  InitializeCallback* {.importc: "GDExtensionInitializeCallback".} = proc (
+      p_userdata: pointer; p_level: InitializationLevel) {.gdcall.}
+  DeinitializeCallback* {.importc: "GDExtensionDeinitializeCallback".} = proc (
+      p_userdata: pointer; p_level: InitializationLevel) {.gdcall.}
+  Initialization* {.byref, importc: "GDExtensionInitialization".} = object
+    minimum_initialization_level*: InitializationLevel
     userdata*: pointer
     initialize*: InitializeCallback
     deinitialize*: DeinitializeCallback
-  InterfaceFunctionPtr* = proc () {.gdcall.}
-  InterfaceGetProcAddress* = proc (pFunctionName: cstring): InterfaceFunctionPtr {.
+  InterfaceFunctionPtr* {.importc: "GDExtensionInterfaceFunctionPtr".} = proc () {.
       gdcall.}
-  InitializationFunction* = proc (pGetProcAddress: InterfaceGetProcAddress;
-                                  pLibrary: ClassLibraryPtr;
-                                  rInitialization: ptr Initialization): Bool {.
-      gdcall.}
-  GodotVersion* {.byref.} = object
-    major*: uint32T
-    minor*: uint32T
-    patch*: uint32T
+  InterfaceGetProcAddress* {.importc: "GDExtensionInterfaceGetProcAddress".} = proc (
+      p_function_name: cstring): InterfaceFunctionPtr {.gdcall.}
+  InitializationFunction* {.importc: "GDExtensionInitializationFunction".} = proc (
+      p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr;
+      r_initialization: ptr Initialization): Bool {.gdcall.}
+  GodotVersion* {.byref, importc: "GDExtensionGodotVersion".} = object
+    major*: uint32_t
+    minor*: uint32_t
+    patch*: uint32_t
     string*: cstring
-  GodotVersion2* {.byref.} = object
-    major*: uint32T
-    minor*: uint32T
-    patch*: uint32T
-    hex*: uint32T
+  GodotVersion2* {.byref, importc: "GDExtensionGodotVersion2".} = object
+    major*: uint32_t
+    minor*: uint32_t
+    patch*: uint32_t
+    hex*: uint32_t
     status*: cstring
     build*: cstring
     hash*: cstring
-    timestamp*: uint64T
+    timestamp*: uint64_t
     string*: cstring
-  MainLoopStartupCallback* = proc () {.gdcall.}
-  MainLoopShutdownCallback* = proc () {.gdcall.}
-  MainLoopFrameCallback* = proc () {.gdcall.}
-  MainLoopCallbacks* {.byref.} = object
-    startupFunc*: MainLoopStartupCallback
-    shutdownFunc*: MainLoopShutdownCallback
-    frameFunc*: MainLoopFrameCallback
-  InterfaceGetGodotVersion* = proc (rGodotVersion: ptr GodotVersion) {.gdcall.}
-  InterfaceGetGodotVersion2* = proc (rGodotVersion: ptr GodotVersion2) {.gdcall.}
-  InterfaceMemAlloc* = proc (pBytes: csizeT): pointer {.gdcall.}
-  InterfaceMemRealloc* = proc (pPtr: pointer; pBytes: csizeT): pointer {.gdcall.}
-  InterfaceMemFree* = proc (pPtr: pointer) {.gdcall.}
-  InterfacePrintError* = proc (pDescription: cstring; pFunction: cstring;
-                               pFile: cstring; pLine: int32T;
-                               pEditorNotify: Bool) {.gdcall.}
-  InterfacePrintErrorWithMessage* = proc (pDescription: cstring;
-      pMessage: cstring; pFunction: cstring; pFile: cstring; pLine: int32T;
-      pEditorNotify: Bool) {.gdcall.}
-  InterfacePrintWarning* = proc (pDescription: cstring; pFunction: cstring;
-                                 pFile: cstring; pLine: int32T;
-                                 pEditorNotify: Bool) {.gdcall.}
-  InterfacePrintWarningWithMessage* = proc (pDescription: cstring;
-      pMessage: cstring; pFunction: cstring; pFile: cstring; pLine: int32T;
-      pEditorNotify: Bool) {.gdcall.}
-  InterfacePrintScriptError* = proc (pDescription: cstring; pFunction: cstring;
-                                     pFile: cstring; pLine: int32T;
-                                     pEditorNotify: Bool) {.gdcall.}
-  InterfacePrintScriptErrorWithMessage* = proc (pDescription: cstring;
-      pMessage: cstring; pFunction: cstring; pFile: cstring; pLine: int32T;
-      pEditorNotify: Bool) {.gdcall.}
-  InterfaceGetNativeStructSize* = proc (pName: ConstStringNamePtr): uint64T {.
+  MainLoopStartupCallback* {.importc: "GDExtensionMainLoopStartupCallback".} = proc () {.
       gdcall.}
-  InterfaceVariantNewCopy* = proc (rDest: UninitializedVariantPtr;
-                                   pSrc: ConstVariantPtr) {.gdcall.}
-  InterfaceVariantNewNil* = proc (rDest: UninitializedVariantPtr) {.gdcall.}
-  InterfaceVariantDestroy* = proc (pSelf: VariantPtr) {.gdcall.}
-  InterfaceVariantCall* = proc (pSelf: VariantPtr; pMethod: ConstStringNamePtr;
-                                pArgs: ptr ConstVariantPtr; pArgumentCount: Int;
-                                rReturn: UninitializedVariantPtr;
-                                rError: ptr CallError) {.gdcall.}
-  InterfaceVariantCallStatic* = proc (pType: VariantType;
-                                      pMethod: ConstStringNamePtr;
-                                      pArgs: ptr ConstVariantPtr;
-                                      pArgumentCount: Int;
-                                      rReturn: UninitializedVariantPtr;
-                                      rError: ptr CallError) {.gdcall.}
-  InterfaceVariantEvaluate* = proc (pOp: VariantOperator; pA: ConstVariantPtr;
-                                    pB: ConstVariantPtr;
-                                    rReturn: UninitializedVariantPtr;
-                                    rValid: ptr Bool) {.gdcall.}
-  InterfaceVariantSet* = proc (pSelf: VariantPtr; pKey: ConstVariantPtr;
-                               pValue: ConstVariantPtr; rValid: ptr Bool) {.
+  MainLoopShutdownCallback* {.importc: "GDExtensionMainLoopShutdownCallback".} = proc () {.
       gdcall.}
-  InterfaceVariantSetNamed* = proc (pSelf: VariantPtr; pKey: ConstStringNamePtr;
-                                    pValue: ConstVariantPtr; rValid: ptr Bool) {.
+  MainLoopFrameCallback* {.importc: "GDExtensionMainLoopFrameCallback".} = proc () {.
       gdcall.}
-  InterfaceVariantSetKeyed* = proc (pSelf: VariantPtr; pKey: ConstVariantPtr;
-                                    pValue: ConstVariantPtr; rValid: ptr Bool) {.
+  MainLoopCallbacks* {.byref, importc: "GDExtensionMainLoopCallbacks".} = object
+    startup_func*: MainLoopStartupCallback
+    shutdown_func*: MainLoopShutdownCallback
+    frame_func*: MainLoopFrameCallback
+  InterfaceGetGodotVersion* {.importc: "GDExtensionInterfaceGetGodotVersion".} = proc (
+      r_godot_version: ptr GodotVersion) {.gdcall.}
+  InterfaceGetGodotVersion2* {.importc: "GDExtensionInterfaceGetGodotVersion2".} = proc (
+      r_godot_version: ptr GodotVersion2) {.gdcall.}
+  InterfaceMemAlloc* {.importc: "GDExtensionInterfaceMemAlloc".} = proc (
+      p_bytes: csize_t): pointer {.gdcall.}
+  InterfaceMemRealloc* {.importc: "GDExtensionInterfaceMemRealloc".} = proc (
+      p_ptr: pointer; p_bytes: csize_t): pointer {.gdcall.}
+  InterfaceMemFree* {.importc: "GDExtensionInterfaceMemFree".} = proc (
+      p_ptr: pointer) {.gdcall.}
+  InterfacePrintError* {.importc: "GDExtensionInterfacePrintError".} = proc (
+      p_description: cstring; p_function: cstring; p_file: cstring;
+      p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfacePrintErrorWithMessage* {.importc: "GDExtensionInterfacePrintErrorWithMessage".} = proc (
+      p_description: cstring; p_message: cstring; p_function: cstring;
+      p_file: cstring; p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfacePrintWarning* {.importc: "GDExtensionInterfacePrintWarning".} = proc (
+      p_description: cstring; p_function: cstring; p_file: cstring;
+      p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfacePrintWarningWithMessage* {.importc: "GDExtensionInterfacePrintWarningWithMessage".} = proc (
+      p_description: cstring; p_message: cstring; p_function: cstring;
+      p_file: cstring; p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfacePrintScriptError* {.importc: "GDExtensionInterfacePrintScriptError".} = proc (
+      p_description: cstring; p_function: cstring; p_file: cstring;
+      p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfacePrintScriptErrorWithMessage* {.
+      importc: "GDExtensionInterfacePrintScriptErrorWithMessage".} = proc (
+      p_description: cstring; p_message: cstring; p_function: cstring;
+      p_file: cstring; p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
+  InterfaceGetNativeStructSize* {.importc: "GDExtensionInterfaceGetNativeStructSize".} = proc (
+      p_name: ConstStringNamePtr): uint64_t {.gdcall.}
+  InterfaceVariantNewCopy* {.importc: "GDExtensionInterfaceVariantNewCopy".} = proc (
+      r_dest: UninitializedVariantPtr; p_src: ConstVariantPtr) {.gdcall.}
+  InterfaceVariantNewNil* {.importc: "GDExtensionInterfaceVariantNewNil".} = proc (
+      r_dest: UninitializedVariantPtr) {.gdcall.}
+  InterfaceVariantDestroy* {.importc: "GDExtensionInterfaceVariantDestroy".} = proc (
+      p_self: VariantPtr) {.gdcall.}
+  InterfaceVariantCall* {.importc: "GDExtensionInterfaceVariantCall".} = proc (
+      p_self: VariantPtr; p_method: ConstStringNamePtr;
+      p_args: ptr ConstVariantPtr; p_argument_count: Int;
+      r_return: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall.}
+  InterfaceVariantCallStatic* {.importc: "GDExtensionInterfaceVariantCallStatic".} = proc (
+      p_type: VariantType; p_method: ConstStringNamePtr;
+      p_args: ptr ConstVariantPtr; p_argument_count: Int;
+      r_return: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall.}
+  InterfaceVariantEvaluate* {.importc: "GDExtensionInterfaceVariantEvaluate".} = proc (
+      p_op: VariantOperator; p_a: ConstVariantPtr; p_b: ConstVariantPtr;
+      r_return: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantSet* {.importc: "GDExtensionInterfaceVariantSet".} = proc (
+      p_self: VariantPtr; p_key: ConstVariantPtr; p_value: ConstVariantPtr;
+      r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantSetNamed* {.importc: "GDExtensionInterfaceVariantSetNamed".} = proc (
+      p_self: VariantPtr; p_key: ConstStringNamePtr; p_value: ConstVariantPtr;
+      r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantSetKeyed* {.importc: "GDExtensionInterfaceVariantSetKeyed".} = proc (
+      p_self: VariantPtr; p_key: ConstVariantPtr; p_value: ConstVariantPtr;
+      r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantSetIndexed* {.importc: "GDExtensionInterfaceVariantSetIndexed".} = proc (
+      p_self: VariantPtr; p_index: Int; p_value: ConstVariantPtr;
+      r_valid: ptr Bool; r_oob: ptr Bool) {.gdcall.}
+  InterfaceVariantGet* {.importc: "GDExtensionInterfaceVariantGet".} = proc (
+      p_self: ConstVariantPtr; p_key: ConstVariantPtr;
+      r_ret: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantGetNamed* {.importc: "GDExtensionInterfaceVariantGetNamed".} = proc (
+      p_self: ConstVariantPtr; p_key: ConstStringNamePtr;
+      r_ret: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantGetKeyed* {.importc: "GDExtensionInterfaceVariantGetKeyed".} = proc (
+      p_self: ConstVariantPtr; p_key: ConstVariantPtr;
+      r_ret: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantGetIndexed* {.importc: "GDExtensionInterfaceVariantGetIndexed".} = proc (
+      p_self: ConstVariantPtr; p_index: Int; r_ret: UninitializedVariantPtr;
+      r_valid: ptr Bool; r_oob: ptr Bool) {.gdcall.}
+  InterfaceVariantIterInit* {.importc: "GDExtensionInterfaceVariantIterInit".} = proc (
+      p_self: ConstVariantPtr; r_iter: UninitializedVariantPtr;
+      r_valid: ptr Bool): Bool {.gdcall.}
+  InterfaceVariantIterNext* {.importc: "GDExtensionInterfaceVariantIterNext".} = proc (
+      p_self: ConstVariantPtr; r_iter: VariantPtr; r_valid: ptr Bool): Bool {.
       gdcall.}
-  InterfaceVariantSetIndexed* = proc (pSelf: VariantPtr; pIndex: Int;
-                                      pValue: ConstVariantPtr; rValid: ptr Bool;
-                                      rOob: ptr Bool) {.gdcall.}
-  InterfaceVariantGet* = proc (pSelf: ConstVariantPtr; pKey: ConstVariantPtr;
-                               rRet: UninitializedVariantPtr; rValid: ptr Bool) {.
+  InterfaceVariantIterGet* {.importc: "GDExtensionInterfaceVariantIterGet".} = proc (
+      p_self: ConstVariantPtr; r_iter: VariantPtr;
+      r_ret: UninitializedVariantPtr; r_valid: ptr Bool) {.gdcall.}
+  InterfaceVariantHash* {.importc: "GDExtensionInterfaceVariantHash".} = proc (
+      p_self: ConstVariantPtr): Int {.gdcall.}
+  InterfaceVariantRecursiveHash* {.importc: "GDExtensionInterfaceVariantRecursiveHash".} = proc (
+      p_self: ConstVariantPtr; p_recursion_count: Int): Int {.gdcall.}
+  InterfaceVariantHashCompare* {.importc: "GDExtensionInterfaceVariantHashCompare".} = proc (
+      p_self: ConstVariantPtr; p_other: ConstVariantPtr): Bool {.gdcall.}
+  InterfaceVariantBooleanize* {.importc: "GDExtensionInterfaceVariantBooleanize".} = proc (
+      p_self: ConstVariantPtr): Bool {.gdcall.}
+  InterfaceVariantDuplicate* {.importc: "GDExtensionInterfaceVariantDuplicate".} = proc (
+      p_self: ConstVariantPtr; r_ret: VariantPtr; p_deep: Bool) {.gdcall.}
+  InterfaceVariantStringify* {.importc: "GDExtensionInterfaceVariantStringify".} = proc (
+      p_self: ConstVariantPtr; r_ret: StringPtr) {.gdcall.}
+  InterfaceVariantGetType* {.importc: "GDExtensionInterfaceVariantGetType".} = proc (
+      p_self: ConstVariantPtr): VariantType {.gdcall.}
+  InterfaceVariantHasMethod* {.importc: "GDExtensionInterfaceVariantHasMethod".} = proc (
+      p_self: ConstVariantPtr; p_method: ConstStringNamePtr): Bool {.gdcall.}
+  InterfaceVariantHasMember* {.importc: "GDExtensionInterfaceVariantHasMember".} = proc (
+      p_type: VariantType; p_member: ConstStringNamePtr): Bool {.gdcall.}
+  InterfaceVariantHasKey* {.importc: "GDExtensionInterfaceVariantHasKey".} = proc (
+      p_self: ConstVariantPtr; p_key: ConstVariantPtr; r_valid: ptr Bool): Bool {.
       gdcall.}
-  InterfaceVariantGetNamed* = proc (pSelf: ConstVariantPtr;
-                                    pKey: ConstStringNamePtr;
-                                    rRet: UninitializedVariantPtr;
-                                    rValid: ptr Bool) {.gdcall.}
-  InterfaceVariantGetKeyed* = proc (pSelf: ConstVariantPtr;
-                                    pKey: ConstVariantPtr;
-                                    rRet: UninitializedVariantPtr;
-                                    rValid: ptr Bool) {.gdcall.}
-  InterfaceVariantGetIndexed* = proc (pSelf: ConstVariantPtr; pIndex: Int;
-                                      rRet: UninitializedVariantPtr;
-                                      rValid: ptr Bool; rOob: ptr Bool) {.gdcall.}
-  InterfaceVariantIterInit* = proc (pSelf: ConstVariantPtr;
-                                    rIter: UninitializedVariantPtr;
-                                    rValid: ptr Bool): Bool {.gdcall.}
-  InterfaceVariantIterNext* = proc (pSelf: ConstVariantPtr; rIter: VariantPtr;
-                                    rValid: ptr Bool): Bool {.gdcall.}
-  InterfaceVariantIterGet* = proc (pSelf: ConstVariantPtr; rIter: VariantPtr;
-                                   rRet: UninitializedVariantPtr;
-                                   rValid: ptr Bool) {.gdcall.}
-  InterfaceVariantHash* = proc (pSelf: ConstVariantPtr): Int {.gdcall.}
-  InterfaceVariantRecursiveHash* = proc (pSelf: ConstVariantPtr;
-      pRecursionCount: Int): Int {.gdcall.}
-  InterfaceVariantHashCompare* = proc (pSelf: ConstVariantPtr;
-                                       pOther: ConstVariantPtr): Bool {.gdcall.}
-  InterfaceVariantBooleanize* = proc (pSelf: ConstVariantPtr): Bool {.gdcall.}
-  InterfaceVariantDuplicate* = proc (pSelf: ConstVariantPtr; rRet: VariantPtr;
-                                     pDeep: Bool) {.gdcall.}
-  InterfaceVariantStringify* = proc (pSelf: ConstVariantPtr; rRet: StringPtr) {.
+  InterfaceVariantGetObjectInstanceId* {.
+      importc: "GDExtensionInterfaceVariantGetObjectInstanceId".} = proc (
+      p_self: ConstVariantPtr): GDObjectInstanceID {.gdcall.}
+  InterfaceVariantGetTypeName* {.importc: "GDExtensionInterfaceVariantGetTypeName".} = proc (
+      p_type: VariantType; r_name: UninitializedStringPtr) {.gdcall.}
+  InterfaceVariantCanConvert* {.importc: "GDExtensionInterfaceVariantCanConvert".} = proc (
+      p_from: VariantType; p_to: VariantType): Bool {.gdcall.}
+  InterfaceVariantCanConvertStrict* {.importc: "GDExtensionInterfaceVariantCanConvertStrict".} = proc (
+      p_from: VariantType; p_to: VariantType): Bool {.gdcall.}
+  InterfaceGetVariantFromTypeConstructor* {.
+      importc: "GDExtensionInterfaceGetVariantFromTypeConstructor".} = proc (
+      p_type: VariantType): VariantFromTypeConstructorFunc {.gdcall.}
+  InterfaceGetVariantToTypeConstructor* {.
+      importc: "GDExtensionInterfaceGetVariantToTypeConstructor".} = proc (
+      p_type: VariantType): TypeFromVariantConstructorFunc {.gdcall.}
+  InterfaceGetVariantGetInternalPtrFunc* {.
+      importc: "GDExtensionInterfaceGetVariantGetInternalPtrFunc".} = proc (
+      p_type: VariantType): VariantGetInternalPtrFunc {.gdcall.}
+  InterfaceVariantGetPtrOperatorEvaluator* {.
+      importc: "GDExtensionInterfaceVariantGetPtrOperatorEvaluator".} = proc (
+      p_operator: VariantOperator; p_type_a: VariantType; p_type_b: VariantType): PtrOperatorEvaluator {.
       gdcall.}
-  InterfaceVariantGetType* = proc (pSelf: ConstVariantPtr): VariantType {.gdcall.}
-  InterfaceVariantHasMethod* = proc (pSelf: ConstVariantPtr;
-                                     pMethod: ConstStringNamePtr): Bool {.gdcall.}
-  InterfaceVariantHasMember* = proc (pType: VariantType;
-                                     pMember: ConstStringNamePtr): Bool {.gdcall.}
-  InterfaceVariantHasKey* = proc (pSelf: ConstVariantPtr; pKey: ConstVariantPtr;
-                                  rValid: ptr Bool): Bool {.gdcall.}
-  InterfaceVariantGetObjectInstanceId* = proc (pSelf: ConstVariantPtr): GdObjectInstanceId {.
+  InterfaceVariantGetPtrBuiltinMethod* {.
+      importc: "GDExtensionInterfaceVariantGetPtrBuiltinMethod".} = proc (
+      p_type: VariantType; p_method: ConstStringNamePtr; p_hash: Int): PtrBuiltInMethod {.
       gdcall.}
-  InterfaceVariantGetTypeName* = proc (pType: VariantType;
-                                       rName: UninitializedStringPtr) {.gdcall.}
-  InterfaceVariantCanConvert* = proc (pFrom: VariantType; pTo: VariantType): Bool {.
+  InterfaceVariantGetPtrConstructor* {.importc: "GDExtensionInterfaceVariantGetPtrConstructor".} = proc (
+      p_type: VariantType; p_constructor: int32_t): PtrConstructor {.gdcall.}
+  InterfaceVariantGetPtrDestructor* {.importc: "GDExtensionInterfaceVariantGetPtrDestructor".} = proc (
+      p_type: VariantType): PtrDestructor {.gdcall.}
+  InterfaceVariantConstruct* {.importc: "GDExtensionInterfaceVariantConstruct".} = proc (
+      p_type: VariantType; r_base: UninitializedVariantPtr;
+      p_args: ptr ConstVariantPtr; p_argument_count: int32_t;
+      r_error: ptr CallError) {.gdcall.}
+  InterfaceVariantGetPtrSetter* {.importc: "GDExtensionInterfaceVariantGetPtrSetter".} = proc (
+      p_type: VariantType; p_member: ConstStringNamePtr): PtrSetter {.gdcall.}
+  InterfaceVariantGetPtrGetter* {.importc: "GDExtensionInterfaceVariantGetPtrGetter".} = proc (
+      p_type: VariantType; p_member: ConstStringNamePtr): PtrGetter {.gdcall.}
+  InterfaceVariantGetPtrIndexedSetter* {.
+      importc: "GDExtensionInterfaceVariantGetPtrIndexedSetter".} = proc (
+      p_type: VariantType): PtrIndexedSetter {.gdcall.}
+  InterfaceVariantGetPtrIndexedGetter* {.
+      importc: "GDExtensionInterfaceVariantGetPtrIndexedGetter".} = proc (
+      p_type: VariantType): PtrIndexedGetter {.gdcall.}
+  InterfaceVariantGetPtrKeyedSetter* {.importc: "GDExtensionInterfaceVariantGetPtrKeyedSetter".} = proc (
+      p_type: VariantType): PtrKeyedSetter {.gdcall.}
+  InterfaceVariantGetPtrKeyedGetter* {.importc: "GDExtensionInterfaceVariantGetPtrKeyedGetter".} = proc (
+      p_type: VariantType): PtrKeyedGetter {.gdcall.}
+  InterfaceVariantGetPtrKeyedChecker* {.importc: "GDExtensionInterfaceVariantGetPtrKeyedChecker".} = proc (
+      p_type: VariantType): PtrKeyedChecker {.gdcall.}
+  InterfaceVariantGetConstantValue* {.importc: "GDExtensionInterfaceVariantGetConstantValue".} = proc (
+      p_type: VariantType; p_constant: ConstStringNamePtr;
+      r_ret: UninitializedVariantPtr) {.gdcall.}
+  InterfaceVariantGetPtrUtilityFunction* {.
+      importc: "GDExtensionInterfaceVariantGetPtrUtilityFunction".} = proc (
+      p_function: ConstStringNamePtr; p_hash: Int): PtrUtilityFunction {.gdcall.}
+  InterfaceStringNewWithLatin1Chars* {.importc: "GDExtensionInterfaceStringNewWithLatin1Chars".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: cstring) {.gdcall.}
+  InterfaceStringNewWithUtf8Chars* {.importc: "GDExtensionInterfaceStringNewWithUtf8Chars".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: cstring) {.gdcall.}
+  InterfaceStringNewWithUtf16Chars* {.importc: "GDExtensionInterfaceStringNewWithUtf16Chars".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr char16_t) {.gdcall.}
+  InterfaceStringNewWithUtf32Chars* {.importc: "GDExtensionInterfaceStringNewWithUtf32Chars".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr char32_t) {.gdcall.}
+  InterfaceStringNewWithWideChars* {.importc: "GDExtensionInterfaceStringNewWithWideChars".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr wchar_t) {.gdcall.}
+  InterfaceStringNewWithLatin1CharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNewWithLatin1CharsAndLen".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: cstring; p_size: Int) {.gdcall.}
+  InterfaceStringNewWithUtf8CharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNewWithUtf8CharsAndLen".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: cstring; p_size: Int) {.gdcall.}
+  InterfaceStringNewWithUtf8CharsAndLen2* {.
+      importc: "GDExtensionInterfaceStringNewWithUtf8CharsAndLen2".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: cstring; p_size: Int): Int {.
       gdcall.}
-  InterfaceVariantCanConvertStrict* = proc (pFrom: VariantType; pTo: VariantType): Bool {.
+  InterfaceStringNewWithUtf16CharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNewWithUtf16CharsAndLen".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr char16_t;
+      p_char_count: Int) {.gdcall.}
+  InterfaceStringNewWithUtf16CharsAndLen2* {.
+      importc: "GDExtensionInterfaceStringNewWithUtf16CharsAndLen2".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr char16_t;
+      p_char_count: Int; p_default_little_endian: Bool): Int {.gdcall.}
+  InterfaceStringNewWithUtf32CharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNewWithUtf32CharsAndLen".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr char32_t;
+      p_char_count: Int) {.gdcall.}
+  InterfaceStringNewWithWideCharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNewWithWideCharsAndLen".} = proc (
+      r_dest: UninitializedStringPtr; p_contents: ptr wchar_t; p_char_count: Int) {.
       gdcall.}
-  InterfaceGetVariantFromTypeConstructor* = proc (pType: VariantType): VariantFromTypeConstructorFunc {.
+  InterfaceStringToLatin1Chars* {.importc: "GDExtensionInterfaceStringToLatin1Chars".} = proc (
+      p_self: ConstStringPtr; r_text: cstring; p_max_write_length: Int): Int {.
       gdcall.}
-  InterfaceGetVariantToTypeConstructor* = proc (pType: VariantType): TypeFromVariantConstructorFunc {.
+  InterfaceStringToUtf8Chars* {.importc: "GDExtensionInterfaceStringToUtf8Chars".} = proc (
+      p_self: ConstStringPtr; r_text: cstring; p_max_write_length: Int): Int {.
       gdcall.}
-  InterfaceGetVariantGetInternalPtrFunc* = proc (pType: VariantType): VariantGetInternalPtrFunc {.
+  InterfaceStringToUtf16Chars* {.importc: "GDExtensionInterfaceStringToUtf16Chars".} = proc (
+      p_self: ConstStringPtr; r_text: ptr char16_t; p_max_write_length: Int): Int {.
       gdcall.}
-  InterfaceVariantGetPtrOperatorEvaluator* = proc (pOperator: VariantOperator;
-      pTypeA: VariantType; pTypeB: VariantType): PtrOperatorEvaluator {.gdcall.}
-  InterfaceVariantGetPtrBuiltinMethod* = proc (pType: VariantType;
-      pMethod: ConstStringNamePtr; pHash: Int): PtrBuiltInMethod {.gdcall.}
-  InterfaceVariantGetPtrConstructor* = proc (pType: VariantType;
-      pConstructor: int32T): PtrConstructor {.gdcall.}
-  InterfaceVariantGetPtrDestructor* = proc (pType: VariantType): PtrDestructor {.
+  InterfaceStringToUtf32Chars* {.importc: "GDExtensionInterfaceStringToUtf32Chars".} = proc (
+      p_self: ConstStringPtr; r_text: ptr char32_t; p_max_write_length: Int): Int {.
       gdcall.}
-  InterfaceVariantConstruct* = proc (pType: VariantType;
-                                     rBase: UninitializedVariantPtr;
-                                     pArgs: ptr ConstVariantPtr;
-                                     pArgumentCount: int32T;
-                                     rError: ptr CallError) {.gdcall.}
-  InterfaceVariantGetPtrSetter* = proc (pType: VariantType;
-                                        pMember: ConstStringNamePtr): PtrSetter {.
+  InterfaceStringToWideChars* {.importc: "GDExtensionInterfaceStringToWideChars".} = proc (
+      p_self: ConstStringPtr; r_text: ptr wchar_t; p_max_write_length: Int): Int {.
       gdcall.}
-  InterfaceVariantGetPtrGetter* = proc (pType: VariantType;
-                                        pMember: ConstStringNamePtr): PtrGetter {.
+  InterfaceStringOperatorIndex* {.importc: "GDExtensionInterfaceStringOperatorIndex".} = proc (
+      p_self: StringPtr; p_index: Int): ptr char32_t {.gdcall.}
+  InterfaceStringOperatorIndexConst* {.importc: "GDExtensionInterfaceStringOperatorIndexConst".} = proc (
+      p_self: ConstStringPtr; p_index: Int): ptr char32_t {.gdcall.}
+  InterfaceStringOperatorPlusEqString* {.
+      importc: "GDExtensionInterfaceStringOperatorPlusEqString".} = proc (
+      p_self: StringPtr; p_b: ConstStringPtr) {.gdcall.}
+  InterfaceStringOperatorPlusEqChar* {.importc: "GDExtensionInterfaceStringOperatorPlusEqChar".} = proc (
+      p_self: StringPtr; p_b: char32_t) {.gdcall.}
+  InterfaceStringOperatorPlusEqCstr* {.importc: "GDExtensionInterfaceStringOperatorPlusEqCstr".} = proc (
+      p_self: StringPtr; p_b: cstring) {.gdcall.}
+  InterfaceStringOperatorPlusEqWcstr* {.importc: "GDExtensionInterfaceStringOperatorPlusEqWcstr".} = proc (
+      p_self: StringPtr; p_b: ptr wchar_t) {.gdcall.}
+  InterfaceStringOperatorPlusEqC32str* {.
+      importc: "GDExtensionInterfaceStringOperatorPlusEqC32str".} = proc (
+      p_self: StringPtr; p_b: ptr char32_t) {.gdcall.}
+  InterfaceStringResize* {.importc: "GDExtensionInterfaceStringResize".} = proc (
+      p_self: StringPtr; p_resize: Int): Int {.gdcall.}
+  InterfaceStringNameNewWithLatin1Chars* {.
+      importc: "GDExtensionInterfaceStringNameNewWithLatin1Chars".} = proc (
+      r_dest: UninitializedStringNamePtr; p_contents: cstring; p_is_static: Bool) {.
       gdcall.}
-  InterfaceVariantGetPtrIndexedSetter* = proc (pType: VariantType): PtrIndexedSetter {.
+  InterfaceStringNameNewWithUtf8Chars* {.
+      importc: "GDExtensionInterfaceStringNameNewWithUtf8Chars".} = proc (
+      r_dest: UninitializedStringNamePtr; p_contents: cstring) {.gdcall.}
+  InterfaceStringNameNewWithUtf8CharsAndLen* {.
+      importc: "GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen".} = proc (
+      r_dest: UninitializedStringNamePtr; p_contents: cstring; p_size: Int) {.
       gdcall.}
-  InterfaceVariantGetPtrIndexedGetter* = proc (pType: VariantType): PtrIndexedGetter {.
+  InterfaceXmlParserOpenBuffer* {.importc: "GDExtensionInterfaceXmlParserOpenBuffer".} = proc (
+      p_instance: ObjectPtr; p_buffer: ptr uint8_t; p_size: csize_t): Int {.
       gdcall.}
-  InterfaceVariantGetPtrKeyedSetter* = proc (pType: VariantType): PtrKeyedSetter {.
+  InterfaceFileAccessStoreBuffer* {.importc: "GDExtensionInterfaceFileAccessStoreBuffer".} = proc (
+      p_instance: ObjectPtr; p_src: ptr uint8_t; p_length: uint64_t) {.gdcall.}
+  InterfaceFileAccessGetBuffer* {.importc: "GDExtensionInterfaceFileAccessGetBuffer".} = proc (
+      p_instance: ConstObjectPtr; p_dst: ptr uint8_t; p_length: uint64_t): uint64_t {.
       gdcall.}
-  InterfaceVariantGetPtrKeyedGetter* = proc (pType: VariantType): PtrKeyedGetter {.
+  InterfaceImagePtrw* {.importc: "GDExtensionInterfaceImagePtrw".} = proc (
+      p_instance: ObjectPtr): ptr uint8_t {.gdcall.}
+  InterfaceImagePtr* {.importc: "GDExtensionInterfaceImagePtr".} = proc (
+      p_instance: ObjectPtr): ptr uint8_t {.gdcall.}
+  InterfaceWorkerThreadPoolAddNativeGroupTask* {.
+      importc: "GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask".} = proc (
+      p_instance: ObjectPtr; p_func: WorkerThreadPoolGroupTask;
+      p_userdata: pointer; p_elements: cint; p_tasks: cint;
+      p_high_priority: Bool; p_description: ConstStringPtr): int64_t {.gdcall.}
+  InterfaceWorkerThreadPoolAddNativeTask* {.
+      importc: "GDExtensionInterfaceWorkerThreadPoolAddNativeTask".} = proc (
+      p_instance: ObjectPtr; p_func: WorkerThreadPoolTask; p_userdata: pointer;
+      p_high_priority: Bool; p_description: ConstStringPtr): int64_t {.gdcall.}
+  InterfacePackedByteArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedByteArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): ptr uint8_t {.gdcall.}
+  InterfacePackedByteArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedByteArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): ptr uint8_t {.gdcall.}
+  InterfacePackedFloat32ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedFloat32ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): ptr cfloat {.gdcall.}
+  InterfacePackedFloat32ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): ptr cfloat {.gdcall.}
+  InterfacePackedFloat64ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedFloat64ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): ptr cdouble {.gdcall.}
+  InterfacePackedFloat64ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): ptr cdouble {.gdcall.}
+  InterfacePackedInt32ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedInt32ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): ptr int32_t {.gdcall.}
+  InterfacePackedInt32ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedInt32ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): ptr int32_t {.gdcall.}
+  InterfacePackedInt64ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedInt64ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): ptr int64_t {.gdcall.}
+  InterfacePackedInt64ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedInt64ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): ptr int64_t {.gdcall.}
+  InterfacePackedStringArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedStringArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): StringPtr {.gdcall.}
+  InterfacePackedStringArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedStringArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): StringPtr {.gdcall.}
+  InterfacePackedVector2ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedVector2ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedVector2ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedVector2ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedVector3ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedVector3ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedVector3ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedVector3ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedVector4ArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedVector4ArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedVector4ArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedVector4ArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedColorArrayOperatorIndex* {.
+      importc: "GDExtensionInterfacePackedColorArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfacePackedColorArrayOperatorIndexConst* {.
+      importc: "GDExtensionInterfacePackedColorArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): TypePtr {.gdcall.}
+  InterfaceArrayOperatorIndex* {.importc: "GDExtensionInterfaceArrayOperatorIndex".} = proc (
+      p_self: TypePtr; p_index: Int): VariantPtr {.gdcall.}
+  InterfaceArrayOperatorIndexConst* {.importc: "GDExtensionInterfaceArrayOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_index: Int): VariantPtr {.gdcall.}
+  InterfaceArrayRef* {.importc: "GDExtensionInterfaceArrayRef".} = proc (
+      p_self: TypePtr; p_from: ConstTypePtr) {.gdcall.}
+  InterfaceArraySetTyped* {.importc: "GDExtensionInterfaceArraySetTyped".} = proc (
+      p_self: TypePtr; p_type: VariantType; p_class_name: ConstStringNamePtr;
+      p_script: ConstVariantPtr) {.gdcall.}
+  InterfaceDictionaryOperatorIndex* {.importc: "GDExtensionInterfaceDictionaryOperatorIndex".} = proc (
+      p_self: TypePtr; p_key: ConstVariantPtr): VariantPtr {.gdcall.}
+  InterfaceDictionaryOperatorIndexConst* {.
+      importc: "GDExtensionInterfaceDictionaryOperatorIndexConst".} = proc (
+      p_self: ConstTypePtr; p_key: ConstVariantPtr): VariantPtr {.gdcall.}
+  InterfaceDictionarySetTyped* {.importc: "GDExtensionInterfaceDictionarySetTyped".} = proc (
+      p_self: TypePtr; p_key_type: VariantType;
+      p_key_class_name: ConstStringNamePtr; p_key_script: ConstVariantPtr;
+      p_value_type: VariantType; p_value_class_name: ConstStringNamePtr;
+      p_value_script: ConstVariantPtr) {.gdcall.}
+  InterfaceObjectMethodBindCall* {.importc: "GDExtensionInterfaceObjectMethodBindCall".} = proc (
+      p_method_bind: MethodBindPtr; p_instance: ObjectPtr;
+      p_args: ptr ConstVariantPtr; p_arg_count: Int;
+      r_ret: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall.}
+  InterfaceObjectMethodBindPtrcall* {.importc: "GDExtensionInterfaceObjectMethodBindPtrcall".} = proc (
+      p_method_bind: MethodBindPtr; p_instance: ObjectPtr;
+      p_args: ptr ConstTypePtr; r_ret: TypePtr) {.gdcall.}
+  InterfaceObjectDestroy* {.importc: "GDExtensionInterfaceObjectDestroy".} = proc (
+      p_o: ObjectPtr) {.gdcall.}
+  InterfaceGlobalGetSingleton* {.importc: "GDExtensionInterfaceGlobalGetSingleton".} = proc (
+      p_name: ConstStringNamePtr): ObjectPtr {.gdcall.}
+  InterfaceObjectGetInstanceBinding* {.importc: "GDExtensionInterfaceObjectGetInstanceBinding".} = proc (
+      p_o: ObjectPtr; p_token: pointer;
+      p_callbacks: ptr InstanceBindingCallbacks): pointer {.gdcall.}
+  InterfaceObjectSetInstanceBinding* {.importc: "GDExtensionInterfaceObjectSetInstanceBinding".} = proc (
+      p_o: ObjectPtr; p_token: pointer; p_binding: pointer;
+      p_callbacks: ptr InstanceBindingCallbacks) {.gdcall.}
+  InterfaceObjectFreeInstanceBinding* {.importc: "GDExtensionInterfaceObjectFreeInstanceBinding".} = proc (
+      p_o: ObjectPtr; p_token: pointer) {.gdcall.}
+  InterfaceObjectSetInstance* {.importc: "GDExtensionInterfaceObjectSetInstance".} = proc (
+      p_o: ObjectPtr; p_classname: ConstStringNamePtr;
+      p_instance: ClassInstancePtr) {.gdcall.}
+  InterfaceObjectGetClassName* {.importc: "GDExtensionInterfaceObjectGetClassName".} = proc (
+      p_object: ConstObjectPtr; p_library: ClassLibraryPtr;
+      r_class_name: UninitializedStringNamePtr): Bool {.gdcall.}
+  InterfaceObjectCastTo* {.importc: "GDExtensionInterfaceObjectCastTo".} = proc (
+      p_object: ConstObjectPtr; p_class_tag: pointer): ObjectPtr {.gdcall.}
+  InterfaceObjectGetInstanceFromId* {.importc: "GDExtensionInterfaceObjectGetInstanceFromId".} = proc (
+      p_instance_id: GDObjectInstanceID): ObjectPtr {.gdcall.}
+  InterfaceObjectGetInstanceId* {.importc: "GDExtensionInterfaceObjectGetInstanceId".} = proc (
+      p_object: ConstObjectPtr): GDObjectInstanceID {.gdcall.}
+  InterfaceObjectHasScriptMethod* {.importc: "GDExtensionInterfaceObjectHasScriptMethod".} = proc (
+      p_object: ConstObjectPtr; p_method: ConstStringNamePtr): Bool {.gdcall.}
+  InterfaceObjectCallScriptMethod* {.importc: "GDExtensionInterfaceObjectCallScriptMethod".} = proc (
+      p_object: ObjectPtr; p_method: ConstStringNamePtr;
+      p_args: ptr ConstVariantPtr; p_argument_count: Int;
+      r_return: UninitializedVariantPtr; r_error: ptr CallError) {.gdcall.}
+  InterfaceRefGetObject* {.importc: "GDExtensionInterfaceRefGetObject".} = proc (
+      p_ref: ConstRefPtr): ObjectPtr {.gdcall.}
+  InterfaceRefSetObject* {.importc: "GDExtensionInterfaceRefSetObject".} = proc (
+      p_ref: RefPtr; p_object: ObjectPtr) {.gdcall.}
+  InterfaceScriptInstanceCreate* {.importc: "GDExtensionInterfaceScriptInstanceCreate".} = proc (
+      p_info: ptr ScriptInstanceInfo; p_instance_data: ScriptInstanceDataPtr): ScriptInstancePtr {.
       gdcall.}
-  InterfaceVariantGetPtrKeyedChecker* = proc (pType: VariantType): PtrKeyedChecker {.
+  InterfaceScriptInstanceCreate2* {.importc: "GDExtensionInterfaceScriptInstanceCreate2".} = proc (
+      p_info: ptr ScriptInstanceInfo2; p_instance_data: ScriptInstanceDataPtr): ScriptInstancePtr {.
       gdcall.}
-  InterfaceVariantGetConstantValue* = proc (pType: VariantType;
-      pConstant: ConstStringNamePtr; rRet: UninitializedVariantPtr) {.gdcall.}
-  InterfaceVariantGetPtrUtilityFunction* = proc (pFunction: ConstStringNamePtr;
-      pHash: Int): PtrUtilityFunction {.gdcall.}
-  InterfaceStringNewWithLatin1Chars* = proc (rDest: UninitializedStringPtr;
-      pContents: cstring) {.gdcall.}
-  InterfaceStringNewWithUtf8Chars* = proc (rDest: UninitializedStringPtr;
-      pContents: cstring) {.gdcall.}
-  InterfaceStringNewWithUtf16Chars* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr char16T) {.gdcall.}
-  InterfaceStringNewWithUtf32Chars* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr char32T) {.gdcall.}
-  InterfaceStringNewWithWideChars* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr wcharT) {.gdcall.}
-  InterfaceStringNewWithLatin1CharsAndLen* = proc (
-      rDest: UninitializedStringPtr; pContents: cstring; pSize: Int) {.gdcall.}
-  InterfaceStringNewWithUtf8CharsAndLen* = proc (rDest: UninitializedStringPtr;
-      pContents: cstring; pSize: Int) {.gdcall.}
-  InterfaceStringNewWithUtf8CharsAndLen2* = proc (rDest: UninitializedStringPtr;
-      pContents: cstring; pSize: Int): Int {.gdcall.}
-  InterfaceStringNewWithUtf16CharsAndLen* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr char16T; pCharCount: Int) {.gdcall.}
-  InterfaceStringNewWithUtf16CharsAndLen2* = proc (
-      rDest: UninitializedStringPtr; pContents: ptr char16T; pCharCount: Int;
-      pDefaultLittleEndian: Bool): Int {.gdcall.}
-  InterfaceStringNewWithUtf32CharsAndLen* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr char32T; pCharCount: Int) {.gdcall.}
-  InterfaceStringNewWithWideCharsAndLen* = proc (rDest: UninitializedStringPtr;
-      pContents: ptr wcharT; pCharCount: Int) {.gdcall.}
-  InterfaceStringToLatin1Chars* = proc (pSelf: ConstStringPtr; rText: cstring;
-                                        pMaxWriteLength: Int): Int {.gdcall.}
-  InterfaceStringToUtf8Chars* = proc (pSelf: ConstStringPtr; rText: cstring;
-                                      pMaxWriteLength: Int): Int {.gdcall.}
-  InterfaceStringToUtf16Chars* = proc (pSelf: ConstStringPtr;
-                                       rText: ptr char16T; pMaxWriteLength: Int): Int {.
+  InterfaceScriptInstanceCreate3* {.importc: "GDExtensionInterfaceScriptInstanceCreate3".} = proc (
+      p_info: ptr ScriptInstanceInfo3; p_instance_data: ScriptInstanceDataPtr): ScriptInstancePtr {.
       gdcall.}
-  InterfaceStringToUtf32Chars* = proc (pSelf: ConstStringPtr;
-                                       rText: ptr char32T; pMaxWriteLength: Int): Int {.
+  InterfacePlaceHolderScriptInstanceCreate* {.
+      importc: "GDExtensionInterfacePlaceHolderScriptInstanceCreate".} = proc (
+      p_language: ObjectPtr; p_script: ObjectPtr; p_owner: ObjectPtr): ScriptInstancePtr {.
       gdcall.}
-  InterfaceStringToWideChars* = proc (pSelf: ConstStringPtr; rText: ptr wcharT;
-                                      pMaxWriteLength: Int): Int {.gdcall.}
-  InterfaceStringOperatorIndex* = proc (pSelf: StringPtr; pIndex: Int): ptr char32T {.
+  InterfacePlaceHolderScriptInstanceUpdate* {.
+      importc: "GDExtensionInterfacePlaceHolderScriptInstanceUpdate".} = proc (
+      p_placeholder: ScriptInstancePtr; p_properties: ConstTypePtr;
+      p_values: ConstTypePtr) {.gdcall.}
+  InterfaceObjectGetScriptInstance* {.importc: "GDExtensionInterfaceObjectGetScriptInstance".} = proc (
+      p_object: ConstObjectPtr; p_language: ObjectPtr): ScriptInstanceDataPtr {.
       gdcall.}
-  InterfaceStringOperatorIndexConst* = proc (pSelf: ConstStringPtr; pIndex: Int): ptr char32T {.
+  InterfaceObjectSetScriptInstance* {.importc: "GDExtensionInterfaceObjectSetScriptInstance".} = proc (
+      p_object: ObjectPtr; p_script_instance: ScriptInstanceDataPtr) {.gdcall.}
+  InterfaceCallableCustomCreate* {.importc: "GDExtensionInterfaceCallableCustomCreate".} = proc (
+      r_callable: UninitializedTypePtr;
+      p_callable_custom_info: ptr CallableCustomInfo) {.gdcall.}
+  InterfaceCallableCustomCreate2* {.importc: "GDExtensionInterfaceCallableCustomCreate2".} = proc (
+      r_callable: UninitializedTypePtr;
+      p_callable_custom_info: ptr CallableCustomInfo2) {.gdcall.}
+  InterfaceCallableCustomGetUserData* {.importc: "GDExtensionInterfaceCallableCustomGetUserData".} = proc (
+      p_callable: ConstTypePtr; p_token: pointer): pointer {.gdcall.}
+  InterfaceClassdbConstructObject* {.importc: "GDExtensionInterfaceClassdbConstructObject".} = proc (
+      p_classname: ConstStringNamePtr): ObjectPtr {.gdcall.}
+  InterfaceClassdbConstructObject2* {.importc: "GDExtensionInterfaceClassdbConstructObject2".} = proc (
+      p_classname: ConstStringNamePtr): ObjectPtr {.gdcall.}
+  InterfaceClassdbGetMethodBind* {.importc: "GDExtensionInterfaceClassdbGetMethodBind".} = proc (
+      p_classname: ConstStringNamePtr; p_methodname: ConstStringNamePtr;
+      p_hash: Int): MethodBindPtr {.gdcall.}
+  InterfaceClassdbGetClassTag* {.importc: "GDExtensionInterfaceClassdbGetClassTag".} = proc (
+      p_classname: ConstStringNamePtr): pointer {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClass".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_parent_class_name: ConstStringNamePtr;
+      p_extension_funcs: ptr ClassCreationInfo) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass2* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClass2".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_parent_class_name: ConstStringNamePtr;
+      p_extension_funcs: ptr ClassCreationInfo2) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass3* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClass3".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_parent_class_name: ConstStringNamePtr;
+      p_extension_funcs: ptr ClassCreationInfo3) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass4* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClass4".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_parent_class_name: ConstStringNamePtr;
+      p_extension_funcs: ptr ClassCreationInfo4) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClass5* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClass5".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_parent_class_name: ConstStringNamePtr;
+      p_extension_funcs: ptr ClassCreationInfo5) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassMethod* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClassMethod".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_method_info: ptr ClassMethodInfo) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassVirtualMethod* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_method_info: ptr ClassVirtualMethodInfo) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassIntegerConstant* {.importc: "GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_enum_name: ConstStringNamePtr; p_constant_name: ConstStringNamePtr;
+      p_constant_value: Int; p_is_bitfield: Bool) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassProperty* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClassProperty".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_info: ptr PropertyInfo; p_setter: ConstStringNamePtr;
+      p_getter: ConstStringNamePtr) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassPropertyIndexed* {.importc: "GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_info: ptr PropertyInfo; p_setter: ConstStringNamePtr;
+      p_getter: ConstStringNamePtr; p_index: Int) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassPropertyGroup* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_group_name: ConstStringPtr; p_prefix: ConstStringPtr) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassPropertySubgroup* {.importc: "GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_subgroup_name: ConstStringPtr; p_prefix: ConstStringPtr) {.gdcall.}
+  InterfaceClassdbRegisterExtensionClassSignal* {.
+      importc: "GDExtensionInterfaceClassdbRegisterExtensionClassSignal".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr;
+      p_signal_name: ConstStringNamePtr; p_argument_info: ptr PropertyInfo;
+      p_argument_count: Int) {.gdcall.}
+  InterfaceClassdbUnregisterExtensionClass* {.
+      importc: "GDExtensionInterfaceClassdbUnregisterExtensionClass".} = proc (
+      p_library: ClassLibraryPtr; p_class_name: ConstStringNamePtr) {.gdcall.}
+  InterfaceGetLibraryPath* {.importc: "GDExtensionInterfaceGetLibraryPath".} = proc (
+      p_library: ClassLibraryPtr; r_path: UninitializedStringPtr) {.gdcall.}
+  InterfaceEditorAddPlugin* {.importc: "GDExtensionInterfaceEditorAddPlugin".} = proc (
+      p_class_name: ConstStringNamePtr) {.gdcall.}
+  InterfaceEditorRemovePlugin* {.importc: "GDExtensionInterfaceEditorRemovePlugin".} = proc (
+      p_class_name: ConstStringNamePtr) {.gdcall.}
+  InterfaceEditorHelpLoadXmlFromUtf8Chars* {.
+      importc: "GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars".} = proc (
+      p_data: cstring) {.gdcall.}
+  InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen* {.
+      importc: "GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen".} = proc (
+      p_data: cstring; p_size: Int) {.gdcall.}
+  InterfaceEditorRegisterGetClassesUsedCallback* {.
+      importc: "GDExtensionInterfaceEditorRegisterGetClassesUsedCallback".} = proc (
+      p_library: ClassLibraryPtr; p_callback: EditorGetClassesUsedCallback) {.
       gdcall.}
-  InterfaceStringOperatorPlusEqString* = proc (pSelf: StringPtr;
-      pB: ConstStringPtr) {.gdcall.}
-  InterfaceStringOperatorPlusEqChar* = proc (pSelf: StringPtr; pB: char32T) {.
-      gdcall.}
-  InterfaceStringOperatorPlusEqCstr* = proc (pSelf: StringPtr; pB: cstring) {.
-      gdcall.}
-  InterfaceStringOperatorPlusEqWcstr* = proc (pSelf: StringPtr; pB: ptr wcharT) {.
-      gdcall.}
-  InterfaceStringOperatorPlusEqC32str* = proc (pSelf: StringPtr; pB: ptr char32T) {.
-      gdcall.}
-  InterfaceStringResize* = proc (pSelf: StringPtr; pResize: Int): Int {.gdcall.}
-  InterfaceStringNameNewWithLatin1Chars* = proc (
-      rDest: UninitializedStringNamePtr; pContents: cstring; pIsStatic: Bool) {.
-      gdcall.}
-  InterfaceStringNameNewWithUtf8Chars* = proc (
-      rDest: UninitializedStringNamePtr; pContents: cstring) {.gdcall.}
-  InterfaceStringNameNewWithUtf8CharsAndLen* = proc (
-      rDest: UninitializedStringNamePtr; pContents: cstring; pSize: Int) {.
-      gdcall.}
-  InterfaceXmlParserOpenBuffer* = proc (pInstance: ObjectPtr;
-                                        pBuffer: ptr uint8T; pSize: csizeT): Int {.
-      gdcall.}
-  InterfaceFileAccessStoreBuffer* = proc (pInstance: ObjectPtr;
-      pSrc: ptr uint8T; pLength: uint64T) {.gdcall.}
-  InterfaceFileAccessGetBuffer* = proc (pInstance: ConstObjectPtr;
-                                        pDst: ptr uint8T; pLength: uint64T): uint64T {.
-      gdcall.}
-  InterfaceImagePtrw* = proc (pInstance: ObjectPtr): ptr uint8T {.gdcall.}
-  InterfaceImagePtr* = proc (pInstance: ObjectPtr): ptr uint8T {.gdcall.}
-  InterfaceWorkerThreadPoolAddNativeGroupTask* = proc (pInstance: ObjectPtr;
-      pFunc: WorkerThreadPoolGroupTask; pUserdata: pointer; pElements: cint;
-      pTasks: cint; pHighPriority: Bool; pDescription: ConstStringPtr): int64T {.
-      gdcall.}
-  InterfaceWorkerThreadPoolAddNativeTask* = proc (pInstance: ObjectPtr;
-      pFunc: WorkerThreadPoolTask; pUserdata: pointer; pHighPriority: Bool;
-      pDescription: ConstStringPtr): int64T {.gdcall.}
-  InterfacePackedByteArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr uint8T {.
-      gdcall.}
-  InterfacePackedByteArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): ptr uint8T {.gdcall.}
-  InterfacePackedFloat32ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr cfloat {.
-      gdcall.}
-  InterfacePackedFloat32ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): ptr cfloat {.gdcall.}
-  InterfacePackedFloat64ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr cdouble {.
-      gdcall.}
-  InterfacePackedFloat64ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): ptr cdouble {.gdcall.}
-  InterfacePackedInt32ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr int32T {.
-      gdcall.}
-  InterfacePackedInt32ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): ptr int32T {.gdcall.}
-  InterfacePackedInt64ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): ptr int64T {.
-      gdcall.}
-  InterfacePackedInt64ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): ptr int64T {.gdcall.}
-  InterfacePackedStringArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): StringPtr {.
-      gdcall.}
-  InterfacePackedStringArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): StringPtr {.gdcall.}
-  InterfacePackedVector2ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): TypePtr {.
-      gdcall.}
-  InterfacePackedVector2ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): TypePtr {.gdcall.}
-  InterfacePackedVector3ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): TypePtr {.
-      gdcall.}
-  InterfacePackedVector3ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): TypePtr {.gdcall.}
-  InterfacePackedVector4ArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): TypePtr {.
-      gdcall.}
-  InterfacePackedVector4ArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): TypePtr {.gdcall.}
-  InterfacePackedColorArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): TypePtr {.
-      gdcall.}
-  InterfacePackedColorArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pIndex: Int): TypePtr {.gdcall.}
-  InterfaceArrayOperatorIndex* = proc (pSelf: TypePtr; pIndex: Int): VariantPtr {.
-      gdcall.}
-  InterfaceArrayOperatorIndexConst* = proc (pSelf: ConstTypePtr; pIndex: Int): VariantPtr {.
-      gdcall.}
-  InterfaceArrayRef* = proc (pSelf: TypePtr; pFrom: ConstTypePtr) {.gdcall.}
-  InterfaceArraySetTyped* = proc (pSelf: TypePtr; pType: VariantType;
-                                  pClassName: ConstStringNamePtr;
-                                  pScript: ConstVariantPtr) {.gdcall.}
-  InterfaceDictionaryOperatorIndex* = proc (pSelf: TypePtr;
-      pKey: ConstVariantPtr): VariantPtr {.gdcall.}
-  InterfaceDictionaryOperatorIndexConst* = proc (pSelf: ConstTypePtr;
-      pKey: ConstVariantPtr): VariantPtr {.gdcall.}
-  InterfaceDictionarySetTyped* = proc (pSelf: TypePtr; pKeyType: VariantType;
-                                       pKeyClassName: ConstStringNamePtr;
-                                       pKeyScript: ConstVariantPtr;
-                                       pValueType: VariantType;
-                                       pValueClassName: ConstStringNamePtr;
-                                       pValueScript: ConstVariantPtr) {.gdcall.}
-  InterfaceObjectMethodBindCall* = proc (pMethodBind: MethodBindPtr;
-      pInstance: ObjectPtr; pArgs: ptr ConstVariantPtr; pArgCount: Int;
-      rRet: UninitializedVariantPtr; rError: ptr CallError) {.gdcall.}
-  InterfaceObjectMethodBindPtrcall* = proc (pMethodBind: MethodBindPtr;
-      pInstance: ObjectPtr; pArgs: ptr ConstTypePtr; rRet: TypePtr) {.gdcall.}
-  InterfaceObjectDestroy* = proc (pO: ObjectPtr) {.gdcall.}
-  InterfaceGlobalGetSingleton* = proc (pName: ConstStringNamePtr): ObjectPtr {.
-      gdcall.}
-  InterfaceObjectGetInstanceBinding* = proc (pO: ObjectPtr; pToken: pointer;
-      pCallbacks: ptr InstanceBindingCallbacks): pointer {.gdcall.}
-  InterfaceObjectSetInstanceBinding* = proc (pO: ObjectPtr; pToken: pointer;
-      pBinding: pointer; pCallbacks: ptr InstanceBindingCallbacks) {.gdcall.}
-  InterfaceObjectFreeInstanceBinding* = proc (pO: ObjectPtr; pToken: pointer) {.
-      gdcall.}
-  InterfaceObjectSetInstance* = proc (pO: ObjectPtr;
-                                      pClassname: ConstStringNamePtr;
-                                      pInstance: ClassInstancePtr) {.gdcall.}
-  InterfaceObjectGetClassName* = proc (pObject: ConstObjectPtr;
-                                       pLibrary: ClassLibraryPtr;
-                                       rClassName: UninitializedStringNamePtr): Bool {.
-      gdcall.}
-  InterfaceObjectCastTo* = proc (pObject: ConstObjectPtr; pClassTag: pointer): ObjectPtr {.
-      gdcall.}
-  InterfaceObjectGetInstanceFromId* = proc (pInstanceId: GdObjectInstanceId): ObjectPtr {.
-      gdcall.}
-  InterfaceObjectGetInstanceId* = proc (pObject: ConstObjectPtr): GdObjectInstanceId {.
-      gdcall.}
-  InterfaceObjectHasScriptMethod* = proc (pObject: ConstObjectPtr;
-      pMethod: ConstStringNamePtr): Bool {.gdcall.}
-  InterfaceObjectCallScriptMethod* = proc (pObject: ObjectPtr;
-      pMethod: ConstStringNamePtr; pArgs: ptr ConstVariantPtr;
-      pArgumentCount: Int; rReturn: UninitializedVariantPtr;
-      rError: ptr CallError) {.gdcall.}
-  InterfaceRefGetObject* = proc (pRef: ConstRefPtr): ObjectPtr {.gdcall.}
-  InterfaceRefSetObject* = proc (pRef: RefPtr; pObject: ObjectPtr) {.gdcall.}
-  InterfaceScriptInstanceCreate* = proc (pInfo: ptr ScriptInstanceInfo;
-      pInstanceData: ScriptInstanceDataPtr): ScriptInstancePtr {.gdcall.}
-  InterfaceScriptInstanceCreate2* = proc (pInfo: ptr ScriptInstanceInfo2;
-      pInstanceData: ScriptInstanceDataPtr): ScriptInstancePtr {.gdcall.}
-  InterfaceScriptInstanceCreate3* = proc (pInfo: ptr ScriptInstanceInfo3;
-      pInstanceData: ScriptInstanceDataPtr): ScriptInstancePtr {.gdcall.}
-  InterfacePlaceHolderScriptInstanceCreate* = proc (pLanguage: ObjectPtr;
-      pScript: ObjectPtr; pOwner: ObjectPtr): ScriptInstancePtr {.gdcall.}
-  InterfacePlaceHolderScriptInstanceUpdate* = proc (
-      pPlaceholder: ScriptInstancePtr; pProperties: ConstTypePtr;
-      pValues: ConstTypePtr) {.gdcall.}
-  InterfaceObjectGetScriptInstance* = proc (pObject: ConstObjectPtr;
-      pLanguage: ObjectPtr): ScriptInstanceDataPtr {.gdcall.}
-  InterfaceObjectSetScriptInstance* = proc (pObject: ObjectPtr;
-      pScriptInstance: ScriptInstanceDataPtr) {.gdcall.}
-  InterfaceCallableCustomCreate* = proc (rCallable: UninitializedTypePtr;
-      pCallableCustomInfo: ptr CallableCustomInfo) {.gdcall.}
-  InterfaceCallableCustomCreate2* = proc (rCallable: UninitializedTypePtr;
-      pCallableCustomInfo: ptr CallableCustomInfo2) {.gdcall.}
-  InterfaceCallableCustomGetUserData* = proc (pCallable: ConstTypePtr;
-      pToken: pointer): pointer {.gdcall.}
-  InterfaceClassdbConstructObject* = proc (pClassname: ConstStringNamePtr): ObjectPtr {.
-      gdcall.}
-  InterfaceClassdbConstructObject2* = proc (pClassname: ConstStringNamePtr): ObjectPtr {.
-      gdcall.}
-  InterfaceClassdbGetMethodBind* = proc (pClassname: ConstStringNamePtr;
-      pMethodname: ConstStringNamePtr; pHash: Int): MethodBindPtr {.gdcall.}
-  InterfaceClassdbGetClassTag* = proc (pClassname: ConstStringNamePtr): pointer {.
-      gdcall.}
-  InterfaceClassdbRegisterExtensionClass* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
-      pExtensionFuncs: ptr ClassCreationInfo) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClass2* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
-      pExtensionFuncs: ptr ClassCreationInfo2) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClass3* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
-      pExtensionFuncs: ptr ClassCreationInfo3) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClass4* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
-      pExtensionFuncs: ptr ClassCreationInfo4) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClass5* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr; pParentClassName: ConstStringNamePtr;
-      pExtensionFuncs: ptr ClassCreationInfo5) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassMethod* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pMethodInfo: ptr ClassMethodInfo) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassVirtualMethod* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pMethodInfo: ptr ClassVirtualMethodInfo) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassIntegerConstant* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pEnumName: ConstStringNamePtr; pConstantName: ConstStringNamePtr;
-      pConstantValue: Int; pIsBitfield: Bool) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassProperty* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pInfo: ptr PropertyInfo; pSetter: ConstStringNamePtr;
-      pGetter: ConstStringNamePtr) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassPropertyIndexed* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pInfo: ptr PropertyInfo; pSetter: ConstStringNamePtr;
-      pGetter: ConstStringNamePtr; pIndex: Int) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassPropertyGroup* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pGroupName: ConstStringPtr; pPrefix: ConstStringPtr) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassPropertySubgroup* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pSubgroupName: ConstStringPtr; pPrefix: ConstStringPtr) {.gdcall.}
-  InterfaceClassdbRegisterExtensionClassSignal* = proc (
-      pLibrary: ClassLibraryPtr; pClassName: ConstStringNamePtr;
-      pSignalName: ConstStringNamePtr; pArgumentInfo: ptr PropertyInfo;
-      pArgumentCount: Int) {.gdcall.}
-  InterfaceClassdbUnregisterExtensionClass* = proc (pLibrary: ClassLibraryPtr;
-      pClassName: ConstStringNamePtr) {.gdcall.}
-  InterfaceGetLibraryPath* = proc (pLibrary: ClassLibraryPtr;
-                                   rPath: UninitializedStringPtr) {.gdcall.}
-  InterfaceEditorAddPlugin* = proc (pClassName: ConstStringNamePtr) {.gdcall.}
-  InterfaceEditorRemovePlugin* = proc (pClassName: ConstStringNamePtr) {.gdcall.}
-  InterfaceEditorHelpLoadXmlFromUtf8Chars* = proc (pData: cstring) {.gdcall.}
-  InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen* = proc (pData: cstring;
-      pSize: Int) {.gdcall.}
-  InterfaceEditorRegisterGetClassesUsedCallback* = proc (
-      pLibrary: ClassLibraryPtr; pCallback: EditorGetClassesUsedCallback) {.
-      gdcall.}
-  InterfaceRegisterMainLoopCallbacks* = proc (pLibrary: ClassLibraryPtr;
-      pCallbacks: ptr MainLoopCallbacks) {.gdcall.}
-var
-  interfaceGetGodotVersion*: InterfaceGetGodotVersion
-  interfaceGetGodotVersion2*: InterfaceGetGodotVersion2
-  interfaceMemAlloc*: InterfaceMemAlloc
-  interfaceMemRealloc*: InterfaceMemRealloc
-  interfaceMemFree*: InterfaceMemFree
-  interfacePrintError*: InterfacePrintError
-  interfacePrintErrorWithMessage*: InterfacePrintErrorWithMessage
-  interfacePrintWarning*: InterfacePrintWarning
-  interfacePrintWarningWithMessage*: InterfacePrintWarningWithMessage
-  interfacePrintScriptError*: InterfacePrintScriptError
-  interfacePrintScriptErrorWithMessage*: InterfacePrintScriptErrorWithMessage
-  interfaceGetNativeStructSize*: InterfaceGetNativeStructSize
-  interfaceVariantNewCopy*: InterfaceVariantNewCopy
-  interfaceVariantNewNil*: InterfaceVariantNewNil
-  interfaceVariantDestroy*: InterfaceVariantDestroy
-  interfaceVariantCall*: InterfaceVariantCall
-  interfaceVariantCallStatic*: InterfaceVariantCallStatic
-  interfaceVariantEvaluate*: InterfaceVariantEvaluate
-  interfaceVariantSet*: InterfaceVariantSet
-  interfaceVariantSetNamed*: InterfaceVariantSetNamed
-  interfaceVariantSetKeyed*: InterfaceVariantSetKeyed
-  interfaceVariantSetIndexed*: InterfaceVariantSetIndexed
-  interfaceVariantGet*: InterfaceVariantGet
-  interfaceVariantGetNamed*: InterfaceVariantGetNamed
-  interfaceVariantGetKeyed*: InterfaceVariantGetKeyed
-  interfaceVariantGetIndexed*: InterfaceVariantGetIndexed
-  interfaceVariantIterInit*: InterfaceVariantIterInit
-  interfaceVariantIterNext*: InterfaceVariantIterNext
-  interfaceVariantIterGet*: InterfaceVariantIterGet
-  interfaceVariantHash*: InterfaceVariantHash
-  interfaceVariantRecursiveHash*: InterfaceVariantRecursiveHash
-  interfaceVariantHashCompare*: InterfaceVariantHashCompare
-  interfaceVariantBooleanize*: InterfaceVariantBooleanize
-  interfaceVariantDuplicate*: InterfaceVariantDuplicate
-  interfaceVariantStringify*: InterfaceVariantStringify
-  interfaceVariantGetType*: InterfaceVariantGetType
-  interfaceVariantHasMethod*: InterfaceVariantHasMethod
-  interfaceVariantHasMember*: InterfaceVariantHasMember
-  interfaceVariantHasKey*: InterfaceVariantHasKey
-  interfaceVariantGetObjectInstanceId*: InterfaceVariantGetObjectInstanceId
-  interfaceVariantGetTypeName*: InterfaceVariantGetTypeName
-  interfaceVariantCanConvert*: InterfaceVariantCanConvert
-  interfaceVariantCanConvertStrict*: InterfaceVariantCanConvertStrict
-  interfaceGetVariantFromTypeConstructor*: InterfaceGetVariantFromTypeConstructor
-  interfaceGetVariantToTypeConstructor*: InterfaceGetVariantToTypeConstructor
-  interfaceGetVariantGetInternalPtrFunc*: InterfaceGetVariantGetInternalPtrFunc
-  interfaceVariantGetPtrOperatorEvaluator*: InterfaceVariantGetPtrOperatorEvaluator
-  interfaceVariantGetPtrBuiltinMethod*: InterfaceVariantGetPtrBuiltinMethod
-  interfaceVariantGetPtrConstructor*: InterfaceVariantGetPtrConstructor
-  interfaceVariantGetPtrDestructor*: InterfaceVariantGetPtrDestructor
-  interfaceVariantConstruct*: InterfaceVariantConstruct
-  interfaceVariantGetPtrSetter*: InterfaceVariantGetPtrSetter
-  interfaceVariantGetPtrGetter*: InterfaceVariantGetPtrGetter
-  interfaceVariantGetPtrIndexedSetter*: InterfaceVariantGetPtrIndexedSetter
-  interfaceVariantGetPtrIndexedGetter*: InterfaceVariantGetPtrIndexedGetter
-  interfaceVariantGetPtrKeyedSetter*: InterfaceVariantGetPtrKeyedSetter
-  interfaceVariantGetPtrKeyedGetter*: InterfaceVariantGetPtrKeyedGetter
-  interfaceVariantGetPtrKeyedChecker*: InterfaceVariantGetPtrKeyedChecker
-  interfaceVariantGetConstantValue*: InterfaceVariantGetConstantValue
-  interfaceVariantGetPtrUtilityFunction*: InterfaceVariantGetPtrUtilityFunction
-  interfaceStringNewWithLatin1Chars*: InterfaceStringNewWithLatin1Chars
-  interfaceStringNewWithUtf8Chars*: InterfaceStringNewWithUtf8Chars
-  interfaceStringNewWithUtf16Chars*: InterfaceStringNewWithUtf16Chars
-  interfaceStringNewWithUtf32Chars*: InterfaceStringNewWithUtf32Chars
-  interfaceStringNewWithWideChars*: InterfaceStringNewWithWideChars
-  interfaceStringNewWithLatin1CharsAndLen*: InterfaceStringNewWithLatin1CharsAndLen
-  interfaceStringNewWithUtf8CharsAndLen*: InterfaceStringNewWithUtf8CharsAndLen
-  interfaceStringNewWithUtf8CharsAndLen2*: InterfaceStringNewWithUtf8CharsAndLen2
-  interfaceStringNewWithUtf16CharsAndLen*: InterfaceStringNewWithUtf16CharsAndLen
-  interfaceStringNewWithUtf16CharsAndLen2*: InterfaceStringNewWithUtf16CharsAndLen2
-  interfaceStringNewWithUtf32CharsAndLen*: InterfaceStringNewWithUtf32CharsAndLen
-  interfaceStringNewWithWideCharsAndLen*: InterfaceStringNewWithWideCharsAndLen
-  interfaceStringToLatin1Chars*: InterfaceStringToLatin1Chars
-  interfaceStringToUtf8Chars*: InterfaceStringToUtf8Chars
-  interfaceStringToUtf16Chars*: InterfaceStringToUtf16Chars
-  interfaceStringToUtf32Chars*: InterfaceStringToUtf32Chars
-  interfaceStringToWideChars*: InterfaceStringToWideChars
-  interfaceStringOperatorIndex*: InterfaceStringOperatorIndex
-  interfaceStringOperatorIndexConst*: InterfaceStringOperatorIndexConst
-  interfaceStringOperatorPlusEqString*: InterfaceStringOperatorPlusEqString
-  interfaceStringOperatorPlusEqChar*: InterfaceStringOperatorPlusEqChar
-  interfaceStringOperatorPlusEqCstr*: InterfaceStringOperatorPlusEqCstr
-  interfaceStringOperatorPlusEqWcstr*: InterfaceStringOperatorPlusEqWcstr
-  interfaceStringOperatorPlusEqC32str*: InterfaceStringOperatorPlusEqC32str
-  interfaceStringResize*: InterfaceStringResize
-  interfaceStringNameNewWithLatin1Chars*: InterfaceStringNameNewWithLatin1Chars
-  interfaceStringNameNewWithUtf8Chars*: InterfaceStringNameNewWithUtf8Chars
-  interfaceStringNameNewWithUtf8CharsAndLen*: InterfaceStringNameNewWithUtf8CharsAndLen
-  interfaceXmlParserOpenBuffer*: InterfaceXmlParserOpenBuffer
-  interfaceFileAccessStoreBuffer*: InterfaceFileAccessStoreBuffer
-  interfaceFileAccessGetBuffer*: InterfaceFileAccessGetBuffer
-  interfaceImagePtrw*: InterfaceImagePtrw
-  interfaceImagePtr*: InterfaceImagePtr
-  interfaceWorkerThreadPoolAddNativeGroupTask*: InterfaceWorkerThreadPoolAddNativeGroupTask
-  interfaceWorkerThreadPoolAddNativeTask*: InterfaceWorkerThreadPoolAddNativeTask
-  interfacePackedByteArrayOperatorIndex*: InterfacePackedByteArrayOperatorIndex
-  interfacePackedByteArrayOperatorIndexConst*: InterfacePackedByteArrayOperatorIndexConst
-  interfacePackedFloat32ArrayOperatorIndex*: InterfacePackedFloat32ArrayOperatorIndex
-  interfacePackedFloat32ArrayOperatorIndexConst*: InterfacePackedFloat32ArrayOperatorIndexConst
-  interfacePackedFloat64ArrayOperatorIndex*: InterfacePackedFloat64ArrayOperatorIndex
-  interfacePackedFloat64ArrayOperatorIndexConst*: InterfacePackedFloat64ArrayOperatorIndexConst
-  interfacePackedInt32ArrayOperatorIndex*: InterfacePackedInt32ArrayOperatorIndex
-  interfacePackedInt32ArrayOperatorIndexConst*: InterfacePackedInt32ArrayOperatorIndexConst
-  interfacePackedInt64ArrayOperatorIndex*: InterfacePackedInt64ArrayOperatorIndex
-  interfacePackedInt64ArrayOperatorIndexConst*: InterfacePackedInt64ArrayOperatorIndexConst
-  interfacePackedStringArrayOperatorIndex*: InterfacePackedStringArrayOperatorIndex
-  interfacePackedStringArrayOperatorIndexConst*: InterfacePackedStringArrayOperatorIndexConst
-  interfacePackedVector2ArrayOperatorIndex*: InterfacePackedVector2ArrayOperatorIndex
-  interfacePackedVector2ArrayOperatorIndexConst*: InterfacePackedVector2ArrayOperatorIndexConst
-  interfacePackedVector3ArrayOperatorIndex*: InterfacePackedVector3ArrayOperatorIndex
-  interfacePackedVector3ArrayOperatorIndexConst*: InterfacePackedVector3ArrayOperatorIndexConst
-  interfacePackedVector4ArrayOperatorIndex*: InterfacePackedVector4ArrayOperatorIndex
-  interfacePackedVector4ArrayOperatorIndexConst*: InterfacePackedVector4ArrayOperatorIndexConst
-  interfacePackedColorArrayOperatorIndex*: InterfacePackedColorArrayOperatorIndex
-  interfacePackedColorArrayOperatorIndexConst*: InterfacePackedColorArrayOperatorIndexConst
-  interfaceArrayOperatorIndex*: InterfaceArrayOperatorIndex
-  interfaceArrayOperatorIndexConst*: InterfaceArrayOperatorIndexConst
-  interfaceArrayRef*: InterfaceArrayRef
-  interfaceArraySetTyped*: InterfaceArraySetTyped
-  interfaceDictionaryOperatorIndex*: InterfaceDictionaryOperatorIndex
-  interfaceDictionaryOperatorIndexConst*: InterfaceDictionaryOperatorIndexConst
-  interfaceDictionarySetTyped*: InterfaceDictionarySetTyped
-  interfaceObjectMethodBindCall*: InterfaceObjectMethodBindCall
-  interfaceObjectMethodBindPtrcall*: InterfaceObjectMethodBindPtrcall
-  interfaceObjectDestroy*: InterfaceObjectDestroy
-  interfaceGlobalGetSingleton*: InterfaceGlobalGetSingleton
-  interfaceObjectGetInstanceBinding*: InterfaceObjectGetInstanceBinding
-  interfaceObjectSetInstanceBinding*: InterfaceObjectSetInstanceBinding
-  interfaceObjectFreeInstanceBinding*: InterfaceObjectFreeInstanceBinding
-  interfaceObjectSetInstance*: InterfaceObjectSetInstance
-  interfaceObjectGetClassName*: InterfaceObjectGetClassName
-  interfaceObjectCastTo*: InterfaceObjectCastTo
-  interfaceObjectGetInstanceFromId*: InterfaceObjectGetInstanceFromId
-  interfaceObjectGetInstanceId*: InterfaceObjectGetInstanceId
-  interfaceObjectHasScriptMethod*: InterfaceObjectHasScriptMethod
-  interfaceObjectCallScriptMethod*: InterfaceObjectCallScriptMethod
-  interfaceRefGetObject*: InterfaceRefGetObject
-  interfaceRefSetObject*: InterfaceRefSetObject
-  interfaceScriptInstanceCreate*: InterfaceScriptInstanceCreate
-  interfaceScriptInstanceCreate2*: InterfaceScriptInstanceCreate2
-  interfaceScriptInstanceCreate3*: InterfaceScriptInstanceCreate3
-  interfacePlaceHolderScriptInstanceCreate*: InterfacePlaceHolderScriptInstanceCreate
-  interfacePlaceHolderScriptInstanceUpdate*: InterfacePlaceHolderScriptInstanceUpdate
-  interfaceObjectGetScriptInstance*: InterfaceObjectGetScriptInstance
-  interfaceObjectSetScriptInstance*: InterfaceObjectSetScriptInstance
-  interfaceCallableCustomCreate*: InterfaceCallableCustomCreate
-  interfaceCallableCustomCreate2*: InterfaceCallableCustomCreate2
-  interfaceCallableCustomGetUserData*: InterfaceCallableCustomGetUserData
-  interfaceClassdbConstructObject*: InterfaceClassdbConstructObject
-  interfaceClassdbConstructObject2*: InterfaceClassdbConstructObject2
-  interfaceClassdbGetMethodBind*: InterfaceClassdbGetMethodBind
-  interfaceClassdbGetClassTag*: InterfaceClassdbGetClassTag
-  interfaceClassdbRegisterExtensionClass*: InterfaceClassdbRegisterExtensionClass
-  interfaceClassdbRegisterExtensionClass2*: InterfaceClassdbRegisterExtensionClass2
-  interfaceClassdbRegisterExtensionClass3*: InterfaceClassdbRegisterExtensionClass3
-  interfaceClassdbRegisterExtensionClass4*: InterfaceClassdbRegisterExtensionClass4
-  interfaceClassdbRegisterExtensionClass5*: InterfaceClassdbRegisterExtensionClass5
-  interfaceClassdbRegisterExtensionClassMethod*: InterfaceClassdbRegisterExtensionClassMethod
-  interfaceClassdbRegisterExtensionClassVirtualMethod*: InterfaceClassdbRegisterExtensionClassVirtualMethod
-  interfaceClassdbRegisterExtensionClassIntegerConstant*: InterfaceClassdbRegisterExtensionClassIntegerConstant
-  interfaceClassdbRegisterExtensionClassProperty*: InterfaceClassdbRegisterExtensionClassProperty
-  interfaceClassdbRegisterExtensionClassPropertyIndexed*: InterfaceClassdbRegisterExtensionClassPropertyIndexed
-  interfaceClassdbRegisterExtensionClassPropertyGroup*: InterfaceClassdbRegisterExtensionClassPropertyGroup
-  interfaceClassdbRegisterExtensionClassPropertySubgroup*: InterfaceClassdbRegisterExtensionClassPropertySubgroup
-  interfaceClassdbRegisterExtensionClassSignal*: InterfaceClassdbRegisterExtensionClassSignal
-  interfaceClassdbUnregisterExtensionClass*: InterfaceClassdbUnregisterExtensionClass
-  interfaceGetLibraryPath*: InterfaceGetLibraryPath
-  interfaceEditorAddPlugin*: InterfaceEditorAddPlugin
-  interfaceEditorRemovePlugin*: InterfaceEditorRemovePlugin
-  interfaceEditorHelpLoadXmlFromUtf8Chars*: InterfaceEditorHelpLoadXmlFromUtf8Chars
-  interfaceEditorHelpLoadXmlFromUtf8CharsAndLen*: InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
-  interfaceEditorRegisterGetClassesUsedCallback*: InterfaceEditorRegisterGetClassesUsedCallback
-  interfaceRegisterMainLoopCallbacks*: InterfaceRegisterMainLoopCallbacks
-proc loadApi(getProcAddress: InterfaceGetProcAddress) =
-  interfaceGetGodotVersion = cast[InterfaceGetGodotVersion](getProcAddress(
-      cstring("get_godot_version")))
-  interfaceGetGodotVersion2 = cast[InterfaceGetGodotVersion2](getProcAddress(
-      cstring("get_godot_version2")))
-  interfaceMemAlloc = cast[InterfaceMemAlloc](getProcAddress(
-      cstring("mem_alloc")))
-  interfaceMemRealloc = cast[InterfaceMemRealloc](getProcAddress(
-      cstring("mem_realloc")))
-  interfaceMemFree = cast[InterfaceMemFree](getProcAddress(cstring("mem_free")))
-  interfacePrintError = cast[InterfacePrintError](getProcAddress(
-      cstring("print_error")))
-  interfacePrintErrorWithMessage = cast[InterfacePrintErrorWithMessage](getProcAddress(
-      cstring("print_error_with_message")))
-  interfacePrintWarning = cast[InterfacePrintWarning](getProcAddress(
-      cstring("print_warning")))
-  interfacePrintWarningWithMessage = cast[InterfacePrintWarningWithMessage](getProcAddress(
-      cstring("print_warning_with_message")))
-  interfacePrintScriptError = cast[InterfacePrintScriptError](getProcAddress(
-      cstring("print_script_error")))
-  interfacePrintScriptErrorWithMessage = cast[InterfacePrintScriptErrorWithMessage](getProcAddress(
-      cstring("print_script_error_with_message")))
-  interfaceGetNativeStructSize = cast[InterfaceGetNativeStructSize](getProcAddress(
-      cstring("get_native_struct_size")))
-  interfaceVariantNewCopy = cast[InterfaceVariantNewCopy](getProcAddress(
-      cstring("variant_new_copy")))
-  interfaceVariantNewNil = cast[InterfaceVariantNewNil](getProcAddress(
-      cstring("variant_new_nil")))
-  interfaceVariantDestroy = cast[InterfaceVariantDestroy](getProcAddress(
-      cstring("variant_destroy")))
-  interfaceVariantCall = cast[InterfaceVariantCall](getProcAddress(
-      cstring("variant_call")))
-  interfaceVariantCallStatic = cast[InterfaceVariantCallStatic](getProcAddress(
-      cstring("variant_call_static")))
-  interfaceVariantEvaluate = cast[InterfaceVariantEvaluate](getProcAddress(
-      cstring("variant_evaluate")))
-  interfaceVariantSet = cast[InterfaceVariantSet](getProcAddress(
-      cstring("variant_set")))
-  interfaceVariantSetNamed = cast[InterfaceVariantSetNamed](getProcAddress(
-      cstring("variant_set_named")))
-  interfaceVariantSetKeyed = cast[InterfaceVariantSetKeyed](getProcAddress(
-      cstring("variant_set_keyed")))
-  interfaceVariantSetIndexed = cast[InterfaceVariantSetIndexed](getProcAddress(
-      cstring("variant_set_indexed")))
-  interfaceVariantGet = cast[InterfaceVariantGet](getProcAddress(
-      cstring("variant_get")))
-  interfaceVariantGetNamed = cast[InterfaceVariantGetNamed](getProcAddress(
-      cstring("variant_get_named")))
-  interfaceVariantGetKeyed = cast[InterfaceVariantGetKeyed](getProcAddress(
-      cstring("variant_get_keyed")))
-  interfaceVariantGetIndexed = cast[InterfaceVariantGetIndexed](getProcAddress(
-      cstring("variant_get_indexed")))
-  interfaceVariantIterInit = cast[InterfaceVariantIterInit](getProcAddress(
-      cstring("variant_iter_init")))
-  interfaceVariantIterNext = cast[InterfaceVariantIterNext](getProcAddress(
-      cstring("variant_iter_next")))
-  interfaceVariantIterGet = cast[InterfaceVariantIterGet](getProcAddress(
-      cstring("variant_iter_get")))
-  interfaceVariantHash = cast[InterfaceVariantHash](getProcAddress(
-      cstring("variant_hash")))
-  interfaceVariantRecursiveHash = cast[InterfaceVariantRecursiveHash](getProcAddress(
-      cstring("variant_recursive_hash")))
-  interfaceVariantHashCompare = cast[InterfaceVariantHashCompare](getProcAddress(
-      cstring("variant_hash_compare")))
-  interfaceVariantBooleanize = cast[InterfaceVariantBooleanize](getProcAddress(
-      cstring("variant_booleanize")))
-  interfaceVariantDuplicate = cast[InterfaceVariantDuplicate](getProcAddress(
-      cstring("variant_duplicate")))
-  interfaceVariantStringify = cast[InterfaceVariantStringify](getProcAddress(
-      cstring("variant_stringify")))
-  interfaceVariantGetType = cast[InterfaceVariantGetType](getProcAddress(
-      cstring("variant_get_type")))
-  interfaceVariantHasMethod = cast[InterfaceVariantHasMethod](getProcAddress(
-      cstring("variant_has_method")))
-  interfaceVariantHasMember = cast[InterfaceVariantHasMember](getProcAddress(
-      cstring("variant_has_member")))
-  interfaceVariantHasKey = cast[InterfaceVariantHasKey](getProcAddress(
-      cstring("variant_has_key")))
-  interfaceVariantGetObjectInstanceId = cast[InterfaceVariantGetObjectInstanceId](getProcAddress(
-      cstring("variant_get_object_instance_id")))
-  interfaceVariantGetTypeName = cast[InterfaceVariantGetTypeName](getProcAddress(
-      cstring("variant_get_type_name")))
-  interfaceVariantCanConvert = cast[InterfaceVariantCanConvert](getProcAddress(
-      cstring("variant_can_convert")))
-  interfaceVariantCanConvertStrict = cast[InterfaceVariantCanConvertStrict](getProcAddress(
-      cstring("variant_can_convert_strict")))
-  interfaceGetVariantFromTypeConstructor = cast[InterfaceGetVariantFromTypeConstructor](getProcAddress(
-      cstring("get_variant_from_type_constructor")))
-  interfaceGetVariantToTypeConstructor = cast[InterfaceGetVariantToTypeConstructor](getProcAddress(
-      cstring("get_variant_to_type_constructor")))
-  interfaceGetVariantGetInternalPtrFunc = cast[InterfaceGetVariantGetInternalPtrFunc](getProcAddress(
-      cstring("variant_get_ptr_internal_getter")))
-  interfaceVariantGetPtrOperatorEvaluator = cast[InterfaceVariantGetPtrOperatorEvaluator](getProcAddress(
-      cstring("variant_get_ptr_operator_evaluator")))
-  interfaceVariantGetPtrBuiltinMethod = cast[InterfaceVariantGetPtrBuiltinMethod](getProcAddress(
-      cstring("variant_get_ptr_builtin_method")))
-  interfaceVariantGetPtrConstructor = cast[InterfaceVariantGetPtrConstructor](getProcAddress(
-      cstring("variant_get_ptr_constructor")))
-  interfaceVariantGetPtrDestructor = cast[InterfaceVariantGetPtrDestructor](getProcAddress(
-      cstring("variant_get_ptr_destructor")))
-  interfaceVariantConstruct = cast[InterfaceVariantConstruct](getProcAddress(
-      cstring("variant_construct")))
-  interfaceVariantGetPtrSetter = cast[InterfaceVariantGetPtrSetter](getProcAddress(
-      cstring("variant_get_ptr_setter")))
-  interfaceVariantGetPtrGetter = cast[InterfaceVariantGetPtrGetter](getProcAddress(
-      cstring("variant_get_ptr_getter")))
-  interfaceVariantGetPtrIndexedSetter = cast[InterfaceVariantGetPtrIndexedSetter](getProcAddress(
-      cstring("variant_get_ptr_indexed_setter")))
-  interfaceVariantGetPtrIndexedGetter = cast[InterfaceVariantGetPtrIndexedGetter](getProcAddress(
-      cstring("variant_get_ptr_indexed_getter")))
-  interfaceVariantGetPtrKeyedSetter = cast[InterfaceVariantGetPtrKeyedSetter](getProcAddress(
-      cstring("variant_get_ptr_keyed_setter")))
-  interfaceVariantGetPtrKeyedGetter = cast[InterfaceVariantGetPtrKeyedGetter](getProcAddress(
-      cstring("variant_get_ptr_keyed_getter")))
-  interfaceVariantGetPtrKeyedChecker = cast[InterfaceVariantGetPtrKeyedChecker](getProcAddress(
-      cstring("variant_get_ptr_keyed_checker")))
-  interfaceVariantGetConstantValue = cast[InterfaceVariantGetConstantValue](getProcAddress(
-      cstring("variant_get_constant_value")))
-  interfaceVariantGetPtrUtilityFunction = cast[InterfaceVariantGetPtrUtilityFunction](getProcAddress(
-      cstring("variant_get_ptr_utility_function")))
-  interfaceStringNewWithLatin1Chars = cast[InterfaceStringNewWithLatin1Chars](getProcAddress(
-      cstring("string_new_with_latin1_chars")))
-  interfaceStringNewWithUtf8Chars = cast[InterfaceStringNewWithUtf8Chars](getProcAddress(
-      cstring("string_new_with_utf8_chars")))
-  interfaceStringNewWithUtf16Chars = cast[InterfaceStringNewWithUtf16Chars](getProcAddress(
-      cstring("string_new_with_utf16_chars")))
-  interfaceStringNewWithUtf32Chars = cast[InterfaceStringNewWithUtf32Chars](getProcAddress(
-      cstring("string_new_with_utf32_chars")))
-  interfaceStringNewWithWideChars = cast[InterfaceStringNewWithWideChars](getProcAddress(
-      cstring("string_new_with_wide_chars")))
-  interfaceStringNewWithLatin1CharsAndLen = cast[InterfaceStringNewWithLatin1CharsAndLen](getProcAddress(
-      cstring("string_new_with_latin1_chars_and_len")))
-  interfaceStringNewWithUtf8CharsAndLen = cast[InterfaceStringNewWithUtf8CharsAndLen](getProcAddress(
-      cstring("string_new_with_utf8_chars_and_len")))
-  interfaceStringNewWithUtf8CharsAndLen2 = cast[InterfaceStringNewWithUtf8CharsAndLen2](getProcAddress(
-      cstring("string_new_with_utf8_chars_and_len2")))
-  interfaceStringNewWithUtf16CharsAndLen = cast[InterfaceStringNewWithUtf16CharsAndLen](getProcAddress(
-      cstring("string_new_with_utf16_chars_and_len")))
-  interfaceStringNewWithUtf16CharsAndLen2 = cast[InterfaceStringNewWithUtf16CharsAndLen2](getProcAddress(
-      cstring("string_new_with_utf16_chars_and_len2")))
-  interfaceStringNewWithUtf32CharsAndLen = cast[InterfaceStringNewWithUtf32CharsAndLen](getProcAddress(
-      cstring("string_new_with_utf32_chars_and_len")))
-  interfaceStringNewWithWideCharsAndLen = cast[InterfaceStringNewWithWideCharsAndLen](getProcAddress(
-      cstring("string_new_with_wide_chars_and_len")))
-  interfaceStringToLatin1Chars = cast[InterfaceStringToLatin1Chars](getProcAddress(
-      cstring("string_to_latin1_chars")))
-  interfaceStringToUtf8Chars = cast[InterfaceStringToUtf8Chars](getProcAddress(
-      cstring("string_to_utf8_chars")))
-  interfaceStringToUtf16Chars = cast[InterfaceStringToUtf16Chars](getProcAddress(
-      cstring("string_to_utf16_chars")))
-  interfaceStringToUtf32Chars = cast[InterfaceStringToUtf32Chars](getProcAddress(
-      cstring("string_to_utf32_chars")))
-  interfaceStringToWideChars = cast[InterfaceStringToWideChars](getProcAddress(
-      cstring("string_to_wide_chars")))
-  interfaceStringOperatorIndex = cast[InterfaceStringOperatorIndex](getProcAddress(
-      cstring("string_operator_index")))
-  interfaceStringOperatorIndexConst = cast[InterfaceStringOperatorIndexConst](getProcAddress(
-      cstring("string_operator_index_const")))
-  interfaceStringOperatorPlusEqString = cast[InterfaceStringOperatorPlusEqString](getProcAddress(
-      cstring("string_operator_plus_eq_string")))
-  interfaceStringOperatorPlusEqChar = cast[InterfaceStringOperatorPlusEqChar](getProcAddress(
-      cstring("string_operator_plus_eq_char")))
-  interfaceStringOperatorPlusEqCstr = cast[InterfaceStringOperatorPlusEqCstr](getProcAddress(
-      cstring("string_operator_plus_eq_cstr")))
-  interfaceStringOperatorPlusEqWcstr = cast[InterfaceStringOperatorPlusEqWcstr](getProcAddress(
-      cstring("string_operator_plus_eq_wcstr")))
-  interfaceStringOperatorPlusEqC32str = cast[InterfaceStringOperatorPlusEqC32str](getProcAddress(
-      cstring("string_operator_plus_eq_c32str")))
-  interfaceStringResize = cast[InterfaceStringResize](getProcAddress(
-      cstring("string_resize")))
-  interfaceStringNameNewWithLatin1Chars = cast[InterfaceStringNameNewWithLatin1Chars](getProcAddress(
-      cstring("string_name_new_with_latin1_chars")))
-  interfaceStringNameNewWithUtf8Chars = cast[InterfaceStringNameNewWithUtf8Chars](getProcAddress(
-      cstring("string_name_new_with_utf8_chars")))
-  interfaceStringNameNewWithUtf8CharsAndLen = cast[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddress(
-      cstring("string_name_new_with_utf8_chars_and_len")))
-  interfaceXmlParserOpenBuffer = cast[InterfaceXmlParserOpenBuffer](getProcAddress(
-      cstring("xml_parser_open_buffer")))
-  interfaceFileAccessStoreBuffer = cast[InterfaceFileAccessStoreBuffer](getProcAddress(
-      cstring("file_access_store_buffer")))
-  interfaceFileAccessGetBuffer = cast[InterfaceFileAccessGetBuffer](getProcAddress(
-      cstring("file_access_get_buffer")))
-  interfaceImagePtrw = cast[InterfaceImagePtrw](getProcAddress(
-      cstring("image_ptrw")))
-  interfaceImagePtr = cast[InterfaceImagePtr](getProcAddress(
-      cstring("image_ptr")))
-  interfaceWorkerThreadPoolAddNativeGroupTask = cast[InterfaceWorkerThreadPoolAddNativeGroupTask](getProcAddress(
-      cstring("worker_thread_pool_add_native_group_task")))
-  interfaceWorkerThreadPoolAddNativeTask = cast[InterfaceWorkerThreadPoolAddNativeTask](getProcAddress(
-      cstring("worker_thread_pool_add_native_task")))
-  interfacePackedByteArrayOperatorIndex = cast[InterfacePackedByteArrayOperatorIndex](getProcAddress(
-      cstring("packed_byte_array_operator_index")))
-  interfacePackedByteArrayOperatorIndexConst = cast[InterfacePackedByteArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_byte_array_operator_index_const")))
-  interfacePackedFloat32ArrayOperatorIndex = cast[InterfacePackedFloat32ArrayOperatorIndex](getProcAddress(
-      cstring("packed_float32_array_operator_index")))
-  interfacePackedFloat32ArrayOperatorIndexConst = cast[InterfacePackedFloat32ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_float32_array_operator_index_const")))
-  interfacePackedFloat64ArrayOperatorIndex = cast[InterfacePackedFloat64ArrayOperatorIndex](getProcAddress(
-      cstring("packed_float64_array_operator_index")))
-  interfacePackedFloat64ArrayOperatorIndexConst = cast[InterfacePackedFloat64ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_float64_array_operator_index_const")))
-  interfacePackedInt32ArrayOperatorIndex = cast[InterfacePackedInt32ArrayOperatorIndex](getProcAddress(
-      cstring("packed_int32_array_operator_index")))
-  interfacePackedInt32ArrayOperatorIndexConst = cast[InterfacePackedInt32ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_int32_array_operator_index_const")))
-  interfacePackedInt64ArrayOperatorIndex = cast[InterfacePackedInt64ArrayOperatorIndex](getProcAddress(
-      cstring("packed_int64_array_operator_index")))
-  interfacePackedInt64ArrayOperatorIndexConst = cast[InterfacePackedInt64ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_int64_array_operator_index_const")))
-  interfacePackedStringArrayOperatorIndex = cast[InterfacePackedStringArrayOperatorIndex](getProcAddress(
-      cstring("packed_string_array_operator_index")))
-  interfacePackedStringArrayOperatorIndexConst = cast[InterfacePackedStringArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_string_array_operator_index_const")))
-  interfacePackedVector2ArrayOperatorIndex = cast[InterfacePackedVector2ArrayOperatorIndex](getProcAddress(
-      cstring("packed_vector2_array_operator_index")))
-  interfacePackedVector2ArrayOperatorIndexConst = cast[InterfacePackedVector2ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_vector2_array_operator_index_const")))
-  interfacePackedVector3ArrayOperatorIndex = cast[InterfacePackedVector3ArrayOperatorIndex](getProcAddress(
-      cstring("packed_vector3_array_operator_index")))
-  interfacePackedVector3ArrayOperatorIndexConst = cast[InterfacePackedVector3ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_vector3_array_operator_index_const")))
-  interfacePackedVector4ArrayOperatorIndex = cast[InterfacePackedVector4ArrayOperatorIndex](getProcAddress(
-      cstring("packed_vector4_array_operator_index")))
-  interfacePackedVector4ArrayOperatorIndexConst = cast[InterfacePackedVector4ArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_vector4_array_operator_index_const")))
-  interfacePackedColorArrayOperatorIndex = cast[InterfacePackedColorArrayOperatorIndex](getProcAddress(
-      cstring("packed_color_array_operator_index")))
-  interfacePackedColorArrayOperatorIndexConst = cast[InterfacePackedColorArrayOperatorIndexConst](getProcAddress(
-      cstring("packed_color_array_operator_index_const")))
-  interfaceArrayOperatorIndex = cast[InterfaceArrayOperatorIndex](getProcAddress(
-      cstring("array_operator_index")))
-  interfaceArrayOperatorIndexConst = cast[InterfaceArrayOperatorIndexConst](getProcAddress(
-      cstring("array_operator_index_const")))
-  interfaceArrayRef = cast[InterfaceArrayRef](getProcAddress(
-      cstring("array_ref")))
-  interfaceArraySetTyped = cast[InterfaceArraySetTyped](getProcAddress(
-      cstring("array_set_typed")))
-  interfaceDictionaryOperatorIndex = cast[InterfaceDictionaryOperatorIndex](getProcAddress(
-      cstring("dictionary_operator_index")))
-  interfaceDictionaryOperatorIndexConst = cast[InterfaceDictionaryOperatorIndexConst](getProcAddress(
-      cstring("dictionary_operator_index_const")))
-  interfaceDictionarySetTyped = cast[InterfaceDictionarySetTyped](getProcAddress(
-      cstring("dictionary_set_typed")))
-  interfaceObjectMethodBindCall = cast[InterfaceObjectMethodBindCall](getProcAddress(
-      cstring("object_method_bind_call")))
-  interfaceObjectMethodBindPtrcall = cast[InterfaceObjectMethodBindPtrcall](getProcAddress(
-      cstring("object_method_bind_ptrcall")))
-  interfaceObjectDestroy = cast[InterfaceObjectDestroy](getProcAddress(
-      cstring("object_destroy")))
-  interfaceGlobalGetSingleton = cast[InterfaceGlobalGetSingleton](getProcAddress(
-      cstring("global_get_singleton")))
-  interfaceObjectGetInstanceBinding = cast[InterfaceObjectGetInstanceBinding](getProcAddress(
-      cstring("object_get_instance_binding")))
-  interfaceObjectSetInstanceBinding = cast[InterfaceObjectSetInstanceBinding](getProcAddress(
-      cstring("object_set_instance_binding")))
-  interfaceObjectFreeInstanceBinding = cast[InterfaceObjectFreeInstanceBinding](getProcAddress(
-      cstring("object_free_instance_binding")))
-  interfaceObjectSetInstance = cast[InterfaceObjectSetInstance](getProcAddress(
-      cstring("object_set_instance")))
-  interfaceObjectGetClassName = cast[InterfaceObjectGetClassName](getProcAddress(
-      cstring("object_get_class_name")))
-  interfaceObjectCastTo = cast[InterfaceObjectCastTo](getProcAddress(
-      cstring("object_cast_to")))
-  interfaceObjectGetInstanceFromId = cast[InterfaceObjectGetInstanceFromId](getProcAddress(
-      cstring("object_get_instance_from_id")))
-  interfaceObjectGetInstanceId = cast[InterfaceObjectGetInstanceId](getProcAddress(
-      cstring("object_get_instance_id")))
-  interfaceObjectHasScriptMethod = cast[InterfaceObjectHasScriptMethod](getProcAddress(
-      cstring("object_has_script_method")))
-  interfaceObjectCallScriptMethod = cast[InterfaceObjectCallScriptMethod](getProcAddress(
-      cstring("object_call_script_method")))
-  interfaceRefGetObject = cast[InterfaceRefGetObject](getProcAddress(
-      cstring("ref_get_object")))
-  interfaceRefSetObject = cast[InterfaceRefSetObject](getProcAddress(
-      cstring("ref_set_object")))
-  interfaceScriptInstanceCreate = cast[InterfaceScriptInstanceCreate](getProcAddress(
-      cstring("script_instance_create")))
-  interfaceScriptInstanceCreate2 = cast[InterfaceScriptInstanceCreate2](getProcAddress(
-      cstring("script_instance_create2")))
-  interfaceScriptInstanceCreate3 = cast[InterfaceScriptInstanceCreate3](getProcAddress(
-      cstring("script_instance_create3")))
-  interfacePlaceHolderScriptInstanceCreate = cast[InterfacePlaceHolderScriptInstanceCreate](getProcAddress(
-      cstring("placeholder_script_instance_create")))
-  interfacePlaceHolderScriptInstanceUpdate = cast[InterfacePlaceHolderScriptInstanceUpdate](getProcAddress(
-      cstring("placeholder_script_instance_update")))
-  interfaceObjectGetScriptInstance = cast[InterfaceObjectGetScriptInstance](getProcAddress(
-      cstring("object_get_script_instance")))
-  interfaceObjectSetScriptInstance = cast[InterfaceObjectSetScriptInstance](getProcAddress(
-      cstring("object_set_script_instance")))
-  interfaceCallableCustomCreate = cast[InterfaceCallableCustomCreate](getProcAddress(
-      cstring("callable_custom_create")))
-  interfaceCallableCustomCreate2 = cast[InterfaceCallableCustomCreate2](getProcAddress(
-      cstring("callable_custom_create2")))
-  interfaceCallableCustomGetUserData = cast[InterfaceCallableCustomGetUserData](getProcAddress(
-      cstring("callable_custom_get_userdata")))
-  interfaceClassdbConstructObject = cast[InterfaceClassdbConstructObject](getProcAddress(
-      cstring("classdb_construct_object")))
-  interfaceClassdbConstructObject2 = cast[InterfaceClassdbConstructObject2](getProcAddress(
-      cstring("classdb_construct_object2")))
-  interfaceClassdbGetMethodBind = cast[InterfaceClassdbGetMethodBind](getProcAddress(
-      cstring("classdb_get_method_bind")))
-  interfaceClassdbGetClassTag = cast[InterfaceClassdbGetClassTag](getProcAddress(
-      cstring("classdb_get_class_tag")))
-  interfaceClassdbRegisterExtensionClass = cast[InterfaceClassdbRegisterExtensionClass](getProcAddress(
-      cstring("classdb_register_extension_class")))
-  interfaceClassdbRegisterExtensionClass2 = cast[InterfaceClassdbRegisterExtensionClass2](getProcAddress(
-      cstring("classdb_register_extension_class2")))
-  interfaceClassdbRegisterExtensionClass3 = cast[InterfaceClassdbRegisterExtensionClass3](getProcAddress(
-      cstring("classdb_register_extension_class3")))
-  interfaceClassdbRegisterExtensionClass4 = cast[InterfaceClassdbRegisterExtensionClass4](getProcAddress(
-      cstring("classdb_register_extension_class4")))
-  interfaceClassdbRegisterExtensionClass5 = cast[InterfaceClassdbRegisterExtensionClass5](getProcAddress(
-      cstring("classdb_register_extension_class5")))
-  interfaceClassdbRegisterExtensionClassMethod = cast[InterfaceClassdbRegisterExtensionClassMethod](getProcAddress(
-      cstring("classdb_register_extension_class_method")))
-  interfaceClassdbRegisterExtensionClassVirtualMethod = cast[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddress(
-      cstring("classdb_register_extension_class_virtual_method")))
-  interfaceClassdbRegisterExtensionClassIntegerConstant = cast[InterfaceClassdbRegisterExtensionClassIntegerConstant](getProcAddress(
-      cstring("classdb_register_extension_class_integer_constant")))
-  interfaceClassdbRegisterExtensionClassProperty = cast[InterfaceClassdbRegisterExtensionClassProperty](getProcAddress(
-      cstring("classdb_register_extension_class_property")))
-  interfaceClassdbRegisterExtensionClassPropertyIndexed = cast[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddress(
-      cstring("classdb_register_extension_class_property_indexed")))
-  interfaceClassdbRegisterExtensionClassPropertyGroup = cast[InterfaceClassdbRegisterExtensionClassPropertyGroup](getProcAddress(
-      cstring("classdb_register_extension_class_property_group")))
-  interfaceClassdbRegisterExtensionClassPropertySubgroup = cast[InterfaceClassdbRegisterExtensionClassPropertySubgroup](getProcAddress(
-      cstring("classdb_register_extension_class_property_subgroup")))
-  interfaceClassdbRegisterExtensionClassSignal = cast[InterfaceClassdbRegisterExtensionClassSignal](getProcAddress(
-      cstring("classdb_register_extension_class_signal")))
-  interfaceClassdbUnregisterExtensionClass = cast[InterfaceClassdbUnregisterExtensionClass](getProcAddress(
-      cstring("classdb_unregister_extension_class")))
-  interfaceGetLibraryPath = cast[InterfaceGetLibraryPath](getProcAddress(
-      cstring("get_library_path")))
-  interfaceEditorAddPlugin = cast[InterfaceEditorAddPlugin](getProcAddress(
-      cstring("editor_add_plugin")))
-  interfaceEditorRemovePlugin = cast[InterfaceEditorRemovePlugin](getProcAddress(
-      cstring("editor_remove_plugin")))
-  interfaceEditorHelpLoadXmlFromUtf8Chars = cast[InterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddress(
-      cstring("editor_help_load_xml_from_utf8_chars")))
-  interfaceEditorHelpLoadXmlFromUtf8CharsAndLen = cast[InterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddress(
-      cstring("editor_help_load_xml_from_utf8_chars_and_len")))
-  interfaceEditorRegisterGetClassesUsedCallback = cast[InterfaceEditorRegisterGetClassesUsedCallback](getProcAddress(
-      cstring("editor_register_get_classes_used_callback")))
-  interfaceRegisterMainLoopCallbacks = cast[InterfaceRegisterMainLoopCallbacks](getProcAddress(
-      cstring("register_main_loop_callbacks")))
+  InterfaceRegisterMainLoopCallbacks* {.importc: "GDExtensionInterfaceRegisterMainLoopCallbacks".} = proc (
+      p_library: ClassLibraryPtr; p_callbacks: ptr MainLoopCallbacks) {.gdcall.}

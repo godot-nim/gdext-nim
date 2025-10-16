@@ -1,167 +1,175 @@
 when sizeof(real_elem) == 4 and sizeof(int) == 4:
-  const NilSize* = 0
-  const boolSize* = 1
-  const intSize* = 8
-  const floatSize* = 8
-  const StringSize* = 4
-  const Vector2Size* = 8
-  const Vector2iSize* = 8
-  const Rect2Size* = 16
-  const Rect2iSize* = 16
-  const Vector3Size* = 12
-  const Vector3iSize* = 12
-  const Transform2DSize* = 24
-  const Vector4Size* = 16
-  const Vector4iSize* = 16
-  const PlaneSize* = 16
-  const QuaternionSize* = 16
-  const AABBSize* = 24
-  const BasisSize* = 36
-  const Transform3DSize* = 48
-  const ProjectionSize* = 64
-  const ColorSize* = 16
-  const StringNameSize* = 4
-  const NodePathSize* = 4
-  const RIDSize* = 8
-  const ObjectSize* = 4
-  const CallableSize* = 16
-  const SignalSize* = 16
-  const DictionarySize* = 4
-  const ArraySize* = 4
-  const PackedByteArraySize* = 8
-  const PackedInt32ArraySize* = 8
-  const PackedInt64ArraySize* = 8
-  const PackedFloat32ArraySize* = 8
-  const PackedFloat64ArraySize* = 8
-  const PackedStringArraySize* = 8
-  const PackedVector2ArraySize* = 8
-  const PackedVector3ArraySize* = 8
-  const PackedColorArraySize* = 8
-  const PackedVector4ArraySize* = 8
-  const VariantSize* = 24
+  const Size = (
+    Nil: 0,
+    bool: 1,
+    int: 8,
+    float: 8,
+    String: 4,
+    Vector2: 8,
+    Vector2i: 8,
+    Rect2: 16,
+    Rect2i: 16,
+    Vector3: 12,
+    Vector3i: 12,
+    Transform2D: 24,
+    Vector4: 16,
+    Vector4i: 16,
+    Plane: 16,
+    Quaternion: 16,
+    AABB: 24,
+    Basis: 36,
+    Transform3D: 48,
+    Projection: 64,
+    Color: 16,
+    StringName: 4,
+    NodePath: 4,
+    RID: 8,
+    Object: 4,
+    Callable: 16,
+    Signal: 16,
+    Dictionary: 4,
+    Array: 4,
+    PackedByteArray: 8,
+    PackedInt32Array: 8,
+    PackedInt64Array: 8,
+    PackedFloat32Array: 8,
+    PackedFloat64Array: 8,
+    PackedStringArray: 8,
+    PackedVector2Array: 8,
+    PackedVector3Array: 8,
+    PackedColorArray: 8,
+    PackedVector4Array: 8,
+    Variant: 24,
+  )
 
 when sizeof(real_elem) == 4 and sizeof(int) == 8:
-  const NilSize* = 0
-  const boolSize* = 1
-  const intSize* = 8
-  const floatSize* = 8
-  const StringSize* = 8
-  const Vector2Size* = 8
-  const Vector2iSize* = 8
-  const Rect2Size* = 16
-  const Rect2iSize* = 16
-  const Vector3Size* = 12
-  const Vector3iSize* = 12
-  const Transform2DSize* = 24
-  const Vector4Size* = 16
-  const Vector4iSize* = 16
-  const PlaneSize* = 16
-  const QuaternionSize* = 16
-  const AABBSize* = 24
-  const BasisSize* = 36
-  const Transform3DSize* = 48
-  const ProjectionSize* = 64
-  const ColorSize* = 16
-  const StringNameSize* = 8
-  const NodePathSize* = 8
-  const RIDSize* = 8
-  const ObjectSize* = 8
-  const CallableSize* = 16
-  const SignalSize* = 16
-  const DictionarySize* = 8
-  const ArraySize* = 8
-  const PackedByteArraySize* = 16
-  const PackedInt32ArraySize* = 16
-  const PackedInt64ArraySize* = 16
-  const PackedFloat32ArraySize* = 16
-  const PackedFloat64ArraySize* = 16
-  const PackedStringArraySize* = 16
-  const PackedVector2ArraySize* = 16
-  const PackedVector3ArraySize* = 16
-  const PackedColorArraySize* = 16
-  const PackedVector4ArraySize* = 16
-  const VariantSize* = 24
+  const Size = (
+    Nil: 0,
+    bool: 1,
+    int: 8,
+    float: 8,
+    String: 8,
+    Vector2: 8,
+    Vector2i: 8,
+    Rect2: 16,
+    Rect2i: 16,
+    Vector3: 12,
+    Vector3i: 12,
+    Transform2D: 24,
+    Vector4: 16,
+    Vector4i: 16,
+    Plane: 16,
+    Quaternion: 16,
+    AABB: 24,
+    Basis: 36,
+    Transform3D: 48,
+    Projection: 64,
+    Color: 16,
+    StringName: 8,
+    NodePath: 8,
+    RID: 8,
+    Object: 8,
+    Callable: 16,
+    Signal: 16,
+    Dictionary: 8,
+    Array: 8,
+    PackedByteArray: 16,
+    PackedInt32Array: 16,
+    PackedInt64Array: 16,
+    PackedFloat32Array: 16,
+    PackedFloat64Array: 16,
+    PackedStringArray: 16,
+    PackedVector2Array: 16,
+    PackedVector3Array: 16,
+    PackedColorArray: 16,
+    PackedVector4Array: 16,
+    Variant: 24,
+  )
 
 when sizeof(real_elem) == 8 and sizeof(int) == 4:
-  const NilSize* = 0
-  const boolSize* = 1
-  const intSize* = 8
-  const floatSize* = 8
-  const StringSize* = 4
-  const Vector2Size* = 16
-  const Vector2iSize* = 8
-  const Rect2Size* = 32
-  const Rect2iSize* = 16
-  const Vector3Size* = 24
-  const Vector3iSize* = 12
-  const Transform2DSize* = 48
-  const Vector4Size* = 32
-  const Vector4iSize* = 16
-  const PlaneSize* = 32
-  const QuaternionSize* = 32
-  const AABBSize* = 48
-  const BasisSize* = 72
-  const Transform3DSize* = 96
-  const ProjectionSize* = 128
-  const ColorSize* = 16
-  const StringNameSize* = 4
-  const NodePathSize* = 4
-  const RIDSize* = 8
-  const ObjectSize* = 4
-  const CallableSize* = 16
-  const SignalSize* = 16
-  const DictionarySize* = 4
-  const ArraySize* = 4
-  const PackedByteArraySize* = 8
-  const PackedInt32ArraySize* = 8
-  const PackedInt64ArraySize* = 8
-  const PackedFloat32ArraySize* = 8
-  const PackedFloat64ArraySize* = 8
-  const PackedStringArraySize* = 8
-  const PackedVector2ArraySize* = 8
-  const PackedVector3ArraySize* = 8
-  const PackedColorArraySize* = 8
-  const PackedVector4ArraySize* = 8
-  const VariantSize* = 40
+  const Size = (
+    Nil: 0,
+    bool: 1,
+    int: 8,
+    float: 8,
+    String: 4,
+    Vector2: 16,
+    Vector2i: 8,
+    Rect2: 32,
+    Rect2i: 16,
+    Vector3: 24,
+    Vector3i: 12,
+    Transform2D: 48,
+    Vector4: 32,
+    Vector4i: 16,
+    Plane: 32,
+    Quaternion: 32,
+    AABB: 48,
+    Basis: 72,
+    Transform3D: 96,
+    Projection: 128,
+    Color: 16,
+    StringName: 4,
+    NodePath: 4,
+    RID: 8,
+    Object: 4,
+    Callable: 16,
+    Signal: 16,
+    Dictionary: 4,
+    Array: 4,
+    PackedByteArray: 8,
+    PackedInt32Array: 8,
+    PackedInt64Array: 8,
+    PackedFloat32Array: 8,
+    PackedFloat64Array: 8,
+    PackedStringArray: 8,
+    PackedVector2Array: 8,
+    PackedVector3Array: 8,
+    PackedColorArray: 8,
+    PackedVector4Array: 8,
+    Variant: 40,
+  )
 
 when sizeof(real_elem) == 8 and sizeof(int) == 8:
-  const NilSize* = 0
-  const boolSize* = 1
-  const intSize* = 8
-  const floatSize* = 8
-  const StringSize* = 8
-  const Vector2Size* = 16
-  const Vector2iSize* = 8
-  const Rect2Size* = 32
-  const Rect2iSize* = 16
-  const Vector3Size* = 24
-  const Vector3iSize* = 12
-  const Transform2DSize* = 48
-  const Vector4Size* = 32
-  const Vector4iSize* = 16
-  const PlaneSize* = 32
-  const QuaternionSize* = 32
-  const AABBSize* = 48
-  const BasisSize* = 72
-  const Transform3DSize* = 96
-  const ProjectionSize* = 128
-  const ColorSize* = 16
-  const StringNameSize* = 8
-  const NodePathSize* = 8
-  const RIDSize* = 8
-  const ObjectSize* = 8
-  const CallableSize* = 16
-  const SignalSize* = 16
-  const DictionarySize* = 8
-  const ArraySize* = 8
-  const PackedByteArraySize* = 16
-  const PackedInt32ArraySize* = 16
-  const PackedInt64ArraySize* = 16
-  const PackedFloat32ArraySize* = 16
-  const PackedFloat64ArraySize* = 16
-  const PackedStringArraySize* = 16
-  const PackedVector2ArraySize* = 16
-  const PackedVector3ArraySize* = 16
-  const PackedColorArraySize* = 16
-  const PackedVector4ArraySize* = 16
-  const VariantSize* = 40
+  const Size = (
+    Nil: 0,
+    bool: 1,
+    int: 8,
+    float: 8,
+    String: 8,
+    Vector2: 16,
+    Vector2i: 8,
+    Rect2: 32,
+    Rect2i: 16,
+    Vector3: 24,
+    Vector3i: 12,
+    Transform2D: 48,
+    Vector4: 32,
+    Vector4i: 16,
+    Plane: 32,
+    Quaternion: 32,
+    AABB: 48,
+    Basis: 72,
+    Transform3D: 96,
+    Projection: 128,
+    Color: 16,
+    StringName: 8,
+    NodePath: 8,
+    RID: 8,
+    Object: 8,
+    Callable: 16,
+    Signal: 16,
+    Dictionary: 8,
+    Array: 8,
+    PackedByteArray: 16,
+    PackedInt32Array: 16,
+    PackedInt64Array: 16,
+    PackedFloat32Array: 16,
+    PackedFloat64Array: 16,
+    PackedStringArray: 16,
+    PackedVector2Array: 16,
+    PackedVector3Array: 16,
+    PackedColorArray: 16,
+    PackedVector4Array: 16,
+    Variant: 40,
+  )

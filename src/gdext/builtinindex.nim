@@ -14,10 +14,9 @@ type float_elem* = float32
 type char16* = char16_t
 type char32* = char32_t
 
-when real_elem is float32:
-  type VariantData = array[24 - 8, uint8]
-else:
-  type VariantData = array[40 - 8, uint8]
+include gdext/gen/variantsizes
+
+type VariantData = array[Size.Variant, uint8]
 
 type
   Vector*[N: static int; T] = array[N, T]
@@ -40,7 +39,6 @@ type
   GodotVariantTypeDefect* = object of GodotDefect
 
   Variant* {.byref.} = object
-    `type`: VariantType
     opaque: VariantData
   Float* = float64
   Vector2* = VectorR[2]

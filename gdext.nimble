@@ -6,7 +6,7 @@ author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
 srcDir        = "src"
-installExt   = @["nim"]
+installExt   = @["nim", "h"]
 namedBin      = toTable {"gdext/gdextwiz": "gdextwiz"}
 binDir        = "bin"
 

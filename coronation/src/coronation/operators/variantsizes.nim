@@ -3,7 +3,7 @@ import types/json
 import std/[strformat, strutils]
 
 proc weave*(size: JsonVariantSize): Cloth =
-  &"const {size.name}Size* = {size.size}"
+  &"{size.name}: {size.size},"
 
 proc weave*(conf: JsonVariantSizeWithConf): Cloth =
   let c = conf.build_configuration.split("_")
@@ -12,5 +12,8 @@ proc weave*(conf: JsonVariantSizeWithConf): Cloth =
   weave multiline:
     &"when sizeof(real_elem) == {floatSize} and sizeof(int) == {intSize}:"
     weave Indent.indent:
-      for size in conf.sizes:
-        weave size
+      "const Size = ("
+      weave Indent.indent:
+        for size in conf.sizes:
+          weave size
+      ")"
