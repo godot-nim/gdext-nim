@@ -57,7 +57,7 @@ proc property_get_revert_func[T](p_instance: ClassInstancePtr; p_name: ConstStri
     return propertyGetRevert(cast[T](p_instance), p_name, r_ret)
 
 proc registerRpcConfigsRecursive[T: Object](instance: T)
-proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: bool) {.gdcall.} =
+proc notification_func[T](p_instance: ClassInstancePtr; p_what: int32, p_reversed: Bool) {.gdcall.} =
   errproof:
     case p_what
     of NotificationReady:
@@ -70,7 +70,7 @@ proc to_string_func[T](p_instance: ClassInstancePtr; r_is_valid: ptr Bool; p_out
   errproof:
     toString(cast[T](p_instance), r_is_valid, p_out)
 
-proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: bool): ObjectPtr {.gdcall.} =
+proc create_instance_func[T: SomeUserClass](p_userdata: pointer; p_notify_postinitialize: Bool): ObjectPtr {.gdcall.} =
   errproof:
     let class = instantiate_internal T
     result =  class.engineInstance

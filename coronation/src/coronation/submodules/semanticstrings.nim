@@ -60,7 +60,7 @@ proc escapeVariable*(w: string): string =
   else:
     result = w
     for c in w:
-      if c notin 'a'..'z' and c notin 'A'..'Z' and c notin '0'..'9':
+      if c notin {'a'..'z', 'A'..'Z', '0'..'9', '_'}:
         result = quoted w
         break
 

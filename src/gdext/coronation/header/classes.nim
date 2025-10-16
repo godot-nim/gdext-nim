@@ -27,11 +27,11 @@ template expandMethodBind*(className; methodName; hash) =
 proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, self.engineInstance, addr args[0], result)
 proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, nil, addr args[0], result)
+  interface_Object_methodBindPtrCall(methodbind, ObjectPtr(nil), addr args[0], result)
 proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
   interface_Object_methodBindPtrCall(methodbind, self.engineInstance, nil, result)
 proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, nil, nil, result)
+  interface_Object_methodBindPtrCall(methodbind, ObjectPtr(nil), nil, result)
 
 
 proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
@@ -42,7 +42,7 @@ proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]
 proc call*(methodbind: MethodBindPtr; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =
   var error {.global.} : CallError
   for vararg in vararg: args.add addr vararg
-  interface_Object_methodBindCall(methodbind, nil,
+  interface_Object_methodBindCall(methodbind, ObjectPtr(nil),
       (if args.len == 0: nil else: addr args[0]), args.len, addr result, addr error)
 
 template expandOnClassImported*(Class, Super: typedesc) =

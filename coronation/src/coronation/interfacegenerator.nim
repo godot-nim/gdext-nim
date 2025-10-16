@@ -1,4 +1,4 @@
-import std/[strutils, os]
+import std/[sequtils, strutils, os]
 
 import shellsophia/shell
 import shellsophia/commands/c2nim
@@ -7,9 +7,17 @@ import submodules/[semanticstrings, wordropes, astutils]
 
 import "$nim"/compiler/[ast, idents, lineinfos, renderer]
 
+proc hasText(str: string): bool =
+  if str.len == 0: return false
+  for c in str:
+    if c notin {' ', '\t'}:
+      result = true
+
 proc preprocess(str: string): string =
   for line in str.splitLines:
     if line.startsWith("#"):
+      discard
+    elif line.startsWith("//"):
       discard
     elif line.startsWith("extern"):
       discard
@@ -18,7 +26,8 @@ proc preprocess(str: string): string =
     else:
       result.add line
       result.add "\n"
-  result.remove("/*".."*/\n")
+  result.remove("/*".."*/")
+  result = result.splitLines.filter(hasText).join("\n").replace("const ", "")
 
 proc format(ast: PNode): PNode =
   ast.map proc (ast: PNode): PNode =
@@ -26,49 +35,57 @@ proc format(ast: PNode): PNode =
     of nkConstSection:
       newNode(nkEmpty)
     of nkTypeDef:
+      case ast[0].kind
+      of nkPragmaExpr:
+        ast[0][1].add nkExprColonExpr.newTree(
+          ident"importc",
+          newStrNode(nkStrLit, $ast[0][0][1])
+        )
+      else:
+        ast[0] = nkPragmaExpr.newTree(
+          ast[0],
+          nkPragma.newTree(
+            nkExprColonExpr.newTree(
+              ident"importc",
+              newStrNode(nkStrLit, $ast[0][1])
+            )
+          )
+        )
+      let name = ast[0][0][1]
+      let pragma = ast[0][1]
       case ast[2].kind
       of nkEnumTy:
 
-        if ast[0][1].ident.s in ["GDExtensionClassMethodFlags"]:
+        if name.ident.s in ["GDExtensionClassMethodFlags"]:
           for field in ast[2].sons[1..^1]:
             field[1].intval = field[1].intval.toInt128.fastLog2()
-          # ast[2].add nkEnumFieldDef.newTree(
-          #   ident"`--PADDING_MAX--`", newIntNode(nkIntLit, 31)
-          # )
           ast
 
-        elif ast[0][1].ident.s in ["GDExtensionVariantType"]:
-          ast[0] = nkPragmaExpr.newTree(
-            ast[0],
-            nkPragma.newTree(
-              nkExprColonExpr.newTree(ident"size", nkDotExpr.newTree(ident"EnumSize", ident"default"))
-            )
-          )
-          ast
-
-        elif ast[0][1].ident.s in ["GDExtensionVariantOperator"]:
+        elif name.ident.s in ["GDExtensionVariantOperator"]:
           newNode(nkEmpty)
 
         else:
           ast
 
       of nkIdent:
-        if ast[0][1].ident.s == "GDExtensionObjectPtr":
-          ast[2] = nkPtrTy.newTree(ident"GodotInternalObject")
-        if ast[0][1].ident.s == "GDExtensionBool":
+        if name.ident.s in ["GDExtensionObjectPtr"]:
+          ast[2] = nkDistinctTy.newTree(ident"pointer")
+        if name.ident.s in ["GDExtensionConstObjectPtr"]:
+          ast[2] = ident"GDExtensionObjectPtr"
+        if name.ident.s == "GDExtensionBool":
           ast[2] = ident"bool"
         ast
 
       of nkProcTy:
-        if (not ast[0][1].ident.s.startsWith"GDExtensionInterface" and
-            not ast[0][1].ident.s.startsWith"GDExtensionPtr"):
+        if (not name.ident.s.startsWith"GDExtensionInterface" and
+            not name.ident.s.startsWith"GDExtensionPtr"):
           for arg in ast[2][0].sons[1..^1]:
             if arg[0].kind == nkIdent and arg[0].ident.s in ["p_args", "p_list"]:
               arg[1][0] = nkBracketExpr.newTree(ident"UncheckedArray", arg[1][0])
         ast
 
       of nkObjectTy:
-        ast[0][1][0] = ident"byref"
+        pragma[0] = ident"byref"
         ast
 
       else:
@@ -91,7 +108,7 @@ proc format(ast: PNode): PNode =
       if $ast in ["*"]:
         ast
       else:
-        let s = ($ast)
+        ident ($ast)
           .multiReplace(
             ("GDEXTENSION_", ""),
             ("GDExtensions", ""),
@@ -99,11 +116,7 @@ proc format(ast: PNode): PNode =
             ("gdextension_", ""),
             ("`", ""),
           )
-        if ($ast).replace("`", "")[0].isUpperAscii:
-          ident $s.scan.convert(TypeSym)
-        else:
-          ident $s.scan.convert(VariableSym)
-
+          .escapeVariable
     else:
       ast
 
@@ -125,10 +138,6 @@ proc makeApiVariables(ast: PNode): PNode =
     if (typedef[2].kind == nkProcTy and name.ident.s.startsWith"Interface" and
         name.ident.s notin ["InterfaceFunctionPtr", "InterfaceGetProcAddress"]):
       result.add makeApiVariable(name)
-
-proc addApiVariables(ast: PNode): PNode =
-  ast.add makeApiVariables(ast)
-  ast
 
 proc toKeyName(typename: string): string =
   result = $typeName
@@ -184,31 +193,31 @@ proc makeApiLoader(ast: PNode): PNode =
         name.ident.s notin ["InterfaceFunctionPtr", "InterfaceGetProcAddress"]):
       body.add asignApiVariable(name)
 
-proc addApiLoader(ast: PNode): PNode =
-  ast.add makeApiLoader(ast)
-  ast
-
+var ifce: PNode
 proc postprocess(ast: PNode): PNode =
   result = ast
     .margeSection(nkTypeSection)
     .format()
-    .addApiVariables()
-    .addApiLoader()
+  ifce = result
 
 
-proc generateInterface*(header: string; outpath: string) =
-  let path = "gdextension_interface_tmp.h"
-  defer: removeFile path
-
+proc generateInterface*(header: string; outdir: string) =
+  createDir outdir
+  let path = outdir/"gdextension_interface.h"
   path.writeFile header.preprocess
 
   discard cd"."
     .c2nim(C2NimArgs(
       `in`: @[path],
-      `out`: outpath,
+      `out`: outdir/"gdextensioninterface.nim",
       postprocess: postprocess,
       skipcomments: true,
     ))
+
+  (outdir/"gdextensioninterfaceapi.nim").writeFile $nkStmtList.newTree(
+    ifce.makeApiVariables(),
+    ifce.makeApiLoader(),
+  )
 
 when isMainModule:
   generateInterface(readFile("gdextension_interface.h"), "gdextensioninterface.nim")
