@@ -68,7 +68,7 @@
 ## Quick start
 
 ```shell
-nimble install gdext@0.15.0
+nimble install gdext
 mkdir testproject && cd $_
 touch project.godot
 gdextwiz new-extension MyExtension
@@ -175,7 +175,7 @@ https://github.com/guntur-ctech/simulation-performance-comparison
 Installs the `gdext` library and its CLI tool `gdextwiz`.
 
 ```
-nimble install gdext@0.15.0
+nimble install gdext
 ```
 
 The gdextwiz tool will be installed to ~/.nimble/bin, which is automatically added to your PATH if you've installed Nim via the official method.
