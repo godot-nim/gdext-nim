@@ -104,84 +104,84 @@ runtime: suite "to string":
 
 runtime: suite "size":
   test "bool":
-    check sizeof(bool) == boolSize
-    check sizeof(Bool) == boolSize
+    check sizeof(bool) == Size.bool
+    check sizeof(Bool) == Size.bool
   test "int":
-    check sizeof(Int) == intSize
+    check sizeof(Int) == Size.int
   test "float":
-    check sizeof(Float) == floatSize
+    check sizeof(Float) == Size.float
   test "String":
-    check sizeof(String) == StringSize
+    check sizeof(String) == Size.String
   test "Vector2":
-    check sizeof(Vector2) == Vector2Size
+    check sizeof(Vector2) == Size.Vector2
   test "Vector2i":
-    check sizeof(Vector2i) == Vector2iSize
+    check sizeof(Vector2i) == Size.Vector2i
   test "Rect2":
-    check sizeof(Rect2) == Rect2Size
+    check sizeof(Rect2) == Size.Rect2
   test "Rect2i":
-    check sizeof(Rect2i) == Rect2iSize
+    check sizeof(Rect2i) == Size.Rect2i
   test "Vector3":
-    check sizeof(Vector3) == Vector3Size
+    check sizeof(Vector3) == Size.Vector3
   test "Vector3i":
-    check sizeof(Vector3i) == Vector3iSize
+    check sizeof(Vector3i) == Size.Vector3i
   test "Transform2D":
-    check sizeof(Transform2D) == Transform2DSize
+    check sizeof(Transform2D) == Size.Transform2D
   test "Vector4":
-    check sizeof(Vector4) == Vector4Size
+    check sizeof(Vector4) == Size.Vector4
   test "Vector4i":
-    check sizeof(Vector4i) == Vector4iSize
+    check sizeof(Vector4i) == Size.Vector4i
   test "Plane":
-    check sizeof(Plane) == PlaneSize
+    check sizeof(Plane) == Size.Plane
   test "Quaternion":
-    check sizeof(Quaternion) == QuaternionSize
+    check sizeof(Quaternion) == Size.Quaternion
   test "AABB":
-    check sizeof(AABB) == AABBSize
+    check sizeof(AABB) == Size.AABB
   test "Basis":
-    check sizeof(Basis) == BasisSize
+    check sizeof(Basis) == Size.Basis
   test "Transform3D":
-    check sizeof(Transform3D) == Transform3DSize
+    check sizeof(Transform3D) == Size.Transform3D
   test "Projection":
-    check sizeof(Projection) == ProjectionSize
+    check sizeof(Projection) == Size.Projection
   test "Color":
-    check sizeof(Color) == ColorSize
+    check sizeof(Color) == Size.Color
   test "StringName":
-    check sizeof(StringName) == StringNameSize
+    check sizeof(StringName) == Size.StringName
   test "NodePath":
-    check sizeof(NodePath) == NodePathSize
+    check sizeof(NodePath) == Size.NodePath
   test "RID":
-    check sizeof(RID) == RIDSize
+    check sizeof(RID) == Size.RID
   test "Object":
-    check sizeof(Object) == ObjectSize
+    check sizeof(Object) == Size.Object
   test "Callable":
-    check sizeof(Callable) == CallableSize
+    check sizeof(Callable) == Size.Callable
   test "Signal":
-    check sizeof(Signal) == SignalSize
+    check sizeof(Signal) == Size.Signal
   test "Dictionary":
-    check sizeof(Dictionary) == DictionarySize
+    check sizeof(Dictionary) == Size.Dictionary
   test "Array":
-    check sizeof(Array) == ArraySize
+    check sizeof(Array) == Size.Array
   test "PackedByteArray":
-    check sizeof(PackedByteArray) == PackedByteArraySize
+    check sizeof(PackedByteArray) == Size.PackedByteArray
   test "PackedInt32Array":
-    check sizeof(PackedInt32Array) == PackedInt32ArraySize
+    check sizeof(PackedInt32Array) == Size.PackedInt32Array
   test "PackedInt64Array":
-    check sizeof(PackedInt64Array) == PackedInt64ArraySize
+    check sizeof(PackedInt64Array) == Size.PackedInt64Array
   test "PackedFloat32Array":
-    check sizeof(PackedFloat32Array) == PackedFloat32ArraySize
+    check sizeof(PackedFloat32Array) == Size.PackedFloat32Array
   test "PackedFloat64Array":
-    check sizeof(PackedFloat64Array) == PackedFloat64ArraySize
+    check sizeof(PackedFloat64Array) == Size.PackedFloat64Array
   test "PackedStringArray":
-    check sizeof(PackedStringArray) == PackedStringArraySize
+    check sizeof(PackedStringArray) == Size.PackedStringArray
   test "PackedVector2Array":
-    check sizeof(PackedVector2Array) == PackedVector2ArraySize
+    check sizeof(PackedVector2Array) == Size.PackedVector2Array
   test "PackedVector3Array":
-    check sizeof(PackedVector3Array) == PackedVector3ArraySize
+    check sizeof(PackedVector3Array) == Size.PackedVector3Array
   test "PackedColorArray":
-    check sizeof(PackedColorArray) == PackedColorArraySize
+    check sizeof(PackedColorArray) == Size.PackedColorArray
   test "PackedVector4Array":
-    check sizeof(PackedVector4Array) == PackedVector4ArraySize
+    check sizeof(PackedVector4Array) == Size.PackedVector4Array
   test "Variant":
-    check sizeof(Variant) == VariantSize
+    check sizeof(Variant) == Size.Variant
 
 runtime: suite "Array":
   test "nil access":

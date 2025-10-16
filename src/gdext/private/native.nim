@@ -1,5 +1,6 @@
 {.warning[Deprecated]:off.}
 import std/macros
+import std/os
 
 import gdext/enums
 
@@ -17,9 +18,15 @@ type
   int64_t* = int64
   int32_t* = int32
   wchar_t* = Utf16Char
-  GodotInternalObject* = object
 
+{.passC: ("-I" & currentSourcePath().parentDir().parentDir()/"gen").}
+{.push, header: "gdextension_interface.h".}
 include gdext/gen/gdextensioninterface
+{.pop.}
+proc isNil*(x: ObjectPtr): bool {.borrow.}
+proc `==`*(x: ObjectPtr; y: pointer): bool {.borrow.}
+include gdext/gen/gdextensioninterfaceapi
+
 
 type
   ExtentEnvironment* = ref object

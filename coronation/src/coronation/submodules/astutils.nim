@@ -101,7 +101,7 @@ proc margeSection*(ast: PNode; sectionKind: TNodeKind): PNode {.discardable.} =
 proc findName*(ast: PNode): PNode =
   case ast.kind
   of nkPragmaExpr:
-    ast[0]
+    findName ast[0]
   of nkPostfix:
     ast[1]
   of nkIdent, nkAccQuoted:
