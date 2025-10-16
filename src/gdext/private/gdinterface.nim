@@ -22,7 +22,7 @@ var getParentClass*: proc(class: StringName): StringName
 
 proc engineInstance*(obj: Object): ObjectPtr =
   privateAccess Object
-  if unlikely(obj.isNil): nil
+  if unlikely(obj.isNil): ObjectPtr(nil)
   else: obj.unsafeEngineInstance
 
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =

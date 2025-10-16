@@ -37,7 +37,7 @@ proc coronation*(apisource: string; ifcesource: string; outdir= "out"; package= 
   let api = client.getContent(apisource.parseuri).parsejson.to(JsonAPI)
   let ifce = client.getContent(ifcesource.parseuri)
 
-  generateInterface(ifce, outdir/"gdext/gen/gdextensioninterface.nim")
+  generateInterface(ifce, outdir/"gdext/gen")
   build.run api= api, BuildConfig(
     apisource: apisource,
     outdir: outdir,

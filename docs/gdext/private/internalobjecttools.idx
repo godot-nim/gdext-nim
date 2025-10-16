@@ -6,7 +6,7 @@ nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Obj
 nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[,Variant]	proc callScriptMethod(obj: Object; p_method: StringName; args: array[0, Variant]): Variant		21
 nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[I,Variant]	proc callScriptMethod[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant		25
 nim	hasScriptMethod	gdext/private/internalobjecttools.html#hasScriptMethod,Object,StringName	proc hasScriptMethod(obj: Object; p_method: StringName): bool		31
-nim	getInstanceID	gdext/private/internalobjecttools.html#getInstanceID,Object	proc getInstanceID(self: Object): GdObjectInstanceId		34
+nim	getInstanceID	gdext/private/internalobjecttools.html#getInstanceID,Object	proc getInstanceID(self: Object): GDObjectInstanceID		34
 nim	getClassName	gdext/private/internalobjecttools.html#getClassName,Object	proc getClassName(self: Object): StringName		40
 nim	constructObject	gdext/private/internalobjecttools.html#constructObject,typedesc[ClassDB],StringName	proc constructObject(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr		43
 nim	getMethodBind	gdext/private/internalobjecttools.html#getMethodBind,typedesc[ClassDB],StringName,StringName,Int	proc getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;\n              p_methodname: StringName; p_hash: Int): MethodBindPtr		46
