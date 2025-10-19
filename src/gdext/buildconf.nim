@@ -56,26 +56,6 @@ proc defineHint(value: string) =
   echo "--define:", value
   switch("define", value)
 
-proc removeInvalidChars(str: string): string =
-  var i = 0
-  var hasInvalid = false
-  while str[i] in '0'..'9':
-    inc i
-    hasInvalid = true
-  for i in i..str.high:
-    if str[i].isAlphaNumeric:
-      result.add str[i]
-    else:
-      hasInvalid = true
-  if hasInvalid:
-    echo "Warning: The string \"", str, "\" contains invalid characters; it was replaced with \"", result, "\""
-proc capitalizeWithWarning(str: string): string =
-  if str[0].isUpperAscii:
-    result = str
-  else:
-    result = str.capitalizeAscii
-    echo "Warning: The string \"", str, "\" should be capitalized; it was replaced with \"", result, "\""
-
 type Platform* = enum
   ## **Godot Docs**: `Running System <https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_file.html#running-system>`_
   windows ## Windows operating system
@@ -314,8 +294,6 @@ proc outpathFromRes(setting: BuildSettings; key = platformkey(setting)): string 
   setting.extconfig["libraries"].getOrDefault(key, outdir(setting).resourcePath)
 
 proc validate(setting: BuildSettings) =
-  setting.name = setting.name.removeInvalidChars.capitalizeWithWarning
-
   if setting.extpath.len == 0:
     setting.extpath = defaultExtensionPath(setting.name)
   if setting.extconfig.isNil:
