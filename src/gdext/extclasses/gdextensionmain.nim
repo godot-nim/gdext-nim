@@ -1,19 +1,12 @@
 import gdext/private/buildsettings
 import gdext/private/propertyinfo
+import gdext/private/internalbridge
+import gdext/bridge
 import gdext/builtinindex
 import gdext/classes/[gdengine]
 import gdext/objecttools
 
-import std/macros
-
-macro defExtensionMain: untyped =
-  let typ = ident Extension.name
-  quote do:
-    type `typ`* = ptr object of Object
-
-defExtensionMain
-
-macro ExtensionMain*: untyped = bindSym Extension.name
+type ExtensionMain* {.name: Extension.name.} = ptr object of Object
 
 var extmain*: ExtensionMain
 
@@ -27,7 +20,3 @@ template initializeExtensionMain* =
 template eliminateExtensionMain* =
   Engine.singleton.unregisterSingleton(className ExtensionMain)
   destroy extmain
-
-when isMainModule:
-  import gdext/private/native
-  initializeExtensionMain()
