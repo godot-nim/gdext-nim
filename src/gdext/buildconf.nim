@@ -111,6 +111,7 @@ type UpdateMethod* = enum
   create ## Discard the original file and create a new one
   overwrite ## Retain the original changes and overwrites the updated ones
   inject ## Retain the original changes and inject the missing ones
+  disable ## Retain the original changes and write nothing
 
 const availableArch = {
   macos: @[Architecture.default],
@@ -321,7 +322,7 @@ proc validate(setting: BuildSettings) =
   if setting.extconfig.isNil:
     setting.extconfig = case setting.updateMethod
     of create: newConfig()
-    of overwrite, inject: loadConfig(setting.extpath)
+    of overwrite, inject, disable: loadConfig(setting.extpath)
   if setting.arch == default:
     setting.arch = fallbackArch.getOrDefault(setting.platform)
 
@@ -460,7 +461,7 @@ Alternatively, set ANDROID_HOME or ANDROID_SDK_ROOT to the root of your Android 
 proc update(section: Section; updateMethod: UpdateMethod; key, value: string) =
   case updateMethod
   of create, overwrite: `[]=`(section, key, value)
-  of inject: discard hasKeyOrPut(section, key, value)
+  of inject, disable: discard hasKeyOrPut(section, key, value)
 
 proc fillupMissingRequirements(setting: BuildSettings) =
   let configuration = setting.extconfig.mgetOrPut("configuration", newSection())
@@ -479,11 +480,19 @@ template configure*(setting: BuildSettings; body) =
   validate(setting)
   fillupMissingRequirements(setting)
   setting.extconfig.eval(body)
-  writeConfig(setting.extconfig, setting.extpath)
+  case setting.updateMethod
+  of create, overwrite, inject:
+    writeConfig(setting.extconfig, setting.extpath)
+  of disable:
+    discard
   switch(setting)
 
 proc configure*(setting: BuildSettings) =
   validate(setting)
   fillupMissingRequirements(setting)
-  writeConfig(setting.extconfig, setting.extpath)
+  case setting.updateMethod
+  of create, overwrite, inject:
+    writeConfig(setting.extconfig, setting.extpath)
+  of disable:
+    discard
   switch(setting)
