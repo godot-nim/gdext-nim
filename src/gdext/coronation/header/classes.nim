@@ -2,7 +2,7 @@ import gdext/private/gdinterface; export gdinterface
 import gdext/private/typeshift; export typeshift
 import gdext/private/staticevents; export staticevents
 import gdext/private/propertyinfo; export propertyinfo
-import gdext/private/internalobjecttools
+import gdext/private/internalobjecttools; export internalobjecttools
 import gdext/private/classindex; export classindex
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
@@ -24,14 +24,50 @@ template expandMethodBind*(className; methodName; hash) =
   if unlikely(methodbind.isNil):
     methodbind = ClassDB.getMethodBind(className, methodName, hash)
 
-proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, self.engineInstance, addr args[0], result)
-proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, ObjectPtr(nil), addr args[0], result)
-proc ptrcall*(methodbind: MethodBindPtr; self: SomeClass; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, self.engineInstance, nil, result)
-proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; result: TypePtr = nil) =
-  interface_Object_methodBindPtrCall(methodbind, ObjectPtr(nil), nil, result)
+proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; self = ObjectPtr(nil); result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, self, addr args[0], result)
+proc ptrcall*(methodbind: MethodBindPtr; self = ObjectPtr(nil); result: TypePtr = nil) =
+  interface_Object_methodBindPtrCall(methodbind, self, nil, result)
+
+# non-static, 1+ args, result,
+proc ptrcall*(methodbind: MethodBindPtr; self: Object; args: openArray[ConstTypePtr]; Result: typedesc): Result =
+  var ret: encoded Result
+  methodbind.ptrcall(args, self = self.engineInstance, result = addr ret)
+  (addr ret).decode_result(Result)
+
+# non-static, 1+ args, no result,
+proc ptrcall*(methodbind: MethodBindPtr; self: Object; args: openArray[ConstTypePtr]; Result: typedesc[void]): void =
+  methodbind.ptrcall(args, self = self.engineInstance)
+
+# static, 1+ args, result,
+proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; Result: typedesc): Result =
+  var ret: encoded Result
+  methodbind.ptrcall(args, result = addr ret)
+  (addr ret).decode_result(Result)
+
+# static, 1+ args, no result,
+proc ptrcall*(methodbind: MethodBindPtr; args: openArray[ConstTypePtr]; Result: typedesc[void]): void =
+  methodbind.ptrcall(args)
+
+# non-static, no args, result,
+proc ptrcall*(methodbind: MethodBindPtr; self: Object; args: array[0, ConstTypePtr]; Result: typedesc): Result =
+  var ret: encoded Result
+  methodbind.ptrcall(self = self.engineInstance, result = addr ret)
+  (addr ret).decode_result(Result)
+
+# non-static, no args, no result,
+proc ptrcall*(methodbind: MethodBindPtr; self: Object; args: array[0, ConstTypePtr]; Result: typedesc[void]): void =
+  methodbind.ptrcall(self = self.engineInstance)
+
+# static, no args, result,
+proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; Result: typedesc): Result =
+  var ret: encoded Result
+  methodbind.ptrcall(result = addr ret)
+  (addr ret).decode_result(Result)
+
+# static, no args, no result,
+proc ptrcall*(methodbind: MethodBindPtr; args: array[0, ConstTypePtr]; Result: typedesc[void]): void =
+  methodbind.ptrcall()
 
 
 proc call*(methodbind: MethodBindPtr; self: SomeClass; args: var seq[VariantPtr]; vararg: varargs[Variant]): Variant =

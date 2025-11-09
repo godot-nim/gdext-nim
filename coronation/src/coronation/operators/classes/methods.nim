@@ -106,24 +106,21 @@ proc classMethodVirtualEntry*(json: JsonClassMethod; self_type: RenderableSelfAr
 
 
 proc methodbind(gdproc: GodotProc): Cloth = weave multiline:
-  &"expandMethodBind(className {gdproc.self.typesym}, \"{gdproc.native_name}\", {get gdproc.hash})"
+  &"var methodbind {{.global.}}: MethodBindPtr"
+  &"if unlikely(methodbind.isNil):"
+  &"  methodbind = ClassDB.getMethodBind(className {gdproc.self.typesym}, \"{gdproc.native_name}\", {get gdproc.hash})"
 
 proc weave(entry: ClassMethodPtrCallEntry): Cloth =
   var args: seq[string]
   if not entry.self.isStatic: args.add $entry.self.name
   args.add "[" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
-  if entry.result.typesym != TypeSym.Void: args.add "addr ret"
+  args.add $weave entry.result
 
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
       entry.methodbind
-      if entry.result.typesym != TypeSym.Void:
-        &"var ret: encoded {weave entry.result}"
       &"methodbind.ptrcall({args.joinArg})"
-
-      if entry.result.typesym != TypeSym.Void:
-        &"(addr ret).decode_result({weave entry.result})"
 
 proc weave(entry: ClassMethodVarargsVariantEntry): Cloth =
   let
