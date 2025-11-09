@@ -12,17 +12,19 @@ proc registerVirtual_run*[T: EditorScript](Self: typedesc[T]) =
     errproof: cast[EditorScript](p_instance).run()
 
 proc addRootNode*(self: EditorScript; node: Node): void =
-  expandMethodBind(className EditorScript, "add_root_node", 1078189570)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScript, "add_root_node", 1078189570)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc getScene*(self: EditorScript): Node =
-  expandMethodBind(className EditorScript, "get_scene", 3160264692)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScript, "get_scene", 3160264692)
+  methodbind.ptrcall(self, [], Node)
 
 proc getEditorInterface*(self: EditorScript): EditorInterface =
-  expandMethodBind(className EditorScript, "get_editor_interface", 1976662476)
-  var ret: encoded EditorInterface
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorInterface)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScript, "get_editor_interface", 1976662476)
+  methodbind.ptrcall(self, [], EditorInterface)

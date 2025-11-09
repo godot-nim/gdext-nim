@@ -7,28 +7,34 @@ import gdinputevent; export gdinputevent
 expandOnClassImported(InputEventJoypadButton, InputEvent)
 
 proc setButtonIndex*(self: InputEventJoypadButton; buttonIndex: JoyButton): void =
-  expandMethodBind(className InputEventJoypadButton, "set_button_index", 1466368136)
-  methodbind.ptrcall(self, [getPtr buttonIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadButton, "set_button_index", 1466368136)
+  methodbind.ptrcall(self, [getPtr buttonIndex], void)
 
 proc getButtonIndex*(self: InputEventJoypadButton): JoyButton =
-  expandMethodBind(className InputEventJoypadButton, "get_button_index", 595588182)
-  var ret: encoded JoyButton
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(JoyButton)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadButton, "get_button_index", 595588182)
+  methodbind.ptrcall(self, [], JoyButton)
 
 proc setPressure*(self: InputEventJoypadButton; pressure: Float): void =
-  expandMethodBind(className InputEventJoypadButton, "set_pressure", 373806689)
-  methodbind.ptrcall(self, [getPtr pressure])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadButton, "set_pressure", 373806689)
+  methodbind.ptrcall(self, [getPtr pressure], void)
 
 proc getPressure*(self: InputEventJoypadButton): Float =
-  expandMethodBind(className InputEventJoypadButton, "get_pressure", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadButton, "get_pressure", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPressed*(self: InputEventJoypadButton; pressed: bool): void =
-  expandMethodBind(className InputEventJoypadButton, "set_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadButton, "set_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 template buttonIndex*(self: InputEventJoypadButton): untyped = self.getButtonIndex()
 template `buttonIndex=`*(self: InputEventJoypadButton; value) = self.setButtonIndex(value)

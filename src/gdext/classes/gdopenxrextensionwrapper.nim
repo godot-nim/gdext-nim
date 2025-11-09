@@ -212,11 +212,13 @@ proc registerVirtual_setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer*[T: O
     errproof: cast[OpenXRExtensionWrapper](p_instance).setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(Dictionary), p_args[1].decode(pointer)).encode(r_ret)
 
 proc getOpenxrApi*(self: OpenXRExtensionWrapper): gdref OpenXRAPIExtension =
-  expandMethodBind(className OpenXRExtensionWrapper, "get_openxr_api", 1637791613)
-  var ret: encoded gdref OpenXRAPIExtension
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRAPIExtension)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRExtensionWrapper, "get_openxr_api", 1637791613)
+  methodbind.ptrcall(self, [], gdref OpenXRAPIExtension)
 
 proc registerExtensionWrapper*(self: OpenXRExtensionWrapper): void =
-  expandMethodBind(className OpenXRExtensionWrapper, "register_extension_wrapper", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRExtensionWrapper, "register_extension_wrapper", 3218959716)
+  methodbind.ptrcall(self, [], void)

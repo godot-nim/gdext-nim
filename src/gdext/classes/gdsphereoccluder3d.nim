@@ -7,14 +7,16 @@ import gdoccluder3d; export gdoccluder3d
 expandOnClassImported(SphereOccluder3D, Occluder3D)
 
 proc setRadius*(self: SphereOccluder3D; radius: Float): void =
-  expandMethodBind(className SphereOccluder3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SphereOccluder3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: SphereOccluder3D): Float =
-  expandMethodBind(className SphereOccluder3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SphereOccluder3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template radius*(self: SphereOccluder3D): untyped = self.getRadius()
 template `radius=`*(self: SphereOccluder3D; value) = self.setRadius(value)

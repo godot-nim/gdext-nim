@@ -7,13 +7,13 @@ import gdresource; export gdresource
 expandOnClassImported(GDExtension, Resource)
 
 proc isLibraryOpen*(self: GDExtension): bool =
-  expandMethodBind(className GDExtension, "is_library_open", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GDExtension, "is_library_open", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getMinimumLibraryInitializationLevel*(self: GDExtension): GDExtension_InitializationLevel =
-  expandMethodBind(className GDExtension, "get_minimum_library_initialization_level", 964858755)
-  var ret: encoded GDExtension_InitializationLevel
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(GDExtension_InitializationLevel)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GDExtension, "get_minimum_library_initialization_level", 964858755)
+  methodbind.ptrcall(self, [], GDExtension_InitializationLevel)

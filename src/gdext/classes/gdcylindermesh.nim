@@ -7,74 +7,88 @@ import gdprimitivemesh; export gdprimitivemesh
 expandOnClassImported(CylinderMesh, PrimitiveMesh)
 
 proc setTopRadius*(self: CylinderMesh; radius: Float): void =
-  expandMethodBind(className CylinderMesh, "set_top_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_top_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getTopRadius*(self: CylinderMesh): Float =
-  expandMethodBind(className CylinderMesh, "get_top_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "get_top_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setBottomRadius*(self: CylinderMesh; radius: Float): void =
-  expandMethodBind(className CylinderMesh, "set_bottom_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_bottom_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getBottomRadius*(self: CylinderMesh): Float =
-  expandMethodBind(className CylinderMesh, "get_bottom_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "get_bottom_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: CylinderMesh; height: Float): void =
-  expandMethodBind(className CylinderMesh, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getHeight*(self: CylinderMesh): Float =
-  expandMethodBind(className CylinderMesh, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRadialSegments*(self: CylinderMesh; segments: int32): void =
-  expandMethodBind(className CylinderMesh, "set_radial_segments", 1286410249)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_radial_segments", 1286410249)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc getRadialSegments*(self: CylinderMesh): int32 =
-  expandMethodBind(className CylinderMesh, "get_radial_segments", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "get_radial_segments", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setRings*(self: CylinderMesh; rings: int32): void =
-  expandMethodBind(className CylinderMesh, "set_rings", 1286410249)
-  methodbind.ptrcall(self, [getPtr rings])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_rings", 1286410249)
+  methodbind.ptrcall(self, [getPtr rings], void)
 
 proc getRings*(self: CylinderMesh): int32 =
-  expandMethodBind(className CylinderMesh, "get_rings", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "get_rings", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setCapTop*(self: CylinderMesh; capTop: bool): void =
-  expandMethodBind(className CylinderMesh, "set_cap_top", 2586408642)
-  methodbind.ptrcall(self, [getPtr capTop])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_cap_top", 2586408642)
+  methodbind.ptrcall(self, [getPtr capTop], void)
 
 proc isCapTop*(self: CylinderMesh): bool =
-  expandMethodBind(className CylinderMesh, "is_cap_top", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "is_cap_top", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCapBottom*(self: CylinderMesh; capBottom: bool): void =
-  expandMethodBind(className CylinderMesh, "set_cap_bottom", 2586408642)
-  methodbind.ptrcall(self, [getPtr capBottom])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "set_cap_bottom", 2586408642)
+  methodbind.ptrcall(self, [getPtr capBottom], void)
 
 proc isCapBottom*(self: CylinderMesh): bool =
-  expandMethodBind(className CylinderMesh, "is_cap_bottom", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderMesh, "is_cap_bottom", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template topRadius*(self: CylinderMesh): untyped = self.getTopRadius()
 template `topRadius=`*(self: CylinderMesh; value) = self.setTopRadius(value)

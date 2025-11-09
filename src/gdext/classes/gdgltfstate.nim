@@ -12,354 +12,418 @@ const HandleBinaryEmbedAsBasisu* = 2
 const HandleBinaryEmbedAsUncompressed* = 3
 
 proc addUsedExtension*(self: GLTFState; extensionName: String; required: bool): void =
-  expandMethodBind(className GLTFState, "add_used_extension", 2678287736)
-  methodbind.ptrcall(self, [getPtr extensionName, getPtr required])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "add_used_extension", 2678287736)
+  methodbind.ptrcall(self, [getPtr extensionName, getPtr required], void)
 
 proc appendDataToBuffers*(self: GLTFState; data: PackedByteArray; deduplication: bool): int32 =
-  expandMethodBind(className GLTFState, "append_data_to_buffers", 1460416665)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr data, getPtr deduplication], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "append_data_to_buffers", 1460416665)
+  methodbind.ptrcall(self, [getPtr data, getPtr deduplication], int32)
 
 proc appendGltfNode*(self: GLTFState; gltfNode: gdref GLTFNode; godotSceneNode: Node; parentNodeIndex: int32): int32 =
-  expandMethodBind(className GLTFState, "append_gltf_node", 3562288551)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr gltfNode, getPtr godotSceneNode, getPtr parentNodeIndex], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "append_gltf_node", 3562288551)
+  methodbind.ptrcall(self, [getPtr gltfNode, getPtr godotSceneNode, getPtr parentNodeIndex], int32)
 
 proc getJson*(self: GLTFState): Dictionary =
-  expandMethodBind(className GLTFState, "get_json", 2382534195)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_json", 2382534195)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc setJson*(self: GLTFState; json: Dictionary): void =
-  expandMethodBind(className GLTFState, "set_json", 4155329257)
-  methodbind.ptrcall(self, [getPtr json])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_json", 4155329257)
+  methodbind.ptrcall(self, [getPtr json], void)
 
 proc getMajorVersion*(self: GLTFState): int32 =
-  expandMethodBind(className GLTFState, "get_major_version", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_major_version", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMajorVersion*(self: GLTFState; majorVersion: int32): void =
-  expandMethodBind(className GLTFState, "set_major_version", 1286410249)
-  methodbind.ptrcall(self, [getPtr majorVersion])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_major_version", 1286410249)
+  methodbind.ptrcall(self, [getPtr majorVersion], void)
 
 proc getMinorVersion*(self: GLTFState): int32 =
-  expandMethodBind(className GLTFState, "get_minor_version", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_minor_version", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMinorVersion*(self: GLTFState; minorVersion: int32): void =
-  expandMethodBind(className GLTFState, "set_minor_version", 1286410249)
-  methodbind.ptrcall(self, [getPtr minorVersion])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_minor_version", 1286410249)
+  methodbind.ptrcall(self, [getPtr minorVersion], void)
 
 proc getCopyright*(self: GLTFState): String =
-  expandMethodBind(className GLTFState, "get_copyright", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_copyright", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setCopyright*(self: GLTFState; copyright: String): void =
-  expandMethodBind(className GLTFState, "set_copyright", 83702148)
-  methodbind.ptrcall(self, [getPtr copyright])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_copyright", 83702148)
+  methodbind.ptrcall(self, [getPtr copyright], void)
 
 proc getGlbData*(self: GLTFState): PackedByteArray =
-  expandMethodBind(className GLTFState, "get_glb_data", 2115431945)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_glb_data", 2115431945)
+  methodbind.ptrcall(self, [], PackedByteArray)
 
 proc setGlbData*(self: GLTFState; glbData: PackedByteArray): void =
-  expandMethodBind(className GLTFState, "set_glb_data", 2971499966)
-  methodbind.ptrcall(self, [getPtr glbData])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_glb_data", 2971499966)
+  methodbind.ptrcall(self, [getPtr glbData], void)
 
 proc getUseNamedSkinBinds*(self: GLTFState): bool =
-  expandMethodBind(className GLTFState, "get_use_named_skin_binds", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_use_named_skin_binds", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUseNamedSkinBinds*(self: GLTFState; useNamedSkinBinds: bool): void =
-  expandMethodBind(className GLTFState, "set_use_named_skin_binds", 2586408642)
-  methodbind.ptrcall(self, [getPtr useNamedSkinBinds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_use_named_skin_binds", 2586408642)
+  methodbind.ptrcall(self, [getPtr useNamedSkinBinds], void)
 
 proc getNodes*(self: GLTFState): TypedArray[gdref GLTFNode] =
-  expandMethodBind(className GLTFState, "get_nodes", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFNode]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFNode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_nodes", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFNode])
 
 proc setNodes*(self: GLTFState; nodes: TypedArray[gdref GLTFNode]): void =
-  expandMethodBind(className GLTFState, "set_nodes", 381264803)
-  methodbind.ptrcall(self, [getPtr nodes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_nodes", 381264803)
+  methodbind.ptrcall(self, [getPtr nodes], void)
 
 proc getBuffers*(self: GLTFState): TypedArray[PackedByteArray] =
-  expandMethodBind(className GLTFState, "get_buffers", 2915620761)
-  var ret: encoded TypedArray[PackedByteArray]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PackedByteArray])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_buffers", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[PackedByteArray])
 
 proc setBuffers*(self: GLTFState; buffers: TypedArray[PackedByteArray]): void =
-  expandMethodBind(className GLTFState, "set_buffers", 381264803)
-  methodbind.ptrcall(self, [getPtr buffers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_buffers", 381264803)
+  methodbind.ptrcall(self, [getPtr buffers], void)
 
 proc getBufferViews*(self: GLTFState): TypedArray[gdref GLTFBufferView] =
-  expandMethodBind(className GLTFState, "get_buffer_views", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFBufferView]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFBufferView])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_buffer_views", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFBufferView])
 
 proc setBufferViews*(self: GLTFState; bufferViews: TypedArray[gdref GLTFBufferView]): void =
-  expandMethodBind(className GLTFState, "set_buffer_views", 381264803)
-  methodbind.ptrcall(self, [getPtr bufferViews])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_buffer_views", 381264803)
+  methodbind.ptrcall(self, [getPtr bufferViews], void)
 
 proc getAccessors*(self: GLTFState): TypedArray[gdref GLTFAccessor] =
-  expandMethodBind(className GLTFState, "get_accessors", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFAccessor]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFAccessor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_accessors", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFAccessor])
 
 proc setAccessors*(self: GLTFState; accessors: TypedArray[gdref GLTFAccessor]): void =
-  expandMethodBind(className GLTFState, "set_accessors", 381264803)
-  methodbind.ptrcall(self, [getPtr accessors])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_accessors", 381264803)
+  methodbind.ptrcall(self, [getPtr accessors], void)
 
 proc getMeshes*(self: GLTFState): TypedArray[gdref GLTFMesh] =
-  expandMethodBind(className GLTFState, "get_meshes", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFMesh]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFMesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_meshes", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFMesh])
 
 proc setMeshes*(self: GLTFState; meshes: TypedArray[gdref GLTFMesh]): void =
-  expandMethodBind(className GLTFState, "set_meshes", 381264803)
-  methodbind.ptrcall(self, [getPtr meshes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_meshes", 381264803)
+  methodbind.ptrcall(self, [getPtr meshes], void)
 
 proc getAnimationPlayersCount*(self: GLTFState; idx: int32): int32 =
-  expandMethodBind(className GLTFState, "get_animation_players_count", 3744713108)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_animation_players_count", 3744713108)
+  methodbind.ptrcall(self, [getPtr idx], int32)
 
 proc getAnimationPlayer*(self: GLTFState; idx: int32): AnimationPlayer =
-  expandMethodBind(className GLTFState, "get_animation_player", 925043400)
-  var ret: encoded AnimationPlayer
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(AnimationPlayer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_animation_player", 925043400)
+  methodbind.ptrcall(self, [getPtr idx], AnimationPlayer)
 
 proc getMaterials*(self: GLTFState): TypedArray[gdref Material] =
-  expandMethodBind(className GLTFState, "get_materials", 2915620761)
-  var ret: encoded TypedArray[gdref Material]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_materials", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref Material])
 
 proc setMaterials*(self: GLTFState; materials: TypedArray[gdref Material]): void =
-  expandMethodBind(className GLTFState, "set_materials", 381264803)
-  methodbind.ptrcall(self, [getPtr materials])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_materials", 381264803)
+  methodbind.ptrcall(self, [getPtr materials], void)
 
 proc getSceneName*(self: GLTFState): String =
-  expandMethodBind(className GLTFState, "get_scene_name", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_scene_name", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc setSceneName*(self: GLTFState; sceneName: String): void =
-  expandMethodBind(className GLTFState, "set_scene_name", 83702148)
-  methodbind.ptrcall(self, [getPtr sceneName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_scene_name", 83702148)
+  methodbind.ptrcall(self, [getPtr sceneName], void)
 
 proc getBasePath*(self: GLTFState): String =
-  expandMethodBind(className GLTFState, "get_base_path", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_base_path", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc setBasePath*(self: GLTFState; basePath: String): void =
-  expandMethodBind(className GLTFState, "set_base_path", 83702148)
-  methodbind.ptrcall(self, [getPtr basePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_base_path", 83702148)
+  methodbind.ptrcall(self, [getPtr basePath], void)
 
 proc getFilename*(self: GLTFState): String =
-  expandMethodBind(className GLTFState, "get_filename", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_filename", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setFilename*(self: GLTFState; filename: String): void =
-  expandMethodBind(className GLTFState, "set_filename", 83702148)
-  methodbind.ptrcall(self, [getPtr filename])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_filename", 83702148)
+  methodbind.ptrcall(self, [getPtr filename], void)
 
 proc getRootNodes*(self: GLTFState): PackedInt32Array =
-  expandMethodBind(className GLTFState, "get_root_nodes", 969006518)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_root_nodes", 969006518)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 proc setRootNodes*(self: GLTFState; rootNodes: PackedInt32Array): void =
-  expandMethodBind(className GLTFState, "set_root_nodes", 3614634198)
-  methodbind.ptrcall(self, [getPtr rootNodes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_root_nodes", 3614634198)
+  methodbind.ptrcall(self, [getPtr rootNodes], void)
 
 proc getTextures*(self: GLTFState): TypedArray[gdref GLTFTexture] =
-  expandMethodBind(className GLTFState, "get_textures", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFTexture]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFTexture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_textures", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFTexture])
 
 proc setTextures*(self: GLTFState; textures: TypedArray[gdref GLTFTexture]): void =
-  expandMethodBind(className GLTFState, "set_textures", 381264803)
-  methodbind.ptrcall(self, [getPtr textures])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_textures", 381264803)
+  methodbind.ptrcall(self, [getPtr textures], void)
 
 proc getTextureSamplers*(self: GLTFState): TypedArray[gdref GLTFTextureSampler] =
-  expandMethodBind(className GLTFState, "get_texture_samplers", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFTextureSampler]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFTextureSampler])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_texture_samplers", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFTextureSampler])
 
 proc setTextureSamplers*(self: GLTFState; textureSamplers: TypedArray[gdref GLTFTextureSampler]): void =
-  expandMethodBind(className GLTFState, "set_texture_samplers", 381264803)
-  methodbind.ptrcall(self, [getPtr textureSamplers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_texture_samplers", 381264803)
+  methodbind.ptrcall(self, [getPtr textureSamplers], void)
 
 proc getImages*(self: GLTFState): TypedArray[gdref Texture2D] =
-  expandMethodBind(className GLTFState, "get_images", 2915620761)
-  var ret: encoded TypedArray[gdref Texture2D]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Texture2D])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_images", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref Texture2D])
 
 proc setImages*(self: GLTFState; images: TypedArray[gdref Texture2D]): void =
-  expandMethodBind(className GLTFState, "set_images", 381264803)
-  methodbind.ptrcall(self, [getPtr images])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_images", 381264803)
+  methodbind.ptrcall(self, [getPtr images], void)
 
 proc getSkins*(self: GLTFState): TypedArray[gdref GLTFSkin] =
-  expandMethodBind(className GLTFState, "get_skins", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFSkin]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFSkin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_skins", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFSkin])
 
 proc setSkins*(self: GLTFState; skins: TypedArray[gdref GLTFSkin]): void =
-  expandMethodBind(className GLTFState, "set_skins", 381264803)
-  methodbind.ptrcall(self, [getPtr skins])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_skins", 381264803)
+  methodbind.ptrcall(self, [getPtr skins], void)
 
 proc getCameras*(self: GLTFState): TypedArray[gdref GLTFCamera] =
-  expandMethodBind(className GLTFState, "get_cameras", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFCamera]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFCamera])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_cameras", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFCamera])
 
 proc setCameras*(self: GLTFState; cameras: TypedArray[gdref GLTFCamera]): void =
-  expandMethodBind(className GLTFState, "set_cameras", 381264803)
-  methodbind.ptrcall(self, [getPtr cameras])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_cameras", 381264803)
+  methodbind.ptrcall(self, [getPtr cameras], void)
 
 proc getLights*(self: GLTFState): TypedArray[gdref GLTFLight] =
-  expandMethodBind(className GLTFState, "get_lights", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFLight]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFLight])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_lights", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFLight])
 
 proc setLights*(self: GLTFState; lights: TypedArray[gdref GLTFLight]): void =
-  expandMethodBind(className GLTFState, "set_lights", 381264803)
-  methodbind.ptrcall(self, [getPtr lights])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_lights", 381264803)
+  methodbind.ptrcall(self, [getPtr lights], void)
 
 proc getUniqueNames*(self: GLTFState): TypedArray[String] =
-  expandMethodBind(className GLTFState, "get_unique_names", 2915620761)
-  var ret: encoded TypedArray[String]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_unique_names", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[String])
 
 proc setUniqueNames*(self: GLTFState; uniqueNames: TypedArray[String]): void =
-  expandMethodBind(className GLTFState, "set_unique_names", 381264803)
-  methodbind.ptrcall(self, [getPtr uniqueNames])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_unique_names", 381264803)
+  methodbind.ptrcall(self, [getPtr uniqueNames], void)
 
 proc getUniqueAnimationNames*(self: GLTFState): TypedArray[String] =
-  expandMethodBind(className GLTFState, "get_unique_animation_names", 2915620761)
-  var ret: encoded TypedArray[String]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_unique_animation_names", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[String])
 
 proc setUniqueAnimationNames*(self: GLTFState; uniqueAnimationNames: TypedArray[String]): void =
-  expandMethodBind(className GLTFState, "set_unique_animation_names", 381264803)
-  methodbind.ptrcall(self, [getPtr uniqueAnimationNames])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_unique_animation_names", 381264803)
+  methodbind.ptrcall(self, [getPtr uniqueAnimationNames], void)
 
 proc getSkeletons*(self: GLTFState): TypedArray[gdref GLTFSkeleton] =
-  expandMethodBind(className GLTFState, "get_skeletons", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFSkeleton]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFSkeleton])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_skeletons", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFSkeleton])
 
 proc setSkeletons*(self: GLTFState; skeletons: TypedArray[gdref GLTFSkeleton]): void =
-  expandMethodBind(className GLTFState, "set_skeletons", 381264803)
-  methodbind.ptrcall(self, [getPtr skeletons])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_skeletons", 381264803)
+  methodbind.ptrcall(self, [getPtr skeletons], void)
 
 proc getCreateAnimations*(self: GLTFState): bool =
-  expandMethodBind(className GLTFState, "get_create_animations", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_create_animations", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCreateAnimations*(self: GLTFState; createAnimations: bool): void =
-  expandMethodBind(className GLTFState, "set_create_animations", 2586408642)
-  methodbind.ptrcall(self, [getPtr createAnimations])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_create_animations", 2586408642)
+  methodbind.ptrcall(self, [getPtr createAnimations], void)
 
 proc getImportAsSkeletonBones*(self: GLTFState): bool =
-  expandMethodBind(className GLTFState, "get_import_as_skeleton_bones", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_import_as_skeleton_bones", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setImportAsSkeletonBones*(self: GLTFState; importAsSkeletonBones: bool): void =
-  expandMethodBind(className GLTFState, "set_import_as_skeleton_bones", 2586408642)
-  methodbind.ptrcall(self, [getPtr importAsSkeletonBones])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_import_as_skeleton_bones", 2586408642)
+  methodbind.ptrcall(self, [getPtr importAsSkeletonBones], void)
 
 proc getAnimations*(self: GLTFState): TypedArray[gdref GLTFAnimation] =
-  expandMethodBind(className GLTFState, "get_animations", 2915620761)
-  var ret: encoded TypedArray[gdref GLTFAnimation]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref GLTFAnimation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_animations", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref GLTFAnimation])
 
 proc setAnimations*(self: GLTFState; animations: TypedArray[gdref GLTFAnimation]): void =
-  expandMethodBind(className GLTFState, "set_animations", 381264803)
-  methodbind.ptrcall(self, [getPtr animations])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_animations", 381264803)
+  methodbind.ptrcall(self, [getPtr animations], void)
 
 proc getSceneNode*(self: GLTFState; idx: int32): Node =
-  expandMethodBind(className GLTFState, "get_scene_node", 4253421667)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_scene_node", 4253421667)
+  methodbind.ptrcall(self, [getPtr idx], Node)
 
 proc getNodeIndex*(self: GLTFState; sceneNode: Node): int32 =
-  expandMethodBind(className GLTFState, "get_node_index", 1205807060)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr sceneNode], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_node_index", 1205807060)
+  methodbind.ptrcall(self, [getPtr sceneNode], int32)
 
 proc getAdditionalData*(self: GLTFState; extensionName: StringName): Variant =
-  expandMethodBind(className GLTFState, "get_additional_data", 2138907829)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr extensionName], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_additional_data", 2138907829)
+  methodbind.ptrcall(self, [getPtr extensionName], Variant)
 
 proc setAdditionalData*(self: GLTFState; extensionName: StringName; additionalData: Variant): void =
-  expandMethodBind(className GLTFState, "set_additional_data", 3776071444)
-  methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_additional_data", 3776071444)
+  methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData], void)
 
 proc getHandleBinaryImage*(self: GLTFState): int32 =
-  expandMethodBind(className GLTFState, "get_handle_binary_image", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_handle_binary_image", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc setHandleBinaryImage*(self: GLTFState; `method`: int32): void =
-  expandMethodBind(className GLTFState, "set_handle_binary_image", 1286410249)
-  methodbind.ptrcall(self, [getPtr `method`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_handle_binary_image", 1286410249)
+  methodbind.ptrcall(self, [getPtr `method`], void)
 
 proc setBakeFps*(self: GLTFState; value: float64): void =
-  expandMethodBind(className GLTFState, "set_bake_fps", 373806689)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "set_bake_fps", 373806689)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getBakeFps*(self: GLTFState): float64 =
-  expandMethodBind(className GLTFState, "get_bake_fps", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFState, "get_bake_fps", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 template json*(self: GLTFState): untyped = self.getJson()
 template `json=`*(self: GLTFState; value) = self.setJson(value)

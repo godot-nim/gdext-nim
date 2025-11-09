@@ -7,24 +7,28 @@ import gdshape3d; export gdshape3d
 expandOnClassImported(CylinderShape3D, Shape3D)
 
 proc setRadius*(self: CylinderShape3D; radius: Float): void =
-  expandMethodBind(className CylinderShape3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderShape3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: CylinderShape3D): Float =
-  expandMethodBind(className CylinderShape3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderShape3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: CylinderShape3D; height: Float): void =
-  expandMethodBind(className CylinderShape3D, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderShape3D, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getHeight*(self: CylinderShape3D): Float =
-  expandMethodBind(className CylinderShape3D, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CylinderShape3D, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template height*(self: CylinderShape3D): untyped = self.getHeight()
 template `height=`*(self: CylinderShape3D; value) = self.setHeight(value)

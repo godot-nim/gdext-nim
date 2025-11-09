@@ -7,98 +7,118 @@ import gdanimationrootnode; export gdanimationrootnode
 expandOnClassImported(AnimationNodeBlendSpace1D, AnimationRootNode)
 
 proc addBlendPoint*(self: AnimationNodeBlendSpace1D; node: gdref AnimationRootNode; pos: Float; atIndex: int32 = -1): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "add_blend_point", 285050433)
-  methodbind.ptrcall(self, [getPtr node, getPtr pos, getPtr atIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "add_blend_point", 285050433)
+  methodbind.ptrcall(self, [getPtr node, getPtr pos, getPtr atIndex], void)
 
 proc setBlendPointPosition*(self: AnimationNodeBlendSpace1D; point: int32; pos: Float): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_blend_point_position", 1602489585)
-  methodbind.ptrcall(self, [getPtr point, getPtr pos])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_blend_point_position", 1602489585)
+  methodbind.ptrcall(self, [getPtr point, getPtr pos], void)
 
 proc getBlendPointPosition*(self: AnimationNodeBlendSpace1D; point: int32): Float =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_position", 2339986948)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr point], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_position", 2339986948)
+  methodbind.ptrcall(self, [getPtr point], Float)
 
 proc setBlendPointNode*(self: AnimationNodeBlendSpace1D; point: int32; node: gdref AnimationRootNode): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_blend_point_node", 4240341528)
-  methodbind.ptrcall(self, [getPtr point, getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_blend_point_node", 4240341528)
+  methodbind.ptrcall(self, [getPtr point, getPtr node], void)
 
 proc getBlendPointNode*(self: AnimationNodeBlendSpace1D; point: int32): gdref AnimationRootNode =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_node", 665599029)
-  var ret: encoded gdref AnimationRootNode
-  methodbind.ptrcall(self, [getPtr point], addr ret)
-  (addr ret).decode_result(gdref AnimationRootNode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_node", 665599029)
+  methodbind.ptrcall(self, [getPtr point], gdref AnimationRootNode)
 
 proc removeBlendPoint*(self: AnimationNodeBlendSpace1D; point: int32): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "remove_blend_point", 1286410249)
-  methodbind.ptrcall(self, [getPtr point])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "remove_blend_point", 1286410249)
+  methodbind.ptrcall(self, [getPtr point], void)
 
 proc getBlendPointCount*(self: AnimationNodeBlendSpace1D): int32 =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_blend_point_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMinSpace*(self: AnimationNodeBlendSpace1D; minSpace: Float): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_min_space", 373806689)
-  methodbind.ptrcall(self, [getPtr minSpace])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_min_space", 373806689)
+  methodbind.ptrcall(self, [getPtr minSpace], void)
 
 proc getMinSpace*(self: AnimationNodeBlendSpace1D): Float =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_min_space", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_min_space", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxSpace*(self: AnimationNodeBlendSpace1D; maxSpace: Float): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_max_space", 373806689)
-  methodbind.ptrcall(self, [getPtr maxSpace])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_max_space", 373806689)
+  methodbind.ptrcall(self, [getPtr maxSpace], void)
 
 proc getMaxSpace*(self: AnimationNodeBlendSpace1D): Float =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_max_space", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_max_space", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSnap*(self: AnimationNodeBlendSpace1D; snap: Float): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_snap", 373806689)
-  methodbind.ptrcall(self, [getPtr snap])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_snap", 373806689)
+  methodbind.ptrcall(self, [getPtr snap], void)
 
 proc getSnap*(self: AnimationNodeBlendSpace1D): Float =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_snap", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_snap", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setValueLabel*(self: AnimationNodeBlendSpace1D; text: String): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_value_label", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_value_label", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getValueLabel*(self: AnimationNodeBlendSpace1D): String =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_value_label", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_value_label", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setBlendMode*(self: AnimationNodeBlendSpace1D; mode: AnimationNodeBlendSpace1D_BlendMode): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_blend_mode", 2600869457)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_blend_mode", 2600869457)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getBlendMode*(self: AnimationNodeBlendSpace1D): AnimationNodeBlendSpace1D_BlendMode =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "get_blend_mode", 1547667849)
-  var ret: encoded AnimationNodeBlendSpace1D_BlendMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationNodeBlendSpace1D_BlendMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "get_blend_mode", 1547667849)
+  methodbind.ptrcall(self, [], AnimationNodeBlendSpace1D_BlendMode)
 
 proc setUseSync*(self: AnimationNodeBlendSpace1D; enable: bool): void =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "set_use_sync", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "set_use_sync", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsingSync*(self: AnimationNodeBlendSpace1D): bool =
-  expandMethodBind(className AnimationNodeBlendSpace1D, "is_using_sync", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeBlendSpace1D, "is_using_sync", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template minSpace*(self: AnimationNodeBlendSpace1D): untyped = self.getMinSpace()
 template `minSpace=`*(self: AnimationNodeBlendSpace1D; value) = self.setMinSpace(value)

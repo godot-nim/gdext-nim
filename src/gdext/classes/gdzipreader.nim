@@ -7,37 +7,37 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(ZIPReader, RefCounted)
 
 proc open*(self: ZIPReader; path: String): Error =
-  expandMethodBind(className ZIPReader, "open", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "open", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc close*(self: ZIPReader): Error =
-  expandMethodBind(className ZIPReader, "close", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "close", 166280745)
+  methodbind.ptrcall(self, [], Error)
 
 proc getFiles*(self: ZIPReader): PackedStringArray =
-  expandMethodBind(className ZIPReader, "get_files", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "get_files", 2981934095)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc readFile*(self: ZIPReader; path: String; caseSensitive: bool = true): PackedByteArray =
-  expandMethodBind(className ZIPReader, "read_file", 740857591)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "read_file", 740857591)
+  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], PackedByteArray)
 
 proc fileExists*(self: ZIPReader; path: String; caseSensitive: bool = true): bool =
-  expandMethodBind(className ZIPReader, "file_exists", 35364943)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "file_exists", 35364943)
+  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], bool)
 
 proc getCompressionLevel*(self: ZIPReader; path: String; caseSensitive: bool = true): int32 =
-  expandMethodBind(className ZIPReader, "get_compression_level", 3694577386)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ZIPReader, "get_compression_level", 3694577386)
+  methodbind.ptrcall(self, [getPtr path, getPtr caseSensitive], int32)

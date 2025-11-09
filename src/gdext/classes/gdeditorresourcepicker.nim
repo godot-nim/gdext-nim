@@ -17,54 +17,64 @@ proc registerVirtual_handleMenuSelected*[T: EditorResourcePicker](Self: typedesc
     errproof: cast[EditorResourcePicker](p_instance).handleMenuSelected(p_args[0].decode(int32)).encode(r_ret)
 
 proc setBaseType*(self: EditorResourcePicker; baseType: String): void =
-  expandMethodBind(className EditorResourcePicker, "set_base_type", 83702148)
-  methodbind.ptrcall(self, [getPtr baseType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "set_base_type", 83702148)
+  methodbind.ptrcall(self, [getPtr baseType], void)
 
 proc getBaseType*(self: EditorResourcePicker): String =
-  expandMethodBind(className EditorResourcePicker, "get_base_type", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "get_base_type", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getAllowedTypes*(self: EditorResourcePicker): PackedStringArray =
-  expandMethodBind(className EditorResourcePicker, "get_allowed_types", 1139954409)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "get_allowed_types", 1139954409)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc setEditedResource*(self: EditorResourcePicker; resource: gdref Resource): void =
-  expandMethodBind(className EditorResourcePicker, "set_edited_resource", 968641751)
-  methodbind.ptrcall(self, [getPtr resource])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "set_edited_resource", 968641751)
+  methodbind.ptrcall(self, [getPtr resource], void)
 
 proc getEditedResource*(self: EditorResourcePicker): gdref Resource =
-  expandMethodBind(className EditorResourcePicker, "get_edited_resource", 2674603643)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "get_edited_resource", 2674603643)
+  methodbind.ptrcall(self, [], gdref Resource)
 
 proc setToggleMode*(self: EditorResourcePicker; enable: bool): void =
-  expandMethodBind(className EditorResourcePicker, "set_toggle_mode", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "set_toggle_mode", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isToggleMode*(self: EditorResourcePicker): bool =
-  expandMethodBind(className EditorResourcePicker, "is_toggle_mode", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "is_toggle_mode", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTogglePressed*(self: EditorResourcePicker; pressed: bool): void =
-  expandMethodBind(className EditorResourcePicker, "set_toggle_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "set_toggle_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc setEditable*(self: EditorResourcePicker; enable: bool): void =
-  expandMethodBind(className EditorResourcePicker, "set_editable", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "set_editable", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isEditable*(self: EditorResourcePicker): bool =
-  expandMethodBind(className EditorResourcePicker, "is_editable", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorResourcePicker, "is_editable", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template baseType*(self: EditorResourcePicker): untyped = self.getBaseType()
 template `baseType=`*(self: EditorResourcePicker; value) = self.setBaseType(value)

@@ -7,14 +7,16 @@ import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
 expandOnClassImported(VisualShaderNodeCurveXYZTexture, VisualShaderNodeResizableBase)
 
 proc setTexture*(self: VisualShaderNodeCurveXYZTexture; texture: gdref CurveXYZTexture): void =
-  expandMethodBind(className VisualShaderNodeCurveXYZTexture, "set_texture", 8031783)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeCurveXYZTexture, "set_texture", 8031783)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getTexture*(self: VisualShaderNodeCurveXYZTexture): gdref CurveXYZTexture =
-  expandMethodBind(className VisualShaderNodeCurveXYZTexture, "get_texture", 1950275015)
-  var ret: encoded gdref CurveXYZTexture
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref CurveXYZTexture)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeCurveXYZTexture, "get_texture", 1950275015)
+  methodbind.ptrcall(self, [], gdref CurveXYZTexture)
 
 template texture*(self: VisualShaderNodeCurveXYZTexture): untyped = self.getTexture()
 template `texture=`*(self: VisualShaderNodeCurveXYZTexture; value) = self.setTexture(value)

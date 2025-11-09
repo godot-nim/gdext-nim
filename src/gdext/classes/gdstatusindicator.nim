@@ -7,50 +7,58 @@ import gdnode; export gdnode
 expandOnClassImported(StatusIndicator, Node)
 
 proc setTooltip*(self: StatusIndicator; tooltip: String): void =
-  expandMethodBind(className StatusIndicator, "set_tooltip", 83702148)
-  methodbind.ptrcall(self, [getPtr tooltip])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "set_tooltip", 83702148)
+  methodbind.ptrcall(self, [getPtr tooltip], void)
 
 proc getTooltip*(self: StatusIndicator): String =
-  expandMethodBind(className StatusIndicator, "get_tooltip", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "get_tooltip", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setIcon*(self: StatusIndicator; texture: gdref Texture2D): void =
-  expandMethodBind(className StatusIndicator, "set_icon", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "set_icon", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getIcon*(self: StatusIndicator): gdref Texture2D =
-  expandMethodBind(className StatusIndicator, "get_icon", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "get_icon", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setVisible*(self: StatusIndicator; visible: bool): void =
-  expandMethodBind(className StatusIndicator, "set_visible", 2586408642)
-  methodbind.ptrcall(self, [getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "set_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible], void)
 
 proc isVisible*(self: StatusIndicator): bool =
-  expandMethodBind(className StatusIndicator, "is_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "is_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMenu*(self: StatusIndicator; menu: NodePath): void =
-  expandMethodBind(className StatusIndicator, "set_menu", 1348162250)
-  methodbind.ptrcall(self, [getPtr menu])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "set_menu", 1348162250)
+  methodbind.ptrcall(self, [getPtr menu], void)
 
 proc getMenu*(self: StatusIndicator): NodePath =
-  expandMethodBind(className StatusIndicator, "get_menu", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "get_menu", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc getRect*(self: StatusIndicator): Rect2 =
-  expandMethodBind(className StatusIndicator, "get_rect", 1639390495)
-  var ret: encoded Rect2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Rect2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StatusIndicator, "get_rect", 1639390495)
+  methodbind.ptrcall(self, [], Rect2)
 
 template tooltip*(self: StatusIndicator): untyped = self.getTooltip()
 template `tooltip=`*(self: StatusIndicator; value) = self.setTooltip(value)

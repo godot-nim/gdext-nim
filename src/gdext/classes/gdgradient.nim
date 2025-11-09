@@ -7,88 +7,106 @@ import gdresource; export gdresource
 expandOnClassImported(Gradient, Resource)
 
 proc addPoint*(self: Gradient; offset: Float; color: Color): void =
-  expandMethodBind(className Gradient, "add_point", 3629403827)
-  methodbind.ptrcall(self, [getPtr offset, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "add_point", 3629403827)
+  methodbind.ptrcall(self, [getPtr offset, getPtr color], void)
 
 proc removePoint*(self: Gradient; point: int32): void =
-  expandMethodBind(className Gradient, "remove_point", 1286410249)
-  methodbind.ptrcall(self, [getPtr point])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "remove_point", 1286410249)
+  methodbind.ptrcall(self, [getPtr point], void)
 
 proc setOffset*(self: Gradient; point: int32; offset: Float): void =
-  expandMethodBind(className Gradient, "set_offset", 1602489585)
-  methodbind.ptrcall(self, [getPtr point, getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_offset", 1602489585)
+  methodbind.ptrcall(self, [getPtr point, getPtr offset], void)
 
 proc getOffset*(self: Gradient; point: int32): Float =
-  expandMethodBind(className Gradient, "get_offset", 4025615559)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr point], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_offset", 4025615559)
+  methodbind.ptrcall(self, [getPtr point], Float)
 
 proc reverse*(self: Gradient): void =
-  expandMethodBind(className Gradient, "reverse", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "reverse", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setColor*(self: Gradient; point: int32; color: Color): void =
-  expandMethodBind(className Gradient, "set_color", 2878471219)
-  methodbind.ptrcall(self, [getPtr point, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_color", 2878471219)
+  methodbind.ptrcall(self, [getPtr point, getPtr color], void)
 
 proc getColor*(self: Gradient; point: int32): Color =
-  expandMethodBind(className Gradient, "get_color", 2624840992)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr point], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_color", 2624840992)
+  methodbind.ptrcall(self, [getPtr point], Color)
 
 proc sample*(self: Gradient; offset: Float): Color =
-  expandMethodBind(className Gradient, "sample", 1250405064)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr offset], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "sample", 1250405064)
+  methodbind.ptrcall(self, [getPtr offset], Color)
 
 proc getPointCount*(self: Gradient): int32 =
-  expandMethodBind(className Gradient, "get_point_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_point_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setOffsets*(self: Gradient; offsets: PackedFloat32Array): void =
-  expandMethodBind(className Gradient, "set_offsets", 2899603908)
-  methodbind.ptrcall(self, [getPtr offsets])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_offsets", 2899603908)
+  methodbind.ptrcall(self, [getPtr offsets], void)
 
 proc getOffsets*(self: Gradient): PackedFloat32Array =
-  expandMethodBind(className Gradient, "get_offsets", 675695659)
-  var ret: encoded PackedFloat32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedFloat32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_offsets", 675695659)
+  methodbind.ptrcall(self, [], PackedFloat32Array)
 
 proc setColors*(self: Gradient; colors: PackedColorArray): void =
-  expandMethodBind(className Gradient, "set_colors", 3546319833)
-  methodbind.ptrcall(self, [getPtr colors])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_colors", 3546319833)
+  methodbind.ptrcall(self, [getPtr colors], void)
 
 proc getColors*(self: Gradient): PackedColorArray =
-  expandMethodBind(className Gradient, "get_colors", 1392750486)
-  var ret: encoded PackedColorArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedColorArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_colors", 1392750486)
+  methodbind.ptrcall(self, [], PackedColorArray)
 
 proc setInterpolationMode*(self: Gradient; interpolationMode: Gradient_InterpolationMode): void =
-  expandMethodBind(className Gradient, "set_interpolation_mode", 1971444490)
-  methodbind.ptrcall(self, [getPtr interpolationMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_interpolation_mode", 1971444490)
+  methodbind.ptrcall(self, [getPtr interpolationMode], void)
 
 proc getInterpolationMode*(self: Gradient): Gradient_InterpolationMode =
-  expandMethodBind(className Gradient, "get_interpolation_mode", 3674172981)
-  var ret: encoded Gradient_InterpolationMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Gradient_InterpolationMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_interpolation_mode", 3674172981)
+  methodbind.ptrcall(self, [], Gradient_InterpolationMode)
 
 proc setInterpolationColorSpace*(self: Gradient; interpolationColorSpace: Gradient_ColorSpace): void =
-  expandMethodBind(className Gradient, "set_interpolation_color_space", 3685995981)
-  methodbind.ptrcall(self, [getPtr interpolationColorSpace])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "set_interpolation_color_space", 3685995981)
+  methodbind.ptrcall(self, [getPtr interpolationColorSpace], void)
 
 proc getInterpolationColorSpace*(self: Gradient): Gradient_ColorSpace =
-  expandMethodBind(className Gradient, "get_interpolation_color_space", 1538296000)
-  var ret: encoded Gradient_ColorSpace
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Gradient_ColorSpace)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Gradient, "get_interpolation_color_space", 1538296000)
+  methodbind.ptrcall(self, [], Gradient_ColorSpace)
 
 template interpolationMode*(self: Gradient): untyped = self.getInterpolationMode()
 template `interpolationMode=`*(self: Gradient; value) = self.setInterpolationMode(value)

@@ -7,35 +7,37 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(GodotThread, RefCounted)
 
 proc start*(self: GodotThread; callable: Callable; priority: GodotThread_Priority = priorityNormal): Error =
-  expandMethodBind(className GodotThread, "start", 1327203254)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr callable, getPtr priority], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "start", 1327203254)
+  methodbind.ptrcall(self, [getPtr callable, getPtr priority], Error)
 
 proc getId*(self: GodotThread): String =
-  expandMethodBind(className GodotThread, "get_id", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "get_id", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc isStarted*(self: GodotThread): bool =
-  expandMethodBind(className GodotThread, "is_started", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "is_started", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isAlive*(self: GodotThread): bool =
-  expandMethodBind(className GodotThread, "is_alive", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "is_alive", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc waitToFinish*(self: GodotThread): Variant =
-  expandMethodBind(className GodotThread, "wait_to_finish", 1460262497)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "wait_to_finish", 1460262497)
+  methodbind.ptrcall(self, [], Variant)
 
 proc setThreadSafetyChecksEnabled*(_: typedesc[GodotThread]; enabled: bool): void =
-  expandMethodBind(className GodotThread, "set_thread_safety_checks_enabled", 2586408642)
-  methodbind.ptrcall([getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GodotThread, "set_thread_safety_checks_enabled", 2586408642)
+  methodbind.ptrcall([getPtr enabled], void)

@@ -37,43 +37,43 @@ proc registerVirtual_getData*[T: Texture3D](Self: typedesc[T]) =
     errproof: cast[Texture3D](p_instance).getData().encode(r_ret)
 
 proc getFormat*(self: Texture3D): Image_Format =
-  expandMethodBind(className Texture3D, "get_format", 3847873762)
-  var ret: encoded Image_Format
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Image_Format)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "get_format", 3847873762)
+  methodbind.ptrcall(self, [], Image_Format)
 
 proc getWidth*(self: Texture3D): int32 =
-  expandMethodBind(className Texture3D, "get_width", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "get_width", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getHeight*(self: Texture3D): int32 =
-  expandMethodBind(className Texture3D, "get_height", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "get_height", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getDepth*(self: Texture3D): int32 =
-  expandMethodBind(className Texture3D, "get_depth", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "get_depth", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc hasMipmaps*(self: Texture3D): bool =
-  expandMethodBind(className Texture3D, "has_mipmaps", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "has_mipmaps", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getData*(self: Texture3D): TypedArray[gdref Image] =
-  expandMethodBind(className Texture3D, "get_data", 3995934104)
-  var ret: encoded TypedArray[gdref Image]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "get_data", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[gdref Image])
 
 proc createPlaceholder*(self: Texture3D): gdref Resource =
-  expandMethodBind(className Texture3D, "create_placeholder", 121922552)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture3D, "create_placeholder", 121922552)
+  methodbind.ptrcall(self, [], gdref Resource)

@@ -122,47 +122,49 @@ proc registerVirtual_getLineDiff*[T: EditorVCSInterface](Self: typedesc[T]) =
     errproof: cast[EditorVCSInterface](p_instance).getLineDiff(p_args[0].decode(String), p_args[1].decode(String)).encode(r_ret)
 
 proc createDiffLine*(self: EditorVCSInterface; newLineNo: int32; oldLineNo: int32; content: String; status: String): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "create_diff_line", 2901184053)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr newLineNo, getPtr oldLineNo, getPtr content, getPtr status], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "create_diff_line", 2901184053)
+  methodbind.ptrcall(self, [getPtr newLineNo, getPtr oldLineNo, getPtr content, getPtr status], Dictionary)
 
 proc createDiffHunk*(self: EditorVCSInterface; oldStart: int32; newStart: int32; oldLines: int32; newLines: int32): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "create_diff_hunk", 3784842090)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr oldStart, getPtr newStart, getPtr oldLines, getPtr newLines], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "create_diff_hunk", 3784842090)
+  methodbind.ptrcall(self, [getPtr oldStart, getPtr newStart, getPtr oldLines, getPtr newLines], Dictionary)
 
 proc createDiffFile*(self: EditorVCSInterface; newFile: String; oldFile: String): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "create_diff_file", 2723227684)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr newFile, getPtr oldFile], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "create_diff_file", 2723227684)
+  methodbind.ptrcall(self, [getPtr newFile, getPtr oldFile], Dictionary)
 
 proc createCommit*(self: EditorVCSInterface; msg: String; author: String; id: String; unixTimestamp: int64; offsetMinutes: int64): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "create_commit", 1075983584)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr msg, getPtr author, getPtr id, getPtr unixTimestamp, getPtr offsetMinutes], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "create_commit", 1075983584)
+  methodbind.ptrcall(self, [getPtr msg, getPtr author, getPtr id, getPtr unixTimestamp, getPtr offsetMinutes], Dictionary)
 
 proc createStatusFile*(self: EditorVCSInterface; filePath: String; changeType: EditorVCSInterface_ChangeType; area: EditorVCSInterface_TreeArea): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "create_status_file", 1083471673)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr filePath, getPtr changeType, getPtr area], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "create_status_file", 1083471673)
+  methodbind.ptrcall(self, [getPtr filePath, getPtr changeType, getPtr area], Dictionary)
 
 proc addDiffHunksIntoDiffFile*(self: EditorVCSInterface; diffFile: Dictionary; diffHunks: TypedArray[Dictionary]): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "add_diff_hunks_into_diff_file", 4015243225)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr diffFile, getPtr diffHunks], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "add_diff_hunks_into_diff_file", 4015243225)
+  methodbind.ptrcall(self, [getPtr diffFile, getPtr diffHunks], Dictionary)
 
 proc addLineDiffsIntoDiffHunk*(self: EditorVCSInterface; diffHunk: Dictionary; lineDiffs: TypedArray[Dictionary]): Dictionary =
-  expandMethodBind(className EditorVCSInterface, "add_line_diffs_into_diff_hunk", 4015243225)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr diffHunk, getPtr lineDiffs], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "add_line_diffs_into_diff_hunk", 4015243225)
+  methodbind.ptrcall(self, [getPtr diffHunk, getPtr lineDiffs], Dictionary)
 
 proc popupError*(self: EditorVCSInterface; msg: String): void =
-  expandMethodBind(className EditorVCSInterface, "popup_error", 83702148)
-  methodbind.ptrcall(self, [getPtr msg])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorVCSInterface, "popup_error", 83702148)
+  methodbind.ptrcall(self, [getPtr msg], void)

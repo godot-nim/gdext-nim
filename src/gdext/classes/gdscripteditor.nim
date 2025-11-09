@@ -7,59 +7,73 @@ import gdpanelcontainer; export gdpanelcontainer
 expandOnClassImported(ScriptEditor, PanelContainer)
 
 proc getCurrentEditor*(self: ScriptEditor): ScriptEditorBase =
-  expandMethodBind(className ScriptEditor, "get_current_editor", 1906266726)
-  var ret: encoded ScriptEditorBase
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ScriptEditorBase)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "get_current_editor", 1906266726)
+  methodbind.ptrcall(self, [], ScriptEditorBase)
 
 proc getOpenScriptEditors*(self: ScriptEditor): TypedArray[ScriptEditorBase] =
-  expandMethodBind(className ScriptEditor, "get_open_script_editors", 3995934104)
-  var ret: encoded TypedArray[ScriptEditorBase]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[ScriptEditorBase])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "get_open_script_editors", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[ScriptEditorBase])
 
 proc getBreakpoints*(self: ScriptEditor): PackedStringArray =
-  expandMethodBind(className ScriptEditor, "get_breakpoints", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "get_breakpoints", 2981934095)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc registerSyntaxHighlighter*(self: ScriptEditor; syntaxHighlighter: gdref EditorSyntaxHighlighter): void =
-  expandMethodBind(className ScriptEditor, "register_syntax_highlighter", 1092774468)
-  methodbind.ptrcall(self, [getPtr syntaxHighlighter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "register_syntax_highlighter", 1092774468)
+  methodbind.ptrcall(self, [getPtr syntaxHighlighter], void)
 
 proc unregisterSyntaxHighlighter*(self: ScriptEditor; syntaxHighlighter: gdref EditorSyntaxHighlighter): void =
-  expandMethodBind(className ScriptEditor, "unregister_syntax_highlighter", 1092774468)
-  methodbind.ptrcall(self, [getPtr syntaxHighlighter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "unregister_syntax_highlighter", 1092774468)
+  methodbind.ptrcall(self, [getPtr syntaxHighlighter], void)
 
 proc gotoLine*(self: ScriptEditor; lineNumber: int32): void =
-  expandMethodBind(className ScriptEditor, "goto_line", 1286410249)
-  methodbind.ptrcall(self, [getPtr lineNumber])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "goto_line", 1286410249)
+  methodbind.ptrcall(self, [getPtr lineNumber], void)
 
 proc getCurrentScript*(self: ScriptEditor): gdref Script =
-  expandMethodBind(className ScriptEditor, "get_current_script", 2146468882)
-  var ret: encoded gdref Script
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Script)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "get_current_script", 2146468882)
+  methodbind.ptrcall(self, [], gdref Script)
 
 proc getOpenScripts*(self: ScriptEditor): TypedArray[gdref Script] =
-  expandMethodBind(className ScriptEditor, "get_open_scripts", 3995934104)
-  var ret: encoded TypedArray[gdref Script]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Script])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "get_open_scripts", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[gdref Script])
 
 proc openScriptCreateDialog*(self: ScriptEditor; baseName: String; basePath: String): void =
-  expandMethodBind(className ScriptEditor, "open_script_create_dialog", 3186203200)
-  methodbind.ptrcall(self, [getPtr baseName, getPtr basePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "open_script_create_dialog", 3186203200)
+  methodbind.ptrcall(self, [getPtr baseName, getPtr basePath], void)
 
 proc gotoHelp*(self: ScriptEditor; topic: String): void =
-  expandMethodBind(className ScriptEditor, "goto_help", 83702148)
-  methodbind.ptrcall(self, [getPtr topic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "goto_help", 83702148)
+  methodbind.ptrcall(self, [getPtr topic], void)
 
 proc updateDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
-  expandMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
-  methodbind.ptrcall(self, [getPtr script])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "update_docs_from_script", 3657522847)
+  methodbind.ptrcall(self, [getPtr script], void)
 
 proc clearDocsFromScript*(self: ScriptEditor; script: gdref Script): void =
-  expandMethodBind(className ScriptEditor, "clear_docs_from_script", 3657522847)
-  methodbind.ptrcall(self, [getPtr script])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ScriptEditor, "clear_docs_from_script", 3657522847)
+  methodbind.ptrcall(self, [getPtr script], void)

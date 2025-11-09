@@ -7,104 +7,124 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(Parallax2D, Node2D)
 
 proc setScrollScale*(self: Parallax2D; scale: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_scroll_scale", 743155724)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_scroll_scale", 743155724)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getScrollScale*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_scroll_scale", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_scroll_scale", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setRepeatSize*(self: Parallax2D; repeatSize: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_repeat_size", 743155724)
-  methodbind.ptrcall(self, [getPtr repeatSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_repeat_size", 743155724)
+  methodbind.ptrcall(self, [getPtr repeatSize], void)
 
 proc getRepeatSize*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_repeat_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_repeat_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setRepeatTimes*(self: Parallax2D; repeatTimes: int32): void =
-  expandMethodBind(className Parallax2D, "set_repeat_times", 1286410249)
-  methodbind.ptrcall(self, [getPtr repeatTimes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_repeat_times", 1286410249)
+  methodbind.ptrcall(self, [getPtr repeatTimes], void)
 
 proc getRepeatTimes*(self: Parallax2D): int32 =
-  expandMethodBind(className Parallax2D, "get_repeat_times", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_repeat_times", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setAutoscroll*(self: Parallax2D; autoscroll: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_autoscroll", 743155724)
-  methodbind.ptrcall(self, [getPtr autoscroll])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_autoscroll", 743155724)
+  methodbind.ptrcall(self, [getPtr autoscroll], void)
 
 proc getAutoscroll*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_autoscroll", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_autoscroll", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScrollOffset*(self: Parallax2D; offset: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_scroll_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_scroll_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getScrollOffset*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_scroll_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_scroll_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScreenOffset*(self: Parallax2D; offset: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_screen_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_screen_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getScreenOffset*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_screen_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_screen_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setLimitBegin*(self: Parallax2D; offset: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_limit_begin", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_limit_begin", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getLimitBegin*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_limit_begin", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_limit_begin", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setLimitEnd*(self: Parallax2D; offset: Vector2): void =
-  expandMethodBind(className Parallax2D, "set_limit_end", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_limit_end", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getLimitEnd*(self: Parallax2D): Vector2 =
-  expandMethodBind(className Parallax2D, "get_limit_end", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_limit_end", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setFollowViewport*(self: Parallax2D; follow: bool): void =
-  expandMethodBind(className Parallax2D, "set_follow_viewport", 2586408642)
-  methodbind.ptrcall(self, [getPtr follow])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_follow_viewport", 2586408642)
+  methodbind.ptrcall(self, [getPtr follow], void)
 
 proc getFollowViewport*(self: Parallax2D): bool =
-  expandMethodBind(className Parallax2D, "get_follow_viewport", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "get_follow_viewport", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setIgnoreCameraScroll*(self: Parallax2D; ignore: bool): void =
-  expandMethodBind(className Parallax2D, "set_ignore_camera_scroll", 2586408642)
-  methodbind.ptrcall(self, [getPtr ignore])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "set_ignore_camera_scroll", 2586408642)
+  methodbind.ptrcall(self, [getPtr ignore], void)
 
 proc isIgnoreCameraScroll*(self: Parallax2D): bool =
-  expandMethodBind(className Parallax2D, "is_ignore_camera_scroll", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Parallax2D, "is_ignore_camera_scroll", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 template scrollScale*(self: Parallax2D): untyped = self.getScrollScale()
 template `scrollScale=`*(self: Parallax2D; value) = self.setScrollScale(value)

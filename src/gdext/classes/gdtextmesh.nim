@@ -7,184 +7,220 @@ import gdprimitivemesh; export gdprimitivemesh
 expandOnClassImported(TextMesh, PrimitiveMesh)
 
 proc setHorizontalAlignment*(self: TextMesh; alignment: HorizontalAlignment): void =
-  expandMethodBind(className TextMesh, "set_horizontal_alignment", 2312603777)
-  methodbind.ptrcall(self, [getPtr alignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_horizontal_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr alignment], void)
 
 proc getHorizontalAlignment*(self: TextMesh): HorizontalAlignment =
-  expandMethodBind(className TextMesh, "get_horizontal_alignment", 341400642)
-  var ret: encoded HorizontalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HorizontalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_horizontal_alignment", 341400642)
+  methodbind.ptrcall(self, [], HorizontalAlignment)
 
 proc setVerticalAlignment*(self: TextMesh; alignment: VerticalAlignment): void =
-  expandMethodBind(className TextMesh, "set_vertical_alignment", 1796458609)
-  methodbind.ptrcall(self, [getPtr alignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_vertical_alignment", 1796458609)
+  methodbind.ptrcall(self, [getPtr alignment], void)
 
 proc getVerticalAlignment*(self: TextMesh): VerticalAlignment =
-  expandMethodBind(className TextMesh, "get_vertical_alignment", 3274884059)
-  var ret: encoded VerticalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VerticalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_vertical_alignment", 3274884059)
+  methodbind.ptrcall(self, [], VerticalAlignment)
 
 proc setText*(self: TextMesh; text: String): void =
-  expandMethodBind(className TextMesh, "set_text", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_text", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getText*(self: TextMesh): String =
-  expandMethodBind(className TextMesh, "get_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setFont*(self: TextMesh; font: gdref Font): void =
-  expandMethodBind(className TextMesh, "set_font", 1262170328)
-  methodbind.ptrcall(self, [getPtr font])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_font", 1262170328)
+  methodbind.ptrcall(self, [getPtr font], void)
 
 proc getFont*(self: TextMesh): gdref Font =
-  expandMethodBind(className TextMesh, "get_font", 3229501585)
-  var ret: encoded gdref Font
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Font)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_font", 3229501585)
+  methodbind.ptrcall(self, [], gdref Font)
 
 proc setFontSize*(self: TextMesh; fontSize: int32): void =
-  expandMethodBind(className TextMesh, "set_font_size", 1286410249)
-  methodbind.ptrcall(self, [getPtr fontSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_font_size", 1286410249)
+  methodbind.ptrcall(self, [getPtr fontSize], void)
 
 proc getFontSize*(self: TextMesh): int32 =
-  expandMethodBind(className TextMesh, "get_font_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_font_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setLineSpacing*(self: TextMesh; lineSpacing: Float): void =
-  expandMethodBind(className TextMesh, "set_line_spacing", 373806689)
-  methodbind.ptrcall(self, [getPtr lineSpacing])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_line_spacing", 373806689)
+  methodbind.ptrcall(self, [getPtr lineSpacing], void)
 
 proc getLineSpacing*(self: TextMesh): Float =
-  expandMethodBind(className TextMesh, "get_line_spacing", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_line_spacing", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAutowrapMode*(self: TextMesh; autowrapMode: TextServer_AutowrapMode): void =
-  expandMethodBind(className TextMesh, "set_autowrap_mode", 3289138044)
-  methodbind.ptrcall(self, [getPtr autowrapMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_autowrap_mode", 3289138044)
+  methodbind.ptrcall(self, [getPtr autowrapMode], void)
 
 proc getAutowrapMode*(self: TextMesh): TextServer_AutowrapMode =
-  expandMethodBind(className TextMesh, "get_autowrap_mode", 1549071663)
-  var ret: encoded TextServer_AutowrapMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_AutowrapMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_autowrap_mode", 1549071663)
+  methodbind.ptrcall(self, [], TextServer_AutowrapMode)
 
 proc setJustificationFlags*(self: TextMesh; justificationFlags: set[TextServer_JustificationFlag]): void =
-  expandMethodBind(className TextMesh, "set_justification_flags", 2877345813)
-  methodbind.ptrcall(self, [getPtr justificationFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_justification_flags", 2877345813)
+  methodbind.ptrcall(self, [getPtr justificationFlags], void)
 
 proc getJustificationFlags*(self: TextMesh): set[TextServer_JustificationFlag] =
-  expandMethodBind(className TextMesh, "get_justification_flags", 1583363614)
-  var ret: encoded set[TextServer_JustificationFlag]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[TextServer_JustificationFlag])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_justification_flags", 1583363614)
+  methodbind.ptrcall(self, [], set[TextServer_JustificationFlag])
 
 proc setDepth*(self: TextMesh; depth: Float): void =
-  expandMethodBind(className TextMesh, "set_depth", 373806689)
-  methodbind.ptrcall(self, [getPtr depth])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_depth", 373806689)
+  methodbind.ptrcall(self, [getPtr depth], void)
 
 proc getDepth*(self: TextMesh): Float =
-  expandMethodBind(className TextMesh, "get_depth", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_depth", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setWidth*(self: TextMesh; width: Float): void =
-  expandMethodBind(className TextMesh, "set_width", 373806689)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_width", 373806689)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc getWidth*(self: TextMesh): Float =
-  expandMethodBind(className TextMesh, "get_width", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_width", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPixelSize*(self: TextMesh; pixelSize: Float): void =
-  expandMethodBind(className TextMesh, "set_pixel_size", 373806689)
-  methodbind.ptrcall(self, [getPtr pixelSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_pixel_size", 373806689)
+  methodbind.ptrcall(self, [getPtr pixelSize], void)
 
 proc getPixelSize*(self: TextMesh): Float =
-  expandMethodBind(className TextMesh, "get_pixel_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_pixel_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setOffset*(self: TextMesh; offset: Vector2): void =
-  expandMethodBind(className TextMesh, "set_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getOffset*(self: TextMesh): Vector2 =
-  expandMethodBind(className TextMesh, "get_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setCurveStep*(self: TextMesh; curveStep: Float): void =
-  expandMethodBind(className TextMesh, "set_curve_step", 373806689)
-  methodbind.ptrcall(self, [getPtr curveStep])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_curve_step", 373806689)
+  methodbind.ptrcall(self, [getPtr curveStep], void)
 
 proc getCurveStep*(self: TextMesh): Float =
-  expandMethodBind(className TextMesh, "get_curve_step", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_curve_step", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTextDirection*(self: TextMesh; direction: TextServer_Direction): void =
-  expandMethodBind(className TextMesh, "set_text_direction", 1418190634)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_text_direction", 1418190634)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getTextDirection*(self: TextMesh): TextServer_Direction =
-  expandMethodBind(className TextMesh, "get_text_direction", 2516697328)
-  var ret: encoded TextServer_Direction
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_Direction)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_text_direction", 2516697328)
+  methodbind.ptrcall(self, [], TextServer_Direction)
 
 proc setLanguage*(self: TextMesh; language: String): void =
-  expandMethodBind(className TextMesh, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: TextMesh): String =
-  expandMethodBind(className TextMesh, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setStructuredTextBidiOverride*(self: TextMesh; parser: TextServer_StructuredTextParser): void =
-  expandMethodBind(className TextMesh, "set_structured_text_bidi_override", 55961453)
-  methodbind.ptrcall(self, [getPtr parser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_structured_text_bidi_override", 55961453)
+  methodbind.ptrcall(self, [getPtr parser], void)
 
 proc getStructuredTextBidiOverride*(self: TextMesh): TextServer_StructuredTextParser =
-  expandMethodBind(className TextMesh, "get_structured_text_bidi_override", 3385126229)
-  var ret: encoded TextServer_StructuredTextParser
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_StructuredTextParser)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_structured_text_bidi_override", 3385126229)
+  methodbind.ptrcall(self, [], TextServer_StructuredTextParser)
 
 proc setStructuredTextBidiOverrideOptions*(self: TextMesh; args: Array): void =
-  expandMethodBind(className TextMesh, "set_structured_text_bidi_override_options", 381264803)
-  methodbind.ptrcall(self, [getPtr args])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_structured_text_bidi_override_options", 381264803)
+  methodbind.ptrcall(self, [getPtr args], void)
 
 proc getStructuredTextBidiOverrideOptions*(self: TextMesh): Array =
-  expandMethodBind(className TextMesh, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "get_structured_text_bidi_override_options", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setUppercase*(self: TextMesh; enable: bool): void =
-  expandMethodBind(className TextMesh, "set_uppercase", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "set_uppercase", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUppercase*(self: TextMesh): bool =
-  expandMethodBind(className TextMesh, "is_uppercase", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextMesh, "is_uppercase", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template text*(self: TextMesh): untyped = self.getText()
 template `text=`*(self: TextMesh; value) = self.setText(value)

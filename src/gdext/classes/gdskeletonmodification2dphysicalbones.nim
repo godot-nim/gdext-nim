@@ -7,36 +7,46 @@ import gdskeletonmodification2d; export gdskeletonmodification2d
 expandOnClassImported(SkeletonModification2DPhysicalBones, SkeletonModification2D)
 
 proc setPhysicalBoneChainLength*(self: SkeletonModification2DPhysicalBones; length: int32): void =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_chain_length", 1286410249)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_chain_length", 1286410249)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getPhysicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): int32 =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_chain_length", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_chain_length", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPhysicalBoneNode*(self: SkeletonModification2DPhysicalBones; jointIdx: int32; physicalbone2dNode: NodePath): void =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_node", 2761262315)
-  methodbind.ptrcall(self, [getPtr jointIdx, getPtr physicalbone2dNode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "set_physical_bone_node", 2761262315)
+  methodbind.ptrcall(self, [getPtr jointIdx, getPtr physicalbone2dNode], void)
 
 proc getPhysicalBoneNode*(self: SkeletonModification2DPhysicalBones; jointIdx: int32): NodePath =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_node", 408788394)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr jointIdx], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "get_physical_bone_node", 408788394)
+  methodbind.ptrcall(self, [getPtr jointIdx], NodePath)
 
 proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
-  methodbind.ptrcall(self, [getPtr bones])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
+  methodbind.ptrcall(self, [getPtr bones], void)
 
 proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
-  expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
-  methodbind.ptrcall(self, [getPtr bones])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
+  methodbind.ptrcall(self, [getPtr bones], void)
 
 template physicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): untyped = self.getPhysicalBoneChainLength()
 template `physicalBoneChainLength=`*(self: SkeletonModification2DPhysicalBones; value) = self.setPhysicalBoneChainLength(value)

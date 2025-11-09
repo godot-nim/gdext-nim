@@ -7,404 +7,484 @@ import gdcontrol; export gdcontrol
 expandOnClassImported(ItemList, Control)
 
 proc addItem*(self: ItemList; text: String; icon: gdref Texture2D = default gdref Texture2D; selectable: bool = true): int32 =
-  expandMethodBind(className ItemList, "add_item", 359861678)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr text, getPtr icon, getPtr selectable], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "add_item", 359861678)
+  methodbind.ptrcall(self, [getPtr text, getPtr icon, getPtr selectable], int32)
 
 proc addIconItem*(self: ItemList; icon: gdref Texture2D; selectable: bool = true): int32 =
-  expandMethodBind(className ItemList, "add_icon_item", 4256579627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr icon, getPtr selectable], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "add_icon_item", 4256579627)
+  methodbind.ptrcall(self, [getPtr icon, getPtr selectable], int32)
 
 proc setItemText*(self: ItemList; idx: int32; text: String): void =
-  expandMethodBind(className ItemList, "set_item_text", 501894301)
-  methodbind.ptrcall(self, [getPtr idx, getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_text", 501894301)
+  methodbind.ptrcall(self, [getPtr idx, getPtr text], void)
 
 proc getItemText*(self: ItemList; idx: int32): String =
-  expandMethodBind(className ItemList, "get_item_text", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_text", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc setItemIcon*(self: ItemList; idx: int32; icon: gdref Texture2D): void =
-  expandMethodBind(className ItemList, "set_item_icon", 666127730)
-  methodbind.ptrcall(self, [getPtr idx, getPtr icon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_icon", 666127730)
+  methodbind.ptrcall(self, [getPtr idx, getPtr icon], void)
 
 proc getItemIcon*(self: ItemList; idx: int32): gdref Texture2D =
-  expandMethodBind(className ItemList, "get_item_icon", 3536238170)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_icon", 3536238170)
+  methodbind.ptrcall(self, [getPtr idx], gdref Texture2D)
 
 proc setItemTextDirection*(self: ItemList; idx: int32; direction: Control_TextDirection): void =
-  expandMethodBind(className ItemList, "set_item_text_direction", 1707680378)
-  methodbind.ptrcall(self, [getPtr idx, getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_text_direction", 1707680378)
+  methodbind.ptrcall(self, [getPtr idx, getPtr direction], void)
 
 proc getItemTextDirection*(self: ItemList; idx: int32): Control_TextDirection =
-  expandMethodBind(className ItemList, "get_item_text_direction", 4235602388)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_text_direction", 4235602388)
+  methodbind.ptrcall(self, [getPtr idx], Control_TextDirection)
 
 proc setItemLanguage*(self: ItemList; idx: int32; language: String): void =
-  expandMethodBind(className ItemList, "set_item_language", 501894301)
-  methodbind.ptrcall(self, [getPtr idx, getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_language", 501894301)
+  methodbind.ptrcall(self, [getPtr idx, getPtr language], void)
 
 proc getItemLanguage*(self: ItemList; idx: int32): String =
-  expandMethodBind(className ItemList, "get_item_language", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_language", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc setItemAutoTranslateMode*(self: ItemList; idx: int32; mode: Node_AutoTranslateMode): void =
-  expandMethodBind(className ItemList, "set_item_auto_translate_mode", 287402019)
-  methodbind.ptrcall(self, [getPtr idx, getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_auto_translate_mode", 287402019)
+  methodbind.ptrcall(self, [getPtr idx, getPtr mode], void)
 
 proc getItemAutoTranslateMode*(self: ItemList; idx: int32): Node_AutoTranslateMode =
-  expandMethodBind(className ItemList, "get_item_auto_translate_mode", 906302372)
-  var ret: encoded Node_AutoTranslateMode
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Node_AutoTranslateMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_auto_translate_mode", 906302372)
+  methodbind.ptrcall(self, [getPtr idx], Node_AutoTranslateMode)
 
 proc setItemIconTransposed*(self: ItemList; idx: int32; transposed: bool): void =
-  expandMethodBind(className ItemList, "set_item_icon_transposed", 300928843)
-  methodbind.ptrcall(self, [getPtr idx, getPtr transposed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_icon_transposed", 300928843)
+  methodbind.ptrcall(self, [getPtr idx, getPtr transposed], void)
 
 proc isItemIconTransposed*(self: ItemList; idx: int32): bool =
-  expandMethodBind(className ItemList, "is_item_icon_transposed", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_item_icon_transposed", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc setItemIconRegion*(self: ItemList; idx: int32; rect: Rect2): void =
-  expandMethodBind(className ItemList, "set_item_icon_region", 1356297692)
-  methodbind.ptrcall(self, [getPtr idx, getPtr rect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_icon_region", 1356297692)
+  methodbind.ptrcall(self, [getPtr idx, getPtr rect], void)
 
 proc getItemIconRegion*(self: ItemList; idx: int32): Rect2 =
-  expandMethodBind(className ItemList, "get_item_icon_region", 3327874267)
-  var ret: encoded Rect2
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Rect2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_icon_region", 3327874267)
+  methodbind.ptrcall(self, [getPtr idx], Rect2)
 
 proc setItemIconModulate*(self: ItemList; idx: int32; modulate: Color): void =
-  expandMethodBind(className ItemList, "set_item_icon_modulate", 2878471219)
-  methodbind.ptrcall(self, [getPtr idx, getPtr modulate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_icon_modulate", 2878471219)
+  methodbind.ptrcall(self, [getPtr idx, getPtr modulate], void)
 
 proc getItemIconModulate*(self: ItemList; idx: int32): Color =
-  expandMethodBind(className ItemList, "get_item_icon_modulate", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_icon_modulate", 3457211756)
+  methodbind.ptrcall(self, [getPtr idx], Color)
 
 proc setItemSelectable*(self: ItemList; idx: int32; selectable: bool): void =
-  expandMethodBind(className ItemList, "set_item_selectable", 300928843)
-  methodbind.ptrcall(self, [getPtr idx, getPtr selectable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_selectable", 300928843)
+  methodbind.ptrcall(self, [getPtr idx, getPtr selectable], void)
 
 proc isItemSelectable*(self: ItemList; idx: int32): bool =
-  expandMethodBind(className ItemList, "is_item_selectable", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_item_selectable", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc setItemDisabled*(self: ItemList; idx: int32; disabled: bool): void =
-  expandMethodBind(className ItemList, "set_item_disabled", 300928843)
-  methodbind.ptrcall(self, [getPtr idx, getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_disabled", 300928843)
+  methodbind.ptrcall(self, [getPtr idx, getPtr disabled], void)
 
 proc isItemDisabled*(self: ItemList; idx: int32): bool =
-  expandMethodBind(className ItemList, "is_item_disabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_item_disabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc setItemMetadata*(self: ItemList; idx: int32; metadata: Variant): void =
-  expandMethodBind(className ItemList, "set_item_metadata", 2152698145)
-  methodbind.ptrcall(self, [getPtr idx, getPtr metadata])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_metadata", 2152698145)
+  methodbind.ptrcall(self, [getPtr idx, getPtr metadata], void)
 
 proc getItemMetadata*(self: ItemList; idx: int32): Variant =
-  expandMethodBind(className ItemList, "get_item_metadata", 4227898402)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_metadata", 4227898402)
+  methodbind.ptrcall(self, [getPtr idx], Variant)
 
 proc setItemCustomBgColor*(self: ItemList; idx: int32; customBgColor: Color): void =
-  expandMethodBind(className ItemList, "set_item_custom_bg_color", 2878471219)
-  methodbind.ptrcall(self, [getPtr idx, getPtr customBgColor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_custom_bg_color", 2878471219)
+  methodbind.ptrcall(self, [getPtr idx, getPtr customBgColor], void)
 
 proc getItemCustomBgColor*(self: ItemList; idx: int32): Color =
-  expandMethodBind(className ItemList, "get_item_custom_bg_color", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_custom_bg_color", 3457211756)
+  methodbind.ptrcall(self, [getPtr idx], Color)
 
 proc setItemCustomFgColor*(self: ItemList; idx: int32; customFgColor: Color): void =
-  expandMethodBind(className ItemList, "set_item_custom_fg_color", 2878471219)
-  methodbind.ptrcall(self, [getPtr idx, getPtr customFgColor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_custom_fg_color", 2878471219)
+  methodbind.ptrcall(self, [getPtr idx, getPtr customFgColor], void)
 
 proc getItemCustomFgColor*(self: ItemList; idx: int32): Color =
-  expandMethodBind(className ItemList, "get_item_custom_fg_color", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_custom_fg_color", 3457211756)
+  methodbind.ptrcall(self, [getPtr idx], Color)
 
 proc getItemRect*(self: ItemList; idx: int32; expand: bool = true): Rect2 =
-  expandMethodBind(className ItemList, "get_item_rect", 159227807)
-  var ret: encoded Rect2
-  methodbind.ptrcall(self, [getPtr idx, getPtr expand], addr ret)
-  (addr ret).decode_result(Rect2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_rect", 159227807)
+  methodbind.ptrcall(self, [getPtr idx, getPtr expand], Rect2)
 
 proc setItemTooltipEnabled*(self: ItemList; idx: int32; enable: bool): void =
-  expandMethodBind(className ItemList, "set_item_tooltip_enabled", 300928843)
-  methodbind.ptrcall(self, [getPtr idx, getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_tooltip_enabled", 300928843)
+  methodbind.ptrcall(self, [getPtr idx, getPtr enable], void)
 
 proc isItemTooltipEnabled*(self: ItemList; idx: int32): bool =
-  expandMethodBind(className ItemList, "is_item_tooltip_enabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_item_tooltip_enabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc setItemTooltip*(self: ItemList; idx: int32; tooltip: String): void =
-  expandMethodBind(className ItemList, "set_item_tooltip", 501894301)
-  methodbind.ptrcall(self, [getPtr idx, getPtr tooltip])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_tooltip", 501894301)
+  methodbind.ptrcall(self, [getPtr idx, getPtr tooltip], void)
 
 proc getItemTooltip*(self: ItemList; idx: int32): String =
-  expandMethodBind(className ItemList, "get_item_tooltip", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_tooltip", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc select*(self: ItemList; idx: int32; single: bool = true): void =
-  expandMethodBind(className ItemList, "select", 972357352)
-  methodbind.ptrcall(self, [getPtr idx, getPtr single])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "select", 972357352)
+  methodbind.ptrcall(self, [getPtr idx, getPtr single], void)
 
 proc deselect*(self: ItemList; idx: int32): void =
-  expandMethodBind(className ItemList, "deselect", 1286410249)
-  methodbind.ptrcall(self, [getPtr idx])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "deselect", 1286410249)
+  methodbind.ptrcall(self, [getPtr idx], void)
 
 proc deselectAll*(self: ItemList): void =
-  expandMethodBind(className ItemList, "deselect_all", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "deselect_all", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc isSelected*(self: ItemList; idx: int32): bool =
-  expandMethodBind(className ItemList, "is_selected", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_selected", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc getSelectedItems*(self: ItemList): PackedInt32Array =
-  expandMethodBind(className ItemList, "get_selected_items", 969006518)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_selected_items", 969006518)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 proc moveItem*(self: ItemList; fromIdx: int32; toIdx: int32): void =
-  expandMethodBind(className ItemList, "move_item", 3937882851)
-  methodbind.ptrcall(self, [getPtr fromIdx, getPtr toIdx])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "move_item", 3937882851)
+  methodbind.ptrcall(self, [getPtr fromIdx, getPtr toIdx], void)
 
 proc setItemCount*(self: ItemList; count: int32): void =
-  expandMethodBind(className ItemList, "set_item_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_item_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getItemCount*(self: ItemList): int32 =
-  expandMethodBind(className ItemList, "get_item_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc removeItem*(self: ItemList; idx: int32): void =
-  expandMethodBind(className ItemList, "remove_item", 1286410249)
-  methodbind.ptrcall(self, [getPtr idx])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "remove_item", 1286410249)
+  methodbind.ptrcall(self, [getPtr idx], void)
 
 proc clear*(self: ItemList): void =
-  expandMethodBind(className ItemList, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc sortItemsByText*(self: ItemList): void =
-  expandMethodBind(className ItemList, "sort_items_by_text", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "sort_items_by_text", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setFixedColumnWidth*(self: ItemList; width: int32): void =
-  expandMethodBind(className ItemList, "set_fixed_column_width", 1286410249)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_fixed_column_width", 1286410249)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc getFixedColumnWidth*(self: ItemList): int32 =
-  expandMethodBind(className ItemList, "get_fixed_column_width", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_fixed_column_width", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSameColumnWidth*(self: ItemList; enable: bool): void =
-  expandMethodBind(className ItemList, "set_same_column_width", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_same_column_width", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSameColumnWidth*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "is_same_column_width", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_same_column_width", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMaxTextLines*(self: ItemList; lines: int32): void =
-  expandMethodBind(className ItemList, "set_max_text_lines", 1286410249)
-  methodbind.ptrcall(self, [getPtr lines])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_max_text_lines", 1286410249)
+  methodbind.ptrcall(self, [getPtr lines], void)
 
 proc getMaxTextLines*(self: ItemList): int32 =
-  expandMethodBind(className ItemList, "get_max_text_lines", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_max_text_lines", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMaxColumns*(self: ItemList; amount: int32): void =
-  expandMethodBind(className ItemList, "set_max_columns", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_max_columns", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getMaxColumns*(self: ItemList): int32 =
-  expandMethodBind(className ItemList, "get_max_columns", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_max_columns", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSelectMode*(self: ItemList; mode: ItemList_SelectMode): void =
-  expandMethodBind(className ItemList, "set_select_mode", 928267388)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_select_mode", 928267388)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getSelectMode*(self: ItemList): ItemList_SelectMode =
-  expandMethodBind(className ItemList, "get_select_mode", 1191945842)
-  var ret: encoded ItemList_SelectMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ItemList_SelectMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_select_mode", 1191945842)
+  methodbind.ptrcall(self, [], ItemList_SelectMode)
 
 proc setIconMode*(self: ItemList; mode: ItemList_IconMode): void =
-  expandMethodBind(className ItemList, "set_icon_mode", 2025053633)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_icon_mode", 2025053633)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getIconMode*(self: ItemList): ItemList_IconMode =
-  expandMethodBind(className ItemList, "get_icon_mode", 3353929232)
-  var ret: encoded ItemList_IconMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ItemList_IconMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_icon_mode", 3353929232)
+  methodbind.ptrcall(self, [], ItemList_IconMode)
 
 proc setFixedIconSize*(self: ItemList; size: Vector2i): void =
-  expandMethodBind(className ItemList, "set_fixed_icon_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_fixed_icon_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getFixedIconSize*(self: ItemList): Vector2i =
-  expandMethodBind(className ItemList, "get_fixed_icon_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_fixed_icon_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setIconScale*(self: ItemList; scale: Float): void =
-  expandMethodBind(className ItemList, "set_icon_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_icon_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getIconScale*(self: ItemList): Float =
-  expandMethodBind(className ItemList, "get_icon_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_icon_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAllowRmbSelect*(self: ItemList; allow: bool): void =
-  expandMethodBind(className ItemList, "set_allow_rmb_select", 2586408642)
-  methodbind.ptrcall(self, [getPtr allow])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_allow_rmb_select", 2586408642)
+  methodbind.ptrcall(self, [getPtr allow], void)
 
 proc getAllowRmbSelect*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "get_allow_rmb_select", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_allow_rmb_select", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAllowReselect*(self: ItemList; allow: bool): void =
-  expandMethodBind(className ItemList, "set_allow_reselect", 2586408642)
-  methodbind.ptrcall(self, [getPtr allow])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_allow_reselect", 2586408642)
+  methodbind.ptrcall(self, [getPtr allow], void)
 
 proc getAllowReselect*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "get_allow_reselect", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_allow_reselect", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAllowSearch*(self: ItemList; allow: bool): void =
-  expandMethodBind(className ItemList, "set_allow_search", 2586408642)
-  methodbind.ptrcall(self, [getPtr allow])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_allow_search", 2586408642)
+  methodbind.ptrcall(self, [getPtr allow], void)
 
 proc getAllowSearch*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "get_allow_search", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_allow_search", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoWidth*(self: ItemList; enable: bool): void =
-  expandMethodBind(className ItemList, "set_auto_width", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_auto_width", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc hasAutoWidth*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "has_auto_width", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "has_auto_width", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoHeight*(self: ItemList; enable: bool): void =
-  expandMethodBind(className ItemList, "set_auto_height", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_auto_height", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc hasAutoHeight*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "has_auto_height", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "has_auto_height", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isAnythingSelected*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "is_anything_selected", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "is_anything_selected", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getItemAtPosition*(self: ItemList; position: Vector2; exact: bool = false): int32 =
-  expandMethodBind(className ItemList, "get_item_at_position", 2300324924)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr position, getPtr exact], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_item_at_position", 2300324924)
+  methodbind.ptrcall(self, [getPtr position, getPtr exact], int32)
 
 proc ensureCurrentIsVisible*(self: ItemList): void =
-  expandMethodBind(className ItemList, "ensure_current_is_visible", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "ensure_current_is_visible", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getVScrollBar*(self: ItemList): VScrollBar =
-  expandMethodBind(className ItemList, "get_v_scroll_bar", 2630340773)
-  var ret: encoded VScrollBar
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VScrollBar)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_v_scroll_bar", 2630340773)
+  methodbind.ptrcall(self, [], VScrollBar)
 
 proc getHScrollBar*(self: ItemList): HScrollBar =
-  expandMethodBind(className ItemList, "get_h_scroll_bar", 4004517983)
-  var ret: encoded HScrollBar
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HScrollBar)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_h_scroll_bar", 4004517983)
+  methodbind.ptrcall(self, [], HScrollBar)
 
 proc setTextOverrunBehavior*(self: ItemList; overrunBehavior: TextServer_OverrunBehavior): void =
-  expandMethodBind(className ItemList, "set_text_overrun_behavior", 1008890932)
-  methodbind.ptrcall(self, [getPtr overrunBehavior])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_text_overrun_behavior", 1008890932)
+  methodbind.ptrcall(self, [getPtr overrunBehavior], void)
 
 proc getTextOverrunBehavior*(self: ItemList): TextServer_OverrunBehavior =
-  expandMethodBind(className ItemList, "get_text_overrun_behavior", 3779142101)
-  var ret: encoded TextServer_OverrunBehavior
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_OverrunBehavior)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "get_text_overrun_behavior", 3779142101)
+  methodbind.ptrcall(self, [], TextServer_OverrunBehavior)
 
 proc setWraparoundItems*(self: ItemList; enable: bool): void =
-  expandMethodBind(className ItemList, "set_wraparound_items", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "set_wraparound_items", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc hasWraparoundItems*(self: ItemList): bool =
-  expandMethodBind(className ItemList, "has_wraparound_items", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "has_wraparound_items", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc forceUpdateListSize*(self: ItemList): void =
-  expandMethodBind(className ItemList, "force_update_list_size", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ItemList, "force_update_list_size", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 template selectMode*(self: ItemList): untyped = self.getSelectMode()
 template `selectMode=`*(self: ItemList; value) = self.setSelectMode(value)

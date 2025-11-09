@@ -7,44 +7,52 @@ import gdopenxractionbindingmodifier; export gdopenxractionbindingmodifier
 expandOnClassImported(OpenXRAnalogThresholdModifier, OpenXRActionBindingModifier)
 
 proc setOnThreshold*(self: OpenXRAnalogThresholdModifier; onThreshold: Float): void =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "set_on_threshold", 373806689)
-  methodbind.ptrcall(self, [getPtr onThreshold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "set_on_threshold", 373806689)
+  methodbind.ptrcall(self, [getPtr onThreshold], void)
 
 proc getOnThreshold*(self: OpenXRAnalogThresholdModifier): Float =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "get_on_threshold", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "get_on_threshold", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setOffThreshold*(self: OpenXRAnalogThresholdModifier; offThreshold: Float): void =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "set_off_threshold", 373806689)
-  methodbind.ptrcall(self, [getPtr offThreshold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "set_off_threshold", 373806689)
+  methodbind.ptrcall(self, [getPtr offThreshold], void)
 
 proc getOffThreshold*(self: OpenXRAnalogThresholdModifier): Float =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "get_off_threshold", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "get_off_threshold", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setOnHaptic*(self: OpenXRAnalogThresholdModifier; haptic: gdref OpenXRHapticBase): void =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "set_on_haptic", 2998020150)
-  methodbind.ptrcall(self, [getPtr haptic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "set_on_haptic", 2998020150)
+  methodbind.ptrcall(self, [getPtr haptic], void)
 
 proc getOnHaptic*(self: OpenXRAnalogThresholdModifier): gdref OpenXRHapticBase =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "get_on_haptic", 922310751)
-  var ret: encoded gdref OpenXRHapticBase
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRHapticBase)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "get_on_haptic", 922310751)
+  methodbind.ptrcall(self, [], gdref OpenXRHapticBase)
 
 proc setOffHaptic*(self: OpenXRAnalogThresholdModifier; haptic: gdref OpenXRHapticBase): void =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "set_off_haptic", 2998020150)
-  methodbind.ptrcall(self, [getPtr haptic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "set_off_haptic", 2998020150)
+  methodbind.ptrcall(self, [getPtr haptic], void)
 
 proc getOffHaptic*(self: OpenXRAnalogThresholdModifier): gdref OpenXRHapticBase =
-  expandMethodBind(className OpenXRAnalogThresholdModifier, "get_off_haptic", 922310751)
-  var ret: encoded gdref OpenXRHapticBase
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRHapticBase)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRAnalogThresholdModifier, "get_off_haptic", 922310751)
+  methodbind.ptrcall(self, [], gdref OpenXRHapticBase)
 
 template onThreshold*(self: OpenXRAnalogThresholdModifier): untyped = self.getOnThreshold()
 template `onThreshold=`*(self: OpenXRAnalogThresholdModifier; value) = self.setOnThreshold(value)

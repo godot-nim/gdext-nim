@@ -7,60 +7,70 @@ import gdnode; export gdnode
 expandOnClassImported(MultiplayerSpawner, Node)
 
 proc addSpawnableScene*(self: MultiplayerSpawner; path: String): void =
-  expandMethodBind(className MultiplayerSpawner, "add_spawnable_scene", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "add_spawnable_scene", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getSpawnableSceneCount*(self: MultiplayerSpawner): int32 =
-  expandMethodBind(className MultiplayerSpawner, "get_spawnable_scene_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "get_spawnable_scene_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getSpawnableScene*(self: MultiplayerSpawner; index: int32): String =
-  expandMethodBind(className MultiplayerSpawner, "get_spawnable_scene", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "get_spawnable_scene", 844755477)
+  methodbind.ptrcall(self, [getPtr index], String)
 
 proc clearSpawnableScenes*(self: MultiplayerSpawner): void =
-  expandMethodBind(className MultiplayerSpawner, "clear_spawnable_scenes", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "clear_spawnable_scenes", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc spawn*(self: MultiplayerSpawner; data: Variant = default(Variant)): Node =
-  expandMethodBind(className MultiplayerSpawner, "spawn", 1991184589)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr data], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "spawn", 1991184589)
+  methodbind.ptrcall(self, [getPtr data], Node)
 
 proc getSpawnPath*(self: MultiplayerSpawner): NodePath =
-  expandMethodBind(className MultiplayerSpawner, "get_spawn_path", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "get_spawn_path", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setSpawnPath*(self: MultiplayerSpawner; path: NodePath): void =
-  expandMethodBind(className MultiplayerSpawner, "set_spawn_path", 1348162250)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "set_spawn_path", 1348162250)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getSpawnLimit*(self: MultiplayerSpawner): uint32 =
-  expandMethodBind(className MultiplayerSpawner, "get_spawn_limit", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "get_spawn_limit", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setSpawnLimit*(self: MultiplayerSpawner; limit: uint32): void =
-  expandMethodBind(className MultiplayerSpawner, "set_spawn_limit", 1286410249)
-  methodbind.ptrcall(self, [getPtr limit])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "set_spawn_limit", 1286410249)
+  methodbind.ptrcall(self, [getPtr limit], void)
 
 proc getSpawnFunction*(self: MultiplayerSpawner): Callable =
-  expandMethodBind(className MultiplayerSpawner, "get_spawn_function", 1307783378)
-  var ret: encoded Callable
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Callable)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "get_spawn_function", 1307783378)
+  methodbind.ptrcall(self, [], Callable)
 
 proc setSpawnFunction*(self: MultiplayerSpawner; spawnFunction: Callable): void =
-  expandMethodBind(className MultiplayerSpawner, "set_spawn_function", 1611583062)
-  methodbind.ptrcall(self, [getPtr spawnFunction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSpawner, "set_spawn_function", 1611583062)
+  methodbind.ptrcall(self, [getPtr spawnFunction], void)
 
 template spawnPath*(self: MultiplayerSpawner): untyped = self.getSpawnPath()
 template `spawnPath=`*(self: MultiplayerSpawner; value) = self.setSpawnPath(value)

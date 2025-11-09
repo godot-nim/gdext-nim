@@ -7,54 +7,64 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(PhysicsPointQueryParameters3D, RefCounted)
 
 proc setPosition*(self: PhysicsPointQueryParameters3D; position: Vector3): void =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "set_position", 3460891852)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "set_position", 3460891852)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getPosition*(self: PhysicsPointQueryParameters3D): Vector3 =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "get_position", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "get_position", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setCollisionMask*(self: PhysicsPointQueryParameters3D; collisionMask: uint32): void =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "set_collision_mask", 1286410249)
-  methodbind.ptrcall(self, [getPtr collisionMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "set_collision_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr collisionMask], void)
 
 proc getCollisionMask*(self: PhysicsPointQueryParameters3D): uint32 =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "get_collision_mask", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "get_collision_mask", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setExclude*(self: PhysicsPointQueryParameters3D; exclude: TypedArray[RID]): void =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "set_exclude", 381264803)
-  methodbind.ptrcall(self, [getPtr exclude])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "set_exclude", 381264803)
+  methodbind.ptrcall(self, [getPtr exclude], void)
 
 proc getExclude*(self: PhysicsPointQueryParameters3D): TypedArray[RID] =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "get_exclude", 3995934104)
-  var ret: encoded TypedArray[RID]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "get_exclude", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[RID])
 
 proc setCollideWithBodies*(self: PhysicsPointQueryParameters3D; enable: bool): void =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "set_collide_with_bodies", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "set_collide_with_bodies", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isCollideWithBodiesEnabled*(self: PhysicsPointQueryParameters3D): bool =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "is_collide_with_bodies_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "is_collide_with_bodies_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollideWithAreas*(self: PhysicsPointQueryParameters3D; enable: bool): void =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "set_collide_with_areas", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "set_collide_with_areas", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isCollideWithAreasEnabled*(self: PhysicsPointQueryParameters3D): bool =
-  expandMethodBind(className PhysicsPointQueryParameters3D, "is_collide_with_areas_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsPointQueryParameters3D, "is_collide_with_areas_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template position*(self: PhysicsPointQueryParameters3D): untyped = self.getPosition()
 template `position=`*(self: PhysicsPointQueryParameters3D; value) = self.setPosition(value)

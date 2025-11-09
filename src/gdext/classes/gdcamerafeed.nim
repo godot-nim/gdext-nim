@@ -17,86 +17,100 @@ proc registerVirtual_deactivateFeed*[T: CameraFeed](Self: typedesc[T]) =
     errproof: cast[CameraFeed](p_instance).deactivateFeed()
 
 proc getId*(self: CameraFeed): int32 =
-  expandMethodBind(className CameraFeed, "get_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc isActive*(self: CameraFeed): bool =
-  expandMethodBind(className CameraFeed, "is_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "is_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setActive*(self: CameraFeed; active: bool): void =
-  expandMethodBind(className CameraFeed, "set_active", 2586408642)
-  methodbind.ptrcall(self, [getPtr active])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr active], void)
 
 proc getName*(self: CameraFeed): String =
-  expandMethodBind(className CameraFeed, "get_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setName*(self: CameraFeed; name: String): void =
-  expandMethodBind(className CameraFeed, "set_name", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_name", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getPosition*(self: CameraFeed): CameraFeed_FeedPosition =
-  expandMethodBind(className CameraFeed, "get_position", 2711679033)
-  var ret: encoded CameraFeed_FeedPosition
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CameraFeed_FeedPosition)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_position", 2711679033)
+  methodbind.ptrcall(self, [], CameraFeed_FeedPosition)
 
 proc setPosition*(self: CameraFeed; position: CameraFeed_FeedPosition): void =
-  expandMethodBind(className CameraFeed, "set_position", 611162623)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_position", 611162623)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getTransform*(self: CameraFeed): Transform2D =
-  expandMethodBind(className CameraFeed, "get_transform", 3814499831)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_transform", 3814499831)
+  methodbind.ptrcall(self, [], Transform2D)
 
 proc setTransform*(self: CameraFeed; transform: Transform2D): void =
-  expandMethodBind(className CameraFeed, "set_transform", 2761652528)
-  methodbind.ptrcall(self, [getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_transform", 2761652528)
+  methodbind.ptrcall(self, [getPtr transform], void)
 
 proc setRgbImage*(self: CameraFeed; rgbImage: gdref Image): void =
-  expandMethodBind(className CameraFeed, "set_rgb_image", 532598488)
-  methodbind.ptrcall(self, [getPtr rgbImage])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_rgb_image", 532598488)
+  methodbind.ptrcall(self, [getPtr rgbImage], void)
 
 proc setYcbcrImage*(self: CameraFeed; ycbcrImage: gdref Image): void =
-  expandMethodBind(className CameraFeed, "set_ycbcr_image", 532598488)
-  methodbind.ptrcall(self, [getPtr ycbcrImage])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_ycbcr_image", 532598488)
+  methodbind.ptrcall(self, [getPtr ycbcrImage], void)
 
 proc setExternal*(self: CameraFeed; width: int32; height: int32): void =
-  expandMethodBind(className CameraFeed, "set_external", 3937882851)
-  methodbind.ptrcall(self, [getPtr width, getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_external", 3937882851)
+  methodbind.ptrcall(self, [getPtr width, getPtr height], void)
 
 proc getTextureTexId*(self: CameraFeed; feedImageType: CameraServer_FeedImage): uint64 =
-  expandMethodBind(className CameraFeed, "get_texture_tex_id", 1135699418)
-  var ret: encoded uint64
-  methodbind.ptrcall(self, [getPtr feedImageType], addr ret)
-  (addr ret).decode_result(uint64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_texture_tex_id", 1135699418)
+  methodbind.ptrcall(self, [getPtr feedImageType], uint64)
 
 proc getDatatype*(self: CameraFeed): CameraFeed_FeedDataType =
-  expandMethodBind(className CameraFeed, "get_datatype", 1477782850)
-  var ret: encoded CameraFeed_FeedDataType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CameraFeed_FeedDataType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_datatype", 1477782850)
+  methodbind.ptrcall(self, [], CameraFeed_FeedDataType)
 
 proc getFormats*(self: CameraFeed): Array =
-  expandMethodBind(className CameraFeed, "get_formats", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "get_formats", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setFormat*(self: CameraFeed; index: int32; parameters: Dictionary): bool =
-  expandMethodBind(className CameraFeed, "set_format", 31872775)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr index, getPtr parameters], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraFeed, "set_format", 31872775)
+  methodbind.ptrcall(self, [getPtr index, getPtr parameters], bool)
 
 template feedIsActive*(self: CameraFeed): untyped = self.isActive()
 template `feedIsActive=`*(self: CameraFeed; value) = self.setActive(value)

@@ -7,19 +7,19 @@ import gdtweener; export gdtweener
 expandOnClassImported(MethodTweener, Tweener)
 
 proc setDelay*(self: MethodTweener; delay: float64): gdref MethodTweener =
-  expandMethodBind(className MethodTweener, "set_delay", 266477812)
-  var ret: encoded gdref MethodTweener
-  methodbind.ptrcall(self, [getPtr delay], addr ret)
-  (addr ret).decode_result(gdref MethodTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MethodTweener, "set_delay", 266477812)
+  methodbind.ptrcall(self, [getPtr delay], gdref MethodTweener)
 
 proc setTrans*(self: MethodTweener; trans: Tween_TransitionType): gdref MethodTweener =
-  expandMethodBind(className MethodTweener, "set_trans", 3740975367)
-  var ret: encoded gdref MethodTweener
-  methodbind.ptrcall(self, [getPtr trans], addr ret)
-  (addr ret).decode_result(gdref MethodTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MethodTweener, "set_trans", 3740975367)
+  methodbind.ptrcall(self, [getPtr trans], gdref MethodTweener)
 
 proc setEase*(self: MethodTweener; ease: Tween_EaseType): gdref MethodTweener =
-  expandMethodBind(className MethodTweener, "set_ease", 315540545)
-  var ret: encoded gdref MethodTweener
-  methodbind.ptrcall(self, [getPtr ease], addr ret)
-  (addr ret).decode_result(gdref MethodTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MethodTweener, "set_ease", 315540545)
+  methodbind.ptrcall(self, [getPtr ease], gdref MethodTweener)

@@ -7,50 +7,58 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(Joint2D, Node2D)
 
 proc setNodeA*(self: Joint2D; node: NodePath): void =
-  expandMethodBind(className Joint2D, "set_node_a", 1348162250)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "set_node_a", 1348162250)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc getNodeA*(self: Joint2D): NodePath =
-  expandMethodBind(className Joint2D, "get_node_a", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "get_node_a", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setNodeB*(self: Joint2D; node: NodePath): void =
-  expandMethodBind(className Joint2D, "set_node_b", 1348162250)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "set_node_b", 1348162250)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc getNodeB*(self: Joint2D): NodePath =
-  expandMethodBind(className Joint2D, "get_node_b", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "get_node_b", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setBias*(self: Joint2D; bias: Float): void =
-  expandMethodBind(className Joint2D, "set_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr bias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "set_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr bias], void)
 
 proc getBias*(self: Joint2D): Float =
-  expandMethodBind(className Joint2D, "get_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "get_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setExcludeNodesFromCollision*(self: Joint2D; enable: bool): void =
-  expandMethodBind(className Joint2D, "set_exclude_nodes_from_collision", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "set_exclude_nodes_from_collision", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getExcludeNodesFromCollision*(self: Joint2D): bool =
-  expandMethodBind(className Joint2D, "get_exclude_nodes_from_collision", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "get_exclude_nodes_from_collision", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getRid*(self: Joint2D): RID =
-  expandMethodBind(className Joint2D, "get_rid", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Joint2D, "get_rid", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 template nodeA*(self: Joint2D): untyped = self.getNodeA()
 template `nodeA=`*(self: Joint2D; value) = self.setNodeA(value)

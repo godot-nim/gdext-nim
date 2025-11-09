@@ -7,121 +7,145 @@ import gdresource; export gdresource
 expandOnClassImported(MeshLibrary, Resource)
 
 proc createItem*(self: MeshLibrary; id: int32): void =
-  expandMethodBind(className MeshLibrary, "create_item", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "create_item", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc setItemName*(self: MeshLibrary; id: int32; name: String): void =
-  expandMethodBind(className MeshLibrary, "set_item_name", 501894301)
-  methodbind.ptrcall(self, [getPtr id, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_name", 501894301)
+  methodbind.ptrcall(self, [getPtr id, getPtr name], void)
 
 proc setItemMesh*(self: MeshLibrary; id: int32; mesh: gdref Mesh): void =
-  expandMethodBind(className MeshLibrary, "set_item_mesh", 969122797)
-  methodbind.ptrcall(self, [getPtr id, getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_mesh", 969122797)
+  methodbind.ptrcall(self, [getPtr id, getPtr mesh], void)
 
 proc setItemMeshTransform*(self: MeshLibrary; id: int32; meshTransform: Transform3D): void =
-  expandMethodBind(className MeshLibrary, "set_item_mesh_transform", 3616898986)
-  methodbind.ptrcall(self, [getPtr id, getPtr meshTransform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_mesh_transform", 3616898986)
+  methodbind.ptrcall(self, [getPtr id, getPtr meshTransform], void)
 
 proc setItemMeshCastShadow*(self: MeshLibrary; id: int32; shadowCastingSetting: RenderingServer_ShadowCastingSetting): void =
-  expandMethodBind(className MeshLibrary, "set_item_mesh_cast_shadow", 3923400443)
-  methodbind.ptrcall(self, [getPtr id, getPtr shadowCastingSetting])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_mesh_cast_shadow", 3923400443)
+  methodbind.ptrcall(self, [getPtr id, getPtr shadowCastingSetting], void)
 
 proc setItemNavigationMesh*(self: MeshLibrary; id: int32; navigationMesh: gdref NavigationMesh): void =
-  expandMethodBind(className MeshLibrary, "set_item_navigation_mesh", 3483353960)
-  methodbind.ptrcall(self, [getPtr id, getPtr navigationMesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_navigation_mesh", 3483353960)
+  methodbind.ptrcall(self, [getPtr id, getPtr navigationMesh], void)
 
 proc setItemNavigationMeshTransform*(self: MeshLibrary; id: int32; navigationMesh: Transform3D): void =
-  expandMethodBind(className MeshLibrary, "set_item_navigation_mesh_transform", 3616898986)
-  methodbind.ptrcall(self, [getPtr id, getPtr navigationMesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_navigation_mesh_transform", 3616898986)
+  methodbind.ptrcall(self, [getPtr id, getPtr navigationMesh], void)
 
 proc setItemNavigationLayers*(self: MeshLibrary; id: int32; navigationLayers: uint32): void =
-  expandMethodBind(className MeshLibrary, "set_item_navigation_layers", 3937882851)
-  methodbind.ptrcall(self, [getPtr id, getPtr navigationLayers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_navigation_layers", 3937882851)
+  methodbind.ptrcall(self, [getPtr id, getPtr navigationLayers], void)
 
 proc setItemShapes*(self: MeshLibrary; id: int32; shapes: Array): void =
-  expandMethodBind(className MeshLibrary, "set_item_shapes", 537221740)
-  methodbind.ptrcall(self, [getPtr id, getPtr shapes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_shapes", 537221740)
+  methodbind.ptrcall(self, [getPtr id, getPtr shapes], void)
 
 proc setItemPreview*(self: MeshLibrary; id: int32; texture: gdref Texture2D): void =
-  expandMethodBind(className MeshLibrary, "set_item_preview", 666127730)
-  methodbind.ptrcall(self, [getPtr id, getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "set_item_preview", 666127730)
+  methodbind.ptrcall(self, [getPtr id, getPtr texture], void)
 
 proc getItemName*(self: MeshLibrary; id: int32): String =
-  expandMethodBind(className MeshLibrary, "get_item_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_name", 844755477)
+  methodbind.ptrcall(self, [getPtr id], String)
 
 proc getItemMesh*(self: MeshLibrary; id: int32): gdref Mesh =
-  expandMethodBind(className MeshLibrary, "get_item_mesh", 1576363275)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_mesh", 1576363275)
+  methodbind.ptrcall(self, [getPtr id], gdref Mesh)
 
 proc getItemMeshTransform*(self: MeshLibrary; id: int32): Transform3D =
-  expandMethodBind(className MeshLibrary, "get_item_mesh_transform", 1965739696)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_mesh_transform", 1965739696)
+  methodbind.ptrcall(self, [getPtr id], Transform3D)
 
 proc getItemMeshCastShadow*(self: MeshLibrary; id: int32): RenderingServer_ShadowCastingSetting =
-  expandMethodBind(className MeshLibrary, "get_item_mesh_cast_shadow", 1841766007)
-  var ret: encoded RenderingServer_ShadowCastingSetting
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(RenderingServer_ShadowCastingSetting)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_mesh_cast_shadow", 1841766007)
+  methodbind.ptrcall(self, [getPtr id], RenderingServer_ShadowCastingSetting)
 
 proc getItemNavigationMesh*(self: MeshLibrary; id: int32): gdref NavigationMesh =
-  expandMethodBind(className MeshLibrary, "get_item_navigation_mesh", 2729647406)
-  var ret: encoded gdref NavigationMesh
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(gdref NavigationMesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_navigation_mesh", 2729647406)
+  methodbind.ptrcall(self, [getPtr id], gdref NavigationMesh)
 
 proc getItemNavigationMeshTransform*(self: MeshLibrary; id: int32): Transform3D =
-  expandMethodBind(className MeshLibrary, "get_item_navigation_mesh_transform", 1965739696)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_navigation_mesh_transform", 1965739696)
+  methodbind.ptrcall(self, [getPtr id], Transform3D)
 
 proc getItemNavigationLayers*(self: MeshLibrary; id: int32): uint32 =
-  expandMethodBind(className MeshLibrary, "get_item_navigation_layers", 923996154)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_navigation_layers", 923996154)
+  methodbind.ptrcall(self, [getPtr id], uint32)
 
 proc getItemShapes*(self: MeshLibrary; id: int32): Array =
-  expandMethodBind(className MeshLibrary, "get_item_shapes", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_shapes", 663333327)
+  methodbind.ptrcall(self, [getPtr id], Array)
 
 proc getItemPreview*(self: MeshLibrary; id: int32): gdref Texture2D =
-  expandMethodBind(className MeshLibrary, "get_item_preview", 3536238170)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_preview", 3536238170)
+  methodbind.ptrcall(self, [getPtr id], gdref Texture2D)
 
 proc removeItem*(self: MeshLibrary; id: int32): void =
-  expandMethodBind(className MeshLibrary, "remove_item", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "remove_item", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc findItemByName*(self: MeshLibrary; name: String): int32 =
-  expandMethodBind(className MeshLibrary, "find_item_by_name", 1321353865)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "find_item_by_name", 1321353865)
+  methodbind.ptrcall(self, [getPtr name], int32)
 
 proc clear*(self: MeshLibrary): void =
-  expandMethodBind(className MeshLibrary, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getItemList*(self: MeshLibrary): PackedInt32Array =
-  expandMethodBind(className MeshLibrary, "get_item_list", 1930428628)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_item_list", 1930428628)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 proc getLastUnusedItemId*(self: MeshLibrary): int32 =
-  expandMethodBind(className MeshLibrary, "get_last_unused_item_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshLibrary, "get_last_unused_item_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)

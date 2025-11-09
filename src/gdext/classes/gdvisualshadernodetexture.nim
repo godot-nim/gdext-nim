@@ -7,34 +7,40 @@ import gdvisualshadernode; export gdvisualshadernode
 expandOnClassImported(VisualShaderNodeTexture, VisualShaderNode)
 
 proc setSource*(self: VisualShaderNodeTexture; value: VisualShaderNodeTexture_Source): void =
-  expandMethodBind(className VisualShaderNodeTexture, "set_source", 905262939)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "set_source", 905262939)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getSource*(self: VisualShaderNodeTexture): VisualShaderNodeTexture_Source =
-  expandMethodBind(className VisualShaderNodeTexture, "get_source", 2896297444)
-  var ret: encoded VisualShaderNodeTexture_Source
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeTexture_Source)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "get_source", 2896297444)
+  methodbind.ptrcall(self, [], VisualShaderNodeTexture_Source)
 
 proc setTexture*(self: VisualShaderNodeTexture; value: gdref Texture2D): void =
-  expandMethodBind(className VisualShaderNodeTexture, "set_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "set_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getTexture*(self: VisualShaderNodeTexture): gdref Texture2D =
-  expandMethodBind(className VisualShaderNodeTexture, "get_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "get_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setTextureType*(self: VisualShaderNodeTexture; value: VisualShaderNodeTexture_TextureType): void =
-  expandMethodBind(className VisualShaderNodeTexture, "set_texture_type", 986314081)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "set_texture_type", 986314081)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getTextureType*(self: VisualShaderNodeTexture): VisualShaderNodeTexture_TextureType =
-  expandMethodBind(className VisualShaderNodeTexture, "get_texture_type", 3290430153)
-  var ret: encoded VisualShaderNodeTexture_TextureType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeTexture_TextureType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTexture, "get_texture_type", 3290430153)
+  methodbind.ptrcall(self, [], VisualShaderNodeTexture_TextureType)
 
 template source*(self: VisualShaderNodeTexture): untyped = self.getSource()
 template `source=`*(self: VisualShaderNodeTexture; value) = self.setSource(value)

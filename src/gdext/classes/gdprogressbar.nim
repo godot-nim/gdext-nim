@@ -7,44 +7,52 @@ import gdrange; export gdrange
 expandOnClassImported(ProgressBar, Range)
 
 proc setFillMode*(self: ProgressBar; mode: int32): void =
-  expandMethodBind(className ProgressBar, "set_fill_mode", 1286410249)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "set_fill_mode", 1286410249)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getFillMode*(self: ProgressBar): int32 =
-  expandMethodBind(className ProgressBar, "get_fill_mode", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "get_fill_mode", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc setShowPercentage*(self: ProgressBar; visible: bool): void =
-  expandMethodBind(className ProgressBar, "set_show_percentage", 2586408642)
-  methodbind.ptrcall(self, [getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "set_show_percentage", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible], void)
 
 proc isPercentageShown*(self: ProgressBar): bool =
-  expandMethodBind(className ProgressBar, "is_percentage_shown", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "is_percentage_shown", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setIndeterminate*(self: ProgressBar; indeterminate: bool): void =
-  expandMethodBind(className ProgressBar, "set_indeterminate", 2586408642)
-  methodbind.ptrcall(self, [getPtr indeterminate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "set_indeterminate", 2586408642)
+  methodbind.ptrcall(self, [getPtr indeterminate], void)
 
 proc isIndeterminate*(self: ProgressBar): bool =
-  expandMethodBind(className ProgressBar, "is_indeterminate", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "is_indeterminate", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEditorPreviewIndeterminate*(self: ProgressBar; previewIndeterminate: bool): void =
-  expandMethodBind(className ProgressBar, "set_editor_preview_indeterminate", 2586408642)
-  methodbind.ptrcall(self, [getPtr previewIndeterminate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "set_editor_preview_indeterminate", 2586408642)
+  methodbind.ptrcall(self, [getPtr previewIndeterminate], void)
 
 proc isEditorPreviewIndeterminateEnabled*(self: ProgressBar): bool =
-  expandMethodBind(className ProgressBar, "is_editor_preview_indeterminate_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ProgressBar, "is_editor_preview_indeterminate_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template fillMode*(self: ProgressBar): untyped = self.getFillMode()
 template `fillMode=`*(self: ProgressBar; value) = self.setFillMode(value)

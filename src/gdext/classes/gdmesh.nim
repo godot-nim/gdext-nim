@@ -77,84 +77,88 @@ proc registerVirtual_getAabb*[T: Mesh](Self: typedesc[T]) =
     errproof: cast[Mesh](p_instance).getAabb().encode(r_ret)
 
 proc setLightmapSizeHint*(self: Mesh; size: Vector2i): void =
-  expandMethodBind(className Mesh, "set_lightmap_size_hint", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "set_lightmap_size_hint", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getLightmapSizeHint*(self: Mesh): Vector2i =
-  expandMethodBind(className Mesh, "get_lightmap_size_hint", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "get_lightmap_size_hint", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc getAabb*(self: Mesh): AABB =
-  expandMethodBind(className Mesh, "get_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "get_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc getFaces*(self: Mesh): PackedVector3Array =
-  expandMethodBind(className Mesh, "get_faces", 497664490)
-  var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector3Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "get_faces", 497664490)
+  methodbind.ptrcall(self, [], PackedVector3Array)
 
 proc getSurfaceCount*(self: Mesh): int32 =
-  expandMethodBind(className Mesh, "get_surface_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "get_surface_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc surfaceGetArrays*(self: Mesh; surfIdx: int32): Array =
-  expandMethodBind(className Mesh, "surface_get_arrays", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "surface_get_arrays", 663333327)
+  methodbind.ptrcall(self, [getPtr surfIdx], Array)
 
 proc surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): TypedArray[Array] =
-  expandMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
-  var ret: encoded TypedArray[Array]
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(TypedArray[Array])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
+  methodbind.ptrcall(self, [getPtr surfIdx], TypedArray[Array])
 
 proc surfaceSetMaterial*(self: Mesh; surfIdx: int32; material: gdref Material): void =
-  expandMethodBind(className Mesh, "surface_set_material", 3671737478)
-  methodbind.ptrcall(self, [getPtr surfIdx, getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "surface_set_material", 3671737478)
+  methodbind.ptrcall(self, [getPtr surfIdx, getPtr material], void)
 
 proc surfaceGetMaterial*(self: Mesh; surfIdx: int32): gdref Material =
-  expandMethodBind(className Mesh, "surface_get_material", 2897466400)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "surface_get_material", 2897466400)
+  methodbind.ptrcall(self, [getPtr surfIdx], gdref Material)
 
 proc createPlaceholder*(self: Mesh): gdref Resource =
-  expandMethodBind(className Mesh, "create_placeholder", 121922552)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "create_placeholder", 121922552)
+  methodbind.ptrcall(self, [], gdref Resource)
 
 proc createTrimeshShape*(self: Mesh): gdref ConcavePolygonShape3D =
-  expandMethodBind(className Mesh, "create_trimesh_shape", 4160111210)
-  var ret: encoded gdref ConcavePolygonShape3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref ConcavePolygonShape3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "create_trimesh_shape", 4160111210)
+  methodbind.ptrcall(self, [], gdref ConcavePolygonShape3D)
 
 proc createConvexShape*(self: Mesh; clean: bool = true; simplify: bool = false): gdref ConvexPolygonShape3D =
-  expandMethodBind(className Mesh, "create_convex_shape", 2529984628)
-  var ret: encoded gdref ConvexPolygonShape3D
-  methodbind.ptrcall(self, [getPtr clean, getPtr simplify], addr ret)
-  (addr ret).decode_result(gdref ConvexPolygonShape3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "create_convex_shape", 2529984628)
+  methodbind.ptrcall(self, [getPtr clean, getPtr simplify], gdref ConvexPolygonShape3D)
 
 proc createOutline*(self: Mesh; margin: Float): gdref Mesh =
-  expandMethodBind(className Mesh, "create_outline", 1208642001)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [getPtr margin], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "create_outline", 1208642001)
+  methodbind.ptrcall(self, [getPtr margin], gdref Mesh)
 
 proc generateTriangleMesh*(self: Mesh): gdref TriangleMesh =
-  expandMethodBind(className Mesh, "generate_triangle_mesh", 3476533166)
-  var ret: encoded gdref TriangleMesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref TriangleMesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mesh, "generate_triangle_mesh", 3476533166)
+  methodbind.ptrcall(self, [], gdref TriangleMesh)
 
 template lightmapSizeHint*(self: Mesh): untyped = self.getLightmapSizeHint()
 template `lightmapSizeHint=`*(self: Mesh; value) = self.setLightmapSizeHint(value)

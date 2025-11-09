@@ -7,172 +7,208 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(Line2D, Node2D)
 
 proc setPoints*(self: Line2D; points: PackedVector2Array): void =
-  expandMethodBind(className Line2D, "set_points", 1509147220)
-  methodbind.ptrcall(self, [getPtr points])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_points", 1509147220)
+  methodbind.ptrcall(self, [getPtr points], void)
 
 proc getPoints*(self: Line2D): PackedVector2Array =
-  expandMethodBind(className Line2D, "get_points", 2961356807)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_points", 2961356807)
+  methodbind.ptrcall(self, [], PackedVector2Array)
 
 proc setPointPosition*(self: Line2D; index: int32; position: Vector2): void =
-  expandMethodBind(className Line2D, "set_point_position", 163021252)
-  methodbind.ptrcall(self, [getPtr index, getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_point_position", 163021252)
+  methodbind.ptrcall(self, [getPtr index, getPtr position], void)
 
 proc getPointPosition*(self: Line2D; index: int32): Vector2 =
-  expandMethodBind(className Line2D, "get_point_position", 2299179447)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_point_position", 2299179447)
+  methodbind.ptrcall(self, [getPtr index], Vector2)
 
 proc getPointCount*(self: Line2D): int32 =
-  expandMethodBind(className Line2D, "get_point_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_point_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc addPoint*(self: Line2D; position: Vector2; index: int32 = -1): void =
-  expandMethodBind(className Line2D, "add_point", 2654014372)
-  methodbind.ptrcall(self, [getPtr position, getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "add_point", 2654014372)
+  methodbind.ptrcall(self, [getPtr position, getPtr index], void)
 
 proc removePoint*(self: Line2D; index: int32): void =
-  expandMethodBind(className Line2D, "remove_point", 1286410249)
-  methodbind.ptrcall(self, [getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "remove_point", 1286410249)
+  methodbind.ptrcall(self, [getPtr index], void)
 
 proc clearPoints*(self: Line2D): void =
-  expandMethodBind(className Line2D, "clear_points", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "clear_points", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setClosed*(self: Line2D; closed: bool): void =
-  expandMethodBind(className Line2D, "set_closed", 2586408642)
-  methodbind.ptrcall(self, [getPtr closed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_closed", 2586408642)
+  methodbind.ptrcall(self, [getPtr closed], void)
 
 proc isClosed*(self: Line2D): bool =
-  expandMethodBind(className Line2D, "is_closed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "is_closed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setWidth*(self: Line2D; width: Float): void =
-  expandMethodBind(className Line2D, "set_width", 373806689)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_width", 373806689)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc getWidth*(self: Line2D): Float =
-  expandMethodBind(className Line2D, "get_width", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_width", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCurve*(self: Line2D; curve: gdref Curve): void =
-  expandMethodBind(className Line2D, "set_curve", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_curve", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getCurve*(self: Line2D): gdref Curve =
-  expandMethodBind(className Line2D, "get_curve", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_curve", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setDefaultColor*(self: Line2D; color: Color): void =
-  expandMethodBind(className Line2D, "set_default_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_default_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getDefaultColor*(self: Line2D): Color =
-  expandMethodBind(className Line2D, "get_default_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_default_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setGradient*(self: Line2D; color: gdref Gradient): void =
-  expandMethodBind(className Line2D, "set_gradient", 2756054477)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_gradient", 2756054477)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getGradient*(self: Line2D): gdref Gradient =
-  expandMethodBind(className Line2D, "get_gradient", 132272999)
-  var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Gradient)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_gradient", 132272999)
+  methodbind.ptrcall(self, [], gdref Gradient)
 
 proc setTexture*(self: Line2D; texture: gdref Texture2D): void =
-  expandMethodBind(className Line2D, "set_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getTexture*(self: Line2D): gdref Texture2D =
-  expandMethodBind(className Line2D, "get_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setTextureMode*(self: Line2D; mode: Line2D_LineTextureMode): void =
-  expandMethodBind(className Line2D, "set_texture_mode", 1952559516)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_texture_mode", 1952559516)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getTextureMode*(self: Line2D): Line2D_LineTextureMode =
-  expandMethodBind(className Line2D, "get_texture_mode", 2341040722)
-  var ret: encoded Line2D_LineTextureMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Line2D_LineTextureMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_texture_mode", 2341040722)
+  methodbind.ptrcall(self, [], Line2D_LineTextureMode)
 
 proc setJointMode*(self: Line2D; mode: Line2D_LineJointMode): void =
-  expandMethodBind(className Line2D, "set_joint_mode", 604292979)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_joint_mode", 604292979)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getJointMode*(self: Line2D): Line2D_LineJointMode =
-  expandMethodBind(className Line2D, "get_joint_mode", 2546544037)
-  var ret: encoded Line2D_LineJointMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Line2D_LineJointMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_joint_mode", 2546544037)
+  methodbind.ptrcall(self, [], Line2D_LineJointMode)
 
 proc setBeginCapMode*(self: Line2D; mode: Line2D_LineCapMode): void =
-  expandMethodBind(className Line2D, "set_begin_cap_mode", 1669024546)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_begin_cap_mode", 1669024546)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getBeginCapMode*(self: Line2D): Line2D_LineCapMode =
-  expandMethodBind(className Line2D, "get_begin_cap_mode", 1107511441)
-  var ret: encoded Line2D_LineCapMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Line2D_LineCapMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_begin_cap_mode", 1107511441)
+  methodbind.ptrcall(self, [], Line2D_LineCapMode)
 
 proc setEndCapMode*(self: Line2D; mode: Line2D_LineCapMode): void =
-  expandMethodBind(className Line2D, "set_end_cap_mode", 1669024546)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_end_cap_mode", 1669024546)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getEndCapMode*(self: Line2D): Line2D_LineCapMode =
-  expandMethodBind(className Line2D, "get_end_cap_mode", 1107511441)
-  var ret: encoded Line2D_LineCapMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Line2D_LineCapMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_end_cap_mode", 1107511441)
+  methodbind.ptrcall(self, [], Line2D_LineCapMode)
 
 proc setSharpLimit*(self: Line2D; limit: Float): void =
-  expandMethodBind(className Line2D, "set_sharp_limit", 373806689)
-  methodbind.ptrcall(self, [getPtr limit])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_sharp_limit", 373806689)
+  methodbind.ptrcall(self, [getPtr limit], void)
 
 proc getSharpLimit*(self: Line2D): Float =
-  expandMethodBind(className Line2D, "get_sharp_limit", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_sharp_limit", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRoundPrecision*(self: Line2D; precision: int32): void =
-  expandMethodBind(className Line2D, "set_round_precision", 1286410249)
-  methodbind.ptrcall(self, [getPtr precision])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_round_precision", 1286410249)
+  methodbind.ptrcall(self, [getPtr precision], void)
 
 proc getRoundPrecision*(self: Line2D): int32 =
-  expandMethodBind(className Line2D, "get_round_precision", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_round_precision", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setAntialiased*(self: Line2D; antialiased: bool): void =
-  expandMethodBind(className Line2D, "set_antialiased", 2586408642)
-  methodbind.ptrcall(self, [getPtr antialiased])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "set_antialiased", 2586408642)
+  methodbind.ptrcall(self, [getPtr antialiased], void)
 
 proc getAntialiased*(self: Line2D): bool =
-  expandMethodBind(className Line2D, "get_antialiased", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Line2D, "get_antialiased", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template points*(self: Line2D): untyped = self.getPoints()
 template `points=`*(self: Line2D; value) = self.setPoints(value)

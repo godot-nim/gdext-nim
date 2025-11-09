@@ -7,40 +7,46 @@ import gdobject; export gdobject
 expandOnClassImported(CameraServer, Object)
 
 proc setMonitoringFeeds*(self: CameraServer; isMonitoringFeeds: bool): void =
-  expandMethodBind(className CameraServer, "set_monitoring_feeds", 2586408642)
-  methodbind.ptrcall(self, [getPtr isMonitoringFeeds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "set_monitoring_feeds", 2586408642)
+  methodbind.ptrcall(self, [getPtr isMonitoringFeeds], void)
 
 proc isMonitoringFeeds*(self: CameraServer): bool =
-  expandMethodBind(className CameraServer, "is_monitoring_feeds", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "is_monitoring_feeds", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getFeed*(self: CameraServer; index: int32): gdref CameraFeed =
-  expandMethodBind(className CameraServer, "get_feed", 361927068)
-  var ret: encoded gdref CameraFeed
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(gdref CameraFeed)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "get_feed", 361927068)
+  methodbind.ptrcall(self, [getPtr index], gdref CameraFeed)
 
 proc getFeedCount*(self: CameraServer): int32 =
-  expandMethodBind(className CameraServer, "get_feed_count", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "get_feed_count", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc feeds*(self: CameraServer): TypedArray[gdref CameraFeed] =
-  expandMethodBind(className CameraServer, "feeds", 2915620761)
-  var ret: encoded TypedArray[gdref CameraFeed]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref CameraFeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "feeds", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref CameraFeed])
 
 proc addFeed*(self: CameraServer; feed: gdref CameraFeed): void =
-  expandMethodBind(className CameraServer, "add_feed", 3204782488)
-  methodbind.ptrcall(self, [getPtr feed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "add_feed", 3204782488)
+  methodbind.ptrcall(self, [getPtr feed], void)
 
 proc removeFeed*(self: CameraServer; feed: gdref CameraFeed): void =
-  expandMethodBind(className CameraServer, "remove_feed", 3204782488)
-  methodbind.ptrcall(self, [getPtr feed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraServer, "remove_feed", 3204782488)
+  methodbind.ptrcall(self, [getPtr feed], void)
 
 template monitoringFeeds*(self: CameraServer): untyped = self.isMonitoringFeeds()
 template `monitoringFeeds=`*(self: CameraServer; value) = self.setMonitoringFeeds(value)

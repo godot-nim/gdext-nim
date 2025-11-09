@@ -7,64 +7,76 @@ import gdcsgprimitive3d; export gdcsgprimitive3d
 expandOnClassImported(CSGCylinder3D, CSGPrimitive3D)
 
 proc setRadius*(self: CSGCylinder3D; radius: Float): void =
-  expandMethodBind(className CSGCylinder3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: CSGCylinder3D): Float =
-  expandMethodBind(className CSGCylinder3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: CSGCylinder3D; height: Float): void =
-  expandMethodBind(className CSGCylinder3D, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getHeight*(self: CSGCylinder3D): Float =
-  expandMethodBind(className CSGCylinder3D, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSides*(self: CSGCylinder3D; sides: int32): void =
-  expandMethodBind(className CSGCylinder3D, "set_sides", 1286410249)
-  methodbind.ptrcall(self, [getPtr sides])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_sides", 1286410249)
+  methodbind.ptrcall(self, [getPtr sides], void)
 
 proc getSides*(self: CSGCylinder3D): int32 =
-  expandMethodBind(className CSGCylinder3D, "get_sides", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "get_sides", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setCone*(self: CSGCylinder3D; cone: bool): void =
-  expandMethodBind(className CSGCylinder3D, "set_cone", 2586408642)
-  methodbind.ptrcall(self, [getPtr cone])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_cone", 2586408642)
+  methodbind.ptrcall(self, [getPtr cone], void)
 
 proc isCone*(self: CSGCylinder3D): bool =
-  expandMethodBind(className CSGCylinder3D, "is_cone", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "is_cone", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMaterial*(self: CSGCylinder3D; material: gdref Material): void =
-  expandMethodBind(className CSGCylinder3D, "set_material", 2757459619)
-  methodbind.ptrcall(self, [getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_material", 2757459619)
+  methodbind.ptrcall(self, [getPtr material], void)
 
 proc getMaterial*(self: CSGCylinder3D): gdref Material =
-  expandMethodBind(className CSGCylinder3D, "get_material", 5934680)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "get_material", 5934680)
+  methodbind.ptrcall(self, [], gdref Material)
 
 proc setSmoothFaces*(self: CSGCylinder3D; smoothFaces: bool): void =
-  expandMethodBind(className CSGCylinder3D, "set_smooth_faces", 2586408642)
-  methodbind.ptrcall(self, [getPtr smoothFaces])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "set_smooth_faces", 2586408642)
+  methodbind.ptrcall(self, [getPtr smoothFaces], void)
 
 proc getSmoothFaces*(self: CSGCylinder3D): bool =
-  expandMethodBind(className CSGCylinder3D, "get_smooth_faces", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CSGCylinder3D, "get_smooth_faces", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template radius*(self: CSGCylinder3D): untyped = self.getRadius()
 template `radius=`*(self: CSGCylinder3D; value) = self.setRadius(value)

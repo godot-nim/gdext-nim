@@ -7,114 +7,136 @@ import gdnode; export gdnode
 expandOnClassImported(CanvasLayer, Node)
 
 proc setLayer*(self: CanvasLayer; layer: int32): void =
-  expandMethodBind(className CanvasLayer, "set_layer", 1286410249)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc getLayer*(self: CanvasLayer): int32 =
-  expandMethodBind(className CanvasLayer, "get_layer", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_layer", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setVisible*(self: CanvasLayer; visible: bool): void =
-  expandMethodBind(className CanvasLayer, "set_visible", 2586408642)
-  methodbind.ptrcall(self, [getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible], void)
 
 proc isVisible*(self: CanvasLayer): bool =
-  expandMethodBind(className CanvasLayer, "is_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "is_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc show*(self: CanvasLayer): void =
-  expandMethodBind(className CanvasLayer, "show", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "show", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc hide*(self: CanvasLayer): void =
-  expandMethodBind(className CanvasLayer, "hide", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "hide", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setTransform*(self: CanvasLayer; transform: Transform2D): void =
-  expandMethodBind(className CanvasLayer, "set_transform", 2761652528)
-  methodbind.ptrcall(self, [getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_transform", 2761652528)
+  methodbind.ptrcall(self, [getPtr transform], void)
 
 proc getTransform*(self: CanvasLayer): Transform2D =
-  expandMethodBind(className CanvasLayer, "get_transform", 3814499831)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_transform", 3814499831)
+  methodbind.ptrcall(self, [], Transform2D)
 
 proc getFinalTransform*(self: CanvasLayer): Transform2D =
-  expandMethodBind(className CanvasLayer, "get_final_transform", 3814499831)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_final_transform", 3814499831)
+  methodbind.ptrcall(self, [], Transform2D)
 
 proc setOffset*(self: CanvasLayer; offset: Vector2): void =
-  expandMethodBind(className CanvasLayer, "set_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getOffset*(self: CanvasLayer): Vector2 =
-  expandMethodBind(className CanvasLayer, "get_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setRotation*(self: CanvasLayer; radians: Float): void =
-  expandMethodBind(className CanvasLayer, "set_rotation", 373806689)
-  methodbind.ptrcall(self, [getPtr radians])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_rotation", 373806689)
+  methodbind.ptrcall(self, [getPtr radians], void)
 
 proc getRotation*(self: CanvasLayer): Float =
-  expandMethodBind(className CanvasLayer, "get_rotation", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_rotation", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setScale*(self: CanvasLayer; scale: Vector2): void =
-  expandMethodBind(className CanvasLayer, "set_scale", 743155724)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_scale", 743155724)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getScale*(self: CanvasLayer): Vector2 =
-  expandMethodBind(className CanvasLayer, "get_scale", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_scale", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setFollowViewport*(self: CanvasLayer; enable: bool): void =
-  expandMethodBind(className CanvasLayer, "set_follow_viewport", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_follow_viewport", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isFollowingViewport*(self: CanvasLayer): bool =
-  expandMethodBind(className CanvasLayer, "is_following_viewport", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "is_following_viewport", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFollowViewportScale*(self: CanvasLayer; scale: Float): void =
-  expandMethodBind(className CanvasLayer, "set_follow_viewport_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_follow_viewport_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getFollowViewportScale*(self: CanvasLayer): Float =
-  expandMethodBind(className CanvasLayer, "get_follow_viewport_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_follow_viewport_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCustomViewport*(self: CanvasLayer; viewport: Node): void =
-  expandMethodBind(className CanvasLayer, "set_custom_viewport", 1078189570)
-  methodbind.ptrcall(self, [getPtr viewport])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "set_custom_viewport", 1078189570)
+  methodbind.ptrcall(self, [getPtr viewport], void)
 
 proc getCustomViewport*(self: CanvasLayer): Node =
-  expandMethodBind(className CanvasLayer, "get_custom_viewport", 3160264692)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_custom_viewport", 3160264692)
+  methodbind.ptrcall(self, [], Node)
 
 proc getCanvas*(self: CanvasLayer): RID =
-  expandMethodBind(className CanvasLayer, "get_canvas", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasLayer, "get_canvas", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 template layer*(self: CanvasLayer): untyped = self.getLayer()
 template `layer=`*(self: CanvasLayer; value) = self.setLayer(value)

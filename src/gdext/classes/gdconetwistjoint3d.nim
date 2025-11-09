@@ -7,14 +7,16 @@ import gdjoint3d; export gdjoint3d
 expandOnClassImported(ConeTwistJoint3D, Joint3D)
 
 proc setParam*(self: ConeTwistJoint3D; param: ConeTwistJoint3D_Param; value: Float): void =
-  expandMethodBind(className ConeTwistJoint3D, "set_param", 1062470226)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConeTwistJoint3D, "set_param", 1062470226)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParam*(self: ConeTwistJoint3D; param: ConeTwistJoint3D_Param): Float =
-  expandMethodBind(className ConeTwistJoint3D, "get_param", 2928790850)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConeTwistJoint3D, "get_param", 2928790850)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 template swingSpan*(self: ConeTwistJoint3D): untyped = self.getParam(ConeTwistJoint3D_Param(0))
 template `swingSpan=`*(self: ConeTwistJoint3D; value) = self.setParam(ConeTwistJoint3D_Param(0), value)

@@ -7,100 +7,124 @@ import gdcontainer; export gdcontainer
 expandOnClassImported(FoldableContainer, Container)
 
 proc fold*(self: FoldableContainer): void =
-  expandMethodBind(className FoldableContainer, "fold", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "fold", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc expand*(self: FoldableContainer): void =
-  expandMethodBind(className FoldableContainer, "expand", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "expand", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setFolded*(self: FoldableContainer; folded: bool): void =
-  expandMethodBind(className FoldableContainer, "set_folded", 2586408642)
-  methodbind.ptrcall(self, [getPtr folded])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_folded", 2586408642)
+  methodbind.ptrcall(self, [getPtr folded], void)
 
 proc isFolded*(self: FoldableContainer): bool =
-  expandMethodBind(className FoldableContainer, "is_folded", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "is_folded", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFoldableGroup*(self: FoldableContainer; buttonGroup: gdref FoldableGroup): void =
-  expandMethodBind(className FoldableContainer, "set_foldable_group", 3001390597)
-  methodbind.ptrcall(self, [getPtr buttonGroup])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_foldable_group", 3001390597)
+  methodbind.ptrcall(self, [getPtr buttonGroup], void)
 
 proc getFoldableGroup*(self: FoldableContainer): gdref FoldableGroup =
-  expandMethodBind(className FoldableContainer, "get_foldable_group", 66499518)
-  var ret: encoded gdref FoldableGroup
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref FoldableGroup)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_foldable_group", 66499518)
+  methodbind.ptrcall(self, [], gdref FoldableGroup)
 
 proc setTitle*(self: FoldableContainer; text: String): void =
-  expandMethodBind(className FoldableContainer, "set_title", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_title", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getTitle*(self: FoldableContainer): String =
-  expandMethodBind(className FoldableContainer, "get_title", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_title", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setTitleAlignment*(self: FoldableContainer; alignment: HorizontalAlignment): void =
-  expandMethodBind(className FoldableContainer, "set_title_alignment", 2312603777)
-  methodbind.ptrcall(self, [getPtr alignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_title_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr alignment], void)
 
 proc getTitleAlignment*(self: FoldableContainer): HorizontalAlignment =
-  expandMethodBind(className FoldableContainer, "get_title_alignment", 341400642)
-  var ret: encoded HorizontalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HorizontalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_title_alignment", 341400642)
+  methodbind.ptrcall(self, [], HorizontalAlignment)
 
 proc setLanguage*(self: FoldableContainer; language: String): void =
-  expandMethodBind(className FoldableContainer, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: FoldableContainer): String =
-  expandMethodBind(className FoldableContainer, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setTitleTextDirection*(self: FoldableContainer; textDirection: Control_TextDirection): void =
-  expandMethodBind(className FoldableContainer, "set_title_text_direction", 119160795)
-  methodbind.ptrcall(self, [getPtr textDirection])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_title_text_direction", 119160795)
+  methodbind.ptrcall(self, [getPtr textDirection], void)
 
 proc getTitleTextDirection*(self: FoldableContainer): Control_TextDirection =
-  expandMethodBind(className FoldableContainer, "get_title_text_direction", 797257663)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_title_text_direction", 797257663)
+  methodbind.ptrcall(self, [], Control_TextDirection)
 
 proc setTitleTextOverrunBehavior*(self: FoldableContainer; overrunBehavior: TextServer_OverrunBehavior): void =
-  expandMethodBind(className FoldableContainer, "set_title_text_overrun_behavior", 1008890932)
-  methodbind.ptrcall(self, [getPtr overrunBehavior])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_title_text_overrun_behavior", 1008890932)
+  methodbind.ptrcall(self, [getPtr overrunBehavior], void)
 
 proc getTitleTextOverrunBehavior*(self: FoldableContainer): TextServer_OverrunBehavior =
-  expandMethodBind(className FoldableContainer, "get_title_text_overrun_behavior", 3779142101)
-  var ret: encoded TextServer_OverrunBehavior
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_OverrunBehavior)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_title_text_overrun_behavior", 3779142101)
+  methodbind.ptrcall(self, [], TextServer_OverrunBehavior)
 
 proc setTitlePosition*(self: FoldableContainer; titlePosition: FoldableContainer_TitlePosition): void =
-  expandMethodBind(className FoldableContainer, "set_title_position", 2276829442)
-  methodbind.ptrcall(self, [getPtr titlePosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "set_title_position", 2276829442)
+  methodbind.ptrcall(self, [getPtr titlePosition], void)
 
 proc getTitlePosition*(self: FoldableContainer): FoldableContainer_TitlePosition =
-  expandMethodBind(className FoldableContainer, "get_title_position", 3028840207)
-  var ret: encoded FoldableContainer_TitlePosition
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FoldableContainer_TitlePosition)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "get_title_position", 3028840207)
+  methodbind.ptrcall(self, [], FoldableContainer_TitlePosition)
 
 proc addTitleBarControl*(self: FoldableContainer; control: Control): void =
-  expandMethodBind(className FoldableContainer, "add_title_bar_control", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "add_title_bar_control", 1496901182)
+  methodbind.ptrcall(self, [getPtr control], void)
 
 proc removeTitleBarControl*(self: FoldableContainer; control: Control): void =
-  expandMethodBind(className FoldableContainer, "remove_title_bar_control", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FoldableContainer, "remove_title_bar_control", 1496901182)
+  methodbind.ptrcall(self, [getPtr control], void)
 
 template folded*(self: FoldableContainer): untyped = self.isFolded()
 template `folded=`*(self: FoldableContainer; value) = self.setFolded(value)

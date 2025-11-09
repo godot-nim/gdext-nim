@@ -7,24 +7,28 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(RDPipelineSpecializationConstant, RefCounted)
 
 proc setValue*(self: RDPipelineSpecializationConstant; value: Variant): void =
-  expandMethodBind(className RDPipelineSpecializationConstant, "set_value", 1114965689)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineSpecializationConstant, "set_value", 1114965689)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getValue*(self: RDPipelineSpecializationConstant): Variant =
-  expandMethodBind(className RDPipelineSpecializationConstant, "get_value", 1214101251)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineSpecializationConstant, "get_value", 1214101251)
+  methodbind.ptrcall(self, [], Variant)
 
 proc setConstantId*(self: RDPipelineSpecializationConstant; constantId: uint32): void =
-  expandMethodBind(className RDPipelineSpecializationConstant, "set_constant_id", 1286410249)
-  methodbind.ptrcall(self, [getPtr constantId])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineSpecializationConstant, "set_constant_id", 1286410249)
+  methodbind.ptrcall(self, [getPtr constantId], void)
 
 proc getConstantId*(self: RDPipelineSpecializationConstant): uint32 =
-  expandMethodBind(className RDPipelineSpecializationConstant, "get_constant_id", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineSpecializationConstant, "get_constant_id", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 template value*(self: RDPipelineSpecializationConstant): untyped = self.getValue()
 template `value=`*(self: RDPipelineSpecializationConstant; value) = self.setValue(value)

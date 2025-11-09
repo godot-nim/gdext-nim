@@ -7,48 +7,52 @@ import gdresource; export gdresource
 expandOnClassImported(Shape2D, Resource)
 
 proc setCustomSolverBias*(self: Shape2D; bias: Float): void =
-  expandMethodBind(className Shape2D, "set_custom_solver_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr bias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "set_custom_solver_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr bias], void)
 
 proc getCustomSolverBias*(self: Shape2D): Float =
-  expandMethodBind(className Shape2D, "get_custom_solver_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "get_custom_solver_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc collide*(self: Shape2D; localXform: Transform2D; withShape: gdref Shape2D; shapeXform: Transform2D): bool =
-  expandMethodBind(className Shape2D, "collide", 3709843132)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr localXform, getPtr withShape, getPtr shapeXform], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "collide", 3709843132)
+  methodbind.ptrcall(self, [getPtr localXform, getPtr withShape, getPtr shapeXform], bool)
 
 proc collideWithMotion*(self: Shape2D; localXform: Transform2D; localMotion: Vector2; withShape: gdref Shape2D; shapeXform: Transform2D; shapeMotion: Vector2): bool =
-  expandMethodBind(className Shape2D, "collide_with_motion", 2869556801)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr localXform, getPtr localMotion, getPtr withShape, getPtr shapeXform, getPtr shapeMotion], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "collide_with_motion", 2869556801)
+  methodbind.ptrcall(self, [getPtr localXform, getPtr localMotion, getPtr withShape, getPtr shapeXform, getPtr shapeMotion], bool)
 
 proc collideAndGetContacts*(self: Shape2D; localXform: Transform2D; withShape: gdref Shape2D; shapeXform: Transform2D): PackedVector2Array =
-  expandMethodBind(className Shape2D, "collide_and_get_contacts", 3056932662)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [getPtr localXform, getPtr withShape, getPtr shapeXform], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "collide_and_get_contacts", 3056932662)
+  methodbind.ptrcall(self, [getPtr localXform, getPtr withShape, getPtr shapeXform], PackedVector2Array)
 
 proc collideWithMotionAndGetContacts*(self: Shape2D; localXform: Transform2D; localMotion: Vector2; withShape: gdref Shape2D; shapeXform: Transform2D; shapeMotion: Vector2): PackedVector2Array =
-  expandMethodBind(className Shape2D, "collide_with_motion_and_get_contacts", 3620351573)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [getPtr localXform, getPtr localMotion, getPtr withShape, getPtr shapeXform, getPtr shapeMotion], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "collide_with_motion_and_get_contacts", 3620351573)
+  methodbind.ptrcall(self, [getPtr localXform, getPtr localMotion, getPtr withShape, getPtr shapeXform, getPtr shapeMotion], PackedVector2Array)
 
 proc draw*(self: Shape2D; canvasItem: RID; color: Color): void =
-  expandMethodBind(className Shape2D, "draw", 2948539648)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "draw", 2948539648)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr color], void)
 
 proc getRect*(self: Shape2D): Rect2 =
-  expandMethodBind(className Shape2D, "get_rect", 1639390495)
-  var ret: encoded Rect2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Rect2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Shape2D, "get_rect", 1639390495)
+  methodbind.ptrcall(self, [], Rect2)
 
 template customSolverBias*(self: Shape2D): untyped = self.getCustomSolverBias()
 template `customSolverBias=`*(self: Shape2D; value) = self.setCustomSolverBias(value)

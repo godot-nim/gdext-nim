@@ -22,13 +22,19 @@ proc registerVirtual_setAabb*[T: PhysicsServer3DRenderingServerHandler](Self: ty
     errproof: cast[PhysicsServer3DRenderingServerHandler](p_instance).setAabb(p_args[0].decode(AABB))
 
 proc setVertex*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; vertex: Vector3): void =
-  expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_vertex", 1530502735)
-  methodbind.ptrcall(self, [getPtr vertexId, getPtr vertex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsServer3DRenderingServerHandler, "set_vertex", 1530502735)
+  methodbind.ptrcall(self, [getPtr vertexId, getPtr vertex], void)
 
 proc setNormal*(self: PhysicsServer3DRenderingServerHandler; vertexId: int32; normal: Vector3): void =
-  expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_normal", 1530502735)
-  methodbind.ptrcall(self, [getPtr vertexId, getPtr normal])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsServer3DRenderingServerHandler, "set_normal", 1530502735)
+  methodbind.ptrcall(self, [getPtr vertexId, getPtr normal], void)
 
 proc setAabb*(self: PhysicsServer3DRenderingServerHandler; aabb: AABB): void =
-  expandMethodBind(className PhysicsServer3DRenderingServerHandler, "set_aabb", 259215842)
-  methodbind.ptrcall(self, [getPtr aabb])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsServer3DRenderingServerHandler, "set_aabb", 259215842)
+  methodbind.ptrcall(self, [getPtr aabb], void)

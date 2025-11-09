@@ -7,19 +7,19 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(HMACContext, RefCounted)
 
 proc start*(self: HMACContext; hashType: HashingContext_HashType; key: PackedByteArray): Error =
-  expandMethodBind(className HMACContext, "start", 3537364598)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr hashType, getPtr key], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className HMACContext, "start", 3537364598)
+  methodbind.ptrcall(self, [getPtr hashType, getPtr key], Error)
 
 proc update*(self: HMACContext; data: PackedByteArray): Error =
-  expandMethodBind(className HMACContext, "update", 680677267)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr data], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className HMACContext, "update", 680677267)
+  methodbind.ptrcall(self, [getPtr data], Error)
 
 proc finish*(self: HMACContext): PackedByteArray =
-  expandMethodBind(className HMACContext, "finish", 2115431945)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className HMACContext, "finish", 2115431945)
+  methodbind.ptrcall(self, [], PackedByteArray)

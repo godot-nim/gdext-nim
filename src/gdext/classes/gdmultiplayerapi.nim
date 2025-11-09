@@ -7,84 +7,88 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(MultiplayerAPI, RefCounted)
 
 proc hasMultiplayerPeer*(self: MultiplayerAPI): bool =
-  expandMethodBind(className MultiplayerAPI, "has_multiplayer_peer", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "has_multiplayer_peer", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getMultiplayerPeer*(self: MultiplayerAPI): gdref MultiplayerPeer =
-  expandMethodBind(className MultiplayerAPI, "get_multiplayer_peer", 3223692825)
-  var ret: encoded gdref MultiplayerPeer
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref MultiplayerPeer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "get_multiplayer_peer", 3223692825)
+  methodbind.ptrcall(self, [], gdref MultiplayerPeer)
 
 proc setMultiplayerPeer*(self: MultiplayerAPI; peer: gdref MultiplayerPeer): void =
-  expandMethodBind(className MultiplayerAPI, "set_multiplayer_peer", 3694835298)
-  methodbind.ptrcall(self, [getPtr peer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "set_multiplayer_peer", 3694835298)
+  methodbind.ptrcall(self, [getPtr peer], void)
 
 proc getUniqueId*(self: MultiplayerAPI): int32 =
-  expandMethodBind(className MultiplayerAPI, "get_unique_id", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "get_unique_id", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc isServer*(self: MultiplayerAPI): bool =
-  expandMethodBind(className MultiplayerAPI, "is_server", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "is_server", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getRemoteSenderId*(self: MultiplayerAPI): int32 =
-  expandMethodBind(className MultiplayerAPI, "get_remote_sender_id", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "get_remote_sender_id", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc poll*(self: MultiplayerAPI): Error =
-  expandMethodBind(className MultiplayerAPI, "poll", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "poll", 166280745)
+  methodbind.ptrcall(self, [], Error)
 
 proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array = newArray()): Error =
-  expandMethodBind(className MultiplayerAPI, "rpc", 2077486355)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr peer, getPtr `object`, getPtr `method`, getPtr arguments], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "rpc", 2077486355)
+  methodbind.ptrcall(self, [getPtr peer, getPtr `object`, getPtr `method`, getPtr arguments], Error)
 
 proc objectConfigurationAdd*(self: MultiplayerAPI; `object`: Object; configuration: Variant): Error =
-  expandMethodBind(className MultiplayerAPI, "object_configuration_add", 1171879464)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr `object`, getPtr configuration], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "object_configuration_add", 1171879464)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr configuration], Error)
 
 proc objectConfigurationRemove*(self: MultiplayerAPI; `object`: Object; configuration: Variant): Error =
-  expandMethodBind(className MultiplayerAPI, "object_configuration_remove", 1171879464)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr `object`, getPtr configuration], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "object_configuration_remove", 1171879464)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr configuration], Error)
 
 proc getPeers*(self: MultiplayerAPI): PackedInt32Array =
-  expandMethodBind(className MultiplayerAPI, "get_peers", 969006518)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "get_peers", 969006518)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 proc setDefaultInterface*(_: typedesc[MultiplayerAPI]; interfaceName: StringName): void =
-  expandMethodBind(className MultiplayerAPI, "set_default_interface", 3304788590)
-  methodbind.ptrcall([getPtr interfaceName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "set_default_interface", 3304788590)
+  methodbind.ptrcall([getPtr interfaceName], void)
 
 proc getDefaultInterface*(_: typedesc[MultiplayerAPI]): StringName =
-  expandMethodBind(className MultiplayerAPI, "get_default_interface", 2737447660)
-  var ret: encoded StringName
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "get_default_interface", 2737447660)
+  methodbind.ptrcall([], StringName)
 
 proc createDefaultInterface*(_: typedesc[MultiplayerAPI]): gdref MultiplayerAPI =
-  expandMethodBind(className MultiplayerAPI, "create_default_interface", 3294156723)
-  var ret: encoded gdref MultiplayerAPI
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(gdref MultiplayerAPI)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerAPI, "create_default_interface", 3294156723)
+  methodbind.ptrcall([], gdref MultiplayerAPI)
 
 template multiplayerPeer*(self: MultiplayerAPI): untyped = self.getMultiplayerPeer()
 template `multiplayerPeer=`*(self: MultiplayerAPI; value) = self.setMultiplayerPeer(value)

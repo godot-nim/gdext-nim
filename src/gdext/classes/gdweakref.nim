@@ -7,7 +7,7 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(WeakRef, RefCounted)
 
 proc getRef*(self: WeakRef): Variant =
-  expandMethodBind(className WeakRef, "get_ref", 1214101251)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WeakRef, "get_ref", 1214101251)
+  methodbind.ptrcall(self, [], Variant)

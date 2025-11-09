@@ -7,24 +7,28 @@ import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
 expandOnClassImported(VisualShaderNodeColorParameter, VisualShaderNodeParameter)
 
 proc setDefaultValueEnabled*(self: VisualShaderNodeColorParameter; enabled: bool): void =
-  expandMethodBind(className VisualShaderNodeColorParameter, "set_default_value_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeColorParameter, "set_default_value_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isDefaultValueEnabled*(self: VisualShaderNodeColorParameter): bool =
-  expandMethodBind(className VisualShaderNodeColorParameter, "is_default_value_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeColorParameter, "is_default_value_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDefaultValue*(self: VisualShaderNodeColorParameter; value: Color): void =
-  expandMethodBind(className VisualShaderNodeColorParameter, "set_default_value", 2920490490)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeColorParameter, "set_default_value", 2920490490)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getDefaultValue*(self: VisualShaderNodeColorParameter): Color =
-  expandMethodBind(className VisualShaderNodeColorParameter, "get_default_value", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeColorParameter, "get_default_value", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 template defaultValueEnabled*(self: VisualShaderNodeColorParameter): untyped = self.isDefaultValueEnabled()
 template `defaultValueEnabled=`*(self: VisualShaderNodeColorParameter; value) = self.setDefaultValueEnabled(value)

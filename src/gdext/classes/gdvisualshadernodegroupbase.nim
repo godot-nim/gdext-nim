@@ -7,103 +7,127 @@ import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
 expandOnClassImported(VisualShaderNodeGroupBase, VisualShaderNodeResizableBase)
 
 proc setInputs*(self: VisualShaderNodeGroupBase; inputs: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_inputs", 83702148)
-  methodbind.ptrcall(self, [getPtr inputs])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_inputs", 83702148)
+  methodbind.ptrcall(self, [getPtr inputs], void)
 
 proc getInputs*(self: VisualShaderNodeGroupBase): String =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_inputs", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_inputs", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setOutputs*(self: VisualShaderNodeGroupBase; outputs: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_outputs", 83702148)
-  methodbind.ptrcall(self, [getPtr outputs])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_outputs", 83702148)
+  methodbind.ptrcall(self, [getPtr outputs], void)
 
 proc getOutputs*(self: VisualShaderNodeGroupBase): String =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_outputs", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_outputs", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc isValidPortName*(self: VisualShaderNodeGroupBase; name: String): bool =
-  expandMethodBind(className VisualShaderNodeGroupBase, "is_valid_port_name", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "is_valid_port_name", 3927539163)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc addInputPort*(self: VisualShaderNodeGroupBase; id: int32; `type`: int32; name: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "add_input_port", 2285447957)
-  methodbind.ptrcall(self, [getPtr id, getPtr `type`, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "add_input_port", 2285447957)
+  methodbind.ptrcall(self, [getPtr id, getPtr `type`, getPtr name], void)
 
 proc removeInputPort*(self: VisualShaderNodeGroupBase; id: int32): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "remove_input_port", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "remove_input_port", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc getInputPortCount*(self: VisualShaderNodeGroupBase): int32 =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_input_port_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_input_port_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc hasInputPort*(self: VisualShaderNodeGroupBase; id: int32): bool =
-  expandMethodBind(className VisualShaderNodeGroupBase, "has_input_port", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "has_input_port", 1116898809)
+  methodbind.ptrcall(self, [getPtr id], bool)
 
 proc clearInputPorts*(self: VisualShaderNodeGroupBase): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "clear_input_ports", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "clear_input_ports", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc addOutputPort*(self: VisualShaderNodeGroupBase; id: int32; `type`: int32; name: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "add_output_port", 2285447957)
-  methodbind.ptrcall(self, [getPtr id, getPtr `type`, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "add_output_port", 2285447957)
+  methodbind.ptrcall(self, [getPtr id, getPtr `type`, getPtr name], void)
 
 proc removeOutputPort*(self: VisualShaderNodeGroupBase; id: int32): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "remove_output_port", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "remove_output_port", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc getOutputPortCount*(self: VisualShaderNodeGroupBase): int32 =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_output_port_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_output_port_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc hasOutputPort*(self: VisualShaderNodeGroupBase; id: int32): bool =
-  expandMethodBind(className VisualShaderNodeGroupBase, "has_output_port", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "has_output_port", 1116898809)
+  methodbind.ptrcall(self, [getPtr id], bool)
 
 proc clearOutputPorts*(self: VisualShaderNodeGroupBase): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "clear_output_ports", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "clear_output_ports", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setInputPortName*(self: VisualShaderNodeGroupBase; id: int32; name: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_input_port_name", 501894301)
-  methodbind.ptrcall(self, [getPtr id, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_input_port_name", 501894301)
+  methodbind.ptrcall(self, [getPtr id, getPtr name], void)
 
 proc setInputPortType*(self: VisualShaderNodeGroupBase; id: int32; `type`: int32): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_input_port_type", 3937882851)
-  methodbind.ptrcall(self, [getPtr id, getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_input_port_type", 3937882851)
+  methodbind.ptrcall(self, [getPtr id, getPtr `type`], void)
 
 proc setOutputPortName*(self: VisualShaderNodeGroupBase; id: int32; name: String): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_output_port_name", 501894301)
-  methodbind.ptrcall(self, [getPtr id, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_output_port_name", 501894301)
+  methodbind.ptrcall(self, [getPtr id, getPtr name], void)
 
 proc setOutputPortType*(self: VisualShaderNodeGroupBase; id: int32; `type`: int32): void =
-  expandMethodBind(className VisualShaderNodeGroupBase, "set_output_port_type", 3937882851)
-  methodbind.ptrcall(self, [getPtr id, getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "set_output_port_type", 3937882851)
+  methodbind.ptrcall(self, [getPtr id, getPtr `type`], void)
 
 proc getFreeInputPortId*(self: VisualShaderNodeGroupBase): int32 =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_free_input_port_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_free_input_port_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getFreeOutputPortId*(self: VisualShaderNodeGroupBase): int32 =
-  expandMethodBind(className VisualShaderNodeGroupBase, "get_free_output_port_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeGroupBase, "get_free_output_port_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)

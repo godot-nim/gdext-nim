@@ -7,34 +7,40 @@ import gdresource; export gdresource
 expandOnClassImported(Sky, Resource)
 
 proc setRadianceSize*(self: Sky; size: Sky_RadianceSize): void =
-  expandMethodBind(className Sky, "set_radiance_size", 1512957179)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "set_radiance_size", 1512957179)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getRadianceSize*(self: Sky): Sky_RadianceSize =
-  expandMethodBind(className Sky, "get_radiance_size", 2708733976)
-  var ret: encoded Sky_RadianceSize
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Sky_RadianceSize)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "get_radiance_size", 2708733976)
+  methodbind.ptrcall(self, [], Sky_RadianceSize)
 
 proc setProcessMode*(self: Sky; mode: Sky_ProcessMode): void =
-  expandMethodBind(className Sky, "set_process_mode", 875986769)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "set_process_mode", 875986769)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getProcessMode*(self: Sky): Sky_ProcessMode =
-  expandMethodBind(className Sky, "get_process_mode", 731245043)
-  var ret: encoded Sky_ProcessMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Sky_ProcessMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "get_process_mode", 731245043)
+  methodbind.ptrcall(self, [], Sky_ProcessMode)
 
 proc setMaterial*(self: Sky; material: gdref Material): void =
-  expandMethodBind(className Sky, "set_material", 2757459619)
-  methodbind.ptrcall(self, [getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "set_material", 2757459619)
+  methodbind.ptrcall(self, [getPtr material], void)
 
 proc getMaterial*(self: Sky): gdref Material =
-  expandMethodBind(className Sky, "get_material", 5934680)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Sky, "get_material", 5934680)
+  methodbind.ptrcall(self, [], gdref Material)
 
 template skyMaterial*(self: Sky): untyped = self.getMaterial()
 template `skyMaterial=`*(self: Sky; value) = self.setMaterial(value)

@@ -42,49 +42,55 @@ proc registerVirtual_drawRectRegion*[T: Texture2D](Self: typedesc[T]) =
     errproof: cast[Texture2D](p_instance).drawRectRegion(p_args[0].decode(RID), p_args[1].decode(Rect2), p_args[2].decode(Rect2), p_args[3].decode(Color), p_args[4].decode(bool), p_args[5].decode(bool))
 
 proc getWidth*(self: Texture2D): int32 =
-  expandMethodBind(className Texture2D, "get_width", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "get_width", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getHeight*(self: Texture2D): int32 =
-  expandMethodBind(className Texture2D, "get_height", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "get_height", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getSize*(self: Texture2D): Vector2 =
-  expandMethodBind(className Texture2D, "get_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "get_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc hasAlpha*(self: Texture2D): bool =
-  expandMethodBind(className Texture2D, "has_alpha", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "has_alpha", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc draw*(self: Texture2D; canvasItem: RID; position: Vector2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
-  expandMethodBind(className Texture2D, "draw", 2729649137)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr position, getPtr modulate, getPtr transpose])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "draw", 2729649137)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr position, getPtr modulate, getPtr transpose], void)
 
 proc drawRect*(self: Texture2D; canvasItem: RID; rect: Rect2; tile: bool; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
-  expandMethodBind(className Texture2D, "draw_rect", 3499451691)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr tile, getPtr modulate, getPtr transpose])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "draw_rect", 3499451691)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr tile, getPtr modulate, getPtr transpose], void)
 
 proc drawRectRegion*(self: Texture2D; canvasItem: RID; rect: Rect2; srcRect: Rect2; modulate: Color = color(1, 1, 1, 1); transpose: bool = false; clipUv: bool = true): void =
-  expandMethodBind(className Texture2D, "draw_rect_region", 2963678660)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr srcRect, getPtr modulate, getPtr transpose, getPtr clipUv])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "draw_rect_region", 2963678660)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect, getPtr srcRect, getPtr modulate, getPtr transpose, getPtr clipUv], void)
 
 proc getImage*(self: Texture2D): gdref Image =
-  expandMethodBind(className Texture2D, "get_image", 4190603485)
-  var ret: encoded gdref Image
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Image)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "get_image", 4190603485)
+  methodbind.ptrcall(self, [], gdref Image)
 
 proc createPlaceholder*(self: Texture2D): gdref Resource =
-  expandMethodBind(className Texture2D, "create_placeholder", 121922552)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Texture2D, "create_placeholder", 121922552)
+  methodbind.ptrcall(self, [], gdref Resource)

@@ -17,5 +17,7 @@ proc registerVirtual_getStreamSamplingRate*[T: AudioStreamPlaybackResampled](Sel
     errproof: cast[AudioStreamPlaybackResampled](p_instance).getStreamSamplingRate().encode(r_ret)
 
 proc beginResample*(self: AudioStreamPlaybackResampled): void =
-  expandMethodBind(className AudioStreamPlaybackResampled, "begin_resample", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaybackResampled, "begin_resample", 3218959716)
+  methodbind.ptrcall(self, [], void)

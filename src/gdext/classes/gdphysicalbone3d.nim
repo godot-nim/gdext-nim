@@ -12,190 +12,226 @@ proc registerVirtual_integrateForces*[T: PhysicalBone3D](Self: typedesc[T]) =
     errproof: cast[PhysicalBone3D](p_instance).integrateForces(p_args[0].decode(PhysicsDirectBodyState3D))
 
 proc applyCentralImpulse*(self: PhysicalBone3D; impulse: Vector3): void =
-  expandMethodBind(className PhysicalBone3D, "apply_central_impulse", 3460891852)
-  methodbind.ptrcall(self, [getPtr impulse])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "apply_central_impulse", 3460891852)
+  methodbind.ptrcall(self, [getPtr impulse], void)
 
 proc applyImpulse*(self: PhysicalBone3D; impulse: Vector3; position: Vector3 = vector3(0, 0, 0)): void =
-  expandMethodBind(className PhysicalBone3D, "apply_impulse", 2754756483)
-  methodbind.ptrcall(self, [getPtr impulse, getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "apply_impulse", 2754756483)
+  methodbind.ptrcall(self, [getPtr impulse, getPtr position], void)
 
 proc setJointType*(self: PhysicalBone3D; jointType: PhysicalBone3D_JointType): void =
-  expandMethodBind(className PhysicalBone3D, "set_joint_type", 2289552604)
-  methodbind.ptrcall(self, [getPtr jointType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_joint_type", 2289552604)
+  methodbind.ptrcall(self, [getPtr jointType], void)
 
 proc getJointType*(self: PhysicalBone3D): PhysicalBone3D_JointType =
-  expandMethodBind(className PhysicalBone3D, "get_joint_type", 931347320)
-  var ret: encoded PhysicalBone3D_JointType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PhysicalBone3D_JointType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_joint_type", 931347320)
+  methodbind.ptrcall(self, [], PhysicalBone3D_JointType)
 
 proc setJointOffset*(self: PhysicalBone3D; offset: Transform3D): void =
-  expandMethodBind(className PhysicalBone3D, "set_joint_offset", 2952846383)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_joint_offset", 2952846383)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getJointOffset*(self: PhysicalBone3D): Transform3D =
-  expandMethodBind(className PhysicalBone3D, "get_joint_offset", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_joint_offset", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 proc setJointRotation*(self: PhysicalBone3D; euler: Vector3): void =
-  expandMethodBind(className PhysicalBone3D, "set_joint_rotation", 3460891852)
-  methodbind.ptrcall(self, [getPtr euler])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_joint_rotation", 3460891852)
+  methodbind.ptrcall(self, [getPtr euler], void)
 
 proc getJointRotation*(self: PhysicalBone3D): Vector3 =
-  expandMethodBind(className PhysicalBone3D, "get_joint_rotation", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_joint_rotation", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setBodyOffset*(self: PhysicalBone3D; offset: Transform3D): void =
-  expandMethodBind(className PhysicalBone3D, "set_body_offset", 2952846383)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_body_offset", 2952846383)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getBodyOffset*(self: PhysicalBone3D): Transform3D =
-  expandMethodBind(className PhysicalBone3D, "get_body_offset", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_body_offset", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 proc getSimulatePhysics*(self: PhysicalBone3D): bool =
-  expandMethodBind(className PhysicalBone3D, "get_simulate_physics", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_simulate_physics", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc isSimulatingPhysics*(self: PhysicalBone3D): bool =
-  expandMethodBind(className PhysicalBone3D, "is_simulating_physics", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "is_simulating_physics", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getBoneId*(self: PhysicalBone3D): int32 =
-  expandMethodBind(className PhysicalBone3D, "get_bone_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_bone_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMass*(self: PhysicalBone3D; mass: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_mass", 373806689)
-  methodbind.ptrcall(self, [getPtr mass])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_mass", 373806689)
+  methodbind.ptrcall(self, [getPtr mass], void)
 
 proc getMass*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_mass", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_mass", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFriction*(self: PhysicalBone3D; friction: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_friction", 373806689)
-  methodbind.ptrcall(self, [getPtr friction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_friction", 373806689)
+  methodbind.ptrcall(self, [getPtr friction], void)
 
 proc getFriction*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_friction", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_friction", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setBounce*(self: PhysicalBone3D; bounce: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_bounce", 373806689)
-  methodbind.ptrcall(self, [getPtr bounce])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_bounce", 373806689)
+  methodbind.ptrcall(self, [getPtr bounce], void)
 
 proc getBounce*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_bounce", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_bounce", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGravityScale*(self: PhysicalBone3D; gravityScale: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_gravity_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr gravityScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_gravity_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr gravityScale], void)
 
 proc getGravityScale*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_gravity_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_gravity_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setLinearDampMode*(self: PhysicalBone3D; linearDampMode: PhysicalBone3D_DampMode): void =
-  expandMethodBind(className PhysicalBone3D, "set_linear_damp_mode", 1244972221)
-  methodbind.ptrcall(self, [getPtr linearDampMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_linear_damp_mode", 1244972221)
+  methodbind.ptrcall(self, [getPtr linearDampMode], void)
 
 proc getLinearDampMode*(self: PhysicalBone3D): PhysicalBone3D_DampMode =
-  expandMethodBind(className PhysicalBone3D, "get_linear_damp_mode", 205884699)
-  var ret: encoded PhysicalBone3D_DampMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PhysicalBone3D_DampMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_linear_damp_mode", 205884699)
+  methodbind.ptrcall(self, [], PhysicalBone3D_DampMode)
 
 proc setAngularDampMode*(self: PhysicalBone3D; angularDampMode: PhysicalBone3D_DampMode): void =
-  expandMethodBind(className PhysicalBone3D, "set_angular_damp_mode", 1244972221)
-  methodbind.ptrcall(self, [getPtr angularDampMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_angular_damp_mode", 1244972221)
+  methodbind.ptrcall(self, [getPtr angularDampMode], void)
 
 proc getAngularDampMode*(self: PhysicalBone3D): PhysicalBone3D_DampMode =
-  expandMethodBind(className PhysicalBone3D, "get_angular_damp_mode", 205884699)
-  var ret: encoded PhysicalBone3D_DampMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PhysicalBone3D_DampMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_angular_damp_mode", 205884699)
+  methodbind.ptrcall(self, [], PhysicalBone3D_DampMode)
 
 proc setLinearDamp*(self: PhysicalBone3D; linearDamp: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_linear_damp", 373806689)
-  methodbind.ptrcall(self, [getPtr linearDamp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_linear_damp", 373806689)
+  methodbind.ptrcall(self, [getPtr linearDamp], void)
 
 proc getLinearDamp*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_linear_damp", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_linear_damp", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAngularDamp*(self: PhysicalBone3D; angularDamp: Float): void =
-  expandMethodBind(className PhysicalBone3D, "set_angular_damp", 373806689)
-  methodbind.ptrcall(self, [getPtr angularDamp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_angular_damp", 373806689)
+  methodbind.ptrcall(self, [getPtr angularDamp], void)
 
 proc getAngularDamp*(self: PhysicalBone3D): Float =
-  expandMethodBind(className PhysicalBone3D, "get_angular_damp", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_angular_damp", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setLinearVelocity*(self: PhysicalBone3D; linearVelocity: Vector3): void =
-  expandMethodBind(className PhysicalBone3D, "set_linear_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr linearVelocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_linear_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr linearVelocity], void)
 
 proc getLinearVelocity*(self: PhysicalBone3D): Vector3 =
-  expandMethodBind(className PhysicalBone3D, "get_linear_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_linear_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setAngularVelocity*(self: PhysicalBone3D; angularVelocity: Vector3): void =
-  expandMethodBind(className PhysicalBone3D, "set_angular_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr angularVelocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_angular_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr angularVelocity], void)
 
 proc getAngularVelocity*(self: PhysicalBone3D): Vector3 =
-  expandMethodBind(className PhysicalBone3D, "get_angular_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "get_angular_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setUseCustomIntegrator*(self: PhysicalBone3D; enable: bool): void =
-  expandMethodBind(className PhysicalBone3D, "set_use_custom_integrator", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_use_custom_integrator", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsingCustomIntegrator*(self: PhysicalBone3D): bool =
-  expandMethodBind(className PhysicalBone3D, "is_using_custom_integrator", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "is_using_custom_integrator", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCanSleep*(self: PhysicalBone3D; ableToSleep: bool): void =
-  expandMethodBind(className PhysicalBone3D, "set_can_sleep", 2586408642)
-  methodbind.ptrcall(self, [getPtr ableToSleep])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "set_can_sleep", 2586408642)
+  methodbind.ptrcall(self, [getPtr ableToSleep], void)
 
 proc isAbleToSleep*(self: PhysicalBone3D): bool =
-  expandMethodBind(className PhysicalBone3D, "is_able_to_sleep", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone3D, "is_able_to_sleep", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template jointType*(self: PhysicalBone3D): untyped = self.getJointType()
 template `jointType=`*(self: PhysicalBone3D; value) = self.setJointType(value)

@@ -72,7 +72,7 @@ proc registerVirtual_getMixRate*[T: VideoStreamPlayback](Self: typedesc[T]) =
     errproof: cast[VideoStreamPlayback](p_instance).getMixRate().encode(r_ret)
 
 proc mixAudio*(self: VideoStreamPlayback; numFrames: int32; buffer: PackedFloat32Array = PackedFloat32Array(); offset: int32 = 0): int32 =
-  expandMethodBind(className VideoStreamPlayback, "mix_audio", 93876830)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr numFrames, getPtr buffer, getPtr offset], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VideoStreamPlayback, "mix_audio", 93876830)
+  methodbind.ptrcall(self, [getPtr numFrames, getPtr buffer, getPtr offset], int32)

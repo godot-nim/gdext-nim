@@ -7,14 +7,16 @@ import gdvisualshadernode; export gdvisualshadernode
 expandOnClassImported(VisualShaderNodeUIntOp, VisualShaderNode)
 
 proc setOperator*(self: VisualShaderNodeUIntOp; op: VisualShaderNodeUIntOp_Operator): void =
-  expandMethodBind(className VisualShaderNodeUIntOp, "set_operator", 3463048345)
-  methodbind.ptrcall(self, [getPtr op])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntOp, "set_operator", 3463048345)
+  methodbind.ptrcall(self, [getPtr op], void)
 
 proc getOperator*(self: VisualShaderNodeUIntOp): VisualShaderNodeUIntOp_Operator =
-  expandMethodBind(className VisualShaderNodeUIntOp, "get_operator", 256631461)
-  var ret: encoded VisualShaderNodeUIntOp_Operator
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeUIntOp_Operator)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntOp, "get_operator", 256631461)
+  methodbind.ptrcall(self, [], VisualShaderNodeUIntOp_Operator)
 
 template operator*(self: VisualShaderNodeUIntOp): untyped = self.getOperator()
 template `operator=`*(self: VisualShaderNodeUIntOp; value) = self.setOperator(value)

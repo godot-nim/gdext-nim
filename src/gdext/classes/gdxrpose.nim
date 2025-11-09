@@ -7,70 +7,82 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(XRPose, RefCounted)
 
 proc setHasTrackingData*(self: XRPose; hasTrackingData: bool): void =
-  expandMethodBind(className XRPose, "set_has_tracking_data", 2586408642)
-  methodbind.ptrcall(self, [getPtr hasTrackingData])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_has_tracking_data", 2586408642)
+  methodbind.ptrcall(self, [getPtr hasTrackingData], void)
 
 proc getHasTrackingData*(self: XRPose): bool =
-  expandMethodBind(className XRPose, "get_has_tracking_data", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_has_tracking_data", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setName*(self: XRPose; name: StringName): void =
-  expandMethodBind(className XRPose, "set_name", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_name", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getName*(self: XRPose): StringName =
-  expandMethodBind(className XRPose, "get_name", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_name", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setTransform*(self: XRPose; transform: Transform3D): void =
-  expandMethodBind(className XRPose, "set_transform", 2952846383)
-  methodbind.ptrcall(self, [getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_transform", 2952846383)
+  methodbind.ptrcall(self, [getPtr transform], void)
 
 proc getTransform*(self: XRPose): Transform3D =
-  expandMethodBind(className XRPose, "get_transform", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_transform", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 proc getAdjustedTransform*(self: XRPose): Transform3D =
-  expandMethodBind(className XRPose, "get_adjusted_transform", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_adjusted_transform", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 proc setLinearVelocity*(self: XRPose; velocity: Vector3): void =
-  expandMethodBind(className XRPose, "set_linear_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_linear_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getLinearVelocity*(self: XRPose): Vector3 =
-  expandMethodBind(className XRPose, "get_linear_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_linear_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setAngularVelocity*(self: XRPose; velocity: Vector3): void =
-  expandMethodBind(className XRPose, "set_angular_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_angular_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getAngularVelocity*(self: XRPose): Vector3 =
-  expandMethodBind(className XRPose, "get_angular_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_angular_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setTrackingConfidence*(self: XRPose; trackingConfidence: XRPose_TrackingConfidence): void =
-  expandMethodBind(className XRPose, "set_tracking_confidence", 4171656666)
-  methodbind.ptrcall(self, [getPtr trackingConfidence])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "set_tracking_confidence", 4171656666)
+  methodbind.ptrcall(self, [getPtr trackingConfidence], void)
 
 proc getTrackingConfidence*(self: XRPose): XRPose_TrackingConfidence =
-  expandMethodBind(className XRPose, "get_tracking_confidence", 2064923680)
-  var ret: encoded XRPose_TrackingConfidence
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(XRPose_TrackingConfidence)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRPose, "get_tracking_confidence", 2064923680)
+  methodbind.ptrcall(self, [], XRPose_TrackingConfidence)
 
 template hasTrackingData*(self: XRPose): untyped = self.getHasTrackingData()
 template `hasTrackingData=`*(self: XRPose; value) = self.setHasTrackingData(value)

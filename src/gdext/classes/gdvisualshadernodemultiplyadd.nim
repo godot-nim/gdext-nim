@@ -7,14 +7,16 @@ import gdvisualshadernode; export gdvisualshadernode
 expandOnClassImported(VisualShaderNodeMultiplyAdd, VisualShaderNode)
 
 proc setOpType*(self: VisualShaderNodeMultiplyAdd; `type`: VisualShaderNodeMultiplyAdd_OpType): void =
-  expandMethodBind(className VisualShaderNodeMultiplyAdd, "set_op_type", 1409862380)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeMultiplyAdd, "set_op_type", 1409862380)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getOpType*(self: VisualShaderNodeMultiplyAdd): VisualShaderNodeMultiplyAdd_OpType =
-  expandMethodBind(className VisualShaderNodeMultiplyAdd, "get_op_type", 2823201991)
-  var ret: encoded VisualShaderNodeMultiplyAdd_OpType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeMultiplyAdd_OpType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeMultiplyAdd, "get_op_type", 2823201991)
+  methodbind.ptrcall(self, [], VisualShaderNodeMultiplyAdd_OpType)
 
 template opType*(self: VisualShaderNodeMultiplyAdd): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeMultiplyAdd; value) = self.setOpType(value)

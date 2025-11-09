@@ -7,13 +7,13 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(SkinReference, RefCounted)
 
 proc getSkeleton*(self: SkinReference): RID =
-  expandMethodBind(className SkinReference, "get_skeleton", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkinReference, "get_skeleton", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc getSkin*(self: SkinReference): gdref Skin =
-  expandMethodBind(className SkinReference, "get_skin", 2074563878)
-  var ret: encoded gdref Skin
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Skin)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkinReference, "get_skin", 2074563878)
+  methodbind.ptrcall(self, [], gdref Skin)

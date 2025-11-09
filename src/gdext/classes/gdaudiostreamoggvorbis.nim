@@ -7,86 +7,100 @@ import gdaudiostream; export gdaudiostream
 expandOnClassImported(AudioStreamOggVorbis, AudioStream)
 
 proc loadFromBuffer*(_: typedesc[AudioStreamOggVorbis]; streamData: PackedByteArray): gdref AudioStreamOggVorbis =
-  expandMethodBind(className AudioStreamOggVorbis, "load_from_buffer", 354904730)
-  var ret: encoded gdref AudioStreamOggVorbis
-  methodbind.ptrcall([getPtr streamData], addr ret)
-  (addr ret).decode_result(gdref AudioStreamOggVorbis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "load_from_buffer", 354904730)
+  methodbind.ptrcall([getPtr streamData], gdref AudioStreamOggVorbis)
 
 proc loadFromFile*(_: typedesc[AudioStreamOggVorbis]; path: String): gdref AudioStreamOggVorbis =
-  expandMethodBind(className AudioStreamOggVorbis, "load_from_file", 797568536)
-  var ret: encoded gdref AudioStreamOggVorbis
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(gdref AudioStreamOggVorbis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "load_from_file", 797568536)
+  methodbind.ptrcall([getPtr path], gdref AudioStreamOggVorbis)
 
 proc setPacketSequence*(self: AudioStreamOggVorbis; packetSequence: gdref OggPacketSequence): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_packet_sequence", 438882457)
-  methodbind.ptrcall(self, [getPtr packetSequence])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_packet_sequence", 438882457)
+  methodbind.ptrcall(self, [getPtr packetSequence], void)
 
 proc getPacketSequence*(self: AudioStreamOggVorbis): gdref OggPacketSequence =
-  expandMethodBind(className AudioStreamOggVorbis, "get_packet_sequence", 2801636033)
-  var ret: encoded gdref OggPacketSequence
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OggPacketSequence)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_packet_sequence", 2801636033)
+  methodbind.ptrcall(self, [], gdref OggPacketSequence)
 
 proc setLoop*(self: AudioStreamOggVorbis; enable: bool): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_loop", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_loop", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc hasLoop*(self: AudioStreamOggVorbis): bool =
-  expandMethodBind(className AudioStreamOggVorbis, "has_loop", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "has_loop", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setLoopOffset*(self: AudioStreamOggVorbis; seconds: float64): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_loop_offset", 373806689)
-  methodbind.ptrcall(self, [getPtr seconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_loop_offset", 373806689)
+  methodbind.ptrcall(self, [getPtr seconds], void)
 
 proc getLoopOffset*(self: AudioStreamOggVorbis): float64 =
-  expandMethodBind(className AudioStreamOggVorbis, "get_loop_offset", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_loop_offset", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setBpm*(self: AudioStreamOggVorbis; bpm: float64): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_bpm", 373806689)
-  methodbind.ptrcall(self, [getPtr bpm])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_bpm", 373806689)
+  methodbind.ptrcall(self, [getPtr bpm], void)
 
 proc getBpm*(self: AudioStreamOggVorbis): float64 =
-  expandMethodBind(className AudioStreamOggVorbis, "get_bpm", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_bpm", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setBeatCount*(self: AudioStreamOggVorbis; count: int32): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_beat_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_beat_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getBeatCount*(self: AudioStreamOggVorbis): int32 =
-  expandMethodBind(className AudioStreamOggVorbis, "get_beat_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_beat_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setBarBeats*(self: AudioStreamOggVorbis; count: int32): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_bar_beats", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_bar_beats", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getBarBeats*(self: AudioStreamOggVorbis): int32 =
-  expandMethodBind(className AudioStreamOggVorbis, "get_bar_beats", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_bar_beats", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTags*(self: AudioStreamOggVorbis; tags: Dictionary): void =
-  expandMethodBind(className AudioStreamOggVorbis, "set_tags", 4155329257)
-  methodbind.ptrcall(self, [getPtr tags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "set_tags", 4155329257)
+  methodbind.ptrcall(self, [getPtr tags], void)
 
 proc getTags*(self: AudioStreamOggVorbis): Dictionary =
-  expandMethodBind(className AudioStreamOggVorbis, "get_tags", 3102165223)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamOggVorbis, "get_tags", 3102165223)
+  methodbind.ptrcall(self, [], Dictionary)
 
 template packetSequence*(self: AudioStreamOggVorbis): untyped = self.getPacketSequence()
 template `packetSequence=`*(self: AudioStreamOggVorbis; value) = self.setPacketSequence(value)

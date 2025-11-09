@@ -7,924 +7,1108 @@ import gdresource; export gdresource
 expandOnClassImported(Environment, Resource)
 
 proc setBackground*(self: Environment; mode: Environment_BGMode): void =
-  expandMethodBind(className Environment, "set_background", 4071623990)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_background", 4071623990)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getBackground*(self: Environment): Environment_BGMode =
-  expandMethodBind(className Environment, "get_background", 1843210413)
-  var ret: encoded Environment_BGMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_BGMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_background", 1843210413)
+  methodbind.ptrcall(self, [], Environment_BGMode)
 
 proc setSky*(self: Environment; sky: gdref Sky): void =
-  expandMethodBind(className Environment, "set_sky", 3336722921)
-  methodbind.ptrcall(self, [getPtr sky])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sky", 3336722921)
+  methodbind.ptrcall(self, [getPtr sky], void)
 
 proc getSky*(self: Environment): gdref Sky =
-  expandMethodBind(className Environment, "get_sky", 1177136966)
-  var ret: encoded gdref Sky
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Sky)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sky", 1177136966)
+  methodbind.ptrcall(self, [], gdref Sky)
 
 proc setSkyCustomFov*(self: Environment; scale: Float): void =
-  expandMethodBind(className Environment, "set_sky_custom_fov", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sky_custom_fov", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getSkyCustomFov*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sky_custom_fov", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sky_custom_fov", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSkyRotation*(self: Environment; eulerRadians: Vector3): void =
-  expandMethodBind(className Environment, "set_sky_rotation", 3460891852)
-  methodbind.ptrcall(self, [getPtr eulerRadians])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sky_rotation", 3460891852)
+  methodbind.ptrcall(self, [getPtr eulerRadians], void)
 
 proc getSkyRotation*(self: Environment): Vector3 =
-  expandMethodBind(className Environment, "get_sky_rotation", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sky_rotation", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setBgColor*(self: Environment; color: Color): void =
-  expandMethodBind(className Environment, "set_bg_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_bg_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getBgColor*(self: Environment): Color =
-  expandMethodBind(className Environment, "get_bg_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_bg_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setBgEnergyMultiplier*(self: Environment; energy: Float): void =
-  expandMethodBind(className Environment, "set_bg_energy_multiplier", 373806689)
-  methodbind.ptrcall(self, [getPtr energy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_bg_energy_multiplier", 373806689)
+  methodbind.ptrcall(self, [getPtr energy], void)
 
 proc getBgEnergyMultiplier*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_bg_energy_multiplier", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_bg_energy_multiplier", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setBgIntensity*(self: Environment; energy: Float): void =
-  expandMethodBind(className Environment, "set_bg_intensity", 373806689)
-  methodbind.ptrcall(self, [getPtr energy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_bg_intensity", 373806689)
+  methodbind.ptrcall(self, [getPtr energy], void)
 
 proc getBgIntensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_bg_intensity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_bg_intensity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCanvasMaxLayer*(self: Environment; layer: int32): void =
-  expandMethodBind(className Environment, "set_canvas_max_layer", 1286410249)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_canvas_max_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc getCanvasMaxLayer*(self: Environment): int32 =
-  expandMethodBind(className Environment, "get_canvas_max_layer", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_canvas_max_layer", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setCameraFeedId*(self: Environment; id: int32): void =
-  expandMethodBind(className Environment, "set_camera_feed_id", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_camera_feed_id", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc getCameraFeedId*(self: Environment): int32 =
-  expandMethodBind(className Environment, "get_camera_feed_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_camera_feed_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setAmbientLightColor*(self: Environment; color: Color): void =
-  expandMethodBind(className Environment, "set_ambient_light_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ambient_light_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getAmbientLightColor*(self: Environment): Color =
-  expandMethodBind(className Environment, "get_ambient_light_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ambient_light_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setAmbientSource*(self: Environment; source: Environment_AmbientSource): void =
-  expandMethodBind(className Environment, "set_ambient_source", 2607780160)
-  methodbind.ptrcall(self, [getPtr source])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ambient_source", 2607780160)
+  methodbind.ptrcall(self, [getPtr source], void)
 
 proc getAmbientSource*(self: Environment): Environment_AmbientSource =
-  expandMethodBind(className Environment, "get_ambient_source", 67453933)
-  var ret: encoded Environment_AmbientSource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_AmbientSource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ambient_source", 67453933)
+  methodbind.ptrcall(self, [], Environment_AmbientSource)
 
 proc setAmbientLightEnergy*(self: Environment; energy: Float): void =
-  expandMethodBind(className Environment, "set_ambient_light_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr energy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ambient_light_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr energy], void)
 
 proc getAmbientLightEnergy*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ambient_light_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ambient_light_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAmbientLightSkyContribution*(self: Environment; ratio: Float): void =
-  expandMethodBind(className Environment, "set_ambient_light_sky_contribution", 373806689)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ambient_light_sky_contribution", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc getAmbientLightSkyContribution*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ambient_light_sky_contribution", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ambient_light_sky_contribution", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setReflectionSource*(self: Environment; source: Environment_ReflectionSource): void =
-  expandMethodBind(className Environment, "set_reflection_source", 299673197)
-  methodbind.ptrcall(self, [getPtr source])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_reflection_source", 299673197)
+  methodbind.ptrcall(self, [getPtr source], void)
 
 proc getReflectionSource*(self: Environment): Environment_ReflectionSource =
-  expandMethodBind(className Environment, "get_reflection_source", 777700713)
-  var ret: encoded Environment_ReflectionSource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_ReflectionSource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_reflection_source", 777700713)
+  methodbind.ptrcall(self, [], Environment_ReflectionSource)
 
 proc setTonemapper*(self: Environment; mode: Environment_ToneMapper): void =
-  expandMethodBind(className Environment, "set_tonemapper", 1509116664)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_tonemapper", 1509116664)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getTonemapper*(self: Environment): Environment_ToneMapper =
-  expandMethodBind(className Environment, "get_tonemapper", 2908408137)
-  var ret: encoded Environment_ToneMapper
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_ToneMapper)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_tonemapper", 2908408137)
+  methodbind.ptrcall(self, [], Environment_ToneMapper)
 
 proc setTonemapExposure*(self: Environment; exposure: Float): void =
-  expandMethodBind(className Environment, "set_tonemap_exposure", 373806689)
-  methodbind.ptrcall(self, [getPtr exposure])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_tonemap_exposure", 373806689)
+  methodbind.ptrcall(self, [getPtr exposure], void)
 
 proc getTonemapExposure*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_tonemap_exposure", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_tonemap_exposure", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTonemapWhite*(self: Environment; white: Float): void =
-  expandMethodBind(className Environment, "set_tonemap_white", 373806689)
-  methodbind.ptrcall(self, [getPtr white])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_tonemap_white", 373806689)
+  methodbind.ptrcall(self, [getPtr white], void)
 
 proc getTonemapWhite*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_tonemap_white", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_tonemap_white", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsrEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_ssr_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssr_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSsrEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_ssr_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_ssr_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSsrMaxSteps*(self: Environment; maxSteps: int32): void =
-  expandMethodBind(className Environment, "set_ssr_max_steps", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxSteps])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssr_max_steps", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxSteps], void)
 
 proc getSsrMaxSteps*(self: Environment): int32 =
-  expandMethodBind(className Environment, "get_ssr_max_steps", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssr_max_steps", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSsrFadeIn*(self: Environment; fadeIn: Float): void =
-  expandMethodBind(className Environment, "set_ssr_fade_in", 373806689)
-  methodbind.ptrcall(self, [getPtr fadeIn])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssr_fade_in", 373806689)
+  methodbind.ptrcall(self, [getPtr fadeIn], void)
 
 proc getSsrFadeIn*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssr_fade_in", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssr_fade_in", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsrFadeOut*(self: Environment; fadeOut: Float): void =
-  expandMethodBind(className Environment, "set_ssr_fade_out", 373806689)
-  methodbind.ptrcall(self, [getPtr fadeOut])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssr_fade_out", 373806689)
+  methodbind.ptrcall(self, [getPtr fadeOut], void)
 
 proc getSsrFadeOut*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssr_fade_out", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssr_fade_out", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsrDepthTolerance*(self: Environment; depthTolerance: Float): void =
-  expandMethodBind(className Environment, "set_ssr_depth_tolerance", 373806689)
-  methodbind.ptrcall(self, [getPtr depthTolerance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssr_depth_tolerance", 373806689)
+  methodbind.ptrcall(self, [getPtr depthTolerance], void)
 
 proc getSsrDepthTolerance*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssr_depth_tolerance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssr_depth_tolerance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_ssao_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSsaoEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_ssao_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_ssao_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSsaoRadius*(self: Environment; radius: Float): void =
-  expandMethodBind(className Environment, "set_ssao_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getSsaoRadius*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoIntensity*(self: Environment; intensity: Float): void =
-  expandMethodBind(className Environment, "set_ssao_intensity", 373806689)
-  methodbind.ptrcall(self, [getPtr intensity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_intensity", 373806689)
+  methodbind.ptrcall(self, [getPtr intensity], void)
 
 proc getSsaoIntensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_intensity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_intensity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoPower*(self: Environment; power: Float): void =
-  expandMethodBind(className Environment, "set_ssao_power", 373806689)
-  methodbind.ptrcall(self, [getPtr power])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_power", 373806689)
+  methodbind.ptrcall(self, [getPtr power], void)
 
 proc getSsaoPower*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_power", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_power", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoDetail*(self: Environment; detail: Float): void =
-  expandMethodBind(className Environment, "set_ssao_detail", 373806689)
-  methodbind.ptrcall(self, [getPtr detail])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_detail", 373806689)
+  methodbind.ptrcall(self, [getPtr detail], void)
 
 proc getSsaoDetail*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_detail", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_detail", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoHorizon*(self: Environment; horizon: Float): void =
-  expandMethodBind(className Environment, "set_ssao_horizon", 373806689)
-  methodbind.ptrcall(self, [getPtr horizon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_horizon", 373806689)
+  methodbind.ptrcall(self, [getPtr horizon], void)
 
 proc getSsaoHorizon*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_horizon", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_horizon", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoSharpness*(self: Environment; sharpness: Float): void =
-  expandMethodBind(className Environment, "set_ssao_sharpness", 373806689)
-  methodbind.ptrcall(self, [getPtr sharpness])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_sharpness", 373806689)
+  methodbind.ptrcall(self, [getPtr sharpness], void)
 
 proc getSsaoSharpness*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_sharpness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_sharpness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoDirectLightAffect*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_ssao_direct_light_affect", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_direct_light_affect", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSsaoDirectLightAffect*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_direct_light_affect", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_direct_light_affect", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsaoAoChannelAffect*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_ssao_ao_channel_affect", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssao_ao_channel_affect", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSsaoAoChannelAffect*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssao_ao_channel_affect", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssao_ao_channel_affect", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsilEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_ssil_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssil_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSsilEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_ssil_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_ssil_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSsilRadius*(self: Environment; radius: Float): void =
-  expandMethodBind(className Environment, "set_ssil_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssil_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getSsilRadius*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssil_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssil_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsilIntensity*(self: Environment; intensity: Float): void =
-  expandMethodBind(className Environment, "set_ssil_intensity", 373806689)
-  methodbind.ptrcall(self, [getPtr intensity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssil_intensity", 373806689)
+  methodbind.ptrcall(self, [getPtr intensity], void)
 
 proc getSsilIntensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssil_intensity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssil_intensity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsilSharpness*(self: Environment; sharpness: Float): void =
-  expandMethodBind(className Environment, "set_ssil_sharpness", 373806689)
-  methodbind.ptrcall(self, [getPtr sharpness])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssil_sharpness", 373806689)
+  methodbind.ptrcall(self, [getPtr sharpness], void)
 
 proc getSsilSharpness*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssil_sharpness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssil_sharpness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSsilNormalRejection*(self: Environment; normalRejection: Float): void =
-  expandMethodBind(className Environment, "set_ssil_normal_rejection", 373806689)
-  methodbind.ptrcall(self, [getPtr normalRejection])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_ssil_normal_rejection", 373806689)
+  methodbind.ptrcall(self, [getPtr normalRejection], void)
 
 proc getSsilNormalRejection*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_ssil_normal_rejection", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_ssil_normal_rejection", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_sdfgi_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSdfgiEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_sdfgi_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_sdfgi_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSdfgiCascades*(self: Environment; amount: int32): void =
-  expandMethodBind(className Environment, "set_sdfgi_cascades", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_cascades", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSdfgiCascades*(self: Environment): int32 =
-  expandMethodBind(className Environment, "get_sdfgi_cascades", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_cascades", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSdfgiMinCellSize*(self: Environment; size: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_min_cell_size", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_min_cell_size", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getSdfgiMinCellSize*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_min_cell_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_min_cell_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiMaxDistance*(self: Environment; distance: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_max_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_max_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getSdfgiMaxDistance*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_max_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_max_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiCascade0Distance*(self: Environment; distance: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_cascade0_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_cascade0_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getSdfgiCascade0Distance*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_cascade0_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_cascade0_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiYScale*(self: Environment; scale: Environment_SDFGIYScale): void =
-  expandMethodBind(className Environment, "set_sdfgi_y_scale", 3608608372)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_y_scale", 3608608372)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getSdfgiYScale*(self: Environment): Environment_SDFGIYScale =
-  expandMethodBind(className Environment, "get_sdfgi_y_scale", 2568002245)
-  var ret: encoded Environment_SDFGIYScale
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_SDFGIYScale)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_y_scale", 2568002245)
+  methodbind.ptrcall(self, [], Environment_SDFGIYScale)
 
 proc setSdfgiUseOcclusion*(self: Environment; enable: bool): void =
-  expandMethodBind(className Environment, "set_sdfgi_use_occlusion", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_use_occlusion", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSdfgiUsingOcclusion*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_sdfgi_using_occlusion", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_sdfgi_using_occlusion", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSdfgiBounceFeedback*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_bounce_feedback", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_bounce_feedback", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSdfgiBounceFeedback*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_bounce_feedback", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_bounce_feedback", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiReadSkyLight*(self: Environment; enable: bool): void =
-  expandMethodBind(className Environment, "set_sdfgi_read_sky_light", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_read_sky_light", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSdfgiReadingSkyLight*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_sdfgi_reading_sky_light", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_sdfgi_reading_sky_light", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSdfgiEnergy*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSdfgiEnergy*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiNormalBias*(self: Environment; bias: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_normal_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr bias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_normal_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr bias], void)
 
 proc getSdfgiNormalBias*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_normal_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_normal_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSdfgiProbeBias*(self: Environment; bias: Float): void =
-  expandMethodBind(className Environment, "set_sdfgi_probe_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr bias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_sdfgi_probe_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr bias], void)
 
 proc getSdfgiProbeBias*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_sdfgi_probe_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_sdfgi_probe_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_glow_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isGlowEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_glow_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_glow_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setGlowLevel*(self: Environment; idx: int32; intensity: Float): void =
-  expandMethodBind(className Environment, "set_glow_level", 1602489585)
-  methodbind.ptrcall(self, [getPtr idx, getPtr intensity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_level", 1602489585)
+  methodbind.ptrcall(self, [getPtr idx, getPtr intensity], void)
 
 proc getGlowLevel*(self: Environment; idx: int32): Float =
-  expandMethodBind(className Environment, "get_glow_level", 2339986948)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_level", 2339986948)
+  methodbind.ptrcall(self, [getPtr idx], Float)
 
 proc setGlowNormalized*(self: Environment; normalize: bool): void =
-  expandMethodBind(className Environment, "set_glow_normalized", 2586408642)
-  methodbind.ptrcall(self, [getPtr normalize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_normalized", 2586408642)
+  methodbind.ptrcall(self, [getPtr normalize], void)
 
 proc isGlowNormalized*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_glow_normalized", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_glow_normalized", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setGlowIntensity*(self: Environment; intensity: Float): void =
-  expandMethodBind(className Environment, "set_glow_intensity", 373806689)
-  methodbind.ptrcall(self, [getPtr intensity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_intensity", 373806689)
+  methodbind.ptrcall(self, [getPtr intensity], void)
 
 proc getGlowIntensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_intensity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_intensity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowStrength*(self: Environment; strength: Float): void =
-  expandMethodBind(className Environment, "set_glow_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr strength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr strength], void)
 
 proc getGlowStrength*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowMix*(self: Environment; mix: Float): void =
-  expandMethodBind(className Environment, "set_glow_mix", 373806689)
-  methodbind.ptrcall(self, [getPtr mix])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_mix", 373806689)
+  methodbind.ptrcall(self, [getPtr mix], void)
 
 proc getGlowMix*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_mix", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_mix", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowBloom*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_glow_bloom", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_bloom", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getGlowBloom*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_bloom", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_bloom", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowBlendMode*(self: Environment; mode: Environment_GlowBlendMode): void =
-  expandMethodBind(className Environment, "set_glow_blend_mode", 2561587761)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_blend_mode", 2561587761)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getGlowBlendMode*(self: Environment): Environment_GlowBlendMode =
-  expandMethodBind(className Environment, "get_glow_blend_mode", 1529667332)
-  var ret: encoded Environment_GlowBlendMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_GlowBlendMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_blend_mode", 1529667332)
+  methodbind.ptrcall(self, [], Environment_GlowBlendMode)
 
 proc setGlowHdrBleedThreshold*(self: Environment; threshold: Float): void =
-  expandMethodBind(className Environment, "set_glow_hdr_bleed_threshold", 373806689)
-  methodbind.ptrcall(self, [getPtr threshold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_hdr_bleed_threshold", 373806689)
+  methodbind.ptrcall(self, [getPtr threshold], void)
 
 proc getGlowHdrBleedThreshold*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_hdr_bleed_threshold", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_hdr_bleed_threshold", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowHdrBleedScale*(self: Environment; scale: Float): void =
-  expandMethodBind(className Environment, "set_glow_hdr_bleed_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_hdr_bleed_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getGlowHdrBleedScale*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_hdr_bleed_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_hdr_bleed_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowHdrLuminanceCap*(self: Environment; amount: Float): void =
-  expandMethodBind(className Environment, "set_glow_hdr_luminance_cap", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_hdr_luminance_cap", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getGlowHdrLuminanceCap*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_hdr_luminance_cap", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_hdr_luminance_cap", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowMapStrength*(self: Environment; strength: Float): void =
-  expandMethodBind(className Environment, "set_glow_map_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr strength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_map_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr strength], void)
 
 proc getGlowMapStrength*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_glow_map_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_map_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlowMap*(self: Environment; mode: gdref Texture): void =
-  expandMethodBind(className Environment, "set_glow_map", 1790811099)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_glow_map", 1790811099)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getGlowMap*(self: Environment): gdref Texture =
-  expandMethodBind(className Environment, "get_glow_map", 4037048985)
-  var ret: encoded gdref Texture
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_glow_map", 4037048985)
+  methodbind.ptrcall(self, [], gdref Texture)
 
 proc setFogEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_fog_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isFogEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_fog_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_fog_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFogMode*(self: Environment; mode: Environment_FogMode): void =
-  expandMethodBind(className Environment, "set_fog_mode", 3059806579)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_mode", 3059806579)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getFogMode*(self: Environment): Environment_FogMode =
-  expandMethodBind(className Environment, "get_fog_mode", 2456062483)
-  var ret: encoded Environment_FogMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Environment_FogMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_mode", 2456062483)
+  methodbind.ptrcall(self, [], Environment_FogMode)
 
 proc setFogLightColor*(self: Environment; lightColor: Color): void =
-  expandMethodBind(className Environment, "set_fog_light_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr lightColor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_light_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr lightColor], void)
 
 proc getFogLightColor*(self: Environment): Color =
-  expandMethodBind(className Environment, "get_fog_light_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_light_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setFogLightEnergy*(self: Environment; lightEnergy: Float): void =
-  expandMethodBind(className Environment, "set_fog_light_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr lightEnergy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_light_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr lightEnergy], void)
 
 proc getFogLightEnergy*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_light_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_light_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogSunScatter*(self: Environment; sunScatter: Float): void =
-  expandMethodBind(className Environment, "set_fog_sun_scatter", 373806689)
-  methodbind.ptrcall(self, [getPtr sunScatter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_sun_scatter", 373806689)
+  methodbind.ptrcall(self, [getPtr sunScatter], void)
 
 proc getFogSunScatter*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_sun_scatter", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_sun_scatter", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogDensity*(self: Environment; density: Float): void =
-  expandMethodBind(className Environment, "set_fog_density", 373806689)
-  methodbind.ptrcall(self, [getPtr density])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_density", 373806689)
+  methodbind.ptrcall(self, [getPtr density], void)
 
 proc getFogDensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_density", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_density", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogHeight*(self: Environment; height: Float): void =
-  expandMethodBind(className Environment, "set_fog_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getFogHeight*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogHeightDensity*(self: Environment; heightDensity: Float): void =
-  expandMethodBind(className Environment, "set_fog_height_density", 373806689)
-  methodbind.ptrcall(self, [getPtr heightDensity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_height_density", 373806689)
+  methodbind.ptrcall(self, [getPtr heightDensity], void)
 
 proc getFogHeightDensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_height_density", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_height_density", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogAerialPerspective*(self: Environment; aerialPerspective: Float): void =
-  expandMethodBind(className Environment, "set_fog_aerial_perspective", 373806689)
-  methodbind.ptrcall(self, [getPtr aerialPerspective])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_aerial_perspective", 373806689)
+  methodbind.ptrcall(self, [getPtr aerialPerspective], void)
 
 proc getFogAerialPerspective*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_aerial_perspective", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_aerial_perspective", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogSkyAffect*(self: Environment; skyAffect: Float): void =
-  expandMethodBind(className Environment, "set_fog_sky_affect", 373806689)
-  methodbind.ptrcall(self, [getPtr skyAffect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_sky_affect", 373806689)
+  methodbind.ptrcall(self, [getPtr skyAffect], void)
 
 proc getFogSkyAffect*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_sky_affect", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_sky_affect", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogDepthCurve*(self: Environment; curve: Float): void =
-  expandMethodBind(className Environment, "set_fog_depth_curve", 373806689)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_depth_curve", 373806689)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getFogDepthCurve*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_depth_curve", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_depth_curve", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogDepthBegin*(self: Environment; begin: Float): void =
-  expandMethodBind(className Environment, "set_fog_depth_begin", 373806689)
-  methodbind.ptrcall(self, [getPtr begin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_depth_begin", 373806689)
+  methodbind.ptrcall(self, [getPtr begin], void)
 
 proc getFogDepthBegin*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_depth_begin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_depth_begin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFogDepthEnd*(self: Environment; `end`: Float): void =
-  expandMethodBind(className Environment, "set_fog_depth_end", 373806689)
-  methodbind.ptrcall(self, [getPtr `end`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_fog_depth_end", 373806689)
+  methodbind.ptrcall(self, [getPtr `end`], void)
 
 proc getFogDepthEnd*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_fog_depth_end", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_fog_depth_end", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isVolumetricFogEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_volumetric_fog_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_volumetric_fog_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVolumetricFogEmission*(self: Environment; color: Color): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_emission", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_emission", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getVolumetricFogEmission*(self: Environment): Color =
-  expandMethodBind(className Environment, "get_volumetric_fog_emission", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_emission", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setVolumetricFogAlbedo*(self: Environment; color: Color): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_albedo", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_albedo", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getVolumetricFogAlbedo*(self: Environment): Color =
-  expandMethodBind(className Environment, "get_volumetric_fog_albedo", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_albedo", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setVolumetricFogDensity*(self: Environment; density: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_density", 373806689)
-  methodbind.ptrcall(self, [getPtr density])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_density", 373806689)
+  methodbind.ptrcall(self, [getPtr density], void)
 
 proc getVolumetricFogDensity*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_density", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_density", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogEmissionEnergy*(self: Environment; begin: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_emission_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr begin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_emission_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr begin], void)
 
 proc getVolumetricFogEmissionEnergy*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_emission_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_emission_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogAnisotropy*(self: Environment; anisotropy: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_anisotropy", 373806689)
-  methodbind.ptrcall(self, [getPtr anisotropy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_anisotropy", 373806689)
+  methodbind.ptrcall(self, [getPtr anisotropy], void)
 
 proc getVolumetricFogAnisotropy*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_anisotropy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_anisotropy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogLength*(self: Environment; length: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_length", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getVolumetricFogLength*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogDetailSpread*(self: Environment; detailSpread: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_detail_spread", 373806689)
-  methodbind.ptrcall(self, [getPtr detailSpread])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_detail_spread", 373806689)
+  methodbind.ptrcall(self, [getPtr detailSpread], void)
 
 proc getVolumetricFogDetailSpread*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_detail_spread", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_detail_spread", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogGiInject*(self: Environment; giInject: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_gi_inject", 373806689)
-  methodbind.ptrcall(self, [getPtr giInject])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_gi_inject", 373806689)
+  methodbind.ptrcall(self, [getPtr giInject], void)
 
 proc getVolumetricFogGiInject*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_gi_inject", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_gi_inject", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogAmbientInject*(self: Environment; enabled: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_ambient_inject", 373806689)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_ambient_inject", 373806689)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getVolumetricFogAmbientInject*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_ambient_inject", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_ambient_inject", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogSkyAffect*(self: Environment; skyAffect: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_sky_affect", 373806689)
-  methodbind.ptrcall(self, [getPtr skyAffect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_sky_affect", 373806689)
+  methodbind.ptrcall(self, [getPtr skyAffect], void)
 
 proc getVolumetricFogSkyAffect*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_sky_affect", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_sky_affect", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVolumetricFogTemporalReprojectionEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_temporal_reprojection_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_temporal_reprojection_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isVolumetricFogTemporalReprojectionEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_volumetric_fog_temporal_reprojection_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_volumetric_fog_temporal_reprojection_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVolumetricFogTemporalReprojectionAmount*(self: Environment; temporalReprojectionAmount: Float): void =
-  expandMethodBind(className Environment, "set_volumetric_fog_temporal_reprojection_amount", 373806689)
-  methodbind.ptrcall(self, [getPtr temporalReprojectionAmount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_volumetric_fog_temporal_reprojection_amount", 373806689)
+  methodbind.ptrcall(self, [getPtr temporalReprojectionAmount], void)
 
 proc getVolumetricFogTemporalReprojectionAmount*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_volumetric_fog_temporal_reprojection_amount", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_volumetric_fog_temporal_reprojection_amount", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAdjustmentEnabled*(self: Environment; enabled: bool): void =
-  expandMethodBind(className Environment, "set_adjustment_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_adjustment_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isAdjustmentEnabled*(self: Environment): bool =
-  expandMethodBind(className Environment, "is_adjustment_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "is_adjustment_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAdjustmentBrightness*(self: Environment; brightness: Float): void =
-  expandMethodBind(className Environment, "set_adjustment_brightness", 373806689)
-  methodbind.ptrcall(self, [getPtr brightness])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_adjustment_brightness", 373806689)
+  methodbind.ptrcall(self, [getPtr brightness], void)
 
 proc getAdjustmentBrightness*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_adjustment_brightness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_adjustment_brightness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAdjustmentContrast*(self: Environment; contrast: Float): void =
-  expandMethodBind(className Environment, "set_adjustment_contrast", 373806689)
-  methodbind.ptrcall(self, [getPtr contrast])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_adjustment_contrast", 373806689)
+  methodbind.ptrcall(self, [getPtr contrast], void)
 
 proc getAdjustmentContrast*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_adjustment_contrast", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_adjustment_contrast", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAdjustmentSaturation*(self: Environment; saturation: Float): void =
-  expandMethodBind(className Environment, "set_adjustment_saturation", 373806689)
-  methodbind.ptrcall(self, [getPtr saturation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_adjustment_saturation", 373806689)
+  methodbind.ptrcall(self, [getPtr saturation], void)
 
 proc getAdjustmentSaturation*(self: Environment): Float =
-  expandMethodBind(className Environment, "get_adjustment_saturation", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_adjustment_saturation", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAdjustmentColorCorrection*(self: Environment; colorCorrection: gdref Texture): void =
-  expandMethodBind(className Environment, "set_adjustment_color_correction", 1790811099)
-  methodbind.ptrcall(self, [getPtr colorCorrection])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "set_adjustment_color_correction", 1790811099)
+  methodbind.ptrcall(self, [getPtr colorCorrection], void)
 
 proc getAdjustmentColorCorrection*(self: Environment): gdref Texture =
-  expandMethodBind(className Environment, "get_adjustment_color_correction", 4037048985)
-  var ret: encoded gdref Texture
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Environment, "get_adjustment_color_correction", 4037048985)
+  methodbind.ptrcall(self, [], gdref Texture)
 
 template backgroundMode*(self: Environment): untyped = self.getBackground()
 template `backgroundMode=`*(self: Environment; value) = self.setBackground(value)

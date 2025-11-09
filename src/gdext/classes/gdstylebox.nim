@@ -27,52 +27,58 @@ proc registerVirtual_testMask*[T: StyleBox](Self: typedesc[T]) =
     errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
 
 proc getMinimumSize*(self: StyleBox): Vector2 =
-  expandMethodBind(className StyleBox, "get_minimum_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "get_minimum_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setContentMargin*(self: StyleBox; margin: Side; offset: Float): void =
-  expandMethodBind(className StyleBox, "set_content_margin", 4290182280)
-  methodbind.ptrcall(self, [getPtr margin, getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "set_content_margin", 4290182280)
+  methodbind.ptrcall(self, [getPtr margin, getPtr offset], void)
 
 proc setContentMarginAll*(self: StyleBox; offset: Float): void =
-  expandMethodBind(className StyleBox, "set_content_margin_all", 373806689)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "set_content_margin_all", 373806689)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getContentMargin*(self: StyleBox; margin: Side): Float =
-  expandMethodBind(className StyleBox, "get_content_margin", 2869120046)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr margin], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "get_content_margin", 2869120046)
+  methodbind.ptrcall(self, [getPtr margin], Float)
 
 proc getMargin*(self: StyleBox; margin: Side): Float =
-  expandMethodBind(className StyleBox, "get_margin", 2869120046)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr margin], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "get_margin", 2869120046)
+  methodbind.ptrcall(self, [getPtr margin], Float)
 
 proc getOffset*(self: StyleBox): Vector2 =
-  expandMethodBind(className StyleBox, "get_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "get_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc draw*(self: StyleBox; canvasItem: RID; rect: Rect2): void =
-  expandMethodBind(className StyleBox, "draw", 2275962004)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "draw", 2275962004)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect], void)
 
 proc getCurrentItemDrawn*(self: StyleBox): CanvasItem =
-  expandMethodBind(className StyleBox, "get_current_item_drawn", 3213695180)
-  var ret: encoded CanvasItem
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CanvasItem)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "get_current_item_drawn", 3213695180)
+  methodbind.ptrcall(self, [], CanvasItem)
 
 proc testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool =
-  expandMethodBind(className StyleBox, "test_mask", 3735564539)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr point, getPtr rect], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBox, "test_mask", 3735564539)
+  methodbind.ptrcall(self, [getPtr point, getPtr rect], bool)
 
 template contentMarginLeft*(self: StyleBox): untyped = self.getContentMargin(Side(0))
 template `contentMarginLeft=`*(self: StyleBox; value) = self.setContentMargin(Side(0), value)

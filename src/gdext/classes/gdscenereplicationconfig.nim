@@ -7,67 +7,79 @@ import gdresource; export gdresource
 expandOnClassImported(SceneReplicationConfig, Resource)
 
 proc getProperties*(self: SceneReplicationConfig): TypedArray[NodePath] =
-  expandMethodBind(className SceneReplicationConfig, "get_properties", 3995934104)
-  var ret: encoded TypedArray[NodePath]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "get_properties", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[NodePath])
 
 proc addProperty*(self: SceneReplicationConfig; path: NodePath; index: int32 = -1): void =
-  expandMethodBind(className SceneReplicationConfig, "add_property", 4094619021)
-  methodbind.ptrcall(self, [getPtr path, getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "add_property", 4094619021)
+  methodbind.ptrcall(self, [getPtr path, getPtr index], void)
 
 proc hasProperty*(self: SceneReplicationConfig; path: NodePath): bool =
-  expandMethodBind(className SceneReplicationConfig, "has_property", 861721659)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "has_property", 861721659)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc removeProperty*(self: SceneReplicationConfig; path: NodePath): void =
-  expandMethodBind(className SceneReplicationConfig, "remove_property", 1348162250)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "remove_property", 1348162250)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc propertyGetIndex*(self: SceneReplicationConfig; path: NodePath): int32 =
-  expandMethodBind(className SceneReplicationConfig, "property_get_index", 1382022557)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_get_index", 1382022557)
+  methodbind.ptrcall(self, [getPtr path], int32)
 
 proc propertyGetSpawn*(self: SceneReplicationConfig; path: NodePath): bool =
-  expandMethodBind(className SceneReplicationConfig, "property_get_spawn", 3456846888)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_get_spawn", 3456846888)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc propertySetSpawn*(self: SceneReplicationConfig; path: NodePath; enabled: bool): void =
-  expandMethodBind(className SceneReplicationConfig, "property_set_spawn", 3868023870)
-  methodbind.ptrcall(self, [getPtr path, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_set_spawn", 3868023870)
+  methodbind.ptrcall(self, [getPtr path, getPtr enabled], void)
 
 proc propertyGetReplicationMode*(self: SceneReplicationConfig; path: NodePath): SceneReplicationConfig_ReplicationMode =
-  expandMethodBind(className SceneReplicationConfig, "property_get_replication_mode", 2870606336)
-  var ret: encoded SceneReplicationConfig_ReplicationMode
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(SceneReplicationConfig_ReplicationMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_get_replication_mode", 2870606336)
+  methodbind.ptrcall(self, [getPtr path], SceneReplicationConfig_ReplicationMode)
 
 proc propertySetReplicationMode*(self: SceneReplicationConfig; path: NodePath; mode: SceneReplicationConfig_ReplicationMode): void =
-  expandMethodBind(className SceneReplicationConfig, "property_set_replication_mode", 3200083865)
-  methodbind.ptrcall(self, [getPtr path, getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_set_replication_mode", 3200083865)
+  methodbind.ptrcall(self, [getPtr path, getPtr mode], void)
 
 proc propertyGetSync*(self: SceneReplicationConfig; path: NodePath): bool =
-  expandMethodBind(className SceneReplicationConfig, "property_get_sync", 3456846888)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_get_sync", 3456846888)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc propertySetSync*(self: SceneReplicationConfig; path: NodePath; enabled: bool): void =
-  expandMethodBind(className SceneReplicationConfig, "property_set_sync", 3868023870)
-  methodbind.ptrcall(self, [getPtr path, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_set_sync", 3868023870)
+  methodbind.ptrcall(self, [getPtr path, getPtr enabled], void)
 
 proc propertyGetWatch*(self: SceneReplicationConfig; path: NodePath): bool =
-  expandMethodBind(className SceneReplicationConfig, "property_get_watch", 3456846888)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_get_watch", 3456846888)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc propertySetWatch*(self: SceneReplicationConfig; path: NodePath; enabled: bool): void =
-  expandMethodBind(className SceneReplicationConfig, "property_set_watch", 3868023870)
-  methodbind.ptrcall(self, [getPtr path, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneReplicationConfig, "property_set_watch", 3868023870)
+  methodbind.ptrcall(self, [getPtr path, getPtr enabled], void)

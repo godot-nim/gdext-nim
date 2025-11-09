@@ -7,18 +7,22 @@ import gdtexturelayered; export gdtexturelayered
 expandOnClassImported(PlaceholderTextureLayered, TextureLayered)
 
 proc setSize*(self: PlaceholderTextureLayered; size: Vector2i): void =
-  expandMethodBind(className PlaceholderTextureLayered, "set_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PlaceholderTextureLayered, "set_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getSize*(self: PlaceholderTextureLayered): Vector2i =
-  expandMethodBind(className PlaceholderTextureLayered, "get_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PlaceholderTextureLayered, "get_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setLayers*(self: PlaceholderTextureLayered; layers: int32): void =
-  expandMethodBind(className PlaceholderTextureLayered, "set_layers", 1286410249)
-  methodbind.ptrcall(self, [getPtr layers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PlaceholderTextureLayered, "set_layers", 1286410249)
+  methodbind.ptrcall(self, [getPtr layers], void)
 
 template size*(self: PlaceholderTextureLayered): untyped = self.getSize()
 template `size=`*(self: PlaceholderTextureLayered; value) = self.setSize(value)

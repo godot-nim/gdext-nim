@@ -7,39 +7,43 @@ import gdresource; export gdresource
 expandOnClassImported(AnimationLibrary, Resource)
 
 proc addAnimation*(self: AnimationLibrary; name: StringName; animation: gdref Animation): Error =
-  expandMethodBind(className AnimationLibrary, "add_animation", 1811855551)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr name, getPtr animation], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "add_animation", 1811855551)
+  methodbind.ptrcall(self, [getPtr name, getPtr animation], Error)
 
 proc removeAnimation*(self: AnimationLibrary; name: StringName): void =
-  expandMethodBind(className AnimationLibrary, "remove_animation", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "remove_animation", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc renameAnimation*(self: AnimationLibrary; name: StringName; newname: StringName): void =
-  expandMethodBind(className AnimationLibrary, "rename_animation", 3740211285)
-  methodbind.ptrcall(self, [getPtr name, getPtr newname])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "rename_animation", 3740211285)
+  methodbind.ptrcall(self, [getPtr name, getPtr newname], void)
 
 proc hasAnimation*(self: AnimationLibrary; name: StringName): bool =
-  expandMethodBind(className AnimationLibrary, "has_animation", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "has_animation", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc getAnimation*(self: AnimationLibrary; name: StringName): gdref Animation =
-  expandMethodBind(className AnimationLibrary, "get_animation", 2933122410)
-  var ret: encoded gdref Animation
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(gdref Animation)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "get_animation", 2933122410)
+  methodbind.ptrcall(self, [getPtr name], gdref Animation)
 
 proc getAnimationList*(self: AnimationLibrary): TypedArray[StringName] =
-  expandMethodBind(className AnimationLibrary, "get_animation_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "get_animation_list", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[StringName])
 
 proc getAnimationListSize*(self: AnimationLibrary): int32 =
-  expandMethodBind(className AnimationLibrary, "get_animation_list_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationLibrary, "get_animation_list_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)

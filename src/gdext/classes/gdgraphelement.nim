@@ -7,54 +7,64 @@ import gdcontainer; export gdcontainer
 expandOnClassImported(GraphElement, Container)
 
 proc setResizable*(self: GraphElement; resizable: bool): void =
-  expandMethodBind(className GraphElement, "set_resizable", 2586408642)
-  methodbind.ptrcall(self, [getPtr resizable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "set_resizable", 2586408642)
+  methodbind.ptrcall(self, [getPtr resizable], void)
 
 proc isResizable*(self: GraphElement): bool =
-  expandMethodBind(className GraphElement, "is_resizable", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "is_resizable", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDraggable*(self: GraphElement; draggable: bool): void =
-  expandMethodBind(className GraphElement, "set_draggable", 2586408642)
-  methodbind.ptrcall(self, [getPtr draggable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "set_draggable", 2586408642)
+  methodbind.ptrcall(self, [getPtr draggable], void)
 
 proc isDraggable*(self: GraphElement): bool =
-  expandMethodBind(className GraphElement, "is_draggable", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "is_draggable", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSelectable*(self: GraphElement; selectable: bool): void =
-  expandMethodBind(className GraphElement, "set_selectable", 2586408642)
-  methodbind.ptrcall(self, [getPtr selectable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "set_selectable", 2586408642)
+  methodbind.ptrcall(self, [getPtr selectable], void)
 
 proc isSelectable*(self: GraphElement): bool =
-  expandMethodBind(className GraphElement, "is_selectable", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "is_selectable", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSelected*(self: GraphElement; selected: bool): void =
-  expandMethodBind(className GraphElement, "set_selected", 2586408642)
-  methodbind.ptrcall(self, [getPtr selected])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "set_selected", 2586408642)
+  methodbind.ptrcall(self, [getPtr selected], void)
 
 proc isSelected*(self: GraphElement): bool =
-  expandMethodBind(className GraphElement, "is_selected", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "is_selected", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPositionOffset*(self: GraphElement; offset: Vector2): void =
-  expandMethodBind(className GraphElement, "set_position_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "set_position_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getPositionOffset*(self: GraphElement): Vector2 =
-  expandMethodBind(className GraphElement, "get_position_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GraphElement, "get_position_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 template positionOffset*(self: GraphElement): untyped = self.getPositionOffset()
 template `positionOffset=`*(self: GraphElement; value) = self.setPositionOffset(value)

@@ -9,67 +9,73 @@ expandOnClassImported(ResourceUID, Object)
 const InvalidId* = -1
 
 proc idToText*(self: ResourceUID; id: int64): String =
-  expandMethodBind(className ResourceUID, "id_to_text", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "id_to_text", 844755477)
+  methodbind.ptrcall(self, [getPtr id], String)
 
 proc textToId*(self: ResourceUID; textId: String): int64 =
-  expandMethodBind(className ResourceUID, "text_to_id", 1321353865)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [getPtr textId], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "text_to_id", 1321353865)
+  methodbind.ptrcall(self, [getPtr textId], int64)
 
 proc createId*(self: ResourceUID): int64 =
-  expandMethodBind(className ResourceUID, "create_id", 2455072627)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "create_id", 2455072627)
+  methodbind.ptrcall(self, [], int64)
 
 proc createIdForPath*(self: ResourceUID; path: String): int64 =
-  expandMethodBind(className ResourceUID, "create_id_for_path", 1597066294)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "create_id_for_path", 1597066294)
+  methodbind.ptrcall(self, [getPtr path], int64)
 
 proc hasId*(self: ResourceUID; id: int64): bool =
-  expandMethodBind(className ResourceUID, "has_id", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "has_id", 1116898809)
+  methodbind.ptrcall(self, [getPtr id], bool)
 
 proc addId*(self: ResourceUID; id: int64; path: String): void =
-  expandMethodBind(className ResourceUID, "add_id", 501894301)
-  methodbind.ptrcall(self, [getPtr id, getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "add_id", 501894301)
+  methodbind.ptrcall(self, [getPtr id, getPtr path], void)
 
 proc setId*(self: ResourceUID; id: int64; path: String): void =
-  expandMethodBind(className ResourceUID, "set_id", 501894301)
-  methodbind.ptrcall(self, [getPtr id, getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "set_id", 501894301)
+  methodbind.ptrcall(self, [getPtr id, getPtr path], void)
 
 proc getIdPath*(self: ResourceUID; id: int64): String =
-  expandMethodBind(className ResourceUID, "get_id_path", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "get_id_path", 844755477)
+  methodbind.ptrcall(self, [getPtr id], String)
 
 proc removeId*(self: ResourceUID; id: int64): void =
-  expandMethodBind(className ResourceUID, "remove_id", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "remove_id", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc uidToPath*(_: typedesc[ResourceUID]; uid: String): String =
-  expandMethodBind(className ResourceUID, "uid_to_path", 1703090593)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr uid], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "uid_to_path", 1703090593)
+  methodbind.ptrcall([getPtr uid], String)
 
 proc pathToUid*(_: typedesc[ResourceUID]; path: String): String =
-  expandMethodBind(className ResourceUID, "path_to_uid", 1703090593)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "path_to_uid", 1703090593)
+  methodbind.ptrcall([getPtr path], String)
 
 proc ensurePath*(_: typedesc[ResourceUID]; pathOrUid: String): String =
-  expandMethodBind(className ResourceUID, "ensure_path", 1703090593)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr pathOrUid], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceUID, "ensure_path", 1703090593)
+  methodbind.ptrcall([getPtr pathOrUid], String)

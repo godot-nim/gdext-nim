@@ -7,86 +7,106 @@ import gdnode; export gdnode
 expandOnClassImported(MultiplayerSynchronizer, Node)
 
 proc setRootPath*(self: MultiplayerSynchronizer; path: NodePath): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_root_path", 1348162250)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_root_path", 1348162250)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getRootPath*(self: MultiplayerSynchronizer): NodePath =
-  expandMethodBind(className MultiplayerSynchronizer, "get_root_path", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_root_path", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setReplicationInterval*(self: MultiplayerSynchronizer; milliseconds: float64): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_replication_interval", 373806689)
-  methodbind.ptrcall(self, [getPtr milliseconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_replication_interval", 373806689)
+  methodbind.ptrcall(self, [getPtr milliseconds], void)
 
 proc getReplicationInterval*(self: MultiplayerSynchronizer): float64 =
-  expandMethodBind(className MultiplayerSynchronizer, "get_replication_interval", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_replication_interval", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setDeltaInterval*(self: MultiplayerSynchronizer; milliseconds: float64): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_delta_interval", 373806689)
-  methodbind.ptrcall(self, [getPtr milliseconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_delta_interval", 373806689)
+  methodbind.ptrcall(self, [getPtr milliseconds], void)
 
 proc getDeltaInterval*(self: MultiplayerSynchronizer): float64 =
-  expandMethodBind(className MultiplayerSynchronizer, "get_delta_interval", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_delta_interval", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setReplicationConfig*(self: MultiplayerSynchronizer; config: gdref SceneReplicationConfig): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_replication_config", 3889206742)
-  methodbind.ptrcall(self, [getPtr config])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_replication_config", 3889206742)
+  methodbind.ptrcall(self, [getPtr config], void)
 
 proc getReplicationConfig*(self: MultiplayerSynchronizer): gdref SceneReplicationConfig =
-  expandMethodBind(className MultiplayerSynchronizer, "get_replication_config", 3200254614)
-  var ret: encoded gdref SceneReplicationConfig
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref SceneReplicationConfig)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_replication_config", 3200254614)
+  methodbind.ptrcall(self, [], gdref SceneReplicationConfig)
 
 proc setVisibilityUpdateMode*(self: MultiplayerSynchronizer; mode: MultiplayerSynchronizer_VisibilityUpdateMode): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_visibility_update_mode", 3494860300)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_visibility_update_mode", 3494860300)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getVisibilityUpdateMode*(self: MultiplayerSynchronizer): MultiplayerSynchronizer_VisibilityUpdateMode =
-  expandMethodBind(className MultiplayerSynchronizer, "get_visibility_update_mode", 3352241418)
-  var ret: encoded MultiplayerSynchronizer_VisibilityUpdateMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(MultiplayerSynchronizer_VisibilityUpdateMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_visibility_update_mode", 3352241418)
+  methodbind.ptrcall(self, [], MultiplayerSynchronizer_VisibilityUpdateMode)
 
 proc updateVisibility*(self: MultiplayerSynchronizer; forPeer: int32 = 0): void =
-  expandMethodBind(className MultiplayerSynchronizer, "update_visibility", 1995695955)
-  methodbind.ptrcall(self, [getPtr forPeer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "update_visibility", 1995695955)
+  methodbind.ptrcall(self, [getPtr forPeer], void)
 
 proc setVisibilityPublic*(self: MultiplayerSynchronizer; visible: bool): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_visibility_public", 2586408642)
-  methodbind.ptrcall(self, [getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_visibility_public", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible], void)
 
 proc isVisibilityPublic*(self: MultiplayerSynchronizer): bool =
-  expandMethodBind(className MultiplayerSynchronizer, "is_visibility_public", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "is_visibility_public", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc addVisibilityFilter*(self: MultiplayerSynchronizer; filter: Callable): void =
-  expandMethodBind(className MultiplayerSynchronizer, "add_visibility_filter", 1611583062)
-  methodbind.ptrcall(self, [getPtr filter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "add_visibility_filter", 1611583062)
+  methodbind.ptrcall(self, [getPtr filter], void)
 
 proc removeVisibilityFilter*(self: MultiplayerSynchronizer; filter: Callable): void =
-  expandMethodBind(className MultiplayerSynchronizer, "remove_visibility_filter", 1611583062)
-  methodbind.ptrcall(self, [getPtr filter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "remove_visibility_filter", 1611583062)
+  methodbind.ptrcall(self, [getPtr filter], void)
 
 proc setVisibilityFor*(self: MultiplayerSynchronizer; peer: int32; visible: bool): void =
-  expandMethodBind(className MultiplayerSynchronizer, "set_visibility_for", 300928843)
-  methodbind.ptrcall(self, [getPtr peer, getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "set_visibility_for", 300928843)
+  methodbind.ptrcall(self, [getPtr peer, getPtr visible], void)
 
 proc getVisibilityFor*(self: MultiplayerSynchronizer; peer: int32): bool =
-  expandMethodBind(className MultiplayerSynchronizer, "get_visibility_for", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr peer], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiplayerSynchronizer, "get_visibility_for", 1116898809)
+  methodbind.ptrcall(self, [getPtr peer], bool)
 
 template rootPath*(self: MultiplayerSynchronizer): untyped = self.getRootPath()
 template `rootPath=`*(self: MultiplayerSynchronizer; value) = self.setRootPath(value)

@@ -7,44 +7,52 @@ import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 expandOnClassImported(OpenXRCompositionLayerCylinder, OpenXRCompositionLayer)
 
 proc setRadius*(self: OpenXRCompositionLayerCylinder; radius: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: OpenXRCompositionLayerCylinder): Float =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAspectRatio*(self: OpenXRCompositionLayerCylinder; aspectRatio: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "set_aspect_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr aspectRatio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "set_aspect_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr aspectRatio], void)
 
 proc getAspectRatio*(self: OpenXRCompositionLayerCylinder): Float =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "get_aspect_ratio", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "get_aspect_ratio", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCentralAngle*(self: OpenXRCompositionLayerCylinder; angle: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "set_central_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr angle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "set_central_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr angle], void)
 
 proc getCentralAngle*(self: OpenXRCompositionLayerCylinder): Float =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "get_central_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "get_central_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFallbackSegments*(self: OpenXRCompositionLayerCylinder; segments: uint32): void =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "set_fallback_segments", 1286410249)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "set_fallback_segments", 1286410249)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc getFallbackSegments*(self: OpenXRCompositionLayerCylinder): uint32 =
-  expandMethodBind(className OpenXRCompositionLayerCylinder, "get_fallback_segments", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerCylinder, "get_fallback_segments", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 template radius*(self: OpenXRCompositionLayerCylinder): untyped = self.getRadius()
 template `radius=`*(self: OpenXRCompositionLayerCylinder; value) = self.setRadius(value)

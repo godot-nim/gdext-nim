@@ -7,23 +7,25 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(AESContext, RefCounted)
 
 proc start*(self: AESContext; mode: AESContext_Mode; key: PackedByteArray; iv: PackedByteArray = PackedByteArray()): Error =
-  expandMethodBind(className AESContext, "start", 3122411423)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr mode, getPtr key, getPtr iv], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AESContext, "start", 3122411423)
+  methodbind.ptrcall(self, [getPtr mode, getPtr key, getPtr iv], Error)
 
 proc update*(self: AESContext; src: PackedByteArray): PackedByteArray =
-  expandMethodBind(className AESContext, "update", 527836100)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [getPtr src], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AESContext, "update", 527836100)
+  methodbind.ptrcall(self, [getPtr src], PackedByteArray)
 
 proc getIvState*(self: AESContext): PackedByteArray =
-  expandMethodBind(className AESContext, "get_iv_state", 2115431945)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AESContext, "get_iv_state", 2115431945)
+  methodbind.ptrcall(self, [], PackedByteArray)
 
 proc finish*(self: AESContext): void =
-  expandMethodBind(className AESContext, "finish", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AESContext, "finish", 3218959716)
+  methodbind.ptrcall(self, [], void)

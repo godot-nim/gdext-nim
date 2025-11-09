@@ -7,34 +7,40 @@ import gdlight3d; export gdlight3d
 expandOnClassImported(DirectionalLight3D, Light3D)
 
 proc setShadowMode*(self: DirectionalLight3D; mode: DirectionalLight3D_ShadowMode): void =
-  expandMethodBind(className DirectionalLight3D, "set_shadow_mode", 1261211726)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "set_shadow_mode", 1261211726)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getShadowMode*(self: DirectionalLight3D): DirectionalLight3D_ShadowMode =
-  expandMethodBind(className DirectionalLight3D, "get_shadow_mode", 2765228544)
-  var ret: encoded DirectionalLight3D_ShadowMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(DirectionalLight3D_ShadowMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "get_shadow_mode", 2765228544)
+  methodbind.ptrcall(self, [], DirectionalLight3D_ShadowMode)
 
 proc setBlendSplits*(self: DirectionalLight3D; enabled: bool): void =
-  expandMethodBind(className DirectionalLight3D, "set_blend_splits", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "set_blend_splits", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isBlendSplitsEnabled*(self: DirectionalLight3D): bool =
-  expandMethodBind(className DirectionalLight3D, "is_blend_splits_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "is_blend_splits_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSkyMode*(self: DirectionalLight3D; mode: DirectionalLight3D_SkyMode): void =
-  expandMethodBind(className DirectionalLight3D, "set_sky_mode", 2691194817)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "set_sky_mode", 2691194817)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getSkyMode*(self: DirectionalLight3D): DirectionalLight3D_SkyMode =
-  expandMethodBind(className DirectionalLight3D, "get_sky_mode", 3819982774)
-  var ret: encoded DirectionalLight3D_SkyMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(DirectionalLight3D_SkyMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirectionalLight3D, "get_sky_mode", 3819982774)
+  methodbind.ptrcall(self, [], DirectionalLight3D_SkyMode)
 
 template directionalShadowMode*(self: DirectionalLight3D): untyped = self.getShadowMode()
 template `directionalShadowMode=`*(self: DirectionalLight3D; value) = self.setShadowMode(value)

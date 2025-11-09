@@ -112,10 +112,10 @@ proc registerVirtual_isAvailable*[T: VisualShaderNodeCustom](Self: typedesc[T]) 
     errproof: cast[VisualShaderNodeCustom](p_instance).isAvailable(p_args[0].decode(Shader_Mode), p_args[1].decode(VisualShader_Type)).encode(r_ret)
 
 proc getOptionIndex*(self: VisualShaderNodeCustom; option: int32): int32 =
-  expandMethodBind(className VisualShaderNodeCustom, "get_option_index", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr option], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeCustom, "get_option_index", 923996154)
+  methodbind.ptrcall(self, [getPtr option], int32)
 
 template initialized*(self: VisualShaderNodeCustom): untyped = self.isInitialized()
 template `initialized=`*(self: VisualShaderNodeCustom; value) = self.setInitialized(value)

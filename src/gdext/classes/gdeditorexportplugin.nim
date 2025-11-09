@@ -132,91 +132,127 @@ proc registerVirtual_updateAndroidPrebuiltManifest*[T: EditorExportPlugin](Self:
     errproof: cast[EditorExportPlugin](p_instance).updateAndroidPrebuiltManifest(p_args[0].decode(gdref EditorExportPlatform), p_args[1].decode(PackedByteArray)).encode(r_ret)
 
 proc addSharedObject*(self: EditorExportPlugin; path: String; tags: PackedStringArray; target: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_shared_object", 3098291045)
-  methodbind.ptrcall(self, [getPtr path, getPtr tags, getPtr target])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_shared_object", 3098291045)
+  methodbind.ptrcall(self, [getPtr path, getPtr tags, getPtr target], void)
 
 proc addFile*(self: EditorExportPlugin; path: String; file: PackedByteArray; remap: bool): void =
-  expandMethodBind(className EditorExportPlugin, "add_file", 527928637)
-  methodbind.ptrcall(self, [getPtr path, getPtr file, getPtr remap])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_file", 527928637)
+  methodbind.ptrcall(self, [getPtr path, getPtr file, getPtr remap], void)
 
 proc addAppleEmbeddedPlatformProjectStaticLib*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_project_static_lib", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_project_static_lib", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addAppleEmbeddedPlatformFramework*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_framework", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addAppleEmbeddedPlatformEmbeddedFramework*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_embedded_framework", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_embedded_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addAppleEmbeddedPlatformPlistContent*(self: EditorExportPlugin; plistContent: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_plist_content", 83702148)
-  methodbind.ptrcall(self, [getPtr plistContent])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_plist_content", 83702148)
+  methodbind.ptrcall(self, [getPtr plistContent], void)
 
 proc addAppleEmbeddedPlatformLinkerFlags*(self: EditorExportPlugin; flags: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_linker_flags", 83702148)
-  methodbind.ptrcall(self, [getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_linker_flags", 83702148)
+  methodbind.ptrcall(self, [getPtr flags], void)
 
 proc addAppleEmbeddedPlatformBundleFile*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_bundle_file", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_bundle_file", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addAppleEmbeddedPlatformCppCode*(self: EditorExportPlugin; code: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_cpp_code", 83702148)
-  methodbind.ptrcall(self, [getPtr code])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_apple_embedded_platform_cpp_code", 83702148)
+  methodbind.ptrcall(self, [getPtr code], void)
 
 proc addIosProjectStaticLib*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_project_static_lib", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_project_static_lib", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addIosFramework*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_framework", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addIosEmbeddedFramework*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_embedded_framework", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_embedded_framework", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addIosPlistContent*(self: EditorExportPlugin; plistContent: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_plist_content", 83702148)
-  methodbind.ptrcall(self, [getPtr plistContent])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_plist_content", 83702148)
+  methodbind.ptrcall(self, [getPtr plistContent], void)
 
 proc addIosLinkerFlags*(self: EditorExportPlugin; flags: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_linker_flags", 83702148)
-  methodbind.ptrcall(self, [getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_linker_flags", 83702148)
+  methodbind.ptrcall(self, [getPtr flags], void)
 
 proc addIosBundleFile*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_bundle_file", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_bundle_file", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc addIosCppCode*(self: EditorExportPlugin; code: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_ios_cpp_code", 83702148)
-  methodbind.ptrcall(self, [getPtr code])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_ios_cpp_code", 83702148)
+  methodbind.ptrcall(self, [getPtr code], void)
 
 proc addMacosPluginFile*(self: EditorExportPlugin; path: String): void =
-  expandMethodBind(className EditorExportPlugin, "add_macos_plugin_file", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "add_macos_plugin_file", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc skip*(self: EditorExportPlugin): void =
-  expandMethodBind(className EditorExportPlugin, "skip", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "skip", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getOption*(self: EditorExportPlugin; name: StringName): Variant =
-  expandMethodBind(className EditorExportPlugin, "get_option", 2760726917)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "get_option", 2760726917)
+  methodbind.ptrcall(self, [getPtr name], Variant)
 
 proc getExportPreset*(self: EditorExportPlugin): gdref EditorExportPreset =
-  expandMethodBind(className EditorExportPlugin, "get_export_preset", 1610607222)
-  var ret: encoded gdref EditorExportPreset
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref EditorExportPreset)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "get_export_preset", 1610607222)
+  methodbind.ptrcall(self, [], gdref EditorExportPreset)
 
 proc getExportPlatform*(self: EditorExportPlugin): gdref EditorExportPlatform =
-  expandMethodBind(className EditorExportPlugin, "get_export_platform", 282254641)
-  var ret: encoded gdref EditorExportPlatform
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref EditorExportPlatform)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlugin, "get_export_platform", 282254641)
+  methodbind.ptrcall(self, [], gdref EditorExportPlatform)

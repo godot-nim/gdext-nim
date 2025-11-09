@@ -7,149 +7,157 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(Tween, RefCounted)
 
 proc tweenProperty*(self: Tween; `object`: Object; property: NodePath; finalVal: Variant; duration: float64): gdref PropertyTweener =
-  expandMethodBind(className Tween, "tween_property", 4049770449)
-  var ret: encoded gdref PropertyTweener
-  methodbind.ptrcall(self, [getPtr `object`, getPtr property, getPtr finalVal, getPtr duration], addr ret)
-  (addr ret).decode_result(gdref PropertyTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "tween_property", 4049770449)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr property, getPtr finalVal, getPtr duration], gdref PropertyTweener)
 
 proc tweenInterval*(self: Tween; time: float64): gdref IntervalTweener =
-  expandMethodBind(className Tween, "tween_interval", 413360199)
-  var ret: encoded gdref IntervalTweener
-  methodbind.ptrcall(self, [getPtr time], addr ret)
-  (addr ret).decode_result(gdref IntervalTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "tween_interval", 413360199)
+  methodbind.ptrcall(self, [getPtr time], gdref IntervalTweener)
 
 proc tweenCallback*(self: Tween; callback: Callable): gdref CallbackTweener =
-  expandMethodBind(className Tween, "tween_callback", 1540176488)
-  var ret: encoded gdref CallbackTweener
-  methodbind.ptrcall(self, [getPtr callback], addr ret)
-  (addr ret).decode_result(gdref CallbackTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "tween_callback", 1540176488)
+  methodbind.ptrcall(self, [getPtr callback], gdref CallbackTweener)
 
 proc tweenMethod*(self: Tween; `method`: Callable; `from`: Variant; to: Variant; duration: float64): gdref MethodTweener =
-  expandMethodBind(className Tween, "tween_method", 2337877153)
-  var ret: encoded gdref MethodTweener
-  methodbind.ptrcall(self, [getPtr `method`, getPtr `from`, getPtr to, getPtr duration], addr ret)
-  (addr ret).decode_result(gdref MethodTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "tween_method", 2337877153)
+  methodbind.ptrcall(self, [getPtr `method`, getPtr `from`, getPtr to, getPtr duration], gdref MethodTweener)
 
 proc tweenSubtween*(self: Tween; subtween: gdref Tween): gdref SubtweenTweener =
-  expandMethodBind(className Tween, "tween_subtween", 1567358477)
-  var ret: encoded gdref SubtweenTweener
-  methodbind.ptrcall(self, [getPtr subtween], addr ret)
-  (addr ret).decode_result(gdref SubtweenTweener)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "tween_subtween", 1567358477)
+  methodbind.ptrcall(self, [getPtr subtween], gdref SubtweenTweener)
 
 proc customStep*(self: Tween; delta: float64): bool =
-  expandMethodBind(className Tween, "custom_step", 330693286)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr delta], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "custom_step", 330693286)
+  methodbind.ptrcall(self, [getPtr delta], bool)
 
 proc stop*(self: Tween): void =
-  expandMethodBind(className Tween, "stop", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "stop", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc pause*(self: Tween): void =
-  expandMethodBind(className Tween, "pause", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "pause", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc play*(self: Tween): void =
-  expandMethodBind(className Tween, "play", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "play", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc kill*(self: Tween): void =
-  expandMethodBind(className Tween, "kill", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "kill", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getTotalElapsedTime*(self: Tween): float64 =
-  expandMethodBind(className Tween, "get_total_elapsed_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "get_total_elapsed_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc isRunning*(self: Tween): bool =
-  expandMethodBind(className Tween, "is_running", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "is_running", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc isValid*(self: Tween): bool =
-  expandMethodBind(className Tween, "is_valid", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "is_valid", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc bindNode*(self: Tween; node: Node): gdref Tween =
-  expandMethodBind(className Tween, "bind_node", 2946786331)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "bind_node", 2946786331)
+  methodbind.ptrcall(self, [getPtr node], gdref Tween)
 
 proc setProcessMode*(self: Tween; mode: Tween_TweenProcessMode): gdref Tween =
-  expandMethodBind(className Tween, "set_process_mode", 855258840)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr mode], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_process_mode", 855258840)
+  methodbind.ptrcall(self, [getPtr mode], gdref Tween)
 
 proc setPauseMode*(self: Tween; mode: Tween_TweenPauseMode): gdref Tween =
-  expandMethodBind(className Tween, "set_pause_mode", 3363368837)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr mode], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_pause_mode", 3363368837)
+  methodbind.ptrcall(self, [getPtr mode], gdref Tween)
 
 proc setIgnoreTimeScale*(self: Tween; ignore: bool = true): gdref Tween =
-  expandMethodBind(className Tween, "set_ignore_time_scale", 1942052223)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr ignore], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_ignore_time_scale", 1942052223)
+  methodbind.ptrcall(self, [getPtr ignore], gdref Tween)
 
 proc setParallel*(self: Tween; parallel: bool = true): gdref Tween =
-  expandMethodBind(className Tween, "set_parallel", 1942052223)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr parallel], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_parallel", 1942052223)
+  methodbind.ptrcall(self, [getPtr parallel], gdref Tween)
 
 proc setLoops*(self: Tween; loops: int32 = 0): gdref Tween =
-  expandMethodBind(className Tween, "set_loops", 2670836414)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr loops], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_loops", 2670836414)
+  methodbind.ptrcall(self, [getPtr loops], gdref Tween)
 
 proc getLoopsLeft*(self: Tween): int32 =
-  expandMethodBind(className Tween, "get_loops_left", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "get_loops_left", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSpeedScale*(self: Tween; speed: Float): gdref Tween =
-  expandMethodBind(className Tween, "set_speed_scale", 3961971106)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr speed], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_speed_scale", 3961971106)
+  methodbind.ptrcall(self, [getPtr speed], gdref Tween)
 
 proc setTrans*(self: Tween; trans: Tween_TransitionType): gdref Tween =
-  expandMethodBind(className Tween, "set_trans", 3965963875)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr trans], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_trans", 3965963875)
+  methodbind.ptrcall(self, [getPtr trans], gdref Tween)
 
 proc setEase*(self: Tween; ease: Tween_EaseType): gdref Tween =
-  expandMethodBind(className Tween, "set_ease", 1208117252)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [getPtr ease], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "set_ease", 1208117252)
+  methodbind.ptrcall(self, [getPtr ease], gdref Tween)
 
 proc parallel*(self: Tween): gdref Tween =
-  expandMethodBind(className Tween, "parallel", 3426978995)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "parallel", 3426978995)
+  methodbind.ptrcall(self, [], gdref Tween)
 
 proc chain*(self: Tween): gdref Tween =
-  expandMethodBind(className Tween, "chain", 3426978995)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "chain", 3426978995)
+  methodbind.ptrcall(self, [], gdref Tween)
 
 proc interpolateValue*(_: typedesc[Tween]; initialValue: Variant; deltaValue: Variant; elapsedTime: float64; duration: float64; transType: Tween_TransitionType; easeType: Tween_EaseType): Variant =
-  expandMethodBind(className Tween, "interpolate_value", 3452526450)
-  var ret: encoded Variant
-  methodbind.ptrcall([getPtr initialValue, getPtr deltaValue, getPtr elapsedTime, getPtr duration, getPtr transType, getPtr easeType], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Tween, "interpolate_value", 3452526450)
+  methodbind.ptrcall([getPtr initialValue, getPtr deltaValue, getPtr elapsedTime, getPtr duration, getPtr transType, getPtr easeType], Variant)

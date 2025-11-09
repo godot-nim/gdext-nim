@@ -7,46 +7,52 @@ import gdbutton; export gdbutton
 expandOnClassImported(ColorPickerButton, Button)
 
 proc setPickColor*(self: ColorPickerButton; color: Color): void =
-  expandMethodBind(className ColorPickerButton, "set_pick_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "set_pick_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getPickColor*(self: ColorPickerButton): Color =
-  expandMethodBind(className ColorPickerButton, "get_pick_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "get_pick_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc getPicker*(self: ColorPickerButton): ColorPicker =
-  expandMethodBind(className ColorPickerButton, "get_picker", 331835996)
-  var ret: encoded ColorPicker
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ColorPicker)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "get_picker", 331835996)
+  methodbind.ptrcall(self, [], ColorPicker)
 
 proc getPopup*(self: ColorPickerButton): PopupPanel =
-  expandMethodBind(className ColorPickerButton, "get_popup", 1322440207)
-  var ret: encoded PopupPanel
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PopupPanel)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "get_popup", 1322440207)
+  methodbind.ptrcall(self, [], PopupPanel)
 
 proc setEditAlpha*(self: ColorPickerButton; show: bool): void =
-  expandMethodBind(className ColorPickerButton, "set_edit_alpha", 2586408642)
-  methodbind.ptrcall(self, [getPtr show])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "set_edit_alpha", 2586408642)
+  methodbind.ptrcall(self, [getPtr show], void)
 
 proc isEditingAlpha*(self: ColorPickerButton): bool =
-  expandMethodBind(className ColorPickerButton, "is_editing_alpha", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "is_editing_alpha", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEditIntensity*(self: ColorPickerButton; show: bool): void =
-  expandMethodBind(className ColorPickerButton, "set_edit_intensity", 2586408642)
-  methodbind.ptrcall(self, [getPtr show])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "set_edit_intensity", 2586408642)
+  methodbind.ptrcall(self, [getPtr show], void)
 
 proc isEditingIntensity*(self: ColorPickerButton): bool =
-  expandMethodBind(className ColorPickerButton, "is_editing_intensity", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPickerButton, "is_editing_intensity", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template color*(self: ColorPickerButton): untyped = self.getPickColor()
 template `color=`*(self: ColorPickerButton; value) = self.setPickColor(value)

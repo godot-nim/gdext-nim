@@ -7,180 +7,208 @@ import gdnode3d; export gdnode3d
 expandOnClassImported(VehicleWheel3D, Node3D)
 
 proc setRadius*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getRadius*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSuspensionRestLength*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_suspension_rest_length", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_suspension_rest_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getSuspensionRestLength*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_suspension_rest_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_suspension_rest_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSuspensionTravel*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_suspension_travel", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_suspension_travel", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getSuspensionTravel*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_suspension_travel", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_suspension_travel", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSuspensionStiffness*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_suspension_stiffness", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_suspension_stiffness", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getSuspensionStiffness*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_suspension_stiffness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_suspension_stiffness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSuspensionMaxForce*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_suspension_max_force", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_suspension_max_force", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getSuspensionMaxForce*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_suspension_max_force", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_suspension_max_force", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDampingCompression*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_damping_compression", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_damping_compression", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getDampingCompression*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_damping_compression", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_damping_compression", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDampingRelaxation*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_damping_relaxation", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_damping_relaxation", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getDampingRelaxation*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_damping_relaxation", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_damping_relaxation", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setUseAsTraction*(self: VehicleWheel3D; enable: bool): void =
-  expandMethodBind(className VehicleWheel3D, "set_use_as_traction", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_use_as_traction", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsedAsTraction*(self: VehicleWheel3D): bool =
-  expandMethodBind(className VehicleWheel3D, "is_used_as_traction", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "is_used_as_traction", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUseAsSteering*(self: VehicleWheel3D; enable: bool): void =
-  expandMethodBind(className VehicleWheel3D, "set_use_as_steering", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_use_as_steering", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsedAsSteering*(self: VehicleWheel3D): bool =
-  expandMethodBind(className VehicleWheel3D, "is_used_as_steering", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "is_used_as_steering", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFrictionSlip*(self: VehicleWheel3D; length: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_friction_slip", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_friction_slip", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getFrictionSlip*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_friction_slip", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_friction_slip", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc isInContact*(self: VehicleWheel3D): bool =
-  expandMethodBind(className VehicleWheel3D, "is_in_contact", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "is_in_contact", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getContactBody*(self: VehicleWheel3D): Node3D =
-  expandMethodBind(className VehicleWheel3D, "get_contact_body", 151077316)
-  var ret: encoded Node3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_contact_body", 151077316)
+  methodbind.ptrcall(self, [], Node3D)
 
 proc getContactPoint*(self: VehicleWheel3D): Vector3 =
-  expandMethodBind(className VehicleWheel3D, "get_contact_point", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_contact_point", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc getContactNormal*(self: VehicleWheel3D): Vector3 =
-  expandMethodBind(className VehicleWheel3D, "get_contact_normal", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_contact_normal", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setRollInfluence*(self: VehicleWheel3D; rollInfluence: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_roll_influence", 373806689)
-  methodbind.ptrcall(self, [getPtr rollInfluence])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_roll_influence", 373806689)
+  methodbind.ptrcall(self, [getPtr rollInfluence], void)
 
 proc getRollInfluence*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_roll_influence", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_roll_influence", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getSkidinfo*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_skidinfo", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_skidinfo", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getRpm*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_rpm", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_rpm", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEngineForce*(self: VehicleWheel3D; engineForce: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_engine_force", 373806689)
-  methodbind.ptrcall(self, [getPtr engineForce])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_engine_force", 373806689)
+  methodbind.ptrcall(self, [getPtr engineForce], void)
 
 proc getEngineForce*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_engine_force", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_engine_force", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setBrake*(self: VehicleWheel3D; brake: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_brake", 373806689)
-  methodbind.ptrcall(self, [getPtr brake])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_brake", 373806689)
+  methodbind.ptrcall(self, [getPtr brake], void)
 
 proc getBrake*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_brake", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_brake", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSteering*(self: VehicleWheel3D; steering: Float): void =
-  expandMethodBind(className VehicleWheel3D, "set_steering", 373806689)
-  methodbind.ptrcall(self, [getPtr steering])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "set_steering", 373806689)
+  methodbind.ptrcall(self, [getPtr steering], void)
 
 proc getSteering*(self: VehicleWheel3D): Float =
-  expandMethodBind(className VehicleWheel3D, "get_steering", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VehicleWheel3D, "get_steering", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template engineForce*(self: VehicleWheel3D): untyped = self.getEngineForce()
 template `engineForce=`*(self: VehicleWheel3D; value) = self.setEngineForce(value)

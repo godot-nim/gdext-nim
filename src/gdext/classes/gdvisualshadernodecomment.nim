@@ -7,14 +7,16 @@ import gdvisualshadernodeframe; export gdvisualshadernodeframe
 expandOnClassImported(VisualShaderNodeComment, VisualShaderNodeFrame)
 
 proc setDescription*(self: VisualShaderNodeComment; description: String): void =
-  expandMethodBind(className VisualShaderNodeComment, "set_description", 83702148)
-  methodbind.ptrcall(self, [getPtr description])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeComment, "set_description", 83702148)
+  methodbind.ptrcall(self, [getPtr description], void)
 
 proc getDescription*(self: VisualShaderNodeComment): String =
-  expandMethodBind(className VisualShaderNodeComment, "get_description", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeComment, "get_description", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template description*(self: VisualShaderNodeComment): untyped = self.getDescription()
 template `description=`*(self: VisualShaderNodeComment; value) = self.setDescription(value)

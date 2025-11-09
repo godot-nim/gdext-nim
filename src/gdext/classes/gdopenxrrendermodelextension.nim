@@ -7,77 +7,79 @@ import gdopenxrextensionwrapper; export gdopenxrextensionwrapper
 expandOnClassImported(OpenXRRenderModelExtension, OpenXRExtensionWrapper)
 
 proc isActive*(self: OpenXRRenderModelExtension): bool =
-  expandMethodBind(className OpenXRRenderModelExtension, "is_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "is_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc renderModelCreate*(self: OpenXRRenderModelExtension; renderModelId: uint64): RID =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_create", 937000113)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr renderModelId], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_create", 937000113)
+  methodbind.ptrcall(self, [getPtr renderModelId], RID)
 
 proc renderModelDestroy*(self: OpenXRRenderModelExtension; renderModel: RID): void =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_destroy", 2722037293)
-  methodbind.ptrcall(self, [getPtr renderModel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_destroy", 2722037293)
+  methodbind.ptrcall(self, [getPtr renderModel], void)
 
 proc renderModelGetAll*(self: OpenXRRenderModelExtension): TypedArray[RID] =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_all", 2915620761)
-  var ret: encoded TypedArray[RID]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_all", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[RID])
 
 proc renderModelNewSceneInstance*(self: OpenXRRenderModelExtension; renderModel: RID): Node3D =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_new_scene_instance", 788010739)
-  var ret: encoded Node3D
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(Node3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_new_scene_instance", 788010739)
+  methodbind.ptrcall(self, [getPtr renderModel], Node3D)
 
 proc renderModelGetSubactionPaths*(self: OpenXRRenderModelExtension; renderModel: RID): PackedStringArray =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_subaction_paths", 2801473409)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_subaction_paths", 2801473409)
+  methodbind.ptrcall(self, [getPtr renderModel], PackedStringArray)
 
 proc renderModelGetTopLevelPath*(self: OpenXRRenderModelExtension; renderModel: RID): String =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_top_level_path", 642473191)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_top_level_path", 642473191)
+  methodbind.ptrcall(self, [getPtr renderModel], String)
 
 proc renderModelGetConfidence*(self: OpenXRRenderModelExtension; renderModel: RID): XRPose_TrackingConfidence =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_confidence", 2350330949)
-  var ret: encoded XRPose_TrackingConfidence
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(XRPose_TrackingConfidence)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_confidence", 2350330949)
+  methodbind.ptrcall(self, [getPtr renderModel], XRPose_TrackingConfidence)
 
 proc renderModelGetRootTransform*(self: OpenXRRenderModelExtension; renderModel: RID): Transform3D =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_root_transform", 1128465797)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_root_transform", 1128465797)
+  methodbind.ptrcall(self, [getPtr renderModel], Transform3D)
 
 proc renderModelGetAnimatableNodeCount*(self: OpenXRRenderModelExtension; renderModel: RID): uint32 =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_count", 2198884583)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [getPtr renderModel], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_count", 2198884583)
+  methodbind.ptrcall(self, [getPtr renderModel], uint32)
 
 proc renderModelGetAnimatableNodeName*(self: OpenXRRenderModelExtension; renderModel: RID; index: uint32): String =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_name", 1464764419)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_name", 1464764419)
+  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], String)
 
 proc renderModelIsAnimatableNodeVisible*(self: OpenXRRenderModelExtension; renderModel: RID; index: uint32): bool =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_is_animatable_node_visible", 3120086654)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_is_animatable_node_visible", 3120086654)
+  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], bool)
 
 proc renderModelGetAnimatableNodeTransform*(self: OpenXRRenderModelExtension; renderModel: RID; index: uint32): Transform3D =
-  expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_transform", 1050775521)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRRenderModelExtension, "render_model_get_animatable_node_transform", 1050775521)
+  methodbind.ptrcall(self, [getPtr renderModel, getPtr index], Transform3D)

@@ -7,44 +7,52 @@ import gdresource; export gdresource
 expandOnClassImported(PhysicsMaterial, Resource)
 
 proc setFriction*(self: PhysicsMaterial; friction: Float): void =
-  expandMethodBind(className PhysicsMaterial, "set_friction", 373806689)
-  methodbind.ptrcall(self, [getPtr friction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "set_friction", 373806689)
+  methodbind.ptrcall(self, [getPtr friction], void)
 
 proc getFriction*(self: PhysicsMaterial): Float =
-  expandMethodBind(className PhysicsMaterial, "get_friction", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "get_friction", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRough*(self: PhysicsMaterial; rough: bool): void =
-  expandMethodBind(className PhysicsMaterial, "set_rough", 2586408642)
-  methodbind.ptrcall(self, [getPtr rough])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "set_rough", 2586408642)
+  methodbind.ptrcall(self, [getPtr rough], void)
 
 proc isRough*(self: PhysicsMaterial): bool =
-  expandMethodBind(className PhysicsMaterial, "is_rough", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "is_rough", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setBounce*(self: PhysicsMaterial; bounce: Float): void =
-  expandMethodBind(className PhysicsMaterial, "set_bounce", 373806689)
-  methodbind.ptrcall(self, [getPtr bounce])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "set_bounce", 373806689)
+  methodbind.ptrcall(self, [getPtr bounce], void)
 
 proc getBounce*(self: PhysicsMaterial): Float =
-  expandMethodBind(className PhysicsMaterial, "get_bounce", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "get_bounce", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAbsorbent*(self: PhysicsMaterial; absorbent: bool): void =
-  expandMethodBind(className PhysicsMaterial, "set_absorbent", 2586408642)
-  methodbind.ptrcall(self, [getPtr absorbent])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "set_absorbent", 2586408642)
+  methodbind.ptrcall(self, [getPtr absorbent], void)
 
 proc isAbsorbent*(self: PhysicsMaterial): bool =
-  expandMethodBind(className PhysicsMaterial, "is_absorbent", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsMaterial, "is_absorbent", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template friction*(self: PhysicsMaterial): untyped = self.getFriction()
 template `friction=`*(self: PhysicsMaterial; value) = self.setFriction(value)

@@ -7,64 +7,76 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(RDPipelineMultisampleState, RefCounted)
 
 proc setSampleCount*(self: RDPipelineMultisampleState; pMember: RenderingDevice_TextureSamples): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_sample_count", 3774171498)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_sample_count", 3774171498)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getSampleCount*(self: RDPipelineMultisampleState): RenderingDevice_TextureSamples =
-  expandMethodBind(className RDPipelineMultisampleState, "get_sample_count", 407791724)
-  var ret: encoded RenderingDevice_TextureSamples
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingDevice_TextureSamples)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_sample_count", 407791724)
+  methodbind.ptrcall(self, [], RenderingDevice_TextureSamples)
 
 proc setEnableSampleShading*(self: RDPipelineMultisampleState; pMember: bool): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_enable_sample_shading", 2586408642)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_enable_sample_shading", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getEnableSampleShading*(self: RDPipelineMultisampleState): bool =
-  expandMethodBind(className RDPipelineMultisampleState, "get_enable_sample_shading", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_enable_sample_shading", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMinSampleShading*(self: RDPipelineMultisampleState; pMember: Float): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_min_sample_shading", 373806689)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_min_sample_shading", 373806689)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getMinSampleShading*(self: RDPipelineMultisampleState): Float =
-  expandMethodBind(className RDPipelineMultisampleState, "get_min_sample_shading", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_min_sample_shading", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEnableAlphaToCoverage*(self: RDPipelineMultisampleState; pMember: bool): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_coverage", 2586408642)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_coverage", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getEnableAlphaToCoverage*(self: RDPipelineMultisampleState): bool =
-  expandMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_coverage", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_coverage", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEnableAlphaToOne*(self: RDPipelineMultisampleState; pMember: bool): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_one", 2586408642)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_enable_alpha_to_one", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getEnableAlphaToOne*(self: RDPipelineMultisampleState): bool =
-  expandMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_one", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_enable_alpha_to_one", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSampleMasks*(self: RDPipelineMultisampleState; masks: TypedArray[Int]): void =
-  expandMethodBind(className RDPipelineMultisampleState, "set_sample_masks", 381264803)
-  methodbind.ptrcall(self, [getPtr masks])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "set_sample_masks", 381264803)
+  methodbind.ptrcall(self, [getPtr masks], void)
 
 proc getSampleMasks*(self: RDPipelineMultisampleState): TypedArray[Int] =
-  expandMethodBind(className RDPipelineMultisampleState, "get_sample_masks", 3995934104)
-  var ret: encoded TypedArray[Int]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineMultisampleState, "get_sample_masks", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[Int])
 
 template sampleCount*(self: RDPipelineMultisampleState): untyped = self.getSampleCount()
 template `sampleCount=`*(self: RDPipelineMultisampleState; value) = self.setSampleCount(value)

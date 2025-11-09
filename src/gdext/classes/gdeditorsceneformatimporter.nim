@@ -35,9 +35,13 @@ proc registerVirtual_getOptionVisibility*[T: EditorSceneFormatImporter](Self: ty
     errproof: cast[EditorSceneFormatImporter](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(bool), p_args[2].decode(String)).encode(r_ret)
 
 proc addImportOption*(self: EditorSceneFormatImporter; name: String; value: Variant): void =
-  expandMethodBind(className EditorSceneFormatImporter, "add_import_option", 402577236)
-  methodbind.ptrcall(self, [getPtr name, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorSceneFormatImporter, "add_import_option", 402577236)
+  methodbind.ptrcall(self, [getPtr name, getPtr value], void)
 
 proc addImportOptionAdvanced*(self: EditorSceneFormatImporter; `type`: Variant_Type; name: String; defaultValue: Variant; hint: PropertyHint = propertyHintNone; hintString: String = newGdString(); usageFlags: int32 = 6): void =
-  expandMethodBind(className EditorSceneFormatImporter, "add_import_option_advanced", 3674075649)
-  methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorSceneFormatImporter, "add_import_option_advanced", 3674075649)
+  methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags], void)

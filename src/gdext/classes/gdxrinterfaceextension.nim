@@ -167,29 +167,31 @@ proc registerVirtual_getVelocityTexture*[T: XRInterfaceExtension](Self: typedesc
     errproof: cast[XRInterfaceExtension](p_instance).getVelocityTexture().encode(r_ret)
 
 proc getColorTexture*(self: XRInterfaceExtension): RID =
-  expandMethodBind(className XRInterfaceExtension, "get_color_texture", 529393457)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRInterfaceExtension, "get_color_texture", 529393457)
+  methodbind.ptrcall(self, [], RID)
 
 proc getDepthTexture*(self: XRInterfaceExtension): RID =
-  expandMethodBind(className XRInterfaceExtension, "get_depth_texture", 529393457)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRInterfaceExtension, "get_depth_texture", 529393457)
+  methodbind.ptrcall(self, [], RID)
 
 proc getVelocityTexture*(self: XRInterfaceExtension): RID =
-  expandMethodBind(className XRInterfaceExtension, "get_velocity_texture", 529393457)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRInterfaceExtension, "get_velocity_texture", 529393457)
+  methodbind.ptrcall(self, [], RID)
 
 proc addBlit*(self: XRInterfaceExtension; renderTarget: RID; srcRect: Rect2; dstRect: Rect2i; useLayer: bool; layer: uint32; applyLensDistortion: bool; eyeCenter: Vector2; k1: float64; k2: float64; upscale: float64; aspectRatio: float64): void =
-  expandMethodBind(className XRInterfaceExtension, "add_blit", 258596971)
-  methodbind.ptrcall(self, [getPtr renderTarget, getPtr srcRect, getPtr dstRect, getPtr useLayer, getPtr layer, getPtr applyLensDistortion, getPtr eyeCenter, getPtr k1, getPtr k2, getPtr upscale, getPtr aspectRatio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRInterfaceExtension, "add_blit", 258596971)
+  methodbind.ptrcall(self, [getPtr renderTarget, getPtr srcRect, getPtr dstRect, getPtr useLayer, getPtr layer, getPtr applyLensDistortion, getPtr eyeCenter, getPtr k1, getPtr k2, getPtr upscale, getPtr aspectRatio], void)
 
 proc getRenderTargetTexture*(self: XRInterfaceExtension; renderTarget: RID): RID =
-  expandMethodBind(className XRInterfaceExtension, "get_render_target_texture", 41030802)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr renderTarget], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRInterfaceExtension, "get_render_target_texture", 41030802)
+  methodbind.ptrcall(self, [getPtr renderTarget], RID)

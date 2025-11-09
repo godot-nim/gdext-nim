@@ -7,24 +7,28 @@ import gdxrtracker; export gdxrtracker
 expandOnClassImported(XRFaceTracker, XRTracker)
 
 proc getBlendShape*(self: XRFaceTracker; blendShape: XRFaceTracker_BlendShapeEntry): Float =
-  expandMethodBind(className XRFaceTracker, "get_blend_shape", 330010046)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr blendShape], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRFaceTracker, "get_blend_shape", 330010046)
+  methodbind.ptrcall(self, [getPtr blendShape], Float)
 
 proc setBlendShape*(self: XRFaceTracker; blendShape: XRFaceTracker_BlendShapeEntry; weight: Float): void =
-  expandMethodBind(className XRFaceTracker, "set_blend_shape", 2352588791)
-  methodbind.ptrcall(self, [getPtr blendShape, getPtr weight])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRFaceTracker, "set_blend_shape", 2352588791)
+  methodbind.ptrcall(self, [getPtr blendShape, getPtr weight], void)
 
 proc getBlendShapes*(self: XRFaceTracker): PackedFloat32Array =
-  expandMethodBind(className XRFaceTracker, "get_blend_shapes", 675695659)
-  var ret: encoded PackedFloat32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedFloat32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRFaceTracker, "get_blend_shapes", 675695659)
+  methodbind.ptrcall(self, [], PackedFloat32Array)
 
 proc setBlendShapes*(self: XRFaceTracker; weights: PackedFloat32Array): void =
-  expandMethodBind(className XRFaceTracker, "set_blend_shapes", 2899603908)
-  methodbind.ptrcall(self, [getPtr weights])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRFaceTracker, "set_blend_shapes", 2899603908)
+  methodbind.ptrcall(self, [getPtr weights], void)
 
 template blendShapes*(self: XRFaceTracker): untyped = self.getBlendShapes()
 template `blendShapes=`*(self: XRFaceTracker; value) = self.setBlendShapes(value)

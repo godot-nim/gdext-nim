@@ -7,34 +7,40 @@ import gdvisualshadernode; export gdvisualshadernode
 expandOnClassImported(VisualShaderNodeDerivativeFunc, VisualShaderNode)
 
 proc setOpType*(self: VisualShaderNodeDerivativeFunc; `type`: VisualShaderNodeDerivativeFunc_OpType): void =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "set_op_type", 377800221)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "set_op_type", 377800221)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getOpType*(self: VisualShaderNodeDerivativeFunc): VisualShaderNodeDerivativeFunc_OpType =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "get_op_type", 3997800514)
-  var ret: encoded VisualShaderNodeDerivativeFunc_OpType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeDerivativeFunc_OpType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "get_op_type", 3997800514)
+  methodbind.ptrcall(self, [], VisualShaderNodeDerivativeFunc_OpType)
 
 proc setFunction*(self: VisualShaderNodeDerivativeFunc; `func`: VisualShaderNodeDerivativeFunc_Function): void =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "set_function", 1944704156)
-  methodbind.ptrcall(self, [getPtr `func`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "set_function", 1944704156)
+  methodbind.ptrcall(self, [getPtr `func`], void)
 
 proc getFunction*(self: VisualShaderNodeDerivativeFunc): VisualShaderNodeDerivativeFunc_Function =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "get_function", 2389093396)
-  var ret: encoded VisualShaderNodeDerivativeFunc_Function
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeDerivativeFunc_Function)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "get_function", 2389093396)
+  methodbind.ptrcall(self, [], VisualShaderNodeDerivativeFunc_Function)
 
 proc setPrecision*(self: VisualShaderNodeDerivativeFunc; precision: VisualShaderNodeDerivativeFunc_Precision): void =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "set_precision", 797270566)
-  methodbind.ptrcall(self, [getPtr precision])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "set_precision", 797270566)
+  methodbind.ptrcall(self, [getPtr precision], void)
 
 proc getPrecision*(self: VisualShaderNodeDerivativeFunc): VisualShaderNodeDerivativeFunc_Precision =
-  expandMethodBind(className VisualShaderNodeDerivativeFunc, "get_precision", 3822547323)
-  var ret: encoded VisualShaderNodeDerivativeFunc_Precision
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeDerivativeFunc_Precision)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeDerivativeFunc, "get_precision", 3822547323)
+  methodbind.ptrcall(self, [], VisualShaderNodeDerivativeFunc_Precision)
 
 template opType*(self: VisualShaderNodeDerivativeFunc): untyped = self.getOpType()
 template `opType=`*(self: VisualShaderNodeDerivativeFunc; value) = self.setOpType(value)

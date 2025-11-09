@@ -42,7 +42,7 @@ proc registerVirtual_getClosestPointToObjectVolume*[T: PhysicsDirectSpaceState3D
     errproof: cast[PhysicsDirectSpaceState3DExtension](p_instance).getClosestPointToObjectVolume(p_args[0].decode(RID), p_args[1].decode(Vector3)).encode(r_ret)
 
 proc isBodyExcludedFromQuery*(self: PhysicsDirectSpaceState3DExtension; body: RID): bool =
-  expandMethodBind(className PhysicsDirectSpaceState3DExtension, "is_body_excluded_from_query", 4155700596)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr body], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsDirectSpaceState3DExtension, "is_body_excluded_from_query", 4155700596)
+  methodbind.ptrcall(self, [getPtr body], bool)

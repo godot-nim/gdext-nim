@@ -42,43 +42,43 @@ proc registerVirtual_getLayerData*[T: TextureLayered](Self: typedesc[T]) =
     errproof: cast[TextureLayered](p_instance).getLayerData(p_args[0].decode(int32)).encode(r_ret)
 
 proc getFormat*(self: TextureLayered): Image_Format =
-  expandMethodBind(className TextureLayered, "get_format", 3847873762)
-  var ret: encoded Image_Format
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Image_Format)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_format", 3847873762)
+  methodbind.ptrcall(self, [], Image_Format)
 
 proc getLayeredType*(self: TextureLayered): TextureLayered_LayeredType =
-  expandMethodBind(className TextureLayered, "get_layered_type", 518123893)
-  var ret: encoded TextureLayered_LayeredType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextureLayered_LayeredType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_layered_type", 518123893)
+  methodbind.ptrcall(self, [], TextureLayered_LayeredType)
 
 proc getWidth*(self: TextureLayered): int32 =
-  expandMethodBind(className TextureLayered, "get_width", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_width", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getHeight*(self: TextureLayered): int32 =
-  expandMethodBind(className TextureLayered, "get_height", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_height", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getLayers*(self: TextureLayered): int32 =
-  expandMethodBind(className TextureLayered, "get_layers", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_layers", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc hasMipmaps*(self: TextureLayered): bool =
-  expandMethodBind(className TextureLayered, "has_mipmaps", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "has_mipmaps", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getLayerData*(self: TextureLayered; layer: int32): gdref Image =
-  expandMethodBind(className TextureLayered, "get_layer_data", 3655284255)
-  var ret: encoded gdref Image
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(gdref Image)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextureLayered, "get_layer_data", 3655284255)
+  methodbind.ptrcall(self, [getPtr layer], gdref Image)

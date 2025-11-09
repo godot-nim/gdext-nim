@@ -7,16 +7,16 @@ import gdtexture2d; export gdtexture2d
 expandOnClassImported(CompressedTexture2D, Texture2D)
 
 proc load*(self: CompressedTexture2D; path: String): Error =
-  expandMethodBind(className CompressedTexture2D, "load", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompressedTexture2D, "load", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc getLoadPath*(self: CompressedTexture2D): String =
-  expandMethodBind(className CompressedTexture2D, "get_load_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompressedTexture2D, "get_load_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template loadPath*(self: CompressedTexture2D): untyped = self.getLoadPath()
 template `loadPath=`*(self: CompressedTexture2D; value) = self.load(value)

@@ -7,134 +7,160 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(MeshConvexDecompositionSettings, RefCounted)
 
 proc setMaxConcavity*(self: MeshConvexDecompositionSettings; maxConcavity: Float): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_max_concavity", 373806689)
-  methodbind.ptrcall(self, [getPtr maxConcavity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_max_concavity", 373806689)
+  methodbind.ptrcall(self, [getPtr maxConcavity], void)
 
 proc getMaxConcavity*(self: MeshConvexDecompositionSettings): Float =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_max_concavity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_max_concavity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSymmetryPlanesClippingBias*(self: MeshConvexDecompositionSettings; symmetryPlanesClippingBias: Float): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_symmetry_planes_clipping_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr symmetryPlanesClippingBias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_symmetry_planes_clipping_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr symmetryPlanesClippingBias], void)
 
 proc getSymmetryPlanesClippingBias*(self: MeshConvexDecompositionSettings): Float =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_symmetry_planes_clipping_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_symmetry_planes_clipping_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRevolutionAxesClippingBias*(self: MeshConvexDecompositionSettings; revolutionAxesClippingBias: Float): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_revolution_axes_clipping_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr revolutionAxesClippingBias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_revolution_axes_clipping_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr revolutionAxesClippingBias], void)
 
 proc getRevolutionAxesClippingBias*(self: MeshConvexDecompositionSettings): Float =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_revolution_axes_clipping_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_revolution_axes_clipping_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMinVolumePerConvexHull*(self: MeshConvexDecompositionSettings; minVolumePerConvexHull: Float): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_min_volume_per_convex_hull", 373806689)
-  methodbind.ptrcall(self, [getPtr minVolumePerConvexHull])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_min_volume_per_convex_hull", 373806689)
+  methodbind.ptrcall(self, [getPtr minVolumePerConvexHull], void)
 
 proc getMinVolumePerConvexHull*(self: MeshConvexDecompositionSettings): Float =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_min_volume_per_convex_hull", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_min_volume_per_convex_hull", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setResolution*(self: MeshConvexDecompositionSettings; minVolumePerConvexHull: uint32): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_resolution", 1286410249)
-  methodbind.ptrcall(self, [getPtr minVolumePerConvexHull])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_resolution", 1286410249)
+  methodbind.ptrcall(self, [getPtr minVolumePerConvexHull], void)
 
 proc getResolution*(self: MeshConvexDecompositionSettings): uint32 =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_resolution", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_resolution", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setMaxNumVerticesPerConvexHull*(self: MeshConvexDecompositionSettings; maxNumVerticesPerConvexHull: uint32): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_max_num_vertices_per_convex_hull", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxNumVerticesPerConvexHull])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_max_num_vertices_per_convex_hull", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxNumVerticesPerConvexHull], void)
 
 proc getMaxNumVerticesPerConvexHull*(self: MeshConvexDecompositionSettings): uint32 =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_max_num_vertices_per_convex_hull", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_max_num_vertices_per_convex_hull", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setPlaneDownsampling*(self: MeshConvexDecompositionSettings; planeDownsampling: uint32): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_plane_downsampling", 1286410249)
-  methodbind.ptrcall(self, [getPtr planeDownsampling])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_plane_downsampling", 1286410249)
+  methodbind.ptrcall(self, [getPtr planeDownsampling], void)
 
 proc getPlaneDownsampling*(self: MeshConvexDecompositionSettings): uint32 =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_plane_downsampling", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_plane_downsampling", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setConvexHullDownsampling*(self: MeshConvexDecompositionSettings; convexHullDownsampling: uint32): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_convex_hull_downsampling", 1286410249)
-  methodbind.ptrcall(self, [getPtr convexHullDownsampling])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_convex_hull_downsampling", 1286410249)
+  methodbind.ptrcall(self, [getPtr convexHullDownsampling], void)
 
 proc getConvexHullDownsampling*(self: MeshConvexDecompositionSettings): uint32 =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_convex_hull_downsampling", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_convex_hull_downsampling", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setNormalizeMesh*(self: MeshConvexDecompositionSettings; normalizeMesh: bool): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_normalize_mesh", 2586408642)
-  methodbind.ptrcall(self, [getPtr normalizeMesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_normalize_mesh", 2586408642)
+  methodbind.ptrcall(self, [getPtr normalizeMesh], void)
 
 proc getNormalizeMesh*(self: MeshConvexDecompositionSettings): bool =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_normalize_mesh", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_normalize_mesh", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMode*(self: MeshConvexDecompositionSettings; mode: MeshConvexDecompositionSettings_Mode): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_mode", 1668072869)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_mode", 1668072869)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getMode*(self: MeshConvexDecompositionSettings): MeshConvexDecompositionSettings_Mode =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_mode", 23479454)
-  var ret: encoded MeshConvexDecompositionSettings_Mode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(MeshConvexDecompositionSettings_Mode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_mode", 23479454)
+  methodbind.ptrcall(self, [], MeshConvexDecompositionSettings_Mode)
 
 proc setConvexHullApproximation*(self: MeshConvexDecompositionSettings; convexHullApproximation: bool): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_convex_hull_approximation", 2586408642)
-  methodbind.ptrcall(self, [getPtr convexHullApproximation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_convex_hull_approximation", 2586408642)
+  methodbind.ptrcall(self, [getPtr convexHullApproximation], void)
 
 proc getConvexHullApproximation*(self: MeshConvexDecompositionSettings): bool =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_convex_hull_approximation", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_convex_hull_approximation", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMaxConvexHulls*(self: MeshConvexDecompositionSettings; maxConvexHulls: uint32): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_max_convex_hulls", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxConvexHulls])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_max_convex_hulls", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxConvexHulls], void)
 
 proc getMaxConvexHulls*(self: MeshConvexDecompositionSettings): uint32 =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_max_convex_hulls", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_max_convex_hulls", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setProjectHullVertices*(self: MeshConvexDecompositionSettings; projectHullVertices: bool): void =
-  expandMethodBind(className MeshConvexDecompositionSettings, "set_project_hull_vertices", 2586408642)
-  methodbind.ptrcall(self, [getPtr projectHullVertices])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "set_project_hull_vertices", 2586408642)
+  methodbind.ptrcall(self, [getPtr projectHullVertices], void)
 
 proc getProjectHullVertices*(self: MeshConvexDecompositionSettings): bool =
-  expandMethodBind(className MeshConvexDecompositionSettings, "get_project_hull_vertices", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshConvexDecompositionSettings, "get_project_hull_vertices", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template maxConcavity*(self: MeshConvexDecompositionSettings): untyped = self.getMaxConcavity()
 template `maxConcavity=`*(self: MeshConvexDecompositionSettings; value) = self.setMaxConcavity(value)

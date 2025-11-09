@@ -7,19 +7,19 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(JavaClass, RefCounted)
 
 proc getJavaClassName*(self: JavaClass): String =
-  expandMethodBind(className JavaClass, "get_java_class_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JavaClass, "get_java_class_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getJavaMethodList*(self: JavaClass): TypedArray[Dictionary] =
-  expandMethodBind(className JavaClass, "get_java_method_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JavaClass, "get_java_method_list", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[Dictionary])
 
 proc getJavaParentClass*(self: JavaClass): gdref JavaClass =
-  expandMethodBind(className JavaClass, "get_java_parent_class", 541536347)
-  var ret: encoded gdref JavaClass
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref JavaClass)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JavaClass, "get_java_parent_class", 541536347)
+  methodbind.ptrcall(self, [], gdref JavaClass)

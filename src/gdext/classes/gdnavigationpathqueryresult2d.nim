@@ -7,58 +7,70 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(NavigationPathQueryResult2D, RefCounted)
 
 proc setPath*(self: NavigationPathQueryResult2D; path: PackedVector2Array): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "set_path", 1509147220)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "set_path", 1509147220)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getPath*(self: NavigationPathQueryResult2D): PackedVector2Array =
-  expandMethodBind(className NavigationPathQueryResult2D, "get_path", 2961356807)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "get_path", 2961356807)
+  methodbind.ptrcall(self, [], PackedVector2Array)
 
 proc setPathTypes*(self: NavigationPathQueryResult2D; pathTypes: PackedInt32Array): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "set_path_types", 3614634198)
-  methodbind.ptrcall(self, [getPtr pathTypes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "set_path_types", 3614634198)
+  methodbind.ptrcall(self, [getPtr pathTypes], void)
 
 proc getPathTypes*(self: NavigationPathQueryResult2D): PackedInt32Array =
-  expandMethodBind(className NavigationPathQueryResult2D, "get_path_types", 1930428628)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "get_path_types", 1930428628)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 proc setPathRids*(self: NavigationPathQueryResult2D; pathRids: TypedArray[RID]): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "set_path_rids", 381264803)
-  methodbind.ptrcall(self, [getPtr pathRids])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "set_path_rids", 381264803)
+  methodbind.ptrcall(self, [getPtr pathRids], void)
 
 proc getPathRids*(self: NavigationPathQueryResult2D): TypedArray[RID] =
-  expandMethodBind(className NavigationPathQueryResult2D, "get_path_rids", 3995934104)
-  var ret: encoded TypedArray[RID]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "get_path_rids", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[RID])
 
 proc setPathOwnerIds*(self: NavigationPathQueryResult2D; pathOwnerIds: PackedInt64Array): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "set_path_owner_ids", 3709968205)
-  methodbind.ptrcall(self, [getPtr pathOwnerIds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "set_path_owner_ids", 3709968205)
+  methodbind.ptrcall(self, [getPtr pathOwnerIds], void)
 
 proc getPathOwnerIds*(self: NavigationPathQueryResult2D): PackedInt64Array =
-  expandMethodBind(className NavigationPathQueryResult2D, "get_path_owner_ids", 235988956)
-  var ret: encoded PackedInt64Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt64Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "get_path_owner_ids", 235988956)
+  methodbind.ptrcall(self, [], PackedInt64Array)
 
 proc setPathLength*(self: NavigationPathQueryResult2D; length: Float): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "set_path_length", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "set_path_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getPathLength*(self: NavigationPathQueryResult2D): Float =
-  expandMethodBind(className NavigationPathQueryResult2D, "get_path_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "get_path_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc reset*(self: NavigationPathQueryResult2D): void =
-  expandMethodBind(className NavigationPathQueryResult2D, "reset", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationPathQueryResult2D, "reset", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 template path*(self: NavigationPathQueryResult2D): untyped = self.getPath()
 template `path=`*(self: NavigationPathQueryResult2D; value) = self.setPath(value)

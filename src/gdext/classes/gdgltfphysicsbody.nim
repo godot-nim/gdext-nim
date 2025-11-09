@@ -7,108 +7,124 @@ import gdresource; export gdresource
 expandOnClassImported(GLTFPhysicsBody, Resource)
 
 proc fromNode*(_: typedesc[GLTFPhysicsBody]; bodyNode: CollisionObject3D): gdref GLTFPhysicsBody =
-  expandMethodBind(className GLTFPhysicsBody, "from_node", 420544174)
-  var ret: encoded gdref GLTFPhysicsBody
-  methodbind.ptrcall([getPtr bodyNode], addr ret)
-  (addr ret).decode_result(gdref GLTFPhysicsBody)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "from_node", 420544174)
+  methodbind.ptrcall([getPtr bodyNode], gdref GLTFPhysicsBody)
 
 proc toNode*(self: GLTFPhysicsBody): CollisionObject3D =
-  expandMethodBind(className GLTFPhysicsBody, "to_node", 3224013656)
-  var ret: encoded CollisionObject3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CollisionObject3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "to_node", 3224013656)
+  methodbind.ptrcall(self, [], CollisionObject3D)
 
 proc fromDictionary*(_: typedesc[GLTFPhysicsBody]; dictionary: Dictionary): gdref GLTFPhysicsBody =
-  expandMethodBind(className GLTFPhysicsBody, "from_dictionary", 1177544336)
-  var ret: encoded gdref GLTFPhysicsBody
-  methodbind.ptrcall([getPtr dictionary], addr ret)
-  (addr ret).decode_result(gdref GLTFPhysicsBody)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "from_dictionary", 1177544336)
+  methodbind.ptrcall([getPtr dictionary], gdref GLTFPhysicsBody)
 
 proc toDictionary*(self: GLTFPhysicsBody): Dictionary =
-  expandMethodBind(className GLTFPhysicsBody, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "to_dictionary", 3102165223)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc getBodyType*(self: GLTFPhysicsBody): String =
-  expandMethodBind(className GLTFPhysicsBody, "get_body_type", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_body_type", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setBodyType*(self: GLTFPhysicsBody; bodyType: String): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_body_type", 83702148)
-  methodbind.ptrcall(self, [getPtr bodyType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_body_type", 83702148)
+  methodbind.ptrcall(self, [getPtr bodyType], void)
 
 proc getMass*(self: GLTFPhysicsBody): Float =
-  expandMethodBind(className GLTFPhysicsBody, "get_mass", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_mass", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMass*(self: GLTFPhysicsBody; mass: Float): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_mass", 373806689)
-  methodbind.ptrcall(self, [getPtr mass])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_mass", 373806689)
+  methodbind.ptrcall(self, [getPtr mass], void)
 
 proc getLinearVelocity*(self: GLTFPhysicsBody): Vector3 =
-  expandMethodBind(className GLTFPhysicsBody, "get_linear_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_linear_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setLinearVelocity*(self: GLTFPhysicsBody; linearVelocity: Vector3): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_linear_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr linearVelocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_linear_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr linearVelocity], void)
 
 proc getAngularVelocity*(self: GLTFPhysicsBody): Vector3 =
-  expandMethodBind(className GLTFPhysicsBody, "get_angular_velocity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_angular_velocity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setAngularVelocity*(self: GLTFPhysicsBody; angularVelocity: Vector3): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_angular_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr angularVelocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_angular_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr angularVelocity], void)
 
 proc getCenterOfMass*(self: GLTFPhysicsBody): Vector3 =
-  expandMethodBind(className GLTFPhysicsBody, "get_center_of_mass", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_center_of_mass", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setCenterOfMass*(self: GLTFPhysicsBody; centerOfMass: Vector3): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_center_of_mass", 3460891852)
-  methodbind.ptrcall(self, [getPtr centerOfMass])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_center_of_mass", 3460891852)
+  methodbind.ptrcall(self, [getPtr centerOfMass], void)
 
 proc getInertiaDiagonal*(self: GLTFPhysicsBody): Vector3 =
-  expandMethodBind(className GLTFPhysicsBody, "get_inertia_diagonal", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_inertia_diagonal", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setInertiaDiagonal*(self: GLTFPhysicsBody; inertiaDiagonal: Vector3): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_inertia_diagonal", 3460891852)
-  methodbind.ptrcall(self, [getPtr inertiaDiagonal])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_inertia_diagonal", 3460891852)
+  methodbind.ptrcall(self, [getPtr inertiaDiagonal], void)
 
 proc getInertiaOrientation*(self: GLTFPhysicsBody): Quaternion =
-  expandMethodBind(className GLTFPhysicsBody, "get_inertia_orientation", 1222331677)
-  var ret: encoded Quaternion
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Quaternion)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_inertia_orientation", 1222331677)
+  methodbind.ptrcall(self, [], Quaternion)
 
 proc setInertiaOrientation*(self: GLTFPhysicsBody; inertiaOrientation: Quaternion): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_inertia_orientation", 1727505552)
-  methodbind.ptrcall(self, [getPtr inertiaOrientation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_inertia_orientation", 1727505552)
+  methodbind.ptrcall(self, [getPtr inertiaOrientation], void)
 
 proc getInertiaTensor*(self: GLTFPhysicsBody): Basis =
-  expandMethodBind(className GLTFPhysicsBody, "get_inertia_tensor", 2716978435)
-  var ret: encoded Basis
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Basis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "get_inertia_tensor", 2716978435)
+  methodbind.ptrcall(self, [], Basis)
 
 proc setInertiaTensor*(self: GLTFPhysicsBody; inertiaTensor: Basis): void =
-  expandMethodBind(className GLTFPhysicsBody, "set_inertia_tensor", 1055510324)
-  methodbind.ptrcall(self, [getPtr inertiaTensor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsBody, "set_inertia_tensor", 1055510324)
+  methodbind.ptrcall(self, [getPtr inertiaTensor], void)
 
 template bodyType*(self: GLTFPhysicsBody): untyped = self.getBodyType()
 template `bodyType=`*(self: GLTFPhysicsBody; value) = self.setBodyType(value)

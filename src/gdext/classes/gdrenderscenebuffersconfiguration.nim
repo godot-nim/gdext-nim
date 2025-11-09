@@ -7,104 +7,124 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(RenderSceneBuffersConfiguration, RefCounted)
 
 proc getRenderTarget*(self: RenderSceneBuffersConfiguration): RID =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_render_target", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setRenderTarget*(self: RenderSceneBuffersConfiguration; renderTarget: RID): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_render_target", 2722037293)
-  methodbind.ptrcall(self, [getPtr renderTarget])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_render_target", 2722037293)
+  methodbind.ptrcall(self, [getPtr renderTarget], void)
 
 proc getInternalSize*(self: RenderSceneBuffersConfiguration): Vector2i =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_internal_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_internal_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setInternalSize*(self: RenderSceneBuffersConfiguration; internalSize: Vector2i): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_internal_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr internalSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_internal_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr internalSize], void)
 
 proc getTargetSize*(self: RenderSceneBuffersConfiguration): Vector2i =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_target_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_target_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setTargetSize*(self: RenderSceneBuffersConfiguration; targetSize: Vector2i): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_target_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr targetSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_target_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr targetSize], void)
 
 proc getViewCount*(self: RenderSceneBuffersConfiguration): uint32 =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_view_count", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_view_count", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setViewCount*(self: RenderSceneBuffersConfiguration; viewCount: uint32): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_view_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr viewCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_view_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr viewCount], void)
 
 proc getScaling3DMode*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScaling3DMode =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_scaling_3d_mode", 976778074)
-  var ret: encoded RenderingServer_ViewportScaling3DMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportScaling3DMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_scaling_3d_mode", 976778074)
+  methodbind.ptrcall(self, [], RenderingServer_ViewportScaling3DMode)
 
 proc setScaling3DMode*(self: RenderSceneBuffersConfiguration; scaling3DMode: RenderingServer_ViewportScaling3DMode): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_scaling_3d_mode", 447477857)
-  methodbind.ptrcall(self, [getPtr scaling3DMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_scaling_3d_mode", 447477857)
+  methodbind.ptrcall(self, [getPtr scaling3DMode], void)
 
 proc getMsaa3D*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportMSAA =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_msaa_3d", 3109158617)
-  var ret: encoded RenderingServer_ViewportMSAA
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportMSAA)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_msaa_3d", 3109158617)
+  methodbind.ptrcall(self, [], RenderingServer_ViewportMSAA)
 
 proc setMsaa3D*(self: RenderSceneBuffersConfiguration; msaa3D: RenderingServer_ViewportMSAA): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_msaa_3d", 3952630748)
-  methodbind.ptrcall(self, [getPtr msaa3D])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_msaa_3d", 3952630748)
+  methodbind.ptrcall(self, [getPtr msaa3D], void)
 
 proc getScreenSpaceAa*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportScreenSpaceAA =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_screen_space_aa", 641513172)
-  var ret: encoded RenderingServer_ViewportScreenSpaceAA
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportScreenSpaceAA)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_screen_space_aa", 641513172)
+  methodbind.ptrcall(self, [], RenderingServer_ViewportScreenSpaceAA)
 
 proc setScreenSpaceAa*(self: RenderSceneBuffersConfiguration; screenSpaceAa: RenderingServer_ViewportScreenSpaceAA): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_screen_space_aa", 139543108)
-  methodbind.ptrcall(self, [getPtr screenSpaceAa])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_screen_space_aa", 139543108)
+  methodbind.ptrcall(self, [getPtr screenSpaceAa], void)
 
 proc getFsrSharpness*(self: RenderSceneBuffersConfiguration): Float =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_fsr_sharpness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_fsr_sharpness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFsrSharpness*(self: RenderSceneBuffersConfiguration; fsrSharpness: Float): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_fsr_sharpness", 373806689)
-  methodbind.ptrcall(self, [getPtr fsrSharpness])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_fsr_sharpness", 373806689)
+  methodbind.ptrcall(self, [getPtr fsrSharpness], void)
 
 proc getTextureMipmapBias*(self: RenderSceneBuffersConfiguration): Float =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_texture_mipmap_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_texture_mipmap_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTextureMipmapBias*(self: RenderSceneBuffersConfiguration; textureMipmapBias: Float): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_texture_mipmap_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr textureMipmapBias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_texture_mipmap_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr textureMipmapBias], void)
 
 proc getAnisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration): RenderingServer_ViewportAnisotropicFiltering =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "get_anisotropic_filtering_level", 1617414954)
-  var ret: encoded RenderingServer_ViewportAnisotropicFiltering
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingServer_ViewportAnisotropicFiltering)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "get_anisotropic_filtering_level", 1617414954)
+  methodbind.ptrcall(self, [], RenderingServer_ViewportAnisotropicFiltering)
 
 proc setAnisotropicFilteringLevel*(self: RenderSceneBuffersConfiguration; anisotropicFilteringLevel: RenderingServer_ViewportAnisotropicFiltering): void =
-  expandMethodBind(className RenderSceneBuffersConfiguration, "set_anisotropic_filtering_level", 2559658741)
-  methodbind.ptrcall(self, [getPtr anisotropicFilteringLevel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RenderSceneBuffersConfiguration, "set_anisotropic_filtering_level", 2559658741)
+  methodbind.ptrcall(self, [getPtr anisotropicFilteringLevel], void)
 
 template renderTarget*(self: RenderSceneBuffersConfiguration): untyped = self.getRenderTarget()
 template `renderTarget=`*(self: RenderSceneBuffersConfiguration; value) = self.setRenderTarget(value)

@@ -7,110 +7,124 @@ import gdresource; export gdresource
 expandOnClassImported(GLTFPhysicsShape, Resource)
 
 proc fromNode*(_: typedesc[GLTFPhysicsShape]; shapeNode: CollisionShape3D): gdref GLTFPhysicsShape =
-  expandMethodBind(className GLTFPhysicsShape, "from_node", 3613751275)
-  var ret: encoded gdref GLTFPhysicsShape
-  methodbind.ptrcall([getPtr shapeNode], addr ret)
-  (addr ret).decode_result(gdref GLTFPhysicsShape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "from_node", 3613751275)
+  methodbind.ptrcall([getPtr shapeNode], gdref GLTFPhysicsShape)
 
 proc toNode*(self: GLTFPhysicsShape; cacheShapes: bool = false): CollisionShape3D =
-  expandMethodBind(className GLTFPhysicsShape, "to_node", 563689933)
-  var ret: encoded CollisionShape3D
-  methodbind.ptrcall(self, [getPtr cacheShapes], addr ret)
-  (addr ret).decode_result(CollisionShape3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "to_node", 563689933)
+  methodbind.ptrcall(self, [getPtr cacheShapes], CollisionShape3D)
 
 proc fromResource*(_: typedesc[GLTFPhysicsShape]; shapeResource: gdref Shape3D): gdref GLTFPhysicsShape =
-  expandMethodBind(className GLTFPhysicsShape, "from_resource", 3845569786)
-  var ret: encoded gdref GLTFPhysicsShape
-  methodbind.ptrcall([getPtr shapeResource], addr ret)
-  (addr ret).decode_result(gdref GLTFPhysicsShape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "from_resource", 3845569786)
+  methodbind.ptrcall([getPtr shapeResource], gdref GLTFPhysicsShape)
 
 proc toResource*(self: GLTFPhysicsShape; cacheShapes: bool = false): gdref Shape3D =
-  expandMethodBind(className GLTFPhysicsShape, "to_resource", 1913542110)
-  var ret: encoded gdref Shape3D
-  methodbind.ptrcall(self, [getPtr cacheShapes], addr ret)
-  (addr ret).decode_result(gdref Shape3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "to_resource", 1913542110)
+  methodbind.ptrcall(self, [getPtr cacheShapes], gdref Shape3D)
 
 proc fromDictionary*(_: typedesc[GLTFPhysicsShape]; dictionary: Dictionary): gdref GLTFPhysicsShape =
-  expandMethodBind(className GLTFPhysicsShape, "from_dictionary", 2390691823)
-  var ret: encoded gdref GLTFPhysicsShape
-  methodbind.ptrcall([getPtr dictionary], addr ret)
-  (addr ret).decode_result(gdref GLTFPhysicsShape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "from_dictionary", 2390691823)
+  methodbind.ptrcall([getPtr dictionary], gdref GLTFPhysicsShape)
 
 proc toDictionary*(self: GLTFPhysicsShape): Dictionary =
-  expandMethodBind(className GLTFPhysicsShape, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "to_dictionary", 3102165223)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc getShapeType*(self: GLTFPhysicsShape): String =
-  expandMethodBind(className GLTFPhysicsShape, "get_shape_type", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_shape_type", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setShapeType*(self: GLTFPhysicsShape; shapeType: String): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_shape_type", 83702148)
-  methodbind.ptrcall(self, [getPtr shapeType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_shape_type", 83702148)
+  methodbind.ptrcall(self, [getPtr shapeType], void)
 
 proc getSize*(self: GLTFPhysicsShape): Vector3 =
-  expandMethodBind(className GLTFPhysicsShape, "get_size", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_size", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setSize*(self: GLTFPhysicsShape; size: Vector3): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_size", 3460891852)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_size", 3460891852)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getRadius*(self: GLTFPhysicsShape): Float =
-  expandMethodBind(className GLTFPhysicsShape, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRadius*(self: GLTFPhysicsShape; radius: Float): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getHeight*(self: GLTFPhysicsShape): Float =
-  expandMethodBind(className GLTFPhysicsShape, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: GLTFPhysicsShape; height: Float): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getIsTrigger*(self: GLTFPhysicsShape): bool =
-  expandMethodBind(className GLTFPhysicsShape, "get_is_trigger", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_is_trigger", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setIsTrigger*(self: GLTFPhysicsShape; isTrigger: bool): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_is_trigger", 2586408642)
-  methodbind.ptrcall(self, [getPtr isTrigger])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_is_trigger", 2586408642)
+  methodbind.ptrcall(self, [getPtr isTrigger], void)
 
 proc getMeshIndex*(self: GLTFPhysicsShape): int32 =
-  expandMethodBind(className GLTFPhysicsShape, "get_mesh_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_mesh_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMeshIndex*(self: GLTFPhysicsShape; meshIndex: int32): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_mesh_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr meshIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_mesh_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr meshIndex], void)
 
 proc getImporterMesh*(self: GLTFPhysicsShape): gdref ImporterMesh =
-  expandMethodBind(className GLTFPhysicsShape, "get_importer_mesh", 3161779525)
-  var ret: encoded gdref ImporterMesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref ImporterMesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "get_importer_mesh", 3161779525)
+  methodbind.ptrcall(self, [], gdref ImporterMesh)
 
 proc setImporterMesh*(self: GLTFPhysicsShape; importerMesh: gdref ImporterMesh): void =
-  expandMethodBind(className GLTFPhysicsShape, "set_importer_mesh", 2255166972)
-  methodbind.ptrcall(self, [getPtr importerMesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFPhysicsShape, "set_importer_mesh", 2255166972)
+  methodbind.ptrcall(self, [getPtr importerMesh], void)
 
 template shapeType*(self: GLTFPhysicsShape): untyped = self.getShapeType()
 template `shapeType=`*(self: GLTFPhysicsShape; value) = self.setShapeType(value)

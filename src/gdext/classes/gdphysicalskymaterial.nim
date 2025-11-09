@@ -7,114 +7,136 @@ import gdmaterial; export gdmaterial
 expandOnClassImported(PhysicalSkyMaterial, Material)
 
 proc setRayleighCoefficient*(self: PhysicalSkyMaterial; rayleigh: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_rayleigh_coefficient", 373806689)
-  methodbind.ptrcall(self, [getPtr rayleigh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_rayleigh_coefficient", 373806689)
+  methodbind.ptrcall(self, [getPtr rayleigh], void)
 
 proc getRayleighCoefficient*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_rayleigh_coefficient", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_rayleigh_coefficient", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRayleighColor*(self: PhysicalSkyMaterial; color: Color): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_rayleigh_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_rayleigh_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getRayleighColor*(self: PhysicalSkyMaterial): Color =
-  expandMethodBind(className PhysicalSkyMaterial, "get_rayleigh_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_rayleigh_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setMieCoefficient*(self: PhysicalSkyMaterial; mie: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_mie_coefficient", 373806689)
-  methodbind.ptrcall(self, [getPtr mie])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_mie_coefficient", 373806689)
+  methodbind.ptrcall(self, [getPtr mie], void)
 
 proc getMieCoefficient*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_mie_coefficient", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_mie_coefficient", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMieEccentricity*(self: PhysicalSkyMaterial; eccentricity: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_mie_eccentricity", 373806689)
-  methodbind.ptrcall(self, [getPtr eccentricity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_mie_eccentricity", 373806689)
+  methodbind.ptrcall(self, [getPtr eccentricity], void)
 
 proc getMieEccentricity*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_mie_eccentricity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_mie_eccentricity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMieColor*(self: PhysicalSkyMaterial; color: Color): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_mie_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_mie_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getMieColor*(self: PhysicalSkyMaterial): Color =
-  expandMethodBind(className PhysicalSkyMaterial, "get_mie_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_mie_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setTurbidity*(self: PhysicalSkyMaterial; turbidity: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_turbidity", 373806689)
-  methodbind.ptrcall(self, [getPtr turbidity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_turbidity", 373806689)
+  methodbind.ptrcall(self, [getPtr turbidity], void)
 
 proc getTurbidity*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_turbidity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_turbidity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSunDiskScale*(self: PhysicalSkyMaterial; scale: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_sun_disk_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_sun_disk_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc getSunDiskScale*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_sun_disk_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_sun_disk_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGroundColor*(self: PhysicalSkyMaterial; color: Color): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_ground_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_ground_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getGroundColor*(self: PhysicalSkyMaterial): Color =
-  expandMethodBind(className PhysicalSkyMaterial, "get_ground_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_ground_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setEnergyMultiplier*(self: PhysicalSkyMaterial; multiplier: Float): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_energy_multiplier", 373806689)
-  methodbind.ptrcall(self, [getPtr multiplier])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_energy_multiplier", 373806689)
+  methodbind.ptrcall(self, [getPtr multiplier], void)
 
 proc getEnergyMultiplier*(self: PhysicalSkyMaterial): Float =
-  expandMethodBind(className PhysicalSkyMaterial, "get_energy_multiplier", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_energy_multiplier", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setUseDebanding*(self: PhysicalSkyMaterial; useDebanding: bool): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_use_debanding", 2586408642)
-  methodbind.ptrcall(self, [getPtr useDebanding])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_use_debanding", 2586408642)
+  methodbind.ptrcall(self, [getPtr useDebanding], void)
 
 proc getUseDebanding*(self: PhysicalSkyMaterial): bool =
-  expandMethodBind(className PhysicalSkyMaterial, "get_use_debanding", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_use_debanding", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNightSky*(self: PhysicalSkyMaterial; nightSky: gdref Texture2D): void =
-  expandMethodBind(className PhysicalSkyMaterial, "set_night_sky", 4051416890)
-  methodbind.ptrcall(self, [getPtr nightSky])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "set_night_sky", 4051416890)
+  methodbind.ptrcall(self, [getPtr nightSky], void)
 
 proc getNightSky*(self: PhysicalSkyMaterial): gdref Texture2D =
-  expandMethodBind(className PhysicalSkyMaterial, "get_night_sky", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalSkyMaterial, "get_night_sky", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 template rayleighCoefficient*(self: PhysicalSkyMaterial): untyped = self.getRayleighCoefficient()
 template `rayleighCoefficient=`*(self: PhysicalSkyMaterial; value) = self.setRayleighCoefficient(value)

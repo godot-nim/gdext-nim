@@ -7,101 +7,103 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(XMLParser, RefCounted)
 
 proc read*(self: XMLParser): Error =
-  expandMethodBind(className XMLParser, "read", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "read", 166280745)
+  methodbind.ptrcall(self, [], Error)
 
 proc getNodeType*(self: XMLParser): XMLParser_NodeType =
-  expandMethodBind(className XMLParser, "get_node_type", 2984359541)
-  var ret: encoded XMLParser_NodeType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(XMLParser_NodeType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_node_type", 2984359541)
+  methodbind.ptrcall(self, [], XMLParser_NodeType)
 
 proc getNodeName*(self: XMLParser): String =
-  expandMethodBind(className XMLParser, "get_node_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_node_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getNodeData*(self: XMLParser): String =
-  expandMethodBind(className XMLParser, "get_node_data", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_node_data", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getNodeOffset*(self: XMLParser): uint64 =
-  expandMethodBind(className XMLParser, "get_node_offset", 3905245786)
-  var ret: encoded uint64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_node_offset", 3905245786)
+  methodbind.ptrcall(self, [], uint64)
 
 proc getAttributeCount*(self: XMLParser): int32 =
-  expandMethodBind(className XMLParser, "get_attribute_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_attribute_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getAttributeName*(self: XMLParser; idx: int32): String =
-  expandMethodBind(className XMLParser, "get_attribute_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_attribute_name", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc getAttributeValue*(self: XMLParser; idx: int32): String =
-  expandMethodBind(className XMLParser, "get_attribute_value", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_attribute_value", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc hasAttribute*(self: XMLParser; name: String): bool =
-  expandMethodBind(className XMLParser, "has_attribute", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "has_attribute", 3927539163)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc getNamedAttributeValue*(self: XMLParser; name: String): String =
-  expandMethodBind(className XMLParser, "get_named_attribute_value", 3135753539)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_named_attribute_value", 3135753539)
+  methodbind.ptrcall(self, [getPtr name], String)
 
 proc getNamedAttributeValueSafe*(self: XMLParser; name: String): String =
-  expandMethodBind(className XMLParser, "get_named_attribute_value_safe", 3135753539)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_named_attribute_value_safe", 3135753539)
+  methodbind.ptrcall(self, [getPtr name], String)
 
 proc isEmpty*(self: XMLParser): bool =
-  expandMethodBind(className XMLParser, "is_empty", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "is_empty", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getCurrentLine*(self: XMLParser): int32 =
-  expandMethodBind(className XMLParser, "get_current_line", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "get_current_line", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc skipSection*(self: XMLParser): void =
-  expandMethodBind(className XMLParser, "skip_section", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "skip_section", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc seek*(self: XMLParser; position: uint64): Error =
-  expandMethodBind(className XMLParser, "seek", 844576869)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr position], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "seek", 844576869)
+  methodbind.ptrcall(self, [getPtr position], Error)
 
 proc open*(self: XMLParser; file: String): Error =
-  expandMethodBind(className XMLParser, "open", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr file], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "open", 166001499)
+  methodbind.ptrcall(self, [getPtr file], Error)
 
 proc openBuffer*(self: XMLParser; buffer: PackedByteArray): Error =
-  expandMethodBind(className XMLParser, "open_buffer", 680677267)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr buffer], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XMLParser, "open_buffer", 680677267)
+  methodbind.ptrcall(self, [getPtr buffer], Error)

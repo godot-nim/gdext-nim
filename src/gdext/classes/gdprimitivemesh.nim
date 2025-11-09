@@ -12,64 +12,76 @@ proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =
     errproof: cast[PrimitiveMesh](p_instance).createMeshArray().encode(r_ret)
 
 proc setMaterial*(self: PrimitiveMesh; material: gdref Material): void =
-  expandMethodBind(className PrimitiveMesh, "set_material", 2757459619)
-  methodbind.ptrcall(self, [getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "set_material", 2757459619)
+  methodbind.ptrcall(self, [getPtr material], void)
 
 proc getMaterial*(self: PrimitiveMesh): gdref Material =
-  expandMethodBind(className PrimitiveMesh, "get_material", 5934680)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_material", 5934680)
+  methodbind.ptrcall(self, [], gdref Material)
 
 proc getMeshArrays*(self: PrimitiveMesh): Array =
-  expandMethodBind(className PrimitiveMesh, "get_mesh_arrays", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_mesh_arrays", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setCustomAabb*(self: PrimitiveMesh; aabb: AABB): void =
-  expandMethodBind(className PrimitiveMesh, "set_custom_aabb", 259215842)
-  methodbind.ptrcall(self, [getPtr aabb])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "set_custom_aabb", 259215842)
+  methodbind.ptrcall(self, [getPtr aabb], void)
 
 proc getCustomAabb*(self: PrimitiveMesh): AABB =
-  expandMethodBind(className PrimitiveMesh, "get_custom_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_custom_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc setFlipFaces*(self: PrimitiveMesh; flipFaces: bool): void =
-  expandMethodBind(className PrimitiveMesh, "set_flip_faces", 2586408642)
-  methodbind.ptrcall(self, [getPtr flipFaces])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "set_flip_faces", 2586408642)
+  methodbind.ptrcall(self, [getPtr flipFaces], void)
 
 proc getFlipFaces*(self: PrimitiveMesh): bool =
-  expandMethodBind(className PrimitiveMesh, "get_flip_faces", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_flip_faces", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAddUv2*(self: PrimitiveMesh; addUv2: bool): void =
-  expandMethodBind(className PrimitiveMesh, "set_add_uv2", 2586408642)
-  methodbind.ptrcall(self, [getPtr addUv2])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "set_add_uv2", 2586408642)
+  methodbind.ptrcall(self, [getPtr addUv2], void)
 
 proc getAddUv2*(self: PrimitiveMesh): bool =
-  expandMethodBind(className PrimitiveMesh, "get_add_uv2", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_add_uv2", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUv2Padding*(self: PrimitiveMesh; uv2Padding: Float): void =
-  expandMethodBind(className PrimitiveMesh, "set_uv2_padding", 373806689)
-  methodbind.ptrcall(self, [getPtr uv2Padding])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "set_uv2_padding", 373806689)
+  methodbind.ptrcall(self, [getPtr uv2Padding], void)
 
 proc getUv2Padding*(self: PrimitiveMesh): Float =
-  expandMethodBind(className PrimitiveMesh, "get_uv2_padding", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "get_uv2_padding", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc requestUpdate*(self: PrimitiveMesh): void =
-  expandMethodBind(className PrimitiveMesh, "request_update", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PrimitiveMesh, "request_update", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 template material*(self: PrimitiveMesh): untyped = self.getMaterial()
 template `material=`*(self: PrimitiveMesh; value) = self.setMaterial(value)

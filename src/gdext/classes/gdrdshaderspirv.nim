@@ -7,24 +7,28 @@ import gdresource; export gdresource
 expandOnClassImported(RDShaderSPIRV, Resource)
 
 proc setStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; bytecode: PackedByteArray): void =
-  expandMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)
-  methodbind.ptrcall(self, [getPtr stage, getPtr bytecode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderSPIRV, "set_stage_bytecode", 3514097977)
+  methodbind.ptrcall(self, [getPtr stage, getPtr bytecode], void)
 
 proc getStageBytecode*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): PackedByteArray =
-  expandMethodBind(className RDShaderSPIRV, "get_stage_bytecode", 3816765404)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [getPtr stage], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderSPIRV, "get_stage_bytecode", 3816765404)
+  methodbind.ptrcall(self, [getPtr stage], PackedByteArray)
 
 proc setStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage; compileError: String): void =
-  expandMethodBind(className RDShaderSPIRV, "set_stage_compile_error", 620821314)
-  methodbind.ptrcall(self, [getPtr stage, getPtr compileError])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderSPIRV, "set_stage_compile_error", 620821314)
+  methodbind.ptrcall(self, [getPtr stage, getPtr compileError], void)
 
 proc getStageCompileError*(self: RDShaderSPIRV; stage: RenderingDevice_ShaderStage): String =
-  expandMethodBind(className RDShaderSPIRV, "get_stage_compile_error", 3354920045)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr stage], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderSPIRV, "get_stage_compile_error", 3354920045)
+  methodbind.ptrcall(self, [getPtr stage], String)
 
 template bytecodeVertex*(self: RDShaderSPIRV): untyped = self.getStageBytecode(RenderingDevice_ShaderStage(0))
 template `bytecodeVertex=`*(self: RDShaderSPIRV; value) = self.setStageBytecode(RenderingDevice_ShaderStage(0), value)

@@ -7,25 +7,25 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(Expression, RefCounted)
 
 proc parse*(self: Expression; expression: String; inputNames: PackedStringArray = PackedStringArray()): Error =
-  expandMethodBind(className Expression, "parse", 3069722906)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr expression, getPtr inputNames], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Expression, "parse", 3069722906)
+  methodbind.ptrcall(self, [getPtr expression, getPtr inputNames], Error)
 
 proc execute*(self: Expression; inputs: Array = newArray(); baseInstance: Object = default Object; showError: bool = true; constCallsOnly: bool = false): Variant =
-  expandMethodBind(className Expression, "execute", 3712471238)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr inputs, getPtr baseInstance, getPtr showError, getPtr constCallsOnly], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Expression, "execute", 3712471238)
+  methodbind.ptrcall(self, [getPtr inputs, getPtr baseInstance, getPtr showError, getPtr constCallsOnly], Variant)
 
 proc hasExecuteFailed*(self: Expression): bool =
-  expandMethodBind(className Expression, "has_execute_failed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Expression, "has_execute_failed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getErrorText*(self: Expression): String =
-  expandMethodBind(className Expression, "get_error_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Expression, "get_error_text", 201670096)
+  methodbind.ptrcall(self, [], String)

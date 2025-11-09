@@ -17,9 +17,13 @@ proc registerVirtual_loadImage*[T: ImageFormatLoaderExtension](Self: typedesc[T]
     errproof: cast[ImageFormatLoaderExtension](p_instance).loadImage(p_args[0].decode(gdref Image), p_args[1].decode(gdref FileAccess), p_args[2].decode(set[ImageFormatLoader_LoaderFlags]), p_args[3].decode(Float)).encode(r_ret)
 
 proc addFormatLoader*(self: ImageFormatLoaderExtension): void =
-  expandMethodBind(className ImageFormatLoaderExtension, "add_format_loader", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImageFormatLoaderExtension, "add_format_loader", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc removeFormatLoader*(self: ImageFormatLoaderExtension): void =
-  expandMethodBind(className ImageFormatLoaderExtension, "remove_format_loader", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImageFormatLoaderExtension, "remove_format_loader", 3218959716)
+  methodbind.ptrcall(self, [], void)

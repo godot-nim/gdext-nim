@@ -7,452 +7,544 @@ import gdgeometryinstance3d; export gdgeometryinstance3d
 expandOnClassImported(CPUParticles3D, GeometryInstance3D)
 
 proc setEmitting*(self: CPUParticles3D; emitting: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_emitting", 2586408642)
-  methodbind.ptrcall(self, [getPtr emitting])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emitting", 2586408642)
+  methodbind.ptrcall(self, [getPtr emitting], void)
 
 proc setAmount*(self: CPUParticles3D; amount: int32): void =
-  expandMethodBind(className CPUParticles3D, "set_amount", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_amount", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc setLifetime*(self: CPUParticles3D; secs: float64): void =
-  expandMethodBind(className CPUParticles3D, "set_lifetime", 373806689)
-  methodbind.ptrcall(self, [getPtr secs])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_lifetime", 373806689)
+  methodbind.ptrcall(self, [getPtr secs], void)
 
 proc setOneShot*(self: CPUParticles3D; enable: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_one_shot", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_one_shot", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setPreProcessTime*(self: CPUParticles3D; secs: float64): void =
-  expandMethodBind(className CPUParticles3D, "set_pre_process_time", 373806689)
-  methodbind.ptrcall(self, [getPtr secs])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_pre_process_time", 373806689)
+  methodbind.ptrcall(self, [getPtr secs], void)
 
 proc setExplosivenessRatio*(self: CPUParticles3D; ratio: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_explosiveness_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_explosiveness_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc setRandomnessRatio*(self: CPUParticles3D; ratio: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_randomness_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_randomness_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc setVisibilityAabb*(self: CPUParticles3D; aabb: AABB): void =
-  expandMethodBind(className CPUParticles3D, "set_visibility_aabb", 259215842)
-  methodbind.ptrcall(self, [getPtr aabb])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_visibility_aabb", 259215842)
+  methodbind.ptrcall(self, [getPtr aabb], void)
 
 proc setLifetimeRandomness*(self: CPUParticles3D; random: float64): void =
-  expandMethodBind(className CPUParticles3D, "set_lifetime_randomness", 373806689)
-  methodbind.ptrcall(self, [getPtr random])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_lifetime_randomness", 373806689)
+  methodbind.ptrcall(self, [getPtr random], void)
 
 proc setUseLocalCoordinates*(self: CPUParticles3D; enable: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_use_local_coordinates", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_use_local_coordinates", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setFixedFps*(self: CPUParticles3D; fps: int32): void =
-  expandMethodBind(className CPUParticles3D, "set_fixed_fps", 1286410249)
-  methodbind.ptrcall(self, [getPtr fps])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_fixed_fps", 1286410249)
+  methodbind.ptrcall(self, [getPtr fps], void)
 
 proc setFractionalDelta*(self: CPUParticles3D; enable: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_fractional_delta", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_fractional_delta", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setSpeedScale*(self: CPUParticles3D; scale: float64): void =
-  expandMethodBind(className CPUParticles3D, "set_speed_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr scale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_speed_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale], void)
 
 proc isEmitting*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "is_emitting", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "is_emitting", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getAmount*(self: CPUParticles3D): int32 =
-  expandMethodBind(className CPUParticles3D, "get_amount", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_amount", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getLifetime*(self: CPUParticles3D): float64 =
-  expandMethodBind(className CPUParticles3D, "get_lifetime", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_lifetime", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getOneShot*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "get_one_shot", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_one_shot", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getPreProcessTime*(self: CPUParticles3D): float64 =
-  expandMethodBind(className CPUParticles3D, "get_pre_process_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_pre_process_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getExplosivenessRatio*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_explosiveness_ratio", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_explosiveness_ratio", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getRandomnessRatio*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_randomness_ratio", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_randomness_ratio", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getVisibilityAabb*(self: CPUParticles3D): AABB =
-  expandMethodBind(className CPUParticles3D, "get_visibility_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_visibility_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc getLifetimeRandomness*(self: CPUParticles3D): float64 =
-  expandMethodBind(className CPUParticles3D, "get_lifetime_randomness", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_lifetime_randomness", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getUseLocalCoordinates*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "get_use_local_coordinates", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_use_local_coordinates", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getFixedFps*(self: CPUParticles3D): int32 =
-  expandMethodBind(className CPUParticles3D, "get_fixed_fps", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_fixed_fps", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getFractionalDelta*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "get_fractional_delta", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_fractional_delta", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getSpeedScale*(self: CPUParticles3D): float64 =
-  expandMethodBind(className CPUParticles3D, "get_speed_scale", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_speed_scale", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setDrawOrder*(self: CPUParticles3D; order: CPUParticles3D_DrawOrder): void =
-  expandMethodBind(className CPUParticles3D, "set_draw_order", 1427401774)
-  methodbind.ptrcall(self, [getPtr order])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_draw_order", 1427401774)
+  methodbind.ptrcall(self, [getPtr order], void)
 
 proc getDrawOrder*(self: CPUParticles3D): CPUParticles3D_DrawOrder =
-  expandMethodBind(className CPUParticles3D, "get_draw_order", 1321900776)
-  var ret: encoded CPUParticles3D_DrawOrder
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CPUParticles3D_DrawOrder)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_draw_order", 1321900776)
+  methodbind.ptrcall(self, [], CPUParticles3D_DrawOrder)
 
 proc setMesh*(self: CPUParticles3D; mesh: gdref Mesh): void =
-  expandMethodBind(className CPUParticles3D, "set_mesh", 194775623)
-  methodbind.ptrcall(self, [getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_mesh", 194775623)
+  methodbind.ptrcall(self, [getPtr mesh], void)
 
 proc getMesh*(self: CPUParticles3D): gdref Mesh =
-  expandMethodBind(className CPUParticles3D, "get_mesh", 1808005922)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_mesh", 1808005922)
+  methodbind.ptrcall(self, [], gdref Mesh)
 
 proc setUseFixedSeed*(self: CPUParticles3D; useFixedSeed: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_use_fixed_seed", 2586408642)
-  methodbind.ptrcall(self, [getPtr useFixedSeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_use_fixed_seed", 2586408642)
+  methodbind.ptrcall(self, [getPtr useFixedSeed], void)
 
 proc getUseFixedSeed*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "get_use_fixed_seed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_use_fixed_seed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSeed*(self: CPUParticles3D; seed: uint32): void =
-  expandMethodBind(className CPUParticles3D, "set_seed", 1286410249)
-  methodbind.ptrcall(self, [getPtr seed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed], void)
 
 proc getSeed*(self: CPUParticles3D): uint32 =
-  expandMethodBind(className CPUParticles3D, "get_seed", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_seed", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc restart*(self: CPUParticles3D; keepSeed: bool = false): void =
-  expandMethodBind(className CPUParticles3D, "restart", 107499316)
-  methodbind.ptrcall(self, [getPtr keepSeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "restart", 107499316)
+  methodbind.ptrcall(self, [getPtr keepSeed], void)
 
 proc requestParticlesProcess*(self: CPUParticles3D; processTime: Float): void =
-  expandMethodBind(className CPUParticles3D, "request_particles_process", 373806689)
-  methodbind.ptrcall(self, [getPtr processTime])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "request_particles_process", 373806689)
+  methodbind.ptrcall(self, [getPtr processTime], void)
 
 proc captureAabb*(self: CPUParticles3D): AABB =
-  expandMethodBind(className CPUParticles3D, "capture_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "capture_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc setDirection*(self: CPUParticles3D; direction: Vector3): void =
-  expandMethodBind(className CPUParticles3D, "set_direction", 3460891852)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_direction", 3460891852)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getDirection*(self: CPUParticles3D): Vector3 =
-  expandMethodBind(className CPUParticles3D, "get_direction", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_direction", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setSpread*(self: CPUParticles3D; degrees: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_spread", 373806689)
-  methodbind.ptrcall(self, [getPtr degrees])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_spread", 373806689)
+  methodbind.ptrcall(self, [getPtr degrees], void)
 
 proc getSpread*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_spread", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_spread", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFlatness*(self: CPUParticles3D; amount: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_flatness", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_flatness", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getFlatness*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_flatness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_flatness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setParamMin*(self: CPUParticles3D; param: CPUParticles3D_Parameter; value: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_param_min", 557936109)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_param_min", 557936109)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParamMin*(self: CPUParticles3D; param: CPUParticles3D_Parameter): Float =
-  expandMethodBind(className CPUParticles3D, "get_param_min", 597646162)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_param_min", 597646162)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 proc setParamMax*(self: CPUParticles3D; param: CPUParticles3D_Parameter; value: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_param_max", 557936109)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_param_max", 557936109)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParamMax*(self: CPUParticles3D; param: CPUParticles3D_Parameter): Float =
-  expandMethodBind(className CPUParticles3D, "get_param_max", 597646162)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_param_max", 597646162)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 proc setParamCurve*(self: CPUParticles3D; param: CPUParticles3D_Parameter; curve: gdref Curve): void =
-  expandMethodBind(className CPUParticles3D, "set_param_curve", 4044142537)
-  methodbind.ptrcall(self, [getPtr param, getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_param_curve", 4044142537)
+  methodbind.ptrcall(self, [getPtr param, getPtr curve], void)
 
 proc getParamCurve*(self: CPUParticles3D; param: CPUParticles3D_Parameter): gdref Curve =
-  expandMethodBind(className CPUParticles3D, "get_param_curve", 4132790277)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_param_curve", 4132790277)
+  methodbind.ptrcall(self, [getPtr param], gdref Curve)
 
 proc setColor*(self: CPUParticles3D; color: Color): void =
-  expandMethodBind(className CPUParticles3D, "set_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getColor*(self: CPUParticles3D): Color =
-  expandMethodBind(className CPUParticles3D, "get_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setColorRamp*(self: CPUParticles3D; ramp: gdref Gradient): void =
-  expandMethodBind(className CPUParticles3D, "set_color_ramp", 2756054477)
-  methodbind.ptrcall(self, [getPtr ramp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_color_ramp", 2756054477)
+  methodbind.ptrcall(self, [getPtr ramp], void)
 
 proc getColorRamp*(self: CPUParticles3D): gdref Gradient =
-  expandMethodBind(className CPUParticles3D, "get_color_ramp", 132272999)
-  var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Gradient)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_color_ramp", 132272999)
+  methodbind.ptrcall(self, [], gdref Gradient)
 
 proc setColorInitialRamp*(self: CPUParticles3D; ramp: gdref Gradient): void =
-  expandMethodBind(className CPUParticles3D, "set_color_initial_ramp", 2756054477)
-  methodbind.ptrcall(self, [getPtr ramp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_color_initial_ramp", 2756054477)
+  methodbind.ptrcall(self, [getPtr ramp], void)
 
 proc getColorInitialRamp*(self: CPUParticles3D): gdref Gradient =
-  expandMethodBind(className CPUParticles3D, "get_color_initial_ramp", 132272999)
-  var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Gradient)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_color_initial_ramp", 132272999)
+  methodbind.ptrcall(self, [], gdref Gradient)
 
 proc setParticleFlag*(self: CPUParticles3D; particleFlag: CPUParticles3D_ParticleFlags; enable: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_particle_flag", 3515406498)
-  methodbind.ptrcall(self, [getPtr particleFlag, getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_particle_flag", 3515406498)
+  methodbind.ptrcall(self, [getPtr particleFlag, getPtr enable], void)
 
 proc getParticleFlag*(self: CPUParticles3D; particleFlag: CPUParticles3D_ParticleFlags): bool =
-  expandMethodBind(className CPUParticles3D, "get_particle_flag", 2845201987)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr particleFlag], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_particle_flag", 2845201987)
+  methodbind.ptrcall(self, [getPtr particleFlag], bool)
 
 proc setEmissionShape*(self: CPUParticles3D; shape: CPUParticles3D_EmissionShape): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_shape", 491823814)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_shape", 491823814)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getEmissionShape*(self: CPUParticles3D): CPUParticles3D_EmissionShape =
-  expandMethodBind(className CPUParticles3D, "get_emission_shape", 2961454842)
-  var ret: encoded CPUParticles3D_EmissionShape
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CPUParticles3D_EmissionShape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_shape", 2961454842)
+  methodbind.ptrcall(self, [], CPUParticles3D_EmissionShape)
 
 proc setEmissionSphereRadius*(self: CPUParticles3D; radius: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_sphere_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_sphere_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getEmissionSphereRadius*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_emission_sphere_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_sphere_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionBoxExtents*(self: CPUParticles3D; extents: Vector3): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_box_extents", 3460891852)
-  methodbind.ptrcall(self, [getPtr extents])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_box_extents", 3460891852)
+  methodbind.ptrcall(self, [getPtr extents], void)
 
 proc getEmissionBoxExtents*(self: CPUParticles3D): Vector3 =
-  expandMethodBind(className CPUParticles3D, "get_emission_box_extents", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_box_extents", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionPoints*(self: CPUParticles3D; array: PackedVector3Array): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_points", 334873810)
-  methodbind.ptrcall(self, [getPtr array])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_points", 334873810)
+  methodbind.ptrcall(self, [getPtr array], void)
 
 proc getEmissionPoints*(self: CPUParticles3D): PackedVector3Array =
-  expandMethodBind(className CPUParticles3D, "get_emission_points", 497664490)
-  var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector3Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_points", 497664490)
+  methodbind.ptrcall(self, [], PackedVector3Array)
 
 proc setEmissionNormals*(self: CPUParticles3D; array: PackedVector3Array): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_normals", 334873810)
-  methodbind.ptrcall(self, [getPtr array])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_normals", 334873810)
+  methodbind.ptrcall(self, [getPtr array], void)
 
 proc getEmissionNormals*(self: CPUParticles3D): PackedVector3Array =
-  expandMethodBind(className CPUParticles3D, "get_emission_normals", 497664490)
-  var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector3Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_normals", 497664490)
+  methodbind.ptrcall(self, [], PackedVector3Array)
 
 proc setEmissionColors*(self: CPUParticles3D; array: PackedColorArray): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_colors", 3546319833)
-  methodbind.ptrcall(self, [getPtr array])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_colors", 3546319833)
+  methodbind.ptrcall(self, [getPtr array], void)
 
 proc getEmissionColors*(self: CPUParticles3D): PackedColorArray =
-  expandMethodBind(className CPUParticles3D, "get_emission_colors", 1392750486)
-  var ret: encoded PackedColorArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedColorArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_colors", 1392750486)
+  methodbind.ptrcall(self, [], PackedColorArray)
 
 proc setEmissionRingAxis*(self: CPUParticles3D; axis: Vector3): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_ring_axis", 3460891852)
-  methodbind.ptrcall(self, [getPtr axis])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_ring_axis", 3460891852)
+  methodbind.ptrcall(self, [getPtr axis], void)
 
 proc getEmissionRingAxis*(self: CPUParticles3D): Vector3 =
-  expandMethodBind(className CPUParticles3D, "get_emission_ring_axis", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_ring_axis", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionRingHeight*(self: CPUParticles3D; height: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_ring_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_ring_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getEmissionRingHeight*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_emission_ring_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_ring_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingRadius*(self: CPUParticles3D; radius: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_ring_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_ring_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getEmissionRingRadius*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_emission_ring_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_ring_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingInnerRadius*(self: CPUParticles3D; innerRadius: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_ring_inner_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr innerRadius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_ring_inner_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr innerRadius], void)
 
 proc getEmissionRingInnerRadius*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_emission_ring_inner_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_ring_inner_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingConeAngle*(self: CPUParticles3D; coneAngle: Float): void =
-  expandMethodBind(className CPUParticles3D, "set_emission_ring_cone_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr coneAngle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_emission_ring_cone_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr coneAngle], void)
 
 proc getEmissionRingConeAngle*(self: CPUParticles3D): Float =
-  expandMethodBind(className CPUParticles3D, "get_emission_ring_cone_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_emission_ring_cone_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getGravity*(self: CPUParticles3D): Vector3 =
-  expandMethodBind(className CPUParticles3D, "get_gravity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_gravity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setGravity*(self: CPUParticles3D; accelVec: Vector3): void =
-  expandMethodBind(className CPUParticles3D, "set_gravity", 3460891852)
-  methodbind.ptrcall(self, [getPtr accelVec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_gravity", 3460891852)
+  methodbind.ptrcall(self, [getPtr accelVec], void)
 
 proc getSplitScale*(self: CPUParticles3D): bool =
-  expandMethodBind(className CPUParticles3D, "get_split_scale", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_split_scale", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSplitScale*(self: CPUParticles3D; splitScale: bool): void =
-  expandMethodBind(className CPUParticles3D, "set_split_scale", 2586408642)
-  methodbind.ptrcall(self, [getPtr splitScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_split_scale", 2586408642)
+  methodbind.ptrcall(self, [getPtr splitScale], void)
 
 proc getScaleCurveX*(self: CPUParticles3D): gdref Curve =
-  expandMethodBind(className CPUParticles3D, "get_scale_curve_x", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_scale_curve_x", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setScaleCurveX*(self: CPUParticles3D; scaleCurve: gdref Curve): void =
-  expandMethodBind(className CPUParticles3D, "set_scale_curve_x", 270443179)
-  methodbind.ptrcall(self, [getPtr scaleCurve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_scale_curve_x", 270443179)
+  methodbind.ptrcall(self, [getPtr scaleCurve], void)
 
 proc getScaleCurveY*(self: CPUParticles3D): gdref Curve =
-  expandMethodBind(className CPUParticles3D, "get_scale_curve_y", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_scale_curve_y", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setScaleCurveY*(self: CPUParticles3D; scaleCurve: gdref Curve): void =
-  expandMethodBind(className CPUParticles3D, "set_scale_curve_y", 270443179)
-  methodbind.ptrcall(self, [getPtr scaleCurve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_scale_curve_y", 270443179)
+  methodbind.ptrcall(self, [getPtr scaleCurve], void)
 
 proc getScaleCurveZ*(self: CPUParticles3D): gdref Curve =
-  expandMethodBind(className CPUParticles3D, "get_scale_curve_z", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "get_scale_curve_z", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setScaleCurveZ*(self: CPUParticles3D; scaleCurve: gdref Curve): void =
-  expandMethodBind(className CPUParticles3D, "set_scale_curve_z", 270443179)
-  methodbind.ptrcall(self, [getPtr scaleCurve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "set_scale_curve_z", 270443179)
+  methodbind.ptrcall(self, [getPtr scaleCurve], void)
 
 proc convertFromParticles*(self: CPUParticles3D; particles: Node): void =
-  expandMethodBind(className CPUParticles3D, "convert_from_particles", 1078189570)
-  methodbind.ptrcall(self, [getPtr particles])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CPUParticles3D, "convert_from_particles", 1078189570)
+  methodbind.ptrcall(self, [getPtr particles], void)
 
 template emitting*(self: CPUParticles3D): untyped = self.isEmitting()
 template `emitting=`*(self: CPUParticles3D; value) = self.setEmitting(value)

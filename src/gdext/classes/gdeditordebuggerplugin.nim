@@ -37,13 +37,13 @@ proc registerVirtual_breakpointSetInTree*[T: EditorDebuggerPlugin](Self: typedes
     errproof: cast[EditorDebuggerPlugin](p_instance).breakpointSetInTree(p_args[0].decode(gdref Script), p_args[1].decode(int32), p_args[2].decode(bool))
 
 proc getSession*(self: EditorDebuggerPlugin; id: int32): gdref EditorDebuggerSession =
-  expandMethodBind(className EditorDebuggerPlugin, "get_session", 3061968499)
-  var ret: encoded gdref EditorDebuggerSession
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(gdref EditorDebuggerSession)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorDebuggerPlugin, "get_session", 3061968499)
+  methodbind.ptrcall(self, [getPtr id], gdref EditorDebuggerSession)
 
 proc getSessions*(self: EditorDebuggerPlugin): Array =
-  expandMethodBind(className EditorDebuggerPlugin, "get_sessions", 2915620761)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorDebuggerPlugin, "get_sessions", 2915620761)
+  methodbind.ptrcall(self, [], Array)

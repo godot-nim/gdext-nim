@@ -7,100 +7,118 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(TouchScreenButton, Node2D)
 
 proc setTextureNormal*(self: TouchScreenButton; texture: gdref Texture2D): void =
-  expandMethodBind(className TouchScreenButton, "set_texture_normal", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_texture_normal", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getTextureNormal*(self: TouchScreenButton): gdref Texture2D =
-  expandMethodBind(className TouchScreenButton, "get_texture_normal", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_texture_normal", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setTexturePressed*(self: TouchScreenButton; texture: gdref Texture2D): void =
-  expandMethodBind(className TouchScreenButton, "set_texture_pressed", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_texture_pressed", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getTexturePressed*(self: TouchScreenButton): gdref Texture2D =
-  expandMethodBind(className TouchScreenButton, "get_texture_pressed", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_texture_pressed", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setBitmask*(self: TouchScreenButton; bitmask: gdref BitMap): void =
-  expandMethodBind(className TouchScreenButton, "set_bitmask", 698588216)
-  methodbind.ptrcall(self, [getPtr bitmask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_bitmask", 698588216)
+  methodbind.ptrcall(self, [getPtr bitmask], void)
 
 proc getBitmask*(self: TouchScreenButton): gdref BitMap =
-  expandMethodBind(className TouchScreenButton, "get_bitmask", 2459671998)
-  var ret: encoded gdref BitMap
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref BitMap)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_bitmask", 2459671998)
+  methodbind.ptrcall(self, [], gdref BitMap)
 
 proc setShape*(self: TouchScreenButton; shape: gdref Shape2D): void =
-  expandMethodBind(className TouchScreenButton, "set_shape", 771364740)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_shape", 771364740)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getShape*(self: TouchScreenButton): gdref Shape2D =
-  expandMethodBind(className TouchScreenButton, "get_shape", 522005891)
-  var ret: encoded gdref Shape2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Shape2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_shape", 522005891)
+  methodbind.ptrcall(self, [], gdref Shape2D)
 
 proc setShapeCentered*(self: TouchScreenButton; bool: bool): void =
-  expandMethodBind(className TouchScreenButton, "set_shape_centered", 2586408642)
-  methodbind.ptrcall(self, [getPtr bool])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_shape_centered", 2586408642)
+  methodbind.ptrcall(self, [getPtr bool], void)
 
 proc isShapeCentered*(self: TouchScreenButton): bool =
-  expandMethodBind(className TouchScreenButton, "is_shape_centered", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "is_shape_centered", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShapeVisible*(self: TouchScreenButton; bool: bool): void =
-  expandMethodBind(className TouchScreenButton, "set_shape_visible", 2586408642)
-  methodbind.ptrcall(self, [getPtr bool])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_shape_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr bool], void)
 
 proc isShapeVisible*(self: TouchScreenButton): bool =
-  expandMethodBind(className TouchScreenButton, "is_shape_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "is_shape_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAction*(self: TouchScreenButton; action: String): void =
-  expandMethodBind(className TouchScreenButton, "set_action", 83702148)
-  methodbind.ptrcall(self, [getPtr action])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_action", 83702148)
+  methodbind.ptrcall(self, [getPtr action], void)
 
 proc getAction*(self: TouchScreenButton): String =
-  expandMethodBind(className TouchScreenButton, "get_action", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_action", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setVisibilityMode*(self: TouchScreenButton; mode: TouchScreenButton_VisibilityMode): void =
-  expandMethodBind(className TouchScreenButton, "set_visibility_mode", 3031128463)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_visibility_mode", 3031128463)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getVisibilityMode*(self: TouchScreenButton): TouchScreenButton_VisibilityMode =
-  expandMethodBind(className TouchScreenButton, "get_visibility_mode", 2558996468)
-  var ret: encoded TouchScreenButton_VisibilityMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TouchScreenButton_VisibilityMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "get_visibility_mode", 2558996468)
+  methodbind.ptrcall(self, [], TouchScreenButton_VisibilityMode)
 
 proc setPassbyPress*(self: TouchScreenButton; enabled: bool): void =
-  expandMethodBind(className TouchScreenButton, "set_passby_press", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "set_passby_press", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPassbyPressEnabled*(self: TouchScreenButton): bool =
-  expandMethodBind(className TouchScreenButton, "is_passby_press_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "is_passby_press_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isPressed*(self: TouchScreenButton): bool =
-  expandMethodBind(className TouchScreenButton, "is_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TouchScreenButton, "is_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template textureNormal*(self: TouchScreenButton): untyped = self.getTextureNormal()
 template `textureNormal=`*(self: TouchScreenButton; value) = self.setTextureNormal(value)

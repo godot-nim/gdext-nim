@@ -7,160 +7,190 @@ import gdvisualinstance3d; export gdvisualinstance3d
 expandOnClassImported(Light3D, VisualInstance3D)
 
 proc setEditorOnly*(self: Light3D; editorOnly: bool): void =
-  expandMethodBind(className Light3D, "set_editor_only", 2586408642)
-  methodbind.ptrcall(self, [getPtr editorOnly])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_editor_only", 2586408642)
+  methodbind.ptrcall(self, [getPtr editorOnly], void)
 
 proc isEditorOnly*(self: Light3D): bool =
-  expandMethodBind(className Light3D, "is_editor_only", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "is_editor_only", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setParam*(self: Light3D; param: Light3D_Param; value: Float): void =
-  expandMethodBind(className Light3D, "set_param", 1722734213)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_param", 1722734213)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParam*(self: Light3D; param: Light3D_Param): Float =
-  expandMethodBind(className Light3D, "get_param", 1844084987)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_param", 1844084987)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 proc setShadow*(self: Light3D; enabled: bool): void =
-  expandMethodBind(className Light3D, "set_shadow", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_shadow", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc hasShadow*(self: Light3D): bool =
-  expandMethodBind(className Light3D, "has_shadow", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "has_shadow", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNegative*(self: Light3D; enabled: bool): void =
-  expandMethodBind(className Light3D, "set_negative", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_negative", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isNegative*(self: Light3D): bool =
-  expandMethodBind(className Light3D, "is_negative", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "is_negative", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCullMask*(self: Light3D; cullMask: uint32): void =
-  expandMethodBind(className Light3D, "set_cull_mask", 1286410249)
-  methodbind.ptrcall(self, [getPtr cullMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_cull_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr cullMask], void)
 
 proc getCullMask*(self: Light3D): uint32 =
-  expandMethodBind(className Light3D, "get_cull_mask", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_cull_mask", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setEnableDistanceFade*(self: Light3D; enable: bool): void =
-  expandMethodBind(className Light3D, "set_enable_distance_fade", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_enable_distance_fade", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isDistanceFadeEnabled*(self: Light3D): bool =
-  expandMethodBind(className Light3D, "is_distance_fade_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "is_distance_fade_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDistanceFadeBegin*(self: Light3D; distance: Float): void =
-  expandMethodBind(className Light3D, "set_distance_fade_begin", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_distance_fade_begin", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getDistanceFadeBegin*(self: Light3D): Float =
-  expandMethodBind(className Light3D, "get_distance_fade_begin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_distance_fade_begin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDistanceFadeShadow*(self: Light3D; distance: Float): void =
-  expandMethodBind(className Light3D, "set_distance_fade_shadow", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_distance_fade_shadow", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getDistanceFadeShadow*(self: Light3D): Float =
-  expandMethodBind(className Light3D, "get_distance_fade_shadow", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_distance_fade_shadow", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDistanceFadeLength*(self: Light3D; distance: Float): void =
-  expandMethodBind(className Light3D, "set_distance_fade_length", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_distance_fade_length", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getDistanceFadeLength*(self: Light3D): Float =
-  expandMethodBind(className Light3D, "get_distance_fade_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_distance_fade_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setColor*(self: Light3D; color: Color): void =
-  expandMethodBind(className Light3D, "set_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getColor*(self: Light3D): Color =
-  expandMethodBind(className Light3D, "get_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setShadowReverseCullFace*(self: Light3D; enable: bool): void =
-  expandMethodBind(className Light3D, "set_shadow_reverse_cull_face", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_shadow_reverse_cull_face", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getShadowReverseCullFace*(self: Light3D): bool =
-  expandMethodBind(className Light3D, "get_shadow_reverse_cull_face", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_shadow_reverse_cull_face", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShadowCasterMask*(self: Light3D; casterMask: uint32): void =
-  expandMethodBind(className Light3D, "set_shadow_caster_mask", 1286410249)
-  methodbind.ptrcall(self, [getPtr casterMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_shadow_caster_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr casterMask], void)
 
 proc getShadowCasterMask*(self: Light3D): uint32 =
-  expandMethodBind(className Light3D, "get_shadow_caster_mask", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_shadow_caster_mask", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setBakeMode*(self: Light3D; bakeMode: Light3D_BakeMode): void =
-  expandMethodBind(className Light3D, "set_bake_mode", 37739303)
-  methodbind.ptrcall(self, [getPtr bakeMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_bake_mode", 37739303)
+  methodbind.ptrcall(self, [getPtr bakeMode], void)
 
 proc getBakeMode*(self: Light3D): Light3D_BakeMode =
-  expandMethodBind(className Light3D, "get_bake_mode", 371737608)
-  var ret: encoded Light3D_BakeMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Light3D_BakeMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_bake_mode", 371737608)
+  methodbind.ptrcall(self, [], Light3D_BakeMode)
 
 proc setProjector*(self: Light3D; projector: gdref Texture2D): void =
-  expandMethodBind(className Light3D, "set_projector", 4051416890)
-  methodbind.ptrcall(self, [getPtr projector])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_projector", 4051416890)
+  methodbind.ptrcall(self, [getPtr projector], void)
 
 proc getProjector*(self: Light3D): gdref Texture2D =
-  expandMethodBind(className Light3D, "get_projector", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_projector", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setTemperature*(self: Light3D; temperature: Float): void =
-  expandMethodBind(className Light3D, "set_temperature", 373806689)
-  methodbind.ptrcall(self, [getPtr temperature])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "set_temperature", 373806689)
+  methodbind.ptrcall(self, [getPtr temperature], void)
 
 proc getTemperature*(self: Light3D): Float =
-  expandMethodBind(className Light3D, "get_temperature", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_temperature", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getCorrelatedColor*(self: Light3D): Color =
-  expandMethodBind(className Light3D, "get_correlated_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Light3D, "get_correlated_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 template lightIntensityLumens*(self: Light3D): untyped = self.getParam(Light3D_Param(20))
 template `lightIntensityLumens=`*(self: Light3D; value) = self.setParam(Light3D_Param(20), value)

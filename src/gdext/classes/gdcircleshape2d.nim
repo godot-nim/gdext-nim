@@ -7,14 +7,16 @@ import gdshape2d; export gdshape2d
 expandOnClassImported(CircleShape2D, Shape2D)
 
 proc setRadius*(self: CircleShape2D; radius: Float): void =
-  expandMethodBind(className CircleShape2D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CircleShape2D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: CircleShape2D): Float =
-  expandMethodBind(className CircleShape2D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CircleShape2D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template radius*(self: CircleShape2D): untyped = self.getRadius()
 template `radius=`*(self: CircleShape2D; value) = self.setRadius(value)

@@ -7,58 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(World3D, Resource)
 
 proc getSpace*(self: World3D): RID =
-  expandMethodBind(className World3D, "get_space", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_space", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc getNavigationMap*(self: World3D): RID =
-  expandMethodBind(className World3D, "get_navigation_map", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_navigation_map", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc getScenario*(self: World3D): RID =
-  expandMethodBind(className World3D, "get_scenario", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_scenario", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setEnvironment*(self: World3D; env: gdref Environment): void =
-  expandMethodBind(className World3D, "set_environment", 4143518816)
-  methodbind.ptrcall(self, [getPtr env])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "set_environment", 4143518816)
+  methodbind.ptrcall(self, [getPtr env], void)
 
 proc getEnvironment*(self: World3D): gdref Environment =
-  expandMethodBind(className World3D, "get_environment", 3082064660)
-  var ret: encoded gdref Environment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Environment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_environment", 3082064660)
+  methodbind.ptrcall(self, [], gdref Environment)
 
 proc setFallbackEnvironment*(self: World3D; env: gdref Environment): void =
-  expandMethodBind(className World3D, "set_fallback_environment", 4143518816)
-  methodbind.ptrcall(self, [getPtr env])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "set_fallback_environment", 4143518816)
+  methodbind.ptrcall(self, [getPtr env], void)
 
 proc getFallbackEnvironment*(self: World3D): gdref Environment =
-  expandMethodBind(className World3D, "get_fallback_environment", 3082064660)
-  var ret: encoded gdref Environment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Environment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_fallback_environment", 3082064660)
+  methodbind.ptrcall(self, [], gdref Environment)
 
 proc setCameraAttributes*(self: World3D; attributes: gdref CameraAttributes): void =
-  expandMethodBind(className World3D, "set_camera_attributes", 2817810567)
-  methodbind.ptrcall(self, [getPtr attributes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "set_camera_attributes", 2817810567)
+  methodbind.ptrcall(self, [getPtr attributes], void)
 
 proc getCameraAttributes*(self: World3D): gdref CameraAttributes =
-  expandMethodBind(className World3D, "get_camera_attributes", 3921283215)
-  var ret: encoded gdref CameraAttributes
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref CameraAttributes)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_camera_attributes", 3921283215)
+  methodbind.ptrcall(self, [], gdref CameraAttributes)
 
 proc getDirectSpaceState*(self: World3D): PhysicsDirectSpaceState3D =
-  expandMethodBind(className World3D, "get_direct_space_state", 2069328350)
-  var ret: encoded PhysicsDirectSpaceState3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PhysicsDirectSpaceState3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className World3D, "get_direct_space_state", 2069328350)
+  methodbind.ptrcall(self, [], PhysicsDirectSpaceState3D)
 
 template environment*(self: World3D): untyped = self.getEnvironment()
 template `environment=`*(self: World3D; value) = self.setEnvironment(value)

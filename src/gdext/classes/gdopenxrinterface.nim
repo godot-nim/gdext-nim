@@ -7,176 +7,196 @@ import gdxrinterface; export gdxrinterface
 expandOnClassImported(OpenXRInterface, XRInterface)
 
 proc getSessionState*(self: OpenXRInterface): OpenXRInterface_SessionState =
-  expandMethodBind(className OpenXRInterface, "get_session_state", 896364779)
-  var ret: encoded OpenXRInterface_SessionState
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(OpenXRInterface_SessionState)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_session_state", 896364779)
+  methodbind.ptrcall(self, [], OpenXRInterface_SessionState)
 
 proc getDisplayRefreshRate*(self: OpenXRInterface): Float =
-  expandMethodBind(className OpenXRInterface, "get_display_refresh_rate", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_display_refresh_rate", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDisplayRefreshRate*(self: OpenXRInterface; refreshRate: Float): void =
-  expandMethodBind(className OpenXRInterface, "set_display_refresh_rate", 373806689)
-  methodbind.ptrcall(self, [getPtr refreshRate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_display_refresh_rate", 373806689)
+  methodbind.ptrcall(self, [getPtr refreshRate], void)
 
 proc getRenderTargetSizeMultiplier*(self: OpenXRInterface): float64 =
-  expandMethodBind(className OpenXRInterface, "get_render_target_size_multiplier", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_render_target_size_multiplier", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setRenderTargetSizeMultiplier*(self: OpenXRInterface; multiplier: float64): void =
-  expandMethodBind(className OpenXRInterface, "set_render_target_size_multiplier", 373806689)
-  methodbind.ptrcall(self, [getPtr multiplier])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_render_target_size_multiplier", 373806689)
+  methodbind.ptrcall(self, [getPtr multiplier], void)
 
 proc isFoveationSupported*(self: OpenXRInterface): bool =
-  expandMethodBind(className OpenXRInterface, "is_foveation_supported", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "is_foveation_supported", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getFoveationLevel*(self: OpenXRInterface): int32 =
-  expandMethodBind(className OpenXRInterface, "get_foveation_level", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_foveation_level", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setFoveationLevel*(self: OpenXRInterface; foveationLevel: int32): void =
-  expandMethodBind(className OpenXRInterface, "set_foveation_level", 1286410249)
-  methodbind.ptrcall(self, [getPtr foveationLevel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_foveation_level", 1286410249)
+  methodbind.ptrcall(self, [getPtr foveationLevel], void)
 
 proc getFoveationDynamic*(self: OpenXRInterface): bool =
-  expandMethodBind(className OpenXRInterface, "get_foveation_dynamic", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_foveation_dynamic", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFoveationDynamic*(self: OpenXRInterface; foveationDynamic: bool): void =
-  expandMethodBind(className OpenXRInterface, "set_foveation_dynamic", 2586408642)
-  methodbind.ptrcall(self, [getPtr foveationDynamic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_foveation_dynamic", 2586408642)
+  methodbind.ptrcall(self, [getPtr foveationDynamic], void)
 
 proc isActionSetActive*(self: OpenXRInterface; name: String): bool =
-  expandMethodBind(className OpenXRInterface, "is_action_set_active", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "is_action_set_active", 3927539163)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc setActionSetActive*(self: OpenXRInterface; name: String; active: bool): void =
-  expandMethodBind(className OpenXRInterface, "set_action_set_active", 2678287736)
-  methodbind.ptrcall(self, [getPtr name, getPtr active])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_action_set_active", 2678287736)
+  methodbind.ptrcall(self, [getPtr name, getPtr active], void)
 
 proc getActionSets*(self: OpenXRInterface): Array =
-  expandMethodBind(className OpenXRInterface, "get_action_sets", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_action_sets", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc getAvailableDisplayRefreshRates*(self: OpenXRInterface): Array =
-  expandMethodBind(className OpenXRInterface, "get_available_display_refresh_rates", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_available_display_refresh_rates", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setMotionRange*(self: OpenXRInterface; hand: OpenXRInterface_Hand; motionRange: OpenXRInterface_HandMotionRange): void =
-  expandMethodBind(className OpenXRInterface, "set_motion_range", 855158159)
-  methodbind.ptrcall(self, [getPtr hand, getPtr motionRange])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_motion_range", 855158159)
+  methodbind.ptrcall(self, [getPtr hand, getPtr motionRange], void)
 
 proc getMotionRange*(self: OpenXRInterface; hand: OpenXRInterface_Hand): OpenXRInterface_HandMotionRange =
-  expandMethodBind(className OpenXRInterface, "get_motion_range", 3955838114)
-  var ret: encoded OpenXRInterface_HandMotionRange
-  methodbind.ptrcall(self, [getPtr hand], addr ret)
-  (addr ret).decode_result(OpenXRInterface_HandMotionRange)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_motion_range", 3955838114)
+  methodbind.ptrcall(self, [getPtr hand], OpenXRInterface_HandMotionRange)
 
 proc getHandTrackingSource*(self: OpenXRInterface; hand: OpenXRInterface_Hand): OpenXRInterface_HandTrackedSource =
-  expandMethodBind(className OpenXRInterface, "get_hand_tracking_source", 4092421202)
-  var ret: encoded OpenXRInterface_HandTrackedSource
-  methodbind.ptrcall(self, [getPtr hand], addr ret)
-  (addr ret).decode_result(OpenXRInterface_HandTrackedSource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_tracking_source", 4092421202)
+  methodbind.ptrcall(self, [getPtr hand], OpenXRInterface_HandTrackedSource)
 
 proc getHandJointFlags*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): set[OpenXRInterface_HandJointFlags] =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_flags", 720567706)
-  var ret: encoded set[OpenXRInterface_HandJointFlags]
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(set[OpenXRInterface_HandJointFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_flags", 720567706)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], set[OpenXRInterface_HandJointFlags])
 
 proc getHandJointRotation*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): Quaternion =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_rotation", 1974618321)
-  var ret: encoded Quaternion
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(Quaternion)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_rotation", 1974618321)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], Quaternion)
 
 proc getHandJointPosition*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): Vector3 =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_position", 3529194242)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_position", 3529194242)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], Vector3)
 
 proc getHandJointRadius*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): Float =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_radius", 901522724)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_radius", 901522724)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], Float)
 
 proc getHandJointLinearVelocity*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): Vector3 =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_linear_velocity", 3529194242)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_linear_velocity", 3529194242)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], Vector3)
 
 proc getHandJointAngularVelocity*(self: OpenXRInterface; hand: OpenXRInterface_Hand; joint: OpenXRInterface_HandJoints): Vector3 =
-  expandMethodBind(className OpenXRInterface, "get_hand_joint_angular_velocity", 3529194242)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [getPtr hand, getPtr joint], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_hand_joint_angular_velocity", 3529194242)
+  methodbind.ptrcall(self, [getPtr hand, getPtr joint], Vector3)
 
 proc isHandTrackingSupported*(self: OpenXRInterface): bool =
-  expandMethodBind(className OpenXRInterface, "is_hand_tracking_supported", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "is_hand_tracking_supported", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc isHandInteractionSupported*(self: OpenXRInterface): bool =
-  expandMethodBind(className OpenXRInterface, "is_hand_interaction_supported", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "is_hand_interaction_supported", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isEyeGazeInteractionSupported*(self: OpenXRInterface): bool =
-  expandMethodBind(className OpenXRInterface, "is_eye_gaze_interaction_supported", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "is_eye_gaze_interaction_supported", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getVrsMinRadius*(self: OpenXRInterface): Float =
-  expandMethodBind(className OpenXRInterface, "get_vrs_min_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_vrs_min_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVrsMinRadius*(self: OpenXRInterface; radius: Float): void =
-  expandMethodBind(className OpenXRInterface, "set_vrs_min_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_vrs_min_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getVrsStrength*(self: OpenXRInterface): Float =
-  expandMethodBind(className OpenXRInterface, "get_vrs_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "get_vrs_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setVrsStrength*(self: OpenXRInterface; strength: Float): void =
-  expandMethodBind(className OpenXRInterface, "set_vrs_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr strength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_vrs_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr strength], void)
 
 proc setCpuLevel*(self: OpenXRInterface; level: OpenXRInterface_PerfSettingsLevel): void =
-  expandMethodBind(className OpenXRInterface, "set_cpu_level", 2940842095)
-  methodbind.ptrcall(self, [getPtr level])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_cpu_level", 2940842095)
+  methodbind.ptrcall(self, [getPtr level], void)
 
 proc setGpuLevel*(self: OpenXRInterface; level: OpenXRInterface_PerfSettingsLevel): void =
-  expandMethodBind(className OpenXRInterface, "set_gpu_level", 2940842095)
-  methodbind.ptrcall(self, [getPtr level])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInterface, "set_gpu_level", 2940842095)
+  methodbind.ptrcall(self, [getPtr level], void)
 
 template displayRefreshRate*(self: OpenXRInterface): untyped = self.getDisplayRefreshRate()
 template `displayRefreshRate=`*(self: OpenXRInterface; value) = self.setDisplayRefreshRate(value)

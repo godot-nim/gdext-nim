@@ -37,5 +37,7 @@ proc registerVirtual_writeEnd*[T: MovieWriter](Self: typedesc[T]) =
     errproof: cast[MovieWriter](p_instance).writeEnd()
 
 proc addWriter*(_: typedesc[MovieWriter]; writer: MovieWriter): void =
-  expandMethodBind(className MovieWriter, "add_writer", 4023702871)
-  methodbind.ptrcall([getPtr writer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MovieWriter, "add_writer", 4023702871)
+  methodbind.ptrcall([getPtr writer], void)

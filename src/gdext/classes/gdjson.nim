@@ -7,62 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(JSON, Resource)
 
 proc stringify*(_: typedesc[JSON]; data: Variant; indent: String = newGdString(); sortKeys: bool = true; fullPrecision: bool = false): String =
-  expandMethodBind(className JSON, "stringify", 462733549)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr data, getPtr indent, getPtr sortKeys, getPtr fullPrecision], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "stringify", 462733549)
+  methodbind.ptrcall([getPtr data, getPtr indent, getPtr sortKeys, getPtr fullPrecision], String)
 
 proc parseString*(_: typedesc[JSON]; jsonString: String): Variant =
-  expandMethodBind(className JSON, "parse_string", 309047738)
-  var ret: encoded Variant
-  methodbind.ptrcall([getPtr jsonString], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "parse_string", 309047738)
+  methodbind.ptrcall([getPtr jsonString], Variant)
 
 proc parse*(self: JSON; jsonText: String; keepText: bool = false): Error =
-  expandMethodBind(className JSON, "parse", 885841341)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr jsonText, getPtr keepText], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "parse", 885841341)
+  methodbind.ptrcall(self, [getPtr jsonText, getPtr keepText], Error)
 
 proc getData*(self: JSON): Variant =
-  expandMethodBind(className JSON, "get_data", 1214101251)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "get_data", 1214101251)
+  methodbind.ptrcall(self, [], Variant)
 
 proc setData*(self: JSON; data: Variant): void =
-  expandMethodBind(className JSON, "set_data", 1114965689)
-  methodbind.ptrcall(self, [getPtr data])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "set_data", 1114965689)
+  methodbind.ptrcall(self, [getPtr data], void)
 
 proc getParsedText*(self: JSON): String =
-  expandMethodBind(className JSON, "get_parsed_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "get_parsed_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getErrorLine*(self: JSON): int32 =
-  expandMethodBind(className JSON, "get_error_line", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "get_error_line", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getErrorMessage*(self: JSON): String =
-  expandMethodBind(className JSON, "get_error_message", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "get_error_message", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc fromNative*(_: typedesc[JSON]; variant: Variant; fullObjects: bool = false): Variant =
-  expandMethodBind(className JSON, "from_native", 2963479484)
-  var ret: encoded Variant
-  methodbind.ptrcall([getPtr variant, getPtr fullObjects], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "from_native", 2963479484)
+  methodbind.ptrcall([getPtr variant, getPtr fullObjects], Variant)
 
 proc toNative*(_: typedesc[JSON]; json: Variant; allowObjects: bool = false): Variant =
-  expandMethodBind(className JSON, "to_native", 2963479484)
-  var ret: encoded Variant
-  methodbind.ptrcall([getPtr json, getPtr allowObjects], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className JSON, "to_native", 2963479484)
+  methodbind.ptrcall([getPtr json, getPtr allowObjects], Variant)
 
 template data*(self: JSON): untyped = self.getData()
 template `data=`*(self: JSON; value) = self.setData(value)

@@ -7,14 +7,16 @@ import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
 expandOnClassImported(VisualShaderNodeVec4Constant, VisualShaderNodeConstant)
 
 proc setConstant*(self: VisualShaderNodeVec4Constant; constant: Quaternion): void =
-  expandMethodBind(className VisualShaderNodeVec4Constant, "set_constant", 1727505552)
-  methodbind.ptrcall(self, [getPtr constant])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeVec4Constant, "set_constant", 1727505552)
+  methodbind.ptrcall(self, [getPtr constant], void)
 
 proc getConstant*(self: VisualShaderNodeVec4Constant): Quaternion =
-  expandMethodBind(className VisualShaderNodeVec4Constant, "get_constant", 1222331677)
-  var ret: encoded Quaternion
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Quaternion)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeVec4Constant, "get_constant", 1222331677)
+  methodbind.ptrcall(self, [], Quaternion)
 
 template constant*(self: VisualShaderNodeVec4Constant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeVec4Constant; value) = self.setConstant(value)

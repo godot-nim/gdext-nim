@@ -7,444 +7,520 @@ import gdnode; export gdnode
 expandOnClassImported(NavigationAgent3D, Node)
 
 proc getRid*(self: NavigationAgent3D): RID =
-  expandMethodBind(className NavigationAgent3D, "get_rid", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_rid", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setAvoidanceEnabled*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getAvoidanceEnabled*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPathDesiredDistance*(self: NavigationAgent3D; desiredDistance: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_desired_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr desiredDistance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_desired_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr desiredDistance], void)
 
 proc getPathDesiredDistance*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_desired_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_desired_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTargetDesiredDistance*(self: NavigationAgent3D; desiredDistance: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_target_desired_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr desiredDistance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_target_desired_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr desiredDistance], void)
 
 proc getTargetDesiredDistance*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_target_desired_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_target_desired_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRadius*(self: NavigationAgent3D; radius: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: NavigationAgent3D; height: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getHeight*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPathHeightOffset*(self: NavigationAgent3D; pathHeightOffset: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_height_offset", 373806689)
-  methodbind.ptrcall(self, [getPtr pathHeightOffset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_height_offset", 373806689)
+  methodbind.ptrcall(self, [getPtr pathHeightOffset], void)
 
 proc getPathHeightOffset*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_height_offset", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_height_offset", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setUse3DAvoidance*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_use_3d_avoidance", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_use_3d_avoidance", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getUse3DAvoidance*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_use_3d_avoidance", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_use_3d_avoidance", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setKeepYVelocity*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_keep_y_velocity", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_keep_y_velocity", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getKeepYVelocity*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_keep_y_velocity", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_keep_y_velocity", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNeighborDistance*(self: NavigationAgent3D; neighborDistance: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_neighbor_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr neighborDistance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_neighbor_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr neighborDistance], void)
 
 proc getNeighborDistance*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_neighbor_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_neighbor_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxNeighbors*(self: NavigationAgent3D; maxNeighbors: int32): void =
-  expandMethodBind(className NavigationAgent3D, "set_max_neighbors", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxNeighbors])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_max_neighbors", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxNeighbors], void)
 
 proc getMaxNeighbors*(self: NavigationAgent3D): int32 =
-  expandMethodBind(className NavigationAgent3D, "get_max_neighbors", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_max_neighbors", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTimeHorizonAgents*(self: NavigationAgent3D; timeHorizon: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_time_horizon_agents", 373806689)
-  methodbind.ptrcall(self, [getPtr timeHorizon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_time_horizon_agents", 373806689)
+  methodbind.ptrcall(self, [getPtr timeHorizon], void)
 
 proc getTimeHorizonAgents*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_time_horizon_agents", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_time_horizon_agents", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTimeHorizonObstacles*(self: NavigationAgent3D; timeHorizon: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_time_horizon_obstacles", 373806689)
-  methodbind.ptrcall(self, [getPtr timeHorizon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_time_horizon_obstacles", 373806689)
+  methodbind.ptrcall(self, [getPtr timeHorizon], void)
 
 proc getTimeHorizonObstacles*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_time_horizon_obstacles", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_time_horizon_obstacles", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxSpeed*(self: NavigationAgent3D; maxSpeed: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_max_speed", 373806689)
-  methodbind.ptrcall(self, [getPtr maxSpeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_max_speed", 373806689)
+  methodbind.ptrcall(self, [getPtr maxSpeed], void)
 
 proc getMaxSpeed*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_max_speed", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_max_speed", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPathMaxDistance*(self: NavigationAgent3D; maxSpeed: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_max_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr maxSpeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_max_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr maxSpeed], void)
 
 proc getPathMaxDistance*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_max_distance", 191475506)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_max_distance", 191475506)
+  methodbind.ptrcall(self, [], Float)
 
 proc setNavigationLayers*(self: NavigationAgent3D; navigationLayers: uint32): void =
-  expandMethodBind(className NavigationAgent3D, "set_navigation_layers", 1286410249)
-  methodbind.ptrcall(self, [getPtr navigationLayers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_navigation_layers", 1286410249)
+  methodbind.ptrcall(self, [getPtr navigationLayers], void)
 
 proc getNavigationLayers*(self: NavigationAgent3D): uint32 =
-  expandMethodBind(className NavigationAgent3D, "get_navigation_layers", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_navigation_layers", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setNavigationLayerValue*(self: NavigationAgent3D; layerNumber: int32; value: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_navigation_layer_value", 300928843)
-  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_navigation_layer_value", 300928843)
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value], void)
 
 proc getNavigationLayerValue*(self: NavigationAgent3D; layerNumber: int32): bool =
-  expandMethodBind(className NavigationAgent3D, "get_navigation_layer_value", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_navigation_layer_value", 1116898809)
+  methodbind.ptrcall(self, [getPtr layerNumber], bool)
 
 proc setPathfindingAlgorithm*(self: NavigationAgent3D; pathfindingAlgorithm: NavigationPathQueryParameters3D_PathfindingAlgorithm): void =
-  expandMethodBind(className NavigationAgent3D, "set_pathfinding_algorithm", 394560454)
-  methodbind.ptrcall(self, [getPtr pathfindingAlgorithm])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_pathfinding_algorithm", 394560454)
+  methodbind.ptrcall(self, [getPtr pathfindingAlgorithm], void)
 
 proc getPathfindingAlgorithm*(self: NavigationAgent3D): NavigationPathQueryParameters3D_PathfindingAlgorithm =
-  expandMethodBind(className NavigationAgent3D, "get_pathfinding_algorithm", 3398491350)
-  var ret: encoded NavigationPathQueryParameters3D_PathfindingAlgorithm
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NavigationPathQueryParameters3D_PathfindingAlgorithm)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_pathfinding_algorithm", 3398491350)
+  methodbind.ptrcall(self, [], NavigationPathQueryParameters3D_PathfindingAlgorithm)
 
 proc setPathPostprocessing*(self: NavigationAgent3D; pathPostprocessing: NavigationPathQueryParameters3D_PathPostProcessing): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_postprocessing", 2267362344)
-  methodbind.ptrcall(self, [getPtr pathPostprocessing])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_postprocessing", 2267362344)
+  methodbind.ptrcall(self, [getPtr pathPostprocessing], void)
 
 proc getPathPostprocessing*(self: NavigationAgent3D): NavigationPathQueryParameters3D_PathPostProcessing =
-  expandMethodBind(className NavigationAgent3D, "get_path_postprocessing", 3883858360)
-  var ret: encoded NavigationPathQueryParameters3D_PathPostProcessing
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NavigationPathQueryParameters3D_PathPostProcessing)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_postprocessing", 3883858360)
+  methodbind.ptrcall(self, [], NavigationPathQueryParameters3D_PathPostProcessing)
 
 proc setPathMetadataFlags*(self: NavigationAgent3D; flags: set[NavigationPathQueryParameters3D_PathMetadataFlags]): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_metadata_flags", 2713846708)
-  methodbind.ptrcall(self, [getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_metadata_flags", 2713846708)
+  methodbind.ptrcall(self, [getPtr flags], void)
 
 proc getPathMetadataFlags*(self: NavigationAgent3D): set[NavigationPathQueryParameters3D_PathMetadataFlags] =
-  expandMethodBind(className NavigationAgent3D, "get_path_metadata_flags", 1582332802)
-  var ret: encoded set[NavigationPathQueryParameters3D_PathMetadataFlags]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[NavigationPathQueryParameters3D_PathMetadataFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_metadata_flags", 1582332802)
+  methodbind.ptrcall(self, [], set[NavigationPathQueryParameters3D_PathMetadataFlags])
 
 proc setNavigationMap*(self: NavigationAgent3D; navigationMap: RID): void =
-  expandMethodBind(className NavigationAgent3D, "set_navigation_map", 2722037293)
-  methodbind.ptrcall(self, [getPtr navigationMap])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_navigation_map", 2722037293)
+  methodbind.ptrcall(self, [getPtr navigationMap], void)
 
 proc getNavigationMap*(self: NavigationAgent3D): RID =
-  expandMethodBind(className NavigationAgent3D, "get_navigation_map", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_navigation_map", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setTargetPosition*(self: NavigationAgent3D; position: Vector3): void =
-  expandMethodBind(className NavigationAgent3D, "set_target_position", 3460891852)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_target_position", 3460891852)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getTargetPosition*(self: NavigationAgent3D): Vector3 =
-  expandMethodBind(className NavigationAgent3D, "get_target_position", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_target_position", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setSimplifyPath*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_simplify_path", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_simplify_path", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getSimplifyPath*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_simplify_path", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_simplify_path", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSimplifyEpsilon*(self: NavigationAgent3D; epsilon: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_simplify_epsilon", 373806689)
-  methodbind.ptrcall(self, [getPtr epsilon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_simplify_epsilon", 373806689)
+  methodbind.ptrcall(self, [getPtr epsilon], void)
 
 proc getSimplifyEpsilon*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_simplify_epsilon", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_simplify_epsilon", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPathReturnMaxLength*(self: NavigationAgent3D; length: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_return_max_length", 373806689)
-  methodbind.ptrcall(self, [getPtr length])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_return_max_length", 373806689)
+  methodbind.ptrcall(self, [getPtr length], void)
 
 proc getPathReturnMaxLength*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_return_max_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_return_max_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPathReturnMaxRadius*(self: NavigationAgent3D; radius: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_return_max_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_return_max_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getPathReturnMaxRadius*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_return_max_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_return_max_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPathSearchMaxPolygons*(self: NavigationAgent3D; maxPolygons: int32): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_search_max_polygons", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxPolygons])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_search_max_polygons", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxPolygons], void)
 
 proc getPathSearchMaxPolygons*(self: NavigationAgent3D): int32 =
-  expandMethodBind(className NavigationAgent3D, "get_path_search_max_polygons", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_search_max_polygons", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPathSearchMaxDistance*(self: NavigationAgent3D; distance: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_path_search_max_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr distance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_path_search_max_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr distance], void)
 
 proc getPathSearchMaxDistance*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_search_max_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_search_max_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getPathLength*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_path_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_path_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getNextPathPosition*(self: NavigationAgent3D): Vector3 =
-  expandMethodBind(className NavigationAgent3D, "get_next_path_position", 3783033775)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_next_path_position", 3783033775)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setVelocityForced*(self: NavigationAgent3D; velocity: Vector3): void =
-  expandMethodBind(className NavigationAgent3D, "set_velocity_forced", 3460891852)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_velocity_forced", 3460891852)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc setVelocity*(self: NavigationAgent3D; velocity: Vector3): void =
-  expandMethodBind(className NavigationAgent3D, "set_velocity", 3460891852)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_velocity", 3460891852)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getVelocity*(self: NavigationAgent3D): Vector3 =
-  expandMethodBind(className NavigationAgent3D, "get_velocity", 3783033775)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_velocity", 3783033775)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc distanceToTarget*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "distance_to_target", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "distance_to_target", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getCurrentNavigationResult*(self: NavigationAgent3D): gdref NavigationPathQueryResult3D =
-  expandMethodBind(className NavigationAgent3D, "get_current_navigation_result", 728825684)
-  var ret: encoded gdref NavigationPathQueryResult3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref NavigationPathQueryResult3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_current_navigation_result", 728825684)
+  methodbind.ptrcall(self, [], gdref NavigationPathQueryResult3D)
 
 proc getCurrentNavigationPath*(self: NavigationAgent3D): PackedVector3Array =
-  expandMethodBind(className NavigationAgent3D, "get_current_navigation_path", 497664490)
-  var ret: encoded PackedVector3Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector3Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_current_navigation_path", 497664490)
+  methodbind.ptrcall(self, [], PackedVector3Array)
 
 proc getCurrentNavigationPathIndex*(self: NavigationAgent3D): int32 =
-  expandMethodBind(className NavigationAgent3D, "get_current_navigation_path_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_current_navigation_path_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc isTargetReached*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "is_target_reached", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "is_target_reached", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isTargetReachable*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "is_target_reachable", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "is_target_reachable", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc isNavigationFinished*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "is_navigation_finished", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "is_navigation_finished", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc getFinalPosition*(self: NavigationAgent3D): Vector3 =
-  expandMethodBind(className NavigationAgent3D, "get_final_position", 3783033775)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_final_position", 3783033775)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setAvoidanceLayers*(self: NavigationAgent3D; layers: uint32): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_layers", 1286410249)
-  methodbind.ptrcall(self, [getPtr layers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_layers", 1286410249)
+  methodbind.ptrcall(self, [getPtr layers], void)
 
 proc getAvoidanceLayers*(self: NavigationAgent3D): uint32 =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_layers", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_layers", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setAvoidanceMask*(self: NavigationAgent3D; mask: uint32): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_mask", 1286410249)
-  methodbind.ptrcall(self, [getPtr mask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr mask], void)
 
 proc getAvoidanceMask*(self: NavigationAgent3D): uint32 =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_mask", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_mask", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setAvoidanceLayerValue*(self: NavigationAgent3D; layerNumber: int32; value: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_layer_value", 300928843)
-  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_layer_value", 300928843)
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value], void)
 
 proc getAvoidanceLayerValue*(self: NavigationAgent3D; layerNumber: int32): bool =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_layer_value", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_layer_value", 1116898809)
+  methodbind.ptrcall(self, [getPtr layerNumber], bool)
 
 proc setAvoidanceMaskValue*(self: NavigationAgent3D; maskNumber: int32; value: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_mask_value", 300928843)
-  methodbind.ptrcall(self, [getPtr maskNumber, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_mask_value", 300928843)
+  methodbind.ptrcall(self, [getPtr maskNumber, getPtr value], void)
 
 proc getAvoidanceMaskValue*(self: NavigationAgent3D; maskNumber: int32): bool =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_mask_value", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr maskNumber], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_mask_value", 1116898809)
+  methodbind.ptrcall(self, [getPtr maskNumber], bool)
 
 proc setAvoidancePriority*(self: NavigationAgent3D; priority: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_avoidance_priority", 373806689)
-  methodbind.ptrcall(self, [getPtr priority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_avoidance_priority", 373806689)
+  methodbind.ptrcall(self, [getPtr priority], void)
 
 proc getAvoidancePriority*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_avoidance_priority", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_avoidance_priority", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDebugEnabled*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_debug_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_debug_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getDebugEnabled*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_debug_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_debug_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDebugUseCustom*(self: NavigationAgent3D; enabled: bool): void =
-  expandMethodBind(className NavigationAgent3D, "set_debug_use_custom", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_debug_use_custom", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getDebugUseCustom*(self: NavigationAgent3D): bool =
-  expandMethodBind(className NavigationAgent3D, "get_debug_use_custom", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_debug_use_custom", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDebugPathCustomColor*(self: NavigationAgent3D; color: Color): void =
-  expandMethodBind(className NavigationAgent3D, "set_debug_path_custom_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_debug_path_custom_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getDebugPathCustomColor*(self: NavigationAgent3D): Color =
-  expandMethodBind(className NavigationAgent3D, "get_debug_path_custom_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_debug_path_custom_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setDebugPathCustomPointSize*(self: NavigationAgent3D; pointSize: Float): void =
-  expandMethodBind(className NavigationAgent3D, "set_debug_path_custom_point_size", 373806689)
-  methodbind.ptrcall(self, [getPtr pointSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "set_debug_path_custom_point_size", 373806689)
+  methodbind.ptrcall(self, [getPtr pointSize], void)
 
 proc getDebugPathCustomPointSize*(self: NavigationAgent3D): Float =
-  expandMethodBind(className NavigationAgent3D, "get_debug_path_custom_point_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NavigationAgent3D, "get_debug_path_custom_point_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template targetPosition*(self: NavigationAgent3D): untyped = self.getTargetPosition()
 template `targetPosition=`*(self: NavigationAgent3D; value) = self.setTargetPosition(value)

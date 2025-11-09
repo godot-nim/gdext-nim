@@ -7,74 +7,88 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(PhysicsTestMotionParameters2D, RefCounted)
 
 proc getFrom*(self: PhysicsTestMotionParameters2D): Transform2D =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "get_from", 3814499831)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "get_from", 3814499831)
+  methodbind.ptrcall(self, [], Transform2D)
 
 proc setFrom*(self: PhysicsTestMotionParameters2D; `from`: Transform2D): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_from", 2761652528)
-  methodbind.ptrcall(self, [getPtr `from`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_from", 2761652528)
+  methodbind.ptrcall(self, [getPtr `from`], void)
 
 proc getMotion*(self: PhysicsTestMotionParameters2D): Vector2 =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "get_motion", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "get_motion", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setMotion*(self: PhysicsTestMotionParameters2D; motion: Vector2): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_motion", 743155724)
-  methodbind.ptrcall(self, [getPtr motion])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_motion", 743155724)
+  methodbind.ptrcall(self, [getPtr motion], void)
 
 proc getMargin*(self: PhysicsTestMotionParameters2D): Float =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "get_margin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "get_margin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMargin*(self: PhysicsTestMotionParameters2D; margin: Float): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_margin", 373806689)
-  methodbind.ptrcall(self, [getPtr margin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_margin", 373806689)
+  methodbind.ptrcall(self, [getPtr margin], void)
 
 proc isCollideSeparationRayEnabled*(self: PhysicsTestMotionParameters2D): bool =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "is_collide_separation_ray_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "is_collide_separation_ray_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollideSeparationRayEnabled*(self: PhysicsTestMotionParameters2D; enabled: bool): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_collide_separation_ray_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_collide_separation_ray_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getExcludeBodies*(self: PhysicsTestMotionParameters2D): TypedArray[RID] =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "get_exclude_bodies", 3995934104)
-  var ret: encoded TypedArray[RID]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "get_exclude_bodies", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[RID])
 
 proc setExcludeBodies*(self: PhysicsTestMotionParameters2D; excludeList: TypedArray[RID]): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_exclude_bodies", 381264803)
-  methodbind.ptrcall(self, [getPtr excludeList])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_exclude_bodies", 381264803)
+  methodbind.ptrcall(self, [getPtr excludeList], void)
 
 proc getExcludeObjects*(self: PhysicsTestMotionParameters2D): TypedArray[Int] =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "get_exclude_objects", 3995934104)
-  var ret: encoded TypedArray[Int]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "get_exclude_objects", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[Int])
 
 proc setExcludeObjects*(self: PhysicsTestMotionParameters2D; excludeList: TypedArray[Int]): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_exclude_objects", 381264803)
-  methodbind.ptrcall(self, [getPtr excludeList])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_exclude_objects", 381264803)
+  methodbind.ptrcall(self, [getPtr excludeList], void)
 
 proc isRecoveryAsCollisionEnabled*(self: PhysicsTestMotionParameters2D): bool =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "is_recovery_as_collision_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "is_recovery_as_collision_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setRecoveryAsCollisionEnabled*(self: PhysicsTestMotionParameters2D; enabled: bool): void =
-  expandMethodBind(className PhysicsTestMotionParameters2D, "set_recovery_as_collision_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsTestMotionParameters2D, "set_recovery_as_collision_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 template `from`*(self: PhysicsTestMotionParameters2D): untyped = self.getFrom()
 template `from=`*(self: PhysicsTestMotionParameters2D; value) = self.setFrom(value)

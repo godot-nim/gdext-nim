@@ -7,15 +7,19 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(Mutex, RefCounted)
 
 proc lock*(self: Mutex): void =
-  expandMethodBind(className Mutex, "lock", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mutex, "lock", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc tryLock*(self: Mutex): bool =
-  expandMethodBind(className Mutex, "try_lock", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mutex, "try_lock", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc unlock*(self: Mutex): void =
-  expandMethodBind(className Mutex, "unlock", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Mutex, "unlock", 3218959716)
+  methodbind.ptrcall(self, [], void)

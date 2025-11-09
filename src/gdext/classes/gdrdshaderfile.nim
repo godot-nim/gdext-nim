@@ -7,30 +7,34 @@ import gdresource; export gdresource
 expandOnClassImported(RDShaderFile, Resource)
 
 proc setBytecode*(self: RDShaderFile; bytecode: gdref RDShaderSPIRV; version: StringName = default(StringName)): void =
-  expandMethodBind(className RDShaderFile, "set_bytecode", 1526857008)
-  methodbind.ptrcall(self, [getPtr bytecode, getPtr version])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderFile, "set_bytecode", 1526857008)
+  methodbind.ptrcall(self, [getPtr bytecode, getPtr version], void)
 
 proc getSpirv*(self: RDShaderFile; version: StringName = default(StringName)): gdref RDShaderSPIRV =
-  expandMethodBind(className RDShaderFile, "get_spirv", 2689310080)
-  var ret: encoded gdref RDShaderSPIRV
-  methodbind.ptrcall(self, [getPtr version], addr ret)
-  (addr ret).decode_result(gdref RDShaderSPIRV)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderFile, "get_spirv", 2689310080)
+  methodbind.ptrcall(self, [getPtr version], gdref RDShaderSPIRV)
 
 proc getVersionList*(self: RDShaderFile): TypedArray[StringName] =
-  expandMethodBind(className RDShaderFile, "get_version_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderFile, "get_version_list", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[StringName])
 
 proc setBaseError*(self: RDShaderFile; error: String): void =
-  expandMethodBind(className RDShaderFile, "set_base_error", 83702148)
-  methodbind.ptrcall(self, [getPtr error])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderFile, "set_base_error", 83702148)
+  methodbind.ptrcall(self, [getPtr error], void)
 
 proc getBaseError*(self: RDShaderFile): String =
-  expandMethodBind(className RDShaderFile, "get_base_error", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDShaderFile, "get_base_error", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template baseError*(self: RDShaderFile): untyped = self.getBaseError()
 template `baseError=`*(self: RDShaderFile; value) = self.setBaseError(value)

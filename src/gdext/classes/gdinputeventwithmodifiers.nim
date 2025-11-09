@@ -7,66 +7,76 @@ import gdinputeventfromwindow; export gdinputeventfromwindow
 expandOnClassImported(InputEventWithModifiers, InputEventFromWindow)
 
 proc setCommandOrControlAutoremap*(self: InputEventWithModifiers; enable: bool): void =
-  expandMethodBind(className InputEventWithModifiers, "set_command_or_control_autoremap", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "set_command_or_control_autoremap", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isCommandOrControlAutoremap*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_command_or_control_autoremap", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_command_or_control_autoremap", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isCommandOrControlPressed*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_command_or_control_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_command_or_control_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAltPressed*(self: InputEventWithModifiers; pressed: bool): void =
-  expandMethodBind(className InputEventWithModifiers, "set_alt_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "set_alt_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isAltPressed*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_alt_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_alt_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShiftPressed*(self: InputEventWithModifiers; pressed: bool): void =
-  expandMethodBind(className InputEventWithModifiers, "set_shift_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "set_shift_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isShiftPressed*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_shift_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_shift_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCtrlPressed*(self: InputEventWithModifiers; pressed: bool): void =
-  expandMethodBind(className InputEventWithModifiers, "set_ctrl_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "set_ctrl_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isCtrlPressed*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_ctrl_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_ctrl_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMetaPressed*(self: InputEventWithModifiers; pressed: bool): void =
-  expandMethodBind(className InputEventWithModifiers, "set_meta_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "set_meta_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isMetaPressed*(self: InputEventWithModifiers): bool =
-  expandMethodBind(className InputEventWithModifiers, "is_meta_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "is_meta_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getModifiersMask*(self: InputEventWithModifiers): set[KeyModifierMask] =
-  expandMethodBind(className InputEventWithModifiers, "get_modifiers_mask", 1258259499)
-  var ret: encoded set[KeyModifierMask]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[KeyModifierMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventWithModifiers, "get_modifiers_mask", 1258259499)
+  methodbind.ptrcall(self, [], set[KeyModifierMask])
 
 template commandOrControlAutoremap*(self: InputEventWithModifiers): untyped = self.isCommandOrControlAutoremap()
 template `commandOrControlAutoremap=`*(self: InputEventWithModifiers; value) = self.setCommandOrControlAutoremap(value)

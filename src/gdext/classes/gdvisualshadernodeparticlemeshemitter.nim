@@ -7,34 +7,40 @@ import gdvisualshadernodeparticleemitter; export gdvisualshadernodeparticleemitt
 expandOnClassImported(VisualShaderNodeParticleMeshEmitter, VisualShaderNodeParticleEmitter)
 
 proc setMesh*(self: VisualShaderNodeParticleMeshEmitter; mesh: gdref Mesh): void =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_mesh", 194775623)
-  methodbind.ptrcall(self, [getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_mesh", 194775623)
+  methodbind.ptrcall(self, [getPtr mesh], void)
 
 proc getMesh*(self: VisualShaderNodeParticleMeshEmitter): gdref Mesh =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_mesh", 1808005922)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_mesh", 1808005922)
+  methodbind.ptrcall(self, [], gdref Mesh)
 
 proc setUseAllSurfaces*(self: VisualShaderNodeParticleMeshEmitter; enabled: bool): void =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_use_all_surfaces", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_use_all_surfaces", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isUseAllSurfaces*(self: VisualShaderNodeParticleMeshEmitter): bool =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "is_use_all_surfaces", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "is_use_all_surfaces", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSurfaceIndex*(self: VisualShaderNodeParticleMeshEmitter; surfaceIndex: int32): void =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_surface_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr surfaceIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "set_surface_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr surfaceIndex], void)
 
 proc getSurfaceIndex*(self: VisualShaderNodeParticleMeshEmitter): int32 =
-  expandMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_surface_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleMeshEmitter, "get_surface_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template mesh*(self: VisualShaderNodeParticleMeshEmitter): untyped = self.getMesh()
 template `mesh=`*(self: VisualShaderNodeParticleMeshEmitter; value) = self.setMesh(value)

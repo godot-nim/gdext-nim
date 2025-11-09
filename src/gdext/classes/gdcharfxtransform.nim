@@ -7,134 +7,160 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(CharFXTransform, RefCounted)
 
 proc getTransform*(self: CharFXTransform): Transform2D =
-  expandMethodBind(className CharFXTransform, "get_transform", 3761352769)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_transform", 3761352769)
+  methodbind.ptrcall(self, [], Transform2D)
 
 proc setTransform*(self: CharFXTransform; transform: Transform2D): void =
-  expandMethodBind(className CharFXTransform, "set_transform", 2761652528)
-  methodbind.ptrcall(self, [getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_transform", 2761652528)
+  methodbind.ptrcall(self, [getPtr transform], void)
 
 proc getRange*(self: CharFXTransform): Vector2i =
-  expandMethodBind(className CharFXTransform, "get_range", 2741790807)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_range", 2741790807)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setRange*(self: CharFXTransform; range: Vector2i): void =
-  expandMethodBind(className CharFXTransform, "set_range", 1130785943)
-  methodbind.ptrcall(self, [getPtr range])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_range", 1130785943)
+  methodbind.ptrcall(self, [getPtr range], void)
 
 proc getElapsedTime*(self: CharFXTransform): float64 =
-  expandMethodBind(className CharFXTransform, "get_elapsed_time", 191475506)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_elapsed_time", 191475506)
+  methodbind.ptrcall(self, [], float64)
 
 proc setElapsedTime*(self: CharFXTransform; time: float64): void =
-  expandMethodBind(className CharFXTransform, "set_elapsed_time", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_elapsed_time", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc isVisible*(self: CharFXTransform): bool =
-  expandMethodBind(className CharFXTransform, "is_visible", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "is_visible", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVisibility*(self: CharFXTransform; visibility: bool): void =
-  expandMethodBind(className CharFXTransform, "set_visibility", 2586408642)
-  methodbind.ptrcall(self, [getPtr visibility])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_visibility", 2586408642)
+  methodbind.ptrcall(self, [getPtr visibility], void)
 
 proc isOutline*(self: CharFXTransform): bool =
-  expandMethodBind(className CharFXTransform, "is_outline", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "is_outline", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOutline*(self: CharFXTransform; outline: bool): void =
-  expandMethodBind(className CharFXTransform, "set_outline", 2586408642)
-  methodbind.ptrcall(self, [getPtr outline])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_outline", 2586408642)
+  methodbind.ptrcall(self, [getPtr outline], void)
 
 proc getOffset*(self: CharFXTransform): Vector2 =
-  expandMethodBind(className CharFXTransform, "get_offset", 1497962370)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_offset", 1497962370)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setOffset*(self: CharFXTransform; offset: Vector2): void =
-  expandMethodBind(className CharFXTransform, "set_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getColor*(self: CharFXTransform): Color =
-  expandMethodBind(className CharFXTransform, "get_color", 3200896285)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_color", 3200896285)
+  methodbind.ptrcall(self, [], Color)
 
 proc setColor*(self: CharFXTransform; color: Color): void =
-  expandMethodBind(className CharFXTransform, "set_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getEnvironment*(self: CharFXTransform): Dictionary =
-  expandMethodBind(className CharFXTransform, "get_environment", 2382534195)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_environment", 2382534195)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc setEnvironment*(self: CharFXTransform; environment: Dictionary): void =
-  expandMethodBind(className CharFXTransform, "set_environment", 4155329257)
-  methodbind.ptrcall(self, [getPtr environment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_environment", 4155329257)
+  methodbind.ptrcall(self, [getPtr environment], void)
 
 proc getGlyphIndex*(self: CharFXTransform): uint32 =
-  expandMethodBind(className CharFXTransform, "get_glyph_index", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_glyph_index", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setGlyphIndex*(self: CharFXTransform; glyphIndex: uint32): void =
-  expandMethodBind(className CharFXTransform, "set_glyph_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr glyphIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_glyph_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr glyphIndex], void)
 
 proc getRelativeIndex*(self: CharFXTransform): int32 =
-  expandMethodBind(className CharFXTransform, "get_relative_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_relative_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setRelativeIndex*(self: CharFXTransform; relativeIndex: int32): void =
-  expandMethodBind(className CharFXTransform, "set_relative_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr relativeIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_relative_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr relativeIndex], void)
 
 proc getGlyphCount*(self: CharFXTransform): uint8 =
-  expandMethodBind(className CharFXTransform, "get_glyph_count", 3905245786)
-  var ret: encoded uint8
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint8)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_glyph_count", 3905245786)
+  methodbind.ptrcall(self, [], uint8)
 
 proc setGlyphCount*(self: CharFXTransform; glyphCount: uint8): void =
-  expandMethodBind(className CharFXTransform, "set_glyph_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr glyphCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_glyph_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr glyphCount], void)
 
 proc getGlyphFlags*(self: CharFXTransform): uint16 =
-  expandMethodBind(className CharFXTransform, "get_glyph_flags", 3905245786)
-  var ret: encoded uint16
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint16)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_glyph_flags", 3905245786)
+  methodbind.ptrcall(self, [], uint16)
 
 proc setGlyphFlags*(self: CharFXTransform; glyphFlags: uint16): void =
-  expandMethodBind(className CharFXTransform, "set_glyph_flags", 1286410249)
-  methodbind.ptrcall(self, [getPtr glyphFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_glyph_flags", 1286410249)
+  methodbind.ptrcall(self, [getPtr glyphFlags], void)
 
 proc getFont*(self: CharFXTransform): RID =
-  expandMethodBind(className CharFXTransform, "get_font", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "get_font", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setFont*(self: CharFXTransform; font: RID): void =
-  expandMethodBind(className CharFXTransform, "set_font", 2722037293)
-  methodbind.ptrcall(self, [getPtr font])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CharFXTransform, "set_font", 2722037293)
+  methodbind.ptrcall(self, [getPtr font], void)
 
 template transform*(self: CharFXTransform): untyped = self.getTransform()
 template `transform=`*(self: CharFXTransform; value) = self.setTransform(value)

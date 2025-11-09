@@ -12,7 +12,7 @@ proc registerVirtual_postImport*[T: EditorScenePostImport](Self: typedesc[T]) =
     errproof: cast[EditorScenePostImport](p_instance).postImport(p_args[0].decode(Node)).encode(r_ret)
 
 proc getSourceFile*(self: EditorScenePostImport): String =
-  expandMethodBind(className EditorScenePostImport, "get_source_file", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScenePostImport, "get_source_file", 201670096)
+  methodbind.ptrcall(self, [], String)

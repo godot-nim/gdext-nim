@@ -7,24 +7,28 @@ import gdskeletonmodifier3d; export gdskeletonmodifier3d
 expandOnClassImported(ModifierBoneTarget3D, SkeletonModifier3D)
 
 proc setBoneName*(self: ModifierBoneTarget3D; boneName: String): void =
-  expandMethodBind(className ModifierBoneTarget3D, "set_bone_name", 83702148)
-  methodbind.ptrcall(self, [getPtr boneName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ModifierBoneTarget3D, "set_bone_name", 83702148)
+  methodbind.ptrcall(self, [getPtr boneName], void)
 
 proc getBoneName*(self: ModifierBoneTarget3D): String =
-  expandMethodBind(className ModifierBoneTarget3D, "get_bone_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ModifierBoneTarget3D, "get_bone_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setBone*(self: ModifierBoneTarget3D; bone: int32): void =
-  expandMethodBind(className ModifierBoneTarget3D, "set_bone", 1286410249)
-  methodbind.ptrcall(self, [getPtr bone])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ModifierBoneTarget3D, "set_bone", 1286410249)
+  methodbind.ptrcall(self, [getPtr bone], void)
 
 proc getBone*(self: ModifierBoneTarget3D): int32 =
-  expandMethodBind(className ModifierBoneTarget3D, "get_bone", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ModifierBoneTarget3D, "get_bone", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template boneName*(self: ModifierBoneTarget3D): untyped = self.getBoneName()
 template `boneName=`*(self: ModifierBoneTarget3D; value) = self.setBoneName(value)

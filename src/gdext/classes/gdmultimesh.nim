@@ -7,148 +7,178 @@ import gdresource; export gdresource
 expandOnClassImported(MultiMesh, Resource)
 
 proc setMesh*(self: MultiMesh; mesh: gdref Mesh): void =
-  expandMethodBind(className MultiMesh, "set_mesh", 194775623)
-  methodbind.ptrcall(self, [getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_mesh", 194775623)
+  methodbind.ptrcall(self, [getPtr mesh], void)
 
 proc getMesh*(self: MultiMesh): gdref Mesh =
-  expandMethodBind(className MultiMesh, "get_mesh", 1808005922)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_mesh", 1808005922)
+  methodbind.ptrcall(self, [], gdref Mesh)
 
 proc setUseColors*(self: MultiMesh; enable: bool): void =
-  expandMethodBind(className MultiMesh, "set_use_colors", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_use_colors", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsingColors*(self: MultiMesh): bool =
-  expandMethodBind(className MultiMesh, "is_using_colors", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "is_using_colors", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUseCustomData*(self: MultiMesh; enable: bool): void =
-  expandMethodBind(className MultiMesh, "set_use_custom_data", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_use_custom_data", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsingCustomData*(self: MultiMesh): bool =
-  expandMethodBind(className MultiMesh, "is_using_custom_data", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "is_using_custom_data", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTransformFormat*(self: MultiMesh; format: MultiMesh_TransformFormat): void =
-  expandMethodBind(className MultiMesh, "set_transform_format", 2404750322)
-  methodbind.ptrcall(self, [getPtr format])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_transform_format", 2404750322)
+  methodbind.ptrcall(self, [getPtr format], void)
 
 proc getTransformFormat*(self: MultiMesh): MultiMesh_TransformFormat =
-  expandMethodBind(className MultiMesh, "get_transform_format", 2444156481)
-  var ret: encoded MultiMesh_TransformFormat
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(MultiMesh_TransformFormat)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_transform_format", 2444156481)
+  methodbind.ptrcall(self, [], MultiMesh_TransformFormat)
 
 proc setInstanceCount*(self: MultiMesh; count: int32): void =
-  expandMethodBind(className MultiMesh, "set_instance_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_instance_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getInstanceCount*(self: MultiMesh): int32 =
-  expandMethodBind(className MultiMesh, "get_instance_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_instance_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setVisibleInstanceCount*(self: MultiMesh; count: int32): void =
-  expandMethodBind(className MultiMesh, "set_visible_instance_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_visible_instance_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getVisibleInstanceCount*(self: MultiMesh): int32 =
-  expandMethodBind(className MultiMesh, "get_visible_instance_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_visible_instance_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPhysicsInterpolationQuality*(self: MultiMesh; quality: MultiMesh_PhysicsInterpolationQuality): void =
-  expandMethodBind(className MultiMesh, "set_physics_interpolation_quality", 1819488408)
-  methodbind.ptrcall(self, [getPtr quality])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_physics_interpolation_quality", 1819488408)
+  methodbind.ptrcall(self, [getPtr quality], void)
 
 proc getPhysicsInterpolationQuality*(self: MultiMesh): MultiMesh_PhysicsInterpolationQuality =
-  expandMethodBind(className MultiMesh, "get_physics_interpolation_quality", 1465701882)
-  var ret: encoded MultiMesh_PhysicsInterpolationQuality
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(MultiMesh_PhysicsInterpolationQuality)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_physics_interpolation_quality", 1465701882)
+  methodbind.ptrcall(self, [], MultiMesh_PhysicsInterpolationQuality)
 
 proc setInstanceTransform*(self: MultiMesh; instance: int32; transform: Transform3D): void =
-  expandMethodBind(className MultiMesh, "set_instance_transform", 3616898986)
-  methodbind.ptrcall(self, [getPtr instance, getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_instance_transform", 3616898986)
+  methodbind.ptrcall(self, [getPtr instance, getPtr transform], void)
 
 proc setInstanceTransform2D*(self: MultiMesh; instance: int32; transform: Transform2D): void =
-  expandMethodBind(className MultiMesh, "set_instance_transform_2d", 30160968)
-  methodbind.ptrcall(self, [getPtr instance, getPtr transform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_instance_transform_2d", 30160968)
+  methodbind.ptrcall(self, [getPtr instance, getPtr transform], void)
 
 proc getInstanceTransform*(self: MultiMesh; instance: int32): Transform3D =
-  expandMethodBind(className MultiMesh, "get_instance_transform", 1965739696)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_instance_transform", 1965739696)
+  methodbind.ptrcall(self, [getPtr instance], Transform3D)
 
 proc getInstanceTransform2D*(self: MultiMesh; instance: int32): Transform2D =
-  expandMethodBind(className MultiMesh, "get_instance_transform_2d", 3836996910)
-  var ret: encoded Transform2D
-  methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(Transform2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_instance_transform_2d", 3836996910)
+  methodbind.ptrcall(self, [getPtr instance], Transform2D)
 
 proc setInstanceColor*(self: MultiMesh; instance: int32; color: Color): void =
-  expandMethodBind(className MultiMesh, "set_instance_color", 2878471219)
-  methodbind.ptrcall(self, [getPtr instance, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_instance_color", 2878471219)
+  methodbind.ptrcall(self, [getPtr instance, getPtr color], void)
 
 proc getInstanceColor*(self: MultiMesh; instance: int32): Color =
-  expandMethodBind(className MultiMesh, "get_instance_color", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_instance_color", 3457211756)
+  methodbind.ptrcall(self, [getPtr instance], Color)
 
 proc setInstanceCustomData*(self: MultiMesh; instance: int32; customData: Color): void =
-  expandMethodBind(className MultiMesh, "set_instance_custom_data", 2878471219)
-  methodbind.ptrcall(self, [getPtr instance, getPtr customData])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_instance_custom_data", 2878471219)
+  methodbind.ptrcall(self, [getPtr instance, getPtr customData], void)
 
 proc getInstanceCustomData*(self: MultiMesh; instance: int32): Color =
-  expandMethodBind(className MultiMesh, "get_instance_custom_data", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_instance_custom_data", 3457211756)
+  methodbind.ptrcall(self, [getPtr instance], Color)
 
 proc resetInstancePhysicsInterpolation*(self: MultiMesh; instance: int32): void =
-  expandMethodBind(className MultiMesh, "reset_instance_physics_interpolation", 1286410249)
-  methodbind.ptrcall(self, [getPtr instance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "reset_instance_physics_interpolation", 1286410249)
+  methodbind.ptrcall(self, [getPtr instance], void)
 
 proc setCustomAabb*(self: MultiMesh; aabb: AABB): void =
-  expandMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
-  methodbind.ptrcall(self, [getPtr aabb])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
+  methodbind.ptrcall(self, [getPtr aabb], void)
 
 proc getCustomAabb*(self: MultiMesh): AABB =
-  expandMethodBind(className MultiMesh, "get_custom_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_custom_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc getAabb*(self: MultiMesh): AABB =
-  expandMethodBind(className MultiMesh, "get_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_aabb", 1068685055)
+  methodbind.ptrcall(self, [], AABB)
 
 proc getBuffer*(self: MultiMesh): PackedFloat32Array =
-  expandMethodBind(className MultiMesh, "get_buffer", 675695659)
-  var ret: encoded PackedFloat32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedFloat32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "get_buffer", 675695659)
+  methodbind.ptrcall(self, [], PackedFloat32Array)
 
 proc setBuffer*(self: MultiMesh; buffer: PackedFloat32Array): void =
-  expandMethodBind(className MultiMesh, "set_buffer", 2899603908)
-  methodbind.ptrcall(self, [getPtr buffer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_buffer", 2899603908)
+  methodbind.ptrcall(self, [getPtr buffer], void)
 
 proc setBufferInterpolated*(self: MultiMesh; bufferCurr: PackedFloat32Array; bufferPrev: PackedFloat32Array): void =
-  expandMethodBind(className MultiMesh, "set_buffer_interpolated", 3514430332)
-  methodbind.ptrcall(self, [getPtr bufferCurr, getPtr bufferPrev])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MultiMesh, "set_buffer_interpolated", 3514430332)
+  methodbind.ptrcall(self, [getPtr bufferCurr, getPtr bufferPrev], void)
 
 template transformFormat*(self: MultiMesh): untyped = self.getTransformFormat()
 template `transformFormat=`*(self: MultiMesh; value) = self.setTransformFormat(value)

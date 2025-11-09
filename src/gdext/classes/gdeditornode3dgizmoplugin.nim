@@ -97,23 +97,31 @@ proc registerVirtual_commitSubgizmos*[T: EditorNode3DGizmoPlugin](Self: typedesc
     errproof: cast[EditorNode3DGizmoPlugin](p_instance).commitSubgizmos(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(PackedInt32Array), p_args[2].decode(TypedArray[Transform3D]), p_args[3].decode(bool))
 
 proc createMaterial*(self: EditorNode3DGizmoPlugin; name: String; color: Color; billboard: bool = false; onTop: bool = false; useVertexColor: bool = false): void =
-  expandMethodBind(className EditorNode3DGizmoPlugin, "create_material", 3486012546)
-  methodbind.ptrcall(self, [getPtr name, getPtr color, getPtr billboard, getPtr onTop, getPtr useVertexColor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmoPlugin, "create_material", 3486012546)
+  methodbind.ptrcall(self, [getPtr name, getPtr color, getPtr billboard, getPtr onTop, getPtr useVertexColor], void)
 
 proc createIconMaterial*(self: EditorNode3DGizmoPlugin; name: String; texture: gdref Texture2D; onTop: bool = false; color: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className EditorNode3DGizmoPlugin, "create_icon_material", 3804976916)
-  methodbind.ptrcall(self, [getPtr name, getPtr texture, getPtr onTop, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmoPlugin, "create_icon_material", 3804976916)
+  methodbind.ptrcall(self, [getPtr name, getPtr texture, getPtr onTop, getPtr color], void)
 
 proc createHandleMaterial*(self: EditorNode3DGizmoPlugin; name: String; billboard: bool = false; texture: gdref Texture2D = default gdref Texture2D): void =
-  expandMethodBind(className EditorNode3DGizmoPlugin, "create_handle_material", 2486475223)
-  methodbind.ptrcall(self, [getPtr name, getPtr billboard, getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmoPlugin, "create_handle_material", 2486475223)
+  methodbind.ptrcall(self, [getPtr name, getPtr billboard, getPtr texture], void)
 
 proc addMaterial*(self: EditorNode3DGizmoPlugin; name: String; material: gdref StandardMaterial3D): void =
-  expandMethodBind(className EditorNode3DGizmoPlugin, "add_material", 1374068695)
-  methodbind.ptrcall(self, [getPtr name, getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmoPlugin, "add_material", 1374068695)
+  methodbind.ptrcall(self, [getPtr name, getPtr material], void)
 
 proc getMaterial*(self: EditorNode3DGizmoPlugin; name: String; gizmo: gdref EditorNode3DGizmo = default gdref EditorNode3DGizmo): gdref StandardMaterial3D =
-  expandMethodBind(className EditorNode3DGizmoPlugin, "get_material", 974464017)
-  var ret: encoded gdref StandardMaterial3D
-  methodbind.ptrcall(self, [getPtr name, getPtr gizmo], addr ret)
-  (addr ret).decode_result(gdref StandardMaterial3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmoPlugin, "get_material", 974464017)
+  methodbind.ptrcall(self, [getPtr name, getPtr gizmo], gdref StandardMaterial3D)

@@ -7,52 +7,64 @@ import gdvisualinstance3d; export gdvisualinstance3d
 expandOnClassImported(VoxelGI, VisualInstance3D)
 
 proc setProbeData*(self: VoxelGI; data: gdref VoxelGIData): void =
-  expandMethodBind(className VoxelGI, "set_probe_data", 1637849675)
-  methodbind.ptrcall(self, [getPtr data])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "set_probe_data", 1637849675)
+  methodbind.ptrcall(self, [getPtr data], void)
 
 proc getProbeData*(self: VoxelGI): gdref VoxelGIData =
-  expandMethodBind(className VoxelGI, "get_probe_data", 1730645405)
-  var ret: encoded gdref VoxelGIData
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref VoxelGIData)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "get_probe_data", 1730645405)
+  methodbind.ptrcall(self, [], gdref VoxelGIData)
 
 proc setSubdiv*(self: VoxelGI; subdiv: VoxelGI_Subdiv): void =
-  expandMethodBind(className VoxelGI, "set_subdiv", 2240898472)
-  methodbind.ptrcall(self, [getPtr subdiv])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "set_subdiv", 2240898472)
+  methodbind.ptrcall(self, [getPtr subdiv], void)
 
 proc getSubdiv*(self: VoxelGI): VoxelGI_Subdiv =
-  expandMethodBind(className VoxelGI, "get_subdiv", 4261647950)
-  var ret: encoded VoxelGI_Subdiv
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VoxelGI_Subdiv)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "get_subdiv", 4261647950)
+  methodbind.ptrcall(self, [], VoxelGI_Subdiv)
 
 proc setSize*(self: VoxelGI; size: Vector3): void =
-  expandMethodBind(className VoxelGI, "set_size", 3460891852)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "set_size", 3460891852)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getSize*(self: VoxelGI): Vector3 =
-  expandMethodBind(className VoxelGI, "get_size", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "get_size", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setCameraAttributes*(self: VoxelGI; cameraAttributes: gdref CameraAttributes): void =
-  expandMethodBind(className VoxelGI, "set_camera_attributes", 2817810567)
-  methodbind.ptrcall(self, [getPtr cameraAttributes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "set_camera_attributes", 2817810567)
+  methodbind.ptrcall(self, [getPtr cameraAttributes], void)
 
 proc getCameraAttributes*(self: VoxelGI): gdref CameraAttributes =
-  expandMethodBind(className VoxelGI, "get_camera_attributes", 3921283215)
-  var ret: encoded gdref CameraAttributes
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref CameraAttributes)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "get_camera_attributes", 3921283215)
+  methodbind.ptrcall(self, [], gdref CameraAttributes)
 
 proc bake*(self: VoxelGI; fromNode: Node = default Node; createVisualDebug: bool = false): void =
-  expandMethodBind(className VoxelGI, "bake", 2781551026)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr createVisualDebug])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "bake", 2781551026)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr createVisualDebug], void)
 
 proc debugBake*(self: VoxelGI): void =
-  expandMethodBind(className VoxelGI, "debug_bake", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VoxelGI, "debug_bake", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 template subdiv*(self: VoxelGI): untyped = self.getSubdiv()
 template `subdiv=`*(self: VoxelGI; value) = self.setSubdiv(value)

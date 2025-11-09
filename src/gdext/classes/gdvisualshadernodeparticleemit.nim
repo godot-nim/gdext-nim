@@ -7,14 +7,16 @@ import gdvisualshadernode; export gdvisualshadernode
 expandOnClassImported(VisualShaderNodeParticleEmit, VisualShaderNode)
 
 proc setFlags*(self: VisualShaderNodeParticleEmit; flags: VisualShaderNodeParticleEmit_EmitFlags): void =
-  expandMethodBind(className VisualShaderNodeParticleEmit, "set_flags", 3960756792)
-  methodbind.ptrcall(self, [getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleEmit, "set_flags", 3960756792)
+  methodbind.ptrcall(self, [getPtr flags], void)
 
 proc getFlags*(self: VisualShaderNodeParticleEmit): VisualShaderNodeParticleEmit_EmitFlags =
-  expandMethodBind(className VisualShaderNodeParticleEmit, "get_flags", 171277835)
-  var ret: encoded VisualShaderNodeParticleEmit_EmitFlags
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeParticleEmit_EmitFlags)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeParticleEmit, "get_flags", 171277835)
+  methodbind.ptrcall(self, [], VisualShaderNodeParticleEmit_EmitFlags)
 
 template flags*(self: VisualShaderNodeParticleEmit): untyped = self.getFlags()
 template `flags=`*(self: VisualShaderNodeParticleEmit; value) = self.setFlags(value)

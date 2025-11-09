@@ -7,15 +7,19 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(Semaphore, RefCounted)
 
 proc wait*(self: Semaphore): void =
-  expandMethodBind(className Semaphore, "wait", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Semaphore, "wait", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc tryWait*(self: Semaphore): bool =
-  expandMethodBind(className Semaphore, "try_wait", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Semaphore, "try_wait", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc post*(self: Semaphore; count: int32 = 1): void =
-  expandMethodBind(className Semaphore, "post", 1667783136)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Semaphore, "post", 1667783136)
+  methodbind.ptrcall(self, [getPtr count], void)

@@ -7,76 +7,94 @@ import gdtexture3d; export gdtexture3d
 expandOnClassImported(NoiseTexture3D, Texture3D)
 
 proc setWidth*(self: NoiseTexture3D; width: int32): void =
-  expandMethodBind(className NoiseTexture3D, "set_width", 1286410249)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_width", 1286410249)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc setHeight*(self: NoiseTexture3D; height: int32): void =
-  expandMethodBind(className NoiseTexture3D, "set_height", 1286410249)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_height", 1286410249)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc setDepth*(self: NoiseTexture3D; depth: int32): void =
-  expandMethodBind(className NoiseTexture3D, "set_depth", 1286410249)
-  methodbind.ptrcall(self, [getPtr depth])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_depth", 1286410249)
+  methodbind.ptrcall(self, [getPtr depth], void)
 
 proc setNoise*(self: NoiseTexture3D; noise: gdref Noise): void =
-  expandMethodBind(className NoiseTexture3D, "set_noise", 4135492439)
-  methodbind.ptrcall(self, [getPtr noise])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_noise", 4135492439)
+  methodbind.ptrcall(self, [getPtr noise], void)
 
 proc getNoise*(self: NoiseTexture3D): gdref Noise =
-  expandMethodBind(className NoiseTexture3D, "get_noise", 185851837)
-  var ret: encoded gdref Noise
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Noise)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "get_noise", 185851837)
+  methodbind.ptrcall(self, [], gdref Noise)
 
 proc setColorRamp*(self: NoiseTexture3D; gradient: gdref Gradient): void =
-  expandMethodBind(className NoiseTexture3D, "set_color_ramp", 2756054477)
-  methodbind.ptrcall(self, [getPtr gradient])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_color_ramp", 2756054477)
+  methodbind.ptrcall(self, [getPtr gradient], void)
 
 proc getColorRamp*(self: NoiseTexture3D): gdref Gradient =
-  expandMethodBind(className NoiseTexture3D, "get_color_ramp", 132272999)
-  var ret: encoded gdref Gradient
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Gradient)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "get_color_ramp", 132272999)
+  methodbind.ptrcall(self, [], gdref Gradient)
 
 proc setSeamless*(self: NoiseTexture3D; seamless: bool): void =
-  expandMethodBind(className NoiseTexture3D, "set_seamless", 2586408642)
-  methodbind.ptrcall(self, [getPtr seamless])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_seamless", 2586408642)
+  methodbind.ptrcall(self, [getPtr seamless], void)
 
 proc getSeamless*(self: NoiseTexture3D): bool =
-  expandMethodBind(className NoiseTexture3D, "get_seamless", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "get_seamless", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setInvert*(self: NoiseTexture3D; invert: bool): void =
-  expandMethodBind(className NoiseTexture3D, "set_invert", 2586408642)
-  methodbind.ptrcall(self, [getPtr invert])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_invert", 2586408642)
+  methodbind.ptrcall(self, [getPtr invert], void)
 
 proc getInvert*(self: NoiseTexture3D): bool =
-  expandMethodBind(className NoiseTexture3D, "get_invert", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "get_invert", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNormalize*(self: NoiseTexture3D; normalize: bool): void =
-  expandMethodBind(className NoiseTexture3D, "set_normalize", 2586408642)
-  methodbind.ptrcall(self, [getPtr normalize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_normalize", 2586408642)
+  methodbind.ptrcall(self, [getPtr normalize], void)
 
 proc isNormalized*(self: NoiseTexture3D): bool =
-  expandMethodBind(className NoiseTexture3D, "is_normalized", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "is_normalized", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSeamlessBlendSkirt*(self: NoiseTexture3D; seamlessBlendSkirt: Float): void =
-  expandMethodBind(className NoiseTexture3D, "set_seamless_blend_skirt", 373806689)
-  methodbind.ptrcall(self, [getPtr seamlessBlendSkirt])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "set_seamless_blend_skirt", 373806689)
+  methodbind.ptrcall(self, [getPtr seamlessBlendSkirt], void)
 
 proc getSeamlessBlendSkirt*(self: NoiseTexture3D): Float =
-  expandMethodBind(className NoiseTexture3D, "get_seamless_blend_skirt", 191475506)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className NoiseTexture3D, "get_seamless_blend_skirt", 191475506)
+  methodbind.ptrcall(self, [], Float)
 
 template width*(self: NoiseTexture3D): untyped = self.getWidth()
 template `width=`*(self: NoiseTexture3D; value) = self.setWidth(value)

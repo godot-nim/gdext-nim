@@ -7,104 +7,118 @@ import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
 expandOnClassImported(InputEventKey, InputEventWithModifiers)
 
 proc setPressed*(self: InputEventKey; pressed: bool): void =
-  expandMethodBind(className InputEventKey, "set_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc setKeycode*(self: InputEventKey; keycode: Key): void =
-  expandMethodBind(className InputEventKey, "set_keycode", 888074362)
-  methodbind.ptrcall(self, [getPtr keycode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_keycode", 888074362)
+  methodbind.ptrcall(self, [getPtr keycode], void)
 
 proc getKeycode*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_keycode", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_keycode", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc setPhysicalKeycode*(self: InputEventKey; physicalKeycode: Key): void =
-  expandMethodBind(className InputEventKey, "set_physical_keycode", 888074362)
-  methodbind.ptrcall(self, [getPtr physicalKeycode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_physical_keycode", 888074362)
+  methodbind.ptrcall(self, [getPtr physicalKeycode], void)
 
 proc getPhysicalKeycode*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_physical_keycode", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_physical_keycode", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc setKeyLabel*(self: InputEventKey; keyLabel: Key): void =
-  expandMethodBind(className InputEventKey, "set_key_label", 888074362)
-  methodbind.ptrcall(self, [getPtr keyLabel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_key_label", 888074362)
+  methodbind.ptrcall(self, [getPtr keyLabel], void)
 
 proc getKeyLabel*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_key_label", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_key_label", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc setUnicode*(self: InputEventKey; unicode: char32): void =
-  expandMethodBind(className InputEventKey, "set_unicode", 1286410249)
-  methodbind.ptrcall(self, [getPtr unicode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_unicode", 1286410249)
+  methodbind.ptrcall(self, [getPtr unicode], void)
 
 proc getUnicode*(self: InputEventKey): char32 =
-  expandMethodBind(className InputEventKey, "get_unicode", 3905245786)
-  var ret: encoded char32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(char32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_unicode", 3905245786)
+  methodbind.ptrcall(self, [], char32)
 
 proc setLocation*(self: InputEventKey; location: KeyLocation): void =
-  expandMethodBind(className InputEventKey, "set_location", 634453155)
-  methodbind.ptrcall(self, [getPtr location])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_location", 634453155)
+  methodbind.ptrcall(self, [getPtr location], void)
 
 proc getLocation*(self: InputEventKey): KeyLocation =
-  expandMethodBind(className InputEventKey, "get_location", 211810873)
-  var ret: encoded KeyLocation
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(KeyLocation)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_location", 211810873)
+  methodbind.ptrcall(self, [], KeyLocation)
 
 proc setEcho*(self: InputEventKey; echo: bool): void =
-  expandMethodBind(className InputEventKey, "set_echo", 2586408642)
-  methodbind.ptrcall(self, [getPtr echo])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "set_echo", 2586408642)
+  methodbind.ptrcall(self, [getPtr echo], void)
 
 proc getKeycodeWithModifiers*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_keycode_with_modifiers", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_keycode_with_modifiers", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc getPhysicalKeycodeWithModifiers*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_physical_keycode_with_modifiers", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_physical_keycode_with_modifiers", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc getKeyLabelWithModifiers*(self: InputEventKey): Key =
-  expandMethodBind(className InputEventKey, "get_key_label_with_modifiers", 1585896689)
-  var ret: encoded Key
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Key)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "get_key_label_with_modifiers", 1585896689)
+  methodbind.ptrcall(self, [], Key)
 
 proc asTextKeycode*(self: InputEventKey): String =
-  expandMethodBind(className InputEventKey, "as_text_keycode", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "as_text_keycode", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc asTextPhysicalKeycode*(self: InputEventKey): String =
-  expandMethodBind(className InputEventKey, "as_text_physical_keycode", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "as_text_physical_keycode", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc asTextKeyLabel*(self: InputEventKey): String =
-  expandMethodBind(className InputEventKey, "as_text_key_label", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "as_text_key_label", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc asTextLocation*(self: InputEventKey): String =
-  expandMethodBind(className InputEventKey, "as_text_location", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventKey, "as_text_location", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template pressed*(self: InputEventKey): untyped = self.isPressed()
 template `pressed=`*(self: InputEventKey; value) = self.setPressed(value)

@@ -77,7 +77,7 @@ proc registerVirtual_canImportThreaded*[T: EditorImportPlugin](Self: typedesc[T]
     errproof: cast[EditorImportPlugin](p_instance).canImportThreaded().encode(r_ret)
 
 proc appendImportExternalResource*(self: EditorImportPlugin; path: String; customOptions: Dictionary = newDictionary(); customImporter: String = newGdString(); generatorParameters: Variant = default(Variant)): Error =
-  expandMethodBind(className EditorImportPlugin, "append_import_external_resource", 320493106)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path, getPtr customOptions, getPtr customImporter, getPtr generatorParameters], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorImportPlugin, "append_import_external_resource", 320493106)
+  methodbind.ptrcall(self, [getPtr path, getPtr customOptions, getPtr customImporter, getPtr generatorParameters], Error)

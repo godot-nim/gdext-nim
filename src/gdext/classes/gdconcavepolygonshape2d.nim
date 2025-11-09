@@ -7,14 +7,16 @@ import gdshape2d; export gdshape2d
 expandOnClassImported(ConcavePolygonShape2D, Shape2D)
 
 proc setSegments*(self: ConcavePolygonShape2D; segments: PackedVector2Array): void =
-  expandMethodBind(className ConcavePolygonShape2D, "set_segments", 1509147220)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConcavePolygonShape2D, "set_segments", 1509147220)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc getSegments*(self: ConcavePolygonShape2D): PackedVector2Array =
-  expandMethodBind(className ConcavePolygonShape2D, "get_segments", 2961356807)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConcavePolygonShape2D, "get_segments", 2961356807)
+  methodbind.ptrcall(self, [], PackedVector2Array)
 
 template segments*(self: ConcavePolygonShape2D): untyped = self.getSegments()
 template `segments=`*(self: ConcavePolygonShape2D; value) = self.setSegments(value)

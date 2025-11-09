@@ -7,224 +7,268 @@ import gdvisualinstance3d; export gdvisualinstance3d
 expandOnClassImported(LightmapGI, VisualInstance3D)
 
 proc setLightData*(self: LightmapGI; data: gdref LightmapGIData): void =
-  expandMethodBind(className LightmapGI, "set_light_data", 1790597277)
-  methodbind.ptrcall(self, [getPtr data])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_light_data", 1790597277)
+  methodbind.ptrcall(self, [getPtr data], void)
 
 proc getLightData*(self: LightmapGI): gdref LightmapGIData =
-  expandMethodBind(className LightmapGI, "get_light_data", 290354153)
-  var ret: encoded gdref LightmapGIData
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref LightmapGIData)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_light_data", 290354153)
+  methodbind.ptrcall(self, [], gdref LightmapGIData)
 
 proc setBakeQuality*(self: LightmapGI; bakeQuality: LightmapGI_BakeQuality): void =
-  expandMethodBind(className LightmapGI, "set_bake_quality", 1192215803)
-  methodbind.ptrcall(self, [getPtr bakeQuality])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_bake_quality", 1192215803)
+  methodbind.ptrcall(self, [getPtr bakeQuality], void)
 
 proc getBakeQuality*(self: LightmapGI): LightmapGI_BakeQuality =
-  expandMethodBind(className LightmapGI, "get_bake_quality", 688832735)
-  var ret: encoded LightmapGI_BakeQuality
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LightmapGI_BakeQuality)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_bake_quality", 688832735)
+  methodbind.ptrcall(self, [], LightmapGI_BakeQuality)
 
 proc setBounces*(self: LightmapGI; bounces: int32): void =
-  expandMethodBind(className LightmapGI, "set_bounces", 1286410249)
-  methodbind.ptrcall(self, [getPtr bounces])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_bounces", 1286410249)
+  methodbind.ptrcall(self, [getPtr bounces], void)
 
 proc getBounces*(self: LightmapGI): int32 =
-  expandMethodBind(className LightmapGI, "get_bounces", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_bounces", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setBounceIndirectEnergy*(self: LightmapGI; bounceIndirectEnergy: Float): void =
-  expandMethodBind(className LightmapGI, "set_bounce_indirect_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr bounceIndirectEnergy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_bounce_indirect_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr bounceIndirectEnergy], void)
 
 proc getBounceIndirectEnergy*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_bounce_indirect_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_bounce_indirect_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGenerateProbes*(self: LightmapGI; subdivision: LightmapGI_GenerateProbes): void =
-  expandMethodBind(className LightmapGI, "set_generate_probes", 549981046)
-  methodbind.ptrcall(self, [getPtr subdivision])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_generate_probes", 549981046)
+  methodbind.ptrcall(self, [getPtr subdivision], void)
 
 proc getGenerateProbes*(self: LightmapGI): LightmapGI_GenerateProbes =
-  expandMethodBind(className LightmapGI, "get_generate_probes", 3930596226)
-  var ret: encoded LightmapGI_GenerateProbes
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LightmapGI_GenerateProbes)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_generate_probes", 3930596226)
+  methodbind.ptrcall(self, [], LightmapGI_GenerateProbes)
 
 proc setBias*(self: LightmapGI; bias: Float): void =
-  expandMethodBind(className LightmapGI, "set_bias", 373806689)
-  methodbind.ptrcall(self, [getPtr bias])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_bias", 373806689)
+  methodbind.ptrcall(self, [getPtr bias], void)
 
 proc getBias*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_bias", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_bias", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEnvironmentMode*(self: LightmapGI; mode: LightmapGI_EnvironmentMode): void =
-  expandMethodBind(className LightmapGI, "set_environment_mode", 2282650285)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_environment_mode", 2282650285)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getEnvironmentMode*(self: LightmapGI): LightmapGI_EnvironmentMode =
-  expandMethodBind(className LightmapGI, "get_environment_mode", 4128646479)
-  var ret: encoded LightmapGI_EnvironmentMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LightmapGI_EnvironmentMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_environment_mode", 4128646479)
+  methodbind.ptrcall(self, [], LightmapGI_EnvironmentMode)
 
 proc setEnvironmentCustomSky*(self: LightmapGI; sky: gdref Sky): void =
-  expandMethodBind(className LightmapGI, "set_environment_custom_sky", 3336722921)
-  methodbind.ptrcall(self, [getPtr sky])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_environment_custom_sky", 3336722921)
+  methodbind.ptrcall(self, [getPtr sky], void)
 
 proc getEnvironmentCustomSky*(self: LightmapGI): gdref Sky =
-  expandMethodBind(className LightmapGI, "get_environment_custom_sky", 1177136966)
-  var ret: encoded gdref Sky
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Sky)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_environment_custom_sky", 1177136966)
+  methodbind.ptrcall(self, [], gdref Sky)
 
 proc setEnvironmentCustomColor*(self: LightmapGI; color: Color): void =
-  expandMethodBind(className LightmapGI, "set_environment_custom_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_environment_custom_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getEnvironmentCustomColor*(self: LightmapGI): Color =
-  expandMethodBind(className LightmapGI, "get_environment_custom_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_environment_custom_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setEnvironmentCustomEnergy*(self: LightmapGI; energy: Float): void =
-  expandMethodBind(className LightmapGI, "set_environment_custom_energy", 373806689)
-  methodbind.ptrcall(self, [getPtr energy])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_environment_custom_energy", 373806689)
+  methodbind.ptrcall(self, [getPtr energy], void)
 
 proc getEnvironmentCustomEnergy*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_environment_custom_energy", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_environment_custom_energy", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTexelScale*(self: LightmapGI; texelScale: Float): void =
-  expandMethodBind(className LightmapGI, "set_texel_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr texelScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_texel_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr texelScale], void)
 
 proc getTexelScale*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_texel_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_texel_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxTextureSize*(self: LightmapGI; maxTextureSize: int32): void =
-  expandMethodBind(className LightmapGI, "set_max_texture_size", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxTextureSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_max_texture_size", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxTextureSize], void)
 
 proc getMaxTextureSize*(self: LightmapGI): int32 =
-  expandMethodBind(className LightmapGI, "get_max_texture_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_max_texture_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSupersamplingEnabled*(self: LightmapGI; enable: bool): void =
-  expandMethodBind(className LightmapGI, "set_supersampling_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_supersampling_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSupersamplingEnabled*(self: LightmapGI): bool =
-  expandMethodBind(className LightmapGI, "is_supersampling_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "is_supersampling_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSupersamplingFactor*(self: LightmapGI; factor: Float): void =
-  expandMethodBind(className LightmapGI, "set_supersampling_factor", 373806689)
-  methodbind.ptrcall(self, [getPtr factor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_supersampling_factor", 373806689)
+  methodbind.ptrcall(self, [getPtr factor], void)
 
 proc getSupersamplingFactor*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_supersampling_factor", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_supersampling_factor", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setUseDenoiser*(self: LightmapGI; useDenoiser: bool): void =
-  expandMethodBind(className LightmapGI, "set_use_denoiser", 2586408642)
-  methodbind.ptrcall(self, [getPtr useDenoiser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_use_denoiser", 2586408642)
+  methodbind.ptrcall(self, [getPtr useDenoiser], void)
 
 proc isUsingDenoiser*(self: LightmapGI): bool =
-  expandMethodBind(className LightmapGI, "is_using_denoiser", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "is_using_denoiser", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDenoiserStrength*(self: LightmapGI; denoiserStrength: Float): void =
-  expandMethodBind(className LightmapGI, "set_denoiser_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr denoiserStrength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_denoiser_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr denoiserStrength], void)
 
 proc getDenoiserStrength*(self: LightmapGI): Float =
-  expandMethodBind(className LightmapGI, "get_denoiser_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_denoiser_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDenoiserRange*(self: LightmapGI; denoiserRange: int32): void =
-  expandMethodBind(className LightmapGI, "set_denoiser_range", 1286410249)
-  methodbind.ptrcall(self, [getPtr denoiserRange])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_denoiser_range", 1286410249)
+  methodbind.ptrcall(self, [getPtr denoiserRange], void)
 
 proc getDenoiserRange*(self: LightmapGI): int32 =
-  expandMethodBind(className LightmapGI, "get_denoiser_range", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_denoiser_range", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setInterior*(self: LightmapGI; enable: bool): void =
-  expandMethodBind(className LightmapGI, "set_interior", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_interior", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isInterior*(self: LightmapGI): bool =
-  expandMethodBind(className LightmapGI, "is_interior", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "is_interior", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDirectional*(self: LightmapGI; directional: bool): void =
-  expandMethodBind(className LightmapGI, "set_directional", 2586408642)
-  methodbind.ptrcall(self, [getPtr directional])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_directional", 2586408642)
+  methodbind.ptrcall(self, [getPtr directional], void)
 
 proc isDirectional*(self: LightmapGI): bool =
-  expandMethodBind(className LightmapGI, "is_directional", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "is_directional", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShadowmaskMode*(self: LightmapGI; mode: LightmapGIData_ShadowmaskMode): void =
-  expandMethodBind(className LightmapGI, "set_shadowmask_mode", 3451066572)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_shadowmask_mode", 3451066572)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getShadowmaskMode*(self: LightmapGI): LightmapGIData_ShadowmaskMode =
-  expandMethodBind(className LightmapGI, "get_shadowmask_mode", 785478560)
-  var ret: encoded LightmapGIData_ShadowmaskMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LightmapGIData_ShadowmaskMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_shadowmask_mode", 785478560)
+  methodbind.ptrcall(self, [], LightmapGIData_ShadowmaskMode)
 
 proc setUseTextureForBounces*(self: LightmapGI; useTextureForBounces: bool): void =
-  expandMethodBind(className LightmapGI, "set_use_texture_for_bounces", 2586408642)
-  methodbind.ptrcall(self, [getPtr useTextureForBounces])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_use_texture_for_bounces", 2586408642)
+  methodbind.ptrcall(self, [getPtr useTextureForBounces], void)
 
 proc isUsingTextureForBounces*(self: LightmapGI): bool =
-  expandMethodBind(className LightmapGI, "is_using_texture_for_bounces", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "is_using_texture_for_bounces", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCameraAttributes*(self: LightmapGI; cameraAttributes: gdref CameraAttributes): void =
-  expandMethodBind(className LightmapGI, "set_camera_attributes", 2817810567)
-  methodbind.ptrcall(self, [getPtr cameraAttributes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "set_camera_attributes", 2817810567)
+  methodbind.ptrcall(self, [getPtr cameraAttributes], void)
 
 proc getCameraAttributes*(self: LightmapGI): gdref CameraAttributes =
-  expandMethodBind(className LightmapGI, "get_camera_attributes", 3921283215)
-  var ret: encoded gdref CameraAttributes
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref CameraAttributes)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LightmapGI, "get_camera_attributes", 3921283215)
+  methodbind.ptrcall(self, [], gdref CameraAttributes)
 
 template quality*(self: LightmapGI): untyped = self.getBakeQuality()
 template `quality=`*(self: LightmapGI; value) = self.setBakeQuality(value)

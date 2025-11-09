@@ -7,54 +7,64 @@ import gdvisualinstance3d; export gdvisualinstance3d
 expandOnClassImported(RootMotionView, VisualInstance3D)
 
 proc setAnimationPath*(self: RootMotionView; path: NodePath): void =
-  expandMethodBind(className RootMotionView, "set_animation_path", 1348162250)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "set_animation_path", 1348162250)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getAnimationPath*(self: RootMotionView): NodePath =
-  expandMethodBind(className RootMotionView, "get_animation_path", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "get_animation_path", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setColor*(self: RootMotionView; color: Color): void =
-  expandMethodBind(className RootMotionView, "set_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getColor*(self: RootMotionView): Color =
-  expandMethodBind(className RootMotionView, "get_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "get_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setCellSize*(self: RootMotionView; size: Float): void =
-  expandMethodBind(className RootMotionView, "set_cell_size", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "set_cell_size", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getCellSize*(self: RootMotionView): Float =
-  expandMethodBind(className RootMotionView, "get_cell_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "get_cell_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRadius*(self: RootMotionView; size: Float): void =
-  expandMethodBind(className RootMotionView, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getRadius*(self: RootMotionView): Float =
-  expandMethodBind(className RootMotionView, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setZeroY*(self: RootMotionView; enable: bool): void =
-  expandMethodBind(className RootMotionView, "set_zero_y", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "set_zero_y", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getZeroY*(self: RootMotionView): bool =
-  expandMethodBind(className RootMotionView, "get_zero_y", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RootMotionView, "get_zero_y", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template animationPath*(self: RootMotionView): untyped = self.getAnimationPath()
 template `animationPath=`*(self: RootMotionView; value) = self.setAnimationPath(value)

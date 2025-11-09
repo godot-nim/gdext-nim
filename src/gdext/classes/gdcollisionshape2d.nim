@@ -7,54 +7,64 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(CollisionShape2D, Node2D)
 
 proc setShape*(self: CollisionShape2D; shape: gdref Shape2D): void =
-  expandMethodBind(className CollisionShape2D, "set_shape", 771364740)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "set_shape", 771364740)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getShape*(self: CollisionShape2D): gdref Shape2D =
-  expandMethodBind(className CollisionShape2D, "get_shape", 522005891)
-  var ret: encoded gdref Shape2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Shape2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "get_shape", 522005891)
+  methodbind.ptrcall(self, [], gdref Shape2D)
 
 proc setDisabled*(self: CollisionShape2D; disabled: bool): void =
-  expandMethodBind(className CollisionShape2D, "set_disabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "set_disabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr disabled], void)
 
 proc isDisabled*(self: CollisionShape2D): bool =
-  expandMethodBind(className CollisionShape2D, "is_disabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "is_disabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOneWayCollision*(self: CollisionShape2D; enabled: bool): void =
-  expandMethodBind(className CollisionShape2D, "set_one_way_collision", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "set_one_way_collision", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isOneWayCollisionEnabled*(self: CollisionShape2D): bool =
-  expandMethodBind(className CollisionShape2D, "is_one_way_collision_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "is_one_way_collision_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOneWayCollisionMargin*(self: CollisionShape2D; margin: Float): void =
-  expandMethodBind(className CollisionShape2D, "set_one_way_collision_margin", 373806689)
-  methodbind.ptrcall(self, [getPtr margin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "set_one_way_collision_margin", 373806689)
+  methodbind.ptrcall(self, [getPtr margin], void)
 
 proc getOneWayCollisionMargin*(self: CollisionShape2D): Float =
-  expandMethodBind(className CollisionShape2D, "get_one_way_collision_margin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "get_one_way_collision_margin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDebugColor*(self: CollisionShape2D; color: Color): void =
-  expandMethodBind(className CollisionShape2D, "set_debug_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "set_debug_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getDebugColor*(self: CollisionShape2D): Color =
-  expandMethodBind(className CollisionShape2D, "get_debug_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionShape2D, "get_debug_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 template shape*(self: CollisionShape2D): untyped = self.getShape()
 template `shape=`*(self: CollisionShape2D; value) = self.setShape(value)

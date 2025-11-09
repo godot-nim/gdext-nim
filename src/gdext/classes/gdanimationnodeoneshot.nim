@@ -7,94 +7,112 @@ import gdanimationnodesync; export gdanimationnodesync
 expandOnClassImported(AnimationNodeOneShot, AnimationNodeSync)
 
 proc setFadeinTime*(self: AnimationNodeOneShot; time: float64): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_fadein_time", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_fadein_time", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc getFadeinTime*(self: AnimationNodeOneShot): float64 =
-  expandMethodBind(className AnimationNodeOneShot, "get_fadein_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_fadein_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setFadeinCurve*(self: AnimationNodeOneShot; curve: gdref Curve): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_fadein_curve", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_fadein_curve", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getFadeinCurve*(self: AnimationNodeOneShot): gdref Curve =
-  expandMethodBind(className AnimationNodeOneShot, "get_fadein_curve", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_fadein_curve", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setFadeoutTime*(self: AnimationNodeOneShot; time: float64): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_fadeout_time", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_fadeout_time", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc getFadeoutTime*(self: AnimationNodeOneShot): float64 =
-  expandMethodBind(className AnimationNodeOneShot, "get_fadeout_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_fadeout_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setFadeoutCurve*(self: AnimationNodeOneShot; curve: gdref Curve): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_fadeout_curve", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_fadeout_curve", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getFadeoutCurve*(self: AnimationNodeOneShot): gdref Curve =
-  expandMethodBind(className AnimationNodeOneShot, "get_fadeout_curve", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_fadeout_curve", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setBreakLoopAtEnd*(self: AnimationNodeOneShot; enable: bool): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_break_loop_at_end", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_break_loop_at_end", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isLoopBrokenAtEnd*(self: AnimationNodeOneShot): bool =
-  expandMethodBind(className AnimationNodeOneShot, "is_loop_broken_at_end", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "is_loop_broken_at_end", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutorestart*(self: AnimationNodeOneShot; active: bool): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_autorestart", 2586408642)
-  methodbind.ptrcall(self, [getPtr active])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_autorestart", 2586408642)
+  methodbind.ptrcall(self, [getPtr active], void)
 
 proc hasAutorestart*(self: AnimationNodeOneShot): bool =
-  expandMethodBind(className AnimationNodeOneShot, "has_autorestart", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "has_autorestart", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutorestartDelay*(self: AnimationNodeOneShot; time: float64): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_autorestart_delay", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_autorestart_delay", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc getAutorestartDelay*(self: AnimationNodeOneShot): float64 =
-  expandMethodBind(className AnimationNodeOneShot, "get_autorestart_delay", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_autorestart_delay", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setAutorestartRandomDelay*(self: AnimationNodeOneShot; time: float64): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_autorestart_random_delay", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_autorestart_random_delay", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc getAutorestartRandomDelay*(self: AnimationNodeOneShot): float64 =
-  expandMethodBind(className AnimationNodeOneShot, "get_autorestart_random_delay", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_autorestart_random_delay", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setMixMode*(self: AnimationNodeOneShot; mode: AnimationNodeOneShot_MixMode): void =
-  expandMethodBind(className AnimationNodeOneShot, "set_mix_mode", 1018899799)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "set_mix_mode", 1018899799)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getMixMode*(self: AnimationNodeOneShot): AnimationNodeOneShot_MixMode =
-  expandMethodBind(className AnimationNodeOneShot, "get_mix_mode", 3076550526)
-  var ret: encoded AnimationNodeOneShot_MixMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationNodeOneShot_MixMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeOneShot, "get_mix_mode", 3076550526)
+  methodbind.ptrcall(self, [], AnimationNodeOneShot_MixMode)
 
 template mixMode*(self: AnimationNodeOneShot): untyped = self.getMixMode()
 template `mixMode=`*(self: AnimationNodeOneShot; value) = self.setMixMode(value)

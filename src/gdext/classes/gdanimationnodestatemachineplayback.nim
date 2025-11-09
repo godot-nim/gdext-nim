@@ -7,53 +7,61 @@ import gdresource; export gdresource
 expandOnClassImported(AnimationNodeStateMachinePlayback, Resource)
 
 proc travel*(self: AnimationNodeStateMachinePlayback; toNode: StringName; resetOnTeleport: bool = true): void =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "travel", 3823612587)
-  methodbind.ptrcall(self, [getPtr toNode, getPtr resetOnTeleport])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "travel", 3823612587)
+  methodbind.ptrcall(self, [getPtr toNode, getPtr resetOnTeleport], void)
 
 proc start*(self: AnimationNodeStateMachinePlayback; node: StringName; reset: bool = true): void =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "start", 3823612587)
-  methodbind.ptrcall(self, [getPtr node, getPtr reset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "start", 3823612587)
+  methodbind.ptrcall(self, [getPtr node, getPtr reset], void)
 
 proc next*(self: AnimationNodeStateMachinePlayback): void =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "next", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "next", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc stop*(self: AnimationNodeStateMachinePlayback): void =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "stop", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "stop", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc isPlaying*(self: AnimationNodeStateMachinePlayback): bool =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "is_playing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "is_playing", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getCurrentNode*(self: AnimationNodeStateMachinePlayback): StringName =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_current_node", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "get_current_node", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc getCurrentPlayPosition*(self: AnimationNodeStateMachinePlayback): Float =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_current_play_position", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "get_current_play_position", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getCurrentLength*(self: AnimationNodeStateMachinePlayback): Float =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_current_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "get_current_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getFadingFromNode*(self: AnimationNodeStateMachinePlayback): StringName =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_from_node", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_from_node", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc getTravelPath*(self: AnimationNodeStateMachinePlayback): TypedArray[StringName] =
-  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_travel_path", 3995934104)
-  var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachinePlayback, "get_travel_path", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[StringName])

@@ -57,47 +57,55 @@ proc registerVirtual_getParameter*[T: AudioStreamPlayback](Self: typedesc[T]) =
     errproof: cast[AudioStreamPlayback](p_instance).getParameter(p_args[0].decode(StringName)).encode(r_ret)
 
 proc setSamplePlayback*(self: AudioStreamPlayback; playbackSample: gdref AudioSamplePlayback): void =
-  expandMethodBind(className AudioStreamPlayback, "set_sample_playback", 3195455091)
-  methodbind.ptrcall(self, [getPtr playbackSample])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "set_sample_playback", 3195455091)
+  methodbind.ptrcall(self, [getPtr playbackSample], void)
 
 proc getSamplePlayback*(self: AudioStreamPlayback): gdref AudioSamplePlayback =
-  expandMethodBind(className AudioStreamPlayback, "get_sample_playback", 3482738536)
-  var ret: encoded gdref AudioSamplePlayback
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref AudioSamplePlayback)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "get_sample_playback", 3482738536)
+  methodbind.ptrcall(self, [], gdref AudioSamplePlayback)
 
 proc mixAudio*(self: AudioStreamPlayback; rateScale: Float; frames: int32): PackedVector2Array =
-  expandMethodBind(className AudioStreamPlayback, "mix_audio", 3341291446)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [getPtr rateScale, getPtr frames], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "mix_audio", 3341291446)
+  methodbind.ptrcall(self, [getPtr rateScale, getPtr frames], PackedVector2Array)
 
 proc start*(self: AudioStreamPlayback; fromPos: float64 = 0.0): void =
-  expandMethodBind(className AudioStreamPlayback, "start", 1958160172)
-  methodbind.ptrcall(self, [getPtr fromPos])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "start", 1958160172)
+  methodbind.ptrcall(self, [getPtr fromPos], void)
 
 proc seek*(self: AudioStreamPlayback; time: float64 = 0.0): void =
-  expandMethodBind(className AudioStreamPlayback, "seek", 1958160172)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "seek", 1958160172)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc stop*(self: AudioStreamPlayback): void =
-  expandMethodBind(className AudioStreamPlayback, "stop", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "stop", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getLoopCount*(self: AudioStreamPlayback): int32 =
-  expandMethodBind(className AudioStreamPlayback, "get_loop_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "get_loop_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getPlaybackPosition*(self: AudioStreamPlayback): float64 =
-  expandMethodBind(className AudioStreamPlayback, "get_playback_position", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "get_playback_position", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc isPlaying*(self: AudioStreamPlayback): bool =
-  expandMethodBind(className AudioStreamPlayback, "is_playing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlayback, "is_playing", 36873697)
+  methodbind.ptrcall(self, [], bool)

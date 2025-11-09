@@ -7,94 +7,112 @@ import gdopenxripbindingmodifier; export gdopenxripbindingmodifier
 expandOnClassImported(OpenXRDpadBindingModifier, OpenXRIPBindingModifier)
 
 proc setActionSet*(self: OpenXRDpadBindingModifier; actionSet: gdref OpenXRActionSet): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_action_set", 2093310581)
-  methodbind.ptrcall(self, [getPtr actionSet])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_action_set", 2093310581)
+  methodbind.ptrcall(self, [getPtr actionSet], void)
 
 proc getActionSet*(self: OpenXRDpadBindingModifier): gdref OpenXRActionSet =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_action_set", 619941079)
-  var ret: encoded gdref OpenXRActionSet
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRActionSet)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_action_set", 619941079)
+  methodbind.ptrcall(self, [], gdref OpenXRActionSet)
 
 proc setInputPath*(self: OpenXRDpadBindingModifier; inputPath: String): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_input_path", 83702148)
-  methodbind.ptrcall(self, [getPtr inputPath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_input_path", 83702148)
+  methodbind.ptrcall(self, [getPtr inputPath], void)
 
 proc getInputPath*(self: OpenXRDpadBindingModifier): String =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_input_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_input_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setThreshold*(self: OpenXRDpadBindingModifier; threshold: Float): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_threshold", 373806689)
-  methodbind.ptrcall(self, [getPtr threshold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_threshold", 373806689)
+  methodbind.ptrcall(self, [getPtr threshold], void)
 
 proc getThreshold*(self: OpenXRDpadBindingModifier): Float =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_threshold", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_threshold", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setThresholdReleased*(self: OpenXRDpadBindingModifier; thresholdReleased: Float): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_threshold_released", 373806689)
-  methodbind.ptrcall(self, [getPtr thresholdReleased])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_threshold_released", 373806689)
+  methodbind.ptrcall(self, [getPtr thresholdReleased], void)
 
 proc getThresholdReleased*(self: OpenXRDpadBindingModifier): Float =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_threshold_released", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_threshold_released", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCenterRegion*(self: OpenXRDpadBindingModifier; centerRegion: Float): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_center_region", 373806689)
-  methodbind.ptrcall(self, [getPtr centerRegion])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_center_region", 373806689)
+  methodbind.ptrcall(self, [getPtr centerRegion], void)
 
 proc getCenterRegion*(self: OpenXRDpadBindingModifier): Float =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_center_region", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_center_region", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setWedgeAngle*(self: OpenXRDpadBindingModifier; wedgeAngle: Float): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_wedge_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr wedgeAngle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_wedge_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr wedgeAngle], void)
 
 proc getWedgeAngle*(self: OpenXRDpadBindingModifier): Float =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_wedge_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_wedge_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setIsSticky*(self: OpenXRDpadBindingModifier; isSticky: bool): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_is_sticky", 2586408642)
-  methodbind.ptrcall(self, [getPtr isSticky])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_is_sticky", 2586408642)
+  methodbind.ptrcall(self, [getPtr isSticky], void)
 
 proc getIsSticky*(self: OpenXRDpadBindingModifier): bool =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_is_sticky", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_is_sticky", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOnHaptic*(self: OpenXRDpadBindingModifier; haptic: gdref OpenXRHapticBase): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_on_haptic", 2998020150)
-  methodbind.ptrcall(self, [getPtr haptic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_on_haptic", 2998020150)
+  methodbind.ptrcall(self, [getPtr haptic], void)
 
 proc getOnHaptic*(self: OpenXRDpadBindingModifier): gdref OpenXRHapticBase =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_on_haptic", 922310751)
-  var ret: encoded gdref OpenXRHapticBase
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRHapticBase)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_on_haptic", 922310751)
+  methodbind.ptrcall(self, [], gdref OpenXRHapticBase)
 
 proc setOffHaptic*(self: OpenXRDpadBindingModifier; haptic: gdref OpenXRHapticBase): void =
-  expandMethodBind(className OpenXRDpadBindingModifier, "set_off_haptic", 2998020150)
-  methodbind.ptrcall(self, [getPtr haptic])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "set_off_haptic", 2998020150)
+  methodbind.ptrcall(self, [getPtr haptic], void)
 
 proc getOffHaptic*(self: OpenXRDpadBindingModifier): gdref OpenXRHapticBase =
-  expandMethodBind(className OpenXRDpadBindingModifier, "get_off_haptic", 922310751)
-  var ret: encoded gdref OpenXRHapticBase
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref OpenXRHapticBase)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRDpadBindingModifier, "get_off_haptic", 922310751)
+  methodbind.ptrcall(self, [], gdref OpenXRHapticBase)
 
 template actionSet*(self: OpenXRDpadBindingModifier): untyped = self.getActionSet()
 template `actionSet=`*(self: OpenXRDpadBindingModifier; value) = self.setActionSet(value)

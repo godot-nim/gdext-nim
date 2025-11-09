@@ -7,13 +7,13 @@ import gdresourceimporter; export gdresourceimporter
 expandOnClassImported(ResourceImporterOggVorbis, ResourceImporter)
 
 proc loadFromBuffer*(_: typedesc[ResourceImporterOggVorbis]; streamData: PackedByteArray): gdref AudioStreamOggVorbis =
-  expandMethodBind(className ResourceImporterOggVorbis, "load_from_buffer", 354904730)
-  var ret: encoded gdref AudioStreamOggVorbis
-  methodbind.ptrcall([getPtr streamData], addr ret)
-  (addr ret).decode_result(gdref AudioStreamOggVorbis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceImporterOggVorbis, "load_from_buffer", 354904730)
+  methodbind.ptrcall([getPtr streamData], gdref AudioStreamOggVorbis)
 
 proc loadFromFile*(_: typedesc[ResourceImporterOggVorbis]; path: String): gdref AudioStreamOggVorbis =
-  expandMethodBind(className ResourceImporterOggVorbis, "load_from_file", 797568536)
-  var ret: encoded gdref AudioStreamOggVorbis
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(gdref AudioStreamOggVorbis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ResourceImporterOggVorbis, "load_from_file", 797568536)
+  methodbind.ptrcall([getPtr path], gdref AudioStreamOggVorbis)

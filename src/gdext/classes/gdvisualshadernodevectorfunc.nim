@@ -7,14 +7,16 @@ import gdvisualshadernodevectorbase; export gdvisualshadernodevectorbase
 expandOnClassImported(VisualShaderNodeVectorFunc, VisualShaderNodeVectorBase)
 
 proc setFunction*(self: VisualShaderNodeVectorFunc; `func`: VisualShaderNodeVectorFunc_Function): void =
-  expandMethodBind(className VisualShaderNodeVectorFunc, "set_function", 629964457)
-  methodbind.ptrcall(self, [getPtr `func`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeVectorFunc, "set_function", 629964457)
+  methodbind.ptrcall(self, [getPtr `func`], void)
 
 proc getFunction*(self: VisualShaderNodeVectorFunc): VisualShaderNodeVectorFunc_Function =
-  expandMethodBind(className VisualShaderNodeVectorFunc, "get_function", 4047776843)
-  var ret: encoded VisualShaderNodeVectorFunc_Function
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VisualShaderNodeVectorFunc_Function)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeVectorFunc, "get_function", 4047776843)
+  methodbind.ptrcall(self, [], VisualShaderNodeVectorFunc_Function)
 
 template function*(self: VisualShaderNodeVectorFunc): untyped = self.getFunction()
 template `function=`*(self: VisualShaderNodeVectorFunc; value) = self.setFunction(value)

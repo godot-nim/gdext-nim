@@ -7,34 +7,40 @@ import gdaudiostream; export gdaudiostream
 expandOnClassImported(AudioStreamGenerator, AudioStream)
 
 proc setMixRate*(self: AudioStreamGenerator; hz: Float): void =
-  expandMethodBind(className AudioStreamGenerator, "set_mix_rate", 373806689)
-  methodbind.ptrcall(self, [getPtr hz])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "set_mix_rate", 373806689)
+  methodbind.ptrcall(self, [getPtr hz], void)
 
 proc getMixRate*(self: AudioStreamGenerator): Float =
-  expandMethodBind(className AudioStreamGenerator, "get_mix_rate", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "get_mix_rate", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMixRateMode*(self: AudioStreamGenerator; mode: AudioStreamGenerator_AudioStreamGeneratorMixRate): void =
-  expandMethodBind(className AudioStreamGenerator, "set_mix_rate_mode", 3354885803)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "set_mix_rate_mode", 3354885803)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getMixRateMode*(self: AudioStreamGenerator): AudioStreamGenerator_AudioStreamGeneratorMixRate =
-  expandMethodBind(className AudioStreamGenerator, "get_mix_rate_mode", 3537132591)
-  var ret: encoded AudioStreamGenerator_AudioStreamGeneratorMixRate
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AudioStreamGenerator_AudioStreamGeneratorMixRate)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "get_mix_rate_mode", 3537132591)
+  methodbind.ptrcall(self, [], AudioStreamGenerator_AudioStreamGeneratorMixRate)
 
 proc setBufferLength*(self: AudioStreamGenerator; seconds: Float): void =
-  expandMethodBind(className AudioStreamGenerator, "set_buffer_length", 373806689)
-  methodbind.ptrcall(self, [getPtr seconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "set_buffer_length", 373806689)
+  methodbind.ptrcall(self, [getPtr seconds], void)
 
 proc getBufferLength*(self: AudioStreamGenerator): Float =
-  expandMethodBind(className AudioStreamGenerator, "get_buffer_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamGenerator, "get_buffer_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template mixRateMode*(self: AudioStreamGenerator): untyped = self.getMixRateMode()
 template `mixRateMode=`*(self: AudioStreamGenerator; value) = self.setMixRateMode(value)

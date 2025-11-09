@@ -7,64 +7,76 @@ import gdprimitivemesh; export gdprimitivemesh
 expandOnClassImported(RibbonTrailMesh, PrimitiveMesh)
 
 proc setSize*(self: RibbonTrailMesh; size: Float): void =
-  expandMethodBind(className RibbonTrailMesh, "set_size", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_size", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getSize*(self: RibbonTrailMesh): Float =
-  expandMethodBind(className RibbonTrailMesh, "get_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSections*(self: RibbonTrailMesh; sections: int32): void =
-  expandMethodBind(className RibbonTrailMesh, "set_sections", 1286410249)
-  methodbind.ptrcall(self, [getPtr sections])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_sections", 1286410249)
+  methodbind.ptrcall(self, [getPtr sections], void)
 
 proc getSections*(self: RibbonTrailMesh): int32 =
-  expandMethodBind(className RibbonTrailMesh, "get_sections", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_sections", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSectionLength*(self: RibbonTrailMesh; sectionLength: Float): void =
-  expandMethodBind(className RibbonTrailMesh, "set_section_length", 373806689)
-  methodbind.ptrcall(self, [getPtr sectionLength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_section_length", 373806689)
+  methodbind.ptrcall(self, [getPtr sectionLength], void)
 
 proc getSectionLength*(self: RibbonTrailMesh): Float =
-  expandMethodBind(className RibbonTrailMesh, "get_section_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_section_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSectionSegments*(self: RibbonTrailMesh; sectionSegments: int32): void =
-  expandMethodBind(className RibbonTrailMesh, "set_section_segments", 1286410249)
-  methodbind.ptrcall(self, [getPtr sectionSegments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_section_segments", 1286410249)
+  methodbind.ptrcall(self, [getPtr sectionSegments], void)
 
 proc getSectionSegments*(self: RibbonTrailMesh): int32 =
-  expandMethodBind(className RibbonTrailMesh, "get_section_segments", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_section_segments", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setCurve*(self: RibbonTrailMesh; curve: gdref Curve): void =
-  expandMethodBind(className RibbonTrailMesh, "set_curve", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_curve", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getCurve*(self: RibbonTrailMesh): gdref Curve =
-  expandMethodBind(className RibbonTrailMesh, "get_curve", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_curve", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setShape*(self: RibbonTrailMesh; shape: RibbonTrailMesh_Shape): void =
-  expandMethodBind(className RibbonTrailMesh, "set_shape", 1684440262)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "set_shape", 1684440262)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getShape*(self: RibbonTrailMesh): RibbonTrailMesh_Shape =
-  expandMethodBind(className RibbonTrailMesh, "get_shape", 1317484155)
-  var ret: encoded RibbonTrailMesh_Shape
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RibbonTrailMesh_Shape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RibbonTrailMesh, "get_shape", 1317484155)
+  methodbind.ptrcall(self, [], RibbonTrailMesh_Shape)
 
 template shape*(self: RibbonTrailMesh): untyped = self.getShape()
 template `shape=`*(self: RibbonTrailMesh; value) = self.setShape(value)

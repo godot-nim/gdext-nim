@@ -7,94 +7,112 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(GLTFObjectModelProperty, RefCounted)
 
 proc appendNodePath*(self: GLTFObjectModelProperty; nodePath: NodePath): void =
-  expandMethodBind(className GLTFObjectModelProperty, "append_node_path", 1348162250)
-  methodbind.ptrcall(self, [getPtr nodePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "append_node_path", 1348162250)
+  methodbind.ptrcall(self, [getPtr nodePath], void)
 
 proc appendPathToProperty*(self: GLTFObjectModelProperty; nodePath: NodePath; propName: StringName): void =
-  expandMethodBind(className GLTFObjectModelProperty, "append_path_to_property", 1331931644)
-  methodbind.ptrcall(self, [getPtr nodePath, getPtr propName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "append_path_to_property", 1331931644)
+  methodbind.ptrcall(self, [getPtr nodePath, getPtr propName], void)
 
 proc getAccessorType*(self: GLTFObjectModelProperty): GLTFAccessor_GLTFAccessorType =
-  expandMethodBind(className GLTFObjectModelProperty, "get_accessor_type", 1998183368)
-  var ret: encoded GLTFAccessor_GLTFAccessorType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(GLTFAccessor_GLTFAccessorType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_accessor_type", 1998183368)
+  methodbind.ptrcall(self, [], GLTFAccessor_GLTFAccessorType)
 
 proc getGltfToGodotExpression*(self: GLTFObjectModelProperty): gdref Expression =
-  expandMethodBind(className GLTFObjectModelProperty, "get_gltf_to_godot_expression", 2240072449)
-  var ret: encoded gdref Expression
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Expression)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_gltf_to_godot_expression", 2240072449)
+  methodbind.ptrcall(self, [], gdref Expression)
 
 proc setGltfToGodotExpression*(self: GLTFObjectModelProperty; gltfToGodotExpr: gdref Expression): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_gltf_to_godot_expression", 1815845073)
-  methodbind.ptrcall(self, [getPtr gltfToGodotExpr])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_gltf_to_godot_expression", 1815845073)
+  methodbind.ptrcall(self, [getPtr gltfToGodotExpr], void)
 
 proc getGodotToGltfExpression*(self: GLTFObjectModelProperty): gdref Expression =
-  expandMethodBind(className GLTFObjectModelProperty, "get_godot_to_gltf_expression", 2240072449)
-  var ret: encoded gdref Expression
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Expression)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_godot_to_gltf_expression", 2240072449)
+  methodbind.ptrcall(self, [], gdref Expression)
 
 proc setGodotToGltfExpression*(self: GLTFObjectModelProperty; godotToGltfExpr: gdref Expression): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_godot_to_gltf_expression", 1815845073)
-  methodbind.ptrcall(self, [getPtr godotToGltfExpr])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_godot_to_gltf_expression", 1815845073)
+  methodbind.ptrcall(self, [getPtr godotToGltfExpr], void)
 
 proc getNodePaths*(self: GLTFObjectModelProperty): TypedArray[NodePath] =
-  expandMethodBind(className GLTFObjectModelProperty, "get_node_paths", 3995934104)
-  var ret: encoded TypedArray[NodePath]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_node_paths", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[NodePath])
 
 proc hasNodePaths*(self: GLTFObjectModelProperty): bool =
-  expandMethodBind(className GLTFObjectModelProperty, "has_node_paths", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "has_node_paths", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNodePaths*(self: GLTFObjectModelProperty; nodePaths: TypedArray[NodePath]): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_node_paths", 381264803)
-  methodbind.ptrcall(self, [getPtr nodePaths])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_node_paths", 381264803)
+  methodbind.ptrcall(self, [getPtr nodePaths], void)
 
 proc getObjectModelType*(self: GLTFObjectModelProperty): GLTFObjectModelProperty_GLTFObjectModelType =
-  expandMethodBind(className GLTFObjectModelProperty, "get_object_model_type", 1094778507)
-  var ret: encoded GLTFObjectModelProperty_GLTFObjectModelType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(GLTFObjectModelProperty_GLTFObjectModelType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_object_model_type", 1094778507)
+  methodbind.ptrcall(self, [], GLTFObjectModelProperty_GLTFObjectModelType)
 
 proc setObjectModelType*(self: GLTFObjectModelProperty; `type`: GLTFObjectModelProperty_GLTFObjectModelType): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_object_model_type", 4108684086)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_object_model_type", 4108684086)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getJsonPointers*(self: GLTFObjectModelProperty): TypedArray[PackedStringArray] =
-  expandMethodBind(className GLTFObjectModelProperty, "get_json_pointers", 3995934104)
-  var ret: encoded TypedArray[PackedStringArray]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PackedStringArray])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_json_pointers", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[PackedStringArray])
 
 proc hasJsonPointers*(self: GLTFObjectModelProperty): bool =
-  expandMethodBind(className GLTFObjectModelProperty, "has_json_pointers", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "has_json_pointers", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setJsonPointers*(self: GLTFObjectModelProperty; jsonPointers: TypedArray[PackedStringArray]): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_json_pointers", 381264803)
-  methodbind.ptrcall(self, [getPtr jsonPointers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_json_pointers", 381264803)
+  methodbind.ptrcall(self, [getPtr jsonPointers], void)
 
 proc getVariantType*(self: GLTFObjectModelProperty): Variant_Type =
-  expandMethodBind(className GLTFObjectModelProperty, "get_variant_type", 3416842102)
-  var ret: encoded Variant_Type
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant_Type)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "get_variant_type", 3416842102)
+  methodbind.ptrcall(self, [], Variant_Type)
 
 proc setVariantType*(self: GLTFObjectModelProperty; variantType: Variant_Type): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_variant_type", 2887708385)
-  methodbind.ptrcall(self, [getPtr variantType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_variant_type", 2887708385)
+  methodbind.ptrcall(self, [getPtr variantType], void)
 
 proc setTypes*(self: GLTFObjectModelProperty; variantType: Variant_Type; objModelType: GLTFObjectModelProperty_GLTFObjectModelType): void =
-  expandMethodBind(className GLTFObjectModelProperty, "set_types", 4150728237)
-  methodbind.ptrcall(self, [getPtr variantType, getPtr objModelType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFObjectModelProperty, "set_types", 4150728237)
+  methodbind.ptrcall(self, [getPtr variantType, getPtr objModelType], void)
 
 template gltfToGodotExpression*(self: GLTFObjectModelProperty): untyped = self.getGltfToGodotExpression()
 template `gltfToGodotExpression=`*(self: GLTFObjectModelProperty; value) = self.setGltfToGodotExpression(value)

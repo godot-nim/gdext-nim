@@ -30,34 +30,40 @@ proc registerVirtual_canUseRenderPriority*[T: Material](Self: typedesc[T]) =
     errproof: cast[Material](p_instance).canUseRenderPriority().encode(r_ret)
 
 proc setNextPass*(self: Material; nextPass: gdref Material): void =
-  expandMethodBind(className Material, "set_next_pass", 2757459619)
-  methodbind.ptrcall(self, [getPtr nextPass])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "set_next_pass", 2757459619)
+  methodbind.ptrcall(self, [getPtr nextPass], void)
 
 proc getNextPass*(self: Material): gdref Material =
-  expandMethodBind(className Material, "get_next_pass", 5934680)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "get_next_pass", 5934680)
+  methodbind.ptrcall(self, [], gdref Material)
 
 proc setRenderPriority*(self: Material; priority: int32): void =
-  expandMethodBind(className Material, "set_render_priority", 1286410249)
-  methodbind.ptrcall(self, [getPtr priority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "set_render_priority", 1286410249)
+  methodbind.ptrcall(self, [getPtr priority], void)
 
 proc getRenderPriority*(self: Material): int32 =
-  expandMethodBind(className Material, "get_render_priority", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "get_render_priority", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc inspectNativeShaderCode*(self: Material): void =
-  expandMethodBind(className Material, "inspect_native_shader_code", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "inspect_native_shader_code", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc createPlaceholder*(self: Material): gdref Resource =
-  expandMethodBind(className Material, "create_placeholder", 121922552)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Material, "create_placeholder", 121922552)
+  methodbind.ptrcall(self, [], gdref Resource)
 
 template renderPriority*(self: Material): untyped = self.getRenderPriority()
 template `renderPriority=`*(self: Material; value) = self.setRenderPriority(value)

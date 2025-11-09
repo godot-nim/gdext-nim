@@ -10,57 +10,61 @@ const ResolverMaxQueries* = 256
 const ResolverInvalidId* = -1
 
 proc resolveHostname*(self: IP; host: String; ipType: IP_Type = typeAny): String =
-  expandMethodBind(className IP, "resolve_hostname", 4283295457)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr host, getPtr ipType], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "resolve_hostname", 4283295457)
+  methodbind.ptrcall(self, [getPtr host, getPtr ipType], String)
 
 proc resolveHostnameAddresses*(self: IP; host: String; ipType: IP_Type = typeAny): PackedStringArray =
-  expandMethodBind(className IP, "resolve_hostname_addresses", 773767525)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [getPtr host, getPtr ipType], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "resolve_hostname_addresses", 773767525)
+  methodbind.ptrcall(self, [getPtr host, getPtr ipType], PackedStringArray)
 
 proc resolveHostnameQueueItem*(self: IP; host: String; ipType: IP_Type = typeAny): int32 =
-  expandMethodBind(className IP, "resolve_hostname_queue_item", 1749894742)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr host, getPtr ipType], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "resolve_hostname_queue_item", 1749894742)
+  methodbind.ptrcall(self, [getPtr host, getPtr ipType], int32)
 
 proc getResolveItemStatus*(self: IP; id: int32): IP_ResolverStatus =
-  expandMethodBind(className IP, "get_resolve_item_status", 3812250196)
-  var ret: encoded IP_ResolverStatus
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(IP_ResolverStatus)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "get_resolve_item_status", 3812250196)
+  methodbind.ptrcall(self, [getPtr id], IP_ResolverStatus)
 
 proc getResolveItemAddress*(self: IP; id: int32): String =
-  expandMethodBind(className IP, "get_resolve_item_address", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "get_resolve_item_address", 844755477)
+  methodbind.ptrcall(self, [getPtr id], String)
 
 proc getResolveItemAddresses*(self: IP; id: int32): Array =
-  expandMethodBind(className IP, "get_resolve_item_addresses", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "get_resolve_item_addresses", 663333327)
+  methodbind.ptrcall(self, [getPtr id], Array)
 
 proc eraseResolveItem*(self: IP; id: int32): void =
-  expandMethodBind(className IP, "erase_resolve_item", 1286410249)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "erase_resolve_item", 1286410249)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc getLocalAddresses*(self: IP): PackedStringArray =
-  expandMethodBind(className IP, "get_local_addresses", 1139954409)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "get_local_addresses", 1139954409)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc getLocalInterfaces*(self: IP): TypedArray[Dictionary] =
-  expandMethodBind(className IP, "get_local_interfaces", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "get_local_interfaces", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[Dictionary])
 
 proc clearCache*(self: IP; hostname: String = newGdString()): void =
-  expandMethodBind(className IP, "clear_cache", 3005725572)
-  methodbind.ptrcall(self, [getPtr hostname])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className IP, "clear_cache", 3005725572)
+  methodbind.ptrcall(self, [getPtr hostname], void)

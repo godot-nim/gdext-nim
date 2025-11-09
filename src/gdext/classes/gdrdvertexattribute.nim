@@ -7,54 +7,64 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(RDVertexAttribute, RefCounted)
 
 proc setLocation*(self: RDVertexAttribute; pMember: uint32): void =
-  expandMethodBind(className RDVertexAttribute, "set_location", 1286410249)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "set_location", 1286410249)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getLocation*(self: RDVertexAttribute): uint32 =
-  expandMethodBind(className RDVertexAttribute, "get_location", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "get_location", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setOffset*(self: RDVertexAttribute; pMember: uint32): void =
-  expandMethodBind(className RDVertexAttribute, "set_offset", 1286410249)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "set_offset", 1286410249)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getOffset*(self: RDVertexAttribute): uint32 =
-  expandMethodBind(className RDVertexAttribute, "get_offset", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "get_offset", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setFormat*(self: RDVertexAttribute; pMember: RenderingDevice_DataFormat): void =
-  expandMethodBind(className RDVertexAttribute, "set_format", 565531219)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "set_format", 565531219)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getFormat*(self: RDVertexAttribute): RenderingDevice_DataFormat =
-  expandMethodBind(className RDVertexAttribute, "get_format", 2235804183)
-  var ret: encoded RenderingDevice_DataFormat
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingDevice_DataFormat)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "get_format", 2235804183)
+  methodbind.ptrcall(self, [], RenderingDevice_DataFormat)
 
 proc setStride*(self: RDVertexAttribute; pMember: uint32): void =
-  expandMethodBind(className RDVertexAttribute, "set_stride", 1286410249)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "set_stride", 1286410249)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getStride*(self: RDVertexAttribute): uint32 =
-  expandMethodBind(className RDVertexAttribute, "get_stride", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "get_stride", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setFrequency*(self: RDVertexAttribute; pMember: RenderingDevice_VertexFrequency): void =
-  expandMethodBind(className RDVertexAttribute, "set_frequency", 522141836)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "set_frequency", 522141836)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getFrequency*(self: RDVertexAttribute): RenderingDevice_VertexFrequency =
-  expandMethodBind(className RDVertexAttribute, "get_frequency", 4154106413)
-  var ret: encoded RenderingDevice_VertexFrequency
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingDevice_VertexFrequency)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDVertexAttribute, "get_frequency", 4154106413)
+  methodbind.ptrcall(self, [], RenderingDevice_VertexFrequency)
 
 template location*(self: RDVertexAttribute): untyped = self.getLocation()
 template `location=`*(self: RDVertexAttribute; value) = self.setLocation(value)

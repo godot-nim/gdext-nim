@@ -7,34 +7,40 @@ import gdtexture2d; export gdtexture2d
 expandOnClassImported(MeshTexture, Texture2D)
 
 proc setMesh*(self: MeshTexture; mesh: gdref Mesh): void =
-  expandMethodBind(className MeshTexture, "set_mesh", 194775623)
-  methodbind.ptrcall(self, [getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "set_mesh", 194775623)
+  methodbind.ptrcall(self, [getPtr mesh], void)
 
 proc getMesh*(self: MeshTexture): gdref Mesh =
-  expandMethodBind(className MeshTexture, "get_mesh", 1808005922)
-  var ret: encoded gdref Mesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Mesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "get_mesh", 1808005922)
+  methodbind.ptrcall(self, [], gdref Mesh)
 
 proc setImageSize*(self: MeshTexture; size: Vector2): void =
-  expandMethodBind(className MeshTexture, "set_image_size", 743155724)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "set_image_size", 743155724)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getImageSize*(self: MeshTexture): Vector2 =
-  expandMethodBind(className MeshTexture, "get_image_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "get_image_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setBaseTexture*(self: MeshTexture; texture: gdref Texture2D): void =
-  expandMethodBind(className MeshTexture, "set_base_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "set_base_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getBaseTexture*(self: MeshTexture): gdref Texture2D =
-  expandMethodBind(className MeshTexture, "get_base_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MeshTexture, "get_base_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 template mesh*(self: MeshTexture): untyped = self.getMesh()
 template `mesh=`*(self: MeshTexture; value) = self.setMesh(value)

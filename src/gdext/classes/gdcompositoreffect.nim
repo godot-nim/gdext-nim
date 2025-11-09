@@ -12,74 +12,88 @@ proc registerVirtual_renderCallback*[T: CompositorEffect](Self: typedesc[T]) =
     errproof: cast[CompositorEffect](p_instance).renderCallback(p_args[0].decode(int32), p_args[1].decode(RenderData))
 
 proc setEnabled*(self: CompositorEffect; enabled: bool): void =
-  expandMethodBind(className CompositorEffect, "set_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getEnabled*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEffectCallbackType*(self: CompositorEffect; effectCallbackType: CompositorEffect_EffectCallbackType): void =
-  expandMethodBind(className CompositorEffect, "set_effect_callback_type", 1390728419)
-  methodbind.ptrcall(self, [getPtr effectCallbackType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_effect_callback_type", 1390728419)
+  methodbind.ptrcall(self, [getPtr effectCallbackType], void)
 
 proc getEffectCallbackType*(self: CompositorEffect): CompositorEffect_EffectCallbackType =
-  expandMethodBind(className CompositorEffect, "get_effect_callback_type", 1221912590)
-  var ret: encoded CompositorEffect_EffectCallbackType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CompositorEffect_EffectCallbackType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_effect_callback_type", 1221912590)
+  methodbind.ptrcall(self, [], CompositorEffect_EffectCallbackType)
 
 proc setAccessResolvedColor*(self: CompositorEffect; enable: bool): void =
-  expandMethodBind(className CompositorEffect, "set_access_resolved_color", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_access_resolved_color", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getAccessResolvedColor*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_access_resolved_color", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_access_resolved_color", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAccessResolvedDepth*(self: CompositorEffect; enable: bool): void =
-  expandMethodBind(className CompositorEffect, "set_access_resolved_depth", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_access_resolved_depth", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getAccessResolvedDepth*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_access_resolved_depth", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_access_resolved_depth", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNeedsMotionVectors*(self: CompositorEffect; enable: bool): void =
-  expandMethodBind(className CompositorEffect, "set_needs_motion_vectors", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_needs_motion_vectors", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getNeedsMotionVectors*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_needs_motion_vectors", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_needs_motion_vectors", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNeedsNormalRoughness*(self: CompositorEffect; enable: bool): void =
-  expandMethodBind(className CompositorEffect, "set_needs_normal_roughness", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_needs_normal_roughness", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getNeedsNormalRoughness*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_needs_normal_roughness", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_needs_normal_roughness", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setNeedsSeparateSpecular*(self: CompositorEffect; enable: bool): void =
-  expandMethodBind(className CompositorEffect, "set_needs_separate_specular", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "set_needs_separate_specular", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getNeedsSeparateSpecular*(self: CompositorEffect): bool =
-  expandMethodBind(className CompositorEffect, "get_needs_separate_specular", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CompositorEffect, "get_needs_separate_specular", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template enabled*(self: CompositorEffect): untyped = self.getEnabled()
 template `enabled=`*(self: CompositorEffect; value) = self.setEnabled(value)

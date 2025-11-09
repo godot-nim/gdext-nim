@@ -7,24 +7,28 @@ import gdnode3d; export gdnode3d
 expandOnClassImported(XROrigin3D, Node3D)
 
 proc setWorldScale*(self: XROrigin3D; worldScale: Float): void =
-  expandMethodBind(className XROrigin3D, "set_world_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr worldScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XROrigin3D, "set_world_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr worldScale], void)
 
 proc getWorldScale*(self: XROrigin3D): Float =
-  expandMethodBind(className XROrigin3D, "get_world_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XROrigin3D, "get_world_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCurrent*(self: XROrigin3D; enabled: bool): void =
-  expandMethodBind(className XROrigin3D, "set_current", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XROrigin3D, "set_current", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isCurrent*(self: XROrigin3D): bool =
-  expandMethodBind(className XROrigin3D, "is_current", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XROrigin3D, "is_current", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template worldScale*(self: XROrigin3D): untyped = self.getWorldScale()
 template `worldScale=`*(self: XROrigin3D; value) = self.setWorldScale(value)

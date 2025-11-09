@@ -7,14 +7,16 @@ import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 expandOnClassImported(OpenXRCompositionLayerQuad, OpenXRCompositionLayer)
 
 proc setQuadSize*(self: OpenXRCompositionLayerQuad; size: Vector2): void =
-  expandMethodBind(className OpenXRCompositionLayerQuad, "set_quad_size", 743155724)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerQuad, "set_quad_size", 743155724)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getQuadSize*(self: OpenXRCompositionLayerQuad): Vector2 =
-  expandMethodBind(className OpenXRCompositionLayerQuad, "get_quad_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerQuad, "get_quad_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 template quadSize*(self: OpenXRCompositionLayerQuad): untyped = self.getQuadSize()
 template `quadSize=`*(self: OpenXRCompositionLayerQuad; value) = self.setQuadSize(value)

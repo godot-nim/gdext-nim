@@ -57,37 +57,37 @@ proc registerVirtual_getBarBeats*[T: AudioStream](Self: typedesc[T]) =
     errproof: cast[AudioStream](p_instance).getBarBeats().encode(r_ret)
 
 proc getLength*(self: AudioStream): float64 =
-  expandMethodBind(className AudioStream, "get_length", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "get_length", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc isMonophonic*(self: AudioStream): bool =
-  expandMethodBind(className AudioStream, "is_monophonic", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "is_monophonic", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback =
-  expandMethodBind(className AudioStream, "instantiate_playback", 210135309)
-  var ret: encoded gdref AudioStreamPlayback
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref AudioStreamPlayback)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "instantiate_playback", 210135309)
+  methodbind.ptrcall(self, [], gdref AudioStreamPlayback)
 
 proc canBeSampled*(self: AudioStream): bool =
-  expandMethodBind(className AudioStream, "can_be_sampled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "can_be_sampled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc generateSample*(self: AudioStream): gdref AudioSample =
-  expandMethodBind(className AudioStream, "generate_sample", 2646048999)
-  var ret: encoded gdref AudioSample
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref AudioSample)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "generate_sample", 2646048999)
+  methodbind.ptrcall(self, [], gdref AudioSample)
 
 proc isMetaStream*(self: AudioStream): bool =
-  expandMethodBind(className AudioStream, "is_meta_stream", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStream, "is_meta_stream", 36873697)
+  methodbind.ptrcall(self, [], bool)

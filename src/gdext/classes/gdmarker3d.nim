@@ -7,14 +7,16 @@ import gdnode3d; export gdnode3d
 expandOnClassImported(Marker3D, Node3D)
 
 proc setGizmoExtents*(self: Marker3D; extents: Float): void =
-  expandMethodBind(className Marker3D, "set_gizmo_extents", 373806689)
-  methodbind.ptrcall(self, [getPtr extents])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Marker3D, "set_gizmo_extents", 373806689)
+  methodbind.ptrcall(self, [getPtr extents], void)
 
 proc getGizmoExtents*(self: Marker3D): Float =
-  expandMethodBind(className Marker3D, "get_gizmo_extents", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Marker3D, "get_gizmo_extents", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template gizmoExtents*(self: Marker3D): untyped = self.getGizmoExtents()
 template `gizmoExtents=`*(self: Marker3D; value) = self.setGizmoExtents(value)

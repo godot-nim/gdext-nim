@@ -7,54 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(CameraAttributes, Resource)
 
 proc setExposureMultiplier*(self: CameraAttributes; multiplier: Float): void =
-  expandMethodBind(className CameraAttributes, "set_exposure_multiplier", 373806689)
-  methodbind.ptrcall(self, [getPtr multiplier])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "set_exposure_multiplier", 373806689)
+  methodbind.ptrcall(self, [getPtr multiplier], void)
 
 proc getExposureMultiplier*(self: CameraAttributes): Float =
-  expandMethodBind(className CameraAttributes, "get_exposure_multiplier", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "get_exposure_multiplier", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setExposureSensitivity*(self: CameraAttributes; sensitivity: Float): void =
-  expandMethodBind(className CameraAttributes, "set_exposure_sensitivity", 373806689)
-  methodbind.ptrcall(self, [getPtr sensitivity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "set_exposure_sensitivity", 373806689)
+  methodbind.ptrcall(self, [getPtr sensitivity], void)
 
 proc getExposureSensitivity*(self: CameraAttributes): Float =
-  expandMethodBind(className CameraAttributes, "get_exposure_sensitivity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "get_exposure_sensitivity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAutoExposureEnabled*(self: CameraAttributes; enabled: bool): void =
-  expandMethodBind(className CameraAttributes, "set_auto_exposure_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "set_auto_exposure_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isAutoExposureEnabled*(self: CameraAttributes): bool =
-  expandMethodBind(className CameraAttributes, "is_auto_exposure_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "is_auto_exposure_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoExposureSpeed*(self: CameraAttributes; exposureSpeed: Float): void =
-  expandMethodBind(className CameraAttributes, "set_auto_exposure_speed", 373806689)
-  methodbind.ptrcall(self, [getPtr exposureSpeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "set_auto_exposure_speed", 373806689)
+  methodbind.ptrcall(self, [getPtr exposureSpeed], void)
 
 proc getAutoExposureSpeed*(self: CameraAttributes): Float =
-  expandMethodBind(className CameraAttributes, "get_auto_exposure_speed", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "get_auto_exposure_speed", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAutoExposureScale*(self: CameraAttributes; exposureGrey: Float): void =
-  expandMethodBind(className CameraAttributes, "set_auto_exposure_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr exposureGrey])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "set_auto_exposure_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr exposureGrey], void)
 
 proc getAutoExposureScale*(self: CameraAttributes): Float =
-  expandMethodBind(className CameraAttributes, "get_auto_exposure_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CameraAttributes, "get_auto_exposure_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template exposureSensitivity*(self: CameraAttributes): untyped = self.getExposureSensitivity()
 template `exposureSensitivity=`*(self: CameraAttributes; value) = self.setExposureSensitivity(value)

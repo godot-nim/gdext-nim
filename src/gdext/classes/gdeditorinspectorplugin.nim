@@ -37,13 +37,19 @@ proc registerVirtual_parseEnd*[T: EditorInspectorPlugin](Self: typedesc[T]) =
     errproof: cast[EditorInspectorPlugin](p_instance).parseEnd(p_args[0].decode(Object))
 
 proc addCustomControl*(self: EditorInspectorPlugin; control: Control): void =
-  expandMethodBind(className EditorInspectorPlugin, "add_custom_control", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorInspectorPlugin, "add_custom_control", 1496901182)
+  methodbind.ptrcall(self, [getPtr control], void)
 
 proc addPropertyEditor*(self: EditorInspectorPlugin; property: String; editor: Control; addToEnd: bool = false; label: String = newGdString()): void =
-  expandMethodBind(className EditorInspectorPlugin, "add_property_editor", 2042698479)
-  methodbind.ptrcall(self, [getPtr property, getPtr editor, getPtr addToEnd, getPtr label])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorInspectorPlugin, "add_property_editor", 2042698479)
+  methodbind.ptrcall(self, [getPtr property, getPtr editor, getPtr addToEnd, getPtr label], void)
 
 proc addPropertyEditorForMultipleProperties*(self: EditorInspectorPlugin; label: String; properties: PackedStringArray; editor: Control): void =
-  expandMethodBind(className EditorInspectorPlugin, "add_property_editor_for_multiple_properties", 788598683)
-  methodbind.ptrcall(self, [getPtr label, getPtr properties, getPtr editor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorInspectorPlugin, "add_property_editor_for_multiple_properties", 788598683)
+  methodbind.ptrcall(self, [getPtr label, getPtr properties, getPtr editor], void)

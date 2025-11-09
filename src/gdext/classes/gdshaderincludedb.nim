@@ -7,19 +7,19 @@ import gdobject; export gdobject
 expandOnClassImported(ShaderIncludeDB, Object)
 
 proc listBuiltInIncludeFiles*(_: typedesc[ShaderIncludeDB]): PackedStringArray =
-  expandMethodBind(className ShaderIncludeDB, "list_built_in_include_files", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShaderIncludeDB, "list_built_in_include_files", 2981934095)
+  methodbind.ptrcall([], PackedStringArray)
 
 proc hasBuiltInIncludeFile*(_: typedesc[ShaderIncludeDB]; filename: String): bool =
-  expandMethodBind(className ShaderIncludeDB, "has_built_in_include_file", 2323990056)
-  var ret: encoded bool
-  methodbind.ptrcall([getPtr filename], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShaderIncludeDB, "has_built_in_include_file", 2323990056)
+  methodbind.ptrcall([getPtr filename], bool)
 
 proc getBuiltInIncludeFile*(_: typedesc[ShaderIncludeDB]; filename: String): String =
-  expandMethodBind(className ShaderIncludeDB, "get_built_in_include_file", 1703090593)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr filename], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShaderIncludeDB, "get_built_in_include_file", 1703090593)
+  methodbind.ptrcall([getPtr filename], String)

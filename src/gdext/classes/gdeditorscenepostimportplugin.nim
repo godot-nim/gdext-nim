@@ -47,15 +47,19 @@ proc registerVirtual_postProcess*[T: EditorScenePostImportPlugin](Self: typedesc
     errproof: cast[EditorScenePostImportPlugin](p_instance).postProcess(p_args[0].decode(Node))
 
 proc getOptionValue*(self: EditorScenePostImportPlugin; name: StringName): Variant =
-  expandMethodBind(className EditorScenePostImportPlugin, "get_option_value", 2760726917)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScenePostImportPlugin, "get_option_value", 2760726917)
+  methodbind.ptrcall(self, [getPtr name], Variant)
 
 proc addImportOption*(self: EditorScenePostImportPlugin; name: String; value: Variant): void =
-  expandMethodBind(className EditorScenePostImportPlugin, "add_import_option", 402577236)
-  methodbind.ptrcall(self, [getPtr name, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScenePostImportPlugin, "add_import_option", 402577236)
+  methodbind.ptrcall(self, [getPtr name, getPtr value], void)
 
 proc addImportOptionAdvanced*(self: EditorScenePostImportPlugin; `type`: Variant_Type; name: String; defaultValue: Variant; hint: PropertyHint = propertyHintNone; hintString: String = newGdString(); usageFlags: int32 = 6): void =
-  expandMethodBind(className EditorScenePostImportPlugin, "add_import_option_advanced", 3674075649)
-  methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorScenePostImportPlugin, "add_import_option_advanced", 3674075649)
+  methodbind.ptrcall(self, [getPtr `type`, getPtr name, getPtr defaultValue, getPtr hint, getPtr hintString, getPtr usageFlags], void)

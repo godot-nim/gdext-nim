@@ -7,34 +7,40 @@ import gdlight2d; export gdlight2d
 expandOnClassImported(PointLight2D, Light2D)
 
 proc setTexture*(self: PointLight2D; texture: gdref Texture2D): void =
-  expandMethodBind(className PointLight2D, "set_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "set_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getTexture*(self: PointLight2D): gdref Texture2D =
-  expandMethodBind(className PointLight2D, "get_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "get_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setTextureOffset*(self: PointLight2D; textureOffset: Vector2): void =
-  expandMethodBind(className PointLight2D, "set_texture_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr textureOffset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "set_texture_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr textureOffset], void)
 
 proc getTextureOffset*(self: PointLight2D): Vector2 =
-  expandMethodBind(className PointLight2D, "get_texture_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "get_texture_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setTextureScale*(self: PointLight2D; textureScale: Float): void =
-  expandMethodBind(className PointLight2D, "set_texture_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr textureScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "set_texture_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr textureScale], void)
 
 proc getTextureScale*(self: PointLight2D): Float =
-  expandMethodBind(className PointLight2D, "get_texture_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PointLight2D, "get_texture_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template texture*(self: PointLight2D): untyped = self.getTexture()
 template `texture=`*(self: PointLight2D; value) = self.setTexture(value)

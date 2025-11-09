@@ -7,66 +7,76 @@ import gdrigidbody2d; export gdrigidbody2d
 expandOnClassImported(PhysicalBone2D, RigidBody2D)
 
 proc getJoint*(self: PhysicalBone2D): Joint2D =
-  expandMethodBind(className PhysicalBone2D, "get_joint", 3582132112)
-  var ret: encoded Joint2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Joint2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_joint", 3582132112)
+  methodbind.ptrcall(self, [], Joint2D)
 
 proc getAutoConfigureJoint*(self: PhysicalBone2D): bool =
-  expandMethodBind(className PhysicalBone2D, "get_auto_configure_joint", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_auto_configure_joint", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoConfigureJoint*(self: PhysicalBone2D; autoConfigureJoint: bool): void =
-  expandMethodBind(className PhysicalBone2D, "set_auto_configure_joint", 2586408642)
-  methodbind.ptrcall(self, [getPtr autoConfigureJoint])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "set_auto_configure_joint", 2586408642)
+  methodbind.ptrcall(self, [getPtr autoConfigureJoint], void)
 
 proc setSimulatePhysics*(self: PhysicalBone2D; simulatePhysics: bool): void =
-  expandMethodBind(className PhysicalBone2D, "set_simulate_physics", 2586408642)
-  methodbind.ptrcall(self, [getPtr simulatePhysics])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "set_simulate_physics", 2586408642)
+  methodbind.ptrcall(self, [getPtr simulatePhysics], void)
 
 proc getSimulatePhysics*(self: PhysicalBone2D): bool =
-  expandMethodBind(className PhysicalBone2D, "get_simulate_physics", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_simulate_physics", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isSimulatingPhysics*(self: PhysicalBone2D): bool =
-  expandMethodBind(className PhysicalBone2D, "is_simulating_physics", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "is_simulating_physics", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setBone2dNodepath*(self: PhysicalBone2D; nodepath: NodePath): void =
-  expandMethodBind(className PhysicalBone2D, "set_bone2d_nodepath", 1348162250)
-  methodbind.ptrcall(self, [getPtr nodepath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "set_bone2d_nodepath", 1348162250)
+  methodbind.ptrcall(self, [getPtr nodepath], void)
 
 proc getBone2dNodepath*(self: PhysicalBone2D): NodePath =
-  expandMethodBind(className PhysicalBone2D, "get_bone2d_nodepath", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_bone2d_nodepath", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setBone2dIndex*(self: PhysicalBone2D; boneIndex: int32): void =
-  expandMethodBind(className PhysicalBone2D, "set_bone2d_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr boneIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "set_bone2d_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr boneIndex], void)
 
 proc getBone2dIndex*(self: PhysicalBone2D): int32 =
-  expandMethodBind(className PhysicalBone2D, "get_bone2d_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_bone2d_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setFollowBoneWhenSimulating*(self: PhysicalBone2D; followBone: bool): void =
-  expandMethodBind(className PhysicalBone2D, "set_follow_bone_when_simulating", 2586408642)
-  methodbind.ptrcall(self, [getPtr followBone])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "set_follow_bone_when_simulating", 2586408642)
+  methodbind.ptrcall(self, [getPtr followBone], void)
 
 proc getFollowBoneWhenSimulating*(self: PhysicalBone2D): bool =
-  expandMethodBind(className PhysicalBone2D, "get_follow_bone_when_simulating", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicalBone2D, "get_follow_bone_when_simulating", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template bone2dNodepath*(self: PhysicalBone2D): untyped = self.getBone2dNodepath()
 template `bone2dNodepath=`*(self: PhysicalBone2D; value) = self.setBone2dNodepath(value)

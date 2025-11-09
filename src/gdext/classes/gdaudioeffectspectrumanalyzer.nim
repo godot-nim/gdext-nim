@@ -7,34 +7,40 @@ import gdaudioeffect; export gdaudioeffect
 expandOnClassImported(AudioEffectSpectrumAnalyzer, AudioEffect)
 
 proc setBufferLength*(self: AudioEffectSpectrumAnalyzer; seconds: Float): void =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_buffer_length", 373806689)
-  methodbind.ptrcall(self, [getPtr seconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "set_buffer_length", 373806689)
+  methodbind.ptrcall(self, [getPtr seconds], void)
 
 proc getBufferLength*(self: AudioEffectSpectrumAnalyzer): Float =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "get_buffer_length", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "get_buffer_length", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTapBackPos*(self: AudioEffectSpectrumAnalyzer; seconds: Float): void =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_tap_back_pos", 373806689)
-  methodbind.ptrcall(self, [getPtr seconds])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "set_tap_back_pos", 373806689)
+  methodbind.ptrcall(self, [getPtr seconds], void)
 
 proc getTapBackPos*(self: AudioEffectSpectrumAnalyzer): Float =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "get_tap_back_pos", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "get_tap_back_pos", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFftSize*(self: AudioEffectSpectrumAnalyzer; size: AudioEffectSpectrumAnalyzer_FFTSize): void =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "set_fft_size", 1202879215)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "set_fft_size", 1202879215)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getFftSize*(self: AudioEffectSpectrumAnalyzer): AudioEffectSpectrumAnalyzer_FFTSize =
-  expandMethodBind(className AudioEffectSpectrumAnalyzer, "get_fft_size", 3925405343)
-  var ret: encoded AudioEffectSpectrumAnalyzer_FFTSize
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AudioEffectSpectrumAnalyzer_FFTSize)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectSpectrumAnalyzer, "get_fft_size", 3925405343)
+  methodbind.ptrcall(self, [], AudioEffectSpectrumAnalyzer_FFTSize)
 
 template bufferLength*(self: AudioEffectSpectrumAnalyzer): untyped = self.getBufferLength()
 template `bufferLength=`*(self: AudioEffectSpectrumAnalyzer; value) = self.setBufferLength(value)

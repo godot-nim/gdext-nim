@@ -17,120 +17,142 @@ proc registerVirtual_toggled*[T: BaseButton](Self: typedesc[T]) =
     errproof: cast[BaseButton](p_instance).toggled(p_args[0].decode(bool))
 
 proc setPressed*(self: BaseButton; pressed: bool): void =
-  expandMethodBind(className BaseButton, "set_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isPressed*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_pressed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_pressed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPressedNoSignal*(self: BaseButton; pressed: bool): void =
-  expandMethodBind(className BaseButton, "set_pressed_no_signal", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_pressed_no_signal", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc isHovered*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_hovered", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_hovered", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setToggleMode*(self: BaseButton; enabled: bool): void =
-  expandMethodBind(className BaseButton, "set_toggle_mode", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_toggle_mode", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isToggleMode*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_toggle_mode", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_toggle_mode", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShortcutInTooltip*(self: BaseButton; enabled: bool): void =
-  expandMethodBind(className BaseButton, "set_shortcut_in_tooltip", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_shortcut_in_tooltip", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isShortcutInTooltipEnabled*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_shortcut_in_tooltip_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_shortcut_in_tooltip_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDisabled*(self: BaseButton; disabled: bool): void =
-  expandMethodBind(className BaseButton, "set_disabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_disabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr disabled], void)
 
 proc isDisabled*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_disabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_disabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setActionMode*(self: BaseButton; mode: BaseButton_ActionMode): void =
-  expandMethodBind(className BaseButton, "set_action_mode", 1985162088)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_action_mode", 1985162088)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getActionMode*(self: BaseButton): BaseButton_ActionMode =
-  expandMethodBind(className BaseButton, "get_action_mode", 2589712189)
-  var ret: encoded BaseButton_ActionMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(BaseButton_ActionMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "get_action_mode", 2589712189)
+  methodbind.ptrcall(self, [], BaseButton_ActionMode)
 
 proc setButtonMask*(self: BaseButton; mask: set[MouseButtonMask]): void =
-  expandMethodBind(className BaseButton, "set_button_mask", 3950145251)
-  methodbind.ptrcall(self, [getPtr mask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_button_mask", 3950145251)
+  methodbind.ptrcall(self, [getPtr mask], void)
 
 proc getButtonMask*(self: BaseButton): set[MouseButtonMask] =
-  expandMethodBind(className BaseButton, "get_button_mask", 2512161324)
-  var ret: encoded set[MouseButtonMask]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[MouseButtonMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "get_button_mask", 2512161324)
+  methodbind.ptrcall(self, [], set[MouseButtonMask])
 
 proc getDrawMode*(self: BaseButton): BaseButton_DrawMode =
-  expandMethodBind(className BaseButton, "get_draw_mode", 2492721305)
-  var ret: encoded BaseButton_DrawMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(BaseButton_DrawMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "get_draw_mode", 2492721305)
+  methodbind.ptrcall(self, [], BaseButton_DrawMode)
 
 proc setKeepPressedOutside*(self: BaseButton; enabled: bool): void =
-  expandMethodBind(className BaseButton, "set_keep_pressed_outside", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_keep_pressed_outside", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isKeepPressedOutside*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_keep_pressed_outside", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_keep_pressed_outside", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShortcutFeedback*(self: BaseButton; enabled: bool): void =
-  expandMethodBind(className BaseButton, "set_shortcut_feedback", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_shortcut_feedback", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isShortcutFeedback*(self: BaseButton): bool =
-  expandMethodBind(className BaseButton, "is_shortcut_feedback", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "is_shortcut_feedback", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShortcut*(self: BaseButton; shortcut: gdref Shortcut): void =
-  expandMethodBind(className BaseButton, "set_shortcut", 857163497)
-  methodbind.ptrcall(self, [getPtr shortcut])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_shortcut", 857163497)
+  methodbind.ptrcall(self, [getPtr shortcut], void)
 
 proc getShortcut*(self: BaseButton): gdref Shortcut =
-  expandMethodBind(className BaseButton, "get_shortcut", 3415666916)
-  var ret: encoded gdref Shortcut
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Shortcut)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "get_shortcut", 3415666916)
+  methodbind.ptrcall(self, [], gdref Shortcut)
 
 proc setButtonGroup*(self: BaseButton; buttonGroup: gdref ButtonGroup): void =
-  expandMethodBind(className BaseButton, "set_button_group", 1794463739)
-  methodbind.ptrcall(self, [getPtr buttonGroup])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "set_button_group", 1794463739)
+  methodbind.ptrcall(self, [getPtr buttonGroup], void)
 
 proc getButtonGroup*(self: BaseButton): gdref ButtonGroup =
-  expandMethodBind(className BaseButton, "get_button_group", 281644053)
-  var ret: encoded gdref ButtonGroup
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref ButtonGroup)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className BaseButton, "get_button_group", 281644053)
+  methodbind.ptrcall(self, [], gdref ButtonGroup)
 
 template disabled*(self: BaseButton): untyped = self.isDisabled()
 template `disabled=`*(self: BaseButton; value) = self.setDisabled(value)

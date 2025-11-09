@@ -7,162 +7,196 @@ import gdstylebox; export gdstylebox
 expandOnClassImported(StyleBoxFlat, StyleBox)
 
 proc setBgColor*(self: StyleBoxFlat; color: Color): void =
-  expandMethodBind(className StyleBoxFlat, "set_bg_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_bg_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getBgColor*(self: StyleBoxFlat): Color =
-  expandMethodBind(className StyleBoxFlat, "get_bg_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_bg_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setBorderColor*(self: StyleBoxFlat; color: Color): void =
-  expandMethodBind(className StyleBoxFlat, "set_border_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_border_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getBorderColor*(self: StyleBoxFlat): Color =
-  expandMethodBind(className StyleBoxFlat, "get_border_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_border_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setBorderWidthAll*(self: StyleBoxFlat; width: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_border_width_all", 1286410249)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_border_width_all", 1286410249)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc getBorderWidthMin*(self: StyleBoxFlat): int32 =
-  expandMethodBind(className StyleBoxFlat, "get_border_width_min", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_border_width_min", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setBorderWidth*(self: StyleBoxFlat; margin: Side; width: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_border_width", 437707142)
-  methodbind.ptrcall(self, [getPtr margin, getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_border_width", 437707142)
+  methodbind.ptrcall(self, [getPtr margin, getPtr width], void)
 
 proc getBorderWidth*(self: StyleBoxFlat; margin: Side): int32 =
-  expandMethodBind(className StyleBoxFlat, "get_border_width", 1983885014)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr margin], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_border_width", 1983885014)
+  methodbind.ptrcall(self, [getPtr margin], int32)
 
 proc setBorderBlend*(self: StyleBoxFlat; blend: bool): void =
-  expandMethodBind(className StyleBoxFlat, "set_border_blend", 2586408642)
-  methodbind.ptrcall(self, [getPtr blend])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_border_blend", 2586408642)
+  methodbind.ptrcall(self, [getPtr blend], void)
 
 proc getBorderBlend*(self: StyleBoxFlat): bool =
-  expandMethodBind(className StyleBoxFlat, "get_border_blend", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_border_blend", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCornerRadiusAll*(self: StyleBoxFlat; radius: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_corner_radius_all", 1286410249)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_corner_radius_all", 1286410249)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc setCornerRadius*(self: StyleBoxFlat; corner: Corner; radius: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_corner_radius", 2696158768)
-  methodbind.ptrcall(self, [getPtr corner, getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_corner_radius", 2696158768)
+  methodbind.ptrcall(self, [getPtr corner, getPtr radius], void)
 
 proc getCornerRadius*(self: StyleBoxFlat; corner: Corner): int32 =
-  expandMethodBind(className StyleBoxFlat, "get_corner_radius", 3982397690)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr corner], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_corner_radius", 3982397690)
+  methodbind.ptrcall(self, [getPtr corner], int32)
 
 proc setExpandMargin*(self: StyleBoxFlat; margin: Side; size: Float): void =
-  expandMethodBind(className StyleBoxFlat, "set_expand_margin", 4290182280)
-  methodbind.ptrcall(self, [getPtr margin, getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_expand_margin", 4290182280)
+  methodbind.ptrcall(self, [getPtr margin, getPtr size], void)
 
 proc setExpandMarginAll*(self: StyleBoxFlat; size: Float): void =
-  expandMethodBind(className StyleBoxFlat, "set_expand_margin_all", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_expand_margin_all", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getExpandMargin*(self: StyleBoxFlat; margin: Side): Float =
-  expandMethodBind(className StyleBoxFlat, "get_expand_margin", 2869120046)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr margin], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_expand_margin", 2869120046)
+  methodbind.ptrcall(self, [getPtr margin], Float)
 
 proc setDrawCenter*(self: StyleBoxFlat; drawCenter: bool): void =
-  expandMethodBind(className StyleBoxFlat, "set_draw_center", 2586408642)
-  methodbind.ptrcall(self, [getPtr drawCenter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_draw_center", 2586408642)
+  methodbind.ptrcall(self, [getPtr drawCenter], void)
 
 proc isDrawCenterEnabled*(self: StyleBoxFlat): bool =
-  expandMethodBind(className StyleBoxFlat, "is_draw_center_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "is_draw_center_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSkew*(self: StyleBoxFlat; skew: Vector2): void =
-  expandMethodBind(className StyleBoxFlat, "set_skew", 743155724)
-  methodbind.ptrcall(self, [getPtr skew])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_skew", 743155724)
+  methodbind.ptrcall(self, [getPtr skew], void)
 
 proc getSkew*(self: StyleBoxFlat): Vector2 =
-  expandMethodBind(className StyleBoxFlat, "get_skew", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_skew", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setShadowColor*(self: StyleBoxFlat; color: Color): void =
-  expandMethodBind(className StyleBoxFlat, "set_shadow_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_shadow_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getShadowColor*(self: StyleBoxFlat): Color =
-  expandMethodBind(className StyleBoxFlat, "get_shadow_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_shadow_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setShadowSize*(self: StyleBoxFlat; size: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_shadow_size", 1286410249)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_shadow_size", 1286410249)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getShadowSize*(self: StyleBoxFlat): int32 =
-  expandMethodBind(className StyleBoxFlat, "get_shadow_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_shadow_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setShadowOffset*(self: StyleBoxFlat; offset: Vector2): void =
-  expandMethodBind(className StyleBoxFlat, "set_shadow_offset", 743155724)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_shadow_offset", 743155724)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getShadowOffset*(self: StyleBoxFlat): Vector2 =
-  expandMethodBind(className StyleBoxFlat, "get_shadow_offset", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_shadow_offset", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setAntiAliased*(self: StyleBoxFlat; antiAliased: bool): void =
-  expandMethodBind(className StyleBoxFlat, "set_anti_aliased", 2586408642)
-  methodbind.ptrcall(self, [getPtr antiAliased])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_anti_aliased", 2586408642)
+  methodbind.ptrcall(self, [getPtr antiAliased], void)
 
 proc isAntiAliased*(self: StyleBoxFlat): bool =
-  expandMethodBind(className StyleBoxFlat, "is_anti_aliased", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "is_anti_aliased", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAaSize*(self: StyleBoxFlat; size: Float): void =
-  expandMethodBind(className StyleBoxFlat, "set_aa_size", 373806689)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_aa_size", 373806689)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getAaSize*(self: StyleBoxFlat): Float =
-  expandMethodBind(className StyleBoxFlat, "get_aa_size", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_aa_size", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCornerDetail*(self: StyleBoxFlat; detail: int32): void =
-  expandMethodBind(className StyleBoxFlat, "set_corner_detail", 1286410249)
-  methodbind.ptrcall(self, [getPtr detail])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "set_corner_detail", 1286410249)
+  methodbind.ptrcall(self, [getPtr detail], void)
 
 proc getCornerDetail*(self: StyleBoxFlat): int32 =
-  expandMethodBind(className StyleBoxFlat, "get_corner_detail", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StyleBoxFlat, "get_corner_detail", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template bgColor*(self: StyleBoxFlat): untyped = self.getBgColor()
 template `bgColor=`*(self: StyleBoxFlat; value) = self.setBgColor(value)

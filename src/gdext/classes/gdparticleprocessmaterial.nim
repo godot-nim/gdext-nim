@@ -7,484 +7,580 @@ import gdmaterial; export gdmaterial
 expandOnClassImported(ParticleProcessMaterial, Material)
 
 proc setDirection*(self: ParticleProcessMaterial; degrees: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_direction", 3460891852)
-  methodbind.ptrcall(self, [getPtr degrees])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_direction", 3460891852)
+  methodbind.ptrcall(self, [getPtr degrees], void)
 
 proc getDirection*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_direction", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_direction", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setInheritVelocityRatio*(self: ParticleProcessMaterial; ratio: float64): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_inherit_velocity_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_inherit_velocity_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc getInheritVelocityRatio*(self: ParticleProcessMaterial): float64 =
-  expandMethodBind(className ParticleProcessMaterial, "get_inherit_velocity_ratio", 191475506)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_inherit_velocity_ratio", 191475506)
+  methodbind.ptrcall(self, [], float64)
 
 proc setSpread*(self: ParticleProcessMaterial; degrees: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_spread", 373806689)
-  methodbind.ptrcall(self, [getPtr degrees])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_spread", 373806689)
+  methodbind.ptrcall(self, [getPtr degrees], void)
 
 proc getSpread*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_spread", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_spread", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFlatness*(self: ParticleProcessMaterial; amount: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_flatness", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_flatness", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getFlatness*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_flatness", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_flatness", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setParam*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Vector2): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_param", 676779352)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_param", 676779352)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParam*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Vector2 =
-  expandMethodBind(className ParticleProcessMaterial, "get_param", 2623708480)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_param", 2623708480)
+  methodbind.ptrcall(self, [getPtr param], Vector2)
 
 proc setParamMin*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_param_min", 2295964248)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_param_min", 2295964248)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParamMin*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_param_min", 3903786503)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_param_min", 3903786503)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 proc setParamMax*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; value: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_param_max", 2295964248)
-  methodbind.ptrcall(self, [getPtr param, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_param_max", 2295964248)
+  methodbind.ptrcall(self, [getPtr param, getPtr value], void)
 
 proc getParamMax*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_param_max", 3903786503)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_param_max", 3903786503)
+  methodbind.ptrcall(self, [getPtr param], Float)
 
 proc setParamTexture*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter; texture: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_param_texture", 526976089)
-  methodbind.ptrcall(self, [getPtr param, getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_param_texture", 526976089)
+  methodbind.ptrcall(self, [getPtr param, getPtr texture], void)
 
 proc getParamTexture*(self: ParticleProcessMaterial; param: ParticleProcessMaterial_Parameter): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_param_texture", 3489372978)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [getPtr param], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_param_texture", 3489372978)
+  methodbind.ptrcall(self, [getPtr param], gdref Texture2D)
 
 proc setColor*(self: ParticleProcessMaterial; color: Color): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getColor*(self: ParticleProcessMaterial): Color =
-  expandMethodBind(className ParticleProcessMaterial, "get_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setColorRamp*(self: ParticleProcessMaterial; ramp: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_color_ramp", 4051416890)
-  methodbind.ptrcall(self, [getPtr ramp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_color_ramp", 4051416890)
+  methodbind.ptrcall(self, [getPtr ramp], void)
 
 proc getColorRamp*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_color_ramp", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_color_ramp", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setAlphaCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_alpha_curve", 4051416890)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_alpha_curve", 4051416890)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getAlphaCurve*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_alpha_curve", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_alpha_curve", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setEmissionCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_curve", 4051416890)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_curve", 4051416890)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getEmissionCurve*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_curve", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_curve", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setColorInitialRamp*(self: ParticleProcessMaterial; ramp: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_color_initial_ramp", 4051416890)
-  methodbind.ptrcall(self, [getPtr ramp])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_color_initial_ramp", 4051416890)
+  methodbind.ptrcall(self, [getPtr ramp], void)
 
 proc getColorInitialRamp*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_color_initial_ramp", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_color_initial_ramp", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setVelocityLimitCurve*(self: ParticleProcessMaterial; curve: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_velocity_limit_curve", 4051416890)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_velocity_limit_curve", 4051416890)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getVelocityLimitCurve*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_velocity_limit_curve", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_velocity_limit_curve", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setParticleFlag*(self: ParticleProcessMaterial; particleFlag: ParticleProcessMaterial_ParticleFlags; enable: bool): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_particle_flag", 1711815571)
-  methodbind.ptrcall(self, [getPtr particleFlag, getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_particle_flag", 1711815571)
+  methodbind.ptrcall(self, [getPtr particleFlag, getPtr enable], void)
 
 proc getParticleFlag*(self: ParticleProcessMaterial; particleFlag: ParticleProcessMaterial_ParticleFlags): bool =
-  expandMethodBind(className ParticleProcessMaterial, "get_particle_flag", 3895316907)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr particleFlag], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_particle_flag", 3895316907)
+  methodbind.ptrcall(self, [getPtr particleFlag], bool)
 
 proc setVelocityPivot*(self: ParticleProcessMaterial; pivot: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_velocity_pivot", 3460891852)
-  methodbind.ptrcall(self, [getPtr pivot])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_velocity_pivot", 3460891852)
+  methodbind.ptrcall(self, [getPtr pivot], void)
 
 proc getVelocityPivot*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_velocity_pivot", 3783033775)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_velocity_pivot", 3783033775)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionShape*(self: ParticleProcessMaterial; shape: ParticleProcessMaterial_EmissionShape): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_shape", 461501442)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_shape", 461501442)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getEmissionShape*(self: ParticleProcessMaterial): ParticleProcessMaterial_EmissionShape =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_shape", 3719733018)
-  var ret: encoded ParticleProcessMaterial_EmissionShape
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ParticleProcessMaterial_EmissionShape)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_shape", 3719733018)
+  methodbind.ptrcall(self, [], ParticleProcessMaterial_EmissionShape)
 
 proc setEmissionSphereRadius*(self: ParticleProcessMaterial; radius: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_sphere_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_sphere_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getEmissionSphereRadius*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_sphere_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_sphere_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionBoxExtents*(self: ParticleProcessMaterial; extents: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_box_extents", 3460891852)
-  methodbind.ptrcall(self, [getPtr extents])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_box_extents", 3460891852)
+  methodbind.ptrcall(self, [getPtr extents], void)
 
 proc getEmissionBoxExtents*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_box_extents", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_box_extents", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionPointTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_point_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_point_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getEmissionPointTexture*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_point_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_point_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setEmissionNormalTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_normal_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_normal_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getEmissionNormalTexture*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_normal_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_normal_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setEmissionColorTexture*(self: ParticleProcessMaterial; texture: gdref Texture2D): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_color_texture", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_color_texture", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getEmissionColorTexture*(self: ParticleProcessMaterial): gdref Texture2D =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_color_texture", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_color_texture", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setEmissionPointCount*(self: ParticleProcessMaterial; pointCount: int32): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_point_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr pointCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_point_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr pointCount], void)
 
 proc getEmissionPointCount*(self: ParticleProcessMaterial): int32 =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_point_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_point_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setEmissionRingAxis*(self: ParticleProcessMaterial; axis: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_axis", 3460891852)
-  methodbind.ptrcall(self, [getPtr axis])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_ring_axis", 3460891852)
+  methodbind.ptrcall(self, [getPtr axis], void)
 
 proc getEmissionRingAxis*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_axis", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_ring_axis", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionRingHeight*(self: ParticleProcessMaterial; height: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_ring_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getEmissionRingHeight*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_ring_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingRadius*(self: ParticleProcessMaterial; radius: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_ring_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getEmissionRingRadius*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_ring_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingInnerRadius*(self: ParticleProcessMaterial; innerRadius: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_inner_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr innerRadius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_ring_inner_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr innerRadius], void)
 
 proc getEmissionRingInnerRadius*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_inner_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_ring_inner_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionRingConeAngle*(self: ParticleProcessMaterial; coneAngle: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_ring_cone_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr coneAngle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_ring_cone_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr coneAngle], void)
 
 proc getEmissionRingConeAngle*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_ring_cone_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_ring_cone_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setEmissionShapeOffset*(self: ParticleProcessMaterial; emissionShapeOffset: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_shape_offset", 3460891852)
-  methodbind.ptrcall(self, [getPtr emissionShapeOffset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_shape_offset", 3460891852)
+  methodbind.ptrcall(self, [getPtr emissionShapeOffset], void)
 
 proc getEmissionShapeOffset*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_shape_offset", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_shape_offset", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setEmissionShapeScale*(self: ParticleProcessMaterial; emissionShapeScale: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_emission_shape_scale", 3460891852)
-  methodbind.ptrcall(self, [getPtr emissionShapeScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_emission_shape_scale", 3460891852)
+  methodbind.ptrcall(self, [getPtr emissionShapeScale], void)
 
 proc getEmissionShapeScale*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_emission_shape_scale", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_emission_shape_scale", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc getTurbulenceEnabled*(self: ParticleProcessMaterial): bool =
-  expandMethodBind(className ParticleProcessMaterial, "get_turbulence_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_turbulence_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTurbulenceEnabled*(self: ParticleProcessMaterial; turbulenceEnabled: bool): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_turbulence_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr turbulenceEnabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_turbulence_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr turbulenceEnabled], void)
 
 proc getTurbulenceNoiseStrength*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTurbulenceNoiseStrength*(self: ParticleProcessMaterial; turbulenceNoiseStrength: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr turbulenceNoiseStrength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseStrength], void)
 
 proc getTurbulenceNoiseScale*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTurbulenceNoiseScale*(self: ParticleProcessMaterial; turbulenceNoiseScale: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr turbulenceNoiseScale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseScale], void)
 
 proc getTurbulenceNoiseSpeedRandom*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed_random", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed_random", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTurbulenceNoiseSpeedRandom*(self: ParticleProcessMaterial; turbulenceNoiseSpeedRandom: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed_random", 373806689)
-  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeedRandom])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed_random", 373806689)
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeedRandom], void)
 
 proc getTurbulenceNoiseSpeed*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_turbulence_noise_speed", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setTurbulenceNoiseSpeed*(self: ParticleProcessMaterial; turbulenceNoiseSpeed: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed", 3460891852)
-  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_turbulence_noise_speed", 3460891852)
+  methodbind.ptrcall(self, [getPtr turbulenceNoiseSpeed], void)
 
 proc getGravity*(self: ParticleProcessMaterial): Vector3 =
-  expandMethodBind(className ParticleProcessMaterial, "get_gravity", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_gravity", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setGravity*(self: ParticleProcessMaterial; accelVec: Vector3): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_gravity", 3460891852)
-  methodbind.ptrcall(self, [getPtr accelVec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_gravity", 3460891852)
+  methodbind.ptrcall(self, [getPtr accelVec], void)
 
 proc setLifetimeRandomness*(self: ParticleProcessMaterial; randomness: float64): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_lifetime_randomness", 373806689)
-  methodbind.ptrcall(self, [getPtr randomness])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_lifetime_randomness", 373806689)
+  methodbind.ptrcall(self, [getPtr randomness], void)
 
 proc getLifetimeRandomness*(self: ParticleProcessMaterial): float64 =
-  expandMethodBind(className ParticleProcessMaterial, "get_lifetime_randomness", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_lifetime_randomness", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getSubEmitterMode*(self: ParticleProcessMaterial): ParticleProcessMaterial_SubEmitterMode =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_mode", 2399052877)
-  var ret: encoded ParticleProcessMaterial_SubEmitterMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ParticleProcessMaterial_SubEmitterMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_mode", 2399052877)
+  methodbind.ptrcall(self, [], ParticleProcessMaterial_SubEmitterMode)
 
 proc setSubEmitterMode*(self: ParticleProcessMaterial; mode: ParticleProcessMaterial_SubEmitterMode): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_mode", 2161806672)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_mode", 2161806672)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getSubEmitterFrequency*(self: ParticleProcessMaterial): float64 =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_frequency", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_frequency", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setSubEmitterFrequency*(self: ParticleProcessMaterial; hz: float64): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_frequency", 373806689)
-  methodbind.ptrcall(self, [getPtr hz])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_frequency", 373806689)
+  methodbind.ptrcall(self, [getPtr hz], void)
 
 proc getSubEmitterAmountAtEnd*(self: ParticleProcessMaterial): int32 =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_end", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_end", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSubEmitterAmountAtEnd*(self: ParticleProcessMaterial; amount: int32): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_end", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_end", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSubEmitterAmountAtCollision*(self: ParticleProcessMaterial): int32 =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_collision", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_collision", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSubEmitterAmountAtCollision*(self: ParticleProcessMaterial; amount: int32): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_collision", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_collision", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSubEmitterAmountAtStart*(self: ParticleProcessMaterial): int32 =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_start", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_amount_at_start", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setSubEmitterAmountAtStart*(self: ParticleProcessMaterial; amount: int32): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_start", 1286410249)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_amount_at_start", 1286410249)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getSubEmitterKeepVelocity*(self: ParticleProcessMaterial): bool =
-  expandMethodBind(className ParticleProcessMaterial, "get_sub_emitter_keep_velocity", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_sub_emitter_keep_velocity", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSubEmitterKeepVelocity*(self: ParticleProcessMaterial; enable: bool): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_sub_emitter_keep_velocity", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_sub_emitter_keep_velocity", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setAttractorInteractionEnabled*(self: ParticleProcessMaterial; enabled: bool): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_attractor_interaction_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_attractor_interaction_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isAttractorInteractionEnabled*(self: ParticleProcessMaterial): bool =
-  expandMethodBind(className ParticleProcessMaterial, "is_attractor_interaction_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "is_attractor_interaction_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollisionMode*(self: ParticleProcessMaterial; mode: ParticleProcessMaterial_CollisionMode): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_collision_mode", 653804659)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_collision_mode", 653804659)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getCollisionMode*(self: ParticleProcessMaterial): ParticleProcessMaterial_CollisionMode =
-  expandMethodBind(className ParticleProcessMaterial, "get_collision_mode", 139371864)
-  var ret: encoded ParticleProcessMaterial_CollisionMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ParticleProcessMaterial_CollisionMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_collision_mode", 139371864)
+  methodbind.ptrcall(self, [], ParticleProcessMaterial_CollisionMode)
 
 proc setCollisionUseScale*(self: ParticleProcessMaterial; radius: bool): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_collision_use_scale", 2586408642)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_collision_use_scale", 2586408642)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc isCollisionUsingScale*(self: ParticleProcessMaterial): bool =
-  expandMethodBind(className ParticleProcessMaterial, "is_collision_using_scale", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "is_collision_using_scale", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollisionFriction*(self: ParticleProcessMaterial; friction: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_collision_friction", 373806689)
-  methodbind.ptrcall(self, [getPtr friction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_collision_friction", 373806689)
+  methodbind.ptrcall(self, [getPtr friction], void)
 
 proc getCollisionFriction*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_collision_friction", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_collision_friction", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCollisionBounce*(self: ParticleProcessMaterial; bounce: Float): void =
-  expandMethodBind(className ParticleProcessMaterial, "set_collision_bounce", 373806689)
-  methodbind.ptrcall(self, [getPtr bounce])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "set_collision_bounce", 373806689)
+  methodbind.ptrcall(self, [getPtr bounce], void)
 
 proc getCollisionBounce*(self: ParticleProcessMaterial): Float =
-  expandMethodBind(className ParticleProcessMaterial, "get_collision_bounce", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ParticleProcessMaterial, "get_collision_bounce", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template lifetimeRandomness*(self: ParticleProcessMaterial): untyped = self.getLifetimeRandomness()
 template `lifetimeRandomness=`*(self: ParticleProcessMaterial; value) = self.setLifetimeRandomness(value)

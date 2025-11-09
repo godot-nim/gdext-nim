@@ -17,314 +17,370 @@ proc registerVirtual_tileDataRuntimeUpdate*[T: TileMap](Self: typedesc[T]) =
     errproof: cast[TileMap](p_instance).tileDataRuntimeUpdate(p_args[0].decode(int32), p_args[1].decode(Vector2i), p_args[2].decode(TileData))
 
 proc setNavigationMap*(self: TileMap; layer: int32; map: RID): void =
-  expandMethodBind(className TileMap, "set_navigation_map", 4040184819)
-  methodbind.ptrcall(self, [getPtr layer, getPtr map])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_navigation_map", 4040184819)
+  methodbind.ptrcall(self, [getPtr layer, getPtr map], void)
 
 proc getNavigationMap*(self: TileMap; layer: int32): RID =
-  expandMethodBind(className TileMap, "get_navigation_map", 495598643)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_navigation_map", 495598643)
+  methodbind.ptrcall(self, [getPtr layer], RID)
 
 proc forceUpdate*(self: TileMap; layer: int32 = -1): void =
-  expandMethodBind(className TileMap, "force_update", 1025054187)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "force_update", 1025054187)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc setTileset*(self: TileMap; tileset: gdref TileSet): void =
-  expandMethodBind(className TileMap, "set_tileset", 774531446)
-  methodbind.ptrcall(self, [getPtr tileset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_tileset", 774531446)
+  methodbind.ptrcall(self, [getPtr tileset], void)
 
 proc getTileset*(self: TileMap): gdref TileSet =
-  expandMethodBind(className TileMap, "get_tileset", 2678226422)
-  var ret: encoded gdref TileSet
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref TileSet)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_tileset", 2678226422)
+  methodbind.ptrcall(self, [], gdref TileSet)
 
 proc setRenderingQuadrantSize*(self: TileMap; size: int32): void =
-  expandMethodBind(className TileMap, "set_rendering_quadrant_size", 1286410249)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_rendering_quadrant_size", 1286410249)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getRenderingQuadrantSize*(self: TileMap): int32 =
-  expandMethodBind(className TileMap, "get_rendering_quadrant_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_rendering_quadrant_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getLayersCount*(self: TileMap): int32 =
-  expandMethodBind(className TileMap, "get_layers_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layers_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc addLayer*(self: TileMap; toPosition: int32): void =
-  expandMethodBind(className TileMap, "add_layer", 1286410249)
-  methodbind.ptrcall(self, [getPtr toPosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "add_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr toPosition], void)
 
 proc moveLayer*(self: TileMap; layer: int32; toPosition: int32): void =
-  expandMethodBind(className TileMap, "move_layer", 3937882851)
-  methodbind.ptrcall(self, [getPtr layer, getPtr toPosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "move_layer", 3937882851)
+  methodbind.ptrcall(self, [getPtr layer, getPtr toPosition], void)
 
 proc removeLayer*(self: TileMap; layer: int32): void =
-  expandMethodBind(className TileMap, "remove_layer", 1286410249)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "remove_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc setLayerName*(self: TileMap; layer: int32; name: String): void =
-  expandMethodBind(className TileMap, "set_layer_name", 501894301)
-  methodbind.ptrcall(self, [getPtr layer, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_name", 501894301)
+  methodbind.ptrcall(self, [getPtr layer, getPtr name], void)
 
 proc getLayerName*(self: TileMap; layer: int32): String =
-  expandMethodBind(className TileMap, "get_layer_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_name", 844755477)
+  methodbind.ptrcall(self, [getPtr layer], String)
 
 proc setLayerEnabled*(self: TileMap; layer: int32; enabled: bool): void =
-  expandMethodBind(className TileMap, "set_layer_enabled", 300928843)
-  methodbind.ptrcall(self, [getPtr layer, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_enabled", 300928843)
+  methodbind.ptrcall(self, [getPtr layer, getPtr enabled], void)
 
 proc isLayerEnabled*(self: TileMap; layer: int32): bool =
-  expandMethodBind(className TileMap, "is_layer_enabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_layer_enabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr layer], bool)
 
 proc setLayerModulate*(self: TileMap; layer: int32; modulate: Color): void =
-  expandMethodBind(className TileMap, "set_layer_modulate", 2878471219)
-  methodbind.ptrcall(self, [getPtr layer, getPtr modulate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_modulate", 2878471219)
+  methodbind.ptrcall(self, [getPtr layer, getPtr modulate], void)
 
 proc getLayerModulate*(self: TileMap; layer: int32): Color =
-  expandMethodBind(className TileMap, "get_layer_modulate", 3457211756)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_modulate", 3457211756)
+  methodbind.ptrcall(self, [getPtr layer], Color)
 
 proc setLayerYSortEnabled*(self: TileMap; layer: int32; ySortEnabled: bool): void =
-  expandMethodBind(className TileMap, "set_layer_y_sort_enabled", 300928843)
-  methodbind.ptrcall(self, [getPtr layer, getPtr ySortEnabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_y_sort_enabled", 300928843)
+  methodbind.ptrcall(self, [getPtr layer, getPtr ySortEnabled], void)
 
 proc isLayerYSortEnabled*(self: TileMap; layer: int32): bool =
-  expandMethodBind(className TileMap, "is_layer_y_sort_enabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_layer_y_sort_enabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr layer], bool)
 
 proc setLayerYSortOrigin*(self: TileMap; layer: int32; ySortOrigin: int32): void =
-  expandMethodBind(className TileMap, "set_layer_y_sort_origin", 3937882851)
-  methodbind.ptrcall(self, [getPtr layer, getPtr ySortOrigin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_y_sort_origin", 3937882851)
+  methodbind.ptrcall(self, [getPtr layer, getPtr ySortOrigin], void)
 
 proc getLayerYSortOrigin*(self: TileMap; layer: int32): int32 =
-  expandMethodBind(className TileMap, "get_layer_y_sort_origin", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_y_sort_origin", 923996154)
+  methodbind.ptrcall(self, [getPtr layer], int32)
 
 proc setLayerZIndex*(self: TileMap; layer: int32; zIndex: int32): void =
-  expandMethodBind(className TileMap, "set_layer_z_index", 3937882851)
-  methodbind.ptrcall(self, [getPtr layer, getPtr zIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_z_index", 3937882851)
+  methodbind.ptrcall(self, [getPtr layer, getPtr zIndex], void)
 
 proc getLayerZIndex*(self: TileMap; layer: int32): int32 =
-  expandMethodBind(className TileMap, "get_layer_z_index", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_z_index", 923996154)
+  methodbind.ptrcall(self, [getPtr layer], int32)
 
 proc setLayerNavigationEnabled*(self: TileMap; layer: int32; enabled: bool): void =
-  expandMethodBind(className TileMap, "set_layer_navigation_enabled", 300928843)
-  methodbind.ptrcall(self, [getPtr layer, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_navigation_enabled", 300928843)
+  methodbind.ptrcall(self, [getPtr layer, getPtr enabled], void)
 
 proc isLayerNavigationEnabled*(self: TileMap; layer: int32): bool =
-  expandMethodBind(className TileMap, "is_layer_navigation_enabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_layer_navigation_enabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr layer], bool)
 
 proc setLayerNavigationMap*(self: TileMap; layer: int32; map: RID): void =
-  expandMethodBind(className TileMap, "set_layer_navigation_map", 4040184819)
-  methodbind.ptrcall(self, [getPtr layer, getPtr map])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_layer_navigation_map", 4040184819)
+  methodbind.ptrcall(self, [getPtr layer, getPtr map], void)
 
 proc getLayerNavigationMap*(self: TileMap; layer: int32): RID =
-  expandMethodBind(className TileMap, "get_layer_navigation_map", 495598643)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_navigation_map", 495598643)
+  methodbind.ptrcall(self, [getPtr layer], RID)
 
 proc setCollisionAnimatable*(self: TileMap; enabled: bool): void =
-  expandMethodBind(className TileMap, "set_collision_animatable", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_collision_animatable", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isCollisionAnimatable*(self: TileMap): bool =
-  expandMethodBind(className TileMap, "is_collision_animatable", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_collision_animatable", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollisionVisibilityMode*(self: TileMap; collisionVisibilityMode: TileMap_VisibilityMode): void =
-  expandMethodBind(className TileMap, "set_collision_visibility_mode", 3193440636)
-  methodbind.ptrcall(self, [getPtr collisionVisibilityMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_collision_visibility_mode", 3193440636)
+  methodbind.ptrcall(self, [getPtr collisionVisibilityMode], void)
 
 proc getCollisionVisibilityMode*(self: TileMap): TileMap_VisibilityMode =
-  expandMethodBind(className TileMap, "get_collision_visibility_mode", 1697018252)
-  var ret: encoded TileMap_VisibilityMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TileMap_VisibilityMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_collision_visibility_mode", 1697018252)
+  methodbind.ptrcall(self, [], TileMap_VisibilityMode)
 
 proc setNavigationVisibilityMode*(self: TileMap; navigationVisibilityMode: TileMap_VisibilityMode): void =
-  expandMethodBind(className TileMap, "set_navigation_visibility_mode", 3193440636)
-  methodbind.ptrcall(self, [getPtr navigationVisibilityMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_navigation_visibility_mode", 3193440636)
+  methodbind.ptrcall(self, [getPtr navigationVisibilityMode], void)
 
 proc getNavigationVisibilityMode*(self: TileMap): TileMap_VisibilityMode =
-  expandMethodBind(className TileMap, "get_navigation_visibility_mode", 1697018252)
-  var ret: encoded TileMap_VisibilityMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TileMap_VisibilityMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_navigation_visibility_mode", 1697018252)
+  methodbind.ptrcall(self, [], TileMap_VisibilityMode)
 
 proc setCell*(self: TileMap; layer: int32; coords: Vector2i; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = 0): void =
-  expandMethodBind(className TileMap, "set_cell", 966713560)
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_cell", 966713560)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile], void)
 
 proc eraseCell*(self: TileMap; layer: int32; coords: Vector2i): void =
-  expandMethodBind(className TileMap, "erase_cell", 2311374912)
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "erase_cell", 2311374912)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords], void)
 
 proc getCellSourceId*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): int32 =
-  expandMethodBind(className TileMap, "get_cell_source_id", 551761942)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_cell_source_id", 551761942)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], int32)
 
 proc getCellAtlasCoords*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): Vector2i =
-  expandMethodBind(className TileMap, "get_cell_atlas_coords", 1869815066)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_cell_atlas_coords", 1869815066)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], Vector2i)
 
 proc getCellAlternativeTile*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): int32 =
-  expandMethodBind(className TileMap, "get_cell_alternative_tile", 551761942)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_cell_alternative_tile", 551761942)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], int32)
 
 proc getCellTileData*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): TileData =
-  expandMethodBind(className TileMap, "get_cell_tile_data", 2849631287)
-  var ret: encoded TileData
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(TileData)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_cell_tile_data", 2849631287)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], TileData)
 
 proc isCellFlippedH*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
-  expandMethodBind(className TileMap, "is_cell_flipped_h", 2908343862)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_cell_flipped_h", 2908343862)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], bool)
 
 proc isCellFlippedV*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
-  expandMethodBind(className TileMap, "is_cell_flipped_v", 2908343862)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_cell_flipped_v", 2908343862)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], bool)
 
 proc isCellTransposed*(self: TileMap; layer: int32; coords: Vector2i; useProxies: bool = false): bool =
-  expandMethodBind(className TileMap, "is_cell_transposed", 2908343862)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "is_cell_transposed", 2908343862)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coords, getPtr useProxies], bool)
 
 proc getCoordsForBodyRid*(self: TileMap; body: RID): Vector2i =
-  expandMethodBind(className TileMap, "get_coords_for_body_rid", 291584212)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr body], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_coords_for_body_rid", 291584212)
+  methodbind.ptrcall(self, [getPtr body], Vector2i)
 
 proc getLayerForBodyRid*(self: TileMap; body: RID): int32 =
-  expandMethodBind(className TileMap, "get_layer_for_body_rid", 3917799429)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr body], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_layer_for_body_rid", 3917799429)
+  methodbind.ptrcall(self, [getPtr body], int32)
 
 proc getPattern*(self: TileMap; layer: int32; coordsArray: TypedArray[Vector2i]): gdref TileMapPattern =
-  expandMethodBind(className TileMap, "get_pattern", 2833570986)
-  var ret: encoded gdref TileMapPattern
-  methodbind.ptrcall(self, [getPtr layer, getPtr coordsArray], addr ret)
-  (addr ret).decode_result(gdref TileMapPattern)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_pattern", 2833570986)
+  methodbind.ptrcall(self, [getPtr layer, getPtr coordsArray], gdref TileMapPattern)
 
 proc mapPattern*(self: TileMap; positionInTilemap: Vector2i; coordsInPattern: Vector2i; pattern: gdref TileMapPattern): Vector2i =
-  expandMethodBind(className TileMap, "map_pattern", 1864516957)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr positionInTilemap, getPtr coordsInPattern, getPtr pattern], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "map_pattern", 1864516957)
+  methodbind.ptrcall(self, [getPtr positionInTilemap, getPtr coordsInPattern, getPtr pattern], Vector2i)
 
 proc setPattern*(self: TileMap; layer: int32; position: Vector2i; pattern: gdref TileMapPattern): void =
-  expandMethodBind(className TileMap, "set_pattern", 1195853946)
-  methodbind.ptrcall(self, [getPtr layer, getPtr position, getPtr pattern])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_pattern", 1195853946)
+  methodbind.ptrcall(self, [getPtr layer, getPtr position, getPtr pattern], void)
 
 proc setCellsTerrainConnect*(self: TileMap; layer: int32; cells: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
-  expandMethodBind(className TileMap, "set_cells_terrain_connect", 3578627656)
-  methodbind.ptrcall(self, [getPtr layer, getPtr cells, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_cells_terrain_connect", 3578627656)
+  methodbind.ptrcall(self, [getPtr layer, getPtr cells, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains], void)
 
 proc setCellsTerrainPath*(self: TileMap; layer: int32; path: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
-  expandMethodBind(className TileMap, "set_cells_terrain_path", 3578627656)
-  methodbind.ptrcall(self, [getPtr layer, getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "set_cells_terrain_path", 3578627656)
+  methodbind.ptrcall(self, [getPtr layer, getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains], void)
 
 proc fixInvalidTiles*(self: TileMap): void =
-  expandMethodBind(className TileMap, "fix_invalid_tiles", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "fix_invalid_tiles", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc clearLayer*(self: TileMap; layer: int32): void =
-  expandMethodBind(className TileMap, "clear_layer", 1286410249)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "clear_layer", 1286410249)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc clear*(self: TileMap): void =
-  expandMethodBind(className TileMap, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc updateInternals*(self: TileMap): void =
-  expandMethodBind(className TileMap, "update_internals", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "update_internals", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc notifyRuntimeTileDataUpdate*(self: TileMap; layer: int32 = -1): void =
-  expandMethodBind(className TileMap, "notify_runtime_tile_data_update", 1025054187)
-  methodbind.ptrcall(self, [getPtr layer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "notify_runtime_tile_data_update", 1025054187)
+  methodbind.ptrcall(self, [getPtr layer], void)
 
 proc getSurroundingCells*(self: TileMap; coords: Vector2i): TypedArray[Vector2i] =
-  expandMethodBind(className TileMap, "get_surrounding_cells", 2673526557)
-  var ret: encoded TypedArray[Vector2i]
-  methodbind.ptrcall(self, [getPtr coords], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_surrounding_cells", 2673526557)
+  methodbind.ptrcall(self, [getPtr coords], TypedArray[Vector2i])
 
 proc getUsedCells*(self: TileMap; layer: int32): TypedArray[Vector2i] =
-  expandMethodBind(className TileMap, "get_used_cells", 663333327)
-  var ret: encoded TypedArray[Vector2i]
-  methodbind.ptrcall(self, [getPtr layer], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_used_cells", 663333327)
+  methodbind.ptrcall(self, [getPtr layer], TypedArray[Vector2i])
 
 proc getUsedCellsById*(self: TileMap; layer: int32; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = -1): TypedArray[Vector2i] =
-  expandMethodBind(className TileMap, "get_used_cells_by_id", 2931012785)
-  var ret: encoded TypedArray[Vector2i]
-  methodbind.ptrcall(self, [getPtr layer, getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_used_cells_by_id", 2931012785)
+  methodbind.ptrcall(self, [getPtr layer, getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile], TypedArray[Vector2i])
 
 proc getUsedRect*(self: TileMap): Rect2i =
-  expandMethodBind(className TileMap, "get_used_rect", 410525958)
-  var ret: encoded Rect2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Rect2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_used_rect", 410525958)
+  methodbind.ptrcall(self, [], Rect2i)
 
 proc mapToLocal*(self: TileMap; mapPosition: Vector2i): Vector2 =
-  expandMethodBind(className TileMap, "map_to_local", 108438297)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr mapPosition], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "map_to_local", 108438297)
+  methodbind.ptrcall(self, [getPtr mapPosition], Vector2)
 
 proc localToMap*(self: TileMap; localPosition: Vector2): Vector2i =
-  expandMethodBind(className TileMap, "local_to_map", 837806996)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr localPosition], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "local_to_map", 837806996)
+  methodbind.ptrcall(self, [getPtr localPosition], Vector2i)
 
 proc getNeighborCell*(self: TileMap; coords: Vector2i; neighbor: TileSet_CellNeighbor): Vector2i =
-  expandMethodBind(className TileMap, "get_neighbor_cell", 986575103)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [getPtr coords, getPtr neighbor], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileMap, "get_neighbor_cell", 986575103)
+  methodbind.ptrcall(self, [getPtr coords, getPtr neighbor], Vector2i)
 
 template tileSet*(self: TileMap): untyped = self.getTileset()
 template `tileSet=`*(self: TileMap; value) = self.setTileset(value)

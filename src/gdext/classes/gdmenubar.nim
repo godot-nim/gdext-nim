@@ -7,126 +7,148 @@ import gdcontrol; export gdcontrol
 expandOnClassImported(MenuBar, Control)
 
 proc setSwitchOnHover*(self: MenuBar; enable: bool): void =
-  expandMethodBind(className MenuBar, "set_switch_on_hover", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_switch_on_hover", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSwitchOnHover*(self: MenuBar): bool =
-  expandMethodBind(className MenuBar, "is_switch_on_hover", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_switch_on_hover", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDisableShortcuts*(self: MenuBar; disabled: bool): void =
-  expandMethodBind(className MenuBar, "set_disable_shortcuts", 2586408642)
-  methodbind.ptrcall(self, [getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_disable_shortcuts", 2586408642)
+  methodbind.ptrcall(self, [getPtr disabled], void)
 
 proc setPreferGlobalMenu*(self: MenuBar; enabled: bool): void =
-  expandMethodBind(className MenuBar, "set_prefer_global_menu", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_prefer_global_menu", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPreferGlobalMenu*(self: MenuBar): bool =
-  expandMethodBind(className MenuBar, "is_prefer_global_menu", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_prefer_global_menu", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isNativeMenu*(self: MenuBar): bool =
-  expandMethodBind(className MenuBar, "is_native_menu", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_native_menu", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getMenuCount*(self: MenuBar): int32 =
-  expandMethodBind(className MenuBar, "get_menu_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_menu_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTextDirection*(self: MenuBar; direction: Control_TextDirection): void =
-  expandMethodBind(className MenuBar, "set_text_direction", 119160795)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_text_direction", 119160795)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getTextDirection*(self: MenuBar): Control_TextDirection =
-  expandMethodBind(className MenuBar, "get_text_direction", 797257663)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_text_direction", 797257663)
+  methodbind.ptrcall(self, [], Control_TextDirection)
 
 proc setLanguage*(self: MenuBar; language: String): void =
-  expandMethodBind(className MenuBar, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: MenuBar): String =
-  expandMethodBind(className MenuBar, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setFlat*(self: MenuBar; enabled: bool): void =
-  expandMethodBind(className MenuBar, "set_flat", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_flat", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isFlat*(self: MenuBar): bool =
-  expandMethodBind(className MenuBar, "is_flat", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_flat", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setStartIndex*(self: MenuBar; enabled: int32): void =
-  expandMethodBind(className MenuBar, "set_start_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_start_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getStartIndex*(self: MenuBar): int32 =
-  expandMethodBind(className MenuBar, "get_start_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_start_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMenuTitle*(self: MenuBar; menu: int32; title: String): void =
-  expandMethodBind(className MenuBar, "set_menu_title", 501894301)
-  methodbind.ptrcall(self, [getPtr menu, getPtr title])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_menu_title", 501894301)
+  methodbind.ptrcall(self, [getPtr menu, getPtr title], void)
 
 proc getMenuTitle*(self: MenuBar; menu: int32): String =
-  expandMethodBind(className MenuBar, "get_menu_title", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr menu], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_menu_title", 844755477)
+  methodbind.ptrcall(self, [getPtr menu], String)
 
 proc setMenuTooltip*(self: MenuBar; menu: int32; tooltip: String): void =
-  expandMethodBind(className MenuBar, "set_menu_tooltip", 501894301)
-  methodbind.ptrcall(self, [getPtr menu, getPtr tooltip])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_menu_tooltip", 501894301)
+  methodbind.ptrcall(self, [getPtr menu, getPtr tooltip], void)
 
 proc getMenuTooltip*(self: MenuBar; menu: int32): String =
-  expandMethodBind(className MenuBar, "get_menu_tooltip", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr menu], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_menu_tooltip", 844755477)
+  methodbind.ptrcall(self, [getPtr menu], String)
 
 proc setMenuDisabled*(self: MenuBar; menu: int32; disabled: bool): void =
-  expandMethodBind(className MenuBar, "set_menu_disabled", 300928843)
-  methodbind.ptrcall(self, [getPtr menu, getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_menu_disabled", 300928843)
+  methodbind.ptrcall(self, [getPtr menu, getPtr disabled], void)
 
 proc isMenuDisabled*(self: MenuBar; menu: int32): bool =
-  expandMethodBind(className MenuBar, "is_menu_disabled", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr menu], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_menu_disabled", 1116898809)
+  methodbind.ptrcall(self, [getPtr menu], bool)
 
 proc setMenuHidden*(self: MenuBar; menu: int32; hidden: bool): void =
-  expandMethodBind(className MenuBar, "set_menu_hidden", 300928843)
-  methodbind.ptrcall(self, [getPtr menu, getPtr hidden])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "set_menu_hidden", 300928843)
+  methodbind.ptrcall(self, [getPtr menu, getPtr hidden], void)
 
 proc isMenuHidden*(self: MenuBar; menu: int32): bool =
-  expandMethodBind(className MenuBar, "is_menu_hidden", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr menu], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "is_menu_hidden", 1116898809)
+  methodbind.ptrcall(self, [getPtr menu], bool)
 
 proc getMenuPopup*(self: MenuBar; menu: int32): PopupMenu =
-  expandMethodBind(className MenuBar, "get_menu_popup", 2100501353)
-  var ret: encoded PopupMenu
-  methodbind.ptrcall(self, [getPtr menu], addr ret)
-  (addr ret).decode_result(PopupMenu)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuBar, "get_menu_popup", 2100501353)
+  methodbind.ptrcall(self, [getPtr menu], PopupMenu)
 
 template flat*(self: MenuBar): untyped = self.isFlat()
 template `flat=`*(self: MenuBar; value) = self.setFlat(value)

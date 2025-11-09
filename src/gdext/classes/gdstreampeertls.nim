@@ -7,33 +7,37 @@ import gdstreampeer; export gdstreampeer
 expandOnClassImported(StreamPeerTLS, StreamPeer)
 
 proc poll*(self: StreamPeerTLS): void =
-  expandMethodBind(className StreamPeerTLS, "poll", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "poll", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc acceptStream*(self: StreamPeerTLS; stream: gdref StreamPeer; serverOptions: gdref TLSOptions): Error =
-  expandMethodBind(className StreamPeerTLS, "accept_stream", 4292689651)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr stream, getPtr serverOptions], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "accept_stream", 4292689651)
+  methodbind.ptrcall(self, [getPtr stream, getPtr serverOptions], Error)
 
 proc connectToStream*(self: StreamPeerTLS; stream: gdref StreamPeer; commonName: String; clientOptions: gdref TLSOptions = default gdref TLSOptions): Error =
-  expandMethodBind(className StreamPeerTLS, "connect_to_stream", 57169517)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr stream, getPtr commonName, getPtr clientOptions], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "connect_to_stream", 57169517)
+  methodbind.ptrcall(self, [getPtr stream, getPtr commonName, getPtr clientOptions], Error)
 
 proc getStatus*(self: StreamPeerTLS): StreamPeerTLS_Status =
-  expandMethodBind(className StreamPeerTLS, "get_status", 1128380576)
-  var ret: encoded StreamPeerTLS_Status
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StreamPeerTLS_Status)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "get_status", 1128380576)
+  methodbind.ptrcall(self, [], StreamPeerTLS_Status)
 
 proc getStream*(self: StreamPeerTLS): gdref StreamPeer =
-  expandMethodBind(className StreamPeerTLS, "get_stream", 2741655269)
-  var ret: encoded gdref StreamPeer
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref StreamPeer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "get_stream", 2741655269)
+  methodbind.ptrcall(self, [], gdref StreamPeer)
 
 proc disconnectFromStream*(self: StreamPeerTLS): void =
-  expandMethodBind(className StreamPeerTLS, "disconnect_from_stream", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StreamPeerTLS, "disconnect_from_stream", 3218959716)
+  methodbind.ptrcall(self, [], void)

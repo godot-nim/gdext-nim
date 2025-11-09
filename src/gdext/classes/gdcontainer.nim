@@ -20,9 +20,13 @@ proc registerVirtual_getAllowedSizeFlagsVertical*[T: Container](Self: typedesc[T
     errproof: cast[Container](p_instance).getAllowedSizeFlagsVertical().encode(r_ret)
 
 proc queueSort*(self: Container): void =
-  expandMethodBind(className Container, "queue_sort", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Container, "queue_sort", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc fitChildInRect*(self: Container; child: Control; rect: Rect2): void =
-  expandMethodBind(className Container, "fit_child_in_rect", 1993438598)
-  methodbind.ptrcall(self, [getPtr child, getPtr rect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Container, "fit_child_in_rect", 1993438598)
+  methodbind.ptrcall(self, [getPtr child, getPtr rect], void)

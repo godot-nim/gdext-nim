@@ -7,14 +7,16 @@ import gdaudiostream; export gdaudiostream
 expandOnClassImported(AudioStreamPolyphonic, AudioStream)
 
 proc setPolyphony*(self: AudioStreamPolyphonic; voices: int32): void =
-  expandMethodBind(className AudioStreamPolyphonic, "set_polyphony", 1286410249)
-  methodbind.ptrcall(self, [getPtr voices])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPolyphonic, "set_polyphony", 1286410249)
+  methodbind.ptrcall(self, [getPtr voices], void)
 
 proc getPolyphony*(self: AudioStreamPolyphonic): int32 =
-  expandMethodBind(className AudioStreamPolyphonic, "get_polyphony", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPolyphonic, "get_polyphony", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template polyphony*(self: AudioStreamPolyphonic): untyped = self.getPolyphony()
 template `polyphony=`*(self: AudioStreamPolyphonic; value) = self.setPolyphony(value)

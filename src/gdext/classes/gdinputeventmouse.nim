@@ -7,34 +7,40 @@ import gdinputeventwithmodifiers; export gdinputeventwithmodifiers
 expandOnClassImported(InputEventMouse, InputEventWithModifiers)
 
 proc setButtonMask*(self: InputEventMouse; buttonMask: set[MouseButtonMask]): void =
-  expandMethodBind(className InputEventMouse, "set_button_mask", 3950145251)
-  methodbind.ptrcall(self, [getPtr buttonMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "set_button_mask", 3950145251)
+  methodbind.ptrcall(self, [getPtr buttonMask], void)
 
 proc getButtonMask*(self: InputEventMouse): set[MouseButtonMask] =
-  expandMethodBind(className InputEventMouse, "get_button_mask", 2512161324)
-  var ret: encoded set[MouseButtonMask]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[MouseButtonMask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "get_button_mask", 2512161324)
+  methodbind.ptrcall(self, [], set[MouseButtonMask])
 
 proc setPosition*(self: InputEventMouse; position: Vector2): void =
-  expandMethodBind(className InputEventMouse, "set_position", 743155724)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "set_position", 743155724)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getPosition*(self: InputEventMouse): Vector2 =
-  expandMethodBind(className InputEventMouse, "get_position", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "get_position", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setGlobalPosition*(self: InputEventMouse; globalPosition: Vector2): void =
-  expandMethodBind(className InputEventMouse, "set_global_position", 743155724)
-  methodbind.ptrcall(self, [getPtr globalPosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "set_global_position", 743155724)
+  methodbind.ptrcall(self, [getPtr globalPosition], void)
 
 proc getGlobalPosition*(self: InputEventMouse): Vector2 =
-  expandMethodBind(className InputEventMouse, "get_global_position", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouse, "get_global_position", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 template buttonMask*(self: InputEventMouse): untyped = self.getButtonMask()
 template `buttonMask=`*(self: InputEventMouse; value) = self.setButtonMask(value)

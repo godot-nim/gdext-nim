@@ -7,47 +7,55 @@ import gdnode; export gdnode
 expandOnClassImported(EditorFileSystem, Node)
 
 proc getFilesystem*(self: EditorFileSystem): EditorFileSystemDirectory =
-  expandMethodBind(className EditorFileSystem, "get_filesystem", 842323275)
-  var ret: encoded EditorFileSystemDirectory
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorFileSystemDirectory)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "get_filesystem", 842323275)
+  methodbind.ptrcall(self, [], EditorFileSystemDirectory)
 
 proc isScanning*(self: EditorFileSystem): bool =
-  expandMethodBind(className EditorFileSystem, "is_scanning", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "is_scanning", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getScanningProgress*(self: EditorFileSystem): Float =
-  expandMethodBind(className EditorFileSystem, "get_scanning_progress", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "get_scanning_progress", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc scan*(self: EditorFileSystem): void =
-  expandMethodBind(className EditorFileSystem, "scan", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "scan", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc scanSources*(self: EditorFileSystem): void =
-  expandMethodBind(className EditorFileSystem, "scan_sources", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "scan_sources", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc updateFile*(self: EditorFileSystem; path: String): void =
-  expandMethodBind(className EditorFileSystem, "update_file", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "update_file", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getFilesystemPath*(self: EditorFileSystem; path: String): EditorFileSystemDirectory =
-  expandMethodBind(className EditorFileSystem, "get_filesystem_path", 3188521125)
-  var ret: encoded EditorFileSystemDirectory
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(EditorFileSystemDirectory)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "get_filesystem_path", 3188521125)
+  methodbind.ptrcall(self, [getPtr path], EditorFileSystemDirectory)
 
 proc getFileType*(self: EditorFileSystem; path: String): String =
-  expandMethodBind(className EditorFileSystem, "get_file_type", 3135753539)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "get_file_type", 3135753539)
+  methodbind.ptrcall(self, [getPtr path], String)
 
 proc reimportFiles*(self: EditorFileSystem; files: PackedStringArray): void =
-  expandMethodBind(className EditorFileSystem, "reimport_files", 4015028928)
-  methodbind.ptrcall(self, [getPtr files])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileSystem, "reimport_files", 4015028928)
+  methodbind.ptrcall(self, [getPtr files], void)

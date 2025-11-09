@@ -7,54 +7,64 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(CollisionPolygon2D, Node2D)
 
 proc setPolygon*(self: CollisionPolygon2D; polygon: PackedVector2Array): void =
-  expandMethodBind(className CollisionPolygon2D, "set_polygon", 1509147220)
-  methodbind.ptrcall(self, [getPtr polygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "set_polygon", 1509147220)
+  methodbind.ptrcall(self, [getPtr polygon], void)
 
 proc getPolygon*(self: CollisionPolygon2D): PackedVector2Array =
-  expandMethodBind(className CollisionPolygon2D, "get_polygon", 2961356807)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "get_polygon", 2961356807)
+  methodbind.ptrcall(self, [], PackedVector2Array)
 
 proc setBuildMode*(self: CollisionPolygon2D; buildMode: CollisionPolygon2D_BuildMode): void =
-  expandMethodBind(className CollisionPolygon2D, "set_build_mode", 2780803135)
-  methodbind.ptrcall(self, [getPtr buildMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "set_build_mode", 2780803135)
+  methodbind.ptrcall(self, [getPtr buildMode], void)
 
 proc getBuildMode*(self: CollisionPolygon2D): CollisionPolygon2D_BuildMode =
-  expandMethodBind(className CollisionPolygon2D, "get_build_mode", 3044948800)
-  var ret: encoded CollisionPolygon2D_BuildMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CollisionPolygon2D_BuildMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "get_build_mode", 3044948800)
+  methodbind.ptrcall(self, [], CollisionPolygon2D_BuildMode)
 
 proc setDisabled*(self: CollisionPolygon2D; disabled: bool): void =
-  expandMethodBind(className CollisionPolygon2D, "set_disabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "set_disabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr disabled], void)
 
 proc isDisabled*(self: CollisionPolygon2D): bool =
-  expandMethodBind(className CollisionPolygon2D, "is_disabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "is_disabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOneWayCollision*(self: CollisionPolygon2D; enabled: bool): void =
-  expandMethodBind(className CollisionPolygon2D, "set_one_way_collision", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "set_one_way_collision", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isOneWayCollisionEnabled*(self: CollisionPolygon2D): bool =
-  expandMethodBind(className CollisionPolygon2D, "is_one_way_collision_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "is_one_way_collision_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setOneWayCollisionMargin*(self: CollisionPolygon2D; margin: Float): void =
-  expandMethodBind(className CollisionPolygon2D, "set_one_way_collision_margin", 373806689)
-  methodbind.ptrcall(self, [getPtr margin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "set_one_way_collision_margin", 373806689)
+  methodbind.ptrcall(self, [getPtr margin], void)
 
 proc getOneWayCollisionMargin*(self: CollisionPolygon2D): Float =
-  expandMethodBind(className CollisionPolygon2D, "get_one_way_collision_margin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CollisionPolygon2D, "get_one_way_collision_margin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template buildMode*(self: CollisionPolygon2D): untyped = self.getBuildMode()
 template `buildMode=`*(self: CollisionPolygon2D; value) = self.setBuildMode(value)

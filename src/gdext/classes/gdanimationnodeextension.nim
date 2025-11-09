@@ -12,13 +12,13 @@ proc registerVirtual_processAnimationNode*[T: AnimationNodeExtension](Self: type
     errproof: cast[AnimationNodeExtension](p_instance).processAnimationNode(p_args[0].decode(PackedFloat64Array), p_args[1].decode(bool)).encode(r_ret)
 
 proc isLooping*(_: typedesc[AnimationNodeExtension]; nodeInfo: PackedFloat32Array): bool =
-  expandMethodBind(className AnimationNodeExtension, "is_looping", 2035584311)
-  var ret: encoded bool
-  methodbind.ptrcall([getPtr nodeInfo], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeExtension, "is_looping", 2035584311)
+  methodbind.ptrcall([getPtr nodeInfo], bool)
 
 proc getRemainingTime*(_: typedesc[AnimationNodeExtension]; nodeInfo: PackedFloat32Array; breakLoop: bool): float64 =
-  expandMethodBind(className AnimationNodeExtension, "get_remaining_time", 2851904656)
-  var ret: encoded float64
-  methodbind.ptrcall([getPtr nodeInfo, getPtr breakLoop], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeExtension, "get_remaining_time", 2851904656)
+  methodbind.ptrcall([getPtr nodeInfo, getPtr breakLoop], float64)

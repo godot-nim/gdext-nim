@@ -127,211 +127,295 @@ proc registerVirtual_disablePlugin*[T: EditorPlugin](Self: typedesc[T]) =
     errproof: cast[EditorPlugin](p_instance).disablePlugin()
 
 proc addControlToContainer*(self: EditorPlugin; container: EditorPlugin_CustomControlContainer; control: Control): void =
-  expandMethodBind(className EditorPlugin, "add_control_to_container", 3092750152)
-  methodbind.ptrcall(self, [getPtr container, getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_control_to_container", 3092750152)
+  methodbind.ptrcall(self, [getPtr container, getPtr control], void)
 
 proc addControlToBottomPanel*(self: EditorPlugin; control: Control; title: String; shortcut: gdref Shortcut = default gdref Shortcut): Button =
-  expandMethodBind(className EditorPlugin, "add_control_to_bottom_panel", 111032269)
-  var ret: encoded Button
-  methodbind.ptrcall(self, [getPtr control, getPtr title, getPtr shortcut], addr ret)
-  (addr ret).decode_result(Button)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_control_to_bottom_panel", 111032269)
+  methodbind.ptrcall(self, [getPtr control, getPtr title, getPtr shortcut], Button)
 
 proc addControlToDock*(self: EditorPlugin; slot: EditorPlugin_DockSlot; control: Control; shortcut: gdref Shortcut = default gdref Shortcut): void =
-  expandMethodBind(className EditorPlugin, "add_control_to_dock", 2994930786)
-  methodbind.ptrcall(self, [getPtr slot, getPtr control, getPtr shortcut])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_control_to_dock", 2994930786)
+  methodbind.ptrcall(self, [getPtr slot, getPtr control, getPtr shortcut], void)
 
 proc removeControlFromDocks*(self: EditorPlugin; control: Control): void =
-  expandMethodBind(className EditorPlugin, "remove_control_from_docks", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_control_from_docks", 1496901182)
+  methodbind.ptrcall(self, [getPtr control], void)
 
 proc removeControlFromBottomPanel*(self: EditorPlugin; control: Control): void =
-  expandMethodBind(className EditorPlugin, "remove_control_from_bottom_panel", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_control_from_bottom_panel", 1496901182)
+  methodbind.ptrcall(self, [getPtr control], void)
 
 proc removeControlFromContainer*(self: EditorPlugin; container: EditorPlugin_CustomControlContainer; control: Control): void =
-  expandMethodBind(className EditorPlugin, "remove_control_from_container", 3092750152)
-  methodbind.ptrcall(self, [getPtr container, getPtr control])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_control_from_container", 3092750152)
+  methodbind.ptrcall(self, [getPtr container, getPtr control], void)
 
 proc setDockTabIcon*(self: EditorPlugin; control: Control; icon: gdref Texture2D): void =
-  expandMethodBind(className EditorPlugin, "set_dock_tab_icon", 3450529724)
-  methodbind.ptrcall(self, [getPtr control, getPtr icon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "set_dock_tab_icon", 3450529724)
+  methodbind.ptrcall(self, [getPtr control, getPtr icon], void)
 
 proc addToolMenuItem*(self: EditorPlugin; name: String; callable: Callable): void =
-  expandMethodBind(className EditorPlugin, "add_tool_menu_item", 2137474292)
-  methodbind.ptrcall(self, [getPtr name, getPtr callable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_tool_menu_item", 2137474292)
+  methodbind.ptrcall(self, [getPtr name, getPtr callable], void)
 
 proc addToolSubmenuItem*(self: EditorPlugin; name: String; submenu: PopupMenu): void =
-  expandMethodBind(className EditorPlugin, "add_tool_submenu_item", 1019428915)
-  methodbind.ptrcall(self, [getPtr name, getPtr submenu])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_tool_submenu_item", 1019428915)
+  methodbind.ptrcall(self, [getPtr name, getPtr submenu], void)
 
 proc removeToolMenuItem*(self: EditorPlugin; name: String): void =
-  expandMethodBind(className EditorPlugin, "remove_tool_menu_item", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_tool_menu_item", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getExportAsMenu*(self: EditorPlugin): PopupMenu =
-  expandMethodBind(className EditorPlugin, "get_export_as_menu", 1775878644)
-  var ret: encoded PopupMenu
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PopupMenu)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "get_export_as_menu", 1775878644)
+  methodbind.ptrcall(self, [], PopupMenu)
 
 proc addCustomType*(self: EditorPlugin; `type`: String; base: String; script: gdref Script; icon: gdref Texture2D): void =
-  expandMethodBind(className EditorPlugin, "add_custom_type", 1986814599)
-  methodbind.ptrcall(self, [getPtr `type`, getPtr base, getPtr script, getPtr icon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_custom_type", 1986814599)
+  methodbind.ptrcall(self, [getPtr `type`, getPtr base, getPtr script, getPtr icon], void)
 
 proc removeCustomType*(self: EditorPlugin; `type`: String): void =
-  expandMethodBind(className EditorPlugin, "remove_custom_type", 83702148)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_custom_type", 83702148)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc addAutoloadSingleton*(self: EditorPlugin; name: String; path: String): void =
-  expandMethodBind(className EditorPlugin, "add_autoload_singleton", 3186203200)
-  methodbind.ptrcall(self, [getPtr name, getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_autoload_singleton", 3186203200)
+  methodbind.ptrcall(self, [getPtr name, getPtr path], void)
 
 proc removeAutoloadSingleton*(self: EditorPlugin; name: String): void =
-  expandMethodBind(className EditorPlugin, "remove_autoload_singleton", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_autoload_singleton", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc updateOverlays*(self: EditorPlugin): int32 =
-  expandMethodBind(className EditorPlugin, "update_overlays", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "update_overlays", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc makeBottomPanelItemVisible*(self: EditorPlugin; item: Control): void =
-  expandMethodBind(className EditorPlugin, "make_bottom_panel_item_visible", 1496901182)
-  methodbind.ptrcall(self, [getPtr item])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "make_bottom_panel_item_visible", 1496901182)
+  methodbind.ptrcall(self, [getPtr item], void)
 
 proc hideBottomPanel*(self: EditorPlugin): void =
-  expandMethodBind(className EditorPlugin, "hide_bottom_panel", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "hide_bottom_panel", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getUndoRedo*(self: EditorPlugin): EditorUndoRedoManager =
-  expandMethodBind(className EditorPlugin, "get_undo_redo", 773492341)
-  var ret: encoded EditorUndoRedoManager
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorUndoRedoManager)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "get_undo_redo", 773492341)
+  methodbind.ptrcall(self, [], EditorUndoRedoManager)
 
 proc addUndoRedoInspectorHookCallback*(self: EditorPlugin; callable: Callable): void =
-  expandMethodBind(className EditorPlugin, "add_undo_redo_inspector_hook_callback", 1611583062)
-  methodbind.ptrcall(self, [getPtr callable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_undo_redo_inspector_hook_callback", 1611583062)
+  methodbind.ptrcall(self, [getPtr callable], void)
 
 proc removeUndoRedoInspectorHookCallback*(self: EditorPlugin; callable: Callable): void =
-  expandMethodBind(className EditorPlugin, "remove_undo_redo_inspector_hook_callback", 1611583062)
-  methodbind.ptrcall(self, [getPtr callable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_undo_redo_inspector_hook_callback", 1611583062)
+  methodbind.ptrcall(self, [getPtr callable], void)
 
 proc queueSaveLayout*(self: EditorPlugin): void =
-  expandMethodBind(className EditorPlugin, "queue_save_layout", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "queue_save_layout", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc addTranslationParserPlugin*(self: EditorPlugin; parser: gdref EditorTranslationParserPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_translation_parser_plugin", 3116463128)
-  methodbind.ptrcall(self, [getPtr parser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_translation_parser_plugin", 3116463128)
+  methodbind.ptrcall(self, [getPtr parser], void)
 
 proc removeTranslationParserPlugin*(self: EditorPlugin; parser: gdref EditorTranslationParserPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_translation_parser_plugin", 3116463128)
-  methodbind.ptrcall(self, [getPtr parser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_translation_parser_plugin", 3116463128)
+  methodbind.ptrcall(self, [getPtr parser], void)
 
 proc addImportPlugin*(self: EditorPlugin; importer: gdref EditorImportPlugin; firstPriority: bool = false): void =
-  expandMethodBind(className EditorPlugin, "add_import_plugin", 3113975762)
-  methodbind.ptrcall(self, [getPtr importer, getPtr firstPriority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_import_plugin", 3113975762)
+  methodbind.ptrcall(self, [getPtr importer, getPtr firstPriority], void)
 
 proc removeImportPlugin*(self: EditorPlugin; importer: gdref EditorImportPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_import_plugin", 2312482773)
-  methodbind.ptrcall(self, [getPtr importer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_import_plugin", 2312482773)
+  methodbind.ptrcall(self, [getPtr importer], void)
 
 proc addSceneFormatImporterPlugin*(self: EditorPlugin; sceneFormatImporter: gdref EditorSceneFormatImporter; firstPriority: bool = false): void =
-  expandMethodBind(className EditorPlugin, "add_scene_format_importer_plugin", 2764104752)
-  methodbind.ptrcall(self, [getPtr sceneFormatImporter, getPtr firstPriority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_scene_format_importer_plugin", 2764104752)
+  methodbind.ptrcall(self, [getPtr sceneFormatImporter, getPtr firstPriority], void)
 
 proc removeSceneFormatImporterPlugin*(self: EditorPlugin; sceneFormatImporter: gdref EditorSceneFormatImporter): void =
-  expandMethodBind(className EditorPlugin, "remove_scene_format_importer_plugin", 2637776123)
-  methodbind.ptrcall(self, [getPtr sceneFormatImporter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_scene_format_importer_plugin", 2637776123)
+  methodbind.ptrcall(self, [getPtr sceneFormatImporter], void)
 
 proc addScenePostImportPlugin*(self: EditorPlugin; sceneImportPlugin: gdref EditorScenePostImportPlugin; firstPriority: bool = false): void =
-  expandMethodBind(className EditorPlugin, "add_scene_post_import_plugin", 3492436322)
-  methodbind.ptrcall(self, [getPtr sceneImportPlugin, getPtr firstPriority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_scene_post_import_plugin", 3492436322)
+  methodbind.ptrcall(self, [getPtr sceneImportPlugin, getPtr firstPriority], void)
 
 proc removeScenePostImportPlugin*(self: EditorPlugin; sceneImportPlugin: gdref EditorScenePostImportPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_scene_post_import_plugin", 3045178206)
-  methodbind.ptrcall(self, [getPtr sceneImportPlugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_scene_post_import_plugin", 3045178206)
+  methodbind.ptrcall(self, [getPtr sceneImportPlugin], void)
 
 proc addExportPlugin*(self: EditorPlugin; plugin: gdref EditorExportPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_export_plugin", 4095952207)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_export_plugin", 4095952207)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc removeExportPlugin*(self: EditorPlugin; plugin: gdref EditorExportPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_export_plugin", 4095952207)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_export_plugin", 4095952207)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc addExportPlatform*(self: EditorPlugin; platform: gdref EditorExportPlatform): void =
-  expandMethodBind(className EditorPlugin, "add_export_platform", 3431312373)
-  methodbind.ptrcall(self, [getPtr platform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_export_platform", 3431312373)
+  methodbind.ptrcall(self, [getPtr platform], void)
 
 proc removeExportPlatform*(self: EditorPlugin; platform: gdref EditorExportPlatform): void =
-  expandMethodBind(className EditorPlugin, "remove_export_platform", 3431312373)
-  methodbind.ptrcall(self, [getPtr platform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_export_platform", 3431312373)
+  methodbind.ptrcall(self, [getPtr platform], void)
 
 proc addNode3DGizmoPlugin*(self: EditorPlugin; plugin: gdref EditorNode3DGizmoPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_node_3d_gizmo_plugin", 1541015022)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_node_3d_gizmo_plugin", 1541015022)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc removeNode3DGizmoPlugin*(self: EditorPlugin; plugin: gdref EditorNode3DGizmoPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_node_3d_gizmo_plugin", 1541015022)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_node_3d_gizmo_plugin", 1541015022)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc addInspectorPlugin*(self: EditorPlugin; plugin: gdref EditorInspectorPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_inspector_plugin", 546395733)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_inspector_plugin", 546395733)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc removeInspectorPlugin*(self: EditorPlugin; plugin: gdref EditorInspectorPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_inspector_plugin", 546395733)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_inspector_plugin", 546395733)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc addResourceConversionPlugin*(self: EditorPlugin; plugin: gdref EditorResourceConversionPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_resource_conversion_plugin", 2124849111)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_resource_conversion_plugin", 2124849111)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc removeResourceConversionPlugin*(self: EditorPlugin; plugin: gdref EditorResourceConversionPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_resource_conversion_plugin", 2124849111)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_resource_conversion_plugin", 2124849111)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc setInputEventForwardingAlwaysEnabled*(self: EditorPlugin): void =
-  expandMethodBind(className EditorPlugin, "set_input_event_forwarding_always_enabled", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "set_input_event_forwarding_always_enabled", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setForceDrawOverForwardingEnabled*(self: EditorPlugin): void =
-  expandMethodBind(className EditorPlugin, "set_force_draw_over_forwarding_enabled", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "set_force_draw_over_forwarding_enabled", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc addContextMenuPlugin*(self: EditorPlugin; slot: EditorContextMenuPlugin_ContextMenuSlot; plugin: gdref EditorContextMenuPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_context_menu_plugin", 1904221872)
-  methodbind.ptrcall(self, [getPtr slot, getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_context_menu_plugin", 1904221872)
+  methodbind.ptrcall(self, [getPtr slot, getPtr plugin], void)
 
 proc removeContextMenuPlugin*(self: EditorPlugin; plugin: gdref EditorContextMenuPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_context_menu_plugin", 2281511854)
-  methodbind.ptrcall(self, [getPtr plugin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_context_menu_plugin", 2281511854)
+  methodbind.ptrcall(self, [getPtr plugin], void)
 
 proc getEditorInterface*(self: EditorPlugin): EditorInterface =
-  expandMethodBind(className EditorPlugin, "get_editor_interface", 4223731786)
-  var ret: encoded EditorInterface
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorInterface)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "get_editor_interface", 4223731786)
+  methodbind.ptrcall(self, [], EditorInterface)
 
 proc getScriptCreateDialog*(self: EditorPlugin): ScriptCreateDialog =
-  expandMethodBind(className EditorPlugin, "get_script_create_dialog", 3121871482)
-  var ret: encoded ScriptCreateDialog
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(ScriptCreateDialog)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "get_script_create_dialog", 3121871482)
+  methodbind.ptrcall(self, [], ScriptCreateDialog)
 
 proc addDebuggerPlugin*(self: EditorPlugin; script: gdref EditorDebuggerPlugin): void =
-  expandMethodBind(className EditorPlugin, "add_debugger_plugin", 3749880309)
-  methodbind.ptrcall(self, [getPtr script])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "add_debugger_plugin", 3749880309)
+  methodbind.ptrcall(self, [getPtr script], void)
 
 proc removeDebuggerPlugin*(self: EditorPlugin; script: gdref EditorDebuggerPlugin): void =
-  expandMethodBind(className EditorPlugin, "remove_debugger_plugin", 3749880309)
-  methodbind.ptrcall(self, [getPtr script])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "remove_debugger_plugin", 3749880309)
+  methodbind.ptrcall(self, [getPtr script], void)
 
 proc getPluginVersion*(self: EditorPlugin): String =
-  expandMethodBind(className EditorPlugin, "get_plugin_version", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorPlugin, "get_plugin_version", 201670096)
+  methodbind.ptrcall(self, [], String)

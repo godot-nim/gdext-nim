@@ -7,14 +7,16 @@ import gdresource; export gdresource
 expandOnClassImported(ColorPalette, Resource)
 
 proc setColors*(self: ColorPalette; colors: PackedColorArray): void =
-  expandMethodBind(className ColorPalette, "set_colors", 3546319833)
-  methodbind.ptrcall(self, [getPtr colors])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPalette, "set_colors", 3546319833)
+  methodbind.ptrcall(self, [getPtr colors], void)
 
 proc getColors*(self: ColorPalette): PackedColorArray =
-  expandMethodBind(className ColorPalette, "get_colors", 1392750486)
-  var ret: encoded PackedColorArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedColorArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ColorPalette, "get_colors", 1392750486)
+  methodbind.ptrcall(self, [], PackedColorArray)
 
 template colors*(self: ColorPalette): untyped = self.getColors()
 template `colors=`*(self: ColorPalette; value) = self.setColors(value)

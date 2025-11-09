@@ -7,25 +7,25 @@ import gdresource; export gdresource
 expandOnClassImported(PackedScene, Resource)
 
 proc pack*(self: PackedScene; path: Node): Error =
-  expandMethodBind(className PackedScene, "pack", 2584678054)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PackedScene, "pack", 2584678054)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc instantiate*(self: PackedScene; editState: PackedScene_GenEditState = genEditStateDisabled): Node =
-  expandMethodBind(className PackedScene, "instantiate", 2628778455)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr editState], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PackedScene, "instantiate", 2628778455)
+  methodbind.ptrcall(self, [getPtr editState], Node)
 
 proc canInstantiate*(self: PackedScene): bool =
-  expandMethodBind(className PackedScene, "can_instantiate", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PackedScene, "can_instantiate", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getState*(self: PackedScene): gdref SceneState =
-  expandMethodBind(className PackedScene, "get_state", 3479783971)
-  var ret: encoded gdref SceneState
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref SceneState)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PackedScene, "get_state", 3479783971)
+  methodbind.ptrcall(self, [], gdref SceneState)

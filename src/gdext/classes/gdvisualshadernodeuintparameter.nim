@@ -7,24 +7,28 @@ import gdvisualshadernodeparameter; export gdvisualshadernodeparameter
 expandOnClassImported(VisualShaderNodeUIntParameter, VisualShaderNodeParameter)
 
 proc setDefaultValueEnabled*(self: VisualShaderNodeUIntParameter; enabled: bool): void =
-  expandMethodBind(className VisualShaderNodeUIntParameter, "set_default_value_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntParameter, "set_default_value_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isDefaultValueEnabled*(self: VisualShaderNodeUIntParameter): bool =
-  expandMethodBind(className VisualShaderNodeUIntParameter, "is_default_value_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntParameter, "is_default_value_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDefaultValue*(self: VisualShaderNodeUIntParameter; value: int32): void =
-  expandMethodBind(className VisualShaderNodeUIntParameter, "set_default_value", 1286410249)
-  methodbind.ptrcall(self, [getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntParameter, "set_default_value", 1286410249)
+  methodbind.ptrcall(self, [getPtr value], void)
 
 proc getDefaultValue*(self: VisualShaderNodeUIntParameter): int32 =
-  expandMethodBind(className VisualShaderNodeUIntParameter, "get_default_value", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeUIntParameter, "get_default_value", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template defaultValueEnabled*(self: VisualShaderNodeUIntParameter): untyped = self.isDefaultValueEnabled()
 template `defaultValueEnabled=`*(self: VisualShaderNodeUIntParameter; value) = self.setDefaultValueEnabled(value)

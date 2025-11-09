@@ -7,20 +7,22 @@ import gdacceptdialog; export gdacceptdialog
 expandOnClassImported(ConfirmationDialog, AcceptDialog)
 
 proc getCancelButton*(self: ConfirmationDialog): Button =
-  expandMethodBind(className ConfirmationDialog, "get_cancel_button", 1856205918)
-  var ret: encoded Button
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Button)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConfirmationDialog, "get_cancel_button", 1856205918)
+  methodbind.ptrcall(self, [], Button)
 
 proc setCancelButtonText*(self: ConfirmationDialog; text: String): void =
-  expandMethodBind(className ConfirmationDialog, "set_cancel_button_text", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConfirmationDialog, "set_cancel_button_text", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getCancelButtonText*(self: ConfirmationDialog): String =
-  expandMethodBind(className ConfirmationDialog, "get_cancel_button_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ConfirmationDialog, "get_cancel_button_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template cancelButtonText*(self: ConfirmationDialog): untyped = self.getCancelButtonText()
 template `cancelButtonText=`*(self: ConfirmationDialog; value) = self.setCancelButtonText(value)

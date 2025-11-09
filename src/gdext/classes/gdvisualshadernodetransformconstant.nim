@@ -7,14 +7,16 @@ import gdvisualshadernodeconstant; export gdvisualshadernodeconstant
 expandOnClassImported(VisualShaderNodeTransformConstant, VisualShaderNodeConstant)
 
 proc setConstant*(self: VisualShaderNodeTransformConstant; constant: Transform3D): void =
-  expandMethodBind(className VisualShaderNodeTransformConstant, "set_constant", 2952846383)
-  methodbind.ptrcall(self, [getPtr constant])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTransformConstant, "set_constant", 2952846383)
+  methodbind.ptrcall(self, [getPtr constant], void)
 
 proc getConstant*(self: VisualShaderNodeTransformConstant): Transform3D =
-  expandMethodBind(className VisualShaderNodeTransformConstant, "get_constant", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeTransformConstant, "get_constant", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 template constant*(self: VisualShaderNodeTransformConstant): untyped = self.getConstant()
 template `constant=`*(self: VisualShaderNodeTransformConstant; value) = self.setConstant(value)

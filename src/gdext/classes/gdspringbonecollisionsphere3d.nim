@@ -7,24 +7,28 @@ import gdspringbonecollision3d; export gdspringbonecollision3d
 expandOnClassImported(SpringBoneCollisionSphere3D, SpringBoneCollision3D)
 
 proc setRadius*(self: SpringBoneCollisionSphere3D; radius: Float): void =
-  expandMethodBind(className SpringBoneCollisionSphere3D, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SpringBoneCollisionSphere3D, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: SpringBoneCollisionSphere3D): Float =
-  expandMethodBind(className SpringBoneCollisionSphere3D, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SpringBoneCollisionSphere3D, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setInside*(self: SpringBoneCollisionSphere3D; enabled: bool): void =
-  expandMethodBind(className SpringBoneCollisionSphere3D, "set_inside", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SpringBoneCollisionSphere3D, "set_inside", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isInside*(self: SpringBoneCollisionSphere3D): bool =
-  expandMethodBind(className SpringBoneCollisionSphere3D, "is_inside", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SpringBoneCollisionSphere3D, "is_inside", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template radius*(self: SpringBoneCollisionSphere3D): untyped = self.getRadius()
 template `radius=`*(self: SpringBoneCollisionSphere3D; value) = self.setRadius(value)

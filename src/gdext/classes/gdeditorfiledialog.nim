@@ -7,190 +7,232 @@ import gdconfirmationdialog; export gdconfirmationdialog
 expandOnClassImported(EditorFileDialog, ConfirmationDialog)
 
 proc clearFilters*(self: EditorFileDialog): void =
-  expandMethodBind(className EditorFileDialog, "clear_filters", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "clear_filters", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc addFilter*(self: EditorFileDialog; filter: String; description: String = newGdString()): void =
-  expandMethodBind(className EditorFileDialog, "add_filter", 3388804757)
-  methodbind.ptrcall(self, [getPtr filter, getPtr description])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "add_filter", 3388804757)
+  methodbind.ptrcall(self, [getPtr filter, getPtr description], void)
 
 proc setFilters*(self: EditorFileDialog; filters: PackedStringArray): void =
-  expandMethodBind(className EditorFileDialog, "set_filters", 4015028928)
-  methodbind.ptrcall(self, [getPtr filters])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_filters", 4015028928)
+  methodbind.ptrcall(self, [getPtr filters], void)
 
 proc getFilters*(self: EditorFileDialog): PackedStringArray =
-  expandMethodBind(className EditorFileDialog, "get_filters", 1139954409)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_filters", 1139954409)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc getOptionName*(self: EditorFileDialog; option: int32): String =
-  expandMethodBind(className EditorFileDialog, "get_option_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr option], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_option_name", 844755477)
+  methodbind.ptrcall(self, [getPtr option], String)
 
 proc getOptionValues*(self: EditorFileDialog; option: int32): PackedStringArray =
-  expandMethodBind(className EditorFileDialog, "get_option_values", 647634434)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [getPtr option], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_option_values", 647634434)
+  methodbind.ptrcall(self, [getPtr option], PackedStringArray)
 
 proc getOptionDefault*(self: EditorFileDialog; option: int32): int32 =
-  expandMethodBind(className EditorFileDialog, "get_option_default", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr option], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_option_default", 923996154)
+  methodbind.ptrcall(self, [getPtr option], int32)
 
 proc setOptionName*(self: EditorFileDialog; option: int32; name: String): void =
-  expandMethodBind(className EditorFileDialog, "set_option_name", 501894301)
-  methodbind.ptrcall(self, [getPtr option, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_option_name", 501894301)
+  methodbind.ptrcall(self, [getPtr option, getPtr name], void)
 
 proc setOptionValues*(self: EditorFileDialog; option: int32; values: PackedStringArray): void =
-  expandMethodBind(className EditorFileDialog, "set_option_values", 3353661094)
-  methodbind.ptrcall(self, [getPtr option, getPtr values])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_option_values", 3353661094)
+  methodbind.ptrcall(self, [getPtr option, getPtr values], void)
 
 proc setOptionDefault*(self: EditorFileDialog; option: int32; defaultValueIndex: int32): void =
-  expandMethodBind(className EditorFileDialog, "set_option_default", 3937882851)
-  methodbind.ptrcall(self, [getPtr option, getPtr defaultValueIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_option_default", 3937882851)
+  methodbind.ptrcall(self, [getPtr option, getPtr defaultValueIndex], void)
 
 proc setOptionCount*(self: EditorFileDialog; count: int32): void =
-  expandMethodBind(className EditorFileDialog, "set_option_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_option_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getOptionCount*(self: EditorFileDialog): int32 =
-  expandMethodBind(className EditorFileDialog, "get_option_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_option_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc addOption*(self: EditorFileDialog; name: String; values: PackedStringArray; defaultValueIndex: int32): void =
-  expandMethodBind(className EditorFileDialog, "add_option", 149592325)
-  methodbind.ptrcall(self, [getPtr name, getPtr values, getPtr defaultValueIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "add_option", 149592325)
+  methodbind.ptrcall(self, [getPtr name, getPtr values, getPtr defaultValueIndex], void)
 
 proc getSelectedOptions*(self: EditorFileDialog): Dictionary =
-  expandMethodBind(className EditorFileDialog, "get_selected_options", 3102165223)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_selected_options", 3102165223)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc clearFilenameFilter*(self: EditorFileDialog): void =
-  expandMethodBind(className EditorFileDialog, "clear_filename_filter", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "clear_filename_filter", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setFilenameFilter*(self: EditorFileDialog; filter: String): void =
-  expandMethodBind(className EditorFileDialog, "set_filename_filter", 83702148)
-  methodbind.ptrcall(self, [getPtr filter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_filename_filter", 83702148)
+  methodbind.ptrcall(self, [getPtr filter], void)
 
 proc getFilenameFilter*(self: EditorFileDialog): String =
-  expandMethodBind(className EditorFileDialog, "get_filename_filter", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_filename_filter", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getCurrentDir*(self: EditorFileDialog): String =
-  expandMethodBind(className EditorFileDialog, "get_current_dir", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_current_dir", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getCurrentFile*(self: EditorFileDialog): String =
-  expandMethodBind(className EditorFileDialog, "get_current_file", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_current_file", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getCurrentPath*(self: EditorFileDialog): String =
-  expandMethodBind(className EditorFileDialog, "get_current_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_current_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setCurrentDir*(self: EditorFileDialog; dir: String): void =
-  expandMethodBind(className EditorFileDialog, "set_current_dir", 83702148)
-  methodbind.ptrcall(self, [getPtr dir])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_current_dir", 83702148)
+  methodbind.ptrcall(self, [getPtr dir], void)
 
 proc setCurrentFile*(self: EditorFileDialog; file: String): void =
-  expandMethodBind(className EditorFileDialog, "set_current_file", 83702148)
-  methodbind.ptrcall(self, [getPtr file])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_current_file", 83702148)
+  methodbind.ptrcall(self, [getPtr file], void)
 
 proc setCurrentPath*(self: EditorFileDialog; path: String): void =
-  expandMethodBind(className EditorFileDialog, "set_current_path", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_current_path", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc setFileMode*(self: EditorFileDialog; mode: EditorFileDialog_FileMode): void =
-  expandMethodBind(className EditorFileDialog, "set_file_mode", 274150415)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_file_mode", 274150415)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getFileMode*(self: EditorFileDialog): EditorFileDialog_FileMode =
-  expandMethodBind(className EditorFileDialog, "get_file_mode", 2681044145)
-  var ret: encoded EditorFileDialog_FileMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorFileDialog_FileMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_file_mode", 2681044145)
+  methodbind.ptrcall(self, [], EditorFileDialog_FileMode)
 
 proc getVbox*(self: EditorFileDialog): VBoxContainer =
-  expandMethodBind(className EditorFileDialog, "get_vbox", 915758477)
-  var ret: encoded VBoxContainer
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VBoxContainer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_vbox", 915758477)
+  methodbind.ptrcall(self, [], VBoxContainer)
 
 proc getLineEdit*(self: EditorFileDialog): LineEdit =
-  expandMethodBind(className EditorFileDialog, "get_line_edit", 4071694264)
-  var ret: encoded LineEdit
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LineEdit)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_line_edit", 4071694264)
+  methodbind.ptrcall(self, [], LineEdit)
 
 proc setAccess*(self: EditorFileDialog; access: EditorFileDialog_Access): void =
-  expandMethodBind(className EditorFileDialog, "set_access", 3882893764)
-  methodbind.ptrcall(self, [getPtr access])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_access", 3882893764)
+  methodbind.ptrcall(self, [getPtr access], void)
 
 proc getAccess*(self: EditorFileDialog): EditorFileDialog_Access =
-  expandMethodBind(className EditorFileDialog, "get_access", 778734016)
-  var ret: encoded EditorFileDialog_Access
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorFileDialog_Access)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_access", 778734016)
+  methodbind.ptrcall(self, [], EditorFileDialog_Access)
 
 proc setShowHiddenFiles*(self: EditorFileDialog; show: bool): void =
-  expandMethodBind(className EditorFileDialog, "set_show_hidden_files", 2586408642)
-  methodbind.ptrcall(self, [getPtr show])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_show_hidden_files", 2586408642)
+  methodbind.ptrcall(self, [getPtr show], void)
 
 proc isShowingHiddenFiles*(self: EditorFileDialog): bool =
-  expandMethodBind(className EditorFileDialog, "is_showing_hidden_files", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "is_showing_hidden_files", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDisplayMode*(self: EditorFileDialog; mode: EditorFileDialog_DisplayMode): void =
-  expandMethodBind(className EditorFileDialog, "set_display_mode", 3049004050)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_display_mode", 3049004050)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getDisplayMode*(self: EditorFileDialog): EditorFileDialog_DisplayMode =
-  expandMethodBind(className EditorFileDialog, "get_display_mode", 3517174669)
-  var ret: encoded EditorFileDialog_DisplayMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(EditorFileDialog_DisplayMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "get_display_mode", 3517174669)
+  methodbind.ptrcall(self, [], EditorFileDialog_DisplayMode)
 
 proc setDisableOverwriteWarning*(self: EditorFileDialog; disable: bool): void =
-  expandMethodBind(className EditorFileDialog, "set_disable_overwrite_warning", 2586408642)
-  methodbind.ptrcall(self, [getPtr disable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "set_disable_overwrite_warning", 2586408642)
+  methodbind.ptrcall(self, [getPtr disable], void)
 
 proc isOverwriteWarningDisabled*(self: EditorFileDialog): bool =
-  expandMethodBind(className EditorFileDialog, "is_overwrite_warning_disabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "is_overwrite_warning_disabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc addSideMenu*(self: EditorFileDialog; menu: Control; title: String = newGdString()): void =
-  expandMethodBind(className EditorFileDialog, "add_side_menu", 402368861)
-  methodbind.ptrcall(self, [getPtr menu, getPtr title])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "add_side_menu", 402368861)
+  methodbind.ptrcall(self, [getPtr menu, getPtr title], void)
 
 proc popupFileDialog*(self: EditorFileDialog): void =
-  expandMethodBind(className EditorFileDialog, "popup_file_dialog", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "popup_file_dialog", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc invalidate*(self: EditorFileDialog): void =
-  expandMethodBind(className EditorFileDialog, "invalidate", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorFileDialog, "invalidate", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 template access*(self: EditorFileDialog): untyped = self.getAccess()
 template `access=`*(self: EditorFileDialog; value) = self.setAccess(value)

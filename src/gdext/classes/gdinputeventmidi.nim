@@ -7,84 +7,100 @@ import gdinputevent; export gdinputevent
 expandOnClassImported(InputEventMIDI, InputEvent)
 
 proc setChannel*(self: InputEventMIDI; channel: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_channel", 1286410249)
-  methodbind.ptrcall(self, [getPtr channel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_channel", 1286410249)
+  methodbind.ptrcall(self, [getPtr channel], void)
 
 proc getChannel*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_channel", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_channel", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMessage*(self: InputEventMIDI; message: MIDIMessage): void =
-  expandMethodBind(className InputEventMIDI, "set_message", 1064271510)
-  methodbind.ptrcall(self, [getPtr message])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_message", 1064271510)
+  methodbind.ptrcall(self, [getPtr message], void)
 
 proc getMessage*(self: InputEventMIDI): MIDIMessage =
-  expandMethodBind(className InputEventMIDI, "get_message", 1936512097)
-  var ret: encoded MIDIMessage
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(MIDIMessage)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_message", 1936512097)
+  methodbind.ptrcall(self, [], MIDIMessage)
 
 proc setPitch*(self: InputEventMIDI; pitch: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_pitch", 1286410249)
-  methodbind.ptrcall(self, [getPtr pitch])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_pitch", 1286410249)
+  methodbind.ptrcall(self, [getPtr pitch], void)
 
 proc getPitch*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_pitch", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_pitch", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setVelocity*(self: InputEventMIDI; velocity: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_velocity", 1286410249)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_velocity", 1286410249)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getVelocity*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_velocity", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_velocity", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setInstrument*(self: InputEventMIDI; instrument: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_instrument", 1286410249)
-  methodbind.ptrcall(self, [getPtr instrument])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_instrument", 1286410249)
+  methodbind.ptrcall(self, [getPtr instrument], void)
 
 proc getInstrument*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_instrument", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_instrument", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPressure*(self: InputEventMIDI; pressure: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_pressure", 1286410249)
-  methodbind.ptrcall(self, [getPtr pressure])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_pressure", 1286410249)
+  methodbind.ptrcall(self, [getPtr pressure], void)
 
 proc getPressure*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_pressure", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_pressure", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setControllerNumber*(self: InputEventMIDI; controllerNumber: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_controller_number", 1286410249)
-  methodbind.ptrcall(self, [getPtr controllerNumber])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_controller_number", 1286410249)
+  methodbind.ptrcall(self, [getPtr controllerNumber], void)
 
 proc getControllerNumber*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_controller_number", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_controller_number", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setControllerValue*(self: InputEventMIDI; controllerValue: int32): void =
-  expandMethodBind(className InputEventMIDI, "set_controller_value", 1286410249)
-  methodbind.ptrcall(self, [getPtr controllerValue])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "set_controller_value", 1286410249)
+  methodbind.ptrcall(self, [getPtr controllerValue], void)
 
 proc getControllerValue*(self: InputEventMIDI): int32 =
-  expandMethodBind(className InputEventMIDI, "get_controller_value", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMIDI, "get_controller_value", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template channel*(self: InputEventMIDI): untyped = self.getChannel()
 template `channel=`*(self: InputEventMIDI; value) = self.setChannel(value)

@@ -7,54 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(GLTFMesh, Resource)
 
 proc getOriginalName*(self: GLTFMesh): String =
-  expandMethodBind(className GLTFMesh, "get_original_name", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "get_original_name", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc setOriginalName*(self: GLTFMesh; originalName: String): void =
-  expandMethodBind(className GLTFMesh, "set_original_name", 83702148)
-  methodbind.ptrcall(self, [getPtr originalName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "set_original_name", 83702148)
+  methodbind.ptrcall(self, [getPtr originalName], void)
 
 proc getMesh*(self: GLTFMesh): gdref ImporterMesh =
-  expandMethodBind(className GLTFMesh, "get_mesh", 3754628756)
-  var ret: encoded gdref ImporterMesh
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref ImporterMesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "get_mesh", 3754628756)
+  methodbind.ptrcall(self, [], gdref ImporterMesh)
 
 proc setMesh*(self: GLTFMesh; mesh: gdref ImporterMesh): void =
-  expandMethodBind(className GLTFMesh, "set_mesh", 2255166972)
-  methodbind.ptrcall(self, [getPtr mesh])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "set_mesh", 2255166972)
+  methodbind.ptrcall(self, [getPtr mesh], void)
 
 proc getBlendWeights*(self: GLTFMesh): PackedFloat32Array =
-  expandMethodBind(className GLTFMesh, "get_blend_weights", 2445143706)
-  var ret: encoded PackedFloat32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedFloat32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "get_blend_weights", 2445143706)
+  methodbind.ptrcall(self, [], PackedFloat32Array)
 
 proc setBlendWeights*(self: GLTFMesh; blendWeights: PackedFloat32Array): void =
-  expandMethodBind(className GLTFMesh, "set_blend_weights", 2899603908)
-  methodbind.ptrcall(self, [getPtr blendWeights])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "set_blend_weights", 2899603908)
+  methodbind.ptrcall(self, [getPtr blendWeights], void)
 
 proc getInstanceMaterials*(self: GLTFMesh): TypedArray[gdref Material] =
-  expandMethodBind(className GLTFMesh, "get_instance_materials", 2915620761)
-  var ret: encoded TypedArray[gdref Material]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "get_instance_materials", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[gdref Material])
 
 proc setInstanceMaterials*(self: GLTFMesh; instanceMaterials: TypedArray[gdref Material]): void =
-  expandMethodBind(className GLTFMesh, "set_instance_materials", 381264803)
-  methodbind.ptrcall(self, [getPtr instanceMaterials])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "set_instance_materials", 381264803)
+  methodbind.ptrcall(self, [getPtr instanceMaterials], void)
 
 proc getAdditionalData*(self: GLTFMesh; extensionName: StringName): Variant =
-  expandMethodBind(className GLTFMesh, "get_additional_data", 2138907829)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr extensionName], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "get_additional_data", 2138907829)
+  methodbind.ptrcall(self, [getPtr extensionName], Variant)
 
 proc setAdditionalData*(self: GLTFMesh; extensionName: StringName; additionalData: Variant): void =
-  expandMethodBind(className GLTFMesh, "set_additional_data", 3776071444)
-  methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFMesh, "set_additional_data", 3776071444)
+  methodbind.ptrcall(self, [getPtr extensionName, getPtr additionalData], void)
 
 template originalName*(self: GLTFMesh): untyped = self.getOriginalName()
 template `originalName=`*(self: GLTFMesh; value) = self.setOriginalName(value)

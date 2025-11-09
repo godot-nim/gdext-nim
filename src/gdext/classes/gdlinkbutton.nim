@@ -7,74 +7,88 @@ import gdbasebutton; export gdbasebutton
 expandOnClassImported(LinkButton, BaseButton)
 
 proc setText*(self: LinkButton; text: String): void =
-  expandMethodBind(className LinkButton, "set_text", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_text", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getText*(self: LinkButton): String =
-  expandMethodBind(className LinkButton, "get_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setTextDirection*(self: LinkButton; direction: Control_TextDirection): void =
-  expandMethodBind(className LinkButton, "set_text_direction", 119160795)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_text_direction", 119160795)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getTextDirection*(self: LinkButton): Control_TextDirection =
-  expandMethodBind(className LinkButton, "get_text_direction", 797257663)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_text_direction", 797257663)
+  methodbind.ptrcall(self, [], Control_TextDirection)
 
 proc setLanguage*(self: LinkButton; language: String): void =
-  expandMethodBind(className LinkButton, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: LinkButton): String =
-  expandMethodBind(className LinkButton, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setUri*(self: LinkButton; uri: String): void =
-  expandMethodBind(className LinkButton, "set_uri", 83702148)
-  methodbind.ptrcall(self, [getPtr uri])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_uri", 83702148)
+  methodbind.ptrcall(self, [getPtr uri], void)
 
 proc getUri*(self: LinkButton): String =
-  expandMethodBind(className LinkButton, "get_uri", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_uri", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setUnderlineMode*(self: LinkButton; underlineMode: LinkButton_UnderlineMode): void =
-  expandMethodBind(className LinkButton, "set_underline_mode", 4032947085)
-  methodbind.ptrcall(self, [getPtr underlineMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_underline_mode", 4032947085)
+  methodbind.ptrcall(self, [getPtr underlineMode], void)
 
 proc getUnderlineMode*(self: LinkButton): LinkButton_UnderlineMode =
-  expandMethodBind(className LinkButton, "get_underline_mode", 568343738)
-  var ret: encoded LinkButton_UnderlineMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LinkButton_UnderlineMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_underline_mode", 568343738)
+  methodbind.ptrcall(self, [], LinkButton_UnderlineMode)
 
 proc setStructuredTextBidiOverride*(self: LinkButton; parser: TextServer_StructuredTextParser): void =
-  expandMethodBind(className LinkButton, "set_structured_text_bidi_override", 55961453)
-  methodbind.ptrcall(self, [getPtr parser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_structured_text_bidi_override", 55961453)
+  methodbind.ptrcall(self, [getPtr parser], void)
 
 proc getStructuredTextBidiOverride*(self: LinkButton): TextServer_StructuredTextParser =
-  expandMethodBind(className LinkButton, "get_structured_text_bidi_override", 3385126229)
-  var ret: encoded TextServer_StructuredTextParser
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_StructuredTextParser)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_structured_text_bidi_override", 3385126229)
+  methodbind.ptrcall(self, [], TextServer_StructuredTextParser)
 
 proc setStructuredTextBidiOverrideOptions*(self: LinkButton; args: Array): void =
-  expandMethodBind(className LinkButton, "set_structured_text_bidi_override_options", 381264803)
-  methodbind.ptrcall(self, [getPtr args])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "set_structured_text_bidi_override_options", 381264803)
+  methodbind.ptrcall(self, [getPtr args], void)
 
 proc getStructuredTextBidiOverrideOptions*(self: LinkButton): Array =
-  expandMethodBind(className LinkButton, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LinkButton, "get_structured_text_bidi_override_options", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 template text*(self: LinkButton): untyped = self.getText()
 template `text=`*(self: LinkButton; value) = self.setText(value)

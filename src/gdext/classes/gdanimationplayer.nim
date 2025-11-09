@@ -7,262 +7,322 @@ import gdanimationmixer; export gdanimationmixer
 expandOnClassImported(AnimationPlayer, AnimationMixer)
 
 proc animationSetNext*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): void =
-  expandMethodBind(className AnimationPlayer, "animation_set_next", 3740211285)
-  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "animation_set_next", 3740211285)
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo], void)
 
 proc animationGetNext*(self: AnimationPlayer; animationFrom: StringName): StringName =
-  expandMethodBind(className AnimationPlayer, "animation_get_next", 1965194235)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr animationFrom], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "animation_get_next", 1965194235)
+  methodbind.ptrcall(self, [getPtr animationFrom], StringName)
 
 proc setBlendTime*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName; sec: float64): void =
-  expandMethodBind(className AnimationPlayer, "set_blend_time", 3231131886)
-  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo, getPtr sec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_blend_time", 3231131886)
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo, getPtr sec], void)
 
 proc getBlendTime*(self: AnimationPlayer; animationFrom: StringName; animationTo: StringName): float64 =
-  expandMethodBind(className AnimationPlayer, "get_blend_time", 1958752504)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_blend_time", 1958752504)
+  methodbind.ptrcall(self, [getPtr animationFrom, getPtr animationTo], float64)
 
 proc setDefaultBlendTime*(self: AnimationPlayer; sec: float64): void =
-  expandMethodBind(className AnimationPlayer, "set_default_blend_time", 373806689)
-  methodbind.ptrcall(self, [getPtr sec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_default_blend_time", 373806689)
+  methodbind.ptrcall(self, [getPtr sec], void)
 
 proc getDefaultBlendTime*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_default_blend_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_default_blend_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setAutoCapture*(self: AnimationPlayer; autoCapture: bool): void =
-  expandMethodBind(className AnimationPlayer, "set_auto_capture", 2586408642)
-  methodbind.ptrcall(self, [getPtr autoCapture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_auto_capture", 2586408642)
+  methodbind.ptrcall(self, [getPtr autoCapture], void)
 
 proc isAutoCapture*(self: AnimationPlayer): bool =
-  expandMethodBind(className AnimationPlayer, "is_auto_capture", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "is_auto_capture", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoCaptureDuration*(self: AnimationPlayer; autoCaptureDuration: float64): void =
-  expandMethodBind(className AnimationPlayer, "set_auto_capture_duration", 373806689)
-  methodbind.ptrcall(self, [getPtr autoCaptureDuration])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_auto_capture_duration", 373806689)
+  methodbind.ptrcall(self, [getPtr autoCaptureDuration], void)
 
 proc getAutoCaptureDuration*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_auto_capture_duration", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_auto_capture_duration", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setAutoCaptureTransitionType*(self: AnimationPlayer; autoCaptureTransitionType: Tween_TransitionType): void =
-  expandMethodBind(className AnimationPlayer, "set_auto_capture_transition_type", 1058637742)
-  methodbind.ptrcall(self, [getPtr autoCaptureTransitionType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_auto_capture_transition_type", 1058637742)
+  methodbind.ptrcall(self, [getPtr autoCaptureTransitionType], void)
 
 proc getAutoCaptureTransitionType*(self: AnimationPlayer): Tween_TransitionType =
-  expandMethodBind(className AnimationPlayer, "get_auto_capture_transition_type", 3842314528)
-  var ret: encoded Tween_TransitionType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Tween_TransitionType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_auto_capture_transition_type", 3842314528)
+  methodbind.ptrcall(self, [], Tween_TransitionType)
 
 proc setAutoCaptureEaseType*(self: AnimationPlayer; autoCaptureEaseType: Tween_EaseType): void =
-  expandMethodBind(className AnimationPlayer, "set_auto_capture_ease_type", 1208105857)
-  methodbind.ptrcall(self, [getPtr autoCaptureEaseType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_auto_capture_ease_type", 1208105857)
+  methodbind.ptrcall(self, [getPtr autoCaptureEaseType], void)
 
 proc getAutoCaptureEaseType*(self: AnimationPlayer): Tween_EaseType =
-  expandMethodBind(className AnimationPlayer, "get_auto_capture_ease_type", 631880200)
-  var ret: encoded Tween_EaseType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Tween_EaseType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_auto_capture_ease_type", 631880200)
+  methodbind.ptrcall(self, [], Tween_EaseType)
 
 proc play*(self: AnimationPlayer; name: StringName = default(StringName); customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "play", 3118260607)
-  methodbind.ptrcall(self, [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play", 3118260607)
+  methodbind.ptrcall(self, [getPtr name, getPtr customBlend, getPtr customSpeed, getPtr fromEnd], void)
 
 proc playSectionWithMarkers*(self: AnimationPlayer; name: StringName = default(StringName); startMarker: StringName = default(StringName); endMarker: StringName = default(StringName); customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "play_section_with_markers", 1421431412)
-  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_section_with_markers", 1421431412)
+  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend, getPtr customSpeed, getPtr fromEnd], void)
 
 proc playSection*(self: AnimationPlayer; name: StringName = default(StringName); startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "play_section", 284774635)
-  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend, getPtr customSpeed, getPtr fromEnd])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_section", 284774635)
+  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend, getPtr customSpeed, getPtr fromEnd], void)
 
 proc playBackwards*(self: AnimationPlayer; name: StringName = default(StringName); customBlend: float64 = -1): void =
-  expandMethodBind(className AnimationPlayer, "play_backwards", 2787282401)
-  methodbind.ptrcall(self, [getPtr name, getPtr customBlend])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_backwards", 2787282401)
+  methodbind.ptrcall(self, [getPtr name, getPtr customBlend], void)
 
 proc playSectionWithMarkersBackwards*(self: AnimationPlayer; name: StringName = default(StringName); startMarker: StringName = default(StringName); endMarker: StringName = default(StringName); customBlend: float64 = -1): void =
-  expandMethodBind(className AnimationPlayer, "play_section_with_markers_backwards", 910195100)
-  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_section_with_markers_backwards", 910195100)
+  methodbind.ptrcall(self, [getPtr name, getPtr startMarker, getPtr endMarker, getPtr customBlend], void)
 
 proc playSectionBackwards*(self: AnimationPlayer; name: StringName = default(StringName); startTime: float64 = -1; endTime: float64 = -1; customBlend: float64 = -1): void =
-  expandMethodBind(className AnimationPlayer, "play_section_backwards", 831955981)
-  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_section_backwards", 831955981)
+  methodbind.ptrcall(self, [getPtr name, getPtr startTime, getPtr endTime, getPtr customBlend], void)
 
 proc playWithCapture*(self: AnimationPlayer; name: StringName = default(StringName); duration: float64 = -1.0; customBlend: float64 = -1; customSpeed: Float = 1.0; fromEnd: bool = false; transType: Tween_TransitionType = transLinear; easeType: Tween_EaseType = easeIn): void =
-  expandMethodBind(className AnimationPlayer, "play_with_capture", 1572969103)
-  methodbind.ptrcall(self, [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "play_with_capture", 1572969103)
+  methodbind.ptrcall(self, [getPtr name, getPtr duration, getPtr customBlend, getPtr customSpeed, getPtr fromEnd, getPtr transType, getPtr easeType], void)
 
 proc pause*(self: AnimationPlayer): void =
-  expandMethodBind(className AnimationPlayer, "pause", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "pause", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc stop*(self: AnimationPlayer; keepState: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "stop", 107499316)
-  methodbind.ptrcall(self, [getPtr keepState])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "stop", 107499316)
+  methodbind.ptrcall(self, [getPtr keepState], void)
 
 proc isPlaying*(self: AnimationPlayer): bool =
-  expandMethodBind(className AnimationPlayer, "is_playing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "is_playing", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCurrentAnimation*(self: AnimationPlayer; animation: String): void =
-  expandMethodBind(className AnimationPlayer, "set_current_animation", 83702148)
-  methodbind.ptrcall(self, [getPtr animation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_current_animation", 83702148)
+  methodbind.ptrcall(self, [getPtr animation], void)
 
 proc getCurrentAnimation*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_current_animation", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_current_animation", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setAssignedAnimation*(self: AnimationPlayer; animation: String): void =
-  expandMethodBind(className AnimationPlayer, "set_assigned_animation", 83702148)
-  methodbind.ptrcall(self, [getPtr animation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_assigned_animation", 83702148)
+  methodbind.ptrcall(self, [getPtr animation], void)
 
 proc getAssignedAnimation*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_assigned_animation", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_assigned_animation", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc queue*(self: AnimationPlayer; name: StringName): void =
-  expandMethodBind(className AnimationPlayer, "queue", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "queue", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getQueue*(self: AnimationPlayer): PackedStringArray =
-  expandMethodBind(className AnimationPlayer, "get_queue", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_queue", 2981934095)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc clearQueue*(self: AnimationPlayer): void =
-  expandMethodBind(className AnimationPlayer, "clear_queue", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "clear_queue", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setSpeedScale*(self: AnimationPlayer; speed: Float): void =
-  expandMethodBind(className AnimationPlayer, "set_speed_scale", 373806689)
-  methodbind.ptrcall(self, [getPtr speed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_speed_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr speed], void)
 
 proc getSpeedScale*(self: AnimationPlayer): Float =
-  expandMethodBind(className AnimationPlayer, "get_speed_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_speed_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getPlayingSpeed*(self: AnimationPlayer): Float =
-  expandMethodBind(className AnimationPlayer, "get_playing_speed", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_playing_speed", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setAutoplay*(self: AnimationPlayer; name: String): void =
-  expandMethodBind(className AnimationPlayer, "set_autoplay", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_autoplay", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getAutoplay*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_autoplay", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_autoplay", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setMovieQuitOnFinishEnabled*(self: AnimationPlayer; enabled: bool): void =
-  expandMethodBind(className AnimationPlayer, "set_movie_quit_on_finish_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_movie_quit_on_finish_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isMovieQuitOnFinishEnabled*(self: AnimationPlayer): bool =
-  expandMethodBind(className AnimationPlayer, "is_movie_quit_on_finish_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "is_movie_quit_on_finish_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getCurrentAnimationPosition*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_current_animation_position", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_current_animation_position", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getCurrentAnimationLength*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_current_animation_length", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_current_animation_length", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setSectionWithMarkers*(self: AnimationPlayer; startMarker: StringName = default(StringName); endMarker: StringName = default(StringName)): void =
-  expandMethodBind(className AnimationPlayer, "set_section_with_markers", 794792241)
-  methodbind.ptrcall(self, [getPtr startMarker, getPtr endMarker])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_section_with_markers", 794792241)
+  methodbind.ptrcall(self, [getPtr startMarker, getPtr endMarker], void)
 
 proc setSection*(self: AnimationPlayer; startTime: float64 = -1; endTime: float64 = -1): void =
-  expandMethodBind(className AnimationPlayer, "set_section", 3749779719)
-  methodbind.ptrcall(self, [getPtr startTime, getPtr endTime])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_section", 3749779719)
+  methodbind.ptrcall(self, [getPtr startTime, getPtr endTime], void)
 
 proc resetSection*(self: AnimationPlayer): void =
-  expandMethodBind(className AnimationPlayer, "reset_section", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "reset_section", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getSectionStartTime*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_section_start_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_section_start_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc getSectionEndTime*(self: AnimationPlayer): float64 =
-  expandMethodBind(className AnimationPlayer, "get_section_end_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_section_end_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc hasSection*(self: AnimationPlayer): bool =
-  expandMethodBind(className AnimationPlayer, "has_section", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "has_section", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc seek*(self: AnimationPlayer; seconds: float64; update: bool = false; updateOnly: bool = false): void =
-  expandMethodBind(className AnimationPlayer, "seek", 1807872683)
-  methodbind.ptrcall(self, [getPtr seconds, getPtr update, getPtr updateOnly])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "seek", 1807872683)
+  methodbind.ptrcall(self, [getPtr seconds, getPtr update, getPtr updateOnly], void)
 
 proc setProcessCallback*(self: AnimationPlayer; mode: AnimationPlayer_AnimationProcessCallback): void =
-  expandMethodBind(className AnimationPlayer, "set_process_callback", 1663839457)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_process_callback", 1663839457)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getProcessCallback*(self: AnimationPlayer): AnimationPlayer_AnimationProcessCallback =
-  expandMethodBind(className AnimationPlayer, "get_process_callback", 4207496604)
-  var ret: encoded AnimationPlayer_AnimationProcessCallback
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationPlayer_AnimationProcessCallback)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_process_callback", 4207496604)
+  methodbind.ptrcall(self, [], AnimationPlayer_AnimationProcessCallback)
 
 proc setMethodCallMode*(self: AnimationPlayer; mode: AnimationPlayer_AnimationMethodCallMode): void =
-  expandMethodBind(className AnimationPlayer, "set_method_call_mode", 3413514846)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_method_call_mode", 3413514846)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getMethodCallMode*(self: AnimationPlayer): AnimationPlayer_AnimationMethodCallMode =
-  expandMethodBind(className AnimationPlayer, "get_method_call_mode", 3583380054)
-  var ret: encoded AnimationPlayer_AnimationMethodCallMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationPlayer_AnimationMethodCallMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_method_call_mode", 3583380054)
+  methodbind.ptrcall(self, [], AnimationPlayer_AnimationMethodCallMode)
 
 proc setRoot*(self: AnimationPlayer; path: NodePath): void =
-  expandMethodBind(className AnimationPlayer, "set_root", 1348162250)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "set_root", 1348162250)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getRoot*(self: AnimationPlayer): NodePath =
-  expandMethodBind(className AnimationPlayer, "get_root", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationPlayer, "get_root", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 template currentAnimation*(self: AnimationPlayer): untyped = self.getCurrentAnimation()
 template `currentAnimation=`*(self: AnimationPlayer; value) = self.setCurrentAnimation(value)

@@ -7,139 +7,139 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(SceneState, RefCounted)
 
 proc getPath*(self: SceneState): String =
-  expandMethodBind(className SceneState, "get_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getBaseSceneState*(self: SceneState): gdref SceneState =
-  expandMethodBind(className SceneState, "get_base_scene_state", 3479783971)
-  var ret: encoded gdref SceneState
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref SceneState)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_base_scene_state", 3479783971)
+  methodbind.ptrcall(self, [], gdref SceneState)
 
 proc getNodeCount*(self: SceneState): int32 =
-  expandMethodBind(className SceneState, "get_node_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getNodeType*(self: SceneState; idx: int32): StringName =
-  expandMethodBind(className SceneState, "get_node_type", 659327637)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_type", 659327637)
+  methodbind.ptrcall(self, [getPtr idx], StringName)
 
 proc getNodeName*(self: SceneState; idx: int32): StringName =
-  expandMethodBind(className SceneState, "get_node_name", 659327637)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_name", 659327637)
+  methodbind.ptrcall(self, [getPtr idx], StringName)
 
 proc getNodePath*(self: SceneState; idx: int32; forParent: bool = false): NodePath =
-  expandMethodBind(className SceneState, "get_node_path", 2272487792)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr idx, getPtr forParent], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_path", 2272487792)
+  methodbind.ptrcall(self, [getPtr idx, getPtr forParent], NodePath)
 
 proc getNodeOwnerPath*(self: SceneState; idx: int32): NodePath =
-  expandMethodBind(className SceneState, "get_node_owner_path", 408788394)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_owner_path", 408788394)
+  methodbind.ptrcall(self, [getPtr idx], NodePath)
 
 proc isNodeInstancePlaceholder*(self: SceneState; idx: int32): bool =
-  expandMethodBind(className SceneState, "is_node_instance_placeholder", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "is_node_instance_placeholder", 1116898809)
+  methodbind.ptrcall(self, [getPtr idx], bool)
 
 proc getNodeInstancePlaceholder*(self: SceneState; idx: int32): String =
-  expandMethodBind(className SceneState, "get_node_instance_placeholder", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_instance_placeholder", 844755477)
+  methodbind.ptrcall(self, [getPtr idx], String)
 
 proc getNodeInstance*(self: SceneState; idx: int32): gdref PackedScene =
-  expandMethodBind(className SceneState, "get_node_instance", 511017218)
-  var ret: encoded gdref PackedScene
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(gdref PackedScene)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_instance", 511017218)
+  methodbind.ptrcall(self, [getPtr idx], gdref PackedScene)
 
 proc getNodeGroups*(self: SceneState; idx: int32): PackedStringArray =
-  expandMethodBind(className SceneState, "get_node_groups", 647634434)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_groups", 647634434)
+  methodbind.ptrcall(self, [getPtr idx], PackedStringArray)
 
 proc getNodeIndex*(self: SceneState; idx: int32): int32 =
-  expandMethodBind(className SceneState, "get_node_index", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_index", 923996154)
+  methodbind.ptrcall(self, [getPtr idx], int32)
 
 proc getNodePropertyCount*(self: SceneState; idx: int32): int32 =
-  expandMethodBind(className SceneState, "get_node_property_count", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_property_count", 923996154)
+  methodbind.ptrcall(self, [getPtr idx], int32)
 
 proc getNodePropertyName*(self: SceneState; idx: int32; propIdx: int32): StringName =
-  expandMethodBind(className SceneState, "get_node_property_name", 351665558)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr idx, getPtr propIdx], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_property_name", 351665558)
+  methodbind.ptrcall(self, [getPtr idx, getPtr propIdx], StringName)
 
 proc getNodePropertyValue*(self: SceneState; idx: int32; propIdx: int32): Variant =
-  expandMethodBind(className SceneState, "get_node_property_value", 678354945)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr idx, getPtr propIdx], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_node_property_value", 678354945)
+  methodbind.ptrcall(self, [getPtr idx, getPtr propIdx], Variant)
 
 proc getConnectionCount*(self: SceneState): int32 =
-  expandMethodBind(className SceneState, "get_connection_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getConnectionSource*(self: SceneState; idx: int32): NodePath =
-  expandMethodBind(className SceneState, "get_connection_source", 408788394)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_source", 408788394)
+  methodbind.ptrcall(self, [getPtr idx], NodePath)
 
 proc getConnectionSignal*(self: SceneState; idx: int32): StringName =
-  expandMethodBind(className SceneState, "get_connection_signal", 659327637)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_signal", 659327637)
+  methodbind.ptrcall(self, [getPtr idx], StringName)
 
 proc getConnectionTarget*(self: SceneState; idx: int32): NodePath =
-  expandMethodBind(className SceneState, "get_connection_target", 408788394)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_target", 408788394)
+  methodbind.ptrcall(self, [getPtr idx], NodePath)
 
 proc getConnectionMethod*(self: SceneState; idx: int32): StringName =
-  expandMethodBind(className SceneState, "get_connection_method", 659327637)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_method", 659327637)
+  methodbind.ptrcall(self, [getPtr idx], StringName)
 
 proc getConnectionFlags*(self: SceneState; idx: int32): int32 =
-  expandMethodBind(className SceneState, "get_connection_flags", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_flags", 923996154)
+  methodbind.ptrcall(self, [getPtr idx], int32)
 
 proc getConnectionBinds*(self: SceneState; idx: int32): Array =
-  expandMethodBind(className SceneState, "get_connection_binds", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_binds", 663333327)
+  methodbind.ptrcall(self, [getPtr idx], Array)
 
 proc getConnectionUnbinds*(self: SceneState; idx: int32): int32 =
-  expandMethodBind(className SceneState, "get_connection_unbinds", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneState, "get_connection_unbinds", 923996154)
+  methodbind.ptrcall(self, [getPtr idx], int32)

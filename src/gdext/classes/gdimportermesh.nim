@@ -7,123 +7,139 @@ import gdresource; export gdresource
 expandOnClassImported(ImporterMesh, Resource)
 
 proc addBlendShape*(self: ImporterMesh; name: String): void =
-  expandMethodBind(className ImporterMesh, "add_blend_shape", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "add_blend_shape", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getBlendShapeCount*(self: ImporterMesh): int32 =
-  expandMethodBind(className ImporterMesh, "get_blend_shape_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_blend_shape_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getBlendShapeName*(self: ImporterMesh; blendShapeIdx: int32): String =
-  expandMethodBind(className ImporterMesh, "get_blend_shape_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr blendShapeIdx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_blend_shape_name", 844755477)
+  methodbind.ptrcall(self, [getPtr blendShapeIdx], String)
 
 proc setBlendShapeMode*(self: ImporterMesh; mode: Mesh_BlendShapeMode): void =
-  expandMethodBind(className ImporterMesh, "set_blend_shape_mode", 227983991)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "set_blend_shape_mode", 227983991)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getBlendShapeMode*(self: ImporterMesh): Mesh_BlendShapeMode =
-  expandMethodBind(className ImporterMesh, "get_blend_shape_mode", 836485024)
-  var ret: encoded Mesh_BlendShapeMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Mesh_BlendShapeMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_blend_shape_mode", 836485024)
+  methodbind.ptrcall(self, [], Mesh_BlendShapeMode)
 
 proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = newTypedArray[Array](); lods: Dictionary = newDictionary(); material: gdref Material = default gdref Material; name: String = newGdString(); flags: uint64 = 0): void =
-  expandMethodBind(className ImporterMesh, "add_surface", 1740448849)
-  methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr material, getPtr name, getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "add_surface", 1740448849)
+  methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr material, getPtr name, getPtr flags], void)
 
 proc getSurfaceCount*(self: ImporterMesh): int32 =
-  expandMethodBind(className ImporterMesh, "get_surface_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getSurfacePrimitiveType*(self: ImporterMesh; surfaceIdx: int32): Mesh_PrimitiveType =
-  expandMethodBind(className ImporterMesh, "get_surface_primitive_type", 3552571330)
-  var ret: encoded Mesh_PrimitiveType
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(Mesh_PrimitiveType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_primitive_type", 3552571330)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], Mesh_PrimitiveType)
 
 proc getSurfaceName*(self: ImporterMesh; surfaceIdx: int32): String =
-  expandMethodBind(className ImporterMesh, "get_surface_name", 844755477)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_name", 844755477)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], String)
 
 proc getSurfaceArrays*(self: ImporterMesh; surfaceIdx: int32): Array =
-  expandMethodBind(className ImporterMesh, "get_surface_arrays", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_arrays", 663333327)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], Array)
 
 proc getSurfaceBlendShapeArrays*(self: ImporterMesh; surfaceIdx: int32; blendShapeIdx: int32): Array =
-  expandMethodBind(className ImporterMesh, "get_surface_blend_shape_arrays", 2345056839)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr blendShapeIdx], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_blend_shape_arrays", 2345056839)
+  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr blendShapeIdx], Array)
 
 proc getSurfaceLodCount*(self: ImporterMesh; surfaceIdx: int32): int32 =
-  expandMethodBind(className ImporterMesh, "get_surface_lod_count", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_lod_count", 923996154)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], int32)
 
 proc getSurfaceLodSize*(self: ImporterMesh; surfaceIdx: int32; lodIdx: int32): Float =
-  expandMethodBind(className ImporterMesh, "get_surface_lod_size", 3085491603)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr lodIdx], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_lod_size", 3085491603)
+  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr lodIdx], Float)
 
 proc getSurfaceLodIndices*(self: ImporterMesh; surfaceIdx: int32; lodIdx: int32): PackedInt32Array =
-  expandMethodBind(className ImporterMesh, "get_surface_lod_indices", 1265128013)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr lodIdx], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_lod_indices", 1265128013)
+  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr lodIdx], PackedInt32Array)
 
 proc getSurfaceMaterial*(self: ImporterMesh; surfaceIdx: int32): gdref Material =
-  expandMethodBind(className ImporterMesh, "get_surface_material", 2897466400)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_material", 2897466400)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], gdref Material)
 
 proc getSurfaceFormat*(self: ImporterMesh; surfaceIdx: int32): uint64 =
-  expandMethodBind(className ImporterMesh, "get_surface_format", 923996154)
-  var ret: encoded uint64
-  methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(uint64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_surface_format", 923996154)
+  methodbind.ptrcall(self, [getPtr surfaceIdx], uint64)
 
 proc setSurfaceName*(self: ImporterMesh; surfaceIdx: int32; name: String): void =
-  expandMethodBind(className ImporterMesh, "set_surface_name", 501894301)
-  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "set_surface_name", 501894301)
+  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr name], void)
 
 proc setSurfaceMaterial*(self: ImporterMesh; surfaceIdx: int32; material: gdref Material): void =
-  expandMethodBind(className ImporterMesh, "set_surface_material", 3671737478)
-  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "set_surface_material", 3671737478)
+  methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr material], void)
 
 proc generateLods*(self: ImporterMesh; normalMergeAngle: Float; normalSplitAngle: Float; boneTransformArray: Array): void =
-  expandMethodBind(className ImporterMesh, "generate_lods", 2491878677)
-  methodbind.ptrcall(self, [getPtr normalMergeAngle, getPtr normalSplitAngle, getPtr boneTransformArray])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "generate_lods", 2491878677)
+  methodbind.ptrcall(self, [getPtr normalMergeAngle, getPtr normalSplitAngle, getPtr boneTransformArray], void)
 
 proc getMesh*(self: ImporterMesh; baseMesh: gdref ArrayMesh = default gdref ArrayMesh): gdref ArrayMesh =
-  expandMethodBind(className ImporterMesh, "get_mesh", 1457573577)
-  var ret: encoded gdref ArrayMesh
-  methodbind.ptrcall(self, [getPtr baseMesh], addr ret)
-  (addr ret).decode_result(gdref ArrayMesh)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_mesh", 1457573577)
+  methodbind.ptrcall(self, [getPtr baseMesh], gdref ArrayMesh)
 
 proc clear*(self: ImporterMesh): void =
-  expandMethodBind(className ImporterMesh, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setLightmapSizeHint*(self: ImporterMesh; size: Vector2i): void =
-  expandMethodBind(className ImporterMesh, "set_lightmap_size_hint", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "set_lightmap_size_hint", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getLightmapSizeHint*(self: ImporterMesh): Vector2i =
-  expandMethodBind(className ImporterMesh, "get_lightmap_size_hint", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ImporterMesh, "get_lightmap_size_hint", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)

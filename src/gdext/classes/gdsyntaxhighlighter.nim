@@ -22,21 +22,25 @@ proc registerVirtual_updateCache*[T: SyntaxHighlighter](Self: typedesc[T]) =
     errproof: cast[SyntaxHighlighter](p_instance).updateCache()
 
 proc getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary =
-  expandMethodBind(className SyntaxHighlighter, "get_line_syntax_highlighting", 3554694381)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [getPtr line], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SyntaxHighlighter, "get_line_syntax_highlighting", 3554694381)
+  methodbind.ptrcall(self, [getPtr line], Dictionary)
 
 proc updateCache*(self: SyntaxHighlighter): void =
-  expandMethodBind(className SyntaxHighlighter, "update_cache", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SyntaxHighlighter, "update_cache", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc clearHighlightingCache*(self: SyntaxHighlighter): void =
-  expandMethodBind(className SyntaxHighlighter, "clear_highlighting_cache", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SyntaxHighlighter, "clear_highlighting_cache", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getTextEdit*(self: SyntaxHighlighter): TextEdit =
-  expandMethodBind(className SyntaxHighlighter, "get_text_edit", 1893027089)
-  var ret: encoded TextEdit
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextEdit)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SyntaxHighlighter, "get_text_edit", 1893027089)
+  methodbind.ptrcall(self, [], TextEdit)

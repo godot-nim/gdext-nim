@@ -697,13 +697,13 @@ proc registerVirtual_getProcessInfo*[T: PhysicsServer2DExtension](Self: typedesc
     errproof: cast[PhysicsServer2DExtension](p_instance).getProcessInfo(p_args[0].decode(PhysicsServer2D_ProcessInfo)).encode(r_ret)
 
 proc bodyTestMotionIsExcludingBody*(self: PhysicsServer2DExtension; body: RID): bool =
-  expandMethodBind(className PhysicsServer2DExtension, "body_test_motion_is_excluding_body", 4155700596)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr body], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsServer2DExtension, "body_test_motion_is_excluding_body", 4155700596)
+  methodbind.ptrcall(self, [getPtr body], bool)
 
 proc bodyTestMotionIsExcludingObject*(self: PhysicsServer2DExtension; `object`: uint64): bool =
-  expandMethodBind(className PhysicsServer2DExtension, "body_test_motion_is_excluding_object", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr `object`], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PhysicsServer2DExtension, "body_test_motion_is_excluding_object", 1116898809)
+  methodbind.ptrcall(self, [getPtr `object`], bool)

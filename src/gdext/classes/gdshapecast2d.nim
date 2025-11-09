@@ -7,188 +7,220 @@ import gdnode2d; export gdnode2d
 expandOnClassImported(ShapeCast2D, Node2D)
 
 proc setEnabled*(self: ShapeCast2D; enabled: bool): void =
-  expandMethodBind(className ShapeCast2D, "set_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isEnabled*(self: ShapeCast2D): bool =
-  expandMethodBind(className ShapeCast2D, "is_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "is_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShape*(self: ShapeCast2D; shape: gdref Shape2D): void =
-  expandMethodBind(className ShapeCast2D, "set_shape", 771364740)
-  methodbind.ptrcall(self, [getPtr shape])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_shape", 771364740)
+  methodbind.ptrcall(self, [getPtr shape], void)
 
 proc getShape*(self: ShapeCast2D): gdref Shape2D =
-  expandMethodBind(className ShapeCast2D, "get_shape", 522005891)
-  var ret: encoded gdref Shape2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Shape2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_shape", 522005891)
+  methodbind.ptrcall(self, [], gdref Shape2D)
 
 proc setTargetPosition*(self: ShapeCast2D; localPoint: Vector2): void =
-  expandMethodBind(className ShapeCast2D, "set_target_position", 743155724)
-  methodbind.ptrcall(self, [getPtr localPoint])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_target_position", 743155724)
+  methodbind.ptrcall(self, [getPtr localPoint], void)
 
 proc getTargetPosition*(self: ShapeCast2D): Vector2 =
-  expandMethodBind(className ShapeCast2D, "get_target_position", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_target_position", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setMargin*(self: ShapeCast2D; margin: Float): void =
-  expandMethodBind(className ShapeCast2D, "set_margin", 373806689)
-  methodbind.ptrcall(self, [getPtr margin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_margin", 373806689)
+  methodbind.ptrcall(self, [getPtr margin], void)
 
 proc getMargin*(self: ShapeCast2D): Float =
-  expandMethodBind(className ShapeCast2D, "get_margin", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_margin", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxResults*(self: ShapeCast2D; maxRetvals: int32): void =
-  expandMethodBind(className ShapeCast2D, "set_max_results", 1286410249)
-  methodbind.ptrcall(self, [getPtr maxRetvals])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_max_results", 1286410249)
+  methodbind.ptrcall(self, [getPtr maxRetvals], void)
 
 proc getMaxResults*(self: ShapeCast2D): int32 =
-  expandMethodBind(className ShapeCast2D, "get_max_results", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_max_results", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc isColliding*(self: ShapeCast2D): bool =
-  expandMethodBind(className ShapeCast2D, "is_colliding", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "is_colliding", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getCollisionCount*(self: ShapeCast2D): int32 =
-  expandMethodBind(className ShapeCast2D, "get_collision_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc forceShapecastUpdate*(self: ShapeCast2D): void =
-  expandMethodBind(className ShapeCast2D, "force_shapecast_update", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "force_shapecast_update", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getCollider*(self: ShapeCast2D; index: int32): Object =
-  expandMethodBind(className ShapeCast2D, "get_collider", 3332903315)
-  var ret: encoded Object
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Object)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collider", 3332903315)
+  methodbind.ptrcall(self, [getPtr index], Object)
 
 proc getColliderRid*(self: ShapeCast2D; index: int32): RID =
-  expandMethodBind(className ShapeCast2D, "get_collider_rid", 495598643)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collider_rid", 495598643)
+  methodbind.ptrcall(self, [getPtr index], RID)
 
 proc getColliderShape*(self: ShapeCast2D; index: int32): int32 =
-  expandMethodBind(className ShapeCast2D, "get_collider_shape", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collider_shape", 923996154)
+  methodbind.ptrcall(self, [getPtr index], int32)
 
 proc getCollisionPoint*(self: ShapeCast2D; index: int32): Vector2 =
-  expandMethodBind(className ShapeCast2D, "get_collision_point", 2299179447)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_point", 2299179447)
+  methodbind.ptrcall(self, [getPtr index], Vector2)
 
 proc getCollisionNormal*(self: ShapeCast2D; index: int32): Vector2 =
-  expandMethodBind(className ShapeCast2D, "get_collision_normal", 2299179447)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_normal", 2299179447)
+  methodbind.ptrcall(self, [getPtr index], Vector2)
 
 proc getClosestCollisionSafeFraction*(self: ShapeCast2D): Float =
-  expandMethodBind(className ShapeCast2D, "get_closest_collision_safe_fraction", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_closest_collision_safe_fraction", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getClosestCollisionUnsafeFraction*(self: ShapeCast2D): Float =
-  expandMethodBind(className ShapeCast2D, "get_closest_collision_unsafe_fraction", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_closest_collision_unsafe_fraction", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc addExceptionRid*(self: ShapeCast2D; rid: RID): void =
-  expandMethodBind(className ShapeCast2D, "add_exception_rid", 2722037293)
-  methodbind.ptrcall(self, [getPtr rid])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "add_exception_rid", 2722037293)
+  methodbind.ptrcall(self, [getPtr rid], void)
 
 proc addException*(self: ShapeCast2D; node: CollisionObject2D): void =
-  expandMethodBind(className ShapeCast2D, "add_exception", 3090941106)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "add_exception", 3090941106)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc removeExceptionRid*(self: ShapeCast2D; rid: RID): void =
-  expandMethodBind(className ShapeCast2D, "remove_exception_rid", 2722037293)
-  methodbind.ptrcall(self, [getPtr rid])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "remove_exception_rid", 2722037293)
+  methodbind.ptrcall(self, [getPtr rid], void)
 
 proc removeException*(self: ShapeCast2D; node: CollisionObject2D): void =
-  expandMethodBind(className ShapeCast2D, "remove_exception", 3090941106)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "remove_exception", 3090941106)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc clearExceptions*(self: ShapeCast2D): void =
-  expandMethodBind(className ShapeCast2D, "clear_exceptions", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "clear_exceptions", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setCollisionMask*(self: ShapeCast2D; mask: uint32): void =
-  expandMethodBind(className ShapeCast2D, "set_collision_mask", 1286410249)
-  methodbind.ptrcall(self, [getPtr mask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_collision_mask", 1286410249)
+  methodbind.ptrcall(self, [getPtr mask], void)
 
 proc getCollisionMask*(self: ShapeCast2D): uint32 =
-  expandMethodBind(className ShapeCast2D, "get_collision_mask", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_mask", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 proc setCollisionMaskValue*(self: ShapeCast2D; layerNumber: int32; value: bool): void =
-  expandMethodBind(className ShapeCast2D, "set_collision_mask_value", 300928843)
-  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_collision_mask_value", 300928843)
+  methodbind.ptrcall(self, [getPtr layerNumber, getPtr value], void)
 
 proc getCollisionMaskValue*(self: ShapeCast2D; layerNumber: int32): bool =
-  expandMethodBind(className ShapeCast2D, "get_collision_mask_value", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layerNumber], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_mask_value", 1116898809)
+  methodbind.ptrcall(self, [getPtr layerNumber], bool)
 
 proc setExcludeParentBody*(self: ShapeCast2D; mask: bool): void =
-  expandMethodBind(className ShapeCast2D, "set_exclude_parent_body", 2586408642)
-  methodbind.ptrcall(self, [getPtr mask])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_exclude_parent_body", 2586408642)
+  methodbind.ptrcall(self, [getPtr mask], void)
 
 proc getExcludeParentBody*(self: ShapeCast2D): bool =
-  expandMethodBind(className ShapeCast2D, "get_exclude_parent_body", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_exclude_parent_body", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollideWithAreas*(self: ShapeCast2D; enable: bool): void =
-  expandMethodBind(className ShapeCast2D, "set_collide_with_areas", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_collide_with_areas", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isCollideWithAreasEnabled*(self: ShapeCast2D): bool =
-  expandMethodBind(className ShapeCast2D, "is_collide_with_areas_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "is_collide_with_areas_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCollideWithBodies*(self: ShapeCast2D; enable: bool): void =
-  expandMethodBind(className ShapeCast2D, "set_collide_with_bodies", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "set_collide_with_bodies", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isCollideWithBodiesEnabled*(self: ShapeCast2D): bool =
-  expandMethodBind(className ShapeCast2D, "is_collide_with_bodies_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "is_collide_with_bodies_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getCollisionResult*(self: ShapeCast2D): Array =
-  expandMethodBind(className ShapeCast2D, "get_collision_result", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ShapeCast2D, "get_collision_result", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 template enabled*(self: ShapeCast2D): untyped = self.isEnabled()
 template `enabled=`*(self: ShapeCast2D; value) = self.setEnabled(value)

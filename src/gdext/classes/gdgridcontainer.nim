@@ -7,14 +7,16 @@ import gdcontainer; export gdcontainer
 expandOnClassImported(GridContainer, Container)
 
 proc setColumns*(self: GridContainer; columns: int32): void =
-  expandMethodBind(className GridContainer, "set_columns", 1286410249)
-  methodbind.ptrcall(self, [getPtr columns])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GridContainer, "set_columns", 1286410249)
+  methodbind.ptrcall(self, [getPtr columns], void)
 
 proc getColumns*(self: GridContainer): int32 =
-  expandMethodBind(className GridContainer, "get_columns", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GridContainer, "get_columns", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template columns*(self: GridContainer): untyped = self.getColumns()
 template `columns=`*(self: GridContainer; value) = self.setColumns(value)

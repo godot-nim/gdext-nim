@@ -7,58 +7,70 @@ import gdresource; export gdresource
 expandOnClassImported(VisualShaderNode, Resource)
 
 proc getDefaultInputPort*(self: VisualShaderNode; `type`: VisualShaderNode_PortType): int32 =
-  expandMethodBind(className VisualShaderNode, "get_default_input_port", 1894493699)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr `type`], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "get_default_input_port", 1894493699)
+  methodbind.ptrcall(self, [getPtr `type`], int32)
 
 proc setOutputPortForPreview*(self: VisualShaderNode; port: int32): void =
-  expandMethodBind(className VisualShaderNode, "set_output_port_for_preview", 1286410249)
-  methodbind.ptrcall(self, [getPtr port])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "set_output_port_for_preview", 1286410249)
+  methodbind.ptrcall(self, [getPtr port], void)
 
 proc getOutputPortForPreview*(self: VisualShaderNode): int32 =
-  expandMethodBind(className VisualShaderNode, "get_output_port_for_preview", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "get_output_port_for_preview", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setInputPortDefaultValue*(self: VisualShaderNode; port: int32; value: Variant; prevValue: Variant = default(Variant)): void =
-  expandMethodBind(className VisualShaderNode, "set_input_port_default_value", 150923387)
-  methodbind.ptrcall(self, [getPtr port, getPtr value, getPtr prevValue])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "set_input_port_default_value", 150923387)
+  methodbind.ptrcall(self, [getPtr port, getPtr value, getPtr prevValue], void)
 
 proc getInputPortDefaultValue*(self: VisualShaderNode; port: int32): Variant =
-  expandMethodBind(className VisualShaderNode, "get_input_port_default_value", 4227898402)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr port], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "get_input_port_default_value", 4227898402)
+  methodbind.ptrcall(self, [getPtr port], Variant)
 
 proc removeInputPortDefaultValue*(self: VisualShaderNode; port: int32): void =
-  expandMethodBind(className VisualShaderNode, "remove_input_port_default_value", 1286410249)
-  methodbind.ptrcall(self, [getPtr port])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "remove_input_port_default_value", 1286410249)
+  methodbind.ptrcall(self, [getPtr port], void)
 
 proc clearDefaultInputValues*(self: VisualShaderNode): void =
-  expandMethodBind(className VisualShaderNode, "clear_default_input_values", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "clear_default_input_values", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setDefaultInputValues*(self: VisualShaderNode; values: Array): void =
-  expandMethodBind(className VisualShaderNode, "set_default_input_values", 381264803)
-  methodbind.ptrcall(self, [getPtr values])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "set_default_input_values", 381264803)
+  methodbind.ptrcall(self, [getPtr values], void)
 
 proc getDefaultInputValues*(self: VisualShaderNode): Array =
-  expandMethodBind(className VisualShaderNode, "get_default_input_values", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "get_default_input_values", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setFrame*(self: VisualShaderNode; frame: int32): void =
-  expandMethodBind(className VisualShaderNode, "set_frame", 1286410249)
-  methodbind.ptrcall(self, [getPtr frame])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "set_frame", 1286410249)
+  methodbind.ptrcall(self, [getPtr frame], void)
 
 proc getFrame*(self: VisualShaderNode): int32 =
-  expandMethodBind(className VisualShaderNode, "get_frame", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNode, "get_frame", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template outputPortForPreview*(self: VisualShaderNode): untyped = self.getOutputPortForPreview()
 template `outputPortForPreview=`*(self: VisualShaderNode; value) = self.setOutputPortForPreview(value)

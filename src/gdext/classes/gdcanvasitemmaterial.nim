@@ -7,64 +7,76 @@ import gdmaterial; export gdmaterial
 expandOnClassImported(CanvasItemMaterial, Material)
 
 proc setBlendMode*(self: CanvasItemMaterial; blendMode: CanvasItemMaterial_BlendMode): void =
-  expandMethodBind(className CanvasItemMaterial, "set_blend_mode", 1786054936)
-  methodbind.ptrcall(self, [getPtr blendMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_blend_mode", 1786054936)
+  methodbind.ptrcall(self, [getPtr blendMode], void)
 
 proc getBlendMode*(self: CanvasItemMaterial): CanvasItemMaterial_BlendMode =
-  expandMethodBind(className CanvasItemMaterial, "get_blend_mode", 3318684035)
-  var ret: encoded CanvasItemMaterial_BlendMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CanvasItemMaterial_BlendMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_blend_mode", 3318684035)
+  methodbind.ptrcall(self, [], CanvasItemMaterial_BlendMode)
 
 proc setLightMode*(self: CanvasItemMaterial; lightMode: CanvasItemMaterial_LightMode): void =
-  expandMethodBind(className CanvasItemMaterial, "set_light_mode", 628074070)
-  methodbind.ptrcall(self, [getPtr lightMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_light_mode", 628074070)
+  methodbind.ptrcall(self, [getPtr lightMode], void)
 
 proc getLightMode*(self: CanvasItemMaterial): CanvasItemMaterial_LightMode =
-  expandMethodBind(className CanvasItemMaterial, "get_light_mode", 3863292382)
-  var ret: encoded CanvasItemMaterial_LightMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(CanvasItemMaterial_LightMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_light_mode", 3863292382)
+  methodbind.ptrcall(self, [], CanvasItemMaterial_LightMode)
 
 proc setParticlesAnimation*(self: CanvasItemMaterial; particlesAnim: bool): void =
-  expandMethodBind(className CanvasItemMaterial, "set_particles_animation", 2586408642)
-  methodbind.ptrcall(self, [getPtr particlesAnim])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_particles_animation", 2586408642)
+  methodbind.ptrcall(self, [getPtr particlesAnim], void)
 
 proc getParticlesAnimation*(self: CanvasItemMaterial): bool =
-  expandMethodBind(className CanvasItemMaterial, "get_particles_animation", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_particles_animation", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setParticlesAnimHFrames*(self: CanvasItemMaterial; frames: int32): void =
-  expandMethodBind(className CanvasItemMaterial, "set_particles_anim_h_frames", 1286410249)
-  methodbind.ptrcall(self, [getPtr frames])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_particles_anim_h_frames", 1286410249)
+  methodbind.ptrcall(self, [getPtr frames], void)
 
 proc getParticlesAnimHFrames*(self: CanvasItemMaterial): int32 =
-  expandMethodBind(className CanvasItemMaterial, "get_particles_anim_h_frames", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_particles_anim_h_frames", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setParticlesAnimVFrames*(self: CanvasItemMaterial; frames: int32): void =
-  expandMethodBind(className CanvasItemMaterial, "set_particles_anim_v_frames", 1286410249)
-  methodbind.ptrcall(self, [getPtr frames])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_particles_anim_v_frames", 1286410249)
+  methodbind.ptrcall(self, [getPtr frames], void)
 
 proc getParticlesAnimVFrames*(self: CanvasItemMaterial): int32 =
-  expandMethodBind(className CanvasItemMaterial, "get_particles_anim_v_frames", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_particles_anim_v_frames", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setParticlesAnimLoop*(self: CanvasItemMaterial; loop: bool): void =
-  expandMethodBind(className CanvasItemMaterial, "set_particles_anim_loop", 2586408642)
-  methodbind.ptrcall(self, [getPtr loop])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "set_particles_anim_loop", 2586408642)
+  methodbind.ptrcall(self, [getPtr loop], void)
 
 proc getParticlesAnimLoop*(self: CanvasItemMaterial): bool =
-  expandMethodBind(className CanvasItemMaterial, "get_particles_anim_loop", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CanvasItemMaterial, "get_particles_anim_loop", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template blendMode*(self: CanvasItemMaterial): untyped = self.getBlendMode()
 template `blendMode=`*(self: CanvasItemMaterial; value) = self.setBlendMode(value)

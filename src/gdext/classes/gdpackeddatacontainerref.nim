@@ -7,7 +7,7 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(PackedDataContainerRef, RefCounted)
 
 proc size*(self: PackedDataContainerRef): int32 =
-  expandMethodBind(className PackedDataContainerRef, "size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className PackedDataContainerRef, "size", 3905245786)
+  methodbind.ptrcall(self, [], int32)

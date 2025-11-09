@@ -7,42 +7,52 @@ import gdinputeventfromwindow; export gdinputeventfromwindow
 expandOnClassImported(InputEventScreenTouch, InputEventFromWindow)
 
 proc setIndex*(self: InputEventScreenTouch; index: int32): void =
-  expandMethodBind(className InputEventScreenTouch, "set_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "set_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr index], void)
 
 proc getIndex*(self: InputEventScreenTouch): int32 =
-  expandMethodBind(className InputEventScreenTouch, "get_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "get_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPosition*(self: InputEventScreenTouch; position: Vector2): void =
-  expandMethodBind(className InputEventScreenTouch, "set_position", 743155724)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "set_position", 743155724)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getPosition*(self: InputEventScreenTouch): Vector2 =
-  expandMethodBind(className InputEventScreenTouch, "get_position", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "get_position", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setPressed*(self: InputEventScreenTouch; pressed: bool): void =
-  expandMethodBind(className InputEventScreenTouch, "set_pressed", 2586408642)
-  methodbind.ptrcall(self, [getPtr pressed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "set_pressed", 2586408642)
+  methodbind.ptrcall(self, [getPtr pressed], void)
 
 proc setCanceled*(self: InputEventScreenTouch; canceled: bool): void =
-  expandMethodBind(className InputEventScreenTouch, "set_canceled", 2586408642)
-  methodbind.ptrcall(self, [getPtr canceled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "set_canceled", 2586408642)
+  methodbind.ptrcall(self, [getPtr canceled], void)
 
 proc setDoubleTap*(self: InputEventScreenTouch; doubleTap: bool): void =
-  expandMethodBind(className InputEventScreenTouch, "set_double_tap", 2586408642)
-  methodbind.ptrcall(self, [getPtr doubleTap])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "set_double_tap", 2586408642)
+  methodbind.ptrcall(self, [getPtr doubleTap], void)
 
 proc isDoubleTap*(self: InputEventScreenTouch): bool =
-  expandMethodBind(className InputEventScreenTouch, "is_double_tap", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenTouch, "is_double_tap", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template index*(self: InputEventScreenTouch): untyped = self.getIndex()
 template `index=`*(self: InputEventScreenTouch; value) = self.setIndex(value)

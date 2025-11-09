@@ -7,54 +7,64 @@ import gdopenxrcompositionlayer; export gdopenxrcompositionlayer
 expandOnClassImported(OpenXRCompositionLayerEquirect, OpenXRCompositionLayer)
 
 proc setRadius*(self: OpenXRCompositionLayerEquirect; radius: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: OpenXRCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCentralHorizontalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_central_horizontal_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr angle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "set_central_horizontal_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr angle], void)
 
 proc getCentralHorizontalAngle*(self: OpenXRCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_central_horizontal_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "get_central_horizontal_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setUpperVerticalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_upper_vertical_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr angle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "set_upper_vertical_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr angle], void)
 
 proc getUpperVerticalAngle*(self: OpenXRCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_upper_vertical_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "get_upper_vertical_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setLowerVerticalAngle*(self: OpenXRCompositionLayerEquirect; angle: Float): void =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_lower_vertical_angle", 373806689)
-  methodbind.ptrcall(self, [getPtr angle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "set_lower_vertical_angle", 373806689)
+  methodbind.ptrcall(self, [getPtr angle], void)
 
 proc getLowerVerticalAngle*(self: OpenXRCompositionLayerEquirect): Float =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_lower_vertical_angle", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "get_lower_vertical_angle", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFallbackSegments*(self: OpenXRCompositionLayerEquirect; segments: uint32): void =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "set_fallback_segments", 1286410249)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "set_fallback_segments", 1286410249)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc getFallbackSegments*(self: OpenXRCompositionLayerEquirect): uint32 =
-  expandMethodBind(className OpenXRCompositionLayerEquirect, "get_fallback_segments", 3905245786)
-  var ret: encoded uint32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRCompositionLayerEquirect, "get_fallback_segments", 3905245786)
+  methodbind.ptrcall(self, [], uint32)
 
 template radius*(self: OpenXRCompositionLayerEquirect): untyped = self.getRadius()
 template `radius=`*(self: OpenXRCompositionLayerEquirect; value) = self.setRadius(value)

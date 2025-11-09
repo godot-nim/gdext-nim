@@ -7,74 +7,88 @@ import gdinputeventmouse; export gdinputeventmouse
 expandOnClassImported(InputEventMouseMotion, InputEventMouse)
 
 proc setTilt*(self: InputEventMouseMotion; tilt: Vector2): void =
-  expandMethodBind(className InputEventMouseMotion, "set_tilt", 743155724)
-  methodbind.ptrcall(self, [getPtr tilt])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_tilt", 743155724)
+  methodbind.ptrcall(self, [getPtr tilt], void)
 
 proc getTilt*(self: InputEventMouseMotion): Vector2 =
-  expandMethodBind(className InputEventMouseMotion, "get_tilt", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_tilt", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setPressure*(self: InputEventMouseMotion; pressure: Float): void =
-  expandMethodBind(className InputEventMouseMotion, "set_pressure", 373806689)
-  methodbind.ptrcall(self, [getPtr pressure])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_pressure", 373806689)
+  methodbind.ptrcall(self, [getPtr pressure], void)
 
 proc getPressure*(self: InputEventMouseMotion): Float =
-  expandMethodBind(className InputEventMouseMotion, "get_pressure", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_pressure", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPenInverted*(self: InputEventMouseMotion; penInverted: bool): void =
-  expandMethodBind(className InputEventMouseMotion, "set_pen_inverted", 2586408642)
-  methodbind.ptrcall(self, [getPtr penInverted])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_pen_inverted", 2586408642)
+  methodbind.ptrcall(self, [getPtr penInverted], void)
 
 proc getPenInverted*(self: InputEventMouseMotion): bool =
-  expandMethodBind(className InputEventMouseMotion, "get_pen_inverted", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_pen_inverted", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setRelative*(self: InputEventMouseMotion; relative: Vector2): void =
-  expandMethodBind(className InputEventMouseMotion, "set_relative", 743155724)
-  methodbind.ptrcall(self, [getPtr relative])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_relative", 743155724)
+  methodbind.ptrcall(self, [getPtr relative], void)
 
 proc getRelative*(self: InputEventMouseMotion): Vector2 =
-  expandMethodBind(className InputEventMouseMotion, "get_relative", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_relative", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScreenRelative*(self: InputEventMouseMotion; relative: Vector2): void =
-  expandMethodBind(className InputEventMouseMotion, "set_screen_relative", 743155724)
-  methodbind.ptrcall(self, [getPtr relative])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_screen_relative", 743155724)
+  methodbind.ptrcall(self, [getPtr relative], void)
 
 proc getScreenRelative*(self: InputEventMouseMotion): Vector2 =
-  expandMethodBind(className InputEventMouseMotion, "get_screen_relative", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_screen_relative", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setVelocity*(self: InputEventMouseMotion; velocity: Vector2): void =
-  expandMethodBind(className InputEventMouseMotion, "set_velocity", 743155724)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_velocity", 743155724)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getVelocity*(self: InputEventMouseMotion): Vector2 =
-  expandMethodBind(className InputEventMouseMotion, "get_velocity", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_velocity", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScreenVelocity*(self: InputEventMouseMotion; velocity: Vector2): void =
-  expandMethodBind(className InputEventMouseMotion, "set_screen_velocity", 743155724)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "set_screen_velocity", 743155724)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getScreenVelocity*(self: InputEventMouseMotion): Vector2 =
-  expandMethodBind(className InputEventMouseMotion, "get_screen_velocity", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventMouseMotion, "get_screen_velocity", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 template tilt*(self: InputEventMouseMotion): untyped = self.getTilt()
 template `tilt=`*(self: InputEventMouseMotion; value) = self.setTilt(value)

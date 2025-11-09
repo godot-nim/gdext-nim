@@ -7,14 +7,16 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(SceneTreeTimer, RefCounted)
 
 proc setTimeLeft*(self: SceneTreeTimer; time: float64): void =
-  expandMethodBind(className SceneTreeTimer, "set_time_left", 373806689)
-  methodbind.ptrcall(self, [getPtr time])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneTreeTimer, "set_time_left", 373806689)
+  methodbind.ptrcall(self, [getPtr time], void)
 
 proc getTimeLeft*(self: SceneTreeTimer): float64 =
-  expandMethodBind(className SceneTreeTimer, "get_time_left", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SceneTreeTimer, "get_time_left", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 template timeLeft*(self: SceneTreeTimer): untyped = self.getTimeLeft()
 template `timeLeft=`*(self: SceneTreeTimer; value) = self.setTimeLeft(value)

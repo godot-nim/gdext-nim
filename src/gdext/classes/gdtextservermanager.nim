@@ -7,43 +7,49 @@ import gdobject; export gdobject
 expandOnClassImported(TextServerManager, Object)
 
 proc addInterface*(self: TextServerManager; `interface`: gdref TextServer): void =
-  expandMethodBind(className TextServerManager, "add_interface", 1799689403)
-  methodbind.ptrcall(self, [getPtr `interface`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "add_interface", 1799689403)
+  methodbind.ptrcall(self, [getPtr `interface`], void)
 
 proc getInterfaceCount*(self: TextServerManager): int32 =
-  expandMethodBind(className TextServerManager, "get_interface_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "get_interface_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc removeInterface*(self: TextServerManager; `interface`: gdref TextServer): void =
-  expandMethodBind(className TextServerManager, "remove_interface", 1799689403)
-  methodbind.ptrcall(self, [getPtr `interface`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "remove_interface", 1799689403)
+  methodbind.ptrcall(self, [getPtr `interface`], void)
 
 proc getInterface*(self: TextServerManager; idx: int32): gdref TextServer =
-  expandMethodBind(className TextServerManager, "get_interface", 1672475555)
-  var ret: encoded gdref TextServer
-  methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(gdref TextServer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "get_interface", 1672475555)
+  methodbind.ptrcall(self, [getPtr idx], gdref TextServer)
 
 proc getInterfaces*(self: TextServerManager): TypedArray[Dictionary] =
-  expandMethodBind(className TextServerManager, "get_interfaces", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "get_interfaces", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[Dictionary])
 
 proc findInterface*(self: TextServerManager; name: String): gdref TextServer =
-  expandMethodBind(className TextServerManager, "find_interface", 2240905781)
-  var ret: encoded gdref TextServer
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(gdref TextServer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "find_interface", 2240905781)
+  methodbind.ptrcall(self, [getPtr name], gdref TextServer)
 
 proc setPrimaryInterface*(self: TextServerManager; index: gdref TextServer): void =
-  expandMethodBind(className TextServerManager, "set_primary_interface", 1799689403)
-  methodbind.ptrcall(self, [getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "set_primary_interface", 1799689403)
+  methodbind.ptrcall(self, [getPtr index], void)
 
 proc getPrimaryInterface*(self: TextServerManager): gdref TextServer =
-  expandMethodBind(className TextServerManager, "get_primary_interface", 905850878)
-  var ret: encoded gdref TextServer
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref TextServer)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TextServerManager, "get_primary_interface", 905850878)
+  methodbind.ptrcall(self, [], gdref TextServer)

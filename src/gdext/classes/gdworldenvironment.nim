@@ -7,34 +7,40 @@ import gdnode; export gdnode
 expandOnClassImported(WorldEnvironment, Node)
 
 proc setEnvironment*(self: WorldEnvironment; env: gdref Environment): void =
-  expandMethodBind(className WorldEnvironment, "set_environment", 4143518816)
-  methodbind.ptrcall(self, [getPtr env])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "set_environment", 4143518816)
+  methodbind.ptrcall(self, [getPtr env], void)
 
 proc getEnvironment*(self: WorldEnvironment): gdref Environment =
-  expandMethodBind(className WorldEnvironment, "get_environment", 3082064660)
-  var ret: encoded gdref Environment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Environment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "get_environment", 3082064660)
+  methodbind.ptrcall(self, [], gdref Environment)
 
 proc setCameraAttributes*(self: WorldEnvironment; cameraAttributes: gdref CameraAttributes): void =
-  expandMethodBind(className WorldEnvironment, "set_camera_attributes", 2817810567)
-  methodbind.ptrcall(self, [getPtr cameraAttributes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "set_camera_attributes", 2817810567)
+  methodbind.ptrcall(self, [getPtr cameraAttributes], void)
 
 proc getCameraAttributes*(self: WorldEnvironment): gdref CameraAttributes =
-  expandMethodBind(className WorldEnvironment, "get_camera_attributes", 3921283215)
-  var ret: encoded gdref CameraAttributes
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref CameraAttributes)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "get_camera_attributes", 3921283215)
+  methodbind.ptrcall(self, [], gdref CameraAttributes)
 
 proc setCompositor*(self: WorldEnvironment; compositor: gdref Compositor): void =
-  expandMethodBind(className WorldEnvironment, "set_compositor", 1586754307)
-  methodbind.ptrcall(self, [getPtr compositor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "set_compositor", 1586754307)
+  methodbind.ptrcall(self, [getPtr compositor], void)
 
 proc getCompositor*(self: WorldEnvironment): gdref Compositor =
-  expandMethodBind(className WorldEnvironment, "get_compositor", 3647707413)
-  var ret: encoded gdref Compositor
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Compositor)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className WorldEnvironment, "get_compositor", 3647707413)
+  methodbind.ptrcall(self, [], gdref Compositor)
 
 template environment*(self: WorldEnvironment): untyped = self.getEnvironment()
 template `environment=`*(self: WorldEnvironment; value) = self.setEnvironment(value)

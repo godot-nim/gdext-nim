@@ -7,38 +7,46 @@ import gdbutton; export gdbutton
 expandOnClassImported(MenuButton, Button)
 
 proc getPopup*(self: MenuButton): PopupMenu =
-  expandMethodBind(className MenuButton, "get_popup", 229722558)
-  var ret: encoded PopupMenu
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PopupMenu)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "get_popup", 229722558)
+  methodbind.ptrcall(self, [], PopupMenu)
 
 proc showPopup*(self: MenuButton): void =
-  expandMethodBind(className MenuButton, "show_popup", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "show_popup", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setSwitchOnHover*(self: MenuButton; enable: bool): void =
-  expandMethodBind(className MenuButton, "set_switch_on_hover", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "set_switch_on_hover", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSwitchOnHover*(self: MenuButton): bool =
-  expandMethodBind(className MenuButton, "is_switch_on_hover", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "is_switch_on_hover", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDisableShortcuts*(self: MenuButton; disabled: bool): void =
-  expandMethodBind(className MenuButton, "set_disable_shortcuts", 2586408642)
-  methodbind.ptrcall(self, [getPtr disabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "set_disable_shortcuts", 2586408642)
+  methodbind.ptrcall(self, [getPtr disabled], void)
 
 proc setItemCount*(self: MenuButton; count: int32): void =
-  expandMethodBind(className MenuButton, "set_item_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr count])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "set_item_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr count], void)
 
 proc getItemCount*(self: MenuButton): int32 =
-  expandMethodBind(className MenuButton, "get_item_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className MenuButton, "get_item_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template switchOnHover*(self: MenuButton): untyped = self.isSwitchOnHover()
 template `switchOnHover=`*(self: MenuButton; value) = self.setSwitchOnHover(value)

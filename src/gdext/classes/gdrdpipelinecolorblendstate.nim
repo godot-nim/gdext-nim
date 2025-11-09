@@ -7,44 +7,52 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(RDPipelineColorBlendState, RefCounted)
 
 proc setEnableLogicOp*(self: RDPipelineColorBlendState; pMember: bool): void =
-  expandMethodBind(className RDPipelineColorBlendState, "set_enable_logic_op", 2586408642)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "set_enable_logic_op", 2586408642)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getEnableLogicOp*(self: RDPipelineColorBlendState): bool =
-  expandMethodBind(className RDPipelineColorBlendState, "get_enable_logic_op", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "get_enable_logic_op", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setLogicOp*(self: RDPipelineColorBlendState; pMember: RenderingDevice_LogicOperation): void =
-  expandMethodBind(className RDPipelineColorBlendState, "set_logic_op", 3610841058)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "set_logic_op", 3610841058)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getLogicOp*(self: RDPipelineColorBlendState): RenderingDevice_LogicOperation =
-  expandMethodBind(className RDPipelineColorBlendState, "get_logic_op", 988254690)
-  var ret: encoded RenderingDevice_LogicOperation
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RenderingDevice_LogicOperation)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "get_logic_op", 988254690)
+  methodbind.ptrcall(self, [], RenderingDevice_LogicOperation)
 
 proc setBlendConstant*(self: RDPipelineColorBlendState; pMember: Color): void =
-  expandMethodBind(className RDPipelineColorBlendState, "set_blend_constant", 2920490490)
-  methodbind.ptrcall(self, [getPtr pMember])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "set_blend_constant", 2920490490)
+  methodbind.ptrcall(self, [getPtr pMember], void)
 
 proc getBlendConstant*(self: RDPipelineColorBlendState): Color =
-  expandMethodBind(className RDPipelineColorBlendState, "get_blend_constant", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "get_blend_constant", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setAttachments*(self: RDPipelineColorBlendState; attachments: TypedArray[gdref RDPipelineColorBlendStateAttachment]): void =
-  expandMethodBind(className RDPipelineColorBlendState, "set_attachments", 381264803)
-  methodbind.ptrcall(self, [getPtr attachments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "set_attachments", 381264803)
+  methodbind.ptrcall(self, [getPtr attachments], void)
 
 proc getAttachments*(self: RDPipelineColorBlendState): TypedArray[gdref RDPipelineColorBlendStateAttachment] =
-  expandMethodBind(className RDPipelineColorBlendState, "get_attachments", 3995934104)
-  var ret: encoded TypedArray[gdref RDPipelineColorBlendStateAttachment]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref RDPipelineColorBlendStateAttachment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className RDPipelineColorBlendState, "get_attachments", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[gdref RDPipelineColorBlendStateAttachment])
 
 template enableLogicOp*(self: RDPipelineColorBlendState): untyped = self.getEnableLogicOp()
 template `enableLogicOp=`*(self: RDPipelineColorBlendState; value) = self.setEnableLogicOp(value)

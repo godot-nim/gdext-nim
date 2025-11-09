@@ -67,61 +67,79 @@ proc registerVirtual_commitSubgizmos*[T: EditorNode3DGizmo](Self: typedesc[T]) =
     errproof: cast[EditorNode3DGizmo](p_instance).commitSubgizmos(p_args[0].decode(PackedInt32Array), p_args[1].decode(TypedArray[Transform3D]), p_args[2].decode(bool))
 
 proc addLines*(self: EditorNode3DGizmo; lines: PackedVector3Array; material: gdref Material; billboard: bool = false; modulate: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_lines", 2910971437)
-  methodbind.ptrcall(self, [getPtr lines, getPtr material, getPtr billboard, getPtr modulate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_lines", 2910971437)
+  methodbind.ptrcall(self, [getPtr lines, getPtr material, getPtr billboard, getPtr modulate], void)
 
 proc addMesh*(self: EditorNode3DGizmo; mesh: gdref Mesh; material: gdref Material = default gdref Material; transform: Transform3D = transform3D(); skeleton: gdref SkinReference = default gdref SkinReference): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_mesh", 1579955111)
-  methodbind.ptrcall(self, [getPtr mesh, getPtr material, getPtr transform, getPtr skeleton])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_mesh", 1579955111)
+  methodbind.ptrcall(self, [getPtr mesh, getPtr material, getPtr transform, getPtr skeleton], void)
 
 proc addCollisionSegments*(self: EditorNode3DGizmo; segments: PackedVector3Array): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_collision_segments", 334873810)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_collision_segments", 334873810)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc addCollisionTriangles*(self: EditorNode3DGizmo; triangles: gdref TriangleMesh): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_collision_triangles", 54901064)
-  methodbind.ptrcall(self, [getPtr triangles])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_collision_triangles", 54901064)
+  methodbind.ptrcall(self, [getPtr triangles], void)
 
 proc addUnscaledBillboard*(self: EditorNode3DGizmo; material: gdref Material; defaultScale: Float = 1; modulate: Color = color(1, 1, 1, 1)): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_unscaled_billboard", 520007164)
-  methodbind.ptrcall(self, [getPtr material, getPtr defaultScale, getPtr modulate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_unscaled_billboard", 520007164)
+  methodbind.ptrcall(self, [getPtr material, getPtr defaultScale, getPtr modulate], void)
 
 proc addHandles*(self: EditorNode3DGizmo; handles: PackedVector3Array; material: gdref Material; ids: PackedInt32Array; billboard: bool = false; secondary: bool = false): void =
-  expandMethodBind(className EditorNode3DGizmo, "add_handles", 2254560097)
-  methodbind.ptrcall(self, [getPtr handles, getPtr material, getPtr ids, getPtr billboard, getPtr secondary])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "add_handles", 2254560097)
+  methodbind.ptrcall(self, [getPtr handles, getPtr material, getPtr ids, getPtr billboard, getPtr secondary], void)
 
 proc setNode3D*(self: EditorNode3DGizmo; node: Node): void =
-  expandMethodBind(className EditorNode3DGizmo, "set_node_3d", 1078189570)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "set_node_3d", 1078189570)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc getNode3D*(self: EditorNode3DGizmo): Node3D =
-  expandMethodBind(className EditorNode3DGizmo, "get_node_3d", 151077316)
-  var ret: encoded Node3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "get_node_3d", 151077316)
+  methodbind.ptrcall(self, [], Node3D)
 
 proc getPlugin*(self: EditorNode3DGizmo): gdref EditorNode3DGizmoPlugin =
-  expandMethodBind(className EditorNode3DGizmo, "get_plugin", 4250544552)
-  var ret: encoded gdref EditorNode3DGizmoPlugin
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref EditorNode3DGizmoPlugin)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "get_plugin", 4250544552)
+  methodbind.ptrcall(self, [], gdref EditorNode3DGizmoPlugin)
 
 proc clear*(self: EditorNode3DGizmo): void =
-  expandMethodBind(className EditorNode3DGizmo, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setHidden*(self: EditorNode3DGizmo; hidden: bool): void =
-  expandMethodBind(className EditorNode3DGizmo, "set_hidden", 2586408642)
-  methodbind.ptrcall(self, [getPtr hidden])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "set_hidden", 2586408642)
+  methodbind.ptrcall(self, [getPtr hidden], void)
 
 proc isSubgizmoSelected*(self: EditorNode3DGizmo; id: int32): bool =
-  expandMethodBind(className EditorNode3DGizmo, "is_subgizmo_selected", 1116898809)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "is_subgizmo_selected", 1116898809)
+  methodbind.ptrcall(self, [getPtr id], bool)
 
 proc getSubgizmoSelection*(self: EditorNode3DGizmo): PackedInt32Array =
-  expandMethodBind(className EditorNode3DGizmo, "get_subgizmo_selection", 1930428628)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorNode3DGizmo, "get_subgizmo_selection", 1930428628)
+  methodbind.ptrcall(self, [], PackedInt32Array)

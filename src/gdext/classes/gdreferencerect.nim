@@ -7,34 +7,40 @@ import gdcontrol; export gdcontrol
 expandOnClassImported(ReferenceRect, Control)
 
 proc getBorderColor*(self: ReferenceRect): Color =
-  expandMethodBind(className ReferenceRect, "get_border_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "get_border_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setBorderColor*(self: ReferenceRect; color: Color): void =
-  expandMethodBind(className ReferenceRect, "set_border_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "set_border_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getBorderWidth*(self: ReferenceRect): Float =
-  expandMethodBind(className ReferenceRect, "get_border_width", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "get_border_width", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setBorderWidth*(self: ReferenceRect; width: Float): void =
-  expandMethodBind(className ReferenceRect, "set_border_width", 373806689)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "set_border_width", 373806689)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc getEditorOnly*(self: ReferenceRect): bool =
-  expandMethodBind(className ReferenceRect, "get_editor_only", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "get_editor_only", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEditorOnly*(self: ReferenceRect; enabled: bool): void =
-  expandMethodBind(className ReferenceRect, "set_editor_only", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className ReferenceRect, "set_editor_only", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 template borderColor*(self: ReferenceRect): untyped = self.getBorderColor()
 template `borderColor=`*(self: ReferenceRect; value) = self.setBorderColor(value)

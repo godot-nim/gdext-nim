@@ -7,102 +7,118 @@ import gdaudiostream; export gdaudiostream
 expandOnClassImported(AudioStreamWAV, AudioStream)
 
 proc loadFromBuffer*(_: typedesc[AudioStreamWAV]; streamData: PackedByteArray; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
-  expandMethodBind(className AudioStreamWAV, "load_from_buffer", 4266838938)
-  var ret: encoded gdref AudioStreamWAV
-  methodbind.ptrcall([getPtr streamData, getPtr options], addr ret)
-  (addr ret).decode_result(gdref AudioStreamWAV)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "load_from_buffer", 4266838938)
+  methodbind.ptrcall([getPtr streamData, getPtr options], gdref AudioStreamWAV)
 
 proc loadFromFile*(_: typedesc[AudioStreamWAV]; path: String; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
-  expandMethodBind(className AudioStreamWAV, "load_from_file", 4015802384)
-  var ret: encoded gdref AudioStreamWAV
-  methodbind.ptrcall([getPtr path, getPtr options], addr ret)
-  (addr ret).decode_result(gdref AudioStreamWAV)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "load_from_file", 4015802384)
+  methodbind.ptrcall([getPtr path, getPtr options], gdref AudioStreamWAV)
 
 proc setData*(self: AudioStreamWAV; data: PackedByteArray): void =
-  expandMethodBind(className AudioStreamWAV, "set_data", 2971499966)
-  methodbind.ptrcall(self, [getPtr data])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_data", 2971499966)
+  methodbind.ptrcall(self, [getPtr data], void)
 
 proc getData*(self: AudioStreamWAV): PackedByteArray =
-  expandMethodBind(className AudioStreamWAV, "get_data", 2362200018)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_data", 2362200018)
+  methodbind.ptrcall(self, [], PackedByteArray)
 
 proc setFormat*(self: AudioStreamWAV; format: AudioStreamWAV_Format): void =
-  expandMethodBind(className AudioStreamWAV, "set_format", 60648488)
-  methodbind.ptrcall(self, [getPtr format])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_format", 60648488)
+  methodbind.ptrcall(self, [getPtr format], void)
 
 proc getFormat*(self: AudioStreamWAV): AudioStreamWAV_Format =
-  expandMethodBind(className AudioStreamWAV, "get_format", 3151724922)
-  var ret: encoded AudioStreamWAV_Format
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AudioStreamWAV_Format)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_format", 3151724922)
+  methodbind.ptrcall(self, [], AudioStreamWAV_Format)
 
 proc setLoopMode*(self: AudioStreamWAV; loopMode: AudioStreamWAV_LoopMode): void =
-  expandMethodBind(className AudioStreamWAV, "set_loop_mode", 2444882972)
-  methodbind.ptrcall(self, [getPtr loopMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_loop_mode", 2444882972)
+  methodbind.ptrcall(self, [getPtr loopMode], void)
 
 proc getLoopMode*(self: AudioStreamWAV): AudioStreamWAV_LoopMode =
-  expandMethodBind(className AudioStreamWAV, "get_loop_mode", 393560655)
-  var ret: encoded AudioStreamWAV_LoopMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AudioStreamWAV_LoopMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_loop_mode", 393560655)
+  methodbind.ptrcall(self, [], AudioStreamWAV_LoopMode)
 
 proc setLoopBegin*(self: AudioStreamWAV; loopBegin: int32): void =
-  expandMethodBind(className AudioStreamWAV, "set_loop_begin", 1286410249)
-  methodbind.ptrcall(self, [getPtr loopBegin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_loop_begin", 1286410249)
+  methodbind.ptrcall(self, [getPtr loopBegin], void)
 
 proc getLoopBegin*(self: AudioStreamWAV): int32 =
-  expandMethodBind(className AudioStreamWAV, "get_loop_begin", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_loop_begin", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setLoopEnd*(self: AudioStreamWAV; loopEnd: int32): void =
-  expandMethodBind(className AudioStreamWAV, "set_loop_end", 1286410249)
-  methodbind.ptrcall(self, [getPtr loopEnd])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_loop_end", 1286410249)
+  methodbind.ptrcall(self, [getPtr loopEnd], void)
 
 proc getLoopEnd*(self: AudioStreamWAV): int32 =
-  expandMethodBind(className AudioStreamWAV, "get_loop_end", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_loop_end", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setMixRate*(self: AudioStreamWAV; mixRate: int32): void =
-  expandMethodBind(className AudioStreamWAV, "set_mix_rate", 1286410249)
-  methodbind.ptrcall(self, [getPtr mixRate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_mix_rate", 1286410249)
+  methodbind.ptrcall(self, [getPtr mixRate], void)
 
 proc getMixRate*(self: AudioStreamWAV): int32 =
-  expandMethodBind(className AudioStreamWAV, "get_mix_rate", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_mix_rate", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setStereo*(self: AudioStreamWAV; stereo: bool): void =
-  expandMethodBind(className AudioStreamWAV, "set_stereo", 2586408642)
-  methodbind.ptrcall(self, [getPtr stereo])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_stereo", 2586408642)
+  methodbind.ptrcall(self, [getPtr stereo], void)
 
 proc isStereo*(self: AudioStreamWAV): bool =
-  expandMethodBind(className AudioStreamWAV, "is_stereo", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "is_stereo", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTags*(self: AudioStreamWAV; tags: Dictionary): void =
-  expandMethodBind(className AudioStreamWAV, "set_tags", 4155329257)
-  methodbind.ptrcall(self, [getPtr tags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "set_tags", 4155329257)
+  methodbind.ptrcall(self, [getPtr tags], void)
 
 proc getTags*(self: AudioStreamWAV): Dictionary =
-  expandMethodBind(className AudioStreamWAV, "get_tags", 3102165223)
-  var ret: encoded Dictionary
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "get_tags", 3102165223)
+  methodbind.ptrcall(self, [], Dictionary)
 
 proc saveToWav*(self: AudioStreamWAV; path: String): Error =
-  expandMethodBind(className AudioStreamWAV, "save_to_wav", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamWAV, "save_to_wav", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 template data*(self: AudioStreamWAV): untyped = self.getData()
 template `data=`*(self: AudioStreamWAV; value) = self.setData(value)

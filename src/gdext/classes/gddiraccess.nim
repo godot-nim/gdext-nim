@@ -7,244 +7,250 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(DirAccess, RefCounted)
 
 proc open*(_: typedesc[DirAccess]; path: String): gdref DirAccess =
-  expandMethodBind(className DirAccess, "open", 1923528528)
-  var ret: encoded gdref DirAccess
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(gdref DirAccess)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "open", 1923528528)
+  methodbind.ptrcall([getPtr path], gdref DirAccess)
 
 proc getOpenError*(_: typedesc[DirAccess]): Error =
-  expandMethodBind(className DirAccess, "get_open_error", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_open_error", 166280745)
+  methodbind.ptrcall([], Error)
 
 proc createTemp*(_: typedesc[DirAccess]; prefix: String = newGdString(); keep: bool = false): gdref DirAccess =
-  expandMethodBind(className DirAccess, "create_temp", 812913566)
-  var ret: encoded gdref DirAccess
-  methodbind.ptrcall([getPtr prefix, getPtr keep], addr ret)
-  (addr ret).decode_result(gdref DirAccess)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "create_temp", 812913566)
+  methodbind.ptrcall([getPtr prefix, getPtr keep], gdref DirAccess)
 
 proc listDirBegin*(self: DirAccess): Error =
-  expandMethodBind(className DirAccess, "list_dir_begin", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "list_dir_begin", 166280745)
+  methodbind.ptrcall(self, [], Error)
 
 proc getNext*(self: DirAccess): String =
-  expandMethodBind(className DirAccess, "get_next", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_next", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc currentIsDir*(self: DirAccess): bool =
-  expandMethodBind(className DirAccess, "current_is_dir", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "current_is_dir", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc listDirEnd*(self: DirAccess): void =
-  expandMethodBind(className DirAccess, "list_dir_end", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "list_dir_end", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getFiles*(self: DirAccess): PackedStringArray =
-  expandMethodBind(className DirAccess, "get_files", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_files", 2981934095)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc getFilesAt*(_: typedesc[DirAccess]; path: String): PackedStringArray =
-  expandMethodBind(className DirAccess, "get_files_at", 3538744774)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_files_at", 3538744774)
+  methodbind.ptrcall([getPtr path], PackedStringArray)
 
 proc getDirectories*(self: DirAccess): PackedStringArray =
-  expandMethodBind(className DirAccess, "get_directories", 2981934095)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_directories", 2981934095)
+  methodbind.ptrcall(self, [], PackedStringArray)
 
 proc getDirectoriesAt*(_: typedesc[DirAccess]; path: String): PackedStringArray =
-  expandMethodBind(className DirAccess, "get_directories_at", 3538744774)
-  var ret: encoded PackedStringArray
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_directories_at", 3538744774)
+  methodbind.ptrcall([getPtr path], PackedStringArray)
 
 proc getDriveCount*(_: typedesc[DirAccess]): int32 =
-  expandMethodBind(className DirAccess, "get_drive_count", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_drive_count", 2455072627)
+  methodbind.ptrcall([], int32)
 
 proc getDriveName*(_: typedesc[DirAccess]; idx: int32): String =
-  expandMethodBind(className DirAccess, "get_drive_name", 990163283)
-  var ret: encoded String
-  methodbind.ptrcall([getPtr idx], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_drive_name", 990163283)
+  methodbind.ptrcall([getPtr idx], String)
 
 proc getCurrentDrive*(self: DirAccess): int32 =
-  expandMethodBind(className DirAccess, "get_current_drive", 2455072627)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_current_drive", 2455072627)
+  methodbind.ptrcall(self, [], int32)
 
 proc changeDir*(self: DirAccess; toDir: String): Error =
-  expandMethodBind(className DirAccess, "change_dir", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr toDir], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "change_dir", 166001499)
+  methodbind.ptrcall(self, [getPtr toDir], Error)
 
 proc getCurrentDir*(self: DirAccess; includeDrive: bool = true): String =
-  expandMethodBind(className DirAccess, "get_current_dir", 1287308131)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr includeDrive], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_current_dir", 1287308131)
+  methodbind.ptrcall(self, [getPtr includeDrive], String)
 
 proc makeDir*(self: DirAccess; path: String): Error =
-  expandMethodBind(className DirAccess, "make_dir", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "make_dir", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc makeDirAbsolute*(_: typedesc[DirAccess]; path: String): Error =
-  expandMethodBind(className DirAccess, "make_dir_absolute", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "make_dir_absolute", 166001499)
+  methodbind.ptrcall([getPtr path], Error)
 
 proc makeDirRecursive*(self: DirAccess; path: String): Error =
-  expandMethodBind(className DirAccess, "make_dir_recursive", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "make_dir_recursive", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc makeDirRecursiveAbsolute*(_: typedesc[DirAccess]; path: String): Error =
-  expandMethodBind(className DirAccess, "make_dir_recursive_absolute", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "make_dir_recursive_absolute", 166001499)
+  methodbind.ptrcall([getPtr path], Error)
 
 proc fileExists*(self: DirAccess; path: String): bool =
-  expandMethodBind(className DirAccess, "file_exists", 2323990056)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "file_exists", 2323990056)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc dirExists*(self: DirAccess; path: String): bool =
-  expandMethodBind(className DirAccess, "dir_exists", 2323990056)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "dir_exists", 2323990056)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc dirExistsAbsolute*(_: typedesc[DirAccess]; path: String): bool =
-  expandMethodBind(className DirAccess, "dir_exists_absolute", 2323990056)
-  var ret: encoded bool
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "dir_exists_absolute", 2323990056)
+  methodbind.ptrcall([getPtr path], bool)
 
 proc getSpaceLeft*(self: DirAccess): uint64 =
-  expandMethodBind(className DirAccess, "get_space_left", 2455072627)
-  var ret: encoded uint64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_space_left", 2455072627)
+  methodbind.ptrcall(self, [], uint64)
 
 proc copy*(self: DirAccess; `from`: String; to: String; chmodFlags: int32 = -1): Error =
-  expandMethodBind(className DirAccess, "copy", 1063198817)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr `from`, getPtr to, getPtr chmodFlags], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "copy", 1063198817)
+  methodbind.ptrcall(self, [getPtr `from`, getPtr to, getPtr chmodFlags], Error)
 
 proc copyAbsolute*(_: typedesc[DirAccess]; `from`: String; to: String; chmodFlags: int32 = -1): Error =
-  expandMethodBind(className DirAccess, "copy_absolute", 1063198817)
-  var ret: encoded Error
-  methodbind.ptrcall([getPtr `from`, getPtr to, getPtr chmodFlags], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "copy_absolute", 1063198817)
+  methodbind.ptrcall([getPtr `from`, getPtr to, getPtr chmodFlags], Error)
 
 proc rename*(self: DirAccess; `from`: String; to: String): Error =
-  expandMethodBind(className DirAccess, "rename", 852856452)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr `from`, getPtr to], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "rename", 852856452)
+  methodbind.ptrcall(self, [getPtr `from`, getPtr to], Error)
 
 proc renameAbsolute*(_: typedesc[DirAccess]; `from`: String; to: String): Error =
-  expandMethodBind(className DirAccess, "rename_absolute", 852856452)
-  var ret: encoded Error
-  methodbind.ptrcall([getPtr `from`, getPtr to], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "rename_absolute", 852856452)
+  methodbind.ptrcall([getPtr `from`, getPtr to], Error)
 
 proc remove*(self: DirAccess; path: String): Error =
-  expandMethodBind(className DirAccess, "remove", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "remove", 166001499)
+  methodbind.ptrcall(self, [getPtr path], Error)
 
 proc removeAbsolute*(_: typedesc[DirAccess]; path: String): Error =
-  expandMethodBind(className DirAccess, "remove_absolute", 166001499)
-  var ret: encoded Error
-  methodbind.ptrcall([getPtr path], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "remove_absolute", 166001499)
+  methodbind.ptrcall([getPtr path], Error)
 
 proc isLink*(self: DirAccess; path: String): bool =
-  expandMethodBind(className DirAccess, "is_link", 2323990056)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "is_link", 2323990056)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc readLink*(self: DirAccess; path: String): String =
-  expandMethodBind(className DirAccess, "read_link", 1703090593)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "read_link", 1703090593)
+  methodbind.ptrcall(self, [getPtr path], String)
 
 proc createLink*(self: DirAccess; source: String; target: String): Error =
-  expandMethodBind(className DirAccess, "create_link", 852856452)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [getPtr source, getPtr target], addr ret)
-  (addr ret).decode_result(Error)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "create_link", 852856452)
+  methodbind.ptrcall(self, [getPtr source, getPtr target], Error)
 
 proc isBundle*(self: DirAccess; path: String): bool =
-  expandMethodBind(className DirAccess, "is_bundle", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "is_bundle", 3927539163)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc setIncludeNavigational*(self: DirAccess; enable: bool): void =
-  expandMethodBind(className DirAccess, "set_include_navigational", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "set_include_navigational", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getIncludeNavigational*(self: DirAccess): bool =
-  expandMethodBind(className DirAccess, "get_include_navigational", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_include_navigational", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setIncludeHidden*(self: DirAccess; enable: bool): void =
-  expandMethodBind(className DirAccess, "set_include_hidden", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "set_include_hidden", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getIncludeHidden*(self: DirAccess): bool =
-  expandMethodBind(className DirAccess, "get_include_hidden", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_include_hidden", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getFilesystemType*(self: DirAccess): String =
-  expandMethodBind(className DirAccess, "get_filesystem_type", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "get_filesystem_type", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc isCaseSensitive*(self: DirAccess; path: String): bool =
-  expandMethodBind(className DirAccess, "is_case_sensitive", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "is_case_sensitive", 3927539163)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc isEquivalent*(self: DirAccess; pathA: String; pathB: String): bool =
-  expandMethodBind(className DirAccess, "is_equivalent", 820780508)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr pathA, getPtr pathB], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className DirAccess, "is_equivalent", 820780508)
+  methodbind.ptrcall(self, [getPtr pathA, getPtr pathB], bool)
 
 template includeNavigational*(self: DirAccess): untyped = self.getIncludeNavigational()
 template `includeNavigational=`*(self: DirAccess; value) = self.setIncludeNavigational(value)

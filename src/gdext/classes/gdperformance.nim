@@ -7,39 +7,43 @@ import gdobject; export gdobject
 expandOnClassImported(Performance, Object)
 
 proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
-  expandMethodBind(className Performance, "get_monitor", 1943275655)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [getPtr monitor], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "get_monitor", 1943275655)
+  methodbind.ptrcall(self, [getPtr monitor], float64)
 
 proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array = newArray()): void =
-  expandMethodBind(className Performance, "add_custom_monitor", 4099036814)
-  methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "add_custom_monitor", 4099036814)
+  methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments], void)
 
 proc removeCustomMonitor*(self: Performance; id: StringName): void =
-  expandMethodBind(className Performance, "remove_custom_monitor", 3304788590)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "remove_custom_monitor", 3304788590)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc hasCustomMonitor*(self: Performance; id: StringName): bool =
-  expandMethodBind(className Performance, "has_custom_monitor", 2041966384)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "has_custom_monitor", 2041966384)
+  methodbind.ptrcall(self, [getPtr id], bool)
 
 proc getCustomMonitor*(self: Performance; id: StringName): Variant =
-  expandMethodBind(className Performance, "get_custom_monitor", 2138907829)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "get_custom_monitor", 2138907829)
+  methodbind.ptrcall(self, [getPtr id], Variant)
 
 proc getMonitorModificationTime*(self: Performance): uint64 =
-  expandMethodBind(className Performance, "get_monitor_modification_time", 2455072627)
-  var ret: encoded uint64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(uint64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "get_monitor_modification_time", 2455072627)
+  methodbind.ptrcall(self, [], uint64)
 
 proc getCustomMonitorNames*(self: Performance): TypedArray[StringName] =
-  expandMethodBind(className Performance, "get_custom_monitor_names", 2915620761)
-  var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Performance, "get_custom_monitor_names", 2915620761)
+  methodbind.ptrcall(self, [], TypedArray[StringName])

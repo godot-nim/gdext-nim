@@ -157,21 +157,25 @@ proc registerVirtual_getDebugProtocol*[T: EditorExportPlatformExtension](Self: t
     errproof: cast[EditorExportPlatformExtension](p_instance).getDebugProtocol().encode(r_ret)
 
 proc setConfigError*(self: EditorExportPlatformExtension; errorText: String): void =
-  expandMethodBind(className EditorExportPlatformExtension, "set_config_error", 3089850668)
-  methodbind.ptrcall(self, [getPtr errorText])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlatformExtension, "set_config_error", 3089850668)
+  methodbind.ptrcall(self, [getPtr errorText], void)
 
 proc getConfigError*(self: EditorExportPlatformExtension): String =
-  expandMethodBind(className EditorExportPlatformExtension, "get_config_error", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlatformExtension, "get_config_error", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setConfigMissingTemplates*(self: EditorExportPlatformExtension; missingTemplates: bool): void =
-  expandMethodBind(className EditorExportPlatformExtension, "set_config_missing_templates", 1695273946)
-  methodbind.ptrcall(self, [getPtr missingTemplates])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlatformExtension, "set_config_missing_templates", 1695273946)
+  methodbind.ptrcall(self, [getPtr missingTemplates], void)
 
 proc getConfigMissingTemplates*(self: EditorExportPlatformExtension): bool =
-  expandMethodBind(className EditorExportPlatformExtension, "get_config_missing_templates", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className EditorExportPlatformExtension, "get_config_missing_templates", 36873697)
+  methodbind.ptrcall(self, [], bool)

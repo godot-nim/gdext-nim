@@ -7,24 +7,28 @@ import gdinputevent; export gdinputevent
 expandOnClassImported(InputEventJoypadMotion, InputEvent)
 
 proc setAxis*(self: InputEventJoypadMotion; axis: JoyAxis): void =
-  expandMethodBind(className InputEventJoypadMotion, "set_axis", 1332685170)
-  methodbind.ptrcall(self, [getPtr axis])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadMotion, "set_axis", 1332685170)
+  methodbind.ptrcall(self, [getPtr axis], void)
 
 proc getAxis*(self: InputEventJoypadMotion): JoyAxis =
-  expandMethodBind(className InputEventJoypadMotion, "get_axis", 4019121683)
-  var ret: encoded JoyAxis
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(JoyAxis)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadMotion, "get_axis", 4019121683)
+  methodbind.ptrcall(self, [], JoyAxis)
 
 proc setAxisValue*(self: InputEventJoypadMotion; axisValue: Float): void =
-  expandMethodBind(className InputEventJoypadMotion, "set_axis_value", 373806689)
-  methodbind.ptrcall(self, [getPtr axisValue])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadMotion, "set_axis_value", 373806689)
+  methodbind.ptrcall(self, [getPtr axisValue], void)
 
 proc getAxisValue*(self: InputEventJoypadMotion): Float =
-  expandMethodBind(className InputEventJoypadMotion, "get_axis_value", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventJoypadMotion, "get_axis_value", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template axis*(self: InputEventJoypadMotion): untyped = self.getAxis()
 template `axis=`*(self: InputEventJoypadMotion; value) = self.setAxis(value)

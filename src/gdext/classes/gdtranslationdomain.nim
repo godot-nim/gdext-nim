@@ -7,150 +7,178 @@ import gdrefcounted; export gdrefcounted
 expandOnClassImported(TranslationDomain, RefCounted)
 
 proc getTranslationObject*(self: TranslationDomain; locale: String): gdref Translation =
-  expandMethodBind(className TranslationDomain, "get_translation_object", 606768082)
-  var ret: encoded gdref Translation
-  methodbind.ptrcall(self, [getPtr locale], addr ret)
-  (addr ret).decode_result(gdref Translation)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "get_translation_object", 606768082)
+  methodbind.ptrcall(self, [getPtr locale], gdref Translation)
 
 proc addTranslation*(self: TranslationDomain; translation: gdref Translation): void =
-  expandMethodBind(className TranslationDomain, "add_translation", 1466479800)
-  methodbind.ptrcall(self, [getPtr translation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "add_translation", 1466479800)
+  methodbind.ptrcall(self, [getPtr translation], void)
 
 proc removeTranslation*(self: TranslationDomain; translation: gdref Translation): void =
-  expandMethodBind(className TranslationDomain, "remove_translation", 1466479800)
-  methodbind.ptrcall(self, [getPtr translation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "remove_translation", 1466479800)
+  methodbind.ptrcall(self, [getPtr translation], void)
 
 proc clear*(self: TranslationDomain): void =
-  expandMethodBind(className TranslationDomain, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc translate*(self: TranslationDomain; message: StringName; context: StringName = default(StringName)): StringName =
-  expandMethodBind(className TranslationDomain, "translate", 1829228469)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "translate", 1829228469)
+  methodbind.ptrcall(self, [getPtr message, getPtr context], StringName)
 
 proc translatePlural*(self: TranslationDomain; message: StringName; messagePlural: StringName; n: int32; context: StringName = default(StringName)): StringName =
-  expandMethodBind(className TranslationDomain, "translate_plural", 229954002)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr message, getPtr messagePlural, getPtr n, getPtr context], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "translate_plural", 229954002)
+  methodbind.ptrcall(self, [getPtr message, getPtr messagePlural, getPtr n, getPtr context], StringName)
 
 proc getLocaleOverride*(self: TranslationDomain): String =
-  expandMethodBind(className TranslationDomain, "get_locale_override", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "get_locale_override", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setLocaleOverride*(self: TranslationDomain; locale: String): void =
-  expandMethodBind(className TranslationDomain, "set_locale_override", 83702148)
-  methodbind.ptrcall(self, [getPtr locale])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_locale_override", 83702148)
+  methodbind.ptrcall(self, [getPtr locale], void)
 
 proc isEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationAccentsEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_accents_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_accents_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationAccentsEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_accents_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_accents_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationDoubleVowelsEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_double_vowels_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_double_vowels_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationDoubleVowelsEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_double_vowels_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_double_vowels_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationFakeBidiEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_fake_bidi_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_fake_bidi_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationFakeBidiEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_fake_bidi_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_fake_bidi_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationOverrideEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_override_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_override_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationOverrideEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_override_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_override_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isPseudolocalizationSkipPlaceholdersEnabled*(self: TranslationDomain): bool =
-  expandMethodBind(className TranslationDomain, "is_pseudolocalization_skip_placeholders_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "is_pseudolocalization_skip_placeholders_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPseudolocalizationSkipPlaceholdersEnabled*(self: TranslationDomain; enabled: bool): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_skip_placeholders_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_skip_placeholders_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getPseudolocalizationExpansionRatio*(self: TranslationDomain): Float =
-  expandMethodBind(className TranslationDomain, "get_pseudolocalization_expansion_ratio", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "get_pseudolocalization_expansion_ratio", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPseudolocalizationExpansionRatio*(self: TranslationDomain; ratio: Float): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_expansion_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_expansion_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc getPseudolocalizationPrefix*(self: TranslationDomain): String =
-  expandMethodBind(className TranslationDomain, "get_pseudolocalization_prefix", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "get_pseudolocalization_prefix", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setPseudolocalizationPrefix*(self: TranslationDomain; prefix: String): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_prefix", 83702148)
-  methodbind.ptrcall(self, [getPtr prefix])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_prefix", 83702148)
+  methodbind.ptrcall(self, [getPtr prefix], void)
 
 proc getPseudolocalizationSuffix*(self: TranslationDomain): String =
-  expandMethodBind(className TranslationDomain, "get_pseudolocalization_suffix", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "get_pseudolocalization_suffix", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setPseudolocalizationSuffix*(self: TranslationDomain; suffix: String): void =
-  expandMethodBind(className TranslationDomain, "set_pseudolocalization_suffix", 83702148)
-  methodbind.ptrcall(self, [getPtr suffix])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "set_pseudolocalization_suffix", 83702148)
+  methodbind.ptrcall(self, [getPtr suffix], void)
 
 proc pseudolocalize*(self: TranslationDomain; message: StringName): StringName =
-  expandMethodBind(className TranslationDomain, "pseudolocalize", 1965194235)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr message], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TranslationDomain, "pseudolocalize", 1965194235)
+  methodbind.ptrcall(self, [getPtr message], StringName)
 
 template enabled*(self: TranslationDomain): untyped = self.isEnabled()
 template `enabled=`*(self: TranslationDomain; value) = self.setEnabled(value)

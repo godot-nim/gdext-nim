@@ -7,58 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(OpenXRInteractionProfile, Resource)
 
 proc setInteractionProfilePath*(self: OpenXRInteractionProfile; interactionProfilePath: String): void =
-  expandMethodBind(className OpenXRInteractionProfile, "set_interaction_profile_path", 83702148)
-  methodbind.ptrcall(self, [getPtr interactionProfilePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "set_interaction_profile_path", 83702148)
+  methodbind.ptrcall(self, [getPtr interactionProfilePath], void)
 
 proc getInteractionProfilePath*(self: OpenXRInteractionProfile): String =
-  expandMethodBind(className OpenXRInteractionProfile, "get_interaction_profile_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_interaction_profile_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getBindingCount*(self: OpenXRInteractionProfile): int32 =
-  expandMethodBind(className OpenXRInteractionProfile, "get_binding_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_binding_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getBinding*(self: OpenXRInteractionProfile; index: int32): gdref OpenXRIPBinding =
-  expandMethodBind(className OpenXRInteractionProfile, "get_binding", 3934429652)
-  var ret: encoded gdref OpenXRIPBinding
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(gdref OpenXRIPBinding)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_binding", 3934429652)
+  methodbind.ptrcall(self, [getPtr index], gdref OpenXRIPBinding)
 
 proc setBindings*(self: OpenXRInteractionProfile; bindings: Array): void =
-  expandMethodBind(className OpenXRInteractionProfile, "set_bindings", 381264803)
-  methodbind.ptrcall(self, [getPtr bindings])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "set_bindings", 381264803)
+  methodbind.ptrcall(self, [getPtr bindings], void)
 
 proc getBindings*(self: OpenXRInteractionProfile): Array =
-  expandMethodBind(className OpenXRInteractionProfile, "get_bindings", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_bindings", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc getBindingModifierCount*(self: OpenXRInteractionProfile): int32 =
-  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifier_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_binding_modifier_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getBindingModifier*(self: OpenXRInteractionProfile; index: int32): gdref OpenXRIPBindingModifier =
-  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifier", 2419896583)
-  var ret: encoded gdref OpenXRIPBindingModifier
-  methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(gdref OpenXRIPBindingModifier)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_binding_modifier", 2419896583)
+  methodbind.ptrcall(self, [getPtr index], gdref OpenXRIPBindingModifier)
 
 proc setBindingModifiers*(self: OpenXRInteractionProfile; bindingModifiers: Array): void =
-  expandMethodBind(className OpenXRInteractionProfile, "set_binding_modifiers", 381264803)
-  methodbind.ptrcall(self, [getPtr bindingModifiers])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "set_binding_modifiers", 381264803)
+  methodbind.ptrcall(self, [getPtr bindingModifiers], void)
 
 proc getBindingModifiers*(self: OpenXRInteractionProfile): Array =
-  expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifiers", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OpenXRInteractionProfile, "get_binding_modifiers", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 template interactionProfilePath*(self: OpenXRInteractionProfile): untyped = self.getInteractionProfilePath()
 template `interactionProfilePath=`*(self: OpenXRInteractionProfile; value) = self.setInteractionProfilePath(value)

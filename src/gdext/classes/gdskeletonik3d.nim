@@ -7,124 +7,148 @@ import gdskeletonmodifier3d; export gdskeletonmodifier3d
 expandOnClassImported(SkeletonIK3D, SkeletonModifier3D)
 
 proc setRootBone*(self: SkeletonIK3D; rootBone: StringName): void =
-  expandMethodBind(className SkeletonIK3D, "set_root_bone", 3304788590)
-  methodbind.ptrcall(self, [getPtr rootBone])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_root_bone", 3304788590)
+  methodbind.ptrcall(self, [getPtr rootBone], void)
 
 proc getRootBone*(self: SkeletonIK3D): StringName =
-  expandMethodBind(className SkeletonIK3D, "get_root_bone", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_root_bone", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setTipBone*(self: SkeletonIK3D; tipBone: StringName): void =
-  expandMethodBind(className SkeletonIK3D, "set_tip_bone", 3304788590)
-  methodbind.ptrcall(self, [getPtr tipBone])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_tip_bone", 3304788590)
+  methodbind.ptrcall(self, [getPtr tipBone], void)
 
 proc getTipBone*(self: SkeletonIK3D): StringName =
-  expandMethodBind(className SkeletonIK3D, "get_tip_bone", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_tip_bone", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setTargetTransform*(self: SkeletonIK3D; target: Transform3D): void =
-  expandMethodBind(className SkeletonIK3D, "set_target_transform", 2952846383)
-  methodbind.ptrcall(self, [getPtr target])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_target_transform", 2952846383)
+  methodbind.ptrcall(self, [getPtr target], void)
 
 proc getTargetTransform*(self: SkeletonIK3D): Transform3D =
-  expandMethodBind(className SkeletonIK3D, "get_target_transform", 3229777777)
-  var ret: encoded Transform3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Transform3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_target_transform", 3229777777)
+  methodbind.ptrcall(self, [], Transform3D)
 
 proc setTargetNode*(self: SkeletonIK3D; node: NodePath): void =
-  expandMethodBind(className SkeletonIK3D, "set_target_node", 1348162250)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_target_node", 1348162250)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc getTargetNode*(self: SkeletonIK3D): NodePath =
-  expandMethodBind(className SkeletonIK3D, "get_target_node", 277076166)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_target_node", 277076166)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc setOverrideTipBasis*(self: SkeletonIK3D; override: bool): void =
-  expandMethodBind(className SkeletonIK3D, "set_override_tip_basis", 2586408642)
-  methodbind.ptrcall(self, [getPtr override])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_override_tip_basis", 2586408642)
+  methodbind.ptrcall(self, [getPtr override], void)
 
 proc isOverrideTipBasis*(self: SkeletonIK3D): bool =
-  expandMethodBind(className SkeletonIK3D, "is_override_tip_basis", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "is_override_tip_basis", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUseMagnet*(self: SkeletonIK3D; use: bool): void =
-  expandMethodBind(className SkeletonIK3D, "set_use_magnet", 2586408642)
-  methodbind.ptrcall(self, [getPtr use])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_use_magnet", 2586408642)
+  methodbind.ptrcall(self, [getPtr use], void)
 
 proc isUsingMagnet*(self: SkeletonIK3D): bool =
-  expandMethodBind(className SkeletonIK3D, "is_using_magnet", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "is_using_magnet", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMagnetPosition*(self: SkeletonIK3D; localPosition: Vector3): void =
-  expandMethodBind(className SkeletonIK3D, "set_magnet_position", 3460891852)
-  methodbind.ptrcall(self, [getPtr localPosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_magnet_position", 3460891852)
+  methodbind.ptrcall(self, [getPtr localPosition], void)
 
 proc getMagnetPosition*(self: SkeletonIK3D): Vector3 =
-  expandMethodBind(className SkeletonIK3D, "get_magnet_position", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_magnet_position", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc getParentSkeleton*(self: SkeletonIK3D): Skeleton3D =
-  expandMethodBind(className SkeletonIK3D, "get_parent_skeleton", 1488626673)
-  var ret: encoded Skeleton3D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Skeleton3D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_parent_skeleton", 1488626673)
+  methodbind.ptrcall(self, [], Skeleton3D)
 
 proc isRunning*(self: SkeletonIK3D): bool =
-  expandMethodBind(className SkeletonIK3D, "is_running", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "is_running", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMinDistance*(self: SkeletonIK3D; minDistance: Float): void =
-  expandMethodBind(className SkeletonIK3D, "set_min_distance", 373806689)
-  methodbind.ptrcall(self, [getPtr minDistance])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_min_distance", 373806689)
+  methodbind.ptrcall(self, [getPtr minDistance], void)
 
 proc getMinDistance*(self: SkeletonIK3D): Float =
-  expandMethodBind(className SkeletonIK3D, "get_min_distance", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_min_distance", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxIterations*(self: SkeletonIK3D; iterations: int32): void =
-  expandMethodBind(className SkeletonIK3D, "set_max_iterations", 1286410249)
-  methodbind.ptrcall(self, [getPtr iterations])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_max_iterations", 1286410249)
+  methodbind.ptrcall(self, [getPtr iterations], void)
 
 proc getMaxIterations*(self: SkeletonIK3D): int32 =
-  expandMethodBind(className SkeletonIK3D, "get_max_iterations", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_max_iterations", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc start*(self: SkeletonIK3D; oneTime: bool = false): void =
-  expandMethodBind(className SkeletonIK3D, "start", 107499316)
-  methodbind.ptrcall(self, [getPtr oneTime])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "start", 107499316)
+  methodbind.ptrcall(self, [getPtr oneTime], void)
 
 proc stop*(self: SkeletonIK3D): void =
-  expandMethodBind(className SkeletonIK3D, "stop", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "stop", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setInterpolation*(self: SkeletonIK3D; interpolation: Float): void =
-  expandMethodBind(className SkeletonIK3D, "set_interpolation", 373806689)
-  methodbind.ptrcall(self, [getPtr interpolation])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "set_interpolation", 373806689)
+  methodbind.ptrcall(self, [getPtr interpolation], void)
 
 proc getInterpolation*(self: SkeletonIK3D): Float =
-  expandMethodBind(className SkeletonIK3D, "get_interpolation", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className SkeletonIK3D, "get_interpolation", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template rootBone*(self: SkeletonIK3D): untyped = self.getRootBone()
 template `rootBone=`*(self: SkeletonIK3D; value) = self.setRootBone(value)

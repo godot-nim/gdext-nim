@@ -7,62 +7,76 @@ import gdvisualshadernoderesizablebase; export gdvisualshadernoderesizablebase
 expandOnClassImported(VisualShaderNodeFrame, VisualShaderNodeResizableBase)
 
 proc setTitle*(self: VisualShaderNodeFrame; title: String): void =
-  expandMethodBind(className VisualShaderNodeFrame, "set_title", 83702148)
-  methodbind.ptrcall(self, [getPtr title])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "set_title", 83702148)
+  methodbind.ptrcall(self, [getPtr title], void)
 
 proc getTitle*(self: VisualShaderNodeFrame): String =
-  expandMethodBind(className VisualShaderNodeFrame, "get_title", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "get_title", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setTintColorEnabled*(self: VisualShaderNodeFrame; enable: bool): void =
-  expandMethodBind(className VisualShaderNodeFrame, "set_tint_color_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "set_tint_color_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isTintColorEnabled*(self: VisualShaderNodeFrame): bool =
-  expandMethodBind(className VisualShaderNodeFrame, "is_tint_color_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "is_tint_color_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTintColor*(self: VisualShaderNodeFrame; color: Color): void =
-  expandMethodBind(className VisualShaderNodeFrame, "set_tint_color", 2920490490)
-  methodbind.ptrcall(self, [getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "set_tint_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color], void)
 
 proc getTintColor*(self: VisualShaderNodeFrame): Color =
-  expandMethodBind(className VisualShaderNodeFrame, "get_tint_color", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "get_tint_color", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setAutoshrinkEnabled*(self: VisualShaderNodeFrame; enable: bool): void =
-  expandMethodBind(className VisualShaderNodeFrame, "set_autoshrink_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "set_autoshrink_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isAutoshrinkEnabled*(self: VisualShaderNodeFrame): bool =
-  expandMethodBind(className VisualShaderNodeFrame, "is_autoshrink_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "is_autoshrink_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc addAttachedNode*(self: VisualShaderNodeFrame; node: int32): void =
-  expandMethodBind(className VisualShaderNodeFrame, "add_attached_node", 1286410249)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "add_attached_node", 1286410249)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc removeAttachedNode*(self: VisualShaderNodeFrame; node: int32): void =
-  expandMethodBind(className VisualShaderNodeFrame, "remove_attached_node", 1286410249)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "remove_attached_node", 1286410249)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc setAttachedNodes*(self: VisualShaderNodeFrame; attachedNodes: PackedInt32Array): void =
-  expandMethodBind(className VisualShaderNodeFrame, "set_attached_nodes", 3614634198)
-  methodbind.ptrcall(self, [getPtr attachedNodes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "set_attached_nodes", 3614634198)
+  methodbind.ptrcall(self, [getPtr attachedNodes], void)
 
 proc getAttachedNodes*(self: VisualShaderNodeFrame): PackedInt32Array =
-  expandMethodBind(className VisualShaderNodeFrame, "get_attached_nodes", 1930428628)
-  var ret: encoded PackedInt32Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedInt32Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VisualShaderNodeFrame, "get_attached_nodes", 1930428628)
+  methodbind.ptrcall(self, [], PackedInt32Array)
 
 template title*(self: VisualShaderNodeFrame): untyped = self.getTitle()
 template `title=`*(self: VisualShaderNodeFrame; value) = self.setTitle(value)

@@ -7,94 +7,112 @@ import gdresource; export gdresource
 expandOnClassImported(AnimationNodeStateMachineTransition, Resource)
 
 proc setSwitchMode*(self: AnimationNodeStateMachineTransition; mode: AnimationNodeStateMachineTransition_SwitchMode): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_switch_mode", 2074906633)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_switch_mode", 2074906633)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getSwitchMode*(self: AnimationNodeStateMachineTransition): AnimationNodeStateMachineTransition_SwitchMode =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_switch_mode", 2138562085)
-  var ret: encoded AnimationNodeStateMachineTransition_SwitchMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationNodeStateMachineTransition_SwitchMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_switch_mode", 2138562085)
+  methodbind.ptrcall(self, [], AnimationNodeStateMachineTransition_SwitchMode)
 
 proc setAdvanceMode*(self: AnimationNodeStateMachineTransition; mode: AnimationNodeStateMachineTransition_AdvanceMode): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_advance_mode", 1210869868)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_advance_mode", 1210869868)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getAdvanceMode*(self: AnimationNodeStateMachineTransition): AnimationNodeStateMachineTransition_AdvanceMode =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_advance_mode", 61101689)
-  var ret: encoded AnimationNodeStateMachineTransition_AdvanceMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AnimationNodeStateMachineTransition_AdvanceMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_advance_mode", 61101689)
+  methodbind.ptrcall(self, [], AnimationNodeStateMachineTransition_AdvanceMode)
 
 proc setAdvanceCondition*(self: AnimationNodeStateMachineTransition; name: StringName): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_advance_condition", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_advance_condition", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getAdvanceCondition*(self: AnimationNodeStateMachineTransition): StringName =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_advance_condition", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_advance_condition", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setXfadeTime*(self: AnimationNodeStateMachineTransition; secs: Float): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_xfade_time", 373806689)
-  methodbind.ptrcall(self, [getPtr secs])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_xfade_time", 373806689)
+  methodbind.ptrcall(self, [getPtr secs], void)
 
 proc getXfadeTime*(self: AnimationNodeStateMachineTransition): Float =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_xfade_time", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_xfade_time", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setXfadeCurve*(self: AnimationNodeStateMachineTransition; curve: gdref Curve): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_xfade_curve", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_xfade_curve", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getXfadeCurve*(self: AnimationNodeStateMachineTransition): gdref Curve =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_xfade_curve", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_xfade_curve", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setBreakLoopAtEnd*(self: AnimationNodeStateMachineTransition; enable: bool): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_break_loop_at_end", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_break_loop_at_end", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isLoopBrokenAtEnd*(self: AnimationNodeStateMachineTransition): bool =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "is_loop_broken_at_end", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "is_loop_broken_at_end", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setReset*(self: AnimationNodeStateMachineTransition; reset: bool): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_reset", 2586408642)
-  methodbind.ptrcall(self, [getPtr reset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_reset", 2586408642)
+  methodbind.ptrcall(self, [getPtr reset], void)
 
 proc isReset*(self: AnimationNodeStateMachineTransition): bool =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "is_reset", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "is_reset", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPriority*(self: AnimationNodeStateMachineTransition; priority: int32): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_priority", 1286410249)
-  methodbind.ptrcall(self, [getPtr priority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_priority", 1286410249)
+  methodbind.ptrcall(self, [getPtr priority], void)
 
 proc getPriority*(self: AnimationNodeStateMachineTransition): int32 =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_priority", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_priority", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setAdvanceExpression*(self: AnimationNodeStateMachineTransition; text: String): void =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "set_advance_expression", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "set_advance_expression", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getAdvanceExpression*(self: AnimationNodeStateMachineTransition): String =
-  expandMethodBind(className AnimationNodeStateMachineTransition, "get_advance_expression", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AnimationNodeStateMachineTransition, "get_advance_expression", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 template xfadeTime*(self: AnimationNodeStateMachineTransition): untyped = self.getXfadeTime()
 template `xfadeTime=`*(self: AnimationNodeStateMachineTransition; value) = self.setXfadeTime(value)

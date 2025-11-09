@@ -7,44 +7,52 @@ import gdaudioeffect; export gdaudioeffect
 expandOnClassImported(AudioEffectLimiter, AudioEffect)
 
 proc setCeilingDb*(self: AudioEffectLimiter; ceiling: Float): void =
-  expandMethodBind(className AudioEffectLimiter, "set_ceiling_db", 373806689)
-  methodbind.ptrcall(self, [getPtr ceiling])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "set_ceiling_db", 373806689)
+  methodbind.ptrcall(self, [getPtr ceiling], void)
 
 proc getCeilingDb*(self: AudioEffectLimiter): Float =
-  expandMethodBind(className AudioEffectLimiter, "get_ceiling_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "get_ceiling_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setThresholdDb*(self: AudioEffectLimiter; threshold: Float): void =
-  expandMethodBind(className AudioEffectLimiter, "set_threshold_db", 373806689)
-  methodbind.ptrcall(self, [getPtr threshold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "set_threshold_db", 373806689)
+  methodbind.ptrcall(self, [getPtr threshold], void)
 
 proc getThresholdDb*(self: AudioEffectLimiter): Float =
-  expandMethodBind(className AudioEffectLimiter, "get_threshold_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "get_threshold_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSoftClipDb*(self: AudioEffectLimiter; softClip: Float): void =
-  expandMethodBind(className AudioEffectLimiter, "set_soft_clip_db", 373806689)
-  methodbind.ptrcall(self, [getPtr softClip])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "set_soft_clip_db", 373806689)
+  methodbind.ptrcall(self, [getPtr softClip], void)
 
 proc getSoftClipDb*(self: AudioEffectLimiter): Float =
-  expandMethodBind(className AudioEffectLimiter, "get_soft_clip_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "get_soft_clip_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setSoftClipRatio*(self: AudioEffectLimiter; softClip: Float): void =
-  expandMethodBind(className AudioEffectLimiter, "set_soft_clip_ratio", 373806689)
-  methodbind.ptrcall(self, [getPtr softClip])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "set_soft_clip_ratio", 373806689)
+  methodbind.ptrcall(self, [getPtr softClip], void)
 
 proc getSoftClipRatio*(self: AudioEffectLimiter): Float =
-  expandMethodBind(className AudioEffectLimiter, "get_soft_clip_ratio", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectLimiter, "get_soft_clip_ratio", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template ceilingDb*(self: AudioEffectLimiter): untyped = self.getCeilingDb()
 template `ceilingDb=`*(self: AudioEffectLimiter; value) = self.setCeilingDb(value)

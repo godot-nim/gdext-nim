@@ -7,470 +7,562 @@ import gdcontrol; export gdcontrol
 expandOnClassImported(LineEdit, Control)
 
 proc hasImeText*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "has_ime_text", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "has_ime_text", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc cancelIme*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "cancel_ime", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "cancel_ime", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc applyIme*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "apply_ime", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "apply_ime", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setHorizontalAlignment*(self: LineEdit; alignment: HorizontalAlignment): void =
-  expandMethodBind(className LineEdit, "set_horizontal_alignment", 2312603777)
-  methodbind.ptrcall(self, [getPtr alignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_horizontal_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr alignment], void)
 
 proc getHorizontalAlignment*(self: LineEdit): HorizontalAlignment =
-  expandMethodBind(className LineEdit, "get_horizontal_alignment", 341400642)
-  var ret: encoded HorizontalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HorizontalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_horizontal_alignment", 341400642)
+  methodbind.ptrcall(self, [], HorizontalAlignment)
 
 proc edit*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "edit", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "edit", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc unedit*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "unedit", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "unedit", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc isEditing*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_editing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_editing", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setKeepEditingOnTextSubmit*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_keep_editing_on_text_submit", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_keep_editing_on_text_submit", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isEditingKeptOnTextSubmit*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_editing_kept_on_text_submit", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_editing_kept_on_text_submit", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc clear*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "clear", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "clear", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc select*(self: LineEdit; `from`: int32 = 0; to: int32 = -1): void =
-  expandMethodBind(className LineEdit, "select", 1328111411)
-  methodbind.ptrcall(self, [getPtr `from`, getPtr to])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "select", 1328111411)
+  methodbind.ptrcall(self, [getPtr `from`, getPtr to], void)
 
 proc selectAll*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "select_all", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "select_all", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc deselect*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "deselect", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "deselect", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc hasUndo*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "has_undo", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "has_undo", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc hasRedo*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "has_redo", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "has_redo", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc hasSelection*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "has_selection", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "has_selection", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getSelectedText*(self: LineEdit): String =
-  expandMethodBind(className LineEdit, "get_selected_text", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_selected_text", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc getSelectionFromColumn*(self: LineEdit): int32 =
-  expandMethodBind(className LineEdit, "get_selection_from_column", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_selection_from_column", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getSelectionToColumn*(self: LineEdit): int32 =
-  expandMethodBind(className LineEdit, "get_selection_to_column", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_selection_to_column", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setText*(self: LineEdit; text: String): void =
-  expandMethodBind(className LineEdit, "set_text", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_text", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getText*(self: LineEdit): String =
-  expandMethodBind(className LineEdit, "get_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getDrawControlChars*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "get_draw_control_chars", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_draw_control_chars", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDrawControlChars*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_draw_control_chars", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_draw_control_chars", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setTextDirection*(self: LineEdit; direction: Control_TextDirection): void =
-  expandMethodBind(className LineEdit, "set_text_direction", 119160795)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_text_direction", 119160795)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getTextDirection*(self: LineEdit): Control_TextDirection =
-  expandMethodBind(className LineEdit, "get_text_direction", 797257663)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_text_direction", 797257663)
+  methodbind.ptrcall(self, [], Control_TextDirection)
 
 proc setLanguage*(self: LineEdit; language: String): void =
-  expandMethodBind(className LineEdit, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: LineEdit): String =
-  expandMethodBind(className LineEdit, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setStructuredTextBidiOverride*(self: LineEdit; parser: TextServer_StructuredTextParser): void =
-  expandMethodBind(className LineEdit, "set_structured_text_bidi_override", 55961453)
-  methodbind.ptrcall(self, [getPtr parser])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_structured_text_bidi_override", 55961453)
+  methodbind.ptrcall(self, [getPtr parser], void)
 
 proc getStructuredTextBidiOverride*(self: LineEdit): TextServer_StructuredTextParser =
-  expandMethodBind(className LineEdit, "get_structured_text_bidi_override", 3385126229)
-  var ret: encoded TextServer_StructuredTextParser
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_StructuredTextParser)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_structured_text_bidi_override", 3385126229)
+  methodbind.ptrcall(self, [], TextServer_StructuredTextParser)
 
 proc setStructuredTextBidiOverrideOptions*(self: LineEdit; args: Array): void =
-  expandMethodBind(className LineEdit, "set_structured_text_bidi_override_options", 381264803)
-  methodbind.ptrcall(self, [getPtr args])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_structured_text_bidi_override_options", 381264803)
+  methodbind.ptrcall(self, [getPtr args], void)
 
 proc getStructuredTextBidiOverrideOptions*(self: LineEdit): Array =
-  expandMethodBind(className LineEdit, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_structured_text_bidi_override_options", 3995934104)
+  methodbind.ptrcall(self, [], Array)
 
 proc setPlaceholder*(self: LineEdit; text: String): void =
-  expandMethodBind(className LineEdit, "set_placeholder", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_placeholder", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getPlaceholder*(self: LineEdit): String =
-  expandMethodBind(className LineEdit, "get_placeholder", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_placeholder", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setCaretColumn*(self: LineEdit; position: int32): void =
-  expandMethodBind(className LineEdit, "set_caret_column", 1286410249)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_caret_column", 1286410249)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getCaretColumn*(self: LineEdit): int32 =
-  expandMethodBind(className LineEdit, "get_caret_column", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_caret_column", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getNextCompositeCharacterColumn*(self: LineEdit; column: int32): int32 =
-  expandMethodBind(className LineEdit, "get_next_composite_character_column", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_next_composite_character_column", 923996154)
+  methodbind.ptrcall(self, [getPtr column], int32)
 
 proc getPreviousCompositeCharacterColumn*(self: LineEdit; column: int32): int32 =
-  expandMethodBind(className LineEdit, "get_previous_composite_character_column", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_previous_composite_character_column", 923996154)
+  methodbind.ptrcall(self, [getPtr column], int32)
 
 proc getScrollOffset*(self: LineEdit): Float =
-  expandMethodBind(className LineEdit, "get_scroll_offset", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_scroll_offset", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setExpandToTextLengthEnabled*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_expand_to_text_length_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_expand_to_text_length_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isExpandToTextLengthEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_expand_to_text_length_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_expand_to_text_length_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCaretBlinkEnabled*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_caret_blink_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_caret_blink_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isCaretBlinkEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_caret_blink_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_caret_blink_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCaretMidGraphemeEnabled*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_caret_mid_grapheme_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_caret_mid_grapheme_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isCaretMidGraphemeEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_caret_mid_grapheme_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_caret_mid_grapheme_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCaretForceDisplayed*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_caret_force_displayed", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_caret_force_displayed", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isCaretForceDisplayed*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_caret_force_displayed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_caret_force_displayed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setCaretBlinkInterval*(self: LineEdit; interval: Float): void =
-  expandMethodBind(className LineEdit, "set_caret_blink_interval", 373806689)
-  methodbind.ptrcall(self, [getPtr interval])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_caret_blink_interval", 373806689)
+  methodbind.ptrcall(self, [getPtr interval], void)
 
 proc getCaretBlinkInterval*(self: LineEdit): Float =
-  expandMethodBind(className LineEdit, "get_caret_blink_interval", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_caret_blink_interval", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMaxLength*(self: LineEdit; chars: int32): void =
-  expandMethodBind(className LineEdit, "set_max_length", 1286410249)
-  methodbind.ptrcall(self, [getPtr chars])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_max_length", 1286410249)
+  methodbind.ptrcall(self, [getPtr chars], void)
 
 proc getMaxLength*(self: LineEdit): int32 =
-  expandMethodBind(className LineEdit, "get_max_length", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_max_length", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc insertTextAtCaret*(self: LineEdit; text: String): void =
-  expandMethodBind(className LineEdit, "insert_text_at_caret", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "insert_text_at_caret", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc deleteCharAtCaret*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "delete_char_at_caret", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "delete_char_at_caret", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc deleteText*(self: LineEdit; fromColumn: int32; toColumn: int32): void =
-  expandMethodBind(className LineEdit, "delete_text", 3937882851)
-  methodbind.ptrcall(self, [getPtr fromColumn, getPtr toColumn])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "delete_text", 3937882851)
+  methodbind.ptrcall(self, [getPtr fromColumn, getPtr toColumn], void)
 
 proc setEditable*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_editable", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_editable", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isEditable*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_editable", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_editable", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSecret*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_secret", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_secret", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSecret*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_secret", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_secret", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSecretCharacter*(self: LineEdit; character: String): void =
-  expandMethodBind(className LineEdit, "set_secret_character", 83702148)
-  methodbind.ptrcall(self, [getPtr character])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_secret_character", 83702148)
+  methodbind.ptrcall(self, [getPtr character], void)
 
 proc getSecretCharacter*(self: LineEdit): String =
-  expandMethodBind(className LineEdit, "get_secret_character", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_secret_character", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc menuOption*(self: LineEdit; option: int32): void =
-  expandMethodBind(className LineEdit, "menu_option", 1286410249)
-  methodbind.ptrcall(self, [getPtr option])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "menu_option", 1286410249)
+  methodbind.ptrcall(self, [getPtr option], void)
 
 proc getMenu*(self: LineEdit): PopupMenu =
-  expandMethodBind(className LineEdit, "get_menu", 229722558)
-  var ret: encoded PopupMenu
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PopupMenu)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_menu", 229722558)
+  methodbind.ptrcall(self, [], PopupMenu)
 
 proc isMenuVisible*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_menu_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_menu_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setContextMenuEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_context_menu_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_context_menu_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isContextMenuEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_context_menu_enabled", 2240911060)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_context_menu_enabled", 2240911060)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEmojiMenuEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_emoji_menu_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_emoji_menu_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isEmojiMenuEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_emoji_menu_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_emoji_menu_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setBackspaceDeletesCompositeCharacterEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_backspace_deletes_composite_character_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_backspace_deletes_composite_character_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isBackspaceDeletesCompositeCharacterEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_backspace_deletes_composite_character_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_backspace_deletes_composite_character_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVirtualKeyboardEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_virtual_keyboard_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_virtual_keyboard_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isVirtualKeyboardEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_virtual_keyboard_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_virtual_keyboard_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVirtualKeyboardShowOnFocus*(self: LineEdit; showOnFocus: bool): void =
-  expandMethodBind(className LineEdit, "set_virtual_keyboard_show_on_focus", 2586408642)
-  methodbind.ptrcall(self, [getPtr showOnFocus])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_virtual_keyboard_show_on_focus", 2586408642)
+  methodbind.ptrcall(self, [getPtr showOnFocus], void)
 
 proc getVirtualKeyboardShowOnFocus*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "get_virtual_keyboard_show_on_focus", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_virtual_keyboard_show_on_focus", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVirtualKeyboardType*(self: LineEdit; `type`: LineEdit_VirtualKeyboardType): void =
-  expandMethodBind(className LineEdit, "set_virtual_keyboard_type", 2696893573)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_virtual_keyboard_type", 2696893573)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getVirtualKeyboardType*(self: LineEdit): LineEdit_VirtualKeyboardType =
-  expandMethodBind(className LineEdit, "get_virtual_keyboard_type", 1928699316)
-  var ret: encoded LineEdit_VirtualKeyboardType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(LineEdit_VirtualKeyboardType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_virtual_keyboard_type", 1928699316)
+  methodbind.ptrcall(self, [], LineEdit_VirtualKeyboardType)
 
 proc setClearButtonEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_clear_button_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_clear_button_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isClearButtonEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_clear_button_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_clear_button_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setShortcutKeysEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_shortcut_keys_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_shortcut_keys_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isShortcutKeysEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_shortcut_keys_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_shortcut_keys_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMiddleMousePasteEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_middle_mouse_paste_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_middle_mouse_paste_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isMiddleMousePasteEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_middle_mouse_paste_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_middle_mouse_paste_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSelectingEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_selecting_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_selecting_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isSelectingEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_selecting_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_selecting_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDeselectOnFocusLossEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_deselect_on_focus_loss_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_deselect_on_focus_loss_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isDeselectOnFocusLossEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_deselect_on_focus_loss_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_deselect_on_focus_loss_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDragAndDropSelectionEnabled*(self: LineEdit; enable: bool): void =
-  expandMethodBind(className LineEdit, "set_drag_and_drop_selection_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_drag_and_drop_selection_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isDragAndDropSelectionEnabled*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_drag_and_drop_selection_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_drag_and_drop_selection_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setRightIcon*(self: LineEdit; icon: gdref Texture2D): void =
-  expandMethodBind(className LineEdit, "set_right_icon", 4051416890)
-  methodbind.ptrcall(self, [getPtr icon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_right_icon", 4051416890)
+  methodbind.ptrcall(self, [getPtr icon], void)
 
 proc getRightIcon*(self: LineEdit): gdref Texture2D =
-  expandMethodBind(className LineEdit, "get_right_icon", 255860311)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "get_right_icon", 255860311)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setFlat*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_flat", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_flat", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isFlat*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_flat", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_flat", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setSelectAllOnFocus*(self: LineEdit; enabled: bool): void =
-  expandMethodBind(className LineEdit, "set_select_all_on_focus", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "set_select_all_on_focus", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isSelectAllOnFocus*(self: LineEdit): bool =
-  expandMethodBind(className LineEdit, "is_select_all_on_focus", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className LineEdit, "is_select_all_on_focus", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template text*(self: LineEdit): untyped = self.getText()
 template `text=`*(self: LineEdit; value) = self.setText(value)

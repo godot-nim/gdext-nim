@@ -7,272 +7,328 @@ import gdobject; export gdobject
 expandOnClassImported(TileData, Object)
 
 proc setFlipH*(self: TileData; flipH: bool): void =
-  expandMethodBind(className TileData, "set_flip_h", 2586408642)
-  methodbind.ptrcall(self, [getPtr flipH])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_flip_h", 2586408642)
+  methodbind.ptrcall(self, [getPtr flipH], void)
 
 proc getFlipH*(self: TileData): bool =
-  expandMethodBind(className TileData, "get_flip_h", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_flip_h", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFlipV*(self: TileData; flipV: bool): void =
-  expandMethodBind(className TileData, "set_flip_v", 2586408642)
-  methodbind.ptrcall(self, [getPtr flipV])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_flip_v", 2586408642)
+  methodbind.ptrcall(self, [getPtr flipV], void)
 
 proc getFlipV*(self: TileData): bool =
-  expandMethodBind(className TileData, "get_flip_v", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_flip_v", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTranspose*(self: TileData; transpose: bool): void =
-  expandMethodBind(className TileData, "set_transpose", 2586408642)
-  methodbind.ptrcall(self, [getPtr transpose])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_transpose", 2586408642)
+  methodbind.ptrcall(self, [getPtr transpose], void)
 
 proc getTranspose*(self: TileData): bool =
-  expandMethodBind(className TileData, "get_transpose", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_transpose", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMaterial*(self: TileData; material: gdref Material): void =
-  expandMethodBind(className TileData, "set_material", 2757459619)
-  methodbind.ptrcall(self, [getPtr material])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_material", 2757459619)
+  methodbind.ptrcall(self, [getPtr material], void)
 
 proc getMaterial*(self: TileData): gdref Material =
-  expandMethodBind(className TileData, "get_material", 5934680)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Material)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_material", 5934680)
+  methodbind.ptrcall(self, [], gdref Material)
 
 proc setTextureOrigin*(self: TileData; textureOrigin: Vector2i): void =
-  expandMethodBind(className TileData, "set_texture_origin", 1130785943)
-  methodbind.ptrcall(self, [getPtr textureOrigin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_texture_origin", 1130785943)
+  methodbind.ptrcall(self, [getPtr textureOrigin], void)
 
 proc getTextureOrigin*(self: TileData): Vector2i =
-  expandMethodBind(className TileData, "get_texture_origin", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_texture_origin", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setModulate*(self: TileData; modulate: Color): void =
-  expandMethodBind(className TileData, "set_modulate", 2920490490)
-  methodbind.ptrcall(self, [getPtr modulate])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_modulate", 2920490490)
+  methodbind.ptrcall(self, [getPtr modulate], void)
 
 proc getModulate*(self: TileData): Color =
-  expandMethodBind(className TileData, "get_modulate", 3444240500)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_modulate", 3444240500)
+  methodbind.ptrcall(self, [], Color)
 
 proc setZIndex*(self: TileData; zIndex: int32): void =
-  expandMethodBind(className TileData, "set_z_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr zIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_z_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr zIndex], void)
 
 proc getZIndex*(self: TileData): int32 =
-  expandMethodBind(className TileData, "get_z_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_z_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setYSortOrigin*(self: TileData; ySortOrigin: int32): void =
-  expandMethodBind(className TileData, "set_y_sort_origin", 1286410249)
-  methodbind.ptrcall(self, [getPtr ySortOrigin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_y_sort_origin", 1286410249)
+  methodbind.ptrcall(self, [getPtr ySortOrigin], void)
 
 proc getYSortOrigin*(self: TileData): int32 =
-  expandMethodBind(className TileData, "get_y_sort_origin", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_y_sort_origin", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setOccluderPolygonsCount*(self: TileData; layerId: int32; polygonsCount: int32): void =
-  expandMethodBind(className TileData, "set_occluder_polygons_count", 3937882851)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonsCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_occluder_polygons_count", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonsCount], void)
 
 proc getOccluderPolygonsCount*(self: TileData; layerId: int32): int32 =
-  expandMethodBind(className TileData, "get_occluder_polygons_count", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layerId], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_occluder_polygons_count", 923996154)
+  methodbind.ptrcall(self, [getPtr layerId], int32)
 
 proc addOccluderPolygon*(self: TileData; layerId: int32): void =
-  expandMethodBind(className TileData, "add_occluder_polygon", 1286410249)
-  methodbind.ptrcall(self, [getPtr layerId])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "add_occluder_polygon", 1286410249)
+  methodbind.ptrcall(self, [getPtr layerId], void)
 
 proc removeOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32): void =
-  expandMethodBind(className TileData, "remove_occluder_polygon", 3937882851)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "remove_occluder_polygon", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], void)
 
 proc setOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32; polygon: gdref OccluderPolygon2D): void =
-  expandMethodBind(className TileData, "set_occluder_polygon", 164249167)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr polygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_occluder_polygon", 164249167)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr polygon], void)
 
 proc getOccluderPolygon*(self: TileData; layerId: int32; polygonIndex: int32; flipH: bool = false; flipV: bool = false; transpose: bool = false): gdref OccluderPolygon2D =
-  expandMethodBind(className TileData, "get_occluder_polygon", 971166743)
-  var ret: encoded gdref OccluderPolygon2D
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr flipH, getPtr flipV, getPtr transpose], addr ret)
-  (addr ret).decode_result(gdref OccluderPolygon2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_occluder_polygon", 971166743)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr flipH, getPtr flipV, getPtr transpose], gdref OccluderPolygon2D)
 
 proc setOccluder*(self: TileData; layerId: int32; occluderPolygon: gdref OccluderPolygon2D): void =
-  expandMethodBind(className TileData, "set_occluder", 914399637)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr occluderPolygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_occluder", 914399637)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr occluderPolygon], void)
 
 proc getOccluder*(self: TileData; layerId: int32; flipH: bool = false; flipV: bool = false; transpose: bool = false): gdref OccluderPolygon2D =
-  expandMethodBind(className TileData, "get_occluder", 2377324099)
-  var ret: encoded gdref OccluderPolygon2D
-  methodbind.ptrcall(self, [getPtr layerId, getPtr flipH, getPtr flipV, getPtr transpose], addr ret)
-  (addr ret).decode_result(gdref OccluderPolygon2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_occluder", 2377324099)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr flipH, getPtr flipV, getPtr transpose], gdref OccluderPolygon2D)
 
 proc setConstantLinearVelocity*(self: TileData; layerId: int32; velocity: Vector2): void =
-  expandMethodBind(className TileData, "set_constant_linear_velocity", 163021252)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_constant_linear_velocity", 163021252)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr velocity], void)
 
 proc getConstantLinearVelocity*(self: TileData; layerId: int32): Vector2 =
-  expandMethodBind(className TileData, "get_constant_linear_velocity", 2299179447)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr layerId], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_constant_linear_velocity", 2299179447)
+  methodbind.ptrcall(self, [getPtr layerId], Vector2)
 
 proc setConstantAngularVelocity*(self: TileData; layerId: int32; velocity: Float): void =
-  expandMethodBind(className TileData, "set_constant_angular_velocity", 1602489585)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_constant_angular_velocity", 1602489585)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr velocity], void)
 
 proc getConstantAngularVelocity*(self: TileData; layerId: int32): Float =
-  expandMethodBind(className TileData, "get_constant_angular_velocity", 2339986948)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr layerId], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_constant_angular_velocity", 2339986948)
+  methodbind.ptrcall(self, [getPtr layerId], Float)
 
 proc setCollisionPolygonsCount*(self: TileData; layerId: int32; polygonsCount: int32): void =
-  expandMethodBind(className TileData, "set_collision_polygons_count", 3937882851)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonsCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_collision_polygons_count", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonsCount], void)
 
 proc getCollisionPolygonsCount*(self: TileData; layerId: int32): int32 =
-  expandMethodBind(className TileData, "get_collision_polygons_count", 923996154)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr layerId], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_collision_polygons_count", 923996154)
+  methodbind.ptrcall(self, [getPtr layerId], int32)
 
 proc addCollisionPolygon*(self: TileData; layerId: int32): void =
-  expandMethodBind(className TileData, "add_collision_polygon", 1286410249)
-  methodbind.ptrcall(self, [getPtr layerId])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "add_collision_polygon", 1286410249)
+  methodbind.ptrcall(self, [getPtr layerId], void)
 
 proc removeCollisionPolygon*(self: TileData; layerId: int32; polygonIndex: int32): void =
-  expandMethodBind(className TileData, "remove_collision_polygon", 3937882851)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "remove_collision_polygon", 3937882851)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], void)
 
 proc setCollisionPolygonPoints*(self: TileData; layerId: int32; polygonIndex: int32; polygon: PackedVector2Array): void =
-  expandMethodBind(className TileData, "set_collision_polygon_points", 3230546541)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr polygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_collision_polygon_points", 3230546541)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr polygon], void)
 
 proc getCollisionPolygonPoints*(self: TileData; layerId: int32; polygonIndex: int32): PackedVector2Array =
-  expandMethodBind(className TileData, "get_collision_polygon_points", 103942801)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_collision_polygon_points", 103942801)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], PackedVector2Array)
 
 proc setCollisionPolygonOneWay*(self: TileData; layerId: int32; polygonIndex: int32; oneWay: bool): void =
-  expandMethodBind(className TileData, "set_collision_polygon_one_way", 1383440665)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr oneWay])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_collision_polygon_one_way", 1383440665)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr oneWay], void)
 
 proc isCollisionPolygonOneWay*(self: TileData; layerId: int32; polygonIndex: int32): bool =
-  expandMethodBind(className TileData, "is_collision_polygon_one_way", 2522259332)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "is_collision_polygon_one_way", 2522259332)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], bool)
 
 proc setCollisionPolygonOneWayMargin*(self: TileData; layerId: int32; polygonIndex: int32; oneWayMargin: Float): void =
-  expandMethodBind(className TileData, "set_collision_polygon_one_way_margin", 3506521499)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr oneWayMargin])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_collision_polygon_one_way_margin", 3506521499)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex, getPtr oneWayMargin], void)
 
 proc getCollisionPolygonOneWayMargin*(self: TileData; layerId: int32; polygonIndex: int32): Float =
-  expandMethodBind(className TileData, "get_collision_polygon_one_way_margin", 3085491603)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_collision_polygon_one_way_margin", 3085491603)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr polygonIndex], Float)
 
 proc setTerrainSet*(self: TileData; terrainSet: int32): void =
-  expandMethodBind(className TileData, "set_terrain_set", 1286410249)
-  methodbind.ptrcall(self, [getPtr terrainSet])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_terrain_set", 1286410249)
+  methodbind.ptrcall(self, [getPtr terrainSet], void)
 
 proc getTerrainSet*(self: TileData): int32 =
-  expandMethodBind(className TileData, "get_terrain_set", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_terrain_set", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTerrain*(self: TileData; terrain: int32): void =
-  expandMethodBind(className TileData, "set_terrain", 1286410249)
-  methodbind.ptrcall(self, [getPtr terrain])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_terrain", 1286410249)
+  methodbind.ptrcall(self, [getPtr terrain], void)
 
 proc getTerrain*(self: TileData): int32 =
-  expandMethodBind(className TileData, "get_terrain", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_terrain", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTerrainPeeringBit*(self: TileData; peeringBit: TileSet_CellNeighbor; terrain: int32): void =
-  expandMethodBind(className TileData, "set_terrain_peering_bit", 1084452308)
-  methodbind.ptrcall(self, [getPtr peeringBit, getPtr terrain])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_terrain_peering_bit", 1084452308)
+  methodbind.ptrcall(self, [getPtr peeringBit, getPtr terrain], void)
 
 proc getTerrainPeeringBit*(self: TileData; peeringBit: TileSet_CellNeighbor): int32 =
-  expandMethodBind(className TileData, "get_terrain_peering_bit", 3831796792)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr peeringBit], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_terrain_peering_bit", 3831796792)
+  methodbind.ptrcall(self, [getPtr peeringBit], int32)
 
 proc isValidTerrainPeeringBit*(self: TileData; peeringBit: TileSet_CellNeighbor): bool =
-  expandMethodBind(className TileData, "is_valid_terrain_peering_bit", 845723972)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr peeringBit], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "is_valid_terrain_peering_bit", 845723972)
+  methodbind.ptrcall(self, [getPtr peeringBit], bool)
 
 proc setNavigationPolygon*(self: TileData; layerId: int32; navigationPolygon: gdref NavigationPolygon): void =
-  expandMethodBind(className TileData, "set_navigation_polygon", 2224691167)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr navigationPolygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_navigation_polygon", 2224691167)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr navigationPolygon], void)
 
 proc getNavigationPolygon*(self: TileData; layerId: int32; flipH: bool = false; flipV: bool = false; transpose: bool = false): gdref NavigationPolygon =
-  expandMethodBind(className TileData, "get_navigation_polygon", 2907127272)
-  var ret: encoded gdref NavigationPolygon
-  methodbind.ptrcall(self, [getPtr layerId, getPtr flipH, getPtr flipV, getPtr transpose], addr ret)
-  (addr ret).decode_result(gdref NavigationPolygon)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_navigation_polygon", 2907127272)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr flipH, getPtr flipV, getPtr transpose], gdref NavigationPolygon)
 
 proc setProbability*(self: TileData; probability: Float): void =
-  expandMethodBind(className TileData, "set_probability", 373806689)
-  methodbind.ptrcall(self, [getPtr probability])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_probability", 373806689)
+  methodbind.ptrcall(self, [getPtr probability], void)
 
 proc getProbability*(self: TileData): Float =
-  expandMethodBind(className TileData, "get_probability", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_probability", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCustomData*(self: TileData; layerName: String; value: Variant): void =
-  expandMethodBind(className TileData, "set_custom_data", 402577236)
-  methodbind.ptrcall(self, [getPtr layerName, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_custom_data", 402577236)
+  methodbind.ptrcall(self, [getPtr layerName, getPtr value], void)
 
 proc getCustomData*(self: TileData; layerName: String): Variant =
-  expandMethodBind(className TileData, "get_custom_data", 1868160156)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr layerName], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_custom_data", 1868160156)
+  methodbind.ptrcall(self, [getPtr layerName], Variant)
 
 proc hasCustomData*(self: TileData; layerName: String): bool =
-  expandMethodBind(className TileData, "has_custom_data", 3927539163)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr layerName], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "has_custom_data", 3927539163)
+  methodbind.ptrcall(self, [getPtr layerName], bool)
 
 proc setCustomDataByLayerId*(self: TileData; layerId: int32; value: Variant): void =
-  expandMethodBind(className TileData, "set_custom_data_by_layer_id", 2152698145)
-  methodbind.ptrcall(self, [getPtr layerId, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "set_custom_data_by_layer_id", 2152698145)
+  methodbind.ptrcall(self, [getPtr layerId, getPtr value], void)
 
 proc getCustomDataByLayerId*(self: TileData; layerId: int32): Variant =
-  expandMethodBind(className TileData, "get_custom_data_by_layer_id", 4227898402)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr layerId], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className TileData, "get_custom_data_by_layer_id", 4227898402)
+  methodbind.ptrcall(self, [getPtr layerId], Variant)
 
 template flipH*(self: TileData): untyped = self.getFlipH()
 template `flipH=`*(self: TileData; value) = self.setFlipH(value)

@@ -114,591 +114,681 @@ proc registerVirtual_getFocusedAccessibilityElement*[T: Node](Self: typedesc[T])
     errproof: cast[Node](p_instance).getFocusedAccessibilityElement().encode(r_ret)
 
 proc printOrphanNodes*(_: typedesc[Node]): void =
-  expandMethodBind(className Node, "print_orphan_nodes", 3218959716)
-  methodbind.ptrcall([])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "print_orphan_nodes", 3218959716)
+  methodbind.ptrcall([], void)
 
 proc getOrphanNodeIds*(_: typedesc[Node]): TypedArray[Int] =
-  expandMethodBind(className Node, "get_orphan_node_ids", 2915620761)
-  var ret: encoded TypedArray[Int]
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_orphan_node_ids", 2915620761)
+  methodbind.ptrcall([], TypedArray[Int])
 
 proc addSibling*(self: Node; sibling: Node; forceReadableName: bool = false): void =
-  expandMethodBind(className Node, "add_sibling", 2570952461)
-  methodbind.ptrcall(self, [getPtr sibling, getPtr forceReadableName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "add_sibling", 2570952461)
+  methodbind.ptrcall(self, [getPtr sibling, getPtr forceReadableName], void)
 
 proc setName*(self: Node; name: StringName): void =
-  expandMethodBind(className Node, "set_name", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_name", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getName*(self: Node): StringName =
-  expandMethodBind(className Node, "get_name", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_name", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc addChild*(self: Node; node: Node; forceReadableName: bool = false; internal: Node_InternalMode = internalModeDisabled): void =
-  expandMethodBind(className Node, "add_child", 3863233950)
-  methodbind.ptrcall(self, [getPtr node, getPtr forceReadableName, getPtr internal])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "add_child", 3863233950)
+  methodbind.ptrcall(self, [getPtr node, getPtr forceReadableName, getPtr internal], void)
 
 proc removeChild*(self: Node; node: Node): void =
-  expandMethodBind(className Node, "remove_child", 1078189570)
-  methodbind.ptrcall(self, [getPtr node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "remove_child", 1078189570)
+  methodbind.ptrcall(self, [getPtr node], void)
 
 proc reparent*(self: Node; newParent: Node; keepGlobalTransform: bool = true): void =
-  expandMethodBind(className Node, "reparent", 3685795103)
-  methodbind.ptrcall(self, [getPtr newParent, getPtr keepGlobalTransform])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "reparent", 3685795103)
+  methodbind.ptrcall(self, [getPtr newParent, getPtr keepGlobalTransform], void)
 
 proc getChildCount*(self: Node; includeInternal: bool = false): int32 =
-  expandMethodBind(className Node, "get_child_count", 894402480)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_child_count", 894402480)
+  methodbind.ptrcall(self, [getPtr includeInternal], int32)
 
 proc getChildren*(self: Node; includeInternal: bool = false): TypedArray[Node] =
-  expandMethodBind(className Node, "get_children", 873284517)
-  var ret: encoded TypedArray[Node]
-  methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_children", 873284517)
+  methodbind.ptrcall(self, [getPtr includeInternal], TypedArray[Node])
 
 proc getChild*(self: Node; idx: int32; includeInternal: bool = false): Node =
-  expandMethodBind(className Node, "get_child", 541253412)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr idx, getPtr includeInternal], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_child", 541253412)
+  methodbind.ptrcall(self, [getPtr idx, getPtr includeInternal], Node)
 
 proc hasNode*(self: Node; path: NodePath): bool =
-  expandMethodBind(className Node, "has_node", 861721659)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "has_node", 861721659)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc getNode*(self: Node; path: NodePath): Node =
-  expandMethodBind(className Node, "get_node", 2734337346)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_node", 2734337346)
+  methodbind.ptrcall(self, [getPtr path], Node)
 
 proc getNodeOrNull*(self: Node; path: NodePath): Node =
-  expandMethodBind(className Node, "get_node_or_null", 2734337346)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_node_or_null", 2734337346)
+  methodbind.ptrcall(self, [getPtr path], Node)
 
 proc getParent*(self: Node): Node =
-  expandMethodBind(className Node, "get_parent", 3160264692)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_parent", 3160264692)
+  methodbind.ptrcall(self, [], Node)
 
 proc findChild*(self: Node; pattern: String; recursive: bool = true; owned: bool = true): Node =
-  expandMethodBind(className Node, "find_child", 2008217037)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr pattern, getPtr recursive, getPtr owned], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "find_child", 2008217037)
+  methodbind.ptrcall(self, [getPtr pattern, getPtr recursive, getPtr owned], Node)
 
 proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): TypedArray[Node] =
-  expandMethodBind(className Node, "find_children", 2560337219)
-  var ret: encoded TypedArray[Node]
-  methodbind.ptrcall(self, [getPtr pattern, getPtr `type`, getPtr recursive, getPtr owned], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "find_children", 2560337219)
+  methodbind.ptrcall(self, [getPtr pattern, getPtr `type`, getPtr recursive, getPtr owned], TypedArray[Node])
 
 proc findParent*(self: Node; pattern: String): Node =
-  expandMethodBind(className Node, "find_parent", 1140089439)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr pattern], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "find_parent", 1140089439)
+  methodbind.ptrcall(self, [getPtr pattern], Node)
 
 proc hasNodeAndResource*(self: Node; path: NodePath): bool =
-  expandMethodBind(className Node, "has_node_and_resource", 861721659)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "has_node_and_resource", 861721659)
+  methodbind.ptrcall(self, [getPtr path], bool)
 
 proc getNodeAndResource*(self: Node; path: NodePath): Array =
-  expandMethodBind(className Node, "get_node_and_resource", 502563882)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_node_and_resource", 502563882)
+  methodbind.ptrcall(self, [getPtr path], Array)
 
 proc isInsideTree*(self: Node): bool =
-  expandMethodBind(className Node, "is_inside_tree", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_inside_tree", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isPartOfEditedScene*(self: Node): bool =
-  expandMethodBind(className Node, "is_part_of_edited_scene", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_part_of_edited_scene", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isAncestorOf*(self: Node; node: Node): bool =
-  expandMethodBind(className Node, "is_ancestor_of", 3093956946)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_ancestor_of", 3093956946)
+  methodbind.ptrcall(self, [getPtr node], bool)
 
 proc isGreaterThan*(self: Node; node: Node): bool =
-  expandMethodBind(className Node, "is_greater_than", 3093956946)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_greater_than", 3093956946)
+  methodbind.ptrcall(self, [getPtr node], bool)
 
 proc getPath*(self: Node): NodePath =
-  expandMethodBind(className Node, "get_path", 4075236667)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_path", 4075236667)
+  methodbind.ptrcall(self, [], NodePath)
 
 proc getPathTo*(self: Node; node: Node; useUniquePath: bool = false): NodePath =
-  expandMethodBind(className Node, "get_path_to", 498846349)
-  var ret: encoded NodePath
-  methodbind.ptrcall(self, [getPtr node, getPtr useUniquePath], addr ret)
-  (addr ret).decode_result(NodePath)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_path_to", 498846349)
+  methodbind.ptrcall(self, [getPtr node, getPtr useUniquePath], NodePath)
 
 proc addToGroup*(self: Node; group: StringName; persistent: bool = false): void =
-  expandMethodBind(className Node, "add_to_group", 3683006648)
-  methodbind.ptrcall(self, [getPtr group, getPtr persistent])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "add_to_group", 3683006648)
+  methodbind.ptrcall(self, [getPtr group, getPtr persistent], void)
 
 proc removeFromGroup*(self: Node; group: StringName): void =
-  expandMethodBind(className Node, "remove_from_group", 3304788590)
-  methodbind.ptrcall(self, [getPtr group])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "remove_from_group", 3304788590)
+  methodbind.ptrcall(self, [getPtr group], void)
 
 proc isInGroup*(self: Node; group: StringName): bool =
-  expandMethodBind(className Node, "is_in_group", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr group], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_in_group", 2619796661)
+  methodbind.ptrcall(self, [getPtr group], bool)
 
 proc moveChild*(self: Node; childNode: Node; toIndex: int32): void =
-  expandMethodBind(className Node, "move_child", 3315886247)
-  methodbind.ptrcall(self, [getPtr childNode, getPtr toIndex])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "move_child", 3315886247)
+  methodbind.ptrcall(self, [getPtr childNode, getPtr toIndex], void)
 
 proc getGroups*(self: Node): TypedArray[StringName] =
-  expandMethodBind(className Node, "get_groups", 3995934104)
-  var ret: encoded TypedArray[StringName]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_groups", 3995934104)
+  methodbind.ptrcall(self, [], TypedArray[StringName])
 
 proc setOwner*(self: Node; owner: Node): void =
-  expandMethodBind(className Node, "set_owner", 1078189570)
-  methodbind.ptrcall(self, [getPtr owner])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_owner", 1078189570)
+  methodbind.ptrcall(self, [getPtr owner], void)
 
 proc getOwner*(self: Node): Node =
-  expandMethodBind(className Node, "get_owner", 3160264692)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_owner", 3160264692)
+  methodbind.ptrcall(self, [], Node)
 
 proc getIndex*(self: Node; includeInternal: bool = false): int32 =
-  expandMethodBind(className Node, "get_index", 894402480)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_index", 894402480)
+  methodbind.ptrcall(self, [getPtr includeInternal], int32)
 
 proc printTree*(self: Node): void =
-  expandMethodBind(className Node, "print_tree", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "print_tree", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc printTreePretty*(self: Node): void =
-  expandMethodBind(className Node, "print_tree_pretty", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "print_tree_pretty", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getTreeString*(self: Node): String =
-  expandMethodBind(className Node, "get_tree_string", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_tree_string", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc getTreeStringPretty*(self: Node): String =
-  expandMethodBind(className Node, "get_tree_string_pretty", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_tree_string_pretty", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 proc setSceneFilePath*(self: Node; sceneFilePath: String): void =
-  expandMethodBind(className Node, "set_scene_file_path", 83702148)
-  methodbind.ptrcall(self, [getPtr sceneFilePath])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_scene_file_path", 83702148)
+  methodbind.ptrcall(self, [getPtr sceneFilePath], void)
 
 proc getSceneFilePath*(self: Node): String =
-  expandMethodBind(className Node, "get_scene_file_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_scene_file_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc propagateNotification*(self: Node; what: int32): void =
-  expandMethodBind(className Node, "propagate_notification", 1286410249)
-  methodbind.ptrcall(self, [getPtr what])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "propagate_notification", 1286410249)
+  methodbind.ptrcall(self, [getPtr what], void)
 
 proc propagateCall*(self: Node; `method`: StringName; args: Array = newArray(); parentFirst: bool = false): void =
-  expandMethodBind(className Node, "propagate_call", 1871007965)
-  methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "propagate_call", 1871007965)
+  methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst], void)
 
 proc setPhysicsProcess*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_physics_process", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_physics_process", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc getPhysicsProcessDeltaTime*(self: Node): float64 =
-  expandMethodBind(className Node, "get_physics_process_delta_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_physics_process_delta_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc isPhysicsProcessing*(self: Node): bool =
-  expandMethodBind(className Node, "is_physics_processing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_physics_processing", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getProcessDeltaTime*(self: Node): float64 =
-  expandMethodBind(className Node, "get_process_delta_time", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_delta_time", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setProcess*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc setProcessPriority*(self: Node; priority: int32): void =
-  expandMethodBind(className Node, "set_process_priority", 1286410249)
-  methodbind.ptrcall(self, [getPtr priority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_priority", 1286410249)
+  methodbind.ptrcall(self, [getPtr priority], void)
 
 proc getProcessPriority*(self: Node): int32 =
-  expandMethodBind(className Node, "get_process_priority", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_priority", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPhysicsProcessPriority*(self: Node; priority: int32): void =
-  expandMethodBind(className Node, "set_physics_process_priority", 1286410249)
-  methodbind.ptrcall(self, [getPtr priority])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_physics_process_priority", 1286410249)
+  methodbind.ptrcall(self, [getPtr priority], void)
 
 proc getPhysicsProcessPriority*(self: Node): int32 =
-  expandMethodBind(className Node, "get_physics_process_priority", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_physics_process_priority", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc isProcessing*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessInput*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process_input", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_input", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isProcessingInput*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing_input", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing_input", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessShortcutInput*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process_shortcut_input", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_shortcut_input", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isProcessingShortcutInput*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing_shortcut_input", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing_shortcut_input", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessUnhandledInput*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process_unhandled_input", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_unhandled_input", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isProcessingUnhandledInput*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing_unhandled_input", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing_unhandled_input", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessUnhandledKeyInput*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process_unhandled_key_input", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_unhandled_key_input", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isProcessingUnhandledKeyInput*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing_unhandled_key_input", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing_unhandled_key_input", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessMode*(self: Node; mode: Node_ProcessMode): void =
-  expandMethodBind(className Node, "set_process_mode", 1841290486)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_mode", 1841290486)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getProcessMode*(self: Node): Node_ProcessMode =
-  expandMethodBind(className Node, "get_process_mode", 739966102)
-  var ret: encoded Node_ProcessMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node_ProcessMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_mode", 739966102)
+  methodbind.ptrcall(self, [], Node_ProcessMode)
 
 proc canProcess*(self: Node): bool =
-  expandMethodBind(className Node, "can_process", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "can_process", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessThreadGroup*(self: Node; mode: Node_ProcessThreadGroup): void =
-  expandMethodBind(className Node, "set_process_thread_group", 2275442745)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_thread_group", 2275442745)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getProcessThreadGroup*(self: Node): Node_ProcessThreadGroup =
-  expandMethodBind(className Node, "get_process_thread_group", 1866404740)
-  var ret: encoded Node_ProcessThreadGroup
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node_ProcessThreadGroup)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_thread_group", 1866404740)
+  methodbind.ptrcall(self, [], Node_ProcessThreadGroup)
 
 proc setProcessThreadMessages*(self: Node; flags: set[Node_ProcessThreadMessages]): void =
-  expandMethodBind(className Node, "set_process_thread_messages", 1357280998)
-  methodbind.ptrcall(self, [getPtr flags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_thread_messages", 1357280998)
+  methodbind.ptrcall(self, [getPtr flags], void)
 
 proc getProcessThreadMessages*(self: Node): set[Node_ProcessThreadMessages] =
-  expandMethodBind(className Node, "get_process_thread_messages", 4228993612)
-  var ret: encoded set[Node_ProcessThreadMessages]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[Node_ProcessThreadMessages])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_thread_messages", 4228993612)
+  methodbind.ptrcall(self, [], set[Node_ProcessThreadMessages])
 
 proc setProcessThreadGroupOrder*(self: Node; order: int32): void =
-  expandMethodBind(className Node, "set_process_thread_group_order", 1286410249)
-  methodbind.ptrcall(self, [getPtr order])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_thread_group_order", 1286410249)
+  methodbind.ptrcall(self, [getPtr order], void)
 
 proc getProcessThreadGroupOrder*(self: Node): int32 =
-  expandMethodBind(className Node, "get_process_thread_group_order", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_process_thread_group_order", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc queueAccessibilityUpdate*(self: Node): void =
-  expandMethodBind(className Node, "queue_accessibility_update", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "queue_accessibility_update", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getAccessibilityElement*(self: Node): RID =
-  expandMethodBind(className Node, "get_accessibility_element", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_accessibility_element", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setDisplayFolded*(self: Node; fold: bool): void =
-  expandMethodBind(className Node, "set_display_folded", 2586408642)
-  methodbind.ptrcall(self, [getPtr fold])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_display_folded", 2586408642)
+  methodbind.ptrcall(self, [getPtr fold], void)
 
 proc isDisplayedFolded*(self: Node): bool =
-  expandMethodBind(className Node, "is_displayed_folded", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_displayed_folded", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setProcessInternal*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_process_internal", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_process_internal", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isProcessingInternal*(self: Node): bool =
-  expandMethodBind(className Node, "is_processing_internal", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_processing_internal", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPhysicsProcessInternal*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_physics_process_internal", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_physics_process_internal", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isPhysicsProcessingInternal*(self: Node): bool =
-  expandMethodBind(className Node, "is_physics_processing_internal", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_physics_processing_internal", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPhysicsInterpolationMode*(self: Node; mode: Node_PhysicsInterpolationMode): void =
-  expandMethodBind(className Node, "set_physics_interpolation_mode", 3202404928)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_physics_interpolation_mode", 3202404928)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getPhysicsInterpolationMode*(self: Node): Node_PhysicsInterpolationMode =
-  expandMethodBind(className Node, "get_physics_interpolation_mode", 2920385216)
-  var ret: encoded Node_PhysicsInterpolationMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node_PhysicsInterpolationMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_physics_interpolation_mode", 2920385216)
+  methodbind.ptrcall(self, [], Node_PhysicsInterpolationMode)
 
 proc isPhysicsInterpolated*(self: Node): bool =
-  expandMethodBind(className Node, "is_physics_interpolated", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_physics_interpolated", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc isPhysicsInterpolatedAndEnabled*(self: Node): bool =
-  expandMethodBind(className Node, "is_physics_interpolated_and_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_physics_interpolated_and_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc resetPhysicsInterpolation*(self: Node): void =
-  expandMethodBind(className Node, "reset_physics_interpolation", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "reset_physics_interpolation", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setAutoTranslateMode*(self: Node; mode: Node_AutoTranslateMode): void =
-  expandMethodBind(className Node, "set_auto_translate_mode", 776149714)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_auto_translate_mode", 776149714)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getAutoTranslateMode*(self: Node): Node_AutoTranslateMode =
-  expandMethodBind(className Node, "get_auto_translate_mode", 2498906432)
-  var ret: encoded Node_AutoTranslateMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node_AutoTranslateMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_auto_translate_mode", 2498906432)
+  methodbind.ptrcall(self, [], Node_AutoTranslateMode)
 
 proc canAutoTranslate*(self: Node): bool =
-  expandMethodBind(className Node, "can_auto_translate", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "can_auto_translate", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTranslationDomainInherited*(self: Node): void =
-  expandMethodBind(className Node, "set_translation_domain_inherited", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_translation_domain_inherited", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getWindow*(self: Node): Window =
-  expandMethodBind(className Node, "get_window", 1757182445)
-  var ret: encoded Window
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_window", 1757182445)
+  methodbind.ptrcall(self, [], Window)
 
 proc getLastExclusiveWindow*(self: Node): Window =
-  expandMethodBind(className Node, "get_last_exclusive_window", 1757182445)
-  var ret: encoded Window
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_last_exclusive_window", 1757182445)
+  methodbind.ptrcall(self, [], Window)
 
 proc getTree*(self: Node): SceneTree =
-  expandMethodBind(className Node, "get_tree", 2958820483)
-  var ret: encoded SceneTree
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(SceneTree)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_tree", 2958820483)
+  methodbind.ptrcall(self, [], SceneTree)
 
 proc createTween*(self: Node): gdref Tween =
-  expandMethodBind(className Node, "create_tween", 3426978995)
-  var ret: encoded gdref Tween
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Tween)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "create_tween", 3426978995)
+  methodbind.ptrcall(self, [], gdref Tween)
 
 proc duplicate*(self: Node; flags: int32 = 15): Node =
-  expandMethodBind(className Node, "duplicate", 3511555459)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [getPtr flags], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "duplicate", 3511555459)
+  methodbind.ptrcall(self, [getPtr flags], Node)
 
 proc replaceBy*(self: Node; node: Node; keepGroups: bool = false): void =
-  expandMethodBind(className Node, "replace_by", 2570952461)
-  methodbind.ptrcall(self, [getPtr node, getPtr keepGroups])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "replace_by", 2570952461)
+  methodbind.ptrcall(self, [getPtr node, getPtr keepGroups], void)
 
 proc setSceneInstanceLoadPlaceholder*(self: Node; loadPlaceholder: bool): void =
-  expandMethodBind(className Node, "set_scene_instance_load_placeholder", 2586408642)
-  methodbind.ptrcall(self, [getPtr loadPlaceholder])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_scene_instance_load_placeholder", 2586408642)
+  methodbind.ptrcall(self, [getPtr loadPlaceholder], void)
 
 proc getSceneInstanceLoadPlaceholder*(self: Node): bool =
-  expandMethodBind(className Node, "get_scene_instance_load_placeholder", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_scene_instance_load_placeholder", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setEditableInstance*(self: Node; node: Node; isEditable: bool): void =
-  expandMethodBind(className Node, "set_editable_instance", 2731852923)
-  methodbind.ptrcall(self, [getPtr node, getPtr isEditable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_editable_instance", 2731852923)
+  methodbind.ptrcall(self, [getPtr node, getPtr isEditable], void)
 
 proc isEditableInstance*(self: Node; node: Node): bool =
-  expandMethodBind(className Node, "is_editable_instance", 3093956946)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_editable_instance", 3093956946)
+  methodbind.ptrcall(self, [getPtr node], bool)
 
 proc getViewport*(self: Node): Viewport =
-  expandMethodBind(className Node, "get_viewport", 3596683776)
-  var ret: encoded Viewport
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Viewport)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_viewport", 3596683776)
+  methodbind.ptrcall(self, [], Viewport)
 
 proc queueFree*(self: Node): void =
-  expandMethodBind(className Node, "queue_free", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "queue_free", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc requestReady*(self: Node): void =
-  expandMethodBind(className Node, "request_ready", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "request_ready", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc isNodeReady*(self: Node): bool =
-  expandMethodBind(className Node, "is_node_ready", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_node_ready", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setMultiplayerAuthority*(self: Node; id: int32; recursive: bool = true): void =
-  expandMethodBind(className Node, "set_multiplayer_authority", 972357352)
-  methodbind.ptrcall(self, [getPtr id, getPtr recursive])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_multiplayer_authority", 972357352)
+  methodbind.ptrcall(self, [getPtr id, getPtr recursive], void)
 
 proc getMultiplayerAuthority*(self: Node): int32 =
-  expandMethodBind(className Node, "get_multiplayer_authority", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_multiplayer_authority", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc isMultiplayerAuthority*(self: Node): bool =
-  expandMethodBind(className Node, "is_multiplayer_authority", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_multiplayer_authority", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getMultiplayer*(self: Node): gdref MultiplayerAPI =
-  expandMethodBind(className Node, "get_multiplayer", 406750475)
-  var ret: encoded gdref MultiplayerAPI
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref MultiplayerAPI)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_multiplayer", 406750475)
+  methodbind.ptrcall(self, [], gdref MultiplayerAPI)
 
 proc rpcConfig*(self: Node; `method`: StringName; config: Variant): void =
-  expandMethodBind(className Node, "rpc_config", 3776071444)
-  methodbind.ptrcall(self, [getPtr `method`, getPtr config])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "rpc_config", 3776071444)
+  methodbind.ptrcall(self, [getPtr `method`, getPtr config], void)
 
 proc getNodeRpcConfig*(self: Node): Variant =
-  expandMethodBind(className Node, "get_node_rpc_config", 1214101251)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_node_rpc_config", 1214101251)
+  methodbind.ptrcall(self, [], Variant)
 
 proc setEditorDescription*(self: Node; editorDescription: String): void =
-  expandMethodBind(className Node, "set_editor_description", 83702148)
-  methodbind.ptrcall(self, [getPtr editorDescription])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_editor_description", 83702148)
+  methodbind.ptrcall(self, [getPtr editorDescription], void)
 
 proc getEditorDescription*(self: Node): String =
-  expandMethodBind(className Node, "get_editor_description", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "get_editor_description", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setUniqueNameInOwner*(self: Node; enable: bool): void =
-  expandMethodBind(className Node, "set_unique_name_in_owner", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_unique_name_in_owner", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUniqueNameInOwner*(self: Node): bool =
-  expandMethodBind(className Node, "is_unique_name_in_owner", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "is_unique_name_in_owner", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc atr*(self: Node; message: String; context: StringName = default(StringName)): String =
-  expandMethodBind(className Node, "atr", 3344478075)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr message, getPtr context], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "atr", 3344478075)
+  methodbind.ptrcall(self, [getPtr message, getPtr context], String)
 
 proc atrN*(self: Node; message: String; pluralMessage: StringName; n: int32; context: StringName = default(StringName)): String =
-  expandMethodBind(className Node, "atr_n", 259354841)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "atr_n", 259354841)
+  methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], String)
 
 proc rpc*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Error =
-  expandMethodBind(className Node, "rpc", 4047867050)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "rpc", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Error)
@@ -706,7 +796,9 @@ template rpc*(self: Node; `method`: StringName; args: varargs[Variant, variant])
   rpc(self, variant `method`, args)
 
 proc rpcId*(self: Node; peerId: Variant; `method`: Variant; args: varargs[Variant, variant]): Error =
-  expandMethodBind(className Node, "rpc_id", 361499283)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "rpc_id", 361499283)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr peerId, getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Error)
@@ -714,11 +806,15 @@ template rpcId*(self: Node; peerId: Int; `method`: StringName; args: varargs[Var
   rpcId(self, variant peerId, variant `method`, args)
 
 proc updateConfigurationWarnings*(self: Node): void =
-  expandMethodBind(className Node, "update_configuration_warnings", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "update_configuration_warnings", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc callDeferredThreadGroup*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
-  expandMethodBind(className Node, "call_deferred_thread_group", 3400424181)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "call_deferred_thread_group", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
@@ -726,15 +822,21 @@ template callDeferredThreadGroup*(self: Node; `method`: StringName; args: vararg
   callDeferredThreadGroup(self, variant `method`, args)
 
 proc setDeferredThreadGroup*(self: Node; property: StringName; value: Variant): void =
-  expandMethodBind(className Node, "set_deferred_thread_group", 3776071444)
-  methodbind.ptrcall(self, [getPtr property, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_deferred_thread_group", 3776071444)
+  methodbind.ptrcall(self, [getPtr property, getPtr value], void)
 
 proc notifyDeferredThreadGroup*(self: Node; what: int32): void =
-  expandMethodBind(className Node, "notify_deferred_thread_group", 1286410249)
-  methodbind.ptrcall(self, [getPtr what])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "notify_deferred_thread_group", 1286410249)
+  methodbind.ptrcall(self, [getPtr what], void)
 
 proc callThreadSafe*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
-  expandMethodBind(className Node, "call_thread_safe", 3400424181)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "call_thread_safe", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
   methodbind.call(self, `?param`, args).get(Variant)
@@ -742,12 +844,16 @@ template callThreadSafe*(self: Node; `method`: StringName; args: varargs[Variant
   callThreadSafe(self, variant `method`, args)
 
 proc setThreadSafe*(self: Node; property: StringName; value: Variant): void =
-  expandMethodBind(className Node, "set_thread_safe", 3776071444)
-  methodbind.ptrcall(self, [getPtr property, getPtr value])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "set_thread_safe", 3776071444)
+  methodbind.ptrcall(self, [getPtr property, getPtr value], void)
 
 proc notifyThreadSafe*(self: Node; what: int32): void =
-  expandMethodBind(className Node, "notify_thread_safe", 1286410249)
-  methodbind.ptrcall(self, [getPtr what])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Node, "notify_thread_safe", 1286410249)
+  methodbind.ptrcall(self, [getPtr what], void)
 
 template name*(self: Node): untyped = self.getName()
 template `name=`*(self: Node; value) = self.setName(value)

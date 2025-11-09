@@ -9,60 +9,70 @@ expandOnClassImported(AudioStreamPlaylist, AudioStream)
 const MaxStreams* = 64
 
 proc setStreamCount*(self: AudioStreamPlaylist; streamCount: int32): void =
-  expandMethodBind(className AudioStreamPlaylist, "set_stream_count", 1286410249)
-  methodbind.ptrcall(self, [getPtr streamCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "set_stream_count", 1286410249)
+  methodbind.ptrcall(self, [getPtr streamCount], void)
 
 proc getStreamCount*(self: AudioStreamPlaylist): int32 =
-  expandMethodBind(className AudioStreamPlaylist, "get_stream_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "get_stream_count", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getBpm*(self: AudioStreamPlaylist): float64 =
-  expandMethodBind(className AudioStreamPlaylist, "get_bpm", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "get_bpm", 1740695150)
+  methodbind.ptrcall(self, [], float64)
 
 proc setListStream*(self: AudioStreamPlaylist; streamIndex: int32; audioStream: gdref AudioStream): void =
-  expandMethodBind(className AudioStreamPlaylist, "set_list_stream", 111075094)
-  methodbind.ptrcall(self, [getPtr streamIndex, getPtr audioStream])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "set_list_stream", 111075094)
+  methodbind.ptrcall(self, [getPtr streamIndex, getPtr audioStream], void)
 
 proc getListStream*(self: AudioStreamPlaylist; streamIndex: int32): gdref AudioStream =
-  expandMethodBind(className AudioStreamPlaylist, "get_list_stream", 2739380747)
-  var ret: encoded gdref AudioStream
-  methodbind.ptrcall(self, [getPtr streamIndex], addr ret)
-  (addr ret).decode_result(gdref AudioStream)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "get_list_stream", 2739380747)
+  methodbind.ptrcall(self, [getPtr streamIndex], gdref AudioStream)
 
 proc setShuffle*(self: AudioStreamPlaylist; shuffle: bool): void =
-  expandMethodBind(className AudioStreamPlaylist, "set_shuffle", 2586408642)
-  methodbind.ptrcall(self, [getPtr shuffle])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "set_shuffle", 2586408642)
+  methodbind.ptrcall(self, [getPtr shuffle], void)
 
 proc getShuffle*(self: AudioStreamPlaylist): bool =
-  expandMethodBind(className AudioStreamPlaylist, "get_shuffle", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "get_shuffle", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFadeTime*(self: AudioStreamPlaylist; dec: Float): void =
-  expandMethodBind(className AudioStreamPlaylist, "set_fade_time", 373806689)
-  methodbind.ptrcall(self, [getPtr dec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "set_fade_time", 373806689)
+  methodbind.ptrcall(self, [getPtr dec], void)
 
 proc getFadeTime*(self: AudioStreamPlaylist): Float =
-  expandMethodBind(className AudioStreamPlaylist, "get_fade_time", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "get_fade_time", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setLoop*(self: AudioStreamPlaylist; loop: bool): void =
-  expandMethodBind(className AudioStreamPlaylist, "set_loop", 2586408642)
-  methodbind.ptrcall(self, [getPtr loop])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "set_loop", 2586408642)
+  methodbind.ptrcall(self, [getPtr loop], void)
 
 proc hasLoop*(self: AudioStreamPlaylist): bool =
-  expandMethodBind(className AudioStreamPlaylist, "has_loop", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioStreamPlaylist, "has_loop", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template shuffle*(self: AudioStreamPlaylist): untyped = self.getShuffle()
 template `shuffle=`*(self: AudioStreamPlaylist; value) = self.setShuffle(value)

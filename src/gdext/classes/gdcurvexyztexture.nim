@@ -7,38 +7,46 @@ import gdtexture2d; export gdtexture2d
 expandOnClassImported(CurveXYZTexture, Texture2D)
 
 proc setWidth*(self: CurveXYZTexture; width: int32): void =
-  expandMethodBind(className CurveXYZTexture, "set_width", 1286410249)
-  methodbind.ptrcall(self, [getPtr width])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "set_width", 1286410249)
+  methodbind.ptrcall(self, [getPtr width], void)
 
 proc setCurveX*(self: CurveXYZTexture; curve: gdref Curve): void =
-  expandMethodBind(className CurveXYZTexture, "set_curve_x", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "set_curve_x", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getCurveX*(self: CurveXYZTexture): gdref Curve =
-  expandMethodBind(className CurveXYZTexture, "get_curve_x", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "get_curve_x", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setCurveY*(self: CurveXYZTexture; curve: gdref Curve): void =
-  expandMethodBind(className CurveXYZTexture, "set_curve_y", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "set_curve_y", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getCurveY*(self: CurveXYZTexture): gdref Curve =
-  expandMethodBind(className CurveXYZTexture, "get_curve_y", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "get_curve_y", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 proc setCurveZ*(self: CurveXYZTexture; curve: gdref Curve): void =
-  expandMethodBind(className CurveXYZTexture, "set_curve_z", 270443179)
-  methodbind.ptrcall(self, [getPtr curve])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "set_curve_z", 270443179)
+  methodbind.ptrcall(self, [getPtr curve], void)
 
 proc getCurveZ*(self: CurveXYZTexture): gdref Curve =
-  expandMethodBind(className CurveXYZTexture, "get_curve_z", 2460114913)
-  var ret: encoded gdref Curve
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Curve)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CurveXYZTexture, "get_curve_z", 2460114913)
+  methodbind.ptrcall(self, [], gdref Curve)
 
 template width*(self: CurveXYZTexture): untyped = self.getWidth()
 template `width=`*(self: CurveXYZTexture; value) = self.setWidth(value)

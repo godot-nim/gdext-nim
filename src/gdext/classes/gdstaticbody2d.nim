@@ -7,34 +7,40 @@ import gdphysicsbody2d; export gdphysicsbody2d
 expandOnClassImported(StaticBody2D, PhysicsBody2D)
 
 proc setConstantLinearVelocity*(self: StaticBody2D; vel: Vector2): void =
-  expandMethodBind(className StaticBody2D, "set_constant_linear_velocity", 743155724)
-  methodbind.ptrcall(self, [getPtr vel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "set_constant_linear_velocity", 743155724)
+  methodbind.ptrcall(self, [getPtr vel], void)
 
 proc setConstantAngularVelocity*(self: StaticBody2D; vel: Float): void =
-  expandMethodBind(className StaticBody2D, "set_constant_angular_velocity", 373806689)
-  methodbind.ptrcall(self, [getPtr vel])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "set_constant_angular_velocity", 373806689)
+  methodbind.ptrcall(self, [getPtr vel], void)
 
 proc getConstantLinearVelocity*(self: StaticBody2D): Vector2 =
-  expandMethodBind(className StaticBody2D, "get_constant_linear_velocity", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "get_constant_linear_velocity", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc getConstantAngularVelocity*(self: StaticBody2D): Float =
-  expandMethodBind(className StaticBody2D, "get_constant_angular_velocity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "get_constant_angular_velocity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPhysicsMaterialOverride*(self: StaticBody2D; physicsMaterialOverride: gdref PhysicsMaterial): void =
-  expandMethodBind(className StaticBody2D, "set_physics_material_override", 1784508650)
-  methodbind.ptrcall(self, [getPtr physicsMaterialOverride])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "set_physics_material_override", 1784508650)
+  methodbind.ptrcall(self, [getPtr physicsMaterialOverride], void)
 
 proc getPhysicsMaterialOverride*(self: StaticBody2D): gdref PhysicsMaterial =
-  expandMethodBind(className StaticBody2D, "get_physics_material_override", 2521850424)
-  var ret: encoded gdref PhysicsMaterial
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref PhysicsMaterial)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className StaticBody2D, "get_physics_material_override", 2521850424)
+  methodbind.ptrcall(self, [], gdref PhysicsMaterial)
 
 template physicsMaterialOverride*(self: StaticBody2D): untyped = self.getPhysicsMaterialOverride()
 template `physicsMaterialOverride=`*(self: StaticBody2D; value) = self.setPhysicsMaterialOverride(value)

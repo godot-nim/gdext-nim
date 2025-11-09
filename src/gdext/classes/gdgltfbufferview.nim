@@ -7,70 +7,82 @@ import gdresource; export gdresource
 expandOnClassImported(GLTFBufferView, Resource)
 
 proc loadBufferViewData*(self: GLTFBufferView; state: gdref GLTFState): PackedByteArray =
-  expandMethodBind(className GLTFBufferView, "load_buffer_view_data", 3945446907)
-  var ret: encoded PackedByteArray
-  methodbind.ptrcall(self, [getPtr state], addr ret)
-  (addr ret).decode_result(PackedByteArray)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "load_buffer_view_data", 3945446907)
+  methodbind.ptrcall(self, [getPtr state], PackedByteArray)
 
 proc getBuffer*(self: GLTFBufferView): int32 =
-  expandMethodBind(className GLTFBufferView, "get_buffer", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_buffer", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setBuffer*(self: GLTFBufferView; buffer: int32): void =
-  expandMethodBind(className GLTFBufferView, "set_buffer", 1286410249)
-  methodbind.ptrcall(self, [getPtr buffer])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_buffer", 1286410249)
+  methodbind.ptrcall(self, [getPtr buffer], void)
 
 proc getByteOffset*(self: GLTFBufferView): int64 =
-  expandMethodBind(className GLTFBufferView, "get_byte_offset", 3905245786)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_byte_offset", 3905245786)
+  methodbind.ptrcall(self, [], int64)
 
 proc setByteOffset*(self: GLTFBufferView; byteOffset: int64): void =
-  expandMethodBind(className GLTFBufferView, "set_byte_offset", 1286410249)
-  methodbind.ptrcall(self, [getPtr byteOffset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_byte_offset", 1286410249)
+  methodbind.ptrcall(self, [getPtr byteOffset], void)
 
 proc getByteLength*(self: GLTFBufferView): int64 =
-  expandMethodBind(className GLTFBufferView, "get_byte_length", 3905245786)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_byte_length", 3905245786)
+  methodbind.ptrcall(self, [], int64)
 
 proc setByteLength*(self: GLTFBufferView; byteLength: int64): void =
-  expandMethodBind(className GLTFBufferView, "set_byte_length", 1286410249)
-  methodbind.ptrcall(self, [getPtr byteLength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_byte_length", 1286410249)
+  methodbind.ptrcall(self, [getPtr byteLength], void)
 
 proc getByteStride*(self: GLTFBufferView): int64 =
-  expandMethodBind(className GLTFBufferView, "get_byte_stride", 3905245786)
-  var ret: encoded int64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int64)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_byte_stride", 3905245786)
+  methodbind.ptrcall(self, [], int64)
 
 proc setByteStride*(self: GLTFBufferView; byteStride: int64): void =
-  expandMethodBind(className GLTFBufferView, "set_byte_stride", 1286410249)
-  methodbind.ptrcall(self, [getPtr byteStride])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_byte_stride", 1286410249)
+  methodbind.ptrcall(self, [getPtr byteStride], void)
 
 proc getIndices*(self: GLTFBufferView): bool =
-  expandMethodBind(className GLTFBufferView, "get_indices", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_indices", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setIndices*(self: GLTFBufferView; indices: bool): void =
-  expandMethodBind(className GLTFBufferView, "set_indices", 2586408642)
-  methodbind.ptrcall(self, [getPtr indices])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_indices", 2586408642)
+  methodbind.ptrcall(self, [getPtr indices], void)
 
 proc getVertexAttributes*(self: GLTFBufferView): bool =
-  expandMethodBind(className GLTFBufferView, "get_vertex_attributes", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "get_vertex_attributes", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setVertexAttributes*(self: GLTFBufferView; isAttributes: bool): void =
-  expandMethodBind(className GLTFBufferView, "set_vertex_attributes", 2586408642)
-  methodbind.ptrcall(self, [getPtr isAttributes])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFBufferView, "set_vertex_attributes", 2586408642)
+  methodbind.ptrcall(self, [getPtr isAttributes], void)
 
 template buffer*(self: GLTFBufferView): untyped = self.getBuffer()
 template `buffer=`*(self: GLTFBufferView; value) = self.setBuffer(value)

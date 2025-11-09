@@ -12,14 +12,16 @@ proc registerVirtual_instantiatePlayback*[T: VideoStream](Self: typedesc[T]) =
     errproof: cast[VideoStream](p_instance).instantiatePlayback().encode(r_ret)
 
 proc setFile*(self: VideoStream; file: String): void =
-  expandMethodBind(className VideoStream, "set_file", 83702148)
-  methodbind.ptrcall(self, [getPtr file])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VideoStream, "set_file", 83702148)
+  methodbind.ptrcall(self, [getPtr file], void)
 
 proc getFile*(self: VideoStream): String =
-  expandMethodBind(className VideoStream, "get_file", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className VideoStream, "get_file", 2841200299)
+  methodbind.ptrcall(self, [], String)
 
 template file*(self: VideoStream): untyped = self.getFile()
 template `file=`*(self: VideoStream; value) = self.setFile(value)

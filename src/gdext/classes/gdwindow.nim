@@ -15,628 +15,760 @@ proc registerVirtual_getContentsMinimumSize*[T: Window](Self: typedesc[T]) =
     errproof: cast[Window](p_instance).getContentsMinimumSize().encode(r_ret)
 
 proc setTitle*(self: Window; title: String): void =
-  expandMethodBind(className Window, "set_title", 83702148)
-  methodbind.ptrcall(self, [getPtr title])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_title", 83702148)
+  methodbind.ptrcall(self, [getPtr title], void)
 
 proc getTitle*(self: Window): String =
-  expandMethodBind(className Window, "get_title", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_title", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setInitialPosition*(self: Window; initialPosition: Window_WindowInitialPosition): void =
-  expandMethodBind(className Window, "set_initial_position", 4084468099)
-  methodbind.ptrcall(self, [getPtr initialPosition])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_initial_position", 4084468099)
+  methodbind.ptrcall(self, [getPtr initialPosition], void)
 
 proc getInitialPosition*(self: Window): Window_WindowInitialPosition =
-  expandMethodBind(className Window, "get_initial_position", 4294066647)
-  var ret: encoded Window_WindowInitialPosition
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_WindowInitialPosition)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_initial_position", 4294066647)
+  methodbind.ptrcall(self, [], Window_WindowInitialPosition)
 
 proc setCurrentScreen*(self: Window; index: int32): void =
-  expandMethodBind(className Window, "set_current_screen", 1286410249)
-  methodbind.ptrcall(self, [getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_current_screen", 1286410249)
+  methodbind.ptrcall(self, [getPtr index], void)
 
 proc getCurrentScreen*(self: Window): int32 =
-  expandMethodBind(className Window, "get_current_screen", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_current_screen", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setPosition*(self: Window; position: Vector2i): void =
-  expandMethodBind(className Window, "set_position", 1130785943)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_position", 1130785943)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getPosition*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_position", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_position", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc moveToCenter*(self: Window): void =
-  expandMethodBind(className Window, "move_to_center", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "move_to_center", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setSize*(self: Window; size: Vector2i): void =
-  expandMethodBind(className Window, "set_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getSize*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc resetSize*(self: Window): void =
-  expandMethodBind(className Window, "reset_size", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "reset_size", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc getPositionWithDecorations*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_position_with_decorations", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_position_with_decorations", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc getSizeWithDecorations*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_size_with_decorations", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_size_with_decorations", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setMaxSize*(self: Window; maxSize: Vector2i): void =
-  expandMethodBind(className Window, "set_max_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr maxSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_max_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr maxSize], void)
 
 proc getMaxSize*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_max_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_max_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setMinSize*(self: Window; minSize: Vector2i): void =
-  expandMethodBind(className Window, "set_min_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr minSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_min_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr minSize], void)
 
 proc getMinSize*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_min_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_min_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setMode*(self: Window; mode: Window_Mode): void =
-  expandMethodBind(className Window, "set_mode", 3095236531)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_mode", 3095236531)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getMode*(self: Window): Window_Mode =
-  expandMethodBind(className Window, "get_mode", 2566346114)
-  var ret: encoded Window_Mode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_Mode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_mode", 2566346114)
+  methodbind.ptrcall(self, [], Window_Mode)
 
 proc setFlag*(self: Window; flag: Window_Flags; enabled: bool): void =
-  expandMethodBind(className Window, "set_flag", 3426449779)
-  methodbind.ptrcall(self, [getPtr flag, getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_flag", 3426449779)
+  methodbind.ptrcall(self, [getPtr flag, getPtr enabled], void)
 
 proc getFlag*(self: Window; flag: Window_Flags): bool =
-  expandMethodBind(className Window, "get_flag", 3062752289)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr flag], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_flag", 3062752289)
+  methodbind.ptrcall(self, [getPtr flag], bool)
 
 proc isMaximizeAllowed*(self: Window): bool =
-  expandMethodBind(className Window, "is_maximize_allowed", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_maximize_allowed", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc requestAttention*(self: Window): void =
-  expandMethodBind(className Window, "request_attention", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "request_attention", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc moveToForeground*(self: Window): void =
-  expandMethodBind(className Window, "move_to_foreground", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "move_to_foreground", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setVisible*(self: Window; visible: bool): void =
-  expandMethodBind(className Window, "set_visible", 2586408642)
-  methodbind.ptrcall(self, [getPtr visible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr visible], void)
 
 proc isVisible*(self: Window): bool =
-  expandMethodBind(className Window, "is_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc hide*(self: Window): void =
-  expandMethodBind(className Window, "hide", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "hide", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc show*(self: Window): void =
-  expandMethodBind(className Window, "show", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "show", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setTransient*(self: Window; transient: bool): void =
-  expandMethodBind(className Window, "set_transient", 2586408642)
-  methodbind.ptrcall(self, [getPtr transient])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_transient", 2586408642)
+  methodbind.ptrcall(self, [getPtr transient], void)
 
 proc isTransient*(self: Window): bool =
-  expandMethodBind(className Window, "is_transient", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_transient", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTransientToFocused*(self: Window; enable: bool): void =
-  expandMethodBind(className Window, "set_transient_to_focused", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_transient_to_focused", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isTransientToFocused*(self: Window): bool =
-  expandMethodBind(className Window, "is_transient_to_focused", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_transient_to_focused", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setExclusive*(self: Window; exclusive: bool): void =
-  expandMethodBind(className Window, "set_exclusive", 2586408642)
-  methodbind.ptrcall(self, [getPtr exclusive])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_exclusive", 2586408642)
+  methodbind.ptrcall(self, [getPtr exclusive], void)
 
 proc isExclusive*(self: Window): bool =
-  expandMethodBind(className Window, "is_exclusive", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_exclusive", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUnparentWhenInvisible*(self: Window; unparent: bool): void =
-  expandMethodBind(className Window, "set_unparent_when_invisible", 2586408642)
-  methodbind.ptrcall(self, [getPtr unparent])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_unparent_when_invisible", 2586408642)
+  methodbind.ptrcall(self, [getPtr unparent], void)
 
 proc canDraw*(self: Window): bool =
-  expandMethodBind(className Window, "can_draw", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "can_draw", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc hasFocus*(self: Window): bool =
-  expandMethodBind(className Window, "has_focus", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_focus", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc grabFocus*(self: Window): void =
-  expandMethodBind(className Window, "grab_focus", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "grab_focus", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc startDrag*(self: Window): void =
-  expandMethodBind(className Window, "start_drag", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "start_drag", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc startResize*(self: Window; edge: DisplayServer_WindowResizeEdge): void =
-  expandMethodBind(className Window, "start_resize", 122288853)
-  methodbind.ptrcall(self, [getPtr edge])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "start_resize", 122288853)
+  methodbind.ptrcall(self, [getPtr edge], void)
 
 proc setImeActive*(self: Window; active: bool): void =
-  expandMethodBind(className Window, "set_ime_active", 2586408642)
-  methodbind.ptrcall(self, [getPtr active])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_ime_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr active], void)
 
 proc setImePosition*(self: Window; position: Vector2i): void =
-  expandMethodBind(className Window, "set_ime_position", 1130785943)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_ime_position", 1130785943)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc isEmbedded*(self: Window): bool =
-  expandMethodBind(className Window, "is_embedded", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_embedded", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getContentsMinimumSize*(self: Window): Vector2 =
-  expandMethodBind(className Window, "get_contents_minimum_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_contents_minimum_size", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setForceNative*(self: Window; forceNative: bool): void =
-  expandMethodBind(className Window, "set_force_native", 2586408642)
-  methodbind.ptrcall(self, [getPtr forceNative])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_force_native", 2586408642)
+  methodbind.ptrcall(self, [getPtr forceNative], void)
 
 proc getForceNative*(self: Window): bool =
-  expandMethodBind(className Window, "get_force_native", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_force_native", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setContentScaleSize*(self: Window; size: Vector2i): void =
-  expandMethodBind(className Window, "set_content_scale_size", 1130785943)
-  methodbind.ptrcall(self, [getPtr size])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_content_scale_size", 1130785943)
+  methodbind.ptrcall(self, [getPtr size], void)
 
 proc getContentScaleSize*(self: Window): Vector2i =
-  expandMethodBind(className Window, "get_content_scale_size", 3690982128)
-  var ret: encoded Vector2i
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2i)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_content_scale_size", 3690982128)
+  methodbind.ptrcall(self, [], Vector2i)
 
 proc setContentScaleMode*(self: Window; mode: Window_ContentScaleMode): void =
-  expandMethodBind(className Window, "set_content_scale_mode", 2937716473)
-  methodbind.ptrcall(self, [getPtr mode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_content_scale_mode", 2937716473)
+  methodbind.ptrcall(self, [getPtr mode], void)
 
 proc getContentScaleMode*(self: Window): Window_ContentScaleMode =
-  expandMethodBind(className Window, "get_content_scale_mode", 161585230)
-  var ret: encoded Window_ContentScaleMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_ContentScaleMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_content_scale_mode", 161585230)
+  methodbind.ptrcall(self, [], Window_ContentScaleMode)
 
 proc setContentScaleAspect*(self: Window; aspect: Window_ContentScaleAspect): void =
-  expandMethodBind(className Window, "set_content_scale_aspect", 2370399418)
-  methodbind.ptrcall(self, [getPtr aspect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_content_scale_aspect", 2370399418)
+  methodbind.ptrcall(self, [getPtr aspect], void)
 
 proc getContentScaleAspect*(self: Window): Window_ContentScaleAspect =
-  expandMethodBind(className Window, "get_content_scale_aspect", 4158790715)
-  var ret: encoded Window_ContentScaleAspect
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_ContentScaleAspect)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_content_scale_aspect", 4158790715)
+  methodbind.ptrcall(self, [], Window_ContentScaleAspect)
 
 proc setContentScaleStretch*(self: Window; stretch: Window_ContentScaleStretch): void =
-  expandMethodBind(className Window, "set_content_scale_stretch", 349355940)
-  methodbind.ptrcall(self, [getPtr stretch])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_content_scale_stretch", 349355940)
+  methodbind.ptrcall(self, [getPtr stretch], void)
 
 proc getContentScaleStretch*(self: Window): Window_ContentScaleStretch =
-  expandMethodBind(className Window, "get_content_scale_stretch", 536857316)
-  var ret: encoded Window_ContentScaleStretch
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_ContentScaleStretch)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_content_scale_stretch", 536857316)
+  methodbind.ptrcall(self, [], Window_ContentScaleStretch)
 
 proc setKeepTitleVisible*(self: Window; titleVisible: bool): void =
-  expandMethodBind(className Window, "set_keep_title_visible", 2586408642)
-  methodbind.ptrcall(self, [getPtr titleVisible])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_keep_title_visible", 2586408642)
+  methodbind.ptrcall(self, [getPtr titleVisible], void)
 
 proc getKeepTitleVisible*(self: Window): bool =
-  expandMethodBind(className Window, "get_keep_title_visible", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_keep_title_visible", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setContentScaleFactor*(self: Window; factor: Float): void =
-  expandMethodBind(className Window, "set_content_scale_factor", 373806689)
-  methodbind.ptrcall(self, [getPtr factor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_content_scale_factor", 373806689)
+  methodbind.ptrcall(self, [getPtr factor], void)
 
 proc getContentScaleFactor*(self: Window): Float =
-  expandMethodBind(className Window, "get_content_scale_factor", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_content_scale_factor", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setMousePassthroughPolygon*(self: Window; polygon: PackedVector2Array): void =
-  expandMethodBind(className Window, "set_mouse_passthrough_polygon", 1509147220)
-  methodbind.ptrcall(self, [getPtr polygon])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_mouse_passthrough_polygon", 1509147220)
+  methodbind.ptrcall(self, [getPtr polygon], void)
 
 proc getMousePassthroughPolygon*(self: Window): PackedVector2Array =
-  expandMethodBind(className Window, "get_mouse_passthrough_polygon", 2961356807)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_mouse_passthrough_polygon", 2961356807)
+  methodbind.ptrcall(self, [], PackedVector2Array)
 
 proc setWrapControls*(self: Window; enable: bool): void =
-  expandMethodBind(className Window, "set_wrap_controls", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_wrap_controls", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isWrappingControls*(self: Window): bool =
-  expandMethodBind(className Window, "is_wrapping_controls", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_wrapping_controls", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc childControlsChanged*(self: Window): void =
-  expandMethodBind(className Window, "child_controls_changed", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "child_controls_changed", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setTheme*(self: Window; theme: gdref Theme): void =
-  expandMethodBind(className Window, "set_theme", 2326690814)
-  methodbind.ptrcall(self, [getPtr theme])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_theme", 2326690814)
+  methodbind.ptrcall(self, [getPtr theme], void)
 
 proc getTheme*(self: Window): gdref Theme =
-  expandMethodBind(className Window, "get_theme", 3846893731)
-  var ret: encoded gdref Theme
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Theme)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme", 3846893731)
+  methodbind.ptrcall(self, [], gdref Theme)
 
 proc setThemeTypeVariation*(self: Window; themeType: StringName): void =
-  expandMethodBind(className Window, "set_theme_type_variation", 3304788590)
-  methodbind.ptrcall(self, [getPtr themeType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_theme_type_variation", 3304788590)
+  methodbind.ptrcall(self, [getPtr themeType], void)
 
 proc getThemeTypeVariation*(self: Window): StringName =
-  expandMethodBind(className Window, "get_theme_type_variation", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_type_variation", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc beginBulkThemeOverride*(self: Window): void =
-  expandMethodBind(className Window, "begin_bulk_theme_override", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "begin_bulk_theme_override", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc endBulkThemeOverride*(self: Window): void =
-  expandMethodBind(className Window, "end_bulk_theme_override", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "end_bulk_theme_override", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc addThemeIconOverride*(self: Window; name: StringName; texture: gdref Texture2D): void =
-  expandMethodBind(className Window, "add_theme_icon_override", 1373065600)
-  methodbind.ptrcall(self, [getPtr name, getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_icon_override", 1373065600)
+  methodbind.ptrcall(self, [getPtr name, getPtr texture], void)
 
 proc addThemeStyleboxOverride*(self: Window; name: StringName; stylebox: gdref StyleBox): void =
-  expandMethodBind(className Window, "add_theme_stylebox_override", 4188838905)
-  methodbind.ptrcall(self, [getPtr name, getPtr stylebox])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_stylebox_override", 4188838905)
+  methodbind.ptrcall(self, [getPtr name, getPtr stylebox], void)
 
 proc addThemeFontOverride*(self: Window; name: StringName; font: gdref Font): void =
-  expandMethodBind(className Window, "add_theme_font_override", 3518018674)
-  methodbind.ptrcall(self, [getPtr name, getPtr font])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_font_override", 3518018674)
+  methodbind.ptrcall(self, [getPtr name, getPtr font], void)
 
 proc addThemeFontSizeOverride*(self: Window; name: StringName; fontSize: int32): void =
-  expandMethodBind(className Window, "add_theme_font_size_override", 2415702435)
-  methodbind.ptrcall(self, [getPtr name, getPtr fontSize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_font_size_override", 2415702435)
+  methodbind.ptrcall(self, [getPtr name, getPtr fontSize], void)
 
 proc addThemeColorOverride*(self: Window; name: StringName; color: Color): void =
-  expandMethodBind(className Window, "add_theme_color_override", 4260178595)
-  methodbind.ptrcall(self, [getPtr name, getPtr color])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_color_override", 4260178595)
+  methodbind.ptrcall(self, [getPtr name, getPtr color], void)
 
 proc addThemeConstantOverride*(self: Window; name: StringName; constant: int32): void =
-  expandMethodBind(className Window, "add_theme_constant_override", 2415702435)
-  methodbind.ptrcall(self, [getPtr name, getPtr constant])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "add_theme_constant_override", 2415702435)
+  methodbind.ptrcall(self, [getPtr name, getPtr constant], void)
 
 proc removeThemeIconOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_icon_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_icon_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc removeThemeStyleboxOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_stylebox_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_stylebox_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc removeThemeFontOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_font_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_font_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc removeThemeFontSizeOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_font_size_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_font_size_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc removeThemeColorOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_color_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_color_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc removeThemeConstantOverride*(self: Window; name: StringName): void =
-  expandMethodBind(className Window, "remove_theme_constant_override", 3304788590)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "remove_theme_constant_override", 3304788590)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getThemeIcon*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref Texture2D =
-  expandMethodBind(className Window, "get_theme_icon", 3163973443)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_icon", 3163973443)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], gdref Texture2D)
 
 proc getThemeStylebox*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref StyleBox =
-  expandMethodBind(className Window, "get_theme_stylebox", 604739069)
-  var ret: encoded gdref StyleBox
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(gdref StyleBox)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_stylebox", 604739069)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], gdref StyleBox)
 
 proc getThemeFont*(self: Window; name: StringName; themeType: StringName = default(StringName)): gdref Font =
-  expandMethodBind(className Window, "get_theme_font", 2826986490)
-  var ret: encoded gdref Font
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(gdref Font)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_font", 2826986490)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], gdref Font)
 
 proc getThemeFontSize*(self: Window; name: StringName; themeType: StringName = default(StringName)): int32 =
-  expandMethodBind(className Window, "get_theme_font_size", 1327056374)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_font_size", 1327056374)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], int32)
 
 proc getThemeColor*(self: Window; name: StringName; themeType: StringName = default(StringName)): Color =
-  expandMethodBind(className Window, "get_theme_color", 2798751242)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_color", 2798751242)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], Color)
 
 proc getThemeConstant*(self: Window; name: StringName; themeType: StringName = default(StringName)): int32 =
-  expandMethodBind(className Window, "get_theme_constant", 1327056374)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_constant", 1327056374)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], int32)
 
 proc hasThemeIconOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_icon_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_icon_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeStyleboxOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_stylebox_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_stylebox_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeFontOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_font_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_font_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeFontSizeOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_font_size_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_font_size_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeColorOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_color_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_color_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeConstantOverride*(self: Window; name: StringName): bool =
-  expandMethodBind(className Window, "has_theme_constant_override", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_constant_override", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc hasThemeIcon*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_icon", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_icon", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc hasThemeStylebox*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_stylebox", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_stylebox", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc hasThemeFont*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_font", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_font", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc hasThemeFontSize*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_font_size", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_font_size", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc hasThemeColor*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_color", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_color", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc hasThemeConstant*(self: Window; name: StringName; themeType: StringName = default(StringName)): bool =
-  expandMethodBind(className Window, "has_theme_constant", 866386512)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name, getPtr themeType], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "has_theme_constant", 866386512)
+  methodbind.ptrcall(self, [getPtr name, getPtr themeType], bool)
 
 proc getThemeDefaultBaseScale*(self: Window): Float =
-  expandMethodBind(className Window, "get_theme_default_base_scale", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_default_base_scale", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc getThemeDefaultFont*(self: Window): gdref Font =
-  expandMethodBind(className Window, "get_theme_default_font", 3229501585)
-  var ret: encoded gdref Font
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Font)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_default_font", 3229501585)
+  methodbind.ptrcall(self, [], gdref Font)
 
 proc getThemeDefaultFontSize*(self: Window): int32 =
-  expandMethodBind(className Window, "get_theme_default_font_size", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_theme_default_font_size", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc getWindowId*(self: Window): int32 =
-  expandMethodBind(className Window, "get_window_id", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_window_id", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setAccessibilityName*(self: Window; name: String): void =
-  expandMethodBind(className Window, "set_accessibility_name", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_accessibility_name", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getAccessibilityName*(self: Window): String =
-  expandMethodBind(className Window, "get_accessibility_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_accessibility_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setAccessibilityDescription*(self: Window; description: String): void =
-  expandMethodBind(className Window, "set_accessibility_description", 83702148)
-  methodbind.ptrcall(self, [getPtr description])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_accessibility_description", 83702148)
+  methodbind.ptrcall(self, [getPtr description], void)
 
 proc getAccessibilityDescription*(self: Window): String =
-  expandMethodBind(className Window, "get_accessibility_description", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_accessibility_description", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getFocusedWindow*(_: typedesc[Window]): Window =
-  expandMethodBind(className Window, "get_focused_window", 1835468782)
-  var ret: encoded Window
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(Window)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_focused_window", 1835468782)
+  methodbind.ptrcall([], Window)
 
 proc setLayoutDirection*(self: Window; direction: Window_LayoutDirection): void =
-  expandMethodBind(className Window, "set_layout_direction", 3094704184)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_layout_direction", 3094704184)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getLayoutDirection*(self: Window): Window_LayoutDirection =
-  expandMethodBind(className Window, "get_layout_direction", 3909617982)
-  var ret: encoded Window_LayoutDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Window_LayoutDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "get_layout_direction", 3909617982)
+  methodbind.ptrcall(self, [], Window_LayoutDirection)
 
 proc isLayoutRtl*(self: Window): bool =
-  expandMethodBind(className Window, "is_layout_rtl", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_layout_rtl", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setAutoTranslate*(self: Window; enable: bool): void =
-  expandMethodBind(className Window, "set_auto_translate", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_auto_translate", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isAutoTranslating*(self: Window): bool =
-  expandMethodBind(className Window, "is_auto_translating", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_auto_translating", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setUseFontOversampling*(self: Window; enable: bool): void =
-  expandMethodBind(className Window, "set_use_font_oversampling", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "set_use_font_oversampling", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isUsingFontOversampling*(self: Window): bool =
-  expandMethodBind(className Window, "is_using_font_oversampling", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "is_using_font_oversampling", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc popup*(self: Window; rect: Rect2i = rect2i(0, 0, 0, 0)): void =
-  expandMethodBind(className Window, "popup", 1680304321)
-  methodbind.ptrcall(self, [getPtr rect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup", 1680304321)
+  methodbind.ptrcall(self, [getPtr rect], void)
 
 proc popupOnParent*(self: Window; parentRect: Rect2i): void =
-  expandMethodBind(className Window, "popup_on_parent", 1763793166)
-  methodbind.ptrcall(self, [getPtr parentRect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_on_parent", 1763793166)
+  methodbind.ptrcall(self, [getPtr parentRect], void)
 
 proc popupCentered*(self: Window; minsize: Vector2i = vector2i(0, 0)): void =
-  expandMethodBind(className Window, "popup_centered", 3447975422)
-  methodbind.ptrcall(self, [getPtr minsize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_centered", 3447975422)
+  methodbind.ptrcall(self, [getPtr minsize], void)
 
 proc popupCenteredRatio*(self: Window; ratio: Float = 0.8): void =
-  expandMethodBind(className Window, "popup_centered_ratio", 1014814997)
-  methodbind.ptrcall(self, [getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_centered_ratio", 1014814997)
+  methodbind.ptrcall(self, [getPtr ratio], void)
 
 proc popupCenteredClamped*(self: Window; minsize: Vector2i = vector2i(0, 0); fallbackRatio: Float = 0.75): void =
-  expandMethodBind(className Window, "popup_centered_clamped", 2613752477)
-  methodbind.ptrcall(self, [getPtr minsize, getPtr fallbackRatio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_centered_clamped", 2613752477)
+  methodbind.ptrcall(self, [getPtr minsize, getPtr fallbackRatio], void)
 
 proc popupExclusive*(self: Window; fromNode: Node; rect: Rect2i = rect2i(0, 0, 0, 0)): void =
-  expandMethodBind(className Window, "popup_exclusive", 2134721627)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr rect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_exclusive", 2134721627)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr rect], void)
 
 proc popupExclusiveOnParent*(self: Window; fromNode: Node; parentRect: Rect2i): void =
-  expandMethodBind(className Window, "popup_exclusive_on_parent", 2344671043)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr parentRect])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_exclusive_on_parent", 2344671043)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr parentRect], void)
 
 proc popupExclusiveCentered*(self: Window; fromNode: Node; minsize: Vector2i = vector2i(0, 0)): void =
-  expandMethodBind(className Window, "popup_exclusive_centered", 3357594017)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr minsize])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_exclusive_centered", 3357594017)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr minsize], void)
 
 proc popupExclusiveCenteredRatio*(self: Window; fromNode: Node; ratio: Float = 0.8): void =
-  expandMethodBind(className Window, "popup_exclusive_centered_ratio", 2284776287)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr ratio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_exclusive_centered_ratio", 2284776287)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr ratio], void)
 
 proc popupExclusiveCenteredClamped*(self: Window; fromNode: Node; minsize: Vector2i = vector2i(0, 0); fallbackRatio: Float = 0.75): void =
-  expandMethodBind(className Window, "popup_exclusive_centered_clamped", 2612708785)
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr minsize, getPtr fallbackRatio])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Window, "popup_exclusive_centered_clamped", 2612708785)
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr minsize, getPtr fallbackRatio], void)
 
 template mode*(self: Window): untyped = self.getMode()
 template `mode=`*(self: Window; value) = self.setMode(value)

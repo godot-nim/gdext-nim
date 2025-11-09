@@ -7,134 +7,160 @@ import gdbasebutton; export gdbasebutton
 expandOnClassImported(Button, BaseButton)
 
 proc setText*(self: Button; text: String): void =
-  expandMethodBind(className Button, "set_text", 83702148)
-  methodbind.ptrcall(self, [getPtr text])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_text", 83702148)
+  methodbind.ptrcall(self, [getPtr text], void)
 
 proc getText*(self: Button): String =
-  expandMethodBind(className Button, "get_text", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_text", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setTextOverrunBehavior*(self: Button; overrunBehavior: TextServer_OverrunBehavior): void =
-  expandMethodBind(className Button, "set_text_overrun_behavior", 1008890932)
-  methodbind.ptrcall(self, [getPtr overrunBehavior])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_text_overrun_behavior", 1008890932)
+  methodbind.ptrcall(self, [getPtr overrunBehavior], void)
 
 proc getTextOverrunBehavior*(self: Button): TextServer_OverrunBehavior =
-  expandMethodBind(className Button, "get_text_overrun_behavior", 3779142101)
-  var ret: encoded TextServer_OverrunBehavior
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_OverrunBehavior)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_text_overrun_behavior", 3779142101)
+  methodbind.ptrcall(self, [], TextServer_OverrunBehavior)
 
 proc setAutowrapMode*(self: Button; autowrapMode: TextServer_AutowrapMode): void =
-  expandMethodBind(className Button, "set_autowrap_mode", 3289138044)
-  methodbind.ptrcall(self, [getPtr autowrapMode])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_autowrap_mode", 3289138044)
+  methodbind.ptrcall(self, [getPtr autowrapMode], void)
 
 proc getAutowrapMode*(self: Button): TextServer_AutowrapMode =
-  expandMethodBind(className Button, "get_autowrap_mode", 1549071663)
-  var ret: encoded TextServer_AutowrapMode
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TextServer_AutowrapMode)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_autowrap_mode", 1549071663)
+  methodbind.ptrcall(self, [], TextServer_AutowrapMode)
 
 proc setAutowrapTrimFlags*(self: Button; autowrapTrimFlags: set[TextServer_LineBreakFlag]): void =
-  expandMethodBind(className Button, "set_autowrap_trim_flags", 2809697122)
-  methodbind.ptrcall(self, [getPtr autowrapTrimFlags])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_autowrap_trim_flags", 2809697122)
+  methodbind.ptrcall(self, [getPtr autowrapTrimFlags], void)
 
 proc getAutowrapTrimFlags*(self: Button): set[TextServer_LineBreakFlag] =
-  expandMethodBind(className Button, "get_autowrap_trim_flags", 2340632602)
-  var ret: encoded set[TextServer_LineBreakFlag]
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(set[TextServer_LineBreakFlag])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_autowrap_trim_flags", 2340632602)
+  methodbind.ptrcall(self, [], set[TextServer_LineBreakFlag])
 
 proc setTextDirection*(self: Button; direction: Control_TextDirection): void =
-  expandMethodBind(className Button, "set_text_direction", 119160795)
-  methodbind.ptrcall(self, [getPtr direction])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_text_direction", 119160795)
+  methodbind.ptrcall(self, [getPtr direction], void)
 
 proc getTextDirection*(self: Button): Control_TextDirection =
-  expandMethodBind(className Button, "get_text_direction", 797257663)
-  var ret: encoded Control_TextDirection
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control_TextDirection)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_text_direction", 797257663)
+  methodbind.ptrcall(self, [], Control_TextDirection)
 
 proc setLanguage*(self: Button; language: String): void =
-  expandMethodBind(className Button, "set_language", 83702148)
-  methodbind.ptrcall(self, [getPtr language])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_language", 83702148)
+  methodbind.ptrcall(self, [getPtr language], void)
 
 proc getLanguage*(self: Button): String =
-  expandMethodBind(className Button, "get_language", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_language", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setButtonIcon*(self: Button; texture: gdref Texture2D): void =
-  expandMethodBind(className Button, "set_button_icon", 4051416890)
-  methodbind.ptrcall(self, [getPtr texture])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_button_icon", 4051416890)
+  methodbind.ptrcall(self, [getPtr texture], void)
 
 proc getButtonIcon*(self: Button): gdref Texture2D =
-  expandMethodBind(className Button, "get_button_icon", 3635182373)
-  var ret: encoded gdref Texture2D
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Texture2D)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_button_icon", 3635182373)
+  methodbind.ptrcall(self, [], gdref Texture2D)
 
 proc setFlat*(self: Button; enabled: bool): void =
-  expandMethodBind(className Button, "set_flat", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_flat", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isFlat*(self: Button): bool =
-  expandMethodBind(className Button, "is_flat", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "is_flat", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setClipText*(self: Button; enabled: bool): void =
-  expandMethodBind(className Button, "set_clip_text", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_clip_text", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc getClipText*(self: Button): bool =
-  expandMethodBind(className Button, "get_clip_text", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_clip_text", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTextAlignment*(self: Button; alignment: HorizontalAlignment): void =
-  expandMethodBind(className Button, "set_text_alignment", 2312603777)
-  methodbind.ptrcall(self, [getPtr alignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_text_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr alignment], void)
 
 proc getTextAlignment*(self: Button): HorizontalAlignment =
-  expandMethodBind(className Button, "get_text_alignment", 341400642)
-  var ret: encoded HorizontalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HorizontalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_text_alignment", 341400642)
+  methodbind.ptrcall(self, [], HorizontalAlignment)
 
 proc setIconAlignment*(self: Button; iconAlignment: HorizontalAlignment): void =
-  expandMethodBind(className Button, "set_icon_alignment", 2312603777)
-  methodbind.ptrcall(self, [getPtr iconAlignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_icon_alignment", 2312603777)
+  methodbind.ptrcall(self, [getPtr iconAlignment], void)
 
 proc getIconAlignment*(self: Button): HorizontalAlignment =
-  expandMethodBind(className Button, "get_icon_alignment", 341400642)
-  var ret: encoded HorizontalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(HorizontalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_icon_alignment", 341400642)
+  methodbind.ptrcall(self, [], HorizontalAlignment)
 
 proc setVerticalIconAlignment*(self: Button; verticalIconAlignment: VerticalAlignment): void =
-  expandMethodBind(className Button, "set_vertical_icon_alignment", 1796458609)
-  methodbind.ptrcall(self, [getPtr verticalIconAlignment])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_vertical_icon_alignment", 1796458609)
+  methodbind.ptrcall(self, [getPtr verticalIconAlignment], void)
 
 proc getVerticalIconAlignment*(self: Button): VerticalAlignment =
-  expandMethodBind(className Button, "get_vertical_icon_alignment", 3274884059)
-  var ret: encoded VerticalAlignment
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(VerticalAlignment)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "get_vertical_icon_alignment", 3274884059)
+  methodbind.ptrcall(self, [], VerticalAlignment)
 
 proc setExpandIcon*(self: Button; enabled: bool): void =
-  expandMethodBind(className Button, "set_expand_icon", 2586408642)
-  methodbind.ptrcall(self, [getPtr enabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "set_expand_icon", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled], void)
 
 proc isExpandIcon*(self: Button): bool =
-  expandMethodBind(className Button, "is_expand_icon", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Button, "is_expand_icon", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 template text*(self: Button): untyped = self.getText()
 template `text=`*(self: Button; value) = self.setText(value)

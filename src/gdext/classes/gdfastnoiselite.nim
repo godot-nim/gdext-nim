@@ -7,214 +7,256 @@ import gdnoise; export gdnoise
 expandOnClassImported(FastNoiseLite, Noise)
 
 proc setNoiseType*(self: FastNoiseLite; `type`: FastNoiseLite_NoiseType): void =
-  expandMethodBind(className FastNoiseLite, "set_noise_type", 2624461392)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_noise_type", 2624461392)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getNoiseType*(self: FastNoiseLite): FastNoiseLite_NoiseType =
-  expandMethodBind(className FastNoiseLite, "get_noise_type", 1458108610)
-  var ret: encoded FastNoiseLite_NoiseType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_NoiseType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_noise_type", 1458108610)
+  methodbind.ptrcall(self, [], FastNoiseLite_NoiseType)
 
 proc setSeed*(self: FastNoiseLite; seed: int32): void =
-  expandMethodBind(className FastNoiseLite, "set_seed", 1286410249)
-  methodbind.ptrcall(self, [getPtr seed])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_seed", 1286410249)
+  methodbind.ptrcall(self, [getPtr seed], void)
 
 proc getSeed*(self: FastNoiseLite): int32 =
-  expandMethodBind(className FastNoiseLite, "get_seed", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_seed", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setFrequency*(self: FastNoiseLite; freq: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_frequency", 373806689)
-  methodbind.ptrcall(self, [getPtr freq])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_frequency", 373806689)
+  methodbind.ptrcall(self, [getPtr freq], void)
 
 proc getFrequency*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_frequency", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_frequency", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setOffset*(self: FastNoiseLite; offset: Vector3): void =
-  expandMethodBind(className FastNoiseLite, "set_offset", 3460891852)
-  methodbind.ptrcall(self, [getPtr offset])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_offset", 3460891852)
+  methodbind.ptrcall(self, [getPtr offset], void)
 
 proc getOffset*(self: FastNoiseLite): Vector3 =
-  expandMethodBind(className FastNoiseLite, "get_offset", 3360562783)
-  var ret: encoded Vector3
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector3)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_offset", 3360562783)
+  methodbind.ptrcall(self, [], Vector3)
 
 proc setFractalType*(self: FastNoiseLite; `type`: FastNoiseLite_FractalType): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_type", 4132731174)
-  methodbind.ptrcall(self, [getPtr `type`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_type", 4132731174)
+  methodbind.ptrcall(self, [getPtr `type`], void)
 
 proc getFractalType*(self: FastNoiseLite): FastNoiseLite_FractalType =
-  expandMethodBind(className FastNoiseLite, "get_fractal_type", 1036889279)
-  var ret: encoded FastNoiseLite_FractalType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_FractalType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_type", 1036889279)
+  methodbind.ptrcall(self, [], FastNoiseLite_FractalType)
 
 proc setFractalOctaves*(self: FastNoiseLite; octaveCount: int32): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_octaves", 1286410249)
-  methodbind.ptrcall(self, [getPtr octaveCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_octaves", 1286410249)
+  methodbind.ptrcall(self, [getPtr octaveCount], void)
 
 proc getFractalOctaves*(self: FastNoiseLite): int32 =
-  expandMethodBind(className FastNoiseLite, "get_fractal_octaves", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_octaves", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setFractalLacunarity*(self: FastNoiseLite; lacunarity: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_lacunarity", 373806689)
-  methodbind.ptrcall(self, [getPtr lacunarity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_lacunarity", 373806689)
+  methodbind.ptrcall(self, [getPtr lacunarity], void)
 
 proc getFractalLacunarity*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_fractal_lacunarity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_lacunarity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFractalGain*(self: FastNoiseLite; gain: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_gain", 373806689)
-  methodbind.ptrcall(self, [getPtr gain])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_gain", 373806689)
+  methodbind.ptrcall(self, [getPtr gain], void)
 
 proc getFractalGain*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_fractal_gain", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_gain", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFractalWeightedStrength*(self: FastNoiseLite; weightedStrength: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_weighted_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr weightedStrength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_weighted_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr weightedStrength], void)
 
 proc getFractalWeightedStrength*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_fractal_weighted_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_weighted_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFractalPingPongStrength*(self: FastNoiseLite; pingPongStrength: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_fractal_ping_pong_strength", 373806689)
-  methodbind.ptrcall(self, [getPtr pingPongStrength])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_fractal_ping_pong_strength", 373806689)
+  methodbind.ptrcall(self, [getPtr pingPongStrength], void)
 
 proc getFractalPingPongStrength*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_fractal_ping_pong_strength", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_fractal_ping_pong_strength", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCellularDistanceFunction*(self: FastNoiseLite; `func`: FastNoiseLite_CellularDistanceFunction): void =
-  expandMethodBind(className FastNoiseLite, "set_cellular_distance_function", 1006013267)
-  methodbind.ptrcall(self, [getPtr `func`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_cellular_distance_function", 1006013267)
+  methodbind.ptrcall(self, [getPtr `func`], void)
 
 proc getCellularDistanceFunction*(self: FastNoiseLite): FastNoiseLite_CellularDistanceFunction =
-  expandMethodBind(className FastNoiseLite, "get_cellular_distance_function", 2021274088)
-  var ret: encoded FastNoiseLite_CellularDistanceFunction
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_CellularDistanceFunction)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_cellular_distance_function", 2021274088)
+  methodbind.ptrcall(self, [], FastNoiseLite_CellularDistanceFunction)
 
 proc setCellularJitter*(self: FastNoiseLite; jitter: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_cellular_jitter", 373806689)
-  methodbind.ptrcall(self, [getPtr jitter])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_cellular_jitter", 373806689)
+  methodbind.ptrcall(self, [getPtr jitter], void)
 
 proc getCellularJitter*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_cellular_jitter", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_cellular_jitter", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setCellularReturnType*(self: FastNoiseLite; ret: FastNoiseLite_CellularReturnType): void =
-  expandMethodBind(className FastNoiseLite, "set_cellular_return_type", 2654169698)
-  methodbind.ptrcall(self, [getPtr ret])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_cellular_return_type", 2654169698)
+  methodbind.ptrcall(self, [getPtr ret], void)
 
 proc getCellularReturnType*(self: FastNoiseLite): FastNoiseLite_CellularReturnType =
-  expandMethodBind(className FastNoiseLite, "get_cellular_return_type", 3699796343)
-  var ret: encoded FastNoiseLite_CellularReturnType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_CellularReturnType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_cellular_return_type", 3699796343)
+  methodbind.ptrcall(self, [], FastNoiseLite_CellularReturnType)
 
 proc setDomainWarpEnabled*(self: FastNoiseLite; domainWarpEnabled: bool): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_enabled", 2586408642)
-  methodbind.ptrcall(self, [getPtr domainWarpEnabled])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_enabled", 2586408642)
+  methodbind.ptrcall(self, [getPtr domainWarpEnabled], void)
 
 proc isDomainWarpEnabled*(self: FastNoiseLite): bool =
-  expandMethodBind(className FastNoiseLite, "is_domain_warp_enabled", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "is_domain_warp_enabled", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setDomainWarpType*(self: FastNoiseLite; domainWarpType: FastNoiseLite_DomainWarpType): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_type", 3629692980)
-  methodbind.ptrcall(self, [getPtr domainWarpType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_type", 3629692980)
+  methodbind.ptrcall(self, [getPtr domainWarpType], void)
 
 proc getDomainWarpType*(self: FastNoiseLite): FastNoiseLite_DomainWarpType =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_type", 2980162020)
-  var ret: encoded FastNoiseLite_DomainWarpType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_DomainWarpType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_type", 2980162020)
+  methodbind.ptrcall(self, [], FastNoiseLite_DomainWarpType)
 
 proc setDomainWarpAmplitude*(self: FastNoiseLite; domainWarpAmplitude: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_amplitude", 373806689)
-  methodbind.ptrcall(self, [getPtr domainWarpAmplitude])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_amplitude", 373806689)
+  methodbind.ptrcall(self, [getPtr domainWarpAmplitude], void)
 
 proc getDomainWarpAmplitude*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_amplitude", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_amplitude", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDomainWarpFrequency*(self: FastNoiseLite; domainWarpFrequency: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_frequency", 373806689)
-  methodbind.ptrcall(self, [getPtr domainWarpFrequency])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_frequency", 373806689)
+  methodbind.ptrcall(self, [getPtr domainWarpFrequency], void)
 
 proc getDomainWarpFrequency*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_frequency", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_frequency", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDomainWarpFractalType*(self: FastNoiseLite; domainWarpFractalType: FastNoiseLite_DomainWarpFractalType): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_fractal_type", 3999408287)
-  methodbind.ptrcall(self, [getPtr domainWarpFractalType])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_fractal_type", 3999408287)
+  methodbind.ptrcall(self, [getPtr domainWarpFractalType], void)
 
 proc getDomainWarpFractalType*(self: FastNoiseLite): FastNoiseLite_DomainWarpFractalType =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_fractal_type", 407716934)
-  var ret: encoded FastNoiseLite_DomainWarpFractalType
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(FastNoiseLite_DomainWarpFractalType)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_fractal_type", 407716934)
+  methodbind.ptrcall(self, [], FastNoiseLite_DomainWarpFractalType)
 
 proc setDomainWarpFractalOctaves*(self: FastNoiseLite; domainWarpOctaveCount: int32): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_fractal_octaves", 1286410249)
-  methodbind.ptrcall(self, [getPtr domainWarpOctaveCount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_fractal_octaves", 1286410249)
+  methodbind.ptrcall(self, [getPtr domainWarpOctaveCount], void)
 
 proc getDomainWarpFractalOctaves*(self: FastNoiseLite): int32 =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_fractal_octaves", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_fractal_octaves", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setDomainWarpFractalLacunarity*(self: FastNoiseLite; domainWarpLacunarity: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_fractal_lacunarity", 373806689)
-  methodbind.ptrcall(self, [getPtr domainWarpLacunarity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_fractal_lacunarity", 373806689)
+  methodbind.ptrcall(self, [getPtr domainWarpLacunarity], void)
 
 proc getDomainWarpFractalLacunarity*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_fractal_lacunarity", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_fractal_lacunarity", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setDomainWarpFractalGain*(self: FastNoiseLite; domainWarpGain: Float): void =
-  expandMethodBind(className FastNoiseLite, "set_domain_warp_fractal_gain", 373806689)
-  methodbind.ptrcall(self, [getPtr domainWarpGain])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "set_domain_warp_fractal_gain", 373806689)
+  methodbind.ptrcall(self, [getPtr domainWarpGain], void)
 
 proc getDomainWarpFractalGain*(self: FastNoiseLite): Float =
-  expandMethodBind(className FastNoiseLite, "get_domain_warp_fractal_gain", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className FastNoiseLite, "get_domain_warp_fractal_gain", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template noiseType*(self: FastNoiseLite): untyped = self.getNoiseType()
 template `noiseType=`*(self: FastNoiseLite; value) = self.setNoiseType(value)

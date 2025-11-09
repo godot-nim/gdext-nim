@@ -7,56 +7,64 @@ import gdnode3d; export gdnode3d
 expandOnClassImported(XRNode3D, Node3D)
 
 proc setTracker*(self: XRNode3D; trackerName: StringName): void =
-  expandMethodBind(className XRNode3D, "set_tracker", 3304788590)
-  methodbind.ptrcall(self, [getPtr trackerName])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "set_tracker", 3304788590)
+  methodbind.ptrcall(self, [getPtr trackerName], void)
 
 proc getTracker*(self: XRNode3D): StringName =
-  expandMethodBind(className XRNode3D, "get_tracker", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_tracker", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setPoseName*(self: XRNode3D; pose: StringName): void =
-  expandMethodBind(className XRNode3D, "set_pose_name", 3304788590)
-  methodbind.ptrcall(self, [getPtr pose])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "set_pose_name", 3304788590)
+  methodbind.ptrcall(self, [getPtr pose], void)
 
 proc getPoseName*(self: XRNode3D): StringName =
-  expandMethodBind(className XRNode3D, "get_pose_name", 2002593661)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StringName)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_pose_name", 2002593661)
+  methodbind.ptrcall(self, [], StringName)
 
 proc setShowWhenTracked*(self: XRNode3D; show: bool): void =
-  expandMethodBind(className XRNode3D, "set_show_when_tracked", 2586408642)
-  methodbind.ptrcall(self, [getPtr show])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "set_show_when_tracked", 2586408642)
+  methodbind.ptrcall(self, [getPtr show], void)
 
 proc getShowWhenTracked*(self: XRNode3D): bool =
-  expandMethodBind(className XRNode3D, "get_show_when_tracked", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_show_when_tracked", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getIsActive*(self: XRNode3D): bool =
-  expandMethodBind(className XRNode3D, "get_is_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_is_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getHasTrackingData*(self: XRNode3D): bool =
-  expandMethodBind(className XRNode3D, "get_has_tracking_data", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_has_tracking_data", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getPose*(self: XRNode3D): gdref XRPose =
-  expandMethodBind(className XRNode3D, "get_pose", 2806551826)
-  var ret: encoded gdref XRPose
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref XRPose)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "get_pose", 2806551826)
+  methodbind.ptrcall(self, [], gdref XRPose)
 
 proc triggerHapticPulse*(self: XRNode3D; actionName: String; frequency: float64; amplitude: float64; durationSec: float64; delaySec: float64): void =
-  expandMethodBind(className XRNode3D, "trigger_haptic_pulse", 508576839)
-  methodbind.ptrcall(self, [getPtr actionName, getPtr frequency, getPtr amplitude, getPtr durationSec, getPtr delaySec])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRNode3D, "trigger_haptic_pulse", 508576839)
+  methodbind.ptrcall(self, [getPtr actionName, getPtr frequency, getPtr amplitude, getPtr durationSec, getPtr delaySec], void)
 
 template tracker*(self: XRNode3D): untyped = self.getTracker()
 template `tracker=`*(self: XRNode3D; value) = self.setTracker(value)

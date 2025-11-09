@@ -7,134 +7,160 @@ import gdaudioeffect; export gdaudioeffect
 expandOnClassImported(AudioEffectDelay, AudioEffect)
 
 proc setDry*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_dry", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_dry", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getDry*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_dry", 191475506)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_dry", 191475506)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap1Active*(self: AudioEffectDelay; amount: bool): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap1_active", 2586408642)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap1_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc isTap1Active*(self: AudioEffectDelay): bool =
-  expandMethodBind(className AudioEffectDelay, "is_tap1_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "is_tap1_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTap1DelayMs*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap1_delay_ms", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap1_delay_ms", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap1DelayMs*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap1_delay_ms", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap1_delay_ms", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap1LevelDb*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap1_level_db", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap1_level_db", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap1LevelDb*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap1_level_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap1_level_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap1Pan*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap1_pan", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap1_pan", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap1Pan*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap1_pan", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap1_pan", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap2Active*(self: AudioEffectDelay; amount: bool): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap2_active", 2586408642)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap2_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc isTap2Active*(self: AudioEffectDelay): bool =
-  expandMethodBind(className AudioEffectDelay, "is_tap2_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "is_tap2_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setTap2DelayMs*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap2_delay_ms", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap2_delay_ms", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap2DelayMs*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap2_delay_ms", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap2_delay_ms", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap2LevelDb*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap2_level_db", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap2_level_db", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap2LevelDb*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap2_level_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap2_level_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setTap2Pan*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_tap2_pan", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_tap2_pan", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getTap2Pan*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_tap2_pan", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_tap2_pan", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFeedbackActive*(self: AudioEffectDelay; amount: bool): void =
-  expandMethodBind(className AudioEffectDelay, "set_feedback_active", 2586408642)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_feedback_active", 2586408642)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc isFeedbackActive*(self: AudioEffectDelay): bool =
-  expandMethodBind(className AudioEffectDelay, "is_feedback_active", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "is_feedback_active", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setFeedbackDelayMs*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_feedback_delay_ms", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_feedback_delay_ms", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getFeedbackDelayMs*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_feedback_delay_ms", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_feedback_delay_ms", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFeedbackLevelDb*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_feedback_level_db", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_feedback_level_db", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getFeedbackLevelDb*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_feedback_level_db", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_feedback_level_db", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setFeedbackLowpass*(self: AudioEffectDelay; amount: Float): void =
-  expandMethodBind(className AudioEffectDelay, "set_feedback_lowpass", 373806689)
-  methodbind.ptrcall(self, [getPtr amount])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "set_feedback_lowpass", 373806689)
+  methodbind.ptrcall(self, [getPtr amount], void)
 
 proc getFeedbackLowpass*(self: AudioEffectDelay): Float =
-  expandMethodBind(className AudioEffectDelay, "get_feedback_lowpass", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className AudioEffectDelay, "get_feedback_lowpass", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 template dry*(self: AudioEffectDelay): untyped = self.getDry()
 template `dry=`*(self: AudioEffectDelay; value) = self.setDry(value)

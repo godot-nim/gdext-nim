@@ -7,44 +7,52 @@ import gdprimitivemesh; export gdprimitivemesh
 expandOnClassImported(CapsuleMesh, PrimitiveMesh)
 
 proc setRadius*(self: CapsuleMesh; radius: Float): void =
-  expandMethodBind(className CapsuleMesh, "set_radius", 373806689)
-  methodbind.ptrcall(self, [getPtr radius])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "set_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius], void)
 
 proc getRadius*(self: CapsuleMesh): Float =
-  expandMethodBind(className CapsuleMesh, "get_radius", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "get_radius", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setHeight*(self: CapsuleMesh; height: Float): void =
-  expandMethodBind(className CapsuleMesh, "set_height", 373806689)
-  methodbind.ptrcall(self, [getPtr height])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "set_height", 373806689)
+  methodbind.ptrcall(self, [getPtr height], void)
 
 proc getHeight*(self: CapsuleMesh): Float =
-  expandMethodBind(className CapsuleMesh, "get_height", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "get_height", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setRadialSegments*(self: CapsuleMesh; segments: int32): void =
-  expandMethodBind(className CapsuleMesh, "set_radial_segments", 1286410249)
-  methodbind.ptrcall(self, [getPtr segments])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "set_radial_segments", 1286410249)
+  methodbind.ptrcall(self, [getPtr segments], void)
 
 proc getRadialSegments*(self: CapsuleMesh): int32 =
-  expandMethodBind(className CapsuleMesh, "get_radial_segments", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "get_radial_segments", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setRings*(self: CapsuleMesh; rings: int32): void =
-  expandMethodBind(className CapsuleMesh, "set_rings", 1286410249)
-  methodbind.ptrcall(self, [getPtr rings])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "set_rings", 1286410249)
+  methodbind.ptrcall(self, [getPtr rings], void)
 
 proc getRings*(self: CapsuleMesh): int32 =
-  expandMethodBind(className CapsuleMesh, "get_rings", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className CapsuleMesh, "get_rings", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 template radius*(self: CapsuleMesh): untyped = self.getRadius()
 template `radius=`*(self: CapsuleMesh; value) = self.setRadius(value)

@@ -7,5 +7,7 @@ import gdtranslation; export gdtranslation
 expandOnClassImported(OptimizedTranslation, Translation)
 
 proc generate*(self: OptimizedTranslation; `from`: gdref Translation): void =
-  expandMethodBind(className OptimizedTranslation, "generate", 1466479800)
-  methodbind.ptrcall(self, [getPtr `from`])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className OptimizedTranslation, "generate", 1466479800)
+  methodbind.ptrcall(self, [getPtr `from`], void)

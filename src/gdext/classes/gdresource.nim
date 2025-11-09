@@ -27,110 +27,130 @@ proc registerVirtual_setPathCache*[T: Resource](Self: typedesc[T]) =
     errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
 
 proc setPath*(self: Resource; path: String): void =
-  expandMethodBind(className Resource, "set_path", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_path", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc takeOverPath*(self: Resource; path: String): void =
-  expandMethodBind(className Resource, "take_over_path", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "take_over_path", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc getPath*(self: Resource): String =
-  expandMethodBind(className Resource, "get_path", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_path", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc setPathCache*(self: Resource; path: String): void =
-  expandMethodBind(className Resource, "set_path_cache", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_path_cache", 83702148)
+  methodbind.ptrcall(self, [getPtr path], void)
 
 proc setName*(self: Resource; name: String): void =
-  expandMethodBind(className Resource, "set_name", 83702148)
-  methodbind.ptrcall(self, [getPtr name])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_name", 83702148)
+  methodbind.ptrcall(self, [getPtr name], void)
 
 proc getName*(self: Resource): String =
-  expandMethodBind(className Resource, "get_name", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_name", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc getRid*(self: Resource): RID =
-  expandMethodBind(className Resource, "get_rid", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_rid", 2944877500)
+  methodbind.ptrcall(self, [], RID)
 
 proc setLocalToScene*(self: Resource; enable: bool): void =
-  expandMethodBind(className Resource, "set_local_to_scene", 2586408642)
-  methodbind.ptrcall(self, [getPtr enable])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_local_to_scene", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable], void)
 
 proc isLocalToScene*(self: Resource): bool =
-  expandMethodBind(className Resource, "is_local_to_scene", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "is_local_to_scene", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc getLocalScene*(self: Resource): Node =
-  expandMethodBind(className Resource, "get_local_scene", 3160264692)
-  var ret: encoded Node
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Node)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_local_scene", 3160264692)
+  methodbind.ptrcall(self, [], Node)
 
 proc setupLocalToScene*(self: Resource): void =
-  expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "setup_local_to_scene", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc resetState*(self: Resource): void =
-  expandMethodBind(className Resource, "reset_state", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "reset_state", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc setIdForPath*(self: Resource; path: String; id: String): void =
-  expandMethodBind(className Resource, "set_id_for_path", 3186203200)
-  methodbind.ptrcall(self, [getPtr path, getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_id_for_path", 3186203200)
+  methodbind.ptrcall(self, [getPtr path, getPtr id], void)
 
 proc getIdForPath*(self: Resource; path: String): String =
-  expandMethodBind(className Resource, "get_id_for_path", 3135753539)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_id_for_path", 3135753539)
+  methodbind.ptrcall(self, [getPtr path], String)
 
 proc isBuiltIn*(self: Resource): bool =
-  expandMethodBind(className Resource, "is_built_in", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "is_built_in", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc generateSceneUniqueId*(_: typedesc[Resource]): String =
-  expandMethodBind(className Resource, "generate_scene_unique_id", 2841200299)
-  var ret: encoded String
-  methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "generate_scene_unique_id", 2841200299)
+  methodbind.ptrcall([], String)
 
 proc setSceneUniqueId*(self: Resource; id: String): void =
-  expandMethodBind(className Resource, "set_scene_unique_id", 83702148)
-  methodbind.ptrcall(self, [getPtr id])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "set_scene_unique_id", 83702148)
+  methodbind.ptrcall(self, [getPtr id], void)
 
 proc getSceneUniqueId*(self: Resource): String =
-  expandMethodBind(className Resource, "get_scene_unique_id", 201670096)
-  var ret: encoded String
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "get_scene_unique_id", 201670096)
+  methodbind.ptrcall(self, [], String)
 
 proc emitChanged*(self: Resource): void =
-  expandMethodBind(className Resource, "emit_changed", 3218959716)
-  methodbind.ptrcall(self, [])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "emit_changed", 3218959716)
+  methodbind.ptrcall(self, [], void)
 
 proc duplicate*(self: Resource; deep: bool = false): gdref Resource =
-  expandMethodBind(className Resource, "duplicate", 482882304)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [getPtr deep], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "duplicate", 482882304)
+  methodbind.ptrcall(self, [getPtr deep], gdref Resource)
 
 proc duplicateDeep*(self: Resource; deepSubresourcesMode: Resource_DeepDuplicateMode = deepDuplicateInternal): gdref Resource =
-  expandMethodBind(className Resource, "duplicate_deep", 905779109)
-  var ret: encoded gdref Resource
-  methodbind.ptrcall(self, [getPtr deepSubresourcesMode], addr ret)
-  (addr ret).decode_result(gdref Resource)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className Resource, "duplicate_deep", 905779109)
+  methodbind.ptrcall(self, [getPtr deepSubresourcesMode], gdref Resource)
 
 template resourceLocalToScene*(self: Resource): untyped = self.isLocalToScene()
 template `resourceLocalToScene=`*(self: Resource; value) = self.setLocalToScene(value)

@@ -7,94 +7,112 @@ import gdinputeventfromwindow; export gdinputeventfromwindow
 expandOnClassImported(InputEventScreenDrag, InputEventFromWindow)
 
 proc setIndex*(self: InputEventScreenDrag; index: int32): void =
-  expandMethodBind(className InputEventScreenDrag, "set_index", 1286410249)
-  methodbind.ptrcall(self, [getPtr index])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr index], void)
 
 proc getIndex*(self: InputEventScreenDrag): int32 =
-  expandMethodBind(className InputEventScreenDrag, "get_index", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_index", 3905245786)
+  methodbind.ptrcall(self, [], int32)
 
 proc setTilt*(self: InputEventScreenDrag; tilt: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_tilt", 743155724)
-  methodbind.ptrcall(self, [getPtr tilt])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_tilt", 743155724)
+  methodbind.ptrcall(self, [getPtr tilt], void)
 
 proc getTilt*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_tilt", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_tilt", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setPressure*(self: InputEventScreenDrag; pressure: Float): void =
-  expandMethodBind(className InputEventScreenDrag, "set_pressure", 373806689)
-  methodbind.ptrcall(self, [getPtr pressure])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_pressure", 373806689)
+  methodbind.ptrcall(self, [getPtr pressure], void)
 
 proc getPressure*(self: InputEventScreenDrag): Float =
-  expandMethodBind(className InputEventScreenDrag, "get_pressure", 1740695150)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_pressure", 1740695150)
+  methodbind.ptrcall(self, [], Float)
 
 proc setPenInverted*(self: InputEventScreenDrag; penInverted: bool): void =
-  expandMethodBind(className InputEventScreenDrag, "set_pen_inverted", 2586408642)
-  methodbind.ptrcall(self, [getPtr penInverted])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_pen_inverted", 2586408642)
+  methodbind.ptrcall(self, [getPtr penInverted], void)
 
 proc getPenInverted*(self: InputEventScreenDrag): bool =
-  expandMethodBind(className InputEventScreenDrag, "get_pen_inverted", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_pen_inverted", 36873697)
+  methodbind.ptrcall(self, [], bool)
 
 proc setPosition*(self: InputEventScreenDrag; position: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_position", 743155724)
-  methodbind.ptrcall(self, [getPtr position])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_position", 743155724)
+  methodbind.ptrcall(self, [getPtr position], void)
 
 proc getPosition*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_position", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_position", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setRelative*(self: InputEventScreenDrag; relative: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_relative", 743155724)
-  methodbind.ptrcall(self, [getPtr relative])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_relative", 743155724)
+  methodbind.ptrcall(self, [getPtr relative], void)
 
 proc getRelative*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_relative", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_relative", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScreenRelative*(self: InputEventScreenDrag; relative: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_screen_relative", 743155724)
-  methodbind.ptrcall(self, [getPtr relative])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_screen_relative", 743155724)
+  methodbind.ptrcall(self, [getPtr relative], void)
 
 proc getScreenRelative*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_screen_relative", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_screen_relative", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setVelocity*(self: InputEventScreenDrag; velocity: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_velocity", 743155724)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_velocity", 743155724)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getVelocity*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_velocity", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_velocity", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 proc setScreenVelocity*(self: InputEventScreenDrag; velocity: Vector2): void =
-  expandMethodBind(className InputEventScreenDrag, "set_screen_velocity", 743155724)
-  methodbind.ptrcall(self, [getPtr velocity])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "set_screen_velocity", 743155724)
+  methodbind.ptrcall(self, [getPtr velocity], void)
 
 proc getScreenVelocity*(self: InputEventScreenDrag): Vector2 =
-  expandMethodBind(className InputEventScreenDrag, "get_screen_velocity", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className InputEventScreenDrag, "get_screen_velocity", 3341600327)
+  methodbind.ptrcall(self, [], Vector2)
 
 template index*(self: InputEventScreenDrag): untyped = self.getIndex()
 template `index=`*(self: InputEventScreenDrag; value) = self.setIndex(value)

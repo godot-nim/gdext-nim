@@ -7,54 +7,64 @@ import gdresource; export gdresource
 expandOnClassImported(GLTFSpecGloss, Resource)
 
 proc getDiffuseImg*(self: GLTFSpecGloss): gdref Image =
-  expandMethodBind(className GLTFSpecGloss, "get_diffuse_img", 564927088)
-  var ret: encoded gdref Image
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Image)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "get_diffuse_img", 564927088)
+  methodbind.ptrcall(self, [], gdref Image)
 
 proc setDiffuseImg*(self: GLTFSpecGloss; diffuseImg: gdref Image): void =
-  expandMethodBind(className GLTFSpecGloss, "set_diffuse_img", 532598488)
-  methodbind.ptrcall(self, [getPtr diffuseImg])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "set_diffuse_img", 532598488)
+  methodbind.ptrcall(self, [getPtr diffuseImg], void)
 
 proc getDiffuseFactor*(self: GLTFSpecGloss): Color =
-  expandMethodBind(className GLTFSpecGloss, "get_diffuse_factor", 3200896285)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "get_diffuse_factor", 3200896285)
+  methodbind.ptrcall(self, [], Color)
 
 proc setDiffuseFactor*(self: GLTFSpecGloss; diffuseFactor: Color): void =
-  expandMethodBind(className GLTFSpecGloss, "set_diffuse_factor", 2920490490)
-  methodbind.ptrcall(self, [getPtr diffuseFactor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "set_diffuse_factor", 2920490490)
+  methodbind.ptrcall(self, [getPtr diffuseFactor], void)
 
 proc getGlossFactor*(self: GLTFSpecGloss): Float =
-  expandMethodBind(className GLTFSpecGloss, "get_gloss_factor", 191475506)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "get_gloss_factor", 191475506)
+  methodbind.ptrcall(self, [], Float)
 
 proc setGlossFactor*(self: GLTFSpecGloss; glossFactor: Float): void =
-  expandMethodBind(className GLTFSpecGloss, "set_gloss_factor", 373806689)
-  methodbind.ptrcall(self, [getPtr glossFactor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "set_gloss_factor", 373806689)
+  methodbind.ptrcall(self, [getPtr glossFactor], void)
 
 proc getSpecularFactor*(self: GLTFSpecGloss): Color =
-  expandMethodBind(className GLTFSpecGloss, "get_specular_factor", 3200896285)
-  var ret: encoded Color
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Color)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "get_specular_factor", 3200896285)
+  methodbind.ptrcall(self, [], Color)
 
 proc setSpecularFactor*(self: GLTFSpecGloss; specularFactor: Color): void =
-  expandMethodBind(className GLTFSpecGloss, "set_specular_factor", 2920490490)
-  methodbind.ptrcall(self, [getPtr specularFactor])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "set_specular_factor", 2920490490)
+  methodbind.ptrcall(self, [getPtr specularFactor], void)
 
 proc getSpecGlossImg*(self: GLTFSpecGloss): gdref Image =
-  expandMethodBind(className GLTFSpecGloss, "get_spec_gloss_img", 564927088)
-  var ret: encoded gdref Image
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref Image)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "get_spec_gloss_img", 564927088)
+  methodbind.ptrcall(self, [], gdref Image)
 
 proc setSpecGlossImg*(self: GLTFSpecGloss; specGlossImg: gdref Image): void =
-  expandMethodBind(className GLTFSpecGloss, "set_spec_gloss_img", 532598488)
-  methodbind.ptrcall(self, [getPtr specGlossImg])
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className GLTFSpecGloss, "set_spec_gloss_img", 532598488)
+  methodbind.ptrcall(self, [getPtr specGlossImg], void)
 
 template diffuseImg*(self: GLTFSpecGloss): untyped = self.getDiffuseImg()
 template `diffuseImg=`*(self: GLTFSpecGloss; value) = self.setDiffuseImg(value)

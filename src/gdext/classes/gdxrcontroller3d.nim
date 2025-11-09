@@ -7,31 +7,31 @@ import gdxrnode3d; export gdxrnode3d
 expandOnClassImported(XRController3D, XRNode3D)
 
 proc isButtonPressed*(self: XRController3D; name: StringName): bool =
-  expandMethodBind(className XRController3D, "is_button_pressed", 2619796661)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(bool)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRController3D, "is_button_pressed", 2619796661)
+  methodbind.ptrcall(self, [getPtr name], bool)
 
 proc getInput*(self: XRController3D; name: StringName): Variant =
-  expandMethodBind(className XRController3D, "get_input", 2760726917)
-  var ret: encoded Variant
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(Variant)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRController3D, "get_input", 2760726917)
+  methodbind.ptrcall(self, [getPtr name], Variant)
 
 proc getFloat*(self: XRController3D; name: StringName): Float =
-  expandMethodBind(className XRController3D, "get_float", 2349060816)
-  var ret: encoded Float
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(Float)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRController3D, "get_float", 2349060816)
+  methodbind.ptrcall(self, [getPtr name], Float)
 
 proc getVector2*(self: XRController3D; name: StringName): Vector2 =
-  expandMethodBind(className XRController3D, "get_vector2", 3100822709)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [getPtr name], addr ret)
-  (addr ret).decode_result(Vector2)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRController3D, "get_vector2", 3100822709)
+  methodbind.ptrcall(self, [getPtr name], Vector2)
 
 proc getTrackerHand*(self: XRController3D): XRPositionalTracker_TrackerHand =
-  expandMethodBind(className XRController3D, "get_tracker_hand", 4181770860)
-  var ret: encoded XRPositionalTracker_TrackerHand
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(XRPositionalTracker_TrackerHand)
+  var methodbind {.global.}: MethodBindPtr
+  if unlikely(methodbind.isNil):
+    methodbind = ClassDB.getMethodBind(className XRController3D, "get_tracker_hand", 4181770860)
+  methodbind.ptrcall(self, [], XRPositionalTracker_TrackerHand)
