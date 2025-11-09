@@ -170,8 +170,9 @@ proc project(config: BuildConfig; api: JsonAPI): ProjectRoot =
               for constant in class.json.constants.get(@[]):
                 constant.weave(sym)
             weave margin:
-              for entry in class.json.methods.get(@[]):
-                weave entry.convert(sym)
+              var methods = class.json.methods.get(@[]).mapIt(it.convert(sym)).squash
+              for entry in methods:
+                weave entry
             weave_properties class
 
     layout gen:
