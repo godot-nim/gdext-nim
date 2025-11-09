@@ -6,22 +6,32 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(Resource, RefCounted)
 
-method setupLocalToScene*(self: Resource): void {.base.} = (discard)
+method setupLocalToScene*(self: Resource): void {.base.} =
+  expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
+  methodbind.ptrcall(self, [])
 proc registerVirtual_setupLocalToScene*[T: Resource](Self: typedesc[T]) =
   Self.vmethods[newStringName"_setup_local_to_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).setupLocalToScene()
 
-method getRid*(self: Resource): RID {.base.} = (discard)
+method getRid*(self: Resource): RID {.base.} =
+  expandMethodBind(className Resource, "get_rid", 2944877500)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(RID)
 proc registerVirtual_getRid*[T: Resource](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_rid"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).getRid().encode(r_ret)
 
-method resetState*(self: Resource): void {.base.} = (discard)
+method resetState*(self: Resource): void {.base.} =
+  expandMethodBind(className Resource, "reset_state", 3218959716)
+  methodbind.ptrcall(self, [])
 proc registerVirtual_resetState*[T: Resource](Self: typedesc[T]) =
   Self.vmethods[newStringName"_reset_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).resetState()
 
-method setPathCache*(self: Resource; path: String): void {.base.} = (discard)
+method setPathCache*(self: Resource; path: String): void {.base.} =
+  expandMethodBind(className Resource, "set_path_cache", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
 proc registerVirtual_setPathCache*[T: Resource](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_path_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Resource](p_instance).setPathCache(p_args[0].decode(String))
@@ -40,10 +50,6 @@ proc getPath*(self: Resource): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc setPathCache*(self: Resource; path: String): void =
-  expandMethodBind(className Resource, "set_path_cache", 83702148)
-  methodbind.ptrcall(self, [getPtr path])
-
 proc setName*(self: Resource; name: String): void =
   expandMethodBind(className Resource, "set_name", 83702148)
   methodbind.ptrcall(self, [getPtr name])
@@ -53,12 +59,6 @@ proc getName*(self: Resource): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-proc getRid*(self: Resource): RID =
-  expandMethodBind(className Resource, "get_rid", 2944877500)
-  var ret: encoded RID
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(RID)
 
 proc setLocalToScene*(self: Resource; enable: bool): void =
   expandMethodBind(className Resource, "set_local_to_scene", 2586408642)
@@ -75,14 +75,6 @@ proc getLocalScene*(self: Resource): Node =
   var ret: encoded Node
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
-
-proc setupLocalToScene*(self: Resource): void =
-  expandMethodBind(className Resource, "setup_local_to_scene", 3218959716)
-  methodbind.ptrcall(self, [])
-
-proc resetState*(self: Resource): void =
-  expandMethodBind(className Resource, "reset_state", 3218959716)
-  methodbind.ptrcall(self, [])
 
 proc setIdForPath*(self: Resource; path: String; id: String): void =
   expandMethodBind(className Resource, "set_id_for_path", 3186203200)

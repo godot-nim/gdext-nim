@@ -6,32 +6,50 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(AudioStreamPlayback, RefCounted)
 
-method start*(self: AudioStreamPlayback; fromPos: float64): void {.base.} = (discard)
+method start*(self: AudioStreamPlayback; fromPos: float64 = 0.0): void {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "start", 1958160172)
+  methodbind.ptrcall(self, [getPtr fromPos])
 proc registerVirtual_start*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_start"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).start(p_args[0].decode(float64))
 
-method stop*(self: AudioStreamPlayback): void {.base.} = (discard)
+method stop*(self: AudioStreamPlayback): void {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "stop", 3218959716)
+  methodbind.ptrcall(self, [])
 proc registerVirtual_stop*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_stop"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).stop()
 
-method isPlaying*(self: AudioStreamPlayback): bool {.base.} = (discard)
+method isPlaying*(self: AudioStreamPlayback): bool {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "is_playing", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 proc registerVirtual_isPlaying*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_playing"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).isPlaying().encode(r_ret)
 
-method getLoopCount*(self: AudioStreamPlayback): int32 {.base.} = (discard)
+method getLoopCount*(self: AudioStreamPlayback): int32 {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "get_loop_count", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
 proc registerVirtual_getLoopCount*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_loop_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).getLoopCount().encode(r_ret)
 
-method getPlaybackPosition*(self: AudioStreamPlayback): float64 {.base.} = (discard)
+method getPlaybackPosition*(self: AudioStreamPlayback): float64 {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "get_playback_position", 1740695150)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
 proc registerVirtual_getPlaybackPosition*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_playback_position"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).getPlaybackPosition().encode(r_ret)
 
-method seek*(self: AudioStreamPlayback; position: float64): void {.base.} = (discard)
+method seek*(self: AudioStreamPlayback; time: float64 = 0.0): void {.base.} =
+  expandMethodBind(className AudioStreamPlayback, "seek", 1958160172)
+  methodbind.ptrcall(self, [getPtr time])
 proc registerVirtual_seek*[T: AudioStreamPlayback](Self: typedesc[T]) =
   Self.vmethods[newStringName"_seek"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStreamPlayback](p_instance).seek(p_args[0].decode(float64))
@@ -71,33 +89,3 @@ proc mixAudio*(self: AudioStreamPlayback; rateScale: Float; frames: int32): Pack
   var ret: encoded PackedVector2Array
   methodbind.ptrcall(self, [getPtr rateScale, getPtr frames], addr ret)
   (addr ret).decode_result(PackedVector2Array)
-
-proc start*(self: AudioStreamPlayback; fromPos: float64 = 0.0): void =
-  expandMethodBind(className AudioStreamPlayback, "start", 1958160172)
-  methodbind.ptrcall(self, [getPtr fromPos])
-
-proc seek*(self: AudioStreamPlayback; time: float64 = 0.0): void =
-  expandMethodBind(className AudioStreamPlayback, "seek", 1958160172)
-  methodbind.ptrcall(self, [getPtr time])
-
-proc stop*(self: AudioStreamPlayback): void =
-  expandMethodBind(className AudioStreamPlayback, "stop", 3218959716)
-  methodbind.ptrcall(self, [])
-
-proc getLoopCount*(self: AudioStreamPlayback): int32 =
-  expandMethodBind(className AudioStreamPlayback, "get_loop_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
-
-proc getPlaybackPosition*(self: AudioStreamPlayback): float64 =
-  expandMethodBind(className AudioStreamPlayback, "get_playback_position", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
-
-proc isPlaying*(self: AudioStreamPlayback): bool =
-  expandMethodBind(className AudioStreamPlayback, "is_playing", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)

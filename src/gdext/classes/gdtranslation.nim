@@ -6,12 +6,20 @@ import gdresource; export gdresource
 
 expandOnClassImported(Translation, Resource)
 
-method getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName): StringName {.base.} = (discard)
+method getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName = default(StringName)): StringName {.base.} =
+  expandMethodBind(className Translation, "get_plural_message", 229954002)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr srcMessage, getPtr srcPluralMessage, getPtr n, getPtr context], addr ret)
+  (addr ret).decode_result(StringName)
 proc registerVirtual_getPluralMessage*[T: Translation](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_plural_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Translation](p_instance).getPluralMessage(p_args[0].decode(StringName), p_args[1].decode(StringName), p_args[2].decode(int32), p_args[3].decode(StringName)).encode(r_ret)
 
-method getMessage*(self: Translation; srcMessage: StringName; context: StringName): StringName {.base.} = (discard)
+method getMessage*(self: Translation; srcMessage: StringName; context: StringName = default(StringName)): StringName {.base.} =
+  expandMethodBind(className Translation, "get_message", 1829228469)
+  var ret: encoded StringName
+  methodbind.ptrcall(self, [getPtr srcMessage, getPtr context], addr ret)
+  (addr ret).decode_result(StringName)
 proc registerVirtual_getMessage*[T: Translation](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_message"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Translation](p_instance).getMessage(p_args[0].decode(StringName), p_args[1].decode(StringName)).encode(r_ret)
@@ -33,18 +41,6 @@ proc addMessage*(self: Translation; srcMessage: StringName; xlatedMessage: Strin
 proc addPluralMessage*(self: Translation; srcMessage: StringName; xlatedMessages: PackedStringArray; context: StringName = default(StringName)): void =
   expandMethodBind(className Translation, "add_plural_message", 2356982266)
   methodbind.ptrcall(self, [getPtr srcMessage, getPtr xlatedMessages, getPtr context])
-
-proc getMessage*(self: Translation; srcMessage: StringName; context: StringName = default(StringName)): StringName =
-  expandMethodBind(className Translation, "get_message", 1829228469)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr srcMessage, getPtr context], addr ret)
-  (addr ret).decode_result(StringName)
-
-proc getPluralMessage*(self: Translation; srcMessage: StringName; srcPluralMessage: StringName; n: int32; context: StringName = default(StringName)): StringName =
-  expandMethodBind(className Translation, "get_plural_message", 229954002)
-  var ret: encoded StringName
-  methodbind.ptrcall(self, [getPtr srcMessage, getPtr srcPluralMessage, getPtr n, getPtr context], addr ret)
-  (addr ret).decode_result(StringName)
 
 proc eraseMessage*(self: Translation; srcMessage: StringName; context: StringName = default(StringName)): void =
   expandMethodBind(className Translation, "erase_message", 3959009644)
