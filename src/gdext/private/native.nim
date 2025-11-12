@@ -1,6 +1,5 @@
 {.warning[Deprecated]:off.}
 import std/macros
-import std/os
 
 import gdext/enums
 import gdext/crouting
