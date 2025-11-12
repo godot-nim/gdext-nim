@@ -3,6 +3,7 @@ import std/macros
 import std/os
 
 import gdext/enums
+import gdext/crouting
 
 macro gdcall*(someProc: untyped): untyped =
   someProc.addPragma ident do:
@@ -19,7 +20,7 @@ type
   int32_t* = int32
   wchar_t* = Utf16Char
 
-{.passC: ("-I" & currentSourcePath().parentDir().parentDir()/"gen").}
+{.passC: ("-I" & genDir).}
 {.push, header: "gdextension_interface.h".}
 include gdext/gen/gdextensioninterface
 {.pop.}
