@@ -291,7 +291,7 @@ runtime: suite "TypedArray":
   test "backward subscript":
     var obj = instantiate Object
     var po = newTypedArray [obj]
-    var pi = newTypedArray [1]
+    var pi = newTypedArray [Int 1]
     check po[0] != nil
     check po[^1] != nil
     check pi[0] == 1
@@ -307,8 +307,8 @@ runtime: suite "TypedArray":
     check $arr[1] == "world!"
 
   test "`[]`(HSlice)":
-    var pi = newTypedArray [1, 2, 3, 4]
-    check pi[0..2] == newTypedArray [1, 2, 3]
+    var pi = newTypedArray [Int 1, 2, 3, 4]
+    check pi[0..2] == newTypedArray [Int 1, 2, 3]
 
   test "`[]=`(HSlice)":
     var ps = newTypedArray [String "a","b","c","d","e","f","g","h"]
