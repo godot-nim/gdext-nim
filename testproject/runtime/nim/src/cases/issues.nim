@@ -1,7 +1,6 @@
 import gdext
 import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode,gdLabel3D]
 import testutils
-import gdext/implicitsugars
 type
   TestNode* {.gdsync.} = ptr object of Node
     a* {.gdexport.}: int
