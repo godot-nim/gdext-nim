@@ -6,7 +6,9 @@ import gdresource; export gdresource
 
 expandOnClassImported(StyleBox, Resource)
 
-method draw*(self: StyleBox; toCanvasItem: RID; rect: Rect2): void {.base.} = (discard)
+method draw*(self: StyleBox; canvasItem: RID; rect: Rect2): void {.base.} =
+  expandMethodBind(className StyleBox, "draw", 2275962004)
+  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect])
 proc registerVirtual_draw*[T: StyleBox](Self: typedesc[T]) =
   Self.vmethods[newStringName"_draw"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).draw(p_args[0].decode(RID), p_args[1].decode(Rect2))
@@ -16,21 +18,23 @@ proc registerVirtual_getDrawRect*[T: StyleBox](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_draw_rect"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[StyleBox](p_instance).getDrawRect(p_args[0].decode(Rect2)).encode(r_ret)
 
-method getMinimumSize*(self: StyleBox): Vector2 {.base.} = (discard)
-proc registerVirtual_getMinimumSize*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[StyleBox](p_instance).getMinimumSize().encode(r_ret)
-
-method testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool {.base.} = (discard)
-proc registerVirtual_testMask*[T: StyleBox](Self: typedesc[T]) =
-  Self.vmethods[newStringName"_test_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
-
-proc getMinimumSize*(self: StyleBox): Vector2 =
+method getMinimumSize*(self: StyleBox): Vector2 {.base.} =
   expandMethodBind(className StyleBox, "get_minimum_size", 3341600327)
   var ret: encoded Vector2
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
+proc registerVirtual_getMinimumSize*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).getMinimumSize().encode(r_ret)
+
+method testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool {.base.} =
+  expandMethodBind(className StyleBox, "test_mask", 3735564539)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr point, getPtr rect], addr ret)
+  (addr ret).decode_result(bool)
+proc registerVirtual_testMask*[T: StyleBox](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_test_mask"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[StyleBox](p_instance).testMask(p_args[0].decode(Vector2), p_args[1].decode(Rect2)).encode(r_ret)
 
 proc setContentMargin*(self: StyleBox; margin: Side; offset: Float): void =
   expandMethodBind(className StyleBox, "set_content_margin", 4290182280)
@@ -58,21 +62,11 @@ proc getOffset*(self: StyleBox): Vector2 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc draw*(self: StyleBox; canvasItem: RID; rect: Rect2): void =
-  expandMethodBind(className StyleBox, "draw", 2275962004)
-  methodbind.ptrcall(self, [getPtr canvasItem, getPtr rect])
-
 proc getCurrentItemDrawn*(self: StyleBox): CanvasItem =
   expandMethodBind(className StyleBox, "get_current_item_drawn", 3213695180)
   var ret: encoded CanvasItem
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CanvasItem)
-
-proc testMask*(self: StyleBox; point: Vector2; rect: Rect2): bool =
-  expandMethodBind(className StyleBox, "test_mask", 3735564539)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [getPtr point, getPtr rect], addr ret)
-  (addr ret).decode_result(bool)
 
 template contentMarginLeft*(self: StyleBox): untyped = self.getContentMargin(Side(0))
 template `contentMarginLeft=`*(self: StyleBox; value) = self.setContentMargin(Side(0), value)

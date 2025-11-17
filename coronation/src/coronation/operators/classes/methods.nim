@@ -15,24 +15,19 @@ import std/strutils
 import std/strformat
 
 type
-  ClassMethodKind* = enum
-    cmkNormal, cmkVirtual, cmkVararg
-  ClassMethodPtrCallEntry* = ref object of GodotProc
-  ClassMethodVarargsVariantEntry* = ref object of GodotProc
-  ClassMethodVarargsTypedEntry* = ref object of GodotProc
-  ClassMethodVirtualEntry* = ref object of GodotProc
+  ClassMethodEntry* = ref object of GodotProc
+    json: JsonClassMethod
+  ClassMethodPtrCallEntry* = ref object of ClassMethodEntry
+  ClassMethodCallEntry* = ref object of ClassMethodEntry
+    variant: ProcKey
+    typed: ProcKey
+  ClassMethodVirtualEntry* = ref object of ClassMethodEntry
     call_self: RenderableSelfArgument
     call_args: seq[RenderableArgument]
     call_result: RenderableResult
-  RenderableClassMethod* = ref object
-    case kind*: ClassMethodKind
-    of cmkVararg:
-      variant*: ClassMethodVarargsVariantEntry
-      typed*: ClassMethodVarargsTypedEntry
-    of cmkVirtual:
-      virtual*: ClassMethodVirtualEntry
-    of cmkNormal:
-      ptrcall*: ClassMethodPtrCallEntry
+    virtual_name: string
+
+method weave*(classMethod: ClassMethodEntry): Cloth {.base.} = (discard)
 
 proc joinArg(args: seq[string]): string = args.join(", ")
 
@@ -66,23 +61,31 @@ proc classMethodPtrCallEntry(json: JsonClassMethod; self_type: RenderableSelfArg
 
     native_name: json.name,
     hash: json.hash,
+
+    json: json,
   )
 
-proc classMethodVarargsVariantEntry(json: JsonClassMethod; self_type: RenderableSelfArgument): ClassMethodVarargsVariantEntry =
-  ClassMethodVarargsVariantEntry(
+proc variantKey(call: ClassMethodCallEntry): ProcKey =
+  ProcKey(
     kind: pkProc,
-    name: json.name.scan.convert(ProcSym),
-    self: self_type,
-    args: json.extract_args(fuzzy= true),
-    result: json.extract_result(),
-
-    native_name: json.name,
-    hash: json.hash,
+    name: call.name,
+    self: call.self,
+    args: call.json.extract_args(fuzzy= true),
+    result: call.result,
   )
 
-proc classMethodVarargsTypedEntry(json: JsonClassMethod; self_type: RenderableSelfArgument): ClassMethodVarargsTypedEntry =
-  ClassMethodVarargsTypedEntry(
+proc typedKey(call: ClassMethodCallEntry): ProcKey =
+  ProcKey(
     kind: pkTemplate,
+    name: call.name,
+    self: call.self,
+    args: call.args,
+    result: call.result,
+  )
+
+proc classMethodCallEntry(json: JsonClassMethod; self_type: RenderableSelfArgument): ClassMethodCallEntry =
+  result = ClassMethodCallEntry(
+    kind: pkProc,
     name: json.name.scan.convert(ProcSym),
     self: self_type,
     args: json.extract_args(),
@@ -90,7 +93,11 @@ proc classMethodVarargsTypedEntry(json: JsonClassMethod; self_type: RenderableSe
 
     native_name: json.name,
     hash: json.hash,
+
+    json: json,
   )
+  result.variant = result.variantKey
+  result.typed = result.typedKey
 
 proc classMethodVirtualEntry*(json: JsonClassMethod; self_type: RenderableSelfArgument): ClassMethodVirtualEntry =
   ClassMethodVirtualEntry(
@@ -102,13 +109,17 @@ proc classMethodVirtualEntry*(json: JsonClassMethod; self_type: RenderableSelfAr
     pragmas: Pragmas(list: @["base"]),
 
     native_name: json.name,
+
+    json: json,
+
+    virtual_name: json.name,
   )
 
 
 proc methodbind(gdproc: GodotProc): Cloth = weave multiline:
   &"expandMethodBind(className {gdproc.self.typesym}, \"{gdproc.native_name}\", {get gdproc.hash})"
 
-proc weave(entry: ClassMethodPtrCallEntry): Cloth =
+proc weaveAsPtrCallEntry(entry: GodotProc): Cloth =
   var args: seq[string]
   if not entry.self.isStatic: args.add $entry.self.name
   args.add "[" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
@@ -121,53 +132,63 @@ proc weave(entry: ClassMethodPtrCallEntry): Cloth =
       if entry.result.typesym != TypeSym.Void:
         &"var ret: encoded {weave entry.result}"
       &"methodbind.ptrcall({args.joinArg})"
-
       if entry.result.typesym != TypeSym.Void:
         &"(addr ret).decode_result({weave entry.result})"
 
-proc weave(entry: ClassMethodVarargsVariantEntry): Cloth =
+method weave*(entry: ClassMethodPtrCallEntry): Cloth =
+  entry.weaveAsPtrCallEntry()
+
+proc weave_varargsVariant(entry: ClassMethodCallEntry): Cloth =
   let
-    vararg = entry.args[^1]
-    argCount = $entry.args.high & "+" & $vararg.name & ".len"
-    paramarray = "[" & entry.args[0..^2].mapIt("getTypedPtr " & $it.name).join(", ") & "]"
-    args = case entry.self.isStatic
+    vararg = entry.variant.args[^1]
+    argCount = $entry.variant.args.high & "+" & $vararg.name & ".len"
+    paramarray = "[" & entry.variant.args[0..^2].mapIt("getTypedPtr " & $it.name).join(", ") & "]"
+    args = case entry.variant.self.isStatic
     of true: &"`?param`"
-    of false: &"{entry.self.name}, `?param`, {vararg.name}"
+    of false: &"{entry.variant.self.name}, `?param`, {vararg.name}"
 
   weave multiline:
-    weave ProcKey entry
+    weave entry.variant
     weave cloths.indent:
       entry.methodbind
       &"var `?param` = newSeqOfCap[VariantPtr]({argCount})"
       &"`?param`.add {paramarray}"
-      if entry.result.typesym == TypeSym.Void:
+      if entry.variant.result.typesym == TypeSym.Void:
         &"discard methodbind.call({args})"
       else:
-        &"methodbind.call({args}).get({weave entry.result})"
+        &"methodbind.call({args}).get({weave entry.variant.result})"
 
-proc weave(entry: ClassMethodVarargsTypedEntry): Cloth =
+proc weave_varargsTyped(entry: ClassMethodCallEntry): Cloth =
   let
-    vararg = entry.args[^1]
-    fixed_args = entry.args[0..^2].mapIt("variant " & $it.name).join(", ")
+    vararg = entry.typed.args[^1]
+    fixed_args = entry.typed.args[0..^2].mapIt("variant " & $it.name).join(", ")
     args =
       if fixed_args.len == 0: $vararg.name
       else: fixed_args & ", " & $vararg.name
   weave multiline:
-    weave ProcKey entry
+    weave entry.typed
     weave cloths.indent:
-      &"{entry.name}({entry.self.name}, {args})"
+      &"{entry.variant.name}({entry.typed.self.name}, {args})"
 
-proc weave(entry: ClassMethodVirtualEntry): Cloth =
-  weave text:
-    weave ProcKey entry
-    "(discard)"
+method weave*(entry: ClassMethodCallEntry): Cloth =
+  weave multiline:
+    entry.weave_varargsVariant
+    entry.weave_varargsTyped
 
-proc weave_native(entry: ClassMethodVirtualEntry): Cloth =
+proc weave_method(entry: ClassMethodVirtualEntry): Cloth =
+  if entry.hash.isSome:
+    entry.weaveAsPtrCallEntry
+  else:
+    weave text:
+      weave ProcKey entry
+      "(discard)"
+
+proc weave_register(entry: ClassMethodVirtualEntry): Cloth =
   weave multiline:
     &"proc registerVirtual_{entry.name.dropQuote}*[T: {entry.self.typeSym}](Self: typedesc[T]) ="
     weave cloths.indent:
       const StringName = TypeSym"StringName"
-      &"Self.vmethods[{constructorName StringName}\"{entry.native_name}\"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
+      &"Self.vmethods[{constructorName StringName}\"{entry.virtual_name}\"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {{.gdcall.}} ="
       weave cloths.indent >> Join(delim: ""):
         &"errproof: cast[{entry.self.typesym}](p_instance).{entry.name}("
         weave Join(delim: ", "):
@@ -178,34 +199,42 @@ proc weave_native(entry: ClassMethodVirtualEntry): Cloth =
         else:
           ").encode(r_ret)"
 
-proc convert*(json: JsonClassMethod; caller: TypeSym): RenderableClassMethod =
+method weave*(entry: ClassMethodVirtualEntry): Cloth =
+  weave multiline:
+    entry.weave_method
+    entry.weave_register
+
+proc convert*(json: JsonClassMethod; caller: TypeSym): ClassMethodEntry =
   let self_type = RenderableSelfArgument(
     isStatic: json.isStatic,
     typesym: caller,
   )
   if json.is_vararg:
-    RenderableClassMethod(kind: cmkVararg,
-      variant: classMethodVarargsVariantEntry(json, self_type),
-      typed: classMethodVarargsTypedEntry(json, self_type),
-    )
+    classMethodCallEntry(json, self_type)
   elif json.isVirtual:
-    RenderableClassMethod(kind: cmkVirtual,
-      virtual: classMethodVirtualEntry(json, self_type),
-    )
+    classMethodVirtualEntry(json, self_type)
   else:
-    RenderableClassMethod(kind: cmkNormal,
-      ptrcall: classMethodPtrCallEntry(json, self_type),
-    )
+    classMethodPtrCallEntry(json, self_type)
 
-proc weave*(renderable: RenderableClassMethod): Cloth =
-  case renderable.kind
-  of cmkVararg:
-    weave multiline:
-      weave renderable.variant
-      weave renderable.`typed`
-  of cmkVirtual:
-    weave multiline:
-      weave renderable.virtual
-      weave_native renderable.virtual
-  of cmkNormal:
-    weave renderable.ptrcall
+proc squash*(methods: seq[ClassMethodEntry]): seq[ClassMethodEntry] =
+  var virtuals: seq[ClassMethodVirtualEntry]
+  var nonVirtuals: seq[ClassMethodEntry]
+  var drop: seq[ClassMethodEntry]
+  for m in methods:
+    if m of ClassMethodVirtualEntry:
+      virtuals.add ClassMethodVirtualEntry(m)
+    else:
+      nonVirtuals.add m
+
+  for v in virtuals:
+    for nv in nonVirtuals:
+      if v.native_name == "_" & nv.native_name:
+        v.native_name = nv.native_name
+        v.hash = nv.hash
+        v.args = nv.args
+        drop.add nv
+        break
+
+  for m in methods:
+    if m notin drop:
+      result.add m

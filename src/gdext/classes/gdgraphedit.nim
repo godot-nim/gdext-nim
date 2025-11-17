@@ -16,7 +16,11 @@ proc registerVirtual_isInOutputHotzone*[T: GraphEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_in_output_hotzone"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).isInOutputHotzone(p_args[0].decode(Object), p_args[1].decode(int32), p_args[2].decode(Vector2)).encode(r_ret)
 
-method getConnectionLine*(self: GraphEdit; fromPosition: Vector2; toPosition: Vector2): PackedVector2Array {.base.} = (discard)
+method getConnectionLine*(self: GraphEdit; fromNode: Vector2; toNode: Vector2): PackedVector2Array {.base.} =
+  expandMethodBind(className GraphEdit, "get_connection_line", 3932192302)
+  var ret: encoded PackedVector2Array
+  methodbind.ptrcall(self, [getPtr fromNode, getPtr toNode], addr ret)
+  (addr ret).decode_result(PackedVector2Array)
 proc registerVirtual_getConnectionLine*[T: GraphEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_connection_line"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GraphEdit](p_instance).getConnectionLine(p_args[0].decode(Vector2), p_args[1].decode(Vector2)).encode(r_ret)
@@ -127,12 +131,6 @@ proc isValidConnectionType*(self: GraphEdit; fromType: int32; toType: int32): bo
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr fromType, getPtr toType], addr ret)
   (addr ret).decode_result(bool)
-
-proc getConnectionLine*(self: GraphEdit; fromNode: Vector2; toNode: Vector2): PackedVector2Array =
-  expandMethodBind(className GraphEdit, "get_connection_line", 3932192302)
-  var ret: encoded PackedVector2Array
-  methodbind.ptrcall(self, [getPtr fromNode, getPtr toNode], addr ret)
-  (addr ret).decode_result(PackedVector2Array)
 
 proc attachGraphElementToFrame*(self: GraphEdit; element: StringName; frame: StringName): void =
   expandMethodBind(className GraphEdit, "attach_graph_element_to_frame", 3740211285)

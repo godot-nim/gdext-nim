@@ -9,7 +9,11 @@ expandOnClassImported(Window, Viewport)
 const NotificationVisibilityChanged* = 30
 const NotificationThemeChanged* = 32
 
-method getContentsMinimumSize*(self: Window): Vector2 {.base.} = (discard)
+method getContentsMinimumSize*(self: Window): Vector2 {.base.} =
+  expandMethodBind(className Window, "get_contents_minimum_size", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
 proc registerVirtual_getContentsMinimumSize*[T: Window](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_contents_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Window](p_instance).getContentsMinimumSize().encode(r_ret)
@@ -227,12 +231,6 @@ proc isEmbedded*(self: Window): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-proc getContentsMinimumSize*(self: Window): Vector2 =
-  expandMethodBind(className Window, "get_contents_minimum_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
 
 proc setForceNative*(self: Window; forceNative: bool): void =
   expandMethodBind(className Window, "set_force_native", 2586408642)

@@ -6,12 +6,16 @@ import gdcontainer; export gdcontainer
 
 expandOnClassImported(EditorProperty, Container)
 
-method updateProperty*(self: EditorProperty): void {.base.} = (discard)
+method updateProperty*(self: EditorProperty): void {.base.} =
+  expandMethodBind(className EditorProperty, "update_property", 3218959716)
+  methodbind.ptrcall(self, [])
 proc registerVirtual_updateProperty*[T: EditorProperty](Self: typedesc[T]) =
   Self.vmethods[newStringName"_update_property"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorProperty](p_instance).updateProperty()
 
-method setReadOnly*(self: EditorProperty; readOnly: bool): void {.base.} = (discard)
+method setReadOnly*(self: EditorProperty; readOnly: bool): void {.base.} =
+  expandMethodBind(className EditorProperty, "set_read_only", 2586408642)
+  methodbind.ptrcall(self, [getPtr readOnly])
 proc registerVirtual_setReadOnly*[T: EditorProperty](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_read_only"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorProperty](p_instance).setReadOnly(p_args[0].decode(bool))
@@ -25,10 +29,6 @@ proc getLabel*(self: EditorProperty): String =
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
-
-proc setReadOnly*(self: EditorProperty; readOnly: bool): void =
-  expandMethodBind(className EditorProperty, "set_read_only", 2586408642)
-  methodbind.ptrcall(self, [getPtr readOnly])
 
 proc isReadOnly*(self: EditorProperty): bool =
   expandMethodBind(className EditorProperty, "is_read_only", 36873697)
@@ -117,10 +117,6 @@ proc getEditedObject*(self: EditorProperty): Object =
   var ret: encoded Object
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Object)
-
-proc updateProperty*(self: EditorProperty): void =
-  expandMethodBind(className EditorProperty, "update_property", 3218959716)
-  methodbind.ptrcall(self, [])
 
 proc addFocusable*(self: EditorProperty; control: Control): void =
   expandMethodBind(className EditorProperty, "add_focusable", 1496901182)

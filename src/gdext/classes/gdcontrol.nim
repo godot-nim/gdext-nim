@@ -28,12 +28,20 @@ proc registerVirtual_structuredTextParser*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_structured_text_parser"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array), p_args[1].decode(String)).encode(r_ret)
 
-method getMinimumSize*(self: Control): Vector2 {.base.} = (discard)
+method getMinimumSize*(self: Control): Vector2 {.base.} =
+  expandMethodBind(className Control, "get_minimum_size", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
 proc registerVirtual_getMinimumSize*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getMinimumSize().encode(r_ret)
 
-method getTooltip*(self: Control; atPosition: Vector2): String {.base.} = (discard)
+method getTooltip*(self: Control; atPosition: Vector2 = vector2(0, 0)): String {.base.} =
+  expandMethodBind(className Control, "get_tooltip", 2895288280)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr atPosition], addr ret)
+  (addr ret).decode_result(String)
 proc registerVirtual_getTooltip*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getTooltip(p_args[0].decode(Vector2)).encode(r_ret)
@@ -76,12 +84,6 @@ proc registerVirtual_guiInput*[T: Control](Self: typedesc[T]) =
 proc acceptEvent*(self: Control): void =
   expandMethodBind(className Control, "accept_event", 3218959716)
   methodbind.ptrcall(self, [])
-
-proc getMinimumSize*(self: Control): Vector2 =
-  expandMethodBind(className Control, "get_minimum_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
 
 proc getCombinedMinimumSize*(self: Control): Vector2 =
   expandMethodBind(className Control, "get_combined_minimum_size", 3341600327)
@@ -587,12 +589,6 @@ proc getTooltipText*(self: Control): String =
   expandMethodBind(className Control, "get_tooltip_text", 201670096)
   var ret: encoded String
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
-
-proc getTooltip*(self: Control; atPosition: Vector2 = vector2(0, 0)): String =
-  expandMethodBind(className Control, "get_tooltip", 2895288280)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr atPosition], addr ret)
   (addr ret).decode_result(String)
 
 proc setDefaultCursorShape*(self: Control; shape: Control_CursorShape): void =

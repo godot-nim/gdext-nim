@@ -6,12 +6,16 @@ import gdtextedit; export gdtextedit
 
 expandOnClassImported(CodeEdit, TextEdit)
 
-method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
+method confirmCodeCompletion*(self: CodeEdit; replace: bool = false): void {.base.} =
+  expandMethodBind(className CodeEdit, "confirm_code_completion", 107499316)
+  methodbind.ptrcall(self, [getPtr replace])
 proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).confirmCodeCompletion(p_args[0].decode(bool))
 
-method requestCodeCompletion*(self: CodeEdit; force: bool): void {.base.} = (discard)
+method requestCodeCompletion*(self: CodeEdit; force: bool = false): void {.base.} =
+  expandMethodBind(className CodeEdit, "request_code_completion", 107499316)
+  methodbind.ptrcall(self, [getPtr force])
 proc registerVirtual_requestCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
@@ -439,10 +443,6 @@ proc getTextForCodeCompletion*(self: CodeEdit): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc requestCodeCompletion*(self: CodeEdit; force: bool = false): void =
-  expandMethodBind(className CodeEdit, "request_code_completion", 107499316)
-  methodbind.ptrcall(self, [getPtr force])
-
 proc addCodeCompletionOption*(self: CodeEdit; `type`: CodeEdit_CodeCompletionKind; displayText: String; insertText: String; textColor: Color = color(1, 1, 1, 1); icon: gdref Resource = default gdref Resource; value: Variant = default(Variant); location: int32 = 1024): void =
   expandMethodBind(className CodeEdit, "add_code_completion_option", 3944379502)
   methodbind.ptrcall(self, [getPtr `type`, getPtr displayText, getPtr insertText, getPtr textColor, getPtr icon, getPtr value, getPtr location])
@@ -472,10 +472,6 @@ proc getCodeCompletionSelectedIndex*(self: CodeEdit): int32 =
 proc setCodeCompletionSelectedIndex*(self: CodeEdit; index: int32): void =
   expandMethodBind(className CodeEdit, "set_code_completion_selected_index", 1286410249)
   methodbind.ptrcall(self, [getPtr index])
-
-proc confirmCodeCompletion*(self: CodeEdit; replace: bool = false): void =
-  expandMethodBind(className CodeEdit, "confirm_code_completion", 107499316)
-  methodbind.ptrcall(self, [getPtr replace])
 
 proc cancelCodeCompletion*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "cancel_code_completion", 3218959716)
