@@ -42,7 +42,7 @@ task compatibilityTest, "Compile with a supported range of Nims and check for co
     report version, "nim c tests/importall"
     report version, "rm tests/importall"
     report version, "nimble test"
-    report version, "gdextwiz run-editor testproject/editor"
+    report version, "gdextwiz run-editor testproject/editor &"
   echo "All tests passed!"
 
 task genDocs, "Generate API reference from Nim sources":
