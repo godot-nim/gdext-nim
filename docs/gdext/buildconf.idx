@@ -29,6 +29,6 @@ nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Platform]	proc cmdswit
 nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Target]	proc cmdswitched(_: typedesc[Target]): bool		147
 nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Architecture]	proc cmdswitched(_: typedesc[Architecture]): bool		149
 nim	BuildSettings	gdext/buildconf.html#BuildSettings	type BuildSettings		211
-nim	configure	gdext/buildconf.html#configure.t,BuildSettings,	template configure(setting: BuildSettings; body)		478
-nim	configure	gdext/buildconf.html#configure,BuildSettings	proc configure(setting: BuildSettings)		485
+nim	configure	gdext/buildconf.html#configure.t,BuildSettings,	template configure(setting: BuildSettings; body)		479
+nim	configure	gdext/buildconf.html#configure,BuildSettings	proc configure(setting: BuildSettings)		486
 nimgrp	cmdswitched	gdext/buildconf.html#cmdswitched-procs-all	proc		145
