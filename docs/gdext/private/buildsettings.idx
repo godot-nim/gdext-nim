@@ -19,7 +19,8 @@ nim	rv64	gdext/private/buildsettings.html#rv64	Architecture.rv64		20
 nim	riscv	gdext/private/buildsettings.html#riscv	Architecture.riscv		20
 nim	wasm32	gdext/private/buildsettings.html#wasm32	Architecture.wasm32		20
 nim	Architecture	gdext/private/buildsettings.html#Architecture	enum Architecture		20
-nim	BuildSettings	gdext/private/buildsettings.html#BuildSettings	const BuildSettings		75
-nim	Extension	gdext/private/buildsettings.html#Extension	const Extension		81
-nim	Assistance	gdext/private/buildsettings.html#Assistance	const Assistance		86
-nim	Dev	gdext/private/buildsettings.html#Dev	const Dev		90
+nim	buildOS	gdext/private/buildsettings.html#buildOS	const buildOS		61
+nim	BuildSettings	gdext/private/buildsettings.html#BuildSettings	const BuildSettings		77
+nim	Extension	gdext/private/buildsettings.html#Extension	const Extension		83
+nim	Assistance	gdext/private/buildsettings.html#Assistance	const Assistance		88
+nim	Dev	gdext/private/buildsettings.html#Dev	const Dev		92

@@ -340,6 +340,7 @@ proc switch(setting: BuildSettings) =
   # is required to activate this `. *` operator.
   --define: nimPreviewDotLikeOps
 
+  defineHint("buildOS", buildOS)
 
   defineHint("Extension.name", setting.name)
 

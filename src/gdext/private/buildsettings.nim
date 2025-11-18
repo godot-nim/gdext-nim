@@ -58,6 +58,8 @@ proc toArchitecture(str: string): Architecture =
   else: Architecture.default
 
 const
+  buildOS* {.strdefine: "buildOS".} = hostOS
+
   Extension_name {.strdefine: "Extension.name".} = ""
   Extension_entrySymbol {.strdefine: "Extension.entrySymbol".} = "init_library"
   Extension_decimalPrecision {.strdefine: "Extension.decimalPrecision".} = "float"

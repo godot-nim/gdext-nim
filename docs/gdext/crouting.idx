@@ -1,0 +1,3 @@
+nimTitle	crouting	gdext/crouting.html	module gdext/crouting		0
+nim	libraryRoot	gdext/crouting.html#libraryRoot	const libraryRoot		9
+nim	genDir	gdext/crouting.html#genDir	const genDir		10
