@@ -36,7 +36,7 @@ proc report(version, script: string) =
     quit &"[Nim {version}] \"{script}\" failed."
 
 task compatibilityTest, "Compile with a supported range of Nims and check for compatibility.":
-  const versions = ["2.0.12", "2.0.14", "2.2.0", "2.2.4"]
+  const versions = ["2.0.12", "2.0.14", "2.0.16", "2.2.0", "2.2.2", "2.2.4", "2.2.6"]
   for version in versions:
     report version, &"choosenim {version}"
     report version, "nim c tests/importall"
