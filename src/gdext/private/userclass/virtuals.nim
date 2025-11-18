@@ -1,4 +1,4 @@
-import std/[sequtils, sets, tables, genasts]
+import std/[sequtils, sets, tables, genasts, importutils]
 
 import gdext/private/macros
 import gdext/private/gdinterface
@@ -34,8 +34,11 @@ proc emitterdef(middle: MiddleExp; procdef: NimNode): NimNode =
         return
 
   result.body = genAst(namesym, namelit = middle.gdname, sentence, body):
+    privateAccess StringName
+    var namesym {.global.}: StringName
     try:
-      let namesym {.global.} = newStringName namelit
+      if unlikely(namesym.cowdata.isNil):
+        namesym = newStringName namelit
       if self.hasScriptMethod(namesym):
         sentence
       else:
