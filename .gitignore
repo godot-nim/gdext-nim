@@ -4,6 +4,7 @@ nimble.paths
 .godot/
 bin/
 lib/
+.cache/
 
 **/.DS_Store
 docs/_site
