@@ -11,6 +11,7 @@ type
   IgnoreConf* = object
     module*: bool
     constructor*: set[0..255]
+    constants*: seq[TypeSym]
     subscript*: bool
 
 template ck(str): ContainerKey = ContainerKey "`" & str & "`"
@@ -409,26 +410,32 @@ const ignoreConf: Table[TypeSym, IgnoreConf] = toTable {
   ts"Vector2": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Inf"],
   ),
   ts"Vector2i": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Min", ts"Max"],
   ),
   ts"Vector3": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Inf"],
   ),
   ts"Vector3i": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Min", ts"Max"],
   ),
   ts"Vector4": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Inf"],
   ),
   ts"Vector4i": IgnoreConf(
     subscript: true,
     constructor: {0..3},
+    constants: @[ts"Zero", ts"One", ts"Min", ts"Max"],
   ),
   ts"Quaternion": IgnoreConf(
     subscript: true,

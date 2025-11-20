@@ -251,7 +251,7 @@ proc `[]`*(self: Quaternion; index: int): real_elem =
   cast[ptr array[4, real_elem]](addr self)[][index]
 
 proc extend*[T](value: T; N: static int): array[N,T] =
-  extend_internal(value, length)
+  extend_internal(value, N)
 
 macro fmap*[N: static int; T]( pred;
       v1: array[N,T];
@@ -679,7 +679,11 @@ func cubicInterpolateAngle*[T: SomeFloat](pFrom, pTo, pPre, pPost: T; pWeight: T
 
 template Zero*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(0).extend N
 template One*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(1).extend N
-template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = T(inf).extend N
+
+template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = T(Inf).extend N
+
+template Min*[N: static int; T: SomeInteger](_:typedesc[Vector[N,T]]): Vector[N,T] = (T.low).extend N
+template Max*[N: static int; T: SomeInteger](_:typedesc[Vector[N,T]]): Vector[N,T] = (T.high).extend N
 
 template Left *[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T(-1),  0]
 template Right*[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T( 1),  0]
