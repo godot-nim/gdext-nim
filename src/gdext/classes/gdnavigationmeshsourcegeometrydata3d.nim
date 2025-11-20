@@ -46,6 +46,7 @@ proc addMesh*(self: NavigationMeshSourceGeometryData3D; mesh: gdref Mesh; xform:
 
 proc addMeshArray*(self: NavigationMeshSourceGeometryData3D; meshArray: Array; xform: Transform3D): void =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "add_mesh_array", 4235710913)
+  nilCheck meshArray
   methodbind.ptrcall(self, [getPtr meshArray, getPtr xform])
 
 proc addFaces*(self: NavigationMeshSourceGeometryData3D; faces: PackedVector3Array; xform: Transform3D): void =
@@ -66,6 +67,7 @@ proc clearProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): void
 
 proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData3D; projectedObstructions: Array): void =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "set_projected_obstructions", 381264803)
+  nilCheck projectedObstructions
   methodbind.ptrcall(self, [getPtr projectedObstructions])
 
 proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): Array =

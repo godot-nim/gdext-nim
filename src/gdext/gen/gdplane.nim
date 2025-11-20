@@ -42,35 +42,27 @@ var `intersectsRay(Plane Vector3 Vector3)`: PtrBuiltinMethod
 var `intersectsSegment(Plane Vector3 Vector3)`: PtrBuiltinMethod
 
 proc normalized*(self: Plane): Plane =
-  `normalized(Plane)`(addr self, nil, addr result, 0)
+  `normalized(Plane)`.call(addr self, [], addr result)
 proc getCenter*(self: Plane): Vector3 =
-  `getCenter(Plane)`(addr self, nil, addr result, 0)
+  `getCenter(Plane)`.call(addr self, [], addr result)
 proc isEqualApprox*(self: Plane; toPlane: Plane): bool =
-  let argArr = [getPtr toPlane]
-  `isEqualApprox(Plane Plane)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Plane Plane)`.call(addr self, [getPtr toPlane], addr result)
 proc isFinite*(self: Plane): bool =
-  `isFinite(Plane)`(addr self, nil, addr result, 0)
+  `isFinite(Plane)`.call(addr self, [], addr result)
 proc isPointOver*(self: Plane; point: Vector3): bool =
-  let argArr = [getPtr point]
-  `isPointOver(Plane Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `isPointOver(Plane Vector3)`.call(addr self, [getPtr point], addr result)
 proc distanceTo*(self: Plane; point: Vector3): Float =
-  let argArr = [getPtr point]
-  `distanceTo(Plane Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `distanceTo(Plane Vector3)`.call(addr self, [getPtr point], addr result)
 proc hasPoint*(self: Plane; point: Vector3; tolerance: Float = 1e-05): bool =
-  let argArr = [getPtr point, getPtr tolerance]
-  `hasPoint(Plane Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `hasPoint(Plane Vector3 Float)`.call(addr self, [getPtr point, getPtr tolerance], addr result)
 proc project*(self: Plane; point: Vector3): Vector3 =
-  let argArr = [getPtr point]
-  `project(Plane Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `project(Plane Vector3)`.call(addr self, [getPtr point], addr result)
 proc intersect3*(self: Plane; b: Plane; c: Plane): Variant =
-  let argArr = [getPtr b, getPtr c]
-  `intersect3(Plane Plane Plane)`(addr self, addr argArr[0], addr result, 2)
+  `intersect3(Plane Plane Plane)`.call(addr self, [getPtr b, getPtr c], addr result)
 proc intersectsRay*(self: Plane; `from`: Vector3; dir: Vector3): Variant =
-  let argArr = [getPtr `from`, getPtr dir]
-  `intersectsRay(Plane Vector3 Vector3)`(addr self, addr argArr[0], addr result, 2)
+  `intersectsRay(Plane Vector3 Vector3)`.call(addr self, [getPtr `from`, getPtr dir], addr result)
 proc intersectsSegment*(self: Plane; `from`: Vector3; to: Vector3): Variant =
-  let argArr = [getPtr `from`, getPtr to]
-  `intersectsSegment(Plane Vector3 Vector3)`(addr self, addr argArr[0], addr result, 2)
+  `intersectsSegment(Plane Vector3 Vector3)`.call(addr self, [getPtr `from`, getPtr to], addr result)
 
 proc load_Plane_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `normalized(Plane)` = load(VariantType_Plane, "normalized", 1051796340)

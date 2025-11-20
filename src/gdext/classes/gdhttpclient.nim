@@ -122,6 +122,7 @@ proc setHttpsProxy*(self: HTTPClient; host: String; port: int32): void =
 
 proc queryStringFromDict*(self: HTTPClient; fields: Dictionary): String =
   expandMethodBind(className HTTPClient, "query_string_from_dict", 2538086567)
+  nilCheck fields
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr fields], addr ret)
   (addr ret).decode_result(String)

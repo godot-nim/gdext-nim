@@ -58,6 +58,7 @@ proc getPreserveControl*(self: TextLine): bool =
 
 proc setBidiOverride*(self: TextLine; override: Array): void =
   expandMethodBind(className TextLine, "set_bidi_override", 381264803)
+  nilCheck override
   methodbind.ptrcall(self, [getPtr override])
 
 proc addString*(self: TextLine; text: String; font: gdref Font; fontSize: int32; language: String = newGdString(); meta: Variant = default(Variant)): bool =

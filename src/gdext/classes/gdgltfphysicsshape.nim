@@ -32,6 +32,7 @@ proc toResource*(self: GLTFPhysicsShape; cacheShapes: bool = false): gdref Shape
 
 proc fromDictionary*(_: typedesc[GLTFPhysicsShape]; dictionary: Dictionary): gdref GLTFPhysicsShape =
   expandMethodBind(className GLTFPhysicsShape, "from_dictionary", 2390691823)
+  nilCheck dictionary
   var ret: encoded gdref GLTFPhysicsShape
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFPhysicsShape)

@@ -102,6 +102,7 @@ proc getStructuredTextBidiOverride*(self: TextEdit): TextServer_StructuredTextPa
 
 proc setStructuredTextBidiOverrideOptions*(self: TextEdit; args: Array): void =
   expandMethodBind(className TextEdit, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: TextEdit): Array =

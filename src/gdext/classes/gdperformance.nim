@@ -14,6 +14,7 @@ proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
 
 proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array = newArray()): void =
   expandMethodBind(className Performance, "add_custom_monitor", 4099036814)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments])
 
 proc removeCustomMonitor*(self: Performance; id: StringName): void =

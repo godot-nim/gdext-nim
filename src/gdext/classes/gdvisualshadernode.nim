@@ -42,6 +42,7 @@ proc clearDefaultInputValues*(self: VisualShaderNode): void =
 
 proc setDefaultInputValues*(self: VisualShaderNode; values: Array): void =
   expandMethodBind(className VisualShaderNode, "set_default_input_values", 381264803)
+  nilCheck values
   methodbind.ptrcall(self, [getPtr values])
 
 proc getDefaultInputValues*(self: VisualShaderNode): Array =

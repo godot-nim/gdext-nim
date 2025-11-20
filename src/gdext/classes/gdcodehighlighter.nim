@@ -28,6 +28,7 @@ proc getKeywordColor*(self: CodeHighlighter; keyword: String): Color =
 
 proc setKeywordColors*(self: CodeHighlighter; keywords: Dictionary): void =
   expandMethodBind(className CodeHighlighter, "set_keyword_colors", 4155329257)
+  nilCheck keywords
   methodbind.ptrcall(self, [getPtr keywords])
 
 proc clearKeywordColors*(self: CodeHighlighter): void =
@@ -62,6 +63,7 @@ proc getMemberKeywordColor*(self: CodeHighlighter; memberKeyword: String): Color
 
 proc setMemberKeywordColors*(self: CodeHighlighter; memberKeyword: Dictionary): void =
   expandMethodBind(className CodeHighlighter, "set_member_keyword_colors", 4155329257)
+  nilCheck memberKeyword
   methodbind.ptrcall(self, [getPtr memberKeyword])
 
 proc clearMemberKeywordColors*(self: CodeHighlighter): void =
@@ -90,6 +92,7 @@ proc hasColorRegion*(self: CodeHighlighter; startKey: String): bool =
 
 proc setColorRegions*(self: CodeHighlighter; colorRegions: Dictionary): void =
   expandMethodBind(className CodeHighlighter, "set_color_regions", 4155329257)
+  nilCheck colorRegions
   methodbind.ptrcall(self, [getPtr colorRegions])
 
 proc clearColorRegions*(self: CodeHighlighter): void =

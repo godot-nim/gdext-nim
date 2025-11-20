@@ -34,73 +34,49 @@ var `rpcId(Callable Int Variant)`: PtrBuiltinMethod
 var `bind(Callable Variant)`: PtrBuiltinMethod
 
 proc create*(_: typedesc[Callable]; variant: Variant; `method`: StringName): Callable =
-  let argArr = [getPtr variant, getPtr `method`]
-  `create(Callable Variant StringName)`(nil, addr argArr[0], addr result, 2)
+  `create(Callable Variant StringName)`.call([getPtr variant, getPtr `method`], addr result)
 proc callv*(self: Callable; arguments: Array): Variant =
-  let argArr = [getPtr arguments]
-  `callv(Callable Array)`(addr self, addr argArr[0], addr result, 1)
+  nilCheck arguments
+  `callv(Callable Array)`.call(addr self, [getPtr arguments], addr result)
 proc isNull*(self: Callable): bool =
-  `isNull(Callable)`(addr self, nil, addr result, 0)
+  `isNull(Callable)`.call(addr self, [], addr result)
 proc isCustom*(self: Callable): bool =
-  `isCustom(Callable)`(addr self, nil, addr result, 0)
+  `isCustom(Callable)`.call(addr self, [], addr result)
 proc isStandard*(self: Callable): bool =
-  `isStandard(Callable)`(addr self, nil, addr result, 0)
+  `isStandard(Callable)`.call(addr self, [], addr result)
 proc isValid*(self: Callable): bool =
-  `isValid(Callable)`(addr self, nil, addr result, 0)
+  `isValid(Callable)`.call(addr self, [], addr result)
 proc getObject*(self: Callable): Object =
-  `getObject(Callable)`(addr self, nil, addr result, 0)
+  `getObject(Callable)`.call(addr self, [], addr result)
 proc getObjectId*(self: Callable): Int =
-  `getObjectId(Callable)`(addr self, nil, addr result, 0)
+  `getObjectId(Callable)`.call(addr self, [], addr result)
 proc getMethod*(self: Callable): StringName =
-  `getMethod(Callable)`(addr self, nil, addr result, 0)
+  `getMethod(Callable)`.call(addr self, [], addr result)
 proc getArgumentCount*(self: Callable): Int =
-  `getArgumentCount(Callable)`(addr self, nil, addr result, 0)
+  `getArgumentCount(Callable)`.call(addr self, [], addr result)
 proc getBoundArgumentsCount*(self: Callable): Int =
-  `getBoundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
+  `getBoundArgumentsCount(Callable)`.call(addr self, [], addr result)
 proc getBoundArguments*(self: Callable): Array =
-  `getBoundArguments(Callable)`(addr self, nil, addr result, 0)
+  `getBoundArguments(Callable)`.call(addr self, [], addr result)
 proc getUnboundArgumentsCount*(self: Callable): Int =
-  `getUnboundArgumentsCount(Callable)`(addr self, nil, addr result, 0)
+  `getUnboundArgumentsCount(Callable)`.call(addr self, [], addr result)
 proc hash*(self: Callable): Hash =
-  `hash(Callable)`(addr self, nil, addr result, 0)
+  `hash(Callable)`.call(addr self, [], addr result)
 proc bindv*(self: var Callable; arguments: Array): Callable =
-  let argArr = [getPtr arguments]
-  `bindv(Callable Array)`(addr self, addr argArr[0], addr result, 1)
+  nilCheck arguments
+  `bindv(Callable Array)`.call(addr self, [getPtr arguments], addr result)
 proc unbind*(self: Callable; argcount: Int): Callable =
-  let argArr = [getPtr argcount]
-  `unbind(Callable Int)`(addr self, addr argArr[0], addr result, 1)
+  `unbind(Callable Int)`.call(addr self, [getPtr argcount], addr result)
 proc call*(self: Callable; args: varargs[Variant, variant]): Variant =
-  if args.len == 0:
-    `call(Callable Variant)`(addr self, nil, addr result, 0)
-  else:
-    let argArr = getptr args
-    `call(Callable Variant)`(addr self, addr argArr[0], addr result, cint args.len)
+  `call(Callable Variant)`.call(addr self, getPtr args, addr result)
 proc callDeferred*(self: Callable; args: varargs[Variant, variant]): void =
-  if args.len == 0:
-    `callDeferred(Callable Variant)`(addr self, nil, nil, 0)
-  else:
-    let argArr = getptr args
-    `callDeferred(Callable Variant)`(addr self, addr argArr[0], nil, cint args.len)
+  `callDeferred(Callable Variant)`.call(addr self, getPtr args)
 proc rpc*(self: Callable; args: varargs[Variant, variant]): void =
-  if args.len == 0:
-    `rpc(Callable Variant)`(addr self, nil, nil, 0)
-  else:
-    let argArr = getptr args
-    `rpc(Callable Variant)`(addr self, addr argArr[0], nil, cint args.len)
+  `rpc(Callable Variant)`.call(addr self, getPtr args)
 proc rpcId*(self: Callable; peerId: Int; args: varargs[Variant, variant]): void =
-  if args.len == 0:
-    let argArr = [getPtr peerId]
-    `rpcId(Callable Int Variant)`(addr self, addr argArr[0], nil, 1)
-  else:
-    var argArr = @[getPtr peerId]
-    argArr.add args.getptr
-    `rpcId(Callable Int Variant)`(addr self, addr argArr[0], nil, cint argArr.len)
+  `rpcId(Callable Int Variant)`.call(addr self, @[getPtr peerId] & getPtr args)
 proc `bind`*(self: Callable; args: varargs[Variant, variant]): Callable =
-  if args.len == 0:
-    `bind(Callable Variant)`(addr self, nil, addr result, 0)
-  else:
-    let argArr = getptr args
-    `bind(Callable Variant)`(addr self, addr argArr[0], addr result, cint args.len)
+  `bind(Callable Variant)`.call(addr self, getPtr args, addr result)
 
 proc load_Callable_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `create(Callable Variant StringName)` = load(VariantType_Callable, "create", 1709381114)

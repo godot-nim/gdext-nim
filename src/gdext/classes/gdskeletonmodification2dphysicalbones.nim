@@ -32,10 +32,12 @@ proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
 
 proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
+  nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])
 
 proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
+  nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])
 
 template physicalBoneChainLength*(self: SkeletonModification2DPhysicalBones): untyped = self.getPhysicalBoneChainLength()

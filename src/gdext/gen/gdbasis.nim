@@ -63,57 +63,45 @@ var `fromScale(Basis Vector3)`: PtrBuiltinMethod
 var `fromEuler(Basis Vector3 Int)`: PtrBuiltinMethod
 
 proc inverse*(self: Basis): Basis =
-  `inverse(Basis)`(addr self, nil, addr result, 0)
+  `inverse(Basis)`.call(addr self, [], addr result)
 proc transposed*(self: Basis): Basis =
-  `transposed(Basis)`(addr self, nil, addr result, 0)
+  `transposed(Basis)`.call(addr self, [], addr result)
 proc orthonormalized*(self: Basis): Basis =
-  `orthonormalized(Basis)`(addr self, nil, addr result, 0)
+  `orthonormalized(Basis)`.call(addr self, [], addr result)
 proc determinant*(self: Basis): Float =
-  `determinant(Basis)`(addr self, nil, addr result, 0)
+  `determinant(Basis)`.call(addr self, [], addr result)
 proc rotated*(self: Basis; axis: Vector3; angle: Float): Basis =
-  let argArr = [getPtr axis, getPtr angle]
-  `rotated(Basis Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `rotated(Basis Vector3 Float)`.call(addr self, [getPtr axis, getPtr angle], addr result)
 proc scaled*(self: Basis; scale: Vector3): Basis =
-  let argArr = [getPtr scale]
-  `scaled(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `scaled(Basis Vector3)`.call(addr self, [getPtr scale], addr result)
 proc scaledLocal*(self: Basis; scale: Vector3): Basis =
-  let argArr = [getPtr scale]
-  `scaledLocal(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `scaledLocal(Basis Vector3)`.call(addr self, [getPtr scale], addr result)
 proc getScale*(self: Basis): Vector3 =
-  `getScale(Basis)`(addr self, nil, addr result, 0)
+  `getScale(Basis)`.call(addr self, [], addr result)
 proc getEuler*(self: Basis; order: Int = 2): Vector3 =
-  let argArr = [getPtr order]
-  `getEuler(Basis Int)`(addr self, addr argArr[0], addr result, 1)
+  `getEuler(Basis Int)`.call(addr self, [getPtr order], addr result)
 proc tdotx*(self: Basis; with: Vector3): Float =
-  let argArr = [getPtr with]
-  `tdotx(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `tdotx(Basis Vector3)`.call(addr self, [getPtr with], addr result)
 proc tdoty*(self: Basis; with: Vector3): Float =
-  let argArr = [getPtr with]
-  `tdoty(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `tdoty(Basis Vector3)`.call(addr self, [getPtr with], addr result)
 proc tdotz*(self: Basis; with: Vector3): Float =
-  let argArr = [getPtr with]
-  `tdotz(Basis Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `tdotz(Basis Vector3)`.call(addr self, [getPtr with], addr result)
 proc slerp*(self: Basis; to: Basis; weight: Float): Basis =
-  let argArr = [getPtr to, getPtr weight]
-  `slerp(Basis Basis Float)`(addr self, addr argArr[0], addr result, 2)
+  `slerp(Basis Basis Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc isConformal*(self: Basis): bool =
-  `isConformal(Basis)`(addr self, nil, addr result, 0)
+  `isConformal(Basis)`.call(addr self, [], addr result)
 proc isEqualApprox*(self: Basis; b: Basis): bool =
-  let argArr = [getPtr b]
-  `isEqualApprox(Basis Basis)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Basis Basis)`.call(addr self, [getPtr b], addr result)
 proc isFinite*(self: Basis): bool =
-  `isFinite(Basis)`(addr self, nil, addr result, 0)
+  `isFinite(Basis)`.call(addr self, [], addr result)
 proc getRotationQuaternion*(self: Basis): Quaternion =
-  `getRotationQuaternion(Basis)`(addr self, nil, addr result, 0)
+  `getRotationQuaternion(Basis)`.call(addr self, [], addr result)
 proc lookingAt*(_: typedesc[Basis]; target: Vector3; up: Vector3 = vector3(0, 1, 0); useModelFront: bool = false): Basis =
-  let argArr = [getPtr target, getPtr up, getPtr useModelFront]
-  `lookingAt(Basis Vector3 Vector3 bool)`(nil, addr argArr[0], addr result, 3)
+  `lookingAt(Basis Vector3 Vector3 bool)`.call([getPtr target, getPtr up, getPtr useModelFront], addr result)
 proc fromScale*(_: typedesc[Basis]; scale: Vector3): Basis =
-  let argArr = [getPtr scale]
-  `fromScale(Basis Vector3)`(nil, addr argArr[0], addr result, 1)
+  `fromScale(Basis Vector3)`.call([getPtr scale], addr result)
 proc fromEuler*(_: typedesc[Basis]; euler: Vector3; order: Int = 2): Basis =
-  let argArr = [getPtr euler, getPtr order]
-  `fromEuler(Basis Vector3 Int)`(nil, addr argArr[0], addr result, 2)
+  `fromEuler(Basis Vector3 Int)`.call([getPtr euler, getPtr order], addr result)
 
 proc load_Basis_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `inverse(Basis)` = load(VariantType_Basis, "inverse", 594669093)

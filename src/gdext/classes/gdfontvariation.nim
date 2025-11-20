@@ -18,6 +18,7 @@ proc getBaseFont*(self: FontVariation): gdref Font =
 
 proc setVariationOpentype*(self: FontVariation; coords: Dictionary): void =
   expandMethodBind(className FontVariation, "set_variation_opentype", 4155329257)
+  nilCheck coords
   methodbind.ptrcall(self, [getPtr coords])
 
 proc getVariationOpentype*(self: FontVariation): Dictionary =
@@ -58,6 +59,7 @@ proc getVariationTransform*(self: FontVariation): Transform2D =
 
 proc setOpentypeFeatures*(self: FontVariation; features: Dictionary): void =
   expandMethodBind(className FontVariation, "set_opentype_features", 4155329257)
+  nilCheck features
   methodbind.ptrcall(self, [getPtr features])
 
 proc setSpacing*(self: FontVariation; spacing: TextServer_SpacingType; value: int32): void =

@@ -34,10 +34,12 @@ proc hasProfiler*(self: EngineDebugger; name: StringName): bool =
 
 proc profilerAddFrameData*(self: EngineDebugger; name: StringName; data: Array): void =
   expandMethodBind(className EngineDebugger, "profiler_add_frame_data", 1895267858)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr name, getPtr data])
 
 proc profilerEnable*(self: EngineDebugger; name: StringName; enable: bool; arguments: Array = newArray()): void =
   expandMethodBind(className EngineDebugger, "profiler_enable", 3192561009)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr name, getPtr enable, getPtr arguments])
 
 proc registerMessageCapture*(self: EngineDebugger; name: StringName; callable: Callable): void =
@@ -60,6 +62,7 @@ proc linePoll*(self: EngineDebugger): void =
 
 proc sendMessage*(self: EngineDebugger; message: String; data: Array): void =
   expandMethodBind(className EngineDebugger, "send_message", 1209351045)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr message, getPtr data])
 
 proc debug*(self: EngineDebugger; canContinue: bool = true; isErrorBreakpoint: bool = false): void =

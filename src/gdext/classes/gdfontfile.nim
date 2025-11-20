@@ -228,6 +228,7 @@ proc removeSizeCache*(self: FontFile; cacheIndex: int32; size: Vector2i): void =
 
 proc setVariationCoordinates*(self: FontFile; cacheIndex: int32; variationCoordinates: Dictionary): void =
   expandMethodBind(className FontFile, "set_variation_coordinates", 64545446)
+  nilCheck variationCoordinates
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr variationCoordinates])
 
 proc getVariationCoordinates*(self: FontFile; cacheIndex: int32): Dictionary =
@@ -508,6 +509,7 @@ proc getScriptSupportOverrides*(self: FontFile): PackedStringArray =
 
 proc setOpentypeFeatureOverrides*(self: FontFile; overrides: Dictionary): void =
   expandMethodBind(className FontFile, "set_opentype_feature_overrides", 4155329257)
+  nilCheck overrides
   methodbind.ptrcall(self, [getPtr overrides])
 
 proc getOpentypeFeatureOverrides*(self: FontFile): Dictionary =

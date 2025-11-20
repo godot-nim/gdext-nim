@@ -57,6 +57,7 @@ proc isAutoIndentEnabled*(self: CodeEdit): bool =
 
 proc setAutoIndentPrefixes*(self: CodeEdit; prefixes: TypedArray[String]): void =
   expandMethodBind(className CodeEdit, "set_auto_indent_prefixes", 381264803)
+  nilCheck prefixes
   methodbind.ptrcall(self, [getPtr prefixes])
 
 proc getAutoIndentPrefixes*(self: CodeEdit): TypedArray[String] =
@@ -107,6 +108,7 @@ proc addAutoBraceCompletionPair*(self: CodeEdit; startKey: String; endKey: Strin
 
 proc setAutoBraceCompletionPairs*(self: CodeEdit; pairs: Dictionary): void =
   expandMethodBind(className CodeEdit, "set_auto_brace_completion_pairs", 4155329257)
+  nilCheck pairs
   methodbind.ptrcall(self, [getPtr pairs])
 
 proc getAutoBraceCompletionPairs*(self: CodeEdit): Dictionary =
@@ -353,6 +355,7 @@ proc hasStringDelimiter*(self: CodeEdit; startKey: String): bool =
 
 proc setStringDelimiters*(self: CodeEdit; stringDelimiters: TypedArray[String]): void =
   expandMethodBind(className CodeEdit, "set_string_delimiters", 381264803)
+  nilCheck stringDelimiters
   methodbind.ptrcall(self, [getPtr stringDelimiters])
 
 proc clearStringDelimiters*(self: CodeEdit): void =
@@ -387,6 +390,7 @@ proc hasCommentDelimiter*(self: CodeEdit; startKey: String): bool =
 
 proc setCommentDelimiters*(self: CodeEdit; commentDelimiters: TypedArray[String]): void =
   expandMethodBind(className CodeEdit, "set_comment_delimiters", 381264803)
+  nilCheck commentDelimiters
   methodbind.ptrcall(self, [getPtr commentDelimiters])
 
 proc clearCommentDelimiters*(self: CodeEdit): void =
@@ -489,6 +493,7 @@ proc isCodeCompletionEnabled*(self: CodeEdit): bool =
 
 proc setCodeCompletionPrefixes*(self: CodeEdit; prefixes: TypedArray[String]): void =
   expandMethodBind(className CodeEdit, "set_code_completion_prefixes", 381264803)
+  nilCheck prefixes
   methodbind.ptrcall(self, [getPtr prefixes])
 
 proc getCodeCompletionPrefixes*(self: CodeEdit): TypedArray[String] =
@@ -499,6 +504,7 @@ proc getCodeCompletionPrefixes*(self: CodeEdit): TypedArray[String] =
 
 proc setLineLengthGuidelines*(self: CodeEdit; guidelineColumns: TypedArray[Int]): void =
   expandMethodBind(className CodeEdit, "set_line_length_guidelines", 381264803)
+  nilCheck guidelineColumns
   methodbind.ptrcall(self, [getPtr guidelineColumns])
 
 proc getLineLengthGuidelines*(self: CodeEdit): TypedArray[Int] =

@@ -333,6 +333,7 @@ proc propagateNotification*(self: Node; what: int32): void =
 
 proc propagateCall*(self: Node; `method`: StringName; args: Array = newArray(); parentFirst: bool = false): void =
   expandMethodBind(className Node, "propagate_call", 1871007965)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst])
 
 proc setPhysicsProcess*(self: Node; enable: bool): void =

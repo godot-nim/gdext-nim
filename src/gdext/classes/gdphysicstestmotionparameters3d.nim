@@ -64,6 +64,7 @@ proc getExcludeBodies*(self: PhysicsTestMotionParameters3D): TypedArray[RID] =
 
 proc setExcludeBodies*(self: PhysicsTestMotionParameters3D; excludeList: TypedArray[RID]): void =
   expandMethodBind(className PhysicsTestMotionParameters3D, "set_exclude_bodies", 381264803)
+  nilCheck excludeList
   methodbind.ptrcall(self, [getPtr excludeList])
 
 proc getExcludeObjects*(self: PhysicsTestMotionParameters3D): TypedArray[Int] =
@@ -74,6 +75,7 @@ proc getExcludeObjects*(self: PhysicsTestMotionParameters3D): TypedArray[Int] =
 
 proc setExcludeObjects*(self: PhysicsTestMotionParameters3D; excludeList: TypedArray[Int]): void =
   expandMethodBind(className PhysicsTestMotionParameters3D, "set_exclude_objects", 381264803)
+  nilCheck excludeList
   methodbind.ptrcall(self, [getPtr excludeList])
 
 proc isRecoveryAsCollisionEnabled*(self: PhysicsTestMotionParameters3D): bool =

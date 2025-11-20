@@ -40,6 +40,7 @@ proc getBindingModifier*(self: OpenXRIPBinding; index: int32): gdref OpenXRActio
 
 proc setBindingModifiers*(self: OpenXRIPBinding; bindingModifiers: Array): void =
   expandMethodBind(className OpenXRIPBinding, "set_binding_modifiers", 381264803)
+  nilCheck bindingModifiers
   methodbind.ptrcall(self, [getPtr bindingModifiers])
 
 proc getBindingModifiers*(self: OpenXRIPBinding): Array =

@@ -8,6 +8,7 @@ expandOnClassImported(Shortcut, Resource)
 
 proc setEvents*(self: Shortcut; events: Array): void =
   expandMethodBind(className Shortcut, "set_events", 381264803)
+  nilCheck events
   methodbind.ptrcall(self, [getPtr events])
 
 proc getEvents*(self: Shortcut): Array =

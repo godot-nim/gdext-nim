@@ -68,6 +68,7 @@ proc getPreserveControl*(self: TextParagraph): bool =
 
 proc setBidiOverride*(self: TextParagraph; override: Array): void =
   expandMethodBind(className TextParagraph, "set_bidi_override", 381264803)
+  nilCheck override
   methodbind.ptrcall(self, [getPtr override])
 
 proc setDropcap*(self: TextParagraph; text: String; font: gdref Font; fontSize: int32; dropcapMargins: Rect2 = rect2(0, 0, 0, 0); language: String = newGdString()): bool =

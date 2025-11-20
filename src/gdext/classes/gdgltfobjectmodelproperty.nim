@@ -54,6 +54,7 @@ proc hasNodePaths*(self: GLTFObjectModelProperty): bool =
 
 proc setNodePaths*(self: GLTFObjectModelProperty; nodePaths: TypedArray[NodePath]): void =
   expandMethodBind(className GLTFObjectModelProperty, "set_node_paths", 381264803)
+  nilCheck nodePaths
   methodbind.ptrcall(self, [getPtr nodePaths])
 
 proc getObjectModelType*(self: GLTFObjectModelProperty): GLTFObjectModelProperty_GLTFObjectModelType =
@@ -80,6 +81,7 @@ proc hasJsonPointers*(self: GLTFObjectModelProperty): bool =
 
 proc setJsonPointers*(self: GLTFObjectModelProperty; jsonPointers: TypedArray[PackedStringArray]): void =
   expandMethodBind(className GLTFObjectModelProperty, "set_json_pointers", 381264803)
+  nilCheck jsonPointers
   methodbind.ptrcall(self, [getPtr jsonPointers])
 
 proc getVariantType*(self: GLTFObjectModelProperty): Variant_Type =

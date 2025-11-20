@@ -166,6 +166,7 @@ proc pushBgcolor*(self: RichTextLabel; bgcolor: Color): void =
 
 proc pushCustomfx*(self: RichTextLabel; effect: gdref RichTextEffect; env: Dictionary): void =
   expandMethodBind(className RichTextLabel, "push_customfx", 2337942958)
+  nilCheck env
   methodbind.ptrcall(self, [getPtr effect, getPtr env])
 
 proc pushContext*(self: RichTextLabel): void =
@@ -200,6 +201,7 @@ proc getStructuredTextBidiOverride*(self: RichTextLabel): TextServer_StructuredT
 
 proc setStructuredTextBidiOverrideOptions*(self: RichTextLabel; args: Array): void =
   expandMethodBind(className RichTextLabel, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: RichTextLabel): Array =
@@ -642,6 +644,7 @@ proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringAr
 
 proc setEffects*(self: RichTextLabel; effects: Array): void =
   expandMethodBind(className RichTextLabel, "set_effects", 381264803)
+  nilCheck effects
   methodbind.ptrcall(self, [getPtr effects])
 
 proc getEffects*(self: RichTextLabel): Array =

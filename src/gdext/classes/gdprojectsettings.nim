@@ -64,6 +64,7 @@ proc setAsInternal*(self: ProjectSettings; name: String; internal: bool): void =
 
 proc addPropertyInfo*(self: ProjectSettings; hint: Dictionary): void =
   expandMethodBind(className ProjectSettings, "add_property_info", 4155329257)
+  nilCheck hint
   methodbind.ptrcall(self, [getPtr hint])
 
 proc setRestartIfChanged*(self: ProjectSettings; name: String; restart: bool): void =

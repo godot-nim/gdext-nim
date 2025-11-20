@@ -20,6 +20,7 @@ proc toNode*(self: GLTFCamera): Camera3D =
 
 proc fromDictionary*(_: typedesc[GLTFCamera]; dictionary: Dictionary): gdref GLTFCamera =
   expandMethodBind(className GLTFCamera, "from_dictionary", 2495512509)
+  nilCheck dictionary
   var ret: encoded gdref GLTFCamera
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFCamera)

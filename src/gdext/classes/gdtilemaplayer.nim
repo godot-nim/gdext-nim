@@ -99,6 +99,7 @@ proc getUsedRect*(self: TileMapLayer): Rect2i =
 
 proc getPattern*(self: TileMapLayer; coordsArray: TypedArray[Vector2i]): gdref TileMapPattern =
   expandMethodBind(className TileMapLayer, "get_pattern", 3820813253)
+  nilCheck coordsArray
   var ret: encoded gdref TileMapPattern
   methodbind.ptrcall(self, [getPtr coordsArray], addr ret)
   (addr ret).decode_result(gdref TileMapPattern)
@@ -109,10 +110,12 @@ proc setPattern*(self: TileMapLayer; position: Vector2i; pattern: gdref TileMapP
 
 proc setCellsTerrainConnect*(self: TileMapLayer; cells: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMapLayer, "set_cells_terrain_connect", 748968311)
+  nilCheck cells
   methodbind.ptrcall(self, [getPtr cells, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
 proc setCellsTerrainPath*(self: TileMapLayer; path: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMapLayer, "set_cells_terrain_path", 748968311)
+  nilCheck path
   methodbind.ptrcall(self, [getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
 proc hasBodyRid*(self: TileMapLayer; body: RID): bool =

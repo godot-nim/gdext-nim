@@ -88,6 +88,7 @@ proc getStructuredTextBidiOverride*(self: Label3D): TextServer_StructuredTextPar
 
 proc setStructuredTextBidiOverrideOptions*(self: Label3D; args: Array): void =
   expandMethodBind(className Label3D, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: Label3D): Array =

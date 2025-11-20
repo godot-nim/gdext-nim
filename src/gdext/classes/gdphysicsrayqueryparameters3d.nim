@@ -8,6 +8,7 @@ expandOnClassImported(PhysicsRayQueryParameters3D, RefCounted)
 
 proc create*(_: typedesc[PhysicsRayQueryParameters3D]; `from`: Vector3; to: Vector3; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[RID] = newTypedArray[RID]()): gdref PhysicsRayQueryParameters3D =
   expandMethodBind(className PhysicsRayQueryParameters3D, "create", 3110599579)
+  nilCheck exclude
   var ret: encoded gdref PhysicsRayQueryParameters3D
   methodbind.ptrcall([getPtr `from`, getPtr to, getPtr collisionMask, getPtr exclude], addr ret)
   (addr ret).decode_result(gdref PhysicsRayQueryParameters3D)
@@ -44,6 +45,7 @@ proc getCollisionMask*(self: PhysicsRayQueryParameters3D): uint32 =
 
 proc setExclude*(self: PhysicsRayQueryParameters3D; exclude: TypedArray[RID]): void =
   expandMethodBind(className PhysicsRayQueryParameters3D, "set_exclude", 381264803)
+  nilCheck exclude
   methodbind.ptrcall(self, [getPtr exclude])
 
 proc getExclude*(self: PhysicsRayQueryParameters3D): TypedArray[RID] =

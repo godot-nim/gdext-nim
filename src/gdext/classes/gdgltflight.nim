@@ -20,6 +20,7 @@ proc toNode*(self: GLTFLight): Light3D =
 
 proc fromDictionary*(_: typedesc[GLTFLight]; dictionary: Dictionary): gdref GLTFLight =
   expandMethodBind(className GLTFLight, "from_dictionary", 4057087208)
+  nilCheck dictionary
   var ret: encoded gdref GLTFLight
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFLight)

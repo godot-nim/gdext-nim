@@ -8,6 +8,7 @@ expandOnClassImported(Font, Resource)
 
 proc setFallbacks*(self: Font; fallbacks: TypedArray[gdref Font]): void =
   expandMethodBind(className Font, "set_fallbacks", 381264803)
+  nilCheck fallbacks
   methodbind.ptrcall(self, [getPtr fallbacks])
 
 proc getFallbacks*(self: Font): TypedArray[gdref Font] =
@@ -18,6 +19,7 @@ proc getFallbacks*(self: Font): TypedArray[gdref Font] =
 
 proc findVariation*(self: Font; variationCoordinates: Dictionary; faceIndex: int32 = 0; strength: Float = 0.0; transform: Transform2D = transform2D(); spacingTop: int32 = 0; spacingBottom: int32 = 0; spacingSpace: int32 = 0; spacingGlyph: int32 = 0; baselineOffset: Float = 0.0): RID =
   expandMethodBind(className Font, "find_variation", 2553855095)
+  nilCheck variationCoordinates
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr variationCoordinates, getPtr faceIndex, getPtr strength, getPtr transform, getPtr spacingTop, getPtr spacingBottom, getPtr spacingSpace, getPtr spacingGlyph, getPtr baselineOffset], addr ret)
   (addr ret).decode_result(RID)

@@ -65,52 +65,43 @@ var `getAxis(Quaternion)`: PtrBuiltinMethod
 var `getAngle(Quaternion)`: PtrBuiltinMethod
 
 proc length*(self: Quaternion): Float =
-  `length(Quaternion)`(addr self, nil, addr result, 0)
+  `length(Quaternion)`.call(addr self, [], addr result)
 proc lengthSquared*(self: Quaternion): Float =
-  `lengthSquared(Quaternion)`(addr self, nil, addr result, 0)
+  `lengthSquared(Quaternion)`.call(addr self, [], addr result)
 proc normalized*(self: Quaternion): Quaternion =
-  `normalized(Quaternion)`(addr self, nil, addr result, 0)
+  `normalized(Quaternion)`.call(addr self, [], addr result)
 proc isNormalized*(self: Quaternion): bool =
-  `isNormalized(Quaternion)`(addr self, nil, addr result, 0)
+  `isNormalized(Quaternion)`.call(addr self, [], addr result)
 proc isEqualApprox*(self: Quaternion; to: Quaternion): bool =
-  let argArr = [getPtr to]
-  `isEqualApprox(Quaternion Quaternion)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Quaternion Quaternion)`.call(addr self, [getPtr to], addr result)
 proc isFinite*(self: Quaternion): bool =
-  `isFinite(Quaternion)`(addr self, nil, addr result, 0)
+  `isFinite(Quaternion)`.call(addr self, [], addr result)
 proc inverse*(self: Quaternion): Quaternion =
-  `inverse(Quaternion)`(addr self, nil, addr result, 0)
+  `inverse(Quaternion)`.call(addr self, [], addr result)
 proc log*(self: Quaternion): Quaternion =
-  `log(Quaternion)`(addr self, nil, addr result, 0)
+  `log(Quaternion)`.call(addr self, [], addr result)
 proc exp*(self: Quaternion): Quaternion =
-  `exp(Quaternion)`(addr self, nil, addr result, 0)
+  `exp(Quaternion)`.call(addr self, [], addr result)
 proc angleTo*(self: Quaternion; to: Quaternion): Float =
-  let argArr = [getPtr to]
-  `angleTo(Quaternion Quaternion)`(addr self, addr argArr[0], addr result, 1)
+  `angleTo(Quaternion Quaternion)`.call(addr self, [getPtr to], addr result)
 proc dot*(self: Quaternion; with: Quaternion): Float =
-  let argArr = [getPtr with]
-  `dot(Quaternion Quaternion)`(addr self, addr argArr[0], addr result, 1)
+  `dot(Quaternion Quaternion)`.call(addr self, [getPtr with], addr result)
 proc slerp*(self: Quaternion; to: Quaternion; weight: Float): Quaternion =
-  let argArr = [getPtr to, getPtr weight]
-  `slerp(Quaternion Quaternion Float)`(addr self, addr argArr[0], addr result, 2)
+  `slerp(Quaternion Quaternion Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc slerpni*(self: Quaternion; to: Quaternion; weight: Float): Quaternion =
-  let argArr = [getPtr to, getPtr weight]
-  `slerpni(Quaternion Quaternion Float)`(addr self, addr argArr[0], addr result, 2)
+  `slerpni(Quaternion Quaternion Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc sphericalCubicInterpolate*(self: Quaternion; b: Quaternion; preA: Quaternion; postB: Quaternion; weight: Float): Quaternion =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight]
-  `sphericalCubicInterpolate(Quaternion Quaternion Quaternion Quaternion Float)`(addr self, addr argArr[0], addr result, 4)
+  `sphericalCubicInterpolate(Quaternion Quaternion Quaternion Quaternion Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight], addr result)
 proc sphericalCubicInterpolateInTime*(self: Quaternion; b: Quaternion; preA: Quaternion; postB: Quaternion; weight: Float; bT: Float; preAT: Float; postBT: Float): Quaternion =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT]
-  `sphericalCubicInterpolateInTime(Quaternion Quaternion Quaternion Quaternion Float Float Float Float)`(addr self, addr argArr[0], addr result, 7)
+  `sphericalCubicInterpolateInTime(Quaternion Quaternion Quaternion Quaternion Float Float Float Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT], addr result)
 proc getEuler*(self: Quaternion; order: Int = 2): Vector3 =
-  let argArr = [getPtr order]
-  `getEuler(Quaternion Int)`(addr self, addr argArr[0], addr result, 1)
+  `getEuler(Quaternion Int)`.call(addr self, [getPtr order], addr result)
 proc fromEuler*(_: typedesc[Quaternion]; euler: Vector3): Quaternion =
-  let argArr = [getPtr euler]
-  `fromEuler(Quaternion Vector3)`(nil, addr argArr[0], addr result, 1)
+  `fromEuler(Quaternion Vector3)`.call([getPtr euler], addr result)
 proc getAxis*(self: Quaternion): Vector3 =
-  `getAxis(Quaternion)`(addr self, nil, addr result, 0)
+  `getAxis(Quaternion)`.call(addr self, [], addr result)
 proc getAngle*(self: Quaternion): Float =
-  `getAngle(Quaternion)`(addr self, nil, addr result, 0)
+  `getAngle(Quaternion)`.call(addr self, [], addr result)
 
 proc load_Quaternion_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `length(Quaternion)` = load(VariantType_Quaternion, "length", 466405837)

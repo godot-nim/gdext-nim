@@ -30,6 +30,7 @@ proc getBinding*(self: OpenXRInteractionProfile; index: int32): gdref OpenXRIPBi
 
 proc setBindings*(self: OpenXRInteractionProfile; bindings: Array): void =
   expandMethodBind(className OpenXRInteractionProfile, "set_bindings", 381264803)
+  nilCheck bindings
   methodbind.ptrcall(self, [getPtr bindings])
 
 proc getBindings*(self: OpenXRInteractionProfile): Array =
@@ -52,6 +53,7 @@ proc getBindingModifier*(self: OpenXRInteractionProfile; index: int32): gdref Op
 
 proc setBindingModifiers*(self: OpenXRInteractionProfile; bindingModifiers: Array): void =
   expandMethodBind(className OpenXRInteractionProfile, "set_binding_modifiers", 381264803)
+  nilCheck bindingModifiers
   methodbind.ptrcall(self, [getPtr bindingModifiers])
 
 proc getBindingModifiers*(self: OpenXRInteractionProfile): Array =

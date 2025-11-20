@@ -8,6 +8,7 @@ expandOnClassImported(OpenXRActionMap, Resource)
 
 proc setActionSets*(self: OpenXRActionMap; actionSets: Array): void =
   expandMethodBind(className OpenXRActionMap, "set_action_sets", 381264803)
+  nilCheck actionSets
   methodbind.ptrcall(self, [getPtr actionSets])
 
 proc getActionSets*(self: OpenXRActionMap): Array =
@@ -44,6 +45,7 @@ proc removeActionSet*(self: OpenXRActionMap; actionSet: gdref OpenXRActionSet): 
 
 proc setInteractionProfiles*(self: OpenXRActionMap; interactionProfiles: Array): void =
   expandMethodBind(className OpenXRActionMap, "set_interaction_profiles", 381264803)
+  nilCheck interactionProfiles
   methodbind.ptrcall(self, [getPtr interactionProfiles])
 
 proc getInteractionProfiles*(self: OpenXRActionMap): Array =

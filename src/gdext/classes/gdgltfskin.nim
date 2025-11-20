@@ -34,6 +34,7 @@ proc getInverseBinds*(self: GLTFSkin): TypedArray[Transform3D] =
 
 proc setInverseBinds*(self: GLTFSkin; inverseBinds: TypedArray[Transform3D]): void =
   expandMethodBind(className GLTFSkin, "set_inverse_binds", 381264803)
+  nilCheck inverseBinds
   methodbind.ptrcall(self, [getPtr inverseBinds])
 
 proc getJoints*(self: GLTFSkin): PackedInt32Array =
@@ -84,6 +85,7 @@ proc getJointIToBoneI*(self: GLTFSkin): Dictionary =
 
 proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_bone_i", 4155329257)
+  nilCheck jointIToBoneI
   methodbind.ptrcall(self, [getPtr jointIToBoneI])
 
 proc getJointIToName*(self: GLTFSkin): Dictionary =
@@ -94,6 +96,7 @@ proc getJointIToName*(self: GLTFSkin): Dictionary =
 
 proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_name", 4155329257)
+  nilCheck jointIToName
   methodbind.ptrcall(self, [getPtr jointIToName])
 
 proc getGodotSkin*(self: GLTFSkin): gdref Skin =

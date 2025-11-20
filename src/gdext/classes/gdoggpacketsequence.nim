@@ -8,6 +8,7 @@ expandOnClassImported(OggPacketSequence, Resource)
 
 proc setPacketData*(self: OggPacketSequence; packetData: TypedArray[Array]): void =
   expandMethodBind(className OggPacketSequence, "set_packet_data", 381264803)
+  nilCheck packetData
   methodbind.ptrcall(self, [getPtr packetData])
 
 proc getPacketData*(self: OggPacketSequence): TypedArray[Array] =

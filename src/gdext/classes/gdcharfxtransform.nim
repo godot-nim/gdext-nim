@@ -84,6 +84,7 @@ proc getEnvironment*(self: CharFXTransform): Dictionary =
 
 proc setEnvironment*(self: CharFXTransform; environment: Dictionary): void =
   expandMethodBind(className CharFXTransform, "set_environment", 4155329257)
+  nilCheck environment
   methodbind.ptrcall(self, [getPtr environment])
 
 proc getGlyphIndex*(self: CharFXTransform): uint32 =

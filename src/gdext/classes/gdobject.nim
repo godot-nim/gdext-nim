@@ -118,6 +118,7 @@ proc getMetaList*(self: Object): TypedArray[StringName] =
 
 proc addUserSignal*(self: Object; signal: String; arguments: Array = newArray()): void =
   expandMethodBind(className Object, "add_user_signal", 85656714)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr signal, getPtr arguments])
 
 proc hasUserSignal*(self: Object; signal: StringName): bool =
@@ -160,6 +161,7 @@ proc setDeferred*(self: Object; property: StringName; value: Variant): void =
 
 proc callv*(self: Object; `method`: StringName; argArray: Array): Variant =
   expandMethodBind(className Object, "callv", 1260104456)
+  nilCheck argArray
   var ret: encoded Variant
   methodbind.ptrcall(self, [getPtr `method`, getPtr argArray], addr ret)
   (addr ret).decode_result(Variant)

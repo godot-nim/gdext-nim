@@ -356,6 +356,7 @@ proc fontGetTransform*(self: TextServer; fontRid: RID): Transform2D =
 
 proc fontSetVariationCoordinates*(self: TextServer; fontRid: RID; variationCoordinates: Dictionary): void =
   expandMethodBind(className TextServer, "font_set_variation_coordinates", 1217542888)
+  nilCheck variationCoordinates
   methodbind.ptrcall(self, [getPtr fontRid, getPtr variationCoordinates])
 
 proc fontGetVariationCoordinates*(self: TextServer; fontRid: RID): Dictionary =
@@ -684,6 +685,7 @@ proc fontGetScriptSupportOverrides*(self: TextServer; fontRid: RID): PackedStrin
 
 proc fontSetOpentypeFeatureOverrides*(self: TextServer; fontRid: RID; overrides: Dictionary): void =
   expandMethodBind(className TextServer, "font_set_opentype_feature_overrides", 1217542888)
+  nilCheck overrides
   methodbind.ptrcall(self, [getPtr fontRid, getPtr overrides])
 
 proc fontGetOpentypeFeatureOverrides*(self: TextServer; fontRid: RID): Dictionary =
@@ -752,6 +754,7 @@ proc shapedTextGetInferredDirection*(self: TextServer; shaped: RID): TextServer_
 
 proc shapedTextSetBidiOverride*(self: TextServer; shaped: RID; override: Array): void =
   expandMethodBind(className TextServer, "shaped_text_set_bidi_override", 684822712)
+  nilCheck override
   methodbind.ptrcall(self, [getPtr shaped, getPtr override])
 
 proc shapedTextSetCustomPunctuation*(self: TextServer; shaped: RID; punct: String): void =
@@ -816,6 +819,8 @@ proc shapedTextGetSpacing*(self: TextServer; shaped: RID; spacing: TextServer_Sp
 
 proc shapedTextAddString*(self: TextServer; shaped: RID; text: String; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary(); language: String = newGdString(); meta: Variant = default(Variant)): bool =
   expandMethodBind(className TextServer, "shaped_text_add_string", 623473029)
+  nilCheck fonts
+  nilCheck opentypeFeatures
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr shaped, getPtr text, getPtr fonts, getPtr size, getPtr opentypeFeatures, getPtr language, getPtr meta], addr ret)
   (addr ret).decode_result(bool)
@@ -870,6 +875,8 @@ proc shapedGetSpanObject*(self: TextServer; shaped: RID; index: int64): Variant 
 
 proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary()): void =
   expandMethodBind(className TextServer, "shaped_set_span_update_font", 2022725822)
+  nilCheck fonts
+  nilCheck opentypeFeatures
   methodbind.ptrcall(self, [getPtr shaped, getPtr index, getPtr fonts, getPtr size, getPtr opentypeFeatures])
 
 proc shapedGetRunCount*(self: TextServer; shaped: RID): int64 =
@@ -1252,6 +1259,7 @@ proc stringToTitle*(self: TextServer; string: String; language: String = newGdSt
 
 proc parseStructuredText*(self: TextServer; parserType: TextServer_StructuredTextParser; args: Array; text: String): TypedArray[Vector3i] =
   expandMethodBind(className TextServer, "parse_structured_text", 3310685015)
+  nilCheck args
   var ret: encoded TypedArray[Vector3i]
   methodbind.ptrcall(self, [getPtr parserType, getPtr args, getPtr text], addr ret)
   (addr ret).decode_result(TypedArray[Vector3i])

@@ -681,6 +681,7 @@ proc getAccessibilityLive*(self: Control): DisplayServer_AccessibilityLiveMode =
 
 proc setAccessibilityControlsNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_controls_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
 proc getAccessibilityControlsNodes*(self: Control): TypedArray[NodePath] =
@@ -691,6 +692,7 @@ proc getAccessibilityControlsNodes*(self: Control): TypedArray[NodePath] =
 
 proc setAccessibilityDescribedByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_described_by_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
 proc getAccessibilityDescribedByNodes*(self: Control): TypedArray[NodePath] =
@@ -701,6 +703,7 @@ proc getAccessibilityDescribedByNodes*(self: Control): TypedArray[NodePath] =
 
 proc setAccessibilityLabeledByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_labeled_by_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
 proc getAccessibilityLabeledByNodes*(self: Control): TypedArray[NodePath] =
@@ -711,6 +714,7 @@ proc getAccessibilityLabeledByNodes*(self: Control): TypedArray[NodePath] =
 
 proc setAccessibilityFlowToNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_flow_to_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
 proc getAccessibilityFlowToNodes*(self: Control): TypedArray[NodePath] =

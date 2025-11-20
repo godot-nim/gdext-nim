@@ -52,6 +52,7 @@ proc setConnectionActivity*(self: GraphEdit; fromNode: StringName; fromPort: int
 
 proc setConnections*(self: GraphEdit; connections: TypedArray[Dictionary]): void =
   expandMethodBind(className GraphEdit, "set_connections", 381264803)
+  nilCheck connections
   methodbind.ptrcall(self, [getPtr connections])
 
 proc getConnectionList*(self: GraphEdit): TypedArray[Dictionary] =
@@ -374,6 +375,7 @@ proc isRightDisconnectsEnabled*(self: GraphEdit): bool =
 
 proc setTypeNames*(self: GraphEdit; typeNames: Dictionary): void =
   expandMethodBind(className GraphEdit, "set_type_names", 4155329257)
+  nilCheck typeNames
   methodbind.ptrcall(self, [getPtr typeNames])
 
 proc getTypeNames*(self: GraphEdit): Dictionary =

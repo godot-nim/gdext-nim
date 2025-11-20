@@ -98,6 +98,7 @@ proc getSimplifyEpsilon*(self: NavigationPathQueryParameters2D): Float =
 
 proc setIncludedRegions*(self: NavigationPathQueryParameters2D; regions: TypedArray[RID]): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_included_regions", 381264803)
+  nilCheck regions
   methodbind.ptrcall(self, [getPtr regions])
 
 proc getIncludedRegions*(self: NavigationPathQueryParameters2D): TypedArray[RID] =
@@ -108,6 +109,7 @@ proc getIncludedRegions*(self: NavigationPathQueryParameters2D): TypedArray[RID]
 
 proc setExcludedRegions*(self: NavigationPathQueryParameters2D; regions: TypedArray[RID]): void =
   expandMethodBind(className NavigationPathQueryParameters2D, "set_excluded_regions", 381264803)
+  nilCheck regions
   methodbind.ptrcall(self, [getPtr regions])
 
 proc getExcludedRegions*(self: NavigationPathQueryParameters2D): TypedArray[RID] =

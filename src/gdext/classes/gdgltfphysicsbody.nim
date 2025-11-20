@@ -20,6 +20,7 @@ proc toNode*(self: GLTFPhysicsBody): CollisionObject3D =
 
 proc fromDictionary*(_: typedesc[GLTFPhysicsBody]; dictionary: Dictionary): gdref GLTFPhysicsBody =
   expandMethodBind(className GLTFPhysicsBody, "from_dictionary", 1177544336)
+  nilCheck dictionary
   var ret: encoded gdref GLTFPhysicsBody
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFPhysicsBody)

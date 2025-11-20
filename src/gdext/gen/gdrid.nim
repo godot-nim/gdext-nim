@@ -23,9 +23,9 @@ var `isValid(RID)`: PtrBuiltinMethod
 var `getId(RID)`: PtrBuiltinMethod
 
 proc isValid*(self: RID): bool =
-  `isValid(RID)`(addr self, nil, addr result, 0)
+  `isValid(RID)`.call(addr self, [], addr result)
 proc getId*(self: RID): Int =
-  `getId(RID)`(addr self, nil, addr result, 0)
+  `getId(RID)`.call(addr self, [], addr result)
 
 proc load_RID_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `isValid(RID)` = load(VariantType_RID, "is_valid", 3918633141)

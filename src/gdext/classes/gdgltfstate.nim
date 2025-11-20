@@ -35,6 +35,7 @@ proc getJson*(self: GLTFState): Dictionary =
 
 proc setJson*(self: GLTFState; json: Dictionary): void =
   expandMethodBind(className GLTFState, "set_json", 4155329257)
+  nilCheck json
   methodbind.ptrcall(self, [getPtr json])
 
 proc getMajorVersion*(self: GLTFState): int32 =
@@ -95,6 +96,7 @@ proc getNodes*(self: GLTFState): TypedArray[gdref GLTFNode] =
 
 proc setNodes*(self: GLTFState; nodes: TypedArray[gdref GLTFNode]): void =
   expandMethodBind(className GLTFState, "set_nodes", 381264803)
+  nilCheck nodes
   methodbind.ptrcall(self, [getPtr nodes])
 
 proc getBuffers*(self: GLTFState): TypedArray[PackedByteArray] =
@@ -105,6 +107,7 @@ proc getBuffers*(self: GLTFState): TypedArray[PackedByteArray] =
 
 proc setBuffers*(self: GLTFState; buffers: TypedArray[PackedByteArray]): void =
   expandMethodBind(className GLTFState, "set_buffers", 381264803)
+  nilCheck buffers
   methodbind.ptrcall(self, [getPtr buffers])
 
 proc getBufferViews*(self: GLTFState): TypedArray[gdref GLTFBufferView] =
@@ -115,6 +118,7 @@ proc getBufferViews*(self: GLTFState): TypedArray[gdref GLTFBufferView] =
 
 proc setBufferViews*(self: GLTFState; bufferViews: TypedArray[gdref GLTFBufferView]): void =
   expandMethodBind(className GLTFState, "set_buffer_views", 381264803)
+  nilCheck bufferViews
   methodbind.ptrcall(self, [getPtr bufferViews])
 
 proc getAccessors*(self: GLTFState): TypedArray[gdref GLTFAccessor] =
@@ -125,6 +129,7 @@ proc getAccessors*(self: GLTFState): TypedArray[gdref GLTFAccessor] =
 
 proc setAccessors*(self: GLTFState; accessors: TypedArray[gdref GLTFAccessor]): void =
   expandMethodBind(className GLTFState, "set_accessors", 381264803)
+  nilCheck accessors
   methodbind.ptrcall(self, [getPtr accessors])
 
 proc getMeshes*(self: GLTFState): TypedArray[gdref GLTFMesh] =
@@ -135,6 +140,7 @@ proc getMeshes*(self: GLTFState): TypedArray[gdref GLTFMesh] =
 
 proc setMeshes*(self: GLTFState; meshes: TypedArray[gdref GLTFMesh]): void =
   expandMethodBind(className GLTFState, "set_meshes", 381264803)
+  nilCheck meshes
   methodbind.ptrcall(self, [getPtr meshes])
 
 proc getAnimationPlayersCount*(self: GLTFState; idx: int32): int32 =
@@ -157,6 +163,7 @@ proc getMaterials*(self: GLTFState): TypedArray[gdref Material] =
 
 proc setMaterials*(self: GLTFState; materials: TypedArray[gdref Material]): void =
   expandMethodBind(className GLTFState, "set_materials", 381264803)
+  nilCheck materials
   methodbind.ptrcall(self, [getPtr materials])
 
 proc getSceneName*(self: GLTFState): String =
@@ -207,6 +214,7 @@ proc getTextures*(self: GLTFState): TypedArray[gdref GLTFTexture] =
 
 proc setTextures*(self: GLTFState; textures: TypedArray[gdref GLTFTexture]): void =
   expandMethodBind(className GLTFState, "set_textures", 381264803)
+  nilCheck textures
   methodbind.ptrcall(self, [getPtr textures])
 
 proc getTextureSamplers*(self: GLTFState): TypedArray[gdref GLTFTextureSampler] =
@@ -217,6 +225,7 @@ proc getTextureSamplers*(self: GLTFState): TypedArray[gdref GLTFTextureSampler] 
 
 proc setTextureSamplers*(self: GLTFState; textureSamplers: TypedArray[gdref GLTFTextureSampler]): void =
   expandMethodBind(className GLTFState, "set_texture_samplers", 381264803)
+  nilCheck textureSamplers
   methodbind.ptrcall(self, [getPtr textureSamplers])
 
 proc getImages*(self: GLTFState): TypedArray[gdref Texture2D] =
@@ -227,6 +236,7 @@ proc getImages*(self: GLTFState): TypedArray[gdref Texture2D] =
 
 proc setImages*(self: GLTFState; images: TypedArray[gdref Texture2D]): void =
   expandMethodBind(className GLTFState, "set_images", 381264803)
+  nilCheck images
   methodbind.ptrcall(self, [getPtr images])
 
 proc getSkins*(self: GLTFState): TypedArray[gdref GLTFSkin] =
@@ -237,6 +247,7 @@ proc getSkins*(self: GLTFState): TypedArray[gdref GLTFSkin] =
 
 proc setSkins*(self: GLTFState; skins: TypedArray[gdref GLTFSkin]): void =
   expandMethodBind(className GLTFState, "set_skins", 381264803)
+  nilCheck skins
   methodbind.ptrcall(self, [getPtr skins])
 
 proc getCameras*(self: GLTFState): TypedArray[gdref GLTFCamera] =
@@ -247,6 +258,7 @@ proc getCameras*(self: GLTFState): TypedArray[gdref GLTFCamera] =
 
 proc setCameras*(self: GLTFState; cameras: TypedArray[gdref GLTFCamera]): void =
   expandMethodBind(className GLTFState, "set_cameras", 381264803)
+  nilCheck cameras
   methodbind.ptrcall(self, [getPtr cameras])
 
 proc getLights*(self: GLTFState): TypedArray[gdref GLTFLight] =
@@ -257,6 +269,7 @@ proc getLights*(self: GLTFState): TypedArray[gdref GLTFLight] =
 
 proc setLights*(self: GLTFState; lights: TypedArray[gdref GLTFLight]): void =
   expandMethodBind(className GLTFState, "set_lights", 381264803)
+  nilCheck lights
   methodbind.ptrcall(self, [getPtr lights])
 
 proc getUniqueNames*(self: GLTFState): TypedArray[String] =
@@ -267,6 +280,7 @@ proc getUniqueNames*(self: GLTFState): TypedArray[String] =
 
 proc setUniqueNames*(self: GLTFState; uniqueNames: TypedArray[String]): void =
   expandMethodBind(className GLTFState, "set_unique_names", 381264803)
+  nilCheck uniqueNames
   methodbind.ptrcall(self, [getPtr uniqueNames])
 
 proc getUniqueAnimationNames*(self: GLTFState): TypedArray[String] =
@@ -277,6 +291,7 @@ proc getUniqueAnimationNames*(self: GLTFState): TypedArray[String] =
 
 proc setUniqueAnimationNames*(self: GLTFState; uniqueAnimationNames: TypedArray[String]): void =
   expandMethodBind(className GLTFState, "set_unique_animation_names", 381264803)
+  nilCheck uniqueAnimationNames
   methodbind.ptrcall(self, [getPtr uniqueAnimationNames])
 
 proc getSkeletons*(self: GLTFState): TypedArray[gdref GLTFSkeleton] =
@@ -287,6 +302,7 @@ proc getSkeletons*(self: GLTFState): TypedArray[gdref GLTFSkeleton] =
 
 proc setSkeletons*(self: GLTFState; skeletons: TypedArray[gdref GLTFSkeleton]): void =
   expandMethodBind(className GLTFState, "set_skeletons", 381264803)
+  nilCheck skeletons
   methodbind.ptrcall(self, [getPtr skeletons])
 
 proc getCreateAnimations*(self: GLTFState): bool =
@@ -317,6 +333,7 @@ proc getAnimations*(self: GLTFState): TypedArray[gdref GLTFAnimation] =
 
 proc setAnimations*(self: GLTFState; animations: TypedArray[gdref GLTFAnimation]): void =
   expandMethodBind(className GLTFState, "set_animations", 381264803)
+  nilCheck animations
   methodbind.ptrcall(self, [getPtr animations])
 
 proc getSceneNode*(self: GLTFState; idx: int32): Node =

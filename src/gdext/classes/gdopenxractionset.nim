@@ -34,6 +34,7 @@ proc getActionCount*(self: OpenXRActionSet): int32 =
 
 proc setActions*(self: OpenXRActionSet; actions: Array): void =
   expandMethodBind(className OpenXRActionSet, "set_actions", 381264803)
+  nilCheck actions
   methodbind.ptrcall(self, [getPtr actions])
 
 proc getActions*(self: OpenXRActionSet): Array =
