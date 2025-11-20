@@ -15,4 +15,5 @@ binDir        = "bin"
 
 requires "nim >= 2.0.12"
 
-include "tasks.nims"
+when fileExists("tasks.nims"):
+  include "tasks.nims"
