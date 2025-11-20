@@ -1,16 +1,16 @@
 # constant values
 
-const Vector4i_Zero: Vector4i = vector4i(0, 0, 0, 0)
-template Zero*(_: typedesc[Vector4i]): Vector4i = Vector4i_Zero
+# const Vector4i_Zero: Vector4i = vector4i(0, 0, 0, 0)
+# template Zero*(_: typedesc[Vector4i]): Vector4i = Vector4i_Zero
 
-const Vector4i_One: Vector4i = vector4i(1, 1, 1, 1)
-template One*(_: typedesc[Vector4i]): Vector4i = Vector4i_One
+# const Vector4i_One: Vector4i = vector4i(1, 1, 1, 1)
+# template One*(_: typedesc[Vector4i]): Vector4i = Vector4i_One
 
-const Vector4i_Min: Vector4i = vector4i(-2147483648, -2147483648, -2147483648, -2147483648)
-template Min*(_: typedesc[Vector4i]): Vector4i = Vector4i_Min
+# const Vector4i_Min: Vector4i = vector4i(-2147483648, -2147483648, -2147483648, -2147483648)
+# template Min*(_: typedesc[Vector4i]): Vector4i = Vector4i_Min
 
-const Vector4i_Max: Vector4i = vector4i(2147483647, 2147483647, 2147483647, 2147483647)
-template Max*(_: typedesc[Vector4i]): Vector4i = Vector4i_Max
+# const Vector4i_Max: Vector4i = vector4i(2147483647, 2147483647, 2147483647, 2147483647)
+# template Max*(_: typedesc[Vector4i]): Vector4i = Vector4i_Max
 
 # `==(Vector4i Variant)`
 # `!=(Vector4i Variant)`

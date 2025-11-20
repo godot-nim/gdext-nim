@@ -1,16 +1,16 @@
 # constant values
 
-const Vector3i_Zero: Vector3i = vector3i(0, 0, 0)
-template Zero*(_: typedesc[Vector3i]): Vector3i = Vector3i_Zero
+# const Vector3i_Zero: Vector3i = vector3i(0, 0, 0)
+# template Zero*(_: typedesc[Vector3i]): Vector3i = Vector3i_Zero
 
-const Vector3i_One: Vector3i = vector3i(1, 1, 1)
-template One*(_: typedesc[Vector3i]): Vector3i = Vector3i_One
+# const Vector3i_One: Vector3i = vector3i(1, 1, 1)
+# template One*(_: typedesc[Vector3i]): Vector3i = Vector3i_One
 
-const Vector3i_Min: Vector3i = vector3i(-2147483648, -2147483648, -2147483648)
-template Min*(_: typedesc[Vector3i]): Vector3i = Vector3i_Min
+# const Vector3i_Min: Vector3i = vector3i(-2147483648, -2147483648, -2147483648)
+# template Min*(_: typedesc[Vector3i]): Vector3i = Vector3i_Min
 
-const Vector3i_Max: Vector3i = vector3i(2147483647, 2147483647, 2147483647)
-template Max*(_: typedesc[Vector3i]): Vector3i = Vector3i_Max
+# const Vector3i_Max: Vector3i = vector3i(2147483647, 2147483647, 2147483647)
+# template Max*(_: typedesc[Vector3i]): Vector3i = Vector3i_Max
 
 const Vector3i_Left: Vector3i = vector3i(-1, 0, 0)
 template Left*(_: typedesc[Vector3i]): Vector3i = Vector3i_Left

@@ -1,16 +1,16 @@
 # constant values
 
-const Vector2i_Zero: Vector2i = vector2i(0, 0)
-template Zero*(_: typedesc[Vector2i]): Vector2i = Vector2i_Zero
+# const Vector2i_Zero: Vector2i = vector2i(0, 0)
+# template Zero*(_: typedesc[Vector2i]): Vector2i = Vector2i_Zero
 
-const Vector2i_One: Vector2i = vector2i(1, 1)
-template One*(_: typedesc[Vector2i]): Vector2i = Vector2i_One
+# const Vector2i_One: Vector2i = vector2i(1, 1)
+# template One*(_: typedesc[Vector2i]): Vector2i = Vector2i_One
 
-const Vector2i_Min: Vector2i = vector2i(-2147483648, -2147483648)
-template Min*(_: typedesc[Vector2i]): Vector2i = Vector2i_Min
+# const Vector2i_Min: Vector2i = vector2i(-2147483648, -2147483648)
+# template Min*(_: typedesc[Vector2i]): Vector2i = Vector2i_Min
 
-const Vector2i_Max: Vector2i = vector2i(2147483647, 2147483647)
-template Max*(_: typedesc[Vector2i]): Vector2i = Vector2i_Max
+# const Vector2i_Max: Vector2i = vector2i(2147483647, 2147483647)
+# template Max*(_: typedesc[Vector2i]): Vector2i = Vector2i_Max
 
 const Vector2i_Left: Vector2i = vector2i(-1, 0)
 template Left*(_: typedesc[Vector2i]): Vector2i = Vector2i_Left
