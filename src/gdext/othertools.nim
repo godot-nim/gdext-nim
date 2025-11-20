@@ -2,6 +2,7 @@
 
 import gdext/private/gdinterface
 import gdext/private/staticevents
+import gdext/private/nilchecks
 import gdext/builtinindex
 
 import std/[hashes]

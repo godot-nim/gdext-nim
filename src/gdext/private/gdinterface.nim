@@ -56,6 +56,12 @@ proc head*[T](a: openArray[T]): ptr T =
   if a.len == 0: nil
   else: addr a[0]
 
+proc call*(f: PtrBuiltInMethod; self: pointer; args: openArray[pointer]; result: pointer = nil) {.inline.} =
+  f(self, args.head, result, cint args.len)
+
+proc call*(f: PtrBuiltInMethod; args: openArray[pointer]; result: pointer = nil) {.inline.} =
+  f(nil, args.head, result, cint args.len)
+
 const ErrorName: array[CallErrorType, string] = [
   "ok",
   "invalid method",
