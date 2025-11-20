@@ -1,13 +1,13 @@
 # constant values
 
-const Vector3_Zero: Vector3 = vector3(0, 0, 0)
-template Zero*(_: typedesc[Vector3]): Vector3 = Vector3_Zero
+# const Vector3_Zero: Vector3 = vector3(0, 0, 0)
+# template Zero*(_: typedesc[Vector3]): Vector3 = Vector3_Zero
 
-const Vector3_One: Vector3 = vector3(1, 1, 1)
-template One*(_: typedesc[Vector3]): Vector3 = Vector3_One
+# const Vector3_One: Vector3 = vector3(1, 1, 1)
+# template One*(_: typedesc[Vector3]): Vector3 = Vector3_One
 
-const Vector3_Inf: Vector3 = vector3(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
-template Inf*(_: typedesc[Vector3]): Vector3 = Vector3_Inf
+# const Vector3_Inf: Vector3 = vector3(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
+# template Inf*(_: typedesc[Vector3]): Vector3 = Vector3_Inf
 
 const Vector3_Left: Vector3 = vector3(-1, 0, 0)
 template Left*(_: typedesc[Vector3]): Vector3 = Vector3_Left

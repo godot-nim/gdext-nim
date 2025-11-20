@@ -1,13 +1,13 @@
 # constant values
 
-const Vector4_Zero: Vector4 = vector4(0, 0, 0, 0)
-template Zero*(_: typedesc[Vector4]): Vector4 = Vector4_Zero
+# const Vector4_Zero: Vector4 = vector4(0, 0, 0, 0)
+# template Zero*(_: typedesc[Vector4]): Vector4 = Vector4_Zero
 
-const Vector4_One: Vector4 = vector4(1, 1, 1, 1)
-template One*(_: typedesc[Vector4]): Vector4 = Vector4_One
+# const Vector4_One: Vector4 = vector4(1, 1, 1, 1)
+# template One*(_: typedesc[Vector4]): Vector4 = Vector4_One
 
-const Vector4_Inf: Vector4 = vector4(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
-template Inf*(_: typedesc[Vector4]): Vector4 = Vector4_Inf
+# const Vector4_Inf: Vector4 = vector4(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
+# template Inf*(_: typedesc[Vector4]): Vector4 = Vector4_Inf
 
 # `==(Vector4 Variant)`
 # `!=(Vector4 Variant)`
