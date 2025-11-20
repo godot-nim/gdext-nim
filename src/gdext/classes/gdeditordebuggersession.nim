@@ -8,10 +8,12 @@ expandOnClassImported(EditorDebuggerSession, RefCounted)
 
 proc sendMessage*(self: EditorDebuggerSession; message: String; data: Array = newArray()): void =
   expandMethodBind(className EditorDebuggerSession, "send_message", 85656714)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr message, getPtr data])
 
 proc toggleProfiler*(self: EditorDebuggerSession; profiler: String; enable: bool; data: Array = newArray()): void =
   expandMethodBind(className EditorDebuggerSession, "toggle_profiler", 1198443697)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr profiler, getPtr enable, getPtr data])
 
 proc isBreaked*(self: EditorDebuggerSession): bool =

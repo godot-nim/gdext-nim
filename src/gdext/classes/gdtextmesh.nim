@@ -168,6 +168,7 @@ proc getStructuredTextBidiOverride*(self: TextMesh): TextServer_StructuredTextPa
 
 proc setStructuredTextBidiOverrideOptions*(self: TextMesh; args: Array): void =
   expandMethodBind(className TextMesh, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: TextMesh): Array =

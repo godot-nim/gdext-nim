@@ -2,17 +2,11 @@ import gdext/private/gdinterface
 import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/macros
+import gdext/private/nilchecks
 import gdext/builtinindex
 import gdext/varianttools
 
 import std/[hashes, tables]
-
-template nilCheck*(self: Dictionary) =
-  if unlikely(cast[pointer](self) == nil):
-    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
-template nilCheck*(self: var Dictionary) =
-  if unlikely(cast[pointer](self) == nil):
-    self = newDictionary()
 
 proc `[]`*(self: Dictionary; key: Variant): Variant =
   cast[ptr Variant](interface_Dictionary_operatorIndexConst(addr self, addr key))[]

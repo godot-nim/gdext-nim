@@ -362,73 +362,57 @@ var `fromRgbe9995(Color Int)`: PtrBuiltinMethod
 var `fromRgba8(Color Int Int Int Int)`: PtrBuiltinMethod
 
 proc toArgb32*(self: Color): Int =
-  `toArgb32(Color)`(addr self, nil, addr result, 0)
+  `toArgb32(Color)`.call(addr self, [], addr result)
 proc toAbgr32*(self: Color): Int =
-  `toAbgr32(Color)`(addr self, nil, addr result, 0)
+  `toAbgr32(Color)`.call(addr self, [], addr result)
 proc toRgba32*(self: Color): Int =
-  `toRgba32(Color)`(addr self, nil, addr result, 0)
+  `toRgba32(Color)`.call(addr self, [], addr result)
 proc toArgb64*(self: Color): Int =
-  `toArgb64(Color)`(addr self, nil, addr result, 0)
+  `toArgb64(Color)`.call(addr self, [], addr result)
 proc toAbgr64*(self: Color): Int =
-  `toAbgr64(Color)`(addr self, nil, addr result, 0)
+  `toAbgr64(Color)`.call(addr self, [], addr result)
 proc toRgba64*(self: Color): Int =
-  `toRgba64(Color)`(addr self, nil, addr result, 0)
+  `toRgba64(Color)`.call(addr self, [], addr result)
 proc toHtml*(self: Color; withAlpha: bool = true): String =
-  let argArr = [getPtr withAlpha]
-  `toHtml(Color bool)`(addr self, addr argArr[0], addr result, 1)
+  `toHtml(Color bool)`.call(addr self, [getPtr withAlpha], addr result)
 proc clamp*(self: Color; min: Color = color(0, 0, 0, 0); max: Color = color(1, 1, 1, 1)): Color =
-  let argArr = [getPtr min, getPtr max]
-  `clamp(Color Color Color)`(addr self, addr argArr[0], addr result, 2)
+  `clamp(Color Color Color)`.call(addr self, [getPtr min, getPtr max], addr result)
 proc inverted*(self: Color): Color =
-  `inverted(Color)`(addr self, nil, addr result, 0)
+  `inverted(Color)`.call(addr self, [], addr result)
 proc lerp*(self: Color; to: Color; weight: Float): Color =
-  let argArr = [getPtr to, getPtr weight]
-  `lerp(Color Color Float)`(addr self, addr argArr[0], addr result, 2)
+  `lerp(Color Color Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc lightened*(self: Color; amount: Float): Color =
-  let argArr = [getPtr amount]
-  `lightened(Color Float)`(addr self, addr argArr[0], addr result, 1)
+  `lightened(Color Float)`.call(addr self, [getPtr amount], addr result)
 proc darkened*(self: Color; amount: Float): Color =
-  let argArr = [getPtr amount]
-  `darkened(Color Float)`(addr self, addr argArr[0], addr result, 1)
+  `darkened(Color Float)`.call(addr self, [getPtr amount], addr result)
 proc blend*(self: Color; over: Color): Color =
-  let argArr = [getPtr over]
-  `blend(Color Color)`(addr self, addr argArr[0], addr result, 1)
+  `blend(Color Color)`.call(addr self, [getPtr over], addr result)
 proc getLuminance*(self: Color): Float =
-  `getLuminance(Color)`(addr self, nil, addr result, 0)
+  `getLuminance(Color)`.call(addr self, [], addr result)
 proc srgbToLinear*(self: Color): Color =
-  `srgbToLinear(Color)`(addr self, nil, addr result, 0)
+  `srgbToLinear(Color)`.call(addr self, [], addr result)
 proc linearToSrgb*(self: Color): Color =
-  `linearToSrgb(Color)`(addr self, nil, addr result, 0)
+  `linearToSrgb(Color)`.call(addr self, [], addr result)
 proc isEqualApprox*(self: Color; to: Color): bool =
-  let argArr = [getPtr to]
-  `isEqualApprox(Color Color)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Color Color)`.call(addr self, [getPtr to], addr result)
 proc hex*(_: typedesc[Color]; hex: Int): Color =
-  let argArr = [getPtr hex]
-  `hex(Color Int)`(nil, addr argArr[0], addr result, 1)
+  `hex(Color Int)`.call([getPtr hex], addr result)
 proc hex64*(_: typedesc[Color]; hex: Int): Color =
-  let argArr = [getPtr hex]
-  `hex64(Color Int)`(nil, addr argArr[0], addr result, 1)
+  `hex64(Color Int)`.call([getPtr hex], addr result)
 proc html*(_: typedesc[Color]; rgba: String): Color =
-  let argArr = [getPtr rgba]
-  `html(Color String)`(nil, addr argArr[0], addr result, 1)
+  `html(Color String)`.call([getPtr rgba], addr result)
 proc htmlIsValid*(_: typedesc[Color]; color: String): bool =
-  let argArr = [getPtr color]
-  `htmlIsValid(Color String)`(nil, addr argArr[0], addr result, 1)
+  `htmlIsValid(Color String)`.call([getPtr color], addr result)
 proc fromString*(_: typedesc[Color]; str: String; default: Color): Color =
-  let argArr = [getPtr str, getPtr default]
-  `fromString(Color String Color)`(nil, addr argArr[0], addr result, 2)
+  `fromString(Color String Color)`.call([getPtr str, getPtr default], addr result)
 proc fromHsv*(_: typedesc[Color]; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color =
-  let argArr = [getPtr h, getPtr s, getPtr v, getPtr alpha]
-  `fromHsv(Color Float Float Float Float)`(nil, addr argArr[0], addr result, 4)
+  `fromHsv(Color Float Float Float Float)`.call([getPtr h, getPtr s, getPtr v, getPtr alpha], addr result)
 proc fromOkHsl*(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color =
-  let argArr = [getPtr h, getPtr s, getPtr l, getPtr alpha]
-  `fromOkHsl(Color Float Float Float Float)`(nil, addr argArr[0], addr result, 4)
+  `fromOkHsl(Color Float Float Float Float)`.call([getPtr h, getPtr s, getPtr l, getPtr alpha], addr result)
 proc fromRgbe9995*(_: typedesc[Color]; rgbe: Int): Color =
-  let argArr = [getPtr rgbe]
-  `fromRgbe9995(Color Int)`(nil, addr argArr[0], addr result, 1)
+  `fromRgbe9995(Color Int)`.call([getPtr rgbe], addr result)
 proc fromRgba8*(_: typedesc[Color]; r8: Int; g8: Int; b8: Int; a8: Int = 255): Color =
-  let argArr = [getPtr r8, getPtr g8, getPtr b8, getPtr a8]
-  `fromRgba8(Color Int Int Int Int)`(nil, addr argArr[0], addr result, 4)
+  `fromRgba8(Color Int Int Int Int)`.call([getPtr r8, getPtr g8, getPtr b8, getPtr a8], addr result)
 
 proc load_Color_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `toArgb32(Color)` = load(VariantType_Color, "to_argb32", 3173160232)

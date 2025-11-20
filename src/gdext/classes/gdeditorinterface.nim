@@ -60,6 +60,7 @@ proc getEditorUndoRedo*(self: EditorInterface): EditorUndoRedoManager =
 
 proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[gdref Mesh]; previewSize: int32): TypedArray[gdref Texture2D] =
   expandMethodBind(className EditorInterface, "make_mesh_previews", 878078554)
+  nilCheck meshes
   var ret: encoded TypedArray[gdref Texture2D]
   methodbind.ptrcall(self, [getPtr meshes, getPtr previewSize], addr ret)
   (addr ret).decode_result(TypedArray[gdref Texture2D])
@@ -164,6 +165,7 @@ proc setCurrentFeatureProfile*(self: EditorInterface; profileName: String): void
 
 proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = newTypedArray[StringName](); currentValue: Node = default Node): void =
   expandMethodBind(className EditorInterface, "popup_node_selector", 2444591477)
+  nilCheck validTypes
   methodbind.ptrcall(self, [getPtr callback, getPtr validTypes, getPtr currentValue])
 
 proc popupPropertySelector*(self: EditorInterface; `object`: Object; callback: Callable; typeFilter: PackedInt32Array = PackedInt32Array(); currentValue: String = newGdString()): void =
@@ -176,10 +178,12 @@ proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Cal
 
 proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_quick_open", 2271411043)
+  nilCheck baseTypes
   methodbind.ptrcall(self, [getPtr callback, getPtr baseTypes])
 
 proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = newGdString(); dialogTitle: String = newGdString(); typeBlocklist: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_create_dialog", 495277124)
+  nilCheck typeBlocklist
   methodbind.ptrcall(self, [getPtr callback, getPtr baseType, getPtr currentType, getPtr dialogTitle, getPtr typeBlocklist])
 
 proc getFileSystemDock*(self: EditorInterface): FileSystemDock =

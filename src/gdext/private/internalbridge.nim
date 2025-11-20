@@ -10,10 +10,10 @@ import gdext/private/debugging
 import gdext/private/classindex
 import gdext/private/internalobjecttools
 import gdext/private/userclass/procs
+import gdext/private/nilchecks
 import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances
-import gdext/stringtools
 import gdext/nameformats
 
 from gdext/classes/gdNode import NotificationReady, rpc_config
@@ -208,7 +208,7 @@ proc gdexport_internal*(
     appearance: Appearance;
     description: string) =
   gdexport_internal(
-    propertyInfo(newStringName name, proptyp, appearance),
+    propertyInfo(newStringNameInternal name, proptyp, appearance),
     className typ, getter, setter)
   when Assistance.genEditorHelp:
     docClassDB[typ].members.add DocMember(

@@ -153,12 +153,16 @@ proc createStatusFile*(self: EditorVCSInterface; filePath: String; changeType: E
 
 proc addDiffHunksIntoDiffFile*(self: EditorVCSInterface; diffFile: Dictionary; diffHunks: TypedArray[Dictionary]): Dictionary =
   expandMethodBind(className EditorVCSInterface, "add_diff_hunks_into_diff_file", 4015243225)
+  nilCheck diffFile
+  nilCheck diffHunks
   var ret: encoded Dictionary
   methodbind.ptrcall(self, [getPtr diffFile, getPtr diffHunks], addr ret)
   (addr ret).decode_result(Dictionary)
 
 proc addLineDiffsIntoDiffHunk*(self: EditorVCSInterface; diffHunk: Dictionary; lineDiffs: TypedArray[Dictionary]): Dictionary =
   expandMethodBind(className EditorVCSInterface, "add_line_diffs_into_diff_hunk", 4015243225)
+  nilCheck diffHunk
+  nilCheck lineDiffs
   var ret: encoded Dictionary
   methodbind.ptrcall(self, [getPtr diffHunk, getPtr lineDiffs], addr ret)
   (addr ret).decode_result(Dictionary)

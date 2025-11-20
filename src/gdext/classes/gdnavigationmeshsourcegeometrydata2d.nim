@@ -18,6 +18,7 @@ proc hasData*(self: NavigationMeshSourceGeometryData2D): bool =
 
 proc setTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: TypedArray[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_traversable_outlines", 381264803)
+  nilCheck traversableOutlines
   methodbind.ptrcall(self, [getPtr traversableOutlines])
 
 proc getTraversableOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArray[PackedVector2Array] =
@@ -28,6 +29,7 @@ proc getTraversableOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArr
 
 proc setObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: TypedArray[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_obstruction_outlines", 381264803)
+  nilCheck obstructionOutlines
   methodbind.ptrcall(self, [getPtr obstructionOutlines])
 
 proc getObstructionOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArray[PackedVector2Array] =
@@ -38,10 +40,12 @@ proc getObstructionOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArr
 
 proc appendTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: TypedArray[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "append_traversable_outlines", 381264803)
+  nilCheck traversableOutlines
   methodbind.ptrcall(self, [getPtr traversableOutlines])
 
 proc appendObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: TypedArray[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "append_obstruction_outlines", 381264803)
+  nilCheck obstructionOutlines
   methodbind.ptrcall(self, [getPtr obstructionOutlines])
 
 proc addTraversableOutline*(self: NavigationMeshSourceGeometryData2D; shapeOutline: PackedVector2Array): void =
@@ -66,6 +70,7 @@ proc clearProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): void
 
 proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData2D; projectedObstructions: Array): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_projected_obstructions", 381264803)
+  nilCheck projectedObstructions
   methodbind.ptrcall(self, [getPtr projectedObstructions])
 
 proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): Array =

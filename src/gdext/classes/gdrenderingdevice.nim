@@ -11,6 +11,7 @@ const InvalidFormatId* = -1
 
 proc textureCreate*(self: RenderingDevice; format: gdref RDTextureFormat; view: gdref RDTextureView; data: TypedArray[PackedByteArray] = newTypedArray[PackedByteArray]()): RID =
   expandMethodBind(className RenderingDevice, "texture_create", 3709173589)
+  nilCheck data
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr format, getPtr view, getPtr data], addr ret)
   (addr ret).decode_result(RID)
@@ -111,12 +112,15 @@ proc textureGetNativeHandle*(self: RenderingDevice; texture: RID): uint64 =
 
 proc framebufferFormatCreate*(self: RenderingDevice; attachments: TypedArray[gdref RDAttachmentFormat]; viewCount: uint32 = 1'u32): int64 =
   expandMethodBind(className RenderingDevice, "framebuffer_format_create", 697032759)
+  nilCheck attachments
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr attachments, getPtr viewCount], addr ret)
   (addr ret).decode_result(int64)
 
 proc framebufferFormatCreateMultipass*(self: RenderingDevice; attachments: TypedArray[gdref RDAttachmentFormat]; passes: TypedArray[gdref RDFramebufferPass]; viewCount: uint32 = 1'u32): int64 =
   expandMethodBind(className RenderingDevice, "framebuffer_format_create_multipass", 2647479094)
+  nilCheck attachments
+  nilCheck passes
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr attachments, getPtr passes, getPtr viewCount], addr ret)
   (addr ret).decode_result(int64)
@@ -135,12 +139,15 @@ proc framebufferFormatGetTextureSamples*(self: RenderingDevice; format: int64; r
 
 proc framebufferCreate*(self: RenderingDevice; textures: TypedArray[RID]; validateWithFormat: int64 = -1; viewCount: uint32 = 1'u32): RID =
   expandMethodBind(className RenderingDevice, "framebuffer_create", 3284231055)
+  nilCheck textures
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr textures, getPtr validateWithFormat, getPtr viewCount], addr ret)
   (addr ret).decode_result(RID)
 
 proc framebufferCreateMultipass*(self: RenderingDevice; textures: TypedArray[RID]; passes: TypedArray[gdref RDFramebufferPass]; validateWithFormat: int64 = -1; viewCount: uint32 = 1'u32): RID =
   expandMethodBind(className RenderingDevice, "framebuffer_create_multipass", 1750306695)
+  nilCheck textures
+  nilCheck passes
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr textures, getPtr passes, getPtr validateWithFormat, getPtr viewCount], addr ret)
   (addr ret).decode_result(RID)
@@ -183,12 +190,14 @@ proc vertexBufferCreate*(self: RenderingDevice; sizeBytes: uint32; data: PackedB
 
 proc vertexFormatCreate*(self: RenderingDevice; vertexDescriptions: TypedArray[gdref RDVertexAttribute]): int64 =
   expandMethodBind(className RenderingDevice, "vertex_format_create", 1242678479)
+  nilCheck vertexDescriptions
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr vertexDescriptions], addr ret)
   (addr ret).decode_result(int64)
 
 proc vertexArrayCreate*(self: RenderingDevice; vertexCount: uint32; vertexFormat: int64; srcBuffers: TypedArray[RID]; offsets: PackedInt64Array = PackedInt64Array()): RID =
   expandMethodBind(className RenderingDevice, "vertex_array_create", 3799816279)
+  nilCheck srcBuffers
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr vertexCount, getPtr vertexFormat, getPtr srcBuffers, getPtr offsets], addr ret)
   (addr ret).decode_result(RID)
@@ -261,6 +270,7 @@ proc textureBufferCreate*(self: RenderingDevice; sizeBytes: uint32; format: Rend
 
 proc uniformSetCreate*(self: RenderingDevice; uniforms: TypedArray[gdref RDUniform]; shader: RID; shaderSet: uint32): RID =
   expandMethodBind(className RenderingDevice, "uniform_set_create", 2280795797)
+  nilCheck uniforms
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr uniforms, getPtr shader, getPtr shaderSet], addr ret)
   (addr ret).decode_result(RID)
@@ -309,6 +319,7 @@ proc bufferGetDeviceAddress*(self: RenderingDevice; buffer: RID): uint64 =
 
 proc renderPipelineCreate*(self: RenderingDevice; shader: RID; framebufferFormat: int64; vertexFormat: int64; primitive: RenderingDevice_RenderPrimitive; rasterizationState: gdref RDPipelineRasterizationState; multisampleState: gdref RDPipelineMultisampleState; stencilState: gdref RDPipelineDepthStencilState; colorBlendState: gdref RDPipelineColorBlendState; dynamicStateFlags: set[RenderingDevice_PipelineDynamicStateFlags] = {}; forRenderPass: uint32 = 0'u32; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = newTypedArray[gdref RDPipelineSpecializationConstant]()): RID =
   expandMethodBind(className RenderingDevice, "render_pipeline_create", 2385451958)
+  nilCheck specializationConstants
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr shader, getPtr framebufferFormat, getPtr vertexFormat, getPtr primitive, getPtr rasterizationState, getPtr multisampleState, getPtr stencilState, getPtr colorBlendState, getPtr dynamicStateFlags, getPtr forRenderPass, getPtr specializationConstants], addr ret)
   (addr ret).decode_result(RID)
@@ -321,6 +332,7 @@ proc renderPipelineIsValid*(self: RenderingDevice; renderPipeline: RID): bool =
 
 proc computePipelineCreate*(self: RenderingDevice; shader: RID; specializationConstants: TypedArray[gdref RDPipelineSpecializationConstant] = newTypedArray[gdref RDPipelineSpecializationConstant]()): RID =
   expandMethodBind(className RenderingDevice, "compute_pipeline_create", 1448838280)
+  nilCheck specializationConstants
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr shader, getPtr specializationConstants], addr ret)
   (addr ret).decode_result(RID)
@@ -363,6 +375,7 @@ proc drawListBegin*(self: RenderingDevice; framebuffer: RID; drawFlags: set[Rend
 
 proc drawListBeginSplit*(self: RenderingDevice; framebuffer: RID; splits: uint32; initialColorAction: RenderingDevice_InitialAction; finalColorAction: RenderingDevice_FinalAction; initialDepthAction: RenderingDevice_InitialAction; finalDepthAction: RenderingDevice_FinalAction; clearColorValues: PackedColorArray = PackedColorArray(); clearDepth: Float = 1.0; clearStencil: uint32 = 0'u32; region: Rect2 = rect2(0, 0, 0, 0); storageTextures: TypedArray[RID] = newTypedArray[RID]()): PackedInt64Array =
   expandMethodBind(className RenderingDevice, "draw_list_begin_split", 2406300660)
+  nilCheck storageTextures
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr framebuffer, getPtr splits, getPtr initialColorAction, getPtr finalColorAction, getPtr initialDepthAction, getPtr finalDepthAction, getPtr clearColorValues, getPtr clearDepth, getPtr clearStencil, getPtr region, getPtr storageTextures], addr ret)
   (addr ret).decode_result(PackedInt64Array)

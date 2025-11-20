@@ -94,6 +94,7 @@ proc getFormats*(self: CameraFeed): Array =
 
 proc setFormat*(self: CameraFeed; index: int32; parameters: Dictionary): bool =
   expandMethodBind(className CameraFeed, "set_format", 31872775)
+  nilCheck parameters
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr index, getPtr parameters], addr ret)
   (addr ret).decode_result(bool)

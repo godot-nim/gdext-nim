@@ -68,6 +68,7 @@ proc getStructuredTextBidiOverride*(self: LinkButton): TextServer_StructuredText
 
 proc setStructuredTextBidiOverrideOptions*(self: LinkButton; args: Array): void =
   expandMethodBind(className LinkButton, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: LinkButton): Array =

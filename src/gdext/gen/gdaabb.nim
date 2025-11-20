@@ -39,68 +39,55 @@ var `intersectsSegment(AABB Vector3 Vector3)`: PtrBuiltinMethod
 var `intersectsRay(AABB Vector3 Vector3)`: PtrBuiltinMethod
 
 proc abs*(self: AABB): AABB =
-  `abs(AABB)`(addr self, nil, addr result, 0)
+  `abs(AABB)`.call(addr self, [], addr result)
 proc getCenter*(self: AABB): Vector3 =
-  `getCenter(AABB)`(addr self, nil, addr result, 0)
+  `getCenter(AABB)`.call(addr self, [], addr result)
 proc getVolume*(self: AABB): Float =
-  `getVolume(AABB)`(addr self, nil, addr result, 0)
+  `getVolume(AABB)`.call(addr self, [], addr result)
 proc hasVolume*(self: AABB): bool =
-  `hasVolume(AABB)`(addr self, nil, addr result, 0)
+  `hasVolume(AABB)`.call(addr self, [], addr result)
 proc hasSurface*(self: AABB): bool =
-  `hasSurface(AABB)`(addr self, nil, addr result, 0)
+  `hasSurface(AABB)`.call(addr self, [], addr result)
 proc hasPoint*(self: AABB; point: Vector3): bool =
-  let argArr = [getPtr point]
-  `hasPoint(AABB Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `hasPoint(AABB Vector3)`.call(addr self, [getPtr point], addr result)
 proc isEqualApprox*(self: AABB; aabb: AABB): bool =
-  let argArr = [getPtr aabb]
-  `isEqualApprox(AABB AABB)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(AABB AABB)`.call(addr self, [getPtr aabb], addr result)
 proc isFinite*(self: AABB): bool =
-  `isFinite(AABB)`(addr self, nil, addr result, 0)
+  `isFinite(AABB)`.call(addr self, [], addr result)
 proc intersects*(self: AABB; with: AABB): bool =
-  let argArr = [getPtr with]
-  `intersects(AABB AABB)`(addr self, addr argArr[0], addr result, 1)
+  `intersects(AABB AABB)`.call(addr self, [getPtr with], addr result)
 proc encloses*(self: AABB; with: AABB): bool =
-  let argArr = [getPtr with]
-  `encloses(AABB AABB)`(addr self, addr argArr[0], addr result, 1)
+  `encloses(AABB AABB)`.call(addr self, [getPtr with], addr result)
 proc intersectsPlane*(self: AABB; plane: Plane): bool =
-  let argArr = [getPtr plane]
-  `intersectsPlane(AABB Plane)`(addr self, addr argArr[0], addr result, 1)
+  `intersectsPlane(AABB Plane)`.call(addr self, [getPtr plane], addr result)
 proc intersection*(self: AABB; with: AABB): AABB =
-  let argArr = [getPtr with]
-  `intersection(AABB AABB)`(addr self, addr argArr[0], addr result, 1)
+  `intersection(AABB AABB)`.call(addr self, [getPtr with], addr result)
 proc merge*(self: AABB; with: AABB): AABB =
-  let argArr = [getPtr with]
-  `merge(AABB AABB)`(addr self, addr argArr[0], addr result, 1)
+  `merge(AABB AABB)`.call(addr self, [getPtr with], addr result)
 proc expand*(self: AABB; toPoint: Vector3): AABB =
-  let argArr = [getPtr toPoint]
-  `expand(AABB Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `expand(AABB Vector3)`.call(addr self, [getPtr toPoint], addr result)
 proc grow*(self: AABB; by: Float): AABB =
-  let argArr = [getPtr by]
-  `grow(AABB Float)`(addr self, addr argArr[0], addr result, 1)
+  `grow(AABB Float)`.call(addr self, [getPtr by], addr result)
 proc getSupport*(self: AABB; direction: Vector3): Vector3 =
-  let argArr = [getPtr direction]
-  `getSupport(AABB Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `getSupport(AABB Vector3)`.call(addr self, [getPtr direction], addr result)
 proc getLongestAxis*(self: AABB): Vector3 =
-  `getLongestAxis(AABB)`(addr self, nil, addr result, 0)
+  `getLongestAxis(AABB)`.call(addr self, [], addr result)
 proc getLongestAxisIndex*(self: AABB): Int =
-  `getLongestAxisIndex(AABB)`(addr self, nil, addr result, 0)
+  `getLongestAxisIndex(AABB)`.call(addr self, [], addr result)
 proc getLongestAxisSize*(self: AABB): Float =
-  `getLongestAxisSize(AABB)`(addr self, nil, addr result, 0)
+  `getLongestAxisSize(AABB)`.call(addr self, [], addr result)
 proc getShortestAxis*(self: AABB): Vector3 =
-  `getShortestAxis(AABB)`(addr self, nil, addr result, 0)
+  `getShortestAxis(AABB)`.call(addr self, [], addr result)
 proc getShortestAxisIndex*(self: AABB): Int =
-  `getShortestAxisIndex(AABB)`(addr self, nil, addr result, 0)
+  `getShortestAxisIndex(AABB)`.call(addr self, [], addr result)
 proc getShortestAxisSize*(self: AABB): Float =
-  `getShortestAxisSize(AABB)`(addr self, nil, addr result, 0)
+  `getShortestAxisSize(AABB)`.call(addr self, [], addr result)
 proc getEndpoint*(self: AABB; idx: Int): Vector3 =
-  let argArr = [getPtr idx]
-  `getEndpoint(AABB Int)`(addr self, addr argArr[0], addr result, 1)
+  `getEndpoint(AABB Int)`.call(addr self, [getPtr idx], addr result)
 proc intersectsSegment*(self: AABB; `from`: Vector3; to: Vector3): Variant =
-  let argArr = [getPtr `from`, getPtr to]
-  `intersectsSegment(AABB Vector3 Vector3)`(addr self, addr argArr[0], addr result, 2)
+  `intersectsSegment(AABB Vector3 Vector3)`.call(addr self, [getPtr `from`, getPtr to], addr result)
 proc intersectsRay*(self: AABB; `from`: Vector3; dir: Vector3): Variant =
-  let argArr = [getPtr `from`, getPtr dir]
-  `intersectsRay(AABB Vector3 Vector3)`(addr self, addr argArr[0], addr result, 2)
+  `intersectsRay(AABB Vector3 Vector3)`.call(addr self, [getPtr `from`, getPtr dir], addr result)
 
 proc load_AABB_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `abs(AABB)` = load(VariantType_AABB, "abs", 1576868580)

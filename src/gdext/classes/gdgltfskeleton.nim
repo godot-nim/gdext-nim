@@ -40,6 +40,7 @@ proc getUniqueNames*(self: GLTFSkeleton): TypedArray[String] =
 
 proc setUniqueNames*(self: GLTFSkeleton; uniqueNames: TypedArray[String]): void =
   expandMethodBind(className GLTFSkeleton, "set_unique_names", 381264803)
+  nilCheck uniqueNames
   methodbind.ptrcall(self, [getPtr uniqueNames])
 
 proc getGodotBoneNode*(self: GLTFSkeleton): Dictionary =
@@ -50,6 +51,7 @@ proc getGodotBoneNode*(self: GLTFSkeleton): Dictionary =
 
 proc setGodotBoneNode*(self: GLTFSkeleton; godotBoneNode: Dictionary): void =
   expandMethodBind(className GLTFSkeleton, "set_godot_bone_node", 4155329257)
+  nilCheck godotBoneNode
   methodbind.ptrcall(self, [getPtr godotBoneNode])
 
 proc getBoneAttachmentCount*(self: GLTFSkeleton): int32 =

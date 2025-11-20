@@ -28,6 +28,7 @@ proc getCollisionMask*(self: PhysicsPointQueryParameters3D): uint32 =
 
 proc setExclude*(self: PhysicsPointQueryParameters3D; exclude: TypedArray[RID]): void =
   expandMethodBind(className PhysicsPointQueryParameters3D, "set_exclude", 381264803)
+  nilCheck exclude
   methodbind.ptrcall(self, [getPtr exclude])
 
 proc getExclude*(self: PhysicsPointQueryParameters3D): TypedArray[RID] =

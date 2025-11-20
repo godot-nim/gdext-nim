@@ -24,40 +24,31 @@ var `growIndividual(Rect2i Int Int Int Int)`: PtrBuiltinMethod
 var `abs(Rect2i)`: PtrBuiltinMethod
 
 proc getCenter*(self: Rect2i): Vector2i =
-  `getCenter(Rect2i)`(addr self, nil, addr result, 0)
+  `getCenter(Rect2i)`.call(addr self, [], addr result)
 proc getArea*(self: Rect2i): Int =
-  `getArea(Rect2i)`(addr self, nil, addr result, 0)
+  `getArea(Rect2i)`.call(addr self, [], addr result)
 proc hasArea*(self: Rect2i): bool =
-  `hasArea(Rect2i)`(addr self, nil, addr result, 0)
+  `hasArea(Rect2i)`.call(addr self, [], addr result)
 proc hasPoint*(self: Rect2i; point: Vector2i): bool =
-  let argArr = [getPtr point]
-  `hasPoint(Rect2i Vector2i)`(addr self, addr argArr[0], addr result, 1)
+  `hasPoint(Rect2i Vector2i)`.call(addr self, [getPtr point], addr result)
 proc intersects*(self: Rect2i; b: Rect2i): bool =
-  let argArr = [getPtr b]
-  `intersects(Rect2i Rect2i)`(addr self, addr argArr[0], addr result, 1)
+  `intersects(Rect2i Rect2i)`.call(addr self, [getPtr b], addr result)
 proc encloses*(self: Rect2i; b: Rect2i): bool =
-  let argArr = [getPtr b]
-  `encloses(Rect2i Rect2i)`(addr self, addr argArr[0], addr result, 1)
+  `encloses(Rect2i Rect2i)`.call(addr self, [getPtr b], addr result)
 proc intersection*(self: Rect2i; b: Rect2i): Rect2i =
-  let argArr = [getPtr b]
-  `intersection(Rect2i Rect2i)`(addr self, addr argArr[0], addr result, 1)
+  `intersection(Rect2i Rect2i)`.call(addr self, [getPtr b], addr result)
 proc merge*(self: Rect2i; b: Rect2i): Rect2i =
-  let argArr = [getPtr b]
-  `merge(Rect2i Rect2i)`(addr self, addr argArr[0], addr result, 1)
+  `merge(Rect2i Rect2i)`.call(addr self, [getPtr b], addr result)
 proc expand*(self: Rect2i; to: Vector2i): Rect2i =
-  let argArr = [getPtr to]
-  `expand(Rect2i Vector2i)`(addr self, addr argArr[0], addr result, 1)
+  `expand(Rect2i Vector2i)`.call(addr self, [getPtr to], addr result)
 proc grow*(self: Rect2i; amount: Int): Rect2i =
-  let argArr = [getPtr amount]
-  `grow(Rect2i Int)`(addr self, addr argArr[0], addr result, 1)
+  `grow(Rect2i Int)`.call(addr self, [getPtr amount], addr result)
 proc growSide*(self: Rect2i; side: Int; amount: Int): Rect2i =
-  let argArr = [getPtr side, getPtr amount]
-  `growSide(Rect2i Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `growSide(Rect2i Int Int)`.call(addr self, [getPtr side, getPtr amount], addr result)
 proc growIndividual*(self: Rect2i; left: Int; top: Int; right: Int; bottom: Int): Rect2i =
-  let argArr = [getPtr left, getPtr top, getPtr right, getPtr bottom]
-  `growIndividual(Rect2i Int Int Int Int)`(addr self, addr argArr[0], addr result, 4)
+  `growIndividual(Rect2i Int Int Int Int)`.call(addr self, [getPtr left, getPtr top, getPtr right, getPtr bottom], addr result)
 proc abs*(self: Rect2i): Rect2i =
-  `abs(Rect2i)`(addr self, nil, addr result, 0)
+  `abs(Rect2i)`.call(addr self, [], addr result)
 
 proc load_Rect2i_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `getCenter(Rect2i)` = load(VariantType_Rect2i, "get_center", 3444277866)

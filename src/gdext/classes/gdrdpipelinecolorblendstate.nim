@@ -38,6 +38,7 @@ proc getBlendConstant*(self: RDPipelineColorBlendState): Color =
 
 proc setAttachments*(self: RDPipelineColorBlendState; attachments: TypedArray[gdref RDPipelineColorBlendStateAttachment]): void =
   expandMethodBind(className RDPipelineColorBlendState, "set_attachments", 381264803)
+  nilCheck attachments
   methodbind.ptrcall(self, [getPtr attachments])
 
 proc getAttachments*(self: RDPipelineColorBlendState): TypedArray[gdref RDPipelineColorBlendStateAttachment] =

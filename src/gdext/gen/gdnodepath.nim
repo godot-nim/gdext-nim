@@ -24,30 +24,27 @@ var `getAsPropertyPath(NodePath)`: PtrBuiltinMethod
 var `isEmpty(NodePath)`: PtrBuiltinMethod
 
 proc isAbsolute*(self: NodePath): bool =
-  `isAbsolute(NodePath)`(addr self, nil, addr result, 0)
+  `isAbsolute(NodePath)`.call(addr self, [], addr result)
 proc getNameCount*(self: NodePath): Int =
-  `getNameCount(NodePath)`(addr self, nil, addr result, 0)
+  `getNameCount(NodePath)`.call(addr self, [], addr result)
 proc getName*(self: NodePath; idx: Int): StringName =
-  let argArr = [getPtr idx]
-  `getName(NodePath Int)`(addr self, addr argArr[0], addr result, 1)
+  `getName(NodePath Int)`.call(addr self, [getPtr idx], addr result)
 proc getSubnameCount*(self: NodePath): Int =
-  `getSubnameCount(NodePath)`(addr self, nil, addr result, 0)
+  `getSubnameCount(NodePath)`.call(addr self, [], addr result)
 proc hash*(self: NodePath): Hash =
-  `hash(NodePath)`(addr self, nil, addr result, 0)
+  `hash(NodePath)`.call(addr self, [], addr result)
 proc getSubname*(self: NodePath; idx: Int): StringName =
-  let argArr = [getPtr idx]
-  `getSubname(NodePath Int)`(addr self, addr argArr[0], addr result, 1)
+  `getSubname(NodePath Int)`.call(addr self, [getPtr idx], addr result)
 proc getConcatenatedNames*(self: NodePath): StringName =
-  `getConcatenatedNames(NodePath)`(addr self, nil, addr result, 0)
+  `getConcatenatedNames(NodePath)`.call(addr self, [], addr result)
 proc getConcatenatedSubnames*(self: NodePath): StringName =
-  `getConcatenatedSubnames(NodePath)`(addr self, nil, addr result, 0)
+  `getConcatenatedSubnames(NodePath)`.call(addr self, [], addr result)
 proc slice*(self: NodePath; begin: Int; `end`: Int = 2147483647): NodePath =
-  let argArr = [getPtr begin, getPtr `end`]
-  `slice(NodePath Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `slice(NodePath Int Int)`.call(addr self, [getPtr begin, getPtr `end`], addr result)
 proc getAsPropertyPath*(self: NodePath): NodePath =
-  `getAsPropertyPath(NodePath)`(addr self, nil, addr result, 0)
+  `getAsPropertyPath(NodePath)`.call(addr self, [], addr result)
 proc isEmpty*(self: NodePath): bool =
-  `isEmpty(NodePath)`(addr self, nil, addr result, 0)
+  `isEmpty(NodePath)`.call(addr self, [], addr result)
 
 proc load_NodePath_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `isAbsolute(NodePath)` = load(VariantType_NodePath, "is_absolute", 3918633141)

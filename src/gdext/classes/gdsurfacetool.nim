@@ -72,6 +72,7 @@ proc setSmoothGroup*(self: SurfaceTool; index: uint32): void =
 
 proc addTriangleFan*(self: SurfaceTool; vertices: PackedVector3Array; uvs: PackedVector2Array = PackedVector2Array(); colors: PackedColorArray = PackedColorArray(); uv2s: PackedVector2Array = PackedVector2Array(); normals: PackedVector3Array = PackedVector3Array(); tangents: TypedArray[Plane] = newTypedArray[Plane]()): void =
   expandMethodBind(className SurfaceTool, "add_triangle_fan", 2235017613)
+  nilCheck tangents
   methodbind.ptrcall(self, [getPtr vertices, getPtr uvs, getPtr colors, getPtr uv2s, getPtr normals, getPtr tangents])
 
 proc addIndex*(self: SurfaceTool; index: int32): void =
@@ -130,6 +131,7 @@ proc createFrom*(self: SurfaceTool; existing: gdref Mesh; surface: int32): void 
 
 proc createFromArrays*(self: SurfaceTool; arrays: Array; primitiveType: Mesh_PrimitiveType = primitiveTriangles): void =
   expandMethodBind(className SurfaceTool, "create_from_arrays", 1894639680)
+  nilCheck arrays
   methodbind.ptrcall(self, [getPtr arrays, getPtr primitiveType])
 
 proc createFromBlendShape*(self: SurfaceTool; existing: gdref Mesh; surface: int32; blendShape: String): void =

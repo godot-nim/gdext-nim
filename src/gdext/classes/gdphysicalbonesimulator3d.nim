@@ -18,6 +18,7 @@ proc physicalBonesStopSimulation*(self: PhysicalBoneSimulator3D): void =
 
 proc physicalBonesStartSimulation*(self: PhysicalBoneSimulator3D; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
   expandMethodBind(className PhysicalBoneSimulator3D, "physical_bones_start_simulation", 2787316981)
+  nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])
 
 proc physicalBonesAddCollisionException*(self: PhysicalBoneSimulator3D; exception: RID): void =

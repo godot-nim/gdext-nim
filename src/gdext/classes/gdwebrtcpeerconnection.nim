@@ -12,12 +12,14 @@ proc setDefaultExtension*(_: typedesc[WebRTCPeerConnection]; extensionClass: Str
 
 proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary = newDictionary()): Error =
   expandMethodBind(className WebRTCPeerConnection, "initialize", 2625064318)
+  nilCheck configuration
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr configuration], addr ret)
   (addr ret).decode_result(Error)
 
 proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary = newDictionary()): gdref WebRTCDataChannel =
   expandMethodBind(className WebRTCPeerConnection, "create_data_channel", 1288557393)
+  nilCheck options
   var ret: encoded gdref WebRTCDataChannel
   methodbind.ptrcall(self, [getPtr label, getPtr options], addr ret)
   (addr ret).decode_result(gdref WebRTCDataChannel)

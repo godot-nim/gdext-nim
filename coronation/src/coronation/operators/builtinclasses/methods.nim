@@ -15,11 +15,6 @@ import std/strutils
 import std/sequtils
 import std/sets
 
-const NilUnsafe = [
-  TypeSym"Array",
-  TypeSym"Dictionary",
-]
-
 type
   BuiltinClassMethodEntry* = ref object of GodotProc
     containerKey: ContainerKey
@@ -62,49 +57,34 @@ proc weave_loadstmt*(entry: BuiltinClassMethodEntry): Cloth =
   &"{entry.containerKey} = load({variantType entry.self.typesym}, \"{entry.native_name}\", {get entry.hash})"
 
 proc weave_procdef*(entry: BuiltinClassMethodEntry): Cloth =
-  let p_self = case entry.self.isStatic
-  of false: &"addr {entry.self.name}"
-  of true: "nil"
-  let p_result =
-    if entry.result.typeSym == TypeSym.Void: "nil"
-    else: "addr result"
+  var args: seq[string]
 
-  let nonvarargs=
-    if entry.isVarargs: entry.args[0..^2]
-    else: entry.args
-  let argarr = "[" & nonvarargs.mapIt(&"getPtr {it.name}").join(", ") & "]"
+  if not entry.self.isStatic:
+    args.add &"addr {entry.self.name}"
+
+  if entry.isVarargs:
+    if entry.args.len == 1:
+      args.add "getPtr " & $entry.args[^1].name
+    else:
+      args.add "@[" & entry.args[0..^2].mapIt(&"getPtr {it.name}").join(", ") & "] & getPtr " & $entry.args[^1].name
+  else:
+    args.add "[" & entry.args.mapIt(&"getPtr {it.name}").join(", ") & "]"
+
+  if entry.result.typeSym != TypeSym.Void:
+    args.add "addr result"
 
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
-      if entry.self.typeSym in NilUnsafe:
+      if entry.self.typeSym in NilUnsafeVariant:
         &"nilCheck {entry.self.name}"
-      if entry.isVarargs:
-        let vararg = entry.args[^1]
-        if nonvarargs.len == 0:
-          &"if {vararg.name}.len == 0:"
-          &"  {entry.containerKey}({p_self}, nil, {p_result}, 0)"
-          "else:"
-          &"  let argArr = getptr {vararg.name}"
-          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, cint {vararg.name}.len)"
-        else:
-          &"if {vararg.name}.len == 0:"
-          &"  let argArr = {argarr}"
-          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, {nonvarargs.len})"
-          "else:"
-          &"  var argArr = @{argarr}"
-          &"  argArr.add {vararg.name}.getptr"
-          &"  {entry.containerKey}({p_self}, addr argArr[0], {p_result}, cint argArr.len)"
-      else:
-        if nonvarargs.len == 0:
-          &"{entry.containerKey}({p_self}, nil, {p_result}, {entry.args.len})"
-        else:
-          &"let argArr = {argarr}"
-          &"{entry.containerKey}({p_self}, addr argArr[0], {p_result}, {nonvarargs.len})"
+      for arg in entry.args:
+        if arg.typeSym in NilUnsafeVariant:
+          &"nilCheck {arg.name}"
+      &"""{entry.containerKey}.call({args.join(", ")})"""
 
 proc weave_methods*(json: JsonBuiltinClass): Cloth =
   let typesym = json.name.convert(TypeSym)
-  let nilUnsafe = typesym in NilUnsafe
 
   proc extract_self(it: JsonBuiltinClassMethod): RenderableSelfArgument =
     RenderableSelfArgument(
@@ -131,10 +111,6 @@ proc weave_methods*(json: JsonBuiltinClass): Cloth =
 
       weave multiline:
         for entry in requires:
-          if nilUnsafe and not entry.self.info.isMutable:
-            entry.self.info.isMutable = true
-            weave_procdef entry
-            entry.self.info.isMutable = false
           weave_procdef entry
 
       weave multiline:

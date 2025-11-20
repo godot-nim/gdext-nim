@@ -8,6 +8,7 @@ expandOnClassImported(LightmapGIData, Resource)
 
 proc setLightmapTextures*(self: LightmapGIData; lightTextures: TypedArray[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_lightmap_textures", 381264803)
+  nilCheck lightTextures
   methodbind.ptrcall(self, [getPtr lightTextures])
 
 proc getLightmapTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =
@@ -18,6 +19,7 @@ proc getLightmapTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered
 
 proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: TypedArray[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_shadowmask_textures", 381264803)
+  nilCheck shadowmaskTextures
   methodbind.ptrcall(self, [getPtr shadowmaskTextures])
 
 proc getShadowmaskTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =

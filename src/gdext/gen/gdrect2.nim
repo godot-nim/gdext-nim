@@ -30,48 +30,37 @@ var `growIndividual(Rect2 Float Float Float Float)`: PtrBuiltinMethod
 var `abs(Rect2)`: PtrBuiltinMethod
 
 proc getCenter*(self: Rect2): Vector2 =
-  `getCenter(Rect2)`(addr self, nil, addr result, 0)
+  `getCenter(Rect2)`.call(addr self, [], addr result)
 proc getArea*(self: Rect2): Float =
-  `getArea(Rect2)`(addr self, nil, addr result, 0)
+  `getArea(Rect2)`.call(addr self, [], addr result)
 proc hasArea*(self: Rect2): bool =
-  `hasArea(Rect2)`(addr self, nil, addr result, 0)
+  `hasArea(Rect2)`.call(addr self, [], addr result)
 proc hasPoint*(self: Rect2; point: Vector2): bool =
-  let argArr = [getPtr point]
-  `hasPoint(Rect2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `hasPoint(Rect2 Vector2)`.call(addr self, [getPtr point], addr result)
 proc isEqualApprox*(self: Rect2; rect: Rect2): bool =
-  let argArr = [getPtr rect]
-  `isEqualApprox(Rect2 Rect2)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Rect2 Rect2)`.call(addr self, [getPtr rect], addr result)
 proc isFinite*(self: Rect2): bool =
-  `isFinite(Rect2)`(addr self, nil, addr result, 0)
+  `isFinite(Rect2)`.call(addr self, [], addr result)
 proc intersects*(self: Rect2; b: Rect2; includeBorders: bool = false): bool =
-  let argArr = [getPtr b, getPtr includeBorders]
-  `intersects(Rect2 Rect2 bool)`(addr self, addr argArr[0], addr result, 2)
+  `intersects(Rect2 Rect2 bool)`.call(addr self, [getPtr b, getPtr includeBorders], addr result)
 proc encloses*(self: Rect2; b: Rect2): bool =
-  let argArr = [getPtr b]
-  `encloses(Rect2 Rect2)`(addr self, addr argArr[0], addr result, 1)
+  `encloses(Rect2 Rect2)`.call(addr self, [getPtr b], addr result)
 proc intersection*(self: Rect2; b: Rect2): Rect2 =
-  let argArr = [getPtr b]
-  `intersection(Rect2 Rect2)`(addr self, addr argArr[0], addr result, 1)
+  `intersection(Rect2 Rect2)`.call(addr self, [getPtr b], addr result)
 proc merge*(self: Rect2; b: Rect2): Rect2 =
-  let argArr = [getPtr b]
-  `merge(Rect2 Rect2)`(addr self, addr argArr[0], addr result, 1)
+  `merge(Rect2 Rect2)`.call(addr self, [getPtr b], addr result)
 proc expand*(self: Rect2; to: Vector2): Rect2 =
-  let argArr = [getPtr to]
-  `expand(Rect2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `expand(Rect2 Vector2)`.call(addr self, [getPtr to], addr result)
 proc getSupport*(self: Rect2; direction: Vector2): Vector2 =
-  let argArr = [getPtr direction]
-  `getSupport(Rect2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `getSupport(Rect2 Vector2)`.call(addr self, [getPtr direction], addr result)
 proc grow*(self: Rect2; amount: Float): Rect2 =
-  let argArr = [getPtr amount]
-  `grow(Rect2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `grow(Rect2 Float)`.call(addr self, [getPtr amount], addr result)
 proc growSide*(self: Rect2; side: Int; amount: Float): Rect2 =
-  let argArr = [getPtr side, getPtr amount]
-  `growSide(Rect2 Int Float)`(addr self, addr argArr[0], addr result, 2)
+  `growSide(Rect2 Int Float)`.call(addr self, [getPtr side, getPtr amount], addr result)
 proc growIndividual*(self: Rect2; left: Float; top: Float; right: Float; bottom: Float): Rect2 =
-  let argArr = [getPtr left, getPtr top, getPtr right, getPtr bottom]
-  `growIndividual(Rect2 Float Float Float Float)`(addr self, addr argArr[0], addr result, 4)
+  `growIndividual(Rect2 Float Float Float Float)`.call(addr self, [getPtr left, getPtr top, getPtr right, getPtr bottom], addr result)
 proc abs*(self: Rect2): Rect2 =
-  `abs(Rect2)`(addr self, nil, addr result, 0)
+  `abs(Rect2)`.call(addr self, [], addr result)
 
 proc load_Rect2_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `getCenter(Rect2)` = load(VariantType_Rect2, "get_center", 2428350749)

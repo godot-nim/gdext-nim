@@ -8,6 +8,7 @@ expandOnClassImported(DPITexture, Texture2D)
 
 proc createFromString*(_: typedesc[DPITexture]; source: String; scale: Float = 1.0; saturation: Float = 1.0; colorMap: Dictionary = newDictionary()): gdref DPITexture =
   expandMethodBind(className DPITexture, "create_from_string", 755140520)
+  nilCheck colorMap
   var ret: encoded gdref DPITexture
   methodbind.ptrcall([getPtr source, getPtr scale, getPtr saturation, getPtr colorMap], addr ret)
   (addr ret).decode_result(gdref DPITexture)
@@ -44,6 +45,7 @@ proc getSaturation*(self: DPITexture): Float =
 
 proc setColorMap*(self: DPITexture; colorMap: Dictionary): void =
   expandMethodBind(className DPITexture, "set_color_map", 4155329257)
+  nilCheck colorMap
   methodbind.ptrcall(self, [getPtr colorMap])
 
 proc getColorMap*(self: DPITexture): Dictionary =

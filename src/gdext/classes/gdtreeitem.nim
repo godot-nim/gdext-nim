@@ -122,6 +122,7 @@ proc getStructuredTextBidiOverride*(self: TreeItem; column: int32): TextServer_S
 
 proc setStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32; args: Array): void =
   expandMethodBind(className TreeItem, "set_structured_text_bidi_override_options", 537221740)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr column, getPtr args])
 
 proc getStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32): Array =

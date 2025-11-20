@@ -188,8 +188,7 @@ runtime: suite "Array":
     var arr: Array
     let imm_arr = arr
     check arr.len == 0
-    expect NilAccessDefect:
-      discard imm_arr.len
+    check imm_arr.len == 0
   test "construct":
     var arr = newArray(10)
     check not arr.isTyped
@@ -234,8 +233,7 @@ runtime: suite "TypedArray":
     var arr: TypedArray[String]
     let imm_arr = arr
     check arr.len == 0
-    expect NilAccessDefect:
-      discard imm_arr.len
+    check imm_arr.len == 0
   test "construct":
     var arr = newTypedArray[String](10)
     check arr.isTyped
@@ -422,8 +420,7 @@ runtime: suite "Dictionary":
     var dict: Dictionary
     let imm_dict = dict
     check dict.size == 0
-    expect NilAccessDefect:
-      discard imm_dict.size
+    check imm_dict.size == 0
 
   test "construct from Table":
     var tab = data.toTable

@@ -38,6 +38,7 @@ proc getColor*(self: Polygon2D): Color =
 
 proc setPolygons*(self: Polygon2D; polygons: Array): void =
   expandMethodBind(className Polygon2D, "set_polygons", 381264803)
+  nilCheck polygons
   methodbind.ptrcall(self, [getPtr polygons])
 
 proc getPolygons*(self: Polygon2D): Array =

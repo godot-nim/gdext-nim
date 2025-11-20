@@ -128,72 +128,51 @@ var `maxf(Vector3 Float)`: PtrBuiltinMethod
 var `octahedronDecode(Vector3 Vector2)`: PtrBuiltinMethod
 
 proc angleTo*(self: Vector3; to: Vector3): Float =
-  let argArr = [getPtr to]
-  `angleTo(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `angleTo(Vector3 Vector3)`.call(addr self, [getPtr to], addr result)
 proc signedAngleTo*(self: Vector3; to: Vector3; axis: Vector3): Float =
-  let argArr = [getPtr to, getPtr axis]
-  `signedAngleTo(Vector3 Vector3 Vector3)`(addr self, addr argArr[0], addr result, 2)
+  `signedAngleTo(Vector3 Vector3 Vector3)`.call(addr self, [getPtr to, getPtr axis], addr result)
 proc limitLength*(self: Vector3; length: Float = 1.0): Vector3 =
-  let argArr = [getPtr length]
-  `limitLength(Vector3 Float)`(addr self, addr argArr[0], addr result, 1)
+  `limitLength(Vector3 Float)`.call(addr self, [getPtr length], addr result)
 proc inverse*(self: Vector3): Vector3 =
-  `inverse(Vector3)`(addr self, nil, addr result, 0)
+  `inverse(Vector3)`.call(addr self, [], addr result)
 proc clampf*(self: Vector3; min: Float; max: Float): Vector3 =
-  let argArr = [getPtr min, getPtr max]
-  `clampf(Vector3 Float Float)`(addr self, addr argArr[0], addr result, 2)
+  `clampf(Vector3 Float Float)`.call(addr self, [getPtr min, getPtr max], addr result)
 proc snappedf*(self: Vector3; step: Float): Vector3 =
-  let argArr = [getPtr step]
-  `snappedf(Vector3 Float)`(addr self, addr argArr[0], addr result, 1)
+  `snappedf(Vector3 Float)`.call(addr self, [getPtr step], addr result)
 proc rotated*(self: Vector3; axis: Vector3; angle: Float): Vector3 =
-  let argArr = [getPtr axis, getPtr angle]
-  `rotated(Vector3 Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `rotated(Vector3 Vector3 Float)`.call(addr self, [getPtr axis, getPtr angle], addr result)
 proc slerp*(self: Vector3; to: Vector3; weight: Float): Vector3 =
-  let argArr = [getPtr to, getPtr weight]
-  `slerp(Vector3 Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `slerp(Vector3 Vector3 Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc cubicInterpolate*(self: Vector3; b: Vector3; preA: Vector3; postB: Vector3; weight: Float): Vector3 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight]
-  `cubicInterpolate(Vector3 Vector3 Vector3 Vector3 Float)`(addr self, addr argArr[0], addr result, 4)
+  `cubicInterpolate(Vector3 Vector3 Vector3 Vector3 Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight], addr result)
 proc cubicInterpolateInTime*(self: Vector3; b: Vector3; preA: Vector3; postB: Vector3; weight: Float; bT: Float; preAT: Float; postBT: Float): Vector3 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT]
-  `cubicInterpolateInTime(Vector3 Vector3 Vector3 Vector3 Float Float Float Float)`(addr self, addr argArr[0], addr result, 7)
+  `cubicInterpolateInTime(Vector3 Vector3 Vector3 Vector3 Float Float Float Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT], addr result)
 proc bezierInterpolate*(self: Vector3; control1: Vector3; control2: Vector3; `end`: Vector3; t: Float): Vector3 =
-  let argArr = [getPtr control1, getPtr control2, getPtr `end`, getPtr t]
-  `bezierInterpolate(Vector3 Vector3 Vector3 Vector3 Float)`(addr self, addr argArr[0], addr result, 4)
+  `bezierInterpolate(Vector3 Vector3 Vector3 Vector3 Float)`.call(addr self, [getPtr control1, getPtr control2, getPtr `end`, getPtr t], addr result)
 proc bezierDerivative*(self: Vector3; control1: Vector3; control2: Vector3; `end`: Vector3; t: Float): Vector3 =
-  let argArr = [getPtr control1, getPtr control2, getPtr `end`, getPtr t]
-  `bezierDerivative(Vector3 Vector3 Vector3 Vector3 Float)`(addr self, addr argArr[0], addr result, 4)
+  `bezierDerivative(Vector3 Vector3 Vector3 Vector3 Float)`.call(addr self, [getPtr control1, getPtr control2, getPtr `end`, getPtr t], addr result)
 proc cross*(self: Vector3; with: Vector3): Vector3 =
-  let argArr = [getPtr with]
-  `cross(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `cross(Vector3 Vector3)`.call(addr self, [getPtr with], addr result)
 proc outer*(self: Vector3; with: Vector3): Basis =
-  let argArr = [getPtr with]
-  `outer(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `outer(Vector3 Vector3)`.call(addr self, [getPtr with], addr result)
 proc project*(self: Vector3; b: Vector3): Vector3 =
-  let argArr = [getPtr b]
-  `project(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `project(Vector3 Vector3)`.call(addr self, [getPtr b], addr result)
 proc bounce*(self: Vector3; n: Vector3): Vector3 =
-  let argArr = [getPtr n]
-  `bounce(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `bounce(Vector3 Vector3)`.call(addr self, [getPtr n], addr result)
 proc reflect*(self: Vector3; n: Vector3): Vector3 =
-  let argArr = [getPtr n]
-  `reflect(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `reflect(Vector3 Vector3)`.call(addr self, [getPtr n], addr result)
 proc octahedronEncode*(self: Vector3): Vector2 =
-  `octahedronEncode(Vector3)`(addr self, nil, addr result, 0)
+  `octahedronEncode(Vector3)`.call(addr self, [], addr result)
 proc min*(self: Vector3; with: Vector3): Vector3 =
-  let argArr = [getPtr with]
-  `min(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `min(Vector3 Vector3)`.call(addr self, [getPtr with], addr result)
 proc minf*(self: Vector3; with: Float): Vector3 =
-  let argArr = [getPtr with]
-  `minf(Vector3 Float)`(addr self, addr argArr[0], addr result, 1)
+  `minf(Vector3 Float)`.call(addr self, [getPtr with], addr result)
 proc max*(self: Vector3; with: Vector3): Vector3 =
-  let argArr = [getPtr with]
-  `max(Vector3 Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `max(Vector3 Vector3)`.call(addr self, [getPtr with], addr result)
 proc maxf*(self: Vector3; with: Float): Vector3 =
-  let argArr = [getPtr with]
-  `maxf(Vector3 Float)`(addr self, addr argArr[0], addr result, 1)
+  `maxf(Vector3 Float)`.call(addr self, [getPtr with], addr result)
 proc octahedronDecode*(_: typedesc[Vector3]; uv: Vector2): Vector3 =
-  let argArr = [getPtr uv]
-  `octahedronDecode(Vector3 Vector2)`(nil, addr argArr[0], addr result, 1)
+  `octahedronDecode(Vector3 Vector2)`.call([getPtr uv], addr result)
 
 proc load_Vector3_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `angleTo(Vector3 Vector3)` = load(VariantType_Vector3, "angle_to", 1047977935)

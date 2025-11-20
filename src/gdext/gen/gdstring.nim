@@ -90,8 +90,12 @@ func `%`*(left: String; right: RID): String = {.noSideEffect.}: `%(String RID)`(
 func `%`*(left: String; right: Object): String = {.noSideEffect.}: `%(String Object)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: Callable): String = {.noSideEffect.}: `%(String Callable)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: Signal): String = {.noSideEffect.}: `%(String Signal)`(getPtr left, getPtr right, addr result)
-func `%`*(left: String; right: Dictionary): String = {.noSideEffect.}: `%(String Dictionary)`(getPtr left, getPtr right, addr result)
-func `%`*(left: String; right: Array): String = {.noSideEffect.}: `%(String Array)`(getPtr left, getPtr right, addr result)
+func `%`*(left: String; right: Dictionary): String = {.noSideEffect.}:
+  nilCheck right
+  `%(String Dictionary)`(getPtr left, getPtr right, addr result)
+func `%`*(left: String; right: Array): String = {.noSideEffect.}:
+  nilCheck right
+  `%(String Array)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: PackedByteArray): String = {.noSideEffect.}: `%(String PackedByteArray)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: PackedInt32Array): String = {.noSideEffect.}: `%(String PackedInt32Array)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: PackedInt64Array): String = {.noSideEffect.}: `%(String PackedInt64Array)`(getPtr left, getPtr right, addr result)
@@ -268,299 +272,237 @@ var `chr(String Int)`: PtrBuiltinMethod
 var `humanizeSize(String Int)`: PtrBuiltinMethod
 
 proc casecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `casecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `casecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc nocasecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `nocasecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `nocasecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc naturalcasecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `naturalcasecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `naturalcasecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc naturalnocasecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `naturalnocasecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `naturalnocasecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc filecasecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `filecasecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `filecasecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc filenocasecmpTo*(self: String; to: String): Int =
-  let argArr = [getPtr to]
-  `filenocasecmpTo(String String)`(addr self, addr argArr[0], addr result, 1)
+  `filenocasecmpTo(String String)`.call(addr self, [getPtr to], addr result)
 proc length*(self: String): Int =
-  `length(String)`(addr self, nil, addr result, 0)
+  `length(String)`.call(addr self, [], addr result)
 proc substr*(self: String; `from`: Int; len: Int = -1): String =
-  let argArr = [getPtr `from`, getPtr len]
-  `substr(String Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `substr(String Int Int)`.call(addr self, [getPtr `from`, getPtr len], addr result)
 proc getSlice*(self: String; delimiter: String; slice: Int): String =
-  let argArr = [getPtr delimiter, getPtr slice]
-  `getSlice(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `getSlice(String String Int)`.call(addr self, [getPtr delimiter, getPtr slice], addr result)
 proc getSlicec*(self: String; delimiter: Int; slice: Int): String =
-  let argArr = [getPtr delimiter, getPtr slice]
-  `getSlicec(String Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `getSlicec(String Int Int)`.call(addr self, [getPtr delimiter, getPtr slice], addr result)
 proc getSliceCount*(self: String; delimiter: String): Int =
-  let argArr = [getPtr delimiter]
-  `getSliceCount(String String)`(addr self, addr argArr[0], addr result, 1)
+  `getSliceCount(String String)`.call(addr self, [getPtr delimiter], addr result)
 proc find*(self: String; what: String; `from`: Int = 0): Int =
-  let argArr = [getPtr what, getPtr `from`]
-  `find(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `find(String String Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
 proc findn*(self: String; what: String; `from`: Int = 0): Int =
-  let argArr = [getPtr what, getPtr `from`]
-  `findn(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `findn(String String Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
 proc count*(self: String; what: String; `from`: Int = 0; to: Int = 0): Int =
-  let argArr = [getPtr what, getPtr `from`, getPtr to]
-  `count(String String Int Int)`(addr self, addr argArr[0], addr result, 3)
+  `count(String String Int Int)`.call(addr self, [getPtr what, getPtr `from`, getPtr to], addr result)
 proc countn*(self: String; what: String; `from`: Int = 0; to: Int = 0): Int =
-  let argArr = [getPtr what, getPtr `from`, getPtr to]
-  `countn(String String Int Int)`(addr self, addr argArr[0], addr result, 3)
+  `countn(String String Int Int)`.call(addr self, [getPtr what, getPtr `from`, getPtr to], addr result)
 proc rfind*(self: String; what: String; `from`: Int = -1): Int =
-  let argArr = [getPtr what, getPtr `from`]
-  `rfind(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `rfind(String String Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
 proc rfindn*(self: String; what: String; `from`: Int = -1): Int =
-  let argArr = [getPtr what, getPtr `from`]
-  `rfindn(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `rfindn(String String Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
 proc match*(self: String; expr: String): bool =
-  let argArr = [getPtr expr]
-  `match(String String)`(addr self, addr argArr[0], addr result, 1)
+  `match(String String)`.call(addr self, [getPtr expr], addr result)
 proc matchn*(self: String; expr: String): bool =
-  let argArr = [getPtr expr]
-  `matchn(String String)`(addr self, addr argArr[0], addr result, 1)
+  `matchn(String String)`.call(addr self, [getPtr expr], addr result)
 proc beginsWith*(self: String; text: String): bool =
-  let argArr = [getPtr text]
-  `beginsWith(String String)`(addr self, addr argArr[0], addr result, 1)
+  `beginsWith(String String)`.call(addr self, [getPtr text], addr result)
 proc endsWith*(self: String; text: String): bool =
-  let argArr = [getPtr text]
-  `endsWith(String String)`(addr self, addr argArr[0], addr result, 1)
+  `endsWith(String String)`.call(addr self, [getPtr text], addr result)
 proc isSubsequenceOf*(self: String; text: String): bool =
-  let argArr = [getPtr text]
-  `isSubsequenceOf(String String)`(addr self, addr argArr[0], addr result, 1)
+  `isSubsequenceOf(String String)`.call(addr self, [getPtr text], addr result)
 proc isSubsequenceOfn*(self: String; text: String): bool =
-  let argArr = [getPtr text]
-  `isSubsequenceOfn(String String)`(addr self, addr argArr[0], addr result, 1)
+  `isSubsequenceOfn(String String)`.call(addr self, [getPtr text], addr result)
 proc bigrams*(self: String): PackedStringArray =
-  `bigrams(String)`(addr self, nil, addr result, 0)
+  `bigrams(String)`.call(addr self, [], addr result)
 proc similarity*(self: String; text: String): Float =
-  let argArr = [getPtr text]
-  `similarity(String String)`(addr self, addr argArr[0], addr result, 1)
+  `similarity(String String)`.call(addr self, [getPtr text], addr result)
 proc format*(self: String; values: Variant; placeholder: String = newGdString("{_}")): String =
-  let argArr = [getPtr values, getPtr placeholder]
-  `format(String Variant String)`(addr self, addr argArr[0], addr result, 2)
+  `format(String Variant String)`.call(addr self, [getPtr values, getPtr placeholder], addr result)
 proc replace*(self: String; what: String; forwhat: String): String =
-  let argArr = [getPtr what, getPtr forwhat]
-  `replace(String String String)`(addr self, addr argArr[0], addr result, 2)
+  `replace(String String String)`.call(addr self, [getPtr what, getPtr forwhat], addr result)
 proc replacen*(self: String; what: String; forwhat: String): String =
-  let argArr = [getPtr what, getPtr forwhat]
-  `replacen(String String String)`(addr self, addr argArr[0], addr result, 2)
+  `replacen(String String String)`.call(addr self, [getPtr what, getPtr forwhat], addr result)
 proc replaceChar*(self: String; key: Int; with: Int): String =
-  let argArr = [getPtr key, getPtr with]
-  `replaceChar(String Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `replaceChar(String Int Int)`.call(addr self, [getPtr key, getPtr with], addr result)
 proc replaceChars*(self: String; keys: String; with: Int): String =
-  let argArr = [getPtr keys, getPtr with]
-  `replaceChars(String String Int)`(addr self, addr argArr[0], addr result, 2)
+  `replaceChars(String String Int)`.call(addr self, [getPtr keys, getPtr with], addr result)
 proc removeChar*(self: String; what: Int): String =
-  let argArr = [getPtr what]
-  `removeChar(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `removeChar(String Int)`.call(addr self, [getPtr what], addr result)
 proc removeChars*(self: String; chars: String): String =
-  let argArr = [getPtr chars]
-  `removeChars(String String)`(addr self, addr argArr[0], addr result, 1)
+  `removeChars(String String)`.call(addr self, [getPtr chars], addr result)
 proc repeat*(self: String; count: Int): String =
-  let argArr = [getPtr count]
-  `repeat(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `repeat(String Int)`.call(addr self, [getPtr count], addr result)
 proc reverse*(self: String): String =
-  `reverse(String)`(addr self, nil, addr result, 0)
+  `reverse(String)`.call(addr self, [], addr result)
 proc insert*(self: String; position: Int; what: String): String =
-  let argArr = [getPtr position, getPtr what]
-  `insert(String Int String)`(addr self, addr argArr[0], addr result, 2)
+  `insert(String Int String)`.call(addr self, [getPtr position, getPtr what], addr result)
 proc erase*(self: String; position: Int; chars: Int = 1): String =
-  let argArr = [getPtr position, getPtr chars]
-  `erase(String Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `erase(String Int Int)`.call(addr self, [getPtr position, getPtr chars], addr result)
 proc capitalize*(self: String): String =
-  `capitalize(String)`(addr self, nil, addr result, 0)
+  `capitalize(String)`.call(addr self, [], addr result)
 proc toCamelCase*(self: String): String =
-  `toCamelCase(String)`(addr self, nil, addr result, 0)
+  `toCamelCase(String)`.call(addr self, [], addr result)
 proc toPascalCase*(self: String): String =
-  `toPascalCase(String)`(addr self, nil, addr result, 0)
+  `toPascalCase(String)`.call(addr self, [], addr result)
 proc toSnakeCase*(self: String): String =
-  `toSnakeCase(String)`(addr self, nil, addr result, 0)
+  `toSnakeCase(String)`.call(addr self, [], addr result)
 proc toKebabCase*(self: String): String =
-  `toKebabCase(String)`(addr self, nil, addr result, 0)
+  `toKebabCase(String)`.call(addr self, [], addr result)
 proc split*(self: String; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
-  let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
-  `split(String String bool Int)`(addr self, addr argArr[0], addr result, 3)
+  `split(String String bool Int)`.call(addr self, [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit], addr result)
 proc rsplit*(self: String; delimiter: String = newGdString(); allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray =
-  let argArr = [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit]
-  `rsplit(String String bool Int)`(addr self, addr argArr[0], addr result, 3)
+  `rsplit(String String bool Int)`.call(addr self, [getPtr delimiter, getPtr allowEmpty, getPtr maxsplit], addr result)
 proc splitFloats*(self: String; delimiter: String; allowEmpty: bool = true): PackedFloat64Array =
-  let argArr = [getPtr delimiter, getPtr allowEmpty]
-  `splitFloats(String String bool)`(addr self, addr argArr[0], addr result, 2)
+  `splitFloats(String String bool)`.call(addr self, [getPtr delimiter, getPtr allowEmpty], addr result)
 proc join*(self: String; parts: PackedStringArray): String =
-  let argArr = [getPtr parts]
-  `join(String PackedStringArray)`(addr self, addr argArr[0], addr result, 1)
+  `join(String PackedStringArray)`.call(addr self, [getPtr parts], addr result)
 proc toUpper*(self: String): String =
-  `toUpper(String)`(addr self, nil, addr result, 0)
+  `toUpper(String)`.call(addr self, [], addr result)
 proc toLower*(self: String): String =
-  `toLower(String)`(addr self, nil, addr result, 0)
+  `toLower(String)`.call(addr self, [], addr result)
 proc left*(self: String; length: Int): String =
-  let argArr = [getPtr length]
-  `left(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `left(String Int)`.call(addr self, [getPtr length], addr result)
 proc right*(self: String; length: Int): String =
-  let argArr = [getPtr length]
-  `right(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `right(String Int)`.call(addr self, [getPtr length], addr result)
 proc stripEdges*(self: String; left: bool = true; right: bool = true): String =
-  let argArr = [getPtr left, getPtr right]
-  `stripEdges(String bool bool)`(addr self, addr argArr[0], addr result, 2)
+  `stripEdges(String bool bool)`.call(addr self, [getPtr left, getPtr right], addr result)
 proc stripEscapes*(self: String): String =
-  `stripEscapes(String)`(addr self, nil, addr result, 0)
+  `stripEscapes(String)`.call(addr self, [], addr result)
 proc lstrip*(self: String; chars: String): String =
-  let argArr = [getPtr chars]
-  `lstrip(String String)`(addr self, addr argArr[0], addr result, 1)
+  `lstrip(String String)`.call(addr self, [getPtr chars], addr result)
 proc rstrip*(self: String; chars: String): String =
-  let argArr = [getPtr chars]
-  `rstrip(String String)`(addr self, addr argArr[0], addr result, 1)
+  `rstrip(String String)`.call(addr self, [getPtr chars], addr result)
 proc getExtension*(self: String): String =
-  `getExtension(String)`(addr self, nil, addr result, 0)
+  `getExtension(String)`.call(addr self, [], addr result)
 proc getBasename*(self: String): String =
-  `getBasename(String)`(addr self, nil, addr result, 0)
+  `getBasename(String)`.call(addr self, [], addr result)
 proc pathJoin*(self: String; path: String): String =
-  let argArr = [getPtr path]
-  `pathJoin(String String)`(addr self, addr argArr[0], addr result, 1)
+  `pathJoin(String String)`.call(addr self, [getPtr path], addr result)
 proc unicodeAt*(self: String; at: Int): Int =
-  let argArr = [getPtr at]
-  `unicodeAt(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `unicodeAt(String Int)`.call(addr self, [getPtr at], addr result)
 proc indent*(self: String; prefix: String): String =
-  let argArr = [getPtr prefix]
-  `indent(String String)`(addr self, addr argArr[0], addr result, 1)
+  `indent(String String)`.call(addr self, [getPtr prefix], addr result)
 proc dedent*(self: String): String =
-  `dedent(String)`(addr self, nil, addr result, 0)
+  `dedent(String)`.call(addr self, [], addr result)
 proc hash*(self: String): Hash =
-  `hash(String)`(addr self, nil, addr result, 0)
+  `hash(String)`.call(addr self, [], addr result)
 proc md5Text*(self: String): String =
-  `md5Text(String)`(addr self, nil, addr result, 0)
+  `md5Text(String)`.call(addr self, [], addr result)
 proc sha1Text*(self: String): String =
-  `sha1Text(String)`(addr self, nil, addr result, 0)
+  `sha1Text(String)`.call(addr self, [], addr result)
 proc sha256Text*(self: String): String =
-  `sha256Text(String)`(addr self, nil, addr result, 0)
+  `sha256Text(String)`.call(addr self, [], addr result)
 proc md5Buffer*(self: String): PackedByteArray =
-  `md5Buffer(String)`(addr self, nil, addr result, 0)
+  `md5Buffer(String)`.call(addr self, [], addr result)
 proc sha1Buffer*(self: String): PackedByteArray =
-  `sha1Buffer(String)`(addr self, nil, addr result, 0)
+  `sha1Buffer(String)`.call(addr self, [], addr result)
 proc sha256Buffer*(self: String): PackedByteArray =
-  `sha256Buffer(String)`(addr self, nil, addr result, 0)
+  `sha256Buffer(String)`.call(addr self, [], addr result)
 proc isEmpty*(self: String): bool =
-  `isEmpty(String)`(addr self, nil, addr result, 0)
+  `isEmpty(String)`.call(addr self, [], addr result)
 proc contains*(self: String; what: String): bool =
-  let argArr = [getPtr what]
-  `contains(String String)`(addr self, addr argArr[0], addr result, 1)
+  `contains(String String)`.call(addr self, [getPtr what], addr result)
 proc containsn*(self: String; what: String): bool =
-  let argArr = [getPtr what]
-  `containsn(String String)`(addr self, addr argArr[0], addr result, 1)
+  `containsn(String String)`.call(addr self, [getPtr what], addr result)
 proc isAbsolutePath*(self: String): bool =
-  `isAbsolutePath(String)`(addr self, nil, addr result, 0)
+  `isAbsolutePath(String)`.call(addr self, [], addr result)
 proc isRelativePath*(self: String): bool =
-  `isRelativePath(String)`(addr self, nil, addr result, 0)
+  `isRelativePath(String)`.call(addr self, [], addr result)
 proc simplifyPath*(self: String): String =
-  `simplifyPath(String)`(addr self, nil, addr result, 0)
+  `simplifyPath(String)`.call(addr self, [], addr result)
 proc getBaseDir*(self: String): String =
-  `getBaseDir(String)`(addr self, nil, addr result, 0)
+  `getBaseDir(String)`.call(addr self, [], addr result)
 proc getFile*(self: String): String =
-  `getFile(String)`(addr self, nil, addr result, 0)
+  `getFile(String)`.call(addr self, [], addr result)
 proc xmlEscape*(self: String; escapeQuotes: bool = false): String =
-  let argArr = [getPtr escapeQuotes]
-  `xmlEscape(String bool)`(addr self, addr argArr[0], addr result, 1)
+  `xmlEscape(String bool)`.call(addr self, [getPtr escapeQuotes], addr result)
 proc xmlUnescape*(self: String): String =
-  `xmlUnescape(String)`(addr self, nil, addr result, 0)
+  `xmlUnescape(String)`.call(addr self, [], addr result)
 proc uriEncode*(self: String): String =
-  `uriEncode(String)`(addr self, nil, addr result, 0)
+  `uriEncode(String)`.call(addr self, [], addr result)
 proc uriDecode*(self: String): String =
-  `uriDecode(String)`(addr self, nil, addr result, 0)
+  `uriDecode(String)`.call(addr self, [], addr result)
 proc uriFileDecode*(self: String): String =
-  `uriFileDecode(String)`(addr self, nil, addr result, 0)
+  `uriFileDecode(String)`.call(addr self, [], addr result)
 proc cEscape*(self: String): String =
-  `cEscape(String)`(addr self, nil, addr result, 0)
+  `cEscape(String)`.call(addr self, [], addr result)
 proc cUnescape*(self: String): String =
-  `cUnescape(String)`(addr self, nil, addr result, 0)
+  `cUnescape(String)`.call(addr self, [], addr result)
 proc jsonEscape*(self: String): String =
-  `jsonEscape(String)`(addr self, nil, addr result, 0)
+  `jsonEscape(String)`.call(addr self, [], addr result)
 proc validateNodeName*(self: String): String =
-  `validateNodeName(String)`(addr self, nil, addr result, 0)
+  `validateNodeName(String)`.call(addr self, [], addr result)
 proc validateFilename*(self: String): String =
-  `validateFilename(String)`(addr self, nil, addr result, 0)
+  `validateFilename(String)`.call(addr self, [], addr result)
 proc isValidAsciiIdentifier*(self: String): bool =
-  `isValidAsciiIdentifier(String)`(addr self, nil, addr result, 0)
+  `isValidAsciiIdentifier(String)`.call(addr self, [], addr result)
 proc isValidUnicodeIdentifier*(self: String): bool =
-  `isValidUnicodeIdentifier(String)`(addr self, nil, addr result, 0)
+  `isValidUnicodeIdentifier(String)`.call(addr self, [], addr result)
 proc isValidIdentifier*(self: String): bool =
-  `isValidIdentifier(String)`(addr self, nil, addr result, 0)
+  `isValidIdentifier(String)`.call(addr self, [], addr result)
 proc isValidInt*(self: String): bool =
-  `isValidInt(String)`(addr self, nil, addr result, 0)
+  `isValidInt(String)`.call(addr self, [], addr result)
 proc isValidFloat*(self: String): bool =
-  `isValidFloat(String)`(addr self, nil, addr result, 0)
+  `isValidFloat(String)`.call(addr self, [], addr result)
 proc isValidHexNumber*(self: String; withPrefix: bool = false): bool =
-  let argArr = [getPtr withPrefix]
-  `isValidHexNumber(String bool)`(addr self, addr argArr[0], addr result, 1)
+  `isValidHexNumber(String bool)`.call(addr self, [getPtr withPrefix], addr result)
 proc isValidHtmlColor*(self: String): bool =
-  `isValidHtmlColor(String)`(addr self, nil, addr result, 0)
+  `isValidHtmlColor(String)`.call(addr self, [], addr result)
 proc isValidIpAddress*(self: String): bool =
-  `isValidIpAddress(String)`(addr self, nil, addr result, 0)
+  `isValidIpAddress(String)`.call(addr self, [], addr result)
 proc isValidFilename*(self: String): bool =
-  `isValidFilename(String)`(addr self, nil, addr result, 0)
+  `isValidFilename(String)`.call(addr self, [], addr result)
 proc toInt*(self: String): Int =
-  `toInt(String)`(addr self, nil, addr result, 0)
+  `toInt(String)`.call(addr self, [], addr result)
 proc toFloat*(self: String): Float =
-  `toFloat(String)`(addr self, nil, addr result, 0)
+  `toFloat(String)`.call(addr self, [], addr result)
 proc hexToInt*(self: String): Int =
-  `hexToInt(String)`(addr self, nil, addr result, 0)
+  `hexToInt(String)`.call(addr self, [], addr result)
 proc binToInt*(self: String): Int =
-  `binToInt(String)`(addr self, nil, addr result, 0)
+  `binToInt(String)`.call(addr self, [], addr result)
 proc lpad*(self: String; minLength: Int; character: String = newGdString(" ")): String =
-  let argArr = [getPtr minLength, getPtr character]
-  `lpad(String Int String)`(addr self, addr argArr[0], addr result, 2)
+  `lpad(String Int String)`.call(addr self, [getPtr minLength, getPtr character], addr result)
 proc rpad*(self: String; minLength: Int; character: String = newGdString(" ")): String =
-  let argArr = [getPtr minLength, getPtr character]
-  `rpad(String Int String)`(addr self, addr argArr[0], addr result, 2)
+  `rpad(String Int String)`.call(addr self, [getPtr minLength, getPtr character], addr result)
 proc padDecimals*(self: String; digits: Int): String =
-  let argArr = [getPtr digits]
-  `padDecimals(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `padDecimals(String Int)`.call(addr self, [getPtr digits], addr result)
 proc padZeros*(self: String; digits: Int): String =
-  let argArr = [getPtr digits]
-  `padZeros(String Int)`(addr self, addr argArr[0], addr result, 1)
+  `padZeros(String Int)`.call(addr self, [getPtr digits], addr result)
 proc trimPrefix*(self: String; prefix: String): String =
-  let argArr = [getPtr prefix]
-  `trimPrefix(String String)`(addr self, addr argArr[0], addr result, 1)
+  `trimPrefix(String String)`.call(addr self, [getPtr prefix], addr result)
 proc trimSuffix*(self: String; suffix: String): String =
-  let argArr = [getPtr suffix]
-  `trimSuffix(String String)`(addr self, addr argArr[0], addr result, 1)
+  `trimSuffix(String String)`.call(addr self, [getPtr suffix], addr result)
 proc toAsciiBuffer*(self: String): PackedByteArray =
-  `toAsciiBuffer(String)`(addr self, nil, addr result, 0)
+  `toAsciiBuffer(String)`.call(addr self, [], addr result)
 proc toUtf8Buffer*(self: String): PackedByteArray =
-  `toUtf8Buffer(String)`(addr self, nil, addr result, 0)
+  `toUtf8Buffer(String)`.call(addr self, [], addr result)
 proc toUtf16Buffer*(self: String): PackedByteArray =
-  `toUtf16Buffer(String)`(addr self, nil, addr result, 0)
+  `toUtf16Buffer(String)`.call(addr self, [], addr result)
 proc toUtf32Buffer*(self: String): PackedByteArray =
-  `toUtf32Buffer(String)`(addr self, nil, addr result, 0)
+  `toUtf32Buffer(String)`.call(addr self, [], addr result)
 proc toWcharBuffer*(self: String): PackedByteArray =
-  `toWcharBuffer(String)`(addr self, nil, addr result, 0)
+  `toWcharBuffer(String)`.call(addr self, [], addr result)
 proc toMultibyteCharBuffer*(self: String; encoding: String = newGdString()): PackedByteArray =
-  let argArr = [getPtr encoding]
-  `toMultibyteCharBuffer(String String)`(addr self, addr argArr[0], addr result, 1)
+  `toMultibyteCharBuffer(String String)`.call(addr self, [getPtr encoding], addr result)
 proc hexDecode*(self: String): PackedByteArray =
-  `hexDecode(String)`(addr self, nil, addr result, 0)
+  `hexDecode(String)`.call(addr self, [], addr result)
 proc numScientific*(_: typedesc[String]; number: Float): String =
-  let argArr = [getPtr number]
-  `numScientific(String Float)`(nil, addr argArr[0], addr result, 1)
+  `numScientific(String Float)`.call([getPtr number], addr result)
 proc num*(_: typedesc[String]; number: Float; decimals: Int = -1): String =
-  let argArr = [getPtr number, getPtr decimals]
-  `num(String Float Int)`(nil, addr argArr[0], addr result, 2)
+  `num(String Float Int)`.call([getPtr number, getPtr decimals], addr result)
 proc numInt64*(_: typedesc[String]; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
-  let argArr = [getPtr number, getPtr base, getPtr capitalizeHex]
-  `numInt64(String Int Int bool)`(nil, addr argArr[0], addr result, 3)
+  `numInt64(String Int Int bool)`.call([getPtr number, getPtr base, getPtr capitalizeHex], addr result)
 proc numUint64*(_: typedesc[String]; number: Int; base: Int = 10; capitalizeHex: bool = false): String =
-  let argArr = [getPtr number, getPtr base, getPtr capitalizeHex]
-  `numUint64(String Int Int bool)`(nil, addr argArr[0], addr result, 3)
+  `numUint64(String Int Int bool)`.call([getPtr number, getPtr base, getPtr capitalizeHex], addr result)
 proc chr*(_: typedesc[String]; code: Int): String =
-  let argArr = [getPtr code]
-  `chr(String Int)`(nil, addr argArr[0], addr result, 1)
+  `chr(String Int)`.call([getPtr code], addr result)
 proc humanizeSize*(_: typedesc[String]; size: Int): String =
-  let argArr = [getPtr size]
-  `humanizeSize(String Int)`(nil, addr argArr[0], addr result, 1)
+  `humanizeSize(String Int)`.call([getPtr size], addr result)
 
 proc load_String_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `casecmpTo(String String)` = load(VariantType_String, "casecmp_to", 2920860731)

@@ -42,6 +42,9 @@ proc getBlendShapeMode*(self: ArrayMesh): Mesh_BlendShapeMode =
 
 proc addSurfaceFromArrays*(self: ArrayMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = newTypedArray[Array](); lods: Dictionary = newDictionary(); flags: set[Mesh_ArrayFormat] = {}): void =
   expandMethodBind(className ArrayMesh, "add_surface_from_arrays", 1796411378)
+  nilCheck arrays
+  nilCheck blendShapes
+  nilCheck lods
   methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr flags])
 
 proc clearSurfaces*(self: ArrayMesh): void =

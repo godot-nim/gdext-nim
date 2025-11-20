@@ -100,8 +100,19 @@ proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
 proc weave_container(operator: BuiltinClassOperator): Cloth =
   &"var {operator.containerkey}: PtrOperatorEvaluator"
 
-proc weave_procdef(operator: BuiltinClassOperator): Cloth =
-  &"{weave operator.key} {{.noSideEffect.}}: {operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
+proc weave_procdef(operator: BuiltinClassOperator): Cloth = weave multiline:
+  var nilchecks: seq[string]
+  for arg in operator.key.args:
+    if arg.typeSym in NilUnsafeVariant:
+      nilchecks.add &"nilCheck {arg.name}"
+  if nilchecks.len == 0:
+    &"{weave operator.key} {{.noSideEffect.}}: {operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
+  else:
+    &"{weave operator.key} {{.noSideEffect.}}:"
+    weave indent:
+      for nilcheck in nilchecks:
+        nilcheck
+      &"{operator.containerkey}({operator.addr_first}, {operator.addr_second}, addr result)"
 
 proc weave_loadstmt(operator: BuiltinClassOperator): Cloth =
   &"{operator.containerkey} = load({operator.opkey}, {operator.vt_first}, {operator.vt_second})"

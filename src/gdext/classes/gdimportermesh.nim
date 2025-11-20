@@ -34,6 +34,9 @@ proc getBlendShapeMode*(self: ImporterMesh): Mesh_BlendShapeMode =
 
 proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = newTypedArray[Array](); lods: Dictionary = newDictionary(); material: gdref Material = default gdref Material; name: String = newGdString(); flags: uint64 = 0): void =
   expandMethodBind(className ImporterMesh, "add_surface", 1740448849)
+  nilCheck arrays
+  nilCheck blendShapes
+  nilCheck lods
   methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr material, getPtr name, getPtr flags])
 
 proc getSurfaceCount*(self: ImporterMesh): int32 =
@@ -106,6 +109,7 @@ proc setSurfaceMaterial*(self: ImporterMesh; surfaceIdx: int32; material: gdref 
 
 proc generateLods*(self: ImporterMesh; normalMergeAngle: Float; normalSplitAngle: Float; boneTransformArray: Array): void =
   expandMethodBind(className ImporterMesh, "generate_lods", 2491878677)
+  nilCheck boneTransformArray
   methodbind.ptrcall(self, [getPtr normalMergeAngle, getPtr normalSplitAngle, getPtr boneTransformArray])
 
 proc getMesh*(self: ImporterMesh; baseMesh: gdref ArrayMesh = default gdref ArrayMesh): gdref ArrayMesh =

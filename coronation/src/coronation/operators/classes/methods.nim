@@ -8,6 +8,7 @@ import ../arguments
 import types/json
 
 import utils
+import config
 
 import std/options
 import std/sequtils
@@ -129,6 +130,9 @@ proc weaveAsPtrCallEntry(entry: GodotProc): Cloth =
     weave ProcKey entry
     weave cloths.indent:
       entry.methodbind
+      for arg in entry.args:
+        if arg.typeSym in NilUnsafeVariant:
+          &"nilCheck {arg.name}"
       if entry.result.typesym != TypeSym.Void:
         &"var ret: encoded {weave entry.result}"
       &"methodbind.ptrcall({args.joinArg})"

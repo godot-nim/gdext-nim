@@ -50,12 +50,14 @@ proc getDatetimeDictFromDatetimeString*(self: Time; datetime: String; weekday: b
 
 proc getDatetimeStringFromDatetimeDict*(self: Time; datetime: Dictionary; useSpace: bool): String =
   expandMethodBind(className Time, "get_datetime_string_from_datetime_dict", 1898123706)
+  nilCheck datetime
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr datetime, getPtr useSpace], addr ret)
   (addr ret).decode_result(String)
 
 proc getUnixTimeFromDatetimeDict*(self: Time; datetime: Dictionary): int64 =
   expandMethodBind(className Time, "get_unix_time_from_datetime_dict", 3021115443)
+  nilCheck datetime
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr datetime], addr ret)
   (addr ret).decode_result(int64)

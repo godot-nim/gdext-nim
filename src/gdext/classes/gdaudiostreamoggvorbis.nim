@@ -80,6 +80,7 @@ proc getBarBeats*(self: AudioStreamOggVorbis): int32 =
 
 proc setTags*(self: AudioStreamOggVorbis; tags: Dictionary): void =
   expandMethodBind(className AudioStreamOggVorbis, "set_tags", 4155329257)
+  nilCheck tags
   methodbind.ptrcall(self, [getPtr tags])
 
 proc getTags*(self: AudioStreamOggVorbis): Dictionary =

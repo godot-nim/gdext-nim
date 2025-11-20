@@ -34,6 +34,7 @@ proc setInitialValue*(self: EditorSettings; name: StringName; value: Variant; up
 
 proc addPropertyInfo*(self: EditorSettings; info: Dictionary): void =
   expandMethodBind(className EditorSettings, "add_property_info", 4155329257)
+  nilCheck info
   methodbind.ptrcall(self, [getPtr info])
 
 proc setProjectMetadata*(self: EditorSettings; section: String; key: String; data: Variant): void =
@@ -68,6 +69,7 @@ proc getRecentDirs*(self: EditorSettings): PackedStringArray =
 
 proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: TypedArray[gdref InputEvent]): void =
   expandMethodBind(className EditorSettings, "set_builtin_action_override", 1209351045)
+  nilCheck actionsList
   methodbind.ptrcall(self, [getPtr name, getPtr actionsList])
 
 proc checkChangedSettingsInGroup*(self: EditorSettings; settingPrefix: String): bool =

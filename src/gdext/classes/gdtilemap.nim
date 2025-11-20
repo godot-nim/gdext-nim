@@ -242,6 +242,7 @@ proc getLayerForBodyRid*(self: TileMap; body: RID): int32 =
 
 proc getPattern*(self: TileMap; layer: int32; coordsArray: TypedArray[Vector2i]): gdref TileMapPattern =
   expandMethodBind(className TileMap, "get_pattern", 2833570986)
+  nilCheck coordsArray
   var ret: encoded gdref TileMapPattern
   methodbind.ptrcall(self, [getPtr layer, getPtr coordsArray], addr ret)
   (addr ret).decode_result(gdref TileMapPattern)
@@ -258,10 +259,12 @@ proc setPattern*(self: TileMap; layer: int32; position: Vector2i; pattern: gdref
 
 proc setCellsTerrainConnect*(self: TileMap; layer: int32; cells: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMap, "set_cells_terrain_connect", 3578627656)
+  nilCheck cells
   methodbind.ptrcall(self, [getPtr layer, getPtr cells, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
 proc setCellsTerrainPath*(self: TileMap; layer: int32; path: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMap, "set_cells_terrain_path", 3578627656)
+  nilCheck path
   methodbind.ptrcall(self, [getPtr layer, getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
 proc fixInvalidTiles*(self: TileMap): void =

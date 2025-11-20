@@ -40,6 +40,7 @@ proc setItemNavigationLayers*(self: MeshLibrary; id: int32; navigationLayers: ui
 
 proc setItemShapes*(self: MeshLibrary; id: int32; shapes: Array): void =
   expandMethodBind(className MeshLibrary, "set_item_shapes", 537221740)
+  nilCheck shapes
   methodbind.ptrcall(self, [getPtr id, getPtr shapes])
 
 proc setItemPreview*(self: MeshLibrary; id: int32; texture: gdref Texture2D): void =

@@ -44,6 +44,7 @@ proc getInstanceMaterials*(self: GLTFMesh): TypedArray[gdref Material] =
 
 proc setInstanceMaterials*(self: GLTFMesh; instanceMaterials: TypedArray[gdref Material]): void =
   expandMethodBind(className GLTFMesh, "set_instance_materials", 381264803)
+  nilCheck instanceMaterials
   methodbind.ptrcall(self, [getPtr instanceMaterials])
 
 proc getAdditionalData*(self: GLTFMesh; extensionName: StringName): Variant =

@@ -8,6 +8,7 @@ expandOnClassImported(Compositor, Resource)
 
 proc setCompositorEffects*(self: Compositor; compositorEffects: TypedArray[gdref CompositorEffect]): void =
   expandMethodBind(className Compositor, "set_compositor_effects", 381264803)
+  nilCheck compositorEffects
   methodbind.ptrcall(self, [getPtr compositorEffects])
 
 proc getCompositorEffects*(self: Compositor): TypedArray[gdref CompositorEffect] =

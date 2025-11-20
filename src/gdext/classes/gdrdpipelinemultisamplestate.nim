@@ -58,6 +58,7 @@ proc getEnableAlphaToOne*(self: RDPipelineMultisampleState): bool =
 
 proc setSampleMasks*(self: RDPipelineMultisampleState; masks: TypedArray[Int]): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_sample_masks", 381264803)
+  nilCheck masks
   methodbind.ptrcall(self, [getPtr masks])
 
 proc getSampleMasks*(self: RDPipelineMultisampleState): TypedArray[Int] =

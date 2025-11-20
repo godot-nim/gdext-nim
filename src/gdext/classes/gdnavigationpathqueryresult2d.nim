@@ -28,6 +28,7 @@ proc getPathTypes*(self: NavigationPathQueryResult2D): PackedInt32Array =
 
 proc setPathRids*(self: NavigationPathQueryResult2D; pathRids: TypedArray[RID]): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_rids", 381264803)
+  nilCheck pathRids
   methodbind.ptrcall(self, [getPtr pathRids])
 
 proc getPathRids*(self: NavigationPathQueryResult2D): TypedArray[RID] =

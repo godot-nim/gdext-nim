@@ -1,7 +1,7 @@
 import gdext/private/gdinterface
 import gdext/private/internalobjecttools
+import gdext/private/nilchecks
 import gdext/builtinindex {.all.}
-import gdext/stringtools
 
 # General
 # =======
@@ -16,6 +16,8 @@ template encode*[T: SomeBuiltins](v: T; p: pointer) =
 proc decode*[T: SomeBuiltins](p: pointer; _: typedesc[T]): T =
   cast[ptr T](p)[]
 proc variant*[T: SomeBuiltins](v: T): Variant =
+  when T is Array or T is TypedArray or T is Dictionary:
+    v.nilCheck()
   variantFromType[variantType T](addr result, addr v)
 proc get*[T: SomeBuiltins](v: Variant; _: typedesc[T]): T =
   typeFromVariant[variantType T](addr result, addr v)
@@ -70,7 +72,7 @@ template convert_generic_params_forcecast(Decoded, Encoded): untyped =
     cast[Decoded[T]](v.get(Encoded))
 
 
-convert_alternative AltString, String, newGdString, `$`
+convert_alternative AltString, String, newGdStringInternal, `$`
 
 convert_alternative_autocast AltInt, Int
 

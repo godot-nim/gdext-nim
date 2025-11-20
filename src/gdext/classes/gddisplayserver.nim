@@ -1185,6 +1185,7 @@ proc fileDialogShow*(self: DisplayServer; title: String; currentDirectory: Strin
 
 proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirectory: String; root: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; options: TypedArray[Dictionary]; callback: Callable; parentWindowId: int32 = 0): Error =
   expandMethodBind(className DisplayServer, "file_dialog_with_options_show", 1448789813)
+  nilCheck options
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr root, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr options, getPtr callback, getPtr parentWindowId], addr ret)
   (addr ret).decode_result(Error)

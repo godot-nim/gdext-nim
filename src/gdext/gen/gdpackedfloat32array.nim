@@ -39,67 +39,51 @@ var `count(PackedFloat32Array Float)`: PtrBuiltinMethod
 var `erase(PackedFloat32Array Float)`: PtrBuiltinMethod
 
 proc get*(self: PackedFloat32Array; index: Int): Float =
-  let argArr = [getPtr index]
-  `get(PackedFloat32Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `get(PackedFloat32Array Int)`.call(addr self, [getPtr index], addr result)
 proc set*(self: var PackedFloat32Array; index: Int; value: Float): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedFloat32Array Int Float)`(addr self, addr argArr[0], nil, 2)
+  `set(PackedFloat32Array Int Float)`.call(addr self, [getPtr index, getPtr value])
 proc size*(self: PackedFloat32Array): Int =
-  `size(PackedFloat32Array)`(addr self, nil, addr result, 0)
+  `size(PackedFloat32Array)`.call(addr self, [], addr result)
 proc isEmpty*(self: PackedFloat32Array): bool =
-  `isEmpty(PackedFloat32Array)`(addr self, nil, addr result, 0)
+  `isEmpty(PackedFloat32Array)`.call(addr self, [], addr result)
 proc pushBack*(self: var PackedFloat32Array; value: Float): bool =
-  let argArr = [getPtr value]
-  `pushBack(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+  `pushBack(PackedFloat32Array Float)`.call(addr self, [getPtr value], addr result)
 proc append*(self: var PackedFloat32Array; value: Float): bool =
-  let argArr = [getPtr value]
-  `append(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+  `append(PackedFloat32Array Float)`.call(addr self, [getPtr value], addr result)
 proc appendArray*(self: var PackedFloat32Array; array: PackedFloat32Array): void =
-  let argArr = [getPtr array]
-  `appendArray(PackedFloat32Array PackedFloat32Array)`(addr self, addr argArr[0], nil, 1)
+  `appendArray(PackedFloat32Array PackedFloat32Array)`.call(addr self, [getPtr array])
 proc removeAt*(self: var PackedFloat32Array; index: Int): void =
-  let argArr = [getPtr index]
-  `removeAt(PackedFloat32Array Int)`(addr self, addr argArr[0], nil, 1)
+  `removeAt(PackedFloat32Array Int)`.call(addr self, [getPtr index])
 proc insert*(self: var PackedFloat32Array; atIndex: Int; value: Float): Int =
-  let argArr = [getPtr atIndex, getPtr value]
-  `insert(PackedFloat32Array Int Float)`(addr self, addr argArr[0], addr result, 2)
+  `insert(PackedFloat32Array Int Float)`.call(addr self, [getPtr atIndex, getPtr value], addr result)
 proc fill*(self: var PackedFloat32Array; value: Float): void =
-  let argArr = [getPtr value]
-  `fill(PackedFloat32Array Float)`(addr self, addr argArr[0], nil, 1)
+  `fill(PackedFloat32Array Float)`.call(addr self, [getPtr value])
 proc resize*(self: var PackedFloat32Array; newSize: Int): Int =
-  let argArr = [getPtr newSize]
-  `resize(PackedFloat32Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `resize(PackedFloat32Array Int)`.call(addr self, [getPtr newSize], addr result)
 proc clear*(self: var PackedFloat32Array): void =
-  `clear(PackedFloat32Array)`(addr self, nil, nil, 0)
+  `clear(PackedFloat32Array)`.call(addr self, [])
 proc has*(self: PackedFloat32Array; value: Float): bool =
-  let argArr = [getPtr value]
-  `has(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+  `has(PackedFloat32Array Float)`.call(addr self, [getPtr value], addr result)
 proc reverse*(self: var PackedFloat32Array): void =
-  `reverse(PackedFloat32Array)`(addr self, nil, nil, 0)
+  `reverse(PackedFloat32Array)`.call(addr self, [])
 proc slice*(self: PackedFloat32Array; begin: Int; `end`: Int = 2147483647): PackedFloat32Array =
-  let argArr = [getPtr begin, getPtr `end`]
-  `slice(PackedFloat32Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `slice(PackedFloat32Array Int Int)`.call(addr self, [getPtr begin, getPtr `end`], addr result)
 proc toByteArray*(self: PackedFloat32Array): PackedByteArray =
-  `toByteArray(PackedFloat32Array)`(addr self, nil, addr result, 0)
+  `toByteArray(PackedFloat32Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedFloat32Array): void =
-  `sort(PackedFloat32Array)`(addr self, nil, nil, 0)
+  `sort(PackedFloat32Array)`.call(addr self, [])
 proc bsearch*(self: var PackedFloat32Array; value: Float; before: bool = true): Int =
-  let argArr = [getPtr value, getPtr before]
-  `bsearch(PackedFloat32Array Float bool)`(addr self, addr argArr[0], addr result, 2)
+  `bsearch(PackedFloat32Array Float bool)`.call(addr self, [getPtr value, getPtr before], addr result)
 proc duplicate*(self: var PackedFloat32Array): PackedFloat32Array =
-  `duplicate(PackedFloat32Array)`(addr self, nil, addr result, 0)
+  `duplicate(PackedFloat32Array)`.call(addr self, [], addr result)
 proc find*(self: PackedFloat32Array; value: Float; `from`: Int = 0): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `find(PackedFloat32Array Float Int)`(addr self, addr argArr[0], addr result, 2)
+  `find(PackedFloat32Array Float Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc rfind*(self: PackedFloat32Array; value: Float; `from`: Int = -1): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `rfind(PackedFloat32Array Float Int)`(addr self, addr argArr[0], addr result, 2)
+  `rfind(PackedFloat32Array Float Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc count*(self: PackedFloat32Array; value: Float): Int =
-  let argArr = [getPtr value]
-  `count(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+  `count(PackedFloat32Array Float)`.call(addr self, [getPtr value], addr result)
 proc erase*(self: var PackedFloat32Array; value: Float): bool =
-  let argArr = [getPtr value]
-  `erase(PackedFloat32Array Float)`(addr self, addr argArr[0], addr result, 1)
+  `erase(PackedFloat32Array Float)`.call(addr self, [getPtr value], addr result)
 
 proc load_PackedFloat32Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedFloat32Array Int)` = load(VariantType_PackedFloat32Array, "get", 1401583798)

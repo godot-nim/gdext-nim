@@ -4,6 +4,7 @@ import gdext/private/staticevents; export staticevents
 import gdext/private/propertyinfo; export propertyinfo
 import gdext/private/internalobjecttools
 import gdext/private/classindex; export classindex
+import gdext/private/nilchecks; export nilchecks
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
 import gdext/arraytools; export arraytools

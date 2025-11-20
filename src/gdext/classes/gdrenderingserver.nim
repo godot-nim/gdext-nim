@@ -33,12 +33,14 @@ proc texture2DCreate*(self: RenderingServer; image: gdref Image): RID =
 
 proc texture2DLayeredCreate*(self: RenderingServer; layers: TypedArray[gdref Image]; layeredType: RenderingServer_TextureLayeredType): RID =
   expandMethodBind(className RenderingServer, "texture_2d_layered_create", 913689023)
+  nilCheck layers
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr layers, getPtr layeredType], addr ret)
   (addr ret).decode_result(RID)
 
 proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: TypedArray[gdref Image]): RID =
   expandMethodBind(className RenderingServer, "texture_3d_create", 4036838706)
+  nilCheck data
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr format, getPtr width, getPtr height, getPtr depth, getPtr mipmaps, getPtr data], addr ret)
   (addr ret).decode_result(RID)
@@ -61,6 +63,7 @@ proc texture2DUpdate*(self: RenderingServer; texture: RID; image: gdref Image; l
 
 proc texture3DUpdate*(self: RenderingServer; texture: RID; data: TypedArray[gdref Image]): void =
   expandMethodBind(className RenderingServer, "texture_3d_update", 684822712)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr texture, getPtr data])
 
 proc textureProxyUpdate*(self: RenderingServer; texture: RID; proxyTo: RID): void =
@@ -221,6 +224,7 @@ proc materialSetNextPass*(self: RenderingServer; material: RID; nextMaterial: RI
 
 proc meshCreateFromSurfaces*(self: RenderingServer; surfaces: TypedArray[Dictionary]; blendShapeCount: int32 = 0): RID =
   expandMethodBind(className RenderingServer, "mesh_create_from_surfaces", 4291747531)
+  nilCheck surfaces
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr surfaces, getPtr blendShapeCount], addr ret)
   (addr ret).decode_result(RID)
@@ -269,10 +273,14 @@ proc meshSurfaceGetFormatIndexStride*(self: RenderingServer; format: set[Renderi
 
 proc meshAddSurface*(self: RenderingServer; mesh: RID; surface: Dictionary): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface", 1217542888)
+  nilCheck surface
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface])
 
 proc meshAddSurfaceFromArrays*(self: RenderingServer; mesh: RID; primitive: RenderingServer_PrimitiveType; arrays: Array; blendShapes: Array = newArray(); lods: Dictionary = newDictionary(); compressFormat: set[RenderingServer_ArrayFormat] = {}): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface_from_arrays", 2342446560)
+  nilCheck arrays
+  nilCheck blendShapes
+  nilCheck lods
   methodbind.ptrcall(self, [getPtr mesh, getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr compressFormat])
 
 proc meshGetBlendShapeCount*(self: RenderingServer; mesh: RID): int32 =
@@ -989,6 +997,7 @@ proc particlesSetTrails*(self: RenderingServer; particles: RID; enable: bool; le
 
 proc particlesSetTrailBindPoses*(self: RenderingServer; particles: RID; bindPoses: TypedArray[Transform3D]): void =
   expandMethodBind(className RenderingServer, "particles_set_trail_bind_poses", 684822712)
+  nilCheck bindPoses
   methodbind.ptrcall(self, [getPtr particles, getPtr bindPoses])
 
 proc particlesIsInactive*(self: RenderingServer; particles: RID): bool =
@@ -1445,6 +1454,7 @@ proc compositorCreate*(self: RenderingServer): RID =
 
 proc compositorSetCompositorEffects*(self: RenderingServer; compositor: RID; effects: TypedArray[RID]): void =
   expandMethodBind(className RenderingServer, "compositor_set_compositor_effects", 684822712)
+  nilCheck effects
   methodbind.ptrcall(self, [getPtr compositor, getPtr effects])
 
 proc environmentCreate*(self: RenderingServer): RID =
@@ -1767,12 +1777,14 @@ proc instancesCullRay*(self: RenderingServer; `from`: Vector3; to: Vector3; scen
 
 proc instancesCullConvex*(self: RenderingServer; convex: TypedArray[Plane]; scenario: RID = RID()): PackedInt64Array =
   expandMethodBind(className RenderingServer, "instances_cull_convex", 2488539944)
+  nilCheck convex
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr convex, getPtr scenario], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
 proc bakeRenderUv2*(self: RenderingServer; base: RID; materialOverrides: TypedArray[RID]; imageSize: Vector2i): TypedArray[gdref Image] =
   expandMethodBind(className RenderingServer, "bake_render_uv2", 1904608558)
+  nilCheck materialOverrides
   var ret: encoded TypedArray[gdref Image]
   methodbind.ptrcall(self, [getPtr base, getPtr materialOverrides, getPtr imageSize], addr ret)
   (addr ret).decode_result(TypedArray[gdref Image])

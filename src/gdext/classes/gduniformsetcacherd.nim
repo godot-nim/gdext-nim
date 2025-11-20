@@ -8,6 +8,7 @@ expandOnClassImported(UniformSetCacheRD, Object)
 
 proc getCache*(_: typedesc[UniformSetCacheRD]; shader: RID; set: uint32; uniforms: TypedArray[gdref RDUniform]): RID =
   expandMethodBind(className UniformSetCacheRD, "get_cache", 658571723)
+  nilCheck uniforms
   var ret: encoded RID
   methodbind.ptrcall([getPtr shader, getPtr set, getPtr uniforms], addr ret)
   (addr ret).decode_result(RID)

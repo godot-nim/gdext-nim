@@ -8,12 +8,14 @@ expandOnClassImported(AudioStreamWAV, AudioStream)
 
 proc loadFromBuffer*(_: typedesc[AudioStreamWAV]; streamData: PackedByteArray; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
   expandMethodBind(className AudioStreamWAV, "load_from_buffer", 4266838938)
+  nilCheck options
   var ret: encoded gdref AudioStreamWAV
   methodbind.ptrcall([getPtr streamData, getPtr options], addr ret)
   (addr ret).decode_result(gdref AudioStreamWAV)
 
 proc loadFromFile*(_: typedesc[AudioStreamWAV]; path: String; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
   expandMethodBind(className AudioStreamWAV, "load_from_file", 4015802384)
+  nilCheck options
   var ret: encoded gdref AudioStreamWAV
   methodbind.ptrcall([getPtr path, getPtr options], addr ret)
   (addr ret).decode_result(gdref AudioStreamWAV)
@@ -90,6 +92,7 @@ proc isStereo*(self: AudioStreamWAV): bool =
 
 proc setTags*(self: AudioStreamWAV; tags: Dictionary): void =
   expandMethodBind(className AudioStreamWAV, "set_tags", 4155329257)
+  nilCheck tags
   methodbind.ptrcall(self, [getPtr tags])
 
 proc getTags*(self: AudioStreamWAV): Dictionary =

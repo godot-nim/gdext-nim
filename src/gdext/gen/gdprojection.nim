@@ -51,72 +51,57 @@ var `getPixelsPerMeter(Projection Int)`: PtrBuiltinMethod
 var `getLodMultiplier(Projection)`: PtrBuiltinMethod
 
 proc createDepthCorrection*(_: typedesc[Projection]; flipY: bool): Projection =
-  let argArr = [getPtr flipY]
-  `createDepthCorrection(Projection bool)`(nil, addr argArr[0], addr result, 1)
+  `createDepthCorrection(Projection bool)`.call([getPtr flipY], addr result)
 proc createLightAtlasRect*(_: typedesc[Projection]; rect: Rect2): Projection =
-  let argArr = [getPtr rect]
-  `createLightAtlasRect(Projection Rect2)`(nil, addr argArr[0], addr result, 1)
+  `createLightAtlasRect(Projection Rect2)`.call([getPtr rect], addr result)
 proc createPerspective*(_: typedesc[Projection]; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
-  let argArr = [getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov]
-  `createPerspective(Projection Float Float Float Float bool)`(nil, addr argArr[0], addr result, 5)
+  `createPerspective(Projection Float Float Float Float bool)`.call([getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov], addr result)
 proc createPerspectiveHmd*(_: typedesc[Projection]; fovy: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool; eye: Int; intraocularDist: Float; convergenceDist: Float): Projection =
-  let argArr = [getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov, getPtr eye, getPtr intraocularDist, getPtr convergenceDist]
-  `createPerspectiveHmd(Projection Float Float Float Float bool Int Float Float)`(nil, addr argArr[0], addr result, 8)
+  `createPerspectiveHmd(Projection Float Float Float Float bool Int Float Float)`.call([getPtr fovy, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov, getPtr eye, getPtr intraocularDist, getPtr convergenceDist], addr result)
 proc createForHmd*(_: typedesc[Projection]; eye: Int; aspect: Float; intraocularDist: Float; displayWidth: Float; displayToLens: Float; oversample: Float; zNear: Float; zFar: Float): Projection =
-  let argArr = [getPtr eye, getPtr aspect, getPtr intraocularDist, getPtr displayWidth, getPtr displayToLens, getPtr oversample, getPtr zNear, getPtr zFar]
-  `createForHmd(Projection Int Float Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 8)
+  `createForHmd(Projection Int Float Float Float Float Float Float Float)`.call([getPtr eye, getPtr aspect, getPtr intraocularDist, getPtr displayWidth, getPtr displayToLens, getPtr oversample, getPtr zNear, getPtr zFar], addr result)
 proc createOrthogonal*(_: typedesc[Projection]; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
-  let argArr = [getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar]
-  `createOrthogonal(Projection Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 6)
+  `createOrthogonal(Projection Float Float Float Float Float Float)`.call([getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar], addr result)
 proc createOrthogonalAspect*(_: typedesc[Projection]; size: Float; aspect: Float; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
-  let argArr = [getPtr size, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov]
-  `createOrthogonalAspect(Projection Float Float Float Float bool)`(nil, addr argArr[0], addr result, 5)
+  `createOrthogonalAspect(Projection Float Float Float Float bool)`.call([getPtr size, getPtr aspect, getPtr zNear, getPtr zFar, getPtr flipFov], addr result)
 proc createFrustum*(_: typedesc[Projection]; left: Float; right: Float; bottom: Float; top: Float; zNear: Float; zFar: Float): Projection =
-  let argArr = [getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar]
-  `createFrustum(Projection Float Float Float Float Float Float)`(nil, addr argArr[0], addr result, 6)
+  `createFrustum(Projection Float Float Float Float Float Float)`.call([getPtr left, getPtr right, getPtr bottom, getPtr top, getPtr zNear, getPtr zFar], addr result)
 proc createFrustumAspect*(_: typedesc[Projection]; size: Float; aspect: Float; offset: Vector2; zNear: Float; zFar: Float; flipFov: bool = false): Projection =
-  let argArr = [getPtr size, getPtr aspect, getPtr offset, getPtr zNear, getPtr zFar, getPtr flipFov]
-  `createFrustumAspect(Projection Float Float Vector2 Float Float bool)`(nil, addr argArr[0], addr result, 6)
+  `createFrustumAspect(Projection Float Float Vector2 Float Float bool)`.call([getPtr size, getPtr aspect, getPtr offset, getPtr zNear, getPtr zFar, getPtr flipFov], addr result)
 proc createFitAabb*(_: typedesc[Projection]; aabb: AABB): Projection =
-  let argArr = [getPtr aabb]
-  `createFitAabb(Projection AABB)`(nil, addr argArr[0], addr result, 1)
+  `createFitAabb(Projection AABB)`.call([getPtr aabb], addr result)
 proc determinant*(self: Projection): Float =
-  `determinant(Projection)`(addr self, nil, addr result, 0)
+  `determinant(Projection)`.call(addr self, [], addr result)
 proc perspectiveZnearAdjusted*(self: Projection; newZnear: Float): Projection =
-  let argArr = [getPtr newZnear]
-  `perspectiveZnearAdjusted(Projection Float)`(addr self, addr argArr[0], addr result, 1)
+  `perspectiveZnearAdjusted(Projection Float)`.call(addr self, [getPtr newZnear], addr result)
 proc getProjectionPlane*(self: Projection; plane: Int): Plane =
-  let argArr = [getPtr plane]
-  `getProjectionPlane(Projection Int)`(addr self, addr argArr[0], addr result, 1)
+  `getProjectionPlane(Projection Int)`.call(addr self, [getPtr plane], addr result)
 proc flippedY*(self: Projection): Projection =
-  `flippedY(Projection)`(addr self, nil, addr result, 0)
+  `flippedY(Projection)`.call(addr self, [], addr result)
 proc jitterOffseted*(self: Projection; offset: Vector2): Projection =
-  let argArr = [getPtr offset]
-  `jitterOffseted(Projection Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `jitterOffseted(Projection Vector2)`.call(addr self, [getPtr offset], addr result)
 proc getFovy*(_: typedesc[Projection]; fovx: Float; aspect: Float): Float =
-  let argArr = [getPtr fovx, getPtr aspect]
-  `getFovy(Projection Float Float)`(nil, addr argArr[0], addr result, 2)
+  `getFovy(Projection Float Float)`.call([getPtr fovx, getPtr aspect], addr result)
 proc getZFar*(self: Projection): Float =
-  `getZFar(Projection)`(addr self, nil, addr result, 0)
+  `getZFar(Projection)`.call(addr self, [], addr result)
 proc getZNear*(self: Projection): Float =
-  `getZNear(Projection)`(addr self, nil, addr result, 0)
+  `getZNear(Projection)`.call(addr self, [], addr result)
 proc getAspect*(self: Projection): Float =
-  `getAspect(Projection)`(addr self, nil, addr result, 0)
+  `getAspect(Projection)`.call(addr self, [], addr result)
 proc getFov*(self: Projection): Float =
-  `getFov(Projection)`(addr self, nil, addr result, 0)
+  `getFov(Projection)`.call(addr self, [], addr result)
 proc isOrthogonal*(self: Projection): bool =
-  `isOrthogonal(Projection)`(addr self, nil, addr result, 0)
+  `isOrthogonal(Projection)`.call(addr self, [], addr result)
 proc getViewportHalfExtents*(self: Projection): Vector2 =
-  `getViewportHalfExtents(Projection)`(addr self, nil, addr result, 0)
+  `getViewportHalfExtents(Projection)`.call(addr self, [], addr result)
 proc getFarPlaneHalfExtents*(self: Projection): Vector2 =
-  `getFarPlaneHalfExtents(Projection)`(addr self, nil, addr result, 0)
+  `getFarPlaneHalfExtents(Projection)`.call(addr self, [], addr result)
 proc inverse*(self: Projection): Projection =
-  `inverse(Projection)`(addr self, nil, addr result, 0)
+  `inverse(Projection)`.call(addr self, [], addr result)
 proc getPixelsPerMeter*(self: Projection; forPixelWidth: Int): Int =
-  let argArr = [getPtr forPixelWidth]
-  `getPixelsPerMeter(Projection Int)`(addr self, addr argArr[0], addr result, 1)
+  `getPixelsPerMeter(Projection Int)`.call(addr self, [getPtr forPixelWidth], addr result)
 proc getLodMultiplier*(self: Projection): Float =
-  `getLodMultiplier(Projection)`(addr self, nil, addr result, 0)
+  `getLodMultiplier(Projection)`.call(addr self, [], addr result)
 
 proc load_Projection_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `createDepthCorrection(Projection bool)` = load(VariantType_Projection, "create_depth_correction", 1228516048)

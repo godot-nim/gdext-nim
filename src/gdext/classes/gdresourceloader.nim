@@ -14,6 +14,7 @@ proc loadThreadedRequest*(self: ResourceLoader; path: String; typeHint: String =
 
 proc loadThreadedGetStatus*(self: ResourceLoader; path: String; progress: Array = newArray()): ResourceLoader_ThreadLoadStatus =
   expandMethodBind(className ResourceLoader, "load_threaded_get_status", 4137685479)
+  nilCheck progress
   var ret: encoded ResourceLoader_ThreadLoadStatus
   methodbind.ptrcall(self, [getPtr path, getPtr progress], addr ret)
   (addr ret).decode_result(ResourceLoader_ThreadLoadStatus)

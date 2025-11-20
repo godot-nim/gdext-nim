@@ -8,6 +8,7 @@ expandOnClassImported(Geometry3D, Object)
 
 proc computeConvexMeshPoints*(self: Geometry3D; planes: TypedArray[Plane]): PackedVector3Array =
   expandMethodBind(className Geometry3D, "compute_convex_mesh_points", 1936902142)
+  nilCheck planes
   var ret: encoded PackedVector3Array
   methodbind.ptrcall(self, [getPtr planes], addr ret)
   (addr ret).decode_result(PackedVector3Array)
@@ -80,6 +81,7 @@ proc segmentIntersectsCylinder*(self: Geometry3D; `from`: Vector3; to: Vector3; 
 
 proc segmentIntersectsConvex*(self: Geometry3D; `from`: Vector3; to: Vector3; planes: TypedArray[Plane]): PackedVector3Array =
   expandMethodBind(className Geometry3D, "segment_intersects_convex", 537425332)
+  nilCheck planes
   var ret: encoded PackedVector3Array
   methodbind.ptrcall(self, [getPtr `from`, getPtr to, getPtr planes], addr ret)
   (addr ret).decode_result(PackedVector3Array)
