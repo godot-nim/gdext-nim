@@ -9,6 +9,7 @@ import gdext/private/userclass/procs
 import gdext/private/userclass/signals
 import gdext/private/userclass/virtuals
 import gdext/private/classindex
+import gdext/private/nilchecks
 import gdext/builtinindex
 import gdext/appearances
 import gdext/nameformats

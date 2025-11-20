@@ -1,6 +1,6 @@
 import std/[unicode, hashes]
 import gdext/builtinindex
-import gdext/private/[gdinterface, staticevents, macros]
+import gdext/private/[gdinterface, staticevents, macros, nilchecks]
 
 proc newGdString*(): String = discard
 proc newGdString*(str: string): String = newGdStringInternal str

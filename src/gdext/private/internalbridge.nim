@@ -10,6 +10,7 @@ import gdext/private/debugging
 import gdext/private/classindex
 import gdext/private/internalobjecttools
 import gdext/private/userclass/procs
+import gdext/private/nilchecks
 import gdext/builtinindex
 import gdext/objectcallbacks
 import gdext/appearances

@@ -20,24 +20,11 @@ import gdext/private/staticevents
 import gdext/private/typeshift
 import gdext/private/macros
 import gdext/private/propertyinfo
+import gdext/private/nilchecks
 import gdext/builtinindex
 import gdext/stringtools
 
 import std/[sequtils, importutils, hashes]
-
-template nilCheck*(self: Array) =
-  if unlikely(cast[pointer](self) == nil):
-    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
-template nilCheck*(self: var Array) =
-  if unlikely(cast[pointer](self) == nil):
-    self = newArray()
-
-template nilCheck*[T](self: TypedArray[T]) =
-  if unlikely(cast[pointer](self) == nil):
-    raise newException(NilAccessDefect, $typeof(self) & " requires init; call `new" & $typeof(self) & "()`")
-template nilCheck*[T](self: var TypedArray[T]) =
-  if unlikely(cast[pointer](self) == nil):
-    self = newTypedArray[T]()
 
 proc setTyped(self: var Array; typ: VariantType; className: StringName; script: Variant) =
   interfaceArraySetTyped(addr self, typ, addr className, addr script)

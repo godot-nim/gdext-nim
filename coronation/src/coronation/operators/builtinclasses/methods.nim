@@ -15,11 +15,6 @@ import std/strutils
 import std/sequtils
 import std/sets
 
-const NilUnsafe = [
-  TypeSym"Array",
-  TypeSym"Dictionary",
-]
-
 type
   BuiltinClassMethodEntry* = ref object of GodotProc
     containerKey: ContainerKey
@@ -77,7 +72,7 @@ proc weave_procdef*(entry: BuiltinClassMethodEntry): Cloth =
   weave multiline:
     weave ProcKey entry
     weave cloths.indent:
-      if entry.self.typeSym in NilUnsafe:
+      if entry.self.typeSym in NilUnsafeVariant:
         &"nilCheck {entry.self.name}"
       if entry.isVarargs:
         let vararg = entry.args[^1]
@@ -104,7 +99,7 @@ proc weave_procdef*(entry: BuiltinClassMethodEntry): Cloth =
 
 proc weave_methods*(json: JsonBuiltinClass): Cloth =
   let typesym = json.name.convert(TypeSym)
-  let nilUnsafe = typesym in NilUnsafe
+  let nilUnsafe = typesym in NilUnsafeVariant
 
   proc extract_self(it: JsonBuiltinClassMethod): RenderableSelfArgument =
     RenderableSelfArgument(
@@ -131,10 +126,6 @@ proc weave_methods*(json: JsonBuiltinClass): Cloth =
 
       weave multiline:
         for entry in requires:
-          if nilUnsafe and not entry.self.info.isMutable:
-            entry.self.info.isMutable = true
-            weave_procdef entry
-            entry.self.info.isMutable = false
           weave_procdef entry
 
       weave multiline:
