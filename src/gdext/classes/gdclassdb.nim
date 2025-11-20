@@ -126,7 +126,7 @@ proc classGetMethodList*(self: ClassDB; class: StringName; noInheritance: bool =
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
   (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc classCallStatic*(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc classCallStatic(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className ClassDB, "class_call_static", 3344196419)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr class, getTypedPtr `method`]

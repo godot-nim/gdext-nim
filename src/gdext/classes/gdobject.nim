@@ -131,7 +131,7 @@ proc removeUserSignal*(self: Object; signal: StringName): void =
   expandMethodBind(className Object, "remove_user_signal", 3304788590)
   methodbind.ptrcall(self, [getPtr signal])
 
-proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant, variant]): Error =
+proc emitSignal(self: Object; signal: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Object, "emit_signal", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr signal]
@@ -139,7 +139,7 @@ proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant, variant])
 template emitSignal*(self: Object; signal: StringName; args: varargs[Variant, variant]): Error =
   emitSignal(self, variant signal, args)
 
-proc call*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc call(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
@@ -147,7 +147,7 @@ proc call*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Va
 template call*(self: Object; `method`: StringName; args: varargs[Variant, variant]): Variant =
   call(self, variant `method`, args)
 
-proc callDeferred*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc callDeferred(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call_deferred", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]

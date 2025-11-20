@@ -601,7 +601,7 @@ proc moveAfter*(self: TreeItem; item: TreeItem): void =
   expandMethodBind(className TreeItem, "move_after", 1819951137)
   methodbind.ptrcall(self, [getPtr item])
 
-proc callRecursive*(self: TreeItem; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callRecursive(self: TreeItem; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className TreeItem, "call_recursive", 2866548813)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
