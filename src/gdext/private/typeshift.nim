@@ -1,5 +1,6 @@
 import gdext/private/gdinterface
 import gdext/private/internalobjecttools
+import gdext/private/nilchecks
 import gdext/builtinindex {.all.}
 
 # General
@@ -15,6 +16,8 @@ template encode*[T: SomeBuiltins](v: T; p: pointer) =
 proc decode*[T: SomeBuiltins](p: pointer; _: typedesc[T]): T =
   cast[ptr T](p)[]
 proc variant*[T: SomeBuiltins](v: T): Variant =
+  when T is Array or T is TypedArray or T is Dictionary:
+    v.nilCheck()
   variantFromType[variantType T](addr result, addr v)
 proc get*[T: SomeBuiltins](v: Variant; _: typedesc[T]): T =
   typeFromVariant[variantType T](addr result, addr v)
