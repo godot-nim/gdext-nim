@@ -1,14 +1,12 @@
-import std/[unicode, importutils, hashes]
+import std/[unicode, hashes]
 import gdext/builtinindex
-import gdext/private/[native, staticevents, macros]
+import gdext/private/[gdinterface, staticevents, macros]
 
 proc newGdString*(): String = discard
-proc newGdString*(str: string): String =
-  interfaceStringNewWithUtf8Chars(addr result, cstring str)
+proc newGdString*(str: string): String = newGdStringInternal str
 
 proc newStringName*(): StringName = discard
-proc newStringName*(str: string): StringName =
-  interfaceStringNameNewWithUtf8Chars(addr result, cstring str)
+proc newStringName*(str: string): StringName = newStringNameInternal(str)
 
 proc newNodePath*(): NodePath = discard
 
@@ -18,8 +16,6 @@ proc `[]`*(self: var String; index: Natural): var Rune =
   cast[ptr Rune](interface_String_operatorIndex(addr self, index))[]
 proc `[]=`*(self: var String; index: Natural; value: sink Rune) =
   `[]`(self, index) = value
-
-include gdext/private/includes/stringtoolsbase
 
 include gdext/gen/gdstringconstr
 include gdext/gen/gdstringnameconstr

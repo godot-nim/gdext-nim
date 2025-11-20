@@ -5,7 +5,6 @@ import gdext/private/macros
 import gdext/private/debugging
 import gdext/private/classindex
 import gdext/builtinindex {.all.}
-import gdext/stringtools
 import gdext/objectcallbacks
 import gdext/nameformats
 
@@ -13,18 +12,29 @@ privateAccess Object
 
 export native
 
-include gdext/private/includes/stringtoolsbase
-export getPtr
-export load
-
 var callbackTable*: Table[StringName, ptr InstanceBindingCallbacks]
 var getParentClass*: proc(class: StringName): StringName
+
+proc newGdStringInternal*(str: string): String =
+  interfaceStringNewWithUtf8Chars(addr result, cstring str)
+proc newStringNameInternal*(str: string): StringName =
+  interfaceStringNameNewWithUtf8Chars(addr result, cstring str)
 
 proc engineInstance*(obj: Object): ObjectPtr =
   privateAccess Object
   if unlikely(obj.isNil): ObjectPtr(nil)
   else: obj.unsafeEngineInstance
 
+proc engineInstancePtr(obj: Object): ptr ObjectPtr =
+  if unlikely(obj.isNil or obj.unsafeEngineInstance.isNil): nil
+  else: addr obj.unsafeEngineInstance
+
+template getPtr*[T](v: T): pointer = cast[pointer](addr v)
+template getPtr*(v: Variant): pointer = cast[pointer](addr v)
+template getPtr*[T: Object](v: T): pointer =
+  cast[pointer](v.engineInstancePtr)
+template getPtr*(v: GdRef): pointer =
+  getPtr v.handle
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
   for i in 0..<arr.len:
     result[i] = getPtr arr[i]
@@ -35,6 +45,12 @@ proc getPtr*(arr: varargs[Variant] | seq[Variant]): seq[pointer] =
 proc getPtr*(arr: array[0, Variant]): array[0, pointer] = discard
 
 template getTypedPtr*(v: Variant): VariantPtr = addr v
+
+proc load*(typ: VariantType; proc_name: string; hash: int64): PtrBuiltinMethod =
+  let name = newStringNameInternal proc_name
+  interface_Variant_getPtrBuiltinMethod(typ, addr name, hash)
+proc load*(op: Variant_Operator; left, right: VariantType): PtrOperatorEvaluator =
+  interfaceVariantGetPtrOperatorEvaluator(op, left, right)
 
 proc head*[T](a: openArray[T]): ptr T =
   if a.len == 0: nil

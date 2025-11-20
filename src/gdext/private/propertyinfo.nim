@@ -6,7 +6,6 @@ import gdext/private/gdinterface
 
 import std/[tables, typetraits]
 import gdext/private/debugging
-import gdext/stringtools
 import gdext/objectcallbacks
 
 type
@@ -73,8 +72,6 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
 
 proc className*[T: not (SomeClass|GdRef|enum)](_: typedesc[T]): var StringName =
   var name {.global.}: StringName
-  once:
-    name = newStringName()
   name
 
 proc className*(T: typedesc[SomeClass]): var StringName = Meta(T).className

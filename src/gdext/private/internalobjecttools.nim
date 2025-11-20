@@ -4,7 +4,6 @@ import gdext/private/macros
 import gdext/private/propertyinfo
 import gdext/private/classindex
 import gdext/builtinindex {.all.}
-import gdext/stringtools
 
 proc getClassName*(o: ObjectPtr): StringName
 
@@ -46,7 +45,7 @@ proc constructObject*(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr 
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: StringName; p_hash: Int): MethodBindPtr =
   interfaceClassdbGetMethodBind(addr p_classname, addr p_methodname, p_hash)
 proc getMethodBind*(_: typedesc[ClassDB]; p_classname: StringName; p_methodname: string; p_hash: Int): MethodBindPtr =
-  ClassDB.getMethodBind(p_classname, newStringName p_methodname, p_hash)
+  ClassDB.getMethodBind(p_classname, newStringNameInternal p_methodname, p_hash)
 
 proc getClassTag*(_: typedesc[ClassDB]; p_classname: StringName): pointer =
   interfaceClassdbGetClassTag(addr p_classname)
@@ -68,7 +67,7 @@ proc getInstanceBinding*[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]):
   var cname = p_engine_object.getClassName
   var callbacks: ptr InstanceBindingCallbacks
   while true:
-    if cname == newStringName():
+    if cname == default(StringName):
       break
     callbacks = callbackTable.getOrDefault(cname)
     if callbacks != nil:

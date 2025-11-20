@@ -1,7 +1,6 @@
 import gdext/private/gdinterface
 import gdext/private/internalobjecttools
 import gdext/builtinindex {.all.}
-import gdext/stringtools
 
 # General
 # =======
@@ -70,7 +69,7 @@ template convert_generic_params_forcecast(Decoded, Encoded): untyped =
     cast[Decoded[T]](v.get(Encoded))
 
 
-convert_alternative AltString, String, newGdString, `$`
+convert_alternative AltString, String, newGdStringInternal, `$`
 
 convert_alternative_autocast AltInt, Int
 
