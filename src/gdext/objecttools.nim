@@ -64,6 +64,3 @@ template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
 template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub
-
-proc contains*(node : Node, path: NodePath) : bool =
-  return node.hasNode(path)

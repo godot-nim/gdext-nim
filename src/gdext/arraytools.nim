@@ -97,12 +97,12 @@ template checkBounds(self: PackedArray; index: int) =
   if size <= index:
     raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $size.pred)
 
-proc `[]`*[T](self: Array[T]; index: Natural): T =
+proc `[]`*[T](self: Array[T]; index: int): T =
   nilCheck self
   checkBounds self, index
   cast[ptr Variant](interface_Array_operatorIndexConst(addr self, index))[].get(T)
 
-proc `[]`*[T: SomeBuiltins or Variant](self: var Array[T]; index: Natural): var T =
+proc `[]`*[T: SomeBuiltins or Variant](self: var Array[T]; index: int): var T =
   nilCheck self
   checkBounds self, index
   when T is Variant:
@@ -110,7 +110,7 @@ proc `[]`*[T: SomeBuiltins or Variant](self: var Array[T]; index: Natural): var 
   else:
     cast[ptr Variant](interface_Array_operatorIndex(addr self, index))[].getAddr(T)[]
 
-proc `[]=`*[T](self: var Array[T]; index: Natural; value: sink T) =
+proc `[]=`*[T](self: var Array[T]; index: int; value: sink T) =
   nilCheck self
   checkBounds self, index
   when T is Variant:
@@ -130,7 +130,7 @@ proc newArray*[T](`from`: Array[T]): Array[T] =
 proc newArray*[T](arr: Array[Variant]): Array[T] =
   newArray(arr, Int T.variantType, T.className, Variant()).specified(T)
 
-proc newArray*[T](len: Natural): Array[T] =
+proc newArray*[T](len: int): Array[T] =
   result = newArray[T]()
   discard result.wild.resize(Int len)
 
@@ -144,13 +144,13 @@ func `<`*[T, S](a: Array[T]; b: Array[S]): bool = a.wild < b.wild
 func `<=`*[T, S](a: Array[T]; b: Array[S]): bool = a.wild <= b.wild
 func `+`*[T](a: Array[T]; b: Array[T]): Array[T] = a.wild + b.wild
 
-proc `[]`*[T](self: PackedArray[T]; index: Natural): T =
+proc `[]`*[T](self: PackedArray[T]; index: int): T =
   checkBounds self, index
   self.data_unsafe[index]
-proc `[]`*[T](self: var PackedArray[T]; index: Natural): var T =
+proc `[]`*[T](self: var PackedArray[T]; index: int): var T =
   checkBounds self, index
   self.data_unsafe[index]
-proc `[]=`*[T](self: var PackedArray[T]; index: Natural; value: sink T) =
+proc `[]=`*[T](self: var PackedArray[T]; index: int; value: sink T) =
   checkBounds self, index
   self.data_unsafe[index] = value
 
@@ -193,23 +193,15 @@ proc get*[T](self: Array[T]; index: Int): T =
 proc set*[T](self: var Array[T]; index: Int; value: T): void =
   nilCheck self
   self.wild.set(index, variant value)
-proc set*[T: SomeProperty](self: var Array[Variant]; index: Int; value: T): void =
-  self.set(index, variant value)
 proc pushBack*[T](self: var Array[T]; value: T): void =
   nilCheck self
   self.wild.pushBack(variant value)
-proc pushBack*[T: SomeProperty](self: var Array[Variant]; value: T): void =
-  self.pushBack(variant value)
 proc pushFront*[T](self: var Array[T]; value: T): void =
   nilCheck self
   self.wild.pushFront(variant value)
-proc pushFront*[T: SomeProperty](self: var Array[Variant]; value: T): void =
-  self.pushFront(variant value)
 proc append*[T](self: var Array[T]; value: T): void =
   nilCheck self
   self.wild.append(variant value)
-proc append*[T: SomeProperty](self: var Array[Variant]; value: T): void =
-  self.append(variant value)
 proc appendArray*[T, S](self: var Array[T]; array: Array[S]): void =
   nilCheck self
   nilCheck array
@@ -221,16 +213,12 @@ proc resize*[T](self: var Array[T]; size: Int): Int =
 proc insert*[T](self: var Array[T]; position: Int; value: T): Int =
   nilCheck self
   self.wild.insert(position, variant value)
-proc insert*[T: SomeProperty](self: var Array[Variant]; index: Int; value: T): Int =
-  self.insert(index, variant value)
 proc removeAt*[T](self: var Array[T]; position: Int): void =
   nilCheck self
   self.wild.removeAt(position)
 proc fill*[T](self: var Array[T]; value: T): void =
   nilCheck self
   self.wild.fill(variant value)
-proc fill*[T: SomeProperty](self: var Array[Variant]; value: T): void =
-  self.fill(variant value)
 proc erase*[T; S: SomeProperty](self: var Array[T]; value: S): void =
   nilCheck self
   self.wild.erase(variant value)
@@ -469,8 +457,6 @@ proc `[]=`*[T](arr: var PackedArray[T]; index: BackwardsIndex; value: T) =
 # contains
 proc contains*[T](arr: Array[T]; value: T): bool =
   arr.has(value)
-proc contains*[T: SomeProperty](arr: Array[Variant]; value: T): bool =
-  arr.has(variant value)
 proc contains*[T](arr: PackedArray[T]; item: T): bool =
   arr.toOpenArray.contains item
 
@@ -505,9 +491,9 @@ proc add*[T](self: var PackedArray[T]; array: PackedArray[T]) =
   appendArray(self, array)
 
 # delete
-proc delete*(self: var Array; index: Natural) =
+proc delete*(self: var Array; index: int) =
   self.removeAt(index)
-proc delete*[T](self: var PackedArray[T]; index: Natural) =
+proc delete*[T](self: var PackedArray[T]; index: int) =
   self.removeAt(index)
 
 # pop
@@ -526,7 +512,7 @@ proc pop*[T](self: var PackedArray[T]): T = self.popBack
 # Ports
 # -----
 
-proc newArray[T](s: var Array[T]; size: Natural) =
+proc newArray[T](s: var Array[T]; size: int) =
   clear s
   discard s.resize(size)
 
@@ -564,6 +550,7 @@ proc `&`*[T](x: T; y: PackedArray): PackedArray[T] =
 template `^^`(s, i: untyped): untyped =
   (when i is BackwardsIndex: s.len - int(i) else: int(i))
 template spliceImpl(s, a, L, b: typed): untyped =
+  bind `[]=`
   # make room for additional elements or cut:
   var shift = b.len - max(0,L)  # ignore negative slice size
   var newLen = s.len + shift

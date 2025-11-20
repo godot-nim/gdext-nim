@@ -27,9 +27,9 @@ proc makebody (params, gdname, self: NimNode): NimNode =
     variantArrDef.add bindSym"variant".newCall(name)
 
   quote do:
-    var signalName {.global.}: Variant
+    var signalName {.global.}: StringName
     once:
-      signalName = variant newStringName `gdname`
+      signalName = newStringName `gdname`
     `self`.emitSignal(signalName, `variantArrDef`)
 
 macro parseParams (params): seq[PropertyInfo] =
@@ -49,7 +49,7 @@ macro contractSignal (params, procdef; gdname: string): untyped =
 
   result = quote do:
     proc `procsym` {.execon: Contract[`arg0_T`].signal.} =
-      ClassDB.registerExtensionClassSignal(className(`arg0_T`), `gdname`, parseParams(`params`))
+      ClassDB.registerExtensionClassSignal(className(`arg0_T`), &`gdname`, parseParams(`params`))
 
   when Assistance.genEditorHelp:
     let desc = procdef.getEditorHelp

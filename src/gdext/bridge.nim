@@ -331,7 +331,7 @@ macro gdexport[T: SomeUserClass; P: SomeProperty](
   result.add quote do:
     proc `name` {.execon: Contract[`typ`].property.} =
       gdexport_internal(`name`, typedesc `typ`, typedesc `proptyp`,
-        `gettersym`.gdname, `settersym`.gdname, `appearance`, `description`)
+        &`gettersym`.gdname, &`settersym`.gdname, `appearance`, `description`)
 
 template gdexport*[T: SomeUserClass; P: SomeProperty](
       name: static string;

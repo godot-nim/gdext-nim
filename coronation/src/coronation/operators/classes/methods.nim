@@ -73,6 +73,7 @@ proc variantKey(call: ClassMethodCallEntry): ProcKey =
     self: call.self,
     args: call.json.extract_args(fuzzy= true),
     result: call.result,
+    exportme: false,
   )
 
 proc typedKey(call: ClassMethodCallEntry): ProcKey =
