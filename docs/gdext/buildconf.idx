@@ -24,11 +24,12 @@ nim	Architecture	gdext/buildconf.html#Architecture	enum Architecture		96
 nim	create	gdext/buildconf.html#create	UpdateMethod.create		109
 nim	overwrite	gdext/buildconf.html#overwrite	UpdateMethod.overwrite		109
 nim	inject	gdext/buildconf.html#inject	UpdateMethod.inject		109
+nim	disable	gdext/buildconf.html#disable	UpdateMethod.disable		109
 nim	UpdateMethod	gdext/buildconf.html#UpdateMethod	enum UpdateMethod		109
-nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Platform]	proc cmdswitched(_: typedesc[Platform]): bool		145
-nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Target]	proc cmdswitched(_: typedesc[Target]): bool		147
-nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Architecture]	proc cmdswitched(_: typedesc[Architecture]): bool		149
-nim	BuildSettings	gdext/buildconf.html#BuildSettings	type BuildSettings		211
-nim	configure	gdext/buildconf.html#configure.t,BuildSettings,	template configure(setting: BuildSettings; body)		479
-nim	configure	gdext/buildconf.html#configure,BuildSettings	proc configure(setting: BuildSettings)		486
-nimgrp	cmdswitched	gdext/buildconf.html#cmdswitched-procs-all	proc		145
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Platform]	proc cmdswitched(_: typedesc[Platform]): bool		146
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Target]	proc cmdswitched(_: typedesc[Target]): bool		148
+nim	cmdswitched	gdext/buildconf.html#cmdswitched,typedesc[Architecture]	proc cmdswitched(_: typedesc[Architecture]): bool		150
+nim	BuildSettings	gdext/buildconf.html#BuildSettings	type BuildSettings		212
+nim	configure	gdext/buildconf.html#configure.t,BuildSettings,	template configure(setting: BuildSettings; body)		480
+nim	configure	gdext/buildconf.html#configure,BuildSettings	proc configure(setting: BuildSettings)		491
+nimgrp	cmdswitched	gdext/buildconf.html#cmdswitched-procs-all	proc		146

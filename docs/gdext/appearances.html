@@ -77,11 +77,12 @@
       <ul class="simple nested-toc-section">appearance
   <li><a class="reference" href="#appearance%2Ctypedesc%5B%5D" title="appearance(T: typedesc[enum]): Appearance">appearance(T: typedesc[enum]): Appearance</a></li>
 <li><a class="reference" href="#appearance%2Ctypedesc%5Brange%5D" title="appearance(T: typedesc[range]): Appearance">appearance(T: typedesc[range]): Appearance</a></li>
+<li><a class="reference" href="#appearance%2Ctypedesc%5BDictionary%5BA%2CB%5D%5D" title="appearance[A, B](_: typedesc[Dictionary[A, B]]): Appearance">appearance[A, B](_: typedesc[Dictionary[A, B]]): Appearance</a></li>
 <li><a class="reference" href="#appearance%2Ctypedesc%5Bset%5BT%5D%5D" title="appearance[T: enum](_: typedesc[set[T]]): Appearance">appearance[T: enum](_: typedesc[set[T]]): Appearance</a></li>
 <li><a class="reference" href="#appearance%2Ctypedesc%5BT%5D_2" title="appearance[T: Object](_: typedesc[T]): Appearance">appearance[T: Object](_: typedesc[T]): Appearance</a></li>
+<li><a class="reference" href="#appearance%2Ctypedesc%5BArray%5BT%5D%5D" title="appearance[T](_: typedesc[Array[T]]): Appearance">appearance[T](_: typedesc[Array[T]]): Appearance</a></li>
 <li><a class="reference" href="#appearance%2Ctypedesc%5BGdRef%5BT%5D%5D" title="appearance[T](_: typedesc[GdRef[T]]): Appearance">appearance[T](_: typedesc[GdRef[T]]): Appearance</a></li>
 <li><a class="reference" href="#appearance%2Ctypedesc%5BT%5D" title="appearance[T](_: typedesc[T]): Appearance">appearance[T](_: typedesc[T]): Appearance</a></li>
-<li><a class="reference" href="#appearance%2Ctypedesc%5BTypedArray%5BT%5D%5D" title="appearance[T](_: typedesc[TypedArray[T]]): Appearance">appearance[T](_: typedesc[TypedArray[T]]): Appearance</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">category
@@ -275,6 +276,14 @@
     
   </dd>
 </div>
+<div id="appearance,typedesc[Dictionary[A,B]]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5BDictionary%5BA%2CB%5D%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="appearance,typedesc[set[T]]">
   <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5Bset%5BT%5D%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">enum</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
   <dd>
@@ -291,6 +300,14 @@
     
   </dd>
 </div>
+<div id="appearance,typedesc[Array[T]]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5BArray%5BT%5D%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="appearance,typedesc[GdRef[T]]">
   <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5BGdRef%5BT%5D%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
   <dd>
@@ -301,14 +318,6 @@
 </div>
 <div id="appearance,typedesc[T]">
   <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5BT%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="appearance,typedesc[TypedArray[T]]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#appearance%2Ctypedesc%5BTypedArray%5BT%5D%5D"><span class="Identifier">appearance</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="appearances.html#Appearance"><span class="Identifier">Appearance</span></a></pre></dt>
   <dd>
     
     
@@ -620,7 +629,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
       </div>
     </div>
   </div>

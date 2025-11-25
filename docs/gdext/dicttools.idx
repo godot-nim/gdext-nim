@@ -1,115 +1,138 @@
 nimTitle	dicttools	gdext/dicttools.html	module gdext/dicttools		0
-nim	nilCheck	gdext/dicttools.html#nilCheck.t,Dictionary	template nilCheck(self: Dictionary)		10
-nim	nilCheck	gdext/dicttools.html#nilCheck.t,Dictionary_2	template nilCheck(self: var Dictionary)		13
-nim	`[]`	gdext/dicttools.html#[],Dictionary,Variant	proc `[]`(self: Dictionary; key: Variant): Variant		17
-nim	`[]`	gdext/dicttools.html#[],Dictionary,Variant_2	proc `[]`(self: var Dictionary; key: Variant): var Variant		19
-nim	`[]=`	gdext/dicttools.html#[]=,Dictionary,Variant,sinkVariant	proc `[]=`(self: var Dictionary; key: Variant; value: sink Variant)		21
-nim	newDictionary	gdext/dicttools.html#newDictionary	proc newDictionary(): Dictionary		6
-nim	newDictionary	gdext/dicttools.html#newDictionary,Dictionary	proc newDictionary(from: Dictionary): Dictionary		8
-nim	newDictionary	gdext/dicttools.html#newDictionary,Dictionary,Int,StringName,Variant,Int,StringName,Variant	proc newDictionary(base: Dictionary; keyType: Int; keyClassName: StringName;\n              keyScript: Variant; valueType: Int; valueClassName: StringName;\n              valueScript: Variant): Dictionary		11
-nim	`not`	gdext/dicttools.html#not,Dictionary	proc `not`(left: Dictionary): bool		8
-nim	`==`	gdext/dicttools.html#==,Dictionary,Dictionary	proc `==`(left: Dictionary; right: Dictionary): bool		9
-nim	size	gdext/dicttools.html#size,Dictionary	proc size(self: var Dictionary): Int		49
-nim	size	gdext/dicttools.html#size,Dictionary_2	proc size(self: Dictionary): Int		52
-nim	isEmpty	gdext/dicttools.html#isEmpty,Dictionary	proc isEmpty(self: var Dictionary): bool		55
-nim	isEmpty	gdext/dicttools.html#isEmpty,Dictionary_2	proc isEmpty(self: Dictionary): bool		58
-nim	clear	gdext/dicttools.html#clear,Dictionary	proc clear(self: var Dictionary): void		61
-nim	assign	gdext/dicttools.html#assign,Dictionary,Dictionary	proc assign(self: var Dictionary; dictionary: Dictionary): void		64
-nim	sort	gdext/dicttools.html#sort,Dictionary	proc sort(self: var Dictionary): void		68
-nim	merge	gdext/dicttools.html#merge,Dictionary,Dictionary,bool	proc merge(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): void		71
-nim	merged	gdext/dicttools.html#merged,Dictionary,Dictionary,bool	proc merged(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary		75
-nim	merged	gdext/dicttools.html#merged,Dictionary,Dictionary,bool_2	proc merged(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary		79
-nim	has	gdext/dicttools.html#has,Dictionary,Variant	proc has(self: var Dictionary; key: Variant): bool		83
-nim	has	gdext/dicttools.html#has,Dictionary,Variant_2	proc has(self: Dictionary; key: Variant): bool		87
-nim	hasAll	gdext/dicttools.html#hasAll,Dictionary,Array	proc hasAll(self: var Dictionary; keys: Array): bool		91
-nim	hasAll	gdext/dicttools.html#hasAll,Dictionary,Array_2	proc hasAll(self: Dictionary; keys: Array): bool		95
-nim	findKey	gdext/dicttools.html#findKey,Dictionary,Variant	proc findKey(self: var Dictionary; value: Variant): Variant		99
-nim	findKey	gdext/dicttools.html#findKey,Dictionary,Variant_2	proc findKey(self: Dictionary; value: Variant): Variant		103
-nim	erase	gdext/dicttools.html#erase,Dictionary,Variant	proc erase(self: var Dictionary; key: Variant): bool		107
-nim	hash	gdext/dicttools.html#hash,Dictionary	proc hash(self: var Dictionary): Hash		111
-nim	hash	gdext/dicttools.html#hash,Dictionary_2	proc hash(self: Dictionary): Hash		114
-nim	keys	gdext/dicttools.html#keys,Dictionary	proc keys(self: var Dictionary): Array		117
-nim	keys	gdext/dicttools.html#keys,Dictionary_2	proc keys(self: Dictionary): Array		120
-nim	values	gdext/dicttools.html#values,Dictionary	proc values(self: var Dictionary): Array		123
-nim	values	gdext/dicttools.html#values,Dictionary_2	proc values(self: Dictionary): Array		126
-nim	duplicate	gdext/dicttools.html#duplicate,Dictionary,bool	proc duplicate(self: var Dictionary; deep: bool = false): Dictionary		129
-nim	duplicate	gdext/dicttools.html#duplicate,Dictionary,bool_2	proc duplicate(self: Dictionary; deep: bool = false): Dictionary		133
-nim	duplicateDeep	gdext/dicttools.html#duplicateDeep,Dictionary,Int	proc duplicateDeep(self: var Dictionary; deepSubresourcesMode: Int = 1): Dictionary		137
-nim	duplicateDeep	gdext/dicttools.html#duplicateDeep,Dictionary,Int_2	proc duplicateDeep(self: Dictionary; deepSubresourcesMode: Int = 1): Dictionary		141
-nim	get	gdext/dicttools.html#get,Dictionary,Variant,Variant	proc get(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant		145
-nim	get	gdext/dicttools.html#get,Dictionary,Variant,Variant_2	proc get(self: Dictionary; key: Variant; default: Variant = default(Variant)): Variant		149
-nim	getOrAdd	gdext/dicttools.html#getOrAdd,Dictionary,Variant,Variant	proc getOrAdd(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant		153
-nim	set	gdext/dicttools.html#set,Dictionary,Variant,Variant	proc set(self: var Dictionary; key: Variant; value: Variant): bool		157
-nim	isTyped	gdext/dicttools.html#isTyped,Dictionary	proc isTyped(self: var Dictionary): bool		161
-nim	isTyped	gdext/dicttools.html#isTyped,Dictionary_2	proc isTyped(self: Dictionary): bool		164
-nim	isTypedKey	gdext/dicttools.html#isTypedKey,Dictionary	proc isTypedKey(self: var Dictionary): bool		167
-nim	isTypedKey	gdext/dicttools.html#isTypedKey,Dictionary_2	proc isTypedKey(self: Dictionary): bool		170
-nim	isTypedValue	gdext/dicttools.html#isTypedValue,Dictionary	proc isTypedValue(self: var Dictionary): bool		173
-nim	isTypedValue	gdext/dicttools.html#isTypedValue,Dictionary_2	proc isTypedValue(self: Dictionary): bool		176
-nim	isSameTyped	gdext/dicttools.html#isSameTyped,Dictionary,Dictionary	proc isSameTyped(self: var Dictionary; dictionary: Dictionary): bool		179
-nim	isSameTyped	gdext/dicttools.html#isSameTyped,Dictionary,Dictionary_2	proc isSameTyped(self: Dictionary; dictionary: Dictionary): bool		183
-nim	isSameTypedKey	gdext/dicttools.html#isSameTypedKey,Dictionary,Dictionary	proc isSameTypedKey(self: var Dictionary; dictionary: Dictionary): bool		187
-nim	isSameTypedKey	gdext/dicttools.html#isSameTypedKey,Dictionary,Dictionary_2	proc isSameTypedKey(self: Dictionary; dictionary: Dictionary): bool		191
-nim	isSameTypedValue	gdext/dicttools.html#isSameTypedValue,Dictionary,Dictionary	proc isSameTypedValue(self: var Dictionary; dictionary: Dictionary): bool		195
-nim	isSameTypedValue	gdext/dicttools.html#isSameTypedValue,Dictionary,Dictionary_2	proc isSameTypedValue(self: Dictionary; dictionary: Dictionary): bool		199
-nim	getTypedKeyBuiltin	gdext/dicttools.html#getTypedKeyBuiltin,Dictionary	proc getTypedKeyBuiltin(self: var Dictionary): Int		203
-nim	getTypedKeyBuiltin	gdext/dicttools.html#getTypedKeyBuiltin,Dictionary_2	proc getTypedKeyBuiltin(self: Dictionary): Int		206
-nim	getTypedValueBuiltin	gdext/dicttools.html#getTypedValueBuiltin,Dictionary	proc getTypedValueBuiltin(self: var Dictionary): Int		209
-nim	getTypedValueBuiltin	gdext/dicttools.html#getTypedValueBuiltin,Dictionary_2	proc getTypedValueBuiltin(self: Dictionary): Int		212
-nim	getTypedKeyClassName	gdext/dicttools.html#getTypedKeyClassName,Dictionary	proc getTypedKeyClassName(self: var Dictionary): StringName		215
-nim	getTypedKeyClassName	gdext/dicttools.html#getTypedKeyClassName,Dictionary_2	proc getTypedKeyClassName(self: Dictionary): StringName		218
-nim	getTypedValueClassName	gdext/dicttools.html#getTypedValueClassName,Dictionary	proc getTypedValueClassName(self: var Dictionary): StringName		221
-nim	getTypedValueClassName	gdext/dicttools.html#getTypedValueClassName,Dictionary_2	proc getTypedValueClassName(self: Dictionary): StringName		224
-nim	getTypedKeyScript	gdext/dicttools.html#getTypedKeyScript,Dictionary	proc getTypedKeyScript(self: var Dictionary): Variant		227
-nim	getTypedKeyScript	gdext/dicttools.html#getTypedKeyScript,Dictionary_2	proc getTypedKeyScript(self: Dictionary): Variant		230
-nim	getTypedValueScript	gdext/dicttools.html#getTypedValueScript,Dictionary	proc getTypedValueScript(self: var Dictionary): Variant		233
-nim	getTypedValueScript	gdext/dicttools.html#getTypedValueScript,Dictionary_2	proc getTypedValueScript(self: Dictionary): Variant		236
-nim	makeReadOnly	gdext/dicttools.html#makeReadOnly,Dictionary	proc makeReadOnly(self: var Dictionary): void		239
-nim	isReadOnly	gdext/dicttools.html#isReadOnly,Dictionary	proc isReadOnly(self: var Dictionary): bool		242
-nim	isReadOnly	gdext/dicttools.html#isReadOnly,Dictionary_2	proc isReadOnly(self: Dictionary): bool		245
-nim	recursiveEqual	gdext/dicttools.html#recursiveEqual,Dictionary,Dictionary,Int	proc recursiveEqual(self: var Dictionary; dictionary: Dictionary; recursionCount: Int): bool		248
-nim	recursiveEqual	gdext/dicttools.html#recursiveEqual,Dictionary,Dictionary,Int_2	proc recursiveEqual(self: Dictionary; dictionary: Dictionary; recursionCount: Int): bool		252
-nim	newDictionary	gdext/dicttools.html#newDictionary,Table	proc newDictionary(table: Table): Dictionary		27
-nim	newDictionary	gdext/dicttools.html#newDictionary,TableRef	proc newDictionary(table: TableRef): Dictionary		32
-nim	newDictionary	gdext/dicttools.html#newDictionary,openArray[]	proc newDictionary[A, B](pairs: openArray[(A, B)]): Dictionary		37
-nim	keys	gdext/dicttools.html#keys.i,Dictionary	iterator keys(self: Dictionary): Variant		42
-nim	values	gdext/dicttools.html#values.i,Dictionary	iterator values(self: Dictionary): Variant		46
-nim	pairs	gdext/dicttools.html#pairs.i,Dictionary	iterator pairs(self: Dictionary): tuple[key, item: Variant]		50
-nim	mvalues	gdext/dicttools.html#mvalues.i,Dictionary	iterator mvalues(self: var Dictionary): var Variant		54
-nim	mpairs	gdext/dicttools.html#mpairs.i,Dictionary	iterator mpairs(self: var Dictionary): tuple[key: Variant, item: var Variant]		58
-nim	contains	gdext/dicttools.html#contains,Dictionary,T	proc contains[T: SomeProperty](dict: Dictionary; value: T): bool		62
-nim	`[]`	gdext/dicttools.html#[],Dictionary,SomeProperty	proc `[]`(self: Dictionary; key: SomeProperty): Variant		64
-nim	`[]`	gdext/dicttools.html#[],Dictionary,SomeProperty_2	proc `[]`(self: var Dictionary; key: SomeProperty): var Variant		66
-nim	`[]=`	gdext/dicttools.html#[]=,Dictionary,SomeProperty,sinkVariant	proc `[]=`(self: var Dictionary; key: SomeProperty; value: sink Variant)		68
-nim	`[]=`	gdext/dicttools.html#[]=,Dictionary,A,sinkB	proc `[]=`[A, B: SomeProperty](self: var Dictionary; key: A; value: sink B)		70
-nim	dictionary	gdext/dicttools.html#dictionary.t,varargs[untyped]	template dictionary(args: varargs[untyped]): untyped		73
-nimgrp	gettypedkeybuiltin	gdext/dicttools.html#getTypedKeyBuiltin-procs-all	proc		203
-nimgrp	values	gdext/dicttools.html#values-procs-all	proc		123
-nimgrp	duplicate	gdext/dicttools.html#duplicate-procs-all	proc		129
-nimgrp	size	gdext/dicttools.html#size-procs-all	proc		49
-nimgrp	istypedkey	gdext/dicttools.html#isTypedKey-procs-all	proc		167
-nimgrp	isempty	gdext/dicttools.html#isEmpty-procs-all	proc		55
-nimgrp	issametypedvalue	gdext/dicttools.html#isSameTypedValue-procs-all	proc		195
-nimgrp	[]=	gdext/dicttools.html#[]=-procs-all	proc		21
-nimgrp	issametypedkey	gdext/dicttools.html#isSameTypedKey-procs-all	proc		187
-nimgrp	gettypedkeyscript	gdext/dicttools.html#getTypedKeyScript-procs-all	proc		227
-nimgrp	newdictionary	gdext/dicttools.html#newDictionary-procs-all	proc		6
-nimgrp	recursiveequal	gdext/dicttools.html#recursiveEqual-procs-all	proc		248
-nimgrp	findkey	gdext/dicttools.html#findKey-procs-all	proc		99
-nimgrp	merged	gdext/dicttools.html#merged-procs-all	proc		75
-nimgrp	issametyped	gdext/dicttools.html#isSameTyped-procs-all	proc		179
-nimgrp	istypedvalue	gdext/dicttools.html#isTypedValue-procs-all	proc		173
-nimgrp	has	gdext/dicttools.html#has-procs-all	proc		83
-nimgrp	[]	gdext/dicttools.html#[]-procs-all	proc		17
-nimgrp	hasall	gdext/dicttools.html#hasAll-procs-all	proc		91
-nimgrp	get	gdext/dicttools.html#get-procs-all	proc		145
-nimgrp	duplicatedeep	gdext/dicttools.html#duplicateDeep-procs-all	proc		137
-nimgrp	gettypedvaluebuiltin	gdext/dicttools.html#getTypedValueBuiltin-procs-all	proc		209
-nimgrp	istyped	gdext/dicttools.html#isTyped-procs-all	proc		161
-nimgrp	gettypedvaluescript	gdext/dicttools.html#getTypedValueScript-procs-all	proc		233
-nimgrp	gettypedkeyclassname	gdext/dicttools.html#getTypedKeyClassName-procs-all	proc		215
-nimgrp	gettypedvalueclassname	gdext/dicttools.html#getTypedValueClassName-procs-all	proc		221
-nimgrp	isreadonly	gdext/dicttools.html#isReadOnly-procs-all	proc		242
-nimgrp	hash	gdext/dicttools.html#hash-procs-all	proc		111
-nimgrp	keys	gdext/dicttools.html#keys-procs-all	proc		117
-nimgrp	nilcheck	gdext/dicttools.html#nilCheck-templates-all	template		10
+nim	`[]`	gdext/dicttools.html#[],Dictionary[Variant,Variant],Variant	proc `[]`(self: Dictionary[Variant, Variant]; key: Variant): Variant		73
+nim	`[]`	gdext/dicttools.html#[],Dictionary[Variant,B: not Variant],Variant	proc `[]`[B: not Variant](self: Dictionary[Variant, B]; key: Variant): B		76
+nim	`[]`	gdext/dicttools.html#[],Dictionary[A: not Variant,B: not Variant],A	proc `[]`[A, B: not Variant](self: Dictionary[A, B]; key: A): B		79
+nim	`[]`	gdext/dicttools.html#[],Dictionary[Variant,Variant],Variant_2	proc `[]`(self: var Dictionary[Variant, Variant]; key: Variant): var Variant		85
+nim	`[]`	gdext/dicttools.html#[],Dictionary[Variant,B: SomeBuiltins],Variant	proc `[]`[B: SomeBuiltins](self: var Dictionary[Variant, B]; key: Variant): var B		88
+nim	`[]`	gdext/dicttools.html#[],Dictionary[A: not Variant,Variant],A	proc `[]`[A: not Variant](self: var Dictionary[A, Variant]; key: A): var Variant		91
+nim	`[]`	gdext/dicttools.html#[],Dictionary[A: not Variant,B: SomeBuiltins],A	proc `[]`[A: not Variant; B: SomeBuiltins](self: var Dictionary[A, B]; key: A): var B		94
+nim	`[]=`	gdext/dicttools.html#[]=,Dictionary[Variant,Variant],Variant,sinkVariant	proc `[]=`(self: var Dictionary[Variant, Variant]; key: Variant; value: sink Variant)		100
+nim	`[]=`	gdext/dicttools.html#[]=,Dictionary[Variant,B: not Variant],Variant,sinkB	proc `[]=`[B: not Variant](self: var Dictionary[Variant, B]; key: Variant;\n                      value: sink B)		103
+nim	`[]=`	gdext/dicttools.html#[]=,Dictionary[A: not Variant,Variant],A,sinkVariant	proc `[]=`[A: not Variant](self: var Dictionary[A, Variant]; key: A;\n                      value: sink Variant)		106
+nim	`[]=`	gdext/dicttools.html#[]=,Dictionary[A: not Variant,B: not Variant],A,sinkB	proc `[]=`[A, B: not Variant](self: var Dictionary[A, B]; key: A; value: sink B)		109
+nim	`[]=`	gdext/dicttools.html#[]=,Dictionary[A,B],C,sinkD	proc `[]=`[A, B; C, D](self: var Dictionary[A, B]; key: C; value: sink D)		112
+nim	newDictionary	gdext/dicttools.html#newDictionary,Dictionary[Variant,Variant],Int,StringName,Variant,Int,StringName,Variant	proc newDictionary(base: Dictionary[Variant, Variant]; keyType: Int;\n              keyClassName: StringName; keyScript: Variant; valueType: Int;\n              valueClassName: StringName; valueScript: Variant): Dictionary[\n    Variant, Variant]		8
+nim	`not`	gdext/dicttools.html#not,Dictionary[Variant,Variant]	proc `not`(left: Dictionary[Variant, Variant]): bool		8
+nim	`==`	gdext/dicttools.html#==,Dictionary[Variant,Variant],Dictionary[Variant,Variant]	proc `==`(left: Dictionary[Variant, Variant]; right: Dictionary[Variant, Variant]): bool		11
+nim	size	gdext/dicttools.html#size,Dictionary[Variant,Variant]	proc size(self: Dictionary[Variant, Variant]): Int		54
+nim	isEmpty	gdext/dicttools.html#isEmpty,Dictionary[Variant,Variant]	proc isEmpty(self: Dictionary[Variant, Variant]): bool		57
+nim	clear	gdext/dicttools.html#clear,Dictionary[Variant,Variant]	proc clear(self: var Dictionary[Variant, Variant]): void		60
+nim	assign	gdext/dicttools.html#assign,Dictionary[Variant,Variant],Dictionary[Variant,Variant]	proc assign(self: var Dictionary[Variant, Variant];\n       dictionary: Dictionary[Variant, Variant]): void		63
+nim	sort	gdext/dicttools.html#sort,Dictionary[Variant,Variant]	proc sort(self: var Dictionary[Variant, Variant]): void		67
+nim	merge	gdext/dicttools.html#merge,Dictionary[Variant,Variant],Dictionary[Variant,Variant],bool	proc merge(self: var Dictionary[Variant, Variant];\n      dictionary: Dictionary[Variant, Variant]; overwrite: bool = false): void		70
+nim	merged	gdext/dicttools.html#merged,Dictionary[Variant,Variant],Dictionary[Variant,Variant],bool	proc merged(self: Dictionary[Variant, Variant];\n       dictionary: Dictionary[Variant, Variant]; overwrite: bool = false): Dictionary[\n    Variant, Variant]		74
+nim	has	gdext/dicttools.html#has,Dictionary[Variant,Variant],Variant	proc has(self: Dictionary[Variant, Variant]; key: Variant): bool		78
+nim	hasAll	gdext/dicttools.html#hasAll,Dictionary[Variant,Variant],Array[Variant]	proc hasAll(self: Dictionary[Variant, Variant]; keys: Array[Variant]): bool		81
+nim	findKey	gdext/dicttools.html#findKey,Dictionary[Variant,Variant],Variant	proc findKey(self: Dictionary[Variant, Variant]; value: Variant): Variant		85
+nim	erase	gdext/dicttools.html#erase,Dictionary[Variant,Variant],Variant	proc erase(self: var Dictionary[Variant, Variant]; key: Variant): bool		88
+nim	hash	gdext/dicttools.html#hash,Dictionary[Variant,Variant]	proc hash(self: Dictionary[Variant, Variant]): Hash		91
+nim	keys	gdext/dicttools.html#keys,Dictionary[Variant,Variant]	proc keys(self: Dictionary[Variant, Variant]): Array[Variant]		94
+nim	values	gdext/dicttools.html#values,Dictionary[Variant,Variant]	proc values(self: Dictionary[Variant, Variant]): Array[Variant]		97
+nim	duplicate	gdext/dicttools.html#duplicate,Dictionary[Variant,Variant],bool	proc duplicate(self: Dictionary[Variant, Variant]; deep: bool = false): Dictionary[\n    Variant, Variant]		100
+nim	duplicateDeep	gdext/dicttools.html#duplicateDeep,Dictionary[Variant,Variant],Int	proc duplicateDeep(self: Dictionary[Variant, Variant]; deepSubresourcesMode: Int = 1): Dictionary[\n    Variant, Variant]		103
+nim	get	gdext/dicttools.html#get,Dictionary[Variant,Variant],Variant,Variant	proc get(self: Dictionary[Variant, Variant]; key: Variant;\n    default: Variant = default(Variant)): Variant		106
+nim	getOrAdd	gdext/dicttools.html#getOrAdd,Dictionary[Variant,Variant],Variant,Variant	proc getOrAdd(self: var Dictionary[Variant, Variant]; key: Variant;\n         default: Variant = default(Variant)): Variant		109
+nim	set	gdext/dicttools.html#set,Dictionary[Variant,Variant],Variant,Variant	proc set(self: var Dictionary[Variant, Variant]; key: Variant; value: Variant): bool		112
+nim	isTyped	gdext/dicttools.html#isTyped,Dictionary[Variant,Variant]	proc isTyped(self: Dictionary[Variant, Variant]): bool		115
+nim	isTypedKey	gdext/dicttools.html#isTypedKey,Dictionary[Variant,Variant]	proc isTypedKey(self: Dictionary[Variant, Variant]): bool		118
+nim	isTypedValue	gdext/dicttools.html#isTypedValue,Dictionary[Variant,Variant]	proc isTypedValue(self: Dictionary[Variant, Variant]): bool		121
+nim	isSameTyped	gdext/dicttools.html#isSameTyped,Dictionary[Variant,Variant],Dictionary[Variant,Variant]	proc isSameTyped(self: Dictionary[Variant, Variant];\n            dictionary: Dictionary[Variant, Variant]): bool		124
+nim	isSameTypedKey	gdext/dicttools.html#isSameTypedKey,Dictionary[Variant,Variant],Dictionary[Variant,Variant]	proc isSameTypedKey(self: Dictionary[Variant, Variant];\n               dictionary: Dictionary[Variant, Variant]): bool		128
+nim	isSameTypedValue	gdext/dicttools.html#isSameTypedValue,Dictionary[Variant,Variant],Dictionary[Variant,Variant]	proc isSameTypedValue(self: Dictionary[Variant, Variant];\n                 dictionary: Dictionary[Variant, Variant]): bool		132
+nim	getTypedKeyBuiltin	gdext/dicttools.html#getTypedKeyBuiltin,Dictionary[Variant,Variant]	proc getTypedKeyBuiltin(self: Dictionary[Variant, Variant]): Int		136
+nim	getTypedValueBuiltin	gdext/dicttools.html#getTypedValueBuiltin,Dictionary[Variant,Variant]	proc getTypedValueBuiltin(self: Dictionary[Variant, Variant]): Int		139
+nim	getTypedKeyClassName	gdext/dicttools.html#getTypedKeyClassName,Dictionary[Variant,Variant]	proc getTypedKeyClassName(self: Dictionary[Variant, Variant]): StringName		142
+nim	getTypedValueClassName	gdext/dicttools.html#getTypedValueClassName,Dictionary[Variant,Variant]	proc getTypedValueClassName(self: Dictionary[Variant, Variant]): StringName		145
+nim	getTypedKeyScript	gdext/dicttools.html#getTypedKeyScript,Dictionary[Variant,Variant]	proc getTypedKeyScript(self: Dictionary[Variant, Variant]): Variant		148
+nim	getTypedValueScript	gdext/dicttools.html#getTypedValueScript,Dictionary[Variant,Variant]	proc getTypedValueScript(self: Dictionary[Variant, Variant]): Variant		151
+nim	makeReadOnly	gdext/dicttools.html#makeReadOnly,Dictionary[Variant,Variant]	proc makeReadOnly(self: var Dictionary[Variant, Variant]): void		154
+nim	isReadOnly	gdext/dicttools.html#isReadOnly,Dictionary[Variant,Variant]	proc isReadOnly(self: Dictionary[Variant, Variant]): bool		157
+nim	recursiveEqual	gdext/dicttools.html#recursiveEqual,Dictionary[Variant,Variant],Dictionary[Variant,Variant],Int	proc recursiveEqual(self: Dictionary[Variant, Variant];\n               dictionary: Dictionary[Variant, Variant]; recursionCount: Int): bool		160
+nim	`==`	gdext/dicttools.html#==,Dictionary[A,B],Dictionary[A,B]	proc `==`[A, B](left, right: Dictionary[A, B]): bool		119
+nim	newDictionary	gdext/dicttools.html#newDictionary	proc newDictionary[A, B](): Dictionary[A, B]		133
+nim	newDictionary	gdext/dicttools.html#newDictionary,Dictionary[A,B]	proc newDictionary[A, B](from: Dictionary[A, B]): Dictionary[A, B]		140
+nim	newDictionary	gdext/dicttools.html#newDictionary,Table[A,B]	proc newDictionary[A, B](table: Table[A, B]): Dictionary[A, B]		144
+nim	newDictionary	gdext/dicttools.html#newDictionary,TableRef[A,B]	proc newDictionary[A, B](table: TableRef[A, B]): Dictionary[A, B]		149
+nim	newDictionary	gdext/dicttools.html#newDictionary,openArray[]	proc newDictionary[A, B](pairs: openArray[(A, B)]): Dictionary[A, B]		154
+nim	keys	gdext/dicttools.html#keys.i,Dictionary[A,B]	iterator keys[A, B](self: Dictionary[A, B]): A		159
+nim	values	gdext/dicttools.html#values.i,Dictionary[A,B]	iterator values[A, B](self: Dictionary[A, B]): B		168
+nim	pairs	gdext/dicttools.html#pairs.i,Dictionary[A,B]	iterator pairs[A, B](self: Dictionary[A, B]): tuple[key: A, item: B]		172
+nim	mvalues	gdext/dicttools.html#mvalues.i,Dictionary[A,B: Bool or Int or Float or Vector2 or Vector3 or Vector4 or Vector2i or Vector3i or Vector4i or Rect2 or Rect2i or Transform2D or Plane or Quaternion or AABB or Basis or Transform3D or Projection or Color or String or StringName or NodePath or RID or Callable or Signal or Dictionary or Array or PackedByteArray or PackedInt32Array or PackedInt64Array or PackedFloat32Array or PackedFloat64Array or PackedStringArray or PackedVector2Array or PackedVector3Array or PackedVector4Array or PackedColorArray or Variant]	iterator mvalues[A; B: SomeBuiltins or Variant](self: var Dictionary[A, B]): var B		176
+nim	mpairs	gdext/dicttools.html#mpairs.i,Dictionary[A,B: Bool or Int or Float or Vector2 or Vector3 or Vector4 or Vector2i or Vector3i or Vector4i or Rect2 or Rect2i or Transform2D or Plane or Quaternion or AABB or Basis or Transform3D or Projection or Color or String or StringName or NodePath or RID or Callable or Signal or Dictionary or Array or PackedByteArray or PackedInt32Array or PackedInt64Array or PackedFloat32Array or PackedFloat64Array or PackedStringArray or PackedVector2Array or PackedVector3Array or PackedVector4Array or PackedColorArray or Variant]	iterator mpairs[A; B: SomeBuiltins or Variant](self: var Dictionary[A, B]): tuple[key: A,\n    item: var B]		180
+nim	size	gdext/dicttools.html#size,Dictionary[A,B]	proc size[A, B](self: Dictionary[A, B]): Int		184
+nim	isEmpty	gdext/dicttools.html#isEmpty,Dictionary[A,B]	proc isEmpty[A, B](self: Dictionary[A, B]): bool		188
+nim	clear	gdext/dicttools.html#clear,Dictionary[A,B]	proc clear[A, B](self: var Dictionary[A, B]): void		192
+nim	assign	gdext/dicttools.html#assign,Dictionary[A,B],Dictionary[A,B]	proc assign[A, B](self: var Dictionary[A, B]; dictionary: Dictionary[A, B]): void		196
+nim	sort	gdext/dicttools.html#sort,Dictionary[A,B]	proc sort[A, B](self: var Dictionary[A, B]): void		201
+nim	merge	gdext/dicttools.html#merge,Dictionary[A,B],Dictionary[A,B]	proc merge[A, B](self: var Dictionary[A, B]; dictionary: Dictionary[A, B]): void		205
+nim	merged	gdext/dicttools.html#merged,Dictionary[A,B],Dictionary[A,B],bool	proc merged[A, B](self: Dictionary[A, B]; dictionary: Dictionary[A, B];\n             overwrite: bool = false): Dictionary[A, B]		210
+nim	merged	gdext/dicttools.html#merged,Dictionary[Variant,Variant],Dictionary[A,B],bool	proc merged[A, B](self: Dictionary[Variant, Variant]; dictionary: Dictionary[A, B];\n             overwrite: bool = false): Dictionary[A, B]		214
+nim	merged	gdext/dicttools.html#merged,Dictionary[A,B],Dictionary[Variant,Variant],bool	proc merged[A, B](self: Dictionary[A, B]; dictionary: Dictionary[Variant, Variant];\n             overwrite: bool = false): Dictionary[A, B]		218
+nim	merged	gdext/dicttools.html#merged,Dictionary[A,B],Dictionary[C,D],bool	proc merged[A, B, C, D](self: Dictionary[A, B]; dictionary: Dictionary[C, D];\n                   overwrite: bool = false): Dictionary[Variant, Variant]		222
+nim	has	gdext/dicttools.html#has,Dictionary[A,B],C	proc has[A, B; C](self: Dictionary[A, B]; key: C): bool		227
+nim	findKey	gdext/dicttools.html#findKey,Dictionary[A,B],C	proc findKey[A, B; C](self: Dictionary[A, B]; value: C): Variant		231
+nim	erase	gdext/dicttools.html#erase,Dictionary[A,B],C	proc erase[A, B; C](self: var Dictionary[A, B]; key: C): bool		235
+nim	keys	gdext/dicttools.html#keys,Dictionary[A,B]	proc keys[A, B](self: Dictionary[A, B]): Array[A]		239
+nim	values	gdext/dicttools.html#values,Dictionary[A,B]	proc values[A, B](self: Dictionary[A, B]): Array[B]		244
+nim	duplicate	gdext/dicttools.html#duplicate,Dictionary[A,B],bool	proc duplicate[A, B](self: Dictionary[A, B]; deep: bool = false): Dictionary[A, B]		249
+nim	duplicateDeep	gdext/dicttools.html#duplicateDeep,Dictionary[A,B],Int	proc duplicateDeep[A, B](self: Dictionary[A, B]; deepSubresourcesMode: Int = 1): Dictionary[\n    A, B]		253
+nim	get	gdext/dicttools.html#get,Dictionary[A,B],C,B	proc get[A, B; C](self: Dictionary[A, B]; key: C; default: B = default(B)): B		257
+nim	get	gdext/dicttools.html#get,Dictionary[A: not Variant,B],Variant,B	proc get[A: not Variant; B](self: Dictionary[A, B]; key: Variant;\n                       default: B = default(B)): B		260
+nim	get	gdext/dicttools.html#get,Dictionary[A: not Variant,B],C,B	proc get[A: not Variant; B; C: not A](self: Dictionary[A, B]; key: C;\n                                 default: B = default(B)): B		261
+nim	getOrAdd	gdext/dicttools.html#getOrAdd,Dictionary[A,B],C,B	proc getOrAdd[A, B; C](self: Dictionary[A, B]; key: C; default: B = default(B)): B		263
+nim	getOrAdd	gdext/dicttools.html#getOrAdd,Dictionary[A: not Variant,B],C,B	proc getOrAdd[A: not Variant; B; C: not A](self: Dictionary[A, B]; key: C;\n                                      default: B = default(B)): B		266
+nim	set	gdext/dicttools.html#set,Dictionary[A,B],A,B	proc set[A, B](self: var Dictionary[A, B]; key: A; value: B): bool		268
+nim	set	gdext/dicttools.html#set,Dictionary[Variant,B],A,B	proc set[A, B](self: var Dictionary[Variant, B]; key: A; value: B): bool		271
+nim	set	gdext/dicttools.html#set,Dictionary[A,Variant],A,B	proc set[A, B](self: var Dictionary[A, Variant]; key: A; value: B): bool		274
+nim	set	gdext/dicttools.html#set,Dictionary[Variant,Variant],A,B	proc set[A, B](self: var Dictionary[Variant, Variant]; key: A; value: B): bool		277
+nim	isTyped	gdext/dicttools.html#isTyped,Dictionary[A,B]	proc isTyped[A, B](self: Dictionary[A, B]): bool		281
+nim	isTypedKey	gdext/dicttools.html#isTypedKey,Dictionary[A,B]	proc isTypedKey[A, B](self: Dictionary[A, B]): bool		285
+nim	isTypedValue	gdext/dicttools.html#isTypedValue,Dictionary[A,B]	proc isTypedValue[A, B](self: Dictionary[A, B]): bool		289
+nim	isSameTyped	gdext/dicttools.html#isSameTyped,Dictionary[A,B],Dictionary[C,D]	proc isSameTyped[A, B, C, D](self: Dictionary[A, B]; dictionary: Dictionary[C, D]): bool		293
+nim	isSameTypedKey	gdext/dicttools.html#isSameTypedKey,Dictionary[A,B],Dictionary[C,D]	proc isSameTypedKey[A, B, C, D](self: Dictionary[A, B]; dictionary: Dictionary[C, D]): bool		298
+nim	isSameTypedValue	gdext/dicttools.html#isSameTypedValue,Dictionary[A,B],Dictionary[C,D]	proc isSameTypedValue[A, B, C, D](self: Dictionary[A, B];\n                             dictionary: Dictionary[C, D]): bool		303
+nim	getTypedKeyBuiltin	gdext/dicttools.html#getTypedKeyBuiltin,Dictionary[A,B]	proc getTypedKeyBuiltin[A, B](self: Dictionary[A, B]): Int		308
+nim	getTypedValueBuiltin	gdext/dicttools.html#getTypedValueBuiltin,Dictionary[A,B]	proc getTypedValueBuiltin[A, B](self: Dictionary[A, B]): Int		312
+nim	getTypedKeyClassName	gdext/dicttools.html#getTypedKeyClassName,Dictionary[A,B]	proc getTypedKeyClassName[A, B](self: Dictionary[A, B]): StringName		316
+nim	getTypedValueClassName	gdext/dicttools.html#getTypedValueClassName,Dictionary[A,B]	proc getTypedValueClassName[A, B](self: Dictionary[A, B]): StringName		320
+nim	getTypedKeyScript	gdext/dicttools.html#getTypedKeyScript,Dictionary[A,B]	proc getTypedKeyScript[A, B](self: Dictionary[A, B]): Variant		324
+nim	getTypedValueScript	gdext/dicttools.html#getTypedValueScript,Dictionary[A,B]	proc getTypedValueScript[A, B](self: Dictionary[A, B]): Variant		328
+nim	makeReadOnly	gdext/dicttools.html#makeReadOnly,Dictionary[A,B]	proc makeReadOnly[A, B](self: var Dictionary[A, B]): void		332
+nim	isReadOnly	gdext/dicttools.html#isReadOnly,Dictionary[A,B]	proc isReadOnly[A, B](self: Dictionary[A, B]): bool		336
+nim	recursiveEqual	gdext/dicttools.html#recursiveEqual,Dictionary[A,B],Dictionary[C,D],Int	proc recursiveEqual[A, B, C, D](self: Dictionary[A, B]; dictionary: Dictionary[C, D];\n                           recursionCount: Int): bool		340
+nimgrp	gettypedkeybuiltin	gdext/dicttools.html#getTypedKeyBuiltin-procs-all	proc		136
+nimgrp	values	gdext/dicttools.html#values-procs-all	proc		97
+nimgrp	==	gdext/dicttools.html#==-procs-all	proc		11
+nimgrp	sort	gdext/dicttools.html#sort-procs-all	proc		67
+nimgrp	duplicate	gdext/dicttools.html#duplicate-procs-all	proc		100
+nimgrp	assign	gdext/dicttools.html#assign-procs-all	proc		63
+nimgrp	size	gdext/dicttools.html#size-procs-all	proc		54
+nimgrp	istypedkey	gdext/dicttools.html#isTypedKey-procs-all	proc		118
+nimgrp	isempty	gdext/dicttools.html#isEmpty-procs-all	proc		57
+nimgrp	issametypedvalue	gdext/dicttools.html#isSameTypedValue-procs-all	proc		132
+nimgrp	[]=	gdext/dicttools.html#[]=-procs-all	proc		100
+nimgrp	issametypedkey	gdext/dicttools.html#isSameTypedKey-procs-all	proc		128
+nimgrp	gettypedkeyscript	gdext/dicttools.html#getTypedKeyScript-procs-all	proc		148
+nimgrp	newdictionary	gdext/dicttools.html#newDictionary-procs-all	proc		8
+nimgrp	makereadonly	gdext/dicttools.html#makeReadOnly-procs-all	proc		154
+nimgrp	recursiveequal	gdext/dicttools.html#recursiveEqual-procs-all	proc		160
+nimgrp	findkey	gdext/dicttools.html#findKey-procs-all	proc		85
+nimgrp	merged	gdext/dicttools.html#merged-procs-all	proc		74
+nimgrp	getoradd	gdext/dicttools.html#getOrAdd-procs-all	proc		109
+nimgrp	issametyped	gdext/dicttools.html#isSameTyped-procs-all	proc		124
+nimgrp	istypedvalue	gdext/dicttools.html#isTypedValue-procs-all	proc		121
+nimgrp	has	gdext/dicttools.html#has-procs-all	proc		78
+nimgrp	[]	gdext/dicttools.html#[]-procs-all	proc		73
+nimgrp	clear	gdext/dicttools.html#clear-procs-all	proc		60
+nimgrp	get	gdext/dicttools.html#get-procs-all	proc		106
+nimgrp	erase	gdext/dicttools.html#erase-procs-all	proc		88
+nimgrp	duplicatedeep	gdext/dicttools.html#duplicateDeep-procs-all	proc		103
+nimgrp	gettypedvaluebuiltin	gdext/dicttools.html#getTypedValueBuiltin-procs-all	proc		139
+nimgrp	istyped	gdext/dicttools.html#isTyped-procs-all	proc		115
+nimgrp	gettypedvaluescript	gdext/dicttools.html#getTypedValueScript-procs-all	proc		151
+nimgrp	set	gdext/dicttools.html#set-procs-all	proc		112
+nimgrp	gettypedkeyclassname	gdext/dicttools.html#getTypedKeyClassName-procs-all	proc		142
+nimgrp	gettypedvalueclassname	gdext/dicttools.html#getTypedValueClassName-procs-all	proc		145
+nimgrp	isreadonly	gdext/dicttools.html#isReadOnly-procs-all	proc		157
+nimgrp	merge	gdext/dicttools.html#merge-procs-all	proc		70
+nimgrp	keys	gdext/dicttools.html#keys-procs-all	proc		94

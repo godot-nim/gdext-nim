@@ -64,7 +64,7 @@
 <li><a class="reference" href="#AltFloat" title="AltFloat = float32">AltFloat</a></li>
 <li><a class="reference" href="#AltInt" title="AltInt = int | int32 | int16 | int8 | uint64 | uint32 | uint16 | uint8">AltInt</a></li>
 <li><a class="reference" href="#AltString" title="AltString = string">AltString</a></li>
-<li><a class="reference" href="#Array" title="Array {.byref.} = object">Array</a></li>
+<li><a class="reference" href="#Array" title="Array[T] {.byref.} = object">Array</a></li>
 <li><a class="reference" href="#AudioFrame" title="AudioFrame = object
   left*: cfloat
   right*: cfloat">AudioFrame</a></li>
@@ -85,7 +85,7 @@
   g*: float_elem
   b*: float_elem
   a*: float_elem = 1.0">Color</a></li>
-<li><a class="reference" href="#Dictionary" title="Dictionary {.byref.} = object">Dictionary</a></li>
+<li><a class="reference" href="#Dictionary" title="Dictionary[A; B] {.byref.} = object">Dictionary</a></li>
 <li><a class="reference" href="#Float" title="Float = float64">Float</a></li>
 <li><a class="reference" href="#float_elem" title="float_elem = float32">float_elem</a></li>
 <li><a class="reference" href="#GdRef" title="GdRef[RefCounted] = object
@@ -249,9 +249,9 @@
     Projection |
     Color">SomePrimitives</a></li>
 <li><a class="reference" href="#SomeProperty" title="SomeProperty = concept xtypeof(t)
-    t.variantType is VariantType
-    variant(x) is Variant
-    compiles(Variant().get(t))">SomeProperty</a></li>
+    t.variantType is VariantType">SomeProperty</a></li>
+<li><a class="reference" href="#SomePropertySub" title="SomePropertySub = concept xtypeof(t)
+    t.variantType is VariantType">SomePropertySub</a></li>
 <li><a class="reference" href="#SomeUserClass" title="SomeUserClass = concept typeof(t)
     t is SomeClass
     not (t.EngineClass is t)">SomeUserClass</a></li>
@@ -265,7 +265,6 @@
 <li><a class="reference" href="#Transform3D" title="Transform3D {.byref.} = object
   basis*: Basis
   origin*: Vector3">Transform3D</a></li>
-<li><a class="reference" href="#TypedArray" title="TypedArray[T] = distinct Array">TypedArray</a></li>
 <li><a class="reference" href="#Variant" title="Variant {.byref.} = object">Variant</a></li>
 <li><a class="reference" href="#Vector" title="Vector[N; T] = array[N, T]">Vector</a></li>
 <li><a class="reference" href="#Vector2" title="Vector2 = VectorR[2]">Vector2</a></li>
@@ -286,28 +285,28 @@
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">=copy
   <li><a class="reference" href="#%3Dcopy%2CVariant%2CVariant" title="`=copy`(dest: var Variant; source: Variant)">`=copy`(dest: var Variant; source: Variant)</a></li>
-<li><a class="reference" href="#%3Dcopy%2CArray%2CArray" title="`=copy`(dst: var Array; src: Array)">`=copy`(dst: var Array; src: Array)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CCallable%2CCallable" title="`=copy`(dst: var Callable; src: Callable)">`=copy`(dst: var Callable; src: Callable)</a></li>
-<li><a class="reference" href="#%3Dcopy%2CDictionary%2CDictionary" title="`=copy`(dst: var Dictionary; src: Dictionary)">`=copy`(dst: var Dictionary; src: Dictionary)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CNodePath%2CNodePath" title="`=copy`(dst: var NodePath; src: NodePath)">`=copy`(dst: var NodePath; src: NodePath)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CRID%2CRID" title="`=copy`(dst: var RID; src: RID)">`=copy`(dst: var RID; src: RID)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CSignal%2CSignal" title="`=copy`(dst: var Signal; src: Signal)">`=copy`(dst: var Signal; src: Signal)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CString%2CString" title="`=copy`(dst: var String; src: String)">`=copy`(dst: var String; src: String)</a></li>
 <li><a class="reference" href="#%3Dcopy%2CStringName%2CStringName" title="`=copy`(dst: var StringName; src: StringName)">`=copy`(dst: var StringName; src: StringName)</a></li>
+<li><a class="reference" href="#%3Dcopy%2CDictionary%5BA%2CB%5D%2CDictionary%5BA%2CB%5D" title="`=copy`[A, B](dst: var Dictionary[A, B]; src: Dictionary[A, B])">`=copy`[A, B](dst: var Dictionary[A, B]; src: Dictionary[A, B])</a></li>
+<li><a class="reference" href="#%3Dcopy%2CArray%5BT%5D%2CArray%5BT%5D" title="`=copy`[T](dst: var Array[T]; src: Array[T])">`=copy`[T](dst: var Array[T]; src: Array[T])</a></li>
 <li><a class="reference" href="#%3Dcopy%2CGdRef%5BT%5D%2CGdRef%5BT%5D" title="`=copy`[T](dst: var GdRef[T]; src: GdRef[T])">`=copy`[T](dst: var GdRef[T]; src: GdRef[T])</a></li>
 <li><a class="reference" href="#%3Dcopy%2CPackedArray%5BT%5D%2CPackedArray%5BT%5D" title="`=copy`[T](dst: var PackedArray[T]; src: PackedArray[T])">`=copy`[T](dst: var PackedArray[T]; src: PackedArray[T])</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">=destroy
-  <li><a class="reference" href="#%3Ddestroy%2CArray" title="`=destroy`(val {.bycopy.}: Array)">`=destroy`(val {.bycopy.}: Array)</a></li>
-<li><a class="reference" href="#%3Ddestroy%2CCallable" title="`=destroy`(val {.bycopy.}: Callable)">`=destroy`(val {.bycopy.}: Callable)</a></li>
-<li><a class="reference" href="#%3Ddestroy%2CDictionary" title="`=destroy`(val {.bycopy.}: Dictionary)">`=destroy`(val {.bycopy.}: Dictionary)</a></li>
+  <li><a class="reference" href="#%3Ddestroy%2CCallable" title="`=destroy`(val {.bycopy.}: Callable)">`=destroy`(val {.bycopy.}: Callable)</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CNodePath" title="`=destroy`(val {.bycopy.}: NodePath)">`=destroy`(val {.bycopy.}: NodePath)</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CSignal" title="`=destroy`(val {.bycopy.}: Signal)">`=destroy`(val {.bycopy.}: Signal)</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CString" title="`=destroy`(val {.bycopy.}: String)">`=destroy`(val {.bycopy.}: String)</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CStringName" title="`=destroy`(val {.bycopy.}: StringName)">`=destroy`(val {.bycopy.}: StringName)</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CVariant" title="`=destroy`(x {.bycopy.}: Variant)">`=destroy`(x {.bycopy.}: Variant)</a></li>
+<li><a class="reference" href="#%3Ddestroy%2CDictionary%5BA%2CB%5D" title="`=destroy`[A, B](val {.bycopy.}: Dictionary[A, B])">`=destroy`[A, B](val {.bycopy.}: Dictionary[A, B])</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CGdRef%5BT%5D" title="`=destroy`[T](self: GdRef[T])">`=destroy`[T](self: GdRef[T])</a></li>
+<li><a class="reference" href="#%3Ddestroy%2CArray%5BT%5D" title="`=destroy`[T](val {.bycopy.}: Array[T])">`=destroy`[T](val {.bycopy.}: Array[T])</a></li>
 <li><a class="reference" href="#%3Ddestroy%2CPackedArray%5BT%5D" title="`=destroy`[T](val {.bycopy.}: PackedArray[T])">`=destroy`[T](val {.bycopy.}: PackedArray[T])</a></li>
 
 </ul>
@@ -375,7 +374,6 @@
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BStringName%5D" title="variantType(_: typedesc[StringName]): VariantType">variantType(_: typedesc[StringName]): VariantType</a></li>
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BTransform2D%5D" title="variantType(_: typedesc[Transform2D]): VariantType">variantType(_: typedesc[Transform2D]): VariantType</a></li>
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BTransform3D%5D" title="variantType(_: typedesc[Transform3D]): VariantType">variantType(_: typedesc[Transform3D]): VariantType</a></li>
-<li><a class="reference" href="#variantType.t%2Ctypedesc%5BTypedArray%5D" title="variantType(_: typedesc[TypedArray]): VariantType">variantType(_: typedesc[TypedArray]): VariantType</a></li>
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BVector2%5D" title="variantType(_: typedesc[Vector2]): VariantType">variantType(_: typedesc[Vector2]): VariantType</a></li>
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BVector2i%5D" title="variantType(_: typedesc[Vector2i]): VariantType">variantType(_: typedesc[Vector2i]): VariantType</a></li>
 <li><a class="reference" href="#variantType.t%2Ctypedesc%5BVector3%5D" title="variantType(_: typedesc[Vector3]): VariantType">variantType(_: typedesc[Vector3]): VariantType</a></li>
@@ -454,7 +452,7 @@
   </dd>
 </div>
 <div id="Array">
-  <dt><pre><a href="builtinindex.html#Array"><span class="Identifier">Array</span></a> {.<span class="Identifier">byref</span>.} <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
+  <dt><pre><a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> {.<span class="Identifier">byref</span>.} <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
   <dd>
     
     
@@ -531,7 +529,7 @@
   </dd>
 </div>
 <div id="Dictionary">
-  <dt><pre><a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a> {.<span class="Identifier">byref</span>.} <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
+  <dt><pre><a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span> {.<span class="Identifier">byref</span>.} <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
   <dd>
     
     
@@ -1052,9 +1050,16 @@
 </div>
 <div id="SomeProperty">
   <dt><pre><a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a> <span class="Other">=</span> <span class="Keyword">concept</span> <span class="Identifier">x</span><span class="Keyword">typeof</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">)</span>
-    <span class="Identifier">t</span><span class="Other">.</span><span class="Identifier">variantType</span> <span class="Identifier">is</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a>
-    <span class="Identifier">variant</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">)</span> <span class="Identifier">is</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a>
-    <span class="Identifier">compiles</span><span class="Other">(</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">.</span><span class="Identifier">get</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
+    <span class="Identifier">t</span><span class="Other">.</span><span class="Identifier">variantType</span> <span class="Identifier">is</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="SomePropertySub">
+  <dt><pre><a href="builtinindex.html#SomePropertySub"><span class="Identifier">SomePropertySub</span></a> <span class="Other">=</span> <span class="Keyword">concept</span> <span class="Identifier">x</span><span class="Keyword">typeof</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">)</span>
+    <span class="Identifier">t</span><span class="Other">.</span><span class="Identifier">variantType</span> <span class="Identifier">is</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a></pre></dt>
   <dd>
     
     
@@ -1110,14 +1115,6 @@
   <dt><pre><a href="builtinindex.html#Transform3D"><span class="Identifier">Transform3D</span></a> {.<span class="Identifier">byref</span>.} <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">basis</span><span class="Operator">*</span><span class="Other">:</span> <a href="builtinindex.html#Basis"><span class="Identifier">Basis</span></a>
   <span class="Identifier">origin</span><span class="Operator">*</span><span class="Other">:</span> <a href="builtinindex.html#Vector3"><span class="Identifier">Vector3</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="TypedArray">
-  <dt><pre><a href="builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other">=</span> <span class="Keyword">distinct</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a></pre></dt>
   <dd>
     
     
@@ -1220,26 +1217,8 @@
     
   </dd>
 </div>
-<div id="=copy,Array,Array">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CArray%2CArray"><span class="Identifier">`=copy`</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
 <div id="=copy,Callable,Callable">
   <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CCallable%2CCallable"><span class="Identifier">`=copy`</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="=copy,Dictionary,Dictionary">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CDictionary%2CDictionary"><span class="Identifier">`=copy`</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1292,6 +1271,22 @@
     
   </dd>
 </div>
+<div id="=copy,Dictionary[A,B],Dictionary[A,B]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CDictionary%5BA%2CB%5D%2CDictionary%5BA%2CB%5D"><span class="Identifier">`=copy`</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="=copy,Array[T],Array[T]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CArray%5BT%5D%2CArray%5BT%5D"><span class="Identifier">`=copy`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="=copy,GdRef[T],GdRef[T]">
   <dt><pre><span class="Keyword">proc</span> <a href="#%3Dcopy%2CGdRef%5BT%5D%2CGdRef%5BT%5D"><span class="Identifier">`=copy`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
   <dd>
@@ -1311,26 +1306,8 @@
 
 </div>
 <div id="=destroy-procs-all">
-  <div id="=destroy,Array">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CArray"><span class="Identifier">`=destroy`</span></a><span class="Other">(</span><span class="Identifier">val</span> {.<span class="Identifier">bycopy</span>.}<span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="=destroy,Callable">
+  <div id="=destroy,Callable">
   <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CCallable"><span class="Identifier">`=destroy`</span></a><span class="Other">(</span><span class="Identifier">val</span> {.<span class="Identifier">bycopy</span>.}<span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="=destroy,Dictionary">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CDictionary"><span class="Identifier">`=destroy`</span></a><span class="Other">(</span><span class="Identifier">val</span> {.<span class="Identifier">bycopy</span>.}<span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1383,8 +1360,25 @@
     
   </dd>
 </div>
+<div id="=destroy,Dictionary[A,B]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CDictionary%5BA%2CB%5D"><span class="Identifier">`=destroy`</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span> {.<span class="Identifier">bycopy</span>.}<span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="=destroy,GdRef[T]">
   <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CGdRef%5BT%5D"><span class="Identifier">`=destroy`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#GdRef"><span class="Identifier">GdRef</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="=destroy,Array[T]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%3Ddestroy%2CArray%5BT%5D"><span class="Identifier">`=destroy`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span> {.<span class="Identifier">bycopy</span>.}<span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -1404,8 +1398,7 @@
 </div>
 <div id="dup-procs-all">
   <div id="dup,Array">
-  <dt><pre><span class="Keyword">proc</span> <a href="#dup%2CArray"><span class="Identifier">dup</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-                              <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#dup%2CArray"><span class="Identifier">dup</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Array</span></pre></dt>
   <dd>
     
     
@@ -1422,8 +1415,7 @@
   </dd>
 </div>
 <div id="dup,Dictionary">
-  <dt><pre><span class="Keyword">proc</span> <a href="#dup%2CDictionary"><span class="Identifier">dup</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
-                                        <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#dup%2CDictionary"><span class="Identifier">dup</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Dictionary</span></pre></dt>
   <dd>
     
     
@@ -1794,14 +1786,6 @@
     
   </dd>
 </div>
-<div id="variantType.t,typedesc[TypedArray]">
-  <dt><pre><span class="Keyword">template</span> <a href="#variantType.t%2Ctypedesc%5BTypedArray%5D"><span class="Identifier">variantType</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
 <div id="variantType.t,typedesc[Vector2]">
   <dt><pre><span class="Keyword">template</span> <a href="#variantType.t%2Ctypedesc%5BVector2%5D"><span class="Identifier">variantType</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="builtinindex.html#Vector2"><span class="Identifier">Vector2</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a></pre></dt>
   <dd>
@@ -1948,7 +1932,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
       </div>
     </div>
   </div>

@@ -71,15 +71,13 @@
 
 </ul>
 <ul class="simple nested-toc-section">[]
-  <li><a class="reference" href="#%5B%5D%2CVariant%2Cint" title="`[]`(self: Variant; index: int): Variant">`[]`(self: Variant; index: int): Variant</a></li>
-<li><a class="reference" href="#%5B%5D%2CVariant%2CVariant" title="`[]`(self: Variant; key: Variant): Variant">`[]`(self: Variant; key: Variant): Variant</a></li>
-<li><a class="reference" href="#%5B%5D%2CVariant%2CStringName" title="`[]`(self: Variant; name: StringName): Variant">`[]`(self: Variant; name: StringName): Variant</a></li>
+  <li><a class="reference" href="#%5B%5D%2CVariant%2CVariant" title="`[]`(self: Variant; key: Variant): Variant">`[]`(self: Variant; key: Variant): Variant</a></li>
+<li><a class="reference" href="#%5B%5D%2CVariant%2CA" title="`[]`[A](self: Variant; key: A): Variant">`[]`[A](self: Variant; key: A): Variant</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">[]=
-  <li><a class="reference" href="#%5B%5D%3D%2CVariant%2Cint%2CVariant" title="`[]=`(self: Variant; index: int; value: Variant)">`[]=`(self: Variant; index: int; value: Variant)</a></li>
-<li><a class="reference" href="#%5B%5D%3D%2CVariant%2CVariant%2CVariant" title="`[]=`(self: Variant; key: Variant; value: Variant)">`[]=`(self: Variant; key: Variant; value: Variant)</a></li>
-<li><a class="reference" href="#%5B%5D%3D%2CVariant%2CStringName%2CVariant" title="`[]=`(self: Variant; name: StringName; value: Variant)">`[]=`(self: Variant; name: StringName; value: Variant)</a></li>
+  <li><a class="reference" href="#%5B%5D%3D%2CVariant%2CVariant%2CVariant" title="`[]=`(self: Variant; key: Variant; value: Variant)">`[]=`(self: Variant; key: Variant; value: Variant)</a></li>
+<li><a class="reference" href="#%5B%5D%3D%2CVariant%2CA%2CB" title="`[]=`[A, B](self: Variant; key: A; value: B)">`[]=`[A, B](self: Variant; key: A; value: B)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">booleanize
@@ -129,6 +127,22 @@
 <li><a class="reference" href="#evaluate%2CVariant_Operator%2Cptr.Variant%2Cptr.Variant%2Cbool" title="evaluate(op: Variant_Operator; a, b: ptr Variant; valid: var bool): Variant">evaluate(op: Variant_Operator; a, b: ptr Variant; valid: var bool): Variant</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">get
+  <li><a class="reference" href="#get%2CVariant%2CVariant%2Cbool" title="get(self: Variant; key: Variant; r_isValid: var bool): Variant">get(self: Variant; key: Variant; r_isValid: var bool): Variant</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">getIndexed
+  <li><a class="reference" href="#getIndexed%2CVariant%2Cint%2Cbool%2Cbool" title="getIndexed(self: Variant; index: int; r_isValid, r_outOfBound: var bool): Variant">getIndexed(self: Variant; index: int; r_isValid, r_outOfBound: var bool): Variant</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">getKeyed
+  <li><a class="reference" href="#getKeyed%2CVariant%2CVariant%2Cbool" title="getKeyed(self: Variant; key: Variant; r_isValid: var bool): Variant">getKeyed(self: Variant; key: Variant; r_isValid: var bool): Variant</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">getNamed
+  <li><a class="reference" href="#getNamed%2CVariant%2CStringName%2Cbool" title="getNamed(self: Variant; name: StringName; r_isValid: var bool): Variant">getNamed(self: Variant; name: StringName; r_isValid: var bool): Variant</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">getType
   <li><a class="reference" href="#getType%2CVariant" title="getType(v: Variant): VariantType">getType(v: Variant): VariantType</a></li>
 
@@ -155,6 +169,24 @@
 </ul>
 <ul class="simple nested-toc-section">recursiveHash
   <li><a class="reference" href="#recursiveHash%2CVariant%2Cint" title="recursiveHash(self: Variant; recursion_count: int): Hash">recursiveHash(self: Variant; recursion_count: int): Hash</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">set
+  <li><a class="reference" href="#set%2CVariant%2CVariant%2CVariant%2Cbool" title="set(self: Variant; key: Variant; value: Variant; r_isValid: var bool)">set(self: Variant; key: Variant; value: Variant; r_isValid: var bool)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">setIndexed
+  <li><a class="reference" href="#setIndexed%2CVariant%2Cint%2CVariant%2Cbool%2Cbool" title="setIndexed(self: Variant; index: int; value: Variant;
+           r_isValid, r_outOfBound: var bool)">setIndexed(self: Variant; index: int; value: Variant;
+           r_isValid, r_outOfBound: var bool)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">setKeyed
+  <li><a class="reference" href="#setKeyed%2CVariant%2CVariant%2CVariant%2Cbool" title="setKeyed(self: Variant; key: Variant; value: Variant; r_isValid: var bool)">setKeyed(self: Variant; key: Variant; value: Variant; r_isValid: var bool)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">setNamed
+  <li><a class="reference" href="#setNamed%2CVariant%2CStringName%2CVariant%2Cbool" title="setNamed(self: Variant; name: StringName; value: Variant; r_isValid: var bool)">setNamed(self: Variant; name: StringName; value: Variant; r_isValid: var bool)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">variant
@@ -185,19 +217,6 @@
     </ul>
   </details>
 </li>
-<li>
-  <details open>
-    <summary><a class="reference reference-toplevel" href="#18" id="68">Templates</a></summary>
-    <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">==
-  <li><a class="reference" href="#%3D%3D.t%2CT%2CVariant" title="`==`[T: SomeProperty](other: T; self: Variant): bool">`==`[T: SomeProperty](other: T; self: Variant): bool</a></li>
-<li><a class="reference" href="#%3D%3D.t%2CVariant%2CT" title="`==`[T: SomeProperty](self: Variant; other: T): bool">`==`[T: SomeProperty](self: Variant; other: T): bool</a></li>
-
-</ul>
-
-    </ul>
-  </details>
-</li>
 
 </ul>
 
@@ -210,7 +229,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="arraytools.html">arraytools</a>, <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/typeshift.html">private/typeshift</a>
+    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="arraytools.html">arraytools</a>, <a class="reference external" href="dicttools.html">dicttools</a>, <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/typeshift.html">private/typeshift</a>, <a class="reference external" href="private/propertyinfo.html">private/propertyinfo</a>, <a class="reference external" href="classes/gdclassdb.html">classes/gdclassdb</a>
   </dl>
 </div>
 <div class="section" id="12">
@@ -253,16 +272,7 @@
 
 </div>
 <div id="[]-procs-all">
-  <div id="[],Variant,int">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CVariant%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="[],Variant,Variant">
+  <div id="[],Variant,Variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CVariant%2CVariant"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -271,9 +281,8 @@
     
   </dd>
 </div>
-<div id="[],Variant,StringName">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CVariant%2CStringName"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="[],Variant,A">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CVariant%2CA"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">A</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a></pre></dt>
   <dd>
     
     
@@ -283,16 +292,7 @@
 
 </div>
 <div id="[]=-procs-all">
-  <div id="[]=,Variant,int,Variant">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CVariant%2Cint%2CVariant"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="[]=,Variant,Variant,Variant">
+  <div id="[]=,Variant,Variant,Variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CVariant%2CVariant%2CVariant"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -301,9 +301,8 @@
     
   </dd>
 </div>
-<div id="[]=,Variant,StringName,Variant">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CVariant%2CStringName%2CVariant"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="[]=,Variant,A,B">
+  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CVariant%2CA%2CB"><span class="Identifier">`[]=`</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">B</span><span class="Other">)</span></pre></dt>
   <dd>
     
     
@@ -462,6 +461,54 @@
 </div>
 
 </div>
+<div id="get-procs-all">
+  <div id="get,Variant,Variant,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#get%2CVariant%2CVariant%2Cbool"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="getIndexed-procs-all">
+  <div id="getIndexed,Variant,int,bool,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#getIndexed%2CVariant%2Cint%2Cbool%2Cbool"><span class="Identifier">getIndexed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">,</span> <span class="Identifier">r_outOfBound</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="getKeyed-procs-all">
+  <div id="getKeyed,Variant,Variant,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#getKeyed%2CVariant%2CVariant%2Cbool"><span class="Identifier">getKeyed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="getNamed-procs-all">
+  <div id="getNamed,Variant,StringName,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#getNamed%2CVariant%2CStringName%2Cbool"><span class="Identifier">getNamed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="getType-procs-all">
   <div id="getType,Variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#getType%2CVariant"><span class="Identifier">getType</span></a><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span><span class="Other">:</span> <a href="private/native.html#VariantType"><span class="Identifier">VariantType</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
@@ -545,6 +592,56 @@
 </div>
 
 </div>
+<div id="set-procs-all">
+  <div id="set,Variant,Variant,Variant,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#set%2CVariant%2CVariant%2CVariant%2Cbool"><span class="Identifier">set</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="setIndexed-procs-all">
+  <div id="setIndexed,Variant,int,Variant,bool,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#setIndexed%2CVariant%2Cint%2CVariant%2Cbool%2Cbool"><span class="Identifier">setIndexed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span>
+                <span class="Identifier">r_isValid</span><span class="Other">,</span> <span class="Identifier">r_outOfBound</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="setKeyed-procs-all">
+  <div id="setKeyed,Variant,Variant,Variant,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#setKeyed%2CVariant%2CVariant%2CVariant%2Cbool"><span class="Identifier">setKeyed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="setNamed-procs-all">
+  <div id="setNamed,Variant,StringName,Variant,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#setNamed%2CVariant%2CStringName%2CVariant%2Cbool"><span class="Identifier">setNamed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span>
+              <span class="Identifier">r_isValid</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
+                                     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="variant-procs-all">
   <div id="variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#variant"><span class="Identifier">variant</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -601,31 +698,6 @@
 
   </dl>
 </div>
-<div class="section" id="18">
-  <h1><a class="toc-backref" href="#18">Templates</a></h1>
-  <dl class="item">
-    <div id="==-templates-all">
-  <div id="==.t,T,Variant">
-  <dt><pre><span class="Keyword">template</span> <a href="#%3D%3D.t%2CT%2CVariant"><span class="Identifier">`==`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">other</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="==.t,Variant,T">
-  <dt><pre><span class="Keyword">template</span> <a href="#%3D%3D.t%2CVariant%2CT"><span class="Identifier">`==`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="builtinindex.html#SomeProperty"><span class="Identifier">SomeProperty</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-
-  </dl>
-</div>
 
   </div>
 </div>
@@ -633,7 +705,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:30 UTC</small>
       </div>
     </div>
   </div>

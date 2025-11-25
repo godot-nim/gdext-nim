@@ -510,5 +510,6 @@ nim	variantFromType	gdext/private/native.html#variantFromType	var variantFromTyp
 nim	typeFromVariant	gdext/private/native.html#typeFromVariant	var typeFromVariant		45
 nim	pointerFromVariant	gdext/private/native.html#pointerFromVariant	var pointerFromVariant		46
 nim	typeConstructor	gdext/private/native.html#typeConstructor	var typeConstructor		47
-nim	typeDestructor	gdext/private/native.html#typeDestructor	var typeDestructor		48
-nim	init	gdext/private/native.html#init,InterfaceGetProcAddress,ClassLibraryPtr	proc init(getProcAddress: InterfaceGetProcAddress; library: ClassLibraryPtr)		50
+nim	typeNew	gdext/private/native.html#typeNew	var typeNew		48
+nim	typeDestructor	gdext/private/native.html#typeDestructor	var typeDestructor		49
+nim	init	gdext/private/native.html#init,InterfaceGetProcAddress,ClassLibraryPtr	proc init(getProcAddress: InterfaceGetProcAddress; library: ClassLibraryPtr)		51

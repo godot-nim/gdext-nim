@@ -106,7 +106,8 @@
 <li><a class="reference" href="#UpdateMethod" title="UpdateMethod = enum
   create,                   ## Discard the original file and create a new one
   overwrite,                ## Retain the original changes and overwrites the updated ones
-  inject                     ## Retain the original changes and inject the missing ones">UpdateMethod</a></li>
+  inject,                   ## Retain the original changes and inject the missing ones
+  disable                    ## Retain the original changes and write nothing">UpdateMethod</a></li>
 
     </ul>
   </details>
@@ -236,7 +237,8 @@
   <dt><pre><a href="buildconf.html#UpdateMethod"><span class="Identifier">UpdateMethod</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">create</span><span class="Other">,</span>                   <span class="Comment">## Discard the original file and create a new one</span>
   <span class="Identifier">overwrite</span><span class="Other">,</span>                <span class="Comment">## Retain the original changes and overwrites the updated ones</span>
-  <span class="Identifier">inject</span>                     <span class="Comment">## Retain the original changes and inject the missing ones</span></pre></dt>
+  <span class="Identifier">inject</span><span class="Other">,</span>                   <span class="Comment">## Retain the original changes and inject the missing ones</span>
+  <span class="Identifier">disable</span>                    <span class="Comment">## Retain the original changes and write nothing</span></pre></dt>
   <dd>
     
     Methods by which the gdext build system updates files
@@ -316,7 +318,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:10 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:30 UTC</small>
       </div>
     </div>
   </div>

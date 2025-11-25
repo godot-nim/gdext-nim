@@ -110,7 +110,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">bindv
-  <li><a class="reference" href="#bindv%2CCallable%2CArray" title="bindv(self: var Callable; arguments: Array): Callable">bindv(self: var Callable; arguments: Array): Callable</a></li>
+  <li><a class="reference" href="#bindv%2CCallable%2CArray%5BVariant%5D" title="bindv(self: var Callable; arguments: Array[Variant]): Callable">bindv(self: var Callable; arguments: Array[Variant]): Callable</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">call
@@ -128,7 +128,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">callv
-  <li><a class="reference" href="#callv%2CCallable%2CArray" title="callv(self: Callable; arguments: Array): Variant">callv(self: Callable; arguments: Array): Variant</a></li>
+  <li><a class="reference" href="#callv%2CCallable%2CArray%5BVariant%5D" title="callv(self: Callable; arguments: Array[Variant]): Variant">callv(self: Callable; arguments: Array[Variant]): Variant</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">connect
@@ -152,7 +152,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getBoundArguments
-  <li><a class="reference" href="#getBoundArguments%2CCallable" title="getBoundArguments(self: Callable): Array">getBoundArguments(self: Callable): Array</a></li>
+  <li><a class="reference" href="#getBoundArguments%2CCallable" title="getBoundArguments(self: Callable): Array[Variant]">getBoundArguments(self: Callable): Array[Variant]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getBoundArgumentsCount
@@ -160,7 +160,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getConnections
-  <li><a class="reference" href="#getConnections%2CSignal" title="getConnections(self: Signal): Array">getConnections(self: Signal): Array</a></li>
+  <li><a class="reference" href="#getConnections%2CSignal" title="getConnections(self: Signal): Array[Variant]">getConnections(self: Signal): Array[Variant]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getId
@@ -295,7 +295,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="builtinindex.html">builtinindex</a>
+    <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="private/nilchecks.html">private/nilchecks</a>, <a class="reference external" href="builtinindex.html">builtinindex</a>
   </dl>
 </div>
 <div class="section" id="12">
@@ -569,8 +569,8 @@
 
 </div>
 <div id="bindv-procs-all">
-  <div id="bindv,Callable,Array">
-  <dt><pre><span class="Keyword">proc</span> <a href="#bindv%2CCallable%2CArray"><span class="Identifier">bindv</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">;</span> <span class="Identifier">arguments</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a> {.
+  <div id="bindv,Callable,Array[Variant]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#bindv%2CCallable%2CArray%5BVariant%5D"><span class="Identifier">bindv</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">;</span> <span class="Identifier">arguments</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -634,9 +634,9 @@
 
 </div>
 <div id="callv-procs-all">
-  <div id="callv,Callable,Array">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callv%2CCallable%2CArray"><span class="Identifier">callv</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">;</span> <span class="Identifier">arguments</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <div id="callv,Callable,Array[Variant]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#callv%2CCallable%2CArray%5BVariant%5D"><span class="Identifier">callv</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">;</span> <span class="Identifier">arguments</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -706,7 +706,7 @@
 </div>
 <div id="getBoundArguments-procs-all">
   <div id="getBoundArguments,Callable">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getBoundArguments%2CCallable"><span class="Identifier">getBoundArguments</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getBoundArguments%2CCallable"><span class="Identifier">getBoundArguments</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Callable"><span class="Identifier">Callable</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -730,7 +730,7 @@
 </div>
 <div id="getConnections-procs-all">
   <div id="getConnections,Signal">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getConnections%2CSignal"><span class="Identifier">getConnections</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Signal"><span class="Identifier">Signal</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getConnections%2CSignal"><span class="Identifier">getConnections</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="builtinindex.html#Signal"><span class="Identifier">Signal</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1287,7 +1287,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
       </div>
     </div>
   </div>
