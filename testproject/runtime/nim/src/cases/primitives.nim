@@ -6,101 +6,101 @@ include gdext/gen/variantsizes
 
 runtime: suite "to string":
   test "Bool":
-    check $true == $variant(true)
-    check $false == $variant(false)
+    check $true == $Variant(true)
+    check $false == $Variant(false)
   test "Int":
-    check $3141592 == $variant(3141592)
+    check $3141592 == $Variant(3141592)
   test "Float":
-    check $Inf == $variant(Inf)
-    check $3.141592 == $variant(3.141592)
+    check $Inf == $Variant(system.Inf)
+    check $3.141592 == $Variant(3.141592)
   test "Color":
-    check $AliceBlue == $variant(AliceBlue)
+    check $AliceBlue == $Variant(AliceBlue)
   test "AABB":
-    check $AABB() == $variant(AABB())
+    check $AABB() == $Variant(AABB())
   test "Basis":
-    check $Basis() == $variant(Basis())
+    check $Basis() == $Variant(Basis())
   test "Plane":
-    check $Plane() == $variant(Plane())
+    check $Plane() == $Variant(Plane())
     let plane1 = plane(vector3(0, 0, 1), 1.5)
-    check $plane1 == $variant(plane1)
+    check $plane1 == $Variant(plane1)
     let plane2 = plane(vector3(0, 0, 1), 1000000.12345)
-    check $plane2 == $variant(plane2)
+    check $plane2 == $Variant(plane2)
   test "Projection":
-    check $Projection() == $variant(Projection())
+    check $Projection() == $Variant(Projection())
   test "Quaternion":
-    check $Quaternion() == $variant(Quaternion())
+    check $Quaternion() == $Variant(Quaternion())
   test "Rect2":
-    check $Rect2() == $variant(Rect2())
+    check $Rect2() == $Variant(Rect2())
   test "Rect2i":
-    check $Rect2i() == $variant(Rect2i())
+    check $Rect2i() == $Variant(Rect2i())
   test "Transform2D":
-    check $Transform2D() == $variant(Transform2D())
+    check $Transform2D() == $Variant(Transform2D())
   test "Transform3D":
-    check $Transform3D() == $variant(Transform3D())
+    check $Transform3D() == $Variant(Transform3D())
   test "Vector2":
-    check $vector2() == $variant(vector2())
-    check $vector2(PI, Inf) == $variant(vector2(PI, Inf))
+    check $vector2() == $Variant(vector2())
+    check $vector2(PI, Inf) == $Variant(vector2(PI, Inf))
   test "Vector2i":
-    check $vector2i() == $variant(vector2i())
+    check $vector2i() == $Variant(vector2i())
   test "Vector3":
-    check $vector3() == $variant(vector3())
+    check $vector3() == $Variant(vector3())
   test "Vector3i":
-    check $vector3i() == $variant(vector3i())
+    check $vector3i() == $Variant(vector3i())
   test "Vector4":
-    check $vector4() == $variant(vector4())
+    check $vector4() == $Variant(vector4())
   test "Vector4i":
-    check $vector4i() == $variant(vector4i())
+    check $vector4i() == $Variant(vector4i())
   test "RID":
-    check $rid() == $variant(rid())
+    check $rid() == $Variant(rid())
   test "String":
-    check $newGdString("Hello, world!") == $variant(newGdString("Hello, world!"))
+    check $newGdString("Hello, world!") == $Variant(newGdString("Hello, world!"))
   test "StringName":
-    check $newStringName("Object") == $variant(newStringName("Object"))
+    check $newStringName("Object") == $Variant(newStringName("Object"))
   test "NodePath":
-    check $newNodePath("path/to/somewhere") == $variant(newNodePath("path/to/somewhere"))
+    check $newNodePath("path/to/somewhere") == $Variant(newNodePath("path/to/somewhere"))
   test "Array":
     var arr = newArray[Variant](5)
     for i in 0..<arr.len:
-      arr[i] = variant i
-    check $arr == $variant(arr)
+      arr[i] = i
+    check $arr == $Variant(arr)
     check ($arr).startsWith "["
   test "TypedArray":
     var arr = newArray[Int](5)
     for i in 0..<arr.len:
       arr[i] = i
-    check $arr == $variant(arr)
+    check $arr == $Variant(arr)
     check ($arr).startsWith "["
   test "PackedArray":
     var arr = newPackedInt64Array()
     arr.setLen(5)
     for i in 0..<arr.len:
       arr[i] = i
-    check $arr == $variant(arr)
+    check $arr == $Variant(arr)
     check ($arr).startsWith "["
   test "Dictionary":
     var dict = newDictionary[Variant, Variant]()
     for i, s in ["a", "b", "c"]:
-      dict[variant s] = variant i
-    check $dict == $variant(dict)
+      dict[s] = i
+    check $dict == $Variant(dict)
     check ($dict).startsWith "{"
   test "Object":
     var obj = instantiate Object
-    check $obj == $variant(obj)
+    check $obj == $Variant(obj)
     destroy obj
     var nilobj: Object
-    check $nilobj == $variant(nilobj)
+    check $nilobj == $Variant(nilobj)
   test "RefCounted":
     var refc = instantiate RefCounted
-    check $refc == $variant(refc)
-    check $refc[] == $variant(refc[])
+    check $refc == $Variant(refc)
+    check $refc[] == $Variant(refc[])
     var nilrefc: GdRef[RefCounted]
-    check $nilrefc == $variant(nilrefc)
+    check $nilrefc == $Variant(nilrefc)
   test "Node":
     var node = instantiate(Node, "MyNode")
-    check $node == $variant(node)
+    check $node == $Variant(node)
     destroy node
     var nilnode: Node
-    check $nilnode == $variant(nilnode)
+    check $nilnode == $Variant(nilnode)
 
 runtime: suite "size":
   test "bool":
@@ -186,7 +186,7 @@ runtime: suite "size":
 runtime: suite "Array":
   test "method definitions":
     var sa: Array[String] = newArray([String "one", "two", "three"])
-    var va: Array[Variant] = newArray([variant "one", variant "two", variant "three"])
+    var va: Array[Variant] = newArray([Variant "one", "two", "three"])
     var ia: Array[Int] = newArray([Int 1, 2, 3])
 
     check ia.size is Int
@@ -212,27 +212,27 @@ runtime: suite "Array":
 
     check compiles va.set(Int 0, Int 10)
     check compiles ia.set(Int 0, Int 10)
-    check compiles va.set(Int 0, variant 10)
+    check compiles va.set(Int 0, Variant 10)
     check not compiles va.set(Int 0, newSeq[int]())
-    check not compiles ia.set(Int 0, variant 10)
+    check not compiles ia.set(Int 0, Variant 10)
 
     check compiles va.pushBack(Int 10)
     check compiles ia.pushBack(Int 10)
-    check compiles va.pushBack(variant 10)
+    check compiles va.pushBack(Variant 10)
     check not compiles va.pushBack(newSeq[int]())
-    check not compiles ia.pushBack(variant 10)
+    check not compiles ia.pushBack(Variant 10)
 
     check compiles va.pushFront(Int 10)
     check compiles ia.pushFront(Int 10)
-    check compiles va.pushFront(variant 10)
+    check compiles va.pushFront(Variant 10)
     check not compiles va.pushFront(newSeq[int]())
-    check not compiles ia.pushFront(variant 10)
+    check not compiles ia.pushFront(Variant 10)
 
     check compiles va.append(Int 10)
     check compiles ia.append(Int 10)
-    check compiles va.append(variant 10)
+    check compiles va.append(Variant 10)
     check not compiles va.append(newSeq[int]())
-    check not compiles ia.append(variant 10)
+    check not compiles ia.append(Variant 10)
 
     check compiles va.appendArray(va)
     check compiles va.appendArray(ia)
@@ -245,22 +245,22 @@ runtime: suite "Array":
 
     check va.insert(Int 0, Int 10) is Int
     check ia.insert(Int 0, Int 10) is Int
-    check va.insert(Int 0, variant 10) is Int
+    check va.insert(Int 0, Variant 10) is Int
     check not compiles va.insert(Int 0, newSeq[int]())
-    check not compiles ia.insert(Int 0, variant 10)
+    check not compiles ia.insert(Int 0, Variant 10)
 
     check compiles va.removeAt(Int 0)
     check compiles ia.removeAt(Int 0)
 
-    check compiles va.fill(variant 10)
+    check compiles va.fill(Variant 10)
     check compiles va.fill(Int 10)
     check compiles ia.fill(Int 10)
-    check not compiles ia.fill(variant 10)
+    check not compiles ia.fill(Variant 10)
 
-    check compiles va.erase(variant 10)
+    check compiles va.erase(Variant 10)
     check compiles va.erase(Int 10)
     check compiles ia.erase(Int 10)
-    check compiles ia.erase(variant 10)
+    check compiles ia.erase(Variant 10)
     check not compiles va.erase(newSeq[int]())
     check not compiles ia.erase(newSeq[int]())
 
@@ -273,37 +273,37 @@ runtime: suite "Array":
     check ia.pickRandom() is Int
     check va.pickRandom() is Variant
 
-    check va.find(variant 10) is Int
+    check va.find(Variant 10) is Int
     check va.find(Int 10) is Int
     check ia.find(Int 10) is Int
-    check ia.find(variant 10) is Int
+    check ia.find(Variant 10) is Int
     check not compiles va.find(newSeq[int]())
     check not compiles ia.find(newSeq[int]())
 
     check va.findCustom(Callable()) is Int
     check ia.findCustom(Callable()) is Int
 
-    check va.rfind(variant 10) is Int
+    check va.rfind(Variant 10) is Int
     check va.rfind(Int 10) is Int
     check ia.rfind(Int 10) is Int
-    check ia.rfind(variant 10) is Int
+    check ia.rfind(Variant 10) is Int
     check not compiles va.rfind(newSeq[int]())
     check not compiles ia.rfind(newSeq[int]())
 
     check va.rfindCustom(Callable()) is Int
     check ia.rfindCustom(Callable()) is Int
 
-    check va.count(variant 10) is Int
+    check va.count(Variant 10) is Int
     check va.count(Int 10) is Int
     check ia.count(Int 10) is Int
-    check ia.count(variant 10) is Int
+    check ia.count(Variant 10) is Int
     check not compiles va.count(newSeq[int]())
     check not compiles ia.count(newSeq[int]())
 
-    check va.has(variant 10) is bool
+    check va.has(Variant 10) is bool
     check va.has(Int 10) is bool
     check ia.has(Int 10) is bool
-    check ia.has(variant 10) is bool
+    check ia.has(Variant 10) is bool
     check not compiles va.has(newSeq[int]())
     check not compiles ia.has(newSeq[int]())
 
@@ -325,17 +325,17 @@ runtime: suite "Array":
     check compiles ia.shuffle()
     check compiles va.shuffle()
 
-    check va.bsearch(variant 10) is Int
+    check va.bsearch(Variant 10) is Int
     check va.bsearch(Int 10) is Int
     check ia.bsearch(Int 10) is Int
-    check ia.bsearch(variant 10) is Int
+    check ia.bsearch(Variant 10) is Int
     check not compiles va.bsearch(newSeq[int]())
     check not compiles ia.bsearch(newSeq[int]())
 
-    check va.bsearchCustom(variant 10, Callable()) is Int
+    check va.bsearchCustom(Variant 10, Callable()) is Int
     check va.bsearchCustom(Int 10, Callable()) is Int
     check ia.bsearchCustom(Int 10, Callable()) is Int
-    check ia.bsearchCustom(variant 10, Callable()) is Int
+    check ia.bsearchCustom(Variant 10, Callable()) is Int
     check not compiles va.bsearchCustom(newSeq[int](), Callable())
     check not compiles ia.bsearchCustom(newSeq[int](), Callable())
 
@@ -406,34 +406,34 @@ runtime: suite "Array":
     check not arr.isTyped
     check arr.len == 10
     for i, val in arr:
-      check val == variant()
+      check val == Variant()
   test "mutable iter":
     var arr = newArray[Variant](10)
     for i, val in arr.mpairs:
-      val = variant(i)
+      val = i
     for i, val in arr:
-      check val.get(int) == i
+      check val == i
   test "subscript":
     var arr = newArray[Variant](10)
     for i in 0..<arr.len:
-      check arr[i] == variant()
+      check arr[i] == Variant()
     for i in 0..<arr.len:
-      arr[i] = variant i
+      arr[i] = i
     for i in 0..<arr.len:
-      check arr[i].get(int) == i
+      check arr[i] == i
 
   test "`[]`(HSlice)":
-    var pi = newArray [variant 1, variant 2, variant 3, variant 4]
-    check pi[0..2] == newArray [variant 1, variant 2, variant 3]
+    var pi = newArray [Variant 1, 2, 3, 4]
+    check pi[0..2] == newArray [Variant 1, 2, 3]
 
   test "`[]=`(HSlice)":
-    var ps = newArray [variant "a", variant "b", variant "c", variant "d", variant "e", variant "f", variant "g", variant "h"]
-    ps[1 .. ^2] = newArray [variant "x", variant "y", variant "z"]
-    check ps == newArray [variant "a", variant "x", variant "y", variant "z", variant "h"]
+    var ps = newArray [Variant "a", "b", "c", "d", "e", "f", "g", "h"]
+    ps[1 .. ^2] = newArray [Variant "x", "y", "z"]
+    check ps == newArray [Variant "a", "x", "y", "z", "h"]
 
-    var pb = newArray [variant 1, variant 2, variant 3, variant 4, variant 5, variant 6, variant 7, variant 8]
-    pb[1 .. ^2] = newArray [variant 24, variant 25, variant 26]
-    check pb == newArray [variant 1, variant 24, variant 25, variant 26, variant 8]
+    var pb = newArray [Variant 1, 2, 3, 4, 5, 6, 7, 8]
+    pb[1 .. ^2] = newArray [Variant 24, 25, 26]
+    check pb == newArray [Variant 1, 24, 25, 26, 8]
 
   test "subscript(out of bounds)":
     var arr = newArray[Variant](10)
@@ -455,26 +455,26 @@ runtime: suite "TypedArray":
       check val.length == 0
 
   test "iter":
-    let res = ["a", "b", "c"]
-    let arr = newArray [String "a", "b", "c"]
+    let res = [String "a", "b", "c"]
+    let arr = newArray res
     for i, val in arr:
-      check $val == res[i]
+      check val == res[i]
     block:
       var i: int
       for val in arr:
-        check $val == res[i]
+        check val == res[i]
         inc i
- 
+
     let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
     for i, r in res2:
       r.name = res[i]
     let arr2 = newArray res2
     for i, val in arr2:
-      check $val.name == res[i]
+      check val.name == res[i]
     block:
       var i: int
       for val in arr2:
-        check $val.name == res[i]
+        check val.name == res[i]
         inc i
     for node in res2:
       destroy node
@@ -494,11 +494,11 @@ runtime: suite "TypedArray":
   test "subscript":
     var arr = newArray[String](10)
     for i in 0..<arr.len:
-      check arr[i] == newGdString""
+      check arr[i] == String""
     for i in 0..<arr.len:
-      arr[i] = newGdString $i
+      arr[i] = $i
     for i in 0..<arr.len:
-      check arr[i] == newGdString $i
+      check arr[i] == String $i
 
   test "backward subscript":
     var obj = instantiate Object
@@ -545,34 +545,34 @@ runtime: suite "newPackedArray":
     check strs.size == 8
 
     for i in 0..<strs.size:
-      check strs[i] == newGdString()
+      check strs[i] == String""
 
   test "assignment":
     for i in 0..<strs.size:
-      strs[i] = newGdString $i
+      strs[i] = String $i
     for i in 0..<strs.size:
-      check strs[i] == newGdString $i
+      check strs[i] == String $i
 
   test "to seq":
     let s: seq[String] = @strs
-    check s == @[newGdString"0", newGdString"1", newGdString"2", newGdString"3", newGdString"4", newGdString"5", newGdString"6", newGdString"7"]
+    check s == @[String"0", "1", "2", "3", "4", "5", "6", "7"]
 
   test "mutable iteration":
     for b in strs.mitems:
-      b = newGdString "Hello, world!"
-      check b == newGdString "Hello, world!"
+      b = "Hello, world!"
+      check b == String"Hello, world!"
 
     for i, b in strs.mpairs:
-      b = newGdString $i
-      check b == newGdString $i
+      b = $i
+      check b == String $i
 
   test "immutable iteration":
     for i, b in strs:
-      check b == newGdString $i
+      check b == String $i
 
     var i: int
     for b in strs:
-      check b == newGdString $i
+      check b == String $i
       inc i
 
   test "contains(newPackedInt32Array)":
@@ -619,10 +619,10 @@ runtime: suite "Dictionary":
     "Object",
     ]
   let values = [
-    variant(1),
-    variant(2.0),
-    variant("three"),
-    variant(instantiate Object),
+    Variant 1,
+    2.0,
+    "three",
+    instantiate Object,
     ]
   let data = {
     keys[0]: values[0],
@@ -812,14 +812,14 @@ runtime: suite "Dictionary":
   test "mvalues":
     var dict = newDictionary(data)
     for value in dict.mvalues:
-      value = variant Inf
+      value = system.Inf
     for value in dict.values:
       check value as float == Inf
 
   test "mpairs":
     var dict = newDictionary(data)
     for key, value in dict.mpairs:
-      value = variant key
+      value = key
     for key, value in dict:
       check value == key
 
@@ -832,7 +832,7 @@ runtime: suite "Dictionary":
 
   test "[]=":
     var dict = newDictionary(data)
-    dict["int"] = variant 10
+    dict["int"] = 10
     check dict["int"] as int == 10
 
 runtime: suite "String":
