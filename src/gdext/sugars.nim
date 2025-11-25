@@ -3,6 +3,7 @@ import gdext/stringtools
 import gdext/objecttools
 import gdext/varianttools
 import gdext/arraytools {.all.}
+import gdext/dicttools {.all.}
 
 {.push, inline.}
 
@@ -12,6 +13,9 @@ converter convertToNodePath*(str: string): NodePath = newNodePath newGdString st
 
 converter convertToArray*[T: not Variant](arr: Array[T]): Array[Variant] = arr.wild
 converter convertToArray*[T: not Variant](arr: var Array[T]): var Array[Variant] = arr.wild
+
+converter convertToDictionary*[A, B](dict: Dictionary[A, B]): Dictionary[Variant, Variant] = dict.wild
+converter convertToDictionary*[A, B](dict: var Dictionary[A, B]): var Dictionary[Variant, Variant] = dict.wild
 
 converter convertToSingleton*[T: SomeClass](_: typedesc[T]): T = singleton(T)
 

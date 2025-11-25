@@ -56,12 +56,12 @@ proc registerVirtual_endCustomizeResources*[T: EditorExportPlugin](Self: typedes
   Self.vmethods[newStringName"_end_customize_resources"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlugin](p_instance).endCustomizeResources()
 
-method getExportOptions*(self: EditorExportPlugin; platform: gdref EditorExportPlatform): Array[Dictionary] {.base.} = (discard)
+method getExportOptions*(self: EditorExportPlugin; platform: gdref EditorExportPlatform): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getExportOptions*[T: EditorExportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_export_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlugin](p_instance).getExportOptions(p_args[0].decode(gdref EditorExportPlatform)).encode(r_ret)
 
-method getExportOptionsOverrides*(self: EditorExportPlugin; platform: gdref EditorExportPlatform): Dictionary {.base.} = (discard)
+method getExportOptionsOverrides*(self: EditorExportPlugin; platform: gdref EditorExportPlatform): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getExportOptionsOverrides*[T: EditorExportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_export_options_overrides"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlugin](p_instance).getExportOptionsOverrides(p_args[0].decode(gdref EditorExportPlatform)).encode(r_ret)

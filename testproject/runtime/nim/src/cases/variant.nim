@@ -12,7 +12,7 @@ runtime: suite "Variant":
     check hasMember(VariantTypeColor, "r")
 
   test "call error":
-    var vdict = variant newDictionary()
+    var vdict = variant newDictionary[Variant, Variant]()
     check vdict.call("size").get(int) == 0
     expect GodotCallDefect: discard vdict.call("nonexistence")
     expect GodotCallDefect: discard vdict.call("size", "Extra Argument")
@@ -44,7 +44,7 @@ runtime: suite "Variant":
     check not variant newArray[Variant]()
 
   test "Dictionary in Variant":
-    var vdict = variant newDictionary()
+    var vdict = variant newDictionary[Variant, Variant]()
     check vdict.call("size").get(int) == 0
     vdict[variant"Key1"] = variant 1
     check vdict.call("size").get(int) == 1
@@ -163,3 +163,11 @@ runtime: suite "Variant":
       check v of Array[Variant]
       check v of Array[String]
       check not (v of Array[StringName])
+
+    block:
+      var v = variant newDictionary[String, Float]()
+      check v of Dictionary[Variant, Variant]
+      check v of Dictionary[String, Variant]
+      check v of Dictionary[Variant, Float]
+      check v of Dictionary[String, Float]
+      check not (v of Dictionary[StringName, Variant])

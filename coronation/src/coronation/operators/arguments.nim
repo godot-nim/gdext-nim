@@ -74,7 +74,11 @@ proc dbModify*(param: RenderableParamBase; overrideSym = default(TypeSym); looku
     result.add $dbModify param.info.metaType
     if param.info.metaType == TypeSym"Array":
       result.add "[Variant]"
+    if param.info.metaType == TypeSym"Dictionary":
+      result.add "[Variant, Variant]"
     result.add "]"
+  elif param.typeSym == TypeSym"Dictionary":
+    result.add "[Variant, Variant]"
 
 
 proc `type`*(param: RenderableParamBase): string =

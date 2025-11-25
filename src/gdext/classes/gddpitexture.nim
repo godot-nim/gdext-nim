@@ -6,7 +6,7 @@ import gdtexture2d; export gdtexture2d
 
 expandOnClassImported(DPITexture, Texture2D)
 
-proc createFromString*(_: typedesc[DPITexture]; source: String; scale: Float = 1.0; saturation: Float = 1.0; colorMap: Dictionary = newDictionary()): gdref DPITexture =
+proc createFromString*(_: typedesc[DPITexture]; source: String; scale: Float = 1.0; saturation: Float = 1.0; colorMap: Dictionary[Variant, Variant] = newDictionary[Variant, Variant]()): gdref DPITexture =
   expandMethodBind(className DPITexture, "create_from_string", 755140520)
   nilCheck colorMap
   var ret: encoded gdref DPITexture
@@ -43,16 +43,16 @@ proc getSaturation*(self: DPITexture): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc setColorMap*(self: DPITexture; colorMap: Dictionary): void =
+proc setColorMap*(self: DPITexture; colorMap: Dictionary[Variant, Variant]): void =
   expandMethodBind(className DPITexture, "set_color_map", 4155329257)
   nilCheck colorMap
   methodbind.ptrcall(self, [getPtr colorMap])
 
-proc getColorMap*(self: DPITexture): Dictionary =
+proc getColorMap*(self: DPITexture): Dictionary[Variant, Variant] =
   expandMethodBind(className DPITexture, "get_color_map", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setSizeOverride*(self: DPITexture; size: Vector2i): void =
   expandMethodBind(className DPITexture, "set_size_override", 1130785943)

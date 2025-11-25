@@ -10,14 +10,14 @@ proc setDefaultExtension*(_: typedesc[WebRTCPeerConnection]; extensionClass: Str
   expandMethodBind(className WebRTCPeerConnection, "set_default_extension", 3304788590)
   methodbind.ptrcall([getPtr extensionClass])
 
-proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary = newDictionary()): Error =
+proc initialize*(self: WebRTCPeerConnection; configuration: Dictionary[Variant, Variant] = newDictionary[Variant, Variant]()): Error =
   expandMethodBind(className WebRTCPeerConnection, "initialize", 2625064318)
   nilCheck configuration
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr configuration], addr ret)
   (addr ret).decode_result(Error)
 
-proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary = newDictionary()): gdref WebRTCDataChannel =
+proc createDataChannel*(self: WebRTCPeerConnection; label: String; options: Dictionary[Variant, Variant] = newDictionary[Variant, Variant]()): gdref WebRTCDataChannel =
   expandMethodBind(className WebRTCPeerConnection, "create_data_channel", 1288557393)
   nilCheck options
   var ret: encoded gdref WebRTCDataChannel

@@ -128,11 +128,11 @@ proc getJoyGuid*(self: Input; device: int32): String =
   methodbind.ptrcall(self, [getPtr device], addr ret)
   (addr ret).decode_result(String)
 
-proc getJoyInfo*(self: Input; device: int32): Dictionary =
+proc getJoyInfo*(self: Input; device: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className Input, "get_joy_info", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr device], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc shouldIgnoreDevice*(self: Input; vendorId: int32; productId: int32): bool =
   expandMethodBind(className Input, "should_ignore_device", 2522259332)

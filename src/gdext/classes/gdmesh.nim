@@ -43,7 +43,7 @@ proc registerVirtual_surfaceGetBlendShapeArrays*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_blend_shape_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetBlendShapeArrays(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetLods*(self: Mesh; index: int32): Dictionary {.base.} = (discard)
+method surfaceGetLods*(self: Mesh; index: int32): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_surfaceGetLods*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_lods"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetLods(p_args[0].decode(int32)).encode(r_ret)

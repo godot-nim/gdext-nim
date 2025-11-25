@@ -44,11 +44,11 @@ proc uninitialize*(self: XRInterface): void =
   expandMethodBind(className XRInterface, "uninitialize", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getSystemInfo*(self: XRInterface): Dictionary =
+proc getSystemInfo*(self: XRInterface): Dictionary[Variant, Variant] =
   expandMethodBind(className XRInterface, "get_system_info", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getTrackingStatus*(self: XRInterface): XRInterface_TrackingStatus =
   expandMethodBind(className XRInterface, "get_tracking_status", 167423259)

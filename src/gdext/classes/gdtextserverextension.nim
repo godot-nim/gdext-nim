@@ -126,7 +126,7 @@ proc registerVirtual_fontGetName*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetName(p_args[0].decode(RID)).encode(r_ret)
 
-method fontGetOtNameStrings*(self: TextServerExtension; fontRid: RID): Dictionary {.base.} = (discard)
+method fontGetOtNameStrings*(self: TextServerExtension; fontRid: RID): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontGetOtNameStrings*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_ot_name_strings"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetOtNameStrings(p_args[0].decode(RID)).encode(r_ret)
@@ -346,12 +346,12 @@ proc registerVirtual_fontGetTransform*[T: TextServerExtension](Self: typedesc[T]
   Self.vmethods[newStringName"_font_get_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetTransform(p_args[0].decode(RID)).encode(r_ret)
 
-method fontSetVariationCoordinates*(self: TextServerExtension; fontRid: RID; variationCoordinates: Dictionary): void {.base.} = (discard)
+method fontSetVariationCoordinates*(self: TextServerExtension; fontRid: RID; variationCoordinates: Dictionary[Variant, Variant]): void {.base.} = (discard)
 proc registerVirtual_fontSetVariationCoordinates*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_set_variation_coordinates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).fontSetVariationCoordinates(p_args[0].decode(RID), p_args[1].decode(Dictionary))
+    errproof: cast[TextServerExtension](p_instance).fontSetVariationCoordinates(p_args[0].decode(RID), p_args[1].decode(Dictionary[Variant, Variant]))
 
-method fontGetVariationCoordinates*(self: TextServerExtension; fontRid: RID): Dictionary {.base.} = (discard)
+method fontGetVariationCoordinates*(self: TextServerExtension; fontRid: RID): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontGetVariationCoordinates*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_variation_coordinates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetVariationCoordinates(p_args[0].decode(RID)).encode(r_ret)
@@ -381,7 +381,7 @@ proc registerVirtual_fontRemoveSizeCache*[T: TextServerExtension](Self: typedesc
   Self.vmethods[newStringName"_font_remove_size_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontRemoveSizeCache(p_args[0].decode(RID), p_args[1].decode(Vector2i))
 
-method fontGetSizeCacheInfo*(self: TextServerExtension; fontRid: RID): Array[Dictionary] {.base.} = (discard)
+method fontGetSizeCacheInfo*(self: TextServerExtension; fontRid: RID): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_fontGetSizeCacheInfo*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_size_cache_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetSizeCacheInfo(p_args[0].decode(RID)).encode(r_ret)
@@ -546,7 +546,7 @@ proc registerVirtual_fontGetGlyphTextureSize*[T: TextServerExtension](Self: type
   Self.vmethods[newStringName"_font_get_glyph_texture_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetGlyphTextureSize(p_args[0].decode(RID), p_args[1].decode(Vector2i), p_args[2].decode(int64)).encode(r_ret)
 
-method fontGetGlyphContours*(self: TextServerExtension; fontRid: RID; size: int64; index: int64): Dictionary {.base.} = (discard)
+method fontGetGlyphContours*(self: TextServerExtension; fontRid: RID; size: int64; index: int64): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontGetGlyphContours*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_glyph_contours"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetGlyphContours(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(int64)).encode(r_ret)
@@ -671,22 +671,22 @@ proc registerVirtual_fontGetScriptSupportOverrides*[T: TextServerExtension](Self
   Self.vmethods[newStringName"_font_get_script_support_overrides"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetScriptSupportOverrides(p_args[0].decode(RID)).encode(r_ret)
 
-method fontSetOpentypeFeatureOverrides*(self: TextServerExtension; fontRid: RID; overrides: Dictionary): void {.base.} = (discard)
+method fontSetOpentypeFeatureOverrides*(self: TextServerExtension; fontRid: RID; overrides: Dictionary[Variant, Variant]): void {.base.} = (discard)
 proc registerVirtual_fontSetOpentypeFeatureOverrides*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_set_opentype_feature_overrides"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).fontSetOpentypeFeatureOverrides(p_args[0].decode(RID), p_args[1].decode(Dictionary))
+    errproof: cast[TextServerExtension](p_instance).fontSetOpentypeFeatureOverrides(p_args[0].decode(RID), p_args[1].decode(Dictionary[Variant, Variant]))
 
-method fontGetOpentypeFeatureOverrides*(self: TextServerExtension; fontRid: RID): Dictionary {.base.} = (discard)
+method fontGetOpentypeFeatureOverrides*(self: TextServerExtension; fontRid: RID): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontGetOpentypeFeatureOverrides*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_opentype_feature_overrides"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetOpentypeFeatureOverrides(p_args[0].decode(RID)).encode(r_ret)
 
-method fontSupportedFeatureList*(self: TextServerExtension; fontRid: RID): Dictionary {.base.} = (discard)
+method fontSupportedFeatureList*(self: TextServerExtension; fontRid: RID): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontSupportedFeatureList*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_supported_feature_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontSupportedFeatureList(p_args[0].decode(RID)).encode(r_ret)
 
-method fontSupportedVariationList*(self: TextServerExtension; fontRid: RID): Dictionary {.base.} = (discard)
+method fontSupportedVariationList*(self: TextServerExtension; fontRid: RID): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_fontSupportedVariationList*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_supported_variation_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontSupportedVariationList(p_args[0].decode(RID)).encode(r_ret)
@@ -811,10 +811,10 @@ proc registerVirtual_shapedTextGetSpacing*[T: TextServerExtension](Self: typedes
   Self.vmethods[newStringName"_shaped_text_get_spacing"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextGetSpacing(p_args[0].decode(RID), p_args[1].decode(TextServer_SpacingType)).encode(r_ret)
 
-method shapedTextAddString*(self: TextServerExtension; shaped: RID; text: String; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary; language: String; meta: Variant): bool {.base.} = (discard)
+method shapedTextAddString*(self: TextServerExtension; shaped: RID; text: String; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary[Variant, Variant]; language: String; meta: Variant): bool {.base.} = (discard)
 proc registerVirtual_shapedTextAddString*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_add_string"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedTextAddString(p_args[0].decode(RID), p_args[1].decode(String), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary), p_args[5].decode(String), p_args[6].decode(Variant)).encode(r_ret)
+    errproof: cast[TextServerExtension](p_instance).shapedTextAddString(p_args[0].decode(RID), p_args[1].decode(String), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary[Variant, Variant]), p_args[5].decode(String), p_args[6].decode(Variant)).encode(r_ret)
 
 method shapedTextAddObject*(self: TextServerExtension; shaped: RID; key: Variant; size: Vector2; inlineAlign: InlineAlignment; length: int64; baseline: float64): bool {.base.} = (discard)
 proc registerVirtual_shapedTextAddObject*[T: TextServerExtension](Self: typedesc[T]) =
@@ -856,10 +856,10 @@ proc registerVirtual_shapedGetSpanObject*[T: TextServerExtension](Self: typedesc
   Self.vmethods[newStringName"_shaped_get_span_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedGetSpanObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
 
-method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary): void {.base.} = (discard)
+method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary[Variant, Variant]): void {.base.} = (discard)
 proc registerVirtual_shapedSetSpanUpdateFont*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_set_span_update_font"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedSetSpanUpdateFont(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary))
+    errproof: cast[TextServerExtension](p_instance).shapedSetSpanUpdateFont(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary[Variant, Variant]))
 
 method shapedGetRunCount*(self: TextServerExtension; shaped: RID): int64 {.base.} = (discard)
 proc registerVirtual_shapedGetRunCount*[T: TextServerExtension](Self: typedesc[T]) =

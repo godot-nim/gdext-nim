@@ -78,7 +78,7 @@ runtime: suite "to string":
     check $arr == $variant(arr)
     check ($arr).startsWith "["
   test "Dictionary":
-    var dict = newDictionary()
+    var dict = newDictionary[Variant, Variant]()
     for i, s in ["a", "b", "c"]:
       dict[variant s] = variant i
     check $dict == $variant(dict)
@@ -630,8 +630,143 @@ runtime: suite "Dictionary":
     keys[2]: values[2],
     keys[3]: values[3],
     }
+
+  test "method definitions":
+    var objflt: Dictionary[Object, Float]
+    var strstn: Dictionary[String, StringName]
+    var varvar: Dictionary[Variant, Variant]
+
+    check size(varvar) is Int
+    check size(objflt) is Int
+
+    check isEmpty(varvar) is Bool
+    check isEmpty(objflt) is Bool
+
+    check compiles clear(varvar)
+    check compiles clear(objflt)
+
+    check compiles assign(objflt, objflt)
+    check not compiles assign(objflt, strstn)
+    check compiles assign(varvar, objflt)
+    check not compiles assign(objflt, varvar)
+
+    check compiles sort(varvar)
+    check compiles sort(objflt)
+
+    check compiles merge(objflt, objflt)
+    check compiles merge(varvar, objflt)
+    check not compiles merge(objflt, varvar)
+    check not compiles merge(objflt, strstn)
+
+    check merged(objflt, objflt) is Dictionary[Object, Float]
+    check merged(varvar, objflt) is Dictionary[Object, Float]
+    check merged(objflt, varvar) is Dictionary[Object, Float]
+    check merged(objflt, strstn) is Dictionary[Variant, Variant]
+
+    check has(strstn, String()) is Bool
+    check has(strstn, Variant()) is Bool
+    check has(strstn, 10) is Bool
+    check has(varvar, Variant()) is Bool
+    check has(varvar, 10) is Bool
+    check not compiles has(varvar, newSeq[int]())
+
+    check hasAll(strstn, Array[String]()) is Bool
+    check hasAll(strstn, Array[Variant]()) is Bool
+    check hasAll(strstn, Array[StringName]()) is Bool
+    check hasAll(varvar, Array[Variant]()) is Bool
+    check hasAll(varvar, Array[String]()) is Bool
+
+    check findKey(strstn, Variant()) is Variant
+    check findKey(strstn, StringName()) is Variant
+    check findKey(strstn, 10) is Variant
+    check findKey(varvar, Variant()) is Variant
+    check findKey(varvar, 10) is Variant
+
+    check erase(strstn, Variant()) is Bool
+    check erase(strstn, String()) is Bool
+    check erase(strstn, 10) is Bool
+    check erase(varvar, Variant()) is Bool
+    check erase(varvar, 10) is Bool
+
+    check hash(strstn) is Hash
+    check hash(varvar) is Hash
+
+    check: compiles:
+      var _: Array[Variant] = keys(varvar)
+      var _: Array[String] = keys(strstn)
+
+    check: compiles:
+      var _: Array[Variant] = values(varvar)
+      var _: Array[StringName] = values(strstn)
+
+    check duplicate(varvar) is Dictionary[Variant, Variant]
+    check duplicate(strstn) is Dictionary[String, StringName]
+
+    check duplicateDeep(varvar) is Dictionary[Variant, Variant]
+    check duplicateDeep(strstn) is Dictionary[String, StringName]
+
+    check get(varvar, Variant(), Variant()) is Variant
+    check get(varvar, 10, Variant()) is Variant
+    check not compiles get(strstn, Variant())
+    check get(strstn, String()) is StringName
+    check not compiles get(strstn, 10)
+
+    check getOrAdd(varvar, Variant(), Variant()) is Variant
+    check getOrAdd(varvar, 10, Variant()) is Variant
+    check not compiles getOrAdd(strstn, Variant())
+    check getOrAdd(strstn, String()) is StringName
+    check not compiles getOrAdd(strstn, 10)
+
+    check compiles set(varvar, Variant(), Variant())
+    check compiles set(varvar, 10, Variant())
+    check compiles set(varvar, Variant(), 10)
+    check compiles set(varvar, 10, 10)
+    check compiles set(strstn, String(), StringName())
+    check not compiles set(strstn, String(), 10)
+    check not compiles set(strstn, 10, StringName())
+    check not compiles set(strstn, 10, 10)
+
+    check isTyped(varvar) is Bool
+    check isTyped(strstn) is Bool
+
+    check isTypedKey(varvar) is Bool
+    check isTypedKey(strstn) is Bool
+
+    check isTypedValue(varvar) is Bool
+    check isTypedValue(strstn) is Bool
+
+    check isSameTyped(varvar, varvar) is Bool
+    check isSameTyped(strstn, varvar) is Bool
+    check isSameTyped(varvar, strstn) is Bool
+    check isSameTyped(strstn, strstn) is Bool
+    check isSameTyped(strstn, objflt) is Bool
+
+    check isSameTypedKey(varvar, varvar) is Bool
+    check isSameTypedKey(strstn, varvar) is Bool
+    check isSameTypedKey(varvar, strstn) is Bool
+    check isSameTypedKey(strstn, strstn) is Bool
+    check isSameTypedKey(strstn, objflt) is Bool
+
+    check isSameTypedValue(varvar, varvar) is Bool
+    check isSameTypedValue(strstn, varvar) is Bool
+    check isSameTypedValue(varvar, strstn) is Bool
+    check isSameTypedValue(strstn, strstn) is Bool
+    check isSameTypedValue(strstn, objflt) is Bool
+
+    check compiles makeReadOnly(varvar)
+    check compiles makeReadOnly(strstn)
+
+    check isReadOnly(varvar) is Bool
+    check isReadOnly(strstn) is Bool
+
+    check recursiveEqual(varvar, varvar, 0) is Bool
+    check recursiveEqual(strstn, varvar, 0) is Bool
+    check recursiveEqual(varvar, strstn, 0) is Bool
+    check recursiveEqual(strstn, strstn, 0) is Bool
+    check recursiveEqual(strstn, objflt, 0) is Bool
+
   test "nil access":
-    var dict: Dictionary
+    var dict: Dictionary[Variant, Variant]
     let imm_dict = dict
     check dict.size == 0
     check imm_dict.size == 0
@@ -639,30 +774,30 @@ runtime: suite "Dictionary":
   test "construct from Table":
     var tab = data.toTable
     var dict = newDictionary(tab)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "construct from TableRef":
     var tab = data.newTable
     var dict = newDictionary(tab)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "construct from openArray":
     var dict = newDictionary(data)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "keys":
     var dict = newDictionary(data)
     for key in dict.keys:
-      check key as string in keys
+      check key in keys
 
   test "values":
     var dict = newDictionary(data)
@@ -684,7 +819,7 @@ runtime: suite "Dictionary":
   test "mpairs":
     var dict = newDictionary(data)
     for key, value in dict.mpairs:
-      value = key
+      value = variant key
     for key, value in dict:
       check value == key
 
@@ -697,7 +832,7 @@ runtime: suite "Dictionary":
 
   test "[]=":
     var dict = newDictionary(data)
-    dict["int"] = 10
+    dict["int"] = variant 10
     check dict["int"] as int == 10
 
 runtime: suite "String":

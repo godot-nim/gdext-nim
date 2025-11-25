@@ -50,16 +50,16 @@ proc setConnectionActivity*(self: GraphEdit; fromNode: StringName; fromPort: int
   expandMethodBind(className GraphEdit, "set_connection_activity", 1141899943)
   methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr amount])
 
-proc setConnections*(self: GraphEdit; connections: Array[Dictionary]): void =
+proc setConnections*(self: GraphEdit; connections: Array[Dictionary[Variant, Variant]]): void =
   expandMethodBind(className GraphEdit, "set_connections", 381264803)
   nilCheck connections
   methodbind.ptrcall(self, [getPtr connections])
 
-proc getConnectionList*(self: GraphEdit): Array[Dictionary] =
+proc getConnectionList*(self: GraphEdit): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className GraphEdit, "get_connection_list", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc getConnectionCount*(self: GraphEdit; fromNode: StringName; fromPort: int32): int32 =
   expandMethodBind(className GraphEdit, "get_connection_count", 861718734)
@@ -67,23 +67,23 @@ proc getConnectionCount*(self: GraphEdit; fromNode: StringName; fromPort: int32)
   methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort], addr ret)
   (addr ret).decode_result(int32)
 
-proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: Float = 4.0): Dictionary =
+proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: Float = 4.0): Dictionary[Variant, Variant] =
   expandMethodBind(className GraphEdit, "get_closest_connection_at_point", 453879819)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr point, getPtr maxDistance], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getConnectionListFromNode*(self: GraphEdit; node: StringName): Array[Dictionary] =
+proc getConnectionListFromNode*(self: GraphEdit; node: StringName): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className GraphEdit, "get_connection_list_from_node", 3147814860)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): Array[Dictionary] =
+proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className GraphEdit, "get_connections_intersecting_with_rect", 2709748719)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr rect], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc clearConnections*(self: GraphEdit): void =
   expandMethodBind(className GraphEdit, "clear_connections", 3218959716)
@@ -373,16 +373,16 @@ proc isRightDisconnectsEnabled*(self: GraphEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setTypeNames*(self: GraphEdit; typeNames: Dictionary): void =
+proc setTypeNames*(self: GraphEdit; typeNames: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GraphEdit, "set_type_names", 4155329257)
   nilCheck typeNames
   methodbind.ptrcall(self, [getPtr typeNames])
 
-proc getTypeNames*(self: GraphEdit): Dictionary =
+proc getTypeNames*(self: GraphEdit): Dictionary[Variant, Variant] =
   expandMethodBind(className GraphEdit, "get_type_names", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getMenuHbox*(self: GraphEdit): HBoxContainer =
   expandMethodBind(className GraphEdit, "get_menu_hbox", 3590609951)

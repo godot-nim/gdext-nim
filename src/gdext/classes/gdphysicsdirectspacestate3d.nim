@@ -6,23 +6,23 @@ import gdobject; export gdobject
 
 expandOnClassImported(PhysicsDirectSpaceState3D, Object)
 
-proc intersectPoint*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsPointQueryParameters3D; maxRetvals: int32 = 32): Array[Dictionary] =
+proc intersectPoint*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsPointQueryParameters3D; maxRetvals: int32 = 32): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className PhysicsDirectSpaceState3D, "intersect_point", 975173756)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc intersectRay*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsRayQueryParameters3D): Dictionary =
+proc intersectRay*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsRayQueryParameters3D): Dictionary[Variant, Variant] =
   expandMethodBind(className PhysicsDirectSpaceState3D, "intersect_ray", 3957970750)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr parameters], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc intersectShape*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsShapeQueryParameters3D; maxRetvals: int32 = 32): Array[Dictionary] =
+proc intersectShape*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsShapeQueryParameters3D; maxRetvals: int32 = 32): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className PhysicsDirectSpaceState3D, "intersect_shape", 3762137681)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc castMotion*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsShapeQueryParameters3D): PackedFloat32Array =
   expandMethodBind(className PhysicsDirectSpaceState3D, "cast_motion", 1778757334)
@@ -36,8 +36,8 @@ proc collideShape*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsSha
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
   (addr ret).decode_result(Array[Vector3])
 
-proc getRestInfo*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsShapeQueryParameters3D): Dictionary =
+proc getRestInfo*(self: PhysicsDirectSpaceState3D; parameters: gdref PhysicsShapeQueryParameters3D): Dictionary[Variant, Variant] =
   expandMethodBind(className PhysicsDirectSpaceState3D, "get_rest_info", 1376751592)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr parameters], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])

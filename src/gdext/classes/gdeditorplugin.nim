@@ -66,15 +66,15 @@ proc registerVirtual_handles*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_handles"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).handles(p_args[0].decode(Object)).encode(r_ret)
 
-method getState*(self: EditorPlugin): Dictionary {.base.} = (discard)
+method getState*(self: EditorPlugin): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getState*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).getState().encode(r_ret)
 
-method setState*(self: EditorPlugin; state: Dictionary): void {.base.} = (discard)
+method setState*(self: EditorPlugin; state: Dictionary[Variant, Variant]): void {.base.} = (discard)
 proc registerVirtual_setState*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorPlugin](p_instance).setState(p_args[0].decode(Dictionary))
+    errproof: cast[EditorPlugin](p_instance).setState(p_args[0].decode(Dictionary[Variant, Variant]))
 
 method clear*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_clear*[T: EditorPlugin](Self: typedesc[T]) =

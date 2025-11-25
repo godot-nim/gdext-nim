@@ -13,6 +13,9 @@ type PropTestNodePragmas* {.gdsync.} = ptr object of Node
   string_array* {.gdexport.}: Array[String]
   texture2D_array* {.gdexport.}: Array[Texture2D]
   variant_array* {.gdexport.}: Array[Variant]
+  variant_dict* {.gdexport.}: Dictionary[Variant, Variant]
+  string_name_RefCounted_dict* {.gdexport.}: Dictionary[StringName, gdref RefCounted]
+  nested_dictionary* {.gdexport.}: Dictionary[StringName, Array[Array[gdref RefCounted]]]
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport: Appearance.placeholder("placeholder here...").}: string

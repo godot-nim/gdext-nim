@@ -76,11 +76,11 @@ proc getInterface*(self: XRServer; idx: int32): gdref XRInterface =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(gdref XRInterface)
 
-proc getInterfaces*(self: XRServer): Array[Dictionary] =
+proc getInterfaces*(self: XRServer): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className XRServer, "get_interfaces", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc findInterface*(self: XRServer; name: String): gdref XRInterface =
   expandMethodBind(className XRServer, "find_interface", 1395192955)
@@ -96,11 +96,11 @@ proc removeTracker*(self: XRServer; tracker: gdref XRTracker): void =
   expandMethodBind(className XRServer, "remove_tracker", 684804553)
   methodbind.ptrcall(self, [getPtr tracker])
 
-proc getTrackers*(self: XRServer; trackerTypes: int32): Dictionary =
+proc getTrackers*(self: XRServer; trackerTypes: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className XRServer, "get_trackers", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr trackerTypes], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getTracker*(self: XRServer; trackerName: StringName): gdref XRTracker =
   expandMethodBind(className XRServer, "get_tracker", 147382240)

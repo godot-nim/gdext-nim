@@ -22,26 +22,26 @@ proc processString*(self: JSONRPC; action: String): String =
   methodbind.ptrcall(self, [getPtr action], addr ret)
   (addr ret).decode_result(String)
 
-proc makeRequest*(self: JSONRPC; `method`: String; params: Variant; id: Variant): Dictionary =
+proc makeRequest*(self: JSONRPC; `method`: String; params: Variant; id: Variant): Dictionary[Variant, Variant] =
   expandMethodBind(className JSONRPC, "make_request", 3423508980)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr `method`, getPtr params, getPtr id], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc makeResponse*(self: JSONRPC; retval: Variant; id: Variant): Dictionary =
+proc makeResponse*(self: JSONRPC; retval: Variant; id: Variant): Dictionary[Variant, Variant] =
   expandMethodBind(className JSONRPC, "make_response", 5053918)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr retval, getPtr id], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc makeNotification*(self: JSONRPC; `method`: String; params: Variant): Dictionary =
+proc makeNotification*(self: JSONRPC; `method`: String; params: Variant): Dictionary[Variant, Variant] =
   expandMethodBind(className JSONRPC, "make_notification", 2949127017)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr `method`, getPtr params], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc makeResponseError*(self: JSONRPC; code: int32; message: String; id: Variant = default(Variant)): Dictionary =
+proc makeResponseError*(self: JSONRPC; code: int32; message: String; id: Variant = default(Variant)): Dictionary[Variant, Variant] =
   expandMethodBind(className JSONRPC, "make_response_error", 928596297)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr code, getPtr message, getPtr id], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])

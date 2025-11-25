@@ -143,11 +143,11 @@ proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Arra
   methodbind.ptrcall(self, [getPtr path, getPtr arguments, getPtr output, getPtr readStderr, getPtr openConsole], addr ret)
   (addr ret).decode_result(int32)
 
-proc executeWithPipe*(self: OS; path: String; arguments: PackedStringArray; blocking: bool = true): Dictionary =
+proc executeWithPipe*(self: OS; path: String; arguments: PackedStringArray; blocking: bool = true): Dictionary[Variant, Variant] =
   expandMethodBind(className OS, "execute_with_pipe", 2851312030)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr path, getPtr arguments, getPtr blocking], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc createProcess*(self: OS; path: String; arguments: PackedStringArray; openConsole: bool = false): int32 =
   expandMethodBind(className OS, "create_process", 2903767230)
@@ -337,11 +337,11 @@ proc getStaticMemoryPeakUsage*(self: OS): uint64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
 
-proc getMemoryInfo*(self: OS): Dictionary =
+proc getMemoryInfo*(self: OS): Dictionary[Variant, Variant] =
   expandMethodBind(className OS, "get_memory_info", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc moveToTrash*(self: OS; path: String): Error =
   expandMethodBind(className OS, "move_to_trash", 2113323047)

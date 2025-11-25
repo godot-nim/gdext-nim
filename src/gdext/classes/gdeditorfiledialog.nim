@@ -68,11 +68,11 @@ proc addOption*(self: EditorFileDialog; name: String; values: PackedStringArray;
   expandMethodBind(className EditorFileDialog, "add_option", 149592325)
   methodbind.ptrcall(self, [getPtr name, getPtr values, getPtr defaultValueIndex])
 
-proc getSelectedOptions*(self: EditorFileDialog): Dictionary =
+proc getSelectedOptions*(self: EditorFileDialog): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorFileDialog, "get_selected_options", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc clearFilenameFilter*(self: EditorFileDialog): void =
   expandMethodBind(className EditorFileDialog, "clear_filename_filter", 3218959716)

@@ -18,11 +18,11 @@ proc createPreset*(self: EditorExportPlatform): gdref EditorExportPreset =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref EditorExportPreset)
 
-proc findExportTemplate*(self: EditorExportPlatform; templateFileName: String): Dictionary =
+proc findExportTemplate*(self: EditorExportPlatform; templateFileName: String): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "find_export_template", 2248993622)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr templateFileName], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getCurrentPresets*(self: EditorExportPlatform): Array[Variant] =
   expandMethodBind(className EditorExportPlatform, "get_current_presets", 3995934104)
@@ -30,29 +30,29 @@ proc getCurrentPresets*(self: EditorExportPlatform): Array[Variant] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array[Variant])
 
-proc savePack*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String; embed: bool = false): Dictionary =
+proc savePack*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String; embed: bool = false): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "save_pack", 3420080977)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr preset, getPtr debug, getPtr path, getPtr embed], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc saveZip*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary =
+proc saveZip*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "save_zip", 1485052307)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr preset, getPtr debug, getPtr path], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc savePackPatch*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary =
+proc savePackPatch*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "save_pack_patch", 1485052307)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr preset, getPtr debug, getPtr path], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc saveZipPatch*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary =
+proc saveZipPatch*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "save_zip_patch", 1485052307)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr preset, getPtr debug, getPtr path], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc genExportFlags*(self: EditorExportPlatform; flags: set[EditorExportPlatform_DebugFlags]): PackedStringArray =
   expandMethodBind(className EditorExportPlatform, "gen_export_flags", 2976483270)
@@ -153,11 +153,11 @@ proc sshPushToRemote*(self: EditorExportPlatform; host: String; port: String; sc
   methodbind.ptrcall(self, [getPtr host, getPtr port, getPtr scpArgs, getPtr srcFile, getPtr dstFile], addr ret)
   (addr ret).decode_result(Error)
 
-proc getInternalExportFiles*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool): Dictionary =
+proc getInternalExportFiles*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPlatform, "get_internal_export_files", 89550086)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr preset, getPtr debug], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getForcedExportFiles*(_: typedesc[EditorExportPlatform]; preset: gdref EditorExportPreset = default gdref EditorExportPreset): PackedStringArray =
   expandMethodBind(className EditorExportPlatform, "get_forced_export_files", 1939331020)

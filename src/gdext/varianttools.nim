@@ -2,6 +2,7 @@ import std/[strformat, hashes, sequtils]
 
 import gdext/builtinindex
 import gdext/arraytools
+import gdext/dicttools
 import gdext/private/[gdinterface, typeshift, propertyinfo]
 
 import gdext/classes/gdClassDB
@@ -270,6 +271,26 @@ proc `of`*[T: SomeProperty](a: Variant; b: typedesc[T]): bool =
           ClassDB.isParentClass((a as Array[Variant]).getTypedClassName, b.T.className)
         else:
           typ == b.T.variantType
+    elif b is Dictionary:
+      let matchA = when b.A is Variant:
+        true
+      else:
+        let typA = (a as Dictionary[Variant, Variant]).getTypedKeyBuiltin.VariantType
+        case typA
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Dictionary[Variant, Variant]).getTypedKeyClassName, b.A.className)
+        else:
+          typA == b.A.variantType
+      let matchB = when b.B is Variant:
+        true
+      else:
+        let typB = (a as Dictionary[Variant, Variant]).getTypedValueBuiltin.VariantType
+        case typB
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Dictionary[Variant, Variant]).getTypedValueClassName, b.B.className)
+        else:
+          typB == b.B.variantType
+      matchA and matchB
     else:
       true
   else:

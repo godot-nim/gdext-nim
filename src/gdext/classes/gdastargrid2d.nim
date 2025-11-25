@@ -166,11 +166,11 @@ proc getPointPosition*(self: AStarGrid2D; id: Vector2i): Vector2 =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getPointDataInRegion*(self: AStarGrid2D; region: Rect2i): Array[Dictionary] =
+proc getPointDataInRegion*(self: AStarGrid2D; region: Rect2i): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className AStarGrid2D, "get_point_data_in_region", 3893818462)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr region], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc getPointPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPartialPath: bool = false): PackedVector2Array =
   expandMethodBind(className AStarGrid2D, "get_point_path", 1641925693)

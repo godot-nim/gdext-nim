@@ -26,11 +26,11 @@ proc getInterface*(self: TextServerManager; idx: int32): gdref TextServer =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(gdref TextServer)
 
-proc getInterfaces*(self: TextServerManager): Array[Dictionary] =
+proc getInterfaces*(self: TextServerManager): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className TextServerManager, "get_interfaces", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc findInterface*(self: TextServerManager; name: String): gdref TextServer =
   expandMethodBind(className TextServerManager, "find_interface", 2240905781)

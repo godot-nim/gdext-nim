@@ -125,6 +125,20 @@ proc appearance*[T](_: typedesc[Array[T]]): Appearance =
     hint: propertyHintArrayType,
     hintstring: newGdString str)
 
+proc appearance*[A, B](_: typedesc[Dictionary[A, B]]): Appearance =
+  var elementAppA = A.appearance
+  let typA = A.variantType.ord
+  let hintA = (if elementAppA.hint == propertyHintNone: "" else: "/" & $elementAppA.hint.ord)
+
+  var elementAppB = B.appearance
+  let typB = B.variantType.ord
+  let hintB = (if elementAppB.hint == propertyHintNone: "" else: "/" & $elementAppB.hint.ord)
+
+  let str = fmt"{typA}{hintA}:{elementAppA.hint_string};{typB}{hintB}:{elementAppB.hint_string}"
+  Appearance(
+    hint: propertyHintArrayType,
+    hintstring: newGdString str)
+
 template joinArg(s: varargs[string]): string = s.join(",")
 
 proc storage*(T: typedesc[Appearance]): Appearance =

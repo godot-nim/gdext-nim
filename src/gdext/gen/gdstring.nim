@@ -90,7 +90,7 @@ func `%`*(left: String; right: RID): String = {.noSideEffect.}: `%(String RID)`(
 func `%`*(left: String; right: Object): String = {.noSideEffect.}: `%(String Object)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: Callable): String = {.noSideEffect.}: `%(String Callable)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: Signal): String = {.noSideEffect.}: `%(String Signal)`(getPtr left, getPtr right, addr result)
-func `%`*(left: String; right: Dictionary): String = {.noSideEffect.}:
+func `%`*(left: String; right: Dictionary[Variant, Variant]): String = {.noSideEffect.}:
   nilCheck right
   `%(String Dictionary)`(getPtr left, getPtr right, addr result)
 func `%`*(left: String; right: Array[Variant]): String = {.noSideEffect.}:

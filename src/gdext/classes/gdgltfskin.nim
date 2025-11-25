@@ -77,24 +77,24 @@ proc setSkeleton*(self: GLTFSkin; skeleton: int32): void =
   expandMethodBind(className GLTFSkin, "set_skeleton", 1286410249)
   methodbind.ptrcall(self, [getPtr skeleton])
 
-proc getJointIToBoneI*(self: GLTFSkin): Dictionary =
+proc getJointIToBoneI*(self: GLTFSkin): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_bone_i", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary): void =
+proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_bone_i", 4155329257)
   nilCheck jointIToBoneI
   methodbind.ptrcall(self, [getPtr jointIToBoneI])
 
-proc getJointIToName*(self: GLTFSkin): Dictionary =
+proc getJointIToName*(self: GLTFSkin): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_name", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary): void =
+proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_name", 4155329257)
   nilCheck jointIToName
   methodbind.ptrcall(self, [getPtr jointIToName])

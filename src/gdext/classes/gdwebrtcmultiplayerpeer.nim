@@ -43,14 +43,14 @@ proc hasPeer*(self: WebRTCMultiplayerPeer; peerId: int32): bool =
   methodbind.ptrcall(self, [getPtr peerId], addr ret)
   (addr ret).decode_result(bool)
 
-proc getPeer*(self: WebRTCMultiplayerPeer; peerId: int32): Dictionary =
+proc getPeer*(self: WebRTCMultiplayerPeer; peerId: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className WebRTCMultiplayerPeer, "get_peer", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr peerId], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getPeers*(self: WebRTCMultiplayerPeer): Dictionary =
+proc getPeers*(self: WebRTCMultiplayerPeer): Dictionary[Variant, Variant] =
   expandMethodBind(className WebRTCMultiplayerPeer, "get_peers", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])

@@ -93,8 +93,6 @@ type
     cowdata: pointer
   NodePath* {.byref.} = object
     cowdata: pointer
-  Dictionary* {.byref.} = object
-    cowdata: pointer
 
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
@@ -126,6 +124,8 @@ type
     `method`: StringName
     `object`: ObjectID
   Array*[T: SomeProperty] {.byref.} = object
+    cowdata: pointer
+  Dictionary*[A: SomeProperty; B: SomePropertySub] {.byref.} = object
     cowdata: pointer
 
   SomePackedArray* =
@@ -186,6 +186,8 @@ type
     t.EngineClass isnot t
 
   SomeProperty* = concept x, type t
+    t.variantType is VariantType
+  SomePropertySub* = concept x, type t
     t.variantType is VariantType
 
   AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
@@ -327,10 +329,10 @@ proc `=copy`*(dst: var Signal; src: Signal) =
 proc dup*(src: Dictionary): Dictionary =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeDictionary](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Dictionary) {.raises: [Exception].} =
+proc `=destroy`*[A, B](val {.bycopy.}: Dictionary[A, B]) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeDictionary](addr val)
-proc `=copy`*(dst: var Dictionary; src: Dictionary) =
+proc `=copy`*[A, B](dst: var Dictionary[A, B]; src: Dictionary[A, B]) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst
