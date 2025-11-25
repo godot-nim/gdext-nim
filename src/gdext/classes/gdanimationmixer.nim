@@ -37,11 +37,11 @@ proc getAnimationLibrary*(self: AnimationMixer; name: StringName): gdref Animati
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(gdref AnimationLibrary)
 
-proc getAnimationLibraryList*(self: AnimationMixer): TypedArray[StringName] =
+proc getAnimationLibraryList*(self: AnimationMixer): Array[StringName] =
   expandMethodBind(className AnimationMixer, "get_animation_library_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc hasAnimation*(self: AnimationMixer; name: StringName): bool =
   expandMethodBind(className AnimationMixer, "has_animation", 2619796661)

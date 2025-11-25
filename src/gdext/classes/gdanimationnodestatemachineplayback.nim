@@ -52,8 +52,8 @@ proc getFadingFromNode*(self: AnimationNodeStateMachinePlayback): StringName =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
-proc getTravelPath*(self: AnimationNodeStateMachinePlayback): TypedArray[StringName] =
+proc getTravelPath*(self: AnimationNodeStateMachinePlayback): Array[StringName] =
   expandMethodBind(className AnimationNodeStateMachinePlayback, "get_travel_path", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])

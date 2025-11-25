@@ -140,11 +140,11 @@ proc shouldIgnoreDevice*(self: Input; vendorId: int32; productId: int32): bool =
   methodbind.ptrcall(self, [getPtr vendorId, getPtr productId], addr ret)
   (addr ret).decode_result(bool)
 
-proc getConnectedJoypads*(self: Input): TypedArray[Int] =
+proc getConnectedJoypads*(self: Input): Array[Int] =
   expandMethodBind(className Input, "get_connected_joypads", 2915620761)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc getJoyVibrationStrength*(self: Input; device: int32): Vector2 =
   expandMethodBind(className Input, "get_joy_vibration_strength", 3114997196)

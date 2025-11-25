@@ -6,7 +6,7 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(PhysicsRayQueryParameters2D, RefCounted)
 
-proc create*(_: typedesc[PhysicsRayQueryParameters2D]; `from`: Vector2; to: Vector2; collisionMask: uint32 = 4294967295'u32; exclude: TypedArray[RID] = newTypedArray[RID]()): gdref PhysicsRayQueryParameters2D =
+proc create*(_: typedesc[PhysicsRayQueryParameters2D]; `from`: Vector2; to: Vector2; collisionMask: uint32 = 4294967295'u32; exclude: Array[RID] = newArray[RID]()): gdref PhysicsRayQueryParameters2D =
   expandMethodBind(className PhysicsRayQueryParameters2D, "create", 3196569324)
   nilCheck exclude
   var ret: encoded gdref PhysicsRayQueryParameters2D
@@ -43,16 +43,16 @@ proc getCollisionMask*(self: PhysicsRayQueryParameters2D): uint32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
-proc setExclude*(self: PhysicsRayQueryParameters2D; exclude: TypedArray[RID]): void =
+proc setExclude*(self: PhysicsRayQueryParameters2D; exclude: Array[RID]): void =
   expandMethodBind(className PhysicsRayQueryParameters2D, "set_exclude", 381264803)
   nilCheck exclude
   methodbind.ptrcall(self, [getPtr exclude])
 
-proc getExclude*(self: PhysicsRayQueryParameters2D): TypedArray[RID] =
+proc getExclude*(self: PhysicsRayQueryParameters2D): Array[RID] =
   expandMethodBind(className PhysicsRayQueryParameters2D, "get_exclude", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc setCollideWithBodies*(self: PhysicsRayQueryParameters2D; enable: bool): void =
   expandMethodBind(className PhysicsRayQueryParameters2D, "set_collide_with_bodies", 2586408642)

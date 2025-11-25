@@ -36,7 +36,7 @@ proc disconnect*(self: var Signal; callable: Callable): void =
   `disconnect(Signal Callable)`.call(addr self, [getPtr callable])
 proc isConnected*(self: Signal; callable: Callable): bool =
   `isConnected(Signal Callable)`.call(addr self, [getPtr callable], addr result)
-proc getConnections*(self: Signal): Array =
+proc getConnections*(self: Signal): Array[Variant] =
   `getConnections(Signal)`.call(addr self, [], addr result)
 proc hasConnections*(self: Signal): bool =
   `hasConnections(Signal)`.call(addr self, [], addr result)

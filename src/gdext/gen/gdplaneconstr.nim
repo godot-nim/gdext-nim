@@ -1,6 +1,6 @@
 var Plane_constr: array[7, PtrConstructor]
 proc load_Plane_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {2, 4, 5}:
+  for i in 0..6:
     Plane_constr[i] = interface_Variant_getPtrConstructor(VariantType_Plane, int32 i)
 
 # proc plane*(): Plane =

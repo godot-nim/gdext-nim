@@ -30,12 +30,12 @@ proc fetchPhysicalBones*(self: SkeletonModification2DPhysicalBones): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "fetch_physical_bones", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
+proc startSimulation*(self: SkeletonModification2DPhysicalBones; bones: Array[StringName] = newArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "start_simulation", 2787316981)
   nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])
 
-proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
+proc stopSimulation*(self: SkeletonModification2DPhysicalBones; bones: Array[StringName] = newArray[StringName]()): void =
   expandMethodBind(className SkeletonModification2DPhysicalBones, "stop_simulation", 2787316981)
   nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])

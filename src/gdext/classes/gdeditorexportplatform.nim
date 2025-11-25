@@ -24,11 +24,11 @@ proc findExportTemplate*(self: EditorExportPlatform; templateFileName: String): 
   methodbind.ptrcall(self, [getPtr templateFileName], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getCurrentPresets*(self: EditorExportPlatform): Array =
+proc getCurrentPresets*(self: EditorExportPlatform): Array[Variant] =
   expandMethodBind(className EditorExportPlatform, "get_current_presets", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc savePack*(self: EditorExportPlatform; preset: gdref EditorExportPreset; debug: bool; path: String; embed: bool = false): Dictionary =
   expandMethodBind(className EditorExportPlatform, "save_pack", 3420080977)
@@ -134,7 +134,7 @@ proc getWorstMessageType*(self: EditorExportPlatform): EditorExportPlatform_Expo
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorExportPlatform_ExportMessageType)
 
-proc sshRunOnRemote*(self: EditorExportPlatform; host: String; port: String; sshArg: PackedStringArray; cmdArgs: String; output: Array = newArray(); portFwd: int32 = -1): Error =
+proc sshRunOnRemote*(self: EditorExportPlatform; host: String; port: String; sshArg: PackedStringArray; cmdArgs: String; output: Array[Variant] = newArray[Variant](); portFwd: int32 = -1): Error =
   expandMethodBind(className EditorExportPlatform, "ssh_run_on_remote", 3163734797)
   nilCheck output
   var ret: encoded Error

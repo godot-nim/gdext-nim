@@ -146,11 +146,11 @@ proc getProjectionForView*(self: XRInterface; view: uint32; aspect: float64; nea
   methodbind.ptrcall(self, [getPtr view, getPtr aspect, getPtr near, getPtr far], addr ret)
   (addr ret).decode_result(Projection)
 
-proc getSupportedEnvironmentBlendModes*(self: XRInterface): Array =
+proc getSupportedEnvironmentBlendModes*(self: XRInterface): Array[Variant] =
   expandMethodBind(className XRInterface, "get_supported_environment_blend_modes", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setEnvironmentBlendMode*(self: XRInterface; mode: XRInterface_EnvironmentBlendMode): bool =
   expandMethodBind(className XRInterface, "set_environment_blend_mode", 551152418)

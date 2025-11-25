@@ -1,6 +1,6 @@
 var Basis_constr: array[5, PtrConstructor]
 proc load_Basis_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {2, 3}:
+  for i in 0..4:
     Basis_constr[i] = interface_Variant_getPtrConstructor(VariantType_Basis, int32 i)
 
 # proc basis*(): Basis =

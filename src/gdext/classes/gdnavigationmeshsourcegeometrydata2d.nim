@@ -16,34 +16,34 @@ proc hasData*(self: NavigationMeshSourceGeometryData2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: TypedArray[PackedVector2Array]): void =
+proc setTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: Array[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_traversable_outlines", 381264803)
   nilCheck traversableOutlines
   methodbind.ptrcall(self, [getPtr traversableOutlines])
 
-proc getTraversableOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArray[PackedVector2Array] =
+proc getTraversableOutlines*(self: NavigationMeshSourceGeometryData2D): Array[PackedVector2Array] =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "get_traversable_outlines", 3995934104)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc setObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: TypedArray[PackedVector2Array]): void =
+proc setObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: Array[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_obstruction_outlines", 381264803)
   nilCheck obstructionOutlines
   methodbind.ptrcall(self, [getPtr obstructionOutlines])
 
-proc getObstructionOutlines*(self: NavigationMeshSourceGeometryData2D): TypedArray[PackedVector2Array] =
+proc getObstructionOutlines*(self: NavigationMeshSourceGeometryData2D): Array[PackedVector2Array] =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "get_obstruction_outlines", 3995934104)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc appendTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: TypedArray[PackedVector2Array]): void =
+proc appendTraversableOutlines*(self: NavigationMeshSourceGeometryData2D; traversableOutlines: Array[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "append_traversable_outlines", 381264803)
   nilCheck traversableOutlines
   methodbind.ptrcall(self, [getPtr traversableOutlines])
 
-proc appendObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: TypedArray[PackedVector2Array]): void =
+proc appendObstructionOutlines*(self: NavigationMeshSourceGeometryData2D; obstructionOutlines: Array[PackedVector2Array]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "append_obstruction_outlines", 381264803)
   nilCheck obstructionOutlines
   methodbind.ptrcall(self, [getPtr obstructionOutlines])
@@ -68,16 +68,16 @@ proc clearProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): void
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "clear_projected_obstructions", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData2D; projectedObstructions: Array): void =
+proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData2D; projectedObstructions: Array[Variant]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "set_projected_obstructions", 381264803)
   nilCheck projectedObstructions
   methodbind.ptrcall(self, [getPtr projectedObstructions])
 
-proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): Array =
+proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData2D): Array[Variant] =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "get_projected_obstructions", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getBounds*(self: NavigationMeshSourceGeometryData2D): Rect2 =
   expandMethodBind(className NavigationMeshSourceGeometryData2D, "get_bounds", 3248174)

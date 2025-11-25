@@ -93,7 +93,7 @@ func `%`*(left: StringName; right: Signal): String = {.noSideEffect.}: `%(String
 func `%`*(left: StringName; right: Dictionary): String = {.noSideEffect.}:
   nilCheck right
   `%(StringName Dictionary)`(getPtr left, getPtr right, addr result)
-func `%`*(left: StringName; right: Array): String = {.noSideEffect.}:
+func `%`*(left: StringName; right: Array[Variant]): String = {.noSideEffect.}:
   nilCheck right
   `%(StringName Array)`(getPtr left, getPtr right, addr result)
 func `%`*(left: StringName; right: PackedByteArray): String = {.noSideEffect.}: `%(StringName PackedByteArray)`(getPtr left, getPtr right, addr result)

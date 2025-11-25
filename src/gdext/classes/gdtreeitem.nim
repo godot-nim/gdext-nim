@@ -120,16 +120,16 @@ proc getStructuredTextBidiOverride*(self: TreeItem; column: int32): TextServer_S
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32; args: Array[Variant]): void =
   expandMethodBind(className TreeItem, "set_structured_text_bidi_override_options", 537221740)
   nilCheck args
   methodbind.ptrcall(self, [getPtr column, getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32): Array =
+proc getStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32): Array[Variant] =
   expandMethodBind(className TreeItem, "get_structured_text_bidi_override_options", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setLanguage*(self: TreeItem; column: int32; language: String): void =
   expandMethodBind(className TreeItem, "set_language", 501894301)
@@ -581,11 +581,11 @@ proc getChildCount*(self: TreeItem): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc getChildren*(self: TreeItem): TypedArray[TreeItem] =
+proc getChildren*(self: TreeItem): Array[TreeItem] =
   expandMethodBind(className TreeItem, "get_children", 2915620761)
-  var ret: encoded TypedArray[TreeItem]
+  var ret: encoded Array[TreeItem]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[TreeItem])
+  (addr ret).decode_result(Array[TreeItem])
 
 proc getIndex*(self: TreeItem): int32 =
   expandMethodBind(className TreeItem, "get_index", 2455072627)

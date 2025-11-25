@@ -1,6 +1,6 @@
 var Color_constr: array[7, PtrConstructor]
 proc load_Color_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {5, 6}:
+  for i in 0..6:
     Color_constr[i] = interface_Variant_getPtrConstructor(VariantType_Color, int32 i)
 
 # proc color*(): Color =

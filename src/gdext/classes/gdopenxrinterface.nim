@@ -68,17 +68,17 @@ proc setActionSetActive*(self: OpenXRInterface; name: String; active: bool): voi
   expandMethodBind(className OpenXRInterface, "set_action_set_active", 2678287736)
   methodbind.ptrcall(self, [getPtr name, getPtr active])
 
-proc getActionSets*(self: OpenXRInterface): Array =
+proc getActionSets*(self: OpenXRInterface): Array[Variant] =
   expandMethodBind(className OpenXRInterface, "get_action_sets", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc getAvailableDisplayRefreshRates*(self: OpenXRInterface): Array =
+proc getAvailableDisplayRefreshRates*(self: OpenXRInterface): Array[Variant] =
   expandMethodBind(className OpenXRInterface, "get_available_display_refresh_rates", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setMotionRange*(self: OpenXRInterface; hand: OpenXRInterface_Hand; motionRange: OpenXRInterface_HandMotionRange): void =
   expandMethodBind(className OpenXRInterface, "set_motion_range", 855158159)

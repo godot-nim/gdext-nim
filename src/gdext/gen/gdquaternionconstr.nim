@@ -1,6 +1,6 @@
 var Quaternion_constr: array[6, PtrConstructor]
 proc load_Quaternion_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {2, 3, 4}:
+  for i in 0..5:
     Quaternion_constr[i] = interface_Variant_getPtrConstructor(VariantType_Quaternion, int32 i)
 
 # proc quaternion*(): Quaternion =

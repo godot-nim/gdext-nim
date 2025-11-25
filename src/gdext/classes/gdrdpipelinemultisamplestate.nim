@@ -56,16 +56,16 @@ proc getEnableAlphaToOne*(self: RDPipelineMultisampleState): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setSampleMasks*(self: RDPipelineMultisampleState; masks: TypedArray[Int]): void =
+proc setSampleMasks*(self: RDPipelineMultisampleState; masks: Array[Int]): void =
   expandMethodBind(className RDPipelineMultisampleState, "set_sample_masks", 381264803)
   nilCheck masks
   methodbind.ptrcall(self, [getPtr masks])
 
-proc getSampleMasks*(self: RDPipelineMultisampleState): TypedArray[Int] =
+proc getSampleMasks*(self: RDPipelineMultisampleState): Array[Int] =
   expandMethodBind(className RDPipelineMultisampleState, "get_sample_masks", 3995934104)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 template sampleCount*(self: RDPipelineMultisampleState): untyped = self.getSampleCount()
 template `sampleCount=`*(self: RDPipelineMultisampleState; value) = self.setSampleCount(value)

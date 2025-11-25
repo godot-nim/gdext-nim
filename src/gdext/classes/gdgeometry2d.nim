@@ -84,59 +84,59 @@ proc convexHull*(self: Geometry2D; points: PackedVector2Array): PackedVector2Arr
   methodbind.ptrcall(self, [getPtr points], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
-proc decomposePolygonInConvex*(self: Geometry2D; polygon: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc decomposePolygonInConvex*(self: Geometry2D; polygon: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "decompose_polygon_in_convex", 3982393695)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygon], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc mergePolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc mergePolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "merge_polygons", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygonA, getPtr polygonB], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc clipPolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc clipPolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "clip_polygons", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygonA, getPtr polygonB], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc intersectPolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc intersectPolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "intersect_polygons", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygonA, getPtr polygonB], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc excludePolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc excludePolygons*(self: Geometry2D; polygonA: PackedVector2Array; polygonB: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "exclude_polygons", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygonA, getPtr polygonB], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc clipPolylineWithPolygon*(self: Geometry2D; polyline: PackedVector2Array; polygon: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc clipPolylineWithPolygon*(self: Geometry2D; polyline: PackedVector2Array; polygon: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "clip_polyline_with_polygon", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polyline, getPtr polygon], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc intersectPolylineWithPolygon*(self: Geometry2D; polyline: PackedVector2Array; polygon: PackedVector2Array): TypedArray[PackedVector2Array] =
+proc intersectPolylineWithPolygon*(self: Geometry2D; polyline: PackedVector2Array; polygon: PackedVector2Array): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "intersect_polyline_with_polygon", 3637387053)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polyline, getPtr polygon], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc offsetPolygon*(self: Geometry2D; polygon: PackedVector2Array; delta: Float; joinType: Geometry2D_PolyJoinType = joinSquare): TypedArray[PackedVector2Array] =
+proc offsetPolygon*(self: Geometry2D; polygon: PackedVector2Array; delta: Float; joinType: Geometry2D_PolyJoinType = joinSquare): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "offset_polygon", 1275354010)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polygon, getPtr delta, getPtr joinType], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
-proc offsetPolyline*(self: Geometry2D; polyline: PackedVector2Array; delta: Float; joinType: Geometry2D_PolyJoinType = joinSquare; endType: Geometry2D_PolyEndType = endSquare): TypedArray[PackedVector2Array] =
+proc offsetPolyline*(self: Geometry2D; polyline: PackedVector2Array; delta: Float; joinType: Geometry2D_PolyJoinType = joinSquare; endType: Geometry2D_PolyEndType = endSquare): Array[PackedVector2Array] =
   expandMethodBind(className Geometry2D, "offset_polyline", 2328231778)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr polyline, getPtr delta, getPtr joinType, getPtr endType], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
 proc makeAtlas*(self: Geometry2D; sizes: PackedVector2Array): Dictionary =
   expandMethodBind(className Geometry2D, "make_atlas", 1337682371)
@@ -144,8 +144,8 @@ proc makeAtlas*(self: Geometry2D; sizes: PackedVector2Array): Dictionary =
   methodbind.ptrcall(self, [getPtr sizes], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc bresenhamLine*(self: Geometry2D; `from`: Vector2i; to: Vector2i): TypedArray[Vector2i] =
+proc bresenhamLine*(self: Geometry2D; `from`: Vector2i; to: Vector2i): Array[Vector2i] =
   expandMethodBind(className Geometry2D, "bresenham_line", 1989391000)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr `from`, getPtr to], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])

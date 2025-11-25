@@ -56,24 +56,24 @@ proc setCollideSeparationRayEnabled*(self: PhysicsTestMotionParameters3D; enable
   expandMethodBind(className PhysicsTestMotionParameters3D, "set_collide_separation_ray_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
 
-proc getExcludeBodies*(self: PhysicsTestMotionParameters3D): TypedArray[RID] =
+proc getExcludeBodies*(self: PhysicsTestMotionParameters3D): Array[RID] =
   expandMethodBind(className PhysicsTestMotionParameters3D, "get_exclude_bodies", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
-proc setExcludeBodies*(self: PhysicsTestMotionParameters3D; excludeList: TypedArray[RID]): void =
+proc setExcludeBodies*(self: PhysicsTestMotionParameters3D; excludeList: Array[RID]): void =
   expandMethodBind(className PhysicsTestMotionParameters3D, "set_exclude_bodies", 381264803)
   nilCheck excludeList
   methodbind.ptrcall(self, [getPtr excludeList])
 
-proc getExcludeObjects*(self: PhysicsTestMotionParameters3D): TypedArray[Int] =
+proc getExcludeObjects*(self: PhysicsTestMotionParameters3D): Array[Int] =
   expandMethodBind(className PhysicsTestMotionParameters3D, "get_exclude_objects", 3995934104)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
-proc setExcludeObjects*(self: PhysicsTestMotionParameters3D; excludeList: TypedArray[Int]): void =
+proc setExcludeObjects*(self: PhysicsTestMotionParameters3D; excludeList: Array[Int]): void =
   expandMethodBind(className PhysicsTestMotionParameters3D, "set_exclude_objects", 381264803)
   nilCheck excludeList
   methodbind.ptrcall(self, [getPtr excludeList])

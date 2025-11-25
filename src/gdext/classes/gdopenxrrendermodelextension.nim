@@ -22,11 +22,11 @@ proc renderModelDestroy*(self: OpenXRRenderModelExtension; renderModel: RID): vo
   expandMethodBind(className OpenXRRenderModelExtension, "render_model_destroy", 2722037293)
   methodbind.ptrcall(self, [getPtr renderModel])
 
-proc renderModelGetAll*(self: OpenXRRenderModelExtension): TypedArray[RID] =
+proc renderModelGetAll*(self: OpenXRRenderModelExtension): Array[RID] =
   expandMethodBind(className OpenXRRenderModelExtension, "render_model_get_all", 2915620761)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc renderModelNewSceneInstance*(self: OpenXRRenderModelExtension; renderModel: RID): Node3D =
   expandMethodBind(className OpenXRRenderModelExtension, "render_model_new_scene_instance", 788010739)

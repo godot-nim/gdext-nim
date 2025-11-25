@@ -1,6 +1,6 @@
 var Dictionary_constr: array[3, PtrConstructor]
 proc load_Dictionary_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {0, 1, 2}:
+  for i in 0..2:
     Dictionary_constr[i] = interface_Variant_getPtrConstructor(VariantType_Dictionary, int32 i)
 
 proc newDictionary*(): Dictionary =

@@ -32,11 +32,11 @@ proc getAnimation*(self: AnimationLibrary; name: StringName): gdref Animation =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(gdref Animation)
 
-proc getAnimationList*(self: AnimationLibrary): TypedArray[StringName] =
+proc getAnimationList*(self: AnimationLibrary): Array[StringName] =
   expandMethodBind(className AnimationLibrary, "get_animation_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc getAnimationListSize*(self: AnimationLibrary): int32 =
   expandMethodBind(className AnimationLibrary, "get_animation_list_size", 3905245786)

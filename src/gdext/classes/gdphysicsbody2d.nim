@@ -24,11 +24,11 @@ proc getGravity*(self: PhysicsBody2D): Vector2 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getCollisionExceptions*(self: PhysicsBody2D): TypedArray[PhysicsBody2D] =
+proc getCollisionExceptions*(self: PhysicsBody2D): Array[PhysicsBody2D] =
   expandMethodBind(className PhysicsBody2D, "get_collision_exceptions", 2915620761)
-  var ret: encoded TypedArray[PhysicsBody2D]
+  var ret: encoded Array[PhysicsBody2D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PhysicsBody2D])
+  (addr ret).decode_result(Array[PhysicsBody2D])
 
 proc addCollisionExceptionWith*(self: PhysicsBody2D; body: Node): void =
   expandMethodBind(className PhysicsBody2D, "add_collision_exception_with", 1078189570)

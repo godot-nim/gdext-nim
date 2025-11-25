@@ -297,11 +297,11 @@ proc ttsIsPaused*(self: DisplayServer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc ttsGetVoices*(self: DisplayServer): TypedArray[Dictionary] =
+proc ttsGetVoices*(self: DisplayServer): Array[Dictionary] =
   expandMethodBind(className DisplayServer, "tts_get_voices", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc ttsGetVoicesForLanguage*(self: DisplayServer; language: String): PackedStringArray =
   expandMethodBind(className DisplayServer, "tts_get_voices_for_language", 4291131558)
@@ -421,11 +421,11 @@ proc clipboardGetPrimary*(self: DisplayServer): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getDisplayCutouts*(self: DisplayServer): TypedArray[Rect2] =
+proc getDisplayCutouts*(self: DisplayServer): Array[Rect2] =
   expandMethodBind(className DisplayServer, "get_display_cutouts", 3995934104)
-  var ret: encoded TypedArray[Rect2]
+  var ret: encoded Array[Rect2]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Rect2])
+  (addr ret).decode_result(Array[Rect2])
 
 proc getDisplaySafeArea*(self: DisplayServer): Rect2i =
   expandMethodBind(className DisplayServer, "get_display_safe_area", 410525958)
@@ -1183,7 +1183,7 @@ proc fileDialogShow*(self: DisplayServer; title: String; currentDirectory: Strin
   methodbind.ptrcall(self, [getPtr title, getPtr currentDirectory, getPtr filename, getPtr showHidden, getPtr mode, getPtr filters, getPtr callback, getPtr parentWindowId], addr ret)
   (addr ret).decode_result(Error)
 
-proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirectory: String; root: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; options: TypedArray[Dictionary]; callback: Callable; parentWindowId: int32 = 0): Error =
+proc fileDialogWithOptionsShow*(self: DisplayServer; title: String; currentDirectory: String; root: String; filename: String; showHidden: bool; mode: DisplayServer_FileDialogMode; filters: PackedStringArray; options: Array[Dictionary]; callback: Callable; parentWindowId: int32 = 0): Error =
   expandMethodBind(className DisplayServer, "file_dialog_with_options_show", 1448789813)
   nilCheck options
   var ret: encoded Error

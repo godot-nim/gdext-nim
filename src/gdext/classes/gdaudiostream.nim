@@ -53,7 +53,7 @@ proc registerVirtual_getTags*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_tags"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getTags().encode(r_ret)
 
-method getParameterList*(self: AudioStream): TypedArray[Dictionary] {.base.} = (discard)
+method getParameterList*(self: AudioStream): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_getParameterList*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getParameterList().encode(r_ret)

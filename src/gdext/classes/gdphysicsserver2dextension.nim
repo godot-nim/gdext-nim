@@ -501,7 +501,7 @@ proc registerVirtual_bodyRemoveCollisionException*[T: PhysicsServer2DExtension](
   Self.vmethods[newStringName"_body_remove_collision_exception"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer2DExtension](p_instance).bodyRemoveCollisionException(p_args[0].decode(RID), p_args[1].decode(RID))
 
-method bodyGetCollisionExceptions*(self: PhysicsServer2DExtension; body: RID): TypedArray[RID] {.base.} = (discard)
+method bodyGetCollisionExceptions*(self: PhysicsServer2DExtension; body: RID): Array[RID] {.base.} = (discard)
 proc registerVirtual_bodyGetCollisionExceptions*[T: PhysicsServer2DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_body_get_collision_exceptions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer2DExtension](p_instance).bodyGetCollisionExceptions(p_args[0].decode(RID)).encode(r_ret)

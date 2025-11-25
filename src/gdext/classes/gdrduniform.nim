@@ -34,11 +34,11 @@ proc clearIds*(self: RDUniform): void =
   expandMethodBind(className RDUniform, "clear_ids", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getIds*(self: RDUniform): TypedArray[RID] =
+proc getIds*(self: RDUniform): Array[RID] =
   expandMethodBind(className RDUniform, "get_ids", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 template uniformType*(self: RDUniform): untyped = self.getUniformType()
 template `uniformType=`*(self: RDUniform; value) = self.setUniformType(value)

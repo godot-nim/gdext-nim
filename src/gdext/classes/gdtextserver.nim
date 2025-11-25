@@ -375,11 +375,11 @@ proc fontGetOversampling*(self: TextServer; fontRid: RID): float64 =
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
   (addr ret).decode_result(float64)
 
-proc fontGetSizeCacheList*(self: TextServer; fontRid: RID): TypedArray[Vector2i] =
+proc fontGetSizeCacheList*(self: TextServer; fontRid: RID): Array[Vector2i] =
   expandMethodBind(className TextServer, "font_get_size_cache_list", 2684255073)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc fontClearSizeCache*(self: TextServer; fontRid: RID): void =
   expandMethodBind(className TextServer, "font_clear_size_cache", 2722037293)
@@ -389,11 +389,11 @@ proc fontRemoveSizeCache*(self: TextServer; fontRid: RID; size: Vector2i): void 
   expandMethodBind(className TextServer, "font_remove_size_cache", 2450610377)
   methodbind.ptrcall(self, [getPtr fontRid, getPtr size])
 
-proc fontGetSizeCacheInfo*(self: TextServer; fontRid: RID): TypedArray[Dictionary] =
+proc fontGetSizeCacheInfo*(self: TextServer; fontRid: RID): Array[Dictionary] =
   expandMethodBind(className TextServer, "font_get_size_cache_info", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr fontRid], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc fontSetAscent*(self: TextServer; fontRid: RID; size: int64; ascent: float64): void =
   expandMethodBind(className TextServer, "font_set_ascent", 1892459533)
@@ -561,11 +561,11 @@ proc fontGetGlyphContours*(self: TextServer; font: RID; size: int64; index: int6
   methodbind.ptrcall(self, [getPtr font, getPtr size, getPtr index], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc fontGetKerningList*(self: TextServer; fontRid: RID; size: int64): TypedArray[Vector2i] =
+proc fontGetKerningList*(self: TextServer; fontRid: RID; size: int64): Array[Vector2i] =
   expandMethodBind(className TextServer, "font_get_kerning_list", 1778388067)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr fontRid, getPtr size], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc fontClearKerningMap*(self: TextServer; fontRid: RID; size: int64): void =
   expandMethodBind(className TextServer, "font_clear_kerning_map", 3411492887)
@@ -752,7 +752,7 @@ proc shapedTextGetInferredDirection*(self: TextServer; shaped: RID): TextServer_
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
   (addr ret).decode_result(TextServer_Direction)
 
-proc shapedTextSetBidiOverride*(self: TextServer; shaped: RID; override: Array): void =
+proc shapedTextSetBidiOverride*(self: TextServer; shaped: RID; override: Array[Variant]): void =
   expandMethodBind(className TextServer, "shaped_text_set_bidi_override", 684822712)
   nilCheck override
   methodbind.ptrcall(self, [getPtr shaped, getPtr override])
@@ -817,7 +817,7 @@ proc shapedTextGetSpacing*(self: TextServer; shaped: RID; spacing: TextServer_Sp
   methodbind.ptrcall(self, [getPtr shaped, getPtr spacing], addr ret)
   (addr ret).decode_result(int64)
 
-proc shapedTextAddString*(self: TextServer; shaped: RID; text: String; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary(); language: String = newGdString(); meta: Variant = default(Variant)): bool =
+proc shapedTextAddString*(self: TextServer; shaped: RID; text: String; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary(); language: String = newGdString(); meta: Variant = default(Variant)): bool =
   expandMethodBind(className TextServer, "shaped_text_add_string", 623473029)
   nilCheck fonts
   nilCheck opentypeFeatures
@@ -873,7 +873,7 @@ proc shapedGetSpanObject*(self: TextServer; shaped: RID; index: int64): Variant 
   methodbind.ptrcall(self, [getPtr shaped, getPtr index], addr ret)
   (addr ret).decode_result(Variant)
 
-proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary()): void =
+proc shapedSetSpanUpdateFont*(self: TextServer; shaped: RID; index: int64; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary = newDictionary()): void =
   expandMethodBind(className TextServer, "shaped_set_span_update_font", 2022725822)
   nilCheck fonts
   nilCheck opentypeFeatures
@@ -969,17 +969,17 @@ proc shapedTextHasVisibleChars*(self: TextServer; shaped: RID): bool =
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
   (addr ret).decode_result(bool)
 
-proc shapedTextGetGlyphs*(self: TextServer; shaped: RID): TypedArray[Dictionary] =
+proc shapedTextGetGlyphs*(self: TextServer; shaped: RID): Array[Dictionary] =
   expandMethodBind(className TextServer, "shaped_text_get_glyphs", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
-proc shapedTextSortLogical*(self: TextServer; shaped: RID): TypedArray[Dictionary] =
+proc shapedTextSortLogical*(self: TextServer; shaped: RID): Array[Dictionary] =
   expandMethodBind(className TextServer, "shaped_text_sort_logical", 2670461153)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc shapedTextGetGlyphCount*(self: TextServer; shaped: RID): int64 =
   expandMethodBind(className TextServer, "shaped_text_get_glyph_count", 2198884583)
@@ -1023,11 +1023,11 @@ proc shapedTextGetEllipsisPos*(self: TextServer; shaped: RID): int64 =
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
   (addr ret).decode_result(int64)
 
-proc shapedTextGetEllipsisGlyphs*(self: TextServer; shaped: RID): TypedArray[Dictionary] =
+proc shapedTextGetEllipsisGlyphs*(self: TextServer; shaped: RID): Array[Dictionary] =
   expandMethodBind(className TextServer, "shaped_text_get_ellipsis_glyphs", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc shapedTextGetEllipsisGlyphCount*(self: TextServer; shaped: RID): int64 =
   expandMethodBind(className TextServer, "shaped_text_get_ellipsis_glyph_count", 2198884583)
@@ -1039,11 +1039,11 @@ proc shapedTextOverrunTrimToWidth*(self: TextServer; shaped: RID; width: float64
   expandMethodBind(className TextServer, "shaped_text_overrun_trim_to_width", 2723146520)
   methodbind.ptrcall(self, [getPtr shaped, getPtr width, getPtr overrunTrimFlags])
 
-proc shapedTextGetObjects*(self: TextServer; shaped: RID): Array =
+proc shapedTextGetObjects*(self: TextServer; shaped: RID): Array[Variant] =
   expandMethodBind(className TextServer, "shaped_text_get_objects", 2684255073)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr shaped], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc shapedTextGetObjectRect*(self: TextServer; shaped: RID; key: Variant): Rect2 =
   expandMethodBind(className TextServer, "shaped_text_get_object_rect", 447978354)
@@ -1257,9 +1257,9 @@ proc stringToTitle*(self: TextServer; string: String; language: String = newGdSt
   methodbind.ptrcall(self, [getPtr string, getPtr language], addr ret)
   (addr ret).decode_result(String)
 
-proc parseStructuredText*(self: TextServer; parserType: TextServer_StructuredTextParser; args: Array; text: String): TypedArray[Vector3i] =
+proc parseStructuredText*(self: TextServer; parserType: TextServer_StructuredTextParser; args: Array[Variant]; text: String): Array[Vector3i] =
   expandMethodBind(className TextServer, "parse_structured_text", 3310685015)
   nilCheck args
-  var ret: encoded TypedArray[Vector3i]
+  var ret: encoded Array[Vector3i]
   methodbind.ptrcall(self, [getPtr parserType, getPtr args, getPtr text], addr ret)
-  (addr ret).decode_result(TypedArray[Vector3i])
+  (addr ret).decode_result(Array[Vector3i])

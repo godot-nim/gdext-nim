@@ -12,11 +12,11 @@ proc hasAction*(self: InputMap; action: StringName): bool =
   methodbind.ptrcall(self, [getPtr action], addr ret)
   (addr ret).decode_result(bool)
 
-proc getActions*(self: InputMap): TypedArray[StringName] =
+proc getActions*(self: InputMap): Array[StringName] =
   expandMethodBind(className InputMap, "get_actions", 2915620761)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc addAction*(self: InputMap; action: StringName; deadzone: Float = 0.2): void =
   expandMethodBind(className InputMap, "add_action", 1195233573)
@@ -60,11 +60,11 @@ proc actionEraseEvents*(self: InputMap; action: StringName): void =
   expandMethodBind(className InputMap, "action_erase_events", 3304788590)
   methodbind.ptrcall(self, [getPtr action])
 
-proc actionGetEvents*(self: InputMap; action: StringName): TypedArray[gdref InputEvent] =
+proc actionGetEvents*(self: InputMap; action: StringName): Array[gdref InputEvent] =
   expandMethodBind(className InputMap, "action_get_events", 689397652)
-  var ret: encoded TypedArray[gdref InputEvent]
+  var ret: encoded Array[gdref InputEvent]
   methodbind.ptrcall(self, [getPtr action], addr ret)
-  (addr ret).decode_result(TypedArray[gdref InputEvent])
+  (addr ret).decode_result(Array[gdref InputEvent])
 
 proc eventIsAction*(self: InputMap; event: gdref InputEvent; action: StringName; exactMatch: bool = false): bool =
   expandMethodBind(className InputMap, "event_is_action", 3193353650)

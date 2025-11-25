@@ -216,11 +216,11 @@ proc addGizmo*(self: Node3D; gizmo: gdref Node3DGizmo): void =
   expandMethodBind(className Node3D, "add_gizmo", 1544533845)
   methodbind.ptrcall(self, [getPtr gizmo])
 
-proc getGizmos*(self: Node3D): TypedArray[gdref Node3DGizmo] =
+proc getGizmos*(self: Node3D): Array[gdref Node3DGizmo] =
   expandMethodBind(className Node3D, "get_gizmos", 3995934104)
-  var ret: encoded TypedArray[gdref Node3DGizmo]
+  var ret: encoded Array[gdref Node3DGizmo]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Node3DGizmo])
+  (addr ret).decode_result(Array[gdref Node3DGizmo])
 
 proc clearGizmos*(self: Node3D): void =
   expandMethodBind(className Node3D, "clear_gizmos", 3218959716)

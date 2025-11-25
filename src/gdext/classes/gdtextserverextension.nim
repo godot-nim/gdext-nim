@@ -366,7 +366,7 @@ proc registerVirtual_fontGetOversampling*[T: TextServerExtension](Self: typedesc
   Self.vmethods[newStringName"_font_get_oversampling"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetOversampling(p_args[0].decode(RID)).encode(r_ret)
 
-method fontGetSizeCacheList*(self: TextServerExtension; fontRid: RID): TypedArray[Vector2i] {.base.} = (discard)
+method fontGetSizeCacheList*(self: TextServerExtension; fontRid: RID): Array[Vector2i] {.base.} = (discard)
 proc registerVirtual_fontGetSizeCacheList*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_size_cache_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetSizeCacheList(p_args[0].decode(RID)).encode(r_ret)
@@ -381,7 +381,7 @@ proc registerVirtual_fontRemoveSizeCache*[T: TextServerExtension](Self: typedesc
   Self.vmethods[newStringName"_font_remove_size_cache"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontRemoveSizeCache(p_args[0].decode(RID), p_args[1].decode(Vector2i))
 
-method fontGetSizeCacheInfo*(self: TextServerExtension; fontRid: RID): TypedArray[Dictionary] {.base.} = (discard)
+method fontGetSizeCacheInfo*(self: TextServerExtension; fontRid: RID): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_fontGetSizeCacheInfo*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_size_cache_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetSizeCacheInfo(p_args[0].decode(RID)).encode(r_ret)
@@ -551,7 +551,7 @@ proc registerVirtual_fontGetGlyphContours*[T: TextServerExtension](Self: typedes
   Self.vmethods[newStringName"_font_get_glyph_contours"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetGlyphContours(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(int64)).encode(r_ret)
 
-method fontGetKerningList*(self: TextServerExtension; fontRid: RID; size: int64): TypedArray[Vector2i] {.base.} = (discard)
+method fontGetKerningList*(self: TextServerExtension; fontRid: RID; size: int64): Array[Vector2i] {.base.} = (discard)
 proc registerVirtual_fontGetKerningList*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_font_get_kerning_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).fontGetKerningList(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
@@ -746,10 +746,10 @@ proc registerVirtual_shapedTextGetInferredDirection*[T: TextServerExtension](Sel
   Self.vmethods[newStringName"_shaped_text_get_inferred_direction"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextGetInferredDirection(p_args[0].decode(RID)).encode(r_ret)
 
-method shapedTextSetBidiOverride*(self: TextServerExtension; shaped: RID; override: Array): void {.base.} = (discard)
+method shapedTextSetBidiOverride*(self: TextServerExtension; shaped: RID; override: Array[Variant]): void {.base.} = (discard)
 proc registerVirtual_shapedTextSetBidiOverride*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_set_bidi_override"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedTextSetBidiOverride(p_args[0].decode(RID), p_args[1].decode(Array))
+    errproof: cast[TextServerExtension](p_instance).shapedTextSetBidiOverride(p_args[0].decode(RID), p_args[1].decode(Array[Variant]))
 
 method shapedTextSetCustomPunctuation*(self: TextServerExtension; shaped: RID; punct: String): void {.base.} = (discard)
 proc registerVirtual_shapedTextSetCustomPunctuation*[T: TextServerExtension](Self: typedesc[T]) =
@@ -811,10 +811,10 @@ proc registerVirtual_shapedTextGetSpacing*[T: TextServerExtension](Self: typedes
   Self.vmethods[newStringName"_shaped_text_get_spacing"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextGetSpacing(p_args[0].decode(RID), p_args[1].decode(TextServer_SpacingType)).encode(r_ret)
 
-method shapedTextAddString*(self: TextServerExtension; shaped: RID; text: String; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary; language: String; meta: Variant): bool {.base.} = (discard)
+method shapedTextAddString*(self: TextServerExtension; shaped: RID; text: String; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary; language: String; meta: Variant): bool {.base.} = (discard)
 proc registerVirtual_shapedTextAddString*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_add_string"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedTextAddString(p_args[0].decode(RID), p_args[1].decode(String), p_args[2].decode(TypedArray[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary), p_args[5].decode(String), p_args[6].decode(Variant)).encode(r_ret)
+    errproof: cast[TextServerExtension](p_instance).shapedTextAddString(p_args[0].decode(RID), p_args[1].decode(String), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary), p_args[5].decode(String), p_args[6].decode(Variant)).encode(r_ret)
 
 method shapedTextAddObject*(self: TextServerExtension; shaped: RID; key: Variant; size: Vector2; inlineAlign: InlineAlignment; length: int64; baseline: float64): bool {.base.} = (discard)
 proc registerVirtual_shapedTextAddObject*[T: TextServerExtension](Self: typedesc[T]) =
@@ -856,10 +856,10 @@ proc registerVirtual_shapedGetSpanObject*[T: TextServerExtension](Self: typedesc
   Self.vmethods[newStringName"_shaped_get_span_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedGetSpanObject(p_args[0].decode(RID), p_args[1].decode(int64)).encode(r_ret)
 
-method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: TypedArray[RID]; size: int64; opentypeFeatures: Dictionary): void {.base.} = (discard)
+method shapedSetSpanUpdateFont*(self: TextServerExtension; shaped: RID; index: int64; fonts: Array[RID]; size: int64; opentypeFeatures: Dictionary): void {.base.} = (discard)
 proc registerVirtual_shapedSetSpanUpdateFont*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_set_span_update_font"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).shapedSetSpanUpdateFont(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(TypedArray[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary))
+    errproof: cast[TextServerExtension](p_instance).shapedSetSpanUpdateFont(p_args[0].decode(RID), p_args[1].decode(int64), p_args[2].decode(Array[RID]), p_args[3].decode(int64), p_args[4].decode(Dictionary))
 
 method shapedGetRunCount*(self: TextServerExtension; shaped: RID): int64 {.base.} = (discard)
 proc registerVirtual_shapedGetRunCount*[T: TextServerExtension](Self: typedesc[T]) =
@@ -1001,7 +1001,7 @@ proc registerVirtual_shapedTextOverrunTrimToWidth*[T: TextServerExtension](Self:
   Self.vmethods[newStringName"_shaped_text_overrun_trim_to_width"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextOverrunTrimToWidth(p_args[0].decode(RID), p_args[1].decode(float64), p_args[2].decode(set[TextServer_TextOverrunFlag]))
 
-method shapedTextGetObjects*(self: TextServerExtension; shaped: RID): Array {.base.} = (discard)
+method shapedTextGetObjects*(self: TextServerExtension; shaped: RID): Array[Variant] {.base.} = (discard)
 proc registerVirtual_shapedTextGetObjects*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_get_objects"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextGetObjects(p_args[0].decode(RID)).encode(r_ret)
@@ -1186,10 +1186,10 @@ proc registerVirtual_stringToTitle*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_string_to_title"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).stringToTitle(p_args[0].decode(String), p_args[1].decode(String)).encode(r_ret)
 
-method parseStructuredText*(self: TextServerExtension; parserType: TextServer_StructuredTextParser; args: Array; text: String): TypedArray[Vector3i] {.base.} = (discard)
+method parseStructuredText*(self: TextServerExtension; parserType: TextServer_StructuredTextParser; args: Array[Variant]; text: String): Array[Vector3i] {.base.} = (discard)
 proc registerVirtual_parseStructuredText*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_parse_structured_text"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TextServerExtension](p_instance).parseStructuredText(p_args[0].decode(TextServer_StructuredTextParser), p_args[1].decode(Array), p_args[2].decode(String)).encode(r_ret)
+    errproof: cast[TextServerExtension](p_instance).parseStructuredText(p_args[0].decode(TextServer_StructuredTextParser), p_args[1].decode(Array[Variant]), p_args[2].decode(String)).encode(r_ret)
 
 method cleanup*(self: TextServerExtension): void {.base.} = (discard)
 proc registerVirtual_cleanup*[T: TextServerExtension](Self: typedesc[T]) =

@@ -188,11 +188,11 @@ proc isCollideWithBodiesEnabled*(self: ShapeCast3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getCollisionResult*(self: ShapeCast3D): Array =
+proc getCollisionResult*(self: ShapeCast3D): Array[Variant] =
   expandMethodBind(className ShapeCast3D, "get_collision_result", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setDebugShapeCustomColor*(self: ShapeCast3D; debugShapeCustomColor: Color): void =
   expandMethodBind(className ShapeCast3D, "set_debug_shape_custom_color", 2920490490)

@@ -191,7 +191,7 @@ proc registerVirtual_setViewportCompositionLayerAndGetNextPointer*[T: OpenXRExte
   Self.vmethods[newStringName"_set_viewport_composition_layer_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).setViewportCompositionLayerAndGetNextPointer(p_args[0].decode(pointer), p_args[1].decode(Dictionary), p_args[2].decode(pointer)).encode(r_ret)
 
-method getViewportCompositionLayerExtensionProperties*(self: OpenXRExtensionWrapper): TypedArray[Dictionary] {.base.} = (discard)
+method getViewportCompositionLayerExtensionProperties*(self: OpenXRExtensionWrapper): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_getViewportCompositionLayerExtensionProperties*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_viewport_composition_layer_extension_properties"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).getViewportCompositionLayerExtensionProperties().encode(r_ret)

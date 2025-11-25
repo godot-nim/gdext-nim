@@ -46,10 +46,10 @@ proc registerVirtual_subgizmosIntersectRay*[T: EditorNode3DGizmo](Self: typedesc
   Self.vmethods[newStringName"_subgizmos_intersect_ray"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectRay(p_args[0].decode(Camera3D), p_args[1].decode(Vector2)).encode(r_ret)
 
-method subgizmosIntersectFrustum*(self: EditorNode3DGizmo; camera: Camera3D; frustum: TypedArray[Plane]): PackedInt32Array {.base.} = (discard)
+method subgizmosIntersectFrustum*(self: EditorNode3DGizmo; camera: Camera3D; frustum: Array[Plane]): PackedInt32Array {.base.} = (discard)
 proc registerVirtual_subgizmosIntersectFrustum*[T: EditorNode3DGizmo](Self: typedesc[T]) =
   Self.vmethods[newStringName"_subgizmos_intersect_frustum"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectFrustum(p_args[0].decode(Camera3D), p_args[1].decode(TypedArray[Plane])).encode(r_ret)
+    errproof: cast[EditorNode3DGizmo](p_instance).subgizmosIntersectFrustum(p_args[0].decode(Camera3D), p_args[1].decode(Array[Plane])).encode(r_ret)
 
 method setSubgizmoTransform*(self: EditorNode3DGizmo; id: int32; transform: Transform3D): void {.base.} = (discard)
 proc registerVirtual_setSubgizmoTransform*[T: EditorNode3DGizmo](Self: typedesc[T]) =
@@ -61,10 +61,10 @@ proc registerVirtual_getSubgizmoTransform*[T: EditorNode3DGizmo](Self: typedesc[
   Self.vmethods[newStringName"_get_subgizmo_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorNode3DGizmo](p_instance).getSubgizmoTransform(p_args[0].decode(int32)).encode(r_ret)
 
-method commitSubgizmos*(self: EditorNode3DGizmo; ids: PackedInt32Array; restores: TypedArray[Transform3D]; cancel: bool): void {.base.} = (discard)
+method commitSubgizmos*(self: EditorNode3DGizmo; ids: PackedInt32Array; restores: Array[Transform3D]; cancel: bool): void {.base.} = (discard)
 proc registerVirtual_commitSubgizmos*[T: EditorNode3DGizmo](Self: typedesc[T]) =
   Self.vmethods[newStringName"_commit_subgizmos"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorNode3DGizmo](p_instance).commitSubgizmos(p_args[0].decode(PackedInt32Array), p_args[1].decode(TypedArray[Transform3D]), p_args[2].decode(bool))
+    errproof: cast[EditorNode3DGizmo](p_instance).commitSubgizmos(p_args[0].decode(PackedInt32Array), p_args[1].decode(Array[Transform3D]), p_args[2].decode(bool))
 
 proc addLines*(self: EditorNode3DGizmo; lines: PackedVector3Array; material: gdref Material; billboard: bool = false; modulate: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className EditorNode3DGizmo, "add_lines", 2910971437)

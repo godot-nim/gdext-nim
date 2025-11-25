@@ -100,16 +100,16 @@ proc getStructuredTextBidiOverride*(self: TextEdit): TextServer_StructuredTextPa
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: TextEdit; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: TextEdit; args: Array[Variant]): void =
   expandMethodBind(className TextEdit, "set_structured_text_bidi_override_options", 381264803)
   nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: TextEdit): Array =
+proc getStructuredTextBidiOverrideOptions*(self: TextEdit): Array[Variant] =
   expandMethodBind(className TextEdit, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setTabSize*(self: TextEdit; size: int32): void =
   expandMethodBind(className TextEdit, "set_tab_size", 1286410249)
@@ -757,11 +757,11 @@ proc getSelectionAtLineColumn*(self: TextEdit; line: int32; column: int32; inclu
   methodbind.ptrcall(self, [getPtr line, getPtr column, getPtr includeEdges, getPtr onlySelections], addr ret)
   (addr ret).decode_result(int32)
 
-proc getLineRangesFromCarets*(self: TextEdit; onlySelections: bool = false; mergeAdjacent: bool = true): TypedArray[Vector2i] =
+proc getLineRangesFromCarets*(self: TextEdit; onlySelections: bool = false; mergeAdjacent: bool = true): Array[Vector2i] =
   expandMethodBind(className TextEdit, "get_line_ranges_from_carets", 2393089247)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr onlySelections, getPtr mergeAdjacent], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc getSelectionOriginLine*(self: TextEdit; caretIndex: int32 = 0): int32 =
   expandMethodBind(className TextEdit, "get_selection_origin_line", 1591665591)

@@ -1,6 +1,6 @@
 var Transform2D_constr: array[5, PtrConstructor]
 proc load_Transform2D_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {2, 3}:
+  for i in 0..4:
     Transform2D_constr[i] = interface_Variant_getPtrConstructor(VariantType_Transform2D, int32 i)
 
 # proc transform2D*(): Transform2D =

@@ -86,16 +86,16 @@ proc getStructuredTextBidiOverride*(self: Label3D): TextServer_StructuredTextPar
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: Label3D; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: Label3D; args: Array[Variant]): void =
   expandMethodBind(className Label3D, "set_structured_text_bidi_override_options", 381264803)
   nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: Label3D): Array =
+proc getStructuredTextBidiOverrideOptions*(self: Label3D): Array[Variant] =
   expandMethodBind(className Label3D, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setUppercase*(self: Label3D; enable: bool): void =
   expandMethodBind(className Label3D, "set_uppercase", 2586408642)

@@ -6,11 +6,11 @@ import gdobject; export gdobject
 
 expandOnClassImported(PhysicsDirectSpaceState2D, Object)
 
-proc intersectPoint*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsPointQueryParameters2D; maxRetvals: int32 = 32): TypedArray[Dictionary] =
+proc intersectPoint*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsPointQueryParameters2D; maxRetvals: int32 = 32): Array[Dictionary] =
   expandMethodBind(className PhysicsDirectSpaceState2D, "intersect_point", 2118456068)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc intersectRay*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsRayQueryParameters2D): Dictionary =
   expandMethodBind(className PhysicsDirectSpaceState2D, "intersect_ray", 1590275562)
@@ -18,11 +18,11 @@ proc intersectRay*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsRay
   methodbind.ptrcall(self, [getPtr parameters], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc intersectShape*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D; maxRetvals: int32 = 32): TypedArray[Dictionary] =
+proc intersectShape*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D; maxRetvals: int32 = 32): Array[Dictionary] =
   expandMethodBind(className PhysicsDirectSpaceState2D, "intersect_shape", 2488867228)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc castMotion*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D): PackedFloat32Array =
   expandMethodBind(className PhysicsDirectSpaceState2D, "cast_motion", 711275086)
@@ -30,11 +30,11 @@ proc castMotion*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShape
   methodbind.ptrcall(self, [getPtr parameters], addr ret)
   (addr ret).decode_result(PackedFloat32Array)
 
-proc collideShape*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D; maxRetvals: int32 = 32): TypedArray[Vector2] =
+proc collideShape*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D; maxRetvals: int32 = 32): Array[Vector2] =
   expandMethodBind(className PhysicsDirectSpaceState2D, "collide_shape", 2488867228)
-  var ret: encoded TypedArray[Vector2]
+  var ret: encoded Array[Vector2]
   methodbind.ptrcall(self, [getPtr parameters, getPtr maxRetvals], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2])
+  (addr ret).decode_result(Array[Vector2])
 
 proc getRestInfo*(self: PhysicsDirectSpaceState2D; parameters: gdref PhysicsShapeQueryParameters2D): Dictionary =
   expandMethodBind(className PhysicsDirectSpaceState2D, "get_rest_info", 2803666496)

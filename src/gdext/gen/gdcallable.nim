@@ -35,7 +35,7 @@ var `bind(Callable Variant)`: PtrBuiltinMethod
 
 proc create*(_: typedesc[Callable]; variant: Variant; `method`: StringName): Callable =
   `create(Callable Variant StringName)`.call([getPtr variant, getPtr `method`], addr result)
-proc callv*(self: Callable; arguments: Array): Variant =
+proc callv*(self: Callable; arguments: Array[Variant]): Variant =
   nilCheck arguments
   `callv(Callable Array)`.call(addr self, [getPtr arguments], addr result)
 proc isNull*(self: Callable): bool =
@@ -56,13 +56,13 @@ proc getArgumentCount*(self: Callable): Int =
   `getArgumentCount(Callable)`.call(addr self, [], addr result)
 proc getBoundArgumentsCount*(self: Callable): Int =
   `getBoundArgumentsCount(Callable)`.call(addr self, [], addr result)
-proc getBoundArguments*(self: Callable): Array =
+proc getBoundArguments*(self: Callable): Array[Variant] =
   `getBoundArguments(Callable)`.call(addr self, [], addr result)
 proc getUnboundArgumentsCount*(self: Callable): Int =
   `getUnboundArgumentsCount(Callable)`.call(addr self, [], addr result)
 proc hash*(self: Callable): Hash =
   `hash(Callable)`.call(addr self, [], addr result)
-proc bindv*(self: var Callable; arguments: Array): Callable =
+proc bindv*(self: var Callable; arguments: Array[Variant]): Callable =
   nilCheck arguments
   `bindv(Callable Array)`.call(addr self, [getPtr arguments], addr result)
 proc unbind*(self: Callable; argcount: Int): Callable =

@@ -32,16 +32,16 @@ proc getActionCount*(self: OpenXRActionSet): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc setActions*(self: OpenXRActionSet; actions: Array): void =
+proc setActions*(self: OpenXRActionSet; actions: Array[Variant]): void =
   expandMethodBind(className OpenXRActionSet, "set_actions", 381264803)
   nilCheck actions
   methodbind.ptrcall(self, [getPtr actions])
 
-proc getActions*(self: OpenXRActionSet): Array =
+proc getActions*(self: OpenXRActionSet): Array[Variant] =
   expandMethodBind(className OpenXRActionSet, "get_actions", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc addAction*(self: OpenXRActionSet; action: gdref OpenXRAction): void =
   expandMethodBind(className OpenXRActionSet, "add_action", 349361333)

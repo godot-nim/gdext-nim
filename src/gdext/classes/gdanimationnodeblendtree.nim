@@ -45,11 +45,11 @@ proc disconnectNode*(self: AnimationNodeBlendTree; inputNode: StringName; inputI
   expandMethodBind(className AnimationNodeBlendTree, "disconnect_node", 2415702435)
   methodbind.ptrcall(self, [getPtr inputNode, getPtr inputIndex])
 
-proc getNodeList*(self: AnimationNodeBlendTree): TypedArray[StringName] =
+proc getNodeList*(self: AnimationNodeBlendTree): Array[StringName] =
   expandMethodBind(className AnimationNodeBlendTree, "get_node_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setNodePosition*(self: AnimationNodeBlendTree; name: StringName; position: Vector2): void =
   expandMethodBind(className AnimationNodeBlendTree, "set_node_position", 1999414630)

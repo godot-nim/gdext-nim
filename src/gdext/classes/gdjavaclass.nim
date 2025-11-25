@@ -12,11 +12,11 @@ proc getJavaClassName*(self: JavaClass): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getJavaMethodList*(self: JavaClass): TypedArray[Dictionary] =
+proc getJavaMethodList*(self: JavaClass): Array[Dictionary] =
   expandMethodBind(className JavaClass, "get_java_method_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc getJavaParentClass*(self: JavaClass): gdref JavaClass =
   expandMethodBind(className JavaClass, "get_java_parent_class", 541536347)

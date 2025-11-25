@@ -26,13 +26,13 @@ proc setJointsOriginal*(self: GLTFSkin; jointsOriginal: PackedInt32Array): void 
   expandMethodBind(className GLTFSkin, "set_joints_original", 3614634198)
   methodbind.ptrcall(self, [getPtr jointsOriginal])
 
-proc getInverseBinds*(self: GLTFSkin): TypedArray[Transform3D] =
+proc getInverseBinds*(self: GLTFSkin): Array[Transform3D] =
   expandMethodBind(className GLTFSkin, "get_inverse_binds", 2915620761)
-  var ret: encoded TypedArray[Transform3D]
+  var ret: encoded Array[Transform3D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Transform3D])
+  (addr ret).decode_result(Array[Transform3D])
 
-proc setInverseBinds*(self: GLTFSkin; inverseBinds: TypedArray[Transform3D]): void =
+proc setInverseBinds*(self: GLTFSkin; inverseBinds: Array[Transform3D]): void =
   expandMethodBind(className GLTFSkin, "set_inverse_binds", 381264803)
   nilCheck inverseBinds
   methodbind.ptrcall(self, [getPtr inverseBinds])

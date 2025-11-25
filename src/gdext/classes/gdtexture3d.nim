@@ -51,11 +51,11 @@ proc registerVirtual_hasMipmaps*[T: Texture3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_mipmaps"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Texture3D](p_instance).hasMipmaps().encode(r_ret)
 
-method getData*(self: Texture3D): TypedArray[gdref Image] {.base.} =
+method getData*(self: Texture3D): Array[gdref Image] {.base.} =
   expandMethodBind(className Texture3D, "get_data", 3995934104)
-  var ret: encoded TypedArray[gdref Image]
+  var ret: encoded Array[gdref Image]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  (addr ret).decode_result(Array[gdref Image])
 proc registerVirtual_getData*[T: Texture3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Texture3D](p_instance).getData().encode(r_ret)

@@ -38,7 +38,7 @@ proc setItemNavigationLayers*(self: MeshLibrary; id: int32; navigationLayers: ui
   expandMethodBind(className MeshLibrary, "set_item_navigation_layers", 3937882851)
   methodbind.ptrcall(self, [getPtr id, getPtr navigationLayers])
 
-proc setItemShapes*(self: MeshLibrary; id: int32; shapes: Array): void =
+proc setItemShapes*(self: MeshLibrary; id: int32; shapes: Array[Variant]): void =
   expandMethodBind(className MeshLibrary, "set_item_shapes", 537221740)
   nilCheck shapes
   methodbind.ptrcall(self, [getPtr id, getPtr shapes])
@@ -89,11 +89,11 @@ proc getItemNavigationLayers*(self: MeshLibrary; id: int32): uint32 =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(uint32)
 
-proc getItemShapes*(self: MeshLibrary; id: int32): Array =
+proc getItemShapes*(self: MeshLibrary; id: int32): Array[Variant] =
   expandMethodBind(className MeshLibrary, "get_item_shapes", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getItemPreview*(self: MeshLibrary; id: int32): gdref Texture2D =
   expandMethodBind(className MeshLibrary, "get_item_preview", 3536238170)

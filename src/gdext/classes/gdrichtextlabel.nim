@@ -199,16 +199,16 @@ proc getStructuredTextBidiOverride*(self: RichTextLabel): TextServer_StructuredT
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: RichTextLabel; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: RichTextLabel; args: Array[Variant]): void =
   expandMethodBind(className RichTextLabel, "set_structured_text_bidi_override_options", 381264803)
   nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: RichTextLabel): Array =
+proc getStructuredTextBidiOverrideOptions*(self: RichTextLabel): Array[Variant] =
   expandMethodBind(className RichTextLabel, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setTextDirection*(self: RichTextLabel; direction: Control_TextDirection): void =
   expandMethodBind(className RichTextLabel, "set_text_direction", 119160795)
@@ -642,16 +642,16 @@ proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringAr
   methodbind.ptrcall(self, [getPtr expressions], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc setEffects*(self: RichTextLabel; effects: Array): void =
+proc setEffects*(self: RichTextLabel; effects: Array[Variant]): void =
   expandMethodBind(className RichTextLabel, "set_effects", 381264803)
   nilCheck effects
   methodbind.ptrcall(self, [getPtr effects])
 
-proc getEffects*(self: RichTextLabel): Array =
+proc getEffects*(self: RichTextLabel): Array[Variant] =
   expandMethodBind(className RichTextLabel, "get_effects", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc installEffect*(self: RichTextLabel; effect: Variant): void =
   expandMethodBind(className RichTextLabel, "install_effect", 1114965689)

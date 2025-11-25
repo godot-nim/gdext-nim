@@ -66,7 +66,7 @@ proc getPreserveControl*(self: TextParagraph): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setBidiOverride*(self: TextParagraph; override: Array): void =
+proc setBidiOverride*(self: TextParagraph; override: Array[Variant]): void =
   expandMethodBind(className TextParagraph, "set_bidi_override", 381264803)
   nilCheck override
   methodbind.ptrcall(self, [getPtr override])
@@ -225,11 +225,11 @@ proc getLineSpacing*(self: TextParagraph): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc getLineObjects*(self: TextParagraph; line: int32): Array =
+proc getLineObjects*(self: TextParagraph; line: int32): Array[Variant] =
   expandMethodBind(className TextParagraph, "get_line_objects", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr line], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getLineObjectRect*(self: TextParagraph; line: int32; key: Variant): Rect2 =
   expandMethodBind(className TextParagraph, "get_line_object_rect", 204315017)
