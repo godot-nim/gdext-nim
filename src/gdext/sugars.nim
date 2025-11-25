@@ -2,6 +2,7 @@ import gdext/builtinindex
 import gdext/stringtools
 import gdext/objecttools
 import gdext/varianttools
+import gdext/arraytools {.all.}
 
 {.push, inline.}
 
@@ -9,7 +10,8 @@ converter convertToString*(str: string): String = newGdString str
 converter convertToStringName*(str: string): StringName = newStringName str
 converter convertToNodePath*(str: string): NodePath = newNodePath newGdString str
 
-converter convertToArray*(arr: TypedArray): Array = Array arr
+converter convertToArray*[T: not Variant](arr: Array[T]): Array[Variant] = arr.wild
+converter convertToArray*[T: not Variant](arr: var Array[T]): var Array[Variant] = arr.wild
 
 converter convertToSingleton*[T: SomeClass](_: typedesc[T]): T = singleton(T)
 
