@@ -52,21 +52,34 @@ method name*(param: RenderableSelfArgument): VariableSym =
 # Default-Value Calculation #
 # ===========================
 
-proc dbModify*(typeSym: TypeSym): string =
-  let class = classDB.getOrDefault(typeSym, nil)
-  if class == nil: return $typesym
-  if class.json.isRefCounted:
-    "gdref " & $typeSym
+proc dbModify*(typeSym: TypeSym; lookupRefCounted: bool = true): string =
+  if $typeSym == "":
+    "Variant"
+  elif lookupRefCounted:
+    let class = classDB.getOrDefault(typeSym, nil)
+    if class != nil and class.json.isRefCounted:
+      "gdref " & $typeSym
+    else:
+      $typeSym
   else:
     $typeSym
 
+proc dbModify*(param: RenderableParamBase; overrideSym = default(TypeSym); lookupRefCounted: bool = true): string =
+  if overrideSym != TypeSym"":
+    result = dbModify(overrideSym, lookupRefCounted)
+  else:
+    result = dbModify(param.typeSym, lookupRefCounted)
+  if param.typeSym == TypeSym"Array":
+    result.add "["
+    result.add $dbModify param.info.metaType
+    if param.info.metaType == TypeSym"Array":
+      result.add "[Variant]"
+    result.add "]"
+
+
 proc `type`*(param: RenderableParamBase): string =
   var name = "ptr ".repeat(param.info.ptrdepth)
-  name.add dbModify param.typeSym
-  if param.typeSym == TypeSym"TypedArray":
-    name.add "["
-    name.add $dbModify param.info.metaType
-    name.add "]"
+  name.add dbModify param
 
   result = case param.info.attribute
   of ptaNake:
@@ -90,7 +103,7 @@ proc `type`*(param: RenderableSelfArgument): string =
     result.add "typedesc["
   elif param.info.isMutable:
     result.add "var "
-  result.add $param.typeSym
+  result.add dbModify(param, TypeSym"", false)
 
   if param.isStatic:
     result.add "]"
@@ -134,16 +147,10 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
       value
 
   else:
-    const withGeneric = [TypeSym"TypedArray"]
-    proc constr(typ: TypeSym): string =
-      $constructorName(typesym) &
-      (if typ in withGeneric: "[" & dbModify(arg.info.metaType) & "]" else: "") &
-      "()"
-    proc constr(typ: TypeSym; expr: string): string =
-      result = $constructorName(typesym) &
-      (if typ in withGeneric: "[" & dbModify(arg.info.metaType) & "]" else: "") &
-      "(" & expr & ")"
-      result = result.multiReplace(("((", "("), ("))", ")"))
+    proc constr(typ: TypeSym; expr: string = ""): string =
+      [dbModify(arg, TypeSym constructorName(typ), false), "(", expr, ")"]
+        .join()
+        .multiReplace(("((", "("), ("))", ")"))
     proc drop(expr: string; typ: TypeSym): string =
       expr.replace($typ, "")
     case typesym
@@ -188,13 +195,6 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
         typesym.constr(value.drop(typesym))
 
     of TypeSym"Array":
-      case value
-      of "[]":
-        typesym.constr()
-      else:
-        value
-
-    of TypeSym"TypedArray":
       typesym.constr()
 
     of TypeSym"Dictionary":
@@ -262,7 +262,7 @@ proc preconvert*(param: RenderableParamBase; basetype: Option[string]) =
       break
   if basetype.startsWith "typedarray::":
     param.info.metaType = basetype["typedarray::".len..^1].convert(TypeSym)
-    basetype = "TypedArray"
+    basetype = "Array"
 
   if basetype.find("void") != -1:
     basetype = "pointer"

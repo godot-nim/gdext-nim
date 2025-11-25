@@ -26,16 +26,16 @@ proc getPathTypes*(self: NavigationPathQueryResult2D): PackedInt32Array =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedInt32Array)
 
-proc setPathRids*(self: NavigationPathQueryResult2D; pathRids: TypedArray[RID]): void =
+proc setPathRids*(self: NavigationPathQueryResult2D; pathRids: Array[RID]): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_rids", 381264803)
   nilCheck pathRids
   methodbind.ptrcall(self, [getPtr pathRids])
 
-proc getPathRids*(self: NavigationPathQueryResult2D): TypedArray[RID] =
+proc getPathRids*(self: NavigationPathQueryResult2D): Array[RID] =
   expandMethodBind(className NavigationPathQueryResult2D, "get_path_rids", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc setPathOwnerIds*(self: NavigationPathQueryResult2D; pathOwnerIds: PackedInt64Array): void =
   expandMethodBind(className NavigationPathQueryResult2D, "set_path_owner_ids", 3709968205)

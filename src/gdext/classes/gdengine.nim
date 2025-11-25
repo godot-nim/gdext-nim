@@ -104,11 +104,11 @@ proc getAuthorInfo*(self: Engine): Dictionary =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getCopyrightInfo*(self: Engine): TypedArray[Dictionary] =
+proc getCopyrightInfo*(self: Engine): Array[Dictionary] =
   expandMethodBind(className Engine, "get_copyright_info", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc getDonorInfo*(self: Engine): Dictionary =
   expandMethodBind(className Engine, "get_donor_info", 3102165223)
@@ -190,11 +190,11 @@ proc getScriptLanguage*(self: Engine; index: int32): ScriptLanguage =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(ScriptLanguage)
 
-proc captureScriptBacktraces*(self: Engine; includeVariables: bool = false): TypedArray[gdref ScriptBacktrace] =
+proc captureScriptBacktraces*(self: Engine; includeVariables: bool = false): Array[gdref ScriptBacktrace] =
   expandMethodBind(className Engine, "capture_script_backtraces", 873284517)
-  var ret: encoded TypedArray[gdref ScriptBacktrace]
+  var ret: encoded Array[gdref ScriptBacktrace]
   methodbind.ptrcall(self, [getPtr includeVariables], addr ret)
-  (addr ret).decode_result(TypedArray[gdref ScriptBacktrace])
+  (addr ret).decode_result(Array[gdref ScriptBacktrace])
 
 proc isEditorHint*(self: Engine): bool =
   expandMethodBind(className Engine, "is_editor_hint", 36873697)

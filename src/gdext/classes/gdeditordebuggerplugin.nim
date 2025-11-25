@@ -16,10 +16,10 @@ proc registerVirtual_hasCapture*[T: EditorDebuggerPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_capture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorDebuggerPlugin](p_instance).hasCapture(p_args[0].decode(String)).encode(r_ret)
 
-method capture*(self: EditorDebuggerPlugin; message: String; data: Array; sessionId: int32): bool {.base.} = (discard)
+method capture*(self: EditorDebuggerPlugin; message: String; data: Array[Variant]; sessionId: int32): bool {.base.} = (discard)
 proc registerVirtual_capture*[T: EditorDebuggerPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_capture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorDebuggerPlugin](p_instance).capture(p_args[0].decode(String), p_args[1].decode(Array), p_args[2].decode(int32)).encode(r_ret)
+    errproof: cast[EditorDebuggerPlugin](p_instance).capture(p_args[0].decode(String), p_args[1].decode(Array[Variant]), p_args[2].decode(int32)).encode(r_ret)
 
 method gotoScriptLine*(self: EditorDebuggerPlugin; script: gdref Script; line: int32): void {.base.} = (discard)
 proc registerVirtual_gotoScriptLine*[T: EditorDebuggerPlugin](Self: typedesc[T]) =
@@ -42,8 +42,8 @@ proc getSession*(self: EditorDebuggerPlugin; id: int32): gdref EditorDebuggerSes
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(gdref EditorDebuggerSession)
 
-proc getSessions*(self: EditorDebuggerPlugin): Array =
+proc getSessions*(self: EditorDebuggerPlugin): Array[Variant] =
   expandMethodBind(className EditorDebuggerPlugin, "get_sessions", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])

@@ -6,7 +6,7 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(EditorTranslationParserPlugin, RefCounted)
 
-method parseFile*(self: EditorTranslationParserPlugin; path: String): TypedArray[PackedStringArray] {.base.} = (discard)
+method parseFile*(self: EditorTranslationParserPlugin; path: String): Array[PackedStringArray] {.base.} = (discard)
 proc registerVirtual_parseFile*[T: EditorTranslationParserPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_parse_file"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorTranslationParserPlugin](p_instance).parseFile(p_args[0].decode(String)).encode(r_ret)

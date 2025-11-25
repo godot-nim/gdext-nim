@@ -36,16 +36,16 @@ proc getColor*(self: Polygon2D): Color =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
-proc setPolygons*(self: Polygon2D; polygons: Array): void =
+proc setPolygons*(self: Polygon2D; polygons: Array[Variant]): void =
   expandMethodBind(className Polygon2D, "set_polygons", 381264803)
   nilCheck polygons
   methodbind.ptrcall(self, [getPtr polygons])
 
-proc getPolygons*(self: Polygon2D): Array =
+proc getPolygons*(self: Polygon2D): Array[Variant] =
   expandMethodBind(className Polygon2D, "get_polygons", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setVertexColors*(self: Polygon2D; vertexColors: PackedColorArray): void =
   expandMethodBind(className Polygon2D, "set_vertex_colors", 3546319833)

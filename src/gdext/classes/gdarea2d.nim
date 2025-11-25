@@ -136,17 +136,17 @@ proc isMonitorable*(self: Area2D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getOverlappingBodies*(self: Area2D): TypedArray[Node2D] =
+proc getOverlappingBodies*(self: Area2D): Array[Node2D] =
   expandMethodBind(className Area2D, "get_overlapping_bodies", 3995934104)
-  var ret: encoded TypedArray[Node2D]
+  var ret: encoded Array[Node2D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node2D])
+  (addr ret).decode_result(Array[Node2D])
 
-proc getOverlappingAreas*(self: Area2D): TypedArray[Area2D] =
+proc getOverlappingAreas*(self: Area2D): Array[Area2D] =
   expandMethodBind(className Area2D, "get_overlapping_areas", 3995934104)
-  var ret: encoded TypedArray[Area2D]
+  var ret: encoded Array[Area2D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Area2D])
+  (addr ret).decode_result(Array[Area2D])
 
 proc hasOverlappingBodies*(self: Area2D): bool =
   expandMethodBind(className Area2D, "has_overlapping_bodies", 36873697)

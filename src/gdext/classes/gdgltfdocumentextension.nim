@@ -36,10 +36,10 @@ proc registerVirtual_parseTextureJson*[T: GLTFDocumentExtension](Self: typedesc[
   Self.vmethods[newStringName"_parse_texture_json"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[GLTFDocumentExtension](p_instance).parseTextureJson(p_args[0].decode(gdref GLTFState), p_args[1].decode(Dictionary), p_args[2].decode(gdref GLTFTexture)).encode(r_ret)
 
-method importObjectModelProperty*(self: GLTFDocumentExtension; state: gdref GLTFState; splitJsonPointer: PackedStringArray; partialPaths: TypedArray[NodePath]): gdref GLTFObjectModelProperty {.base.} = (discard)
+method importObjectModelProperty*(self: GLTFDocumentExtension; state: gdref GLTFState; splitJsonPointer: PackedStringArray; partialPaths: Array[NodePath]): gdref GLTFObjectModelProperty {.base.} = (discard)
 proc registerVirtual_importObjectModelProperty*[T: GLTFDocumentExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_import_object_model_property"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[GLTFDocumentExtension](p_instance).importObjectModelProperty(p_args[0].decode(gdref GLTFState), p_args[1].decode(PackedStringArray), p_args[2].decode(TypedArray[NodePath])).encode(r_ret)
+    errproof: cast[GLTFDocumentExtension](p_instance).importObjectModelProperty(p_args[0].decode(gdref GLTFState), p_args[1].decode(PackedStringArray), p_args[2].decode(Array[NodePath])).encode(r_ret)
 
 method importPostParse*(self: GLTFDocumentExtension; state: gdref GLTFState): Error {.base.} = (discard)
 proc registerVirtual_importPostParse*[T: GLTFDocumentExtension](Self: typedesc[T]) =

@@ -16,7 +16,7 @@ template encode*[T: SomeBuiltins](v: T; p: pointer) =
 proc decode*[T: SomeBuiltins](p: pointer; _: typedesc[T]): T =
   cast[ptr T](p)[]
 proc variant*[T: SomeBuiltins](v: T): Variant =
-  when T is Array or T is TypedArray or T is Dictionary:
+  when T is Array or T is Dictionary:
     v.nilCheck()
   variantFromType[variantType T](addr result, addr v)
 proc get*[T: SomeBuiltins](v: Variant; _: typedesc[T]): T =
@@ -81,7 +81,6 @@ convert_alternative_autocast AltFloat, Float
 convert_generics_forcecast enum, Int
 
 convert_generic_params_forcecast set, Int
-convert_generic_params_forcecast TypedArray, Array
 
 # Variant
 # =======

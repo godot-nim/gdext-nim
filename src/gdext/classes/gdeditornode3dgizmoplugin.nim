@@ -76,10 +76,10 @@ proc registerVirtual_subgizmosIntersectRay*[T: EditorNode3DGizmoPlugin](Self: ty
   Self.vmethods[newStringName"_subgizmos_intersect_ray"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorNode3DGizmoPlugin](p_instance).subgizmosIntersectRay(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(Camera3D), p_args[2].decode(Vector2)).encode(r_ret)
 
-method subgizmosIntersectFrustum*(self: EditorNode3DGizmoPlugin; gizmo: gdref EditorNode3DGizmo; camera: Camera3D; frustumPlanes: TypedArray[Plane]): PackedInt32Array {.base.} = (discard)
+method subgizmosIntersectFrustum*(self: EditorNode3DGizmoPlugin; gizmo: gdref EditorNode3DGizmo; camera: Camera3D; frustumPlanes: Array[Plane]): PackedInt32Array {.base.} = (discard)
 proc registerVirtual_subgizmosIntersectFrustum*[T: EditorNode3DGizmoPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_subgizmos_intersect_frustum"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorNode3DGizmoPlugin](p_instance).subgizmosIntersectFrustum(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(Camera3D), p_args[2].decode(TypedArray[Plane])).encode(r_ret)
+    errproof: cast[EditorNode3DGizmoPlugin](p_instance).subgizmosIntersectFrustum(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(Camera3D), p_args[2].decode(Array[Plane])).encode(r_ret)
 
 method getSubgizmoTransform*(self: EditorNode3DGizmoPlugin; gizmo: gdref EditorNode3DGizmo; subgizmoId: int32): Transform3D {.base.} = (discard)
 proc registerVirtual_getSubgizmoTransform*[T: EditorNode3DGizmoPlugin](Self: typedesc[T]) =
@@ -91,10 +91,10 @@ proc registerVirtual_setSubgizmoTransform*[T: EditorNode3DGizmoPlugin](Self: typ
   Self.vmethods[newStringName"_set_subgizmo_transform"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorNode3DGizmoPlugin](p_instance).setSubgizmoTransform(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(int32), p_args[2].decode(Transform3D))
 
-method commitSubgizmos*(self: EditorNode3DGizmoPlugin; gizmo: gdref EditorNode3DGizmo; ids: PackedInt32Array; restores: TypedArray[Transform3D]; cancel: bool): void {.base.} = (discard)
+method commitSubgizmos*(self: EditorNode3DGizmoPlugin; gizmo: gdref EditorNode3DGizmo; ids: PackedInt32Array; restores: Array[Transform3D]; cancel: bool): void {.base.} = (discard)
 proc registerVirtual_commitSubgizmos*[T: EditorNode3DGizmoPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_commit_subgizmos"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorNode3DGizmoPlugin](p_instance).commitSubgizmos(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(PackedInt32Array), p_args[2].decode(TypedArray[Transform3D]), p_args[3].decode(bool))
+    errproof: cast[EditorNode3DGizmoPlugin](p_instance).commitSubgizmos(p_args[0].decode(gdref EditorNode3DGizmo), p_args[1].decode(PackedInt32Array), p_args[2].decode(Array[Transform3D]), p_args[3].decode(bool))
 
 proc createMaterial*(self: EditorNode3DGizmoPlugin; name: String; color: Color; billboard: bool = false; onTop: bool = false; useVertexColor: bool = false): void =
   expandMethodBind(className EditorNode3DGizmoPlugin, "create_material", 3486012546)

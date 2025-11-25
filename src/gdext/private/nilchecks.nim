@@ -15,16 +15,13 @@ proc newTypedArrayInternal*(typ: VariantType; className: pointer): pointer =
 proc newDictionaryInternal*(): pointer =
   typeNew[VARIANT_TYPE_DICTIONARY](addr result, nil)
 
-proc nilCheck*(self: Array) =
+proc nilCheck*[T](self: Array[T]) =
   privateAccess Array
   if unlikely(cast[pointer](self) == nil):
-    cast[ptr Array](addr self)[].cowdata = newArrayInternal()
-
-proc nilCheck*[T](self: TypedArray[T]) =
-  privateAccess Array
-  when compiles(T.className):
-    if unlikely(cast[pointer](self) == nil):
-      cast[ptr Array](addr self)[].cowdata = newTypedArrayInternal(T.variantType, addr className(T))
+    when T is Variant:
+      cast[ptr Array[T]](addr self)[].cowdata = newArrayInternal()
+    else:
+      cast[ptr Array[T]](addr self)[].cowdata = newTypedArrayInternal(T.variantType, addr className(T))
 
 proc nilCheck*(self: Dictionary) =
   privateAccess Dictionary

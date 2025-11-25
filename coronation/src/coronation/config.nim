@@ -530,12 +530,14 @@ const ignoreConf: Table[TypeSym, IgnoreConf] = toTable {
   ts"Rect2i": IgnoreConf(
     constructor: {0..4},
   ),
+  ts"Array": IgnoreConf(
+    constructor: {0..1},
+  ),
 }
 
 proc getignore*(ts: TypeSym): IgnoreConf = ignoreConf.getOrDefault(ts)
 
 const NilUnsafeVariant* = [
   TypeSym"Array",
-  TypeSym"TypedArray",
   TypeSym"Dictionary",
 ]

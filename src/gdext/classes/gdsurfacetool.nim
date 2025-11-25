@@ -70,7 +70,7 @@ proc setSmoothGroup*(self: SurfaceTool; index: uint32): void =
   expandMethodBind(className SurfaceTool, "set_smooth_group", 1286410249)
   methodbind.ptrcall(self, [getPtr index])
 
-proc addTriangleFan*(self: SurfaceTool; vertices: PackedVector3Array; uvs: PackedVector2Array = PackedVector2Array(); colors: PackedColorArray = PackedColorArray(); uv2s: PackedVector2Array = PackedVector2Array(); normals: PackedVector3Array = PackedVector3Array(); tangents: TypedArray[Plane] = newTypedArray[Plane]()): void =
+proc addTriangleFan*(self: SurfaceTool; vertices: PackedVector3Array; uvs: PackedVector2Array = PackedVector2Array(); colors: PackedColorArray = PackedColorArray(); uv2s: PackedVector2Array = PackedVector2Array(); normals: PackedVector3Array = PackedVector3Array(); tangents: Array[Plane] = newArray[Plane]()): void =
   expandMethodBind(className SurfaceTool, "add_triangle_fan", 2235017613)
   nilCheck tangents
   methodbind.ptrcall(self, [getPtr vertices, getPtr uvs, getPtr colors, getPtr uv2s, getPtr normals, getPtr tangents])
@@ -129,7 +129,7 @@ proc createFrom*(self: SurfaceTool; existing: gdref Mesh; surface: int32): void 
   expandMethodBind(className SurfaceTool, "create_from", 1767024570)
   methodbind.ptrcall(self, [getPtr existing, getPtr surface])
 
-proc createFromArrays*(self: SurfaceTool; arrays: Array; primitiveType: Mesh_PrimitiveType = primitiveTriangles): void =
+proc createFromArrays*(self: SurfaceTool; arrays: Array[Variant]; primitiveType: Mesh_PrimitiveType = primitiveTriangles): void =
   expandMethodBind(className SurfaceTool, "create_from_arrays", 1894639680)
   nilCheck arrays
   methodbind.ptrcall(self, [getPtr arrays, getPtr primitiveType])
@@ -148,8 +148,8 @@ proc commit*(self: SurfaceTool; existing: gdref ArrayMesh = default gdref ArrayM
   methodbind.ptrcall(self, [getPtr existing, getPtr flags], addr ret)
   (addr ret).decode_result(gdref ArrayMesh)
 
-proc commitToArrays*(self: SurfaceTool): Array =
+proc commitToArrays*(self: SurfaceTool): Array[Variant] =
   expandMethodBind(className SurfaceTool, "commit_to_arrays", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])

@@ -2,7 +2,9 @@ import std/[strformat, hashes, sequtils]
 
 import gdext/builtinindex
 import gdext/arraytools
-import gdext/private/[gdinterface, typeshift]
+import gdext/private/[gdinterface, typeshift, propertyinfo]
+
+import gdext/classes/gdClassDB
 
 proc iterInit(self: Variant; r_iter: var Variant; r_valid: var bool): bool =
   interfaceVariantIterInit(addr self, addr r_iter, addr r_valid)
@@ -254,14 +256,20 @@ iterator pairs*(self: Variant): tuple[key, item: Variant] =
   for key in self.keys: yield (key, self[key])
 
 proc `of`*[T: SomeProperty](a: Variant; b: typedesc[T]): bool =
-  when T is TypedArray:
-    var empty {.global.} = newTypedArray[T.T]()
   {.hint[CondTrue]: off.}
   result = if a.getType == b.variantType:
     when b is Object:
       (a as Object) of b
-    elif b is TypedArray:
-      (a as Array).isSameTyped(empty)
+    elif b is Array:
+      when b.T is Variant:
+        true
+      else:
+        let typ = (a as Array[Variant]).getTypedBuiltin.VariantType
+        case typ
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Array[Variant]).getTypedClassName, b.T.className)
+        else:
+          typ == b.T.variantType
     else:
       true
   else:

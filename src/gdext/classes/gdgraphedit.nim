@@ -50,16 +50,16 @@ proc setConnectionActivity*(self: GraphEdit; fromNode: StringName; fromPort: int
   expandMethodBind(className GraphEdit, "set_connection_activity", 1141899943)
   methodbind.ptrcall(self, [getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort, getPtr amount])
 
-proc setConnections*(self: GraphEdit; connections: TypedArray[Dictionary]): void =
+proc setConnections*(self: GraphEdit; connections: Array[Dictionary]): void =
   expandMethodBind(className GraphEdit, "set_connections", 381264803)
   nilCheck connections
   methodbind.ptrcall(self, [getPtr connections])
 
-proc getConnectionList*(self: GraphEdit): TypedArray[Dictionary] =
+proc getConnectionList*(self: GraphEdit): Array[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connection_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc getConnectionCount*(self: GraphEdit; fromNode: StringName; fromPort: int32): int32 =
   expandMethodBind(className GraphEdit, "get_connection_count", 861718734)
@@ -73,17 +73,17 @@ proc getClosestConnectionAtPoint*(self: GraphEdit; point: Vector2; maxDistance: 
   methodbind.ptrcall(self, [getPtr point, getPtr maxDistance], addr ret)
   (addr ret).decode_result(Dictionary)
 
-proc getConnectionListFromNode*(self: GraphEdit; node: StringName): TypedArray[Dictionary] =
+proc getConnectionListFromNode*(self: GraphEdit; node: StringName): Array[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connection_list_from_node", 3147814860)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr node], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
-proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): TypedArray[Dictionary] =
+proc getConnectionsIntersectingWithRect*(self: GraphEdit; rect: Rect2): Array[Dictionary] =
   expandMethodBind(className GraphEdit, "get_connections_intersecting_with_rect", 2709748719)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [getPtr rect], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc clearConnections*(self: GraphEdit): void =
   expandMethodBind(className GraphEdit, "clear_connections", 3218959716)
@@ -147,11 +147,11 @@ proc getElementFrame*(self: GraphEdit; element: StringName): GraphFrame =
   methodbind.ptrcall(self, [getPtr element], addr ret)
   (addr ret).decode_result(GraphFrame)
 
-proc getAttachedNodesOfFrame*(self: GraphEdit; frame: StringName): TypedArray[StringName] =
+proc getAttachedNodesOfFrame*(self: GraphEdit; frame: StringName): Array[StringName] =
   expandMethodBind(className GraphEdit, "get_attached_nodes_of_frame", 689397652)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [getPtr frame], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setPanningScheme*(self: GraphEdit; scheme: GraphEdit_PanningScheme): void =
   expandMethodBind(className GraphEdit, "set_panning_scheme", 18893313)

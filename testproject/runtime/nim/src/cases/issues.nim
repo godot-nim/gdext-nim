@@ -38,7 +38,7 @@ runtime: suite "Community Reported":
     destroy myTestNode
 
   test "array add should compile and work":
-    var arr = Array()
+    var arr = Array[Variant]()
     let myString = "not a variant"
     arr.add(myString)
     check arr[0].as(string) == myString

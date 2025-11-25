@@ -136,7 +136,7 @@ proc getStderrType*(self: OS): OS_StdHandleType =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OS_StdHandleType)
 
-proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Array = newArray(); readStderr: bool = false; openConsole: bool = false): int32 =
+proc execute*(self: OS; path: String; arguments: PackedStringArray; output: Array[Variant] = newArray[Variant](); readStderr: bool = false; openConsole: bool = false): int32 =
   expandMethodBind(className OS, "execute", 1488299882)
   nilCheck output
   var ret: encoded int32

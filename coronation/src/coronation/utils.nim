@@ -27,7 +27,6 @@ method apply(style: Comment; data: Data): Data =
 
 const withNew = [
   TypeSym"Array",
-  TypeSym"TypedArray",
   TypeSym"PackedByteArray",
   TypeSym"PackedColorArray",
   TypeSym"PackedStringArray",

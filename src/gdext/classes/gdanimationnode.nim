@@ -11,7 +11,7 @@ proc registerVirtual_getChildNodes*[T: AnimationNode](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_child_nodes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getChildNodes().encode(r_ret)
 
-method getParameterList*(self: AnimationNode): Array {.base.} = (discard)
+method getParameterList*(self: AnimationNode): Array[Variant] {.base.} = (discard)
 proc registerVirtual_getParameterList*[T: AnimationNode](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getParameterList().encode(r_ret)

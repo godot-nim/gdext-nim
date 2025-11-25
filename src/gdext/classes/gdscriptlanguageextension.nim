@@ -61,7 +61,7 @@ proc registerVirtual_makeTemplate*[T: ScriptLanguageExtension](Self: typedesc[T]
   Self.vmethods[newStringName"_make_template"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).makeTemplate(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(String)).encode(r_ret)
 
-method getBuiltInTemplates*(self: ScriptLanguageExtension; `object`: StringName): TypedArray[Dictionary] {.base.} = (discard)
+method getBuiltInTemplates*(self: ScriptLanguageExtension; `object`: StringName): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_getBuiltInTemplates*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_built_in_templates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).getBuiltInTemplates(p_args[0].decode(StringName)).encode(r_ret)
@@ -226,7 +226,7 @@ proc registerVirtual_debugParseStackLevelExpression*[T: ScriptLanguageExtension]
   Self.vmethods[newStringName"_debug_parse_stack_level_expression"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).debugParseStackLevelExpression(p_args[0].decode(int32), p_args[1].decode(String), p_args[2].decode(int32), p_args[3].decode(int32)).encode(r_ret)
 
-method debugGetCurrentStackInfo*(self: ScriptLanguageExtension): TypedArray[Dictionary] {.base.} = (discard)
+method debugGetCurrentStackInfo*(self: ScriptLanguageExtension): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_debugGetCurrentStackInfo*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_debug_get_current_stack_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).debugGetCurrentStackInfo().encode(r_ret)
@@ -236,10 +236,10 @@ proc registerVirtual_reloadAllScripts*[T: ScriptLanguageExtension](Self: typedes
   Self.vmethods[newStringName"_reload_all_scripts"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).reloadAllScripts()
 
-method reloadScripts*(self: ScriptLanguageExtension; scripts: Array; softReload: bool): void {.base.} = (discard)
+method reloadScripts*(self: ScriptLanguageExtension; scripts: Array[Variant]; softReload: bool): void {.base.} = (discard)
 proc registerVirtual_reloadScripts*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_reload_scripts"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[ScriptLanguageExtension](p_instance).reloadScripts(p_args[0].decode(Array), p_args[1].decode(bool))
+    errproof: cast[ScriptLanguageExtension](p_instance).reloadScripts(p_args[0].decode(Array[Variant]), p_args[1].decode(bool))
 
 method reloadToolScript*(self: ScriptLanguageExtension; script: gdref Script; softReload: bool): void {.base.} = (discard)
 proc registerVirtual_reloadToolScript*[T: ScriptLanguageExtension](Self: typedesc[T]) =
@@ -251,7 +251,7 @@ proc registerVirtual_getRecognizedExtensions*[T: ScriptLanguageExtension](Self: 
   Self.vmethods[newStringName"_get_recognized_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).getRecognizedExtensions().encode(r_ret)
 
-method getPublicFunctions*(self: ScriptLanguageExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getPublicFunctions*(self: ScriptLanguageExtension): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_getPublicFunctions*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_public_functions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).getPublicFunctions().encode(r_ret)
@@ -261,7 +261,7 @@ proc registerVirtual_getPublicConstants*[T: ScriptLanguageExtension](Self: typed
   Self.vmethods[newStringName"_get_public_constants"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).getPublicConstants().encode(r_ret)
 
-method getPublicAnnotations*(self: ScriptLanguageExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getPublicAnnotations*(self: ScriptLanguageExtension): Array[Dictionary] {.base.} = (discard)
 proc registerVirtual_getPublicAnnotations*[T: ScriptLanguageExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_public_annotations"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptLanguageExtension](p_instance).getPublicAnnotations().encode(r_ret)

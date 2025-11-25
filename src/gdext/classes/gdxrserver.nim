@@ -76,11 +76,11 @@ proc getInterface*(self: XRServer; idx: int32): gdref XRInterface =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(gdref XRInterface)
 
-proc getInterfaces*(self: XRServer): TypedArray[Dictionary] =
+proc getInterfaces*(self: XRServer): Array[Dictionary] =
   expandMethodBind(className XRServer, "get_interfaces", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc findInterface*(self: XRServer; name: String): gdref XRInterface =
   expandMethodBind(className XRServer, "find_interface", 1395192955)

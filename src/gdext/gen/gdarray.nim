@@ -10,22 +10,22 @@ var `<=(Array Array)`: PtrOperatorEvaluator
 # `>=(Array Array)`
 var `+(Array Array)`: PtrOperatorEvaluator
 # `in(Array Array)`
-func `not`*(left: Array): bool = {.noSideEffect.}:
+func `not`*(left: Array[Variant]): bool = {.noSideEffect.}:
   nilCheck left
   `not(Array)`(getPtr left, nil, addr result)
-func `==`*(left: Array; right: Array): bool = {.noSideEffect.}:
+func `==`*(left: Array[Variant]; right: Array[Variant]): bool = {.noSideEffect.}:
   nilCheck left
   nilCheck right
   `==(Array Array)`(getPtr left, getPtr right, addr result)
-func `<`*(left: Array; right: Array): bool = {.noSideEffect.}:
+func `<`*(left: Array[Variant]; right: Array[Variant]): bool = {.noSideEffect.}:
   nilCheck left
   nilCheck right
   `<(Array Array)`(getPtr left, getPtr right, addr result)
-func `<=`*(left: Array; right: Array): bool = {.noSideEffect.}:
+func `<=`*(left: Array[Variant]; right: Array[Variant]): bool = {.noSideEffect.}:
   nilCheck left
   nilCheck right
   `<=(Array Array)`(getPtr left, getPtr right, addr result)
-func `+`*(left: Array; right: Array): Array = {.noSideEffect.}:
+func `+`*(left: Array[Variant]; right: Array[Variant]): Array[Variant] = {.noSideEffect.}:
   nilCheck left
   nilCheck right
   `+(Array Array)`(getPtr left, getPtr right, addr result)
@@ -88,160 +88,160 @@ var `getTypedScript(Array)`: PtrBuiltinMethod
 var `makeReadOnly(Array)`: PtrBuiltinMethod
 var `isReadOnly(Array)`: PtrBuiltinMethod
 
-proc size*(self: Array): Int =
+proc size*(self: Array[Variant]): Int =
   nilCheck self
   `size(Array)`.call(addr self, [], addr result)
-proc isEmpty*(self: Array): bool =
+proc isEmpty*(self: Array[Variant]): bool =
   nilCheck self
   `isEmpty(Array)`.call(addr self, [], addr result)
-proc clear*(self: var Array): void =
+proc clear*(self: var Array[Variant]): void =
   nilCheck self
   `clear(Array)`.call(addr self, [])
-proc hash*(self: Array): Hash =
+proc hash*(self: Array[Variant]): Hash =
   nilCheck self
   `hash(Array)`.call(addr self, [], addr result)
-proc assign*(self: var Array; array: Array): void =
+proc assign*(self: var Array[Variant]; array: Array[Variant]): void =
   nilCheck self
   nilCheck array
   `assign(Array Array)`.call(addr self, [getPtr array])
-proc get*(self: Array; index: Int): Variant =
+proc get*(self: Array[Variant]; index: Int): Variant =
   nilCheck self
   `get(Array Int)`.call(addr self, [getPtr index], addr result)
-proc set*(self: var Array; index: Int; value: Variant): void =
+proc set*(self: var Array[Variant]; index: Int; value: Variant): void =
   nilCheck self
   `set(Array Int Variant)`.call(addr self, [getPtr index, getPtr value])
-proc pushBack*(self: var Array; value: Variant): void =
+proc pushBack*(self: var Array[Variant]; value: Variant): void =
   nilCheck self
   `pushBack(Array Variant)`.call(addr self, [getPtr value])
-proc pushFront*(self: var Array; value: Variant): void =
+proc pushFront*(self: var Array[Variant]; value: Variant): void =
   nilCheck self
   `pushFront(Array Variant)`.call(addr self, [getPtr value])
-proc append*(self: var Array; value: Variant): void =
+proc append*(self: var Array[Variant]; value: Variant): void =
   nilCheck self
   `append(Array Variant)`.call(addr self, [getPtr value])
-proc appendArray*(self: var Array; array: Array): void =
+proc appendArray*(self: var Array[Variant]; array: Array[Variant]): void =
   nilCheck self
   nilCheck array
   `appendArray(Array Array)`.call(addr self, [getPtr array])
-proc resize*(self: var Array; size: Int): Int =
+proc resize*(self: var Array[Variant]; size: Int): Int =
   nilCheck self
   `resize(Array Int)`.call(addr self, [getPtr size], addr result)
-proc insert*(self: var Array; position: Int; value: Variant): Int =
+proc insert*(self: var Array[Variant]; position: Int; value: Variant): Int =
   nilCheck self
   `insert(Array Int Variant)`.call(addr self, [getPtr position, getPtr value], addr result)
-proc removeAt*(self: var Array; position: Int): void =
+proc removeAt*(self: var Array[Variant]; position: Int): void =
   nilCheck self
   `removeAt(Array Int)`.call(addr self, [getPtr position])
-proc fill*(self: var Array; value: Variant): void =
+proc fill*(self: var Array[Variant]; value: Variant): void =
   nilCheck self
   `fill(Array Variant)`.call(addr self, [getPtr value])
-proc erase*(self: var Array; value: Variant): void =
+proc erase*(self: var Array[Variant]; value: Variant): void =
   nilCheck self
   `erase(Array Variant)`.call(addr self, [getPtr value])
-proc front*(self: Array): Variant =
+proc front*(self: Array[Variant]): Variant =
   nilCheck self
   `front(Array)`.call(addr self, [], addr result)
-proc back*(self: Array): Variant =
+proc back*(self: Array[Variant]): Variant =
   nilCheck self
   `back(Array)`.call(addr self, [], addr result)
-proc pickRandom*(self: Array): Variant =
+proc pickRandom*(self: Array[Variant]): Variant =
   nilCheck self
   `pickRandom(Array)`.call(addr self, [], addr result)
-proc find*(self: Array; what: Variant; `from`: Int = 0): Int =
+proc find*(self: Array[Variant]; what: Variant; `from`: Int = 0): Int =
   nilCheck self
   `find(Array Variant Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
-proc findCustom*(self: Array; `method`: Callable; `from`: Int = 0): Int =
+proc findCustom*(self: Array[Variant]; `method`: Callable; `from`: Int = 0): Int =
   nilCheck self
   `findCustom(Array Callable Int)`.call(addr self, [getPtr `method`, getPtr `from`], addr result)
-proc rfind*(self: Array; what: Variant; `from`: Int = -1): Int =
+proc rfind*(self: Array[Variant]; what: Variant; `from`: Int = -1): Int =
   nilCheck self
   `rfind(Array Variant Int)`.call(addr self, [getPtr what, getPtr `from`], addr result)
-proc rfindCustom*(self: Array; `method`: Callable; `from`: Int = -1): Int =
+proc rfindCustom*(self: Array[Variant]; `method`: Callable; `from`: Int = -1): Int =
   nilCheck self
   `rfindCustom(Array Callable Int)`.call(addr self, [getPtr `method`, getPtr `from`], addr result)
-proc count*(self: Array; value: Variant): Int =
+proc count*(self: Array[Variant]; value: Variant): Int =
   nilCheck self
   `count(Array Variant)`.call(addr self, [getPtr value], addr result)
-proc has*(self: Array; value: Variant): bool =
+proc has*(self: Array[Variant]; value: Variant): bool =
   nilCheck self
   `has(Array Variant)`.call(addr self, [getPtr value], addr result)
-proc popBack*(self: var Array): Variant =
+proc popBack*(self: var Array[Variant]): Variant =
   nilCheck self
   `popBack(Array)`.call(addr self, [], addr result)
-proc popFront*(self: var Array): Variant =
+proc popFront*(self: var Array[Variant]): Variant =
   nilCheck self
   `popFront(Array)`.call(addr self, [], addr result)
-proc popAt*(self: var Array; position: Int): Variant =
+proc popAt*(self: var Array[Variant]; position: Int): Variant =
   nilCheck self
   `popAt(Array Int)`.call(addr self, [getPtr position], addr result)
-proc sort*(self: var Array): void =
+proc sort*(self: var Array[Variant]): void =
   nilCheck self
   `sort(Array)`.call(addr self, [])
-proc sortCustom*(self: var Array; `func`: Callable): void =
+proc sortCustom*(self: var Array[Variant]; `func`: Callable): void =
   nilCheck self
   `sortCustom(Array Callable)`.call(addr self, [getPtr `func`])
-proc shuffle*(self: var Array): void =
+proc shuffle*(self: var Array[Variant]): void =
   nilCheck self
   `shuffle(Array)`.call(addr self, [])
-proc bsearch*(self: Array; value: Variant; before: bool = true): Int =
+proc bsearch*(self: Array[Variant]; value: Variant; before: bool = true): Int =
   nilCheck self
   `bsearch(Array Variant bool)`.call(addr self, [getPtr value, getPtr before], addr result)
-proc bsearchCustom*(self: Array; value: Variant; `func`: Callable; before: bool = true): Int =
+proc bsearchCustom*(self: Array[Variant]; value: Variant; `func`: Callable; before: bool = true): Int =
   nilCheck self
   `bsearchCustom(Array Variant Callable bool)`.call(addr self, [getPtr value, getPtr `func`, getPtr before], addr result)
-proc reverse*(self: var Array): void =
+proc reverse*(self: var Array[Variant]): void =
   nilCheck self
   `reverse(Array)`.call(addr self, [])
-proc duplicate*(self: Array; deep: bool = false): Array =
+proc duplicate*(self: Array[Variant]; deep: bool = false): Array[Variant] =
   nilCheck self
   `duplicate(Array bool)`.call(addr self, [getPtr deep], addr result)
-proc duplicateDeep*(self: Array; deepSubresourcesMode: Int = 1): Array =
+proc duplicateDeep*(self: Array[Variant]; deepSubresourcesMode: Int = 1): Array[Variant] =
   nilCheck self
   `duplicateDeep(Array Int)`.call(addr self, [getPtr deepSubresourcesMode], addr result)
-proc slice*(self: Array; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array =
+proc slice*(self: Array[Variant]; begin: Int; `end`: Int = 2147483647; step: Int = 1; deep: bool = false): Array[Variant] =
   nilCheck self
   `slice(Array Int Int Int bool)`.call(addr self, [getPtr begin, getPtr `end`, getPtr step, getPtr deep], addr result)
-proc filter*(self: Array; `method`: Callable): Array =
+proc filter*(self: Array[Variant]; `method`: Callable): Array[Variant] =
   nilCheck self
   `filter(Array Callable)`.call(addr self, [getPtr `method`], addr result)
-proc map*(self: Array; `method`: Callable): Array =
+proc map*(self: Array[Variant]; `method`: Callable): Array[Variant] =
   nilCheck self
   `map(Array Callable)`.call(addr self, [getPtr `method`], addr result)
-proc reduce*(self: Array; `method`: Callable; accum: Variant = default(Variant)): Variant =
+proc reduce*(self: Array[Variant]; `method`: Callable; accum: Variant = default(Variant)): Variant =
   nilCheck self
   `reduce(Array Callable Variant)`.call(addr self, [getPtr `method`, getPtr accum], addr result)
-proc any*(self: Array; `method`: Callable): bool =
+proc any*(self: Array[Variant]; `method`: Callable): bool =
   nilCheck self
   `any(Array Callable)`.call(addr self, [getPtr `method`], addr result)
-proc all*(self: Array; `method`: Callable): bool =
+proc all*(self: Array[Variant]; `method`: Callable): bool =
   nilCheck self
   `all(Array Callable)`.call(addr self, [getPtr `method`], addr result)
-proc max*(self: Array): Variant =
+proc max*(self: Array[Variant]): Variant =
   nilCheck self
   `max(Array)`.call(addr self, [], addr result)
-proc min*(self: Array): Variant =
+proc min*(self: Array[Variant]): Variant =
   nilCheck self
   `min(Array)`.call(addr self, [], addr result)
-proc isTyped*(self: Array): bool =
+proc isTyped*(self: Array[Variant]): bool =
   nilCheck self
   `isTyped(Array)`.call(addr self, [], addr result)
-proc isSameTyped*(self: Array; array: Array): bool =
+proc isSameTyped*(self: Array[Variant]; array: Array[Variant]): bool =
   nilCheck self
   nilCheck array
   `isSameTyped(Array Array)`.call(addr self, [getPtr array], addr result)
-proc getTypedBuiltin*(self: Array): Int =
+proc getTypedBuiltin*(self: Array[Variant]): Int =
   nilCheck self
   `getTypedBuiltin(Array)`.call(addr self, [], addr result)
-proc getTypedClassName*(self: Array): StringName =
+proc getTypedClassName*(self: Array[Variant]): StringName =
   nilCheck self
   `getTypedClassName(Array)`.call(addr self, [], addr result)
-proc getTypedScript*(self: Array): Variant =
+proc getTypedScript*(self: Array[Variant]): Variant =
   nilCheck self
   `getTypedScript(Array)`.call(addr self, [], addr result)
-proc makeReadOnly*(self: var Array): void =
+proc makeReadOnly*(self: var Array[Variant]): void =
   nilCheck self
   `makeReadOnly(Array)`.call(addr self, [])
-proc isReadOnly*(self: Array): bool =
+proc isReadOnly*(self: Array[Variant]): bool =
   nilCheck self
   `isReadOnly(Array)`.call(addr self, [], addr result)
 

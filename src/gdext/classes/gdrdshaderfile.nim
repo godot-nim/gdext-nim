@@ -16,11 +16,11 @@ proc getSpirv*(self: RDShaderFile; version: StringName = default(StringName)): g
   methodbind.ptrcall(self, [getPtr version], addr ret)
   (addr ret).decode_result(gdref RDShaderSPIRV)
 
-proc getVersionList*(self: RDShaderFile): TypedArray[StringName] =
+proc getVersionList*(self: RDShaderFile): Array[StringName] =
   expandMethodBind(className RDShaderFile, "get_version_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setBaseError*(self: RDShaderFile; error: String): void =
   expandMethodBind(className RDShaderFile, "set_base_error", 83702148)

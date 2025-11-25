@@ -34,11 +34,11 @@ proc getAxisLock*(self: PhysicsBody3D; axis: PhysicsServer3D_BodyAxis): bool =
   methodbind.ptrcall(self, [getPtr axis], addr ret)
   (addr ret).decode_result(bool)
 
-proc getCollisionExceptions*(self: PhysicsBody3D): TypedArray[PhysicsBody3D] =
+proc getCollisionExceptions*(self: PhysicsBody3D): Array[PhysicsBody3D] =
   expandMethodBind(className PhysicsBody3D, "get_collision_exceptions", 2915620761)
-  var ret: encoded TypedArray[PhysicsBody3D]
+  var ret: encoded Array[PhysicsBody3D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PhysicsBody3D])
+  (addr ret).decode_result(Array[PhysicsBody3D])
 
 proc addCollisionExceptionWith*(self: PhysicsBody3D; body: Node): void =
   expandMethodBind(className PhysicsBody3D, "add_collision_exception_with", 1078189570)

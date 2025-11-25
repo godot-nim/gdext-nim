@@ -38,11 +38,11 @@ proc getCellAlternativeTile*(self: TileMapPattern; coords: Vector2i): int32 =
   methodbind.ptrcall(self, [getPtr coords], addr ret)
   (addr ret).decode_result(int32)
 
-proc getUsedCells*(self: TileMapPattern): TypedArray[Vector2i] =
+proc getUsedCells*(self: TileMapPattern): Array[Vector2i] =
   expandMethodBind(className TileMapPattern, "get_used_cells", 3995934104)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc getSize*(self: TileMapPattern): Vector2i =
   expandMethodBind(className TileMapPattern, "get_size", 3690982128)

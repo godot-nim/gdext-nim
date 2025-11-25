@@ -6,7 +6,7 @@ import gdobject; export gdobject
 
 expandOnClassImported(FramebufferCacheRD, Object)
 
-proc getCacheMultipass*(_: typedesc[FramebufferCacheRD]; textures: TypedArray[RID]; passes: TypedArray[gdref RDFramebufferPass]; views: uint32): RID =
+proc getCacheMultipass*(_: typedesc[FramebufferCacheRD]; textures: Array[RID]; passes: Array[gdref RDFramebufferPass]; views: uint32): RID =
   expandMethodBind(className FramebufferCacheRD, "get_cache_multipass", 3437881813)
   nilCheck textures
   nilCheck passes

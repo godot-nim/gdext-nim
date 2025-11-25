@@ -422,11 +422,11 @@ proc isEmbeddingSubwindows*(self: Viewport): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getEmbeddedSubwindows*(self: Viewport): TypedArray[Window] =
+proc getEmbeddedSubwindows*(self: Viewport): Array[Window] =
   expandMethodBind(className Viewport, "get_embedded_subwindows", 3995934104)
-  var ret: encoded TypedArray[Window]
+  var ret: encoded Array[Window]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Window])
+  (addr ret).decode_result(Array[Window])
 
 proc setCanvasCullMask*(self: Viewport; mask: uint32): void =
   expandMethodBind(className Viewport, "set_canvas_cull_mask", 1286410249)

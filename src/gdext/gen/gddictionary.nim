@@ -78,7 +78,7 @@ proc merged*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false):
 proc has*(self: Dictionary; key: Variant): bool =
   nilCheck self
   `has(Dictionary Variant)`.call(addr self, [getPtr key], addr result)
-proc hasAll*(self: Dictionary; keys: Array): bool =
+proc hasAll*(self: Dictionary; keys: Array[Variant]): bool =
   nilCheck self
   nilCheck keys
   `hasAll(Dictionary Array)`.call(addr self, [getPtr keys], addr result)
@@ -91,10 +91,10 @@ proc erase*(self: var Dictionary; key: Variant): bool =
 proc hash*(self: Dictionary): Hash =
   nilCheck self
   `hash(Dictionary)`.call(addr self, [], addr result)
-proc keys*(self: Dictionary): Array =
+proc keys*(self: Dictionary): Array[Variant] =
   nilCheck self
   `keys(Dictionary)`.call(addr self, [], addr result)
-proc values*(self: Dictionary): Array =
+proc values*(self: Dictionary): Array[Variant] =
   nilCheck self
   `values(Dictionary)`.call(addr self, [], addr result)
 proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =

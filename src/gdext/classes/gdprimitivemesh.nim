@@ -6,7 +6,7 @@ import gdmesh; export gdmesh
 
 expandOnClassImported(PrimitiveMesh, Mesh)
 
-method createMeshArray*(self: PrimitiveMesh): Array {.base.} = (discard)
+method createMeshArray*(self: PrimitiveMesh): Array[Variant] {.base.} = (discard)
 proc registerVirtual_createMeshArray*[T: PrimitiveMesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_create_mesh_array"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PrimitiveMesh](p_instance).createMeshArray().encode(r_ret)
@@ -21,11 +21,11 @@ proc getMaterial*(self: PrimitiveMesh): gdref Material =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Material)
 
-proc getMeshArrays*(self: PrimitiveMesh): Array =
+proc getMeshArrays*(self: PrimitiveMesh): Array[Variant] =
   expandMethodBind(className PrimitiveMesh, "get_mesh_arrays", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setCustomAabb*(self: PrimitiveMesh; aabb: AABB): void =
   expandMethodBind(className PrimitiveMesh, "set_custom_aabb", 259215842)

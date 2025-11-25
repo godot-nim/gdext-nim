@@ -25,20 +25,20 @@ proc registerVirtual_surfaceGetArrayIndexLen*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_array_index_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrayIndexLen(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetArrays*(self: Mesh; surfIdx: int32): Array {.base.} =
+method surfaceGetArrays*(self: Mesh; surfIdx: int32): Array[Variant] {.base.} =
   expandMethodBind(className Mesh, "surface_get_arrays", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 proc registerVirtual_surfaceGetArrays*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrays(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): TypedArray[Array] {.base.} =
+method surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): Array[Array[Variant]] {.base.} =
   expandMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
-  var ret: encoded TypedArray[Array]
+  var ret: encoded Array[Array[Variant]]
   methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(TypedArray[Array])
+  (addr ret).decode_result(Array[Array[Variant]])
 proc registerVirtual_surfaceGetBlendShapeArrays*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_blend_shape_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetBlendShapeArrays(p_args[0].decode(int32)).encode(r_ret)

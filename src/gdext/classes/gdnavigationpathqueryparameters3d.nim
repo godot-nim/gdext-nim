@@ -96,27 +96,27 @@ proc getSimplifyEpsilon*(self: NavigationPathQueryParameters3D): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc setIncludedRegions*(self: NavigationPathQueryParameters3D; regions: TypedArray[RID]): void =
+proc setIncludedRegions*(self: NavigationPathQueryParameters3D; regions: Array[RID]): void =
   expandMethodBind(className NavigationPathQueryParameters3D, "set_included_regions", 381264803)
   nilCheck regions
   methodbind.ptrcall(self, [getPtr regions])
 
-proc getIncludedRegions*(self: NavigationPathQueryParameters3D): TypedArray[RID] =
+proc getIncludedRegions*(self: NavigationPathQueryParameters3D): Array[RID] =
   expandMethodBind(className NavigationPathQueryParameters3D, "get_included_regions", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
-proc setExcludedRegions*(self: NavigationPathQueryParameters3D; regions: TypedArray[RID]): void =
+proc setExcludedRegions*(self: NavigationPathQueryParameters3D; regions: Array[RID]): void =
   expandMethodBind(className NavigationPathQueryParameters3D, "set_excluded_regions", 381264803)
   nilCheck regions
   methodbind.ptrcall(self, [getPtr regions])
 
-proc getExcludedRegions*(self: NavigationPathQueryParameters3D): TypedArray[RID] =
+proc getExcludedRegions*(self: NavigationPathQueryParameters3D): Array[RID] =
   expandMethodBind(className NavigationPathQueryParameters3D, "get_excluded_regions", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc setPathReturnMaxLength*(self: NavigationPathQueryParameters3D; length: Float): void =
   expandMethodBind(className NavigationPathQueryParameters3D, "set_path_return_max_length", 373806689)

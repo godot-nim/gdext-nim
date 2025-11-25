@@ -32,11 +32,11 @@ proc hasSelection*(self: GridMapEditorPlugin): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getSelectedCells*(self: GridMapEditorPlugin): Array =
+proc getSelectedCells*(self: GridMapEditorPlugin): Array[Variant] =
   expandMethodBind(className GridMapEditorPlugin, "get_selected_cells", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setSelectedPaletteItem*(self: GridMapEditorPlugin; item: int32): void =
   expandMethodBind(className GridMapEditorPlugin, "set_selected_palette_item", 998575451)

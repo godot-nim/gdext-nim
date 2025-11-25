@@ -12,11 +12,11 @@ proc getPressedButton*(self: ButtonGroup): BaseButton =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(BaseButton)
 
-proc getButtons*(self: ButtonGroup): TypedArray[BaseButton] =
+proc getButtons*(self: ButtonGroup): Array[BaseButton] =
   expandMethodBind(className ButtonGroup, "get_buttons", 2915620761)
-  var ret: encoded TypedArray[BaseButton]
+  var ret: encoded Array[BaseButton]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[BaseButton])
+  (addr ret).decode_result(Array[BaseButton])
 
 proc setAllowUnpress*(self: ButtonGroup; enabled: bool): void =
   expandMethodBind(className ButtonGroup, "set_allow_unpress", 2586408642)

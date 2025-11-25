@@ -58,12 +58,12 @@ proc getEditorUndoRedo*(self: EditorInterface): EditorUndoRedoManager =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(EditorUndoRedoManager)
 
-proc makeMeshPreviews*(self: EditorInterface; meshes: TypedArray[gdref Mesh]; previewSize: int32): TypedArray[gdref Texture2D] =
+proc makeMeshPreviews*(self: EditorInterface; meshes: Array[gdref Mesh]; previewSize: int32): Array[gdref Texture2D] =
   expandMethodBind(className EditorInterface, "make_mesh_previews", 878078554)
   nilCheck meshes
-  var ret: encoded TypedArray[gdref Texture2D]
+  var ret: encoded Array[gdref Texture2D]
   methodbind.ptrcall(self, [getPtr meshes, getPtr previewSize], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Texture2D])
+  (addr ret).decode_result(Array[gdref Texture2D])
 
 proc setPluginEnabled*(self: EditorInterface; plugin: String; enabled: bool): void =
   expandMethodBind(className EditorInterface, "set_plugin_enabled", 2678287736)
@@ -163,7 +163,7 @@ proc setCurrentFeatureProfile*(self: EditorInterface; profileName: String): void
   expandMethodBind(className EditorInterface, "set_current_feature_profile", 83702148)
   methodbind.ptrcall(self, [getPtr profileName])
 
-proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: TypedArray[StringName] = newTypedArray[StringName](); currentValue: Node = default Node): void =
+proc popupNodeSelector*(self: EditorInterface; callback: Callable; validTypes: Array[StringName] = newArray[StringName](); currentValue: Node = default Node): void =
   expandMethodBind(className EditorInterface, "popup_node_selector", 2444591477)
   nilCheck validTypes
   methodbind.ptrcall(self, [getPtr callback, getPtr validTypes, getPtr currentValue])
@@ -176,12 +176,12 @@ proc popupMethodSelector*(self: EditorInterface; `object`: Object; callback: Cal
   expandMethodBind(className EditorInterface, "popup_method_selector", 3585505226)
   methodbind.ptrcall(self, [getPtr `object`, getPtr callback, getPtr currentValue])
 
-proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: TypedArray[StringName] = newTypedArray[StringName]()): void =
+proc popupQuickOpen*(self: EditorInterface; callback: Callable; baseTypes: Array[StringName] = newArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_quick_open", 2271411043)
   nilCheck baseTypes
   methodbind.ptrcall(self, [getPtr callback, getPtr baseTypes])
 
-proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = newGdString(); dialogTitle: String = newGdString(); typeBlocklist: TypedArray[StringName] = newTypedArray[StringName]()): void =
+proc popupCreateDialog*(self: EditorInterface; callback: Callable; baseType: StringName = default(StringName); currentType: String = newGdString(); dialogTitle: String = newGdString(); typeBlocklist: Array[StringName] = newArray[StringName]()): void =
   expandMethodBind(className EditorInterface, "popup_create_dialog", 495277124)
   nilCheck typeBlocklist
   methodbind.ptrcall(self, [getPtr callback, getPtr baseType, getPtr currentType, getPtr dialogTitle, getPtr typeBlocklist])
@@ -250,11 +250,11 @@ proc getOpenScenes*(self: EditorInterface): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getOpenSceneRoots*(self: EditorInterface): TypedArray[Node] =
+proc getOpenSceneRoots*(self: EditorInterface): Array[Node] =
   expandMethodBind(className EditorInterface, "get_open_scene_roots", 3995934104)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc getEditedSceneRoot*(self: EditorInterface): Node =
   expandMethodBind(className EditorInterface, "get_edited_scene_root", 3160264692)

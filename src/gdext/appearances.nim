@@ -116,7 +116,7 @@ proc appearance*(T: typedesc[range]): Appearance =
   Appearance(
     hint: propertyHintRange,
     hintstring: newGdString hintstring)
-proc appearance*[T](_: typedesc[TypedArray[T]]): Appearance =
+proc appearance*[T](_: typedesc[Array[T]]): Appearance =
   var elementApp = T.appearance
   let typ = T.variantType.ord
   let hint = (if elementApp.hint == propertyHintNone: "" else: "/" & $elementApp.hint.ord)

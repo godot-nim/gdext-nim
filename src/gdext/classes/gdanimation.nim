@@ -232,11 +232,11 @@ proc methodTrackGetName*(self: Animation; trackIdx: int32; keyIdx: int32): Strin
   methodbind.ptrcall(self, [getPtr trackIdx, getPtr keyIdx], addr ret)
   (addr ret).decode_result(StringName)
 
-proc methodTrackGetParams*(self: Animation; trackIdx: int32; keyIdx: int32): Array =
+proc methodTrackGetParams*(self: Animation; trackIdx: int32; keyIdx: int32): Array[Variant] =
   expandMethodBind(className Animation, "method_track_get_params", 2345056839)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr trackIdx, getPtr keyIdx], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc bezierTrackInsertKey*(self: Animation; trackIdx: int32; time: float64; value: Float; inHandle: Vector2 = vector2(0, 0); outHandle: Vector2 = vector2(0, 0)): int32 =
   expandMethodBind(className Animation, "bezier_track_insert_key", 3656773645)

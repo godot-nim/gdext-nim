@@ -41,7 +41,7 @@ runtime: suite "Variant":
     check not variant 0
     check variant "String"
     check not variant ""
-    check not variant newArray()
+    check not variant newArray[Variant]()
 
   test "Dictionary in Variant":
     var vdict = variant newDictionary()
@@ -65,7 +65,7 @@ runtime: suite "Variant":
 
 
   test "Array in Variant":
-    var varr = variant newArray()
+    var varr = variant newArray[Variant]()
     check varr.call("size").get(int) == 0
     varr.call("append", "Value1")
     check varr.call("size").get(int) == 1
@@ -158,8 +158,8 @@ runtime: suite "Variant":
       check v of RefCounted
 
     block:
-      var tarr = newTypedArray[String]()
+      var tarr = newArray[String]()
       var v = variant tarr
-      check v of Array
-      check v of TypedArray[String]
-      check not (v of TypedArray[StringName])
+      check v of Array[Variant]
+      check v of Array[String]
+      check not (v of Array[StringName])

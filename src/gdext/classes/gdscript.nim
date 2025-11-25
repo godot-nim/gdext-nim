@@ -64,23 +64,23 @@ proc hasScriptSignal*(self: Script; signalName: StringName): bool =
   methodbind.ptrcall(self, [getPtr signalName], addr ret)
   (addr ret).decode_result(bool)
 
-proc getScriptPropertyList*(self: Script): TypedArray[Dictionary] =
+proc getScriptPropertyList*(self: Script): Array[Dictionary] =
   expandMethodBind(className Script, "get_script_property_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
-proc getScriptMethodList*(self: Script): TypedArray[Dictionary] =
+proc getScriptMethodList*(self: Script): Array[Dictionary] =
   expandMethodBind(className Script, "get_script_method_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
-proc getScriptSignalList*(self: Script): TypedArray[Dictionary] =
+proc getScriptSignalList*(self: Script): Array[Dictionary] =
   expandMethodBind(className Script, "get_script_signal_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc getScriptConstantMap*(self: Script): Dictionary =
   expandMethodBind(className Script, "get_script_constant_map", 2382534195)

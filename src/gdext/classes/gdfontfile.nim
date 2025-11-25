@@ -212,11 +212,11 @@ proc removeCache*(self: FontFile; cacheIndex: int32): void =
   expandMethodBind(className FontFile, "remove_cache", 1286410249)
   methodbind.ptrcall(self, [getPtr cacheIndex])
 
-proc getSizeCacheList*(self: FontFile; cacheIndex: int32): TypedArray[Vector2i] =
+proc getSizeCacheList*(self: FontFile; cacheIndex: int32): Array[Vector2i] =
   expandMethodBind(className FontFile, "get_size_cache_list", 663333327)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr cacheIndex], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc clearSizeCache*(self: FontFile; cacheIndex: int32): void =
   expandMethodBind(className FontFile, "clear_size_cache", 1286410249)
@@ -435,11 +435,11 @@ proc getGlyphTextureIdx*(self: FontFile; cacheIndex: int32; size: Vector2i; glyp
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size, getPtr glyph], addr ret)
   (addr ret).decode_result(int32)
 
-proc getKerningList*(self: FontFile; cacheIndex: int32; size: int32): TypedArray[Vector2i] =
+proc getKerningList*(self: FontFile; cacheIndex: int32; size: int32): Array[Vector2i] =
   expandMethodBind(className FontFile, "get_kerning_list", 2345056839)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc clearKerningMap*(self: FontFile; cacheIndex: int32; size: int32): void =
   expandMethodBind(className FontFile, "clear_kerning_map", 3937882851)

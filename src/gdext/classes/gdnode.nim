@@ -117,11 +117,11 @@ proc printOrphanNodes*(_: typedesc[Node]): void =
   expandMethodBind(className Node, "print_orphan_nodes", 3218959716)
   methodbind.ptrcall([])
 
-proc getOrphanNodeIds*(_: typedesc[Node]): TypedArray[Int] =
+proc getOrphanNodeIds*(_: typedesc[Node]): Array[Int] =
   expandMethodBind(className Node, "get_orphan_node_ids", 2915620761)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc addSibling*(self: Node; sibling: Node; forceReadableName: bool = false): void =
   expandMethodBind(className Node, "add_sibling", 2570952461)
@@ -155,11 +155,11 @@ proc getChildCount*(self: Node; includeInternal: bool = false): int32 =
   methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
   (addr ret).decode_result(int32)
 
-proc getChildren*(self: Node; includeInternal: bool = false): TypedArray[Node] =
+proc getChildren*(self: Node; includeInternal: bool = false): Array[Node] =
   expandMethodBind(className Node, "get_children", 873284517)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc getChild*(self: Node; idx: int32; includeInternal: bool = false): Node =
   expandMethodBind(className Node, "get_child", 541253412)
@@ -197,11 +197,11 @@ proc findChild*(self: Node; pattern: String; recursive: bool = true; owned: bool
   methodbind.ptrcall(self, [getPtr pattern, getPtr recursive, getPtr owned], addr ret)
   (addr ret).decode_result(Node)
 
-proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): TypedArray[Node] =
+proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): Array[Node] =
   expandMethodBind(className Node, "find_children", 2560337219)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [getPtr pattern, getPtr `type`, getPtr recursive, getPtr owned], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc findParent*(self: Node; pattern: String): Node =
   expandMethodBind(className Node, "find_parent", 1140089439)
@@ -215,11 +215,11 @@ proc hasNodeAndResource*(self: Node; path: NodePath): bool =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(bool)
 
-proc getNodeAndResource*(self: Node; path: NodePath): Array =
+proc getNodeAndResource*(self: Node; path: NodePath): Array[Variant] =
   expandMethodBind(className Node, "get_node_and_resource", 502563882)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc isInsideTree*(self: Node): bool =
   expandMethodBind(className Node, "is_inside_tree", 36873697)
@@ -275,11 +275,11 @@ proc moveChild*(self: Node; childNode: Node; toIndex: int32): void =
   expandMethodBind(className Node, "move_child", 3315886247)
   methodbind.ptrcall(self, [getPtr childNode, getPtr toIndex])
 
-proc getGroups*(self: Node): TypedArray[StringName] =
+proc getGroups*(self: Node): Array[StringName] =
   expandMethodBind(className Node, "get_groups", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setOwner*(self: Node; owner: Node): void =
   expandMethodBind(className Node, "set_owner", 1078189570)
@@ -331,7 +331,7 @@ proc propagateNotification*(self: Node; what: int32): void =
   expandMethodBind(className Node, "propagate_notification", 1286410249)
   methodbind.ptrcall(self, [getPtr what])
 
-proc propagateCall*(self: Node; `method`: StringName; args: Array = newArray(); parentFirst: bool = false): void =
+proc propagateCall*(self: Node; `method`: StringName; args: Array[Variant] = newArray[Variant](); parentFirst: bool = false): void =
   expandMethodBind(className Node, "propagate_call", 1871007965)
   nilCheck args
   methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst])

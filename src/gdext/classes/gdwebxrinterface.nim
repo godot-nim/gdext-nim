@@ -96,11 +96,11 @@ proc setDisplayRefreshRate*(self: WebXRInterface; refreshRate: Float): void =
   expandMethodBind(className WebXRInterface, "set_display_refresh_rate", 373806689)
   methodbind.ptrcall(self, [getPtr refreshRate])
 
-proc getAvailableDisplayRefreshRates*(self: WebXRInterface): Array =
+proc getAvailableDisplayRefreshRates*(self: WebXRInterface): Array[Variant] =
   expandMethodBind(className WebXRInterface, "get_available_display_refresh_rates", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 template sessionMode*(self: WebXRInterface): untyped = self.getSessionMode()
 template `sessionMode=`*(self: WebXRInterface; value) = self.setSessionMode(value)

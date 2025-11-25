@@ -6,11 +6,11 @@ import gdresource; export gdresource
 
 expandOnClassImported(SceneReplicationConfig, Resource)
 
-proc getProperties*(self: SceneReplicationConfig): TypedArray[NodePath] =
+proc getProperties*(self: SceneReplicationConfig): Array[NodePath] =
   expandMethodBind(className SceneReplicationConfig, "get_properties", 3995934104)
-  var ret: encoded TypedArray[NodePath]
+  var ret: encoded Array[NodePath]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  (addr ret).decode_result(Array[NodePath])
 
 proc addProperty*(self: SceneReplicationConfig; path: NodePath; index: int32 = -1): void =
   expandMethodBind(className SceneReplicationConfig, "add_property", 4094619021)

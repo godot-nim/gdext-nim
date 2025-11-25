@@ -4,7 +4,6 @@ import gdext/private/typeshift
 import gdext/private/macros
 import gdext/private/nilchecks
 import gdext/builtinindex
-import gdext/varianttools
 
 import std/[hashes, tables]
 
@@ -34,23 +33,28 @@ proc newDictionary*[A, B](pairs: openArray[(A, B)]): Dictionary =
     result[variant key] = variant value
 
 iterator keys*(self: Dictionary): Variant =
-  for key in self.variant.keys:
-    yield key
+  var iter: Variant
+  var valid: bool
+  var variant = variant self
+  if interfaceVariantIterInit(addr variant, addr iter, addr valid) and valid:
+    while true:
+      yield iter
+      if not(interfaceVariantIterNext(addr variant, addr iter, addr valid) and valid): break
 
 iterator values*(self: Dictionary): Variant =
-  for key in self.variant.keys:
+  for key in self.keys:
     yield self[key]
 
 iterator pairs*(self: Dictionary): tuple[key, item: Variant] =
-  for key in self.variant.keys:
+  for key in self.keys:
     yield (key, self[key])
 
 iterator mvalues*(self: var Dictionary): var Variant =
-  for key in self.variant.keys:
+  for key in self.keys:
     yield self[key]
 
 iterator mpairs*(self: var Dictionary): tuple[key: Variant; item: var Variant] =
-  for key in self.variant.keys:
+  for key in self.keys:
     yield (key, self[key])
 
 proc contains*[T: SomeProperty](dict: Dictionary; value: T): bool = dict.has(variant value)

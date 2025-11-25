@@ -95,8 +95,6 @@ type
     cowdata: pointer
   Dictionary* {.byref.} = object
     cowdata: pointer
-  Array* {.byref.} = object
-    cowdata: pointer
 
   PackedByteArray* = PackedArray[byte]
   PackedInt32Array* = PackedArray[int32]
@@ -127,7 +125,8 @@ type
   Callable* {.byref.} = object
     `method`: StringName
     `object`: ObjectID
-  TypedArray*[T: SomeProperty] = distinct Array
+  Array*[T: SomeProperty] {.byref.} = object
+    cowdata: pointer
 
   SomePackedArray* =
     PackedByteArray    |
@@ -188,8 +187,6 @@ type
 
   SomeProperty* = concept x, type t
     t.variantType is VariantType
-    variant(x) is Variant
-    compiles(Variant().get(t))
 
   AltInt* = int|int32|int16|int8|uint64|uint32|uint16|uint8
   AltFloat* = float32
@@ -236,8 +233,6 @@ template variantType*(_: typedesc[PackedVector2Array]): VariantType = VariantTyp
 template variantType*(_: typedesc[PackedVector3Array]): VariantType = VariantType_PackedVector3Array
 template variantType*(_: typedesc[PackedVector4Array]): VariantType = VariantType_PackedVector4Array
 template variantType*(_: typedesc[PackedColorArray]): VariantType = VariantType_PackedColorArray
-
-template variantType*(_: typedesc[TypedArray]): VariantType = VariantType_Array
 
 # Object
 
@@ -344,10 +339,10 @@ proc `=copy`*(dst: var Dictionary; src: Dictionary) =
 proc dup*(src: Array): Array =
   let argPtr = cast[pointer](addr src)
   typeConstructor[VariantTypeArray](addr result, addr argPtr)
-proc `=destroy`*(val {.bycopy.}: Array) {.raises: [Exception].} =
+proc `=destroy`*[T](val {.bycopy.}: Array[T]) {.raises: [Exception].} =
   if val.cowdata.isNil: return
   typeDestructor[VariantTypeArray](addr val)
-proc `=copy`*(dst: var Array; src: Array) =
+proc `=copy`*[T](dst: var Array[T]; src: Array[T]) =
   if dst == src: return
   `=destroy` dst
   wasMoved dst

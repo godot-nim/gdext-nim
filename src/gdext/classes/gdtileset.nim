@@ -374,11 +374,11 @@ proc setCoordsLevelTileProxy*(self: TileSet; pSourceFrom: int32; coordsFrom: Vec
   expandMethodBind(className TileSet, "set_coords_level_tile_proxy", 1769939278)
   methodbind.ptrcall(self, [getPtr pSourceFrom, getPtr coordsFrom, getPtr sourceTo, getPtr coordsTo])
 
-proc getCoordsLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i): Array =
+proc getCoordsLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i): Array[Variant] =
   expandMethodBind(className TileSet, "get_coords_level_tile_proxy", 2856536371)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr sourceFrom, getPtr coordsFrom], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc hasCoordsLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i): bool =
   expandMethodBind(className TileSet, "has_coords_level_tile_proxy", 3957903770)
@@ -394,11 +394,11 @@ proc setAlternativeLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom:
   expandMethodBind(className TileSet, "set_alternative_level_tile_proxy", 3862385460)
   methodbind.ptrcall(self, [getPtr sourceFrom, getPtr coordsFrom, getPtr alternativeFrom, getPtr sourceTo, getPtr coordsTo, getPtr alternativeTo])
 
-proc getAlternativeLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i; alternativeFrom: int32): Array =
+proc getAlternativeLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i; alternativeFrom: int32): Array[Variant] =
   expandMethodBind(className TileSet, "get_alternative_level_tile_proxy", 2303761075)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr sourceFrom, getPtr coordsFrom, getPtr alternativeFrom], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc hasAlternativeLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i; alternativeFrom: int32): bool =
   expandMethodBind(className TileSet, "has_alternative_level_tile_proxy", 180086755)
@@ -410,11 +410,11 @@ proc removeAlternativeLevelTileProxy*(self: TileSet; sourceFrom: int32; coordsFr
   expandMethodBind(className TileSet, "remove_alternative_level_tile_proxy", 2328951467)
   methodbind.ptrcall(self, [getPtr sourceFrom, getPtr coordsFrom, getPtr alternativeFrom])
 
-proc mapTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i; alternativeFrom: int32): Array =
+proc mapTileProxy*(self: TileSet; sourceFrom: int32; coordsFrom: Vector2i; alternativeFrom: int32): Array[Variant] =
   expandMethodBind(className TileSet, "map_tile_proxy", 4267935328)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr sourceFrom, getPtr coordsFrom, getPtr alternativeFrom], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc cleanupInvalidTileProxies*(self: TileSet): void =
   expandMethodBind(className TileSet, "cleanup_invalid_tile_proxies", 3218959716)

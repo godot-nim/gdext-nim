@@ -28,11 +28,11 @@ proc getSettingWithOverride*(self: ProjectSettings; name: StringName): Variant =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
-proc getGlobalClassList*(self: ProjectSettings): TypedArray[Dictionary] =
+proc getGlobalClassList*(self: ProjectSettings): Array[Dictionary] =
   expandMethodBind(className ProjectSettings, "get_global_class_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary])
 
 proc getSettingWithOverrideAndCustomFeatures*(self: ProjectSettings; name: StringName; features: PackedStringArray): Variant =
   expandMethodBind(className ProjectSettings, "get_setting_with_override_and_custom_features", 2434817427)

@@ -48,14 +48,14 @@ proc getSeamlessImage*(self: Noise; width: int32; height: int32; invert: bool = 
   methodbind.ptrcall(self, [getPtr width, getPtr height, getPtr invert, getPtr in3DSpace, getPtr skirt, getPtr normalize], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc getImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; normalize: bool = true): TypedArray[gdref Image] =
+proc getImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; normalize: bool = true): Array[gdref Image] =
   expandMethodBind(className Noise, "get_image_3d", 3977814329)
-  var ret: encoded TypedArray[gdref Image]
+  var ret: encoded Array[gdref Image]
   methodbind.ptrcall(self, [getPtr width, getPtr height, getPtr depth, getPtr invert, getPtr normalize], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  (addr ret).decode_result(Array[gdref Image])
 
-proc getSeamlessImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; skirt: Float = 0.1; normalize: bool = true): TypedArray[gdref Image] =
+proc getSeamlessImage3D*(self: Noise; width: int32; height: int32; depth: int32; invert: bool = false; skirt: Float = 0.1; normalize: bool = true): Array[gdref Image] =
   expandMethodBind(className Noise, "get_seamless_image_3d", 451006340)
-  var ret: encoded TypedArray[gdref Image]
+  var ret: encoded Array[gdref Image]
   methodbind.ptrcall(self, [getPtr width, getPtr height, getPtr depth, getPtr invert, getPtr skirt, getPtr normalize], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  (addr ret).decode_result(Array[gdref Image])

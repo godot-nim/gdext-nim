@@ -26,16 +26,16 @@ proc getCollisionMask*(self: PhysicsPointQueryParameters3D): uint32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint32)
 
-proc setExclude*(self: PhysicsPointQueryParameters3D; exclude: TypedArray[RID]): void =
+proc setExclude*(self: PhysicsPointQueryParameters3D; exclude: Array[RID]): void =
   expandMethodBind(className PhysicsPointQueryParameters3D, "set_exclude", 381264803)
   nilCheck exclude
   methodbind.ptrcall(self, [getPtr exclude])
 
-proc getExclude*(self: PhysicsPointQueryParameters3D): TypedArray[RID] =
+proc getExclude*(self: PhysicsPointQueryParameters3D): Array[RID] =
   expandMethodBind(className PhysicsPointQueryParameters3D, "get_exclude", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc setCollideWithBodies*(self: PhysicsPointQueryParameters3D; enable: bool): void =
   expandMethodBind(className PhysicsPointQueryParameters3D, "set_collide_with_bodies", 2586408642)

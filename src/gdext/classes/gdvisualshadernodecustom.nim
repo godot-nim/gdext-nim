@@ -86,10 +86,10 @@ proc registerVirtual_getPropertyOptions*[T: VisualShaderNodeCustom](Self: typede
   Self.vmethods[newStringName"_get_property_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[VisualShaderNodeCustom](p_instance).getPropertyOptions(p_args[0].decode(int32)).encode(r_ret)
 
-method getCode*(self: VisualShaderNodeCustom; inputVars: TypedArray[String]; outputVars: TypedArray[String]; mode: Shader_Mode; `type`: VisualShader_Type): String {.base.} = (discard)
+method getCode*(self: VisualShaderNodeCustom; inputVars: Array[String]; outputVars: Array[String]; mode: Shader_Mode; `type`: VisualShader_Type): String {.base.} = (discard)
 proc registerVirtual_getCode*[T: VisualShaderNodeCustom](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_code"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[VisualShaderNodeCustom](p_instance).getCode(p_args[0].decode(TypedArray[String]), p_args[1].decode(TypedArray[String]), p_args[2].decode(Shader_Mode), p_args[3].decode(VisualShader_Type)).encode(r_ret)
+    errproof: cast[VisualShaderNodeCustom](p_instance).getCode(p_args[0].decode(Array[String]), p_args[1].decode(Array[String]), p_args[2].decode(Shader_Mode), p_args[3].decode(VisualShader_Type)).encode(r_ret)
 
 method getFuncCode*(self: VisualShaderNodeCustom; mode: Shader_Mode; `type`: VisualShader_Type): String {.base.} = (discard)
 proc registerVirtual_getFuncCode*[T: VisualShaderNodeCustom](Self: typedesc[T]) =

@@ -47,7 +47,7 @@ proc weave_constructor*(self: JsonBuiltinClass): Cloth =
         weave multiline:
           &"var {constr}: array[{self.constructors.len}, PtrConstructor]"
           &"proc load_{typesym}_constructor {{.execon: staticevents.init_engine.on_load_builtinclassConstructor.}} ="
-          &"  for i in {idxRange}:"
+          &"  for i in 0..{self.constructors.high}:"
           &"    {constr}[i] = interface_Variant_getPtrConstructor(VariantType_{typesym}, int32 i)"
       weave multiline:
         for i, constructor in self.constructors:

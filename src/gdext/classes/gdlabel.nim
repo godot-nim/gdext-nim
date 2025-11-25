@@ -240,16 +240,16 @@ proc getStructuredTextBidiOverride*(self: Label): TextServer_StructuredTextParse
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: Label; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: Label; args: Array[Variant]): void =
   expandMethodBind(className Label, "set_structured_text_bidi_override_options", 381264803)
   nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: Label): Array =
+proc getStructuredTextBidiOverrideOptions*(self: Label): Array[Variant] =
   expandMethodBind(className Label, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getCharacterBounds*(self: Label; pos: int32): Rect2 =
   expandMethodBind(className Label, "get_character_bounds", 3327874267)
