@@ -36,7 +36,7 @@ proc jsBufferToPackedByteArray*(self: JavaScriptBridge; javascriptBuffer: gdref 
   methodbind.ptrcall(self, [getPtr javascriptBuffer], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
-proc createObject*(self: JavaScriptBridge; `object`: Variant; args: varargs[Variant, variant]): Variant =
+proc createObject(self: JavaScriptBridge; `object`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className JavaScriptBridge, "create_object", 3093893586)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `object`]

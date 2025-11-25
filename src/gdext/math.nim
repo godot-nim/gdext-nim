@@ -23,9 +23,12 @@ macro genVecFieldAccess(): untyped =
       if fidx >= size: break
       let field = ident(fkey)
       result.add genAst(size, fidx, field, vector, value) do:
-        template `field`*[T](vector: array[size, T]): T = vector[fidx]
-        template `field=`*[T](vector: var array[size, T], value: T) = vector[fidx] = value
+        proc `field`*[T](vector: array[size, T]): T = system.`[]`(vector,fidx)
+        proc `field`*[T](vector: var array[size, T]): var T = system.`[]`(vector, fidx)
+        proc `field=`*[T](vector: var array[size, T], value: T) = system.`[]=`(vector, fidx, value)
+{.push, inline.}
 genVecFieldAccess()
+{.pop.}
 
 func makeVec(letSection: NimNode; components: seq[NimNode]): NimNode =
   result = newBracket()
@@ -291,12 +294,15 @@ macro fmap*[N: static int; T1, T2, T3]( pred;
 
 
 iterator couple[N: static int; T1, T2](v1: array[N, T1]; v2: array[N, T2]): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (v1[i], v2[i])
 iterator couple[N: static int; T1, T2](v1: array[N, T1]; x2: T2): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (v1[i], x2)
 iterator couple[N: static int; T1, T2](x1: T1; v2: array[N, T2]): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (x1, v2[i])
 

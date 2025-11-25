@@ -18,6 +18,7 @@ suite "Geometrics":
     check ([0f32, 1, 2] * [3f64, 4, 5]) is Vector3
     check ([0f32, 1, 2] * 3f64) is Vector3
     check ([0f32, 1, 2] * 3f64) == [0f32, 3, 6]
+    check v012[0] is float32
 
   test "fmaps":
     check `+`.fmap(v012, v345) == [3f, 5, 7]

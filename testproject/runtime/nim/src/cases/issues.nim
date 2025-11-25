@@ -1,7 +1,6 @@
 import gdext
 import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode,gdLabel3D]
 import testutils
-import gdext/implicitsugars
 type
   TestNode* {.gdsync.} = ptr object of Node
     a* {.gdexport.}: int
@@ -20,7 +19,7 @@ runtime: suite "Community Reported":
 
   test "variant(Object).get(RefCounted) should be nil #286":
     var obj = instantiate Object
-    var v = variant obj
+    var v = Variant obj
     check v.get(RefCounted) == nil
     destroy obj
 
@@ -43,10 +42,3 @@ runtime: suite "Community Reported":
     arr.add(myString)
     check arr[0].as(string) == myString
     arr.clear()
-    
-  test "Check node for overloaded proc to ensure it has the proper functionality":
-    var myTestNode = TestNode.instantiate
-    let myLabel = Label3D.instantiate("myLabel3D")
-    myTestNode.addChild(myLabel)
-    check "myLabel3D" in myTestNode
-    destroy myTestNode

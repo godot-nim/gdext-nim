@@ -148,7 +148,7 @@ proc queueDelete*(self: SceneTree; obj: Object): void =
   expandMethodBind(className SceneTree, "queue_delete", 3975164845)
   methodbind.ptrcall(self, [getPtr obj])
 
-proc callGroupFlags*(self: SceneTree; flags: Variant; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callGroupFlags(self: SceneTree; flags: Variant; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className SceneTree, "call_group_flags", 1527739229)
   var `?param` = newSeqOfCap[VariantPtr](3+args.len)
   `?param`.add [getTypedPtr flags, getTypedPtr group, getTypedPtr `method`]
@@ -164,7 +164,7 @@ proc setGroupFlags*(self: SceneTree; callFlags: uint32; group: StringName; prope
   expandMethodBind(className SceneTree, "set_group_flags", 3497599527)
   methodbind.ptrcall(self, [getPtr callFlags, getPtr group, getPtr property, getPtr value])
 
-proc callGroup*(self: SceneTree; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callGroup(self: SceneTree; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className SceneTree, "call_group", 1257962832)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr group, getTypedPtr `method`]

@@ -134,7 +134,7 @@ proc test_FirstClassFunction(self: GDExtNode) =
       check self.connect("signal_arg_1", self.callable"listen_1") == ok
 
     test "execute call_group":
-      self.getTree.callGroup("tester", "lesten_call_group", variant "Hello, world!")
+      self.getTree.callGroup("tester", "lesten_call_group", "Hello, world!")
       check result_call_group
     test "send Signal":
       check self.signal_arg0() == ok
