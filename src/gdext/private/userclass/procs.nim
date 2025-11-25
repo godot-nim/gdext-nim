@@ -35,7 +35,7 @@ macro registerProc*(procdef): untyped =
       let info = `methodinfoDef`
       ClassDB.registerExtensionClassMethod(className(typedesc `Self`), addr info)
       when `name`.hasCustomPragma(bridge.rpc):
-        var dict = newDictionary()
+        var dict = newDictionary[Variant, Variant]()
         const (rpc_mode, call_local, transfer_mode, transfer_channel) = `name`.getCustomPragmaVal(bridge.rpc)
         dict[variant "rpc_mode"] = variant rpc_mode
         dict[variant "call_local"] = variant call_local

@@ -533,6 +533,9 @@ const ignoreConf: Table[TypeSym, IgnoreConf] = toTable {
   ts"Array": IgnoreConf(
     constructor: {0..1},
   ),
+  ts"Dictionary": IgnoreConf(
+    constructor: {0..1},
+  ),
 }
 
 proc getignore*(ts: TypeSym): IgnoreConf = ignoreConf.getOrDefault(ts)
