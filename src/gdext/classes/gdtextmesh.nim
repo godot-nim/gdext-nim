@@ -166,15 +166,16 @@ proc getStructuredTextBidiOverride*(self: TextMesh): TextServer_StructuredTextPa
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: TextMesh; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: TextMesh; args: Array[Variant]): void =
   expandMethodBind(className TextMesh, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: TextMesh): Array =
+proc getStructuredTextBidiOverrideOptions*(self: TextMesh): Array[Variant] =
   expandMethodBind(className TextMesh, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setUppercase*(self: TextMesh; enable: bool): void =
   expandMethodBind(className TextMesh, "set_uppercase", 2586408642)

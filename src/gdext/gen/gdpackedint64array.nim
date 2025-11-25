@@ -39,67 +39,51 @@ var `count(PackedInt64Array Int)`: PtrBuiltinMethod
 var `erase(PackedInt64Array Int)`: PtrBuiltinMethod
 
 proc get*(self: PackedInt64Array; index: Int): Int =
-  let argArr = [getPtr index]
-  `get(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `get(PackedInt64Array Int)`.call(addr self, [getPtr index], addr result)
 proc set*(self: var PackedInt64Array; index: Int; value: Int): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedInt64Array Int Int)`(addr self, addr argArr[0], nil, 2)
+  `set(PackedInt64Array Int Int)`.call(addr self, [getPtr index, getPtr value])
 proc size*(self: PackedInt64Array): Int =
-  `size(PackedInt64Array)`(addr self, nil, addr result, 0)
+  `size(PackedInt64Array)`.call(addr self, [], addr result)
 proc isEmpty*(self: PackedInt64Array): bool =
-  `isEmpty(PackedInt64Array)`(addr self, nil, addr result, 0)
+  `isEmpty(PackedInt64Array)`.call(addr self, [], addr result)
 proc pushBack*(self: var PackedInt64Array; value: Int): bool =
-  let argArr = [getPtr value]
-  `pushBack(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `pushBack(PackedInt64Array Int)`.call(addr self, [getPtr value], addr result)
 proc append*(self: var PackedInt64Array; value: Int): bool =
-  let argArr = [getPtr value]
-  `append(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `append(PackedInt64Array Int)`.call(addr self, [getPtr value], addr result)
 proc appendArray*(self: var PackedInt64Array; array: PackedInt64Array): void =
-  let argArr = [getPtr array]
-  `appendArray(PackedInt64Array PackedInt64Array)`(addr self, addr argArr[0], nil, 1)
+  `appendArray(PackedInt64Array PackedInt64Array)`.call(addr self, [getPtr array])
 proc removeAt*(self: var PackedInt64Array; index: Int): void =
-  let argArr = [getPtr index]
-  `removeAt(PackedInt64Array Int)`(addr self, addr argArr[0], nil, 1)
+  `removeAt(PackedInt64Array Int)`.call(addr self, [getPtr index])
 proc insert*(self: var PackedInt64Array; atIndex: Int; value: Int): Int =
-  let argArr = [getPtr atIndex, getPtr value]
-  `insert(PackedInt64Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `insert(PackedInt64Array Int Int)`.call(addr self, [getPtr atIndex, getPtr value], addr result)
 proc fill*(self: var PackedInt64Array; value: Int): void =
-  let argArr = [getPtr value]
-  `fill(PackedInt64Array Int)`(addr self, addr argArr[0], nil, 1)
+  `fill(PackedInt64Array Int)`.call(addr self, [getPtr value])
 proc resize*(self: var PackedInt64Array; newSize: Int): Int =
-  let argArr = [getPtr newSize]
-  `resize(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `resize(PackedInt64Array Int)`.call(addr self, [getPtr newSize], addr result)
 proc clear*(self: var PackedInt64Array): void =
-  `clear(PackedInt64Array)`(addr self, nil, nil, 0)
+  `clear(PackedInt64Array)`.call(addr self, [])
 proc has*(self: PackedInt64Array; value: Int): bool =
-  let argArr = [getPtr value]
-  `has(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `has(PackedInt64Array Int)`.call(addr self, [getPtr value], addr result)
 proc reverse*(self: var PackedInt64Array): void =
-  `reverse(PackedInt64Array)`(addr self, nil, nil, 0)
+  `reverse(PackedInt64Array)`.call(addr self, [])
 proc slice*(self: PackedInt64Array; begin: Int; `end`: Int = 2147483647): PackedInt64Array =
-  let argArr = [getPtr begin, getPtr `end`]
-  `slice(PackedInt64Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `slice(PackedInt64Array Int Int)`.call(addr self, [getPtr begin, getPtr `end`], addr result)
 proc toByteArray*(self: PackedInt64Array): PackedByteArray =
-  `toByteArray(PackedInt64Array)`(addr self, nil, addr result, 0)
+  `toByteArray(PackedInt64Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedInt64Array): void =
-  `sort(PackedInt64Array)`(addr self, nil, nil, 0)
+  `sort(PackedInt64Array)`.call(addr self, [])
 proc bsearch*(self: var PackedInt64Array; value: Int; before: bool = true): Int =
-  let argArr = [getPtr value, getPtr before]
-  `bsearch(PackedInt64Array Int bool)`(addr self, addr argArr[0], addr result, 2)
+  `bsearch(PackedInt64Array Int bool)`.call(addr self, [getPtr value, getPtr before], addr result)
 proc duplicate*(self: var PackedInt64Array): PackedInt64Array =
-  `duplicate(PackedInt64Array)`(addr self, nil, addr result, 0)
+  `duplicate(PackedInt64Array)`.call(addr self, [], addr result)
 proc find*(self: PackedInt64Array; value: Int; `from`: Int = 0): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `find(PackedInt64Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `find(PackedInt64Array Int Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc rfind*(self: PackedInt64Array; value: Int; `from`: Int = -1): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `rfind(PackedInt64Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `rfind(PackedInt64Array Int Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc count*(self: PackedInt64Array; value: Int): Int =
-  let argArr = [getPtr value]
-  `count(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `count(PackedInt64Array Int)`.call(addr self, [getPtr value], addr result)
 proc erase*(self: var PackedInt64Array; value: Int): bool =
-  let argArr = [getPtr value]
-  `erase(PackedInt64Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `erase(PackedInt64Array Int)`.call(addr self, [getPtr value], addr result)
 
 proc load_PackedInt64Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedInt64Array Int)` = load(VariantType_PackedInt64Array, "get", 4103005248)

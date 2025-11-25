@@ -40,11 +40,11 @@ proc getNodeName*(self: AnimationNodeStateMachine; node: gdref AnimationNode): S
   methodbind.ptrcall(self, [getPtr node], addr ret)
   (addr ret).decode_result(StringName)
 
-proc getNodeList*(self: AnimationNodeStateMachine): TypedArray[StringName] =
+proc getNodeList*(self: AnimationNodeStateMachine): Array[StringName] =
   expandMethodBind(className AnimationNodeStateMachine, "get_node_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setNodePosition*(self: AnimationNodeStateMachine; name: StringName; position: Vector2): void =
   expandMethodBind(className AnimationNodeStateMachine, "set_node_position", 1999414630)

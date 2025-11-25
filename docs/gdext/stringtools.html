@@ -66,12 +66,12 @@
 </ul>
 <ul class="simple nested-toc-section">%
   <li><a class="reference" href="#%25%2CString%2CAABB" title="`%`(left: String; right: AABB): String">`%`(left: String; right: AABB): String</a></li>
-<li><a class="reference" href="#%25%2CString%2CArray" title="`%`(left: String; right: Array): String">`%`(left: String; right: Array): String</a></li>
+<li><a class="reference" href="#%25%2CString%2CArray%5BVariant%5D" title="`%`(left: String; right: Array[Variant]): String">`%`(left: String; right: Array[Variant]): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CBasis" title="`%`(left: String; right: Basis): String">`%`(left: String; right: Basis): String</a></li>
 <li><a class="reference" href="#%25%2CString%2Cbool" title="`%`(left: String; right: bool): String">`%`(left: String; right: bool): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CCallable" title="`%`(left: String; right: Callable): String">`%`(left: String; right: Callable): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CColor" title="`%`(left: String; right: Color): String">`%`(left: String; right: Color): String</a></li>
-<li><a class="reference" href="#%25%2CString%2CDictionary" title="`%`(left: String; right: Dictionary): String">`%`(left: String; right: Dictionary): String</a></li>
+<li><a class="reference" href="#%25%2CString%2CDictionary%5BVariant%2CVariant%5D" title="`%`(left: String; right: Dictionary[Variant, Variant]): String">`%`(left: String; right: Dictionary[Variant, Variant]): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CFloat" title="`%`(left: String; right: Float): String">`%`(left: String; right: Float): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CInt" title="`%`(left: String; right: Int): String">`%`(left: String; right: Int): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CNodePath" title="`%`(left: String; right: NodePath): String">`%`(left: String; right: NodePath): String</a></li>
@@ -105,12 +105,12 @@
 <li><a class="reference" href="#%25%2CString%2CVector4" title="`%`(left: String; right: Vector4): String">`%`(left: String; right: Vector4): String</a></li>
 <li><a class="reference" href="#%25%2CString%2CVector4i" title="`%`(left: String; right: Vector4i): String">`%`(left: String; right: Vector4i): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CAABB" title="`%`(left: StringName; right: AABB): String">`%`(left: StringName; right: AABB): String</a></li>
-<li><a class="reference" href="#%25%2CStringName%2CArray" title="`%`(left: StringName; right: Array): String">`%`(left: StringName; right: Array): String</a></li>
+<li><a class="reference" href="#%25%2CStringName%2CArray%5BVariant%5D" title="`%`(left: StringName; right: Array[Variant]): String">`%`(left: StringName; right: Array[Variant]): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CBasis" title="`%`(left: StringName; right: Basis): String">`%`(left: StringName; right: Basis): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2Cbool" title="`%`(left: StringName; right: bool): String">`%`(left: StringName; right: bool): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CCallable" title="`%`(left: StringName; right: Callable): String">`%`(left: StringName; right: Callable): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CColor" title="`%`(left: StringName; right: Color): String">`%`(left: StringName; right: Color): String</a></li>
-<li><a class="reference" href="#%25%2CStringName%2CDictionary" title="`%`(left: StringName; right: Dictionary): String">`%`(left: StringName; right: Dictionary): String</a></li>
+<li><a class="reference" href="#%25%2CStringName%2CDictionary%5BVariant%2CVariant%5D" title="`%`(left: StringName; right: Dictionary[Variant, Variant]): String">`%`(left: StringName; right: Dictionary[Variant, Variant]): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CFloat" title="`%`(left: StringName; right: Float): String">`%`(left: StringName; right: Float): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CInt" title="`%`(left: StringName; right: Int): String">`%`(left: StringName; right: Int): String</a></li>
 <li><a class="reference" href="#%25%2CStringName%2CNodePath" title="`%`(left: StringName; right: NodePath): String">`%`(left: StringName; right: NodePath): String</a></li>
@@ -869,7 +869,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="private/native.html">private/native</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="private/macros.html">private/macros</a>
+    <a class="reference external" href="builtinindex.html">builtinindex</a>, <a class="reference external" href="private/gdinterface.html">private/gdinterface</a>, <a class="reference external" href="private/staticevents.html">private/staticevents</a>, <a class="reference external" href="private/macros.html">private/macros</a>, <a class="reference external" href="private/nilchecks.html">private/nilchecks</a>
   </dl>
 </div>
 <div class="section" id="12">
@@ -915,8 +915,8 @@
     
   </dd>
 </div>
-<div id="%,String,Array">
-  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CString%2CArray"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<div id="%,String,Array[Variant]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CString%2CArray%5BVariant%5D"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -960,9 +960,9 @@
     
   </dd>
 </div>
-<div id="%,String,Dictionary">
-  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CString%2CDictionary"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="%,String,Dictionary[Variant,Variant]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CString%2CDictionary%5BVariant%2CVariant%5D"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -1266,8 +1266,8 @@
     
   </dd>
 </div>
-<div id="%,StringName,Array">
-  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CStringName%2CArray"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<div id="%,StringName,Array[Variant]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CStringName%2CArray%5BVariant%5D"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1311,9 +1311,9 @@
     
   </dd>
 </div>
-<div id="%,StringName,Dictionary">
-  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CStringName%2CDictionary"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="%,StringName,Dictionary[Variant,Variant]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%25%2CStringName%2CDictionary%5BVariant%2CVariant%5D"><span class="Identifier">`%`</span></a><span class="Other">(</span><span class="Identifier">left</span><span class="Other">:</span> <a href="builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">right</span><span class="Other">:</span> <a href="builtinindex.html#Dictionary"><span class="Identifier">Dictionary</span></a><span class="Other">[</span><a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <a href="builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="builtinindex.html#String"><span class="Identifier">String</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -4496,7 +4496,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
       </div>
     </div>
   </div>

@@ -212,29 +212,29 @@ proc clear*(self: GridMap): void =
   expandMethodBind(className GridMap, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getUsedCells*(self: GridMap): TypedArray[Vector3i] =
+proc getUsedCells*(self: GridMap): Array[Vector3i] =
   expandMethodBind(className GridMap, "get_used_cells", 3995934104)
-  var ret: encoded TypedArray[Vector3i]
+  var ret: encoded Array[Vector3i]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Vector3i])
+  (addr ret).decode_result(Array[Vector3i])
 
-proc getUsedCellsByItem*(self: GridMap; item: int32): TypedArray[Vector3i] =
+proc getUsedCellsByItem*(self: GridMap; item: int32): Array[Vector3i] =
   expandMethodBind(className GridMap, "get_used_cells_by_item", 663333327)
-  var ret: encoded TypedArray[Vector3i]
+  var ret: encoded Array[Vector3i]
   methodbind.ptrcall(self, [getPtr item], addr ret)
-  (addr ret).decode_result(TypedArray[Vector3i])
+  (addr ret).decode_result(Array[Vector3i])
 
-proc getMeshes*(self: GridMap): Array =
+proc getMeshes*(self: GridMap): Array[Variant] =
   expandMethodBind(className GridMap, "get_meshes", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc getBakeMeshes*(self: GridMap): Array =
+proc getBakeMeshes*(self: GridMap): Array[Variant] =
   expandMethodBind(className GridMap, "get_bake_meshes", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getBakeMeshInstance*(self: GridMap; idx: int32): RID =
   expandMethodBind(className GridMap, "get_bake_mesh_instance", 937000113)

@@ -6,7 +6,7 @@ import gdobject; export gdobject
 
 expandOnClassImported(OpenXRExtensionWrapper, Object)
 
-method getRequestedExtensions*(self: OpenXRExtensionWrapper): Dictionary {.base.} = (discard)
+method getRequestedExtensions*(self: OpenXRExtensionWrapper): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getRequestedExtensions*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_requested_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).getRequestedExtensions().encode(r_ret)
@@ -186,17 +186,17 @@ proc registerVirtual_onEventPolled*[T: OpenXRExtensionWrapper](Self: typedesc[T]
   Self.vmethods[newStringName"_on_event_polled"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).onEventPolled(p_args[0].decode(pointer)).encode(r_ret)
 
-method setViewportCompositionLayerAndGetNextPointer*(self: OpenXRExtensionWrapper; layer: pointer; propertyValues: Dictionary; nextPointer: pointer): uint64 {.base.} = (discard)
+method setViewportCompositionLayerAndGetNextPointer*(self: OpenXRExtensionWrapper; layer: pointer; propertyValues: Dictionary[Variant, Variant]; nextPointer: pointer): uint64 {.base.} = (discard)
 proc registerVirtual_setViewportCompositionLayerAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_viewport_composition_layer_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[OpenXRExtensionWrapper](p_instance).setViewportCompositionLayerAndGetNextPointer(p_args[0].decode(pointer), p_args[1].decode(Dictionary), p_args[2].decode(pointer)).encode(r_ret)
+    errproof: cast[OpenXRExtensionWrapper](p_instance).setViewportCompositionLayerAndGetNextPointer(p_args[0].decode(pointer), p_args[1].decode(Dictionary[Variant, Variant]), p_args[2].decode(pointer)).encode(r_ret)
 
-method getViewportCompositionLayerExtensionProperties*(self: OpenXRExtensionWrapper): TypedArray[Dictionary] {.base.} = (discard)
+method getViewportCompositionLayerExtensionProperties*(self: OpenXRExtensionWrapper): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getViewportCompositionLayerExtensionProperties*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_viewport_composition_layer_extension_properties"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).getViewportCompositionLayerExtensionProperties().encode(r_ret)
 
-method getViewportCompositionLayerExtensionPropertyDefaults*(self: OpenXRExtensionWrapper): Dictionary {.base.} = (discard)
+method getViewportCompositionLayerExtensionPropertyDefaults*(self: OpenXRExtensionWrapper): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getViewportCompositionLayerExtensionPropertyDefaults*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_viewport_composition_layer_extension_property_defaults"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).getViewportCompositionLayerExtensionPropertyDefaults().encode(r_ret)
@@ -206,10 +206,10 @@ proc registerVirtual_onViewportCompositionLayerDestroyed*[T: OpenXRExtensionWrap
   Self.vmethods[newStringName"_on_viewport_composition_layer_destroyed"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).onViewportCompositionLayerDestroyed(p_args[0].decode(pointer))
 
-method setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapper; propertyValues: Dictionary; nextPointer: pointer): uint64 {.base.} = (discard)
+method setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapper; propertyValues: Dictionary[Variant, Variant]; nextPointer: pointer): uint64 {.base.} = (discard)
 proc registerVirtual_setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_android_surface_swapchain_create_info_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[OpenXRExtensionWrapper](p_instance).setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(Dictionary), p_args[1].decode(pointer)).encode(r_ret)
+    errproof: cast[OpenXRExtensionWrapper](p_instance).setAndroidSurfaceSwapchainCreateInfoAndGetNextPointer(p_args[0].decode(Dictionary[Variant, Variant]), p_args[1].decode(pointer)).encode(r_ret)
 
 proc getOpenxrApi*(self: OpenXRExtensionWrapper): gdref OpenXRAPIExtension =
   expandMethodBind(className OpenXRExtensionWrapper, "get_openxr_api", 1637791613)

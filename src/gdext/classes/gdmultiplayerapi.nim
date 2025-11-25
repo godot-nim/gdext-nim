@@ -46,8 +46,9 @@ proc poll*(self: MultiplayerAPI): Error =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Error)
 
-proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array = newArray()): Error =
+proc rpc*(self: MultiplayerAPI; peer: int32; `object`: Object; `method`: StringName; arguments: Array[Variant] = newArray[Variant]()): Error =
   expandMethodBind(className MultiplayerAPI, "rpc", 2077486355)
+  nilCheck arguments
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peer, getPtr `object`, getPtr `method`, getPtr arguments], addr ret)
   (addr ret).decode_result(Error)

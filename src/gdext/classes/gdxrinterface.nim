@@ -44,11 +44,11 @@ proc uninitialize*(self: XRInterface): void =
   expandMethodBind(className XRInterface, "uninitialize", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getSystemInfo*(self: XRInterface): Dictionary =
+proc getSystemInfo*(self: XRInterface): Dictionary[Variant, Variant] =
   expandMethodBind(className XRInterface, "get_system_info", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getTrackingStatus*(self: XRInterface): XRInterface_TrackingStatus =
   expandMethodBind(className XRInterface, "get_tracking_status", 167423259)
@@ -146,11 +146,11 @@ proc getProjectionForView*(self: XRInterface; view: uint32; aspect: float64; nea
   methodbind.ptrcall(self, [getPtr view, getPtr aspect, getPtr near, getPtr far], addr ret)
   (addr ret).decode_result(Projection)
 
-proc getSupportedEnvironmentBlendModes*(self: XRInterface): Array =
+proc getSupportedEnvironmentBlendModes*(self: XRInterface): Array[Variant] =
   expandMethodBind(className XRInterface, "get_supported_environment_blend_modes", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setEnvironmentBlendMode*(self: XRInterface; mode: XRInterface_EnvironmentBlendMode): bool =
   expandMethodBind(className XRInterface, "set_environment_blend_mode", 551152418)

@@ -10,8 +10,12 @@ type PropTestPragmasEnum* = enum
 
 type PropTestNodePragmas* {.gdsync.} = ptr object of Node
   icon* {.gdexport.}: gdref Texture2D
-  string_array* {.gdexport.}: TypedArray[String]
-  texture2D_array* {.gdexport.}: TypedArray[Texture2D]
+  string_array* {.gdexport.}: Array[String]
+  texture2D_array* {.gdexport.}: Array[Texture2D]
+  variant_array* {.gdexport.}: Array[Variant]
+  variant_dict* {.gdexport.}: Dictionary[Variant, Variant]
+  string_name_RefCounted_dict* {.gdexport.}: Dictionary[StringName, gdref RefCounted]
+  nested_dictionary* {.gdexport.}: Dictionary[StringName, Array[Array[gdref RefCounted]]]
   PropTestEnum_with_export* {.gdexport.}: PropTestPragmasEnum
   string_with_export* {.gdexport.}: string = "with export"
   string_with_export_placeholder* {.gdexport: Appearance.placeholder("placeholder here...").}: string
@@ -37,7 +41,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 
-  StringArray_with_export_multiline* {.gdexport: Appearance.multiline.}: TypedArray[String]
+  StringArray_with_export_multiline* {.gdexport: Appearance.multiline.}: Array[String]
   PackedStringArray_with_export_multiline* {.gdexport: Appearance.multiline.}: PackedStringArray
   NodePath_with_export_node_path* {.gdexport.}: NodePath
   string_with_export_storage* {.gdexport: Appearance.storage.}: string = "with export_storage"
@@ -60,9 +64,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
 PropTestNodePragmas.bind PropTestPragmasEnum
 
 method onInit(self: PropTestNodePragmas) =
-  self.StringArray_with_export_multiline = newTypedArray[String](1)
-  # self.string_array = newTypedArray[String]()
-  self.texture2D_array = newTypedArray[Texture2D]()
+  self.StringArray_with_export_multiline = newArray[String](1)
 
 method enterTree(self: PropTestNodePragmas) {.gdsync.} =
   self.icon = ResourceLoader.load("res://icon.png") as gdref Texture2D

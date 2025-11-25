@@ -9,8 +9,8 @@ import gdext/private/userclass/procs
 import gdext/private/userclass/signals
 import gdext/private/userclass/virtuals
 import gdext/private/classindex
+import gdext/private/nilchecks
 import gdext/builtinindex
-import gdext/stringtools
 import gdext/appearances
 import gdext/nameformats
 
@@ -200,7 +200,7 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
 
   let call = bindSym"registerEnumFields".newCall(
     Class,
-    bindSym"newStringName".newCall enumName,
+    bindSym"newStringNameInternal".newCall enumName,
   )
   for field in def[2][1..^1]:
     let fieldsym = case field.kind
@@ -210,9 +210,9 @@ macro registerEnumInternal(Class, Enum; isBitField: static bool) =
     let fieldName = newlit $fieldsym
     call.add case isBitField
     of true:
-      quote do: (newStringName defaultConstFormatter(`fieldName`), Int 1 shl int `fieldsym`)
+      quote do: (newStringNameInternal defaultConstFormatter(`fieldName`), Int 1 shl int `fieldsym`)
     of false:
-      quote do: (newStringName defaultConstFormatter(`fieldName`), Int `fieldsym`)
+      quote do: (newStringNameInternal defaultConstFormatter(`fieldName`), Int `fieldsym`)
 
   call.add newlit isBitField
   result = quote do:
@@ -278,7 +278,7 @@ template gdexport*[T: SomeUserClass](
   ## gdexport[Actor] "Base Params", Appearance.category
   ## ```
   proc `name` {.execon: Contract[T].property.} =
-    gdexport_internal(propertyInfo(newStringName name, appearance), className typedesc T)
+    gdexport_internal(propertyInfo(newStringNameInternal name, appearance), className typedesc T)
 
 template gdexport*(
       name: string;
@@ -331,7 +331,7 @@ macro gdexport[T: SomeUserClass; P: SomeProperty](
   result.add quote do:
     proc `name` {.execon: Contract[`typ`].property.} =
       gdexport_internal(`name`, typedesc `typ`, typedesc `proptyp`,
-        `gettersym`.gdname, `settersym`.gdname, `appearance`, `description`)
+        &`gettersym`.gdname, &`settersym`.gdname, `appearance`, `description`)
 
 template gdexport*[T: SomeUserClass; P: SomeProperty](
       name: static string;

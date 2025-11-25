@@ -1,12 +1,12 @@
 nimTitle	stringtools	gdext/stringtools.html	module gdext/stringtools		0
 nim	newGdString	gdext/stringtools.html#newGdString	proc newGdString(): String		5
 nim	newGdString	gdext/stringtools.html#newGdString,string	proc newGdString(str: string): String		6
-nim	newStringName	gdext/stringtools.html#newStringName	proc newStringName(): StringName		9
-nim	newStringName	gdext/stringtools.html#newStringName,string	proc newStringName(str: string): StringName		10
-nim	newNodePath	gdext/stringtools.html#newNodePath	proc newNodePath(): NodePath		13
-nim	`[]`	gdext/stringtools.html#[],String,Natural	proc `[]`(self: String; index: Natural): Rune		15
-nim	`[]`	gdext/stringtools.html#[],String,Natural_2	proc `[]`(self: var String; index: Natural): var Rune		17
-nim	`[]=`	gdext/stringtools.html#[]=,String,Natural,sinkRune	proc `[]=`(self: var String; index: Natural; value: sink Rune)		19
+nim	newStringName	gdext/stringtools.html#newStringName	proc newStringName(): StringName		8
+nim	newStringName	gdext/stringtools.html#newStringName,string	proc newStringName(str: string): StringName		9
+nim	newNodePath	gdext/stringtools.html#newNodePath	proc newNodePath(): NodePath		11
+nim	`[]`	gdext/stringtools.html#[],String,Natural	proc `[]`(self: String; index: Natural): Rune		13
+nim	`[]`	gdext/stringtools.html#[],String,Natural_2	proc `[]`(self: var String; index: Natural): var Rune		15
+nim	`[]=`	gdext/stringtools.html#[]=,String,Natural,sinkRune	proc `[]=`(self: var String; index: Natural; value: sink Rune)		17
 nim	newGdString	gdext/stringtools.html#newGdString,String_2	proc newGdString(from: String): String		7
 nim	newGdString	gdext/stringtools.html#newGdString,StringName	proc newGdString(from: StringName): String		10
 nim	newGdString	gdext/stringtools.html#newGdString,NodePath	proc newGdString(from: NodePath): String		13
@@ -48,134 +48,134 @@ nim	`%`	gdext/stringtools.html#%,String,RID	proc `%`(left: String; right: RID): 
 nim	`%`	gdext/stringtools.html#%,String,Object	proc `%`(left: String; right: Object): String		90
 nim	`%`	gdext/stringtools.html#%,String,Callable	proc `%`(left: String; right: Callable): String		91
 nim	`%`	gdext/stringtools.html#%,String,Signal	proc `%`(left: String; right: Signal): String		92
-nim	`%`	gdext/stringtools.html#%,String,Dictionary	proc `%`(left: String; right: Dictionary): String		93
-nim	`%`	gdext/stringtools.html#%,String,Array	proc `%`(left: String; right: Array): String		94
-nim	`%`	gdext/stringtools.html#%,String,PackedByteArray	proc `%`(left: String; right: PackedByteArray): String		95
-nim	`%`	gdext/stringtools.html#%,String,PackedInt32Array	proc `%`(left: String; right: PackedInt32Array): String		96
-nim	`%`	gdext/stringtools.html#%,String,PackedInt64Array	proc `%`(left: String; right: PackedInt64Array): String		97
-nim	`%`	gdext/stringtools.html#%,String,PackedFloat32Array	proc `%`(left: String; right: PackedFloat32Array): String		98
-nim	`%`	gdext/stringtools.html#%,String,PackedFloat64Array	proc `%`(left: String; right: PackedFloat64Array): String		99
-nim	`%`	gdext/stringtools.html#%,String,PackedStringArray	proc `%`(left: String; right: PackedStringArray): String		100
-nim	`%`	gdext/stringtools.html#%,String,PackedVector2Array	proc `%`(left: String; right: PackedVector2Array): String		101
-nim	`%`	gdext/stringtools.html#%,String,PackedVector3Array	proc `%`(left: String; right: PackedVector3Array): String		102
-nim	`%`	gdext/stringtools.html#%,String,PackedColorArray	proc `%`(left: String; right: PackedColorArray): String		103
-nim	`%`	gdext/stringtools.html#%,String,PackedVector4Array	proc `%`(left: String; right: PackedVector4Array): String		104
-nim	casecmpTo	gdext/stringtools.html#casecmpTo,String,String	proc casecmpTo(self: String; to: String): Int		270
-nim	nocasecmpTo	gdext/stringtools.html#nocasecmpTo,String,String	proc nocasecmpTo(self: String; to: String): Int		273
-nim	naturalcasecmpTo	gdext/stringtools.html#naturalcasecmpTo,String,String	proc naturalcasecmpTo(self: String; to: String): Int		276
-nim	naturalnocasecmpTo	gdext/stringtools.html#naturalnocasecmpTo,String,String	proc naturalnocasecmpTo(self: String; to: String): Int		279
+nim	`%`	gdext/stringtools.html#%,String,Dictionary[Variant,Variant]	proc `%`(left: String; right: Dictionary[Variant, Variant]): String		93
+nim	`%`	gdext/stringtools.html#%,String,Array[Variant]	proc `%`(left: String; right: Array[Variant]): String		96
+nim	`%`	gdext/stringtools.html#%,String,PackedByteArray	proc `%`(left: String; right: PackedByteArray): String		99
+nim	`%`	gdext/stringtools.html#%,String,PackedInt32Array	proc `%`(left: String; right: PackedInt32Array): String		100
+nim	`%`	gdext/stringtools.html#%,String,PackedInt64Array	proc `%`(left: String; right: PackedInt64Array): String		101
+nim	`%`	gdext/stringtools.html#%,String,PackedFloat32Array	proc `%`(left: String; right: PackedFloat32Array): String		102
+nim	`%`	gdext/stringtools.html#%,String,PackedFloat64Array	proc `%`(left: String; right: PackedFloat64Array): String		103
+nim	`%`	gdext/stringtools.html#%,String,PackedStringArray	proc `%`(left: String; right: PackedStringArray): String		104
+nim	`%`	gdext/stringtools.html#%,String,PackedVector2Array	proc `%`(left: String; right: PackedVector2Array): String		105
+nim	`%`	gdext/stringtools.html#%,String,PackedVector3Array	proc `%`(left: String; right: PackedVector3Array): String		106
+nim	`%`	gdext/stringtools.html#%,String,PackedColorArray	proc `%`(left: String; right: PackedColorArray): String		107
+nim	`%`	gdext/stringtools.html#%,String,PackedVector4Array	proc `%`(left: String; right: PackedVector4Array): String		108
+nim	casecmpTo	gdext/stringtools.html#casecmpTo,String,String	proc casecmpTo(self: String; to: String): Int		274
+nim	nocasecmpTo	gdext/stringtools.html#nocasecmpTo,String,String	proc nocasecmpTo(self: String; to: String): Int		276
+nim	naturalcasecmpTo	gdext/stringtools.html#naturalcasecmpTo,String,String	proc naturalcasecmpTo(self: String; to: String): Int		278
+nim	naturalnocasecmpTo	gdext/stringtools.html#naturalnocasecmpTo,String,String	proc naturalnocasecmpTo(self: String; to: String): Int		280
 nim	filecasecmpTo	gdext/stringtools.html#filecasecmpTo,String,String	proc filecasecmpTo(self: String; to: String): Int		282
-nim	filenocasecmpTo	gdext/stringtools.html#filenocasecmpTo,String,String	proc filenocasecmpTo(self: String; to: String): Int		285
-nim	length	gdext/stringtools.html#length,String	proc length(self: String): Int		288
-nim	substr	gdext/stringtools.html#substr,String,Int,Int	proc substr(self: String; from: Int; len: Int = -1): String		290
-nim	getSlice	gdext/stringtools.html#getSlice,String,String,Int	proc getSlice(self: String; delimiter: String; slice: Int): String		293
-nim	getSlicec	gdext/stringtools.html#getSlicec,String,Int,Int	proc getSlicec(self: String; delimiter: Int; slice: Int): String		296
-nim	getSliceCount	gdext/stringtools.html#getSliceCount,String,String	proc getSliceCount(self: String; delimiter: String): Int		299
-nim	find	gdext/stringtools.html#find,String,String,Int	proc find(self: String; what: String; from: Int = 0): Int		302
-nim	findn	gdext/stringtools.html#findn,String,String,Int	proc findn(self: String; what: String; from: Int = 0): Int		305
-nim	count	gdext/stringtools.html#count,String,String,Int,Int	proc count(self: String; what: String; from: Int = 0; to: Int = 0): Int		308
-nim	countn	gdext/stringtools.html#countn,String,String,Int,Int	proc countn(self: String; what: String; from: Int = 0; to: Int = 0): Int		311
-nim	rfind	gdext/stringtools.html#rfind,String,String,Int	proc rfind(self: String; what: String; from: Int = -1): Int		314
-nim	rfindn	gdext/stringtools.html#rfindn,String,String,Int	proc rfindn(self: String; what: String; from: Int = -1): Int		317
-nim	match	gdext/stringtools.html#match,String,String	proc match(self: String; expr: String): bool		320
-nim	matchn	gdext/stringtools.html#matchn,String,String	proc matchn(self: String; expr: String): bool		323
-nim	beginsWith	gdext/stringtools.html#beginsWith,String,String	proc beginsWith(self: String; text: String): bool		326
-nim	endsWith	gdext/stringtools.html#endsWith,String,String	proc endsWith(self: String; text: String): bool		329
-nim	isSubsequenceOf	gdext/stringtools.html#isSubsequenceOf,String,String	proc isSubsequenceOf(self: String; text: String): bool		332
-nim	isSubsequenceOfn	gdext/stringtools.html#isSubsequenceOfn,String,String	proc isSubsequenceOfn(self: String; text: String): bool		335
-nim	bigrams	gdext/stringtools.html#bigrams,String	proc bigrams(self: String): PackedStringArray		338
-nim	similarity	gdext/stringtools.html#similarity,String,String	proc similarity(self: String; text: String): Float		340
-nim	format	gdext/stringtools.html#format,String,Variant,String	proc format(self: String; values: Variant; placeholder: String = newGdString("{_}")): String		343
-nim	replace	gdext/stringtools.html#replace,String,String,String	proc replace(self: String; what: String; forwhat: String): String		346
-nim	replacen	gdext/stringtools.html#replacen,String,String,String	proc replacen(self: String; what: String; forwhat: String): String		349
-nim	replaceChar	gdext/stringtools.html#replaceChar,String,Int,Int	proc replaceChar(self: String; key: Int; with: Int): String		352
-nim	replaceChars	gdext/stringtools.html#replaceChars,String,String,Int	proc replaceChars(self: String; keys: String; with: Int): String		355
-nim	removeChar	gdext/stringtools.html#removeChar,String,Int	proc removeChar(self: String; what: Int): String		358
-nim	removeChars	gdext/stringtools.html#removeChars,String,String	proc removeChars(self: String; chars: String): String		361
-nim	repeat	gdext/stringtools.html#repeat,String,Int	proc repeat(self: String; count: Int): String		364
-nim	reverse	gdext/stringtools.html#reverse,String	proc reverse(self: String): String		367
-nim	insert	gdext/stringtools.html#insert,String,Int,String	proc insert(self: String; position: Int; what: String): String		369
-nim	erase	gdext/stringtools.html#erase,String,Int,Int	proc erase(self: String; position: Int; chars: Int = 1): String		372
-nim	capitalize	gdext/stringtools.html#capitalize,String	proc capitalize(self: String): String		375
-nim	toCamelCase	gdext/stringtools.html#toCamelCase,String	proc toCamelCase(self: String): String		377
-nim	toPascalCase	gdext/stringtools.html#toPascalCase,String	proc toPascalCase(self: String): String		379
-nim	toSnakeCase	gdext/stringtools.html#toSnakeCase,String	proc toSnakeCase(self: String): String		381
-nim	toKebabCase	gdext/stringtools.html#toKebabCase,String	proc toKebabCase(self: String): String		383
-nim	split	gdext/stringtools.html#split,String,String,bool,Int	proc split(self: String; delimiter: String = newGdString(); allowEmpty: bool = true;\n      maxsplit: Int = 0): PackedStringArray		385
-nim	rsplit	gdext/stringtools.html#rsplit,String,String,bool,Int	proc rsplit(self: String; delimiter: String = newGdString(); allowEmpty: bool = true;\n       maxsplit: Int = 0): PackedStringArray		388
-nim	splitFloats	gdext/stringtools.html#splitFloats,String,String,bool	proc splitFloats(self: String; delimiter: String; allowEmpty: bool = true): PackedFloat64Array		391
-nim	join	gdext/stringtools.html#join,String,PackedStringArray	proc join(self: String; parts: PackedStringArray): String		394
-nim	toUpper	gdext/stringtools.html#toUpper,String	proc toUpper(self: String): String		397
-nim	toLower	gdext/stringtools.html#toLower,String	proc toLower(self: String): String		399
-nim	left	gdext/stringtools.html#left,String,Int	proc left(self: String; length: Int): String		401
-nim	right	gdext/stringtools.html#right,String,Int	proc right(self: String; length: Int): String		404
-nim	stripEdges	gdext/stringtools.html#stripEdges,String,bool,bool	proc stripEdges(self: String; left: bool = true; right: bool = true): String		407
-nim	stripEscapes	gdext/stringtools.html#stripEscapes,String	proc stripEscapes(self: String): String		410
-nim	lstrip	gdext/stringtools.html#lstrip,String,String	proc lstrip(self: String; chars: String): String		412
-nim	rstrip	gdext/stringtools.html#rstrip,String,String	proc rstrip(self: String; chars: String): String		415
-nim	getExtension	gdext/stringtools.html#getExtension,String	proc getExtension(self: String): String		418
-nim	getBasename	gdext/stringtools.html#getBasename,String	proc getBasename(self: String): String		420
-nim	pathJoin	gdext/stringtools.html#pathJoin,String,String	proc pathJoin(self: String; path: String): String		422
-nim	unicodeAt	gdext/stringtools.html#unicodeAt,String,Int	proc unicodeAt(self: String; at: Int): Int		425
-nim	indent	gdext/stringtools.html#indent,String,String	proc indent(self: String; prefix: String): String		428
-nim	dedent	gdext/stringtools.html#dedent,String	proc dedent(self: String): String		431
-nim	hash	gdext/stringtools.html#hash,String	proc hash(self: String): Hash		433
-nim	md5Text	gdext/stringtools.html#md5Text,String	proc md5Text(self: String): String		435
-nim	sha1Text	gdext/stringtools.html#sha1Text,String	proc sha1Text(self: String): String		437
-nim	sha256Text	gdext/stringtools.html#sha256Text,String	proc sha256Text(self: String): String		439
-nim	md5Buffer	gdext/stringtools.html#md5Buffer,String	proc md5Buffer(self: String): PackedByteArray		441
-nim	sha1Buffer	gdext/stringtools.html#sha1Buffer,String	proc sha1Buffer(self: String): PackedByteArray		443
-nim	sha256Buffer	gdext/stringtools.html#sha256Buffer,String	proc sha256Buffer(self: String): PackedByteArray		445
-nim	isEmpty	gdext/stringtools.html#isEmpty,String	proc isEmpty(self: String): bool		447
-nim	contains	gdext/stringtools.html#contains,String,String	proc contains(self: String; what: String): bool		449
-nim	containsn	gdext/stringtools.html#containsn,String,String	proc containsn(self: String; what: String): bool		452
-nim	isAbsolutePath	gdext/stringtools.html#isAbsolutePath,String	proc isAbsolutePath(self: String): bool		455
-nim	isRelativePath	gdext/stringtools.html#isRelativePath,String	proc isRelativePath(self: String): bool		457
-nim	simplifyPath	gdext/stringtools.html#simplifyPath,String	proc simplifyPath(self: String): String		459
-nim	getBaseDir	gdext/stringtools.html#getBaseDir,String	proc getBaseDir(self: String): String		461
-nim	getFile	gdext/stringtools.html#getFile,String	proc getFile(self: String): String		463
-nim	xmlEscape	gdext/stringtools.html#xmlEscape,String,bool	proc xmlEscape(self: String; escapeQuotes: bool = false): String		465
-nim	xmlUnescape	gdext/stringtools.html#xmlUnescape,String	proc xmlUnescape(self: String): String		468
-nim	uriEncode	gdext/stringtools.html#uriEncode,String	proc uriEncode(self: String): String		470
-nim	uriDecode	gdext/stringtools.html#uriDecode,String	proc uriDecode(self: String): String		472
-nim	uriFileDecode	gdext/stringtools.html#uriFileDecode,String	proc uriFileDecode(self: String): String		474
-nim	cEscape	gdext/stringtools.html#cEscape,String	proc cEscape(self: String): String		476
-nim	cUnescape	gdext/stringtools.html#cUnescape,String	proc cUnescape(self: String): String		478
-nim	jsonEscape	gdext/stringtools.html#jsonEscape,String	proc jsonEscape(self: String): String		480
-nim	validateNodeName	gdext/stringtools.html#validateNodeName,String	proc validateNodeName(self: String): String		482
-nim	validateFilename	gdext/stringtools.html#validateFilename,String	proc validateFilename(self: String): String		484
-nim	isValidAsciiIdentifier	gdext/stringtools.html#isValidAsciiIdentifier,String	proc isValidAsciiIdentifier(self: String): bool		486
-nim	isValidUnicodeIdentifier	gdext/stringtools.html#isValidUnicodeIdentifier,String	proc isValidUnicodeIdentifier(self: String): bool		488
-nim	isValidIdentifier	gdext/stringtools.html#isValidIdentifier,String	proc isValidIdentifier(self: String): bool		490
-nim	isValidInt	gdext/stringtools.html#isValidInt,String	proc isValidInt(self: String): bool		492
-nim	isValidFloat	gdext/stringtools.html#isValidFloat,String	proc isValidFloat(self: String): bool		494
-nim	isValidHexNumber	gdext/stringtools.html#isValidHexNumber,String,bool	proc isValidHexNumber(self: String; withPrefix: bool = false): bool		496
-nim	isValidHtmlColor	gdext/stringtools.html#isValidHtmlColor,String	proc isValidHtmlColor(self: String): bool		499
-nim	isValidIpAddress	gdext/stringtools.html#isValidIpAddress,String	proc isValidIpAddress(self: String): bool		501
-nim	isValidFilename	gdext/stringtools.html#isValidFilename,String	proc isValidFilename(self: String): bool		503
-nim	toInt	gdext/stringtools.html#toInt,String	proc toInt(self: String): Int		505
-nim	toFloat	gdext/stringtools.html#toFloat,String	proc toFloat(self: String): Float		507
-nim	hexToInt	gdext/stringtools.html#hexToInt,String	proc hexToInt(self: String): Int		509
-nim	binToInt	gdext/stringtools.html#binToInt,String	proc binToInt(self: String): Int		511
-nim	lpad	gdext/stringtools.html#lpad,String,Int,String	proc lpad(self: String; minLength: Int; character: String = newGdString(" ")): String		513
-nim	rpad	gdext/stringtools.html#rpad,String,Int,String	proc rpad(self: String; minLength: Int; character: String = newGdString(" ")): String		516
-nim	padDecimals	gdext/stringtools.html#padDecimals,String,Int	proc padDecimals(self: String; digits: Int): String		519
-nim	padZeros	gdext/stringtools.html#padZeros,String,Int	proc padZeros(self: String; digits: Int): String		522
-nim	trimPrefix	gdext/stringtools.html#trimPrefix,String,String	proc trimPrefix(self: String; prefix: String): String		525
-nim	trimSuffix	gdext/stringtools.html#trimSuffix,String,String	proc trimSuffix(self: String; suffix: String): String		528
-nim	toAsciiBuffer	gdext/stringtools.html#toAsciiBuffer,String	proc toAsciiBuffer(self: String): PackedByteArray		531
-nim	toUtf8Buffer	gdext/stringtools.html#toUtf8Buffer,String	proc toUtf8Buffer(self: String): PackedByteArray		533
-nim	toUtf16Buffer	gdext/stringtools.html#toUtf16Buffer,String	proc toUtf16Buffer(self: String): PackedByteArray		535
-nim	toUtf32Buffer	gdext/stringtools.html#toUtf32Buffer,String	proc toUtf32Buffer(self: String): PackedByteArray		537
-nim	toWcharBuffer	gdext/stringtools.html#toWcharBuffer,String	proc toWcharBuffer(self: String): PackedByteArray		539
-nim	toMultibyteCharBuffer	gdext/stringtools.html#toMultibyteCharBuffer,String,String	proc toMultibyteCharBuffer(self: String; encoding: String = newGdString()): PackedByteArray		541
-nim	hexDecode	gdext/stringtools.html#hexDecode,String	proc hexDecode(self: String): PackedByteArray		544
-nim	numScientific	gdext/stringtools.html#numScientific,typedesc[String],Float	proc numScientific(_: typedesc[String]; number: Float): String		546
-nim	num	gdext/stringtools.html#num,typedesc[String],Float,Int	proc num(_: typedesc[String]; number: Float; decimals: Int = -1): String		549
-nim	numInt64	gdext/stringtools.html#numInt64,typedesc[String],Int,Int,bool	proc numInt64(_: typedesc[String]; number: Int; base: Int = 10;\n         capitalizeHex: bool = false): String		552
-nim	numUint64	gdext/stringtools.html#numUint64,typedesc[String],Int,Int,bool	proc numUint64(_: typedesc[String]; number: Int; base: Int = 10;\n          capitalizeHex: bool = false): String		555
-nim	chr	gdext/stringtools.html#chr,typedesc[String],Int	proc chr(_: typedesc[String]; code: Int): String		558
-nim	humanizeSize	gdext/stringtools.html#humanizeSize,typedesc[String],Int	proc humanizeSize(_: typedesc[String]; size: Int): String		561
+nim	filenocasecmpTo	gdext/stringtools.html#filenocasecmpTo,String,String	proc filenocasecmpTo(self: String; to: String): Int		284
+nim	length	gdext/stringtools.html#length,String	proc length(self: String): Int		286
+nim	substr	gdext/stringtools.html#substr,String,Int,Int	proc substr(self: String; from: Int; len: Int = -1): String		288
+nim	getSlice	gdext/stringtools.html#getSlice,String,String,Int	proc getSlice(self: String; delimiter: String; slice: Int): String		290
+nim	getSlicec	gdext/stringtools.html#getSlicec,String,Int,Int	proc getSlicec(self: String; delimiter: Int; slice: Int): String		292
+nim	getSliceCount	gdext/stringtools.html#getSliceCount,String,String	proc getSliceCount(self: String; delimiter: String): Int		294
+nim	find	gdext/stringtools.html#find,String,String,Int	proc find(self: String; what: String; from: Int = 0): Int		296
+nim	findn	gdext/stringtools.html#findn,String,String,Int	proc findn(self: String; what: String; from: Int = 0): Int		298
+nim	count	gdext/stringtools.html#count,String,String,Int,Int	proc count(self: String; what: String; from: Int = 0; to: Int = 0): Int		300
+nim	countn	gdext/stringtools.html#countn,String,String,Int,Int	proc countn(self: String; what: String; from: Int = 0; to: Int = 0): Int		302
+nim	rfind	gdext/stringtools.html#rfind,String,String,Int	proc rfind(self: String; what: String; from: Int = -1): Int		304
+nim	rfindn	gdext/stringtools.html#rfindn,String,String,Int	proc rfindn(self: String; what: String; from: Int = -1): Int		306
+nim	match	gdext/stringtools.html#match,String,String	proc match(self: String; expr: String): bool		308
+nim	matchn	gdext/stringtools.html#matchn,String,String	proc matchn(self: String; expr: String): bool		310
+nim	beginsWith	gdext/stringtools.html#beginsWith,String,String	proc beginsWith(self: String; text: String): bool		312
+nim	endsWith	gdext/stringtools.html#endsWith,String,String	proc endsWith(self: String; text: String): bool		314
+nim	isSubsequenceOf	gdext/stringtools.html#isSubsequenceOf,String,String	proc isSubsequenceOf(self: String; text: String): bool		316
+nim	isSubsequenceOfn	gdext/stringtools.html#isSubsequenceOfn,String,String	proc isSubsequenceOfn(self: String; text: String): bool		318
+nim	bigrams	gdext/stringtools.html#bigrams,String	proc bigrams(self: String): PackedStringArray		320
+nim	similarity	gdext/stringtools.html#similarity,String,String	proc similarity(self: String; text: String): Float		322
+nim	format	gdext/stringtools.html#format,String,Variant,String	proc format(self: String; values: Variant; placeholder: String = newGdString("{_}")): String		324
+nim	replace	gdext/stringtools.html#replace,String,String,String	proc replace(self: String; what: String; forwhat: String): String		326
+nim	replacen	gdext/stringtools.html#replacen,String,String,String	proc replacen(self: String; what: String; forwhat: String): String		328
+nim	replaceChar	gdext/stringtools.html#replaceChar,String,Int,Int	proc replaceChar(self: String; key: Int; with: Int): String		330
+nim	replaceChars	gdext/stringtools.html#replaceChars,String,String,Int	proc replaceChars(self: String; keys: String; with: Int): String		332
+nim	removeChar	gdext/stringtools.html#removeChar,String,Int	proc removeChar(self: String; what: Int): String		334
+nim	removeChars	gdext/stringtools.html#removeChars,String,String	proc removeChars(self: String; chars: String): String		336
+nim	repeat	gdext/stringtools.html#repeat,String,Int	proc repeat(self: String; count: Int): String		338
+nim	reverse	gdext/stringtools.html#reverse,String	proc reverse(self: String): String		340
+nim	insert	gdext/stringtools.html#insert,String,Int,String	proc insert(self: String; position: Int; what: String): String		342
+nim	erase	gdext/stringtools.html#erase,String,Int,Int	proc erase(self: String; position: Int; chars: Int = 1): String		344
+nim	capitalize	gdext/stringtools.html#capitalize,String	proc capitalize(self: String): String		346
+nim	toCamelCase	gdext/stringtools.html#toCamelCase,String	proc toCamelCase(self: String): String		348
+nim	toPascalCase	gdext/stringtools.html#toPascalCase,String	proc toPascalCase(self: String): String		350
+nim	toSnakeCase	gdext/stringtools.html#toSnakeCase,String	proc toSnakeCase(self: String): String		352
+nim	toKebabCase	gdext/stringtools.html#toKebabCase,String	proc toKebabCase(self: String): String		354
+nim	split	gdext/stringtools.html#split,String,String,bool,Int	proc split(self: String; delimiter: String = newGdString(); allowEmpty: bool = true;\n      maxsplit: Int = 0): PackedStringArray		356
+nim	rsplit	gdext/stringtools.html#rsplit,String,String,bool,Int	proc rsplit(self: String; delimiter: String = newGdString(); allowEmpty: bool = true;\n       maxsplit: Int = 0): PackedStringArray		358
+nim	splitFloats	gdext/stringtools.html#splitFloats,String,String,bool	proc splitFloats(self: String; delimiter: String; allowEmpty: bool = true): PackedFloat64Array		360
+nim	join	gdext/stringtools.html#join,String,PackedStringArray	proc join(self: String; parts: PackedStringArray): String		362
+nim	toUpper	gdext/stringtools.html#toUpper,String	proc toUpper(self: String): String		364
+nim	toLower	gdext/stringtools.html#toLower,String	proc toLower(self: String): String		366
+nim	left	gdext/stringtools.html#left,String,Int	proc left(self: String; length: Int): String		368
+nim	right	gdext/stringtools.html#right,String,Int	proc right(self: String; length: Int): String		370
+nim	stripEdges	gdext/stringtools.html#stripEdges,String,bool,bool	proc stripEdges(self: String; left: bool = true; right: bool = true): String		372
+nim	stripEscapes	gdext/stringtools.html#stripEscapes,String	proc stripEscapes(self: String): String		374
+nim	lstrip	gdext/stringtools.html#lstrip,String,String	proc lstrip(self: String; chars: String): String		376
+nim	rstrip	gdext/stringtools.html#rstrip,String,String	proc rstrip(self: String; chars: String): String		378
+nim	getExtension	gdext/stringtools.html#getExtension,String	proc getExtension(self: String): String		380
+nim	getBasename	gdext/stringtools.html#getBasename,String	proc getBasename(self: String): String		382
+nim	pathJoin	gdext/stringtools.html#pathJoin,String,String	proc pathJoin(self: String; path: String): String		384
+nim	unicodeAt	gdext/stringtools.html#unicodeAt,String,Int	proc unicodeAt(self: String; at: Int): Int		386
+nim	indent	gdext/stringtools.html#indent,String,String	proc indent(self: String; prefix: String): String		388
+nim	dedent	gdext/stringtools.html#dedent,String	proc dedent(self: String): String		390
+nim	hash	gdext/stringtools.html#hash,String	proc hash(self: String): Hash		392
+nim	md5Text	gdext/stringtools.html#md5Text,String	proc md5Text(self: String): String		394
+nim	sha1Text	gdext/stringtools.html#sha1Text,String	proc sha1Text(self: String): String		396
+nim	sha256Text	gdext/stringtools.html#sha256Text,String	proc sha256Text(self: String): String		398
+nim	md5Buffer	gdext/stringtools.html#md5Buffer,String	proc md5Buffer(self: String): PackedByteArray		400
+nim	sha1Buffer	gdext/stringtools.html#sha1Buffer,String	proc sha1Buffer(self: String): PackedByteArray		402
+nim	sha256Buffer	gdext/stringtools.html#sha256Buffer,String	proc sha256Buffer(self: String): PackedByteArray		404
+nim	isEmpty	gdext/stringtools.html#isEmpty,String	proc isEmpty(self: String): bool		406
+nim	contains	gdext/stringtools.html#contains,String,String	proc contains(self: String; what: String): bool		408
+nim	containsn	gdext/stringtools.html#containsn,String,String	proc containsn(self: String; what: String): bool		410
+nim	isAbsolutePath	gdext/stringtools.html#isAbsolutePath,String	proc isAbsolutePath(self: String): bool		412
+nim	isRelativePath	gdext/stringtools.html#isRelativePath,String	proc isRelativePath(self: String): bool		414
+nim	simplifyPath	gdext/stringtools.html#simplifyPath,String	proc simplifyPath(self: String): String		416
+nim	getBaseDir	gdext/stringtools.html#getBaseDir,String	proc getBaseDir(self: String): String		418
+nim	getFile	gdext/stringtools.html#getFile,String	proc getFile(self: String): String		420
+nim	xmlEscape	gdext/stringtools.html#xmlEscape,String,bool	proc xmlEscape(self: String; escapeQuotes: bool = false): String		422
+nim	xmlUnescape	gdext/stringtools.html#xmlUnescape,String	proc xmlUnescape(self: String): String		424
+nim	uriEncode	gdext/stringtools.html#uriEncode,String	proc uriEncode(self: String): String		426
+nim	uriDecode	gdext/stringtools.html#uriDecode,String	proc uriDecode(self: String): String		428
+nim	uriFileDecode	gdext/stringtools.html#uriFileDecode,String	proc uriFileDecode(self: String): String		430
+nim	cEscape	gdext/stringtools.html#cEscape,String	proc cEscape(self: String): String		432
+nim	cUnescape	gdext/stringtools.html#cUnescape,String	proc cUnescape(self: String): String		434
+nim	jsonEscape	gdext/stringtools.html#jsonEscape,String	proc jsonEscape(self: String): String		436
+nim	validateNodeName	gdext/stringtools.html#validateNodeName,String	proc validateNodeName(self: String): String		438
+nim	validateFilename	gdext/stringtools.html#validateFilename,String	proc validateFilename(self: String): String		440
+nim	isValidAsciiIdentifier	gdext/stringtools.html#isValidAsciiIdentifier,String	proc isValidAsciiIdentifier(self: String): bool		442
+nim	isValidUnicodeIdentifier	gdext/stringtools.html#isValidUnicodeIdentifier,String	proc isValidUnicodeIdentifier(self: String): bool		444
+nim	isValidIdentifier	gdext/stringtools.html#isValidIdentifier,String	proc isValidIdentifier(self: String): bool		446
+nim	isValidInt	gdext/stringtools.html#isValidInt,String	proc isValidInt(self: String): bool		448
+nim	isValidFloat	gdext/stringtools.html#isValidFloat,String	proc isValidFloat(self: String): bool		450
+nim	isValidHexNumber	gdext/stringtools.html#isValidHexNumber,String,bool	proc isValidHexNumber(self: String; withPrefix: bool = false): bool		452
+nim	isValidHtmlColor	gdext/stringtools.html#isValidHtmlColor,String	proc isValidHtmlColor(self: String): bool		454
+nim	isValidIpAddress	gdext/stringtools.html#isValidIpAddress,String	proc isValidIpAddress(self: String): bool		456
+nim	isValidFilename	gdext/stringtools.html#isValidFilename,String	proc isValidFilename(self: String): bool		458
+nim	toInt	gdext/stringtools.html#toInt,String	proc toInt(self: String): Int		460
+nim	toFloat	gdext/stringtools.html#toFloat,String	proc toFloat(self: String): Float		462
+nim	hexToInt	gdext/stringtools.html#hexToInt,String	proc hexToInt(self: String): Int		464
+nim	binToInt	gdext/stringtools.html#binToInt,String	proc binToInt(self: String): Int		466
+nim	lpad	gdext/stringtools.html#lpad,String,Int,String	proc lpad(self: String; minLength: Int; character: String = newGdString(" ")): String		468
+nim	rpad	gdext/stringtools.html#rpad,String,Int,String	proc rpad(self: String; minLength: Int; character: String = newGdString(" ")): String		470
+nim	padDecimals	gdext/stringtools.html#padDecimals,String,Int	proc padDecimals(self: String; digits: Int): String		472
+nim	padZeros	gdext/stringtools.html#padZeros,String,Int	proc padZeros(self: String; digits: Int): String		474
+nim	trimPrefix	gdext/stringtools.html#trimPrefix,String,String	proc trimPrefix(self: String; prefix: String): String		476
+nim	trimSuffix	gdext/stringtools.html#trimSuffix,String,String	proc trimSuffix(self: String; suffix: String): String		478
+nim	toAsciiBuffer	gdext/stringtools.html#toAsciiBuffer,String	proc toAsciiBuffer(self: String): PackedByteArray		480
+nim	toUtf8Buffer	gdext/stringtools.html#toUtf8Buffer,String	proc toUtf8Buffer(self: String): PackedByteArray		482
+nim	toUtf16Buffer	gdext/stringtools.html#toUtf16Buffer,String	proc toUtf16Buffer(self: String): PackedByteArray		484
+nim	toUtf32Buffer	gdext/stringtools.html#toUtf32Buffer,String	proc toUtf32Buffer(self: String): PackedByteArray		486
+nim	toWcharBuffer	gdext/stringtools.html#toWcharBuffer,String	proc toWcharBuffer(self: String): PackedByteArray		488
+nim	toMultibyteCharBuffer	gdext/stringtools.html#toMultibyteCharBuffer,String,String	proc toMultibyteCharBuffer(self: String; encoding: String = newGdString()): PackedByteArray		490
+nim	hexDecode	gdext/stringtools.html#hexDecode,String	proc hexDecode(self: String): PackedByteArray		492
+nim	numScientific	gdext/stringtools.html#numScientific,typedesc[String],Float	proc numScientific(_: typedesc[String]; number: Float): String		494
+nim	num	gdext/stringtools.html#num,typedesc[String],Float,Int	proc num(_: typedesc[String]; number: Float; decimals: Int = -1): String		496
+nim	numInt64	gdext/stringtools.html#numInt64,typedesc[String],Int,Int,bool	proc numInt64(_: typedesc[String]; number: Int; base: Int = 10;\n         capitalizeHex: bool = false): String		498
+nim	numUint64	gdext/stringtools.html#numUint64,typedesc[String],Int,Int,bool	proc numUint64(_: typedesc[String]; number: Int; base: Int = 10;\n          capitalizeHex: bool = false): String		500
+nim	chr	gdext/stringtools.html#chr,typedesc[String],Int	proc chr(_: typedesc[String]; code: Int): String		502
+nim	humanizeSize	gdext/stringtools.html#humanizeSize,typedesc[String],Int	proc humanizeSize(_: typedesc[String]; size: Int): String		504
 nim	`%`	gdext/stringtools.html#%,StringName,Variant	proc `%`(left: StringName; right: Variant): String		59
 nim	`not`	gdext/stringtools.html#not,StringName	proc `not`(left: StringName): bool		60
 nim	`%`	gdext/stringtools.html#%,StringName,bool	proc `%`(left: StringName; right: bool): String		61
@@ -210,266 +210,266 @@ nim	`%`	gdext/stringtools.html#%,StringName,RID	proc `%`(left: StringName; right
 nim	`%`	gdext/stringtools.html#%,StringName,Object	proc `%`(left: StringName; right: Object): String		90
 nim	`%`	gdext/stringtools.html#%,StringName,Callable	proc `%`(left: StringName; right: Callable): String		91
 nim	`%`	gdext/stringtools.html#%,StringName,Signal	proc `%`(left: StringName; right: Signal): String		92
-nim	`%`	gdext/stringtools.html#%,StringName,Dictionary	proc `%`(left: StringName; right: Dictionary): String		93
-nim	`%`	gdext/stringtools.html#%,StringName,Array	proc `%`(left: StringName; right: Array): String		94
-nim	`%`	gdext/stringtools.html#%,StringName,PackedByteArray	proc `%`(left: StringName; right: PackedByteArray): String		95
-nim	`%`	gdext/stringtools.html#%,StringName,PackedInt32Array	proc `%`(left: StringName; right: PackedInt32Array): String		96
-nim	`%`	gdext/stringtools.html#%,StringName,PackedInt64Array	proc `%`(left: StringName; right: PackedInt64Array): String		97
-nim	`%`	gdext/stringtools.html#%,StringName,PackedFloat32Array	proc `%`(left: StringName; right: PackedFloat32Array): String		98
-nim	`%`	gdext/stringtools.html#%,StringName,PackedFloat64Array	proc `%`(left: StringName; right: PackedFloat64Array): String		99
-nim	`%`	gdext/stringtools.html#%,StringName,PackedStringArray	proc `%`(left: StringName; right: PackedStringArray): String		100
-nim	`%`	gdext/stringtools.html#%,StringName,PackedVector2Array	proc `%`(left: StringName; right: PackedVector2Array): String		101
-nim	`%`	gdext/stringtools.html#%,StringName,PackedVector3Array	proc `%`(left: StringName; right: PackedVector3Array): String		102
-nim	`%`	gdext/stringtools.html#%,StringName,PackedColorArray	proc `%`(left: StringName; right: PackedColorArray): String		103
-nim	`%`	gdext/stringtools.html#%,StringName,PackedVector4Array	proc `%`(left: StringName; right: PackedVector4Array): String		104
-nim	casecmpTo	gdext/stringtools.html#casecmpTo,StringName,String	proc casecmpTo(self: StringName; to: String): Int		264
-nim	nocasecmpTo	gdext/stringtools.html#nocasecmpTo,StringName,String	proc nocasecmpTo(self: StringName; to: String): Int		267
-nim	naturalcasecmpTo	gdext/stringtools.html#naturalcasecmpTo,StringName,String	proc naturalcasecmpTo(self: StringName; to: String): Int		270
-nim	naturalnocasecmpTo	gdext/stringtools.html#naturalnocasecmpTo,StringName,String	proc naturalnocasecmpTo(self: StringName; to: String): Int		273
+nim	`%`	gdext/stringtools.html#%,StringName,Dictionary[Variant,Variant]	proc `%`(left: StringName; right: Dictionary[Variant, Variant]): String		93
+nim	`%`	gdext/stringtools.html#%,StringName,Array[Variant]	proc `%`(left: StringName; right: Array[Variant]): String		96
+nim	`%`	gdext/stringtools.html#%,StringName,PackedByteArray	proc `%`(left: StringName; right: PackedByteArray): String		99
+nim	`%`	gdext/stringtools.html#%,StringName,PackedInt32Array	proc `%`(left: StringName; right: PackedInt32Array): String		100
+nim	`%`	gdext/stringtools.html#%,StringName,PackedInt64Array	proc `%`(left: StringName; right: PackedInt64Array): String		101
+nim	`%`	gdext/stringtools.html#%,StringName,PackedFloat32Array	proc `%`(left: StringName; right: PackedFloat32Array): String		102
+nim	`%`	gdext/stringtools.html#%,StringName,PackedFloat64Array	proc `%`(left: StringName; right: PackedFloat64Array): String		103
+nim	`%`	gdext/stringtools.html#%,StringName,PackedStringArray	proc `%`(left: StringName; right: PackedStringArray): String		104
+nim	`%`	gdext/stringtools.html#%,StringName,PackedVector2Array	proc `%`(left: StringName; right: PackedVector2Array): String		105
+nim	`%`	gdext/stringtools.html#%,StringName,PackedVector3Array	proc `%`(left: StringName; right: PackedVector3Array): String		106
+nim	`%`	gdext/stringtools.html#%,StringName,PackedColorArray	proc `%`(left: StringName; right: PackedColorArray): String		107
+nim	`%`	gdext/stringtools.html#%,StringName,PackedVector4Array	proc `%`(left: StringName; right: PackedVector4Array): String		108
+nim	casecmpTo	gdext/stringtools.html#casecmpTo,StringName,String	proc casecmpTo(self: StringName; to: String): Int		268
+nim	nocasecmpTo	gdext/stringtools.html#nocasecmpTo,StringName,String	proc nocasecmpTo(self: StringName; to: String): Int		270
+nim	naturalcasecmpTo	gdext/stringtools.html#naturalcasecmpTo,StringName,String	proc naturalcasecmpTo(self: StringName; to: String): Int		272
+nim	naturalnocasecmpTo	gdext/stringtools.html#naturalnocasecmpTo,StringName,String	proc naturalnocasecmpTo(self: StringName; to: String): Int		274
 nim	filecasecmpTo	gdext/stringtools.html#filecasecmpTo,StringName,String	proc filecasecmpTo(self: StringName; to: String): Int		276
-nim	filenocasecmpTo	gdext/stringtools.html#filenocasecmpTo,StringName,String	proc filenocasecmpTo(self: StringName; to: String): Int		279
-nim	length	gdext/stringtools.html#length,StringName	proc length(self: StringName): Int		282
-nim	substr	gdext/stringtools.html#substr,StringName,Int,Int	proc substr(self: StringName; from: Int; len: Int = -1): String		284
-nim	getSlice	gdext/stringtools.html#getSlice,StringName,String,Int	proc getSlice(self: StringName; delimiter: String; slice: Int): String		287
-nim	getSlicec	gdext/stringtools.html#getSlicec,StringName,Int,Int	proc getSlicec(self: StringName; delimiter: Int; slice: Int): String		290
-nim	getSliceCount	gdext/stringtools.html#getSliceCount,StringName,String	proc getSliceCount(self: StringName; delimiter: String): Int		293
-nim	find	gdext/stringtools.html#find,StringName,String,Int	proc find(self: StringName; what: String; from: Int = 0): Int		296
-nim	findn	gdext/stringtools.html#findn,StringName,String,Int	proc findn(self: StringName; what: String; from: Int = 0): Int		299
-nim	count	gdext/stringtools.html#count,StringName,String,Int,Int	proc count(self: StringName; what: String; from: Int = 0; to: Int = 0): Int		302
-nim	countn	gdext/stringtools.html#countn,StringName,String,Int,Int	proc countn(self: StringName; what: String; from: Int = 0; to: Int = 0): Int		305
-nim	rfind	gdext/stringtools.html#rfind,StringName,String,Int	proc rfind(self: StringName; what: String; from: Int = -1): Int		308
-nim	rfindn	gdext/stringtools.html#rfindn,StringName,String,Int	proc rfindn(self: StringName; what: String; from: Int = -1): Int		311
-nim	match	gdext/stringtools.html#match,StringName,String	proc match(self: StringName; expr: String): bool		314
-nim	matchn	gdext/stringtools.html#matchn,StringName,String	proc matchn(self: StringName; expr: String): bool		317
-nim	beginsWith	gdext/stringtools.html#beginsWith,StringName,String	proc beginsWith(self: StringName; text: String): bool		320
-nim	endsWith	gdext/stringtools.html#endsWith,StringName,String	proc endsWith(self: StringName; text: String): bool		323
-nim	isSubsequenceOf	gdext/stringtools.html#isSubsequenceOf,StringName,String	proc isSubsequenceOf(self: StringName; text: String): bool		326
-nim	isSubsequenceOfn	gdext/stringtools.html#isSubsequenceOfn,StringName,String	proc isSubsequenceOfn(self: StringName; text: String): bool		329
-nim	bigrams	gdext/stringtools.html#bigrams,StringName	proc bigrams(self: StringName): PackedStringArray		332
-nim	similarity	gdext/stringtools.html#similarity,StringName,String	proc similarity(self: StringName; text: String): Float		334
-nim	format	gdext/stringtools.html#format,StringName,Variant,String	proc format(self: StringName; values: Variant;\n       placeholder: String = newGdString("{_}")): String		337
-nim	replace	gdext/stringtools.html#replace,StringName,String,String	proc replace(self: StringName; what: String; forwhat: String): String		340
-nim	replacen	gdext/stringtools.html#replacen,StringName,String,String	proc replacen(self: StringName; what: String; forwhat: String): String		343
-nim	replaceChar	gdext/stringtools.html#replaceChar,StringName,Int,Int	proc replaceChar(self: StringName; key: Int; with: Int): String		346
-nim	replaceChars	gdext/stringtools.html#replaceChars,StringName,String,Int	proc replaceChars(self: StringName; keys: String; with: Int): String		349
-nim	removeChar	gdext/stringtools.html#removeChar,StringName,Int	proc removeChar(self: StringName; what: Int): String		352
-nim	removeChars	gdext/stringtools.html#removeChars,StringName,String	proc removeChars(self: StringName; chars: String): String		355
-nim	repeat	gdext/stringtools.html#repeat,StringName,Int	proc repeat(self: StringName; count: Int): String		358
-nim	reverse	gdext/stringtools.html#reverse,StringName	proc reverse(self: StringName): String		361
-nim	insert	gdext/stringtools.html#insert,StringName,Int,String	proc insert(self: StringName; position: Int; what: String): String		363
-nim	erase	gdext/stringtools.html#erase,StringName,Int,Int	proc erase(self: StringName; position: Int; chars: Int = 1): String		366
-nim	capitalize	gdext/stringtools.html#capitalize,StringName	proc capitalize(self: StringName): String		369
-nim	toCamelCase	gdext/stringtools.html#toCamelCase,StringName	proc toCamelCase(self: StringName): String		371
-nim	toPascalCase	gdext/stringtools.html#toPascalCase,StringName	proc toPascalCase(self: StringName): String		373
-nim	toSnakeCase	gdext/stringtools.html#toSnakeCase,StringName	proc toSnakeCase(self: StringName): String		375
-nim	toKebabCase	gdext/stringtools.html#toKebabCase,StringName	proc toKebabCase(self: StringName): String		377
-nim	split	gdext/stringtools.html#split,StringName,String,bool,Int	proc split(self: StringName; delimiter: String = newGdString();\n      allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray		379
-nim	rsplit	gdext/stringtools.html#rsplit,StringName,String,bool,Int	proc rsplit(self: StringName; delimiter: String = newGdString();\n       allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray		382
-nim	splitFloats	gdext/stringtools.html#splitFloats,StringName,String,bool	proc splitFloats(self: StringName; delimiter: String; allowEmpty: bool = true): PackedFloat64Array		385
-nim	join	gdext/stringtools.html#join,StringName,PackedStringArray	proc join(self: StringName; parts: PackedStringArray): String		388
-nim	toUpper	gdext/stringtools.html#toUpper,StringName	proc toUpper(self: StringName): String		391
-nim	toLower	gdext/stringtools.html#toLower,StringName	proc toLower(self: StringName): String		393
-nim	left	gdext/stringtools.html#left,StringName,Int	proc left(self: StringName; length: Int): String		395
-nim	right	gdext/stringtools.html#right,StringName,Int	proc right(self: StringName; length: Int): String		398
-nim	stripEdges	gdext/stringtools.html#stripEdges,StringName,bool,bool	proc stripEdges(self: StringName; left: bool = true; right: bool = true): String		401
-nim	stripEscapes	gdext/stringtools.html#stripEscapes,StringName	proc stripEscapes(self: StringName): String		404
-nim	lstrip	gdext/stringtools.html#lstrip,StringName,String	proc lstrip(self: StringName; chars: String): String		406
-nim	rstrip	gdext/stringtools.html#rstrip,StringName,String	proc rstrip(self: StringName; chars: String): String		409
-nim	getExtension	gdext/stringtools.html#getExtension,StringName	proc getExtension(self: StringName): String		412
-nim	getBasename	gdext/stringtools.html#getBasename,StringName	proc getBasename(self: StringName): String		414
-nim	pathJoin	gdext/stringtools.html#pathJoin,StringName,String	proc pathJoin(self: StringName; path: String): String		416
-nim	unicodeAt	gdext/stringtools.html#unicodeAt,StringName,Int	proc unicodeAt(self: StringName; at: Int): Int		419
-nim	indent	gdext/stringtools.html#indent,StringName,String	proc indent(self: StringName; prefix: String): String		422
-nim	dedent	gdext/stringtools.html#dedent,StringName	proc dedent(self: StringName): String		425
-nim	md5Text	gdext/stringtools.html#md5Text,StringName	proc md5Text(self: StringName): String		427
-nim	sha1Text	gdext/stringtools.html#sha1Text,StringName	proc sha1Text(self: StringName): String		429
-nim	sha256Text	gdext/stringtools.html#sha256Text,StringName	proc sha256Text(self: StringName): String		431
-nim	md5Buffer	gdext/stringtools.html#md5Buffer,StringName	proc md5Buffer(self: StringName): PackedByteArray		433
-nim	sha1Buffer	gdext/stringtools.html#sha1Buffer,StringName	proc sha1Buffer(self: StringName): PackedByteArray		435
-nim	sha256Buffer	gdext/stringtools.html#sha256Buffer,StringName	proc sha256Buffer(self: StringName): PackedByteArray		437
-nim	isEmpty	gdext/stringtools.html#isEmpty,StringName	proc isEmpty(self: StringName): bool		439
-nim	contains	gdext/stringtools.html#contains,StringName,String	proc contains(self: StringName; what: String): bool		441
-nim	containsn	gdext/stringtools.html#containsn,StringName,String	proc containsn(self: StringName; what: String): bool		444
-nim	isAbsolutePath	gdext/stringtools.html#isAbsolutePath,StringName	proc isAbsolutePath(self: StringName): bool		447
-nim	isRelativePath	gdext/stringtools.html#isRelativePath,StringName	proc isRelativePath(self: StringName): bool		449
-nim	simplifyPath	gdext/stringtools.html#simplifyPath,StringName	proc simplifyPath(self: StringName): String		451
-nim	getBaseDir	gdext/stringtools.html#getBaseDir,StringName	proc getBaseDir(self: StringName): String		453
-nim	getFile	gdext/stringtools.html#getFile,StringName	proc getFile(self: StringName): String		455
-nim	xmlEscape	gdext/stringtools.html#xmlEscape,StringName,bool	proc xmlEscape(self: StringName; escapeQuotes: bool = false): String		457
-nim	xmlUnescape	gdext/stringtools.html#xmlUnescape,StringName	proc xmlUnescape(self: StringName): String		460
-nim	uriEncode	gdext/stringtools.html#uriEncode,StringName	proc uriEncode(self: StringName): String		462
-nim	uriDecode	gdext/stringtools.html#uriDecode,StringName	proc uriDecode(self: StringName): String		464
-nim	uriFileDecode	gdext/stringtools.html#uriFileDecode,StringName	proc uriFileDecode(self: StringName): String		466
-nim	cEscape	gdext/stringtools.html#cEscape,StringName	proc cEscape(self: StringName): String		468
-nim	cUnescape	gdext/stringtools.html#cUnescape,StringName	proc cUnescape(self: StringName): String		470
-nim	jsonEscape	gdext/stringtools.html#jsonEscape,StringName	proc jsonEscape(self: StringName): String		472
-nim	validateNodeName	gdext/stringtools.html#validateNodeName,StringName	proc validateNodeName(self: StringName): String		474
-nim	validateFilename	gdext/stringtools.html#validateFilename,StringName	proc validateFilename(self: StringName): String		476
-nim	isValidAsciiIdentifier	gdext/stringtools.html#isValidAsciiIdentifier,StringName	proc isValidAsciiIdentifier(self: StringName): bool		478
-nim	isValidUnicodeIdentifier	gdext/stringtools.html#isValidUnicodeIdentifier,StringName	proc isValidUnicodeIdentifier(self: StringName): bool		480
-nim	isValidIdentifier	gdext/stringtools.html#isValidIdentifier,StringName	proc isValidIdentifier(self: StringName): bool		482
-nim	isValidInt	gdext/stringtools.html#isValidInt,StringName	proc isValidInt(self: StringName): bool		484
-nim	isValidFloat	gdext/stringtools.html#isValidFloat,StringName	proc isValidFloat(self: StringName): bool		486
-nim	isValidHexNumber	gdext/stringtools.html#isValidHexNumber,StringName,bool	proc isValidHexNumber(self: StringName; withPrefix: bool = false): bool		488
-nim	isValidHtmlColor	gdext/stringtools.html#isValidHtmlColor,StringName	proc isValidHtmlColor(self: StringName): bool		491
-nim	isValidIpAddress	gdext/stringtools.html#isValidIpAddress,StringName	proc isValidIpAddress(self: StringName): bool		493
-nim	isValidFilename	gdext/stringtools.html#isValidFilename,StringName	proc isValidFilename(self: StringName): bool		495
-nim	toInt	gdext/stringtools.html#toInt,StringName	proc toInt(self: StringName): Int		497
-nim	toFloat	gdext/stringtools.html#toFloat,StringName	proc toFloat(self: StringName): Float		499
-nim	hexToInt	gdext/stringtools.html#hexToInt,StringName	proc hexToInt(self: StringName): Int		501
-nim	binToInt	gdext/stringtools.html#binToInt,StringName	proc binToInt(self: StringName): Int		503
-nim	lpad	gdext/stringtools.html#lpad,StringName,Int,String	proc lpad(self: StringName; minLength: Int; character: String = newGdString(" ")): String		505
-nim	rpad	gdext/stringtools.html#rpad,StringName,Int,String	proc rpad(self: StringName; minLength: Int; character: String = newGdString(" ")): String		508
-nim	padDecimals	gdext/stringtools.html#padDecimals,StringName,Int	proc padDecimals(self: StringName; digits: Int): String		511
-nim	padZeros	gdext/stringtools.html#padZeros,StringName,Int	proc padZeros(self: StringName; digits: Int): String		514
-nim	trimPrefix	gdext/stringtools.html#trimPrefix,StringName,String	proc trimPrefix(self: StringName; prefix: String): String		517
-nim	trimSuffix	gdext/stringtools.html#trimSuffix,StringName,String	proc trimSuffix(self: StringName; suffix: String): String		520
-nim	toAsciiBuffer	gdext/stringtools.html#toAsciiBuffer,StringName	proc toAsciiBuffer(self: StringName): PackedByteArray		523
-nim	toUtf8Buffer	gdext/stringtools.html#toUtf8Buffer,StringName	proc toUtf8Buffer(self: StringName): PackedByteArray		525
-nim	toUtf16Buffer	gdext/stringtools.html#toUtf16Buffer,StringName	proc toUtf16Buffer(self: StringName): PackedByteArray		527
-nim	toUtf32Buffer	gdext/stringtools.html#toUtf32Buffer,StringName	proc toUtf32Buffer(self: StringName): PackedByteArray		529
-nim	toWcharBuffer	gdext/stringtools.html#toWcharBuffer,StringName	proc toWcharBuffer(self: StringName): PackedByteArray		531
-nim	toMultibyteCharBuffer	gdext/stringtools.html#toMultibyteCharBuffer,StringName,String	proc toMultibyteCharBuffer(self: StringName; encoding: String = newGdString()): PackedByteArray		533
-nim	hexDecode	gdext/stringtools.html#hexDecode,StringName	proc hexDecode(self: StringName): PackedByteArray		536
-nim	hash	gdext/stringtools.html#hash,StringName	proc hash(self: StringName): Hash		538
+nim	filenocasecmpTo	gdext/stringtools.html#filenocasecmpTo,StringName,String	proc filenocasecmpTo(self: StringName; to: String): Int		278
+nim	length	gdext/stringtools.html#length,StringName	proc length(self: StringName): Int		280
+nim	substr	gdext/stringtools.html#substr,StringName,Int,Int	proc substr(self: StringName; from: Int; len: Int = -1): String		282
+nim	getSlice	gdext/stringtools.html#getSlice,StringName,String,Int	proc getSlice(self: StringName; delimiter: String; slice: Int): String		284
+nim	getSlicec	gdext/stringtools.html#getSlicec,StringName,Int,Int	proc getSlicec(self: StringName; delimiter: Int; slice: Int): String		286
+nim	getSliceCount	gdext/stringtools.html#getSliceCount,StringName,String	proc getSliceCount(self: StringName; delimiter: String): Int		288
+nim	find	gdext/stringtools.html#find,StringName,String,Int	proc find(self: StringName; what: String; from: Int = 0): Int		290
+nim	findn	gdext/stringtools.html#findn,StringName,String,Int	proc findn(self: StringName; what: String; from: Int = 0): Int		292
+nim	count	gdext/stringtools.html#count,StringName,String,Int,Int	proc count(self: StringName; what: String; from: Int = 0; to: Int = 0): Int		294
+nim	countn	gdext/stringtools.html#countn,StringName,String,Int,Int	proc countn(self: StringName; what: String; from: Int = 0; to: Int = 0): Int		296
+nim	rfind	gdext/stringtools.html#rfind,StringName,String,Int	proc rfind(self: StringName; what: String; from: Int = -1): Int		298
+nim	rfindn	gdext/stringtools.html#rfindn,StringName,String,Int	proc rfindn(self: StringName; what: String; from: Int = -1): Int		300
+nim	match	gdext/stringtools.html#match,StringName,String	proc match(self: StringName; expr: String): bool		302
+nim	matchn	gdext/stringtools.html#matchn,StringName,String	proc matchn(self: StringName; expr: String): bool		304
+nim	beginsWith	gdext/stringtools.html#beginsWith,StringName,String	proc beginsWith(self: StringName; text: String): bool		306
+nim	endsWith	gdext/stringtools.html#endsWith,StringName,String	proc endsWith(self: StringName; text: String): bool		308
+nim	isSubsequenceOf	gdext/stringtools.html#isSubsequenceOf,StringName,String	proc isSubsequenceOf(self: StringName; text: String): bool		310
+nim	isSubsequenceOfn	gdext/stringtools.html#isSubsequenceOfn,StringName,String	proc isSubsequenceOfn(self: StringName; text: String): bool		312
+nim	bigrams	gdext/stringtools.html#bigrams,StringName	proc bigrams(self: StringName): PackedStringArray		314
+nim	similarity	gdext/stringtools.html#similarity,StringName,String	proc similarity(self: StringName; text: String): Float		316
+nim	format	gdext/stringtools.html#format,StringName,Variant,String	proc format(self: StringName; values: Variant;\n       placeholder: String = newGdString("{_}")): String		318
+nim	replace	gdext/stringtools.html#replace,StringName,String,String	proc replace(self: StringName; what: String; forwhat: String): String		320
+nim	replacen	gdext/stringtools.html#replacen,StringName,String,String	proc replacen(self: StringName; what: String; forwhat: String): String		322
+nim	replaceChar	gdext/stringtools.html#replaceChar,StringName,Int,Int	proc replaceChar(self: StringName; key: Int; with: Int): String		324
+nim	replaceChars	gdext/stringtools.html#replaceChars,StringName,String,Int	proc replaceChars(self: StringName; keys: String; with: Int): String		326
+nim	removeChar	gdext/stringtools.html#removeChar,StringName,Int	proc removeChar(self: StringName; what: Int): String		328
+nim	removeChars	gdext/stringtools.html#removeChars,StringName,String	proc removeChars(self: StringName; chars: String): String		330
+nim	repeat	gdext/stringtools.html#repeat,StringName,Int	proc repeat(self: StringName; count: Int): String		332
+nim	reverse	gdext/stringtools.html#reverse,StringName	proc reverse(self: StringName): String		334
+nim	insert	gdext/stringtools.html#insert,StringName,Int,String	proc insert(self: StringName; position: Int; what: String): String		336
+nim	erase	gdext/stringtools.html#erase,StringName,Int,Int	proc erase(self: StringName; position: Int; chars: Int = 1): String		338
+nim	capitalize	gdext/stringtools.html#capitalize,StringName	proc capitalize(self: StringName): String		340
+nim	toCamelCase	gdext/stringtools.html#toCamelCase,StringName	proc toCamelCase(self: StringName): String		342
+nim	toPascalCase	gdext/stringtools.html#toPascalCase,StringName	proc toPascalCase(self: StringName): String		344
+nim	toSnakeCase	gdext/stringtools.html#toSnakeCase,StringName	proc toSnakeCase(self: StringName): String		346
+nim	toKebabCase	gdext/stringtools.html#toKebabCase,StringName	proc toKebabCase(self: StringName): String		348
+nim	split	gdext/stringtools.html#split,StringName,String,bool,Int	proc split(self: StringName; delimiter: String = newGdString();\n      allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray		350
+nim	rsplit	gdext/stringtools.html#rsplit,StringName,String,bool,Int	proc rsplit(self: StringName; delimiter: String = newGdString();\n       allowEmpty: bool = true; maxsplit: Int = 0): PackedStringArray		352
+nim	splitFloats	gdext/stringtools.html#splitFloats,StringName,String,bool	proc splitFloats(self: StringName; delimiter: String; allowEmpty: bool = true): PackedFloat64Array		354
+nim	join	gdext/stringtools.html#join,StringName,PackedStringArray	proc join(self: StringName; parts: PackedStringArray): String		356
+nim	toUpper	gdext/stringtools.html#toUpper,StringName	proc toUpper(self: StringName): String		358
+nim	toLower	gdext/stringtools.html#toLower,StringName	proc toLower(self: StringName): String		360
+nim	left	gdext/stringtools.html#left,StringName,Int	proc left(self: StringName; length: Int): String		362
+nim	right	gdext/stringtools.html#right,StringName,Int	proc right(self: StringName; length: Int): String		364
+nim	stripEdges	gdext/stringtools.html#stripEdges,StringName,bool,bool	proc stripEdges(self: StringName; left: bool = true; right: bool = true): String		366
+nim	stripEscapes	gdext/stringtools.html#stripEscapes,StringName	proc stripEscapes(self: StringName): String		368
+nim	lstrip	gdext/stringtools.html#lstrip,StringName,String	proc lstrip(self: StringName; chars: String): String		370
+nim	rstrip	gdext/stringtools.html#rstrip,StringName,String	proc rstrip(self: StringName; chars: String): String		372
+nim	getExtension	gdext/stringtools.html#getExtension,StringName	proc getExtension(self: StringName): String		374
+nim	getBasename	gdext/stringtools.html#getBasename,StringName	proc getBasename(self: StringName): String		376
+nim	pathJoin	gdext/stringtools.html#pathJoin,StringName,String	proc pathJoin(self: StringName; path: String): String		378
+nim	unicodeAt	gdext/stringtools.html#unicodeAt,StringName,Int	proc unicodeAt(self: StringName; at: Int): Int		380
+nim	indent	gdext/stringtools.html#indent,StringName,String	proc indent(self: StringName; prefix: String): String		382
+nim	dedent	gdext/stringtools.html#dedent,StringName	proc dedent(self: StringName): String		384
+nim	md5Text	gdext/stringtools.html#md5Text,StringName	proc md5Text(self: StringName): String		386
+nim	sha1Text	gdext/stringtools.html#sha1Text,StringName	proc sha1Text(self: StringName): String		388
+nim	sha256Text	gdext/stringtools.html#sha256Text,StringName	proc sha256Text(self: StringName): String		390
+nim	md5Buffer	gdext/stringtools.html#md5Buffer,StringName	proc md5Buffer(self: StringName): PackedByteArray		392
+nim	sha1Buffer	gdext/stringtools.html#sha1Buffer,StringName	proc sha1Buffer(self: StringName): PackedByteArray		394
+nim	sha256Buffer	gdext/stringtools.html#sha256Buffer,StringName	proc sha256Buffer(self: StringName): PackedByteArray		396
+nim	isEmpty	gdext/stringtools.html#isEmpty,StringName	proc isEmpty(self: StringName): bool		398
+nim	contains	gdext/stringtools.html#contains,StringName,String	proc contains(self: StringName; what: String): bool		400
+nim	containsn	gdext/stringtools.html#containsn,StringName,String	proc containsn(self: StringName; what: String): bool		402
+nim	isAbsolutePath	gdext/stringtools.html#isAbsolutePath,StringName	proc isAbsolutePath(self: StringName): bool		404
+nim	isRelativePath	gdext/stringtools.html#isRelativePath,StringName	proc isRelativePath(self: StringName): bool		406
+nim	simplifyPath	gdext/stringtools.html#simplifyPath,StringName	proc simplifyPath(self: StringName): String		408
+nim	getBaseDir	gdext/stringtools.html#getBaseDir,StringName	proc getBaseDir(self: StringName): String		410
+nim	getFile	gdext/stringtools.html#getFile,StringName	proc getFile(self: StringName): String		412
+nim	xmlEscape	gdext/stringtools.html#xmlEscape,StringName,bool	proc xmlEscape(self: StringName; escapeQuotes: bool = false): String		414
+nim	xmlUnescape	gdext/stringtools.html#xmlUnescape,StringName	proc xmlUnescape(self: StringName): String		416
+nim	uriEncode	gdext/stringtools.html#uriEncode,StringName	proc uriEncode(self: StringName): String		418
+nim	uriDecode	gdext/stringtools.html#uriDecode,StringName	proc uriDecode(self: StringName): String		420
+nim	uriFileDecode	gdext/stringtools.html#uriFileDecode,StringName	proc uriFileDecode(self: StringName): String		422
+nim	cEscape	gdext/stringtools.html#cEscape,StringName	proc cEscape(self: StringName): String		424
+nim	cUnescape	gdext/stringtools.html#cUnescape,StringName	proc cUnescape(self: StringName): String		426
+nim	jsonEscape	gdext/stringtools.html#jsonEscape,StringName	proc jsonEscape(self: StringName): String		428
+nim	validateNodeName	gdext/stringtools.html#validateNodeName,StringName	proc validateNodeName(self: StringName): String		430
+nim	validateFilename	gdext/stringtools.html#validateFilename,StringName	proc validateFilename(self: StringName): String		432
+nim	isValidAsciiIdentifier	gdext/stringtools.html#isValidAsciiIdentifier,StringName	proc isValidAsciiIdentifier(self: StringName): bool		434
+nim	isValidUnicodeIdentifier	gdext/stringtools.html#isValidUnicodeIdentifier,StringName	proc isValidUnicodeIdentifier(self: StringName): bool		436
+nim	isValidIdentifier	gdext/stringtools.html#isValidIdentifier,StringName	proc isValidIdentifier(self: StringName): bool		438
+nim	isValidInt	gdext/stringtools.html#isValidInt,StringName	proc isValidInt(self: StringName): bool		440
+nim	isValidFloat	gdext/stringtools.html#isValidFloat,StringName	proc isValidFloat(self: StringName): bool		442
+nim	isValidHexNumber	gdext/stringtools.html#isValidHexNumber,StringName,bool	proc isValidHexNumber(self: StringName; withPrefix: bool = false): bool		444
+nim	isValidHtmlColor	gdext/stringtools.html#isValidHtmlColor,StringName	proc isValidHtmlColor(self: StringName): bool		446
+nim	isValidIpAddress	gdext/stringtools.html#isValidIpAddress,StringName	proc isValidIpAddress(self: StringName): bool		448
+nim	isValidFilename	gdext/stringtools.html#isValidFilename,StringName	proc isValidFilename(self: StringName): bool		450
+nim	toInt	gdext/stringtools.html#toInt,StringName	proc toInt(self: StringName): Int		452
+nim	toFloat	gdext/stringtools.html#toFloat,StringName	proc toFloat(self: StringName): Float		454
+nim	hexToInt	gdext/stringtools.html#hexToInt,StringName	proc hexToInt(self: StringName): Int		456
+nim	binToInt	gdext/stringtools.html#binToInt,StringName	proc binToInt(self: StringName): Int		458
+nim	lpad	gdext/stringtools.html#lpad,StringName,Int,String	proc lpad(self: StringName; minLength: Int; character: String = newGdString(" ")): String		460
+nim	rpad	gdext/stringtools.html#rpad,StringName,Int,String	proc rpad(self: StringName; minLength: Int; character: String = newGdString(" ")): String		462
+nim	padDecimals	gdext/stringtools.html#padDecimals,StringName,Int	proc padDecimals(self: StringName; digits: Int): String		464
+nim	padZeros	gdext/stringtools.html#padZeros,StringName,Int	proc padZeros(self: StringName; digits: Int): String		466
+nim	trimPrefix	gdext/stringtools.html#trimPrefix,StringName,String	proc trimPrefix(self: StringName; prefix: String): String		468
+nim	trimSuffix	gdext/stringtools.html#trimSuffix,StringName,String	proc trimSuffix(self: StringName; suffix: String): String		470
+nim	toAsciiBuffer	gdext/stringtools.html#toAsciiBuffer,StringName	proc toAsciiBuffer(self: StringName): PackedByteArray		472
+nim	toUtf8Buffer	gdext/stringtools.html#toUtf8Buffer,StringName	proc toUtf8Buffer(self: StringName): PackedByteArray		474
+nim	toUtf16Buffer	gdext/stringtools.html#toUtf16Buffer,StringName	proc toUtf16Buffer(self: StringName): PackedByteArray		476
+nim	toUtf32Buffer	gdext/stringtools.html#toUtf32Buffer,StringName	proc toUtf32Buffer(self: StringName): PackedByteArray		478
+nim	toWcharBuffer	gdext/stringtools.html#toWcharBuffer,StringName	proc toWcharBuffer(self: StringName): PackedByteArray		480
+nim	toMultibyteCharBuffer	gdext/stringtools.html#toMultibyteCharBuffer,StringName,String	proc toMultibyteCharBuffer(self: StringName; encoding: String = newGdString()): PackedByteArray		482
+nim	hexDecode	gdext/stringtools.html#hexDecode,StringName	proc hexDecode(self: StringName): PackedByteArray		484
+nim	hash	gdext/stringtools.html#hash,StringName	proc hash(self: StringName): Hash		486
 nim	`not`	gdext/stringtools.html#not,NodePath	proc `not`(left: NodePath): bool		8
 nim	`==`	gdext/stringtools.html#==,NodePath,NodePath	proc `==`(left: NodePath; right: NodePath): bool		9
 nim	isAbsolute	gdext/stringtools.html#isAbsolute,NodePath	proc isAbsolute(self: NodePath): bool		26
 nim	getNameCount	gdext/stringtools.html#getNameCount,NodePath	proc getNameCount(self: NodePath): Int		28
 nim	getName	gdext/stringtools.html#getName,NodePath,Int	proc getName(self: NodePath; idx: Int): StringName		30
-nim	getSubnameCount	gdext/stringtools.html#getSubnameCount,NodePath	proc getSubnameCount(self: NodePath): Int		33
-nim	hash	gdext/stringtools.html#hash,NodePath	proc hash(self: NodePath): Hash		35
-nim	getSubname	gdext/stringtools.html#getSubname,NodePath,Int	proc getSubname(self: NodePath; idx: Int): StringName		37
-nim	getConcatenatedNames	gdext/stringtools.html#getConcatenatedNames,NodePath	proc getConcatenatedNames(self: NodePath): StringName		40
-nim	getConcatenatedSubnames	gdext/stringtools.html#getConcatenatedSubnames,NodePath	proc getConcatenatedSubnames(self: NodePath): StringName		42
-nim	slice	gdext/stringtools.html#slice,NodePath,Int,Int	proc slice(self: NodePath; begin: Int; end: Int = 2147483647): NodePath		44
-nim	getAsPropertyPath	gdext/stringtools.html#getAsPropertyPath,NodePath	proc getAsPropertyPath(self: NodePath): NodePath		47
-nim	isEmpty	gdext/stringtools.html#isEmpty,NodePath	proc isEmpty(self: NodePath): bool		49
-nim	newNodePath	gdext/stringtools.html#newNodePath,string_2	proc newNodePath(str: string): NodePath		31
-nim	gdstring	gdext/stringtools.html#gdstring.t,varargs[untyped]	template gdstring(args: varargs[untyped]): untyped		33
-nim	stringname	gdext/stringtools.html#stringname.t,varargs[untyped]	template stringname(args: varargs[untyped]): untyped		34
-nim	nodepath	gdext/stringtools.html#nodepath.t,varargs[untyped]	template nodepath(args: varargs[untyped]): untyped		35
-nim	`$`	gdext/stringtools.html#$,String	proc `$`(s: String): string		37
-nim	`$`	gdext/stringtools.html#$,StringName	proc `$`(s: StringName): string		45
-nim	`$`	gdext/stringtools.html#$,NodePath	proc `$`(s: NodePath): string		46
-nimgrp	isvalidhtmlcolor	gdext/stringtools.html#isValidHtmlColor-procs-all	proc		499
-nimgrp	replace	gdext/stringtools.html#replace-procs-all	proc		346
-nimgrp	findn	gdext/stringtools.html#findn-procs-all	proc		305
-nimgrp	tocamelcase	gdext/stringtools.html#toCamelCase-procs-all	proc		377
-nimgrp	dedent	gdext/stringtools.html#dedent-procs-all	proc		431
-nimgrp	hextoint	gdext/stringtools.html#hexToInt-procs-all	proc		509
-nimgrp	getfile	gdext/stringtools.html#getFile-procs-all	proc		463
-nimgrp	replacechars	gdext/stringtools.html#replaceChars-procs-all	proc		355
-nimgrp	getextension	gdext/stringtools.html#getExtension-procs-all	proc		418
-nimgrp	getbasedir	gdext/stringtools.html#getBaseDir-procs-all	proc		461
-nimgrp	trimsuffix	gdext/stringtools.html#trimSuffix-procs-all	proc		528
-nimgrp	beginswith	gdext/stringtools.html#beginsWith-procs-all	proc		326
-nimgrp	trimprefix	gdext/stringtools.html#trimPrefix-procs-all	proc		525
-nimgrp	getbasename	gdext/stringtools.html#getBasename-procs-all	proc		420
-nimgrp	getslicecount	gdext/stringtools.html#getSliceCount-procs-all	proc		299
-nimgrp	naturalcasecmpto	gdext/stringtools.html#naturalcasecmpTo-procs-all	proc		276
-nimgrp	issubsequenceofn	gdext/stringtools.html#isSubsequenceOfn-procs-all	proc		335
-nimgrp	removechar	gdext/stringtools.html#removeChar-procs-all	proc		358
-nimgrp	md5text	gdext/stringtools.html#md5Text-procs-all	proc		435
-nimgrp	pathjoin	gdext/stringtools.html#pathJoin-procs-all	proc		422
-nimgrp	simplifypath	gdext/stringtools.html#simplifyPath-procs-all	proc		459
-nimgrp	getslice	gdext/stringtools.html#getSlice-procs-all	proc		293
-nimgrp	naturalnocasecmpto	gdext/stringtools.html#naturalnocasecmpTo-procs-all	proc		279
-nimgrp	sha1text	gdext/stringtools.html#sha1Text-procs-all	proc		437
-nimgrp	isvalidhexnumber	gdext/stringtools.html#isValidHexNumber-procs-all	proc		496
-nimgrp	padzeros	gdext/stringtools.html#padZeros-procs-all	proc		522
-nimgrp	[]	gdext/stringtools.html#[]-procs-all	proc		15
-nimgrp	rfindn	gdext/stringtools.html#rfindn-procs-all	proc		317
+nim	getSubnameCount	gdext/stringtools.html#getSubnameCount,NodePath	proc getSubnameCount(self: NodePath): Int		32
+nim	hash	gdext/stringtools.html#hash,NodePath	proc hash(self: NodePath): Hash		34
+nim	getSubname	gdext/stringtools.html#getSubname,NodePath,Int	proc getSubname(self: NodePath; idx: Int): StringName		36
+nim	getConcatenatedNames	gdext/stringtools.html#getConcatenatedNames,NodePath	proc getConcatenatedNames(self: NodePath): StringName		38
+nim	getConcatenatedSubnames	gdext/stringtools.html#getConcatenatedSubnames,NodePath	proc getConcatenatedSubnames(self: NodePath): StringName		40
+nim	slice	gdext/stringtools.html#slice,NodePath,Int,Int	proc slice(self: NodePath; begin: Int; end: Int = 2147483647): NodePath		42
+nim	getAsPropertyPath	gdext/stringtools.html#getAsPropertyPath,NodePath	proc getAsPropertyPath(self: NodePath): NodePath		44
+nim	isEmpty	gdext/stringtools.html#isEmpty,NodePath	proc isEmpty(self: NodePath): bool		46
+nim	newNodePath	gdext/stringtools.html#newNodePath,string_2	proc newNodePath(str: string): NodePath		27
+nim	gdstring	gdext/stringtools.html#gdstring.t,varargs[untyped]	template gdstring(args: varargs[untyped]): untyped		29
+nim	stringname	gdext/stringtools.html#stringname.t,varargs[untyped]	template stringname(args: varargs[untyped]): untyped		30
+nim	nodepath	gdext/stringtools.html#nodepath.t,varargs[untyped]	template nodepath(args: varargs[untyped]): untyped		31
+nim	`$`	gdext/stringtools.html#$,String	proc `$`(s: String): string		33
+nim	`$`	gdext/stringtools.html#$,StringName	proc `$`(s: StringName): string		41
+nim	`$`	gdext/stringtools.html#$,NodePath	proc `$`(s: NodePath): string		42
+nimgrp	isvalidhtmlcolor	gdext/stringtools.html#isValidHtmlColor-procs-all	proc		454
+nimgrp	replace	gdext/stringtools.html#replace-procs-all	proc		326
+nimgrp	findn	gdext/stringtools.html#findn-procs-all	proc		298
+nimgrp	tocamelcase	gdext/stringtools.html#toCamelCase-procs-all	proc		348
+nimgrp	dedent	gdext/stringtools.html#dedent-procs-all	proc		390
+nimgrp	hextoint	gdext/stringtools.html#hexToInt-procs-all	proc		464
+nimgrp	getfile	gdext/stringtools.html#getFile-procs-all	proc		420
+nimgrp	replacechars	gdext/stringtools.html#replaceChars-procs-all	proc		332
+nimgrp	getextension	gdext/stringtools.html#getExtension-procs-all	proc		380
+nimgrp	getbasedir	gdext/stringtools.html#getBaseDir-procs-all	proc		418
+nimgrp	trimsuffix	gdext/stringtools.html#trimSuffix-procs-all	proc		478
+nimgrp	beginswith	gdext/stringtools.html#beginsWith-procs-all	proc		312
+nimgrp	trimprefix	gdext/stringtools.html#trimPrefix-procs-all	proc		476
+nimgrp	getbasename	gdext/stringtools.html#getBasename-procs-all	proc		382
+nimgrp	getslicecount	gdext/stringtools.html#getSliceCount-procs-all	proc		294
+nimgrp	naturalcasecmpto	gdext/stringtools.html#naturalcasecmpTo-procs-all	proc		278
+nimgrp	issubsequenceofn	gdext/stringtools.html#isSubsequenceOfn-procs-all	proc		318
+nimgrp	removechar	gdext/stringtools.html#removeChar-procs-all	proc		334
+nimgrp	md5text	gdext/stringtools.html#md5Text-procs-all	proc		394
+nimgrp	pathjoin	gdext/stringtools.html#pathJoin-procs-all	proc		384
+nimgrp	simplifypath	gdext/stringtools.html#simplifyPath-procs-all	proc		416
+nimgrp	getslice	gdext/stringtools.html#getSlice-procs-all	proc		290
+nimgrp	naturalnocasecmpto	gdext/stringtools.html#naturalnocasecmpTo-procs-all	proc		280
+nimgrp	sha1text	gdext/stringtools.html#sha1Text-procs-all	proc		396
+nimgrp	isvalidhexnumber	gdext/stringtools.html#isValidHexNumber-procs-all	proc		452
+nimgrp	padzeros	gdext/stringtools.html#padZeros-procs-all	proc		474
+nimgrp	[]	gdext/stringtools.html#[]-procs-all	proc		13
+nimgrp	rfindn	gdext/stringtools.html#rfindn-procs-all	proc		306
 nimgrp	<	gdext/stringtools.html#<-procs-all	proc		65
-nimgrp	toasciibuffer	gdext/stringtools.html#toAsciiBuffer-procs-all	proc		531
-nimgrp	xmlescape	gdext/stringtools.html#xmlEscape-procs-all	proc		465
-nimgrp	stripescapes	gdext/stringtools.html#stripEscapes-procs-all	proc		410
-nimgrp	find	gdext/stringtools.html#find-procs-all	proc		302
-nimgrp	tolower	gdext/stringtools.html#toLower-procs-all	proc		399
-nimgrp	tofloat	gdext/stringtools.html#toFloat-procs-all	proc		507
-nimgrp	join	gdext/stringtools.html#join-procs-all	proc		394
-nimgrp	rfind	gdext/stringtools.html#rfind-procs-all	proc		314
-nimgrp	isvalidint	gdext/stringtools.html#isValidInt-procs-all	proc		492
+nimgrp	toasciibuffer	gdext/stringtools.html#toAsciiBuffer-procs-all	proc		480
+nimgrp	xmlescape	gdext/stringtools.html#xmlEscape-procs-all	proc		422
+nimgrp	stripescapes	gdext/stringtools.html#stripEscapes-procs-all	proc		374
+nimgrp	find	gdext/stringtools.html#find-procs-all	proc		296
+nimgrp	tolower	gdext/stringtools.html#toLower-procs-all	proc		366
+nimgrp	tofloat	gdext/stringtools.html#toFloat-procs-all	proc		462
+nimgrp	join	gdext/stringtools.html#join-procs-all	proc		362
+nimgrp	rfind	gdext/stringtools.html#rfind-procs-all	proc		304
+nimgrp	isvalidint	gdext/stringtools.html#isValidInt-procs-all	proc		448
 nimgrp	==	gdext/stringtools.html#==-procs-all	proc		64
-nimgrp	format	gdext/stringtools.html#format-procs-all	proc		343
-nimgrp	removechars	gdext/stringtools.html#removeChars-procs-all	proc		361
-nimgrp	countn	gdext/stringtools.html#countn-procs-all	proc		311
-nimgrp	hexdecode	gdext/stringtools.html#hexDecode-procs-all	proc		544
-nimgrp	matchn	gdext/stringtools.html#matchn-procs-all	proc		323
-nimgrp	isempty	gdext/stringtools.html#isEmpty-procs-all	proc		447
-nimgrp	toutf32buffer	gdext/stringtools.html#toUtf32Buffer-procs-all	proc		537
-nimgrp	getslicec	gdext/stringtools.html#getSlicec-procs-all	proc		296
-nimgrp	bintoint	gdext/stringtools.html#binToInt-procs-all	proc		511
-nimgrp	isvalidunicodeidentifier	gdext/stringtools.html#isValidUnicodeIdentifier-procs-all	proc		488
-nimgrp	reverse	gdext/stringtools.html#reverse-procs-all	proc		367
-nimgrp	casecmpto	gdext/stringtools.html#casecmpTo-procs-all	proc		270
-nimgrp	isvalidfilename	gdext/stringtools.html#isValidFilename-procs-all	proc		503
-nimgrp	indent	gdext/stringtools.html#indent-procs-all	proc		428
-nimgrp	contains	gdext/stringtools.html#contains-procs-all	proc		449
-nimgrp	toutf8buffer	gdext/stringtools.html#toUtf8Buffer-procs-all	proc		533
-nimgrp	tomultibytecharbuffer	gdext/stringtools.html#toMultibyteCharBuffer-procs-all	proc		541
+nimgrp	format	gdext/stringtools.html#format-procs-all	proc		324
+nimgrp	removechars	gdext/stringtools.html#removeChars-procs-all	proc		336
+nimgrp	countn	gdext/stringtools.html#countn-procs-all	proc		302
+nimgrp	hexdecode	gdext/stringtools.html#hexDecode-procs-all	proc		492
+nimgrp	matchn	gdext/stringtools.html#matchn-procs-all	proc		310
+nimgrp	isempty	gdext/stringtools.html#isEmpty-procs-all	proc		406
+nimgrp	toutf32buffer	gdext/stringtools.html#toUtf32Buffer-procs-all	proc		486
+nimgrp	getslicec	gdext/stringtools.html#getSlicec-procs-all	proc		292
+nimgrp	bintoint	gdext/stringtools.html#binToInt-procs-all	proc		466
+nimgrp	isvalidunicodeidentifier	gdext/stringtools.html#isValidUnicodeIdentifier-procs-all	proc		444
+nimgrp	reverse	gdext/stringtools.html#reverse-procs-all	proc		340
+nimgrp	casecmpto	gdext/stringtools.html#casecmpTo-procs-all	proc		274
+nimgrp	isvalidfilename	gdext/stringtools.html#isValidFilename-procs-all	proc		458
+nimgrp	indent	gdext/stringtools.html#indent-procs-all	proc		388
+nimgrp	contains	gdext/stringtools.html#contains-procs-all	proc		408
+nimgrp	toutf8buffer	gdext/stringtools.html#toUtf8Buffer-procs-all	proc		482
+nimgrp	tomultibytecharbuffer	gdext/stringtools.html#toMultibyteCharBuffer-procs-all	proc		490
 nimgrp	%	gdext/stringtools.html#%-procs-all	proc		59
-nimgrp	cunescape	gdext/stringtools.html#cUnescape-procs-all	proc		478
-nimgrp	isvalididentifier	gdext/stringtools.html#isValidIdentifier-procs-all	proc		490
-nimgrp	sha256text	gdext/stringtools.html#sha256Text-procs-all	proc		439
-nimgrp	issubsequenceof	gdext/stringtools.html#isSubsequenceOf-procs-all	proc		332
-nimgrp	toutf16buffer	gdext/stringtools.html#toUtf16Buffer-procs-all	proc		535
-nimgrp	isvalidasciiidentifier	gdext/stringtools.html#isValidAsciiIdentifier-procs-all	proc		486
-nimgrp	cescape	gdext/stringtools.html#cEscape-procs-all	proc		476
-nimgrp	paddecimals	gdext/stringtools.html#padDecimals-procs-all	proc		519
+nimgrp	cunescape	gdext/stringtools.html#cUnescape-procs-all	proc		434
+nimgrp	isvalididentifier	gdext/stringtools.html#isValidIdentifier-procs-all	proc		446
+nimgrp	sha256text	gdext/stringtools.html#sha256Text-procs-all	proc		398
+nimgrp	issubsequenceof	gdext/stringtools.html#isSubsequenceOf-procs-all	proc		316
+nimgrp	toutf16buffer	gdext/stringtools.html#toUtf16Buffer-procs-all	proc		484
+nimgrp	isvalidasciiidentifier	gdext/stringtools.html#isValidAsciiIdentifier-procs-all	proc		442
+nimgrp	cescape	gdext/stringtools.html#cEscape-procs-all	proc		432
+nimgrp	paddecimals	gdext/stringtools.html#padDecimals-procs-all	proc		472
 nimgrp	newgdstring	gdext/stringtools.html#newGdString-procs-all	proc		5
-nimgrp	length	gdext/stringtools.html#length-procs-all	proc		288
-nimgrp	substr	gdext/stringtools.html#substr-procs-all	proc		290
-nimgrp	repeat	gdext/stringtools.html#repeat-procs-all	proc		364
-nimgrp	splitfloats	gdext/stringtools.html#splitFloats-procs-all	proc		391
-nimgrp	hash	gdext/stringtools.html#hash-procs-all	proc		433
-nimgrp	newstringname	gdext/stringtools.html#newStringName-procs-all	proc		9
-nimgrp	newnodepath	gdext/stringtools.html#newNodePath-procs-all	proc		13
-nimgrp	tokebabcase	gdext/stringtools.html#toKebabCase-procs-all	proc		383
-nimgrp	toint	gdext/stringtools.html#toInt-procs-all	proc		505
-nimgrp	replacechar	gdext/stringtools.html#replaceChar-procs-all	proc		352
-nimgrp	stripedges	gdext/stringtools.html#stripEdges-procs-all	proc		407
-nimgrp	urifiledecode	gdext/stringtools.html#uriFileDecode-procs-all	proc		474
-nimgrp	lstrip	gdext/stringtools.html#lstrip-procs-all	proc		412
-nimgrp	capitalize	gdext/stringtools.html#capitalize-procs-all	proc		375
-nimgrp	containsn	gdext/stringtools.html#containsn-procs-all	proc		452
-nimgrp	towcharbuffer	gdext/stringtools.html#toWcharBuffer-procs-all	proc		539
-nimgrp	uridecode	gdext/stringtools.html#uriDecode-procs-all	proc		472
+nimgrp	length	gdext/stringtools.html#length-procs-all	proc		286
+nimgrp	substr	gdext/stringtools.html#substr-procs-all	proc		288
+nimgrp	repeat	gdext/stringtools.html#repeat-procs-all	proc		338
+nimgrp	splitfloats	gdext/stringtools.html#splitFloats-procs-all	proc		360
+nimgrp	hash	gdext/stringtools.html#hash-procs-all	proc		392
+nimgrp	newstringname	gdext/stringtools.html#newStringName-procs-all	proc		8
+nimgrp	newnodepath	gdext/stringtools.html#newNodePath-procs-all	proc		11
+nimgrp	tokebabcase	gdext/stringtools.html#toKebabCase-procs-all	proc		354
+nimgrp	toint	gdext/stringtools.html#toInt-procs-all	proc		460
+nimgrp	replacechar	gdext/stringtools.html#replaceChar-procs-all	proc		330
+nimgrp	stripedges	gdext/stringtools.html#stripEdges-procs-all	proc		372
+nimgrp	urifiledecode	gdext/stringtools.html#uriFileDecode-procs-all	proc		430
+nimgrp	lstrip	gdext/stringtools.html#lstrip-procs-all	proc		376
+nimgrp	capitalize	gdext/stringtools.html#capitalize-procs-all	proc		346
+nimgrp	containsn	gdext/stringtools.html#containsn-procs-all	proc		410
+nimgrp	towcharbuffer	gdext/stringtools.html#toWcharBuffer-procs-all	proc		488
+nimgrp	uridecode	gdext/stringtools.html#uriDecode-procs-all	proc		428
 nimgrp	filecasecmpto	gdext/stringtools.html#filecasecmpTo-procs-all	proc		282
-nimgrp	nocasecmpto	gdext/stringtools.html#nocasecmpTo-procs-all	proc		273
-nimgrp	similarity	gdext/stringtools.html#similarity-procs-all	proc		340
-nimgrp	isrelativepath	gdext/stringtools.html#isRelativePath-procs-all	proc		457
-nimgrp	xmlunescape	gdext/stringtools.html#xmlUnescape-procs-all	proc		468
+nimgrp	nocasecmpto	gdext/stringtools.html#nocasecmpTo-procs-all	proc		276
+nimgrp	similarity	gdext/stringtools.html#similarity-procs-all	proc		322
+nimgrp	isrelativepath	gdext/stringtools.html#isRelativePath-procs-all	proc		414
+nimgrp	xmlunescape	gdext/stringtools.html#xmlUnescape-procs-all	proc		424
 nimgrp	<=	gdext/stringtools.html#<=-procs-all	proc		66
 nimgrp	not	gdext/stringtools.html#not-procs-all	proc		60
-nimgrp	sha1buffer	gdext/stringtools.html#sha1Buffer-procs-all	proc		443
-nimgrp	isvalidfloat	gdext/stringtools.html#isValidFloat-procs-all	proc		494
-nimgrp	match	gdext/stringtools.html#match-procs-all	proc		320
-nimgrp	erase	gdext/stringtools.html#erase-procs-all	proc		372
-nimgrp	count	gdext/stringtools.html#count-procs-all	proc		308
-nimgrp	rstrip	gdext/stringtools.html#rstrip-procs-all	proc		415
-nimgrp	endswith	gdext/stringtools.html#endsWith-procs-all	proc		329
-nimgrp	right	gdext/stringtools.html#right-procs-all	proc		404
-nimgrp	validatefilename	gdext/stringtools.html#validateFilename-procs-all	proc		484
-nimgrp	sha256buffer	gdext/stringtools.html#sha256Buffer-procs-all	proc		445
-nimgrp	unicodeat	gdext/stringtools.html#unicodeAt-procs-all	proc		425
-nimgrp	rsplit	gdext/stringtools.html#rsplit-procs-all	proc		388
-nimgrp	left	gdext/stringtools.html#left-procs-all	proc		401
-nimgrp	uriencode	gdext/stringtools.html#uriEncode-procs-all	proc		470
-nimgrp	filenocasecmpto	gdext/stringtools.html#filenocasecmpTo-procs-all	proc		285
+nimgrp	sha1buffer	gdext/stringtools.html#sha1Buffer-procs-all	proc		402
+nimgrp	isvalidfloat	gdext/stringtools.html#isValidFloat-procs-all	proc		450
+nimgrp	match	gdext/stringtools.html#match-procs-all	proc		308
+nimgrp	erase	gdext/stringtools.html#erase-procs-all	proc		344
+nimgrp	count	gdext/stringtools.html#count-procs-all	proc		300
+nimgrp	rstrip	gdext/stringtools.html#rstrip-procs-all	proc		378
+nimgrp	endswith	gdext/stringtools.html#endsWith-procs-all	proc		314
+nimgrp	right	gdext/stringtools.html#right-procs-all	proc		370
+nimgrp	validatefilename	gdext/stringtools.html#validateFilename-procs-all	proc		440
+nimgrp	sha256buffer	gdext/stringtools.html#sha256Buffer-procs-all	proc		404
+nimgrp	unicodeat	gdext/stringtools.html#unicodeAt-procs-all	proc		386
+nimgrp	rsplit	gdext/stringtools.html#rsplit-procs-all	proc		358
+nimgrp	left	gdext/stringtools.html#left-procs-all	proc		368
+nimgrp	uriencode	gdext/stringtools.html#uriEncode-procs-all	proc		426
+nimgrp	filenocasecmpto	gdext/stringtools.html#filenocasecmpTo-procs-all	proc		284
 nimgrp	+	gdext/stringtools.html#+-procs-all	proc		67
-nimgrp	$	gdext/stringtools.html#$-procs-all	proc		37
-nimgrp	isabsolutepath	gdext/stringtools.html#isAbsolutePath-procs-all	proc		455
-nimgrp	jsonescape	gdext/stringtools.html#jsonEscape-procs-all	proc		480
-nimgrp	bigrams	gdext/stringtools.html#bigrams-procs-all	proc		338
-nimgrp	topascalcase	gdext/stringtools.html#toPascalCase-procs-all	proc		379
-nimgrp	isvalidipaddress	gdext/stringtools.html#isValidIpAddress-procs-all	proc		501
-nimgrp	split	gdext/stringtools.html#split-procs-all	proc		385
-nimgrp	tosnakecase	gdext/stringtools.html#toSnakeCase-procs-all	proc		381
-nimgrp	md5buffer	gdext/stringtools.html#md5Buffer-procs-all	proc		441
-nimgrp	lpad	gdext/stringtools.html#lpad-procs-all	proc		513
-nimgrp	rpad	gdext/stringtools.html#rpad-procs-all	proc		516
-nimgrp	validatenodename	gdext/stringtools.html#validateNodeName-procs-all	proc		482
-nimgrp	toupper	gdext/stringtools.html#toUpper-procs-all	proc		397
-nimgrp	replacen	gdext/stringtools.html#replacen-procs-all	proc		349
-nimgrp	insert	gdext/stringtools.html#insert-procs-all	proc		369
+nimgrp	$	gdext/stringtools.html#$-procs-all	proc		33
+nimgrp	isabsolutepath	gdext/stringtools.html#isAbsolutePath-procs-all	proc		412
+nimgrp	jsonescape	gdext/stringtools.html#jsonEscape-procs-all	proc		436
+nimgrp	bigrams	gdext/stringtools.html#bigrams-procs-all	proc		320
+nimgrp	topascalcase	gdext/stringtools.html#toPascalCase-procs-all	proc		350
+nimgrp	isvalidipaddress	gdext/stringtools.html#isValidIpAddress-procs-all	proc		456
+nimgrp	split	gdext/stringtools.html#split-procs-all	proc		356
+nimgrp	tosnakecase	gdext/stringtools.html#toSnakeCase-procs-all	proc		352
+nimgrp	md5buffer	gdext/stringtools.html#md5Buffer-procs-all	proc		400
+nimgrp	lpad	gdext/stringtools.html#lpad-procs-all	proc		468
+nimgrp	rpad	gdext/stringtools.html#rpad-procs-all	proc		470
+nimgrp	validatenodename	gdext/stringtools.html#validateNodeName-procs-all	proc		438
+nimgrp	toupper	gdext/stringtools.html#toUpper-procs-all	proc		364
+nimgrp	replacen	gdext/stringtools.html#replacen-procs-all	proc		328
+nimgrp	insert	gdext/stringtools.html#insert-procs-all	proc		342

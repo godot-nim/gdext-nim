@@ -40,17 +40,17 @@ proc getIndexed*(self: Object; propertyPath: NodePath): Variant =
   methodbind.ptrcall(self, [getPtr propertyPath], addr ret)
   (addr ret).decode_result(Variant)
 
-proc getPropertyList*(self: Object): TypedArray[Dictionary] =
+proc getPropertyList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_property_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getMethodList*(self: Object): TypedArray[Dictionary] =
+proc getMethodList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_method_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc propertyCanRevert*(self: Object; property: StringName): bool =
   expandMethodBind(className Object, "property_can_revert", 2619796661)
@@ -110,14 +110,15 @@ proc hasMeta*(self: Object; name: StringName): bool =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
-proc getMetaList*(self: Object): TypedArray[StringName] =
+proc getMetaList*(self: Object): Array[StringName] =
   expandMethodBind(className Object, "get_meta_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
-proc addUserSignal*(self: Object; signal: String; arguments: Array = newArray()): void =
+proc addUserSignal*(self: Object; signal: String; arguments: Array[Variant] = newArray[Variant]()): void =
   expandMethodBind(className Object, "add_user_signal", 85656714)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr signal, getPtr arguments])
 
 proc hasUserSignal*(self: Object; signal: StringName): bool =
@@ -130,7 +131,7 @@ proc removeUserSignal*(self: Object; signal: StringName): void =
   expandMethodBind(className Object, "remove_user_signal", 3304788590)
   methodbind.ptrcall(self, [getPtr signal])
 
-proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant, variant]): Error =
+proc emitSignal(self: Object; signal: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Object, "emit_signal", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr signal]
@@ -138,7 +139,7 @@ proc emitSignal*(self: Object; signal: Variant; args: varargs[Variant, variant])
 template emitSignal*(self: Object; signal: StringName; args: varargs[Variant, variant]): Error =
   emitSignal(self, variant signal, args)
 
-proc call*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc call(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
@@ -146,7 +147,7 @@ proc call*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Va
 template call*(self: Object; `method`: StringName; args: varargs[Variant, variant]): Variant =
   call(self, variant `method`, args)
 
-proc callDeferred*(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc callDeferred(self: Object; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Object, "call_deferred", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
@@ -158,8 +159,9 @@ proc setDeferred*(self: Object; property: StringName; value: Variant): void =
   expandMethodBind(className Object, "set_deferred", 3776071444)
   methodbind.ptrcall(self, [getPtr property, getPtr value])
 
-proc callv*(self: Object; `method`: StringName; argArray: Array): Variant =
+proc callv*(self: Object; `method`: StringName; argArray: Array[Variant]): Variant =
   expandMethodBind(className Object, "callv", 1260104456)
+  nilCheck argArray
   var ret: encoded Variant
   methodbind.ptrcall(self, [getPtr `method`, getPtr argArray], addr ret)
   (addr ret).decode_result(Variant)
@@ -182,23 +184,23 @@ proc hasSignal*(self: Object; signal: StringName): bool =
   methodbind.ptrcall(self, [getPtr signal], addr ret)
   (addr ret).decode_result(bool)
 
-proc getSignalList*(self: Object): TypedArray[Dictionary] =
+proc getSignalList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_signal_list", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getSignalConnectionList*(self: Object; signal: StringName): TypedArray[Dictionary] =
+proc getSignalConnectionList*(self: Object; signal: StringName): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_signal_connection_list", 3147814860)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr signal], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getIncomingConnections*(self: Object): TypedArray[Dictionary] =
+proc getIncomingConnections*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_incoming_connections", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc connect*(self: Object; signal: StringName; callable: Callable; flags: uint32 = 0'u32): Error =
   expandMethodBind(className Object, "connect", 1518946055)

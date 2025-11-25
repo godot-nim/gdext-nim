@@ -40,15 +40,16 @@ proc clearDefaultInputValues*(self: VisualShaderNode): void =
   expandMethodBind(className VisualShaderNode, "clear_default_input_values", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc setDefaultInputValues*(self: VisualShaderNode; values: Array): void =
+proc setDefaultInputValues*(self: VisualShaderNode; values: Array[Variant]): void =
   expandMethodBind(className VisualShaderNode, "set_default_input_values", 381264803)
+  nilCheck values
   methodbind.ptrcall(self, [getPtr values])
 
-proc getDefaultInputValues*(self: VisualShaderNode): Array =
+proc getDefaultInputValues*(self: VisualShaderNode): Array[Variant] =
   expandMethodBind(className VisualShaderNode, "get_default_input_values", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setFrame*(self: VisualShaderNode; frame: int32): void =
   expandMethodBind(className VisualShaderNode, "set_frame", 1286410249)

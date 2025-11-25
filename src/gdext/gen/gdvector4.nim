@@ -1,13 +1,13 @@
 # constant values
 
-const Vector4_Zero: Vector4 = vector4(0, 0, 0, 0)
-template Zero*(_: typedesc[Vector4]): Vector4 = Vector4_Zero
+# const Vector4_Zero: Vector4 = vector4(0, 0, 0, 0)
+# template Zero*(_: typedesc[Vector4]): Vector4 = Vector4_Zero
 
-const Vector4_One: Vector4 = vector4(1, 1, 1, 1)
-template One*(_: typedesc[Vector4]): Vector4 = Vector4_One
+# const Vector4_One: Vector4 = vector4(1, 1, 1, 1)
+# template One*(_: typedesc[Vector4]): Vector4 = Vector4_One
 
-const Vector4_Inf: Vector4 = vector4(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
-template Inf*(_: typedesc[Vector4]): Vector4 = Vector4_Inf
+# const Vector4_Inf: Vector4 = vector4(real_elem system.Inf, real_elem system.Inf, real_elem system.Inf, real_elem system.Inf)
+# template Inf*(_: typedesc[Vector4]): Vector4 = Vector4_Inf
 
 # `==(Vector4 Variant)`
 # `!=(Vector4 Variant)`
@@ -70,31 +70,23 @@ var `max(Vector4 Vector4)`: PtrBuiltinMethod
 var `maxf(Vector4 Float)`: PtrBuiltinMethod
 
 proc cubicInterpolate*(self: Vector4; b: Vector4; preA: Vector4; postB: Vector4; weight: Float): Vector4 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight]
-  `cubicInterpolate(Vector4 Vector4 Vector4 Vector4 Float)`(addr self, addr argArr[0], addr result, 4)
+  `cubicInterpolate(Vector4 Vector4 Vector4 Vector4 Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight], addr result)
 proc cubicInterpolateInTime*(self: Vector4; b: Vector4; preA: Vector4; postB: Vector4; weight: Float; bT: Float; preAT: Float; postBT: Float): Vector4 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT]
-  `cubicInterpolateInTime(Vector4 Vector4 Vector4 Vector4 Float Float Float Float)`(addr self, addr argArr[0], addr result, 7)
+  `cubicInterpolateInTime(Vector4 Vector4 Vector4 Vector4 Float Float Float Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT], addr result)
 proc snappedf*(self: Vector4; step: Float): Vector4 =
-  let argArr = [getPtr step]
-  `snappedf(Vector4 Float)`(addr self, addr argArr[0], addr result, 1)
+  `snappedf(Vector4 Float)`.call(addr self, [getPtr step], addr result)
 proc clampf*(self: Vector4; min: Float; max: Float): Vector4 =
-  let argArr = [getPtr min, getPtr max]
-  `clampf(Vector4 Float Float)`(addr self, addr argArr[0], addr result, 2)
+  `clampf(Vector4 Float Float)`.call(addr self, [getPtr min, getPtr max], addr result)
 proc inverse*(self: Vector4): Vector4 =
-  `inverse(Vector4)`(addr self, nil, addr result, 0)
+  `inverse(Vector4)`.call(addr self, [], addr result)
 proc min*(self: Vector4; with: Vector4): Vector4 =
-  let argArr = [getPtr with]
-  `min(Vector4 Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `min(Vector4 Vector4)`.call(addr self, [getPtr with], addr result)
 proc minf*(self: Vector4; with: Float): Vector4 =
-  let argArr = [getPtr with]
-  `minf(Vector4 Float)`(addr self, addr argArr[0], addr result, 1)
+  `minf(Vector4 Float)`.call(addr self, [getPtr with], addr result)
 proc max*(self: Vector4; with: Vector4): Vector4 =
-  let argArr = [getPtr with]
-  `max(Vector4 Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `max(Vector4 Vector4)`.call(addr self, [getPtr with], addr result)
 proc maxf*(self: Vector4; with: Float): Vector4 =
-  let argArr = [getPtr with]
-  `maxf(Vector4 Float)`(addr self, addr argArr[0], addr result, 1)
+  `maxf(Vector4 Float)`.call(addr self, [getPtr with], addr result)
 
 proc load_Vector4_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `cubicInterpolate(Vector4 Vector4 Vector4 Vector4 Float)` = load(VariantType_Vector4, "cubic_interpolate", 726768410)

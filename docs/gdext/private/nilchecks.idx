@@ -1,0 +1,8 @@
+nimTitle	nilchecks	gdext/private/nilchecks.html	module gdext/private/nilchecks		0
+nim	newArrayInternal	gdext/private/nilchecks.html#newArrayInternal	proc newArrayInternal(): pointer		8
+nim	newTypedArrayInternal	gdext/private/nilchecks.html#newTypedArrayInternal,VariantType,pointer	proc newTypedArrayInternal(typ: VariantType; className: pointer): pointer		10
+nim	newDictionaryInternal	gdext/private/nilchecks.html#newDictionaryInternal	proc newDictionaryInternal(): pointer		15
+nim	newTypedDictionaryInternal	gdext/private/nilchecks.html#newTypedDictionaryInternal,VariantType,pointer,VariantType,pointer	proc newTypedDictionaryInternal(atyp: VariantType; aclassName: pointer;\n                           btyp: VariantType; bclassname: pointer): pointer		17
+nim	nilCheck	gdext/private/nilchecks.html#nilCheck,Array[T]	proc nilCheck[T](self: Array[T])		22
+nim	nilCheck	gdext/private/nilchecks.html#nilCheck,Dictionary[A,B]	proc nilCheck[A, B](self: Dictionary[A, B])		30
+nimgrp	nilcheck	gdext/private/nilchecks.html#nilCheck-procs-all	proc		22

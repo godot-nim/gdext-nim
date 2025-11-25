@@ -6,20 +6,23 @@ import gdmultiplayerpeer; export gdmultiplayerpeer
 
 expandOnClassImported(WebRTCMultiplayerPeer, MultiplayerPeer)
 
-proc createServer*(self: WebRTCMultiplayerPeer; channelsConfig: Array = newArray()): Error =
+proc createServer*(self: WebRTCMultiplayerPeer; channelsConfig: Array[Variant] = newArray[Variant]()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_server", 2865356025)
+  nilCheck channelsConfig
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr channelsConfig], addr ret)
   (addr ret).decode_result(Error)
 
-proc createClient*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = newArray()): Error =
+proc createClient*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array[Variant] = newArray[Variant]()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_client", 2641732907)
+  nilCheck channelsConfig
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peerId, getPtr channelsConfig], addr ret)
   (addr ret).decode_result(Error)
 
-proc createMesh*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array = newArray()): Error =
+proc createMesh*(self: WebRTCMultiplayerPeer; peerId: int32; channelsConfig: Array[Variant] = newArray[Variant]()): Error =
   expandMethodBind(className WebRTCMultiplayerPeer, "create_mesh", 2641732907)
+  nilCheck channelsConfig
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr peerId, getPtr channelsConfig], addr ret)
   (addr ret).decode_result(Error)
@@ -40,14 +43,14 @@ proc hasPeer*(self: WebRTCMultiplayerPeer; peerId: int32): bool =
   methodbind.ptrcall(self, [getPtr peerId], addr ret)
   (addr ret).decode_result(bool)
 
-proc getPeer*(self: WebRTCMultiplayerPeer; peerId: int32): Dictionary =
+proc getPeer*(self: WebRTCMultiplayerPeer; peerId: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className WebRTCMultiplayerPeer, "get_peer", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr peerId], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getPeers*(self: WebRTCMultiplayerPeer): Dictionary =
+proc getPeers*(self: WebRTCMultiplayerPeer): Dictionary[Variant, Variant] =
   expandMethodBind(className WebRTCMultiplayerPeer, "get_peers", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])

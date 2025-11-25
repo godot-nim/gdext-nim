@@ -32,11 +32,11 @@ proc getDefaultTextureParameter*(self: Shader; name: StringName; index: int32 = 
   methodbind.ptrcall(self, [getPtr name, getPtr index], addr ret)
   (addr ret).decode_result(gdref Texture)
 
-proc getShaderUniformList*(self: Shader; getGroups: bool = false): Array =
+proc getShaderUniformList*(self: Shader; getGroups: bool = false): Array[Variant] =
   expandMethodBind(className Shader, "get_shader_uniform_list", 1230511656)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr getGroups], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc inspectNativeShaderCode*(self: Shader): void =
   expandMethodBind(className Shader, "inspect_native_shader_code", 3218959716)

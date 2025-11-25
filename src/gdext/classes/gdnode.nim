@@ -117,11 +117,11 @@ proc printOrphanNodes*(_: typedesc[Node]): void =
   expandMethodBind(className Node, "print_orphan_nodes", 3218959716)
   methodbind.ptrcall([])
 
-proc getOrphanNodeIds*(_: typedesc[Node]): TypedArray[Int] =
+proc getOrphanNodeIds*(_: typedesc[Node]): Array[Int] =
   expandMethodBind(className Node, "get_orphan_node_ids", 2915620761)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall([], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc addSibling*(self: Node; sibling: Node; forceReadableName: bool = false): void =
   expandMethodBind(className Node, "add_sibling", 2570952461)
@@ -155,11 +155,11 @@ proc getChildCount*(self: Node; includeInternal: bool = false): int32 =
   methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
   (addr ret).decode_result(int32)
 
-proc getChildren*(self: Node; includeInternal: bool = false): TypedArray[Node] =
+proc getChildren*(self: Node; includeInternal: bool = false): Array[Node] =
   expandMethodBind(className Node, "get_children", 873284517)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [getPtr includeInternal], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc getChild*(self: Node; idx: int32; includeInternal: bool = false): Node =
   expandMethodBind(className Node, "get_child", 541253412)
@@ -197,11 +197,11 @@ proc findChild*(self: Node; pattern: String; recursive: bool = true; owned: bool
   methodbind.ptrcall(self, [getPtr pattern, getPtr recursive, getPtr owned], addr ret)
   (addr ret).decode_result(Node)
 
-proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): TypedArray[Node] =
+proc findChildren*(self: Node; pattern: String; `type`: String = newGdString(); recursive: bool = true; owned: bool = true): Array[Node] =
   expandMethodBind(className Node, "find_children", 2560337219)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [getPtr pattern, getPtr `type`, getPtr recursive, getPtr owned], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc findParent*(self: Node; pattern: String): Node =
   expandMethodBind(className Node, "find_parent", 1140089439)
@@ -215,11 +215,11 @@ proc hasNodeAndResource*(self: Node; path: NodePath): bool =
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(bool)
 
-proc getNodeAndResource*(self: Node; path: NodePath): Array =
+proc getNodeAndResource*(self: Node; path: NodePath): Array[Variant] =
   expandMethodBind(className Node, "get_node_and_resource", 502563882)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr path], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc isInsideTree*(self: Node): bool =
   expandMethodBind(className Node, "is_inside_tree", 36873697)
@@ -275,11 +275,11 @@ proc moveChild*(self: Node; childNode: Node; toIndex: int32): void =
   expandMethodBind(className Node, "move_child", 3315886247)
   methodbind.ptrcall(self, [getPtr childNode, getPtr toIndex])
 
-proc getGroups*(self: Node): TypedArray[StringName] =
+proc getGroups*(self: Node): Array[StringName] =
   expandMethodBind(className Node, "get_groups", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc setOwner*(self: Node; owner: Node): void =
   expandMethodBind(className Node, "set_owner", 1078189570)
@@ -331,8 +331,9 @@ proc propagateNotification*(self: Node; what: int32): void =
   expandMethodBind(className Node, "propagate_notification", 1286410249)
   methodbind.ptrcall(self, [getPtr what])
 
-proc propagateCall*(self: Node; `method`: StringName; args: Array = newArray(); parentFirst: bool = false): void =
+proc propagateCall*(self: Node; `method`: StringName; args: Array[Variant] = newArray[Variant](); parentFirst: bool = false): void =
   expandMethodBind(className Node, "propagate_call", 1871007965)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr `method`, getPtr args, getPtr parentFirst])
 
 proc setPhysicsProcess*(self: Node; enable: bool): void =
@@ -697,7 +698,7 @@ proc atrN*(self: Node; message: String; pluralMessage: StringName; n: int32; con
   methodbind.ptrcall(self, [getPtr message, getPtr pluralMessage, getPtr n, getPtr context], addr ret)
   (addr ret).decode_result(String)
 
-proc rpc*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Error =
+proc rpc(self: Node; `method`: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Node, "rpc", 4047867050)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
@@ -705,7 +706,7 @@ proc rpc*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Error
 template rpc*(self: Node; `method`: StringName; args: varargs[Variant, variant]): Error =
   rpc(self, variant `method`, args)
 
-proc rpcId*(self: Node; peerId: Variant; `method`: Variant; args: varargs[Variant, variant]): Error =
+proc rpcId(self: Node; peerId: Variant; `method`: Variant; args: varargs[Variant, variant]): Error =
   expandMethodBind(className Node, "rpc_id", 361499283)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr peerId, getTypedPtr `method`]
@@ -717,7 +718,7 @@ proc updateConfigurationWarnings*(self: Node): void =
   expandMethodBind(className Node, "update_configuration_warnings", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc callDeferredThreadGroup*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc callDeferredThreadGroup(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Node, "call_deferred_thread_group", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]
@@ -733,7 +734,7 @@ proc notifyDeferredThreadGroup*(self: Node; what: int32): void =
   expandMethodBind(className Node, "notify_deferred_thread_group", 1286410249)
   methodbind.ptrcall(self, [getPtr what])
 
-proc callThreadSafe*(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
+proc callThreadSafe(self: Node; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className Node, "call_thread_safe", 3400424181)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]

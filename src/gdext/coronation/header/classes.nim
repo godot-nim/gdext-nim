@@ -4,6 +4,7 @@ import gdext/private/staticevents; export staticevents
 import gdext/private/propertyinfo; export propertyinfo
 import gdext/private/internalobjecttools
 import gdext/private/classindex; export classindex
+import gdext/private/nilchecks; export nilchecks
 import gdext/builtinindex; export builtinindex
 import gdext/stringtools; export stringtools
 import gdext/arraytools; export arraytools
@@ -49,3 +50,5 @@ template expandOnClassImported*(Class, Super: typedesc) =
   export Class
   proc register_callbacks {.execon: event"EntryPoint".} =
     callbackTable[className Class] = addr Class.callbacks
+
+converter toStringName*(s: String): StringName = newStringName(s)

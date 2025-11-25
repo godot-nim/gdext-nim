@@ -39,11 +39,11 @@ proc getResolveItemAddress*(self: IP; id: int32): String =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(String)
 
-proc getResolveItemAddresses*(self: IP; id: int32): Array =
+proc getResolveItemAddresses*(self: IP; id: int32): Array[Variant] =
   expandMethodBind(className IP, "get_resolve_item_addresses", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr id], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc eraseResolveItem*(self: IP; id: int32): void =
   expandMethodBind(className IP, "erase_resolve_item", 1286410249)
@@ -55,11 +55,11 @@ proc getLocalAddresses*(self: IP): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getLocalInterfaces*(self: IP): TypedArray[Dictionary] =
+proc getLocalInterfaces*(self: IP): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className IP, "get_local_interfaces", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc clearCache*(self: IP; hostname: String = newGdString()): void =
   expandMethodBind(className IP, "clear_cache", 3005725572)

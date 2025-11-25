@@ -32,24 +32,26 @@ proc getGodotSkeleton*(self: GLTFSkeleton): Skeleton3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Skeleton3D)
 
-proc getUniqueNames*(self: GLTFSkeleton): TypedArray[String] =
+proc getUniqueNames*(self: GLTFSkeleton): Array[String] =
   expandMethodBind(className GLTFSkeleton, "get_unique_names", 2915620761)
-  var ret: encoded TypedArray[String]
+  var ret: encoded Array[String]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  (addr ret).decode_result(Array[String])
 
-proc setUniqueNames*(self: GLTFSkeleton; uniqueNames: TypedArray[String]): void =
+proc setUniqueNames*(self: GLTFSkeleton; uniqueNames: Array[String]): void =
   expandMethodBind(className GLTFSkeleton, "set_unique_names", 381264803)
+  nilCheck uniqueNames
   methodbind.ptrcall(self, [getPtr uniqueNames])
 
-proc getGodotBoneNode*(self: GLTFSkeleton): Dictionary =
+proc getGodotBoneNode*(self: GLTFSkeleton): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFSkeleton, "get_godot_bone_node", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setGodotBoneNode*(self: GLTFSkeleton; godotBoneNode: Dictionary): void =
+proc setGodotBoneNode*(self: GLTFSkeleton; godotBoneNode: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFSkeleton, "set_godot_bone_node", 4155329257)
+  nilCheck godotBoneNode
   methodbind.ptrcall(self, [getPtr godotBoneNode])
 
 proc getBoneAttachmentCount*(self: GLTFSkeleton): int32 =

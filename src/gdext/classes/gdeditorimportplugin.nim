@@ -31,7 +31,7 @@ proc registerVirtual_getRecognizedExtensions*[T: EditorImportPlugin](Self: typed
   Self.vmethods[newStringName"_get_recognized_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorImportPlugin](p_instance).getRecognizedExtensions().encode(r_ret)
 
-method getImportOptions*(self: EditorImportPlugin; path: String; presetIndex: int32): TypedArray[Dictionary] {.base.} = (discard)
+method getImportOptions*(self: EditorImportPlugin; path: String; presetIndex: int32): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getImportOptions*[T: EditorImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_import_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorImportPlugin](p_instance).getImportOptions(p_args[0].decode(String), p_args[1].decode(int32)).encode(r_ret)
@@ -61,23 +61,24 @@ proc registerVirtual_getFormatVersion*[T: EditorImportPlugin](Self: typedesc[T])
   Self.vmethods[newStringName"_get_format_version"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorImportPlugin](p_instance).getFormatVersion().encode(r_ret)
 
-method getOptionVisibility*(self: EditorImportPlugin; path: String; optionName: StringName; options: Dictionary): bool {.base.} = (discard)
+method getOptionVisibility*(self: EditorImportPlugin; path: String; optionName: StringName; options: Dictionary[Variant, Variant]): bool {.base.} = (discard)
 proc registerVirtual_getOptionVisibility*[T: EditorImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_option_visibility"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorImportPlugin](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(StringName), p_args[2].decode(Dictionary)).encode(r_ret)
+    errproof: cast[EditorImportPlugin](p_instance).getOptionVisibility(p_args[0].decode(String), p_args[1].decode(StringName), p_args[2].decode(Dictionary[Variant, Variant])).encode(r_ret)
 
-method `import`*(self: EditorImportPlugin; sourceFile: String; savePath: String; options: Dictionary; platformVariants: TypedArray[String]; genFiles: TypedArray[String]): Error {.base.} = (discard)
+method `import`*(self: EditorImportPlugin; sourceFile: String; savePath: String; options: Dictionary[Variant, Variant]; platformVariants: Array[String]; genFiles: Array[String]): Error {.base.} = (discard)
 proc registerVirtual_import*[T: EditorImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_import"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorImportPlugin](p_instance).`import`(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(Dictionary), p_args[3].decode(TypedArray[String]), p_args[4].decode(TypedArray[String])).encode(r_ret)
+    errproof: cast[EditorImportPlugin](p_instance).`import`(p_args[0].decode(String), p_args[1].decode(String), p_args[2].decode(Dictionary[Variant, Variant]), p_args[3].decode(Array[String]), p_args[4].decode(Array[String])).encode(r_ret)
 
 method canImportThreaded*(self: EditorImportPlugin): bool {.base.} = (discard)
 proc registerVirtual_canImportThreaded*[T: EditorImportPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_can_import_threaded"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorImportPlugin](p_instance).canImportThreaded().encode(r_ret)
 
-proc appendImportExternalResource*(self: EditorImportPlugin; path: String; customOptions: Dictionary = newDictionary(); customImporter: String = newGdString(); generatorParameters: Variant = default(Variant)): Error =
+proc appendImportExternalResource*(self: EditorImportPlugin; path: String; customOptions: Dictionary[Variant, Variant] = newDictionary[Variant, Variant](); customImporter: String = newGdString(); generatorParameters: Variant = default(Variant)): Error =
   expandMethodBind(className EditorImportPlugin, "append_import_external_resource", 320493106)
+  nilCheck customOptions
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr path, getPtr customOptions, getPtr customImporter, getPtr generatorParameters], addr ret)
   (addr ret).decode_result(Error)

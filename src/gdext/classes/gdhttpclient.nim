@@ -62,11 +62,11 @@ proc getResponseHeaders*(self: HTTPClient): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getResponseHeadersAsDictionary*(self: HTTPClient): Dictionary =
+proc getResponseHeadersAsDictionary*(self: HTTPClient): Dictionary[Variant, Variant] =
   expandMethodBind(className HTTPClient, "get_response_headers_as_dictionary", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getResponseBodyLength*(self: HTTPClient): int64 =
   expandMethodBind(className HTTPClient, "get_response_body_length", 3905245786)
@@ -120,8 +120,9 @@ proc setHttpsProxy*(self: HTTPClient; host: String; port: int32): void =
   expandMethodBind(className HTTPClient, "set_https_proxy", 2956805083)
   methodbind.ptrcall(self, [getPtr host, getPtr port])
 
-proc queryStringFromDict*(self: HTTPClient; fields: Dictionary): String =
+proc queryStringFromDict*(self: HTTPClient; fields: Dictionary[Variant, Variant]): String =
   expandMethodBind(className HTTPClient, "query_string_from_dict", 2538086567)
+  nilCheck fields
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr fields], addr ret)
   (addr ret).decode_result(String)

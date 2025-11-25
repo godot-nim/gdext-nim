@@ -64,11 +64,11 @@ proc convertToImage*(self: BitMap): gdref Image =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc opaqueToPolygons*(self: BitMap; rect: Rect2i; epsilon: Float = 2.0): TypedArray[PackedVector2Array] =
+proc opaqueToPolygons*(self: BitMap; rect: Rect2i; epsilon: Float = 2.0): Array[PackedVector2Array] =
   expandMethodBind(className BitMap, "opaque_to_polygons", 48478126)
-  var ret: encoded TypedArray[PackedVector2Array]
+  var ret: encoded Array[PackedVector2Array]
   methodbind.ptrcall(self, [getPtr rect, getPtr epsilon], addr ret)
-  (addr ret).decode_result(TypedArray[PackedVector2Array])
+  (addr ret).decode_result(Array[PackedVector2Array])
 
 template data*(self: BitMap): untyped = self.getData()
 template `data=`*(self: BitMap; value) = self.setData(value)

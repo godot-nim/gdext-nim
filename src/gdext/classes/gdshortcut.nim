@@ -6,15 +6,16 @@ import gdresource; export gdresource
 
 expandOnClassImported(Shortcut, Resource)
 
-proc setEvents*(self: Shortcut; events: Array): void =
+proc setEvents*(self: Shortcut; events: Array[Variant]): void =
   expandMethodBind(className Shortcut, "set_events", 381264803)
+  nilCheck events
   methodbind.ptrcall(self, [getPtr events])
 
-proc getEvents*(self: Shortcut): Array =
+proc getEvents*(self: Shortcut): Array[Variant] =
   expandMethodBind(className Shortcut, "get_events", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc hasValidEvent*(self: Shortcut): bool =
   expandMethodBind(className Shortcut, "has_valid_event", 36873697)

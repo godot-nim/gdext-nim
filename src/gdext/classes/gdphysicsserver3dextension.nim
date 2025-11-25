@@ -511,7 +511,7 @@ proc registerVirtual_bodyRemoveCollisionException*[T: PhysicsServer3DExtension](
   Self.vmethods[newStringName"_body_remove_collision_exception"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).bodyRemoveCollisionException(p_args[0].decode(RID), p_args[1].decode(RID))
 
-method bodyGetCollisionExceptions*(self: PhysicsServer3DExtension; body: RID): TypedArray[RID] {.base.} = (discard)
+method bodyGetCollisionExceptions*(self: PhysicsServer3DExtension; body: RID): Array[RID] {.base.} = (discard)
 proc registerVirtual_bodyGetCollisionExceptions*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_body_get_collision_exceptions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).bodyGetCollisionExceptions(p_args[0].decode(RID)).encode(r_ret)
@@ -626,7 +626,7 @@ proc registerVirtual_softBodyRemoveCollisionException*[T: PhysicsServer3DExtensi
   Self.vmethods[newStringName"_soft_body_remove_collision_exception"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).softBodyRemoveCollisionException(p_args[0].decode(RID), p_args[1].decode(RID))
 
-method softBodyGetCollisionExceptions*(self: PhysicsServer3DExtension; body: RID): TypedArray[RID] {.base.} = (discard)
+method softBodyGetCollisionExceptions*(self: PhysicsServer3DExtension; body: RID): Array[RID] {.base.} = (discard)
 proc registerVirtual_softBodyGetCollisionExceptions*[T: PhysicsServer3DExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_soft_body_get_collision_exceptions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[PhysicsServer3DExtension](p_instance).softBodyGetCollisionExceptions(p_args[0].decode(RID)).encode(r_ret)

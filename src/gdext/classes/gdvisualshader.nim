@@ -79,11 +79,11 @@ proc connectNodesForced*(self: VisualShader; `type`: VisualShader_Type; fromNode
   expandMethodBind(className VisualShader, "connect_nodes_forced", 2268060358)
   methodbind.ptrcall(self, [getPtr `type`, getPtr fromNode, getPtr fromPort, getPtr toNode, getPtr toPort])
 
-proc getNodeConnections*(self: VisualShader; `type`: VisualShader_Type): TypedArray[Dictionary] =
+proc getNodeConnections*(self: VisualShader; `type`: VisualShader_Type): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className VisualShader, "get_node_connections", 1441964831)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr `type`], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc attachNodeToFrame*(self: VisualShader; `type`: VisualShader_Type; id: int32; frame: int32): void =
   expandMethodBind(className VisualShader, "attach_node_to_frame", 2479945279)

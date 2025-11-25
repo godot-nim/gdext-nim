@@ -3,6 +3,7 @@ import cloths
 import submodules/[wordropes, semanticstrings]
 import types/json
 import utils
+import config
 
 import std/strformat
 import std/strutils
@@ -19,13 +20,17 @@ proc constValue*(t: string; value: string): string =
 proc weave*(constant: JsonConstant; caller: TypeSym): Cloth =
   let pred = constant.name.scan().convert(TypeSym)
   let value = constValue(constant.`type`, constant.value)
-  if caller in [TypeSym"Color"]:
+  result = if caller in [TypeSym"Color"]:
     weave multiline:
       &"const {pred}*: {constant.`type`} = {value}"
   else:
     weave multiline:
       &"const {caller}_{pred}: {constant.`type`} = {value}"
       &"template {pred}*(_: typedesc[{caller}]): {constant.`type`} = {caller}_{pred}"
+
+  if getignore(caller).constants.contains(pred):
+    result = weave comment[true]:
+      result
 
 proc weave*(constant: JsonClassConstant; caller: TypeSym): Cloth =
   let pred = constant.name.scan().convert(TypeSym)

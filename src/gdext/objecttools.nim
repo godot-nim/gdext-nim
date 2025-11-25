@@ -1,7 +1,5 @@
 import std/[tables, sets]
-import gdext/private/typeshift
 import gdext/builtinindex
-import gdext/stringtools
 import gdext/private/gdinterface
 import gdext/private/macros
 import gdext/private/propertyinfo
@@ -25,7 +23,7 @@ proc instantiate*[T: RefCounted](_: typedesc[T]): GdRef[T] =
 proc instantiate*[T_Node: Node](T: typedesc[T_Node]; name: string): T =
   result = instantiate_internal T
   debugInstantiate(result)
-  result.name = newStringName name
+  result.name = newStringNameInternal name
 
 proc castTo*[T: Object](self: Object; _: typedesc[T]): T =
   if self.isNil: return
@@ -66,6 +64,3 @@ template `/`*(self: Node; path: NodePath): Node = getNode(self, path)
 template `/`*(self: Node; path: string): Node = self/newNodePath(newGdString path)
 
 template `/`*[T: Node](self: Node; sub: typedesc[T]): T = self/($sub) as sub
-
-proc set*(self: Object; property: StringName; value: SomeProperty) {.inline.} =
-  set(self, property, variant value)

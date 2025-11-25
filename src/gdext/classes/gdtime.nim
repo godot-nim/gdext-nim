@@ -6,23 +6,23 @@ import gdobject; export gdobject
 
 expandOnClassImported(Time, Object)
 
-proc getDatetimeDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary =
+proc getDatetimeDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_datetime_dict_from_unix_time", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr unixTimeVal], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getDateDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary =
+proc getDateDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_date_dict_from_unix_time", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr unixTimeVal], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getTimeDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary =
+proc getTimeDictFromUnixTime*(self: Time; unixTimeVal: int64): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_time_dict_from_unix_time", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr unixTimeVal], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getDatetimeStringFromUnixTime*(self: Time; unixTimeVal: int64; useSpace: bool = false): String =
   expandMethodBind(className Time, "get_datetime_string_from_unix_time", 2311239925)
@@ -42,20 +42,22 @@ proc getTimeStringFromUnixTime*(self: Time; unixTimeVal: int64): String =
   methodbind.ptrcall(self, [getPtr unixTimeVal], addr ret)
   (addr ret).decode_result(String)
 
-proc getDatetimeDictFromDatetimeString*(self: Time; datetime: String; weekday: bool): Dictionary =
+proc getDatetimeDictFromDatetimeString*(self: Time; datetime: String; weekday: bool): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_datetime_dict_from_datetime_string", 3253569256)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr datetime, getPtr weekday], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getDatetimeStringFromDatetimeDict*(self: Time; datetime: Dictionary; useSpace: bool): String =
+proc getDatetimeStringFromDatetimeDict*(self: Time; datetime: Dictionary[Variant, Variant]; useSpace: bool): String =
   expandMethodBind(className Time, "get_datetime_string_from_datetime_dict", 1898123706)
+  nilCheck datetime
   var ret: encoded String
   methodbind.ptrcall(self, [getPtr datetime, getPtr useSpace], addr ret)
   (addr ret).decode_result(String)
 
-proc getUnixTimeFromDatetimeDict*(self: Time; datetime: Dictionary): int64 =
+proc getUnixTimeFromDatetimeDict*(self: Time; datetime: Dictionary[Variant, Variant]): int64 =
   expandMethodBind(className Time, "get_unix_time_from_datetime_dict", 3021115443)
+  nilCheck datetime
   var ret: encoded int64
   methodbind.ptrcall(self, [getPtr datetime], addr ret)
   (addr ret).decode_result(int64)
@@ -72,23 +74,23 @@ proc getOffsetStringFromOffsetMinutes*(self: Time; offsetMinutes: int64): String
   methodbind.ptrcall(self, [getPtr offsetMinutes], addr ret)
   (addr ret).decode_result(String)
 
-proc getDatetimeDictFromSystem*(self: Time; utc: bool = false): Dictionary =
+proc getDatetimeDictFromSystem*(self: Time; utc: bool = false): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_datetime_dict_from_system", 205769976)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr utc], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getDateDictFromSystem*(self: Time; utc: bool = false): Dictionary =
+proc getDateDictFromSystem*(self: Time; utc: bool = false): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_date_dict_from_system", 205769976)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr utc], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getTimeDictFromSystem*(self: Time; utc: bool = false): Dictionary =
+proc getTimeDictFromSystem*(self: Time; utc: bool = false): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_time_dict_from_system", 205769976)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr utc], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getDatetimeStringFromSystem*(self: Time; utc: bool = false; useSpace: bool = false): String =
   expandMethodBind(className Time, "get_datetime_string_from_system", 1136425492)
@@ -108,11 +110,11 @@ proc getTimeStringFromSystem*(self: Time; utc: bool = false): String =
   methodbind.ptrcall(self, [getPtr utc], addr ret)
   (addr ret).decode_result(String)
 
-proc getTimeZoneFromSystem*(self: Time): Dictionary =
+proc getTimeZoneFromSystem*(self: Time): Dictionary[Variant, Variant] =
   expandMethodBind(className Time, "get_time_zone_from_system", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getUnixTimeFromSystem*(self: Time): float64 =
   expandMethodBind(className Time, "get_unix_time_from_system", 1740695150)

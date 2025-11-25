@@ -224,11 +224,11 @@ proc getDopplerTracking*(self: Camera3D): Camera3D_DopplerTracking =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Camera3D_DopplerTracking)
 
-proc getFrustum*(self: Camera3D): TypedArray[Plane] =
+proc getFrustum*(self: Camera3D): Array[Plane] =
   expandMethodBind(className Camera3D, "get_frustum", 3995934104)
-  var ret: encoded TypedArray[Plane]
+  var ret: encoded Array[Plane]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Plane])
+  (addr ret).decode_result(Array[Plane])
 
 proc isPositionInFrustum*(self: Camera3D; worldPoint: Vector3): bool =
   expandMethodBind(className Camera3D, "is_position_in_frustum", 3108956480)

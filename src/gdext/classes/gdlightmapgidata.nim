@@ -6,25 +6,27 @@ import gdresource; export gdresource
 
 expandOnClassImported(LightmapGIData, Resource)
 
-proc setLightmapTextures*(self: LightmapGIData; lightTextures: TypedArray[gdref TextureLayered]): void =
+proc setLightmapTextures*(self: LightmapGIData; lightTextures: Array[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_lightmap_textures", 381264803)
+  nilCheck lightTextures
   methodbind.ptrcall(self, [getPtr lightTextures])
 
-proc getLightmapTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =
+proc getLightmapTextures*(self: LightmapGIData): Array[gdref TextureLayered] =
   expandMethodBind(className LightmapGIData, "get_lightmap_textures", 3995934104)
-  var ret: encoded TypedArray[gdref TextureLayered]
+  var ret: encoded Array[gdref TextureLayered]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref TextureLayered])
+  (addr ret).decode_result(Array[gdref TextureLayered])
 
-proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: TypedArray[gdref TextureLayered]): void =
+proc setShadowmaskTextures*(self: LightmapGIData; shadowmaskTextures: Array[gdref TextureLayered]): void =
   expandMethodBind(className LightmapGIData, "set_shadowmask_textures", 381264803)
+  nilCheck shadowmaskTextures
   methodbind.ptrcall(self, [getPtr shadowmaskTextures])
 
-proc getShadowmaskTextures*(self: LightmapGIData): TypedArray[gdref TextureLayered] =
+proc getShadowmaskTextures*(self: LightmapGIData): Array[gdref TextureLayered] =
   expandMethodBind(className LightmapGIData, "get_shadowmask_textures", 3995934104)
-  var ret: encoded TypedArray[gdref TextureLayered]
+  var ret: encoded Array[gdref TextureLayered]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref TextureLayered])
+  (addr ret).decode_result(Array[gdref TextureLayered])
 
 proc setUsesSphericalHarmonics*(self: LightmapGIData; usesSphericalHarmonics: bool): void =
   expandMethodBind(className LightmapGIData, "set_uses_spherical_harmonics", 2586408642)

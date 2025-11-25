@@ -41,10 +41,10 @@ proc registerVirtual_getDependencies*[T: ResourceFormatLoader](Self: typedesc[T]
   Self.vmethods[newStringName"_get_dependencies"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ResourceFormatLoader](p_instance).getDependencies(p_args[0].decode(String), p_args[1].decode(bool)).encode(r_ret)
 
-method renameDependencies*(self: ResourceFormatLoader; path: String; renames: Dictionary): Error {.base.} = (discard)
+method renameDependencies*(self: ResourceFormatLoader; path: String; renames: Dictionary[Variant, Variant]): Error {.base.} = (discard)
 proc registerVirtual_renameDependencies*[T: ResourceFormatLoader](Self: typedesc[T]) =
   Self.vmethods[newStringName"_rename_dependencies"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[ResourceFormatLoader](p_instance).renameDependencies(p_args[0].decode(String), p_args[1].decode(Dictionary)).encode(r_ret)
+    errproof: cast[ResourceFormatLoader](p_instance).renameDependencies(p_args[0].decode(String), p_args[1].decode(Dictionary[Variant, Variant])).encode(r_ret)
 
 method exists*(self: ResourceFormatLoader; path: String): bool {.base.} = (discard)
 proc registerVirtual_exists*[T: ResourceFormatLoader](Self: typedesc[T]) =

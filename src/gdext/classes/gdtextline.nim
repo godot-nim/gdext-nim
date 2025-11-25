@@ -56,8 +56,9 @@ proc getPreserveControl*(self: TextLine): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setBidiOverride*(self: TextLine; override: Array): void =
+proc setBidiOverride*(self: TextLine; override: Array[Variant]): void =
   expandMethodBind(className TextLine, "set_bidi_override", 381264803)
+  nilCheck override
   methodbind.ptrcall(self, [getPtr override])
 
 proc addString*(self: TextLine; text: String; font: gdref Font; fontSize: int32; language: String = newGdString(); meta: Variant = default(Variant)): bool =
@@ -132,11 +133,11 @@ proc getEllipsisChar*(self: TextLine): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getObjects*(self: TextLine): Array =
+proc getObjects*(self: TextLine): Array[Variant] =
   expandMethodBind(className TextLine, "get_objects", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getObjectRect*(self: TextLine; key: Variant): Rect2 =
   expandMethodBind(className TextLine, "get_object_rect", 1742700391)

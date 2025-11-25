@@ -1,6 +1,6 @@
 var Projection_constr: array[4, PtrConstructor]
 proc load_Projection_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {2}:
+  for i in 0..3:
     Projection_constr[i] = interface_Variant_getPtrConstructor(VariantType_Projection, int32 i)
 
 # proc projection*(): Projection =

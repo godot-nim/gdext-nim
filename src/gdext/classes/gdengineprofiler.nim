@@ -6,15 +6,15 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(EngineProfiler, RefCounted)
 
-method toggle*(self: EngineProfiler; enable: bool; options: Array): void {.base.} = (discard)
+method toggle*(self: EngineProfiler; enable: bool; options: Array[Variant]): void {.base.} = (discard)
 proc registerVirtual_toggle*[T: EngineProfiler](Self: typedesc[T]) =
   Self.vmethods[newStringName"_toggle"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EngineProfiler](p_instance).toggle(p_args[0].decode(bool), p_args[1].decode(Array))
+    errproof: cast[EngineProfiler](p_instance).toggle(p_args[0].decode(bool), p_args[1].decode(Array[Variant]))
 
-method addFrame*(self: EngineProfiler; data: Array): void {.base.} = (discard)
+method addFrame*(self: EngineProfiler; data: Array[Variant]): void {.base.} = (discard)
 proc registerVirtual_addFrame*[T: EngineProfiler](Self: typedesc[T]) =
   Self.vmethods[newStringName"_add_frame"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EngineProfiler](p_instance).addFrame(p_args[0].decode(Array))
+    errproof: cast[EngineProfiler](p_instance).addFrame(p_args[0].decode(Array[Variant]))
 
 method tick*(self: EngineProfiler; frameTime: float64; processTime: float64; physicsTime: float64; physicsFrameTime: float64): void {.base.} = (discard)
 proc registerVirtual_tick*[T: EngineProfiler](Self: typedesc[T]) =

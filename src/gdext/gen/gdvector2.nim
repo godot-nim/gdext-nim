@@ -1,13 +1,13 @@
 # constant values
 
-const Vector2_Zero: Vector2 = vector2(0, 0)
-template Zero*(_: typedesc[Vector2]): Vector2 = Vector2_Zero
+# const Vector2_Zero: Vector2 = vector2(0, 0)
+# template Zero*(_: typedesc[Vector2]): Vector2 = Vector2_Zero
 
-const Vector2_One: Vector2 = vector2(1, 1)
-template One*(_: typedesc[Vector2]): Vector2 = Vector2_One
+# const Vector2_One: Vector2 = vector2(1, 1)
+# template One*(_: typedesc[Vector2]): Vector2 = Vector2_One
 
-const Vector2_Inf: Vector2 = vector2(real_elem system.Inf, real_elem system.Inf)
-template Inf*(_: typedesc[Vector2]): Vector2 = Vector2_Inf
+# const Vector2_Inf: Vector2 = vector2(real_elem system.Inf, real_elem system.Inf)
+# template Inf*(_: typedesc[Vector2]): Vector2 = Vector2_Inf
 
 const Vector2_Left: Vector2 = vector2(-1, 0)
 template Left*(_: typedesc[Vector2]): Vector2 = Vector2_Left
@@ -98,55 +98,39 @@ var `maxf(Vector2 Float)`: PtrBuiltinMethod
 # `fromAngle(Vector2 Float)`
 
 proc limitLength*(self: Vector2; length: Float = 1.0): Vector2 =
-  let argArr = [getPtr length]
-  `limitLength(Vector2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `limitLength(Vector2 Float)`.call(addr self, [getPtr length], addr result)
 proc project*(self: Vector2; b: Vector2): Vector2 =
-  let argArr = [getPtr b]
-  `project(Vector2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `project(Vector2 Vector2)`.call(addr self, [getPtr b], addr result)
 proc slerp*(self: Vector2; to: Vector2; weight: Float): Vector2 =
-  let argArr = [getPtr to, getPtr weight]
-  `slerp(Vector2 Vector2 Float)`(addr self, addr argArr[0], addr result, 2)
+  `slerp(Vector2 Vector2 Float)`.call(addr self, [getPtr to, getPtr weight], addr result)
 proc cubicInterpolate*(self: Vector2; b: Vector2; preA: Vector2; postB: Vector2; weight: Float): Vector2 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight]
-  `cubicInterpolate(Vector2 Vector2 Vector2 Vector2 Float)`(addr self, addr argArr[0], addr result, 4)
+  `cubicInterpolate(Vector2 Vector2 Vector2 Vector2 Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight], addr result)
 proc cubicInterpolateInTime*(self: Vector2; b: Vector2; preA: Vector2; postB: Vector2; weight: Float; bT: Float; preAT: Float; postBT: Float): Vector2 =
-  let argArr = [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT]
-  `cubicInterpolateInTime(Vector2 Vector2 Vector2 Vector2 Float Float Float Float)`(addr self, addr argArr[0], addr result, 7)
+  `cubicInterpolateInTime(Vector2 Vector2 Vector2 Vector2 Float Float Float Float)`.call(addr self, [getPtr b, getPtr preA, getPtr postB, getPtr weight, getPtr bT, getPtr preAT, getPtr postBT], addr result)
 proc bezierInterpolate*(self: Vector2; control1: Vector2; control2: Vector2; `end`: Vector2; t: Float): Vector2 =
-  let argArr = [getPtr control1, getPtr control2, getPtr `end`, getPtr t]
-  `bezierInterpolate(Vector2 Vector2 Vector2 Vector2 Float)`(addr self, addr argArr[0], addr result, 4)
+  `bezierInterpolate(Vector2 Vector2 Vector2 Vector2 Float)`.call(addr self, [getPtr control1, getPtr control2, getPtr `end`, getPtr t], addr result)
 proc bezierDerivative*(self: Vector2; control1: Vector2; control2: Vector2; `end`: Vector2; t: Float): Vector2 =
-  let argArr = [getPtr control1, getPtr control2, getPtr `end`, getPtr t]
-  `bezierDerivative(Vector2 Vector2 Vector2 Vector2 Float)`(addr self, addr argArr[0], addr result, 4)
+  `bezierDerivative(Vector2 Vector2 Vector2 Vector2 Float)`.call(addr self, [getPtr control1, getPtr control2, getPtr `end`, getPtr t], addr result)
 proc rotated*(self: Vector2; angle: Float): Vector2 =
-  let argArr = [getPtr angle]
-  `rotated(Vector2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `rotated(Vector2 Float)`.call(addr self, [getPtr angle], addr result)
 proc orthogonal*(self: Vector2): Vector2 =
-  `orthogonal(Vector2)`(addr self, nil, addr result, 0)
+  `orthogonal(Vector2)`.call(addr self, [], addr result)
 proc bounce*(self: Vector2; n: Vector2): Vector2 =
-  let argArr = [getPtr n]
-  `bounce(Vector2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `bounce(Vector2 Vector2)`.call(addr self, [getPtr n], addr result)
 proc reflect*(self: Vector2; line: Vector2): Vector2 =
-  let argArr = [getPtr line]
-  `reflect(Vector2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `reflect(Vector2 Vector2)`.call(addr self, [getPtr line], addr result)
 proc clampf*(self: Vector2; min: Float; max: Float): Vector2 =
-  let argArr = [getPtr min, getPtr max]
-  `clampf(Vector2 Float Float)`(addr self, addr argArr[0], addr result, 2)
+  `clampf(Vector2 Float Float)`.call(addr self, [getPtr min, getPtr max], addr result)
 proc snappedf*(self: Vector2; step: Float): Vector2 =
-  let argArr = [getPtr step]
-  `snappedf(Vector2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `snappedf(Vector2 Float)`.call(addr self, [getPtr step], addr result)
 proc min*(self: Vector2; with: Vector2): Vector2 =
-  let argArr = [getPtr with]
-  `min(Vector2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `min(Vector2 Vector2)`.call(addr self, [getPtr with], addr result)
 proc minf*(self: Vector2; with: Float): Vector2 =
-  let argArr = [getPtr with]
-  `minf(Vector2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `minf(Vector2 Float)`.call(addr self, [getPtr with], addr result)
 proc max*(self: Vector2; with: Vector2): Vector2 =
-  let argArr = [getPtr with]
-  `max(Vector2 Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `max(Vector2 Vector2)`.call(addr self, [getPtr with], addr result)
 proc maxf*(self: Vector2; with: Float): Vector2 =
-  let argArr = [getPtr with]
-  `maxf(Vector2 Float)`(addr self, addr argArr[0], addr result, 1)
+  `maxf(Vector2 Float)`.call(addr self, [getPtr with], addr result)
 
 proc load_Vector2_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `limitLength(Vector2 Float)` = load(VariantType_Vector2, "limit_length", 2544004089)

@@ -2,7 +2,10 @@ import std/[strformat, hashes, sequtils]
 
 import gdext/builtinindex
 import gdext/arraytools
-import gdext/private/[gdinterface, typeshift]
+import gdext/dicttools
+import gdext/private/[gdinterface, typeshift, propertyinfo]
+
+import gdext/classes/gdClassDB
 
 proc iterInit(self: Variant; r_iter: var Variant; r_valid: var bool): bool =
   interfaceVariantIterInit(addr self, addr r_iter, addr r_valid)
@@ -13,24 +16,24 @@ proc iterNext(self: Variant; r_iter: var Variant; r_valid: var bool): bool =
 # proc iterGet(self: Variant; r_iter: var Variant; r_valid: var bool): Variant =
 #   interfaceVariantIterGet(addr self, addr r_iter, addr result, addr r_valid)
 
-proc getNamed(self: Variant; name: StringName; r_isValid: var bool): Variant =
+proc getNamed*(self: Variant; name: StringName; r_isValid: var bool): Variant =
   interfaceVariantGetNamed(addr self, addr name, addr result, addr r_isValid)
-proc setNamed(self: Variant; name: StringName; value: Variant; r_isValid: var bool) =
+proc setNamed*(self: Variant; name: StringName; value: Variant; r_isValid: var bool) =
   interfaceVariantSetNamed(addr self, addr name, addr value, addr r_isValid)
 
-proc getIndexed(self: Variant; index: int; r_isValid, r_outOfBound: var bool): Variant =
+proc getIndexed*(self: Variant; index: int; r_isValid, r_outOfBound: var bool): Variant =
   interfaceVariantGetIndexed(addr self, index, addr result, addr r_isValid, addr r_outOfBound)
-proc setIndexed(self: Variant; index: int; value: Variant; r_isValid, r_outOfBound: var bool) =
+proc setIndexed*(self: Variant; index: int; value: Variant; r_isValid, r_outOfBound: var bool) =
   interfaceVariantSetIndexed(addr self, index, addr value, addr r_isValid, addr r_outOfBound)
 
-# proc setKeyed(self: Variant; key: Variant; value: Variant; r_isValid: var bool) =
-#   interfaceVariantSetKeyed(addr self, addr key, addr value, addr r_isValid)
-# proc getKeyed(self: Variant; key: Variant; r_isValid: var bool): Variant =
-#   interfaceVariantGetKeyed(addr self, addr key, addr result, addr r_isValid)
+proc setKeyed*(self: Variant; key: Variant; value: Variant; r_isValid: var bool) =
+  interfaceVariantSetKeyed(addr self, addr key, addr value, addr r_isValid)
+proc getKeyed*(self: Variant; key: Variant; r_isValid: var bool): Variant =
+  interfaceVariantGetKeyed(addr self, addr key, addr result, addr r_isValid)
 
-proc get(self: Variant; key: Variant; r_isValid: var bool): Variant =
+proc get*(self: Variant; key: Variant; r_isValid: var bool): Variant =
   interfaceVariantGet(addr self, addr key, addr result, addr r_isValid)
-proc set(self: Variant; key: Variant; value: Variant; r_isValid: var bool) =
+proc set*(self: Variant; key: Variant; value: Variant; r_isValid: var bool) =
   interfaceVariantSet(addr self, addr key, addr value, addr r_isValid)
 
 proc evaluate*(op: VariantOperator; a, b: ptr Variant; valid: var bool): Variant =
@@ -185,9 +188,6 @@ proc `==`*(self, other: Variant): bool =
   if not valid: self.getType == other.getType
   else: res.get bool
 
-template `==`*[T: SomeProperty](self: Variant; other: T): bool = self == variant(other)
-template `==`*[T: SomeProperty](other: T; self: Variant): bool = self == variant(other)
-
 proc `<`*(self, other: Variant): bool =
   evaluate(opLess, addr self, addr other).get bool
 proc `<=`*(self, other: Variant): bool =
@@ -208,37 +208,19 @@ proc callStatic*(T: VariantType; `method`: StringName; args: varargs[Variant, va
 
 template check_type(defect; mhd: string; v): untyped =
   if not isValid: raise newException(defect, mhd & " is invalid. Variant(" & $self.getType & ") cannot contain Variant(" & $v.getType & ").")
-template check_bound(defect): untyped =
-  if outOfBound: raise newException(defect, "Out of bound. Got index " & $index & ".")
 
 proc `[]=`*(self: Variant; key: Variant; value: Variant) =
   var isValid: bool
   self.set(key, value, isValid)
   check_type KeyError, "set[Variant]", value
   if not isValid: raise newException(IndexDefect, "")
-proc `[]=`*(self: Variant; name: StringName; value: Variant) =
-  var isValid: bool
-  self.set_named(name, value, isValid)
-  check_type KeyError, "set[StringName]", value
-proc `[]=`*(self: Variant; index: int; value: Variant) =
-  var isValid, outOfBound: bool
-  self.set_indexed(index, value, isValid, outOfBound)
-  check_type IndexDefect, "set[int]", value
-  check_bound IndexDefect
-
 proc `[]`*(self: Variant; key: Variant): Variant =
   var isValid: bool
   result = self.get(key, isValid)
   check_type KeyError, "get[Variant]", result
-proc `[]`*(self: Variant; name: StringName): Variant =
-  var isValid: bool
-  result = self.get_named(name, isValid)
-  check_type KeyError, "get[StringName]", result
-proc `[]`*(self: Variant; index: int): Variant =
-  var isValid, outOfBound: bool
-  result = self.get_indexed(index, isValid, outOfBound)
-  check_type IndexDefect, "get[int]", result
-  check_bound IndexDefect
+
+proc `[]=`*[A, B](self: Variant; key: A; value: B) = self[variant key] = variant value
+proc `[]`*[A](self: Variant; key: A): Variant = self[variant key]
 
 iterator keys*(self: Variant): Variant =
   var iter: Variant
@@ -254,14 +236,40 @@ iterator pairs*(self: Variant): tuple[key, item: Variant] =
   for key in self.keys: yield (key, self[key])
 
 proc `of`*[T: SomeProperty](a: Variant; b: typedesc[T]): bool =
-  when T is TypedArray:
-    var empty {.global.} = newTypedArray[T.T]()
   {.hint[CondTrue]: off.}
   result = if a.getType == b.variantType:
     when b is Object:
       (a as Object) of b
-    elif b is TypedArray:
-      (a as Array).isSameTyped(empty)
+    elif b is Array:
+      when b.T is Variant:
+        true
+      else:
+        let typ = (a as Array[Variant]).getTypedBuiltin.VariantType
+        case typ
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Array[Variant]).getTypedClassName, b.T.className)
+        else:
+          typ == b.T.variantType
+    elif b is Dictionary:
+      let matchA = when b.A is Variant:
+        true
+      else:
+        let typA = (a as Dictionary[Variant, Variant]).getTypedKeyBuiltin.VariantType
+        case typA
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Dictionary[Variant, Variant]).getTypedKeyClassName, b.A.className)
+        else:
+          typA == b.A.variantType
+      let matchB = when b.B is Variant:
+        true
+      else:
+        let typB = (a as Dictionary[Variant, Variant]).getTypedValueBuiltin.VariantType
+        case typB
+        of VARIANT_TYPE_OBJECT:
+          ClassDB.isParentClass((a as Dictionary[Variant, Variant]).getTypedValueClassName, b.B.className)
+        else:
+          typB == b.B.variantType
+      matchA and matchB
     else:
       true
   else:

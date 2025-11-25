@@ -23,9 +23,12 @@ macro genVecFieldAccess(): untyped =
       if fidx >= size: break
       let field = ident(fkey)
       result.add genAst(size, fidx, field, vector, value) do:
-        template `field`*[T](vector: array[size, T]): T = vector[fidx]
-        template `field=`*[T](vector: var array[size, T], value: T) = vector[fidx] = value
+        proc `field`*[T](vector: array[size, T]): T = system.`[]`(vector,fidx)
+        proc `field`*[T](vector: var array[size, T]): var T = system.`[]`(vector, fidx)
+        proc `field=`*[T](vector: var array[size, T], value: T) = system.`[]=`(vector, fidx, value)
+{.push, inline.}
 genVecFieldAccess()
+{.pop.}
 
 func makeVec(letSection: NimNode; components: seq[NimNode]): NimNode =
   result = newBracket()
@@ -251,7 +254,7 @@ proc `[]`*(self: Quaternion; index: int): real_elem =
   cast[ptr array[4, real_elem]](addr self)[][index]
 
 proc extend*[T](value: T; N: static int): array[N,T] =
-  extend_internal(value, length)
+  extend_internal(value, N)
 
 macro fmap*[N: static int; T]( pred;
       v1: array[N,T];
@@ -291,12 +294,15 @@ macro fmap*[N: static int; T1, T2, T3]( pred;
 
 
 iterator couple[N: static int; T1, T2](v1: array[N, T1]; v2: array[N, T2]): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (v1[i], v2[i])
 iterator couple[N: static int; T1, T2](v1: array[N, T1]; x2: T2): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (v1[i], x2)
 iterator couple[N: static int; T1, T2](x1: T1; v2: array[N, T2]): (T1, T2) =
+  bind `[]`
   for i in 0..<N:
     yield (x1, v2[i])
 
@@ -679,7 +685,11 @@ func cubicInterpolateAngle*[T: SomeFloat](pFrom, pTo, pPre, pPost: T; pWeight: T
 
 template Zero*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(0).extend N
 template One*[N: static int; T: SomeNumber](_:typedesc[Vector[N,T]]): Vector[N,T] = T(1).extend N
-template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = T(inf).extend N
+
+template Inf*[N: static int; T: SomeFloat](_:typedesc[Vector[N,T]]): Vector[N,T] = T(Inf).extend N
+
+template Min*[N: static int; T: SomeInteger](_:typedesc[Vector[N,T]]): Vector[N,T] = (T.low).extend N
+template Max*[N: static int; T: SomeInteger](_:typedesc[Vector[N,T]]): Vector[N,T] = (T.high).extend N
 
 template Left *[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T(-1),  0]
 template Right*[T: SomeNumber](_:typedesc[NVector[2,T]]): NVector[2,T] = NVector[2,T] [T( 1),  0]

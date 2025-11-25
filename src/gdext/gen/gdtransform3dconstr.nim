@@ -1,6 +1,6 @@
 var Transform3D_constr: array[5, PtrConstructor]
 proc load_Transform3D_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {4}:
+  for i in 0..4:
     Transform3D_constr[i] = interface_Variant_getPtrConstructor(VariantType_Transform3D, int32 i)
 
 # proc transform3D*(): Transform3D =

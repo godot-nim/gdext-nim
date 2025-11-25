@@ -166,11 +166,11 @@ proc getPointPosition*(self: AStarGrid2D; id: Vector2i): Vector2 =
   methodbind.ptrcall(self, [getPtr id], addr ret)
   (addr ret).decode_result(Vector2)
 
-proc getPointDataInRegion*(self: AStarGrid2D; region: Rect2i): TypedArray[Dictionary] =
+proc getPointDataInRegion*(self: AStarGrid2D; region: Rect2i): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className AStarGrid2D, "get_point_data_in_region", 3893818462)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr region], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc getPointPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPartialPath: bool = false): PackedVector2Array =
   expandMethodBind(className AStarGrid2D, "get_point_path", 1641925693)
@@ -178,11 +178,11 @@ proc getPointPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPar
   methodbind.ptrcall(self, [getPtr fromId, getPtr toId, getPtr allowPartialPath], addr ret)
   (addr ret).decode_result(PackedVector2Array)
 
-proc getIdPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPartialPath: bool = false): TypedArray[Vector2i] =
+proc getIdPath*(self: AStarGrid2D; fromId: Vector2i; toId: Vector2i; allowPartialPath: bool = false): Array[Vector2i] =
   expandMethodBind(className AStarGrid2D, "get_id_path", 1918132273)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr fromId, getPtr toId, getPtr allowPartialPath], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 template region*(self: AStarGrid2D): untyped = self.getRegion()
 template `region=`*(self: AStarGrid2D; value) = self.setRegion(value)

@@ -132,11 +132,11 @@ proc getConnectionFlags*(self: SceneState; idx: int32): int32 =
   methodbind.ptrcall(self, [getPtr idx], addr ret)
   (addr ret).decode_result(int32)
 
-proc getConnectionBinds*(self: SceneState; idx: int32): Array =
+proc getConnectionBinds*(self: SceneState; idx: int32): Array[Variant] =
   expandMethodBind(className SceneState, "get_connection_binds", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr idx], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getConnectionUnbinds*(self: SceneState; idx: int32): int32 =
   expandMethodBind(className SceneState, "get_connection_unbinds", 923996154)

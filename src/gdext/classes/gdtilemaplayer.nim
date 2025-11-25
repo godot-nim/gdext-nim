@@ -16,10 +16,10 @@ proc registerVirtual_tileDataRuntimeUpdate*[T: TileMapLayer](Self: typedesc[T]) 
   Self.vmethods[newStringName"_tile_data_runtime_update"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TileMapLayer](p_instance).tileDataRuntimeUpdate(p_args[0].decode(Vector2i), p_args[1].decode(TileData))
 
-method updateCells*(self: TileMapLayer; coords: TypedArray[Vector2i]; forcedCleanup: bool): void {.base.} = (discard)
+method updateCells*(self: TileMapLayer; coords: Array[Vector2i]; forcedCleanup: bool): void {.base.} = (discard)
 proc registerVirtual_updateCells*[T: TileMapLayer](Self: typedesc[T]) =
   Self.vmethods[newStringName"_update_cells"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(TypedArray[Vector2i]), p_args[1].decode(bool))
+    errproof: cast[TileMapLayer](p_instance).updateCells(p_args[0].decode(Array[Vector2i]), p_args[1].decode(bool))
 
 proc setCell*(self: TileMapLayer; coords: Vector2i; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = 0): void =
   expandMethodBind(className TileMapLayer, "set_cell", 2428518503)
@@ -79,17 +79,17 @@ proc isCellTransposed*(self: TileMapLayer; coords: Vector2i): bool =
   methodbind.ptrcall(self, [getPtr coords], addr ret)
   (addr ret).decode_result(bool)
 
-proc getUsedCells*(self: TileMapLayer): TypedArray[Vector2i] =
+proc getUsedCells*(self: TileMapLayer): Array[Vector2i] =
   expandMethodBind(className TileMapLayer, "get_used_cells", 3995934104)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
-proc getUsedCellsById*(self: TileMapLayer; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = -1): TypedArray[Vector2i] =
+proc getUsedCellsById*(self: TileMapLayer; sourceId: int32 = -1; atlasCoords: Vector2i = vector2i(-1, -1); alternativeTile: int32 = -1): Array[Vector2i] =
   expandMethodBind(className TileMapLayer, "get_used_cells_by_id", 4175304538)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr sourceId, getPtr atlasCoords, getPtr alternativeTile], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc getUsedRect*(self: TileMapLayer): Rect2i =
   expandMethodBind(className TileMapLayer, "get_used_rect", 410525958)
@@ -97,8 +97,9 @@ proc getUsedRect*(self: TileMapLayer): Rect2i =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Rect2i)
 
-proc getPattern*(self: TileMapLayer; coordsArray: TypedArray[Vector2i]): gdref TileMapPattern =
+proc getPattern*(self: TileMapLayer; coordsArray: Array[Vector2i]): gdref TileMapPattern =
   expandMethodBind(className TileMapLayer, "get_pattern", 3820813253)
+  nilCheck coordsArray
   var ret: encoded gdref TileMapPattern
   methodbind.ptrcall(self, [getPtr coordsArray], addr ret)
   (addr ret).decode_result(gdref TileMapPattern)
@@ -107,12 +108,14 @@ proc setPattern*(self: TileMapLayer; position: Vector2i; pattern: gdref TileMapP
   expandMethodBind(className TileMapLayer, "set_pattern", 1491151770)
   methodbind.ptrcall(self, [getPtr position, getPtr pattern])
 
-proc setCellsTerrainConnect*(self: TileMapLayer; cells: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
+proc setCellsTerrainConnect*(self: TileMapLayer; cells: Array[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMapLayer, "set_cells_terrain_connect", 748968311)
+  nilCheck cells
   methodbind.ptrcall(self, [getPtr cells, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
-proc setCellsTerrainPath*(self: TileMapLayer; path: TypedArray[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
+proc setCellsTerrainPath*(self: TileMapLayer; path: Array[Vector2i]; terrainSet: int32; terrain: int32; ignoreEmptyTerrains: bool = true): void =
   expandMethodBind(className TileMapLayer, "set_cells_terrain_path", 748968311)
+  nilCheck path
   methodbind.ptrcall(self, [getPtr path, getPtr terrainSet, getPtr terrain, getPtr ignoreEmptyTerrains])
 
 proc hasBodyRid*(self: TileMapLayer; body: RID): bool =
@@ -141,11 +144,11 @@ proc mapPattern*(self: TileMapLayer; positionInTilemap: Vector2i; coordsInPatter
   methodbind.ptrcall(self, [getPtr positionInTilemap, getPtr coordsInPattern, getPtr pattern], addr ret)
   (addr ret).decode_result(Vector2i)
 
-proc getSurroundingCells*(self: TileMapLayer; coords: Vector2i): TypedArray[Vector2i] =
+proc getSurroundingCells*(self: TileMapLayer; coords: Vector2i): Array[Vector2i] =
   expandMethodBind(className TileMapLayer, "get_surrounding_cells", 2673526557)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr coords], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc getNeighborCell*(self: TileMapLayer; coords: Vector2i; neighbor: TileSet_CellNeighbor): Vector2i =
   expandMethodBind(className TileMapLayer, "get_neighbor_cell", 986575103)

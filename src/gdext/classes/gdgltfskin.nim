@@ -26,14 +26,15 @@ proc setJointsOriginal*(self: GLTFSkin; jointsOriginal: PackedInt32Array): void 
   expandMethodBind(className GLTFSkin, "set_joints_original", 3614634198)
   methodbind.ptrcall(self, [getPtr jointsOriginal])
 
-proc getInverseBinds*(self: GLTFSkin): TypedArray[Transform3D] =
+proc getInverseBinds*(self: GLTFSkin): Array[Transform3D] =
   expandMethodBind(className GLTFSkin, "get_inverse_binds", 2915620761)
-  var ret: encoded TypedArray[Transform3D]
+  var ret: encoded Array[Transform3D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Transform3D])
+  (addr ret).decode_result(Array[Transform3D])
 
-proc setInverseBinds*(self: GLTFSkin; inverseBinds: TypedArray[Transform3D]): void =
+proc setInverseBinds*(self: GLTFSkin; inverseBinds: Array[Transform3D]): void =
   expandMethodBind(className GLTFSkin, "set_inverse_binds", 381264803)
+  nilCheck inverseBinds
   methodbind.ptrcall(self, [getPtr inverseBinds])
 
 proc getJoints*(self: GLTFSkin): PackedInt32Array =
@@ -76,24 +77,26 @@ proc setSkeleton*(self: GLTFSkin; skeleton: int32): void =
   expandMethodBind(className GLTFSkin, "set_skeleton", 1286410249)
   methodbind.ptrcall(self, [getPtr skeleton])
 
-proc getJointIToBoneI*(self: GLTFSkin): Dictionary =
+proc getJointIToBoneI*(self: GLTFSkin): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_bone_i", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary): void =
+proc setJointIToBoneI*(self: GLTFSkin; jointIToBoneI: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_bone_i", 4155329257)
+  nilCheck jointIToBoneI
   methodbind.ptrcall(self, [getPtr jointIToBoneI])
 
-proc getJointIToName*(self: GLTFSkin): Dictionary =
+proc getJointIToName*(self: GLTFSkin): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFSkin, "get_joint_i_to_name", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary): void =
+proc setJointIToName*(self: GLTFSkin; jointIToName: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFSkin, "set_joint_i_to_name", 4155329257)
+  nilCheck jointIToName
   methodbind.ptrcall(self, [getPtr jointIToName])
 
 proc getGodotSkin*(self: GLTFSkin): gdref Skin =

@@ -19,14 +19,14 @@ type Comment = ref object of Style
 let comment*: array[bool, Comment] = [Comment(enable: false), Comment(enable: true)]
 
 method apply(style: Comment; data: Data): Data =
-  let super {.global.}: array[bool, Style] = [multiline, Prefix(prefix: "# ")]
+  var super {.global.}: array[bool, Style]
+  once: super = [multiline, Prefix(prefix: "# ")]
 
   super[style.enable].apply data
 
 
 const withNew = [
   TypeSym"Array",
-  TypeSym"TypedArray",
   TypeSym"PackedByteArray",
   TypeSym"PackedColorArray",
   TypeSym"PackedStringArray",

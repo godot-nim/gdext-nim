@@ -1,24 +1,24 @@
 nimTitle	internalobjecttools	gdext/private/internalobjecttools.html	module gdext/private/internalobjecttools		0
-nim	getClassName	gdext/private/internalobjecttools.html#getClassName,ObjectPtr	proc getClassName(o: ObjectPtr): StringName		9
-nim	setInstanceBinding	gdext/private/internalobjecttools.html#setInstanceBinding,ObjectPtr,Object,ptr.InstanceBindingCallbacks	proc setInstanceBinding(p_o: ObjectPtr; p_binding: Object;\n                   p_callbacks: ptr InstanceBindingCallbacks)		11
-nim	setInstance	gdext/private/internalobjecttools.html#setInstance,ObjectPtr,StringName,Object	proc setInstance(p_o: ObjectPtr; p_classname: StringName; p_instance: Object)		14
-nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName	proc callScriptMethod(obj: Object; p_method: StringName): Variant		17
-nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[,Variant]	proc callScriptMethod(obj: Object; p_method: StringName; args: array[0, Variant]): Variant		21
-nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[I,Variant]	proc callScriptMethod[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant		25
-nim	hasScriptMethod	gdext/private/internalobjecttools.html#hasScriptMethod,Object,StringName	proc hasScriptMethod(obj: Object; p_method: StringName): bool		31
-nim	getInstanceID	gdext/private/internalobjecttools.html#getInstanceID,Object	proc getInstanceID(self: Object): GDObjectInstanceID		34
-nim	getClassName	gdext/private/internalobjecttools.html#getClassName,Object	proc getClassName(self: Object): StringName		40
-nim	constructObject	gdext/private/internalobjecttools.html#constructObject,typedesc[ClassDB],StringName	proc constructObject(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr		43
-nim	getMethodBind	gdext/private/internalobjecttools.html#getMethodBind,typedesc[ClassDB],StringName,StringName,Int	proc getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;\n              p_methodname: StringName; p_hash: Int): MethodBindPtr		46
-nim	getMethodBind	gdext/private/internalobjecttools.html#getMethodBind,typedesc[ClassDB],StringName,string,Int	proc getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;\n              p_methodname: string; p_hash: Int): MethodBindPtr		48
-nim	getClassTag	gdext/private/internalobjecttools.html#getClassTag,typedesc[ClassDB],StringName	proc getClassTag(_: typedesc[ClassDB]; p_classname: StringName): pointer		51
-nim	castTo	gdext/private/internalobjecttools.html#castTo,ObjectPtr,pointer	proc castTo(obj: ObjectPtr; p_class_tag: pointer): ObjectPtr		54
-nim	castTo	gdext/private/internalobjecttools.html#castTo,Object,pointer	proc castTo(obj: Object; p_class_tag: pointer): ObjectPtr		56
-nim	castTo	gdext/private/internalobjecttools.html#castTo,ObjectPtr,typedesc[T]	proc castTo[T](obj: ObjectPtr; _: typedesc[T]): ObjectPtr		58
-nim	getInstanceBinding	gdext/private/internalobjecttools.html#getInstanceBinding,ObjectPtr,InstanceBindingCallbacks	proc getInstanceBinding(p_engine_object: ObjectPtr;\n                   callbacks: var InstanceBindingCallbacks): pointer		61
-nim	getInstanceBinding	gdext/private/internalobjecttools.html#getInstanceBinding,ObjectPtr,typedesc[T]	proc getInstanceBinding[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T		67
-nimgrp	getmethodbind	gdext/private/internalobjecttools.html#getMethodBind-procs-all	proc		46
-nimgrp	castto	gdext/private/internalobjecttools.html#castTo-procs-all	proc		54
-nimgrp	callscriptmethod	gdext/private/internalobjecttools.html#callScriptMethod-procs-all	proc		17
-nimgrp	getinstancebinding	gdext/private/internalobjecttools.html#getInstanceBinding-procs-all	proc		61
-nimgrp	getclassname	gdext/private/internalobjecttools.html#getClassName-procs-all	proc		9
+nim	getClassName	gdext/private/internalobjecttools.html#getClassName,ObjectPtr	proc getClassName(o: ObjectPtr): StringName		8
+nim	setInstanceBinding	gdext/private/internalobjecttools.html#setInstanceBinding,ObjectPtr,Object,ptr.InstanceBindingCallbacks	proc setInstanceBinding(p_o: ObjectPtr; p_binding: Object;\n                   p_callbacks: ptr InstanceBindingCallbacks)		10
+nim	setInstance	gdext/private/internalobjecttools.html#setInstance,ObjectPtr,StringName,Object	proc setInstance(p_o: ObjectPtr; p_classname: StringName; p_instance: Object)		13
+nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName	proc callScriptMethod(obj: Object; p_method: StringName): Variant		16
+nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[,Variant]	proc callScriptMethod(obj: Object; p_method: StringName; args: array[0, Variant]): Variant		20
+nim	callScriptMethod	gdext/private/internalobjecttools.html#callScriptMethod,Object,StringName,array[I,Variant]	proc callScriptMethod[I](obj: Object; p_method: StringName; args: array[I, Variant]): Variant		24
+nim	hasScriptMethod	gdext/private/internalobjecttools.html#hasScriptMethod,Object,StringName	proc hasScriptMethod(obj: Object; p_method: StringName): bool		30
+nim	getInstanceID	gdext/private/internalobjecttools.html#getInstanceID,Object	proc getInstanceID(self: Object): GDObjectInstanceID		33
+nim	getClassName	gdext/private/internalobjecttools.html#getClassName,Object	proc getClassName(self: Object): StringName		39
+nim	constructObject	gdext/private/internalobjecttools.html#constructObject,typedesc[ClassDB],StringName	proc constructObject(_: typedesc[ClassDB]; p_classname: StringName): ObjectPtr		42
+nim	getMethodBind	gdext/private/internalobjecttools.html#getMethodBind,typedesc[ClassDB],StringName,StringName,Int	proc getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;\n              p_methodname: StringName; p_hash: Int): MethodBindPtr		45
+nim	getMethodBind	gdext/private/internalobjecttools.html#getMethodBind,typedesc[ClassDB],StringName,string,Int	proc getMethodBind(_: typedesc[ClassDB]; p_classname: StringName;\n              p_methodname: string; p_hash: Int): MethodBindPtr		47
+nim	getClassTag	gdext/private/internalobjecttools.html#getClassTag,typedesc[ClassDB],StringName	proc getClassTag(_: typedesc[ClassDB]; p_classname: StringName): pointer		50
+nim	castTo	gdext/private/internalobjecttools.html#castTo,ObjectPtr,pointer	proc castTo(obj: ObjectPtr; p_class_tag: pointer): ObjectPtr		53
+nim	castTo	gdext/private/internalobjecttools.html#castTo,Object,pointer	proc castTo(obj: Object; p_class_tag: pointer): ObjectPtr		55
+nim	castTo	gdext/private/internalobjecttools.html#castTo,ObjectPtr,typedesc[T]	proc castTo[T](obj: ObjectPtr; _: typedesc[T]): ObjectPtr		57
+nim	getInstanceBinding	gdext/private/internalobjecttools.html#getInstanceBinding,ObjectPtr,InstanceBindingCallbacks	proc getInstanceBinding(p_engine_object: ObjectPtr;\n                   callbacks: var InstanceBindingCallbacks): pointer		60
+nim	getInstanceBinding	gdext/private/internalobjecttools.html#getInstanceBinding,ObjectPtr,typedesc[T]	proc getInstanceBinding[T: Object](p_engine_object: ObjectPtr; _: typedesc[T]): T		66
+nimgrp	getmethodbind	gdext/private/internalobjecttools.html#getMethodBind-procs-all	proc		45
+nimgrp	castto	gdext/private/internalobjecttools.html#castTo-procs-all	proc		53
+nimgrp	callscriptmethod	gdext/private/internalobjecttools.html#callScriptMethod-procs-all	proc		16
+nimgrp	getinstancebinding	gdext/private/internalobjecttools.html#getInstanceBinding-procs-all	proc		60
+nimgrp	getclassname	gdext/private/internalobjecttools.html#getClassName-procs-all	proc		8

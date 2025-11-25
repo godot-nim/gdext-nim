@@ -64,29 +64,29 @@ proc hasScriptSignal*(self: Script; signalName: StringName): bool =
   methodbind.ptrcall(self, [getPtr signalName], addr ret)
   (addr ret).decode_result(bool)
 
-proc getScriptPropertyList*(self: Script): TypedArray[Dictionary] =
+proc getScriptPropertyList*(self: Script): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Script, "get_script_property_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getScriptMethodList*(self: Script): TypedArray[Dictionary] =
+proc getScriptMethodList*(self: Script): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Script, "get_script_method_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getScriptSignalList*(self: Script): TypedArray[Dictionary] =
+proc getScriptSignalList*(self: Script): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Script, "get_script_signal_list", 2915620761)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getScriptConstantMap*(self: Script): Dictionary =
+proc getScriptConstantMap*(self: Script): Dictionary[Variant, Variant] =
   expandMethodBind(className Script, "get_script_constant_map", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getPropertyDefaultValue*(self: Script; property: StringName): Variant =
   expandMethodBind(className Script, "get_property_default_value", 2138907829)

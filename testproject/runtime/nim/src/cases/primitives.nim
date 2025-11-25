@@ -1,106 +1,106 @@
 import gdext
 import testutils
-import std/[unicode, strutils, tables]
+import std/[unicode, strutils, tables, hashes]
 import gdext/classes/gdnode
 include gdext/gen/variantsizes
 
 runtime: suite "to string":
   test "Bool":
-    check $true == $variant(true)
-    check $false == $variant(false)
+    check $true == $Variant(true)
+    check $false == $Variant(false)
   test "Int":
-    check $3141592 == $variant(3141592)
+    check $3141592 == $Variant(3141592)
   test "Float":
-    check $Inf == $variant(Inf)
-    check $3.141592 == $variant(3.141592)
+    check $Inf == $Variant(system.Inf)
+    check $3.141592 == $Variant(3.141592)
   test "Color":
-    check $AliceBlue == $variant(AliceBlue)
+    check $AliceBlue == $Variant(AliceBlue)
   test "AABB":
-    check $AABB() == $variant(AABB())
+    check $AABB() == $Variant(AABB())
   test "Basis":
-    check $Basis() == $variant(Basis())
+    check $Basis() == $Variant(Basis())
   test "Plane":
-    check $Plane() == $variant(Plane())
+    check $Plane() == $Variant(Plane())
     let plane1 = plane(vector3(0, 0, 1), 1.5)
-    check $plane1 == $variant(plane1)
+    check $plane1 == $Variant(plane1)
     let plane2 = plane(vector3(0, 0, 1), 1000000.12345)
-    check $plane2 == $variant(plane2)
+    check $plane2 == $Variant(plane2)
   test "Projection":
-    check $Projection() == $variant(Projection())
+    check $Projection() == $Variant(Projection())
   test "Quaternion":
-    check $Quaternion() == $variant(Quaternion())
+    check $Quaternion() == $Variant(Quaternion())
   test "Rect2":
-    check $Rect2() == $variant(Rect2())
+    check $Rect2() == $Variant(Rect2())
   test "Rect2i":
-    check $Rect2i() == $variant(Rect2i())
+    check $Rect2i() == $Variant(Rect2i())
   test "Transform2D":
-    check $Transform2D() == $variant(Transform2D())
+    check $Transform2D() == $Variant(Transform2D())
   test "Transform3D":
-    check $Transform3D() == $variant(Transform3D())
+    check $Transform3D() == $Variant(Transform3D())
   test "Vector2":
-    check $vector2() == $variant(vector2())
-    check $vector2(PI, Inf) == $variant(vector2(PI, Inf))
+    check $vector2() == $Variant(vector2())
+    check $vector2(PI, Inf) == $Variant(vector2(PI, Inf))
   test "Vector2i":
-    check $vector2i() == $variant(vector2i())
+    check $vector2i() == $Variant(vector2i())
   test "Vector3":
-    check $vector3() == $variant(vector3())
+    check $vector3() == $Variant(vector3())
   test "Vector3i":
-    check $vector3i() == $variant(vector3i())
+    check $vector3i() == $Variant(vector3i())
   test "Vector4":
-    check $vector4() == $variant(vector4())
+    check $vector4() == $Variant(vector4())
   test "Vector4i":
-    check $vector4i() == $variant(vector4i())
+    check $vector4i() == $Variant(vector4i())
   test "RID":
-    check $rid() == $variant(rid())
+    check $rid() == $Variant(rid())
   test "String":
-    check $newGdString("Hello, world!") == $variant(newGdString("Hello, world!"))
+    check $newGdString("Hello, world!") == $Variant(newGdString("Hello, world!"))
   test "StringName":
-    check $newStringName("Object") == $variant(newStringName("Object"))
+    check $newStringName("Object") == $Variant(newStringName("Object"))
   test "NodePath":
-    check $newNodePath("path/to/somewhere") == $variant(newNodePath("path/to/somewhere"))
+    check $newNodePath("path/to/somewhere") == $Variant(newNodePath("path/to/somewhere"))
   test "Array":
-    var arr = newArray(5)
-    for i in 0..<arr.len:
-      arr[i] = variant i
-    check $arr == $variant(arr)
-    check ($arr).startsWith "["
-  test "TypedArray":
-    var arr = newTypedArray[int](5)
+    var arr = newArray[Variant](5)
     for i in 0..<arr.len:
       arr[i] = i
-    check $arr == $variant(arr)
+    check $arr == $Variant(arr)
+    check ($arr).startsWith "["
+  test "TypedArray":
+    var arr = newArray[Int](5)
+    for i in 0..<arr.len:
+      arr[i] = i
+    check $arr == $Variant(arr)
     check ($arr).startsWith "["
   test "PackedArray":
     var arr = newPackedInt64Array()
     arr.setLen(5)
     for i in 0..<arr.len:
       arr[i] = i
-    check $arr == $variant(arr)
+    check $arr == $Variant(arr)
     check ($arr).startsWith "["
   test "Dictionary":
-    var dict = newDictionary()
+    var dict = newDictionary[Variant, Variant]()
     for i, s in ["a", "b", "c"]:
-      dict[variant s] = variant i
-    check $dict == $variant(dict)
+      dict[s] = i
+    check $dict == $Variant(dict)
     check ($dict).startsWith "{"
   test "Object":
     var obj = instantiate Object
-    check $obj == $variant(obj)
+    check $obj == $Variant(obj)
     destroy obj
     var nilobj: Object
-    check $nilobj == $variant(nilobj)
+    check $nilobj == $Variant(nilobj)
   test "RefCounted":
     var refc = instantiate RefCounted
-    check $refc == $variant(refc)
-    check $refc[] == $variant(refc[])
+    check $refc == $Variant(refc)
+    check $refc[] == $Variant(refc[])
     var nilrefc: GdRef[RefCounted]
-    check $nilrefc == $variant(nilrefc)
+    check $nilrefc == $Variant(nilrefc)
   test "Node":
     var node = instantiate(Node, "MyNode")
-    check $node == $variant(node)
+    check $node == $Variant(node)
     destroy node
     var nilnode: Node
-    check $nilnode == $variant(nilnode)
+    check $nilnode == $Variant(nilnode)
 
 runtime: suite "size":
   test "bool":
@@ -184,32 +184,339 @@ runtime: suite "size":
     check sizeof(Variant) == Size.Variant
 
 runtime: suite "Array":
+  test "method definitions":
+    var sa: Array[String] = newArray([String "one", "two", "three"])
+    var va: Array[Variant] = newArray([Variant "one", "two", "three"])
+    var ia: Array[Int] = newArray([Int 1, 2, 3])
+
+    check ia.size is Int
+    check va.size is Int
+
+    check ia.isEmpty is bool
+    check va.isEmpty is bool
+
+    check compiles ia.clear
+    check compiles va.clear
+
+    check ia.hash is Hash
+    check va.hash is Hash
+
+    check compiles ia.assign(ia)
+    check compiles va.assign(va)
+    check compiles va.assign(ia)
+    check not compiles ia.assign(va)
+    check not compiles ia.assign(sa)
+
+    check ia.get(Int 0) is Int
+    check va.get(Int 0) is Variant
+
+    check compiles va.set(Int 0, Int 10)
+    check compiles ia.set(Int 0, Int 10)
+    check compiles va.set(Int 0, Variant 10)
+    check not compiles va.set(Int 0, newSeq[int]())
+    check not compiles ia.set(Int 0, Variant 10)
+
+    check compiles va.pushBack(Int 10)
+    check compiles ia.pushBack(Int 10)
+    check compiles va.pushBack(Variant 10)
+    check not compiles va.pushBack(newSeq[int]())
+    check not compiles ia.pushBack(Variant 10)
+
+    check compiles va.pushFront(Int 10)
+    check compiles ia.pushFront(Int 10)
+    check compiles va.pushFront(Variant 10)
+    check not compiles va.pushFront(newSeq[int]())
+    check not compiles ia.pushFront(Variant 10)
+
+    check compiles va.append(Int 10)
+    check compiles ia.append(Int 10)
+    check compiles va.append(Variant 10)
+    check not compiles va.append(newSeq[int]())
+    check not compiles ia.append(Variant 10)
+
+    check compiles va.appendArray(va)
+    check compiles va.appendArray(ia)
+    check compiles ia.appendArray(ia)
+    check not compiles ia.appendArray(va)
+    check not compiles ia.appendArray(sa)
+
+    check va.resize(Int 10) is Int
+    check ia.resize(Int 10) is Int
+
+    check va.insert(Int 0, Int 10) is Int
+    check ia.insert(Int 0, Int 10) is Int
+    check va.insert(Int 0, Variant 10) is Int
+    check not compiles va.insert(Int 0, newSeq[int]())
+    check not compiles ia.insert(Int 0, Variant 10)
+
+    check compiles va.removeAt(Int 0)
+    check compiles ia.removeAt(Int 0)
+
+    check compiles va.fill(Variant 10)
+    check compiles va.fill(Int 10)
+    check compiles ia.fill(Int 10)
+    check not compiles ia.fill(Variant 10)
+
+    check compiles va.erase(Variant 10)
+    check compiles va.erase(Int 10)
+    check compiles ia.erase(Int 10)
+    check compiles ia.erase(Variant 10)
+    check not compiles va.erase(newSeq[int]())
+    check not compiles ia.erase(newSeq[int]())
+
+    check ia.front() is Int
+    check va.front() is Variant
+
+    check ia.back() is Int
+    check va.back() is Variant
+
+    check ia.pickRandom() is Int
+    check va.pickRandom() is Variant
+
+    check va.find(Variant 10) is Int
+    check va.find(Int 10) is Int
+    check ia.find(Int 10) is Int
+    check ia.find(Variant 10) is Int
+    check not compiles va.find(newSeq[int]())
+    check not compiles ia.find(newSeq[int]())
+
+    check va.findCustom(Callable()) is Int
+    check ia.findCustom(Callable()) is Int
+
+    check va.rfind(Variant 10) is Int
+    check va.rfind(Int 10) is Int
+    check ia.rfind(Int 10) is Int
+    check ia.rfind(Variant 10) is Int
+    check not compiles va.rfind(newSeq[int]())
+    check not compiles ia.rfind(newSeq[int]())
+
+    check va.rfindCustom(Callable()) is Int
+    check ia.rfindCustom(Callable()) is Int
+
+    check va.count(Variant 10) is Int
+    check va.count(Int 10) is Int
+    check ia.count(Int 10) is Int
+    check ia.count(Variant 10) is Int
+    check not compiles va.count(newSeq[int]())
+    check not compiles ia.count(newSeq[int]())
+
+    check va.has(Variant 10) is bool
+    check va.has(Int 10) is bool
+    check ia.has(Int 10) is bool
+    check ia.has(Variant 10) is bool
+    check not compiles va.has(newSeq[int]())
+    check not compiles ia.has(newSeq[int]())
+
+    check ia.popBack() is Int
+    check va.popBack() is Variant
+
+    check ia.popFront() is Int
+    check va.popFront() is Variant
+
+    check ia.popAt(Int 0) is Int
+    check va.popAt(Int 0) is Variant
+
+    check compiles ia.sort()
+    check compiles va.sort()
+
+    check compiles ia.sortCustom(Callable())
+    check compiles va.sortCustom(Callable())
+
+    check compiles ia.shuffle()
+    check compiles va.shuffle()
+
+    check va.bsearch(Variant 10) is Int
+    check va.bsearch(Int 10) is Int
+    check ia.bsearch(Int 10) is Int
+    check ia.bsearch(Variant 10) is Int
+    check not compiles va.bsearch(newSeq[int]())
+    check not compiles ia.bsearch(newSeq[int]())
+
+    check va.bsearchCustom(Variant 10, Callable()) is Int
+    check va.bsearchCustom(Int 10, Callable()) is Int
+    check ia.bsearchCustom(Int 10, Callable()) is Int
+    check ia.bsearchCustom(Variant 10, Callable()) is Int
+    check not compiles va.bsearchCustom(newSeq[int](), Callable())
+    check not compiles ia.bsearchCustom(newSeq[int](), Callable())
+
+    check compiles ia.reverse()
+    check compiles va.reverse()
+
+    check ia.duplicate() is Array[Int]
+    check va.duplicate() is Array[Variant]
+
+    check ia.duplicateDeep() is Array[Int]
+    check va.duplicateDeep() is Array[Variant]
+
+    check ia.slice(0, 2) is Array[Int]
+    check va.slice(0, 2) is Array[Variant]
+
+    check va.filter(Callable()) is Array[Variant]
+    check ia.filter(Callable()) is Array[Int]
+
+    check va.map(Callable()) is Array[Variant]
+    check ia.map(Callable()) is Array[Int]
+
+    check va.reduce(Callable(), Variant()) is Variant
+    check ia.reduce(Callable(), Int 0) is Int
+
+    check va.any(Callable()) is bool
+    check ia.any(Callable()) is bool
+
+    check va.all(Callable()) is bool
+    check ia.all(Callable()) is bool
+
+    check va.max() is Variant
+    check ia.max() is Int
+
+    check va.min() is Variant
+    check ia.min() is Int
+
+    check va.isTyped() is bool
+    check ia.isTyped() is bool
+
+    check va.isSameTyped(va) is bool
+    check va.isSameTyped(ia) is bool
+    check ia.isSameTyped(va) is bool
+    check ia.isSameTyped(ia) is bool
+    check ia.isSameTyped(sa) is bool
+
+    check va.getTypedBuiltin() is Int
+    check ia.getTypedBuiltin() is Int
+
+    check va.getTypedClassName() is StringName
+    check ia.getTypedClassName() is StringName
+
+    check va.getTypedScript() is Variant
+    check ia.getTypedScript() is Variant
+
+    check compiles va.makeReadOnly()
+    check compiles ia.makeReadOnly()
+
+    check va.isReadOnly() is bool
+    check ia.isReadOnly() is bool
+
   test "nil access":
-    var arr: Array
+    var arr: Array[Variant]
     let imm_arr = arr
     check arr.len == 0
-    expect NilAccessDefect:
-      discard imm_arr.len
+    check imm_arr.len == 0
   test "construct":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     check not arr.isTyped
     check arr.len == 10
     for i, val in arr:
-      check val == variant()
+      check val == Variant()
   test "mutable iter":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     for i, val in arr.mpairs:
-      val = variant(i)
+      val = i
     for i, val in arr:
-      check val.get(int) == i
+      check val == i
   test "subscript":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     for i in 0..<arr.len:
-      check arr[i] == variant()
+      check arr[i] == Variant()
     for i in 0..<arr.len:
-      arr[i] = variant i
+      arr[i] = i
     for i in 0..<arr.len:
-      check arr[i].get(int) == i
+      check arr[i] == i
+
+  test "`[]`(HSlice)":
+    var pi = newArray [Variant 1, 2, 3, 4]
+    check pi[0..2] == newArray [Variant 1, 2, 3]
+
+  test "`[]=`(HSlice)":
+    var ps = newArray [Variant "a", "b", "c", "d", "e", "f", "g", "h"]
+    ps[1 .. ^2] = newArray [Variant "x", "y", "z"]
+    check ps == newArray [Variant "a", "x", "y", "z", "h"]
+
+    var pb = newArray [Variant 1, 2, 3, 4, 5, 6, 7, 8]
+    pb[1 .. ^2] = newArray [Variant 24, 25, 26]
+    check pb == newArray [Variant 1, 24, 25, 26, 8]
+
+  test "subscript(out of bounds)":
+    var arr = newArray[Variant](10)
+    expect IndexDefect:
+      discard arr[10]
+
+runtime: suite "TypedArray":
+  test "nil access":
+    var arr: Array[String]
+    let imm_arr = arr
+    check arr.len == 0
+    check imm_arr.len == 0
+  test "construct":
+    var arr = newArray[String](10)
+    check arr.isTyped
+    check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
+    check arr.len == 10
+    for i, val in arr:
+      check val.length == 0
+
+  test "iter":
+    let res = [String "a", "b", "c"]
+    let arr = newArray res
+    for i, val in arr:
+      check val == res[i]
+    block:
+      var i: int
+      for val in arr:
+        check val == res[i]
+        inc i
+
+    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
+    for i, r in res2:
+      r.name = res[i]
+    let arr2 = newArray res2
+    for i, val in arr2:
+      check val.name == res[i]
+    block:
+      var i: int
+      for val in arr2:
+        check val.name == res[i]
+        inc i
+    for node in res2:
+      destroy node
+
+  test "mutable iter":
+    var arr = newArray[String](10)
+    for i, val in arr.mpairs:
+      val = $i
+    for i, val in arr:
+      check $val == $i
+
+    var arr2 = newArray[Object](10)
+    check not compiles(
+      for i, val in arr2.mpairs: discard
+    )
+
+  test "subscript":
+    var arr = newArray[String](10)
+    for i in 0..<arr.len:
+      check arr[i] == String""
+    for i in 0..<arr.len:
+      arr[i] = $i
+    for i in 0..<arr.len:
+      check arr[i] == String $i
+
+  test "backward subscript":
+    var obj = instantiate Object
+    var po = newArray [obj]
+    var pi = newArray [1]
+    check po[0] != nil
+    check po[^1] != nil
+    check pi[0] == 1
+    check pi[^1] == 1
+    destroy obj
+
+  test "typed functions":
+    var arr = newArray[String](2)
+    arr.fill "Hello, "
+    arr.pushBack "world!"
+    check $arr.popFront == "Hello, "
+    check $arr[0] == "Hello, "
+    check $arr[1] == "world!"
 
   test "`[]`(HSlice)":
     var pi = newArray [1, 2, 3, 4]
@@ -225,102 +532,7 @@ runtime: suite "Array":
     check pb == newArray [byte 1, 24, 25, 26, 8]
 
   test "subscript(out of bounds)":
-    var arr = newArray(10)
-    expect IndexDefect:
-      discard arr[10]
-
-runtime: suite "TypedArray":
-  test "nil access":
-    var arr: TypedArray[String]
-    let imm_arr = arr
-    check arr.len == 0
-    expect NilAccessDefect:
-      discard imm_arr.len
-  test "construct":
-    var arr = newTypedArray[String](10)
-    check arr.isTyped
-    check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
-    check arr.len == 10
-    for i, val in arr:
-      check val.length == 0
-
-  test "iter":
-    let res = ["a", "b", "c"]
-    let arr = newTypedArray [newGdString"a", "b", "c"]
-    for i, val in arr:
-      check $val == res[i]
-    block:
-      var i: int
-      for val in arr:
-        check $val == res[i]
-        inc i
- 
-    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
-    for i, r in res2:
-      r.name = res[i]
-    let arr2 = newTypedArray res2
-    for i, val in arr2:
-      check $val.name == res[i]
-    block:
-      var i: int
-      for val in arr2:
-        check $val.name == res[i]
-        inc i
-
-  test "mutable iter":
-    var arr = newTypedArray[String](10)
-    for i, val in arr.mpairs:
-      val = $i
-    for i, val in arr:
-      check $val == $i
-
-    var arr2 = newTypedArray[Object](10)
-    check not compiles(
-      for i, val in arr2.mpairs: discard
-    )
-
-  test "subscript":
-    var arr = newTypedArray[String](10)
-    for i in 0..<arr.len:
-      check arr[i] == newGdString""
-    for i in 0..<arr.len:
-      arr[i] = newGdString $i
-    for i in 0..<arr.len:
-      check arr[i] == newGdString $i
-
-  test "backward subscript":
-    var obj = instantiate Object
-    var po = newTypedArray [obj]
-    var pi = newTypedArray [Int 1]
-    check po[0] != nil
-    check po[^1] != nil
-    check pi[0] == 1
-    check pi[^1] == 1
-    destroy obj
-
-  test "typed functions":
-    var arr = newTypedArray[String](2)
-    arr.fill "Hello, "
-    arr.pushBack "world!"
-    check $arr.popFront == "Hello, "
-    check $arr[0] == "Hello, "
-    check $arr[1] == "world!"
-
-  test "`[]`(HSlice)":
-    var pi = newTypedArray [Int 1, 2, 3, 4]
-    check pi[0..2] == newTypedArray [Int 1, 2, 3]
-
-  test "`[]=`(HSlice)":
-    var ps = newTypedArray [String "a","b","c","d","e","f","g","h"]
-    ps[1 .. ^2] = newTypedArray [String "x","y","z"]
-    check ps == newTypedArray [String "a","x","y","z","h"]
-
-    var pb = newTypedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
-    pb[1 .. ^2] = newTypedArray [byte 24, 25, 26]
-    check pb == newTypedArray [byte 1, 24, 25, 26, 8]
-
-  test "subscript(out of bounds)":
-    var arr = newTypedArray[String](10)
+    var arr = newArray[String](10)
     expect IndexDefect:
       discard arr[10]
 
@@ -333,34 +545,34 @@ runtime: suite "newPackedArray":
     check strs.size == 8
 
     for i in 0..<strs.size:
-      check strs[i] == newGdString()
+      check strs[i] == String""
 
   test "assignment":
     for i in 0..<strs.size:
-      strs[i] = newGdString $i
+      strs[i] = String $i
     for i in 0..<strs.size:
-      check strs[i] == newGdString $i
+      check strs[i] == String $i
 
   test "to seq":
     let s: seq[String] = @strs
-    check s == @[newGdString"0", newGdString"1", newGdString"2", newGdString"3", newGdString"4", newGdString"5", newGdString"6", newGdString"7"]
+    check s == @[String"0", "1", "2", "3", "4", "5", "6", "7"]
 
   test "mutable iteration":
     for b in strs.mitems:
-      b = newGdString "Hello, world!"
-      check b == newGdString "Hello, world!"
+      b = "Hello, world!"
+      check b == String"Hello, world!"
 
     for i, b in strs.mpairs:
-      b = newGdString $i
-      check b == newGdString $i
+      b = $i
+      check b == String $i
 
   test "immutable iteration":
     for i, b in strs:
-      check b == newGdString $i
+      check b == String $i
 
     var i: int
     for b in strs:
-      check b == newGdString $i
+      check b == String $i
       inc i
 
   test "contains(newPackedInt32Array)":
@@ -407,10 +619,10 @@ runtime: suite "Dictionary":
     "Object",
     ]
   let values = [
-    variant(1),
-    variant(2.0),
-    variant("three"),
-    variant(instantiate Object),
+    Variant 1,
+    2.0,
+    "three",
+    instantiate Object,
     ]
   let data = {
     keys[0]: values[0],
@@ -418,40 +630,174 @@ runtime: suite "Dictionary":
     keys[2]: values[2],
     keys[3]: values[3],
     }
+
+  test "method definitions":
+    var objflt: Dictionary[Object, Float]
+    var strstn: Dictionary[String, StringName]
+    var varvar: Dictionary[Variant, Variant]
+
+    check size(varvar) is Int
+    check size(objflt) is Int
+
+    check isEmpty(varvar) is Bool
+    check isEmpty(objflt) is Bool
+
+    check compiles clear(varvar)
+    check compiles clear(objflt)
+
+    check compiles assign(objflt, objflt)
+    check not compiles assign(objflt, strstn)
+    check compiles assign(varvar, objflt)
+    check not compiles assign(objflt, varvar)
+
+    check compiles sort(varvar)
+    check compiles sort(objflt)
+
+    check compiles merge(objflt, objflt)
+    check compiles merge(varvar, objflt)
+    check not compiles merge(objflt, varvar)
+    check not compiles merge(objflt, strstn)
+
+    check merged(objflt, objflt) is Dictionary[Object, Float]
+    check merged(varvar, objflt) is Dictionary[Object, Float]
+    check merged(objflt, varvar) is Dictionary[Object, Float]
+    check merged(objflt, strstn) is Dictionary[Variant, Variant]
+
+    check has(strstn, String()) is Bool
+    check has(strstn, Variant()) is Bool
+    check has(strstn, 10) is Bool
+    check has(varvar, Variant()) is Bool
+    check has(varvar, 10) is Bool
+    check not compiles has(varvar, newSeq[int]())
+
+    check hasAll(strstn, Array[String]()) is Bool
+    check hasAll(strstn, Array[Variant]()) is Bool
+    check hasAll(strstn, Array[StringName]()) is Bool
+    check hasAll(varvar, Array[Variant]()) is Bool
+    check hasAll(varvar, Array[String]()) is Bool
+
+    check findKey(strstn, Variant()) is Variant
+    check findKey(strstn, StringName()) is Variant
+    check findKey(strstn, 10) is Variant
+    check findKey(varvar, Variant()) is Variant
+    check findKey(varvar, 10) is Variant
+
+    check erase(strstn, Variant()) is Bool
+    check erase(strstn, String()) is Bool
+    check erase(strstn, 10) is Bool
+    check erase(varvar, Variant()) is Bool
+    check erase(varvar, 10) is Bool
+
+    check hash(strstn) is Hash
+    check hash(varvar) is Hash
+
+    check: compiles:
+      var _: Array[Variant] = keys(varvar)
+      var _: Array[String] = keys(strstn)
+
+    check: compiles:
+      var _: Array[Variant] = values(varvar)
+      var _: Array[StringName] = values(strstn)
+
+    check duplicate(varvar) is Dictionary[Variant, Variant]
+    check duplicate(strstn) is Dictionary[String, StringName]
+
+    check duplicateDeep(varvar) is Dictionary[Variant, Variant]
+    check duplicateDeep(strstn) is Dictionary[String, StringName]
+
+    check get(varvar, Variant(), Variant()) is Variant
+    check get(varvar, 10, Variant()) is Variant
+    check not compiles get(strstn, Variant())
+    check get(strstn, String()) is StringName
+    check not compiles get(strstn, 10)
+
+    check getOrAdd(varvar, Variant(), Variant()) is Variant
+    check getOrAdd(varvar, 10, Variant()) is Variant
+    check not compiles getOrAdd(strstn, Variant())
+    check getOrAdd(strstn, String()) is StringName
+    check not compiles getOrAdd(strstn, 10)
+
+    check compiles set(varvar, Variant(), Variant())
+    check compiles set(varvar, 10, Variant())
+    check compiles set(varvar, Variant(), 10)
+    check compiles set(varvar, 10, 10)
+    check compiles set(strstn, String(), StringName())
+    check not compiles set(strstn, String(), 10)
+    check not compiles set(strstn, 10, StringName())
+    check not compiles set(strstn, 10, 10)
+
+    check isTyped(varvar) is Bool
+    check isTyped(strstn) is Bool
+
+    check isTypedKey(varvar) is Bool
+    check isTypedKey(strstn) is Bool
+
+    check isTypedValue(varvar) is Bool
+    check isTypedValue(strstn) is Bool
+
+    check isSameTyped(varvar, varvar) is Bool
+    check isSameTyped(strstn, varvar) is Bool
+    check isSameTyped(varvar, strstn) is Bool
+    check isSameTyped(strstn, strstn) is Bool
+    check isSameTyped(strstn, objflt) is Bool
+
+    check isSameTypedKey(varvar, varvar) is Bool
+    check isSameTypedKey(strstn, varvar) is Bool
+    check isSameTypedKey(varvar, strstn) is Bool
+    check isSameTypedKey(strstn, strstn) is Bool
+    check isSameTypedKey(strstn, objflt) is Bool
+
+    check isSameTypedValue(varvar, varvar) is Bool
+    check isSameTypedValue(strstn, varvar) is Bool
+    check isSameTypedValue(varvar, strstn) is Bool
+    check isSameTypedValue(strstn, strstn) is Bool
+    check isSameTypedValue(strstn, objflt) is Bool
+
+    check compiles makeReadOnly(varvar)
+    check compiles makeReadOnly(strstn)
+
+    check isReadOnly(varvar) is Bool
+    check isReadOnly(strstn) is Bool
+
+    check recursiveEqual(varvar, varvar, 0) is Bool
+    check recursiveEqual(strstn, varvar, 0) is Bool
+    check recursiveEqual(varvar, strstn, 0) is Bool
+    check recursiveEqual(strstn, strstn, 0) is Bool
+    check recursiveEqual(strstn, objflt, 0) is Bool
+
   test "nil access":
-    var dict: Dictionary
+    var dict: Dictionary[Variant, Variant]
     let imm_dict = dict
     check dict.size == 0
-    expect NilAccessDefect:
-      discard imm_dict.size
+    check imm_dict.size == 0
 
   test "construct from Table":
     var tab = data.toTable
     var dict = newDictionary(tab)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "construct from TableRef":
     var tab = data.newTable
     var dict = newDictionary(tab)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "construct from openArray":
     var dict = newDictionary(data)
-    check not dict.isTyped
+    check dict.isTyped
     check dict.size == 4
     for (key, val) in data:
-      check dict[variant key] == val
+      check dict[key] == val
 
   test "keys":
     var dict = newDictionary(data)
     for key in dict.keys:
-      check key as string in keys
+      check key in keys
 
   test "values":
     var dict = newDictionary(data)
@@ -466,7 +812,7 @@ runtime: suite "Dictionary":
   test "mvalues":
     var dict = newDictionary(data)
     for value in dict.mvalues:
-      value = variant Inf
+      value = system.Inf
     for value in dict.values:
       check value as float == Inf
 

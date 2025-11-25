@@ -18,20 +18,20 @@ proc removeNode*(self: EditorSelection; node: Node): void =
   expandMethodBind(className EditorSelection, "remove_node", 1078189570)
   methodbind.ptrcall(self, [getPtr node])
 
-proc getSelectedNodes*(self: EditorSelection): TypedArray[Node] =
+proc getSelectedNodes*(self: EditorSelection): Array[Node] =
   expandMethodBind(className EditorSelection, "get_selected_nodes", 2915620761)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
-proc getTopSelectedNodes*(self: EditorSelection): TypedArray[Node] =
+proc getTopSelectedNodes*(self: EditorSelection): Array[Node] =
   expandMethodBind(className EditorSelection, "get_top_selected_nodes", 2915620761)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
-proc getTransformableSelectedNodes*(self: EditorSelection): TypedArray[Node] =
+proc getTransformableSelectedNodes*(self: EditorSelection): Array[Node] =
   expandMethodBind(className EditorSelection, "get_transformable_selected_nodes", 2915620761)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])

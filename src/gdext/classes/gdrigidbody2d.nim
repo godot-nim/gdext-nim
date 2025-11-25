@@ -287,11 +287,11 @@ proc getFreezeMode*(self: RigidBody2D): RigidBody2D_FreezeMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RigidBody2D_FreezeMode)
 
-proc getCollidingBodies*(self: RigidBody2D): TypedArray[Node2D] =
+proc getCollidingBodies*(self: RigidBody2D): Array[Node2D] =
   expandMethodBind(className RigidBody2D, "get_colliding_bodies", 3995934104)
-  var ret: encoded TypedArray[Node2D]
+  var ret: encoded Array[Node2D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Node2D])
+  (addr ret).decode_result(Array[Node2D])
 
 template mass*(self: RigidBody2D): untyped = self.getMass()
 template `mass=`*(self: RigidBody2D; value) = self.setMass(value)

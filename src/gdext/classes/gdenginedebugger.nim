@@ -32,12 +32,14 @@ proc hasProfiler*(self: EngineDebugger; name: StringName): bool =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(bool)
 
-proc profilerAddFrameData*(self: EngineDebugger; name: StringName; data: Array): void =
+proc profilerAddFrameData*(self: EngineDebugger; name: StringName; data: Array[Variant]): void =
   expandMethodBind(className EngineDebugger, "profiler_add_frame_data", 1895267858)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr name, getPtr data])
 
-proc profilerEnable*(self: EngineDebugger; name: StringName; enable: bool; arguments: Array = newArray()): void =
+proc profilerEnable*(self: EngineDebugger; name: StringName; enable: bool; arguments: Array[Variant] = newArray[Variant]()): void =
   expandMethodBind(className EngineDebugger, "profiler_enable", 3192561009)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr name, getPtr enable, getPtr arguments])
 
 proc registerMessageCapture*(self: EngineDebugger; name: StringName; callable: Callable): void =
@@ -58,8 +60,9 @@ proc linePoll*(self: EngineDebugger): void =
   expandMethodBind(className EngineDebugger, "line_poll", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc sendMessage*(self: EngineDebugger; message: String; data: Array): void =
+proc sendMessage*(self: EngineDebugger; message: String; data: Array[Variant]): void =
   expandMethodBind(className EngineDebugger, "send_message", 1209351045)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr message, getPtr data])
 
 proc debug*(self: EngineDebugger; canContinue: bool = true; isErrorBreakpoint: bool = false): void =

@@ -170,25 +170,25 @@ nim	toArgb64	gdext/colortools.html#toArgb64,Color	proc toArgb64(self: Color): In
 nim	toAbgr64	gdext/colortools.html#toAbgr64,Color	proc toAbgr64(self: Color): Int		372
 nim	toRgba64	gdext/colortools.html#toRgba64,Color	proc toRgba64(self: Color): Int		374
 nim	toHtml	gdext/colortools.html#toHtml,Color,bool	proc toHtml(self: Color; withAlpha: bool = true): String		376
-nim	clamp	gdext/colortools.html#clamp,Color,Color,Color	proc clamp(self: Color; min: Color = color(0, 0, 0, 0);\n      max: Color = color(1, 1, 1, 1)): Color		379
-nim	inverted	gdext/colortools.html#inverted,Color	proc inverted(self: Color): Color		382
-nim	lerp	gdext/colortools.html#lerp,Color,Color,Float	proc lerp(self: Color; to: Color; weight: Float): Color		384
-nim	lightened	gdext/colortools.html#lightened,Color,Float	proc lightened(self: Color; amount: Float): Color		387
-nim	darkened	gdext/colortools.html#darkened,Color,Float	proc darkened(self: Color; amount: Float): Color		390
-nim	blend	gdext/colortools.html#blend,Color,Color	proc blend(self: Color; over: Color): Color		393
-nim	getLuminance	gdext/colortools.html#getLuminance,Color	proc getLuminance(self: Color): Float		396
-nim	srgbToLinear	gdext/colortools.html#srgbToLinear,Color	proc srgbToLinear(self: Color): Color		398
-nim	linearToSrgb	gdext/colortools.html#linearToSrgb,Color	proc linearToSrgb(self: Color): Color		400
-nim	isEqualApprox	gdext/colortools.html#isEqualApprox,Color,Color	proc isEqualApprox(self: Color; to: Color): bool		402
-nim	hex	gdext/colortools.html#hex,typedesc[Color],Int	proc hex(_: typedesc[Color]; hex: Int): Color		405
-nim	hex64	gdext/colortools.html#hex64,typedesc[Color],Int	proc hex64(_: typedesc[Color]; hex: Int): Color		408
-nim	html	gdext/colortools.html#html,typedesc[Color],String	proc html(_: typedesc[Color]; rgba: String): Color		411
-nim	htmlIsValid	gdext/colortools.html#htmlIsValid,typedesc[Color],String	proc htmlIsValid(_: typedesc[Color]; color: String): bool		414
-nim	fromString	gdext/colortools.html#fromString,typedesc[Color],String,Color	proc fromString(_: typedesc[Color]; str: String; default: Color): Color		417
-nim	fromHsv	gdext/colortools.html#fromHsv,typedesc[Color],Float,Float,Float,Float	proc fromHsv(_: typedesc[Color]; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color		420
-nim	fromOkHsl	gdext/colortools.html#fromOkHsl,typedesc[Color],Float,Float,Float,Float	proc fromOkHsl(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color		423
-nim	fromRgbe9995	gdext/colortools.html#fromRgbe9995,typedesc[Color],Int	proc fromRgbe9995(_: typedesc[Color]; rgbe: Int): Color		426
-nim	fromRgba8	gdext/colortools.html#fromRgba8,typedesc[Color],Int,Int,Int,Int	proc fromRgba8(_: typedesc[Color]; r8: Int; g8: Int; b8: Int; a8: Int = 255): Color		429
+nim	clamp	gdext/colortools.html#clamp,Color,Color,Color	proc clamp(self: Color; min: Color = color(0, 0, 0, 0);\n      max: Color = color(1, 1, 1, 1)): Color		378
+nim	inverted	gdext/colortools.html#inverted,Color	proc inverted(self: Color): Color		380
+nim	lerp	gdext/colortools.html#lerp,Color,Color,Float	proc lerp(self: Color; to: Color; weight: Float): Color		382
+nim	lightened	gdext/colortools.html#lightened,Color,Float	proc lightened(self: Color; amount: Float): Color		384
+nim	darkened	gdext/colortools.html#darkened,Color,Float	proc darkened(self: Color; amount: Float): Color		386
+nim	blend	gdext/colortools.html#blend,Color,Color	proc blend(self: Color; over: Color): Color		388
+nim	getLuminance	gdext/colortools.html#getLuminance,Color	proc getLuminance(self: Color): Float		390
+nim	srgbToLinear	gdext/colortools.html#srgbToLinear,Color	proc srgbToLinear(self: Color): Color		392
+nim	linearToSrgb	gdext/colortools.html#linearToSrgb,Color	proc linearToSrgb(self: Color): Color		394
+nim	isEqualApprox	gdext/colortools.html#isEqualApprox,Color,Color	proc isEqualApprox(self: Color; to: Color): bool		396
+nim	hex	gdext/colortools.html#hex,typedesc[Color],Int	proc hex(_: typedesc[Color]; hex: Int): Color		398
+nim	hex64	gdext/colortools.html#hex64,typedesc[Color],Int	proc hex64(_: typedesc[Color]; hex: Int): Color		400
+nim	html	gdext/colortools.html#html,typedesc[Color],String	proc html(_: typedesc[Color]; rgba: String): Color		402
+nim	htmlIsValid	gdext/colortools.html#htmlIsValid,typedesc[Color],String	proc htmlIsValid(_: typedesc[Color]; color: String): bool		404
+nim	fromString	gdext/colortools.html#fromString,typedesc[Color],String,Color	proc fromString(_: typedesc[Color]; str: String; default: Color): Color		406
+nim	fromHsv	gdext/colortools.html#fromHsv,typedesc[Color],Float,Float,Float,Float	proc fromHsv(_: typedesc[Color]; h: Float; s: Float; v: Float; alpha: Float = 1.0): Color		408
+nim	fromOkHsl	gdext/colortools.html#fromOkHsl,typedesc[Color],Float,Float,Float,Float	proc fromOkHsl(_: typedesc[Color]; h: Float; s: Float; l: Float; alpha: Float = 1.0): Color		410
+nim	fromRgbe9995	gdext/colortools.html#fromRgbe9995,typedesc[Color],Int	proc fromRgbe9995(_: typedesc[Color]; rgbe: Int): Color		412
+nim	fromRgba8	gdext/colortools.html#fromRgba8,typedesc[Color],Int,Int,Int,Int	proc fromRgba8(_: typedesc[Color]; r8: Int; g8: Int; b8: Int; a8: Int = 255): Color		414
 nim	`[]`	gdext/colortools.html#[],Color,int	proc `[]`(self: Color; index: int): float_elem		16
 nimgrp	color	gdext/colortools.html#color-procs-all	proc		6
 nimgrp	+	gdext/colortools.html#+-procs-all	proc		314

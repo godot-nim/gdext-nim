@@ -31,7 +31,7 @@ proc registerVirtual_uninitialize*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_uninitialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).uninitialize()
 
-method getSystemInfo*(self: XRInterfaceExtension): Dictionary {.base.} = (discard)
+method getSystemInfo*(self: XRInterfaceExtension): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getSystemInfo*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_system_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).getSystemInfo().encode(r_ret)
@@ -151,38 +151,32 @@ proc registerVirtual_getCameraFeedId*[T: XRInterfaceExtension](Self: typedesc[T]
   Self.vmethods[newStringName"_get_camera_feed_id"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).getCameraFeedId().encode(r_ret)
 
-method getColorTexture*(self: XRInterfaceExtension): RID {.base.} = (discard)
-proc registerVirtual_getColorTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
-  Self.vmethods[newStringName"_get_color_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[XRInterfaceExtension](p_instance).getColorTexture().encode(r_ret)
-
-method getDepthTexture*(self: XRInterfaceExtension): RID {.base.} = (discard)
-proc registerVirtual_getDepthTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
-  Self.vmethods[newStringName"_get_depth_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[XRInterfaceExtension](p_instance).getDepthTexture().encode(r_ret)
-
-method getVelocityTexture*(self: XRInterfaceExtension): RID {.base.} = (discard)
-proc registerVirtual_getVelocityTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
-  Self.vmethods[newStringName"_get_velocity_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[XRInterfaceExtension](p_instance).getVelocityTexture().encode(r_ret)
-
-proc getColorTexture*(self: XRInterfaceExtension): RID =
+method getColorTexture*(self: XRInterfaceExtension): RID {.base.} =
   expandMethodBind(className XRInterfaceExtension, "get_color_texture", 529393457)
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+proc registerVirtual_getColorTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_color_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[XRInterfaceExtension](p_instance).getColorTexture().encode(r_ret)
 
-proc getDepthTexture*(self: XRInterfaceExtension): RID =
+method getDepthTexture*(self: XRInterfaceExtension): RID {.base.} =
   expandMethodBind(className XRInterfaceExtension, "get_depth_texture", 529393457)
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+proc registerVirtual_getDepthTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_depth_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[XRInterfaceExtension](p_instance).getDepthTexture().encode(r_ret)
 
-proc getVelocityTexture*(self: XRInterfaceExtension): RID =
+method getVelocityTexture*(self: XRInterfaceExtension): RID {.base.} =
   expandMethodBind(className XRInterfaceExtension, "get_velocity_texture", 529393457)
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+proc registerVirtual_getVelocityTexture*[T: XRInterfaceExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_get_velocity_texture"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[XRInterfaceExtension](p_instance).getVelocityTexture().encode(r_ret)
 
 proc addBlit*(self: XRInterfaceExtension; renderTarget: RID; srcRect: Rect2; dstRect: Rect2i; useLayer: bool; layer: uint32; applyLensDistortion: bool; eyeCenter: Vector2; k1: float64; k2: float64; upscale: float64; aspectRatio: float64): void =
   expandMethodBind(className XRInterfaceExtension, "add_blit", 258596971)

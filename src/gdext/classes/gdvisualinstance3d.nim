@@ -6,7 +6,11 @@ import gdnode3d; export gdnode3d
 
 expandOnClassImported(VisualInstance3D, Node3D)
 
-method getAabb*(self: VisualInstance3D): AABB {.base.} = (discard)
+method getAabb*(self: VisualInstance3D): AABB {.base.} =
+  expandMethodBind(className VisualInstance3D, "get_aabb", 1068685055)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AABB)
 proc registerVirtual_getAabb*[T: VisualInstance3D](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[VisualInstance3D](p_instance).getAabb().encode(r_ret)
@@ -66,12 +70,6 @@ proc isSortingUseAabbCenter*(self: VisualInstance3D): bool =
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
-
-proc getAabb*(self: VisualInstance3D): AABB =
-  expandMethodBind(className VisualInstance3D, "get_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
 
 template layers*(self: VisualInstance3D): untyped = self.getLayerMask()
 template `layers=`*(self: VisualInstance3D; value) = self.setLayerMask(value)

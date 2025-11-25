@@ -212,11 +212,11 @@ proc removeCache*(self: FontFile; cacheIndex: int32): void =
   expandMethodBind(className FontFile, "remove_cache", 1286410249)
   methodbind.ptrcall(self, [getPtr cacheIndex])
 
-proc getSizeCacheList*(self: FontFile; cacheIndex: int32): TypedArray[Vector2i] =
+proc getSizeCacheList*(self: FontFile; cacheIndex: int32): Array[Vector2i] =
   expandMethodBind(className FontFile, "get_size_cache_list", 663333327)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr cacheIndex], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc clearSizeCache*(self: FontFile; cacheIndex: int32): void =
   expandMethodBind(className FontFile, "clear_size_cache", 1286410249)
@@ -226,15 +226,16 @@ proc removeSizeCache*(self: FontFile; cacheIndex: int32; size: Vector2i): void =
   expandMethodBind(className FontFile, "remove_size_cache", 2311374912)
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size])
 
-proc setVariationCoordinates*(self: FontFile; cacheIndex: int32; variationCoordinates: Dictionary): void =
+proc setVariationCoordinates*(self: FontFile; cacheIndex: int32; variationCoordinates: Dictionary[Variant, Variant]): void =
   expandMethodBind(className FontFile, "set_variation_coordinates", 64545446)
+  nilCheck variationCoordinates
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr variationCoordinates])
 
-proc getVariationCoordinates*(self: FontFile; cacheIndex: int32): Dictionary =
+proc getVariationCoordinates*(self: FontFile; cacheIndex: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className FontFile, "get_variation_coordinates", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr cacheIndex], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setEmbolden*(self: FontFile; cacheIndex: int32; strength: Float): void =
   expandMethodBind(className FontFile, "set_embolden", 1602489585)
@@ -434,11 +435,11 @@ proc getGlyphTextureIdx*(self: FontFile; cacheIndex: int32; size: Vector2i; glyp
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size, getPtr glyph], addr ret)
   (addr ret).decode_result(int32)
 
-proc getKerningList*(self: FontFile; cacheIndex: int32; size: int32): TypedArray[Vector2i] =
+proc getKerningList*(self: FontFile; cacheIndex: int32; size: int32): Array[Vector2i] =
   expandMethodBind(className FontFile, "get_kerning_list", 2345056839)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr cacheIndex, getPtr size], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc clearKerningMap*(self: FontFile; cacheIndex: int32; size: int32): void =
   expandMethodBind(className FontFile, "clear_kerning_map", 3937882851)
@@ -506,15 +507,16 @@ proc getScriptSupportOverrides*(self: FontFile): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc setOpentypeFeatureOverrides*(self: FontFile; overrides: Dictionary): void =
+proc setOpentypeFeatureOverrides*(self: FontFile; overrides: Dictionary[Variant, Variant]): void =
   expandMethodBind(className FontFile, "set_opentype_feature_overrides", 4155329257)
+  nilCheck overrides
   methodbind.ptrcall(self, [getPtr overrides])
 
-proc getOpentypeFeatureOverrides*(self: FontFile): Dictionary =
+proc getOpentypeFeatureOverrides*(self: FontFile): Dictionary[Variant, Variant] =
   expandMethodBind(className FontFile, "get_opentype_feature_overrides", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getGlyphIndex*(self: FontFile; size: int32; char: char32; variationSelector: char32): int32 =
   expandMethodBind(className FontFile, "get_glyph_index", 864943070)

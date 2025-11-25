@@ -16,7 +16,7 @@ proc registerVirtual_isExecutable*[T: EditorExportPlatformExtension](Self: typed
   Self.vmethods[newStringName"_is_executable"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlatformExtension](p_instance).isExecutable(p_args[0].decode(String)).encode(r_ret)
 
-method getExportOptions*(self: EditorExportPlatformExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getExportOptions*(self: EditorExportPlatformExtension): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getExportOptions*[T: EditorExportPlatformExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_export_options"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlatformExtension](p_instance).getExportOptions().encode(r_ret)

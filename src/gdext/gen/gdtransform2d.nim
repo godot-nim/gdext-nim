@@ -67,58 +67,47 @@ var `isFinite(Transform2D)`: PtrBuiltinMethod
 var `lookingAt(Transform2D Vector2)`: PtrBuiltinMethod
 
 proc inverse*(self: Transform2D): Transform2D =
-  `inverse(Transform2D)`(addr self, nil, addr result, 0)
+  `inverse(Transform2D)`.call(addr self, [], addr result)
 proc affineInverse*(self: Transform2D): Transform2D =
-  `affineInverse(Transform2D)`(addr self, nil, addr result, 0)
+  `affineInverse(Transform2D)`.call(addr self, [], addr result)
 proc getRotation*(self: Transform2D): Float =
-  `getRotation(Transform2D)`(addr self, nil, addr result, 0)
+  `getRotation(Transform2D)`.call(addr self, [], addr result)
 proc getOrigin*(self: Transform2D): Vector2 =
-  `getOrigin(Transform2D)`(addr self, nil, addr result, 0)
+  `getOrigin(Transform2D)`.call(addr self, [], addr result)
 proc getScale*(self: Transform2D): Vector2 =
-  `getScale(Transform2D)`(addr self, nil, addr result, 0)
+  `getScale(Transform2D)`.call(addr self, [], addr result)
 proc getSkew*(self: Transform2D): Float =
-  `getSkew(Transform2D)`(addr self, nil, addr result, 0)
+  `getSkew(Transform2D)`.call(addr self, [], addr result)
 proc orthonormalized*(self: Transform2D): Transform2D =
-  `orthonormalized(Transform2D)`(addr self, nil, addr result, 0)
+  `orthonormalized(Transform2D)`.call(addr self, [], addr result)
 proc rotated*(self: Transform2D; angle: Float): Transform2D =
-  let argArr = [getPtr angle]
-  `rotated(Transform2D Float)`(addr self, addr argArr[0], addr result, 1)
+  `rotated(Transform2D Float)`.call(addr self, [getPtr angle], addr result)
 proc rotatedLocal*(self: Transform2D; angle: Float): Transform2D =
-  let argArr = [getPtr angle]
-  `rotatedLocal(Transform2D Float)`(addr self, addr argArr[0], addr result, 1)
+  `rotatedLocal(Transform2D Float)`.call(addr self, [getPtr angle], addr result)
 proc scaled*(self: Transform2D; scale: Vector2): Transform2D =
-  let argArr = [getPtr scale]
-  `scaled(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `scaled(Transform2D Vector2)`.call(addr self, [getPtr scale], addr result)
 proc scaledLocal*(self: Transform2D; scale: Vector2): Transform2D =
-  let argArr = [getPtr scale]
-  `scaledLocal(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `scaledLocal(Transform2D Vector2)`.call(addr self, [getPtr scale], addr result)
 proc translated*(self: Transform2D; offset: Vector2): Transform2D =
-  let argArr = [getPtr offset]
-  `translated(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `translated(Transform2D Vector2)`.call(addr self, [getPtr offset], addr result)
 proc translatedLocal*(self: Transform2D; offset: Vector2): Transform2D =
-  let argArr = [getPtr offset]
-  `translatedLocal(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `translatedLocal(Transform2D Vector2)`.call(addr self, [getPtr offset], addr result)
 proc determinant*(self: Transform2D): Float =
-  `determinant(Transform2D)`(addr self, nil, addr result, 0)
+  `determinant(Transform2D)`.call(addr self, [], addr result)
 proc basisXform*(self: Transform2D; v: Vector2): Vector2 =
-  let argArr = [getPtr v]
-  `basisXform(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `basisXform(Transform2D Vector2)`.call(addr self, [getPtr v], addr result)
 proc basisXformInv*(self: Transform2D; v: Vector2): Vector2 =
-  let argArr = [getPtr v]
-  `basisXformInv(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `basisXformInv(Transform2D Vector2)`.call(addr self, [getPtr v], addr result)
 proc interpolateWith*(self: Transform2D; xform: Transform2D; weight: Float): Transform2D =
-  let argArr = [getPtr xform, getPtr weight]
-  `interpolateWith(Transform2D Transform2D Float)`(addr self, addr argArr[0], addr result, 2)
+  `interpolateWith(Transform2D Transform2D Float)`.call(addr self, [getPtr xform, getPtr weight], addr result)
 proc isConformal*(self: Transform2D): bool =
-  `isConformal(Transform2D)`(addr self, nil, addr result, 0)
+  `isConformal(Transform2D)`.call(addr self, [], addr result)
 proc isEqualApprox*(self: Transform2D; xform: Transform2D): bool =
-  let argArr = [getPtr xform]
-  `isEqualApprox(Transform2D Transform2D)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Transform2D Transform2D)`.call(addr self, [getPtr xform], addr result)
 proc isFinite*(self: Transform2D): bool =
-  `isFinite(Transform2D)`(addr self, nil, addr result, 0)
+  `isFinite(Transform2D)`.call(addr self, [], addr result)
 proc lookingAt*(self: Transform2D; target: Vector2 = vector2(0, 0)): Transform2D =
-  let argArr = [getPtr target]
-  `lookingAt(Transform2D Vector2)`(addr self, addr argArr[0], addr result, 1)
+  `lookingAt(Transform2D Vector2)`.call(addr self, [getPtr target], addr result)
 
 proc load_Transform2D_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `inverse(Transform2D)` = load(VariantType_Transform2D, "inverse", 1420440541)

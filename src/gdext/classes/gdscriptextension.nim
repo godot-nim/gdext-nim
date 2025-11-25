@@ -81,7 +81,7 @@ proc registerVirtual_getDocClassName*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_doc_class_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getDocClassName().encode(r_ret)
 
-method getDocumentation*(self: ScriptExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getDocumentation*(self: ScriptExtension): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getDocumentation*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_documentation"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getDocumentation().encode(r_ret)
@@ -106,7 +106,7 @@ proc registerVirtual_getScriptMethodArgumentCount*[T: ScriptExtension](Self: typ
   Self.vmethods[newStringName"_get_script_method_argument_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getScriptMethodArgumentCount(p_args[0].decode(StringName)).encode(r_ret)
 
-method getMethodInfo*(self: ScriptExtension; `method`: StringName): Dictionary {.base.} = (discard)
+method getMethodInfo*(self: ScriptExtension; `method`: StringName): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getMethodInfo*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_method_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getMethodInfo(p_args[0].decode(StringName)).encode(r_ret)
@@ -136,7 +136,7 @@ proc registerVirtual_hasScriptSignal*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_script_signal"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).hasScriptSignal(p_args[0].decode(StringName)).encode(r_ret)
 
-method getScriptSignalList*(self: ScriptExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getScriptSignalList*(self: ScriptExtension): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getScriptSignalList*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_script_signal_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getScriptSignalList().encode(r_ret)
@@ -156,12 +156,12 @@ proc registerVirtual_updateExports*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_update_exports"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).updateExports()
 
-method getScriptMethodList*(self: ScriptExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getScriptMethodList*(self: ScriptExtension): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getScriptMethodList*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_script_method_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getScriptMethodList().encode(r_ret)
 
-method getScriptPropertyList*(self: ScriptExtension): TypedArray[Dictionary] {.base.} = (discard)
+method getScriptPropertyList*(self: ScriptExtension): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getScriptPropertyList*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_script_property_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getScriptPropertyList().encode(r_ret)
@@ -171,12 +171,12 @@ proc registerVirtual_getMemberLine*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_member_line"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getMemberLine(p_args[0].decode(StringName)).encode(r_ret)
 
-method getConstants*(self: ScriptExtension): Dictionary {.base.} = (discard)
+method getConstants*(self: ScriptExtension): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getConstants*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_constants"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getConstants().encode(r_ret)
 
-method getMembers*(self: ScriptExtension): TypedArray[StringName] {.base.} = (discard)
+method getMembers*(self: ScriptExtension): Array[StringName] {.base.} = (discard)
 proc registerVirtual_getMembers*[T: ScriptExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_members"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[ScriptExtension](p_instance).getMembers().encode(r_ret)

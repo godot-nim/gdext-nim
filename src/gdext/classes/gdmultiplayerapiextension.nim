@@ -31,10 +31,10 @@ proc registerVirtual_getPeerIds*[T: MultiplayerAPIExtension](Self: typedesc[T]) 
   Self.vmethods[newStringName"_get_peer_ids"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[MultiplayerAPIExtension](p_instance).getPeerIds().encode(r_ret)
 
-method rpc*(self: MultiplayerAPIExtension; peer: int32; `object`: Object; `method`: StringName; args: Array): Error {.base.} = (discard)
+method rpc*(self: MultiplayerAPIExtension; peer: int32; `object`: Object; `method`: StringName; args: Array[Variant]): Error {.base.} = (discard)
 proc registerVirtual_rpc*[T: MultiplayerAPIExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_rpc"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[MultiplayerAPIExtension](p_instance).rpc(p_args[0].decode(int32), p_args[1].decode(Object), p_args[2].decode(StringName), p_args[3].decode(Array)).encode(r_ret)
+    errproof: cast[MultiplayerAPIExtension](p_instance).rpc(p_args[0].decode(int32), p_args[1].decode(Object), p_args[2].decode(StringName), p_args[3].decode(Array[Variant])).encode(r_ret)
 
 method getRemoteSenderId*(self: MultiplayerAPIExtension): int32 {.base.} = (discard)
 proc registerVirtual_getRemoteSenderId*[T: MultiplayerAPIExtension](Self: typedesc[T]) =

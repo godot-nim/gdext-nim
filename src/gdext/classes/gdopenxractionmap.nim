@@ -6,15 +6,16 @@ import gdresource; export gdresource
 
 expandOnClassImported(OpenXRActionMap, Resource)
 
-proc setActionSets*(self: OpenXRActionMap; actionSets: Array): void =
+proc setActionSets*(self: OpenXRActionMap; actionSets: Array[Variant]): void =
   expandMethodBind(className OpenXRActionMap, "set_action_sets", 381264803)
+  nilCheck actionSets
   methodbind.ptrcall(self, [getPtr actionSets])
 
-proc getActionSets*(self: OpenXRActionMap): Array =
+proc getActionSets*(self: OpenXRActionMap): Array[Variant] =
   expandMethodBind(className OpenXRActionMap, "get_action_sets", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getActionSetCount*(self: OpenXRActionMap): int32 =
   expandMethodBind(className OpenXRActionMap, "get_action_set_count", 3905245786)
@@ -42,15 +43,16 @@ proc removeActionSet*(self: OpenXRActionMap; actionSet: gdref OpenXRActionSet): 
   expandMethodBind(className OpenXRActionMap, "remove_action_set", 2093310581)
   methodbind.ptrcall(self, [getPtr actionSet])
 
-proc setInteractionProfiles*(self: OpenXRActionMap; interactionProfiles: Array): void =
+proc setInteractionProfiles*(self: OpenXRActionMap; interactionProfiles: Array[Variant]): void =
   expandMethodBind(className OpenXRActionMap, "set_interaction_profiles", 381264803)
+  nilCheck interactionProfiles
   methodbind.ptrcall(self, [getPtr interactionProfiles])
 
-proc getInteractionProfiles*(self: OpenXRActionMap): Array =
+proc getInteractionProfiles*(self: OpenXRActionMap): Array[Variant] =
   expandMethodBind(className OpenXRActionMap, "get_interaction_profiles", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getInteractionProfileCount*(self: OpenXRActionMap): int32 =
   expandMethodBind(className OpenXRActionMap, "get_interaction_profile_count", 3905245786)

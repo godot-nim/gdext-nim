@@ -72,11 +72,11 @@ proc getDisableMode*(self: SoftBody3D): SoftBody3D_DisableMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(SoftBody3D_DisableMode)
 
-proc getCollisionExceptions*(self: SoftBody3D): TypedArray[PhysicsBody3D] =
+proc getCollisionExceptions*(self: SoftBody3D): Array[PhysicsBody3D] =
   expandMethodBind(className SoftBody3D, "get_collision_exceptions", 2915620761)
-  var ret: encoded TypedArray[PhysicsBody3D]
+  var ret: encoded Array[PhysicsBody3D]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[PhysicsBody3D])
+  (addr ret).decode_result(Array[PhysicsBody3D])
 
 proc addCollisionExceptionWith*(self: SoftBody3D; body: Node): void =
   expandMethodBind(className SoftBody3D, "add_collision_exception_with", 1078189570)

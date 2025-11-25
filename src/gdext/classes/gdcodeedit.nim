@@ -6,20 +6,24 @@ import gdtextedit; export gdtextedit
 
 expandOnClassImported(CodeEdit, TextEdit)
 
-method confirmCodeCompletion*(self: CodeEdit; replace: bool): void {.base.} = (discard)
+method confirmCodeCompletion*(self: CodeEdit; replace: bool = false): void {.base.} =
+  expandMethodBind(className CodeEdit, "confirm_code_completion", 107499316)
+  methodbind.ptrcall(self, [getPtr replace])
 proc registerVirtual_confirmCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_confirm_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).confirmCodeCompletion(p_args[0].decode(bool))
 
-method requestCodeCompletion*(self: CodeEdit; force: bool): void {.base.} = (discard)
+method requestCodeCompletion*(self: CodeEdit; force: bool = false): void {.base.} =
+  expandMethodBind(className CodeEdit, "request_code_completion", 107499316)
+  methodbind.ptrcall(self, [getPtr force])
 proc registerVirtual_requestCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
 
-method filterCodeCompletionCandidates*(self: CodeEdit; candidates: TypedArray[Dictionary]): TypedArray[Dictionary] {.base.} = (discard)
+method filterCodeCompletionCandidates*(self: CodeEdit; candidates: Array[Dictionary[Variant, Variant]]): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_filterCodeCompletionCandidates*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_filter_code_completion_candidates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(TypedArray[Dictionary])).encode(r_ret)
+    errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(Array[Dictionary[Variant, Variant]])).encode(r_ret)
 
 proc setIndentSize*(self: CodeEdit; size: int32): void =
   expandMethodBind(className CodeEdit, "set_indent_size", 1286410249)
@@ -51,15 +55,16 @@ proc isAutoIndentEnabled*(self: CodeEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setAutoIndentPrefixes*(self: CodeEdit; prefixes: TypedArray[String]): void =
+proc setAutoIndentPrefixes*(self: CodeEdit; prefixes: Array[String]): void =
   expandMethodBind(className CodeEdit, "set_auto_indent_prefixes", 381264803)
+  nilCheck prefixes
   methodbind.ptrcall(self, [getPtr prefixes])
 
-proc getAutoIndentPrefixes*(self: CodeEdit): TypedArray[String] =
+proc getAutoIndentPrefixes*(self: CodeEdit): Array[String] =
   expandMethodBind(className CodeEdit, "get_auto_indent_prefixes", 3995934104)
-  var ret: encoded TypedArray[String]
+  var ret: encoded Array[String]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  (addr ret).decode_result(Array[String])
 
 proc doIndent*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "do_indent", 3218959716)
@@ -101,15 +106,16 @@ proc addAutoBraceCompletionPair*(self: CodeEdit; startKey: String; endKey: Strin
   expandMethodBind(className CodeEdit, "add_auto_brace_completion_pair", 3186203200)
   methodbind.ptrcall(self, [getPtr startKey, getPtr endKey])
 
-proc setAutoBraceCompletionPairs*(self: CodeEdit; pairs: Dictionary): void =
+proc setAutoBraceCompletionPairs*(self: CodeEdit; pairs: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CodeEdit, "set_auto_brace_completion_pairs", 4155329257)
+  nilCheck pairs
   methodbind.ptrcall(self, [getPtr pairs])
 
-proc getAutoBraceCompletionPairs*(self: CodeEdit): Dictionary =
+proc getAutoBraceCompletionPairs*(self: CodeEdit): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeEdit, "get_auto_brace_completion_pairs", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc hasAutoBraceCompletionOpenKey*(self: CodeEdit; openKey: String): bool =
   expandMethodBind(className CodeEdit, "has_auto_brace_completion_open_key", 3927539163)
@@ -295,11 +301,11 @@ proc isLineFolded*(self: CodeEdit; line: int32): bool =
   methodbind.ptrcall(self, [getPtr line], addr ret)
   (addr ret).decode_result(bool)
 
-proc getFoldedLines*(self: CodeEdit): TypedArray[Int] =
+proc getFoldedLines*(self: CodeEdit): Array[Int] =
   expandMethodBind(className CodeEdit, "get_folded_lines", 3995934104)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc createCodeRegion*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "create_code_region", 3218959716)
@@ -347,19 +353,20 @@ proc hasStringDelimiter*(self: CodeEdit; startKey: String): bool =
   methodbind.ptrcall(self, [getPtr startKey], addr ret)
   (addr ret).decode_result(bool)
 
-proc setStringDelimiters*(self: CodeEdit; stringDelimiters: TypedArray[String]): void =
+proc setStringDelimiters*(self: CodeEdit; stringDelimiters: Array[String]): void =
   expandMethodBind(className CodeEdit, "set_string_delimiters", 381264803)
+  nilCheck stringDelimiters
   methodbind.ptrcall(self, [getPtr stringDelimiters])
 
 proc clearStringDelimiters*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "clear_string_delimiters", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getStringDelimiters*(self: CodeEdit): TypedArray[String] =
+proc getStringDelimiters*(self: CodeEdit): Array[String] =
   expandMethodBind(className CodeEdit, "get_string_delimiters", 3995934104)
-  var ret: encoded TypedArray[String]
+  var ret: encoded Array[String]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  (addr ret).decode_result(Array[String])
 
 proc isInString*(self: CodeEdit; line: int32; column: int32 = -1): int32 =
   expandMethodBind(className CodeEdit, "is_in_string", 688195400)
@@ -381,19 +388,20 @@ proc hasCommentDelimiter*(self: CodeEdit; startKey: String): bool =
   methodbind.ptrcall(self, [getPtr startKey], addr ret)
   (addr ret).decode_result(bool)
 
-proc setCommentDelimiters*(self: CodeEdit; commentDelimiters: TypedArray[String]): void =
+proc setCommentDelimiters*(self: CodeEdit; commentDelimiters: Array[String]): void =
   expandMethodBind(className CodeEdit, "set_comment_delimiters", 381264803)
+  nilCheck commentDelimiters
   methodbind.ptrcall(self, [getPtr commentDelimiters])
 
 proc clearCommentDelimiters*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "clear_comment_delimiters", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getCommentDelimiters*(self: CodeEdit): TypedArray[String] =
+proc getCommentDelimiters*(self: CodeEdit): Array[String] =
   expandMethodBind(className CodeEdit, "get_comment_delimiters", 3995934104)
-  var ret: encoded TypedArray[String]
+  var ret: encoded Array[String]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  (addr ret).decode_result(Array[String])
 
 proc isInComment*(self: CodeEdit; line: int32; column: int32 = -1): int32 =
   expandMethodBind(className CodeEdit, "is_in_comment", 688195400)
@@ -439,10 +447,6 @@ proc getTextForCodeCompletion*(self: CodeEdit): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc requestCodeCompletion*(self: CodeEdit; force: bool = false): void =
-  expandMethodBind(className CodeEdit, "request_code_completion", 107499316)
-  methodbind.ptrcall(self, [getPtr force])
-
 proc addCodeCompletionOption*(self: CodeEdit; `type`: CodeEdit_CodeCompletionKind; displayText: String; insertText: String; textColor: Color = color(1, 1, 1, 1); icon: gdref Resource = default gdref Resource; value: Variant = default(Variant); location: int32 = 1024): void =
   expandMethodBind(className CodeEdit, "add_code_completion_option", 3944379502)
   methodbind.ptrcall(self, [getPtr `type`, getPtr displayText, getPtr insertText, getPtr textColor, getPtr icon, getPtr value, getPtr location])
@@ -451,17 +455,17 @@ proc updateCodeCompletionOptions*(self: CodeEdit; force: bool): void =
   expandMethodBind(className CodeEdit, "update_code_completion_options", 2586408642)
   methodbind.ptrcall(self, [getPtr force])
 
-proc getCodeCompletionOptions*(self: CodeEdit): TypedArray[Dictionary] =
+proc getCodeCompletionOptions*(self: CodeEdit): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className CodeEdit, "get_code_completion_options", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getCodeCompletionOption*(self: CodeEdit; index: int32): Dictionary =
+proc getCodeCompletionOption*(self: CodeEdit; index: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeEdit, "get_code_completion_option", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getCodeCompletionSelectedIndex*(self: CodeEdit): int32 =
   expandMethodBind(className CodeEdit, "get_code_completion_selected_index", 3905245786)
@@ -472,10 +476,6 @@ proc getCodeCompletionSelectedIndex*(self: CodeEdit): int32 =
 proc setCodeCompletionSelectedIndex*(self: CodeEdit; index: int32): void =
   expandMethodBind(className CodeEdit, "set_code_completion_selected_index", 1286410249)
   methodbind.ptrcall(self, [getPtr index])
-
-proc confirmCodeCompletion*(self: CodeEdit; replace: bool = false): void =
-  expandMethodBind(className CodeEdit, "confirm_code_completion", 107499316)
-  methodbind.ptrcall(self, [getPtr replace])
 
 proc cancelCodeCompletion*(self: CodeEdit): void =
   expandMethodBind(className CodeEdit, "cancel_code_completion", 3218959716)
@@ -491,25 +491,27 @@ proc isCodeCompletionEnabled*(self: CodeEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setCodeCompletionPrefixes*(self: CodeEdit; prefixes: TypedArray[String]): void =
+proc setCodeCompletionPrefixes*(self: CodeEdit; prefixes: Array[String]): void =
   expandMethodBind(className CodeEdit, "set_code_completion_prefixes", 381264803)
+  nilCheck prefixes
   methodbind.ptrcall(self, [getPtr prefixes])
 
-proc getCodeCompletionPrefixes*(self: CodeEdit): TypedArray[String] =
+proc getCodeCompletionPrefixes*(self: CodeEdit): Array[String] =
   expandMethodBind(className CodeEdit, "get_code_completion_prefixes", 3995934104)
-  var ret: encoded TypedArray[String]
+  var ret: encoded Array[String]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[String])
+  (addr ret).decode_result(Array[String])
 
-proc setLineLengthGuidelines*(self: CodeEdit; guidelineColumns: TypedArray[Int]): void =
+proc setLineLengthGuidelines*(self: CodeEdit; guidelineColumns: Array[Int]): void =
   expandMethodBind(className CodeEdit, "set_line_length_guidelines", 381264803)
+  nilCheck guidelineColumns
   methodbind.ptrcall(self, [getPtr guidelineColumns])
 
-proc getLineLengthGuidelines*(self: CodeEdit): TypedArray[Int] =
+proc getLineLengthGuidelines*(self: CodeEdit): Array[Int] =
   expandMethodBind(className CodeEdit, "get_line_length_guidelines", 3995934104)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc setSymbolLookupOnClickEnabled*(self: CodeEdit; enable: bool): void =
   expandMethodBind(className CodeEdit, "set_symbol_lookup_on_click_enabled", 2586408642)

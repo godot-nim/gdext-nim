@@ -12,11 +12,11 @@ proc getCurrentEditor*(self: ScriptEditor): ScriptEditorBase =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(ScriptEditorBase)
 
-proc getOpenScriptEditors*(self: ScriptEditor): TypedArray[ScriptEditorBase] =
+proc getOpenScriptEditors*(self: ScriptEditor): Array[ScriptEditorBase] =
   expandMethodBind(className ScriptEditor, "get_open_script_editors", 3995934104)
-  var ret: encoded TypedArray[ScriptEditorBase]
+  var ret: encoded Array[ScriptEditorBase]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[ScriptEditorBase])
+  (addr ret).decode_result(Array[ScriptEditorBase])
 
 proc getBreakpoints*(self: ScriptEditor): PackedStringArray =
   expandMethodBind(className ScriptEditor, "get_breakpoints", 2981934095)
@@ -42,11 +42,11 @@ proc getCurrentScript*(self: ScriptEditor): gdref Script =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Script)
 
-proc getOpenScripts*(self: ScriptEditor): TypedArray[gdref Script] =
+proc getOpenScripts*(self: ScriptEditor): Array[gdref Script] =
   expandMethodBind(className ScriptEditor, "get_open_scripts", 3995934104)
-  var ret: encoded TypedArray[gdref Script]
+  var ret: encoded Array[gdref Script]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Script])
+  (addr ret).decode_result(Array[gdref Script])
 
 proc openScriptCreateDialog*(self: ScriptEditor; baseName: String; basePath: String): void =
   expandMethodBind(className ScriptEditor, "open_script_create_dialog", 3186203200)

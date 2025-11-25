@@ -12,8 +12,9 @@ proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
   methodbind.ptrcall(self, [getPtr monitor], addr ret)
   (addr ret).decode_result(float64)
 
-proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array = newArray()): void =
+proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array[Variant] = newArray[Variant]()): void =
   expandMethodBind(className Performance, "add_custom_monitor", 4099036814)
+  nilCheck arguments
   methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments])
 
 proc removeCustomMonitor*(self: Performance; id: StringName): void =
@@ -38,8 +39,8 @@ proc getMonitorModificationTime*(self: Performance): uint64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(uint64)
 
-proc getCustomMonitorNames*(self: Performance): TypedArray[StringName] =
+proc getCustomMonitorNames*(self: Performance): Array[StringName] =
   expandMethodBind(className Performance, "get_custom_monitor_names", 2915620761)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])

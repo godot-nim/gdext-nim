@@ -28,11 +28,11 @@ proc connectToHost*(self: ENetConnection; address: String; port: int32; channels
   methodbind.ptrcall(self, [getPtr address, getPtr port, getPtr channels, getPtr data], addr ret)
   (addr ret).decode_result(gdref ENetPacketPeer)
 
-proc service*(self: ENetConnection; timeout: int32 = 0): Array =
+proc service*(self: ENetConnection; timeout: int32 = 0): Array[Variant] =
   expandMethodBind(className ENetConnection, "service", 2402345344)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr timeout], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc flush*(self: ENetConnection): void =
   expandMethodBind(className ENetConnection, "flush", 3218959716)
@@ -88,11 +88,11 @@ proc getLocalPort*(self: ENetConnection): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc getPeers*(self: ENetConnection): TypedArray[gdref ENetPacketPeer] =
+proc getPeers*(self: ENetConnection): Array[gdref ENetPacketPeer] =
   expandMethodBind(className ENetConnection, "get_peers", 2915620761)
-  var ret: encoded TypedArray[gdref ENetPacketPeer]
+  var ret: encoded Array[gdref ENetPacketPeer]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref ENetPacketPeer])
+  (addr ret).decode_result(Array[gdref ENetPacketPeer])
 
 proc socketSend*(self: ENetConnection; destinationAddress: String; destinationPort: int32; packet: PackedByteArray): void =
   expandMethodBind(className ENetConnection, "socket_send", 1100646812)

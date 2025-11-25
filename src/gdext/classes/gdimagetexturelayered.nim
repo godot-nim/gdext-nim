@@ -6,8 +6,9 @@ import gdtexturelayered; export gdtexturelayered
 
 expandOnClassImported(ImageTextureLayered, TextureLayered)
 
-proc createFromImages*(self: ImageTextureLayered; images: TypedArray[gdref Image]): Error =
+proc createFromImages*(self: ImageTextureLayered; images: Array[gdref Image]): Error =
   expandMethodBind(className ImageTextureLayered, "create_from_images", 2785773503)
+  nilCheck images
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr images], addr ret)
   (addr ret).decode_result(Error)

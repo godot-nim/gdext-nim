@@ -12,8 +12,9 @@ proc parse*(self: Expression; expression: String; inputNames: PackedStringArray 
   methodbind.ptrcall(self, [getPtr expression, getPtr inputNames], addr ret)
   (addr ret).decode_result(Error)
 
-proc execute*(self: Expression; inputs: Array = newArray(); baseInstance: Object = default Object; showError: bool = true; constCallsOnly: bool = false): Variant =
+proc execute*(self: Expression; inputs: Array[Variant] = newArray[Variant](); baseInstance: Object = default Object; showError: bool = true; constCallsOnly: bool = false): Variant =
   expandMethodBind(className Expression, "execute", 3712471238)
+  nilCheck inputs
   var ret: encoded Variant
   methodbind.ptrcall(self, [getPtr inputs, getPtr baseInstance, getPtr showError, getPtr constCallsOnly], addr ret)
   (addr ret).decode_result(Variant)

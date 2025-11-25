@@ -36,11 +36,11 @@ proc getBoneMeta*(self: Skeleton3D; boneIdx: int32; key: StringName): Variant =
   methodbind.ptrcall(self, [getPtr boneIdx, getPtr key], addr ret)
   (addr ret).decode_result(Variant)
 
-proc getBoneMetaList*(self: Skeleton3D; boneIdx: int32): TypedArray[StringName] =
+proc getBoneMetaList*(self: Skeleton3D; boneIdx: int32): Array[StringName] =
   expandMethodBind(className Skeleton3D, "get_bone_meta_list", 663333327)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [getPtr boneIdx], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc hasBoneMeta*(self: Skeleton3D; boneIdx: int32; key: StringName): bool =
   expandMethodBind(className Skeleton3D, "has_bone_meta", 921227809)
@@ -276,8 +276,9 @@ proc physicalBonesStopSimulation*(self: Skeleton3D): void =
   expandMethodBind(className Skeleton3D, "physical_bones_stop_simulation", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc physicalBonesStartSimulation*(self: Skeleton3D; bones: TypedArray[StringName] = newTypedArray[StringName]()): void =
+proc physicalBonesStartSimulation*(self: Skeleton3D; bones: Array[StringName] = newArray[StringName]()): void =
   expandMethodBind(className Skeleton3D, "physical_bones_start_simulation", 2787316981)
+  nilCheck bones
   methodbind.ptrcall(self, [getPtr bones])
 
 proc physicalBonesAddCollisionException*(self: Skeleton3D; exception: RID): void =

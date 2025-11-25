@@ -30,8 +30,9 @@ proc transformFromPose*(self: OpenXRAPIExtension; pose: pointer): Transform3D =
   methodbind.ptrcall(self, [getPtr pose], addr ret)
   (addr ret).decode_result(Transform3D)
 
-proc xrResult*(self: OpenXRAPIExtension; retval: uint64; format: String; args: Array): bool =
+proc xrResult*(self: OpenXRAPIExtension; retval: uint64; format: String; args: Array[Variant]): bool =
   expandMethodBind(className OpenXRAPIExtension, "xr_result", 3886436197)
+  nilCheck args
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr retval, getPtr format, getPtr args], addr ret)
   (addr ret).decode_result(bool)

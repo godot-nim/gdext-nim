@@ -23,17 +23,25 @@ proc registerVirtual_hasPoint*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_has_point"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).hasPoint(p_args[0].decode(Vector2)).encode(r_ret)
 
-method structuredTextParser*(self: Control; args: Array; text: String): TypedArray[Vector3i] {.base.} = (discard)
+method structuredTextParser*(self: Control; args: Array[Variant]; text: String): Array[Vector3i] {.base.} = (discard)
 proc registerVirtual_structuredTextParser*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_structured_text_parser"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array), p_args[1].decode(String)).encode(r_ret)
+    errproof: cast[Control](p_instance).structuredTextParser(p_args[0].decode(Array[Variant]), p_args[1].decode(String)).encode(r_ret)
 
-method getMinimumSize*(self: Control): Vector2 {.base.} = (discard)
+method getMinimumSize*(self: Control): Vector2 {.base.} =
+  expandMethodBind(className Control, "get_minimum_size", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
 proc registerVirtual_getMinimumSize*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_minimum_size"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getMinimumSize().encode(r_ret)
 
-method getTooltip*(self: Control; atPosition: Vector2): String {.base.} = (discard)
+method getTooltip*(self: Control; atPosition: Vector2 = vector2(0, 0)): String {.base.} =
+  expandMethodBind(className Control, "get_tooltip", 2895288280)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr atPosition], addr ret)
+  (addr ret).decode_result(String)
 proc registerVirtual_getTooltip*[T: Control](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_tooltip"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Control](p_instance).getTooltip(p_args[0].decode(Vector2)).encode(r_ret)
@@ -76,12 +84,6 @@ proc registerVirtual_guiInput*[T: Control](Self: typedesc[T]) =
 proc acceptEvent*(self: Control): void =
   expandMethodBind(className Control, "accept_event", 3218959716)
   methodbind.ptrcall(self, [])
-
-proc getMinimumSize*(self: Control): Vector2 =
-  expandMethodBind(className Control, "get_minimum_size", 3341600327)
-  var ret: encoded Vector2
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Vector2)
 
 proc getCombinedMinimumSize*(self: Control): Vector2 =
   expandMethodBind(className Control, "get_combined_minimum_size", 3341600327)
@@ -589,12 +591,6 @@ proc getTooltipText*(self: Control): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getTooltip*(self: Control; atPosition: Vector2 = vector2(0, 0)): String =
-  expandMethodBind(className Control, "get_tooltip", 2895288280)
-  var ret: encoded String
-  methodbind.ptrcall(self, [getPtr atPosition], addr ret)
-  (addr ret).decode_result(String)
-
 proc setDefaultCursorShape*(self: Control; shape: Control_CursorShape): void =
   expandMethodBind(className Control, "set_default_cursor_shape", 217062046)
   methodbind.ptrcall(self, [getPtr shape])
@@ -683,45 +679,49 @@ proc getAccessibilityLive*(self: Control): DisplayServer_AccessibilityLiveMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(DisplayServer_AccessibilityLiveMode)
 
-proc setAccessibilityControlsNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+proc setAccessibilityControlsNodes*(self: Control; nodePath: Array[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_controls_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
-proc getAccessibilityControlsNodes*(self: Control): TypedArray[NodePath] =
+proc getAccessibilityControlsNodes*(self: Control): Array[NodePath] =
   expandMethodBind(className Control, "get_accessibility_controls_nodes", 3995934104)
-  var ret: encoded TypedArray[NodePath]
+  var ret: encoded Array[NodePath]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  (addr ret).decode_result(Array[NodePath])
 
-proc setAccessibilityDescribedByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+proc setAccessibilityDescribedByNodes*(self: Control; nodePath: Array[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_described_by_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
-proc getAccessibilityDescribedByNodes*(self: Control): TypedArray[NodePath] =
+proc getAccessibilityDescribedByNodes*(self: Control): Array[NodePath] =
   expandMethodBind(className Control, "get_accessibility_described_by_nodes", 3995934104)
-  var ret: encoded TypedArray[NodePath]
+  var ret: encoded Array[NodePath]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  (addr ret).decode_result(Array[NodePath])
 
-proc setAccessibilityLabeledByNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+proc setAccessibilityLabeledByNodes*(self: Control; nodePath: Array[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_labeled_by_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
-proc getAccessibilityLabeledByNodes*(self: Control): TypedArray[NodePath] =
+proc getAccessibilityLabeledByNodes*(self: Control): Array[NodePath] =
   expandMethodBind(className Control, "get_accessibility_labeled_by_nodes", 3995934104)
-  var ret: encoded TypedArray[NodePath]
+  var ret: encoded Array[NodePath]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  (addr ret).decode_result(Array[NodePath])
 
-proc setAccessibilityFlowToNodes*(self: Control; nodePath: TypedArray[NodePath]): void =
+proc setAccessibilityFlowToNodes*(self: Control; nodePath: Array[NodePath]): void =
   expandMethodBind(className Control, "set_accessibility_flow_to_nodes", 381264803)
+  nilCheck nodePath
   methodbind.ptrcall(self, [getPtr nodePath])
 
-proc getAccessibilityFlowToNodes*(self: Control): TypedArray[NodePath] =
+proc getAccessibilityFlowToNodes*(self: Control): Array[NodePath] =
   expandMethodBind(className Control, "get_accessibility_flow_to_nodes", 3995934104)
-  var ret: encoded TypedArray[NodePath]
+  var ret: encoded Array[NodePath]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[NodePath])
+  (addr ret).decode_result(Array[NodePath])
 
 proc setMouseFilter*(self: Control; filter: Control_MouseFilter): void =
   expandMethodBind(className Control, "set_mouse_filter", 3891156122)

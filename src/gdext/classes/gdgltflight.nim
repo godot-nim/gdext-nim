@@ -18,17 +18,18 @@ proc toNode*(self: GLTFLight): Light3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Light3D)
 
-proc fromDictionary*(_: typedesc[GLTFLight]; dictionary: Dictionary): gdref GLTFLight =
+proc fromDictionary*(_: typedesc[GLTFLight]; dictionary: Dictionary[Variant, Variant]): gdref GLTFLight =
   expandMethodBind(className GLTFLight, "from_dictionary", 4057087208)
+  nilCheck dictionary
   var ret: encoded gdref GLTFLight
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFLight)
 
-proc toDictionary*(self: GLTFLight): Dictionary =
+proc toDictionary*(self: GLTFLight): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFLight, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getColor*(self: GLTFLight): Color =
   expandMethodBind(className GLTFLight, "get_color", 3200896285)

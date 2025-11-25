@@ -6,15 +6,16 @@ import gdresource; export gdresource
 
 expandOnClassImported(OggPacketSequence, Resource)
 
-proc setPacketData*(self: OggPacketSequence; packetData: TypedArray[Array]): void =
+proc setPacketData*(self: OggPacketSequence; packetData: Array[Array[Variant]]): void =
   expandMethodBind(className OggPacketSequence, "set_packet_data", 381264803)
+  nilCheck packetData
   methodbind.ptrcall(self, [getPtr packetData])
 
-proc getPacketData*(self: OggPacketSequence): TypedArray[Array] =
+proc getPacketData*(self: OggPacketSequence): Array[Array[Variant]] =
   expandMethodBind(className OggPacketSequence, "get_packet_data", 3995934104)
-  var ret: encoded TypedArray[Array]
+  var ret: encoded Array[Array[Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Array])
+  (addr ret).decode_result(Array[Array[Variant]])
 
 proc setPacketGranulePositions*(self: OggPacketSequence; granulePositions: PackedInt64Array): void =
   expandMethodBind(className OggPacketSequence, "set_packet_granule_positions", 3709968205)

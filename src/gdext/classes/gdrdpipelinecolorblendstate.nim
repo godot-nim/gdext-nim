@@ -36,15 +36,16 @@ proc getBlendConstant*(self: RDPipelineColorBlendState): Color =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Color)
 
-proc setAttachments*(self: RDPipelineColorBlendState; attachments: TypedArray[gdref RDPipelineColorBlendStateAttachment]): void =
+proc setAttachments*(self: RDPipelineColorBlendState; attachments: Array[gdref RDPipelineColorBlendStateAttachment]): void =
   expandMethodBind(className RDPipelineColorBlendState, "set_attachments", 381264803)
+  nilCheck attachments
   methodbind.ptrcall(self, [getPtr attachments])
 
-proc getAttachments*(self: RDPipelineColorBlendState): TypedArray[gdref RDPipelineColorBlendStateAttachment] =
+proc getAttachments*(self: RDPipelineColorBlendState): Array[gdref RDPipelineColorBlendStateAttachment] =
   expandMethodBind(className RDPipelineColorBlendState, "get_attachments", 3995934104)
-  var ret: encoded TypedArray[gdref RDPipelineColorBlendStateAttachment]
+  var ret: encoded Array[gdref RDPipelineColorBlendStateAttachment]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref RDPipelineColorBlendStateAttachment])
+  (addr ret).decode_result(Array[gdref RDPipelineColorBlendStateAttachment])
 
 template enableLogicOp*(self: RDPipelineColorBlendState): untyped = self.getEnableLogicOp()
 template `enableLogicOp=`*(self: RDPipelineColorBlendState; value) = self.setEnableLogicOp(value)

@@ -4,10 +4,21 @@ import gdext
 suite "Geometrics":
   let v012 = [0f, 1, 2]
   let v345 = [3f, 4, 5]
+  test "constants":
+    check Vector3.Zero == [real_elem 0, 0, 0]
+    check Vector3.One == [real_elem 1, 1, 1]
+    check Vector3.Inf == [real_elem system.Inf, real_elem system.Inf, real_elem system.Inf]
+
+    check Vector3i.Zero == [int_elem 0, 0, 0]
+    check Vector3i.One == [int_elem 1, 1, 1]
+    check Vector3i.Min == [int_elem -2147483648, -2147483648, -2147483648]
+    check Vector3i.Max == [int_elem 2147483647, 2147483647, 2147483647]
+
   test "type":
     check ([0f32, 1, 2] * [3f64, 4, 5]) is Vector3
     check ([0f32, 1, 2] * 3f64) is Vector3
     check ([0f32, 1, 2] * 3f64) == [0f32, 3, 6]
+    check v012[0] is float32
 
   test "fmaps":
     check `+`.fmap(v012, v345) == [3f, 5, 7]

@@ -38,15 +38,16 @@ proc getBindingModifier*(self: OpenXRIPBinding; index: int32): gdref OpenXRActio
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(gdref OpenXRActionBindingModifier)
 
-proc setBindingModifiers*(self: OpenXRIPBinding; bindingModifiers: Array): void =
+proc setBindingModifiers*(self: OpenXRIPBinding; bindingModifiers: Array[Variant]): void =
   expandMethodBind(className OpenXRIPBinding, "set_binding_modifiers", 381264803)
+  nilCheck bindingModifiers
   methodbind.ptrcall(self, [getPtr bindingModifiers])
 
-proc getBindingModifiers*(self: OpenXRIPBinding): Array =
+proc getBindingModifiers*(self: OpenXRIPBinding): Array[Variant] =
   expandMethodBind(className OpenXRIPBinding, "get_binding_modifiers", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setPaths*(self: OpenXRIPBinding; paths: PackedStringArray): void =
   expandMethodBind(className OpenXRIPBinding, "set_paths", 4015028928)

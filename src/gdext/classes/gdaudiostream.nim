@@ -6,7 +6,11 @@ import gdresource; export gdresource
 
 expandOnClassImported(AudioStream, Resource)
 
-method instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback {.base.} = (discard)
+method instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback {.base.} =
+  expandMethodBind(className AudioStream, "instantiate_playback", 210135309)
+  var ret: encoded gdref AudioStreamPlayback
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref AudioStreamPlayback)
 proc registerVirtual_instantiatePlayback*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_instantiate_playback"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).instantiatePlayback().encode(r_ret)
@@ -16,12 +20,20 @@ proc registerVirtual_getStreamName*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_stream_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getStreamName().encode(r_ret)
 
-method getLength*(self: AudioStream): float64 {.base.} = (discard)
+method getLength*(self: AudioStream): float64 {.base.} =
+  expandMethodBind(className AudioStream, "get_length", 1740695150)
+  var ret: encoded float64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(float64)
 proc registerVirtual_getLength*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_length"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getLength().encode(r_ret)
 
-method isMonophonic*(self: AudioStream): bool {.base.} = (discard)
+method isMonophonic*(self: AudioStream): bool {.base.} =
+  expandMethodBind(className AudioStream, "is_monophonic", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
 proc registerVirtual_isMonophonic*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_monophonic"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).isMonophonic().encode(r_ret)
@@ -36,12 +48,12 @@ proc registerVirtual_getBeatCount*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_beat_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getBeatCount().encode(r_ret)
 
-method getTags*(self: AudioStream): Dictionary {.base.} = (discard)
+method getTags*(self: AudioStream): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getTags*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_tags"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getTags().encode(r_ret)
 
-method getParameterList*(self: AudioStream): TypedArray[Dictionary] {.base.} = (discard)
+method getParameterList*(self: AudioStream): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_getParameterList*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_parameter_list"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getParameterList().encode(r_ret)
@@ -55,24 +67,6 @@ method getBarBeats*(self: AudioStream): int32 {.base.} = (discard)
 proc registerVirtual_getBarBeats*[T: AudioStream](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_bar_beats"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AudioStream](p_instance).getBarBeats().encode(r_ret)
-
-proc getLength*(self: AudioStream): float64 =
-  expandMethodBind(className AudioStream, "get_length", 1740695150)
-  var ret: encoded float64
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(float64)
-
-proc isMonophonic*(self: AudioStream): bool =
-  expandMethodBind(className AudioStream, "is_monophonic", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
-
-proc instantiatePlayback*(self: AudioStream): gdref AudioStreamPlayback =
-  expandMethodBind(className AudioStream, "instantiate_playback", 210135309)
-  var ret: encoded gdref AudioStreamPlayback
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(gdref AudioStreamPlayback)
 
 proc canBeSampled*(self: AudioStream): bool =
   expandMethodBind(className AudioStream, "can_be_sampled", 36873697)

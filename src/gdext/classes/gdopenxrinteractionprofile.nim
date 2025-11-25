@@ -28,15 +28,16 @@ proc getBinding*(self: OpenXRInteractionProfile; index: int32): gdref OpenXRIPBi
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(gdref OpenXRIPBinding)
 
-proc setBindings*(self: OpenXRInteractionProfile; bindings: Array): void =
+proc setBindings*(self: OpenXRInteractionProfile; bindings: Array[Variant]): void =
   expandMethodBind(className OpenXRInteractionProfile, "set_bindings", 381264803)
+  nilCheck bindings
   methodbind.ptrcall(self, [getPtr bindings])
 
-proc getBindings*(self: OpenXRInteractionProfile): Array =
+proc getBindings*(self: OpenXRInteractionProfile): Array[Variant] =
   expandMethodBind(className OpenXRInteractionProfile, "get_bindings", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getBindingModifierCount*(self: OpenXRInteractionProfile): int32 =
   expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifier_count", 3905245786)
@@ -50,15 +51,16 @@ proc getBindingModifier*(self: OpenXRInteractionProfile; index: int32): gdref Op
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(gdref OpenXRIPBindingModifier)
 
-proc setBindingModifiers*(self: OpenXRInteractionProfile; bindingModifiers: Array): void =
+proc setBindingModifiers*(self: OpenXRInteractionProfile; bindingModifiers: Array[Variant]): void =
   expandMethodBind(className OpenXRInteractionProfile, "set_binding_modifiers", 381264803)
+  nilCheck bindingModifiers
   methodbind.ptrcall(self, [getPtr bindingModifiers])
 
-proc getBindingModifiers*(self: OpenXRInteractionProfile): Array =
+proc getBindingModifiers*(self: OpenXRInteractionProfile): Array[Variant] =
   expandMethodBind(className OpenXRInteractionProfile, "get_binding_modifiers", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 template interactionProfilePath*(self: OpenXRInteractionProfile): untyped = self.getInteractionProfilePath()
 template `interactionProfilePath=`*(self: OpenXRInteractionProfile; value) = self.setInteractionProfilePath(value)

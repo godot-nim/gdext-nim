@@ -86,14 +86,15 @@ proc getDatatype*(self: CameraFeed): CameraFeed_FeedDataType =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CameraFeed_FeedDataType)
 
-proc getFormats*(self: CameraFeed): Array =
+proc getFormats*(self: CameraFeed): Array[Variant] =
   expandMethodBind(className CameraFeed, "get_formats", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc setFormat*(self: CameraFeed; index: int32; parameters: Dictionary): bool =
+proc setFormat*(self: CameraFeed; index: int32; parameters: Dictionary[Variant, Variant]): bool =
   expandMethodBind(className CameraFeed, "set_format", 31872775)
+  nilCheck parameters
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr index, getPtr parameters], addr ret)
   (addr ret).decode_result(bool)

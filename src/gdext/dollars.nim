@@ -114,8 +114,6 @@ proc `$`*(v: Array): string =
   var variant: Variant
   variantFromType[VariantType_Array](addr variant, addr v)
   $variant
-proc `$`*(v: TypedArray): string =
-  $(v.Array)
 
 proc `$`*[T](v: PackedArray[T]): string =
   var variant: Variant

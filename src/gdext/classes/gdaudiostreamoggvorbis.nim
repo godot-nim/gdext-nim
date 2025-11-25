@@ -78,15 +78,16 @@ proc getBarBeats*(self: AudioStreamOggVorbis): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc setTags*(self: AudioStreamOggVorbis; tags: Dictionary): void =
+proc setTags*(self: AudioStreamOggVorbis; tags: Dictionary[Variant, Variant]): void =
   expandMethodBind(className AudioStreamOggVorbis, "set_tags", 4155329257)
+  nilCheck tags
   methodbind.ptrcall(self, [getPtr tags])
 
-proc getTags*(self: AudioStreamOggVorbis): Dictionary =
+proc getTags*(self: AudioStreamOggVorbis): Dictionary[Variant, Variant] =
   expandMethodBind(className AudioStreamOggVorbis, "get_tags", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 template packetSequence*(self: AudioStreamOggVorbis): untyped = self.getPacketSequence()
 template `packetSequence=`*(self: AudioStreamOggVorbis; value) = self.setPacketSequence(value)

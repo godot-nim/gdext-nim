@@ -82,11 +82,11 @@ proc addOption*(self: FileDialog; name: String; values: PackedStringArray; defau
   expandMethodBind(className FileDialog, "add_option", 149592325)
   methodbind.ptrcall(self, [getPtr name, getPtr values, getPtr defaultValueIndex])
 
-proc getSelectedOptions*(self: FileDialog): Dictionary =
+proc getSelectedOptions*(self: FileDialog): Dictionary[Variant, Variant] =
   expandMethodBind(className FileDialog, "get_selected_options", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getCurrentDir*(self: FileDialog): String =
   expandMethodBind(className FileDialog, "get_current_dir", 201670096)

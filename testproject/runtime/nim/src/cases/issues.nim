@@ -1,5 +1,5 @@
 import gdext
-import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode]
+import gdext/classes/[gdCSGSphere3D, gdStandardMaterial3D,gdNode,gdLabel3D]
 import testutils
 type
   TestNode* {.gdsync.} = ptr object of Node
@@ -19,7 +19,7 @@ runtime: suite "Community Reported":
 
   test "variant(Object).get(RefCounted) should be nil #286":
     var obj = instantiate Object
-    var v = variant obj
+    var v = Variant obj
     check v.get(RefCounted) == nil
     destroy obj
 
@@ -35,3 +35,10 @@ runtime: suite "Community Reported":
     let a = myTestNode.get("a").as(int)
     check a == 1
     destroy myTestNode
+
+  test "array add should compile and work":
+    var arr = Array[Variant]()
+    let myString = "not a variant"
+    arr.add(myString)
+    check arr[0].as(string) == myString
+    arr.clear()

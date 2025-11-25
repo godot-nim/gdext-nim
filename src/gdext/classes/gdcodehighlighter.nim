@@ -26,19 +26,20 @@ proc getKeywordColor*(self: CodeHighlighter; keyword: String): Color =
   methodbind.ptrcall(self, [getPtr keyword], addr ret)
   (addr ret).decode_result(Color)
 
-proc setKeywordColors*(self: CodeHighlighter; keywords: Dictionary): void =
+proc setKeywordColors*(self: CodeHighlighter; keywords: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CodeHighlighter, "set_keyword_colors", 4155329257)
+  nilCheck keywords
   methodbind.ptrcall(self, [getPtr keywords])
 
 proc clearKeywordColors*(self: CodeHighlighter): void =
   expandMethodBind(className CodeHighlighter, "clear_keyword_colors", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getKeywordColors*(self: CodeHighlighter): Dictionary =
+proc getKeywordColors*(self: CodeHighlighter): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeHighlighter, "get_keyword_colors", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc addMemberKeywordColor*(self: CodeHighlighter; memberKeyword: String; color: Color): void =
   expandMethodBind(className CodeHighlighter, "add_member_keyword_color", 1636512886)
@@ -60,19 +61,20 @@ proc getMemberKeywordColor*(self: CodeHighlighter; memberKeyword: String): Color
   methodbind.ptrcall(self, [getPtr memberKeyword], addr ret)
   (addr ret).decode_result(Color)
 
-proc setMemberKeywordColors*(self: CodeHighlighter; memberKeyword: Dictionary): void =
+proc setMemberKeywordColors*(self: CodeHighlighter; memberKeyword: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CodeHighlighter, "set_member_keyword_colors", 4155329257)
+  nilCheck memberKeyword
   methodbind.ptrcall(self, [getPtr memberKeyword])
 
 proc clearMemberKeywordColors*(self: CodeHighlighter): void =
   expandMethodBind(className CodeHighlighter, "clear_member_keyword_colors", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getMemberKeywordColors*(self: CodeHighlighter): Dictionary =
+proc getMemberKeywordColors*(self: CodeHighlighter): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeHighlighter, "get_member_keyword_colors", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc addColorRegion*(self: CodeHighlighter; startKey: String; endKey: String; color: Color; lineOnly: bool = false): void =
   expandMethodBind(className CodeHighlighter, "add_color_region", 2924977451)
@@ -88,19 +90,20 @@ proc hasColorRegion*(self: CodeHighlighter; startKey: String): bool =
   methodbind.ptrcall(self, [getPtr startKey], addr ret)
   (addr ret).decode_result(bool)
 
-proc setColorRegions*(self: CodeHighlighter; colorRegions: Dictionary): void =
+proc setColorRegions*(self: CodeHighlighter; colorRegions: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CodeHighlighter, "set_color_regions", 4155329257)
+  nilCheck colorRegions
   methodbind.ptrcall(self, [getPtr colorRegions])
 
 proc clearColorRegions*(self: CodeHighlighter): void =
   expandMethodBind(className CodeHighlighter, "clear_color_regions", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc getColorRegions*(self: CodeHighlighter): Dictionary =
+proc getColorRegions*(self: CodeHighlighter): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeHighlighter, "get_color_regions", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setFunctionColor*(self: CodeHighlighter; color: Color): void =
   expandMethodBind(className CodeHighlighter, "set_function_color", 2920490490)

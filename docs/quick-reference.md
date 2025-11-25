@@ -158,7 +158,7 @@ proc my_function*(T: typedesc[MyNode]; arg1: Variant) {.gdsync.} =
 ```
 
 ```nim
-proc my_function*(T: typedesc[MyNode]; arg1: Int): Dictionary {.gdsync.} =
+proc my_function*(T: typedesc[MyNode]; arg1: Int): Dictionary[Variant, Variant] {.gdsync.} =
   discard
 ```
 
@@ -607,21 +607,28 @@ var nil = null
 **Nim:**
 
 ```nim
-var array: Array = newArray [1, 2, 3]
+var array: Array[Variant] = newArray([Variant 1, 2, 3])
 ```
 
 ```nim
-var typed_array: TypedArray[Int] = newTypedArray[int]([1, 2, 3])
+var typed_array: Array[Int] = newArray([Int 1, 2, 3])
 ```
 
 ```nim
-var dict: Dictionary = newDictionary()
-dict[variant "A"] = variant 1
-dict[variant "B"] = variant 2
-dict[variant "C"] = variant 3
+var dict: Dictionary[Variant, Variant] = newDictionary({
+  variant "A": variant 1,
+  "B": 2,
+  "C": 3,
+})
 ```
 
-**Note:** typed-dictionary is not available
+```nim
+var dict: Dictionary[String, Int] = newDictionary({
+  String "A": Int 1,
+  "B": 2,
+  "C": 3,
+})
+```
 
 ```nim
 var string = newString "Hello"

@@ -6,7 +6,11 @@ import gdresource; export gdresource
 
 expandOnClassImported(Mesh, Resource)
 
-method getSurfaceCount*(self: Mesh): int32 {.base.} = (discard)
+method getSurfaceCount*(self: Mesh): int32 {.base.} =
+  expandMethodBind(className Mesh, "get_surface_count", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
 proc registerVirtual_getSurfaceCount*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_surface_count"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getSurfaceCount().encode(r_ret)
@@ -21,17 +25,25 @@ proc registerVirtual_surfaceGetArrayIndexLen*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_array_index_len"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrayIndexLen(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetArrays*(self: Mesh; index: int32): Array {.base.} = (discard)
+method surfaceGetArrays*(self: Mesh; surfIdx: int32): Array[Variant] {.base.} =
+  expandMethodBind(className Mesh, "surface_get_arrays", 663333327)
+  var ret: encoded Array[Variant]
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
+  (addr ret).decode_result(Array[Variant])
 proc registerVirtual_surfaceGetArrays*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetArrays(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetBlendShapeArrays*(self: Mesh; index: int32): TypedArray[Array] {.base.} = (discard)
+method surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): Array[Array[Variant]] {.base.} =
+  expandMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
+  var ret: encoded Array[Array[Variant]]
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
+  (addr ret).decode_result(Array[Array[Variant]])
 proc registerVirtual_surfaceGetBlendShapeArrays*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_blend_shape_arrays"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetBlendShapeArrays(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceGetLods*(self: Mesh; index: int32): Dictionary {.base.} = (discard)
+method surfaceGetLods*(self: Mesh; index: int32): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_surfaceGetLods*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_lods"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetLods(p_args[0].decode(int32)).encode(r_ret)
@@ -46,12 +58,18 @@ proc registerVirtual_surfaceGetPrimitiveType*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_primitive_type"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetPrimitiveType(p_args[0].decode(int32)).encode(r_ret)
 
-method surfaceSetMaterial*(self: Mesh; index: int32; material: gdref Material): void {.base.} = (discard)
+method surfaceSetMaterial*(self: Mesh; surfIdx: int32; material: gdref Material): void {.base.} =
+  expandMethodBind(className Mesh, "surface_set_material", 3671737478)
+  methodbind.ptrcall(self, [getPtr surfIdx, getPtr material])
 proc registerVirtual_surfaceSetMaterial*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_set_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceSetMaterial(p_args[0].decode(int32), p_args[1].decode(gdref Material))
 
-method surfaceGetMaterial*(self: Mesh; index: int32): gdref Material {.base.} = (discard)
+method surfaceGetMaterial*(self: Mesh; surfIdx: int32): gdref Material {.base.} =
+  expandMethodBind(className Mesh, "surface_get_material", 2897466400)
+  var ret: encoded gdref Material
+  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
+  (addr ret).decode_result(gdref Material)
 proc registerVirtual_surfaceGetMaterial*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_surface_get_material"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).surfaceGetMaterial(p_args[0].decode(int32)).encode(r_ret)
@@ -71,7 +89,11 @@ proc registerVirtual_setBlendShapeName*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_blend_shape_name"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).setBlendShapeName(p_args[0].decode(int32), p_args[1].decode(StringName))
 
-method getAabb*(self: Mesh): AABB {.base.} = (discard)
+method getAabb*(self: Mesh): AABB {.base.} =
+  expandMethodBind(className Mesh, "get_aabb", 1068685055)
+  var ret: encoded AABB
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(AABB)
 proc registerVirtual_getAabb*[T: Mesh](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_aabb"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[Mesh](p_instance).getAabb().encode(r_ret)
@@ -86,45 +108,11 @@ proc getLightmapSizeHint*(self: Mesh): Vector2i =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2i)
 
-proc getAabb*(self: Mesh): AABB =
-  expandMethodBind(className Mesh, "get_aabb", 1068685055)
-  var ret: encoded AABB
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(AABB)
-
 proc getFaces*(self: Mesh): PackedVector3Array =
   expandMethodBind(className Mesh, "get_faces", 497664490)
   var ret: encoded PackedVector3Array
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedVector3Array)
-
-proc getSurfaceCount*(self: Mesh): int32 =
-  expandMethodBind(className Mesh, "get_surface_count", 3905245786)
-  var ret: encoded int32
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
-
-proc surfaceGetArrays*(self: Mesh; surfIdx: int32): Array =
-  expandMethodBind(className Mesh, "surface_get_arrays", 663333327)
-  var ret: encoded Array
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(Array)
-
-proc surfaceGetBlendShapeArrays*(self: Mesh; surfIdx: int32): TypedArray[Array] =
-  expandMethodBind(className Mesh, "surface_get_blend_shape_arrays", 663333327)
-  var ret: encoded TypedArray[Array]
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(TypedArray[Array])
-
-proc surfaceSetMaterial*(self: Mesh; surfIdx: int32; material: gdref Material): void =
-  expandMethodBind(className Mesh, "surface_set_material", 3671737478)
-  methodbind.ptrcall(self, [getPtr surfIdx, getPtr material])
-
-proc surfaceGetMaterial*(self: Mesh; surfIdx: int32): gdref Material =
-  expandMethodBind(className Mesh, "surface_get_material", 2897466400)
-  var ret: encoded gdref Material
-  methodbind.ptrcall(self, [getPtr surfIdx], addr ret)
-  (addr ret).decode_result(gdref Material)
 
 proc createPlaceholder*(self: Mesh): gdref Resource =
   expandMethodBind(className Mesh, "create_placeholder", 121922552)

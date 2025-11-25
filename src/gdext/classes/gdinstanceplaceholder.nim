@@ -6,11 +6,11 @@ import gdnode; export gdnode
 
 expandOnClassImported(InstancePlaceholder, Node)
 
-proc getStoredValues*(self: InstancePlaceholder; withOrder: bool = false): Dictionary =
+proc getStoredValues*(self: InstancePlaceholder; withOrder: bool = false): Dictionary[Variant, Variant] =
   expandMethodBind(className InstancePlaceholder, "get_stored_values", 2230153369)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr withOrder], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc createInstance*(self: InstancePlaceholder; replace: bool = false; customScene: gdref PackedScene = default gdref PackedScene): Node =
   expandMethodBind(className InstancePlaceholder, "create_instance", 3794612210)

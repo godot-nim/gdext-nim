@@ -136,16 +136,6 @@
      context: StringName = default(StringName)): String</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">callDeferredThreadGroup
-  <li><a class="reference" href="#callDeferredThreadGroup%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D" title="callDeferredThreadGroup(self: Node; method: Variant;
-                        args: varargs[Variant, variant]): Variant">callDeferredThreadGroup(self: Node; method: Variant;
-                        args: varargs[Variant, variant]): Variant</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">callThreadSafe
-  <li><a class="reference" href="#callThreadSafe%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D" title="callThreadSafe(self: Node; method: Variant; args: varargs[Variant, variant]): Variant">callThreadSafe(self: Node; method: Variant; args: varargs[Variant, variant]): Variant</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">canAutoTranslate
   <li><a class="reference" href="#canAutoTranslate%2CNode" title="canAutoTranslate(self: Node): bool">canAutoTranslate(self: Node): bool</a></li>
 
@@ -170,8 +160,8 @@
 </ul>
 <ul class="simple nested-toc-section">findChildren
   <li><a class="reference" href="#findChildren%2CNode%2CString%2CString%2Cbool%2Cbool" title="findChildren(self: Node; pattern: String; type: String = newGdString();
-             recursive: bool = true; owned: bool = true): TypedArray[Node]">findChildren(self: Node; pattern: String; type: String = newGdString();
-             recursive: bool = true; owned: bool = true): TypedArray[Node]</a></li>
+             recursive: bool = true; owned: bool = true): Array[Node]">findChildren(self: Node; pattern: String; type: String = newGdString();
+             recursive: bool = true; owned: bool = true): Array[Node]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">findParent
@@ -195,7 +185,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getChildren
-  <li><a class="reference" href="#getChildren%2CNode%2Cbool" title="getChildren(self: Node; includeInternal: bool = false): TypedArray[Node]">getChildren(self: Node; includeInternal: bool = false): TypedArray[Node]</a></li>
+  <li><a class="reference" href="#getChildren%2CNode%2Cbool" title="getChildren(self: Node; includeInternal: bool = false): Array[Node]">getChildren(self: Node; includeInternal: bool = false): Array[Node]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getEditorDescription
@@ -203,7 +193,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getGroups
-  <li><a class="reference" href="#getGroups%2CNode" title="getGroups(self: Node): TypedArray[StringName]">getGroups(self: Node): TypedArray[StringName]</a></li>
+  <li><a class="reference" href="#getGroups%2CNode" title="getGroups(self: Node): Array[StringName]">getGroups(self: Node): Array[StringName]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getIndex
@@ -231,7 +221,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getNodeAndResource
-  <li><a class="reference" href="#getNodeAndResource%2CNode%2CNodePath" title="getNodeAndResource(self: Node; path: NodePath): Array">getNodeAndResource(self: Node; path: NodePath): Array</a></li>
+  <li><a class="reference" href="#getNodeAndResource%2CNode%2CNodePath" title="getNodeAndResource(self: Node; path: NodePath): Array[Variant]">getNodeAndResource(self: Node; path: NodePath): Array[Variant]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getNodeOrNull
@@ -243,7 +233,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">getOrphanNodeIds
-  <li><a class="reference" href="#getOrphanNodeIds%2Ctypedesc%5BNode%5D" title="getOrphanNodeIds(_: typedesc[Node]): TypedArray[Int]">getOrphanNodeIds(_: typedesc[Node]): TypedArray[Int]</a></li>
+  <li><a class="reference" href="#getOrphanNodeIds%2Ctypedesc%5BNode%5D" title="getOrphanNodeIds(_: typedesc[Node]): Array[Int]">getOrphanNodeIds(_: typedesc[Node]): Array[Int]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getOwner
@@ -439,8 +429,10 @@
 
 </ul>
 <ul class="simple nested-toc-section">propagateCall
-  <li><a class="reference" href="#propagateCall%2CNode%2CStringName%2CArray%2Cbool" title="propagateCall(self: Node; method: StringName; args: Array = newArray();
-              parentFirst: bool = false): void">propagateCall(self: Node; method: StringName; args: Array = newArray();
+  <li><a class="reference" href="#propagateCall%2CNode%2CStringName%2CArray%5BVariant%5D%2Cbool" title="propagateCall(self: Node; method: StringName;
+              args: Array[Variant] = newArray[Variant]();
+              parentFirst: bool = false): void">propagateCall(self: Node; method: StringName;
+              args: Array[Variant] = newArray[Variant]();
               parentFirst: bool = false): void</a></li>
 
 </ul>
@@ -528,18 +520,8 @@
   <li><a class="reference" href="#resetPhysicsInterpolation%2CNode" title="resetPhysicsInterpolation(self: Node): void">resetPhysicsInterpolation(self: Node): void</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">rpc
-  <li><a class="reference" href="#rpc%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D" title="rpc(self: Node; method: Variant; args: varargs[Variant, variant]): Error">rpc(self: Node; method: Variant; args: varargs[Variant, variant]): Error</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">rpcConfig
   <li><a class="reference" href="#rpcConfig%2CNode%2CStringName%2CVariant" title="rpcConfig(self: Node; method: StringName; config: Variant): void">rpcConfig(self: Node; method: StringName; config: Variant): void</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">rpcId
-  <li><a class="reference" href="#rpcId%2CNode%2CVariant%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D" title="rpcId(self: Node; peerId: Variant; method: Variant;
-      args: varargs[Variant, variant]): Error">rpcId(self: Node; peerId: Variant; method: Variant;
-      args: varargs[Variant, variant]): Error</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">setAutoTranslateMode
@@ -1311,31 +1293,6 @@
 </div>
 
 </div>
-<div id="callDeferredThreadGroup-procs-all">
-  <div id="callDeferredThreadGroup,Node,Variant,varargs[Variant,variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callDeferredThreadGroup%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D"><span class="Identifier">callDeferredThreadGroup</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span>
-                             <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <span class="Identifier">variant</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="callThreadSafe-procs-all">
-  <div id="callThreadSafe,Node,Variant,varargs[Variant,variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#callThreadSafe%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D"><span class="Identifier">callThreadSafe</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <span class="Identifier">variant</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="canAutoTranslate-procs-all">
   <div id="canAutoTranslate,Node">
   <dt><pre><span class="Keyword">proc</span> <a href="#canAutoTranslate%2CNode"><span class="Identifier">canAutoTranslate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
@@ -1400,7 +1357,7 @@
 <div id="findChildren-procs-all">
   <div id="findChildren,Node,String,String,bool,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#findChildren%2CNode%2CString%2CString%2Cbool%2Cbool"><span class="Identifier">findChildren</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a><span class="Other">;</span> <span class="Identifier">type</span><span class="Other">:</span> <a href="../builtinindex.html#String"><span class="Identifier">String</span></a> <span class="Other">=</span> <span class="Identifier">newGdString</span><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
-                  <span class="Identifier">recursive</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span> <span class="Identifier">owned</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span> {.
+                  <span class="Identifier">recursive</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span> <span class="Identifier">owned</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1472,7 +1429,7 @@
 </div>
 <div id="getChildren-procs-all">
   <div id="getChildren,Node,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getChildren%2CNode%2Cbool"><span class="Identifier">getChildren</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">includeInternal</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#getChildren%2CNode%2Cbool"><span class="Identifier">getChildren</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">includeInternal</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1496,7 +1453,7 @@
 </div>
 <div id="getGroups-procs-all">
   <div id="getGroups,Node">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getGroups%2CNode"><span class="Identifier">getGroups</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getGroups%2CNode"><span class="Identifier">getGroups</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1580,7 +1537,7 @@
 </div>
 <div id="getNodeAndResource-procs-all">
   <div id="getNodeAndResource,Node,NodePath">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getNodeAndResource%2CNode%2CNodePath"><span class="Identifier">getNodeAndResource</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <a href="../builtinindex.html#NodePath"><span class="Identifier">NodePath</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#getNodeAndResource%2CNode%2CNodePath"><span class="Identifier">getNodeAndResource</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <a href="../builtinindex.html#NodePath"><span class="Identifier">NodePath</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -1616,7 +1573,7 @@
 </div>
 <div id="getOrphanNodeIds-procs-all">
   <div id="getOrphanNodeIds,typedesc[Node]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getOrphanNodeIds%2Ctypedesc%5BNode%5D"><span class="Identifier">getOrphanNodeIds</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#TypedArray"><span class="Identifier">TypedArray</span></a><span class="Other">[</span><a href="../private/native.html#Int"><span class="Identifier">Int</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#getOrphanNodeIds%2Ctypedesc%5BNode%5D"><span class="Identifier">getOrphanNodeIds</span></a><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../private/native.html#Int"><span class="Identifier">Int</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -2201,8 +2158,9 @@
 
 </div>
 <div id="propagateCall-procs-all">
-  <div id="propagateCall,Node,StringName,Array,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#propagateCall%2CNode%2CStringName%2CArray%2Cbool"><span class="Identifier">propagateCall</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a> <span class="Other">=</span> <span class="Identifier">newArray</span><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
+  <div id="propagateCall,Node,StringName,Array[Variant],bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#propagateCall%2CNode%2CStringName%2CArray%5BVariant%5D%2Cbool"><span class="Identifier">propagateCall</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span>
+                   <span class="Identifier">args</span><span class="Other">:</span> <a href="../builtinindex.html#Array"><span class="Identifier">Array</span></a><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">newArray</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">]</span><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
                    <span class="Identifier">parentFirst</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -2454,35 +2412,10 @@
 </div>
 
 </div>
-<div id="rpc-procs-all">
-  <div id="rpc,Node,Variant,varargs[Variant,variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#rpc%2CNode%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D"><span class="Identifier">rpc</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <span class="Identifier">variant</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../enums.html#Error"><span class="Identifier">Error</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="rpcConfig-procs-all">
   <div id="rpcConfig,Node,StringName,Variant">
   <dt><pre><span class="Keyword">proc</span> <a href="#rpcConfig%2CNode%2CStringName%2CVariant"><span class="Identifier">rpcConfig</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#StringName"><span class="Identifier">StringName</span></a><span class="Other">;</span> <span class="Identifier">config</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="rpcId-procs-all">
-  <div id="rpcId,Node,Variant,Variant,varargs[Variant,variant]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#rpcId%2CNode%2CVariant%2CVariant%2Cvarargs%5BVariant%2Cvariant%5D"><span class="Identifier">rpcId</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a><span class="Other">;</span> <span class="Identifier">peerId</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span> <span class="Identifier">method</span><span class="Other">:</span> <a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">;</span>
-           <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="../builtinindex.html#Variant"><span class="Identifier">Variant</span></a><span class="Other">,</span> <span class="Identifier">variant</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="../enums.html#Error"><span class="Identifier">Error</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -3342,7 +3275,7 @@
 <div class="section" id="19">
   <h1><a class="toc-backref" href="#19">Exports</a></h1>
   <dl class="item">
-    <a href="gdobject.html#tr,Object,StringName,StringName"><span class="Identifier">tr</span></a>, <a href="gdobject.html#getTranslationDomain,Object"><span class="Identifier">getTranslationDomain</span></a>, <a href="gdobject.html#hasSignal,Object,StringName"><span class="Identifier">hasSignal</span></a>, <a href="gdobject.html#notifyPropertyListChanged,Object"><span class="Identifier">notifyPropertyListChanged</span></a>, <a href="gdobject.html#NotificationPredelete"><span class="Identifier">NotificationPredelete</span></a>, <a href="gdobject.html#getClass,Object"><span class="Identifier">getClass</span></a>, <a href="gdobject.html#setMeta,Object,StringName,Variant"><span class="Identifier">setMeta</span></a>, <a href="gdobject.html#hasMeta,Object,StringName"><span class="Identifier">hasMeta</span></a>, <a href="gdobject.html#hasUserSignal,Object,StringName"><span class="Identifier">hasUserSignal</span></a>, <a href="gdobject.html#hasMethod,Object,StringName"><span class="Identifier">hasMethod</span></a>, <a href="gdobject.html#isClass,Object,String"><span class="Identifier">isClass</span></a>, <a href="gdobject.html#propertyCanRevert,Object,StringName"><span class="Identifier">propertyCanRevert</span></a>, <a href="gdobject.html#isBlockingSignals,Object"><span class="Identifier">isBlockingSignals</span></a>, <a href="gdobject.html#getSignalList,Object"><span class="Identifier">getSignalList</span></a>, <a href="gdobject.html#callDeferred.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">callDeferred</span></a>, <a href="gdobject.html#propertyGetRevert,Object,StringName"><span class="Identifier">propertyGetRevert</span></a>, <a href="gdobject.html#setIndexed,Object,NodePath,Variant"><span class="Identifier">setIndexed</span></a>, <a href="gdobject.html#set,Object,StringName,Variant"><span class="Identifier">set</span></a>, <a href="gdobject.html#emitSignal.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">emitSignal</span></a>, <a href="gdobject.html#getPropertyList,Object"><span class="Identifier">getPropertyList</span></a>, <a href="gdobject.html#trN,Object,StringName,StringName,int32,StringName"><span class="Identifier">trN</span></a>, <a href="gdobject.html#isQueuedForDeletion,Object"><span class="Identifier">isQueuedForDeletion</span></a>, <a href="gdobject.html#connect,Object,StringName,Callable,uint32"><span class="Identifier">connect</span></a>, <a href="gdobject.html#setDeferred,Object,StringName,Variant"><span class="Identifier">setDeferred</span></a>, <a href="gdobject.html#call,Object,Variant,varargs[Variant,variant]"><span class="Identifier">call</span></a>, <a href="gdobject.html#getInstanceId,Object"><span class="Identifier">getInstanceId</span></a>, <a href="gdobject.html#getSignalConnectionList,Object,StringName"><span class="Identifier">getSignalConnectionList</span></a>, <a href="gdobject.html#setMessageTranslation,Object,bool"><span class="Identifier">setMessageTranslation</span></a>, <a href="gdobject.html#getMethodArgumentCount,Object,StringName"><span class="Identifier">getMethodArgumentCount</span></a>, <a href="gdobject.html#callDeferred,Object,Variant,varargs[Variant,variant]"><span class="Identifier">callDeferred</span></a>, <a href="gdobject.html#setBlockSignals,Object,bool"><span class="Identifier">setBlockSignals</span></a>, <a href="gdobject.html#NotificationPostinitialize"><span class="Identifier">NotificationPostinitialize</span></a>, <a href="gdobject.html#addUserSignal,Object,String,Array"><span class="Identifier">addUserSignal</span></a>, <a href="gdobject.html#getMethodList,Object"><span class="Identifier">getMethodList</span></a>, <a href="gdobject.html#NotificationExtensionReloaded"><span class="Identifier">NotificationExtensionReloaded</span></a>, <a href="gdobject.html#setTranslationDomain,Object,StringName"><span class="Identifier">setTranslationDomain</span></a>, <a href="gdobject.html#getMetaList,Object"><span class="Identifier">getMetaList</span></a>, <a href="gdobject.html#setScript,Object,Variant"><span class="Identifier">setScript</span></a>, <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a>, <a href="gdobject.html#cancelFree,Object"><span class="Identifier">cancelFree</span></a>, <a href="gdobject.html#getScript,Object"><span class="Identifier">getScript</span></a>, <a href="gdobject.html#getIncomingConnections,Object"><span class="Identifier">getIncomingConnections</span></a>, <a href="gdobject.html#removeUserSignal,Object,StringName"><span class="Identifier">removeUserSignal</span></a>, <a href="gdobject.html#callv,Object,StringName,Array"><span class="Identifier">callv</span></a>, <a href="gdobject.html#getMeta,Object,StringName,Variant"><span class="Identifier">getMeta</span></a>, <a href="gdobject.html#notification,Object,int32,bool"><span class="Identifier">notification</span></a>, <a href="gdobject.html#get,Object,StringName"><span class="Identifier">get</span></a>, <a href="gdobject.html#call.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">call</span></a>, <a href="gdobject.html#toString,Object"><span class="Identifier">toString</span></a>, <a href="gdobject.html#canTranslateMessages,Object"><span class="Identifier">canTranslateMessages</span></a>, <a href="gdobject.html#isConnected,Object,StringName,Callable"><span class="Identifier">isConnected</span></a>, <a href="gdobject.html#removeMeta,Object,StringName"><span class="Identifier">removeMeta</span></a>, <a href="gdobject.html#hasConnections,Object,StringName"><span class="Identifier">hasConnections</span></a>, <a href="gdobject.html#disconnect,Object,StringName,Callable"><span class="Identifier">disconnect</span></a>, <a href="gdobject.html#getIndexed,Object,NodePath"><span class="Identifier">getIndexed</span></a>, <a href="gdobject.html#emitSignal,Object,Variant,varargs[Variant,variant]"><span class="Identifier">emitSignal</span></a>, <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a>
+    <a href="gdobject.html#tr,Object,StringName,StringName"><span class="Identifier">tr</span></a>, <a href="gdobject.html#getTranslationDomain,Object"><span class="Identifier">getTranslationDomain</span></a>, <a href="gdobject.html#hasSignal,Object,StringName"><span class="Identifier">hasSignal</span></a>, <a href="gdobject.html#notifyPropertyListChanged,Object"><span class="Identifier">notifyPropertyListChanged</span></a>, <a href="gdobject.html#NotificationPredelete"><span class="Identifier">NotificationPredelete</span></a>, <a href="gdobject.html#getClass,Object"><span class="Identifier">getClass</span></a>, <a href="gdobject.html#setMeta,Object,StringName,Variant"><span class="Identifier">setMeta</span></a>, <a href="gdobject.html#hasMeta,Object,StringName"><span class="Identifier">hasMeta</span></a>, <a href="gdobject.html#hasUserSignal,Object,StringName"><span class="Identifier">hasUserSignal</span></a>, <a href="gdobject.html#hasMethod,Object,StringName"><span class="Identifier">hasMethod</span></a>, <a href="gdobject.html#isClass,Object,String"><span class="Identifier">isClass</span></a>, <a href="gdobject.html#propertyCanRevert,Object,StringName"><span class="Identifier">propertyCanRevert</span></a>, <a href="gdobject.html#isBlockingSignals,Object"><span class="Identifier">isBlockingSignals</span></a>, <a href="gdobject.html#getSignalList,Object"><span class="Identifier">getSignalList</span></a>, <a href="gdobject.html#callDeferred.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">callDeferred</span></a>, <a href="gdobject.html#hasConnections,Object,StringName"><span class="Identifier">hasConnections</span></a>, <a href="gdobject.html#setIndexed,Object,NodePath,Variant"><span class="Identifier">setIndexed</span></a>, <a href="gdobject.html#set,Object,StringName,Variant"><span class="Identifier">set</span></a>, <a href="gdobject.html#emitSignal.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">emitSignal</span></a>, <a href="gdobject.html#getPropertyList,Object"><span class="Identifier">getPropertyList</span></a>, <a href="gdobject.html#trN,Object,StringName,StringName,int32,StringName"><span class="Identifier">trN</span></a>, <a href="gdobject.html#isQueuedForDeletion,Object"><span class="Identifier">isQueuedForDeletion</span></a>, <a href="gdobject.html#connect,Object,StringName,Callable,uint32"><span class="Identifier">connect</span></a>, <a href="gdobject.html#setDeferred,Object,StringName,Variant"><span class="Identifier">setDeferred</span></a>, <a href="gdobject.html#getScript,Object"><span class="Identifier">getScript</span></a>, <a href="gdobject.html#getInstanceId,Object"><span class="Identifier">getInstanceId</span></a>, <a href="gdobject.html#getSignalConnectionList,Object,StringName"><span class="Identifier">getSignalConnectionList</span></a>, <a href="gdobject.html#setMessageTranslation,Object,bool"><span class="Identifier">setMessageTranslation</span></a>, <a href="gdobject.html#getMethodArgumentCount,Object,StringName"><span class="Identifier">getMethodArgumentCount</span></a>, <a href="gdobject.html#removeMeta,Object,StringName"><span class="Identifier">removeMeta</span></a>, <a href="gdobject.html#NotificationPostinitialize"><span class="Identifier">NotificationPostinitialize</span></a>, <a href="gdobject.html#addUserSignal,Object,String,Array[Variant]"><span class="Identifier">addUserSignal</span></a>, <a href="gdobject.html#getMethodList,Object"><span class="Identifier">getMethodList</span></a>, <a href="gdobject.html#NotificationExtensionReloaded"><span class="Identifier">NotificationExtensionReloaded</span></a>, <a href="gdobject.html#setTranslationDomain,Object,StringName"><span class="Identifier">setTranslationDomain</span></a>, <a href="gdobject.html#getMetaList,Object"><span class="Identifier">getMetaList</span></a>, <a href="gdobject.html#setScript,Object,Variant"><span class="Identifier">setScript</span></a>, <a href="../builtinindex.html#Object"><span class="Identifier">Object</span></a>, <a href="gdobject.html#cancelFree,Object"><span class="Identifier">cancelFree</span></a>, <a href="gdobject.html#propertyGetRevert,Object,StringName"><span class="Identifier">propertyGetRevert</span></a>, <a href="gdobject.html#getIncomingConnections,Object"><span class="Identifier">getIncomingConnections</span></a>, <a href="gdobject.html#removeUserSignal,Object,StringName"><span class="Identifier">removeUserSignal</span></a>, <a href="gdobject.html#callv,Object,StringName,Array[Variant]"><span class="Identifier">callv</span></a>, <a href="gdobject.html#getMeta,Object,StringName,Variant"><span class="Identifier">getMeta</span></a>, <a href="gdobject.html#notification,Object,int32,bool"><span class="Identifier">notification</span></a>, <a href="gdobject.html#get,Object,StringName"><span class="Identifier">get</span></a>, <a href="gdobject.html#call.t,Object,StringName,varargs[Variant,variant]"><span class="Identifier">call</span></a>, <a href="gdobject.html#toString,Object"><span class="Identifier">toString</span></a>, <a href="gdobject.html#canTranslateMessages,Object"><span class="Identifier">canTranslateMessages</span></a>, <a href="gdobject.html#isConnected,Object,StringName,Callable"><span class="Identifier">isConnected</span></a>, <a href="gdobject.html#setBlockSignals,Object,bool"><span class="Identifier">setBlockSignals</span></a>, <a href="gdobject.html#disconnect,Object,StringName,Callable"><span class="Identifier">disconnect</span></a>, <a href="gdobject.html#getIndexed,Object,NodePath"><span class="Identifier">getIndexed</span></a>, <a href="../private/classindex.html#Node"><span class="Identifier">Node</span></a>
   </dl>
 </div>
 
@@ -3352,7 +3285,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-18 02:48:10 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:30 UTC</small>
       </div>
     </div>
   </div>

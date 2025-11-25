@@ -1,6 +1,6 @@
 var NodePath_constr: array[3, PtrConstructor]
 proc load_NodePath_constructor {.execon: staticevents.init_engine.on_load_builtinclassConstructor.} =
-  for i in {1, 2}:
+  for i in 0..2:
     NodePath_constr[i] = interface_Variant_getPtrConstructor(VariantType_NodePath, int32 i)
 
 # proc newNodePath*(): NodePath =

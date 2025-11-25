@@ -12,23 +12,23 @@ proc putData*(self: StreamPeer; data: PackedByteArray): Error =
   methodbind.ptrcall(self, [getPtr data], addr ret)
   (addr ret).decode_result(Error)
 
-proc putPartialData*(self: StreamPeer; data: PackedByteArray): Array =
+proc putPartialData*(self: StreamPeer; data: PackedByteArray): Array[Variant] =
   expandMethodBind(className StreamPeer, "put_partial_data", 2934048347)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr data], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc getData*(self: StreamPeer; bytes: int32): Array =
+proc getData*(self: StreamPeer; bytes: int32): Array[Variant] =
   expandMethodBind(className StreamPeer, "get_data", 1171824711)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr bytes], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc getPartialData*(self: StreamPeer; bytes: int32): Array =
+proc getPartialData*(self: StreamPeer; bytes: int32): Array[Variant] =
   expandMethodBind(className StreamPeer, "get_partial_data", 1171824711)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr bytes], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getAvailableBytes*(self: StreamPeer): int32 =
   expandMethodBind(className StreamPeer, "get_available_bytes", 3905245786)

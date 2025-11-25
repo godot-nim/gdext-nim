@@ -6,27 +6,29 @@ import gdresource; export gdresource
 
 expandOnClassImported(Font, Resource)
 
-proc setFallbacks*(self: Font; fallbacks: TypedArray[gdref Font]): void =
+proc setFallbacks*(self: Font; fallbacks: Array[gdref Font]): void =
   expandMethodBind(className Font, "set_fallbacks", 381264803)
+  nilCheck fallbacks
   methodbind.ptrcall(self, [getPtr fallbacks])
 
-proc getFallbacks*(self: Font): TypedArray[gdref Font] =
+proc getFallbacks*(self: Font): Array[gdref Font] =
   expandMethodBind(className Font, "get_fallbacks", 3995934104)
-  var ret: encoded TypedArray[gdref Font]
+  var ret: encoded Array[gdref Font]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Font])
+  (addr ret).decode_result(Array[gdref Font])
 
-proc findVariation*(self: Font; variationCoordinates: Dictionary; faceIndex: int32 = 0; strength: Float = 0.0; transform: Transform2D = transform2D(); spacingTop: int32 = 0; spacingBottom: int32 = 0; spacingSpace: int32 = 0; spacingGlyph: int32 = 0; baselineOffset: Float = 0.0): RID =
+proc findVariation*(self: Font; variationCoordinates: Dictionary[Variant, Variant]; faceIndex: int32 = 0; strength: Float = 0.0; transform: Transform2D = transform2D(); spacingTop: int32 = 0; spacingBottom: int32 = 0; spacingSpace: int32 = 0; spacingGlyph: int32 = 0; baselineOffset: Float = 0.0): RID =
   expandMethodBind(className Font, "find_variation", 2553855095)
+  nilCheck variationCoordinates
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr variationCoordinates, getPtr faceIndex, getPtr strength, getPtr transform, getPtr spacingTop, getPtr spacingBottom, getPtr spacingSpace, getPtr spacingGlyph, getPtr baselineOffset], addr ret)
   (addr ret).decode_result(RID)
 
-proc getRids*(self: Font): TypedArray[RID] =
+proc getRids*(self: Font): Array[RID] =
   expandMethodBind(className Font, "get_rids", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc getHeight*(self: Font; fontSize: int32 = 16): Float =
   expandMethodBind(className Font, "get_height", 378113874)
@@ -70,11 +72,11 @@ proc getFontStyleName*(self: Font): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getOtNameStrings*(self: Font): Dictionary =
+proc getOtNameStrings*(self: Font): Dictionary[Variant, Variant] =
   expandMethodBind(className Font, "get_ot_name_strings", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getFontStyle*(self: Font): set[TextServer_FontStyle] =
   expandMethodBind(className Font, "get_font_style", 2520224254)
@@ -100,11 +102,11 @@ proc getSpacing*(self: Font; spacing: TextServer_SpacingType): int32 =
   methodbind.ptrcall(self, [getPtr spacing], addr ret)
   (addr ret).decode_result(int32)
 
-proc getOpentypeFeatures*(self: Font): Dictionary =
+proc getOpentypeFeatures*(self: Font): Dictionary[Variant, Variant] =
   expandMethodBind(className Font, "get_opentype_features", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setCacheCapacity*(self: Font; singleLine: int32; multiLine: int32): void =
   expandMethodBind(className Font, "set_cache_capacity", 3937882851)
@@ -180,17 +182,17 @@ proc isScriptSupported*(self: Font; script: String): bool =
   methodbind.ptrcall(self, [getPtr script], addr ret)
   (addr ret).decode_result(bool)
 
-proc getSupportedFeatureList*(self: Font): Dictionary =
+proc getSupportedFeatureList*(self: Font): Dictionary[Variant, Variant] =
   expandMethodBind(className Font, "get_supported_feature_list", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getSupportedVariationList*(self: Font): Dictionary =
+proc getSupportedVariationList*(self: Font): Dictionary[Variant, Variant] =
   expandMethodBind(className Font, "get_supported_variation_list", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getFaceCount*(self: Font): int64 =
   expandMethodBind(className Font, "get_face_count", 3905245786)

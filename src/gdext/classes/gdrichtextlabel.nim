@@ -164,8 +164,9 @@ proc pushBgcolor*(self: RichTextLabel; bgcolor: Color): void =
   expandMethodBind(className RichTextLabel, "push_bgcolor", 2920490490)
   methodbind.ptrcall(self, [getPtr bgcolor])
 
-proc pushCustomfx*(self: RichTextLabel; effect: gdref RichTextEffect; env: Dictionary): void =
+proc pushCustomfx*(self: RichTextLabel; effect: gdref RichTextEffect; env: Dictionary[Variant, Variant]): void =
   expandMethodBind(className RichTextLabel, "push_customfx", 2337942958)
+  nilCheck env
   methodbind.ptrcall(self, [getPtr effect, getPtr env])
 
 proc pushContext*(self: RichTextLabel): void =
@@ -198,15 +199,16 @@ proc getStructuredTextBidiOverride*(self: RichTextLabel): TextServer_StructuredT
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: RichTextLabel; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: RichTextLabel; args: Array[Variant]): void =
   expandMethodBind(className RichTextLabel, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: RichTextLabel): Array =
+proc getStructuredTextBidiOverrideOptions*(self: RichTextLabel): Array[Variant] =
   expandMethodBind(className RichTextLabel, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setTextDirection*(self: RichTextLabel; direction: Control_TextDirection): void =
   expandMethodBind(className RichTextLabel, "set_text_direction", 119160795)
@@ -634,21 +636,22 @@ proc getParagraphOffset*(self: RichTextLabel; paragraph: int32): Float =
   methodbind.ptrcall(self, [getPtr paragraph], addr ret)
   (addr ret).decode_result(Float)
 
-proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringArray): Dictionary =
+proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringArray): Dictionary[Variant, Variant] =
   expandMethodBind(className RichTextLabel, "parse_expressions_for_values", 1522900837)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr expressions], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setEffects*(self: RichTextLabel; effects: Array): void =
+proc setEffects*(self: RichTextLabel; effects: Array[Variant]): void =
   expandMethodBind(className RichTextLabel, "set_effects", 381264803)
+  nilCheck effects
   methodbind.ptrcall(self, [getPtr effects])
 
-proc getEffects*(self: RichTextLabel): Array =
+proc getEffects*(self: RichTextLabel): Array[Variant] =
   expandMethodBind(className RichTextLabel, "get_effects", 2915620761)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc installEffect*(self: RichTextLabel; effect: Variant): void =
   expandMethodBind(className RichTextLabel, "install_effect", 1114965689)

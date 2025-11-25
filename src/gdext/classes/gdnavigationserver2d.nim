@@ -6,11 +6,11 @@ import gdobject; export gdobject
 
 expandOnClassImported(NavigationServer2D, Object)
 
-proc getMaps*(self: NavigationServer2D): TypedArray[RID] =
+proc getMaps*(self: NavigationServer2D): Array[RID] =
   expandMethodBind(className NavigationServer2D, "get_maps", 3995934104)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc mapCreate*(self: NavigationServer2D): RID =
   expandMethodBind(className NavigationServer2D, "map_create", 529393457)
@@ -96,29 +96,29 @@ proc mapGetClosestPointOwner*(self: NavigationServer2D; map: RID; toPoint: Vecto
   methodbind.ptrcall(self, [getPtr map, getPtr toPoint], addr ret)
   (addr ret).decode_result(RID)
 
-proc mapGetLinks*(self: NavigationServer2D; map: RID): TypedArray[RID] =
+proc mapGetLinks*(self: NavigationServer2D; map: RID): Array[RID] =
   expandMethodBind(className NavigationServer2D, "map_get_links", 2684255073)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [getPtr map], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
-proc mapGetRegions*(self: NavigationServer2D; map: RID): TypedArray[RID] =
+proc mapGetRegions*(self: NavigationServer2D; map: RID): Array[RID] =
   expandMethodBind(className NavigationServer2D, "map_get_regions", 2684255073)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [getPtr map], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
-proc mapGetAgents*(self: NavigationServer2D; map: RID): TypedArray[RID] =
+proc mapGetAgents*(self: NavigationServer2D; map: RID): Array[RID] =
   expandMethodBind(className NavigationServer2D, "map_get_agents", 2684255073)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [getPtr map], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
-proc mapGetObstacles*(self: NavigationServer2D; map: RID): TypedArray[RID] =
+proc mapGetObstacles*(self: NavigationServer2D; map: RID): Array[RID] =
   expandMethodBind(className NavigationServer2D, "map_get_obstacles", 2684255073)
-  var ret: encoded TypedArray[RID]
+  var ret: encoded Array[RID]
   methodbind.ptrcall(self, [getPtr map], addr ret)
-  (addr ret).decode_result(TypedArray[RID])
+  (addr ret).decode_result(Array[RID])
 
 proc mapForceUpdate*(self: NavigationServer2D; map: RID): void =
   expandMethodBind(className NavigationServer2D, "map_force_update", 2722037293)

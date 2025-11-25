@@ -39,67 +39,51 @@ var `count(PackedVector4Array Vector4)`: PtrBuiltinMethod
 var `erase(PackedVector4Array Vector4)`: PtrBuiltinMethod
 
 proc get*(self: PackedVector4Array; index: Int): Vector4 =
-  let argArr = [getPtr index]
-  `get(PackedVector4Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `get(PackedVector4Array Int)`.call(addr self, [getPtr index], addr result)
 proc set*(self: var PackedVector4Array; index: Int; value: Vector4): void =
-  let argArr = [getPtr index, getPtr value]
-  `set(PackedVector4Array Int Vector4)`(addr self, addr argArr[0], nil, 2)
+  `set(PackedVector4Array Int Vector4)`.call(addr self, [getPtr index, getPtr value])
 proc size*(self: PackedVector4Array): Int =
-  `size(PackedVector4Array)`(addr self, nil, addr result, 0)
+  `size(PackedVector4Array)`.call(addr self, [], addr result)
 proc isEmpty*(self: PackedVector4Array): bool =
-  `isEmpty(PackedVector4Array)`(addr self, nil, addr result, 0)
+  `isEmpty(PackedVector4Array)`.call(addr self, [], addr result)
 proc pushBack*(self: var PackedVector4Array; value: Vector4): bool =
-  let argArr = [getPtr value]
-  `pushBack(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `pushBack(PackedVector4Array Vector4)`.call(addr self, [getPtr value], addr result)
 proc append*(self: var PackedVector4Array; value: Vector4): bool =
-  let argArr = [getPtr value]
-  `append(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `append(PackedVector4Array Vector4)`.call(addr self, [getPtr value], addr result)
 proc appendArray*(self: var PackedVector4Array; array: PackedVector4Array): void =
-  let argArr = [getPtr array]
-  `appendArray(PackedVector4Array PackedVector4Array)`(addr self, addr argArr[0], nil, 1)
+  `appendArray(PackedVector4Array PackedVector4Array)`.call(addr self, [getPtr array])
 proc removeAt*(self: var PackedVector4Array; index: Int): void =
-  let argArr = [getPtr index]
-  `removeAt(PackedVector4Array Int)`(addr self, addr argArr[0], nil, 1)
+  `removeAt(PackedVector4Array Int)`.call(addr self, [getPtr index])
 proc insert*(self: var PackedVector4Array; atIndex: Int; value: Vector4): Int =
-  let argArr = [getPtr atIndex, getPtr value]
-  `insert(PackedVector4Array Int Vector4)`(addr self, addr argArr[0], addr result, 2)
+  `insert(PackedVector4Array Int Vector4)`.call(addr self, [getPtr atIndex, getPtr value], addr result)
 proc fill*(self: var PackedVector4Array; value: Vector4): void =
-  let argArr = [getPtr value]
-  `fill(PackedVector4Array Vector4)`(addr self, addr argArr[0], nil, 1)
+  `fill(PackedVector4Array Vector4)`.call(addr self, [getPtr value])
 proc resize*(self: var PackedVector4Array; newSize: Int): Int =
-  let argArr = [getPtr newSize]
-  `resize(PackedVector4Array Int)`(addr self, addr argArr[0], addr result, 1)
+  `resize(PackedVector4Array Int)`.call(addr self, [getPtr newSize], addr result)
 proc clear*(self: var PackedVector4Array): void =
-  `clear(PackedVector4Array)`(addr self, nil, nil, 0)
+  `clear(PackedVector4Array)`.call(addr self, [])
 proc has*(self: PackedVector4Array; value: Vector4): bool =
-  let argArr = [getPtr value]
-  `has(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `has(PackedVector4Array Vector4)`.call(addr self, [getPtr value], addr result)
 proc reverse*(self: var PackedVector4Array): void =
-  `reverse(PackedVector4Array)`(addr self, nil, nil, 0)
+  `reverse(PackedVector4Array)`.call(addr self, [])
 proc slice*(self: PackedVector4Array; begin: Int; `end`: Int = 2147483647): PackedVector4Array =
-  let argArr = [getPtr begin, getPtr `end`]
-  `slice(PackedVector4Array Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `slice(PackedVector4Array Int Int)`.call(addr self, [getPtr begin, getPtr `end`], addr result)
 proc toByteArray*(self: PackedVector4Array): PackedByteArray =
-  `toByteArray(PackedVector4Array)`(addr self, nil, addr result, 0)
+  `toByteArray(PackedVector4Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedVector4Array): void =
-  `sort(PackedVector4Array)`(addr self, nil, nil, 0)
+  `sort(PackedVector4Array)`.call(addr self, [])
 proc bsearch*(self: var PackedVector4Array; value: Vector4; before: bool = true): Int =
-  let argArr = [getPtr value, getPtr before]
-  `bsearch(PackedVector4Array Vector4 bool)`(addr self, addr argArr[0], addr result, 2)
+  `bsearch(PackedVector4Array Vector4 bool)`.call(addr self, [getPtr value, getPtr before], addr result)
 proc duplicate*(self: var PackedVector4Array): PackedVector4Array =
-  `duplicate(PackedVector4Array)`(addr self, nil, addr result, 0)
+  `duplicate(PackedVector4Array)`.call(addr self, [], addr result)
 proc find*(self: PackedVector4Array; value: Vector4; `from`: Int = 0): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `find(PackedVector4Array Vector4 Int)`(addr self, addr argArr[0], addr result, 2)
+  `find(PackedVector4Array Vector4 Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc rfind*(self: PackedVector4Array; value: Vector4; `from`: Int = -1): Int =
-  let argArr = [getPtr value, getPtr `from`]
-  `rfind(PackedVector4Array Vector4 Int)`(addr self, addr argArr[0], addr result, 2)
+  `rfind(PackedVector4Array Vector4 Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
 proc count*(self: PackedVector4Array; value: Vector4): Int =
-  let argArr = [getPtr value]
-  `count(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `count(PackedVector4Array Vector4)`.call(addr self, [getPtr value], addr result)
 proc erase*(self: var PackedVector4Array; value: Vector4): bool =
-  let argArr = [getPtr value]
-  `erase(PackedVector4Array Vector4)`(addr self, addr argArr[0], addr result, 1)
+  `erase(PackedVector4Array Vector4)`.call(addr self, [getPtr value], addr result)
 
 proc load_PackedVector4Array_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `get(PackedVector4Array Int)` = load(VariantType_PackedVector4Array, "get", 1227817084)

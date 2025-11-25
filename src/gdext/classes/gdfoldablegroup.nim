@@ -12,11 +12,11 @@ proc getExpandedContainer*(self: FoldableGroup): FoldableContainer =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(FoldableContainer)
 
-proc getContainers*(self: FoldableGroup): TypedArray[FoldableContainer] =
+proc getContainers*(self: FoldableGroup): Array[FoldableContainer] =
   expandMethodBind(className FoldableGroup, "get_containers", 3995934104)
-  var ret: encoded TypedArray[FoldableContainer]
+  var ret: encoded Array[FoldableContainer]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[FoldableContainer])
+  (addr ret).decode_result(Array[FoldableContainer])
 
 proc setAllowFoldingAll*(self: FoldableGroup; enabled: bool): void =
   expandMethodBind(className FoldableGroup, "set_allow_folding_all", 2586408642)

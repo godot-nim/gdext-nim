@@ -32,8 +32,11 @@ proc getBlendShapeMode*(self: ImporterMesh): Mesh_BlendShapeMode =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Mesh_BlendShapeMode)
 
-proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array; blendShapes: TypedArray[Array] = newTypedArray[Array](); lods: Dictionary = newDictionary(); material: gdref Material = default gdref Material; name: String = newGdString(); flags: uint64 = 0): void =
+proc addSurface*(self: ImporterMesh; primitive: Mesh_PrimitiveType; arrays: Array[Variant]; blendShapes: Array[Array[Variant]] = newArray[Array[Variant]](); lods: Dictionary[Variant, Variant] = newDictionary[Variant, Variant](); material: gdref Material = default gdref Material; name: String = newGdString(); flags: uint64 = 0): void =
   expandMethodBind(className ImporterMesh, "add_surface", 1740448849)
+  nilCheck arrays
+  nilCheck blendShapes
+  nilCheck lods
   methodbind.ptrcall(self, [getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr material, getPtr name, getPtr flags])
 
 proc getSurfaceCount*(self: ImporterMesh): int32 =
@@ -54,17 +57,17 @@ proc getSurfaceName*(self: ImporterMesh; surfaceIdx: int32): String =
   methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
   (addr ret).decode_result(String)
 
-proc getSurfaceArrays*(self: ImporterMesh; surfaceIdx: int32): Array =
+proc getSurfaceArrays*(self: ImporterMesh; surfaceIdx: int32): Array[Variant] =
   expandMethodBind(className ImporterMesh, "get_surface_arrays", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr surfaceIdx], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc getSurfaceBlendShapeArrays*(self: ImporterMesh; surfaceIdx: int32; blendShapeIdx: int32): Array =
+proc getSurfaceBlendShapeArrays*(self: ImporterMesh; surfaceIdx: int32; blendShapeIdx: int32): Array[Variant] =
   expandMethodBind(className ImporterMesh, "get_surface_blend_shape_arrays", 2345056839)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr blendShapeIdx], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getSurfaceLodCount*(self: ImporterMesh; surfaceIdx: int32): int32 =
   expandMethodBind(className ImporterMesh, "get_surface_lod_count", 923996154)
@@ -104,8 +107,9 @@ proc setSurfaceMaterial*(self: ImporterMesh; surfaceIdx: int32; material: gdref 
   expandMethodBind(className ImporterMesh, "set_surface_material", 3671737478)
   methodbind.ptrcall(self, [getPtr surfaceIdx, getPtr material])
 
-proc generateLods*(self: ImporterMesh; normalMergeAngle: Float; normalSplitAngle: Float; boneTransformArray: Array): void =
+proc generateLods*(self: ImporterMesh; normalMergeAngle: Float; normalSplitAngle: Float; boneTransformArray: Array[Variant]): void =
   expandMethodBind(className ImporterMesh, "generate_lods", 2491878677)
+  nilCheck boneTransformArray
   methodbind.ptrcall(self, [getPtr normalMergeAngle, getPtr normalSplitAngle, getPtr boneTransformArray])
 
 proc getMesh*(self: ImporterMesh; baseMesh: gdref ArrayMesh = default gdref ArrayMesh): gdref ArrayMesh =

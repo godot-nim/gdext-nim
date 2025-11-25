@@ -120,15 +120,16 @@ proc getStructuredTextBidiOverride*(self: TreeItem; column: int32): TextServer_S
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32; args: Array[Variant]): void =
   expandMethodBind(className TreeItem, "set_structured_text_bidi_override_options", 537221740)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr column, getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32): Array =
+proc getStructuredTextBidiOverrideOptions*(self: TreeItem; column: int32): Array[Variant] =
   expandMethodBind(className TreeItem, "get_structured_text_bidi_override_options", 663333327)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setLanguage*(self: TreeItem; column: int32; language: String): void =
   expandMethodBind(className TreeItem, "set_language", 501894301)
@@ -214,11 +215,11 @@ proc setRangeConfig*(self: TreeItem; column: int32; min: float64; max: float64; 
   expandMethodBind(className TreeItem, "set_range_config", 1547181014)
   methodbind.ptrcall(self, [getPtr column, getPtr min, getPtr max, getPtr step, getPtr expr])
 
-proc getRangeConfig*(self: TreeItem; column: int32): Dictionary =
+proc getRangeConfig*(self: TreeItem; column: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className TreeItem, "get_range_config", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setMetadata*(self: TreeItem; column: int32; meta: Variant): void =
   expandMethodBind(className TreeItem, "set_metadata", 2152698145)
@@ -580,11 +581,11 @@ proc getChildCount*(self: TreeItem): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc getChildren*(self: TreeItem): TypedArray[TreeItem] =
+proc getChildren*(self: TreeItem): Array[TreeItem] =
   expandMethodBind(className TreeItem, "get_children", 2915620761)
-  var ret: encoded TypedArray[TreeItem]
+  var ret: encoded Array[TreeItem]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[TreeItem])
+  (addr ret).decode_result(Array[TreeItem])
 
 proc getIndex*(self: TreeItem): int32 =
   expandMethodBind(className TreeItem, "get_index", 2455072627)
@@ -600,7 +601,7 @@ proc moveAfter*(self: TreeItem; item: TreeItem): void =
   expandMethodBind(className TreeItem, "move_after", 1819951137)
   methodbind.ptrcall(self, [getPtr item])
 
-proc callRecursive*(self: TreeItem; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callRecursive(self: TreeItem; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className TreeItem, "call_recursive", 2866548813)
   var `?param` = newSeqOfCap[VariantPtr](1+args.len)
   `?param`.add [getTypedPtr `method`]

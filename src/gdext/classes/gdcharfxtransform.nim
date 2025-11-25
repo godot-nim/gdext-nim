@@ -76,14 +76,15 @@ proc setColor*(self: CharFXTransform; color: Color): void =
   expandMethodBind(className CharFXTransform, "set_color", 2920490490)
   methodbind.ptrcall(self, [getPtr color])
 
-proc getEnvironment*(self: CharFXTransform): Dictionary =
+proc getEnvironment*(self: CharFXTransform): Dictionary[Variant, Variant] =
   expandMethodBind(className CharFXTransform, "get_environment", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setEnvironment*(self: CharFXTransform; environment: Dictionary): void =
+proc setEnvironment*(self: CharFXTransform; environment: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CharFXTransform, "set_environment", 4155329257)
+  nilCheck environment
   methodbind.ptrcall(self, [getPtr environment])
 
 proc getGlyphIndex*(self: CharFXTransform): uint32 =

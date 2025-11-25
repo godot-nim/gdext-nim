@@ -65,40 +65,31 @@ var `isEqualApprox(Transform3D Transform3D)`: PtrBuiltinMethod
 var `isFinite(Transform3D)`: PtrBuiltinMethod
 
 proc inverse*(self: Transform3D): Transform3D =
-  `inverse(Transform3D)`(addr self, nil, addr result, 0)
+  `inverse(Transform3D)`.call(addr self, [], addr result)
 proc affineInverse*(self: Transform3D): Transform3D =
-  `affineInverse(Transform3D)`(addr self, nil, addr result, 0)
+  `affineInverse(Transform3D)`.call(addr self, [], addr result)
 proc orthonormalized*(self: Transform3D): Transform3D =
-  `orthonormalized(Transform3D)`(addr self, nil, addr result, 0)
+  `orthonormalized(Transform3D)`.call(addr self, [], addr result)
 proc rotated*(self: Transform3D; axis: Vector3; angle: Float): Transform3D =
-  let argArr = [getPtr axis, getPtr angle]
-  `rotated(Transform3D Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `rotated(Transform3D Vector3 Float)`.call(addr self, [getPtr axis, getPtr angle], addr result)
 proc rotatedLocal*(self: Transform3D; axis: Vector3; angle: Float): Transform3D =
-  let argArr = [getPtr axis, getPtr angle]
-  `rotatedLocal(Transform3D Vector3 Float)`(addr self, addr argArr[0], addr result, 2)
+  `rotatedLocal(Transform3D Vector3 Float)`.call(addr self, [getPtr axis, getPtr angle], addr result)
 proc scaled*(self: Transform3D; scale: Vector3): Transform3D =
-  let argArr = [getPtr scale]
-  `scaled(Transform3D Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `scaled(Transform3D Vector3)`.call(addr self, [getPtr scale], addr result)
 proc scaledLocal*(self: Transform3D; scale: Vector3): Transform3D =
-  let argArr = [getPtr scale]
-  `scaledLocal(Transform3D Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `scaledLocal(Transform3D Vector3)`.call(addr self, [getPtr scale], addr result)
 proc translated*(self: Transform3D; offset: Vector3): Transform3D =
-  let argArr = [getPtr offset]
-  `translated(Transform3D Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `translated(Transform3D Vector3)`.call(addr self, [getPtr offset], addr result)
 proc translatedLocal*(self: Transform3D; offset: Vector3): Transform3D =
-  let argArr = [getPtr offset]
-  `translatedLocal(Transform3D Vector3)`(addr self, addr argArr[0], addr result, 1)
+  `translatedLocal(Transform3D Vector3)`.call(addr self, [getPtr offset], addr result)
 proc lookingAt*(self: Transform3D; target: Vector3; up: Vector3 = vector3(0, 1, 0); useModelFront: bool = false): Transform3D =
-  let argArr = [getPtr target, getPtr up, getPtr useModelFront]
-  `lookingAt(Transform3D Vector3 Vector3 bool)`(addr self, addr argArr[0], addr result, 3)
+  `lookingAt(Transform3D Vector3 Vector3 bool)`.call(addr self, [getPtr target, getPtr up, getPtr useModelFront], addr result)
 proc interpolateWith*(self: Transform3D; xform: Transform3D; weight: Float): Transform3D =
-  let argArr = [getPtr xform, getPtr weight]
-  `interpolateWith(Transform3D Transform3D Float)`(addr self, addr argArr[0], addr result, 2)
+  `interpolateWith(Transform3D Transform3D Float)`.call(addr self, [getPtr xform, getPtr weight], addr result)
 proc isEqualApprox*(self: Transform3D; xform: Transform3D): bool =
-  let argArr = [getPtr xform]
-  `isEqualApprox(Transform3D Transform3D)`(addr self, addr argArr[0], addr result, 1)
+  `isEqualApprox(Transform3D Transform3D)`.call(addr self, [getPtr xform], addr result)
 proc isFinite*(self: Transform3D): bool =
-  `isFinite(Transform3D)`(addr self, nil, addr result, 0)
+  `isFinite(Transform3D)`.call(addr self, [], addr result)
 
 proc load_Transform3D_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `inverse(Transform3D)` = load(VariantType_Transform3D, "inverse", 3816817146)

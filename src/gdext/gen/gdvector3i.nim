@@ -1,16 +1,16 @@
 # constant values
 
-const Vector3i_Zero: Vector3i = vector3i(0, 0, 0)
-template Zero*(_: typedesc[Vector3i]): Vector3i = Vector3i_Zero
+# const Vector3i_Zero: Vector3i = vector3i(0, 0, 0)
+# template Zero*(_: typedesc[Vector3i]): Vector3i = Vector3i_Zero
 
-const Vector3i_One: Vector3i = vector3i(1, 1, 1)
-template One*(_: typedesc[Vector3i]): Vector3i = Vector3i_One
+# const Vector3i_One: Vector3i = vector3i(1, 1, 1)
+# template One*(_: typedesc[Vector3i]): Vector3i = Vector3i_One
 
-const Vector3i_Min: Vector3i = vector3i(-2147483648, -2147483648, -2147483648)
-template Min*(_: typedesc[Vector3i]): Vector3i = Vector3i_Min
+# const Vector3i_Min: Vector3i = vector3i(-2147483648, -2147483648, -2147483648)
+# template Min*(_: typedesc[Vector3i]): Vector3i = Vector3i_Min
 
-const Vector3i_Max: Vector3i = vector3i(2147483647, 2147483647, 2147483647)
-template Max*(_: typedesc[Vector3i]): Vector3i = Vector3i_Max
+# const Vector3i_Max: Vector3i = vector3i(2147483647, 2147483647, 2147483647)
+# template Max*(_: typedesc[Vector3i]): Vector3i = Vector3i_Max
 
 const Vector3i_Left: Vector3i = vector3i(-1, 0, 0)
 template Left*(_: typedesc[Vector3i]): Vector3i = Vector3i_Left
@@ -72,29 +72,21 @@ var `max(Vector3i Vector3i)`: PtrBuiltinMethod
 var `maxi(Vector3i Int)`: PtrBuiltinMethod
 
 proc distanceTo*(self: Vector3i; to: Vector3i): Float =
-  let argArr = [getPtr to]
-  `distanceTo(Vector3i Vector3i)`(addr self, addr argArr[0], addr result, 1)
+  `distanceTo(Vector3i Vector3i)`.call(addr self, [getPtr to], addr result)
 proc distanceSquaredTo*(self: Vector3i; to: Vector3i): Int =
-  let argArr = [getPtr to]
-  `distanceSquaredTo(Vector3i Vector3i)`(addr self, addr argArr[0], addr result, 1)
+  `distanceSquaredTo(Vector3i Vector3i)`.call(addr self, [getPtr to], addr result)
 proc clampi*(self: Vector3i; min: Int; max: Int): Vector3i =
-  let argArr = [getPtr min, getPtr max]
-  `clampi(Vector3i Int Int)`(addr self, addr argArr[0], addr result, 2)
+  `clampi(Vector3i Int Int)`.call(addr self, [getPtr min, getPtr max], addr result)
 proc snappedi*(self: Vector3i; step: Int): Vector3i =
-  let argArr = [getPtr step]
-  `snappedi(Vector3i Int)`(addr self, addr argArr[0], addr result, 1)
+  `snappedi(Vector3i Int)`.call(addr self, [getPtr step], addr result)
 proc min*(self: Vector3i; with: Vector3i): Vector3i =
-  let argArr = [getPtr with]
-  `min(Vector3i Vector3i)`(addr self, addr argArr[0], addr result, 1)
+  `min(Vector3i Vector3i)`.call(addr self, [getPtr with], addr result)
 proc mini*(self: Vector3i; with: Int): Vector3i =
-  let argArr = [getPtr with]
-  `mini(Vector3i Int)`(addr self, addr argArr[0], addr result, 1)
+  `mini(Vector3i Int)`.call(addr self, [getPtr with], addr result)
 proc max*(self: Vector3i; with: Vector3i): Vector3i =
-  let argArr = [getPtr with]
-  `max(Vector3i Vector3i)`(addr self, addr argArr[0], addr result, 1)
+  `max(Vector3i Vector3i)`.call(addr self, [getPtr with], addr result)
 proc maxi*(self: Vector3i; with: Int): Vector3i =
-  let argArr = [getPtr with]
-  `maxi(Vector3i Int)`(addr self, addr argArr[0], addr result, 1)
+  `maxi(Vector3i Int)`.call(addr self, [getPtr with], addr result)
 
 proc load_Vector3i_methods {.execon: staticevents.init_engine.on_load_builtinclassMethod.} =
   `distanceTo(Vector3i Vector3i)` = load(VariantType_Vector3i, "distance_to", 1975170430)

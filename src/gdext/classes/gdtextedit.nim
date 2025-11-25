@@ -11,27 +11,37 @@ proc registerVirtual_handleUnicodeInput*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_handle_unicode_input"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).handleUnicodeInput(p_args[0].decode(int32), p_args[1].decode(int32))
 
-method backspace*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
+method backspace*(self: TextEdit; caretIndex: int32 = -1): void {.base.} =
+  expandMethodBind(className TextEdit, "backspace", 1025054187)
+  methodbind.ptrcall(self, [getPtr caretIndex])
 proc registerVirtual_backspace*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_backspace"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).backspace(p_args[0].decode(int32))
 
-method cut*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
+method cut*(self: TextEdit; caretIndex: int32 = -1): void {.base.} =
+  expandMethodBind(className TextEdit, "cut", 1025054187)
+  methodbind.ptrcall(self, [getPtr caretIndex])
 proc registerVirtual_cut*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_cut"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).cut(p_args[0].decode(int32))
 
-method copy*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
+method copy*(self: TextEdit; caretIndex: int32 = -1): void {.base.} =
+  expandMethodBind(className TextEdit, "copy", 1025054187)
+  methodbind.ptrcall(self, [getPtr caretIndex])
 proc registerVirtual_copy*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_copy"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).copy(p_args[0].decode(int32))
 
-method paste*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
+method paste*(self: TextEdit; caretIndex: int32 = -1): void {.base.} =
+  expandMethodBind(className TextEdit, "paste", 1025054187)
+  methodbind.ptrcall(self, [getPtr caretIndex])
 proc registerVirtual_paste*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_paste"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).paste(p_args[0].decode(int32))
 
-method pastePrimaryClipboard*(self: TextEdit; caretIndex: int32): void {.base.} = (discard)
+method pastePrimaryClipboard*(self: TextEdit; caretIndex: int32 = -1): void {.base.} =
+  expandMethodBind(className TextEdit, "paste_primary_clipboard", 1025054187)
+  methodbind.ptrcall(self, [getPtr caretIndex])
 proc registerVirtual_pastePrimaryClipboard*[T: TextEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_paste_primary_clipboard"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextEdit](p_instance).pastePrimaryClipboard(p_args[0].decode(int32))
@@ -90,15 +100,16 @@ proc getStructuredTextBidiOverride*(self: TextEdit): TextServer_StructuredTextPa
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: TextEdit; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: TextEdit; args: Array[Variant]): void =
   expandMethodBind(className TextEdit, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: TextEdit): Array =
+proc getStructuredTextBidiOverrideOptions*(self: TextEdit): Array[Variant] =
   expandMethodBind(className TextEdit, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setTabSize*(self: TextEdit; size: int32): void =
   expandMethodBind(className TextEdit, "set_tab_size", 1286410249)
@@ -331,26 +342,6 @@ proc getNextVisibleLineIndexOffsetFrom*(self: TextEdit; line: int32; wrapIndex: 
   var ret: encoded Vector2i
   methodbind.ptrcall(self, [getPtr line, getPtr wrapIndex, getPtr visibleAmount], addr ret)
   (addr ret).decode_result(Vector2i)
-
-proc backspace*(self: TextEdit; caretIndex: int32 = -1): void =
-  expandMethodBind(className TextEdit, "backspace", 1025054187)
-  methodbind.ptrcall(self, [getPtr caretIndex])
-
-proc cut*(self: TextEdit; caretIndex: int32 = -1): void =
-  expandMethodBind(className TextEdit, "cut", 1025054187)
-  methodbind.ptrcall(self, [getPtr caretIndex])
-
-proc copy*(self: TextEdit; caretIndex: int32 = -1): void =
-  expandMethodBind(className TextEdit, "copy", 1025054187)
-  methodbind.ptrcall(self, [getPtr caretIndex])
-
-proc paste*(self: TextEdit; caretIndex: int32 = -1): void =
-  expandMethodBind(className TextEdit, "paste", 1025054187)
-  methodbind.ptrcall(self, [getPtr caretIndex])
-
-proc pastePrimaryClipboard*(self: TextEdit; caretIndex: int32 = -1): void =
-  expandMethodBind(className TextEdit, "paste_primary_clipboard", 1025054187)
-  methodbind.ptrcall(self, [getPtr caretIndex])
 
 proc startAction*(self: TextEdit; action: TextEdit_EditAction): void =
   expandMethodBind(className TextEdit, "start_action", 2834827583)
@@ -766,11 +757,11 @@ proc getSelectionAtLineColumn*(self: TextEdit; line: int32; column: int32; inclu
   methodbind.ptrcall(self, [getPtr line, getPtr column, getPtr includeEdges, getPtr onlySelections], addr ret)
   (addr ret).decode_result(int32)
 
-proc getLineRangesFromCarets*(self: TextEdit; onlySelections: bool = false; mergeAdjacent: bool = true): TypedArray[Vector2i] =
+proc getLineRangesFromCarets*(self: TextEdit; onlySelections: bool = false; mergeAdjacent: bool = true): Array[Vector2i] =
   expandMethodBind(className TextEdit, "get_line_ranges_from_carets", 2393089247)
-  var ret: encoded TypedArray[Vector2i]
+  var ret: encoded Array[Vector2i]
   methodbind.ptrcall(self, [getPtr onlySelections, getPtr mergeAdjacent], addr ret)
-  (addr ret).decode_result(TypedArray[Vector2i])
+  (addr ret).decode_result(Array[Vector2i])
 
 proc getSelectionOriginLine*(self: TextEdit; caretIndex: int32 = 0): int32 =
   expandMethodBind(className TextEdit, "get_selection_origin_line", 1591665591)

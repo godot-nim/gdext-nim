@@ -108,11 +108,11 @@ proc isCalculatingTangents*(self: CSGShape3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getMeshes*(self: CSGShape3D): Array =
+proc getMeshes*(self: CSGShape3D): Array[Variant] =
   expandMethodBind(className CSGShape3D, "get_meshes", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc bakeStaticMesh*(self: CSGShape3D): gdref ArrayMesh =
   expandMethodBind(className CSGShape3D, "bake_static_mesh", 1605880883)

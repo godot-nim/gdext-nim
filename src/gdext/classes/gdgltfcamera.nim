@@ -18,17 +18,18 @@ proc toNode*(self: GLTFCamera): Camera3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Camera3D)
 
-proc fromDictionary*(_: typedesc[GLTFCamera]; dictionary: Dictionary): gdref GLTFCamera =
+proc fromDictionary*(_: typedesc[GLTFCamera]; dictionary: Dictionary[Variant, Variant]): gdref GLTFCamera =
   expandMethodBind(className GLTFCamera, "from_dictionary", 2495512509)
+  nilCheck dictionary
   var ret: encoded gdref GLTFCamera
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFCamera)
 
-proc toDictionary*(self: GLTFCamera): Dictionary =
+proc toDictionary*(self: GLTFCamera): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFCamera, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getPerspective*(self: GLTFCamera): bool =
   expandMethodBind(className GLTFCamera, "get_perspective", 36873697)

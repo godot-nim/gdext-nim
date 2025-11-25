@@ -31,14 +31,16 @@ proc texture2DCreate*(self: RenderingServer; image: gdref Image): RID =
   methodbind.ptrcall(self, [getPtr image], addr ret)
   (addr ret).decode_result(RID)
 
-proc texture2DLayeredCreate*(self: RenderingServer; layers: TypedArray[gdref Image]; layeredType: RenderingServer_TextureLayeredType): RID =
+proc texture2DLayeredCreate*(self: RenderingServer; layers: Array[gdref Image]; layeredType: RenderingServer_TextureLayeredType): RID =
   expandMethodBind(className RenderingServer, "texture_2d_layered_create", 913689023)
+  nilCheck layers
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr layers, getPtr layeredType], addr ret)
   (addr ret).decode_result(RID)
 
-proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: TypedArray[gdref Image]): RID =
+proc texture3DCreate*(self: RenderingServer; format: Image_Format; width: int32; height: int32; depth: int32; mipmaps: bool; data: Array[gdref Image]): RID =
   expandMethodBind(className RenderingServer, "texture_3d_create", 4036838706)
+  nilCheck data
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr format, getPtr width, getPtr height, getPtr depth, getPtr mipmaps, getPtr data], addr ret)
   (addr ret).decode_result(RID)
@@ -59,8 +61,9 @@ proc texture2DUpdate*(self: RenderingServer; texture: RID; image: gdref Image; l
   expandMethodBind(className RenderingServer, "texture_2d_update", 999539803)
   methodbind.ptrcall(self, [getPtr texture, getPtr image, getPtr layer])
 
-proc texture3DUpdate*(self: RenderingServer; texture: RID; data: TypedArray[gdref Image]): void =
+proc texture3DUpdate*(self: RenderingServer; texture: RID; data: Array[gdref Image]): void =
   expandMethodBind(className RenderingServer, "texture_3d_update", 684822712)
+  nilCheck data
   methodbind.ptrcall(self, [getPtr texture, getPtr data])
 
 proc textureProxyUpdate*(self: RenderingServer; texture: RID; proxyTo: RID): void =
@@ -97,11 +100,11 @@ proc texture2DLayerGet*(self: RenderingServer; texture: RID; layer: int32): gdre
   methodbind.ptrcall(self, [getPtr texture, getPtr layer], addr ret)
   (addr ret).decode_result(gdref Image)
 
-proc texture3DGet*(self: RenderingServer; texture: RID): TypedArray[gdref Image] =
+proc texture3DGet*(self: RenderingServer; texture: RID): Array[gdref Image] =
   expandMethodBind(className RenderingServer, "texture_3d_get", 2684255073)
-  var ret: encoded TypedArray[gdref Image]
+  var ret: encoded Array[gdref Image]
   methodbind.ptrcall(self, [getPtr texture], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  (addr ret).decode_result(Array[gdref Image])
 
 proc textureReplace*(self: RenderingServer; texture: RID; byTexture: RID): void =
   expandMethodBind(className RenderingServer, "texture_replace", 395945892)
@@ -169,11 +172,11 @@ proc shaderGetCode*(self: RenderingServer; shader: RID): String =
   methodbind.ptrcall(self, [getPtr shader], addr ret)
   (addr ret).decode_result(String)
 
-proc getShaderParameterList*(self: RenderingServer; shader: RID): TypedArray[Dictionary] =
+proc getShaderParameterList*(self: RenderingServer; shader: RID): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className RenderingServer, "get_shader_parameter_list", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr shader], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc shaderGetParameterDefault*(self: RenderingServer; shader: RID; name: StringName): Variant =
   expandMethodBind(className RenderingServer, "shader_get_parameter_default", 2621281810)
@@ -219,8 +222,9 @@ proc materialSetNextPass*(self: RenderingServer; material: RID; nextMaterial: RI
   expandMethodBind(className RenderingServer, "material_set_next_pass", 395945892)
   methodbind.ptrcall(self, [getPtr material, getPtr nextMaterial])
 
-proc meshCreateFromSurfaces*(self: RenderingServer; surfaces: TypedArray[Dictionary]; blendShapeCount: int32 = 0): RID =
+proc meshCreateFromSurfaces*(self: RenderingServer; surfaces: Array[Dictionary[Variant, Variant]]; blendShapeCount: int32 = 0): RID =
   expandMethodBind(className RenderingServer, "mesh_create_from_surfaces", 4291747531)
+  nilCheck surfaces
   var ret: encoded RID
   methodbind.ptrcall(self, [getPtr surfaces, getPtr blendShapeCount], addr ret)
   (addr ret).decode_result(RID)
@@ -267,12 +271,16 @@ proc meshSurfaceGetFormatIndexStride*(self: RenderingServer; format: set[Renderi
   methodbind.ptrcall(self, [getPtr format, getPtr vertexCount], addr ret)
   (addr ret).decode_result(uint32)
 
-proc meshAddSurface*(self: RenderingServer; mesh: RID; surface: Dictionary): void =
+proc meshAddSurface*(self: RenderingServer; mesh: RID; surface: Dictionary[Variant, Variant]): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface", 1217542888)
+  nilCheck surface
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface])
 
-proc meshAddSurfaceFromArrays*(self: RenderingServer; mesh: RID; primitive: RenderingServer_PrimitiveType; arrays: Array; blendShapes: Array = newArray(); lods: Dictionary = newDictionary(); compressFormat: set[RenderingServer_ArrayFormat] = {}): void =
+proc meshAddSurfaceFromArrays*(self: RenderingServer; mesh: RID; primitive: RenderingServer_PrimitiveType; arrays: Array[Variant]; blendShapes: Array[Variant] = newArray[Variant](); lods: Dictionary[Variant, Variant] = newDictionary[Variant, Variant](); compressFormat: set[RenderingServer_ArrayFormat] = {}): void =
   expandMethodBind(className RenderingServer, "mesh_add_surface_from_arrays", 2342446560)
+  nilCheck arrays
+  nilCheck blendShapes
+  nilCheck lods
   methodbind.ptrcall(self, [getPtr mesh, getPtr primitive, getPtr arrays, getPtr blendShapes, getPtr lods, getPtr compressFormat])
 
 proc meshGetBlendShapeCount*(self: RenderingServer; mesh: RID): int32 =
@@ -301,23 +309,23 @@ proc meshSurfaceGetMaterial*(self: RenderingServer; mesh: RID; surface: int32): 
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface], addr ret)
   (addr ret).decode_result(RID)
 
-proc meshGetSurface*(self: RenderingServer; mesh: RID; surface: int32): Dictionary =
+proc meshGetSurface*(self: RenderingServer; mesh: RID; surface: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className RenderingServer, "mesh_get_surface", 186674697)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc meshSurfaceGetArrays*(self: RenderingServer; mesh: RID; surface: int32): Array =
+proc meshSurfaceGetArrays*(self: RenderingServer; mesh: RID; surface: int32): Array[Variant] =
   expandMethodBind(className RenderingServer, "mesh_surface_get_arrays", 1778388067)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
-proc meshSurfaceGetBlendShapeArrays*(self: RenderingServer; mesh: RID; surface: int32): TypedArray[Array] =
+proc meshSurfaceGetBlendShapeArrays*(self: RenderingServer; mesh: RID; surface: int32): Array[Array[Variant]] =
   expandMethodBind(className RenderingServer, "mesh_surface_get_blend_shape_arrays", 1778388067)
-  var ret: encoded TypedArray[Array]
+  var ret: encoded Array[Array[Variant]]
   methodbind.ptrcall(self, [getPtr mesh, getPtr surface], addr ret)
-  (addr ret).decode_result(TypedArray[Array])
+  (addr ret).decode_result(Array[Array[Variant]])
 
 proc meshGetSurfaceCount*(self: RenderingServer; mesh: RID): int32 =
   expandMethodBind(className RenderingServer, "mesh_get_surface_count", 2198884583)
@@ -987,8 +995,9 @@ proc particlesSetTrails*(self: RenderingServer; particles: RID; enable: bool; le
   expandMethodBind(className RenderingServer, "particles_set_trails", 2010054925)
   methodbind.ptrcall(self, [getPtr particles, getPtr enable, getPtr lengthSec])
 
-proc particlesSetTrailBindPoses*(self: RenderingServer; particles: RID; bindPoses: TypedArray[Transform3D]): void =
+proc particlesSetTrailBindPoses*(self: RenderingServer; particles: RID; bindPoses: Array[Transform3D]): void =
   expandMethodBind(className RenderingServer, "particles_set_trail_bind_poses", 684822712)
+  nilCheck bindPoses
   methodbind.ptrcall(self, [getPtr particles, getPtr bindPoses])
 
 proc particlesIsInactive*(self: RenderingServer; particles: RID): bool =
@@ -1443,8 +1452,9 @@ proc compositorCreate*(self: RenderingServer): RID =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
 
-proc compositorSetCompositorEffects*(self: RenderingServer; compositor: RID; effects: TypedArray[RID]): void =
+proc compositorSetCompositorEffects*(self: RenderingServer; compositor: RID; effects: Array[RID]): void =
   expandMethodBind(className RenderingServer, "compositor_set_compositor_effects", 684822712)
+  nilCheck effects
   methodbind.ptrcall(self, [getPtr compositor, getPtr effects])
 
 proc environmentCreate*(self: RenderingServer): RID =
@@ -1747,11 +1757,11 @@ proc instanceGeometryGetShaderParameterDefaultValue*(self: RenderingServer; inst
   methodbind.ptrcall(self, [getPtr instance, getPtr parameter], addr ret)
   (addr ret).decode_result(Variant)
 
-proc instanceGeometryGetShaderParameterList*(self: RenderingServer; instance: RID): TypedArray[Dictionary] =
+proc instanceGeometryGetShaderParameterList*(self: RenderingServer; instance: RID): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className RenderingServer, "instance_geometry_get_shader_parameter_list", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc instancesCullAabb*(self: RenderingServer; aabb: AABB; scenario: RID = RID()): PackedInt64Array =
   expandMethodBind(className RenderingServer, "instances_cull_aabb", 2570105777)
@@ -1765,17 +1775,19 @@ proc instancesCullRay*(self: RenderingServer; `from`: Vector3; to: Vector3; scen
   methodbind.ptrcall(self, [getPtr `from`, getPtr to, getPtr scenario], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
-proc instancesCullConvex*(self: RenderingServer; convex: TypedArray[Plane]; scenario: RID = RID()): PackedInt64Array =
+proc instancesCullConvex*(self: RenderingServer; convex: Array[Plane]; scenario: RID = RID()): PackedInt64Array =
   expandMethodBind(className RenderingServer, "instances_cull_convex", 2488539944)
+  nilCheck convex
   var ret: encoded PackedInt64Array
   methodbind.ptrcall(self, [getPtr convex, getPtr scenario], addr ret)
   (addr ret).decode_result(PackedInt64Array)
 
-proc bakeRenderUv2*(self: RenderingServer; base: RID; materialOverrides: TypedArray[RID]; imageSize: Vector2i): TypedArray[gdref Image] =
+proc bakeRenderUv2*(self: RenderingServer; base: RID; materialOverrides: Array[RID]; imageSize: Vector2i): Array[gdref Image] =
   expandMethodBind(className RenderingServer, "bake_render_uv2", 1904608558)
-  var ret: encoded TypedArray[gdref Image]
+  nilCheck materialOverrides
+  var ret: encoded Array[gdref Image]
   methodbind.ptrcall(self, [getPtr base, getPtr materialOverrides, getPtr imageSize], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Image])
+  (addr ret).decode_result(Array[gdref Image])
 
 proc canvasCreate*(self: RenderingServer): RID =
   expandMethodBind(className RenderingServer, "canvas_create", 529393457)
@@ -2019,11 +2031,11 @@ proc canvasItemGetInstanceShaderParameterDefaultValue*(self: RenderingServer; in
   methodbind.ptrcall(self, [getPtr instance, getPtr parameter], addr ret)
   (addr ret).decode_result(Variant)
 
-proc canvasItemGetInstanceShaderParameterList*(self: RenderingServer; instance: RID): TypedArray[Dictionary] =
+proc canvasItemGetInstanceShaderParameterList*(self: RenderingServer; instance: RID): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className RenderingServer, "canvas_item_get_instance_shader_parameter_list", 2684255073)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr instance], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc canvasItemSetVisibilityNotifier*(self: RenderingServer; item: RID; enable: bool; area: Rect2; enterCallable: Callable; exitCallable: Callable): void =
   expandMethodBind(className RenderingServer, "canvas_item_set_visibility_notifier", 3568945579)
@@ -2201,11 +2213,11 @@ proc globalShaderParameterRemove*(self: RenderingServer; name: StringName): void
   expandMethodBind(className RenderingServer, "global_shader_parameter_remove", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
-proc globalShaderParameterGetList*(self: RenderingServer): TypedArray[StringName] =
+proc globalShaderParameterGetList*(self: RenderingServer): Array[StringName] =
   expandMethodBind(className RenderingServer, "global_shader_parameter_get_list", 3995934104)
-  var ret: encoded TypedArray[StringName]
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[StringName])
+  (addr ret).decode_result(Array[StringName])
 
 proc globalShaderParameterSet*(self: RenderingServer; name: StringName; value: Variant): void =
   expandMethodBind(className RenderingServer, "global_shader_parameter_set", 3776071444)

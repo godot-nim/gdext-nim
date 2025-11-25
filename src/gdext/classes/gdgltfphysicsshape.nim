@@ -30,17 +30,18 @@ proc toResource*(self: GLTFPhysicsShape; cacheShapes: bool = false): gdref Shape
   methodbind.ptrcall(self, [getPtr cacheShapes], addr ret)
   (addr ret).decode_result(gdref Shape3D)
 
-proc fromDictionary*(_: typedesc[GLTFPhysicsShape]; dictionary: Dictionary): gdref GLTFPhysicsShape =
+proc fromDictionary*(_: typedesc[GLTFPhysicsShape]; dictionary: Dictionary[Variant, Variant]): gdref GLTFPhysicsShape =
   expandMethodBind(className GLTFPhysicsShape, "from_dictionary", 2390691823)
+  nilCheck dictionary
   var ret: encoded gdref GLTFPhysicsShape
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFPhysicsShape)
 
-proc toDictionary*(self: GLTFPhysicsShape): Dictionary =
+proc toDictionary*(self: GLTFPhysicsShape): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFPhysicsShape, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getShapeType*(self: GLTFPhysicsShape): String =
   expandMethodBind(className GLTFPhysicsShape, "get_shape_type", 201670096)

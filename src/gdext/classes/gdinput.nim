@@ -128,11 +128,11 @@ proc getJoyGuid*(self: Input; device: int32): String =
   methodbind.ptrcall(self, [getPtr device], addr ret)
   (addr ret).decode_result(String)
 
-proc getJoyInfo*(self: Input; device: int32): Dictionary =
+proc getJoyInfo*(self: Input; device: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className Input, "get_joy_info", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr device], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc shouldIgnoreDevice*(self: Input; vendorId: int32; productId: int32): bool =
   expandMethodBind(className Input, "should_ignore_device", 2522259332)
@@ -140,11 +140,11 @@ proc shouldIgnoreDevice*(self: Input; vendorId: int32; productId: int32): bool =
   methodbind.ptrcall(self, [getPtr vendorId, getPtr productId], addr ret)
   (addr ret).decode_result(bool)
 
-proc getConnectedJoypads*(self: Input): TypedArray[Int] =
+proc getConnectedJoypads*(self: Input): Array[Int] =
   expandMethodBind(className Input, "get_connected_joypads", 2915620761)
-  var ret: encoded TypedArray[Int]
+  var ret: encoded Array[Int]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Int])
+  (addr ret).decode_result(Array[Int])
 
 proc getJoyVibrationStrength*(self: Input; device: int32): Vector2 =
   expandMethodBind(className Input, "get_joy_vibration_strength", 3114997196)

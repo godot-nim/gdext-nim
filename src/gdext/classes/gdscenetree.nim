@@ -112,11 +112,11 @@ proc createTween*(self: SceneTree): gdref Tween =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Tween)
 
-proc getProcessedTweens*(self: SceneTree): TypedArray[gdref Tween] =
+proc getProcessedTweens*(self: SceneTree): Array[gdref Tween] =
   expandMethodBind(className SceneTree, "get_processed_tweens", 2915620761)
-  var ret: encoded TypedArray[gdref Tween]
+  var ret: encoded Array[gdref Tween]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[gdref Tween])
+  (addr ret).decode_result(Array[gdref Tween])
 
 proc getNodeCount*(self: SceneTree): int32 =
   expandMethodBind(className SceneTree, "get_node_count", 3905245786)
@@ -148,7 +148,7 @@ proc queueDelete*(self: SceneTree; obj: Object): void =
   expandMethodBind(className SceneTree, "queue_delete", 3975164845)
   methodbind.ptrcall(self, [getPtr obj])
 
-proc callGroupFlags*(self: SceneTree; flags: Variant; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callGroupFlags(self: SceneTree; flags: Variant; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className SceneTree, "call_group_flags", 1527739229)
   var `?param` = newSeqOfCap[VariantPtr](3+args.len)
   `?param`.add [getTypedPtr flags, getTypedPtr group, getTypedPtr `method`]
@@ -164,7 +164,7 @@ proc setGroupFlags*(self: SceneTree; callFlags: uint32; group: StringName; prope
   expandMethodBind(className SceneTree, "set_group_flags", 3497599527)
   methodbind.ptrcall(self, [getPtr callFlags, getPtr group, getPtr property, getPtr value])
 
-proc callGroup*(self: SceneTree; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
+proc callGroup(self: SceneTree; group: Variant; `method`: Variant; args: varargs[Variant, variant]): void =
   expandMethodBind(className SceneTree, "call_group", 1257962832)
   var `?param` = newSeqOfCap[VariantPtr](2+args.len)
   `?param`.add [getTypedPtr group, getTypedPtr `method`]
@@ -180,11 +180,11 @@ proc setGroup*(self: SceneTree; group: StringName; property: String; value: Vari
   expandMethodBind(className SceneTree, "set_group", 1279312029)
   methodbind.ptrcall(self, [getPtr group, getPtr property, getPtr value])
 
-proc getNodesInGroup*(self: SceneTree; group: StringName): TypedArray[Node] =
+proc getNodesInGroup*(self: SceneTree; group: StringName): Array[Node] =
   expandMethodBind(className SceneTree, "get_nodes_in_group", 689397652)
-  var ret: encoded TypedArray[Node]
+  var ret: encoded Array[Node]
   methodbind.ptrcall(self, [getPtr group], addr ret)
-  (addr ret).decode_result(TypedArray[Node])
+  (addr ret).decode_result(Array[Node])
 
 proc getFirstNodeInGroup*(self: SceneTree; group: StringName): Node =
   expandMethodBind(className SceneTree, "get_first_node_in_group", 4071044623)

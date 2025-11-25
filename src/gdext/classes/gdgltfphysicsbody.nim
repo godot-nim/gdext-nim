@@ -18,17 +18,18 @@ proc toNode*(self: GLTFPhysicsBody): CollisionObject3D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(CollisionObject3D)
 
-proc fromDictionary*(_: typedesc[GLTFPhysicsBody]; dictionary: Dictionary): gdref GLTFPhysicsBody =
+proc fromDictionary*(_: typedesc[GLTFPhysicsBody]; dictionary: Dictionary[Variant, Variant]): gdref GLTFPhysicsBody =
   expandMethodBind(className GLTFPhysicsBody, "from_dictionary", 1177544336)
+  nilCheck dictionary
   var ret: encoded gdref GLTFPhysicsBody
   methodbind.ptrcall([getPtr dictionary], addr ret)
   (addr ret).decode_result(gdref GLTFPhysicsBody)
 
-proc toDictionary*(self: GLTFPhysicsBody): Dictionary =
+proc toDictionary*(self: GLTFPhysicsBody): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFPhysicsBody, "to_dictionary", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getBodyType*(self: GLTFPhysicsBody): String =
   expandMethodBind(className GLTFPhysicsBody, "get_body_type", 201670096)

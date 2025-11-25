@@ -116,11 +116,25 @@ proc appearance*(T: typedesc[range]): Appearance =
   Appearance(
     hint: propertyHintRange,
     hintstring: newGdString hintstring)
-proc appearance*[T](_: typedesc[TypedArray[T]]): Appearance =
+proc appearance*[T](_: typedesc[Array[T]]): Appearance =
   var elementApp = T.appearance
   let typ = T.variantType.ord
   let hint = (if elementApp.hint == propertyHintNone: "" else: "/" & $elementApp.hint.ord)
   let str = fmt"{typ}{hint}:{elementApp.hint_string}"
+  Appearance(
+    hint: propertyHintArrayType,
+    hintstring: newGdString str)
+
+proc appearance*[A, B](_: typedesc[Dictionary[A, B]]): Appearance =
+  var elementAppA = A.appearance
+  let typA = A.variantType.ord
+  let hintA = (if elementAppA.hint == propertyHintNone: "" else: "/" & $elementAppA.hint.ord)
+
+  var elementAppB = B.appearance
+  let typB = B.variantType.ord
+  let hintB = (if elementAppB.hint == propertyHintNone: "" else: "/" & $elementAppB.hint.ord)
+
+  let str = fmt"{typA}{hintA}:{elementAppA.hint_string};{typB}{hintB}:{elementAppB.hint_string}"
   Appearance(
     hint: propertyHintArrayType,
     hintstring: newGdString str)

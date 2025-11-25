@@ -92,35 +92,35 @@ proc getMainLoop*(self: Engine): MainLoop =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(MainLoop)
 
-proc getVersionInfo*(self: Engine): Dictionary =
+proc getVersionInfo*(self: Engine): Dictionary[Variant, Variant] =
   expandMethodBind(className Engine, "get_version_info", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getAuthorInfo*(self: Engine): Dictionary =
+proc getAuthorInfo*(self: Engine): Dictionary[Variant, Variant] =
   expandMethodBind(className Engine, "get_author_info", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getCopyrightInfo*(self: Engine): TypedArray[Dictionary] =
+proc getCopyrightInfo*(self: Engine): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Engine, "get_copyright_info", 3995934104)
-  var ret: encoded TypedArray[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(TypedArray[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getDonorInfo*(self: Engine): Dictionary =
+proc getDonorInfo*(self: Engine): Dictionary[Variant, Variant] =
   expandMethodBind(className Engine, "get_donor_info", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc getLicenseInfo*(self: Engine): Dictionary =
+proc getLicenseInfo*(self: Engine): Dictionary[Variant, Variant] =
   expandMethodBind(className Engine, "get_license_info", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getLicenseText*(self: Engine): String =
   expandMethodBind(className Engine, "get_license_text", 201670096)
@@ -190,11 +190,11 @@ proc getScriptLanguage*(self: Engine; index: int32): ScriptLanguage =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(ScriptLanguage)
 
-proc captureScriptBacktraces*(self: Engine; includeVariables: bool = false): TypedArray[gdref ScriptBacktrace] =
+proc captureScriptBacktraces*(self: Engine; includeVariables: bool = false): Array[gdref ScriptBacktrace] =
   expandMethodBind(className Engine, "capture_script_backtraces", 873284517)
-  var ret: encoded TypedArray[gdref ScriptBacktrace]
+  var ret: encoded Array[gdref ScriptBacktrace]
   methodbind.ptrcall(self, [getPtr includeVariables], addr ret)
-  (addr ret).decode_result(TypedArray[gdref ScriptBacktrace])
+  (addr ret).decode_result(Array[gdref ScriptBacktrace])
 
 proc isEditorHint*(self: Engine): bool =
   expandMethodBind(className Engine, "is_editor_hint", 36873697)

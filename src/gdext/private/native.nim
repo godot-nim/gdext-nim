@@ -45,6 +45,7 @@ var
   typeFromVariant*: array[Variant_Type, TypeFromVariantConstructorFunc]
   pointerFromVariant*: array[Variant_Type, VariantGetInternalPtrFunc]
   typeConstructor*: array[Variant_Type, PtrConstructor]
+  typeNew*: array[Variant_Type, PtrConstructor]
   typeDestructor*: array[Variant_Type, PtrDestructor]
 
 proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
@@ -99,11 +100,17 @@ proc init*(getProcAddress: InterfaceGetProcAddress; library: ClassLIbraryPtr) =
       VariantTypePackedVector4Array,
       VariantTypePackedColorArray,
     ]
+    news = [
+      VARIANT_TYPE_ARRAY,
+      VARIANT_TYPE_DICTIONARY,
+    ]
 
   for variantType in constrs:
     typeConstructor[variantType] = interface_Variant_getPtrConstructor(variantType, 1)
   for variantType in destrs:
     typeDestructor[variantType] = interface_Variant_getPtrDestructor(variantType)
+  for variantType in news:
+    typeNew[variantType] = interface_Variant_getPtrConstructor(variantType, 0)
 
   var ClassName, MethodName: pointer
 

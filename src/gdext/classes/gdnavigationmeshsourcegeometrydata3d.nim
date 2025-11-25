@@ -44,8 +44,9 @@ proc addMesh*(self: NavigationMeshSourceGeometryData3D; mesh: gdref Mesh; xform:
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "add_mesh", 975462459)
   methodbind.ptrcall(self, [getPtr mesh, getPtr xform])
 
-proc addMeshArray*(self: NavigationMeshSourceGeometryData3D; meshArray: Array; xform: Transform3D): void =
+proc addMeshArray*(self: NavigationMeshSourceGeometryData3D; meshArray: Array[Variant]; xform: Transform3D): void =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "add_mesh_array", 4235710913)
+  nilCheck meshArray
   methodbind.ptrcall(self, [getPtr meshArray, getPtr xform])
 
 proc addFaces*(self: NavigationMeshSourceGeometryData3D; faces: PackedVector3Array; xform: Transform3D): void =
@@ -64,15 +65,16 @@ proc clearProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): void
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "clear_projected_obstructions", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData3D; projectedObstructions: Array): void =
+proc setProjectedObstructions*(self: NavigationMeshSourceGeometryData3D; projectedObstructions: Array[Variant]): void =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "set_projected_obstructions", 381264803)
+  nilCheck projectedObstructions
   methodbind.ptrcall(self, [getPtr projectedObstructions])
 
-proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): Array =
+proc getProjectedObstructions*(self: NavigationMeshSourceGeometryData3D): Array[Variant] =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "get_projected_obstructions", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc getBounds*(self: NavigationMeshSourceGeometryData3D): AABB =
   expandMethodBind(className NavigationMeshSourceGeometryData3D, "get_bounds", 1021181044)

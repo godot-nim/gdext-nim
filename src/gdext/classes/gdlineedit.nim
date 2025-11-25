@@ -156,15 +156,16 @@ proc getStructuredTextBidiOverride*(self: LineEdit): TextServer_StructuredTextPa
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(TextServer_StructuredTextParser)
 
-proc setStructuredTextBidiOverrideOptions*(self: LineEdit; args: Array): void =
+proc setStructuredTextBidiOverrideOptions*(self: LineEdit; args: Array[Variant]): void =
   expandMethodBind(className LineEdit, "set_structured_text_bidi_override_options", 381264803)
+  nilCheck args
   methodbind.ptrcall(self, [getPtr args])
 
-proc getStructuredTextBidiOverrideOptions*(self: LineEdit): Array =
+proc getStructuredTextBidiOverrideOptions*(self: LineEdit): Array[Variant] =
   expandMethodBind(className LineEdit, "get_structured_text_bidi_override_options", 3995934104)
-  var ret: encoded Array
+  var ret: encoded Array[Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array)
+  (addr ret).decode_result(Array[Variant])
 
 proc setPlaceholder*(self: LineEdit; text: String): void =
   expandMethodBind(className LineEdit, "set_placeholder", 83702148)

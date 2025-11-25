@@ -15,11 +15,11 @@ nim	getFramesPerSecond	gdext/classes/gdengine.html#getFramesPerSecond,Engine	pro
 nim	getPhysicsFrames	gdext/classes/gdengine.html#getPhysicsFrames,Engine	proc getPhysicsFrames(self: Engine): uint64		77
 nim	getProcessFrames	gdext/classes/gdengine.html#getProcessFrames,Engine	proc getProcessFrames(self: Engine): uint64		83
 nim	getMainLoop	gdext/classes/gdengine.html#getMainLoop,Engine	proc getMainLoop(self: Engine): MainLoop		89
-nim	getVersionInfo	gdext/classes/gdengine.html#getVersionInfo,Engine	proc getVersionInfo(self: Engine): Dictionary		95
-nim	getAuthorInfo	gdext/classes/gdengine.html#getAuthorInfo,Engine	proc getAuthorInfo(self: Engine): Dictionary		101
-nim	getCopyrightInfo	gdext/classes/gdengine.html#getCopyrightInfo,Engine	proc getCopyrightInfo(self: Engine): TypedArray[Dictionary]		107
-nim	getDonorInfo	gdext/classes/gdengine.html#getDonorInfo,Engine	proc getDonorInfo(self: Engine): Dictionary		113
-nim	getLicenseInfo	gdext/classes/gdengine.html#getLicenseInfo,Engine	proc getLicenseInfo(self: Engine): Dictionary		119
+nim	getVersionInfo	gdext/classes/gdengine.html#getVersionInfo,Engine	proc getVersionInfo(self: Engine): Dictionary[Variant, Variant]		95
+nim	getAuthorInfo	gdext/classes/gdengine.html#getAuthorInfo,Engine	proc getAuthorInfo(self: Engine): Dictionary[Variant, Variant]		101
+nim	getCopyrightInfo	gdext/classes/gdengine.html#getCopyrightInfo,Engine	proc getCopyrightInfo(self: Engine): Array[Dictionary[Variant, Variant]]		107
+nim	getDonorInfo	gdext/classes/gdengine.html#getDonorInfo,Engine	proc getDonorInfo(self: Engine): Dictionary[Variant, Variant]		113
+nim	getLicenseInfo	gdext/classes/gdengine.html#getLicenseInfo,Engine	proc getLicenseInfo(self: Engine): Dictionary[Variant, Variant]		119
 nim	getLicenseText	gdext/classes/gdengine.html#getLicenseText,Engine	proc getLicenseText(self: Engine): String		125
 nim	getArchitectureName	gdext/classes/gdengine.html#getArchitectureName,Engine	proc getArchitectureName(self: Engine): String		131
 nim	isInPhysicsFrame	gdext/classes/gdengine.html#isInPhysicsFrame,Engine	proc isInPhysicsFrame(self: Engine): bool		137
@@ -32,7 +32,7 @@ nim	registerScriptLanguage	gdext/classes/gdengine.html#registerScriptLanguage,En
 nim	unregisterScriptLanguage	gdext/classes/gdengine.html#unregisterScriptLanguage,Engine,ScriptLanguage	proc unregisterScriptLanguage(self: Engine; language: ScriptLanguage): Error		175
 nim	getScriptLanguageCount	gdext/classes/gdengine.html#getScriptLanguageCount,Engine	proc getScriptLanguageCount(self: Engine): int32		181
 nim	getScriptLanguage	gdext/classes/gdengine.html#getScriptLanguage,Engine,int32	proc getScriptLanguage(self: Engine; index: int32): ScriptLanguage		187
-nim	captureScriptBacktraces	gdext/classes/gdengine.html#captureScriptBacktraces,Engine,bool	proc captureScriptBacktraces(self: Engine; includeVariables: bool = false): TypedArray[\n  GdRef[ScriptBacktrace]]		193
+nim	captureScriptBacktraces	gdext/classes/gdengine.html#captureScriptBacktraces,Engine,bool	proc captureScriptBacktraces(self: Engine; includeVariables: bool = false): Array[\n  GdRef[ScriptBacktrace]]		193
 nim	isEditorHint	gdext/classes/gdengine.html#isEditorHint,Engine	proc isEditorHint(self: Engine): bool		199
 nim	isEmbeddedInEditor	gdext/classes/gdengine.html#isEmbeddedInEditor,Engine	proc isEmbeddedInEditor(self: Engine): bool		205
 nim	getWriteMoviePath	gdext/classes/gdengine.html#getWriteMoviePath,Engine	proc getWriteMoviePath(self: Engine): String		211
