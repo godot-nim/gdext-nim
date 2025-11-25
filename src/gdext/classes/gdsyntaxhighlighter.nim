@@ -6,11 +6,11 @@ import gdresource; export gdresource
 
 expandOnClassImported(SyntaxHighlighter, Resource)
 
-method getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary {.base.} =
+method getLineSyntaxHighlighting*(self: SyntaxHighlighter; line: int32): Dictionary[Variant, Variant] {.base.} =
   expandMethodBind(className SyntaxHighlighter, "get_line_syntax_highlighting", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr line], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 proc registerVirtual_getLineSyntaxHighlighting*[T: SyntaxHighlighter](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_line_syntax_highlighting"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[SyntaxHighlighter](p_instance).getLineSyntaxHighlighting(p_args[0].decode(int32)).encode(r_ret)

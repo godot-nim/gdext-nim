@@ -19,10 +19,10 @@ proc registerVirtual_getExtensions*[T: EditorSceneFormatImporter](Self: typedesc
   Self.vmethods[newStringName"_get_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorSceneFormatImporter](p_instance).getExtensions().encode(r_ret)
 
-method importScene*(self: EditorSceneFormatImporter; path: String; flags: uint32; options: Dictionary): Object {.base.} = (discard)
+method importScene*(self: EditorSceneFormatImporter; path: String; flags: uint32; options: Dictionary[Variant, Variant]): Object {.base.} = (discard)
 proc registerVirtual_importScene*[T: EditorSceneFormatImporter](Self: typedesc[T]) =
   Self.vmethods[newStringName"_import_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[EditorSceneFormatImporter](p_instance).importScene(p_args[0].decode(String), p_args[1].decode(uint32), p_args[2].decode(Dictionary)).encode(r_ret)
+    errproof: cast[EditorSceneFormatImporter](p_instance).importScene(p_args[0].decode(String), p_args[1].decode(uint32), p_args[2].decode(Dictionary[Variant, Variant])).encode(r_ret)
 
 method getImportOptions*(self: EditorSceneFormatImporter; path: String): void {.base.} = (discard)
 proc registerVirtual_getImportOptions*[T: EditorSceneFormatImporter](Self: typedesc[T]) =

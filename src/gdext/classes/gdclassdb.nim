@@ -60,23 +60,23 @@ proc classHasSignal*(self: ClassDB; class: StringName; signal: StringName): bool
   methodbind.ptrcall(self, [getPtr class, getPtr signal], addr ret)
   (addr ret).decode_result(bool)
 
-proc classGetSignal*(self: ClassDB; class: StringName; signal: StringName): Dictionary =
+proc classGetSignal*(self: ClassDB; class: StringName; signal: StringName): Dictionary[Variant, Variant] =
   expandMethodBind(className ClassDB, "class_get_signal", 3061114238)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr class, getPtr signal], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc classGetSignalList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary] =
+proc classGetSignalList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className ClassDB, "class_get_signal_list", 3504980660)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc classGetPropertyList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary] =
+proc classGetPropertyList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className ClassDB, "class_get_property_list", 3504980660)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc classGetPropertyGetter*(self: ClassDB; class: StringName; property: StringName): StringName =
   expandMethodBind(className ClassDB, "class_get_property_getter", 3770832642)
@@ -120,11 +120,11 @@ proc classGetMethodArgumentCount*(self: ClassDB; class: StringName; `method`: St
   methodbind.ptrcall(self, [getPtr class, getPtr `method`, getPtr noInheritance], addr ret)
   (addr ret).decode_result(int32)
 
-proc classGetMethodList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary] =
+proc classGetMethodList*(self: ClassDB; class: StringName; noInheritance: bool = false): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className ClassDB, "class_get_method_list", 3504980660)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr class, getPtr noInheritance], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc classCallStatic*(self: ClassDB; class: Variant; `method`: Variant; args: varargs[Variant, variant]): Variant =
   expandMethodBind(className ClassDB, "class_call_static", 3344196419)

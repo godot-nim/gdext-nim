@@ -20,10 +20,10 @@ proc registerVirtual_requestCodeCompletion*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_request_code_completion"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[CodeEdit](p_instance).requestCodeCompletion(p_args[0].decode(bool))
 
-method filterCodeCompletionCandidates*(self: CodeEdit; candidates: Array[Dictionary]): Array[Dictionary] {.base.} = (discard)
+method filterCodeCompletionCandidates*(self: CodeEdit; candidates: Array[Dictionary[Variant, Variant]]): Array[Dictionary[Variant, Variant]] {.base.} = (discard)
 proc registerVirtual_filterCodeCompletionCandidates*[T: CodeEdit](Self: typedesc[T]) =
   Self.vmethods[newStringName"_filter_code_completion_candidates"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(Array[Dictionary])).encode(r_ret)
+    errproof: cast[CodeEdit](p_instance).filterCodeCompletionCandidates(p_args[0].decode(Array[Dictionary[Variant, Variant]])).encode(r_ret)
 
 proc setIndentSize*(self: CodeEdit; size: int32): void =
   expandMethodBind(className CodeEdit, "set_indent_size", 1286410249)
@@ -106,16 +106,16 @@ proc addAutoBraceCompletionPair*(self: CodeEdit; startKey: String; endKey: Strin
   expandMethodBind(className CodeEdit, "add_auto_brace_completion_pair", 3186203200)
   methodbind.ptrcall(self, [getPtr startKey, getPtr endKey])
 
-proc setAutoBraceCompletionPairs*(self: CodeEdit; pairs: Dictionary): void =
+proc setAutoBraceCompletionPairs*(self: CodeEdit; pairs: Dictionary[Variant, Variant]): void =
   expandMethodBind(className CodeEdit, "set_auto_brace_completion_pairs", 4155329257)
   nilCheck pairs
   methodbind.ptrcall(self, [getPtr pairs])
 
-proc getAutoBraceCompletionPairs*(self: CodeEdit): Dictionary =
+proc getAutoBraceCompletionPairs*(self: CodeEdit): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeEdit, "get_auto_brace_completion_pairs", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc hasAutoBraceCompletionOpenKey*(self: CodeEdit; openKey: String): bool =
   expandMethodBind(className CodeEdit, "has_auto_brace_completion_open_key", 3927539163)
@@ -455,17 +455,17 @@ proc updateCodeCompletionOptions*(self: CodeEdit; force: bool): void =
   expandMethodBind(className CodeEdit, "update_code_completion_options", 2586408642)
   methodbind.ptrcall(self, [getPtr force])
 
-proc getCodeCompletionOptions*(self: CodeEdit): Array[Dictionary] =
+proc getCodeCompletionOptions*(self: CodeEdit): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className CodeEdit, "get_code_completion_options", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getCodeCompletionOption*(self: CodeEdit; index: int32): Dictionary =
+proc getCodeCompletionOption*(self: CodeEdit; index: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className CodeEdit, "get_code_completion_option", 3485342025)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getCodeCompletionSelectedIndex*(self: CodeEdit): int32 =
   expandMethodBind(className CodeEdit, "get_code_completion_selected_index", 3905245786)

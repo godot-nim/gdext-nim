@@ -40,17 +40,17 @@ proc getIndexed*(self: Object; propertyPath: NodePath): Variant =
   methodbind.ptrcall(self, [getPtr propertyPath], addr ret)
   (addr ret).decode_result(Variant)
 
-proc getPropertyList*(self: Object): Array[Dictionary] =
+proc getPropertyList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_property_list", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getMethodList*(self: Object): Array[Dictionary] =
+proc getMethodList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_method_list", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc propertyCanRevert*(self: Object; property: StringName): bool =
   expandMethodBind(className Object, "property_can_revert", 2619796661)
@@ -184,23 +184,23 @@ proc hasSignal*(self: Object; signal: StringName): bool =
   methodbind.ptrcall(self, [getPtr signal], addr ret)
   (addr ret).decode_result(bool)
 
-proc getSignalList*(self: Object): Array[Dictionary] =
+proc getSignalList*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_signal_list", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getSignalConnectionList*(self: Object; signal: StringName): Array[Dictionary] =
+proc getSignalConnectionList*(self: Object; signal: StringName): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_signal_connection_list", 3147814860)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [getPtr signal], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
-proc getIncomingConnections*(self: Object): Array[Dictionary] =
+proc getIncomingConnections*(self: Object): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className Object, "get_incoming_connections", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc connect*(self: Object; signal: StringName; callable: Callable; flags: uint32 = 0'u32): Error =
   expandMethodBind(className Object, "connect", 1518946055)

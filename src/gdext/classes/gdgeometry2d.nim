@@ -138,11 +138,11 @@ proc offsetPolyline*(self: Geometry2D; polyline: PackedVector2Array; delta: Floa
   methodbind.ptrcall(self, [getPtr polyline, getPtr delta, getPtr joinType, getPtr endType], addr ret)
   (addr ret).decode_result(Array[PackedVector2Array])
 
-proc makeAtlas*(self: Geometry2D; sizes: PackedVector2Array): Dictionary =
+proc makeAtlas*(self: Geometry2D; sizes: PackedVector2Array): Dictionary[Variant, Variant] =
   expandMethodBind(className Geometry2D, "make_atlas", 1337682371)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr sizes], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc bresenhamLine*(self: Geometry2D; `from`: Vector2i; to: Vector2i): Array[Vector2i] =
   expandMethodBind(className Geometry2D, "bresenham_line", 1989391000)

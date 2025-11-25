@@ -18,11 +18,11 @@ proc getFilesToExport*(self: EditorExportPreset): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getCustomizedFiles*(self: EditorExportPreset): Dictionary =
+proc getCustomizedFiles*(self: EditorExportPreset): Dictionary[Variant, Variant] =
   expandMethodBind(className EditorExportPreset, "get_customized_files", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getCustomizedFilesCount*(self: EditorExportPreset): int32 =
   expandMethodBind(className EditorExportPreset, "get_customized_files_count", 3905245786)

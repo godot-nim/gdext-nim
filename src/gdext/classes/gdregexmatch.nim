@@ -18,11 +18,11 @@ proc getGroupCount*(self: RegExMatch): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
-proc getNames*(self: RegExMatch): Dictionary =
+proc getNames*(self: RegExMatch): Dictionary[Variant, Variant] =
   expandMethodBind(className RegExMatch, "get_names", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc getStrings*(self: RegExMatch): PackedStringArray =
   expandMethodBind(className RegExMatch, "get_strings", 1139954409)

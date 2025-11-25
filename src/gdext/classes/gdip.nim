@@ -55,11 +55,11 @@ proc getLocalAddresses*(self: IP): PackedStringArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getLocalInterfaces*(self: IP): Array[Dictionary] =
+proc getLocalInterfaces*(self: IP): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className IP, "get_local_interfaces", 3995934104)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc clearCache*(self: IP; hostname: String = newGdString()): void =
   expandMethodBind(className IP, "clear_cache", 3005725572)

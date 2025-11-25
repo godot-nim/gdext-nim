@@ -164,7 +164,7 @@ proc pushBgcolor*(self: RichTextLabel; bgcolor: Color): void =
   expandMethodBind(className RichTextLabel, "push_bgcolor", 2920490490)
   methodbind.ptrcall(self, [getPtr bgcolor])
 
-proc pushCustomfx*(self: RichTextLabel; effect: gdref RichTextEffect; env: Dictionary): void =
+proc pushCustomfx*(self: RichTextLabel; effect: gdref RichTextEffect; env: Dictionary[Variant, Variant]): void =
   expandMethodBind(className RichTextLabel, "push_customfx", 2337942958)
   nilCheck env
   methodbind.ptrcall(self, [getPtr effect, getPtr env])
@@ -636,11 +636,11 @@ proc getParagraphOffset*(self: RichTextLabel; paragraph: int32): Float =
   methodbind.ptrcall(self, [getPtr paragraph], addr ret)
   (addr ret).decode_result(Float)
 
-proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringArray): Dictionary =
+proc parseExpressionsForValues*(self: RichTextLabel; expressions: PackedStringArray): Dictionary[Variant, Variant] =
   expandMethodBind(className RichTextLabel, "parse_expressions_for_values", 1522900837)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr expressions], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setEffects*(self: RichTextLabel; effects: Array[Variant]): void =
   expandMethodBind(className RichTextLabel, "set_effects", 381264803)

@@ -281,11 +281,11 @@ proc bumpMapToNormalMap*(self: Image; bumpScale: Float = 1.0): void =
   expandMethodBind(className Image, "bump_map_to_normal_map", 3423495036)
   methodbind.ptrcall(self, [getPtr bumpScale])
 
-proc computeImageMetrics*(self: Image; comparedImage: gdref Image; useLuma: bool): Dictionary =
+proc computeImageMetrics*(self: Image; comparedImage: gdref Image; useLuma: bool): Dictionary[Variant, Variant] =
   expandMethodBind(className Image, "compute_image_metrics", 3080961247)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr comparedImage, getPtr useLuma], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc blitRect*(self: Image; src: gdref Image; srcRect: Rect2i; dst: Vector2i): void =
   expandMethodBind(className Image, "blit_rect", 2903928755)

@@ -5,10 +5,10 @@ var `==(Dictionary Dictionary)`: PtrOperatorEvaluator
 # `!=(Dictionary Dictionary)`
 # `in(Dictionary Dictionary)`
 # `in(Dictionary Array)`
-func `not`*(left: Dictionary): bool = {.noSideEffect.}:
+func `not`*(left: Dictionary[Variant, Variant]): bool = {.noSideEffect.}:
   nilCheck left
   `not(Dictionary)`(getPtr left, nil, addr result)
-func `==`*(left: Dictionary; right: Dictionary): bool = {.noSideEffect.}:
+func `==`*(left: Dictionary[Variant, Variant]; right: Dictionary[Variant, Variant]): bool = {.noSideEffect.}:
   nilCheck left
   nilCheck right
   `==(Dictionary Dictionary)`(getPtr left, getPtr right, addr result)
@@ -51,113 +51,113 @@ var `makeReadOnly(Dictionary)`: PtrBuiltinMethod
 var `isReadOnly(Dictionary)`: PtrBuiltinMethod
 var `recursiveEqual(Dictionary Dictionary Int)`: PtrBuiltinMethod
 
-proc size*(self: Dictionary): Int =
+proc size*(self: Dictionary[Variant, Variant]): Int =
   nilCheck self
   `size(Dictionary)`.call(addr self, [], addr result)
-proc isEmpty*(self: Dictionary): bool =
+proc isEmpty*(self: Dictionary[Variant, Variant]): bool =
   nilCheck self
   `isEmpty(Dictionary)`.call(addr self, [], addr result)
-proc clear*(self: var Dictionary): void =
+proc clear*(self: var Dictionary[Variant, Variant]): void =
   nilCheck self
   `clear(Dictionary)`.call(addr self, [])
-proc assign*(self: var Dictionary; dictionary: Dictionary): void =
+proc assign*(self: var Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]): void =
   nilCheck self
   nilCheck dictionary
   `assign(Dictionary Dictionary)`.call(addr self, [getPtr dictionary])
-proc sort*(self: var Dictionary): void =
+proc sort*(self: var Dictionary[Variant, Variant]): void =
   nilCheck self
   `sort(Dictionary)`.call(addr self, [])
-proc merge*(self: var Dictionary; dictionary: Dictionary; overwrite: bool = false): void =
+proc merge*(self: var Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]; overwrite: bool = false): void =
   nilCheck self
   nilCheck dictionary
   `merge(Dictionary Dictionary bool)`.call(addr self, [getPtr dictionary, getPtr overwrite])
-proc merged*(self: Dictionary; dictionary: Dictionary; overwrite: bool = false): Dictionary =
+proc merged*(self: Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]; overwrite: bool = false): Dictionary[Variant, Variant] =
   nilCheck self
   nilCheck dictionary
   `merged(Dictionary Dictionary bool)`.call(addr self, [getPtr dictionary, getPtr overwrite], addr result)
-proc has*(self: Dictionary; key: Variant): bool =
+proc has*(self: Dictionary[Variant, Variant]; key: Variant): bool =
   nilCheck self
   `has(Dictionary Variant)`.call(addr self, [getPtr key], addr result)
-proc hasAll*(self: Dictionary; keys: Array[Variant]): bool =
+proc hasAll*(self: Dictionary[Variant, Variant]; keys: Array[Variant]): bool =
   nilCheck self
   nilCheck keys
   `hasAll(Dictionary Array)`.call(addr self, [getPtr keys], addr result)
-proc findKey*(self: Dictionary; value: Variant): Variant =
+proc findKey*(self: Dictionary[Variant, Variant]; value: Variant): Variant =
   nilCheck self
   `findKey(Dictionary Variant)`.call(addr self, [getPtr value], addr result)
-proc erase*(self: var Dictionary; key: Variant): bool =
+proc erase*(self: var Dictionary[Variant, Variant]; key: Variant): bool =
   nilCheck self
   `erase(Dictionary Variant)`.call(addr self, [getPtr key], addr result)
-proc hash*(self: Dictionary): Hash =
+proc hash*(self: Dictionary[Variant, Variant]): Hash =
   nilCheck self
   `hash(Dictionary)`.call(addr self, [], addr result)
-proc keys*(self: Dictionary): Array[Variant] =
+proc keys*(self: Dictionary[Variant, Variant]): Array[Variant] =
   nilCheck self
   `keys(Dictionary)`.call(addr self, [], addr result)
-proc values*(self: Dictionary): Array[Variant] =
+proc values*(self: Dictionary[Variant, Variant]): Array[Variant] =
   nilCheck self
   `values(Dictionary)`.call(addr self, [], addr result)
-proc duplicate*(self: Dictionary; deep: bool = false): Dictionary =
+proc duplicate*(self: Dictionary[Variant, Variant]; deep: bool = false): Dictionary[Variant, Variant] =
   nilCheck self
   `duplicate(Dictionary bool)`.call(addr self, [getPtr deep], addr result)
-proc duplicateDeep*(self: Dictionary; deepSubresourcesMode: Int = 1): Dictionary =
+proc duplicateDeep*(self: Dictionary[Variant, Variant]; deepSubresourcesMode: Int = 1): Dictionary[Variant, Variant] =
   nilCheck self
   `duplicateDeep(Dictionary Int)`.call(addr self, [getPtr deepSubresourcesMode], addr result)
-proc get*(self: Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+proc get*(self: Dictionary[Variant, Variant]; key: Variant; default: Variant = default(Variant)): Variant =
   nilCheck self
   `get(Dictionary Variant Variant)`.call(addr self, [getPtr key, getPtr default], addr result)
-proc getOrAdd*(self: var Dictionary; key: Variant; default: Variant = default(Variant)): Variant =
+proc getOrAdd*(self: var Dictionary[Variant, Variant]; key: Variant; default: Variant = default(Variant)): Variant =
   nilCheck self
   `getOrAdd(Dictionary Variant Variant)`.call(addr self, [getPtr key, getPtr default], addr result)
-proc set*(self: var Dictionary; key: Variant; value: Variant): bool =
+proc set*(self: var Dictionary[Variant, Variant]; key: Variant; value: Variant): bool =
   nilCheck self
   `set(Dictionary Variant Variant)`.call(addr self, [getPtr key, getPtr value], addr result)
-proc isTyped*(self: Dictionary): bool =
+proc isTyped*(self: Dictionary[Variant, Variant]): bool =
   nilCheck self
   `isTyped(Dictionary)`.call(addr self, [], addr result)
-proc isTypedKey*(self: Dictionary): bool =
+proc isTypedKey*(self: Dictionary[Variant, Variant]): bool =
   nilCheck self
   `isTypedKey(Dictionary)`.call(addr self, [], addr result)
-proc isTypedValue*(self: Dictionary): bool =
+proc isTypedValue*(self: Dictionary[Variant, Variant]): bool =
   nilCheck self
   `isTypedValue(Dictionary)`.call(addr self, [], addr result)
-proc isSameTyped*(self: Dictionary; dictionary: Dictionary): bool =
+proc isSameTyped*(self: Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]): bool =
   nilCheck self
   nilCheck dictionary
   `isSameTyped(Dictionary Dictionary)`.call(addr self, [getPtr dictionary], addr result)
-proc isSameTypedKey*(self: Dictionary; dictionary: Dictionary): bool =
+proc isSameTypedKey*(self: Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]): bool =
   nilCheck self
   nilCheck dictionary
   `isSameTypedKey(Dictionary Dictionary)`.call(addr self, [getPtr dictionary], addr result)
-proc isSameTypedValue*(self: Dictionary; dictionary: Dictionary): bool =
+proc isSameTypedValue*(self: Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]): bool =
   nilCheck self
   nilCheck dictionary
   `isSameTypedValue(Dictionary Dictionary)`.call(addr self, [getPtr dictionary], addr result)
-proc getTypedKeyBuiltin*(self: Dictionary): Int =
+proc getTypedKeyBuiltin*(self: Dictionary[Variant, Variant]): Int =
   nilCheck self
   `getTypedKeyBuiltin(Dictionary)`.call(addr self, [], addr result)
-proc getTypedValueBuiltin*(self: Dictionary): Int =
+proc getTypedValueBuiltin*(self: Dictionary[Variant, Variant]): Int =
   nilCheck self
   `getTypedValueBuiltin(Dictionary)`.call(addr self, [], addr result)
-proc getTypedKeyClassName*(self: Dictionary): StringName =
+proc getTypedKeyClassName*(self: Dictionary[Variant, Variant]): StringName =
   nilCheck self
   `getTypedKeyClassName(Dictionary)`.call(addr self, [], addr result)
-proc getTypedValueClassName*(self: Dictionary): StringName =
+proc getTypedValueClassName*(self: Dictionary[Variant, Variant]): StringName =
   nilCheck self
   `getTypedValueClassName(Dictionary)`.call(addr self, [], addr result)
-proc getTypedKeyScript*(self: Dictionary): Variant =
+proc getTypedKeyScript*(self: Dictionary[Variant, Variant]): Variant =
   nilCheck self
   `getTypedKeyScript(Dictionary)`.call(addr self, [], addr result)
-proc getTypedValueScript*(self: Dictionary): Variant =
+proc getTypedValueScript*(self: Dictionary[Variant, Variant]): Variant =
   nilCheck self
   `getTypedValueScript(Dictionary)`.call(addr self, [], addr result)
-proc makeReadOnly*(self: var Dictionary): void =
+proc makeReadOnly*(self: var Dictionary[Variant, Variant]): void =
   nilCheck self
   `makeReadOnly(Dictionary)`.call(addr self, [])
-proc isReadOnly*(self: Dictionary): bool =
+proc isReadOnly*(self: Dictionary[Variant, Variant]): bool =
   nilCheck self
   `isReadOnly(Dictionary)`.call(addr self, [], addr result)
-proc recursiveEqual*(self: Dictionary; dictionary: Dictionary; recursionCount: Int): bool =
+proc recursiveEqual*(self: Dictionary[Variant, Variant]; dictionary: Dictionary[Variant, Variant]; recursionCount: Int): bool =
   nilCheck self
   nilCheck dictionary
   `recursiveEqual(Dictionary Dictionary Int)`.call(addr self, [getPtr dictionary, getPtr recursionCount], addr result)

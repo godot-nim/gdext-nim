@@ -28,11 +28,11 @@ proc getSettingWithOverride*(self: ProjectSettings; name: StringName): Variant =
   methodbind.ptrcall(self, [getPtr name], addr ret)
   (addr ret).decode_result(Variant)
 
-proc getGlobalClassList*(self: ProjectSettings): Array[Dictionary] =
+proc getGlobalClassList*(self: ProjectSettings): Array[Dictionary[Variant, Variant]] =
   expandMethodBind(className ProjectSettings, "get_global_class_list", 2915620761)
-  var ret: encoded Array[Dictionary]
+  var ret: encoded Array[Dictionary[Variant, Variant]]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Array[Dictionary])
+  (addr ret).decode_result(Array[Dictionary[Variant, Variant]])
 
 proc getSettingWithOverrideAndCustomFeatures*(self: ProjectSettings; name: StringName; features: PackedStringArray): Variant =
   expandMethodBind(className ProjectSettings, "get_setting_with_override_and_custom_features", 2434817427)
@@ -62,7 +62,7 @@ proc setAsInternal*(self: ProjectSettings; name: String; internal: bool): void =
   expandMethodBind(className ProjectSettings, "set_as_internal", 2678287736)
   methodbind.ptrcall(self, [getPtr name, getPtr internal])
 
-proc addPropertyInfo*(self: ProjectSettings; hint: Dictionary): void =
+proc addPropertyInfo*(self: ProjectSettings; hint: Dictionary[Variant, Variant]): void =
   expandMethodBind(className ProjectSettings, "add_property_info", 4155329257)
   nilCheck hint
   methodbind.ptrcall(self, [getPtr hint])

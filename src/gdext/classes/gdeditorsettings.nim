@@ -32,7 +32,7 @@ proc setInitialValue*(self: EditorSettings; name: StringName; value: Variant; up
   expandMethodBind(className EditorSettings, "set_initial_value", 1529169264)
   methodbind.ptrcall(self, [getPtr name, getPtr value, getPtr updateCurrent])
 
-proc addPropertyInfo*(self: EditorSettings; info: Dictionary): void =
+proc addPropertyInfo*(self: EditorSettings; info: Dictionary[Variant, Variant]): void =
   expandMethodBind(className EditorSettings, "add_property_info", 4155329257)
   nilCheck info
   methodbind.ptrcall(self, [getPtr info])

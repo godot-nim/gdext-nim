@@ -27,13 +27,13 @@ proc appendGltfNode*(self: GLTFState; gltfNode: gdref GLTFNode; godotSceneNode: 
   methodbind.ptrcall(self, [getPtr gltfNode, getPtr godotSceneNode, getPtr parentNodeIndex], addr ret)
   (addr ret).decode_result(int32)
 
-proc getJson*(self: GLTFState): Dictionary =
+proc getJson*(self: GLTFState): Dictionary[Variant, Variant] =
   expandMethodBind(className GLTFState, "get_json", 2382534195)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
-proc setJson*(self: GLTFState; json: Dictionary): void =
+proc setJson*(self: GLTFState; json: Dictionary[Variant, Variant]): void =
   expandMethodBind(className GLTFState, "set_json", 4155329257)
   nilCheck json
   methodbind.ptrcall(self, [getPtr json])

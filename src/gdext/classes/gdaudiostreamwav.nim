@@ -6,14 +6,14 @@ import gdaudiostream; export gdaudiostream
 
 expandOnClassImported(AudioStreamWAV, AudioStream)
 
-proc loadFromBuffer*(_: typedesc[AudioStreamWAV]; streamData: PackedByteArray; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
+proc loadFromBuffer*(_: typedesc[AudioStreamWAV]; streamData: PackedByteArray; options: Dictionary[Variant, Variant] = newDictionary[Variant, Variant]()): gdref AudioStreamWAV =
   expandMethodBind(className AudioStreamWAV, "load_from_buffer", 4266838938)
   nilCheck options
   var ret: encoded gdref AudioStreamWAV
   methodbind.ptrcall([getPtr streamData, getPtr options], addr ret)
   (addr ret).decode_result(gdref AudioStreamWAV)
 
-proc loadFromFile*(_: typedesc[AudioStreamWAV]; path: String; options: Dictionary = newDictionary()): gdref AudioStreamWAV =
+proc loadFromFile*(_: typedesc[AudioStreamWAV]; path: String; options: Dictionary[Variant, Variant] = newDictionary[Variant, Variant]()): gdref AudioStreamWAV =
   expandMethodBind(className AudioStreamWAV, "load_from_file", 4015802384)
   nilCheck options
   var ret: encoded gdref AudioStreamWAV
@@ -90,16 +90,16 @@ proc isStereo*(self: AudioStreamWAV): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setTags*(self: AudioStreamWAV; tags: Dictionary): void =
+proc setTags*(self: AudioStreamWAV; tags: Dictionary[Variant, Variant]): void =
   expandMethodBind(className AudioStreamWAV, "set_tags", 4155329257)
   nilCheck tags
   methodbind.ptrcall(self, [getPtr tags])
 
-proc getTags*(self: AudioStreamWAV): Dictionary =
+proc getTags*(self: AudioStreamWAV): Dictionary[Variant, Variant] =
   expandMethodBind(className AudioStreamWAV, "get_tags", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc saveToWav*(self: AudioStreamWAV; path: String): Error =
   expandMethodBind(className AudioStreamWAV, "save_to_wav", 166001499)

@@ -6,7 +6,7 @@ import gdresource; export gdresource
 
 expandOnClassImported(AnimationNode, Resource)
 
-method getChildNodes*(self: AnimationNode): Dictionary {.base.} = (discard)
+method getChildNodes*(self: AnimationNode): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getChildNodes*[T: AnimationNode](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_child_nodes"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[AnimationNode](p_instance).getChildNodes().encode(r_ret)

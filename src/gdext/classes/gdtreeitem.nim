@@ -215,11 +215,11 @@ proc setRangeConfig*(self: TreeItem; column: int32; min: float64; max: float64; 
   expandMethodBind(className TreeItem, "set_range_config", 1547181014)
   methodbind.ptrcall(self, [getPtr column, getPtr min, getPtr max, getPtr step, getPtr expr])
 
-proc getRangeConfig*(self: TreeItem; column: int32): Dictionary =
+proc getRangeConfig*(self: TreeItem; column: int32): Dictionary[Variant, Variant] =
   expandMethodBind(className TreeItem, "get_range_config", 3554694381)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [getPtr column], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setMetadata*(self: TreeItem; column: int32; meta: Variant): void =
   expandMethodBind(className TreeItem, "set_metadata", 2152698145)

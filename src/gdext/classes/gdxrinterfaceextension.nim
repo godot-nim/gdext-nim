@@ -31,7 +31,7 @@ proc registerVirtual_uninitialize*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_uninitialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).uninitialize()
 
-method getSystemInfo*(self: XRInterfaceExtension): Dictionary {.base.} = (discard)
+method getSystemInfo*(self: XRInterfaceExtension): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getSystemInfo*[T: XRInterfaceExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_system_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[XRInterfaceExtension](p_instance).getSystemInfo().encode(r_ret)

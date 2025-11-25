@@ -21,15 +21,15 @@ proc registerVirtual_getSignalingState*[T: WebRTCPeerConnectionExtension](Self: 
   Self.vmethods[newStringName"_get_signaling_state"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[WebRTCPeerConnectionExtension](p_instance).getSignalingState().encode(r_ret)
 
-method initialize*(self: WebRTCPeerConnectionExtension; pConfig: Dictionary): Error {.base.} = (discard)
+method initialize*(self: WebRTCPeerConnectionExtension; pConfig: Dictionary[Variant, Variant]): Error {.base.} = (discard)
 proc registerVirtual_initialize*[T: WebRTCPeerConnectionExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_initialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[WebRTCPeerConnectionExtension](p_instance).initialize(p_args[0].decode(Dictionary)).encode(r_ret)
+    errproof: cast[WebRTCPeerConnectionExtension](p_instance).initialize(p_args[0].decode(Dictionary[Variant, Variant])).encode(r_ret)
 
-method createDataChannel*(self: WebRTCPeerConnectionExtension; pLabel: String; pConfig: Dictionary): gdref WebRTCDataChannel {.base.} = (discard)
+method createDataChannel*(self: WebRTCPeerConnectionExtension; pLabel: String; pConfig: Dictionary[Variant, Variant]): gdref WebRTCDataChannel {.base.} = (discard)
 proc registerVirtual_createDataChannel*[T: WebRTCPeerConnectionExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_create_data_channel"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[WebRTCPeerConnectionExtension](p_instance).createDataChannel(p_args[0].decode(String), p_args[1].decode(Dictionary)).encode(r_ret)
+    errproof: cast[WebRTCPeerConnectionExtension](p_instance).createDataChannel(p_args[0].decode(String), p_args[1].decode(Dictionary[Variant, Variant])).encode(r_ret)
 
 method createOffer*(self: WebRTCPeerConnectionExtension): Error {.base.} = (discard)
 proc registerVirtual_createOffer*[T: WebRTCPeerConnectionExtension](Self: typedesc[T]) =

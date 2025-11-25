@@ -16,16 +16,16 @@ proc getBaseFont*(self: FontVariation): gdref Font =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Font)
 
-proc setVariationOpentype*(self: FontVariation; coords: Dictionary): void =
+proc setVariationOpentype*(self: FontVariation; coords: Dictionary[Variant, Variant]): void =
   expandMethodBind(className FontVariation, "set_variation_opentype", 4155329257)
   nilCheck coords
   methodbind.ptrcall(self, [getPtr coords])
 
-proc getVariationOpentype*(self: FontVariation): Dictionary =
+proc getVariationOpentype*(self: FontVariation): Dictionary[Variant, Variant] =
   expandMethodBind(className FontVariation, "get_variation_opentype", 3102165223)
-  var ret: encoded Dictionary
+  var ret: encoded Dictionary[Variant, Variant]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Dictionary)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
 
 proc setVariationEmbolden*(self: FontVariation; strength: Float): void =
   expandMethodBind(className FontVariation, "set_variation_embolden", 373806689)
@@ -57,7 +57,7 @@ proc getVariationTransform*(self: FontVariation): Transform2D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Transform2D)
 
-proc setOpentypeFeatures*(self: FontVariation; features: Dictionary): void =
+proc setOpentypeFeatures*(self: FontVariation; features: Dictionary[Variant, Variant]): void =
   expandMethodBind(className FontVariation, "set_opentype_features", 4155329257)
   nilCheck features
   methodbind.ptrcall(self, [getPtr features])
