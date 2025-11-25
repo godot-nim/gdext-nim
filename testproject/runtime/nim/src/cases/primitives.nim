@@ -59,13 +59,13 @@ runtime: suite "to string":
   test "NodePath":
     check $newNodePath("path/to/somewhere") == $variant(newNodePath("path/to/somewhere"))
   test "Array":
-    var arr = newArray(5)
+    var arr = newArray[Variant](5)
     for i in 0..<arr.len:
       arr[i] = variant i
     check $arr == $variant(arr)
     check ($arr).startsWith "["
   test "TypedArray":
-    var arr = newTypedArray[int](5)
+    var arr = newArray[Int](5)
     for i in 0..<arr.len:
       arr[i] = i
     check $arr == $variant(arr)
@@ -185,30 +185,126 @@ runtime: suite "size":
 
 runtime: suite "Array":
   test "nil access":
-    var arr: Array
+    var arr: Array[Variant]
     let imm_arr = arr
     check arr.len == 0
     check imm_arr.len == 0
   test "construct":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     check not arr.isTyped
     check arr.len == 10
     for i, val in arr:
       check val == variant()
   test "mutable iter":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     for i, val in arr.mpairs:
       val = variant(i)
     for i, val in arr:
       check val.get(int) == i
   test "subscript":
-    var arr = newArray(10)
+    var arr = newArray[Variant](10)
     for i in 0..<arr.len:
       check arr[i] == variant()
     for i in 0..<arr.len:
       arr[i] = variant i
     for i in 0..<arr.len:
       check arr[i].get(int) == i
+
+  test "`[]`(HSlice)":
+    var pi = newArray [variant 1, variant 2, variant 3, variant 4]
+    check pi[0..2] == newArray [variant 1, variant 2, variant 3]
+
+  test "`[]=`(HSlice)":
+    var ps = newArray [variant "a", variant "b", variant "c", variant "d", variant "e", variant "f", variant "g", variant "h"]
+    ps[1 .. ^2] = newArray [variant "x", variant "y", variant "z"]
+    check ps == newArray [variant "a", variant "x", variant "y", variant "z", variant "h"]
+
+    var pb = newArray [variant 1, variant 2, variant 3, variant 4, variant 5, variant 6, variant 7, variant 8]
+    pb[1 .. ^2] = newArray [variant 24, variant 25, variant 26]
+    check pb == newArray [variant 1, variant 24, variant 25, variant 26, variant 8]
+
+  test "subscript(out of bounds)":
+    var arr = newArray[Variant](10)
+    expect IndexDefect:
+      discard arr[10]
+
+runtime: suite "TypedArray":
+  test "nil access":
+    var arr: Array[String]
+    let imm_arr = arr
+    check arr.len == 0
+    check imm_arr.len == 0
+  test "construct":
+    var arr = newArray[String](10)
+    check arr.isTyped
+    check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
+    check arr.len == 10
+    for i, val in arr:
+      check val.length == 0
+
+  test "iter":
+    let res = ["a", "b", "c"]
+    let arr = newArray [String "a", "b", "c"]
+    for i, val in arr:
+      check $val == res[i]
+    block:
+      var i: int
+      for val in arr:
+        check $val == res[i]
+        inc i
+ 
+    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
+    for i, r in res2:
+      r.name = res[i]
+    let arr2 = newArray res2
+    for i, val in arr2:
+      check $val.name == res[i]
+    block:
+      var i: int
+      for val in arr2:
+        check $val.name == res[i]
+        inc i
+    for node in res2:
+      destroy node
+
+  test "mutable iter":
+    var arr = newArray[String](10)
+    for i, val in arr.mpairs:
+      val = $i
+    for i, val in arr:
+      check $val == $i
+
+    var arr2 = newArray[Object](10)
+    check not compiles(
+      for i, val in arr2.mpairs: discard
+    )
+
+  test "subscript":
+    var arr = newArray[String](10)
+    for i in 0..<arr.len:
+      check arr[i] == newGdString""
+    for i in 0..<arr.len:
+      arr[i] = newGdString $i
+    for i in 0..<arr.len:
+      check arr[i] == newGdString $i
+
+  test "backward subscript":
+    var obj = instantiate Object
+    var po = newArray [obj]
+    var pi = newArray [1]
+    check po[0] != nil
+    check po[^1] != nil
+    check pi[0] == 1
+    check pi[^1] == 1
+    destroy obj
+
+  test "typed functions":
+    var arr = newArray[String](2)
+    arr.fill "Hello, "
+    arr.pushBack "world!"
+    check $arr.popFront == "Hello, "
+    check $arr[0] == "Hello, "
+    check $arr[1] == "world!"
 
   test "`[]`(HSlice)":
     var pi = newArray [1, 2, 3, 4]
@@ -224,101 +320,7 @@ runtime: suite "Array":
     check pb == newArray [byte 1, 24, 25, 26, 8]
 
   test "subscript(out of bounds)":
-    var arr = newArray(10)
-    expect IndexDefect:
-      discard arr[10]
-
-runtime: suite "TypedArray":
-  test "nil access":
-    var arr: TypedArray[String]
-    let imm_arr = arr
-    check arr.len == 0
-    check imm_arr.len == 0
-  test "construct":
-    var arr = newTypedArray[String](10)
-    check arr.isTyped
-    check cast[VariantType](arr.getTypedBuiltin) == VariantTypeString
-    check arr.len == 10
-    for i, val in arr:
-      check val.length == 0
-
-  test "iter":
-    let res = ["a", "b", "c"]
-    let arr = newTypedArray [newGdString"a", "b", "c"]
-    for i, val in arr:
-      check $val == res[i]
-    block:
-      var i: int
-      for val in arr:
-        check $val == res[i]
-        inc i
- 
-    let res2 = [Node.instantiate(), Node.instantiate(), Node.instantiate()]
-    for i, r in res2:
-      r.name = res[i]
-    let arr2 = newTypedArray res2
-    for i, val in arr2:
-      check $val.name == res[i]
-    block:
-      var i: int
-      for val in arr2:
-        check $val.name == res[i]
-        inc i
-
-  test "mutable iter":
-    var arr = newTypedArray[String](10)
-    for i, val in arr.mpairs:
-      val = $i
-    for i, val in arr:
-      check $val == $i
-
-    var arr2 = newTypedArray[Object](10)
-    check not compiles(
-      for i, val in arr2.mpairs: discard
-    )
-
-  test "subscript":
-    var arr = newTypedArray[String](10)
-    for i in 0..<arr.len:
-      check arr[i] == newGdString""
-    for i in 0..<arr.len:
-      arr[i] = newGdString $i
-    for i in 0..<arr.len:
-      check arr[i] == newGdString $i
-
-  test "backward subscript":
-    var obj = instantiate Object
-    var po = newTypedArray [obj]
-    var pi = newTypedArray [Int 1]
-    check po[0] != nil
-    check po[^1] != nil
-    check pi[0] == 1
-    check pi[^1] == 1
-    destroy obj
-
-  test "typed functions":
-    var arr = newTypedArray[String](2)
-    arr.fill "Hello, "
-    arr.pushBack "world!"
-    check $arr.popFront == "Hello, "
-    check $arr[0] == "Hello, "
-    check $arr[1] == "world!"
-
-  test "`[]`(HSlice)":
-    var pi = newTypedArray [Int 1, 2, 3, 4]
-    check pi[0..2] == newTypedArray [Int 1, 2, 3]
-
-  test "`[]=`(HSlice)":
-    var ps = newTypedArray [String "a","b","c","d","e","f","g","h"]
-    ps[1 .. ^2] = newTypedArray [String "x","y","z"]
-    check ps == newTypedArray [String "a","x","y","z","h"]
-
-    var pb = newTypedArray [byte 1, 2, 3, 4, 5, 6, 7, 8]
-    pb[1 .. ^2] = newTypedArray [byte 24, 25, 26]
-    check pb == newTypedArray [byte 1, 24, 25, 26, 8]
-
-  test "subscript(out of bounds)":
-    var arr = newTypedArray[String](10)
+    var arr = newArray[String](10)
     expect IndexDefect:
       discard arr[10]
 

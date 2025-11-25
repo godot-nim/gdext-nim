@@ -32,7 +32,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT
 MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
-  StringArray_with_export_multiline*: TypedArray[String]
+  StringArray_with_export_multiline*: Array[String]
   PackedStringArray_with_export_multiline*: PackedStringArray
   NodePath_with_export_node_path*: NodePath
   string_with_export_storage*: string = "with export_storage"
@@ -43,7 +43,7 @@ MULTILINE-TEXT MULTILINE-TEXT MULTILINE-TEXT"""
   color_with_export_no_alpha*: Color = color(1, 1, 1)
 
 method onInit(self: PropTestNode) =
-  self.StringArray_with_export_multiline = newTypedArray[String](1)
+  self.StringArray_with_export_multiline = newArray[String](1)
   self.PackedStringArray_with_export_multiline = newPackedStringArray()
   assert self.PackedStringArray_with_export_multiline.resize(1) == 0
 
@@ -201,8 +201,8 @@ gdexport "string_with_export_multiline",
   Appearance.multiline
 # Currently not works,
 gdexport "StringArray_with_export_multiline",
-  proc (self: PropTestNode): TypedArray[String] = self.StringArray_with_export_multiline,
-  proc (self: PropTestNode; value: TypedArray[String]) = self.StringArray_with_export_multiline = value,
+  proc (self: PropTestNode): Array[String] = self.StringArray_with_export_multiline,
+  proc (self: PropTestNode; value: Array[String]) = self.StringArray_with_export_multiline = value,
   Appearance.multiline
 gdexport "PackedStringArray_with_export_multiline",
   proc (self: PropTestNode): PackedStringArray = self.PackedStringArray_with_export_multiline,
