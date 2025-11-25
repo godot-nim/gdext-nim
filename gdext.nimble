@@ -13,7 +13,7 @@ binDir        = "bin"
 
 # Dependencies
 
-requires "nim >= 2.0.12"
+requires "nim >= 2.2.0"
 
 when fileExists("tasks.nims"):
   include "tasks.nims"

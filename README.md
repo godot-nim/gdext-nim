@@ -219,7 +219,7 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 
 * OS: Linux (Arch) — Author | Mac M2 — @ArikRahman
 * Engine: Godot 4.5.stable.arch_linux | Homebrew Godot 4.4.1 arm64-apple-darwin24.5.0
-* Nim: 2.0.12 | 2.0.14 | 2.0.16 | 2.2.0 | 2.2.2 | 2.2.4 | 2.2.6
+* Nim: 2.2.0 | 2.2.2 | 2.2.4 | 2.2.6
 * CC: gcc version 15.1.1 20250425 (GCC) | clang version 17.0.0
 
 
