@@ -1,6 +1,6 @@
 import gdext
 import testutils
-import std/[unicode, strutils, tables]
+import std/[unicode, strutils, tables, hashes]
 import gdext/classes/gdnode
 include gdext/gen/variantsizes
 
@@ -184,6 +184,218 @@ runtime: suite "size":
     check sizeof(Variant) == Size.Variant
 
 runtime: suite "Array":
+  test "method definitions":
+    var sa: Array[String] = newArray([String "one", "two", "three"])
+    var va: Array[Variant] = newArray([variant "one", variant "two", variant "three"])
+    var ia: Array[Int] = newArray([Int 1, 2, 3])
+
+    check ia.size is Int
+    check va.size is Int
+
+    check ia.isEmpty is bool
+    check va.isEmpty is bool
+
+    check compiles ia.clear
+    check compiles va.clear
+
+    check ia.hash is Hash
+    check va.hash is Hash
+
+    check compiles ia.assign(ia)
+    check compiles va.assign(va)
+    check compiles va.assign(ia)
+    check not compiles ia.assign(va)
+    check not compiles ia.assign(sa)
+
+    check ia.get(Int 0) is Int
+    check va.get(Int 0) is Variant
+
+    check compiles va.set(Int 0, Int 10)
+    check compiles ia.set(Int 0, Int 10)
+    check compiles va.set(Int 0, variant 10)
+    check not compiles va.set(Int 0, newSeq[int]())
+    check not compiles ia.set(Int 0, variant 10)
+
+    check compiles va.pushBack(Int 10)
+    check compiles ia.pushBack(Int 10)
+    check compiles va.pushBack(variant 10)
+    check not compiles va.pushBack(newSeq[int]())
+    check not compiles ia.pushBack(variant 10)
+
+    check compiles va.pushFront(Int 10)
+    check compiles ia.pushFront(Int 10)
+    check compiles va.pushFront(variant 10)
+    check not compiles va.pushFront(newSeq[int]())
+    check not compiles ia.pushFront(variant 10)
+
+    check compiles va.append(Int 10)
+    check compiles ia.append(Int 10)
+    check compiles va.append(variant 10)
+    check not compiles va.append(newSeq[int]())
+    check not compiles ia.append(variant 10)
+
+    check compiles va.appendArray(va)
+    check compiles va.appendArray(ia)
+    check compiles ia.appendArray(ia)
+    check not compiles ia.appendArray(va)
+    check not compiles ia.appendArray(sa)
+
+    check va.resize(Int 10) is Int
+    check ia.resize(Int 10) is Int
+
+    check va.insert(Int 0, Int 10) is Int
+    check ia.insert(Int 0, Int 10) is Int
+    check va.insert(Int 0, variant 10) is Int
+    check not compiles va.insert(Int 0, newSeq[int]())
+    check not compiles ia.insert(Int 0, variant 10)
+
+    check compiles va.removeAt(Int 0)
+    check compiles ia.removeAt(Int 0)
+
+    check compiles va.fill(variant 10)
+    check compiles va.fill(Int 10)
+    check compiles ia.fill(Int 10)
+    check not compiles ia.fill(variant 10)
+
+    check compiles va.erase(variant 10)
+    check compiles va.erase(Int 10)
+    check compiles ia.erase(Int 10)
+    check compiles ia.erase(variant 10)
+    check not compiles va.erase(newSeq[int]())
+    check not compiles ia.erase(newSeq[int]())
+
+    check ia.front() is Int
+    check va.front() is Variant
+
+    check ia.back() is Int
+    check va.back() is Variant
+
+    check ia.pickRandom() is Int
+    check va.pickRandom() is Variant
+
+    check va.find(variant 10) is Int
+    check va.find(Int 10) is Int
+    check ia.find(Int 10) is Int
+    check ia.find(variant 10) is Int
+    check not compiles va.find(newSeq[int]())
+    check not compiles ia.find(newSeq[int]())
+
+    check va.findCustom(Callable()) is Int
+    check ia.findCustom(Callable()) is Int
+
+    check va.rfind(variant 10) is Int
+    check va.rfind(Int 10) is Int
+    check ia.rfind(Int 10) is Int
+    check ia.rfind(variant 10) is Int
+    check not compiles va.rfind(newSeq[int]())
+    check not compiles ia.rfind(newSeq[int]())
+
+    check va.rfindCustom(Callable()) is Int
+    check ia.rfindCustom(Callable()) is Int
+
+    check va.count(variant 10) is Int
+    check va.count(Int 10) is Int
+    check ia.count(Int 10) is Int
+    check ia.count(variant 10) is Int
+    check not compiles va.count(newSeq[int]())
+    check not compiles ia.count(newSeq[int]())
+
+    check va.has(variant 10) is bool
+    check va.has(Int 10) is bool
+    check ia.has(Int 10) is bool
+    check ia.has(variant 10) is bool
+    check not compiles va.has(newSeq[int]())
+    check not compiles ia.has(newSeq[int]())
+
+    check ia.popBack() is Int
+    check va.popBack() is Variant
+
+    check ia.popFront() is Int
+    check va.popFront() is Variant
+
+    check ia.popAt(Int 0) is Int
+    check va.popAt(Int 0) is Variant
+
+    check compiles ia.sort()
+    check compiles va.sort()
+
+    check compiles ia.sortCustom(Callable())
+    check compiles va.sortCustom(Callable())
+
+    check compiles ia.shuffle()
+    check compiles va.shuffle()
+
+    check va.bsearch(variant 10) is Int
+    check va.bsearch(Int 10) is Int
+    check ia.bsearch(Int 10) is Int
+    check ia.bsearch(variant 10) is Int
+    check not compiles va.bsearch(newSeq[int]())
+    check not compiles ia.bsearch(newSeq[int]())
+
+    check va.bsearchCustom(variant 10, Callable()) is Int
+    check va.bsearchCustom(Int 10, Callable()) is Int
+    check ia.bsearchCustom(Int 10, Callable()) is Int
+    check ia.bsearchCustom(variant 10, Callable()) is Int
+    check not compiles va.bsearchCustom(newSeq[int](), Callable())
+    check not compiles ia.bsearchCustom(newSeq[int](), Callable())
+
+    check compiles ia.reverse()
+    check compiles va.reverse()
+
+    check ia.duplicate() is Array[Int]
+    check va.duplicate() is Array[Variant]
+
+    check ia.duplicateDeep() is Array[Int]
+    check va.duplicateDeep() is Array[Variant]
+
+    check ia.slice(0, 2) is Array[Int]
+    check va.slice(0, 2) is Array[Variant]
+
+    check va.filter(Callable()) is Array[Variant]
+    check ia.filter(Callable()) is Array[Int]
+
+    check va.map(Callable()) is Array[Variant]
+    check ia.map(Callable()) is Array[Int]
+
+    check va.reduce(Callable(), Variant()) is Variant
+    check ia.reduce(Callable(), Int 0) is Int
+
+    check va.any(Callable()) is bool
+    check ia.any(Callable()) is bool
+
+    check va.all(Callable()) is bool
+    check ia.all(Callable()) is bool
+
+    check va.max() is Variant
+    check ia.max() is Int
+
+    check va.min() is Variant
+    check ia.min() is Int
+
+    check va.isTyped() is bool
+    check ia.isTyped() is bool
+
+    check va.isSameTyped(va) is bool
+    check va.isSameTyped(ia) is bool
+    check ia.isSameTyped(va) is bool
+    check ia.isSameTyped(ia) is bool
+    check ia.isSameTyped(sa) is bool
+
+    check va.getTypedBuiltin() is Int
+    check ia.getTypedBuiltin() is Int
+
+    check va.getTypedClassName() is StringName
+    check ia.getTypedClassName() is StringName
+
+    check va.getTypedScript() is Variant
+    check ia.getTypedScript() is Variant
+
+    check compiles va.makeReadOnly()
+    check compiles ia.makeReadOnly()
+
+    check va.isReadOnly() is bool
+    check ia.isReadOnly() is bool
+
   test "nil access":
     var arr: Array[Variant]
     let imm_arr = arr
