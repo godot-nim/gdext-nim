@@ -1,6 +1,7 @@
 import std/[strutils]
 
 import gdext/builtinindex
+import gdext/private/classindex
 import gdext/private/macros
 import gdext/private/gdinterface
 
@@ -54,7 +55,12 @@ proc Meta*(T: typedesc[SomeClass]): var GodotClassMeta =
   once:
     when T is SomeEngineClass:
       instance = GodotClassMeta(
-        className: newStringName $T,
+        className:
+          when T is GodotThread:
+            "Thread"
+          else:
+            newStringName $T
+        ,
         callbacks: InstanceBindingCallbacks(
           create_callback: create_callback[T],
           free_callback: free_callback[T],
