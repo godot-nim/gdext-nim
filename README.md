@@ -203,7 +203,7 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 
 ### Engine
 
-- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.5.0 or higher
+- [x] [godotengine/godot](https://github.com/godotengine/godot) 4.6.0 or higher
 
 ### Nim compiler
 
@@ -218,7 +218,7 @@ Use gdextwiz to create, build, and run your GDExtension projects from the comman
 > Support for other environments depends on community feedback. Please consider contributing your findings!
 
 * OS: Linux (Arch) — Author | Mac M2 — @ArikRahman
-* Engine: Godot 4.5.stable.arch_linux | Homebrew Godot 4.4.1 arm64-apple-darwin24.5.0
+* Engine: Godot 4.6.stable.arch_linux | Homebrew Godot 4.4.1 arm64-apple-darwin24.6.0
 * Nim: 2.2.0 | 2.2.2 | 2.2.4 | 2.2.6
 * CC: gcc version 15.1.1 20250425 (GCC) | clang version 17.0.0
 
