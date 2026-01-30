@@ -396,6 +396,11 @@ proc drawListBindVertexArray*(self: RenderingDevice; drawList: int64; vertexArra
   expandMethodBind(className RenderingDevice, "draw_list_bind_vertex_array", 4040184819)
   methodbind.ptrcall(self, [getPtr drawList, getPtr vertexArray])
 
+proc drawListBindVertexBuffersFormat*(self: RenderingDevice; drawList: int64; vertexFormat: int64; vertexCount: uint32; vertexBuffers: Array[RID]; offsets: PackedInt64Array = PackedInt64Array()): void =
+  expandMethodBind(className RenderingDevice, "draw_list_bind_vertex_buffers_format", 2008628980)
+  nilCheck vertexBuffers
+  methodbind.ptrcall(self, [getPtr drawList, getPtr vertexFormat, getPtr vertexCount, getPtr vertexBuffers, getPtr offsets])
+
 proc drawListBindIndexArray*(self: RenderingDevice; drawList: int64; indexArray: RID): void =
   expandMethodBind(className RenderingDevice, "draw_list_bind_index_array", 4040184819)
   methodbind.ptrcall(self, [getPtr drawList, getPtr indexArray])

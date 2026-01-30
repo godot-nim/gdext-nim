@@ -210,6 +210,16 @@ proc setGyroscope*(self: Input; value: Vector3): void =
   expandMethodBind(className Input, "set_gyroscope", 3460891852)
   methodbind.ptrcall(self, [getPtr value])
 
+proc setJoyLight*(self: Input; device: int32; color: Color): void =
+  expandMethodBind(className Input, "set_joy_light", 2878471219)
+  methodbind.ptrcall(self, [getPtr device, getPtr color])
+
+proc hasJoyLight*(self: Input; device: int32): bool =
+  expandMethodBind(className Input, "has_joy_light", 1116898809)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr device], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getLastMouseVelocity*(self: Input): Vector2 =
   expandMethodBind(className Input, "get_last_mouse_velocity", 1497962370)
   var ret: encoded Vector2

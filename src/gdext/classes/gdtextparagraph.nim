@@ -10,6 +10,12 @@ proc clear*(self: TextParagraph): void =
   expandMethodBind(className TextParagraph, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc duplicate*(self: TextParagraph): gdref TextParagraph =
+  expandMethodBind(className TextParagraph, "duplicate", 3607706709)
+  var ret: encoded gdref TextParagraph
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref TextParagraph)
+
 proc setDirection*(self: TextParagraph; direction: TextServer_Direction): void =
   expandMethodBind(className TextParagraph, "set_direction", 1418190634)
   methodbind.ptrcall(self, [getPtr direction])
@@ -97,6 +103,12 @@ proc resizeObject*(self: TextParagraph; key: Variant; size: Vector2; inlineAlign
   expandMethodBind(className TextParagraph, "resize_object", 2095776372)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr key, getPtr size, getPtr inlineAlign, getPtr baseline], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasObject*(self: TextParagraph; key: Variant): bool =
+  expandMethodBind(className TextParagraph, "has_object", 77467830)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr key], addr ret)
   (addr ret).decode_result(bool)
 
 proc setAlignment*(self: TextParagraph; alignment: HorizontalAlignment): void =

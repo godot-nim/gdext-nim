@@ -254,6 +254,30 @@ proc setInputDevice*(self: AudioServer; name: String): void =
   expandMethodBind(className AudioServer, "set_input_device", 83702148)
   methodbind.ptrcall(self, [getPtr name])
 
+proc setInputDeviceActive*(self: AudioServer; active: bool): Error =
+  expandMethodBind(className AudioServer, "set_input_device_active", 1413768114)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr active], addr ret)
+  (addr ret).decode_result(Error)
+
+proc getInputFramesAvailable*(self: AudioServer): int32 =
+  expandMethodBind(className AudioServer, "get_input_frames_available", 2455072627)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getInputBufferLengthFrames*(self: AudioServer): int32 =
+  expandMethodBind(className AudioServer, "get_input_buffer_length_frames", 2455072627)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+proc getInputFrames*(self: AudioServer; frames: int32): PackedVector2Array =
+  expandMethodBind(className AudioServer, "get_input_frames", 2649534757)
+  var ret: encoded PackedVector2Array
+  methodbind.ptrcall(self, [getPtr frames], addr ret)
+  (addr ret).decode_result(PackedVector2Array)
+
 proc setBusLayout*(self: AudioServer; busLayout: gdref AudioBusLayout): void =
   expandMethodBind(className AudioServer, "set_bus_layout", 3319058824)
   methodbind.ptrcall(self, [getPtr busLayout])

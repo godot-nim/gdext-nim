@@ -72,6 +72,38 @@ proc setBuiltinActionOverride*(self: EditorSettings; name: String; actionsList: 
   nilCheck actionsList
   methodbind.ptrcall(self, [getPtr name, getPtr actionsList])
 
+proc addShortcut*(self: EditorSettings; path: String; shortcut: gdref Shortcut): void =
+  expandMethodBind(className EditorSettings, "add_shortcut", 4124020929)
+  methodbind.ptrcall(self, [getPtr path, getPtr shortcut])
+
+proc removeShortcut*(self: EditorSettings; path: String): void =
+  expandMethodBind(className EditorSettings, "remove_shortcut", 83702148)
+  methodbind.ptrcall(self, [getPtr path])
+
+proc isShortcut*(self: EditorSettings; path: String; event: gdref InputEvent): bool =
+  expandMethodBind(className EditorSettings, "is_shortcut", 699917945)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr path, getPtr event], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasShortcut*(self: EditorSettings; path: String): bool =
+  expandMethodBind(className EditorSettings, "has_shortcut", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(bool)
+
+proc getShortcut*(self: EditorSettings; path: String): gdref Shortcut =
+  expandMethodBind(className EditorSettings, "get_shortcut", 1149070301)
+  var ret: encoded gdref Shortcut
+  methodbind.ptrcall(self, [getPtr path], addr ret)
+  (addr ret).decode_result(gdref Shortcut)
+
+proc getShortcutList*(self: EditorSettings): PackedStringArray =
+  expandMethodBind(className EditorSettings, "get_shortcut_list", 2981934095)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
 proc checkChangedSettingsInGroup*(self: EditorSettings; settingPrefix: String): bool =
   expandMethodBind(className EditorSettings, "check_changed_settings_in_group", 3927539163)
   var ret: encoded bool

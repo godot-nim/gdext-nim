@@ -2,9 +2,9 @@
 
 import gdext/coronation/header/classes
 
-import gdstreampeer; export gdstreampeer
+import gdstreampeersocket; export gdstreampeersocket
 
-expandOnClassImported(StreamPeerTCP, StreamPeer)
+expandOnClassImported(StreamPeerTCP, StreamPeerSocket)
 
 proc `bind`*(self: StreamPeerTCP; port: int32; host: String = newGdString("*")): Error =
   expandMethodBind(className StreamPeerTCP, "bind", 3167955072)
@@ -17,18 +17,6 @@ proc connectToHost*(self: StreamPeerTCP; host: String; port: int32): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr host, getPtr port], addr ret)
   (addr ret).decode_result(Error)
-
-proc poll*(self: StreamPeerTCP): Error =
-  expandMethodBind(className StreamPeerTCP, "poll", 166280745)
-  var ret: encoded Error
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Error)
-
-proc getStatus*(self: StreamPeerTCP): StreamPeerTCP_Status =
-  expandMethodBind(className StreamPeerTCP, "get_status", 859471121)
-  var ret: encoded StreamPeerTCP_Status
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(StreamPeerTCP_Status)
 
 proc getConnectedHost*(self: StreamPeerTCP): String =
   expandMethodBind(className StreamPeerTCP, "get_connected_host", 201670096)
@@ -47,10 +35,6 @@ proc getLocalPort*(self: StreamPeerTCP): int32 =
   var ret: encoded int32
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
-
-proc disconnectFromHost*(self: StreamPeerTCP): void =
-  expandMethodBind(className StreamPeerTCP, "disconnect_from_host", 3218959716)
-  methodbind.ptrcall(self, [])
 
 proc setNoDelay*(self: StreamPeerTCP; enabled: bool): void =
   expandMethodBind(className StreamPeerTCP, "set_no_delay", 2586408642)

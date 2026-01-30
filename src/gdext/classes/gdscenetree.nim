@@ -220,6 +220,12 @@ proc changeSceneToPacked*(self: SceneTree; packedScene: gdref PackedScene): Erro
   methodbind.ptrcall(self, [getPtr packedScene], addr ret)
   (addr ret).decode_result(Error)
 
+proc changeSceneToNode*(self: SceneTree; node: Node): Error =
+  expandMethodBind(className SceneTree, "change_scene_to_node", 2584678054)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr node], addr ret)
+  (addr ret).decode_result(Error)
+
 proc reloadCurrentScene*(self: SceneTree): Error =
   expandMethodBind(className SceneTree, "reload_current_scene", 166280745)
   var ret: encoded Error

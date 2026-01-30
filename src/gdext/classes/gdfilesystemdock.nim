@@ -2,9 +2,9 @@
 
 import gdext/coronation/header/classes
 
-import gdvboxcontainer; export gdvboxcontainer
+import gdeditordock; export gdeditordock
 
-expandOnClassImported(FileSystemDock, VBoxContainer)
+expandOnClassImported(FileSystemDock, EditorDock)
 
 proc navigateToPath*(self: FileSystemDock; path: String): void =
   expandMethodBind(className FileSystemDock, "navigate_to_path", 83702148)

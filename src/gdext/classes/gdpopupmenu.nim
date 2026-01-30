@@ -434,6 +434,26 @@ proc getSystemMenu*(self: PopupMenu): NativeMenu_SystemMenus =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(NativeMenu_SystemMenus)
 
+proc setShrinkHeight*(self: PopupMenu; shrink: bool): void =
+  expandMethodBind(className PopupMenu, "set_shrink_height", 2586408642)
+  methodbind.ptrcall(self, [getPtr shrink])
+
+proc getShrinkHeight*(self: PopupMenu): bool =
+  expandMethodBind(className PopupMenu, "get_shrink_height", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setShrinkWidth*(self: PopupMenu; shrink: bool): void =
+  expandMethodBind(className PopupMenu, "set_shrink_width", 2586408642)
+  methodbind.ptrcall(self, [getPtr shrink])
+
+proc getShrinkWidth*(self: PopupMenu): bool =
+  expandMethodBind(className PopupMenu, "get_shrink_width", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template hideOnItemSelection*(self: PopupMenu): untyped = self.isHideOnItemSelection()
 template `hideOnItemSelection=`*(self: PopupMenu; value) = self.setHideOnItemSelection(value)
 
@@ -454,6 +474,12 @@ template `systemMenuId=`*(self: PopupMenu; value) = self.setSystemMenu(value)
 
 template preferNativeMenu*(self: PopupMenu): untyped = self.isPreferNativeMenu()
 template `preferNativeMenu=`*(self: PopupMenu; value) = self.setPreferNativeMenu(value)
+
+template shrinkHeight*(self: PopupMenu): untyped = self.getShrinkHeight()
+template `shrinkHeight=`*(self: PopupMenu; value) = self.setShrinkHeight(value)
+
+template shrinkWidth*(self: PopupMenu): untyped = self.getShrinkWidth()
+template `shrinkWidth=`*(self: PopupMenu; value) = self.setShrinkWidth(value)
 
 template itemCount*(self: PopupMenu): untyped = self.getItemCount()
 template `itemCount=`*(self: PopupMenu; value) = self.setItemCount(value)

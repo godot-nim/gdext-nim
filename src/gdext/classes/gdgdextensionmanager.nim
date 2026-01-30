@@ -12,6 +12,12 @@ proc loadExtension*(self: GDExtensionManager; path: String): GDExtensionManager_
   methodbind.ptrcall(self, [getPtr path], addr ret)
   (addr ret).decode_result(GDExtensionManager_LoadStatus)
 
+proc loadExtensionFromFunction*(self: GDExtensionManager; path: String; initFunc: ptr InitializationFunction): GDExtensionManager_LoadStatus =
+  expandMethodBind(className GDExtensionManager, "load_extension_from_function", 1565094761)
+  var ret: encoded GDExtensionManager_LoadStatus
+  methodbind.ptrcall(self, [getPtr path, getPtr initFunc], addr ret)
+  (addr ret).decode_result(GDExtensionManager_LoadStatus)
+
 proc reloadExtension*(self: GDExtensionManager; path: String): GDExtensionManager_LoadStatus =
   expandMethodBind(className GDExtensionManager, "reload_extension", 4024158731)
   var ret: encoded GDExtensionManager_LoadStatus

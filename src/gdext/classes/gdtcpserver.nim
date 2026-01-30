@@ -2,27 +2,15 @@
 
 import gdext/coronation/header/classes
 
-import gdrefcounted; export gdrefcounted
+import gdsocketserver; export gdsocketserver
 
-expandOnClassImported(TCPServer, RefCounted)
+expandOnClassImported(TCPServer, SocketServer)
 
 proc listen*(self: TCPServer; port: uint16; bindAddress: String = newGdString("*")): Error =
   expandMethodBind(className TCPServer, "listen", 3167955072)
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr port, getPtr bindAddress], addr ret)
   (addr ret).decode_result(Error)
-
-proc isConnectionAvailable*(self: TCPServer): bool =
-  expandMethodBind(className TCPServer, "is_connection_available", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
-
-proc isListening*(self: TCPServer): bool =
-  expandMethodBind(className TCPServer, "is_listening", 36873697)
-  var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(bool)
 
 proc getLocalPort*(self: TCPServer): int32 =
   expandMethodBind(className TCPServer, "get_local_port", 3905245786)
@@ -35,7 +23,3 @@ proc takeConnection*(self: TCPServer): gdref StreamPeerTCP =
   var ret: encoded gdref StreamPeerTCP
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref StreamPeerTCP)
-
-proc stop*(self: TCPServer): void =
-  expandMethodBind(className TCPServer, "stop", 3218959716)
-  methodbind.ptrcall(self, [])

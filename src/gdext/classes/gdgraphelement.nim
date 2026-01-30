@@ -46,6 +46,16 @@ proc isSelected*(self: GraphElement): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setScalingMenus*(self: GraphElement; scalingMenus: bool): void =
+  expandMethodBind(className GraphElement, "set_scaling_menus", 2586408642)
+  methodbind.ptrcall(self, [getPtr scalingMenus])
+
+proc isScalingMenus*(self: GraphElement): bool =
+  expandMethodBind(className GraphElement, "is_scaling_menus", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setPositionOffset*(self: GraphElement; offset: Vector2): void =
   expandMethodBind(className GraphElement, "set_position_offset", 743155724)
   methodbind.ptrcall(self, [getPtr offset])
@@ -70,3 +80,6 @@ template `selectable=`*(self: GraphElement; value) = self.setSelectable(value)
 
 template selected*(self: GraphElement): untyped = self.isSelected()
 template `selected=`*(self: GraphElement; value) = self.setSelected(value)
+
+template scalingMenus*(self: GraphElement): untyped = self.isScalingMenus()
+template `scalingMenus=`*(self: GraphElement; value) = self.setScalingMenus(value)

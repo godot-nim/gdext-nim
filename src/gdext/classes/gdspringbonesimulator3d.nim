@@ -56,15 +56,15 @@ proc isEndBoneExtended*(self: SpringBoneSimulator3D; index: int32): bool =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(bool)
 
-proc setEndBoneDirection*(self: SpringBoneSimulator3D; index: int32; boneDirection: SpringBoneSimulator3D_BoneDirection): void =
-  expandMethodBind(className SpringBoneSimulator3D, "set_end_bone_direction", 204796492)
+proc setEndBoneDirection*(self: SpringBoneSimulator3D; index: int32; boneDirection: SkeletonModifier3D_BoneDirection): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_end_bone_direction", 2838484201)
   methodbind.ptrcall(self, [getPtr index, getPtr boneDirection])
 
-proc getEndBoneDirection*(self: SpringBoneSimulator3D; index: int32): SpringBoneSimulator3D_BoneDirection =
-  expandMethodBind(className SpringBoneSimulator3D, "get_end_bone_direction", 2438315700)
-  var ret: encoded SpringBoneSimulator3D_BoneDirection
+proc getEndBoneDirection*(self: SpringBoneSimulator3D; index: int32): SkeletonModifier3D_BoneDirection =
+  expandMethodBind(className SpringBoneSimulator3D, "get_end_bone_direction", 1843036459)
+  var ret: encoded SkeletonModifier3D_BoneDirection
   methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(SpringBoneSimulator3D_BoneDirection)
+  (addr ret).decode_result(SkeletonModifier3D_BoneDirection)
 
 proc setEndBoneLength*(self: SpringBoneSimulator3D; index: int32; length: Float): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_end_bone_length", 1602489585)
@@ -126,15 +126,15 @@ proc getRadius*(self: SpringBoneSimulator3D; index: int32): Float =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(Float)
 
-proc setRotationAxis*(self: SpringBoneSimulator3D; index: int32; axis: SpringBoneSimulator3D_RotationAxis): void =
-  expandMethodBind(className SpringBoneSimulator3D, "set_rotation_axis", 3534169209)
+proc setRotationAxis*(self: SpringBoneSimulator3D; index: int32; axis: SkeletonModifier3D_RotationAxis): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_rotation_axis", 1539703856)
   methodbind.ptrcall(self, [getPtr index, getPtr axis])
 
-proc getRotationAxis*(self: SpringBoneSimulator3D; index: int32): SpringBoneSimulator3D_RotationAxis =
-  expandMethodBind(className SpringBoneSimulator3D, "get_rotation_axis", 748837671)
-  var ret: encoded SpringBoneSimulator3D_RotationAxis
+proc getRotationAxis*(self: SpringBoneSimulator3D; index: int32): SkeletonModifier3D_RotationAxis =
+  expandMethodBind(className SpringBoneSimulator3D, "get_rotation_axis", 2844851118)
+  var ret: encoded SkeletonModifier3D_RotationAxis
   methodbind.ptrcall(self, [getPtr index], addr ret)
-  (addr ret).decode_result(SpringBoneSimulator3D_RotationAxis)
+  (addr ret).decode_result(SkeletonModifier3D_RotationAxis)
 
 proc setRotationAxisVector*(self: SpringBoneSimulator3D; index: int32; vector: Vector3): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_rotation_axis_vector", 1530502735)
@@ -262,15 +262,15 @@ proc getJointBone*(self: SpringBoneSimulator3D; index: int32; joint: int32): int
   methodbind.ptrcall(self, [getPtr index, getPtr joint], addr ret)
   (addr ret).decode_result(int32)
 
-proc setJointRotationAxis*(self: SpringBoneSimulator3D; index: int32; joint: int32; axis: SpringBoneSimulator3D_RotationAxis): void =
-  expandMethodBind(className SpringBoneSimulator3D, "set_joint_rotation_axis", 4224018032)
+proc setJointRotationAxis*(self: SpringBoneSimulator3D; index: int32; joint: int32; axis: SkeletonModifier3D_RotationAxis): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_joint_rotation_axis", 1391134969)
   methodbind.ptrcall(self, [getPtr index, getPtr joint, getPtr axis])
 
-proc getJointRotationAxis*(self: SpringBoneSimulator3D; index: int32; joint: int32): SpringBoneSimulator3D_RotationAxis =
-  expandMethodBind(className SpringBoneSimulator3D, "get_joint_rotation_axis", 2488679199)
-  var ret: encoded SpringBoneSimulator3D_RotationAxis
+proc getJointRotationAxis*(self: SpringBoneSimulator3D; index: int32; joint: int32): SkeletonModifier3D_RotationAxis =
+  expandMethodBind(className SpringBoneSimulator3D, "get_joint_rotation_axis", 3312594080)
+  var ret: encoded SkeletonModifier3D_RotationAxis
   methodbind.ptrcall(self, [getPtr index, getPtr joint], addr ret)
-  (addr ret).decode_result(SpringBoneSimulator3D_RotationAxis)
+  (addr ret).decode_result(SkeletonModifier3D_RotationAxis)
 
 proc setJointRotationAxisVector*(self: SpringBoneSimulator3D; index: int32; joint: int32; vector: Vector3): void =
   expandMethodBind(className SpringBoneSimulator3D, "set_joint_rotation_axis_vector", 2866752138)
@@ -406,12 +406,25 @@ proc getExternalForce*(self: SpringBoneSimulator3D): Vector3 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector3)
 
+proc setMutableBoneAxes*(self: SpringBoneSimulator3D; enabled: bool): void =
+  expandMethodBind(className SpringBoneSimulator3D, "set_mutable_bone_axes", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc areBoneAxesMutable*(self: SpringBoneSimulator3D): bool =
+  expandMethodBind(className SpringBoneSimulator3D, "are_bone_axes_mutable", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc reset*(self: SpringBoneSimulator3D): void =
   expandMethodBind(className SpringBoneSimulator3D, "reset", 3218959716)
   methodbind.ptrcall(self, [])
 
 template externalForce*(self: SpringBoneSimulator3D): untyped = self.getExternalForce()
 template `externalForce=`*(self: SpringBoneSimulator3D; value) = self.setExternalForce(value)
+
+template mutableBoneAxes*(self: SpringBoneSimulator3D): untyped = self.areBoneAxesMutable()
+template `mutableBoneAxes=`*(self: SpringBoneSimulator3D; value) = self.setMutableBoneAxes(value)
 
 template settingCount*(self: SpringBoneSimulator3D): untyped = self.getSettingCount()
 template `settingCount=`*(self: SpringBoneSimulator3D; value) = self.setSettingCount(value)

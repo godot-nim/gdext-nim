@@ -64,8 +64,21 @@ proc getMessageCount*(self: Translation): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setPluralRulesOverride*(self: Translation; rules: String): void =
+  expandMethodBind(className Translation, "set_plural_rules_override", 83702148)
+  methodbind.ptrcall(self, [getPtr rules])
+
+proc getPluralRulesOverride*(self: Translation): String =
+  expandMethodBind(className Translation, "get_plural_rules_override", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 template messages*(self: Translation): untyped = self.getMessages()
 template `messages=`*(self: Translation; value) = self.setMessages(value)
 
 template locale*(self: Translation): untyped = self.getLocale()
 template `locale=`*(self: Translation; value) = self.setLocale(value)
+
+template pluralRulesOverride*(self: Translation): untyped = self.getPluralRulesOverride()
+template `pluralRulesOverride=`*(self: Translation; value) = self.setPluralRulesOverride(value)

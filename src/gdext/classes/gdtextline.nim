@@ -10,6 +10,12 @@ proc clear*(self: TextLine): void =
   expandMethodBind(className TextLine, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc duplicate*(self: TextLine): gdref TextLine =
+  expandMethodBind(className TextLine, "duplicate", 1912703884)
+  var ret: encoded gdref TextLine
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(gdref TextLine)
+
 proc setDirection*(self: TextLine; direction: TextServer_Direction): void =
   expandMethodBind(className TextLine, "set_direction", 1418190634)
   methodbind.ptrcall(self, [getPtr direction])
@@ -77,6 +83,12 @@ proc resizeObject*(self: TextLine; key: Variant; size: Vector2; inlineAlign: Inl
   expandMethodBind(className TextLine, "resize_object", 2095776372)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr key, getPtr size, getPtr inlineAlign, getPtr baseline], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasObject*(self: TextLine; key: Variant): bool =
+  expandMethodBind(className TextLine, "has_object", 77467830)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr key], addr ret)
   (addr ret).decode_result(bool)
 
 proc setWidth*(self: TextLine; width: Float): void =

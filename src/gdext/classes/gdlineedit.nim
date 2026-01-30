@@ -30,9 +30,9 @@ proc getHorizontalAlignment*(self: LineEdit): HorizontalAlignment =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(HorizontalAlignment)
 
-proc edit*(self: LineEdit): void =
-  expandMethodBind(className LineEdit, "edit", 3218959716)
-  methodbind.ptrcall(self, [])
+proc edit*(self: LineEdit; hideFocus: bool = false): void =
+  expandMethodBind(className LineEdit, "edit", 107499316)
+  methodbind.ptrcall(self, [getPtr hideFocus])
 
 proc unedit*(self: LineEdit): void =
   expandMethodBind(className LineEdit, "unedit", 3218959716)
@@ -453,6 +453,26 @@ proc getRightIcon*(self: LineEdit): gdref Texture2D =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
+proc setIconExpandMode*(self: LineEdit; mode: LineEdit_ExpandMode): void =
+  expandMethodBind(className LineEdit, "set_icon_expand_mode", 3019903192)
+  methodbind.ptrcall(self, [getPtr mode])
+
+proc getIconExpandMode*(self: LineEdit): LineEdit_ExpandMode =
+  expandMethodBind(className LineEdit, "get_icon_expand_mode", 3273584435)
+  var ret: encoded LineEdit_ExpandMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(LineEdit_ExpandMode)
+
+proc setRightIconScale*(self: LineEdit; scale: Float): void =
+  expandMethodBind(className LineEdit, "set_right_icon_scale", 373806689)
+  methodbind.ptrcall(self, [getPtr scale])
+
+proc getRightIconScale*(self: LineEdit): Float =
+  expandMethodBind(className LineEdit, "get_right_icon_scale", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setFlat*(self: LineEdit; enabled: bool): void =
   expandMethodBind(className LineEdit, "set_flat", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -503,15 +523,6 @@ template `emojiMenuEnabled=`*(self: LineEdit; value) = self.setEmojiMenuEnabled(
 template backspaceDeletesCompositeCharacterEnabled*(self: LineEdit): untyped = self.isBackspaceDeletesCompositeCharacterEnabled()
 template `backspaceDeletesCompositeCharacterEnabled=`*(self: LineEdit; value) = self.setBackspaceDeletesCompositeCharacterEnabled(value)
 
-template virtualKeyboardEnabled*(self: LineEdit): untyped = self.isVirtualKeyboardEnabled()
-template `virtualKeyboardEnabled=`*(self: LineEdit; value) = self.setVirtualKeyboardEnabled(value)
-
-template virtualKeyboardShowOnFocus*(self: LineEdit): untyped = self.getVirtualKeyboardShowOnFocus()
-template `virtualKeyboardShowOnFocus=`*(self: LineEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
-
-template virtualKeyboardType*(self: LineEdit): untyped = self.getVirtualKeyboardType()
-template `virtualKeyboardType=`*(self: LineEdit; value) = self.setVirtualKeyboardType(value)
-
 template clearButtonEnabled*(self: LineEdit): untyped = self.isClearButtonEnabled()
 template `clearButtonEnabled=`*(self: LineEdit; value) = self.setClearButtonEnabled(value)
 
@@ -530,9 +541,6 @@ template `deselectOnFocusLossEnabled=`*(self: LineEdit; value) = self.setDeselec
 template dragAndDropSelectionEnabled*(self: LineEdit): untyped = self.isDragAndDropSelectionEnabled()
 template `dragAndDropSelectionEnabled=`*(self: LineEdit; value) = self.setDragAndDropSelectionEnabled(value)
 
-template rightIcon*(self: LineEdit): untyped = self.getRightIcon()
-template `rightIcon=`*(self: LineEdit; value) = self.setRightIcon(value)
-
 template flat*(self: LineEdit): untyped = self.isFlat()
 template `flat=`*(self: LineEdit; value) = self.setFlat(value)
 
@@ -541,6 +549,15 @@ template `drawControlChars=`*(self: LineEdit; value) = self.setDrawControlChars(
 
 template selectAllOnFocus*(self: LineEdit): untyped = self.isSelectAllOnFocus()
 template `selectAllOnFocus=`*(self: LineEdit; value) = self.setSelectAllOnFocus(value)
+
+template virtualKeyboardEnabled*(self: LineEdit): untyped = self.isVirtualKeyboardEnabled()
+template `virtualKeyboardEnabled=`*(self: LineEdit; value) = self.setVirtualKeyboardEnabled(value)
+
+template virtualKeyboardShowOnFocus*(self: LineEdit): untyped = self.getVirtualKeyboardShowOnFocus()
+template `virtualKeyboardShowOnFocus=`*(self: LineEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
+
+template virtualKeyboardType*(self: LineEdit): untyped = self.getVirtualKeyboardType()
+template `virtualKeyboardType=`*(self: LineEdit; value) = self.setVirtualKeyboardType(value)
 
 template caretBlink*(self: LineEdit): untyped = self.isCaretBlinkEnabled()
 template `caretBlink=`*(self: LineEdit; value) = self.setCaretBlinkEnabled(value)
@@ -574,3 +591,12 @@ template `structuredTextBidiOverride=`*(self: LineEdit; value) = self.setStructu
 
 template structuredTextBidiOverrideOptions*(self: LineEdit): untyped = self.getStructuredTextBidiOverrideOptions()
 template `structuredTextBidiOverrideOptions=`*(self: LineEdit; value) = self.setStructuredTextBidiOverrideOptions(value)
+
+template rightIcon*(self: LineEdit): untyped = self.getRightIcon()
+template `rightIcon=`*(self: LineEdit; value) = self.setRightIcon(value)
+
+template iconExpandMode*(self: LineEdit): untyped = self.getIconExpandMode()
+template `iconExpandMode=`*(self: LineEdit; value) = self.setIconExpandMode(value)
+
+template rightIconScale*(self: LineEdit): untyped = self.getRightIconScale()
+template `rightIconScale=`*(self: LineEdit; value) = self.setRightIconScale(value)

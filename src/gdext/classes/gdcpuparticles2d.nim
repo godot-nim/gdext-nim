@@ -324,6 +324,26 @@ proc getEmissionColors*(self: CPUParticles2D): PackedColorArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedColorArray)
 
+proc setEmissionRingInnerRadius*(self: CPUParticles2D; innerRadius: Float): void =
+  expandMethodBind(className CPUParticles2D, "set_emission_ring_inner_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr innerRadius])
+
+proc getEmissionRingInnerRadius*(self: CPUParticles2D): Float =
+  expandMethodBind(className CPUParticles2D, "get_emission_ring_inner_radius", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setEmissionRingRadius*(self: CPUParticles2D; radius: Float): void =
+  expandMethodBind(className CPUParticles2D, "set_emission_ring_radius", 373806689)
+  methodbind.ptrcall(self, [getPtr radius])
+
+proc getEmissionRingRadius*(self: CPUParticles2D): Float =
+  expandMethodBind(className CPUParticles2D, "get_emission_ring_radius", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getGravity*(self: CPUParticles2D): Vector2 =
   expandMethodBind(className CPUParticles2D, "get_gravity", 3341600327)
   var ret: encoded Vector2
@@ -433,6 +453,12 @@ template `emissionNormals=`*(self: CPUParticles2D; value) = self.setEmissionNorm
 
 template emissionColors*(self: CPUParticles2D): untyped = self.getEmissionColors()
 template `emissionColors=`*(self: CPUParticles2D; value) = self.setEmissionColors(value)
+
+template emissionRingInnerRadius*(self: CPUParticles2D): untyped = self.getEmissionRingInnerRadius()
+template `emissionRingInnerRadius=`*(self: CPUParticles2D; value) = self.setEmissionRingInnerRadius(value)
+
+template emissionRingRadius*(self: CPUParticles2D): untyped = self.getEmissionRingRadius()
+template `emissionRingRadius=`*(self: CPUParticles2D; value) = self.setEmissionRingRadius(value)
 
 template particleFlagAlignY*(self: CPUParticles2D): untyped = self.getParticleFlag(CPUParticles2D_ParticleFlags(0))
 template `particleFlagAlignY=`*(self: CPUParticles2D; value) = self.setParticleFlag(CPUParticles2D_ParticleFlags(0), value)

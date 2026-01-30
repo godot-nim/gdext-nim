@@ -76,6 +76,26 @@ proc getDeadzone*(self: ScrollContainer): int32 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(int32)
 
+proc setScrollHintMode*(self: ScrollContainer; scrollHintMode: ScrollContainer_ScrollHintMode): void =
+  expandMethodBind(className ScrollContainer, "set_scroll_hint_mode", 578158943)
+  methodbind.ptrcall(self, [getPtr scrollHintMode])
+
+proc getScrollHintMode*(self: ScrollContainer): ScrollContainer_ScrollHintMode =
+  expandMethodBind(className ScrollContainer, "get_scroll_hint_mode", 246835423)
+  var ret: encoded ScrollContainer_ScrollHintMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(ScrollContainer_ScrollHintMode)
+
+proc setTileScrollHint*(self: ScrollContainer; tileScrollHint: bool): void =
+  expandMethodBind(className ScrollContainer, "set_tile_scroll_hint", 2586408642)
+  methodbind.ptrcall(self, [getPtr tileScrollHint])
+
+proc isScrollHintTiled*(self: ScrollContainer): bool =
+  expandMethodBind(className ScrollContainer, "is_scroll_hint_tiled", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setFollowFocus*(self: ScrollContainer; enabled: bool): void =
   expandMethodBind(className ScrollContainer, "set_follow_focus", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -138,3 +158,9 @@ template `verticalScrollMode=`*(self: ScrollContainer; value) = self.setVertical
 
 template scrollDeadzone*(self: ScrollContainer): untyped = self.getDeadzone()
 template `scrollDeadzone=`*(self: ScrollContainer; value) = self.setDeadzone(value)
+
+template scrollHintMode*(self: ScrollContainer): untyped = self.getScrollHintMode()
+template `scrollHintMode=`*(self: ScrollContainer; value) = self.setScrollHintMode(value)
+
+template tileScrollHint*(self: ScrollContainer): untyped = self.isScrollHintTiled()
+template `tileScrollHint=`*(self: ScrollContainer; value) = self.setTileScrollHint(value)

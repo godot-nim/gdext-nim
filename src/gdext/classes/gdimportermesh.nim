@@ -118,6 +118,12 @@ proc getMesh*(self: ImporterMesh; baseMesh: gdref ArrayMesh = default gdref Arra
   methodbind.ptrcall(self, [getPtr baseMesh], addr ret)
   (addr ret).decode_result(gdref ArrayMesh)
 
+proc fromMesh*(_: typedesc[ImporterMesh]; mesh: gdref Mesh): gdref ImporterMesh =
+  expandMethodBind(className ImporterMesh, "from_mesh", 283226343)
+  var ret: encoded gdref ImporterMesh
+  methodbind.ptrcall([getPtr mesh], addr ret)
+  (addr ret).decode_result(gdref ImporterMesh)
+
 proc clear*(self: ImporterMesh): void =
   expandMethodBind(className ImporterMesh, "clear", 3218959716)
   methodbind.ptrcall(self, [])

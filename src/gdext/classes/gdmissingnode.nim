@@ -36,6 +36,16 @@ proc isRecordingProperties*(self: MissingNode): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setRecordingSignals*(self: MissingNode; enable: bool): void =
+  expandMethodBind(className MissingNode, "set_recording_signals", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isRecordingSignals*(self: MissingNode): bool =
+  expandMethodBind(className MissingNode, "is_recording_signals", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 template originalClass*(self: MissingNode): untyped = self.getOriginalClass()
 template `originalClass=`*(self: MissingNode; value) = self.setOriginalClass(value)
 
@@ -44,3 +54,6 @@ template `originalScene=`*(self: MissingNode; value) = self.setOriginalScene(val
 
 template recordingProperties*(self: MissingNode): untyped = self.isRecordingProperties()
 template `recordingProperties=`*(self: MissingNode; value) = self.setRecordingProperties(value)
+
+template recordingSignals*(self: MissingNode): untyped = self.isRecordingSignals()
+template `recordingSignals=`*(self: MissingNode; value) = self.setRecordingSignals(value)

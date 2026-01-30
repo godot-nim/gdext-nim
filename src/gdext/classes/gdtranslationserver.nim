@@ -76,6 +76,12 @@ proc getLocaleName*(self: TranslationServer; locale: String): String =
   methodbind.ptrcall(self, [getPtr locale], addr ret)
   (addr ret).decode_result(String)
 
+proc getPluralRules*(self: TranslationServer; locale: String): String =
+  expandMethodBind(className TranslationServer, "get_plural_rules", 3135753539)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr locale], addr ret)
+  (addr ret).decode_result(String)
+
 proc translate*(self: TranslationServer; message: StringName; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationServer, "translate", 1829228469)
   var ret: encoded StringName
@@ -102,6 +108,30 @@ proc getTranslationObject*(self: TranslationServer; locale: String): gdref Trans
   methodbind.ptrcall(self, [getPtr locale], addr ret)
   (addr ret).decode_result(gdref Translation)
 
+proc getTranslations*(self: TranslationServer): Array[gdref Translation] =
+  expandMethodBind(className TranslationServer, "get_translations", 3995934104)
+  var ret: encoded Array[gdref Translation]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Array[gdref Translation])
+
+proc findTranslations*(self: TranslationServer; locale: String; exact: bool): Array[gdref Translation] =
+  expandMethodBind(className TranslationServer, "find_translations", 2109650934)
+  var ret: encoded Array[gdref Translation]
+  methodbind.ptrcall(self, [getPtr locale, getPtr exact], addr ret)
+  (addr ret).decode_result(Array[gdref Translation])
+
+proc hasTranslationForLocale*(self: TranslationServer; locale: String; exact: bool): bool =
+  expandMethodBind(className TranslationServer, "has_translation_for_locale", 2034713381)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr locale, getPtr exact], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasTranslation*(self: TranslationServer; translation: gdref Translation): bool =
+  expandMethodBind(className TranslationServer, "has_translation", 2696976312)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr translation], addr ret)
+  (addr ret).decode_result(bool)
+
 proc hasDomain*(self: TranslationServer; domain: StringName): bool =
   expandMethodBind(className TranslationServer, "has_domain", 2619796661)
   var ret: encoded bool
@@ -127,6 +157,24 @@ proc getLoadedLocales*(self: TranslationServer): PackedStringArray =
   var ret: encoded PackedStringArray
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedStringArray)
+
+proc formatNumber*(self: TranslationServer; number: String; locale: String): String =
+  expandMethodBind(className TranslationServer, "format_number", 315676799)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr number, getPtr locale], addr ret)
+  (addr ret).decode_result(String)
+
+proc getPercentSign*(self: TranslationServer; locale: String): String =
+  expandMethodBind(className TranslationServer, "get_percent_sign", 3135753539)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr locale], addr ret)
+  (addr ret).decode_result(String)
+
+proc parseNumber*(self: TranslationServer; number: String; locale: String): String =
+  expandMethodBind(className TranslationServer, "parse_number", 315676799)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr number, getPtr locale], addr ret)
+  (addr ret).decode_result(String)
 
 proc isPseudolocalizationEnabled*(self: TranslationServer): bool =
   expandMethodBind(className TranslationServer, "is_pseudolocalization_enabled", 36873697)

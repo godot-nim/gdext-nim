@@ -46,6 +46,16 @@ proc isFlat*(self: EditorSpinSlider): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setControlState*(self: EditorSpinSlider; state: EditorSpinSlider_ControlState): void =
+  expandMethodBind(className EditorSpinSlider, "set_control_state", 1324557109)
+  methodbind.ptrcall(self, [getPtr state])
+
+proc getControlState*(self: EditorSpinSlider): EditorSpinSlider_ControlState =
+  expandMethodBind(className EditorSpinSlider, "get_control_state", 3406006200)
+  var ret: encoded EditorSpinSlider_ControlState
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(EditorSpinSlider_ControlState)
+
 proc setHideSlider*(self: EditorSpinSlider; hideSlider: bool): void =
   expandMethodBind(className EditorSpinSlider, "set_hide_slider", 2586408642)
   methodbind.ptrcall(self, [getPtr hideSlider])
@@ -77,6 +87,9 @@ template `readOnly=`*(self: EditorSpinSlider; value) = self.setReadOnly(value)
 
 template flat*(self: EditorSpinSlider): untyped = self.isFlat()
 template `flat=`*(self: EditorSpinSlider; value) = self.setFlat(value)
+
+template controlState*(self: EditorSpinSlider): untyped = self.getControlState()
+template `controlState=`*(self: EditorSpinSlider; value) = self.setControlState(value)
 
 template hideSlider*(self: EditorSpinSlider): untyped = self.isHidingSlider()
 template `hideSlider=`*(self: EditorSpinSlider; value) = self.setHideSlider(value)

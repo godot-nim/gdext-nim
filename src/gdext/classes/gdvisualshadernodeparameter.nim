@@ -26,8 +26,21 @@ proc getQualifier*(self: VisualShaderNodeParameter): VisualShaderNodeParameter_Q
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(VisualShaderNodeParameter_Qualifier)
 
+proc setInstanceIndex*(self: VisualShaderNodeParameter; instanceIndex: int32): void =
+  expandMethodBind(className VisualShaderNodeParameter, "set_instance_index", 1286410249)
+  methodbind.ptrcall(self, [getPtr instanceIndex])
+
+proc getInstanceIndex*(self: VisualShaderNodeParameter): int32 =
+  expandMethodBind(className VisualShaderNodeParameter, "get_instance_index", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 template parameterName*(self: VisualShaderNodeParameter): untyped = self.getParameterName()
 template `parameterName=`*(self: VisualShaderNodeParameter; value) = self.setParameterName(value)
 
 template qualifier*(self: VisualShaderNodeParameter): untyped = self.getQualifier()
 template `qualifier=`*(self: VisualShaderNodeParameter; value) = self.setQualifier(value)
+
+template instanceIndex*(self: VisualShaderNodeParameter): untyped = self.getInstanceIndex()
+template `instanceIndex=`*(self: VisualShaderNodeParameter; value) = self.setInstanceIndex(value)
