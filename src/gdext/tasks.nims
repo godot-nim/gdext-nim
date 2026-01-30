@@ -1,4 +1,4 @@
-import gdext/versions
+include "versions.nim"
 import std/strformat
 
 type Source = object
