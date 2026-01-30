@@ -81,7 +81,7 @@ proc convert*(operator: JsonOperator; caller: TypeSym): BuiltinClassOperator =
     result.key.args.add RenderableArgument(
       variableSym: VariableSym"right",
       typeSym: operator.right_type.get.convert(TypeSym))
-  result.key.result = convertToResult some operator.return_type
+  result.key.result = operator.return_type.toJsonReturnValue.convert()
 
   result.opkey = variantOpKey operator.name
 

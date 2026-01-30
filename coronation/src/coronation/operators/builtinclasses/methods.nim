@@ -21,10 +21,9 @@ type
     isVarargs: bool
 
 proc extract_result(self: JsonBuiltinClassMethod): RenderableResult =
-  if self.name == "hash":
-    convertToResult some "Hash"
-  else:
-    convertToResult self.return_type
+  ( if self.name == "hash": option("Hash")
+    else: self.return_type)
+  .toJsonReturnValue.convert()
 
 proc extract_args(self: JsonBuiltinClassMethod): seq[RenderableArgument] =
   result = self.arguments.get(@[])
