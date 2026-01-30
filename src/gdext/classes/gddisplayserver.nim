@@ -309,7 +309,7 @@ proc ttsGetVoicesForLanguage*(self: DisplayServer; language: String): PackedStri
   methodbind.ptrcall(self, [getPtr language], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc ttsSpeak*(self: DisplayServer; text: String; voice: String; volume: int32 = 50; pitch: Float = 1.0; rate: Float = 1.0; utteranceId: int32 = 0; interrupt: bool = false): void =
+proc ttsSpeak*(self: DisplayServer; text: String; voice: String; volume: int32 = 50; pitch: Float = 1.0; rate: Float = 1.0; utteranceId: int64 = 0; interrupt: bool = false): void =
   expandMethodBind(className DisplayServer, "tts_speak", 903992738)
   methodbind.ptrcall(self, [getPtr text, getPtr voice, getPtr volume, getPtr pitch, getPtr rate, getPtr utteranceId, getPtr interrupt])
 
@@ -781,6 +781,10 @@ proc windowStartResize*(self: DisplayServer; edge: DisplayServer_WindowResizeEdg
   expandMethodBind(className DisplayServer, "window_start_resize", 4009722312)
   methodbind.ptrcall(self, [getPtr edge, getPtr windowId])
 
+proc windowSetColor*(self: DisplayServer; color: Color): void =
+  expandMethodBind(className DisplayServer, "window_set_color", 2920490490)
+  methodbind.ptrcall(self, [getPtr color])
+
 proc accessibilityShouldIncreaseContrast*(self: DisplayServer): int32 =
   expandMethodBind(className DisplayServer, "accessibility_should_increase_contrast", 3905245786)
   var ret: encoded int32
@@ -817,10 +821,10 @@ proc accessibilityCreateSubElement*(self: DisplayServer; parentRid: RID; role: D
   methodbind.ptrcall(self, [getPtr parentRid, getPtr role, getPtr insertPos], addr ret)
   (addr ret).decode_result(RID)
 
-proc accessibilityCreateSubTextEditElements*(self: DisplayServer; parentRid: RID; shapedText: RID; minHeight: Float; insertPos: int32 = -1): RID =
-  expandMethodBind(className DisplayServer, "accessibility_create_sub_text_edit_elements", 3328635351)
+proc accessibilityCreateSubTextEditElements*(self: DisplayServer; parentRid: RID; shapedText: RID; minHeight: Float; insertPos: int32 = -1; isLastLine: bool = false): RID =
+  expandMethodBind(className DisplayServer, "accessibility_create_sub_text_edit_elements", 2702009895)
   var ret: encoded RID
-  methodbind.ptrcall(self, [getPtr parentRid, getPtr shapedText, getPtr minHeight, getPtr insertPos], addr ret)
+  methodbind.ptrcall(self, [getPtr parentRid, getPtr shapedText, getPtr minHeight, getPtr insertPos, getPtr isLastLine], addr ret)
   (addr ret).decode_result(RID)
 
 proc accessibilityHasElement*(self: DisplayServer; id: RID): bool =

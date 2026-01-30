@@ -3,21 +3,26 @@ type
   char32_t* {.importc: "char32_t".} = uint32_t
   char16_t* {.importc: "char16_t".} = uint16_t
   VariantType* {.importc: "GDExtensionVariantType".} = enum
-    VARIANT_TYPE_NIL, VARIANT_TYPE_BOOL, VARIANT_TYPE_INT, VARIANT_TYPE_FLOAT,
-    VARIANT_TYPE_STRING, VARIANT_TYPE_VECTOR2, VARIANT_TYPE_VECTOR2I,
-    VARIANT_TYPE_RECT2, VARIANT_TYPE_RECT2I, VARIANT_TYPE_VECTOR3,
-    VARIANT_TYPE_VECTOR3I, VARIANT_TYPE_TRANSFORM2D, VARIANT_TYPE_VECTOR4,
-    VARIANT_TYPE_VECTOR4I, VARIANT_TYPE_PLANE, VARIANT_TYPE_QUATERNION,
-    VARIANT_TYPE_AABB, VARIANT_TYPE_BASIS, VARIANT_TYPE_TRANSFORM3D,
-    VARIANT_TYPE_PROJECTION, VARIANT_TYPE_COLOR, VARIANT_TYPE_STRING_NAME,
-    VARIANT_TYPE_NODE_PATH, VARIANT_TYPE_RID, VARIANT_TYPE_OBJECT,
-    VARIANT_TYPE_CALLABLE, VARIANT_TYPE_SIGNAL, VARIANT_TYPE_DICTIONARY,
-    VARIANT_TYPE_ARRAY, VARIANT_TYPE_PACKED_BYTE_ARRAY,
-    VARIANT_TYPE_PACKED_INT32_ARRAY, VARIANT_TYPE_PACKED_INT64_ARRAY,
-    VARIANT_TYPE_PACKED_FLOAT32_ARRAY, VARIANT_TYPE_PACKED_FLOAT64_ARRAY,
-    VARIANT_TYPE_PACKED_STRING_ARRAY, VARIANT_TYPE_PACKED_VECTOR2_ARRAY,
-    VARIANT_TYPE_PACKED_VECTOR3_ARRAY, VARIANT_TYPE_PACKED_COLOR_ARRAY,
-    VARIANT_TYPE_PACKED_VECTOR4_ARRAY
+    VARIANT_TYPE_NIL = 0, VARIANT_TYPE_BOOL = 1, VARIANT_TYPE_INT = 2,
+    VARIANT_TYPE_FLOAT = 3, VARIANT_TYPE_STRING = 4, VARIANT_TYPE_VECTOR2 = 5,
+    VARIANT_TYPE_VECTOR2I = 6, VARIANT_TYPE_RECT2 = 7, VARIANT_TYPE_RECT2I = 8,
+    VARIANT_TYPE_VECTOR3 = 9, VARIANT_TYPE_VECTOR3I = 10,
+    VARIANT_TYPE_TRANSFORM2D = 11, VARIANT_TYPE_VECTOR4 = 12,
+    VARIANT_TYPE_VECTOR4I = 13, VARIANT_TYPE_PLANE = 14,
+    VARIANT_TYPE_QUATERNION = 15, VARIANT_TYPE_AABB = 16,
+    VARIANT_TYPE_BASIS = 17, VARIANT_TYPE_TRANSFORM3D = 18,
+    VARIANT_TYPE_PROJECTION = 19, VARIANT_TYPE_COLOR = 20,
+    VARIANT_TYPE_STRING_NAME = 21, VARIANT_TYPE_NODE_PATH = 22,
+    VARIANT_TYPE_RID = 23, VARIANT_TYPE_OBJECT = 24, VARIANT_TYPE_CALLABLE = 25,
+    VARIANT_TYPE_SIGNAL = 26, VARIANT_TYPE_DICTIONARY = 27,
+    VARIANT_TYPE_ARRAY = 28, VARIANT_TYPE_PACKED_BYTE_ARRAY = 29,
+    VARIANT_TYPE_PACKED_INT32_ARRAY = 30, VARIANT_TYPE_PACKED_INT64_ARRAY = 31,
+    VARIANT_TYPE_PACKED_FLOAT32_ARRAY = 32,
+    VARIANT_TYPE_PACKED_FLOAT64_ARRAY = 33,
+    VARIANT_TYPE_PACKED_STRING_ARRAY = 34,
+    VARIANT_TYPE_PACKED_VECTOR2_ARRAY = 35,
+    VARIANT_TYPE_PACKED_VECTOR3_ARRAY = 36,
+    VARIANT_TYPE_PACKED_COLOR_ARRAY = 37, VARIANT_TYPE_PACKED_VECTOR4_ARRAY = 38
   VariantPtr* {.importc: "GDExtensionVariantPtr".} = pointer
   ConstVariantPtr* {.importc: "GDExtensionConstVariantPtr".} = pointer
   UninitializedVariantPtr* {.importc: "GDExtensionUninitializedVariantPtr".} = pointer
@@ -40,9 +45,9 @@ type
   RefPtr* {.importc: "GDExtensionRefPtr".} = pointer
   ConstRefPtr* {.importc: "GDExtensionConstRefPtr".} = pointer
   CallErrorType* {.importc: "GDExtensionCallErrorType".} = enum
-    CALL_OK, CALL_ERROR_INVALID_METHOD, CALL_ERROR_INVALID_ARGUMENT,
-    CALL_ERROR_TOO_MANY_ARGUMENTS, CALL_ERROR_TOO_FEW_ARGUMENTS,
-    CALL_ERROR_INSTANCE_IS_NULL, CALL_ERROR_METHOD_NOT_CONST
+    CALL_OK = 0, CALL_ERROR_INVALID_METHOD = 1, CALL_ERROR_INVALID_ARGUMENT = 2,
+    CALL_ERROR_TOO_MANY_ARGUMENTS = 3, CALL_ERROR_TOO_FEW_ARGUMENTS = 4,
+    CALL_ERROR_INSTANCE_IS_NULL = 5, CALL_ERROR_METHOD_NOT_CONST = 6
   CallError* {.byref, importc: "GDExtensionCallError".} = object
     error*: CallErrorType
     argument*: int32_t
@@ -57,7 +62,7 @@ type
       p_left: ConstTypePtr; p_right: ConstTypePtr; r_result: TypePtr) {.gdcall.}
   PtrBuiltInMethod* {.importc: "GDExtensionPtrBuiltInMethod".} = proc (
       p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr;
-      p_argument_count: cint) {.gdcall.}
+      p_argument_count: int32_t) {.gdcall.}
   PtrConstructor* {.importc: "GDExtensionPtrConstructor".} = proc (
       p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall.}
   PtrDestructor* {.importc: "GDExtensionPtrDestructor".} = proc (p_base: TypePtr) {.
@@ -77,7 +82,7 @@ type
   PtrKeyedChecker* {.importc: "GDExtensionPtrKeyedChecker".} = proc (
       p_base: ConstVariantPtr; p_key: ConstVariantPtr): uint32_t {.gdcall.}
   PtrUtilityFunction* {.importc: "GDExtensionPtrUtilityFunction".} = proc (
-      r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: cint) {.
+      r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: int32_t) {.
       gdcall.}
   ClassConstructor* {.importc: "GDExtensionClassConstructor".} = proc (): ObjectPtr {.
       gdcall.}
@@ -266,20 +271,22 @@ type
       p_packed_string_array: TypePtr) {.gdcall.}
   ClassMethodFlags* {.importc: "GDExtensionClassMethodFlags".} = enum
     METHOD_FLAG_NORMAL = 0, METHOD_FLAG_EDITOR = 1, METHOD_FLAG_CONST = 2,
-    METHOD_FLAG_VIRTUAL = 3, METHOD_FLAG_VARARG = 4, METHOD_FLAG_STATIC = 5
+    METHOD_FLAG_VIRTUAL = 3, METHOD_FLAG_VARARG = 4, METHOD_FLAG_STATIC = 5,
+    METHOD_FLAG_VIRTUAL_REQUIRED = 7
   ClassMethodArgumentMetadata* {.importc: "GDExtensionClassMethodArgumentMetadata".} = enum
-    METHOD_ARGUMENT_METADATA_NONE, METHOD_ARGUMENT_METADATA_INT_IS_INT8,
-    METHOD_ARGUMENT_METADATA_INT_IS_INT16,
-    METHOD_ARGUMENT_METADATA_INT_IS_INT32,
-    METHOD_ARGUMENT_METADATA_INT_IS_INT64,
-    METHOD_ARGUMENT_METADATA_INT_IS_UINT8,
-    METHOD_ARGUMENT_METADATA_INT_IS_UINT16,
-    METHOD_ARGUMENT_METADATA_INT_IS_UINT32,
-    METHOD_ARGUMENT_METADATA_INT_IS_UINT64,
-    METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT,
-    METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE,
-    METHOD_ARGUMENT_METADATA_INT_IS_CHAR16,
-    METHOD_ARGUMENT_METADATA_INT_IS_CHAR32
+    METHOD_ARGUMENT_METADATA_NONE = 0, METHOD_ARGUMENT_METADATA_INT_IS_INT8 = 1,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT16 = 2,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT32 = 3,
+    METHOD_ARGUMENT_METADATA_INT_IS_INT64 = 4,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT8 = 5,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT16 = 6,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT32 = 7,
+    METHOD_ARGUMENT_METADATA_INT_IS_UINT64 = 8,
+    METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT = 9,
+    METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE = 10,
+    METHOD_ARGUMENT_METADATA_INT_IS_CHAR16 = 11,
+    METHOD_ARGUMENT_METADATA_INT_IS_CHAR32 = 12,
+    METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED = 13
   ClassMethodCall* {.importc: "GDExtensionClassMethodCall".} = proc (
       method_userdata: pointer; p_instance: ClassInstancePtr;
       p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int;
@@ -518,8 +525,8 @@ type
   WorkerThreadPoolTask* {.importc: "GDExtensionWorkerThreadPoolTask".} = proc (
       a1: pointer) {.gdcall.}
   InitializationLevel* {.importc: "GDExtensionInitializationLevel".} = enum
-    INITIALIZATION_CORE, INITIALIZATION_SERVERS, INITIALIZATION_SCENE,
-    INITIALIZATION_EDITOR
+    INITIALIZATION_CORE = 0, INITIALIZATION_SERVERS = 1,
+    INITIALIZATION_SCENE = 2, INITIALIZATION_EDITOR = 3
   InitializeCallback* {.importc: "GDExtensionInitializeCallback".} = proc (
       p_userdata: pointer; p_level: InitializationLevel) {.gdcall.}
   DeinitializeCallback* {.importc: "GDExtensionDeinitializeCallback".} = proc (
@@ -571,6 +578,12 @@ type
       p_ptr: pointer; p_bytes: csize_t): pointer {.gdcall.}
   InterfaceMemFree* {.importc: "GDExtensionInterfaceMemFree".} = proc (
       p_ptr: pointer) {.gdcall.}
+  InterfaceMemAlloc2* {.importc: "GDExtensionInterfaceMemAlloc2".} = proc (
+      p_bytes: csize_t; p_pad_align: Bool): pointer {.gdcall.}
+  InterfaceMemRealloc2* {.importc: "GDExtensionInterfaceMemRealloc2".} = proc (
+      p_ptr: pointer; p_bytes: csize_t; p_pad_align: Bool): pointer {.gdcall.}
+  InterfaceMemFree2* {.importc: "GDExtensionInterfaceMemFree2".} = proc (
+      p_ptr: pointer; p_pad_align: Bool) {.gdcall.}
   InterfacePrintError* {.importc: "GDExtensionInterfacePrintError".} = proc (
       p_description: cstring; p_function: cstring; p_file: cstring;
       p_line: int32_t; p_editor_notify: Bool) {.gdcall.}
@@ -814,7 +827,7 @@ type
   InterfaceWorkerThreadPoolAddNativeGroupTask* {.
       importc: "GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask".} = proc (
       p_instance: ObjectPtr; p_func: WorkerThreadPoolGroupTask;
-      p_userdata: pointer; p_elements: cint; p_tasks: cint;
+      p_userdata: pointer; p_elements: int32_t; p_tasks: int32_t;
       p_high_priority: Bool; p_description: ConstStringPtr): int64_t {.gdcall.}
   InterfaceWorkerThreadPoolAddNativeTask* {.
       importc: "GDExtensionInterfaceWorkerThreadPoolAddNativeTask".} = proc (

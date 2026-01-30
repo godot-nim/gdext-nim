@@ -70,6 +70,10 @@ proc setYcbcrImage*(self: CameraFeed; ycbcrImage: gdref Image): void =
   expandMethodBind(className CameraFeed, "set_ycbcr_image", 532598488)
   methodbind.ptrcall(self, [getPtr ycbcrImage])
 
+proc setYcbcrImages*(self: CameraFeed; yImage: gdref Image; cbcrImage: gdref Image): void =
+  expandMethodBind(className CameraFeed, "set_ycbcr_images", 1986484629)
+  methodbind.ptrcall(self, [getPtr yImage, getPtr cbcrImage])
+
 proc setExternal*(self: CameraFeed; width: int32; height: int32): void =
   expandMethodBind(className CameraFeed, "set_external", 3937882851)
   methodbind.ptrcall(self, [getPtr width, getPtr height])

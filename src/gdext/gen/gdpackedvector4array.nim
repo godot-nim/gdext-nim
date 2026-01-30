@@ -72,9 +72,9 @@ proc toByteArray*(self: PackedVector4Array): PackedByteArray =
   `toByteArray(PackedVector4Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedVector4Array): void =
   `sort(PackedVector4Array)`.call(addr self, [])
-proc bsearch*(self: var PackedVector4Array; value: Vector4; before: bool = true): Int =
+proc bsearch*(self: PackedVector4Array; value: Vector4; before: bool = true): Int =
   `bsearch(PackedVector4Array Vector4 bool)`.call(addr self, [getPtr value, getPtr before], addr result)
-proc duplicate*(self: var PackedVector4Array): PackedVector4Array =
+proc duplicate*(self: PackedVector4Array): PackedVector4Array =
   `duplicate(PackedVector4Array)`.call(addr self, [], addr result)
 proc find*(self: PackedVector4Array; value: Vector4; `from`: Int = 0): Int =
   `find(PackedVector4Array Vector4 Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
@@ -103,8 +103,8 @@ proc load_PackedVector4Array_methods {.execon: staticevents.init_engine.on_load_
   `slice(PackedVector4Array Int Int)` = load(VariantType_PackedVector4Array, "slice", 2942803855)
   `toByteArray(PackedVector4Array)` = load(VariantType_PackedVector4Array, "to_byte_array", 247621236)
   `sort(PackedVector4Array)` = load(VariantType_PackedVector4Array, "sort", 3218959716)
-  `bsearch(PackedVector4Array Vector4 bool)` = load(VariantType_PackedVector4Array, "bsearch", 735671678)
-  `duplicate(PackedVector4Array)` = load(VariantType_PackedVector4Array, "duplicate", 3186305013)
+  `bsearch(PackedVector4Array Vector4 bool)` = load(VariantType_PackedVector4Array, "bsearch", 1822067054)
+  `duplicate(PackedVector4Array)` = load(VariantType_PackedVector4Array, "duplicate", 146203628)
   `find(PackedVector4Array Vector4 Int)` = load(VariantType_PackedVector4Array, "find", 3091171314)
   `rfind(PackedVector4Array Vector4 Int)` = load(VariantType_PackedVector4Array, "rfind", 3091171314)
   `count(PackedVector4Array Vector4)` = load(VariantType_PackedVector4Array, "count", 3956594488)

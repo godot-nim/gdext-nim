@@ -137,6 +137,36 @@ proc getEditorScale*(self: EditorInterface): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc getEditorLanguage*(self: EditorInterface): String =
+  expandMethodBind(className EditorInterface, "get_editor_language", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
+proc isNode3DSnapEnabled*(self: EditorInterface): bool =
+  expandMethodBind(className EditorInterface, "is_node_3d_snap_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc getNode3DTranslateSnap*(self: EditorInterface): Float =
+  expandMethodBind(className EditorInterface, "get_node_3d_translate_snap", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getNode3DRotateSnap*(self: EditorInterface): Float =
+  expandMethodBind(className EditorInterface, "get_node_3d_rotate_snap", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getNode3DScaleSnap*(self: EditorInterface): Float =
+  expandMethodBind(className EditorInterface, "get_node_3d_scale_snap", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc popupDialog*(self: EditorInterface; dialog: Window; rect: Rect2i = rect2i(0, 0, 0, 0)): void =
   expandMethodBind(className EditorInterface, "popup_dialog", 2015770942)
   methodbind.ptrcall(self, [getPtr dialog, getPtr rect])
@@ -244,6 +274,16 @@ proc reloadSceneFromPath*(self: EditorInterface; sceneFilepath: String): void =
   expandMethodBind(className EditorInterface, "reload_scene_from_path", 83702148)
   methodbind.ptrcall(self, [getPtr sceneFilepath])
 
+proc setObjectEdited*(self: EditorInterface; `object`: Object; edited: bool): void =
+  expandMethodBind(className EditorInterface, "set_object_edited", 1462101905)
+  methodbind.ptrcall(self, [getPtr `object`, getPtr edited])
+
+proc isObjectEdited*(self: EditorInterface; `object`: Object): bool =
+  expandMethodBind(className EditorInterface, "is_object_edited", 397768994)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr `object`], addr ret)
+  (addr ret).decode_result(bool)
+
 proc getOpenScenes*(self: EditorInterface): PackedStringArray =
   expandMethodBind(className EditorInterface, "get_open_scenes", 1139954409)
   var ret: encoded PackedStringArray
@@ -261,6 +301,10 @@ proc getEditedSceneRoot*(self: EditorInterface): Node =
   var ret: encoded Node
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Node)
+
+proc addRootNode*(self: EditorInterface; node: Node): void =
+  expandMethodBind(className EditorInterface, "add_root_node", 1078189570)
+  methodbind.ptrcall(self, [getPtr node])
 
 proc saveScene*(self: EditorInterface): Error =
   expandMethodBind(className EditorInterface, "save_scene", 166280745)

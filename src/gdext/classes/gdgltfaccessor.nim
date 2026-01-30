@@ -6,6 +6,19 @@ import gdresource; export gdresource
 
 expandOnClassImported(GLTFAccessor, Resource)
 
+proc fromDictionary*(_: typedesc[GLTFAccessor]; dictionary: Dictionary[Variant, Variant]): gdref GLTFAccessor =
+  expandMethodBind(className GLTFAccessor, "from_dictionary", 3495091019)
+  nilCheck dictionary
+  var ret: encoded gdref GLTFAccessor
+  methodbind.ptrcall([getPtr dictionary], addr ret)
+  (addr ret).decode_result(gdref GLTFAccessor)
+
+proc toDictionary*(self: GLTFAccessor): Dictionary[Variant, Variant] =
+  expandMethodBind(className GLTFAccessor, "to_dictionary", 3102165223)
+  var ret: encoded Dictionary[Variant, Variant]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
+
 proc getBufferView*(self: GLTFAccessor): int32 =
   expandMethodBind(className GLTFAccessor, "get_buffer_view", 3905245786)
   var ret: encoded int32

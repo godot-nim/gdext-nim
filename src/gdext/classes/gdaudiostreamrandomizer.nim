@@ -58,6 +58,16 @@ proc getRandomPitch*(self: AudioStreamRandomizer): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setRandomPitchSemitones*(self: AudioStreamRandomizer; semitones: Float): void =
+  expandMethodBind(className AudioStreamRandomizer, "set_random_pitch_semitones", 373806689)
+  methodbind.ptrcall(self, [getPtr semitones])
+
+proc getRandomPitchSemitones*(self: AudioStreamRandomizer): Float =
+  expandMethodBind(className AudioStreamRandomizer, "get_random_pitch_semitones", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setRandomVolumeOffsetDb*(self: AudioStreamRandomizer; dbOffset: Float): void =
   expandMethodBind(className AudioStreamRandomizer, "set_random_volume_offset_db", 373806689)
   methodbind.ptrcall(self, [getPtr dbOffset])
@@ -83,6 +93,9 @@ template `playbackMode=`*(self: AudioStreamRandomizer; value) = self.setPlayback
 
 template randomPitch*(self: AudioStreamRandomizer): untyped = self.getRandomPitch()
 template `randomPitch=`*(self: AudioStreamRandomizer; value) = self.setRandomPitch(value)
+
+template randomPitchSemitones*(self: AudioStreamRandomizer): untyped = self.getRandomPitchSemitones()
+template `randomPitchSemitones=`*(self: AudioStreamRandomizer; value) = self.setRandomPitchSemitones(value)
 
 template randomVolumeOffsetDb*(self: AudioStreamRandomizer): untyped = self.getRandomVolumeOffsetDb()
 template `randomVolumeOffsetDb=`*(self: AudioStreamRandomizer; value) = self.setRandomVolumeOffsetDb(value)

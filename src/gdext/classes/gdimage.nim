@@ -393,6 +393,12 @@ proc loadDdsFromBuffer*(self: Image; buffer: PackedByteArray): Error =
   methodbind.ptrcall(self, [getPtr buffer], addr ret)
   (addr ret).decode_result(Error)
 
+proc loadExrFromBuffer*(self: Image; buffer: PackedByteArray): Error =
+  expandMethodBind(className Image, "load_exr_from_buffer", 680677267)
+  var ret: encoded Error
+  methodbind.ptrcall(self, [getPtr buffer], addr ret)
+  (addr ret).decode_result(Error)
+
 proc loadSvgFromBuffer*(self: Image; buffer: PackedByteArray; scale: Float = 1.0): Error =
   expandMethodBind(className Image, "load_svg_from_buffer", 311853421)
   var ret: encoded Error

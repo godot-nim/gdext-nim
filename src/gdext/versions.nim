@@ -11,7 +11,7 @@ const
   GdextVersionMinor* = GdextVersion.Minor
   GdextVersionPatch* = GdextVersion.Patch
 
-  CurrentSupportedGodotVersionString* = "4.5.0"
+  CurrentSupportedGodotVersionString* = "4.6.0"
   CurrentSupportedGodotVersion* = strToTuple(CurrentSupportedGodotVersionString)
   CurrentSupportedGodotVersionMajor* = CurrentSupportedGodotVersion.Major
   CurrentSupportedGodotVersionMinor* = CurrentSupportedGodotVersion.Minor

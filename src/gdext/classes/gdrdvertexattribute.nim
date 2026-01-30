@@ -6,6 +6,16 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(RDVertexAttribute, RefCounted)
 
+proc setBinding*(self: RDVertexAttribute; pMember: uint32): void =
+  expandMethodBind(className RDVertexAttribute, "set_binding", 1286410249)
+  methodbind.ptrcall(self, [getPtr pMember])
+
+proc getBinding*(self: RDVertexAttribute): uint32 =
+  expandMethodBind(className RDVertexAttribute, "get_binding", 3905245786)
+  var ret: encoded uint32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint32)
+
 proc setLocation*(self: RDVertexAttribute; pMember: uint32): void =
   expandMethodBind(className RDVertexAttribute, "set_location", 1286410249)
   methodbind.ptrcall(self, [getPtr pMember])
@@ -55,6 +65,9 @@ proc getFrequency*(self: RDVertexAttribute): RenderingDevice_VertexFrequency =
   var ret: encoded RenderingDevice_VertexFrequency
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RenderingDevice_VertexFrequency)
+
+template binding*(self: RDVertexAttribute): untyped = self.getBinding()
+template `binding=`*(self: RDVertexAttribute; value) = self.setBinding(value)
 
 template location*(self: RDVertexAttribute): untyped = self.getLocation()
 template `location=`*(self: RDVertexAttribute; value) = self.setLocation(value)

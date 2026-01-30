@@ -30,6 +30,16 @@ proc getSystemMenuName*(self: NativeMenu; menuId: NativeMenu_SystemMenus): Strin
   methodbind.ptrcall(self, [getPtr menuId], addr ret)
   (addr ret).decode_result(String)
 
+proc getSystemMenuText*(self: NativeMenu; menuId: NativeMenu_SystemMenus): String =
+  expandMethodBind(className NativeMenu, "get_system_menu_text", 1281499290)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr menuId], addr ret)
+  (addr ret).decode_result(String)
+
+proc setSystemMenuText*(self: NativeMenu; menuId: NativeMenu_SystemMenus; name: String): void =
+  expandMethodBind(className NativeMenu, "set_system_menu_text", 3925225603)
+  methodbind.ptrcall(self, [getPtr menuId, getPtr name])
+
 proc createMenu*(self: NativeMenu): RID =
   expandMethodBind(className NativeMenu, "create_menu", 529393457)
   var ret: encoded RID

@@ -24,6 +24,30 @@ proc clear*(self: TranslationDomain): void =
   expandMethodBind(className TranslationDomain, "clear", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc getTranslations*(self: TranslationDomain): Array[gdref Translation] =
+  expandMethodBind(className TranslationDomain, "get_translations", 3995934104)
+  var ret: encoded Array[gdref Translation]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Array[gdref Translation])
+
+proc hasTranslationForLocale*(self: TranslationDomain; locale: String; exact: bool): bool =
+  expandMethodBind(className TranslationDomain, "has_translation_for_locale", 2034713381)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr locale, getPtr exact], addr ret)
+  (addr ret).decode_result(bool)
+
+proc hasTranslation*(self: TranslationDomain; translation: gdref Translation): bool =
+  expandMethodBind(className TranslationDomain, "has_translation", 2696976312)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr translation], addr ret)
+  (addr ret).decode_result(bool)
+
+proc findTranslations*(self: TranslationDomain; locale: String; exact: bool): Array[gdref Translation] =
+  expandMethodBind(className TranslationDomain, "find_translations", 2109650934)
+  var ret: encoded Array[gdref Translation]
+  methodbind.ptrcall(self, [getPtr locale, getPtr exact], addr ret)
+  (addr ret).decode_result(Array[gdref Translation])
+
 proc translate*(self: TranslationDomain; message: StringName; context: StringName = default(StringName)): StringName =
   expandMethodBind(className TranslationDomain, "translate", 1829228469)
   var ret: encoded StringName

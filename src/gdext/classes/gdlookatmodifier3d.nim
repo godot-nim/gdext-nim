@@ -66,6 +66,16 @@ proc isUsingSecondaryRotation*(self: LookAtModifier3D): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setRelative*(self: LookAtModifier3D; enabled: bool): void =
+  expandMethodBind(className LookAtModifier3D, "set_relative", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc isRelative*(self: LookAtModifier3D): bool =
+  expandMethodBind(className LookAtModifier3D, "is_relative", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setOriginSafeMargin*(self: LookAtModifier3D; margin: Float): void =
   expandMethodBind(className LookAtModifier3D, "set_origin_safe_margin", 373806689)
   methodbind.ptrcall(self, [getPtr margin])
@@ -331,6 +341,9 @@ template `primaryRotationAxis=`*(self: LookAtModifier3D; value) = self.setPrimar
 
 template useSecondaryRotation*(self: LookAtModifier3D): untyped = self.isUsingSecondaryRotation()
 template `useSecondaryRotation=`*(self: LookAtModifier3D; value) = self.setUseSecondaryRotation(value)
+
+template relative*(self: LookAtModifier3D): untyped = self.isRelative()
+template `relative=`*(self: LookAtModifier3D; value) = self.setRelative(value)
 
 template originFrom*(self: LookAtModifier3D): untyped = self.getOriginFrom()
 template `originFrom=`*(self: LookAtModifier3D; value) = self.setOriginFrom(value)

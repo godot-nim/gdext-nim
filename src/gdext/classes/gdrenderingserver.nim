@@ -222,6 +222,10 @@ proc materialSetNextPass*(self: RenderingServer; material: RID; nextMaterial: RI
   expandMethodBind(className RenderingServer, "material_set_next_pass", 395945892)
   methodbind.ptrcall(self, [getPtr material, getPtr nextMaterial])
 
+proc materialSetUseDebanding*(self: RenderingServer; enable: bool): void =
+  expandMethodBind(className RenderingServer, "material_set_use_debanding", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
 proc meshCreateFromSurfaces*(self: RenderingServer; surfaces: Array[Dictionary[Variant, Variant]]; blendShapeCount: int32 = 0): RID =
   expandMethodBind(className RenderingServer, "mesh_create_from_surfaces", 4291747531)
   nilCheck surfaces
@@ -500,6 +504,10 @@ proc multimeshSetPhysicsInterpolationQuality*(self: RenderingServer; multimesh: 
 proc multimeshInstanceResetPhysicsInterpolation*(self: RenderingServer; multimesh: RID; index: int32): void =
   expandMethodBind(className RenderingServer, "multimesh_instance_reset_physics_interpolation", 3411492887)
   methodbind.ptrcall(self, [getPtr multimesh, getPtr index])
+
+proc multimeshInstancesResetPhysicsInterpolation*(self: RenderingServer; multimesh: RID): void =
+  expandMethodBind(className RenderingServer, "multimesh_instances_reset_physics_interpolation", 2722037293)
+  methodbind.ptrcall(self, [getPtr multimesh])
 
 proc skeletonCreate*(self: RenderingServer): RID =
   expandMethodBind(className RenderingServer, "skeleton_create", 529393457)
@@ -1507,6 +1515,10 @@ proc environmentSetTonemap*(self: RenderingServer; env: RID; toneMapper: Renderi
   expandMethodBind(className RenderingServer, "environment_set_tonemap", 2914312638)
   methodbind.ptrcall(self, [getPtr env, getPtr toneMapper, getPtr exposure, getPtr white])
 
+proc environmentSetTonemapAgxContrast*(self: RenderingServer; env: RID; agxContrast: Float): void =
+  expandMethodBind(className RenderingServer, "environment_set_tonemap_agx_contrast", 1794382983)
+  methodbind.ptrcall(self, [getPtr env, getPtr agxContrast])
+
 proc environmentSetAdjustment*(self: RenderingServer; env: RID; enable: bool; brightness: Float; contrast: Float; saturation: Float; use1DColorCorrection: bool; colorCorrection: RID): void =
   expandMethodBind(className RenderingServer, "environment_set_adjustment", 876799838)
   methodbind.ptrcall(self, [getPtr env, getPtr enable, getPtr brightness, getPtr contrast, getPtr saturation, getPtr use1DColorCorrection, getPtr colorCorrection])
@@ -1538,6 +1550,10 @@ proc environmentSetVolumetricFog*(self: RenderingServer; env: RID; enable: bool;
 proc environmentGlowSetUseBicubicUpscale*(self: RenderingServer; enable: bool): void =
   expandMethodBind(className RenderingServer, "environment_glow_set_use_bicubic_upscale", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
+
+proc environmentSetSsrHalfSize*(self: RenderingServer; halfSize: bool): void =
+  expandMethodBind(className RenderingServer, "environment_set_ssr_half_size", 2586408642)
+  methodbind.ptrcall(self, [getPtr halfSize])
 
 proc environmentSetSsrRoughnessQuality*(self: RenderingServer; quality: RenderingServer_EnvironmentSSRRoughnessQuality): void =
   expandMethodBind(className RenderingServer, "environment_set_ssr_roughness_quality", 1190026788)
@@ -1922,6 +1938,10 @@ proc canvasItemAddRect*(self: RenderingServer; item: RID; rect: Rect2; color: Co
 proc canvasItemAddCircle*(self: RenderingServer; item: RID; pos: Vector2; radius: Float; color: Color; antialiased: bool = false): void =
   expandMethodBind(className RenderingServer, "canvas_item_add_circle", 333077949)
   methodbind.ptrcall(self, [getPtr item, getPtr pos, getPtr radius, getPtr color, getPtr antialiased])
+
+proc canvasItemAddEllipse*(self: RenderingServer; item: RID; pos: Vector2; major: Float; minor: Float; color: Color; antialiased: bool = false): void =
+  expandMethodBind(className RenderingServer, "canvas_item_add_ellipse", 4188642757)
+  methodbind.ptrcall(self, [getPtr item, getPtr pos, getPtr major, getPtr minor, getPtr color, getPtr antialiased])
 
 proc canvasItemAddTextureRect*(self: RenderingServer; item: RID; rect: Rect2; texture: RID; tile: bool = false; modulate: Color = color(1, 1, 1, 1); transpose: bool = false): void =
   expandMethodBind(className RenderingServer, "canvas_item_add_texture_rect", 324864032)
@@ -2318,6 +2338,10 @@ proc getWhiteTexture*(self: RenderingServer): RID =
   var ret: encoded RID
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(RID)
+
+proc setBootImageWithStretch*(self: RenderingServer; image: gdref Image; color: Color; stretchMode: RenderingServer_SplashStretchMode; useFilter: bool = true): void =
+  expandMethodBind(className RenderingServer, "set_boot_image_with_stretch", 1104470771)
+  methodbind.ptrcall(self, [getPtr image, getPtr color, getPtr stretchMode, getPtr useFilter])
 
 proc setBootImage*(self: RenderingServer; image: gdref Image; color: Color; scale: bool; useFilter: bool = true): void =
   expandMethodBind(className RenderingServer, "set_boot_image", 3759744527)

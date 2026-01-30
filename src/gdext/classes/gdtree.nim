@@ -202,6 +202,16 @@ proc getColumnTitle*(self: Tree; column: int32): String =
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(String)
 
+proc setColumnTitleTooltipText*(self: Tree; column: int32; tooltipText: String): void =
+  expandMethodBind(className Tree, "set_column_title_tooltip_text", 501894301)
+  methodbind.ptrcall(self, [getPtr column, getPtr tooltipText])
+
+proc getColumnTitleTooltipText*(self: Tree; column: int32): String =
+  expandMethodBind(className Tree, "get_column_title_tooltip_text", 844755477)
+  var ret: encoded String
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(String)
+
 proc setColumnTitleAlignment*(self: Tree; column: int32; titleAlignment: HorizontalAlignment): void =
   expandMethodBind(className Tree, "set_column_title_alignment", 3276431499)
   methodbind.ptrcall(self, [getPtr column, getPtr titleAlignment])
@@ -262,6 +272,26 @@ proc isVScrollEnabled*(self: Tree): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setScrollHintMode*(self: Tree; scrollHintMode: Tree_ScrollHintMode): void =
+  expandMethodBind(className Tree, "set_scroll_hint_mode", 415911924)
+  methodbind.ptrcall(self, [getPtr scrollHintMode])
+
+proc getScrollHintMode*(self: Tree): Tree_ScrollHintMode =
+  expandMethodBind(className Tree, "get_scroll_hint_mode", 553087187)
+  var ret: encoded Tree_ScrollHintMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Tree_ScrollHintMode)
+
+proc setTileScrollHint*(self: Tree; tileScrollHint: bool): void =
+  expandMethodBind(className Tree, "set_tile_scroll_hint", 2586408642)
+  methodbind.ptrcall(self, [getPtr tileScrollHint])
+
+proc isScrollHintTiled*(self: Tree): bool =
+  expandMethodBind(className Tree, "is_scroll_hint_tiled", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setHideFolding*(self: Tree; hide: bool): void =
   expandMethodBind(className Tree, "set_hide_folding", 2586408642)
   methodbind.ptrcall(self, [getPtr hide])
@@ -278,6 +308,16 @@ proc setEnableRecursiveFolding*(self: Tree; enable: bool): void =
 
 proc isRecursiveFoldingEnabled*(self: Tree): bool =
   expandMethodBind(className Tree, "is_recursive_folding_enabled", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setEnableDragUnfolding*(self: Tree; enable: bool): void =
+  expandMethodBind(className Tree, "set_enable_drag_unfolding", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isDragUnfoldingEnabled*(self: Tree): bool =
+  expandMethodBind(className Tree, "is_drag_unfolding_enabled", 36873697)
   var ret: encoded bool
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
@@ -353,6 +393,9 @@ template `hideFolding=`*(self: Tree; value) = self.setHideFolding(value)
 template enableRecursiveFolding*(self: Tree): untyped = self.isRecursiveFoldingEnabled()
 template `enableRecursiveFolding=`*(self: Tree; value) = self.setEnableRecursiveFolding(value)
 
+template enableDragUnfolding*(self: Tree): untyped = self.isDragUnfoldingEnabled()
+template `enableDragUnfolding=`*(self: Tree; value) = self.setEnableDragUnfolding(value)
+
 template hideRoot*(self: Tree): untyped = self.isRootHidden()
 template `hideRoot=`*(self: Tree; value) = self.setHideRoot(value)
 
@@ -362,11 +405,17 @@ template `dropModeFlags=`*(self: Tree; value) = self.setDropModeFlags(value)
 template selectMode*(self: Tree): untyped = self.getSelectMode()
 template `selectMode=`*(self: Tree; value) = self.setSelectMode(value)
 
+template autoTooltip*(self: Tree): untyped = self.isAutoTooltipEnabled()
+template `autoTooltip=`*(self: Tree; value) = self.setAutoTooltip(value)
+
 template scrollHorizontalEnabled*(self: Tree): untyped = self.isHScrollEnabled()
 template `scrollHorizontalEnabled=`*(self: Tree; value) = self.setHScrollEnabled(value)
 
 template scrollVerticalEnabled*(self: Tree): untyped = self.isVScrollEnabled()
 template `scrollVerticalEnabled=`*(self: Tree; value) = self.setVScrollEnabled(value)
 
-template autoTooltip*(self: Tree): untyped = self.isAutoTooltipEnabled()
-template `autoTooltip=`*(self: Tree; value) = self.setAutoTooltip(value)
+template scrollHintMode*(self: Tree): untyped = self.getScrollHintMode()
+template `scrollHintMode=`*(self: Tree; value) = self.setScrollHintMode(value)
+
+template tileScrollHint*(self: Tree): untyped = self.isScrollHintTiled()
+template `tileScrollHint=`*(self: Tree; value) = self.setTileScrollHint(value)

@@ -51,7 +51,7 @@ proc reinstallGdext() =
 
 task generateFromUri, """Generate extension API from URI.
   | Upstream URI can be specified via 'upstream' environment variable.
-  | $ upstream=https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.5-stable/gdextension nimble generateFromUri
+  | $ upstream=https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.6-stable/gdextension nimble generateFromUri
   | $ upstream=file:///home/user/Documents/custom-api nimble generateFromUri""":
   var gdv = &"godot-{CurrentSupportedGodotVersion.Major}.{CurrentSupportedGodotVersion.Minor}-stable"
   var upstreamroot = getEnv("upstream", &"https://raw.githubusercontent.com/godotengine/godot-cpp/{gdv}/gdextension")
@@ -59,7 +59,7 @@ task generateFromUri, """Generate extension API from URI.
 
 task installFromUri, """Install gdext with sources generated from URI.
   | Upstream URI can be specified via 'upstream' environment variable.
-  | $ upstream=https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.5-stable/gdextension nimble installFromUri
+  | $ upstream=https://raw.githubusercontent.com/godotengine/godot-cpp/godot-4.6-stable/gdextension nimble installFromUri
   | $ upstream=file:///home/user/Documents/custom-api nimble installFromUri""":
   generateFromUriTask()
   reinstallGdext()

@@ -23,3 +23,9 @@ proc getJavaParentClass*(self: JavaClass): gdref JavaClass =
   var ret: encoded gdref JavaClass
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(gdref JavaClass)
+
+proc hasJavaMethod*(self: JavaClass; `method`: StringName): bool =
+  expandMethodBind(className JavaClass, "has_java_method", 2619796661)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr `method`], addr ret)
+  (addr ret).decode_result(bool)

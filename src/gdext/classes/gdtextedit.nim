@@ -1311,12 +1311,6 @@ template `deselectOnFocusLossEnabled=`*(self: TextEdit; value) = self.setDeselec
 template dragAndDropSelectionEnabled*(self: TextEdit): untyped = self.isDragAndDropSelectionEnabled()
 template `dragAndDropSelectionEnabled=`*(self: TextEdit; value) = self.setDragAndDropSelectionEnabled(value)
 
-template virtualKeyboardEnabled*(self: TextEdit): untyped = self.isVirtualKeyboardEnabled()
-template `virtualKeyboardEnabled=`*(self: TextEdit; value) = self.setVirtualKeyboardEnabled(value)
-
-template virtualKeyboardShowOnFocus*(self: TextEdit): untyped = self.getVirtualKeyboardShowOnFocus()
-template `virtualKeyboardShowOnFocus=`*(self: TextEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
-
 template middleMousePasteEnabled*(self: TextEdit): untyped = self.isMiddleMousePasteEnabled()
 template `middleMousePasteEnabled=`*(self: TextEdit; value) = self.setMiddleMousePasteEnabled(value)
 
@@ -1334,6 +1328,12 @@ template `indentWrappedLines=`*(self: TextEdit; value) = self.setIndentWrappedLi
 
 template tabInputMode*(self: TextEdit): untyped = self.getTabInputMode()
 template `tabInputMode=`*(self: TextEdit; value) = self.setTabInputMode(value)
+
+template virtualKeyboardEnabled*(self: TextEdit): untyped = self.isVirtualKeyboardEnabled()
+template `virtualKeyboardEnabled=`*(self: TextEdit; value) = self.setVirtualKeyboardEnabled(value)
+
+template virtualKeyboardShowOnFocus*(self: TextEdit): untyped = self.getVirtualKeyboardShowOnFocus()
+template `virtualKeyboardShowOnFocus=`*(self: TextEdit; value) = self.setVirtualKeyboardShowOnFocus(value)
 
 template scrollSmooth*(self: TextEdit): untyped = self.isSmoothScrollEnabled()
 template `scrollSmooth=`*(self: TextEdit; value) = self.setSmoothScrollEnabled(value)

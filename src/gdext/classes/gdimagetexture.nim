@@ -29,3 +29,6 @@ proc update*(self: ImageTexture; image: gdref Image): void =
 proc setSizeOverride*(self: ImageTexture; size: Vector2i): void =
   expandMethodBind(className ImageTexture, "set_size_override", 1130785943)
   methodbind.ptrcall(self, [getPtr size])
+
+template image*(self: ImageTexture): untyped = self.getImage()
+template `image=`*(self: ImageTexture; value) = self.setImage(value)

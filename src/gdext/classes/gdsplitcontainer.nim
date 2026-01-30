@@ -6,19 +6,19 @@ import gdcontainer; export gdcontainer
 
 expandOnClassImported(SplitContainer, Container)
 
-proc setSplitOffset*(self: SplitContainer; offset: int32): void =
-  expandMethodBind(className SplitContainer, "set_split_offset", 1286410249)
-  methodbind.ptrcall(self, [getPtr offset])
+proc setSplitOffsets*(self: SplitContainer; offsets: PackedInt32Array): void =
+  expandMethodBind(className SplitContainer, "set_split_offsets", 3614634198)
+  methodbind.ptrcall(self, [getPtr offsets])
 
-proc getSplitOffset*(self: SplitContainer): int32 =
-  expandMethodBind(className SplitContainer, "get_split_offset", 3905245786)
-  var ret: encoded int32
+proc getSplitOffsets*(self: SplitContainer): PackedInt32Array =
+  expandMethodBind(className SplitContainer, "get_split_offsets", 1930428628)
+  var ret: encoded PackedInt32Array
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  (addr ret).decode_result(PackedInt32Array)
 
-proc clampSplitOffset*(self: SplitContainer): void =
-  expandMethodBind(className SplitContainer, "clamp_split_offset", 3218959716)
-  methodbind.ptrcall(self, [])
+proc clampSplitOffset*(self: SplitContainer; priorityIndex: int32 = 0): void =
+  expandMethodBind(className SplitContainer, "clamp_split_offset", 1995695955)
+  methodbind.ptrcall(self, [getPtr priorityIndex])
 
 proc setCollapsed*(self: SplitContainer; collapsed: bool): void =
   expandMethodBind(className SplitContainer, "set_collapsed", 2586408642)
@@ -100,11 +100,11 @@ proc isDragAreaHighlightInEditorEnabled*(self: SplitContainer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc getDragAreaControl*(self: SplitContainer): Control =
-  expandMethodBind(className SplitContainer, "get_drag_area_control", 829782337)
-  var ret: encoded Control
+proc getDragAreaControls*(self: SplitContainer): Array[Control] =
+  expandMethodBind(className SplitContainer, "get_drag_area_controls", 2915620761)
+  var ret: encoded Array[Control]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(Control)
+  (addr ret).decode_result(Array[Control])
 
 proc setTouchDraggerEnabled*(self: SplitContainer; enabled: bool): void =
   expandMethodBind(className SplitContainer, "set_touch_dragger_enabled", 2586408642)
@@ -116,8 +116,24 @@ proc isTouchDraggerEnabled*(self: SplitContainer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-template splitOffset*(self: SplitContainer): untyped = self.getSplitOffset()
-template `splitOffset=`*(self: SplitContainer; value) = self.setSplitOffset(value)
+proc getDragAreaControl*(self: SplitContainer): Control =
+  expandMethodBind(className SplitContainer, "get_drag_area_control", 829782337)
+  var ret: encoded Control
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Control)
+
+proc setSplitOffset*(self: SplitContainer; offset: int32): void =
+  expandMethodBind(className SplitContainer, "set_split_offset", 1286410249)
+  methodbind.ptrcall(self, [getPtr offset])
+
+proc getSplitOffset*(self: SplitContainer): int32 =
+  expandMethodBind(className SplitContainer, "get_split_offset", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
+template splitOffsets*(self: SplitContainer): untyped = self.getSplitOffsets()
+template `splitOffsets=`*(self: SplitContainer; value) = self.setSplitOffsets(value)
 
 template collapsed*(self: SplitContainer): untyped = self.isCollapsed()
 template `collapsed=`*(self: SplitContainer; value) = self.setCollapsed(value)
@@ -145,3 +161,6 @@ template `dragAreaOffset=`*(self: SplitContainer; value) = self.setDragAreaOffse
 
 template dragAreaHighlightInEditor*(self: SplitContainer): untyped = self.isDragAreaHighlightInEditorEnabled()
 template `dragAreaHighlightInEditor=`*(self: SplitContainer; value) = self.setDragAreaHighlightInEditor(value)
+
+template splitOffset*(self: SplitContainer): untyped = self.getSplitOffset()
+template `splitOffset=`*(self: SplitContainer; value) = self.setSplitOffset(value)

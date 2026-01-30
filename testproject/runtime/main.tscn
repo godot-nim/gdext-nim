@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyswbjsdvglbr"]
+[gd_scene format=3 uid="uid://dyswbjsdvglbr"]
 
 [ext_resource type="Script" uid="uid://b4m3g7vm27kwg" path="res://main.gd" id="1_x2b6x"]
 [ext_resource type="Texture2D" uid="uid://b5lc5myy1blsf" path="res://icon.png" id="2_x3ep8"]
@@ -8,25 +8,25 @@
 [sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
 font_size = 64
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=1928880148]
 script = ExtResource("1_x2b6x")
 
-[node name="GDExtNode" type="GdExtNode" parent="." groups=["tester"]]
+[node name="GDExtNode" type="GdExtNode" parent="." unique_id=1468967392 groups=["tester"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="GDExtNode"]
+[node name="Sprite2D" type="Sprite2D" parent="GDExtNode" unique_id=1553875968]
 texture = ExtResource("2_x3ep8")
 
-[node name="VirtualNode01" type="VirtualNode01" parent="."]
+[node name="VirtualNode01" type="VirtualNode01" parent="." unique_id=1548671379]
 
-[node name="InheritedNode01" type="VirtualNode01" parent="."]
+[node name="InheritedNode01" type="VirtualNode01" parent="." unique_id=271101712]
 script = ExtResource("3_6ul88")
 
-[node name="VirtualNode02" type="VirtualNode02" parent="."]
+[node name="VirtualNode02" type="VirtualNode02" parent="." unique_id=309060690]
 
-[node name="InheritedNode02" type="VirtualNode02" parent="."]
+[node name="InheritedNode02" type="VirtualNode02" parent="." unique_id=1865585461]
 script = ExtResource("4_lmn8h")
 
-[node name="ExtLabel" type="ExtLabel" parent="."]
+[node name="ExtLabel" type="ExtLabel" parent="." unique_id=1226220957]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 88.0
@@ -35,22 +35,22 @@ text = "Awesome gdext!"
 label_settings = SubResource("LabelSettings_1bvp3")
 horizontal_alignment = 1
 
-[node name="FunctionTester" type="FunctionTester" parent="."]
+[node name="FunctionTester" type="FunctionTester" parent="." unique_id=782468271]
 
-[node name="EnumTester" type="EnumTester" parent="."]
+[node name="EnumTester" type="EnumTester" parent="." unique_id=977561023]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=3375010]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=741325253]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1208922635]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

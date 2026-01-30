@@ -46,5 +46,15 @@ proc isUsingSecondaryRotation*(self: AimModifier3D; index: int32): bool =
   methodbind.ptrcall(self, [getPtr index], addr ret)
   (addr ret).decode_result(bool)
 
+proc setRelative*(self: AimModifier3D; index: int32; enabled: bool): void =
+  expandMethodBind(className AimModifier3D, "set_relative", 300928843)
+  methodbind.ptrcall(self, [getPtr index, getPtr enabled])
+
+proc isRelative*(self: AimModifier3D; index: int32): bool =
+  expandMethodBind(className AimModifier3D, "is_relative", 1116898809)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr index], addr ret)
+  (addr ret).decode_result(bool)
+
 template settingCount*(self: AimModifier3D): untyped = self.getSettingCount()
 template `settingCount=`*(self: AimModifier3D; value) = self.setSettingCount(value)

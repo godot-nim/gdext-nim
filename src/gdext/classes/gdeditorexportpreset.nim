@@ -138,11 +138,11 @@ proc getEncryptionKey*(self: EditorExportPreset): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
-proc getScriptExportMode*(self: EditorExportPreset): int32 =
-  expandMethodBind(className EditorExportPreset, "get_script_export_mode", 3905245786)
-  var ret: encoded int32
+proc getScriptExportMode*(self: EditorExportPreset): EditorExportPreset_ScriptExportMode =
+  expandMethodBind(className EditorExportPreset, "get_script_export_mode", 2835358398)
+  var ret: encoded EditorExportPreset_ScriptExportMode
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(int32)
+  (addr ret).decode_result(EditorExportPreset_ScriptExportMode)
 
 proc getOrEnv*(self: EditorExportPreset; name: StringName; envVar: String): Variant =
   expandMethodBind(className EditorExportPreset, "get_or_env", 389838787)

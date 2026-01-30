@@ -72,9 +72,9 @@ proc toByteArray*(self: PackedFloat64Array): PackedByteArray =
   `toByteArray(PackedFloat64Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedFloat64Array): void =
   `sort(PackedFloat64Array)`.call(addr self, [])
-proc bsearch*(self: var PackedFloat64Array; value: Float; before: bool = true): Int =
+proc bsearch*(self: PackedFloat64Array; value: Float; before: bool = true): Int =
   `bsearch(PackedFloat64Array Float bool)`.call(addr self, [getPtr value, getPtr before], addr result)
-proc duplicate*(self: var PackedFloat64Array): PackedFloat64Array =
+proc duplicate*(self: PackedFloat64Array): PackedFloat64Array =
   `duplicate(PackedFloat64Array)`.call(addr self, [], addr result)
 proc find*(self: PackedFloat64Array; value: Float; `from`: Int = 0): Int =
   `find(PackedFloat64Array Float Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
@@ -103,8 +103,8 @@ proc load_PackedFloat64Array_methods {.execon: staticevents.init_engine.on_load_
   `slice(PackedFloat64Array Int Int)` = load(VariantType_PackedFloat64Array, "slice", 2192974324)
   `toByteArray(PackedFloat64Array)` = load(VariantType_PackedFloat64Array, "to_byte_array", 247621236)
   `sort(PackedFloat64Array)` = load(VariantType_PackedFloat64Array, "sort", 3218959716)
-  `bsearch(PackedFloat64Array Float bool)` = load(VariantType_PackedFloat64Array, "bsearch", 1188816338)
-  `duplicate(PackedFloat64Array)` = load(VariantType_PackedFloat64Array, "duplicate", 949266573)
+  `bsearch(PackedFloat64Array Float bool)` = load(VariantType_PackedFloat64Array, "bsearch", 1175118842)
+  `duplicate(PackedFloat64Array)` = load(VariantType_PackedFloat64Array, "duplicate", 1627308337)
   `find(PackedFloat64Array Float Int)` = load(VariantType_PackedFloat64Array, "find", 1343150241)
   `rfind(PackedFloat64Array Float Int)` = load(VariantType_PackedFloat64Array, "rfind", 1343150241)
   `count(PackedFloat64Array Float)` = load(VariantType_PackedFloat64Array, "count", 2859915090)

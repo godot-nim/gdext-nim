@@ -5,6 +5,9 @@ var
   interfaceMemAlloc*: InterfaceMemAlloc
   interfaceMemRealloc*: InterfaceMemRealloc
   interfaceMemFree*: InterfaceMemFree
+  interfaceMemAlloc2*: InterfaceMemAlloc2
+  interfaceMemRealloc2*: InterfaceMemRealloc2
+  interfaceMemFree2*: InterfaceMemFree2
   interfacePrintError*: InterfacePrintError
   interfacePrintErrorWithMessage*: InterfacePrintErrorWithMessage
   interfacePrintWarning*: InterfacePrintWarning
@@ -183,6 +186,12 @@ proc loadApi(getProcAddress: InterfaceGetProcAddress) =
   interfaceMemRealloc = cast[InterfaceMemRealloc](getProcAddress(
       cstring("mem_realloc")))
   interfaceMemFree = cast[InterfaceMemFree](getProcAddress(cstring("mem_free")))
+  interfaceMemAlloc2 = cast[InterfaceMemAlloc2](getProcAddress(
+      cstring("mem_alloc2")))
+  interfaceMemRealloc2 = cast[InterfaceMemRealloc2](getProcAddress(
+      cstring("mem_realloc2")))
+  interfaceMemFree2 = cast[InterfaceMemFree2](getProcAddress(
+      cstring("mem_free2")))
   interfacePrintError = cast[InterfacePrintError](getProcAddress(
       cstring("print_error")))
   interfacePrintErrorWithMessage = cast[InterfacePrintErrorWithMessage](getProcAddress(

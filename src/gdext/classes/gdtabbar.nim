@@ -254,6 +254,16 @@ proc getDragToRearrangeEnabled*(self: TabBar): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setSwitchOnDragHover*(self: TabBar; enabled: bool): void =
+  expandMethodBind(className TabBar, "set_switch_on_drag_hover", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc getSwitchOnDragHover*(self: TabBar): bool =
+  expandMethodBind(className TabBar, "get_switch_on_drag_hover", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setTabsRearrangeGroup*(self: TabBar; groupId: int32): void =
   expandMethodBind(className TabBar, "set_tabs_rearrange_group", 1286410249)
   methodbind.ptrcall(self, [getPtr groupId])
@@ -321,6 +331,9 @@ template `scrollingEnabled=`*(self: TabBar; value) = self.setScrollingEnabled(va
 
 template dragToRearrangeEnabled*(self: TabBar): untyped = self.getDragToRearrangeEnabled()
 template `dragToRearrangeEnabled=`*(self: TabBar; value) = self.setDragToRearrangeEnabled(value)
+
+template switchOnDragHover*(self: TabBar): untyped = self.getSwitchOnDragHover()
+template `switchOnDragHover=`*(self: TabBar; value) = self.setSwitchOnDragHover(value)
 
 template tabsRearrangeGroup*(self: TabBar): untyped = self.getTabsRearrangeGroup()
 template `tabsRearrangeGroup=`*(self: TabBar; value) = self.setTabsRearrangeGroup(value)

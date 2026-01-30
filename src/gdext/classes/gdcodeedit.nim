@@ -245,6 +245,16 @@ proc isLineNumbersZeroPadded*(self: CodeEdit): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setLineNumbersMinDigits*(self: CodeEdit; count: int32): void =
+  expandMethodBind(className CodeEdit, "set_line_numbers_min_digits", 1286410249)
+  methodbind.ptrcall(self, [getPtr count])
+
+proc getLineNumbersMinDigits*(self: CodeEdit): int32 =
+  expandMethodBind(className CodeEdit, "get_line_numbers_min_digits", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 proc setDrawFoldGutter*(self: CodeEdit; enable: bool): void =
   expandMethodBind(className CodeEdit, "set_draw_fold_gutter", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
@@ -595,6 +605,9 @@ template `guttersDrawLineNumbers=`*(self: CodeEdit; value) = self.setDrawLineNum
 
 template guttersZeroPadLineNumbers*(self: CodeEdit): untyped = self.isLineNumbersZeroPadded()
 template `guttersZeroPadLineNumbers=`*(self: CodeEdit; value) = self.setLineNumbersZeroPadded(value)
+
+template guttersLineNumbersMinDigits*(self: CodeEdit): untyped = self.getLineNumbersMinDigits()
+template `guttersLineNumbersMinDigits=`*(self: CodeEdit; value) = self.setLineNumbersMinDigits(value)
 
 template guttersDrawFoldGutter*(self: CodeEdit): untyped = self.isDrawingFoldGutter()
 template `guttersDrawFoldGutter=`*(self: CodeEdit; value) = self.setDrawFoldGutter(value)

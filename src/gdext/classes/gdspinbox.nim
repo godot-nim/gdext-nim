@@ -50,6 +50,16 @@ proc getCustomArrowStep*(self: SpinBox): float64 =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(float64)
 
+proc setCustomArrowRound*(self: SpinBox; round: bool): void =
+  expandMethodBind(className SpinBox, "set_custom_arrow_round", 2586408642)
+  methodbind.ptrcall(self, [getPtr round])
+
+proc isCustomArrowRounding*(self: SpinBox): bool =
+  expandMethodBind(className SpinBox, "is_custom_arrow_rounding", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc isEditable*(self: SpinBox): bool =
   expandMethodBind(className SpinBox, "is_editable", 36873697)
   var ret: encoded bool
@@ -103,6 +113,9 @@ template `suffix=`*(self: SpinBox; value) = self.setSuffix(value)
 
 template customArrowStep*(self: SpinBox): untyped = self.getCustomArrowStep()
 template `customArrowStep=`*(self: SpinBox; value) = self.setCustomArrowStep(value)
+
+template customArrowRound*(self: SpinBox): untyped = self.isCustomArrowRounding()
+template `customArrowRound=`*(self: SpinBox; value) = self.setCustomArrowRound(value)
 
 template selectAllOnFocus*(self: SpinBox): untyped = self.isSelectAllOnFocus()
 template `selectAllOnFocus=`*(self: SpinBox; value) = self.setSelectAllOnFocus(value)

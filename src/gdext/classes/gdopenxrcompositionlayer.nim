@@ -78,6 +78,16 @@ proc isNativelySupported*(self: OpenXRCompositionLayer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc isProtectedContent*(self: OpenXRCompositionLayer): bool =
+  expandMethodBind(className OpenXRCompositionLayer, "is_protected_content", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setProtectedContent*(self: OpenXRCompositionLayer; protectedContent: bool): void =
+  expandMethodBind(className OpenXRCompositionLayer, "set_protected_content", 2586408642)
+  methodbind.ptrcall(self, [getPtr protectedContent])
+
 proc setMinFilter*(self: OpenXRCompositionLayer; mode: OpenXRCompositionLayer_Filter): void =
   expandMethodBind(className OpenXRCompositionLayer, "set_min_filter", 3653437593)
   methodbind.ptrcall(self, [getPtr mode])
@@ -199,6 +209,9 @@ template `layerViewport=`*(self: OpenXRCompositionLayer; value) = self.setLayerV
 
 template useAndroidSurface*(self: OpenXRCompositionLayer): untyped = self.getUseAndroidSurface()
 template `useAndroidSurface=`*(self: OpenXRCompositionLayer; value) = self.setUseAndroidSurface(value)
+
+template protectedContent*(self: OpenXRCompositionLayer): untyped = self.isProtectedContent()
+template `protectedContent=`*(self: OpenXRCompositionLayer; value) = self.setProtectedContent(value)
 
 template androidSurfaceSize*(self: OpenXRCompositionLayer): untyped = self.getAndroidSurfaceSize()
 template `androidSurfaceSize=`*(self: OpenXRCompositionLayer; value) = self.setAndroidSurfaceSize(value)

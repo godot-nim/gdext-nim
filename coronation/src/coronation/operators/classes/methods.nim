@@ -33,12 +33,7 @@ method weave*(classMethod: ClassMethodEntry): Cloth {.base.} = (discard)
 proc joinArg(args: seq[string]): string = args.join(", ")
 
 proc extract_result(self: JsonClassMethod): RenderableResult =
-  convertToResult:
-    if self.return_value.isSome:
-      let rv = get self.return_value
-      some rv.meta.get(rv.`type`)
-    else:
-      none string
+  convert self.return_value
 
 proc extract_args(self: JsonClassMethod; fuzzy= false): seq[RenderableArgument] =
   result = self.arguments.get(@[])

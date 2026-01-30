@@ -72,9 +72,9 @@ proc toByteArray*(self: PackedInt32Array): PackedByteArray =
   `toByteArray(PackedInt32Array)`.call(addr self, [], addr result)
 proc sort*(self: var PackedInt32Array): void =
   `sort(PackedInt32Array)`.call(addr self, [])
-proc bsearch*(self: var PackedInt32Array; value: Int; before: bool = true): Int =
+proc bsearch*(self: PackedInt32Array; value: Int; before: bool = true): Int =
   `bsearch(PackedInt32Array Int bool)`.call(addr self, [getPtr value, getPtr before], addr result)
-proc duplicate*(self: var PackedInt32Array): PackedInt32Array =
+proc duplicate*(self: PackedInt32Array): PackedInt32Array =
   `duplicate(PackedInt32Array)`.call(addr self, [], addr result)
 proc find*(self: PackedInt32Array; value: Int; `from`: Int = 0): Int =
   `find(PackedInt32Array Int Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
@@ -103,8 +103,8 @@ proc load_PackedInt32Array_methods {.execon: staticevents.init_engine.on_load_bu
   `slice(PackedInt32Array Int Int)` = load(VariantType_PackedInt32Array, "slice", 1216021098)
   `toByteArray(PackedInt32Array)` = load(VariantType_PackedInt32Array, "to_byte_array", 247621236)
   `sort(PackedInt32Array)` = load(VariantType_PackedInt32Array, "sort", 3218959716)
-  `bsearch(PackedInt32Array Int bool)` = load(VariantType_PackedInt32Array, "bsearch", 3380005890)
-  `duplicate(PackedInt32Array)` = load(VariantType_PackedInt32Array, "duplicate", 1997843129)
+  `bsearch(PackedInt32Array Int bool)` = load(VariantType_PackedInt32Array, "bsearch", 954237325)
+  `duplicate(PackedInt32Array)` = load(VariantType_PackedInt32Array, "duplicate", 3158844420)
   `find(PackedInt32Array Int Int)` = load(VariantType_PackedInt32Array, "find", 2984303840)
   `rfind(PackedInt32Array Int Int)` = load(VariantType_PackedInt32Array, "rfind", 2984303840)
   `count(PackedInt32Array Int)` = load(VariantType_PackedInt32Array, "count", 4103005248)
