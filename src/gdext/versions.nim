@@ -5,7 +5,7 @@ proc strToTuple(str: string): tuple[Major, Minor, Patch: int] =
   (s[0], s[1], s[2])
 
 const
-  GdextVersionString* = "0.16.1"
+  GdextVersionString* = "0.17.0"
   GdextVersion* = strToTuple(GdextVersionString)
   GdextVersionMajor* = GdextVersion.Major
   GdextVersionMinor* = GdextVersion.Minor
