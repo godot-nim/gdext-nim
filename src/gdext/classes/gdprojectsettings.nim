@@ -104,3 +104,15 @@ proc saveCustom*(self: ProjectSettings; file: String): Error =
   var ret: encoded Error
   methodbind.ptrcall(self, [getPtr file], addr ret)
   (addr ret).decode_result(Error)
+
+proc getChangedSettings*(self: ProjectSettings): PackedStringArray =
+  expandMethodBind(className ProjectSettings, "get_changed_settings", 1139954409)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
+proc checkChangedSettingsInGroup*(self: ProjectSettings; settingPrefix: String): bool =
+  expandMethodBind(className ProjectSettings, "check_changed_settings_in_group", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr settingPrefix], addr ret)
+  (addr ret).decode_result(bool)

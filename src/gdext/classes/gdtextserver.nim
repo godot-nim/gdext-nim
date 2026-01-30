@@ -54,6 +54,12 @@ proc getSupportData*(self: TextServer): PackedByteArray =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
+proc isLocaleUsingSupportData*(self: TextServer; locale: String): bool =
+  expandMethodBind(className TextServer, "is_locale_using_support_data", 3927539163)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr locale], addr ret)
+  (addr ret).decode_result(bool)
+
 proc isLocaleRightToLeft*(self: TextServer; locale: String): bool =
   expandMethodBind(className TextServer, "is_locale_right_to_left", 3927539163)
   var ret: encoded bool
@@ -736,6 +742,12 @@ proc shapedTextClear*(self: TextServer; rid: RID): void =
   expandMethodBind(className TextServer, "shaped_text_clear", 2722037293)
   methodbind.ptrcall(self, [getPtr rid])
 
+proc shapedTextDuplicate*(self: TextServer; rid: RID): RID =
+  expandMethodBind(className TextServer, "shaped_text_duplicate", 41030802)
+  var ret: encoded RID
+  methodbind.ptrcall(self, [getPtr rid], addr ret)
+  (addr ret).decode_result(RID)
+
 proc shapedTextSetDirection*(self: TextServer; shaped: RID; direction: TextServer_Direction = directionAuto): void =
   expandMethodBind(className TextServer, "shaped_text_set_direction", 1551430183)
   methodbind.ptrcall(self, [getPtr shaped, getPtr direction])
@@ -835,6 +847,12 @@ proc shapedTextResizeObject*(self: TextServer; shaped: RID; key: Variant; size: 
   expandMethodBind(className TextServer, "shaped_text_resize_object", 790361552)
   var ret: encoded bool
   methodbind.ptrcall(self, [getPtr shaped, getPtr key, getPtr size, getPtr inlineAlign, getPtr baseline], addr ret)
+  (addr ret).decode_result(bool)
+
+proc shapedTextHasObject*(self: TextServer; shaped: RID; key: Variant): bool =
+  expandMethodBind(className TextServer, "shaped_text_has_object", 2360964694)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [getPtr shaped, getPtr key], addr ret)
   (addr ret).decode_result(bool)
 
 proc shapedGetText*(self: TextServer; shaped: RID): String =

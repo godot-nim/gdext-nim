@@ -210,6 +210,16 @@ proc getPopup*(self: TabContainer): Popup =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Popup)
 
+proc setSwitchOnDragHover*(self: TabContainer; enabled: bool): void =
+  expandMethodBind(className TabContainer, "set_switch_on_drag_hover", 2586408642)
+  methodbind.ptrcall(self, [getPtr enabled])
+
+proc getSwitchOnDragHover*(self: TabContainer): bool =
+  expandMethodBind(className TabContainer, "get_switch_on_drag_hover", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setDragToRearrangeEnabled*(self: TabContainer; enabled: bool): void =
   expandMethodBind(className TabContainer, "set_drag_to_rearrange_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -277,6 +287,9 @@ template `tabsVisible=`*(self: TabContainer; value) = self.setTabsVisible(value)
 
 template allTabsInFront*(self: TabContainer): untyped = self.isAllTabsInFront()
 template `allTabsInFront=`*(self: TabContainer; value) = self.setAllTabsInFront(value)
+
+template switchOnDragHover*(self: TabContainer): untyped = self.getSwitchOnDragHover()
+template `switchOnDragHover=`*(self: TabContainer; value) = self.setSwitchOnDragHover(value)
 
 template dragToRearrangeEnabled*(self: TabContainer): untyped = self.getDragToRearrangeEnabled()
 template `dragToRearrangeEnabled=`*(self: TabContainer; value) = self.setDragToRearrangeEnabled(value)

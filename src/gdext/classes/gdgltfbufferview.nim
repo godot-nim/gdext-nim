@@ -12,6 +12,19 @@ proc loadBufferViewData*(self: GLTFBufferView; state: gdref GLTFState): PackedBy
   methodbind.ptrcall(self, [getPtr state], addr ret)
   (addr ret).decode_result(PackedByteArray)
 
+proc fromDictionary*(_: typedesc[GLTFBufferView]; dictionary: Dictionary[Variant, Variant]): gdref GLTFBufferView =
+  expandMethodBind(className GLTFBufferView, "from_dictionary", 2594413512)
+  nilCheck dictionary
+  var ret: encoded gdref GLTFBufferView
+  methodbind.ptrcall([getPtr dictionary], addr ret)
+  (addr ret).decode_result(gdref GLTFBufferView)
+
+proc toDictionary*(self: GLTFBufferView): Dictionary[Variant, Variant] =
+  expandMethodBind(className GLTFBufferView, "to_dictionary", 3102165223)
+  var ret: encoded Dictionary[Variant, Variant]
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Dictionary[Variant, Variant])
+
 proc getBuffer*(self: GLTFBufferView): int32 =
   expandMethodBind(className GLTFBufferView, "get_buffer", 3905245786)
   var ret: encoded int32

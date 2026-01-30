@@ -171,6 +171,10 @@ proc setPivotOffset*(self: Control; pivotOffset: Vector2): void =
   expandMethodBind(className Control, "set_pivot_offset", 743155724)
   methodbind.ptrcall(self, [getPtr pivotOffset])
 
+proc setPivotOffsetRatio*(self: Control; ratio: Vector2): void =
+  expandMethodBind(className Control, "set_pivot_offset_ratio", 743155724)
+  methodbind.ptrcall(self, [getPtr ratio])
+
 proc getBegin*(self: Control): Vector2 =
   expandMethodBind(className Control, "get_begin", 3341600327)
   var ret: encoded Vector2
@@ -215,6 +219,18 @@ proc getScale*(self: Control): Vector2 =
 
 proc getPivotOffset*(self: Control): Vector2 =
   expandMethodBind(className Control, "get_pivot_offset", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
+
+proc getPivotOffsetRatio*(self: Control): Vector2 =
+  expandMethodBind(className Control, "get_pivot_offset_ratio", 3341600327)
+  var ret: encoded Vector2
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Vector2)
+
+proc getCombinedPivotOffset*(self: Control): Vector2 =
+  expandMethodBind(className Control, "get_combined_pivot_offset", 3341600327)
   var ret: encoded Vector2
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Vector2)
@@ -281,15 +297,15 @@ proc getFocusBehaviorRecursive*(self: Control): Control_FocusBehaviorRecursive =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Control_FocusBehaviorRecursive)
 
-proc hasFocus*(self: Control): bool =
-  expandMethodBind(className Control, "has_focus", 36873697)
+proc hasFocus*(self: Control; ignoreHiddenFocus: bool = false): bool =
+  expandMethodBind(className Control, "has_focus", 3302206351)
   var ret: encoded bool
-  methodbind.ptrcall(self, [], addr ret)
+  methodbind.ptrcall(self, [getPtr ignoreHiddenFocus], addr ret)
   (addr ret).decode_result(bool)
 
-proc grabFocus*(self: Control): void =
-  expandMethodBind(className Control, "grab_focus", 3218959716)
-  methodbind.ptrcall(self, [])
+proc grabFocus*(self: Control; hideFocus: bool = false): void =
+  expandMethodBind(className Control, "grab_focus", 107499316)
+  methodbind.ptrcall(self, [getPtr hideFocus])
 
 proc releaseFocus*(self: Control): void =
   expandMethodBind(className Control, "release_focus", 3218959716)
@@ -906,6 +922,9 @@ template `scale=`*(self: Control; value) = self.setScale(value)
 
 template pivotOffset*(self: Control): untyped = self.getPivotOffset()
 template `pivotOffset=`*(self: Control; value) = self.setPivotOffset(value)
+
+template pivotOffsetRatio*(self: Control): untyped = self.getPivotOffsetRatio()
+template `pivotOffsetRatio=`*(self: Control; value) = self.setPivotOffsetRatio(value)
 
 template sizeFlagsHorizontal*(self: Control): untyped = self.getHSizeFlags()
 template `sizeFlagsHorizontal=`*(self: Control; value) = self.setHSizeFlags(value)

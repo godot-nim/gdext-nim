@@ -115,8 +115,8 @@ nim	has	gdext/arraytools.html#has,PackedByteArray,Int	proc has(self: PackedByteA
 nim	reverse	gdext/arraytools.html#reverse,PackedByteArray	proc reverse(self: var PackedByteArray): void		113
 nim	slice	gdext/arraytools.html#slice,PackedByteArray,Int,Int	proc slice(self: PackedByteArray; begin: Int; end: Int = 2147483647): PackedByteArray		115
 nim	sort	gdext/arraytools.html#sort,PackedByteArray	proc sort(self: var PackedByteArray): void		117
-nim	bsearch	gdext/arraytools.html#bsearch,PackedByteArray,Int,bool	proc bsearch(self: var PackedByteArray; value: Int; before: bool = true): Int		119
-nim	duplicate	gdext/arraytools.html#duplicate,PackedByteArray	proc duplicate(self: var PackedByteArray): PackedByteArray		121
+nim	bsearch	gdext/arraytools.html#bsearch,PackedByteArray,Int,bool	proc bsearch(self: PackedByteArray; value: Int; before: bool = true): Int		119
+nim	duplicate	gdext/arraytools.html#duplicate,PackedByteArray	proc duplicate(self: PackedByteArray): PackedByteArray		121
 nim	find	gdext/arraytools.html#find,PackedByteArray,Int,Int	proc find(self: PackedByteArray; value: Int; from: Int = 0): Int		123
 nim	rfind	gdext/arraytools.html#rfind,PackedByteArray,Int,Int	proc rfind(self: PackedByteArray; value: Int; from: Int = -1): Int		125
 nim	count	gdext/arraytools.html#count,PackedByteArray,Int	proc count(self: PackedByteArray; value: Int): Int		127
@@ -188,8 +188,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedColorArray	proc reverse(self: va
 nim	slice	gdext/arraytools.html#slice,PackedColorArray,Int,Int	proc slice(self: PackedColorArray; begin: Int; end: Int = 2147483647): PackedColorArray		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedColorArray	proc toByteArray(self: PackedColorArray): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedColorArray	proc sort(self: var PackedColorArray): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedColorArray,Color,bool	proc bsearch(self: var PackedColorArray; value: Color; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedColorArray	proc duplicate(self: var PackedColorArray): PackedColorArray		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedColorArray,Color,bool	proc bsearch(self: PackedColorArray; value: Color; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedColorArray	proc duplicate(self: PackedColorArray): PackedColorArray		77
 nim	find	gdext/arraytools.html#find,PackedColorArray,Color,Int	proc find(self: PackedColorArray; value: Color; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedColorArray,Color,Int	proc rfind(self: PackedColorArray; value: Color; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedColorArray,Color	proc count(self: PackedColorArray; value: Color): Int		83
@@ -214,8 +214,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedStringArray	proc reverse(self: v
 nim	slice	gdext/arraytools.html#slice,PackedStringArray,Int,Int	proc slice(self: PackedStringArray; begin: Int; end: Int = 2147483647): PackedStringArray		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedStringArray	proc toByteArray(self: PackedStringArray): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedStringArray	proc sort(self: var PackedStringArray): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedStringArray,String,bool	proc bsearch(self: var PackedStringArray; value: String; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedStringArray	proc duplicate(self: var PackedStringArray): PackedStringArray		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedStringArray,String,bool	proc bsearch(self: PackedStringArray; value: String; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedStringArray	proc duplicate(self: PackedStringArray): PackedStringArray		77
 nim	find	gdext/arraytools.html#find,PackedStringArray,String,Int	proc find(self: PackedStringArray; value: String; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedStringArray,String,Int	proc rfind(self: PackedStringArray; value: String; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedStringArray,String	proc count(self: PackedStringArray; value: String): Int		83
@@ -240,8 +240,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedInt32Array	proc reverse(self: va
 nim	slice	gdext/arraytools.html#slice,PackedInt32Array,Int,Int	proc slice(self: PackedInt32Array; begin: Int; end: Int = 2147483647): PackedInt32Array		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedInt32Array	proc toByteArray(self: PackedInt32Array): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedInt32Array	proc sort(self: var PackedInt32Array): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedInt32Array,Int,bool	proc bsearch(self: var PackedInt32Array; value: Int; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedInt32Array	proc duplicate(self: var PackedInt32Array): PackedInt32Array		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedInt32Array,Int,bool	proc bsearch(self: PackedInt32Array; value: Int; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedInt32Array	proc duplicate(self: PackedInt32Array): PackedInt32Array		77
 nim	find	gdext/arraytools.html#find,PackedInt32Array,Int,Int	proc find(self: PackedInt32Array; value: Int; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedInt32Array,Int,Int	proc rfind(self: PackedInt32Array; value: Int; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedInt32Array,Int	proc count(self: PackedInt32Array; value: Int): Int		83
@@ -266,8 +266,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedInt64Array	proc reverse(self: va
 nim	slice	gdext/arraytools.html#slice,PackedInt64Array,Int,Int	proc slice(self: PackedInt64Array; begin: Int; end: Int = 2147483647): PackedInt64Array		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedInt64Array	proc toByteArray(self: PackedInt64Array): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedInt64Array	proc sort(self: var PackedInt64Array): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedInt64Array,Int,bool	proc bsearch(self: var PackedInt64Array; value: Int; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedInt64Array	proc duplicate(self: var PackedInt64Array): PackedInt64Array		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedInt64Array,Int,bool	proc bsearch(self: PackedInt64Array; value: Int; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedInt64Array	proc duplicate(self: PackedInt64Array): PackedInt64Array		77
 nim	find	gdext/arraytools.html#find,PackedInt64Array,Int,Int	proc find(self: PackedInt64Array; value: Int; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedInt64Array,Int,Int	proc rfind(self: PackedInt64Array; value: Int; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedInt64Array,Int	proc count(self: PackedInt64Array; value: Int): Int		83
@@ -292,8 +292,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedFloat32Array	proc reverse(self: 
 nim	slice	gdext/arraytools.html#slice,PackedFloat32Array,Int,Int	proc slice(self: PackedFloat32Array; begin: Int; end: Int = 2147483647): PackedFloat32Array		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedFloat32Array	proc toByteArray(self: PackedFloat32Array): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedFloat32Array	proc sort(self: var PackedFloat32Array): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedFloat32Array,Float,bool	proc bsearch(self: var PackedFloat32Array; value: Float; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedFloat32Array	proc duplicate(self: var PackedFloat32Array): PackedFloat32Array		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedFloat32Array,Float,bool	proc bsearch(self: PackedFloat32Array; value: Float; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedFloat32Array	proc duplicate(self: PackedFloat32Array): PackedFloat32Array		77
 nim	find	gdext/arraytools.html#find,PackedFloat32Array,Float,Int	proc find(self: PackedFloat32Array; value: Float; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedFloat32Array,Float,Int	proc rfind(self: PackedFloat32Array; value: Float; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedFloat32Array,Float	proc count(self: PackedFloat32Array; value: Float): Int		83
@@ -318,8 +318,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedFloat64Array	proc reverse(self: 
 nim	slice	gdext/arraytools.html#slice,PackedFloat64Array,Int,Int	proc slice(self: PackedFloat64Array; begin: Int; end: Int = 2147483647): PackedFloat64Array		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedFloat64Array	proc toByteArray(self: PackedFloat64Array): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedFloat64Array	proc sort(self: var PackedFloat64Array): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedFloat64Array,Float,bool	proc bsearch(self: var PackedFloat64Array; value: Float; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedFloat64Array	proc duplicate(self: var PackedFloat64Array): PackedFloat64Array		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedFloat64Array,Float,bool	proc bsearch(self: PackedFloat64Array; value: Float; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedFloat64Array	proc duplicate(self: PackedFloat64Array): PackedFloat64Array		77
 nim	find	gdext/arraytools.html#find,PackedFloat64Array,Float,Int	proc find(self: PackedFloat64Array; value: Float; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedFloat64Array,Float,Int	proc rfind(self: PackedFloat64Array; value: Float; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedFloat64Array,Float	proc count(self: PackedFloat64Array; value: Float): Int		83
@@ -345,8 +345,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedVector2Array	proc reverse(self: 
 nim	slice	gdext/arraytools.html#slice,PackedVector2Array,Int,Int	proc slice(self: PackedVector2Array; begin: Int; end: Int = 2147483647): PackedVector2Array		72
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedVector2Array	proc toByteArray(self: PackedVector2Array): PackedByteArray		74
 nim	sort	gdext/arraytools.html#sort,PackedVector2Array	proc sort(self: var PackedVector2Array): void		76
-nim	bsearch	gdext/arraytools.html#bsearch,PackedVector2Array,Vector2,bool	proc bsearch(self: var PackedVector2Array; value: Vector2; before: bool = true): Int		78
-nim	duplicate	gdext/arraytools.html#duplicate,PackedVector2Array	proc duplicate(self: var PackedVector2Array): PackedVector2Array		80
+nim	bsearch	gdext/arraytools.html#bsearch,PackedVector2Array,Vector2,bool	proc bsearch(self: PackedVector2Array; value: Vector2; before: bool = true): Int		78
+nim	duplicate	gdext/arraytools.html#duplicate,PackedVector2Array	proc duplicate(self: PackedVector2Array): PackedVector2Array		80
 nim	find	gdext/arraytools.html#find,PackedVector2Array,Vector2,Int	proc find(self: PackedVector2Array; value: Vector2; from: Int = 0): Int		82
 nim	rfind	gdext/arraytools.html#rfind,PackedVector2Array,Vector2,Int	proc rfind(self: PackedVector2Array; value: Vector2; from: Int = -1): Int		84
 nim	count	gdext/arraytools.html#count,PackedVector2Array,Vector2	proc count(self: PackedVector2Array; value: Vector2): Int		86
@@ -372,8 +372,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedVector3Array	proc reverse(self: 
 nim	slice	gdext/arraytools.html#slice,PackedVector3Array,Int,Int	proc slice(self: PackedVector3Array; begin: Int; end: Int = 2147483647): PackedVector3Array		72
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedVector3Array	proc toByteArray(self: PackedVector3Array): PackedByteArray		74
 nim	sort	gdext/arraytools.html#sort,PackedVector3Array	proc sort(self: var PackedVector3Array): void		76
-nim	bsearch	gdext/arraytools.html#bsearch,PackedVector3Array,Vector3,bool	proc bsearch(self: var PackedVector3Array; value: Vector3; before: bool = true): Int		78
-nim	duplicate	gdext/arraytools.html#duplicate,PackedVector3Array	proc duplicate(self: var PackedVector3Array): PackedVector3Array		80
+nim	bsearch	gdext/arraytools.html#bsearch,PackedVector3Array,Vector3,bool	proc bsearch(self: PackedVector3Array; value: Vector3; before: bool = true): Int		78
+nim	duplicate	gdext/arraytools.html#duplicate,PackedVector3Array	proc duplicate(self: PackedVector3Array): PackedVector3Array		80
 nim	find	gdext/arraytools.html#find,PackedVector3Array,Vector3,Int	proc find(self: PackedVector3Array; value: Vector3; from: Int = 0): Int		82
 nim	rfind	gdext/arraytools.html#rfind,PackedVector3Array,Vector3,Int	proc rfind(self: PackedVector3Array; value: Vector3; from: Int = -1): Int		84
 nim	count	gdext/arraytools.html#count,PackedVector3Array,Vector3	proc count(self: PackedVector3Array; value: Vector3): Int		86
@@ -398,8 +398,8 @@ nim	reverse	gdext/arraytools.html#reverse,PackedVector4Array	proc reverse(self: 
 nim	slice	gdext/arraytools.html#slice,PackedVector4Array,Int,Int	proc slice(self: PackedVector4Array; begin: Int; end: Int = 2147483647): PackedVector4Array		69
 nim	toByteArray	gdext/arraytools.html#toByteArray,PackedVector4Array	proc toByteArray(self: PackedVector4Array): PackedByteArray		71
 nim	sort	gdext/arraytools.html#sort,PackedVector4Array	proc sort(self: var PackedVector4Array): void		73
-nim	bsearch	gdext/arraytools.html#bsearch,PackedVector4Array,Vector4,bool	proc bsearch(self: var PackedVector4Array; value: Vector4; before: bool = true): Int		75
-nim	duplicate	gdext/arraytools.html#duplicate,PackedVector4Array	proc duplicate(self: var PackedVector4Array): PackedVector4Array		77
+nim	bsearch	gdext/arraytools.html#bsearch,PackedVector4Array,Vector4,bool	proc bsearch(self: PackedVector4Array; value: Vector4; before: bool = true): Int		75
+nim	duplicate	gdext/arraytools.html#duplicate,PackedVector4Array	proc duplicate(self: PackedVector4Array): PackedVector4Array		77
 nim	find	gdext/arraytools.html#find,PackedVector4Array,Vector4,Int	proc find(self: PackedVector4Array; value: Vector4; from: Int = 0): Int		79
 nim	rfind	gdext/arraytools.html#rfind,PackedVector4Array,Vector4,Int	proc rfind(self: PackedVector4Array; value: Vector4; from: Int = -1): Int		81
 nim	count	gdext/arraytools.html#count,PackedVector4Array,Vector4	proc count(self: PackedVector4Array; value: Vector4): Int		83

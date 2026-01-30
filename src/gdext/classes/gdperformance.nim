@@ -12,10 +12,10 @@ proc getMonitor*(self: Performance; monitor: Performance_Monitor): float64 =
   methodbind.ptrcall(self, [getPtr monitor], addr ret)
   (addr ret).decode_result(float64)
 
-proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array[Variant] = newArray[Variant]()): void =
-  expandMethodBind(className Performance, "add_custom_monitor", 4099036814)
+proc addCustomMonitor*(self: Performance; id: StringName; callable: Callable; arguments: Array[Variant] = newArray[Variant](); `type`: Performance_MonitorType = monitorTypeQuantity): void =
+  expandMethodBind(className Performance, "add_custom_monitor", 3655788610)
   nilCheck arguments
-  methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments])
+  methodbind.ptrcall(self, [getPtr id, getPtr callable, getPtr arguments, getPtr `type`])
 
 proc removeCustomMonitor*(self: Performance; id: StringName): void =
   expandMethodBind(className Performance, "remove_custom_monitor", 3304788590)
@@ -44,3 +44,9 @@ proc getCustomMonitorNames*(self: Performance): Array[StringName] =
   var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array[StringName])
+
+proc getCustomMonitorTypes*(self: Performance): PackedInt32Array =
+  expandMethodBind(className Performance, "get_custom_monitor_types", 969006518)
+  var ret: encoded PackedInt32Array
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(PackedInt32Array)

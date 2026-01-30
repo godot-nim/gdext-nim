@@ -6,20 +6,20 @@ import gdobject; export gdobject
 
 expandOnClassImported(OpenXRExtensionWrapper, Object)
 
-method getRequestedExtensions*(self: OpenXRExtensionWrapper): Dictionary[Variant, Variant] {.base.} = (discard)
+method getRequestedExtensions*(self: OpenXRExtensionWrapper; xrVersion: uint64): Dictionary[Variant, Variant] {.base.} = (discard)
 proc registerVirtual_getRequestedExtensions*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_get_requested_extensions"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[OpenXRExtensionWrapper](p_instance).getRequestedExtensions().encode(r_ret)
+    errproof: cast[OpenXRExtensionWrapper](p_instance).getRequestedExtensions(p_args[0].decode(uint64)).encode(r_ret)
 
 method setSystemPropertiesAndGetNextPointer*(self: OpenXRExtensionWrapper; nextPointer: pointer): uint64 {.base.} = (discard)
 proc registerVirtual_setSystemPropertiesAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_system_properties_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).setSystemPropertiesAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
 
-method setInstanceCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapper; nextPointer: pointer): uint64 {.base.} = (discard)
+method setInstanceCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrapper; xrVersion: uint64; nextPointer: pointer): uint64 {.base.} = (discard)
 proc registerVirtual_setInstanceCreateInfoAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_instance_create_info_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
-    errproof: cast[OpenXRExtensionWrapper](p_instance).setInstanceCreateInfoAndGetNextPointer(p_args[0].decode(pointer)).encode(r_ret)
+    errproof: cast[OpenXRExtensionWrapper](p_instance).setInstanceCreateInfoAndGetNextPointer(p_args[0].decode(uint64), p_args[1].decode(pointer)).encode(r_ret)
 
 method setSessionCreateAndGetNextPointer*(self: OpenXRExtensionWrapper; nextPointer: pointer): uint64 {.base.} = (discard)
 proc registerVirtual_setSessionCreateAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
@@ -60,6 +60,21 @@ method setReferenceSpaceCreateInfoAndGetNextPointer*(self: OpenXRExtensionWrappe
 proc registerVirtual_setReferenceSpaceCreateInfoAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
   Self.vmethods[newStringName"_set_reference_space_create_info_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[OpenXRExtensionWrapper](p_instance).setReferenceSpaceCreateInfoAndGetNextPointer(p_args[0].decode(int32), p_args[1].decode(pointer)).encode(r_ret)
+
+method prepareViewConfiguration*(self: OpenXRExtensionWrapper; viewCount: int32): void {.base.} = (discard)
+proc registerVirtual_prepareViewConfiguration*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_prepare_view_configuration"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[OpenXRExtensionWrapper](p_instance).prepareViewConfiguration(p_args[0].decode(int32))
+
+method setViewConfigurationAndGetNextPointer*(self: OpenXRExtensionWrapper; view: uint32; nextPointer: pointer): uint64 {.base.} = (discard)
+proc registerVirtual_setViewConfigurationAndGetNextPointer*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_set_view_configuration_and_get_next_pointer"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[OpenXRExtensionWrapper](p_instance).setViewConfigurationAndGetNextPointer(p_args[0].decode(uint32), p_args[1].decode(pointer)).encode(r_ret)
+
+method printViewConfigurationInfo*(self: OpenXRExtensionWrapper; view: int32): void {.base.} = (discard)
+proc registerVirtual_printViewConfigurationInfo*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_print_view_configuration_info"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[OpenXRExtensionWrapper](p_instance).printViewConfigurationInfo(p_args[0].decode(int32))
 
 method getCompositionLayerCount*(self: OpenXRExtensionWrapper): int32 {.base.} = (discard)
 proc registerVirtual_getCompositionLayerCount*[T: OpenXRExtensionWrapper](Self: typedesc[T]) =

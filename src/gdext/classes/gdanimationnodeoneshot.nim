@@ -56,6 +56,16 @@ proc isLoopBrokenAtEnd*(self: AnimationNodeOneShot): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
+proc setAbortOnReset*(self: AnimationNodeOneShot; enable: bool): void =
+  expandMethodBind(className AnimationNodeOneShot, "set_abort_on_reset", 2586408642)
+  methodbind.ptrcall(self, [getPtr enable])
+
+proc isAbortedOnReset*(self: AnimationNodeOneShot): bool =
+  expandMethodBind(className AnimationNodeOneShot, "is_aborted_on_reset", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setAutorestart*(self: AnimationNodeOneShot; active: bool): void =
   expandMethodBind(className AnimationNodeOneShot, "set_autorestart", 2586408642)
   methodbind.ptrcall(self, [getPtr active])
@@ -113,6 +123,9 @@ template `fadeoutCurve=`*(self: AnimationNodeOneShot; value) = self.setFadeoutCu
 
 template breakLoopAtEnd*(self: AnimationNodeOneShot): untyped = self.isLoopBrokenAtEnd()
 template `breakLoopAtEnd=`*(self: AnimationNodeOneShot; value) = self.setBreakLoopAtEnd(value)
+
+template abortOnReset*(self: AnimationNodeOneShot): untyped = self.isAbortedOnReset()
+template `abortOnReset=`*(self: AnimationNodeOneShot; value) = self.setAbortOnReset(value)
 
 template autorestart*(self: AnimationNodeOneShot): untyped = self.hasAutorestart()
 template `autorestart=`*(self: AnimationNodeOneShot; value) = self.setAutorestart(value)

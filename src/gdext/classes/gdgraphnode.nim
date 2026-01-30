@@ -79,6 +79,16 @@ proc getSlotCustomIconLeft*(self: GraphNode; slotIndex: int32): gdref Texture2D 
   methodbind.ptrcall(self, [getPtr slotIndex], addr ret)
   (addr ret).decode_result(gdref Texture2D)
 
+proc setSlotMetadataLeft*(self: GraphNode; slotIndex: int32; value: Variant): void =
+  expandMethodBind(className GraphNode, "set_slot_metadata_left", 2152698145)
+  methodbind.ptrcall(self, [getPtr slotIndex, getPtr value])
+
+proc getSlotMetadataLeft*(self: GraphNode; slotIndex: int32): Variant =
+  expandMethodBind(className GraphNode, "get_slot_metadata_left", 4227898402)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr slotIndex], addr ret)
+  (addr ret).decode_result(Variant)
+
 proc isSlotEnabledRight*(self: GraphNode; slotIndex: int32): bool =
   expandMethodBind(className GraphNode, "is_slot_enabled_right", 1116898809)
   var ret: encoded bool
@@ -118,6 +128,16 @@ proc getSlotCustomIconRight*(self: GraphNode; slotIndex: int32): gdref Texture2D
   var ret: encoded gdref Texture2D
   methodbind.ptrcall(self, [getPtr slotIndex], addr ret)
   (addr ret).decode_result(gdref Texture2D)
+
+proc setSlotMetadataRight*(self: GraphNode; slotIndex: int32; value: Variant): void =
+  expandMethodBind(className GraphNode, "set_slot_metadata_right", 2152698145)
+  methodbind.ptrcall(self, [getPtr slotIndex, getPtr value])
+
+proc getSlotMetadataRight*(self: GraphNode; slotIndex: int32): Variant =
+  expandMethodBind(className GraphNode, "get_slot_metadata_right", 4227898402)
+  var ret: encoded Variant
+  methodbind.ptrcall(self, [getPtr slotIndex], addr ret)
+  (addr ret).decode_result(Variant)
 
 proc isSlotDrawStylebox*(self: GraphNode; slotIndex: int32): bool =
   expandMethodBind(className GraphNode, "is_slot_draw_stylebox", 1116898809)

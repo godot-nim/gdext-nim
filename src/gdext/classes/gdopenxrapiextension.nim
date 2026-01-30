@@ -6,6 +6,12 @@ import gdrefcounted; export gdrefcounted
 
 expandOnClassImported(OpenXRAPIExtension, RefCounted)
 
+proc getOpenxrVersion*(self: OpenXRAPIExtension): uint64 =
+  expandMethodBind(className OpenXRAPIExtension, "get_openxr_version", 2455072627)
+  var ret: encoded uint64
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(uint64)
+
 proc getInstance*(self: OpenXRAPIExtension): uint64 =
   expandMethodBind(className OpenXRAPIExtension, "get_instance", 2455072627)
   var ret: encoded uint64
@@ -238,3 +244,7 @@ proc isEnvironmentBlendModeAlphaSupported*(self: OpenXRAPIExtension): OpenXRAPIE
   var ret: encoded OpenXRAPIExtension_OpenXRAlphaBlendModeSupport
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(OpenXRAPIExtension_OpenXRAlphaBlendModeSupport)
+
+proc updateMainSwapchainSize*(self: OpenXRAPIExtension): void =
+  expandMethodBind(className OpenXRAPIExtension, "update_main_swapchain_size", 3218959716)
+  methodbind.ptrcall(self, [])

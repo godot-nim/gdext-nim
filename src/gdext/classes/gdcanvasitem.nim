@@ -153,6 +153,10 @@ proc drawPolylineColors*(self: CanvasItem; points: PackedVector2Array; colors: P
   expandMethodBind(className CanvasItem, "draw_polyline_colors", 2311979562)
   methodbind.ptrcall(self, [getPtr points, getPtr colors, getPtr width, getPtr antialiased])
 
+proc drawEllipseArc*(self: CanvasItem; center: Vector2; major: Float; minor: Float; startAngle: Float; endAngle: Float; pointCount: int32; color: Color; width: Float = -1.0; antialiased: bool = false): void =
+  expandMethodBind(className CanvasItem, "draw_ellipse_arc", 936174114)
+  methodbind.ptrcall(self, [getPtr center, getPtr major, getPtr minor, getPtr startAngle, getPtr endAngle, getPtr pointCount, getPtr color, getPtr width, getPtr antialiased])
+
 proc drawArc*(self: CanvasItem; center: Vector2; radius: Float; startAngle: Float; endAngle: Float; pointCount: int32; color: Color; width: Float = -1.0; antialiased: bool = false): void =
   expandMethodBind(className CanvasItem, "draw_arc", 4140652635)
   methodbind.ptrcall(self, [getPtr center, getPtr radius, getPtr startAngle, getPtr endAngle, getPtr pointCount, getPtr color, getPtr width, getPtr antialiased])
@@ -172,6 +176,10 @@ proc drawRect*(self: CanvasItem; rect: Rect2; color: Color; filled: bool = true;
 proc drawCircle*(self: CanvasItem; position: Vector2; radius: Float; color: Color; filled: bool = true; width: Float = -1.0; antialiased: bool = false): void =
   expandMethodBind(className CanvasItem, "draw_circle", 3153026596)
   methodbind.ptrcall(self, [getPtr position, getPtr radius, getPtr color, getPtr filled, getPtr width, getPtr antialiased])
+
+proc drawEllipse*(self: CanvasItem; position: Vector2; major: Float; minor: Float; color: Color; filled: bool = true; width: Float = -1.0; antialiased: bool = false): void =
+  expandMethodBind(className CanvasItem, "draw_ellipse", 3790774806)
+  methodbind.ptrcall(self, [getPtr position, getPtr major, getPtr minor, getPtr color, getPtr filled, getPtr width, getPtr antialiased])
 
 proc drawTexture*(self: CanvasItem; texture: gdref Texture2D; position: Vector2; modulate: Color = color(1, 1, 1, 1)): void =
   expandMethodBind(className CanvasItem, "draw_texture", 520200117)

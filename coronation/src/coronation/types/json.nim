@@ -19,6 +19,10 @@ type
     meta*: Option[string]
     default_value*: Option[string]
 
+  JsonReturnValue* = object
+    `type`*: string
+    meta*: Option[string]
+
 type
   JsonProcBase* = ref object of RootObj
     name*: string
@@ -38,7 +42,7 @@ type
     is_static*: bool
     is_virtual*: bool
     hash*: Option[int] # if is-virtual, it will be none.
-    return_value*: Option[tuple[`type`: string; meta: Option[string]]]
+    return_value*: Option[JsonReturnValue]
 
   JsonOperator* = ref object
     name*: string
@@ -126,3 +130,16 @@ type
     builtin_classes*: JsonBuiltinClasses
     classes*: JsonClasses
     native_structures*: JsonStructures
+
+proc toJsonReturnValue*(s: Option[string]): Option[JsonReturnValue] =
+  if s.isSome:
+    some JsonReturnValue(
+      `type`: get s,
+    )
+  else:
+    none JsonReturnValue
+
+proc toJsonReturnValue*(s: string): Option[JsonReturnValue] =
+  some JsonReturnValue(
+    `type`: s,
+  )

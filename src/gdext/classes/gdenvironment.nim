@@ -176,6 +176,26 @@ proc getTonemapWhite*(self: Environment): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
+proc setTonemapAgxWhite*(self: Environment; white: Float): void =
+  expandMethodBind(className Environment, "set_tonemap_agx_white", 373806689)
+  methodbind.ptrcall(self, [getPtr white])
+
+proc getTonemapAgxWhite*(self: Environment): Float =
+  expandMethodBind(className Environment, "get_tonemap_agx_white", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc setTonemapAgxContrast*(self: Environment; contrast: Float): void =
+  expandMethodBind(className Environment, "set_tonemap_agx_contrast", 373806689)
+  methodbind.ptrcall(self, [getPtr contrast])
+
+proc getTonemapAgxContrast*(self: Environment): Float =
+  expandMethodBind(className Environment, "get_tonemap_agx_contrast", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc setSsrEnabled*(self: Environment; enabled: bool): void =
   expandMethodBind(className Environment, "set_ssr_enabled", 2586408642)
   methodbind.ptrcall(self, [getPtr enabled])
@@ -976,6 +996,12 @@ template `tonemapExposure=`*(self: Environment; value) = self.setTonemapExposure
 
 template tonemapWhite*(self: Environment): untyped = self.getTonemapWhite()
 template `tonemapWhite=`*(self: Environment; value) = self.setTonemapWhite(value)
+
+template tonemapAgxWhite*(self: Environment): untyped = self.getTonemapAgxWhite()
+template `tonemapAgxWhite=`*(self: Environment; value) = self.setTonemapAgxWhite(value)
+
+template tonemapAgxContrast*(self: Environment): untyped = self.getTonemapAgxContrast()
+template `tonemapAgxContrast=`*(self: Environment; value) = self.setTonemapAgxContrast(value)
 
 template ssrEnabled*(self: Environment): untyped = self.isSsrEnabled()
 template `ssrEnabled=`*(self: Environment; value) = self.setSsrEnabled(value)

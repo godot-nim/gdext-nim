@@ -39,3 +39,9 @@ proc waitToFinish*(self: GodotThread): Variant =
 proc setThreadSafetyChecksEnabled*(_: typedesc[GodotThread]; enabled: bool): void =
   expandMethodBind(className GodotThread, "set_thread_safety_checks_enabled", 2586408642)
   methodbind.ptrcall([getPtr enabled])
+
+proc isMainThread*(_: typedesc[GodotThread]): bool =
+  expandMethodBind(className GodotThread, "is_main_thread", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(bool)

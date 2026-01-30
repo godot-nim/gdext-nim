@@ -116,6 +116,11 @@ proc registerVirtual_build*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_build"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).build().encode(r_ret)
 
+method runScene*(self: EditorPlugin; scene: String; args: PackedStringArray): PackedStringArray {.base.} = (discard)
+proc registerVirtual_runScene*[T: EditorPlugin](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_run_scene"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorPlugin](p_instance).runScene(p_args[0].decode(String), p_args[1].decode(PackedStringArray)).encode(r_ret)
+
 method enablePlugin*(self: EditorPlugin): void {.base.} = (discard)
 proc registerVirtual_enablePlugin*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_enable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -126,35 +131,21 @@ proc registerVirtual_disablePlugin*[T: EditorPlugin](Self: typedesc[T]) =
   Self.vmethods[newStringName"_disable_plugin"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorPlugin](p_instance).disablePlugin()
 
+proc addDock*(self: EditorPlugin; dock: EditorDock): void =
+  expandMethodBind(className EditorPlugin, "add_dock", 158651717)
+  methodbind.ptrcall(self, [getPtr dock])
+
+proc removeDock*(self: EditorPlugin; dock: EditorDock): void =
+  expandMethodBind(className EditorPlugin, "remove_dock", 158651717)
+  methodbind.ptrcall(self, [getPtr dock])
+
 proc addControlToContainer*(self: EditorPlugin; container: EditorPlugin_CustomControlContainer; control: Control): void =
   expandMethodBind(className EditorPlugin, "add_control_to_container", 3092750152)
   methodbind.ptrcall(self, [getPtr container, getPtr control])
 
-proc addControlToBottomPanel*(self: EditorPlugin; control: Control; title: String; shortcut: gdref Shortcut = default gdref Shortcut): Button =
-  expandMethodBind(className EditorPlugin, "add_control_to_bottom_panel", 111032269)
-  var ret: encoded Button
-  methodbind.ptrcall(self, [getPtr control, getPtr title, getPtr shortcut], addr ret)
-  (addr ret).decode_result(Button)
-
-proc addControlToDock*(self: EditorPlugin; slot: EditorPlugin_DockSlot; control: Control; shortcut: gdref Shortcut = default gdref Shortcut): void =
-  expandMethodBind(className EditorPlugin, "add_control_to_dock", 2994930786)
-  methodbind.ptrcall(self, [getPtr slot, getPtr control, getPtr shortcut])
-
-proc removeControlFromDocks*(self: EditorPlugin; control: Control): void =
-  expandMethodBind(className EditorPlugin, "remove_control_from_docks", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
-
-proc removeControlFromBottomPanel*(self: EditorPlugin; control: Control): void =
-  expandMethodBind(className EditorPlugin, "remove_control_from_bottom_panel", 1496901182)
-  methodbind.ptrcall(self, [getPtr control])
-
 proc removeControlFromContainer*(self: EditorPlugin; container: EditorPlugin_CustomControlContainer; control: Control): void =
   expandMethodBind(className EditorPlugin, "remove_control_from_container", 3092750152)
   methodbind.ptrcall(self, [getPtr container, getPtr control])
-
-proc setDockTabIcon*(self: EditorPlugin; control: Control; icon: gdref Texture2D): void =
-  expandMethodBind(className EditorPlugin, "set_dock_tab_icon", 3450529724)
-  methodbind.ptrcall(self, [getPtr control, getPtr icon])
 
 proc addToolMenuItem*(self: EditorPlugin; name: String; callable: Callable): void =
   expandMethodBind(className EditorPlugin, "add_tool_menu_item", 2137474292)
@@ -181,6 +172,28 @@ proc addCustomType*(self: EditorPlugin; `type`: String; base: String; script: gd
 proc removeCustomType*(self: EditorPlugin; `type`: String): void =
   expandMethodBind(className EditorPlugin, "remove_custom_type", 83702148)
   methodbind.ptrcall(self, [getPtr `type`])
+
+proc addControlToDock*(self: EditorPlugin; slot: EditorPlugin_DockSlot; control: Control; shortcut: gdref Shortcut = default gdref Shortcut): void =
+  expandMethodBind(className EditorPlugin, "add_control_to_dock", 2994930786)
+  methodbind.ptrcall(self, [getPtr slot, getPtr control, getPtr shortcut])
+
+proc removeControlFromDocks*(self: EditorPlugin; control: Control): void =
+  expandMethodBind(className EditorPlugin, "remove_control_from_docks", 1496901182)
+  methodbind.ptrcall(self, [getPtr control])
+
+proc setDockTabIcon*(self: EditorPlugin; control: Control; icon: gdref Texture2D): void =
+  expandMethodBind(className EditorPlugin, "set_dock_tab_icon", 3450529724)
+  methodbind.ptrcall(self, [getPtr control, getPtr icon])
+
+proc addControlToBottomPanel*(self: EditorPlugin; control: Control; title: String; shortcut: gdref Shortcut = default gdref Shortcut): Button =
+  expandMethodBind(className EditorPlugin, "add_control_to_bottom_panel", 111032269)
+  var ret: encoded Button
+  methodbind.ptrcall(self, [getPtr control, getPtr title, getPtr shortcut], addr ret)
+  (addr ret).decode_result(Button)
+
+proc removeControlFromBottomPanel*(self: EditorPlugin; control: Control): void =
+  expandMethodBind(className EditorPlugin, "remove_control_from_bottom_panel", 1496901182)
+  methodbind.ptrcall(self, [getPtr control])
 
 proc addAutoloadSingleton*(self: EditorPlugin; name: String; path: String): void =
   expandMethodBind(className EditorPlugin, "add_autoload_singleton", 3186203200)

@@ -52,6 +52,30 @@ proc getFadingFromNode*(self: AnimationNodeStateMachinePlayback): StringName =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(StringName)
 
+proc getFadingFromPlayPosition*(self: AnimationNodeStateMachinePlayback): Float =
+  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_from_play_position", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getFadingFromLength*(self: AnimationNodeStateMachinePlayback): Float =
+  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_from_length", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getFadingPosition*(self: AnimationNodeStateMachinePlayback): Float =
+  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_position", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
+proc getFadingLength*(self: AnimationNodeStateMachinePlayback): Float =
+  expandMethodBind(className AnimationNodeStateMachinePlayback, "get_fading_length", 1740695150)
+  var ret: encoded Float
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Float)
+
 proc getTravelPath*(self: AnimationNodeStateMachinePlayback): Array[StringName] =
   expandMethodBind(className AnimationNodeStateMachinePlayback, "get_travel_path", 3995934104)
   var ret: encoded Array[StringName]

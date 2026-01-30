@@ -30,3 +30,7 @@ method canGenerateSmallPreview*(self: EditorResourcePreviewGenerator): bool {.ba
 proc registerVirtual_canGenerateSmallPreview*[T: EditorResourcePreviewGenerator](Self: typedesc[T]) =
   Self.vmethods[newStringName"_can_generate_small_preview"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorResourcePreviewGenerator](p_instance).canGenerateSmallPreview().encode(r_ret)
+
+proc requestDrawAndWait*(self: EditorResourcePreviewGenerator; viewport: RID): void =
+  expandMethodBind(className EditorResourcePreviewGenerator, "request_draw_and_wait", 145472570)
+  methodbind.ptrcall(self, [getPtr viewport])

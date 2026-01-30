@@ -428,6 +428,16 @@ proc getEmbeddedSubwindows*(self: Viewport): Array[Window] =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Array[Window])
 
+proc setDragThreshold*(self: Viewport; threshold: int32): void =
+  expandMethodBind(className Viewport, "set_drag_threshold", 1286410249)
+  methodbind.ptrcall(self, [getPtr threshold])
+
+proc getDragThreshold*(self: Viewport): int32 =
+  expandMethodBind(className Viewport, "get_drag_threshold", 3905245786)
+  var ret: encoded int32
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(int32)
+
 proc setCanvasCullMask*(self: Viewport; mask: uint32): void =
   expandMethodBind(className Viewport, "set_canvas_cull_mask", 1286410249)
   methodbind.ptrcall(self, [getPtr mask])
@@ -765,6 +775,9 @@ template `guiSnapControlsToPixels=`*(self: Viewport; value) = self.setSnapContro
 
 template guiEmbedSubwindows*(self: Viewport): untyped = self.isEmbeddingSubwindows()
 template `guiEmbedSubwindows=`*(self: Viewport; value) = self.setEmbeddingSubwindows(value)
+
+template guiDragThreshold*(self: Viewport): untyped = self.getDragThreshold()
+template `guiDragThreshold=`*(self: Viewport; value) = self.setDragThreshold(value)
 
 template sdfOversize*(self: Viewport): untyped = self.getSdfOversize()
 template `sdfOversize=`*(self: Viewport; value) = self.setSdfOversize(value)

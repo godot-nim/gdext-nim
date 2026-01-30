@@ -9,7 +9,7 @@ import types/json
 import std/[ options, sequtils, strutils, strformat, sets ]
 
 proc extract_result(self: JsonUtilityFunction): RenderableResult =
-  convertToResult self.return_type
+  self.return_type.toJsonReturnValue.convert()
 
 proc extract_args(self: JsonUtilityFunction): seq[RenderableArgument] =
   result = self.arguments.get(@[])

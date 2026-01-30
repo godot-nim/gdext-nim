@@ -282,6 +282,16 @@ proc getContentScaleStretch*(self: Window): Window_ContentScaleStretch =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Window_ContentScaleStretch)
 
+proc setNonclientArea*(self: Window; area: Rect2i): void =
+  expandMethodBind(className Window, "set_nonclient_area", 1763793166)
+  methodbind.ptrcall(self, [getPtr area])
+
+proc getNonclientArea*(self: Window): Rect2i =
+  expandMethodBind(className Window, "get_nonclient_area", 410525958)
+  var ret: encoded Rect2i
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(Rect2i)
+
 proc setKeepTitleVisible*(self: Window; titleVisible: bool): void =
   expandMethodBind(className Window, "set_keep_title_visible", 2586408642)
   methodbind.ptrcall(self, [getPtr titleVisible])
@@ -653,6 +663,9 @@ template `size=`*(self: Window; value) = self.setSize(value)
 
 template currentScreen*(self: Window): untyped = self.getCurrentScreen()
 template `currentScreen=`*(self: Window; value) = self.setCurrentScreen(value)
+
+template nonclientArea*(self: Window): untyped = self.getNonclientArea()
+template `nonclientArea=`*(self: Window; value) = self.setNonclientArea(value)
 
 template mousePassthroughPolygon*(self: Window): untyped = self.getMousePassthroughPolygon()
 template `mousePassthroughPolygon=`*(self: Window; value) = self.setMousePassthroughPolygon(value)

@@ -249,37 +249,66 @@ proc fixDefaultValue(arg: RenderableArgument; value: string) =
 
 
 
-proc preconvert*(param: RenderableParamBase; basetype: Option[string]) =
-  if basetype.isNone:
-    param.typesym = TypeSym.Void
+proc convertImpl[T: RenderableParamBase](basetype: Option[string]): T =
+  new result
+  case basetype.get(""):
+  of "":
+    result.typesym = TypeSym.Void
     return
 
-  param.info.ptrdepth = basetype.get.count('*')
+  result.info.ptrdepth = basetype.get.count('*')
   var basetype = basetype.get
     .multireplace(("const ", ""), ("*", ""))
-  while basetype[^1] == ' ': basetype = basetype[0..^2]
+    .strip(true, true, {' '})
+  if basetype.startsWith("GDExtension"):
+    if basetype != "GDExtension":
+      basetype = basetype.replace("GDExtension", "")
 
   for (key, attr) in {"enum::": ptaNake, "bitfield::":ptaSet}:
     if basetype.startsWith key:
-      param.info.attribute = attr
+      result.info.attribute = attr
       basetype = basetype[key.len..^1]
       break
   if basetype.startsWith "typedarray::":
-    param.info.metaType = basetype["typedarray::".len..^1].convert(TypeSym)
+    result.info.metaType = basetype["typedarray::".len..^1].convert(TypeSym)
     basetype = "Array"
 
   if basetype.find("void") != -1:
     basetype = "pointer"
-    dec param.info.ptrdepth
-  param.typeSym = basetype.convert(TypeSym)
+    dec result.info.ptrdepth
+  result.typeSym = basetype.convert(TypeSym)
 
-proc convertToResult*(baseType: Option[string]): RenderableResult =
-  new result
-  preconvert(result, basetype)
+proc convert*(raw: Option[JsonReturnValue]): RenderableResult =
+  let basetype =
+    if raw.isNone:
+      none string
+    else:
+      case raw.get.meta.get("")
+      of "":
+        some raw.get.`type`
+      of "required":
+        # TODO: handle required (not nil) arguments
+        some raw.get.`type`
+      else:
+        raw.get.meta
+
+  result = convertImpl[RenderableResult](basetype)
 
 proc convert*(raw: JsonArgument): RenderableArgument =
-  new result
-  preconvert(result, some raw.meta.get(raw.`type`))
+  let basetype =
+    if raw.isNil:
+      none string
+    else:
+      case raw.meta.get("")
+      of "":
+        some raw.`type`
+      of "required":
+        # TODO: handle required (not nil) arguments
+        some raw.`type`
+      else:
+        raw.meta
+
+  result = convertImpl[RenderableArgument](basetype)
   result.variableSym = raw.name.replace("result", "retval").scan.convert(VariableSym)
   if raw.default_value.isSome:
     fixDefaultValue(result, get raw.default_value)

@@ -92,10 +92,17 @@ proc format(ast: PNode): PNode =
         ast
 
     of nkEnumTy:
-      if ast.sons[^1].kind == nkIdent and (
-        ast.sons[^1].ident.s.startsWith("GDEXTENSION_MAX_") or
-        ast.sons[^1].ident.s.endsWith("_MAX")):
-        ast.sons.setLen(ast.sons.len - 1)
+      var inode: PNode =
+        case ast.sons[^1].kind
+        of nkIdent:
+          ast.sons[^1]
+        of nkEnumFieldDef:
+          ast.sons[^1][0]
+        else: nil
+      if inode != nil:
+        if (inode.ident.s.startsWith("GDEXTENSION_MAX_") or
+            inode.ident.s.endsWith("_MAX")):
+          ast.sons.del(ast.sons.high)
       ast
 
     of nkProcTy:

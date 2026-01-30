@@ -10,9 +10,9 @@ proc clearFilters*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "clear_filters", 3218959716)
   methodbind.ptrcall(self, [])
 
-proc addFilter*(self: FileDialog; filter: String; description: String = newGdString()): void =
-  expandMethodBind(className FileDialog, "add_filter", 3388804757)
-  methodbind.ptrcall(self, [getPtr filter, getPtr description])
+proc addFilter*(self: FileDialog; filter: String; description: String = newGdString(); mimeType: String = newGdString()): void =
+  expandMethodBind(className FileDialog, "add_filter", 914921954)
+  methodbind.ptrcall(self, [getPtr filter, getPtr description, getPtr mimeType])
 
 proc setFilters*(self: FileDialog; filters: PackedStringArray): void =
   expandMethodBind(className FileDialog, "set_filters", 4015028928)
@@ -214,6 +214,38 @@ proc deselectAll*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "deselect_all", 3218959716)
   methodbind.ptrcall(self, [])
 
+proc setFavoriteList*(_: typedesc[FileDialog]; favorites: PackedStringArray): void =
+  expandMethodBind(className FileDialog, "set_favorite_list", 4015028928)
+  methodbind.ptrcall([getPtr favorites])
+
+proc getFavoriteList*(_: typedesc[FileDialog]): PackedStringArray =
+  expandMethodBind(className FileDialog, "get_favorite_list", 2981934095)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
+proc setRecentList*(_: typedesc[FileDialog]; recents: PackedStringArray): void =
+  expandMethodBind(className FileDialog, "set_recent_list", 4015028928)
+  methodbind.ptrcall([getPtr recents])
+
+proc getRecentList*(_: typedesc[FileDialog]): PackedStringArray =
+  expandMethodBind(className FileDialog, "get_recent_list", 2981934095)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall([], addr ret)
+  (addr ret).decode_result(PackedStringArray)
+
+proc setGetIconCallback*(_: typedesc[FileDialog]; callback: Callable): void =
+  expandMethodBind(className FileDialog, "set_get_icon_callback", 1611583062)
+  methodbind.ptrcall([getPtr callback])
+
+proc setGetThumbnailCallback*(_: typedesc[FileDialog]; callback: Callable): void =
+  expandMethodBind(className FileDialog, "set_get_thumbnail_callback", 1611583062)
+  methodbind.ptrcall([getPtr callback])
+
+proc popupFileDialog*(self: FileDialog): void =
+  expandMethodBind(className FileDialog, "popup_file_dialog", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc invalidate*(self: FileDialog): void =
   expandMethodBind(className FileDialog, "invalidate", 3218959716)
   methodbind.ptrcall(self, [])
@@ -268,6 +300,12 @@ template `recentListEnabled=`*(self: FileDialog; value) = self.setCustomizationF
 
 template layoutToggleEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(6))
 template `layoutToggleEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(6), value)
+
+template overwriteWarningEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(7))
+template `overwriteWarningEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(7), value)
+
+template deletingEnabled*(self: FileDialog): untyped = self.isCustomizationFlagEnabled(FileDialog_Customization(8))
+template `deletingEnabled=`*(self: FileDialog; value) = self.setCustomizationFlagEnabled(FileDialog_Customization(8), value)
 
 template currentDir*(self: FileDialog): untyped = self.getCurrentDir()
 template `currentDir=`*(self: FileDialog; value) = self.setCurrentDir(value)

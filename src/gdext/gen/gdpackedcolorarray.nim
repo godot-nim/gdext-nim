@@ -72,9 +72,9 @@ proc toByteArray*(self: PackedColorArray): PackedByteArray =
   `toByteArray(PackedColorArray)`.call(addr self, [], addr result)
 proc sort*(self: var PackedColorArray): void =
   `sort(PackedColorArray)`.call(addr self, [])
-proc bsearch*(self: var PackedColorArray; value: Color; before: bool = true): Int =
+proc bsearch*(self: PackedColorArray; value: Color; before: bool = true): Int =
   `bsearch(PackedColorArray Color bool)`.call(addr self, [getPtr value, getPtr before], addr result)
-proc duplicate*(self: var PackedColorArray): PackedColorArray =
+proc duplicate*(self: PackedColorArray): PackedColorArray =
   `duplicate(PackedColorArray)`.call(addr self, [], addr result)
 proc find*(self: PackedColorArray; value: Color; `from`: Int = 0): Int =
   `find(PackedColorArray Color Int)`.call(addr self, [getPtr value, getPtr `from`], addr result)
@@ -103,8 +103,8 @@ proc load_PackedColorArray_methods {.execon: staticevents.init_engine.on_load_bu
   `slice(PackedColorArray Int Int)` = load(VariantType_PackedColorArray, "slice", 2451797139)
   `toByteArray(PackedColorArray)` = load(VariantType_PackedColorArray, "to_byte_array", 247621236)
   `sort(PackedColorArray)` = load(VariantType_PackedColorArray, "sort", 3218959716)
-  `bsearch(PackedColorArray Color bool)` = load(VariantType_PackedColorArray, "bsearch", 314143821)
-  `duplicate(PackedColorArray)` = load(VariantType_PackedColorArray, "duplicate", 1011903421)
+  `bsearch(PackedColorArray Color bool)` = load(VariantType_PackedColorArray, "bsearch", 2639732838)
+  `duplicate(PackedColorArray)` = load(VariantType_PackedColorArray, "duplicate", 3072026941)
   `find(PackedColorArray Color Int)` = load(VariantType_PackedColorArray, "find", 3156095363)
   `rfind(PackedColorArray Color Int)` = load(VariantType_PackedColorArray, "rfind", 3156095363)
   `count(PackedColorArray Color)` = load(VariantType_PackedColorArray, "count", 1682108616)

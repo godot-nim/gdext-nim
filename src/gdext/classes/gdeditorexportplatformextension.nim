@@ -156,6 +156,11 @@ proc registerVirtual_getDebugProtocol*[T: EditorExportPlatformExtension](Self: t
   Self.vmethods[newStringName"_get_debug_protocol"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[EditorExportPlatformExtension](p_instance).getDebugProtocol().encode(r_ret)
 
+method initialize*(self: EditorExportPlatformExtension): void {.base.} = (discard)
+proc registerVirtual_initialize*[T: EditorExportPlatformExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_initialize"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[EditorExportPlatformExtension](p_instance).initialize()
+
 proc setConfigError*(self: EditorExportPlatformExtension; errorText: String): void =
   expandMethodBind(className EditorExportPlatformExtension, "set_config_error", 3089850668)
   methodbind.ptrcall(self, [getPtr errorText])

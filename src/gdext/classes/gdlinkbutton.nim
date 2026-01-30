@@ -16,6 +16,26 @@ proc getText*(self: LinkButton): String =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
+proc setTextOverrunBehavior*(self: LinkButton; overrunBehavior: TextServer_OverrunBehavior): void =
+  expandMethodBind(className LinkButton, "set_text_overrun_behavior", 1008890932)
+  methodbind.ptrcall(self, [getPtr overrunBehavior])
+
+proc getTextOverrunBehavior*(self: LinkButton): TextServer_OverrunBehavior =
+  expandMethodBind(className LinkButton, "get_text_overrun_behavior", 3779142101)
+  var ret: encoded TextServer_OverrunBehavior
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(TextServer_OverrunBehavior)
+
+proc setEllipsisChar*(self: LinkButton; char: String): void =
+  expandMethodBind(className LinkButton, "set_ellipsis_char", 83702148)
+  methodbind.ptrcall(self, [getPtr char])
+
+proc getEllipsisChar*(self: LinkButton): String =
+  expandMethodBind(className LinkButton, "get_ellipsis_char", 201670096)
+  var ret: encoded String
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(String)
+
 proc setTextDirection*(self: LinkButton; direction: Control_TextDirection): void =
   expandMethodBind(className LinkButton, "set_text_direction", 119160795)
   methodbind.ptrcall(self, [getPtr direction])
@@ -85,6 +105,12 @@ template `underline=`*(self: LinkButton; value) = self.setUnderlineMode(value)
 
 template uri*(self: LinkButton): untyped = self.getUri()
 template `uri=`*(self: LinkButton; value) = self.setUri(value)
+
+template textOverrunBehavior*(self: LinkButton): untyped = self.getTextOverrunBehavior()
+template `textOverrunBehavior=`*(self: LinkButton; value) = self.setTextOverrunBehavior(value)
+
+template ellipsisChar*(self: LinkButton): untyped = self.getEllipsisChar()
+template `ellipsisChar=`*(self: LinkButton; value) = self.setEllipsisChar(value)
 
 template textDirection*(self: LinkButton): untyped = self.getTextDirection()
 template `textDirection=`*(self: LinkButton; value) = self.setTextDirection(value)

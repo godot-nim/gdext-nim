@@ -120,6 +120,10 @@ proc resetInstancePhysicsInterpolation*(self: MultiMesh; instance: int32): void 
   expandMethodBind(className MultiMesh, "reset_instance_physics_interpolation", 1286410249)
   methodbind.ptrcall(self, [getPtr instance])
 
+proc resetInstancesPhysicsInterpolation*(self: MultiMesh): void =
+  expandMethodBind(className MultiMesh, "reset_instances_physics_interpolation", 3218959716)
+  methodbind.ptrcall(self, [])
+
 proc setCustomAabb*(self: MultiMesh; aabb: AABB): void =
   expandMethodBind(className MultiMesh, "set_custom_aabb", 259215842)
   methodbind.ptrcall(self, [getPtr aabb])

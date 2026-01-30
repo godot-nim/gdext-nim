@@ -382,6 +382,26 @@ proc getHScrollBar*(self: ItemList): HScrollBar =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(HScrollBar)
 
+proc setScrollHintMode*(self: ItemList; scrollHintMode: ItemList_ScrollHintMode): void =
+  expandMethodBind(className ItemList, "set_scroll_hint_mode", 2917787337)
+  methodbind.ptrcall(self, [getPtr scrollHintMode])
+
+proc getScrollHintMode*(self: ItemList): ItemList_ScrollHintMode =
+  expandMethodBind(className ItemList, "get_scroll_hint_mode", 2522227939)
+  var ret: encoded ItemList_ScrollHintMode
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(ItemList_ScrollHintMode)
+
+proc setTileScrollHint*(self: ItemList; tileScrollHint: bool): void =
+  expandMethodBind(className ItemList, "set_tile_scroll_hint", 2586408642)
+  methodbind.ptrcall(self, [getPtr tileScrollHint])
+
+proc isScrollHintTiled*(self: ItemList): bool =
+  expandMethodBind(className ItemList, "is_scroll_hint_tiled", 2240911060)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
 proc setTextOverrunBehavior*(self: ItemList; overrunBehavior: TextServer_OverrunBehavior): void =
   expandMethodBind(className ItemList, "set_text_overrun_behavior", 1008890932)
   methodbind.ptrcall(self, [getPtr overrunBehavior])
@@ -432,6 +452,12 @@ template `textOverrunBehavior=`*(self: ItemList; value) = self.setTextOverrunBeh
 
 template wraparoundItems*(self: ItemList): untyped = self.hasWraparoundItems()
 template `wraparoundItems=`*(self: ItemList; value) = self.setWraparoundItems(value)
+
+template scrollHintMode*(self: ItemList): untyped = self.getScrollHintMode()
+template `scrollHintMode=`*(self: ItemList; value) = self.setScrollHintMode(value)
+
+template tileScrollHint*(self: ItemList): untyped = self.isScrollHintTiled()
+template `tileScrollHint=`*(self: ItemList; value) = self.setTileScrollHint(value)
 
 template itemCount*(self: ItemList): untyped = self.getItemCount()
 template `itemCount=`*(self: ItemList; value) = self.setItemCount(value)

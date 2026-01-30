@@ -36,8 +36,8 @@ proc getOpenError*(_: typedesc[FileAccess]): Error =
   methodbind.ptrcall([], addr ret)
   (addr ret).decode_result(Error)
 
-proc createTemp*(_: typedesc[FileAccess]; modeFlags: int32; prefix: String = newGdString(); extension: String = newGdString(); keep: bool = false): gdref FileAccess =
-  expandMethodBind(className FileAccess, "create_temp", 3075606245)
+proc createTemp*(_: typedesc[FileAccess]; modeFlags: FileAccess_ModeFlags; prefix: String = newGdString(); extension: String = newGdString(); keep: bool = false): gdref FileAccess =
+  expandMethodBind(className FileAccess, "create_temp", 171914364)
   var ret: encoded gdref FileAccess
   methodbind.ptrcall([getPtr modeFlags, getPtr prefix, getPtr extension, getPtr keep], addr ret)
   (addr ret).decode_result(gdref FileAccess)
@@ -174,10 +174,10 @@ proc getCsvLine*(self: FileAccess; delim: String = newGdString(",")): PackedStri
   methodbind.ptrcall(self, [getPtr delim], addr ret)
   (addr ret).decode_result(PackedStringArray)
 
-proc getAsText*(self: FileAccess; skipCr: bool = false): String =
-  expandMethodBind(className FileAccess, "get_as_text", 1162154673)
+proc getAsText*(self: FileAccess): String =
+  expandMethodBind(className FileAccess, "get_as_text", 201670096)
   var ret: encoded String
-  methodbind.ptrcall(self, [getPtr skipCr], addr ret)
+  methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(String)
 
 proc getMd5*(_: typedesc[FileAccess]; path: String): String =
@@ -367,6 +367,42 @@ proc getReadOnlyAttribute*(_: typedesc[FileAccess]; file: String): bool =
   var ret: encoded bool
   methodbind.ptrcall([getPtr file], addr ret)
   (addr ret).decode_result(bool)
+
+proc getExtendedAttribute*(_: typedesc[FileAccess]; file: String; attributeName: String): PackedByteArray =
+  expandMethodBind(className FileAccess, "get_extended_attribute", 955893464)
+  var ret: encoded PackedByteArray
+  methodbind.ptrcall([getPtr file, getPtr attributeName], addr ret)
+  (addr ret).decode_result(PackedByteArray)
+
+proc getExtendedAttributeString*(_: typedesc[FileAccess]; file: String; attributeName: String): String =
+  expandMethodBind(className FileAccess, "get_extended_attribute_string", 1218461987)
+  var ret: encoded String
+  methodbind.ptrcall([getPtr file, getPtr attributeName], addr ret)
+  (addr ret).decode_result(String)
+
+proc setExtendedAttribute*(_: typedesc[FileAccess]; file: String; attributeName: String; data: PackedByteArray): Error =
+  expandMethodBind(className FileAccess, "set_extended_attribute", 2643421469)
+  var ret: encoded Error
+  methodbind.ptrcall([getPtr file, getPtr attributeName, getPtr data], addr ret)
+  (addr ret).decode_result(Error)
+
+proc setExtendedAttributeString*(_: typedesc[FileAccess]; file: String; attributeName: String; data: String): Error =
+  expandMethodBind(className FileAccess, "set_extended_attribute_string", 699024349)
+  var ret: encoded Error
+  methodbind.ptrcall([getPtr file, getPtr attributeName, getPtr data], addr ret)
+  (addr ret).decode_result(Error)
+
+proc removeExtendedAttribute*(_: typedesc[FileAccess]; file: String; attributeName: String): Error =
+  expandMethodBind(className FileAccess, "remove_extended_attribute", 852856452)
+  var ret: encoded Error
+  methodbind.ptrcall([getPtr file, getPtr attributeName], addr ret)
+  (addr ret).decode_result(Error)
+
+proc getExtendedAttributesList*(_: typedesc[FileAccess]; file: String): PackedStringArray =
+  expandMethodBind(className FileAccess, "get_extended_attributes_list", 3538744774)
+  var ret: encoded PackedStringArray
+  methodbind.ptrcall([getPtr file], addr ret)
+  (addr ret).decode_result(PackedStringArray)
 
 template bigEndian*(self: FileAccess): untyped = self.isBigEndian()
 template `bigEndian=`*(self: FileAccess; value) = self.setBigEndian(value)

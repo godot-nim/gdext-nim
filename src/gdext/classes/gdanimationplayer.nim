@@ -118,35 +118,41 @@ proc isPlaying*(self: AnimationPlayer): bool =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(bool)
 
-proc setCurrentAnimation*(self: AnimationPlayer; animation: String): void =
-  expandMethodBind(className AnimationPlayer, "set_current_animation", 83702148)
+proc isAnimationActive*(self: AnimationPlayer): bool =
+  expandMethodBind(className AnimationPlayer, "is_animation_active", 36873697)
+  var ret: encoded bool
+  methodbind.ptrcall(self, [], addr ret)
+  (addr ret).decode_result(bool)
+
+proc setCurrentAnimation*(self: AnimationPlayer; animation: StringName): void =
+  expandMethodBind(className AnimationPlayer, "set_current_animation", 3304788590)
   methodbind.ptrcall(self, [getPtr animation])
 
-proc getCurrentAnimation*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_current_animation", 201670096)
-  var ret: encoded String
+proc getCurrentAnimation*(self: AnimationPlayer): StringName =
+  expandMethodBind(className AnimationPlayer, "get_current_animation", 2002593661)
+  var ret: encoded StringName
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  (addr ret).decode_result(StringName)
 
-proc setAssignedAnimation*(self: AnimationPlayer; animation: String): void =
-  expandMethodBind(className AnimationPlayer, "set_assigned_animation", 83702148)
+proc setAssignedAnimation*(self: AnimationPlayer; animation: StringName): void =
+  expandMethodBind(className AnimationPlayer, "set_assigned_animation", 3304788590)
   methodbind.ptrcall(self, [getPtr animation])
 
-proc getAssignedAnimation*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_assigned_animation", 201670096)
-  var ret: encoded String
+proc getAssignedAnimation*(self: AnimationPlayer): StringName =
+  expandMethodBind(className AnimationPlayer, "get_assigned_animation", 2002593661)
+  var ret: encoded StringName
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  (addr ret).decode_result(StringName)
 
 proc queue*(self: AnimationPlayer; name: StringName): void =
   expandMethodBind(className AnimationPlayer, "queue", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
-proc getQueue*(self: AnimationPlayer): PackedStringArray =
-  expandMethodBind(className AnimationPlayer, "get_queue", 2981934095)
-  var ret: encoded PackedStringArray
+proc getQueue*(self: AnimationPlayer): Array[StringName] =
+  expandMethodBind(className AnimationPlayer, "get_queue", 2915620761)
+  var ret: encoded Array[StringName]
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(PackedStringArray)
+  (addr ret).decode_result(Array[StringName])
 
 proc clearQueue*(self: AnimationPlayer): void =
   expandMethodBind(className AnimationPlayer, "clear_queue", 3218959716)
@@ -168,15 +174,15 @@ proc getPlayingSpeed*(self: AnimationPlayer): Float =
   methodbind.ptrcall(self, [], addr ret)
   (addr ret).decode_result(Float)
 
-proc setAutoplay*(self: AnimationPlayer; name: String): void =
-  expandMethodBind(className AnimationPlayer, "set_autoplay", 83702148)
+proc setAutoplay*(self: AnimationPlayer; name: StringName): void =
+  expandMethodBind(className AnimationPlayer, "set_autoplay", 3304788590)
   methodbind.ptrcall(self, [getPtr name])
 
-proc getAutoplay*(self: AnimationPlayer): String =
-  expandMethodBind(className AnimationPlayer, "get_autoplay", 201670096)
-  var ret: encoded String
+proc getAutoplay*(self: AnimationPlayer): StringName =
+  expandMethodBind(className AnimationPlayer, "get_autoplay", 2002593661)
+  var ret: encoded StringName
   methodbind.ptrcall(self, [], addr ret)
-  (addr ret).decode_result(String)
+  (addr ret).decode_result(StringName)
 
 proc setMovieQuitOnFinishEnabled*(self: AnimationPlayer; enabled: bool): void =
   expandMethodBind(className AnimationPlayer, "set_movie_quit_on_finish_enabled", 2586408642)

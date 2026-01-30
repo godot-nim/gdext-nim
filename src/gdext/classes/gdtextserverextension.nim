@@ -56,6 +56,11 @@ proc registerVirtual_getSupportData*[T: TextServerExtension](Self: typedesc[T]) 
   Self.vmethods[newStringName"_get_support_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).getSupportData().encode(r_ret)
 
+method isLocaleUsingSupportData*(self: TextServerExtension; locale: String): bool {.base.} = (discard)
+proc registerVirtual_isLocaleUsingSupportData*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_is_locale_using_support_data"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).isLocaleUsingSupportData(p_args[0].decode(String)).encode(r_ret)
+
 method isLocaleRightToLeft*(self: TextServerExtension; locale: String): bool {.base.} = (discard)
 proc registerVirtual_isLocaleRightToLeft*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_is_locale_right_to_left"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -731,6 +736,11 @@ proc registerVirtual_shapedTextClear*[T: TextServerExtension](Self: typedesc[T])
   Self.vmethods[newStringName"_shaped_text_clear"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextClear(p_args[0].decode(RID))
 
+method shapedTextDuplicate*(self: TextServerExtension; shaped: RID): RID {.base.} = (discard)
+proc registerVirtual_shapedTextDuplicate*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_text_duplicate"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedTextDuplicate(p_args[0].decode(RID)).encode(r_ret)
+
 method shapedTextSetDirection*(self: TextServerExtension; shaped: RID; direction: TextServer_Direction): void {.base.} = (discard)
 proc registerVirtual_shapedTextSetDirection*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_set_direction"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
@@ -825,6 +835,11 @@ method shapedTextResizeObject*(self: TextServerExtension; shaped: RID; key: Vari
 proc registerVirtual_shapedTextResizeObject*[T: TextServerExtension](Self: typedesc[T]) =
   Self.vmethods[newStringName"_shaped_text_resize_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
     errproof: cast[TextServerExtension](p_instance).shapedTextResizeObject(p_args[0].decode(RID), p_args[1].decode(Variant), p_args[2].decode(Vector2), p_args[3].decode(InlineAlignment), p_args[4].decode(float64)).encode(r_ret)
+
+method shapedTextHasObject*(self: TextServerExtension; shaped: RID; key: Variant): bool {.base.} = (discard)
+proc registerVirtual_shapedTextHasObject*[T: TextServerExtension](Self: typedesc[T]) =
+  Self.vmethods[newStringName"_shaped_text_has_object"] = proc (p_instance: ClassInstancePtr; p_args: ptr UncheckedArray[ConstTypePtr]; r_ret: TypePtr) {.gdcall.} =
+    errproof: cast[TextServerExtension](p_instance).shapedTextHasObject(p_args[0].decode(RID), p_args[1].decode(Variant)).encode(r_ret)
 
 method shapedGetText*(self: TextServerExtension; shaped: RID): String {.base.} = (discard)
 proc registerVirtual_shapedGetText*[T: TextServerExtension](Self: typedesc[T]) =

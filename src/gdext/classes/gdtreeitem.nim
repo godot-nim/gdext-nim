@@ -245,6 +245,16 @@ proc getCustomDrawCallback*(self: TreeItem; column: int32): Callable =
   methodbind.ptrcall(self, [getPtr column], addr ret)
   (addr ret).decode_result(Callable)
 
+proc setCustomStylebox*(self: TreeItem; column: int32; stylebox: gdref StyleBox): void =
+  expandMethodBind(className TreeItem, "set_custom_stylebox", 1433009359)
+  methodbind.ptrcall(self, [getPtr column, getPtr stylebox])
+
+proc getCustomStylebox*(self: TreeItem; column: int32): gdref StyleBox =
+  expandMethodBind(className TreeItem, "get_custom_stylebox", 3362509644)
+  var ret: encoded gdref StyleBox
+  methodbind.ptrcall(self, [getPtr column], addr ret)
+  (addr ret).decode_result(gdref StyleBox)
+
 proc setCollapsed*(self: TreeItem; enable: bool): void =
   expandMethodBind(className TreeItem, "set_collapsed", 2586408642)
   methodbind.ptrcall(self, [getPtr enable])
