@@ -105,9 +105,9 @@
   argument*: int32_t
   expected*: int32_t">CallError</a></li>
 <li><a class="reference" href="#CallErrorType" title="CallErrorType {.importc: &quot;GDExtensionCallErrorType&quot;.} = enum
-  CALL_OK, CALL_ERROR_INVALID_METHOD, CALL_ERROR_INVALID_ARGUMENT,
-  CALL_ERROR_TOO_MANY_ARGUMENTS, CALL_ERROR_TOO_FEW_ARGUMENTS,
-  CALL_ERROR_INSTANCE_IS_NULL, CALL_ERROR_METHOD_NOT_CONST">CallErrorType</a></li>
+  CALL_OK = 0, CALL_ERROR_INVALID_METHOD = 1, CALL_ERROR_INVALID_ARGUMENT = 2,
+  CALL_ERROR_TOO_MANY_ARGUMENTS = 3, CALL_ERROR_TOO_FEW_ARGUMENTS = 4,
+  CALL_ERROR_INSTANCE_IS_NULL = 5, CALL_ERROR_METHOD_NOT_CONST = 6">CallErrorType</a></li>
 <li><a class="reference" href="#char16_t" title="char16_t {.importc: &quot;char16_t&quot;.} = uint16_t">char16_t</a></li>
 <li><a class="reference" href="#char32_t" title="char32_t {.importc: &quot;char32_t&quot;.} = uint32_t">char32_t</a></li>
 <li><a class="reference" href="#ClassCallVirtual" title="ClassCallVirtual {.importc: &quot;GDExtensionClassCallVirtual&quot;.} = proc (
@@ -244,22 +244,27 @@
 <li><a class="reference" href="#ClassInstancePtr" title="ClassInstancePtr {.importc: &quot;GDExtensionClassInstancePtr&quot;.} = pointer">ClassInstancePtr</a></li>
 <li><a class="reference" href="#ClassLibraryPtr" title="ClassLibraryPtr {.importc: &quot;GDExtensionClassLibraryPtr&quot;.} = pointer">ClassLibraryPtr</a></li>
 <li><a class="reference" href="#ClassMethodArgumentMetadata" title="ClassMethodArgumentMetadata {.importc: &quot;GDExtensionClassMethodArgumentMetadata&quot;.} = enum
-  METHOD_ARGUMENT_METADATA_NONE, METHOD_ARGUMENT_METADATA_INT_IS_INT8,
-  METHOD_ARGUMENT_METADATA_INT_IS_INT16, METHOD_ARGUMENT_METADATA_INT_IS_INT32,
-  METHOD_ARGUMENT_METADATA_INT_IS_INT64, METHOD_ARGUMENT_METADATA_INT_IS_UINT8,
-  METHOD_ARGUMENT_METADATA_INT_IS_UINT16,
-  METHOD_ARGUMENT_METADATA_INT_IS_UINT32,
-  METHOD_ARGUMENT_METADATA_INT_IS_UINT64,
-  METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT,
-  METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE,
-  METHOD_ARGUMENT_METADATA_INT_IS_CHAR16, METHOD_ARGUMENT_METADATA_INT_IS_CHAR32">ClassMethodArgumentMetadata</a></li>
+  METHOD_ARGUMENT_METADATA_NONE = 0, METHOD_ARGUMENT_METADATA_INT_IS_INT8 = 1,
+  METHOD_ARGUMENT_METADATA_INT_IS_INT16 = 2,
+  METHOD_ARGUMENT_METADATA_INT_IS_INT32 = 3,
+  METHOD_ARGUMENT_METADATA_INT_IS_INT64 = 4,
+  METHOD_ARGUMENT_METADATA_INT_IS_UINT8 = 5,
+  METHOD_ARGUMENT_METADATA_INT_IS_UINT16 = 6,
+  METHOD_ARGUMENT_METADATA_INT_IS_UINT32 = 7,
+  METHOD_ARGUMENT_METADATA_INT_IS_UINT64 = 8,
+  METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT = 9,
+  METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE = 10,
+  METHOD_ARGUMENT_METADATA_INT_IS_CHAR16 = 11,
+  METHOD_ARGUMENT_METADATA_INT_IS_CHAR32 = 12,
+  METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED = 13">ClassMethodArgumentMetadata</a></li>
 <li><a class="reference" href="#ClassMethodCall" title="ClassMethodCall {.importc: &quot;GDExtensionClassMethodCall&quot;.} = proc (
     method_userdata: pointer; p_instance: ClassInstancePtr;
     p_args: ptr UncheckedArray[ConstVariantPtr]; p_argument_count: Int;
     r_return: VariantPtr; r_error: ptr CallError) {.gdcall.}">ClassMethodCall</a></li>
 <li><a class="reference" href="#ClassMethodFlags" title="ClassMethodFlags {.importc: &quot;GDExtensionClassMethodFlags&quot;.} = enum
   METHOD_FLAG_NORMAL = 0, METHOD_FLAG_EDITOR = 1, METHOD_FLAG_CONST = 2,
-  METHOD_FLAG_VIRTUAL = 3, METHOD_FLAG_VARARG = 4, METHOD_FLAG_STATIC = 5">ClassMethodFlags</a></li>
+  METHOD_FLAG_VIRTUAL = 3, METHOD_FLAG_VARARG = 4, METHOD_FLAG_STATIC = 5,
+  METHOD_FLAG_VIRTUAL_REQUIRED = 7">ClassMethodFlags</a></li>
 <li><a class="reference" href="#ClassMethodInfo" title="ClassMethodInfo {.byref, importc: &quot;GDExtensionClassMethodInfo&quot;.} = object
   name*: StringNamePtr
   method_userdata*: pointer
@@ -350,8 +355,8 @@
     p_get_proc_address: InterfaceGetProcAddress; p_library: ClassLibraryPtr;
     r_initialization: ptr Initialization): Bool {.gdcall.}">InitializationFunction</a></li>
 <li><a class="reference" href="#InitializationLevel" title="InitializationLevel {.importc: &quot;GDExtensionInitializationLevel&quot;.} = enum
-  INITIALIZATION_CORE, INITIALIZATION_SERVERS, INITIALIZATION_SCENE,
-  INITIALIZATION_EDITOR">InitializationLevel</a></li>
+  INITIALIZATION_CORE = 0, INITIALIZATION_SERVERS = 1, INITIALIZATION_SCENE = 2,
+  INITIALIZATION_EDITOR = 3">InitializationLevel</a></li>
 <li><a class="reference" href="#InitializeCallback" title="InitializeCallback {.importc: &quot;GDExtensionInitializeCallback&quot;.} = proc (
     p_userdata: pointer; p_level: InitializationLevel) {.gdcall.}">InitializeCallback</a></li>
 <li><a class="reference" href="#InstanceBindingCallbacks" title="InstanceBindingCallbacks {.byref, importc: &quot;GDExtensionInstanceBindingCallbacks&quot;.} = object
@@ -511,10 +516,16 @@
     p_instance: ObjectPtr): ptr uint8_t {.gdcall.}">InterfaceImagePtrw</a></li>
 <li><a class="reference" href="#InterfaceMemAlloc" title="InterfaceMemAlloc {.importc: &quot;GDExtensionInterfaceMemAlloc&quot;.} = proc (
     p_bytes: csize_t): pointer {.gdcall.}">InterfaceMemAlloc</a></li>
+<li><a class="reference" href="#InterfaceMemAlloc2" title="InterfaceMemAlloc2 {.importc: &quot;GDExtensionInterfaceMemAlloc2&quot;.} = proc (
+    p_bytes: csize_t; p_pad_align: Bool): pointer {.gdcall.}">InterfaceMemAlloc2</a></li>
 <li><a class="reference" href="#InterfaceMemFree" title="InterfaceMemFree {.importc: &quot;GDExtensionInterfaceMemFree&quot;.} = proc (
     p_ptr: pointer) {.gdcall.}">InterfaceMemFree</a></li>
+<li><a class="reference" href="#InterfaceMemFree2" title="InterfaceMemFree2 {.importc: &quot;GDExtensionInterfaceMemFree2&quot;.} = proc (
+    p_ptr: pointer; p_pad_align: Bool) {.gdcall.}">InterfaceMemFree2</a></li>
 <li><a class="reference" href="#InterfaceMemRealloc" title="InterfaceMemRealloc {.importc: &quot;GDExtensionInterfaceMemRealloc&quot;.} = proc (
     p_ptr: pointer; p_bytes: csize_t): pointer {.gdcall.}">InterfaceMemRealloc</a></li>
+<li><a class="reference" href="#InterfaceMemRealloc2" title="InterfaceMemRealloc2 {.importc: &quot;GDExtensionInterfaceMemRealloc2&quot;.} = proc (
+    p_ptr: pointer; p_bytes: csize_t; p_pad_align: Bool): pointer {.gdcall.}">InterfaceMemRealloc2</a></li>
 <li><a class="reference" href="#InterfaceObjectCallScriptMethod" title="InterfaceObjectCallScriptMethod {.importc: &quot;GDExtensionInterfaceObjectCallScriptMethod&quot;.} = proc (
     p_object: ObjectPtr; p_method: ConstStringNamePtr;
     p_args: ptr ConstVariantPtr; p_argument_count: Int;
@@ -845,8 +856,8 @@
 <li><a class="reference" href="#InterfaceWorkerThreadPoolAddNativeGroupTask" title="InterfaceWorkerThreadPoolAddNativeGroupTask {.
     importc: &quot;GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask&quot;.} = proc (
     p_instance: ObjectPtr; p_func: WorkerThreadPoolGroupTask;
-    p_userdata: pointer; p_elements: cint; p_tasks: cint; p_high_priority: Bool;
-    p_description: ConstStringPtr): int64_t {.gdcall.}">InterfaceWorkerThreadPoolAddNativeGroupTask</a></li>
+    p_userdata: pointer; p_elements: int32_t; p_tasks: int32_t;
+    p_high_priority: Bool; p_description: ConstStringPtr): int64_t {.gdcall.}">InterfaceWorkerThreadPoolAddNativeGroupTask</a></li>
 <li><a class="reference" href="#InterfaceWorkerThreadPoolAddNativeTask" title="InterfaceWorkerThreadPoolAddNativeTask {.
     importc: &quot;GDExtensionInterfaceWorkerThreadPoolAddNativeTask&quot;.} = proc (
     p_instance: ObjectPtr; p_func: WorkerThreadPoolTask; p_userdata: pointer;
@@ -882,7 +893,7 @@
   usage*: uint32_t">PropertyInfo</a></li>
 <li><a class="reference" href="#PtrBuiltInMethod" title="PtrBuiltInMethod {.importc: &quot;GDExtensionPtrBuiltInMethod&quot;.} = proc (
     p_base: TypePtr; p_args: ptr ConstTypePtr; r_return: TypePtr;
-    p_argument_count: cint) {.gdcall.}">PtrBuiltInMethod</a></li>
+    p_argument_count: int32_t) {.gdcall.}">PtrBuiltInMethod</a></li>
 <li><a class="reference" href="#PtrConstructor" title="PtrConstructor {.importc: &quot;GDExtensionPtrConstructor&quot;.} = proc (
     p_base: UninitializedTypePtr; p_args: ptr ConstTypePtr) {.gdcall.}">PtrConstructor</a></li>
 <li><a class="reference" href="#PtrDestructor" title="PtrDestructor {.importc: &quot;GDExtensionPtrDestructor&quot;.} = proc (p_base: TypePtr) {.
@@ -904,7 +915,7 @@
 <li><a class="reference" href="#PtrSetter" title="PtrSetter {.importc: &quot;GDExtensionPtrSetter&quot;.} = proc (p_base: TypePtr;
     p_value: ConstTypePtr) {.gdcall.}">PtrSetter</a></li>
 <li><a class="reference" href="#PtrUtilityFunction" title="PtrUtilityFunction {.importc: &quot;GDExtensionPtrUtilityFunction&quot;.} = proc (
-    r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: cint) {.
+    r_return: TypePtr; p_args: ptr ConstTypePtr; p_argument_count: int32_t) {.
     gdcall.}">PtrUtilityFunction</a></li>
 <li><a class="reference" href="#RefPtr" title="RefPtr {.importc: &quot;GDExtensionRefPtr&quot;.} = pointer">RefPtr</a></li>
 <li><a class="reference" href="#ScriptInstanceCall" title="ScriptInstanceCall {.importc: &quot;GDExtensionScriptInstanceCall&quot;.} = proc (
@@ -1084,21 +1095,24 @@
     a1: VariantPtr): pointer {.gdcall.}">VariantGetInternalPtrFunc</a></li>
 <li><a class="reference" href="#VariantPtr" title="VariantPtr {.importc: &quot;GDExtensionVariantPtr&quot;.} = pointer">VariantPtr</a></li>
 <li><a class="reference" href="#VariantType" title="VariantType {.importc: &quot;GDExtensionVariantType&quot;.} = enum
-  VARIANT_TYPE_NIL, VARIANT_TYPE_BOOL, VARIANT_TYPE_INT, VARIANT_TYPE_FLOAT,
-  VARIANT_TYPE_STRING, VARIANT_TYPE_VECTOR2, VARIANT_TYPE_VECTOR2I,
-  VARIANT_TYPE_RECT2, VARIANT_TYPE_RECT2I, VARIANT_TYPE_VECTOR3,
-  VARIANT_TYPE_VECTOR3I, VARIANT_TYPE_TRANSFORM2D, VARIANT_TYPE_VECTOR4,
-  VARIANT_TYPE_VECTOR4I, VARIANT_TYPE_PLANE, VARIANT_TYPE_QUATERNION,
-  VARIANT_TYPE_AABB, VARIANT_TYPE_BASIS, VARIANT_TYPE_TRANSFORM3D,
-  VARIANT_TYPE_PROJECTION, VARIANT_TYPE_COLOR, VARIANT_TYPE_STRING_NAME,
-  VARIANT_TYPE_NODE_PATH, VARIANT_TYPE_RID, VARIANT_TYPE_OBJECT,
-  VARIANT_TYPE_CALLABLE, VARIANT_TYPE_SIGNAL, VARIANT_TYPE_DICTIONARY,
-  VARIANT_TYPE_ARRAY, VARIANT_TYPE_PACKED_BYTE_ARRAY,
-  VARIANT_TYPE_PACKED_INT32_ARRAY, VARIANT_TYPE_PACKED_INT64_ARRAY,
-  VARIANT_TYPE_PACKED_FLOAT32_ARRAY, VARIANT_TYPE_PACKED_FLOAT64_ARRAY,
-  VARIANT_TYPE_PACKED_STRING_ARRAY, VARIANT_TYPE_PACKED_VECTOR2_ARRAY,
-  VARIANT_TYPE_PACKED_VECTOR3_ARRAY, VARIANT_TYPE_PACKED_COLOR_ARRAY,
-  VARIANT_TYPE_PACKED_VECTOR4_ARRAY">VariantType</a></li>
+  VARIANT_TYPE_NIL = 0, VARIANT_TYPE_BOOL = 1, VARIANT_TYPE_INT = 2,
+  VARIANT_TYPE_FLOAT = 3, VARIANT_TYPE_STRING = 4, VARIANT_TYPE_VECTOR2 = 5,
+  VARIANT_TYPE_VECTOR2I = 6, VARIANT_TYPE_RECT2 = 7, VARIANT_TYPE_RECT2I = 8,
+  VARIANT_TYPE_VECTOR3 = 9, VARIANT_TYPE_VECTOR3I = 10,
+  VARIANT_TYPE_TRANSFORM2D = 11, VARIANT_TYPE_VECTOR4 = 12,
+  VARIANT_TYPE_VECTOR4I = 13, VARIANT_TYPE_PLANE = 14,
+  VARIANT_TYPE_QUATERNION = 15, VARIANT_TYPE_AABB = 16, VARIANT_TYPE_BASIS = 17,
+  VARIANT_TYPE_TRANSFORM3D = 18, VARIANT_TYPE_PROJECTION = 19,
+  VARIANT_TYPE_COLOR = 20, VARIANT_TYPE_STRING_NAME = 21,
+  VARIANT_TYPE_NODE_PATH = 22, VARIANT_TYPE_RID = 23, VARIANT_TYPE_OBJECT = 24,
+  VARIANT_TYPE_CALLABLE = 25, VARIANT_TYPE_SIGNAL = 26,
+  VARIANT_TYPE_DICTIONARY = 27, VARIANT_TYPE_ARRAY = 28,
+  VARIANT_TYPE_PACKED_BYTE_ARRAY = 29, VARIANT_TYPE_PACKED_INT32_ARRAY = 30,
+  VARIANT_TYPE_PACKED_INT64_ARRAY = 31, VARIANT_TYPE_PACKED_FLOAT32_ARRAY = 32,
+  VARIANT_TYPE_PACKED_FLOAT64_ARRAY = 33, VARIANT_TYPE_PACKED_STRING_ARRAY = 34,
+  VARIANT_TYPE_PACKED_VECTOR2_ARRAY = 35,
+  VARIANT_TYPE_PACKED_VECTOR3_ARRAY = 36, VARIANT_TYPE_PACKED_COLOR_ARRAY = 37,
+  VARIANT_TYPE_PACKED_VECTOR4_ARRAY = 38">VariantType</a></li>
 <li><a class="reference" href="#wchar_t" title="wchar_t = Utf16Char">wchar_t</a></li>
 <li><a class="reference" href="#WorkerThreadPoolGroupTask" title="WorkerThreadPoolGroupTask {.importc: &quot;GDExtensionWorkerThreadPoolGroupTask&quot;.} = proc (
     a1: pointer; a2: uint32_t) {.gdcall.}">WorkerThreadPoolGroupTask</a></li>
@@ -1159,8 +1173,11 @@
 <li><a class="reference" href="#interfaceImagePtr_2" title="interfaceImagePtr: InterfaceImagePtr">interfaceImagePtr</a></li>
 <li><a class="reference" href="#interfaceImagePtrw_2" title="interfaceImagePtrw: InterfaceImagePtrw">interfaceImagePtrw</a></li>
 <li><a class="reference" href="#interfaceMemAlloc_2" title="interfaceMemAlloc: InterfaceMemAlloc">interfaceMemAlloc</a></li>
+<li><a class="reference" href="#interfaceMemAlloc2_2" title="interfaceMemAlloc2: InterfaceMemAlloc2">interfaceMemAlloc2</a></li>
 <li><a class="reference" href="#interfaceMemFree_2" title="interfaceMemFree: InterfaceMemFree">interfaceMemFree</a></li>
+<li><a class="reference" href="#interfaceMemFree2_2" title="interfaceMemFree2: InterfaceMemFree2">interfaceMemFree2</a></li>
 <li><a class="reference" href="#interfaceMemRealloc_2" title="interfaceMemRealloc: InterfaceMemRealloc">interfaceMemRealloc</a></li>
+<li><a class="reference" href="#interfaceMemRealloc2_2" title="interfaceMemRealloc2: InterfaceMemRealloc2">interfaceMemRealloc2</a></li>
 <li><a class="reference" href="#interfaceObjectCallScriptMethod_2" title="interfaceObjectCallScriptMethod: InterfaceObjectCallScriptMethod">interfaceObjectCallScriptMethod</a></li>
 <li><a class="reference" href="#interfaceObjectCastTo_2" title="interfaceObjectCastTo: InterfaceObjectCastTo">interfaceObjectCastTo</a></li>
 <li><a class="reference" href="#interfaceObjectDestroy_2" title="interfaceObjectDestroy: InterfaceObjectDestroy">interfaceObjectDestroy</a></li>
@@ -1481,9 +1498,9 @@
 </div>
 <div id="CallErrorType">
   <dt><pre><a href="native.html#CallErrorType"><span class="Identifier">CallErrorType</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionCallErrorType&quot;</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">CALL_OK</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_INVALID_METHOD</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_INVALID_ARGUMENT</span><span class="Other">,</span>
-  <span class="Identifier">CALL_ERROR_TOO_MANY_ARGUMENTS</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_TOO_FEW_ARGUMENTS</span><span class="Other">,</span>
-  <span class="Identifier">CALL_ERROR_INSTANCE_IS_NULL</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_METHOD_NOT_CONST</span></pre></dt>
+  <span class="Identifier">CALL_OK</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_INVALID_METHOD</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_INVALID_ARGUMENT</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">CALL_ERROR_TOO_MANY_ARGUMENTS</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_TOO_FEW_ARGUMENTS</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
+  <span class="Identifier">CALL_ERROR_INSTANCE_IS_NULL</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">CALL_ERROR_METHOD_NOT_CONST</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
   <dd>
     
     
@@ -1795,15 +1812,19 @@
 </div>
 <div id="ClassMethodArgumentMetadata">
   <dt><pre><a href="native.html#ClassMethodArgumentMetadata"><span class="Identifier">ClassMethodArgumentMetadata</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionClassMethodArgumentMetadata&quot;</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_NONE</span><span class="Other">,</span> <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT8</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT16</span><span class="Other">,</span> <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT32</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT64</span><span class="Other">,</span> <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT8</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT16</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT32</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT64</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_CHAR16</span><span class="Other">,</span> <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_CHAR32</span></pre></dt>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_NONE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT8</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT16</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT32</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_INT64</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT8</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT16</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT32</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_UINT64</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_CHAR16</span> <span class="Other">=</span> <span class="DecNumber">11</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_INT_IS_CHAR32</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED</span> <span class="Other">=</span> <span class="DecNumber">13</span></pre></dt>
   <dd>
     
     
@@ -1824,7 +1845,8 @@
 <div id="ClassMethodFlags">
   <dt><pre><a href="native.html#ClassMethodFlags"><span class="Identifier">ClassMethodFlags</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionClassMethodFlags&quot;</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">METHOD_FLAG_NORMAL</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_EDITOR</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_CONST</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
-  <span class="Identifier">METHOD_FLAG_VIRTUAL</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_VARARG</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_STATIC</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+  <span class="Identifier">METHOD_FLAG_VIRTUAL</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_VARARG</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">METHOD_FLAG_STATIC</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">METHOD_FLAG_VIRTUAL_REQUIRED</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
   <dd>
     
     
@@ -2118,8 +2140,8 @@
 </div>
 <div id="InitializationLevel">
   <dt><pre><a href="native.html#InitializationLevel"><span class="Identifier">InitializationLevel</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInitializationLevel&quot;</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">INITIALIZATION_CORE</span><span class="Other">,</span> <span class="Identifier">INITIALIZATION_SERVERS</span><span class="Other">,</span> <span class="Identifier">INITIALIZATION_SCENE</span><span class="Other">,</span>
-  <span class="Identifier">INITIALIZATION_EDITOR</span></pre></dt>
+  <span class="Identifier">INITIALIZATION_CORE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">INITIALIZATION_SERVERS</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">INITIALIZATION_SCENE</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">INITIALIZATION_EDITOR</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -2677,6 +2699,15 @@
     
   </dd>
 </div>
+<div id="InterfaceMemAlloc2">
+  <dt><pre><a href="native.html#InterfaceMemAlloc2"><span class="Identifier">InterfaceMemAlloc2</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceMemAlloc2&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
+    <span class="Identifier">p_bytes</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span> <span class="Identifier">p_pad_align</span><span class="Other">:</span> <span class="Identifier">Bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="InterfaceMemFree">
   <dt><pre><a href="native.html#InterfaceMemFree"><span class="Identifier">InterfaceMemFree</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceMemFree&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
     <span class="Identifier">p_ptr</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
@@ -2686,9 +2717,27 @@
     
   </dd>
 </div>
+<div id="InterfaceMemFree2">
+  <dt><pre><a href="native.html#InterfaceMemFree2"><span class="Identifier">InterfaceMemFree2</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceMemFree2&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
+    <span class="Identifier">p_ptr</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">p_pad_align</span><span class="Other">:</span> <span class="Identifier">Bool</span><span class="Other">)</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="InterfaceMemRealloc">
   <dt><pre><a href="native.html#InterfaceMemRealloc"><span class="Identifier">InterfaceMemRealloc</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceMemRealloc&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
     <span class="Identifier">p_ptr</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">p_bytes</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="InterfaceMemRealloc2">
+  <dt><pre><a href="native.html#InterfaceMemRealloc2"><span class="Identifier">InterfaceMemRealloc2</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceMemRealloc2&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
+    <span class="Identifier">p_ptr</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">p_bytes</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span> <span class="Identifier">p_pad_align</span><span class="Other">:</span> <span class="Identifier">Bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
   <dd>
     
     
@@ -3880,8 +3929,8 @@
   <dt><pre><a href="native.html#InterfaceWorkerThreadPoolAddNativeGroupTask"><span class="Identifier">InterfaceWorkerThreadPoolAddNativeGroupTask</span></a> {.
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
     <span class="Identifier">p_instance</span><span class="Other">:</span> <span class="Identifier">ObjectPtr</span><span class="Other">;</span> <span class="Identifier">p_func</span><span class="Other">:</span> <span class="Identifier">WorkerThreadPoolGroupTask</span><span class="Other">;</span>
-    <span class="Identifier">p_userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">p_elements</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">p_tasks</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">p_high_priority</span><span class="Other">:</span> <span class="Identifier">Bool</span><span class="Other">;</span>
-    <span class="Identifier">p_description</span><span class="Other">:</span> <span class="Identifier">ConstStringPtr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64_t</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
+    <span class="Identifier">p_userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">p_elements</span><span class="Other">:</span> <span class="Identifier">int32_t</span><span class="Other">;</span> <span class="Identifier">p_tasks</span><span class="Other">:</span> <span class="Identifier">int32_t</span><span class="Other">;</span>
+    <span class="Identifier">p_high_priority</span><span class="Other">:</span> <span class="Identifier">Bool</span><span class="Other">;</span> <span class="Identifier">p_description</span><span class="Other">:</span> <span class="Identifier">ConstStringPtr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64_t</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
   <dd>
     
     
@@ -3994,7 +4043,7 @@
 <div id="PtrBuiltInMethod">
   <dt><pre><a href="native.html#PtrBuiltInMethod"><span class="Identifier">PtrBuiltInMethod</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionPtrBuiltInMethod&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
     <span class="Identifier">p_base</span><span class="Other">:</span> <span class="Identifier">TypePtr</span><span class="Other">;</span> <span class="Identifier">p_args</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">ConstTypePtr</span><span class="Other">;</span> <span class="Identifier">r_return</span><span class="Other">:</span> <span class="Identifier">TypePtr</span><span class="Other">;</span>
-    <span class="Identifier">p_argument_count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
+    <span class="Identifier">p_argument_count</span><span class="Other">:</span> <span class="Identifier">int32_t</span><span class="Other">)</span> {.<span class="Identifier">gdcall</span>.}</pre></dt>
   <dd>
     
     
@@ -4093,7 +4142,7 @@
 </div>
 <div id="PtrUtilityFunction">
   <dt><pre><a href="native.html#PtrUtilityFunction"><span class="Identifier">PtrUtilityFunction</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionPtrUtilityFunction&quot;</span>.} <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span>
-    <span class="Identifier">r_return</span><span class="Other">:</span> <span class="Identifier">TypePtr</span><span class="Other">;</span> <span class="Identifier">p_args</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">ConstTypePtr</span><span class="Other">;</span> <span class="Identifier">p_argument_count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> {.
+    <span class="Identifier">r_return</span><span class="Other">:</span> <span class="Identifier">TypePtr</span><span class="Other">;</span> <span class="Identifier">p_args</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">ConstTypePtr</span><span class="Other">;</span> <span class="Identifier">p_argument_count</span><span class="Other">:</span> <span class="Identifier">int32_t</span><span class="Other">)</span> {.
     <span class="Identifier">gdcall</span>.}</pre></dt>
   <dd>
     
@@ -4637,21 +4686,24 @@
 </div>
 <div id="VariantType">
   <dt><pre><a href="native.html#VariantType"><span class="Identifier">VariantType</span></a> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GDExtensionVariantType&quot;</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">VARIANT_TYPE_NIL</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_BOOL</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_INT</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_FLOAT</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_STRING</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR2</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR2I</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_RECT2</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_RECT2I</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR3</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_VECTOR3I</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_TRANSFORM2D</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR4</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_VECTOR4I</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PLANE</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_QUATERNION</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_AABB</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_BASIS</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_TRANSFORM3D</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PROJECTION</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_COLOR</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_STRING_NAME</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_NODE_PATH</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_RID</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_OBJECT</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_CALLABLE</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_SIGNAL</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_DICTIONARY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_ARRAY</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_BYTE_ARRAY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PACKED_INT32_ARRAY</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_INT64_ARRAY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PACKED_FLOAT32_ARRAY</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_FLOAT64_ARRAY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PACKED_STRING_ARRAY</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR2_ARRAY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR3_ARRAY</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_COLOR_ARRAY</span><span class="Other">,</span>
-  <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR4_ARRAY</span></pre></dt>
+  <span class="Identifier">VARIANT_TYPE_NIL</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_BOOL</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_INT</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_FLOAT</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_STRING</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR2</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_VECTOR2I</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_RECT2</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_RECT2I</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_VECTOR3</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR3I</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_TRANSFORM2D</span> <span class="Other">=</span> <span class="DecNumber">11</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_VECTOR4</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_VECTOR4I</span> <span class="Other">=</span> <span class="DecNumber">13</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PLANE</span> <span class="Other">=</span> <span class="DecNumber">14</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_QUATERNION</span> <span class="Other">=</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_AABB</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_BASIS</span> <span class="Other">=</span> <span class="DecNumber">17</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_TRANSFORM3D</span> <span class="Other">=</span> <span class="DecNumber">18</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PROJECTION</span> <span class="Other">=</span> <span class="DecNumber">19</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_COLOR</span> <span class="Other">=</span> <span class="DecNumber">20</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_STRING_NAME</span> <span class="Other">=</span> <span class="DecNumber">21</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_NODE_PATH</span> <span class="Other">=</span> <span class="DecNumber">22</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_RID</span> <span class="Other">=</span> <span class="DecNumber">23</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_OBJECT</span> <span class="Other">=</span> <span class="DecNumber">24</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_CALLABLE</span> <span class="Other">=</span> <span class="DecNumber">25</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_SIGNAL</span> <span class="Other">=</span> <span class="DecNumber">26</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_DICTIONARY</span> <span class="Other">=</span> <span class="DecNumber">27</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">28</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_BYTE_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">29</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_INT32_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">30</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_INT64_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">31</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_FLOAT32_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">32</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_FLOAT64_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">33</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_STRING_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">34</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR2_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">35</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR3_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">36</span><span class="Other">,</span> <span class="Identifier">VARIANT_TYPE_PACKED_COLOR_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">37</span><span class="Other">,</span>
+  <span class="Identifier">VARIANT_TYPE_PACKED_VECTOR4_ARRAY</span> <span class="Other">=</span> <span class="DecNumber">38</span></pre></dt>
   <dd>
     
     
@@ -5066,6 +5118,14 @@
     
   </dd>
 </div>
+<div id="interfaceMemAlloc2_2">
+  <dt><pre><a href="native.html#interfaceMemAlloc2"><span class="Identifier">interfaceMemAlloc2</span></a><span class="Other">:</span> <a href="native.html#InterfaceMemAlloc2"><span class="Identifier">InterfaceMemAlloc2</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="interfaceMemFree_2">
   <dt><pre><a href="native.html#interfaceMemFree"><span class="Identifier">interfaceMemFree</span></a><span class="Other">:</span> <a href="native.html#InterfaceMemFree"><span class="Identifier">InterfaceMemFree</span></a></pre></dt>
   <dd>
@@ -5074,8 +5134,24 @@
     
   </dd>
 </div>
+<div id="interfaceMemFree2_2">
+  <dt><pre><a href="native.html#interfaceMemFree2"><span class="Identifier">interfaceMemFree2</span></a><span class="Other">:</span> <a href="native.html#InterfaceMemFree2"><span class="Identifier">InterfaceMemFree2</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="interfaceMemRealloc_2">
   <dt><pre><a href="native.html#interfaceMemRealloc"><span class="Identifier">interfaceMemRealloc</span></a><span class="Other">:</span> <a href="native.html#InterfaceMemRealloc"><span class="Identifier">InterfaceMemRealloc</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="interfaceMemRealloc2_2">
+  <dt><pre><a href="native.html#interfaceMemRealloc2"><span class="Identifier">interfaceMemRealloc2</span></a><span class="Other">:</span> <a href="native.html#InterfaceMemRealloc2"><span class="Identifier">InterfaceMemRealloc2</span></a></pre></dt>
   <dd>
     
     
@@ -6222,7 +6298,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-01-30 05:47:06 UTC</small>
       </div>
     </div>
   </div>

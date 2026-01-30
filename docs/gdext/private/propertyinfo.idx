@@ -1,40 +1,40 @@
 nimTitle	propertyinfo	gdext/private/propertyinfo.html	module gdext/private/propertyinfo		0
-nim	HeapPropertyInfo	gdext/private/propertyinfo.html#HeapPropertyInfo	object HeapPropertyInfo		12
-nim	GodotClassMeta	gdext/private/propertyinfo.html#GodotClassMeta	object GodotClassMeta		20
-nim	GodotEnumMeta	gdext/private/propertyinfo.html#GodotEnumMeta	object GodotEnumMeta		26
-nim	Meta	gdext/private/propertyinfo.html#Meta,typedesc[]	proc Meta[T: enum](_: typedesc[T | set[T]]): var GodotEnumMeta		30
-nim	Meta	gdext/private/propertyinfo.html#Meta,typedesc[SomeClass]	proc Meta(T: typedesc[SomeClass]): var GodotClassMeta		52
-nim	className	gdext/private/propertyinfo.html#className,typedesc[T]	proc className[T: not (SomeClass | GdRef | enum)](_: typedesc[T]): var StringName		73
-nim	className	gdext/private/propertyinfo.html#className,typedesc[SomeClass]	proc className(T: typedesc[SomeClass]): var StringName		77
-nim	className	gdext/private/propertyinfo.html#className,typedesc[GdRef]	proc className(T: typedesc[GdRef]): var StringName		78
-nim	className	gdext/private/propertyinfo.html#className,typedesc[]	proc className(E: typedesc[enum]): StringName		79
-nim	callbacks	gdext/private/propertyinfo.html#callbacks,typedesc[SomeClass]	proc callbacks(T: typedesc[SomeClass]): var InstanceBindingCallbacks		92
-nim	vmethods	gdext/private/propertyinfo.html#vmethods,typedesc[SomeClass]	proc vmethods(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual]		93
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc	template metadata(T: typedesc): ClassMethodArgumentMetadata		99
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[]	template metadata(T: typedesc[enum]): ClassMethodArgumentMetadata		104
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[set[E]]	template metadata[E: enum](T: typedesc[set[E]]): ClassMethodArgumentMetadata		114
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int]	template metadata(T: typedesc[int]): ClassMethodArgumentMetadata		126
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint]	template metadata(T: typedesc[uint]): ClassMethodArgumentMetadata		129
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int64]	template metadata(T: typedesc[int64]): ClassMethodArgumentMetadata		133
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int32]	template metadata(T: typedesc[int32]): ClassMethodArgumentMetadata		134
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int16]	template metadata(T: typedesc[int16]): ClassMethodArgumentMetadata		135
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int8]	template metadata(T: typedesc[int8]): ClassMethodArgumentMetadata		136
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint64]	template metadata(T: typedesc[uint64]): ClassMethodArgumentMetadata		138
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint32]	template metadata(T: typedesc[uint32]): ClassMethodArgumentMetadata		139
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint16]	template metadata(T: typedesc[uint16]): ClassMethodArgumentMetadata		140
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint8]	template metadata(T: typedesc[uint8]): ClassMethodArgumentMetadata		141
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[float64]	template metadata(T: typedesc[float64]): ClassMethodArgumentMetadata		145
-nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[float32]	template metadata(T: typedesc[float32]): ClassMethodArgumentMetadata		146
-nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc	template uniqueUsage(T: typedesc): set[PropertyUsageFlags]		151
-nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[Variant]	template uniqueUsage(T: typedesc[Variant]): set[PropertyUsageFlags]		152
-nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[]	template uniqueUsage(T: typedesc[enum]): set[PropertyUsageFlags]		153
-nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[set[E]]	template uniqueUsage[E: enum](T: typedesc[set[E]]): set[PropertyUsageFlags]		154
-nim	unheap	gdext/private/propertyinfo.html#unheap,HeapPropertyInfo	proc unheap(info: HeapPropertyInfo): PropertyInfo		156
-nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,VariantType,PropertyHint,set[PropertyUsageFlags]	proc propertyInfo(typ: VariantType; name = StringName(); class_name = StringName();\n             hint: PropertyHint = propertyHint_None; hint_string = String();\n    usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		167
-nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,typedesc[T],PropertyHint,set[PropertyUsageFlags]	proc propertyInfo[T: SomeProperty](_: typedesc[T]; name = StringName();\n                              hint: PropertyHint = propertyHint_None;\n                              hint_string = String(); usage: set[\n    PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		183
-nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,typedesc[varargs[T]],PropertyHint,set[PropertyUsageFlags]	proc propertyInfo[T: SomeProperty](_: typedesc[varargs[T]]; name = StringName();\n                              hint: PropertyHint = propertyHint_None;\n                              hint_string = String(); usage: set[\n    PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		205
-nimgrp	Meta	gdext/private/propertyinfo.html#Meta-procs-all	proc		30
-nimgrp	classname	gdext/private/propertyinfo.html#className-procs-all	proc		73
-nimgrp	propertyinfo	gdext/private/propertyinfo.html#propertyInfo-procs-all	proc		167
-nimgrp	uniqueusage	gdext/private/propertyinfo.html#uniqueUsage-templates-all	template		151
-nimgrp	metadata	gdext/private/propertyinfo.html#metadata-templates-all	template		99
+nim	HeapPropertyInfo	gdext/private/propertyinfo.html#HeapPropertyInfo	object HeapPropertyInfo		13
+nim	GodotClassMeta	gdext/private/propertyinfo.html#GodotClassMeta	object GodotClassMeta		21
+nim	GodotEnumMeta	gdext/private/propertyinfo.html#GodotEnumMeta	object GodotEnumMeta		27
+nim	Meta	gdext/private/propertyinfo.html#Meta,typedesc[]	proc Meta[T: enum](_: typedesc[T | set[T]]): var GodotEnumMeta		31
+nim	Meta	gdext/private/propertyinfo.html#Meta,typedesc[SomeClass]	proc Meta(T: typedesc[SomeClass]): var GodotClassMeta		53
+nim	className	gdext/private/propertyinfo.html#className,typedesc[T]	proc className[T: not (SomeClass | GdRef | enum)](_: typedesc[T]): var StringName		79
+nim	className	gdext/private/propertyinfo.html#className,typedesc[SomeClass]	proc className(T: typedesc[SomeClass]): var StringName		83
+nim	className	gdext/private/propertyinfo.html#className,typedesc[GdRef]	proc className(T: typedesc[GdRef]): var StringName		84
+nim	className	gdext/private/propertyinfo.html#className,typedesc[]	proc className(E: typedesc[enum]): StringName		85
+nim	callbacks	gdext/private/propertyinfo.html#callbacks,typedesc[SomeClass]	proc callbacks(T: typedesc[SomeClass]): var InstanceBindingCallbacks		98
+nim	vmethods	gdext/private/propertyinfo.html#vmethods,typedesc[SomeClass]	proc vmethods(T: typedesc[SomeClass]): var Table[StringName, ClassCallVirtual]		99
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc	template metadata(T: typedesc): ClassMethodArgumentMetadata		105
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[]	template metadata(T: typedesc[enum]): ClassMethodArgumentMetadata		110
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[set[E]]	template metadata[E: enum](T: typedesc[set[E]]): ClassMethodArgumentMetadata		120
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int]	template metadata(T: typedesc[int]): ClassMethodArgumentMetadata		132
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint]	template metadata(T: typedesc[uint]): ClassMethodArgumentMetadata		135
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int64]	template metadata(T: typedesc[int64]): ClassMethodArgumentMetadata		139
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int32]	template metadata(T: typedesc[int32]): ClassMethodArgumentMetadata		140
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int16]	template metadata(T: typedesc[int16]): ClassMethodArgumentMetadata		141
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[int8]	template metadata(T: typedesc[int8]): ClassMethodArgumentMetadata		142
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint64]	template metadata(T: typedesc[uint64]): ClassMethodArgumentMetadata		144
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint32]	template metadata(T: typedesc[uint32]): ClassMethodArgumentMetadata		145
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint16]	template metadata(T: typedesc[uint16]): ClassMethodArgumentMetadata		146
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[uint8]	template metadata(T: typedesc[uint8]): ClassMethodArgumentMetadata		147
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[float64]	template metadata(T: typedesc[float64]): ClassMethodArgumentMetadata		151
+nim	metadata	gdext/private/propertyinfo.html#metadata.t,typedesc[float32]	template metadata(T: typedesc[float32]): ClassMethodArgumentMetadata		152
+nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc	template uniqueUsage(T: typedesc): set[PropertyUsageFlags]		157
+nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[Variant]	template uniqueUsage(T: typedesc[Variant]): set[PropertyUsageFlags]		158
+nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[]	template uniqueUsage(T: typedesc[enum]): set[PropertyUsageFlags]		159
+nim	uniqueUsage	gdext/private/propertyinfo.html#uniqueUsage.t,typedesc[set[E]]	template uniqueUsage[E: enum](T: typedesc[set[E]]): set[PropertyUsageFlags]		160
+nim	unheap	gdext/private/propertyinfo.html#unheap,HeapPropertyInfo	proc unheap(info: HeapPropertyInfo): PropertyInfo		162
+nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,VariantType,PropertyHint,set[PropertyUsageFlags]	proc propertyInfo(typ: VariantType; name = StringName(); class_name = StringName();\n             hint: PropertyHint = propertyHint_None; hint_string = String();\n    usage: set[PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		173
+nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,typedesc[T],PropertyHint,set[PropertyUsageFlags]	proc propertyInfo[T: SomeProperty](_: typedesc[T]; name = StringName();\n                              hint: PropertyHint = propertyHint_None;\n                              hint_string = String(); usage: set[\n    PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		189
+nim	propertyInfo	gdext/private/propertyinfo.html#propertyInfo,typedesc[varargs[T]],PropertyHint,set[PropertyUsageFlags]	proc propertyInfo[T: SomeProperty](_: typedesc[varargs[T]]; name = StringName();\n                              hint: PropertyHint = propertyHint_None;\n                              hint_string = String(); usage: set[\n    PropertyUsageFlags] = PropertyUsageFlags.propertyUsageDefault): HeapPropertyInfo		211
+nimgrp	Meta	gdext/private/propertyinfo.html#Meta-procs-all	proc		31
+nimgrp	classname	gdext/private/propertyinfo.html#className-procs-all	proc		79
+nimgrp	propertyinfo	gdext/private/propertyinfo.html#propertyInfo-procs-all	proc		173
+nimgrp	uniqueusage	gdext/private/propertyinfo.html#uniqueUsage-templates-all	template		157
+nimgrp	metadata	gdext/private/propertyinfo.html#metadata-templates-all	template		105

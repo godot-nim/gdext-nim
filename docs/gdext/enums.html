@@ -264,6 +264,10 @@
   transparencyDisabled = 0, transparencyAlpha = 1, transparencyAlphaScissor = 2,
   transparencyAlphaHash = 3, transparencyAlphaDepthPrePass = 4,
   transparencyMax = 5">BaseMaterial3D_Transparency</a></li>
+<li><a class="reference" href="#BoneConstraint3D_ReferenceType" title="BoneConstraint3D_ReferenceType {.size: 8.} = enum
+  referenceTypeBone = 0, referenceTypeNode = 1">BoneConstraint3D_ReferenceType</a></li>
+<li><a class="reference" href="#BoneTwistDisperser3D_DisperseMode" title="BoneTwistDisperser3D_DisperseMode {.size: 8.} = enum
+  disperseModeEven = 0, disperseModeWeighted = 1, disperseModeCustom = 2">BoneTwistDisperser3D_DisperseMode</a></li>
 <li><a class="reference" href="#BoxContainer_AlignmentMode" title="BoxContainer_AlignmentMode {.size: 8.} = enum
   alignmentBegin = 0, alignmentCenter = 1, alignmentEnd = 2">BoxContainer_AlignmentMode</a></li>
 <li><a class="reference" href="#Camera2D_AnchorMode" title="Camera2D_AnchorMode {.size: 8.} = enum
@@ -397,7 +401,8 @@
 <li><a class="reference" href="#CPUParticles2D_EmissionShape" title="CPUParticles2D_EmissionShape {.size: 8.} = enum
   emissionShapePoint = 0, emissionShapeSphere = 1,
   emissionShapeSphereSurface = 2, emissionShapeRectangle = 3,
-  emissionShapePoints = 4, emissionShapeDirectedPoints = 5, emissionShapeMax = 6">CPUParticles2D_EmissionShape</a></li>
+  emissionShapePoints = 4, emissionShapeDirectedPoints = 5,
+  emissionShapeRing = 6, emissionShapeMax = 7">CPUParticles2D_EmissionShape</a></li>
 <li><a class="reference" href="#CPUParticles2D_Parameter" title="CPUParticles2D_Parameter {.size: 8.} = enum
   paramInitialLinearVelocity = 0, paramAngularVelocity = 1,
   paramOrbitVelocity = 2, paramLinearAccel = 3, paramRadialAccel = 4,
@@ -547,6 +552,13 @@
   contextSlotScriptEditor = 2, contextSlotFilesystemCreate = 3,
   contextSlotScriptEditorCode = 4, contextSlotSceneTabs = 5,
   contextSlot2DEditor = 6">EditorContextMenuPlugin_ContextMenuSlot</a></li>
+<li><a class="reference" href="#EditorDock_DockLayout" title="EditorDock_DockLayout = enum
+  dockLayoutVertical = 0, dockLayoutHorizontal = 1, dockLayoutFloating = 2,
+  `-- Padding - Max --` = 63">EditorDock_DockLayout</a></li>
+<li><a class="reference" href="#EditorDock_DockSlot" title="EditorDock_DockSlot {.size: 8.} = enum
+  dockSlotNone = -1, dockSlotLeftUl = 0, dockSlotLeftBl = 1, dockSlotLeftUr = 2,
+  dockSlotLeftBr = 3, dockSlotRightUl = 4, dockSlotRightBl = 5,
+  dockSlotRightUr = 6, dockSlotRightBr = 7, dockSlotBottom = 8, dockSlotMax = 9">EditorDock_DockSlot</a></li>
 <li><a class="reference" href="#EditorExportPlatform_DebugFlags" title="EditorExportPlatform_DebugFlags = enum
   debugFlagDumbClient = 0, debugFlagRemoteDebug = 1,
   debugFlagRemoteDebugLocalhost = 2, debugFlagViewCollisions = 3,
@@ -566,14 +578,8 @@
 <li><a class="reference" href="#EditorFeatureProfile_Feature" title="EditorFeatureProfile_Feature {.size: 8.} = enum
   feature3D = 0, featureScript = 1, featureAssetLib = 2, featureSceneTree = 3,
   featureNodeDock = 4, featureFilesystemDock = 5, featureImportDock = 6,
-  featureHistoryDock = 7, featureGame = 8, featureMax = 9">EditorFeatureProfile_Feature</a></li>
-<li><a class="reference" href="#EditorFileDialog_Access" title="EditorFileDialog_Access {.size: 8.} = enum
-  accessResources = 0, accessUserdata = 1, accessFilesystem = 2">EditorFileDialog_Access</a></li>
-<li><a class="reference" href="#EditorFileDialog_DisplayMode" title="EditorFileDialog_DisplayMode {.size: 8.} = enum
-  displayThumbnails = 0, displayList = 1">EditorFileDialog_DisplayMode</a></li>
-<li><a class="reference" href="#EditorFileDialog_FileMode" title="EditorFileDialog_FileMode {.size: 8.} = enum
-  fileModeOpenFile = 0, fileModeOpenFiles = 1, fileModeOpenDir = 2,
-  fileModeOpenAny = 3, fileModeSaveFile = 4">EditorFileDialog_FileMode</a></li>
+  featureHistoryDock = 7, featureGame = 8, featureSignalsDock = 9,
+  featureGroupsDock = 10, featureMax = 11">EditorFeatureProfile_Feature</a></li>
 <li><a class="reference" href="#EditorPlugin_AfterGUIInput" title="EditorPlugin_AfterGUIInput {.size: 8.} = enum
   afterGuiInputPass = 0, afterGuiInputStop = 1, afterGuiInputCustom = 2">EditorPlugin_AfterGUIInput</a></li>
 <li><a class="reference" href="#EditorPlugin_CustomControlContainer" title="EditorPlugin_CustomControlContainer {.size: 8.} = enum
@@ -584,14 +590,16 @@
   containerCanvasEditorBottom = 8, containerInspectorBottom = 9,
   containerProjectSettingTabLeft = 10, containerProjectSettingTabRight = 11">EditorPlugin_CustomControlContainer</a></li>
 <li><a class="reference" href="#EditorPlugin_DockSlot" title="EditorPlugin_DockSlot {.size: 8.} = enum
-  dockSlotLeftUl = 0, dockSlotLeftBl = 1, dockSlotLeftUr = 2,
+  dockSlotNone = -1, dockSlotLeftUl = 0, dockSlotLeftBl = 1, dockSlotLeftUr = 2,
   dockSlotLeftBr = 3, dockSlotRightUl = 4, dockSlotRightBl = 5,
-  dockSlotRightUr = 6, dockSlotRightBr = 7, dockSlotMax = 8">EditorPlugin_DockSlot</a></li>
+  dockSlotRightUr = 6, dockSlotRightBr = 7, dockSlotBottom = 8, dockSlotMax = 9">EditorPlugin_DockSlot</a></li>
 <li><a class="reference" href="#EditorScenePostImportPlugin_InternalImportCategory" title="EditorScenePostImportPlugin_InternalImportCategory {.size: 8.} = enum
   internalImportCategoryNode = 0, internalImportCategoryMesh3DNode = 1,
   internalImportCategoryMesh = 2, internalImportCategoryMaterial = 3,
   internalImportCategoryAnimation = 4, internalImportCategoryAnimationNode = 5,
   internalImportCategorySkeleton3DNode = 6, internalImportCategoryMax = 7">EditorScenePostImportPlugin_InternalImportCategory</a></li>
+<li><a class="reference" href="#EditorSpinSlider_ControlState" title="EditorSpinSlider_ControlState {.size: 8.} = enum
+  controlStateDefault = 0, controlStatePreferSlider = 1, controlStateHide = 2">EditorSpinSlider_ControlState</a></li>
 <li><a class="reference" href="#EditorToaster_Severity" title="EditorToaster_Severity {.size: 8.} = enum
   severityInfo = 0, severityWarning = 1, severityError = 2">EditorToaster_Severity</a></li>
 <li><a class="reference" href="#EditorUndoRedoManager_SpecialHistory" title="EditorUndoRedoManager_SpecialHistory {.size: 8.} = enum
@@ -693,7 +701,8 @@
 <li><a class="reference" href="#FileDialog_Customization" title="FileDialog_Customization {.size: 8.} = enum
   customizationHiddenFiles = 0, customizationCreateFolder = 1,
   customizationFileFilter = 2, customizationFileSort = 3,
-  customizationFavorites = 4, customizationRecent = 5, customizationLayout = 6">FileDialog_Customization</a></li>
+  customizationFavorites = 4, customizationRecent = 5, customizationLayout = 6,
+  customizationOverwriteWarning = 7, customizationDelete = 8">FileDialog_Customization</a></li>
 <li><a class="reference" href="#FileDialog_DisplayMode" title="FileDialog_DisplayMode {.size: 8.} = enum
   displayThumbnails = 0, displayList = 1">FileDialog_DisplayMode</a></li>
 <li><a class="reference" href="#FileDialog_FileMode" title="FileDialog_FileMode {.size: 8.} = enum
@@ -770,6 +779,11 @@
   gltfObjectModelTypeFloat4 = 6, gltfObjectModelTypeFloat2X2 = 7,
   gltfObjectModelTypeFloat3X3 = 8, gltfObjectModelTypeFloat4X4 = 9,
   gltfObjectModelTypeInt = 10">GLTFObjectModelProperty_GLTFObjectModelType</a></li>
+<li><a class="reference" href="#GLTFState_HandleBinaryImageMode" title="GLTFState_HandleBinaryImageMode {.size: 8.} = enum
+  handleBinaryImageModeDiscardTextures = 0,
+  handleBinaryImageModeExtractTextures = 1,
+  handleBinaryImageModeEmbedAsBasisu = 2,
+  handleBinaryImageModeEmbedAsUncompressed = 3">GLTFState_HandleBinaryImageMode</a></li>
 <li><a class="reference" href="#GodotThread_Priority" title="GodotThread_Priority {.size: 8.} = enum
   priorityLow = 0, priorityNormal = 1, priorityHigh = 2">GodotThread_Priority</a></li>
 <li><a class="reference" href="#GPUParticles2D_DrawOrder" title="GPUParticles2D_DrawOrder {.size: 8.} = enum
@@ -886,7 +900,9 @@
   formatEtc2Rg11 = 28, formatEtc2Rg11S = 29, formatEtc2Rgb8 = 30,
   formatEtc2Rgba8 = 31, formatEtc2Rgb8A1 = 32, formatEtc2RaAsRg = 33,
   formatDxt5RaAsRg = 34, formatAstc4X4 = 35, formatAstc4X4Hdr = 36,
-  formatAstc8X8 = 37, formatAstc8X8Hdr = 38, formatMax = 39">Image_Format</a></li>
+  formatAstc8X8 = 37, formatAstc8X8Hdr = 38, formatR16 = 39, formatRg16 = 40,
+  formatRgb16 = 41, formatRgba16 = 42, formatR16I = 43, formatRg16I = 44,
+  formatRgb16I = 45, formatRgba16I = 46, formatMax = 47">Image_Format</a></li>
 <li><a class="reference" href="#Image_Interpolation" title="Image_Interpolation {.size: 8.} = enum
   interpolateNearest = 0, interpolateBilinear = 1, interpolateCubic = 2,
   interpolateTrilinear = 3, interpolateLanczos = 4">Image_Interpolation</a></li>
@@ -917,6 +933,9 @@
   typeNone = 0, typeIpv4 = 1, typeIpv6 = 2, typeAny = 3">IP_Type</a></li>
 <li><a class="reference" href="#ItemList_IconMode" title="ItemList_IconMode {.size: 8.} = enum
   iconModeTop = 0, iconModeLeft = 1">ItemList_IconMode</a></li>
+<li><a class="reference" href="#ItemList_ScrollHintMode" title="ItemList_ScrollHintMode {.size: 8.} = enum
+  scrollHintModeDisabled = 0, scrollHintModeBoth = 1, scrollHintModeTop = 2,
+  scrollHintModeBottom = 3">ItemList_ScrollHintMode</a></li>
 <li><a class="reference" href="#ItemList_SelectMode" title="ItemList_SelectMode {.size: 8.} = enum
   selectSingle = 0, selectMulti = 1, selectToggle = 2">ItemList_SelectMode</a></li>
 <li><a class="reference" href="#JoyAxis" title="JoyAxis {.size: 8.} = enum
@@ -1037,6 +1056,9 @@
   lineJointSharp = 0, lineJointBevel = 1, lineJointRound = 2">Line2D_LineJointMode</a></li>
 <li><a class="reference" href="#Line2D_LineTextureMode" title="Line2D_LineTextureMode {.size: 8.} = enum
   lineTextureNone = 0, lineTextureTile = 1, lineTextureStretch = 2">Line2D_LineTextureMode</a></li>
+<li><a class="reference" href="#LineEdit_ExpandMode" title="LineEdit_ExpandMode {.size: 8.} = enum
+  expandModeOriginalSize = 0, expandModeFitToText = 1,
+  expandModeFitToLineEdit = 2">LineEdit_ExpandMode</a></li>
 <li><a class="reference" href="#LineEdit_MenuItems" title="LineEdit_MenuItems {.size: 8.} = enum
   menuCut = 0, menuCopy = 1, menuPaste = 2, menuClear = 3, menuSelectAll = 4,
   menuUndo = 5, menuRedo = 6, menuSubmenuTextDir = 7, menuDirInherited = 8,
@@ -1186,7 +1208,8 @@
   autoTranslateModeDisabled = 2">Node_AutoTranslateMode</a></li>
 <li><a class="reference" href="#Node_DuplicateFlags" title="Node_DuplicateFlags {.size: 8.} = enum
   duplicateSignals = 1, duplicateGroups = 2, duplicateScripts = 4,
-  duplicateUseInstantiation = 8">Node_DuplicateFlags</a></li>
+  duplicateUseInstantiation = 8, duplicateDefault = 15,
+  duplicateInternalState = 16">Node_DuplicateFlags</a></li>
 <li><a class="reference" href="#Node_InternalMode" title="Node_InternalMode {.size: 8.} = enum
   internalModeDisabled = 0, internalModeFront = 1, internalModeBack = 2">Node_InternalMode</a></li>
 <li><a class="reference" href="#Node_PhysicsInterpolationMode" title="Node_PhysicsInterpolationMode {.size: 8.} = enum
@@ -1211,6 +1234,9 @@
 <li><a class="reference" href="#OpenXRAction_ActionType" title="OpenXRAction_ActionType {.size: 8.} = enum
   openxrActionBool = 0, openxrActionFloat = 1, openxrActionVector2 = 2,
   openxrActionPose = 3">OpenXRAction_ActionType</a></li>
+<li><a class="reference" href="#OpenXRAndroidThreadSettingsExtension_ThreadType" title="OpenXRAndroidThreadSettingsExtension_ThreadType {.size: 8.} = enum
+  threadTypeApplicationMain = 0, threadTypeApplicationWorker = 1,
+  threadTypeRendererMain = 2, threadTypeRendererWorker = 3">OpenXRAndroidThreadSettingsExtension_ThreadType</a></li>
 <li><a class="reference" href="#OpenXRAPIExtension_OpenXRAlphaBlendModeSupport" title="OpenXRAPIExtension_OpenXRAlphaBlendModeSupport {.size: 8.} = enum
   openxrAlphaBlendModeSupportNone = 0, openxrAlphaBlendModeSupportReal = 1,
   openxrAlphaBlendModeSupportEmulating = 2">OpenXRAPIExtension_OpenXRAlphaBlendModeSupport</a></li>
@@ -1278,6 +1304,45 @@
 <li><a class="reference" href="#OpenXRRenderModelManager_RenderModelTracker" title="OpenXRRenderModelManager_RenderModelTracker {.size: 8.} = enum
   renderModelTrackerAny = 0, renderModelTrackerNoneSet = 1,
   renderModelTrackerLeftHand = 2, renderModelTrackerRightHand = 3">OpenXRRenderModelManager_RenderModelTracker</a></li>
+<li><a class="reference" href="#OpenXRSpatialAnchorCapability_PersistenceScope" title="OpenXRSpatialAnchorCapability_PersistenceScope {.size: 8.} = enum
+  persistenceScopeSystemManaged = 1, persistenceScopeLocalAnchors = 1000781000">OpenXRSpatialAnchorCapability_PersistenceScope</a></li>
+<li><a class="reference" href="#OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict" title="OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict {.size: 8.} = enum
+  aprilTagDict16H5 = 1, aprilTagDict25H9 = 2, aprilTagDict36H10 = 3,
+  aprilTagDict36H11 = 4">OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict</a></li>
+<li><a class="reference" href="#OpenXRSpatialCapabilityConfigurationAruco_ArucoDict" title="OpenXRSpatialCapabilityConfigurationAruco_ArucoDict {.size: 8.} = enum
+  arucoDict4X450 = 1, arucoDict4X4100 = 2, arucoDict4X4250 = 3,
+  arucoDict4X41000 = 4, arucoDict5X550 = 5, arucoDict5X5100 = 6,
+  arucoDict5X5250 = 7, arucoDict5X51000 = 8, arucoDict6X650 = 9,
+  arucoDict6X6100 = 10, arucoDict6X6250 = 11, arucoDict6X61000 = 12,
+  arucoDict7X750 = 13, arucoDict7X7100 = 14, arucoDict7X7250 = 15,
+  arucoDict7X71000 = 16">OpenXRSpatialCapabilityConfigurationAruco_ArucoDict</a></li>
+<li><a class="reference" href="#OpenXRSpatialComponentMarkerList_MarkerType" title="OpenXRSpatialComponentMarkerList_MarkerType {.size: 8.} = enum
+  markerTypeUnknown = 0, markerTypeQrcode = 1, markerTypeMicroQrcode = 2,
+  markerTypeAruco = 3, markerTypeAprilTag = 4, markerTypeMax = 5">OpenXRSpatialComponentMarkerList_MarkerType</a></li>
+<li><a class="reference" href="#OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment" title="OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment {.size: 8.} = enum
+  planeAlignmentHorizontalUpward = 0, planeAlignmentHorizontalDownward = 1,
+  planeAlignmentVertical = 2, planeAlignmentArbitrary = 3">OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment</a></li>
+<li><a class="reference" href="#OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel" title="OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel {.size: 8.} = enum
+  planeSemanticLabelUncategorized = 1, planeSemanticLabelFloor = 2,
+  planeSemanticLabelWall = 3, planeSemanticLabelCeiling = 4,
+  planeSemanticLabelTable = 5">OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel</a></li>
+<li><a class="reference" href="#OpenXRSpatialEntityExtension_Capability" title="OpenXRSpatialEntityExtension_Capability {.size: 8.} = enum
+  capabilityPlaneTracking = 1000741000,
+  capabilityMarkerTrackingQrCode = 1000743000,
+  capabilityMarkerTrackingMicroQrCode = 1000743001,
+  capabilityMarkerTrackingArucoMarker = 1000743002,
+  capabilityMarkerTrackingAprilTag = 1000743003, capabilityAnchor = 1000762000">OpenXRSpatialEntityExtension_Capability</a></li>
+<li><a class="reference" href="#OpenXRSpatialEntityExtension_ComponentType" title="OpenXRSpatialEntityExtension_ComponentType {.size: 8.} = enum
+  componentTypeBounded2D = 1, componentTypeBounded3D = 2,
+  componentTypeParent = 3, componentTypeMesh3D = 4,
+  componentTypePlaneAlignment = 1000741000, componentTypeMesh2D = 1000741001,
+  componentTypePolygon2D = 1000741002,
+  componentTypePlaneSemanticLabel = 1000741003,
+  componentTypeMarker = 1000743000, componentTypeAnchor = 1000762000,
+  componentTypePersistence = 1000763000">OpenXRSpatialEntityExtension_ComponentType</a></li>
+<li><a class="reference" href="#OpenXRSpatialEntityTracker_EntityTrackingState" title="OpenXRSpatialEntityTracker_EntityTrackingState {.size: 8.} = enum
+  entityTrackingStateStopped = 1, entityTrackingStatePaused = 2,
+  entityTrackingStateTracking = 3">OpenXRSpatialEntityTracker_EntityTrackingState</a></li>
 <li><a class="reference" href="#Orientation" title="Orientation {.size: 8.} = enum
   horizontal = 0, vertical = 1">Orientation</a></li>
 <li><a class="reference" href="#OS_RenderingDriver" title="OS_RenderingDriver {.size: 8.} = enum
@@ -1351,6 +1416,9 @@
   navigation3DEdgeMergeCount = 55, navigation3DEdgeConnectionCount = 56,
   navigation3DEdgeFreeCount = 57, navigation3DObstacleCount = 58,
   monitorMax = 59">Performance_Monitor</a></li>
+<li><a class="reference" href="#Performance_MonitorType" title="Performance_MonitorType {.size: 8.} = enum
+  monitorTypeQuantity = 0, monitorTypeMemory = 1, monitorTypeTime = 2,
+  monitorTypePercentage = 3">Performance_MonitorType</a></li>
 <li><a class="reference" href="#PhysicalBone3D_DampMode" title="PhysicalBone3D_DampMode {.size: 8.} = enum
   dampModeCombine = 0, dampModeReplace = 1">PhysicalBone3D_DampMode</a></li>
 <li><a class="reference" href="#PhysicalBone3D_JointType" title="PhysicalBone3D_JointType {.size: 8.} = enum
@@ -1843,13 +1911,14 @@
   textureUsageStorageAtomicBit = 4, textureUsageCpuReadBit = 5,
   textureUsageCanUpdateBit = 6, textureUsageCanCopyFromBit = 7,
   textureUsageCanCopyToBit = 8, textureUsageInputAttachmentBit = 9,
-  `-- Padding - Max --` = 63">RenderingDevice_TextureUsageBits</a></li>
+  textureUsageDepthResolveAttachmentBit = 12, `-- Padding - Max --` = 63">RenderingDevice_TextureUsageBits</a></li>
 <li><a class="reference" href="#RenderingDevice_UniformType" title="RenderingDevice_UniformType {.size: 8.} = enum
   uniformTypeSampler = 0, uniformTypeSamplerWithTexture = 1,
   uniformTypeTexture = 2, uniformTypeImage = 3, uniformTypeTextureBuffer = 4,
   uniformTypeSamplerWithTextureBuffer = 5, uniformTypeImageBuffer = 6,
   uniformTypeUniformBuffer = 7, uniformTypeStorageBuffer = 8,
-  uniformTypeInputAttachment = 9, uniformTypeMax = 10">RenderingDevice_UniformType</a></li>
+  uniformTypeInputAttachment = 9, uniformTypeUniformBufferDynamic = 10,
+  uniformTypeStorageBufferDynamic = 11, uniformTypeMax = 12">RenderingDevice_UniformType</a></li>
 <li><a class="reference" href="#RenderingDevice_VertexFrequency" title="RenderingDevice_VertexFrequency {.size: 8.} = enum
   vertexFrequencyVertex = 0, vertexFrequencyInstance = 1">RenderingDevice_VertexFrequency</a></li>
 <li><a class="reference" href="#RenderingServer_ArrayCustomFormat" title="RenderingServer_ArrayCustomFormat {.size: 8.} = enum
@@ -2096,6 +2165,10 @@
 <li><a class="reference" href="#RenderingServer_SkyMode" title="RenderingServer_SkyMode {.size: 8.} = enum
   skyModeAutomatic = 0, skyModeQuality = 1, skyModeIncremental = 2,
   skyModeRealtime = 3">RenderingServer_SkyMode</a></li>
+<li><a class="reference" href="#RenderingServer_SplashStretchMode" title="RenderingServer_SplashStretchMode {.size: 8.} = enum
+  splashStretchModeDisabled = 0, splashStretchModeKeep = 1,
+  splashStretchModeKeepWidth = 2, splashStretchModeKeepHeight = 3,
+  splashStretchModeCover = 4, splashStretchModeIgnore = 5">RenderingServer_SplashStretchMode</a></li>
 <li><a class="reference" href="#RenderingServer_SubSurfaceScatteringQuality" title="RenderingServer_SubSurfaceScatteringQuality {.size: 8.} = enum
   subSurfaceScatteringQualityDisabled = 0, subSurfaceScatteringQualityLow = 1,
   subSurfaceScatteringQualityMedium = 2, subSurfaceScatteringQualityHigh = 3">RenderingServer_SubSurfaceScatteringQuality</a></li>
@@ -2247,6 +2320,9 @@
   lookupResultClassEnum = 6, lookupResultClassTbdGlobalscope = 7,
   lookupResultClassAnnotation = 8, lookupResultLocalConstant = 9,
   lookupResultLocalVariable = 10, lookupResultMax = 11">ScriptLanguageExtension_LookupResultType</a></li>
+<li><a class="reference" href="#ScrollContainer_ScrollHintMode" title="ScrollContainer_ScrollHintMode {.size: 8.} = enum
+  scrollHintModeDisabled = 0, scrollHintModeAll = 1,
+  scrollHintModeTopAndLeft = 2, scrollHintModeBottomAndRight = 3">ScrollContainer_ScrollHintMode</a></li>
 <li><a class="reference" href="#ScrollContainer_ScrollMode" title="ScrollContainer_ScrollMode {.size: 8.} = enum
   scrollModeDisabled = 0, scrollModeAuto = 1, scrollModeShowAlways = 2,
   scrollModeShowNever = 3, scrollModeReserve = 4">ScrollContainer_ScrollMode</a></li>
@@ -2261,6 +2337,18 @@
 <li><a class="reference" href="#SkeletonModifier3D_BoneAxis" title="SkeletonModifier3D_BoneAxis {.size: 8.} = enum
   boneAxisPlusX = 0, boneAxisMinusX = 1, boneAxisPlusY = 2, boneAxisMinusY = 3,
   boneAxisPlusZ = 4, boneAxisMinusZ = 5">SkeletonModifier3D_BoneAxis</a></li>
+<li><a class="reference" href="#SkeletonModifier3D_BoneDirection" title="SkeletonModifier3D_BoneDirection {.size: 8.} = enum
+  boneDirectionPlusX = 0, boneDirectionMinusX = 1, boneDirectionPlusY = 2,
+  boneDirectionMinusY = 3, boneDirectionPlusZ = 4, boneDirectionMinusZ = 5,
+  boneDirectionFromParent = 6">SkeletonModifier3D_BoneDirection</a></li>
+<li><a class="reference" href="#SkeletonModifier3D_RotationAxis" title="SkeletonModifier3D_RotationAxis {.size: 8.} = enum
+  rotationAxisX = 0, rotationAxisY = 1, rotationAxisZ = 2, rotationAxisAll = 3,
+  rotationAxisCustom = 4">SkeletonModifier3D_RotationAxis</a></li>
+<li><a class="reference" href="#SkeletonModifier3D_SecondaryDirection" title="SkeletonModifier3D_SecondaryDirection {.size: 8.} = enum
+  secondaryDirectionNone = 0, secondaryDirectionPlusX = 1,
+  secondaryDirectionMinusX = 2, secondaryDirectionPlusY = 3,
+  secondaryDirectionMinusY = 4, secondaryDirectionPlusZ = 5,
+  secondaryDirectionMinusZ = 6, secondaryDirectionCustom = 7">SkeletonModifier3D_SecondaryDirection</a></li>
 <li><a class="reference" href="#SkeletonProfile_TailDirection" title="SkeletonProfile_TailDirection {.size: 8.} = enum
   tailDirectionAverageChildren = 0, tailDirectionSpecificChild = 1,
   tailDirectionEnd = 2">SkeletonProfile_TailDirection</a></li>
@@ -2291,23 +2379,16 @@
   disableModeRemove = 0, disableModeKeepActive = 1">SoftBody3D_DisableMode</a></li>
 <li><a class="reference" href="#SplitContainer_DraggerVisibility" title="SplitContainer_DraggerVisibility {.size: 8.} = enum
   draggerVisible = 0, draggerHidden = 1, draggerHiddenCollapsed = 2">SplitContainer_DraggerVisibility</a></li>
-<li><a class="reference" href="#SpringBoneSimulator3D_BoneDirection" title="SpringBoneSimulator3D_BoneDirection {.size: 8.} = enum
-  boneDirectionPlusX = 0, boneDirectionMinusX = 1, boneDirectionPlusY = 2,
-  boneDirectionMinusY = 3, boneDirectionPlusZ = 4, boneDirectionMinusZ = 5,
-  boneDirectionFromParent = 6">SpringBoneSimulator3D_BoneDirection</a></li>
 <li><a class="reference" href="#SpringBoneSimulator3D_CenterFrom" title="SpringBoneSimulator3D_CenterFrom {.size: 8.} = enum
   centerFromWorldOrigin = 0, centerFromNode = 1, centerFromBone = 2">SpringBoneSimulator3D_CenterFrom</a></li>
-<li><a class="reference" href="#SpringBoneSimulator3D_RotationAxis" title="SpringBoneSimulator3D_RotationAxis {.size: 8.} = enum
-  rotationAxisX = 0, rotationAxisY = 1, rotationAxisZ = 2, rotationAxisAll = 3,
-  rotationAxisCustom = 4">SpringBoneSimulator3D_RotationAxis</a></li>
 <li><a class="reference" href="#SpriteBase3D_AlphaCutMode" title="SpriteBase3D_AlphaCutMode {.size: 8.} = enum
   alphaCutDisabled = 0, alphaCutDiscard = 1, alphaCutOpaquePrepass = 2,
   alphaCutHash = 3">SpriteBase3D_AlphaCutMode</a></li>
 <li><a class="reference" href="#SpriteBase3D_DrawFlags" title="SpriteBase3D_DrawFlags {.size: 8.} = enum
   flagTransparent = 0, flagShaded = 1, flagDoubleSided = 2,
   flagDisableDepthTest = 3, flagFixedSize = 4, flagMax = 5">SpriteBase3D_DrawFlags</a></li>
-<li><a class="reference" href="#StreamPeerTCP_Status" title="StreamPeerTCP_Status {.size: 8.} = enum
-  statusNone = 0, statusConnecting = 1, statusConnected = 2, statusError = 3">StreamPeerTCP_Status</a></li>
+<li><a class="reference" href="#StreamPeerSocket_Status" title="StreamPeerSocket_Status {.size: 8.} = enum
+  statusNone = 0, statusConnecting = 1, statusConnected = 2, statusError = 3">StreamPeerSocket_Status</a></li>
 <li><a class="reference" href="#StreamPeerTLS_Status" title="StreamPeerTLS_Status {.size: 8.} = enum
   statusDisconnected = 0, statusHandshaking = 1, statusConnected = 2,
   statusError = 3, statusErrorHostnameMismatch = 4">StreamPeerTLS_Status</a></li>
@@ -2422,7 +2503,7 @@
 <li><a class="reference" href="#TextServer_TextOverrunFlag" title="TextServer_TextOverrunFlag = enum
   overrunTrim = 0, overrunTrimWordOnly = 1, overrunAddEllipsis = 2,
   overrunEnforceEllipsis = 3, overrunJustificationAware = 4,
-  `-- Padding - Max --` = 63">TextServer_TextOverrunFlag</a></li>
+  overrunShortStringEllipsis = 5, `-- Padding - Max --` = 63">TextServer_TextOverrunFlag</a></li>
 <li><a class="reference" href="#TextServer_VisibleCharactersBehavior" title="TextServer_VisibleCharactersBehavior {.size: 8.} = enum
   vcCharsBeforeShaping = 0, vcCharsAfterShaping = 1, vcGlyphsAuto = 2,
   vcGlyphsLtr = 3, vcGlyphsRtl = 4">TextServer_VisibleCharactersBehavior</a></li>
@@ -2492,6 +2573,9 @@
   visibilityAlways = 0, visibilityTouchscreenOnly = 1">TouchScreenButton_VisibilityMode</a></li>
 <li><a class="reference" href="#Tree_DropModeFlags" title="Tree_DropModeFlags {.size: 8.} = enum
   dropModeDisabled = 0, dropModeOnItem = 1, dropModeInbetween = 2">Tree_DropModeFlags</a></li>
+<li><a class="reference" href="#Tree_ScrollHintMode" title="Tree_ScrollHintMode {.size: 8.} = enum
+  scrollHintModeDisabled = 0, scrollHintModeBoth = 1, scrollHintModeTop = 2,
+  scrollHintModeBottom = 3">Tree_ScrollHintMode</a></li>
 <li><a class="reference" href="#Tree_SelectMode" title="Tree_SelectMode {.size: 8.} = enum
   selectSingle = 0, selectRow = 1, selectMulti = 2">Tree_SelectMode</a></li>
 <li><a class="reference" href="#TreeItem_TreeCellMode" title="TreeItem_TreeCellMode {.size: 8.} = enum
@@ -2696,7 +2780,8 @@
   opTypeScalar = 0, opTypeVector2D = 1, opTypeVector3D = 2, opTypeVector4D = 3,
   opTypeMax = 4">VisualShaderNodeMultiplyAdd_OpType</a></li>
 <li><a class="reference" href="#VisualShaderNodeParameter_Qualifier" title="VisualShaderNodeParameter_Qualifier {.size: 8.} = enum
-  qualNone = 0, qualGlobal = 1, qualInstance = 2, qualMax = 3">VisualShaderNodeParameter_Qualifier</a></li>
+  qualNone = 0, qualGlobal = 1, qualInstance = 2, qualInstanceIndex = 3,
+  qualMax = 4">VisualShaderNodeParameter_Qualifier</a></li>
 <li><a class="reference" href="#VisualShaderNodeParticleAccelerator_Mode" title="VisualShaderNodeParticleAccelerator_Mode {.size: 8.} = enum
   modeLinear = 0, modeRadial = 1, modeTangential = 2, modeMax = 3">VisualShaderNodeParticleAccelerator_Mode</a></li>
 <li><a class="reference" href="#VisualShaderNodeParticleEmit_EmitFlags" title="VisualShaderNodeParticleEmit_EmitFlags {.size: 8.} = enum
@@ -3095,6 +3180,10 @@
   <li><a class="reference" href="#barrierMaskRaster.t%2Ctypedesc%5BT%5D" title="barrierMaskRaster[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]">barrierMaskRaster[T: RenderingDevice_BarrierMask](_: typedesc[T]): set[T]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">dockLayoutAll
+  <li><a class="reference" href="#dockLayoutAll.t%2Ctypedesc%5BT%5D" title="dockLayoutAll[T: EditorDock_DockLayout](_: typedesc[T]): set[T]">dockLayoutAll[T: EditorDock_DockLayout](_: typedesc[T]): set[T]</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">drawClearAll
   <li><a class="reference" href="#drawClearAll.t%2Ctypedesc%5BT%5D" title="drawClearAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]">drawClearAll[T: RenderingDevice_DrawFlags](_: typedesc[T]): set[T]</a></li>
 
@@ -3248,8 +3337,8 @@
 
 </ul>
 <ul class="simple nested-toc-section">layoutDirectionLocale
-  <li><a class="reference" href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D" title="layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T">layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T</a></li>
-<li><a class="reference" href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D_2" title="layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T">layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T</a></li>
+  <li><a class="reference" href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D_2" title="layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T">layoutDirectionLocale[T: Control_LayoutDirection](_: typedesc[T]): T</a></li>
+<li><a class="reference" href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D" title="layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T">layoutDirectionLocale[T: Window_LayoutDirection](_: typedesc[T]): T</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">methodFlagsDefault
@@ -3261,10 +3350,10 @@
 
 </ul>
 <ul class="simple nested-toc-section">pathMetadataIncludeAll
-  <li><a class="reference" href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D" title="pathMetadataIncludeAll[T: NavigationPathQueryParameters2D_PathMetadataFlags](
+  <li><a class="reference" href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D_2" title="pathMetadataIncludeAll[T: NavigationPathQueryParameters2D_PathMetadataFlags](
     _: typedesc[T]): set[T]">pathMetadataIncludeAll[T: NavigationPathQueryParameters2D_PathMetadataFlags](
     _: typedesc[T]): set[T]</a></li>
-<li><a class="reference" href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D_2" title="pathMetadataIncludeAll[T: NavigationPathQueryParameters3D_PathMetadataFlags](
+<li><a class="reference" href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D" title="pathMetadataIncludeAll[T: NavigationPathQueryParameters3D_PathMetadataFlags](
     _: typedesc[T]): set[T]">pathMetadataIncludeAll[T: NavigationPathQueryParameters3D_PathMetadataFlags](
     _: typedesc[T]): set[T]</a></li>
 
@@ -4029,6 +4118,24 @@
     
   </dd>
 </div>
+<div id="BoneConstraint3D_ReferenceType">
+  <dt><pre><a href="enums.html#BoneConstraint3D_ReferenceType"><span class="Identifier">BoneConstraint3D_ReferenceType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">referenceTypeBone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">referenceTypeNode</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="BoneTwistDisperser3D_DisperseMode">
+  <dt><pre><a href="enums.html#BoneTwistDisperser3D_DisperseMode"><span class="Identifier">BoneTwistDisperser3D_DisperseMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">disperseModeEven</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">disperseModeWeighted</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">disperseModeCustom</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="BoxContainer_AlignmentMode">
   <dt><pre><a href="enums.html#BoxContainer_AlignmentMode"><span class="Identifier">BoxContainer_AlignmentMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">alignmentBegin</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">alignmentCenter</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">alignmentEnd</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
@@ -4485,7 +4592,8 @@
   <dt><pre><a href="enums.html#CPUParticles2D_EmissionShape"><span class="Identifier">CPUParticles2D_EmissionShape</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">emissionShapePoint</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">emissionShapeSphere</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
   <span class="Identifier">emissionShapeSphereSurface</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">emissionShapeRectangle</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
-  <span class="Identifier">emissionShapePoints</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">emissionShapeDirectedPoints</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">emissionShapeMax</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
+  <span class="Identifier">emissionShapePoints</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">emissionShapeDirectedPoints</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">emissionShapeRing</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">emissionShapeMax</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
   <dd>
     
     
@@ -4893,6 +5001,27 @@
     
   </dd>
 </div>
+<div id="EditorDock_DockLayout">
+  <dt><pre><a href="enums.html#EditorDock_DockLayout"><span class="Identifier">EditorDock_DockLayout</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">dockLayoutVertical</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">dockLayoutHorizontal</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">dockLayoutFloating</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Other">`</span><span class="Operator">--</span> <span class="Identifier">Padding</span> <span class="Operator">-</span> <span class="Identifier">Max</span> <span class="Operator">--</span><span class="Other">`</span> <span class="Other">=</span> <span class="DecNumber">63</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EditorDock_DockSlot">
+  <dt><pre><a href="enums.html#EditorDock_DockSlot"><span class="Identifier">EditorDock_DockSlot</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">dockSlotNone</span> <span class="Other">=</span> <span class="DecNumber">-1</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftUl</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftBl</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftUr</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">dockSlotLeftBr</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">dockSlotRightUl</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">dockSlotRightBl</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">dockSlotRightUr</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">dockSlotRightBr</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">dockSlotBottom</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">dockSlotMax</span> <span class="Other">=</span> <span class="DecNumber">9</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="EditorExportPlatform_DebugFlags">
   <dt><pre><a href="enums.html#EditorExportPlatform_DebugFlags"><span class="Identifier">EditorExportPlatform_DebugFlags</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">debugFlagDumbClient</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">debugFlagRemoteDebug</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
@@ -4948,35 +5077,8 @@
   <dt><pre><a href="enums.html#EditorFeatureProfile_Feature"><span class="Identifier">EditorFeatureProfile_Feature</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">feature3D</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">featureScript</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">featureAssetLib</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">featureSceneTree</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
   <span class="Identifier">featureNodeDock</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">featureFilesystemDock</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">featureImportDock</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
-  <span class="Identifier">featureHistoryDock</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">featureGame</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">featureMax</span> <span class="Other">=</span> <span class="DecNumber">9</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="EditorFileDialog_Access">
-  <dt><pre><a href="enums.html#EditorFileDialog_Access"><span class="Identifier">EditorFileDialog_Access</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">accessResources</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">accessUserdata</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">accessFilesystem</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="EditorFileDialog_DisplayMode">
-  <dt><pre><a href="enums.html#EditorFileDialog_DisplayMode"><span class="Identifier">EditorFileDialog_DisplayMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">displayThumbnails</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">displayList</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="EditorFileDialog_FileMode">
-  <dt><pre><a href="enums.html#EditorFileDialog_FileMode"><span class="Identifier">EditorFileDialog_FileMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">fileModeOpenFile</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">fileModeOpenFiles</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">fileModeOpenDir</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
-  <span class="Identifier">fileModeOpenAny</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">fileModeSaveFile</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
+  <span class="Identifier">featureHistoryDock</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">featureGame</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">featureSignalsDock</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span>
+  <span class="Identifier">featureGroupsDock</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span> <span class="Identifier">featureMax</span> <span class="Other">=</span> <span class="DecNumber">11</span></pre></dt>
   <dd>
     
     
@@ -5008,9 +5110,9 @@
 </div>
 <div id="EditorPlugin_DockSlot">
   <dt><pre><a href="enums.html#EditorPlugin_DockSlot"><span class="Identifier">EditorPlugin_DockSlot</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">dockSlotLeftUl</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftBl</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftUr</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">dockSlotNone</span> <span class="Other">=</span> <span class="DecNumber">-1</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftUl</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftBl</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">dockSlotLeftUr</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
   <span class="Identifier">dockSlotLeftBr</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">dockSlotRightUl</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">dockSlotRightBl</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
-  <span class="Identifier">dockSlotRightUr</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">dockSlotRightBr</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">dockSlotMax</span> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
+  <span class="Identifier">dockSlotRightUr</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">dockSlotRightBr</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">dockSlotBottom</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">dockSlotMax</span> <span class="Other">=</span> <span class="DecNumber">9</span></pre></dt>
   <dd>
     
     
@@ -5023,6 +5125,15 @@
   <span class="Identifier">internalImportCategoryMesh</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">internalImportCategoryMaterial</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
   <span class="Identifier">internalImportCategoryAnimation</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">internalImportCategoryAnimationNode</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
   <span class="Identifier">internalImportCategorySkeleton3DNode</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">internalImportCategoryMax</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="EditorSpinSlider_ControlState">
+  <dt><pre><a href="enums.html#EditorSpinSlider_ControlState"><span class="Identifier">EditorSpinSlider_ControlState</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">controlStateDefault</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">controlStatePreferSlider</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">controlStateHide</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
   <dd>
     
     
@@ -5327,7 +5438,8 @@
   <dt><pre><a href="enums.html#FileDialog_Customization"><span class="Identifier">FileDialog_Customization</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">customizationHiddenFiles</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">customizationCreateFolder</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
   <span class="Identifier">customizationFileFilter</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">customizationFileSort</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
-  <span class="Identifier">customizationFavorites</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">customizationRecent</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">customizationLayout</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
+  <span class="Identifier">customizationFavorites</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">customizationRecent</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">customizationLayout</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
+  <span class="Identifier">customizationOverwriteWarning</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">customizationDelete</span> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
   <dd>
     
     
@@ -5551,6 +5663,18 @@
   <span class="Identifier">gltfObjectModelTypeFloat4</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">gltfObjectModelTypeFloat2X2</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span>
   <span class="Identifier">gltfObjectModelTypeFloat3X3</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">gltfObjectModelTypeFloat4X4</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span>
   <span class="Identifier">gltfObjectModelTypeInt</span> <span class="Other">=</span> <span class="DecNumber">10</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="GLTFState_HandleBinaryImageMode">
+  <dt><pre><a href="enums.html#GLTFState_HandleBinaryImageMode"><span class="Identifier">GLTFState_HandleBinaryImageMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">handleBinaryImageModeDiscardTextures</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>
+  <span class="Identifier">handleBinaryImageModeExtractTextures</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">handleBinaryImageModeEmbedAsBasisu</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">handleBinaryImageModeEmbedAsUncompressed</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -5863,7 +5987,9 @@
   <span class="Identifier">formatEtc2Rg11</span> <span class="Other">=</span> <span class="DecNumber">28</span><span class="Other">,</span> <span class="Identifier">formatEtc2Rg11S</span> <span class="Other">=</span> <span class="DecNumber">29</span><span class="Other">,</span> <span class="Identifier">formatEtc2Rgb8</span> <span class="Other">=</span> <span class="DecNumber">30</span><span class="Other">,</span>
   <span class="Identifier">formatEtc2Rgba8</span> <span class="Other">=</span> <span class="DecNumber">31</span><span class="Other">,</span> <span class="Identifier">formatEtc2Rgb8A1</span> <span class="Other">=</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="Identifier">formatEtc2RaAsRg</span> <span class="Other">=</span> <span class="DecNumber">33</span><span class="Other">,</span>
   <span class="Identifier">formatDxt5RaAsRg</span> <span class="Other">=</span> <span class="DecNumber">34</span><span class="Other">,</span> <span class="Identifier">formatAstc4X4</span> <span class="Other">=</span> <span class="DecNumber">35</span><span class="Other">,</span> <span class="Identifier">formatAstc4X4Hdr</span> <span class="Other">=</span> <span class="DecNumber">36</span><span class="Other">,</span>
-  <span class="Identifier">formatAstc8X8</span> <span class="Other">=</span> <span class="DecNumber">37</span><span class="Other">,</span> <span class="Identifier">formatAstc8X8Hdr</span> <span class="Other">=</span> <span class="DecNumber">38</span><span class="Other">,</span> <span class="Identifier">formatMax</span> <span class="Other">=</span> <span class="DecNumber">39</span></pre></dt>
+  <span class="Identifier">formatAstc8X8</span> <span class="Other">=</span> <span class="DecNumber">37</span><span class="Other">,</span> <span class="Identifier">formatAstc8X8Hdr</span> <span class="Other">=</span> <span class="DecNumber">38</span><span class="Other">,</span> <span class="Identifier">formatR16</span> <span class="Other">=</span> <span class="DecNumber">39</span><span class="Other">,</span> <span class="Identifier">formatRg16</span> <span class="Other">=</span> <span class="DecNumber">40</span><span class="Other">,</span>
+  <span class="Identifier">formatRgb16</span> <span class="Other">=</span> <span class="DecNumber">41</span><span class="Other">,</span> <span class="Identifier">formatRgba16</span> <span class="Other">=</span> <span class="DecNumber">42</span><span class="Other">,</span> <span class="Identifier">formatR16I</span> <span class="Other">=</span> <span class="DecNumber">43</span><span class="Other">,</span> <span class="Identifier">formatRg16I</span> <span class="Other">=</span> <span class="DecNumber">44</span><span class="Other">,</span>
+  <span class="Identifier">formatRgb16I</span> <span class="Other">=</span> <span class="DecNumber">45</span><span class="Other">,</span> <span class="Identifier">formatRgba16I</span> <span class="Other">=</span> <span class="DecNumber">46</span><span class="Other">,</span> <span class="Identifier">formatMax</span> <span class="Other">=</span> <span class="DecNumber">47</span></pre></dt>
   <dd>
     
     
@@ -5957,6 +6083,16 @@
 <div id="ItemList_IconMode">
   <dt><pre><a href="enums.html#ItemList_IconMode"><span class="Identifier">ItemList_IconMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">iconModeTop</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">iconModeLeft</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="ItemList_ScrollHintMode">
+  <dt><pre><a href="enums.html#ItemList_ScrollHintMode"><span class="Identifier">ItemList_ScrollHintMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">scrollHintModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">scrollHintModeBoth</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">scrollHintModeTop</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">scrollHintModeBottom</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -6224,6 +6360,16 @@
 <div id="Line2D_LineTextureMode">
   <dt><pre><a href="enums.html#Line2D_LineTextureMode"><span class="Identifier">Line2D_LineTextureMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">lineTextureNone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">lineTextureTile</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">lineTextureStretch</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="LineEdit_ExpandMode">
+  <dt><pre><a href="enums.html#LineEdit_ExpandMode"><span class="Identifier">LineEdit_ExpandMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">expandModeOriginalSize</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">expandModeFitToText</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">expandModeFitToLineEdit</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
   <dd>
     
     
@@ -6674,7 +6820,8 @@
 <div id="Node_DuplicateFlags">
   <dt><pre><a href="enums.html#Node_DuplicateFlags"><span class="Identifier">Node_DuplicateFlags</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">duplicateSignals</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">duplicateGroups</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">duplicateScripts</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
-  <span class="Identifier">duplicateUseInstantiation</span> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
+  <span class="Identifier">duplicateUseInstantiation</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">duplicateDefault</span> <span class="Other">=</span> <span class="DecNumber">15</span><span class="Other">,</span>
+  <span class="Identifier">duplicateInternalState</span> <span class="Other">=</span> <span class="DecNumber">16</span></pre></dt>
   <dd>
     
     
@@ -6762,6 +6909,16 @@
   <dt><pre><a href="enums.html#OpenXRAction_ActionType"><span class="Identifier">OpenXRAction_ActionType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">openxrActionBool</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">openxrActionFloat</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">openxrActionVector2</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
   <span class="Identifier">openxrActionPose</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRAndroidThreadSettingsExtension_ThreadType">
+  <dt><pre><a href="enums.html#OpenXRAndroidThreadSettingsExtension_ThreadType"><span class="Identifier">OpenXRAndroidThreadSettingsExtension_ThreadType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">threadTypeApplicationMain</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">threadTypeApplicationWorker</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">threadTypeRendererMain</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">threadTypeRendererWorker</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -6975,6 +7132,108 @@
     
   </dd>
 </div>
+<div id="OpenXRSpatialAnchorCapability_PersistenceScope">
+  <dt><pre><a href="enums.html#OpenXRSpatialAnchorCapability_PersistenceScope"><span class="Identifier">OpenXRSpatialAnchorCapability_PersistenceScope</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">persistenceScopeSystemManaged</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">persistenceScopeLocalAnchors</span> <span class="Other">=</span> <span class="DecNumber">1000781000</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict">
+  <dt><pre><a href="enums.html#OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict"><span class="Identifier">OpenXRSpatialCapabilityConfigurationAprilTag_AprilTagDict</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">aprilTagDict16H5</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">aprilTagDict25H9</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">aprilTagDict36H10</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">aprilTagDict36H11</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialCapabilityConfigurationAruco_ArucoDict">
+  <dt><pre><a href="enums.html#OpenXRSpatialCapabilityConfigurationAruco_ArucoDict"><span class="Identifier">OpenXRSpatialCapabilityConfigurationAruco_ArucoDict</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">arucoDict4X450</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">arucoDict4X4100</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">arucoDict4X4250</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">arucoDict4X41000</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">arucoDict5X550</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">arucoDict5X5100</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
+  <span class="Identifier">arucoDict5X5250</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">arucoDict5X51000</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">arucoDict6X650</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span>
+  <span class="Identifier">arucoDict6X6100</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span> <span class="Identifier">arucoDict6X6250</span> <span class="Other">=</span> <span class="DecNumber">11</span><span class="Other">,</span> <span class="Identifier">arucoDict6X61000</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">,</span>
+  <span class="Identifier">arucoDict7X750</span> <span class="Other">=</span> <span class="DecNumber">13</span><span class="Other">,</span> <span class="Identifier">arucoDict7X7100</span> <span class="Other">=</span> <span class="DecNumber">14</span><span class="Other">,</span> <span class="Identifier">arucoDict7X7250</span> <span class="Other">=</span> <span class="DecNumber">15</span><span class="Other">,</span>
+  <span class="Identifier">arucoDict7X71000</span> <span class="Other">=</span> <span class="DecNumber">16</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialComponentMarkerList_MarkerType">
+  <dt><pre><a href="enums.html#OpenXRSpatialComponentMarkerList_MarkerType"><span class="Identifier">OpenXRSpatialComponentMarkerList_MarkerType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">markerTypeUnknown</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">markerTypeQrcode</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">markerTypeMicroQrcode</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">markerTypeAruco</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">markerTypeAprilTag</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">markerTypeMax</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment">
+  <dt><pre><a href="enums.html#OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment"><span class="Identifier">OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">planeAlignmentHorizontalUpward</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">planeAlignmentHorizontalDownward</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">planeAlignmentVertical</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">planeAlignmentArbitrary</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel">
+  <dt><pre><a href="enums.html#OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel"><span class="Identifier">OpenXRSpatialComponentPlaneSemanticLabelList_PlaneSemanticLabel</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">planeSemanticLabelUncategorized</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">planeSemanticLabelFloor</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">planeSemanticLabelWall</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">planeSemanticLabelCeiling</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
+  <span class="Identifier">planeSemanticLabelTable</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialEntityExtension_Capability">
+  <dt><pre><a href="enums.html#OpenXRSpatialEntityExtension_Capability"><span class="Identifier">OpenXRSpatialEntityExtension_Capability</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">capabilityPlaneTracking</span> <span class="Other">=</span> <span class="DecNumber">1000741000</span><span class="Other">,</span>
+  <span class="Identifier">capabilityMarkerTrackingQrCode</span> <span class="Other">=</span> <span class="DecNumber">1000743000</span><span class="Other">,</span>
+  <span class="Identifier">capabilityMarkerTrackingMicroQrCode</span> <span class="Other">=</span> <span class="DecNumber">1000743001</span><span class="Other">,</span>
+  <span class="Identifier">capabilityMarkerTrackingArucoMarker</span> <span class="Other">=</span> <span class="DecNumber">1000743002</span><span class="Other">,</span>
+  <span class="Identifier">capabilityMarkerTrackingAprilTag</span> <span class="Other">=</span> <span class="DecNumber">1000743003</span><span class="Other">,</span> <span class="Identifier">capabilityAnchor</span> <span class="Other">=</span> <span class="DecNumber">1000762000</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialEntityExtension_ComponentType">
+  <dt><pre><a href="enums.html#OpenXRSpatialEntityExtension_ComponentType"><span class="Identifier">OpenXRSpatialEntityExtension_ComponentType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">componentTypeBounded2D</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">componentTypeBounded3D</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">componentTypeParent</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">componentTypeMesh3D</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
+  <span class="Identifier">componentTypePlaneAlignment</span> <span class="Other">=</span> <span class="DecNumber">1000741000</span><span class="Other">,</span> <span class="Identifier">componentTypeMesh2D</span> <span class="Other">=</span> <span class="DecNumber">1000741001</span><span class="Other">,</span>
+  <span class="Identifier">componentTypePolygon2D</span> <span class="Other">=</span> <span class="DecNumber">1000741002</span><span class="Other">,</span>
+  <span class="Identifier">componentTypePlaneSemanticLabel</span> <span class="Other">=</span> <span class="DecNumber">1000741003</span><span class="Other">,</span>
+  <span class="Identifier">componentTypeMarker</span> <span class="Other">=</span> <span class="DecNumber">1000743000</span><span class="Other">,</span> <span class="Identifier">componentTypeAnchor</span> <span class="Other">=</span> <span class="DecNumber">1000762000</span><span class="Other">,</span>
+  <span class="Identifier">componentTypePersistence</span> <span class="Other">=</span> <span class="DecNumber">1000763000</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="OpenXRSpatialEntityTracker_EntityTrackingState">
+  <dt><pre><a href="enums.html#OpenXRSpatialEntityTracker_EntityTrackingState"><span class="Identifier">OpenXRSpatialEntityTracker_EntityTrackingState</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">entityTrackingStateStopped</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">entityTrackingStatePaused</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">entityTrackingStateTracking</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="Orientation">
   <dt><pre><a href="enums.html#Orientation"><span class="Identifier">Orientation</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">horizontal</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">vertical</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
@@ -7133,6 +7392,16 @@
   <span class="Identifier">navigation3DEdgeMergeCount</span> <span class="Other">=</span> <span class="DecNumber">55</span><span class="Other">,</span> <span class="Identifier">navigation3DEdgeConnectionCount</span> <span class="Other">=</span> <span class="DecNumber">56</span><span class="Other">,</span>
   <span class="Identifier">navigation3DEdgeFreeCount</span> <span class="Other">=</span> <span class="DecNumber">57</span><span class="Other">,</span> <span class="Identifier">navigation3DObstacleCount</span> <span class="Other">=</span> <span class="DecNumber">58</span><span class="Other">,</span>
   <span class="Identifier">monitorMax</span> <span class="Other">=</span> <span class="DecNumber">59</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="Performance_MonitorType">
+  <dt><pre><a href="enums.html#Performance_MonitorType"><span class="Identifier">Performance_MonitorType</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">monitorTypeQuantity</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">monitorTypeMemory</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">monitorTypeTime</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">monitorTypePercentage</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -8185,7 +8454,7 @@
   <span class="Identifier">textureUsageStorageAtomicBit</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">textureUsageCpuReadBit</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
   <span class="Identifier">textureUsageCanUpdateBit</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">textureUsageCanCopyFromBit</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span>
   <span class="Identifier">textureUsageCanCopyToBit</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">textureUsageInputAttachmentBit</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span>
-  <span class="Other">`</span><span class="Operator">--</span> <span class="Identifier">Padding</span> <span class="Operator">-</span> <span class="Identifier">Max</span> <span class="Operator">--</span><span class="Other">`</span> <span class="Other">=</span> <span class="DecNumber">63</span></pre></dt>
+  <span class="Identifier">textureUsageDepthResolveAttachmentBit</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">--</span> <span class="Identifier">Padding</span> <span class="Operator">-</span> <span class="Identifier">Max</span> <span class="Operator">--</span><span class="Other">`</span> <span class="Other">=</span> <span class="DecNumber">63</span></pre></dt>
   <dd>
     
     
@@ -8198,7 +8467,8 @@
   <span class="Identifier">uniformTypeTexture</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">uniformTypeImage</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uniformTypeTextureBuffer</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
   <span class="Identifier">uniformTypeSamplerWithTextureBuffer</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">uniformTypeImageBuffer</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
   <span class="Identifier">uniformTypeUniformBuffer</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">uniformTypeStorageBuffer</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span>
-  <span class="Identifier">uniformTypeInputAttachment</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span> <span class="Identifier">uniformTypeMax</span> <span class="Other">=</span> <span class="DecNumber">10</span></pre></dt>
+  <span class="Identifier">uniformTypeInputAttachment</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span> <span class="Identifier">uniformTypeUniformBufferDynamic</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span>
+  <span class="Identifier">uniformTypeStorageBufferDynamic</span> <span class="Other">=</span> <span class="DecNumber">11</span><span class="Other">,</span> <span class="Identifier">uniformTypeMax</span> <span class="Other">=</span> <span class="DecNumber">12</span></pre></dt>
   <dd>
     
     
@@ -8892,6 +9162,17 @@
     
   </dd>
 </div>
+<div id="RenderingServer_SplashStretchMode">
+  <dt><pre><a href="enums.html#RenderingServer_SplashStretchMode"><span class="Identifier">RenderingServer_SplashStretchMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">splashStretchModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">splashStretchModeKeep</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">splashStretchModeKeepWidth</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">splashStretchModeKeepHeight</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">splashStretchModeCover</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">splashStretchModeIgnore</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="RenderingServer_SubSurfaceScatteringQuality">
   <dt><pre><a href="enums.html#RenderingServer_SubSurfaceScatteringQuality"><span class="Identifier">RenderingServer_SubSurfaceScatteringQuality</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">subSurfaceScatteringQualityDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">subSurfaceScatteringQualityLow</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
@@ -9365,6 +9646,16 @@
     
   </dd>
 </div>
+<div id="ScrollContainer_ScrollHintMode">
+  <dt><pre><a href="enums.html#ScrollContainer_ScrollHintMode"><span class="Identifier">ScrollContainer_ScrollHintMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">scrollHintModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">scrollHintModeAll</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">scrollHintModeTopAndLeft</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">scrollHintModeBottomAndRight</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="ScrollContainer_ScrollMode">
   <dt><pre><a href="enums.html#ScrollContainer_ScrollMode"><span class="Identifier">ScrollContainer_ScrollMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">scrollModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">scrollModeAuto</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">scrollModeShowAlways</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
@@ -9408,6 +9699,39 @@
   <dt><pre><a href="enums.html#SkeletonModifier3D_BoneAxis"><span class="Identifier">SkeletonModifier3D_BoneAxis</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">boneAxisPlusX</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">boneAxisMinusX</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">boneAxisPlusY</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">boneAxisMinusY</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
   <span class="Identifier">boneAxisPlusZ</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">boneAxisMinusZ</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="SkeletonModifier3D_BoneDirection">
+  <dt><pre><a href="enums.html#SkeletonModifier3D_BoneDirection"><span class="Identifier">SkeletonModifier3D_BoneDirection</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">boneDirectionPlusX</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">boneDirectionMinusX</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">boneDirectionPlusY</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">boneDirectionMinusY</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">boneDirectionPlusZ</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">boneDirectionMinusZ</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">boneDirectionFromParent</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="SkeletonModifier3D_RotationAxis">
+  <dt><pre><a href="enums.html#SkeletonModifier3D_RotationAxis"><span class="Identifier">SkeletonModifier3D_RotationAxis</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">rotationAxisX</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">rotationAxisY</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">rotationAxisZ</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">rotationAxisAll</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">rotationAxisCustom</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="SkeletonModifier3D_SecondaryDirection">
+  <dt><pre><a href="enums.html#SkeletonModifier3D_SecondaryDirection"><span class="Identifier">SkeletonModifier3D_SecondaryDirection</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">secondaryDirectionNone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">secondaryDirectionPlusX</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>
+  <span class="Identifier">secondaryDirectionMinusX</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">secondaryDirectionPlusY</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">secondaryDirectionMinusY</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">secondaryDirectionPlusZ</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
+  <span class="Identifier">secondaryDirectionMinusZ</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">secondaryDirectionCustom</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
   <dd>
     
     
@@ -9493,30 +9817,9 @@
     
   </dd>
 </div>
-<div id="SpringBoneSimulator3D_BoneDirection">
-  <dt><pre><a href="enums.html#SpringBoneSimulator3D_BoneDirection"><span class="Identifier">SpringBoneSimulator3D_BoneDirection</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">boneDirectionPlusX</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">boneDirectionMinusX</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">boneDirectionPlusY</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
-  <span class="Identifier">boneDirectionMinusY</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">boneDirectionPlusZ</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">boneDirectionMinusZ</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span>
-  <span class="Identifier">boneDirectionFromParent</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
 <div id="SpringBoneSimulator3D_CenterFrom">
   <dt><pre><a href="enums.html#SpringBoneSimulator3D_CenterFrom"><span class="Identifier">SpringBoneSimulator3D_CenterFrom</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">centerFromWorldOrigin</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">centerFromNode</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">centerFromBone</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="SpringBoneSimulator3D_RotationAxis">
-  <dt><pre><a href="enums.html#SpringBoneSimulator3D_RotationAxis"><span class="Identifier">SpringBoneSimulator3D_RotationAxis</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">rotationAxisX</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">rotationAxisY</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">rotationAxisZ</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">rotationAxisAll</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
-  <span class="Identifier">rotationAxisCustom</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
   <dd>
     
     
@@ -9543,8 +9846,8 @@
     
   </dd>
 </div>
-<div id="StreamPeerTCP_Status">
-  <dt><pre><a href="enums.html#StreamPeerTCP_Status"><span class="Identifier">StreamPeerTCP_Status</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+<div id="StreamPeerSocket_Status">
+  <dt><pre><a href="enums.html#StreamPeerSocket_Status"><span class="Identifier">StreamPeerSocket_Status</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">statusNone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">statusConnecting</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">statusConnected</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">statusError</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
@@ -9898,7 +10201,7 @@
   <dt><pre><a href="enums.html#TextServer_TextOverrunFlag"><span class="Identifier">TextServer_TextOverrunFlag</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">overrunTrim</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">overrunTrimWordOnly</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">overrunAddEllipsis</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
   <span class="Identifier">overrunEnforceEllipsis</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">overrunJustificationAware</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span>
-  <span class="Other">`</span><span class="Operator">--</span> <span class="Identifier">Padding</span> <span class="Operator">-</span> <span class="Identifier">Max</span> <span class="Operator">--</span><span class="Other">`</span> <span class="Other">=</span> <span class="DecNumber">63</span></pre></dt>
+  <span class="Identifier">overrunShortStringEllipsis</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">--</span> <span class="Identifier">Padding</span> <span class="Operator">-</span> <span class="Identifier">Max</span> <span class="Operator">--</span><span class="Other">`</span> <span class="Other">=</span> <span class="DecNumber">63</span></pre></dt>
   <dd>
     
     
@@ -10108,6 +10411,16 @@
 <div id="Tree_DropModeFlags">
   <dt><pre><a href="enums.html#Tree_DropModeFlags"><span class="Identifier">Tree_DropModeFlags</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">dropModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">dropModeOnItem</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">dropModeInbetween</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="Tree_ScrollHintMode">
+  <dt><pre><a href="enums.html#Tree_ScrollHintMode"><span class="Identifier">Tree_ScrollHintMode</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">scrollHintModeDisabled</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">scrollHintModeBoth</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">scrollHintModeTop</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span>
+  <span class="Identifier">scrollHintModeBottom</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
   <dd>
     
     
@@ -10725,7 +11038,8 @@
 </div>
 <div id="VisualShaderNodeParameter_Qualifier">
   <dt><pre><a href="enums.html#VisualShaderNodeParameter_Qualifier"><span class="Identifier">VisualShaderNodeParameter_Qualifier</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">8</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">qualNone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">qualGlobal</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">qualInstance</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">qualMax</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
+  <span class="Identifier">qualNone</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">qualGlobal</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">qualInstance</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">qualInstanceIndex</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span>
+  <span class="Identifier">qualMax</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
   <dd>
     
     
@@ -11750,6 +12064,17 @@
 </div>
 
 </div>
+<div id="dockLayoutAll-templates-all">
+  <div id="dockLayoutAll.t,typedesc[T]">
+  <dt><pre><span class="Keyword">template</span> <a href="#dockLayoutAll.t%2Ctypedesc%5BT%5D"><span class="Identifier">dockLayoutAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#EditorDock_DockLayout"><span class="Identifier">EditorDock_DockLayout</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="drawClearAll-templates-all">
   <div id="drawClearAll.t,typedesc[T]">
   <dt><pre><span class="Keyword">template</span> <a href="#drawClearAll.t%2Ctypedesc%5BT%5D"><span class="Identifier">drawClearAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#RenderingDevice_DrawFlags"><span class="Identifier">RenderingDevice_DrawFlags</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
@@ -12142,16 +12467,16 @@
 
 </div>
 <div id="layoutDirectionLocale-templates-all">
-  <div id="layoutDirectionLocale.t,typedesc[T]">
-  <dt><pre><span class="Keyword">template</span> <a href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D"><span class="Identifier">layoutDirectionLocale</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#Control_LayoutDirection"><span class="Identifier">Control_LayoutDirection</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+  <div id="layoutDirectionLocale.t,typedesc[T]_2">
+  <dt><pre><span class="Keyword">template</span> <a href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D_2"><span class="Identifier">layoutDirectionLocale</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#Control_LayoutDirection"><span class="Identifier">Control_LayoutDirection</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
   <dd>
     
     
     
   </dd>
 </div>
-<div id="layoutDirectionLocale.t,typedesc[T]_2">
-  <dt><pre><span class="Keyword">template</span> <a href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D_2"><span class="Identifier">layoutDirectionLocale</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#Window_LayoutDirection"><span class="Identifier">Window_LayoutDirection</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="layoutDirectionLocale.t,typedesc[T]">
+  <dt><pre><span class="Keyword">template</span> <a href="#layoutDirectionLocale.t%2Ctypedesc%5BT%5D"><span class="Identifier">layoutDirectionLocale</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#Window_LayoutDirection"><span class="Identifier">Window_LayoutDirection</span></a><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
   <dd>
     
     
@@ -12183,8 +12508,8 @@
 
 </div>
 <div id="pathMetadataIncludeAll-templates-all">
-  <div id="pathMetadataIncludeAll.t,typedesc[T]">
-  <dt><pre><span class="Keyword">template</span> <a href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D"><span class="Identifier">pathMetadataIncludeAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#NavigationPathQueryParameters2D_PathMetadataFlags"><span class="Identifier">NavigationPathQueryParameters2D_PathMetadataFlags</span></a><span class="Other">]</span><span class="Other">(</span>
+  <div id="pathMetadataIncludeAll.t,typedesc[T]_2">
+  <dt><pre><span class="Keyword">template</span> <a href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D_2"><span class="Identifier">pathMetadataIncludeAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#NavigationPathQueryParameters2D_PathMetadataFlags"><span class="Identifier">NavigationPathQueryParameters2D_PathMetadataFlags</span></a><span class="Other">]</span><span class="Other">(</span>
     <span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
   <dd>
     
@@ -12192,8 +12517,8 @@
     
   </dd>
 </div>
-<div id="pathMetadataIncludeAll.t,typedesc[T]_2">
-  <dt><pre><span class="Keyword">template</span> <a href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D_2"><span class="Identifier">pathMetadataIncludeAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#NavigationPathQueryParameters3D_PathMetadataFlags"><span class="Identifier">NavigationPathQueryParameters3D_PathMetadataFlags</span></a><span class="Other">]</span><span class="Other">(</span>
+<div id="pathMetadataIncludeAll.t,typedesc[T]">
+  <dt><pre><span class="Keyword">template</span> <a href="#pathMetadataIncludeAll.t%2Ctypedesc%5BT%5D"><span class="Identifier">pathMetadataIncludeAll</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <a href="enums.html#NavigationPathQueryParameters3D_PathMetadataFlags"><span class="Identifier">NavigationPathQueryParameters3D_PathMetadataFlags</span></a><span class="Other">]</span><span class="Other">(</span>
     <span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">set</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
   <dd>
     
@@ -12301,7 +12626,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 08:34:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-01-30 05:47:06 UTC</small>
       </div>
     </div>
   </div>
