@@ -13,7 +13,7 @@ runtime: suite "Community Reported":
 
     let mat: GdRef[StandardMaterial3D] = instantiate StandardMaterial3D
     mat[].albedoColor = color(0, 0, 1)
-    s.material = mat as GdRef[Material]
+    s.material = cast[GdRef[Material]](mat)
 
     destroy s
 

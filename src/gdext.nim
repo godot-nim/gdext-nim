@@ -104,7 +104,7 @@ template GDExtension_EntryPoint*: untyped =
   proc execMainLoopFrame {.expandEvent: MainLoopFrame, gdcall, used.}
   proc execMainLoopShutdown {.expandEvent: MainLoopShutdown, gdcall, used.}
 
-  {.emit: "N_LIB_EXPORT N_CDECL(void, NimMain)(void);".}
+  {.emit: "N_CDECL(void, NimMain)(void);".}
   proc initializer(userdata: pointer; p_level: InitializationLevel) {.gdcall.} = errproof:
     case p_level
     # almost all uses is to register user-defined classes
@@ -185,6 +185,12 @@ template GDExtension_EntryPoint*: untyped =
       echo "FATAL ERROR: failed to initialize library."
       echo $getCurrentException()
       return false
+
+  # when BuildSettings.godotLinkMode != GodotLinkMode.gdextension:
+  #   var godot*: GodotInstance
+  #   proc main(argc: cint; args: cstringArray; env: cstringArray): cint {.exportc.} =
+  #     godot = createGodotInstance(argc, args, entryPoint)
+  #     godot.runForever()
 
 when defined(docgen):
   import gdext/buildconf

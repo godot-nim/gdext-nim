@@ -6,6 +6,7 @@ import gdext/wizard/sdk/opttools
 
 import gdext/wizard/subcommands/extension
 import gdext/wizard/subcommands/iteration
+import gdext/wizard/subcommands/libgodot
 
 
 let help = """
@@ -85,6 +86,8 @@ proc dispatch_subcmd(opt: var OptParser) =
         dispatch_run_editor(opt)
       of "newextension":
         dispatch_new_extension(opt)
+      of "buildlibgodot":
+        dispatch_build_libgodot(opt)
       else:
         dispatch_addon(opt)
     of cmdEnd:

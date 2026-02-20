@@ -25,6 +25,8 @@ const cmddefArchitecture {.define: "arch".} = ""
 const cmddefAndroidNdkVersion {.define: "android_ndk_version".} = "23.2.8568313"
 const cmddefAndroidApiLevel {.define: "android_api_level".} = "21"
 
+const cmddefLinkMode {.define: "godotLinkMode".} = ""
+
 proc toBuildOS(path: string): string =
   when buildOS == "windows":
     result = path.unixToNativePath()
@@ -112,6 +114,12 @@ type UpdateMethod* = enum
   overwrite ## Retain the original changes and overwrites the updated ones
   inject ## Retain the original changes and inject the missing ones
   disable ## Retain the original changes and write nothing
+
+type GodotLinkMode* = enum
+  ## Methods by which Godot links GDExtension libraries
+  gdextension
+  sharedLink
+  staticLink
 
 const availableArch = {
   macos: @[Architecture.default],
@@ -209,6 +217,14 @@ proc defaultArchitecture: Architecture =
   else:
     result = default
 
+proc toGodotLinkMode(str: string): GodotLinkMode =
+  case str.nimIdentNormalize.toLowerAscii
+  of "gdextension": GodotLinkMode.gdextension
+  of "shared": GodotLinkMode.sharedLink
+  of "static": GodotLinkMode.staticLink
+  else: GodotLinkMode.gdextension
+
+
 type BuildSettings* = ref object
   name*: string ## The name of the extension.
   ## It affects the name of the generated file and
@@ -233,6 +249,7 @@ type BuildSettings* = ref object
   extconfig: Config
   androidNdkVersion*: string = cmddefAndroidNdkVersion
   androidApiLevel*: string = cmddefAndroidApiLevel
+  godotLinkMode*: GodotLinkMode = cmddefLinkMode.toGodotLinkMode
 
 
 proc toOS(sys: Platform): string =
@@ -327,8 +344,9 @@ proc validate(setting: BuildSettings) =
     setting.arch = fallbackArch.getOrDefault(setting.platform)
 
 proc switch(setting: BuildSettings) =
-  # GDExtension is loaded into the engine as a DLL.
-  --app: lib
+  if setting.godotLinkMode == GodotLinkMode.gdextension:
+    # GDExtension is loaded into the engine as a DLL.
+    --app: lib
 
   # This library tries to load the engine API before the main process of
   # Nim (the process described at the top level of the file, which does
@@ -352,10 +370,16 @@ proc switch(setting: BuildSettings) =
   # resulting in slower build speeds.
   switchHint("nimcache", &"{nimCacheDir()}/{platformkey(setting)}")
 
-  switchHint("out", outpathFromRes(setting).absolutePath2)
+  if setting.godotLinkMode == GodotLinkMode.gdextension:
+    switchHint("out", outpathFromRes(setting).absolutePath2)
 
   defineHint("Extension.entrySymbol", setting.entrySymbol)
   defineHint("Assistance.genEditorHelp", $setting.genEditorHelp)
+
+  defineHint("platform", $setting.platform)
+  defineHint("target", $setting.target)
+  defineHint("arch", $setting.arch)
+  defineHint("godotLinkMode", $setting.godotLinkMode)
 
   if setting.target == release:
     defineHint("release")

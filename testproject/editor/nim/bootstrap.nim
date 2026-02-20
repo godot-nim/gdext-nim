@@ -19,5 +19,19 @@ proc register_classes {.execon: initialize_scene.} =
   # ====================================
   discard
 
+import gdext/private/libgodot
+import gdext/classes/gdGodotInstance
 
 GDExtensionEntryPoint
+
+proc main(argc: cint; args: cstringArray; env: cstringArray): cint {.exportc.} =
+  loadLibGodot()
+  let godot = createGodotInstance(argc, args, entryPoint)
+  if godot.isNil:
+    raise newException(ValueError, "Godot godot is not created")
+  if not godot.isStarted:
+    discard start godot
+  while not godot.iteration:
+    discard
+  destroyGodotInstance(godot)
+  unloadLibGodot()

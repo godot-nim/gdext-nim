@@ -6,6 +6,7 @@ import gdext/buildconf
 let setting = BuildSettings(
   name: "RuntimeTest",
   genEditorHelp: off,
+  updateMethod: disable,
 )
 
 configure(setting)

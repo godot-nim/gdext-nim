@@ -28,6 +28,12 @@ type Architecture* = enum
   riscv ## RISC-V build (any bitness)
   wasm32 ## 32-bit WebAssembly build
 
+type GodotLinkMode* = enum
+  ## Methods by which Godot links GDExtension libraries
+  gdextension
+  sharedLink
+  staticLink
+
 proc toPlatform(str: string): Platform =
   case str.nimIdentNormalize.toLowerAscii
   of "windows": Platform.windows
@@ -57,6 +63,13 @@ proc toArchitecture(str: string): Architecture =
   of "wasm32": Architecture.wasm32
   else: Architecture.default
 
+proc toGodotLinkMode(str: string): GodotLinkMode =
+  case str.nimIdentNormalize.toLowerAscii
+  of "gdextension": GodotLinkMode.gdextension
+  of "shared": GodotLinkMode.sharedLink
+  of "static": GodotLinkMode.staticLink
+  else: GodotLinkMode.gdextension
+
 const
   buildOS* {.strdefine: "buildOS".} = hostOS
 
@@ -67,6 +80,7 @@ const
   platform {.strdefine: "platform".} = ""
   target {.strdefine: "target".} = ""
   arch {.strdefine: "arch".} = ""
+  godotLinkMode {.strdefine: "godotLinkMode".} = ""
 
   Assistance_checkEnv {.booldefine: "Assistance.checkenv".} = on
   Assistance_genEditorHelp {.booldefine: "Assistance.genEditorHelp".} = on
@@ -78,6 +92,7 @@ const
     platform: platform.toPlatform,
     target: target.toTarget,
     arch: arch.toArchitecture,
+    godotLinkMode: godotLinkMode.toGodotLinkMode,
   )
 
   Extension* = (
@@ -105,7 +120,7 @@ let setting = BuildSettings(
   )
 configure(setting)
 """
-  when appType != "lib": {.error: """
+  when BuildSettings.godotLinkMode == GodotLinkMode.gdextension and appType != "lib": {.error: """
 The extension must be compiled as a dynamic library.
 """ & buildconfwarn.}
   when Extension.name == "": {.error: """
