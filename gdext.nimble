@@ -1,7 +1,7 @@
 include "gdext/tasks.nims"
 # Package
 
-version       = GdextVersionString
+version       = "0.17.1"
 author        = "godot-nim, la.panon."
 description   = "Nim for GDExtension. A pure library and a CLI tool."
 license       = "MIT"
