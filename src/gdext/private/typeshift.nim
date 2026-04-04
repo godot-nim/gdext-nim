@@ -132,6 +132,8 @@ template encode*[T: Object](v: T; p: pointer) =
 proc decode*[T: Object](p: pointer; _: typedesc[T]): T =
   result = p.decode(ObjectPtr).getInstanceBinding(T)
 proc variant*[T: Object](v: T): Variant =
+  when T is RefCounted:
+    discard hook_reference v.engineInstance
   variant v.engineInstance
 proc get*[T: Object](v: Variant; _: typedesc[T]): T =
   result = v.get(ObjectPtr).getInstanceBinding(T)
@@ -147,7 +149,6 @@ proc encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
 proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced
 proc variant*[T: RefCounted](v: GdRef[T]): Variant =
-  discard hook_reference v.handle.engineInstance
   v.handle.variant
 proc get*[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
   v.get(T).referenced
