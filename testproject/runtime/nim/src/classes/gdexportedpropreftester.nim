@@ -4,7 +4,9 @@ import gdext/classes/[
   ]
 
 type ExportedPropRefTester* {.gdsync.} = ptr object of Node
-  clsProp* {.gdexport.}: gdref Texture2D
+  clsProp*: gdref Texture2D
+
+gdexport ExportedPropRefTester.clsProp
 
 method ready(self: ExportedPropRefTester) {.gdsync.} =
   var resource: gdref Resource = ResourceLoader.load("res://icon.png")
