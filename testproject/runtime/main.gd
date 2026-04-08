@@ -108,7 +108,10 @@ func test_enum(node: EnumTester):
 
 func test_exported_ref(node: ExportedPropRefTester):
 	assert_not_equal(node.clsProp, null)
-	var isSmall = true if node.clsProp.get_reference_count() < 10 else false
+	var ref_attempts = 10
+	for i in range(ref_attempts):
+		node.clsProp.get_class()
+	var isSmall = true if node.clsProp.get_reference_count() < ref_attempts else false
 	assert_true(isSmall)
 
 func _on_nim_signal_arg_0():
