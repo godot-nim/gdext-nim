@@ -23,6 +23,7 @@ import classes/gdsingleton
 import classes/gdfunctiontester
 import classes/gdenumtester
 import classes/gdrenametester
+import classes/gdexportedpropreftester
 
 # ==================================
 
