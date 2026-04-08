@@ -18,6 +18,7 @@ func _ready():
 	test_enum(EnumTester.new())
 	test_rename()
 	test_resource()
+	test_exported_ref($ExportedPropRefTester)
 
 	call_deferred("exit_with_status")
 
@@ -104,6 +105,14 @@ func test_enum(node: EnumTester):
 	assert_equal(node.test_flags, EnumTester.FLAG_3)
 	node.test_flags = EnumTester.FLAG_1 | EnumTester.FLAG_4
 	assert_equal(node.test_flags, EnumTester.FLAG_1 | EnumTester.FLAG_4)
+
+func test_exported_ref(node: ExportedPropRefTester):
+	assert_not_equal(node.clsProp, null)
+	var ref_attempts = 10
+	for i in range(ref_attempts):
+		node.clsProp.get_class()
+	var isSmall = true if node.clsProp.get_reference_count() < ref_attempts else false
+	assert_true(isSmall)
 
 func _on_nim_signal_arg_0():
 	signal_arg_0_executed = true
