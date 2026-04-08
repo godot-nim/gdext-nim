@@ -105,6 +105,11 @@ func test_enum(node: EnumTester):
 	node.test_flags = EnumTester.FLAG_1 | EnumTester.FLAG_4
 	assert_equal(node.test_flags, EnumTester.FLAG_1 | EnumTester.FLAG_4)
 
+func test_refcounted(node: ExportedPropRefTester):
+	assert_not_equal(node.clsProp, null)
+	var isSmall = true if node.clsProp.get_reference_count() < 10 else false
+	assert_true(isSmall)
+
 func _on_nim_signal_arg_0():
 	signal_arg_0_executed = true
 func _on_nim_signal_arg_1(what):
