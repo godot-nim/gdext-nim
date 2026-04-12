@@ -22,6 +22,9 @@ proc getContent(client: HttpClient; url: Uri): string =
     uri.scheme = "file"
 
   if uri.scheme == "file":
+    when defined(windows):
+      if uri.path.startsWith "/":
+        uri.path = uri.path[1..^1]
     uri.path.expandFilename.readFile
   else:
     httpclient.getContent(client, uri)
