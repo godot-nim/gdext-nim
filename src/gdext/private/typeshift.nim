@@ -147,7 +147,6 @@ proc encode*[T: RefCounted](v: GdRef[T]; p: pointer) =
 proc decode*[T: RefCounted](p: pointer; Result: typedesc[GdRef[T]]): Result =
   p.decode(T).referenced
 proc variant*[T: RefCounted](v: GdRef[T]): Variant =
-  discard hook_reference v.handle.engineInstance
   v.handle.variant
 proc get*[T: RefCounted](v: Variant; Result: typedesc[GdRef[T]]): Result =
   v.get(T).referenced
