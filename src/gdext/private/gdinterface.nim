@@ -34,6 +34,7 @@ template getPtr*(v: Variant): pointer = cast[pointer](addr v)
 template getPtr*[T: Object](v: T): pointer =
   cast[pointer](v.engineInstancePtr)
 template getPtr*(v: GdRef): pointer =
+  discard hook_reference v.handle.engineInstance
   getPtr v.handle
 proc getPtr*[I](arr: array[I, Variant]): array[I, pointer] =
   for i in 0..<arr.len:
